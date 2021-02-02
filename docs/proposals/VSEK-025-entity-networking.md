@@ -107,6 +107,18 @@ Part of a solution to this is to provide Attachment points as a feature of an En
 
 Yes, this is the foundation of the protocol and the basic set of nodes and behavior upon which content will be created.
 
+**References**
+
+Aldridge, David. "I Shot You First: networking the Gameplay of Halo: Reach". GDC 2011. https://www.youtube.com/watch?v=h47zZrqjgLc
+
+Fiedler, Glenn. "Networking for Physics Programmers". GDC 2015. https://www.youtube.com/watch?v=Z9X4lysFr64
+
+Fiedler, Glenn. "Networked Physics in Virtual Reality". 2018-02-22. https://www.gafferongames.com/post/networked_physics_in_virtual_reality/
+
+Rouwe, Jorrit. "Killzone Shadow Fall: Threading the Entity Update on PS4". GDCEU 2014. https://archive.org/details/GDCEU2014Rouwe
+
+Saracen, text and voice discussions on Discord: search Discord for "entity networking" and "networking model"
+
 ## Derivative License
 
 Copyright (c) 2014-2019 Godot Engine contributors.
