@@ -1,6 +1,6 @@
 # Add build notifications
 
-- Status: draft
+- Status: proposed
 - Deciders: lyuma, fire
 - Date: 2021-02-12
 - Tags: gocd,build-system
