@@ -1,7 +1,7 @@
 # Add build notifications
 
 - Status: draft
-- Deciders: Lyuma, fire
+- Deciders: lyuma, fire
 - Date: 2021-02-12
 - Tags: gocd,build-system
 
@@ -50,4 +50,4 @@ Make a gocd Discord notifier
 ## Links <!-- optional -->
 
 - https://docs.gocd.org/current/configuration/dev_notifications.html
-- https://github.com/matic-insurance/gocd-http-notifications-plugin
+- https://github.com/gocd-contrib/notification-skeleton-plugin
