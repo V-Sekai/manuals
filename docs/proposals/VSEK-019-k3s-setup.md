@@ -15,7 +15,7 @@ We are using a lightweight Kubernetes implementation, k3s, to provide management
 
 System Setup (Done once)
 ========================
-Install Fedora 32 with a user account set as administrator.
+Install Fedora 34 with a user account set as administrator.
 
 Add authorized keys into ~/.ssh/authorized_keys
 
@@ -135,9 +135,14 @@ sudo helm repo add bitnami https://charts.bitnami.com/bitnami
 sudo helm repo add jetstack https://charts.jetstack.io
 sudo helm repo update
 
-sudo helm install external-dns --version 3.2.3 --set provider=aws --set aws.zoneType=public --set registry=noop --set aws.credentials.accessKey="$ACCESSKEY" --set domainFilters='{vsekai.org,vsekai.net,vsekai.com,vsekai.cloud,v-sekai.org,v-sekai.net,v-sekai.com,v-sekai.cloud,vsek.ai,v-sek.ai}' --set aws.credentials.secretKey="$SECRETKEY"  bitnami/external-dns
 
-sudo helm install nginx stable/nginx-ingress --namespace kube-system --version 1.41.1
+# We are still using 3.2.3 - I have not figured out the upgrade process yet for external-dns
+sudo helm install external-dns --set provider=aws --set aws.zoneType=public --set registry=noop --set aws.credentials.accessKey="$ACCESSKEY" --set domainFilters='{vsekai.org,vsekai.net,vsekai.com,vsekai.cloud,v-sekai.org,v-sekai.net,v-sekai.com,v-sekai.cloud,vsek.ai,v-sek.ai}' --set aws.credentials.secretKey="$SECRETKEY"  bitnami/external-dns
+
+sudo helm repo add nginx-stable https://helm.nginx.com/stable
+sudo helm repo update
+# Used version 1.41.3
+sudo helm install nginx nginx-stable/nginx-ingress --namespace kube-system
 sudo kubectl patch svc/nginx-nginx-ingress-controller -n kube-system --patch '{"spec":{"externalTrafficPolicy":"Local"}}'
 sudo kubectl patch deployments/nginx-nginx-ingress-controller --patch '{"spec":{"template":{"spec":{"hostNetwork":true}}}}' -n kube-system
 
@@ -147,8 +152,8 @@ sudo kubectl delete replicasets -nginx-ingress-controller-abcdefg-whatever -n ku
 
 
 sudo kubectl create namespace cert-manager
-
-sudo helm install cert-manager jetstack/cert-manager --namespace cert-manager --version v0.15.1 --set installCRDs=true
+# Used --version v0.15.1 before; now v1.3.1
+sudo helm install cert-manager jetstack/cert-manager --namespace cert-manager --version v1.3.1 --set installCRDs=true
 sudo kubectl --namespace cert-manager create secret generic prod-route53-credentials-secret --from-literal=secret-access-key="$SECRETKEY"
 
 ```
@@ -625,22 +630,78 @@ sudo kubectl create secret generic uro-prod --from-literal=secret-key-base='GENE
 sudo kubectl apply -f https://raw.githubusercontent.com/V-Sekai/uro/master/kubernetes.yaml
 ```
 
-Building uro backend (OLD!!!)
-====================
+# Keeping the system and cluster up-to-date
 
+Upgrading fedora
+================
+
+Start the upgrade process with:
 ```bash
-cd uro
-sudo podman build -t uro-v0.0.7 .
-sudo podman push uro-v0.0.7 registry.digitalocean.com/v-sekai/uro:v0.0.7
-sudo kubectl apply -f kube_deployment.yaml
-sudo kubectl certificate approve default.client.uro-prod
+sudo dnf upgrade --refresh
+sudo dnf install dnf-plugin-system-upgrade
+sudo dnf system-upgrade download --releasever=34
 ```
 
-----------
-sign up here :: https://cloud.digitalocean.com/images/container-registry?i=d76b9d
-Download docker-config.json (read/write); 
-Save as ~/.docker/config.json on the server.
-sudo kubectl create secret generic v-sekai-registry --from-file=.dockerconfigjson=.docker/config.json  --type=kubernetes.io/dockerconfigjson
+Answer `y` to all prompts confirming list of packages and new GPG keys, if any. Once successful, it displays:
+```
+Download complete! Use 'dnf system-upgrade reboot' to start the upgrade.
+To remove cached metadata and transaction use 'dnf system-upgrade clean'
+The downloaded packages were saved in cache until the next successful transaction.
+You can remove cached packages by executing 'dnf clean packages'.
+```
+
+Complete the upgrade with:
+
+```bash
+sudo dnf system-upgrade reboot
+```
+
+This will bring the system down for about an hour.
+
+Upgrading nginx and cert-manager
+=============
+```bash
+sudo helm repo update
+sudo helm upgrade nginx nginx-stable/nginx-ingress --namespace kube-system
+sudo helm upgrade cert-manager jetstack/cert-manager --namespace cert-manager --set installCRDs=true
+### I was not able to get external-dns to upgrade, but it is not user-facing so we keep running the old version.
+# sudo helm upgrade external-dns --reuse-values bitnami/external-dns
+```
+
+Upgrading k3s
+=============
+```bash
+curl -sfL https://raw.githubusercontent.com/rancher/k3s/master/install.sh | sh -s - server -o /root/.kube/config --default-local-storage-path /kube/pvc --no-deploy=servicelb --disable=traefik --disable=servicelb
+```
+
+Upgrading cockroachdb
+=====================
+Run the shell:
+```bash
+sudo kubectl exec -it cockroachdb-client-secure -- ./cockroach sql --certs-dir=/cockroach-certs --host=cockroachdb-public
+```
+At the top of the shell prompt, it will say something like this. Copy the first two numbers from the CockroachDB CCL line. In this case, `20.2`
+
+    #
+    # Welcome to the CockroachDB SQL shell.
+    # All statements must be terminated by a semicolon.
+    # To exit, type: \q.
+    #
+    # Server version: CockroachDB CCL v20.2.2 (x86_64-unknown-linux-gnu
+
+Replace `some.version` in the following command with the value we found above:
+```sql
+SET CLUSTER SETTING cluster.preserve_downgrade_option = 'some.version';
+```
+
+Finally, perform the upgrade:
+```bash
+sudo kubectl delete job cockroachdb-init
+sudo helm upgrade cockroachdb cockroachdb/cockroachdb --values cockroachdb.values.yaml
+curl -o client-secure.yaml https://raw.githubusercontent.com/cockroachdb/cockroach/master/cloud/kubernetes/client-secure.yaml
+sudo kubectl delete pods/cockroachdb-client-secure
+sudo kubectl create -f client-secure.yaml
+```
 
 
 **If this enhancement will not be used often, can it be worked around with a few lines of script?:**
@@ -653,7 +714,7 @@ Having experience with kubernetes and maintaining discipline will make scaling o
 
 ## Derivative License
 
-Copyright (c) 2014-2019 Godot Engine contributors.
+Copyright (c) 2020-2021 V-Sekai and Godot Engine contributors.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
