@@ -131,6 +131,8 @@ Install Helm services:
 ACCESSKEY=AKIAABCDEFGHIJKLMNOP
 SECRETKEY=XXXXXXXXXXXXXXXXXXXX
 
+sudo helm repo add gocd https://gocd.github.io/helm-chart
+sudo helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 sudo helm repo add bitnami https://charts.bitnami.com/bitnami
 sudo helm repo add jetstack https://charts.jetstack.io
 sudo helm repo update
@@ -139,10 +141,8 @@ sudo helm repo update
 # We are still using 3.2.3 - I have not figured out the upgrade process yet for external-dns
 sudo helm install external-dns --set provider=aws --set aws.zoneType=public --set registry=noop --set aws.credentials.accessKey="$ACCESSKEY" --set domainFilters='{vsekai.org,vsekai.net,vsekai.com,vsekai.cloud,v-sekai.org,v-sekai.net,v-sekai.com,v-sekai.cloud,vsek.ai,v-sek.ai}' --set aws.credentials.secretKey="$SECRETKEY"  bitnami/external-dns
 
-sudo helm repo add nginx-stable https://helm.nginx.com/stable
-sudo helm repo update
-# Used version 1.41.3
-sudo helm install nginx nginx-stable/nginx-ingress --namespace kube-system
+sudo kubectl create namespace ingress-nginx
+sudo helm install --namespace ingress-nginx nginx ingress-nginx/ingress-nginx --set controller.replicaCount=2
 sudo kubectl patch svc/nginx-nginx-ingress-controller -n kube-system --patch '{"spec":{"externalTrafficPolicy":"Local"}}'
 sudo kubectl patch deployments/nginx-nginx-ingress-controller --patch '{"spec":{"template":{"spec":{"hostNetwork":true}}}}' -n kube-system
 
@@ -366,24 +366,27 @@ ssh-keygen -t rsa -b 4096 -C "gocd-ssh-key" -f gocd-ssh -P ''
 ( ssh-keyscan gitlab.com ; ssh-keyscan github.com ) > gocd_known_hosts
 sudo kubectl create secret generic gocd-ssh --from-file=id_rsa=gocd-ssh --from-file=id_rsa.pub=gocd-ssh.pub --from-file=known_hosts=gocd_known_hosts
 
-# Chart version 1.30.0 is gocd 20.7.0
-sudo helm install -f gocd_values.yaml gocd stable/gocd --version 1.30.0
+# Chart version 1.37.0 is gocd v21.2.0
+sudo helm install -f gocd_values.yaml gocd gocd/gocd --version 1.37.0
 sudo chcon -R -t container_file_t /kube/pvc
 # Installs a trash service on port 80 by default. Let's delete it:
 sudo kubectl delete ingress gocd-server
 # Instead of using "kubectl scale", scale agents by editing gocd_values.yaml
 # and do "sudo helm upgrade -f ...."
-sudo helm install -f gocd_values.yaml gocd stable/gocd --version 1.30.0
+sudo helm install -f gocd_values.yaml gocd gocd/gocd --version 1.37.0
 # Make sure to enable the agents in the web UI, and assign them to Resources and Environments.
 ```
 
 Upgrade process (**make sure to `sudo kubectl delete ingress gocd-server` after every upgrade**):
 ```
 # Disable and Delete all agents in the AGENTS tab of gocd.
-Edit gocd_values.yaml and set agent version to latest (e.g. 20.7.0-groups-0.5.3)
-sudo helm upgrade -f gocd_values.yaml gocd stable/gocd --version 1.30.0
+Edit gocd_values.yaml and set agent version to latest (e.g. v21.2.0-groups-0.5.8)
+sudo helm upgrade -f gocd_values.yaml gocd gocd/gocd --version 1.37.0
 sudo kubectl delete ingress gocd-server
-# Wait for agents to come up, and enable them and assign them as appropriate.
+# Upgrade gocd-agent-dind:
+sudo kubectl patch deployments/gocd-agent-dind --patch '{"spec":{"template":{"spec":{"containers":[{"name":"gocd-agent-dind","image":"gocd/gocd-agent-docker-dind:v21.2.0"}]}}}}'
+# You can also use patch to upgrade gocd-agent and gocd-server instead of upgrading via helm chart. I sometimes do it that way.
+# Delete the old Agents on the web interface. Wait for the new agents to come up, and enable them and assign them as appropriate.
 ```
 
 Create DockerHub permissions: Create an account if you do not have one. Visit https://hub.docker.com/settings/security and create an Access Token. Copy the token.
@@ -435,7 +438,7 @@ spec:
       - env:
         - name: GO_SERVER_URL
           value: http://gocd-server:8153/go
-        image: gocd/gocd-agent-docker-dind:v20.7.0
+        image: gocd/gocd-agent-docker-dind:v21.2.0
         imagePullPolicy: IfNotPresent
         name: gocd-agent-dind
         resources: {}
@@ -662,7 +665,8 @@ Upgrading nginx and cert-manager
 =============
 ```bash
 sudo helm repo update
-sudo helm upgrade nginx nginx-stable/nginx-ingress --namespace kube-system
+# If the stable/nginx-ingress chart is still installed, make sure to helm uninstall nginx first.
+sudo helm upgrade --namespace ingress-nginx nginx ingress-nginx/ingress-nginx --set controller.replicaCount=2
 sudo helm upgrade cert-manager jetstack/cert-manager --namespace cert-manager --set installCRDs=true
 ### I was not able to get external-dns to upgrade, but it is not user-facing so we keep running the old version.
 # sudo helm upgrade external-dns --reuse-values bitnami/external-dns
