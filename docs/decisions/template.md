@@ -1,32 +1,18 @@
 # [short title of solved problem and solution]
 
-- Status: [draft | proposed | rejected | accepted | deprecated | … | superseded by [xxx](yyyymmdd-xxx.md)] <!-- optional -->
-- Deciders: [list everyone involved in the decision] <!-- optional -->
-- Date: [YYYY-MM-DD when the decision was last updated] <!-- optional. To customize the ordering without relying on Git creation dates and filenames -->
-- Tags: [space and/or comma separated list of tags] <!-- optional -->
-
-Technical Story: [description | ticket/issue URL] <!-- optional -->
-
 ## Context and Problem Statement
+
+[Describe the problem or limitation you are having in your project]
 
 [Describe the context and problem statement, e.g., in free form using two to three sentences. You may want to articulate the problem in form of a question.]
 
-## Decision Drivers <!-- optional -->
+## Describe the proposed option and how it helps to overcome the problem or limitation
 
-- [driver 1, e.g., a force, facing concern, …]
-- [driver 2, e.g., a force, facing concern, …]
-- … <!-- numbers of drivers can vary -->
+[Describe the proposed option and how it helps to overcome the problem or limitation]
 
-## Considered Options
+### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-- [option 1]
-- [option 2]
-- [option 3]
-- … <!-- numbers of options can vary -->
-
-## Decision Outcome
-
-Chosen option: "[option 1]", because [justification. e.g., only option, which meets k.o. criterion decision driver | which resolves force force | … | comes out best (see below)].
+[Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams]
 
 ### Positive Consequences <!-- optional -->
 
@@ -38,36 +24,33 @@ Chosen option: "[option 1]", because [justification. e.g., only option, which me
 - [e.g., compromising quality attribute, follow-up decisions required, …]
 - …
 
-## Pros and Cons of the Options <!-- optional -->
+(this section can be repeated for each option, if more than one option is open for consideration
 
-### [option 1]
 
-[example | description | pointer to more information | …] <!-- optional -->
+## Option graveyard: same as above
 
-- Good, because [argument a]
-- Good, because [argument b]
-- Bad, because [argument c]
-- … <!-- numbers of pros and cons can vary -->
+List the proposed options no longer open for consideration.
 
-### [option 2]
+List the reasons for the rejection: (the Bad traits)
 
-[example | description | pointer to more information | …] <!-- optional -->
+## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
-- Good, because [argument a]
-- Good, because [argument b]
-- Bad, because [argument c]
-- … <!-- numbers of pros and cons can vary -->
+[Explain]
 
-### [option 3]
+## Is there a reason why this should be core and done by us?
 
-[example | description | pointer to more information | …] <!-- optional -->
-
-- Good, because [argument a]
-- Good, because [argument b]
-- Bad, because [argument c]
-- … <!-- numbers of pros and cons can vary -->
+[Explain]
 
 ## Links <!-- optional -->
 
 - [Link type](link to adr) <!-- example: Refined by [xxx](yyyymmdd-xxx.md) -->
 - … <!-- numbers of links can vary -->
+
+## Bookkeeping <!-- optional -->
+
+- Status: [draft | proposed | rejected | accepted | deprecated | … | superseded by [xxx](yyyymmdd-xxx.md)] <!-- optional -->
+- Deciders: [list everyone involved in the decision] <!-- optional -->
+- Date: [YYYY-MM-DD when the decision was last updated] <!-- optional. To customize the ordering without relying on Git creation dates and filenames -->
+- Tags: [space and/or comma separated list of tags] <!-- optional -->
+
+Technical Story: [description | ticket/issue URL] <!-- optional -->
