@@ -56,3 +56,5 @@ From a security standpoint, we need to ensure that there is a trust between the 
 ## Links <!-- optional -->
 
 - https://github.com/kolide/updater
+- https://github.com/theupdateframework/notary
+- https://github.com/theupdateframework/specification/blob/master/tuf-spec.md
