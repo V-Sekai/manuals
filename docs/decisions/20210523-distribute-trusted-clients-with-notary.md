@@ -4,14 +4,13 @@
 
 We use itch.io distribute our software clients.
 
-4. Security concerns with trust
-2. We do not control hosting
-3. Want ability to mirror package sources
+1. Security concerns with trust. We do not control hosting.
+1. Want ability to mirror package sources.
 1. Research use to distribute avatars and worlds
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-Use the notary system. 
+Use the notary system so we can establish trust.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
@@ -19,18 +18,16 @@ We distribute the notary updater and make it fetch the launcher and V-Sekai.
 
 We provide a notary server.
 
-We setup the trust relationship during the install and maintance
+We setup the trust relationship during the install and maintance.
 
 ### Positive Consequences <!-- optional -->
 
-- Code reviewed and trusted by large corporations (Docker Imagse) and in safety critial fields (Automobiles)
+- Code reviewed and trusted by large corporations (Docker Images) and in safety critial fields (Automobiles)
 - Off the shelf
 
 ### Negative Consequences <!-- optional -->
 
 - Unknown support costs
-
-(this section can be repeated for each option, if more than one option is open for consideration
 
 ## Option graveyard Steam only
 
