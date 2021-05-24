@@ -55,4 +55,4 @@ From a security standpoint, we need to ensure that there is a trust between the 
 
 ## Links <!-- optional -->
 
-- https://libs.garden/go/kolide/updater
+- https://github.com/kolide/updater
