@@ -7,6 +7,7 @@ We use itch.io distribute our software clients.
 1. Security concerns with trust. We do not control hosting.
 1. Want ability to mirror package sources.
 1. Research use to distribute avatars and worlds
+1. Want something off the shelf
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
