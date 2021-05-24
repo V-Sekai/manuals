@@ -48,7 +48,7 @@ List the reasons for the rejection: (the Bad traits)
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
-Not trivial.
+Not trivial. The documentaion of Notary start by the description of a possible security model and provides several attacks against it.
 
 ## Is there a reason why this should be core and done by us?
 
