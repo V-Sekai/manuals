@@ -1,4 +1,4 @@
-# Simplfy Meshes and LODs better with Quads
+# Simplify Meshes and LODs better with Quads
 
 - Status: draft
 - Deciders: ifire
