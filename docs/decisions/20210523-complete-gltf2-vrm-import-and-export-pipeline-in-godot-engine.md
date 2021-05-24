@@ -4,28 +4,24 @@
 - Deciders: fire
 - Tags: gltf2,export,import,3d
 
-Technical Story: [description | ticket/issue URL] <!-- optional -->
-
 ## Context and Problem Statement
 
 [Describe the context and problem statement, e.g., in free form using two to three sentences. You may want to articulate the problem in form of a question.]
 
 ## Decision Drivers <!-- optional -->
 
-- [driver 1, e.g., a force, facing concern, …]
-- [driver 2, e.g., a force, facing concern, …]
-- … <!-- numbers of drivers can vary -->
+- Technical Robustness
+- Marketshare
 
 ## Considered Options
 
-- [option 1]
-- [option 2]
-- [option 3]
-- … <!-- numbers of options can vary -->
+- gltF
+- VRM
+- USDZ
 
 ## Decision Outcome
 
-Chosen option: "[option 1]", because [justification. e.g., only option, which meets k.o. criterion decision driver | which resolves force force | … | comes out best (see below)].
+Chosen option: glTF2 and VRM 
 
 ### Positive Consequences <!-- optional -->
 
@@ -39,7 +35,7 @@ Chosen option: "[option 1]", because [justification. e.g., only option, which me
 
 ## Pros and Cons of the Options <!-- optional -->
 
-### [option 1]
+### GLTF2
 
 [example | description | pointer to more information | …] <!-- optional -->
 
@@ -48,7 +44,7 @@ Chosen option: "[option 1]", because [justification. e.g., only option, which me
 - Bad, because [argument c]
 - … <!-- numbers of pros and cons can vary -->
 
-### [option 2]
+### VRM
 
 [example | description | pointer to more information | …] <!-- optional -->
 
@@ -57,7 +53,7 @@ Chosen option: "[option 1]", because [justification. e.g., only option, which me
 - Bad, because [argument c]
 - … <!-- numbers of pros and cons can vary -->
 
-### [option 3]
+### USDZ
 
 [example | description | pointer to more information | …] <!-- optional -->
 
