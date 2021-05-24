@@ -19,6 +19,7 @@ Chosen option: glTF2 n-gons proposal
 ### glTF2 n-gons proposal
 
 - Good, because it allows better decimation
+- Good, because it allows better subdivision
 - Good, because it allows better curves
 - Bad, because it increases render complexity
 
