@@ -1,7 +1,7 @@
 # v-sekai-proposals
 Public proposal and issue tracker repository for V-Sekai
 
-[![V-Sekai Decision Records](https://V-Sekai.github.io/v-sekai-proposals/log4brains/badge.svg)](https://V-Sekai.github.io/v-sekai-proposals/log4brains/)
+[![V-Sekai Decision Records](http://URL-of-your-knowledge-base/badge.svg)](https://V-Sekai.github.io/v-sekai-proposals/log4brains/)
 
 ## How to use?
 
