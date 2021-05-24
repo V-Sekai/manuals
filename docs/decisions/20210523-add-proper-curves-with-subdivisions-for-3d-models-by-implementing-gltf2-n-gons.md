@@ -14,9 +14,9 @@ To have proper curves with subdivisions, for 3d models, 3d models require using 
 
 ## Decision Outcome
 
-Chosen option: [glTF2 n-gons proposal]
+Chosen option: glTF2 n-gons proposal
 
-### [glTF2 n-gons proposal]
+### glTF2 n-gons proposal
 
 - Good, because it allows better decimation
 - Good, because it allows better curves
