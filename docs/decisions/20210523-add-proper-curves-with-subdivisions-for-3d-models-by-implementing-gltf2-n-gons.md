@@ -23,6 +23,10 @@ Chosen option: glTF2 n-gons proposal
 - Good, because it allows better curves
 - Bad, because it increases render complexity
 
+### glTF2 quads-only proposal
+
+- Bad, because it does not fully implement gltf2 spec
+
 ## Links <!-- optional -->
 
 - KhronosGroup/glTF-Blender-IO#622 
