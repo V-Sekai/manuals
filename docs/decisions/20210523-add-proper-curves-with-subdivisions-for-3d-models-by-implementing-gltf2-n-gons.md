@@ -1,4 +1,4 @@
-# Add proper curves with subdivisions for 3d models by implementing glTF2 n-gons
+# Add proper curves with subdivisions for 3d models by implementing glTF2 n-gons in Godot Engine
 
 - Status: draft
 - Deciders: @fire
