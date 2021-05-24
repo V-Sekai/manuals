@@ -1,65 +1,47 @@
 # Simplify Meshes and LODs better with Quads
 
-- Status: draft
-- Deciders: ifire
-- Tags: 3D,LOD,quads
-
-Technical Story: [description | ticket/issue URL] <!-- optional -->
-
 ## Context and Problem Statement
 
 Better mesh simplification and LODs that work on quads.
 
-## Decision Drivers <!-- optional -->
+[Describe the problem or limitation you are having in your project]
 
-- Visual Quality
-- Maintainability
+[Describe the context and problem statement, e.g., in free form using two to three sentences. You may want to articulate the problem in form of a question.]
 
-## Considered Options
+## Describe the proposed option and how it helps to overcome the problem or limitation
 
-- Quads
-- Triangles
+[Describe the proposed option]
 
-## Decision Outcome
+### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-Chosen option: Quads
+[Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams]
 
 ### Positive Consequences <!-- optional -->
 
-- Better curve quality
+- [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
+- Visual Quality
+- Maintainability
 
 ### Negative Consequences <!-- optional -->
 
+- [e.g., compromising quality attribute, follow-up decisions required, …]
 - Technical complexity
 
-## Pros and Cons of the Options <!-- optional -->
+(this section can be repeated for each option, if more than one option is open for consideration
 
-### Quads
+## Option graveyard: Tris
 
-[example | description | pointer to more information | …] <!-- optional -->
+List the proposed options no longer open for consideration.
 
-- Good, because [argument a]
-- Good, because [argument b]
-- Bad, because [argument c]
-- … <!-- numbers of pros and cons can vary -->
+List the reasons for the rejection: (the Bad traits)
 
-### Tris
+## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
-[example | description | pointer to more information | …] <!-- optional -->
+[If this enhancement will not be used often]
 
-- Good, because [argument a]
-- Good, because [argument b]
-- Bad, because [argument c]
-- … <!-- numbers of pros and cons can vary -->
+## Is there a reason why this should be core and done by us?
 
-### [option 3]
-
-[example | description | pointer to more information | …] <!-- optional -->
-
-- Good, because [argument a]
-- Good, because [argument b]
-- Bad, because [argument c]
-- … <!-- numbers of pros and cons can vary -->
+[Is there a reason why this should be core]
 
 ## Links <!-- optional -->
 
