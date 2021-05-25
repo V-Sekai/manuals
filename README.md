@@ -7,7 +7,6 @@ Public proposal and issue tracker repository for V-Sekai
 
 ```
 # npm install -g log4brains
-git branch proposal/to-the-moon
 log4brains adr new
 ```
 
