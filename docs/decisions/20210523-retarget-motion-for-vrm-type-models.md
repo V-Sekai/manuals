@@ -95,3 +95,4 @@ We need motions for our character controller without using an off-the-shelf blac
 ## Links <!-- optional -->
 
 - https://www.blender.org/
+- https://hackmd.io/EmOAt375S8KFqaNdPDJCXQ
