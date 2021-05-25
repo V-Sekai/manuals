@@ -1,4 +1,4 @@
-# Retarget motion for VRM type models [OFFLINE]
+# Retarget VRM Motion Blender Workflow
 
 ## Context and Problem Statement
 
