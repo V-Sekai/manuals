@@ -29,5 +29,5 @@ Chosen option: glTF2 n-gons proposal
 
 ## Links <!-- optional -->
 
-- KhronosGroup/glTF-Blender-IO#622 
-- KhronosGroup/glTF#1620
+- KhronosGroup/glTF-Blender-IO#622
+- https://github.com/KhronosGroup/glTF/pull/1620
