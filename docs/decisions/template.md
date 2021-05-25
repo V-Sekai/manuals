@@ -17,32 +17,26 @@ Technical Story: [description | ticket/issue URL] <!-- optional -->
 - [driver 2, e.g., a force, facing concern, …]
 - … <!-- numbers of drivers can vary -->
 
-## Considered Options
+## Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
 - [option 1]
 - [option 2]
 - [option 3]
 - … <!-- numbers of options can vary -->
 
-## Decision Outcome
-
-Chosen option: "[option 1]", because [justification. e.g., only option, which meets k.o. criterion decision driver | which resolves force force | … | comes out best (see below)].
-
-### Positive Consequences <!-- optional -->
+## Positive Consequences <!-- optional -->
 
 - [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
 - …
 
-### Negative Consequences <!-- optional -->
+## Negative Consequences <!-- optional -->
 
 - [e.g., compromising quality attribute, follow-up decisions required, …]
 - …
 
 ## Pros and Cons of the Options <!-- optional -->
 
-### [option 1]
-
-[example | description | pointer to more information | …] <!-- optional -->
+## Option graveyard: same as above
 
 - Good, because [argument a]
 - Good, because [argument b]
@@ -53,14 +47,11 @@ Chosen option: "[option 1]", because [justification. e.g., only option, which me
 
 [example | description | pointer to more information | …] <!-- optional -->
 
-- Good, because [argument a]
-- Good, because [argument b]
-- Bad, because [argument c]
-- … <!-- numbers of pros and cons can vary -->
+[If this enhancement will not be used often, can it be worked around with a few lines of script?]
 
 ### [option 3]
 
-[example | description | pointer to more information | …] <!-- optional -->
+[Is there a reason why this should be core and done by us?]
 
 - Good, because [argument a]
 - Good, because [argument b]
