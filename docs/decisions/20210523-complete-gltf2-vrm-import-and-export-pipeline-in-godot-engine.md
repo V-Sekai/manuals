@@ -1,68 +1,46 @@
-# Complete glTF2 / VRM import and export pipeline in Godot Engine
 
-- Status: draft
-- Deciders: fire
-- Tags: gltf2,export,import,3d
+# Complete glTF2 / VRM import and export pipeline in Godot Engine
 
 ## Context and Problem Statement
 
-[Describe the context and problem statement, e.g., in free form using two to three sentences. You may want to articulate the problem in form of a question.]
+We are unable to import characters in animations and unable to export them.
 
-## Decision Drivers <!-- optional -->
+## Describe the proposed option and how it helps to overcome the problem or limitation
 
-- Technical Robustness
-- Marketshare
+VRM and glTF import allows us to bring models in and export allows us to get the models out.
 
-## Considered Options
+## Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-- gltF
-- VRM
-- USDZ
+To be determined.
 
-## Decision Outcome
+## Positive Consequences <!-- optional -->
 
-Chosen option: glTF2 and VRM 
+- Character import supports
+- World export support
 
-### Positive Consequences <!-- optional -->
+## Negative Consequences <!-- optional -->
 
-- [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
-- …
+- Technical debt
 
-### Negative Consequences <!-- optional -->
+(this section can be repeated for each option, if more than one option is open for consideration
 
-- [e.g., compromising quality attribute, follow-up decisions required, …]
-- …
+## Option graveyard: USDZ
 
-## Pros and Cons of the Options <!-- optional -->
+List the proposed options no longer open for consideration.
 
-### GLTF2
+List the reasons for the rejection: (the Bad traits)
 
-[example | description | pointer to more information | …] <!-- optional -->
+* Requires GDNative 
+* Complicated
 
-- Good, because [argument a]
-- Good, because [argument b]
-- Bad, because [argument c]
-- … <!-- numbers of pros and cons can vary -->
+## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
-### VRM
+Possible to be gdscript
 
-[example | description | pointer to more information | …] <!-- optional -->
+## Is there a reason why this should be core and done by us?
 
-- Good, because [argument a]
-- Good, because [argument b]
-- Bad, because [argument c]
-- … <!-- numbers of pros and cons can vary -->
-
-### USDZ
-
-[example | description | pointer to more information | …] <!-- optional -->
-
-- Good, because [argument a]
-- Good, because [argument b]
-- Bad, because [argument c]
-- … <!-- numbers of pros and cons can vary -->
+We need to provide trust for the toolchains.
 
 ## Links <!-- optional -->
 
-- [Link type](link to adr) <!-- example: Refined by [xxx](yyyymmdd-xxx.md) -->
-- … <!-- numbers of links can vary -->
+- [Notary Trust](20210523-complete-gltf2-vrm-import-and-export-pipeline-in-godot-engine.md)
