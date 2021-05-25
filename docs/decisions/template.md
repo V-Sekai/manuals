@@ -10,16 +10,16 @@
 
 [Describe the proposed option and how it helps to overcome the problem or limitation]
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+## Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
 [Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams]
 
-### Positive Consequences <!-- optional -->
+## Positive Consequences <!-- optional -->
 
 - [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
 - …
 
-### Negative Consequences <!-- optional -->
+## Negative Consequences <!-- optional -->
 
 - [e.g., compromising quality attribute, follow-up decisions required, …]
 - …
