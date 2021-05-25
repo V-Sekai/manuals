@@ -66,7 +66,7 @@ A: check the armature bone name mappings
 
 **Thanks to humbletim for being the scribe**
 
-**thanks to lyuma for being test pilot flying these steps**
+**Thanks to lyuma for being test pilot flying these steps**
 
 ### Positive Consequences <!-- optional -->
 
