@@ -41,5 +41,4 @@ We want the source art to be in quads so we can post process it in the game.
 
 ## Links <!-- optional -->
 
-- [Link type](link to adr) <!-- example: Refined by [xxx](yyyymmdd-xxx.md) -->
-- … <!-- numbers of links can vary -->
+- https://gdcvault.com/play/1026752/Quad-Mesh-Simplification-in
