@@ -53,9 +53,11 @@ Use Blender to retarget t-posed characters.
 ### Common Problems
 
 Q: retargeted animation seems to have legs crossed / backwards
+
 A: this can happen if you import a VRM avatar as a .gltf (re-import using the VRM importer add-on)
 
 Q: legs / arms bend unnaturally 
+
 A: check the armature bone name mappings
   - at most each target bone name should appear once
   - leave BVH joints not present in your avatar blank
