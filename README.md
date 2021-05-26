@@ -14,7 +14,9 @@ log4brains adr new
 
 Proposals are committed files: then there is no issue or PR, and the discussion thread, if any, exists on the Discussions tab.
 
-**DO NOT WANT PRs** in an ephemeral PR state but not on master branch, for an undefined times. **Do not want discussions to occur only while the proposal is in the PR state and the discussion is forgotten when it gets "merged" to master**
+**DO NOT WANT EPHEMERAL PRs** in an limbo state which is not on master branch, for an undefined times.
+
+**We do not want discussions to occur only while the proposal is in the PR state and the discussion is forgotten when it gets "merged" to master**
 
 Merge all open PRs.
 
