@@ -23,7 +23,7 @@ Install UniVRM form https://github.com/vrm-c/UniVRM/releases.
 
 Install https://github.com/esperecyan/VRMConverterForVRChat/issues.
 
-Install VRCHAT SDK3 for Avatar and Worlds.
+Install https://vrchat.com/home/download VRCHAT SDK3 for Avatar and Worlds.
 
 
 ## Positive Consequences <!-- optional -->
@@ -47,6 +47,7 @@ No one seemed to document this.
 ## References <!-- optional -->
 
 - https://public-cdn.cloud.unity3d.com/hub/prod/UnityHub.AppImage
+- https://vrchat.com/home/download
 - The current Unity version in use by VRChat is Unity 2018.4.20f1.
 
 ## Derivative License
