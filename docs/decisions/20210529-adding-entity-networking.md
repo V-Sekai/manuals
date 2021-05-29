@@ -2,16 +2,16 @@
 
 ## Context and Problem Statement
 
-For Groups this system aims to solve the following issues:
+For Groups, this system aims to solve the following issues:
 
 - **(A)** Need a way to standardize scene spawning.
-- **(B)** Need a way to refer to nodes / instances that is consistent across clients (for example "Set parent to ...").
+- **(B)** Need a way to refer to nodes/instances that is consistent across clients (for example, "Set parent to ...").
 - **(C)** Need a way to synchronize state between clients.
 - **(D)** Provides a basic set of standard protocols and interactions.
-- **(E)** Provides the basis for a security / privacy model regarding entity communication/permissionws over the network.
-- **(F)** Provides a security model locally for access between nodes of one entity, and nodes of another entity (assuming a secure scripting framework is implemented).
-- **(G)** This also solves the problem of abstracting away implementation details of entities, for example there should be no need to deal with *godot nodes* on an individual basis.
-- **(H)** Provide a unified way to create toplevel physics hierarchies isolated from other game logic.
+- **(E)** Provides the basis for a security/privacy model regarding entity communication/permissions over the network.
+- **(F)** Provides a security model locally for access between nodes of one entity and nodes of another entity (assuming a secure scripting framework is implemented).
+- **(G)** This also solves the problem of abstracting away implementation details of entities; for example, there should be no need to deal with *Godot nodes* on an individual basis.
+- **(H)** Provide a unified way to create top-level physics hierarchies isolated from other game logic.
 
 Note: This proposal covers three **Spawn Types**:
 
@@ -21,41 +21,41 @@ Note: This proposal covers three **Spawn Types**:
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-As indicated in point (G), everything documented here relates Scenes and Entites. Aside from the Entity script being attached to the root node of a scene(?), and the scene itself being a node. Additionally, it may be necessary to query a node to find its containing Entity (parent node).
-Note: Interaction between nodes *within* a single entity are considered an implementation detail of that entity, and is out of scope of the entity system. Any security model assumes that nodes cannot be transfered, shared or reparented between entities.
+As indicated in point (G), everything documented here relates to Scenes and Entities. Aside from the Entity script being attached to the root node of a scene(?), and the scene itself being a node. Additionally, it may be necessary to query a node to find its containing entity (parent node).
+Note: Interaction between nodes *within* a single entity is considered an implementation detail of that entity and is out of the scope of the entity system. Any security model assumes that nodes cannot be transferred, shared or reparented between entities.
 
-Entities are objects known to the server, and with explicit handling for state synchronization.
+Entities are objects known to the server and with explicit handling for state synchronization.
 
-Some entities may choose to sychronize little state, or position only, or no state at all.
+Some entities may choose to synchronize little state, or position only, or no state at all.
 Also, some entities may choose to provide no security or isolation, while others may be private and appear not to even exist to other nodes. For example, a local player menu built upon the Entity System's interaction features, gaining features A, D, F and G.
 By building this common framework, it means that systems built as Entities can be trivially synchronized over the network.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-TODO: We may want a way to optimistically spawn an entity client-side to achieve maximal responsiveness and fun.
+**Todo**: We may want a way to optimistically spawn an entity client-side to achieve maximal responsiveness and fun.
 
-However, these entities will not yet know their server-side entity ID. Proposals: Reserve portion of ID space; or locally hold onto events/state and flush once ID is known.
+However, these entities will not yet know their server-side entity ID. Proposals: Reserve portion of ID space; or locally hold onto events/state and flush once the ID is known.
 
 ### A. Spawning
 
 There will be a global directory of spawnable objects as part of a server connection.
-Players and maps can reference scenes by some name to spawn an entity with that name
+Players and maps can reference scenes by some name to spawn an entity with that name.
 
 ### B. Consistent References
 
 Entities will have a server-assigned ID.
-TODO: What to do if an entity is spawned locally, and an ID is not yet known.
+**Todo**: What to do if an entity is spawned locally and an ID is not yet known.
 
 ### C. State Synchronization
 
-Entities will define a set of state variables which must be synced.
-The network protocol will take care of updating state gradually over time, as well as rate limiting.
+Entities will define a set of state variables that must be synced.
+The network protocol will take care of updating the state gradually over time, as well as rate-limiting.
 Events can be used to provide forced updates.
-Guarantees? Exposing metadata about when state was updated?
+Guarantees? Exposing metadata about when the state was updated?
 
 **Entity properties:**
 
-- State that is synced are properties.
+- State that is synced is properties.
 - Some properties are only assignable at spawn time (for example, scene file?)
 - Some properties such as transform may require special handling.
 
@@ -78,17 +78,17 @@ Examples: Physics, Physics Pickup; Button; Movable Platform; Vehicle
 
 **Ownership:**
 
-All entities will be owned by the player which interacts with them, or by the server.  
-Entity ownership will be transfered if the current owner leaves.
+All entities will be owned by the player who interacts with them or by the server.  
+Entity ownership will be transferred if the current owner leaves.
 
 **Mastership:**
 
 Map entities may largely be mastered by a dedicated server.  
 
-Avatar entities and props will be mastered by the player that spawned them, even if another player owns it.  
+Avatar entities and props will be mastered by the player that spawned them, even if another player owns them.  
 
 (Example: Alice personally spawns a ball avatar prop and throws it to Bob, who catches it. Alice has Mastership; Bob has Ownership.)  
-Mastership may be transfered on map exit; or they may be despawned (the player "takes" their props with them.)
+Mastership may be transferred on map exit; or they may be despawned (the player "takes" their props with them.)
 
 Privacy: Entities may reveal very little state to the network. Are there cases where different players may be given different permissions?  
 
@@ -99,7 +99,7 @@ Example: Team Melee
 ### F. Inter-entity Isolation
 
 Script-level guarantees that information about other entities is either restricted or absent entirely.  
-May require a custom scripting language to fully achieve these guarantees.
+It may require a custom scripting language to achieve these guarantees fully.
 
 ### G. Abstraction
 
@@ -111,26 +111,26 @@ Questions: how does this work with PhysicalBone; how are physics objects linked 
 
 ### Spawn Type (i). Map builtins
 
-Maps will have entities which might not be spawnable, but will be automatically created and referenced within the parent scene.  
+Maps will have entities that might not be spawnable but will be automatically created and referenced within the parent scene.  
 For example, a button/door; or a state "god object"; or physics objects; built-in TV screens.
 
 ### Spawn Type (ii). Map spawns
 
-Maps will provide a directory of map-spawnable scene references which can be instantiated in response to events.  
+Maps will provide a directory of map-spawnable scene references, which can be instantiated in response to events.  
 These will usually have specific functions within a particular map.  
 Examples: Game-specific weapons; Keys; Buildings constructed
 
 ### Spawn Type (iii). Avatar spawns
 
-Playwers may also provide a directory of avatar-spawnable scenes; Additionally a prop database may exist or be negotiated.  
-These may include local UIs; weapons; pencils; media players; pets (parrots, mounts); vehicles; flight mechanics (wings?); visual effects.
+Players may also provide a directory of avatar-spawnable scenes; Additionally, a prop database may exist or be negotiated.  
+These may include local UIs; weapons, pencils; media players; pets (parrots, mounts); vehicles; flight mechanics (wings?); visual effects.
 
 ### Notes about Entity parenting:
 
-NodePath references (../) out of an entity hierarcy must be disalkowed.
+NodePath references (../) out of an entity hierarchy must be disallowed.
 Parenting should be implemented carefully: If nodes are literally parented to another entity (e.g. vehicles), NodePath references could expose implementation details from one entity to another entity.
 
-Part of a solution to this is to provide Attachment points as a feature of an Entity, but this needs to be implemented carefully to prevent unusual situations, for example: parent entity/node is destroyed (`queue_free()`) or removed from the scene tree (`remove_child()`); or animation paths referencing a node of the child entity.
+Part of a solution to this is to provide Attachment points as a feature of an Entity, but this needs to be implemented carefully to prevent unusual situations, for example, parent entity/node is destroyed (`queue_free()`) or removed from the scene tree (`remove_child()`); or animation paths referencing a node of the child entity.
 
 ## Positive Consequences List <!-- optional -->
 
