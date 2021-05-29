@@ -25,6 +25,16 @@ I would also like to poll information such as CI/CD builds and deployments. We c
 
 - Maintenence costs of having a service fed
 
+# Other proposal: Integration with discord via Webhook
+
+## Positive Consequences
+
+- Lower maintanance burden
+
+## Negative Consequences
+
+- No access to commands or statuses. Only capable of posting messages.
+
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
 Yes, it is possible to script querying the itch.io or uro shards API. The goal of this proposal is to make this information more accessible to whose who would not script it.
@@ -33,6 +43,24 @@ Yes, it is possible to script querying the itch.io or uro shards API. The goal o
 
 We need this to grow the community.
 
-## Links <!-- optional -->
+## Derivative License
 
-- https://discord.com/
+Copyright (c) 2021 V-Sekai contributors.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
