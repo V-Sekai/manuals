@@ -562,8 +562,8 @@ Go to **Admin -> Config Repositories**
 - **Material Type:** Git
 - **URL:** git@gitlab.com:godot-groups/groups-gocd-pipelines
 - **Branch:** master
-- **GoCD pipeline files pattern:** *.gopipeline.json
-- **GoCD environment files pattern:** *.goenvironment.json
+- **GoCD pipeline files pattern:** \*.gopipeline.json
+- **GoCD environment files pattern:** \*.goenvironment.json
   
 **Rules**
 
