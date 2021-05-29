@@ -17,6 +17,9 @@ To be determined.
 ## Positive Consequences <!-- optional -->
 
 - More secure
+- Can connect from multiple endpoints
+- Can connect to multiple clusters
+- Force two factor
 
 ## Negative Consequences <!-- optional -->
 
