@@ -18,6 +18,7 @@ Add authorized keys into ~/.ssh/authorized_keys
 
 OPTIONAL: customize SSH port:
 Set `Port 2345` in /etc/ssh/sshd_config.
+
 ```bash
 sudo semanage port -a -t ssh_port_t -p tcp 2345
 sudo firewall-cmd --add-port=2345/tcp
@@ -41,7 +42,7 @@ ignore-auto-dns=true
 
 #### /etc/resolv.conf
 
-```
+```bash
 search localhost
 nameserver 1.0.0.1
 nameserver 1.1.1.1
@@ -59,6 +60,7 @@ sudo rpm -i https://github.com/rancher/k3s-selinux/releases/download/v0.1.1-rc1/
 sudo service NetworkManager stop; sudo service NetworkManager start
 sudo grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0"
 ```
+
 Now, reboot the system.
 
 First, create a new LVM Logical Volume named kubepvc XFS 100GB mounted at `/kube`.
@@ -71,9 +73,11 @@ Add the following to /etc/fstab:
 # UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee /kube   auto  defaults   0 0
 /kube/rancher /var/lib/rancher    none bind 0 0`
 ```
+
 #### kube partition
 
 Now, setup the partition:
+
 ```bash
 sudo mkdir -p /kube
 sudo mount /kube
@@ -112,6 +116,7 @@ allow container_t container_runtime_tmpfs_t:lnk_file { getattr relabelto unlink 
 ```
 
 Now, install it with:
+
 ```bash
 checkmodule -M -m dev-shm.te -o dev-shm.mod
 semodule_package -m dev-shm.mod -o dev-shm.pp
@@ -270,7 +275,9 @@ spec:
           serviceName: gocd-server
           servicePort: 8153
 ```
+
 Then:
+
 ```bash
 sudo kubectl apply -f ingress.yaml
 ```
@@ -323,6 +330,7 @@ cp -p /lib64/libstdc++.so.6 /opt/osxcross/target/bin/
 ```
 
 On SELinux systems, you may need to give containers read permissions:
+
 ```bash
 sudo chcon -R unconfined_u:object_r:container_share_t:s0  /opt/osxcross
 ```
@@ -377,7 +385,7 @@ sudo helm install -f gocd_values.yaml gocd gocd/gocd --version 1.37.0
 
 #### Upgrade process (**make sure to `sudo kubectl delete ingress gocd-server` after every upgrade**):
 
-```
+```bash
 # Disable and Delete all agents in the AGENTS tab of gocd.
 Edit gocd_values.yaml and set agent version to latest (e.g. v21.2.0-groups-0.5.8)
 sudo helm upgrade -f gocd_values.yaml gocd gocd/gocd --version 1.37.0
@@ -523,6 +531,7 @@ Make sure to enable the Agents when they come up on the GoCD Dashboard. Add ever
 For GitLab, go to https://ci.v-sekai.cloud/go/admin/security/auth_configs and select `Create new authorization configuration` -> `gitlab-auth-config` / `GitLab Authentication plugin` / follow documentation here: https://github.com/gocd-contrib/gitlab-oauth-authorization-plugin/blob/master/INSTALL.md - **Do not check Allow only known users to login yet**. If this works, you can skip the text auth step and corresponding passwd commands.
 
 Create Guest login:
+
 1. Go to auth_configs, `Create new authorization configuration` -> `guest-login` / `Guest Login Plugin` / Fill out Go server URL / Username `view` / Display name `Guest`.
 2. Now, go to Roles Management. Create role `guest`. Add Deny for all types and Resources `*` as desired.
 3. In an Incognito window, visit the CI system and login as Guest. Close the incognito window.
@@ -657,7 +666,7 @@ sudo dnf system-upgrade download --releasever=34
 
 Answer `y` to all prompts confirming list of packages and new GPG keys, if any. Once successful, it displays:
 
-```
+```bash
 Download complete! Use 'dnf system-upgrade reboot' to start the upgrade.
 To remove cached metadata and transaction use 'dnf system-upgrade clean'
 The downloaded packages were saved in cache until the next successful transaction.
