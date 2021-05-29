@@ -27,8 +27,6 @@ Evaluate the complexity.
 
 - Another layer of complexity
 
-(this section can be repeated for each option, if more than one option is open for consideration
-
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
 Kubernetes is a massive project.
