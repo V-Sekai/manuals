@@ -127,6 +127,7 @@ curl -sfL https://raw.githubusercontent.com/rancher/k3s/master/install.sh | sh -
 Now you will need to obtain the DNS IAM credentials. In this example, we are working with these Route53 hosted domains: vsekai.org,vsekai.net,vsekai.com,vsekai.cloud,v-sekai.org,v-sekai.net,v-sekai.com,v-sekai.cloud,vsek.ai,v-sek.ai
 
 Install Helm services:
+
 ```bash
 ACCESSKEY=AKIAABCDEFGHIJKLMNOP
 SECRETKEY=XXXXXXXXXXXXXXXXXXXX
@@ -137,8 +138,8 @@ sudo helm repo add bitnami https://charts.bitnami.com/bitnami
 sudo helm repo add jetstack https://charts.jetstack.io
 sudo helm repo update
 
-
 # We are still using 3.2.3 - I have not figured out the upgrade process yet for external-dns
+
 sudo helm install external-dns --set provider=aws --set aws.zoneType=public --set registry=noop --set aws.credentials.accessKey="$ACCESSKEY" --set domainFilters='{vsekai.org,vsekai.net,vsekai.com,vsekai.cloud,v-sekai.org,v-sekai.net,v-sekai.com,v-sekai.cloud,vsek.ai,v-sek.ai}' --set aws.credentials.secretKey="$SECRETKEY"  bitnami/external-dns
 
 sudo kubectl create namespace ingress-nginx
@@ -150,12 +151,10 @@ sudo kubectl get replicasets -n kube-system
 # Find the oldest nginx-nginx-ingress-controller one and delete with
 sudo kubectl delete replicasets -nginx-ingress-controller-abcdefg-whatever -n kube-system
 
-
 sudo kubectl create namespace cert-manager
 # Used --version v0.15.1 before; now v1.3.1
 sudo helm install cert-manager jetstack/cert-manager --namespace cert-manager --version v1.3.1 --set installCRDs=true
 sudo kubectl --namespace cert-manager create secret generic prod-route53-credentials-secret --from-literal=secret-access-key="$SECRETKEY"
-
 ```
 
 #### ingress.yaml (edit accessKeyID)
