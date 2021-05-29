@@ -23,6 +23,7 @@ The workflow is for each item start from the top and go down.
 ## Positive Consequences <!-- optional -->
 
 - Works for both Intel and AMD
+- Works on Windows 10 and Linux
 
 ## Negative Consequences <!-- optional -->
 
