@@ -19,7 +19,7 @@ chmod +x UnityHub.AppImage
 ./UnityHub.AppImage unityhub://2018.4.20f1/008688490035
 ```
 
-Install UniVRM form https://github.com/vrm-c/UniVRM/releases.
+Install UniVRM from https://github.com/vrm-c/UniVRM/releases.
 
 Install https://github.com/esperecyan/VRMConverterForVRChat/issues.
 
