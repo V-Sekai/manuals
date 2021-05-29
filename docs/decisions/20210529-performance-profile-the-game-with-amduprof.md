@@ -50,3 +50,4 @@ Not in code. This is documenting a technique.
 
 - https://superluminal.eu/
 - https://developer.amd.com/amd-uprof
+- http://www.brendangregg.com/flamegraphs.html
