@@ -25,6 +25,7 @@ Install https://github.com/esperecyan/VRMConverterForVRChat/issues.
 
 Install https://vrchat.com/home/download VRCHAT SDK3 for Avatar and Worlds.
 
+Log in VRChat for upload. (There is a randomized waiting period.)
 
 ## Positive Consequences <!-- optional -->
 
