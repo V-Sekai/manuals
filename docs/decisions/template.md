@@ -26,7 +26,7 @@
 
 [this section can be repeated for each option, if more than one option is open for consideration]
 
-## Option graveyard: same as above
+## Option graveyard: <!-- same as above -->
 
 * Option: 
 <!-- [List the proposed options no longer open for consideration.] -->
