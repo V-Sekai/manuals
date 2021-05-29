@@ -569,6 +569,7 @@ sudo kubectl apply -f https://raw.githubusercontent.com/fluxcd/helm-operator/mas
 sudo kubectl create namespace flux
 sudo kubectl identity --k8s-fwd-ns flux
 ```
+
 Fork the flux-config repository from here https://github.com/V-Sekai/flux-config into your own github account, and set GHUSER=your github account.
 
 Now, in your fork of flux-config, go to project Settings -> Deploy Keys and add the result of the above identity command. Make sure to check **Allow write access**.
@@ -589,6 +590,7 @@ FOR DEBUGGING ONLY: `sudo setenforce permissive` - this appears to have no effec
 ### Setting up cockroachdb:
 
 #### cockroachdb.values.yaml
+
 ```yaml
 statefulset:
   resources:
@@ -602,6 +604,7 @@ conf:
 tls:
   enabled: true
 ```
+
 #### CockroachDB install
 
 ```bash
@@ -631,6 +634,7 @@ sudo kubectl exec -it cockroachdb-client-secure -- ./cockroach dump --certs-dir=
 ```
 
 Apply secrets:
+
 ```bash
 (On dev machine) MIX_ENV=prod mix phx.gen.secret
 # Copy the output of above, and copy the database password from above:
@@ -644,6 +648,7 @@ sudo kubectl apply -f https://raw.githubusercontent.com/V-Sekai/uro/master/kuber
 #### Upgrading fedora
 
 Start the upgrade process with:
+
 ```bash
 sudo dnf upgrade --refresh
 sudo dnf install dnf-plugin-system-upgrade
@@ -651,6 +656,7 @@ sudo dnf system-upgrade download --releasever=34
 ```
 
 Answer `y` to all prompts confirming list of packages and new GPG keys, if any. Once successful, it displays:
+
 ```
 Download complete! Use 'dnf system-upgrade reboot' to start the upgrade.
 To remove cached metadata and transaction use 'dnf system-upgrade clean'
@@ -678,30 +684,38 @@ sudo helm upgrade cert-manager jetstack/cert-manager --namespace cert-manager --
 ```
 
 #### Upgrading k3s
+
 ```bash
 curl -sfL https://raw.githubusercontent.com/rancher/k3s/master/install.sh | sh -s - server -o /root/.kube/config --default-local-storage-path /kube/pvc --no-deploy=servicelb --disable=traefik --disable=servicelb
 ```
 
 #### Upgrading cockroachdb
+
 Run the shell:
+
 ```bash
 sudo kubectl exec -it cockroachdb-client-secure -- ./cockroach sql --certs-dir=/cockroach-certs --host=cockroachdb-public
 ```
+
 At the top of the shell prompt, it will say something like this. Copy the first two numbers from the CockroachDB CCL line. In this case, `20.2`
 
-    #
-    # Welcome to the CockroachDB SQL shell.
-    # All statements must be terminated by a semicolon.
-    # To exit, type: \q.
-    #
-    # Server version: CockroachDB CCL v20.2.2 (x86_64-unknown-linux-gnu
+```bash
+#
+# Welcome to the CockroachDB SQL shell.
+# All statements must be terminated by a semicolon.
+# To exit, type: \q.
+#
+# Server version: CockroachDB CCL v20.2.2 (x86_64-unknown-linux-gnu
+```
 
 Replace `some.version` in the following command with the value we found above:
+
 ```sql
 SET CLUSTER SETTING cluster.preserve_downgrade_option = 'some.version';
 ```
 
 Finally, perform the upgrade:
+
 ```bash
 sudo kubectl delete job cockroachdb-init
 sudo helm upgrade cockroachdb cockroachdb/cockroachdb --values cockroachdb.values.yaml
