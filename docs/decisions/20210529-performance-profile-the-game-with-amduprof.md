@@ -30,8 +30,6 @@ The workflow is for each item start from the top and go down.
 - Less usable than superluminal
 - Slower than superluminal
 
-[this section can be repeated for each option, if more than one option is open for consideration]
-
 ## Option graveyard: same as above
 
 * Option: superluminal
