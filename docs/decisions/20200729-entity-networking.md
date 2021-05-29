@@ -149,7 +149,7 @@ Part of a solution to this is to provide Attachment points as a feature of an En
 
 Yes, this is the foundation of the protocol and the basic set of nodes and behavior upon which content will be created.
 
-## Links <!-- optional -->
+## References <!-- optional -->
 
 Aldridge, David. "I Shot You First: networking the Gameplay of Halo: Reach". GDC 2011. https://www.youtube.com/watch?v=h47zZrqjgLc
 
@@ -160,3 +160,25 @@ Fiedler, Glenn. "Networked Physics in Virtual Reality". 2018-02-22. https://www.
 Rouwe, Jorrit. "Killzone Shadow Fall: Threading the Entity Update on PS4". GDCEU 2014. https://archive.org/details/GDCEU2014Rouwe
 
 Saracen, text and voice discussions on Discord: search Discord for "entity networking" and "networking model"
+
+## Derivative License
+
+Copyright (c) 2020-2021 V-Sekai contributors.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
