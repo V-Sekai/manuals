@@ -1,9 +1,4 @@
 # Support more flexible texture import via Basis Universal in Godot Engine
-
-- Status: draft
-- Deciders: fire
-- Tags: godotengine,gltf
-
 ## Context and Problem Statement
 
 Support more flexible texture import via Basis Universal in Godot Engine. Adding Basis Universal allows more flexibility in the import.

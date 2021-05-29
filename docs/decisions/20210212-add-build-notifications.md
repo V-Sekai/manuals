@@ -1,10 +1,4 @@
 # Add build notifications
-
-- Status: proposed
-- Deciders: lyuma, fire
-- Date: 2021-02-12
-- Tags: gocd,build-system
-
 ## Context and Problem Statement
 
 Add build notifications because we do not know when a build completed in the CI system to test it.
