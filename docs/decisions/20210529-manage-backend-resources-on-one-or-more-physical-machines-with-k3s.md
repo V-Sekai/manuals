@@ -27,9 +27,10 @@ REQUIRED: set `PasswordAuthentication no` in /etc/ssh/sshd_config.
 
 OPTIONAL: Configure default DNS server:
 
-/etc/NetworkManager/conf.d/override-dns.conf
----------------
-```
+
+#### /etc/NetworkManager/conf.d/override-dns.conf
+
+```ini
 [main]
 dns=none
 [ipv4]
@@ -37,15 +38,16 @@ method=auto
 dns=8.8.8.8;4.2.2.2;
 ignore-auto-dns=true
 ```
----------------
-/etc/resolv.conf
----------------
+
+#### /etc/resolv.conf
+
 ```
 search localhost
 nameserver 1.0.0.1
 nameserver 1.1.1.1
 ```
----------------
+
+#### sshd restart
 
 ```bash
 sudo service sshd restart
@@ -61,13 +63,15 @@ Now, reboot the system.
 
 First, create a new LVM Logical Volume named kubepvc XFS 100GB mounted at `/kube`.
 Add the following to /etc/fstab:
---------------
+
+#### rancher
+
 ```
 # If created manually, run `sudo blkid` and add:
 # UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee /kube   auto  defaults   0 0
 /kube/rancher /var/lib/rancher    none bind 0 0`
 ```
---------------
+#### kube partition
 
 Now, setup the partition:
 ```bash
@@ -82,8 +86,8 @@ sudo mount /var/lib/rancher
 
 If your system uses SELinux, add the following SELinux module to allow dev-shm access. This will be necessary for python multiprocessing in containers, specifically usage of shm_lock, which is used by Emscripten.
 
-dev-shm.te
----------------
+#### dev-shm.te
+
 ```
 module dev-shm 1.0;
 
@@ -154,8 +158,8 @@ sudo kubectl --namespace cert-manager create secret generic prod-route53-credent
 
 ```
 
-ingress.yaml (edit accessKeyID)
------------------------------
+#### ingress.yaml (edit accessKeyID)
+
 ```yaml
 apiVersion: cert-manager.io/v1alpha2
 kind: ClusterIssuer
@@ -274,8 +278,8 @@ sudo kubectl apply -f ingress.yaml
 
 ### Setting up metallb:
 
-metalconfig.yaml
-----------------
+#### metalconfig.yaml
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -326,8 +330,8 @@ sudo chcon -R unconfined_u:object_r:container_share_t:s0  /opt/osxcross
 
 ### Setting up gocd:
 
-gocd_values.yaml
-------------------
+#### gocd_values.yaml
+
 ```yaml
 agent:
   image:
@@ -353,7 +357,8 @@ server:
       - name: GOCD_PLUGIN_INSTALL_gitlab-oauth-authorization-plugin
         value: https://github.com/gocd-contrib/gitlab-oauth-authorization-plugin/releases/download/v2.0.1-52-exp/gitlab-oauth-authorization-plugin-2.0.1-52.jar
 ```
---------------------
+
+##### Keygen
 
 ```bash
 ssh-keygen -t rsa -b 4096 -C "gocd-ssh-key" -f gocd-ssh -P ''
@@ -371,7 +376,8 @@ sudo helm install -f gocd_values.yaml gocd gocd/gocd --version 1.37.0
 # Make sure to enable the agents in the web UI, and assign them to Resources and Environments.
 ```
 
-Upgrade process (**make sure to `sudo kubectl delete ingress gocd-server` after every upgrade**):
+#### Upgrade process (**make sure to `sudo kubectl delete ingress gocd-server` after every upgrade**):
+
 ```
 # Disable and Delete all agents in the AGENTS tab of gocd.
 Edit gocd_values.yaml and set agent version to latest (e.g. v21.2.0-groups-0.5.8)
@@ -383,11 +389,15 @@ sudo kubectl patch deployments/gocd-agent-dind --patch '{"spec":{"template":{"sp
 # Delete the old Agents on the web interface. Wait for the new agents to come up, and enable them and assign them as appropriate.
 ```
 
+#### DockerHub
+
 Create DockerHub permissions: Create an account if you do not have one. Visit https://hub.docker.com/settings/security and create an Access Token. Copy the token.
 
 ```bash
 sudo  kubectl create secret docker-registry regcred --docker-server=https://index.docker.io/v1/ --docker-username=dockerhubuser --docker-password=XXXX --docker-email=your.dockerhub.email@example.com
 ```
+
+#### OSXCROSS
 
 For osxcross (OSX cross compiling), make sure the OSX compiler SDK *you created on mac* os located at /opt/osxcross.
 
@@ -395,8 +405,8 @@ If you do not have osxcross (no access to Apple hardware), then you must create 
 
 Now create Docker-in-Docker, and apply this file with `kubectl create -f dind.yaml` or `kubectl apply -f dind.yaml`
 
-dind.yaml
----------
+#### dind.yaml
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -475,12 +485,13 @@ spec:
           path: /opt/osxcross
           type: Directory
 ```
---------
+
+### OSXCROSS GOCD Agents
 
 To add osxcross support to the main agents, create the following patch:
 
 gocd-agent-patch.yaml
----------------------
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -501,7 +512,6 @@ spec:
           path: /opt/osxcross
           type: Directory
 ```
-------------
 
 and apply with:
 ```bash
@@ -579,8 +589,7 @@ FOR DEBUGGING ONLY: `sudo setenforce permissive` - this appears to have no effec
 
 ### Setting up cockroachdb:
 
-cockroachdb.values.yaml
------------------------
+#### cockroachdb.values.yaml
 ```yaml
 statefulset:
   resources:
@@ -594,7 +603,8 @@ conf:
 tls:
   enabled: true
 ```
------------------------
+#### CockroachDB install
+
 ```bash
 sudo helm install cockroachdb --values cockroachdb.values.yaml cockroachdb/cockroachdb
 sudo kubectl certificate approve default.node.cockroachdb-0
@@ -606,13 +616,17 @@ curl -o client-secure.yaml https://raw.githubusercontent.com/cockroachdb/cockroa
 sudo kubectl apply -f client-secure.yaml
 sudo kubectl exec -it cockroachdb-client-secure -- ./cockroach sql --certs-dir=/cockroach-certs --host=cockroachdb-public
 ```
+
 In SQL, write:
+
 ```sql
 CREATE DATABASE uro_prod;
 CREATE USER 'uro-prod' WITH PASSWORD 'blablablablaSOMEDATABASEPASSWORD';
 GRANT ALL ON DATABASE uro_prod to "uro-prod";
 ```
+
 To make backups:
+
 ```bash
 sudo kubectl exec -it cockroachdb-client-secure -- ./cockroach dump --certs-dir=/cockroach-certs --host=cockroachdb-public uro_prod > uro_prod_backup.txt
 ```
