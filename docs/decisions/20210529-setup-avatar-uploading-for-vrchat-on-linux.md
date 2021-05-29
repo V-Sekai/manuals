@@ -29,6 +29,8 @@ Install https://vrchat.com/home/download VRCHAT SDK3 for Avatar and Worlds.
 
 Log in VRChat for upload. (There is a randomized waiting period.)
 
+Restart Unity.
+
 ## Positive Consequences <!-- optional -->
 
 - Improve interoperatibility
