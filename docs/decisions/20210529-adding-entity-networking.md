@@ -1,4 +1,4 @@
-# Adding Entity Networking
+# Adding Entity Networking to Groups
 
 ## Context and Problem Statement
 
