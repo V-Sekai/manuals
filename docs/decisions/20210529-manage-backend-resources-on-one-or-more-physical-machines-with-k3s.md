@@ -555,7 +555,8 @@ Now go to file-auth-config, edit configuration, enable Allow only known users to
 
 ### gocd config repositories:
 
-Go to *ADMIN -> Config Repositories*
+Go to **Admin -> Config Repositories**
+
 - **Config repository Name:** groups-gocd-pipelines
 - **Plugin ID:** JSON Configuration Plugin
 - **Material Type:** Git
@@ -563,7 +564,9 @@ Go to *ADMIN -> Config Repositories*
 - **Branch:** master
 - **GoCD pipeline files pattern:** *.gopipeline.json
 - **GoCD environment files pattern:** *.goenvironment.json
-RULES
+  
+**Rules**
+
 - **Allow:** Pipeline Group: beta
 - **Allow:** Environment: development
 
