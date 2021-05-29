@@ -16,7 +16,7 @@ AMDuProf shows the slower functions and there's also a callgraph and flamegraph 
 
 A callgraph is similar to a stacktrace.
 
-A flamegraph is a way of visualizing performance.
+A flamegraph is a way of visualizing performance. The first link is an ACM article describing the design.
 
 The workflow is for each item start from the top and go down.
 
@@ -48,6 +48,7 @@ Not in code. This is documenting a technique.
 
 ## Links <!-- optional -->
 
+- https://queue.acm.org/detail.cfm?id=2927301
 - https://superluminal.eu/
 - https://developer.amd.com/amd-uprof
 - http://www.brendangregg.com/flamegraphs.html
