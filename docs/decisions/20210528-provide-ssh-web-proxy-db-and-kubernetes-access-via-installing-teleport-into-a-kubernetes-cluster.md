@@ -12,33 +12,34 @@ Teleport provides access, security and avaliability.
 
 [Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams]
 
+To be determined.
+
 ## Positive Consequences <!-- optional -->
 
-- [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
-- […]
+- More secure
 
 ## Negative Consequences <!-- optional -->
 
-- [e.g., compromising quality attribute, follow-up decisions required, …]
-- […]
-
-[this section can be repeated for each option, if more than one option is open for consideration]
+- Single system to fail
 
 ## Option graveyard: same as above
 
-[List the proposed options no longer open for consideration.]
+**Direct ssh**
 
-[List the reasons for the rejection: (the Bad traits)]
+This is rejected because it is not a cluster solution.
+
+**Kubernetes auth**
+
+This is a kubernetes specific system.
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
-[If this enhancement will not be used often, can it be worked around with a few lines of script?]
+Kubenetes is massive and then we have a security system combined. This is not a few lines of code.
 
 ## Is there a reason why this should be core and done by us?
 
-[Is there a reason why this should be core and done by us?]
+We can outsource the code but the use of this is still ours.
 
 ## Links <!-- optional -->
 
-- [Link type](link to adr) <!-- example: Refined by [xxx](yyyymmdd-xxx.md) -->
-- … <!-- numbers of links can vary -->
+- https://github.com/gravitational/teleport
