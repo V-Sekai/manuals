@@ -1,4 +1,4 @@
-# Provide SSH, Web Proxy, DB and Kubernetes access via installing Pritunl Zero
+# Provide SSH, Web Proxy, DB and Kubernetes access via installing Teleport
 
 - Status: rejected
 
