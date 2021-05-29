@@ -1,4 +1,4 @@
-# Trial install of Gravity for Kubernetes
+# Trial install of Teleport for Kubernetes
 
 ## Context and Problem Statement
 
@@ -8,7 +8,7 @@ It is difficult to use Kubernetes because of at least these reasons. Networking 
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-Gravity claims to be a easy to prepare system for preinstalled and airgapped Kubernetes systems.
+Teleport claims to be a easy to prepare system for preinstalled and airgapped Kubernetes systems.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
