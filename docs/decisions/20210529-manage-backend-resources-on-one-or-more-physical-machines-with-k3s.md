@@ -1,17 +1,14 @@
-# VSEK-019 K3S Setup and Installation Instructions
+# Manage backend resources on one or more physical machines with K3S
 
-**Describe the project you are working on:**
-Backend
+## Context and Problem Statement
 
-**Describe the problem or limitation you are having in your project:**
 We want a way to manage backend resources on one or more physical machines.
 
-**Describe how this feature / enhancement will help you overcome this problem or limitation:**
+## Describe the proposed option and how it helps to overcome the problem or limitation
+
 We are using a lightweight Kubernetes implementation, k3s, to provide management of backend resources
 
-**Show a mock up screenshots/video or a flow diagram explaining how your proposal will work:**
-
-**Describe implementation detail for your proposal (in code), if possible:**
+## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
 System Setup (Done once)
 ========================
@@ -707,33 +704,28 @@ sudo kubectl delete pods/cockroachdb-client-secure
 sudo kubectl create -f client-secure.yaml
 ```
 
+## Positive Consequences <!-- optional -->
 
-**If this enhancement will not be used often, can it be worked around with a few lines of script?:**
+- Knowledge gains about service creation
+- Operation experience
+
+## Negative Consequences <!-- optional -->
+
+- Constant maintenance
+
+## Option graveyard: <!-- same as above -->
+
+* Option: Dedicated Servers
+* Option: Virtual Machines
+
+## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
 Yes, it is possible to deploy this system using docker or in the root system.
 
-**Is there a reason why this should be core and not an add-on in the asset library?:**
+## Is there a reason why this should be core and done by us?
 
 Having experience with kubernetes and maintaining discipline will make scaling or service upgrades smoother in the future.
 
-## Derivative License
+## Links <!-- optional -->
 
-Copyright (c) 2020-2021 V-Sekai and Godot Engine contributors.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+- https://k3s.io/
