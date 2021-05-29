@@ -9,15 +9,3 @@ Public proposal and issue tracker repository for V-Sekai
 # npm install -g log4brains
 log4brains adr new
 ```
-
-## Proposal Workflow
-
-Proposals are committed files: then there is no issue or PR, and the discussion thread, if any, exists on the Discussions tab.
-
-**DO NOT WANT EPHEMERAL PRs** in an limbo state which is not on master branch, for an undefined times.
-
-**We do not want discussions to occur only while the proposal is in the PR state and the discussion is forgotten when it gets "merged" to master**
-
-Merge all open PRs.
-
-For each proposal, create a discussion thread. Then, at the bottom or the top of the proposal, link to the discussion
