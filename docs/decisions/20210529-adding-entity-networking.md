@@ -134,12 +134,14 @@ Part of a solution to this is to provide Attachment points as a feature of an En
 
 ## Positive Consequences List <!-- optional -->
 
+* Possibility of:
+  * vehicle games
+  * bow and arrow games
+  * pickup of balls
+
 ## Negative Consequences List <!-- optional -->
   
-## Option Graveyard List <!-- optional -->
-
-* Option: 
-* Rejection Reason: 
+* Complexity
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
