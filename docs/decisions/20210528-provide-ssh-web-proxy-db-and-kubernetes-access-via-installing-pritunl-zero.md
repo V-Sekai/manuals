@@ -1,4 +1,7 @@
 # Provide SSH, Web Proxy, DB and Kubernetes access via installing Pritunl Zero
+
+- Status: rejected
+
 ## Context and Problem Statement
 
 Provide SSH, Web Proxy, DB and Kubernetes access team-wide with security and with high avaliability.
@@ -9,34 +12,7 @@ Provide SSH, Web Proxy, DB and Kubernetes access team-wide with security and wit
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-[Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams]
-
-To be determined.
-
-## Positive Consequences <!-- optional -->
-
-- More secure
-- Can connect from multiple endpoints
-- Can connect to multiple clusters
-- Force two factor
-
-## Negative Consequences <!-- optional -->
-
-- Single system to fail
-
-## Option graveyard: same as above
-
-**Direct ssh**
-
-This is rejected because it is not a cluster solution.
-
-**Kubernetes auth**
-
-This is a kubernetes specific system.
-
-**Teleport**
-
-Complex install and per node-user scaling pricing.
+NOT OPEN SOURCE.
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
