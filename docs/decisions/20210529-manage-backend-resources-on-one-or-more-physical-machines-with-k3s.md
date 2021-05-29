@@ -10,8 +10,8 @@ We are using a lightweight Kubernetes implementation, k3s, to provide management
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-System Setup (Done once)
-========================
+### System Setup (Done once)
+
 Install Fedora 34 with a user account set as administrator.
 
 Add authorized keys into ~/.ssh/authorized_keys
@@ -78,8 +78,7 @@ sudo chcon -R -t container_file_t /kube/pvc
 sudo mount /var/lib/rancher
 ```
 
-SELinux patches
-===============
+### SELinux patches
 
 If your system uses SELinux, add the following SELinux module to allow dev-shm access. This will be necessary for python multiprocessing in containers, specifically usage of shm_lock, which is used by Emscripten.
 
@@ -115,8 +114,8 @@ semodule_package -m dev-shm.mod -o dev-shm.pp
 sudo semodule -i dev-shm.pp
 ```
 
-Install k3s (Start here if recreating)
-======================================
+### Install k3s (Start here if recreating)
+
 ```bash
 curl -sfL https://raw.githubusercontent.com/rancher/k3s/master/install.sh | sh -s - server -o /root/.kube/config --default-local-storage-path /kube/pvc --no-deploy=servicelb --disable=traefik --disable=servicelb
 ```
@@ -273,8 +272,7 @@ Then:
 sudo kubectl apply -f ingress.yaml
 ```
 
-Setting up metallb:
-===================
+### Setting up metallb:
 
 metalconfig.yaml
 ----------------
@@ -300,8 +298,8 @@ sudo kubectl apply -f metalconfig.yml
 sudo kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/metallb.yaml
 ```
 
-Setting up osxcross
-===================
+### Setting up osxcross
+
 (Optional in theory, but you have to remove enabled platforms in gocd):
 
 Start by grabbing a legitmate copy of `MacOSX10.15.sdk.tar.xz` from your local MacBook or Mac Mini.
@@ -326,8 +324,7 @@ On SELinux systems, you may need to give containers read permissions:
 sudo chcon -R unconfined_u:object_r:container_share_t:s0  /opt/osxcross
 ```
 
-Setting up gocd:
-================
+### Setting up gocd:
 
 gocd_values.yaml
 ------------------
@@ -538,8 +535,8 @@ Now go to users page, edit your user and enable `Global Admin`.
 
 Now go to file-auth-config, edit configuration, enable Allow only known users to login
 
-gocd config repositories:
-=========================
+### gocd config repositories:
+
 Go to *ADMIN -> Config Repositories*
 - **Config repository Name:** groups-gocd-pipelines
 - **Plugin ID:** JSON Configuration Plugin
@@ -552,8 +549,8 @@ RULES
 - **Allow:** Pipeline Group: beta
 - **Allow:** Environment: development
 
-Setup of flux GitOps:
-=====================
+### Setup of flux GitOps:
+
 ```bash
 wget https://github.com/fluxcd/flux/releases/download/1.20.2/fluxctl_linux_amd64
 sudo cp fluxctl_linux_amd64 /usr/local/bin/fluxctl
@@ -580,8 +577,7 @@ sudo fluxctl list-workloads --k8s-fwd-ns flux
 
 FOR DEBUGGING ONLY: `sudo setenforce permissive` - this appears to have no effect, so there is a different problem.
 
-Setting up cockroachdb:
-=======================
+### Setting up cockroachdb:
 
 cockroachdb.values.yaml
 -----------------------
@@ -630,10 +626,9 @@ sudo kubectl create secret generic uro-prod --from-literal=secret-key-base='GENE
 sudo kubectl apply -f https://raw.githubusercontent.com/V-Sekai/uro/master/kubernetes.yaml
 ```
 
-# Keeping the system and cluster up-to-date
+### Keeping the system and cluster up-to-date
 
-Upgrading fedora
-================
+#### Upgrading fedora
 
 Start the upgrade process with:
 ```bash
@@ -658,8 +653,8 @@ sudo dnf system-upgrade reboot
 
 This will bring the system down for about an hour.
 
-Upgrading nginx and cert-manager
-=============
+#### Upgrading nginx and cert-manager
+
 ```bash
 sudo helm repo update
 # If the stable/nginx-ingress chart is still installed, make sure to helm uninstall nginx first.
@@ -669,14 +664,12 @@ sudo helm upgrade cert-manager jetstack/cert-manager --namespace cert-manager --
 # sudo helm upgrade external-dns --reuse-values bitnami/external-dns
 ```
 
-Upgrading k3s
-=============
+#### Upgrading k3s
 ```bash
 curl -sfL https://raw.githubusercontent.com/rancher/k3s/master/install.sh | sh -s - server -o /root/.kube/config --default-local-storage-path /kube/pvc --no-deploy=servicelb --disable=traefik --disable=servicelb
 ```
 
-Upgrading cockroachdb
-=====================
+#### Upgrading cockroachdb
 Run the shell:
 ```bash
 sudo kubectl exec -it cockroachdb-client-secure -- ./cockroach sql --certs-dir=/cockroach-certs --host=cockroachdb-public
