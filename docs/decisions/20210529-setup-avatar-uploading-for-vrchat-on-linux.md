@@ -19,17 +19,29 @@ chmod +x UnityHub.AppImage
 ./UnityHub.AppImage unityhub://2018.4.20f1/008688490035
 ```
 
+Q? How to install unity package? 
+
+A? 
+
+1. Go to Assets > Import Packages > Custom Package
+2. Select all the files in the dialog.
+
 Install UniVRM from https://github.com/vrm-c/UniVRM/releases/download/v0.64.0/UniVRM-0.64.0_920c.unitypackage.
 
 VRMConverterForVRChat cares about UniVRM versions.
 
-Install https://github.com/esperecyan/VRMConverterForVRChat/archive/refs/tags/v26.0.0.zip.
+Install https://github.com/esperecyan/VRMConverterForVRChat/archive/refs/tags/v26.0.0.zip into the Assets folder.
+
+Install https://github.com/esperecyan/UniVRMExtensions/archive/refs/tags/v1.6.2.zip into the Assets folder.
 
 Install https://vrchat.com/home/download VRCHAT SDK3 for Avatar and Worlds.
+
 
 Log in VRChat for upload. (There is a randomized waiting period.)
 
 Restart Unity.
+
+Drop the VRM character into the Characters folder inside of Assets.
 
 ## Positive Consequences <!-- optional -->
 
