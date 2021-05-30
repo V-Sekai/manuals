@@ -43,6 +43,10 @@ Restart Unity.
 
 Drop the VRM character into the Characters folder inside of Assets.
 
+Open the VRM character prefab and select the root node and then export as a VRChat Avatar.
+
+Save the avatar to Assets/VRChat Character.
+
 ## Positive Consequences <!-- optional -->
 
 - Improve interoperatibility
