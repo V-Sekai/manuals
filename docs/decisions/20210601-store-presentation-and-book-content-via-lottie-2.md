@@ -2,6 +2,8 @@
 
 ## Context and Problem Statement
 
+![Introduction_00_sm](https://user-images.githubusercontent.com/32321/120358060-f54b7200-c2ba-11eb-9419-e87de6dc3c57.gif)
+
 We want to display book content and presentation content in groups.
 
 If the original content is in vectorized format, we want to keep it.
@@ -26,7 +28,7 @@ rlottie is Groups license compatible.
 
 ### Offline export of lottie
 
-1. Install synfig
+1. Install synfig-studio
 1. In synfig, for each page of pdf, epub, and others export a lottie json per page
 1. Ensure the documents are sorted correctly
 1. Save the folder as zstd compress 7zip archive
@@ -72,6 +74,7 @@ Presentations and books should be a first-class feature in groups.
 
 ## References <!-- optional -->
 
+- https://www.synfig.org/
 - https://github.com/Samsung/rlottie
 - https://github.com/godot-extended-libraries/lottie
 - https://www.adobe.com/products/aftereffects.html
