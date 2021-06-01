@@ -2,7 +2,7 @@
 
 ## Context and Problem Statement
 
-![Introduction_00_sm](https://user-images.githubusercontent.com/32321/120358060-f54b7200-c2ba-11eb-9419-e87de6dc3c57.gif)
+[Safety brochure in Lottie format]
 
 We want to display book content and presentation content in groups.
 
