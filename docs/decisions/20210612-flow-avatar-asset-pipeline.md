@@ -44,7 +44,7 @@
 ## References <!-- optional -->
 
 - https://github.com/infosia/avatar-asset-pipeline
-- https://github.com/apple/foundationdb/tree/master/flow- 
+- https://github.com/apple/foundationdb/tree/master/flow
 
 ## Derivative License
 
