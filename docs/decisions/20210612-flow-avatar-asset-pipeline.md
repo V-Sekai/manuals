@@ -43,8 +43,8 @@
 
 ## References <!-- optional -->
 
-- [Link type](link to adr) <!-- example: Refined by [xxx](yyyymmdd-xxx.md) -->
-- … <!-- numbers of links can vary -->
+- https://github.com/infosia/avatar-asset-pipeline
+- https://github.com/apple/foundationdb/tree/master/flow- 
 
 ## Derivative License
 
