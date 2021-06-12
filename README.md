@@ -11,3 +11,5 @@ Public proposal and issue tracker repository for V-Sekai
 # npm install -g log4brains
 log4brains adr new
 ```
+
+Use `log4brains preview` to launch the site locally.
