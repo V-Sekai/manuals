@@ -2,24 +2,21 @@
 
 ## Context and Problem Statement
 
-[Describe the problem or limitation you are having in your project]
-
-[Describe the context and problem statement, e.g., in free form using two to three sentences. You may want to articulate the problem in the form of a question.]
+How to convert FBX and glTF2 to VRM?
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-[Describe the proposed option and how it helps to overcome the problem or limitation]
+If we can convert FBX and glTF to VRM we have a reliable way of importing things to groups.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-[Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams]
+Convert avatar-asset-pipeline to use the membrane framework.
 
-Convert avatar-asset-pipeline to use flow and named workflows.
+[...]
 
 ## Positive Consequences <!-- optional -->
 
-- [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
-- […]
+- We have a standard way of importing characters.
 
 ## Negative Consequences <!-- optional -->
 
@@ -37,17 +34,17 @@ Convert avatar-asset-pipeline to use flow and named workflows.
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
-[If this enhancement will not be used often, can it be worked around with a few lines of script?]
+Non trivial.
 
 ## Is there a reason why this should be core and done by us?
 
-[Is there a reason why this should be core and done by us?]
+This is a core part of Groups and we depend on it.
 
 ## References <!-- optional -->
 
 - https://github.com/infosia/avatar-asset-pipeline
-- https://github.com/apple/foundationdb/tree/master/flow
 - https://github.com/fire/flow-avatar-asset-pipeline
+- https://membraneframework.org/
 
 ## Derivative License
 
