@@ -14,6 +14,8 @@
 
 [Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams]
 
+Convert avatar-asset-pipeline to use flow and named workflows.
+
 ## Positive Consequences <!-- optional -->
 
 - [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
