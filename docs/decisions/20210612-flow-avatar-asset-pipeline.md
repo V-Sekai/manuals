@@ -47,6 +47,7 @@ Convert avatar-asset-pipeline to use flow and named workflows.
 
 - https://github.com/infosia/avatar-asset-pipeline
 - https://github.com/apple/foundationdb/tree/master/flow
+- https://github.com/fire/flow-avatar-asset-pipeline
 
 ## Derivative License
 
