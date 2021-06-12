@@ -45,6 +45,7 @@ This is a core part of Groups and we depend on it.
 - https://github.com/infosia/avatar-asset-pipeline
 - https://github.com/fire/flow-avatar-asset-pipeline
 - https://membraneframework.org/
+- https://github.com/membraneframework/membrane_dashboard
 
 ## Derivative License
 
