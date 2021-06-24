@@ -5,34 +5,6 @@ We are a community of enthusiasts building a next-generation social and gaming V
 Welcome 👋 to the architecture knowledge base of V-Sekai.
 You will find here all the Architecture Decision Records (ADR) of the project.
 
-## Definition and purpose
-
-> An Architectural Decision (AD) is a software design choice that addresses a functional or non-functional requirement that is architecturally significant.
-> An Architectural Decision Record (ADR) captures a single AD, such as often done when writing personal notes or meeting minutes; the collection of ADRs created and maintained in a project constitutes its decision log.
-
-An ADR is immutable: only its status can change (i.e., become deprecated or superseded). That way, you can become familiar with the whole project history just by reading its decision log in chronological order.
-Moreover, maintaining this documentation aims at:
-
-- 🚀 Improving and speeding up the onboarding of a new team member
-- 🔭 Avoiding blind acceptance/reversal of a past decision (cf [Michael Nygard's famous article on ADRs](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions.html))
-- 🤝 Formalizing the decision process of the team
-
-## Usage
-
-This website is automatically updated after a change on the `master` branch of the project's Git repository.
-In fact, the developers manage this documentation directly with markdown files located next to their code, so it is more convenient for them to keep it up-to-date.
-You can browse the ADRs by using the left menu or the search bar.
-
-The decision process is entirely collaborative and backed by pull requests.
-
-Proposals are committed files: then there is no issue or PR, and the discussion thread, if any, exists on the Discussions tab.
-
-We do not want ephemeral prs in an limbo state which is not on master branch, for an undefined times.
-
-We do not want discussions to occur only while the proposal is in the PR state and the discussion is then forgotten when it gets "merged" to master.
-
-For each proposal, create a discussion thread. Then, at the bottom or the top of the proposal, link to the discussion
-
 ## About V-Sekai
 
 V-Sekai is the first fully-open source social VR platform running on the Godot Engine. It is designed as a living virtual space where you can meet people and interact in a virtual space, while leveraging the fast-growing Godot game engine to let users create any content they want and have it be immediately accessible and shareable to a growing community.
