@@ -44,6 +44,11 @@ Open the VRM character prefab and select the root node and then export as a VRCh
 
 Save the avatar to Assets/VRChat Character.
 
+### Troubleshooting
+
+* VRM doesn't export or import.
+  * The vrm may be badly defined.  
+
 ## Positive Consequences <!-- optional -->
 
 - Improve interoperatibility
