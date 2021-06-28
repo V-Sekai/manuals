@@ -12,7 +12,7 @@ The solution will be to document how to install the associated packages.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-Download Unity Hub.
+Download Unity Hub from https://public-cdn.cloud.unity3d.com/hub/prod/UnityHub.AppImage
 
 ```bash
 chmod +x UnityHub.AppImage
