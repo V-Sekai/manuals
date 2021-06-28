@@ -21,12 +21,7 @@ chmod +x UnityHub.AppImage
 
 Must install Windows mono package and use Windows target platform.
 
-Q? How to install unity package? 
-
-A? 
-
-1. Go to Assets > Import Packages > Custom Package
-2. Select all the files in the dialog.
+To install a Unity Package go to Assets > Import Packages > Custom Package and select all the files in the dialog.
 
 Install UniVRM from https://github.com/vrm-c/UniVRM/releases/download/v0.64.0/UniVRM-0.64.0_920c.unitypackage.
 
