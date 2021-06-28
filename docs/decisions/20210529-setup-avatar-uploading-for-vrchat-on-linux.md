@@ -19,7 +19,7 @@ chmod +x UnityHub.AppImage
 ./UnityHub.AppImage unityhub://2018.4.20f1/008688490035
 ```
 
-Must install Windows mono package.
+Must install Windows mono package and use Windows target platform.
 
 Q? How to install unity package? 
 
