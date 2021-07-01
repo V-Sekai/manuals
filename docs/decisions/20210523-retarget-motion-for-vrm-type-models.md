@@ -12,20 +12,20 @@ Use Blender to retarget t-posed characters.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-- inputs: bvh + t-pose avatar
-- output: glb w/retargetted animation
+- Inputs: bvh + t-pose avatar
+- Output: glb w/retargetted animation
 
 #### Requirements:
 
 - Blender v2.91 or v2.92 (may work with other versions)
 - Blender Add-On: [skeletal-motion-retarget-blender](https://github.com/fire/skeletal-motion-retarget-blender)
-    - download .zip
-    - use Blender Edit => Preferences, Add-ons, Install that zip
-    - check the box for the new install an add-on to activate
+    - Download .zip
+    - Use Blender Edit => Preferences, Add-ons, Install that zip
+    - Check the box for the new install an add-on to activate
 - (optional) if using a VRM avatar Blender Add-On: [saturday06/VRM_Addon_for_Blender](https://github.com/saturday06/VRM_Addon_for_Blender/releases/)
-    - download .zip
-    - use Blender Edit => Preferences, Add-ons, Install that zip
-    - check the box for the newly install an add-on to activate
+    - Download .zip
+    - Use Blender Edit => Preferences, Add-ons, Install that zip
+    - Check the box for the newly install an add-on to activate
 
 ### Conversion Process
 
