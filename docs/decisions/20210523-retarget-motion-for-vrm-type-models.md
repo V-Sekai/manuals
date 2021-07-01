@@ -81,7 +81,7 @@ A: check the armature bone name mappings
 
 List the reasons for the rejection: (the Bad traits)
 
-* Propietary Online Service
+* Proprietary Online Service
 * Blackbox technology
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
