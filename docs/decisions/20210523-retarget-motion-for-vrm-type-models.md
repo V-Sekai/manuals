@@ -29,16 +29,16 @@ Use Blender to retarget t-posed characters.
 
 ### Conversion Process
 
-- have a rigged, T-Pose humanoid avatar
-- start a new scene?
+- Have a rigged, T-Pose humanoid avatar
+- Start a new scene?
     - Under the Scene Settings property panel, set Frame Rate to 30 fps
     - (or you may want to match your .mp4 frame rate used during capture)
-- import your avatar model
+- Import your avatar model
     - if using a VRM avatar, be sure to use Import VRM (otherwise, retargeting may not work!)
-- import the generated BVH. In the Animation section, enable the following options
+- Import the generated BVH. In the Animation section, enable the following options
     - [x] Scale FPS
     - [x] Scene Duration
-- use the Pose Transfer tab (vertical tab part of the "N" options panel?)
+- Use the Pose Transfer tab (vertical tab part of the "N" options panel?)
     - Source: the imported BVH armature
     - Target: the imported avatar armature
     - Click the Rebuild Bone List
@@ -47,7 +47,7 @@ Use Blender to retarget t-posed characters.
         - note: it is possible to save your mapping to .json and reuse
     - Click Retarget Animation
         - retargeting may take several minutes
-- verify retargeting by playing the animation via the Blender play button
+- Verify retargeting by playing the animation via the Blender play button
 - Export the scene as a .glb (using default settings)
 
 ### Common Problems
