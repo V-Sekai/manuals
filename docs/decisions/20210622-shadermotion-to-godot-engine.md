@@ -2,11 +2,11 @@
 
 ## Context and Problem Statement
 
-We want a better way of importing animations to Godot Engine. There no common way to exchange motion from other places to Godot and have them work interchangably on different characters.
+We want a better way of importing animations to Godot Engine. Unfortunately, there is no standard way to exchange motion from other places to Godot and work interchangeably on different characters.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-ShaderMotion files in video format provide a good way to record motion. We want the ability to play it back in Godot Engine onto a VRM character.
+ShaderMotion files in video format provide an excellent way to record motion. However, we want the ability to play it back in Godot Engine onto a VRM character.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
@@ -14,7 +14,7 @@ Install youtube-dl and ffmpeg with scoop
 
 `scoop install youtube-dl ffmpeg`
 
-Convert ShaderMotion videos into webm VP9.
+Convert ShaderMotion videos into WebM VP9.
 
 `youtube-dl https://www.youtube.com/playlist?list=PLmwqDOin_Zt4WCMWqoK6SdHlg0C_WeCP6 --audio-format wav --format webm --recode-video webm`
 
