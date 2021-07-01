@@ -12,7 +12,9 @@ If we can convert FBX and glTF to VRM we have a reliable way of importing things
 
 Convert avatar-asset-pipeline to use the membrane framework.
 
-[...]
+Have the concept of a source glb we run again as many individual solvers for the input data.
+
+Once the input is solved and it passes QA, that is one that is the outputted.
 
 ## Positive Consequences <!-- optional -->
 
