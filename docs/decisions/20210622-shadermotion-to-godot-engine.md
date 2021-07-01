@@ -18,6 +18,15 @@ Convert ShaderMotion videos into webm VP9.
 
 `youtube-dl https://www.youtube.com/playlist?list=PLmwqDOin_Zt4WCMWqoK6SdHlg0C_WeCP6 --audio-format wav --format webm --recode-video webm`
 
+Crop the preview frame of the video for the left and the right side.
+
+```
+ffmpeg -i "NNNN.webm" "-filter:v" "crop=in_w*(1-0.925):ih:0:0,fps=60,scale=24x180:flags=lanczos+full_chroma_inp" shader_motion_character_00.webm
+ffmpeg -i "NNNN.webm" "-filter:v" "crop=in_w*(1-0.925):in_h:in_w:in_h,fps=60,scale=24x180:flags=lanczos+full_chroma_inp" shader_motion_character_0
+```
+
+## How to build Godot video decoder
+
 Build godot-cpp
 
 ```
