@@ -44,6 +44,7 @@ We need to provide trust for the toolchains.
 ## References <!-- optional -->
 
 - [Notary Trust](20210523-complete-gltf2-vrm-import-and-export-pipeline-in-godot-engine.md)
+
 ## Derivative License
 
 Copyright (c) 2020-2021 V-Sekai contributors.
