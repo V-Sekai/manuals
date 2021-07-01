@@ -19,20 +19,18 @@ Once the input is solved and it passes QA, that is one that is the outputted.
 ## Positive Consequences <!-- optional -->
 
 - We have a standard way of importing characters.
+- We already have elixir backend infrastructure.
 
 ## Negative Consequences <!-- optional -->
 
-- [e.g., compromising quality attribute, follow-up decisions required, …]
-- […]
-
-[this section can be repeated for each option if more than one option is open for consideration]
+- Have no humans in the loop can be bad for quality assurance.
 
 ## Option graveyard: <!-- same as above -->
 
 * Option: 
-<!-- [List the proposed options no longer open for consideration.] -->
+- https://github.com/infosia/avatar-asset-pipeline
 * Rejection Reason: 
-<!-- [List the reasons for the rejection: (the Bad traits)] -->
+- Need to integrate with backend.
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
