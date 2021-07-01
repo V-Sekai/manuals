@@ -8,7 +8,7 @@ Provide SSH, Web Proxy, DB and Kubernetes access team-wide with security and wit
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
- Pritunl Zero provides access, security and avaliability.
+Pritunl Zero provides access, security and avaliability.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
