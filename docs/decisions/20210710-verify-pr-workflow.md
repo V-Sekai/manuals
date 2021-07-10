@@ -14,7 +14,7 @@ This workflows describes how fire checks pull requests.
 1. Install scoop
 2. `scoop install visual-studio-code llvm-mingw`
 3. Install python and scons
-4. `git checkout https://github.com/V-Sekai/v-sekai-pr-template`
+4. `git checkout https://github.com/V-Sekai/v-sekai-pr-template --recurse-submodules`
 5. Open repository in Visual Studio Code.
 6. Switch godot engine branch
 7. Press launch in Visual Studio Code
