@@ -14,8 +14,9 @@ This workflows describes how fire checks pull requests.
 3. Install python and scons
 4. `git checkout https://github.com/V-Sekai/v-sekai-pr-template`
 5. Open repository in Visual Studio Code.
-6. Press launch in Visual Studio Code
-7. Verify fixes.
+6. Switch godot engine branch
+7. Press launch in Visual Studio Code
+8. Verify fixes.
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 
