@@ -1,3 +1,5 @@
+# Portable World Content
+
 ### Context and Problem Statement
 
 Independent meta-verses (virtual worlds) lack content because their communities are too small to fund much content work.
