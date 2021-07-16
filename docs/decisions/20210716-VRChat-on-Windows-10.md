@@ -8,8 +8,7 @@ I'm also on Windows 10.
 
 ### Describe the feature / enhancement and how it helps to overcome the problem or limitation
 
-The solution will be to document how to install the associated packages.
-
+Document how to install the associated packages to test VRChat compatibility.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
