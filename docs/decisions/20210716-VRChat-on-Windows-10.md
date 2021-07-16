@@ -17,8 +17,6 @@ Download Unity Hub from https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSe
 
 unityhub://2018.4.20f1/008688490035
 
-Must install Windows mono package and use Windows target platform.
-
 To install a Unity Package go to Assets > Import Packages > Custom Package and select all the files in the dialog.
 
 Install UniVRM from https://github.com/vrm-c/UniVRM/releases/download/v0.64.0/UniVRM-0.64.0_920c.unitypackage.
@@ -31,7 +29,6 @@ Install https://github.com/esperecyan/UniVRMExtensions/archive/refs/tags/v1.6.2.
 
 Install https://vrchat.com/home/download VRCHAT SDK3 for Avatar and Worlds.
 
-
 Log in VRChat for upload. (There is a randomized waiting period.)
 
 Restart Unity.
@@ -41,7 +38,6 @@ Drop the VRM character into the Characters folder inside of Assets.
 Open the VRM character prefab and select the root node and then export as a VRChat Avatar.
 
 Save the avatar to Assets/VRChat Character.
-
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 
