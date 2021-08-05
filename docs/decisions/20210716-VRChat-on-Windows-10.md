@@ -14,7 +14,7 @@ Document how to install the associated packages to test VRChat compatibility.
 
 Download Unity Hub from https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe.
 
-Put `unityhub://2018.4.20f1/008688490035` in a web browser and then add android build support.
+Put `unityhub://2019.4.29f1/0eeae20b1d82` in a web browser and then add android build support.
 
 To install a Unity Package go to Assets > Import Packages > Custom Package and select all the files in the dialog.
 
