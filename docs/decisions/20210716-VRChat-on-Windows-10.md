@@ -18,11 +18,11 @@ Put `unityhub://2019.4.29f1/0eeae20b1d82` in a web browser and then add android 
 
 To install a Unity Package go to Assets > Import Packages > Custom Package and select all the files in the dialog.
 
-Install UniVRM from https://github.com/vrm-c/UniVRM/releases/download/v0.64.0/UniVRM-0.64.0_920c.unitypackage.
+Install UniVRM from https://github.com/vrm-c/UniVRM/releases/download/v0.76.0/UniVRM-0.76.0_7adf.unitypackage
 
 VRMConverterForVRChat cares about UniVRM versions.
 
-Install https://github.com/esperecyan/VRMConverterForVRChat/archive/refs/tags/v26.0.0.zip into the Assets folder.
+Install https://codeload.github.com/esperecyan/VRMConverterForVRChat/zip/refs/tags/v27.1.1 into the Assets folder.
 
 Install https://github.com/esperecyan/UniVRMExtensions/archive/refs/tags/v1.6.2.zip into the Assets folder.
 
