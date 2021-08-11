@@ -1,4 +1,4 @@
-### Proposal Title
+# Proposal Title
 
 Soiree using Sandstorm system
 
