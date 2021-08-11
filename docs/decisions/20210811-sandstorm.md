@@ -1,6 +1,4 @@
-# Proposal Title
-
-Soiree using Sandstorm system
+# Soiree using Sandstorm system
 
 ### Context and Problem Statement
 
