@@ -1,6 +1,4 @@
-# Proposal Title
-
-Minimum Specification V-Sekai Hardware
+# Minimum Specification V-Sekai Hardware
 
 ### Context and Problem Statement
 
