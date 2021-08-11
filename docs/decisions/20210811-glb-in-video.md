@@ -1,4 +1,6 @@
-# Context and Problem Statement
+# GLB data in a Movie
+
+### Context and Problem Statement
 
 Store ~20 mb of glb data in a mp4.
 
