@@ -1,4 +1,4 @@
-### Proposal Title
+# Proposal Title
 
 Minimum Specification V-Sekai Hardware
 
