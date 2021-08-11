@@ -1,8 +1,4 @@
-### Proposal Title
-
-Store a glb in a movie
-
-### Context and Problem Statement
+# Context and Problem Statement
 
 Store ~20 mb of glb data in a mp4.
 
