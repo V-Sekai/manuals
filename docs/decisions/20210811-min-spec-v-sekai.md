@@ -25,7 +25,8 @@ Specify a minimum specification.
 This is the computer we think is the most similar to a Valve Steamdeck.
 
 2. Solid State Drives - SSD 1 TB
-3. Memory Modules "NCNR" 260pin SODIMM ECC DDR4 2666 16GB1.2v 1Gx8(0-85)
+3. Solid State Drive - OS Drive (Size TBD)
+4. Memory Modules "NCNR" 260pin SODIMM ECC DDR4 2666 16GB1.2v 1Gx8(0-85)
 We use ECC to during testing avoid "Godbolts" from the universe.
 4. Windows 10 operating system
 Windows 10 is what typical PCVR uses.
