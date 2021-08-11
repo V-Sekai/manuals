@@ -1,6 +1,4 @@
-### Proposal Title
-
-Import Minecraft worlds to Godot Engine
+# Import Minecraft worlds to Godot Engine
 
 ### Context and Problem Statement
 
