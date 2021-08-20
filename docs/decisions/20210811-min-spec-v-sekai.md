@@ -8,6 +8,7 @@ Performance targets:
 
 1. Achieve 16.67 milliseconds (60 FPS) frame time on a 4k screen for V-Sekai in desktop flat mode.
 2. The 16.67 milliseconds target should be achieved smoothly and not as the average.
+3. From the Steam Hardware Survey (July 2021) accessed on August 2021, there are 25% of gamers who have a maximum of 8 gigabytes of ram.
 
 ### Describe the feature / enhancement and how it helps to overcome the problem or limitation
 
