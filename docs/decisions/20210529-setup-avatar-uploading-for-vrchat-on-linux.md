@@ -23,7 +23,8 @@ Must install Windows mono package and use Windows target platform.
 
 To install a Unity Package go to Assets > Import Packages > Custom Package and select all the files in the dialog.
 
-Install UniVRM from https://github.com/vrm-c/UniVRM/releases/download/v0.76.0/UniVRM-0.76.0_7adf.unitypackage.
+Install UniVRM from 1) https://github.com/vrm-c/UniVRM/releases/download/v0.81.0/UniGLTF_VRMShaders-0.81.0_5126.unitypackage and 2) https://github.com/vrm-c/UniVRM/releases/download/v0.81.0/UniVRM-0.81.0_5126.unitypackage.
+
 
 VRMConverterForVRChat cares about UniVRM versions.
 
@@ -32,7 +33,6 @@ Install https://codeload.github.com/esperecyan/VRMConverterForVRChat/zip/refs/ta
 Install https://github.com/esperecyan/UniVRMExtensions/archive/refs/tags/v1.6.2.zip into the Assets folder.
 
 Install https://vrchat.com/home/download VRCHAT SDK3 for Avatar and Worlds.
-
 
 Log in VRChat for upload. (There is a randomized waiting period.)
 
