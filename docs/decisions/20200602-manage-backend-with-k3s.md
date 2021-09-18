@@ -126,7 +126,8 @@ sudo semodule -i dev-shm.pp
 ### Install k3s (Start here if recreating)
 
 ```bash
-curl -sfL https://raw.githubusercontent.com/rancher/k3s/master/install.sh | sh -s - server -o /root/.kube/config --default-local-storage-path /kube/pvc --no-deploy=servicelb --disable=traefik --disable=servicelb
+curl -sfL https://raw.githubusercontent.com/rancher/k3s/master/install.sh | sh -s - server -o /root/.kube/config --default-local-storage-path /kube/pvc --disable=traefik --disable=servicelb --disable=flannel --disable=cni '--kubelet-arg=eviction-soft=memory.available<0%,imagefs.available<0%,nodefs.available<0%' '--kubelet-arg=eviction-hard=memory.available<0%,imagefs.available<0%,nodefs.available<0%'
+
 ```
 
 Now you will need to obtain the DNS IAM credentials. In this example, we are working with these Route53 hosted domains: vsekai.org,vsekai.net,vsekai.com,vsekai.cloud,v-sekai.org,v-sekai.net,v-sekai.com,v-sekai.cloud,vsek.ai,v-sek.ai
@@ -147,6 +148,11 @@ sudo helm repo update
 
 sudo helm install external-dns --set provider=aws --set aws.zoneType=public --set registry=noop --set aws.credentials.accessKey="$ACCESSKEY" --set domainFilters='{vsekai.org,vsekai.net,vsekai.com,vsekai.cloud,v-sekai.org,v-sekai.net,v-sekai.com,v-sekai.cloud,vsek.ai,v-sek.ai}' --set aws.credentials.secretKey="$SECRETKEY"  bitnami/external-dns
 
+
+# NOTE: Some of these commands may be outdated:
+# They seem to refer to nginx-nginx-ingress but now it is nginx-ingress-nginx.
+# Take the following with a grain of salt:
+
 sudo kubectl create namespace ingress-nginx
 sudo helm install --namespace ingress-nginx nginx ingress-nginx/ingress-nginx --set controller.replicaCount=2
 sudo kubectl patch svc/nginx-nginx-ingress-controller -n kube-system --patch '{"spec":{"externalTrafficPolicy":"Local"}}'
@@ -155,6 +161,72 @@ sudo kubectl patch deployments/nginx-nginx-ingress-controller --patch '{"spec":{
 sudo kubectl get replicasets -n kube-system
 # Find the oldest nginx-nginx-ingress-controller one and delete with
 sudo kubectl delete replicasets -nginx-ingress-controller-abcdefg-whatever -n kube-system
+
+
+# Some weird stuff we changed. I don't think any of it is needed other than the above
+# externalTrafficPolicy and hostNetwork configuration changes.
+
+cat > ingress-svc-edit.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: nginx
+    meta.helm.sh/release-namespace: ingress-nginx
+    metallb.universe.tf/address-pool: default
+  creationTimestamp: "2021-04-30T02:33:02Z"
+  finalizers:
+  - service.kubernetes.io/load-balancer-cleanup
+  labels:
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/instance: nginx
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/version: 0.45.0
+    helm.sh/chart: ingress-nginx-3.29.0
+  name: nginx-ingress-nginx-controller
+  namespace: ingress-nginx
+spec:
+  clusterIP: 10.43.219.102
+  clusterIPs:
+  - 10.43.219.102
+  externalTrafficPolicy: Local
+  healthCheckNodePort: 32689
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http
+    nodePort: 32595
+    port: 80
+    protocol: TCP
+    targetPort: http
+  - name: https
+    nodePort: 31937
+    port: 443
+    protocol: TCP
+    targetPort: https
+  selector:
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/instance: nginx
+    app.kubernetes.io/name: ingress-nginx
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - ip: 999.999.999.999
+
+Ctrl-D to save
+
+sudo kubectl apply -f ingress-svc-edit.yaml
+
+sudo kubectl patch -n ingress-nginx services/nginx-ingress-nginx-controller --patch '{"metadata":{"annotations":{"metallb.universe.tf/address-pool":"default"}},"spec":{"externalTrafficPolicy":"Local"}}
+sudo kubectl patch deployments/nginx-ingress-nginx-controller --patch '{"spec":{"template":{"spec":{"hostNetwork":true}}}}' -n ingress-nginx
+
+
+
+
 
 sudo kubectl create namespace cert-manager
 # Used --version v0.15.1 before; now v1.3.1
@@ -620,14 +692,106 @@ tls:
 #### CockroachDB install
 
 ```bash
-sudo helm install cockroachdb --values cockroachdb.values.yaml cockroachdb/cockroachdb
-sudo kubectl certificate approve default.node.cockroachdb-0
-sudo kubectl certificate approve default.node.cockroachdb-1
-sudo kubectl certificate approve default.node.cockroachdb-2
-sudo kubectl certificate approve default.client.root
 
-curl -o client-secure.yaml https://raw.githubusercontent.com/cockroachdb/cockroach/master/cloud/kubernetes/client-secure.yaml
-sudo kubectl apply -f client-secure.yaml
+# Helm version MAY be deprecated. We will switch to operator below.
+
+#sudo helm install cockroachdb --values cockroachdb.values.yaml cockroachdb/cockroachdb
+#sudo kubectl certificate approve default.node.cockroachdb-0
+#sudo kubectl certificate approve default.node.cockroachdb-1
+#sudo kubectl certificate approve default.node.cockroachdb-2
+#sudo kubectl certificate approve default.client.root
+
+wget https://raw.githubusercontent.com/cockroachdb/cockroach-operator/master/manifests/operator.yaml -O cockroach-operator.yaml
+sudo kubectl apply -f cockroach-operator.yaml
+
+wget https://raw.githubusercontent.com/cockroachdb/cockroach-operator/master/config/crd/bases/crdb.cockroachlabs.com_crdbclusters.yaml
+sudo kubectl apply -f crdb.yaml
+
+cat > cockroachdb_extra_resource_certgen.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cockroachdb
+  labels:
+    app: cockroachdb
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: cockroachdb
+  labels:
+    app: cockroachdb
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  verbs:
+  - create
+  - get
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cockroachdb
+  labels:
+    app: cockroachdb
+rules:
+- apiGroups:
+  - certificates.k8s.io
+  resources:
+  - certificatesigningrequests
+  verbs:
+  - create
+  - get
+  - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: cockroachdb
+  labels:
+    app: cockroachdb
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: cockroachdb
+subjects:
+- kind: ServiceAccount
+  name: cockroachdb
+  namespace: default
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: cockroachdb
+  labels:
+    app: cockroachdb
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cockroachdb
+subjects:
+- kind: ServiceAccount
+  name: cockroachdb
+  namespace: default
+
+Ctrl-D
+
+
+# Note: may need to set up physicalVolume and physicalVolumeClaim objects for each cockraoch node.
+
+# The permissions may be set wrong if you are upgrading. Fix them with:
+sudo chown -R 1000581000 /kube/pvc/pvc-aaaaaaaaaaaaaaaaaa /kube/pvc/pvc-bbbbbbbbbbbbbbb /kube/pvc/pvc-cccccccccccccccccccccccccccccccc
+
+# OLD curl -o client-secure.yaml https://raw.githubusercontent.com/cockroachdb/cockroach/master/cloud/kubernetes/client-secure.yaml
+# OLD sudo kubectl apply -f client-secure.yaml
+
+wget https://raw.githubusercontent.com/cockroachdb/cockroach-operator/master/examples/client-secure-operator.yaml
+sudo kubectl apply -f client-secure-operator.yaml
+
+sudo kubectl certificate approve default.client.uro-prod
+
 sudo kubectl exec -it cockroachdb-client-secure -- ./cockroach sql --certs-dir=/cockroach-certs --host=cockroachdb-public
 ```
 
