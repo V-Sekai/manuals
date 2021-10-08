@@ -20,6 +20,8 @@ To install a Unity Package go to Assets > Import Packages > Custom Package and s
 
 Install UniVRM from https://github.com/vrm-c/UniVRM/releases/download/v0.76.0/UniVRM-0.76.0_7adf.unitypackage
 
+## Outdated sections as of 2021-10-08
+
 VRMConverterForVRChat cares about UniVRM versions.
 
 Install https://codeload.github.com/esperecyan/VRMConverterForVRChat/zip/refs/tags/v27.1.1 into the Assets folder.
