@@ -19,6 +19,8 @@ chmod +x UnityHub.AppImage
 ./UnityHub.AppImage unityhub://2019.4.31f1/bd5abf232a62
 ```
 
+## Outdated sections as of 2021-10-08
+
 Must install Windows mono package and use Windows target platform.
 
 To install a Unity Package go to Assets > Import Packages > Custom Package and select all the files in the dialog.
