@@ -60,7 +60,7 @@ No one seemed to document this.
 
 - https://public-cdn.cloud.unity3d.com/hub/prod/UnityHub.AppImage
 - https://vrchat.com/home/download
-- The current Unity version in use by VRChat is Unity 2018.4.20f1.
+- The current Unity version in use by VRChat is Unity 2019.4.29f1.
 
 ### Derivative License
 
