@@ -16,7 +16,7 @@ Download Unity Hub from https://public-cdn.cloud.unity3d.com/hub/prod/UnityHub.A
 
 ```bash
 chmod +x UnityHub.AppImage
-./UnityHub.AppImage unityhub://2019.4.29f1/0eeae20b1d82
+./UnityHub.AppImage unityhub://2019.4.31f1/bd5abf232a62
 ```
 
 Must install Windows mono package and use Windows target platform.
