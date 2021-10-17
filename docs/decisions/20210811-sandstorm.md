@@ -1,4 +1,4 @@
-# Soiree using Sandstorm system
+# Soiree party mode
 
 ### Context and Problem Statement
 
