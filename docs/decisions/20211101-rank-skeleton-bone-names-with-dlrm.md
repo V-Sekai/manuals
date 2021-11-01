@@ -17,8 +17,8 @@ Use dlrm to rank bones.
 1. Install dlrm.
 2. Generate train and test datasets.
    1. First column is whether clicked (value 1) or does not click ad (value 0)
-   2. 13 numeric columns
-   3. 26 categorical columns
+   2. 13 integer features
+   3. 26 categorical features
    4. See marthawhite's blog post.
 3. Train.
 4. Test.
