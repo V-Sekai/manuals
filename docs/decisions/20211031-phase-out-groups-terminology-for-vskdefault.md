@@ -1,4 +1,4 @@
-# Phase out groups in the to make it more recognizable
+# Phase out groups in the branding to make it more recognizable
 
 ## Context and Problem Statement
 
