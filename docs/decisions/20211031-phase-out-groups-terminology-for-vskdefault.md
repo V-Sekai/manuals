@@ -1,4 +1,4 @@
-# Phase out groups terminology for vsk_default
+# Phase out groups in the to make it more recognizable
 
 ## Context and Problem Statement
 
