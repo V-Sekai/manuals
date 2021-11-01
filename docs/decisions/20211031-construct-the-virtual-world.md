@@ -1,8 +1,8 @@
-# Construct the world in the virtual world
+# Construct the virtual world
 
 ### Context and Problem Statement
 
-It's hard to 3d in a virtual world.
+It's hard to create the virtual world.
 
 ### Describe the feature / enhancement and how it helps to overcome the problem or limitation
 
