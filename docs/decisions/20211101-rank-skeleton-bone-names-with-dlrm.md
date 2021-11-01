@@ -17,10 +17,9 @@ Use dlrm to rank bones.
 1. Install dlrm.
 2. Generate train and test datasets.
    1. First column is whether clicked (value 1) or does not click ad (value 0)
-   2. 13 integer features
-   3. 26 categorical features
+   2. float features
+   3. categorical features
    4. A missing value means the field is empty.
-   5. See marthawhite's blog post.
 3. Train.
 4. Test.
 5. Use on cpu and in Godot Engine.
