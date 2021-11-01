@@ -1,4 +1,4 @@
-# Run the maintance scripts from Windows in Unix mode with msys2
+# Run the maintenance scripts from Windows in Unix mode with msys2
 
 - Status: proposed <-- draft | rejected | accepted | deprecated | superseded by -->
 
@@ -12,6 +12,11 @@ Use Msys2 on Windows to improve this.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
+* Install Windows 10 or Windows 11
+* Open Powershell.
+* `Set-ExecutionPolicy RemoteSigned -scope CurrentUser`
+* `iwr -useb get.scoop.sh | iex`
+* `scoop install msys`
 * `pacman -S ssh-pageant openssh git python3`
 * Copy to ~/.bashrc
 * `eval $(/usr/bin/ssh-pageant -r -a "/tmp/.ssh-pageant-$USERNAME")`
