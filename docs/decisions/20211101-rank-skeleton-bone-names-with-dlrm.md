@@ -19,9 +19,23 @@ Use dlrm to rank bones.
 3. Mapping to bone names, attributes and categories.
 1. Use a training app create test data.
 4. Generate train and test datasets.
-   1. First column is whether clicked (value 1) or does not click ad (value 0)
-   2. float features
+   1. Is the bone mapping correct?
+   2. features
+      1. X location
+      2. Y location
+      3. Z location
+      4. Octahedral mapped rotation x
+      5. Octahedral mapped rotation y
+      6. X scale
+      7. Y scale
+      8. Z scale
    3. categorical features
+      1. Corresponding VRM Bone
+      2. Skeleton Pool (deep-motion-editing by kfiraberman, PeizhuoLi and HalfSummer11)
+      3. Known Skeleton
+         1. VRMC
+         2. Mixamo
+         3. Other
    4. A missing value means the field is empty.
 5. Train.
 6. Test.
@@ -57,6 +71,18 @@ We need this to make the quality of life of creators better.
 - https://medium.com/@marthawhite_81346/learning-with-the-criteo-tb-dataset-e3ec12d9d77e
 - https://www.kaggle.com/c/criteo-display-ad-challenge/data
 - Skeleton pool operator from neural blend shapes.
+    ```
+    @article{li2021learning,
+    author = {Li, Peizhuo and Aberman, Kfir and Hanocka, Rana and Liu, Libin and Sorkine-Hornung, Olga and Chen, Baoquan},
+    title = {Learning Skeletal Articulations with Neural Blend Shapes},
+    journal = {ACM Transactions on Graphics (TOG)},
+    volume = {40},
+    number = {4},
+    pages = {1},
+    year = {2021},
+    publisher = {ACM}
+    }
+    ```
 
 ## Derivative License
 
