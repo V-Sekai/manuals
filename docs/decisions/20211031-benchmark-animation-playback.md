@@ -1,52 +1,44 @@
 # Benchmark animation playback
 
-## Context and Problem Statement
+### Context and Problem Statement
 
-[Describe the problem or limitation you are having in your project]
+How slow is animation playback in a simulated player situation.
 
-[Describe the context and problem statement, e.g., in free form using two to three sentences. You may want to articulate the problem in the form of a question.]
+### Describe the feature / enhancement and how it helps to overcome the problem or limitation
 
-## Describe the proposed option and how it helps to overcome the problem or limitation
+Need to see where we're at.
 
-[Describe the proposed option and how it helps to overcome the problem or limitation]
+### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+100, 500, 1'000, 50'000 avatars animating with 30fps and animation compression on vs off.
 
-[Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams]
+Randomize clips: idle, run, jump, walk (left, right, back, front) 
 
-## Positive Consequences <!-- optional -->
+Put them into a 2d blend space and feed a random velocity.
 
-- [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
-- […]
+Start the animations at different random offsets.
 
-## Negative Consequences <!-- optional -->
+### If this enhancement will not be used often, can it be worked around with a few lines of script?
 
-- [e.g., compromising quality attribute, follow-up decisions required, …]
-- […]
+Core code.
 
-[this section can be repeated for each option if more than one option is open for consideration]
+### Positive Consequences
 
-## Option graveyard: <!-- same as above -->
+* Can investigate compressed animation player as a compute shader. The current architecture of the skinning and blend shapes animations is like vertex animations fed by buffers, but the keyframe playback is also problematic
 
-- Option:
-<!-- [List the proposed options no longer open for consideration.] -->
-- Rejection Reason:
-<!-- [List the reasons for the rejection: (the Bad traits)] -->
+### Negative Consequences
 
-## If this enhancement will not be used often, can it be worked around with a few lines of script?
+_No response_
 
-[If this enhancement will not be used often, can it be worked around with a few lines of script?]
+### Is there a reason why this should be core and done by us?
 
-## Is there a reason why this should be core and done by us?
+I care about this more than other core contributors.
 
-[Is there a reason why this should be core and done by us?]
+### References
 
-## References <!-- optional -->
+_No response_
 
-- [Link type](link to adr) <!-- example: Refined by [xxx](yyyymmdd-xxx.md) -->
-- … <!-- numbers of links can vary -->
-
-## Derivative License
+### Derivative License
 
 Copyright (c) 2020-2021 V-Sekai contributors.
 

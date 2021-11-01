@@ -1,52 +1,51 @@
 # Bake a MaterialX into a custom Godot StandardMaterial3D
 
-## Context and Problem Statement
+### Context and Problem Statement
 
-[Describe the problem or limitation you are having in your project]
+There is not many procedural material Makers.
 
-[Describe the context and problem statement, e.g., in free form using two to three sentences. You may want to articulate the problem in the form of a question.]
+The two the come to mind is Godot's Material Maker and Adobe's Substance Designer.
 
-## Describe the proposed option and how it helps to overcome the problem or limitation
+More options would be helpful.
 
-[Describe the proposed option and how it helps to overcome the problem or limitation]
+### Describe the feature / enhancement and how it helps to overcome the problem or limitation
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+Create a MaterialX to Godot Standard Material tool.
 
-[Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams]
+### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-## Positive Consequences <!-- optional -->
+Make a GDscript tool that takes the MaterialX bake tool I already made and bake it to a standard material 3D in Godot Engine.
 
-- [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
-- […]
+Craft a GDScript that uses the command line tool and converts `mtlx` to a standard material 3d.
 
-## Negative Consequences <!-- optional -->
+> `apt install -y libglew-dev`
 
-- [e.g., compromising quality attribute, follow-up decisions required, …]
-- […]
+> `cmake -GNinja .. -DMATERIALX_BUILD_BAKER=ON`
 
-[this section can be repeated for each option if more than one option is open for consideration]
+> `.\bin\MaterialXBake.exe --material .\resources\Materials\Examples\glTFPBR\gltf_pbr_boombox.mtlx --bakeFilename ../demo.mtlx --bakeWidth 8192 --bakeHeight 8192`
 
-## Option graveyard: <!-- same as above -->
+### If this enhancement will not be used often, can it be worked around with a few lines of script?
 
-- Option:
-<!-- [List the proposed options no longer open for consideration.] -->
-- Rejection Reason:
-<!-- [List the reasons for the rejection: (the Bad traits)] -->
+Eh. Not simple.
 
-## If this enhancement will not be used often, can it be worked around with a few lines of script?
+### Positive Consequences
+Expansion into a web tool.
 
-[If this enhancement will not be used often, can it be worked around with a few lines of script?]
+### Negative Consequences
 
-## Is there a reason why this should be core and done by us?
+_No response_
 
-[Is there a reason why this should be core and done by us?]
+### Is there a reason why this should be core and done by us?
 
-## References <!-- optional -->
+I found an approach and it can be done.
 
-- [Link type](link to adr) <!-- example: Refined by [xxx](yyyymmdd-xxx.md) -->
-- … <!-- numbers of links can vary -->
+### References
 
-## Derivative License
+* https://github.com/fire/MaterialX/tree/gltf
+* https://godotengine.org/showcase/material-maker
+* https://en.wikipedia.org/wiki/Procedural_texture
+
+### Derivative License
 
 Copyright (c) 2020-2021 V-Sekai contributors.
 
