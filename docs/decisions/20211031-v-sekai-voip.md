@@ -2,19 +2,21 @@
 
 ### Context and Problem Statement
 
-VOIP is required for social environments
+Need to see our work for integration testing.
 
 ### Describe the feature / enhancement and how it helps to overcome the problem or limitation
 
-Use voip for godot.
+Need to integration test our features without multiplying work.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-Upgrade speech plugin.
+* Create a series of projects
+* Have them be exportable and testable
+* See robot framework
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 
-Not a few lines of script.
+Not workaroundable
 
 ### Positive Consequences
 
@@ -26,7 +28,7 @@ _No response_
 
 ### Is there a reason why this should be core and done by us?
 
-I have an approach.
+I have an approach!
 
 ### References
 
