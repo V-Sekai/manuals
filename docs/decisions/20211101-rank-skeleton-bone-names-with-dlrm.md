@@ -15,14 +15,18 @@ Use dlrm to rank bones.
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
 1. Install dlrm.
-2. Generate train and test datasets.
+2. Generate training data.
+3. Mapping to bone names, attributes and categories.
+   1. Whole body
+   2. Zoomed in portion.
+4. Generate train and test datasets.
    1. First column is whether clicked (value 1) or does not click ad (value 0)
    2. float features
    3. categorical features
    4. A missing value means the field is empty.
-3. Train.
-4. Test.
-5. Use on cpu and in Godot Engine.
+5. Train.
+6. Test.
+7. Use on cpu and in Godot Engine.
    1. Probability of a click.
 
 ## Positive Consequences <!-- optional -->
