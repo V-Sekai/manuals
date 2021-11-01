@@ -16,6 +16,7 @@ Use dlrm to rank bones.
     * source ~/.bashrc
     * cd dlrm
     * pip install -r requirements.txt
+    * mamba install tensorboard
 2. Generate training data.
 3. Mapping to bone names, attributes and categories.
 4. Use a training app create test data.
