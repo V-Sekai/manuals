@@ -13,6 +13,7 @@ Use a way to create 3d in a virtual world.
 1. packed scenes
 2. blockmesh
 3. cassie
+4. Spark joy.
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 
