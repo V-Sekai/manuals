@@ -22,6 +22,12 @@ Use dlrm to rank bones.
 3. Mapping to bone names, attributes and categories.
 4. Use a training app create test data.
 5. Generate train and test datasets for T-Posed character surfaces
+6. Train.
+7. Test.
+8. Use on cpu and in Godot Engine.
+   1. Probability of a click.
+
+### Sample Dataset
    1. Is the bone mapping correct?
    2. features
       1. Bone X global location in meters
@@ -54,10 +60,6 @@ Use dlrm to rank bones.
    3. categorical features
       1. Corresponding VRM Bone
    4. A missing value means the field is empty.
-6. Train.
-7. Test.
-8. Use on cpu and in Godot Engine.
-   1. Probability of a click.
 
 ## Positive Consequences <!-- optional -->
 
