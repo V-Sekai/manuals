@@ -28,9 +28,9 @@
 
 ## Option graveyard: <!-- same as above -->
 
-* Option: 
+- Option:
 <!-- [List the proposed options no longer open for consideration.] -->
-* Rejection Reason: 
+- Rejection Reason:
 <!-- [List the reasons for the rejection: (the Bad traits)] -->
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
