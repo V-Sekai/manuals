@@ -31,7 +31,7 @@ Use dlrm to rank bones.
       11. Bone Y global scale in meters
       12. Bone Z global scale in meters
       13. Body mass in kilograms
-      14. Feminine vs masculine unit-less
+      14. (-1) masculine and (1) Feminine unit-less
       15. Head circumference in meters
       16. Neckline circumference in meters
       17. Left Shoulder circumference in meters
