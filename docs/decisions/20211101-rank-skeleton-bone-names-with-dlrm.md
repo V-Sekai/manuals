@@ -17,8 +17,7 @@ Use dlrm to rank bones.
 1. Install dlrm.
 2. Generate training data.
 3. Mapping to bone names, attributes and categories.
-   1. Whole body
-   2. Zoomed in portion.
+1. Use a training app create test data.
 4. Generate train and test datasets.
    1. First column is whether clicked (value 1) or does not click ad (value 0)
    2. float features
