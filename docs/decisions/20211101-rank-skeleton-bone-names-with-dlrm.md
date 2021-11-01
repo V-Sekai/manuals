@@ -19,7 +19,8 @@ Use dlrm to rank bones.
    1. First column is whether clicked (value 1) or does not click ad (value 0)
    2. 13 integer features
    3. 26 categorical features
-   4. See marthawhite's blog post.
+   4. A missing value means the field is empty.
+   5. See marthawhite's blog post.
 3. Train.
 4. Test.
 5. Use on cpu.
@@ -51,6 +52,7 @@ We need this to make the quality of life of creators better.
 
 - https://github.com/facebookresearch/dlrm
 - https://medium.com/@marthawhite_81346/learning-with-the-criteo-tb-dataset-e3ec12d9d77e
+- https://www.kaggle.com/c/criteo-display-ad-challenge/data
 
 ## Derivative License
 
