@@ -22,29 +22,29 @@ Use dlrm to rank bones.
       2. Bone Y global location in meters
       3. Bone Z global location in meters
       4. Bone truncated basis axis x 0
-      4. Bone truncated basis axis x 1
-      4. Bone truncated basis axis x 2
-      4. Bone truncated basis axis y 0
-      4. Bone truncated basis axis y 1
-      4. Bone truncated basis axis y 2
-      6. Bone X global scale in meters
-      7. Bone Y global scale in meters
-      8. Bone Z global scale in meters
-      9. Body mass in kilograms
-      10. Feminine vs masculine unit-less
-      11. Head circumference in meters
-      12. Neckline circumference in meters
-      13. Left Shoulder circumference in meters
-      14. Right Shoulder circumference in meters
-      15. Left Elbow circumference in meters
-      16. Right Elbow circumference in meters
-      17. Left wrist circumference in meters
-      18. Right wrist circumference in meters
-      19. Waist circumference in meters
-      20. Left thigh circumference in meters
-      21. Right thigh circumference in meters
-      22. Left ankle circumference in meters
-      23. Right ankle circumference in meters
+      5. Bone truncated basis axis x 1
+      6. Bone truncated basis axis x 2
+      7. Bone truncated basis axis y 0
+      8. Bone truncated basis axis y 1
+      9. Bone truncated basis axis y 2
+      10. Bone X global scale in meters
+      11. Bone Y global scale in meters
+      12. Bone Z global scale in meters
+      13. Body mass in kilograms
+      14. Feminine vs masculine unit-less
+      15. Head circumference in meters
+      16. Neckline circumference in meters
+      17. Left Shoulder circumference in meters
+      18. Right Shoulder circumference in meters
+      19. Left Elbow circumference in meters
+      20. Right Elbow circumference in meters
+      21. Left wrist circumference in meters
+      22. Right wrist circumference in meters
+      23. Waist circumference in meters
+      24. Left thigh circumference in meters
+      25. Right thigh circumference in meters
+      26. Left ankle circumference in meters
+      27. Right ankle circumference in meters
    3. categorical features
       1. Corresponding VRM Bone
          1. ???
@@ -59,6 +59,7 @@ Use dlrm to rank bones.
 
 * We can guess the proper name.
 * Useful for the facial mapping problem?
+* Useful for the character generator slider recommendation problem?
 
 ## Negative Consequences <!-- optional -->
 
