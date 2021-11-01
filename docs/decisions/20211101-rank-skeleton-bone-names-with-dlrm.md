@@ -18,14 +18,14 @@ Use dlrm to rank bones.
 4. Generate train and test datasets for T-Posed character surfaces
    1. Is the bone mapping correct?
    2. features
-      1. X global location in meters
-      2. Y global location in meters
-      3. Z global location in meters
-      4. Octahedral mapped rotation x in meters
-      5. Octahedral mapped rotation y in meters
-      6. X global scale in meters
-      7. Y global scale in meters
-      8. Z global scale in meters
+      1. Bone X global location in meters
+      2. Bone Y global location in meters
+      3. Bone Z global location in meters
+      4. Bone Octahedral mapped rotation x in meters
+      5. Bone Octahedral mapped rotation y in meters
+      6. Bone X global scale in meters
+      7. Bone Y global scale in meters
+      8. Bone Z global scale in meters
       9. Body mass in kilograms
       10. Feminine vs masculine unit-less
       11. Head circumference in meters
