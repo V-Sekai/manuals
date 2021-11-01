@@ -36,6 +36,7 @@ Use dlrm to rank bones.
          1. VRMC
          2. Mixamo
          3. Other
+         4. Unknown
    4. A missing value means the field is empty.
 5. Train.
 6. Test.
