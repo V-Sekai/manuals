@@ -21,8 +21,12 @@ Use dlrm to rank bones.
       1. Bone X global location in meters
       2. Bone Y global location in meters
       3. Bone Z global location in meters
-      4. Bone Octahedral mapped rotation x in meters
-      5. Bone Octahedral mapped rotation y in meters
+      4. Bone truncated basis axis x 0
+      4. Bone truncated basis axis x 1
+      4. Bone truncated basis axis x 2
+      4. Bone truncated basis axis y 0
+      4. Bone truncated basis axis y 1
+      4. Bone truncated basis axis y 2
       6. Bone X global scale in meters
       7. Bone Y global scale in meters
       8. Bone Z global scale in meters
