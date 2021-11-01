@@ -1,5 +1,8 @@
 # Use BPR to rank skeleton bone names
 
+- Status: superseded by [20211101-rank-skeleton-bone-names-with-dlrm](20211101-rank-skeleton-bone-names-with-dlrm.md)
+
+
 ### Context and Problem Statement
 
 Improve automatic bone selection
