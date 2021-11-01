@@ -12,10 +12,14 @@ Use dlrm to rank bones.
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
 1. Install dlrm.
+    * Install mamba forge
+    * source ~/.bashrc
+    * cd dlrm
+    * pip install -r requirements.txt
 2. Generate training data.
 3. Mapping to bone names, attributes and categories.
-1. Use a training app create test data.
-4. Generate train and test datasets for T-Posed character surfaces
+4. Use a training app create test data.
+5. Generate train and test datasets for T-Posed character surfaces
    1. Is the bone mapping correct?
    2. features
       1. Bone X global location in meters
@@ -50,9 +54,9 @@ Use dlrm to rank bones.
          1. ???
          2. None
    4. A missing value means the field is empty.
-5. Train.
-6. Test.
-7. Use on cpu and in Godot Engine.
+6. Train.
+7. Test.
+8. Use on cpu and in Godot Engine.
    1. Probability of a click.
 
 ## Positive Consequences <!-- optional -->
