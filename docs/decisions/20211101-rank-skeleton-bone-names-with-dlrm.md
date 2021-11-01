@@ -53,6 +53,7 @@ We need this to make the quality of life of creators better.
 - https://github.com/facebookresearch/dlrm
 - https://medium.com/@marthawhite_81346/learning-with-the-criteo-tb-dataset-e3ec12d9d77e
 - https://www.kaggle.com/c/criteo-display-ad-challenge/data
+- Skeleton pool operator from neural blend shapes.
 
 ## Derivative License
 
