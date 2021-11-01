@@ -1,5 +1,7 @@
 # [short title of solved problem and solution]
 
+- Status: proposed <-- draft | rejected | accepted | deprecated | superseded by -->
+
 ## Context and Problem Statement
 
 [Describe the problem or limitation you are having in your project]
