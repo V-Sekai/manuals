@@ -23,7 +23,8 @@ Use dlrm to rank bones.
    5. See marthawhite's blog post.
 3. Train.
 4. Test.
-5. Use on cpu.
+5. Use on cpu and in Godot Engine.
+   1. Probability of a click.
 
 ## Positive Consequences <!-- optional -->
 
