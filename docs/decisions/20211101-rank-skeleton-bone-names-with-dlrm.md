@@ -13,10 +13,11 @@ Use dlrm to rank bones.
 
 1. Install dlrm.
     * Install mamba forge
-    * source ~/.bashrc
-    * cd dlrm
-    * pip install -r requirements.txt
-    * mamba install tensorboard
+    * `source ~/.bashrc`
+    * `cd dlrm`
+    * `pip install -r requirements.txt`
+    * `mamba install tensorboard`
+    * `pip3 install torch==1.10.0+cu113 torchvision==0.11.1+cu113 torchaudio==0.10.0+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html`
 2. Generate training data.
 3. Mapping to bone names, attributes and categories.
 4. Use a training app create test data.
