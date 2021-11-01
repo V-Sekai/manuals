@@ -4,11 +4,11 @@
 
 ## Context and Problem Statement
 
-I want to use Unix tools by the experience of Linux is lacking.
+I want to use Unix tools but the experience of Linux is lacking.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-Use Msys2 on Windows to improve this.
+Use msys2 on Windows to improve this.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
