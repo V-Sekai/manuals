@@ -92,6 +92,7 @@ We need this to make the quality of life of creators better.
 * Skeleton pool operator from neural blend shapes.
 * https://tailor.fandom.com/wiki/Types_of_measurement
 * https://knarkowicz.wordpress.com/2014/04/16/octahedron-normal-vector-encoding/
+* https://www.kaggle.com/egordm/deep-learning-recommendation-model-dlrm
     
 
 ```
