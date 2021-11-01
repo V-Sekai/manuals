@@ -53,8 +53,6 @@ Use dlrm to rank bones.
       27. Right ankle circumference in meters
    3. categorical features
       1. Corresponding VRM Bone
-         1. ???
-         2. None
    4. A missing value means the field is empty.
 6. Train.
 7. Test.
