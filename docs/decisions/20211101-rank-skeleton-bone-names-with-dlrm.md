@@ -22,50 +22,11 @@ Use dlrm to rank bones.
 03. Mapping to bone names, attributes and categories.
 04. Use a training app create test data.
 05. Generate train and test datasets for T-Posed character surfaces
-   1. Is the bone mapping correct?
-   2. features
-      01. Bone X global location in meters
-      02. Bone Y global location in meters
-      03. Bone Z global location in meters
-      04. Bone truncated normalized basis axis x 0
-      05. Bone truncated normalized basis axis x 1
-      06. Bone truncated normalized basis axis x 2
-      07. Bone truncated normalized basis axis y 0
-      08. Bone truncated normalized basis axis y 1
-      09. Bone truncated normalized basis axis y 2
-      10. Bone X global scale in meters
-      11. Bone Y global scale in meters
-      12. Bone Z global scale in meters
-      13. Parent Bone X global location in meters
-      02. Parent Bone Y global location in meters
-      03. Parent Bone Z global location in meters
-      04. Parent Bone truncated normalized basis axis x 0
-      05. Parent Bone truncated normalized basis axis x 1
-      06. Parent Bone truncated normalized basis axis x 2
-      07. Parent Bone truncated normalized basis axis y 0
-      08. Parent Bone truncated normalized basis axis y 1
-      09. Parent Bone truncated normalized basis axis y 2
-      10. Parent Bone X global scale in meters
-      11. Parent Bone Y global scale in meters
-      12. Parent Bone Z global scale in meters
-      14. Body mass in kilograms
-      15. (-1) masculine and (1) Feminine unit-less
-      16. Head circumference in meters
-      17. Neckline circumference in meters
-      18. Left Shoulder circumference in meters
-      19. Right Shoulder circumference in meters
-      20. Left Elbow circumference in meters
-      21. Right Elbow circumference in meters
-      22. Left wrist circumference in meters
-      23. Right wrist circumference in meters
-      24. Waist circumference in meters
-      25. Left thigh circumference in meters
-      26. Right thigh circumference in meters
-      27. Left ankle circumference in meters
-      28. Right ankle circumference in meters
-   3. categorical features
-      01. Corresponding VRM Bone
-   4. A missing value means the field is empty.
+   6. Example: CSV.
+   7. `Label,Feature: Bone X global location in meters,Feature: Bone Y global location in meters,Feature: Bone Z global location in meters,Feature: Bone truncated normalized basis axis x 0,Feature: Bone truncated normalized basis axis x 1,Feature: Bone truncated normalized basis axis x 2,Feature: Bone truncated normalized basis axis y 0,Feature: Bone truncated normalized basis axis y 1,Feature: Bone truncated normalized basis axis y 2,Feature: Bone X global scale in meters,Feature: Bone Y global scale in meters,Feature: Bone Z global scale in meters,Feature: Bone Parent X global location in meters,Feature: Bone Parent Y global location in meters,Feature: Bone Parent Z global location in meters,Feature: Bone Parent truncated normalized basis axis x 0,Feature: Bone Parent truncated normalized basis axis x 1,Feature: Bone Parent truncated normalized basis axis x 2,Feature: Bone Parent truncated normalized basis axis y 0,Feature: Bone Parent truncated normalized basis axis y 1,Feature: Bone Parent truncated normalized basis axis y 2,Feature: Bone Parent X global scale in meters,Feature: Bone Parent Y global scale in meters,Feature: Bone Parent Z global scale in meters,Feature: Animation Time,Category: Corresponding VRM Bone,Category: Title,Category: Author,Category: Specification Version,Category: Animation
+1,0,0,0,1,0,0,0,1,0,1,1,1,0,0,0,1,0,0,0,1,0,0,0,0,0,,AvatarSample_A,VRoid,,T-Pose
+1,0.00002106535248,0.89614433050156,-0.00661799684167,1,0,0,0,1,0,1,1,1,0.00002106535248,0.89614433050156,-0.00661799684167,1,0,0,0,1,0,1,1,1,0,hips,AvatarSample_A,VRoid,,T-Pose`
+   8. A missing value means the field is empty.
 06. Train.
 07. Test.
 08. Use on cpu and in Godot Engine.
