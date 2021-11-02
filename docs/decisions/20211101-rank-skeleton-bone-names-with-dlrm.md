@@ -37,17 +37,17 @@ Use dlrm to rank bones.
       11. Bone Y global scale in meters
       12. Bone Z global scale in meters
       13. Parent Bone X global location in meters
-      02.  Parent Bone Y global location in meters
-      03.  Parent Bone Z global location in meters
-      04.  Parent Bone truncated normalized basis axis x 0
-      05.  Parent Bone truncated normalized basis axis x 1
-      06.  Parent Bone truncated normalized basis axis x 2
-      07.  Parent Bone truncated normalized basis axis y 0
-      08.  Parent Bone truncated normalized basis axis y 1
-      09.  Parent Bone truncated normalized basis axis y 2
-      10.  Parent Bone X global scale in meters
-      11.  Parent Bone Y global scale in meters
-      12.  Parent Bone Z global scale in meters
+      02. Parent Bone Y global location in meters
+      03. Parent Bone Z global location in meters
+      04. Parent Bone truncated normalized basis axis x 0
+      05. Parent Bone truncated normalized basis axis x 1
+      06. Parent Bone truncated normalized basis axis x 2
+      07. Parent Bone truncated normalized basis axis y 0
+      08. Parent Bone truncated normalized basis axis y 1
+      09. Parent Bone truncated normalized basis axis y 2
+      10. Parent Bone X global scale in meters
+      11. Parent Bone Y global scale in meters
+      12. Parent Bone Z global scale in meters
       14. Body mass in kilograms
       15. (-1) masculine and (1) Feminine unit-less
       16. Head circumference in meters
