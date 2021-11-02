@@ -11,52 +11,64 @@ Use dlrm to rank bones.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-1. Install dlrm.
-    * Install mamba forge
-    * `source ~/.bashrc`
-    * `cd dlrm`
-    * `pip install -r requirements.txt`
-    * `mamba install tensorboard`
-    * `pip3 install torch==1.10.0+cu113 torchvision==0.11.1+cu113 torchaudio==0.10.0+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html`
-2. Generate training data.
-3. Mapping to bone names, attributes and categories.
-4. Use a training app create test data.
-5. Generate train and test datasets for T-Posed character surfaces
+01. Install dlrm.
+    - Install mamba forge
+    - `source ~/.bashrc`
+    - `cd dlrm`
+    - `pip install -r requirements.txt`
+    - `mamba install tensorboard`
+    - `pip3 install torch==1.10.0+cu113 torchvision==0.11.1+cu113 torchaudio==0.10.0+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html`
+02. Generate training data.
+03. Mapping to bone names, attributes and categories.
+04. Use a training app create test data.
+05. Generate train and test datasets for T-Posed character surfaces
    1. Is the bone mapping correct?
    2. features
-      1. Bone X global location in meters
-      2. Bone Y global location in meters
-      3. Bone Z global location in meters
-      4. Bone truncated normalized basis axis x 0
-      5. Bone truncated normalized basis axis x 1
-      6. Bone truncated normalized basis axis x 2
-      7. Bone truncated normalized basis axis y 0
-      8. Bone truncated normalized basis axis y 1
-      9. Bone truncated normalized basis axis y 2
+      01. Bone X global location in meters
+      02. Bone Y global location in meters
+      03. Bone Z global location in meters
+      04. Bone truncated normalized basis axis x 0
+      05. Bone truncated normalized basis axis x 1
+      06. Bone truncated normalized basis axis x 2
+      07. Bone truncated normalized basis axis y 0
+      08. Bone truncated normalized basis axis y 1
+      09. Bone truncated normalized basis axis y 2
       10. Bone X global scale in meters
       11. Bone Y global scale in meters
       12. Bone Z global scale in meters
-      13. Body mass in kilograms
-      14. (-1) masculine and (1) Feminine unit-less
-      15. Head circumference in meters
-      16. Neckline circumference in meters
-      17. Left Shoulder circumference in meters
-      18. Right Shoulder circumference in meters
-      19. Left Elbow circumference in meters
-      20. Right Elbow circumference in meters
-      21. Left wrist circumference in meters
-      22. Right wrist circumference in meters
-      23. Waist circumference in meters
-      24. Left thigh circumference in meters
-      25. Right thigh circumference in meters
-      26. Left ankle circumference in meters
-      27. Right ankle circumference in meters
+      13. Parent Bone X global location in meters
+      02.  Parent Bone Y global location in meters
+      03.  Parent Bone Z global location in meters
+      04.  Parent Bone truncated normalized basis axis x 0
+      05.  Parent Bone truncated normalized basis axis x 1
+      06.  Parent Bone truncated normalized basis axis x 2
+      07.  Parent Bone truncated normalized basis axis y 0
+      08.  Parent Bone truncated normalized basis axis y 1
+      09.  Parent Bone truncated normalized basis axis y 2
+      10.  Parent Bone X global scale in meters
+      11.  Parent Bone Y global scale in meters
+      12.  Parent Bone Z global scale in meters
+      14. Body mass in kilograms
+      15. (-1) masculine and (1) Feminine unit-less
+      16. Head circumference in meters
+      17. Neckline circumference in meters
+      18. Left Shoulder circumference in meters
+      19. Right Shoulder circumference in meters
+      20. Left Elbow circumference in meters
+      21. Right Elbow circumference in meters
+      22. Left wrist circumference in meters
+      23. Right wrist circumference in meters
+      24. Waist circumference in meters
+      25. Left thigh circumference in meters
+      26. Right thigh circumference in meters
+      27. Left ankle circumference in meters
+      28. Right ankle circumference in meters
    3. categorical features
-      1. Corresponding VRM Bone
+      01. Corresponding VRM Bone
    4. A missing value means the field is empty.
-6. Train.
-7. Test.
-8. Use on cpu and in Godot Engine.
+06. Train.
+07. Test.
+08. Use on cpu and in Godot Engine.
    1. Probability of a click.
 
 ## Positive Consequences <!-- optional -->
