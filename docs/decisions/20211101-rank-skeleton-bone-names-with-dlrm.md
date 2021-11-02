@@ -66,6 +66,8 @@ Use dlrm to rank bones.
 * We can guess the proper name.
 * Useful for the facial mapping problem?
 * Useful for the character generator slider recommendation problem?
+* Generate test data by moving the character
+* Inference requires only single pose inputs.
 
 ## Negative Consequences <!-- optional -->
 
