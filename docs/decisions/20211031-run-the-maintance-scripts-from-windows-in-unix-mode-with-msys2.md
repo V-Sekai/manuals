@@ -17,6 +17,7 @@ Use msys2 on Windows to improve this.
 * `Set-ExecutionPolicy RemoteSigned -scope CurrentUser`
 * `iwr -useb get.scoop.sh | iex`
 * `scoop install msys`
+* `msys2`
 * `pacman -S ssh-pageant openssh git python3`
 * Copy to ~/.bashrc
 * `eval $(/usr/bin/ssh-pageant -r -a "/tmp/.ssh-pageant-$USERNAME")`
