@@ -10,7 +10,7 @@ The metaverse needs creators.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-We propose to create a V-Sekai guide to creating the metaverse, creating your own virtual you and creating a world. This can be a collaboration with others to provide matching guides to other metaverses.
+We propose to create a V-Sekai guide to creating the metaverse, creating your own virtual you and creating a part of the world. This can be a collaboration with others to provide matching guides to other metaverses.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
