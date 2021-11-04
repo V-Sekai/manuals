@@ -1,6 +1,6 @@
 # [short title of solved problem and solution]
 
-- Status: proposed <-- draft | rejected | accepted | deprecated | superseded by -->
+- Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
 
