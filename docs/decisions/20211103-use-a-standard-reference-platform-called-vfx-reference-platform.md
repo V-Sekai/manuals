@@ -51,6 +51,7 @@ We do have to choose a reference platform even if we don't think about it to upl
 - https://vfxplatform.com/
 - https://hub.docker.com/u/aswf
 - https://hub.docker.com/r/aswf/ci-base
+- https://github.com/AcademySoftwareFoundation/aswf-docker/tree/master/ci-base
 
 ## Derivative License
 
