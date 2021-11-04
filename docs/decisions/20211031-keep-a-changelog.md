@@ -1,5 +1,7 @@
 # Keep a changelog
 
+- Status: accepted
+
 ### Context and Problem Statement
 
 Humans need to know what has changed
