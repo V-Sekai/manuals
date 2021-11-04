@@ -96,6 +96,7 @@ We need motions for our character controller without using an off-the-shelf blac
 
 - https://www.blender.org/
 - https://hackmd.io/EmOAt375S8KFqaNdPDJCXQ
+- https://github.com/V-Sekai/V-Sekai-Blender-tools/tree/main/addons/blender-skeletal-motion-animate
 
 ## Derivative License
 
