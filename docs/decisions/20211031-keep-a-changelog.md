@@ -8,7 +8,7 @@ Humans need to know what has changed
 
 ### Describe the feature / enhancement and how it helps to overcome the problem or limitation
 
-Copied from Keep a change log.
+Copied from https://keepachangelog.com.
 
 > What is a changelog?
 
@@ -23,6 +23,9 @@ Who needs a changelog?
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
 Keep a changelog.
+
+1. Use the https://github.com/V-Sekai/v-sekai-proposals repository as a placeholder.
+1. Delay migrations to main project repository to a later date.
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 
