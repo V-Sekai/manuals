@@ -1,6 +1,6 @@
 # Bolster creating the metaverse
 
-- Status: proposed <-- draft | rejected | accepted | deprecated | superseded by -->
+- Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
 
 ## Context and Problem Statement
 
