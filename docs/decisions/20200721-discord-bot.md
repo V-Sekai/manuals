@@ -1,5 +1,7 @@
 # Notify community members and users about activity and updates via a Discord bot
 
+- Status: draft
+
 ## Context and Problem Statement
 
 We want a way to notify community members and users about activity and updates.
