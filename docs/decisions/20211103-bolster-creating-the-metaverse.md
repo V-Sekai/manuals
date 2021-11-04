@@ -14,7 +14,7 @@ We propose to create a V-Sekai guide to creating the metaverse, creating your ow
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-Learn from how experience educators how to bloster new creators.
+Learn from how experienced educators how to bloster new creators.
 
 ## Positive Consequences <!-- optional -->
 
