@@ -21,21 +21,17 @@
 ## Positive Consequences <!-- optional -->
 
 - [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
-- […]
 
 ## Negative Consequences <!-- optional -->
 
 - [e.g., compromising quality attribute, follow-up decisions required, …]
-- […]
 
 [this section can be repeated for each option if more than one option is open for consideration]
 
 ## Option graveyard: <!-- same as above -->
 
-- Option:
-<!-- [List the proposed options no longer open for consideration.] -->
-- Rejection Reason:
-<!-- [List the reasons for the rejection: (the Bad traits)] -->
+- Option: <!-- [List the proposed options no longer open for consideration.] -->
+- Rejection Reason: <!-- [List the reasons for the rejection: (the Bad traits)] -->
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
@@ -47,8 +43,8 @@
 
 ## References <!-- optional -->
 
-- [Link type](link to adr) <!-- example: Refined by [xxx](yyyymmdd-xxx.md) -->
-- … <!-- numbers of links can vary -->
+- [Link type](link to decision) <!-- example: Refined by [xxx](yyyymmdd-xxx.md) -->
+- <!-- numbers of links can vary -->
 
 ## Derivative License
 
