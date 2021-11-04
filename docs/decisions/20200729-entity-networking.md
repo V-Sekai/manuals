@@ -1,5 +1,8 @@
 # Adding Entity Networking to Groups
 
+- Status: accepted
+- Deciders: V-Sekai,Lyuma,SaracenOne
+
 ## Context and Problem Statement
 
 For Groups, this system aims to solve the following issues:
