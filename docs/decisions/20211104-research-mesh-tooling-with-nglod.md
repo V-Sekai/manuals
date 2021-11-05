@@ -1,4 +1,4 @@
-# Research mesh tooling with kaolin
+# Research mesh tooling with nglod
 
 - Status: draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
@@ -8,41 +8,27 @@
 
 Need geometric tools for many things in the V-Sekai.
 
-[Describe the context and problem statement, e.g., in free form using two to three sentences. You may want to articulate the problem in the form of a question.]
-
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-Use kaolin for some of the tools.
+Use nglod for some of the 3d geometric tools.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-1. `git clone https://github.com/NVIDIAGameWorks/kaolin.git`
+1. `git clone https://github.com/nv-tlabs/nglod.git`
 1. Install https://github.com/conda-forge/miniforge#mambaforge
-1. `conda create --name kaolin python=3.9`
-1. `conda activate kaolin`
+1. `conda create --name nglod python=3.9`
+1. `conda activate nglod`
 1. `conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch`
-1. `python setup.py develop`
-1. Test the install. `python -c "import kaolin; print(kaolin.__version__)"`
+1. `pip install -r ./infra/requirements.txt`
 
-### Questions
-
-Hi fire , thanks for your interest in Kaolin. Currently probably the best way to learn Kaolin is to take a look through the documentation and look for relevant functions. We hope to make more demos which will make learning Kaolin smoother in the future.
-
-The functions which will be useful to you would be:
-
-`kaolin.io.obj.import_mesh` to import a mesh.
-
-`torch.meshgrid` to generate a bunch of 3D coordinates of a voxel grid.
-
-`kaolin.metrics.trianglemesh.point_to_mesh_distance` to get the distance function for those points.
-
-`kaolin.ops.mesh.check_sign` to get the sign of the points to multiply with the distance.
-
-`kaolin.ops.conversions.voxelgrids_to_trianglemeshes` to convert the SDF grid to a mesh.
+```
+python app/main.py --net OctreeSDF --num-lods 5 --dataset-path data/armadillo.obj --epoch 250 --exp-name armadillo
+```
 
 ## Positive Consequences <!-- optional -->
 
-- [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
+- Maybe possible to encode as onnx
+- Maybe usable cpu only.
 
 ## Negative Consequences <!-- optional -->
 
