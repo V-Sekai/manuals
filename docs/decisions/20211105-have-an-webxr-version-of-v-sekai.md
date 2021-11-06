@@ -1,4 +1,4 @@
-# Iterate faster on WasGo prototype by using Godot 3.4
+# Have an WebXR version of V-Sekai that is more accessible
 
 - Status: rejected <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
@@ -6,27 +6,22 @@
 
 ## Context and Problem Statement
 
-Iterating on WasGo is too slow.
+It's hard to get access to V-Sekai.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-Propose iterating on WasGo on Godot 3.4.
+Let's strip down our V-Sekai prototype and make it work for WebXR.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-1. Branch off Godot 3.4
-1. Use our version of wasgo
-1. Restore wasgo demos.
-1. Implement templated C++ code via mustashe for Wasgo
-1. Port to master
+1. Upgrade to 3.4 Godot Engine
 
 ## Positive Consequences <!-- optional -->
 
-- Separate the two axis of development. The first axis is Godot Engine master and the second axis is Wasgo development.
+- [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
 
 ## Negative Consequences <!-- optional -->
 
-- May or may not be more expensive.
 - Took too much effort to verify.
 
 ## Option graveyard: <!-- same as above -->
@@ -36,15 +31,15 @@ Propose iterating on WasGo on Godot 3.4.
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
-Coding strategy is not coding.
+This is not a few lines of code and is a V-Sekai core topic.
 
 ## Is there a reason why this should be core and done by us?
 
-This is a V-Sekai strategy plan.
+We maintain core V-Sekai.
 
 ## References <!-- optional -->
 
-- https://github.com/V-Sekai/WasGo
+- https://github.com/V-Sekai/groups-workspace-fire
 
 ## Derivative License
 
