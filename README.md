@@ -8,7 +8,14 @@ Public proposal and issue tracker repository for V-Sekai
 ## How to use?
 
 ```
-# npm install -g log4brains
+# Setup
+mkdir -p ~/.local/bin/
+npm config set prefix ~/.local
+export PATH=~/.local/bin/:$PATH
+npm install -g log4brains
+```
+
+```
 log4brains adr new
 ```
 
