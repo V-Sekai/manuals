@@ -21,10 +21,12 @@ Make an addon that calls Blender directly and tell it to export to the proper pl
 ## Positive Consequences <!-- optional -->
 
 - Integrates Blender into Godot Engine workflows.
+- Downside of Blender version updates can be fixed by the use of the V-Sekai exporter tool.
 
 ## Negative Consequences <!-- optional -->
 
 - Requires blender to export cicd.
+- Changes to the Blender version causes the project to desync.
 
 ## Option graveyard: <!-- same as above -->
 
@@ -42,6 +44,7 @@ I know how to do this and others don't.
 ## References <!-- optional -->
 
 - https://www.blender.org/
+- https://github.com/V-Sekai/godot-blender
 
 ## Derivative License
 
