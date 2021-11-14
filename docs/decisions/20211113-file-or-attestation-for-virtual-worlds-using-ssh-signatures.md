@@ -49,7 +49,17 @@ Good "avatar@v-sekai.org" signature for ernest.lee@chibifire.com with RSA key SH
 ```
 Referenced https://www.agwa.name/blog/post/ssh_signatures
 
+### Encrypt files
+
+Create a sign CA using x509 and two other x509 CA for encrypt and auth, then concatentate into a `.crt` chain. ???
+
+Sign this `.crt` chain with your sign CA. 
+
+Use your encrypt x509 key to encrypt files with SMIME.
+
 ### How to use a x509 certificate for ssh login
+
+The literature says you can do x509 to ssh keys.
 
 ```bash
 # Extract the private key from the P12:
@@ -63,14 +73,7 @@ ssh-keygen -i -m PKCS8 -f my_sshkeys.pem
 eval "$(ssh-agent -s)"
 ssh-add my_sshkeys.pem
 # https://trueg.wordpress.com/2012/09/06/use-an-x-509-certificate-for-ssh-login/
-# TODO: fire 2021-11-13 use mbedtls only
 ```
-
-### Encrypt files
-
-A common recommendation is not to combine encryption with authentication.
-
-Use your SSH signature to sign a enveloped list of X.509 certificates and use SMIME.
 
 ### Create SSH Certificates to delegate roles
 
