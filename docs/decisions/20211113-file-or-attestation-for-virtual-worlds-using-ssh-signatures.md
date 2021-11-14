@@ -59,7 +59,7 @@ SSH signatures can be used for:
 3. Used for lobby servers to prove to the player that they are official.
 4. Double sided friending
 
-### How to use ssh signatures?
+### How to use a x509 certificate for ssh login
 
 ```bash
 # Extract the private key from the P12:
