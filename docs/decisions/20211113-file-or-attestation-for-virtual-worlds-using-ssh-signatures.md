@@ -49,16 +49,6 @@ Good "avatar@v-sekai.org" signature for ernest.lee@chibifire.com with RSA key SH
 ```
 Referenced https://www.agwa.name/blog/post/ssh_signatures
 
-
-### List of uses for ssh signatures
-
-SSH signatures can be used for:
-
-1. Use for verifying binaries
-2. Use for verifying game modifications
-3. Used for lobby servers to prove to the player that they are official.
-4. Double sided friending
-
 ### How to use a x509 certificate for ssh login
 
 ```bash
@@ -118,6 +108,10 @@ Avoid compression explosions.
 
 - Able to distribute a game launcher.
 - Able to add a makers mark to items.
+- Use for verifying binaries
+- Use for verifying game modifications
+- Used for lobby servers to prove to the player that they are official.
+- Double sided friending
 
 ## Negative Consequences <!-- optional -->
 
