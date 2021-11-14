@@ -29,13 +29,13 @@ Create a file.
 $ touch avatar-sample.vrm
 ```
 
-Sign your file.
+Sign your file. `-n` can have other namespaces seperated by commas.
 
 ```
 $ ssh-keygen -Y sign -f me.pub -n "avatar@v-sekai.org" avatar-sample.vrm
 ```
 
-Write signature to avatar-sample.vrm.sig # Can be attested by multiple people with multiple `.sig`
+Write signature to avatar-sample.vrm.sig # Can be attested by multiple people with multiple `.sig`. 
 
 ```
 $ echo -n ernest.lee@chibifire.com (String | cat - <(echo -n " ") | cat - <(ssh-add -L) > allowed_signers # Can have more than one line. T
