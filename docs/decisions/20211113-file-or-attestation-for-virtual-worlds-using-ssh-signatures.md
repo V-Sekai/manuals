@@ -148,6 +148,7 @@ We have to define the trust.
 - https://stackoverflow.com/questions/4629537/how-to-encrypt-data-in-php-using-public-private-keys
 - https://stackoverflow.com/questions/60160082/how-to-achieve-openssl-smime-encrypt-with-public-key-functionality-in-code
 - https://github.com/cloudtools/ssh-cert-authority
+- https://github.com/je9000/ssh-smime
 
 ## Derivative License
 
