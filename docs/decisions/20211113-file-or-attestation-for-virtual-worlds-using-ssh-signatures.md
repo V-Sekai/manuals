@@ -60,22 +60,12 @@ Sign this `.crt` chain with your sign CA.
 
 Use your encrypt x509 key to encrypt files with SMIME.
 
-### How to use a x509 certificate for ssh login
-
-The literature says you can do x509 to ssh keys.
-
 ```bash
-# Extract the private key from the P12:
-openssl pkcs12 -in my_cert.p12 -out my_cert.pem -nodes
-openssl pkcs12 -in my_cert.p12 -out my_sshkeys.pem -nodes -nocerts
-# Finally extract the public key from the certificate PEM file and append it to the private key:
-openssl x509 -in my_cert.pem -pubkey -noout >> my_sshkeys.pem
-# my_cert.pem can now be removed. It is not required anymore.
-# You can use ssh-keygen to create the line to put into your remote `~/.ssh/authorized_keys` file:
-ssh-keygen -i -m PKCS8 -f my_sshkeys.pem
-eval "$(ssh-agent -s)"
-ssh-add my_sshkeys.pem
-# https://trueg.wordpress.com/2012/09/06/use-an-x-509-certificate-for-ssh-login/
+echo -n "This is a vrm model." > avatar-commission.vrm
+gcc -o ssh-smime ssh-smime.c -lssl -lcrypto
+./ssh-smime.exe -i avatar-commission.vrm -o avatar-commission.vrm.enc <(ssh-add -L)
+# TODO: fire 2021-11-14
+# openssl smime -decrypt -in avatar-commission.vrm.enc -inkey CA -informat pem -out avatar-commission.vrm.decrypt
 ```
 
 ### Create SSH Certificates to delegate roles
