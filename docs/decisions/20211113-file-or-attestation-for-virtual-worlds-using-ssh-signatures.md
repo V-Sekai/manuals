@@ -29,23 +29,24 @@ Create a file.
 $ touch avatar-sample.vrm
 ```
 
-Sign your file. `-n` can have other namespaces seperated by commas.
+Sign your file. 
 
 ```
-$ ssh-keygen -Y sign -f me.pub -n "avatar@v-sekai.org" avatar-sample.vrm
+ssh-keygen -Y sign -f <(ssh-add -L) -n "avatar@v-sekai.org" < avatar-sample.vrm >> avatar-sample.vrm.avatar%40V-sekai.com.sig
+ssh-keygen -Y sign -f <(ssh-add -L) -n "me@v-sekai.org" < avatar-sample.vrm >> avatar-sample.vrm.me%40V-sekai.com.sig
 ```
 
 Write signature to avatar-sample.vrm.sig # Can be attested by multiple people with multiple `.sig`. 
 
 ```
-$ echo -n ernest.lee@chibifire.com (String | cat - <(echo -n " ") | cat - <(ssh-add -L) > allowed_signers # Can have more than one line. T
+echo -n ernest.lee@chibifire.com | cat - <(echo -n " ") | cat - <(ssh-add -L) > allowed_signers # Can have more than o
+ne line.
 ```
-
 The allowed_signers file associates a string that represents a person (Principle) to a Public Key.
 
 ```
-$ ssh-keygen -Y verify -f allowed_signers -I ernest.lee@chibifire.com -n "avatar@v-sekai.org" -s avatar-sample.vrm.sig < avatar-sample.vrm
-Good "avatar@v-sekai.org" signature for ernest.lee@chibifire.com with RSA key SHA256:W7APE+9tyFUdGzzcYCwcdknWm0vb1KPso8XogFP2u+k
+ssh-keygen -Y verify -f allowed_signers -I ernest.lee@chibifire.com -n "avatar@v-sekai.org" -s avatar-sample.vrm.avatar%40V-sekai.com.sig < avatar-sample.vrm
+ssh-keygen -Y verify -f allowed_signers -I ernest.lee@chibifire.com -n "me@v-sekai.org" -s  avatar-sample.vrm.me%40V-sekai.com.sig < avatar-sample.vrm
 ```
 Referenced https://www.agwa.name/blog/post/ssh_signatures
 
