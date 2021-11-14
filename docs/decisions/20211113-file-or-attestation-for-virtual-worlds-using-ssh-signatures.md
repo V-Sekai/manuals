@@ -16,7 +16,7 @@ Use ssh signatures.
 
 An analogy of a CD and a CD case with stickers.
 
-### 00 VRM avatar attestation
+### File attestation
 
 Read your public key.
 
