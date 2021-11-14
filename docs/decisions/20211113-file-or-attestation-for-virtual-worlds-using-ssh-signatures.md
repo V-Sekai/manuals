@@ -89,7 +89,7 @@ Avoid compression explosions.
 2. zip AvatarSample_A.vrm 
 ```
 
-### 06 
+### 06 Principal in `allowed_signers`
 
 The allowed_signers file associates a string that represents a person (Principle) to a Public Key.
 
@@ -99,6 +99,13 @@ USERNAME="fire"
 curl https://github.com/${USERNAME}.keys | while read key; do
   echo "$USERNAME $key" >> allowed_signers.github
 done
+```
+
+How to check the principal?
+
+```
+# https://blog.sigstore.dev/ssh-is-the-new-gpg-74b3c6cc51c0
+cat FILE | ssh-keygen -Y verify -n file -f allowed_signers.github -I USER -s FILE.sig
 ```
 
 ## Positive Consequences <!-- optional -->
