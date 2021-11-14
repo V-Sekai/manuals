@@ -18,16 +18,37 @@ An analogy of a CD and a CD case with stickers.
 
 ### 00 VRM avatar attestation
 
-```bash
+Read your public key.
+
+```
 $ ssh-add -L > me.pub # Can be related to a X.509 `.crt`
+```
+
+Create a file.
+```
 $ touch avatar-sample.vrm
+```
+
+Sign your file.
+
+```
 $ ssh-keygen -Y sign -f me.pub -n "avatar@v-sekai.org" avatar-sample.vrm
+```
+
 Write signature to avatar-sample.vrm.sig # Can be attested by multiple people with multiple `.sig`
+
+```
 $ echo -n ernest.lee@chibifire.com (String | cat - <(echo -n " ") | cat - <(ssh-add -L) > allowed_signers # Can have more than one line. T
+```
+
+The allowed_signers file associates a string that represents a person (Principle) to a Public Key.
+
+```
 $ ssh-keygen -Y verify -f allowed_signers -I ernest.lee@chibifire.com -n "avatar@v-sekai.org" -s avatar-sample.vrm.sig < avatar-sample.vrm
 Good "avatar@v-sekai.org" signature for ernest.lee@chibifire.com with RSA key SHA256:W7APE+9tyFUdGzzcYCwcdknWm0vb1KPso8XogFP2u+k
-# Referenced https://www.agwa.name/blog/post/ssh_signatures
 ```
+Referenced https://www.agwa.name/blog/post/ssh_signatures
+
 
 ### 01 Use an X.509 certificate for SSH Login
 
@@ -84,25 +105,6 @@ Avoid compression explosions.
 # Email multipart
 
 1. Use email multipart
-```
-
-### 06 Principal in `allowed_signers`
-
-The allowed_signers file associates a string that represents a person (Principle) to a Public Key.
-
-```
-# https://blog.sigstore.dev/ssh-is-the-new-gpg-74b3c6cc51c0
-USERNAME="fire"
-curl https://github.com/${USERNAME}.keys | while read key; do
-  echo "$USERNAME $key" >> allowed_signers
-done
-```
-
-How to check the principal?
-
-```
-# https://blog.sigstore.dev/ssh-is-the-new-gpg-74b3c6cc51c0
-cat FILE | ssh-keygen -Y verify -n file -f allowed_signers.github -I USER -s FILE.sig
 ```
 
 ## Positive Consequences <!-- optional -->
