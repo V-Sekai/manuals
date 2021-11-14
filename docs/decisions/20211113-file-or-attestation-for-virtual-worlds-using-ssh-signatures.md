@@ -74,16 +74,16 @@ curl http://matrix-homeserver.example.com/fire > avatars%40V-sekai.com.allowed_s
 ### 05 Envelope
 
 ```bash
-# Email multipart
-
-1. Use email multipart
-
 # Uncompressed zip
 
 Avoid compression explosions.
 
 1. zip AvatarSample_A.vrm.sig
 2. zip AvatarSample_A.vrm 
+
+# Email multipart
+
+1. Use email multipart
 ```
 
 ### 06 Principal in `allowed_signers`
