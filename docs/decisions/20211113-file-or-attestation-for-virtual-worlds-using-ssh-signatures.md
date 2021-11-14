@@ -131,6 +131,7 @@ We have to define the trust.
 ## References <!-- optional -->
 
 - https://github.com/V-Sekai/
+- https://github.com/sigstore/rekor/tree/main/pkg/pki/ssh
 
 ## Derivative License
 
