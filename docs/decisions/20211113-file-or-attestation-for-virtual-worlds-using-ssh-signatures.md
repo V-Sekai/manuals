@@ -78,7 +78,7 @@ ssh-add my_sshkeys.pem
 
 ### Encrypt files
 
-Don't combine encryption with authentication.
+A common recommendation is not to combine encryption with authentication.
 
 Use your SSH signature to sign a enveloped list of X.509 certificates and use SMIME.
 
