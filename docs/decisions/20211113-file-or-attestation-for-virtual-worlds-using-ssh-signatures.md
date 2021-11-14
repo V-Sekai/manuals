@@ -51,7 +51,7 @@ Referenced https://www.agwa.name/blog/post/ssh_signatures
 
 ### Encrypt files
 
-Create a sign CA using x509 and two other x509 CA for encrypt and auth, then concatentate into a `.crt` chain. ???
+Create a sign CAs using and two other CAs for encrypt and auth, then concatentate together certificate chain. ???
 
 Sign this `.crt` chain with your sign CA. 
 
