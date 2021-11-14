@@ -50,24 +50,6 @@ ssh-keygen -Y verify -f allowed_signers -I ernest.lee@chibifire.com -n "me@v-sek
 ```
 Referenced https://www.agwa.name/blog/post/ssh_signatures
 
-### Encrypt files
-
-TODO: find x509 alternative
-
-Create a sign CAs using and two other CAs for encrypt and auth, then concatentate together certificate chain. ???
-
-Sign this `.crt` chain with your sign CA. 
-
-Use your encrypt x509 key to encrypt files with SMIME.
-
-```bash
-echo -n "This is a vrm model." > avatar-commission.vrm
-gcc -o ssh-smime ssh-smime.c -lssl -lcrypto
-./ssh-smime.exe -i avatar-commission.vrm -o avatar-commission.vrm.enc <(ssh-add -L)
-# TODO: fire 2021-11-14
-# openssl smime -decrypt -in avatar-commission.vrm.enc -inkey CA -informat pem -out avatar-commission.vrm.decrypt
-```
-
 ### Create SSH Certificates to delegate roles
 
 ```bash
@@ -85,21 +67,6 @@ curl files://uro > avatars%40V-sekai.com.allowed_signers # Assumed in correct fo
 curl http://matrix-homeserver.example.com/fire > avatars%40V-sekai.com.allowed_signers # Assumed in correct format
 ```
 
-### Envelope
-
-```bash
-# Uncompressed zip
-
-Avoid compression explosions.
-
-1. zip AvatarSample_A.vrm.sig
-2. zip AvatarSample_A.vrm 
-
-# Email multipart
-
-1. Use email multipart
-```
-
 ## Positive Consequences <!-- optional -->
 
 - Able to distribute a game launcher.
@@ -111,9 +78,7 @@ Avoid compression explosions.
 
 ## Negative Consequences <!-- optional -->
 
-- [e.g., compromising quality attribute, follow-up decisions required, …]
-
-[this section can be repeated for each option if more than one option is open for consideration]
+- No data encryption
 
 ## Option graveyard: <!-- same as above -->
 
