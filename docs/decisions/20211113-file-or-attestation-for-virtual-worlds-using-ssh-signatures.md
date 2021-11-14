@@ -31,12 +31,12 @@ Good "avatar@v-sekai.org" signature for ernest.lee@chibifire.com with RSA key SH
 
 ### 01 Use an X.509 certificate for SSH Login
 
-```bash
-# ssh signatures can be used for:
+SSH signatures can be used for:
+
 1. Use for verifying binaries
 2. Use for verifying game modifications
 3. Used for lobby servers to prove to the player that they are official.
-```
+4. Double sided friending
 
 ### 02 List of uses for ssh signatures
 
