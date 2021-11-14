@@ -50,7 +50,7 @@ Good "avatar@v-sekai.org" signature for ernest.lee@chibifire.com with RSA key SH
 Referenced https://www.agwa.name/blog/post/ssh_signatures
 
 
-### 01 Use an X.509 certificate for SSH Login
+### 01 List of uses for ssh signatures
 
 SSH signatures can be used for:
 
@@ -59,7 +59,7 @@ SSH signatures can be used for:
 3. Used for lobby servers to prove to the player that they are official.
 4. Double sided friending
 
-### 02 List of uses for ssh signatures
+### 02 How to use ssh signatures?
 
 ```bash
 # Extract the private key from the P12:
@@ -78,10 +78,9 @@ ssh-add my_sshkeys.pem
 
 ### 03 Encrypt files
 
-Open problems:
+Don't combine encryption with authentication.
 
-1. Separating authentication from encryption
-2. Ensuring smime doesn't lose any file data
+Use your SSH signature to sign a enveloped list of X.509 certificates and use SMIME.
 
 ### 04 Distributing keys
 
