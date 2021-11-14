@@ -23,7 +23,7 @@ $ ssh-add -L > me.pub # Can be related to a X.509 `.crt`
 $ touch avatar-sample.vrm
 $ ssh-keygen -Y sign -f me.pub -n "avatar@v-sekai.org" avatar-sample.vrm
 Write signature to avatar-sample.vrm.sig # Can be attested by multiple people with multiple `.sig`
-$ echo -n ernest.lee@chibifire.com | cat - <(echo -n " ") | cat - <(ssh-add -L) > allowed_signers # Can have more than one line
+$ echo -n ernest.lee@chibifire.com (String | cat - <(echo -n " ") | cat - <(ssh-add -L) > allowed_signers # Can have more than one line. T
 $ ssh-keygen -Y verify -f allowed_signers -I ernest.lee@chibifire.com -n "avatar@v-sekai.org" -s avatar-sample.vrm.sig < avatar-sample.vrm
 Good "avatar@v-sekai.org" signature for ernest.lee@chibifire.com with RSA key SHA256:W7APE+9tyFUdGzzcYCwcdknWm0vb1KPso8XogFP2u+k
 # Referenced https://www.agwa.name/blog/post/ssh_signatures
@@ -87,6 +87,18 @@ Avoid compression explosions.
 
 1. zip AvatarSample_A.vrm.sig
 2. zip AvatarSample_A.vrm 
+```
+
+### 06 
+
+The allowed_signers file associates a string that represents a person (Principle) to a Public Key.
+
+```
+# https://blog.sigstore.dev/ssh-is-the-new-gpg-74b3c6cc51c0
+USERNAME="fire"
+curl https://github.com/${USERNAME}.keys | while read key; do
+  echo "$USERNAME $key" >> allowed_signers.github
+done
 ```
 
 ## Positive Consequences <!-- optional -->
