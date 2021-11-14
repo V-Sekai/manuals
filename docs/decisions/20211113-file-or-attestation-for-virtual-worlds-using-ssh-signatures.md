@@ -82,6 +82,13 @@ A common recommendation is not to combine encryption with authentication.
 
 Use your SSH signature to sign a enveloped list of X.509 certificates and use SMIME.
 
+### Create SSH Certificates
+
+ssh-keygen -f CA
+ssh-keygen -s CA -I fire@example.com -n avatar@V-Sekai.com -V +1h KEYFILE.pub
+
+ssh-keygen -Us <(ssh-add -L) -I fire@example.com -n avatar@V-Sekai.com -V +1h KEYFILE.pub
+
 ### Distributing keys
 
 ```bash
