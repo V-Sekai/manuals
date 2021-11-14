@@ -1,7 +1,7 @@
 # Learn how to scale V-Sekai using bots and multipliers
 
 - Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
-- Deciders: V-Sekai,
+- Deciders: V-Sekai,fire,
 - Tags: V-Sekai,
 
 ## Context and Problem Statement
