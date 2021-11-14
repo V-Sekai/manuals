@@ -57,13 +57,10 @@ ssh-add my_sshkeys.pem
 
 ### 03 Encrypt files
 
-```bash
-touch avatar-commission.vrm 
-openssl rsautl -encrypt -oaep -pubin -inkey <(ssh-keygen -e -f me.pub -m PKCS8) -in avatar-commission.vrm -out avatar-commission.vrm.enc
-openssl rsautl -decrypt -oaep -inkey secret_key.pem -in avatar-commission.vrm.enc -out avatar-commission.vrm.new
-# https://www.bjornjohansen.com/encrypt-file-using-ssh-key
-# TODO: fire 2021-11-13 decrypt with hardware tokens
-```
+Open problems:
+
+1. Separating authentication from encryption
+2. Ensuring smime doesn't lose any file data
 
 ### 04 Distributing keys
 
@@ -97,7 +94,7 @@ The allowed_signers file associates a string that represents a person (Principle
 # https://blog.sigstore.dev/ssh-is-the-new-gpg-74b3c6cc51c0
 USERNAME="fire"
 curl https://github.com/${USERNAME}.keys | while read key; do
-  echo "$USERNAME $key" >> allowed_signers.github
+  echo "$USERNAME $key" >> allowed_signers
 done
 ```
 
@@ -139,6 +136,7 @@ We have to define the trust.
 
 - https://github.com/V-Sekai/
 - https://github.com/sigstore/rekor/tree/main/pkg/pki/ssh
+- https://stackoverflow.com/questions/4629537/how-to-encrypt-data-in-php-using-public-private-keys
 
 ## Derivative License
 
