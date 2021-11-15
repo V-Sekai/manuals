@@ -88,6 +88,9 @@ curl http://matrix-homeserver.example.com/fire > avatars%40V-sekai.com.allowed_s
 - Option: Ipfs and Etherium 
 - Rejection Reason: Requires a globally distributed database.
 
+- Option: Sigstore https://www.sigstore.dev/
+- Rejection Reason: Why aren't we using sigstore?
+
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
 Not able to use a few lines of code.
