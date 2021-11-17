@@ -23,6 +23,7 @@ Add an alternative server and document the current api as an openapi schema.
 ## Positive Consequences <!-- optional -->
 
 - More freedom.
+- Xananax said he'll use it. Xanax's games are made 100% of addons with assets and glue code being the game.
 
 ## Negative Consequences <!-- optional -->
 
