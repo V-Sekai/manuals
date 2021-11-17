@@ -11,11 +11,11 @@ Public proposal and issue tracker repository for V-Sekai
 # Setup
 mkdir -p ~/.local/bin/
 npm config set prefix ~/.local
-export PATH=~/.local/bin/:$PATH
 npm install -g log4brains
 ```
 
 ```
+export PATH=~/.local/bin/:$PATH
 log4brains adr new
 ```
 
