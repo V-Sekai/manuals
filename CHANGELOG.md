@@ -13,6 +13,7 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
     **Fixed** for any bug fixes.
     **Security** in case of vulnerabilities.
 -->
+
 ## [Unreleased] 
 
 ## 2021-11-17
@@ -47,13 +48,11 @@ Lyuma: reworked scene export
 
 iFire: Updated the godot branch. There was some some difficult with the blend-io branch so I merged it with other branch import something 
 
-MMMaellon: Didn't we use to have an IK channel?
-Anyway here's some of my ideas on how I plan to revamp RenIK. I'm still hoping that EWBIK takes over RENIK's IK solving one day, so I'm focusing on improving the walk cycle and leaving IK solving alone
-https://mmmaellon.notion.site/Semi-Deterministic-Walk-Cycles-dbe1dcaa307e4fb9b85dd6ee920de20c
-
+MMMaellon: Didn't we use to have an IK channel? Anyway here's some of my ideas on how I plan to revamp RenIK. I'm still hoping that EWBIK takes over RENIK's IK solving one day, so I'm focusing on improving the walk cycle and leaving IK solving alone https://mmmaellon.notion.site/Semi-Deterministic-Walk-Cycles-dbe1dcaa307e4fb9b85dd6ee920de20c
 
 iFire — 07/11/2021: Groups update to the latest Godot. 1. intersect rays api changed. 2. misc crash if precondition fails return
 Oops forgot to upload a few branches.
+
 iFire — 08/11/2021: https://github.com/V-Sekai/godot-blender Now works on my Linux. Need some testing for Windows and Mac. Save a blend file into the godot project and it'll be openable as scene through tricks.
 
 iFire — 08/11/2021: Will be around in voice call for an 30m to 1 hour. 
