@@ -20,6 +20,10 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
 
 ### Added
 
+iFire: Added https://github.com/V-Sekai/v-sekai-proposals/blob/master/CHANGELOG.md
+
+iFire: Update FBX2glTF to create packaged release tags.
+
 iFire: Wild goose chased godot 3.4 webxr. the goose flew away this time. 
 
 iFire: Evaluating Godot 4 for the web. 2D only. Builds in a bit from itch and cicd 
