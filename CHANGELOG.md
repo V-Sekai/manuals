@@ -50,6 +50,8 @@ Lyuma: reworked scene export
 
 ### Changes
 
+iFire: Builds of fbx2gltf from github cicd are now at https://github.com/V-Sekai/FBX2glTF/releases
+
 iFire: Updated the godot branch. There was some some difficult with the blend-io branch so I merged it with other branch import something 
 
 MMMaellon: Didn't we use to have an IK channel? Anyway here's some of my ideas on how I plan to revamp RenIK. I'm still hoping that EWBIK takes over RENIK's IK solving one day, so I'm focusing on improving the walk cycle and leaving IK solving alone https://mmmaellon.notion.site/Semi-Deterministic-Walk-Cycles-dbe1dcaa307e4fb9b85dd6ee920de20c
