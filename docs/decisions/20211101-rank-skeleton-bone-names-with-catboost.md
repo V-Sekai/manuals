@@ -1,5 +1,5 @@
-# Rank skeleton bone names with dlrm
-* Status: proposed <-- draft | rejected | accepted | deprecated | superseded by -->
+# Rank skeleton bone names with catboost
+* Status: accepted <-- draft | rejected | accepted | deprecated | superseded by -->
 
 ## Context and Problem Statement
 
@@ -7,17 +7,11 @@ Improve automatic bone selection
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-Use dlrm to rank bones.
+Use catboost to rank bones.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-01. Install dlrm.
-    - Install mamba forge
-    - `source ~/.bashrc`
-    - `cd dlrm`
-    - `pip install -r requirements.txt`
-    - `mamba install tensorboard`
-    - `pip3 install torch==1.10.0+cu113 torchvision==0.11.1+cu113 torchaudio==0.10.0+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html`
+01. Install catboost
 02. Generate training data.
 03. Mapping to bone names, attributes and categories.
 04. Use a training app create test data.
@@ -49,6 +43,11 @@ Use dlrm to rank bones.
   + bpr from Quora
 * Rejection Reason:
   + Bpr from Quora is not used in production.
+
+* Option:
+  + dlrm from facebook
+* Rejection Reason:
+  + Too difficult to run
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
