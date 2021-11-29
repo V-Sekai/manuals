@@ -24,7 +24,7 @@ WebRTC needs infrastructure; ENet does not.
 
 Dependency problems between ScriptInstance and PacketPeer. What do you mean?
 
-The script_language.h includes packet_peer.h, so PacketPeer cannot use GDVIRTUAL because that needs script_languange.h
+The script_language.h includes packet_peer.h, so PacketPeer cannot use GDVIRTUAL because that needs script_language.h
 
 #### Questions
 
