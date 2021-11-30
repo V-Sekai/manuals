@@ -24,9 +24,13 @@ Works on Windows.
 
 Investigate membrane framework.
 
+Design a schema.
+
 ## Positive Consequences <!-- optional -->
 
-- [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
+- Able to publish v-sekai addons.
+- Overlay existing asset library
+- Able to in a future feature post process packed scenes exported by V-Selai
 
 ## Negative Consequences <!-- optional -->
 
