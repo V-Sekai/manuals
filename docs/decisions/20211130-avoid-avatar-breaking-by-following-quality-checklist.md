@@ -21,11 +21,6 @@ This is defined for a VRM character.
 * Auto generate spring bones via https://fujisunflower.booth.pm/items/2087178
 * Check eyes
 * Check Jaws
-* Feet to the origin from center of mass
-* Cursor to world origin
-* Change to origin
-* Move to below feet
-* Move object origin to origin
 * Adjust spring bones limits
 * Check transparent glasses etc.
 * Run mesh mush at 80 degrees twist on all vertices
@@ -34,12 +29,19 @@ This is defined for a VRM character.
 * The relative angle between the Hips and the Thigh should not be identity.
 * Check manifolds for skin breaking
 
+### Move Feet to the origin of the scene
+
+* Cursor to world origin
+* Change to origin
+* Move to below feet
+* Move object origin to origin
+
 ### Check if environment lighting breaks the avatar
 * Change sky temperature to the brightest
 * test 0.00001 light intensity
 * test 16 light intensity
 
-## How to make a Portrait of the head photo
+### How to make a Portrait of the head photo
 
 * E96E66 background color
 * 16 light intensity and camera set to realistic focal length for a portrait makes the photo look good.
