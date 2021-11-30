@@ -42,8 +42,8 @@ Covert godot asset store api to an openapi schema.
 
 ## Option graveyard: <!-- same as above -->
 
-- Option: <!-- [List the proposed options no longer open for consideration.] -->
-- Rejection Reason: <!-- [List the reasons for the rejection: (the Bad traits)] -->
+- Option: Use the existing asset library backend
+- Rejection Reason: Does not use a modern tech stack.
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
