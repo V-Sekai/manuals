@@ -1,7 +1,7 @@
 # Avoid avatar breaking by following quality checklist
 
-- Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
-- Deciders: V-Sekai,
+- Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
+- Deciders: V-Sekai,fire,
 - Tags: V-Sekai,
 
 ## Context and Problem Statement

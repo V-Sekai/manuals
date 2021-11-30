@@ -16,7 +16,7 @@ This makes Godot Engine core and V-Sekai better because changes are synchronized
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-Here is an example `.gitassembly`
+Here is an example `.gitassembly`:
 
 ```
 stage groups-web-4.x remotes/v-sekai-godot/master
