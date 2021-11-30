@@ -48,6 +48,7 @@ Godot Engine code is core.
 
 - https://github.com/godotengine/godot
 - https://github.com/v-sekai/godot
+- https://www.thregr.org/~wavexx/software/git-assembler/
 
 ## Derivative License
 
