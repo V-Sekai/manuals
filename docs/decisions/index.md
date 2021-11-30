@@ -2,6 +2,8 @@
 
 We are a community of enthusiasts building a next-generation social and gaming VR platform powered by the Godot Engine.
 
+This archive is at https://v-sekai.github.io/v-sekai-proposals/log4brains.
+
 ## Derivative License
 
 Copyright (c) 2020-2021 V-Sekai contributors.
