@@ -16,11 +16,22 @@ This makes Godot Engine core and V-Sekai better because changes are synchronized
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
+Here is an example `.gitassembly`
+
+```
+stage groups-web-4.x remotes/v-sekai-godot/master
+merge groups-web-4.x remotes/lyuma/gltf_shapes_8bones
+merge groups-web-4.x remotes/v-sekai-godot/ninja-ccache
+```
+
 Need to check every line in the list using a comparison link:
 
-* https://github.com/godotengine/godot/compare/master...V-Sekai:blend-io
+* https://github.com/godotengine/godot/compare/master...lyuma:gltf_shapes_8bones
+* https://github.com/godotengine/godot/compare/master...v-sekai-godot:ninja-ccache
 
 Make a corresponding pull request on https://github.com/godotengine/godot/pulls if there isn't one.
+
+Leave a comment in the `.gitassembly` why one cannot create a Godot Engine organization pull request.
 
 ## Positive Consequences <!-- optional -->
 
