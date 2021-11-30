@@ -8,7 +8,7 @@
 
 We use a gitassembler script, but the list has diverged from Godot Engine master.
 
-These critical bugs need to be synced with Godot Engine organization.
+These critical changes need to be synced with Godot Engine organization.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
