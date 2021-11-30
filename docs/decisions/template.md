@@ -41,11 +41,9 @@
 
 [Is there a reason why this should be core and done by us?]
 
-## References <!-- optional -->
+## References <!-- optional and numbers of links can vary -->
 
 - [Link type](link to decision) <!-- example: Refined by [xxx](yyyymmdd-xxx.md) -->
-
-<!-- - numbers of links can vary -->
 
 ## Derivative License
 

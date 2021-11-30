@@ -68,11 +68,9 @@ This can be automated in the future.
 
 This is a guideline and we are in the area.
 
-## References <!-- optional -->
+## References <!-- optional and numbers of links can vary -->
 
 - [VRM - 3D Avatar File Format for VR](https://vrm.dev/en/) <!-- example: Refined by [xxx](yyyymmdd-xxx.md) -->
-
-<!-- numbers of links can vary -->
 
 ## Derivative License
 
