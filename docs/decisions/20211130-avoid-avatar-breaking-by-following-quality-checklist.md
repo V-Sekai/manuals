@@ -26,10 +26,10 @@ This is defined for a VRM character.
 - Run mesh mush at 80 degrees twist on all vertices
 - Check culling locations
 - Match shade and base color in MTOON1
-- The relative angle between the Hips and the Thigh should not be identity.
+- The relative angle between the Hips and the Thigh should something that works for inverse kinematics.
 - Check manifolds for skin breaking
 
-Move Feet to the origin of the scene
+Move the feet to the origin of the scene
 
 - Cursor to world origin
 - Change to origin
