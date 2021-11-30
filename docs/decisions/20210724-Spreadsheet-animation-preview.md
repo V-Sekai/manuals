@@ -12,15 +12,15 @@ Load in a spreadsheet dataview of animation tracks and play animation back.
 
 Work on https://github.com/V-Sekai/godot-hop-spin-dance.
 
-* Display a spreadsheet view.
+- Display a spreadsheet view.
 
-| Key | EN | Animation | Queue Play |
-| --- | -- | --------- | ---- |
-|     |    |           |      |
+| Key | EN  | Animation | Queue Play |
+| --- | --- | --------- | ---------- |
+|     |     |           |            |
 
-* Show the debug animation tree.
+- Show the debug animation tree.
 
-* Show graphical playback on a VRM character
+- Show graphical playback on a VRM character
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 
@@ -42,17 +42,17 @@ We care about characters.
 
 GDC 2021 Summer:
 
-* 'Genshin Impact': Building a Scalable AI System
-This session reviews some of AI programming challenges in developing open-world game 'Genshin Impact' and describes several handful methods to improve AI system scalability. It details an AI framework and production pipeline that allow designers to craft huge amount of AI archetypes quickly and flexibly. Next, Genshin's pathfinding service is introduced, an approach to reduce NavMesh disk and memory space overhead, caused by continuously-growing world map. Finally, this session discusses AI performance optimization and shows how AI system can be modularized and broke down into multi-threaded tasks on CPU.
-* Emotional Systemic Facial of 'Last of Us Part II'
-As graphic fidelity in video games has rapidly accelerated, one aspect of development has overwhelmingly remained stagnant; in-game character emotions. In this talk, Naughty Dog explores how they addressed this industry wide limitation in The Last of Us Part II. Represented by team members from character rigging, animation, dialogue, and design; this talk comprehensively covers how character emotion was brought into gameplay ranging from nuanced narrative moments to adrenaline charged melee combat. Learn about the challenges, implementation, and innovation that occurred to develop the systemic emotion system that brought over 65 characters speaking 13 languages with up to 20 individual emotions to life.
-* Motion Matching in 'The Last of Us Part II'
-Naughty Dog is known for the animation quality of their titles. For The Last of Us Part II, they decided to take a leap of faith and switch to at that time pretty experimental animation system called Motion Matching. Two Naughty Dog technical animators will tell you the story of initial joy, later frustration and ultimate fear as the development of the new project went on and but not everything went according to plan. Thanks to many clever solution, hard work and a very talented team, Naughty Dog was able to ship a game that was unanimously praised for animation quality among critics and players.
-* https://tabletomarkdown.com/convert-spreadsheet-to-markdown/
-* https://github.com/deflinhec/GodotGoogleSheet
-* https://baserow.io/
-* https://github.com/fenix-hub/godot-engine.easy-charts
-* https://github.com/godotengine/godot/pull/32408
+- 'Genshin Impact': Building a Scalable AI System
+  This session reviews some of AI programming challenges in developing open-world game 'Genshin Impact' and describes several handful methods to improve AI system scalability. It details an AI framework and production pipeline that allow designers to craft huge amount of AI archetypes quickly and flexibly. Next, Genshin's pathfinding service is introduced, an approach to reduce NavMesh disk and memory space overhead, caused by continuously-growing world map. Finally, this session discusses AI performance optimization and shows how AI system can be modularized and broke down into multi-threaded tasks on CPU.
+- Emotional Systemic Facial of 'Last of Us Part II'
+  As graphic fidelity in video games has rapidly accelerated, one aspect of development has overwhelmingly remained stagnant; in-game character emotions. In this talk, Naughty Dog explores how they addressed this industry wide limitation in The Last of Us Part II. Represented by team members from character rigging, animation, dialogue, and design; this talk comprehensively covers how character emotion was brought into gameplay ranging from nuanced narrative moments to adrenaline charged melee combat. Learn about the challenges, implementation, and innovation that occurred to develop the systemic emotion system that brought over 65 characters speaking 13 languages with up to 20 individual emotions to life.
+- Motion Matching in 'The Last of Us Part II'
+  Naughty Dog is known for the animation quality of their titles. For The Last of Us Part II, they decided to take a leap of faith and switch to at that time pretty experimental animation system called Motion Matching. Two Naughty Dog technical animators will tell you the story of initial joy, later frustration and ultimate fear as the development of the new project went on and but not everything went according to plan. Thanks to many clever solution, hard work and a very talented team, Naughty Dog was able to ship a game that was unanimously praised for animation quality among critics and players.
+- https://tabletomarkdown.com/convert-spreadsheet-to-markdown/
+- https://github.com/deflinhec/GodotGoogleSheet
+- https://baserow.io/
+- https://github.com/fenix-hub/godot-engine.easy-charts
+- https://github.com/godotengine/godot/pull/32408
 
 ### Derivative License
 

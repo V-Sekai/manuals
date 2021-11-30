@@ -19,7 +19,7 @@ We use multiple ways to harden Godot Engine.
 
 ## Positive Consequences <!-- optional -->
 
-- More stability 
+- More stability
 
 ## Negative Consequences <!-- optional -->
 

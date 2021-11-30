@@ -14,9 +14,9 @@ List checkable prescriptions.
 
 1. Separate Head from the body?
 2. Make sure every other mesh than the head mesh has no Head bone weights.
-2. Disable automatic mesh merging
-3. Vertex weighting vs masking vs vrm spring bones
-4. Separate leg weighting from each other with putting the character into the spread pose.
+3. Disable automatic mesh merging
+4. Vertex weighting vs masking vs vrm spring bones
+5. Separate leg weighting from each other with putting the character into the spread pose.
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 

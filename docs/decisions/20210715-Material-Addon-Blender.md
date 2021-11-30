@@ -31,7 +31,7 @@ Procedural Materials are not easy
 
 ### References
 
-* https://github.com/materialx/MaterialX
+- https://github.com/materialx/MaterialX
 
 ### Derivative License
 

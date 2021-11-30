@@ -2,7 +2,6 @@
 
 - Status: superseded by [20211101-rank-skeleton-bone-names-with-catboost](20211101-rank-skeleton-bone-names-with-catboost.md)
 
-
 ### Context and Problem Statement
 
 Improve automatic bone selection

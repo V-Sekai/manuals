@@ -18,7 +18,7 @@ Add an alternative server and document the current api as an openapi schema.
 
 1. Openapi schema for the official asset library api.
 1. Elixir server implementation
-2. Patch to Godot Engine to add arbitrary asset libraries
+1. Patch to Godot Engine to add arbitrary asset libraries
 
 ## Positive Consequences <!-- optional -->
 

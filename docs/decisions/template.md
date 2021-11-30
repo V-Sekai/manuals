@@ -26,7 +26,7 @@
 
 - [e.g., compromising quality attribute, follow-up decisions required, …]
 
-<!-- [this section can be repeated for each option if more than one option is open for consideration] -->
+[this section can be repeated for each option if more than one option is open for consideration]
 
 ## Option graveyard: <!-- same as above -->
 
@@ -44,6 +44,7 @@
 ## References <!-- optional -->
 
 - [Link type](link to decision) <!-- example: Refined by [xxx](yyyymmdd-xxx.md) -->
+
 <!-- - numbers of links can vary -->
 
 ## Derivative License
