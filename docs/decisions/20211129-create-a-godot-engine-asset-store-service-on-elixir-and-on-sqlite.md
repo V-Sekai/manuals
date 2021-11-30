@@ -24,9 +24,15 @@ Works on Windows.
 
 Investigate membrane framework.
 
+Design a schema.
+
+Covert godot asset store api to an openapi schema.
+
 ## Positive Consequences <!-- optional -->
 
-- [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
+- Able to publish v-sekai addons.
+- Overlay existing asset library
+- Able to in a future feature post process packed scenes exported by V-Selai
 
 ## Negative Consequences <!-- optional -->
 
@@ -36,8 +42,8 @@ Investigate membrane framework.
 
 ## Option graveyard: <!-- same as above -->
 
-- Option: <!-- [List the proposed options no longer open for consideration.] -->
-- Rejection Reason: <!-- [List the reasons for the rejection: (the Bad traits)] -->
+- Option: Use the existing asset library backend
+- Rejection Reason: Does not use a modern tech stack.
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
@@ -54,6 +60,7 @@ This is a V-Sekai service and I know of an approach.
 - https://www.sqlite.org/draft/stricttables.html
 - https://github.com/elixir-sqlite/ecto_sqlite3/issues
 - https://www.phoenixframework.org/
+- https://github.com/elixir-sqlite/exqlite/issues/175 Ugrade to Sqlite 3.37
 
 ## Derivative License
 
