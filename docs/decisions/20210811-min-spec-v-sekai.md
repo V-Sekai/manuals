@@ -28,20 +28,19 @@ This is the computer we think is the most similar to a Valve Steamdeck.
 2. Solid State Drives - SSD 1 TB
 3. Solid State Drive - OS Drive (Size TBD)
 4. Memory Modules "NCNR" 260pin SODIMM ECC DDR4 2666 16GB1.2v 1Gx8(0-85)
-We use ECC to during testing avoid "Godbolts" from the universe.
-4. Windows 10 operating system
-Windows 10 is what typical PCVR uses.
-5. Popos! 20.04 operating system
-Popos! Linux is similar to the Arch Linux that Steam Deck uses.
-
+   We use ECC to during testing avoid "Godbolts" from the universe.
+5. Windows 10 operating system
+   Windows 10 is what typical PCVR uses.
+6. Popos! 20.04 operating system
+   Popos! Linux is similar to the Arch Linux that Steam Deck uses.
 
 Use a scripted fly through demo.
 
 1. https://github.com/Calinou/godot-cmvalley
 2. https://github.com/TokageItLab/3d-platform-test-for-godot4
 3. An animated camera can be exported from Blender.
-1. Record performance data in .res format and also json.
-2. Record OBS videos of the fly through with frametime and stats.
+4. Record performance data in .res format and also json.
+5. Record OBS videos of the fly through with frametime and stats.
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 
@@ -64,11 +63,9 @@ As a platform holder, it would be our responsibility to understand the limits of
 ### References
 
 - UDOO Bolt
-[datasheet_udoo_bolt_gear-1947342.pdf](https://github.com/V-Sekai/v-sekai-proposals/files/6958673/datasheet_udoo_bolt_gear-1947342.pdf)
+  [datasheet_udoo_bolt_gear-1947342.pdf](https://github.com/V-Sekai/v-sekai-proposals/files/6958673/datasheet_udoo_bolt_gear-1947342.pdf)
 - [Mouser Electronics Canada V-Sekai Platform.pdf](https://github.com/V-Sekai/v-sekai-proposals/files/6958676/Mouser.Electronics.Canada.V-Sekai.Platform.pdf)
 - https://developer.oculus.com/documentation/unity/unity-perf/
-
-
 
 ### Derivative License
 

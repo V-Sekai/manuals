@@ -12,15 +12,15 @@ Use msys2 on Windows to improve this.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-* Install Windows 10 or Windows 11
-* Open Powershell.
-* `Set-ExecutionPolicy RemoteSigned -scope CurrentUser`
-* `iwr -useb get.scoop.sh | iex`
-* `scoop install msys`
-* `msys2`
-* `pacman -S ssh-pageant openssh git python3`
-* Copy to ~/.bashrc
-* `eval $(/usr/bin/ssh-pageant -r -a "/tmp/.ssh-pageant-$USERNAME")`
+- Install Windows 10 or Windows 11
+- Open Powershell.
+- `Set-ExecutionPolicy RemoteSigned -scope CurrentUser`
+- `iwr -useb get.scoop.sh | iex`
+- `scoop install msys`
+- `msys2`
+- `pacman -S ssh-pageant openssh git python3`
+- Copy to ~/.bashrc
+- `eval $(/usr/bin/ssh-pageant -r -a "/tmp/.ssh-pageant-$USERNAME")`
 
 ## Positive Consequences <!-- optional -->
 

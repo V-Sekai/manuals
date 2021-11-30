@@ -36,7 +36,7 @@ Steam provides a distribution network and marketplace.
 
 List the reasons for the rejection: (the Bad traits)
 
-* Third party trust
+- Third party trust
 
 ## Option graveyard Itch.io only
 
@@ -44,7 +44,7 @@ Itch.io provides a distribution network and marketplace.
 
 List the reasons for the rejection: (the Bad traits)
 
-* Third party trust
+- Third party trust
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 

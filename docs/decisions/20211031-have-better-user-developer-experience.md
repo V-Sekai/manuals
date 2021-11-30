@@ -10,8 +10,8 @@ We can measure and improve our experience.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-* Measure
-* Improve
+- Measure
+- Improve
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 

@@ -10,7 +10,7 @@ File or attestation for virtual worlds
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-Use ssh signatures. 
+Use ssh signatures.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
@@ -25,29 +25,32 @@ $ ssh-add -L > me.pub # Can be related to a X.509 `.crt`
 ```
 
 Create a file.
+
 ```
 $ touch avatar-sample.vrm
 ```
 
-Sign your file. 
+Sign your file.
 
 ```
 ssh-keygen -Y sign -f <(ssh-add -L) -n "avatar@v-sekai.org" < avatar-sample.vrm >> avatar-sample.vrm.avatar%40V-sekai.com.sig
 ssh-keygen -Y sign -f <(ssh-add -L) -n "me@v-sekai.org" < avatar-sample.vrm >> avatar-sample.vrm.me%40V-sekai.com.sig
 ```
 
-Write signature to avatar-sample.vrm.sig # Can be attested by multiple people with multiple `.sig`. 
+Write signature to avatar-sample.vrm.sig # Can be attested by multiple people with multiple `.sig`.
 
 ```
 echo -n ernest.lee@chibifire.com | cat - <(echo -n " ") | cat - <(ssh-add -L) > allowed_signers # Can have more than o
 ne line.
 ```
+
 The allowed_signers file associates a string that represents a person (Principle) to a Public Key.
 
 ```
 ssh-keygen -Y verify -f allowed_signers -I ernest.lee@chibifire.com -n "avatar@v-sekai.org" -s avatar-sample.vrm.avatar%40V-sekai.com.sig < avatar-sample.vrm
 ssh-keygen -Y verify -f allowed_signers -I ernest.lee@chibifire.com -n "me@v-sekai.org" -s  avatar-sample.vrm.me%40V-sekai.com.sig < avatar-sample.vrm
 ```
+
 Referenced https://www.agwa.name/blog/post/ssh_signatures
 
 ### Create SSH Certificates to delegate roles
@@ -58,11 +61,12 @@ Referenced https://www.agwa.name/blog/post/ssh_signatures
 # TODO: How do you change authorization of the delegation?
 ssh-keygen -Us <(ssh-add -L) -I fire@example.com -n avatar@V-Sekai.com -V +1h KEYFILE.pub
 ```
+
 ### Distributing keys
 
 ```bash
 # Resulting file is namespace.allowed_signers but uri_encoded.
-curl https://github.com/fire.keys > avatars%40V-Sekai.com.allowed_signers # Needs a id in email syntax in front of a key 
+curl https://github.com/fire.keys > avatars%40V-Sekai.com.allowed_signers # Needs a id in email syntax in front of a key
 curl files://uro > avatars%40V-sekai.com.allowed_signers # Assumed in correct format
 curl http://matrix-homeserver.example.com/fire > avatars%40V-sekai.com.allowed_signers # Assumed in correct format
 ```
@@ -82,10 +86,10 @@ curl http://matrix-homeserver.example.com/fire > avatars%40V-sekai.com.allowed_s
 
 ## Option graveyard: <!-- same as above -->
 
-- Option: Matrix 
+- Option: Matrix
 - Rejection Reason: Technically complicated to devops start and multiple layers compared to an offline approach.
 
-- Option: Ipfs and Etherium 
+- Option: Ipfs and Etherium
 - Rejection Reason: Requires a globally distributed database.
 
 - Option: Sigstore https://www.sigstore.dev/

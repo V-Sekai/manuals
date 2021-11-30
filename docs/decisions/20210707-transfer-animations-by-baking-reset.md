@@ -6,7 +6,7 @@ Given two animation `.glb`s in gltf, you cannot transfer the animations between 
 
 Fixes: https://github.com/godotengine/godot/issues/50212
 
-We are NOT retargeting between different rigs in the RESET baker stage. 
+We are NOT retargeting between different rigs in the RESET baker stage.
 
 We are NOT defining how to generate the RESET animation in this proposal.
 
@@ -41,7 +41,7 @@ We bake the RESET animation and then set it to identity so that rigs with corres
 
 1. Make a tool that can take a human character and make it T-pose (A-pose?) and then save it to the RESET animation.
 1. Enforce bone rolls on the rig and then save it to the RESET animation.
-1. Root motion centering (move to the origin) tool and then save it as the RESET animation. 
+1. Root motion centering (move to the origin) tool and then save it as the RESET animation.
 1. Filter the RESET axes when baking per animation.
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
@@ -54,12 +54,12 @@ Animations are a core feature of Godot Engine.
 
 ## References <!-- optional -->
 
-* Bone roll parent to child baking.  https://github.com/V-Sekai/godot/commit/99a9f79e25f7760cb5a0990e67545d78e9dd0423
-* Implementation: 
-https://github.com/godot-extended-libraries/godot-fire/tree/feature/bake-reset-anim 
-* Reference bone roll spec. https://tokage.info/lab/?id=5
-* Use the entire surface of the mesh to match to the SMPL rig. (Siggraph 2021) https://github.com/PeizhuoLi/neural-blend-shapes/issues
-* Guessing "Blender edit" https://github.com/KhronosGroup/glTF-Blender-IO/pull/941
+- Bone roll parent to child baking. https://github.com/V-Sekai/godot/commit/99a9f79e25f7760cb5a0990e67545d78e9dd0423
+- Implementation:
+  https://github.com/godot-extended-libraries/godot-fire/tree/feature/bake-reset-anim
+- Reference bone roll spec. https://tokage.info/lab/?id=5
+- Use the entire surface of the mesh to match to the SMPL rig. (Siggraph 2021) https://github.com/PeizhuoLi/neural-blend-shapes/issues
+- Guessing "Blender edit" https://github.com/KhronosGroup/glTF-Blender-IO/pull/941
 
 ## Derivative License
 

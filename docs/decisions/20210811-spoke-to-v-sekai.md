@@ -6,14 +6,12 @@ We desire portable content.
 
 ### Describe the feature / enhancement and how it helps to overcome the problem or limitation
 
-
-Create an art workflow. 
+Create an art workflow.
 
 ```nomnoml
 [Blender] -> [OMI.glb]
 [OMI.glb] -> [Godot Engine Packed Scene]
 ```
-
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
@@ -24,20 +22,17 @@ Create glTF2 extension pull request for Godot Engine.
 **Flow**:
 
 1. OMI importer to Blender
-3. Exporter of extended blender with OMI extensions to extended gltf
-4. Support for OMI extended gltf in godot with definition of in-memory format for OMI extensions in Godot Engine for bidirectionality.
-
+2. Exporter of extended blender with OMI extensions to extended gltf
+3. Support for OMI extended gltf in godot with definition of in-memory format for OMI extensions in Godot Engine for bidirectionality.
 
 **Expected output**:
 
 1. Export/Import as OMI format in Blender
-3. Support OMI GLB in Godot
+2. Support OMI GLB in Godot
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 
-
 Interlapping projects are complicated.
-
 
 ### Positive Consequences
 
@@ -50,7 +45,6 @@ _No response_
 ### Is there a reason why this should be core and done by us?
 
 Can collaborate with Mozilla hubs team and OMI.
-
 
 ### References
 

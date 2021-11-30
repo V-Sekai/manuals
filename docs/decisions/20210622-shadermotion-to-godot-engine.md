@@ -36,11 +36,10 @@ godot.windows.opt.tools.64.exe --gdnative-generate-json-builtin-api builtin_api.
 # compile godot-cpp
 # Use instructions for 4
 # https://github.com/GodotVR/godot_openvr/pull/123#issue-658898644
-scons p=windows target=release -j16 target=release generate_bindings=yes 
+scons p=windows target=release -j16 target=release generate_bindings=yes
 # compile gdnative-video-decoder
 scons platform=win64 target=release -j16
 ```
-
 
 ## Positive Consequences <!-- optional -->
 

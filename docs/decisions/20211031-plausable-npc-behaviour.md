@@ -6,7 +6,7 @@ Create plausable npc behaviour
 
 ### Describe the feature / enhancement and how it helps to overcome the problem or limitation
 
-Plausable npc behaviour using a htn planner 
+Plausable npc behaviour using a htn planner
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 

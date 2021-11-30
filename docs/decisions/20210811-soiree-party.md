@@ -8,7 +8,7 @@ We want to make it easy to deploy V-Sekai in Soiree mode.
 
 ### Describe the feature / enhancement and how it helps to overcome the problem or limitation
 
-We package V-Sekai in Soiree Party mode, so it is easier to test the system. 
+We package V-Sekai in Soiree Party mode, so it is easier to test the system.
 
 A Soiree is a party or gathering, typically in a private house, for conversation or music.
 
@@ -26,7 +26,7 @@ Risk to migrate the Sandstorm ecosystem to Kubernetes helm system to match the d
 
 Some udp based proxying methods are known
 
-1. https://github.com/yyyar/gobetween for standalone 
+1. https://github.com/yyyar/gobetween for standalone
 2. cillium for kubernetes
 3. WebRTC ice, stun, turn
 
@@ -53,7 +53,7 @@ There is an open question if V-Sekai sandbox design works with powerbox.
 1. Individual hosts of Sandstorm.io can start their own grains of V-Sekai in Soiree mode.
 1. Players download the Godot Engine client and play.
 
-#### Hosts 
+#### Hosts
 
 1. Must provide a way to access the Godot Engine server and the Sandstorm server.
 
@@ -77,12 +77,12 @@ We are investigating how to implement the Soiree Party mode.
 
 ### References
 
-* https://www.cockroachlabs.com/
-* https://github.com/V-Sekai/uro
-* https://docs.sandstorm.io/en/latest/developing/powerbox/
-* https://docs.sandstorm.io/en/latest/vagrant-spk/services/
-* https://github.com/sandstorm-io/sandstorm
-* https://github.com/mrmetaverse/soiree
+- https://www.cockroachlabs.com/
+- https://github.com/V-Sekai/uro
+- https://docs.sandstorm.io/en/latest/developing/powerbox/
+- https://docs.sandstorm.io/en/latest/vagrant-spk/services/
+- https://github.com/sandstorm-io/sandstorm
+- https://github.com/mrmetaverse/soiree
 
 ### Derivative License
 

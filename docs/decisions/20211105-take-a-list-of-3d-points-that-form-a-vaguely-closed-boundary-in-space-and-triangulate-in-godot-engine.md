@@ -28,7 +28,8 @@ igl::min_quad_with_fixed_precompute(S, [flat vector of indices of boundary verti
 igl::min_quad_with_fixed_solve(mqwf, M * U, [flat vector of boundary vertices positions size=(3 * N_boundary)], [zero vector], Z);
 ```
 
-and the `vector Z is a (3 * N) flat vector` of the solution vertices (equivalent to the "U" of the other example). 
+and the `vector Z is a (3 * N) flat vector` of the solution vertices (equivalent to the "U" of the other example).
+
 1. ??? Add remeshing.
 1. Expose a function to Godot Engine called triangulate boundaries.
 

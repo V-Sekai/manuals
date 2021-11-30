@@ -16,7 +16,7 @@ No idea.
 
 #### WIP
 
-* WireGuard in Cilium allows mesh kubernetes clustering
+- WireGuard in Cilium allows mesh kubernetes clustering
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 
@@ -24,8 +24,8 @@ Networking and game networking are not a few lines of code. Game networking is g
 
 ### Positive Consequences
 
-* Allows greater access to potential users.
-* Web browser support requires webrtc.
+- Allows greater access to potential users.
+- Web browser support requires webrtc.
 
 ### Negative Consequences
 
@@ -37,10 +37,10 @@ We own game networking.
 
 ### References
 
-* https://github.com/yyyar/gobetween
-* https://ebpf.io/
-* https://cilium.io/
-* https://docs.cilium.io/en/stable/gettingstarted/encryption-wireguard/
+- https://github.com/yyyar/gobetween
+- https://ebpf.io/
+- https://cilium.io/
+- https://docs.cilium.io/en/stable/gettingstarted/encryption-wireguard/
 
 ### Derivative License
 
