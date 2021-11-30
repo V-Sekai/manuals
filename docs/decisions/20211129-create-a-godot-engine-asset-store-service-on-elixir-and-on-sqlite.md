@@ -26,6 +26,8 @@ Investigate membrane framework.
 
 Design a schema.
 
+Covert godot asset store api to an openapi schema.
+
 ## Positive Consequences <!-- optional -->
 
 - Able to publish v-sekai addons.
