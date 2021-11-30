@@ -1,6 +1,6 @@
 # File or attestation for virtual worlds using ssh signatures
 
-- Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
+- Status: rejected <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
 
