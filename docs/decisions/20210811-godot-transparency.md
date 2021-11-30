@@ -14,13 +14,13 @@ Use "Shortcut" or "PPLL" to render OIT transparency.
 
 TressFX technology uses order independent transparency.
 
-> (OIT). There are two variants. One uses a per-pixel linked list (PPLL), and the other uses a multi-pass
-> method referred to as Shortcut.
+> (OIT). There are two variants. One uses a per-pixel linked list (PPLL), and the other uses a multi-pass 
+method referred to as Shortcut.
 
-> The main decision to make is whether to use per-pixel linked lists or Shortcut. The Shortcut method can
-> be generally faster, with an easier memory bound, but at the expense of some quality. The TressFX
-> 4.1/Unreal 4.22 Engine integration uses Shortcut (although the shader for PPLL may still be present in
-> the branch, it was/is unmodified/untested/unused). TressFX 4.1/Cauldron uses both Shortcut and PPLL.
+> The main decision to make is whether to use per-pixel linked lists or Shortcut. The Shortcut method can 
+be generally faster, with an easier memory bound, but at the expense of some quality. The TressFX 
+4.1/Unreal 4.22 Engine integration uses Shortcut (although the shader for PPLL may still be present in 
+the branch, it was/is unmodified/untested/unused). TressFX 4.1/Cauldron uses both Shortcut and PPLL. 
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 
@@ -45,8 +45,7 @@ Reduz isn't interested in OIT.
 - https://github.com/GPUOpen-Effects/TressFX/blob/master/src/Shaders/TressFXShortCut.hlsl
 - https://blog.icare3d.org/2010/07/opengl-40-abuffer-v20-linked-lists-of.html
 - https://github.com/SaschaWillems/Vulkan/blob/master/examples/oit/oit.cpp
--
-
+- 
 ### Derivative License
 
 Copyright (c) 2020-2021 V-Sekai contributors.

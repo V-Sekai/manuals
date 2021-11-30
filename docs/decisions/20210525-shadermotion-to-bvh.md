@@ -22,15 +22,15 @@ Example: [Floss.mp4](https://gitlab.com/lox9973/ShaderMotion/-/raw/master/Exampl
 
 **ShaderMotion => BVH**
 
-- input: mpeg4
+- input: mpeg4 
 - output: bvh
 
 #### Requirements
 
 - .mp4 shadermotion video
 - [shadermotion-to-bvh by guillefix](https://github.com/guillefix/shadermotion-to-bvh/releases)
-  - download shadermotion-to-bvh.zip from XXX github repo releases
-  - unpack to a folder
+    - download shadermotion-to-bvh.zip from XXX github repo releases
+    - unpack to a folder
 
 #### Conversion Process
 
@@ -45,6 +45,7 @@ Once completed, look for `yourvideo.bvh`
 **Thanks to humbletim for being the scribe**
 
 **Thanks to lyuma for being test pilot flying these steps**
+
 
 ## Positive Consequences <!-- optional -->
 

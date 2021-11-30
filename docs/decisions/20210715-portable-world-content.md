@@ -4,6 +4,7 @@
 
 Independent meta-verses (virtual worlds) lack content because their communities are too small to fund much content work.
 
+
 ### Describe the feature / enhancement and how it helps to overcome the problem or limitation
 
 Collaborate with Mozilla Hub's Spoke Editor and OMI Group's glTF2 extensions to have portable world content.
@@ -22,13 +23,13 @@ There are many moving parts and a web client, which is not a few lines of code.
 
 ### Positive Consequences
 
-- Easier creation of new virtual worlds.
-- Encourage remixing content
-- Keeping old content portable to new virtual worlds
+* Easier creation of new virtual worlds.
+* Encourage remixing content
+* Keeping old content portable to new virtual worlds
 
 ### Negative Consequences
 
-- Have to find different monetization means for independent virtual worlds
+* Have to find different monetization means for independent virtual worlds
 
 ### Is there a reason why this should be core and done by us?
 

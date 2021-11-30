@@ -12,7 +12,7 @@ Need to see where we're at.
 
 100, 500, 1'000, 50'000 avatars animating with 30fps and animation compression on vs off.
 
-Randomize clips: idle, run, jump, walk (left, right, back, front)
+Randomize clips: idle, run, jump, walk (left, right, back, front) 
 
 Put them into a 2d blend space and feed a random velocity.
 
@@ -24,7 +24,7 @@ Core code.
 
 ### Positive Consequences
 
-- Can investigate compressed animation player as a compute shader. The current architecture of the skinning and blend shapes animations is like vertex animations fed by buffers, but the keyframe playback is also problematic
+* Can investigate compressed animation player as a compute shader. The current architecture of the skinning and blend shapes animations is like vertex animations fed by buffers, but the keyframe playback is also problematic
 
 ### Negative Consequences
 

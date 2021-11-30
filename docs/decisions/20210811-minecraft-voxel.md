@@ -8,6 +8,7 @@ We want more content in Godot Engine.
 
 We want to import Minecraft worlds as .Vox and as standard gltf.
 
+
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
 Save the minecraft world.
@@ -16,14 +17,16 @@ Use `amulet_map_editor`.
 
 1. git clone https://github.com/Amulet-Team/Amulet-Map-Editor.git
 1. cd Amulet-Map-Editor
-1. python3 -m pip install amulet-map-editor
+2. python3 -m pip install amulet-map-editor
 1. python3 -m amulet_map_editor
-1. Use wxpython 4.x
-1. export world to .schematic
-1. use FileToVox
-1. Use fire's vox module for godot 4.x
+2. Use wxpython 4.x
+2. export world to .schematic
+3. use FileToVox
+4. Use fire's vox module for godot 4.x 
 
 Use Schematic and Mineways and export to .obj.
+
+
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 
@@ -46,6 +49,7 @@ Can remix work by Zylann and others.
 ![image](https://user-images.githubusercontent.com/32321/127966670-ac99697d-708c-4c79-9f1b-fb570b1fa052.png)
 [nova_world.zip](https://github.com/V-Sekai/v-sekai-proposals/files/6921440/nova_world.zip)
 
+
 ### Derivative License
 
 Copyright (c) 2020-2021 V-Sekai contributors.
@@ -55,7 +59,7 @@ of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject
+furnished to do so, subject 
 [nova_world.zip](https://github.com/V-Sekai/v-sekai-proposals/files/6921426/nova_world.zip)
 to the following conditions:
 

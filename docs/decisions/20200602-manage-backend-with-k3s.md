@@ -28,6 +28,7 @@ REQUIRED: set `PasswordAuthentication no` in /etc/ssh/sshd_config.
 
 OPTIONAL: Configure default DNS server:
 
+
 #### /etc/NetworkManager/conf.d/override-dns.conf
 
 ```ini
@@ -239,30 +240,30 @@ sudo kubectl --namespace cert-manager create secret generic prod-route53-credent
 apiVersion: cert-manager.io/v1alpha2
 kind: ClusterIssuer
 metadata:
-  name: letsencrypt-prod
-  namespace: cert-manager
+ name: letsencrypt-prod
+ namespace: cert-manager
 spec:
-  acme:
-    # The ACME server URL
-    server: https://acme-v02.api.letsencrypt.org/directory
-    # Email address used for ACME registration
-    email: example@example.com
-    # Name of a secret used to store the ACME account private key
-    privateKeySecretRef:
-      name: letsencrypt-prod
-    # Enable the HTTP-01 challenge provider
-    solvers:
-      - http01:
-          ingress:
-            class: nginx
-    #solvers:
-    #- dns01:
-    #   route53:
-    #     region: us-east-1
-    #     accessKeyID: AKIAABCDEFGHIJKLMNOP
-    #     secretAccessKeySecretRef:
-    #       name: prod-route53-credentials-secret
-    #       key: secret-access-key
+ acme:
+   # The ACME server URL
+   server: https://acme-v02.api.letsencrypt.org/directory
+   # Email address used for ACME registration
+   email: example@example.com
+   # Name of a secret used to store the ACME account private key
+   privateKeySecretRef:
+     name: letsencrypt-prod
+   # Enable the HTTP-01 challenge provider
+   solvers:
+   - http01:
+       ingress:
+         class: nginx
+   #solvers:
+   #- dns01:
+   #   route53:
+   #     region: us-east-1
+   #     accessKeyID: AKIAABCDEFGHIJKLMNOP
+   #     secretAccessKeySecretRef:
+   #       name: prod-route53-credentials-secret
+   #       key: secret-access-key
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -286,65 +287,65 @@ metadata:
       }
 spec:
   tls:
-    - hosts:
-        - vsekai.cloud
-        - v-sekai.cloud
-        - uro.vsekai.cloud
-        - uro.v-sekai.cloud
-        - radiance.v-sekai.cloud
-        - ci.radiance.v-sekai.cloud
-        - ci.v-sekai.cloud
-        - radiance.vsekai.cloud
-        - ci.radiance.vsekai.cloud
-        - ci.vsekai.cloud
-        - hls.vsek.ai
-      secretName: radiance-cert-secret1
+  - hosts:
+    - vsekai.cloud
+    - v-sekai.cloud
+    - uro.vsekai.cloud
+    - uro.v-sekai.cloud
+    - radiance.v-sekai.cloud
+    - ci.radiance.v-sekai.cloud
+    - ci.v-sekai.cloud
+    - radiance.vsekai.cloud
+    - ci.radiance.vsekai.cloud
+    - ci.vsekai.cloud
+    - hls.vsek.ai
+    secretName: radiance-cert-secret1
   rules:
-    - host: vsekai.cloud
-    - host: v-sekai.cloud
-    - host: uro.vsekai.cloud
-    - host: uro.v-sekai.cloud
-      http:
-        paths:
-          - path: /
-            backend:
-              serviceName: uro
-              servicePort: 4000
-    - host: hls.vsek.ai
-      http:
-        paths:
-          - path: /
-            backend:
-              serviceName: nginx-rtmp-service
-              servicePort: 80
-    - host: radiance.vsekai.cloud
-    - host: radiance.v-sekai.cloud
-      http:
-        paths:
-          - path: /debug_headers
-            backend:
-              serviceName: echo-service
-              servicePort: 8099
-          - path: /
-            backend:
-              serviceName: echo1
-              servicePort: 80
-    - host: ci.vsekai.cloud
-    - host: ci.v-sekai.cloud
-      http:
-        paths:
-          - path: /
-            backend:
-              serviceName: gocd-server
-              servicePort: 8153
-    - host: ci.radiance.vsekai.cloud
-    - host: ci.radiance.v-sekai.cloud
-      http:
-        paths:
-          - path: /
-            backend:
-              serviceName: gocd-server
-              servicePort: 8153
+  - host: vsekai.cloud
+  - host: v-sekai.cloud
+  - host: uro.vsekai.cloud
+  - host: uro.v-sekai.cloud
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: uro
+          servicePort: 4000
+  - host: hls.vsek.ai
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: nginx-rtmp-service
+          servicePort: 80
+  - host: radiance.vsekai.cloud
+  - host: radiance.v-sekai.cloud
+    http:
+      paths:
+      - path: /debug_headers
+        backend:
+          serviceName: echo-service
+          servicePort: 8099
+      - path: /
+        backend:
+          serviceName: echo1
+          servicePort: 80
+  - host: ci.vsekai.cloud
+  - host: ci.v-sekai.cloud
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: gocd-server
+          servicePort: 8153
+  - host: ci.radiance.vsekai.cloud
+  - host: ci.radiance.v-sekai.cloud
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: gocd-server
+          servicePort: 8153
 ```
 
 Then:
@@ -477,7 +478,7 @@ sudo  kubectl create secret docker-registry regcred --docker-server=https://inde
 
 #### OSXCROSS
 
-For osxcross (OSX cross compiling), make sure the OSX compiler SDK _you created on mac_ os located at /opt/osxcross.
+For osxcross (OSX cross compiling), make sure the OSX compiler SDK *you created on mac* os located at /opt/osxcross.
 
 If you do not have osxcross (no access to Apple hardware), then you must create an empty directory at /opt/osxcross or remove the relevant volume mounts (and remove from enabled build targets in the gocd pipelines).
 
@@ -517,26 +518,26 @@ spec:
         release: gocd
     spec:
       containers:
-        - env:
-            - name: GO_SERVER_URL
-              value: http://gocd-server:8153/go
-          image: gocd/gocd-agent-docker-dind:v21.2.0
-          imagePullPolicy: IfNotPresent
-          name: gocd-agent-dind
-          resources: {}
-          securityContext:
-            privileged: true
-          terminationMessagePath: /dev/termination-log
-          terminationMessagePolicy: File
-          volumeMounts:
-            - mountPath: /root/.ssh
-              name: ssh-secrets
-              readOnly: true
-            - mountPath: /root/.docker
-              name: kaniko-secret
-            - mountPath: /opt/osxcross
-              name: opt-osxcross-volume
-              readOnly: true
+      - env:
+        - name: GO_SERVER_URL
+          value: http://gocd-server:8153/go
+        image: gocd/gocd-agent-docker-dind:v21.2.0
+        imagePullPolicy: IfNotPresent
+        name: gocd-agent-dind
+        resources: {}
+        securityContext:
+          privileged: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /root/.ssh
+          name: ssh-secrets
+          readOnly: true
+        - mountPath: /root/.docker
+          name: kaniko-secret
+        - mountPath: /opt/osxcross
+          name: opt-osxcross-volume
+          readOnly: true
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
@@ -548,20 +549,20 @@ spec:
       serviceAccountName: default
       terminationGracePeriodSeconds: 30
       volumes:
-        - name: ssh-secrets
-          secret:
-            defaultMode: 256
-            secretName: gocd-ssh
-        - name: kaniko-secret
-          secret:
-            secretName: regcred
-            items:
-              - key: .dockerconfigjson
-                path: config.json
-        - name: opt-osxcross-volume
-          hostPath:
-            path: /opt/osxcross
-            type: Directory
+      - name: ssh-secrets
+        secret:
+          defaultMode: 256
+          secretName: gocd-ssh
+      - name: kaniko-secret
+        secret:
+          secretName: regcred
+          items:
+            - key: .dockerconfigjson
+              path: config.json
+      - name: opt-osxcross-volume
+        hostPath:
+          path: /opt/osxcross
+          type: Directory
 ```
 
 ### OSXCROSS GOCD Agents
@@ -579,25 +580,25 @@ spec:
   template:
     spec:
       containers:
-        - name: gocd-agent
-          volumeMounts:
-            - mountPath: /opt/osxcross
-              name: opt-osxcross-volume
-              readOnly: true
+      - name: gocd-agent
+        volumeMounts:
+        - mountPath: /opt/osxcross
+          name: opt-osxcross-volume
+          readOnly: true
       volumes:
-        - name: opt-osxcross-volume
-          hostPath:
-            path: /opt/osxcross
-            type: Directory
+      - name: opt-osxcross-volume
+        hostPath:
+          path: /opt/osxcross
+          type: Directory
 ```
 
 and apply with:
-
 ```bash
 sudo kubectl patch deployments/gocd-agent -p "$(cat gocd-agent-patch.yaml)"
 ```
 
 Make sure to enable the Agents when they come up on the GoCD Dashboard. Add every server to the "`developement`" environment. Also, assign linux servers to "`mingw`" and "`linux`". Assign the dind agents to "`dind`".
+
 
 For GitLab, go to https://ci.v-sekai.cloud/go/admin/security/auth_configs and select `Create new authorization configuration` -> `gitlab-auth-config` / `GitLab Authentication plugin` / follow documentation here: https://github.com/gocd-contrib/gitlab-oauth-authorization-plugin/blob/master/INSTALL.md - **Do not check Allow only known users to login yet**. If this works, you can skip the text auth step and corresponding passwd commands.
 
@@ -607,7 +608,7 @@ Create Guest login:
 2. Now, go to Roles Management. Create role `guest`. Add Deny for all types and Resources `*` as desired.
 3. In an Incognito window, visit the CI system and login as Guest. Close the incognito window.
 4. Now, go to Users Management. Select view / Guest and select Roles -> `guest`
-5. Admin -> Pipelines. Select Pipeline Group `beta`, click + on the top right of the whole _group_, go to Roles, add `guest`, and only check **View**. Save this.
+5. Admin -> Pipelines. Select Pipeline Group `beta`, click + on the top right of the whole *group*, go to Roles, add `guest`, and only check **View**. Save this.
 
 At this point, Guest should have permission to view pipelines, see logs, download artifacts but nothing else.
 
@@ -635,7 +636,7 @@ Go to **Admin -> Config Repositories**
 - **Branch:** master
 - **GoCD pipeline files pattern:** \*.gopipeline.json
 - **GoCD environment files pattern:** \*.goenvironment.json
-
+  
 **Rules**
 
 - **Allow:** Pipeline Group: beta
@@ -666,6 +667,7 @@ sudo kubectl apply -f fluxcmd_install.yaml
 sudo fluxctl --k8s-fwd-ns flux
 sudo fluxctl list-workloads --k8s-fwd-ns flux
 ```
+
 
 FOR DEBUGGING ONLY: `sudo setenforce permissive` - this appears to have no effect, so there is a different problem.
 
@@ -909,8 +911,8 @@ sudo kubectl create -f client-secure.yaml
 
 ## Option graveyard: <!-- same as above -->
 
-- Option: Dedicated Servers
-- Option: Virtual Machines
+* Option: Dedicated Servers
+* Option: Virtual Machines
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 

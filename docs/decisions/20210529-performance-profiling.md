@@ -32,9 +32,9 @@ The workflow is for each item start from the top and go down.
 
 ## Option graveyard: same as above
 
-- Option: superluminal
-- Rejection reason:
-  - Not free
+* Option: superluminal
+* Rejection reason: 
+    * Not free
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 

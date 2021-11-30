@@ -50,19 +50,19 @@ rlottie is Groups license compatible.
 
 ## Option graveyard: <!-- same as above -->
 
-- Option: Create single executable Pdfium thing that writes to png
-- Rejection Reason:
-- Chromium build processes are difficult, but someone made a pdfium binary repository.
+* Option: Create single executable Pdfium thing that writes to png
+* Rejection Reason: 
+* Chromium build processes are difficult, but someone made a pdfium binary repository.
 
-- Option: Import pdfium into Godot Engine as a static library
-- Rejection Reason:
-- Adding pdf support to Godot Engine is difficult.
-- The straight-forward pdf implementation writes the RGBA8 data into the cache.
+* Option: Import pdfium into Godot Engine as a static library
+* Rejection Reason: 
+* Adding pdf support to Godot Engine is difficult.
+* The straight-forward pdf implementation writes the RGBA8 data into the cache.
 
-- Option: Use Godot Engine's native SVG library
-- Rejection Reason:
-- Does not support pixel data.
-- Unreliable
+* Option: Use Godot Engine's native SVG library
+* Rejection Reason: 
+* Does not support pixel data.
+* Unreliable
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 

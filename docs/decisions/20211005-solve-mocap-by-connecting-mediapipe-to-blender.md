@@ -35,8 +35,8 @@ ML and armature work is hard
 
 From Kendrick
 
-- [media_pipe_demo.zip](https://github.com/V-Sekai/v-sekai-proposals/files/6972400/media_pipe_demo.zip)
-- https://github.com/V-Sekai/game-tools-V-Sekai
+* [media_pipe_demo.zip](https://github.com/V-Sekai/v-sekai-proposals/files/6972400/media_pipe_demo.zip)
+* https://github.com/V-Sekai/game-tools-V-Sekai
 
 ## Derivative License
 

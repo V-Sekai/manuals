@@ -10,8 +10,8 @@ Small crowds aren't plausible.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-- performance testing
-- robots
+* performance testing
+* robots
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 

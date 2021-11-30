@@ -29,7 +29,6 @@ Craft a GDScript that uses the command line tool and converts `mtlx` to a standa
 Eh. Not simple.
 
 ### Positive Consequences
-
 Expansion into a web tool.
 
 ### Negative Consequences
@@ -42,9 +41,9 @@ I found an approach and it can be done.
 
 ### References
 
-- https://github.com/fire/MaterialX/tree/gltf
-- https://godotengine.org/showcase/material-maker
-- https://en.wikipedia.org/wiki/Procedural_texture
+* https://github.com/fire/MaterialX/tree/gltf
+* https://godotengine.org/showcase/material-maker
+* https://en.wikipedia.org/wiki/Procedural_texture
 
 ### Derivative License
 

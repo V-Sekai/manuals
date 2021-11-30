@@ -26,8 +26,8 @@ merge groups-web-4.x remotes/v-sekai-godot/ninja-ccache
 
 Need to check every line in the list using a comparison link:
 
-- https://github.com/godotengine/godot/compare/master...lyuma:gltf_shapes_8bones
-- https://github.com/godotengine/godot/compare/master...v-sekai-godot:ninja-ccache
+* https://github.com/godotengine/godot/compare/master...lyuma:gltf_shapes_8bones
+* https://github.com/godotengine/godot/compare/master...v-sekai-godot:ninja-ccache
 
 Make a corresponding pull request on https://github.com/godotengine/godot/pulls if there isn't one.
 

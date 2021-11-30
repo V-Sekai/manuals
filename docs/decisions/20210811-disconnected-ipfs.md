@@ -1,4 +1,4 @@
-# Godot Engine implementation of disconnected IPFS
+# Godot Engine implementation of disconnected IPFS 
 
 ### Context and Problem Statement
 
@@ -18,19 +18,19 @@ May be able to be done by others.
 
 ### Positive Consequences
 
-- send a offline package
+* send a offline package
 
 ### Negative Consequences
 
-- in javascript
+* in javascript
 
 ### Is there a reason why this should be core and done by us?
 
-- Might be an extension
+* Might be an extension
 
 ### References
 
-- https://github.com/skogard/nebulus
+* https://github.com/skogard/nebulus
 
 ### Derivative License
 

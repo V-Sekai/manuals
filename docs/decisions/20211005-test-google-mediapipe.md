@@ -22,11 +22,10 @@ v4l2-ctl --all
 ```
 
 #### Realsense Camera (optional)
-
 ```
 sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade
 git clone https://github.com/IntelRealSense/librealsense.git
-cd librealsense
+cd librealsense 
 sudo apt-get install git libssl-dev libusb-1.0-0-dev pkg-config libgtk-3-dev -y
 sudo apt-get install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev -y
 ./scripts/setup_udev_rules.sh
@@ -35,10 +34,9 @@ mkdir build && cd build
 cmake ../ -DBUILD_EXAMPLES=true -DCMAKE_BUILD_TYPE=Release
 sudo make uninstall && make clean && make && sudo make install -j`nproc`
 ```
-
 # Reconnect the Intel RealSense depth camera and run: realsense-viewer to verify the installation.
 
-#### Hello World in C++
+#### Hello World in C++ 
 
 ```bash
 sudo apt install apt-transport-https curl gnupg -y
@@ -60,7 +58,6 @@ bazel-3.7.2 build --define MEDIAPIPE_DISABLE_GPU=1 mediapipe/examples/desktop/ir
 # Ensure a webcam is plugged in.
 ./bazel-bin/mediapipe/examples/desktop/iris_tracking/iris_tracking_cpu --calculator_graph_config_file=./mediapipe/graphs/iris_tracking/iris_tracking_cpu.pbtxt
 ```
-
 ### Alternative instructions for realsense
 
 ```bash
@@ -91,11 +88,11 @@ _No response_
 
 ## References <!-- optional -->
 
-- https://google.github.io/mediapipe/getting_started/hello_world_cpp.html
-- https://google.github.io/mediapipe/getting_started/cpp.html
-- https://google.github.io/mediapipe/solutions/iris.html
-- https://github.com/google/mediapipe/issues/1530
-- https://github.com/V-Sekai/mediapipe
+* https://google.github.io/mediapipe/getting_started/hello_world_cpp.html
+* https://google.github.io/mediapipe/getting_started/cpp.html
+* https://google.github.io/mediapipe/solutions/iris.html
+* https://github.com/google/mediapipe/issues/1530 
+* https://github.com/V-Sekai/mediapipe
 
 ## Derivative License
 

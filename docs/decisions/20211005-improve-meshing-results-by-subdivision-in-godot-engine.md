@@ -10,8 +10,8 @@ Using subdivision surfaces in Godot is useful.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-- Implement subdivision
-- Is the UI based on LOD multiples?
+* Implement subdivision
+* Is the UI based on LOD multiples?
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
@@ -23,8 +23,8 @@ Can be done by other people.
 
 ## References <!-- optional -->
 
-- https://github.com/V-Sekai/godot/tree/subdivision
-- `https://github.com/godotengine/godot-proposals/issues/784`
+* https://github.com/V-Sekai/godot/tree/subdivision
+* `https://github.com/godotengine/godot-proposals/issues/784`
 
 ## Derivative License
 

@@ -10,7 +10,7 @@ EWBIK is a full body ik.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-EWBIK
+EWBIK 
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 
@@ -30,7 +30,7 @@ I and Eron know.
 
 ### References
 
-- EWBIK
+- EWBIK 
 
 ### Derivative License
 

@@ -1,5 +1,4 @@
 # Neural Blend Shape Rigging
-
 ### Context and Problem Statement
 
 Rigging characters takes too much effort and skill.
@@ -22,13 +21,12 @@ Clone neural blend shapes
 `git clone https://github.com/PeizhuoLi/neural-blend-shapes.git`
 
 #### Blender
-
 1. Open your base mesh
 2. Open the smpl_std.obj into the Blender mesh
 3. Enable the mesh align Blender addon
 4. Select the rest of the meshes and then the smpl_std mesh
 5. Align base_mesh.obj to the base mesh and then translate it so it stands on the floor
-   ![image](https://user-images.githubusercontent.com/32321/125210550-4bfe8100-e255-11eb-9bc3-cbc7bfe4b98e.png)
+ ![image](https://user-images.githubusercontent.com/32321/125210550-4bfe8100-e255-11eb-9bc3-cbc7bfe4b98e.png)
 
 #### Neural Blend Shapes
 
@@ -49,7 +47,7 @@ flatpak run org.blender.Blender -b -P `pwd`/nbs_fbx_output.py -- --input `pwd`/.
 
 1. The skeleton model above weighted the eye area. This is not good.
 2. Use https://www.blendermarket.com/products/voxel-heat-diffuse-skinning
-3. Take skeleton from output.fbx and reweight it onto the original mesh set
+2. Take skeleton from output.fbx and reweight it onto the original mesh set 
 
 #### VRM
 

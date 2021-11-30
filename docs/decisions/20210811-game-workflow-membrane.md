@@ -8,6 +8,7 @@ Use a workflow tool to process game things.
 
 Membrane is a workflow tool and can be used to orchestrate Blender.
 
+
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
 Modify Blender input
@@ -34,9 +35,9 @@ Needed to be done by us.
 
 ### References
 
-- https://www.membraneframework.org/
-- https://github.com/Pyrlang/Pyrlang
-- http://www.wings3d.com/
+* https://www.membraneframework.org/
+* https://github.com/Pyrlang/Pyrlang
+* http://www.wings3d.com/
 
 ### Derivative License
 

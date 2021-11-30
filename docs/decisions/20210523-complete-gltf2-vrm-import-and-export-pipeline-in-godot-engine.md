@@ -1,3 +1,4 @@
+
 # Complete glTF2 / VRM import and export pipeline in Godot Engine
 
 ## Context and Problem Statement
@@ -29,8 +30,8 @@ List the proposed options no longer open for consideration.
 
 List the reasons for the rejection: (the Bad traits)
 
-- Requires GDNative
-- Complicated
+* Requires GDNative 
+* Complicated
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 

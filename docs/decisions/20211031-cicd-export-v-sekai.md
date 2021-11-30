@@ -10,12 +10,12 @@ Need to ship.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-- GOCD
-- Debug export bugs
+* GOCD
+* Debug export bugs
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 
-- lots of devops work
+* lots of devops work
 
 ### Positive Consequences
 
@@ -27,7 +27,7 @@ _No response_
 
 ### Is there a reason why this should be core and done by us?
 
-- We know how to do this.
+* We know how to do this.
 
 ### References
 

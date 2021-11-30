@@ -18,7 +18,7 @@ RTSP -> website
 
 ### Positive Consequences
 
-- Create know how for video rooms
+* Create know how for video rooms
 
 ### Negative Consequences
 

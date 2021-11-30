@@ -42,7 +42,6 @@ This is an attempt to use off the shelf tooling.
 ## References <!-- optional -->
 
 - https://gravitational.com/
-
 ## Derivative License
 
 Copyright (c) 2020-2021 V-Sekai contributors.

@@ -12,13 +12,13 @@ This workflows describes how fire checks pull requests.
 
 1. Start Windows 10.
 1. Install scoop
-1. `scoop install visual-studio-code llvm-mingw`
-1. Install python and scons
-1. `git checkout https://github.com/V-Sekai/v-sekai-pr-template --recurse-submodules`
-1. Open repository in Visual Studio Code.
-1. Switch godot engine branch
-1. Press launch in Visual Studio Code
-1. Verify fixes.
+2. `scoop install visual-studio-code llvm-mingw`
+3. Install python and scons
+4. `git checkout https://github.com/V-Sekai/v-sekai-pr-template --recurse-submodules`
+5. Open repository in Visual Studio Code.
+6. Switch godot engine branch
+7. Press launch in Visual Studio Code
+8. Verify fixes.
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 

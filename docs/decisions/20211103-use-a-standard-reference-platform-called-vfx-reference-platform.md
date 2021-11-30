@@ -6,12 +6,12 @@
 
 ## Context and Problem Statement
 
-> [A standard reference platform's purpose is to] minimise incompatibilities between different software packages, ease the support burden for Linux-based pipelines and encourage further adoption of Linux by software vendors.
+> [A standard reference platform's purpose is to] minimise incompatibilities between different software packages, ease the support burden for Linux-based pipelines and encourage further adoption of Linux by software vendors. 
 
 Here are some problems:
 
-- We want to keep a consistent server configuration setup.
-- We want creators to have a consistent work environment.
+* We want to keep a consistent server configuration setup.
+* We want creators to have a consistent work environment.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 

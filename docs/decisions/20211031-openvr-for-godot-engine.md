@@ -10,10 +10,10 @@ OpenVR for Godot Engine
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-- Compile gdextension
-- Compile openvr
-- Run
-- Modify game code
+* Compile gdextension
+* Compile openvr
+* Run
+* Modify game code
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 

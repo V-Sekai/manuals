@@ -16,25 +16,25 @@ Create a checklist to ensure quality.
 
 This is defined for a VRM character.
 
-- Add a root bone
-- Age height normalization to 1.59m for an Asian adult female.
-- Auto generate spring bones via https://fujisunflower.booth.pm/items/2087178
-- Check eyes
-- Check Jaws
-- Adjust spring bones limits
-- Check transparent glasses etc.
-- Run mesh mush at 80 degrees twist on all vertices
-- Check culling locations
-- Match shade and base color in MTOON1
-- The relative angle between the Hips and the Thigh should not be identity.
-- Check manifolds for skin breaking
+* Add a root bone
+* Age height normalization to 1.59m for an Asian adult female.
+* Auto generate spring bones via https://fujisunflower.booth.pm/items/2087178
+* Check eyes
+* Check Jaws
+* Adjust spring bones limits
+* Check transparent glasses etc.
+* Run mesh mush at 80 degrees twist on all vertices
+* Check culling locations
+* Match shade and base color in MTOON1
+* The relative angle between the Hips and the Thigh should not be identity.
+* Check manifolds for skin breaking
 
 Move Feet to the origin of the scene
 
-- Cursor to world origin
-- Change to origin
-- Move to below feet
-- Move object origin to origin
+* Cursor to world origin
+* Change to origin
+* Move to below feet
+* Move object origin to origin
 
 Check if environment lighting breaks the avatar
 
@@ -44,8 +44,8 @@ Check if environment lighting breaks the avatar
 
 How to make a Portrait of the head photo?
 
-- E96E66 background color
-- 16 light intensity and camera set to realistic focal length for a portrait makes the photo look good.
+* E96E66 background color
+* 16 light intensity and camera set to realistic focal length for a portrait makes the photo look good.
 
 ## Positive Consequences <!-- optional -->
 
