@@ -1,4 +1,4 @@
-# Fix critical bugs by creating an upstream pull request
+# Create an upstream pull request for all non-V-Sekai related patches
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,lyuma,
@@ -6,11 +6,13 @@
 
 ## Context and Problem Statement
 
-We use a gitassembler script, but the list has diverged from Godot Engine master.
+We use a gitassembler script, but the list may diverge from Godot Engine master.
 
 These critical changes need to be synced with Godot Engine organization.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
+
+Non-V-Sekai related and upstreamable godot patches should be filed as upstream PRs.
 
 This makes Godot Engine core and V-Sekai better because changes are synchronized.
 
@@ -31,7 +33,7 @@ Need to check every line in the list using a comparison link:
 
 Make a corresponding pull request on https://github.com/godotengine/godot/pulls if there isn't one.
 
-Leave a comment in the `.gitassembly` why one cannot create a Godot Engine organization pull request.
+If not possible, or non-upstreamable (for example, V-Sekai related), leave a comment in the `.gitassembly` why one cannot create a Godot Engine organization pull request.
 
 ## Positive Consequences <!-- optional -->
 

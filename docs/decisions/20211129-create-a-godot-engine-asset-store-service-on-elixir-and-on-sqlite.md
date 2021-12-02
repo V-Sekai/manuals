@@ -25,15 +25,17 @@ Use ecto with sqlite.
 Use ecto with cockroachdb.
 - [ ] Make distribution of OSS cockroachdb for windows.
 
+Convert godot asset store api to an openapi schema.
+
+- [ ] https://mermade.github.io/openapi-gui/
+
 Provide a phoenix web server.
 
 Works on Windows.
 
+Design a sqlite dataabase schema.
+
 Investigate membrane framework.
-
-Design a schema.
-
-Covert godot asset store api to an openapi schema.
 
 ## Positive Consequences <!-- optional -->
 
