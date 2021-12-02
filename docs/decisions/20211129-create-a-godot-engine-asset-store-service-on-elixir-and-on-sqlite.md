@@ -21,15 +21,17 @@ Use ecto with sqlite.
 - [x] Upgrade elixir-sqlite/exqlite to 3.37.0
 - [ ] Upgrade elixir-sqlite/ecto_sqlite3 to support strict mode.
 
+Convert godot asset store api to an openapi schema.
+
+- [ ] https://mermade.github.io/openapi-gui/
+
 Provide a phoenix web server.
 
 Works on Windows.
 
+Design a sqlite dataabase schema.
+
 Investigate membrane framework.
-
-Design a schema.
-
-Covert godot asset store api to an openapi schema.
 
 ## Positive Consequences <!-- optional -->
 
