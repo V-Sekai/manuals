@@ -20,6 +20,10 @@ Use ecto with sqlite.
 
 - [x] Upgrade elixir-sqlite/exqlite to 3.37.0
 - [ ] Upgrade elixir-sqlite/ecto_sqlite3 to support strict mode.
+- [ ] Punt using elixir-sqlite/ecto_sqlite3
+
+Use ecto with cockroachdb.
+- [ ] Make distribution of OSS cockroachdb for windows.
 
 Provide a phoenix web server.
 
