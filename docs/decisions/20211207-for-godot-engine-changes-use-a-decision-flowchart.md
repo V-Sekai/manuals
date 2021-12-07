@@ -1,7 +1,7 @@
 # For Godot Engine changes use a decision flowchart
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
-- Deciders: V-Sekai,
+- Deciders: V-Sekai,fire,lyuma,
 - Tags: V-Sekai,
 
 ## Context and Problem Statement
