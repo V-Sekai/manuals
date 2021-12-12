@@ -43,6 +43,7 @@ QA testing needs to be inhouse.
 ## References <!-- optional and numbers of links can vary -->
 
 - https://en.wikipedia.org/wiki/Steam_Deck
+- https://download.fedoraproject.org/pub/fedora/linux/releases/35/Kinoite/x86_64/iso/Fedora-Kinoite-ostree-x86_64-35-1.2.iso
 
 ## Derivative License
 
