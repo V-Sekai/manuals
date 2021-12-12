@@ -1,7 +1,7 @@
-# Create Steamdeck hardware proxy by installing Fedora Kinoite and Steam
+# Create Steamdeck hardware proxy by installing Fedora Silverblue and Steam
 
-- Status: superseded by <!-- draft | rejected | accepted | deprecated | superseded by -->
-- Deciders: V-Sekai,
+- Status: draft <!-- draft | rejected | accepted | deprecated | superseded by -->
+- Deciders: V-Sekai,fire,
 - Tags: V-Sekai,
 
 ## Context and Problem Statement
@@ -15,8 +15,8 @@ Install Fedora Kinoite and Steam.
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
 1. Install Ventoy on a USB Stick
-1. Install iso of Fedora Kinoite onto the drive on Ventoy
-1. Install Fedora Kinoite onto hardware proxy defined in another proposal.
+1. Install iso of Fedora Silverblue onto the drive on Ventoy
+1. Install Fedora Silverblue onto hardware proxy defined in another proposal.
 1. Install Steam via RPMFusion
 
 ## Positive Consequences <!-- optional -->
@@ -29,7 +29,10 @@ Install Fedora Kinoite and Steam.
 
 ## Option graveyard: <!-- same as above -->
 
-- Option: Use Arch Manjaor
+- Option: Use Arch Manjaro
+- Rejection Reason: Unfamiliar with OS.
+
+- Option: Use Arch Manjaro
 - Rejection Reason: Unfamiliar with OS.
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
@@ -44,6 +47,7 @@ QA testing needs to be inhouse.
 
 - https://en.wikipedia.org/wiki/Steam_Deck
 - https://download.fedoraproject.org/pub/fedora/linux/releases/35/Kinoite/x86_64/iso/Fedora-Kinoite-ostree-x86_64-35-1.2.iso
+- [Create Steamdeck hardware proxy by installing Fedora Silverblue and Steam](20211212-create-steamdeck-hardware-proxy-by-installing-fedora-silverblue-and-steam-2.md)
 
 ## Derivative License
 
