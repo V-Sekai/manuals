@@ -1,6 +1,6 @@
 # Create Steamdeck hardware proxy by installing Fedora Kinoite and Steam
 
-- Status: superseded by <!-- draft | rejected | accepted | deprecated | superseded by -->
+- Status: deprecated <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
 
