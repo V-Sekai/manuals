@@ -18,7 +18,6 @@ Build V-Sekai.
 - Customisable servers with their own individual game rules
 - Dependable for important presentations
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
 As a 3d world builder, I want to upload a world to invite my friends to experience (Voice Communication, Reliability, Networked) with me.
 
@@ -49,6 +48,10 @@ As a creative, I want to edit my V-Sekai virtual environment to better suit my r
 As a person, I want to work with a group that shares my values.
 
 As a person, I want to survive long enough to build V-Sekai.
+
+## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+
+[...]
 
 ## Positive Consequences <!-- optional -->
 
