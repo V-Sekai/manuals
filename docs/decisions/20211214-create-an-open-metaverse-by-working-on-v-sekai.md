@@ -36,6 +36,8 @@ As a developer, I need V-Sekai to understand my needs to have an excellent devel
 
 As a creative, I want to edit my V-Sekai virtual environment to better suit my requirements and preferences.
 
+As a user developer, I want to remix V-Sekai to better suit my requirements and preferences.
+
 As a person, I want to work with a group that shares my values.
 
 As a person, I want to survive long enough to build V-Sekai.
