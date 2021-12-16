@@ -63,10 +63,10 @@ def register_protocol(proto, command):
 
 ## Negative Consequences <!-- optional -->
 
-- We are chosing Native VRM support so arbitrary 3d models aren't allowed.
-- We choose Native code on the devices, so we can't use the interoperability of the web.
+- We are promoting Native VRM support so arbitrary 3d models aren't on the golden path as of 2021-12-16.
+- We choose native code on the devices, so we can't use the interoperability of the web as of 2021-12-16.
 - We choose Godot Engine which is an open source game engine to own our dependencies, so it is hard to use off the shelf commercial technologies.
-- We prefer de facto or open standards for the most reach, so we may not be able to get the exact solution we want without effort.
+- We prefer de-facto or open standards for the most reach, so we may not be able to get the exact solution we want without effort.
 
 ## Option graveyard: <!-- same as above -->
 
