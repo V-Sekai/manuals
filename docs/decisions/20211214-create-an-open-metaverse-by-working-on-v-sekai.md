@@ -25,15 +25,6 @@ As a 3d world builder, I want to upload a world to invite my friends to experien
 2. Installed: url to uro that sends an url
    1. v-sekai://v-sekai.org/lyuma/home?key=asjdfhgdtg#68.4,1.4,0.34
    1. Register windows protocol handler
-      ```
-      def register_protocol(proto, command):
-          import winreg
-          key = winreg.CreateKey(winreg.HKEY_CLASSES_ROOT, rf"{proto}")
-          winreg.SetValueEx(key, "", 0, winreg.REG_SZ, f"URL:{proto} protocol")
-          winreg.SetValueEx(key, "URL Protocol", 0, winreg.REG_SZ, "")
-          key = winreg.CreateKey(winreg.HKEY_CLASSES_ROOT, rf"{proto}\shell\open\command")
-          winreg.SetValueEx(key, "", 0, winreg.REG_SZ, command)
-      ```
 
 As an explorer, I want to browse a selection of places to visit.
 
@@ -51,7 +42,17 @@ As a person, I want to survive long enough to build V-Sekai.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-[...]
+Register protocol.
+
+```
+def register_protocol(proto, command):
+    import winreg
+    key = winreg.CreateKey(winreg.HKEY_CLASSES_ROOT, rf"{proto}")
+    winreg.SetValueEx(key, "", 0, winreg.REG_SZ, f"URL:{proto} protocol")
+    winreg.SetValueEx(key, "URL Protocol", 0, winreg.REG_SZ, "")
+    key = winreg.CreateKey(winreg.HKEY_CLASSES_ROOT, rf"{proto}\shell\open\command")
+    winreg.SetValueEx(key, "", 0, winreg.REG_SZ, command)
+```
 
 ## Positive Consequences <!-- optional -->
 
