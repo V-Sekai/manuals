@@ -641,16 +641,13 @@ Go to **Admin -> Config Repositories**
 - **Allow:** Pipeline Group: beta
 - **Allow:** Environment: development
 
-### Setup of flux GitOps:
+### Setup of flux2 GitOps:
 
 ```bash
-wget https://github.com/fluxcd/flux/releases/download/1.20.2/fluxctl_linux_amd64
-sudo cp fluxctl_linux_amd64 /usr/local/bin/fluxctl
-sudo chmod +x /usr/local/bin/fluxctl
-sudo helm repo add fluxcd https://charts.fluxcd.io
-sudo kubectl apply -f https://raw.githubusercontent.com/fluxcd/helm-operator/master/deploy/crds.yaml
-sudo kubectl create namespace flux
-sudo kubectl identity --k8s-fwd-ns flux
+curl -L https://github.com/fluxcd/flux2/releases/download/v0.24.1/flux_0.24.1_linux_amd64.tar.gz | tar -zxf - flux
+sudo cp flux /usr/local/bin/flux
+sudo chmod +x /usr/local/bin/flux
+sudo kubectl apply -f https://github.com/fluxcd/flux2/releases/download/v0.24.1/install.yaml
 ```
 
 Fork the flux-config repository from here https://github.com/V-Sekai/flux-config into your own github account, and set GHUSER=your github account.
@@ -661,10 +658,10 @@ Once you have done this, you can continue with the flux setup using your newly f
 
 ```bash
 export GHUSER="xxxxxxxxx"
-sudo fluxctl install --git-user=${GHUSER} --git-email=${GHUSER}@users.noreply.github.com - -git-url=git@github.com:${GHUSER}/flux-config --git-path=workloads --namespace=flux > fluxcmd_install.yaml
-sudo kubectl apply -f fluxcmd_install.yaml
-sudo fluxctl --k8s-fwd-ns flux
-sudo fluxctl list-workloads --k8s-fwd-ns flux
+sudo flux install
+sudo flux create source git gitrepo --url=https://github.com/$GHUSER/flux-config  --branch=flux2
+sudo flux create kustomization workloads --source=GitRepository/gitrepo --path="./workloads/"
+sudo flux get all
 ```
 
 FOR DEBUGGING ONLY: `sudo setenforce permissive` - this appears to have no effect, so there is a different problem.
