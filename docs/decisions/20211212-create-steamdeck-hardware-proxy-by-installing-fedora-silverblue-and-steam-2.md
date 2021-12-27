@@ -1,6 +1,6 @@
 # Create Steamdeck hardware proxy by installing Fedora Silverblue and Steam
 
-- Status: draft <!-- draft | rejected | accepted | deprecated | superseded by -->
+- Status: rejected <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
 - Tags: V-Sekai,
 
