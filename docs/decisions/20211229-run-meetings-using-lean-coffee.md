@@ -10,7 +10,7 @@ Meetings need to be ran better than randomly.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-[Describe the proposed option and how it helps to overcome the problem or limitation]
+Lean coffee can improve on meetings.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
