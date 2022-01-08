@@ -24,7 +24,6 @@ Bake blend shapes to skeletal animation.
 ### Dem Bones baking procedure
 
 2. Remove empties that are unused.
-3. Merge all meshes into one mesh (current limitation)
 4. Merge all animations into one animation and save a json of the frame and animation split times.
 5. Export one animation as an alembic sequence scaled to 100 meters.
 6. Export better-fbx. Set unit scale to 1. Export only deform bones.
