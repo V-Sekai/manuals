@@ -33,7 +33,7 @@ Bake blend shapes to skeletal animation.
 9. Set BONE_COUNT to be 3x the bone count.
 10. Run dem bones (parameters to be determined)
     * `dembones -i="Bone_Geom.fbx" -a="Bone_Anim.abc" --bindUpdate=1 -b=BONE_COUNT -o="Decomposition_$BONE_COUNT.fbx"`
-    * Bind update 1 creates new bones if there's no skeleton in the fbx.
+    * Bind update 1 creates new bones if there's a skeleton with one bone named "Root" in the fbx.
     * Bind update 2 uses the existing skeleton
 11. Check the RMSE is between 0.1 and 0.
 11. Use the resulting fbx scale at 1x. User euler XYZ rotation.
