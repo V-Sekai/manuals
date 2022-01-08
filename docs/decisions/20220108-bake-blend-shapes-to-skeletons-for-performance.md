@@ -33,9 +33,38 @@ Bake blend shapes to skeletal animation.
 9. Set BONE_COUNT to be 3x the bone count.
 10. Run dem bones (parameters to be determined)
     * `dembones -i="Bone_Geom.fbx" -a="Bone_Anim.abc" --bindUpdate=1 -b=BONE_COUNT -o="Decomposition_$BONE_COUNT.fbx"`
-    * Bind update 2 regroups bones under root.
 11. Check the RMSE is between 0.1 and 0.
 11. Use the resulting fbx scale at 1x. User euler XYZ rotation.
+
+#### Options
+
+Skinning decompsition to generate bone transformations and skinning weights from input meshes sequence
+
+`call DemBones -i="Bone_Geom.fbx" -a="Bone_Anim.abc" -b=20 -o="Decomposition_20.fbx"`
+
+Joint grouping 
+
+`call DemBones -i="Bone_Geom.fbx" -a="Bone_Anim.abc" -b=20 --bindUpdate=2 -o="Decomposition_20_grouped.fbx"`
+
+Solve skinning weights from input meshes sequence and input bone transformations
+
+`call DemBones -i="Bone_Trans.fbx" -a="Bone_Anim.abc" --nTransIters=0 -o="SolvedWeights.fbx"`
+
+Solve bone transformations from input meshes sequence and input skinning weights
+
+`call DemBones -i="Bone_Skin.fbx" -a="Bone_Anim.abc" --nWeightsIters=0 -o="SolvedTransformations.fbx"`
+
+Optimize given bone transformations and skinning weights from input meshes sequence
+
+`call DemBones -i="Bone_All.fbx" -a="Bone_Anim.abc" --bindUpdate=1 -o="Optimized.fbx"`
+
+Only solve helper bones using demLock attribute of the joints
+
+`call DemBones -i="Bone_Helpers.fbx" -a="Bone_Anim.abc" --bindUpdate=1 -o="SolvedHelpers.fbx"`
+
+Partially solve skinning weights using per-vertex color attribute of the mesh
+
+`call DemBones -i="Bone_PartiallySkinned.fbx" -a="Bone_Anim.abc" --nTransIters=0 -o="SolvedPartialWeights.fbx"`
 
 ### Open questions:
 
