@@ -28,7 +28,8 @@ Bake blend shapes to skeletal animation.
 3. Export one animation as an alembic sequence
 4. Export fbx with a meter to centimeter conversion
 5. Run dem bones (parameters to be determined)
-6. Use the resulting fbx
+  * dembones -i="Bone_Geom.fbx" -a="Bone_Anim.abc" --bindUpdate=2 -b=1000 -o="Decomposition_1000.fbx"
+7. Use the resulting fbx
 
 ### Open questions:
 
