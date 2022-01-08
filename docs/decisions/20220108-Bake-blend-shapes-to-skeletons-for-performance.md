@@ -25,7 +25,7 @@ Bake blend shapes to skeletal animation.
 4. Run dem bones (parameters to be determined)
 5. Use the resulting fbx
 
-Open questions:
+### Open questions:
 
 I align each track to a second? one after the others? 
 
