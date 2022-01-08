@@ -14,8 +14,12 @@ Bake blend shapes to skeletal animation.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-1. I want to bake the entire 52 face blendshape movements and the rest of the vrm blend shapes to a single animation track.
-2. I can send it to dem bones and bake the blend shapes.
+1. I want to bake blendshapes
+   2. 52 face blendshape face movements
+   3. vrm blend shapes
+   4. All the blend shapes are interpolate between 0 and 1.
+   5. single animation track.
+3. I can send it to dem bones and bake the blend shapes.
 
 ### Dem Bones baking procedure
 
