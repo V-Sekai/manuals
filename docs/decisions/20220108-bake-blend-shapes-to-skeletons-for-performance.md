@@ -24,7 +24,7 @@ Bake blend shapes to skeletal animation.
 ### Dem Bones baking procedure
 
 1. In Blender set the scene to cm and use 10 as the unit scale.
-2. Empties near the mesh may confuse.
+2. Remove empties that are unused.
 3. Merge all meshes into one mesh (current limitation)
 4. Merge all animations into one animation and save a json of the frame and animation split times.
 5. Export one animation as an alembic sequence
