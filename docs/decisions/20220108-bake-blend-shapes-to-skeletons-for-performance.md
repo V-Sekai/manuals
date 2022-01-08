@@ -16,8 +16,8 @@ Bake blend shapes to skeletal animation.
 
 1. I want to bake blendshapes
    * 52 face blendshape face movements
-   * vrm blend shapes
-   * All the blend shapes are interpolate between 0 and 1.
+   * VRM blend shapes
+   * The blend shapes are interpolated between 0s and 1s.
    * single animation track.
 3. I can send it to dem bones and bake the blend shapes.
 
