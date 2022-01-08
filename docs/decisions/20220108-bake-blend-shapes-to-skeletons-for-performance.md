@@ -24,17 +24,21 @@ Bake blend shapes to skeletal animation.
 ### Dem Bones baking procedure
 
 2. Remove empties that are unused.
-4. Merge all animations into one animation and save a json of the frame and animation split times.
-5. Export one animation as an alembic sequence scaled to 100 meters.
-6. Export better-fbx. Set unit scale to 1. Export only deform bones.
+3. For each mesh
+  4. Merge all animations into one animation and save a json of the frame and animation split times.
+  5. Export one animation as an alembic sequence scaled to 100 meters.
+  6. Export better-fbx. Set unit scale to 1. Export only deform bones.
+  7. Import better-fbx with only deform bones. Set unit scale to 1.
+  8. Export better-fbx again. Set unit scale to 1. Export only deform bones.
+  9. Set BONE_COUNT to be 3x the bone count.
+  10. Run dem bones (parameters to be determined)
+      * `dembones -i="Bone_Geom.fbx" -a="Bone_Anim.abc" --bindUpdate=1 -b=BONE_COUNT -o="Decomposition_$BONE_COUNT.fbx"`
+  11. Check the RMSE is between 0.1 and 0.
+  11. Use the resulting fbx scale at 1x. User euler XYZ rotation.
+12. Using the original non merged scene. Export better-fbx. Set unit scale to 1. Export only deform bones.
 7. Import better-fbx with only deform bones. Set unit scale to 1.
 8. Export better-fbx again. Set unit scale to 1. Export only deform bones.
-9. Set BONE_COUNT to be 3x the bone count.
-10. Run dem bones (parameters to be determined)
-    * `dembones -i="Bone_Geom.fbx" -a="Bone_Anim.abc" --bindUpdate=1 -b=BONE_COUNT -o="Decomposition_$BONE_COUNT.fbx"`
-11. Check the RMSE is between 0.1 and 0.
-11. Use the resulting fbx scale at 1x. User euler XYZ rotation.
-
+9. Attach the old skeleton to the mesh.
 #### Options
 
 Skinning decompsition to generate bone transformations and skinning weights from input meshes sequence
