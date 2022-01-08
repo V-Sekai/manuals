@@ -17,6 +17,14 @@ Bake blend shapes to skeletal animation.
 1. I want to bake the entire 52 face blendshape movements and the rest of the vrm blend shapes to a single animation track.
 2. I can send it to dem bones and bake the blend shapes.
 
+### Dem Bones baking procedure
+
+1. Merge all meshes into one mesh (current limition)
+2. Export one animation as an alembic sequence
+3. Export fbx with a meter to centimeter conversion
+4. Run dem bones (parameters to be determined)
+5. Use the resulting fbx
+
 Open questions:
 
 I align each track to a second? one after the others? 
