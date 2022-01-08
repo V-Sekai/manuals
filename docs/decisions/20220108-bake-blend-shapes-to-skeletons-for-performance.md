@@ -28,7 +28,7 @@ Bake blend shapes to skeletal animation.
 4. Merge all animations into one animation and save a json of the frame and animation split times.
 5. Export one animation as an alembic sequence scaled to 100 meters.
 6. Export better-fbx. Set unit scale to 1. Export only deform bones.
-7. Import better-fbx with only deform bones. Set unit scale to 100.
+7. Import better-fbx with only deform bones. Set unit scale to 1.
 8. Export better-fbx again. Set unit scale to 1. Export only deform bones.
 9. Set BONE_COUNT to be 3x the bone count.
 10. Run dem bones (parameters to be determined)
