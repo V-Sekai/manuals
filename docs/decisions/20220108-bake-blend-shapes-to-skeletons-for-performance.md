@@ -33,6 +33,7 @@ Bake blend shapes to skeletal animation.
 9. Set BONE_COUNT to be 3x the bone count.
 10. Run dem bones (parameters to be determined)
     * `dembones -i="Bone_Geom.fbx" -a="Bone_Anim.abc" --bindUpdate=2 -b=BONE_COUNT -o="Decomposition_$BONE_COUNT.fbx"`
+11. Check the RMSE is between 0.1 and 10.
 11. Use the resulting fbx
 
 ### Open questions:
