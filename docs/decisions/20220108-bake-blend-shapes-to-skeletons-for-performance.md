@@ -24,13 +24,14 @@ Bake blend shapes to skeletal animation.
 ### Dem Bones baking procedure
 
 1. In Blender set the scene to cm and use 10 as the unit scale.
-1. Merge all meshes into one mesh (current limitation)
-2. Merge all animations into one animation and save a json of the frame and animation split times.
-3. Export one animation as an alembic sequence
-4. Export fbx with a meter to centimeter conversion and no animations.
-5. Run dem bones (parameters to be determined)
+2. Empties near the mesh may confuse.
+3. Merge all meshes into one mesh (current limitation)
+4. Merge all animations into one animation and save a json of the frame and animation split times.
+5. Export one animation as an alembic sequence
+6. Export fbx with a meter to centimeter conversion and no animations.
+7. Run dem bones (parameters to be determined)
     * `dembones -i="Bone_Geom.fbx" -a="Bone_Anim.abc" --bindUpdate=2 -b=1000 -o="Decomposition_1000.fbx"`
-7. Use the resulting fbx
+8. Use the resulting fbx
 
 ### Open questions:
 
