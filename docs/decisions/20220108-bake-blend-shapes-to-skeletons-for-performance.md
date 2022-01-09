@@ -28,7 +28,7 @@ Bake blend shapes to skeletal animation.
 9. Remove the skeleton from fbx export. Use the resulting fbx scale at 1x. User euler XYZ rotation.
 10. Run dem bones (parameters to be determined)
 
-`./dembones -i="a.fbx" -a="a.abc" --bindUpdate=2 -b=200 -o="a_res.fbx"`
+`./dembones -i="a.fbx" -a="a.abc" -z=4 --bindUpdate=2 -b=200 -o="a_res.fbx"`
 
 11. Check the RMSE is between 0.1 and a small number.
 
