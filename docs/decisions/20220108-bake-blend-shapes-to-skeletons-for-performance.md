@@ -25,7 +25,8 @@ Bake blend shapes to skeletal animation.
 
 2. Remove empties that are unused.
 4. Extract the blend shape from the mesh
-5. Export as alembic 1 meter is 1 unit
+6. Export as alembic 1 meter is 1 unit.
+5. Note that all transforms on un-rigged meshes should be applied.
 9. Remove the skeleton and fbx export as 1 meter is 0.01 units.
 10. Run dem bones (parameters to be determined)
 
