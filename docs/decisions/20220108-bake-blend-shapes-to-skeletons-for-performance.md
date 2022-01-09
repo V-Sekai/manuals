@@ -25,7 +25,8 @@ Bake blend shapes to skeletal animation.
 
 2. Remove empties that are unused.
 4. Extract the blend shape from the mesh
-9. Remove the skeleton from fbx export. Use the resulting fbx scale at 1x. User euler XYZ rotation.
+5. Export as alembic 1 meter is 1 unit
+9. Remove the skeleton and fbx export as 1 meter is 0.01 units.
 10. Run dem bones (parameters to be determined)
 
 `./dembones -i="a.fbx" -a="a.abc" -z=4 --bindUpdate=2 -b=200 -o="a_res.fbx"`
