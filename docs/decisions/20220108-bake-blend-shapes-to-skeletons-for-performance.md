@@ -34,7 +34,7 @@ Bake blend shapes to skeletal animation.
 
 #### Options
 
-Skinning decompsition to generate bone transformations and skinning weights from input meshes sequence
+Skinning decomposition to generate bone transformations and skinning weights from input meshes sequence
 
 `call DemBones -i="Bone_Geom.fbx" -a="Bone_Anim.abc" -b=20 -o="Decomposition_20.fbx"`
 
