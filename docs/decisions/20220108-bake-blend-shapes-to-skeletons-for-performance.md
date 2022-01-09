@@ -30,7 +30,7 @@ Bake blend shapes to skeletal animation.
 
 `./dembones -i="a.fbx" -a="a.abc" -z=4 --bindUpdate=2 -b=200 -o="a_res.fbx"`
 
-11. Check the RMSE is between 0.1 and a small number.
+11. Check the RMSE is less than 0.001.
 
 #### Options
 
