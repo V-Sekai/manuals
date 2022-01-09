@@ -29,7 +29,11 @@ Bake blend shapes to skeletal animation.
 9. Remove the skeleton and fbx export as 1 meter is 0.01 units.
 10. Run dem bones (parameters to be determined)
 
-`./dembones -i="a.fbx" -a="a.abc" -z=4 --bindUpdate=2 -b=200 -o="a_res.fbx"`
+```bash
+./dembones -i="a.fbx" -a="a.abc" -z=4 --bindUpdate=2 -b=200 -o="a_res.fbx"
+# Note RMSE should be in the same range
+# Iter #0: Updating trans..... Done! Updating weights... Done! RMSE = 0.00027808
+`
 
 11. Check the RMSE is less than 0.001.
 
