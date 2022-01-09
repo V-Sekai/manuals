@@ -32,8 +32,9 @@ Bake blend shapes to skeletal animation.
 
 ```bash
 ./dembones -i="a.fbx" -a="a.abc" -z=4 --bindUpdate=2 -b=200 -o="a_res.fbx"
-# Note RMSE should be in the same range
-# Iter #0: Updating trans..... Done! Updating weights... Done! RMSE = 0.00027808
+# Note that RMSE should be in the same range as 0.01
+Computing Skinning Decomposition:
+    Iter #0: Updating trans..... Done! Updating weights... Done! RMSE = 0.0917716
 `
 
 11. Check the RMSE is less than 0.001.
