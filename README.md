@@ -17,11 +17,11 @@ export PATH=~/.local/bin/:$PATH >> ~/.bashrc
 
 ```
 # Windows setup
-mkdir %username%/.local
-mkdir %username%/.local/bin
-npm config set prefix %username%/.local
+mkdir %userprofile%\.local
+mkdir %userprofile%\.local\bin
+npm config set prefix %username%\.local
 npm install -g log4brains
-# Add %username%/.local/bin to path
+# Add %userprofile%\.local\bin to path
 ```
 
 ```
