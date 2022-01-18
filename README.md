@@ -16,15 +16,6 @@ export PATH=~/.local/bin/:$PATH >> ~/.bashrc
 ```
 
 ```
-# Windows setup
-mkdir %userprofile%\.local
-mkdir %userprofile%\.local\bin
-npm config set prefix %username%\.local
-npm install -g log4brains
-# Add %userprofile%\.local\bin to path
-```
-
-```
 log4brains adr new
 ```
 
