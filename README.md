@@ -1,59 +1,27 @@
 # v-sekai-proposals
-Public proposal and issue tracker repository for V-Sekai
 
-👇 Click on the badge to view.
+We are a community of enthusiasts building a next-generation social and gaming VR platform powered by the Godot Engine.
 
-[![V-Sekai Decision Records](https://V-Sekai.github.io/v-sekai-proposals/log4brains/badge.svg)](https://V-Sekai.github.io/v-sekai-proposals/log4brains/)
+This archive is at https://github.com/V-Sekai/v-sekai-proposals.
 
-## How to use?
+## Derivative License
 
-```
-# Setup
-mkdir -p ~/.local/bin/
-npm config set prefix ~/.local
-npm install -g log4brains
-export PATH=~/.local/bin/:$PATH >> ~/.bashrc
-```
+Copyright (c) 2020-2021 V-Sekai contributors.
 
-```
-log4brains adr new
-```
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Use `log4brains preview` to launch the site locally.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-
-
-https://github.com/yjs/yjs  @Lyuma CRDT Webaverse rewrote for combining transforms for movement 
-GitHub
-GitHub - yjs/yjs: Shared data types for building collaborative soft...
-Shared data types for building collaborative software - GitHub - yjs/yjs: Shared data types for building collaborative software
-
-Lyuma — Today at 15:58
-Different methods
-OT is authoritative;
-CRDT is distributed;
-Last Write Wins
-https://www.tiny.cloud/blog/real-time-collaboration-ot-vs-crdt/
-iFire [He/Him] — Today at 15:58
-https://jumpwire.ai/blog/in-memory-distributed-state-with-delta-crdts
-https://github.com/dmonad/crdt-benchmarks
-GitHub
-GitHub - dmonad/crdt-benchmarks: A collection of CRDT benchmarks
-A collection of CRDT benchmarks. Contribute to dmonad/crdt-benchmarks development by creating an account on GitHub.
-
-https://github.com/gritzko/ron
-GitHub
-GitHub - gritzko/ron: (dated, see the site) Replicated Object Notat...
-(dated, see the site) Replicated Object Notation, a distributed live data format, golang/ragel lib - GitHub - gritzko/ron: (dated, see the site) Replicated Object Notation, a distributed live data ...
-
-## Windows usage
-
-**List incomplete**
-
-```
-pacman -S ssh-pageant openssh git
-# restart
-git config --global user.email "email@example.com"
-git config --global user.name "Name"
-
-```
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

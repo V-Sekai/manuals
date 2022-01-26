@@ -1,30 +1,45 @@
-# Provide SSH, Web Proxy, DB and Kubernetes access via installing Pritunl Zero
-
-- Status: rejected
+# Create a standard procedure from adding spring bones to VRM models.
 
 ## Context and Problem Statement
 
-Provide SSH, Web Proxy, DB and Kubernetes access team-wide with security and with high avaliability.
+Create a standard operating procedure from adding spring bones to VRM models.
 
-## Describe the proposed option and how it helps to overcome the problem or limitation
+## Describe the feature / enhancement and how it helps to overcome the problem or limitation
 
-Pritunl Zero provides access, security and avaliability.
+By adding spring bones the body doesn't clip through clothing or hair.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-NOT OPEN SOURCE.
+Secondary is a node under the root.
+
+Use `VRM Spring Bone Collider Group` to stop spring bones from clipping with the skeleton.
+
+Add the root bones of the armature you want to animate.
+
+Is it possible to generate a humanoid collider groups?
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
-Kubenetes is massive and then we have a security system combined. This is not a few lines of code.
+Instructions are needed, automation is work.
+
+## Positive Consequences
+
+_No response_
+
+## Negative Consequences
+
+_No response_
 
 ## Is there a reason why this should be core and done by us?
 
-We can outsource the code but the use of this is still ours.
+I don't know and it's in my area so I need to know.
 
-## References <!-- optional -->
+## References
 
-- https://zero.pritunl.com/
+1. Lyuma has an upside down spring bone arrangement to avoid flipping.
+1. https://gist.github.com/emilianavt/51d8399987d67544fdebfe2ebd9a5149
+1. https://sator-imaging.booth.pm/items/2254383
+1. https://github.com/yuzu-unity/HumanoidCollider/raw/master/HumanoidCollider.unitypackage
 
 ## Derivative License
 
