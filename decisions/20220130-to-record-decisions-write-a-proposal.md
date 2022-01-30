@@ -92,8 +92,6 @@ SOFTWARE.
 
 - Work
 
-We are running the project so it means we have start this.
-
 ## Option graveyard: <!-- same as above -->
 
 - Option: Forgetting decisions.
