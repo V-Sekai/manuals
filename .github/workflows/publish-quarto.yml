@@ -24,8 +24,9 @@ jobs:
         run: |
           if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
           renv::restore()
-      - name: "Install Quarto and render"
-        uses: pommevilla/quarto-render@main
+      - uses: quarto-dev/quarto-actions/install-quarto@v1
+      - run: |
+          quarto render .
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
