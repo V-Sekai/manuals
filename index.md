@@ -1,4 +1,4 @@
-# v-sekai-proposals
+# V-Sekai Proposals
 
 We are a community of enthusiasts building a next-generation social and gaming VR platform powered by the Godot Engine.
 
