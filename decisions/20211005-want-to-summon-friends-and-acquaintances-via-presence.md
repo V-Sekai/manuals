@@ -1,4 +1,4 @@
-# Want to summon friends and acquaintances via presence.
+# Summon friends and acquaintances via presence to the current world.
 
 ### Context and Problem Statement
 
