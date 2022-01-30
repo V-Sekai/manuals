@@ -16,6 +16,10 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
 
 ## [Unreleased] 
 
+## 2022-01-30
+
+Switch proposal website to use https://quarto.org/.
+
 ## 2022-01-12
 
 Material Maker was patched so that OpenEXR export don't shift color channels in generated EXR file.
