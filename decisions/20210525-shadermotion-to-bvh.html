@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.3.69">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>V-Sekai Decisions</title>
+  <title>V-Sekai Decisions – shadermotion-to-bvh</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -13,22 +13,22 @@
     ul.task-list{list-style: none;}
   </style>
 
-  <script src="site_libs/quarto-nav/quarto-nav.js"></script>
-  <script src="site_libs/quarto-nav/headroom.min.js"></script>
-  <script src="site_libs/clipboard/clipboard.min.js"></script>
-  <meta name="quarto:offset" content="./">
-  <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-  <script src="site_libs/quarto-search/fuse.min.js"></script>
-  <script src="site_libs/quarto-search/quarto-search.js"></script>
-  <script src="site_libs/quarto-html/quarto.js"></script>
-  <script src="site_libs/quarto-html/popper.min.js"></script>
-  <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-  <script src="site_libs/quarto-html/anchor.min.js"></script>
-  <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-  <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
-  <script src="site_libs/bootstrap/bootstrap.min.js"></script>
-  <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-  <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+  <script src="../site_libs/quarto-nav/headroom.min.js"></script>
+  <script src="../site_libs/clipboard/clipboard.min.js"></script>
+  <meta name="quarto:offset" content="../">
+  <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+  <script src="../site_libs/quarto-search/fuse.min.js"></script>
+  <script src="../site_libs/quarto-search/quarto-search.js"></script>
+  <script src="../site_libs/quarto-html/quarto.js"></script>
+  <script src="../site_libs/quarto-html/popper.min.js"></script>
+  <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="../site_libs/quarto-html/anchor.min.js"></script>
+  <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+  <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+  <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
   <script id="quarto-search-options" type="application/json">{
     "location": "navbar",
     "copy-button": false,
@@ -51,14 +51,14 @@
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../styles.css">
 </head>
 <body class="docked">
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="./index.html">
+      <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">V-Sekai Decisions</span>
   </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -67,7 +67,7 @@
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page">Overview</a>
+    <a class="nav-link" href="../index.html">Overview</a>
   </li>  
 </ul>
               <div class="quarto-toggle-container">
@@ -101,12 +101,12 @@
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./CHANGELOG.html" class="sidebar-item-text ">Changelog</a>
+  <a href="../CHANGELOG.html" class="sidebar-item-text ">Changelog</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./decisions.html" class="sidebar-item-text ">Decisions</a>
+  <a href="../decisions.html" class="sidebar-item-text ">Decisions</a>
   </div>
 </li>
     </ul>
@@ -117,20 +117,104 @@
         <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#v-sekai-proposals" class="nav-link active" data-scroll-target="#v-sekai-proposals">v-sekai-proposals</a>
+<li><a href="#shadermotion-to-bvh" class="nav-link active" data-scroll-target="#shadermotion-to-bvh">Shadermotion to BVH</a>
 <ul class="collapse">
+<li><a href="#context-and-problem-statement" class="nav-link" data-scroll-target="#context-and-problem-statement">Context and Problem Statement</a></li>
+<li><a href="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="nav-link" data-scroll-target="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</a></li>
+<li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-andor-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-andor-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams</a>
+<ul class="collapse">
+<li><a href="#acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+</ul></li>
+<li><a href="#positive-consequences" class="nav-link" data-scroll-target="#positive-consequences">Positive Consequences <!-- optional --></a></li>
+<li><a href="#negative-consequences" class="nav-link" data-scroll-target="#negative-consequences">Negative Consequences <!-- optional --></a></li>
+<li><a href="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="nav-link" data-scroll-target="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</a></li>
+<li><a href="#is-there-a-reason-why-this-should-be-core-and-done-by-us" class="nav-link" data-scroll-target="#is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</a></li>
+<li><a href="#references" class="nav-link" data-scroll-target="#references">References <!-- optional --></a></li>
 <li><a href="#derivative-license" class="nav-link" data-scroll-target="#derivative-license">Derivative License</a></li>
 </ul></li>
 </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/v-sekai-proposals/edit/master/index.md" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/v-sekai-proposals/edit/master/decisions/20210525-shadermotion-to-bvh.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content">
 
-<section id="v-sekai-proposals" class="level1">
-<h1>v-sekai-proposals</h1>
-<p>We are a community of enthusiasts building a next-generation social and gaming VR platform powered by the Godot Engine.</p>
-<p>This archive is at https://github.com/V-Sekai/v-sekai-proposals.</p>
+<section id="shadermotion-to-bvh" class="level1">
+<h1>Shadermotion to BVH</h1>
+<section id="context-and-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
+<p>Lacking characters motions to work with.</p>
+<p>Transfering motions across platforms via video.</p>
+</section>
+<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level2">
+<h2 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h2>
+<p>ShaderMotion allows us to transfer motion for other VR platforms into a standard motion format.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-andor-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-andor-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams</h2>
+<p>ShaderMotion: “OBS” etc. motion captured video from VRChat.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://i.imgur.com/TgBM5lN.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Floss.mp4</figcaption><p></p>
+</figure>
+</div>
+<p>Example: <a href="https://gitlab.com/lox9973/ShaderMotion/-/raw/master/Example/Motion/Floss.mp4">Floss.mp4</a></p>
+<p>(repo: <a href="https://gitlab.com/lox9973/ShaderMotion">lox9973/ShaderMotion</a>)</p>
+<p><strong>ShaderMotion =&gt; BVH</strong></p>
+<ul>
+<li>input: mpeg4</li>
+<li>output: bvh</li>
+</ul>
+<section id="requirements" class="level4">
+<h4 class="anchored" data-anchor-id="requirements">Requirements</h4>
+<ul>
+<li>.mp4 shadermotion video</li>
+<li><a href="https://github.com/guillefix/shadermotion-to-bvh/releases">shadermotion-to-bvh by guillefix</a>
+<ul>
+<li>download shadermotion-to-bvh.zip from XXX github repo releases</li>
+<li>unpack to a folder</li>
+</ul></li>
+</ul>
+</section>
+<section id="conversion-process" class="level4">
+<h4 class="anchored" data-anchor-id="conversion-process">Conversion Process</h4>
+<p>Run <code>shadermotion2.exe --video "yourvideo.mp4"</code></p>
+<p>KEEP THE WINDOW FOCUSED</p>
+<p>Once completed, look for <code>yourvideo.bvh</code></p>
+</section>
+<section id="acknowledgements" class="level3">
+<h3 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h3>
+<p><strong>Thanks to humbletim for being the scribe</strong></p>
+<p><strong>Thanks to lyuma for being test pilot flying these steps</strong></p>
+</section>
+</section>
+<section id="positive-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences <!-- optional --></h2>
+<ul>
+<li>Able to have motion for characters</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences <!-- optional --></h2>
+<ul>
+<li>Many steps</li>
+</ul>
+</section>
+<section id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
+<h2 class="anchored" data-anchor-id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</h2>
+<p>ShaderMotion is a novel solution to capturing motion from VRChat.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
+<p>This document describes how to integrate ShaderMotion with us.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References <!-- optional --></h2>
+<ul>
+<li>https://chibifire.com/shader_motion/</li>
+<li>https://hackmd.io/EmOAt375S8KFqaNdPDJCXQ</li>
+</ul>
+</section>
 <section id="derivative-license" class="level2">
 <h2 class="anchored" data-anchor-id="derivative-license">Derivative License</h2>
 <p>Copyright (c) 2020-2021 V-Sekai contributors.</p>
