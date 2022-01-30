@@ -42,6 +42,7 @@ We want the source art to be in quads so we can post process it in the game.
 ## References <!-- optional -->
 
 - https://gdcvault.com/play/1026752/Quad-Mesh-Simplification-in
+- https://github.com/godotengine/godot-proposals/issues/3861
 
 ## Derivative License
 
