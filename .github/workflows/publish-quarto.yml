@@ -7,7 +7,6 @@ jobs:
   quarto-linux:
     runs-on: ubuntu-latest
     env:
-      RENV_PATHS_ROOT: ~/.local/share/renv
     steps:      
       - name: Checkout
         uses: actions/checkout@v2.3.4        
@@ -16,7 +15,7 @@ jobs:
           node-version: '14'
       - run: |
           npm install nomnoml
-          npx nomnoml ./vsekai_roadmap_2022.nomnoml ./vsekai_roadmap_2022.svg
+          npx nomnoml ./vsekai_roadmap_2022.nomnoml ./_site/vsekai_roadmap_2022.svg
       - uses: quarto-dev/quarto-actions/install-quarto@v1
       - run: |
           quarto render .
