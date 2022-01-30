@@ -1,6 +1,6 @@
 # Rank skeleton bone names with catboost
 
-- Status: accepted <-- draft | rejected | accepted | deprecated | superseded by -->
+- Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 
 ## Context and Problem Statement
 
