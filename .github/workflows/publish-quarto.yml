@@ -10,13 +10,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2.3.4
       - uses: r-lib/actions/setup-r@v1
-      - name: "Install R Packages: Cache packages"
-        uses: actions/cache@v1
-        with:
-          path: ${{ env.RENV_PATHS_ROOT }}
-          key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-renv-
       - name: "Install R Packages: Restore packages"
         shell: Rscript {0}
         run: |
