@@ -60,7 +60,8 @@ Use the decision record format.
 
 ## References <!-- optional and numbers of links can vary -->
 
-- https://github.com/thomvaill/log4brains
+- [Link type](link to decision) <!-- example: Refined by [xxx](yyyymmdd-xxx.md) -->
+
 ## Derivative License
 
 Copyright (c) 2021 V-Sekai contributors.
