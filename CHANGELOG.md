@@ -16,6 +16,11 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
 
 ## [Unreleased] 
 
+## 2022-01-31
+
+[BastiaanOlij](https://github.com/BastiaanOlij/) updated the OpenXR pull request so it now uses OpenXR 1.0.22 and it has that
+DISABLE_STD_FILESYSTEM switch in there.
+
 ## 2022-01-30
 
 Switch proposal website to use https://quarto.org/.
