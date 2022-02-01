@@ -628,7 +628,7 @@ Now go to file-auth-config, edit configuration, enable Allow only known users to
 
 Go to **Admin -> Config Repositories**
 
-- **Config repository Name:** groups-gocd-pipelines
+- **Config #repository Name:** groups-gocd-pipelines
 - **Plugin ID:** JSON Configuration Plugin
 - **Material Type:** Git
 - **URL:** git@gitlab.com:godot-groups/groups-gocd-pipelines
@@ -650,7 +650,7 @@ sudo chmod +x /usr/local/bin/flux
 sudo kubectl apply -f https://github.com/fluxcd/flux2/releases/download/v0.24.1/install.yaml
 ```
 
-Fork the flux-config repository from here https://github.com/V-Sekai/flux-config into your own github account, and set GHUSER=your github account.
+Fork the flux-config #repository from here https://github.com/V-Sekai/flux-config into your own github account, and set GHUSER=your github account.
 
 Now, in your fork of flux-config, go to project Settings -> Deploy Keys and add the result of the above identity command. Make sure to check **Allow write access**.
 

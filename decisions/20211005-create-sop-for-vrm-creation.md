@@ -1,12 +1,12 @@
-# Create SOP for VRM Creation
+# Create SOP for VRM #creation
 
 ### Context and Problem Statement
 
-Create SOP for VRM Creation
+Create SOP for VRM #creation
 
 ### Describe the feature / enhancement and how it helps to overcome the problem or limitation
 
-Hard to Get character creation correct.
+Hard to Get character #creation correct.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 

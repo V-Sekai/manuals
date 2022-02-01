@@ -1,4 +1,4 @@
-# Shadermotion to BVH
+# #shadermotion to BVH
 
 ## Context and Problem Statement
 
@@ -8,7 +8,7 @@ Transfering motions across platforms via video.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-ShaderMotion allows us to transfer motion for other VR platforms into a standard motion format.
+#shadermotion allows us to transfer motion for other VR platforms into a standard motion format.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
@@ -27,7 +27,7 @@ Example: [Floss.mp4](https://gitlab.com/lox9973/ShaderMotion/-/raw/master/Exampl
 
 #### Requirements
 
-- .mp4 shadermotion video
+- .mp4 #shadermotion video
 - [shadermotion-to-bvh by guillefix](https://github.com/guillefix/shadermotion-to-bvh/releases)
   - download shadermotion-to-bvh.zip from XXX github repo releases
   - unpack to a folder
@@ -56,11 +56,11 @@ Once completed, look for `yourvideo.bvh`
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
-ShaderMotion is a novel solution to capturing motion from VRChat.
+#shadermotion is a novel solution to capturing motion from VRChat.
 
 ## Is there a reason why this should be core and done by us?
 
-This document describes how to integrate ShaderMotion with us.
+This document describes how to integrate #shadermotion with us.
 
 ## References <!-- optional -->
 

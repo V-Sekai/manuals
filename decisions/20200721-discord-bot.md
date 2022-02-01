@@ -14,9 +14,9 @@ A discord bot would be able to inform users via Discord about updates and change
 
 We would connect to Discord API from Elixir using one of several integration libraries.
 
-We can report information such as server player count by editing a message; or updating the bot status.
+We can report #information such as server player count by editing a message; or updating the bot status.
 
-I would also like to poll information such as CI/CD builds and deployments. We could make an API where someone or something can post a message displayed in Discord using curl or some command, though we would have to make sure this is locked behind a secret key. Unclear.
+I would also like to poll #information such as CI/CD builds and deployments. We could make an API where someone or something can post a message displayed in Discord using curl or some command, though we would have to make sure this is locked behind a secret key. Unclear.
 
 ## Positive Consequences <!-- optional -->
 
@@ -39,7 +39,7 @@ I would also like to poll information such as CI/CD builds and deployments. We c
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
-Yes, it is possible to script querying the itch.io or Uro shards API. This proposal aims to make this information more accessible to those who would not script it.
+Yes, it is possible to script querying the itch.io or Uro shards API. This proposal aims to make this #information more accessible to those who would not script it.
 
 ## Is there a reason why this should be core and done by us?
 

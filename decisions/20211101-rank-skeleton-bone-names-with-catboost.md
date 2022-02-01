@@ -1,10 +1,10 @@
-# Rank skeleton bone names with catboost
+# Rank skeleton #bone names with catboost
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 
 ## Context and Problem Statement
 
-Improve automatic bone selection
+Improve automatic #bone selection
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
@@ -14,11 +14,11 @@ Use catboost to rank bones.
 
 1.  Install catboost
 2.  Generate training data.
-3.  Mapping to bone names, attributes and categories.
+3.  Mapping to #bone names, attributes and categories.
 4.  Use a training app create test data.
 5.  Generate train and test datasets for T-Posed character surfaces
 6.  Example: CSV.
-7.  `Label,Feature: Bone X global location in meters,Feature: Bone Y global location in meters,Feature: Bone Z global location in meters,Feature: Bone truncated normalized basis axis x 0,Feature: Bone truncated normalized basis axis x 1,Feature: Bone truncated normalized basis axis x 2,Feature: Bone truncated normalized basis axis y 0,Feature: Bone truncated normalized basis axis y 1,Feature: Bone truncated normalized basis axis y 2,Feature: Bone X global scale in meters,Feature: Bone Y global scale in meters,Feature: Bone Z global scale in meters,Feature: Bone Parent X global location in meters,Feature: Bone Parent Y global location in meters,Feature: Bone Parent Z global location in meters,Feature: Bone Parent truncated normalized basis axis x 0,Feature: Bone Parent truncated normalized basis axis x 1,Feature: Bone Parent truncated normalized basis axis x 2,Feature: Bone Parent truncated normalized basis axis y 0,Feature: Bone Parent truncated normalized basis axis y 1,Feature: Bone Parent truncated normalized basis axis y 2,Feature: Bone Parent X global scale in meters,Feature: Bone Parent Y global scale in meters,Feature: Bone Parent Z global scale in meters,Feature: Masculine (-1.0) and feminine (1.0),Feature: Body mass in kilograms,Feature: Head circumference in meters,Feature: Neckline circumference in meters,Feature: Left Shoulder circumference in meters,Feature: Right Shoulder circumference in meters,Feature: Left Elbow circumference in meters,Feature: Right Elbow circumference in meters,Feature: Left wrist circumference in meters,Feature: Right wrist circumference in meters,Feature: Waist circumference in meters,Feature: Left thigh circumference in meters,Feature: Right thigh circumference in meters,Feature: Left ankle circumference in meters,Feature: Right ankle circumference in meters,Feature: Animation Time,Category: Corresponding VRM Bone,Category: Title,Category: Author,Category: Specification Version,Category: Animation 1,0,0,0,1,0,0,0,1,0,1,1,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,AvatarSample_A,VRoid,,T-Pose`
+7.  `Label,Feature: #bone X global location in meters,Feature: #bone Y global location in meters,Feature: #bone Z global location in meters,Feature: #bone truncated normalized basis axis x 0,Feature: #bone truncated normalized basis axis x 1,Feature: #bone truncated normalized basis axis x 2,Feature: #bone truncated normalized basis axis y 0,Feature: #bone truncated normalized basis axis y 1,Feature: #bone truncated normalized basis axis y 2,Feature: #bone X global scale in meters,Feature: #bone Y global scale in meters,Feature: #bone Z global scale in meters,Feature: #bone Parent X global location in meters,Feature: #bone Parent Y global location in meters,Feature: #bone Parent Z global location in meters,Feature: #bone Parent truncated normalized basis axis x 0,Feature: #bone Parent truncated normalized basis axis x 1,Feature: #bone Parent truncated normalized basis axis x 2,Feature: #bone Parent truncated normalized basis axis y 0,Feature: #bone Parent truncated normalized basis axis y 1,Feature: #bone Parent truncated normalized basis axis y 2,Feature: #bone Parent X global scale in meters,Feature: #bone Parent Y global scale in meters,Feature: #bone Parent Z global scale in meters,Feature: Masculine (-1.0) and feminine (1.0),Feature: Body mass in kilograms,Feature: Head circumference in meters,Feature: Neckline circumference in meters,Feature: Left Shoulder circumference in meters,Feature: Right Shoulder circumference in meters,Feature: Left Elbow circumference in meters,Feature: Right Elbow circumference in meters,Feature: Left wrist circumference in meters,Feature: Right wrist circumference in meters,Feature: Waist circumference in meters,Feature: Left thigh circumference in meters,Feature: Right thigh circumference in meters,Feature: Left ankle circumference in meters,Feature: Right ankle circumference in meters,Feature: Animation Time,Category: Corresponding VRM Bone,Category: Title,Category: Author,Category: Specification Version,Category: Animation 1,0,0,0,1,0,0,0,1,0,1,1,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,AvatarSample_A,VRoid,,T-Pose`
 8.  A missing value means the field is empty.
 9.  Train.
 10. Test.

@@ -1,12 +1,12 @@
-# Summon friends and acquaintances via presence to the current world.
+# Summon #friend and acquaintances via presence to the current world.
 
 ### Context and Problem Statement
 
-Want to summon friends and acquaintances via presence.
+Want to summon #friend and acquaintances via presence.
 
 ### Describe the feature / enhancement and how it helps to overcome the problem or limitation
 
-By using rich presence friends can join my location.
+By using rich presence #friend can join my location.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 

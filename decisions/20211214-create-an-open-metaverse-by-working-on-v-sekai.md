@@ -88,7 +88,7 @@ We are V-Sekai and only we can be who we want to be.
 ### Minimum Requirements to not Fail Right Away
 
 > You should consider the following as mere table stakes:
-> High-quality multiplayer support for user creations out of the box
+> High-quality multiplayer support for user #creation out of the box
 > High-performance servers with excellent reliability
 > Powerful, user-friendly, and joyful creation tools
 

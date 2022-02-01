@@ -16,7 +16,7 @@ Note that the corresponding fbx is 0.01 scale while the alembic is in meters.
 
 The RMSE = 0.00433256 must be this low.
 
-Do not pass DemBones if the RMSE is like 3.5.
+Do not pass #dembones if the RMSE is like 3.5.
 
 Next step is to integrate an existing 3d skeleton.
 

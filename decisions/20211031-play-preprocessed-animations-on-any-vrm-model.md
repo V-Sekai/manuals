@@ -1,4 +1,4 @@
-# Play preprocessed animations on any VRM model
+# Play preprocessed #animation on any VRM model
 
 ### Context and Problem Statement
 
@@ -6,9 +6,9 @@ Given any vrm and a carefully made animation, we should be able to play back the
 
 ### Describe the feature / enhancement and how it helps to overcome the problem or limitation
 
-Need to work out a flow for making animations play back on vrm.
+Need to work out a flow for making #animation play back on vrm.
 
-**This is dependency for a VRM based character controller that can play existing animation clips and blend them**
+**This is dependency for a VRM based character controller that can play existing #animation clips and blend them**
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
@@ -16,7 +16,7 @@ Need to work out a flow for making animations play back on vrm.
 
 Collaborate with Saracen on a bone roll corrected VRM skeleton.
 
-Convert animations to VRM named bones.
+Convert #animation to VRM named bones.
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 
@@ -32,13 +32,13 @@ _No response_
 
 ### Is there a reason why this should be core and done by us?
 
-We control the default animation tree, therefore we need to do this.
+We control the default #animation tree, therefore we need to do this.
 
 ### References
 
 - Proposal on baking blend shapes to linear skin blending.
 - Useful for tokage's character movement demo. https://github.com/TokageItLab/3d-platform-test-for-godot4
-- Free animations -- https://github.com/V-Sekai/shadermotion-video-to-anims
+- Free #animation -- https://github.com/V-Sekai/shadermotion-video-to-anims
 
 ### Derivative License
 

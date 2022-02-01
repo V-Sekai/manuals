@@ -19,16 +19,16 @@ Bake blend shapes to skeletal animation.
    * VRM blend shapes
    * The blend shapes are interpolated between 0s and 1s.
    * single animation track.
-3. I can send it to dem bones and bake the blend shapes.
+3. I can send it to dem #bone and bake the blend shapes.
 
-### Dem Bones baking procedure
+### Dem #bone baking procedure
 
 2. Remove empties that are unused.
 4. Extract the blend shape from the mesh
 6. Export as alembic 1 meter is 1 unit. Flatten hierachy.
 5. Note that all transforms on un-rigged meshes should be applied.
 9. Remove the skeleton and fbx export as 1 meter is 0.01 units.
-10. Run dem bones (parameters to be determined)
+10. Run dem #bone (parameters to be determined)
 
 ```bash
 ./dembones -i="a.fbx" -a="a.abc" -z=4 --bindUpdate=2 -b=200 -o="a_res.fbx"
@@ -43,31 +43,31 @@ Computing Skinning Decomposition:
 
 Skinning decomposition to generate bone transformations and skinning weights from input meshes sequence
 
-`call DemBones -i="Bone_Geom.fbx" -a="Bone_Anim.abc" -b=20 -o="Decomposition_20.fbx"`
+`call #dembones -i="Bone_Geom.fbx" -a="Bone_Anim.abc" -b=20 -o="Decomposition_20.fbx"`
 
 Joint grouping 
 
-`call DemBones -i="Bone_Geom.fbx" -a="Bone_Anim.abc" -b=20 --bindUpdate=2 -o="Decomposition_20_grouped.fbx"`
+`call #dembones -i="Bone_Geom.fbx" -a="Bone_Anim.abc" -b=20 --bindUpdate=2 -o="Decomposition_20_grouped.fbx"`
 
 Solve skinning weights from input meshes sequence and input bone transformations
 
-`call DemBones -i="Bone_Trans.fbx" -a="Bone_Anim.abc" --nTransIters=0 -o="SolvedWeights.fbx"`
+`call #dembones -i="Bone_Trans.fbx" -a="Bone_Anim.abc" --nTransIters=0 -o="SolvedWeights.fbx"`
 
 Solve bone transformations from input meshes sequence and input skinning weights
 
-`call DemBones -i="Bone_Skin.fbx" -a="Bone_Anim.abc" --nWeightsIters=0 -o="SolvedTransformations.fbx"`
+`call #dembones -i="Bone_Skin.fbx" -a="Bone_Anim.abc" --nWeightsIters=0 -o="SolvedTransformations.fbx"`
 
 Optimize given bone transformations and skinning weights from input meshes sequence
 
-`call DemBones -i="Bone_All.fbx" -a="Bone_Anim.abc" --bindUpdate=1 -o="Optimized.fbx"`
+`call #dembones -i="Bone_All.fbx" -a="Bone_Anim.abc" --bindUpdate=1 -o="Optimized.fbx"`
 
-Only solve helper bones using demLock attribute of the joints
+Only solve helper #bone using demLock attribute of the joints
 
-`call DemBones -i="Bone_Helpers.fbx" -a="Bone_Anim.abc" --bindUpdate=1 -o="SolvedHelpers.fbx"`
+`call #dembones -i="Bone_Helpers.fbx" -a="Bone_Anim.abc" --bindUpdate=1 -o="SolvedHelpers.fbx"`
 
 Partially solve skinning weights using per-vertex color attribute of the mesh
 
-`call DemBones -i="Bone_PartiallySkinned.fbx" -a="Bone_Anim.abc" --nTransIters=0 -o="SolvedPartialWeights.fbx"`
+`call #dembones -i="Bone_PartiallySkinned.fbx" -a="Bone_Anim.abc" --nTransIters=0 -o="SolvedPartialWeights.fbx"`
 
 ### Open questions:
 
@@ -82,7 +82,7 @@ How do I find the tracks again?
 
 ## Negative Consequences <!-- optional -->
 
-- More bones
+- More #bone
 
 ## Option graveyard: <!-- same as above -->
 

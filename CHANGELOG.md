@@ -18,6 +18,11 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
 
 ## 2022-01-31
 
+iFire wrote with Lyuma some proposals:
+
+1. CICD as a TrueNas Scale system
+1. Proposal for Github CICD actions.
+
 [BastiaanOlij](https://github.com/BastiaanOlij/) updated the OpenXR pull request so it now uses OpenXR 1.0.22 and it has that
 DISABLE_STD_FILESYSTEM switch in there.
 

@@ -1,8 +1,8 @@
-# Benchmark animation playback
+# Benchmark #animation playback
 
 ### Context and Problem Statement
 
-How slow is animation playback in a simulated player situation.
+How slow is #animation playback in a simulated player situation.
 
 ### Describe the feature / enhancement and how it helps to overcome the problem or limitation
 
@@ -10,13 +10,13 @@ Need to see where we're at.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-100, 500, 1'000, 50'000 avatars animating with 30fps and animation compression on vs off.
+100, 500, 1'000, 50'000 avatars animating with 30fps and #animation compression on vs off.
 
 Randomize clips: idle, run, jump, walk (left, right, back, front)
 
 Put them into a 2d blend space and feed a random velocity.
 
-Start the animations at different random offsets.
+Start the #animation at different random offsets.
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 
@@ -24,7 +24,7 @@ Core code.
 
 ### Positive Consequences
 
-- Can investigate compressed animation player as a compute shader. The current architecture of the skinning and blend shapes animations is like vertex animations fed by buffers, but the keyframe playback is also problematic
+- Can investigate compressed #animation player as a compute shader. The current architecture of the skinning and blend shapes #animation is like vertex #animation fed by buffers, but the keyframe playback is also problematic
 
 ### Negative Consequences
 

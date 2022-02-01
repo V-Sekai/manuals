@@ -1,4 +1,4 @@
-# Use a standard reference platform called VFX Reference Platform
+# Use a standard reference #platform called VFX Reference #platform
 
 - Status: draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
@@ -15,7 +15,7 @@ Here are some problems:
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-> The VFX Reference Platform is a set of tool and library versions to be used as a common target platform for building software for the VFX industry. Its purpose is to minimise incompatibilities between different software packages, ease the support burden for Linux-based pipelines and encourage further adoption of Linux by software vendors. The Reference Platform is updated annually by a group of software vendors in collaboration with the Visual Effects Society Technology Committee.
+> The VFX Reference #platform is a set of tool and library versions to be used as a common target #platform for building software for the VFX industry. Its purpose is to minimise incompatibilities between different software packages, ease the support burden for Linux-based pipelines and encourage further adoption of Linux by software vendors. The Reference #platform is updated annually by a group of software vendors in collaboration with the Visual Effects Society Technology Committee.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
@@ -24,11 +24,11 @@ Here are some problems:
 
 ## Positive Consequences <!-- optional -->
 
-- The problems with platforms are informed by decisions of others in the industry.
+- The problems with #platform are informed by decisions of others in the industry.
 
 ## Negative Consequences <!-- optional -->
 
-- Going outside the platform is risky.
+- Going outside the #platform is risky.
 
 ## Option graveyard: <!-- same as above -->
 
@@ -44,7 +44,7 @@ This is a devops proposal, not a coding proposal.
 
 ## Is there a reason why this should be core and done by us?
 
-We do have to choose a reference platform even if we don't think about it to upload to docker.
+We do have to choose a reference #platform even if we don't think about it to upload to docker.
 
 ## References <!-- optional -->
 

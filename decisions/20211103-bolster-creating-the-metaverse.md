@@ -10,7 +10,7 @@ The metaverse needs creators.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-We propose to create a V-Sekai guide to creating the metaverse, creating your own virtual you and creating a part of the world. This can be a collaboration with others to provide matching guides to other metaverses.
+We propose to create a V-Sekai #guide to creating the metaverse, creating your own virtual you and creating a part of the world. This can be a collaboration with others to provide matching #guide to other metaverses.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
@@ -33,7 +33,7 @@ Learn from how experienced educators how to bloster new creators.
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
-Not a coding script, but can be a guide script.
+Not a coding script, but can be a #guide script.
 
 ## Is there a reason why this should be core and done by us?
 

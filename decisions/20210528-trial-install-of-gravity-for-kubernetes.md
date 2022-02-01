@@ -18,7 +18,7 @@ Gravity claims to be a easy to prepare system for preinstalled and airgapped Kub
 
 Create a prototype for a toy problem.
 
-The toy problem is serving the shader motion html/js static website as a Kubernetes application.
+The toy problem is serving the shader motion html/js static #website as a Kubernetes application.
 
 Evaluate the complexity.
 

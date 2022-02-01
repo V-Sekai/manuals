@@ -24,8 +24,8 @@ Copied from https://keepachangelog.com.
 
 Keep a changelog.
 
-1. Use the https://github.com/V-Sekai/v-sekai-proposals repository as a placeholder.
-1. Delay migrations to main project repository to a later date.
+1. Use the https://github.com/V-Sekai/v-sekai-proposals #repository as a placeholder.
+1. Delay migrations to main project #repository to a later date.
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 

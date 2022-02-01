@@ -1,4 +1,4 @@
-# Preview MaterialX materials on the Web in Godot Engine
+# Preview #materialx materials on the Web in Godot Engine
 
 - Status: draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
@@ -6,7 +6,7 @@
 
 ## Context and Problem Statement
 
-There is no process for previewing MaterialX on the web.
+There is no process for previewing #materialx on the web.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 

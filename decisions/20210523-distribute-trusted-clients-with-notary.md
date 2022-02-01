@@ -19,7 +19,7 @@ We distribute the notary updater and make it fetch the launcher and V-Sekai.
 
 We provide a notary server.
 
-We setup the trust relationship during the install and maintance.
+We setup the #trust relationship during the install and maintance.
 
 ### Positive Consequences <!-- optional -->
 
@@ -36,7 +36,7 @@ Steam provides a distribution network and marketplace.
 
 List the reasons for the rejection: (the Bad traits)
 
-- Third party trust
+- Third party #trust
 
 ## Option graveyard Itch.io only
 
@@ -44,7 +44,7 @@ Itch.io provides a distribution network and marketplace.
 
 List the reasons for the rejection: (the Bad traits)
 
-- Third party trust
+- Third party #trust
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
@@ -52,7 +52,7 @@ Not trivial. The documentaion of Notary start by the description of a possible s
 
 ## Is there a reason why this should be core and done by us?
 
-From a security standpoint, we need to ensure that there is a trust between the software we send and the client supply chain to get it.
+From a security standpoint, we need to ensure that there is a #trust between the software we send and the client supply chain to get it.
 
 ## References <!-- optional -->
 

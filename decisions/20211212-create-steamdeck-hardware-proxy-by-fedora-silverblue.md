@@ -1,4 +1,4 @@
-# Create Steamdeck hardware proxy by installing Fedora Silverblue and Steam
+# Create Steamdeck hardware proxy by installing Fedora Silverblue and #steam
 
 - Status: rejected <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
@@ -6,7 +6,7 @@
 
 ## Context and Problem Statement
 
-I don't have a Steam Deck since it was delayed til Feburary 2022 to test V-Sekai.
+I don't have a #steam Deck since it was delayed til Feburary 2022 to test V-Sekai.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
@@ -17,7 +17,7 @@ Install Fedora Kinoite and Steam.
 1. Install Ventoy on a USB Stick
 1. Install iso of Fedora Silverblue onto the drive on Ventoy
 1. Install Fedora Silverblue onto hardware proxy defined in another proposal.
-1. Install Steam via RPMFusion
+1. Install #steam via RPMFusion
 
 ## Positive Consequences <!-- optional -->
 

@@ -1,4 +1,4 @@
-# Portable World Content
+# Portable #world Content
 
 ### Context and Problem Statement
 
@@ -6,7 +6,7 @@ Independent meta-verses (virtual worlds) lack content because their communities 
 
 ### Describe the feature / enhancement and how it helps to overcome the problem or limitation
 
-Collaborate with Mozilla Hub's Spoke Editor and OMI Group's glTF2 extensions to have portable world content.
+Collaborate with Mozilla Hub's Spoke Editor and OMI Group's glTF2 extensions to have portable #world content.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
@@ -24,11 +24,11 @@ There are many moving parts and a web client, which is not a few lines of code.
 
 - Easier creation of new virtual worlds.
 - Encourage remixing content
-- Keeping old content portable to new virtual worlds
+- Keeping old content portable to new virtual #world
 
 ### Negative Consequences
 
-- Have to find different monetization means for independent virtual worlds
+- Have to find different monetization means for independent virtual #world
 
 ### Is there a reason why this should be core and done by us?
 

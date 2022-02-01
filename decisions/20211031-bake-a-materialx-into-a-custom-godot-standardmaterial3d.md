@@ -1,4 +1,4 @@
-# Bake a MaterialX into a custom Godot StandardMaterial3D
+# Bake a #materialx into a custom Godot StandardMaterial3D
 
 ### Context and Problem Statement
 
@@ -10,11 +10,11 @@ More options would be helpful.
 
 ### Describe the feature / enhancement and how it helps to overcome the problem or limitation
 
-Create a MaterialX to Godot Standard Material tool.
+Create a #materialx to Godot Standard Material tool.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-Make a GDscript tool that takes the MaterialX bake tool I already made and bake it to a standard material 3D in Godot Engine.
+Make a GDscript tool that takes the #materialx bake tool I already made and bake it to a standard material 3D in Godot Engine.
 
 Craft a GDScript that uses the command line tool and converts `mtlx` to a standard material 3d.
 

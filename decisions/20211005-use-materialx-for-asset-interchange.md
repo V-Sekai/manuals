@@ -1,16 +1,16 @@
-# Use MaterialX for asset interchange
+# Use #materialx for asset interchange
 
 ### Context and Problem Statement
 
-Use MaterialX for asset interchange
+Use #materialx for asset interchange
 
 ### Describe the feature / enhancement and how it helps to overcome the problem or limitation
 
-I was challenged to assemble a green IKEA chair with MaterialX https://github.com/KhronosGroup/3DC-Certification/tree/main/models/GreenChair by humbletim.
+I was challenged to assemble a green IKEA chair with #materialx https://github.com/KhronosGroup/3DC-Certification/tree/main/models/GreenChair by humbletim.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-1. bake materialx
+1. bake #materialx
 2. add gltf2 extension
 3. create an IO/Blender
 4. create an IO/Godot
