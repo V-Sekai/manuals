@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.3.74">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>V-Sekai Proposals – blank-proposal</title>
+  <title>V-Sekai Proposals – github-actions-support</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -119,14 +119,14 @@
 <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</a></li>
 <li><a href="#positive-consequences" class="nav-link" data-scroll-target="#positive-consequences">Positive Consequences <!-- optional --></a></li>
 <li><a href="#negative-consequences" class="nav-link" data-scroll-target="#negative-consequences">Negative Consequences <!-- optional --></a></li>
-<li><a href="#option-graveyard" class="nav-link" data-scroll-target="#option-graveyard">Option graveyard: <!-- same as above --></a></li>
+<li><a href="#option-graveyard" class="nav-link" data-scroll-target="#option-graveyard">Option graveyard:</a></li>
 <li><a href="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="nav-link" data-scroll-target="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</a></li>
 <li><a href="#is-there-a-reason-why-this-should-be-core-and-done-by-us" class="nav-link" data-scroll-target="#is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</a></li>
 <li><a href="#references" class="nav-link" data-scroll-target="#references">References <!-- optional and numbers of links can vary --></a></li>
 <li><a href="#derivative-license" class="nav-link" data-scroll-target="#derivative-license">Derivative License</a></li>
 </ul></li>
 </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/v-sekai-proposals/edit/master/decisions/20220130-blank-proposal.md" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/v-sekai-proposals/edit/master/decisions/20220131-github-actions-support.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content">
@@ -140,49 +140,54 @@
 </ul>
 <section id="context-and-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
-<p>[Describe the problem or limitation you are having in your project]</p>
-<p>[Describe the context and problem statement, e.g., in free form using two to three sentences. You may want to articulate the problem in the form of a question.]</p>
+<p>GitHub actions is free and does not require running your own hardware for CI/CD. We understand some users may desire to use this route to build our system.</p>
+<p>However, we also want our system to be fully self hosted, so as a compromise, we may wish to offer first-party support for both types of continuous integration.</p>
 </section>
 <section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level2">
 <h2 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h2>
-<p><a href="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</a></p>
+<p>We will offer github actions files in our official Godot fork as well as our V-Sekai project.</p>
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h2>
-<p><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</a></p>
+<p>We will generate github actions templates using the same jsonnet we use for GoCD.</p>
 </section>
 <section id="positive-consequences" class="level2">
 <h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences <!-- optional --></h2>
 <ul>
-<li>[e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]</li>
+<li>The social network of GitHub is more accessible to most people.</li>
+<li>Offers more options for building our infrastructure and ways to get into Godot development, which is good.</li>
+<li>GitHub’s donated compute time may free up valuable compute resources for more critical operations.</li>
 </ul>
 </section>
 <section id="negative-consequences" class="level2">
 <h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences <!-- optional --></h2>
 <ul>
-<li>[e.g., compromising quality attribute, follow-up decisions required, …]</li>
+<li>Maintaining more scripts requires our developer time</li>
+<li>More codepaths means more QA or pieces that can break.</li>
 </ul>
 <p>[this section can be repeated for each option if more than one option is open for consideration]</p>
 </section>
 <section id="option-graveyard" class="level2">
-<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard: <!-- same as above --></h2>
+<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard:</h2>
 <ul>
-<li>Option: <!-- [List the proposed options no longer open for consideration.] --></li>
-<li>Rejection Reason: <!-- [List the reasons for the rejection: (the Bad traits)] --></li>
+<li>Option: Keep the status quo, which is using GoCD or building manually on the command line.</li>
+<li>Rejection Reason: Building manually on the command line is slow on Windows and not reproducible;</li>
+<li>Rejection Reason: GoCD is inaccessible to most developers.</li>
 </ul>
 </section>
 <section id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
 <h2 class="anchored" data-anchor-id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</h2>
-<p><a href="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</a></p>
+<p>It can.</p>
 </section>
 <section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
-<p><a href="#is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</a></p>
+<p>We want to maintain it to encourage developers and as the publisher of the platform it is our responsibility.</p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References <!-- optional and numbers of links can vary --></h2>
 <ul>
-<li><a href="link%20to%20decision">Link type</a> <!-- example: Refined by [xxx](yyyymmdd-xxx.md) --></li>
+<li>https://jsonnet.org/</li>
+<li>https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions</li>
 </ul>
 </section>
 <section id="derivative-license" class="level2">
