@@ -112,7 +112,7 @@
         <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#convert-shadermotion-to-be-played-in-godot-engine" class="nav-link active" data-scroll-target="#convert-shadermotion-to-be-played-in-godot-engine">Convert ShaderMotion to be played in Godot Engine</a>
+<li><a href="#convert-shadermotion-to-be-played-in-godot-engine" class="nav-link active" data-scroll-target="#convert-shadermotion-to-be-played-in-godot-engine">Convert #shadermotion to be played in Godot Engine</a>
 <ul class="collapse">
 <li><a href="#context-and-problem-statement" class="nav-link" data-scroll-target="#context-and-problem-statement">Context and Problem Statement</a></li>
 <li><a href="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="nav-link" data-scroll-target="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</a></li>
@@ -132,20 +132,20 @@
 <main class="content">
 
 <section id="convert-shadermotion-to-be-played-in-godot-engine" class="level1">
-<h1>Convert ShaderMotion to be played in Godot Engine</h1>
+<h1>Convert #shadermotion to be played in Godot Engine</h1>
 <section id="context-and-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
 <p>We want a better way of importing animations to Godot Engine. Unfortunately, there is no standard way to exchange motion from other places to Godot and work interchangeably on different characters.</p>
 </section>
 <section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level2">
 <h2 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h2>
-<p>ShaderMotion files in video format provide an excellent way to record motion. However, we want the ability to play it back in Godot Engine onto a VRM character.</p>
+<p>#shadermotion files in video format provide an excellent way to record motion. However, we want the ability to play it back in Godot Engine onto a VRM character.</p>
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h2>
 <p>Install youtube-dl and ffmpeg with scoop</p>
 <p><code>scoop install youtube-dl ffmpeg</code></p>
-<p>Convert ShaderMotion videos into WebM VP9.</p>
+<p>Convert #shadermotion videos into WebM VP9.</p>
 <p><code>youtube-dl https://www.youtube.com/playlist?list=PLmwqDOin_Zt4WCMWqoK6SdHlg0C_WeCP6 --audio-format wav --format webm --recode-video webm</code></p>
 <p>Crop the preview frame of the video for the left and the right side.</p>
 <pre><code>ffmpeg -i "NNNN.webm" "-filter:v" "crop=in_w*(1-0.925):ih:0:0,fps=60,scale=24x180:flags=lanczos+full_chroma_inp" shader_motion_character_00.webm

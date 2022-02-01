@@ -112,7 +112,7 @@
         <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#transfer-animations-by-baking-reset" class="nav-link active" data-scroll-target="#transfer-animations-by-baking-reset">Transfer animations by baking reset</a>
+<li><a href="#transfer-animation-by-baking-reset" class="nav-link active" data-scroll-target="#transfer-animation-by-baking-reset">Transfer #animation by baking reset</a>
 <ul class="collapse">
 <li><a href="#context-and-problem-statement" class="nav-link" data-scroll-target="#context-and-problem-statement">Context and Problem Statement</a></li>
 <li><a href="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="nav-link" data-scroll-target="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</a></li>
@@ -128,46 +128,46 @@
 <!-- main -->
 <main class="content">
 
-<section id="transfer-animations-by-baking-reset" class="level1">
-<h1>Transfer animations by baking reset</h1>
+<section id="transfer-animation-by-baking-reset" class="level1">
+<h1>Transfer #animation by baking reset</h1>
 <section id="context-and-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
-<p>Given two animation <code>.glb</code>s in gltf, you cannot transfer the animations between the same character in different files in some cases.</p>
+<p>Given two #animation <code>.glb</code>s in gltf, you cannot transfer the #animation between the same character in different files in some cases.</p>
 <p>Fixes: https://github.com/godotengine/godot/issues/50212</p>
 <p>We are NOT retargeting between different rigs in the RESET baker stage.</p>
-<p>We are NOT defining how to generate the RESET animation in this proposal.</p>
+<p>We are NOT defining how to generate the RESET #animation in this proposal.</p>
 <section id="problem-extended" class="level4">
 <h4 class="anchored" data-anchor-id="problem-extended">Problem extended</h4>
-<p>We want to transfer animations between exact scenes with the same matching RESET animation.</p>
-<p>We can import unlimited motion capture animations to use if we can enforce a certain T-POSE and ensure the rigs are corresponding.</p>
+<p>We want to transfer #animation between exact scenes with the same matching RESET animation.</p>
+<p>We can import unlimited motion capture #animation to use if we can enforce a certain T-POSE and ensure the rigs are corresponding.</p>
 <p>Multiple different specifications exist on bone rolls on specific bone names. If the skeleton matches one of them, we can use that set of rig animations.</p>
 </section>
 </section>
 <section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level2">
 <h2 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h2>
-<p>We bake the RESET animation and then set it to identity so that rigs with corresponding RESET animation can have their animations transferred.</p>
+<p>We bake the RESET #animation and then set it to identity so that rigs with corresponding RESET #animation can have their #animation transferred.</p>
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h2>
 <section id="bake-reset-animation" class="level4">
-<h4 class="anchored" data-anchor-id="bake-reset-animation">Bake RESET animation</h4>
+<h4 class="anchored" data-anchor-id="bake-reset-animation">Bake RESET #animation</h4>
 <ol type="1">
 <li>Import a new scene with animations.</li>
-<li>A RESET animation from the imported scene will automatically be baked to the skeleton.</li>
-<li>Key all RESET animation frames to identity.</li>
+<li>A RESET #animation from the imported scene will automatically be baked to the skeleton.</li>
+<li>Key all RESET #animation frames to identity.</li>
 </ol>
 </section>
 <section id="bake-a-specific-frame" class="level4">
 <h4 class="anchored" data-anchor-id="bake-a-specific-frame">Bake a specific frame</h4>
 <ol type="1">
-<li>Pick an animation frame time and click</li>
+<li>Pick an #animation frame time and click</li>
 <li>First bake any existing RESET animation.</li>
-<li>Bake the RESET animation</li>
-<li>Ensure that a RESET animation track exists and is set to identity transform</li>
+<li>Bake the RESET #animation</li>
+<li>Ensure that a RESET #animation track exists and is set to identity transform</li>
 </ol>
 </section>
 <section id="reset-animation-generators" class="level4">
-<h4 class="anchored" data-anchor-id="reset-animation-generators">RESET Animation Generators</h4>
+<h4 class="anchored" data-anchor-id="reset-animation-generators">RESET #animation Generators</h4>
 <ol type="1">
 <li>Make a tool that can take a human character and make it T-pose (A-pose?) and then save it to the RESET animation.</li>
 <li>Enforce bone rolls on the rig and then save it to the RESET animation.</li>
@@ -182,7 +182,7 @@
 </section>
 <section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
-<p>Animations are a core feature of Godot Engine.</p>
+<p>#animation are a core feature of Godot Engine.</p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References <!-- optional --></h2>
