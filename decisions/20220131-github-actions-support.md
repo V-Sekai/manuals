@@ -6,44 +6,51 @@
 
 ## Context and Problem Statement
 
-[Describe the problem or limitation you are having in your project]
+GitHub actions is free and does not require running your own hardware for CI/CD.
+We understand some users may desire to use this route to build our system.
 
-[Describe the context and problem statement, e.g., in free form using two to three sentences. You may want to articulate the problem in the form of a question.]
+However, we also want our system to be fully self hosted, so as a compromise,
+we may wish to offer first-party support for both types of continuous integration.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-[Describe the proposed option and how it helps to overcome the problem or limitation]
+We will offer github actions files in our official Godot fork as well as our V-Sekai project.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-[Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams]
+We will generate github actions templates using the same jsonnet we use for GoCD.
 
 ## Positive Consequences <!-- optional -->
 
-- [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
+- The social network of GitHub is more accessible to most people.
+- Offers more options for building our infrastructure and ways to get into Godot development, which is good.
+- GitHub's donated compute time may free up valuable compute resources for more critical operations.
 
 ## Negative Consequences <!-- optional -->
 
-- [e.g., compromising quality attribute, follow-up decisions required, …]
+- Maintaining more scripts requires our developer time
+- More codepaths means more QA or pieces that can break.
 
 [this section can be repeated for each option if more than one option is open for consideration]
 
-## Option graveyard: <!-- same as above -->
+## Option graveyard:
 
-- Option: <!-- [List the proposed options no longer open for consideration.] -->
-- Rejection Reason: <!-- [List the reasons for the rejection: (the Bad traits)] -->
+- Option: Keep the status quo, which is using GoCD or building manually on the command line.
+- Rejection Reason: Building manually on the command line is slow on Windows and not reproducible;
+- Rejection Reason: GoCD is inaccessible to most developers.
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
-[If this enhancement will not be used often, can it be worked around with a few lines of script?]
+It can.
 
 ## Is there a reason why this should be core and done by us?
 
-[Is there a reason why this should be core and done by us?]
+We want to maintain it to encourage developers and as the publisher of the platform it is our responsibility.
 
 ## References <!-- optional and numbers of links can vary -->
 
-- [Link type](link to decision) <!-- example: Refined by [xxx](yyyymmdd-xxx.md) -->
+- https://jsonnet.org/
+- https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions
 
 ## Derivative License
 
