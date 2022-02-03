@@ -20,7 +20,7 @@ Lyuma reaffirmed his suspicions that OMI standards are not so valuable in isolat
 
 iFire also constructed a strawman of how operating inside a platform is seamless, and transferring between platforms is like pulling teeth. Still, a strawman isn't something that helped facilitate the discussion so Lyuma may have misunderstood that part. iFire described the unity package vs others. Lyuma agrees that this is valid; other formats could be deemed "interoperable," more expressive than Gltf.
 
-In my mind, it's a fair X point that already exists. So why work on Y? Why does Gltf 3d format if we have Fbx 3d format etc.?
+In Lyuma's mind, it's a fair X point that already exists. So why work on Y? Why does Gltf 3d format if we have Fbx 3d format etc.?
 
 Lyuma doesn't think we need to assume that there must be only one standard.
 
