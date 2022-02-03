@@ -1,4 +1,4 @@
-# Run own infrastructure
+# To allow independent deployment run our own infrastructure 
 
 - Status: draft <!-- proposed | draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
