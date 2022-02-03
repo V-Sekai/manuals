@@ -1,14 +1,12 @@
-# Create Default Animation-set
+# Create Default Animation Set
 
-- Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
+- Status: draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,tokage,fire,
 - Tags: V-Sekai,
 
 ## Context and Problem Statement
 
-[Describe the problem or limitation you are having in your project]
-
-[Describe the context and problem statement, e.g., in free form using two to three sentences. You may want to articulate the problem in the form of a question.]
+Wanted to have a default list of animations set.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
