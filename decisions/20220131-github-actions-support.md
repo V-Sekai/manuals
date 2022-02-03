@@ -1,4 +1,4 @@
-# [short title of solved problem and solution]
+# To have an alternative CICD use Github Actions.
 
 - Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
@@ -30,8 +30,6 @@ We will generate github actions templates using the same jsonnet we use for GoCD
 
 - Maintaining more scripts requires our developer time
 - More codepaths means more QA or pieces that can break.
-
-[this section can be repeated for each option if more than one option is open for consideration]
 
 ## Option graveyard:
 
