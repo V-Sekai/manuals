@@ -1,4 +1,4 @@
-# Create-default-animation-set.md
+# Create Default Animation-set
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,tokage,fire,
