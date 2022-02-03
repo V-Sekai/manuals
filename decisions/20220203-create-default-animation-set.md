@@ -13,7 +13,7 @@ Wanted to have a default list of animations set.
 [Describe the proposed option and how it helps to overcome the problem or limitation]
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
-
+```
 [AnimationSet]
 Init
 NeutralFront
@@ -82,7 +82,7 @@ CrawlMoveLeft
 
 [Additional 3]
 Chair
-
+```
 ## Positive Consequences <!-- optional -->
 
 - [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
