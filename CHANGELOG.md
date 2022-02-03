@@ -16,6 +16,9 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
 
 ## [Unreleased] 
 
+## 2022-02-02
+
+Wasgo go! Restored wasgo wasm execution.
 ## 2022-01-31
 
 iFire wrote with Lyuma some proposals:
