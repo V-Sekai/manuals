@@ -16,10 +16,6 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
 
 ## [Unreleased]
 
-## 2022-01-29
-
-\<Lyuma> Merged VR support (including OpenXR and the ability to create OpenVR as a plugin) into our godot engine build.
-
 ## 2022-02-05
 
 Curl has been put off until next week due to need to patch in a few upstream bugfixes.
@@ -45,6 +41,10 @@ DISABLE_STD_FILESYSTEM switch in there.
 Switch proposal website to use https://quarto.org/.
 
 Updated nomnoml diagrams.
+
+## 2022-01-29
+
+\<Lyuma> Merged VR support (including OpenXR and the ability to create OpenVR as a plugin) into our godot engine build.
 
 ## 2022-01-12
 
