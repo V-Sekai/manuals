@@ -18,7 +18,7 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
 
 ## 2022-01-29
 
-\<Lyuma> Merged VR support (including OpenXR and the ability to create OpenVR as a plugin) into our godot engine build. there's a bug in the CI system due to stupidity with openxr using some brand new c++ feature in one place that's not implemented everywhere. I think we should patch openxr because it's stupid.
+\<Lyuma> Merged VR support (including OpenXR and the ability to create OpenVR as a plugin) into our godot engine build.
 
 ## 2022-02-05
 
