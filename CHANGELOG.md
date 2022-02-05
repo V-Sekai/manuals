@@ -18,11 +18,9 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
 
 ## 2022-02-05
 
+Curl has been put off.
+
 cvtt bc6, bc7 texture compression speedup by reducing quality has been merged. Updating groups.
-
-## 2022-02-05
-
-Curl has been put off until next week due to need to patch in a few upstream bugfixes.
 
 ## 2022-02-02
 
