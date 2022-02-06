@@ -18,9 +18,11 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
 
 ## 2022-02-05
 
-Curl has been put off.
+Moved fire's project notes to V-Sekai/V-sekai issues.
 
-cvtt bc6, bc7 texture compression speedup by reducing quality has been merged. Updating groups.
+Curl has been postponed.
+
+Cvtt bc6, bc7 texture compression speedup by reducing quality has been merged. Updating groups.
 
 ## 2022-02-02
 
