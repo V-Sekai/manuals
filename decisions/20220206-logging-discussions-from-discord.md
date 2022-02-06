@@ -1,4 +1,4 @@
-# Log changelog channels using DiscordChatExporter
+# Log discussions using DiscordChatExporter
 - Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
