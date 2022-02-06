@@ -1,15 +1,15 @@
-# Log discussions using DiscordChatExporter
+# Log change notifications using DiscordChatExporter
 - Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
 
 ## Context and Problem Statement
 
-We use discord to log changes and design discussions. At any moment, Discord can disappear.
+We use discord to log changes. At any moment, Discord can disappear.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-Use DiscordChatExporter to export our design discussions.
+Use DiscordChatExporter to export our change notifications.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
@@ -20,7 +20,7 @@ Use DiscordChatExporter to export our design discussions.
 
 ## Positive Consequences <!-- optional -->
 
-- Logs can be created for design discussions.
+- Logs can be created for notificiations.
 
 ## Negative Consequences <!-- optional -->
 
