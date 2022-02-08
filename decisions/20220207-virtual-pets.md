@@ -1,4 +1,4 @@
-# To make a Virtual pet game given Jeana's designs
+# To make a virtual pet game given Jeana's designs
 
 - Status: accepted
 - Deciders: V-Sekai,ifire,Jeana,lyuma,
@@ -52,6 +52,11 @@ We are running the project.
 - https://twitter.com/jordy_j_s/status/1489644934743396356?s=20&t=WWesEW8ksELrkJa__3mUIg
 - https://github.com/V-Sekai/godot-tfd
 - https://twitter.com/VSekaiOfficial
+- https://itch.io/jam/virtual-pet-jam
+
+### Reference Design
+
+![Jeana virtual pet concept](https://raw.githubusercontent.com/V-Sekai/V-Sekai/master/decisions/attachments/virtual_pets/jeana_virtual_pets.png)
 
 ## Derivative License
 
