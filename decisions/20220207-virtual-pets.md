@@ -44,6 +44,7 @@ We are running the project.
 - https://twitter.com/jordy_j_s/status/1489644934743396356?s=20&t=WWesEW8ksELrkJa__3mUIg
 - https://github.com/V-Sekai/godot-tfd
 - https://twitter.com/VSekaiOfficial
+- ![Jeana virtual pet concept](https://raw.githubusercontent.com/V-Sekai/V-Sekai/master/decisions/attachments/virtual_pets/jeana_virtual_pets.png)
 
 ## Derivative License
 
