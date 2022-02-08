@@ -44,6 +44,7 @@ We are running the project.
 - https://twitter.com/jordy_j_s/status/1489644934743396356?s=20&t=WWesEW8ksELrkJa__3mUIg
 - https://github.com/V-Sekai/godot-tfd
 - https://twitter.com/VSekaiOfficial
+- https://itch.io/jam/virtual-pet-jam
 
 ### Reference Design
 
