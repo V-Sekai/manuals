@@ -1,7 +1,7 @@
 # To make a Virtual pet game given Jeana's designs
 
 - Status: accepted
-- Deciders: V-Sekai,ifire,Jeana,
+- Deciders: V-Sekai,ifire,Jeana,lyuma,
 - Tags: V-Sekai,
 
 ## Context and Problem Statement
@@ -10,14 +10,22 @@ We were chatting late night and the idea of a virtual pet game was challenged.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
+### Design 1
+
 1. VRM with spring bones
 1. reverse bone direction
 1. Simulate virtual pet behaviours
 
+### Design 2
+
+- springbone/constraint/follower (will clip through geom)
+- physics
+- navmesh (bake at runtime?)
+- raycast
+
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
 Wanted to create a virtual reality pet game where the pet was a character that was beside you in game and networked. The virtual pet would be with you in the game.
-
 ## Positive Consequences <!-- optional -->
 
 - Able to backtrack ideas.
