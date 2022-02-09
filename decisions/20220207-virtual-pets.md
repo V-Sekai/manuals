@@ -26,6 +26,7 @@ We were chatting late night and the idea of a virtual pet game was challenged.
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
 Wanted to create a virtual reality pet game where the pet was a character that was beside you in game and networked. The virtual pet would be with you in the game.
+
 ## Positive Consequences <!-- optional -->
 
 - Able to backtrack ideas.
