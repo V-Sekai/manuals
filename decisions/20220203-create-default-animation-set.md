@@ -13,76 +13,78 @@ Wanted to have a default list of animations set.
 [Describe the proposed option and how it helps to overcome the problem or limitation]
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
-```
-[AnimationSet]
-Init
-NeutralFront
-NeutralRight
-NeutralLeft
 
-WalkFront
-WalkBack
-WalkRightFront
-WalkRightBack
-WalkLeftFront
-WalkLeftBack
+### AnimationSet
 
-StrafeRight
-StrafeLeft
+* Init
+* NeutralFront
+* NeutralRight
+* NeutralLeft
 
-SprintFront
-SprintBack
-SprintRightFront
-SprintRightBack
-SprintLeftFront
-SprintLeftFrontBack
+* WalkFront
+* WalkBack
+* WalkRightFront
+* WalkRightBack
+* WalkLeftFront
+* WalkLeftBack
 
-Jump
-Fall
-Land
+* StrafeRight
+* StrafeLeft
 
-[Additional 1]
-Sit
-(NeutralToSit)
-(SitToNeutral)
+* SprintFront
+* SprintBack
+* SprintRightFront
+* SprintRightBack
+* SprintLeftFront
+* SprintLeftFrontBack
 
-Lay
-(NeutralToLay)
-(LayToNeutral)
+* Jump
+* Fall
+* Land
 
-[Additional 2]
-DuckNeutral
-DuckMoveFront
-DuckMoveBack
-DuckMoveRight
-DuckMoveLeft
+#### Additional 1
+* Sit
+* (NeutralToSit)
+* (SitToNeutral)
 
-(DuckToSit)
-(SitToDuck)
-(DuckToLay)
-(LayToDuck)
+* Lay
+* (NeutralToLay)
+* (LayToNeutral)
 
-CrawlNeutral
-CrawlMoveFront
-CrawlMoveBack
-CrawlMoveRight
-CrawlMoveLeft
+#### Additional 2
+* DuckNeutral
+* DuckMoveFront
+* DuckMoveBack
+* DuckMoveRight
+* DuckMoveLeft
 
-(CrawlToSit)
-(SitToCrawl)
-(CrawlToLay)
-(LayToCrawl)
+* (DuckToSit)
+* (SitToDuck)
+* (DuckToLay)
+* (LayToDuck)
 
-(NeutralToDuck)
-(DuckToNeutral)
-(NeutralToCrawl)
-(CrawlToNeutral)
-(DuckToCrawl)
-(CrawlToDuck)
+* CrawlNeutral
+* CrawlMoveFront
+* CrawlMoveBack
+* CrawlMoveRight
+* CrawlMoveLeft
 
-[Additional 3]
-Chair
-```
+* (CrawlToSit)
+* (SitToCrawl)
+* (CrawlToLay)
+* (LayToCrawl)
+
+* (NeutralToDuck)
+* (DuckToNeutral)
+* (NeutralToCrawl)
+* (CrawlToNeutral)
+* (DuckToCrawl)
+* (CrawlToDuck)
+
+#### Additional 3
+
+* Chair
+
 ## Positive Consequences <!-- optional -->
 
 - [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
