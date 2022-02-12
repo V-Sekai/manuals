@@ -13,8 +13,9 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
     **Fixed** for any bug fixes.
     **Security** in case of vulnerabilities.
 -->
+## 2022-02-11
 
-## [Unreleased]
+We made a lot of progress yesterday: getting closer to OpenXR integration; fixed some issues with avatar uploading; and progress with WasGo, including the ability to create a Godot Callable which directly represents a WASM function
 
 ## 2022-02-05
 
