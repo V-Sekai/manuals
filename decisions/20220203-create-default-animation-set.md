@@ -1,4 +1,4 @@
-# Create Default Animation Set
+# To have a default set of motions on a 3d character by creating a default animation set
 
 - Status: draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,tokage,fire,
