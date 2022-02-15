@@ -1,4 +1,4 @@
-# Use BPR to rank skeleton bone names
+# Rank skeleton bone names by using BPR 
 
 - Status: superseded by [20211101-rank-skeleton-bone-names-with-catboost](20211101-rank-skeleton-bone-names-with-catboost.md)
 
