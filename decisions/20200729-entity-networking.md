@@ -149,6 +149,8 @@ Part of a solution to this is to provide Attachment points as a feature of an En
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
+A networking system is not a few lines of code.
+
 ## Is there a reason why this should be core and done by us?
 
 Yes, this is the foundation of the protocol and the basic set of nodes and behavior upon which content will be created.
