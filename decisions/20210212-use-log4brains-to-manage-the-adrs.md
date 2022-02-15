@@ -1,6 +1,6 @@
 # Use Log4brains to manage the ADRs
 
-- Status: accepted
+- Status: rejected
 - Date: 2021-02-11
 - Tags: dev-tools, doc
 
