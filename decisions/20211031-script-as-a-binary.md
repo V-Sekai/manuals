@@ -1,4 +1,4 @@
-# Script as a binary
+# To provide a performance and portable script use WasGo
 
 ### Context and Problem Statement
 
