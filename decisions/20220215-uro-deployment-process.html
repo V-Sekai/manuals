@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.9.19">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>V-Sekai Proposals – convert-gltf-to-a-scene</title>
+  <title>V-Sekai Proposals – uro-deployment-process</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -117,7 +117,7 @@
         <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#convert-gltf-to-a-scene-with-audiostreamplayer3d-convert-audiostreamplayer3d-to-gltf-and-expose-usability." class="nav-link active" data-scroll-target="#convert-gltf-to-a-scene-with-audiostreamplayer3d-convert-audiostreamplayer3d-to-gltf-and-expose-usability.">Convert gltf to a scene with AudioStreamPlayer3D, convert AudiostreamPlayer3D to gltf and expose usability.</a>
+<li><a href="#uro-deployment" class="nav-link active" data-scroll-target="#uro-deployment">Uro deployment</a>
 <ul class="collapse">
 <li><a href="#context-and-problem-statement" class="nav-link" data-scroll-target="#context-and-problem-statement">Context and Problem Statement</a></li>
 <li><a href="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="nav-link" data-scroll-target="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</a></li>
@@ -131,70 +131,74 @@
 <li><a href="#derivative-license" class="nav-link" data-scroll-target="#derivative-license">Derivative License</a></li>
 </ul></li>
 </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/v-sekai-proposals/edit/master/decisions/20220118-convert-gltf-to-a-scene.md" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/v-sekai-proposals/edit/master/decisions/20220215-uro-deployment-process.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<section id="convert-gltf-to-a-scene-with-audiostreamplayer3d-convert-audiostreamplayer3d-to-gltf-and-expose-usability." class="level1">
-<h1>Convert gltf to a scene with AudioStreamPlayer3D, convert AudiostreamPlayer3D to gltf and expose usability.</h1>
+<section id="uro-deployment" class="level1">
+<h1>Uro deployment</h1>
 <ul>
-<li>Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by --></li>
-<li>Deciders: V-Sekai,fire,lyuma,</li>
+<li>Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by --></li>
+<li>Deciders: V-Sekai,</li>
 <li>Tags: V-Sekai,</li>
 </ul>
 <section id="context-and-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
-<p>We want to import gltf audio emitters in Godot Engine.</p>
+<p>We need a process for deploying Uro and other backend services safely</p>
 </section>
 <section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level2">
 <h2 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h2>
-<p>We designed a gltf audio emitter extension with OMI.</p>
+<p>Commit code to uro sandbox branch</p>
+<pre><code>- GoCD job creates uro-sandbox docker image
+- docker image is auto deployed to sandbox</code></pre>
+<p>PR merges code to uro main branch</p>
+<pre><code>- GoCD job creates uro docker image
+- docker image is auto deployed to staging (A/B)
+- manual interface to swap staging and live branch</code></pre>
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h2>
-<ol type="1">
-<li>Convert gltf to a scene with AudioStreamPlayer3D</li>
-<li>convert AudiostreamPlayer3D to gltf</li>
-<li>Publish to the Godot Engine 4.0 asset library</li>
-</ol>
+<p>Not done yet. Probably relies on a custom Elixir service in Kubernetes using Role-Based Access Control, so it can automatically change services:</p>
+<p>https://kubernetes.io/docs/reference/access-authn-authz/rbac/</p>
 </section>
 <section id="positive-consequences" class="level2">
 <h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences <!-- optional --></h2>
 <ul>
-<li>Audio emitters.</li>
+<li>[e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]</li>
 </ul>
 </section>
 <section id="negative-consequences" class="level2">
 <h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences <!-- optional --></h2>
 <ul>
-<li>Work needs to be done to implement omi audio.</li>
+<li>[e.g., compromising quality attribute, follow-up decisions required, …]</li>
 </ul>
+<p>[this section can be repeated for each option if more than one option is open for consideration]</p>
 </section>
 <section id="option-graveyard" class="level2">
 <h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard: <!-- same as above --></h2>
 <ul>
-<li>Option: The current status.</li>
-<li>Rejection Reason: Unable to load audio from artwork.</li>
+<li>Option: <!-- [List the proposed options no longer open for consideration.] --></li>
+<li>Rejection Reason: <!-- [List the reasons for the rejection: (the Bad traits)] --></li>
 </ul>
 </section>
 <section id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
 <h2 class="anchored" data-anchor-id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</h2>
-<p>Not a few lines of code.</p>
+<p><a href="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</a></p>
 </section>
 <section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
-<p>I proposed the idea and people at OMI are starting to move on.</p>
+<p><a href="#is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</a></p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References <!-- optional and numbers of links can vary --></h2>
 <ul>
-<li>https://github.com/omigroup/gltf-extensions/pull/1</li>
+<li><a href="link%20to%20decision">Link type</a> <!-- example: Refined by [xxx](yyyymmdd-xxx.md) --></li>
 </ul>
 </section>
 <section id="derivative-license" class="level2">
 <h2 class="anchored" data-anchor-id="derivative-license">Derivative License</h2>
-<p>Copyright (c) 2021 V-Sekai contributors.</p>
+<p>Copyright (c) 2022 V-Sekai contributors.</p>
 <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
 <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
 <p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
