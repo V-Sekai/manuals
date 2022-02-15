@@ -13,6 +13,12 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
     **Fixed** for any bug fixes.
     **Security** in case of vulnerabilities.
 -->
+
+
+## 2022-02-15
+
+Fire moved multiple projects issues to https://github.com/V-Sekai/V-Sekai/issues.
+
 ## 2022-02-12
 
 Lyuma changed RenIK to use set_bone_local_pose_override, and "hacked" skeleton's transform to keep it centered on the hips, fixing the avatar disappearing when far from origin.
