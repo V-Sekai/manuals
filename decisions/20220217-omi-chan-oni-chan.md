@@ -16,6 +16,8 @@ Use my know-how to rig a #256fes character.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
+- ![image](https://user-images.githubusercontent.com/32321/154479017-731c36f2-b52b-45dc-9078-4de260c6c91f.png)
+
 Given mesh model that is unrigged and #256FES
 
 ### Noted problems.
@@ -66,7 +68,6 @@ I know how to do it!
 ## References <!-- optional and numbers of links can vary -->
 
 - Released under the same license as Jeana's work. CC-BY or CC0 if in doubt.
-- ![image](https://user-images.githubusercontent.com/32321/154479017-731c36f2-b52b-45dc-9078-4de260c6c91f.png)
 - [SK_omi_chan_oni_chan.zip](https://github.com/omigroup/omi-chan/files/8088502/SK_omi_chan_oni_chan.zip)
 
 ## Derivative License
