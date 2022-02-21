@@ -58,7 +58,7 @@ Players can't make their own virtual worlds because it is hard.]
 [Avatar posession] -> [How do we have more diverse characters? |Marketplace? Proceduralism? Character generators?]
 [Avatar posession] -> [How we turn our voice to facial rig keyframes?]
 
-[V-Sekai] -> [Asset loading]
+[To further the development of Godot and open source tech.] -> [Asset loading]
  [Asset loading] -> [For editor (need to review, second priority):|
     #57920 Add automatic and linear bezier presets to Animation Bezier Editor|
     #54327 Add AnimationTree Advance Expressions|
@@ -101,7 +101,25 @@ Blink at irregular intervals
 [Animator (Blending Inverse Kinematics with walk animations)] -> [Voice over IP]
 [Voice over IP] -> [Mouth flapping]
 [Voice over IP] -> [Voice analyzer for shapekeys]
-[Voice over IP] -> [Avatar posession]
+[To build a tech stack and service for interactive multiplayer VR games.] -> [Avatar posession]
 [Thing from Steam skeleton]  -> [Avatar posession]
 [Avatar posession] -> [Eye targeting | HMD forward vector] 
 [Animator (Blending Inverse Kinematics with walk animations)] -> [Avatar posession]
+
+[V-Sekai] -> [To further the development of Godot and open source tech.]
+[V-Sekai] -> [To build a tech stack and service for interactive multiplayer VR games.]
+[To build a tech stack and service for interactive multiplayer VR games.] -> [One gitlab repo with source assets? (sky celebration and sponza).]
+[One gitlab repo with source assets? (sky celebration and sponza).] -> [SDK (set of submodules?) https://github.com/V-Sekai/vsk_sdk.]
+[One gitlab repo with source assets? (sky celebration and sponza).] -> [Being able to enter a vsk map ∀ maps (mvp = 1 map).]
+[One gitlab repo with source assets? (sky celebration and sponza).] -> [Enter a vsk map with an entity in it (upload sky celebration OR upload sponza with one beachball).]
+[One gitlab repo with source assets? (sky celebration and sponza).] -> [Being able to have our group of people join and communicate. (godot speech).]
+[Being able to have our group of people join and communicate. (godot speech).] -> [VR support (openxr).]
+[Being able to have our group of people join and communicate. (godot speech).] -> [Interacting with objects in desktop mode is important so that we can test easier.] 
+[VR support (openxr).] -> [Interacting with objects in vr.]
+[Interacting with objects in vr.] -> [Scripting (wasgo).]
+[Scripting (wasgo).] -> [Network server to support 1000.]
+
+[SDK (set of submodules?) https://github.com/V-Sekai/vsk_sdk.] -> [VSK_map source asset repositories]
+[VSK_map source asset repositories] -> [Lyuma will make a new github repo V-Sekai/vrm_submodule - we need a script for updating all submodules to the latest on a given branch.]
+[VSK_map source asset repositories | I think vsk_sdk should only be submodules, no assets. | We can git rebase -i to remove the binary assets from it. | git merge to install the vsk_sdk into another project (such as gitlab). we need to look if git subtree supports .gitmodules and we can use it if it does. | make vsk_sdk the head for all of the sdk related submodules. do our development there and commit submodules regularly. | In groups project, pretend we delete all submodules in vsk_sdk. Then git merge vsk_sdk/main to bring in the submodules from that repo. | Every time we update vsk_sdk, do a git merge into groups and our source asset repo with sponza etc.]
+[VSK_map source asset repositories] -> [Don't save .scn assets in git.| no GLB. | blend files ~10MB ok. >100MB let's either use GitLab LFS or something else.| Evaluate https://dvc.org/]
