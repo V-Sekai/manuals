@@ -22,8 +22,8 @@ Proposed mission and a list of tasks.
 
 1. One gitlab repo with source assets? (sky celebration and sponza).
   * SDK (set of submodules?) https://github.com/V-Sekai/vsk_sdk.
-    * Being able to enter a vsk map ∀ maps (mvp = 1 map). 
-    * Enter a vsk map with an entity in it (upload sky celebration OR upload sponza with one beachball). 
+     * Being able to enter a vsk map ∀ maps (mvp = 1 map). 
+     * Enter a vsk map with an entity in it (upload sky celebration OR upload sponza with one beachball). 
   * VSK_map source asset repositories
   * Lyuma will make a new github repo V-Sekai/vrm_submodule - we need a script for updating all submodules to the latest on a given branch.
   * VSK_map source asset repositories 
@@ -34,10 +34,10 @@ Proposed mission and a list of tasks.
   * In groups project, pretend we delete all submodules in vsk_sdk. Then git merge vsk_sdk/main to bring in the submodules from that repo. 
   * Every time we update vsk_sdk, do a git merge into groups and our source asset repo with sponza etc.
   * VSK_map source asset repositories 
-    * Don't save .scn assets in git.
-      *   no GLB. 
-      *   blend files ~10MB ok. > 100MB let's either use GitLab LFS or something else.
-      *   Evaluate https://dvc.org/
+     * Don't save .scn assets in git.
+        *   no GLB. 
+        *   blend files ~10MB ok. > 100MB let's either use GitLab LFS or something else.
+        *   Evaluate https://dvc.org/
 2. Being able to have our group of people join and communicate. (godot speech).
 3. VR support (openxr). 
 5. Interacting with objects in desktop mode is important so that we can test easier.
