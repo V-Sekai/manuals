@@ -36,6 +36,7 @@ Use catboost to rank bones.
 ## Negative Consequences <!-- optional -->
 
 - Starring at the abyss.
+- Needs to be have a smaller library size. Not almost 200 mb.
 
 ## Option graveyard: <!-- same as above -->
 
@@ -68,7 +69,7 @@ We need this to make the quality of life of creators better.
 - https://knarkowicz.wordpress.com/2014/04/16/octahedron-normal-vector-encoding/
 - https://www.kaggle.com/egordm/deep-learning-recommendation-model-dlrm
 
-````
+```
     @article{li2021learning,
     author = {Li, Peizhuo and Aberman, Kfir and Hanocka, Rana and Liu, Libin and Sorkine-Hornung, Olga and Chen, Baoquan},
     title = {Learning Skeletal Articulations with Neural Blend Shapes},
@@ -79,7 +80,7 @@ We need this to make the quality of life of creators better.
     year = {2021},
     publisher = {ACM}
     }
-    ```
+```
 
 ## Derivative License
 
@@ -106,4 +107,3 @@ SOFTWARE.
 ## Links
 
 * Supersedes [20211031-use-bpr-to-rank-skeleton-bone-names](20211031-use-bpr-to-rank-skeleton-bone-names.md)
-````
