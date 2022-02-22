@@ -54,6 +54,7 @@ We need this to make the quality of life of creators better.
 
 ## References <!-- optional -->
 
+- https://github.com/BayesWitnesses/m2cgen
 - https://stackoverflow.com/questions/36071672/using-xgboost-in-c
 - https://github.com/facebookresearch/dlrm
 - https://medium.com/@marthawhite_81346/learning-with-the-criteo-tb-dataset-e3ec12d9d77e
