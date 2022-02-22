@@ -13,6 +13,7 @@ Use transformer4rec to rank bones.
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
 1. Investigate
+2. libtorch?
 
 ## Positive Consequences <!-- optional -->
 
