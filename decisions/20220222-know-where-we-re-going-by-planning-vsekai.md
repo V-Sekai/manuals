@@ -14,13 +14,11 @@ Proposed mission and a list of tasks.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-Missions:
-
-#### To further the development of Godot and open source tech
+### To further the development of Godot and open source tech
 
 - Godot Engine pull requests.
 
-#### To build a tech stack and service for interactive multiplayer VR games.
+### To build a tech stack and service for interactive multiplayer VR games.
 
 1. One gitlab repo with source assets? (sky celebration and sponza).
   * SDK (set of submodules?) https://github.com/V-Sekai/vsk_sdk.
