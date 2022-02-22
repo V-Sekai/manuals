@@ -10,6 +10,8 @@ Improve automatic #bone selection
 
 Use catboost to rank bones.
 
+1. Compile catboost as a library
+
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
 1.  Install catboost
