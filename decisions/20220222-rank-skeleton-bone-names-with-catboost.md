@@ -11,6 +11,7 @@ Improve automatic #bone selection
 Use catboost to rank bones.
 
 1. Compile catboost as a library
+2. `ya make -r catboost/libs/model_interface/static`
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
