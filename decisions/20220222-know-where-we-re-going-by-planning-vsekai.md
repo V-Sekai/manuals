@@ -14,10 +14,7 @@ Proposed mission and a list of tasks.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-### Missions:
-
-* To further the development of Godot and open source tech.
-* To build a tech stack and service for interactive multiplayer VR games
+Missions:
 
 #### To further the development of Godot and open source tech
 
