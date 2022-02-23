@@ -20,7 +20,7 @@ Proposed mission and a list of tasks.
 
 ### To build a tech stack and service for interactive multiplayer VR games.
 
-1. One gitlab repo with source assets? (sky celebration and sponza).
+#### One gitlab repo with source assets? (sky celebration and sponza).
   * SDK (set of submodules?) https://github.com/V-Sekai/vsk_sdk.
      * Being able to enter a vsk map ∀ maps (mvp = 1 map). 
      * Enter a vsk map with an entity in it (upload sky celebration OR upload sponza with one beachball). 
@@ -38,12 +38,12 @@ Proposed mission and a list of tasks.
         *   no GLB. 
         *   blend files ~10MB ok. > 100MB let's either use GitLab LFS or something else.
         *   Evaluate https://dvc.org/
-2. Being able to have our group of people join and communicate. (godot speech).
-3. VR support (openxr). 
-5. Interacting with objects in desktop mode is important so that we can test easier.
-6. Interacting with objects in vr.
-7. Scripting (wasgo).
-8. Network server to support 1000.
+#### Being able to have our group of people join and communicate. (godot speech).
+#### VR support (openxr). 
+#### Interacting with objects in desktop mode is important so that we can test easier.
+#### Interacting with objects in vr.
+#### Scripting (wasgo).
+#### Network server to support 1000.
 
 ## Positive Consequences <!-- optional -->
 
