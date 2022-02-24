@@ -1,4 +1,4 @@
---- 
+---
 title: Storing raw VSK_map files via DVC to avoid limitations
 categories:
   - pipeline
@@ -9,7 +9,7 @@ deciders:
   - V-Sekai
   - ifire
   - lyuma
---- 
+---
 
 # Storing raw VSK_map files via DVC to avoid limitations
 
