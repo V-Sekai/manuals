@@ -51,6 +51,23 @@ S3 Compatible has multiple implementations. Intent on using digital ocean spaces
   * https://github.com/iterative/dvc/releases/download/2.9.5/dvc-2.9.5.exe 
 * https://dvc.org/doc/install/linux
 
+
+### Test using chibifire dvc bucket and the avatar wellness repository.
+
+```bash
+git clone https://github.com/fire/avatar-wellness.git
+dvc init
+dvc remote add --global -d chibifire-dvc s3://chibifire/dvc 
+dvc remote modify --global chibifire-dvc endpointurl sfo3.digitaloceanspaces.com
+dvc remote modify --global chibifire-dvc access_key_id 'AAAA'
+dvc remote modify --global chibifire-dvc secret_access_key 'BBBB'
+dvc config core.autostage true
+```
+
+### A V-Sekai alternative organization for creator
+
+Discussed with Lyuma how it is possible to make a V-Sekai alternative organization for creator repositories.
+
 ## Positive Consequences <!-- optional -->
 
 - Able to version control maps.
