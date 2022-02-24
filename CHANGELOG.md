@@ -14,6 +14,25 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
     **Security** in case of vulnerabilities.
 -->
 
+## 2022-02-22
+
+トカゲ — 10:28
+We discussed with reduz implementation of retargeting for about 8 hours
+
+Lyuma — 14:02
+if anyone's interested, you can read RocketChat from a browser:
+https://chat.godotengine.org/channel/animation?msg=JYqzF7xviTbh5zbmm
+
+## 2022-02-23
+
+iFire — Today at 07:38
+Openxr is merged into Godot Engine master!
+
+Lyuma — Today at 16:13
+
+OVR Advanced Settings 5.4.0 is released with OpenXR playspace moving support (for devices connected via SteamVR):
+
+![unknown](https://user-images.githubusercontent.com/32321/155451982-8d21ca07-0178-4314-a4f2-8de56c275fa3.png)
 
 ## 2022-02-15
 
