@@ -1,9 +1,22 @@
+--- 
+title: Storing raw VSK_map files via DVC to avoid limitations
+categories:
+  - pipeline
+  - V-Sekai
+status:
+  - accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
+deciders:
+  - V-Sekai
+  - ifire
+  - lyuma
+---
+
 # Storing raw VSK_map files via DVC to avoid limitations
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,ifire,lyuma,
 - Tags: V-Sekai,
-
+- 
 ## Context and Problem Statement
 
 How do I version control large binary game assets?
