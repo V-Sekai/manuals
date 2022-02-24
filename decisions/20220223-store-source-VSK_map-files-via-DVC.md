@@ -11,10 +11,6 @@ deciders:
   - lyuma
 ---
 
-# Storing raw VSK_map files via DVC to avoid limitations
-
-<!-- draft | rejected | accepted | deprecated | superseded by -->
-
 ## Context and Problem Statement
 
 How do I version control large binary game assets?
