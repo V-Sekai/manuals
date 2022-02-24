@@ -11,9 +11,9 @@ deciders:
   - lyuma
 --- 
 
-<!-- draft | rejected | accepted | deprecated | superseded by -->
-
 # Storing raw VSK_map files via DVC to avoid limitations
+
+<!-- draft | rejected | accepted | deprecated | superseded by -->
 
 ## Context and Problem Statement
 
