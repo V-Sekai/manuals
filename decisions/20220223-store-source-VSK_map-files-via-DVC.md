@@ -34,11 +34,6 @@ Use a Linux command to get the top 20 by size file types.
 
 S3 Compatible has multiple implementations. Intent on using digital ocean spaces.
 
-### Github vs Gitlab
-
-1. Gitlab is rejected because it causes friction as a social network
-2. Use github
-
 ### Permissions vs Cost
 
 * Permissions?
@@ -80,6 +75,15 @@ Discussed with Lyuma how it is possible to make a V-Sekai alternative organizati
 
 - Option: Do not use DVC remote on Google drive.
 - Rejection Reason: Google Drive does not have two implementions
+
+- Option: Use Github with git-lfs
+- Rejection Reason: The last time I checked it was 50 USD per 50 gigabytes.
+
+- Option: Use Gitlab git-lfs
+- Rejection Reason: There is slightly larger limit on https://gitlab.com git-lfs but gitlab.com does not scale with usage.
+
+- Option: Use Gitlab.com
+- Rejection Reason: Gitlab.com commrcial is expensive
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
