@@ -10,15 +10,135 @@
 <atom:link href="https://v-sekai.github.io/V-Sekai/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-0.9.41</generator>
-<lastBuildDate>Thu, 24 Feb 2022 18:38:02 GMT</lastBuildDate>
+<lastBuildDate>Thu, 24 Feb 2022 18:40:51 GMT</lastBuildDate>
 <item>
-  <title>{B4F502887207:/decisions/20220223-store-source-VSK_map-files-via-DVC.html}</title>
+  <title>Storing raw VSK_map files via DVC to avoid limitations</title>
   <dc:creator></dc:creator>
   <link>https://v-sekai.github.io/V-Sekai/decisions/20220223-store-source-VSK_map-files-via-DVC.html</link>
-  <description>{B4F502887207:/decisions/20220223-store-source-VSK_map-files-via-DVC.html}</description>
-  <category></category>
+  <description><![CDATA[ 
+
+
+<section id="storing-raw-vsk_map-files-via-dvc-to-avoid-limitations" class="level1">
+<h1>Storing raw VSK_map files via DVC to avoid limitations</h1>
+<ul>
+<li>Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by --></li>
+<li>Deciders: V-Sekai,ifire,lyuma,</li>
+<li>Tags: V-Sekai,</li>
+<li><h2 id="context-and-problem-statement" class="anchored" data-anchor-id="storing-raw-vsk_map-files-via-dvc-to-avoid-limitations">Context and Problem Statement</h2></li>
+</ul>
+<p>How do I version control large binary game assets?</p>
+<p>Need a procedure to version control large file folders like game map levels.</p>
+<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level2">
+<h2 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h2>
+<p>Propose using DVC as the version control system on top of git with a S3 remote on Digital Ocean.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>Initial list of binaries to transfer to DVC</p>
+<p>Use a Linux command to get the top 20 by size file types.</p>
+<ul>
+<li><code>*.glb</code></li>
+<li><code>*.gltf</code></li>
+<li><code>*.bin*</code></li>
+<li><code>*.png</code></li>
+<li><code>*.webp</code></li>
+<li><code>*.jpg</code></li>
+<li><code>*.jpeg</code></li>
+<li><code>*.exr</code></li>
+<li><code>*.scn</code></li>
+</ul>
+<section id="remotes" class="level3">
+<h3 class="anchored" data-anchor-id="remotes">Remotes</h3>
+<p>S3 Compatible has multiple implementations. Intent on using digital ocean spaces.</p>
+</section>
+<section id="permissions-vs-cost" class="level3">
+<h3 class="anchored" data-anchor-id="permissions-vs-cost">Permissions vs Cost</h3>
+<ul>
+<li>Permissions?</li>
+<li>Open bucket</li>
+<li>Cost of storage</li>
+</ul>
+</section>
+<section id="installing" class="level3">
+<h3 class="anchored" data-anchor-id="installing">Installing</h3>
+<ul>
+<li>https://dvc.org/doc/install/windows
+<ul>
+<li>https://github.com/iterative/dvc/releases/download/2.9.5/dvc-2.9.5.exe</li>
+</ul></li>
+<li>https://dvc.org/doc/install/linux</li>
+</ul>
+</section>
+<section id="test-using-chibifire-dvc-bucket-and-the-avatar-wellness-repository." class="level3">
+<h3 class="anchored" data-anchor-id="test-using-chibifire-dvc-bucket-and-the-avatar-wellness-repository.">Test using chibifire dvc bucket and the avatar wellness repository.</h3>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="fu" style="color: #4758AB;">git</span> clone https://github.com/fire/avatar-wellness.git</span>
+<span id="cb1-2"><span class="ex" style="color: null;">dvc</span> init</span>
+<span id="cb1-3"><span class="ex" style="color: null;">dvc</span> remote add <span class="at" style="color: null;">-d</span> chibifire-dvc-web https://chibifire.sfo3.digitaloceanspaces.com/dvc/</span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;"># dvc remote add --local chibifire-dvc-s3 s3://chibifire/dvc </span></span>
+<span id="cb1-5"><span class="co" style="color: #5E5E5E;"># dvc remote modify --local chibifire-dvc-s3 endpointurl sfo3.digitaloceanspaces.com</span></span>
+<span id="cb1-6"><span class="co" style="color: #5E5E5E;"># dvc remote modify --local chibifire-dvc-s3 access_key_id 'AAAA'</span></span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;"># dvc remote modify --local chibifire-dvc-s3 secret_access_key 'BBBB'</span></span>
+<span id="cb1-8"><span class="ex" style="color: null;">dvc</span> config core.autostage true</span></code></pre></div>
+</section>
+<section id="a-v-sekai-alternative-organization-for-creator" class="level3">
+<h3 class="anchored" data-anchor-id="a-v-sekai-alternative-organization-for-creator">A V-Sekai alternative organization for creator</h3>
+<p>Discussed with Lyuma how it is possible to make a V-Sekai alternative organization for creator repositories.</p>
+</section>
+</section>
+<section id="positive-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences <!-- optional --></h2>
+<ul>
+<li>Able to version control maps.</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences <!-- optional --></h2>
+<ul>
+<li>Usability now has a gap.</li>
+</ul>
+</section>
+<section id="option-graveyard" class="level2">
+<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard: <!-- same as above --></h2>
+<ul>
+<li><p>Option: Do not use DVC remote on Google drive.</p></li>
+<li><p>Rejection Reason: Google Drive does not have two implementions</p></li>
+<li><p>Option: Use Github with git-lfs</p></li>
+<li><p>Rejection Reason: The last time I checked it was 50 USD per 50 gigabytes.</p></li>
+<li><p>Option: Use Gitlab git-lfs</p></li>
+<li><p>Rejection Reason: There is slightly larger limit on https://gitlab.com git-lfs but gitlab.com does not scale with usage.</p></li>
+<li><p>Option: Use Gitlab.com</p></li>
+<li><p>Rejection Reason: Gitlab.com commrcial is expensive</p></li>
+</ul>
+</section>
+<section id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
+<h2 class="anchored" data-anchor-id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</h2>
+<p>A version control system and object stores are not trivial and hard.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
+<p>We want to present V-Sekai maps for others to remix.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References <!-- optional and numbers of links can vary --></h2>
+<ul>
+<li><a href="https://dvc.org/">DVC Version Control system</a> <!-- example: Refined by [xxx](yyyymmdd-xxx.md) --></li>
+</ul>
+</section>
+<section id="derivative-license" class="level2">
+<h2 class="anchored" data-anchor-id="derivative-license">Derivative License</h2>
+<p>Copyright (c) 2022 V-Sekai contributors.</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+
+
+</section>
+</section>
+ ]]></description>
+  <category>pipeline</category>
+  <category>V-Sekai</category>
   <guid>https://v-sekai.github.io/V-Sekai/decisions/20220223-store-source-VSK_map-files-via-DVC.html</guid>
-  <pubDate>Thu, 24 Feb 2022 18:38:02 GMT</pubDate>
+  <pubDate>Thu, 24 Feb 2022 18:40:51 GMT</pubDate>
 </item>
 <item>
   <title>{B4F502887207:/decisions/20220222-rank-skeleton-bone-names-with-catboost.html}</title>
@@ -27,7 +147,7 @@
   <description>{B4F502887207:/decisions/20220222-rank-skeleton-bone-names-with-catboost.html}</description>
   <category></category>
   <guid>https://v-sekai.github.io/V-Sekai/decisions/20220222-rank-skeleton-bone-names-with-catboost.html</guid>
-  <pubDate>Thu, 24 Feb 2022 18:38:02 GMT</pubDate>
+  <pubDate>Thu, 24 Feb 2022 18:40:51 GMT</pubDate>
 </item>
 <item>
   <title>{B4F502887207:/decisions/20220222-rank-bone-skeletons-with-xgboost.html}</title>
@@ -36,7 +156,7 @@
   <description>{B4F502887207:/decisions/20220222-rank-bone-skeletons-with-xgboost.html}</description>
   <category></category>
   <guid>https://v-sekai.github.io/V-Sekai/decisions/20220222-rank-bone-skeletons-with-xgboost.html</guid>
-  <pubDate>Thu, 24 Feb 2022 18:38:02 GMT</pubDate>
+  <pubDate>Thu, 24 Feb 2022 18:40:51 GMT</pubDate>
 </item>
 <item>
   <title>{B4F502887207:/decisions/20220222-rank-bone-names-with-transformer.html}</title>
@@ -45,7 +165,7 @@
   <description>{B4F502887207:/decisions/20220222-rank-bone-names-with-transformer.html}</description>
   <category></category>
   <guid>https://v-sekai.github.io/V-Sekai/decisions/20220222-rank-bone-names-with-transformer.html</guid>
-  <pubDate>Thu, 24 Feb 2022 18:38:02 GMT</pubDate>
+  <pubDate>Thu, 24 Feb 2022 18:40:51 GMT</pubDate>
 </item>
 <item>
   <title>{B4F502887207:/decisions/20220222-know-where-we-re-going-by-planning-vsekai.html}</title>
@@ -54,7 +174,7 @@
   <description>{B4F502887207:/decisions/20220222-know-where-we-re-going-by-planning-vsekai.html}</description>
   <category></category>
   <guid>https://v-sekai.github.io/V-Sekai/decisions/20220222-know-where-we-re-going-by-planning-vsekai.html</guid>
-  <pubDate>Thu, 24 Feb 2022 18:38:02 GMT</pubDate>
+  <pubDate>Thu, 24 Feb 2022 18:40:51 GMT</pubDate>
 </item>
 <item>
   <title>{B4F502887207:/decisions/20220217-omi-chan-oni-chan.html}</title>
@@ -63,7 +183,7 @@
   <description>{B4F502887207:/decisions/20220217-omi-chan-oni-chan.html}</description>
   <category></category>
   <guid>https://v-sekai.github.io/V-Sekai/decisions/20220217-omi-chan-oni-chan.html</guid>
-  <pubDate>Thu, 24 Feb 2022 18:38:02 GMT</pubDate>
+  <pubDate>Thu, 24 Feb 2022 18:40:51 GMT</pubDate>
   <media:content url="https://user-images.githubusercontent.com/32321/154479017-731c36f2-b52b-45dc-9078-4de260c6c91f.png" medium="image" type="image/png"/>
 </item>
 <item>
@@ -73,7 +193,7 @@
   <description>{B4F502887207:/decisions/20220215-uro-deployment-process.html}</description>
   <category></category>
   <guid>https://v-sekai.github.io/V-Sekai/decisions/20220215-uro-deployment-process.html</guid>
-  <pubDate>Thu, 24 Feb 2022 18:38:02 GMT</pubDate>
+  <pubDate>Thu, 24 Feb 2022 18:40:51 GMT</pubDate>
 </item>
 <item>
   <title>{B4F502887207:/decisions/20220207-virtual-pets.html}</title>
@@ -82,7 +202,7 @@
   <description>{B4F502887207:/decisions/20220207-virtual-pets.html}</description>
   <category></category>
   <guid>https://v-sekai.github.io/V-Sekai/decisions/20220207-virtual-pets.html</guid>
-  <pubDate>Thu, 24 Feb 2022 18:38:02 GMT</pubDate>
+  <pubDate>Thu, 24 Feb 2022 18:40:51 GMT</pubDate>
   <media:content url="https://raw.githubusercontent.com/V-Sekai/V-Sekai/master/decisions/attachments/virtual_pets/jeana_virtual_pets.png" medium="image" type="image/png"/>
 </item>
 <item>
@@ -92,7 +212,7 @@
   <description>{B4F502887207:/decisions/20220206-logging-notifications-from-discord.html}</description>
   <category></category>
   <guid>https://v-sekai.github.io/V-Sekai/decisions/20220206-logging-notifications-from-discord.html</guid>
-  <pubDate>Thu, 24 Feb 2022 18:38:02 GMT</pubDate>
+  <pubDate>Thu, 24 Feb 2022 18:40:51 GMT</pubDate>
 </item>
 <item>
   <title>{B4F502887207:/decisions/20220205-cicd-to-pass by-fixing-spatial-audio-branch.html}</title>
@@ -101,7 +221,7 @@
   <description>{B4F502887207:/decisions/20220205-cicd-to-pass by-fixing-spatial-audio-branch.html}</description>
   <category></category>
   <guid>https://v-sekai.github.io/V-Sekai/decisions/20220205-cicd-to-pass by-fixing-spatial-audio-branch.html</guid>
-  <pubDate>Thu, 24 Feb 2022 18:38:02 GMT</pubDate>
+  <pubDate>Thu, 24 Feb 2022 18:40:51 GMT</pubDate>
 </item>
 <item>
   <title>{B4F502887207:/decisions/20220203-create-default-animation-set.html}</title>
@@ -110,7 +230,7 @@
   <description>{B4F502887207:/decisions/20220203-create-default-animation-set.html}</description>
   <category></category>
   <guid>https://v-sekai.github.io/V-Sekai/decisions/20220203-create-default-animation-set.html</guid>
-  <pubDate>Thu, 24 Feb 2022 18:38:02 GMT</pubDate>
+  <pubDate>Thu, 24 Feb 2022 18:40:51 GMT</pubDate>
 </item>
 <item>
   <title>{B4F502887207:/decisions/20220202-gltf-extensions-for-interoperability.html}</title>
@@ -119,7 +239,7 @@
   <description>{B4F502887207:/decisions/20220202-gltf-extensions-for-interoperability.html}</description>
   <category></category>
   <guid>https://v-sekai.github.io/V-Sekai/decisions/20220202-gltf-extensions-for-interoperability.html</guid>
-  <pubDate>Thu, 24 Feb 2022 18:38:02 GMT</pubDate>
+  <pubDate>Thu, 24 Feb 2022 18:40:51 GMT</pubDate>
 </item>
 <item>
   <title>{B4F502887207:/decisions/20220131-run-own-infrastructure.html}</title>
@@ -128,7 +248,7 @@
   <description>{B4F502887207:/decisions/20220131-run-own-infrastructure.html}</description>
   <category></category>
   <guid>https://v-sekai.github.io/V-Sekai/decisions/20220131-run-own-infrastructure.html</guid>
-  <pubDate>Thu, 24 Feb 2022 18:38:02 GMT</pubDate>
+  <pubDate>Thu, 24 Feb 2022 18:40:51 GMT</pubDate>
 </item>
 <item>
   <title>{B4F502887207:/decisions/20220131-github-actions-support.html}</title>
@@ -137,7 +257,7 @@
   <description>{B4F502887207:/decisions/20220131-github-actions-support.html}</description>
   <category></category>
   <guid>https://v-sekai.github.io/V-Sekai/decisions/20220131-github-actions-support.html</guid>
-  <pubDate>Thu, 24 Feb 2022 18:38:02 GMT</pubDate>
+  <pubDate>Thu, 24 Feb 2022 18:40:51 GMT</pubDate>
 </item>
 <item>
   <title>{B4F502887207:/decisions/20220131-elixir-desktop-uro.html}</title>
@@ -146,7 +266,7 @@
   <description>{B4F502887207:/decisions/20220131-elixir-desktop-uro.html}</description>
   <category></category>
   <guid>https://v-sekai.github.io/V-Sekai/decisions/20220131-elixir-desktop-uro.html</guid>
-  <pubDate>Thu, 24 Feb 2022 18:38:02 GMT</pubDate>
+  <pubDate>Thu, 24 Feb 2022 18:40:51 GMT</pubDate>
 </item>
 <item>
   <title>{B4F502887207:/decisions/20220130-to-record-decisions-write-a-proposal.html}</title>
@@ -155,7 +275,7 @@
   <description>{B4F502887207:/decisions/20220130-to-record-decisions-write-a-proposal.html}</description>
   <category></category>
   <guid>https://v-sekai.github.io/V-Sekai/decisions/20220130-to-record-decisions-write-a-proposal.html</guid>
-  <pubDate>Thu, 24 Feb 2022 18:38:02 GMT</pubDate>
+  <pubDate>Thu, 24 Feb 2022 18:40:51 GMT</pubDate>
 </item>
 <item>
   <title>{B4F502887207:/decisions/20220130-optimize-cicd.html}</title>
@@ -164,7 +284,7 @@
   <description>{B4F502887207:/decisions/20220130-optimize-cicd.html}</description>
   <category></category>
   <guid>https://v-sekai.github.io/V-Sekai/decisions/20220130-optimize-cicd.html</guid>
-  <pubDate>Thu, 24 Feb 2022 18:38:02 GMT</pubDate>
+  <pubDate>Thu, 24 Feb 2022 18:40:51 GMT</pubDate>
 </item>
 <item>
   <title>{B4F502887207:/decisions/20220118-to-make-it-easier-to-upload-maps-and-avatars-templates.html}</title>
@@ -173,7 +293,7 @@
   <description>{B4F502887207:/decisions/20220118-to-make-it-easier-to-upload-maps-and-avatars-templates.html}</description>
   <category></category>
   <guid>https://v-sekai.github.io/V-Sekai/decisions/20220118-to-make-it-easier-to-upload-maps-and-avatars-templates.html</guid>
-  <pubDate>Thu, 24 Feb 2022 18:38:02 GMT</pubDate>
+  <pubDate>Thu, 24 Feb 2022 18:40:51 GMT</pubDate>
 </item>
 <item>
   <title>{B4F502887207:/decisions/20220118-convert-gltf-to-a-scene.html}</title>
@@ -182,7 +302,7 @@
   <description>{B4F502887207:/decisions/20220118-convert-gltf-to-a-scene.html}</description>
   <category></category>
   <guid>https://v-sekai.github.io/V-Sekai/decisions/20220118-convert-gltf-to-a-scene.html</guid>
-  <pubDate>Thu, 24 Feb 2022 18:38:02 GMT</pubDate>
+  <pubDate>Thu, 24 Feb 2022 18:40:51 GMT</pubDate>
 </item>
 <item>
   <title>{B4F502887207:/decisions/20220113-change-transform-by-crdt.html}</title>
@@ -191,7 +311,7 @@
   <description>{B4F502887207:/decisions/20220113-change-transform-by-crdt.html}</description>
   <category></category>
   <guid>https://v-sekai.github.io/V-Sekai/decisions/20220113-change-transform-by-crdt.html</guid>
-  <pubDate>Thu, 24 Feb 2022 18:38:02 GMT</pubDate>
+  <pubDate>Thu, 24 Feb 2022 18:40:51 GMT</pubDate>
 </item>
 </channel>
 </rss>
