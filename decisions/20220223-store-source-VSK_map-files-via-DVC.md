@@ -52,10 +52,11 @@ S3 Compatible has multiple implementations. Intent on using digital ocean spaces
 ```bash
 git clone https://github.com/fire/avatar-wellness.git
 dvc init
-dvc remote add --global -d chibifire-dvc s3://chibifire/dvc 
-dvc remote modify --global chibifire-dvc endpointurl sfo3.digitaloceanspaces.com
-dvc remote modify --global chibifire-dvc access_key_id 'AAAA'
-dvc remote modify --global chibifire-dvc secret_access_key 'BBBB'
+# dvc remote add --global -d chibifire-dvc-s3 s3://chibifire/dvc 
+# dvc remote modify --global chibifire-dvc-s3 endpointurl sfo3.digitaloceanspaces.com
+# dvc remote modify --global chibifire-dvc-s3 access_key_id 'AAAA'
+# dvc remote modify --global chibifire-dvc-s3 secret_access_key 'BBBB'
+dvc remote add -d chibifire-dvc-web https://chibifire.sfo3.digitaloceanspaces.com/dvc/
 dvc config core.autostage true
 ```
 
