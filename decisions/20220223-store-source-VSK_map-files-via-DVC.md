@@ -4,12 +4,13 @@ categories:
   - pipeline
   - V-Sekai
 status:
-  - accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
+  - accepted
 deciders:
   - V-Sekai
   - ifire
   - lyuma
----
+--- 
+<!-- draft | rejected | accepted | deprecated | superseded by -->
 
 # Storing raw VSK_map files via DVC to avoid limitations
 
