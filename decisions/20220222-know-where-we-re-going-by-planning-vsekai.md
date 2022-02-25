@@ -1,10 +1,12 @@
-# Planning V-Sekai on 2022-02-21
+# Planning V-Sekai on 2022-02-21 Superseded
 
 - Status: superseded <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,ifire,lyuma,
 - Tags: V-Sekai,
 
 ## Context and Problem Statement
+
+Superseded - See https://github.com/V-Sekai/V-Sekai/blob/master/decisions/20220224-v-sekai-version-two-plan.md
 
 Know where we're going by describing what we want.
 
