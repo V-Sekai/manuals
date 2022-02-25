@@ -39,11 +39,12 @@ Proposed mission and a list of tasks.
         *   blend files ~10MB ok. > 100MB let's either use GitLab LFS or something else.
         *   Evaluate https://dvc.org/
 2. Being able to have our group of people join and communicate. (godot speech).
-3. VR support (openxr). 
-4. Interacting with objects in desktop mode is important so that we can test easier.
-5. Interacting with objects in vr.
-6. Scripting (wasgo).
-7. Network server to support 1000.
+  * Porting C++ was discussed as a way forward to make it easier to debug 
+4. VR support (openxr). 
+5. Interacting with objects in desktop mode is important so that we can test easier.
+6. Interacting with objects in vr.
+7. Scripting (wasgo).
+8. Network server to support 1000.
 
 ## Positive Consequences <!-- optional -->
 
