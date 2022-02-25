@@ -21,7 +21,7 @@ Proposed mission and a list of tasks.
 ### To build a tech stack and service for interactive multiplayer VR games.
 
 1. One gitlab repo with source assets? (sky celebration and sponza).
-  * SDK (set of submodules?) https://github.com/V-Sekai/vsk_sdk.
+  * The ability to upload maps and avatars standalone via a SDK (set of submodules?) https://github.com/V-Sekai/vsk_sdk.
      * Being able to enter a vsk map ∀ maps (mvp = 1 map). 
      * Enter a vsk map with an entity in it (upload sky celebration OR upload sponza with one beachball). 
   * VSK_map source asset repositories
