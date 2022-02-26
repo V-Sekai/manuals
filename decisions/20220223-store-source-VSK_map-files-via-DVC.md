@@ -4,7 +4,7 @@ categories:
   - pipeline 
   - V-Sekai
 status:
-  - accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
+  - rejected <!-- draft | rejected | accepted | deprecated | superseded by -->
 deciders:
   - V-Sekai
   - ifire
