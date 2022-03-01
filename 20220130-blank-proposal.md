@@ -1,15 +1,12 @@
 # Blank proposal
 
 ```
----
-title: [short title of solved problem and solution]
-categories:
-  - V-Sekai
-status:
-  - accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
-deciders:
-  - V-Sekai
----
+<--! Copy here -->
+# [short title of solved problem and solution]
+
+- Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
+- Deciders: V-Sekai,
+- Tags: V-Sekai,
 
 ## Context and Problem Statement
 
