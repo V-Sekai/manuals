@@ -14,6 +14,20 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
     **Security** in case of vulnerabilities.
 -->
 
+## 2022-03-05
+
+### @ellenhp 
+
+Added a new audio effect to down-mix stereo audio to mono progressively. https://github.com/godotengine/godot/pull/58823 
+
+### @fire 
+
+1. Allow automatic lod when importing 3D scenes with Static Lightmaps https://github.com/godotengine/godot/pull/58548
+1. productionize a clothing band / bracelet maker on 3d manifold-only meshes https://github.com/fire/geodesiac-path-on-mesh 
+2. play with a auto-ml thing that guesses floats, guesses classes and forecasts https://mindsdb.com/
+3. working with the animation team to approve the skeleton animation retargeter. https://github.com/godotengine/godot/pull/56902 
+4. convinced the gltf blender maintainer it's super easy to export pure 3d animations as gltf.  https://github.com/KhronosGroup/glTF-Blender-IO/pull/1582
+
 ## 2022-02-23
 
 iFire — Today at 07:38
