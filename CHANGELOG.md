@@ -14,6 +14,12 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
     **Security** in case of vulnerabilities.
 -->
 
+## 2022-03-07
+
+OpenXR mode works!!!
+
+Made a skeleton retargeting demo.
+
 ## 2022-03-05
 
 ### @ellenhp 
