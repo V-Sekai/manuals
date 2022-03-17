@@ -14,6 +14,35 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
     **Security** in case of vulnerabilities.
 -->
 
+## 2022-03-17
+
+1. productionize a clothing band / bracelet maker on 3d manifold-only meshes  2. play with a auto-ml thing that guesses floats, guesses classes and forecasts 3. working with the animation team to approve the skeleton animation retargeter. 4. convinced the gltf blender maintainer it's super easy to export pure 3d animations as gltf. https://github.com/fire/geodesiac-path-on-mesh https://mindsdb.com/ https://github.com/godotengine/godot/pull/56902 https://github.com/KhronosGroup/glTF-Blender-IO/pull/1582
+2. 
+@Lyuma Restored wasd in V-Sekai build
+
+Also the last line also reduced the warning from 700 to around 8-30
+
+Last week improved openxr support but not yet locomotion. 
+
+Hand actions and triggers still bugged
+
+Collaboration with Khronos and Lucasfilm has added gltf principled pbr to materialx
+
+A static materialx baking importer has been added to a Godot Engine c++ master module
+!bands][https://images-ext-1.discordapp.net/external/fGmocNdYl2zVu0A74-dULVuShQayOqztqPVS4pu-cV8/https/media.discordapp.net/attachments/740201405478076437/949305541115674674/unknown.png] Tooling to create fitting bands on manifold meshes was developed
+
+Image
+Abandoned the work on webview because it required too much mingw hacking of windows calls. Should have worked in msvc still
+https://github.com/AcademySoftwareFoundation/MaterialX/issues/874
+
+Want to propose gltf specular and gltf volumetric to the godot engine rendering team 
+
+Worked on an idea with Krsytof https://github.com/godotengine/godot-proposals/discussions/4226 to pin inspectors.
+
+Fire collaborated with Tokage and Lyuma on the UIUX of a skeletal retargeting importer 
+
+Started a discussion on a train station stress test. https://github.com/godotengine/godot-proposals/discussions/4233
+
 ## 2022-03-07
 
 OpenXR mode works!!!
