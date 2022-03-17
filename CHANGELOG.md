@@ -16,12 +16,15 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
 
 ## 2022-03-17
 
-1. productionize a clothing band / bracelet maker on 3d manifold-only meshes
-2. play with a auto-ml thing that guesses floats, guesses classes and forecasts
-3. working with the animation team to approve the skeleton animation retargeter.
-4. convinced the gltf blender maintainer it's super easy to export pure 3d animations as gltf. https://github.com/fire/geodesiac-path-on-mesh https://mindsdb.com/ https://github.com/godotengine/godot/pull/56902 https://github.com/KhronosGroup/glTF-Blender-IO/pull/1582
+Productionize a clothing band / bracelet maker on 3d manifold-only meshes.
 
-Lyuma Restored wasd in V-Sekai build
+Play with a auto-ml thing that guesses floats, guesses classes and forecasts
+
+Working with the animation team to approve the skeleton animation retargeter.
+
+Convinced the gltf blender maintainer it's super easy to export pure 3d animations as gltf. https://github.com/fire/geodesiac-path-on-mesh https://mindsdb.com/ https://github.com/godotengine/godot/pull/56902 https://github.com/KhronosGroup/glTF-Blender-IO/pull/1582.
+
+Restored wasd in V-Sekai build.
 
 Also the last line also reduced the warning from 700 to around 8-30
 
