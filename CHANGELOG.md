@@ -16,7 +16,7 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
 
 ## 2022-03-17
 
-Productionize a clothing band / bracelet maker on 3d manifold-only meshes.
+Productionize a clothing band / bracelet maker on 3d manifold-only meshes. ![bands-manifold](https://user-images.githubusercontent.com/32321/158768466-95c213a5-2046-4158-bc06-ef7f254aed0d.png)
 
 Play with a auto-ml thing that guesses floats, guesses classes and forecasts
 
@@ -35,9 +35,7 @@ Hand actions and triggers still bugged
 Collaboration with Khronos and Lucasfilm has added gltf principled pbr to materialx
 
 A static materialx baking importer has been added to a Godot Engine c++ master module
-!bands][https://images-ext-1.discordapp.net/external/fGmocNdYl2zVu0A74-dULVuShQayOqztqPVS4pu-cV8/https/media.discordapp.net/attachments/740201405478076437/949305541115674674/unknown.png] Tooling to create fitting bands on manifold meshes was developed
 
-Image
 Abandoned the work on webview because it required too much mingw hacking of windows calls. Should have worked in msvc still
 https://github.com/AcademySoftwareFoundation/MaterialX/issues/874
 
