@@ -14,7 +14,11 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
     **Security** in case of vulnerabilities.
 -->
 
-## 2022-03-17
+## 2022-03-17 
+
+Steamdeck test with V-Sekai.
+
+Restored image grid in V-Sekai content picking.
 
 Productionize a clothing band / bracelet maker on 3d manifold-only meshes. ![bands-manifold](https://user-images.githubusercontent.com/32321/158768466-95c213a5-2046-4158-bc06-ef7f254aed0d.png)
 
