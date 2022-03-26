@@ -4,4 +4,4 @@ We are a community of enthusiasts building a next-generation social and #gaming 
 
 This repo is at [V-Sekai/V-Sekai](https://github.com/V-Sekai/V-Sekai).
 
-Some content at https://github.com/V-Sekai-fire/.
+Addtional content at https://github.com/V-Sekai-fire/.
