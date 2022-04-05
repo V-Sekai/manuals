@@ -5,5 +5,5 @@ listing:
   contents: "exported_issues/*.md"
   sort: "filename dsc"
   feed: true
-  fields: [filename, image, reading-time]
+  fields: [title, image, reading-time]
 ---
