@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
   <meta charset="utf-8">
-  <meta name="generator" content="quarto-0.9.180">
+  <meta name="generator" content="quarto-0.9.186">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>V-Sekai Proposals – entity-networking</title>
   <style>
@@ -117,31 +117,31 @@
         <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#adding-entity-networking-to-groups" class="nav-link active" data-scroll-target="#adding-entity-networking-to-groups">Adding Entity Networking to Groups</a>
+<li><a href="#adding-entity-networking-to-groups" id="toc-adding-entity-networking-to-groups" class="nav-link active" data-scroll-target="#adding-entity-networking-to-groups">Adding Entity Networking to Groups</a>
 <ul class="collapse">
-<li><a href="#context-and-problem-statement" class="nav-link" data-scroll-target="#context-and-problem-statement">Context and Problem Statement</a></li>
-<li><a href="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="nav-link" data-scroll-target="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</a></li>
-<li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-andor-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-andor-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams</a>
+<li><a href="#context-and-problem-statement" id="toc-context-and-problem-statement" class="nav-link" data-scroll-target="#context-and-problem-statement">Context and Problem Statement</a></li>
+<li><a href="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" id="toc-describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="nav-link" data-scroll-target="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</a></li>
+<li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-andor-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-andor-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-andor-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams</a>
 <ul class="collapse">
-<li><a href="#a.-spawning" class="nav-link" data-scroll-target="#a.-spawning">A. Spawning</a></li>
-<li><a href="#b.-consistent-references" class="nav-link" data-scroll-target="#b.-consistent-references">B. Consistent References</a></li>
-<li><a href="#c.-state-synchronization" class="nav-link" data-scroll-target="#c.-state-synchronization">C. State Synchronization</a></li>
-<li><a href="#d.-standard-interaction-protocols" class="nav-link" data-scroll-target="#d.-standard-interaction-protocols">D. Standard Interaction Protocols</a></li>
-<li><a href="#e.-network-security-model" class="nav-link" data-scroll-target="#e.-network-security-model">E. Network Security Model:</a></li>
-<li><a href="#f.-inter-entity-isolation" class="nav-link" data-scroll-target="#f.-inter-entity-isolation">F. Inter-entity Isolation</a></li>
-<li><a href="#g.-abstraction" class="nav-link" data-scroll-target="#g.-abstraction">G. Abstraction</a></li>
-<li><a href="#h.-physics" class="nav-link" data-scroll-target="#h.-physics">H. Physics</a></li>
-<li><a href="#spawn-type-i.-map-builtins" class="nav-link" data-scroll-target="#spawn-type-i.-map-builtins">Spawn Type (i). Map builtins</a></li>
-<li><a href="#spawn-type-ii.-map-spawns" class="nav-link" data-scroll-target="#spawn-type-ii.-map-spawns">Spawn Type (ii). Map spawns</a></li>
-<li><a href="#spawn-type-iii.-avatar-spawns" class="nav-link" data-scroll-target="#spawn-type-iii.-avatar-spawns">Spawn Type (iii). Avatar spawns</a></li>
-<li><a href="#notes-about-entity-parenting" class="nav-link" data-scroll-target="#notes-about-entity-parenting">Notes about Entity parenting:</a></li>
+<li><a href="#a.-spawning" id="toc-a.-spawning" class="nav-link" data-scroll-target="#a.-spawning">A. Spawning</a></li>
+<li><a href="#b.-consistent-references" id="toc-b.-consistent-references" class="nav-link" data-scroll-target="#b.-consistent-references">B. Consistent References</a></li>
+<li><a href="#c.-state-synchronization" id="toc-c.-state-synchronization" class="nav-link" data-scroll-target="#c.-state-synchronization">C. State Synchronization</a></li>
+<li><a href="#d.-standard-interaction-protocols" id="toc-d.-standard-interaction-protocols" class="nav-link" data-scroll-target="#d.-standard-interaction-protocols">D. Standard Interaction Protocols</a></li>
+<li><a href="#e.-network-security-model" id="toc-e.-network-security-model" class="nav-link" data-scroll-target="#e.-network-security-model">E. Network Security Model:</a></li>
+<li><a href="#f.-inter-entity-isolation" id="toc-f.-inter-entity-isolation" class="nav-link" data-scroll-target="#f.-inter-entity-isolation">F. Inter-entity Isolation</a></li>
+<li><a href="#g.-abstraction" id="toc-g.-abstraction" class="nav-link" data-scroll-target="#g.-abstraction">G. Abstraction</a></li>
+<li><a href="#h.-physics" id="toc-h.-physics" class="nav-link" data-scroll-target="#h.-physics">H. Physics</a></li>
+<li><a href="#spawn-type-i.-map-builtins" id="toc-spawn-type-i.-map-builtins" class="nav-link" data-scroll-target="#spawn-type-i.-map-builtins">Spawn Type (i). Map builtins</a></li>
+<li><a href="#spawn-type-ii.-map-spawns" id="toc-spawn-type-ii.-map-spawns" class="nav-link" data-scroll-target="#spawn-type-ii.-map-spawns">Spawn Type (ii). Map spawns</a></li>
+<li><a href="#spawn-type-iii.-avatar-spawns" id="toc-spawn-type-iii.-avatar-spawns" class="nav-link" data-scroll-target="#spawn-type-iii.-avatar-spawns">Spawn Type (iii). Avatar spawns</a></li>
+<li><a href="#notes-about-entity-parenting" id="toc-notes-about-entity-parenting" class="nav-link" data-scroll-target="#notes-about-entity-parenting">Notes about Entity parenting:</a></li>
 </ul></li>
-<li><a href="#positive-consequences-list" class="nav-link" data-scroll-target="#positive-consequences-list">Positive Consequences List <!-- optional --></a></li>
-<li><a href="#negative-consequences-list" class="nav-link" data-scroll-target="#negative-consequences-list">Negative Consequences List <!-- optional --></a></li>
-<li><a href="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="nav-link" data-scroll-target="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</a></li>
-<li><a href="#is-there-a-reason-why-this-should-be-core-and-done-by-us" class="nav-link" data-scroll-target="#is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</a></li>
-<li><a href="#references" class="nav-link" data-scroll-target="#references">References <!-- optional --></a></li>
-<li><a href="#derivative-license" class="nav-link" data-scroll-target="#derivative-license">Derivative License</a></li>
+<li><a href="#positive-consequences-list" id="toc-positive-consequences-list" class="nav-link" data-scroll-target="#positive-consequences-list">Positive Consequences List <!-- optional --></a></li>
+<li><a href="#negative-consequences-list" id="toc-negative-consequences-list" class="nav-link" data-scroll-target="#negative-consequences-list">Negative Consequences List <!-- optional --></a></li>
+<li><a href="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" id="toc-if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="nav-link" data-scroll-target="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</a></li>
+<li><a href="#is-there-a-reason-why-this-should-be-core-and-done-by-us" id="toc-is-there-a-reason-why-this-should-be-core-and-done-by-us" class="nav-link" data-scroll-target="#is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</a></li>
+<li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References <!-- optional --></a></li>
+<li><a href="#derivative-license" id="toc-derivative-license" class="nav-link" data-scroll-target="#derivative-license">Derivative License</a></li>
 </ul></li>
 </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/V-Sekai/edit/master/decisions/2020/20200729-entity-networking.md" class="toc-action">Edit this page</a></p></div></div></nav>
