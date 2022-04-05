@@ -2,7 +2,7 @@
 title: "Issues"
 toc: false
 listing:
-  contents: "exported_issues/*.md"
+  contents: "exported_issues/*.open.md"
   sort: "filename dsc"
   categories: true
   feed: true
