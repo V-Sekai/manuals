@@ -6,5 +6,5 @@ listing:
   sort: "filename dsc"
   categories: true
   feed: true
-  fields: [filename, image, date, title, reading-time]
+  fields: [filename, image, title, reading-time]
 ---
