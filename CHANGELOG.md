@@ -14,6 +14,10 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
     **Security** in case of vulnerabilities.
 -->
 
+## 2022-04-07
+
+FBX2GLTF and Blender importers are merged.
+
 ## 2022-03-17 
 
 Steamdeck test with V-Sekai.
