@@ -14,6 +14,12 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
     **Security** in case of vulnerabilities.
 -->
 
+## 2022-04-14
+
+* Restore fix-save-as-binary so we can export projects
+* Restore elixir shared branch so we can run godot in 
+* Poked ludwig about diffusion net for machine learning training. 
+
 ## 2022-04-07
 
 FBX2GLTF and Blender importers are merged.
