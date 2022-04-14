@@ -17,7 +17,7 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
 ## 2022-04-14
 
 * Restore fix-save-as-binary so we can export projects
-* Restore elixir shared branch so we can run godot in 
+* Restore elixir shared branch so we can run godot in elixir
 * Poked ludwig about diffusion net for machine learning training. 
 
 ## 2022-04-07
