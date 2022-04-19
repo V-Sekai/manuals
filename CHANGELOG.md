@@ -45,13 +45,6 @@ Terrain trees, splatmaps and materials are implemented in Unidot, converting to 
 
 I also chose not to implement detail (grasses), because I don't understand how detail patches are implemented, and they tend to not look that great in VR, so I'd rather work on something else.
 
-## 2022-04-03
-
-iFire
-
-* Made a bug report for Blender exported animation to gltf with @RockyMadio https://github.com/KhronosGroup/glTF-Blender-IO/issues/1613
-GitHub
-
 ## 2022-04-14
 
 * Restore fix-save-as-binary so we can export projects
@@ -61,6 +54,13 @@ GitHub
 ## 2022-04-07
 
 FBX2GLTF and Blender importers are merged.
+
+## 2022-04-03
+
+iFire
+
+* Made a bug report for Blender exported animation to gltf with @RockyMadio https://github.com/KhronosGroup/glTF-Blender-IO/issues/1613
+GitHub
 
 ## 2022-03-17 
 
