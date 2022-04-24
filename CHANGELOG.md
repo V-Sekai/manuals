@@ -14,6 +14,10 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
     **Security** in case of vulnerabilities.
 -->
 
+## 2022-04-24
+
+Moved issues into the tracker.
+
 ## 2022-04-18
 
 Worked with manifold csg library author and was able to remove the boost dependency. https://github.com/elalish/manifold/pull/92
