@@ -19,8 +19,9 @@ jobs:
         pip3 install --user --upgrade setuptools
         pip3 install --user gh2md
         rm -rf exported_issues
-        $HOME/.local/bin/gh2md $GITHUB_REPOSITORY exported_issues --idempotent --multiple-files --no-prs
-        git add exported_issues
+        rm -rf thirdparty/exported_issues
+        $HOME/.local/bin/gh2md $GITHUB_REPOSITORY thirdparty/exported_issues --idempotent --multiple-files --no-prs
+        git add thirdparty/exported_issues
       env:
         GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Commit files
