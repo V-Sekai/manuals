@@ -20,6 +20,7 @@ jobs:
         pip3 install --user gh2md
         rm -rf exported_issues
         rm -rf thirdparty/exported_issues
+        mkdir -p thirdparty/exported_issues
         $HOME/.local/bin/gh2md $GITHUB_REPOSITORY thirdparty/exported_issues --idempotent --multiple-files --no-prs
         git add thirdparty/exported_issues
       env:
