@@ -1,11 +1,10 @@
 name: Publish Quarto
 on:
+  schedule:
+    - cron: "20 1 * * *"
   push:
     branches:
       - master
-  schedule:
-    # every day
-    - cron: "0 0 * * *"
 jobs:
   build:
     runs-on: ubuntu-latest
