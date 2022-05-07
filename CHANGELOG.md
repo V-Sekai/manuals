@@ -13,6 +13,9 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
     **Fixed** for any bug fixes.
     **Security** in case of vulnerabilities.
 -->
+## 2022-05-07
+
+Completed a first stage EWBIK inverse kinematics solver to the stage one which solves but doesn't have constraints.
 
 ## 2022-04-24
 
