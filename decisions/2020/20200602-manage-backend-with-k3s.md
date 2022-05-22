@@ -816,6 +816,38 @@ sudo kubectl apply -f https://raw.githubusercontent.com/V-Sekai/uro/master/kuber
 
 ### Keeping the system and cluster up-to-date
 
+#### Rotating client kubectl certificates
+
+k3s set the default client cert for root to expire after a year or so. This leads to a problem where you can't administer your own cluster because your root account's cert is expired. So I had to figure out how to fix this.
+
+how to rotate kube client certificates:
+
+1. mkdir tls and create `tls/config.txt` with the following lines:
+
+```
+# --------------------- tls/config.txt -----------
+[ req ]
+distinguished_name                           = req_distinguished_name
+req_extensions                                   = v3_req
+prompt = no
+[ req_distinguished_name ]
+organizationName       = system:masters
+commonName             = system:admin
+[ v3_req ]
+basicConstraints                                 = CA:FALSE
+keyUsage                                           = critical, digitalSignature, keyEncipherment
+extendedKeyUsage                            = clientAuth
+# -------------------------------------------------
+```
+
+2. `sudo cp /kube/rancher/k3s/server/tls/client-ca.crt tls/client-ca.crt`
+3. `openssl ecparam -name prime256v1 -genkey -noout -out tls/new-key.pem`
+4. `openssl req -new -key tls/new-key.pem -sha256 -nodes -out tls/new-req.csr -config tls/config.txt`
+5. `openssl x509 -req -days 3000 -in tls/new-req.csr -CA tls/client-ca.crt -CAkey /kube/rancher/k3s/server/tls/client-ca.key -set_serial 4294742997922865905 -extensions v3_req -extfile tls/config.txt -out tls/new-client.crt`
+6. `cat tls/client-ca.crt tls/new-client.crt | base64 -w0; echo`
+7. `cat tls/new-key.pem | base64 -w0; echo`
+8. edit .kube/config and update client-certificate-data: and client-key-data: respectively.
+
 #### Upgrading fedora
 
 Start the upgrade process with:
