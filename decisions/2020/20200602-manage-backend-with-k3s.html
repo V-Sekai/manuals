@@ -936,53 +936,83 @@ allow container_t container_runtime_tmpfs_t:lnk_file { getattr relabelto unlink 
 </section>
 <section id="keeping-the-system-and-cluster-up-to-date" class="level3">
 <h3 class="anchored" data-anchor-id="keeping-the-system-and-cluster-up-to-date">Keeping the system and cluster up-to-date</h3>
+<section id="rotating-client-kubectl-certificates" class="level4">
+<h4 class="anchored" data-anchor-id="rotating-client-kubectl-certificates">Rotating client kubectl certificates</h4>
+<p>k3s set the default client cert for root to expire after a year or so. This leads to a problem where you can’t administer your own cluster because your root account’s cert is expired. So I had to figure out how to fix this.</p>
+<p>how to rotate kube client certificates:</p>
+<ol type="1">
+<li>mkdir tls and create <code>tls/config.txt</code> with the following lines:</li>
+</ol>
+<pre><code># --------------------- tls/config.txt -----------
+[ req ]
+distinguished_name                           = req_distinguished_name
+req_extensions                                   = v3_req
+prompt = no
+[ req_distinguished_name ]
+organizationName       = system:masters
+commonName             = system:admin
+[ v3_req ]
+basicConstraints                                 = CA:FALSE
+keyUsage                                           = critical, digitalSignature, keyEncipherment
+extendedKeyUsage                            = clientAuth
+# -------------------------------------------------</code></pre>
+<ol start="2" type="1">
+<li><code>sudo cp /kube/rancher/k3s/server/tls/client-ca.crt tls/client-ca.crt</code></li>
+<li><code>openssl ecparam -name prime256v1 -genkey -noout -out tls/new-key.pem</code></li>
+<li><code>openssl req -new -key tls/new-key.pem -sha256 -nodes -out tls/new-req.csr -config tls/config.txt</code></li>
+<li><code>openssl x509 -req -days 3000 -in tls/new-req.csr -CA tls/client-ca.crt -CAkey /kube/rancher/k3s/server/tls/client-ca.key -set_serial 4294742997922865905 -extensions v3_req -extfile tls/config.txt -out tls/new-client.crt</code></li>
+<li><code>cat tls/client-ca.crt tls/new-client.crt | base64 -w0; echo</code></li>
+<li><code>cat tls/new-key.pem | base64 -w0; echo</code></li>
+<li>edit .kube/config and update client-certificate-data: and client-key-data: respectively.</li>
+</ol>
+</section>
 <section id="upgrading-fedora" class="level4">
 <h4 class="anchored" data-anchor-id="upgrading-fedora">Upgrading fedora</h4>
 <p>Start the upgrade process with:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf upgrade <span class="at">--refresh</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install dnf-plugin-system-upgrade</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf system-upgrade download <span class="at">--releasever</span><span class="op">=</span>34</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf upgrade <span class="at">--refresh</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install dnf-plugin-system-upgrade</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf system-upgrade download <span class="at">--releasever</span><span class="op">=</span>34</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Answer <code>y</code> to all prompts confirming list of packages and new GPG keys, if any. Once successful, it displays:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Download</span> complete! Use <span class="st">'dnf system-upgrade reboot'</span> to start the upgrade.</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="ex">To</span> remove cached metadata and transaction use <span class="st">'dnf system-upgrade clean'</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="ex">The</span> downloaded packages were saved in cache until the next successful transaction.</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="ex">You</span> can remove cached packages by executing <span class="st">'dnf clean packages'</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Download</span> complete! Use <span class="st">'dnf system-upgrade reboot'</span> to start the upgrade.</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="ex">To</span> remove cached metadata and transaction use <span class="st">'dnf system-upgrade clean'</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="ex">The</span> downloaded packages were saved in cache until the next successful transaction.</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="ex">You</span> can remove cached packages by executing <span class="st">'dnf clean packages'</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Complete the upgrade with:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf system-upgrade reboot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf system-upgrade reboot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will bring the system down for about an hour.</p>
 </section>
 <section id="upgrading-nginx-and-cert-manager" class="level4">
 <h4 class="anchored" data-anchor-id="upgrading-nginx-and-cert-manager">Upgrading nginx and cert-manager</h4>
-<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> helm repo update</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># If the stable/nginx-ingress chart is still installed, make sure to helm uninstall nginx first.</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> helm upgrade <span class="at">--namespace</span> ingress-nginx nginx ingress-nginx/ingress-nginx <span class="at">--set</span> controller.replicaCount=2</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> helm upgrade cert-manager jetstack/cert-manager <span class="at">--namespace</span> cert-manager <span class="at">--set</span> installCRDs=true</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co">### I was not able to get external-dns to upgrade, but it is not user-facing so we keep running the old version.</span></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co"># sudo helm upgrade external-dns --reuse-values bitnami/external-dns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> helm repo update</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># If the stable/nginx-ingress chart is still installed, make sure to helm uninstall nginx first.</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> helm upgrade <span class="at">--namespace</span> ingress-nginx nginx ingress-nginx/ingress-nginx <span class="at">--set</span> controller.replicaCount=2</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> helm upgrade cert-manager jetstack/cert-manager <span class="at">--namespace</span> cert-manager <span class="at">--set</span> installCRDs=true</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co">### I was not able to get external-dns to upgrade, but it is not user-facing so we keep running the old version.</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co"># sudo helm upgrade external-dns --reuse-values bitnami/external-dns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="upgrading-k3s" class="level4">
 <h4 class="anchored" data-anchor-id="upgrading-k3s">Upgrading k3s</h4>
-<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-sfL</span> https://raw.githubusercontent.com/rancher/k3s/master/install.sh <span class="kw">|</span> <span class="fu">sh</span> <span class="at">-s</span> <span class="at">-</span> server <span class="at">-o</span> /root/.kube/config <span class="at">--default-local-storage-path</span> /kube/pvc <span class="at">--no-deploy</span><span class="op">=</span>servicelb <span class="at">--disable</span><span class="op">=</span>traefik <span class="at">--disable</span><span class="op">=</span>servicelb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-sfL</span> https://raw.githubusercontent.com/rancher/k3s/master/install.sh <span class="kw">|</span> <span class="fu">sh</span> <span class="at">-s</span> <span class="at">-</span> server <span class="at">-o</span> /root/.kube/config <span class="at">--default-local-storage-path</span> /kube/pvc <span class="at">--no-deploy</span><span class="op">=</span>servicelb <span class="at">--disable</span><span class="op">=</span>traefik <span class="at">--disable</span><span class="op">=</span>servicelb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="upgrading-cockroachdb" class="level4">
 <h4 class="anchored" data-anchor-id="upgrading-cockroachdb">Upgrading cockroachdb</h4>
 <p>Run the shell:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> kubectl exec <span class="at">-it</span> cockroachdb-client-secure <span class="at">--</span> ./cockroach sql <span class="at">--certs-dir</span><span class="op">=</span>/cockroach-certs <span class="at">--host</span><span class="op">=</span>cockroachdb-public</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> kubectl exec <span class="at">-it</span> cockroachdb-client-secure <span class="at">--</span> ./cockroach sql <span class="at">--certs-dir</span><span class="op">=</span>/cockroach-certs <span class="at">--host</span><span class="op">=</span>cockroachdb-public</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>At the top of the shell prompt, it will say something like this. Copy the first two numbers from the CockroachDB CCL line. In this case, <code>20.2</code></p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Welcome to the CockroachDB SQL shell.</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co"># All statements must be terminated by a semicolon.</span></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># To exit, type: \q.</span></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Server version: CockroachDB CCL v20.2.2 (x86_64-unknown-linux-gnu</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Welcome to the CockroachDB SQL shell.</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># All statements must be terminated by a semicolon.</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># To exit, type: \q.</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Server version: CockroachDB CCL v20.2.2 (x86_64-unknown-linux-gnu</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Replace <code>some.version</code> in the following command with the value we found above:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SET</span> <span class="kw">CLUSTER</span> SETTING <span class="kw">cluster</span>.preserve_downgrade_option <span class="op">=</span> <span class="st">'some.version'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SET</span> <span class="kw">CLUSTER</span> SETTING <span class="kw">cluster</span>.preserve_downgrade_option <span class="op">=</span> <span class="st">'some.version'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Finally, perform the upgrade:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> kubectl delete job cockroachdb-init</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> helm upgrade cockroachdb cockroachdb/cockroachdb <span class="at">--values</span> cockroachdb.values.yaml</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-o</span> client-secure.yaml https://raw.githubusercontent.com/cockroachdb/cockroach/master/cloud/kubernetes/client-secure.yaml</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> kubectl delete pods/cockroachdb-client-secure</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> kubectl create <span class="at">-f</span> client-secure.yaml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> kubectl delete job cockroachdb-init</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> helm upgrade cockroachdb cockroachdb/cockroachdb <span class="at">--values</span> cockroachdb.values.yaml</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-o</span> client-secure.yaml https://raw.githubusercontent.com/cockroachdb/cockroach/master/cloud/kubernetes/client-secure.yaml</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> kubectl delete pods/cockroachdb-client-secure</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> kubectl create <span class="at">-f</span> client-secure.yaml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 </section>
