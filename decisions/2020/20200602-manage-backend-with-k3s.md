@@ -816,11 +816,14 @@ sudo kubectl apply -f https://raw.githubusercontent.com/V-Sekai/uro/master/kuber
 
 ### Keeping the system and cluster up-to-date
 
-#### Rotating client kubectl certificates
+#### Rotating client kubectl certificates (default ones expire after only one year)
 
 k3s set the default client cert for root to expire after a year or so. This leads to a problem where you can't administer your own cluster because your root account's cert is expired. So I had to figure out how to fix this.
 
-how to rotate kube client certificates:
+For the most part, the process I came up with matches this more concise post here: https://github.com/k3s-io/k3s/issues/2342#issuecomment-713016341
+
+First approach, how to rotate kube client certificates:
+Because we need to modify /root/.kube/config, I ran `sudo -i` to login as a root shell.
 
 1. mkdir tls and create `tls/config.txt` with the following lines:
 
@@ -840,13 +843,35 @@ extendedKeyUsage                            = clientAuth
 # -------------------------------------------------
 ```
 
-2. `sudo cp /kube/rancher/k3s/server/tls/client-ca.crt tls/client-ca.crt`
+2. `cp /kube/rancher/k3s/server/tls/client-ca.crt tls/client-ca.crt`
 3. `openssl ecparam -name prime256v1 -genkey -noout -out tls/new-key.pem`
 4. `openssl req -new -key tls/new-key.pem -sha256 -nodes -out tls/new-req.csr -config tls/config.txt`
 5. `openssl x509 -req -days 3000 -in tls/new-req.csr -CA tls/client-ca.crt -CAkey /kube/rancher/k3s/server/tls/client-ca.key -set_serial 4294742997922865905 -extensions v3_req -extfile tls/config.txt -out tls/new-client.crt`
-6. `cat tls/client-ca.crt tls/new-client.crt | base64 -w0; echo`
+6. `cat tls/new-client.crt tls/client-ca.crt | base64 -w0; echo`
 7. `cat tls/new-key.pem | base64 -w0; echo`
 8. edit .kube/config and update client-certificate-data: and client-key-data: respectively.
+
+How to upgrade the rest of the certs.
+
+```
+find /var/lib/rancher/k3s/server/tls -name '*.crt' | while read fn; do echo $fn ===========; openssl x509 -text -in $fn | grep Not\ After | grep '202[012]'; done
+```
+Here is the script I ran:
+```
+#!/bin/bash
+set -
+set -x
+[ -e "$1.csr" ] || openssl x509 -x509toreq -in "$1.crt" -out "$1.csr" -signkey "$1.key"
+mv -i "$1.crt" "$1.crt.bak.$(date +%s)"
+openssl x509 -req -in "$1.csr" -CA "client-ca.crt" -CAkey "client-ca.key" -CAcreateserial -days 3650 -out "$1.crt"
+cat "client-ca.crt" >> "$1.crt"
+```
+
+you can use this process to update the client cert for /root/.kube/config
+
+Note that etcd/client.crt actually uses its own `server-ca.key` instead of `client-ca` within the etcd folder, so you need a slight modification of the script for this one. I don't know what any of these certs do so I just did all of them
+
+Finally, `client-k3s-controller.crt` and `client-kube-proxy.crt` must be copied from `/var/lib/rancher/k3s/server/tls` to `/var/lib/rancher/k3s/agent`
 
 #### Upgrading fedora
 
