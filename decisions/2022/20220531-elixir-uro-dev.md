@@ -33,14 +33,15 @@ Download the cockroach distribution and run this:
 ./cockroach.exe start-single-node  --insecure --store=node1 --listen-addr=localhost:26257 --http-addr=localhost:8080
 ```
 
-You can add --background to run in the background.
+You can add `--background` to run in the background.
 
 Next, compile uro. You will need Elixir installed.
 
 I recommend getting the latest, but for these steps, I am using Elixir v1.13.3.
+
 Download Uro from https://github.com/V-Sekai/uro
 
-We are using the dev environment. It is the default, but you can also set MIX_ENV=dev.
+We are using the dev environment. It is the default, but you can also set `MIX_ENV=dev`.
 
 To compile HTML/CSS webpack:
 
@@ -57,8 +58,8 @@ If the compile gives issues, you can run it multiple times. To compile dependenc
 mix do compile, phx.digest
 ```
 
-If one of them gives an error due to "nmake" or not having a compiler, you can fix it by opening a x64 Native Tools command prompt from visual studio and run
-mix deps.compile bcrypt_elixir
+If one of them gives an error due to `nmake` or not having a compiler, you can fix it by opening a `x64 Native Tools command prompt` from visual studio and run
+`mix deps.compile bcrypt_elixir`
 
 Finally, create and migrate the database and start the development server:
 
