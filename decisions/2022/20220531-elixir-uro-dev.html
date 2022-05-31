@@ -249,10 +249,11 @@ superseded by</li>
 <h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h3>
 <p>Download the cockroach distribution and run this:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./cockroach.exe</span> start-single-node  <span class="at">--insecure</span> <span class="at">--store</span><span class="op">=</span>node1 <span class="at">--listen-addr</span><span class="op">=</span>localhost:26257 <span class="at">--http-addr</span><span class="op">=</span>localhost:8080</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You can add –background to run in the background.</p>
+<p>You can add <code>--background</code> to run in the background.</p>
 <p>Next, compile uro. You will need Elixir installed.</p>
-<p>I recommend getting the latest, but for these steps, I am using Elixir v1.13.3. Download Uro from https://github.com/V-Sekai/uro</p>
-<p>We are using the dev environment. It is the default, but you can also set MIX_ENV=dev.</p>
+<p>I recommend getting the latest, but for these steps, I am using Elixir v1.13.3.</p>
+<p>Download Uro from https://github.com/V-Sekai/uro</p>
+<p>We are using the dev environment. It is the default, but you can also set <code>MIX_ENV=dev</code>.</p>
 <p>To compile HTML/CSS webpack:</p>
 <pre><code>cd assets
 npm install
@@ -260,7 +261,7 @@ npm run deploy
 cd ..</code></pre>
 <p>If the compile gives issues, you can run it multiple times. To compile dependencies:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mix</span> do compile, phx.digest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If one of them gives an error due to “nmake” or not having a compiler, you can fix it by opening a x64 Native Tools command prompt from visual studio and run mix deps.compile bcrypt_elixir</p>
+<p>If one of them gives an error due to <code>nmake</code> or not having a compiler, you can fix it by opening a <code>x64 Native Tools command prompt</code> from visual studio and run <code>mix deps.compile bcrypt_elixir</code></p>
 <p>Finally, create and migrate the database and start the development server:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mix</span> ecto.create</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mix</span> ecto.migrate</span>
