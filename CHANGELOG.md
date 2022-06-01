@@ -30,7 +30,7 @@ id|Name|Notes|Active
 17|Support large uploads to the content distribution network.||True
 19|Make a video of entering the world and grabbing objects. ||True
 
-* Trialing a fix for issue of SDFGI on VR.
+* Trialing a fix for issue of SDFGI on VR. Was poor. Had to backout branch.
 
 ## 2022-05-29
 
