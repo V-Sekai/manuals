@@ -33,6 +33,7 @@ id|Name|Notes|Active
 19|Make a video of grabbing the object and entering the world.||True
 18|SDFGI world on mux||True
 
+* Trialing a fix for issue of SDFGI on VR.
 
 ## 2022-05-29
 
