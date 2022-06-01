@@ -24,11 +24,11 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
 
 id|Name|Notes|Active
 --|----|-----|------
-24|VR Smooth locomotion||True
-24|VR Smooth locomotion with blackout ||True
-5|Grab an object||True
-17|Large Upload to uro||True
-19|Make a video of grabbing the object and entering the world.||True
+24|VR smooth locomotion.||True
+24|VR smooth locomotion with blackout. ||True
+5|Grab an object.||True
+17|Support large uploads to the content distribution network.||True
+19|Make a video of entering the world and grabbing objects. ||True
 
 * Trialing a fix for issue of SDFGI on VR.
 
