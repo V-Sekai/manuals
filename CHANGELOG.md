@@ -14,6 +14,16 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
     **Security** in case of vulnerabilities.
 -->
 
+## 2022-06-01
+
+* Lyuma uncommented some code in vsk_avatar/ik_space.gd to create IK tracking points on the server, to enable IK sync via server.
+
+![Movement Debugged Lyuma](decisions\2022\attachments\movement_debugged_lyuma.png)
+
+* Server sync issue removed from todo list.
+
+![Updated 2022-06-01 todo list](decisions\2022\attachments\screenshot_2022_06_01_074333.png)
+
 ## 2022-05-29
 
 https://github.com/V-Sekai/godot-seurat is dependent on being able to fetch 16 bit float buffers https://github.com/godotengine/godot/issues/54122#issuecomment-1140414946.
