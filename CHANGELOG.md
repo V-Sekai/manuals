@@ -16,7 +16,7 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
 
 ## 2022-06-01
 
-* Lyuma uncommented some code in vsk_avatar/ik_space.gd to create IK tracking points on the server, to enable IK sync via server.
+* Lyuma uncommented some code in vsk_avatar/ik_space.gd to create IK tracking points on the server, to enable IK sync via server. TL;DR (Other peers can see other peers while connected to a server.)
 
 ![Movement Debugged Lyuma](decisions/2022/attachments/movement_debugged_lyuma.png)
 
