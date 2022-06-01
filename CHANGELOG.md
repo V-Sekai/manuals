@@ -18,7 +18,7 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
 
 * Lyuma uncommented some code in vsk_avatar/ik_space.gd to create IK tracking points on the server, to enable IK sync via server.
 
-![Movement Debugged Lyuma](decisions\2022\attachments\movement_debugged_lyuma.png)
+![Movement Debugged Lyuma](decisions/2022/attachments/movement_debugged_lyuma.png)
 
 * Server sync issue removed from todo list.
 
