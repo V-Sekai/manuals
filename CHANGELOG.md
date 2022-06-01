@@ -22,7 +22,17 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
 
 * Server sync issue removed from todo list.
 
-![Updated 2022-06-01 todo list](decisions\2022\attachments\screenshot_2022_06_01_074333.png)
+id|Name|Notes|Active
+--|----|-----|------
+25|VR Teleport||True
+24|VR Smooth locomotion||True
+26|VR Smooth with Vignette||True
+5|Grab an object||True
+12|Character motion capture via renik?||True
+17|Large Upload to uro||True
+19|Make a video of grabbing the object and entering the world.||True
+18|SDFGI world on mux||True
+
 
 ## 2022-05-29
 
