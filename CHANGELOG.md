@@ -24,14 +24,11 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
 
 id|Name|Notes|Active
 --|----|-----|------
-25|VR Teleport||True
 24|VR Smooth locomotion||True
-26|VR Smooth with Vignette||True
+24|VR Smooth locomotion with blackout ||True
 5|Grab an object||True
-12|Character motion capture via renik?||True
 17|Large Upload to uro||True
 19|Make a video of grabbing the object and entering the world.||True
-18|SDFGI world on mux||True
 
 * Trialing a fix for issue of SDFGI on VR.
 
