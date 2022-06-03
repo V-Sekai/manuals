@@ -18,6 +18,8 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
 
 https://gitlab.com/bramw/baserow/-/issues/998 Spent some documenting the baserow io system on Digital Ocean used to store in-progress art assets, data from research and 3d galleries.
 
+Donated research on avatar generation to the MIT-licensed project at https://github.com/AtlasFoundation/OpenCharacterCreator
+
 ## 2022-06-01
 
 * Lyuma uncommented some code in vsk_avatar/ik_space.gd to create IK tracking points on the server, to enable IK sync via server. TL;DR (Other peers can see other peers while connected to a server.)
