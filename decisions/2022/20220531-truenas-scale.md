@@ -71,7 +71,7 @@ I know how to do this and I don't want to pay for it.
 ### References
 
 - [V-Sekai](https://v-sekai.org/)
-- [agent_auto_register]()https://docs.gocd.org/current/advanced_usage/agent_auto_register.html
+- [agent_auto_register](https://docs.gocd.org/current/advanced_usage/agent_auto_register.html)
 
 
 ### License of the contribution
