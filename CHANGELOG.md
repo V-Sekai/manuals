@@ -16,6 +16,11 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
     **Security** in case of vulnerabilities.
 -->
 
+## 2022-06-05
+
+1. Fire collaborated on godot-snappy for object snapping https://github.com/jgillich/godot-snappy
+2. Try to integrate manifold again.
+
 ## 2022-06-03
 
 https://gitlab.com/bramw/baserow/-/issues/998 Spent some documenting the baserow io system on Digital Ocean used to store in-progress art assets, data from research and 3d galleries.
