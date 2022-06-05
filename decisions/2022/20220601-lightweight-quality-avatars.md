@@ -30,13 +30,13 @@ exploring avatars that are as parametric as possible.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-1. Ways to define volumes as parametric, and textures based on vectors instead of bitmaps.
+Find ways to define volumes as parametric, and textures based on vectors instead of bitmaps.
 
 Frame time: Using a mobile chip gives less headroom re: polys that can be dropped. Download sizes. How long does loading take.   
 
-I don’t love blender, more focused on web based tools fit for mobile processors and reasonable download speeds.
+Yin doesn't love blender, more focused on web based tools fit for mobile processors and reasonable download speeds.
 
-I have been looking into procedural materials as a lightweight mechanism.
+Yin has been looking into procedural materials as a lightweight mechanism.
 
 There are two systems, skeleton system and blendshapes. Conversion of blend shapes to skeletons is possible.
 
