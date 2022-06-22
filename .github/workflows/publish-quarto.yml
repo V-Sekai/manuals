@@ -53,6 +53,9 @@ jobs:
           echo -e "\n[V-Sekai] - [Last changed datetime|`date --iso=min --utc`]" >> vsekai_roadmap_evergreen.nomnoml 
           npx nomnoml ./vsekai_roadmap_evergreen.nomnoml ./vsekai_roadmap_evergreen.svg
       - uses: quarto-dev/quarto-actions/install-quarto@main
+        with:
+          # To install LaTeX to build PDF book 
+          tinytex: true 
       - run: |
           quarto render
       - name: Deploy
