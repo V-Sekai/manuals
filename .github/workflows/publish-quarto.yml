@@ -47,11 +47,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - run: |
-          npm install nomnoml
-          mkdir -p _site
-          echo -e "\n[V-Sekai] - [Last changed datetime|`date --iso=min --utc`]" >> vsekai_roadmap_evergreen.nomnoml 
-          npx nomnoml ./vsekai_roadmap_evergreen.nomnoml ./vsekai_roadmap_evergreen.svg
       - uses: quarto-dev/quarto-actions/install-quarto@main
       - run: |
           quarto render
