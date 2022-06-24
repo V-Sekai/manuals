@@ -46,7 +46,11 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - uses: quarto-dev/quarto-actions/install-quarto@main
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          # To install LaTeX to build PDF book 
+          tinytex: true 
       - run: |
           quarto render
       - name: Deploy
