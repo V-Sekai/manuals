@@ -24,6 +24,7 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
 
 * Had a meeting with Lyuma, Fire, Sarcen, Silent and MMMaellon about the V-Sekai project.
 * Resolved apply style patches to 3d-audio.
+* Make V-Sekai film tests with the new Godot Engine movie maker feature.
 
 ## 2022-06-05
 
