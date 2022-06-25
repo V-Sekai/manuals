@@ -18,7 +18,7 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
 
 ## 2022-06-24
 
-* Updated this https://v-sekai.github.io/ website. 
+* Updated this [v-sekai.github.io](https://v-sekai.github.io) website. 
 
 ### Previously on V-Sekai
 
