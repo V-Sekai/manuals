@@ -23,6 +23,7 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
 ### Previously on V-Sekai
 
 * Had a meeting with Lyuma, Fire, Sarcen, Silent and MMMaellon about the V-Sekai project.
+* Resolved apply style patches to 3d-audio.
 
 ## 2022-06-05
 
