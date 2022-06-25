@@ -57,7 +57,7 @@ We are running the project.
 
 ### Reference Design
 
-![Jeana virtual pet concept](https://raw.githubusercontent.com/V-Sekai/V-Sekai/master/decisions/2022/attachments/virtual_pets/jeana_virtual_pets.png)
+![Jeana virtual pet concept](./attachments/jeana_virtual_pets.png)
 
 ## Derivative License
 

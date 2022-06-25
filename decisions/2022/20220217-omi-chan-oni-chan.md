@@ -16,7 +16,7 @@ Use my know-how to rig a #256fes character.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-- ![image](https://user-images.githubusercontent.com/32321/154479017-731c36f2-b52b-45dc-9078-4de260c6c91f.png)
+- ![image](./attachments/154479017-731c36f2-b52b-45dc-9078-4de260c6c91f.png)
 
 Given mesh model that is unrigged and #256FES
 
