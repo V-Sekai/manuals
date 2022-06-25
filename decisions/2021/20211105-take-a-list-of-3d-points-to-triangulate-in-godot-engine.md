@@ -37,7 +37,7 @@ and the `vector Z is a (3 * N) flat vector` of the solution vertices (equivalent
 
 - Jeana demonstrated the feel of CASSIE on 2021-11-05 to draw a cat.
 
-![20211105 CASSIE Jeana](./attachments/20211105-CASSIE-Jeana.jpg?raw=true)
+![20211105 CASSIE Jeana](./attachments/20211105-CASSIE-Jeana.jpg)
 
 ## Negative Consequences <!-- optional -->
 
