@@ -51,11 +51,8 @@ jobs:
         with:
           # To install LaTeX to build PDF book 
           tinytex: true
-      - name: Remove github issues
-        run: |
-          rm -rf thirdparty
       - run: |
-          quarto render
+          quarto render decisions
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
