@@ -31,7 +31,7 @@ sudo apt-get install linux-tools-common linux-tools-generic linux-tools-`uname -
 perf record -o perf.data --call-graph dwarf --aio --sample-cpu ./godot/bin/godot.linuxbsd.opt.tools.64.llvm --path groups hotspot perf.data
 ```
 
-![image](./attachment/168098166-3392395d-eab6-488e-bba2-1088cbd82c6d.png)
+![image](./attachments/168098166-3392395d-eab6-488e-bba2-1088cbd82c6d.png)
 
 ### Positive Consequences
 
