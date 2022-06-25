@@ -18,7 +18,11 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
 
 ## 2022-06-24
 
-Updated this https://v-sekai.github.io/ website. 
+* Updated this https://v-sekai.github.io/ website. 
+
+### Previously on V-Sekai
+
+* Had a meeting with Lyuma, Fire, Sarcen, Silent and MMMaellon about the V-Sekai project.
 
 ## 2022-06-05
 
