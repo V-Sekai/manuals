@@ -16,6 +16,10 @@ and this project does **not** adhere to [Semantic Versioning](https://semver.org
     **Security** in case of vulnerabilities.
 -->
 
+## 2022-06-24
+
+Updated this https://v-sekai.github.io/ website. 
+
 ## 2022-06-05
 
 1. Fire collaborated on godot-snappy for object snapping https://github.com/jgillich/godot-snappy
