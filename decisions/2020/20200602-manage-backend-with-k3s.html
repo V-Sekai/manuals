@@ -121,7 +121,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed fullcontent">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -177,7 +177,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
 </nav>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#manage-backend-resources-on-one-or-more-physical-machines-with-k3s" id="toc-manage-backend-resources-on-one-or-more-physical-machines-with-k3s" class="nav-link active" data-scroll-target="#manage-backend-resources-on-one-or-more-physical-machines-with-k3s">Manage backend resources on one or more physical machines with K3S</a>
+  <ul class="collapse">
+  <li><a href="#context-and-problem-statement" id="toc-context-and-problem-statement" class="nav-link" data-scroll-target="#context-and-problem-statement">Context and Problem Statement</a></li>
+  <li><a href="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" id="toc-describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="nav-link" data-scroll-target="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</a></li>
+  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</a>
+  <ul class="collapse">
+  <li><a href="#system-setup-done-once" id="toc-system-setup-done-once" class="nav-link" data-scroll-target="#system-setup-done-once">System Setup (Done once)</a></li>
+  <li><a href="#selinux-patches" id="toc-selinux-patches" class="nav-link" data-scroll-target="#selinux-patches">SELinux patches</a></li>
+  <li><a href="#install-k3s-start-here-if-recreating" id="toc-install-k3s-start-here-if-recreating" class="nav-link" data-scroll-target="#install-k3s-start-here-if-recreating">Install k3s (Start here if recreating)</a></li>
+  <li><a href="#setting-up-metallb" id="toc-setting-up-metallb" class="nav-link" data-scroll-target="#setting-up-metallb">Setting up metallb:</a></li>
+  <li><a href="#setting-up-osxcross" id="toc-setting-up-osxcross" class="nav-link" data-scroll-target="#setting-up-osxcross">Setting up osxcross</a></li>
+  <li><a href="#setting-up-gocd" id="toc-setting-up-gocd" class="nav-link" data-scroll-target="#setting-up-gocd">Setting up gocd:</a></li>
+  <li><a href="#osxcross-gocd-agents" id="toc-osxcross-gocd-agents" class="nav-link" data-scroll-target="#osxcross-gocd-agents">OSXCROSS GOCD Agents</a></li>
+  <li><a href="#gocd-config-repositories" id="toc-gocd-config-repositories" class="nav-link" data-scroll-target="#gocd-config-repositories">gocd config repositories:</a></li>
+  <li><a href="#setup-of-flux2-gitops" id="toc-setup-of-flux2-gitops" class="nav-link" data-scroll-target="#setup-of-flux2-gitops">Setup of flux2 GitOps:</a></li>
+  <li><a href="#setting-up-cockroachdb" id="toc-setting-up-cockroachdb" class="nav-link" data-scroll-target="#setting-up-cockroachdb">Setting up cockroachdb:</a></li>
+  <li><a href="#keeping-the-system-and-cluster-up-to-date" id="toc-keeping-the-system-and-cluster-up-to-date" class="nav-link" data-scroll-target="#keeping-the-system-and-cluster-up-to-date">Keeping the system and cluster up-to-date</a></li>
+  </ul></li>
+  <li><a href="#positive-consequences" id="toc-positive-consequences" class="nav-link" data-scroll-target="#positive-consequences">Positive Consequences <!-- optional --></a></li>
+  <li><a href="#negative-consequences" id="toc-negative-consequences" class="nav-link" data-scroll-target="#negative-consequences">Negative Consequences <!-- optional --></a></li>
+  <li><a href="#option-graveyard" id="toc-option-graveyard" class="nav-link" data-scroll-target="#option-graveyard">Option graveyard: <!-- same as above --></a></li>
+  <li><a href="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" id="toc-if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="nav-link" data-scroll-target="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</a></li>
+  <li><a href="#is-there-a-reason-why-this-should-be-core-and-done-by-us" id="toc-is-there-a-reason-why-this-should-be-core-and-done-by-us" class="nav-link" data-scroll-target="#is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References <!-- optional --></a></li>
+  <li><a href="#derivative-license" id="toc-derivative-license" class="nav-link" data-scroll-target="#derivative-license">Derivative License</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/V-Sekai.github.io/edit/master/decisions/2020/20200602-manage-backend-with-k3s.md" class="toc-action">Edit this page</a></p></div></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
