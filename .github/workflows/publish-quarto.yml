@@ -50,7 +50,10 @@ jobs:
         uses: quarto-dev/quarto-actions/setup@v2
         with:
           # To install LaTeX to build PDF book 
-          tinytex: true 
+          tinytex: true
+      - name: Remove github issues
+        run: |
+          rm -rf thirdparty
       - run: |
           quarto render
       - name: Deploy
