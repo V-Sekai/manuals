@@ -22,7 +22,74 @@ I want to store adjacent information related to V-Sekai in a database.
 
 ### Describe the proposed option and how it helps to overcome the problem or limitation
 
-Upstream proposal.
+Add a digital ocean apps config.
+
+https://www.digitalocean.com/products/app-platform
+
+Features:
+
+1. managed postgresql database
+2. no managed redis
+3. digital ocean spaces
+4. apps platform
+
+```
+databases:
+- engine: PG
+  name: baserow-db
+  num_nodes: 1
+  size: basic-xs
+  version: "12"
+name: chibifire-base
+region: tor
+services:
+- envs:
+  - key: BASEROW_PUBLIC_URL
+    scope: RUN_AND_BUILD_TIME
+    value: https://${APP_DOMAIN}
+  - key: DATABASE_URL
+    scope: RUN_AND_BUILD_TIME
+    value: postgresql://${baserow-db.USERNAME}:${baserow-db.PASSWORD}@${baserow-db.HOSTNAME}:${baserow-db.PORT}/${baserow-db.DATABASE}
+  - key: AWS_ACCESS_KEY_ID
+    scope: RUN_AND_BUILD_TIME
+    value: AWS_ACCESS_KEY_ID_AWS_ACCESS_KEY_ID
+  - key: AWS_S3_ENDPOINT_URL
+    scope: RUN_AND_BUILD_TIME
+    value: https://sfo3.digitaloceanspaces.com
+  - key: AWS_S3_CUSTOM_DOMAIN
+    scope: RUN_AND_BUILD_TIME
+    value: 'chibifire.sfo3.digitaloceanspaces.com '
+  - key: AWS_S3_REGION_NAME
+    scope: RUN_AND_BUILD_TIME
+    value: sfo3
+  - key: AWS_STORAGE_BUCKET_NAME
+    scope: RUN_AND_BUILD_TIME
+    value: chibifire
+  - key: AWS_SECRET_ACCESS_KEY
+    scope: RUN_AND_BUILD_TIME
+    type: SECRET
+    value: SECRETSECRETSECRET
+    scope: RUN_AND_BUILD_TIME
+    value: "true"
+  - key: SYNC_TEMPLATES_ON_STARTUP
+    scope: RUN_AND_BUILD_TIME
+    value: "false"
+  - key: PRIVATE_BACKEND_URL
+    scope: RUN_AND_BUILD_TIME
+    value: ${_self.PRIVATE_URL}
+  http_port: 80
+  image:
+    registry: baserow
+    registry_type: DOCKER_HUB
+    repository: baserow
+    tag: 1.10.2
+  instance_count: 1
+  instance_size_slug: basic-xs
+  name: baserow-baserow
+  routes:
+  - path: /
+
+ ```
 
 ### Positive Consequences
 
