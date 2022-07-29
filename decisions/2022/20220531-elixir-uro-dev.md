@@ -5,7 +5,7 @@
 - [X] proposed
 - [ ] draft
 - [ ] rejected
-- [ ] accepted
+- [x] accepted
 - [ ] deprecated
 - [ ] superseded by
 
