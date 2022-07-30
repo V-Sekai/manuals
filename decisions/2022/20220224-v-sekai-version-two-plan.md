@@ -1,6 +1,6 @@
 # Planning V-Sekai  Version 2 on 2022-02-24
 
-- Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
+- Status: superseded by 20220228-v-sekai-version-three-plan.md <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,ifire,lyuma,
 - Tags: V-Sekai,
 
