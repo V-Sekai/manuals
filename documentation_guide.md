@@ -1,6 +1,6 @@
 # Documentation guide
 
-* V-Sekai is the VR project we will release, for example, on Itch.io that developers can mod.
+* V-Sekai is the VR game we will release, for example, on Itch.io that developers can mod.
 * We are looking to make complete documentation for the modders/developers and end users.
 * We have a list of features we need to cover already.
 * Write as efficiently as possible to immediately create all the draft pages, one for each significant feature or topic we need to cover. Every prominent feature requires at least an introduction, so it needs a corresponding page with a descriptive title.
