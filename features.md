@@ -1,6 +1,6 @@
 # Features
 
-|  |
+|V-Sekai Features|
 |--|
 |Distribute custom avatars and worlds in a networked environment on the Godot game engine.|
 |Via a hosted web server, as well as individual hosting and social functions.|
