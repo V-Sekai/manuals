@@ -14,7 +14,7 @@ Let's take a topic, for example, Godot XR. The user will need to know:
 - What is Godot (if we have covered it already on the previous page, link to that page, and briefly re-explain, e.g. in one sentence)
 - How XR works in Godot and how our product uses it
 - What people can achieve concretely with that [feature/knowledge on this page]
-- What are limitations of the technology [that also affect your product]
+- What are limitations of the technology [that also affect our product]
 
 Each page's draft should be a bullet list like this. Because then we or the writer instantly knows all the points the page must cover
 And it doesn't take very long to write and review those bullet lists 
@@ -39,7 +39,7 @@ When we say reusing the verbs, it's about being consistent, like:
 
 It doesn't have to be 100% of the time the same but for instance, for buttons, click and press are well understood, but "use," while correct, maybe a bit harder to parse
 
-Also, changing the phrasing, style, and verbs used throughout your docs adds cognitive load.
+Also, changing the phrasing, style, and verbs used throughout our docs adds cognitive load.
 
 Making things simple, explicit, and consistently allows users to focus on the steps and memorize new information.
 
