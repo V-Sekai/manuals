@@ -8,35 +8,40 @@
 
 ## Example topic
 
-Let's take a topic for example, Godot XR. The user will need to know:
+Let's take a topic, for example, Godot XR. The user will need to know:
+
 - What is XR (you can link to a page or briefly explain it)
-- What is Godot (if you have covered it already in the previous page, link to that page, and briefly re-explain, e.g. in one sentence)
+- What is Godot (if you have covered it already on the previous page, link to that page, and briefly re-explain, e.g. in one sentence)
 - How XR works in Godot and how your product uses it
-- What people can achieve concretely with that [feature/knowledge in this page]
+- What people can achieve concretely with that [feature/knowledge on this page]
 - What are limitations of the technology [that also affect your product]
 
-Each page's draft should be a bullet list like this. Because then you or the writer instantly knows all the points the page must cover
+Each page's draft should be a bullet list like this. Because then we or the writer instantly knows all the points the page must cover
 And it doesn't take very long to write and review those bullet lists 
-Last but not least for all the cases where the user has to follow steps (for example, using an interface),  you need to detail each step with the simplest words possible. for example, if they need to click on three buttons, you detail the steps with explicit mentions of the labels as seen in the UI and always use the same verbs, for example: 
+
+Last, for all the cases where the user has to follow steps (for example, using an interface), we need to detail each step with the most straightforward words possible. For instance, if they need to click on three buttons, we describe the steps with explicit mentions of the labels as seen in the UI and always use the same verbs, for example: 
 
 ## Example instruction 
 
 To change the game's resolution:
 
-1. Open the the Project -> Project Settings... menu.
+1. Open the Project -> Project Settings... menu.
 2. In the left column, navigate down to Display -> Window. In the right part of the window, the game's window settings appear.
 3. Scroll down to the resolution setting.
 4. Click the numbers to change the resolution. The values are in pixels.
 
-When I say reusing the verbs, it's about being consistent, like:
+When we say reusing the verbs, it's about being consistent, like:
+
 - Click a button
 - Open a menu
 - Open a file
 - Navigate to a tab
 
-It doesn't have to be 100% of the time the same but for instance for buttons, click and press are well understood, but "use", while correct, may be a bit harder to parse
-Also if you change the phrasing and style and verbs used throughout your docs, it adds cognitive load
-Making things simple, explicit, consistent allows users to focus on the steps and memorizing new information
+It doesn't have to be 100% of the time the same but for instance, for buttons, click and press are well understood, but "use," while correct, maybe a bit harder to parse
+
+Also, changing the phrasing, style, and verbs used throughout your docs adds cognitive load.
+
+Making things simple, explicit, and consistently allows users to focus on the steps and memorize new information.
 
 ## Contributions
 
