@@ -1,4 +1,4 @@
-# V-Sekai documentation guide
+# Documentation guide
 
 * V-Sekai is the VR project we will release, for example, on Itch.io that developers can mod.
 * We are looking to make complete documentation for the modders/developers and end users.
