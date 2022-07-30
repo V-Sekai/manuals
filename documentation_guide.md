@@ -11,7 +11,7 @@
 Let's take a topic, for example, Godot XR. The user will need to know:
 
 - What is XR (we can link to a page or briefly explain it)
-- What is Godot (if you have covered it already on the previous page, link to that page, and briefly re-explain, e.g. in one sentence)
+- What is Godot (if we have covered it already on the previous page, link to that page, and briefly re-explain, e.g. in one sentence)
 - How XR works in Godot and how our product uses it
 - What people can achieve concretely with that [feature/knowledge on this page]
 - What are limitations of the technology [that also affect your product]
