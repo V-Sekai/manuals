@@ -43,6 +43,6 @@ Also, changing the phrasing, style, and verbs used throughout our docs adds cogn
 
 Making things simple, explicit, and consistently allows users to focus on the steps and memorize new information.
 
-## Contributions
+## Contributors
 
 This page was written with advice from gdquest.
