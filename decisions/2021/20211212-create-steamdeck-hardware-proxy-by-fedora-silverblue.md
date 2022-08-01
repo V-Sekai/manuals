@@ -47,7 +47,6 @@ QA testing needs to be inhouse.
 
 - https://en.wikipedia.org/wiki/Steam_Deck
 - https://download.fedoraproject.org/pub/fedora/linux/releases/35/Kinoite/x86_64/iso/Fedora-Kinoite-ostree-x86_64-35-1.2.iso
-- [Create Steamdeck hardware proxy by installing Fedora Silverblue and Steam](20211212-create-steamdeck-hardware-proxy-by-installing-fedora-silverblue-and-steam-2.md)
 
 ## Derivative License
 
