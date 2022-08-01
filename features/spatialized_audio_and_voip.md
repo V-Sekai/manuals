@@ -1,3 +1,3 @@
-# Spatialised audio and VOIP support.
+# Spatialised audio and VOIP support
 
 Documentation to be written.
