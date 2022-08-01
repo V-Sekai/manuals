@@ -1,0 +1,1 @@
+# Custom servers with individual game rules.
