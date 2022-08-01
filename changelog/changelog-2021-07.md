@@ -1,0 +1,87 @@
+
+- 2021-07-30 23:27:44Z fire: Update https://github.com/V-Sekai/FBX2glTF/releases/tag/v2021-06-20T0053%2B0000 with a godot 4 project
+- 2021-07-30 23:27:32Z fire: Merged 3/5 prs related to gltf, colliders and RESET animation
+- 2021-07-28 23:15:15Z fire: https://github.com/godotengine/godot/pull/50964 Libcurl work from the net team
+- 2021-07-27 15:10:18Z fire: \o/ https://cdn.discordapp.com/attachments/836651615532482611/869597574481449001/unknown.png
+- 2021-07-27 14:15:21Z fire: Working on CICD for https://github.com/V-Sekai/godot-hop-spin-dance as a preview for v-sekai 4
+- 2021-07-26 00:39:45Z fire: https://tenor.com/view/fun-lies-imlovingit-portal-itwouldbefuntheysaid-gif-4842907
+- 2021-07-26 00:22:35Z lyuma: ugly, but we do what we must
+- 2021-07-26 00:22:31Z lyuma: I was able to resolve autoload cycles by passing references by loading them in the right order, and passing in the out-of-order (cyclic) references as constructor arguments, referencing them with a prefix instead of the autoload name
+- 2021-07-26 00:21:40Z lyuma: There are still quite a few addons left, and then comes debugging
+- 2021-07-26 00:21:32Z lyuma: Made good progress on porting GDScript. I have most VSK\* and sar1\_ classes ported: https://cdn.discordapp.com/attachments/836651615532482611/869011521290764298/unknown.png
+- 2021-07-25 20:06:18Z fire: Worked with OMI to add OMI https://github.com/M3-org/awesome-metaverse/pull/4 to the list.
+- 2021-07-25 18:05:02Z Saracen: Nice!
+- 2021-07-25 18:00:45Z fire: Saracen Bugfix for \_File. I'm able to open vrms again
+- 2021-07-23 20:10:25Z fire: https://cdn.discordapp.com/attachments/836651615532482611/868223549469511740/unknown.png
+- 2021-07-23 16:56:54Z fire: https://cdn.discordapp.com/attachments/836651615532482611/868174850005561374/unknown.png
+- 2021-07-23 16:56:33Z fire: https://twitter.com/MampelSkyliner Lyuma Trying to connect.
+- 2021-07-22 19:59:57Z fire: https://youtu.be/WBGkyqYEdTU From Mark Mandel
+- 2021-07-22 19:28:43Z fire: > gizmo improvements are (finally) up for review 🙂 #50748
+- 2021-07-22 18:17:32Z fire: Did some research on ai planners. https://gist.github.com/fire/e5fd4fd3a943b76f3f1e4e76c305af0b
+- 2021-07-22 16:51:42Z fire: started moz hubs importer in godot engine master
+- 2021-07-22 16:42:11Z fire: collaborated with jonb on libcurl in Godot
+- 2021-07-22 00:05:41Z fire: OMI Meeting today. Debates are ongoing. No consensus.
+- 2021-07-20 18:29:32Z fire: Reduz wants to merge the real_t is double PRs soon. 🎆 🎆
+- 2021-07-20 00:01:16Z fire: Connected with https://twitter.com/lorenc_dan
+- 2021-07-19 23:21:35Z fire: https://github.com/KhronosGroup/glTF/pull/1955
+- 2021-07-19 23:01:08Z MMMaellon#2053 Have you guys messed with this engine before? Heard about it at work because Amazon made it https://o3de.org/ 👀 (1)
+- 2021-07-19 19:23:28Z fire: "> iFire and I broke the ice, but feel this would be best served as a series of workshops together. We created this issue in the omigroup/gltf-extensions repo to track progress.
+  https://github.com/omigroup/gltf-extensions/issues/3"
+- 2021-07-18 19:45:09Z Saracen: Put the Vket6 repo on GitLab. Right now, it's just a straight port of the original, mostly making it work with Udon scripting, but I will explore changes which could be made for VKet6. https://gitlab.com/SaracenOne/vket6-vsk-booth/
+- 2021-07-16 17:41:08Z fire: Godot Networking meeting Saracen
+- 2021-07-15 23:45:34Z fire: Worked on glTF2 OMI_audio_emitter with humbletim
+- 2021-07-15 06:47:10Z Saracen: https://github.com/godotengine/godot/issues/50471
+- 2021-07-15 06:47:09Z Saracen: Logged this issue. Considering this one pretty crucial for V-Sekai's 4.x port since the codebase heavily relies on dependent singletons
+- 2021-07-14 19:22:42Z fire: W3C - OMI GLTF extension working group created
+- 2021-07-14 19:22:23Z fire: https://cdn.discordapp.com/attachments/823417508417110026/864919725301432360/unknown.png
+- 2021-07-14 19:21:56Z fire: materialx pr merged
+- 2021-07-14 05:46:19Z fire: \o/ /o/ \o\ ❤️ ❤️ ❤️ https://cdn.discordapp.com/attachments/836651615532482611/864744601017516042/unknown.png
+- 2021-07-14 03:32:32Z fire: https://cdn.discordapp.com/attachments/836651615532482611/864710936211750942/unknown.png
+- 2021-07-14 03:32:20Z fire: Saracen Lyuma We will be at this roundtable? https://cdn.discordapp.com/attachments/836651615532482611/864710886093619240/unknown.png
+- 2021-07-14 00:40:41Z fire: https://github.com/omigroup/OMI/issues/64 gltf2 proposal
+- 2021-07-13 21:05:10Z fire: Proposal for a materialx bsdf that works for gltf bsdf https://github.com/materialx/MaterialX/issues/653#issuecomment-879321877
+- 2021-07-13 12:18:26Z lyuma: Beware: autoload cycles are a problem: two files cannot reference each other without breaking the cycle in some way. Currently, I have about 7 references to EntityManager commented out from the network_manager addon, or else Godot hard crashes when loading the project.
+- 2021-07-13 12:16:42Z lyuma:
+  "Pushed https://github.com/V-Sekai/godot-hop-spin-dance `groups_test_project` branch. The following addons now compile:
+  - entity_manager
+  - gd_util
+  - input_manager
+  - math_util
+  - mesh_combiner
+  - model_format
+  - network_manager
+  - quentincaffeino-console
+  - sar1_log_manager
+  - state_machine
+  - static_baker
+  - vsk_avatar (50% commented, must redo later)
+  - vsk_vrm_avatar_tool" ✨ (1)
+- 2021-07-13 02:01:04Z fire: Got static!
+- 2021-07-13 01:39:09Z fire: Can't connect yet, but there's less errors running
+- 2021-07-13 01:38:21Z fire: Worked on https://github.com/V-Sekai/godot_voip_experimental
+- 2021-07-11 21:54:33Z fire: https://github.com/V-Sekai/v-sekai-proposals/issues/34 Lyuma Wrote how to evaluate neural blendshapes
+- 2021-07-10 20:31:09Z fire: For next week I'm going to get a build of groupx-4.x to cicd and then start iterating on "Two person floating name tags in a networked Groups 4.x with the ability to pass beachballs". I asked my friend gameplay programmer and we determined that waiting for all the things to port to Godot Engine 4 has a high latency. I'm trying a new approach of growing the code base feature by feature as it was done originally for 3.x.
+- 2021-07-10 20:22:34Z fire: Polishing https://github.com/godotengine/godot/pull/49645 for merge
+- 2021-07-09 21:04:20Z fire: Morning Meeting done with Reduz, Catania and Lyuma about Pose in 3d
+- 2021-07-07 18:40:06Z fire: Updated https://hackmd.io/C0oIi_vlRs6V8qa9ZCjxaw with the guessing "Blender edit" https://github.com/KhronosGroup/glTF-Blender-IO/pull/941
+- 2021-07-07 18:39:23Z fire: We talked about how "godot pose matcher" is an ok name for the tool
+- 2021-07-07 18:38:51Z Saracen: I'm going to try and build a test case for another bug in GodotPhysics and also start refactoring the avatar bone fixer from vsk_avatar into its own standalone addon with minimal dependencies.
+- 2021-07-07 18:38:31Z fire: Worked with tokage on bone rolls https://docs.google.com/spreadsheets/d/1j6Sq7-Iy_P3esTILySrqVQ91Hlq4MsEiI35X_R-NaiI/edit#gid=0
+- 2021-07-07 06:21:14Z fire: Merge pull request #50229 from reduz/fix-textures-not-updating Saracen Lyuma 👏 (2),pink (2)
+- 2021-07-07 06:01:10Z fire: https://cdn.discordapp.com/attachments/836651615532482611/862211623782711306/unknown.png
+- 2021-07-07 06:00:30Z fire: https://cdn.discordapp.com/attachments/598003845657788438/862209880990547968/fox_default_run.glb Fox is holding a leg.
+- 2021-07-07 05:59:29Z fire: https://github.com/godot-extended-libraries/godot-fire/tree/feature/bake-reset-anim Lyuma Saracen QA testing the RESET pose baker
+- 2021-07-06 18:11:18Z fire: Saracen was interested in my Hydro module.
+- 2021-07-06 18:11:02Z fire: Saracen and I were interested in GridMate interest management techniques
+- 2021-07-06 18:10:34Z fire: Evaluated o3de 1. GridMate as a college class !!!! 2. OIT (Transparency) 3. TressFX ??? 4. animation sync 5. behavior tree
+- 2021-07-05 21:07:53Z fire: "Did some work on physics collision bugs but didn't complete. Sent to saracen.
+  https://github.com/V-Sekai/godot/commit/99a9f79e25f7760cb5a0990e67545d78e9dd0423"
+- 2021-07-05 15:29:30Z fire: "I figured out the bug with the ewbik ui. need to separate the concept of the stored ""serialisable"" data vs the internal runtime data
+  because the serialisable data can't access the skeleton."
+- 2021-07-03 23:41:32Z fire: worked with eron and also seperately got the ik to not reset every solve on ewbik
+- 2021-07-02 07:14:33Z fire: https://github.com/materialx/MaterialX/pull/651 Standalone material baker
+- 2021-07-01 19:13:21Z fire: Vket6 booth summoning of discord here?!
+- 2021-07-01 15:35:11Z fire: Poked https://github.com/SigNoz/signoz/issues/193
+- 2021-07-01 14:48:52Z fire: Discussed with HumbleTim the concept of a source glb we run again as many individual solvers for the input data, if the input is solved and it passes QA, that is one that is the outputed.
+- 2021-07-01 14:22:16Z fire: https://github.com/materialx/MaterialX/issues/650#issuecomment-871921261
+- 2021-07-01 14:21:54Z fire: ThorVG now supports images! in svg

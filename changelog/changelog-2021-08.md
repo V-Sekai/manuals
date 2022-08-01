@@ -1,0 +1,69 @@
+- 2021-08-31 23:04:24Z fire: Did a few hours of work learning Blender with Cleam last night. Did some testing of Tokage's skeleton gizmo.
+- 2021-08-30 17:09:35Z MMMaellon#2053 nice
+- 2021-08-30 16:13:28Z Saracen: Got MMMaellon's RenIK system compiling for 4.x now. It's also worth noting that the new SkeletonModifierStack is now mainlined in 4.0, so my next task with this will be to port RenIK to using this system. The final step will be porting it to the new GDExtension system as that becomes more viable
+- 2021-08-30 02:31:12Z fire: updated our engine + AUTHORITY changes + libcurl
+- 2021-08-28 22:01:33Z fire: Left is blend shape / right is bones. https://cdn.discordapp.com/attachments/836651615532482611/881297479033827388/2021-08-28_15-00-45.mp4
+- 2021-08-28 21:52:02Z fire: I got dembones working. `./DemBones -i="Face_Geom.fbx" -a="Face_Anim.abc" --bindUpdate=2 -o="Decomposition_20_grouped_face.fbx" --nnz=8 -b=256` Note that the corresponding fbx is 0.01 scale while the alembic is in meters. The RMSE = 0.00433256 must be this low. Especially do not pass DemBones if the RMSE is like 3.5. Next thing is to integrate an existing 3d skeleton.
+- 2021-08-28 21:28:03Z fire: Jonbonazza said he resolved the ipv6 dns problem and the last remaining steps are to get to build for all platforms. Details for a future iFire.
+- 2021-08-28 06:24:28Z fire: https://twitter.com/mux213/status/1431474082885734403?s=20 🥽 (2)
+- 2021-08-27 23:20:23Z fire: troubles
+- 2021-08-27 23:20:17Z fire: Restoring spatial audio after ellenhp's pr
+- 2021-08-27 14:15:31Z fire: https://cdn.discordapp.com/attachments/836651615532482611/880817809737805824/image0.jpg
+- 2021-08-27 09:17:32Z fire: https://cdn.discordapp.com/attachments/836651615532482611/880742820812562432/unknown.png
+- 2021-08-27 09:10:49Z fire: https://github.com/godotengine/godot/pull/51985
+- 2021-08-27 08:26:02Z lyuma: hosting seems to kind of work but plays constant physics sounds, so it's likely that scenes are loading, but I can't see anything.
+- 2021-08-27 08:23:56Z lyuma: Made some further progress: https://cdn.discordapp.com/attachments/836651615532482611/880729330035077120/unknown.png pink (2)
+- 2021-08-27 05:35:53Z lyuma: we do things because they are crazy
+- 2021-08-27 05:35:15Z fire: https://pbs.twimg.com/media/E3OC-r7WQAUvy5l.jpg ⬆️ (1)
+- 2021-08-27 05:26:19Z lyuma: https://cdn.discordapp.com/attachments/836651615532482611/880684632553705482/unknown.png
+- 2021-08-27 01:43:10Z fire: https://github.com/ValveSoftware/openvr/tree/master/samples/helloworldoverlay steam overlay
+- 2021-08-26 20:20:03Z fire: https://thume.ca/2017/06/17/tree-diffing/ useful comparing two visual script trees or two godot engine scenes or maybe skeletons!?s
+- 2021-08-26 19:21:48Z lyuma: Quilkin thread
+- 2021-08-26 16:01:57Z fire: https://medium.com/embarkstudios/say-hi-to-quilkin-an-open-source-udp-proxy-88577c795204
+- 2021-08-26 14:36:54Z fire: https://cdn.discordapp.com/attachments/836651615532482611/880460804351205386/image0.jpg
+- 2021-08-26 11:44:22Z lyuma: With the Autoload ordering fix applied, groups client now gets to the loading bar and is able to fade out after loading some plugins, but ends up at a black screen without showing the menu screen.
+- 2021-08-26 10:07:46Z lyuma: "Write PR to fix Autoload sort order (e.g. at runtime)
+  https://github.com/godotengine/godot/pull/52122"
+- 2021-08-26 01:30:05Z fire: Got together with CLEAM and got a schedule to work on Blender artwork. First thing is teach ourselves how to make a Virtual Market quality character. https://cdn.discordapp.com/attachments/836651615532482611/880262796661624912/Artboard-11.png 👍🏿 (2)
+- 2021-08-24 16:56:46Z Saracen: https://github.com/godotengine/godot/pull/52071 gddab (3)
+- 2021-08-24 16:56:45Z Saracen: GDScript 2.0 bug fixes
+- 2021-08-24 16:10:48Z fire: https://cdn.discordapp.com/attachments/836651615532482611/879759658393403402/unknown.png
+- 2021-08-24 16:07:44Z fire: MaterialX gltf2 bake with https://github.com/fire/MaterialX/tree/standalone-gltf https://cdn.discordapp.com/attachments/836651615532482611/879758889032253501/unknown.png
+- 2021-08-24 15:47:33Z fire: draft of materialx spec written https://github.com/fire/glTF/tree/materialx and draft of stand alone baker https://github.com/fire/MaterialX/tree/standalone
+- 2021-08-23 16:44:55Z fire: Spent some time trying to bake the animations of the face going from 0 to 1 for Angry face on three_girl vrm and dem bones could not work. Bake blend shapes to skeletal animation. Did not succeed.
+- 2021-08-22 07:59:23Z fire: remotes/bruvzg/msdf_fonts2
+- 2021-08-20 19:09:33Z fire: https://github.com/godotengine/godot/pull/44399
+- 2021-08-20 19:08:25Z fire: https://github.com/vnen/godot-cpp/tree/gdnative-extensions
+- 2021-08-20 08:30:17Z fire: https://github.com/godotengine/godot/pull/51908 new MSDF Branch
+- 2021-08-19 15:58:27Z fire: https://cdn.discordapp.com/attachments/836651615532482611/877944612508008468/2021-08-19_08-57-17.mp4
+- 2021-08-19 15:37:58Z fire: https://user-images.githubusercontent.com/7645683/109620721-debe3f00-7b42-11eb-870b-c2207812a03f.mov
+- 2021-08-19 15:33:20Z fire: Testing MSDF branch 2 https://github.com/bruvzg/godot/tree/msdf_fonts2.
+- 2021-08-16 15:03:26Z fire: Nikumaru font: https://cdn.discordapp.com/attachments/836651615532482611/876843603413069884/unknown.png
+- 2021-08-16 14:36:27Z lyuma: Including 3d modifier?? ⭐ (2),gdbee (2),🍦 (2),🔥 (2)
+- 2021-08-16 14:04:39Z fire: ik 3d is merged!!!!!
+- 2021-08-14 00:04:31Z fire: Updated https://github.com/fire/looking-glass/ Godot Engine demo. The fix was making the app fullscreen
+- 2021-08-14 00:00:04Z fire: Connected with Emili Yu https://ns.inria.fr/d3/CASSIE/
+- 2021-08-13 23:59:33Z fire: Connected with FreeMocap https://twitter.com/JonMatthis
+- 2021-08-13 06:07:51Z lyuma: "> It's coming! The Virtual Market 6 will commence in 18 hours!
+  > The opening ceremony will be held on JST 9:30 am, UTC 0:30 am, Eastern 8:30 pm.
+  > https://www.youtube.com/watch?v=XrTj_-Yg7AA"
+- 2021-08-13 04:21:30Z fire: https://twitter.com/Lyuma2d/status/1426005291573813249?s=20
+- 2021-08-11 22:48:18Z fire: https://twitch.tv/freemocap Jon's gonna stream tomorrow, Thursday from roughly 4-6pm (Eastern US time)
+- 2021-08-11 15:37:36Z fire: For cloud and edge computing, made an iso that'll automatically install k3s with proper keying if we reboot once manually to remove the iso. https://github.com/V-Sekai/k3s-auto-start-gitops
+- 2021-08-10 22:56:35Z Saracen: Looking into this right now (https://github.com/godotengine/godot/issues/47885), discussion will be on RocketChat #scripting
+- 2021-08-10 19:47:41Z lyuma: Congrats!!
+- 2021-08-10 19:47:30Z fire: https://github.com/godotengine/godot/pull/49343/files merged 👏 (2)
+- 2021-08-05 06:51:43Z MMMaellon#2053 that's very exciting hype (3),gdhollidays (2)
+- 2021-08-05 06:31:39Z lyuma: but this is a huge milestone for us: we can now open the project cleanly and fix stuff
+- 2021-08-05 06:31:02Z lyuma: Groups project now opens on Godot 4 without errors! We're still getting a few script errors here and there while exporting, and we see some issues related to loading openvr; and a godot bug related to extending a "res://" url might be affecting exports
+- 2021-08-05 02:16:43Z lyuma: We're still missing ports of GDNative code: godot speech and open?r
+- 2021-08-05 02:16:04Z lyuma: Finished with the majority of the port of 430 gdscript files. We have builds running, though godot4 has bugs in export builds with preload() of tscn files so I'll try changing those to regular load()
+- 2021-08-05 01:14:44Z lyuma: V-Sekai in godot 4 is getting my avatars! https://cdn.discordapp.com/attachments/836651615532482611/872648788672647208/unknown.png vrcExclaim (1)
+- 2021-08-04 18:52:42Z fire: Wasm emulation of fedora 33 via RISCV64. Related to Stellar Mesh discussion. https://cdn.discordapp.com/attachments/836651615532482611/872552648182751252/unknown.png
+- 2021-08-04 13:19:32Z fire: Trialing new github actions for all of our modules
+- 2021-08-02 22:17:37Z fire: Next year Siggraph is in Vancouver 🇨🇦
+- 2021-08-02 20:45:24Z fire: https://cdn.discordapp.com/attachments/836651615532482611/871856235098562621/unknown.png
+- 2021-08-02 20:14:08Z lyuma: Siggraph 2021 is the week of August 9 - August 13
+- 2021-08-02 19:48:01Z fire: Siggraph 2021! invited to discord
+- 2021-08-02 05:49:11Z fire: Worked on gltf2 export in Godot Engine master
+- 2021-08-02 05:48:57Z fire: Worked with Nikitalita on visual regression testing of vulkan
