@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>V-Sekai Developer Documentation – use-markdown-architectural-decision-records</title>
+<title>V-Sekai Developer Documentation – documentation_guidelines</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -18,23 +18,24 @@ ul.task-list{list-style: none;}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete-preset-algolia.umd.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<script src="site_libs/quarto-search/autocomplete-preset-algolia.umd.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./decisions.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -86,7 +87,7 @@ ul.task-list{list-style: none;}
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../../">V-Sekai Developer Documentation</a> 
+      <a href="./">V-Sekai Developer Documentation</a> 
     </div>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -98,22 +99,22 @@ ul.task-list{list-style: none;}
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../index.html" class="sidebar-item-text sidebar-link">V-Sekai Developer Documentation and Platform Guide</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">V-Sekai Developer Documentation and Platform Guide</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../changelog.html" class="sidebar-item-text sidebar-link">Changelog</a>
+  <a href="./changelog.html" class="sidebar-item-text sidebar-link">Changelog</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../decisions.html" class="sidebar-item-text sidebar-link">V-Sekai decisions</a>
+  <a href="./decisions.html" class="sidebar-item-text sidebar-link">V-Sekai decisions</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../documentation_guidelines.html" class="sidebar-item-text sidebar-link">Documentation guidelines</a>
+  <a href="./documentation_guidelines.html" class="sidebar-item-text sidebar-link active">Documentation guidelines</a>
   </div>
 </li>
     </ul>
@@ -125,74 +126,64 @@ ul.task-list{list-style: none;}
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#use-markdown-architectural-decision-records" id="toc-use-markdown-architectural-decision-records" class="nav-link active" data-scroll-target="#use-markdown-architectural-decision-records">Use Markdown Architectural Decision Records</a>
+  <li><a href="#documentation-guidelines" id="toc-documentation-guidelines" class="nav-link active" data-scroll-target="#documentation-guidelines">Documentation guidelines</a>
   <ul class="collapse">
-  <li><a href="#context-and-problem-statement" id="toc-context-and-problem-statement" class="nav-link" data-scroll-target="#context-and-problem-statement">Context and Problem Statement</a></li>
-  <li><a href="#considered-options" id="toc-considered-options" class="nav-link" data-scroll-target="#considered-options">Considered Options</a></li>
-  <li><a href="#decision-outcome" id="toc-decision-outcome" class="nav-link" data-scroll-target="#decision-outcome">Decision Outcome</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  <li><a href="#derivative-license" id="toc-derivative-license" class="nav-link" data-scroll-target="#derivative-license">Derivative License</a></li>
+  <li><a href="#an-example-topic" id="toc-an-example-topic" class="nav-link" data-scroll-target="#an-example-topic">An example topic</a></li>
+  <li><a href="#an-example-instruction" id="toc-an-example-instruction" class="nav-link" data-scroll-target="#an-example-instruction">An example instruction</a></li>
+  <li><a href="#contributors" id="toc-contributors" class="nav-link" data-scroll-target="#contributors">Contributors</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/V-Sekai.github.io/edit/master/decisions/2021/20210212-use-markdown-architectural-decision-records.md" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/V-Sekai.github.io/edit/master/documentation_guidelines.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-<section id="use-markdown-architectural-decision-records" class="level1">
-<h1>Use Markdown Architectural Decision Records</h1>
+<section id="documentation-guidelines" class="level1">
+<h1>Documentation guidelines</h1>
 <ul>
-<li>Status: accepted</li>
-<li>Date: 2021-02-11</li>
-<li>Tags: doc</li>
+<li>We are looking to make complete documentation for the developers and users.</li>
+<li>We have a list of features we need to cover already.</li>
+<li>Write as efficiently as possible to immediately create all the draft pages, one for each significant feature or topic we need to cover. Every prominent feature requires at least an introduction, so it needs a corresponding page with a descriptive title.</li>
+<li>On each page, we want to create a bullet list of all the things the user needs to learn to use the feature.</li>
 </ul>
-<section id="context-and-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
-<p>We want to record architectural decisions made in this project. Which format and structure should these records follow?</p>
+<section id="an-example-topic" class="level2">
+<h2 class="anchored" data-anchor-id="an-example-topic">An example topic</h2>
+<p>Let’s take a topic, for example, Godot XR. The user will need to know:</p>
+<ul>
+<li>What is XR (we can link to a page or briefly explain it)</li>
+<li>What is Godot (if we have covered it already on the previous page, link to that page, and briefly re-explain, e.g.&nbsp;in one sentence)</li>
+<li>How XR works in Godot and how our product uses it</li>
+<li>What people can achieve concretely with that [feature/knowledge on this page]</li>
+<li>What are limitations of the technology [that also affect our product]</li>
+</ul>
+<p>Each page’s draft should be a bullet list like this. Because then we or the writer instantly knows all the points the page must cover And it doesn’t take very long to write and review those bullet lists</p>
+<p>Last, for all the cases where the user has to follow steps (for example, using an interface), we need to detail each step with the most straightforward words possible. For instance, if they need to click on three buttons, we describe the steps with explicit mentions of the labels as seen in the UI and always use the same verbs, for example:</p>
 </section>
-<section id="considered-options" class="level2">
-<h2 class="anchored" data-anchor-id="considered-options">Considered Options</h2>
+<section id="an-example-instruction" class="level2">
+<h2 class="anchored" data-anchor-id="an-example-instruction">An example instruction</h2>
+<p>To change the game’s resolution:</p>
+<ol type="1">
+<li>Open the Project -&gt; Project Settings… menu.</li>
+<li>In the left column, navigate down to Display -&gt; Window. In the right part of the window, the game’s window settings appear.</li>
+<li>Scroll down to the resolution setting.</li>
+<li>Click the numbers to change the resolution. The values are in pixels.</li>
+</ol>
+<p>When we say reusing the verbs, it’s about being consistent, like:</p>
 <ul>
-<li><a href="https://adr.github.io/madr/">MADR</a> 2.1.2 with Log4brains patch</li>
-<li><a href="https://adr.github.io/madr/">MADR</a> 2.1.2 – The original Markdown Architectural Decision Records</li>
-<li><a href="http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions">Michael Nygard’s template</a> – The first incarnation of the term “ADR”</li>
-<li><a href="https://www.infoq.com/articles/sustainable-architectural-design-decisions">Sustainable Architectural Decisions</a> – The Y-Statements</li>
-<li>Other templates listed at <a href="https://github.com/joelparkerhenderson/architecture_decision_record" class="uri">https://github.com/joelparkerhenderson/architecture_decision_record</a></li>
-<li>Formless – No conventions for file format and structure</li>
+<li>Click a button</li>
+<li>Open a menu</li>
+<li>Open a file</li>
+<li>Navigate to a tab</li>
 </ul>
+<p>It doesn’t have to be 100% of the time the same but for instance, for buttons, click and press are well understood, but “use,” while correct, maybe a bit harder to parse</p>
+<p>Also, changing the phrasing, style, and verbs used throughout our docs adds cognitive load.</p>
+<p>Making things simple, explicit, and consistently allows users to focus on the steps and memorize new information.</p>
 </section>
-<section id="decision-outcome" class="level2">
-<h2 class="anchored" data-anchor-id="decision-outcome">Decision Outcome</h2>
-<p>Chosen option: “MADR 2.1.2 with Log4brains patch”, because</p>
-<ul>
-<li>Implicit assumptions should be made explicit. Design documentation is important to enable people understanding the decisions later on. See also <a href="https://doi.org/10.1109/TSE.1986.6312940">A rational design process: How and why to fake it</a>.</li>
-<li>The MADR format is lean and fits our development style.</li>
-<li>The MADR structure is comprehensible and facilitates usage &amp; maintenance.</li>
-<li>The MADR project is vivid.</li>
-<li>Version 2.1.2 is the latest one available when starting to document ADRs.</li>
-<li>The Log4brains patch adds more features, like tags.</li>
-</ul>
-<p>The “Log4brains patch” performs the following modifications to the original template:</p>
-<ul>
-<li>Change the ADR filenames format (<code>NNN-adr-name</code> becomes <code>YYYYMMDD-adr-name</code>), to avoid conflicts during Git merges.</li>
-<li>Add a <code>draft</code> status, to enable collaborative writing.</li>
-<li>Add a <code>Tags</code> field.</li>
-</ul>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ul>
-<li>Relates to <a href="../../decisions/2021/20210212-use-log4brains-to-manage-the-adrs.html">Use Log4brains to manage the ADRs</a></li>
-</ul>
-</section>
-<section id="derivative-license" class="level2">
-<h2 class="anchored" data-anchor-id="derivative-license">Derivative License</h2>
-<p>Copyright (c) 2020-2021 V-Sekai contributors.</p>
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+<section id="contributors" class="level2">
+<h2 class="anchored" data-anchor-id="contributors">Contributors</h2>
+<p>This page was written with advice from gdquest.</p>
 
 
 </section>
@@ -296,6 +287,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./decisions.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">V-Sekai decisions</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
