@@ -1,4 +1,4 @@
-## 2022-01-31
+# Changelog 2022-01
 
 iFire wrote with Lyuma some proposals:
 

@@ -1,3 +1,5 @@
+# Changelog 2021-04
+
 - 2021-04-30 15:42:02Z fire: Proposal design of MaterialX Principled BSDF to Blender Principled BSDF to Blender surface. The Material Blender Addon output is to textures of the FBX / GLTF2 format. We can later output glTFs with the MaterialX as an glTF2 extension.
 - 2021-04-30 06:47:12Z fire: Lyuma — MaterialX in glTF would allow for a generalization of "KHR_materials_variants" extension - in other words, MaterialX would allow for character or object customization to textures baked at load time
 - 2021-04-30 06:06:58Z fire: Made a proposal for GLTF2 to include MaterialX in three stages. A stage 0 extension where it replaces png and a stage 1 extension that replaces gltf variants for parameters, stage 2 would be adding arbitrary graphs as parameters.

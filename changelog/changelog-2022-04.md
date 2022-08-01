@@ -1,5 +1,4 @@
-
-## 2022-04-24
+# Changelog 2022-04
 
 Moved issues into the tracker.
 
