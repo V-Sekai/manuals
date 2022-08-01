@@ -77,7 +77,7 @@ ul.task-list{list-style: none;}
     }
 
     const options = {
-      valueNames: ['listing-filename','listing-date','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-filename','listing-image','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
       searchColumns: ["listing-title","listing-author"],
     };
@@ -219,19 +219,6 @@ ul.task-list{list-style: none;}
 
 <div class="quarto-listing quarto-listing-container-table" id="listing-listing">
 <div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-date-sort" data-direction="asc">
-          Date - Oldest
-        </option>
-         <option value="listing-date-sort" data-direction="desc">
-          Date - Newest
-        </option>
-     </select>
-  </div>
     <div class="input-group input-group-sm quarto-listing-filter">
       <span class="input-group-text"><i class="bi bi-search"></i></span>
       <input type="text" class="search form-control" placeholder="Filter">
@@ -245,7 +232,6 @@ ul.task-list{list-style: none;}
 File Name
 </th>
 <th>
-<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
 </th>
 <th>
 Reading Time
@@ -253,151 +239,186 @@ Reading Time
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1659341047068" data-listing-reading-time-sort="0.88" data-listing-title-sort="Changelog 2022-06" data-listing-filename-sort="changelog-2022-06.md">
+<tr data-index="0" data-listing-file-modified-sort="1659341161118" data-listing-reading-time-sort="0.88" data-listing-title-sort="Changelog 2022-06" data-listing-filename-sort="changelog-2022-06.md">
 <td class="listing-filename">
 <a href="./changelog/changelog-2022-06.html" class="filename">changelog-2022-06.md</a>
 </td>
-<td class="listing-date">
+<td class="listing-image">
+<img src="./decisions/2022/attachments/movement_debugged_lyuma.png" style="height: 40px;">
 </td>
 <td class="listing-reading-time">
 0 min
 </td>
 </tr>
-<tr data-index="1" data-listing-file-modified-sort="1659341047068" data-listing-reading-time-sort="0.585" data-listing-title-sort="Changelog 2022-05" data-listing-filename-sort="changelog-2022-05.md">
+<tr data-index="1" data-listing-file-modified-sort="1659341161118" data-listing-reading-time-sort="0.585" data-listing-title-sort="Changelog 2022-05" data-listing-filename-sort="changelog-2022-05.md">
 <td class="listing-filename">
 <a href="./changelog/changelog-2022-05.html" class="filename">changelog-2022-05.md</a>
 </td>
-<td class="listing-date">
+<td class="listing-image">
+<img src="https://user-images.githubusercontent.com/32321/170873740-4fc1fe95-f58a-4521-8617-57925e704cef.png" style="height: 40px;">
 </td>
 <td class="listing-reading-time">
 0 min
 </td>
 </tr>
-<tr data-index="2" data-listing-file-modified-sort="1659341047068" data-listing-reading-time-sort="2.3" data-listing-title-sort="Changelog 2022-04" data-listing-filename-sort="changelog-2022-04.md">
+<tr data-index="2" data-listing-file-modified-sort="1659341161118" data-listing-reading-time-sort="2.3" data-listing-title-sort="Changelog 2022-04" data-listing-filename-sort="changelog-2022-04.md">
 <td class="listing-filename">
 <a href="./changelog/changelog-2022-04.html" class="filename">changelog-2022-04.md</a>
 </td>
-<td class="listing-date">
+<td class="listing-image">
+<img src="https://user-images.githubusercontent.com/32321/164022263-6c6654f7-db05-4e14-96ac-a6eda7fa760c.png" style="height: 40px;">
 </td>
 <td class="listing-reading-time">
 2 min
 </td>
 </tr>
-<tr data-index="3" data-listing-file-modified-sort="1659341047068" data-listing-reading-time-sort="1.365" data-listing-title-sort="Changelog 2022-03" data-listing-filename-sort="changelog-2022-03.md">
+<tr data-index="3" data-listing-file-modified-sort="1659341161118" data-listing-reading-time-sort="1.365" data-listing-title-sort="Changelog 2022-03" data-listing-filename-sort="changelog-2022-03.md">
 <td class="listing-filename">
 <a href="./changelog/changelog-2022-03.html" class="filename">changelog-2022-03.md</a>
 </td>
-<td class="listing-date">
+<td class="listing-image">
+<img src="https://user-images.githubusercontent.com/32321/158768466-95c213a5-2046-4158-bc06-ef7f254aed0d.png" style="height: 40px;">
 </td>
 <td class="listing-reading-time">
 1 min
 </td>
 </tr>
-<tr data-index="4" data-listing-file-modified-sort="1659341047068" data-listing-reading-time-sort="0.76" data-listing-title-sort="Changelog 2022-02" data-listing-filename-sort="changelog-2022-02.md">
+<tr data-index="4" data-listing-file-modified-sort="1659341161118" data-listing-reading-time-sort="0.76" data-listing-title-sort="Changelog 2022-02" data-listing-filename-sort="changelog-2022-02.md">
 <td class="listing-filename">
 <a href="./changelog/changelog-2022-02.html" class="filename">changelog-2022-02.md</a>
 </td>
-<td class="listing-date">
+<td class="listing-image">
+<img src="https://user-images.githubusercontent.com/32321/155451982-8d21ca07-0178-4314-a4f2-8de56c275fa3.png" style="height: 40px;">
 </td>
 <td class="listing-reading-time">
 0 min
 </td>
 </tr>
-<tr data-index="5" data-listing-file-modified-sort="1659341047068" data-listing-reading-time-sort="0.395" data-listing-title-sort="Changelog 2022-01" data-listing-filename-sort="changelog-2022-01.md">
+<tr data-index="5" data-listing-file-modified-sort="1659341161118" data-listing-reading-time-sort="0.395" data-listing-title-sort="Changelog 2022-01" data-listing-filename-sort="changelog-2022-01.md">
 <td class="listing-filename">
 <a href="./changelog/changelog-2022-01.html" class="filename">changelog-2022-01.md</a>
 </td>
-<td class="listing-date">
+<td class="listing-image">
+<div class="table-img" style="height: 40px;">
+&nbsp;
+</div>
 </td>
 <td class="listing-reading-time">
 0 min
 </td>
 </tr>
-<tr data-index="6" data-listing-file-modified-sort="1659341047068" data-listing-reading-time-sort="1.77" data-listing-title-sort="Changelog 2021-11" data-listing-filename-sort="changelog-2021-11.md">
+<tr data-index="6" data-listing-file-modified-sort="1659341161118" data-listing-reading-time-sort="1.77" data-listing-title-sort="Changelog 2021-11" data-listing-filename-sort="changelog-2021-11.md">
 <td class="listing-filename">
 <a href="./changelog/changelog-2021-11.html" class="filename">changelog-2021-11.md</a>
 </td>
-<td class="listing-date">
+<td class="listing-image">
+<div class="table-img" style="height: 40px;">
+&nbsp;
+</div>
 </td>
 <td class="listing-reading-time">
 1 min
 </td>
 </tr>
-<tr data-index="7" data-listing-file-modified-sort="1659341047064" data-listing-reading-time-sort="7.265" data-listing-title-sort="Changelog 2021-10" data-listing-filename-sort="changelog-2021-10.md">
+<tr data-index="7" data-listing-file-modified-sort="1659341161118" data-listing-reading-time-sort="7.265" data-listing-title-sort="Changelog 2021-10" data-listing-filename-sort="changelog-2021-10.md">
 <td class="listing-filename">
 <a href="./changelog/changelog-2021-10.html" class="filename">changelog-2021-10.md</a>
 </td>
-<td class="listing-date">
+<td class="listing-image">
+<div class="table-img" style="height: 40px;">
+&nbsp;
+</div>
 </td>
 <td class="listing-reading-time">
 7 min
 </td>
 </tr>
-<tr data-index="8" data-listing-file-modified-sort="1659341047064" data-listing-reading-time-sort="9.475" data-listing-title-sort="Changelog 2021-08" data-listing-filename-sort="changelog-2021-09.md">
+<tr data-index="8" data-listing-file-modified-sort="1659341161118" data-listing-reading-time-sort="9.475" data-listing-title-sort="Changelog 2021-08" data-listing-filename-sort="changelog-2021-09.md">
 <td class="listing-filename">
 <a href="./changelog/changelog-2021-09.html" class="filename">changelog-2021-09.md</a>
 </td>
-<td class="listing-date">
+<td class="listing-image">
+<div class="table-img" style="height: 40px;">
+&nbsp;
+</div>
 </td>
 <td class="listing-reading-time">
 9 min
 </td>
 </tr>
-<tr data-index="9" data-listing-file-modified-sort="1659341047064" data-listing-reading-time-sort="4.555" data-listing-filename-sort="changelog-2021-08.md">
+<tr data-index="9" data-listing-file-modified-sort="1659341161114" data-listing-reading-time-sort="4.555" data-listing-filename-sort="changelog-2021-08.md">
 <td class="listing-filename">
 <a href="./changelog/changelog-2021-08.html" class="filename">changelog-2021-08.md</a>
 </td>
-<td class="listing-date">
+<td class="listing-image">
+<div class="table-img" style="height: 40px;">
+&nbsp;
+</div>
 </td>
 <td class="listing-reading-time">
 4 min
 </td>
 </tr>
-<tr data-index="10" data-listing-file-modified-sort="1659341047064" data-listing-reading-time-sort="5.13" data-listing-title-sort="Changelog 2021-07" data-listing-filename-sort="changelog-2021-07.md">
+<tr data-index="10" data-listing-file-modified-sort="1659341161114" data-listing-reading-time-sort="5.13" data-listing-title-sort="Changelog 2021-07" data-listing-filename-sort="changelog-2021-07.md">
 <td class="listing-filename">
 <a href="./changelog/changelog-2021-07.html" class="filename">changelog-2021-07.md</a>
 </td>
-<td class="listing-date">
+<td class="listing-image">
+<div class="table-img" style="height: 40px;">
+&nbsp;
+</div>
 </td>
 <td class="listing-reading-time">
 5 min
 </td>
 </tr>
-<tr data-index="11" data-listing-file-modified-sort="1659341047064" data-listing-reading-time-sort="9.805" data-listing-title-sort="Changelog 2021-06" data-listing-filename-sort="changelog-2021-06.md">
+<tr data-index="11" data-listing-file-modified-sort="1659341161114" data-listing-reading-time-sort="9.805" data-listing-title-sort="Changelog 2021-06" data-listing-filename-sort="changelog-2021-06.md">
 <td class="listing-filename">
 <a href="./changelog/changelog-2021-06.html" class="filename">changelog-2021-06.md</a>
 </td>
-<td class="listing-date">
+<td class="listing-image">
+<div class="table-img" style="height: 40px;">
+&nbsp;
+</div>
 </td>
 <td class="listing-reading-time">
 9 min
 </td>
 </tr>
-<tr data-index="12" data-listing-file-modified-sort="1659341047064" data-listing-reading-time-sort="18.66" data-listing-title-sort="Changelog 2021-05" data-listing-filename-sort="changelog-2021-05.md">
+<tr data-index="12" data-listing-file-modified-sort="1659341161114" data-listing-reading-time-sort="18.66" data-listing-title-sort="Changelog 2021-05" data-listing-filename-sort="changelog-2021-05.md">
 <td class="listing-filename">
 <a href="./changelog/changelog-2021-05.html" class="filename">changelog-2021-05.md</a>
 </td>
-<td class="listing-date">
+<td class="listing-image">
+<div class="table-img" style="height: 40px;">
+&nbsp;
+</div>
 </td>
 <td class="listing-reading-time">
 18 min
 </td>
 </tr>
-<tr data-index="13" data-listing-file-modified-sort="1659341047064" data-listing-reading-time-sort="5.51" data-listing-title-sort="Changelog 2021-04" data-listing-filename-sort="changelog-2021-04.md">
+<tr data-index="13" data-listing-file-modified-sort="1659341161114" data-listing-reading-time-sort="5.51" data-listing-title-sort="Changelog 2021-04" data-listing-filename-sort="changelog-2021-04.md">
 <td class="listing-filename">
 <a href="./changelog/changelog-2021-04.html" class="filename">changelog-2021-04.md</a>
 </td>
-<td class="listing-date">
+<td class="listing-image">
+<div class="table-img" style="height: 40px;">
+&nbsp;
+</div>
 </td>
 <td class="listing-reading-time">
 5 min
 </td>
 </tr>
-<tr data-index="14" data-listing-file-modified-sort="1659341047064" data-listing-filename-sort="README.md">
+<tr data-index="14" data-listing-file-modified-sort="1659341161114" data-listing-filename-sort="README.md">
 <td class="listing-filename">
 <a href="./changelog/README.md" class="filename">README.md</a>
 </td>
-<td class="listing-date">
+<td class="listing-image">
+<div class="table-img" style="height: 40px;">
+&nbsp;
+</div>
 </td>
 <td class="listing-reading-time">
 NaN min
