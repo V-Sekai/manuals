@@ -1,1 +1,1 @@
-# Individual hosting and social functions or a hosted web server.
+# Hosting and social functions
