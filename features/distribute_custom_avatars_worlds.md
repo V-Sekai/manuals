@@ -1,3 +1,3 @@
 #  Distribute custom avatars and worlds in a networked environment
 
-Documentation to be written.
+We allow players to upload custom avatars and worlds for multiplayer.
