@@ -20,13 +20,12 @@ Write a guide of our wisdom for making a 3d market booth.
 
 ## Initial task
 
-1. Make a procedural grid texture and some text 
-2. put it in blender on the booth boundaries (cube) 
+1. Make a procedural grid texture and some text.
+2. Put the booth in blender on the booth boundaries (cube).
 
 ## Storage
 
 1. Upload to Github organization.
-
 
 ### Positive Consequences
 
