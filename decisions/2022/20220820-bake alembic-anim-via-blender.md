@@ -49,6 +49,8 @@ for frame in range(bpy.context.scene.frame_end + 1):
 # bpy.ops.object.modifier_remove(modifier="Cloth")
 ```
 
+Do not use the pc2 vertex cache format because of mesh accuracy loss.
+
 ### Positive Consequences
 
 Can convert alembic to gltf2 for better interoperability.
