@@ -1,4 +1,4 @@
-# V-Sekai Developer Documentation and Platform Guide
+# V-Sekai Developer Documentation and Guides
 
 **[Interested in V-Sekai or #GodotVR development? Join the V-Sekai discord server!](https://discord.gg/7BQDHesck8)**
 
