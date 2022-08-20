@@ -10,13 +10,12 @@ We can write down our collective workflows for creation.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-Write a guide of our wisdom for making a 3d market booth.
+Write a guide to makie a 3d market booth that is the `4m x 4m x 5m` standard size and `2m x 2m x 2.5m` constrained size.
 
 ## Tools used
 
 1. Substance designer
 2. Blender
-3. `4m x 4m x 5m` standard size
 
 ## Initial task
 
