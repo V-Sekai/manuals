@@ -1,4 +1,4 @@
-Template.
+Copy this template.
 
       # To record decisions write a proposal.
 
