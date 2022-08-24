@@ -16,7 +16,6 @@ Copy this template.
 
       ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-      \\\
       # [short title of solved problem and solution]
 
       - Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
