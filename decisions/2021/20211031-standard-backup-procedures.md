@@ -10,23 +10,23 @@ Backup V-Sekai Github organization with V-Sekai-gitm and V-Sekai-github-backup.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-Use https://github.com/V-Sekai/V-Sekai-gitim.git to backup V-sekai.
+Use https://github.com/muhasturk/gitim to backup V-sekai. (tested 7b6e898b7587f61b0c5f00c3ab9862868f94479d )
 
 ```
-git clone https://github.com/V-Sekai/V-Sekai-gitim.git
-cd V-Sekai-gitim
+git clone https://github.com/muhasturk/gitim.git
+cd gitim
 pip install .
 cd -
 export ACCESS_TOKEN=AAAA
 python3 -m gitim -o V-Sekai -d V-Sekai-godot-gitm-`date --iso=date --utc` --ssh --token $ACCESS_TOKEN
 ```
 
-Use https://github.com/V-Sekai/V-Sekai-github-backup to backup.
+Use https://github.com/josegonzalez/python-github-backup to backup. (tested 0.40.0)
 
-```
+```bash
 pip install github-backup
 export ACCESS_TOKEN=AAAA
-github-backup V-Sekai --token $ACCESS_TOKEN --organization --output-directory V-Sekai-Backup-`date --iso=date --utc` --all --prefer-ssh --lfs -P -i
+github-backup V-Sekai --token $ACCESS_TOKEN --organization --output-directory V-Sekai-Backup-`date --iso=date --utc` --incremental --prefer-ssh --lfs --private --fork --private --all
 ```
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
@@ -48,8 +48,8 @@ Only we have access to a complete copy of the repo.
 
 ### References
 
-- https://github.com/V-Sekai/V-Sekai-github-backup.
-- https://github.com/V-Sekai/V-Sekai-gitim.git
+- https://github.com/josegonzalez/python-github-backup
+- https://github.com/muhasturk/gitim
 
 ### Derivative License
 
