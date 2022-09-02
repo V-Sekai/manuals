@@ -10,7 +10,7 @@ We propose to use the V-Sekai uro server to provide an asset library url to Godo
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-Implement 
+Implement
 
 1. rest passthrough https://github.com/godotengine/godot-asset-library/blob/master/API.md
 2. account based package bundles (does not include the original package, only the metadata)
@@ -38,7 +38,6 @@ We maintain uro.
 ### References
 
 - [V-Sekai](https://v-sekai.org/)
-
 
 ### License of the contribution
 

@@ -1,8 +1,4 @@
-# [\#355 Issue](https://github.com/V-Sekai/V-Sekai.github.io/issues/355) `open`: Providing pdf reading
-**Labels**: `enhancement`
-
-
-#### <img src="https://avatars.githubusercontent.com/u/32321?u=c2e06a3d2b49a467aa907e54aa259516440267cc&v=4" width="50">[fire](https://github.com/fire) opened issue at [2022-08-30 15:00](https://github.com/V-Sekai/V-Sekai.github.io/issues/355):
+# Provide pdf reading
 
 ### Context and Problem Statement
 
@@ -43,7 +39,6 @@ Wanted to write the workflow down.
 
 - [V-Sekai](https://v-sekai.org/)
 
-
 ### License of the contribution
 
 Copyright (c) 2022 V-Sekai contributors.
@@ -53,13 +48,3 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-
-
-
--------------------------------------------------------------------------------
-
-
-
-[Export of Github issue for [V-Sekai/V-Sekai.github.io](https://github.com/V-Sekai/V-Sekai.github.io).]
