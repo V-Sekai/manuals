@@ -7,3 +7,7 @@ Migrated vsk_avatar and vsk_vrm_avatar_tool to import retargeter. There is still
 ## iFire (he, him) — 26/08/2022
 
 Nothing to see here, got godot 4 engine updated to the latest master.
+
+## トカゲ
+
+Many changes to the Godot Engine 4 master retargeting and animation system were added.
