@@ -9,3 +9,5 @@ We discuss with Reduz, Calinou and Lyuma about astc and limiting astc block size
 #  2022-09-06
 
 Restored Lillybyte's https://github.com/godotengine/godot/pull/59675 Show the 3D transform gizmo in the center when otherwise offscreen work.
+
+Godot Engine astc block size agreed to be 4x4 and 8x8.
