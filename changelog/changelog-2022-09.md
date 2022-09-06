@@ -14,4 +14,4 @@ Godot Engine astc block size agreed to be 4x4 and 8x8.
 
 Saracen's Make auto-advance flag a requirement for conditional/expression evaluation with design amendments approved. https://github.com/godotengine/godot/pull/65312
 
-https://twitter.com/KenneyNL made a V-Sekai logo for us.
+https://twitter.com/KenneyNL made a V-Sekai logo for us. https://twitter.com/KenneyNL/status/1567077172866596868?s=20&t=RIGyiux3A_KNX_HCLCVKvg
