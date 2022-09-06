@@ -13,3 +13,5 @@ Restored Lillybyte's https://github.com/godotengine/godot/pull/59675 Show the 3D
 Godot Engine astc block size agreed to be 4x4 and 8x8.
 
 Saracen's Make auto-advance flag a requirement for conditional/expression evaluation with design amendments approved. https://github.com/godotengine/godot/pull/65312
+
+https://twitter.com/KenneyNL made a V-Sekai logo for us.
