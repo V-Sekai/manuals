@@ -11,3 +11,5 @@ We discuss with Reduz, Calinou and Lyuma about astc and limiting astc block size
 Restored Lillybyte's https://github.com/godotengine/godot/pull/59675 Show the 3D transform gizmo in the center when otherwise offscreen work.
 
 Godot Engine astc block size agreed to be 4x4 and 8x8.
+
+Saracen's Make auto-advance flag a requirement for conditional/expression evaluation with design amendments approved. https://github.com/godotengine/godot/pull/65312
