@@ -8,8 +8,6 @@ Worked with manifold csg library author and was able to remove the boost depende
 
 Also published a first draft on a Godot Engine master branch. See the issue for details.
 
-![editor_screenshot_2022-04-18T162623](https://user-images.githubusercontent.com/32321/164022263-6c6654f7-db05-4e14-96ac-a6eda7fa760c.png)
-
 ## 2022-04-05
 
 Lyuma
