@@ -10,7 +10,7 @@ V-Sekai is a community of enthusiasts building a next-generation social and #gam
 
 - The group meets ah-hoc in discord.
 - We track our active tickets with our [Github Issues Backlog](../../issues/)
-- We organize our backlog with intent using github [Projects](../../../projects/12) which makes it easier to track progress based on desired outcomes and objectives. (It is currently hidden)
+- We organize our backlog with intent using github [Projects](https://github.com/orgs/V-Sekai/projects/12) which makes it easier to track progress based on desired outcomes and objectives. (It is currently hidden)
 - We discuss our efforts on Discord.
 - Any questions? Contact the designated working group lead(s) saracenone, lyuma or fire.
 
