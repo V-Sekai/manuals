@@ -19,5 +19,5 @@ Our Commitments:
 - Recurring meeting is at ad-hoc
 - Our [working agreement can be found here](https://github.com/V-Sekai/V-Sekai.github.io) 
 - We do not have a group retrospective every month to reflect on what is going well, what could be improved, and what we will do differently next cycle. 
-- We will not be recording our meetings and can not find those meeting recordings here.
+- We will not be recording our meetings.
 - We will create an agenda before our recurring meetings, and take notes during our meeting. 
