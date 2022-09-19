@@ -1,0 +1,23 @@
+# V-Sekai Social VR
+
+**[Interested in V-Sekai or #GodotVR development? Join the V-Sekai discord server!](https://discord.gg/7BQDHesck8)**
+
+## About:
+
+V-Sekai is a community of enthusiasts building a next-generation social and #gaming VR #platform powered by the Godot Engine. We felt there was a need for a remixable ecosystem focused on VR. Social VR should be a truly community-driven experience. For this to be realised, we believe the entire software stack should be available, moddable, and tweakable from the source up, which is why a lot of our projects focus on the MIT-Licensed Godot Engine.
+
+## How you can get involved:
+
+- The group meets ah-hoc in discord.
+- We track our active tickets with our [Github Issues Backlog](../../issues/1?add_cards_query=is%3Aopen)
+- We organize our backlog with intent using github [Projects](../../projects/12) which makes it easier to track progress based on desired outcomes and objectives. (It is currently hidden)
+- We discuss our efforts on Discord.
+- Any questions? Contact the designated working group lead(s) saracenone, lyuma or fire.
+
+Our Commitments: 
+
+- Recurring meeting is at ad-hoc
+- Our [working agreement can be found here](https://github.com/V-Sekai/V-Sekai.github.io) 
+- We do not have a group retrospective every month to reflect on what is going well, what could be improved, and what we will do differently next cycle. 
+- We will not be recording our meetings and can not find those meeting recordings here.
+- We will create an agenda before our recurring meetings, and take notes during our meeting. 
