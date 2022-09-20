@@ -8,7 +8,7 @@ V-Sekai is a community of enthusiasts building a next-generation social and #gam
 
 ## How you can get involved:
 
-- The group meets ah-hoc in Discord [https://discord.gg/7BQDHesck8][https://discord.gg/7BQDHesck8], Web: [v-sekai.org](https://v-sekai.org), Twitter: [https://twitter.com/VSekaiOfficial](https://twitter.com/VSekaiOfficial), Github: [https://github.com/V-Sekai](https://github.com/V-Sekai).
+- The group meets ah-hoc in Discord [https://discord.gg/7BQDHesck8](https://discord.gg/7BQDHesck8), Web: [v-sekai.org](https://v-sekai.org), Twitter: [https://twitter.com/VSekaiOfficial](https://twitter.com/VSekaiOfficial), Github: [https://github.com/V-Sekai](https://github.com/V-Sekai).
 - We track our active tickets with our [Github Issues Backlog](../../issues/)
 - We organize our backlog with intent using a private github [Project](https://github.com/orgs/V-Sekai/projects/12) which makes it easier to track progress based on desired outcomes and objectives.
 - We discuss our efforts on Discord.
