@@ -1,21 +1,5 @@
 Copy this template.
 
-      # To record decisions write a proposal.
-
-      - Status: accepted
-      - Deciders: V-Sekai,
-      - Tags: V-Sekai,
-
-      ## Context and Problem Statement
-
-      We need to record our decisions.
-
-      ## Describe the proposed option and how it helps to overcome the problem or limitation
-
-      Use the decision record format.
-
-      ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
-
       # [short title of solved problem and solution]
 
       - Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
