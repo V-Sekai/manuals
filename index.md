@@ -21,7 +21,7 @@ It is a virtual reality platform that is free and open source, meaning that anyo
 3. People who want to socialize in a virtual space.
 
 ## How can you help V-Sekai?
-![Join the V-Sekai discord server!](https://discord.gg/7BQDHesck8)
+**[Join the V-Sekai discord server!](https://discord.gg/7BQDHesck8)**
 
 ## Why V-Sekai?
 Community-driven and open source.
