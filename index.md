@@ -2,9 +2,29 @@
 
 **[Interested in V-Sekai or #GodotVR development? Join the V-Sekai discord server!](https://discord.gg/7BQDHesck8)**
 
-## About
+## What is V-Sekai?
 
-V-Sekai is a community of enthusiasts building a next-generation social and #gaming VR #platform powered by the Godot Engine. We felt there was a need for a remixable ecosystem focused on VR. Social VR should be a truly community-driven experience. For this to be realised, we believe the entire software stack should be available, moddable, and tweakable from the source up, which is why a lot of our projects focus on the MIT-Licensed Godot Engine.
+Sekai is Japanese for world. 
+
+It is a virtual reality platform that is free and open source, meaning that anyone can use it to make their own games or social experiences.
+
+## What are the unique aspects of V-Sekai?
+
+1. It is a community-run self-hostable social VR platform.
+2. It is built with the Vulkan graphics API and the OpenXR API.
+3. It is designed for use with VR avatars.
+
+##  Who uses V-Sekai?
+
+1. VR enthusiasts who want to create and share their own VR content.
+2. Developers who want to use the Godot Engine to create VR content.
+3. People who want to socialize in a virtual space.
+
+## How can you help V-Sekai?
+![Join the V-Sekai discord server!](https://discord.gg/7BQDHesck8)
+
+## Why V-Sekai?
+Community-driven and open source.
 
 ## How can you get involved?
 
