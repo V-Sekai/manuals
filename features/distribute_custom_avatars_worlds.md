@@ -7,7 +7,7 @@ A networked avatar system is a virtual world in which multiple users can interac
 ## Distribute the custom content your users create to the clients that need it.
 
 * upload the custom content from the Godot Engine editor to the Uro backend
-* use a CDN to distribute the packages
+* use a content distribution network to distribute the packages
 * use store version metadata to keep track of changes in the Uro backend
 
 ## Manage the avatar and world data for each client in the system.
