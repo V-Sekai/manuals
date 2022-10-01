@@ -1,4 +1,4 @@
-## What are the unique aspects of V-Sekai?
+## Unique aspects of V-Sekai
 
 1. It is a community-run self-hostable social VR platform.
 2. It is built with the Vulkan graphics API and the OpenXR API.
