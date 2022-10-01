@@ -1,4 +1,4 @@
-# V-Sekai allows distributing custom avatars and worlds in a networked environment
+# Distributing custom avatars and worlds in a networked environment
 
 ## Abstract 
 
