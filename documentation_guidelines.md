@@ -1,4 +1,4 @@
-#  Help us write about V-Sekai!
+#  Help us write about V-Sekai
 
 * We are looking to make complete documentation for the developers and users.
 * We have a list of features we need to cover already.
