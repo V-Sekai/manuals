@@ -1,5 +1,5 @@
 # Sandboxed scripting environment
 
-A security-focused sandboxed scripting environment backed by WASM
+The sandboxed scripting environment is not active yet as of September 2022.
 
-Documentation to be written.
+A security-focused sandboxed scripting environment backed by WASM
