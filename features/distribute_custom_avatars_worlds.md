@@ -1,6 +1,6 @@
 # V-Sekai allows distributing custom avatars and worlds in a networked environment
 
-## Content 
+## Abstract 
 
 A networked avatar system is a virtual world in which multiple users can interact with each other as avatars. The system consists of several parts that work together to allow users to customize their avatars and interact with other players.
 
