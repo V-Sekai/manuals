@@ -1,10 +1,11 @@
 # V-Sekai Social VR
 
-**[Interested in V-Sekai or #GodotVR development? Join the V-Sekai discord server!](https://discord.gg/7BQDHesck8)**
-
 ## What is V-Sekai?
 
 Sekai is Japanese for world. It is a virtual reality platform that is free and open source, meaning that anyone can use it to make their own games or social experiences.
+
+## How can you help V-Sekai?
+**[Join the V-Sekai discord server](https://discord.gg/7BQDHesck8)**
 
 ## How can you get involved?
 
