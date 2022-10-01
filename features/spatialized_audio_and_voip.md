@@ -1,6 +1,3 @@
-# Spatialised audio and VOIP support
+# V-Sekai has Spatialised audio and VOIP support
 
-* Audio is a very important part of VR, it helps the user to understand the space around them and what's happening around them.
-* Many games and VR applications use spatialization to make it seem like sounds are coming from a specific direction.
-* We wrote a custom Godot Engine speech module.
-* We made a Godot Engine custom branch for Resonance Audio.
+V-Sekai has spatialized audio, which means that you’ll be able to hear sounds coming from the direction they would be in real life. For example, if you see someone across the room talking to you, they will sound like they’re over there.
