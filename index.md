@@ -9,7 +9,7 @@ Sekai is Japanese for world. It is a virtual reality platform that is free and o
 
 ## How can you get involved?
 
-- The group meets ah-hoc in Discord [https://discord.gg/7BQDHesck8](https://discord.gg/7BQDHesck8).
+- The group meets ah-hoc in Discord [discord.gg/7BQDHesck8](https://discord.gg/7BQDHesck8).
 - Web: [v-sekai.org](https://v-sekai.org)
 - Twitter: [twitter.com/VSekaiOfficial](https://twitter.com/VSekaiOfficial)
 - Github: [github.com/V-Sekai](https://github.com/V-Sekai)
