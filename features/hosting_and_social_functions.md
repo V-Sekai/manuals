@@ -1,3 +1,3 @@
 # Hosting and social functions
 
-Documentation to be written.
+Hosting and social functions are not active yet as of September 2022.
