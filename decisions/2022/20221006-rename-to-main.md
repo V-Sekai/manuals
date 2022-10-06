@@ -6,11 +6,11 @@
 
 ## Context and Problem Statement
 
-Not all the branches are released and are currently named godot4. They should be renamed-main.
+Not all the branches are released and are currently named godot4. They should be renamed to main.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-Rename all branches to be main for v-sekai-game.
+Rename all godot4 branches to be main for v-sekai-game.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
