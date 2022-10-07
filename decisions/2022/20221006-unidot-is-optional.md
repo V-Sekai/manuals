@@ -8,7 +8,7 @@
 
 Is this error of concerning building Godot Engine with V-Sekai game?
 
-![unknown](https://user-images.githubusercontent.com/32321/194445076-7858161f-9a5b-4a24-81a9-f0710799e1fd.png)
+![Unidot addon error](https://user-images.githubusercontent.com/32321/194445076-7858161f-9a5b-4a24-81a9-f0710799e1fd.png)
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
