@@ -1,6 +1,6 @@
 # Changelog 2022-10
 
-## 022-10-01
+## 2022-10-01
 
 > Lyuma — 01/10/2022
 > I have pushed internal and external resource whitelisting at the ResrouceLoader (ResourceFormatLoaderBinary) level as a Godot engine patch.
