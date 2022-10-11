@@ -20,7 +20,11 @@ most of the code I changed is in the private gitlab repo. once things stabilize 
 
 > export builds are being created again with the new scons naming scheme. They seem to work on linux (steam deck) at least. Don't have access to a windows machine right now
 
-## 022-10-10
+## 2022-10-06
+
+https://github.com/v-sekai/v-sekai-game is released as fully opensource.
+
+## 2022-10-10
 
 > iFire (he, him) — Today at 16:33
 > https://github.com/V-Sekai/v-sekai-game/pull/5 added caching to reduce doing nothing builds from 2 hours to 10 minutes ish
