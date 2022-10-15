@@ -34,11 +34,11 @@ The Relay Server, as of now, does not contain information about the state of the
 
 
 ```
-P1 connects to Server.
+P1 connects to the Server.
 
 P2 connects to the Server.
 
-P3 connects to Server.
+P3 connects to the Server.
 
 P1 spawns in a Ball.
 
