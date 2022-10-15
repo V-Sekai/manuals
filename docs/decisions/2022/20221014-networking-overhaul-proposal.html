@@ -206,45 +206,45 @@ ul.task-list li input[type="checkbox"] {
 <h1>Networking Overhaul Proposal</h1>
 <ul>
 <li>Status: draft</li>
-<li>Deciders: V-Sekai, Malek, Lyuma, SarcaneOne, Fire,</li>
+<li>Deciders: V-Sekai, Malek, Lyuma, SaracenOne, Fire,</li>
 <li>Tags: Networking,</li>
 </ul>
 <section id="context-and-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
 <p>We seek to solve these issues:</p>
 <ul>
-<li><strong>(A)</strong> Use godot 4.0’s networking tools</li>
-<li><strong>(B)</strong> Use a relay server that doesn’t run any game code, rather then a headless V-Sekai server</li>
-<li><strong>(C)</strong> Make the costs of hosting V-Sekai as smol as possible</li>
-<li><strong>(D)</strong> Write the server in Rust, for the speed and saftey guarntees.</li>
-<li><strong>(E)</strong> Make networking highly scalable for a single server</li>
-<li><strong>(F)</strong> Allow a client to connect to multiple servers simletnatiously without issues, for seamless travel and portals.</li>
-<li><strong>(G)</strong> Syncronize state between clients</li>
+<li><strong>(A)</strong> Use godot 4.0’s networking tools.</li>
+<li><strong>(B)</strong> Use a relay server that doesn’t run any game code, rather than a headless V-Sekai server.</li>
+<li><strong>(C)</strong> Make the costs of hosting V-Sekai as small as possible.</li>
+<li><strong>(D)</strong> Write the server in Rust, for the speed and safety guarantees.</li>
+<li><strong>(E)</strong> Make networking highly scalable for a single server.</li>
+<li><strong>(F)</strong> Allow a client to connect to multiple servers simultaneously without issues, for seamless travel and portals.</li>
+<li><strong>(G)</strong> Synchronize state between clients</li>
 </ul>
-<p>Note: This proposal does not cover Permissions, and is based in part on the pervious Entity Networking proposal.</p>
+<p>Note: This proposal does not cover Permissions, and is based in part on the previous Entity Networking proposal.</p>
 </section>
 <section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level2">
 <h2 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h2>
-<p>By using the technologies describe below, we will cover A-G.</p>
+<p>By using the technologies described below, we will cover A-G.</p>
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-andor-diagrams" class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-andor-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams</h2>
 <section id="a.-state-locking-model" class="level3">
 <h3 class="anchored" data-anchor-id="a.-state-locking-model">A. State Locking Model</h3>
-<p>To reduce complexity, latency, and processing power, we have created a simply Mastership/Ownership model.</p>
+<p>To reduce complexity, latency, and processing power, we have created a simple Mastership/Ownership model.</p>
 <p>Clients are defined as individuals connecting to a Server, they have their own v-sekai game instance running.</p>
 <p>The Relay Server, as of now, does not contain information about the state of the world, the only information the Relay Server contains is on Mastership/Ownership rules.</p>
-<pre><code>P1 connects to Server.
+<pre><code>P1 connects to the Server.
 
-P2 connects to Server.
+P2 connects to the Server.
 
-P3 connects to Server.
+P3 connects to the Server.
 
 P1 spawns in a Ball.
 
 Server marks that P1 has both Mastership and Ownership of Ball.
 
-Server syncronizes with P1 and sends the state of the Ball to P2, it's location, rotation, the very fact of it's existance, and it's owner, master, and rule.
+Server synchronizes with P1 and sends the state of the Ball to P2, its location, rotation, the very fact of its existence, and its owner, master, and rule.
 </code></pre>
 <p>Server State</p>
 <table class="table">
@@ -268,21 +268,21 @@ Server syncronizes with P1 and sends the state of the Ball to P2, it's location,
 <p>What does this mean?</p>
 <section id="ownership" class="level4">
 <h4 class="anchored" data-anchor-id="ownership">Ownership</h4>
-<p>Since P1 is the Owner of the Ball, this means that P1 is the only one who can change the state of the ball. When Server syncronizes, if P2 were to have the ball in a different location then P1, the Server would tell P2 that the Ball is in the location P1 has it, and would do the same for P3. It can be thought of as a <em>mutex</em> on the state of the Ball. Whoever holds the Mutex is the one who can modify the state therein. This also means that all calculations for game state are split up among all the players, every player only has to run code modifying what they own, which in large scale player events would otherwise increase expontentially with custom scripts for each players props or avatars.</p>
+<p>Since P1 is the Owner of the Ball, this means that P1 is the only one who can change the state of the ball. When Server synchronizes, if P2 were to have the ball in a different location then P1, the Server would tell P2 that the Ball is in the location P1 has it, and would do the same for P3. It can be thought of as a <em>mutex</em> on the state of the Ball. Whoever holds the Mutex is the one who can modify the state therein. This also means that all calculations for game state are split up among all the players, every player only has to run code modifying what they own, which in large scale player events would otherwise increase exponentially with custom scripts for each player’s props or avatars.</p>
 </section>
 <section id="mastership" class="level4">
 <h4 class="anchored" data-anchor-id="mastership">Mastership</h4>
 <p>This presents a problem however, how could P2 take the Ball from P1? The solution is Mastership. Whoever is the Master can change who is the Owner at any time. The Master also can change whatever the default Rule is, which is what the Server, and Client references when looking to change Ownership to itself (or someone else?).</p>
 <ul>
-<li>Ask: Take a round trip to the Master and back to the Server so the Master can decide based on external factors whether or not to allow ownership transfer or deny it. This could be used for example, if someone only wants a gun to be grabbable if they are a “shooter” and not if they are a “civillian”</li>
-<li>Deny: You cannot ask for ownership transfer, good for things like Avatars transform node, you don’t wanna be invouluntarily moved around, or for the root of the world map.</li>
+<li>Ask: Take a round trip to the Master and back to the Server so the Master can decide based on external factors whether or not to allow ownership transfer or deny it. This could be used for example, if someone only wants a gun to be grabbable if they are a “shooter” and not if they are a “civilian”</li>
+<li>Deny: You cannot ask for ownership transfer, good for things like Avatar’s transform node, you don’t wanna be involuntarily moved around, or for the root of the world map.</li>
 <li>Allow: You can ask for ownership any time, and it is automatically granted.</li>
 </ul>
 </section>
 </section>
 <section id="tweaks" class="level3">
 <h3 class="anchored" data-anchor-id="tweaks">Tweaks</h3>
-<p>We can change the rate of syncronization based on the closest clients owned model, and other htings like that, there are lot of areas for optimization when it comes to using this.</p>
+<p>We can change the rate of synchronization based on the closest clients owned model, and other things like that, there are a lot of areas for optimization when it comes to using this.</p>
 </section>
 </section>
 <section id="positive-consequences-list" class="level2">
@@ -290,7 +290,7 @@ Server syncronizes with P1 and sends the state of the Ball to P2, it's location,
 <ul>
 <li>Low Latency for Competitive/Real-Time interactions</li>
 <li>Low processing power on both the server and client side</li>
-<li>Broad enough to be easily modifiable for optimziations in the future without changing the model</li>
+<li>Broad enough to be easily modifiable for optimizations in the future without changing the model</li>
 </ul>
 </section>
 <section id="negative-consequences-list" class="level2">
@@ -298,7 +298,7 @@ Server syncronizes with P1 and sends the state of the Ball to P2, it's location,
 <ul>
 <li>Complexity, we will have to code this all from scratch basically</li>
 <li>Multi-user interactions become impossible on a single object, at least to do simply, some smart coding could get around it but it isn’t easy to do.</li>
-<li>Resolutions for the <em>allow</em> rule could lead to inconsitentices, such as two different people picking up a gun and firing it, and two resulting bullets being spawned from the same gun before it get’s removed from one individual.</li>
+<li>Resolutions for the <em>allow</em> rule could lead to inconsistencies, such as two different people picking up a gun and firing it, and two resulting bullets being spawned from the same gun before it gets removed from one individual.</li>
 </ul>
 </section>
 <section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
