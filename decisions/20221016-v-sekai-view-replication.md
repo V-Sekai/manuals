@@ -41,6 +41,32 @@ Referencing https://github.com/tigerbeetledb/tigerbeetle/blob/main/docs/DESIGN.m
 > Fixed-point uses integer machine instructions, which on most modern processors are no faster, and often slower, than their floating-point equivalents. 
 > Therefore, if performance is a concern, it may be better to use fixed-point for storage of values, and to do computation on the differences between values as floating point, if the precision loss of conversion is acceptable.
 
+##### InterpolationType:
+
+* INTERPOLATION_NEAREST
+
+No interpolation (nearest value).
+
+* INTERPOLATION_LINEAR
+
+Linear interpolation.
+
+* INTERPOLATION_CUBIC
+
+Cubic interpolation.
+
+* INTERPOLATION_LINEAR_ANGLE
+
+Linear interpolation with shortest path rotation.
+
+Note: The result value is always normalized and may not match the key value.
+
+* INTERPOLATION_CUBIC_ANGLE
+
+Cubic interpolation with shortest path rotation.
+
+Note: The result value is always normalized and may not match the key value.
+
 ##### create_entity_interpolate
 We pad to the CPU cache line.
 
