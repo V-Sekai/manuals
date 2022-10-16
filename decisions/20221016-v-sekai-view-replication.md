@@ -6,7 +6,7 @@
 
 ## Context and Problem Statement
 
-How do we handle a thousand V-Sekai players on the same share?
+How do we handle a thousand V-Sekai players on the same shard?
 
 How can we be robust?
 
