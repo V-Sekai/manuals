@@ -1,4 +1,4 @@
-# V-Sekai has spatialised audio and VOIP support
+# Spatialised audio and VOIP support
 
 V-Sekai spatialised audio and VOIP support is in prototype phase as October 2022
 
