@@ -40,8 +40,6 @@ Referencing https://github.com/tigerbeetledb/tigerbeetle/blob/main/docs/DESIGN.m
 
 ##### create_property_interpolate
 
-We pad to the CPU cache line.
-
 ```zig
 create_property_interpolate {
 	       id: 16 bytes (128-bit)
@@ -66,7 +64,6 @@ current_entity_id: 16 bytes (128-bit) [to allow interpolation between different 
 
 ##### create_property
 
-We pad to the CPU cache line.
 ```zig
    create_property {
 	      id: 16 bytes (128-bit)
