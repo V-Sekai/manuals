@@ -34,6 +34,8 @@ We reuse the create_entity data structure as the state.
 
 
 ### create_entity_interpolate
+We pad to the CPU cache line.
+
 	 create_entity_interpolate {
 		      id: 16 bytes (128-bit)
 	past_entity_id: 16 bytes (128-bit)
@@ -50,6 +52,8 @@ We reuse the create_entity data structure as the state.
 	} = 256 bytes (4 CPU cache lines)
 
 ### create_entity
+We pad to the CPU cache line.
+
            create_entity {
                       id: 16 bytes (128-bit)
                user_data: 16 bytes (128-bit) [optional, opaque third-party identifier to link this account (many-to-one) to an external entity]
