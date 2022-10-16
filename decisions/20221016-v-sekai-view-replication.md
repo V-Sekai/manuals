@@ -30,12 +30,11 @@ See also Linux io_uring (replacement for epoll).
 
 Everything is an event or a state. Try to fit datastructures into 128 bytes (2 CPU cache lines).
 
-We reuse create_entity datastructure as the state.
+We reuse the create_entity data structure as the state.
 
 ### create_entity
 
 ### create_entity_simulate
-
 
 ## Positive Consequences <!-- optional -->
 
