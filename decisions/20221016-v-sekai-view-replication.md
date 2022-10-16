@@ -60,6 +60,7 @@ LMAX (quote):
 > 2. replicate to backup nodes, then
 > 3. apply these events to the in-memory state, then
 > 4. ACK to the client
+
 - [Tigerbeetle design](https://github.com/tigerbeetledb/tigerbeetle/blob/main/docs/DESIGN.md#architecture)
 
 Tigerbeetle uses viewstamp replication in the context of bank ledger credit and debit.
