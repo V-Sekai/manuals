@@ -81,7 +81,7 @@ current_entity_id: 16 bytes (128-bit) [to allow interpolation between different 
 	 timeout:  8 bytes ( 64-bit) [optional, required only for a pending transfer, a quantity of time, 
 	 	i.e. an offset in nanoseconds from timestamp]
 	  shard:  4 bytes ( 32-bit) [required, to enforce isolation by ensuring that all transfers 
-	  	are between accounts of the same shard]
+	  	are between entities of the same shard]
 	    code:  2 bytes ( 16-bit) [required, an opaque entity code describing the type 
 	    	of the interpolation, e.g. player, map, prop]
 	   flags:  2 bytes ( 16-bit) [optional, to modify the usage of the reserved field and for future feature expansion]
