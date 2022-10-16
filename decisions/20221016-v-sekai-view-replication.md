@@ -75,6 +75,8 @@ Tigerbeetle (quote):
 
 ## Interpolation function from Godot Engine 4
 
+Note that this handles both nearest interpolation and cubic (with time) interpolation.
+
 ```c++
 template <class T>
 T Animation::_interpolate(const Vector<TKey<T>> &p_keys, double p_time, InterpolationType p_interp, bool p_loop_wrap, bool *p_ok, bool p_backward) const {
