@@ -73,7 +73,7 @@ We pad to the CPU cache line.
 	 create_entity_interpolate {
 		      id: 16 bytes (128-bit)
 	past_entity_id: 16 bytes (128-bit)
-	current_entity_id: 16 bytes (128-bit)
+	current_entity_id: 16 bytes (128-bit) [to allow interpolation between different entities]
 	       user_data: 16 bytes (128-bit) [optional, e.g. opaque third-party identifier to link this transfer (many-to-one) to an external entity]
 		reserved: 16 bytes (128-bit) [reserved, for accounting policy primitives]
 	      pending_id: 16 bytes (128-bit) [optional, required to post or void an existing but pending transfer]
