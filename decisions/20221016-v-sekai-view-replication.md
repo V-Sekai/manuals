@@ -45,9 +45,9 @@ We reuse the create_entity data structure as the state.
 		  shard:  4 bytes ( 32-bit) [required, to enforce isolation by ensuring that all transfers are between accounts of the same shard]
 		    code:  2 bytes ( 16-bit) [required, an opaque entity code describing the type of the interpolation, e.g. player, map, prop]
 		   flags:  2 bytes ( 16-bit) [optional, to modify the usage of the reserved field and for future feature expansion]
-		  value:  8 bytes ( 64-bit) [required, an unsigned integer in the unit of value of the past and current entity, which must be the same for both entity]
+		  value:  32 bytes ( 256-bit) [required, an unsigned integer in the unit of value of the past and current entity, which must be the same for both entity]
 	       timestamp:  8 bytes ( 64-bit) [reserved, assigned by the leader before journalling]
-	} = 128 bytes (2 CPU cache lines)
+	} = 192 bytes (3 CPU cache lines)
 
 ### create_entity
            create_entity {
@@ -57,12 +57,12 @@ We reuse the create_entity data structure as the state.
                   shard:  4 bytes ( 32-bit) [required, to enforce isolation by ensuring that all transfers are between accounts of the same ledger]
                     code:  2 bytes ( 16-bit) [required, an opaque entity code describing the type of the interpolation, e.g. player, map, prop]
                    flags:  2 bytes ( 16-bit) [optional, net balance limits: e.g. debits_must_not_exceed_credits or credits_must_not_exceed_debits]
-          past_interpolations_pending:  8 bytes ( 64-bit)
-           past_interpolations_posted:  8 bytes ( 64-bit)
-         current_interpolations_pending:  8 bytes ( 64-bit)
-          current_interpolations_posted:  8 bytes ( 64-bit)
+          past_interpolations_pending:  32 bytes ( 256-bit )
+           past_interpolations_posted:  32 bytes ( 256-bit )
+         current_interpolations_pending:  32 bytes ( 256-bit )
+          current_interpolations_posted:  32 bytes ( 256-bit )
                timestamp:  8 bytes ( 64-bit) [reserved]
-	} = 128 bytes (2 CPU cache lines)
+	} = 256  bytes (4 CPU cache lines)
 
 ## Positive Consequences <!-- optional -->
 
