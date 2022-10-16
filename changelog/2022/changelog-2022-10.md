@@ -41,7 +41,6 @@ New contributors this week:
 @Kosyne For starting a topic about onboarding and our short term and long term planning.
 
 @! [P1-D3] Samuel Martin @Mr_Squarepeg  Thanks for hanging out on Sunday, we chatted about V-Sekai and played a bit of ZeroK. 
-GitHub
 
 ## 2020-10-15
 
