@@ -1,4 +1,4 @@
-# V-Sekai has VRM support for Portable Humanoid Avatars
+# VRM support for Portable Humanoid Avatars
 
 V-Sekai has added support for VRM files, which are open source standards for sharing portable humanoid avatars between different virtual reality platforms.
 
