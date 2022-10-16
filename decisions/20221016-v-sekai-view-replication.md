@@ -47,7 +47,7 @@ We reuse the create_entity data structure as the state.
 		   flags:  2 bytes ( 16-bit) [optional, to modify the usage of the reserved field and for future feature expansion]
 		  value:  32 bytes ( 256-bit) [required, an unsigned integer in the unit of value of the past and current entity, which must be the same for both entity]
 	       timestamp:  8 bytes ( 64-bit) [reserved, assigned by the leader before journalling]
-	} = 192 bytes (3 CPU cache lines)
+	} = 256 bytes (4 CPU cache lines)
 
 ### create_entity
            create_entity {
