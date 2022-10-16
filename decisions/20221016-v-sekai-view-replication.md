@@ -32,8 +32,8 @@ Everything is an event or a state. Try to fit datastructures into 128 bytes (2 C
 
 We reuse the create_entity data structure as the state.
 
-
-### create_entity_interpolate
+#### Work in progress data structure based on Tigerbeetle
+##### create_entity_interpolate
 We pad to the CPU cache line.
 
 	 create_entity_interpolate {
@@ -51,7 +51,7 @@ We pad to the CPU cache line.
 	       timestamp:  8 bytes ( 64-bit) [reserved, assigned by the leader before journalling]
 	} = 256 bytes (4 CPU cache lines)
 
-### create_entity
+##### create_entity
 We pad to the CPU cache line.
 
            create_entity {
