@@ -333,7 +333,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="create_entity_interpolate" class="level5">
 <h5 class="anchored" data-anchor-id="create_entity_interpolate">create_entity_interpolate</h5>
 <p>We pad to the CPU cache line.</p>
-<pre><code> create_entity_interpolate {
+<pre class="zig"><code> create_entity_interpolate {
           id: 16 bytes (128-bit)
 past_entity_id: 16 bytes (128-bit)
 current_entity_id: 16 bytes (128-bit) [to allow interpolation between different entities]
@@ -351,18 +351,18 @@ current_entity_id: 16 bytes (128-bit) [to allow interpolation between different 
 <section id="create_entity" class="level5">
 <h5 class="anchored" data-anchor-id="create_entity">create_entity</h5>
 <p>We pad to the CPU cache line.</p>
-<pre><code>       create_entity {
-                  id: 16 bytes (128-bit)
-           user_data: 16 bytes (128-bit) [optional, opaque third-party identifier to link this account (many-to-one) to an external entity]
-            reserved: 48 bytes (384-bit) [reserved for future accounting policy primitives]
-              shard:  4 bytes ( 32-bit) [required, to enforce isolation by ensuring that all transfers are between accounts of the same ledger]
-                code:  2 bytes ( 16-bit) [required, an opaque entity code describing the type of the interpolation, e.g. player, map, prop]
-               flags:  2 bytes ( 16-bit) [optional, net balance limits: e.g. debits_must_not_exceed_credits or credits_must_not_exceed_debits]
-      past_interpolations_pending:  64 bytes ( 512-bit)
-       past_interpolations_posted:  64 bytes ( 512-bit)
-     current_interpolations_pending:  64 bytes ( 512-bit)
-      current_interpolations_posted:  64 bytes ( 512-bit)
-           timestamp:  8 bytes ( 64-bit) [reserved]
+<pre class="zig"><code>   create_entity {
+          id: 16 bytes (128-bit)
+       user_data: 16 bytes (128-bit) [optional, opaque third-party identifier to link this account (many-to-one) to an external entity]
+    reserved: 48 bytes (384-bit) [reserved for future accounting policy primitives]
+      shard:  4 bytes ( 32-bit) [required, to enforce isolation by ensuring that all transfers are between accounts of the same ledger]
+        code:  2 bytes ( 16-bit) [required, an opaque entity code describing the type of the interpolation, e.g. player, map, prop]
+       flags:  2 bytes ( 16-bit) [optional, net balance limits: e.g. debits_must_not_exceed_credits or credits_must_not_exceed_debits]
+  past_interpolations_pending:  64 bytes ( 512-bit)
+   past_interpolations_posted:  64 bytes ( 512-bit)
+ current_interpolations_pending:  64 bytes ( 512-bit)
+  current_interpolations_posted:  64 bytes ( 512-bit)
+       timestamp:  8 bytes ( 64-bit) [reserved]
 } = 256 bytes (4 CPU cache lines)</code></pre>
 </section>
 </section>
