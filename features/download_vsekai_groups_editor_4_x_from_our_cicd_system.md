@@ -1,4 +1,4 @@
-# Download from our continuous integration and continuous delivery system
+# Download from our system
 
 Updated 2022-10-15
 
