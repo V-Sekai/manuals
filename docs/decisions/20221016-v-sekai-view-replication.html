@@ -251,11 +251,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#context-and-problem-statement" id="toc-context-and-problem-statement" class="nav-link" data-scroll-target="#context-and-problem-statement">Context and Problem Statement</a></li>
   <li><a href="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" id="toc-describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="nav-link" data-scroll-target="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</a></li>
-  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</a>
-  <ul class="collapse">
-  <li><a href="#create_entity_interpolate" id="toc-create_entity_interpolate" class="nav-link" data-scroll-target="#create_entity_interpolate">create_entity_interpolate</a></li>
-  <li><a href="#create_entity" id="toc-create_entity" class="nav-link" data-scroll-target="#create_entity">create_entity</a></li>
-  </ul></li>
+  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</a></li>
   <li><a href="#positive-consequences" id="toc-positive-consequences" class="nav-link" data-scroll-target="#positive-consequences">Positive Consequences <!-- optional --></a></li>
   <li><a href="#negative-consequences" id="toc-negative-consequences" class="nav-link" data-scroll-target="#negative-consequences">Negative Consequences <!-- optional --></a></li>
   <li><a href="#option-graveyard" id="toc-option-graveyard" class="nav-link" data-scroll-target="#option-graveyard">Option graveyard: <!-- same as above --></a></li>
@@ -303,10 +299,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>ACK to the client.</li>
 </ol>
 <p>See also Linux io_uring (replacement for epoll).</p>
-<p>Everything is an event or a state. Try to fit datastructures into 128 bytes (2 CPU cache lines).</p>
+<p>Everything is an event or a state. Try to fit datastructures into 256 bytes (4 CPU cache lines).</p>
 <p>We reuse the create_entity data structure as the state.</p>
-<section id="create_entity_interpolate" class="level3">
-<h3 class="anchored" data-anchor-id="create_entity_interpolate">create_entity_interpolate</h3>
+<section id="work-in-progress-data-structure-based-on-tigerbeetle" class="level4">
+<h4 class="anchored" data-anchor-id="work-in-progress-data-structure-based-on-tigerbeetle">Work in progress data structure based on Tigerbeetle</h4>
+<section id="create_entity_interpolate" class="level5">
+<h5 class="anchored" data-anchor-id="create_entity_interpolate">create_entity_interpolate</h5>
 <p>We pad to the CPU cache line.</p>
 <pre><code> create_entity_interpolate {
           id: 16 bytes (128-bit)
@@ -323,8 +321,8 @@ current_entity_id: 16 bytes (128-bit)
        timestamp:  8 bytes ( 64-bit) [reserved, assigned by the leader before journalling]
 } = 256 bytes (4 CPU cache lines)</code></pre>
 </section>
-<section id="create_entity" class="level3">
-<h3 class="anchored" data-anchor-id="create_entity">create_entity</h3>
+<section id="create_entity" class="level5">
+<h5 class="anchored" data-anchor-id="create_entity">create_entity</h5>
 <p>We pad to the CPU cache line.</p>
 <pre><code>       create_entity {
                   id: 16 bytes (128-bit)
@@ -339,6 +337,7 @@ current_entity_id: 16 bytes (128-bit)
       current_interpolations_posted:  32 bytes ( 256-bit )
            timestamp:  8 bytes ( 64-bit) [reserved]
 } = 256 bytes (4 CPU cache lines)</code></pre>
+</section>
 </section>
 </section>
 <section id="positive-consequences" class="level2">
