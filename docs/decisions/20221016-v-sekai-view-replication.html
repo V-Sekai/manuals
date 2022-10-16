@@ -307,7 +307,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="create_entity_interpolate" class="level5">
 <h5 class="anchored" data-anchor-id="create_entity_interpolate">create_entity_interpolate</h5>
 <p>We pad to the CPU cache line.</p>
-<pre><code>create_entity_interpolate {
+<pre class="zig"><code>create_entity_interpolate {
            id: 16 bytes (128-bit)
    past_entity_id: 16 bytes (128-bit)
 current_entity_id: 16 bytes (128-bit) [to allow interpolation between different entities]
@@ -322,7 +322,8 @@ current_entity_id: 16 bytes (128-bit) [to allow interpolation between different 
          code:  2 bytes ( 16-bit) [required, an opaque entity code describing the type 
         of the interpolation, e.g. player, map, prop]
         flags:  2 bytes ( 16-bit) [optional, to modify the usage of the reserved field and for future feature expansion.
-        Defaults to the InterpolationType of linear interpolation, but can be nearest, linear, and cubic. Can also flag a byte array. ]
+        Defaults to the InterpolationType of linear interpolation, 
+        but can be nearest, linear, and cubic. Can also flag a byte array. ]
         value:  64 bytes ( 512-bit) [required, 4 values of 64.64 signed fixed-point arithmetic in the unit of value
         of the past and current entity, 
         which must be the same for both entity. See godot/thirdparty/misc/r128.h. 
@@ -333,7 +334,7 @@ current_entity_id: 16 bytes (128-bit) [to allow interpolation between different 
 <section id="create_entity" class="level5">
 <h5 class="anchored" data-anchor-id="create_entity">create_entity</h5>
 <p>We pad to the CPU cache line.</p>
-<pre><code>   create_entity {
+<pre class="zig"><code>   create_entity {
           id: 16 bytes (128-bit)
        user_data: 16 bytes (128-bit) [optional, opaque third-party identifier to link this account 
         (many-to-one) to an external entity]
