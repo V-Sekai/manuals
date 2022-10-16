@@ -307,6 +307,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We reuse the create_entity data structure as the state.</p>
 <section id="create_entity_interpolate" class="level3">
 <h3 class="anchored" data-anchor-id="create_entity_interpolate">create_entity_interpolate</h3>
+<p>We pad to the CPU cache line.</p>
 <pre><code> create_entity_interpolate {
           id: 16 bytes (128-bit)
 past_entity_id: 16 bytes (128-bit)
@@ -320,10 +321,11 @@ current_entity_id: 16 bytes (128-bit)
        flags:  2 bytes ( 16-bit) [optional, to modify the usage of the reserved field and for future feature expansion]
       value:  32 bytes ( 256-bit) [required, an unsigned integer in the unit of value of the past and current entity, which must be the same for both entity]
        timestamp:  8 bytes ( 64-bit) [reserved, assigned by the leader before journalling]
-} = 192 bytes (3 CPU cache lines)</code></pre>
+} = 256 bytes (4 CPU cache lines)</code></pre>
 </section>
 <section id="create_entity" class="level3">
 <h3 class="anchored" data-anchor-id="create_entity">create_entity</h3>
+<p>We pad to the CPU cache line.</p>
 <pre><code>       create_entity {
                   id: 16 bytes (128-bit)
            user_data: 16 bytes (128-bit) [optional, opaque third-party identifier to link this account (many-to-one) to an external entity]
