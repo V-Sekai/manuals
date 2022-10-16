@@ -290,8 +290,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h2>
 <ol type="1">
-<li>Replicate pending entity changes safely to a quorum of distributed replicas, then</li>
-<li>interpolate entity changes to the in-memory state.
+<li>Replicate pending property changes safely to a quorum of distributed replicas, then</li>
+<li>interpolate property changes to the in-memory state.
 <ul>
 <li>Ignore p_time too far in the future or the past as the viewstamp limit.</li>
 <li>T Animation::_interpolate(const Vector&lt;TKey&lt;T&gt;&gt; &amp;p_keys, double p_time, InterpolationType p_interp, bool p_loop_wrap, bool *p_ok, bool p_backward) const</li>
@@ -299,8 +299,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>ACK to the client.</li>
 </ol>
 <p>See also Linux io_uring (replacement for epoll).</p>
-<p>Everything is an event or a state. Want to fit datastructures into 128 bytes (2 CPU cache lines).</p>
-<p>We reuse the create_entity data structure as the state.</p>
+<p>Everything is an interpolation event or a property state. Want to fit datastructures into 128 bytes (2 CPU cache lines).</p>
+<p>We reuse the create_property data structure as the state.</p>
 <section id="work-in-progress-data-structure-based-on-tigerbeetle" class="level4">
 <h4 class="anchored" data-anchor-id="work-in-progress-data-structure-based-on-tigerbeetle">Work in progress data structure based on Tigerbeetle</h4>
 <p>Referencing https://github.com/tigerbeetledb/tigerbeetle/blob/main/docs/DESIGN.md#data-structures.</p>
