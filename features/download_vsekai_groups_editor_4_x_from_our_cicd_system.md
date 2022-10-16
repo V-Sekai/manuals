@@ -1,8 +1,8 @@
-# Download V-Sekai and "groups editor" 4.x from our GoCD system
+# Download from our continuous integration and continuous delivery system
 
 Updated 2022-10-15
 
-Our CI is located at https://ci.v-sekai.cloud/ - you must use Guest to login, since GitLab is admin-only.
+Our V-Sekai CI is located at https://ci.v-sekai.cloud/ - you must use Guest to login, since GitLab is admin-only.
 
 Here are links to each of the latest jobs. Generally, you will want to click the Artifacts tab from each of these to download things.
 
