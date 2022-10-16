@@ -62,7 +62,7 @@ We reuse the create_entity data structure as the state.
          current_interpolations_pending:  32 bytes ( 256-bit )
           current_interpolations_posted:  32 bytes ( 256-bit )
                timestamp:  8 bytes ( 64-bit) [reserved]
-	} = 256  bytes (4 CPU cache lines)
+	} = 256 bytes (4 CPU cache lines)
 
 ## Positive Consequences <!-- optional -->
 
