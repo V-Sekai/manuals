@@ -59,7 +59,7 @@ current_entity_id: 16 bytes (128-bit) [to allow interpolation between different 
 		of the interpolation, e.g. player, map, prop]
 	    flags:  2 bytes (16-bit) [optional, to modify the usage of the reserved field and for future feature expansion.]
 	    value:  n bytes (n-bit) [required, variant of the past property and current property, 
-		which must be the same for both properties.]
+		which must be the same for both properties. Uses var_to_bytes_with_objects.]
 	timestamp:  8 bytes (64-bit) [reserved, assigned by the leader before journalling]
 } = n bytes (n CPU cache lines)
 ```
@@ -78,10 +78,10 @@ current_entity_id: 16 bytes (128-bit) [to allow interpolation between different 
 		of the interpolation, e.g. player, map, prop]
 	   flags:  2 bytes (16-bit) [optional, net balance limits: 
 		e.g. debits_must_not_exceed_credits or credits_must_not_exceed_debits]
-     past_interpolations_pending: n bytes (n-bit variant)
-      past_interpolations_posted: n bytes (n-bit variant)
-  current_interpolations_pending: n bytes (n-bit variant)
-   current_interpolations_posted: n bytes (n-bit variant)
+     past_interpolations_pending: n bytes (n-bit variant. Uses var_to_bytes_with_objects.)
+      past_interpolations_posted: n bytes (n-bit variant. Uses var_to_bytes_with_objects.)
+  current_interpolations_pending: n bytes (n-bit variant. Uses var_to_bytes_with_objects.)
+   current_interpolations_posted: n bytes (n-bit variant. Uses var_to_bytes_with_objects.)
 		       timestamp: 8 bytes ( 64-bit) [reserved]
 } = n bytes (n CPU cache lines)
 ```
