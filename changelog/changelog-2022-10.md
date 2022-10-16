@@ -55,4 +55,6 @@ I added https://github.com/TokageItLab/realtime_retarget to V-Sekai's godot engi
 
 tefusion's gdextension addon https://github.com/tefusion/godot-subdiv is now published. https://godotengine.org/asset-library/asset/1488
 
-fire reorganized the development documentation site.
+iFire reorganized the development documentation site.
+
+iFire is working on a bullet train kinetic novel https://github.com/V-Sekai-fire/INK_bullet_train world.
