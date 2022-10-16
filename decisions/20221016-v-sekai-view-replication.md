@@ -47,7 +47,7 @@ We pad to the CPU cache line.
 		  shard:  4 bytes ( 32-bit) [required, to enforce isolation by ensuring that all transfers are between accounts of the same shard]
 		    code:  2 bytes ( 16-bit) [required, an opaque entity code describing the type of the interpolation, e.g. player, map, prop]
 		   flags:  2 bytes ( 16-bit) [optional, to modify the usage of the reserved field and for future feature expansion]
-		  value:  32 bytes ( 256-bit) [required, an unsigned integer in the unit of value of the past and current entity, which must be the same for both entity]
+		  value:  64 bytes ( 512-bit) [required, 4x 64.64 signed fixed-point arithmetic in the unit of value of the past and current entity, which must be the same for both entity]
 	       timestamp:  8 bytes ( 64-bit) [reserved, assigned by the leader before journalling]
 	} = 256 bytes (4 CPU cache lines)
 
@@ -61,10 +61,10 @@ We pad to the CPU cache line.
                   shard:  4 bytes ( 32-bit) [required, to enforce isolation by ensuring that all transfers are between accounts of the same ledger]
                     code:  2 bytes ( 16-bit) [required, an opaque entity code describing the type of the interpolation, e.g. player, map, prop]
                    flags:  2 bytes ( 16-bit) [optional, net balance limits: e.g. debits_must_not_exceed_credits or credits_must_not_exceed_debits]
-          past_interpolations_pending:  32 bytes ( 256-bit )
-           past_interpolations_posted:  32 bytes ( 256-bit )
-         current_interpolations_pending:  32 bytes ( 256-bit )
-          current_interpolations_posted:  32 bytes ( 256-bit )
+          past_interpolations_pending:  64 bytes ( 512-bit)
+           past_interpolations_posted:  64 bytes ( 512-bit)
+         current_interpolations_pending:  64 bytes ( 512-bit)
+          current_interpolations_posted:  64 bytes ( 512-bit)
                timestamp:  8 bytes ( 64-bit) [reserved]
 	} = 256 bytes (4 CPU cache lines)
 
