@@ -43,6 +43,8 @@ Referencing https://github.com/tigerbeetledb/tigerbeetle/blob/main/docs/DESIGN.m
 
 We use 4x 64.64 signed fixed-point numbers to either fit a vec4 or a quaternion.
 
+Store a byte array in the value variable with 64 bytes?
+
 ##### INTERPOLATION_NEAREST
 
 No interpolation (nearest value).
