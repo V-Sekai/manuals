@@ -34,6 +34,8 @@ We reuse the create_entity data structure as the state.
 
 #### Work in progress data structure based on Tigerbeetle
 
+Referencing https://github.com/tigerbeetledb/tigerbeetle/blob/main/docs/DESIGN.md#data-structures.
+
 > From the r128 documentation:
 > 
 > Fixed-point uses integer machine instructions, which on most modern processors are no faster, and often slower, than their floating-point equivalents. 
