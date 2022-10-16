@@ -28,6 +28,15 @@ The key insight is everything is a keyframed animation.
 
 See also Linux io_uring (replacement for epoll).
 
+Everything is an event or a state. Try to fit datastructures into 128 bytes (2 CPU cache lines).
+
+We reuse create_entity datastructure as the state.
+
+### create_entity
+
+### create_entity_simulate
+
+
 ## Positive Consequences <!-- optional -->
 
 - The code is based on robust view replication consensus algorithm theory.
