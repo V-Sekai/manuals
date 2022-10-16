@@ -1,4 +1,4 @@
-# Download
+# Download the latest development artifacts
 
 Updated 2022-10-15
 
