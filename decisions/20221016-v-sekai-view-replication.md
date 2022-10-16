@@ -28,7 +28,7 @@ The key insight is everything is a keyframed animation.
 
 See also Linux io_uring (replacement for epoll).
 
-Everything is an event or a state. Try to fit datastructures into 256 bytes (4 CPU cache lines).
+Everything is an event or a state. Want to fit datastructures into 128 bytes (2 CPU cache lines).
 
 We reuse the create_entity data structure as the state.
 
