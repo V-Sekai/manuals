@@ -55,11 +55,9 @@ current_entity_id: 16 bytes (128-bit) [to allow interpolation between different 
 		are between entities of the same shard]
 	     code:  2 bytes ( 16-bit) [required, an opaque entity code describing the type 
 		of the interpolation, e.g. player, map, prop]
-	    flags:  2 bytes ( 16-bit) [optional, to modify the usage of the reserved field and for future feature expansion.
-		Defaults to the InterpolationType of linear interpolation, 
-		but can be nearest, linear, and cubic. ]
+	    flags:  2 bytes ( 16-bit) [optional, to modify the usage of the reserved field and for future feature expansion.]
 	    value:  n bytes ( n-bit) [required, variant of the past property and current property, 
-		which must be the same for both properties. ]
+		which must be the same for both properties.]
 	timestamp:  8 bytes ( 64-bit) [reserved, assigned by the leader before journalling]
 } = 256 bytes (4 CPU cache lines)
 ```
