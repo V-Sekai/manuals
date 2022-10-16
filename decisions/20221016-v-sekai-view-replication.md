@@ -20,11 +20,13 @@ The key insight is everything is a keyframed animation.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-1. View replication consensus algorithm with state machine replication
-2. Linux io_uring (replacement for epoll)
-3. Interpolate when packets (batched) are received with viewstamp limit
+1. Replicate pending entity changes safely to a quorum of distributed replicas, then
+2. interpolate entity changes to the in-memory state.
     * Ignore p_time too far in the future or the past as the viewstamp limit.
     * T Animation::\_interpolate(const Vector\<TKey\<T>> &p_keys, double p_time, InterpolationType p_interp, bool p_loop_wrap, bool \*p_ok, bool p_backward) const
+3. ACK to the client.
+
+See also Linux io_uring (replacement for epoll).
 
 ## Positive Consequences <!-- optional -->
 
