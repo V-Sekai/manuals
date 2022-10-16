@@ -51,16 +51,16 @@ current_entity_id: 16 bytes (128-bit) [to allow interpolation between different 
 		this transfer (many-to-one) to an external entity]
 	 reserved: 16 bytes (128-bit) [reserved, for accounting policy primitives]
        pending_id: 16 bytes (128-bit) [optional, required to post or void an existing but pending transfer]
-	  timeout:  8 bytes ( 64-bit) [optional, required only for a pending transfer, a quantity of time, 
+	  timeout:  8 bytes (64-bit) [optional, required only for a pending transfer, a quantity of time, 
 		i.e. an offset in nanoseconds from timestamp]
-	    shard:  4 bytes ( 32-bit) [required, to enforce isolation by ensuring that all transfers 
+	    shard:  4 bytes (32-bit) [required, to enforce isolation by ensuring that all transfers 
 		are between entities of the same shard]
-	     code:  2 bytes ( 16-bit) [required, an opaque entity code describing the type 
+	     code:  2 bytes (16-bit) [required, an opaque entity code describing the type 
 		of the interpolation, e.g. player, map, prop]
-	    flags:  2 bytes ( 16-bit) [optional, to modify the usage of the reserved field and for future feature expansion.]
-	    value:  n bytes ( n-bit) [required, variant of the past property and current property, 
+	    flags:  2 bytes (16-bit) [optional, to modify the usage of the reserved field and for future feature expansion.]
+	    value:  n bytes (n-bit) [required, variant of the past property and current property, 
 		which must be the same for both properties.]
-	timestamp:  8 bytes ( 64-bit) [reserved, assigned by the leader before journalling]
+	timestamp:  8 bytes (64-bit) [reserved, assigned by the leader before journalling]
 } = n bytes (n CPU cache lines)
 ```
 
@@ -73,17 +73,17 @@ We pad to the CPU cache line.
        user_data: 16 bytes (128-bit) [optional, opaque third-party identifier to link this account 
 		(many-to-one) to an external entity]
 	reserved: 48 bytes (384-bit) [reserved for future accounting policy primitives]
-	   shard:  4 bytes ( 32-bit) [required, to enforce isolation by ensuring that all transfers 
+	   shard:  4 bytes (32-bit) [required, to enforce isolation by ensuring that all transfers 
 		are between accounts of the same ledger]
-	    code:  2 bytes ( 16-bit) [required, an opaque entity code describing the type 
+	    code:  2 bytes (16-bit) [required, an opaque entity code describing the type 
 		of the interpolation, e.g. player, map, prop]
-	   flags:  2 bytes ( 16-bit) [optional, net balance limits: 
+	   flags:  2 bytes (16-bit) [optional, net balance limits: 
 		e.g. debits_must_not_exceed_credits or credits_must_not_exceed_debits]
-     past_interpolations_pending:  n bytes ( n-bit)
-      past_interpolations_posted:  n bytes ( n-bit)
-  current_interpolations_pending:  n bytes ( n-bit)
-   current_interpolations_posted:  n bytes ( n-bit)
-		       timestamp:  8 bytes ( 64-bit) [reserved]
+     past_interpolations_pending: n bytes (n-bit variant)
+      past_interpolations_posted: n bytes (n-bit variant)
+  current_interpolations_pending: n bytes (n-bit variant)
+   current_interpolations_posted: n bytes (n-bit variant)
+		       timestamp: 8 bytes ( 64-bit) [reserved]
 } = n bytes (n CPU cache lines)
 ```
 ## Positive Consequences <!-- optional -->
