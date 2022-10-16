@@ -84,7 +84,8 @@ current_entity_id: 16 bytes (128-bit) [to allow interpolation between different 
 	  	are between entities of the same shard]
 	    code:  2 bytes ( 16-bit) [required, an opaque entity code describing the type 
 	    	of the interpolation, e.g. player, map, prop]
-	   flags:  2 bytes ( 16-bit) [optional, to modify the usage of the reserved field and for future feature expansion]
+	   flags:  2 bytes ( 16-bit) [optional, to modify the usage of the reserved field and for future feature expansion.
+	   	Defaults to nearest interpolation, but can linear, cubic. Can also flag a byte array. ]
 	  value:  64 bytes ( 512-bit) [required, 4 values of 64.64 signed fixed-point arithmetic in the unit of value
 	  	of the past and current entity, 
 	 	which must be the same for both entity. See godot/thirdparty/misc/r128.h. 
