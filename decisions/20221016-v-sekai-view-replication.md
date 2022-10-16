@@ -74,16 +74,21 @@ We pad to the CPU cache line.
 	      id: 16 bytes (128-bit)
 past_entity_id: 16 bytes (128-bit)
 current_entity_id: 16 bytes (128-bit) [to allow interpolation between different entities]
-       user_data: 16 bytes (128-bit) [optional, e.g. opaque third-party identifier to link this transfer (many-to-one) to an external entity]
+       user_data: 16 bytes (128-bit) [optional, e.g. opaque third-party identifier to link 
+       		this transfer (many-to-one) to an external entity]
 	reserved: 16 bytes (128-bit) [reserved, for accounting policy primitives]
       pending_id: 16 bytes (128-bit) [optional, required to post or void an existing but pending transfer]
-	 timeout:  8 bytes ( 64-bit) [optional, required only for a pending transfer, a quantity of time, i.e. an offset in nanoseconds from timestamp]
-	  shard:  4 bytes ( 32-bit) [required, to enforce isolation by ensuring that all transfers are between accounts of the same shard]
-	    code:  2 bytes ( 16-bit) [required, an opaque entity code describing the type of the interpolation, e.g. player, map, prop]
+	 timeout:  8 bytes ( 64-bit) [optional, required only for a pending transfer, a quantity of time, 
+	 	i.e. an offset in nanoseconds from timestamp]
+	  shard:  4 bytes ( 32-bit) [required, to enforce isolation by ensuring that all transfers 
+	  	are between accounts of the same shard]
+	    code:  2 bytes ( 16-bit) [required, an opaque entity code describing the type 
+	    	of the interpolation, e.g. player, map, prop]
 	   flags:  2 bytes ( 16-bit) [optional, to modify the usage of the reserved field and for future feature expansion]
-	  value:  64 bytes ( 512-bit) [required, 4 values of 64.64 signed fixed-point arithmetic in the unit of value of the past and current entity, 
-	  which must be the same for both entity. See godot/thirdparty/misc/r128.h. 
-	  Can be used as a byte array of 64 bytes. Can fit a vector 4 or a quaternion. ]
+	  value:  64 bytes ( 512-bit) [required, 4 values of 64.64 signed fixed-point arithmetic in the unit of value
+	  	of the past and current entity, 
+	 	which must be the same for both entity. See godot/thirdparty/misc/r128.h. 
+		Can be used as a byte array of 64 bytes. Can fit a vector 4 or a quaternion. ]
        timestamp:  8 bytes ( 64-bit) [reserved, assigned by the leader before journalling]
 } = 256 bytes (4 CPU cache lines)
 ```
@@ -95,11 +100,15 @@ We pad to the CPU cache line.
 ```zig
    create_entity {
 	      id: 16 bytes (128-bit)
-       user_data: 16 bytes (128-bit) [optional, opaque third-party identifier to link this account (many-to-one) to an external entity]
+       user_data: 16 bytes (128-bit) [optional, opaque third-party identifier to link this account 
+       		(many-to-one) to an external entity]
 	reserved: 48 bytes (384-bit) [reserved for future accounting policy primitives]
-	  shard:  4 bytes ( 32-bit) [required, to enforce isolation by ensuring that all transfers are between accounts of the same ledger]
-	    code:  2 bytes ( 16-bit) [required, an opaque entity code describing the type of the interpolation, e.g. player, map, prop]
-	   flags:  2 bytes ( 16-bit) [optional, net balance limits: e.g. debits_must_not_exceed_credits or credits_must_not_exceed_debits]
+	  shard:  4 bytes ( 32-bit) [required, to enforce isolation by ensuring that all transfers 
+	  	are between accounts of the same ledger]
+	    code:  2 bytes ( 16-bit) [required, an opaque entity code describing the type 
+	    	of the interpolation, e.g. player, map, prop]
+	   flags:  2 bytes ( 16-bit) [optional, net balance limits: 
+	   	e.g. debits_must_not_exceed_credits or credits_must_not_exceed_debits]
   past_interpolations_pending:  64 bytes ( 512-bit)
    past_interpolations_posted:  64 bytes ( 512-bit)
  current_interpolations_pending:  64 bytes ( 512-bit)
