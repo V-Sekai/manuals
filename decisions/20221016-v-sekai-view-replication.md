@@ -38,6 +38,8 @@ We reuse the create_property data structure as the state.
 
 Referencing https://github.com/tigerbeetledb/tigerbeetle/blob/main/docs/DESIGN.md#data-structures.
 
+See `Variant bytes_to_var (PackedByteArray bytes)` and `PackedByteArray var_to_bytes (Variant variable)`.
+
 ##### create_property_interpolate
 
 ```zig
