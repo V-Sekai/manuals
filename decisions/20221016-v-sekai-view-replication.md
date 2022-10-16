@@ -110,6 +110,9 @@ We're doing the networking layer.
 
 ## References <!-- optional and numbers of links can vary -->
 
+- [Add a multiplayer interface and visual nodes for SceneTree replication
+](https://github.com/godotengine/godot-proposals/issues/3459)
+
 - [LMAX Exchange Architecture](https://skillsmatter.com/skillscasts/5247-the-lmax-exchange-architecture-high-throughput-low-latency-and-plain-old-java)
 
 LMAX (quote):
