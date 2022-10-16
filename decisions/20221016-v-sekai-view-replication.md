@@ -41,6 +41,8 @@ Referencing https://github.com/tigerbeetledb/tigerbeetle/blob/main/docs/DESIGN.m
 > Fixed-point uses integer machine instructions, which on most modern processors are no faster, and often slower, than their floating-point equivalents. 
 > Therefore, if performance is a concern, it may be better to use fixed-point for storage of values, and to do computation on the differences between values as floating point, if the precision loss of conversion is acceptable.
 
+We use 4x 64.64 signed fixed-point numbers to either fit a vec4 or a quaternion.
+
 ##### INTERPOLATION_NEAREST
 
 No interpolation (nearest value).
