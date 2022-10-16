@@ -33,6 +33,12 @@ Everything is an event or a state. Try to fit datastructures into 256 bytes (4 C
 We reuse the create_entity data structure as the state.
 
 #### Work in progress data structure based on Tigerbeetle
+
+> From the r128 documentation:
+> 
+> Fixed-point uses integer machine instructions, which on most modern processors are no faster, and often slower, than their floating-point equivalents. 
+> Therefore, if performance is a concern, it may be better to use fixed-point for storage of values, and to do computation on the differences between values as floating point, if the precision loss of conversion is acceptable.
+
 ##### create_entity_interpolate
 We pad to the CPU cache line.
 
