@@ -308,6 +308,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>From the r128 documentation:</p>
 <p>Fixed-point uses integer machine instructions, which on most modern processors are no faster, and often slower, than their floating-point equivalents. Therefore, if performance is a concern, it may be better to use fixed-point for storage of values, and to do computation on the differences between values as floating point, if the precision loss of conversion is acceptable.</p>
 </blockquote>
+<p>We use 4x 64.64 signed fixed-point numbers to either fit a vec4 or a quaternion.</p>
 <section id="interpolation_nearest" class="level5">
 <h5 class="anchored" data-anchor-id="interpolation_nearest">INTERPOLATION_NEAREST</h5>
 <p>No interpolation (nearest value).</p>
@@ -336,7 +337,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code> create_entity_interpolate {
           id: 16 bytes (128-bit)
 past_entity_id: 16 bytes (128-bit)
-current_entity_id: 16 bytes (128-bit)
+current_entity_id: 16 bytes (128-bit) [to allow interpolation between different entities]
        user_data: 16 bytes (128-bit) [optional, e.g. opaque third-party identifier to link this transfer (many-to-one) to an external entity]
     reserved: 16 bytes (128-bit) [reserved, for accounting policy primitives]
       pending_id: 16 bytes (128-bit) [optional, required to post or void an existing but pending transfer]
