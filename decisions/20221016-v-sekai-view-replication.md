@@ -20,6 +20,8 @@ The key insight is everything is a keyframed animation.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
+We assume we're using Godot Engine 4 with float is doubles.
+
 1. Replicate pending property changes safely to a quorum of distributed replicas, then
 2. interpolate property changes to the in-memory state.
     * Ignore p_time too far in the future or the past as the viewstamp limit.
