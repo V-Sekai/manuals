@@ -36,35 +36,6 @@ We reuse the create_entity data structure as the state.
 
 Referencing https://github.com/tigerbeetledb/tigerbeetle/blob/main/docs/DESIGN.md#data-structures.
 
-> From the r128 documentation:
-> 
-> Fixed-point uses integer machine instructions, which on most modern processors are no faster, and often slower, than their floating-point equivalents. 
-> Therefore, if performance is a concern, it may be better to use fixed-point for storage of values, and to do computation on the differences between values as floating point, if the precision loss of conversion is acceptable.
-
-##### INTERPOLATION_NEAREST
-
-No interpolation (nearest value).
-
-##### INTERPOLATION_LINEAR
-
-Linear interpolation.
-
-##### INTERPOLATION_CUBIC
-
-Cubic interpolation.
-
-##### INTERPOLATION_LINEAR_ANGLE
-
-Linear interpolation with shortest path rotation.
-
-Note: The result value is always normalized and may not match the key value.
-
-##### INTERPOLATION_CUBIC_ANGLE
-
-Cubic interpolation with shortest path rotation.
-
-Note: The result value is always normalized and may not match the key value.
-
 ##### create_entity_interpolate
 
 We pad to the CPU cache line.
@@ -85,7 +56,7 @@ current_entity_id: 16 bytes (128-bit) [to allow interpolation between different 
 	    code:  2 bytes ( 16-bit) [required, an opaque entity code describing the type 
 	    	of the interpolation, e.g. player, map, prop]
 	   flags:  2 bytes ( 16-bit) [optional, to modify the usage of the reserved field and for future feature expansion.
-	   	Defaults to linear interpolation, but can be nearest, linear, and cubic. Can also flag a byte array. ]
+	   	Defaults to the InterpolationType of linear interpolation, but can be nearest, linear, and cubic. Can also flag a byte array. ]
 	  value:  64 bytes ( 512-bit) [required, 4 values of 64.64 signed fixed-point arithmetic in the unit of value
 	  	of the past and current entity, 
 	 	which must be the same for both entity. See godot/thirdparty/misc/r128.h. 
