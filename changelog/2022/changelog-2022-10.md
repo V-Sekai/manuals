@@ -28,3 +28,28 @@ https://github.com/v-sekai/v-sekai-game is released as fully opensource.
 
 > iFire (he, him) — Today at 16:33
 > https://github.com/V-Sekai/v-sekai-game/pull/5 added caching to reduce doing nothing builds from 2 hours to 10 minutes ish
+
+
+New contributors this week: 
+
+@Malek  Awesome for being around 🐱. Contributed to designs and cheering us when we succeed. Fixed the issue with the ci/cd with the recurse submodules. Too much to list!
+
+@gamethecupdog Helped us figured out some problems with AMD vr and V-sekai. We debugged the AMD VR launch issues and talked about fixing the vignette settings in the ui https://github.com/V-Sekai/V-Sekai.github.io/issues/378
+
+@meowses For supporting us and watching our presentation.
+
+@Kosyne For starting a topic about onboarding and our short term and long term planning.
+
+@! [P1-D3] Samuel Martin @Mr_Squarepeg  Thanks for hanging out on Sunday, we chatted about V-Sekai and played a bit of ZeroK. 
+GitHub
+
+## 2020-10-15
+
+iFire (he, him) — Today at 12:34
+Turned off the mesh mirror mode for avatars because of playtesting confusion. 
+
+Lyuma — Today at 13:04
+makes sense. at some point we can add a mirror, and we need a map aligned at the right place, or a script added to maps which define where the ""mirrors"" are (there can be more than one since it's just duplicating meshes which is cool)
+
+iFire (he, him) — Today at 14:47
+I added https://github.com/TokageItLab/realtime_retarget to V-Sekai's godot engine c++ modules. Please test, @トカゲ is looking for feedback. 
