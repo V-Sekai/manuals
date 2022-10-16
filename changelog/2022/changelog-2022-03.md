@@ -4,13 +4,9 @@ Steamdeck test with V-Sekai.
 
 Restored image grid in V-Sekai content picking.
 
-Productionize a clothing band / bracelet maker on 3d manifold-only meshes. https://user-images.githubusercontent.com/32321/158768466-95c213a5-2046-4158-bc06-ef7f254aed0d.png
-
-Play with a auto-ml thing that guesses floats, guesses classes and forecasts
-
 Working with the animation team to approve the skeleton animation retargeter.
 
-Convinced the gltf blender maintainer it's super easy to export pure 3d animations as gltf. https://github.com/fire/geodesiac-path-on-mesh https://mindsdb.com/ https://github.com/godotengine/godot/pull/56902 https://github.com/KhronosGroup/glTF-Blender-IO/pull/1582.
+https://github.com/fire/geodesiac-path-on-mesh https://mindsdb.com/ https://github.com/godotengine/godot/pull/56902 https://github.com/KhronosGroup/glTF-Blender-IO/pull/1582.
 
 Restored wasd in V-Sekai build.
 
