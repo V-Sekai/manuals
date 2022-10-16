@@ -36,12 +36,12 @@ We reuse the create_entity data structure as the state.
 
 Referencing https://github.com/tigerbeetledb/tigerbeetle/blob/main/docs/DESIGN.md#data-structures.
 
-##### create_entity_interpolate
+##### create_property_interpolate
 
 We pad to the CPU cache line.
 
 ```zig
-create_entity_interpolate {
+create_property_interpolate {
 	       id: 16 bytes (128-bit)
    past_entity_id: 16 bytes (128-bit)
 current_entity_id: 16 bytes (128-bit) [to allow interpolation between different entities]
@@ -58,19 +58,18 @@ current_entity_id: 16 bytes (128-bit) [to allow interpolation between different 
 	    flags:  2 bytes ( 16-bit) [optional, to modify the usage of the reserved field and for future feature expansion.
 		Defaults to the InterpolationType of linear interpolation, 
 		but can be nearest, linear, and cubic. ]
-	    value:  64 bytes ( 512-bit) [required, 4 values of 64.64 signed fixed-point arithmetic in the unit of value
-		of the past and current entity, 
-		which must be the same for both entity. See godot/thirdparty/misc/r128.h. 
+	    value:  n bytes ( n-bit) [required, variant of the past property and current property, 
+		which must be the same for both properties. 
 		Can fit a vector 4 or a quaternion. ]
 	timestamp:  8 bytes ( 64-bit) [reserved, assigned by the leader before journalling]
 } = 256 bytes (4 CPU cache lines)
 ```
 
-##### create_entity
+##### create_property
 
 We pad to the CPU cache line.
 ```zig
-   create_entity {
+   create_property {
 	      id: 16 bytes (128-bit)
        user_data: 16 bytes (128-bit) [optional, opaque third-party identifier to link this account 
 		(many-to-one) to an external entity]
@@ -81,10 +80,10 @@ We pad to the CPU cache line.
 		of the interpolation, e.g. player, map, prop]
 	   flags:  2 bytes ( 16-bit) [optional, net balance limits: 
 		e.g. debits_must_not_exceed_credits or credits_must_not_exceed_debits]
-     past_interpolations_pending:  64 bytes ( 512-bit)
-      past_interpolations_posted:  64 bytes ( 512-bit)
-  current_interpolations_pending:  64 bytes ( 512-bit)
-   current_interpolations_posted:  64 bytes ( 512-bit)
+     past_interpolations_pending:  n bytes ( n-bit)
+      past_interpolations_posted:  n bytes ( n-bit)
+  current_interpolations_pending:  n bytes ( n-bit)
+   current_interpolations_posted:  n bytes ( n-bit)
 		       timestamp:  8 bytes ( 64-bit) [reserved]
 } = 256 bytes (4 CPU cache lines)
 ```
