@@ -61,7 +61,7 @@ current_entity_id: 16 bytes (128-bit) [to allow interpolation between different 
 	    value:  n bytes ( n-bit) [required, variant of the past property and current property, 
 		which must be the same for both properties.]
 	timestamp:  8 bytes ( 64-bit) [reserved, assigned by the leader before journalling]
-} = 256 bytes (4 CPU cache lines)
+} = n bytes (n CPU cache lines)
 ```
 
 ##### create_property
@@ -84,7 +84,7 @@ We pad to the CPU cache line.
   current_interpolations_pending:  n bytes ( n-bit)
    current_interpolations_posted:  n bytes ( n-bit)
 		       timestamp:  8 bytes ( 64-bit) [reserved]
-} = 256 bytes (4 CPU cache lines)
+} = n bytes (n CPU cache lines)
 ```
 ## Positive Consequences <!-- optional -->
 
