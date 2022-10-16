@@ -14,7 +14,7 @@ Develop a performant and robust (correctly and with liveness) network entity syn
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-V-Sekai uses viewstamp replication in the context of game entity interpolation of current and future state.
+V-Sekai uses viewstamp replication in the context of game entity interpolation of past and current state.
 
 The key insight is everything is a keyframed animation.
 
