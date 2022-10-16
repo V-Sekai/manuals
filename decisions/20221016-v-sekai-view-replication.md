@@ -69,6 +69,7 @@ Tigerbeetle (quote):
 > 3. ACK to the client
 
 - [viewstamped-replication-made-famous](https://github.com/tigerbeetledb/viewstamped-replication-made-famous)
+- [vr-revisited.pdf](https://pmg.csail.mit.edu/papers/vr-revisited.pdf)
 - [TigerBeetle Discord server](https://discord.gg/uWCGp46uG5) 
 - [Cubic interpolation](https://docs.godotengine.org/en/latest/tutorials/math/interpolation.html)
 
