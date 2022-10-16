@@ -81,7 +81,9 @@ current_entity_id: 16 bytes (128-bit) [to allow interpolation between different 
 	  shard:  4 bytes ( 32-bit) [required, to enforce isolation by ensuring that all transfers are between accounts of the same shard]
 	    code:  2 bytes ( 16-bit) [required, an opaque entity code describing the type of the interpolation, e.g. player, map, prop]
 	   flags:  2 bytes ( 16-bit) [optional, to modify the usage of the reserved field and for future feature expansion]
-	  value:  64 bytes ( 512-bit) [required, 4 values of 64.64 signed fixed-point arithmetic in the unit of value of the past and current entity, which must be the same for both entity. See godot/thirdparty/misc/r128.h. Can be used as a byte array of 64 bytes. Can fit a vector 4 or a quaternion. ]
+	  value:  64 bytes ( 512-bit) [required, 4 values of 64.64 signed fixed-point arithmetic in the unit of value of the past and current entity, 
+	  which must be the same for both entity. See godot/thirdparty/misc/r128.h. 
+	  Can be used as a byte array of 64 bytes. Can fit a vector 4 or a quaternion. ]
        timestamp:  8 bytes ( 64-bit) [reserved, assigned by the leader before journalling]
 } = 256 bytes (4 CPU cache lines)
 ```
