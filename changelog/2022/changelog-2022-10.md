@@ -53,3 +53,5 @@ makes sense. at some point we can add a mirror, and we need a map aligned at the
 
 iFire (he, him) — Today at 14:47
 I added https://github.com/TokageItLab/realtime_retarget to V-Sekai's godot engine c++ modules. Please test, @トカゲ is looking for feedback. 
+
+tefusion's gdextension addon https://github.com/tefusion/godot-subdiv is now published. https://godotengine.org/asset-library/asset/1488
