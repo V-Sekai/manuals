@@ -2,7 +2,7 @@
 
 Updated 2022-10-15
 
-Our V-Sekai CI is located at [ci.v-sekai.cloud/](https://ci.v-sekai.cloud/) - you must use Guest to login, since GitLab is admin-only.
+Our V-Sekai CI is located at [ci.v-sekai.cloud/](https://ci.v-sekai.cloud) - you must use Guest to login, since GitLab is admin-only.
 
 Here are links to each of the latest jobs. Generally, you will want to click the Artifacts tab from each of these to download things.
 
