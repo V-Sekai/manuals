@@ -32,9 +32,37 @@ Everything is an event or a state. Try to fit datastructures into 128 bytes (2 C
 
 We reuse the create_entity data structure as the state.
 
-### create_entity
 
-### create_entity_simulate
+### create_entity_interpolate
+	 create_entity_interpolate {
+		      id: 16 bytes (128-bit)
+	past_entity_id: 16 bytes (128-bit)
+	current_entity_id: 16 bytes (128-bit)
+	       user_data: 16 bytes (128-bit) [optional, e.g. opaque third-party identifier to link this transfer (many-to-one) to an external entity]
+		reserved: 16 bytes (128-bit) [reserved, for accounting policy primitives]
+	      pending_id: 16 bytes (128-bit) [optional, required to post or void an existing but pending transfer]
+		 timeout:  8 bytes ( 64-bit) [optional, required only for a pending transfer, a quantity of time, i.e. an offset in nanoseconds from timestamp]
+		  shard:  4 bytes ( 32-bit) [required, to enforce isolation by ensuring that all transfers are between accounts of the same shard]
+		    code:  2 bytes ( 16-bit) [required, an opaque entity code describing the type of the interpolation, e.g. player, map, prop]
+		   flags:  2 bytes ( 16-bit) [optional, to modify the usage of the reserved field and for future feature expansion]
+		  value:  8 bytes ( 64-bit) [required, an unsigned integer in the unit of value of the past and current entity, which must be the same for both entity]
+	       timestamp:  8 bytes ( 64-bit) [reserved, assigned by the leader before journalling]
+	} = 128 bytes (2 CPU cache lines)
+
+### create_entity
+           create_entity {
+                      id: 16 bytes (128-bit)
+               user_data: 16 bytes (128-bit) [optional, opaque third-party identifier to link this account (many-to-one) to an external entity]
+                reserved: 48 bytes (384-bit) [reserved for future accounting policy primitives]
+                  shard:  4 bytes ( 32-bit) [required, to enforce isolation by ensuring that all transfers are between accounts of the same ledger]
+                    code:  2 bytes ( 16-bit) [required, an opaque entity code describing the type of the interpolation, e.g. player, map, prop]
+                   flags:  2 bytes ( 16-bit) [optional, net balance limits: e.g. debits_must_not_exceed_credits or credits_must_not_exceed_debits]
+          past_interpolations_pending:  8 bytes ( 64-bit)
+           past_interpolations_posted:  8 bytes ( 64-bit)
+         current_interpolations_pending:  8 bytes ( 64-bit)
+          current_interpolations_posted:  8 bytes ( 64-bit)
+               timestamp:  8 bytes ( 64-bit) [reserved]
+	} = 128 bytes (2 CPU cache lines)
 
 ## Positive Consequences <!-- optional -->
 
