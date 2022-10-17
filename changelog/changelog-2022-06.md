@@ -19,13 +19,13 @@
 
 https://gitlab.com/bramw/baserow/-/issues/998 Spent some documenting the baserow io system on Digital Ocean used to store in-progress art assets, data from research and 3d galleries.
 
-Donated research on avatar generation to the MIT-licensed project at https://github.com/AtlasFoundation/OpenCharacterCreator As part of: [lightweight-quality-avatars](../decisions/2022/20220601-lightweight-quality-avatars.md)
+Donated research on avatar generation to the MIT-licensed project at https://github.com/AtlasFoundation/OpenCharacterCreator As part of: [lightweight-quality-avatars](./20220601-lightweight-quality-avatars.md)
 
 ## 2022-06-01
 
 * Lyuma uncommented some code in vsk_avatar/ik_space.gd to create IK tracking points on the server, to enable IK sync via server. TL;DR (Other peers can see other peers while connected to a server.)
 
-![Movement Debugged Lyuma](../decisions/2022/attachments/movement_debugged_lyuma.png)
+![Movement Debugged Lyuma](./attachments/movement_debugged_lyuma.png)
 
 * Server sync issue removed from todo list.
 
