@@ -15,3 +15,5 @@ An asset library for opensource assets. https://godotengine.org/asset-library/as
 GDExtension provides a clean binary interface to the Godot Engine core. https://github.com/godotengine/godot-cpp
 
 The is an active discord for users. Many engine devs are active. https://discord.gg/4JBkykG
+
+The public developer chat is on RocketChat and using video conferencing on Jitsi. https://chat.godotengine.org/
