@@ -1,5 +1,7 @@
 # Scripting environment
 
+A built-in script editor.
+
 GDExtension – C++ binding ABI with cross-version.
 
 Native .NET 6, C# support.
