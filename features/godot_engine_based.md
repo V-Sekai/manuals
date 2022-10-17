@@ -17,3 +17,5 @@ GDExtension provides a clean binary interface to the Godot Engine core. https://
 The is an active discord for users. Many engine devs are active. https://discord.gg/4JBkykG
 
 The public developer chat is on RocketChat and using video conferencing on Jitsi. https://chat.godotengine.org/
+
+Godot Engine is the fastest growing Game Engine according to the GMTK 2022 Game Jam.
