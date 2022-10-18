@@ -1,7 +1,5 @@
 # Build games that can run in virtual reality rapidly and reliably
 
-V-Sekai runs on OpenXR and vulkan.
-
 Content is key.
 
 Full physically based rendering (PBR) out of the box.
@@ -19,3 +17,5 @@ Supports several types of files out of the box:
   * Wide application support in Blender, Godot and numerous others.
   * ISO/IEC 12113
   * Adoption in Unity, Unreal Engine and other software.
+
+V-Sekai runs on OpenXR and vulkan.
