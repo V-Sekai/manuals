@@ -8,7 +8,7 @@ https://github.com/V-Sekai/godot-seurat is dependent on being able to fetch 16 b
 1. Investigated technical art via breaking apart the cafe
 2. Investigated [DagAmendment](https://github.com/eliemichel/DagAmendment) for brush based refinement of csg shapes. 
 
-![image](./attachments/170873740-4fc1fe95-f58a-4521-8617-57925e704cef.png)
+![image](../decisions/attachments/170873740-4fc1fe95-f58a-4521-8617-57925e704cef.png)
 
 ## 2022-05-26
 
