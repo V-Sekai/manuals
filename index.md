@@ -8,9 +8,9 @@ V means virtual and Sekai means world in Japanese. So V-Sekai means virtual worl
 
 ## Collaborative effort
 
-Huge scope, piggyback on hundreds of Godot Engine contributors.
+Social vr has a huge scope and we piggyback on hundreds of Godot Engine contributors.
 
-Already over 100+ V-Sekai PRs merged into Godot Engine core.
+There has already been over 100+ V-Sekai PRs merged into Godot Engine core.
 
 ## How can you get involved?
 
