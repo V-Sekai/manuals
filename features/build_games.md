@@ -12,11 +12,15 @@ Supports several types of files out of the box:
 * Raw 3D Mesh (.obj)
 * glTF2 is a royalty-free specification for 3D content
   * Easy to read JSON format
+  * glTF2 is extensible. Khronos extension registry on Github. 
   * Replaces proprietary FBX
   * Replaces older COLLADA
   * Wide application support in Blender, Godot and numerous others.
   * ISO/IEC 12113
   * Adoption in Unity, Unreal Engine and other software.
+  * glTF-Blender-IO by Khronos
+  * glTF Transform by Don McCurdy
+  * Godot: New GLTFDocumentExtension API
 * Thanks to hard work by Facebook, FBX2glTF does a nearly perfect conversion of FBX content to glTF. Code is open source, but it does use the Autodesk SDK.
 
 ## Virtual Reality
