@@ -1,4 +1,4 @@
-# Be you and be yourself ingame
+# Be yourself ingame
 
 V-Sekai has added support for VRM avatar files, which are open source standards for sharing portable humanoid avatars between different virtual reality platforms.
 
