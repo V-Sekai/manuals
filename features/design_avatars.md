@@ -21,3 +21,12 @@ Contact us if you are interested in helping us create avatars to use in V-Sekai 
 * Custom facial expressions using morphs
 
 
+## Animation retargeting with special credit to Tokage
+
+* Animation Retargeting import as model, or import
+* Animation Retargeting as an animation library 
+* Built-in humanoid profile
+* Custom profiles possible, e.g. monsters or animals
+* Compatible with animations from Mixamo, Blender
+* Blend walk and run animations with blend spaces
+
