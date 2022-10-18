@@ -3,3 +3,5 @@
 Prototype quickly and be adaptive to change.
 
 We use continuous integration and continuous deployment.
+
+We record our decisions in documentation.
