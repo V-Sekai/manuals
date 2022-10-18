@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>V-Sekai Developer Documentation – test-google-mediapipe</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<script src="../site_libs/quarto-search/autocomplete-preset-algolia.umd.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "algolia": {
+    "application-id": "2IE1M5GC5G",
+    "search-only-api-key": "863078d76b639b43cee20498abb6b08a",
+    "index-name": "prod_vsekai",
+    "analytics-events": false,
+    "show-logo": false,
+    "libDir": "site_libs"
+  },
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js"></script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">V-Sekai Developer Documentation</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../changelog.html">Changes</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../decisions.html">Decisions</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../features/00_play_latest.html">Play</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../features/01_help_guidelines.html">Help</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../features/02_design_avatars.html">Be yourself</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../features/03_design_worlds.html">Create and visit places</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../features/04_build_games.html">Build virtual reality games</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../features/05_move_fast_without_breaking_things.html">Move fast without breaking things</a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#test-google-mediapipe" id="toc-test-google-mediapipe" class="nav-link active" data-scroll-target="#test-google-mediapipe">Test Google Mediapipe</a>
+  <ul class="collapse">
+  <li><a href="#context-and-problem-statement" id="toc-context-and-problem-statement" class="nav-link" data-scroll-target="#context-and-problem-statement">Context and Problem Statement</a></li>
+  <li><a href="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" id="toc-describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="nav-link" data-scroll-target="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</a></li>
+  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</a></li>
+  </ul></li>
+  <li><a href="#reconnect-the-intel-realsense-depth-camera-and-run-realsense-viewer-to-verify-the-installation." id="toc-reconnect-the-intel-realsense-depth-camera-and-run-realsense-viewer-to-verify-the-installation." class="nav-link" data-scroll-target="#reconnect-the-intel-realsense-depth-camera-and-run-realsense-viewer-to-verify-the-installation.">Reconnect the Intel RealSense depth camera and run: realsense-viewer to verify the installation.</a>
+  <ul class="collapse">
+  <li><a href="#alternative-instructions-for-realsense" id="toc-alternative-instructions-for-realsense" class="nav-link" data-scroll-target="#alternative-instructions-for-realsense">Alternative instructions for realsense</a></li>
+  <li><a href="#create-win10-support" id="toc-create-win10-support" class="nav-link" data-scroll-target="#create-win10-support">create win10 support</a></li>
+  <li><a href="#positive-consequences" id="toc-positive-consequences" class="nav-link" data-scroll-target="#positive-consequences">Positive Consequences <!-- optional --></a></li>
+  <li><a href="#negative-consequences" id="toc-negative-consequences" class="nav-link" data-scroll-target="#negative-consequences">Negative Consequences <!-- optional --></a></li>
+  <li><a href="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" id="toc-if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="nav-link" data-scroll-target="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</a></li>
+  <li><a href="#is-there-a-reason-why-this-should-be-core-and-done-by-us" id="toc-is-there-a-reason-why-this-should-be-core-and-done-by-us" class="nav-link" data-scroll-target="#is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References <!-- optional --></a></li>
+  <li><a href="#derivative-license" id="toc-derivative-license" class="nav-link" data-scroll-target="#derivative-license">Derivative License</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/V-Sekai.github.io/edit/master/decisions/20211005-test-google-mediapipe.md" class="toc-action">Edit this page</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="test-google-mediapipe" class="level1">
+<h1>Test Google Mediapipe</h1>
+<section id="context-and-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
+<p>We’re unable to test media pipe for iris.</p>
+</section>
+<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level2">
+<h2 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h2>
+<p>Setup github actions so we can package mediapipe to demo iris tracking.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h2>
+<ol type="1">
+<li>setup cicd for linux to media pipe</li>
+<li>setup cid for media pipe iris tracking</li>
+<li>create win10 support</li>
+</ol>
+<section id="get-video-for-linux-info-optional" class="level4">
+<h4 class="anchored" data-anchor-id="get-video-for-linux-info-optional">Get video for linux info (optional)</h4>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install v4l-utils <span class="at">-y</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">v4l2-ctl</span> <span class="at">--all</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="realsense-camera-optional" class="level4">
+<h4 class="anchored" data-anchor-id="realsense-camera-optional">Realsense Camera (optional)</h4>
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade &amp;&amp; sudo apt-get dist-upgrade
+git clone https://github.com/IntelRealSense/librealsense.git
+cd librealsense
+sudo apt-get install git libssl-dev libusb-1.0-0-dev pkg-config libgtk-3-dev -y
+sudo apt-get install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev -y
+./scripts/setup_udev_rules.sh
+# Use Postos 21.04 NVIDIA
+mkdir build &amp;&amp; cd build
+cmake ../ -DBUILD_EXAMPLES=true -DCMAKE_BUILD_TYPE=Release
+sudo make uninstall &amp;&amp; make clean &amp;&amp; make &amp;&amp; sudo make install -j`nproc`</code></pre>
+</section>
+</section>
+</section>
+<section id="reconnect-the-intel-realsense-depth-camera-and-run-realsense-viewer-to-verify-the-installation." class="level1">
+<h1>Reconnect the Intel RealSense depth camera and run: realsense-viewer to verify the installation.</h1>
+<section id="hello-world-in-c" class="level4">
+<h4 class="anchored" data-anchor-id="hello-world-in-c">Hello World in C++</h4>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install apt-transport-https curl gnupg <span class="at">-y</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://bazel.build/bazel-release.pub.gpg <span class="kw">|</span> <span class="ex">gpg</span> <span class="at">--dearmor</span> <span class="op">&gt;</span> bazel.gpg</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mv bazel.gpg /etc/apt/trusted.gpg.d/</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8"</span> <span class="kw">|</span> <span class="fu">sudo</span> tee /etc/apt/sources.list.d/bazel.list</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt install bazel-3.7.2 <span class="at">-y</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/google/mediapipe.git</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> mediapipe</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install python-is-python3 <span class="at">-y</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">GLOG_logtostderr</span><span class="op">=</span>1</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Need bazel flag 'MEDIAPIPE_DISABLE_GPU=1' as desktop GPU is not supported currently.</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="ex">bazel-3.7.2</span> run <span class="at">--define</span> MEDIAPIPE_DISABLE_GPU=1 <span class="dt">\</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    mediapipe/examples/desktop/hello_world:hello_world</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x setup_opencv.sh <span class="kw">&amp;&amp;</span> <span class="ex">./setup_opencv.sh</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ex">bazel-3.7.2</span> build <span class="at">--define</span> MEDIAPIPE_DISABLE_GPU=1 mediapipe/examples/desktop/iris_tracking:iris_tracking_cpu</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure a webcam is plugged in.</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="ex">./bazel-bin/mediapipe/examples/desktop/iris_tracking/iris_tracking_cpu</span> <span class="at">--calculator_graph_config_file</span><span class="op">=</span>./mediapipe/graphs/iris_tracking/iris_tracking_cpu.pbtxt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="alternative-instructions-for-realsense" class="level3">
+<h3 class="anchored" data-anchor-id="alternative-instructions-for-realsense">Alternative instructions for realsense</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./bazel-bin/mediapipe/examples/desktop/iris_tracking/iris_tracking_cpu</span> <span class="at">--calculator_graph_config_file</span><span class="op">=</span>./mediapipe/graphs/iris_tracking/iris_tracking_cpu.pbtxt <span class="at">--input_video_path</span><span class="op">=</span>/dev/video6</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="create-win10-support" class="level3">
+<h3 class="anchored" data-anchor-id="create-win10-support">create win10 support</h3>
+<p>Teach bazel llvm-mingw support.</p>
+</section>
+<section id="positive-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences <!-- optional --></h2>
+<p>Able to mocap faces.</p>
+<p>Able to use the human body as vr controllers.</p>
+</section>
+<section id="negative-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences <!-- optional --></h2>
+<p><em>No response</em></p>
+</section>
+<section id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
+<h2 class="anchored" data-anchor-id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</h2>
+<p>Pose estimation is interesting and we have someone who wants to collaborate.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
+<p><em>No response</em></p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References <!-- optional --></h2>
+<ul>
+<li>https://google.github.io/mediapipe/getting_started/hello_world_cpp.html</li>
+<li>https://google.github.io/mediapipe/getting_started/cpp.html</li>
+<li>https://google.github.io/mediapipe/solutions/iris.html</li>
+<li>https://github.com/google/mediapipe/issues/1530</li>
+<li>https://github.com/V-Sekai/mediapipe</li>
+</ul>
+</section>
+<section id="derivative-license" class="level2">
+<h2 class="anchored" data-anchor-id="derivative-license">Derivative License</h2>
+<p>Copyright (c) 2020-2021 V-Sekai contributors.</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/V-Sekai/V-Sekai">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
