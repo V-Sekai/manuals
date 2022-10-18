@@ -1,4 +1,4 @@
-# Download the latest development artifacts
+# Play the latest build
 
 Updated 2022-10-15
 

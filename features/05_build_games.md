@@ -1,4 +1,4 @@
-# Build games that can run in virtual reality rapidly and reliably
+# Build games that can run in virtual reality rapidly and robustly
 
 Content is key.
 
