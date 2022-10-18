@@ -6,6 +6,12 @@ Interested in [V-Sekai](https://v-sekai.org) or [#GodotVR](https://twitter.com/h
 
 V means virtual and Sekai means world in Japanese. So V-Sekai means virtual world.
 
+# Huge untapped market. Deserves to be open.
+
+Huge scope, piggyback on hundreds of Godot Engine contributors.
+
+Already over 100+ V-Sekai PRs merged into Godot Engine core.
+
 ## How can you get involved?
 
 - The group meets ad-hoc in Discord [discord.gg/7BQDHesck8](https://discord.gg/7BQDHesck8).
