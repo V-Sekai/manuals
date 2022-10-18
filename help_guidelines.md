@@ -1,6 +1,4 @@
 # Help V-Seki
-## How can you help V-Sekai?
-**[Join the V-Sekai discord server](https://discord.gg/7BQDHesck8)**
 
 ## How can you get involved?
 
