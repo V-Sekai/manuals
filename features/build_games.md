@@ -18,7 +18,13 @@ Supports several types of files out of the box:
   * ISO/IEC 12113
   * Adoption in Unity, Unreal Engine and other software.
 
-V-Sekai runs on OpenXR and vulkan.
+## Virtual Reality
+
+V-Sekai runs on OpenXR and Vulkan.
+
+## Common tools for Godot users include: 	
+
+A file loader that can open any file type it finds, including 2D and 3D assets (including scenes, scripts, meshes & textures) which can all be edited directly within the editor.
 
 ## Script games
 
