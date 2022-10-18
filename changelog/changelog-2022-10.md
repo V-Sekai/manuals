@@ -58,3 +58,7 @@ tefusion's gdextension addon https://github.com/tefusion/godot-subdiv is now pub
 iFire reorganized the development documentation site.
 
 iFire is working on a bullet train kinetic novel https://github.com/V-Sekai-fire/INK_bullet_train world.
+
+## 2022-10-17
+
+Updated this website to remove the left sidebar. Added headers to decisions and the changelog.
