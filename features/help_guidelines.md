@@ -1,4 +1,4 @@
-# Help V-Seki
+# Help V-Sekai
 
 ## How can you get involved?
 
