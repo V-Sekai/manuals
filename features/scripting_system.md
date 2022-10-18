@@ -1,12 +1,10 @@
-# Code environment
+# A full scripting system for creating virtual reality games.
 
 A built-in script editor.
 
 GDScript – in-house scripting language.
 
 GDExtension – C++ binding ABI with cross-version.
-
-Native .NET 6, C# support.
 
 C++ Modules - for native performance and portability.
 
