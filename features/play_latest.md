@@ -2,6 +2,8 @@
 
 Instructions last checked 2022-10-17.
 
+> Alpha software may not contain all of the features that are planned for the final version.
+
 Our V-Sekai CI is located at [ci.v-sekai.cloud/](https://ci.v-sekai.cloud) - you must use Guest to login, since GitLab is admin-only.
 
 Here are links to each of the latest jobs. Generally, you will want to click the Artifacts tab from each of these to download things.
