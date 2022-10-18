@@ -8,14 +8,14 @@ The Godot Engine developers have focused on making it versatile and accessible f
 
 Godot Engine is written in C++ and uses MIT License since 2014, allowing anyone to do whatever they want with its code.
 
-See the Godot Engine GitHub for issues, proposals and pull requests. https://github.com/godotengine/godot
+See the Godot Engine GitHub for issues, proposals and pull requests. [github.com/godotengine/godot](https://github.com/godotengine/godot)
 
-An asset library for opensource assets. https://godotengine.org/asset-library/asset
+An asset library for opensource assets. [asset-library](https://godotengine.org/asset-library/asset)
 
-GDExtension provides a clean binary interface to the Godot Engine core. https://github.com/godotengine/godot-cpp
+GDExtension provides a clean binary interface to the Godot Engine core. [godot-cpp](https://github.com/godotengine/godot-cpp}
 
-The is an active discord for users. Many engine devs are active. https://discord.gg/4JBkykG
+The is an active discord for users. Many engine devs are active. [4JBkykG](https://discord.gg/4JBkykG)
 
-The public developer chat is on RocketChat and using video conferencing on Jitsi. https://chat.godotengine.org/
+The public developer chat is on RocketChat and using video conferencing on Jitsi. [godotengine.org](https://chat.godotengine.org/)
 
 Godot Engine is the fastest growing Game Engine according to the GMTK 2022 Game Jam.
