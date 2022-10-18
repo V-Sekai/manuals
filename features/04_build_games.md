@@ -1,4 +1,4 @@
-# Build games that can run in virtual reality rapidly and robustly
+# Build virtual reality games 
 
 Content is key.
 
@@ -19,3 +19,19 @@ Supports several types of files out of the box:
   * Adoption in Unity, Unreal Engine and other software.
 
 V-Sekai runs on OpenXR and vulkan.
+
+## Script games
+
+A built-in script editor.
+
+GDScript – in-house scripting language.
+
+GDExtension – C++ binding ABI with cross-version.
+
+C++ Modules - for native performance and portability.
+
+## Sandbox scripting environment
+
+The sandboxed scripting environment is not active yet as of October 2022.
+
+A security-focused sandboxed scripting environment backed by WASM

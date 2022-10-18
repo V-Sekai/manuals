@@ -1,3 +1,3 @@
-# Design worlds (and visit the worlds)
+# Create places and visit places
 
-V-Sekai can import world and visit them.
+V-Sekai can import worlds and visit them.
