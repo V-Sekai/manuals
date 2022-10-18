@@ -17,6 +17,7 @@ Supports several types of files out of the box:
   * Wide application support in Blender, Godot and numerous others.
   * ISO/IEC 12113
   * Adoption in Unity, Unreal Engine and other software.
+* Thanks to hard work by Facebook, FBX2glTF does a nearly perfect conversion of FBX content to glTF. Code is open source, but it does use the Autodesk SDK.
 
 ## Virtual Reality
 
