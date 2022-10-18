@@ -1,6 +1,6 @@
 # Play the latest build
 
-Updated 2022-10-15
+Instructions last checked 2022-10-17.
 
 Our V-Sekai CI is located at [ci.v-sekai.cloud/](https://ci.v-sekai.cloud) - you must use Guest to login, since GitLab is admin-only.
 
