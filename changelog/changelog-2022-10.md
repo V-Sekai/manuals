@@ -65,4 +65,4 @@ Updated this website to remove the left sidebar. Added headers to decisions and 
 
 ## 2022-10-18
 
-Godot Engine proposal meeting rejected setting float=64 as default. However official builds are good.
+Godot Engine proposal meeting rejected setting float=64 as default. However official 64 builds builds have interest.
