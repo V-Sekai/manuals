@@ -2,7 +2,7 @@
 
 Instructions last checked 2022-10-17.
 
-V-Sekai is alpha software. 
+V-Sekai uses rolling releases, but is alpha quality. 
 
 > Alpha software may not contain all of the features that are planned for the final version. Alpha software is not thoroughly tested by the developer before it is released to customers. (Definition from Wikipedia.)
 
