@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>V-Sekai Developer Documentation – stream-shader-motion</title>
+<title>V-Sekai Developer Documentation – build_games</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,6 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <script src="../site_libs/quarto-search/autocomplete-preset-algolia.umd.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../features/05_go_fast_without_breaking_things.html" rel="next">
+<link href="../features/03_design_worlds.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -141,7 +143,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../features/04_build_games.html" class="sidebar-item-text sidebar-link">Build virtual reality games</a>
+  <a href="../features/04_build_games.html" class="sidebar-item-text sidebar-link active">Build virtual reality games</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -158,70 +160,51 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#stream-shader-motion" id="toc-stream-shader-motion" class="nav-link active" data-scroll-target="#stream-shader-motion">Stream shader motion</a>
+  <li><a href="#build-virtual-reality-games" id="toc-build-virtual-reality-games" class="nav-link active" data-scroll-target="#build-virtual-reality-games">Build virtual reality games</a>
   <ul class="collapse">
-  <li><a href="#context-and-problem-statement" id="toc-context-and-problem-statement" class="nav-link" data-scroll-target="#context-and-problem-statement">Context and Problem Statement</a></li>
-  <li><a href="#describe-the-feature-enhancement-and-how-it-helps-to-overcome-the-problem-or-limitation" id="toc-describe-the-feature-enhancement-and-how-it-helps-to-overcome-the-problem-or-limitation" class="nav-link" data-scroll-target="#describe-the-feature-enhancement-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the feature / enhancement and how it helps to overcome the problem or limitation</a></li>
-  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-andor-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-andor-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-andor-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams</a></li>
-  <li><a href="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" id="toc-if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="nav-link" data-scroll-target="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</a></li>
-  <li><a href="#positive-consequences" id="toc-positive-consequences" class="nav-link" data-scroll-target="#positive-consequences">Positive Consequences</a></li>
-  <li><a href="#negative-consequences" id="toc-negative-consequences" class="nav-link" data-scroll-target="#negative-consequences">Negative Consequences</a></li>
-  <li><a href="#is-there-a-reason-why-this-should-be-core-and-done-by-us" id="toc-is-there-a-reason-why-this-should-be-core-and-done-by-us" class="nav-link" data-scroll-target="#is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  <li><a href="#derivative-license" id="toc-derivative-license" class="nav-link" data-scroll-target="#derivative-license">Derivative License</a></li>
+  <li><a href="#script-games" id="toc-script-games" class="nav-link" data-scroll-target="#script-games">Script games</a></li>
+  <li><a href="#sandbox-scripting-environment" id="toc-sandbox-scripting-environment" class="nav-link" data-scroll-target="#sandbox-scripting-environment">Sandbox scripting environment</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/V-Sekai.github.io/edit/master/decisions/20211031-stream-shader-motion.md" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/V-Sekai.github.io/edit/master/features/04_build_games.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-<section id="stream-shader-motion" class="level1">
-<h1>Stream shader motion</h1>
-<section id="context-and-problem-statement" class="level3">
-<h3 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h3>
-<p>Want to stream shader motion to multiple people.</p>
-</section>
-<section id="describe-the-feature-enhancement-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level3">
-<h3 class="anchored" data-anchor-id="describe-the-feature-enhancement-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the feature / enhancement and how it helps to overcome the problem or limitation</h3>
-<p>Create a membrane Pipeline app for ShaderMotion and multiple people</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-andor-diagrams" class="level3">
-<h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-andor-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams</h3>
+<section id="build-virtual-reality-games" class="level1">
+<h1>Build virtual reality games</h1>
+<p>Content is key.</p>
+<p>Full physically based rendering (PBR) out of the box.</p>
+<p>Supports several types of files out of the box:</p>
 <ul>
-<li>for each person send shader motion frames</li>
-</ul>
-</section>
-<section id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="level3">
-<h3 class="anchored" data-anchor-id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</h3>
-<p>Not trivial</p>
-</section>
-<section id="positive-consequences" class="level3">
-<h3 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h3>
-<p><em>No response</em></p>
-</section>
-<section id="negative-consequences" class="level3">
-<h3 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h3>
-<p><em>No response</em></p>
-</section>
-<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level3">
-<h3 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h3>
-<p>I can move this forward.</p>
-</section>
-<section id="references" class="level3">
-<h3 class="anchored" data-anchor-id="references">References</h3>
+<li>Audio (.ogg, .mp3, .wav)</li>
+<li>Image (.png, .jpg, .tga, .exr)</li>
+<li>Video, Text, etc.</li>
+<li>Raw 3D Mesh (.obj)</li>
+<li>glTF2 is a royalty-free specification for 3D content
 <ul>
-<li>Membrane framework</li>
+<li>Easy to read JSON format</li>
+<li>Replaces proprietary FBX</li>
+<li>Replaces older COLLADA</li>
+<li>Wide application support in Blender, Godot and numerous others.</li>
+<li>ISO/IEC 12113</li>
+<li>Adoption in Unity, Unreal Engine and other software.</li>
+</ul></li>
 </ul>
+<p>V-Sekai runs on OpenXR and vulkan.</p>
+<section id="script-games" class="level2">
+<h2 class="anchored" data-anchor-id="script-games">Script games</h2>
+<p>A built-in script editor.</p>
+<p>GDScript – in-house scripting language.</p>
+<p>GDExtension – C++ binding ABI with cross-version.</p>
+<p>C++ Modules - for native performance and portability.</p>
 </section>
-<section id="derivative-license" class="level3">
-<h3 class="anchored" data-anchor-id="derivative-license">Derivative License</h3>
-<p>Copyright (c) 2020-2021 V-Sekai contributors.</p>
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+<section id="sandbox-scripting-environment" class="level2">
+<h2 class="anchored" data-anchor-id="sandbox-scripting-environment">Sandbox scripting environment</h2>
+<p>The sandboxed scripting environment is not active yet as of October 2022.</p>
+<p>A security-focused sandboxed scripting environment backed by WASM</p>
 
 
 </section>
@@ -439,6 +422,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../features/03_design_worlds.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Create places and visit places</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../features/05_go_fast_without_breaking_things.html" class="pagination-link">
+        <span class="nav-page-text">Go fast without breaking things</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
