@@ -19,7 +19,7 @@
 
 https://gitlab.com/bramw/baserow/-/issues/998 Spent some documenting the baserow io system on Digital Ocean used to store in-progress art assets, data from research and 3d galleries.
 
-Donated research on avatar generation to the MIT-licensed project at https://github.com/AtlasFoundation/OpenCharacterCreator As part of: [lightweight-quality-avatars](./20220601-lightweight-quality-avatars.md)
+Donated research on avatar generation to the MIT-licensed project at https://github.com/AtlasFoundation/OpenCharacterCreator As part of: [lightweight-quality-avatars](../decisions/20220601-lightweight-quality-avatars.md)
 
 ## 2022-06-01
 
