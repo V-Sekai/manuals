@@ -1,4 +1,4 @@
-# Scripting environment
+# Code environment
 
 A built-in script editor.
 
