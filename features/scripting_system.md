@@ -1,4 +1,4 @@
-# A full scripting system for creating virtual reality games.
+# A full scripting system for creating virtual reality games
 
 A built-in script editor.
 
