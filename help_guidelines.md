@@ -1,11 +1,12 @@
-#  Help us write about V-Sekai
+# Help V-Seki
+##  Help us write about V-Sekai
 
 * We are looking to make complete documentation for the developers and users.
 * We have a list of features we need to cover already.
 * Write as efficiently as possible to immediately create all the draft pages, one for each significant feature or topic we need to cover. Every prominent feature requires at least an introduction, so it needs a corresponding page with a descriptive title.
 * On each page, we want to create a bullet list of all the things the user needs to learn to use the feature.
 
-## An example topic
+### An example topic
 
 Let's take a topic, for example, Godot XR. The user will need to know:
 
@@ -20,7 +21,7 @@ And it doesn't take very long to write and review those bullet lists
 
 Last, for all the cases where the user has to follow steps (for example, using an interface), we need to detail each step with the most straightforward words possible. For instance, if they need to click on three buttons, we describe the steps with explicit mentions of the labels as seen in the UI and always use the same verbs, for example: 
 
-## An example instruction 
+### An example instruction 
 
 To change the game's resolution:
 
