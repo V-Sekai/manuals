@@ -62,3 +62,7 @@ iFire is working on a bullet train kinetic novel https://github.com/V-Sekai-fire
 ## 2022-10-17
 
 Updated this website to remove the left sidebar. Added headers to decisions and the changelog.
+
+## 2022-10-18
+
+Godot Engine proposal meeting rejected setting float=64 as default. However official builds are good.
