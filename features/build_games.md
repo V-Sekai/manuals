@@ -1,6 +1,6 @@
 # Build games that can run in virtual reality rapidly and reliably
 
-## 3D creator environment
+V-Sekai runs on OpenXR and vulkan.
 
 Content is key.
 
