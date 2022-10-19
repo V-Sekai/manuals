@@ -12,6 +12,7 @@ There are 100'000 networked entities in a city and we go from position a to posi
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
+I propose we have groups of servers owning entities. Each server is synchronized with mvsqlite.
  
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
