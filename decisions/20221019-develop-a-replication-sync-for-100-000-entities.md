@@ -20,7 +20,7 @@ I propose we have groups of servers handling entities. Each server is synchroniz
 
 We assume we're using Godot Engine 4 with float is doubles.
 
-Neither the godot-mvsqlite servers talk to each other. Only the fdb instances with mvstore talk to each other.
+None of the godot-mvsqlite servers talk to each other. Only the fdb instances with mvstore talk to each other.
 
 We can track the entity's visibility and have a packed byte array per frame.
  
