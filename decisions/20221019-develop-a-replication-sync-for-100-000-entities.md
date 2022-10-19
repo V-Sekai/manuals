@@ -1,4 +1,4 @@
-# Replicate sync 100'000 entities using godot engine, mvsqlite and foundation db
+# Replicate sync 100'000 entities using Godot Engine, mvsqlite and Foundationdb
 
 - Status: proposed
 - Deciders: V-Sekai,fire,
@@ -11,7 +11,6 @@ Develop a performant and robust (correctly and with liveness) network entity syn
 A client is a Godot Engine connection, it can view and change entities.
 
 There are 100'000 networked entities in a city and we go from position a to position b in a loop in a vehicle with one or more cabins.
-
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
