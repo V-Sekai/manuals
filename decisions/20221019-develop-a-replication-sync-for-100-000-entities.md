@@ -18,6 +18,8 @@ The golden rule to remember here, is to do everything tile based, and process ev
 
 The calculation of who to pair and to find nearby or relevant players to notify is a N^2 loop if done normally.
 
+Create seperate systems for movement versus notifies like a trade request.
+
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
 I propose we have groups of servers handling entities. Each server is synchronized with mvsqlite.
