@@ -20,7 +20,7 @@ The golden rule is to **do everything tile based, and process every object in a 
 
 Create a separate system for movement that happens every frame.
 
-Create a separate system for notifies like the avatar path changed.
+Create a separate system for notifies like the avatar path has changed.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
