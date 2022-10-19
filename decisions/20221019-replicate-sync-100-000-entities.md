@@ -10,7 +10,7 @@ Develop a performant and robust (correctly and with liveness) network entity syn
 
 A client is one Godot Engine connection, it can view and change entities.
 
-There are 100'000 networked entities in a city and we go from position a to position b in a loop in a mover with one or more attached entities (cabins).
+There are 100'000 networked entities in a city and we go from position a to position b in a loop in a mover with one or more attached cabins.
 
 The state database should be smaller to avoid replication traffic on non-liveliness.
 
