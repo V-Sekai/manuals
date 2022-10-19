@@ -18,7 +18,7 @@ The golden rule to remember here, is to do everything tile based, and process ev
 
 The calculation of who to pair and to find nearby or relevant players is a N^2 loop.
 
-Create a separate system for movement that happens every frame that is only handled once per frame in a singular class.
+Create a separate system for movement that happens every frame.
 
 Create a separate system for notifies like a trade request.
 
