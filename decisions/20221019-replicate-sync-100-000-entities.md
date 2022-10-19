@@ -43,7 +43,7 @@ We're doing the networking layer.
 
 ## References <!-- optional and numbers of links can vary -->
 
-- 20221019-develop-a-replication-sync-for-100-000-entities.md](20221019-develop-a-replication-sync-for-100-000-entities.md)
+- [20221019-develop-a-replication-sync-for-100-000-entities.md](20221019-develop-a-replication-sync-for-100-000-entities.md)
 
 
 ## Derivative License
