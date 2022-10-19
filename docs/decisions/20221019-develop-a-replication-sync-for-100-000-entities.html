@@ -140,10 +140,30 @@ ul.task-list li input[type="checkbox"] {
 <section id="context-and-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
 <p>Develop a performant and robust (correctly and with liveness) network entity sync in V-Sekai.</p>
+<p>There are 100’000 networked entities in a city and we go from position a to position b in a loop in a vehicle with one or more cabins.</p>
 </section>
 <section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level2">
 <h2 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h2>
-<p>There are 100’000 networked entities in a city and we go from position a to position b in a loop in a vehicle with one or more cabins.</p>
+<pre class="nomnoml"><code>[godot server alpha with mvsqlite| owns groups entities per tick
+  | have a way to track entities
+  | create, update and delete entity groups] -&gt; [fdb node 0 with mvstore]
+[godot server beta with mvsqlite| owns groups entities per tick
+  | have a way to track entities
+  | create, update and delete entity groups] -&gt;  [fdb node 1 with mvstore]
+[godot server gamma with mvsqlite| owns groups entities per tick
+  | have a way to track entities
+  | create, update and delete entity groups] -&gt;  [fdb node 2 with mvstore]
+[godot client alice] -&gt; [godot server alpha with mvsqlite]
+[godot client bob] -&gt; [godot server beta with mvsqlite]
+[godot client carol] -&gt; [godot server gamma with mvsqlite]
+[fdb node 0 with mvstore] - [fdb node 1 with mvstore]
+[fdb node 1 with mvstore] - [fdb node 2 with mvstore]</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://user-images.githubusercontent.com/32321/196738190-51c3c486-e91d-44fe-868b-73aeb83e8913.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image</figcaption><p></p>
+</figure>
+</div>
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h2>
