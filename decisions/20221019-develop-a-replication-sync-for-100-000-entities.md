@@ -18,15 +18,13 @@ We assume we're using Godot Engine 4 with float is doubles.
 
 Neither the godot servers nor mvsqlite talk to each other. Only the fdb instances with mvstore talk to each other.
 
-This is not designed yet.
-
 ## Positive Consequences <!-- optional -->
 
 - The code is using foundationdb's share nothing architecture.
 
 ## Negative Consequences <!-- optional -->
 
-- [Todo]
+- Worried that latency will be above 20 milliseconds.
 
 ## Option graveyard: <!-- same as above -->
 
