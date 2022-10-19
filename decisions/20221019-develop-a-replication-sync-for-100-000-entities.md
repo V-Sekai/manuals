@@ -1,0 +1,64 @@
+# Replicate 
+
+- Status: proposed
+- Deciders: V-Sekai,fire,
+- Tags: V-Sekai,sync,view replication,
+
+## Context and Problem Statement
+
+Develop a performant and robust (correctly and with liveness) network entity sync in V-Sekai.
+
+## Describe the proposed option and how it helps to overcome the problem or limitation
+
+There are 100,000 networked entities in a city and we from go from position a to position b in a circle in a mover with cabins.
+
+## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+
+We assume we're using Godot Engine 4 with float is doubles.
+
+## Positive Consequences <!-- optional -->
+
+- The code is based on robust view replication consensus algorithm theory.
+- The playback of the state machine is deterministic.
+
+## Negative Consequences <!-- optional -->
+
+- Minimum of three relays.
+
+## Option graveyard: <!-- same as above -->
+
+- Option: Current V-Sekai replication
+- Rejection Reason: Can't link servers
+
+## If this enhancement will not be used often, can it be worked around with a few lines of script?
+
+Entity replication is not trivial.
+
+## Is there a reason why this should be core and done by us?
+
+We're doing the networking layer.
+
+## References <!-- optional and numbers of links can vary -->
+
+
+## Derivative License
+
+Copyright (c) 2022 V-Sekai contributors.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
