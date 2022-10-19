@@ -16,7 +16,7 @@ The state database should be smaller to avoid replication traffic on non-livelin
 
 The golden rule to remember here, is to do everything tile based, and process every object in a tile at once.
 
-The calculation of who to pair and to find nearby or relevant players to notify is a N^2 loop if done normally.
+The calculation of who to pair and to find nearby or relevant players is a N^2 loop.
 
 Create a separate system for movement that happens every frame that is only handled once per frame in a singular class.
 
