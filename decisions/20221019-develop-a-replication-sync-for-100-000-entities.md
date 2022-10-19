@@ -38,6 +38,8 @@ We can track the entity's visibility and have a packed byte array per frame.
 
 Use mvsqlite in STRICT sql mode.
 
+Use the SQLite generated columns option STORED to optimize for reading and VIRTUAL to optimize for writing.
+
 Create ECS style mvsqlite database for streaming and events (movement, health, avatar path and others).
 
 For movement update the table once and only once per frame.
