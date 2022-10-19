@@ -33,12 +33,11 @@ What data should be synced? librq tracks entity's visibility and a packed byte a
 
 ![image](https://user-images.githubusercontent.com/32321/196738190-51c3c486-e91d-44fe-868b-73aeb83e8913.png)
 
-
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
 We assume we're using Godot Engine 4 with float is doubles.
 
-Neither the godot servers nor mvsqlite talk to each other. Only the fdb instances with mvstore talk to each other.
+Neither the godot-mvsqlite servers talk to each other. Only the fdb instances with mvstore talk to each other.
 
 ## Positive Consequences <!-- optional -->
 
