@@ -16,6 +16,8 @@ There are 100,000 networked entities in a city and we from go from position a to
 
 We assume we're using Godot Engine 4 with float is doubles.
 
+This is not designed yet.
+
 ## Positive Consequences <!-- optional -->
 
 - The code is based on robust view replication consensus algorithm theory.
