@@ -41,6 +41,7 @@ We're doing the networking layer.
 
 ## References <!-- optional and numbers of links can vary -->
 
+- [fault-tolerance](https://apple.github.io/foundationdb/fault-tolerance.html)
 
 ## Derivative License
 
