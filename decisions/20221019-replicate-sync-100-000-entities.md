@@ -12,12 +12,6 @@ A client is one Godot Engine connection, it can view and change entities.
 
 There are 100'000 networked entities in a city and we go from position a to position b in a loop in a mover with one or more attached cabins.
 
-### Questions
-
-How many clients can be in this simulation?
-
-The state database should be smaller to avoid replication traffic on non-liveliness.
-
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
 This document is a general problem statement.
@@ -46,6 +40,12 @@ We're doing the networking layer.
 - [20221019-develop-a-replication-sync-for-100-000-entities.md](20221019-develop-a-replication-sync-for-100-000-entities.md)
 - [20221016-v-sekai-view-replication.md](20221016-v-sekai-view-replication.md)
 - [20221014-networking-overhaul-proposal.md](20221014-networking-overhaul-proposal.md)
+
+### Questions
+
+How many clients can be in this simulation?
+
+The state database should be smaller to avoid replication traffic on non-liveliness.
 
 ## Math
 
