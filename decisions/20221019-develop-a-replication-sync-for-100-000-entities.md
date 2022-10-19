@@ -12,6 +12,8 @@ A client is a Godot Engine connection, it can view and change entities.
 
 There are 100'000 networked entities in a city and we go from position a to position b in a loop in a vehicle with one or more cabins.
 
+The state database should be small to avoid replication traffic on non-liveliness.
+
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
 I propose we have groups of servers handling entities. Each server is synchronized with mvsqlite.
