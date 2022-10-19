@@ -20,12 +20,11 @@ This is not designed yet.
 
 ## Positive Consequences <!-- optional -->
 
-- The code is based on robust view replication consensus algorithm theory.
-- The playback of the state machine is deterministic.
+- The code is using foundationdb's share nothing architecture.
 
 ## Negative Consequences <!-- optional -->
 
-- Minimum of three relays.
+- [Todo]
 
 ## Option graveyard: <!-- same as above -->
 
