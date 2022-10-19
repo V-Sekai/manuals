@@ -20,7 +20,7 @@ The calculation of who to pair and to find nearby or relevant players is a N^2 l
 
 Create a separate system for movement that happens every frame.
 
-Create a separate system for notifies like a trade request.
+Create a separate system for notifies like the avatar path changed.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
