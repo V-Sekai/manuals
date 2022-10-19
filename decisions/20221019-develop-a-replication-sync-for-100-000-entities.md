@@ -1,4 +1,4 @@
-# Replicate 
+# Replicate sync 100'000 entities using godot engine, mvsqlite and foundation db
 
 - Status: proposed
 - Deciders: V-Sekai,fire,
