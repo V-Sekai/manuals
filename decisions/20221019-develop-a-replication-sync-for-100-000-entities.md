@@ -17,14 +17,12 @@ The state database should be smaller to avoid replication traffic on non-livelin
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
 I propose we have groups of servers handling entities. Each server is synchronized with mvsqlite.
- 
-The servers do not share (independently access) the same memory or storage.
- 
+  
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
 We assume we're using Godot Engine 4 with float is doubles.
 
-None of the godot-mvsqlite servers talk to each other. Only the fdb instances with mvstore talk to each other.
+The servers do not share (independently access) the same memory or storage.
 
 We can track the entity's visibility and have a packed byte array per frame.
  
