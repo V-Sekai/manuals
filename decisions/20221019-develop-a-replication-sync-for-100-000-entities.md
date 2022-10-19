@@ -69,6 +69,7 @@ We're doing the networking layer.
 
 - [fault-tolerance](https://apple.github.io/foundationdb/fault-tolerance.html)
 - [godot-sqlite with mvsqlite](https://github.com/V-Sekai/godot-sqlite/tree/mvsqlite)
+- [novus core](https://github.com/novuscore/NovusCore)
 
 ## Diagram source
 
