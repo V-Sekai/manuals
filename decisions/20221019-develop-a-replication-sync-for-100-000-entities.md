@@ -15,10 +15,10 @@ What data should be synced? librq tracks entity's visibility and a packed byte a
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
 ```nomnoml
-[godot client alice] -> [godot server alpha with mvsqlite |  [godot server gamma with mvsqlite| owns groups entities per tick
+[godot client alice] -> [godot server alpha with mvsqlite |  [godot server alpha with mvsqlite| owns groups entities per tick
   | have a way to track entities
   | create, update and delete entity groups]]
-[godot client bob] -> [godot server beta with mvsqlite |  [godot server gamma with mvsqlite| owns groups entities per tick
+[godot client bob] -> [godot server beta with mvsqlite |  [godot server beta with mvsqlite| owns groups entities per tick
   | have a way to track entities
   | create, update and delete entity groups]]
 [godot client carol] -> [godot server gamma with mvsqlite |  [godot server gamma with mvsqlite| owns groups entities per tick
@@ -29,8 +29,7 @@ What data should be synced? librq tracks entity's visibility and a packed byte a
   [godot server beta with mvsqlite] - [godot server gamma with mvsqlite]
 ```
 
-![image](https://user-images.githubusercontent.com/32321/196742968-9569ee22-1f1b-4c0a-9bcd-13d7293350e8.png)
-
+![image](https://user-images.githubusercontent.com/32321/196743240-092dba67-98e7-4a92-937c-48dd26284d4f.png)
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
