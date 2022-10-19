@@ -41,6 +41,9 @@ We're doing the networking layer.
 
 ## References <!-- optional and numbers of links can vary -->
 
+- [20221019-replicate-sync-100-000-entities.md](20221019-replicate-sync-100-000-entities.md)
+
+
 ## Derivative License
 
 Copyright (c) 2022 V-Sekai contributors.
