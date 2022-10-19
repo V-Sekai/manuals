@@ -8,9 +8,29 @@
 
 Develop a performant and robust (correctly and with liveness) network entity sync in V-Sekai.
 
+There are 100'000 networked entities in a city and we go from position a to position b in a loop in a vehicle with one or more cabins.
+
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-There are 100'000 networked entities in a city and we go from position a to position b in a loop in a vehicle with one or more cabins.
+```nomnoml
+[godot server alpha with mvsqlite| owns groups entities per tick
+  | have a way to track entities
+  | create, update and delete entity groups] -> [fdb node 0 with mvstore]
+[godot server beta with mvsqlite| owns groups entities per tick
+  | have a way to track entities
+  | create, update and delete entity groups] ->  [fdb node 1 with mvstore]
+[godot server gamma with mvsqlite| owns groups entities per tick
+  | have a way to track entities
+  | create, update and delete entity groups] ->  [fdb node 2 with mvstore]
+[godot client alice] -> [godot server alpha with mvsqlite]
+[godot client bob] -> [godot server beta with mvsqlite]
+[godot client carol] -> [godot server gamma with mvsqlite]
+[fdb node 0 with mvstore] - [fdb node 1 with mvstore]
+[fdb node 1 with mvstore] - [fdb node 2 with mvstore]
+```
+
+![image](https://user-images.githubusercontent.com/32321/196738190-51c3c486-e91d-44fe-868b-73aeb83e8913.png)
+
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
