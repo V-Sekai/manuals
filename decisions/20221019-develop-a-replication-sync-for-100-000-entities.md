@@ -8,7 +8,7 @@
 
 Develop a performant and robust (correctly and with liveness) network entity sync in V-Sekai.
 
-A client is a Godot Engine connection, it can interact with many entities.
+A client is a Godot Engine connection, it can view and change entities.
 
 There are 100'000 networked entities in a city and we go from position a to position b in a loop in a vehicle with one or more cabins.
 
