@@ -6,7 +6,7 @@
 
 ## Context and Problem Statement
 
-See [20221019-replicate-sync-100-000-entities.md](replicate sync 100'000 entities using a solution).
+See [replicate sync 100'000 entities using a solution](20221019-replicate-sync-100-000-entities.md).
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
