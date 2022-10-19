@@ -24,7 +24,7 @@ Neither the godot servers nor mvsqlite talk to each other. Only the fdb instance
 
 ## Negative Consequences <!-- optional -->
 
-- Worried that latency will be above 20 milliseconds.
+- Worried that latency will be above 20 milliseconds. It was shown in the graphs. May be a bug in mvsqlite with sequential key contention.
 
 ## Option graveyard: <!-- same as above -->
 
