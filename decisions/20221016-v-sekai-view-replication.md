@@ -6,9 +6,7 @@
 
 ## Context and Problem Statement
 
-How do we handle a thousand V-Sekai players on the same shard?
-
-How can we be robust?
+See [replicate sync 100'000 entities using a solution](20221019-replicate-sync-100-000-entities.md).
 
 Develop a performant and robust (correctly and with liveness) network entity sync in V-Sekai.
 
