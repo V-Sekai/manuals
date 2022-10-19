@@ -10,7 +10,7 @@ Develop a performant and robust (correctly and with liveness) network entity syn
 
 There are 100'000 networked entities in a city and we go from position a to position b in a loop in a vehicle with one or more cabins.
 
-What data should be synced? librq tracks entity's visibility and a packed byte array per frame.
+What data should be synced?
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
@@ -31,6 +31,8 @@ What data should be synced? librq tracks entity's visibility and a packed byte a
 
 ![image](https://user-images.githubusercontent.com/32321/196743240-092dba67-98e7-4a92-937c-48dd26284d4f.png)
 
+ We can track the entity's visibility and habe a packed byte array per frame.
+ 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
 We assume we're using Godot Engine 4 with float is doubles.
