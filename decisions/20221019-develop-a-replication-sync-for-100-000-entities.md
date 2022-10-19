@@ -18,27 +18,11 @@ I propose we have groups of servers owning entities. Each server is synchronized
 
 We assume we're using Godot Engine 4 with float is doubles.
 
- We can track the entity's visibility and have a packed byte array per frame.
- 
-```nomnoml
-[godot client alice] -> [godot server alpha with mvsqlite |  [godot server alpha with mvsqlite| owns groups entities per tick
-  | have a way to track entities
-  | create, update and delete entity groups]]
-[godot client bob] -> [godot server beta with mvsqlite |  [godot server beta with mvsqlite| owns groups entities per tick
-  | have a way to track entities
-  | create, update and delete entity groups]]
-[godot client carol] -> [godot server gamma with mvsqlite |  [godot server gamma with mvsqlite| owns groups entities per tick
-  | have a way to track entities
-  | create, update and delete entity groups]]
-  [godot server alpha with mvsqlite] - [godot server beta with mvsqlite]
-  [godot server alpha with mvsqlite] - [godot server gamma with mvsqlite]
-  [godot server beta with mvsqlite] - [godot server gamma with mvsqlite]
-```
-
-![image](https://user-images.githubusercontent.com/32321/196743240-092dba67-98e7-4a92-937c-48dd26284d4f.png)
-
-
 Neither the godot-mvsqlite servers talk to each other. Only the fdb instances with mvstore talk to each other.
+
+We can track the entity's visibility and have a packed byte array per frame.
+ 
+![image](https://user-images.githubusercontent.com/32321/196743240-092dba67-98e7-4a92-937c-48dd26284d4f.png)
 
 ## Positive Consequences <!-- optional -->
 
@@ -64,6 +48,24 @@ We're doing the networking layer.
 ## References <!-- optional and numbers of links can vary -->
 
 - [fault-tolerance](https://apple.github.io/foundationdb/fault-tolerance.html)
+
+## Diagram source
+
+```nomnoml
+[godot client alice] -> [godot server alpha with mvsqlite |  [godot server alpha with mvsqlite| owns groups entities per tick
+  | have a way to track entities
+  | create, update and delete entity groups]]
+[godot client bob] -> [godot server beta with mvsqlite |  [godot server beta with mvsqlite| owns groups entities per tick
+  | have a way to track entities
+  | create, update and delete entity groups]]
+[godot client carol] -> [godot server gamma with mvsqlite |  [godot server gamma with mvsqlite| owns groups entities per tick
+  | have a way to track entities
+  | create, update and delete entity groups]]
+  [godot server alpha with mvsqlite] - [godot server beta with mvsqlite]
+  [godot server alpha with mvsqlite] - [godot server gamma with mvsqlite]
+  [godot server beta with mvsqlite] - [godot server gamma with mvsqlite]
+```
+
 
 ## Derivative License
 
