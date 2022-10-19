@@ -15,23 +15,22 @@ What data should be synced? librq tracks entity's visibility and a packed byte a
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
 ```nomnoml
-[godot server alpha with mvsqlite| owns groups entities per tick
+[godot client alice] -> [godot server alpha with mvsqlite |  [godot server gamma with mvsqlite| owns groups entities per tick
   | have a way to track entities
-  | create, update and delete entity groups] -> [fdb node 0 with mvstore]
-[godot server beta with mvsqlite| owns groups entities per tick
+  | create, update and delete entity groups]]
+[godot client bob] -> [godot server beta with mvsqlite |  [godot server gamma with mvsqlite| owns groups entities per tick
   | have a way to track entities
-  | create, update and delete entity groups] ->  [fdb node 1 with mvstore]
-[godot server gamma with mvsqlite| owns groups entities per tick
+  | create, update and delete entity groups]]
+[godot client carol] -> [godot server gamma with mvsqlite |  [godot server gamma with mvsqlite| owns groups entities per tick
   | have a way to track entities
-  | create, update and delete entity groups] ->  [fdb node 2 with mvstore]
-[godot client alice] -> [godot server alpha with mvsqlite]
-[godot client bob] -> [godot server beta with mvsqlite]
-[godot client carol] -> [godot server gamma with mvsqlite]
-[fdb node 0 with mvstore] - [fdb node 1 with mvstore]
-[fdb node 1 with mvstore] - [fdb node 2 with mvstore]
+  | create, update and delete entity groups]]
+  [godot server alpha with mvsqlite] - [godot server beta with mvsqlite]
+  [godot server alpha with mvsqlite] - [godot server gamma with mvsqlite]
+  [godot server beta with mvsqlite] - [godot server gamma with mvsqlite]
 ```
 
-![image](https://user-images.githubusercontent.com/32321/196738190-51c3c486-e91d-44fe-868b-73aeb83e8913.png)
+![image](https://user-images.githubusercontent.com/32321/196742968-9569ee22-1f1b-4c0a-9bcd-13d7293350e8.png)
+
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
