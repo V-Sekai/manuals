@@ -8,8 +8,6 @@
 
 See [replicate sync 100'000 entities using a solution](20221019-replicate-sync-100-000-entities.md).
 
-Develop a performant and robust (correctly and with liveness) network entity sync in V-Sekai.
-
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
 V-Sekai could use viewstamp replication in the context of game entity interpolation of past and current state.
