@@ -52,6 +52,7 @@ We're doing the networking layer.
 ## References <!-- optional and numbers of links can vary -->
 
 - [fault-tolerance](https://apple.github.io/foundationdb/fault-tolerance.html)
+- [godot-sqlite with mvsqlite](https://github.com/V-Sekai/godot-sqlite/tree/mvsqlite)
 
 ## Diagram source
 
