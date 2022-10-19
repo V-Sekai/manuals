@@ -12,7 +12,7 @@ There are 100'000 networked entities in a city and we go from position a to posi
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
- We can track the entity's visibility and habe a packed byte array per frame.
+ We can track the entity's visibility and have a packed byte array per frame.
  
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
