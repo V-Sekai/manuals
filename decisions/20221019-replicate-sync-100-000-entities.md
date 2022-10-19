@@ -16,11 +16,9 @@ How many clients can be in this simulation?
 
 The state database should be smaller to avoid replication traffic on non-liveliness.
 
-The calculation of who to pair and to find nearby or relevant players is a N^2 loop. Use better algorithms to lower O (N^2) into O (N log N).
-
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-The proposed solution can be solved in O (N log N). This document is a general problem statement.
+This document is a general problem statement.
 
 ## Positive Consequences <!-- optional -->
 
@@ -47,6 +45,11 @@ We're doing the networking layer.
 - [20221016-v-sekai-view-replication.md](20221016-v-sekai-view-replication.md)
 - [20221014-networking-overhaul-proposal.md](20221014-networking-overhaul-proposal.md)
 
+## Math
+
+The calculation of who to pair and to find nearby or relevant players is a N^2 loop. Use better algorithms to lower O (N^2) into O (N log N).
+
+The proposed solution can be solved in O (N log N).
 
 ## Derivative License
 
