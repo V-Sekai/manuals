@@ -10,7 +10,7 @@ Develop a performant and robust (correctly and with liveness) network entity syn
 
 There are 100'000 networked entities in a city and we go from position a to position b in a loop in a vehicle with one or more cabins.
 
-What data should be synced?
+What data should be synced? librq tracks entity's visibility and a packed byte array per frame.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
