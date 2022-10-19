@@ -12,6 +12,8 @@ A client is one Godot Engine connection, it can view and change entities.
 
 There are 100'000 networked entities in a city and we go from position a to position b in a loop in a mover with one or more attached cabins.
 
+How many clients can be in this sim?
+
 The state database should be smaller to avoid replication traffic on non-liveliness.
 
 The calculation of who to pair and to find nearby or relevant players is a N^2 loop. Use better algorithms to lower O (N^2) into O (N log N).
