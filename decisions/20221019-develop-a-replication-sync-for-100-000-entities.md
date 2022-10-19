@@ -14,7 +14,7 @@ There are 100'000 networked entities in a city and we go from position a to posi
 
 The state database should be smaller to avoid replication traffic on non-liveliness.
 
-The calculation of who to pair and to find nearby or relevant players is a N^2 loop.
+The calculation of who to pair and to find nearby or relevant players is a N^2 loop. Use better algorithms to lower O (N^2) into O (N log N).
 
 The golden rule is to **do everything tile based, and process every object in a tile at once**.
 
