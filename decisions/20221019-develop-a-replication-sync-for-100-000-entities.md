@@ -30,7 +30,7 @@ We can track the entity's visibility and have a packed byte array per frame.
 
 ## Negative Consequences <!-- optional -->
 
-- Worried that latency will be above 20 milliseconds. It was shown in the graphs. May be a bug in mvsqlite with sequential key contention.
+- Worried that latency will be above 20 milliseconds. It was shown in the graphs. May be a bug in mvsqlite with sequential key retries. Does the ownership / mastership of entities change often?
 
 ## Option graveyard: <!-- same as above -->
 
