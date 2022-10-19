@@ -22,6 +22,8 @@ Create a separate system for movement that happens every frame.
 
 Create a separate system for notifies like the avatar path has changed.
 
+Specialize each system.
+
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
 I propose we have groups of servers handling entities. Each server is synchronized with mvsqlite.
