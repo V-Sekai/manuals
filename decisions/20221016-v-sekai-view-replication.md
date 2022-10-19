@@ -16,7 +16,7 @@ Develop a performant and robust (correctly and with liveness) network entity syn
 
 V-Sekai could use viewstamp replication in the context of game entity interpolation of past and current state.
 
-The key insight is everything is a keyframed animation.
+The key insight is everything is a keyframed animation that is nearest, linear or cubic interpolated.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
