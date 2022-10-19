@@ -33,6 +33,12 @@ We assume we're using Godot Engine 4 with float is doubles.
 The servers do not share (independently access) the same memory or storage.
 
 We can track the entity's visibility and have a packed byte array per frame.
+
+Create ECS style mvsqlite database for streaming and events (movement, health, avatar path and others).
+
+For movement update the table once and only once per frame.
+
+For avatar paths that change rarely, batching all the updates and send at most once per frame.
  
 ![image](https://user-images.githubusercontent.com/32321/196743240-092dba67-98e7-4a92-937c-48dd26284d4f.png)
 
