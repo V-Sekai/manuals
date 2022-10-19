@@ -18,7 +18,7 @@ The calculation of who to pair and to find nearby or relevant players is a N^2 l
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-We have no idea.
+The proposed solution can be solved in O (N log N).
 
 ## Positive Consequences <!-- optional -->
 
