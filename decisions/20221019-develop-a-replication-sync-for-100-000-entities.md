@@ -6,23 +6,7 @@
 
 ## Context and Problem Statement
 
-Develop a performant and robust (correctly and with liveness) network entity sync in V-Sekai.
-
-A client is one Godot Engine connection, it can view and change entities.
-
-There are 100'000 networked entities in a city and we go from position a to position b in a loop in a mover with one or more attached entities (cabins).
-
-The state database should be smaller to avoid replication traffic on non-liveliness.
-
-The calculation of who to pair and to find nearby or relevant players is a N^2 loop. Use better algorithms to lower O (N^2) into O (N log N).
-
-The golden rule is to **do everything tile based, and process every object in a tile at once**.
-
-Create a separate system for movement that happens every frame.
-
-Create a separate system for notifies like the avatar path has changed.
-
-Specialize each system.
+See [20221019-replicate-sync-100-000-entities.md](replicate sync 100'000 entities using a solution).
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
