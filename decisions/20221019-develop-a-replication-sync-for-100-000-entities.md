@@ -12,13 +12,13 @@ There are 100'000 networked entities in a city and we go from position a to posi
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
- We can track the entity's visibility and have a packed byte array per frame.
  
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
 We assume we're using Godot Engine 4 with float is doubles.
 
-
+ We can track the entity's visibility and have a packed byte array per frame.
+ 
 ```nomnoml
 [godot client alice] -> [godot server alpha with mvsqlite |  [godot server alpha with mvsqlite| owns groups entities per tick
   | have a way to track entities
