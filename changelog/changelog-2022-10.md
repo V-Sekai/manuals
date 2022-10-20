@@ -66,3 +66,19 @@ Updated this website to remove the left sidebar. Added headers to decisions and 
 ## 2022-10-18
 
 Godot Engine proposal meeting rejected setting float=64 as default. However official 64 bit builds have interest.
+
+## 2022-10-20
+
+Early morning discussion with guillefix, lyuma and fire.
+
+Feature requests from the community:
+
+* desktop capture
+* avatar ik
+* quest support
+* 3d node graph system
+* in-game content creation
+* wasm for game scripting
+
+
+
