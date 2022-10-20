@@ -40,31 +40,28 @@ This keeps low latency but reduces the needed bandwidth to sync 100,000 entites.
 
 Napkin math:
 
-```
-50 bytes per frame per object * 100,000 objects = 5MB per frame.
-5MB/frame * 20 fps = 100MB = 1Gbps
-If we send updates of all obejcts to all objects, that requires 100Tb/s
+    50 bytes per frame per object * 100,000 objects = 5MB per frame.
+    5MB/frame * 20 fps = 100MB = 1Gbps
+    If we send updates of all obejcts to all objects, that requires 100Tb/s
 
-> yea 100k users at once is impossible any way you put it. I think a realistic goal is 1k, as like, our max goal
+    > yea 100k users at once is impossible any way you put it. I think a realistic goal is 1k, as like, our max goal
 
-Right, so you would need to not send updates for far away objects
+    Right, so you would need to not send updates for far away objects
 
-Only send 1000 closest objects: 1Tb/s 
+    Only send 1000 closest objects: 1Tb/s 
 
-+ Send faraway objects at 2Hz: 100Gb/s
+    + Send faraway objects at 2Hz: 100Gb/s
 
-+ Heavy delta compression: 10Gb/s
+    + Heavy delta compression: 10Gb/s
 
-This is for all players
+    This is for all players
 
-Thie means, in a hypothetical universe where distant objects only need position sync, a server with 10Gb/s NIC could theoretically run 100,000 concurrent users, if optimizzed!
+    Thie means, in a hypothetical universe where distant objects only need position sync, a server with 10Gb/s NIC could theoretically run 100,000 concurrent users, if optimizzed!
 
-Also, therefore, per player bandwidth **of distant objects** would be 100Kbit/s of downstream data, which is pretty small.
+    Also, therefore, per player bandwidth **of distant objects** would be 100Kbit/s of downstream data, which is pretty small.
 
-Again I haven't accounted for IK synchronization, or for additional nearby objects, so it could be higher here.
-Nearby objects is a smaller problem and easier to solve, and belongs in a separate proposal.
-
-```
+    Again I haven't accounted for IK synchronization, or for additional nearby objects, so it could be higher here.
+    Nearby objects is a smaller problem and easier to solve, and belongs in a separate proposal.
 
 ## Negative Consequences <!-- compromising quality attribute, follow-up decisions required -->
 
