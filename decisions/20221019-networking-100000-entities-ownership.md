@@ -1,4 +1,4 @@
-# Networking with 100000 Entities and Ownership
+# Networking with 100000 Entities and Ownership (Revision 2)
 
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
