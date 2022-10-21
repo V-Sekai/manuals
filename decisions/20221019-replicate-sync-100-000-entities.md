@@ -1,4 +1,4 @@
-# Replicate sync 100'000 entities using a solution
+# Replicate sync 100'000 entities using a solution (Revision 1)
 
 - Status: proposed
 - Deciders: V-Sekai,fire,
