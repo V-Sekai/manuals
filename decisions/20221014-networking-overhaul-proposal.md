@@ -1,4 +1,4 @@
-# Networking Overhaul Proposal
+# Networking Overhaul
 
 - Status: draft
 - Deciders: V-Sekai, Malek, Lyuma, SaracenOne, Fire,
