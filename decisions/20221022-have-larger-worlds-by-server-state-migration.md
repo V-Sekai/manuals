@@ -14,6 +14,57 @@ Each V-Sekai game server has a scalability limit. Transfer each player to a diff
 
 Transfer the state using a database that can handle commits in commit order despite parallel transactions.
 
+## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+
+1. Partition the world into tiles
+
+![20221022_uniform_partitioning by Prasetya, Kusno](./attachments/20221022_uniform_partitioning.png)
+
+2. Define the tiles with a premigration and migration border.
+
+![20221022_world_parition_pre_migration_and_migration_costs by Prasetya, Kusno](./attachments/20221022_world_parition_pre_migration_and_migration_costs.png)
+
+3. Transfer the player from one server to another by first syncing all the frames, and have the player connect to the other side. Then the server does the transfer and the player connects to the other side when the migration boundary is hit.
+
+![20221022_server_state_transfer_load.png](./attachments/20221022_server_state_transfer_load.png)
+
+4. Test using a multiplayer simulator.
+
+![20221022_multiplayer_sim_variables by Prasetya, Kusno](./attachments/20221022_multiplayer_sim_variables.png)
+
+## Positive Consequences <!-- improvement of quality attribute satisfaction, follow-up decisions required -->
+
+- Allows player transfer from one server to the others servers.
+
+## Negative Consequences <!-- compromising quality attribute, follow-up decisions required -->
+
+- Needs to connect the servers to the foundation database simulation servers.
+
+## Option graveyard:
+
+- Option: The status quo. <!-- List the proposed options no longer open for consideration. -->
+- Rejection Reason: This solves nothing. <!-- List the reasons for the rejection: (the bad traits) -->
+
+## If this enhancement will not be used often, can it be worked around with a few lines of script?
+
+It's not a few lines of script.
+
+## Is there a reason why this should be core and done by us?
+
+We own the networking stack.
+
+## References
+
+- [V-Sekai](https://v-sekai.org/)
+- [Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG by Prasetya, Kusno](https://pure.bond.edu.au/ws/portalfiles/portal/18275482/Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG_.pdf)
+- [godot sqlite mvsqlite](https://github.com/V-Sekai/godot-sqlite/tree/mvsqlite)
+- [godot mvsql demo](https://github.com/V-Sekai/godot-sqlite/tree/mvsqlite/demo)
+- [mvsqlite](https://github.com/losfair/mvsqlite)
+- [Apple's foundationdb](https://github.com/apple/foundationdb)
+- [Rust lang](https://www.rust-lang.org/)
+
+## Code References
+
 ### Create entity table
 
 ```swift
@@ -111,55 +162,6 @@ func _exit_tree():
 	var _result_batch = result_delete.batch_execute([statement])
 ```
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
-
-1. Partition the world into tiles
-
-![20221022_uniform_partitioning by Prasetya, Kusno](./attachments/20221022_uniform_partitioning.png)
-
-2. Define the tiles with a premigration and migration border.
-
-![20221022_world_parition_pre_migration_and_migration_costs by Prasetya, Kusno](./attachments/20221022_world_parition_pre_migration_and_migration_costs.png)
-
-3. Transfer the player from one server to another by first syncing all the frames, and have the player connect to the other side. Then the server does the transfer and the player connects to the other side when the migration boundary is hit.
-
-![20221022_server_state_transfer_load.png](./attachments/20221022_server_state_transfer_load.png)
-
-4. Test using a multiplayer simulator.
-
-![20221022_multiplayer_sim_variables by Prasetya, Kusno](./attachments/20221022_multiplayer_sim_variables.png)
-
-
-## Positive Consequences <!-- improvement of quality attribute satisfaction, follow-up decisions required -->
-
-- Allows player transfer from one server to the others servers.
-
-## Negative Consequences <!-- compromising quality attribute, follow-up decisions required -->
-
-- Needs to connect the servers to the foundation database simulation servers.
-
-## Option graveyard:
-
-- Option: The status quo. <!-- List the proposed options no longer open for consideration. -->
-- Rejection Reason: This solves nothing. <!-- List the reasons for the rejection: (the bad traits) -->
-
-## If this enhancement will not be used often, can it be worked around with a few lines of script?
-
-It's not a few lines of script.
-
-## Is there a reason why this should be core and done by us?
-
-We own the networking stack.
-
-## References
-
-- [V-Sekai](https://v-sekai.org/)
-- [Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG by Prasetya, Kusno](https://pure.bond.edu.au/ws/portalfiles/portal/18275482/Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG_.pdf)
-- [godot sqlite mvsqlite](https://github.com/V-Sekai/godot-sqlite/tree/mvsqlite)
-- [godot mvsql demo](https://github.com/V-Sekai/godot-sqlite/tree/mvsqlite/demo)
-- [mvsqlite](https://github.com/losfair/mvsqlite)
-- [Apple's foundationdb](https://github.com/apple/foundationdb)
-- [Rust lang](https://www.rust-lang.org/)
 
 ## License of the contribution
 
