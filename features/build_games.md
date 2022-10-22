@@ -25,7 +25,7 @@ Supports several types of files out of the box:
 
 V-Sekai runs on OpenXR and Vulkan.
 
-## Content is key
+## Content
 
 Content is key.
 
