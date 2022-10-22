@@ -81,8 +81,8 @@ CREATE TABLE entity (
 	id TEXT PRIMARY KEY NOT NULL CHECK(LENGTH(id) = 36),
 	user_data blob NOT NULL CHECK( LENGTH(user_data) = 16) DEFAULT (zeroblob(16)),
 	reserved blob NOT NULL CHECK( LENGTH(reserved) = 48)  DEFAULT (zeroblob(48)),
-	shard	INTEGER NOT NULL,	
-	code	INTEGER NOT NULL,	
+	shard	INTEGER NOT NULL,
+	code	INTEGER NOT NULL,
 	flags	INTEGER	NOT NULL,
 	past_pending	BLOB NOT NULL CHECK( LENGTH(past_pending) <= 1024) DEFAULT (zeroblob(64)),
 	past_posted BLOB NOT NULL CHECK( LENGTH(past_posted) <= 1024) DEFAULT (zeroblob(64)),
@@ -90,7 +90,7 @@ CREATE TABLE entity (
 	current_posted	BLOB NOT NULL CHECK( LENGTH(current_posted) <= 1024) DEFAULT (zeroblob(64)),
 	timestamp INTEGER NOT NULL
 ) WITHOUT ROWID, STRICT;
-"""	
+"""
 #	db.query(create_entity_table)
 	var _truncate_entities : String = """
 DELETE FROM entity;
@@ -104,7 +104,6 @@ DELETE FROM entity;
 		node_3d.owner = self
 ```
 
-
 ### Simulate entity processing
 
 ```swift
@@ -113,7 +112,7 @@ extends Node3D
 var db : SQLite = null
 var result_create : SQLiteQuery
 var result_delete : SQLiteQuery
-var uuid : String 
+var uuid : String
 
 func _ready():
 	db = SQLite.new();
@@ -128,8 +127,8 @@ drop view entity_interpolate;
 drop view entity_view;
 """
 	var select_uuid : String = """
-	SELECT lower(hex(randomblob(4)) || '-' || hex(randomblob(2)) || '-' || '4' || 
-	substr(hex( randomblob(2)), 2) || '-' || 
+	SELECT lower(hex(randomblob(4)) || '-' || hex(randomblob(2)) || '-' || '4' ||
+	substr(hex( randomblob(2)), 2) || '-' ||
 	substr('AB89', 1 + (abs(random()) % 4) , 1)  ||
 	substr(hex(randomblob(2)), 2) || '-' ||
 	hex(randomblob(6))) as uuid;
@@ -146,7 +145,7 @@ VALUES (?, zeroblob(16), zeroblob(48), 0, 0, 0, zeroblob(64), zeroblob(64), zero
 	WHERE id = ?;
 """
 	result_delete = db.create_query(query_delete)
-	
+
 func _process(_delta):
 	if db == null:
 		return
@@ -161,7 +160,6 @@ func _exit_tree():
 	var statement : Array = [uuid]
 	var _result_batch = result_delete.batch_execute([statement])
 ```
-
 
 ## License of the contribution
 
