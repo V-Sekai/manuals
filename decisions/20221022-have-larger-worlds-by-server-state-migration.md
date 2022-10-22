@@ -12,7 +12,7 @@ Each V-Sekai game server has a scalability limit. Transfer each player to a diff
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-Transfer the state using a database that can handle commits in commit order despite parallel transactions.
+Transfer the state using a database that can handle commits in commit order despite parallel transactions. Foundationdb is used by Apple for their cloud services and is trusted to handle distributed data safely.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
