@@ -67,6 +67,7 @@ We own the networking stack.
 - [mvsqlite](https://github.com/losfair/mvsqlite)
 - [Apple's foundationdb](https://github.com/apple/foundationdb)
 - [Rust lang](https://www.rust-lang.org/)
+- [Special thanks to the TigerBeetle for the sql schema](https://github.com/tigerbeetledb/tigerbeetle)
 
 ## Code References
 
