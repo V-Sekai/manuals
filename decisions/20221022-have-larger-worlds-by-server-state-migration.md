@@ -79,8 +79,9 @@ func _ready():
 	if (!db.open("test")):
 		print("Failed opening database.");
 		return;
+	var _drop : String = """drop table if exists entity;
+"""
 	var _create_entity_table : String = """
-DROP TABLE IF EXISTS entity;
 CREATE TABLE entity (
 	id TEXT PRIMARY KEY NOT NULL CHECK(LENGTH(id) = 36),
 	user_data blob NOT NULL CHECK( LENGTH(user_data) = 16) DEFAULT (zeroblob(16)),
@@ -123,13 +124,7 @@ func _ready():
 	if (!db.open("test")):
 		print("Failed opening database.");
 		return;
-	var _drop : String = """drop table if exists entity;
-drop trigger "entity_interpolate_insert";
-drop trigger "entity_interpolate_update";
-drop trigger "entity_interpolate_delete";
-drop view entity_interpolate;
-drop view entity_view;
-"""
+
 	var select_uuid : String = """
 	SELECT lower(hex(randomblob(4)) || '-' || hex(randomblob(2)) || '-' || '4' ||
 	substr(hex( randomblob(2)), 2) || '-' ||
