@@ -20,7 +20,7 @@ Godot Engine is a game engine where the interiors are easy to rearrange.
 
 Sqlite is a well written database that is fully tested.
 
-Rust is a good language for failures in math or computer language, but does not handle non code errors (like cosmic rays).
+Rust is a good language for failures in math or computer language, but does not handle non code errors (like cosmic rays) through language based hardware distribution.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
