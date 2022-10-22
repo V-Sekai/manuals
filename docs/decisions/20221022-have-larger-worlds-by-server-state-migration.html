@@ -175,11 +175,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#simulate-larger-worlds-using-brickworlds-partition-layout" id="toc-simulate-larger-worlds-using-brickworlds-partition-layout" class="nav-link active" data-scroll-target="#simulate-larger-worlds-using-brickworlds-partition-layout">Simulate larger worlds using “brickworlds partition layout”</a>
   <ul class="collapse">
   <li><a href="#context-and-problem-statement" id="toc-context-and-problem-statement" class="nav-link" data-scroll-target="#context-and-problem-statement">Context and Problem Statement</a></li>
-  <li><a href="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" id="toc-describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="nav-link" data-scroll-target="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</a>
-  <ul class="collapse">
-  <li><a href="#create-entity-table" id="toc-create-entity-table" class="nav-link" data-scroll-target="#create-entity-table">Create entity table</a></li>
-  <li><a href="#simulate-entity-processing" id="toc-simulate-entity-processing" class="nav-link" data-scroll-target="#simulate-entity-processing">Simulate entity processing</a></li>
-  </ul></li>
+  <li><a href="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" id="toc-describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="nav-link" data-scroll-target="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</a></li>
   <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</a></li>
   <li><a href="#positive-consequences" id="toc-positive-consequences" class="nav-link" data-scroll-target="#positive-consequences">Positive Consequences <!-- improvement of quality attribute satisfaction, follow-up decisions required --></a></li>
   <li><a href="#negative-consequences" id="toc-negative-consequences" class="nav-link" data-scroll-target="#negative-consequences">Negative Consequences <!-- compromising quality attribute, follow-up decisions required --></a></li>
@@ -187,6 +183,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" id="toc-if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="nav-link" data-scroll-target="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</a></li>
   <li><a href="#is-there-a-reason-why-this-should-be-core-and-done-by-us" id="toc-is-there-a-reason-why-this-should-be-core-and-done-by-us" class="nav-link" data-scroll-target="#is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#code-references" id="toc-code-references" class="nav-link" data-scroll-target="#code-references">Code References</a>
+  <ul class="collapse">
+  <li><a href="#create-entity-table" id="toc-create-entity-table" class="nav-link" data-scroll-target="#create-entity-table">Create entity table</a></li>
+  <li><a href="#simulate-entity-processing" id="toc-simulate-entity-processing" class="nav-link" data-scroll-target="#simulate-entity-processing">Simulate entity processing</a></li>
+  </ul></li>
   <li><a href="#license-of-the-contribution" id="toc-license-of-the-contribution" class="nav-link" data-scroll-target="#license-of-the-contribution">License of the contribution</a></li>
   </ul></li>
   </ul>
@@ -212,6 +213,87 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level2">
 <h2 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h2>
 <p>Transfer the state using a database that can handle commits in commit order despite parallel transactions.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h2>
+<ol type="1">
+<li>Partition the world into tiles</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./attachments/20221022_uniform_partitioning.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">20221022_uniform_partitioning by Prasetya, Kusno</figcaption><p></p>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>Define the tiles with a premigration and migration border.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./attachments/20221022_world_parition_pre_migration_and_migration_costs.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">20221022_world_parition_pre_migration_and_migration_costs by Prasetya, Kusno</figcaption><p></p>
+</figure>
+</div>
+<ol start="3" type="1">
+<li>Transfer the player from one server to another by first syncing all the frames, and have the player connect to the other side. Then the server does the transfer and the player connects to the other side when the migration boundary is hit.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./attachments/20221022_server_state_transfer_load.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">20221022_server_state_transfer_load.png</figcaption><p></p>
+</figure>
+</div>
+<ol start="4" type="1">
+<li>Test using a multiplayer simulator.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./attachments/20221022_multiplayer_sim_variables.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">20221022_multiplayer_sim_variables by Prasetya, Kusno</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="positive-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences <!-- improvement of quality attribute satisfaction, follow-up decisions required --></h2>
+<ul>
+<li>Allows player transfer from one server to the others servers.</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences <!-- compromising quality attribute, follow-up decisions required --></h2>
+<ul>
+<li>Needs to connect the servers to the foundation database simulation servers.</li>
+</ul>
+</section>
+<section id="option-graveyard" class="level2">
+<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard:</h2>
+<ul>
+<li>Option: The status quo. <!-- List the proposed options no longer open for consideration. --></li>
+<li>Rejection Reason: This solves nothing. <!-- List the reasons for the rejection: (the bad traits) --></li>
+</ul>
+</section>
+<section id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
+<h2 class="anchored" data-anchor-id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</h2>
+<p>It’s not a few lines of script.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
+<p>We own the networking stack.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+<li><a href="https://pure.bond.edu.au/ws/portalfiles/portal/18275482/Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG_.pdf">Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG by Prasetya, Kusno</a></li>
+<li><a href="https://github.com/V-Sekai/godot-sqlite/tree/mvsqlite">godot sqlite mvsqlite</a></li>
+<li><a href="https://github.com/V-Sekai/godot-sqlite/tree/mvsqlite/demo">godot mvsql demo</a></li>
+<li><a href="https://github.com/losfair/mvsqlite">mvsqlite</a></li>
+<li><a href="https://github.com/apple/foundationdb">Apple’s foundationdb</a></li>
+<li><a href="https://www.rust-lang.org/">Rust lang</a></li>
+</ul>
+</section>
+<section id="code-references" class="level2">
+<h2 class="anchored" data-anchor-id="code-references">Code References</h2>
 <section id="create-entity-table" class="level3">
 <h3 class="anchored" data-anchor-id="create-entity-table">Create entity table</h3>
 <div class="sourceCode" id="cb1"><pre class="sourceCode swift code-with-copy"><code class="sourceCode swift"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>extends Node3D</span>
@@ -304,84 +386,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    <span class="dt">var</span> <span class="fu">statement</span> <span class="op">:</span> <span class="dt">Array</span> <span class="op">=</span> <span class="op">[</span>uuid<span class="op">]</span></span>
 <span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">_result_batch</span> <span class="op">=</span> result_delete<span class="op">.</span>batch_execute<span class="op">([</span>statement<span class="op">])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h2>
-<ol type="1">
-<li>Partition the world into tiles</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./attachments/20221022_uniform_partitioning.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">20221022_uniform_partitioning by Prasetya, Kusno</figcaption><p></p>
-</figure>
-</div>
-<ol start="2" type="1">
-<li>Define the tiles with a premigration and migration border.</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./attachments/20221022_world_parition_pre_migration_and_migration_costs.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">20221022_world_parition_pre_migration_and_migration_costs by Prasetya, Kusno</figcaption><p></p>
-</figure>
-</div>
-<ol start="3" type="1">
-<li>Transfer the player from one server to another by first syncing all the frames, and have the player connect to the other side. Then the server does the transfer and the player connects to the other side when the migration boundary is hit.</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./attachments/20221022_server_state_transfer_load.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">20221022_server_state_transfer_load.png</figcaption><p></p>
-</figure>
-</div>
-<ol start="4" type="1">
-<li>Test using a multiplayer simulator.</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./attachments/20221022_multiplayer_sim_variables.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">20221022_multiplayer_sim_variables by Prasetya, Kusno</figcaption><p></p>
-</figure>
-</div>
-</section>
-<section id="positive-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences <!-- improvement of quality attribute satisfaction, follow-up decisions required --></h2>
-<ul>
-<li>Allows player transfer from one server to the others servers.</li>
-</ul>
-</section>
-<section id="negative-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences <!-- compromising quality attribute, follow-up decisions required --></h2>
-<ul>
-<li>Needs to connect the servers to the foundation database simulation servers.</li>
-</ul>
-</section>
-<section id="option-graveyard" class="level2">
-<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard:</h2>
-<ul>
-<li>Option: The status quo. <!-- List the proposed options no longer open for consideration. --></li>
-<li>Rejection Reason: This solves nothing. <!-- List the reasons for the rejection: (the bad traits) --></li>
-</ul>
-</section>
-<section id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
-<h2 class="anchored" data-anchor-id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</h2>
-<p>It’s not a few lines of script.</p>
-</section>
-<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
-<p>We own the networking stack.</p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ul>
-<li><a href="https://v-sekai.org/">V-Sekai</a></li>
-<li><a href="https://pure.bond.edu.au/ws/portalfiles/portal/18275482/Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG_.pdf">Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG by Prasetya, Kusno</a></li>
-<li><a href="https://github.com/V-Sekai/godot-sqlite/tree/mvsqlite">godot sqlite mvsqlite</a></li>
-<li><a href="https://github.com/V-Sekai/godot-sqlite/tree/mvsqlite/demo">godot mvsql demo</a></li>
-<li><a href="https://github.com/losfair/mvsqlite">mvsqlite</a></li>
-<li><a href="https://github.com/apple/foundationdb">Apple’s foundationdb</a></li>
-<li><a href="https://www.rust-lang.org/">Rust lang</a></li>
-</ul>
 </section>
 <section id="license-of-the-contribution" class="level2">
 <h2 class="anchored" data-anchor-id="license-of-the-contribution">License of the contribution</h2>
