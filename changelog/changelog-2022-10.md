@@ -80,5 +80,7 @@ Feature requests from the community:
 * in-game content creation
 * wasm for game scripting
 
+# 2022-10-22
 
+Meeting between Betalars, fire, lyuma, jeana and others about usability in 3d games, convention application and V-Sekai.
 
