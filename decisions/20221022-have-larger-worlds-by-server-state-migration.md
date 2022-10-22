@@ -1,7 +1,7 @@
-# Simulate larger worlds using "brickworlds partition layout"
+# Simulate larger 3d multiplayer worlds using "brickworlds partition layout"
 
 - Status: draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
-- Deciders: V-Sekai,
+- Deciders: V-Sekai,Fire,Groak,
 - Tags: V-Sekai,
 
 ## Context and Problem Statement
