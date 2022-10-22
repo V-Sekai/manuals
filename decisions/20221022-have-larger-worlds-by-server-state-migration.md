@@ -16,19 +16,23 @@ Transfer the state using a database that can handle commits in commit order desp
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-1. Partition the world into tiles
+1. Partition the world into tiles via Prasetya, Kusno's design.
 
 <img src="./attachments/20221022_uniform_partitioning.png" alt="20221022_uniform_partitioning by Prasetya, Kusno" width="50%">
 
 2. Define the tiles with a premigration and migration border.
 
+Premigration and migration border via Prasetya, Kusno's design.
+
 <img src="./attachments/20221022_world_parition_pre_migration_and_migration_costs.png" alt="20221022_world_parition_pre_migration_and_migration_costs by Prasetya, Kusno" width="50%">
 
 3. Transfer the player from one server to another by first syncing all the frames, and have the player connect to the other side. Then the server does the transfer and the player connects to the other side when the migration boundary is hit.
 
-<img src="./attachments/20221022_server_state_transfer_load.png" alt="20221022_server_state_transfer_load" width="50%">
+Server state transfer via Prasetya, Kusno's design.
 
-4. Test using a multiplayer simulator.
+<img src="./attachments/20221022_server_state_transfer_load.png" alt="20221022_server_state_transfer_load by Prasetya, Kusno" width="50%">
+
+4. Test using a multiplayer simulator via Prasetya, Kusno's design
 
 <img src="./attachments/20221022_multiplayer_sim_variables.png" alt="20221022_multiplayer_sim_variables by Prasetya, Kusno" width="50%">
 
