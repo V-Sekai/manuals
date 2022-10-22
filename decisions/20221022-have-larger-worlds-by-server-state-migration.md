@@ -34,7 +34,7 @@ Server state transfer via Prasetya, Kusno's design.
 
 4. Test using a multiplayer simulator via Prasetya, Kusno's design
 
-<img src="./attachments/20221022_multiplayer_sim_variables.png" alt="20221022_multiplayer_sim_variables by Prasetya, Kusno" width="50%">
+<img src="./attachments/20221022_multiplayer_sim_variables.png" alt="20221022_multiplayer_sim_variables by Prasetya, Kusno" width="25%">
 
 ## Positive Consequences <!-- improvement of quality attribute satisfaction, follow-up decisions required -->
 
