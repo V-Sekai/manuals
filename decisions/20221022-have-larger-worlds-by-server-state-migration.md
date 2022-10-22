@@ -14,7 +14,102 @@ Each V-Sekai game server has a scalability limit. Transfer each player to a diff
 
 Transfer the state using a database that can handle commits in commit order despite parallel transactions.
 
+### Create entity table
 
+```swift
+extends Node3D
+
+func _ready():
+	var db : SQLite = SQLite.new();
+	if (!db.open("test")):
+		print("Failed opening database.");
+		return;
+	var _create_entity_table : String = """
+DROP TABLE IF EXISTS entity;
+CREATE TABLE entity (
+	id TEXT PRIMARY KEY NOT NULL CHECK(LENGTH(id) = 36),
+	user_data blob NOT NULL CHECK( LENGTH(user_data) = 16) DEFAULT (zeroblob(16)),
+	reserved blob NOT NULL CHECK( LENGTH(reserved) = 48)  DEFAULT (zeroblob(48)),
+	shard	INTEGER NOT NULL,	
+	code	INTEGER NOT NULL,	
+	flags	INTEGER	NOT NULL,
+	past_pending	BLOB NOT NULL CHECK( LENGTH(past_pending) <= 1024) DEFAULT (zeroblob(64)),
+	past_posted BLOB NOT NULL CHECK( LENGTH(past_posted) <= 1024) DEFAULT (zeroblob(64)),
+	current_pending BLOB NOT NULL CHECK( LENGTH(current_pending) <= 1024) DEFAULT (zeroblob(64)),
+	current_posted	BLOB NOT NULL CHECK( LENGTH(current_posted) <= 1024) DEFAULT (zeroblob(64)),
+	timestamp INTEGER NOT NULL
+) WITHOUT ROWID, STRICT;
+"""	
+#	db.query(create_entity_table)
+	var _truncate_entities : String = """
+DELETE FROM entity;
+	"""
+#	db.query(truncate_entities)
+	for i in range(32):
+		var node_3d : Node3D = Node3D.new()
+		var script = load("res://sqlite_write/sqlite_write_scene.gd")
+		node_3d.set_script(script)
+		add_child(node_3d, true)
+		node_3d.owner = self
+```
+
+
+### Simulate entity processing
+
+```swift
+extends Node3D
+
+var db : SQLite = null
+var result_create : SQLiteQuery
+var result_delete : SQLiteQuery
+var uuid : String 
+
+func _ready():
+	db = SQLite.new();
+	if (!db.open("test")):
+		print("Failed opening database.");
+		return;
+	var _drop : String = """drop table if exists entity;
+drop trigger "entity_interpolate_insert";
+drop trigger "entity_interpolate_update";
+drop trigger "entity_interpolate_delete";
+drop view entity_interpolate;
+drop view entity_view;
+"""
+	var select_uuid : String = """
+	SELECT lower(hex(randomblob(4)) || '-' || hex(randomblob(2)) || '-' || '4' || 
+	substr(hex( randomblob(2)), 2) || '-' || 
+	substr('AB89', 1 + (abs(random()) % 4) , 1)  ||
+	substr(hex(randomblob(2)), 2) || '-' ||
+	hex(randomblob(6))) as uuid;
+	"""
+	uuid = db.fetch_array(select_uuid)[0]["uuid"]
+	var query_create_original = """
+INSERT INTO entity ("id", "user_data", "reserved", "shard", "code", "flags", "past_pending", "past_posted",
+"current_pending", "current_posted", "timestamp")
+VALUES (?, zeroblob(16), zeroblob(48), 0, 0, 0, zeroblob(64), zeroblob(64), zeroblob(64), ?, UNIXEPOCH());
+"""
+	result_create = db.create_query(query_create_original)
+	var query_delete = """
+	DELETE FROM entity
+	WHERE id = ?;
+"""
+	result_delete = db.create_query(query_delete)
+	
+func _process(_delta):
+	if db == null:
+		return
+	var packed_array : Array = Array()
+	packed_array.push_back(global_transform)
+	var bytes : PackedByteArray = var_to_bytes(packed_array)
+	bytes = bytes.compress(FileAccess.COMPRESSION_ZSTD)
+	var statement : Array = [uuid, bytes]
+	var _result_batch = result_create.batch_execute([statement])
+
+func _exit_tree():
+	var statement : Array = [uuid]
+	var _result_batch = result_delete.batch_execute([statement])
+```
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
