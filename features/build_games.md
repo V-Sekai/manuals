@@ -1,7 +1,5 @@
 # Build virtual reality games 
 
-Content is key.
-
 Full physically based rendering (PBR) out of the box.
 
 Supports several types of files out of the box:
@@ -26,6 +24,10 @@ Supports several types of files out of the box:
 ## Virtual Reality
 
 V-Sekai runs on OpenXR and Vulkan.
+
+## Content is key
+
+Content is key.
 
 ## Common tools for Godot users include: 	
 
