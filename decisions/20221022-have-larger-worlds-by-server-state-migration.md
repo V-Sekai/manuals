@@ -12,7 +12,15 @@ Each V-Sekai game server has a scalability limit. Transfer each player to a diff
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-Transfer the state using a database that can handle commits in commit order despite parallel transactions. Foundationdb is used by Apple for their cloud services and is trusted to handle distributed data safely.
+Transfer the state using a database that can handle commits in commit order despite parallel transactions.
+
+Foundationdb is used by Apple for their cloud services and is trusted to handle distributed data safely.
+
+Godot Engine is a game engine where the interiors are easy to rearrange.
+
+Sqlite is a well written database that is fully tested.
+
+Rust is a good language for failures in math or computer language, but does not handle non code errors (like cosmic rays).
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
