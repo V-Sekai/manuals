@@ -188,6 +188,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#create-entity-table" id="toc-create-entity-table" class="nav-link" data-scroll-target="#create-entity-table">Create entity table</a></li>
   <li><a href="#simulate-entity-processing" id="toc-simulate-entity-processing" class="nav-link" data-scroll-target="#simulate-entity-processing">Simulate entity processing</a></li>
   </ul></li>
+  <li><a href="#launch-scripts" id="toc-launch-scripts" class="nav-link" data-scroll-target="#launch-scripts">Launch scripts</a>
+  <ul class="collapse">
+  <li><a href="#start-sqlite3.bat" id="toc-start-sqlite3.bat" class="nav-link" data-scroll-target="#start-sqlite3.bat">start-sqlite3.bat</a></li>
+  <li><a href="#start-mvstore.bat" id="toc-start-mvstore.bat" class="nav-link" data-scroll-target="#start-mvstore.bat">start-mvstore.bat</a></li>
+  </ul></li>
   <li><a href="#license-of-the-contribution" id="toc-license-of-the-contribution" class="nav-link" data-scroll-target="#license-of-the-contribution">License of the contribution</a></li>
   </ul></li>
   </ul>
@@ -269,6 +274,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="https://pure.bond.edu.au/ws/portalfiles/portal/18275482/Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG_.pdf">Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG by Prasetya, Kusno</a></li>
 <li><a href="https://github.com/V-Sekai/godot-sqlite/tree/mvsqlite">godot sqlite mvsqlite</a></li>
 <li><a href="https://github.com/V-Sekai/godot-sqlite/tree/mvsqlite/demo">godot mvsql demo</a></li>
+<li><a href="https://github.com/fire/mvsqlite/tree/windows">mvsqlite for windows</a></li>
 <li><a href="https://github.com/losfair/mvsqlite">mvsqlite</a></li>
 <li><a href="https://github.com/apple/foundationdb">Apple’s foundationdb</a></li>
 <li><a href="https://www.rust-lang.org/">Rust lang</a></li>
@@ -362,6 +368,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="kw">func</span> <span class="fu">_exit_tree</span><span class="op">():</span></span>
 <span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    <span class="dt">var</span> <span class="fu">statement</span> <span class="op">:</span> <span class="dt">Array</span> <span class="op">=</span> <span class="op">[</span>uuid<span class="op">]</span></span>
 <span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">_result_batch</span> <span class="op">=</span> result_delete<span class="op">.</span>batch_execute<span class="op">([</span>statement<span class="op">])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="launch-scripts" class="level2">
+<h2 class="anchored" data-anchor-id="launch-scripts">Launch scripts</h2>
+<section id="start-sqlite3.bat" class="level3">
+<h3 class="anchored" data-anchor-id="start-sqlite3.bat">start-sqlite3.bat</h3>
+<pre class="bat"><code>set RUST_LOG=info
+set MVSQLITE_DATA_PLANE=http://localhost:7000
+sqlite3 test</code></pre>
+</section>
+<section id="start-mvstore.bat" class="level3">
+<h3 class="anchored" data-anchor-id="start-mvstore.bat">start-mvstore.bat</h3>
+<pre class="bat"><code>set RUST_LOG=error
+mvstore --data-plane 127.0.0.1:7000 --admin-api 127.0.0.1:7001 --metadata-prefix mvstore --raw-data-prefix m --cluster "C:/ProgramData/foundationdb/fdb.cluster"</code></pre>
 </section>
 </section>
 <section id="license-of-the-contribution" class="level2">
