@@ -188,6 +188,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#create-entity-table" id="toc-create-entity-table" class="nav-link" data-scroll-target="#create-entity-table">Create entity table</a></li>
   <li><a href="#simulate-entity-processing" id="toc-simulate-entity-processing" class="nav-link" data-scroll-target="#simulate-entity-processing">Simulate entity processing</a></li>
   </ul></li>
+  <li><a href="#mvsqlite-for-windows" id="toc-mvsqlite-for-windows" class="nav-link" data-scroll-target="#mvsqlite-for-windows">mvsqlite for Windows</a>
+  <ul class="collapse">
+  <li><a href="#check-fdb-status" id="toc-check-fdb-status" class="nav-link" data-scroll-target="#check-fdb-status">Check fdb status</a></li>
+  <li><a href="#create-a-mvsqlite-database" id="toc-create-a-mvsqlite-database" class="nav-link" data-scroll-target="#create-a-mvsqlite-database">Create a mvsqlite database</a></li>
+  <li><a href="#starting-mvstore-with-foundationdb-on-linux" id="toc-starting-mvstore-with-foundationdb-on-linux" class="nav-link" data-scroll-target="#starting-mvstore-with-foundationdb-on-linux">Starting mvstore with foundationdb on Linux</a></li>
+  <li><a href="#starting-mvstore-with-foundationdb-on-windows" id="toc-starting-mvstore-with-foundationdb-on-windows" class="nav-link" data-scroll-target="#starting-mvstore-with-foundationdb-on-windows">Starting mvstore with foundationdb on Windows</a></li>
+  </ul></li>
   <li><a href="#launch-scripts" id="toc-launch-scripts" class="nav-link" data-scroll-target="#launch-scripts">Launch scripts</a>
   <ul class="collapse">
   <li><a href="#start-sqlite3.bat" id="toc-start-sqlite3.bat" class="nav-link" data-scroll-target="#start-sqlite3.bat">start-sqlite3.bat</a></li>
@@ -368,6 +375,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="kw">func</span> <span class="fu">_exit_tree</span><span class="op">():</span></span>
 <span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    <span class="dt">var</span> <span class="fu">statement</span> <span class="op">:</span> <span class="dt">Array</span> <span class="op">=</span> <span class="op">[</span>uuid<span class="op">]</span></span>
 <span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">_result_batch</span> <span class="op">=</span> result_delete<span class="op">.</span>batch_execute<span class="op">([</span>statement<span class="op">])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="mvsqlite-for-windows" class="level2">
+<h2 class="anchored" data-anchor-id="mvsqlite-for-windows">mvsqlite for Windows</h2>
+<pre class="bat"><code>cmd
+scoop install llvm openssl-mingw llvm-mingw
+cargo build --release -p mvsqlite
+cd mvsqlite-sqlite3
+mingw32-make.exe build-patched-sqlite3
+set RUST_LOG=info
+set MVSQLITE_DATA_PLANE=http://localhost:7000
+sqlite3 test
+.tables</code></pre>
+<section id="check-fdb-status" class="level3">
+<h3 class="anchored" data-anchor-id="check-fdb-status">Check fdb status</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fdbcli</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">status</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Force create a database</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># configure new single memory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="create-a-mvsqlite-database" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-mvsqlite-database">Create a mvsqlite database</h3>
+<pre class="bat"><code>msys2
+curl http://localhost:7001/api/create_namespace -i -d '{"key":"test"}'</code></pre>
+</section>
+<section id="starting-mvstore-with-foundationdb-on-linux" class="level3">
+<h3 class="anchored" data-anchor-id="starting-mvstore-with-foundationdb-on-linux">Starting mvstore with foundationdb on Linux</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># on Linux</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/apple/foundationdb/releases/download/7.1.15/foundationdb-clients_7.1.15-1_amd64.deb</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dpkg <span class="at">-i</span> foundationdb-clients_7.1.15-1_amd64.deb</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/apple/foundationdb/releases/download/7.1.15/foundationdb-server_7.1.15-1_amd64.deb</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dpkg <span class="at">-i</span> foundationdb-server_7.1.15-1_amd64.deb</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ex">cargo</span> build <span class="at">--release</span> <span class="at">-p</span> mvstore</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="va">RUST_LOG</span><span class="op">=</span>info <span class="ex">./mvstore</span> <span class="dt">\</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">--data-plane</span> 127.0.0.1:7000 <span class="dt">\</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">--admin-api</span> 127.0.0.1:7001 <span class="dt">\</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">--metadata-prefix</span> mvstore <span class="dt">\</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">--raw-data-prefix</span> m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="starting-mvstore-with-foundationdb-on-windows" class="level3">
+<h3 class="anchored" data-anchor-id="starting-mvstore-with-foundationdb-on-windows">Starting mvstore with foundationdb on Windows</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cmd</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">cargo</span> build <span class="at">--release</span> <span class="at">-p</span> mvstore</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> RUST_LOG=info</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">mvstore</span> <span class="at">--data-plane</span> 127.0.0.1:7000 <span class="at">--admin-api</span> 127.0.0.1:7001 <span class="at">--metadata-prefix</span> mvstore <span class="at">--raw-data-prefix</span> m <span class="at">--cluster</span> <span class="st">"C:/ProgramData/foundationdb/fdb.cluster"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="launch-scripts" class="level2">
