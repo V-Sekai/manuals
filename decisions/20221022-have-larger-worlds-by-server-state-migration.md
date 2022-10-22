@@ -63,6 +63,7 @@ We own the networking stack.
 - [Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG by Prasetya, Kusno](https://pure.bond.edu.au/ws/portalfiles/portal/18275482/Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG_.pdf)
 - [godot sqlite mvsqlite](https://github.com/V-Sekai/godot-sqlite/tree/mvsqlite)
 - [godot mvsql demo](https://github.com/V-Sekai/godot-sqlite/tree/mvsqlite/demo)
+- [mvsqlite for windows](https://github.com/fire/mvsqlite/tree/windows)
 - [mvsqlite](https://github.com/losfair/mvsqlite)
 - [Apple's foundationdb](https://github.com/apple/foundationdb)
 - [Rust lang](https://www.rust-lang.org/)
@@ -158,6 +159,23 @@ func _process(_delta):
 func _exit_tree():
 	var statement : Array = [uuid]
 	var _result_batch = result_delete.batch_execute([statement])
+```
+
+## Launch scripts
+
+### start-sqlite3.bat
+
+```bat
+set RUST_LOG=info
+set MVSQLITE_DATA_PLANE=http://localhost:7000
+sqlite3 test
+```
+
+### start-mvstore.bat
+
+```bat
+set RUST_LOG=error
+mvstore --data-plane 127.0.0.1:7000 --admin-api 127.0.0.1:7001 --metadata-prefix mvstore --raw-data-prefix m --cluster "C:/ProgramData/foundationdb/fdb.cluster"
 ```
 
 ## License of the contribution
