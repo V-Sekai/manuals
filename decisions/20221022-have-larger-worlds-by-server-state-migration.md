@@ -55,7 +55,7 @@ It's not a few lines of script.
 
 ## Is there a reason why this should be core and done by us?
 
-We own the networking stack.
+We maintain the networking stack.
 
 ## References
 
