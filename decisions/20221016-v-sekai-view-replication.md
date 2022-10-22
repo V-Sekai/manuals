@@ -1,6 +1,6 @@
 # Use view replication algorithm for multiplayer multirelay sync
 
-- Status: proposed
+- Status: rejected
 - Deciders: V-Sekai,fire,
 - Tags: V-Sekai,sync,view replication,
 
