@@ -26,7 +26,7 @@ Premigration and migration border via Prasetya, Kusno's design.
 
 <img src="./attachments/20221022_world_parition_pre_migration_and_migration_costs.png" alt="20221022_world_parition_pre_migration_and_migration_costs by Prasetya, Kusno" width="50%">
 
-3. Transfer the player from one server to another by first syncing all the frames, and have the player connect to the other side. Then the server does the transfer and the player connects to the other side when the migration boundary is hit.
+3. Transfer the player from one server to another by first syncing all the frames, and have the player connect to the other side. Then the server does the transfer and the player disconnectes to the previous side when the migration boundary is hit.
 
 Server state transfer via Prasetya, Kusno's design.
 
