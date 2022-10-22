@@ -156,6 +156,7 @@ We own the networking stack.
 - [V-Sekai](https://v-sekai.org/)
 - [Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG by Prasetya, Kusno](https://pure.bond.edu.au/ws/portalfiles/portal/18275482/Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG_.pdf)
 - [godot sqlite mvsqlite](https://github.com/V-Sekai/godot-sqlite/tree/mvsqlite)
+- [godot mvsql demo](https://github.com/V-Sekai/godot-sqlite/tree/mvsqlite/demo)
 - [mvsqlite](https://github.com/losfair/mvsqlite)
 - [Apple's foundationdb](https://github.com/apple/foundationdb)
 - [Rust lang](https://www.rust-lang.org/)
