@@ -92,7 +92,7 @@ Meeting between betalars, fire, lyuma, jeana and others about usability in 3d ga
 -   There has been development to create an online-platform for [Chaos Communication Congress](https://en.wikipedia.org/wiki/Chaos_Communication_Congress) using Godot
 -   It is planned to be deployed in browser, limiting it to Godot 3 for now
 -   Realistically, the Congress Experience software will not be production-ready before Godot4, so starting with Godot 3 only sets us up for tech-debt and also makes cooperation with V-sekai impossible, so it was the wrong decision originally and is now being reverted.
--   Based on limited contributors and also limited time, a Prototype in Godot 3 has been crapped and betalars reached out to the v-sekai team for some collaboration and humble contributions
+-   Based on limited contributors and also limited time, a Prototype in Godot 3 has been scrapped and betalars reached out to the V-Sekai team for some collaboration and humble contributions
 
 ### What are constraints?
 
