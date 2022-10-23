@@ -84,3 +84,94 @@ Feature requests from the community:
 
 Meeting between betalars, fire, lyuma, jeana and others about usability in 3d games, convention application and V-Sekai.
 
+## 2022-10-22 Chat summary
+
+Humble contributions and places to start? ^^
+
+### Premise: 
+
+-   betalars is working on making Chaos Computer Club more accessible.
+-   There has been development to create an online-platform for [Chaos Communication Congress](https://en.wikipedia.org/wiki/Chaos_Communication_Congress) using Godot
+-   It is planned to be deployed in browser, limiting it to Godot 3 for now
+-   Realistically, the Congress Experience software will not be production-ready before Godot4, so starting with Godot 3 only sets us up for tech-debt and also makes cooperation with V-sekai impossible, so it was the wrong decision originally and is now being reverted.
+-   Based on limited contributors and also limited time, a Prototype in Godot 3 has been crapped and betalars reached out to the v-sekai team for some collaboration and humble contributions
+
+### What are constraints?
+
+-   Milas needs to write a masters thesis on accessibility-driven Game-Development
+-   At the end of December of each year, CCC holds a big conference, this year it is going to be a decentralised bunch of small-scale events due to the pandemic
+-   iFire wants to be able to present meaningful progress by march 2023
+
+### Benefits of joining online-chaos-experience development efforts into v-sekai
+
+-   Pretty much all goals align ... 
+    -   Make it FOSS
+    -   Allow for player interaction and expression in an online space
+    -   Make 3D-level building accessible for players
+    -   Use Godot Engine
+    -   Encourage for tinkering and hacking (of the white-hat variety of course)
+-   ... except for the fact, that online-chaos was developed for desktop browsers and not VR-Devices
+-   V-Sekai is engineering-driven and lacks in UX and Design, which betalars has more knowledge in, so there is potential for synergy
+-   If this collaboration is successful, it would introduce the project into a big community of developers, some of which will be happy to contribute further code
+
+### Risks
+
+-   Getting distracted by shiny things
+-   There's currently limited interest in the chaos community at large and Betalars is still pretty junior in experience despite leading the effort of building an online-world
+
+### Talking Points in the Meeting
+
+-   Accessibility
+    -   V-Sekai is interested in this subject, there's an argument to be had, that XR has great potential for people with disabilities
+        -   Not having to leave their flat for social interaction is a plus
+        -   Being able to choose to be stealth with a bodily disability
+        -   More intuitive controls with tracking
+        -   Hand tracking can be used for signing.
+    -   Even for for visually impaired people, there are options to interact
+    -   Buttons
+        -   Rumble
+        -   Sound Feedback
+        -   There's a lot of potential for work and research here, that would also benefit the godot-community by add-on development
+    -   ... and maybe by politely asking for some vital accessibility features to be pushed upstream
+    -   Concrete Projects are:
+        -   Subtitles
+        -   Introducing a Layer for alternate text / screen-reader Label3D
+-   Level Generation
+    -   Currently there is a lot of interest in the community on this subject, as [NeosVR](https://en.wikipedia.org/wiki/NeosVR), a project with great level-building UX, has been frozen
+    -   Godot has a solid 3D-Level generator, that can be used by "power-users" to create 3D-Scenes
+    -   Expanding its feature set could benefit the Godot Engine Community at large
+    -   There's the need for intuitive tools for the average user to create cool stuff in 3D
+        -   Voxel-Editors are a great first step, as they are an intuitive tool for blocking out 3D-shapes
+        -   Voxel Editors can be extended with
+        -   "Smart Voxel objects", that can generate stuff like staircases, roofs, fences etc, that are a pain to block out within the voxel grid (and expanding the voxel grid)
+            -   3D-Generators, that based on the existing mesh can build plants for instance
+            -   Convenient Prop-Placement
+-   Level Generation References
+    -   [EverQuest Next Landmark - Detail building tools](https://www.youtube.com/watch?v=dd9C90G0lQo)
+    -   [Cloud Gardens](https://www.youtube.com/watch?v=6gHmvxduSqI), a relaxing level building game
+    -   [Dreams](https://www.youtube.com/watch?v=yukNnKii6xg)
+    -   [crocotile3d.com](https://crocotile3d.com/)
+    -   Minecraft
+-   AI-Assisted Level Generation will probably also be a thing soon
+-   Designing fun player-interaction Concepts
+    -   Betalars would like to work on it, but it is hard
+-   Making pretty Characters
+    -   Betalars has been working on a sims-style character generator
+    -   Current state can be found on [gitlab](https://gitlab.com/divocrew/design/-/tree/chavatars)
+        -   Hopefully will also benefit Godot Engine community
+-   Developing a Tablet-Mode for V-Sekai
+    -   There has been effort put into creating a Non-VR interaction mode
+    -   Currently it is pretty janky and not thought through
+    -   Betalars would like to improve this
+-   Fire's V-Sekai priorities:
+    1. a better setting to be in 
+    2. communications between at least two people
+    3. better character motion via constraints, spring bones, and animations
+    4. better character models (betalars has a character creation system that they already developed as possible collaboration points)
+   
+###   Other helpful resources:
+
+[github.com/omigroup/ux-research](https://github.com/omigroup/ux-research)
+
+This is the new repo for the recently formed UX Research group in OMI. Check back weekly for updates on this repo and how to get involved. - GitHub - omigroup/ux-research: This is the new repo for the [OMIGroup Discord](https://discord.gg/92fXNYXf)
+
