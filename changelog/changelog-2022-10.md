@@ -82,5 +82,5 @@ Feature requests from the community:
 
 ## 2022-10-22
 
-Meeting between Betalars, fire, lyuma, jeana and others about usability in 3d games, convention application and V-Sekai.
+Meeting between betalars, fire, lyuma, jeana and others about usability in 3d games, convention application and V-Sekai.
 
