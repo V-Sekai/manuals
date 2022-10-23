@@ -116,7 +116,7 @@ Humble contributions and places to start? ^^
 
 ### Risks
 
--   Getting distracted by shiny things
+-   **Getting distracted by shiny things**
 -   There's currently limited interest in the chaos community at large and Betalars is still pretty junior in experience despite leading the effort of building an online-world
 
 ### Talking Points in the Meeting
