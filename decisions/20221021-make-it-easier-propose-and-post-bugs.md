@@ -1,4 +1,4 @@
-# Make it easier to propose and file bugs by simpifying the templates
+# Make it easier to propose and file bugs by simplifying the templates
 
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,lyuma
