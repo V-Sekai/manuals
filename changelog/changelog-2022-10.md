@@ -84,9 +84,7 @@ Feature requests from the community:
 
 Meeting between betalars, fire, lyuma, jeana and others about usability in 3d games, convention application and V-Sekai.
 
-## 2022-10-22 Chat summary
-
-Humble contributions and places to start? ^^
+## 2022-10-22 Humble contributions and places to start? ^^
 
 ### Premise: 
 
