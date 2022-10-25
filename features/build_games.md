@@ -1,5 +1,26 @@
 # Build virtual reality games 
 
+|Name  |Description  |
+|---|---|
+|Godot Engine 4 alpha  |Remixable  |
+|Godot Engine OpenXR  |VR integration into godot engine  |
+|Godot VRM  |Portable avatar format  |
+|V-Sekai Unidot  |Import `.unitypackage`  |
+|V-Sekai Lasso  |XR interaction framework  |
+|V-Sekai Wasgo  |Virtual worlds scripting langauge  |
+|Godot Engine 3D Formats  |glTF 3d format  |
+|Godot Engine Animations  |A to T pose. Silhouette changer.  |
+|V-Sekai Renik  |IK system  |
+|V-Sekai Ewbik  |Next IK system  |
+|V-Sekai proposals / manual site  |  |
+|Godot fbx2GLTF  |Portable avatar format  |
+|V-Sekai Speech  |Voice chat  |
+|V-Sekai Uro  |Online services  |
+|Godot MaterialX |Procedural materials|
+|Godot Sqlite / Godot mvsqlite| Relation database and Distributed relational database |
+|V-Sekai CI/CD| GOCD, Dagger and/or Github Actions|
+|XR Tunneling shader for Godot Engine|For VR usability tunneling shader|
+
 Full physically based rendering (PBR) out of the box.
 
 Supports several types of files out of the box:
