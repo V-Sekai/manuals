@@ -2,7 +2,7 @@
 
 |Name  |Description  |
 |---|---|
-|Godot Engine 4 alpha  |Remixable  |
+|Godot Engine 4 Beta  |Remixable  |
 |Godot Engine OpenXR  |VR integration into godot engine  |
 |Godot VRM  |Portable avatar format  |
 |V-Sekai Unidot  |Import `.unitypackage`  |
