@@ -173,6 +173,6 @@ Meeting between betalars, fire, lyuma, jeana and others about usability in 3d ga
 
 This is the new repo for the recently formed UX Research group in OMI. Check back weekly for updates on this repo and how to get involved. - GitHub - omigroup/ux-research: This is a new working group for [OMIGroup](https://discord.gg/92fXNYXf)
 
-## 2022-10-15
+## 2022-10-25
 
 Mmmaellon’s work requires him to build an XR app using AWS Services. He wants to use that opportunity to make something that allows players to build maps collaboratively.
