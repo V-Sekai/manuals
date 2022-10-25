@@ -2,8 +2,8 @@
 
 |Name  |Description  |
 |---|---|
-|Godot Engine 4 Beta  |Remixable  |
-|Godot Engine OpenXR  |VR integration into godot engine  |
+|Godot Engine 4 Beta  |Remixable game engine  |
+|Godot Engine OpenXR  |VR integration into Godot Engine  |
 |Godot VRM  |Portable avatar format  |
 |V-Sekai Unidot  |Import `.unitypackage`  |
 |V-Sekai Lasso  |XR interaction framework  |
