@@ -1,6 +1,6 @@
 # Build virtual reality games 
 
-|Name  |Description  |
+|Name of the Feature  |Description  |
 |---|---|
 |Godot Engine 4 Beta  |Remixable game engine  |
 |Godot Engine OpenXR  |VR integration into Godot Engine  |
