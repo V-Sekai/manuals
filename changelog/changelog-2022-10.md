@@ -176,3 +176,7 @@ This is the new repo for the recently formed UX Research group in OMI. Check bac
 ## 2022-10-25
 
 Mmmaellon’s work requires him to build an XR app using AWS Services. He wants to use that opportunity to make something that allows players to build maps collaboratively.
+
+## 2022-10-28
+
+ASTC work for mobile gpu textures work.
