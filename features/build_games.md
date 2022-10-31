@@ -53,17 +53,17 @@ A security-focused sandboxed scripting environment backed by WASM
 
 |Name of the Feature  |Description  |
 |---|---|
-|Godot Engine 4 Beta  |Remixable game engine  |
+|Godot Engine 4 Beta  | Remixable game engine  |
 |Godot Engine OpenXR  |VR integration into Godot Engine  |
-|Godot VRM  |Portable avatar format  |
+|Godot VRM  | Portable avatar format  |
 |V-Sekai Unidot  |Import `.unitypackage`  |
 |V-Sekai Lasso  |XR interaction framework  |
 |V-Sekai Wasgo  |Virtual worlds scripting language  |
 |Godot Engine 3D Formats  |glTF 3d format  |
 |Godot Engine Animations  |A to T pose. Silhouette changer.  |
 |V-Sekai Renik  |IK system  |
-|V-Sekai Ewbik  |Next IK system  |
-|V-Sekai proposals / manual site  |  |
+|V-Sekai Ewbik  |Next generation IK system  |
+|V-Sekai proposals / manual site  | Document the things we do |
 |Godot fbx2GLTF  | fbx to gltf conveter |
 |V-Sekai Speech  |Voice chat  |
 |V-Sekai Uro  |Online services  |
