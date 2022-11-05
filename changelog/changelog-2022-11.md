@@ -2,9 +2,9 @@
 
 ## 2022-10-05
 
-![v-sekai-game-bug](attachment/v-sekai-game-bug.png)
+![v-sekai-game-bug](attachments/v-sekai-game-bug.png)
 
-![openxr_showing](attachment/openxr_showing.png)
+![openxr_showing](attachments/openxr_showing.png)
 
 Restored V-Sekai-Game home.
 
