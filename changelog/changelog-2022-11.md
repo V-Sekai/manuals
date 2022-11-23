@@ -9,3 +9,7 @@
 Restored V-Sekai-Game home.
 
 Worked on EWBIK as a git branch.
+
+## 2022-11-22
+
+Game releases are working again.
