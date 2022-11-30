@@ -24,7 +24,7 @@ Note that avatars are currently not working. I think I'm getting closer to ident
 
 We are working on a v2 of the network architecture based on Godot's network spawn & sync system, so a lot of the code I'm editing right now is kind of legacy at this point. The new network implementation should drastically simplify the code and eliminate dozens of complex GDScript files from being needed. I still want to get this demo stable, since we will still be using the player controller and avatar loader from it
 
-![VSK Tokyo Map](./changelog/attachments/VSK_tokyo_map.png)
+![VSK Tokyo Map](./attachments/VSK_tokyo_map.png)
 
 The new v2 network demo can be found at https://github.com/V-Sekai/net_demo if you're curious. There's no VR support planned for net_demo, but it should serve as a strong foundation going forward.
 
