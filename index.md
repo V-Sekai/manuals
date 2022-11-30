@@ -4,7 +4,7 @@ V-Sekai is a social virtual reality platform that is free and open source, meani
 
 Interested in [V-Sekai](https://v-sekai.org) or [#GodotVR](https://twitter.com/hashtag/godotvr) development? **[ Join the V-Sekai discord server!](https://discord.gg/7BQDHesck8)**
 
-V means virtual and Sekai means world in Japanese. So V-Sekai means virtual world.
+V-Sekai means virtual world in Japanese.
 
 ## Collaborative
 
