@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/changelog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.2.269</generator>
-<lastBuildDate>Wed, 30 Nov 2022 02:36:30 GMT</lastBuildDate>
+<lastBuildDate>Wed, 30 Nov 2022 16:48:45 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/changelog/changelog-2022-11.html</link>
@@ -40,14 +40,39 @@
 <section id="section-1" class="level2">
 <h2 class="anchored" data-anchor-id="section-1">2022-11-22</h2>
 <p>Game releases are working again.</p>
+</section>
+<section id="lyuma" class="level2">
+<h2 class="anchored" data-anchor-id="lyuma">2022-11-29 - Lyuma</h2>
+<p>V-Sekai-game Player spawning should be working again (see their name tag at least). There’s an issue with the default sky_celebration map caused by “TestEntity” which has scene_file_path==“” and that breaks the validation logic, preventing the player from spawning, and most default maps don’t work. You need to use Mobile Dragon Shop (very dark) or Tokyo Map</p>
+<p>Note that avatars are currently not working. I think I’m getting closer to identifying where the validation is causing trouble.</p>
+<section id="current-state-of-v-sekai-game" class="level3">
+<h3 class="anchored" data-anchor-id="current-state-of-v-sekai-game">Current state of V-Sekai-Game</h3>
+<p>We are working on a v2 of the network architecture based on Godot’s network spawn &amp; sync system, so a lot of the code I’m editing right now is kind of legacy at this point. The new network implementation should drastically simplify the code and eliminate dozens of complex GDScript files from being needed. I still want to get this demo stable, since we will still be using the player controller and avatar loader from it</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://v-sekai.github.io/changelog/changelog/attachments/VSK_tokyo_map.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">VSK Tokyo Map</figcaption><p></p>
+</figure>
+</div>
+<p>The new v2 network demo can be found at https://github.com/V-Sekai/net_demo if you’re curious. There’s no VR support planned for net_demo, but it should serve as a strong foundation going forward.</p>
+<p>Avatars should show up again. There was some code mistake that triggered only when the default “mirror” was disabled and caused avatars not to instantiate, but I didn’t notice because I had turned it on in my checkout</p>
+<p>I also fixed the default sky celebration map</p>
+<p>Avatar bone rotations are currently broken with this setup. Seems like the head always faces a certain direction:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://v-sekai.github.io/changelog/attachments/avatar_bone_rotations_are_currently_broken.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Avatar bone rotations are broken</figcaption><p></p>
+</figure>
+</div>
 
 
+</section>
 </section>
 </section>
 
  ]]></description>
   <guid>https://v-sekai.github.io/changelog/changelog-2022-11.html</guid>
-  <pubDate>Wed, 30 Nov 2022 02:36:30 GMT</pubDate>
+  <pubDate>Wed, 30 Nov 2022 16:48:45 GMT</pubDate>
   <media:content url="https://v-sekai.github.io/changelog/attachments/v-sekai-game-bug.png" medium="image" type="image/png" height="78" width="144"/>
 </item>
 <item>
@@ -268,7 +293,7 @@ ERROR: Failed loading resource: user://asset_cache/81dd12d036860a08faba06a1b47a3
 
  ]]></description>
   <guid>https://v-sekai.github.io/changelog/changelog-2022-10.html</guid>
-  <pubDate>Wed, 30 Nov 2022 02:36:30 GMT</pubDate>
+  <pubDate>Wed, 30 Nov 2022 16:48:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -302,7 +327,7 @@ ERROR: Failed loading resource: user://asset_cache/81dd12d036860a08faba06a1b47a3
 
  ]]></description>
   <guid>https://v-sekai.github.io/changelog/changelog-2022-09.html</guid>
-  <pubDate>Wed, 30 Nov 2022 02:36:30 GMT</pubDate>
+  <pubDate>Wed, 30 Nov 2022 16:48:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -331,7 +356,7 @@ ERROR: Failed loading resource: user://asset_cache/81dd12d036860a08faba06a1b47a3
 
  ]]></description>
   <guid>https://v-sekai.github.io/changelog/changelog-2022-08.html</guid>
-  <pubDate>Wed, 30 Nov 2022 02:36:30 GMT</pubDate>
+  <pubDate>Wed, 30 Nov 2022 16:48:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -424,7 +449,7 @@ ERROR: Failed loading resource: user://asset_cache/81dd12d036860a08faba06a1b47a3
 
  ]]></description>
   <guid>https://v-sekai.github.io/changelog/changelog-2022-06.html</guid>
-  <pubDate>Wed, 30 Nov 2022 02:36:30 GMT</pubDate>
+  <pubDate>Wed, 30 Nov 2022 16:48:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -472,7 +497,7 @@ ERROR: Failed loading resource: user://asset_cache/81dd12d036860a08faba06a1b47a3
 
  ]]></description>
   <guid>https://v-sekai.github.io/changelog/changelog-2022-05.html</guid>
-  <pubDate>Wed, 30 Nov 2022 02:36:30 GMT</pubDate>
+  <pubDate>Wed, 30 Nov 2022 16:48:45 GMT</pubDate>
   <media:content url="https://user-images.githubusercontent.com/32321/170520914-088ac169-12f8-44c5-b248-f2c83ca1fb3a.png" medium="image" type="image/png"/>
 </item>
 <item>
@@ -528,7 +553,7 @@ ERROR: Failed loading resource: user://asset_cache/81dd12d036860a08faba06a1b47a3
 
  ]]></description>
   <guid>https://v-sekai.github.io/changelog/changelog-2022-04.html</guid>
-  <pubDate>Wed, 30 Nov 2022 02:36:30 GMT</pubDate>
+  <pubDate>Wed, 30 Nov 2022 16:48:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -582,7 +607,7 @@ ERROR: Failed loading resource: user://asset_cache/81dd12d036860a08faba06a1b47a3
 
  ]]></description>
   <guid>https://v-sekai.github.io/changelog/changelog-2022-03.html</guid>
-  <pubDate>Wed, 30 Nov 2022 02:36:30 GMT</pubDate>
+  <pubDate>Wed, 30 Nov 2022 16:48:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -633,7 +658,7 @@ ERROR: Failed loading resource: user://asset_cache/81dd12d036860a08faba06a1b47a3
 
  ]]></description>
   <guid>https://v-sekai.github.io/changelog/changelog-2022-02.html</guid>
-  <pubDate>Wed, 30 Nov 2022 02:36:30 GMT</pubDate>
+  <pubDate>Wed, 30 Nov 2022 16:48:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -669,7 +694,7 @@ ERROR: Failed loading resource: user://asset_cache/81dd12d036860a08faba06a1b47a3
 
  ]]></description>
   <guid>https://v-sekai.github.io/changelog/changelog-2022-01.html</guid>
-  <pubDate>Wed, 30 Nov 2022 02:36:30 GMT</pubDate>
+  <pubDate>Wed, 30 Nov 2022 16:48:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -724,7 +749,7 @@ ERROR: Failed loading resource: user://asset_cache/81dd12d036860a08faba06a1b47a3
 
  ]]></description>
   <guid>https://v-sekai.github.io/changelog/changelog-2021-11.html</guid>
-  <pubDate>Wed, 30 Nov 2022 02:36:30 GMT</pubDate>
+  <pubDate>Wed, 30 Nov 2022 16:48:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -855,7 +880,7 @@ ERROR: Failed loading resource: user://asset_cache/81dd12d036860a08faba06a1b47a3
 
  ]]></description>
   <guid>https://v-sekai.github.io/changelog/changelog-2021-10.html</guid>
-  <pubDate>Wed, 30 Nov 2022 02:36:30 GMT</pubDate>
+  <pubDate>Wed, 30 Nov 2022 16:48:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1000,7 +1025,7 @@ ERROR: Failed loading resource: user://asset_cache/81dd12d036860a08faba06a1b47a3
 
  ]]></description>
   <guid>https://v-sekai.github.io/changelog/changelog-2021-09.html</guid>
-  <pubDate>Wed, 30 Nov 2022 02:36:30 GMT</pubDate>
+  <pubDate>Wed, 30 Nov 2022 16:48:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1085,7 +1110,7 @@ ERROR: Failed loading resource: user://asset_cache/81dd12d036860a08faba06a1b47a3
 
  ]]></description>
   <guid>https://v-sekai.github.io/changelog/changelog-2021-08.html</guid>
-  <pubDate>Wed, 30 Nov 2022 02:36:30 GMT</pubDate>
+  <pubDate>Wed, 30 Nov 2022 16:48:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1188,7 +1213,7 @@ ERROR: Failed loading resource: user://asset_cache/81dd12d036860a08faba06a1b47a3
 
  ]]></description>
   <guid>https://v-sekai.github.io/changelog/changelog-2021-07.html</guid>
-  <pubDate>Wed, 30 Nov 2022 02:36:30 GMT</pubDate>
+  <pubDate>Wed, 30 Nov 2022 16:48:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1336,7 +1361,7 @@ ERROR: Failed loading resource: user://asset_cache/81dd12d036860a08faba06a1b47a3
 
  ]]></description>
   <guid>https://v-sekai.github.io/changelog/changelog-2021-06.html</guid>
-  <pubDate>Wed, 30 Nov 2022 02:36:30 GMT</pubDate>
+  <pubDate>Wed, 30 Nov 2022 16:48:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1571,7 +1596,7 @@ merge-script-4.x is the branch name for the groups_merge_script Repo</code></pre
 
  ]]></description>
   <guid>https://v-sekai.github.io/changelog/changelog-2021-05.html</guid>
-  <pubDate>Wed, 30 Nov 2022 02:36:30 GMT</pubDate>
+  <pubDate>Wed, 30 Nov 2022 16:48:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1637,7 +1662,7 @@ merge-script-4.x is the branch name for the groups_merge_script Repo</code></pre
 
  ]]></description>
   <guid>https://v-sekai.github.io/changelog/changelog-2021-04.html</guid>
-  <pubDate>Wed, 30 Nov 2022 02:36:30 GMT</pubDate>
+  <pubDate>Wed, 30 Nov 2022 16:48:45 GMT</pubDate>
 </item>
 </channel>
 </rss>
