@@ -18,7 +18,7 @@ There has already been over 100+ V-Sekai PRs merged into Godot Engine core.
 - Web: [v-sekai.org](https://v-sekai.org)
 - Twitter: [twitter.com/VSekaiOfficial](https://twitter.com/VSekaiOfficial)
 - Github: [github.com/V-Sekai](https://github.com/V-Sekai)
-- We track our active tickets with our [Github Issues Backlog](https://github.com/V-Sekai/V-Sekai.github.io/issues)
+- We track our proposals with our [V-Sekai.github.io Issues](https://github.com/V-Sekai/V-Sekai.github.io/issues)
 - We organize our backlog with intent using [Github issues](https://github.com/V-Sekai/v-sekai-game/issues) which makes it easier to track progress based on desired outcomes and objectives.
 - We discuss our efforts on Discord.
 - Any questions? Contact the designated group lead(s) saracenone, lyuma or fire.
