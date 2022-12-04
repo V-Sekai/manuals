@@ -12,11 +12,11 @@ Note: This has been rejected by Lyuma.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-We block direct pushes to main and use pull requests and merges.
+We block direct pushes to the main and use pull requests and merges.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-Use the github workflow with pull requests.
+Use the GitHub workflow with pull requests.
 
 ## Positive Consequences <!-- improvement of quality attribute satisfaction, follow-up decisions required -->
 
@@ -24,11 +24,11 @@ We don't have to wait 2 hours to see if our changes break the build.
 
 ## Negative Consequences <!-- compromising quality attribute, follow-up decisions required -->
 
-Developer merge friction.
+There are consequences of increased developer merging friction.
 
 ## Option graveyard:
 - Option: The status quo. <!-- List the proposed options no longer open for consideration. -->
-- Rejection Reason: We keep breaking the buikd. <!-- List the reasons for the rejection: (the bad traits) -->
+- Rejection Reason: We keep breaking the build. <!-- List the reasons for the rejection: (the bad traits) -->
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
@@ -36,7 +36,7 @@ This is a dev ops change.
 
 ## Is there a reason why this should be core and done by us?
 
-We own the github repositories.
+We own the GitHub repositories.
 
 ## References
 - [V-Sekai](https://v-sekai.org/)
