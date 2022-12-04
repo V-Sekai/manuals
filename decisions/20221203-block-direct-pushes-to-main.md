@@ -16,7 +16,7 @@ We block direct pushes to main and use pull requests and merges.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-Use the github workflow.
+Use the github workflow with pull requests.
 
 ## Positive Consequences <!-- improvement of quality attribute satisfaction, follow-up decisions required -->
 
@@ -41,6 +41,7 @@ We own the github repositories.
 ## References
 - [V-Sekai](https://v-sekai.org/)
 - [Pending head](https://martinfowler.com/bliki/PendingHead.html)
+- [Godot Pull request](https://docs.godotengine.org/en/stable/community/contributing/pr_workflow.html)
 
 ## License of the contribution
 Copyright (c) 2022 K. S. Ernest (iFire) Lee
