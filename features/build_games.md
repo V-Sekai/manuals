@@ -64,7 +64,7 @@ A security-focused sandboxed scripting environment backed by WASM
 |V-Sekai Renik  |IK system  |
 |V-Sekai ManyBoneIK  |Next IK system  |
 |V-Sekai proposals / manual site  | Document the things we do |
-|Godot fbx2GLTF  | fbx to gltf conveter |
+|fbx2gltf  | Industry standard to open interoperable 3d format |
 |V-Sekai Speech  |Voice chat  |
 |V-Sekai Uro  |Online services  |
 |Godot MaterialX |Procedural materials|
