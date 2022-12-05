@@ -62,7 +62,7 @@ A security-focused sandboxed scripting environment backed by WASM
 |Godot Engine 3D Formats  |glTF 3d format  |
 |Godot Engine Animations  |A to T pose. Silhouette changer.  |
 |V-Sekai Renik  |IK system  |
-|V-Sekai Ewbik  |Next generation IK system  |
+|V-Sekai ManyBoneIK  |Next IK system  |
 |V-Sekai proposals / manual site  | Document the things we do |
 |Godot fbx2GLTF  | fbx to gltf conveter |
 |V-Sekai Speech  |Voice chat  |
