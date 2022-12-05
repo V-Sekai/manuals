@@ -8,7 +8,7 @@
 
 Renik is a character controller and many bone ik is an ik solver. We have not merged them.
 
-The quality is low for both.
+The quality is low for the FABRIK solver.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
