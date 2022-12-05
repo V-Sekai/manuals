@@ -1,4 +1,4 @@
-# Short title that solves problem with solution
+# Port RENIK to Many Bone IK for better quality
 
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
@@ -6,7 +6,7 @@
 
 ## Context and Problem Statement
 
-Renik is a character controller and many bone ik is an ik controller. We have not merged them.
+Renik is a character controller and many bone ik is an ik solver. We have not merged them.
 
 The quality is low for both.
 
