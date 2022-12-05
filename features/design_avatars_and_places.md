@@ -1,4 +1,4 @@
-# Avatars
+# Avatars & Places
 
 Contact us if you are interested in helping us create avatars to use in V-Sekai or elsewhere.
 
@@ -30,3 +30,6 @@ The addition of VRM support allows users all over the world to customize their a
 * Compatible with animations from Mixamo, Blender
 * Blend walk and run animations with blend spaces
 
+# Create and visit places
+
+V-Sekai can import worlds and visit them.
