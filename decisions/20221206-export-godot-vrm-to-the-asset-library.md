@@ -30,11 +30,11 @@ Writing this up for Fire, since we talked about the issue with addons/vrm being 
 
 Did some unarchiving and renames so that https://github.com/V-Sekai/Godot-MToon-Shader gets the top google slot
 
-1. (Done) Make sure the godot-vrm code is synced up with other repositories where it was duplicated.
-2. (Done) Make a mtoon addon repository with a copy of the Godot-MToon-Shader code.
-3. todo: Make a branch in godot-vrm with ONLY the 4.0 vrm addon, usable as a submodule.
-4. todo: Change v-sekai-game and other similar projects to use Godot-MToon-Shader and vrm as a submodules
-5. todo: Write a script to sync up repository contents from one to the other.
+1. Make sure the godot-vrm code is synced up with other repositories where it was duplicated.
+2. Make a mtoon addon repository with a copy of the Godot-MToon-Shader code.
+3. Make a branch in godot-vrm with ONLY the 4.0 vrm addon, usable as a submodule.
+4. Change v-sekai-game and other similar projects to use Godot-MToon-Shader and vrm as a submodules
+5. Write a script to sync up repository contents from one to the other.
 
 ### is_empty()
 
