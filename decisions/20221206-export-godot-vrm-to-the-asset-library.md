@@ -20,9 +20,9 @@ How to migrate to Godot-VRM to submodule format?
 
 The thing Lyuma got blocked on is that VRM contains two addons: VRM and Godot-MToon-Shader
 
-Revive the Godot-MToon-Shader repository which I previously archived.
+Revive the Godot-MToon-Shader repository which Lyuma previously archived.
 
-But I'll change it so it's only the submodule (contents of the addons folder) and then I'll make the Godot VRM addon (submodule) a branch in the godot-vrm repository
+But Lyuma will change it so it's only the submodule (contents of the addons folder) and then Lyuma will make the Godot VRM addon (submodule) a branch in the godot-vrm repository
 
 Then we'll make a script to sync the changes to/from the godot-vrm example project which we submit to asset lib
 
