@@ -9,7 +9,7 @@ Supports several types of files out of the box:
 * Video, Text, etc.
 * Raw 3D Mesh (.obj)
 * glTF2 is a royalty-free specification for 3D content
-  * Easy to read JSON format
+  * Easy-to-read JSON format
   * glTF2 is extensible. Khronos extension registry on Github. 
   * Replaces proprietary FBX
   * Replaces older COLLADA
@@ -19,7 +19,7 @@ Supports several types of files out of the box:
   * glTF-Blender-IO by Khronos
   * glTF Transform by Don McCurdy
   * Godot: New GLTFDocumentExtension API
-* Thanks to hard work by Facebook, FBX2glTF does a nearly perfect conversion of FBX content to glTF. Code is open source, but it does use the Autodesk SDK.
+* Thanks to hard work by Facebook, FBX2glTF does a nearly perfect conversion of FBX content to glTF. The code is open source, but it does use the Autodesk SDK.
 
 ## Virtual Reality
 
@@ -69,5 +69,5 @@ A security-focused sandboxed scripting environment backed by WASM
 |V-Sekai Uro  |Online services  |
 |Godot MaterialX |Procedural materials|
 |Godot Sqlite / Godot mvsqlite| Relation database and Distributed relational database |
-|V-Sekai CI/CD| GOCD, Dagger and/or Github Actions|
+|V-Sekai CI/CD| GOCD, Dagger and/or GitHub Actions|
 |XR Tunneling shader for Godot Engine|For VR usability tunneling shader|
