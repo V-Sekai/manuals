@@ -49,10 +49,6 @@ Supports several types of files out of the box:
 
 V-Sekai runs on OpenXR and Vulkan.
 
-## Content
-
-Content is key.
-
 ## Common tools for Godot users include: 	
 
 A file loader that can open any file type it finds, including 2D and 3D assets (including scenes, scripts, meshes & textures) which can all be edited directly within the editor.
