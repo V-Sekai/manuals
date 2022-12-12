@@ -6,11 +6,11 @@
 
 ## Context and Problem Statement
 
-Want to list some useful tools for World and Character creation.
+Want to list some useful tools for world and character creation and are free, open-source and remixable for commercial uses.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-There many tools out there that are helpful for World and Character creation.
+There many tools out there that are helpful for world and character creation.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
