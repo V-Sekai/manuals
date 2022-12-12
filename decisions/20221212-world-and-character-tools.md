@@ -53,10 +53,7 @@ Writing down stuff that's useful.
 ```
 MIT License
 
-Copyright (c) 2018-2022 SaracenOne
 Copyright (c) 2019-2022 K. S. Ernest (iFire) Lee (fire)
-Copyright (c) 2020-2022 Lyuma
-Copyright (c) 2020-2022 MMMaellon
 Copyright (c) 2022 V-Sekai Contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
