@@ -21,6 +21,7 @@ There many tools out there that are helpful for world and character creation.
 5. Repository for artwork and community for filming https://open3dlab.com/
 6. Image Upscaling GUI based on ESRGAN https://github.com/n00mkrad/cupscale
 7. Discover trending open-source projects and their alternatives https://www.libhunt.com/
+8. Hugging Face arrives to the Elixir community https://huggingface.co/blog/elixir-bumblebee
 
 ## Positive Consequences <!-- improvement of quality attribute satisfaction, follow-up decisions required -->
 
