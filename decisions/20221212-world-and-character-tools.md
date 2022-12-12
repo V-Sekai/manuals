@@ -18,6 +18,7 @@ There many tools out there that are helpful for world and character creation.
 2. A Blender vrm addon. https://vrm-addon-for-blender.info/en/
 3. The easiest way to install and use Stable Diffusion https://github.com/cmdr2/stable-diffusion-ui#installation
 4. Image prompt interrogator https://huggingface.co/spaces/pharma/CLIP-Interrogator/tree/main
+5. Repository for artwork and community for filming https://open3dlab.com/
 
 ## Positive Consequences <!-- improvement of quality attribute satisfaction, follow-up decisions required -->
 
