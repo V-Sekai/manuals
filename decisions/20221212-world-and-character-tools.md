@@ -19,6 +19,7 @@ There many tools out there that are helpful for world and character creation.
 3. The easiest way to install and use Stable Diffusion https://github.com/cmdr2/stable-diffusion-ui#installation
 4. Image prompt interrogator https://huggingface.co/spaces/pharma/CLIP-Interrogator/tree/main
 5. Repository for artwork and community for filming https://open3dlab.com/
+6. Image Upscaling GUI based on ESRGAN https://github.com/n00mkrad/cupscale
 
 ## Positive Consequences <!-- improvement of quality attribute satisfaction, follow-up decisions required -->
 
