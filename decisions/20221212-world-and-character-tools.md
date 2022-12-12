@@ -1,4 +1,4 @@
-# AI tools helpful for creating Avatars and Worlds
+# Tools helpful for creating Avatars and Worlds
 
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
@@ -15,7 +15,9 @@ There many tools out there that are helpful for world and character creation.
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
 1. An ESRGAN model made for upscaling normal maps. https://github.com/RunDevelopment/ESRGAN-models/tree/main/normals
-2. https://vrm-addon-for-blender.info/en/
+2. A Blender vrm addon. https://vrm-addon-for-blender.info/en/
+3. The easiest way to install and use Stable Diffusion https://github.com/cmdr2/stable-diffusion-ui#installation
+4. Image prompt interrogator https://huggingface.co/spaces/pharma/CLIP-Interrogator/tree/main
 
 ## Positive Consequences <!-- improvement of quality attribute satisfaction, follow-up decisions required -->
 
