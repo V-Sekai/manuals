@@ -20,6 +20,7 @@ There many tools out there that are helpful for world and character creation.
 4. Image prompt interrogator https://huggingface.co/spaces/pharma/CLIP-Interrogator/tree/main
 5. Repository for artwork and community for filming https://open3dlab.com/
 6. Image Upscaling GUI based on ESRGAN https://github.com/n00mkrad/cupscale
+7. Discover trending open-source projects and their alternatives https://www.libhunt.com/
 
 ## Positive Consequences <!-- improvement of quality attribute satisfaction, follow-up decisions required -->
 
