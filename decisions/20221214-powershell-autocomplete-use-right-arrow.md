@@ -40,6 +40,7 @@ I wanted to write this down and it's not a core thing.
 ## References
 
 - [V-Sekai](https://v-sekai.org/)
+- [https://mnaoumov.wordpress.com/2022/11/21/powershell-predictive-intellisense/](https://mnaoumov.wordpress.com/2022/11/21/powershell-predictive-intellisense/)
 
 ## License of the contribution
 
