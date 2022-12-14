@@ -16,6 +16,8 @@ Godot Speech now includes echo cancellation using WebRTC AEC3. Thanks iFire for 
 
 # 2022-12-12
 
+MMMaellon updated the V-Sekai game fov to 70.
+
 Lyuma — Today at 00:34
 
 We had an animation meeting with people in the Godot rocketchat.
