@@ -30,3 +30,10 @@ Google Docs
 Pretty excited about some of these changes if they can get merged, especially the ability to extend and override AnimationNode classes, such as from a GDExtension plugin
 
 We agreed to punt SkeletonModificationStack3D until 4.1. I think we will remove it from 4.0 because it is very buggy in its present state and there is not enough time to develop a good system for IK
+
+# 2022-12-15
+
+![oblique clipping plane for screenspace mirrors](attachments/Screenshot_Wed_Dec_14_02-39-03_2022_VR.png)
+
+<Lyuma\> Engine patch: https://github.com/V-Sekai/godot/tree/override_projection
+VR Demo branch based on Saracen's code: https://github.com/V-Sekai/avatar_vr_demo/tree/screenspace_mirror It's missing some of the newer changes but anyway that's what I have.
