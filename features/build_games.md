@@ -1,4 +1,4 @@
-# Build virtual reality games 
+# Creating virtual reality games 
 
 ## Feature Table
 
