@@ -62,10 +62,20 @@ Finally, create and migrate the database and start the development server:
 ```bash
 mix ecto.create
 mix ecto.migrate
-mix phx.server
+iex.bat --werl -S mix phx.server
 ```
 
 This will start uro at http://localhost:4000/ 
+
+Create a user in the website register user page.
+
+Go to the console and set the user to be admin.
+
+```bash
+iex.bat --werl -S mix phx.server
+# TODO 
+# Call Uro.Accounts.update_user_as_admin
+```
 
 [GitHub - V-Sekai/uro: Server backend for V-Sekai written in Elixir ...](https://github.com/V-Sekai/uro)
 
