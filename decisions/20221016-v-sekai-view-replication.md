@@ -20,8 +20,8 @@ We assume we're using Godot Engine 4 with float is doubles.
 
 1. Replicate pending property changes safely to a quorum of distributed replicas, then
 2. interpolate property changes to the in-memory state.
-    * Ignore p_time too far in the future or the past as the viewstamp limit.
-    * T Animation::\_interpolate(const Vector\<TKey\<T>> &p_keys, double p_time, InterpolationType p_interp, bool p_loop_wrap, bool \*p_ok, bool p_backward) const
+   - Ignore p_time too far in the future or the past as the viewstamp limit.
+   - T Animation::\_interpolate(const Vector\<TKey\<T>> &p_keys, double p_time, InterpolationType p_interp, bool p_loop_wrap, bool \*p_ok, bool p_backward) const
 3. ACK to the client.
 
 See also Linux io_uring (replacement for epoll).
@@ -43,18 +43,18 @@ create_property_interpolate {
 	       id: 16 bytes (128-bit)
    past_entity_id: 16 bytes (128-bit)
 current_entity_id: 16 bytes (128-bit) [to allow interpolation between different entities]
-	user_data: 16 bytes (128-bit) [optional, e.g. opaque third-party identifier to link 
+	user_data: 16 bytes (128-bit) [optional, e.g. opaque third-party identifier to link
 		this transfer (many-to-one) to an external entity]
 	 reserved: 16 bytes (128-bit) [reserved, for accounting policy primitives]
        pending_id: 16 bytes (128-bit) [optional, required to post or void an existing but pending transfer]
-	  timeout:  8 bytes (64-bit) [optional, required only for a pending transfer, a quantity of time, 
+	  timeout:  8 bytes (64-bit) [optional, required only for a pending transfer, a quantity of time,
 		i.e. an offset in nanoseconds from timestamp]
-	    shard:  4 bytes (32-bit) [required, to enforce isolation by ensuring that all transfers 
+	    shard:  4 bytes (32-bit) [required, to enforce isolation by ensuring that all transfers
 		are between entities of the same shard]
-	     code:  2 bytes (16-bit) [required, an opaque entity code describing the type 
+	     code:  2 bytes (16-bit) [required, an opaque entity code describing the type
 		of the interpolation, e.g. player, map, prop]
 	    flags:  2 bytes (16-bit) [optional, to modify the usage of the reserved field and for future feature expansion.]
-	    value:  n bytes (n-bit) [required, variant of the past property and current property, 
+	    value:  n bytes (n-bit) [required, variant of the past property and current property,
 		which must be the same for both properties. Uses var_to_bytes_with_objects.]
 	timestamp:  8 bytes (64-bit) [reserved, assigned by the leader before journalling]
 } = n bytes (n CPU cache lines)
@@ -65,14 +65,14 @@ current_entity_id: 16 bytes (128-bit) [to allow interpolation between different 
 ```zig
    create_property {
 	      id: 16 bytes (128-bit)
-       user_data: 16 bytes (128-bit) [optional, opaque third-party identifier to link this account 
+       user_data: 16 bytes (128-bit) [optional, opaque third-party identifier to link this account
 		(many-to-one) to an external entity]
 	reserved: 48 bytes (384-bit) [reserved for future accounting policy primitives]
-	   shard:  4 bytes (32-bit) [required, to enforce isolation by ensuring that all transfers 
+	   shard:  4 bytes (32-bit) [required, to enforce isolation by ensuring that all transfers
 		are between accounts of the same ledger]
-	    code:  2 bytes (16-bit) [required, an opaque entity code describing the type 
+	    code:  2 bytes (16-bit) [required, an opaque entity code describing the type
 		of the interpolation, e.g. player, map, prop]
-	   flags:  2 bytes (16-bit) [optional, net balance limits: 
+	   flags:  2 bytes (16-bit) [optional, net balance limits:
 		e.g. debits_must_not_exceed_credits or credits_must_not_exceed_debits]
      past_interpolations_pending: n bytes (n-bit variant. Uses var_to_bytes_with_objects.)
       past_interpolations_posted: n bytes (n-bit variant. Uses var_to_bytes_with_objects.)
@@ -81,6 +81,7 @@ current_entity_id: 16 bytes (128-bit) [to allow interpolation between different 
 		       timestamp: 8 bytes ( 64-bit) [reserved]
 } = n bytes (n CPU cache lines)
 ```
+
 ## Positive Consequences <!-- optional -->
 
 - The code is based on robust view replication consensus algorithm theory.
@@ -106,13 +107,13 @@ We're doing the networking layer.
 ## References <!-- optional and numbers of links can vary -->
 
 - [Add a multiplayer interface and visual nodes for SceneTree replication
-](https://github.com/godotengine/godot-proposals/issues/3459)
+  ](https://github.com/godotengine/godot-proposals/issues/3459)
 
 - [LMAX Exchange Architecture](https://skillsmatter.com/skillscasts/5247-the-lmax-exchange-architecture-high-throughput-low-latency-and-plain-old-java)
 
 LMAX (quote):
 
-> 1. journal incoming events safely to disk, and 
+> 1. journal incoming events safely to disk, and
 > 2. replicate to backup nodes, then
 > 3. apply these events to the in-memory state, then
 > 4. ACK to the client
@@ -129,7 +130,7 @@ Tigerbeetle (quote):
 
 - [viewstamped-replication-made-famous](https://github.com/tigerbeetledb/viewstamped-replication-made-famous)
 - [vr-revisited.pdf](https://pmg.csail.mit.edu/papers/vr-revisited.pdf)
-- [TigerBeetle Discord server](https://discord.gg/uWCGp46uG5) 
+- [TigerBeetle Discord server](https://discord.gg/uWCGp46uG5)
 - [Cubic interpolation](https://docs.godotengine.org/en/latest/tutorials/math/interpolation.html)
 
 ## Interpolation function from Godot Engine 4
@@ -408,5 +409,5 @@ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  SOFTWARE.
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

@@ -27,6 +27,7 @@ We don't have to wait 2 hours to see if our changes break the build.
 There are consequences of increased developer merging friction.
 
 ## Option graveyard:
+
 - Option: The status quo. <!-- List the proposed options no longer open for consideration. -->
 - Rejection Reason: We keep breaking the build. <!-- List the reasons for the rejection: (the bad traits) -->
 
@@ -39,11 +40,13 @@ This is a dev ops change.
 We own the GitHub repositories.
 
 ## References
+
 - [V-Sekai](https://v-sekai.org/)
 - [Pending head](https://martinfowler.com/bliki/PendingHead.html)
 - [Godot Pull request](https://docs.godotengine.org/en/stable/community/contributing/pr_workflow.html)
 
 ## License of the contribution
+
 Copyright (c) 2022 K. S. Ernest (iFire) Lee
 
 Copyright (c) 2022 V-Sekai contributors

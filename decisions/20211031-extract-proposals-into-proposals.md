@@ -12,7 +12,7 @@ Convert items in a decision tree into proposals
 
 | Name                                  | Description                                                                                                                                                    | Task Stage       |
 | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
-| GLTF #materialx                        |                                                                                                                                                                | idea             |
+| GLTF #materialx                       |                                                                                                                                                                | idea             |
 | Godot CASSIE                          |                                                                                                                                                                | idea             |
 | Elixir membrane gltf processor        |                                                                                                                                                                | idea             |
 | Godot Dem Bones                       | Convert blend shapes to skeletal animation                                                                                                                     | idea             |
@@ -27,8 +27,8 @@ Convert items in a decision tree into proposals
 | GLTF omi-audio-emitter                |                                                                                                                                                                | idea             |
 | Robust Networking                     | networking problems: max room capacity? other unknown bandwidth limits? server hosting problems: dedicated server support? self hosting / upnp / holepunching? | idea             |
 | GLTF animation tree                   |                                                                                                                                                                | idea             |
-| #materialx Godot Plugin                | GLTF2 #materialx BSDF                                                                                                                                           | idea             |
-| #materialx Grid Texture Generator      |                                                                                                                                                                | idea             |
+| #materialx Godot Plugin               | GLTF2 #materialx BSDF                                                                                                                                          | idea             |
+| #materialx Grid Texture Generator     |                                                                                                                                                                | idea             |
 | Avatar Customization                  | how to import avatars from various places: Only VRM? Use Blender to convert GLTF?                                                                              | idea             |
 | V-Sekai homeroom                      |                                                                                                                                                                | idea             |
 | EWBIK Json debug                      | Print EWBIK json debug                                                                                                                                         | idea             |

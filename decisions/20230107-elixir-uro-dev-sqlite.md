@@ -1,8 +1,8 @@
-# How to start a development environment for sqlite and elixir? 
+# How to start a development environment for sqlite and elixir?
 
 ### Describe the status of the issue.
 
-- [X] proposed
+- [x] proposed
 - [ ] draft
 - [ ] rejected
 - [x] accepted
@@ -65,7 +65,7 @@ mix ecto.migrate
 iex.bat --werl -S mix phx.server
 ```
 
-This will start uro at http://localhost:4000/ 
+This will start uro at http://localhost:4000/
 
 Create a user in the website register user page.
 
@@ -73,7 +73,7 @@ Go to the console and set the user to be admin.
 
 ```bash
 iex.bat --werl -S mix phx.server
-# TODO 
+# TODO
 # Call Uro.Accounts.update_user_as_admin
 ```
 

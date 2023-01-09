@@ -1,11 +1,11 @@
-#  To avoid git submodule but recreate the gocd pipelines
+# To avoid git submodule but recreate the gocd pipelines
 
 ### Describe the status of the issue.
 
-- [X] proposed
-- [X] draft
+- [x] proposed
+- [x] draft
 - [ ] rejected
-- [X] accepted
+- [x] accepted
 - [ ] deprecated
 - [ ] superseded by
 
@@ -29,7 +29,7 @@ Reset the gocd pipeline by renaming the initial pipeline name.
 
 1. clone https://github.com/V-Sekai/groups-gocd-pipelines
 2. Modify https://github.com/V-Sekai/groups-gocd-pipelines/blob/master/src/godot_4_x.jsonnet
-3. godot_template_groups_editor  to have increment the revision number.
+3. godot_template_groups_editor to have increment the revision number.
 4. ./bin/generate
 5. commit to git
 
@@ -56,7 +56,6 @@ It's our release process.
 ### References
 
 - [V-Sekai](https://v-sekai.org/)
-
 
 ### License of the contribution
 

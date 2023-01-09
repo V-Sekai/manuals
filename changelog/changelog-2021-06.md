@@ -128,6 +128,7 @@ Make sure to use vnens godot-cpp and copy all the gdnative headers and stuff int
 - 2021-06-03 12:59:57Z fire: "Lyuma Saracen MMMaellon PR review meeting on https://meet.jit.si/godot-pr-review in 5 min, everyone welcome.
   We'll bikeshed about ""breaks compat"" PRs for 4.0 (mostly renaming stuff in the API, etc.)"
 - 2021-06-03 04:47:29Z fire: "
+
   ````c++
   diff --git a/source/blender/io/collada/AnimationExporter.cpp b/source/blender/io/collada/AnimationExporter.cpp
   index 73952b06bc9..3679dd090b4 100644
@@ -145,6 +146,7 @@ Make sure to use vnens godot-cpp and copy all the gdnative headers and stuff int
           Object *ob = *it;
           exportAnimation(ob, animation_sampler);``` 15 minutes to 5 minutes gltf2 anim export.
   ````
+
 - 2021-06-02 20:39:33Z fire: Lyuma Any thoughts on making Mousse a VRM? I'm stuck. Meshes are not exporting from Blender. Compiling Blender 2.93 (LTS) for debugging.
 - 2021-06-02 20:19:18Z fire: Wasm GDNative and Godot Engine will be evaluated in future releases https://twitter.com/nonunknown3/status/1400090487005011970?s=20
 - 2021-06-02 20:14:14Z fire: \o/ Blender 2.93 is out https://www.blender.org/download/releases/2-93/ https://twitter.com/i/status/1373384489146142720

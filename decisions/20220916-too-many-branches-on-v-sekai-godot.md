@@ -40,7 +40,6 @@ We own the V-Sekai/godot repository.
 
 - [V-Sekai](https://v-sekai.org/)
 
-
 ### License of the contribution
 
 Copyright (c) 2022 V-Sekai contributors.

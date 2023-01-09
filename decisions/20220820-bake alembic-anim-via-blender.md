@@ -1,4 +1,4 @@
-# Bake alembic imports by running blender script. 
+# Bake alembic imports by running blender script.
 
 ### Context and Problem Statement
 
@@ -76,7 +76,6 @@ We already made a solution.
 ### References
 
 - [V-Sekai](https://v-sekai.org/)
-
 
 ### License of the contribution
 

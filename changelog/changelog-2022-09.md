@@ -1,12 +1,12 @@
 # Changelog 2022-09
 
-#  2022-09-05
+# 2022-09-05
 
 tefusion took iFire's previous Godot Engine 3 branch and forward ported quad subdivision to an gdextension addon https://github.com/tefusion/godot-subdiv
 
 We discuss with Reduz, Calinou and Lyuma about astc and limiting astc block size to 4x4, 8x8, and 12x12 block sizes. 4x4 was agreed on. Others have not yet.
 
-#  2022-09-06
+# 2022-09-06
 
 Restored Lillybyte's https://github.com/godotengine/godot/pull/59675 Show the 3D transform gizmo in the center when otherwise offscreen work.
 
@@ -16,7 +16,7 @@ Saracen's Make auto-advance flag a requirement for conditional/expression evalua
 
 https://twitter.com/KenneyNL made a V-Sekai logo for us. https://twitter.com/KenneyNL/status/1567077172866596868?s=20&t=RIGyiux3A_KNX_HCLCVKvg
 
-#  2022-09-09
+# 2022-09-09
 
 https://github.com/Geequlim/ECMAScript/issues/131#issuecomment-1241570998 Javascript update.
 

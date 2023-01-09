@@ -16,7 +16,7 @@ Rename all godot4 branches to be main for v-sekai-game.
 
 iFire (he, him) — Today at 16:11
 
-need some consensus. I think that given v-sekai-game has only one branch it should be named 
+need some consensus. I think that given v-sekai-game has only one branch it should be named
 
 Lyuma — Today at 16:11
 
@@ -30,10 +30,9 @@ I agree provided we do the same with the submodules
 
 - change
 
-
 ## Option graveyard: <!-- same as above -->
 
-- Do nothing. 
+- Do nothing.
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 

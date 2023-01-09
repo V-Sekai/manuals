@@ -14,7 +14,7 @@ Commit code to uro sandbox branch
 
     - GoCD job creates uro-sandbox docker image
     - docker image is auto deployed to sandbox
-    
+
 PR merges code to uro main branch
 
     - GoCD job creates uro docker image

@@ -16,74 +16,76 @@ Wanted to have a default list of animations set.
 
 ### AnimationSet
 
-* Init
-* NeutralFront
-* NeutralRight
-* NeutralLeft
+- Init
+- NeutralFront
+- NeutralRight
+- NeutralLeft
 
-* WalkFront
-* WalkBack
-* WalkRightFront
-* WalkRightBack
-* WalkLeftFront
-* WalkLeftBack
+- WalkFront
+- WalkBack
+- WalkRightFront
+- WalkRightBack
+- WalkLeftFront
+- WalkLeftBack
 
-* StrafeRight
-* StrafeLeft
+- StrafeRight
+- StrafeLeft
 
-* SprintFront
-* SprintBack
-* SprintRightFront
-* SprintRightBack
-* SprintLeftFront
-* SprintLeftFrontBack
+- SprintFront
+- SprintBack
+- SprintRightFront
+- SprintRightBack
+- SprintLeftFront
+- SprintLeftFrontBack
 
-* Jump
-* Fall
-* Land
+- Jump
+- Fall
+- Land
 
 #### Additional 1
-* Sit
-* (NeutralToSit)
-* (SitToNeutral)
 
-* Lay
-* (NeutralToLay)
-* (LayToNeutral)
+- Sit
+- (NeutralToSit)
+- (SitToNeutral)
+
+- Lay
+- (NeutralToLay)
+- (LayToNeutral)
 
 #### Additional 2
-* DuckNeutral
-* DuckMoveFront
-* DuckMoveBack
-* DuckMoveRight
-* DuckMoveLeft
 
-* (DuckToSit)
-* (SitToDuck)
-* (DuckToLay)
-* (LayToDuck)
+- DuckNeutral
+- DuckMoveFront
+- DuckMoveBack
+- DuckMoveRight
+- DuckMoveLeft
 
-* CrawlNeutral
-* CrawlMoveFront
-* CrawlMoveBack
-* CrawlMoveRight
-* CrawlMoveLeft
+- (DuckToSit)
+- (SitToDuck)
+- (DuckToLay)
+- (LayToDuck)
 
-* (CrawlToSit)
-* (SitToCrawl)
-* (CrawlToLay)
-* (LayToCrawl)
+- CrawlNeutral
+- CrawlMoveFront
+- CrawlMoveBack
+- CrawlMoveRight
+- CrawlMoveLeft
 
-* (NeutralToDuck)
-* (DuckToNeutral)
-* (NeutralToCrawl)
-* (CrawlToNeutral)
-* (DuckToCrawl)
-* (CrawlToDuck)
+- (CrawlToSit)
+- (SitToCrawl)
+- (CrawlToLay)
+- (LayToCrawl)
+
+- (NeutralToDuck)
+- (DuckToNeutral)
+- (NeutralToCrawl)
+- (CrawlToNeutral)
+- (DuckToCrawl)
+- (CrawlToDuck)
 
 #### Additional 3
 
-* Chair
+- Chair
 
 ## Positive Consequences <!-- optional -->
 

@@ -1,4 +1,4 @@
-# Rank skeleton bone names by using BPR 
+# Rank skeleton bone names by using BPR
 
 - Status: proposed
 

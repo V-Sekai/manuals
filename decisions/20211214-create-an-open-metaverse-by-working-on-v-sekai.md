@@ -18,7 +18,6 @@ Build V-Sekai.
 - Customisable servers with their own individual game rules
 - Dependable for important presentations
 
-
 As a 3d world builder, I want to upload a world to invite my friends to experience (Voice Communication, Reliability, Networked) with me.
 
 1. Uninstalled: give a URL with a copy of the game.

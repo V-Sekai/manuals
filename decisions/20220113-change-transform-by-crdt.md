@@ -35,7 +35,7 @@ Not small.
 
 ## Is there a reason why this should be core and done by us?
 
-* Research.
+- Research.
 
 ## References <!-- optional and numbers of links can vary -->
 

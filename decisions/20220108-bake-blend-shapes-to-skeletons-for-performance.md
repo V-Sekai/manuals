@@ -15,20 +15,20 @@ Bake blend shapes to skeletal animation.
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
 1. I want to bake blendshapes
-   * 52 face blendshape face movements
-   * VRM blend shapes
-   * The blend shapes are interpolated between 0s and 1s.
-   * single animation track.
-3. I can send it to dem #bone and bake the blend shapes.
+   - 52 face blendshape face movements
+   - VRM blend shapes
+   - The blend shapes are interpolated between 0s and 1s.
+   - single animation track.
+2. I can send it to dem #bone and bake the blend shapes.
 
 ### Dem #bone baking procedure
 
 2. Remove empties that are unused.
-4. Extract the blend shape from the mesh
-6. Export as alembic 1 meter is 1 unit. Flatten hierachy.
+3. Extract the blend shape from the mesh
+4. Export as alembic 1 meter is 1 unit. Flatten hierachy.
 5. Note that all transforms on un-rigged meshes should be applied.
-9. Remove the skeleton and fbx export as 1 meter is 0.01 units.
-10. Run dem #bone (parameters to be determined)
+6. Remove the skeleton and fbx export as 1 meter is 0.01 units.
+7. Run dem #bone (parameters to be determined)
 
 ```bash
 ./dembones -i="a.fbx" -a="a.abc" -z=4 --bindUpdate=2 -b=200 -o="a_res.fbx"
@@ -45,7 +45,7 @@ Skinning decomposition to generate bone transformations and skinning weights fro
 
 `call #dembones -i="Bone_Geom.fbx" -a="Bone_Anim.abc" -b=20 -o="Decomposition_20.fbx"`
 
-Joint grouping 
+Joint grouping
 
 `call #dembones -i="Bone_Geom.fbx" -a="Bone_Anim.abc" -b=20 --bindUpdate=2 -o="Decomposition_20_grouped.fbx"`
 
@@ -71,7 +71,7 @@ Partially solve skinning weights using per-vertex color attribute of the mesh
 
 ### Open questions:
 
-I align each track to a second? one after the others? 
+I align each track to a second? one after the others?
 
 How do I find the tracks again?
 
@@ -95,7 +95,7 @@ Not a few lines of code to do error bound matching and geometry processing.
 
 ## Is there a reason why this should be core and done by us?
 
-I know how to do this! 
+I know how to do this!
 
 ## References <!-- optional and numbers of links can vary -->
 
@@ -122,3 +122,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```

@@ -23,26 +23,30 @@ Proposed mission and a list of tasks.
 ### To build a tech stack and service for interactive multiplayer VR games.
 
 1. One gitlab repo with source assets? (sky celebration and sponza).
-  * The ability to upload maps and avatars standalone via a SDK (set of submodules?) https://github.com/V-Sekai/vsk_sdk.
-     * Being able to enter a vsk map ∀ maps (mvp = 1 map). 
-     * Enter a vsk map with an entity in it (upload sky celebration OR upload sponza with one beachball). 
-  * VSK_map source asset repositories
-  * Lyuma will make a new github repo V-Sekai/vrm_submodule - we need a script for updating all submodules to the latest on a given branch.
-  * VSK_map source asset repositories 
-  * I think vsk_sdk should only be submodules, no assets. 
-  * We can git rebase -i to remove the binary assets from it. 
-  * git merge to install the vsk_sdk into another project (such as gitlab). we need to look if git subtree supports .gitmodules and we can use it if it does. 
-  * make vsk_sdk the head for all of the sdk related submodules. do our development there and commit submodules regularly. 
-  * In groups project, pretend we delete all submodules in vsk_sdk. Then git merge vsk_sdk/main to bring in the submodules from that repo. 
-  * Every time we update vsk_sdk, do a git merge into groups and our source asset repo with sponza etc.
-  * VSK_map source asset repositories 
-     * Don't save .scn assets in git.
-        *   no GLB. 
-        *   blend files ~10MB ok. > 100MB let's either use GitLab LFS or something else.
-        *   Evaluate https://dvc.org/
+
+- The ability to upload maps and avatars standalone via a SDK (set of submodules?) https://github.com/V-Sekai/vsk_sdk.
+  - Being able to enter a vsk map ∀ maps (mvp = 1 map).
+  - Enter a vsk map with an entity in it (upload sky celebration OR upload sponza with one beachball).
+- VSK_map source asset repositories
+- Lyuma will make a new github repo V-Sekai/vrm_submodule - we need a script for updating all submodules to the latest on a given branch.
+- VSK_map source asset repositories
+- I think vsk_sdk should only be submodules, no assets.
+- We can git rebase -i to remove the binary assets from it.
+- git merge to install the vsk_sdk into another project (such as gitlab). we need to look if git subtree supports .gitmodules and we can use it if it does.
+- make vsk_sdk the head for all of the sdk related submodules. do our development there and commit submodules regularly.
+- In groups project, pretend we delete all submodules in vsk_sdk. Then git merge vsk_sdk/main to bring in the submodules from that repo.
+- Every time we update vsk_sdk, do a git merge into groups and our source asset repo with sponza etc.
+- VSK_map source asset repositories
+  - Don't save .scn assets in git.
+    - no GLB.
+    - blend files ~10MB ok. > 100MB let's either use GitLab LFS or something else.
+    - Evaluate https://dvc.org/
+
 2. Being able to have our group of people join and communicate. (godot speech).
-  * Porting C++ was discussed as a way forward to make it easier to debug 
-4. VR support (openxr). 
+
+- Porting C++ was discussed as a way forward to make it easier to debug
+
+4. VR support (openxr).
 5. Interacting with objects in desktop mode is important so that we can test easier.
 6. Interacting with objects in vr.
 7. Scripting (wasgo).
@@ -63,7 +67,7 @@ Gain clarity of mission.
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
-This is a planning document. 
+This is a planning document.
 
 ## Is there a reason why this should be core and done by us?
 

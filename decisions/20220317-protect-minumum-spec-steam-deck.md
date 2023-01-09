@@ -16,8 +16,6 @@ V-Sekai,
 
 Provide a restricted environment that can limit our art, compute, storage budget.
 
-
-
 ### Describe the proposed option and how it helps to overcome the problem or limitation
 
 Propose to use the steam deck as the minimum platform for V-Sekai flat mode.
@@ -49,7 +47,6 @@ Setting minimum requirements is a core feature.
 ### References
 
 - [V-Sekai](https://v-sekai.org/)
-
 
 ### License of the contribution
 

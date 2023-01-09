@@ -2,7 +2,7 @@
 
 ### Context and Problem Statement
 
-Tags: hardware proxy, minimum spec, 
+Tags: hardware proxy, minimum spec,
 
 We want to create standardized performance numbers for V-Sekai.
 

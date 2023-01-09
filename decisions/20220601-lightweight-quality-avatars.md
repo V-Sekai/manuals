@@ -2,7 +2,7 @@
 
 ### Describe the status of the issue.
 
-- [X] proposed
+- [x] proposed
 - [x] draft
 - [ ] rejected
 - [ ] accepted
@@ -32,7 +32,7 @@ exploring avatars that are as parametric as possible.
 
 Find ways to define volumes as parametric, and textures based on vectors instead of bitmaps.
 
-Frame time: Using a mobile chip gives less headroom re: polys that can be dropped. Download sizes. How long does loading take.   
+Frame time: Using a mobile chip gives less headroom re: polys that can be dropped. Download sizes. How long does loading take.
 
 Yin doesn't love blender, more focused on web based tools fit for mobile processors and reasonable download speeds.
 
@@ -43,9 +43,9 @@ There are two systems, skeleton system and blendshapes. Conversion of blend shap
 Can also describe a quad subdivision workflow.
 
 1. quad based subdivision of detail `https://github.com/godotengine/godot-proposals/issues/784`
-2. procedural materials 
+2. procedural materials
 3. bake blendshapes to skeletons
-4. Fire is researching CSG based extraction combined with sliders. https://kacperkan.github.io/ucsgnet/ https://github.com/eliemichel/DagAmendment 
+4. Fire is researching CSG based extraction combined with sliders. https://kacperkan.github.io/ucsgnet/ https://github.com/eliemichel/DagAmendment
 
 ### Positive Consequences
 
@@ -70,7 +70,6 @@ Avatars is our special area.
 ### References
 
 - [V-Sekai](https://v-sekai.org/)
-
 
 ### License of the contribution
 

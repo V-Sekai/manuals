@@ -1,6 +1,7 @@
 ### Use specular vec3 from gltf to show multicoloured metals
 
 ### Desc
+
 ribe the status of the issue.
 
 rejected
@@ -51,7 +52,6 @@ Changing the standard material 3d is a core decision.
 ### References
 
 - [V-Sekai](https://v-sekai.org/)
-
 
 ### License of the contribution
 

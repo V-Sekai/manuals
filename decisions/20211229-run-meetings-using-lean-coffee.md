@@ -14,11 +14,11 @@ Lean coffee can improve on meetings.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-Three column kanban board. To discuss, discussing, and discussed. 
+Three column kanban board. To discuss, discussing, and discussed.
 
-Have everyone add cards for topics they want to discuss. It may take 2-3 min for people to get into the Trello board. Once in take 2-3 min to add topics to the left column. 
+Have everyone add cards for topics they want to discuss. It may take 2-3 min for people to get into the Trello board. Once in take 2-3 min to add topics to the left column.
 
-Then have everyone vote, each person gets 2-3 votes. To vote, they should click the card of a topic to discuss and in the comments type "+". Be sure nobody else adds any other comments until we begin discussing the cards. 
+Then have everyone vote, each person gets 2-3 votes. To vote, they should click the card of a topic to discuss and in the comments type "+". Be sure nobody else adds any other comments until we begin discussing the cards.
 
 Last, sort the cards by number of comments (most amount of + go to top) and then one by one drag in the top card to "discussing". Set a timer for 5 minutes. After 5 minutes the group votes to keep discussing or to move on. While discussing the group can add comments or links to the card while discussing.
 

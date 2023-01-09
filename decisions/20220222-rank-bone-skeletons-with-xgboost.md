@@ -37,6 +37,7 @@ Use xgboost to rank bones.
 - Option:
   - dlrm from facebook
 - Rejection Reason:
+
   - Too difficult to run
 
 - Option:
@@ -101,4 +102,4 @@ SOFTWARE.
 
 ## Links
 
-* Supersedes [20211031-use-bpr-to-rank-skeleton-bone-names](20211031-use-bpr-to-rank-skeleton-bone-names.md)
+- Supersedes [20211031-use-bpr-to-rank-skeleton-bone-names](20211031-use-bpr-to-rank-skeleton-bone-names.md)

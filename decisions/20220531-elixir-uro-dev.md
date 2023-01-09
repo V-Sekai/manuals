@@ -1,8 +1,8 @@
-# How to start a development environment for cockroach and elixir? 
+# How to start a development environment for cockroach and elixir?
 
 ### Describe the status of the issue.
 
-- [X] proposed
+- [x] proposed
 - [ ] draft
 - [ ] rejected
 - [x] accepted
@@ -69,7 +69,7 @@ mix ecto.migrate
 mix phx.server
 ```
 
-This will start uro at http://localhost:4000/ 
+This will start uro at http://localhost:4000/
 
 [GitHub - V-Sekai/uro: Server backend for V-Sekai written in Elixir ...](https://github.com/V-Sekai/uro)
 

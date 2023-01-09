@@ -1,4 +1,4 @@
-# Changelog 2021-09 
+# Changelog 2021-09
 
 - 2021-09-30 18:33:19Z fire: Saracen https://github.com/godotengine/godot/pull/52210 https://cdn.discordapp.com/attachments/836651615532482611/893203877367779408/unknown.png
 - 2021-09-30 01:28:33Z fire: https://www.youtube.com/watch?v=Dp42lQYVzwo&t=47s

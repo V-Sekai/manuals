@@ -42,11 +42,9 @@ Server state transfer.
 
 <img src="./attachments/20221022_server_state_transfer_load.png" alt="20221022_server_state_transfer_load" width="50%">
 
-
 Sql schema based on Tigerbeetle.
 
 <img src="./attachments/20221022_mvsqlite_sql_query.png" alt="20221022_server_state_transfer_load" width="50%">
-
 
 4. Test using a multiplayer simulator via Prasetya, Kusno's design
 
@@ -200,7 +198,6 @@ status
 # Force create a database
 # configure new single memory
 ```
-
 
 ### Create a mvsqlite database
 

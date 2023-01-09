@@ -1,7 +1,7 @@
 ---
 title: Storing raw VSK_map files via DVC to avoid limitations
 categories:
-  - pipeline 
+  - pipeline
   - V-Sekai
 status:
   - rejected <!-- draft | rejected | accepted | deprecated | superseded by -->
@@ -27,15 +27,15 @@ Initial list of binaries to transfer to DVC
 
 Use a Linux command to get the top 20 by size file types.
 
-* `*.glb`
-* `*.gltf`
-* `*.bin*`
-* `*.png`
-* `*.webp`
-* `*.jpg`
-* `*.jpeg`
-* `*.exr`
-* `*.scn`
+- `*.glb`
+- `*.gltf`
+- `*.bin*`
+- `*.png`
+- `*.webp`
+- `*.jpg`
+- `*.jpeg`
+- `*.exr`
+- `*.scn`
 
 ### Remotes
 
@@ -43,16 +43,15 @@ S3 Compatible has multiple implementations. Intent on using digital ocean spaces
 
 ### Permissions vs Cost
 
-* Permissions?
-* Open bucket
-* Cost of storage
+- Permissions?
+- Open bucket
+- Cost of storage
 
 ### Installing
 
-* https://dvc.org/doc/install/windows
-  * https://github.com/iterative/dvc/releases/download/2.9.5/dvc-2.9.5.exe 
-* https://dvc.org/doc/install/linux
-
+- https://dvc.org/doc/install/windows
+  - https://github.com/iterative/dvc/releases/download/2.9.5/dvc-2.9.5.exe
+- https://dvc.org/doc/install/linux
 
 ### Test using chibifire dvc bucket and the avatar wellness repository.
 
@@ -60,7 +59,7 @@ S3 Compatible has multiple implementations. Intent on using digital ocean spaces
 git clone https://github.com/fire/avatar-wellness.git
 dvc init
 dvc remote add -d chibifire-dvc-web https://chibifire.sfo3.digitaloceanspaces.com/dvc/
-# dvc remote add --local chibifire-dvc-s3 s3://chibifire/dvc 
+# dvc remote add --local chibifire-dvc-s3 s3://chibifire/dvc
 # dvc remote modify --local chibifire-dvc-s3 endpointurl sfo3.digitaloceanspaces.com
 # dvc remote modify --local chibifire-dvc-s3 access_key_id 'AAAA'
 # dvc remote modify --local chibifire-dvc-s3 secret_access_key 'BBBB'

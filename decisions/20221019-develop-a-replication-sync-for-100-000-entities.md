@@ -11,7 +11,7 @@ See [replicate sync 100'000 entities using a solution](20221019-replicate-sync-1
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
 I propose we have groups of servers handling entities. Each server is synchronized with mvsqlite.
-  
+
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
 We assume we're using Godot Engine 4 with float is doubles.
@@ -29,7 +29,7 @@ Create ECS style mvsqlite database for streaming and events (movement, health, a
 For movement update the table once and only once per frame.
 
 For avatar paths that change batch notify once per frame.
- 
+
 ![image](https://user-images.githubusercontent.com/32321/196743240-092dba67-98e7-4a92-937c-48dd26284d4f.png)
 
 ## Positive Consequences <!-- optional -->
@@ -76,7 +76,6 @@ We're doing the networking layer.
   [godot server beta with mvsqlite] - [godot server gamma with mvsqlite]
 ```
 
-
 ## Derivative License
 
 Copyright (c) 2022 V-Sekai contributors.
@@ -96,5 +95,5 @@ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  SOFTWARE.
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

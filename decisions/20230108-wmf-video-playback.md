@@ -1,4 +1,4 @@
-# Add WMF for windows media playback 
+# Add WMF for windows media playback
 
 ### Context and Problem Statement
 
@@ -37,7 +37,6 @@ I found this!
 ### References
 
 - [V-Sekai](https://v-sekai.org/)
-
 
 ### License of the contribution
 

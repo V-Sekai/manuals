@@ -1,8 +1,9 @@
-#  Host a baserow application for internal use. 
+# Host a baserow application for internal use.
+
 ### Describe the status of the issue.
 
-- [X] proposed
-- [X] draft
+- [x] proposed
+- [x] draft
 - [ ] rejected
 - [ ] accepted
 - [ ] deprecated
@@ -89,7 +90,7 @@ services:
   routes:
   - path: /
 
- ```
+```
 
 ### Positive Consequences
 
@@ -116,7 +117,6 @@ I need to store things.
 
 - [V-Sekai](https://v-sekai.org/)
 - [Create digital ocean instructions](https://gitlab.com/bramw/baserow/-/issues/998)
-
 
 ### License of the contribution
 

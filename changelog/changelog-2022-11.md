@@ -18,7 +18,7 @@ Game releases are working again.
 
 V-Sekai-game Player spawning should be working again (see their name tag at least). There's an issue with the default sky_celebration map caused by "TestEntity" which has scene_file_path=="" and that breaks the validation logic, preventing the player from spawning, and most default maps don't work. You need to use Mobile Dragon Shop (very dark) or Tokyo Map
 
-Note that avatars are currently not working. I think I'm getting closer to identifying where the validation is causing trouble. 
+Note that avatars are currently not working. I think I'm getting closer to identifying where the validation is causing trouble.
 
 ### Current state of V-Sekai-Game
 
@@ -35,5 +35,3 @@ I also fixed the default sky celebration map
 Avatar bone rotations are currently broken with this setup. Seems like the head always faces a certain direction:
 
 ![Avatar bone rotations are broken](./attachments/avatar_bone_rotations_are_currently_broken.png)
-
-

@@ -24,15 +24,15 @@ Remove required fields. Make them easier to use.
 
 ## Positive Consequences <!-- improvement of quality attribute satisfaction, follow-up decisions required -->
 
-* More bug filing
-* More proposals
+- More bug filing
+- More proposals
 
 ## Negative Consequences <!-- compromising quality attribute, follow-up decisions required -->
 
-* More work on the devs to catalog
-
+- More work on the devs to catalog
 
 ## Option graveyard:
+
 - Option: The status quo. <!-- List the proposed options no longer open for consideration. -->
 - Rejection Reason: This solves nothing. <!-- List the reasons for the rejection: (the bad traits) -->
 
@@ -45,9 +45,11 @@ Not a script.
 We own the repos.
 
 ## References
+
 - [V-Sekai](https://v-sekai.org/)
 
 ## License of the contribution
+
 Copyright (c) 2022 V-Sekai contributors.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:

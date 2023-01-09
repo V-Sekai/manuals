@@ -16,8 +16,8 @@ Propose a workflow for debugging linux exports.
 
 Use wsl or a virtual machine.
 
-1. Download the exact version of the editor that crashes on export. 
-2. Download the game templates. 
+1. Download the exact version of the editor that crashes on export.
+2. Download the game templates.
 3. Run the export in a debugger
 4. Find the bug.
 
@@ -26,12 +26,12 @@ Use wsl or a virtual machine.
 1. We can export again
 2. Writing down the workflow makes use be able to reuse processes.
 
-
 ## Negative Consequences <!-- compromising quality attribute, follow-up decisions required -->
 
 We need to download the binaries manually for now.
 
 ## Option graveyard:
+
 - Option: The status quo. <!-- List the proposed options no longer open for consideration. -->
 - Rejection Reason: This solves nothing. <!-- List the reasons for the rejection: (the bad traits) -->
 
@@ -47,6 +47,7 @@ This is a workflow document.
 We have to build V-Sekai.
 
 ## References
+
 - [V-Sekai](https://v-sekai.org/)
 
 ## License of the contribution

@@ -48,7 +48,7 @@ Napkin math:
 
     Right, so you would need to not send updates for far away objects
 
-    Only send 1000 closest objects: 1Tb/s 
+    Only send 1000 closest objects: 1Tb/s
 
     + Send faraway objects at 2Hz: 100Gb/s
 

@@ -1,4 +1,4 @@
-# Planning V-Sekai  Version 3 on 2022-02-28
+# Planning V-Sekai Version 3 on 2022-02-28
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,ifire,lyuma,
@@ -20,13 +20,13 @@ Proposed mission and a list of tasks.
 
 ### To build a tech stack and service for interactive multiplayer VR games.
 
-* Improve making and using avatar and map content enhancement
-* Able to have our group of people join and communicate (godot speech) enhancement
-* Restore VR support (openxr) in V-Sekai enhancement
-* Test easier with desktop interaction with objects enhancement
-* Interact with objects in vr enhancement
-* Import a CCBY, CC0 MMD stage for testing dance stages enhancement
-* Provide user generated scripting using WasGo enhancement
+- Improve making and using avatar and map content enhancement
+- Able to have our group of people join and communicate (godot speech) enhancement
+- Restore VR support (openxr) in V-Sekai enhancement
+- Test easier with desktop interaction with objects enhancement
+- Interact with objects in vr enhancement
+- Import a CCBY, CC0 MMD stage for testing dance stages enhancement
+- Provide user generated scripting using WasGo enhancement
 
 ## Positive Consequences <!-- optional -->
 
@@ -43,7 +43,7 @@ Gain clarity of mission.
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
-This is a planning document. 
+This is a planning document.
 
 ## Is there a reason why this should be core and done by us?
 

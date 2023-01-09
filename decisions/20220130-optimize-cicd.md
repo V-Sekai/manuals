@@ -20,7 +20,6 @@ Do not upload the template `.tpz`.
 4. Do not duplicate editor and game builds if they're the same.
 5. Publish a web build with editor if built.
 
-
 ## Positive Consequences <!-- optional -->
 
 - Reduce the costs of upload
@@ -44,7 +43,7 @@ We are running the cicd service.
 
 ## References <!-- optional and numbers of links can vary -->
 
-- [GOCD](https://www.gocd.org/) 
+- [GOCD](https://www.gocd.org/)
 
 ## Derivative License
 

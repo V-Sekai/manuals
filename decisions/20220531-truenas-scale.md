@@ -2,7 +2,7 @@
 
 ### Describe the status of the issue.
 
-- [X] proposed
+- [x] proposed
 - [x] draft
 - [x] rejected
 - [ ] accepted
@@ -39,8 +39,8 @@ Add a new storage node from hosts.
 6. Add environment variables
 7. GO_SERVER_URL="https://ci.v-sekai.cloud/go/"
 8. Add host volumes for
-  4. /go 
-  5. /mnt/homego # On truenas
+9. /go
+10. /mnt/homego # On truenas
 
 ## GOCD Config
 
@@ -72,7 +72,6 @@ I know how to do this and I don't want to pay for it.
 
 - [V-Sekai](https://v-sekai.org/)
 - [agent_auto_register](https://docs.gocd.org/current/advanced_usage/agent_auto_register.html)
-
 
 ### License of the contribution
 

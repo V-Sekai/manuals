@@ -1,4 +1,4 @@
-# To allow independent deployment run our own infrastructure 
+# To allow independent deployment run our own infrastructure
 
 - Status: rejected <!-- proposed | draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
@@ -24,10 +24,10 @@ It needs to be possible to replicate (or substitute) all of the existing infrast
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
 - Create new droplet. (Minimum configuration????):
-     * Custom Image -> pick our TrueNAS image or some custom one we make.
-     * Basic: pick a number of cpus. Direct storage is only used for the OS.
-     * Add a block volume for $10. TrueNAS requires a separate block device.
-     * Do not enable backups because TrueNAS has its own backup systems.
+  - Custom Image -> pick our TrueNAS image or some custom one we make.
+  - Basic: pick a number of cpus. Direct storage is only used for the OS.
+  - Add a block volume for $10. TrueNAS requires a separate block device.
+  - Do not enable backups because TrueNAS has its own backup systems.
 - Add one extra block volume after the machine spins up to get redundancy (RAID-1?)
 - (Note that block volumes can be moved between VMs, so doing things this way gives pretty good redudancy.
 

@@ -1,4 +1,4 @@
-# Interoperability between platforms using gltf extensions 
+# Interoperability between platforms using gltf extensions
 
 - Status: accepted
 - Deciders: V-Sekai,fire,lyuma,humbletim,codefloof,
@@ -26,7 +26,7 @@ Lyuma doesn't think we need to assume that there must be only one standard.
 
 We're trying to see if we can do better by working together than taking some existing closed format and using it verbatim.
 
-OMI work is valid even if a unity package standard exists. We don't need to be the only standard. 
+OMI work is valid even if a unity package standard exists. We don't need to be the only standard.
 
 iFire didn't exhaust all the details of the point, but we can make a Gltf transform for as many standards we can catalogue.
 

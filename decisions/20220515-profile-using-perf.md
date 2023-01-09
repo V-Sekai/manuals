@@ -1,7 +1,8 @@
 # Profile using perf
+
 ### Describe the status of the issue.
 
-- [X] proposed
+- [x] proposed
 - [ ] draft
 - [ ] rejected
 - [ ] accepted
@@ -56,7 +57,6 @@ We need to be aware of performance.
 ### References
 
 - [V-Sekai](https://v-sekai.org/)
-
 
 ### License of the contribution
 

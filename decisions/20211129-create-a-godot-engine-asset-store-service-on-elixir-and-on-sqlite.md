@@ -23,6 +23,7 @@ Use ecto with sqlite.
 - [ ] Punt using elixir-sqlite/ecto_sqlite3
 
 Use ecto with cockroachdb.
+
 - [ ] Make distribution of OSS cockroachdb for windows.
 
 Convert godot asset store api to an openapi schema.

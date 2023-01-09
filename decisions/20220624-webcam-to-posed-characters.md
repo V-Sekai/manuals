@@ -45,7 +45,6 @@ how do I get the 3d landmarks
 
 that's provided by API https://google.github.io/mediapipe/solutions/pose#pose_world_landmarks
 
-
 lox9973 — Today at 01:26
 
 2d landmarks: output.pose_landmarks
@@ -53,7 +52,6 @@ lox9973 — Today at 01:26
 3d landmarks: output.pose_world_landmarks
 
 they are both 4d vectors
-
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 
@@ -75,9 +73,8 @@ It's needed for face tracking to work well.
 
 From Kendrick
 
-* [media_pipe_demo.zip](https://github.com/V-Sekai/v-sekai-proposals/files/6972400/media_pipe_demo.zip)
-* https://github.com/V-Sekai/game-tools-V-Sekai
-
+- [media_pipe_demo.zip](https://github.com/V-Sekai/v-sekai-proposals/files/6972400/media_pipe_demo.zip)
+- https://github.com/V-Sekai/game-tools-V-Sekai
 
 ### Derivative License
 

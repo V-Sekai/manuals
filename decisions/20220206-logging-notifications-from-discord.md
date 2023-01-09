@@ -1,4 +1,5 @@
 # Log change notifications using DiscordChatExporter
+
 - Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
@@ -15,8 +16,8 @@ Use DiscordChatExporter to export our change notifications.
 
 1. generate a bot key
 1. enter key
-2. select channels to write to
-3. export while being careful to be in utc.
+1. select channels to write to
+1. export while being careful to be in utc.
 
 ## Positive Consequences <!-- optional -->
 
@@ -41,8 +42,7 @@ We are the ones designing and using Discord.
 
 ## References <!-- optional and numbers of links can vary -->
 
-- [DiscordChatExporter](
-https://github.com/Tyrrrz/DiscordChatExporter) <!-- example: Refined by [xxx](yyyymmdd-xxx.md) -->
+- [DiscordChatExporter](https://github.com/Tyrrrz/DiscordChatExporter) <!-- example: Refined by [xxx](yyyymmdd-xxx.md) -->
 
 ## Derivative License
 

@@ -856,7 +856,9 @@ How to upgrade the rest of the certs.
 ```
 find /var/lib/rancher/k3s/server/tls -name '*.crt' | while read fn; do echo $fn ===========; openssl x509 -text -in $fn | grep Not\ After | grep '202[012]'; done
 ```
+
 Here is the script I ran:
+
 ```
 #!/bin/bash
 set -
