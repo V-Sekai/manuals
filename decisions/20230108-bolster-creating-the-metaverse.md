@@ -1,12 +1,26 @@
 # Bolster creating the metaverse
 
-- Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
+- Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 
 ## Context and Problem Statement
 
 The metaverse needs creators.
 
 > Open Metaverse Interoperability Group's mission: We bolster the metaverse as an open and interoperable resource for anyone, inspired by the collaborative efforts of the community.
+
+> The Open Metaverse Interoperability Group is focused on bridging virtual worlds by designing and promoting protocols for identity, social graphs, inventory, and more. Our members include businesses and individuals working towards this common goal. Aside from technical work, OMI aims to create a community of artists, creators, developers, and other innovators to discuss and explore concepts surrounding the design and development of virtual worlds.
+OMI Core Values
+
+>    We collaborate, driven by research, privacy and accessibility, to make the metaverse more human.
+>    
+>    We work incrementally, iteratively, and with intent.
+>    
+>    We are creating a cooperative, sustainable culture of innovation.
+>    
+>    We empower the people making the metaverse.
+>    
+>    We must cultivate resiliency by championing diversity, and freedom of choice.
+
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
@@ -45,7 +59,7 @@ Only we can create official V-Sekai guides.
 
 ## Derivative License
 
-Copyright (c) 2020-2021 V-Sekai contributors.
+Copyright (c) 2020-present V-Sekai contributors.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
