@@ -1,8 +1,8 @@
 # V-Sekai Social VR
 
-V-Sekai is an open source project aiming to bring social VR/VRSNS/metaverse components to the Godot Engine.
+Join the V-Sekai team on the [V-Sekai discord server](https://discord.gg/7BQDHesck8)! We're developing a free, open source virtual reality platform. We work to make it user-friendly and fulfill a need in the VR community. Come help us build godot vr!
 
-Interested in [V-Sekai](https://v-sekai.org) or [#GodotVR](https://twitter.com/hashtag/godotvr) development? **[ Join the V-Sekai discord server!](https://discord.gg/7BQDHesck8)**
+Interested in [V-Sekai](https://v-sekai.org) or [#GodotVR](https://twitter.com/hashtag/godotvr) development?
 
 V-Sekai means virtual world in Japanese.
 
