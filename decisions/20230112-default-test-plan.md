@@ -17,6 +17,7 @@ Write the default test plans.
 1. Check if OpenXR godot works by joining a server.
 1. On pancake desktop mode, check if two clients connect to a 1 server and see each other's movements.
 1. Check if you can export a map.
+1. WIP Check audio io
 
 ## Positive Consequences <!-- improvement of quality attribute satisfaction, follow-up decisions required -->
 
