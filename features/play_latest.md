@@ -1,6 +1,6 @@
 # Play the latest build
 
-Instructions last checked 2023-01-12 try 2.
+Instructions last checked 2023-01-12 try 3.
 
 V-Sekai uses rolling releases and is alpha quality.
 
@@ -21,7 +21,7 @@ templates.tpz (for making export):
 
 V-Sekai demo release (linux, windows):
 
-- [linuxDesktopJob](https://ci.v-sekai.cloud/go/tab/build/detail/groups-export/latest/exportStage/latest/linux_job)
+- [linuxDesktopJob](https://ci.v-sekai.cloud/go/files/groups-export/latest/exportStage/latest/linux_job/export_linuxbsd)
 - [windowsJob](https://ci.v-sekai.cloud/go/tab/build/detail/groups-export/latest/exportStage/latest/windows_job)
 
 Direct .zip downloads of the releases can be found here (linux, windows):
