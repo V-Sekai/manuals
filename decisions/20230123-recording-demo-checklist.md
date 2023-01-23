@@ -13,7 +13,7 @@ I want to have consistency for the videos I record.
 - [ ] Do I have a keyboard to screen displayer?
 - [ ] Does the video have a V-Sekai logo?
 - [ ] Does the video have a work in progress disclaimer?
-- [ ] Do I have a time code bar with V-Sekai Game prefix and a timezone suffix?
+- [ ] Do I have a time code bar with V-Sekai Game prefix and a timezone suffix? https://obsproject.com/forum/resources/rtc-timecode-generator.1301/
 - [ ] Is it under 4 megabytes?
 
 
