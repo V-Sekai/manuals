@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.2.313</generator>
-<lastBuildDate>Mon, 23 Jan 2023 18:15:59 GMT</lastBuildDate>
+<lastBuildDate>Mon, 23 Jan 2023 18:23:22 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/decisions/20230123-ready-the-net-demo.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/decisions/20230123-ready-the-net-demo.html</guid>
-  <pubDate>Mon, 23 Jan 2023 18:15:59 GMT</pubDate>
+  <pubDate>Mon, 23 Jan 2023 18:23:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -167,7 +167,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/decisions/20230123-publish-godot-vrm-4.html</guid>
-  <pubDate>Mon, 23 Jan 2023 18:15:59 GMT</pubDate>
+  <pubDate>Mon, 23 Jan 2023 18:23:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -261,7 +261,109 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/decisions/20230123-player-scripting.html</guid>
-  <pubDate>Mon, 23 Jan 2023 18:15:59 GMT</pubDate>
+  <pubDate>Mon, 23 Jan 2023 18:23:22 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/decisions/20230123-no-traversal-loading-screen.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="no-traversal-loading-screen" class="level1">
+<h1>No traversal loading screen</h1>
+<section id="metadata" class="level3">
+<h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
+<ul>
+<li>Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
+<li>Deciders: V-Sekai,</li>
+<li>Tags: V-Sekai,</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level3">
+<h3 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h3>
+<p>This is a proposal to mask the loading time, but it doesn’t solve it.</p>
+</section>
+<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level3">
+<h3 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h3>
+<p>Trim the steps needed to enter the game.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level3">
+<h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h3>
+<p>When you first start up the application, you will see a loading screen. This screen will be displayed until all the assets needed to load your world have been downloaded.</p>
+<p>When switching between worlds, there is technically no need for a loading screen. Both leading platforms have chosen to include one in their applications, but this is not necessary. The leading platform displays a loading screen when clicking to go to a new world, while the secondary leading platform does not display one–you stay in your original world while also loading into the second world and then switch over once enough of it has been downloaded that you can be there.</p>
+<p>You click go and are left in your current world while loading in the other world, once the other world is completely loaded in you are transported to it instantaneously.</p>
+</section>
+<section id="positive-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h3>
+<pre><code>Able to mask loading times
+Able to direct players to the positive parts of v-sekai</code></pre>
+<p>For style points we could enforce portals that seamlessly transport you between different worlds, at least, as the default option, you place a portal, it has a camera, and you can walk through it, and after a certain point it disappears.</p>
+</section>
+<section id="negative-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h3>
+<pre><code>coordinating cats</code></pre>
+<p>The drawback to the multi-world load is that it is more resource intensive, though it should only last a short while, so if we do go that route it should be an option to use a loading screen instead.</p>
+<p>It makes for a far less friction-less experience</p>
+<p>But again, resource intensive issues, so will have to be optional</p>
+<p>We could even add a little button you click once you are ready to be transported, so it doesn’t happen against your will if your trying to say something last minute.</p>
+</section>
+<section id="option-graveyard" class="level3">
+<h3 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h3>
+<ul>
+<li>Option: The status quo. <!-- List the proposed options no longer open for consideration. --></li>
+<li>Rejection Reason: This solves nothing. <!-- List the reasons for the rejection: (the bad traits) --></li>
+</ul>
+</section>
+<section id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="level3">
+<h3 class="anchored" data-anchor-id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</h3>
+<p>Not script.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level3">
+<h3 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h3>
+<p>World traversal is a problem.</p>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+</ul>
+</section>
+<section id="license-of-the-contribution" class="level3">
+<h3 class="anchored" data-anchor-id="license-of-the-contribution">License of the contribution</h3>
+<pre><code>MIT License
+
+Copyright (c) 2018-present SaracenOne
+Copyright (c) 2019-present K. S. Ernest (iFire) Lee (fire)
+Copyright (c) 2020-present Lyuma
+Copyright (c) 2020-present MMMaellon
+Copyright (c) 2022-present See authors.md
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</code></pre>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/decisions/20230123-no-traversal-loading-screen.html</guid>
+  <pubDate>Mon, 23 Jan 2023 18:23:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -324,7 +426,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/decisions/20230123-integrate-blender-with-gltf-extensions-and-godot.html</guid>
-  <pubDate>Mon, 23 Jan 2023 18:15:59 GMT</pubDate>
+  <pubDate>Mon, 23 Jan 2023 18:23:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -417,7 +519,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/decisions/20230112-default-test-plan.html</guid>
-  <pubDate>Mon, 23 Jan 2023 18:15:59 GMT</pubDate>
+  <pubDate>Mon, 23 Jan 2023 18:23:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -480,7 +582,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/decisions/20230108-wmf-video-playback.html</guid>
-  <pubDate>Mon, 23 Jan 2023 18:15:59 GMT</pubDate>
+  <pubDate>Mon, 23 Jan 2023 18:23:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -565,7 +667,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/decisions/20230108-bolster-creating-the-metaverse.html</guid>
-  <pubDate>Mon, 23 Jan 2023 18:15:59 GMT</pubDate>
+  <pubDate>Mon, 23 Jan 2023 18:23:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -676,7 +778,7 @@ cd ..</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/decisions/20230107-elixir-uro-dev-sqlite.html</guid>
-  <pubDate>Mon, 23 Jan 2023 18:15:59 GMT</pubDate>
+  <pubDate>Mon, 23 Jan 2023 18:23:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -767,7 +869,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/decisions/20230106-walking-controller-renik.html</guid>
-  <pubDate>Mon, 23 Jan 2023 18:15:59 GMT</pubDate>
+  <pubDate>Mon, 23 Jan 2023 18:23:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -856,7 +958,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/decisions/20221214-powershell-autocomplete-use-right-arrow.html</guid>
-  <pubDate>Mon, 23 Jan 2023 18:15:59 GMT</pubDate>
+  <pubDate>Mon, 23 Jan 2023 18:23:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -953,7 +1055,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/decisions/20221212-world-and-character-tools.html</guid>
-  <pubDate>Mon, 23 Jan 2023 18:15:59 GMT</pubDate>
+  <pubDate>Mon, 23 Jan 2023 18:23:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1062,7 +1164,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/decisions/20221206-export-godot-vrm-to-the-asset-library.html</guid>
-  <pubDate>Mon, 23 Jan 2023 18:15:59 GMT</pubDate>
+  <pubDate>Mon, 23 Jan 2023 18:23:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1157,7 +1259,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/decisions/20221205-port-renik-to-many-bone-ik.html</guid>
-  <pubDate>Mon, 23 Jan 2023 18:15:59 GMT</pubDate>
+  <pubDate>Mon, 23 Jan 2023 18:23:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1250,7 +1352,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/decisions/20221205-moving-fast-philosophy-development.html</guid>
-  <pubDate>Mon, 23 Jan 2023 18:15:59 GMT</pubDate>
+  <pubDate>Mon, 23 Jan 2023 18:23:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1352,7 +1454,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/decisions/20221205-debug-linux-export.html</guid>
-  <pubDate>Mon, 23 Jan 2023 18:15:59 GMT</pubDate>
+  <pubDate>Mon, 23 Jan 2023 18:23:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1422,7 +1524,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/decisions/20221203-target-10-minutes-cicd.html</guid>
-  <pubDate>Mon, 23 Jan 2023 18:15:59 GMT</pubDate>
+  <pubDate>Mon, 23 Jan 2023 18:23:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1496,7 +1598,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/decisions/20221203-block-direct-pushes-to-main.html</guid>
-  <pubDate>Mon, 23 Jan 2023 18:15:59 GMT</pubDate>
+  <pubDate>Mon, 23 Jan 2023 18:23:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1752,7 +1854,7 @@ mvstore --data-plane 127.0.0.1:7000 --admin-api 127.0.0.1:7001 --metadata-prefix
 
  ]]></description>
   <guid>https://v-sekai.github.io/decisions/20221022-have-larger-worlds-by-server-state-migration.html</guid>
-  <pubDate>Mon, 23 Jan 2023 18:15:59 GMT</pubDate>
+  <pubDate>Mon, 23 Jan 2023 18:23:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1830,89 +1932,7 @@ mvstore --data-plane 127.0.0.1:7000 --admin-api 127.0.0.1:7001 --metadata-prefix
 
  ]]></description>
   <guid>https://v-sekai.github.io/decisions/20221021-make-it-easier-propose-and-post-bugs.html</guid>
-  <pubDate>Mon, 23 Jan 2023 18:15:59 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/decisions/20221019-replicate-sync-100-000-entities.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="replicate-sync-100000-entities-using-a-solution-revision-1" class="level1">
-<h1>Replicate sync 100’000 entities using a solution (Revision 1)</h1>
-<ul>
-<li>Status: proposed</li>
-<li>Deciders: V-Sekai,fire,</li>
-<li>Tags: V-Sekai,sync,view replication,</li>
-</ul>
-<section id="context-and-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
-<p>Develop a performant and robust (correctly and with liveness) network entity sync in V-Sekai.</p>
-<p>A client is one Godot Engine connection, it can view and change entities.</p>
-<p>There are 100’000 networked entities in a city and we go from position a to position b in a loop in a mover with one or more attached cabins.</p>
-</section>
-<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level2">
-<h2 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h2>
-<p>This document is a general problem statement.</p>
-</section>
-<section id="positive-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences <!-- optional --></h2>
-<ul>
-<li>Large sims!</li>
-</ul>
-</section>
-<section id="negative-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences <!-- optional --></h2>
-</section>
-<section id="option-graveyard" class="level2">
-<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard: <!-- same as above --></h2>
-<ul>
-<li>Option: Current V-Sekai replication</li>
-<li>Rejection Reason: Can’t link servers</li>
-</ul>
-</section>
-<section id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
-<h2 class="anchored" data-anchor-id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</h2>
-<p>Entity replication is not trivial.</p>
-</section>
-<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
-<p>We’re doing the networking layer.</p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References <!-- optional and numbers of links can vary --></h2>
-<ul>
-<li><a href="../decisions/20221019-develop-a-replication-sync-for-100-000-entities.html">20221019-develop-a-replication-sync-for-100-000-entities.md</a></li>
-<li><a href="../decisions/20221016-v-sekai-view-replication.html">20221016-v-sekai-view-replication.md</a></li>
-<li><a href="../decisions/20221014-networking-overhaul-proposal.html">20221014-networking-overhaul-proposal.md</a></li>
-<li><a href="https://pure.bond.edu.au/ws/portalfiles/portal/18275482/Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG_.pdf">Efficient<em>Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG</em>.pdf</a></li>
-</ul>
-<section id="questions" class="level3">
-<h3 class="anchored" data-anchor-id="questions">Questions</h3>
-<p>How many clients can be in this simulation?</p>
-<p>The state database should be smaller to avoid replication traffic on non-liveliness.</p>
-</section>
-</section>
-<section id="math" class="level2">
-<h2 class="anchored" data-anchor-id="math">Math</h2>
-<p>The calculation of who to pair and to find nearby or relevant players is a N^2 loop. Use better algorithms to lower O (N^2) into O (N log N).</p>
-<p>The proposed solution can be solved in O (N log N).</p>
-</section>
-<section id="derivative-license" class="level2">
-<h2 class="anchored" data-anchor-id="derivative-license">Derivative License</h2>
-<p>Copyright (c) 2022 V-Sekai contributors.</p>
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/decisions/20221019-replicate-sync-100-000-entities.html</guid>
-  <pubDate>Mon, 23 Jan 2023 18:15:59 GMT</pubDate>
+  <pubDate>Mon, 23 Jan 2023 18:23:22 GMT</pubDate>
 </item>
 </channel>
 </rss>
