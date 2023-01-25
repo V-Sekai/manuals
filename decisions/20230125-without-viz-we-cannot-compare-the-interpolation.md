@@ -43,7 +43,7 @@ Easy chart is a gdscript addon but it is not trivial to reimplement.
 
 ### Is there a reason why this should be core and done by us?
 
-Motion capture is a core feature.
+Motion posing is a core feature.
 
 ### References
 
