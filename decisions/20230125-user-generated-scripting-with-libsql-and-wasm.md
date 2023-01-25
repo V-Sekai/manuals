@@ -6,7 +6,6 @@
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
 
-
 ### Context and Problem Statement
 
 We want to have user scripting for interactivity for objects, pets and npcs.
@@ -33,12 +32,12 @@ Does it require determinism for clustering?
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-We ONLY support floating point, integers, strings and byte arrays. 
+We ONLY support floating point, integers, strings and byte arrays.
 
 - [ ] Compile libsqlite
 - [ ] Add a wasm engine
 - [ ] Typed:
-- [ ] Save a UDF of the notification function of _notification as a string of arbitrary length
+- [ ] Save a UDF of the notification function of \_notification as a string of arbitrary length
 - [ ] returns a row
 
 ![image](https://user-images.githubusercontent.com/32321/214701442-92179b40-a869-4290-a328-c2ad4c56264a.png)
