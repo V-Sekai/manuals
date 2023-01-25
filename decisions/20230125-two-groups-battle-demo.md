@@ -21,7 +21,7 @@ Make a game out of having two groups attack each other.
 3. use avoidance
 4. attack
 
-## Additional features for test bed
+## Additional features for the test
 
 1. can use wasm scripting
 2. in-game tablet drag to place objects
