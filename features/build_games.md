@@ -1,9 +1,5 @@
 # Creating virtual reality games
 
-## Create and visit places
-
-V-Sekai can import worlds and visit them.
-
 ## Supports many file types
 
 Supports several types of files out of the box:
