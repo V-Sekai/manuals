@@ -19,10 +19,10 @@ Cover 80% to 95% percent of the userbase's equipment, so people can play V-Sekai
 
 Provide coverage of:
 
+1. Desktop mode
 1. Meta Quest 2
-2. Valve Index
-3. HTC Vive
-4. Desktop mode
+1. Valve Index
+1. HTC Vive
 
 ### Positive Consequences
 
