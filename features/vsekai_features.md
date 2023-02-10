@@ -20,5 +20,4 @@
 | Godot Sqlite / Godot mvsqlite        | Relation database and Distributed relational database |
 | V-Sekai CI/CD                        | GOCD, Dagger and/or GitHub Actions                    |
 | XR Tunneling shader for Godot Engine | For VR usability tunneling shader                     |
-
-Full physically based rendering (PBR) out of the box.
+| PBR                                  | Full physically based rendering (PBR) out of the box. |
