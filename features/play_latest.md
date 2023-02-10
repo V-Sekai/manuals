@@ -1,6 +1,6 @@
 # Play the latest build
 
-Instructions last checked 2023-01-30. **Currently broken.**
+Instructions last checked 2023-02-10. **Currently cannot host a game but can fetch the editor.**
 
 V-Sekai uses rolling releases and is alpha quality.
 
