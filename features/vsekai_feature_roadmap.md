@@ -1,0 +1,91 @@
+# Feature Table
+
+| **Name** | **Type** | **Size** | **Notes** | **Url** |
+|---|---|---|---|---|
+| **Gather to watch videos** | Consistently deliver value | 10 |  |  |
+| **"Spawn new \[maps, props\] from a bank\."** | Consistently deliver value | 10 |  |  |
+| **Moderation tools** | Cultivate resiliency | 10 |  |  |
+| **Tools to process Godot Engine resources** | Cultivate resiliency | 4 | Allows a workflow graph for Godot Engine resources |  |
+| **URO backend with a dependencies on cockroachdb rdbms** | Cultivate resiliency | 4 |  |  |
+| **Export blender as a gltf document material node network** | Empower the people making the metaverse | 10 |  |  |
+| **Able to merge two Godot Engine entities** | Empower the people making the metaverse | 2 |  |  |
+| **Advanced modeling and material tools** | Empower the people making the metaverse | 2 |  |  |
+| **Fire joining as a contractor of Godot Engine organization** | Empower the people making the metaverse | 2 |  |  |
+| **"Mesh merge, subtract or intersect"** | Empower the people making the metaverse | 2 |  |  |
+| **Persist the uro login from the editor to the game** | Empower the people making the metaverse | 2 |  |  |
+| **Procedural materials with materialx** | Empower the people making the metaverse | 10 | Worked in early godot alphas |  |
+| **Procedural mesh generation and material generation** | Empower the people making the metaverse | 2 |  |  |
+| **V\-Sekai Unidot compatible importer** | Empower the people making the metaverse | 4 |  |  |
+| **Virtual personal space for anyone who wants one** | Empower the people making the metaverse | 2 | We talked about the three levels: 1\. the content 2\. the structure 3\. the wide open spaces in between |  |
+| **User scripting** | Empower the people making the metaverse | 10 |  |  |
+| **3d spatial audio** | Maintain sustainable innovation | 6 | spatial audio with hrtfs |  |
+| **Animation FK Retargeting** | Maintain sustainable innovation | 10 | Rest rewrite\. A to T pose\. Silhouette changer\. |  |
+| **Blender to Godot Engine ecosystem** | Maintain sustainable innovation | 10 | Improves compatibility between Blender and Godot Engine |  |
+| **Display the licenses of contributions stored** | Maintain sustainable innovation | 4 |  |  |
+| **fbx2gltf** | Maintain sustainable innovation | 2 | Import from Maya ecosystem |  |
+| **GLTF export from an active scene** | Maintain sustainable innovation | 10 |  |  |
+| **GLTFDocumentExtension extending gltf** | Maintain sustainable innovation | 8 |  |  |
+| **Godot 4 Cluster Vulkan Rendering** | Maintain sustainable innovation | 10 |  |  |
+| **Godot Engine 4\.0 Beta 17** | Maintain sustainable innovation | 10 |  | https://godotengine\.org/article/dev\-snapshot\-godot\-4\-0\-beta\-17/ |
+| **Godot Engine can now handle embedded glb textures bug** | Maintain sustainable innovation | 4 |  |  |
+| **Godot Engine GLTF 3D Formats** | Maintain sustainable innovation | 10 | GLTF is now Godot Engine's standard format for 3d assets |  |
+| **Godot VRM portable avatar format** | Maintain sustainable innovation | 10 | Portable avatar format |  |
+| **"Handle large, complex 3D scenes"** | Maintain sustainable innovation | 4 |  |  |
+| **libsql wasm scripting \(only pure functions\)** | Maintain sustainable innovation | 2 |  |  |
+| **Netdemo with godot engine 4 designed for vr and has physics ownership** | Maintain sustainable innovation | 4 | Broke with the version upgrades\. | https://github\.com/V\-Sekai/net\_demo |
+| **Opensource remixability** | Maintain sustainable innovation | 10 | Promotes open\-source collaboration and customization |  |
+| **Robust physics bones** | Maintain sustainable innovation | 2 |  |  |
+| **Security sanitization of packed scenes** | Maintain sustainable innovation | 10 |  |  |
+| **Splerger is used to solve a culling problem** | Maintain sustainable innovation | 2 | Optional helper to achieve platform to mesh splitting and merging script for Godot |  |
+| **Sqlite for godot engine** | Maintain sustainable innovation | 4 |  |  |
+| **Open subdivision surfaces for meshes** | Maintain sustainable innovation | 6 | Subdivide meshes for better quality | https://github\.com/v\-sekai/godot\-subdiv |
+| **Synchronize player characters** | Maintain sustainable innovation | 4 |  |  |
+| **Textures on both desktop \(BPTC\) and Android \(ASTC\)** | Maintain sustainable innovation | 8 |  |  |
+| **V\-Sekai can load packed scenes at runtime** | Maintain sustainable innovation | 10 |  | https://docs\.godotengine\.org/en/latest/classes/class\_gltfdocument\.html |
+| **V\-Sekai CI/CD** | Maintain sustainable innovation | 4 | Streamlines the CI/CD process |  |
+| **V\-Sekai joining GitHub Accelerator** | Maintain sustainable innovation | 2 |  |  |
+| **V\-Sekai proposals / manual site** | Maintain sustainable innovation | 4 |  |  |
+| **V\-Sekai Renik** | Maintain sustainable innovation | 4 |  |  |
+| **V\-Sekai Speech** | Maintain sustainable innovation | 4 |  |  |
+| **V\-Sekai Uro** | Maintain sustainable innovation | 4 |  | https://github\.com/V\-Sekai/uro |
+| **VRM Import** | Maintain sustainable innovation | 10 |  | https://github\.com/V\-Sekai/godot\-vrm/tree/master |
+| **VRM importer has errors with Colors and Textures** | Maintain sustainable innovation | 10 | API upgrade |  |
+| **We can make builds in one step\.** | Maintain sustainable innovation | 10 |  |  |
+| **We can ship in one step\.** | Maintain sustainable innovation | 10 |  |  |
+| **We need to prioritize our features\.** | Maintain sustainable innovation | 10 |  |  |
+| **WebM video playback \(VP8 Only\)** | Maintain sustainable innovation | 4 | Supports playback of WebM video files |  |
+| **Windows 10 and Windows 11 OpenXR support** | Maintain sustainable innovation | 10 |  |  |
+| **Writing decisions we make in writing** | Maintain sustainable innovation | 4 |  |  |
+| **XR Tunneling shader for Godot Engine** | Maintain sustainable innovation | 6 | Improves VR usability with the use of a tunneling shader |  |
+| **Item pickup / Entity synchronization** | Maintain sustainable innovation | 2 |  |  |
+| **SRanipal facial and eye tracking** | Make the metaverse more human | 4 |  |  |
+| **Summon friends to where they are** | Make the metaverse more human | 2 |  |  |
+| **Bug with voip where it'll sometime work** | Make the metaverse more human | 20 | Fixes a bug with VoIP that causes it to only work sometimes |  |
+| **A xr\-tablet interface that allows dragging using the cursor** | Make the metaverse more human | 2 |  |  |
+| **Authenticate with third party account system** | Make the metaverse more human | 2 |  |  |
+| **Convert the uro backend services to use sqlite for ease of deployment** | Make the metaverse more human | 2 |  |  |
+| **Debug email authentication** | Make the metaverse more human | 4 | Improves security with the use of email authentication | https://v\-sekai\.org/ |
+| **Discord bot for easing the front door of the community** | Make the metaverse more human | 2 |  |  |
+| **Easy to get modifying the core in an hour** | Make the metaverse more human | 10 |  |  |
+| **Facial expressions through simulated / motion tracked eye motion** | Make the metaverse more human | 2 |  |  |
+| **Integrate vroid hub because people want their hub avatars** | Make the metaverse more human | 5 |  |  |
+| **Manipulate game screens in vr** | Make the metaverse more human | 2 |  |  |
+| **ManyBoneIK** | Make the metaverse more human | 2 | Next IK system |  |
+| **Mirrors and toggles** | Make the metaverse more human | 2 |  |  |
+| **Player invitations** | Make the metaverse more human | 2 |  |  |
+| **Private instances** | Make the metaverse more human | 2 |  |  |
+| **Provide an entry avatar for every avatar species** | Make the metaverse more human | 2 |  |  |
+| **Real\-time collaborative editing capabilities** | Make the metaverse more human | 2 |  |  |
+| **Seats \- social menu** | Make the metaverse more human | 10 |  |  |
+| **Shadermotion provides a way to transfer animations between platforms** | Make the metaverse more human | 2 | transfer animations between platforms |  |
+| **Transfer between Godot Engine game servers without impatient players** | Make the metaverse more human | 2 |  |  |
+| **Video players on a screen** | Make the metaverse more human | 2 |  |  |
+| **WebXR** | Make the metaverse more human | 10 |  |  |
+| **Weekly chronicle rated by stars** | Make the metaverse more human | 2 |  |  |
+| **Working lasso** | Make the metaverse more human | 4 |  |  |
+| **Maintain sustainable innovation** | V\-Sekai |  | "By creating a cooperative, sustainable culture of innovations" |  |
+| **Make the metaverse more human** | V\-Sekai |  | "We collaborate, driven by research, privacy and accessibility" |  |
+| **Consistently deliver value** | V\-Sekai |  | We incrementally discover and deliver value with intent |  |
+| **Empower the people making the metaverse** | V\-Sekai |  | By incentivizing contributions |  |
+| **Cultivate resiliency** | V\-Sekai |  | By championing freedom of choice and diversity |  |
+| **V\-Sekai** |  |  |  |  |
