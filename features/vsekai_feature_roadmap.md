@@ -2,6 +2,8 @@
 
 This is a list of proposed features for V-Sekai. This is a table compatible with treemap https://developers.google.com/chart/interactive/docs/gallery/treemap and converted from .csv to markdown with https://tableconvert.com/csv-to-markdown.
 
+Maturity is following the CNCF -- "Cloud Native Maturity Model".
+
 ![image](https://user-images.githubusercontent.com/32321/218295156-280c5748-0965-44e8-8934-b74fe5b9ae02.png)
 
 | **Name**                                                                  | **Type**                                | **Maturity** | **Size** | **Notes**                                                                                               | **Url**                                                                    |
