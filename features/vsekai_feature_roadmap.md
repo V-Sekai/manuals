@@ -1,6 +1,6 @@
-# Feature Table
+# Proposed features table
 
-This is a list of proposed features for V-Sekai.
+This is a list of proposed features for V-Sekai. This is a table compatible with treemap https://developers.google.com/chart/interactive/docs/gallery/treemap
 
 | **Name** | **Type** | **Size** | **Notes** | **Url** |
 |---|---|---|---|---|
