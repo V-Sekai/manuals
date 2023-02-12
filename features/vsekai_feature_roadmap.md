@@ -1,5 +1,7 @@
 # Feature Table
 
+This is a list of proposed features for V-Sekai.
+
 | **Name** | **Type** | **Size** | **Notes** | **Url** |
 |---|---|---|---|---|
 | **Gather to watch videos** | Consistently deliver value | 10 |  |  |
