@@ -2,6 +2,8 @@
 
 This is a list of proposed features for V-Sekai. This is a table compatible with treemap https://developers.google.com/chart/interactive/docs/gallery/treemap
 
+![image](https://user-images.githubusercontent.com/32321/218295156-280c5748-0965-44e8-8934-b74fe5b9ae02.png)
+
 | **Name**                                                                  | **Type**                                | **Maturity** | **Size** | **Notes**                                                                                               | **Url**                                                                    |
 |---------------------------------------------------------------------------|-----------------------------------------|--------------|----------|---------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
 | **Gather to watch videos**                                                | Consistently deliver value              | Prologue     | 10       |                                                                                                         |                                                                            |
