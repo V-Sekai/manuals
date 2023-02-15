@@ -10,9 +10,9 @@ Maturity is following the CNCF -- "Cloud Native Maturity Model".
 
 | Name | Type | Size | Notes | Maturity | Url |
 |---|---|---|---|---|---|
-| Deploy the backend of sqlite for ease of use. | Make the metaverse more human |  |  |  |  |
-| Make the uiux work with vr controllers | Make the metaverse more human | 16 |  |  |  |
-| Object sync | Make the metaverse more human | 16 |  |  |  |
+| Deploy the backend of sqlite for ease of use. | Make the metaverse more human | 4 |  | Prologue |  |
+| Make the uiux work with vr controllers | Make the metaverse more human | 16 |  | Prologue |  |
+| Object sync | Make the metaverse more human | 16 |  | Prologue |  |
 | Gather to watch videos | Consistently deliver value | 10 | Provides a feature for users to come together and watch videos in unison | Prologue |  |
 | Spawn new \[maps props\] from a bank\. | Consistently deliver value | 10 | Ability to create new maps and props by selecting from a bank of options. | Prologue |  |
 | Moderation tools | Cultivate resiliency | 10 | Provide tools to maintain a safe and enjoyable user experience through moderation. | Prologue |  |
