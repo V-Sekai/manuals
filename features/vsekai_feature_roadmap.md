@@ -1,6 +1,6 @@
 # Proposed features table
 
-This image was posted on 2023-02-11 as a dated snapshot.
+This snapshot image was posted on 2023-02-11.
 
 ![image](https://user-images.githubusercontent.com/32321/219175366-16c75d33-3904-46d5-8011-e9e513aca887.png)
 
