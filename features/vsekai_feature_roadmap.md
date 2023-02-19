@@ -88,7 +88,7 @@ Maturity is following the CNCF -- "Cloud Native Maturity Model".
 | Transfer between Godot Engine game servers without impatient players | Make the metaverse more human | 2 | This feature allows players to seamlessly transfer between different game servers in Godot Engine without encountering any lag or interruption. | Build |  |
 | Video players on a screen | Make the metaverse more human | 2 | This feature enables the use of video players on in-game screens providing an enhanced viewing experience for players. | Operate |  |
 | WebXR | Make the metaverse more human | 10 | Support a standard for developing and delivering immersive web-based experiences. | Operate |  |
-| Weekly chronicle rated by stars | Make the metaverse more human | 2 | This refers to a weekly collection of game-related news | Operate |  |
+| Weekly chronicle rated by stars | Make the metaverse more human | 2 | This refers to a weekly collection of game-related news | Build |  |
 | Working lasso | Make the metaverse more human | 4 | This feature refers to a functional lasso tool in the game which can be used for various purposes such as capturing and controlling objects in the game world. | Operate |  |
 | Maintain sustainable innovation | V\-Sekai | By creating a cooperative sustainable culture of innovations | Build |  |  |
 | Make the metaverse more human | V\-Sekai | We collaborate driven by research, privacy and accessibility | Build |  |  |
