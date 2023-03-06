@@ -1,4 +1,4 @@
-# How to start a development environment for sqlite and elixir?
+# How to start a EXPERIMENTAL environment for sqlite and elixir?
 
 ### Describe the status of the issue.
 
@@ -21,9 +21,7 @@ V-Sekai,
 
 How do we start our uro backend?
 
-** THIS IS STILL EXPERIMENTAL **
-
-** USE 20220531-elixir-uro-dev for the production URO **
+** USE [20220531-elixir-uro-dev](20220531-elixir-uro-dev) for the production URO **
 
 ### Describe the proposed option and how it helps to overcome the problem or limitation
 
