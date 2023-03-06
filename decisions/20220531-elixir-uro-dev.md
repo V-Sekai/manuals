@@ -21,6 +21,8 @@ V-Sekai,
 
 How do we start our uro backend?
 
+See also [20230107-elixir-uro-dev-sqlite](20230107-elixir-uro-dev-sqlite.md).
+
 ### Describe the proposed option and how it helps to overcome the problem or limitation
 
 Write documentation how to update elixir.
