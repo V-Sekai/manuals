@@ -21,7 +21,7 @@ V-Sekai,
 
 How do we start our uro backend?
 
-** USE [20220531-elixir-uro-dev](20220531-elixir-uro-dev) for the production URO **
+** USE [20220531-elixir-uro-dev.md](20220531-elixir-uro-dev.md) for the production URO **
 
 ### Describe the proposed option and how it helps to overcome the problem or limitation
 
