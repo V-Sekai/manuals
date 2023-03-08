@@ -8,4 +8,4 @@ Godot Engine 4.0 launched on March 1st.
 
 Upgrade the documentation to point to github actions.
 
-Posted changes to https://github.com/godotengine/tps-demo/pull/167.
+Posted changes to https://github.com/godotengine/tps-demo/pull/167 to improve Github Actions export
