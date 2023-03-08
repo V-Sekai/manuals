@@ -13,3 +13,5 @@ Posted changes to https://github.com/godotengine/tps-demo/pull/167 to improve Gi
 Working on https://github.com/V-Sekai/blender-art-blue-tin-fox-models to get a list of prototype models.
 
 Tuned the vr vingette usability feature to be more black.
+
+Create an Awesome V-sekai page [https://github.com/V-Sekai/awesome-v-sekai](https://github.com/V-Sekai/awesome-v-sekai).
