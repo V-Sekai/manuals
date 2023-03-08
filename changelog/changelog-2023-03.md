@@ -2,7 +2,7 @@
 
 This is the changelog for March 2023.
 
-Godot Engine 4.0 launched on March 1st.
+Godot Engine 4.0 launched on March 1st. 🎉
 
 ## Fire
 
