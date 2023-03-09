@@ -12,8 +12,6 @@ There have already been over 100+ V-Sekai PRs merged into the Godot Engine core.
 
 ## Previous link
 
-Was previously https://github.com/v-sekai.github.io.
-
 ## How can you get involved?
 
 - The group meets ad-hoc in Discord [discord.gg/7BQDHesck8](https://discord.gg/7BQDHesck8).
