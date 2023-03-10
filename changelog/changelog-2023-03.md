@@ -23,3 +23,5 @@ Investigated SHARK and IREE. Provides vulkan for machine learning.
 Wrote a proposal for libfbx. [https://github.com/godotengine/godot-proposals/issues/6453](https://github.com/godotengine/godot-proposals/issues/6453)
 
 Did some removal of non essential code towards being in vr, loading maps and being in an avatar.
+
+Restore the brightness defaults in physical lighting.
