@@ -10,7 +10,80 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.2.335</generator>
-<lastBuildDate>Fri, 10 Mar 2023 17:06:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 10 Mar 2023 18:25:00 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230310-IREE-backend-for-machine-learning-computations.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="creating-a-godot-engine-c-module-with-iree-backend-for-machine-learning-computations-using-vulkan-and-cuda" class="level1">
+<h1>Creating a Godot Engine C++ module with IREE backend for machine learning computations using Vulkan and CUDA</h1>
+<section id="context-and-problem-statement" class="level3">
+<h3 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h3>
+<p>I want to have a starting place for testing ai algorithms.</p>
+</section>
+<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level3">
+<h3 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h3>
+<p>Create a Godot Engine C++ module with a machine learning computation backend.</p>
+<p>Find a interesting test case.</p>
+<p>Want to run the machine learning technology on the player’s computer, the cpu-only server that hosts the game, and the gpu cloud.</p>
+<p>To summarize, if you’re looking for a sample that demonstrates loading a model at runtime for CPU, Vulkan, and CUDA in C++, you can check out the IREE samples. In particular, the dynamic_shapes and simple_embedding samples showcase how to run on your choice of target. The input program may have a signature in the stablehlo dialect, and you can use IREE or XLA depending on your preferred tech stack or runtime requirements. The Vulkan stack in IREE is relatively stable and offers good performance, with nod.ai’s SHARK offering extra tuning and APIs on top. However, there may be differences in optimization depending on the workload and potential driver bugs and pitfalls.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level3">
+<h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h3>
+<p>Provide IREE to godot engine.</p>
+<p>Uses the Vulkan back end.</p>
+<ol type="1">
+<li>input_count</li>
+<li>input/0/data (TypedArray)</li>
+<li>output_count</li>
+<li>output/0/data (TypedArray)</li>
+</ol>
+</section>
+<section id="positive-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h3>
+<p>Have a playground for testing.</p>
+</section>
+<section id="negative-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h3>
+<p><em>No response</em></p>
+</section>
+<section id="option-graveyard" class="level3">
+<h3 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h3>
+<p>Don’t use onnx because it doesn’t have vulkan support which limits reach.</p>
+</section>
+<section id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="level3">
+<h3 class="anchored" data-anchor-id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</h3>
+<p>Not a small number of gdscript lines.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level3">
+<h3 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h3>
+<p>I know how, and no one else is doing it.</p>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+<li><a href="https://github.com/nod-ai/SHARK">SHARK</a></li>
+<li>IREE in-tree samples: https://github.com/openxla/iree/tree/main/samples</li>
+<li>IREE extra/more complex samples: https://github.com/iree-org/iree-samples</li>
+<li>IREE dynamic shapes sample: https://github.com/openxla/iree/tree/main/samples/dynamic_shapes</li>
+<li>IREE CPU/Vulkan/CUDA sample: https://github.com/openxla/iree/tree/main/samples/simple_embedding</li>
+<li>XLA axpy example: https://github.com/openxla/xla/tree/main/xla/examples/axpy</li>
+<li>nod.ai SHARK: https://github.com/nod-ai/SHARK</li>
+<li>nod.ai SHARK results on AMD GPUs using Vulkan: https://nod.ai/sd-rdna3-ces2023/</li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230310-IREE-backend-for-machine-learning-computations.html</guid>
+  <pubDate>Fri, 10 Mar 2023 18:25:00 GMT</pubDate>
+</item>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/20230131-meeting-at-gdc-2023.html</link>
@@ -74,7 +147,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230131-meeting-at-gdc-2023.html</guid>
-  <pubDate>Fri, 10 Mar 2023 17:06:00 GMT</pubDate>
+  <pubDate>Fri, 10 Mar 2023 18:25:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -167,7 +240,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230131-default-test-plan.html</guid>
-  <pubDate>Fri, 10 Mar 2023 17:06:00 GMT</pubDate>
+  <pubDate>Fri, 10 Mar 2023 18:25:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -244,7 +317,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230131-adopt-best-product-development-practices.html</guid>
-  <pubDate>Fri, 10 Mar 2023 17:06:00 GMT</pubDate>
+  <pubDate>Fri, 10 Mar 2023 18:25:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -313,7 +386,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230125-without-viz-we-cannot-compare-the-interpolation.html</guid>
-  <pubDate>Fri, 10 Mar 2023 17:06:00 GMT</pubDate>
+  <pubDate>Fri, 10 Mar 2023 18:25:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -407,7 +480,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230125-user-generated-scripting-with-libsql-and-wasm.html</guid>
-  <pubDate>Fri, 10 Mar 2023 17:06:00 GMT</pubDate>
+  <pubDate>Fri, 10 Mar 2023 18:25:00 GMT</pubDate>
   <media:content url="https://user-images.githubusercontent.com/32321/214701442-92179b40-a869-4290-a328-c2ad4c56264a.png" medium="image" type="image/png"/>
 </item>
 <item>
@@ -487,7 +560,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230125-two-groups-battle-demo.html</guid>
-  <pubDate>Fri, 10 Mar 2023 17:06:00 GMT</pubDate>
+  <pubDate>Fri, 10 Mar 2023 18:25:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -560,7 +633,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230125-provide-metadata-to-match-compatibile-maps-and-avatars.html</guid>
-  <pubDate>Fri, 10 Mar 2023 17:06:00 GMT</pubDate>
+  <pubDate>Fri, 10 Mar 2023 18:25:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -653,7 +726,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230125-possible-futures.html</guid>
-  <pubDate>Fri, 10 Mar 2023 17:06:00 GMT</pubDate>
+  <pubDate>Fri, 10 Mar 2023 18:25:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -722,7 +795,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230125-grow-the-community-with-a-reactive-discord-bot.html</guid>
-  <pubDate>Fri, 10 Mar 2023 17:06:00 GMT</pubDate>
+  <pubDate>Fri, 10 Mar 2023 18:25:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -792,7 +865,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230125-create-an-in-game-tablet-interface-we-can-activate.html</guid>
-  <pubDate>Fri, 10 Mar 2023 17:06:00 GMT</pubDate>
+  <pubDate>Fri, 10 Mar 2023 18:25:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -864,7 +937,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230125-cover-80-95-percent-of-the-userbase.html</guid>
-  <pubDate>Fri, 10 Mar 2023 17:06:00 GMT</pubDate>
+  <pubDate>Fri, 10 Mar 2023 18:25:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -936,7 +1009,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230123-use-easy-charts-for-observability.html</guid>
-  <pubDate>Fri, 10 Mar 2023 17:06:00 GMT</pubDate>
+  <pubDate>Fri, 10 Mar 2023 18:25:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1004,7 +1077,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230123-recording-demo-checklist.html</guid>
-  <pubDate>Fri, 10 Mar 2023 17:06:00 GMT</pubDate>
+  <pubDate>Fri, 10 Mar 2023 18:25:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1070,7 +1143,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230123-ready-the-net-demo.html</guid>
-  <pubDate>Fri, 10 Mar 2023 17:06:00 GMT</pubDate>
+  <pubDate>Fri, 10 Mar 2023 18:25:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1162,7 +1235,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230123-publish-godot-vrm-4.html</guid>
-  <pubDate>Fri, 10 Mar 2023 17:06:00 GMT</pubDate>
+  <pubDate>Fri, 10 Mar 2023 18:25:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1256,7 +1329,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230123-player-scripting.html</guid>
-  <pubDate>Fri, 10 Mar 2023 17:06:00 GMT</pubDate>
+  <pubDate>Fri, 10 Mar 2023 18:25:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1358,7 +1431,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230123-no-traversal-loading-screen.html</guid>
-  <pubDate>Fri, 10 Mar 2023 17:06:00 GMT</pubDate>
+  <pubDate>Fri, 10 Mar 2023 18:25:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1421,7 +1494,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230123-integrate-blender-with-gltf-extensions-and-godot.html</guid>
-  <pubDate>Fri, 10 Mar 2023 17:06:00 GMT</pubDate>
+  <pubDate>Fri, 10 Mar 2023 18:25:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1487,70 +1560,7 @@ SOFTWARE.</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230123-face-helmet-capture.html</guid>
-  <pubDate>Fri, 10 Mar 2023 17:06:00 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20230108-wmf-video-playback.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="add-wmf-for-windows-media-playback" class="level1">
-<h1>Add WMF for windows media playback</h1>
-<section id="context-and-problem-statement" class="level3">
-<h3 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h3>
-<p>We don’t have any good ways of playing video and also large 4k videos.</p>
-</section>
-<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level3">
-<h3 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h3>
-<p>Add WMF support to godot for the windows platform.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level3">
-<h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h3>
-<p>See https://github.com/V-Sekai/godot/tree/wmf</p>
-</section>
-<section id="positive-consequences" class="level3">
-<h3 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h3>
-<p>Can play videos.</p>
-<p>OS platform supported playback will be hardware accelerated.</p>
-</section>
-<section id="negative-consequences" class="level3">
-<h3 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h3>
-<p><em>No response</em></p>
-</section>
-<section id="option-graveyard" class="level3">
-<h3 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h3>
-<p><em>No response</em></p>
-</section>
-<section id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="level3">
-<h3 class="anchored" data-anchor-id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</h3>
-<p>It’s not a few lines.</p>
-</section>
-<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level3">
-<h3 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h3>
-<p>I found this!</p>
-</section>
-<section id="references" class="level3">
-<h3 class="anchored" data-anchor-id="references">References</h3>
-<ul>
-<li><a href="https://v-sekai.org/">V-Sekai</a></li>
-</ul>
-</section>
-<section id="license-of-the-contribution" class="level3">
-<h3 class="anchored" data-anchor-id="license-of-the-contribution">License of the contribution</h3>
-<p>Copyright (c) 2022 V-Sekai contributors.</p>
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20230108-wmf-video-playback.html</guid>
-  <pubDate>Fri, 10 Mar 2023 17:06:00 GMT</pubDate>
+  <pubDate>Fri, 10 Mar 2023 18:25:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
