@@ -25,3 +25,5 @@ Wrote a proposal for libfbx. [https://github.com/godotengine/godot-proposals/iss
 Did some removal of non essential code towards being in vr, loading maps and being in an avatar.
 
 Restore the brightness defaults in physical lighting.
+
+Trial variable rate shading.
