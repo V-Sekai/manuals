@@ -17,3 +17,7 @@ Tuned the vr vingette usability feature to be more black.
 Create an Awesome V-sekai page [https://github.com/V-Sekai/awesome-v-sekai](https://github.com/V-Sekai/awesome-v-sekai).
 
 Migrate the manual page to https://v-sekai.github.io/manuals
+
+Investigated SHARK and IREE. Provides vulkan for machine learning.
+
+Wrote a proposal for libfbx. [https://github.com/godotengine/godot-proposals/issues/6453](https://github.com/godotengine/godot-proposals/issues/6453)
