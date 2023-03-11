@@ -27,3 +27,5 @@ Did some removal of non essential code towards being in vr, loading maps and bei
 Restore the brightness defaults in physical lighting.
 
 Trial variable rate shading.
+
+Update VSK_model_explorer to stable Godot Engine 4.0.
