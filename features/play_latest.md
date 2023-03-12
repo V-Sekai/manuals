@@ -8,7 +8,7 @@ V-Sekai uses rolling releases and is alpha quality.
 
 Our V-Sekai CI is located at [v-sekai-game#how-do-i-get-it](https://github.com/V-Sekai/v-sekai-game#how-do-i-get-it)
 
-Here are links to each of the latest jobs. Generally, you will want to click the Artifacts tab from each of these to download things.
+Here are links to each of the latest builds. Generally, you will want to click on each of these to download things.
 
 Editor (linux, windows):
 
