@@ -38,6 +38,8 @@ Libgodot doesn't pass unit testing.
 
 Updated https://github.com/V-Sekai/godot-task-goal-planner 's gut addon and remove vsk versioning.
 
+Released embedding search example with Marqo. https://github.com/fire/soriee-search
+
 ### Pose tests
 
  Sequence | Pose 
