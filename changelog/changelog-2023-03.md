@@ -33,3 +33,5 @@ Update VSK_model_explorer to stable Godot Engine 4.0.
 Helped HungryProton add an automated build system for his ProtonGraph application. https://github.com/protongraph/protongraph
 
 Trying to get Godot Engine V-Sekai builds to pass. There was a breaking change in Scons.
+
+Libgodot doesn't pass unit testing.
