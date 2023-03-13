@@ -44,7 +44,7 @@ Updated https://github.com/V-Sekai/godot-task-goal-planner 's gut addon and remo
 ---|---
  0 | T-pose 
  1 | A-Pose 
- 2 | Hands at "At Ease" 
+ 2 | Hands beside the upper leg at "At Ease" 
  3 | Lift left leg 
  4 | Put hands next to the face in a claw position palms facing outwards 
  5 | Hands at "At Ease" 
