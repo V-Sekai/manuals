@@ -35,3 +35,5 @@ Helped HungryProton add an automated build system for his ProtonGraph applicatio
 Trying to get Godot Engine V-Sekai builds to pass. There was a breaking change in Scons.
 
 Libgodot doesn't pass unit testing.
+
+Updated https://github.com/V-Sekai/godot-task-goal-planner 's gut addon and remove vsk versioning.
