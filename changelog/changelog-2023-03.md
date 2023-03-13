@@ -37,3 +37,18 @@ Trying to get Godot Engine V-Sekai builds to pass. There was a breaking change i
 Libgodot doesn't pass unit testing.
 
 Updated https://github.com/V-Sekai/godot-task-goal-planner 's gut addon and remove vsk versioning.
+
+### Pose tests
+
+ Sequence | Pose 
+---|---
+ 0 | T-pose 
+ 1 | A-Pose 
+ 2 | Hands at "At Ease" 
+ 3 | Lift left leg 
+ 4 | Put hands next to the face in a claw position palms facing outwards 
+ 5 | Hands at "At Ease" 
+ 6 | Lift left arm from "At Ease" to Pointing straight upwards 
+ 7 | Point left index finger 
+ 8 | Hands at "At Ease" 
+ 9 | Bicycle pose 
