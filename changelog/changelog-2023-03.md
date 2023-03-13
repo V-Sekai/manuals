@@ -49,6 +49,7 @@ Updated https://github.com/V-Sekai/godot-task-goal-planner 's gut addon and remo
  4 | Put hands next to the face in a claw position palms facing outwards 
  5 | Hands at "At Ease" 
  6 | Lift left arm from "At Ease" to Pointing straight upwards 
- 7 | Point left index finger 
- 8 | Hands at "At Ease" 
- 9 | Bicycle pose 
+ 7 | Lift left arm from "At Ease" to Pointing upwards and wave off to a side
+ 8 | Point left index finger 
+ 9 | Hands at "At Ease" 
+ 10 | Bicycle pose 
