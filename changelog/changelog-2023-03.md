@@ -56,7 +56,7 @@ Released embedding search example with Marqo. https://github.com/fire/soriee-sea
  9 | Hands at "At Ease" 
  10 | Bicycle pose 
  
- ### After GDC 2023
+### After GDC 2023
  
 Organization | Description 
 ---|---
