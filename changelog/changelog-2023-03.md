@@ -58,14 +58,13 @@ Released embedding search example with Marqo. https://github.com/fire/soriee-sea
  
 ### After GDC 2023
  
-Organization | Description 
----|---
-V-Sekai | Fire	Fire	Update CSG	First Meeting		2023-03-30 00:00:00
-Godot Engine Foundation & V-Sekai | CSG	Fire	Chatted about CSG with reduz	First Meeting		2023-03-30 00:00:00
-V-Sekai | Physics Colliders	Fire	CoACD https://github.com/SarahWeiii/CoACD/issues/9	First Meeting		2023-03-30 00:00:00
-V-Sekai & Thorvg | Fire 	Fire	Review thorvg PR https://github.com/godotengine/godot/pull/75508			2023-03-30 00:00:00
-V-Sekai | Fire	Fire	Play a horror game	First Meeting		2023-03-30 00:00:00
-V-Sekai & Zylann | Fire	Fire	Asked zylann to review double precision pr			
-V-Sekai | Fire	Fire	Restore github cicd	First Meeting		2023-03-30 00:00:00
-V-Sekai | Fire	Fire	Animation iks as node first draft posted.	First draft		2023-03-30 00:00:00
-V-Sekai | Fire	Fire	Propose a animation node pr	First Meeting		2023-03-29 00:00:00
+Organization | Description | date
+---|---|---
+Godot Engine Foundation & V-Sekai | CSG	Fire	Chatted about CSG with reduz	First Meeting	|	2023-03-30 00:00:00
+V-Sekai | Physics Colliders	Fire	CoACD https://github.com/SarahWeiii/CoACD/issues/9	| 2023-03-30 00:00:00
+V-Sekai & Thorvg | Fire 	Fire	Review thorvg PR https://github.com/godotengine/godot/pull/75508	|	2023-03-30 00:00:00
+V-Sekai | Fire	Fire	Play a horror game	First Meeting	|	2023-03-30 00:00:00
+V-Sekai & Zylann | Fire	Fire	Asked zylann to review double precision pr |	2023-03-30 00:00:00			
+V-Sekai | Fire	Fire	Restore github cicd	First Meeting	|	2023-03-30 00:00:00
+V-Sekai | Fire	Fire	Animation iks as node first draft posted.	First draft	|	2023-03-30 00:00:00
+V-Sekai | Fire	Fire	Propose a animation node pr	First Meeting	|	2023-03-30 00:00:00
