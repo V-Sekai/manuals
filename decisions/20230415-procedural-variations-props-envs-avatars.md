@@ -3,7 +3,7 @@
 
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
-- Tags: V-Sekai,
+- Tags: V-Sekai,chatgp4,
 
 ### Context and Problem Statement
 
