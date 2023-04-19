@@ -1,10 +1,10 @@
 # Package Godot for pkgin
+
 ### Metadata
 
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
 - Tags: V-Sekai,
-
 
 ### Context and Problem Statement
 
@@ -57,7 +57,19 @@ K --> I
 
 ### Negative Consequences
 
-We cannot get other features in.
+There are some potential downsides to packaging the Godot Engine for pkgin, which include:
+
+Additional maintenance work: Supporting pkgin may necessitate regular package updates to ensure compatibility with different systems and to keep up with new Godot Engine versions and features. This could require extra time and resources from the development team.
+
+Incomplete platform support: Pkgin is designed for UNIX-like systems, but it doesn't directly cater to users on other platforms, such as Windows. Supporting alternative package managers for non-UNIX platforms may demand extra efforts.
+
+User learning curve: Users unfamiliar with pkgin or pkgsrc might need to invest time in learning to use the package manager effectively, which could pose a barrier for some users, particularly those new to UNIX-like systems or with limited package management experience.
+
+Potential compatibility challenges: While pkgin aims to provide compatibility across various UNIX-like systems, certain configurations or system setups may still pose difficulties. Addressing these issues might require more development and troubleshooting efforts.
+
+Unnecessary overhead for small projects: For smaller projects or users with minimal requirements, the added features and capabilities provided by pkgin support might be excessive. In such cases, the effort needed to maintain and use a pkgin package could outweigh its benefits.
+
+Despite these potential downsides, offering pkgin support can bring significant advantages, such as streamlining installation and updates, ensuring compatibility with UNIX-like systems, and promoting collaboration within the open-source community.
 
 ### Option graveyard
 
