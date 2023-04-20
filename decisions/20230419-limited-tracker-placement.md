@@ -1,4 +1,4 @@
-#  Capturing accurate body movements with limited tracker placement #458 
+#  Capturing accurate body movements with limited tracker placement
 
 ### Metadata
 
