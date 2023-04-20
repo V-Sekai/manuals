@@ -26,11 +26,11 @@ The proposed option involves prioritizing tracker placement for the head, hands,
 
 As the budget permits, additional trackers can be incorporated into the setup to further enhance tracking accuracy, particularly for the upper body and leg movements. This expansion can be achieved by following the prioritized list of additional trackers below:
 
-1. Chest: A tracker on the chest to monitor upper body rotation, providing more detailed information about the user's torso movements.
-2. Left Shoulder: A tracker on the left shoulder to track upper arm rotation, allowing for more precise tracking of arm movements during soccer and dancing.
-3. Right Shoulder: A tracker on the right shoulder to track upper arm rotation, complementing the left shoulder tracker for better arm movement tracking.
-4. Left Knee: A tracker on the left knee to track left leg movement, enhancing the realism of leg movements and providing more accurate feedback for actions like kicking in soccer or complex footwork in dancing.
-5. Right Knee: A tracker on the right knee to track right leg movement, mirroring the benefits of the left knee tracker for a balanced leg movement representation.
+7. Chest: A tracker on the chest to monitor upper body rotation, providing more detailed information about the user's torso movements.
+8. Left Shoulder: A tracker on the left shoulder to track upper arm rotation, allowing for more precise tracking of arm movements during soccer and dancing.
+9. Right Shoulder: A tracker on the right shoulder to track upper arm rotation, complementing the left shoulder tracker for better arm movement tracking.
+10. Left Knee: A tracker on the left knee to track left leg movement, enhancing the realism of leg movements and providing more accurate feedback for actions like kicking in soccer or complex footwork in dancing.
+11. Right Knee: A tracker on the right knee to track right leg movement, mirroring the benefits of the left knee tracker for a balanced leg movement representation.
 
 By gradually adding these trackers to the initial setup, the overall tracking accuracy of the system will be improved. This will result in more natural and immersive interactions within the VR environment, leading to a more satisfying user experience for both soccer and dancing activities.
 
