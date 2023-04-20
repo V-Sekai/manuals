@@ -27,8 +27,8 @@ The proposed option involves prioritizing tracker placement for the head, hands,
 As the budget permits, additional trackers can be incorporated into the setup to further enhance tracking accuracy, particularly for the upper body and leg movements. This expansion can be achieved by following the prioritized list of additional trackers below:
 
 7. Chest (can be on the back): A tracker on the chest to monitor upper body rotation, providing more detailed information about the user's torso movements.
-8. Left Shoulder (can be on the elbow): A tracker on the left shoulder to track upper arm rotation, allowing for more precise tracking of arm movements during soccer and dancing.
-9. Right Shoulder (can be on the elbow): A tracker on the right shoulder to track upper arm rotation, complementing the left shoulder tracker for better arm movement tracking.
+8. Left Shoulder: A tracker on the left shoulder to track upper arm rotation, allowing for more precise tracking of arm movements during soccer and dancing.
+9. Right Shoulder: A tracker on the right shoulder to track upper arm rotation, complementing the left shoulder tracker for better arm movement tracking.
 10. Left Knee: A tracker on the left knee to track left leg movement, enhancing the realism of leg movements and providing more accurate feedback for actions like kicking in soccer or complex footwork in dancing.
 11. Right Knee: A tracker on the right knee to track right leg movement, mirroring the benefits of the left knee tracker for a balanced leg movement representation.
 
