@@ -1,7 +1,4 @@
----
-title: 'Package Godot for pkgin'
-format: gfm
----
+# Package Godot for pkgin
 
 ### Metadata
 
