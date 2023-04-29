@@ -1,7 +1,4 @@
----
-title: 'Challenges in managing and synchronizing multiple assets and libraries across different git repositories'
-format: gfm
----
+# Challenges in managing and synchronizing multiple assets and libraries across different git repositories'
 
 ### Metadata
 

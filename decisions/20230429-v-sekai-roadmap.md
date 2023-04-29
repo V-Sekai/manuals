@@ -1,7 +1,4 @@
----
-title: 'V-Sekai Roadmap and Goals 2023-04-20'
-format: gfm
----
+# V-Sekai Roadmap and Goals 2023-04-20
 
 ### Metadata
 

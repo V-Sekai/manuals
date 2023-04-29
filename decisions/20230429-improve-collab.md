@@ -1,7 +1,4 @@
----
-title: 'Improve the collaboration process and attract more contributors to work on the project'
-format: gfm
----
+# Improve the collaboration process and attract more contributors to work on the project
 
 ### Metadata
 
