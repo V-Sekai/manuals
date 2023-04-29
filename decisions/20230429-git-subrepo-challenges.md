@@ -1,4 +1,4 @@
-# Challenges in managing and synchronizing multiple assets and libraries across different git repositories'
+# Challenges in managing and synchronizing multiple assets and libraries across different git repositories
 
 ### Metadata
 
