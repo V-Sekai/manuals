@@ -4,7 +4,7 @@
 
 - Status: proposed
   <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
-- Deciders: V-Sekai,fire,
+- Deciders: V-Sekai,fire,lyuma,
 - Tags: V-Sekai,chatgpt4 summary,
 
 ### Context and Problem Statement
