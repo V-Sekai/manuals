@@ -16,7 +16,7 @@ The roadmap presented here is divided into three stages: short-term, mid-term, a
 
 ### Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
-```{mermaid}
+```mermaid
 graph LR
 
   subgraph Short Term
