@@ -67,3 +67,4 @@ By integrating the IREE-based image superresolution feature into V-Sekai's core,
 - IREE (Intermediate Representation Execution Environment) GitHub Repository: https://github.com/openxla/iree
 - Godot Engine: https://godotengine.org
 - Vulkan Backend: https://www.khronos.org/vulkan/
+- IREE.gd: https://github.com/RechieKho/IREE.gd
