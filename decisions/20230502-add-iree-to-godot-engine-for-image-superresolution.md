@@ -6,7 +6,6 @@
 - Deciders: V-Sekai,fire,
 - Tags: V-Sekai, IREE, Godot Engine, Image Superresolution, Vulkan Backend,chatgpt 4,
 
-
 ### Context and Problem Statement
 
 V-Sekai currently faces a limitation in the quality of upscaled images, particularly when the image needs to be magnified by a factor of 4x or more. How can we improve image superresolution in V-Sekai while maintaining performance?
@@ -34,7 +33,6 @@ Integrate the Intermediate Representation Execution Environment (IREE) into the 
 - Additional development time required for integration and optimization.
 - Potential trade-offs in implementing other features.
 
-
 ### Option graveyard
 
 1. Use a custom script to work around the image superresolution issue.
@@ -42,24 +40,13 @@ Integrate the Intermediate Representation Execution Environment (IREE) into the 
 2. Implement a different image superresolution algorithm.
    - This could lead to suboptimal results compared to IREE's capabilities.
 
-
 ### If this enhancement will be used infrequently, can it be worked around with a few lines of script?
 
 A custom script could serve as a workaround for infrequent use of image superresolution, but it may have drawbacks in terms of efficiency, output quality, and maintenance efforts. If the feature aligns with V-Sekai's goals and significantly improves user experience, integrating the IREE-based solution into the core might be more effective.
 
 ### Is there a reason why this should be core and done by us?
 
-Integrating the IREE-based image superresolution feature directly into the core of V-Sekai offers several advantages that align with the project's goals and values:
-
-1. Enhanced User Experience: By incorporating high-quality image superresolution into V-Sekai's core, users will experience better visual fidelity in the virtual environment, contributing to a more immersive and enjoyable VR experience.
-
-2. Performance Optimization: IREE's MLIR-based compiler and runtime allow for efficient scaling, which is crucial for maintaining performance in VR applications. Integrating this feature into V-Sekai's core ensures the performance benefits are maximized across the platform.
-
-3. Open Source and Community Driven: As V-Sekai is an open source project, integrating the IREE-based feature directly into the core aligns with the project's commitment to providing free, open source solutions to the VR community.
-
-4. Easier Maintenance and Support: Incorporating the image superresolution feature into V-Sekai's core simplifies maintenance and support, as updates and improvements can be managed by the V-Sekai development team. This ensures the feature remains up-to-date and compatible with the platform's evolving requirements.
-
-By integrating the IREE-based image superresolution feature into V-Sekai's core, the development team can provide a high-quality, performance-optimized solution that aligns with the project's goals of being user-friendly, open source, and fulfilling a need in the VR community.
+In summary, integrating the IREE-based image superresolution feature into V-Sekai's core offers several benefits, including an enhanced user experience, performance optimization, alignment with open source values, and easier maintenance and support. These advantages contribute to a better, more immersive VR experience while staying true to V-Sekai's project goals.
 
 ### References
 
