@@ -27,7 +27,7 @@ Integrate the Intermediate Representation Execution Environment (IREE) into the 
 - Improved image superresolution quality in V-Sekai.
 - Enhanced performance due to IREE's efficient MLIR-based compiler and runtime.
 - Scalable solution that adapts to various hardware and software constraints.
-
+- A step towards using other machine learning models from Pytorch and Tensorflow
 
 ### Negative Consequences
 
