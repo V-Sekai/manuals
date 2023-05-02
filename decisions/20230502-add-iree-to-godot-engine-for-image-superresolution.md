@@ -8,7 +8,7 @@
 
 ### Context and Problem Statement
 
-V-Sekai currently faces a limitation in the quality of upscaled images, particularly when the image needs to be magnified by a factor of 4x or more. How can we improve image superresolution in V-Sekai while maintaining performance?
+V-Sekai currently faces a limitation in the quality of upscaled images, particularly when the image needs to be magnified by a factor of 4x or more.
 
 ### Describe the proposed option and how it helps to overcome the problem or limitation
 
