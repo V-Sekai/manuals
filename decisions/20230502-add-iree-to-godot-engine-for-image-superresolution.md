@@ -26,7 +26,7 @@ Integrate the Intermediate Representation Execution Environment (IREE) into the 
 
 - Improved image superresolution quality in V-Sekai.
 - Enhanced performance due to IREE's efficient MLIR-based compiler and runtime.
-- Scalable solution that adapts to various hardware and software constraints. Not only NVidia gpus, but Intel, AMD and Apple gpus.
+- Scalable solution that adapts to various hardware and software constraints. Not only NVidia gpus, but ARM, Intel, AMD and Apple gpus.
 - Allow using other machine learning models from PyTorch and Tensorflow
 
 ### Negative Consequences
