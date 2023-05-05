@@ -113,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#automated-avatar-garment-rigging" id="toc-automated-avatar-garment-rigging" class="nav-link active" data-scroll-target="#automated-avatar-garment-rigging">Automated Avatar Garment Rigging</a>
+  <li><a href="#automated-avatar-garment-rigging" id="toc-automated-avatar-garment-rigging" class="nav-link active" data-scroll-target="#automated-avatar-garment-rigging">Automated avatar garment rigging</a>
   <ul class="collapse">
   <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
   <li><a href="#context-and-problem-statement" id="toc-context-and-problem-statement" class="nav-link" data-scroll-target="#context-and-problem-statement">Context and Problem Statement</a></li>
@@ -136,7 +136,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <section id="automated-avatar-garment-rigging" class="level1">
-<h1>Automated Avatar Garment Rigging</h1>
+<h1>Automated avatar garment rigging</h1>
 <section id="metadata" class="level2">
 <h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
@@ -147,10 +147,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="context-and-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
-<p>It is not feasible to rig every possible avatar when a new garment is created.</p>
-<p>It is not feasible to rig every possible garment when a new avatar is created.</p>
-<p>It is not possible to do rigging when the garment and avatar are separated by time and space.</p>
-<p>We want to change the portable avatar garment problem so that one garment does not need to be rigged to all other avatars and vice versa.</p>
+<p>Rigging every possible avatar and garment combination is not feasible. We need a system that allows garments to be easily applied to various avatars without manual rigging each time a new garment or avatar is created.</p>
 </section>
 <section id="describe-the-problem-or-limitation-you-have-in-your-project-e.g.-in-free-form-using-two-to-three-sentences.-consider-articulating-the-case-in-the-form-of-a-question." class="level2">
 <h2 class="anchored" data-anchor-id="describe-the-problem-or-limitation-you-have-in-your-project-e.g.-in-free-form-using-two-to-three-sentences.-consider-articulating-the-case-in-the-form-of-a-question.">Describe the problem or limitation you have in your project, e.g., in free form, using two to three sentences. Consider articulating the case in the form of a question.</h2>
@@ -158,39 +155,38 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level2">
 <h2 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h2>
-<p>Implement an automated rigging and wrapping system that uses known base meshes and garments, allowing for easy application of garments to avatars without the need for manual rigging.</p>
+<p>Implement an automated rigging and wrapping system using known base meshes and garments for easy application of garments to avatars without manual rigging.</p>
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
 <ol type="1">
-<li>Create a 3D model representing the basic shape and structure of an avatar without any clothing or accessories.</li>
-<li>Create a 3D model of a piece of clothing or accessory that will be applied to the avatar.</li>
-<li>Rig the avatar and garment models by creating a skeleton structure that defines how they move and deform. Use the Blender Dem Bones add-on to automate the rigging process.</li>
-<li>Generate a simplified “cage” mesh around the avatar base mesh using the Simplicage add-on. This cage will be used to help apply the garment to the avatar.</li>
-<li>Attach the garment model to the cage created in the previous step, so that it follows the cage’s movement and deformation.</li>
-<li>Utilize the Mesh Materializer add-on to conform the garment model to the avatar base mesh, using a UV texture map to guide the wrapping process. This ensures the garment fits correctly on the avatar.</li>
-<li>Develop a system to manage multiple layers of clothing or accessories on the avatar. For example, underwear can be wrapped around the base mesh, and pants can be wrapped around the underwear, allowing for proper layering and interaction between clothing items.</li>
+<li><strong>Create avatar and garment models</strong>: Create a 3D model representing the basic shape and structure of an avatar without any clothing or accessories, and a 3D model of a piece of clothing or accessory.</li>
+<li><strong>Rig models</strong>: Rig the avatar and garment models by creating a skeleton structure that defines how they move and deform. Use the Blender Dem Bones add-on to automate the rigging process.</li>
+<li><strong>Generate cage mesh</strong>: Generate a simplified “cage” mesh around the avatar base mesh using the Simplicage add-on. This cage will be used to help apply the garment to the avatar.</li>
+<li><strong>Attach garment to cage</strong>: Attach the garment model to the cage created in the previous step, so that it follows the cage’s movement and deformation.</li>
+<li><strong>Conform garment to avatar</strong>: Utilize the Mesh Materializer add-on to conform the garment model to the avatar base mesh, using a UV texture map to guide the wrapping process. This ensures the garment fits correctly on the avatar.</li>
+<li><strong>Manage multiple layers</strong>: Develop a system to manage multiple layers of clothing or accessories on the avatar, allowing for proper layering and interaction between clothing items.</li>
 </ol>
 </section>
 <section id="positive-consequences" class="level2">
 <h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
 <ul>
-<li>Reduces manual rigging efforts for each garment and avatar combination.</li>
-<li>Streamlines the process of applying garments to avatars.</li>
-<li>Allows for easier customization and creation of new avatars with various garments.</li>
+<li>Reduced manual rigging efforts for each garment and avatar combination</li>
+<li>Streamlined process of applying garments to avatars</li>
+<li>Easier customization and creation of new avatars with various garments</li>
 </ul>
 </section>
 <section id="negative-consequences" class="level2">
 <h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
 <ul>
-<li>May require additional development time to implement the automated system.</li>
-<li>Potential compatibility issues with existing assets or workflows.</li>
+<li>Additional development time required to implement the automated system</li>
+<li>Potential compatibility issues with existing assets or workflows</li>
 </ul>
 </section>
 <section id="option-graveyard" class="level2">
 <h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
 <ul>
-<li>It is not feasible to only use creators because of the inefficiency. Creators need tools.</li>
+<li>Relying solely on creators is inefficient; they need tools.</li>
 </ul>
 </section>
 <section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
@@ -199,7 +195,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
-<p>Yes, implementing this feature as part of the core functionality will greatly improve the user experience and streamline the process of creating and customizing avatars with different garments.</p>
+<p>This enhancement requires a complex solution involving multiple tools and processes, and cannot be worked around with a few lines of script. Implementing this feature as part of the core functionality will greatly improve the user experience and streamline the process of creating and customizing avatars with different garments.</p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
