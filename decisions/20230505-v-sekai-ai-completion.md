@@ -24,7 +24,8 @@ Use ChatGPT-4 AI completion with the Visual Studio Code "Genie" addon to fill in
 2. Fill in as many sections as possible in the proposal template.
 3. Use the Visual Studio Code "Genie" addon with ChatGPT-4 AI completion to complete the remaining sections of the proposal.
 4. Review and refine the completed proposal.
-5. Record the decisions on GitHub at https://github.com/V-Sekai/manuals.
+5. Review with Grammarly if accessible.
+6. Record the decisions on GitHub at https://github.com/V-Sekai/manuals.
 
 Example of using ChatGPT-4 AI completion with the proposal template.
 
