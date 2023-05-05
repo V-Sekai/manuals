@@ -1,4 +1,4 @@
-# Allow garments to be easily applied to various avatars without the need for manual rigging each time a new garment or avatar is created
+# Automated Avatar Garment Rigging
 
 ## Metadata
 
