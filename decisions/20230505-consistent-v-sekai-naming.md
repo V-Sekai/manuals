@@ -19,7 +19,6 @@ Create a standardized naming convention guideline that defines the preferred for
 1. Define the preferred naming convention for V-Sekai in different contexts:
    - Godot Engine file systems: `vsk_`
    - GitHub branch names: `v-sekai`
-   - Variable and function names: `v_sekai`
    - Addon naming: `godot_addon`
 2. Create a guideline document outlining the naming convention rules for each context.
 3. Update existing code, documentation, and materials to follow the new naming conventions.
@@ -31,10 +30,6 @@ vsk_object.gd
 
 # Example of following the naming convention in GitHub branch names
 v-sekai-feature-branch
-
-# Example of following the naming convention in variable and function names
-# Note that this is not commonly used in V-Sekai
-var v_sekai_object = V_Sekai_Object.new()
 
 # Example of following the naming convention for addons
 godot_vsk_addon
