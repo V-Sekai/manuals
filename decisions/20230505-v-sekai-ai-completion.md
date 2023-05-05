@@ -4,8 +4,8 @@
 
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
-- Tags: V-Sekai,chatgpt4,
-
+- Tags: V-Sekai,ChatGPT-4,AI_assistance,problem solving,proposal generation,Visual Studio Code addon,
+ 
 ## Context and Problem Statement
 
 We sometimes need help finding solutions to our issues. ChatGPT-4 artificial intelligence completion can help us solve the entire problem when we only have the start of the solution.
@@ -39,7 +39,7 @@ Example of using ChatGPT-4 AI completion with the proposal template.
 
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
-- Tags: V-Sekai,chatgpt4,
+- Tags: V-Sekai,ChatGPT-4,
 
 ## Context and Problem Statement
 
