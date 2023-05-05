@@ -4,7 +4,7 @@
 
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
-- Tags: V-Sekai,chatgpt4,
+- Tags: V-Sekai,chatgpt4,naming conventions,standardization,code organization,documentation,project management,
 
 ## Context and Problem Statement
 
