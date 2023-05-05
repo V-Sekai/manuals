@@ -17,9 +17,9 @@ Create a standardized naming convention guideline that defines the preferred for
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
 1. Define the preferred naming convention for V-Sekai in different contexts:
-   - Godot Engine file systems: `vsk_`
-   - GitHub branch names: `v-sekai`
-   - Addon naming: `godot_addon`
+   - Godot Engine file systems: `vsk_default`
+   - GitHub branch names: `v-sekai-wasm`
+   - Addon naming: `godot_vrm`
    - Github repository names must all be lowercase:
       - github is case insensitive: this can result in users or devs inadvertently typing the wrong case in one case
       - windows is case insensitive, so the above mistake can go unnoticed until the addon is used on a different OS
