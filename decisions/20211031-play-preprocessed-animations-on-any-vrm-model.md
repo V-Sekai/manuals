@@ -1,5 +1,9 @@
 # Play preprocessed #animation on any VRM model
 
+Superseded
+
+This is now a Godot Engine 4.0 core feature. https://godotengine.org/article/animation-retargeting-in-godot-4-0/
+
 ### Context and Problem Statement
 
 Given any vrm and a carefully made animation, we should be able to play back the animation.
