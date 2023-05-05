@@ -1,6 +1,7 @@
 # Propose a possible solution to solve a V-Sekai naming convention limitation.
 
-**Metadata**
+## Metadata
+
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
 - Tags: V-Sekai,chatgpt4,
