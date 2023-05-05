@@ -1,4 +1,4 @@
-# Propose a possible solution to solve a V-Sekai naming convention limitation.
+# Solve a V-Sekai naming convention limitation.
 
 ## Metadata
 
