@@ -1,4 +1,4 @@
-# Automated Avatar Garment Rigging
+# Automated avatar garment rigging
 
 ## Metadata
 
