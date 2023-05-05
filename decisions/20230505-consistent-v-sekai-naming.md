@@ -29,13 +29,14 @@ Create a standardized naming convention guideline that defines the preferred for
 
 ```python
 # Example of following the naming convention in Godot Engine file system
-vsk_object.gd
+vsk_default/core/object.gd
 
 # Example of following the naming convention in GitHub branch names
-v-sekai-feature-branch
+v-sekai-wasm
 
 # Example of following the naming convention for addons
-godot_vsk_addon
+addons/vsk_avatar # in the file system
+godot_vsk_avatar # on Github
 ```
 
 ## Positive Consequences
