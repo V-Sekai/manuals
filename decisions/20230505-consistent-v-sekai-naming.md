@@ -33,6 +33,7 @@ vsk_object.gd
 v-sekai-feature-branch
 
 # Example of following the naming convention in variable and function names
+# Note that this is not commonly used in V-Sekai
 var v_sekai_object = V_Sekai_Object.new()
 
 # Example of following the naming convention for addons
