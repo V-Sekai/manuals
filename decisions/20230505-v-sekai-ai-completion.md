@@ -35,10 +35,11 @@ Example of using ChatGPT-4 AI completion with the proposal template.
 
 ## Propose a possible solution to solve a V-Sekai limitation. If this doesn't look right, choose a different type.
 
-Metadata
+## Metadata
+
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
-- Tags: V-Sekai,
+- Tags: V-Sekai,chatgpt4,
 
 ## Context and Problem Statement
 
