@@ -1,6 +1,7 @@
 # Solve V-Sekai limitations using ChatGPT-4 AI completion.
 
-**Metadata**
+## Metadata
+
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
 - Tags: V-Sekai,chatgpt4,
