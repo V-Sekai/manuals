@@ -61,4 +61,7 @@ No, establishing consistent naming conventions requires updating all instances o
 Yes, maintaining consistent naming conventions is essential for a professional and well-organized project. It will improve the overall quality of the codebase and documentation, making it easier for developers and users to understand and work with V-Sekai.
 
 ## References
+
 - [V-Sekai](https://v-sekai.org/)
+- goblin.tools: https://goblin.tools/
+- openai: https://openai.com/
