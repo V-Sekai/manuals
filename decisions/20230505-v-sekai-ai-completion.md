@@ -38,16 +38,14 @@ Example of using ChatGPT-4 AI completion with the proposal template.
 ## Metadata
 
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
-- Deciders: V-Sekai,
-- Tags: V-Sekai,ChatGPT-4,
+- Deciders: V-Sekai
+- Tags: V-Sekai,ChatGPT-4
 
 ## Context and Problem Statement
 
-## Describe the problem or limitation you have in your project, e.g., in free form, using two to three sentences. Consider articulating the case in the form of a question.
+## Proposed Solution
 
-## Describe the proposed option and how it helps to overcome the problem or limitation
-
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Implementation
 
 ## Positive Consequences
 
