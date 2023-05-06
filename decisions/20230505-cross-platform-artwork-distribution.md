@@ -12,11 +12,11 @@ V-Sekai faces limitations in providing a seamless cross-platform experience for 
 
 ## Proposed Solution
 
-Distribute artwork in Blend, GLB, VRM, and Unity Asset Package formats to ensure easy portability and compatibility with multiple platforms, enhancing the overall user experience.
+Distribute artwork in Blend, VRM, and Unity Asset Package formats to ensure easy portability and compatibility with multiple platforms, enhancing the overall user experience.
 
 ## Implementation
 
-1. Create and export artwork in Blend, GLB, VRM, and Unity Asset Package formats.
+1. Create and export artwork in Blend, VRM, and Unity Asset Package formats.
 1. Utilize appropriate formats for each platform, ensuring compatibility and optimal performance.
 
 ## Positive Consequences
