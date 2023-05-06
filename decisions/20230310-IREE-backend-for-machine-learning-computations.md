@@ -2,7 +2,7 @@
 
 ### Metadata
 
-- Status: deprecated <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: superseded by 20230502-add-iree-to-godot-engine-for-image-superresolution <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
 - Tags: V-Sekai, IREE, Godot Engine, Image Superresolution, Vulkan Backend,chatgpt 4,Google,
 
@@ -53,7 +53,6 @@ I know how, and no one else is doing it.
 
 ### References
 
-- Superseded by 20230502-add-iree-to-godot-engine-for-image-superresolution.md
 - [V-Sekai](https://v-sekai.org/)
 - [SHARK](https://github.com/nod-ai/SHARK)
 - IREE in-tree samples: https://github.com/openxla/iree/tree/main/samples
