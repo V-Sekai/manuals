@@ -6,7 +6,6 @@
 - Deciders: V-Sekai,fire,
 - Tags: V-Sekai,
 
-
 ### Context and Problem Statement
 
 V-Sekai is not robust.
@@ -33,7 +32,6 @@ We cannot get other features in.
 
 - Option: The status quo. <!-- List the proposed options no longer open for consideration. -->
 - Rejection Reason: This solves nothing. <!-- List the reasons for the rejection: (the bad traits) -->
-
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 
