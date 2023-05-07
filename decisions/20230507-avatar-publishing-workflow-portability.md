@@ -16,7 +16,7 @@ The proposed solution involves using the VRM portable avatar format, Silent's sh
 
 ## Implementation
 
-1. Import VRM portable avatar format.
+1. Import avatar in VRM portable avatar format.
 2. Install Silent's shader 1.11.
 3. Convert VRM to compatible platform's internal format.
 4. Swap the mtoon material for Silent's shader's crosstone material. Fire doesn't use the light-ramp shader.
