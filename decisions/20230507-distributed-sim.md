@@ -10,7 +10,7 @@
 
 Our project involves a distributed simulation system where maintaining strong consistency and efficient workload distribution are important requirements. We are currently facing the challenge of how to handle authority transfer and state updates between simulation servers without incurring high network hop counts and latency.
 
-Someone invited me to a popular vr platform and gave me a 20 minute tour, just enough to learn how to in desktop mode create a world, import a object and inspector-edit it. So I imported our celebration map and the map loaded in 20 seconds. I was able to change its transform. I'm still thinking about that experience.
+Someone invited me to a popular VR platform and gave me a 20-minute tour, just enough to learn how to in desktop mode create a world, import an object, and inspector-edit it. So I imported our celebration map, and the map loaded in 20 seconds. I was able to change its transform. I'm still thinking about that experience.
 
 ### Describe the proposed option and how it helps to overcome the problem or limitation
 
@@ -20,7 +20,7 @@ Authority transfer will be initiated through the metadata Raft cluster when play
 
 By monitoring the load on homeservers and simulation servers, we can balance the system and ensure fault tolerance using Raft's mechanisms. As the number of game entity nodes and players grows, adding more homeservers to the metadata Raft cluster and more simulation servers will ensure efficient workload distribution and enhance the overall gaming experience.
 
-We believe that this approach will provide strong consistency guarantees, access control, and scalability, while minimizing network hop counts and latency for authority transfer and state updates between simulation servers.
+We believe that this approach will provide strong consistency guarantees, access control, and scalability while minimizing network hop counts and latency for authority transfer and state updates between simulation servers.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
@@ -39,7 +39,7 @@ We believe that this approach will provide strong consistency guarantees, access
 - Each type of server can only be Khepri members of the same type.
 - Each server can only allow be Khepri members of the same logical instance.
 - Raft is only active inside of each logical instance.
-- Homeserver servers are rest + json and the cheap pattern.
+- Homeserver servers are REST + JSON and the cheap pattern.
 - Simulation servers are using the nasty state transfer pattern
 
 #### Simulation server state transfer protocol
@@ -57,7 +57,7 @@ We believe that this approach will provide strong consistency guarantees, access
 
 This table outlines the steps of the communication protocol between Player A and Player B's simulation servers, which involves retrieving public keys from the home server's database, encrypting and signing messages, and verifying digital signatures to ensure the authenticity of the messages. This protocol ensures secure and confidential communication between the two simulation servers, allowing for safe and reliable data exchange.
 
- ```
+```elixir
 # EC examples
 alice_private_jwk = JOSE.JWK.from_pem_file("ec-secp256r1-alice.pem")
 alice_public_jwk  = JOSE.JWK.to_public(alice_private_jwk)
@@ -72,7 +72,6 @@ encrypted = JOSE.JWK.box_encrypt(alice_to_bob, bob_public_jwk, alice_private_jwk
 {^alice_to_bob, _} = JOSE.JWK.box_decrypt(encrypted, bob_private_jwk)
 ```
 
-
 #### Building a Scalable Distributed Simulation System with Khepri Instances and Raft Consensus Algorithm
 
 In a distributed simulation system, maintaining separate roles for homeservers and simulation servers and using a metadata system with strong consistency guarantees is crucial. Homeservers are responsible for managing metadata, including ownership and mastership information for game entity nodes, using a Khepri instance within a Raft cluster. Simulation servers, including player simulation servers, maintain game entity nodes they have authority over using their own Khepri instances.
@@ -86,17 +85,17 @@ Monitoring the load on homeservers and simulation servers allows for balancing t
 Case 1: Authority transfer from Player A to Player B on a different home server
 
 | Step | Description | Hop Count |
--- | -- | --
-1 | Player A's simulation server sends a request to its homeserver (1 hop). | 1
-2 | Player A's homeserver sends an acknowledgment to Player A's simulation server (1 hop). | 1
-3 | Player A's homeserver sends an authority request to Player B's homeserver (H hops). | 1
-4 | Player B's homeserver sends a response to Player A's homeserver (H hops). | 1
-5 | Player A's homeserver sends an authority response to Player A's simulation server (1 hop). | 1
-6 | Player A's simulation server sends an acknowledgment to Player B's simulation server (1 hop). | 1
+| ---- | ----------- | --------- |
+| 1    | Player A's simulation server sends a request to its homeserver (1 hop). | 1 |
+| 2    | Player A's homeserver sends an acknowledgment to Player A's simulation server (1 hop). | 1 |
+| 3    | Player A's homeserver sends an authority request to Player B's homeserver (H hops). | H |
+| 4    | Player B's homeserver sends a response to Player A's homeserver (H hops). | H |
+| 5    | Player A's homeserver sends an authority response to Player A's simulation server (1 hop). | 1 |
+| 6    | Player A's simulation server sends an acknowledgment to Player B's simulation server (1 hop). | 1 |
 
-Total hops: 6
+Total hops: 4 + 2 * H
 
-Case 2: Authority transfer from if Player A's and Player B's homeservers are exactly the same
+Case 2: Authority transfer if Player A's and Player B's homeservers are exactly the same
 
 | Step | Description | Hop Count |
 | ---- | ----------- | --------- |
@@ -111,10 +110,10 @@ Case 3: Direct communication between Player A and Player B's simulation servers 
 
 | Step | Description | Hop Count |
 | ---- | ----------- | --------- |
-1 | Player A's simulation server sends an update directly to Player B's simulation server using a hand-optimized binary layout and an asynchronous communication model. | 1
-2 | Player B's simulation server sends an acknowledgment to Player A's simulation server using credit-based flow control or another asynchronous technique. | 1
+| 1    | Player A's simulation server sends an update directly to Player B's simulation server using a hand-optimized binary layout and an asynchronous communication model. | 1 |
+| 2    | Player B's simulation server sends an acknowledgment to Player A's simulation server using credit-based flow control or another asynchronous technique. | 1 |
 
-<p>In this modified version of Case 3, both the update and acknowledgment steps employ the high-performance communication system's features. This includes using hand-optimized binary layouts for data transfer and asynchronous communication techniques to minimize latency and maximize throughput. The total hop count remains the same at 2 hops.</p>
+In this modified version of Case 3, both the update and acknowledgment steps employ the high-performance communication system's features. This includes using hand-optimized binary layouts for data transfer and asynchronous communication techniques to minimize latency and maximize throughput. The total hop count remains the same at 2 hops.
 
 ### Positive Consequences
 
