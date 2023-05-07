@@ -23,6 +23,7 @@ The proposed solution involves using the VRM portable avatar format, Silent's sh
   a. The Cutout Rendering Mode matches VRM's usual transparency usage.
   a. UNRESOLVED: VRM Colliders cause greatly increased count of simulated physics objects
 4. Swap the mtoon material for Silent's shader's crosstone material. Fire doesn't use the light-ramp shader.
+5. Fire prefers solid colour backgrounds for avatar photos
 5. Export as a compatible platform package bundle.
 6. Bundle VRM and compatible platform package bundle and publish on Sketchfab and/or Booth.pm.
 
