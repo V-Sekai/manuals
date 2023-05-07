@@ -53,5 +53,5 @@ Yes, creating a standardized workflow for avatar publishing ensures consistency 
 - Silent Cel Shading Shader v1.11: [Silent Cel Shading Shader v1.11](https://gitlab.com/s-ilent/SCSS/-/tags/v1.11)
 - Booth.pm [Booth.pm](https://booth.pm/)
 - Sketchfab [Sketchfab](https://sketchfab.com/)
-- Univrm [Univrm](https://github.com/vrm-c/UniVRM)
 - VRM converter for compatible platform [VRM converter](https://booth.pm/en/items/1025226)
+  * Automatically installs Univrm [Univrm](https://github.com/vrm-c/UniVRM)
