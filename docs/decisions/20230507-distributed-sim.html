@@ -413,9 +413,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="negative-consequences" class="level3">
 <h3 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h3>
-<ul>
-<li>Additional complexity and infrastructure requirements</li>
-</ul>
+<ol type="1">
+<li><p><strong>Complexity</strong>: The proposed system involves multiple components, such as homeservers, simulation servers, Khepri instances, and Raft clusters. Managing and maintaining these components can be complex and may require significant development effort.</p></li>
+<li><p><strong>Performance</strong>: The use of Raft consensus algorithm ensures strong consistency but may introduce performance overhead due to the need for communication between nodes in the cluster. This could impact the overall performance of the distributed simulation system.</p></li>
+<li><p><strong>Scalability</strong>: While the proposal aims to provide scalability, it is not clear how well the system will scale as the number of game entity nodes and players grows. Adding more homeservers and simulation servers might help, but there could still be bottlenecks or limitations that need to be addressed.</p></li>
+<li><p><strong>Security</strong>: The proposed state transfer protocol relies on public key cryptography for secure communication between simulation servers. However, the security of the system depends on proper key management and protection against potential attacks, such as man-in-the-middle attacks or replay attacks.</p></li>
+<li><p><strong>Fault tolerance</strong>: Although the Raft consensus algorithm provides fault tolerance, the system’s resilience to failures (e.g., server crashes, network issues) needs to be carefully considered and tested to ensure smooth operation under various conditions.</p></li>
+<li><p><strong>Synchronization</strong>: The proposal mentions that state updates are exchanged between old and new authority simulation servers or synchronized using a separate mechanism during authority transfer. However, it does not provide details on how this synchronization process works, which could be a critical aspect of the system’s functionality.</p></li>
+<li><p><strong>Load balancing</strong>: Monitoring the load on homeservers and simulation servers is essential for balancing the system. However, the proposal does not provide specific details on how load balancing will be achieved or what metrics will be used to determine when to add or remove servers from the system.</p></li>
+</ol>
 </section>
 <section id="option-graveyard" class="level3">
 <h3 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h3>
