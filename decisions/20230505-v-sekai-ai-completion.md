@@ -58,6 +58,7 @@ Example of using ChatGPT-4 AI completion with the proposal template.
 ## Is there a reason why this should be core and done by us?
 
 ## References
+
 - [V-Sekai](https://v-sekai.org/)
 ```
 
