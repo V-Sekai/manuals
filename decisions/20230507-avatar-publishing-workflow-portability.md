@@ -50,7 +50,7 @@ Yes, creating a standardized workflow for avatar publishing ensures consistency 
 
 - V-Sekai: [V-Sekai](https://v-sekai.org/)
 - Silent Cel Shading Shader: [SCSS](https://gitlab.com/s-ilent/SCSS/-/tree/master/Assets/Silent's%20Cel%20Shading%20Shader)
-- Silent Cel Shading Shader v1.11: [Silent Cel Shading Shader v1.11](https://gitlab.com/s-ilent/SCSS/-/tags/v1.11)
+- Silent Cel Shading Shader v1.11: [Silent Cel Shading Shader v1.11](https://gitlab.com/s-ilent/SCSS/-/releases/v1.11)
 - Booth.pm [Booth.pm](https://booth.pm/)
 - Sketchfab [Sketchfab](https://sketchfab.com/)
 - VRM converter for compatible platform [VRM converter](https://booth.pm/en/items/1025226)
