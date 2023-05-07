@@ -44,15 +44,15 @@ We believe that this approach will provide strong consistency guarantees, access
 
 #### Simulation server state transfer protocol
 
-| Step | Action                                                                                                            |
-|------|-------------------------------------------------------------------------------------------------------------------|
-| 1    | Player A's simulation server sends a request to the home server to fetch the public key of Player B.              |
-| 2    | The home server retrieves Player B's public key from its database and sends it back to Player A's simulation server. |
-| 3    | Player A's simulation server uses Player B's public key to encrypt a message or binary data.                        |
-| 4    | Player A's simulation server signs the encrypted message or binary data using its own private key.                 |
-| 5    | Player A's simulation server sends the encrypted message or binary data along with the digital signature to Player B's simulation server using the membrane_udp_plugin. |
-| 6    | Player B's simulation server receives the message and verifies the digital signature using Player A's public key, which it retrieves from the home server. |
-| 7    | If the signature is valid, Player B's simulation server uses its own private key to decrypt the message and obtain the original data sent by Player A's simulation server. |
+| Step | Action                                                                                                                                                                                                             |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1    | Player A's simulation server sends a request to the home server to fetch the public key of Player B.                                                                                                               |
+| 2    | The home server retrieves Player B's public key from its database and sends it back to Player A's simulation server.                                                                                               |
+| 3    | Player A's simulation server uses Player B's public key to encrypt a message or binary data.                                                                                                                       |
+| 4    | Player A's simulation server signs the encrypted message or binary data using its own private key.                                                                                                                 |
+| 5    | Player A's simulation server sends the encrypted message or binary data along with the digital signature to Player B's simulation server using the membrane_udp_plugin.                                            |
+| 6    | Player B's simulation server receives the message and verifies the digital signature using Player A's public key, which it retrieves from the home server.                                                         |
+| 7    | If the signature is valid, Player B's simulation server uses its own private key to decrypt the message and obtain the original data sent by Player A's simulation server.                                         |
 | 8    | If the message is confidential, Player B's simulation server may want to send a response back to Player A's simulation server using a similar protocol, with Player A's public key retrieved from the home server. |
 
 This table outlines the steps of the communication protocol between Player A and Player B's simulation servers, which involves retrieving public keys from the home server's database, encrypting and signing messages, and verifying digital signatures to ensure the authenticity of the messages. This protocol ensures secure and confidential communication between the two simulation servers, allowing for safe and reliable data exchange.
@@ -80,12 +80,7 @@ Authority transfer is initiated through the metadata Raft cluster when players i
 
 Monitoring the load on homeservers and simulation servers allows for balancing the system and ensuring fault tolerance using Raft's mechanisms. As the number of game entity nodes and players grows, adding more homeservers to the metadata Raft cluster and more simulation servers ensures efficient workload distribution and enhances the overall gaming experience.
 
-
-
-
-
-In this optimized process, we have removed step 2 from the original table, which involved  By removing this step, we reduce the total hop count by 1, potentially improving the efficiency of the authority transfer process.
-
+In this optimized process, we have removed step 2 from the original table, which involved By removing this step, we reduce the total hop count by 1, potentially improving the efficiency of the authority transfer process.
 
 ## Distributed simulation architecture
 
@@ -93,23 +88,23 @@ Case 1: Authority transfer from Player A to Player B on a different home server
 
 | Step | Description                                                                                   | Hop Count |
 | ---- | --------------------------------------------------------------------------------------------- | --------- |
-| 1    | Player A's simulation server sends a request to its homeserver (1 hop).                      | 1         |
-| 2    | Player A's homeserver sends an authority request to Player B's homeserver (H hops).          | H         |
-| 3    | Player B's homeserver sends a response to Player A's homeserver (H hops).                    | H         |
-| 4    | Player A's homeserver sends an authority response to Player A's simulation server (1 hop).   | 1         |
+| 1    | Player A's simulation server sends a request to its homeserver (1 hop).                       | 1         |
+| 2    | Player A's homeserver sends an authority request to Player B's homeserver (H hops).           | H         |
+| 3    | Player B's homeserver sends a response to Player A's homeserver (H hops).                     | H         |
+| 4    | Player A's homeserver sends an authority response to Player A's simulation server (1 hop).    | 1         |
 | 5    | Player A's simulation server sends an acknowledgment to Player B's simulation server (1 hop). | 1         |
 
 Sending an acknowledgment from Player A's homeserver to Player A's simulation server may not be necessary, as the authority request can be sent directly to Player B's homeserver without waiting for confirmation.
 
-Total hops: 3 + 2 * H
+Total hops: 3 + 2 \* H
 
 Case 2: Authority transfer if Player A's and Player B's homeservers are exactly the same
 
-| Step | Description | Hop Count |
-| ---- | ----------- | --------- |
-| 1    | Player A's simulation server sends a request to its homeserver (1 hop). | 1 |
-| 2    | Player A's homeserver sends a response directly to Player B's simulation server (1 hop). | 1 |
-| 3    | Player B's simulation server sends an acknowledgment to Player A's simulation server (1 hop). | 1 |
+| Step | Description                                                                                   | Hop Count |
+| ---- | --------------------------------------------------------------------------------------------- | --------- |
+| 1    | Player A's simulation server sends a request to its homeserver (1 hop).                       | 1         |
+| 2    | Player A's homeserver sends a response directly to Player B's simulation server (1 hop).      | 1         |
+| 3    | Player B's simulation server sends an acknowledgment to Player A's simulation server (1 hop). | 1         |
 
 Total hops: 3
 
@@ -117,10 +112,10 @@ In this optimized process, we have removed sending an acknowledgment from Player
 
 Case 3: Direct communication between Player A and Player B's simulation servers on the same home server.
 
-| Step | Description | Hop Count |
-| ---- | ----------- | --------- |
-| 1    | Player A's simulation server sends an update directly to Player B's simulation server using a hand-optimized binary layout and an asynchronous communication model. | 1 |
-| 2    | Player B's simulation server sends an acknowledgment to Player A's simulation server using credit-based flow control or another asynchronous technique. | 1 |
+| Step | Description                                                                                                                                                         | Hop Count |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| 1    | Player A's simulation server sends an update directly to Player B's simulation server using a hand-optimized binary layout and an asynchronous communication model. | 1         |
+| 2    | Player B's simulation server sends an acknowledgment to Player A's simulation server using credit-based flow control or another asynchronous technique.             | 1         |
 
 In this modified version of Case 3, both the update and acknowledgment steps employ the high-performance communication system's features. This includes using hand-optimized binary layouts for data transfer and asynchronous communication techniques to minimize latency and maximize throughput. The total hop count remains the same at 2 hops.
 
@@ -165,4 +160,4 @@ I am exploring alternatives for the current implementation of the client-server 
 - Khepri documentation: https://github.com/rabbitmq/khepri
 - Raft consensus algorithm: https://raft.github.io/
 - Networked Physics in Virtual Reality: https://gafferongames.com/post/networked_physics_in_virtual_reality/
--  Chapter 7 - Advanced Architecture using ZeroMQ: https://zguide.zeromq.org/docs/chapter7/
+- Chapter 7 - Advanced Architecture using ZeroMQ: https://zguide.zeromq.org/docs/chapter7/
