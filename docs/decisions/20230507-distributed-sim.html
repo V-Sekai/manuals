@@ -284,6 +284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In a distributed simulation system, maintaining separate roles for homeservers and simulation servers and using a metadata system with strong consistency guarantees is crucial. Homeservers are responsible for managing metadata, including ownership and mastership information for game entity nodes, using a Khepri instance within a Raft cluster. Simulation servers, including player simulation servers, maintain game entity nodes they have authority over using their own Khepri instances.</p>
 <p>Authority transfer is initiated through the metadata Raft cluster when players interact with game entities governed by different simulation servers. The homeserver Khepri’s nested path-to-value structure is updated based on the ownership and mastership rules set by the Master. State updates are exchanged between old and new authority simulation servers or synchronized using a separate mechanism during authority transfer.</p>
 <p>Monitoring the load on homeservers and simulation servers allows for balancing the system and ensuring fault tolerance using Raft’s mechanisms. As the number of game entity nodes and players grows, adding more homeservers to the metadata Raft cluster and more simulation servers ensures efficient workload distribution and enhances the overall gaming experience.</p>
+<p>In this optimized process, we have removed step 2 from the original table, which involved By removing this step, we reduce the total hop count by 1, potentially improving the efficiency of the authority transfer process.</p>
 </section>
 </section>
 <section id="distributed-simulation-architecture" class="level2">
@@ -291,9 +292,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Case 1: Authority transfer from Player A to Player B on a different home server</p>
 <table class="table">
 <colgroup>
-<col style="width: 16%">
-<col style="width: 45%">
-<col style="width: 37%">
+<col style="width: 3%">
+<col style="width: 87%">
+<col style="width: 8%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -310,32 +311,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td>2</td>
-<td>Player A’s homeserver sends an acknowledgment to Player A’s simulation server (1 hop).</td>
-<td>1</td>
+<td>Player A’s homeserver sends an authority request to Player B’s homeserver (H hops).</td>
+<td>H</td>
 </tr>
 <tr class="odd">
 <td>3</td>
-<td>Player A’s homeserver sends an authority request to Player B’s homeserver (H hops).</td>
+<td>Player B’s homeserver sends a response to Player A’s homeserver (H hops).</td>
 <td>H</td>
 </tr>
 <tr class="even">
 <td>4</td>
-<td>Player B’s homeserver sends a response to Player A’s homeserver (H hops).</td>
-<td>H</td>
-</tr>
-<tr class="odd">
-<td>5</td>
 <td>Player A’s homeserver sends an authority response to Player A’s simulation server (1 hop).</td>
 <td>1</td>
 </tr>
-<tr class="even">
-<td>6</td>
+<tr class="odd">
+<td>5</td>
 <td>Player A’s simulation server sends an acknowledgment to Player B’s simulation server (1 hop).</td>
 <td>1</td>
 </tr>
 </tbody>
 </table>
-<p>Total hops: 4 + 2 * H</p>
+<p>Sending an acknowledgment from Player A’s homeserver to Player A’s simulation server may not be necessary, as the authority request can be sent directly to Player B’s homeserver without waiting for confirmation.</p>
+<p>Total hops: 3 + 2 * H</p>
 <p>Case 2: Authority transfer if Player A’s and Player B’s homeservers are exactly the same</p>
 <table class="table">
 <colgroup>
@@ -358,22 +355,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td>2</td>
-<td>Player A’s homeserver sends an acknowledgment to Player A’s simulation server (1 hop).</td>
+<td>Player A’s homeserver sends a response directly to Player B’s simulation server (1 hop).</td>
 <td>1</td>
 </tr>
 <tr class="odd">
 <td>3</td>
-<td>Player A’s homeserver sends a response directly to Player B’s simulation server (1 hop).</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>4</td>
 <td>Player B’s simulation server sends an acknowledgment to Player A’s simulation server (1 hop).</td>
 <td>1</td>
 </tr>
 </tbody>
 </table>
-<p>Total hops: 4</p>
+<p>Total hops: 3</p>
+<p>In this optimized process, we have removed sending an acknowledgment from Player A’s homeserver to Player A’s simulation server. This acknowledgment may not be necessary, as the response can be sent directly to Player B’s simulation server without waiting for confirmation. By removing this step, we reduce the total hop count by 1, potentially improving the efficiency of the authority transfer process when both players are on the same home server.</p>
 <p>Case 3: Direct communication between Player A and Player B’s simulation servers on the same home server.</p>
 <table class="table">
 <colgroup>
