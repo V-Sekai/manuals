@@ -18,7 +18,7 @@ The proposed solution involves using the VRM portable avatar format, Silent's sh
 
 1. Import avatar in VRM portable avatar format.
 2. Install Silent's shader 1.11.
-3. Convert VRM to compatible platform's internal format.
+3. Convert VRM to compatible platform's internal format. Avoid merging meshes.
 4. Swap the mtoon material for Silent's shader's crosstone material. Fire doesn't use the light-ramp shader.
 5. Export as a compatible platform package bundle.
 6. Bundle VRM and compatible platform package bundle and publish on Sketchfab and/or Booth.pm.
