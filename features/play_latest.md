@@ -1,12 +1,12 @@
 # Play the latest build
 
-Instructions last checked 2023-04-11.
+Instructions last checked 2023-05-07.
 
 V-Sekai uses rolling releases and is alpha quality.
 
 > Alpha software may not contain all of the features that are planned for the final version. Alpha software is not thoroughly tested by the developer before it is released to customers. (Definition from Wikipedia.)
 
-Our V-Sekai CI is located at [ci.v-sekai.cloud/](https://ci.v-sekai.cloud) - you must use Guest to login, since GitLab is admin-only.
+Our V-Sekai CI is located at [ci.v-sekai.cloud](https://ci.v-sekai.cloud) - you must use Guest to login, since GitLab is admin-only.
 
 Here are links to each of the latest jobs. Generally, you will want to click the Artifacts tab from each of these to download things.
 
