@@ -24,9 +24,10 @@ The proposed solution involves using the VRM portable avatar format, Silent's sh
   a. UNRESOLVED: VRM Colliders cause greatly increased count of simulated physics objects
      ii. Try switching to inside bounds instead of bone as spheres
 4. Swap the mtoon material for Silent's shader's crosstone material. Fire doesn't use the light-ramp shader.
-5. Fire prefers solid colour backgrounds for avatar photos
-5. Export as a compatible platform package bundle.
-6. Bundle VRM and compatible platform package bundle and publish on Sketchfab and/or Booth.pm.
+5. Many bones need to be the first child for IK to work.
+6. Fire prefers solid colour backgrounds for avatar photos
+7. Export as a compatible platform package bundle.
+8. Bundle VRM and compatible platform package bundle and publish on Sketchfab and/or Booth.pm.
 
 ## Positive Consequences
 
