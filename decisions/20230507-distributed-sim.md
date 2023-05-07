@@ -80,31 +80,40 @@ Authority transfer is initiated through the metadata Raft cluster when players i
 
 Monitoring the load on homeservers and simulation servers allows for balancing the system and ensuring fault tolerance using Raft's mechanisms. As the number of game entity nodes and players grows, adding more homeservers to the metadata Raft cluster and more simulation servers ensures efficient workload distribution and enhances the overall gaming experience.
 
+
+
+
+
+In this optimized process, we have removed step 2 from the original table, which involved  By removing this step, we reduce the total hop count by 1, potentially improving the efficiency of the authority transfer process.
+
+
 ## Distributed simulation architecture
 
 Case 1: Authority transfer from Player A to Player B on a different home server
 
-| Step | Description | Hop Count |
-| ---- | ----------- | --------- |
-| 1    | Player A's simulation server sends a request to its homeserver (1 hop). | 1 |
-| 2    | Player A's homeserver sends an acknowledgment to Player A's simulation server (1 hop). | 1 |
-| 3    | Player A's homeserver sends an authority request to Player B's homeserver (H hops). | H |
-| 4    | Player B's homeserver sends a response to Player A's homeserver (H hops). | H |
-| 5    | Player A's homeserver sends an authority response to Player A's simulation server (1 hop). | 1 |
-| 6    | Player A's simulation server sends an acknowledgment to Player B's simulation server (1 hop). | 1 |
+| Step | Description                                                                                   | Hop Count |
+| ---- | --------------------------------------------------------------------------------------------- | --------- |
+| 1    | Player A's simulation server sends a request to its homeserver (1 hop).                      | 1         |
+| 2    | Player A's homeserver sends an authority request to Player B's homeserver (H hops).          | H         |
+| 3    | Player B's homeserver sends a response to Player A's homeserver (H hops).                    | H         |
+| 4    | Player A's homeserver sends an authority response to Player A's simulation server (1 hop).   | 1         |
+| 5    | Player A's simulation server sends an acknowledgment to Player B's simulation server (1 hop). | 1         |
 
-Total hops: 4 + 2 * H
+Sending an acknowledgment from Player A's homeserver to Player A's simulation server may not be necessary, as the authority request can be sent directly to Player B's homeserver without waiting for confirmation.
+
+Total hops: 3 + 2 * H
 
 Case 2: Authority transfer if Player A's and Player B's homeservers are exactly the same
 
 | Step | Description | Hop Count |
 | ---- | ----------- | --------- |
 | 1    | Player A's simulation server sends a request to its homeserver (1 hop). | 1 |
-| 2    | Player A's homeserver sends an acknowledgment to Player A's simulation server (1 hop). | 1 |
-| 3    | Player A's homeserver sends a response directly to Player B's simulation server (1 hop). | 1 |
-| 4    | Player B's simulation server sends an acknowledgment to Player A's simulation server (1 hop). | 1 |
+| 2    | Player A's homeserver sends a response directly to Player B's simulation server (1 hop). | 1 |
+| 3    | Player B's simulation server sends an acknowledgment to Player A's simulation server (1 hop). | 1 |
 
-Total hops: 4
+Total hops: 3
+
+In this optimized process, we have removed sending an acknowledgment from Player A's homeserver to Player A's simulation server. This acknowledgment may not be necessary, as the response can be sent directly to Player B's simulation server without waiting for confirmation. By removing this step, we reduce the total hop count by 1, potentially improving the efficiency of the authority transfer process when both players are on the same home server.
 
 Case 3: Direct communication between Player A and Player B's simulation servers on the same home server.
 
