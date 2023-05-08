@@ -35,9 +35,9 @@ The platform supports various file types out of the box, including:
 - Built-in script editor
 - GDScript: In-house scripting language
 - GDExtension: C++ binding ABI with cross-version compatibility
-- C++ Modules: Native performance and portability
+- C++ Modules: Native performance
 
 ## Sandbox Scripting Environment (WIP)
 
-- Not active as of October 2022
-- Security-focused sandbox backed by WASM
+- Active research: [godot-wasm project](https://github.com/ashtonmeuser/godot-wasm)
+- Security-focused sandboxing
