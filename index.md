@@ -8,14 +8,13 @@ Our dream is social VR, and we build upon the work of thousands of Godot Engine 
 
 ## Get Involved
 
-- Join our ad-hoc meetings on [Discord](https://discord.gg/7BQDHesck8).
+- Join our ad-hoc meetings and discuss efforts on [Discord](https://discord.gg/7BQDHesck8).
 - Test our builds: [Latest](https://v-sekai.github.io/manuals/features/play_latest.html)
 - Visit our website: [v-sekai.org](https://v-sekai.org)
 - Follow us on Twitter: [twitter.com/VSekaiOfficial](https://twitter.com/VSekaiOfficial)
 - Contribute on Github: [github.com/V-Sekai](https://github.com/V-Sekai)
 - Track proposals with [V-Sekai Manual Issues](https://github.com/V-Sekai/manuals/issues)
 - Organize issues using [V-Sekai-game issues](https://github.com/V-Sekai/v-sekai-game/issues)
-- Discuss efforts on Discord.
 - For questions, contact group leads SaracenOne, Lyuma, or Fire.
 
 ## Commitments
