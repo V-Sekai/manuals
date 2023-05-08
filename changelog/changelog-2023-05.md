@@ -4,3 +4,4 @@
 * Fire has chatgpt4 api access.
 * Merged godot-wasm into V-Sekai Godot Engine fork for experimenting with user generated scripting and optimization of computation.
 * vsk_speech branch of V-Sekai Godot Engine passes cicd again!!
+* Revised and optimized the manual site.
