@@ -1,47 +1,39 @@
-# Help us write about V-Sekai
+# Help Us Write About V-Sekai
 
-- We are looking to make complete documentation for the developers and users.
-- We have a list of features we need to cover already.
-- Write as efficiently as possible to immediately create all the draft pages, one for each significant feature or topic we need to cover. Every prominent feature requires at least an introduction, so it needs a corresponding page with a descriptive title.
-- On each page, we want to create a bullet list of all the things the user needs to learn to use the feature.
+We aim to create comprehensive documentation for developers and users, covering all significant features and topics. Each feature requires a dedicated page with a descriptive title and a bullet list of essential points the user needs to learn.
 
-### An example topic
+## Example Topic: Godot XR
 
-Let's take a topic, for example, Godot XR. The user will need to know:
+For instance, when writing about Godot XR, the user should learn:
 
-- What is XR (we can link to a page or briefly explain it)
-- What is Godot (if we have covered it already on the previous page, link to that page, and briefly re-explain, e.g. in one sentence)
-- How XR works in Godot and how our product uses it
-- What people can achieve concretely with that [feature/knowledge on this page]
-- What are the limitations of the technology [that also affect our product]
+- What is XR (link to a page or provide a brief explanation)
+- What is Godot (link to a previous page if covered, and briefly re-explain in one sentence)
+- How XR works in Godot and how our product utilizes it
+- Concrete achievements possible with this feature/knowledge
+- Limitations of the technology affecting our product
 
-Each page's draft should be a bullet list like this. Because then we or the writer instantly know all the points the page must cover
-And it doesn't take very long to write and review those bullet lists
+Draft each page as a bullet list like this, allowing writers to quickly understand the points to cover.
 
-Last, for all the cases where the user has to follow steps (for example, using an interface), we need to detail each step with the most straightforward words possible. For instance, if they need to click on three buttons, we describe the steps with explicit mentions of the labels as seen in the UI and always use the same verbs, for example:
+## Step-by-Step Instructions
 
-### An example instruction
+For cases where users need to follow steps, detail each step using straightforward language. Be consistent with verbs and phrasing to minimize cognitive load. For example:
 
-To change the game's resolution:
+### Changing Game Resolution
 
 1. Open the Project -> Project Settings... menu.
-2. In the left column, navigate down to Display -> Window. In the right part of the window, the game's window settings appear.
+2. Navigate to Display -> Window in the left column. The game's window settings appear on the right.
 3. Scroll down to the resolution setting.
-4. Click the numbers to change the resolution. The values are in pixels.
+4. Click the numbers to change the resolution (values are in pixels).
 
-When we say reusing the verbs, it's about being consistent, like:
+Consistently use verbs like:
 
 - Click a button
 - Open a menu
 - Open a file
 - Navigate to a tab
 
-It doesn't have to be 100% of the time the same but for instance, for buttons, click and press are well understood, but "use," while correct, may be a bit harder to parse
+Keeping things simple, clear, and consistent makes it easier for users to concentrate on the process and remember new details.
 
-Also, changing the phrasing, style, and verbs used throughout our docs adds cognitive load.
-
-Making things simple, explicit, and consistent allows users to focus on the steps and memorize new information.
-
-## Special thanks
+## Special Thanks
 
 This page was written with advice from gdquest.
