@@ -1,12 +1,16 @@
-# Avatars & Places
+# Be an avatar and visit places
+
+V-Sekai allows you to import worlds and explore them.
+
+To learn how to import worlds and visit them, please refer to our documentation or reach out via our community channels.
 
 V-Sekai supports VRM avatar files, an open-source standard for sharing portable humanoid avatars across virtual reality platforms.
 
-Users can customize their avatars in V-Sekai by importing models from Blender or VRoid Hub and using them as their persona within the virtual space. [VRM: Extending glTF for Portable Humanoid Avatars](https://www.khronos.org/assets/uploads/developers/presentations/VRM-Extending-glTF-for-Portable-Humanoid-Avatars_SIGGRAPH-Asia_Nov19.pdf)
+Users can personalize their avatars in V-Sekai by importing models from Blender or VRoid Hub and using them as their persona within the virtual space. [VRM: Extending glTF for Portable Humanoid Avatars](https://www.khronos.org/assets/uploads/developers/presentations/VRM-Extending-glTF-for-Portable-Humanoid-Avatars_SIGGRAPH-Asia_Nov19.pdf)
 
 ## VRM glTF2 Extension Features
 
-- Avatars for XR built on glTF
+- XR avatars built on glTF
 - Automatic humanoid rigging
 - Interactive hair and clothing
 - Twist bones and constraints
