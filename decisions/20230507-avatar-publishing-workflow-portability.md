@@ -20,14 +20,15 @@ The proposed solution involves using the VRM portable avatar format, Silent's sh
 2. Install Silent's shader 1.11.
 3. Convert VRM to compatible platform's internal format. 
   a. Avoid "Combine Mesh" option.
-  a. The Cutout Rendering Mode matches VRM's usual transparency usage.
-  a. UNRESOLVED: VRM Colliders cause greatly increased count of simulated physics objects
+  b. The Cutout Rendering Mode matches VRM's usual transparency usage.
+  c. UNRESOLVED: VRM Colliders cause greatly increased count of simulated physics objects
      ii. Try switching to inside bounds instead of bone as spheres
 4. Swap the mtoon material for Silent's shader's crosstone material. Fire doesn't use the light-ramp shader.
 5. Many bones need to be the first child for IK to work.
 6. Fire prefers solid colour backgrounds for avatar photos
 7. Export as a compatible platform package bundle.
 8. Bundle VRM and compatible platform package bundle and publish on Sketchfab and/or Booth.pm.
+9. The compatible platform should display the avatar as **poor** rated.
 
 ## Positive Consequences
 
@@ -57,7 +58,7 @@ Yes, creating a standardized workflow for avatar publishing ensures consistency 
 - V-Sekai: [V-Sekai](https://v-sekai.org/)
 - Silent Cel Shading Shader: [SCSS](https://gitlab.com/s-ilent/SCSS/-/tree/master/Assets/Silent's%20Cel%20Shading%20Shader)
 - Silent Cel Shading Shader v1.11: [Silent Cel Shading Shader v1.11](https://gitlab.com/s-ilent/SCSS/-/releases/v1.11)
-- Booth.pm [Booth.pm](https://booth.pm/)
-- Sketchfab [Sketchfab](https://sketchfab.com/)
-- VRM converter for compatible platform [VRM converter](https://booth.pm/en/items/1025226)
-  * Automatically installs Univrm [Univrm](https://github.com/vrm-c/UniVRM)
+- Booth.pm: [Booth.pm](https://booth.pm/)
+- Sketchfab: [Sketchfab](https://sketchfab.com/)
+- VRM converter for compatible platform: [VRM converter](https://booth.pm/en/items/1025226)
+  * Automatically installs Univrm: [Univrm](https://github.com/vrm-c/UniVRM)
