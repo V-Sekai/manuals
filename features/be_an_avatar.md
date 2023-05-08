@@ -1,28 +1,26 @@
 # Avatars & Places
 
-V-Sekai has added support for VRM avatar files, which are open-source standards for sharing portable humanoid avatars between different virtual reality platforms.
+V-Sekai supports VRM avatar files, an open-source standard for sharing portable humanoid avatars across virtual reality platforms.
 
-The addition of VRM support allows users all over the world to customize their avatars in V-Sekai by importing models made with Blender or VRoid Hub, then using them as their persona within this virtual space.
-[Using VRM by extending glTF for portable humanoid avatars.](https://www.khronos.org/assets/uploads/developers/presentations/VRM-Extending-glTF-for-Portable-Humanoid-Avatars_SIGGRAPH-Asia_Nov19.pdf)
+Users can customize their avatars in V-Sekai by importing models from Blender or VRoid Hub and using them as their persona within the virtual space. [VRM: Extending glTF for Portable Humanoid Avatars](https://www.khronos.org/assets/uploads/developers/presentations/VRM-Extending-glTF-for-Portable-Humanoid-Avatars_SIGGRAPH-Asia_Nov19.pdf)
 
-## VRM glTF2 Extension
+## VRM glTF2 Extension Features
 
-- Avatars for XR, on top of glTF.
+- Avatars for XR built on glTF
 - Automatic humanoid rigging
 - Interactive hair and clothing
-- Twist bones, constraints
-- Toon shading + glTF PBR
+- Twist bones and constraints
+- Toon shading with glTF PBR
 - Face shapes for speech
 - Cross-engine support
-- Contains simplified physics simulation for spring bones
-- Meta-information with author and license
-- Custom facial expressions using morphs
+- Simplified physics simulation (spring bones)
+- Meta-information (author and license)
+- Custom facial expressions (morphs)
 
-## Animation retargeting
+## Animation Retargeting
 
-- Animation Retargeting import as a model, or import
-- Animation Retargeting as an animation library
+- Import as a model or animation library
 - Built-in humanoid profile
-- Custom profiles possible, e.g. monsters or animals
-- Compatible with animations from Mixamo, Blender
-- Blend walk and run animations with blend spaces
+- Custom profiles (e.g., monsters, animals)
+- Compatible with Mixamo and Blender animations
+- Blend walk and run animations using blend spaces

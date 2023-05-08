@@ -1,8 +1,6 @@
-# Optimized Code
+# Creating Virtual Reality Games
 
-## Creating Virtual Reality Games
-
-### Supported File Types
+## Supported File Types
 
 The platform supports various file types out of the box, including:
 
