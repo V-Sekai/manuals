@@ -1,5 +1,7 @@
-K. S. Ernest (iFire) Lee (fire)
+# V-Sekai Manual
 
-lyuma
+## Authors
 
-MalekiRe Malek
+- K. S. Ernest (iFire) Lee (fire)
+- lyuma
+- MalekiRe Malek
