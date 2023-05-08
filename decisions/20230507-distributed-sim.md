@@ -80,8 +80,6 @@ Authority transfer is initiated through the metadata Raft cluster when players i
 
 Monitoring the load on homeservers and simulation servers allows for balancing the system and ensuring fault tolerance using Raft's mechanisms. As the number of game entity nodes and players grows, adding more homeservers to the metadata Raft cluster and more simulation servers ensures efficient workload distribution and enhances the overall gaming experience.
 
-In this optimized process, we have removed step 2 from the original table, which involved By removing this step, we reduce the total hop count by 1, potentially improving the efficiency of the authority transfer process.
-
 ## Distributed simulation architecture
 
 Case 1: Authority transfer from Player A to Player B on a different home server
