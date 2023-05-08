@@ -8,7 +8,7 @@ The platform supports various file types out of the box, including:
 
 - Audio: `.ogg`, `.mp3`, `.wav`
 - Image: `.png`, `.jpg`, `.tga`, `.exr`
-- Video, Text, and more
+- Text, and more
 - Raw 3D Mesh: `.obj`
 
 ### glTF2 Specification
