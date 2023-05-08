@@ -1,46 +1,45 @@
-# Creating virtual reality games
+# Optimized Code
 
-## Supports many file types
+## Creating Virtual Reality Games
 
-Supports several types of files out of the box:
+### Supported File Types
 
-- Audio (.ogg, .mp3, .wav)
-- Image (.png, .jpg, .tga, .exr)
-- Video, Text, etc.
-- Raw 3D Mesh (.obj)
-- glTF2 is a royalty-free specification for 3D content
-  - Easy-to-read JSON format
-  - glTF2 is extensible. Khronos extension registry on Github.
-  - Replaces proprietary FBX
-  - Replaces older COLLADA
-  - Wide application support in Blender, Godot and numerous others.
-  - ISO/IEC 12113
-  - Adoption in Unity, Unreal Engine and other software.
-  - glTF-Blender-IO by Khronos
-  - glTF Transform by Don McCurdy
-  - Godot: New GLTFDocumentExtension API
-- Thanks to hard work by Facebook, FBX2glTF does a nearly perfect conversion of FBX content to glTF. The code is open source, but it does use the Autodesk SDK.
+The platform supports various file types out of the box, including:
 
-## Virtual Reality
+- Audio: `.ogg`, `.mp3`, `.wav`
+- Image: `.png`, `.jpg`, `.tga`, `.exr`
+- Video, Text, and more
+- Raw 3D Mesh: `.obj`
 
-V-Sekai runs on OpenXR and Vulkan.
+### glTF2 Specification
 
-## Common tools for Godot users include:
+- Royalty-free 3D content specification
+- Easy-to-read JSON format
+- Extensible with Khronos extension registry on Github
+- Replaces proprietary FBX and older COLLADA formats
+- Wide application support (Blender, Godot, etc.)
+- ISO/IEC 12113 standard
+- Adopted by Unity, Unreal Engine, and other software
+- Tools: glTF-Blender-IO (Khronos), glTF Transform (Don McCurdy), Godot GLTFDocumentExtension API
+- FBX2glTF by Facebook for near-perfect FBX to glTF conversion (open source, uses Autodesk SDK)
 
-A file loader that can open any file type it finds, including 2D and 3D assets (including scenes, scripts, meshes & textures) which can all be edited directly within the editor.
+## Virtual Reality Support
 
-## Script games
+- V-Sekai runs on OpenXR and Vulkan
 
-A built-in script editor.
+## Godot User Tools
 
-GDScript – in-house scripting language.
+- File loader for various file types (2D & 3D assets, scenes, scripts, meshes, textures)
+- Editable assets within the editor
 
-GDExtension – C++ binding ABI with cross-version.
+## Scripting
 
-C++ Modules - for native performance and portability.
+- Built-in script editor
+- GDScript: In-house scripting language
+- GDExtension: C++ binding ABI with cross-version compatibility
+- C++ Modules: Native performance and portability
 
-## Sandbox scripting environment
+## Sandbox Scripting Environment (WIP)
 
-The sandboxed scripting environment is not active yet as of October 2022.
-
-A security-focused sandboxed scripting environment backed by WASM
+- Not active as of October 2022
+- Security-focused sandbox backed by WASM
