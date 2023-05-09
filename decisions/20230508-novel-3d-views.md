@@ -33,6 +33,9 @@ Use Meta's image segmentation model and zero123's 3D reconstruction algorithm to
    - Set up a virtual 3D camera in the 3D environment containing the reconstructed garment mesh.
    - Rotate the 3D camera at intervals of 20 degrees around the garment to capture multiple 3D views.
 
+6. **Manually model the garment using views**:
+   - Use a 3d design tool like Blender.
+
 ## Positive Consequences
 
 - Enhanced user experience with realistic 3D garment previews.
