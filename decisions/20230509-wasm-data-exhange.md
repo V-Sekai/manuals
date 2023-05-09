@@ -3,8 +3,8 @@
 ## Metadata
 
 - Status: draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
-- Deciders: V-Sekai, fire, lyuma
-- Tags: V-Sekai,ChatGPT-4
+- Deciders: V-Sekai, fire, lyuma, ashtonmeuser
+- Tags: V-Sekai, ChatGPT-4
 
 ## Context and Problem Statement
 
@@ -47,3 +47,6 @@ Yes, this enhancement improves the efficiency and usability of the V-Sekai platf
 ## References
 
 - [V-Sekai](https://v-sekai.org/)
+- [Godot Engine StreamPeer](https://docs.godotengine.org/en/stable/classes/class_streampeer.html)
+- [Godot Engine Wasm](https://github.com/ashtonmeuser/godot-wasm)
+- [Godot Engine WasGo](https://github.com/V-Sekai/wasgo)
