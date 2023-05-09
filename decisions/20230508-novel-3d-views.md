@@ -1,4 +1,4 @@
-# Implementation of 3D Garment Previews
+# Convert segmented front facing 3D Garment images to novel 3d views for 3d modelling
 
 ## Metadata
 
