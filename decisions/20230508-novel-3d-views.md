@@ -2,7 +2,7 @@
 
 ## Metadata
 
-- Status: rejected <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai, fire,
 - Tags: V-Sekai, ChatGPT-4
 
