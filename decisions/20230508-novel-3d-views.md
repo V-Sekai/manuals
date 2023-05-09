@@ -48,7 +48,7 @@ Use Meta's image segmentation model and zero123's 3D reconstruction algorithm to
 
 ## Option graveyard
 
-- Using multiple images for 3D reconstruction (discarded due to not enough input images for 3D construction).
+- Using multiple images for 3D reconstruction (discarded due to not enough aligned input images for 3D construction).
 
 ## If this enhancement will be used infrequently, can it be worked around with a few lines of script?
 
