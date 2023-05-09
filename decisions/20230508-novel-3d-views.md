@@ -27,13 +27,13 @@ Use Meta's image segmentation model and zero123's 3D reconstruction algorithm to
 
 4. **Apply zero123's 3D reconstruction algorithm**:
    - Load the pre-trained zero123's 3D reconstruction model.
-   - Pass the prepared segmented garment data through the model to generate novel 3d views of the garment.
+   - Pass the prepared segmented garment image through the model to generate novel 3d views of the garment.
 
 5. **Generate novel 3D views of the garment**:
    - Rotate the 3D camera at intervals of 20 degrees around the garment to capture multiple 3D views.
 
 6. **Manually model the garment using views**:
-   - Use a 3d design tool like Blender.
+   - Use a 3d design tool like Blender to create a mesh.
 
 ## Positive Consequences
 
