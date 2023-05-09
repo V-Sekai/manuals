@@ -39,7 +39,7 @@ Example of using ChatGPT-4 AI completion with the proposal template.
 
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai
-- Tags: V-Sekai,ChatGPT-4
+- Tags: V-Sekai, GPT-4
 
 ## Context and Problem Statement
 
