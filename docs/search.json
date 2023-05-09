@@ -18,14 +18,14 @@
     "href": "decisions/20230509-wasm-data-exhange.html",
     "title": "Exchange data between Godot Engine and WASM using handles",
     "section": "",
-    "text": "Status: draft \nDeciders: V-Sekai, fire, lyuma\nTags: V-Sekai,ChatGPT-4\n\n\n\n\nV-Sekai faces a limitation in sending complex data types between the Godot Engine and WebAssembly (WASM) modules. Simple Variant types can be marshalled or copied onto the stack, but arrays, dictionaries, and Object types require a more efficient approach.\n\n\n\nImplement a handle-based approach for managing complex data types. Allocate handles, possibly reference counted, allowing the WASM guest to pass integers around to all the Godot APIs. This will enable efficient communication between the host side and the WASM guest.\n\n\n\n\nDesign a handle-based system for managing complex data types.\nImplement reference counting for allocated handles.\nAdd Godot APIs to accept integer handles instead of direct object references.\nTest the new implementation with various data types and scenarios.\n\n\n\n\n\nEfficient communication between the host side and the WASM guest.\nImproved performance when dealing with complex data types.\nSimplified API usage for developers.\n\n\n\n\n\nAdditional complexity in the implementation.\nPotential overhead due to reference counting.\n\n\n\n\nN/A\n\n\n\nNo, this enhancement addresses a core limitation and requires changes to the underlying system.\n\n\n\nYes, this enhancement improves the efficiency and usability of the V-Sekai platform, making it more attractive to developers and users.\n\n\n\n\nV-Sekai"
+    "text": "Status: draft \nDeciders: V-Sekai, fire, lyuma, ashtonmeuser\nTags: V-Sekai, ChatGPT-4\n\n\n\n\nV-Sekai faces a limitation in sending complex data types between the Godot Engine and WebAssembly (WASM) modules. Simple Variant types can be marshalled or copied onto the stack, but arrays, dictionaries, and Object types require a more efficient approach.\n\n\n\nImplement a handle-based approach for managing complex data types. Allocate handles, possibly reference counted, allowing the WASM guest to pass integers around to all the Godot APIs. This will enable efficient communication between the host side and the WASM guest.\n\n\n\n\nDesign a handle-based system for managing complex data types.\nImplement reference counting for allocated handles.\nAdd Godot APIs to accept integer handles instead of direct object references.\nTest the new implementation with various data types and scenarios.\n\n\n\n\n\nEfficient communication between the host side and the WASM guest.\nImproved performance when dealing with complex data types.\nSimplified API usage for developers.\n\n\n\n\n\nAdditional complexity in the implementation.\nPotential overhead due to reference counting.\n\n\n\n\nN/A\n\n\n\nNo, this enhancement addresses a core limitation and requires changes to the underlying system.\n\n\n\nYes, this enhancement improves the efficiency and usability of the V-Sekai platform, making it more attractive to developers and users.\n\n\n\n\nV-Sekai\nGodot Engine StreamPeer\nGodot Engine Wasm\nGodot Engine WasGo"
   },
   {
     "objectID": "decisions/20230509-wasm-data-exhange.html#metadata",
     "href": "decisions/20230509-wasm-data-exhange.html#metadata",
     "title": "Exchange data between Godot Engine and WASM using handles",
     "section": "",
-    "text": "Status: draft \nDeciders: V-Sekai, fire, lyuma\nTags: V-Sekai,ChatGPT-4"
+    "text": "Status: draft \nDeciders: V-Sekai, fire, lyuma, ashtonmeuser\nTags: V-Sekai, ChatGPT-4"
   },
   {
     "objectID": "decisions/20230509-wasm-data-exhange.html#context-and-problem-statement",
@@ -88,7 +88,7 @@
     "href": "decisions/20230509-wasm-data-exhange.html#references",
     "title": "Exchange data between Godot Engine and WASM using handles",
     "section": "",
-    "text": "V-Sekai"
+    "text": "V-Sekai\nGodot Engine StreamPeer\nGodot Engine Wasm\nGodot Engine WasGo"
   },
   {
     "objectID": "decisions/20220207-virtual-pets.html",
