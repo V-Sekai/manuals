@@ -1,5 +1,6 @@
 # V-Sekai Manual Authors
 
 - K. S. Ernest (iFire) Lee (fire)
-- lyuma
+- Lyuma
 - MalekiRe Malek
+- GDQuest
