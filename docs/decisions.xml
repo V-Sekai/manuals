@@ -1,0 +1,2174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>V-Sekai - Manuals</title>
+<link>https://v-sekai.github.io/manuals/decisions.html</link>
+<atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.3.340</generator>
+<lastBuildDate>Tue, 09 May 2023 03:38:45 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230508-novel-3d-views.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="implementation-of-3d-garment-previews" class="level1">
+<h1>Implementation of 3D Garment Previews</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: rejected <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
+<li>Deciders: V-Sekai, fire,</li>
+<li>Tags: V-Sekai, ChatGPT-4</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
+<p>We want to create 3D models from a front-shot of the garment.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>Use Meta’s image segmentation model and zero123’s 3D reconstruction algorithm to generate novel 3D views of garments from a single front-shot image.</p>
+</section>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<ol type="1">
+<li><p><strong>Preprocess the input image</strong>: Resize and normalize the input image to meet the requirements of Meta’s image segmentation model.</p></li>
+<li><p><strong>Extract the garment using Meta’s image segmentation model</strong>:</p>
+<ul>
+<li>Load the pre-trained Meta’s image segmentation model.</li>
+<li>Pass the preprocessed input image through the model to obtain the segmented garment image.</li>
+</ul></li>
+<li><p><strong>Prepare the segmented garment for 3D reconstruction</strong>:</p>
+<ul>
+<li>Convert the segmented garment into a format compatible with zero123’s 3D reconstruction algorithm (e.g., point cloud or depth map).</li>
+</ul></li>
+<li><p><strong>Apply zero123’s 3D reconstruction algorithm</strong>:</p>
+<ul>
+<li>Load the pre-trained zero123’s 3D reconstruction model.</li>
+<li>Pass the prepared segmented garment data through the model to generate a 3D mesh of the garment.</li>
+</ul></li>
+<li><p><strong>Generate novel 3D views of the garment</strong>:</p>
+<ul>
+<li>Set up a virtual 3D camera in the 3D environment containing the reconstructed garment mesh.</li>
+<li>Rotate the 3D camera at intervals of 20 degrees around the garment to capture multiple 3D views.</li>
+</ul></li>
+</ol>
+</section>
+<section id="positive-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
+<ul>
+<li>Enhanced user experience with realistic 3D garment previews.</li>
+<li>Improved understanding of garment fit and style.</li>
+<li>Increased creator satisfaction.</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
+<ul>
+<li>Potential increase in computational resources required for processing.</li>
+<li>Possible limitations in accuracy and quality of generated 3D models.</li>
+</ul>
+</section>
+<section id="option-graveyard" class="level2">
+<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
+<ul>
+<li>Using multiple images for 3D reconstruction (discarded due to not enough input images for 3D construction).</li>
+</ul>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
+<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
+<p>No, this enhancement requires integration of advanced image segmentation and 3D reconstruction algorithms, which cannot be achieved with a simple script.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
+<p>Yes, implementing this feature as part of our core project will improve our opensource community of creators.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230508-novel-3d-views.html</guid>
+  <pubDate>Tue, 09 May 2023 03:38:45 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230507-supabase.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="using-deno-to-handle-the-conversion-of-glb-files-to-godot-engine-packed-scenes" class="level1">
+<h1>Using Deno to handle the conversion of GLB files to Godot Engine packed scenes</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
+<li>Deciders: V-Sekai</li>
+<li>Tags: V-Sekai, ChatGPT-4</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
+<p>V-Sekai currently has a limitation in converting 3D models from the GLB format to the Godot Engine packed scene format. This conversion process is essential for seamless integration of 3D assets into the V-Sekai platform.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>Implement serverless edge functions using Deno to handle the conversion of GLB files to Godot Engine packed scenes and manage data storage and retrieval.</p>
+</section>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<ol type="1">
+<li><strong>Wasm edge functions</strong>: Utilize WebAssembly (Wasm) to run the edge functions efficiently.</li>
+<li><strong>Compute time estimation</strong>: Estimate the required compute time for the conversion process.</li>
+<li><strong>Data storage</strong>: Set up a storage system for the converted Godot packed scenes.</li>
+<li><strong>Table editing UI</strong>: Create a user interface for managing the stored Godot packed scenes.</li>
+<li><strong>Edge Function use case</strong>: Implement the following serverless Deno functions:
+<ul>
+<li><code>glbToGodotPackedScene</code>: Convert a GLB file to a Godot packed scene and store it.</li>
+<li><code>insertGodotPackedScene</code>: Insert a Godot packed scene into the V-Sekai server.</li>
+<li><code>helloWorld</code>: Return a JSON object containing “Hello, World!” as a test function.</li>
+</ul></li>
+</ol>
+</section>
+<section id="positive-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
+<ul>
+<li>Seamless integration of 3D assets into the V-Sekai platform.</li>
+<li>Improved performance and reduced latency due to edge computing.</li>
+<li>Scalable and maintainable architecture with serverless functions.</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
+<ul>
+<li>Additional complexity in setting up and managing serverless functions.</li>
+<li>Potential increase in costs due to serverless architecture.</li>
+</ul>
+</section>
+<section id="option-graveyard" class="level2">
+<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
+<p>Use the current process of editor upload.</p>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
+<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
+<p>No, this enhancement is essential for the seamless integration of 3D assets into the V-Sekai platform and cannot be easily worked around with a simple script.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
+<p>Yes, this feature is crucial for the V-Sekai platform’s functionality and user experience. Implementing it as a core feature ensures that it is well-integrated, maintainable, and scalable.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230507-supabase.html</guid>
+  <pubDate>Tue, 09 May 2023 03:38:45 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230507-distributed-sim.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="distributed-simulation" class="level1">
+<h1>Distributed simulation</h1>
+<section id="metadata" class="level3">
+<h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
+<ul>
+<li>Status: draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
+<li>Deciders: V-Sekai,fire,</li>
+<li>Tags: V-Sekai,networking,</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level3">
+<h3 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h3>
+<p>Our project involves a distributed simulation system where maintaining strong consistency and efficient workload distribution are important requirements. We are currently facing the challenge of how to handle authority transfer and state updates between simulation servers without incurring high network hop counts and latency.</p>
+<p>Someone invited me to a popular VR platform and gave me a 20-minute tour, just enough to learn how to in desktop mode create a world, import an object, and inspector-edit it. So I imported our celebration map, and the map loaded in 20 seconds. I was able to change its transform. I’m still thinking about that experience.</p>
+</section>
+<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level3">
+<h3 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h3>
+<p>We propose to use a metadata system with Khepri instances and Raft consensus algorithm to manage ownership and mastership information for game entity nodes. Homeservers will manage metadata using their own Khepri instances within a Raft cluster, while simulation servers, including player simulation servers, will maintain game entity nodes they have authority over using their own Khepri instances.</p>
+<p>Authority transfer will be initiated through the metadata Raft cluster when players interact with game entities governed by different simulation servers. The homeserver Khepri’s nested path-to-value structure will be updated based on the ownership and mastership rules set by the Master. State updates will be exchanged between old and new authority simulation servers or synchronized using a separate mechanism during authority transfer.</p>
+<p>By monitoring the load on homeservers and simulation servers, we can balance the system and ensure fault tolerance using Raft’s mechanisms. As the number of game entity nodes and players grows, adding more homeservers to the metadata Raft cluster and more simulation servers will ensure efficient workload distribution and enhance the overall gaming experience.</p>
+<p>We believe that this approach will provide strong consistency guarantees, access control, and scalability while minimizing network hop counts and latency for authority transfer and state updates between simulation servers.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level3">
+<h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h3>
+<section id="glossary-of-terms" class="level4">
+<h4 class="anchored" data-anchor-id="glossary-of-terms">Glossary of terms</h4>
+<ol type="1">
+<li><strong>Homeserver</strong>: A server responsible for managing metadata, including ownership and mastership information for game entity nodes.</li>
+<li><strong>Simulation server</strong>: A server responsible for containing game entity nodes it has authority over, including player simulation servers.</li>
+<li><strong>Khepri</strong>: A tree-like replicated on-disk database library for Erlang and Elixir, used for maintaining a nested path-to-value store.</li>
+<li><strong>Raft cluster</strong>: A cluster of servers implementing the Raft consensus algorithm to ensure strong consistency and fault tolerance.</li>
+<li><strong>Ownership</strong>: The player who has control over a game entity and can change its state.</li>
+<li><strong>Mastership</strong>: The authority that can change ownership rules and default ownership settings.</li>
+<li><strong>Ask, Deny, Allow</strong>: Rules set by the Master for ownership transfer.</li>
+</ol>
+</section>
+<section id="protocols" class="level4">
+<h4 class="anchored" data-anchor-id="protocols">Protocols</h4>
+<ul>
+<li>Each type of server can only be Khepri members of the same type.</li>
+<li>Each server can only allow be Khepri members of the same logical instance.</li>
+<li>Raft is only active inside of each logical instance.</li>
+<li>Homeserver servers are REST + JSON and the cheap pattern.</li>
+<li>Simulation servers are using the nasty state transfer pattern</li>
+</ul>
+</section>
+<section id="simulation-server-state-transfer-protocol" class="level4">
+<h4 class="anchored" data-anchor-id="simulation-server-state-transfer-protocol">Simulation server state transfer protocol</h4>
+<table class="table">
+<colgroup>
+<col style="width: 1%">
+<col style="width: 98%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Player A’s simulation server sends a request to the home server to fetch the public key of Player B.</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>The home server retrieves Player B’s public key from its database and sends it back to Player A’s simulation server.</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Player A’s simulation server uses Player B’s public key to encrypt a message or binary data.</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Player A’s simulation server signs the encrypted message or binary data using its own private key.</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Player A’s simulation server sends the encrypted message or binary data along with the digital signature to Player B’s simulation server using the membrane_udp_plugin.</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Player B’s simulation server receives the message and verifies the digital signature using Player A’s public key, which it retrieves from the home server.</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>If the signature is valid, Player B’s simulation server uses its own private key to decrypt the message and obtain the original data sent by Player A’s simulation server.</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>If the message is confidential, Player B’s simulation server may want to send a response back to Player A’s simulation server using a similar protocol, with Player A’s public key retrieved from the home server.</td>
+</tr>
+</tbody>
+</table>
+<p>This table outlines the steps of the communication protocol between Player A and Player B’s simulation servers, which involves retrieving public keys from the home server’s database, encrypting and signing messages, and verifying digital signatures to ensure the authenticity of the messages. This protocol ensures secure and confidential communication between the two simulation servers, allowing for safe and reliable data exchange.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># EC examples</span></span>
+<span id="cb1-2">alice_private_jwk <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">JOSE</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">JWK</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>from_pem_file<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ec-secp256r1-alice.pem"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb1-3">alice_public_jwk  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">JOSE</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">JWK</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>to_public<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span>alice_private_jwk<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb1-4">bob_private_jwk   <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">JOSE</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">JWK</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>from_pem_file<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ec-secp256r1-bob.pem"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb1-5">bob_public_jwk    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">JOSE</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">JWK</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>to_public<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span>bob_private_jwk<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">## Encrypt and Decrypt (defaults to ECDH-ES with A128GCM)</span></span>
+<span id="cb1-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">### Alice sends Bob a secret message using Bob's public key and Alice's private key</span></span>
+<span id="cb1-9">alice_to_bob <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"For Bob's eyes only."</span></span>
+<span id="cb1-10">encrypted <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">JOSE</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">JWK</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>box_encrypt<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span>alice_to_bob, bob_public_jwk, alice_private_jwk<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb1-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">### Only Bob can decrypt the message using his private key (Alice's public key is embedded in the JWE header)</span></span>
+<span id="cb1-12"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span>alice_to_bob, _<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">JOSE</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">JWK</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>box_decrypt<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span>encrypted, bob_private_jwk<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span></span></code></pre></div>
+</section>
+<section id="building-a-scalable-distributed-simulation-system-with-khepri-instances-and-raft-consensus-algorithm" class="level4">
+<h4 class="anchored" data-anchor-id="building-a-scalable-distributed-simulation-system-with-khepri-instances-and-raft-consensus-algorithm">Building a Scalable Distributed Simulation System with Khepri Instances and Raft Consensus Algorithm</h4>
+<p>In a distributed simulation system, maintaining separate roles for homeservers and simulation servers and using a metadata system with strong consistency guarantees is crucial. Homeservers are responsible for managing metadata, including ownership and mastership information for game entity nodes, using a Khepri instance within a Raft cluster. Simulation servers, including player simulation servers, maintain game entity nodes they have authority over using their own Khepri instances.</p>
+<p>Authority transfer is initiated through the metadata Raft cluster when players interact with game entities governed by different simulation servers. The homeserver Khepri’s nested path-to-value structure is updated based on the ownership and mastership rules set by the Master. State updates are exchanged between old and new authority simulation servers or synchronized using a separate mechanism during authority transfer.</p>
+<p>Monitoring the load on homeservers and simulation servers allows for balancing the system and ensuring fault tolerance using Raft’s mechanisms. As the number of game entity nodes and players grows, adding more homeservers to the metadata Raft cluster and more simulation servers ensures efficient workload distribution and enhances the overall gaming experience.</p>
+</section>
+</section>
+<section id="distributed-simulation-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="distributed-simulation-architecture">Distributed simulation architecture</h2>
+<p>Case 1: Authority transfer from Player A to Player B on a different home server</p>
+<table class="table">
+<colgroup>
+<col style="width: 3%">
+<col style="width: 87%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Description</th>
+<th>Hop Count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Player A’s simulation server sends a request to its homeserver (1 hop).</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Player A’s homeserver sends an authority request to Player B’s homeserver (H hops).</td>
+<td>H</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Player B’s homeserver sends a response to Player A’s homeserver (H hops).</td>
+<td>H</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Player A’s homeserver sends an authority response to Player A’s simulation server (1 hop).</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Player A’s simulation server sends an acknowledgment to Player B’s simulation server (1 hop).</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Sending an acknowledgment from Player A’s homeserver to Player A’s simulation server may not be necessary, as the authority request can be sent directly to Player B’s homeserver without waiting for confirmation.</p>
+<p>Total hops: 3 + 2 * H</p>
+<p>Case 2: Authority transfer if Player A’s and Player B’s homeservers are exactly the same</p>
+<table class="table">
+<colgroup>
+<col style="width: 3%">
+<col style="width: 87%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Description</th>
+<th>Hop Count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Player A’s simulation server sends a request to its homeserver (1 hop).</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Player A’s homeserver sends a response directly to Player B’s simulation server (1 hop).</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Player B’s simulation server sends an acknowledgment to Player A’s simulation server (1 hop).</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Total hops: 3</p>
+<p>In this optimized process, we have removed sending an acknowledgment from Player A’s homeserver to Player A’s simulation server. This acknowledgment may not be necessary, as the response can be sent directly to Player B’s simulation server without waiting for confirmation. By removing this step, we reduce the total hop count by 1, potentially improving the efficiency of the authority transfer process when both players are on the same home server.</p>
+<p>Case 3: Direct communication between Player A and Player B’s simulation servers on the same home server.</p>
+<table class="table">
+<colgroup>
+<col style="width: 2%">
+<col style="width: 92%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Description</th>
+<th>Hop Count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Player A’s simulation server sends an update directly to Player B’s simulation server using a hand-optimized binary layout and an asynchronous communication model.</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Player B’s simulation server sends an acknowledgment to Player A’s simulation server using credit-based flow control or another asynchronous technique.</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>In this modified version of Case 3, both the update and acknowledgment steps employ the high-performance communication system’s features. This includes using hand-optimized binary layouts for data transfer and asynchronous communication techniques to minimize latency and maximize throughput. The total hop count remains the same at 2 hops.</p>
+<section id="positive-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h3>
+<ul>
+<li>Strong consistency guarantees</li>
+<li>Access control over Khepri instances</li>
+<li>Scalability</li>
+<li>Minimized network hop counts and latency for authority transfer and state updates</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h3>
+<ol type="1">
+<li><p><strong>Complexity</strong>: The proposed system involves multiple components, such as homeservers, simulation servers, Khepri instances, and Raft clusters. Managing and maintaining these components can be complex and may require significant development effort.</p></li>
+<li><p><strong>Performance</strong>: The use of Raft consensus algorithm ensures strong consistency but may introduce performance overhead due to the need for communication between nodes in the cluster. This could impact the overall performance of the distributed simulation system.</p></li>
+<li><p><strong>Scalability</strong>: While the proposal aims to provide scalability, it is not clear how well the system will scale as the number of game entity nodes and players grows. Adding more homeservers and simulation servers might help, but there could still be bottlenecks or limitations that need to be addressed.</p></li>
+<li><p><strong>Security</strong>: The proposed state transfer protocol relies on public key cryptography for secure communication between simulation servers. However, the security of the system depends on proper key management and protection against potential attacks, such as man-in-the-middle attacks or replay attacks.</p></li>
+<li><p><strong>Fault tolerance</strong>: Although the Raft consensus algorithm provides fault tolerance, the system’s resilience to failures (e.g., server crashes, network issues) needs to be carefully considered and tested to ensure smooth operation under various conditions.</p></li>
+<li><p><strong>Synchronization</strong>: The proposal mentions that state updates are exchanged between old and new authority simulation servers or synchronized using a separate mechanism during authority transfer. However, it does not provide details on how this synchronization process works, which could be a critical aspect of the system’s functionality.</p></li>
+<li><p><strong>Load balancing</strong>: Monitoring the load on homeservers and simulation servers is essential for balancing the system. However, the proposal does not provide specific details on how load balancing will be achieved or what metrics will be used to determine when to add or remove servers from the system.</p></li>
+</ol>
+</section>
+<section id="option-graveyard" class="level3">
+<h3 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h3>
+<p>We considered using a client-server model for the distributed simulation system but found that it would not provide the strong consistency guarantees and access control we require, and it would also be more difficult to scale as the number of game entity nodes and players grows.</p>
+</section>
+<section id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="level3">
+<h3 class="anchored" data-anchor-id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</h3>
+<p>This is not a few lines of script.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level3">
+<h3 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h3>
+<p>I am exploring alternatives for the current implementation of the client-server model.</p>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li>V-Sekai: https://v-sekai.org/</li>
+<li>Khepri documentation: https://github.com/rabbitmq/khepri</li>
+<li>Raft consensus algorithm: https://raft.github.io/</li>
+<li>Networked Physics in Virtual Reality: https://gafferongames.com/post/networked_physics_in_virtual_reality/</li>
+<li>Chapter 7 - Advanced Architecture using ZeroMQ: https://zguide.zeromq.org/docs/chapter7/</li>
+</ul>
+
+
+</section>
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230507-distributed-sim.html</guid>
+  <pubDate>Tue, 09 May 2023 03:38:45 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230507-avatar-publishing-workflow-portability.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="describe-a-avatar-publishing-workflow-for-portability" class="level2">
+<h2 class="anchored" data-anchor-id="describe-a-avatar-publishing-workflow-for-portability">Describe a avatar publishing workflow for portability</h2>
+</section>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
+<li>Deciders: V-Sekai, fire</li>
+<li>Tags: V-Sekai, ChatGPT-4, Avatar Publishing, Workflow, Portability, VRM Format, Silent’s Shader, Platform Compatibility, Sketchfab, Booth.pm</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
+<p>We want to create a workflow for publishing avatars in a portable format that can be easily used across different platforms. The goal is to streamline the process of converting and exporting avatars while maintaining compatibility with various platforms.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>The proposed solution involves using the VRM portable avatar format, Silent’s shader, and platform-specific package bundles to create a seamless workflow for avatar publishing.</p>
+</section>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<ol type="1">
+<li>Import avatar in VRM0 portable avatar format.</li>
+<li>Install Silent’s shader 1.11.</li>
+<li>Convert VRM to compatible platform’s internal format.</li>
+</ol>
+<ol type="a">
+<li>Avoid “Combine Mesh” option.</li>
+<li>The Cutout Rendering Mode matches VRM’s usual transparency usage.</li>
+<li>UNRESOLVED: VRM Colliders cause greatly increased count of simulated physics objects
+<ol start="2" type="i">
+<li>Try switching to inside bounds instead of bone as spheres</li>
+</ol></li>
+</ol>
+<ol start="4" type="1">
+<li>Swap the mtoon material for Silent’s shader’s crosstone material. Fire doesn’t use the light-ramp shader.</li>
+<li>Many bones need to be the first child for IK to work.</li>
+<li>Fire prefers solid colour backgrounds for avatar photos</li>
+<li>Export as a compatible platform package bundle.</li>
+<li>Bundle VRM and compatible platform package bundle and publish on Sketchfab and/or Booth.pm.</li>
+<li>The compatible platform should display the avatar as <strong>poor</strong> rated.</li>
+</ol>
+</section>
+<section id="positive-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
+<ul>
+<li>Streamlined avatar publishing process.</li>
+<li>Increased portability and compatibility with different platforms.</li>
+<li>Easier sharing and distribution of avatars.</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
+<ul>
+<li>Potential loss of some features or quality during conversion.</li>
+<li>May require additional work to ensure compatibility with all desired platforms.</li>
+</ul>
+</section>
+<section id="option-graveyard" class="level2">
+<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
+<p>N/A</p>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
+<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
+<p>No, this enhancement aims to create a comprehensive workflow for avatar publishing, which cannot be achieved with just a few lines of script.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
+<p>Yes, creating a standardized workflow for avatar publishing ensures consistency and compatibility across platforms, making it easier for users to share and distribute their avatars.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>V-Sekai: <a href="https://v-sekai.org/">V-Sekai</a></li>
+<li>Silent Cel Shading Shader: <a href="https://gitlab.com/s-ilent/SCSS/-/tree/master/Assets/Silent's%20Cel%20Shading%20Shader">SCSS</a></li>
+<li>Silent Cel Shading Shader v1.11: <a href="https://gitlab.com/s-ilent/SCSS/-/releases/v1.11">Silent Cel Shading Shader v1.11</a></li>
+<li>Booth.pm: <a href="https://booth.pm/">Booth.pm</a></li>
+<li>Sketchfab: <a href="https://sketchfab.com/">Sketchfab</a></li>
+<li>VRM converter for compatible platform: <a href="https://booth.pm/en/items/1025226">VRM converter</a>
+<ul>
+<li>Automatically installs Univrm: <a href="https://github.com/vrm-c/UniVRM">Univrm</a></li>
+</ul></li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230507-avatar-publishing-workflow-portability.html</guid>
+  <pubDate>Tue, 09 May 2023 03:38:45 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230505-v-sekai-ai-completion.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="solve-v-sekai-limitations-using-chatgpt-4-ai-completion." class="level1">
+<h1>Solve V-Sekai limitations using ChatGPT-4 AI completion.</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
+<li>Deciders: V-Sekai,fire,</li>
+<li>Tags: V-Sekai,ChatGPT-4,AI_assistance,problem solving,proposal generation,Visual Studio Code addon,</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
+<p>We sometimes need help finding solutions to our issues. ChatGPT-4 artificial intelligence completion can help us solve the entire problem when we only have the start of the solution.</p>
+</section>
+<section id="describe-the-problem-or-limitation-you-have-in-your-project-e.g.-in-free-form-using-two-to-three-sentences.-consider-articulating-the-case-in-the-form-of-a-question." class="level2">
+<h2 class="anchored" data-anchor-id="describe-the-problem-or-limitation-you-have-in-your-project-e.g.-in-free-form-using-two-to-three-sentences.-consider-articulating-the-case-in-the-form-of-a-question.">Describe the problem or limitation you have in your project, e.g., in free form, using two to three sentences. Consider articulating the case in the form of a question.</h2>
+<p>How can we leverage ChatGPT-4 AI completion to assist in solving problems and completing proposals for V-Sekai?</p>
+</section>
+<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level2">
+<h2 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h2>
+<p>Use ChatGPT-4 AI completion with the Visual Studio Code “Genie” addon to fill in as many sections as possible in a given proposal template, helping to generate complete and well-rounded solutions.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<ol type="1">
+<li>Ensure access to the chatgpt4 API access. There is a waiting list.</li>
+<li>Copy the proposal template.</li>
+<li>Fill in as many sections as possible in the proposal template.</li>
+<li>Use the Visual Studio Code “Genie” addon with ChatGPT-4 AI completion to complete the remaining sections of the proposal.</li>
+<li>Review and refine the completed proposal.</li>
+<li>Review with copy editing software if accessible.</li>
+<li>Record the decisions on GitHub at https://github.com/V-Sekai/manuals.</li>
+</ol>
+<p>Example of using ChatGPT-4 AI completion with the proposal template.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"># Issue: Feature implementation proposal</span></span>
+<span id="cb1-2"></span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">## Propose a possible solution to solve a V-Sekai limitation. If this doesn't look right, choose a different type.</span></span>
+<span id="cb1-4"></span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">## Metadata</span></span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">- </span>Status: proposed <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;!-- draft | proposed | rejected | accepted | deprecated | superseded by --&gt;</span></span>
+<span id="cb1-8"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">- </span>Deciders: V-Sekai</span>
+<span id="cb1-9"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">- </span>Tags: V-Sekai,ChatGPT-4</span>
+<span id="cb1-10"></span>
+<span id="cb1-11"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">## Context and Problem Statement</span></span>
+<span id="cb1-12"></span>
+<span id="cb1-13"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">## Proposed Solution</span></span>
+<span id="cb1-14"></span>
+<span id="cb1-15"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">## Implementation</span></span>
+<span id="cb1-16"></span>
+<span id="cb1-17"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">## Positive Consequences</span></span>
+<span id="cb1-18"></span>
+<span id="cb1-19"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">## Negative Consequences</span></span>
+<span id="cb1-20"></span>
+<span id="cb1-21"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">## Option graveyard</span></span>
+<span id="cb1-22"></span>
+<span id="cb1-23"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">## If this enhancement will be used infrequently, can it be worked around with a few lines of script?</span></span>
+<span id="cb1-24"></span>
+<span id="cb1-25"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">## Is there a reason why this should be core and done by us?</span></span>
+<span id="cb1-26"></span>
+<span id="cb1-27"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">## References</span></span>
+<span id="cb1-28"></span>
+<span id="cb1-29"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">- </span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">V-Sekai</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">](https://v-sekai.org/)</span></span></code></pre></div>
+</section>
+<section id="positive-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
+<ul>
+<li>Improved problem-solving capabilities.</li>
+<li>More complete and well-rounded proposals.</li>
+<li>Faster generation of solutions.</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
+<ul>
+<li>Potential reliance on AI-generated content, which may only sometimes be accurate or suitable.</li>
+<li>Additional time spent reviewing and refining AI-generated content.</li>
+</ul>
+</section>
+<section id="option-graveyard" class="level2">
+<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
+<p>Use only human assistance.</p>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
+<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
+<p>No, this enhancement requires integrating ChatGPT-4 AI completion into the development workflow and cannot be achieved with a simple script.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
+<p>Yes, leveraging AI-generated content can help improve the efficiency and effectiveness of our problem-solving process, leading to better solutions and faster development.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+<li><a href="https://github.com/ai-genie/chatgpt-vscode">Genie addon for Visual Studio Code</a></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230505-v-sekai-ai-completion.html</guid>
+  <pubDate>Tue, 09 May 2023 03:38:45 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230505-polygon-mesh-based-sculpting-tools.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="vr-design-application-for-v-sekai" class="level1">
+<h1>VR design application for V-Sekai</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
+<li>Deciders: V-Sekai,fire,</li>
+<li>Tags: V-Sekai,ChatGPT-4,</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
+<p>Find or create a <strong>VR design application</strong> offering a variety of powerful <em>polygon mesh-based sculpting tools</em>, suitable for both aspiring creatives and experienced 3D artists.</p>
+</section>
+<section id="describe-the-problem-or-limitation-you-have-in-your-project-e.g.-in-free-form-using-two-to-three-sentences.-consider-articulating-the-case-in-the-form-of-a-question." class="level2">
+<h2 class="anchored" data-anchor-id="describe-the-problem-or-limitation-you-have-in-your-project-e.g.-in-free-form-using-two-to-three-sentences.-consider-articulating-the-case-in-the-form-of-a-question.">Describe the problem or limitation you have in your project, e.g., in free form, using two to three sentences. Consider articulating the case in the form of a question.</h2>
+<p>Currently, V-Sekai lacks a comprehensive VR design application that provides polygon mesh-based sculpting tools for users with varying levels of experience. How can we integrate such a tool to enhance the creative capabilities of our users?</p>
+</section>
+<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level2">
+<h2 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h2>
+<p>Integrate a powerful VR design application, such as Gravity Sketch, which offers a wide range of polygon mesh-based sculpting tools. This will cater to both beginners and experienced 3D artists, allowing them to create intricate designs within the V-Sekai environment.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<ol type="1">
+<li>Research available VR design applications that meet the requirements.</li>
+<li>Evaluate the compatibility of the chosen application with V-Sekai.</li>
+<li>Develop an integration plan, including necessary API calls and user interface adjustments.</li>
+<li>Implement the integration, ensuring seamless functionality within V-Sekai.</li>
+<li>Test the integrated application with various user profiles to ensure usability and performance.</li>
+</ol>
+</section>
+<section id="positive-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
+<ul>
+<li>Enhanced creative capabilities for V-Sekai users.</li>
+<li>Attraction of a wider user base, including experienced 3D artists.</li>
+<li>Improved user satisfaction and engagement.</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
+<ul>
+<li>Potential increase in system requirements for V-Sekai.</li>
+<li>Additional development time and resources required for integration.</li>
+</ul>
+</section>
+<section id="option-graveyard" class="level2">
+<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
+<ul>
+<li>Developing a custom VR design application from scratch (time-consuming and resource-intensive).</li>
+</ul>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
+<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
+<p>No, as the enhancement involves integrating a complex VR design application that cannot be achieved through a simple script workaround.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
+<p>Yes, integrating a powerful VR design application will significantly enhance the creative capabilities of V-Sekai users, making it a core feature that directly impacts user experience and satisfaction.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+<li>Cassie on Github: https://github.com/V-Sekai/cassie</li>
+<li>Shapelab by Leopoly on Steam</li>
+<li>Gravity Sketch on Steam</li>
+<li>Substance 3D Modeler 2023 on Steam: https://store.steampowered.com/app/1745780/Substance_3D_Modeler_2023/</li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230505-polygon-mesh-based-sculpting-tools.html</guid>
+  <pubDate>Tue, 09 May 2023 03:38:45 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230505-cross-platform-artwork-distribution.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="enhancing-cross-platform-compatibility-and-user-experience-for-v-sekai-vr-social-players" class="level1">
+<h1>Enhancing Cross-Platform Compatibility and User Experience for V-Sekai VR Social Players</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
+<li>Deciders: V-Sekai, fire</li>
+<li>Tags: V-Sekai, ChatGPT-4</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
+<p>V-Sekai faces limitations in providing a seamless cross-platform experience for VR Social players. How can we improve compatibility and user experience across various platforms?</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>Distribute artwork in Blend, VRM, and Unity Asset Package formats to ensure easy portability and compatibility with multiple platforms, enhancing the overall user experience.</p>
+</section>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<ol type="1">
+<li>Create and export artwork in Blend, VRM, and Unity Asset Package formats.</li>
+<li>Utilize appropriate formats for each platform, ensuring compatibility and optimal performance.</li>
+</ol>
+</section>
+<section id="positive-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
+<ul>
+<li>Improved compatibility across various platforms.</li>
+<li>Enhanced user experience for VR Social players.</li>
+<li>Increased adoption of V-Sekai due to better cross-platform support.</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
+<ul>
+<li>Additional development time and resources required to create and maintain multiple asset formats.</li>
+<li>Potential performance issues on lower-end devices.</li>
+</ul>
+</section>
+<section id="option-graveyard" class="level2">
+<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
+<ul>
+<li>Creating separate assets and configurations for each platform, increasing development time and maintenance complexity.</li>
+</ul>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
+<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
+<p>This enhancement aims to improve the core experience for users across various platforms and cannot be achieved with a simple workaround.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
+<p>Providing a seamless cross-platform experience is essential for V-Sekai’s success. Implementing this feature in-house ensures full control over its development and tailoring to specific needs.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+<li>UnityVRM: https://github.com/vrm-c/UniVRM</li>
+<li>Silent Cel Shading Shader for Unity Game Engine: https://gitlab.com/s-ilent/SCSS</li>
+<li>Silent Cel Shading Shader for Godot Engine: https://github.com/lyuma/SCSS-Godot</li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230505-cross-platform-artwork-distribution.html</guid>
+  <pubDate>Tue, 09 May 2023 03:38:45 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230505-consistent-v-sekai-naming.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="solve-a-v-sekai-naming-convention-limitation." class="level1">
+<h1>Solve a V-Sekai naming convention limitation.</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
+<li>Deciders: V-Sekai,fire,</li>
+<li>Tags: V-Sekai,chatgpt4,naming conventions,standardization,code organization,documentation,project management,</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
+<p>We use different kinds of names for V-Sekai, such as <code>v-sekai</code>, <code>V-Sekai</code>, <code>vsk</code>, and <code>v_sekai</code>. It is confusing to find a scheme that fits the various naming conventions. Hyphens are banned in Godot Engine file systems, but allowed in GitHub branch names. We also use the <code>godot_addon</code> convention sometimes. How can we document and unify the naming conventions across different platforms and contexts?</p>
+</section>
+<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level2">
+<h2 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h2>
+<p>Create a standardized naming convention guideline that defines the preferred format for all instances of V-Sekai’s name in code, documentation, and other materials, taking into account the specific requirements and limitations of each platform and context.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<ol type="1">
+<li>Define the preferred naming convention for V-Sekai in different contexts:
+<ul>
+<li>Godot Engine file systems: <code>vsk_default</code></li>
+<li>GitHub branch names: <code>v-sekai-wasm</code></li>
+<li>Addon naming: <code>addons/vsk_avatar</code></li>
+<li>Github repository names must all be lowercase:
+<ul>
+<li>GitHub is case-insensitive: this can result in users or devs inadvertently typing the wrong case in one case</li>
+<li>Windows is case-insensitive, so the above mistake can go unnoticed until the addon is used on a different OS</li>
+</ul></li>
+</ul></li>
+<li>Create a guideline document outlining the naming convention rules for each context.</li>
+<li>Update existing code, documentation, and materials to follow the new naming conventions.</li>
+<li>Enforce the naming conventions in future development and contributions.</li>
+</ol>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Example of following the naming convention in Godot Engine file system</span></span>
+<span id="cb1-2">vsk_default<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>core<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">object</span>.gd</span>
+<span id="cb1-3"></span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Example of following the naming convention in GitHub branch names</span></span>
+<span id="cb1-5">v<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>sekai<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>wasm</span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Example of following the naming convention for addons</span></span>
+<span id="cb1-8">addons<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>vsk_avatar <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># in the file system</span></span>
+<span id="cb1-9">godot_vsk_avatar <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># on Github</span></span></code></pre></div>
+</section>
+<section id="positive-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
+<ul>
+<li>Consistent naming conventions across different platforms and contexts.</li>
+<li>Reduced confusion among developers and users.</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
+<ul>
+<li>Time and effort required to update existing code and materials to follow the new naming conventions.</li>
+</ul>
+</section>
+<section id="option-graveyard" class="level2">
+<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
+<p>Doing nothing is a problem.</p>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
+<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
+<p>No, establishing consistent naming conventions requires updating all instances of V-Sekai’s name across the project and cannot be achieved with a simple script.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
+<p>Yes, maintaining consistent naming conventions is essential for a professional and well-organized project. It will improve the overall quality of the codebase and documentation, making it easier for developers and users to understand and work with V-Sekai.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+<li>goblin.tools: https://goblin.tools/</li>
+<li>openai: https://openai.com/</li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230505-consistent-v-sekai-naming.html</guid>
+  <pubDate>Tue, 09 May 2023 03:38:45 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230505-automated-avatar-garment-rigging.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="automated-avatar-garment-rigging" class="level1">
+<h1>Automated avatar garment rigging</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: proposed</li>
+<li>Deciders: V-Sekai,</li>
+<li>Tags: V-Sekai, chatgpt4, automated rigging, avatar customization, garment application, 3d modelling, Blender addons,</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
+<p>Rigging every possible avatar and garment combination is not feasible. We need a system that allows garments to be easily applied to various avatars without manual rigging each time a new garment or avatar is created.</p>
+</section>
+<section id="describe-the-problem-or-limitation-you-have-in-your-project-e.g.-in-free-form-using-two-to-three-sentences.-consider-articulating-the-case-in-the-form-of-a-question." class="level2">
+<h2 class="anchored" data-anchor-id="describe-the-problem-or-limitation-you-have-in-your-project-e.g.-in-free-form-using-two-to-three-sentences.-consider-articulating-the-case-in-the-form-of-a-question.">Describe the problem or limitation you have in your project, e.g., in free form, using two to three sentences. Consider articulating the case in the form of a question.</h2>
+<p>How can we create a system that allows garments to be easily applied to various avatars without the need for manual rigging each time a new garment or avatar is created?</p>
+</section>
+<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level2">
+<h2 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h2>
+<p>Implement an automated rigging and wrapping system using known base meshes and garments for easy application of garments to avatars without manual rigging.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<ol type="1">
+<li><strong>Create avatar and garment models</strong>: Create a 3D model representing the basic shape and structure of an avatar without any clothing or accessories, and a 3D model of a piece of clothing or accessory.</li>
+<li><strong>Rig models</strong>: Rig the avatar and garment models by creating a skeleton structure that defines how they move and deform. Use the Blender Dem Bones add-on to automate the rigging process.</li>
+<li><strong>Generate cage mesh</strong>: Generate a simplified “cage” mesh around the avatar base mesh using the Simplicage add-on. This cage will be used to help apply the garment to the avatar.</li>
+<li><strong>Attach garment to cage</strong>: Attach the garment model to the cage created in the previous step, so that it follows the cage’s movement and deformation.</li>
+<li><strong>Conform garment to avatar</strong>: Utilize the Mesh Materializer add-on to conform the garment model to the avatar base mesh, using a UV texture map to guide the wrapping process. This ensures the garment fits correctly on the avatar.</li>
+<li><strong>Manage multiple layers</strong>: Develop a system to manage multiple layers of clothing or accessories on the avatar, allowing for proper layering and interaction between clothing items.</li>
+</ol>
+</section>
+<section id="positive-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
+<ul>
+<li>Reduced manual rigging efforts for each garment and avatar combination</li>
+<li>Streamlined process of applying garments to avatars</li>
+<li>Easier customization and creation of new avatars with various garments</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
+<ul>
+<li>Additional development time required to implement the automated system</li>
+<li>Potential compatibility issues with existing assets or workflows</li>
+<li>Dependent on third party addons
+<ul>
+<li>Research and evaluate alternative solutions or develop custom tools to replace or supplement the functionality provided by these third-party add-ons. This will help ensure long-term stability and maintainability of the project.</li>
+</ul></li>
+<li>Performance concerns with complex avatars and garments
+<ul>
+<li>Optimize the algorithms used in the automated rigging and wrapping process to handle complex models efficiently. Additionally, consider implementing a level of detail (LOD) system to reduce the complexity of models during runtime without compromising visual quality.</li>
+</ul></li>
+<li>Difficulty in handling edge cases.
+<ul>
+<li>Develop a set of guidelines for creating avatar and garment models that work well with the automated system. Additionally, provide manual intervention options for users to fine-tune the rigging and wrapping results in case of edge cases.</li>
+</ul></li>
+</ul>
+</section>
+<section id="option-graveyard" class="level2">
+<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
+<ul>
+<li>Relying solely on creators is inefficient; they need tools.</li>
+</ul>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
+<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
+<p>No, this enhancement requires a more complex solution involving multiple tools and processes.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
+<p>This enhancement requires a complex solution involving multiple tools and processes, and cannot be worked around with a few lines of script. Implementing this feature as part of the core functionality will greatly improve the user experience and streamline the process of creating and customizing avatars with different garments.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+<li><a href="https://blendermarket.com/products/blender-dembones">Blender Dem Bones</a></li>
+<li><a href="https://blendermarket.com/products/simplicage">Simplicage</a></li>
+<li><a href="https://blendermarket.com/products/mesh-materializer">Mesh Materializer</a></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230505-automated-avatar-garment-rigging.html</guid>
+  <pubDate>Tue, 09 May 2023 03:38:45 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230502-add-iree-to-godot-engine-for-image-superresolution.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="adding-iree-to-godot-engine-for-image-superresolution" class="level1">
+<h1>Adding IREE to Godot Engine for Image Superresolution</h1>
+<section id="metadata" class="level3">
+<h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
+<ul>
+<li>Status: accepted <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
+<li>Deciders: V-Sekai,fire,</li>
+<li>Tags: V-Sekai, IREE, Godot Engine, Image Superresolution, Vulkan Backend,chatgpt 4,Google,</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level3">
+<h3 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h3>
+<p>V-Sekai currently faces a limitation in the quality of upscaled images, particularly when the image needs to be magnified by a factor of 4x or more.</p>
+</section>
+<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level3">
+<h3 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h3>
+<p>Integrate the Intermediate Representation Execution Environment (IREE) into the Godot Engine 4.0 as a C++ GDExtension. Utilize the Vulkan backend to run an image superresolution demo that generates 4x larger images. IREE is an MLIR-based end-to-end compiler and runtime that lowers Machine Learning (ML) models to a unified IR, allowing for better performance and scaling.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level3">
+<h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h3>
+<ol type="1">
+<li>Compile IREE as a C++ GDExtension for Godot Engine 4.0.</li>
+<li>Use the Vulkan backend to run the image superresolution demo.</li>
+<li>Load and process ML models for image superresolution using IREE.</li>
+<li>Integrate the resulting functionality into V-Sekai’s existing image processing pipeline.</li>
+</ol>
+</section>
+<section id="positive-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h3>
+<ul>
+<li>Allow image superresolution in V-Sekai.</li>
+<li>Enhanced performance due to IREE’s efficient MLIR-based compiler and runtime.</li>
+<li>Scalable solution that adapts to various hardware and software constraints. Not only NVIDIA, but ARM, Intel, AMD and Apple gpus.</li>
+<li>Allow using other machine learning models from PyTorch and Tensorflow</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h3>
+<ul>
+<li>Additional development time required for integration and optimization.</li>
+<li>Potential trade-offs in implementing other features.</li>
+</ul>
+</section>
+<section id="option-graveyard" class="level3">
+<h3 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h3>
+<ol type="1">
+<li>Use a custom script to work around the image superresolution issue.
+<ul>
+<li>This might not provide a scalable or high-performance solution.</li>
+</ul></li>
+<li>Implement a different image superresolution algorithm.
+<ul>
+<li>This could lead to suboptimal results compared to IREE’s capabilities.</li>
+</ul></li>
+</ol>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level3">
+<h3 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h3>
+<p>A custom script could serve as a workaround for infrequent use of image superresolution, but it may have drawbacks in terms of efficiency, output quality, and maintenance efforts. If the feature aligns with V-Sekai’s goals and significantly improves user experience, integrating the IREE-based solution into the core might be more effective.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level3">
+<h3 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h3>
+<p>In summary, integrating the IREE-based image superresolution feature into V-Sekai’s core offers several benefits, including an enhanced user experience, performance optimization, alignment with open source values, and easier maintenance and support. These advantages contribute to a better, more immersive VR experience while staying true to V-Sekai’s project goals.</p>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li>V-Sekai: https://v-sekai.org/</li>
+<li>IREE (Intermediate Representation Execution Environment): https://github.com/openxla/iree</li>
+<li>Godot Engine: https://godotengine.org</li>
+<li>Vulkan Backend: https://www.khronos.org/vulkan/</li>
+<li>IREE.gd: https://github.com/RechieKho/IREE.gd</li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230502-add-iree-to-godot-engine-for-image-superresolution.html</guid>
+  <pubDate>Tue, 09 May 2023 03:38:45 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230429-v-sekai-roadmap.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="v-sekai-roadmap-and-goals-2023-04-20" class="level1">
+<h1>V-Sekai Roadmap and Goals 2023-04-20</h1>
+<section id="metadata" class="level3">
+<h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
+<ul>
+<li>Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
+<li>Deciders: V-Sekai,fire,lyuma,</li>
+<li>Tags: V-Sekai,chatgpt4 summary,</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level3">
+<h3 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h3>
+<p>What is the V-Sekai Roadmap and Goals?</p>
+</section>
+<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level3">
+<h3 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h3>
+<p>The roadmap presented here is divided into three stages: short-term, mid-term, and long-term goals. Each stage builds upon the previous one, gradually expanding the project’s scope and capabilities.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level3">
+<h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h3>
+<pre class="mermaid"><code>graph LR
+
+  subgraph Short Term
+    A[Avatar Loading] --&gt; B1[Simple Demo with VRM Avatar]
+    A --&gt; B2[VRM &amp; Unity Import - Maintain and Improve]
+    A --&gt; B3[Network Code Reconciliation - Godot Network System]
+    A --&gt; B4[Jitter in Network Interpolation]
+    A --&gt; B5[Implement jitter and playback buffer for Voice]
+  end
+
+  subgraph Mid Term
+    B4 --&gt; C[Network]
+    C --&gt; D1[Entity System &amp; Background Loading]
+    C --&gt; D2[Background Loading - Re-evaluate with Multithreaded Scene Tree]
+    C --&gt; D3[UI Work - Fix VR UI &amp; Improve Interaction]
+    C --&gt; D4[Lightweight Relay Instance Server - Single Process, Multiple Instances]
+  end
+
+  subgraph Long Term
+    D4 --&gt; E[Scalable Instances]
+    E --&gt; F1[Network Topology Implementation]
+    E --&gt; F2[Streamlined Content Creation - Better Workflow]
+    E --&gt; F3[Zero Stutter when Loading Content - Address Bottlenecks]
+    E --&gt; F4[Social and Upload Features - Enhance User Experience]
+    E --&gt; F5[Video and Audio Work - Streaming Integration]
+    E --&gt; F6[Scripting Integrations - WASM-based Scripts]
+    E --&gt; F7[UX Work for Non-Technical Users - Accessible UI]
+    E --&gt; F8[Loading VRM Avatars - Streamlined Process]
+    E --&gt; F9[In-Editor Content Building UX - Non-Technical Users]
+  end</code></pre>
+<p>The discussion involves the development of V-Sekai, a project with short-term, mid-term, and long-term goals. In the short term, the focus is on avatar loading, simple demos, VRM &amp; Unity import, network code reconciliation, adding network interpolation, and voice jitter buffer. Mid-term goals include working on the network, entity system, background loading, UI improvements, and developing a lightweight relay instance server. Finally, long-term goals involve scalable instances, network topology implementation, streamlined content creation, zero stutter loading, enhancing social and upload features, video and music playback and live streaming, scripting integrations, UX work for non-technical users, and in-editor content building UX.</p>
+<p>One challenge the project faces is maintaining and improving the existing codebase, which includes outdated workarounds from Godot 3. Another setback was the change from OpenVR to OpenXR. Content is another hurdle: transferring a world from other platforms to V-Sekai is currently best accomplished by exporting source assets such as glTF or FBX. The project aims to cater to non-technical users, making it more accessible than other platforms. WASM-based scripting is being considered, but there are concerns about implementation challenges and security.</p>
+<p>In addition, the V-Sekai project needs a project manager, and the team struggles to find collaborators who share their vision and can dedicate enough time to contribute significantly. Nevertheless, despite the long list of features needed for basic functionality, the team believes that V-Sekai is essential for the future of the Metaverse space, and that will draw collaborators to assist on our common vision.</p>
+<p>It’s important that our roadmap and goals continue to be discussed and iterated on. Nothing should be seen as final, since technology changes so rapidly and consensus is important.</p>
+</section>
+<section id="positive-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h3>
+<p>We can create V-Sekai easier.</p>
+</section>
+<section id="negative-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h3>
+<p>Overhead might be hard.</p>
+</section>
+<section id="option-graveyard" class="level3">
+<h3 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h3>
+<ul>
+<li>Relying on informal communication and ad-hoc collaboration</li>
+<li>Continuing with the current approach without a structured process</li>
+</ul>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level3">
+<h3 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h3>
+<p>No.&nbsp;This is a process.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level3">
+<h3 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h3>
+<p>This is a core process for V-Sekai.</p>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230429-v-sekai-roadmap.html</guid>
+  <pubDate>Tue, 09 May 2023 03:38:45 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230429-improve-collab.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="improve-the-collaboration-process-and-attract-more-contributors-to-work-on-the-project" class="level1">
+<h1>Improve the collaboration process and attract more contributors to work on the project</h1>
+<section id="metadata" class="level3">
+<h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
+<ul>
+<li>Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
+<li>Deciders: V-Sekai,</li>
+<li>Tags: V-Sekai,Roadmap,Collaboration,chatgpt4 summary,</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level3">
+<h3 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h3>
+<p>The V-Sekai project has an extensive roadmap with short-term, mid-term, and long-term goals, but it lacks a project manager and struggles to find collaborators who share the vision and can dedicate enough time to contribute. How can we improve the collaboration process and attract more contributors to work on the project more effectively?</p>
+</section>
+<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level3">
+<h3 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h3>
+<p>The proposed option to overcome the limitation of attracting more contributors and improving collaboration is to develop clear and concise project documentation, including a visual roadmap using mermaid.js, and establish a transparent contribution process. This will provide a structured environment for new and existing contributors to collaborate and understand the project’s goals and priorities.</p>
+<section id="how-it-helps-to-overcome-the-problem-or-limitation" class="level4">
+<h4 class="anchored" data-anchor-id="how-it-helps-to-overcome-the-problem-or-limitation">How it helps to overcome the problem or limitation</h4>
+<ul class="task-list">
+<li><input type="checkbox">A well-organized project documentation and visual roadmap will help potential contributors understand the project’s scope and vision, allowing them to make informed decisions about contributing.</li>
+<li><input type="checkbox">A transparent contribution process will facilitate collaboration by providing guidelines, resources, and communication channels for contributors.</li>
+<li><input type="checkbox">Onboarding new contributors with tutorials and mentorship will help them quickly become productive and dedicated team members.</li>
+<li><input type="checkbox">Regular meetings and progress updates will keep the team motivated and focused on achieving milestones.</li>
+<li><input type="checkbox">Recognizing and rewarding contributors will foster a sense of community and commitment, making it more likely that they continue contributing to the project.</li>
+</ul>
+<p>With these measures in place, the V-Sekai project will overcome its current limitations, making it easier for the team to work together and attract new contributors.</p>
+</section>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level3">
+<h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h3>
+<p>Develop a clear and concise project documentation that outlines the project’s goals, requirements, and milestones. Establish a transparent and structured contribution process, including:</p>
+<ol type="1">
+<li>Create a centralized repository for documentation, code, and assets, with clear guidelines for contributing.</li>
+<li>Develop a project roadmap with prioritized tasks, deadlines, and assigned responsibilities.</li>
+<li>Implement an onboarding process for new contributors, including tutorials, resources, and mentorship.</li>
+<li>Organize regular meetings and communication channels for updates, progress reports, and collaboration.</li>
+<li>Recognize and reward contributors for their work, fostering a sense of community and commitment.</li>
+</ol>
+</section>
+<section id="positive-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h3>
+<ol type="1">
+<li>Improved collaboration and communication among the team</li>
+<li>Attracting more contributors with diverse skill sets</li>
+<li>Faster progress towards project milestones</li>
+<li>Clear understanding of project goals and priorities</li>
+</ol>
+</section>
+<section id="negative-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h3>
+<ol type="1">
+<li>Increased management and coordination overhead</li>
+<li>Potential for disagreements on priorities and approaches</li>
+</ol>
+</section>
+<section id="option-graveyard" class="level3">
+<h3 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h3>
+<ol type="1">
+<li>Relying on informal communication and ad-hoc collaboration</li>
+<li>Continuing with the current approach without a structured process</li>
+</ol>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level3">
+<h3 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h3>
+<p>While it may be possible to work around some aspects of the problem with a few lines of script, it would not address the underlying issues of attracting and retaining contributors or improving collaboration. The proposed solution aims to create a more sustainable and efficient environment for the V-Sekai project, which cannot be achieved with a temporary workaround or a simple script.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level3">
+<h3 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h3>
+<p>As the primary developers of the project, the V-Sekai team has the best understanding of the project’s goals, objectives, and priorities. Implementing this feature in-house will ensure that the solution aligns well with the project’s vision and addresses the specific needs of the project.</p>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+<li>V-Sekai Roadmap and Goals</li>
+<li>V-Sekai Team Discussions and Updates</li>
+<li>Mermaid.js</li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230429-improve-collab.html</guid>
+  <pubDate>Tue, 09 May 2023 03:38:45 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230429-git-subrepo-challenges.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="challenges-in-managing-and-synchronizing-multiple-assets-and-libraries-across-different-git-repositories" class="level1">
+<h1>Challenges in managing and synchronizing multiple assets and libraries across different git repositories</h1>
+<section id="metadata" class="level3">
+<h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
+<ul>
+<li>Status: accepted <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
+<li>Deciders: V-Sekai,fire</li>
+<li>Tags: V-Sekai,chatgpt4 summary,</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level3">
+<h3 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h3>
+<p>V-Sekai projects currently face challenges in managing and synchronizing multiple assets and libraries across different branches. How can we improve the workflow to better maintain the project’s organization and compatibility?</p>
+</section>
+<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level3">
+<h3 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h3>
+<p>Implement a Git subrepo management system to separate assets and libraries, enabling easier tracking and synchronization between branches. This solution streamlines the development proces</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level3">
+<h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h3>
+<p>Configure the Git subrepo to automatically update and synchronize with the main project.</p>
+<p>Use the Git subrepo in each branch to maintain consistent asset and library versions.</p>
+<p>Avoid storing godot and modules inside of the v-sekai-game.</p>
+</section>
+<section id="positive-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h3>
+<ul>
+<li>Improved organization and compatibility of assets and libraries across branches.</li>
+<li>Simplified workflow for project updates and synchronization.</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h3>
+<ul>
+<li>Potential learning curve for developers unfamiliar with Git subrepo management.</li>
+<li>Possible limitations in implementing other features.</li>
+</ul>
+</section>
+<section id="option-graveyard" class="level3">
+<h3 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h3>
+<p>Workarounds using scripts may be possible, but they are likely to be less efficient and more prone to errors compared to a Git subrepo management system.</p>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level3">
+<h3 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h3>
+<p>Not a few lines of code. It is also devops.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level3">
+<h3 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h3>
+<p>Integrating a Git subrepo management system as a core feature ensures consistency and maintainability across the entire V-Sekai project. It promotes better collaboration among team members and streamlines the development process.</p>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+<li><a href="https://github.com/ingydotnet/git-subrepo">Git Subrepo Documentation</a></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230429-git-subrepo-challenges.html</guid>
+  <pubDate>Tue, 09 May 2023 03:38:45 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230419-package-godot-for-pkgin.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="package-godot-for-pkgin" class="level1">
+<h1>Package Godot for pkgin</h1>
+<section id="metadata" class="level3">
+<h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
+<ul>
+<li>Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
+<li>Deciders: V-Sekai,fire,</li>
+<li>Tags: V-Sekai,chatgpt4,</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level3">
+<h3 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h3>
+<p>According to Netflix, the BSD-type operating systems are competitive, and supporting pkgsrc is an excellent way to start.</p>
+<blockquote class="blockquote">
+<p>pkgsrc is a framework for managing third-party software on UNIX-like systems containing over 26,000 packages. It is the default package manager of <a href="https://www.netbsd.org/">NetBSD</a> and <a href="https://wiki.smartos.org/">SmartOS</a> and can be used to enable freely available software to be built quickly on a large number of other UNIX-like platforms.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>V-Sekai is developing a free, open-source virtual reality platform. We work to make it user-friendly and fulfill a need in the VR community.</p>
+</blockquote>
+</section>
+<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level3">
+<h3 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h3>
+<ol type="1">
+<li>Effortless installation and updates: Packaging Godot Engine for pkgin makes it easier to install and update the software on macOS, Linux, and NetBSD, offering a smooth experience for users at all expertise levels.</li>
+<li>Wider platform support: By embracing pkgsrc and packaging Godot Engine for pkgin, compatibility with an array of UNIX-like systems is ensured, broadening the user base and fostering adoption across different platforms.</li>
+<li>Promoting cooperation: V-Sekai’s support for pkgsrc and packaging of the Godot Engine for pkgin enables collaboration through the vast third-party software ecosystem available for UNIX-like systems, stimulating the exchange of ideas and resources.</li>
+<li>Reinforcing open-source ideals: V-Sekai’s decision to package the Godot Engine for pkgin strengthens its commitment to open-source values like accessibility, transparency, and community-driven development, enhancing growth within the VR community.</li>
+</ol>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level3">
+<h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h3>
+<pre class="mermaid"><code>graph LR
+A[Godot Engine Source Code] --&gt; B[Build and Package]
+B --&gt; C[Godot Engine pkgin Package]
+C --&gt; D{Platform Compatibility}
+D --&gt; E[macOS]
+D --&gt; F[Linux]
+D --&gt; G[NetBSD]
+C --&gt; H[Package Repository]
+I[User] --&gt; J[pkgin command]
+J --&gt; H
+H --&gt; K[Install/Update Godot Engine]
+K --&gt; I</code></pre>
+</section>
+<section id="positive-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h3>
+<ol type="1">
+<li><p>Easy installation and updates: Pkgin support simplifies installing and updating the Godot Engine on UNIX-like systems, such as macOS, Linux, and NetBSD, providing a hassle-free experience for users.</p></li>
+<li><p>Wide platform support: Pkgin compatibility ensures that the Godot Engine works seamlessly with multiple UNIX-like systems, expanding the user base and promoting adoption across various platforms.</p></li>
+<li><p>Efficient dependency handling: Pkgin automatically manages dependencies, streamlining the installation process and minimizing conflicts or issues due to unmet requirements.</p></li>
+<li><p>Uniform software environment: Pkgin helps maintain consistency in software versions and configurations, which is crucial for collaboration and reducing the need for troubleshooting.</p></li>
+<li><p>Connection to the pkgsrc ecosystem: Supporting pkgin allows users to tap into the extensive third-party software ecosystem for UNIX-like systems, fostering the exchange of ideas and resources within the open-source community.</p></li>
+<li><p>Resource and time savings: By offering pkgin support, developers can concentrate on enhancing the Godot Engine and V-Sekai’s VR platform features rather than manually managing software installations and updates.</p></li>
+<li><p>Emphasizing open-source principles: By endorsing pkgin, both V-Sekai and the Godot Engine reaffirm their commitment to open-source values, such as accessibility, transparency, and community-driven development, fostering growth and collaboration within the VR community.</p></li>
+</ol>
+</section>
+<section id="negative-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h3>
+<p>There are some potential downsides to packaging the Godot Engine for pkgin, which include:</p>
+<p>Additional maintenance work: Supporting pkgin may necessitate regular package updates to ensure compatibility with different systems and to keep up with new Godot Engine versions and features. This could require extra time and resources from the development team.</p>
+<p>Incomplete platform support: Pkgin is designed for UNIX-like systems, but it doesn’t directly cater to users on other platforms, such as Windows. Supporting alternative package managers for non-UNIX platforms may demand extra efforts.</p>
+<p>User learning curve: Users unfamiliar with pkgin or pkgsrc might need to invest time in learning to use the package manager effectively, which could pose a barrier for some users, particularly those new to UNIX-like systems or with limited package management experience.</p>
+<p>Potential compatibility challenges: While pkgin aims to provide compatibility across various UNIX-like systems, certain configurations or system setups may still pose difficulties. Addressing these issues might require more development and troubleshooting efforts.</p>
+<p>Unnecessary overhead for small projects: For smaller projects or users with minimal requirements, the added features and capabilities provided by pkgin support might be excessive. In such cases, the effort needed to maintain and use a pkgin package could outweigh its benefits.</p>
+<p>Despite these potential downsides, offering pkgin support can bring significant advantages, such as streamlining installation and updates, ensuring compatibility with UNIX-like systems, and promoting collaboration within the open-source community.</p>
+</section>
+<section id="option-graveyard" class="level3">
+<h3 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h3>
+<p>Alternative package managers: While other package managers like apt or yum might have been considered, they may need to provide different compatibility with BSD-type systems than pkgsrc. Pkgin, designed for pkgsrc, is the default package manager for systems like NetBSD and SmartOS, making it the ideal choice.</p>
+<p>Manual installation: Requiring users to compile and install Godot Engine manually would complicate the process and be less user-friendly, particularly for novices. This approach could also result in software version inconsistencies and configuration issues, affecting user experience.</p>
+<p>Custom package manager: Developing a custom package manager specifically for V-Sekai’s platform is resource-intensive and duplicates existing package managers’ efforts, such as pkgin, which already offers compatibility with BSD-type systems.</p>
+<p>Exclusively focusing on other platforms: By targeting only Linux, macOS, or Windows, V-Sekai would limit its potential user base and overlook the advantages of supporting UNIX-like systems like NetBSD and SmartOS. So instead, packaging Godot Engine for pkgin enables V-Sekai to reach a wider audience using BSD-type operating systems.</p>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level3">
+<h3 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h3>
+<p>Using a script for Godot Engine may have drawbacks, such as being less user-friendly, requiring more maintenance, having limited compatibility with BSD-type systems, and potentially impacting integration with the pkgsrc ecosystem.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level3">
+<h3 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h3>
+<p>Packaging the Godot Engine for pkgin as a core task our team handles ensures quality control, streamlined support, customization, alignment with your platform’s vision, and trust-building with users. These factors contribute to the overall success and adoption of your open-source virtual reality platform.</p>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+<li>https://pkgsrc.joyent.com/</li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230419-package-godot-for-pkgin.html</guid>
+  <pubDate>Tue, 09 May 2023 03:38:45 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230419-limited-tracker-placement.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="capturing-accurate-body-movements-with-limited-tracker-placement" class="level1">
+<h1>Capturing accurate body movements with limited tracker placement</h1>
+<section id="metadata" class="level3">
+<h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
+<ul>
+<li>Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
+<li>Deciders: V-Sekai,fire,</li>
+<li>Tags: V-Sekai,</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level3">
+<h3 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h3>
+<p>In our current VR project, we face the challenge of capturing accurate body movements for both soccer and dancing experiences with a limited budget. How can we prioritize the placement of a limited number of trackers to ensure a realistic and immersive experience for both activities?</p>
+</section>
+<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level3">
+<h3 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h3>
+<p>The proposed option involves prioritizing tracker placement for the head, hands, hips, and feet, as they are essential for both soccer and dancing experiences. This approach allows for an effective trade-off between tracking accuracy and budget constraints while ensuring a satisfactory level of immersion in both activities.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level3">
+<h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h3>
+<ol type="1">
+<li>Head: At the base of the neck to monitor head rotation and tilt.</li>
+<li>Left Hand: On the left wrist to track the overall motion of the left hand.</li>
+<li>Right Hand: On the right wrist to track the overall motion of the right hand.</li>
+<li>Hips: A tracker on the hips to monitor lower body movement.</li>
+<li>Left Foot: A tracker on the left foot to capture left foot movement, essential for both soccer and dancing.</li>
+<li>Right Foot: A tracker on the right foot to capture right foot movement, also crucial for both activities.</li>
+</ol>
+<p>As the budget permits, additional trackers can be incorporated into the setup to further enhance tracking accuracy, particularly for the upper body and leg movements. This expansion can be achieved by following the prioritized list of additional trackers below:</p>
+<ol start="7" type="1">
+<li>Chest: A tracker on the chest to monitor upper body rotation, providing more detailed information about the user’s torso movements.</li>
+<li>Left Shoulder: A tracker on the left shoulder to track upper arm rotation, allowing for more precise tracking of arm movements during soccer and dancing.</li>
+<li>Right Shoulder: A tracker on the right shoulder to track upper arm rotation, complementing the left shoulder tracker for better arm movement tracking.</li>
+<li>Left Knee: A tracker on the left knee to track left leg movement, enhancing the realism of leg movements and providing more accurate feedback for actions like kicking in soccer or complex footwork in dancing.</li>
+<li>Right Knee: A tracker on the right knee to track right leg movement, mirroring the benefits of the left knee tracker for a balanced leg movement representation.</li>
+</ol>
+<p>By gradually adding these trackers to the initial setup, the overall tracking accuracy of the system will be improved. This will result in more natural and immersive interactions within the VR environment, leading to a more satisfying user experience for both soccer and dancing activities.</p>
+</section>
+<section id="positive-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h3>
+<ul>
+<li>Effective use of a limited budget while maintaining immersive experiences.</li>
+<li>The solution caters to both soccer and dancing activities in VR.</li>
+<li>Flexibility in adding more trackers as budget permits.</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h3>
+<ul>
+<li>Reduced tracking accuracy for upper body and leg movements compared to a setup with more trackers.</li>
+<li>Potential limitations in supporting advanced features or interactions in VR.</li>
+</ul>
+</section>
+<section id="option-graveyard" class="level3">
+<h3 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h3>
+<p>Camera-based tracking: Utilizing external cameras to track body movements without the need for wearable trackers. While this approach can be cost-effective, it may not provide the same level of accuracy and precision as wearable trackers, particularly for fast and complex movements in soccer and dancing. Additionally, camera-based tracking can be sensitive to lighting conditions and may require a specific setup to function optimally.</p>
+<p>Camera-based tracking might be a viable solution if budget constraints are severe, but it is essential to consider the potential trade-offs in terms of tracking accuracy and reliability compared to wearable trackers.</p>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level3">
+<h3 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h3>
+<p>No, as the proposed solution deals with hardware configuration and the strategic placement of physical trackers to balance budget and immersion.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level3">
+<h3 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h3>
+<p>Yes, ensuring an immersive VR experience with a limited budget is a fundamental challenge that requires expertise in tracker placement and prioritization.</p>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230419-limited-tracker-placement.html</guid>
+  <pubDate>Tue, 09 May 2023 03:38:45 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230415-rgbaf-to-store-integers.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="use-godot-rgbaf-textures-to-store-integer." class="level2">
+<h2 class="anchored" data-anchor-id="use-godot-rgbaf-textures-to-store-integer.">Use godot rgbaf textures to store integer.</h2>
+<section id="metadata" class="level3">
+<h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
+<ul>
+<li>Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
+<li>Deciders: V-Sekai,</li>
+<li>Tags: V-Sekai,</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level3">
+<h3 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h3>
+<p>Use godot rgbaf textures to store integer.</p>
+</section>
+<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level3">
+<h3 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h3>
+<p>Godot Shader to extract the raw 16-bit integer in a FORMAT_RGBAH texture by Lyuma.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level3">
+<h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h3>
+<pre class="gdscript"><code>
+shader_type spatial;
+render_mode unshaded;
+uniform usampler2D data_tex;
+
+/*
+Use with the following GDScript code:
+    var data_img = Image.new()
+    var data := PoolByteArray()
+    var indexin = 0x8400
+    data.append(indexin&amp;0xff)
+    data.append((indexin&gt;&gt;8)&amp;0xff)
+    data_img.create_from_data(1, 1, false, Image.FORMAT_RH, data)
+    var data_tex = ImageTexture.new()
+    data_tex.create_from_image(data_img, 0)
+    self.get_surface_material(0).set_shader_param("data_tex", data_tex)
+*/
+
+// Extract the raw 16-bit integer assigned in a GL_RGBA16F or similar texture format
+// (in Godot, Image.FORMAT_RGBAH or Image.FORMAT_RH)
+
+// vectorized ?:
+// In GLSL, you are supposed to do this using a mix(uvec4, uvec4, bvec4)
+// However, in Godot, they forgot this overload existed, so we reimplement it.
+
+uvec4 godot_hack_mix(uvec4 a, uvec4 b, bvec4 c) {
+    return uvec4(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z, c.w ? b.w : a.w);
+}
+
+void fragment() {
+    // Fetch half precision texture using usampler2D.
+    // For some reason, it first converts to 32-bit float (but losslessly????)
+    // and so we have to convert the 32-bit float back to 16-bits.
+    uvec4 data = texelFetch(data_tex, ivec2(0,0), 0);
+
+    // Calculate bit shifted exponent
+    uvec4 exps = godot_hack_mix(
+        // Adjust floating point from 8-bit in float32 (127 bias) to 5-bit in half (15 bias)
+        uvec4((uvec4((ivec4((data &amp; uvec4(0x7F800000)) &gt;&gt; uvec4(23)) - ivec4(127)) + ivec4(15)) &amp; uvec4(0x1F)) &lt;&lt; uvec4(10)),
+        // Inf and NaN will remain Inf and Nan (maximum half exponent = 31)
+        uvec4(ivec4(31 &lt;&lt; 10)),
+        // Check for maximum float32 exponent = 255
+        equal((data) &amp; uvec4(0x7F800000), uvec4(0x7F800000)));
+
+    // calculate final data.
+    data = godot_hack_mix(
+        // mantissa | exponent | signbit
+        ((data &amp; uvec4(0x007FFFFF)) &gt;&gt; uvec4(13)) | exps | (((data &gt;&gt; uvec4(31)) &amp; uvec4(1)) &lt;&lt; uvec4(15)),
+        // Denormalized case: exponent is all over the place, so instead we add the smallest non-denormalized half, then extract the mantessa bits.
+        // Finally, or the sign bit (and exponent = 0) 
+        (((floatBitsToUint(uintBitsToFloat(data &amp; uvec4(0x7FFFFFFF)) + 1.0/16384.0) &amp; uvec4(0x007FFFFF)) &gt;&gt; uvec4(13))) | (((data &gt;&gt; uvec4(31)) &amp; uvec4(1)) &lt;&lt; uvec4(15)),
+        // Denormalized case can be detected with half exponent &lt;= -15.
+        lessThanEqual((data) &amp; uvec4(0x7F800000), uvec4(0x38000000)));
+
+    // Parse out individual bits if needed
+    ivec2 datar = ivec2((uvec2(data.r) &gt;&gt; uvec2(0,8)) &amp; uvec2(0xFF));
+    ivec2 datag = ivec2((uvec2(data.g) &gt;&gt; uvec2(0,8)) &amp; uvec2(0xFF));
+    ivec2 datab = ivec2((uvec2(data.b) &gt;&gt; uvec2(0,8)) &amp; uvec2(0xFF));
+    ivec2 dataa = ivec2((uvec2(data.a) &gt;&gt; uvec2(0,8)) &amp; uvec2(0xFF));
+
+    // Example code: check for precise 16-bit value that matches GDScript.
+    ALBEDO = vec3(0,0,0);
+    if (data.r == uint(0xFFFF)) {
+        ALBEDO = vec3(1,1,1);
+    }
+}</code></pre>
+</section>
+<section id="positive-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h3>
+<p>We are able to use V-Sekai easier.</p>
+</section>
+<section id="negative-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h3>
+<p>We cannot get other features in.</p>
+</section>
+<section id="option-graveyard" class="level3">
+<h3 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h3>
+<p>Use 8 bit colors.</p>
+</section>
+<section id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="level3">
+<h3 class="anchored" data-anchor-id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</h3>
+<p>This is a few lines of script.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level3">
+<h3 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h3>
+<p>Wanted to record this.</p>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230415-rgbaf-to-store-integers.html</guid>
+  <pubDate>Tue, 09 May 2023 03:38:45 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230415-procedural-variations-props-envs-avatars.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="procedurally-create-variations-for-our-props-environments-and-avatars" class="level1">
+<h1>Procedurally create variations for our props, environments and avatars</h1>
+<section id="metadata" class="level3">
+<h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
+<ul>
+<li>Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
+<li>Deciders: V-Sekai,fire,</li>
+<li>Tags: V-Sekai,chatgp4,</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level3">
+<h3 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h3>
+<p>Lack of variety and customization in V-Sekai’s 3D props, environments, and avatars.</p>
+</section>
+<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level3">
+<h3 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h3>
+<p>Introducing a procedural generator for 3D props, environments, and avatars in V-Sekai will significantly enhance user experience by offering a broad range of customizable options. Procedural generation is an algorithmic method of content creation that replaces manual design, resulting in a larger array of unique combinations.</p>
+<p>The procedural generator can be developed using a mix of algorithms, libraries, and assets to produce a vast assortment of variations for props, environments, and avatars. Users’ input parameters, such as prop type, color, size, and material, will guide the generator in crafting distinctive content.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level3">
+<h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h3>
+<pre class="mermaid"><code>graph TD
+  A[Prop Type] --&gt; B(Select Base Model)
+  A[Prop Type] --&gt; C(Apply Procedural Variations)
+  A[Prop Type] --&gt; D(Combine Variations)
+  B --&gt; E(Base Model)
+  C --&gt; F(Shape Variation)
+  C --&gt; G(Color Variation)
+  C --&gt; H(Texture Variation)
+  F --&gt; I(Combined Variations)
+  G --&gt; I(Combined Variations)
+  H --&gt; I(Combined Variations)
+  E --&gt; I(Combined Variations)
+  I --&gt; J(Final Output)</code></pre>
+<p>This flowchart demonstrates the procedural generation process using the following steps:</p>
+<ol type="1">
+<li>User Input Parameters: Users provide their preferences for prop type, color, size, and material.</li>
+<li>Select Base Model: The generator selects a base model corresponding to the chosen prop type.</li>
+<li>Apply Procedural Variations: The generator applies algorithmic variations to the base model, modifying its shape, color, and texture based on user input.</li>
+<li>Combine Variations: The generator combines these variations to create a unique prop with the specified properties.</li>
+<li>Generate Unique Prop, Environment, or Avatar: The final output is a unique prop, environment, or avatar that meets the user’s preferences.</li>
+</ol>
+<p>This approach increases the variety and customization options in V-Sekai, enhancing the platform’s appeal and offering a more engaging experience for users.</p>
+</section>
+<section id="positive-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h3>
+<ol type="1">
+<li>Enhanced variety: Procedural generation enables a wide array of unique content, delivering a diverse and constantly evolving experience for users.</li>
+<li>User personalization: By incorporating user preferences, the generator can produce content that aligns with individual tastes and needs.</li>
+<li>Efficient resource utilization: Procedural content generation minimizes the need for manual design and asset creation, leading to a more cost-effective platform.</li>
+</ol>
+</section>
+<section id="negative-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h3>
+<ol type="1">
+<li>Complexity: Developing a procedural generator can be intricate, necessitating expertise in algorithms, 3D modeling, and other technical domains.</li>
+<li>Performance impact: Real-time content generation might affect performance, particularly if algorithms are not optimized or if the platform experiences high user traffic.</li>
+</ol>
+</section>
+<section id="option-graveyard" class="level3">
+<h3 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h3>
+<p>Do nothing.</p>
+</section>
+<section id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="level3">
+<h3 class="anchored" data-anchor-id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</h3>
+<p>This is a few lines of code.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level3">
+<h3 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h3>
+<p>We care about v-sekai more than others.</p>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230415-procedural-variations-props-envs-avatars.html</guid>
+  <pubDate>Tue, 09 May 2023 03:38:45 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230415-load-collaborate.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="hit-a-collaborate-button-to-load-up-into-v-sekai" class="level1">
+<h1>Hit a collaborate button to load up into V-Sekai</h1>
+<section id="context-and-problem-statement" class="level3">
+<h3 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h3>
+<p>Load up into V-Sekai as a server and then they hit a collaborate button</p>
+</section>
+<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level3">
+<h3 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h3>
+<ol type="1">
+<li>The host player invites friends to their world</li>
+<li>The friends’ clients will automatically connect to the caching solution</li>
+<li>The host player has a valid V-Sekai map project on their computer that they load up into V-Sekai as a server</li>
+</ol>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level3">
+<h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h3>
+<p>Add mvsqlite+godot script to collaboration.</p>
+</section>
+<section id="positive-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h3>
+<p>Summoning new friends and collaborators.</p>
+</section>
+<section id="negative-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h3>
+<p><em>No response</em></p>
+</section>
+<section id="option-graveyard" class="level3">
+<h3 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h3>
+<p><em>No response</em></p>
+</section>
+<section id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="level3">
+<h3 class="anchored" data-anchor-id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</h3>
+<p>This is more of a user experience thing.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level3">
+<h3 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h3>
+<p>We are driving this.</p>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+</ul>
+</section>
+<section id="license-of-the-contribution" class="level3">
+<h3 class="anchored" data-anchor-id="license-of-the-contribution">License of the contribution</h3>
+<p>Copyright (c) 2022 K. S. Ernest (iFire) Lee Copyright (c) 2022 V-Sekai contributors.</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230415-load-collaborate.html</guid>
+  <pubDate>Tue, 09 May 2023 03:38:45 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230408-v-sekai-launcher.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="provide-v-sekai-game-in-a-launcher-to-make-it-easier-to-use-v-sekai" class="level1">
+<h1>Provide v-sekai-game in a launcher to make it easier to use v-sekai</h1>
+<section id="metadata" class="level3">
+<h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
+<ul>
+<li>Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
+<li>Deciders: V-Sekai,</li>
+<li>Tags: V-Sekai,</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level3">
+<h3 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h3>
+<p>Provide v-sekai-game in a launcher.</p>
+</section>
+<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level3">
+<h3 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h3>
+<p>Make a graphical launcher that runs scoop.</p>
+<p>Run scoop bucket add v-sekai-central https://github.com/v-sekai/v-sekai-central.</p>
+<p>To install, do scoop install v-sekai-game.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level3">
+<h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h3>
+<ol type="1">
+<li>Create a scoop bucket at https://github.com/V-Sekai/v-sekai-central</li>
+<li>Store game builds in git repos using desync to put seperate the files into chunks.</li>
+<li>In the manifest decompress the desync files.</li>
+</ol>
+</section>
+<section id="positive-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h3>
+<p>We are able to use V-Sekai easier.</p>
+</section>
+<section id="negative-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h3>
+<p>We cannot get other features in.</p>
+</section>
+<section id="option-graveyard" class="level3">
+<h3 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h3>
+<p>Do nothing.</p>
+</section>
+<section id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="level3">
+<h3 class="anchored" data-anchor-id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</h3>
+<p>This is a json manifest which is a bit more than a few lines of script.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level3">
+<h3 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h3>
+<p>Want to make it easier to use v-sekai.</p>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230408-v-sekai-launcher.html</guid>
+  <pubDate>Tue, 09 May 2023 03:38:45 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230310-xml-based-tests.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="use-junit-xml-based-tests-in-github" class="level1">
+<h1>Use junit xml based tests in github</h1>
+<section id="metadata" class="level3">
+<h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
+<ul>
+<li>Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
+<li>Deciders: V-Sekai,fire,</li>
+<li>Tags: V-Sekai,</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level3">
+<h3 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h3>
+<p>V-Sekai is not robust.</p>
+</section>
+<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level3">
+<h3 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h3>
+<p>I want to make V-Sekai more robust using best practices like unit tests.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level3">
+<h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h3>
+<p>When CICD runs it will run gut and parse the junit xml that is outputted.</p>
+<p>We will also need to use pending head git workflow techniques.</p>
+</section>
+<section id="positive-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h3>
+<p>We will be able to use unit tests for gdscript, not just for C++ to make v-sekai more robust.</p>
+</section>
+<section id="negative-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h3>
+<p>We cannot get other features in.</p>
+</section>
+<section id="option-graveyard" class="level3">
+<h3 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h3>
+<ul>
+<li>Option: The status quo. <!-- List the proposed options no longer open for consideration. --></li>
+<li>Rejection Reason: This solves nothing. <!-- List the reasons for the rejection: (the bad traits) --></li>
+</ul>
+</section>
+<section id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="level3">
+<h3 class="anchored" data-anchor-id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</h3>
+<p>This is a cicd change and is able scripting the github actions.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level3">
+<h3 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h3>
+<p>We manage cicd.</p>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+<li>https://martinfowler.com/bliki/PendingHead.html</li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230310-xml-based-tests.html</guid>
+  <pubDate>Tue, 09 May 2023 03:38:45 GMT</pubDate>
+</item>
+</channel>
+</rss>
