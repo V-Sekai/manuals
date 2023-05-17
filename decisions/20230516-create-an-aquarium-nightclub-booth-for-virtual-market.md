@@ -22,7 +22,6 @@ Create an immersive environment combining aquarium and nightclub elements, inclu
 4. **Jellyfish Hostess**:
    * **JellyBell**: Enchanting hostess engaging visitors in the booth experience.
    * **Iridescent Gown**: Amplifies her aquatic charm with sheer fabric and ribbons
-5. **Ambient music**: Complements both themes.
 5. **Ambient music**: Include background music that complements the aquarium and nightclub themes.
 
 ## Implementation
