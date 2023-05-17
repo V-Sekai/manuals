@@ -19,7 +19,14 @@ Design an immersive environment that combines elements of an aquarium and a nigh
 1. **Aquatic-themed decorations**: Use 3D models of marine life, such as fish, corals, and seaweed, to create a realistic underwater environment.
 2. **Dynamic lighting**: Implement the ambiance of a nightclub.
 3. **Interactive elements**: Add interactive components, such as touch-sensitive screens or motion sensors, to allow visitors to interact with the marine life and control the lighting effects.
-4. **A Mesmerizing Jellyfish Hostess**: Our enchanting jellyfish girl **JellyBell** welcomes visitors with a warm embrace and offers a comprehensive introduction to the booth. As a knowledgeable hostess, she is well-versed in all aspects of the products and services showcased at the booth. Guiding guests through the booth, JellyBell ensures that no crucial details or captivating demonstrations are overlooked. Her almost transparent skin bestows upon her an ethereal and otherworldly presence. The intricate **bioluminescent patterns** adorning her body captivate onlookers as they glow and shift colors, creating a hypnotic visual experience. Emulating the tendrils of a jellyfish, delicate ribbons trail behind her, further enhancing her aquatic allure.
+4. **A Mesmerizing Jellyfish Hostess**: 
+
+**JellyBell**, our enchanting jellyfish girl, warmly welcomes visitors and expertly introduces them to the booth's products and services. Her almost transparent skin and mesmerizing **bioluminescent patterns** create an ethereal presence that captivates onlookers.
+
+Wearing an **Iridescent Flowing Gown**, JellyBell's appearance is further enhanced by the gown's sheer fabric, intricate bioluminescent patterns, and multiple layers of lightweight fabric. Delicate ribbons, emulating jellyfish tendrils, trail behind her, adding to her aquatic allure.
+
+As a knowledgeable hostess, JellyBell ensures guests don't miss any crucial details or captivating demonstrations while remaining the center of attention throughout their booth experience.
+
 5. **Ambient music**: Include background music that complements the aquarium and nightclub themes.
 
 ## Implementation
