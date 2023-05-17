@@ -3,7 +3,7 @@
 ## Metadata
 
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
-- Deciders: V-Sekai, fire,
+- Deciders: V-Sekai, fire, ect, Aeris,
 - Tags: V-Sekai, GPT-4
 
 ## Context and Problem Statement
