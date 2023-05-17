@@ -64,3 +64,4 @@ Yes, creating a unique and engaging booth for the virtual market exhibition is e
 
 - [V-Sekai](https://v-sekai.org/)
 - [VKET 2023 Summer](https://event.vket.com/en/2023Summer/world/11)
+- [Silent's Cel Shading Shader](https://gitlab.com/s-ilent/SCSS/-/tree/master/Assets/Silent's%20Cel%20Shading%20Shader)
