@@ -2,7 +2,7 @@
 
 ## Metadata
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: accepted <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai, fire, ect, Aeris, cyberpunkmermaid,
 - Tags: V-Sekai, GPT-4, Virtual Reality, Cocoon Art Aquarium, VKET 2023 Summer, Voiceless, 
 
