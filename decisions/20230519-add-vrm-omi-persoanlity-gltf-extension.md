@@ -18,10 +18,26 @@ We want to use OMI_personality, but it needs to be injected into a VRM file by t
 
 ## Implementation
 
-1. Research and analyze the VRM0 and VRM1 specifications.
-2. Develop a new extension for GLTF Transform that supports VRM portable avatars.
-3. Extend the CLI configuration to allow injecting OMI_personality into VRM files.
-4. Test the implementation with various VRM files and OMI_personality configurations.
+### 1. Research and analyze the VRM0 and VRM1 specifications
+
+- Review the official VRM documentation and specifications.
+- Identify key components and features required for supporting VRM portable avatars in GLTF Transform.
+
+### 2. Develop a new extension for GLTF Transform that supports VRM portable avatars
+
+- Design and implement a new extension for GLTF Transform that can handle VRM portable avatars.
+- Ensure compatibility with existing GLTF Transform features and extensions.
+
+### 3. Extend the CLI configuration to allow injecting OMI_personality into VRM files
+
+- Modify the CLI configuration to accept OMI_personality data as input.
+- Implement functionality to inject OMI_personality data into VRM files using the new extension.
+
+### 4. Test the implementation with various VRM files and OMI_personality configurations
+
+- Create test cases with different VRM files and OMI_personality configurations.
+- Verify the correct injection of OMI_personality data into VRM files.
+- Ensure compatibility with other GLTF Transform features and extensions.
 
 ## Positive Consequences
 
