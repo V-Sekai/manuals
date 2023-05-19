@@ -1,8 +1,8 @@
-# V-Sekai Roadmap and Goals 2023-05-16
+# V-Sekai Roadmap and Goals 2023-05-19
 
 ### Metadata
 
-- Status: superseded by `20230519-v-sekai-roadmap.md` <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: accepted <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,lyuma,
 - Tags: V-Sekai,chatgpt4 summary,
 
@@ -19,8 +19,7 @@ The roadmap presented here is short-term.
 ```mermaid
 graph LR
   subgraph Short Term
-    A[May 16th, 2023] --> B[Solving SkeletonIK3D before May 30th. Will literally debug the two implementations in lockstep.]
-    B --> C[Assist Tokageit with Godot Engine 4.1 features before May 30th feature freeze]
+    A[May 16th, 2023] --> C[Assist Tokageit with Godot Engine 4.1 features before May 30th feature freeze]
     B --> D[Assist Godot Engine 4.1 features before May 30th feature freeze]
     C --> E
     D --> E[Vrm upload to the asset library after May 30th, 2023]
