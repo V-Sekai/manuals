@@ -26,6 +26,7 @@ We want to use OMI_personality, but it needs to be injected into a VRM file by t
 ### 2. Develop a new extension for GLTF Transform that supports VRM portable avatars
 
 - Design and implement a new extension for GLTF Transform that can handle VRM portable avatars.
+  - Enable ".vrm" io reads
 - Ensure compatibility with existing GLTF Transform features and extensions.
 
 ### 3. Extend the CLI configuration to allow injecting OMI_personality into VRM files
