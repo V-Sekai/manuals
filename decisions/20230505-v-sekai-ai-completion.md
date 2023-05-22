@@ -2,7 +2,7 @@
 
 ## Metadata
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: superseded by `20230522-proposal-template.md` <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
 - Tags: V-Sekai,ChatGPT-4,AI_assistance,problem solving,proposal generation,Visual Studio Code addon,
  
