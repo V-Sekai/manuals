@@ -1,4 +1,4 @@
-# Issue: Propose a possible solution to solve a V-Sekai limitation. If this doesn't look right, choose a different type.
+# Propose a possible solution to solve a V-Sekai limitation
 
 ## Metadata
 
