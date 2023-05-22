@@ -1,4 +1,4 @@
-# Issue: Build a MacOS editor for the iPad
+# Build a MacOS editor for the iPad
 
 ## Metadata
 
