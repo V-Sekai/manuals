@@ -1,4 +1,4 @@
-# Issue: Build a MacOS editor for the iPad
+# Build a MacOS editor for the iPad
 
 ## Metadata
 
@@ -40,10 +40,10 @@ We have successfully tested a MacOS editor on the iPhone in February 2023. Now, 
 
 ## Option graveyard
 
-1. Developing a separate iPad-only application from scratch.
-2. Using web-based editor solutions instead of a native app.
-3. Implementing a remote desktop solution to access a MacOS editor on a different device.
-4. Porting the MacOS editor to a cross-platform framework, potentially sacrificing performance and native features.
+- Developing a separate iPad-only application from scratch.
+- Using web-based editor solutions instead of a native app.
+- Implementing a remote desktop solution to access a MacOS editor on a different device.
+- Porting the MacOS editor to a cross-platform framework, potentially sacrificing performance and native features.
 
 ## If this enhancement will be used infrequently, can it be worked around with a few lines of script?
 
