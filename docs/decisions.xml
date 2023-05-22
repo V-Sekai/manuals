@@ -10,7 +10,91 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.353</generator>
-<lastBuildDate>Sun, 21 May 2023 02:20:11 GMT</lastBuildDate>
+<lastBuildDate>Mon, 22 May 2023 02:00:51 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230521-audio-jitter-buffer-voip.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="improving-jitter-buffer-implementation-for-voice-chat-in-v-sekai-projects" class="level1">
+<h1>Improving Jitter-Buffer Implementation for Voice Chat in V-Sekai Projects</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: proposed</li>
+<li>Deciders: V-Sekai, lyuma, Dreadpon,</li>
+<li>Tags: V-Sekai, GPT-4, jitter-buffer, voice-chat, godot-speech, audio-quality, adaptive-jitter-buffer, Speex</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
+<p>Dreadpon is working on a voice chat solution inside Godot 3.5.2 and found the jitter-buffer implementation in <a href="https://github.com/V-Sekai/godot-speech">godot-speech</a> to be rudimentary. They are looking for an ideal jitter-buffer implementation that can handle both slowing down and speeding up played audio.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>Use the adaptive jitter buffer from the Speex source code as a starting point, with modifications to address its limitations:</p>
+<ol type="1">
+<li>Capture packets as they are being dropped from the jitter buffer.</li>
+<li>Ensure all captured packets are played.</li>
+<li>Implement a playback buffer to speed up the audio when necessary.</li>
+</ol>
+</section>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<ol type="1">
+<li>Integrate the adaptive jitter buffer from the Speex source code into the godot-speech project.</li>
+<li>Modify the jitter buffer to capture dropped packets and store them in a separate buffer.</li>
+<li>Implement a playback buffer that accelerates audio playback when more audio packets are available.</li>
+<li>Test the new implementation to ensure it handles jitter compensation effectively.</li>
+</ol>
+</section>
+<section id="positive-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
+<ul>
+<li>Improved jitter compensation in the voice chat solution.</li>
+<li>Better handling of packet drops and audio acceleration.</li>
+<li>Enhanced overall audio quality in the voice chat system.</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
+<ul>
+<li>Additional complexity in the godot-speech codebase.</li>
+<li>Potential performance impact due to the added buffering mechanism.</li>
+</ul>
+</section>
+<section id="option-graveyard" class="level2">
+<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
+<ul>
+<li>Continue using the current rudimentary jitter-buffer implementation in godot-speech.</li>
+</ul>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
+<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
+<p>No, this enhancement is essential for a high-quality voice chat solution and cannot be easily worked around with a few lines of script.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
+<p>Yes, improving the jitter-buffer implementation is crucial for providing a reliable and high-quality voice chat experience in V-Sekai projects.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+<li><a href="https://github.com/V-Sekai/godot-speech">godot-speech</a></li>
+<li><a href="https://www.speex.org/">Speex</a></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230521-audio-jitter-buffer-voip.html</guid>
+  <pubDate>Mon, 22 May 2023 02:00:51 GMT</pubDate>
+</item>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/20230519-v-sekai-roadmap.html</link>
@@ -85,7 +169,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230519-v-sekai-roadmap.html</guid>
-  <pubDate>Sun, 21 May 2023 02:20:11 GMT</pubDate>
+  <pubDate>Mon, 22 May 2023 02:00:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -194,7 +278,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230519-add-vrm-omi-personality-gltf-extension.html</guid>
-  <pubDate>Sun, 21 May 2023 02:20:11 GMT</pubDate>
+  <pubDate>Mon, 22 May 2023 02:00:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -271,7 +355,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230516-v-sekai-roadmap.html</guid>
-  <pubDate>Sun, 21 May 2023 02:20:11 GMT</pubDate>
+  <pubDate>Mon, 22 May 2023 02:00:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -367,7 +451,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230516-create-an-aquarium-nightclub-booth-for-virtual-market.html</guid>
-  <pubDate>Sun, 21 May 2023 02:20:11 GMT</pubDate>
+  <pubDate>Mon, 22 May 2023 02:00:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -461,7 +545,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230516-additional-3d-import.html</guid>
-  <pubDate>Sun, 21 May 2023 02:20:11 GMT</pubDate>
+  <pubDate>Mon, 22 May 2023 02:00:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -539,7 +623,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230509-wasm-data-exchange.html</guid>
-  <pubDate>Sun, 21 May 2023 02:20:11 GMT</pubDate>
+  <pubDate>Mon, 22 May 2023 02:00:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -635,7 +719,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230508-novel-3d-views.html</guid>
-  <pubDate>Sun, 21 May 2023 02:20:11 GMT</pubDate>
+  <pubDate>Mon, 22 May 2023 02:00:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -716,7 +800,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230507-supabase.html</guid>
-  <pubDate>Sun, 21 May 2023 02:20:11 GMT</pubDate>
+  <pubDate>Mon, 22 May 2023 02:00:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1104,7 +1188,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230507-distributed-sim.html</guid>
-  <pubDate>Sun, 21 May 2023 02:20:11 GMT</pubDate>
+  <pubDate>Mon, 22 May 2023 02:00:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1202,7 +1286,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230507-avatar-publishing-workflow-portability.html</guid>
-  <pubDate>Sun, 21 May 2023 02:20:11 GMT</pubDate>
+  <pubDate>Mon, 22 May 2023 02:00:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1355,7 +1439,7 @@ font-style: inherit;">](https://v-sekai.org/)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230505-v-sekai-ai-completion.html</guid>
-  <pubDate>Sun, 21 May 2023 02:20:11 GMT</pubDate>
+  <pubDate>Mon, 22 May 2023 02:00:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1441,7 +1525,7 @@ font-style: inherit;">](https://v-sekai.org/)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230505-polygon-mesh-based-sculpting-tools.html</guid>
-  <pubDate>Sun, 21 May 2023 02:20:11 GMT</pubDate>
+  <pubDate>Mon, 22 May 2023 02:00:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1519,7 +1603,7 @@ font-style: inherit;">](https://v-sekai.org/)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230505-cross-platform-artwork-distribution.html</guid>
-  <pubDate>Sun, 21 May 2023 02:20:11 GMT</pubDate>
+  <pubDate>Mon, 22 May 2023 02:00:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1635,7 +1719,7 @@ font-style: inherit;"># on Github</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230505-consistent-v-sekai-naming.html</guid>
-  <pubDate>Sun, 21 May 2023 02:20:11 GMT</pubDate>
+  <pubDate>Mon, 22 May 2023 02:00:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1733,7 +1817,7 @@ font-style: inherit;"># on Github</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230505-automated-avatar-garment-rigging.html</guid>
-  <pubDate>Sun, 21 May 2023 02:20:11 GMT</pubDate>
+  <pubDate>Mon, 22 May 2023 02:00:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1822,7 +1906,7 @@ font-style: inherit;"># on Github</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230502-add-iree-to-godot-engine-for-image-superresolution.html</guid>
-  <pubDate>Sun, 21 May 2023 02:20:11 GMT</pubDate>
+  <pubDate>Mon, 22 May 2023 02:00:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1921,7 +2005,7 @@ font-style: inherit;"># on Github</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230429-v-sekai-roadmap.html</guid>
-  <pubDate>Sun, 21 May 2023 02:20:11 GMT</pubDate>
+  <pubDate>Mon, 22 May 2023 02:00:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2016,7 +2100,7 @@ font-style: inherit;"># on Github</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230429-improve-collab.html</guid>
-  <pubDate>Sun, 21 May 2023 02:20:11 GMT</pubDate>
+  <pubDate>Mon, 22 May 2023 02:00:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2088,110 +2172,7 @@ font-style: inherit;"># on Github</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230429-git-subrepo-challenges.html</guid>
-  <pubDate>Sun, 21 May 2023 02:20:11 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20230419-package-godot-for-pkgin.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="package-godot-for-pkgin" class="level1">
-<h1>Package Godot for pkgin</h1>
-<section id="metadata" class="level3">
-<h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
-<ul>
-<li>Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
-<li>Deciders: V-Sekai,fire,</li>
-<li>Tags: V-Sekai,chatgpt4,</li>
-</ul>
-</section>
-<section id="context-and-problem-statement" class="level3">
-<h3 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h3>
-<p>According to Netflix, the BSD-type operating systems are competitive, and supporting pkgsrc is an excellent way to start.</p>
-<blockquote class="blockquote">
-<p>pkgsrc is a framework for managing third-party software on UNIX-like systems containing over 26,000 packages. It is the default package manager of <a href="https://www.netbsd.org/">NetBSD</a> and <a href="https://wiki.smartos.org/">SmartOS</a> and can be used to enable freely available software to be built quickly on a large number of other UNIX-like platforms.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>V-Sekai is developing a free, open-source virtual reality platform. We work to make it user-friendly and fulfill a need in the VR community.</p>
-</blockquote>
-</section>
-<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level3">
-<h3 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h3>
-<ol type="1">
-<li>Effortless installation and updates: Packaging Godot Engine for pkgin makes it easier to install and update the software on macOS, Linux, and NetBSD, offering a smooth experience for users at all expertise levels.</li>
-<li>Wider platform support: By embracing pkgsrc and packaging Godot Engine for pkgin, compatibility with an array of UNIX-like systems is ensured, broadening the user base and fostering adoption across different platforms.</li>
-<li>Promoting cooperation: V-Sekai’s support for pkgsrc and packaging of the Godot Engine for pkgin enables collaboration through the vast third-party software ecosystem available for UNIX-like systems, stimulating the exchange of ideas and resources.</li>
-<li>Reinforcing open-source ideals: V-Sekai’s decision to package the Godot Engine for pkgin strengthens its commitment to open-source values like accessibility, transparency, and community-driven development, enhancing growth within the VR community.</li>
-</ol>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level3">
-<h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h3>
-<pre class="mermaid"><code>graph LR
-A[Godot Engine Source Code] --&gt; B[Build and Package]
-B --&gt; C[Godot Engine pkgin Package]
-C --&gt; D{Platform Compatibility}
-D --&gt; E[macOS]
-D --&gt; F[Linux]
-D --&gt; G[NetBSD]
-C --&gt; H[Package Repository]
-I[User] --&gt; J[pkgin command]
-J --&gt; H
-H --&gt; K[Install/Update Godot Engine]
-K --&gt; I</code></pre>
-</section>
-<section id="positive-consequences" class="level3">
-<h3 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h3>
-<ol type="1">
-<li><p>Easy installation and updates: Pkgin support simplifies installing and updating the Godot Engine on UNIX-like systems, such as macOS, Linux, and NetBSD, providing a hassle-free experience for users.</p></li>
-<li><p>Wide platform support: Pkgin compatibility ensures that the Godot Engine works seamlessly with multiple UNIX-like systems, expanding the user base and promoting adoption across various platforms.</p></li>
-<li><p>Efficient dependency handling: Pkgin automatically manages dependencies, streamlining the installation process and minimizing conflicts or issues due to unmet requirements.</p></li>
-<li><p>Uniform software environment: Pkgin helps maintain consistency in software versions and configurations, which is crucial for collaboration and reducing the need for troubleshooting.</p></li>
-<li><p>Connection to the pkgsrc ecosystem: Supporting pkgin allows users to tap into the extensive third-party software ecosystem for UNIX-like systems, fostering the exchange of ideas and resources within the open-source community.</p></li>
-<li><p>Resource and time savings: By offering pkgin support, developers can concentrate on enhancing the Godot Engine and V-Sekai’s VR platform features rather than manually managing software installations and updates.</p></li>
-<li><p>Emphasizing open-source principles: By endorsing pkgin, both V-Sekai and the Godot Engine reaffirm their commitment to open-source values, such as accessibility, transparency, and community-driven development, fostering growth and collaboration within the VR community.</p></li>
-</ol>
-</section>
-<section id="negative-consequences" class="level3">
-<h3 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h3>
-<p>There are some potential downsides to packaging the Godot Engine for pkgin, which include:</p>
-<p>Additional maintenance work: Supporting pkgin may necessitate regular package updates to ensure compatibility with different systems and to keep up with new Godot Engine versions and features. This could require extra time and resources from the development team.</p>
-<p>Incomplete platform support: Pkgin is designed for UNIX-like systems, but it doesn’t directly cater to users on other platforms, such as Windows. Supporting alternative package managers for non-UNIX platforms may demand extra efforts.</p>
-<p>User learning curve: Users unfamiliar with pkgin or pkgsrc might need to invest time in learning to use the package manager effectively, which could pose a barrier for some users, particularly those new to UNIX-like systems or with limited package management experience.</p>
-<p>Potential compatibility challenges: While pkgin aims to provide compatibility across various UNIX-like systems, certain configurations or system setups may still pose difficulties. Addressing these issues might require more development and troubleshooting efforts.</p>
-<p>Unnecessary overhead for small projects: For smaller projects or users with minimal requirements, the added features and capabilities provided by pkgin support might be excessive. In such cases, the effort needed to maintain and use a pkgin package could outweigh its benefits.</p>
-<p>Despite these potential downsides, offering pkgin support can bring significant advantages, such as streamlining installation and updates, ensuring compatibility with UNIX-like systems, and promoting collaboration within the open-source community.</p>
-</section>
-<section id="option-graveyard" class="level3">
-<h3 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h3>
-<p>Alternative package managers: While other package managers like apt or yum might have been considered, they may need to provide different compatibility with BSD-type systems than pkgsrc. Pkgin, designed for pkgsrc, is the default package manager for systems like NetBSD and SmartOS, making it the ideal choice.</p>
-<p>Manual installation: Requiring users to compile and install Godot Engine manually would complicate the process and be less user-friendly, particularly for novices. This approach could also result in software version inconsistencies and configuration issues, affecting user experience.</p>
-<p>Custom package manager: Developing a custom package manager specifically for V-Sekai’s platform is resource-intensive and duplicates existing package managers’ efforts, such as pkgin, which already offers compatibility with BSD-type systems.</p>
-<p>Exclusively focusing on other platforms: By targeting only Linux, macOS, or Windows, V-Sekai would limit its potential user base and overlook the advantages of supporting UNIX-like systems like NetBSD and SmartOS. So instead, packaging Godot Engine for pkgin enables V-Sekai to reach a wider audience using BSD-type operating systems.</p>
-</section>
-<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level3">
-<h3 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h3>
-<p>Using a script for Godot Engine may have drawbacks, such as being less user-friendly, requiring more maintenance, having limited compatibility with BSD-type systems, and potentially impacting integration with the pkgsrc ecosystem.</p>
-</section>
-<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level3">
-<h3 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h3>
-<p>Packaging the Godot Engine for pkgin as a core task our team handles ensures quality control, streamlined support, customization, alignment with your platform’s vision, and trust-building with users. These factors contribute to the overall success and adoption of your open-source virtual reality platform.</p>
-</section>
-<section id="references" class="level3">
-<h3 class="anchored" data-anchor-id="references">References</h3>
-<ul>
-<li><a href="https://v-sekai.org/">V-Sekai</a></li>
-<li>https://pkgsrc.joyent.com/</li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20230419-package-godot-for-pkgin.html</guid>
-  <pubDate>Sun, 21 May 2023 02:20:11 GMT</pubDate>
+  <pubDate>Mon, 22 May 2023 02:00:51 GMT</pubDate>
 </item>
 </channel>
 </rss>
