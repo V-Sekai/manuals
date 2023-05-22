@@ -24,7 +24,8 @@ We have successfully tested a MacOS editor on the iPhone in February 2023. Now, 
 4. ~~Update any device-specific code to support the iPad.~~
 5. Test the application on different iPad models and fix any issues found during testing.
     1. Install Xcode.
-    2. Generate certificates for uploading the Godot Engine iPad build to the iPad.
+    2. Generate certificates 
+    3. Upload the Godot Engine iPad build to the iPad.
 6. Merge the iPad branch back into the main branch once the application is stable and fully functional.
 
 ## Positive Consequences
