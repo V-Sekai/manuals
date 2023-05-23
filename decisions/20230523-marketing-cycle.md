@@ -29,7 +29,7 @@ Define the overall marketing strategy by identifying target audiences, setting g
 
 ### Step 2: Positioning
 
-Establish a unique selling proposition that sets the product or service apart from competitors. This will help potential customers understand why they should choose the offering over others in the market.
+Establish a unique selling proposition (USP) that sets the product or service apart from competitors. This will help potential customers understand why they should choose the offering over others in the market.
 
 ### Step 3: Messaging
 
