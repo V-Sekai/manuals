@@ -8,7 +8,7 @@
 
 ## Context and Problem Statement
 
-We have successfully tested a MacOS editor on the iPhone in February 2023. Now, we want to build a similar editor for the iPa so that people can upload game worlds and avatars from a tablet.
+We have successfully tested a MacOS editor on the iPhone in February 2023. Now, we want to build a similar editor for the iPad so that people can upload game worlds and avatars from a tablet.
 
 ## Proposed Solution
 
