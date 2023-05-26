@@ -10,7 +10,96 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.353</generator>
-<lastBuildDate>Fri, 26 May 2023 02:14:43 GMT</lastBuildDate>
+<lastBuildDate>Fri, 26 May 2023 06:16:45 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230525-animation-ik-node.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="convert-ik-solvers-to-be-using-the-animationtree" class="level1">
+<h1>Convert IK solvers to be using the AnimationTree</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: proposed</li>
+<li>Deciders: V-Sekai, fire,</li>
+<li>Tags: V-Sekai, GPT-4</li>
+</ul>
+</section>
+<section id="project" class="level2">
+<h2 class="anchored" data-anchor-id="project">Project</h2>
+<p>As part of the V-Sekai project we’re working on virtual worlds and avatars usable for all.</p>
+</section>
+<section id="context-and-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
+<p>There is no robust, and production quality inverse kinematic solver for full body tracking virtual reality tracking and other inverse kinematic uses like foot planting and hand grabbing.</p>
+<p>In addition to the limitations of the current IK system due to its implementation as a SkeletonIK3D node, the IK system can be improved by reimplementing it as an animation node. This can address these limitations and improve the overall functionality.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<ol type="1">
+<li>Reimplement the IK system as an animation node to gain better control over the processing order, ensure accurate pose states.</li>
+<li>Reuse the track filtering code that exists in the AnimationTree system to enhance the new IK system’s capabilities.</li>
+</ol>
+</section>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<p>In order to improve the Inverse Kinematics (IK) system, we will replace SkeletonIK3D with a new custom AnimationNode called <code>IKAnimationNode</code>. This new node will ensure accurate pose states and provide precise control over the IK system.</p>
+<p>To enhance the blending between animations and handle IK more efficiently, we will reuse track filtering code from the existing AnimationTree. This will allow for smoother transitions and better performance.</p>
+<p>Next, we will implement the IK solver within the new <code>IKAnimationNode</code>. This solver will be responsible for calculating target positions and rotations for each bone in the skeleton.</p>
+<p>After implementing the IK solver, we will update the AnimationTree to use the new <code>IKAnimationNode</code>. This will involve adding an empty track, reading from the transform’s position, and blending between different animations to create seamless motion.</p>
+<p>As we develop this new IK system, it is crucial to address potential issues such as filter usability, duplicate subtrees versus multiple outputs, and designing a reasonable full body setup. This includes handling jumping and foot IK interactions with the ground.</p>
+<p>Finally, we will test and optimize the new IK system to ensure correct functionality and optimal performance. This will result in a more robust and efficient IK solution for our animation needs.</p>
+</section>
+<section id="positive-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
+<ul>
+<li>Improved control over the processing order of the IK system.</li>
+<li>Accurate pose states for better animation quality.</li>
+<li>Potential performance improvements by executing the animation tree outside of the main thread.</li>
+<li>Enhanced capabilities of the new IK system by reusing the track filtering code.</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
+<ul>
+<li>Increased complexity in the animation system.</li>
+<li>Possible compatibility issues with existing projects.</li>
+</ul>
+</section>
+<section id="option-graveyard" class="level2">
+<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
+<ol type="1">
+<li>Keeping the current SkeletonIK3D node and trying to improve its functionality.</li>
+<li>Implementing a custom IK solver without reusing the track filtering code from the AnimationTree system.</li>
+<li>Using third-party IK solvers instead of developing an in-house solution.</li>
+</ol>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
+<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
+<p>No, the enhancement involves a significant change in the IK system’s implementation and cannot be easily worked around with a script.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
+<p>Yes, addressing the limitations of the current IK system is crucial for improving V-Sekai’s functionality and providing a better experience for users.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+<li>ManyBoneIK3D (mentioned for reference purposes only)</li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230525-animation-ik-node.html</guid>
+  <pubDate>Fri, 26 May 2023 06:16:45 GMT</pubDate>
+</item>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/20230523-marketing-cycle.html</link>
@@ -102,7 +191,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230523-marketing-cycle.html</guid>
-  <pubDate>Fri, 26 May 2023 02:14:43 GMT</pubDate>
+  <pubDate>Fri, 26 May 2023 06:16:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -157,7 +246,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230522-proposal-template.html</guid>
-  <pubDate>Fri, 26 May 2023 02:14:43 GMT</pubDate>
+  <pubDate>Fri, 26 May 2023 06:16:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -249,7 +338,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230522-godot-engine-ipad.html</guid>
-  <pubDate>Fri, 26 May 2023 02:14:43 GMT</pubDate>
+  <pubDate>Fri, 26 May 2023 06:16:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -333,7 +422,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230521-audio-jitter-buffer-voip.html</guid>
-  <pubDate>Fri, 26 May 2023 02:14:43 GMT</pubDate>
+  <pubDate>Fri, 26 May 2023 06:16:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -409,7 +498,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230519-v-sekai-roadmap.html</guid>
-  <pubDate>Fri, 26 May 2023 02:14:43 GMT</pubDate>
+  <pubDate>Fri, 26 May 2023 06:16:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -518,7 +607,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230519-add-vrm-omi-personality-gltf-extension.html</guid>
-  <pubDate>Fri, 26 May 2023 02:14:43 GMT</pubDate>
+  <pubDate>Fri, 26 May 2023 06:16:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -595,7 +684,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230516-v-sekai-roadmap.html</guid>
-  <pubDate>Fri, 26 May 2023 02:14:43 GMT</pubDate>
+  <pubDate>Fri, 26 May 2023 06:16:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -691,7 +780,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230516-create-an-aquarium-nightclub-booth-for-virtual-market.html</guid>
-  <pubDate>Fri, 26 May 2023 02:14:43 GMT</pubDate>
+  <pubDate>Fri, 26 May 2023 06:16:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -785,7 +874,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230516-additional-3d-import.html</guid>
-  <pubDate>Fri, 26 May 2023 02:14:43 GMT</pubDate>
+  <pubDate>Fri, 26 May 2023 06:16:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -863,7 +952,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230509-wasm-data-exchange.html</guid>
-  <pubDate>Fri, 26 May 2023 02:14:43 GMT</pubDate>
+  <pubDate>Fri, 26 May 2023 06:16:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -959,7 +1048,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230508-novel-3d-views.html</guid>
-  <pubDate>Fri, 26 May 2023 02:14:43 GMT</pubDate>
+  <pubDate>Fri, 26 May 2023 06:16:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1040,7 +1129,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230507-supabase.html</guid>
-  <pubDate>Fri, 26 May 2023 02:14:43 GMT</pubDate>
+  <pubDate>Fri, 26 May 2023 06:16:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1428,7 +1517,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230507-distributed-sim.html</guid>
-  <pubDate>Fri, 26 May 2023 02:14:43 GMT</pubDate>
+  <pubDate>Fri, 26 May 2023 06:16:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1526,7 +1615,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230507-avatar-publishing-workflow-portability.html</guid>
-  <pubDate>Fri, 26 May 2023 02:14:43 GMT</pubDate>
+  <pubDate>Fri, 26 May 2023 06:16:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1679,7 +1768,7 @@ font-style: inherit;">](https://v-sekai.org/)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230505-v-sekai-ai-completion.html</guid>
-  <pubDate>Fri, 26 May 2023 02:14:43 GMT</pubDate>
+  <pubDate>Fri, 26 May 2023 06:16:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1765,7 +1854,7 @@ font-style: inherit;">](https://v-sekai.org/)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230505-polygon-mesh-based-sculpting-tools.html</guid>
-  <pubDate>Fri, 26 May 2023 02:14:43 GMT</pubDate>
+  <pubDate>Fri, 26 May 2023 06:16:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1843,7 +1932,7 @@ font-style: inherit;">](https://v-sekai.org/)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230505-cross-platform-artwork-distribution.html</guid>
-  <pubDate>Fri, 26 May 2023 02:14:43 GMT</pubDate>
+  <pubDate>Fri, 26 May 2023 06:16:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1959,7 +2048,7 @@ font-style: inherit;"># on Github</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230505-consistent-v-sekai-naming.html</guid>
-  <pubDate>Fri, 26 May 2023 02:14:43 GMT</pubDate>
+  <pubDate>Fri, 26 May 2023 06:16:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2057,96 +2146,7 @@ font-style: inherit;"># on Github</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230505-automated-avatar-garment-rigging.html</guid>
-  <pubDate>Fri, 26 May 2023 02:14:43 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20230502-add-iree-to-godot-engine-for-image-superresolution.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="adding-iree-to-godot-engine-for-image-superresolution" class="level1">
-<h1>Adding IREE to Godot Engine for Image Superresolution</h1>
-<section id="metadata" class="level3">
-<h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
-<ul>
-<li>Status: accepted <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
-<li>Deciders: V-Sekai,fire,</li>
-<li>Tags: V-Sekai, IREE, Godot Engine, Image Superresolution, Vulkan Backend,chatgpt 4,Google,</li>
-</ul>
-</section>
-<section id="context-and-problem-statement" class="level3">
-<h3 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h3>
-<p>V-Sekai currently faces a limitation in the quality of upscaled images, particularly when the image needs to be magnified by a factor of 4x or more.</p>
-</section>
-<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level3">
-<h3 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h3>
-<p>Integrate the Intermediate Representation Execution Environment (IREE) into the Godot Engine 4.0 as a C++ GDExtension. Utilize the Vulkan backend to run an image superresolution demo that generates 4x larger images. IREE is an MLIR-based end-to-end compiler and runtime that lowers Machine Learning (ML) models to a unified IR, allowing for better performance and scaling.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level3">
-<h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h3>
-<ol type="1">
-<li>Compile IREE as a C++ GDExtension for Godot Engine 4.0.</li>
-<li>Use the Vulkan backend to run the image superresolution demo.</li>
-<li>Load and process ML models for image superresolution using IREE.</li>
-<li>Integrate the resulting functionality into V-Sekai’s existing image processing pipeline.</li>
-</ol>
-</section>
-<section id="positive-consequences" class="level3">
-<h3 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h3>
-<ul>
-<li>Allow image superresolution in V-Sekai.</li>
-<li>Enhanced performance due to IREE’s efficient MLIR-based compiler and runtime.</li>
-<li>Scalable solution that adapts to various hardware and software constraints. Not only NVIDIA, but ARM, Intel, AMD and Apple gpus.</li>
-<li>Allow using other machine learning models from PyTorch and Tensorflow</li>
-</ul>
-</section>
-<section id="negative-consequences" class="level3">
-<h3 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h3>
-<ul>
-<li>Additional development time required for integration and optimization.</li>
-<li>Potential trade-offs in implementing other features.</li>
-</ul>
-</section>
-<section id="option-graveyard" class="level3">
-<h3 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h3>
-<ol type="1">
-<li>Use a custom script to work around the image superresolution issue.
-<ul>
-<li>This might not provide a scalable or high-performance solution.</li>
-</ul></li>
-<li>Implement a different image superresolution algorithm.
-<ul>
-<li>This could lead to suboptimal results compared to IREE’s capabilities.</li>
-</ul></li>
-</ol>
-</section>
-<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level3">
-<h3 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h3>
-<p>A custom script could serve as a workaround for infrequent use of image superresolution, but it may have drawbacks in terms of efficiency, output quality, and maintenance efforts. If the feature aligns with V-Sekai’s goals and significantly improves user experience, integrating the IREE-based solution into the core might be more effective.</p>
-</section>
-<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level3">
-<h3 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h3>
-<p>In summary, integrating the IREE-based image superresolution feature into V-Sekai’s core offers several benefits, including an enhanced user experience, performance optimization, alignment with open source values, and easier maintenance and support. These advantages contribute to a better, more immersive VR experience while staying true to V-Sekai’s project goals.</p>
-</section>
-<section id="references" class="level3">
-<h3 class="anchored" data-anchor-id="references">References</h3>
-<ul>
-<li>V-Sekai: https://v-sekai.org/</li>
-<li>IREE (Intermediate Representation Execution Environment): https://github.com/openxla/iree</li>
-<li>Godot Engine: https://godotengine.org</li>
-<li>Vulkan Backend: https://www.khronos.org/vulkan/</li>
-<li>IREE.gd: https://github.com/RechieKho/IREE.gd</li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20230502-add-iree-to-godot-engine-for-image-superresolution.html</guid>
-  <pubDate>Fri, 26 May 2023 02:14:43 GMT</pubDate>
+  <pubDate>Fri, 26 May 2023 06:16:45 GMT</pubDate>
 </item>
 </channel>
 </rss>
