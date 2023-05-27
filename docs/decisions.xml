@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.361</generator>
-<lastBuildDate>Sat, 27 May 2023 14:29:35 GMT</lastBuildDate>
+<lastBuildDate>Sat, 27 May 2023 16:50:19 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/20230527-v-sekai-roadmap.html</link>
@@ -83,7 +83,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-v-sekai-roadmap.html</guid>
-  <pubDate>Sat, 27 May 2023 14:29:35 GMT</pubDate>
+  <pubDate>Sat, 27 May 2023 16:50:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -98,7 +98,7 @@
 <h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
 <li>Status: proposed</li>
-<li>Deciders: V-Sekai, fire,</li>
+<li>Deciders: V-Sekai, Bioblaze Payne, fire</li>
 <li>Tags: V-Sekai, GPT-4</li>
 </ul>
 </section>
@@ -196,7 +196,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-sidecar.html</guid>
-  <pubDate>Sat, 27 May 2023 14:29:35 GMT</pubDate>
+  <pubDate>Sat, 27 May 2023 16:50:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -211,7 +211,7 @@ func should_sync():
 <h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
 <li>Status: proposed</li>
-<li>Deciders: V-Sekai, fire,</li>
+<li>Deciders: V-Sekai, Bioblaze Payne, fire</li>
 <li>Tags: V-Sekai, GPT-4</li>
 </ul>
 </section>
@@ -274,7 +274,130 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-side-content-validation.html</guid>
-  <pubDate>Sat, 27 May 2023 14:29:35 GMT</pubDate>
+  <pubDate>Sat, 27 May 2023 16:50:19 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230527-server-performance-test.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="generating-random-text-data-for-testing-v-sekai-systems" class="level1">
+<h1>Generating Random Text Data for testing V-Sekai systems</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: proposed</li>
+<li>Deciders: V-Sekai, Bioblaze Payne, fire</li>
+<li>Tags: V-Sekai, GPT-4</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
+<p>V-Sekai is a project that aims to provide an immersive virtual world experience for users. As the project grows in complexity, it becomes increasingly important to ensure that the system is thoroughly tested and can handle various scenarios. One of the challenges faced by the V-Sekai team is the lack of diverse and realistic data for testing purposes. This limitation hinders the ability to identify potential issues and optimize the system’s performance.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>To address the limitations in testing the V-Sekai system due to the lack of diverse and realistic data, this proposal suggests generating random text data for testing purposes.</p>
+<section id="implementation" class="level3">
+<h3 class="anchored" data-anchor-id="implementation">Implementation</h3>
+<p>We will use a tool like <a href="https://chancejs.com/">Chance.js library</a> to generate random text data for testing purposes and use the database.</p>
+<section id="text-processing" class="level4">
+<h4 class="anchored" data-anchor-id="text-processing">Text Processing</h4>
+<p>For generating random sentences, we will use something like the following method:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb1-1">chance<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sentence</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span></code></pre></div>
+<p>Reference: <a href="https://chancejs.com/text/sentence.html">Chance.js Sentence</a></p>
+</section>
+<section id="user-data" class="level4">
+<h4 class="anchored" data-anchor-id="user-data">User Data</h4>
+<p>For generating random user names, we will use something like the following method:</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb2-1">chance<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">name</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span></code></pre></div>
+<p>Reference: <a href="https://chancejs.com/person/name.html">Chance.js Name</a></p>
+</section>
+<section id="database-operations" class="level4">
+<h4 class="anchored" data-anchor-id="database-operations">Database Operations</h4>
+<p>We will perform the following SQL operations on the <code>user</code> and <code>chat</code> tables:</p>
+<ol type="1">
+<li>SELECT All Data in Table</li>
+<li>SELECT LIKE Data based on %NA%</li>
+<li>SELECT Specific Row Data</li>
+<li>INSERT</li>
+<li>UPDATE</li>
+<li>DELETE</li>
+</ol>
+<section id="tables" class="level5">
+<h5 class="anchored" data-anchor-id="tables">Tables</h5>
+<p><strong>Table user</strong></p>
+<p>id | username | password | updated_on | created_on |</p>
+<p><strong>Table chat</strong></p>
+<p>id | user_id | name | text | updated_on | deleted_on | created_on |</p>
+</section>
+</section>
+<section id="sql-function" class="level4">
+<h4 class="anchored" data-anchor-id="sql-function">SQL Function</h4>
+<p>We will create a SQL function to check if the username/password match and return ‘OK’. We will also check if the query returned is ‘OK’ and add false information randomly in the nodes to signify a user doing invalid calls for production testing.</p>
+<p>The implementation will generate 90 days of data, generating 100,000 text data entries for testing purposes.</p>
+</section>
+</section>
+</section>
+<section id="positive-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
+<ul>
+<li>Improved testing capabilities with diverse and realistic data</li>
+<li>Enhanced system reliability due to thorough testing</li>
+<li>Identification of potential issues before they impact users</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
+<ul>
+<li>Additional development time required to implement the solution</li>
+<li>Potential increase in storage requirements for generated data</li>
+</ul>
+</section>
+<section id="option-graveyard" class="level2">
+<h2 class="anchored" data-anchor-id="option-graveyard">Option Graveyard</h2>
+<ol type="1">
+<li><p><strong>Using static test data</strong>: This option was considered for simplicity, but it would not provide the diverse and realistic data needed for thorough testing.</p></li>
+<li><p><strong>Manual data generation</strong>: This option involved manually creating test data, but it was deemed time-consuming and inefficient compared to using a library like Chance.js.</p></li>
+<li><p><strong>Third-party data generation services</strong>: While there are external services that can generate random text data, using them would introduce dependencies and potential costs. Implementing our a solution similar to Chance.js allows for better control over the process.</p></li>
+<li><p><strong>Crowdsourcing test data</strong>: This option involved gathering test data from users or volunteers. However, it raised concerns about data privacy, consistency, and quality.</p></li>
+</ol>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
+<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
+<p>No, this enhancement is essential for thorough testing and cannot be easily worked around with a few lines of script.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
+<p>Yes, addressing the V-Sekai limitation is crucial for ensuring the system’s reliability and performance. Implementing this solution internally allows for better control over the testing process and data generation.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-performance-test.html</guid>
+  <pubDate>Sat, 27 May 2023 16:50:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -352,7 +475,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-cdn-session-url.html</guid>
-  <pubDate>Sat, 27 May 2023 14:29:35 GMT</pubDate>
+  <pubDate>Sat, 27 May 2023 16:50:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -407,7 +530,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-proposal-template.html</guid>
-  <pubDate>Sat, 27 May 2023 14:29:35 GMT</pubDate>
+  <pubDate>Sat, 27 May 2023 16:50:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -496,7 +619,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230525-animation-ik-node.html</guid>
-  <pubDate>Sat, 27 May 2023 14:29:35 GMT</pubDate>
+  <pubDate>Sat, 27 May 2023 16:50:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -589,7 +712,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230523-marketing-cycle.html</guid>
-  <pubDate>Sat, 27 May 2023 14:29:35 GMT</pubDate>
+  <pubDate>Sat, 27 May 2023 16:50:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -681,7 +804,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230522-godot-engine-ipad.html</guid>
-  <pubDate>Sat, 27 May 2023 14:29:35 GMT</pubDate>
+  <pubDate>Sat, 27 May 2023 16:50:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -761,7 +884,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230522-JOKE-fictional-blood-combat.html</guid>
-  <pubDate>Sat, 27 May 2023 14:29:35 GMT</pubDate>
+  <pubDate>Sat, 27 May 2023 16:50:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -845,7 +968,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230521-audio-jitter-buffer-voip.html</guid>
-  <pubDate>Sat, 27 May 2023 14:29:35 GMT</pubDate>
+  <pubDate>Sat, 27 May 2023 16:50:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -921,7 +1044,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230519-v-sekai-roadmap.html</guid>
-  <pubDate>Sat, 27 May 2023 14:29:35 GMT</pubDate>
+  <pubDate>Sat, 27 May 2023 16:50:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1030,7 +1153,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230519-add-vrm-omi-personality-gltf-extension.html</guid>
-  <pubDate>Sat, 27 May 2023 14:29:35 GMT</pubDate>
+  <pubDate>Sat, 27 May 2023 16:50:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1107,7 +1230,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230516-v-sekai-roadmap.html</guid>
-  <pubDate>Sat, 27 May 2023 14:29:35 GMT</pubDate>
+  <pubDate>Sat, 27 May 2023 16:50:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1203,7 +1326,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230516-create-an-aquarium-nightclub-booth-for-virtual-market.html</guid>
-  <pubDate>Sat, 27 May 2023 14:29:35 GMT</pubDate>
+  <pubDate>Sat, 27 May 2023 16:50:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1297,7 +1420,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230516-additional-3d-import.html</guid>
-  <pubDate>Sat, 27 May 2023 14:29:35 GMT</pubDate>
+  <pubDate>Sat, 27 May 2023 16:50:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1375,7 +1498,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230509-wasm-data-exchange.html</guid>
-  <pubDate>Sat, 27 May 2023 14:29:35 GMT</pubDate>
+  <pubDate>Sat, 27 May 2023 16:50:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1471,7 +1594,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230508-novel-3d-views.html</guid>
-  <pubDate>Sat, 27 May 2023 14:29:35 GMT</pubDate>
+  <pubDate>Sat, 27 May 2023 16:50:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1552,7 +1675,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230507-supabase.html</guid>
-  <pubDate>Sat, 27 May 2023 14:29:35 GMT</pubDate>
+  <pubDate>Sat, 27 May 2023 16:50:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1940,105 +2063,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230507-distributed-sim.html</guid>
-  <pubDate>Sat, 27 May 2023 14:29:35 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20230507-avatar-publishing-workflow-portability.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="describe-a-avatar-publishing-workflow-for-portability" class="level2">
-<h2 class="anchored" data-anchor-id="describe-a-avatar-publishing-workflow-for-portability">Describe a avatar publishing workflow for portability</h2>
-</section>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li>Status: draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
-<li>Deciders: V-Sekai, fire</li>
-<li>Tags: V-Sekai, ChatGPT-4, Avatar Publishing, Workflow, Portability, VRM Format, Silent’s Shader, Platform Compatibility, Sketchfab, Booth.pm</li>
-</ul>
-</section>
-<section id="context-and-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
-<p>We want to create a workflow for publishing avatars in a portable format that can be easily used across different platforms. The goal is to streamline the process of converting and exporting avatars while maintaining compatibility with various platforms.</p>
-</section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>The proposed solution involves using the VRM portable avatar format, Silent’s shader, and platform-specific package bundles to create a seamless workflow for avatar publishing.</p>
-</section>
-<section id="implementation" class="level2">
-<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
-<ol type="1">
-<li>Import avatar in VRM0 portable avatar format.</li>
-<li>Install Silent’s shader 1.11.</li>
-<li>Convert VRM to compatible platform’s internal format.</li>
-</ol>
-<ol type="a">
-<li>Avoid “Combine Mesh” option.</li>
-<li>The Cutout Rendering Mode matches VRM’s usual transparency usage.</li>
-<li>UNRESOLVED: VRM Colliders cause greatly increased count of simulated physics objects
-<ol start="2" type="i">
-<li>Try switching to inside bounds instead of bone as spheres</li>
-</ol></li>
-</ol>
-<ol start="4" type="1">
-<li>Swap the mtoon material for Silent’s shader’s crosstone material. Fire doesn’t use the light-ramp shader.</li>
-<li>Many bones need to be the first child for IK to work.</li>
-<li>Fire prefers solid colour backgrounds for avatar photos</li>
-<li>Export as a compatible platform package bundle.</li>
-<li>Bundle VRM and compatible platform package bundle and publish on Sketchfab and/or Booth.pm.</li>
-<li>The compatible platform should display the avatar as <strong>poor</strong> rated.</li>
-</ol>
-</section>
-<section id="positive-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
-<ul>
-<li>Streamlined avatar publishing process.</li>
-<li>Increased portability and compatibility with different platforms.</li>
-<li>Easier sharing and distribution of avatars.</li>
-</ul>
-</section>
-<section id="negative-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
-<ul>
-<li>Potential loss of some features or quality during conversion.</li>
-<li>May require additional work to ensure compatibility with all desired platforms.</li>
-</ul>
-</section>
-<section id="option-graveyard" class="level2">
-<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
-<p>N/A</p>
-</section>
-<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
-<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
-<p>No, this enhancement aims to create a comprehensive workflow for avatar publishing, which cannot be achieved with just a few lines of script.</p>
-</section>
-<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
-<p>Yes, creating a standardized workflow for avatar publishing ensures consistency and compatibility across platforms, making it easier for users to share and distribute their avatars.</p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ul>
-<li>V-Sekai: <a href="https://v-sekai.org/">V-Sekai</a></li>
-<li>Silent Cel Shading Shader: <a href="https://gitlab.com/s-ilent/SCSS/-/tree/master/Assets/Silent's%20Cel%20Shading%20Shader">SCSS</a></li>
-<li>Silent Cel Shading Shader v1.11: <a href="https://gitlab.com/s-ilent/SCSS/-/releases/v1.11">Silent Cel Shading Shader v1.11</a></li>
-<li>Booth.pm: <a href="https://booth.pm/">Booth.pm</a></li>
-<li>Sketchfab: <a href="https://sketchfab.com/">Sketchfab</a></li>
-<li>VRM converter for compatible platform: <a href="https://booth.pm/en/items/1025226">VRM converter</a>
-<ul>
-<li>Automatically installs Univrm: <a href="https://github.com/vrm-c/UniVRM">Univrm</a></li>
-</ul></li>
-</ul>
-
-
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20230507-avatar-publishing-workflow-portability.html</guid>
-  <pubDate>Sat, 27 May 2023 14:29:35 GMT</pubDate>
+  <pubDate>Sat, 27 May 2023 16:50:19 GMT</pubDate>
 </item>
 </channel>
 </rss>

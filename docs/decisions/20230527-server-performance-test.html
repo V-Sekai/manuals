@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>V-Sekai - Manuals - Changes to V-Sekai</title>
+<title>V-Sekai - Manuals – server-performance-test</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,29 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -63,40 +95,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<link rel="alternate" type="application/rss+xml" title="V-Sekai - Manuals" href="changelog.xml"></head>
+</head>
 
 <body class="nav-fixed">
 
@@ -105,10 +106,10 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./68604884.png" alt="V-Sekai" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../68604884.png" alt="V-Sekai" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">V-Sekai - Manuals</span>
     </a>
   </div>
@@ -119,15 +120,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./changelog.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../changelog.html" rel="" target="">
  <span class="menu-text">Changes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./decisions.html" rel="" target="">
+    <a class="nav-link" href="../decisions.html" rel="" target="">
  <span class="menu-text">Decisions</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./features.html" rel="" target="">
+    <a class="nav-link" href="../features.html" rel="" target="">
  <span class="menu-text">Features</span></a>
   </li>  
 </ul>
@@ -143,185 +144,134 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#generating-random-text-data-for-testing-v-sekai-systems" id="toc-generating-random-text-data-for-testing-v-sekai-systems" class="nav-link active" data-scroll-target="#generating-random-text-data-for-testing-v-sekai-systems">Generating Random Text Data for testing V-Sekai systems</a>
+  <ul class="collapse">
+  <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
+  <li><a href="#context-and-problem-statement" id="toc-context-and-problem-statement" class="nav-link" data-scroll-target="#context-and-problem-statement">Context and Problem Statement</a></li>
+  <li><a href="#proposed-solution" id="toc-proposed-solution" class="nav-link" data-scroll-target="#proposed-solution">Proposed Solution</a>
+  <ul class="collapse">
+  <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation">Implementation</a></li>
+  </ul></li>
+  <li><a href="#positive-consequences" id="toc-positive-consequences" class="nav-link" data-scroll-target="#positive-consequences">Positive Consequences</a></li>
+  <li><a href="#negative-consequences" id="toc-negative-consequences" class="nav-link" data-scroll-target="#negative-consequences">Negative Consequences</a></li>
+  <li><a href="#option-graveyard" id="toc-option-graveyard" class="nav-link" data-scroll-target="#option-graveyard">Option Graveyard</a></li>
+  <li><a href="#if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" id="toc-if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="nav-link" data-scroll-target="#if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</a></li>
+  <li><a href="#is-there-a-reason-why-this-should-be-core-and-done-by-us" id="toc-is-there-a-reason-why-this-should-be-core-and-done-by-us" class="nav-link" data-scroll-target="#is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/decisions/20230527-server-performance-test.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Changes to V-Sekai</h1>
-</div>
 
 
+<section id="generating-random-text-data-for-testing-v-sekai-systems" class="level1">
+<h1>Generating Random Text Data for testing V-Sekai systems</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: proposed</li>
+<li>Deciders: V-Sekai, Bioblaze Payne, fire</li>
+<li>Tags: V-Sekai, GPT-4</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
+<p>V-Sekai is a project that aims to provide an immersive virtual world experience for users. As the project grows in complexity, it becomes increasingly important to ensure that the system is thoroughly tested and can handle various scenarios. One of the challenges faced by the V-Sekai team is the lack of diverse and realistic data for testing purposes. This limitation hinders the ability to identify potential issues and optimize the system’s performance.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>To address the limitations in testing the V-Sekai system due to the lack of diverse and realistic data, this proposal suggests generating random text data for testing purposes.</p>
+<section id="implementation" class="level3">
+<h3 class="anchored" data-anchor-id="implementation">Implementation</h3>
+<p>We will use a tool like <a href="https://chancejs.com/">Chance.js library</a> to generate random text data for testing purposes and use the database.</p>
+<section id="text-processing" class="level4">
+<h4 class="anchored" data-anchor-id="text-processing">Text Processing</h4>
+<p>For generating random sentences, we will use something like the following method:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>chance<span class="op">.</span><span class="fu">sentence</span>()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Reference: <a href="https://chancejs.com/text/sentence.html">Chance.js Sentence</a></p>
+</section>
+<section id="user-data" class="level4">
+<h4 class="anchored" data-anchor-id="user-data">User Data</h4>
+<p>For generating random user names, we will use something like the following method:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>chance<span class="op">.</span><span class="fu">name</span>()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Reference: <a href="https://chancejs.com/person/name.html">Chance.js Name</a></p>
+</section>
+<section id="database-operations" class="level4">
+<h4 class="anchored" data-anchor-id="database-operations">Database Operations</h4>
+<p>We will perform the following SQL operations on the <code>user</code> and <code>chat</code> tables:</p>
+<ol type="1">
+<li>SELECT All Data in Table</li>
+<li>SELECT LIKE Data based on %NA%</li>
+<li>SELECT Specific Row Data</li>
+<li>INSERT</li>
+<li>UPDATE</li>
+<li>DELETE</li>
+</ol>
+<section id="tables" class="level5">
+<h5 class="anchored" data-anchor-id="tables">Tables</h5>
+<p><strong>Table user</strong></p>
+<p>id | username | password | updated_on | created_on |</p>
+<p><strong>Table chat</strong></p>
+<p>id | user_id | name | text | updated_on | deleted_on | created_on |</p>
+</section>
+</section>
+<section id="sql-function" class="level4">
+<h4 class="anchored" data-anchor-id="sql-function">SQL Function</h4>
+<p>We will create a SQL function to check if the username/password match and return ‘OK’. We will also check if the query returned is ‘OK’ and add false information randomly in the nodes to signify a user doing invalid calls for production testing.</p>
+<p>The implementation will generate 90 days of data, generating 100,000 text data entries for testing purposes.</p>
+</section>
+</section>
+</section>
+<section id="positive-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
+<ul>
+<li>Improved testing capabilities with diverse and realistic data</li>
+<li>Enhanced system reliability due to thorough testing</li>
+<li>Identification of potential issues before they impact users</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
+<ul>
+<li>Additional development time required to implement the solution</li>
+<li>Potential increase in storage requirements for generated data</li>
+</ul>
+</section>
+<section id="option-graveyard" class="level2">
+<h2 class="anchored" data-anchor-id="option-graveyard">Option Graveyard</h2>
+<ol type="1">
+<li><p><strong>Using static test data</strong>: This option was considered for simplicity, but it would not provide the diverse and realistic data needed for thorough testing.</p></li>
+<li><p><strong>Manual data generation</strong>: This option involved manually creating test data, but it was deemed time-consuming and inefficient compared to using a library like Chance.js.</p></li>
+<li><p><strong>Third-party data generation services</strong>: While there are external services that can generate random text data, using them would introduce dependencies and potential costs. Implementing our a solution similar to Chance.js allows for better control over the process.</p></li>
+<li><p><strong>Crowdsourcing test data</strong>: This option involved gathering test data from users or volunteers. However, it raised concerns about data privacy, consistency, and quality.</p></li>
+</ol>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
+<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
+<p>No, this enhancement is essential for thorough testing and cannot be easily worked around with a few lines of script.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
+<p>Yes, addressing the V-Sekai limitation is crucial for ensuring the system’s reliability and performance. Implementing this solution internally allows for better control over the testing process and data generation.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+</ul>
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
+</section>
+</section>
 
-</header>
-
-<p>All notable changes to this project will be documented in this file.</p>
-<p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>, and this project does <strong>not</strong> adhere to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
-<p><strong>Added</strong> for new features.</p>
-<p><strong>Changed</strong> for changes in existing functionality.</p>
-<p><strong>Deprecated</strong> for soon-to-be removed features.</p>
-<p><strong>Removed</strong> for now removed features.</p>
-<p><strong>Fixed</strong> for any bug fixes.</p>
-<p><strong>Security</strong> in case of vulnerabilities.</p>
-
-
-
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title-sort" data-direction="asc">
-          Title
-        </option>
-     </select>
-  </div>
-</div>
-
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1685206091941" data-listing-reading-time-sort="1" data-listing-title-sort="Changelog 2023-05" data-listing-filename-sort="changelog-2023-05.md">
-<td>
-<a href="./changelog/changelog-2023-05.html" class="title listing-title">Changelog 2023-05</a>
-</td>
-</tr>
-<tr data-index="1" data-listing-file-modified-sort="1685206091941" data-listing-reading-time-sort="2" data-listing-title-sort="Changelog 2023-03" data-listing-filename-sort="changelog-2023-03.md">
-<td>
-<a href="./changelog/changelog-2023-03.html" class="title listing-title">Changelog 2023-03</a>
-</td>
-</tr>
-<tr data-index="2" data-listing-file-modified-sort="1685206091941" data-listing-reading-time-sort="1" data-listing-title-sort="Changelog 2023-02" data-listing-filename-sort="changelog-2023-02.md">
-<td>
-<a href="./changelog/changelog-2023-02.html" class="title listing-title">Changelog 2023-02</a>
-</td>
-</tr>
-<tr data-index="3" data-listing-file-modified-sort="1685206091941" data-listing-reading-time-sort="1" data-listing-title-sort="Changelog 2023-01" data-listing-filename-sort="changelog-2023-01.md">
-<td>
-<a href="./changelog/changelog-2023-01.html" class="title listing-title">Changelog 2023-01</a>
-</td>
-</tr>
-<tr data-index="4" data-listing-file-modified-sort="1685206091941" data-listing-reading-time-sort="2" data-listing-title-sort="Changelog 2022-12" data-listing-filename-sort="changelog-2022-12.md">
-<td>
-<a href="./changelog/changelog-2022-12.html" class="title listing-title">Changelog 2022-12</a>
-</td>
-</tr>
-<tr data-index="5" data-listing-file-modified-sort="1685206091941" data-listing-reading-time-sort="2" data-listing-title-sort="Changelog 2022-11" data-listing-filename-sort="changelog-2022-11.md">
-<td>
-<a href="./changelog/changelog-2022-11.html" class="title listing-title">Changelog 2022-11</a>
-</td>
-</tr>
-<tr data-index="6" data-listing-file-modified-sort="1685206091941" data-listing-reading-time-sort="8" data-listing-title-sort="Changelog 2022-10" data-listing-filename-sort="changelog-2022-10.md">
-<td>
-<a href="./changelog/changelog-2022-10.html" class="title listing-title">Changelog 2022-10</a>
-</td>
-</tr>
-<tr data-index="7" data-listing-file-modified-sort="1685206091941" data-listing-reading-time-sort="1" data-listing-title-sort="Changelog 2022-09" data-listing-filename-sort="changelog-2022-09.md">
-<td>
-<a href="./changelog/changelog-2022-09.html" class="title listing-title">Changelog 2022-09</a>
-</td>
-</tr>
-<tr data-index="8" data-listing-file-modified-sort="1685206091941" data-listing-reading-time-sort="1" data-listing-title-sort="Changelog 2022-08" data-listing-filename-sort="changelog-2022-08.md">
-<td>
-<a href="./changelog/changelog-2022-08.html" class="title listing-title">Changelog 2022-08</a>
-</td>
-</tr>
-<tr data-index="9" data-listing-file-modified-sort="1685206091941" data-listing-reading-time-sort="3" data-listing-title-sort="Changelog 2022-06" data-listing-filename-sort="changelog-2022-06.md">
-<td>
-<a href="./changelog/changelog-2022-06.html" class="title listing-title">Changelog 2022-06</a>
-</td>
-</tr>
-<tr data-index="10" data-listing-file-modified-sort="1685206091941" data-listing-reading-time-sort="1" data-listing-title-sort="Changelog 2022-05" data-listing-filename-sort="changelog-2022-05.md">
-<td>
-<a href="./changelog/changelog-2022-05.html" class="title listing-title">Changelog 2022-05</a>
-</td>
-</tr>
-<tr data-index="11" data-listing-file-modified-sort="1685206091941" data-listing-reading-time-sort="3" data-listing-title-sort="Changelog 2022-04" data-listing-filename-sort="changelog-2022-04.md">
-<td>
-<a href="./changelog/changelog-2022-04.html" class="title listing-title">Changelog 2022-04</a>
-</td>
-</tr>
-<tr data-index="12" data-listing-file-modified-sort="1685206091937" data-listing-reading-time-sort="2" data-listing-title-sort="Changelog 2022-03" data-listing-filename-sort="changelog-2022-03.md">
-<td>
-<a href="./changelog/changelog-2022-03.html" class="title listing-title">Changelog 2022-03</a>
-</td>
-</tr>
-<tr data-index="13" data-listing-file-modified-sort="1685206091937" data-listing-reading-time-sort="1" data-listing-title-sort="Changelog 2022-02" data-listing-filename-sort="changelog-2022-02.md">
-<td>
-<a href="./changelog/changelog-2022-02.html" class="title listing-title">Changelog 2022-02</a>
-</td>
-</tr>
-<tr data-index="14" data-listing-file-modified-sort="1685206091937" data-listing-reading-time-sort="1" data-listing-title-sort="Changelog 2022-01" data-listing-filename-sort="changelog-2022-01.md">
-<td>
-<a href="./changelog/changelog-2022-01.html" class="title listing-title">Changelog 2022-01</a>
-</td>
-</tr>
-<tr data-index="15" data-listing-file-modified-sort="1685206091937" data-listing-reading-time-sort="2" data-listing-title-sort="Changelog 2021-11" data-listing-filename-sort="changelog-2021-11.md">
-<td>
-<a href="./changelog/changelog-2021-11.html" class="title listing-title">Changelog 2021-11</a>
-</td>
-</tr>
-<tr data-index="16" data-listing-file-modified-sort="1685206091937" data-listing-reading-time-sort="8" data-listing-title-sort="Changelog 2021-10" data-listing-filename-sort="changelog-2021-10.md">
-<td>
-<a href="./changelog/changelog-2021-10.html" class="title listing-title">Changelog 2021-10</a>
-</td>
-</tr>
-<tr data-index="17" data-listing-file-modified-sort="1685206091937" data-listing-reading-time-sort="10" data-listing-title-sort="Changelog 2021-09" data-listing-filename-sort="changelog-2021-09.md">
-<td>
-<a href="./changelog/changelog-2021-09.html" class="title listing-title">Changelog 2021-09</a>
-</td>
-</tr>
-<tr data-index="18" data-listing-file-modified-sort="1685206091937" data-listing-reading-time-sort="5" data-listing-title-sort="Changelog 2021-08" data-listing-filename-sort="changelog-2021-08.md">
-<td>
-<a href="./changelog/changelog-2021-08.html" class="title listing-title">Changelog 2021-08</a>
-</td>
-</tr>
-<tr data-index="19" data-listing-file-modified-sort="1685206091937" data-listing-reading-time-sort="6" data-listing-title-sort="Changelog 2021-07" data-listing-filename-sort="changelog-2021-07.md">
-<td>
-<a href="./changelog/changelog-2021-07.html" class="title listing-title">Changelog 2021-07</a>
-</td>
-</tr>
-<tr data-index="20" data-listing-file-modified-sort="1685206091937" data-listing-reading-time-sort="10" data-listing-title-sort="Changelog 2021-06" data-listing-filename-sort="changelog-2021-06.md">
-<td>
-<a href="./changelog/changelog-2021-06.html" class="title listing-title">Changelog 2021-06</a>
-</td>
-</tr>
-<tr data-index="21" data-listing-file-modified-sort="1685206091937" data-listing-reading-time-sort="19" data-listing-title-sort="Changelog 2021-05" data-listing-filename-sort="changelog-2021-05.md">
-<td>
-<a href="./changelog/changelog-2021-05.html" class="title listing-title">Changelog 2021-05</a>
-</td>
-</tr>
-<tr data-index="22" data-listing-file-modified-sort="1685206091937" data-listing-reading-time-sort="6" data-listing-title-sort="Changelog 2021-04" data-listing-filename-sort="changelog-2021-04.md">
-<td>
-<a href="./changelog/changelog-2021-04.html" class="title listing-title">Changelog 2021-04</a>
-</td>
-</tr>
-</tbody>
-
-</table>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -678,7 +628,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/changelog.qmd" class="toc-action">Edit this page</a></p></div></div></div>
+    </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
