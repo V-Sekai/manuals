@@ -19,7 +19,7 @@ The roadmap presented here is short-term.
 ```mermaid
 graph LR
   subgraph Short Term
-    A[May 16th, 2023] --> D[Assist Godot Engine 4.1 features before May 30th feature freeze]
+    A[May 27th, 2023] --> D[Assist Godot Engine 4.1 features before May 30th feature freeze]
     D --> E[Vrm upload to the asset library after May 30th, 2023]
     F --> G[Unidot Unity Import upload to the asset library after May 30th, 2023]
     G --> H[Add jitter buffer to godot_speech]
