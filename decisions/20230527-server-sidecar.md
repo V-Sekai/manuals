@@ -14,7 +14,7 @@ The goal is to find a more reliable and efficient solution for data synchronizat
 
 ## Proposed Solution
 
-We propose a new approach that involves directly inserting MVSQLite data into a local SQLite database and implementing a robust syncing mechanism to ensure data consistency across all devices and platforms.
+We propose a new approach that involves directly inserting MVSQLite data into the MVSQLite cluster database and implementing a robust syncing mechanism to ensure data consistency across all devices and platforms.
 
 1. Modify the editor export process to stream MVSQLite to the Godot Engine server.
 2. Schedule externally consistent syncing of MVSQLite with the Godot Engine server (1 frame).
