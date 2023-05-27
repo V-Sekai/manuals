@@ -2,7 +2,7 @@
 
 ### Metadata
 
-- Status: superseded by `20230527-v-sekai-roadmap.md` <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: accepted <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,lyuma,
 - Tags: V-Sekai,chatgpt4 summary,
 
@@ -19,13 +19,11 @@ The roadmap presented here is short-term.
 ```mermaid
 graph LR
   subgraph Short Term
-    A[May 16th, 2023] --> C[Assist Tokageit with Godot Engine 4.1 features before May 30th feature freeze]
-    B --> D[Assist Godot Engine 4.1 features before May 30th feature freeze]
-    C --> E
+    A[May 16th, 2023] --> D[Assist Godot Engine 4.1 features before May 30th feature freeze]
     D --> E[Vrm upload to the asset library after May 30th, 2023]
-    E --> F[Unidot fix import bugs that blocked assets import]
     F --> G[Unidot Unity Import upload to the asset library after May 30th, 2023]
-    G --> H[Implement onevoip]
+    G --> H[Add jitter buffer to godot_speech]
+    H --> I[Implement onevoip]
   end
 ```
 
