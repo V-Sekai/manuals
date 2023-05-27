@@ -3,7 +3,7 @@
 ## Metadata
 
 - Status: proposed
-- Deciders: V-Sekai, fire,
+- Deciders: V-Sekai, Bioblaze Payne, fire
 - Tags: V-Sekai, GPT-4
 
 ## Context and Problem Statement
