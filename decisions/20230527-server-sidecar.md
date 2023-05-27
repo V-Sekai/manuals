@@ -73,7 +73,6 @@ func should_sync():
 
 1. **Client-side caching**: Storing data on the client-side to reduce server load. However, this approach can lead to security vulnerabilities and inconsistent data across clients.
 2. **Static file export**: Exporting data as static files instead of using MVSQLite. This option was rejected due to limited flexibility and scalability.
-3. **Dedicated database server**: Setting up a dedicated database server for V-Sekai. While this could improve performance, it would also increase the complexity and maintenance costs of the system.
 
 These options were considered but ultimately rejected in favor of the proposed solution, which aims to balance performance, security, and maintainability.
 
