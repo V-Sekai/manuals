@@ -1,4 +1,4 @@
-## Virtual Worlds Learning Plan Template
+## Virtual worlds learning plan template
 
 Before launching any of these activities, it's essential to establish clear deadlines, outlines, and boundaries. Consider the following questions:
 
