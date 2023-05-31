@@ -114,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#build-a-macos-editor-for-the-ipad" id="toc-build-a-macos-editor-for-the-ipad" class="nav-link active" data-scroll-target="#build-a-macos-editor-for-the-ipad">Build a MacOS editor for the iPad</a>
+  <li><a href="#build-a-single-instance-macos-editor-for-the-ipad" id="toc-build-a-single-instance-macos-editor-for-the-ipad" class="nav-link active" data-scroll-target="#build-a-single-instance-macos-editor-for-the-ipad">Build a Single-Instance MacOS Editor for the iPad</a>
   <ul class="collapse">
   <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
   <li><a href="#context-and-problem-statement" id="toc-context-and-problem-statement" class="nav-link" data-scroll-target="#context-and-problem-statement">Context and Problem Statement</a></li>
@@ -128,15 +128,15 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/decisions/20230522-godot-engine-ipad.md" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/decisions/20230531-godot-engine-ipad.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-<section id="build-a-macos-editor-for-the-ipad" class="level1">
-<h1>Build a MacOS editor for the iPad</h1>
+<section id="build-a-single-instance-macos-editor-for-the-ipad" class="level1">
+<h1>Build a Single-Instance MacOS Editor for the iPad</h1>
 <section id="metadata" class="level2">
 <h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
@@ -147,13 +147,12 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="context-and-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
-<p>We have successfully tested a MacOS editor on the iPhone in February 2023. Now, we want to build a similar editor for the iPad so that people can upload game worlds and avatars from a tablet.</p>
+<p>We have successfully tested a MacOS editor on the iPhone in February 2023. Now, we want to build a similar editor for the iPad so that people can upload game worlds and avatars from a tablet. However, due to iOS limitations, it’s impossible to run multiple instances of the app or restart the app on non-jailbroken devices. Therefore, we need to adapt the existing codebase to work within these constraints.</p>
 </section>
 <section id="proposed-solution" class="level2">
 <h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
 <ol type="1">
-<li>Adapt the existing MacOS editor codebase for the iPad.</li>
-<li><del>Ensure that the user interface is optimized for the larger screen size of the iPad.</del></li>
+<li>Adapt the existing MacOS editor codebase for the iPad without relying on multi-process architecture.</li>
 <li>Test the application on various iPad models to ensure compatibility and performance.</li>
 </ol>
 </section>
@@ -162,12 +161,16 @@ ul.task-list li input[type="checkbox"] {
 <ol type="1">
 <li>Clone the existing iPhone Godot Engine editor repository.</li>
 <li>Create a new branch for the iPad version.</li>
-<li><del>Modify the user interface to accommodate the larger screen size of the iPad.</del></li>
-<li><del>Update any device-specific code to support the iPad.</del></li>
+<li>Modify the codebase to avoid using multi-process architecture:
+<ol type="1">
+<li>Change almost all global states (probably except UIApplication and view controller) to thread-local.</li>
+<li>Run multiple Godot instances in threads instead of processes.</li>
+</ol></li>
+<li>Implement the editor, import project folder, and export PCK to the filesystem. Our project requires SCN uploads to a web CDN.</li>
 <li>Test the application on different iPad models and fix any issues found during testing.
 <ol type="1">
 <li>Install Xcode.</li>
-<li>Generate certificates</li>
+<li>Generate certificates.</li>
 <li>Upload the Godot Engine iPad build to the iPad.</li>
 </ol></li>
 <li>Merge the iPad branch back into the main branch once the application is stable and fully functional.</li>
@@ -177,7 +180,6 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
 <ul>
 <li>Expanding the availability of the MacOS editor to iPad users.</li>
-<li><del>Leveraging the larger screen size of the iPad for an improved editing experience.</del></li>
 <li>Reusing the existing codebase, reducing development time and effort.</li>
 </ul>
 </section>
