@@ -1,4 +1,4 @@
-# Build a MacOS editor for the iPad
+# Build a Single-Instance MacOS Editor for the iPad
 
 ## Metadata
 
@@ -8,30 +8,30 @@
 
 ## Context and Problem Statement
 
-We have successfully tested a MacOS editor on the iPhone in February 2023. Now, we want to build a similar editor for the iPad so that people can upload game worlds and avatars from a tablet.
+We have successfully tested a MacOS editor on the iPhone in February 2023. Now, we want to build a similar editor for the iPad so that people can upload game worlds and avatars from a tablet. However, due to iOS limitations, it's impossible to run multiple instances of the app or restart the app on non-jailbroken devices. Therefore, we need to adapt the existing codebase to work within these constraints.
 
 ## Proposed Solution
 
-1. Adapt the existing MacOS editor codebase for the iPad.
-2. ~~Ensure that the user interface is optimized for the larger screen size of the iPad.~~
-3. Test the application on various iPad models to ensure compatibility and performance.
+1. Adapt the existing MacOS editor codebase for the iPad without relying on multi-process architecture.
+2. Test the application on various iPad models to ensure compatibility and performance.
 
 ## Implementation
 
 1. Clone the existing iPhone Godot Engine editor repository.
 2. Create a new branch for the iPad version.
-3. ~~Modify the user interface to accommodate the larger screen size of the iPad.~~
-4. ~~Update any device-specific code to support the iPad.~~
+3. Modify the codebase to avoid using multi-process architecture:
+   1. Change almost all global states (probably except UIApplication and view controller) to thread-local.
+   2. Run multiple Godot instances in threads instead of processes.
+4. Implement the editor, import project folder, and export PCK to the filesystem. Our project requires SCN uploads to a web CDN.
 5. Test the application on different iPad models and fix any issues found during testing.
-    1. Install Xcode.
-    2. Generate certificates 
-    3. Upload the Godot Engine iPad build to the iPad.
+   1. Install Xcode.
+   2. Generate certificates.
+   3. Upload the Godot Engine iPad build to the iPad.
 6. Merge the iPad branch back into the main branch once the application is stable and fully functional.
 
 ## Positive Consequences
 
 - Expanding the availability of the MacOS editor to iPad users.
-- ~~Leveraging the larger screen size of the iPad for an improved editing experience.~~
 - Reusing the existing codebase, reducing development time and effort.
 
 ## Negative Consequences
