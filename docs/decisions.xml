@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.361</generator>
-<lastBuildDate>Fri, 02 Jun 2023 11:10:44 GMT</lastBuildDate>
+<lastBuildDate>Fri, 02 Jun 2023 18:13:30 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/20230602-v-sekai-roadmap.html</link>
@@ -82,7 +82,95 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230602-v-sekai-roadmap.html</guid>
-  <pubDate>Fri, 02 Jun 2023 11:10:44 GMT</pubDate>
+  <pubDate>Fri, 02 Jun 2023 18:13:30 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230602-pmx-module-integration.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="pmx-module-integration" class="level1">
+<h1>Pmx module integration</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: proposed</li>
+<li>Deciders: V-Sekai</li>
+<li>Tags: V-Sekai, GPT-4</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
+<p>State process for importing a godot engine module work and publish.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>Integrate the Godot PMX module into the V-Sekai project by following the implementation steps below.</p>
+</section>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<ol type="1">
+<li>Go to <code>https://github.com/V-Sekai/godot</code></li>
+<li>Make sure the 4.0 branch is synced with <code>https://github.com/godotengine/godot</code></li>
+<li>Create a branch.
+<ul>
+<li>Let’s use an example like <code>vsk-pmx</code>.</li>
+</ul></li>
+<li>Switch to the branch.</li>
+<li>Run <code>git subrepo clone https://github.com/V-Sekai/godot-pmx modules/pmx</code></li>
+<li>Code the module.</li>
+<li>Run <code>git subrepo pull modules/pmx</code></li>
+<li>Run <code>git subrepo push modules/pmx</code></li>
+<li>Make sure GitHub CI/CD tests pass.</li>
+</ol>
+</section>
+<section id="positive-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
+<ul>
+<li>Seamless integration of the PMX module into the V-Sekai project</li>
+<li>Improved functionality and features for users</li>
+<li>Easier maintenance and updates for the module</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
+<ul>
+<li>Potential increase in complexity and dependencies</li>
+<li>Possible performance impact if not optimized properly</li>
+</ul>
+</section>
+<section id="option-graveyard" class="level2">
+<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
+<ol type="1">
+<li><p><strong>Manual integration of the PMX module</strong>: Instead of using <code>git subrepo</code>, manually copy and integrate the PMX module into the V-Sekai project. This option is less efficient and harder to maintain, as it requires manual updates and synchronization with the original PMX repository.</p></li>
+<li><p><strong>Using Git Submodules</strong>: Use Git submodules to include the PMX module in the V-Sekai project. While this approach allows for easier updates and maintenance, it can be more complex to set up and manage compared to <code>git subrepo</code>.</p></li>
+<li><p><strong>Creating a separate plugin</strong>: Develop the PMX module as a standalone plugin that users can install and enable in their projects. This option reduces the complexity of the core V-Sekai project but may result in less seamless integration and increased setup effort for users.</p></li>
+<li><p><strong>Forking the Godot Engine</strong>: Fork the entire Godot Engine and directly modify its source code to include the PMX module. This option is not recommended, as it would make it difficult to keep the fork updated with upstream changes and could lead to compatibility issues.</p></li>
+</ol>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
+<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
+<p>This enhancement cannot be easily worked around with a few lines of script, as it involves integrating a new module into the core project.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
+<p>Integrating the PMX module into the core project ensures that it is maintained and updated alongside the main project, providing a consistent and reliable experience for users.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230602-pmx-module-integration.html</guid>
+  <pubDate>Fri, 02 Jun 2023 18:13:30 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -162,7 +250,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230531-godot-engine-learning.html</guid>
-  <pubDate>Fri, 02 Jun 2023 11:10:44 GMT</pubDate>
+  <pubDate>Fri, 02 Jun 2023 18:13:30 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -256,7 +344,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230531-godot-engine-ipad.html</guid>
-  <pubDate>Fri, 02 Jun 2023 11:10:44 GMT</pubDate>
+  <pubDate>Fri, 02 Jun 2023 18:13:30 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -330,7 +418,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-v-sekai-roadmap.html</guid>
-  <pubDate>Fri, 02 Jun 2023 11:10:44 GMT</pubDate>
+  <pubDate>Fri, 02 Jun 2023 18:13:30 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -442,7 +530,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-sidecar.html</guid>
-  <pubDate>Fri, 02 Jun 2023 11:10:44 GMT</pubDate>
+  <pubDate>Fri, 02 Jun 2023 18:13:30 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -520,7 +608,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-side-content-validation.html</guid>
-  <pubDate>Fri, 02 Jun 2023 11:10:44 GMT</pubDate>
+  <pubDate>Fri, 02 Jun 2023 18:13:30 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -643,7 +731,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-performance-test.html</guid>
-  <pubDate>Fri, 02 Jun 2023 11:10:44 GMT</pubDate>
+  <pubDate>Fri, 02 Jun 2023 18:13:30 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -721,7 +809,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-cdn-session-url.html</guid>
-  <pubDate>Fri, 02 Jun 2023 11:10:44 GMT</pubDate>
+  <pubDate>Fri, 02 Jun 2023 18:13:30 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -803,7 +891,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-organization.html</guid>
-  <pubDate>Fri, 02 Jun 2023 11:10:44 GMT</pubDate>
+  <pubDate>Fri, 02 Jun 2023 18:13:30 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -882,7 +970,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-godot-test-game.html</guid>
-  <pubDate>Fri, 02 Jun 2023 11:10:44 GMT</pubDate>
+  <pubDate>Fri, 02 Jun 2023 18:13:30 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -971,7 +1059,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230525-animation-ik-node.html</guid>
-  <pubDate>Fri, 02 Jun 2023 11:10:44 GMT</pubDate>
+  <pubDate>Fri, 02 Jun 2023 18:13:30 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1064,7 +1152,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230523-marketing-cycle.html</guid>
-  <pubDate>Fri, 02 Jun 2023 11:10:44 GMT</pubDate>
+  <pubDate>Fri, 02 Jun 2023 18:13:30 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1144,7 +1232,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230522-JOKE-fictional-blood-combat.html</guid>
-  <pubDate>Fri, 02 Jun 2023 11:10:44 GMT</pubDate>
+  <pubDate>Fri, 02 Jun 2023 18:13:30 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1228,7 +1316,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230521-audio-jitter-buffer-voip.html</guid>
-  <pubDate>Fri, 02 Jun 2023 11:10:44 GMT</pubDate>
+  <pubDate>Fri, 02 Jun 2023 18:13:30 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1304,7 +1392,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230519-v-sekai-roadmap.html</guid>
-  <pubDate>Fri, 02 Jun 2023 11:10:44 GMT</pubDate>
+  <pubDate>Fri, 02 Jun 2023 18:13:30 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1413,7 +1501,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230519-add-vrm-omi-personality-gltf-extension.html</guid>
-  <pubDate>Fri, 02 Jun 2023 11:10:44 GMT</pubDate>
+  <pubDate>Fri, 02 Jun 2023 18:13:30 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1490,7 +1578,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230516-v-sekai-roadmap.html</guid>
-  <pubDate>Fri, 02 Jun 2023 11:10:44 GMT</pubDate>
+  <pubDate>Fri, 02 Jun 2023 18:13:30 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1586,7 +1674,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230516-create-an-aquarium-nightclub-booth-for-virtual-market.html</guid>
-  <pubDate>Fri, 02 Jun 2023 11:10:44 GMT</pubDate>
+  <pubDate>Fri, 02 Jun 2023 18:13:30 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1680,85 +1768,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230516-additional-3d-import.html</guid>
-  <pubDate>Fri, 02 Jun 2023 11:10:44 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20230509-wasm-data-exchange.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="exchange-data-between-godot-engine-and-wasm-using-handles" class="level1">
-<h1>Exchange data between Godot Engine and WASM using handles</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li>Status: draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
-<li>Deciders: V-Sekai, fire, lyuma, ashtonmeuser</li>
-<li>Tags: V-Sekai, ChatGPT-4</li>
-</ul>
-</section>
-<section id="context-and-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
-<p>V-Sekai faces a limitation in sending complex data types between the Godot Engine and WebAssembly (WASM) modules. Simple Variant types can be marshalled or copied onto the stack, but arrays, dictionaries, and Object types require a more efficient approach.</p>
-</section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>Implement a handle-based approach for managing complex data types. Allocate handles, possibly reference counted, allowing the WASM guest to pass integers around to all the Godot APIs. This will enable efficient communication between the host side and the WASM guest.</p>
-</section>
-<section id="implementation" class="level2">
-<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
-<ol type="1">
-<li>Design a handle-based system for managing complex data types.</li>
-<li>Implement reference counting for allocated handles.</li>
-<li>Add Godot APIs to accept integer handles instead of direct object references.</li>
-<li>Test the new implementation with various data types and scenarios.</li>
-</ol>
-</section>
-<section id="positive-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
-<ul>
-<li>Efficient communication between the host side and the WASM guest.</li>
-<li>Improved performance when dealing with complex data types.</li>
-<li>Simplified API usage for developers.</li>
-</ul>
-</section>
-<section id="negative-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
-<ul>
-<li>Additional complexity in the implementation.</li>
-<li>Potential overhead due to reference counting.</li>
-</ul>
-</section>
-<section id="option-graveyard" class="level2">
-<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
-<p>N/A</p>
-</section>
-<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
-<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
-<p>No, this enhancement addresses a core limitation and requires changes to the underlying system.</p>
-</section>
-<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
-<p>Yes, this enhancement improves the efficiency and usability of the V-Sekai platform, making it more attractive to developers and users.</p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ul>
-<li><a href="https://v-sekai.org/">V-Sekai</a></li>
-<li><a href="https://docs.godotengine.org/en/stable/classes/class_streampeer.html">Godot Engine StreamPeer</a></li>
-<li><a href="https://github.com/ashtonmeuser/godot-wasm">Godot Engine Wasm</a></li>
-<li><a href="https://github.com/V-Sekai/wasgo">Godot Engine WasGo</a></li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20230509-wasm-data-exchange.html</guid>
-  <pubDate>Fri, 02 Jun 2023 11:10:44 GMT</pubDate>
+  <pubDate>Fri, 02 Jun 2023 18:13:30 GMT</pubDate>
 </item>
 </channel>
 </rss>
