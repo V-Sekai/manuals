@@ -21,10 +21,11 @@ Integrate the Godot PMX module into the V-Sekai project by following the impleme
 3. Create a branch.
    - Let's use an example like `vsk-pmx`.
 4. Switch to the branch.
-5. Run `git subrepo clone https://github.com/V-Sekai/godot-pmx modules/pmx` 
+5. Run `git subrepo clone https://github.com/V-Sekai/godot-pmx modules/pmx` in the terminal or command prompt.
 6. Code the module.
-7. Run `git subrepo pull modules/pmx`
-8. Run `git subrepo push modules/pmx`
+7. Run `git subrepo pull modules/pmx` in the terminal or command prompt to merge with upstream repo.
+6. Code the module.
+8. Run `git subrepo push modules/pmx` in the terminal or command prompt to publish.
 9. Make sure GitHub CI/CD tests pass.
 
 ## Positive Consequences
@@ -42,7 +43,7 @@ Integrate the Godot PMX module into the V-Sekai project by following the impleme
 
 1. **Manual integration of the PMX module**: Instead of using `git subrepo`, manually copy and integrate the PMX module into the V-Sekai project. This option is less efficient and harder to maintain, as it requires manual updates and synchronization with the original PMX repository.
 
-2. **Using Git Submodules**: Use Git submodules to include the PMX module in the V-Sekai project. While this approach allows for easier updates and maintenance, it can be more complex to set up and manage compared to `git subrepo`.
+2. **Using Git Submodules**: Use `git submodule` to include the PMX module in the V-Sekai project. While this approach allows for easier updates and maintenance, it can be more complex to set up and manage compared to `git subrepo`.
 
 3. **Creating a separate plugin**: Develop the PMX module as a standalone plugin that users can install and enable in their projects. This option reduces the complexity of the core V-Sekai project but may result in less seamless integration and increased setup effort for users.
 
