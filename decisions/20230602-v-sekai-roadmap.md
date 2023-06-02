@@ -1,10 +1,10 @@
-# V-Sekai Roadmap and Goals 2023-05-19
+# V-Sekai Roadmap and Goals 2023-06-02
 
 ### Metadata
 
-- Status: superseded by `20230602-v-sekai-roadmap.md` <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
-- Deciders: V-Sekai,fire,lyuma,
-- Tags: V-Sekai,chatgpt4 summary,
+- Status: accepted <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Deciders: V-Sekai, fire, lyuma
+- Tags: V-Sekai,gpt4 summary
 
 ### Context and Problem Statement
 
@@ -19,11 +19,14 @@ The roadmap presented here is short-term.
 ```mermaid
 graph LR
   subgraph Short Term
-    A[May 27th, 2023] --> D[Assist Godot Engine 4.1 features before May 30th feature freeze]
-    D --> E[Vrm upload to the asset library after May 30th, 2023]
-    F --> G[Unidot Unity Import upload to the asset library after May 30th, 2023]
+    A[June 02th, 2023] --> E[VRM 1 import and export]
+    E --> F[VRM 1 and OMI_personality]
+    F --> G[Nightclub aquarium booth 4mx4mx5m]
     G --> H[Add jitter buffer to godot_speech]
-    H --> I[Implement onevoip]
+    H --> I[Assist with onevoip]
+    I --> K[What is stretchsense?]
+    K --> L[How can we get more artwork?]
+    L --> M[Collective work and other matters?]
   end
 ```
 
@@ -37,9 +40,7 @@ Overhead might be hard.
 
 ### Option graveyard
 
-- Implementing a custom voice chat solution instead of using onevoip
-- Waiting for Godot Engine 4.2 instead of assisting with 4.1 features
-- Ignoring SkeletonIK3D issues and focusing on other aspects
+We can avoid planning.
 
 ### If this enhancement will be used infrequently, can it be worked around with a few lines of script?
 
