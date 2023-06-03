@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.361</generator>
-<lastBuildDate>Sat, 03 Jun 2023 02:30:27 GMT</lastBuildDate>
+<lastBuildDate>Sat, 03 Jun 2023 02:31:32 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/20230602-v-sekai-roadmap.html</link>
@@ -82,7 +82,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230602-v-sekai-roadmap.html</guid>
-  <pubDate>Sat, 03 Jun 2023 02:30:27 GMT</pubDate>
+  <pubDate>Sat, 03 Jun 2023 02:31:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -171,7 +171,92 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230602-pmx-module-integration.html</guid>
-  <pubDate>Sat, 03 Jun 2023 02:30:27 GMT</pubDate>
+  <pubDate>Sat, 03 Jun 2023 02:31:32 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230602-limited-tracker-placement.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="capturing-accurate-body-movements-with-limited-tracker-placement" class="level1">
+<h1>Capturing accurate body movements with limited tracker placement</h1>
+<section id="metadata" class="level3">
+<h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
+<ul>
+<li>Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
+<li>Deciders: V-Sekai,fire,</li>
+<li>Tags: V-Sekai,</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level3">
+<h3 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h3>
+<p>In our current VR project, we face the challenge of capturing accurate body movements for both soccer and dancing experiences with a limited budget. How can we prioritize the placement of a limited number of trackers to ensure a realistic and immersive experience for both activities?</p>
+</section>
+<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level3">
+<h3 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h3>
+<p>The proposed option involves prioritizing tracker placement for the head, hands, hips, and feet, as they are essential for both soccer and dancing experiences. This approach allows for an effective trade-off between tracking accuracy and budget constraints while ensuring a satisfactory level of immersion in both activities.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level3">
+<h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h3>
+<ol type="1">
+<li>Head: At the base of the neck to monitor head rotation and tilt.</li>
+<li>Left Hand: On the left wrist to track the overall motion of the left hand.</li>
+<li>Right Hand: On the right wrist to track the overall motion of the right hand.</li>
+<li>Hips: A tracker on the hips to monitor lower body movement.</li>
+<li>Left Foot: A tracker on the left foot to capture left foot movement, essential for both soccer and dancing.</li>
+<li>Right Foot: A tracker on the right foot to capture right foot movement, also crucial for both activities.</li>
+</ol>
+<p>As the budget permits, additional trackers can be incorporated into the setup to further enhance tracking accuracy, particularly for the upper body and leg movements. This expansion can be achieved by following the prioritized list of additional trackers below:</p>
+<ol start="7" type="1">
+<li>Chest: A tracker on the chest to monitor upper body rotation, providing more detailed information about the user’s torso movements.</li>
+<li>Left Elbow: Attach a tracker to the left elbow to monitor its angle, speed, and position. This helps improve the accuracy of tracking arm movements during activities like soccer and dancing.</li>
+<li>Right Elbow: In the same way, place a tracker on the right elbow to keep track of its angle, speed, and position. This also enhances the precision of tracking arm movements in sports such as soccer and dance performances.</li>
+</ol>
+<p>By gradually adding these trackers to the initial setup, the overall tracking accuracy of the system will be improved. This will result in more natural and immersive interactions within the VR environment, leading to a more satisfying user experience for both soccer and dancing activities.</p>
+</section>
+<section id="positive-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h3>
+<ul>
+<li>Effective use of a limited budget while maintaining immersive experiences.</li>
+<li>The solution caters to both soccer and dancing activities in VR.</li>
+<li>Flexibility in adding more trackers as budget permits.</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h3>
+<ul>
+<li>Reduced tracking accuracy for upper body and leg movements compared to a setup with more trackers.</li>
+<li>Potential limitations in supporting advanced features or interactions in VR.</li>
+</ul>
+</section>
+<section id="option-graveyard" class="level3">
+<h3 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h3>
+<p>Camera-based tracking: Utilizing external cameras to track body movements without the need for wearable trackers. While this approach can be cost-effective, it may not provide the same level of accuracy and precision as wearable trackers, particularly for fast and complex movements in soccer and dancing. Additionally, camera-based tracking can be sensitive to lighting conditions and may require a specific setup to function optimally.</p>
+<p>Camera-based tracking might be a viable solution if budget constraints are severe, but it is essential to consider the potential trade-offs in terms of tracking accuracy and reliability compared to wearable trackers.</p>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level3">
+<h3 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h3>
+<p>No, as the proposed solution deals with hardware configuration and the strategic placement of physical trackers to balance budget and immersion.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level3">
+<h3 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h3>
+<p>Yes, ensuring an immersive VR experience with a limited budget is a fundamental challenge that requires expertise in tracker placement and prioritization.</p>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230602-limited-tracker-placement.html</guid>
+  <pubDate>Sat, 03 Jun 2023 02:31:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -251,7 +336,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230531-godot-engine-learning.html</guid>
-  <pubDate>Sat, 03 Jun 2023 02:30:27 GMT</pubDate>
+  <pubDate>Sat, 03 Jun 2023 02:31:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -345,7 +430,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230531-godot-engine-ipad.html</guid>
-  <pubDate>Sat, 03 Jun 2023 02:30:27 GMT</pubDate>
+  <pubDate>Sat, 03 Jun 2023 02:31:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -419,7 +504,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-v-sekai-roadmap.html</guid>
-  <pubDate>Sat, 03 Jun 2023 02:30:27 GMT</pubDate>
+  <pubDate>Sat, 03 Jun 2023 02:31:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -531,7 +616,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-sidecar.html</guid>
-  <pubDate>Sat, 03 Jun 2023 02:30:27 GMT</pubDate>
+  <pubDate>Sat, 03 Jun 2023 02:31:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -609,7 +694,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-side-content-validation.html</guid>
-  <pubDate>Sat, 03 Jun 2023 02:30:27 GMT</pubDate>
+  <pubDate>Sat, 03 Jun 2023 02:31:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -732,7 +817,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-performance-test.html</guid>
-  <pubDate>Sat, 03 Jun 2023 02:30:27 GMT</pubDate>
+  <pubDate>Sat, 03 Jun 2023 02:31:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -810,7 +895,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-cdn-session-url.html</guid>
-  <pubDate>Sat, 03 Jun 2023 02:30:27 GMT</pubDate>
+  <pubDate>Sat, 03 Jun 2023 02:31:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -892,7 +977,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-organization.html</guid>
-  <pubDate>Sat, 03 Jun 2023 02:30:27 GMT</pubDate>
+  <pubDate>Sat, 03 Jun 2023 02:31:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -971,7 +1056,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-godot-test-game.html</guid>
-  <pubDate>Sat, 03 Jun 2023 02:30:27 GMT</pubDate>
+  <pubDate>Sat, 03 Jun 2023 02:31:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1060,7 +1145,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230525-animation-ik-node.html</guid>
-  <pubDate>Sat, 03 Jun 2023 02:30:27 GMT</pubDate>
+  <pubDate>Sat, 03 Jun 2023 02:31:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1153,7 +1238,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230523-marketing-cycle.html</guid>
-  <pubDate>Sat, 03 Jun 2023 02:30:27 GMT</pubDate>
+  <pubDate>Sat, 03 Jun 2023 02:31:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1233,7 +1318,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230522-JOKE-fictional-blood-combat.html</guid>
-  <pubDate>Sat, 03 Jun 2023 02:30:27 GMT</pubDate>
+  <pubDate>Sat, 03 Jun 2023 02:31:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1317,7 +1402,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230521-audio-jitter-buffer-voip.html</guid>
-  <pubDate>Sat, 03 Jun 2023 02:30:27 GMT</pubDate>
+  <pubDate>Sat, 03 Jun 2023 02:31:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1393,7 +1478,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230519-v-sekai-roadmap.html</guid>
-  <pubDate>Sat, 03 Jun 2023 02:30:27 GMT</pubDate>
+  <pubDate>Sat, 03 Jun 2023 02:31:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1502,7 +1587,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230519-add-vrm-omi-personality-gltf-extension.html</guid>
-  <pubDate>Sat, 03 Jun 2023 02:30:27 GMT</pubDate>
+  <pubDate>Sat, 03 Jun 2023 02:31:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1579,7 +1664,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230516-v-sekai-roadmap.html</guid>
-  <pubDate>Sat, 03 Jun 2023 02:30:27 GMT</pubDate>
+  <pubDate>Sat, 03 Jun 2023 02:31:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1675,101 +1760,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230516-create-an-aquarium-nightclub-booth-for-virtual-market.html</guid>
-  <pubDate>Sat, 03 Jun 2023 02:30:27 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20230516-additional-3d-import.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="additional-3d-import-functionality" class="level1">
-<h1>Additional 3D Import Functionality</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li>Status: rejected <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
-<li>Deciders: V-Sekai,fire,</li>
-<li>Tags: V-Sekai,ChatGPT-4,AI_assistance</li>
-</ul>
-</section>
-<section id="propose-a-possible-solution-to-solve-a-v-sekai-limitation.-if-this-doesnt-look-right-choose-a-different-type." class="level2">
-<h2 class="anchored" data-anchor-id="propose-a-possible-solution-to-solve-a-v-sekai-limitation.-if-this-doesnt-look-right-choose-a-different-type.">Propose a possible solution to solve a V-Sekai limitation. If this doesn’t look right, choose a different type.</h2>
-<p>Improve the 3D import functionality in Godot Engine for V-Sekai by enhancing the existing import process and adding support for more file formats.</p>
-<p><strong><em>This proposal is rejected because it doesn’t improve the 3D import functionality compared to its effort</em></strong></p>
-</section>
-<section id="metadata-1" class="level2">
-<h2 class="anchored" data-anchor-id="metadata-1">Metadata</h2>
-<ul>
-<li>Status: proposed</li>
-<li>Deciders: V-Sekai</li>
-<li>Tags: V-Sekai, GPT-4</li>
-</ul>
-</section>
-<section id="context-and-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
-<p>V-Sekai has implemented <code>.fbx</code> and <code>.gltf</code> 3D import, and <code>.obj</code> is already part of Godot Engine. However, there is still room for improvement in the import process and support for additional file formats. The current Blender importer for Godot Engine 4.0 requires an additional installation and injects a Python script into Blender.</p>
-</section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<ol type="1">
-<li>Develop an addon that can simultaneously export colliders, occluders, and LOD variants for a given mesh without requiring an additional Blender importer.</li>
-<li>Enhance the existing import process by providing better error handling, reporting, and automatic fixes for common issues.</li>
-<li>Improve the performance of the import process, especially for large and complex 3D models.</li>
-</ol>
-</section>
-<section id="implementation" class="level2">
-<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
-<ol type="1">
-<li>Create an addon that automatically searches for and sets Geometry Nodes input constants with relevant names (e.g., <code>is_occluder</code>, <code>is_collider</code>, and <code>LOD</code>) while exporting, giving modelers maximum flexibility on how different versions of a mesh should be exported. This addon should not require an additional Blender importer or Python script injection.</li>
-<li>Update the import pipeline to handle errors gracefully and provide helpful feedback to users.</li>
-<li>Optimize the import process by implementing caching, parallel processing, and other performance improvements.</li>
-</ol>
-</section>
-<section id="positive-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
-<ol type="1">
-<li>Users will have more control over the export process, allowing them to easily manage colliders, occluders, and LOD variants without needing an additional Blender importer.</li>
-<li>The improved import process will reduce the time spent on fixing import-related issues.</li>
-<li>Faster import times will lead to a smoother development experience.</li>
-</ol>
-</section>
-<section id="negative-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
-<ol type="1">
-<li>Developing an addon may require additional resources and maintenance.</li>
-<li>There might be potential licensing issues with integrating third-party libraries.</li>
-</ol>
-</section>
-<section id="option-graveyard" class="level2">
-<h2 class="anchored" data-anchor-id="option-graveyard">Option Graveyard</h2>
-<ol type="1">
-<li>Relying solely on community plugins for additional import functionality.</li>
-<li>Limiting support to only a few popular file formats.</li>
-</ol>
-</section>
-<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
-<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
-<p>No, this enhancement addresses a core limitation in the engine and requires significant changes to the import pipeline.</p>
-</section>
-<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
-<p>Yes, improving the 3D import functionality is essential for providing a better user experience and supporting a wider range of 3D modeling tools. It also ensures that V-Sekai remains competitive with other game engines.</p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ul>
-<li><a href="https://v-sekai.org/">V-Sekai</a></li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20230516-additional-3d-import.html</guid>
-  <pubDate>Sat, 03 Jun 2023 02:30:27 GMT</pubDate>
+  <pubDate>Sat, 03 Jun 2023 02:31:32 GMT</pubDate>
 </item>
 </channel>
 </rss>
