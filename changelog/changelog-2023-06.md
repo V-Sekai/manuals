@@ -1,5 +1,7 @@
 # Changelog 2023-06
 
+In June 2023, various developments and discussions took place in the Godot community, particularly within the V-Sekai project. Key highlights include updates to the `godot-vrm` repository, security improvements in the `v-sekai-game` repository, and progress on animation retargeting and PMX character structure. Additionally, a fix was implemented for Skeleton3D's `rest_dirty` reset issue.
+
 - Fork created: `aaronfranke/godot-vrm` (01/06/2023)
 - New commits in `V-Sekai/godot-vrm` repository, including updates to `load_at_runtime_scene` for 4.x and adding `files_dropped` functionality (02/06/2023)
 - PR 130 closed, bumping `github/codeql-action` from 2.3.5 to 2.3.6 in `V-Sekai/v-sekai-game` (02/06/2023)

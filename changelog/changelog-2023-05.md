@@ -1,5 +1,7 @@
 # Changelog 2023-05
 
+In May 2023, significant progress was made in the Godot community and V-Sekai project. Key developments include the implementation of WebAssembly modules for Godot Engine 4, improvements to the V-Sekai Godot Engine fork, and advancements in Unidot's FBX humanoid support. Additionally, there were updates to the manual site, suggestions for Blender VRM drag-and-drop support, and bug fixes related to LODs.
+
 * https://github.com/ashtonmeuser/godot-wasm/tree/godot-4 Implements wasm modules for Godot Engine 4.
 * Fire has chatgpt4 api access.
 * Merged godot-wasm into V-Sekai Godot Engine fork for experimenting with user generated scripting and optimization of computation.
