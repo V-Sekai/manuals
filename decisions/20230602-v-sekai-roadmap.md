@@ -2,7 +2,7 @@
 
 ### Metadata
 
-- Status: accepted <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: superseded by `20230608-v-sekai-roadmap.md` <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai, fire, lyuma
 - Tags: V-Sekai,gpt4 summary
 
