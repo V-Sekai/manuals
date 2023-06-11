@@ -86,7 +86,7 @@ Yes, integrating Wasm into V-Sekai's core ensures optimal performance and seamle
 
 Here's a glossary of definitions to help people understand the terms used in the Wasm in V-Sekai proposal:
 
-1. **WebAssembly (Wasm)**: A type of code that runs faster than regular code, making games and virtual worlds work better.
+1. **WebAssembly (Wasm)**: A type of code that is more portable than regular code, making games and virtual worlds work better. Originally made for the web.
 
 2. **GDScript**: A programming language used to make games and apps in the Godot game engine.
 

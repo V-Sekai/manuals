@@ -1,8 +1,6 @@
-## Changelog Abstract
+# Changelog 2021-04
 
 In April 2021, various developments and discussions took place in the Godot community. Key highlights include proposal designs for MaterialX integration, audio system improvements, and updates to the TPS demo for Godot 4.0. Additionally, there were investigations into edcurve support, normal seam problems, and soft body creation usability.
-
-# Changelog 2021-04
 
 ### 2021-04-30
 - Proposal design of MaterialX Principled BSDF to Blender Principled BSDF to Blender surface.
