@@ -37,6 +37,20 @@ Wasm modules facilitate advanced functions in virtual worlds and avatar-based so
 
 ## Implementation
 
+Using `MissingNode` in this design is essential because it provides a placeholder for nodes that are not yet available or implemented in the `godot-wasm` environment. This can be particularly useful when working with a WebAssembly build of the Godot engine, where certain features or nodes might not be supported or fully implemented.
+
+There are several reasons why using `MissingNode` is beneficial:
+
+1. **Graceful degradation**: When a node type is not supported or not yet implemented in the `godot-wasm` environment, using `MissingNode` allows the application to continue running without crashing or encountering errors. It acts as a fallback mechanism, ensuring that the rest of the application can still function even if some nodes are missing.
+
+2. **Simplified implementation**: By using `MissingNode`, you can focus on implementing only the dependencies required for handling missing nodes, rather than implementing all possible node types. This reduces the complexity of your `godot-wasm` implementation and makes it easier to manage.
+
+3. **Easier debugging**: When a `MissingNode` is encountered, it can provide information about the missing node type, making it easier to identify and fix issues related to unsupported or unimplemented nodes.
+
+4. **Future-proofing**: As new nodes are added to the Godot engine or support for existing nodes is improved in the `godot-wasm` environment, you can easily replace `MissingNode` instances with the actual nodes once they become available. This ensures that your application remains compatible with future updates and improvements to the Godot engine.
+
+In summary, using `MissingNode` in your design is essential to handle missing or not yet available nodes gracefully, simplify the `godot-wasm` implementation, make debugging easier, and ensure compatibility with future updates to the Godot engine.
+
 The UGC (User-Generated Content) WASM modules, uploaded by users for universal access, are attached to a `MissingNode` as a script, providing property data and behavior. The clever implementation involves `MissingResource` for resources and a dictionary of `Variant` for node properties. Behavior is within the dictionary in this design. Utilizing Godot's standard `set_script` property, WASM Godot only needs to implement dependencies for `MissingNode` and `MissingResource`, excluding components like `Node3D`.
 
 ## Positive Consequences
