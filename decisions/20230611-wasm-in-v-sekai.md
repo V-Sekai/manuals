@@ -46,8 +46,8 @@ Here's a concise explanation of the implementation:
 1. **User uploads a Wasm module**: Custom Wasm modules with desired functionality are uploaded to V-Sekai.
 2. **Attach Wasm module to a node**: The Wasm module is attached to a node as a script, providing advanced functionality for the node.
 3. **Use MissingResource for resources**: `MissingResource` is used for handling unavailable or unimplemented resources, providing a fallback mechanism.
-4. **Store node properties in a Variant dictionary**: Node properties are stored in a `Variant` dictionary, allowing representation and manipulation of various data types.
-5. **Implement behavior within the Variant dictionary**: Node behavior is defined within the `Variant` dictionary, enabling Wasm modules to provide both property data and behavior.
+4. **Store node properties in a Variant dictionary**: Node properties are stored in as properties of a `MissingNode`, allowing representation and manipulation of various data types.
+5. **Implement behavior within the Variant dictionary**: Node behavior is defined within script variable, enabling Wasm modules to provide both property data and behavior.
 6. **Utilize Godot's set_script property**: Using Godot's `set_script` property, Wasm modules are attached to nodes and `MissingResource` objects, simplifying dependency handling.
 
 This approach ensures graceful handling of missing resources while offering advanced functionality through user-uploaded Wasm modules.
