@@ -8,7 +8,7 @@
 
 ## Context and Problem Statement
 
-V-Sekai aims to provide a high-performance platform for virtual worlds and avatar-based social games. The current implementation relies on GDScript or C++ native modules, which may not offer the desired performance for user agency, complex calculations, graphics rendering, and algorithm execution.
+V-Sekai aims to provide a high-performance platform for virtual worlds and avatar-based social games. The current implementation relies on GDScript or C++ native modules, which may not offer the desired performance, user agency, complex calculations, graphics rendering, and algorithm execution.
 
 ## Proposed Solution
 
