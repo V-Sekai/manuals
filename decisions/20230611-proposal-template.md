@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- Status: superseded <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai
-- Tags: V-Sekai, GPT-4
+- Tags: V-Sekai
 
 ## Context and Problem Statement
 
@@ -25,3 +25,4 @@
 ## References
 
 - [V-Sekai](https://v-sekai.org/)
+- This article was assisted by AI.
