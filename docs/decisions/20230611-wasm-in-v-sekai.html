@@ -186,6 +186,15 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="implementation" class="level2">
 <h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<p>Using <code>MissingNode</code> in this design is essential because it provides a placeholder for nodes that are not yet available or implemented in the <code>godot-wasm</code> environment. This can be particularly useful when working with a WebAssembly build of the Godot engine, where certain features or nodes might not be supported or fully implemented.</p>
+<p>There are several reasons why using <code>MissingNode</code> is beneficial:</p>
+<ol type="1">
+<li><p><strong>Graceful degradation</strong>: When a node type is not supported or not yet implemented in the <code>godot-wasm</code> environment, using <code>MissingNode</code> allows the application to continue running without crashing or encountering errors. It acts as a fallback mechanism, ensuring that the rest of the application can still function even if some nodes are missing.</p></li>
+<li><p><strong>Simplified implementation</strong>: By using <code>MissingNode</code>, you can focus on implementing only the dependencies required for handling missing nodes, rather than implementing all possible node types. This reduces the complexity of your <code>godot-wasm</code> implementation and makes it easier to manage.</p></li>
+<li><p><strong>Easier debugging</strong>: When a <code>MissingNode</code> is encountered, it can provide information about the missing node type, making it easier to identify and fix issues related to unsupported or unimplemented nodes.</p></li>
+<li><p><strong>Future-proofing</strong>: As new nodes are added to the Godot engine or support for existing nodes is improved in the <code>godot-wasm</code> environment, you can easily replace <code>MissingNode</code> instances with the actual nodes once they become available. This ensures that your application remains compatible with future updates and improvements to the Godot engine.</p></li>
+</ol>
+<p>In summary, using <code>MissingNode</code> in your design is essential to handle missing or not yet available nodes gracefully, simplify the <code>godot-wasm</code> implementation, make debugging easier, and ensure compatibility with future updates to the Godot engine.</p>
 <p>The UGC (User-Generated Content) WASM modules, uploaded by users for universal access, are attached to a <code>MissingNode</code> as a script, providing property data and behavior. The clever implementation involves <code>MissingResource</code> for resources and a dictionary of <code>Variant</code> for node properties. Behavior is within the dictionary in this design. Utilizing Godot’s standard <code>set_script</code> property, WASM Godot only needs to implement dependencies for <code>MissingNode</code> and <code>MissingResource</code>, excluding components like <code>Node3D</code>.</p>
 </section>
 <section id="positive-consequences" class="level2">
