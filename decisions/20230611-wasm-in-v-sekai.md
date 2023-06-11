@@ -62,6 +62,7 @@ This approach ensures graceful handling of missing resources while offering adva
 
 - Potential security risks with user-uploaded Wasm modules
 - Increased complexity in implementation and maintenance
+- Ensuring a wasm module has no defects is difficult with or without source code.
 
 ## Option graveyard
 
