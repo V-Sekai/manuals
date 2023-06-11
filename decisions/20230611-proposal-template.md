@@ -25,4 +25,4 @@
 ## References
 
 - [V-Sekai](https://v-sekai.org/)
-- This article was assisted by AI.
+<!-- - This article was assisted by AI. -->
