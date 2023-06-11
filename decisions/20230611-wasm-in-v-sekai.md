@@ -69,9 +69,9 @@ Yes, integrating Wasm into V-Sekai's core ensures optimal performance and seamle
 - [V-Sekai](https://v-sekai.org/)
 - This article was assisted by AI.
 
-## Glossary for Grade School People
+## Glossary
 
-Here's a glossary of definitions to help grade school people understand the terms used in the Wasm in V-Sekai proposal:
+Here's a glossary of definitions to help people understand the terms used in the Wasm in V-Sekai proposal:
 
 1. **WebAssembly (Wasm)**: A type of code that runs faster than regular code, making games and virtual worlds work better.
 
