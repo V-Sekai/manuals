@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>V-Sekai - Manuals – feature_template</title>
+<title>V-Sekai - Manuals – wasm-in-v-sekai</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -114,11 +114,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#a-possible-solution-to-solve-a-v-sekai-limitation" id="toc-a-possible-solution-to-solve-a-v-sekai-limitation" class="nav-link active" data-scroll-target="#a-possible-solution-to-solve-a-v-sekai-limitation">A possible solution to solve a V-Sekai limitation</a>
+  <li><a href="#wasm-in-v-sekai-proposal" id="toc-wasm-in-v-sekai-proposal" class="nav-link active" data-scroll-target="#wasm-in-v-sekai-proposal">Wasm in V-Sekai Proposal</a>
   <ul class="collapse">
   <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
   <li><a href="#context-and-problem-statement" id="toc-context-and-problem-statement" class="nav-link" data-scroll-target="#context-and-problem-statement">Context and Problem Statement</a></li>
-  <li><a href="#proposed-solution" id="toc-proposed-solution" class="nav-link" data-scroll-target="#proposed-solution">Proposed Solution</a></li>
+  <li><a href="#proposed-solution" id="toc-proposed-solution" class="nav-link" data-scroll-target="#proposed-solution">Proposed Solution</a>
+  <ul class="collapse">
+  <li><a href="#ownership" id="toc-ownership" class="nav-link" data-scroll-target="#ownership">Ownership</a></li>
+  <li><a href="#security" id="toc-security" class="nav-link" data-scroll-target="#security">Security</a></li>
+  <li><a href="#functionality" id="toc-functionality" class="nav-link" data-scroll-target="#functionality">Functionality</a></li>
+  </ul></li>
   <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation">Implementation</a></li>
   <li><a href="#positive-consequences" id="toc-positive-consequences" class="nav-link" data-scroll-target="#positive-consequences">Positive Consequences</a></li>
   <li><a href="#negative-consequences" id="toc-negative-consequences" class="nav-link" data-scroll-target="#negative-consequences">Negative Consequences</a></li>
@@ -126,54 +131,122 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" id="toc-if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="nav-link" data-scroll-target="#if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</a></li>
   <li><a href="#is-there-a-reason-why-this-should-be-core-and-done-by-us" id="toc-is-there-a-reason-why-this-should-be-core-and-done-by-us" class="nav-link" data-scroll-target="#is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#glossary-for-grade-school-people" id="toc-glossary-for-grade-school-people" class="nav-link" data-scroll-target="#glossary-for-grade-school-people">Glossary for Grade School People</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/features/feature_template.md" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/decisions/20230611-wasm-in-v-sekai.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-<section id="a-possible-solution-to-solve-a-v-sekai-limitation" class="level1">
-<h1>A possible solution to solve a V-Sekai limitation</h1>
+<section id="wasm-in-v-sekai-proposal" class="level1">
+<h1>Wasm in V-Sekai Proposal</h1>
 <section id="metadata" class="level2">
 <h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
-<li>Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
-<li>Deciders: V-Sekai</li>
-<li>Tags: V-Sekai, GPT-4</li>
+<li>Status: proposed</li>
+<li>Deciders: V-Sekai, fire</li>
+<li>Tags: V-Sekai</li>
 </ul>
 </section>
 <section id="context-and-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
+<p>V-Sekai aims to provide a high-performance platform for virtual worlds and avatar-based social games. The current implementation relies on GDScript or C++ native modules, which may not offer the desired performance for user agency, complex calculations, graphics rendering, and algorithm execution.</p>
 </section>
 <section id="proposed-solution" class="level2">
 <h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>V-Sekai utilizes WebAssembly (Wasm) to enhance performance, offering an alternative to GDScript.</p>
+<section id="ownership" class="level3">
+<h3 class="anchored" data-anchor-id="ownership">Ownership</h3>
+<ul>
+<li>Core modules: Owned by V-Sekai</li>
+<li>Custom modules: Owned by users</li>
+</ul>
+</section>
+<section id="security" class="level3">
+<h3 class="anchored" data-anchor-id="security">Security</h3>
+<p>User-uploaded Wasm modules undergo a two-step process for safety and unauthorized access prevention:</p>
+<ol type="1">
+<li><strong>Validation</strong>: Ensure module structure and integrity adhere to security standards.</li>
+<li><strong>Sandboxing</strong>: Confine modules in a secure environment, restricting system resource access and mitigating potential harm.</li>
+</ol>
+</section>
+<section id="functionality" class="level3">
+<h3 class="anchored" data-anchor-id="functionality">Functionality</h3>
+<p>Wasm modules facilitate advanced functions in virtual worlds and avatar-based social games, such as:</p>
+<ul>
+<li>Efficient character animations</li>
+<li>Interactive environments</li>
+<li>Real-time multiplayer networking</li>
+<li>Immersive gameplay experiences</li>
+</ul>
+</section>
 </section>
 <section id="implementation" class="level2">
 <h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<p>The UGC (User-Generated Content) WASM modules, uploaded by users for universal access, are attached to a <code>MissingNode</code> as a script, providing property data and behavior. The clever implementation involves <code>MissingResource</code> for resources and a dictionary of <code>Variants</code> for node properties. Behavior is within the dictionary in this design. Utilizing Godot’s standard <code>set_script</code> property, WASM Godot only needs to implement dependencies for <code>MissingNode</code> and <code>MissingResource</code>, excluding components like <code>Node3D</code>.</p>
 </section>
 <section id="positive-consequences" class="level2">
 <h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
+<ul>
+<li>Improved performance for complex calculations, graphics rendering, and algorithm execution</li>
+<li>Greater user control over scripts and customization</li>
+<li>Enhanced functionality for virtual worlds and avatar-based social games</li>
+</ul>
 </section>
 <section id="negative-consequences" class="level2">
 <h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
+<ul>
+<li>Potential security risks with user-uploaded Wasm modules</li>
+<li>Increased complexity in implementation and maintenance</li>
+</ul>
 </section>
 <section id="option-graveyard" class="level2">
 <h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
+<ol type="1">
+<li><strong>Optimizing GDScript</strong>: Improving the performance of GDScript was considered, but it would not provide the same level of performance boost as WebAssembly.</li>
+<li><strong>Using a different scripting language</strong>: Alternative scripting languages like Lua or Python were considered, but they also do not offer the desired performance improvements compared to WebAssembly.</li>
+<li><strong>Native code integration</strong>: Integrating native code (C++, Rust, etc.) directly into V-Sekai was considered, but it would increase complexity and maintenance efforts. Additionally, it would not provide the same level of security and sandboxing as WebAssembly.</li>
+</ol>
 </section>
 <section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
 <h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
+<p>No, the enhancement aims to provide a significant performance boost and advanced functionality that cannot be achieved with a few lines of script.</p>
 </section>
 <section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
+<p>Yes, integrating Wasm into V-Sekai’s core ensures optimal performance and seamless integration with existing systems.</p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <ul>
 <li><a href="https://v-sekai.org/">V-Sekai</a></li>
+<li>This article was assisted by AI.</li>
 </ul>
+</section>
+<section id="glossary-for-grade-school-people" class="level2">
+<h2 class="anchored" data-anchor-id="glossary-for-grade-school-people">Glossary for Grade School People</h2>
+<p>Here’s a glossary of definitions to help grade school people understand the terms used in the Wasm in V-Sekai proposal:</p>
+<ol type="1">
+<li><p><strong>WebAssembly (Wasm)</strong>: A type of code that runs faster than regular code, making games and virtual worlds work better.</p></li>
+<li><p><strong>GDScript</strong>: A programming language used to make games and apps in the Godot game engine.</p></li>
+<li><p><strong>C++ native modules</strong>: Pieces of code written in the C++ programming language that can be added to a game or app to make it work better.</p></li>
+<li><p><strong>V-Sekai</strong>: A platform for creating virtual worlds and avatar-based social games.</p></li>
+<li><p><strong>Metadata</strong>: Information about something, like who made it and what it’s for.</p></li>
+<li><p><strong>Validation</strong>: Checking if something is correct and follows the rules.</p></li>
+<li><p><strong>Sandboxing</strong>: Putting something in a safe area where it can’t cause harm or access things it shouldn’t.</p></li>
+<li><p><strong>User-Generated Content (UGC)</strong>: Things that people who use a game or app create themselves, like characters, levels, or stories.</p></li>
+<li><p><strong>MissingNode</strong>: A part of the game or app that needs a script to tell it what to do.</p></li>
+<li><p><strong>MissingResource</strong>: Something that a game or app needs but doesn’t have yet, like an image or sound.</p></li>
+<li><p><strong>Variant</strong>: A data type in Godot that can store different kinds of information, like numbers, text, or objects. It is used to represent and manipulate data in various ways within the game engine.</p></li>
+<li><p><strong>Node3D</strong>: A point in a 3D space that helps build a virtual world or game.</p></li>
+<li><p><strong>Godot</strong>: A free and open-source game engine used to create games and apps.</p></li>
+<li><p><strong>Lua</strong>: A programming language often used in game development.</p></li>
+<li><p><strong>Python</strong>: A popular programming language used for many purposes, including game development.</p></li>
+<li><p><strong>Rust</strong>: A programming language focused on safety and performance, often used for creating fast and reliable software.</p></li>
+</ol>
 
 
 </section>
