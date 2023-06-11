@@ -37,9 +37,7 @@ Wasm modules facilitate advanced functions in virtual worlds and avatar-based so
 
 ## Implementation
 
-The proposed solution uses WebAssembly (Wasm) to enhance performance and functionality in V-Sekai through User-Generated Content (UGC) Wasm modules. These modules are attached to a `MissingNode` as a script, enabling them to provide property data and behavior for nodes in the virtual world or game.
-
-**MissingNode and MissingResource are existing Godot Engine 4.0 stable features**
+The proposed solution uses WebAssembly (Wasm) to enhance performance and functionality in V-Sekai through User-Generated Content (UGC) Wasm modules. These modules are attached to an existing base node as a script, enabling them to provide property data and behavior for nodes in the virtual world or game.
 
 Here's a concise explanation of the implementation:
 
@@ -49,6 +47,8 @@ Here's a concise explanation of the implementation:
 4. **Store node properties in a Variant dictionary**: Node properties are stored in as properties of a `MissingNode`, allowing representation and manipulation of various data types.
 5. **Implement behavior within the Variant dictionary**: Node behavior is defined within script variable, enabling Wasm modules to provide both property data and behavior.
 6. **Utilize Godot's set_script property**: Using Godot's `set_script` property, Wasm modules are attached to nodes and `MissingResource` objects, simplifying dependency handling.
+
+**MissingNode and MissingResource are existing Godot Engine 4.0 stable features**
 
 This approach ensures graceful handling of missing resources while offering advanced functionality through user-uploaded Wasm modules.
 
