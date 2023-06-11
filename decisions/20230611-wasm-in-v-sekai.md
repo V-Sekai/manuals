@@ -37,7 +37,7 @@ Wasm modules facilitate advanced functions in virtual worlds and avatar-based so
 
 ## Implementation
 
-The UGC (User-Generated Content) WASM modules, uploaded by users for universal access, are attached to a `MissingNode` as a script, providing property data and behavior. The clever implementation involves `MissingResource` for resources and a dictionary of `Variants` for node properties. Behavior is within the dictionary in this design. Utilizing Godot's standard `set_script` property, WASM Godot only needs to implement dependencies for `MissingNode` and `MissingResource`, excluding components like `Node3D`.
+The UGC (User-Generated Content) WASM modules, uploaded by users for universal access, are attached to a `MissingNode` as a script, providing property data and behavior. The clever implementation involves `MissingResource` for resources and a dictionary of `Variant` for node properties. Behavior is within the dictionary in this design. Utilizing Godot's standard `set_script` property, WASM Godot only needs to implement dependencies for `MissingNode` and `MissingResource`, excluding components like `Node3D`.
 
 ## Positive Consequences
 
