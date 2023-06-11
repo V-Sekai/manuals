@@ -25,4 +25,5 @@
 ## References
 
 - [V-Sekai](https://v-sekai.org/)
+- V-Sekai is pronounced: `vee - suh-kai`
 <!-- - This article was assisted by AI. -->
