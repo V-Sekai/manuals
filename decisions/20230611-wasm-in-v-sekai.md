@@ -37,7 +37,7 @@ Wasm modules facilitate advanced functions in virtual worlds and avatar-based so
 
 ## Implementation
 
-Using `MissingNode` in this design is essential because it provides a placeholder for nodes that are not yet available or implemented in the `godot-wasm` environment. This can be particularly useful when working with WebAssembly scripts in Godot Engine, where certain features or nodes might not be supported or fully implemented.
+Using `MissingNode` in this design is essential because it provides a placeholder for nodes that are not yet available or implemented in the `godot-wasm` environment. This can be particularly useful when working with WebAssembly in Godot Engine, where certain features or nodes might not be supported or fully implemented.
 
 There are several reasons why using `MissingNode` is beneficial:
 
