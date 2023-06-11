@@ -1,6 +1,8 @@
 # V-Sekai Social VR
 
-We're creating an open-source virtual reality platform that prioritizes ease of use and meets the requirements of the VR community. Become a part of the [V-Sekai](https://v-sekai.org) team by joining our [Discord server](https://discord.gg/7BQDHesck8)! V-Sekai translates to "virtual world" in Japanese.
+We're creating an open-source virtual reality platform that prioritizes ease of use and meets the requirements of the VR community. Become a part of the [V-Sekai](https://v-sekai.org) team by joining our [Discord server](https://discord.gg/7BQDHesck8)! 
+
+Vセカイ (vī-sekai) translates to "V-World" in English.
 
 ## Collaborative
 
