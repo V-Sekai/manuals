@@ -51,6 +51,7 @@ Here's a concise explanation of the implementation:
 6. **Utilize Godot's set_script property**: Using Godot's `set_script` property, Wasm modules are attached to nodes and `MissingResource` objects, simplifying dependency handling.
 
 This approach ensures graceful handling of missing resources while offering advanced functionality through user-uploaded Wasm modules.
+
 ## Positive Consequences
 
 - Improved performance for complex calculations, graphics rendering, and algorithm execution
