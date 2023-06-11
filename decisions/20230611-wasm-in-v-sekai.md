@@ -52,6 +52,29 @@ Here's a concise explanation of the implementation:
 
 This approach ensures graceful handling of missing resources while offering advanced functionality through user-uploaded Wasm modules.
 
+### Example PackedScene with GDScript
+
+```
+[gd_scene load_steps=2 format=3 uid="uid://bk1cybq0p5ekv"]
+
+[sub_resource type="GDScript" id="GDScript_jtge8"]
+script/source = "extends Marker3D
+
+func _enter_tree():
+    print(\"_enter_tree\")
+    print(\"Add position\")
+    var current_global_transform: Transform3D = get(\"global_transform\")
+    current_global_transform.origin = current_global_transform.origin + Vector3(0, 1, 0)
+    set(\"global_transform\", current_global_transform)
+    print(get("global_transform"))
+"
+
+
+[node name="Marker3D" type="MissingNode"]
+original_class = "Marker3D"
+script = SubResource("GDScript_jtge8")
+```
+
 ## Positive Consequences
 
 - Improved performance for complex calculations, graphics rendering, and algorithm execution
