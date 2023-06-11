@@ -25,5 +25,5 @@
 ## References
 
 - [V-Sekai](https://v-sekai.org/)
-- V-Sekai is pronounced: `vee - suh-kai`
+- V-セカイ (vī-sekai) translates to "V-World" in English.
 <!-- - This article [is / or is not] assisted by AI. -->
