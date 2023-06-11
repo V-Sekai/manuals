@@ -1,8 +1,8 @@
-# V-Sekai Roadmap and Goals 2023-05-19
+# V-Sekai Roadmap and Goals 2023-06-08
 
 ### Metadata
 
-- Status: superseded by `20230602-v-sekai-roadmap.md` <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: accepted <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,lyuma,
 - Tags: V-Sekai,chatgpt4 summary,
 
@@ -19,9 +19,14 @@ The roadmap presented here is short-term.
 ```mermaid
 graph LR
   subgraph Short Term
-    A[May 27th, 2023] --> D[Assist Godot Engine 4.1 features before May 30th feature freeze]
-    D --> E[Vrm upload to the asset library after May 30th, 2023]
-    F --> G[Unidot Unity Import upload to the asset library after May 30th, 2023]
+    A[June 08th, 2023] --> D[IK Points for V-sekai]
+    D --> E[Investigate ManyBoneIK & mediapipe to support Facial Mocap to ARKit 52 blendshape and audio to face]
+    E --> F[Elixir mvsqlite Serversidecar]
+    F --> I[Add jitter buffer to godot_speech]
+  end
+  subgraph Mid-term Term
+    D --> E[Vrm upload to the asset library]
+    F --> G[Unidot Unity Import upload to the asset library]
     G --> H[Add jitter buffer to godot_speech]
     H --> I[Implement onevoip]
   end
