@@ -52,7 +52,7 @@ Here's a concise explanation of the implementation:
 
 This approach ensures graceful handling of missing resources while offering advanced functionality through user-uploaded Wasm modules.
 
-### Example PackedScene with GDScript
+### PackedScene proof of concept with GDScript
 
 ```
 [gd_scene load_steps=2 format=3 uid="uid://bk1cybq0p5ekv"]
