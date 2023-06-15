@@ -25,5 +25,4 @@
 ## References
 
 - [V-Sekai](https://v-sekai.org/)
-- V-セカイ (vī-sekai) translates to "V-World" in English.
 <!-- - This article [is / or is not] assisted by AI. -->
