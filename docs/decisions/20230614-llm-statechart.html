@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>V-Sekai - Manuals – proposal-template</title>
+<title>V-Sekai - Manuals – llm-statechart</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/decisions/20230611-proposal-template.md" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/decisions/20230614-llm-statechart.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -140,39 +140,62 @@ ul.task-list li input[type="checkbox"] {
 <section id="metadata" class="level2">
 <h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
-<li>Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
+<li>Status: proposed</li>
 <li>Deciders: V-Sekai</li>
-<li>Tags: V-Sekai</li>
+<li>Tags: V-Sekai, ai assisted</li>
 </ul>
 </section>
 <section id="context-and-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
+<p>Generate an AnimationTrees with blend trees and nested state machines as a startchart json.</p>
 </section>
 <section id="proposed-solution" class="level2">
 <h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>Create a script that generates a JSON file representing the AnimationTrees structure, including blend trees and nested state machines. This JSON file can then be used to create the corresponding AnimationTrees in the V-Sekai engine.</p>
 </section>
 <section id="implementation" class="level2">
 <h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<ol type="1">
+<li>Define the JSON schema for the AnimationTrees structure.</li>
+<li>Create a script that reads the existing AnimationTrees data and converts it into the defined JSON format.</li>
+<li>Implement a function in the V-Sekai engine that reads the generated JSON file and creates the corresponding AnimationTrees.</li>
+</ol>
 </section>
 <section id="positive-consequences" class="level2">
 <h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
+<ul>
+<li>Easier management and sharing of AnimationTrees structures.</li>
+<li>Simplified collaboration between developers working on the same project.</li>
+<li>Potential for automation and procedural generation of AnimationTrees.</li>
+</ul>
 </section>
 <section id="negative-consequences" class="level2">
 <h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
+<ul>
+<li>Additional development time required to implement the JSON conversion script and the corresponding function in the V-Sekai engine.</li>
+<li>Possible performance overhead when reading and parsing the JSON file.</li>
+</ul>
 </section>
 <section id="option-graveyard" class="level2">
 <h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
+<ul>
+<li>Manually creating and managing AnimationTrees structures without using a JSON representation.</li>
+</ul>
 </section>
 <section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
 <h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
+<p>No, this enhancement aims to simplify the management and sharing of complex AnimationTrees structures, which cannot be easily achieved with just a few lines of script.</p>
 </section>
 <section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
+<p>Yes, implementing this feature as part of the core V-Sekai engine ensures consistency and compatibility across different projects and developers using the engine.</p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <ul>
-<li><a href="https://v-sekai.org/">V-Sekai</a> <!-- - This article [is / or is not] assisted by AI. --></li>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+<li><a href="https://github.com/1rgs/jsonformer">jsonformer</a></li>
+<li><a href="https://python.langchain.com/en/latest/modules/models/llms/integrations/jsonformer_experimental.html">integrations/jsonformer_experimental</a></li>
 </ul>
 
 
