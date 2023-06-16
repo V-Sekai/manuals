@@ -41,7 +41,39 @@ end
         | {:avg_lerp}
         | {:plus}
         | {:union}
-        
+
+defmodule PropagateFilter do
+  use Membrane.Filter
+
+  @impl true
+  def handle_init(_) do
+    {:ok, %{}}
+  end
+
+  @impl true
+  def handle_demand(:output, size, :buffers, _ctx) do
+    {{:ok, demand: {:input, size}}, %{}}
+  end
+
+  @impl true
+  def handle_process(:input, buffer, _ctx) do
+    # Process the input data and generate the output data
+    output_data = process(buffer.payload)
+
+    # Create a new buffer with the output data
+    output_buffer = %Membrane.Buffer{payload: output_data}
+
+    {{:ok, buffer: {:output, output_buffer}}, %{}}
+  end
+
+  defp process(input_data) do
+    # Implement your processing logic here
+    # For example, if input_data is a list of numbers, you can calculate their sum:
+    Enum.reduce(input_data, 0, &(&1 + &2))
+  end
+end
+
+
 defmodule XprPipeline do
   use Membrane.Pipeline
 
@@ -59,7 +91,8 @@ defmodule XprPipeline do
       reduce: ReduceElement,
       update: UpdateElement,
       tee: Master,
-      funnel: Funnel
+      funnel: Funnel,
+      propagate: PropagateFilter
     ]
 
     links = [
@@ -70,6 +103,7 @@ defmodule XprPipeline do
       |> to(:light_cone)
       |> to(:collapsing)
       |> to(:reduce)
+      |> to(:propagate)
       |> to(:funnel)
       |> to(:update)
     ]
@@ -77,6 +111,4 @@ defmodule XprPipeline do
     {{:ok, %ParentSpec{children: children, links: links}}, %{}}
   end
 end
-
-
 ```
