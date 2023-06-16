@@ -14,6 +14,48 @@
     "text": "import { Machine, assign } from 'xstate';\nimport { Vector3, Quaternion, Vector3 as Scale } from 'three';\n\ninterface Server {\n  color: string;\n}\n\ninterface Player {\n  color: string;\n  inventory: string[];\n}\n\ninterface PosePoint {\n  position: Vector3;\n  rotation: Quaternion;\n}\n\ninterface Context {\n  authority: Server | null;\n  ownership: Player | null;\n  cdnId: string;\n  avatarState: {\n    position: Vector3;\n    rotation: Quaternion;\n    scale: Scale;\n    timeDifference: number;\n    posePoints: PosePoint[];\n    blendShapes: { [key: string]: number };\n  };\n  errorMessage: string;\n}\n\ntype Event =\n  | { type: 'INTERACT'; player: Player }\n  | { type: 'GRAB'; player: Player; itemId: string }\n  | { type: 'UPDATE_AVATAR_STATE'; newState: Context['avatarState'] }\n  | { type: 'STOP_ACTION' }\n  | { type: 'SERVER_AUTHORITY'; server: Server }\n  | { type: 'ERROR'; message: string };\n\nconst update = (key, value) =&gt; assign({ [key]: (_, event) =&gt; event[value] });\n\nconst grabTransition = {\n  actions: [\n    update('ownership', 'player'),\n    assign({ inventory: (context, event) =&gt; [...context.ownership.inventory, event.itemId] }),\n  ],\n  target: 'owned',\n};\n\nconst setAuthority = (authorityType) =&gt; (context, event) =&gt; {\n  if (event.type === 'INTERACT') {\n    return event.player;\n  } else if (event.type === 'SERVER_AUTHORITY') {\n    return event.server;\n  }\n  return context[authorityType];\n};\n\nconst machine = Machine&lt;Context, Event&gt;({\n  id: 'networkedPhysics',\n  initial: 'defaultAuthority',\n  context: {\n    authority: null,\n    ownership: null,\n    cdnId: '',\n    avatarState: {\n      position: new Vector3(),\n      rotation: new Quaternion(),\n      scale: new Scale(1, 1, 1),\n      timeDifference: 0,\n      posePoints: Array(11).fill({ position: new Vector3(), rotation: new Quaternion() }),\n      blendShapes: {},\n    },\n    errorMessage: '',\n  },\n  on: {\n    UPDATE_AVATAR_STATE: { actions: update('avatarState', 'newState') },\n    ERROR: { actions: update('errorMessage', 'message'), target: 'error' },\n  },\n  states: {\n    defaultAuthority: {\n      on: {\n        INTERACT: {\n          actions: update('authority', setAuthority('authority')),\n          target: 'activeAuthority',\n        },\n        GRAB: grabTransition,\n        SERVER_AUTHORITY: {\n          actions: update('authority', setAuthority('authority')),\n          target: 'activeAuthority',\n        },\n      },\n    },\n    activeAuthority: {\n      on: {\n        INTERACT: { actions: update('authority', setAuthority('authority')) },\n        STOP_ACTION: { target: 'defaultAuthority' },\n        GRAB: grabTransition,\n        SERVER_AUTHORITY: {\n          actions: update('authority', setAuthority('authority')),\n        },\n      },\n    },\n    owned: {\n      on: {\n        STOP_ACTION: {\n          actions: update('ownership', () =&gt; null),\n          target: 'defaultAuthority',\n        },\n        SERVER_AUTHORITY: {\n          actions: update('authority', setAuthority('authority')),\n          target: 'activeAuthority',\n        },\n      },\n    },\n    error: {\n      on: {\n        RESET_ERROR: {\n          actions: assign({ errorMessage: '' }),\n          target: 'defaultAuthority',\n        },\n      },\n    },\n  },\n});\n\nexport default machine;"
   },
   {
+    "objectID": "states/flatbuffer_packed_scenes.html",
+    "href": "states/flatbuffer_packed_scenes.html",
+    "title": "Merge Scene Tool for Godot Editor with FlatBuffer-based JSON Serialization",
+    "section": "",
+    "text": "In collaborative projects, team members may edit the same scene in different ways. Version control systems (VCS) like Git can help manage these modifications through merging. However, merging scenes (TSCN format) can be challenging due to their complex semantics and potential for corruption.\n\n\n\nTo prevent scene corruption after merging, the Godot Editor should provide a merge scene window that allows users to merge TSCN files. This tool should:\n\nDetect Git merge conflict placeholders (&lt;&lt;&lt;&lt;&lt;&lt;&lt;, =======, &gt;&gt;&gt;&gt;&gt;&gt;&gt;)\nReconstruct local and remote scenes\nDisplay a merged scene tree with actions to accept or discard changes, or choose between local and remote versions\n\nThe merge tool should be intelligent enough to detect node movements, renaming, and other complex scene semantics. It should also allow users to edit the merged scene before saving it.\n\n\n\nMerge Scene Tool Example\n\n\n\n\nTo ensure efficient serialization of the internal state of the merge tool at the start, in between, and at the end, FlatBuffer-based JSON should be used. This will allow for faster processing and better performance while maintaining human-readability.\n\n\n\n\nWhile this feature could be implemented as an add-on, a merge tool is a common feature in modern IDEs and should be fully integrated into the Godot Editor for a seamless user experience."
+  },
+  {
+    "objectID": "states/flatbuffer_packed_scenes.html#problem-merging-scenes-in-collaborative-projects",
+    "href": "states/flatbuffer_packed_scenes.html#problem-merging-scenes-in-collaborative-projects",
+    "title": "Merge Scene Tool for Godot Editor with FlatBuffer-based JSON Serialization",
+    "section": "",
+    "text": "In collaborative projects, team members may edit the same scene in different ways. Version control systems (VCS) like Git can help manage these modifications through merging. However, merging scenes (TSCN format) can be challenging due to their complex semantics and potential for corruption."
+  },
+  {
+    "objectID": "states/flatbuffer_packed_scenes.html#solution-integrate-a-merge-scene-tool-in-godot-editor",
+    "href": "states/flatbuffer_packed_scenes.html#solution-integrate-a-merge-scene-tool-in-godot-editor",
+    "title": "Merge Scene Tool for Godot Editor with FlatBuffer-based JSON Serialization",
+    "section": "",
+    "text": "To prevent scene corruption after merging, the Godot Editor should provide a merge scene window that allows users to merge TSCN files. This tool should:\n\nDetect Git merge conflict placeholders (&lt;&lt;&lt;&lt;&lt;&lt;&lt;, =======, &gt;&gt;&gt;&gt;&gt;&gt;&gt;)\nReconstruct local and remote scenes\nDisplay a merged scene tree with actions to accept or discard changes, or choose between local and remote versions\n\nThe merge tool should be intelligent enough to detect node movements, renaming, and other complex scene semantics. It should also allow users to edit the merged scene before saving it.\n\n\n\nMerge Scene Tool Example\n\n\n\n\nTo ensure efficient serialization of the internal state of the merge tool at the start, in between, and at the end, FlatBuffer-based JSON should be used. This will allow for faster processing and better performance while maintaining human-readability."
+  },
+  {
+    "objectID": "states/flatbuffer_packed_scenes.html#reason-for-core-integration",
+    "href": "states/flatbuffer_packed_scenes.html#reason-for-core-integration",
+    "title": "Merge Scene Tool for Godot Editor with FlatBuffer-based JSON Serialization",
+    "section": "",
+    "text": "While this feature could be implemented as an add-on, a merge tool is a common feature in modern IDEs and should be fully integrated into the Godot Editor for a seamless user experience."
+  },
+  {
+    "objectID": "states/flatbuffer_packed_scenes.html#problem-limited-scene-file-format-options",
+    "href": "states/flatbuffer_packed_scenes.html#problem-limited-scene-file-format-options",
+    "title": "Merge Scene Tool for Godot Editor with FlatBuffer-based JSON Serialization",
+    "section": "Problem: Limited Scene File Format Options",
+    "text": "Problem: Limited Scene File Format Options\nWhen working on a project related to Godot, such as game development or add-ons, you may encounter limitations with the current scene file formats:\n\nescn: For scenes created by external tools (e.g., importing from Blender)\nscn: Binary format, small but not very useful when collaborating on a project\ntscn: Textual format, INI/TOML-like syntax, human-readable, and encouraged for use\n\nThe TSCN format is proprietary and not widely used, leading to issues such as difficulty editing scenes outside of the Godot Editor and a lack of supporting tools like linters or syntax checkers."
+  },
+  {
+    "objectID": "states/flatbuffer_packed_scenes.html#solution-support-flatbuffer-based-json-as-an-alternative-human-readable-file-format",
+    "href": "states/flatbuffer_packed_scenes.html#solution-support-flatbuffer-based-json-as-an-alternative-human-readable-file-format",
+    "title": "Merge Scene Tool for Godot Editor with FlatBuffer-based JSON Serialization",
+    "section": "Solution: Support FlatBuffer-based JSON as an Alternative Human-Readable File Format",
+    "text": "Solution: Support FlatBuffer-based JSON as an Alternative Human-Readable File Format\nTo overcome these limitations, it would be beneficial for Godot to support alternative human-readable file formats, such as FlatBuffer-based JSON. FlatBuffers provide a more efficient way to serialize and deserialize data compared to standard JSON while still being human-readable.\nThis feature should be part of the core engine to ensure official support and seamless integration.\nUse the extension FBJSCN."
+  },
+  {
     "objectID": "states/xpr.html",
     "href": "states/xpr.html",
     "title": "V-Sekai - Manuals",
@@ -53,7 +95,7 @@
     "href": "statecharts.html",
     "title": "Statechart Diagrams",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n     \n  \n\n\n\n\n\n\nTitle\n\n\n\n\n\n\n\n\nundefined\n\n\n\n\n\n\n\nNetwork state machine DRAFT\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n     \n  \n\n\n\n\n\n\nTitle\n\n\n\n\n\n\n\n\nundefined\n\n\n\n\n\n\n\nNetwork state machine DRAFT\n\n\n\n\n\n\n\nMerge Scene Tool for Godot Editor with FlatBuffer-based JSON Serialization\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "changelog.html",

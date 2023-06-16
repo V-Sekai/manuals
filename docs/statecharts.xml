@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/statecharts.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.361</generator>
-<lastBuildDate>Fri, 16 Jun 2023 19:36:22 GMT</lastBuildDate>
+<lastBuildDate>Fri, 16 Jun 2023 19:58:35 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/states/networked_physics.html</link>
@@ -876,7 +876,71 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/states/networked_physics.html</guid>
-  <pubDate>Fri, 16 Jun 2023 19:36:22 GMT</pubDate>
+  <pubDate>Fri, 16 Jun 2023 19:58:35 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/states/flatbuffer_packed_scenes.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="merge-scene-tool-for-godot-editor-with-flatbuffer-based-json-serialization" class="level1">
+<h1>Merge Scene Tool for Godot Editor with FlatBuffer-based JSON Serialization</h1>
+<section id="problem-merging-scenes-in-collaborative-projects" class="level2">
+<h2 class="anchored" data-anchor-id="problem-merging-scenes-in-collaborative-projects">Problem: Merging Scenes in Collaborative Projects</h2>
+<p>In collaborative projects, team members may edit the same scene in different ways. Version control systems (VCS) like Git can help manage these modifications through merging. However, merging scenes (TSCN format) can be challenging due to their complex semantics and potential for corruption.</p>
+</section>
+<section id="solution-integrate-a-merge-scene-tool-in-godot-editor" class="level2">
+<h2 class="anchored" data-anchor-id="solution-integrate-a-merge-scene-tool-in-godot-editor">Solution: Integrate a Merge Scene Tool in Godot Editor</h2>
+<p>To prevent scene corruption after merging, the Godot Editor should provide a merge scene window that allows users to merge TSCN files. This tool should:</p>
+<ol type="1">
+<li>Detect Git merge conflict placeholders (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>)</li>
+<li>Reconstruct local and remote scenes</li>
+<li>Display a merged scene tree with actions to accept or discard changes, or choose between local and remote versions</li>
+</ol>
+<p>The merge tool should be intelligent enough to detect node movements, renaming, and other complex scene semantics. It should also allow users to edit the merged scene before saving it.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://v-sekai.github.io/manuals/states/https:/example.com/merge-scene-tool.gif" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Merge Scene Tool Example</figcaption>
+</figure>
+</div>
+<section id="flatbuffer-based-json-serialization-for-merge-tool-state" class="level3">
+<h3 class="anchored" data-anchor-id="flatbuffer-based-json-serialization-for-merge-tool-state">FlatBuffer-based JSON Serialization for Merge Tool State</h3>
+<p>To ensure efficient serialization of the internal state of the merge tool at the start, in between, and at the end, FlatBuffer-based JSON should be used. This will allow for faster processing and better performance while maintaining human-readability.</p>
+</section>
+</section>
+<section id="reason-for-core-integration" class="level2">
+<h2 class="anchored" data-anchor-id="reason-for-core-integration">Reason for Core Integration</h2>
+<p>While this feature could be implemented as an add-on, a merge tool is a common feature in modern IDEs and should be fully integrated into the Godot Editor for a seamless user experience.</p>
+</section>
+</section>
+<section id="alternative-file-formats-for-godot-scenes" class="level1">
+<h1>Alternative File Formats for Godot Scenes</h1>
+<section id="problem-limited-scene-file-format-options" class="level2">
+<h2 class="anchored" data-anchor-id="problem-limited-scene-file-format-options">Problem: Limited Scene File Format Options</h2>
+<p>When working on a project related to Godot, such as game development or add-ons, you may encounter limitations with the current scene file formats:</p>
+<ul>
+<li><strong>escn</strong>: For scenes created by external tools (e.g., importing from Blender)</li>
+<li><strong>scn</strong>: Binary format, small but not very useful when collaborating on a project</li>
+<li><strong>tscn</strong>: Textual format, INI/TOML-like syntax, human-readable, and encouraged for use</li>
+</ul>
+<p>The TSCN format is proprietary and not widely used, leading to issues such as difficulty editing scenes outside of the Godot Editor and a lack of supporting tools like linters or syntax checkers.</p>
+</section>
+<section id="solution-support-flatbuffer-based-json-as-an-alternative-human-readable-file-format" class="level2">
+<h2 class="anchored" data-anchor-id="solution-support-flatbuffer-based-json-as-an-alternative-human-readable-file-format">Solution: Support FlatBuffer-based JSON as an Alternative Human-Readable File Format</h2>
+<p>To overcome these limitations, it would be beneficial for Godot to support alternative human-readable file formats, such as FlatBuffer-based JSON. FlatBuffers provide a more efficient way to serialize and deserialize data compared to standard JSON while still being human-readable.</p>
+<p>This feature should be part of the core engine to ensure official support and seamless integration.</p>
+<p>Use the extension <code>FBJSCN</code>.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/states/flatbuffer_packed_scenes.html</guid>
+  <pubDate>Fri, 16 Jun 2023 19:58:35 GMT</pubDate>
 </item>
 </channel>
 </rss>
