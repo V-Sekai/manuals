@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/statecharts.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.361</generator>
-<lastBuildDate>Fri, 16 Jun 2023 08:34:09 GMT</lastBuildDate>
+<lastBuildDate>Fri, 16 Jun 2023 09:44:43 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/states/networked_physics.html</link>
@@ -35,7 +35,11 @@ font-style: inherit;">;</span></span>
 background-color: null;
 font-style: inherit;">import</span> { Vector3<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">,</span> Quaternion } <span class="im" style="color: #00769E;
+font-style: inherit;">,</span> Quaternion<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> Vector3 <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> Scale } <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -45,68 +49,145 @@ font-style: inherit;">;</span></span>
 <span id="cb1-3"></span>
 <span id="cb1-4"><span class="kw" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">interface</span> Context {</span>
-<span id="cb1-5">  authority<span class="op" style="color: #5E5E5E;
+font-style: inherit;">interface</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">Server</span> {</span>
+<span id="cb1-5">  color<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">string</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb1-6">  ownership<span class="op" style="color: #5E5E5E;
+<span id="cb1-6">}</span>
+<span id="cb1-7"></span>
+<span id="cb1-8"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">interface</span> Player {</span>
+<span id="cb1-9">  color<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">string</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb1-7">  cdnId<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">string</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb1-8">  avatarState<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> {</span>
-<span id="cb1-9">    position<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> Vector3<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb1-10">    rotation<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> Quaternion<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb1-11">    timeDifference<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">number</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb1-12">  }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb1-13">  inventory<span class="op" style="color: #5E5E5E;
+<span id="cb1-10">  inventory<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">string</span>[]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb1-14">}</span>
-<span id="cb1-15"></span>
-<span id="cb1-16"><span class="kw" style="color: #003B4F;
+<span id="cb1-11">}</span>
+<span id="cb1-12"></span>
+<span id="cb1-13"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">interface</span> PosePoint {</span>
+<span id="cb1-14">  position<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> Vector3<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-15">  rotation<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> Quaternion<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-16">}</span>
+<span id="cb1-17"></span>
+<span id="cb1-18"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">interface</span> Context {</span>
+<span id="cb1-19">  authority<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">Server</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">null</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-20">  ownership<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> Player <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">null</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-21">  cdnId<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">string</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-22">  avatarState<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> {</span>
+<span id="cb1-23">    position<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> Vector3<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-24">    rotation<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> Quaternion<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-25">    scale<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> Scale<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-26">    timeDifference<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">number</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-27">    posePoints<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> PosePoint[]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-28">    blendShapes<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> { [key<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">string</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">number</span> }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-29">  }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-30">  errorMessage<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">string</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-31">}</span>
+<span id="cb1-32"></span>
+<span id="cb1-33"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">type</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">Event</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span></span>
-<span id="cb1-17">  <span class="op" style="color: #5E5E5E;
+<span id="cb1-34">  <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|</span> { type<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -114,12 +195,10 @@ font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'INTERACT'</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">;</span> playerColor<span class="op" style="color: #5E5E5E;
+font-style: inherit;">;</span> player<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">string</span> }</span>
-<span id="cb1-18">  <span class="op" style="color: #5E5E5E;
+font-style: inherit;">:</span> Player }</span>
+<span id="cb1-35">  <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|</span> { type<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -127,18 +206,16 @@ font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'GRAB'</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">;</span> playerColor<span class="op" style="color: #5E5E5E;
+font-style: inherit;">;</span> player<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">string</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">:</span> Player<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span> itemId<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">string</span> }</span>
-<span id="cb1-19">  <span class="op" style="color: #5E5E5E;
+<span id="cb1-36">  <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|</span> { type<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -151,14 +228,14 @@ background-color: null;
 font-style: inherit;">:</span> Context[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'avatarState'</span>] }</span>
-<span id="cb1-20">  <span class="op" style="color: #5E5E5E;
+<span id="cb1-37">  <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|</span> { type<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'STOP_ACTION'</span> }</span>
-<span id="cb1-21">  <span class="op" style="color: #5E5E5E;
+<span id="cb1-38">  <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|</span> { type<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -166,15 +243,28 @@ font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'SERVER_AUTHORITY'</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">;</span> serverColor<span class="op" style="color: #5E5E5E;
+font-style: inherit;">;</span> server<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">Server</span> }</span>
+<span id="cb1-39">  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span> { type<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'ERROR'</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> message<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">string</span> }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb1-22"></span>
-<span id="cb1-23"><span class="kw" style="color: #003B4F;
+<span id="cb1-40"></span>
+<span id="cb1-41"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">const</span> update <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -197,16 +287,16 @@ background-color: null;
 font-style: inherit;">event</span>[value] })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb1-24"></span>
-<span id="cb1-25"><span class="kw" style="color: #003B4F;
+<span id="cb1-42"></span>
+<span id="cb1-43"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">const</span> grabTransition <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> {</span>
-<span id="cb1-26">  actions<span class="op" style="color: #5E5E5E;
+<span id="cb1-44">  actions<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> [</span>
-<span id="cb1-27">    <span class="fu" style="color: #4758AB;
+<span id="cb1-45">    <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">update</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -214,10 +304,10 @@ font-style: inherit;">'ownership'</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'playerColor'</span>)<span class="op" style="color: #5E5E5E;
+font-style: inherit;">'player'</span>)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-28">    <span class="fu" style="color: #4758AB;
+<span id="cb1-46">    <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">assign</span>({ inventory<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -233,6 +323,10 @@ font-style: inherit;">...</span>context<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
+font-style: inherit;">ownership</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
 font-style: inherit;">inventory</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="bu" style="color: null;
@@ -244,47 +338,94 @@ background-color: null;
 font-style: inherit;">itemId</span>] })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-29">  ]<span class="op" style="color: #5E5E5E;
+<span id="cb1-47">  ]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-30">  target<span class="op" style="color: #5E5E5E;
+<span id="cb1-48">  target<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'owned'</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-31">}<span class="op" style="color: #5E5E5E;
+<span id="cb1-49">}<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb1-32"></span>
-<span id="cb1-33"><span class="kw" style="color: #003B4F;
+<span id="cb1-50"></span>
+<span id="cb1-51"><span class="kw" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">const</span> validColors <span class="op" style="color: #5E5E5E;
+font-style: inherit;">const</span> setAuthority <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+font-style: inherit;">=</span> (authorityType) <span class="kw" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">'white'</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">=&gt;</span> (context<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+font-style: inherit;">,</span> <span class="bu" style="color: null;
 background-color: null;
-font-style: inherit;">'red'</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">event</span>) <span class="kw" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+font-style: inherit;">=&gt;</span> {</span>
+<span id="cb1-52">  <span class="cf" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">'blue'</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">if</span> (<span class="bu" style="color: null;
 background-color: null;
-font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+font-style: inherit;">event</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">'green'</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+font-style: inherit;">type</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">'yellow'</span>]<span class="op" style="color: #5E5E5E;
+font-style: inherit;">===</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'INTERACT'</span>) {</span>
+<span id="cb1-53">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">event</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">player</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb1-34"></span>
-<span id="cb1-35"><span class="kw" style="color: #003B4F;
+<span id="cb1-54">  } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">event</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">===</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'SERVER_AUTHORITY'</span>) {</span>
+<span id="cb1-55">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">event</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">server</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-56">  }</span>
+<span id="cb1-57">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> context[authorityType]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-58">}<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-59"></span>
+<span id="cb1-60"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">const</span> machine <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -299,48 +440,48 @@ background-color: null;
 font-style: inherit;">Event</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&gt;</span>({</span>
-<span id="cb1-36">  id<span class="op" style="color: #5E5E5E;
+<span id="cb1-61">  id<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'networkedPhysics'</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-37">  initial<span class="op" style="color: #5E5E5E;
+<span id="cb1-62">  initial<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'defaultAuthority'</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-38">  context<span class="op" style="color: #5E5E5E;
+<span id="cb1-63">  context<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb1-39">    authority<span class="op" style="color: #5E5E5E;
+<span id="cb1-64">    authority<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">'white'</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">null</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-40">    ownership<span class="op" style="color: #5E5E5E;
+<span id="cb1-65">    ownership<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">null</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-66">    cdnId<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">''</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-41">    cdnId<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">''</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-42">    avatarState<span class="op" style="color: #5E5E5E;
+<span id="cb1-67">    avatarState<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb1-43">      position<span class="op" style="color: #5E5E5E;
+<span id="cb1-68">      position<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
 background-color: null;
@@ -349,7 +490,7 @@ background-color: null;
 font-style: inherit;">Vector3</span>()<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-44">      rotation<span class="op" style="color: #5E5E5E;
+<span id="cb1-69">      rotation<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
 background-color: null;
@@ -358,28 +499,81 @@ background-color: null;
 font-style: inherit;">Quaternion</span>()<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-45">      timeDifference<span class="op" style="color: #5E5E5E;
+<span id="cb1-70">      scale<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">new</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Scale</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-71">      timeDifference<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-46">    }<span class="op" style="color: #5E5E5E;
+<span id="cb1-72">      posePoints<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">Array</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">11</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fill</span>({ position<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">new</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Vector3</span>()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> rotation<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">new</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Quaternion</span>() })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-47">    inventory<span class="op" style="color: #5E5E5E;
+<span id="cb1-73">      blendShapes<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">:</span> []<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-48">  }<span class="op" style="color: #5E5E5E;
+font-style: inherit;">:</span> {}<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-49">  on<span class="op" style="color: #5E5E5E;
+<span id="cb1-74">    }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-75">    errorMessage<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">''</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-76">  }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-77">  on<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb1-50">    UPDATE_AVATAR_STATE<span class="op" style="color: #5E5E5E;
+<span id="cb1-78">    UPDATE_AVATAR_STATE<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> { actions<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -394,157 +588,7 @@ background-color: null;
 font-style: inherit;">'newState'</span>) }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-51">  }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-52">  states<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> {</span>
-<span id="cb1-53">    defaultAuthority<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> {</span>
-<span id="cb1-54">      on<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> {</span>
-<span id="cb1-55">        INTERACT<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> {</span>
-<span id="cb1-56">          cond<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> (_<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">event</span>) <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=&gt;</span> validColors<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">includes</span>(<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">event</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">playerColor</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-57">          actions<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">update</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'authority'</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'playerColor'</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-58">          target<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'playerAuthority'</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-59">        }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-60">        GRAB<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> {</span>
-<span id="cb1-61">          cond<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> (_<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">event</span>) <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=&gt;</span> validColors<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">includes</span>(<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">event</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">playerColor</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-62">          <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">...</span>grabTransition<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-63">        }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-64">        SERVER_AUTHORITY<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> {</span>
-<span id="cb1-65">          cond<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> (_<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">event</span>) <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=&gt;</span> validColors<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">includes</span>(<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">event</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">serverColor</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-66">          actions<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">update</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'authority'</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'serverColor'</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-67">          target<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'serverAuthority'</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-68">        }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-69">      }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-70">    }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-71">    playerAuthority<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> {</span>
-<span id="cb1-72">      on<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> {</span>
-<span id="cb1-73">        INTERACT<span class="op" style="color: #5E5E5E;
+<span id="cb1-79">    ERROR<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> { actions<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -552,66 +596,32 @@ font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">update</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'authority'</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">'errorMessage'</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'playerColor'</span>) }<span class="op" style="color: #5E5E5E;
+font-style: inherit;">'message'</span>)<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-74">        STOP_ACTION<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> { target<span class="op" style="color: #5E5E5E;
+font-style: inherit;">,</span> target<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'defaultAuthority'</span> }<span class="op" style="color: #5E5E5E;
+font-style: inherit;">'error'</span> }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-75">        GRAB<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> grabTransition<span class="op" style="color: #5E5E5E;
+<span id="cb1-80">  }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-76">        SERVER_AUTHORITY<span class="op" style="color: #5E5E5E;
+<span id="cb1-81">  states<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb1-77">          actions<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">update</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'authority'</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'serverColor'</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-78">          target<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'serverAuthority'</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-79">        }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-80">      }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-81">    }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-82">    owned<span class="op" style="color: #5E5E5E;
+<span id="cb1-82">    defaultAuthority<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
 <span id="cb1-83">      on<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb1-84">        STOP_ACTION<span class="op" style="color: #5E5E5E;
+<span id="cb1-84">        INTERACT<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
 <span id="cb1-85">          actions<span class="op" style="color: #5E5E5E;
@@ -620,29 +630,34 @@ font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">update</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'ownership'</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">'authority'</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">,</span> () <span class="kw" style="color: #003B4F;
+font-style: inherit;">,</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">=&gt;</span> <span class="st" style="color: #20794D;
+font-style: inherit;">setAuthority</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">''</span>)<span class="op" style="color: #5E5E5E;
+font-style: inherit;">'authority'</span>))<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
 <span id="cb1-86">          target<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'defaultAuthority'</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">'activeAuthority'</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
 <span id="cb1-87">        }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-88">        SERVER_AUTHORITY<span class="op" style="color: #5E5E5E;
+<span id="cb1-88">        GRAB<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> grabTransition<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-89">        SERVER_AUTHORITY<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb1-89">          actions<span class="op" style="color: #5E5E5E;
+<span id="cb1-90">          actions<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -650,34 +665,36 @@ font-style: inherit;">update</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'authority'</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+font-style: inherit;">,</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">'serverColor'</span>)<span class="op" style="color: #5E5E5E;
+font-style: inherit;">setAuthority</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'authority'</span>))<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-90">          target<span class="op" style="color: #5E5E5E;
+<span id="cb1-91">          target<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'serverAuthority'</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">'activeAuthority'</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-91">        }<span class="op" style="color: #5E5E5E;
+<span id="cb1-92">        }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-92">      }<span class="op" style="color: #5E5E5E;
+<span id="cb1-93">      }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-93">    }<span class="op" style="color: #5E5E5E;
+<span id="cb1-94">    }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-94">    serverAuthority<span class="op" style="color: #5E5E5E;
+<span id="cb1-95">    activeAuthority<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb1-95">      on<span class="op" style="color: #5E5E5E;
+<span id="cb1-96">      on<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb1-96">        INTERACT<span class="op" style="color: #5E5E5E;
+<span id="cb1-97">        INTERACT<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> { actions<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -687,20 +704,11 @@ font-style: inherit;">update</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'authority'</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+font-style: inherit;">,</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">'playerColor'</span>)<span class="op" style="color: #5E5E5E;
+font-style: inherit;">setAuthority</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">,</span> target<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'playerAuthority'</span> }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-97">        GRAB<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> grabTransition<span class="op" style="color: #5E5E5E;
+font-style: inherit;">'authority'</span>)) }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
 <span id="cb1-98">        STOP_ACTION<span class="op" style="color: #5E5E5E;
@@ -712,20 +720,150 @@ background-color: null;
 font-style: inherit;">'defaultAuthority'</span> }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-99">      }<span class="op" style="color: #5E5E5E;
+<span id="cb1-99">        GRAB<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> grabTransition<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-100">    }<span class="op" style="color: #5E5E5E;
+<span id="cb1-100">        SERVER_AUTHORITY<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> {</span>
+<span id="cb1-101">          actions<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">update</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'authority'</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">setAuthority</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'authority'</span>))<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-101">  }<span class="op" style="color: #5E5E5E;
+<span id="cb1-102">        }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-102">})<span class="op" style="color: #5E5E5E;
+<span id="cb1-103">      }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-104">    }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-105">    owned<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> {</span>
+<span id="cb1-106">      on<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> {</span>
+<span id="cb1-107">        STOP_ACTION<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> {</span>
+<span id="cb1-108">          actions<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">update</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'ownership'</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> () <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=&gt;</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">null</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-109">          target<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'defaultAuthority'</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-110">        }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-111">        SERVER_AUTHORITY<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> {</span>
+<span id="cb1-112">          actions<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">update</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'authority'</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">setAuthority</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'authority'</span>))<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-113">          target<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'activeAuthority'</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-114">        }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-115">      }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-116">    }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-117">    error<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> {</span>
+<span id="cb1-118">      on<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> {</span>
+<span id="cb1-119">        RESET_ERROR<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> {</span>
+<span id="cb1-120">          actions<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">assign</span>({ errorMessage<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">''</span> })<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-121">          target<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'defaultAuthority'</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-122">        }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-123">      }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-124">    }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-125">  }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-126">})<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb1-103"></span>
-<span id="cb1-104"><span class="im" style="color: #00769E;
+<span id="cb1-127"></span>
+<span id="cb1-128"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">export</span> <span class="im" style="color: #00769E;
 background-color: null;
@@ -738,7 +876,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/states/networked_physics.html</guid>
-  <pubDate>Fri, 16 Jun 2023 08:34:09 GMT</pubDate>
+  <pubDate>Fri, 16 Jun 2023 09:44:43 GMT</pubDate>
 </item>
 </channel>
 </rss>
