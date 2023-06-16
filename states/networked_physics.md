@@ -2,103 +2,127 @@
 
 ```ts
 import { Machine, assign } from 'xstate';
-import { Vector3, Quaternion } from 'three';
+import { Vector3, Quaternion, Vector3 as Scale } from 'three';
+
+interface Server {
+  color: string;
+}
+
+interface Player {
+  color: string;
+  inventory: string[];
+}
+
+interface PosePoint {
+  position: Vector3;
+  rotation: Quaternion;
+}
 
 interface Context {
-  authority: string;
-  ownership: string;
+  authority: Server | null;
+  ownership: Player | null;
   cdnId: string;
   avatarState: {
     position: Vector3;
     rotation: Quaternion;
+    scale: Scale;
     timeDifference: number;
+    posePoints: PosePoint[];
+    blendShapes: { [key: string]: number };
   };
-  inventory: string[];
+  errorMessage: string;
 }
 
 type Event =
-  | { type: 'INTERACT'; playerColor: string }
-  | { type: 'GRAB'; playerColor: string; itemId: string }
+  | { type: 'INTERACT'; player: Player }
+  | { type: 'GRAB'; player: Player; itemId: string }
   | { type: 'UPDATE_AVATAR_STATE'; newState: Context['avatarState'] }
   | { type: 'STOP_ACTION' }
-  | { type: 'SERVER_AUTHORITY'; serverColor: string };
+  | { type: 'SERVER_AUTHORITY'; server: Server }
+  | { type: 'ERROR'; message: string };
 
 const update = (key, value) => assign({ [key]: (_, event) => event[value] });
 
 const grabTransition = {
   actions: [
-    update('ownership', 'playerColor'),
-    assign({ inventory: (context, event) => [...context.inventory, event.itemId] }),
+    update('ownership', 'player'),
+    assign({ inventory: (context, event) => [...context.ownership.inventory, event.itemId] }),
   ],
   target: 'owned',
 };
 
-const validColors = ['white', 'red', 'blue', 'green', 'yellow'];
+const setAuthority = (authorityType) => (context, event) => {
+  if (event.type === 'INTERACT') {
+    return event.player;
+  } else if (event.type === 'SERVER_AUTHORITY') {
+    return event.server;
+  }
+  return context[authorityType];
+};
 
 const machine = Machine<Context, Event>({
   id: 'networkedPhysics',
   initial: 'defaultAuthority',
   context: {
-    authority: 'white',
-    ownership: '',
+    authority: null,
+    ownership: null,
     cdnId: '',
     avatarState: {
       position: new Vector3(),
       rotation: new Quaternion(),
+      scale: new Scale(1, 1, 1),
       timeDifference: 0,
+      posePoints: Array(11).fill({ position: new Vector3(), rotation: new Quaternion() }),
+      blendShapes: {},
     },
-    inventory: [],
+    errorMessage: '',
   },
   on: {
     UPDATE_AVATAR_STATE: { actions: update('avatarState', 'newState') },
+    ERROR: { actions: update('errorMessage', 'message'), target: 'error' },
   },
   states: {
     defaultAuthority: {
       on: {
         INTERACT: {
-          cond: (_, event) => validColors.includes(event.playerColor),
-          actions: update('authority', 'playerColor'),
-          target: 'playerAuthority',
+          actions: update('authority', setAuthority('authority')),
+          target: 'activeAuthority',
         },
-        GRAB: {
-          cond: (_, event) => validColors.includes(event.playerColor),
-          ...grabTransition,
-        },
+        GRAB: grabTransition,
         SERVER_AUTHORITY: {
-          cond: (_, event) => validColors.includes(event.serverColor),
-          actions: update('authority', 'serverColor'),
-          target: 'serverAuthority',
+          actions: update('authority', setAuthority('authority')),
+          target: 'activeAuthority',
         },
       },
     },
-    playerAuthority: {
+    activeAuthority: {
       on: {
-        INTERACT: { actions: update('authority', 'playerColor') },
+        INTERACT: { actions: update('authority', setAuthority('authority')) },
         STOP_ACTION: { target: 'defaultAuthority' },
         GRAB: grabTransition,
         SERVER_AUTHORITY: {
-          actions: update('authority', 'serverColor'),
-          target: 'serverAuthority',
+          actions: update('authority', setAuthority('authority')),
         },
       },
     },
     owned: {
       on: {
         STOP_ACTION: {
-          actions: update('ownership', () => ''),
+          actions: update('ownership', () => null),
           target: 'defaultAuthority',
         },
         SERVER_AUTHORITY: {
-          actions: update('authority', 'serverColor'),
-          target: 'serverAuthority',
+          actions: update('authority', setAuthority('authority')),
+          target: 'activeAuthority',
         },
       },
     },
-    serverAuthority: {
+    error: {
       on: {
-        INTERACT: { actions: update('authority', 'playerColor'), target: 'playerAuthority' },
-        GRAB: grabTransition,
-        STOP_ACTION: { target: 'defaultAuthority' },
+        RESET_ERROR: {
+          actions: assign({ errorMessage: '' }),
+          target: 'defaultAuthority',
+        },
       },
     },
   },
