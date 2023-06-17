@@ -1,4 +1,4 @@
-# Propose a possible solution to solve a V-Sekai limitation
+# Increase variety and quality with generated animation trees
 
 ## Metadata
 
