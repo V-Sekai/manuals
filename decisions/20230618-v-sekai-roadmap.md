@@ -22,24 +22,87 @@ To prioritize WAP, NET, and UIUX, we need to avoid working on User Generated Con
 
 ### Goals
 
-```mermaid
-stateDiagram-v2
-  state "World / Avatar Performance" as WAP {
-    [*] --> IK_Points: June 18th, 2023
-    IK_Points --> Investigate_ManyBoneIK: IK Points for V-sekai
-  }
-  
-  state "Networking" as NET {
-    Investigate_ManyBoneIK --> Elixir_mvsqlite: Investigate ManyBoneIK & mediapipe to support Facial Mocap to ARKit 52 blendshape and audio to face
-    Elixir_mvsqlite --> Add_Jitter_Buffer1: Elixir mvsqlite Serversidecar
-    Add_Jitter_Buffer1 --> Unidot_Unity_Import: Add jitter buffer to godot_speech
-    Unidot_Unity_Import --> Add_Jitter_Buffer2: Unidot Unity Import upload to the asset library
-    Add_Jitter_Buffer2 --> Implement_OneVoip: Add jitter buffer to godot_speech
-  }
+```typescript
+import { Machine, assign } from 'xstate';
 
-  state "First Time User Experience" as FTUX {
-    IK_Points --> Vrm_Upload: Vrm upload to the asset library
-  }
+interface PrioritiesContext {
+  priorities: string[];
+}
+
+type PrioritiesEvent =
+  | { type: 'SET_PRIORITIES'; priorities: string[] }
+  | { type: 'NEXT' }
+  | { type: 'PREV' };
+
+const orderedPriorities = [
+  'Fast load time globally',
+  'Real-time 3D environment rendering and smooth avatar interactions',
+  'Low latency for user interactions',
+  'Efficient data transfer between clients and servers',
+  'IK Points for V-sekai',
+  'Investigate ManyBoneIK & mediapipe',
+  'Intuitive user interface for new users',
+];
+
+const prioritiesMachine = Machine<PrioritiesContext, PrioritiesEvent>({
+  id: 'priorities',
+  initial: 'loadTime',
+  context: {
+    priorities: orderedPriorities,
+  },
+  states: {
+    loadTime: {
+      on: {
+        NEXT: 'rendering',
+      },
+    },
+    rendering: {
+      on: {
+        PREV: 'loadTime',
+        NEXT: 'latency',
+      },
+    },
+    latency: {
+      on: {
+        PREV: 'rendering',
+        NEXT: 'dataTransfer',
+      },
+    },
+    dataTransfer: {
+      on: {
+        PREV: 'latency',
+        NEXT: 'ikPoints',
+      },
+    },
+    ikPoints: {
+      on: {
+        PREV: 'dataTransfer',
+        NEXT: 'investigate',
+      },
+    },
+    investigate: {
+      on: {
+        PREV: 'ikPoints',
+        NEXT: 'userInterface',
+      },
+    },
+    userInterface: {
+      on: {
+        PREV: 'investigate',
+      },
+    },
+  },
+  on: {
+    SET_PRIORITIES: {
+      actions: assign({
+        priorities: (_, event) => event.priorities,
+      }),
+    },
+  },
+});
+
+export default prioritiesMachine;
+
 ```
 
 ### Positive Consequences
