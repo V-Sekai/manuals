@@ -18,7 +18,7 @@ The roadmap presented here is short-term.
 
 ### Non-goals
 
-To prioritize WAP, NET, and UIUX, we need to avoid working on User Generated Content (UGC) and world building. This allows us to focus on the core aspects of V-Sekai and achieve our goals more efficiently.
+To prioritize WAP, NET, and UIUX, we need to avoid working on User Generated Scripting (UGS) and world building. This allows us to focus on the core aspects of V-Sekai and achieve our goals more efficiently.
 
 ### Goals
 
