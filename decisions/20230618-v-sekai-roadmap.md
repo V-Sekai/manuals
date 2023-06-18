@@ -37,7 +37,7 @@ stateDiagram-v2
     Add_Jitter_Buffer2 --> Implement_OneVoip: Add jitter buffer to godot_speech
   }
 
-  state "UI/UX" as UIUX {
+  state "First Time User Experience" as FTUX {
     IK_Points --> Vrm_Upload: Vrm upload to the asset library
   }
 ```
