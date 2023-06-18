@@ -23,86 +23,43 @@ To prioritize WAP, NET, and UIUX, we need to avoid working on User Generated Con
 ### Goals
 
 ```typescript
-import { Machine, assign } from 'xstate';
+import { createMachine } from 'xstate';
 
-interface PrioritiesContext {
-  priorities: string[];
-}
+interface Context {}
 
-type PrioritiesEvent =
-  | { type: 'SET_PRIORITIES'; priorities: string[] }
-  | { type: 'NEXT' }
-  | { type: 'PREV' };
+type Event =
+  | { type: 'LIGHT_ASSETS_AND_ASYNC_LOADING' }
+  | { type: 'MODERN_RENDERING_AND_HIGH_PERF_LIBS' }
+  | { type: 'APPLY_NETWORK_OPT_AND_LOW_LATENCY_PROT' }
+  | { type: 'EFFICIENT_DATA_FORMATS_AND_OPTIMIZED_COMP_ALG' }
+  | { type: 'RESPECT_ACCURATE_IK_POINTS' }
+  | { type: 'EXPLORE_MULTIPLE_TECH_AND_ALT_SOLUTIONS' };
 
-const orderedPriorities = [
-  'Fast load time globally',
-  'Real-time 3D environment rendering and smooth avatar interactions',
-  'Low latency for user interactions',
-  'Efficient data transfer between clients and servers',
-  'IK Points for V-sekai',
-  'Investigate ManyBoneIK & mediapipe',
-  'Intuitive user interface for new users',
-];
-
-const prioritiesMachine = Machine<PrioritiesContext, PrioritiesEvent>({
-  id: 'priorities',
+const machine = createMachine<Context, Event>({
+  id: 'prioritiesMachine',
   initial: 'loadTime',
-  context: {
-    priorities: orderedPriorities,
-  },
   states: {
     loadTime: {
-      on: {
-        NEXT: 'rendering',
-      },
+      on: { LIGHT_ASSETS_AND_ASYNC_LOADING: { target: 'rendering' } },
     },
     rendering: {
-      on: {
-        PREV: 'loadTime',
-        NEXT: 'latency',
-      },
+      on: { MODERN_RENDERING_AND_HIGH_PERF_LIBS: { target: 'latency' } },
     },
     latency: {
-      on: {
-        PREV: 'rendering',
-        NEXT: 'dataTransfer',
-      },
+      on: { APPLY_NETWORK_OPT_AND_LOW_LATENCY_PROT: { target: 'dataTransfer' } },
     },
     dataTransfer: {
-      on: {
-        PREV: 'latency',
-        NEXT: 'ikPoints',
-      },
+      on: { EFFICIENT_DATA_FORMATS_AND_OPTIMIZED_COMP_ALG: { target: 'ikPoints' } },
     },
     ikPoints: {
-      on: {
-        PREV: 'dataTransfer',
-        NEXT: 'investigate',
-      },
+      on: { RESPECT_ACCURATE_IK_POINTS: { target: 'investigate' } },
     },
     investigate: {
-      on: {
-        PREV: 'ikPoints',
-        NEXT: 'userInterface',
-      },
+      on: { EXPLORE_MULTIPLE_TECH_AND_ALT_SOLUTIONS: { target: 'userInterface' } },
     },
-    userInterface: {
-      on: {
-        PREV: 'investigate',
-      },
-    },
-  },
-  on: {
-    SET_PRIORITIES: {
-      actions: assign({
-        priorities: (_, event) => event.priorities,
-      }),
-    },
+    userInterface: { type: 'final' },
   },
 });
-
-export default prioritiesMachine;
-
 ```
 
 ### Positive Consequences
