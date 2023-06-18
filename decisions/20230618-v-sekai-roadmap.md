@@ -23,7 +23,7 @@ To prioritize WAP, NET, and UIUX, we need to avoid working on User Generated Con
 ### Goals
 
 ```typescript
-import { createMachine } from 'xstate';
+import { createMachine, Guard } from 'xstate';
 
 interface Context {}
 
@@ -35,6 +35,18 @@ type Event =
   | { type: 'RESPECT_ACCURATE_IK_POINTS' }
   | { type: 'EXPLORE_MULTIPLE_TECH_AND_ALT_SOLUTIONS' };
 
+const notLightAssetsAndAsyncLoading: Guard<Context, Event> = {
+  type: 'xstate.guard',
+  name: 'notLightAssetsAndAsyncLoading',
+  predicate: (context, event) => event.type !== 'LIGHT_ASSETS_AND_ASYNC_LOADING',
+};
+
+const notModernRenderingAndHighPerfLibs: Guard<Context, Event> = {
+  type: 'xstate.guard',
+  name: 'notModernRenderingAndHighPerfLibs',
+  predicate: (context, event) => event.type !== 'MODERN_RENDERING_AND_HIGH_PERF_LIBS',
+};
+
 const machine = createMachine<Context, Event>({
   id: 'prioritiesMachine',
   initial: 'FTUX',
@@ -43,10 +55,18 @@ const machine = createMachine<Context, Event>({
       initial: 'loadTime',
       states: {
         loadTime: {
-          on: { LIGHT_ASSETS_AND_ASYNC_LOADING: { target: 'rendering' } },
+          on: {
+            '': [{ target: 'rendering', cond: notLightAssetsAndAsyncLoading }],
+            LIGHT_ASSETS_AND_ASYNC_LOADING: { target: 'rendering' },
+          },
         },
         rendering: {
-          on: { MODERN_RENDERING_AND_HIGH_PERF_LIBS: { target: '#prioritiesMachine.NET.latency' } },
+          on: {
+            '': [
+              { target: '#prioritiesMachine.NET.latency', cond: notModernRenderingAndHighPerfLibs },
+            ],
+            MODERN_RENDERING_AND_HIGH_PERF_LIBS: { target: '#prioritiesMachine.NET.latency' },
+          },
         },
       },
     },
