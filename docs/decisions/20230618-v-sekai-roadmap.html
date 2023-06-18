@@ -212,29 +212,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> machine <span class="op">=</span> <span class="fu">createMachine</span><span class="op">&lt;</span>Context<span class="op">,</span> <span class="bu">Event</span><span class="op">&gt;</span>({</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  id<span class="op">:</span> <span class="st">'prioritiesMachine'</span><span class="op">,</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  initial<span class="op">:</span> <span class="st">'loadTime'</span><span class="op">,</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  initial<span class="op">:</span> <span class="st">'FTUX'</span><span class="op">,</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  states<span class="op">:</span> {</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    loadTime<span class="op">:</span> {</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>      on<span class="op">:</span> { LIGHT_ASSETS_AND_ASYNC_LOADING<span class="op">:</span> { target<span class="op">:</span> <span class="st">'rendering'</span> } }<span class="op">,</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    rendering<span class="op">:</span> {</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>      on<span class="op">:</span> { MODERN_RENDERING_AND_HIGH_PERF_LIBS<span class="op">:</span> { target<span class="op">:</span> <span class="st">'latency'</span> } }<span class="op">,</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    latency<span class="op">:</span> {</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>      on<span class="op">:</span> { APPLY_NETWORK_OPT_AND_LOW_LATENCY_PROT<span class="op">:</span> { target<span class="op">:</span> <span class="st">'dataTransfer'</span> } }<span class="op">,</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    dataTransfer<span class="op">:</span> {</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>      on<span class="op">:</span> { EFFICIENT_DATA_FORMATS_AND_OPTIMIZED_COMP_ALG<span class="op">:</span> { target<span class="op">:</span> <span class="st">'ikPoints'</span> } }<span class="op">,</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    ikPoints<span class="op">:</span> {</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>      on<span class="op">:</span> { RESPECT_ACCURATE_IK_POINTS<span class="op">:</span> { target<span class="op">:</span> <span class="st">'investigate'</span> } }<span class="op">,</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    investigate<span class="op">:</span> {</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>      on<span class="op">:</span> { EXPLORE_MULTIPLE_TECH_AND_ALT_SOLUTIONS<span class="op">:</span> { target<span class="op">:</span> <span class="st">'userInterface'</span> } }<span class="op">,</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    userInterface<span class="op">:</span> { type<span class="op">:</span> <span class="st">'final'</span> }<span class="op">,</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    FTUX<span class="op">:</span> {</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>      initial<span class="op">:</span> <span class="st">'loadTime'</span><span class="op">,</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>      states<span class="op">:</span> {</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        loadTime<span class="op">:</span> {</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>          on<span class="op">:</span> { LIGHT_ASSETS_AND_ASYNC_LOADING<span class="op">:</span> { target<span class="op">:</span> <span class="st">'rendering'</span> } }<span class="op">,</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        }<span class="op">,</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        rendering<span class="op">:</span> {</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>          on<span class="op">:</span> { MODERN_RENDERING_AND_HIGH_PERF_LIBS<span class="op">:</span> { target<span class="op">:</span> <span class="st">'#prioritiesMachine.NET.latency'</span> } }<span class="op">,</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        }<span class="op">,</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>      }<span class="op">,</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    NET<span class="op">:</span> {</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>      initial<span class="op">:</span> <span class="st">'latency'</span><span class="op">,</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>      states<span class="op">:</span> {</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        latency<span class="op">:</span> {</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>          on<span class="op">:</span> { APPLY_NETWORK_OPT_AND_LOW_LATENCY_PROT<span class="op">:</span> { target<span class="op">:</span> <span class="st">'dataTransfer'</span> } }<span class="op">,</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>        }<span class="op">,</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        dataTransfer<span class="op">:</span> {</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>          on<span class="op">:</span> { EFFICIENT_DATA_FORMATS_AND_OPTIMIZED_COMP_ALG<span class="op">:</span> { target<span class="op">:</span> <span class="st">'#prioritiesMachine.WAP.ikPoints'</span> } }<span class="op">,</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        }<span class="op">,</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>      }<span class="op">,</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    WAP<span class="op">:</span> {</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>      initial<span class="op">:</span> <span class="st">'ikPoints'</span><span class="op">,</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>      states<span class="op">:</span> {</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>        ikPoints<span class="op">:</span> {</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>          on<span class="op">:</span> { RESPECT_ACCURATE_IK_POINTS<span class="op">:</span> { target<span class="op">:</span> <span class="st">'investigate'</span> } }<span class="op">,</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>        }<span class="op">,</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>        investigate<span class="op">:</span> {</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>          on<span class="op">:</span> { EXPLORE_MULTIPLE_TECH_AND_ALT_SOLUTIONS<span class="op">:</span> { target<span class="op">:</span> <span class="st">'userInterface'</span> } }<span class="op">,</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        }<span class="op">,</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>        userInterface<span class="op">:</span> { type<span class="op">:</span> <span class="st">'final'</span> }<span class="op">,</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>      }<span class="op">,</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="positive-consequences" class="level3">
 <h3 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h3>
