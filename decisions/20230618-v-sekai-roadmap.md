@@ -37,27 +37,42 @@ type Event =
 
 const machine = createMachine<Context, Event>({
   id: 'prioritiesMachine',
-  initial: 'loadTime',
+  initial: 'FTUX',
   states: {
-    loadTime: {
-      on: { LIGHT_ASSETS_AND_ASYNC_LOADING: { target: 'rendering' } },
+    FTUX: {
+      initial: 'loadTime',
+      states: {
+        loadTime: {
+          on: { LIGHT_ASSETS_AND_ASYNC_LOADING: { target: 'rendering' } },
+        },
+        rendering: {
+          on: { MODERN_RENDERING_AND_HIGH_PERF_LIBS: { target: '#prioritiesMachine.NET.latency' } },
+        },
+      },
     },
-    rendering: {
-      on: { MODERN_RENDERING_AND_HIGH_PERF_LIBS: { target: 'latency' } },
+    NET: {
+      initial: 'latency',
+      states: {
+        latency: {
+          on: { APPLY_NETWORK_OPT_AND_LOW_LATENCY_PROT: { target: 'dataTransfer' } },
+        },
+        dataTransfer: {
+          on: { EFFICIENT_DATA_FORMATS_AND_OPTIMIZED_COMP_ALG: { target: '#prioritiesMachine.WAP.ikPoints' } },
+        },
+      },
     },
-    latency: {
-      on: { APPLY_NETWORK_OPT_AND_LOW_LATENCY_PROT: { target: 'dataTransfer' } },
+    WAP: {
+      initial: 'ikPoints',
+      states: {
+        ikPoints: {
+          on: { RESPECT_ACCURATE_IK_POINTS: { target: 'investigate' } },
+        },
+        investigate: {
+          on: { EXPLORE_MULTIPLE_TECH_AND_ALT_SOLUTIONS: { target: 'userInterface' } },
+        },
+        userInterface: { type: 'final' },
+      },
     },
-    dataTransfer: {
-      on: { EFFICIENT_DATA_FORMATS_AND_OPTIMIZED_COMP_ALG: { target: 'ikPoints' } },
-    },
-    ikPoints: {
-      on: { RESPECT_ACCURATE_IK_POINTS: { target: 'investigate' } },
-    },
-    investigate: {
-      on: { EXPLORE_MULTIPLE_TECH_AND_ALT_SOLUTIONS: { target: 'userInterface' } },
-    },
-    userInterface: { type: 'final' },
   },
 });
 ```
