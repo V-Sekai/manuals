@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.361</generator>
-<lastBuildDate>Sun, 18 Jun 2023 19:20:25 GMT</lastBuildDate>
+<lastBuildDate>Sun, 18 Jun 2023 19:48:19 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -64,7 +64,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 18 Jun 2023 19:20:25 GMT</pubDate>
+  <pubDate>Sun, 18 Jun 2023 19:48:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -102,9 +102,7 @@
 <h3 class="anchored" data-anchor-id="goals">Goals</h3>
 <div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode typescript code-with-copy"><code class="sourceCode typescript"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
-font-style: inherit;">import</span> { createMachine<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> Guard } <span class="im" style="color: #00769E;
+font-style: inherit;">import</span> { createMachine } <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -170,114 +168,6 @@ font-style: inherit;">;</span></span>
 <span id="cb1-12"></span>
 <span id="cb1-13"><span class="kw" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">const</span> notLightAssetsAndAsyncLoading<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> Guard<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;</span>Context<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">Event</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> {</span>
-<span id="cb1-14">  type<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'xstate.guard'</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-15">  name<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'notLightAssetsAndAsyncLoading'</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-16">  predicate<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> (context<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">event</span>) <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=&gt;</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">event</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">type</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">!==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'LIGHT_ASSETS_AND_ASYNC_LOADING'</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-17">}<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb1-18"></span>
-<span id="cb1-19"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">const</span> notModernRenderingAndHighPerfLibs<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> Guard<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;</span>Context<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">Event</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> {</span>
-<span id="cb1-20">  type<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'xstate.guard'</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-21">  name<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'notModernRenderingAndHighPerfLibs'</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-22">  predicate<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> (context<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">event</span>) <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=&gt;</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">event</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">type</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">!==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'MODERN_RENDERING_AND_HIGH_PERF_LIBS'</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-23">}<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb1-24"></span>
-<span id="cb1-25"><span class="kw" style="color: #003B4F;
-background-color: null;
 font-style: inherit;">const</span> machine <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
@@ -291,219 +181,132 @@ background-color: null;
 font-style: inherit;">Event</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&gt;</span>({</span>
-<span id="cb1-26">  id<span class="op" style="color: #5E5E5E;
+<span id="cb1-14">  id<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'prioritiesMachine'</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-27">  initial<span class="op" style="color: #5E5E5E;
+<span id="cb1-15">  initial<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'FTUX'</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-28">  states<span class="op" style="color: #5E5E5E;
+<span id="cb1-16">  states<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb1-29">    FTUX<span class="op" style="color: #5E5E5E;
+<span id="cb1-17">    FTUX<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb1-30">      initial<span class="op" style="color: #5E5E5E;
+<span id="cb1-18">      on<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> {</span>
+<span id="cb1-19">        LIGHT_ASSETS_AND_ASYNC_LOADING<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'loadTime'</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">'NET'</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-31">      states<span class="op" style="color: #5E5E5E;
+<span id="cb1-20">      }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-21">    }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-22">    NET<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb1-32">        loadTime<span class="op" style="color: #5E5E5E;
+<span id="cb1-23">      on<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb1-33">          on<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> {</span>
-<span id="cb1-34">            <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">''</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> [{ target<span class="op" style="color: #5E5E5E;
+<span id="cb1-24">        MODERN_RENDERING_AND_HIGH_PERF_LIBS<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'rendering'</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> cond<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> notLightAssetsAndAsyncLoading }]<span class="op" style="color: #5E5E5E;
+font-style: inherit;">'WAP'</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-35">            LIGHT_ASSETS_AND_ASYNC_LOADING<span class="op" style="color: #5E5E5E;
+<span id="cb1-25">      }<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">:</span> { target<span class="op" style="color: #5E5E5E;
+font-style: inherit;">,</span></span>
+<span id="cb1-26">    }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-27">    WAP<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> {</span>
+<span id="cb1-28">      initial<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'rendering'</span> }<span class="op" style="color: #5E5E5E;
+font-style: inherit;">'dataTransfer'</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-36">          }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-37">        }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-38">        rendering<span class="op" style="color: #5E5E5E;
+<span id="cb1-29">      states<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb1-39">          on<span class="op" style="color: #5E5E5E;
+<span id="cb1-30">        dataTransfer<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb1-40">            <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">''</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> [</span>
-<span id="cb1-41">              { target<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'#prioritiesMachine.NET.latency'</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> cond<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> notModernRenderingAndHighPerfLibs }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-42">            ]<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-43">            MODERN_RENDERING_AND_HIGH_PERF_LIBS<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> { target<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'#prioritiesMachine.NET.latency'</span> }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-44">          }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-45">        }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-46">      }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-47">    }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-48">    NET<span class="op" style="color: #5E5E5E;
+<span id="cb1-31">          on<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb1-49">      initial<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'latency'</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-50">      states<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> {</span>
-<span id="cb1-51">        latency<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> {</span>
-<span id="cb1-52">          on<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> { APPLY_NETWORK_OPT_AND_LOW_LATENCY_PROT<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> { target<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'dataTransfer'</span> } }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-53">        }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-54">        dataTransfer<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> {</span>
-<span id="cb1-55">          on<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> { EFFICIENT_DATA_FORMATS_AND_OPTIMIZED_COMP_ALG<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> { target<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'#prioritiesMachine.WAP.ikPoints'</span> } }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-56">        }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-57">      }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-58">    }<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-59">    WAP<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> {</span>
-<span id="cb1-60">      initial<span class="op" style="color: #5E5E5E;
+<span id="cb1-32">            APPLY_NETWORK_OPT_AND_LOW_LATENCY_PROT<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'ikPoints'</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-61">      states<span class="op" style="color: #5E5E5E;
+<span id="cb1-33">          }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-34">        }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-35">        ikPoints<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb1-62">        ikPoints<span class="op" style="color: #5E5E5E;
+<span id="cb1-36">          on<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb1-63">          on<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> { RESPECT_ACCURATE_IK_POINTS<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> { target<span class="op" style="color: #5E5E5E;
+<span id="cb1-37">            EFFICIENT_DATA_FORMATS_AND_OPTIMIZED_COMP_ALG<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'investigate'</span> } }<span class="op" style="color: #5E5E5E;
+font-style: inherit;">'investigate'</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-64">        }<span class="op" style="color: #5E5E5E;
+<span id="cb1-38">          }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-65">        investigate<span class="op" style="color: #5E5E5E;
+<span id="cb1-39">        }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-40">        investigate<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb1-66">          on<span class="op" style="color: #5E5E5E;
+<span id="cb1-41">          on<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">:</span> { EXPLORE_MULTIPLE_TECH_AND_ALT_SOLUTIONS<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> { target<span class="op" style="color: #5E5E5E;
+font-style: inherit;">:</span> {</span>
+<span id="cb1-42">            RESPECT_ACCURATE_IK_POINTS<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'userInterface'</span> } }<span class="op" style="color: #5E5E5E;
+font-style: inherit;">'userInterface'</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-67">        }<span class="op" style="color: #5E5E5E;
+<span id="cb1-43">          }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-68">        userInterface<span class="op" style="color: #5E5E5E;
+<span id="cb1-44">        }<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-45">        userInterface<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> { type<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -512,16 +315,16 @@ background-color: null;
 font-style: inherit;">'final'</span> }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-69">      }<span class="op" style="color: #5E5E5E;
+<span id="cb1-46">      }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-70">    }<span class="op" style="color: #5E5E5E;
+<span id="cb1-47">    }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-71">  }<span class="op" style="color: #5E5E5E;
+<span id="cb1-48">  }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb1-72">})<span class="op" style="color: #5E5E5E;
+<span id="cb1-49">})<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span></code></pre></div>
 </section>
@@ -561,7 +364,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230618-v-sekai-roadmap.html</guid>
-  <pubDate>Sun, 18 Jun 2023 19:20:25 GMT</pubDate>
+  <pubDate>Sun, 18 Jun 2023 19:48:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -644,7 +447,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230616-pmx-to-vrm.html</guid>
-  <pubDate>Sun, 18 Jun 2023 19:20:25 GMT</pubDate>
+  <pubDate>Sun, 18 Jun 2023 19:48:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -722,7 +525,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230614-llm-statechart.html</guid>
-  <pubDate>Sun, 18 Jun 2023 19:20:25 GMT</pubDate>
+  <pubDate>Sun, 18 Jun 2023 19:48:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -855,7 +658,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230611-wasm-in-v-sekai.html</guid>
-  <pubDate>Sun, 18 Jun 2023 19:20:25 GMT</pubDate>
+  <pubDate>Sun, 18 Jun 2023 19:48:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -934,7 +737,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230608-v-sekai-roadmap.html</guid>
-  <pubDate>Sun, 18 Jun 2023 19:20:25 GMT</pubDate>
+  <pubDate>Sun, 18 Jun 2023 19:48:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1007,7 +810,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230602-v-sekai-roadmap.html</guid>
-  <pubDate>Sun, 18 Jun 2023 19:20:25 GMT</pubDate>
+  <pubDate>Sun, 18 Jun 2023 19:48:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1096,7 +899,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230602-pmx-module-integration.html</guid>
-  <pubDate>Sun, 18 Jun 2023 19:20:25 GMT</pubDate>
+  <pubDate>Sun, 18 Jun 2023 19:48:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1181,7 +984,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230602-limited-tracker-placement.html</guid>
-  <pubDate>Sun, 18 Jun 2023 19:20:25 GMT</pubDate>
+  <pubDate>Sun, 18 Jun 2023 19:48:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1261,7 +1064,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230531-godot-engine-learning.html</guid>
-  <pubDate>Sun, 18 Jun 2023 19:20:25 GMT</pubDate>
+  <pubDate>Sun, 18 Jun 2023 19:48:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1355,7 +1158,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230531-godot-engine-ipad.html</guid>
-  <pubDate>Sun, 18 Jun 2023 19:20:25 GMT</pubDate>
+  <pubDate>Sun, 18 Jun 2023 19:48:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1429,7 +1232,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-v-sekai-roadmap.html</guid>
-  <pubDate>Sun, 18 Jun 2023 19:20:25 GMT</pubDate>
+  <pubDate>Sun, 18 Jun 2023 19:48:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1541,7 +1344,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-sidecar.html</guid>
-  <pubDate>Sun, 18 Jun 2023 19:20:25 GMT</pubDate>
+  <pubDate>Sun, 18 Jun 2023 19:48:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1619,7 +1422,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-side-content-validation.html</guid>
-  <pubDate>Sun, 18 Jun 2023 19:20:25 GMT</pubDate>
+  <pubDate>Sun, 18 Jun 2023 19:48:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1742,7 +1545,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-performance-test.html</guid>
-  <pubDate>Sun, 18 Jun 2023 19:20:25 GMT</pubDate>
+  <pubDate>Sun, 18 Jun 2023 19:48:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1820,7 +1623,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-cdn-session-url.html</guid>
-  <pubDate>Sun, 18 Jun 2023 19:20:25 GMT</pubDate>
+  <pubDate>Sun, 18 Jun 2023 19:48:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1902,7 +1705,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-organization.html</guid>
-  <pubDate>Sun, 18 Jun 2023 19:20:25 GMT</pubDate>
+  <pubDate>Sun, 18 Jun 2023 19:48:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1981,7 +1784,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-godot-test-game.html</guid>
-  <pubDate>Sun, 18 Jun 2023 19:20:25 GMT</pubDate>
+  <pubDate>Sun, 18 Jun 2023 19:48:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2070,7 +1873,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230525-animation-ik-node.html</guid>
-  <pubDate>Sun, 18 Jun 2023 19:20:25 GMT</pubDate>
+  <pubDate>Sun, 18 Jun 2023 19:48:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2163,7 +1966,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230523-marketing-cycle.html</guid>
-  <pubDate>Sun, 18 Jun 2023 19:20:25 GMT</pubDate>
+  <pubDate>Sun, 18 Jun 2023 19:48:19 GMT</pubDate>
 </item>
 </channel>
 </rss>
