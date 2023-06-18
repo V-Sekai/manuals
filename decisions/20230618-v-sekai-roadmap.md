@@ -23,7 +23,7 @@ To prioritize WAP, NET, and UIUX, we need to avoid working on User Generated Con
 ### Goals
 
 ```typescript
-import { createMachine, Guard } from 'xstate';
+import { createMachine } from 'xstate';
 
 interface Context {}
 
@@ -35,60 +35,37 @@ type Event =
   | { type: 'RESPECT_ACCURATE_IK_POINTS' }
   | { type: 'EXPLORE_MULTIPLE_TECH_AND_ALT_SOLUTIONS' };
 
-const notLightAssetsAndAsyncLoading: Guard<Context, Event> = {
-  type: 'xstate.guard',
-  name: 'notLightAssetsAndAsyncLoading',
-  predicate: (context, event) => event.type !== 'LIGHT_ASSETS_AND_ASYNC_LOADING',
-};
-
-const notModernRenderingAndHighPerfLibs: Guard<Context, Event> = {
-  type: 'xstate.guard',
-  name: 'notModernRenderingAndHighPerfLibs',
-  predicate: (context, event) => event.type !== 'MODERN_RENDERING_AND_HIGH_PERF_LIBS',
-};
-
 const machine = createMachine<Context, Event>({
   id: 'prioritiesMachine',
   initial: 'FTUX',
   states: {
     FTUX: {
-      initial: 'loadTime',
-      states: {
-        loadTime: {
-          on: {
-            '': [{ target: 'rendering', cond: notLightAssetsAndAsyncLoading }],
-            LIGHT_ASSETS_AND_ASYNC_LOADING: { target: 'rendering' },
-          },
-        },
-        rendering: {
-          on: {
-            '': [
-              { target: '#prioritiesMachine.NET.latency', cond: notModernRenderingAndHighPerfLibs },
-            ],
-            MODERN_RENDERING_AND_HIGH_PERF_LIBS: { target: '#prioritiesMachine.NET.latency' },
-          },
-        },
+      on: {
+        LIGHT_ASSETS_AND_ASYNC_LOADING: 'NET',
       },
     },
     NET: {
-      initial: 'latency',
-      states: {
-        latency: {
-          on: { APPLY_NETWORK_OPT_AND_LOW_LATENCY_PROT: { target: 'dataTransfer' } },
-        },
-        dataTransfer: {
-          on: { EFFICIENT_DATA_FORMATS_AND_OPTIMIZED_COMP_ALG: { target: '#prioritiesMachine.WAP.ikPoints' } },
-        },
+      on: {
+        MODERN_RENDERING_AND_HIGH_PERF_LIBS: 'WAP',
       },
     },
     WAP: {
-      initial: 'ikPoints',
+      initial: 'dataTransfer',
       states: {
+        dataTransfer: {
+          on: {
+            APPLY_NETWORK_OPT_AND_LOW_LATENCY_PROT: 'ikPoints',
+          },
+        },
         ikPoints: {
-          on: { RESPECT_ACCURATE_IK_POINTS: { target: 'investigate' } },
+          on: {
+            EFFICIENT_DATA_FORMATS_AND_OPTIMIZED_COMP_ALG: 'investigate',
+          },
         },
         investigate: {
-          on: { EXPLORE_MULTIPLE_TECH_AND_ALT_SOLUTIONS: { target: 'userInterface' } },
+          on: {
+            RESPECT_ACCURATE_IK_POINTS: 'userInterface',
+          },
         },
         userInterface: { type: 'final' },
       },
