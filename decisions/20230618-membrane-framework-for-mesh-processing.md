@@ -49,10 +49,6 @@ sequenceDiagram
   end
 ```
 
-In this diagram, Alice, Bob, Carol, and BlenderClient can act as both sources and sinks. The other components are filters that process the data between the sources/sinks.
-
-By integrating these components, V-Sekai will benefit from the features and enhancements provided by each technology, such as Godot Engine's native glTF exporter, OpenMfx support for Blender, C++, and Houdini, and Elixir Phoenix and Nx for web applications and numerical computing.
-
 ## Positive Consequences
 
 - Improved functionality and versatility of V-Sekai
