@@ -30,33 +30,33 @@ sequenceDiagram
 
     Note over Lyuma: WAP: World / Avatar Performance
 
-    Creator->>V-Sekai: Light assets and async loading
-    V-Sekai->>Player: Modern rendering and high performance libraries
-    Player->>Creator: Apply network optimization and low latency protocols
+    Creator->>V-Sekai: Implement light assets and asynchronous loading
+    V-Sekai->>Player: Utilize modern rendering techniques and high-performance libraries
+    Player->>Creator: Apply network optimization and low latency protocols for better performance
 
     Note over Player, Creator: NET: Network Optimization Techniques
 
-    Creator->>V-Sekai: Efficient data formats and optimized compression algorithms
-    V-Sekai->>Player: Respect accurate IK points
-    V-Sekai->>Player: Explore multiple technologies and alternative solutions
-    Fire->>Creator: Optimize first-time user experience by improving loading process
+    Creator->>V-Sekai: Use efficient data formats and optimized compression algorithms
+    V-Sekai->>Player: Ensure accurate IK points are respected
+    V-Sekai->>Player: Explore multiple technologies and alternative solutions for continuous improvement
+    Fire->>Creator: Optimize first-time user experience by improving the loading process
 
     Note over Fire, Creator: FTUX: First Time User Experience
-
 ```
 
 ### Positive Consequences
 
-We can create V-Sekai easier.
+- Easier creation of V-Sekai.
+- Focused development on core aspects.
 
 ### Negative Consequences
 
-Overhead might be hard.
+- Potential overhead challenges.
 
 ### Option graveyard
 
-- Implementing a custom voice chat solution instead of using onevoip
-- Waiting for Godot Engine 4.2 instead of assisting with 4.1 features
+- Implementing a custom voice chat solution instead of using onevoip.
+- Waiting for Godot Engine 4.2 instead of assisting with 4.1 features.
 
 ### If this enhancement will be used infrequently, can it be worked around with a few lines of script?
 
