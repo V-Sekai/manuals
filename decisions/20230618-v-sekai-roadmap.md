@@ -45,6 +45,18 @@ sequenceDiagram
 
     Note over Fire, Creator: FTUX: First Time User Experience
     Note over Fire, Creator: Timeline: Q3-Q4
+
+    %% Metrics
+    Note over Player, Creator: Metrics:
+    Player->>Player: File size reduction
+    Player->>Player: IK accuracy
+    Player->>Player: Technologies evaluated
+
+    Note over Fire, Creator: Metrics:
+    Fire->>Fire: Load time reduction
+    Fire->>Fire: Frame rate (FPS)
+    Fire->>Fire: Latency reduction
+    Fire->>Fire: User retention rate
 ```
 
 ### Positive Consequences
