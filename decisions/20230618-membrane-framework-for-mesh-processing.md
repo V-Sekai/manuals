@@ -18,93 +18,31 @@ To further address V-Sekai's limitations, we suggest incorporating the Membrane 
 
 The implementation involves connecting V-Sekai with the components mentioned in the Membrane Framework diagram below:
 
-```
-import { Machine, assign } from 'xstate';
-
-interface PersonContext {
-  id: string;
-}
-
-type PersonEvent =
-  | { type: 'TOGGLE_ALICE' }
-  | { type: 'TOGGLE_ELIXIR_PHOENIX' }
-  | { type: 'TOGGLE_GODOT_ENGINE' }
-  | { type: 'TOGGLE_OPEN_MFX_SUPPORT' }
-  | { type: 'TOGGLE_BLENDER_CLIENT' }
-  | { type: 'TOGGLE_ELIXIR_NX' }
-  | { type: 'TOGGLE_AIML_FRAMEWORK' }
-  | { type: 'TOGGLE_MEMBRANE_FRAMEWORK' }
-  | { type: 'TOGGLE_KHEPRI' };
-
-const filter = (context: PersonContext, event: PersonEvent) => context.id === 'specificCondition';
-
-class AdditionalStates {
-  private currentState: string;
-
-  constructor() {
-    this.currentState = 'GodotEngine';
+```mermaid
+stateDiagram-v2
+  state Initial {
+    [*] --> Ada
   }
 
-  public handleEvent(event: PersonEvent): void {
-    switch (this.currentState) {
-      case 'GodotEngine':
-        if (event.type === 'TOGGLE_GODOT_ENGINE') this.currentState = 'OpenMfxSupport';
-        break;
-      case 'OpenMfxSupport':
-        if (event.type === 'TOGGLE_OPEN_MFX_SUPPORT') this.currentState = 'BlenderClient';
-        break;
-      case 'BlenderClient':
-        if (event.type === 'TOGGLE_BLENDER_CLIENT') this.currentState = 'ElixirNx';
-        break;
-      case 'ElixirNx':
-        if (event.type === 'TOGGLE_ELIXIR_NX') this.currentState = 'AIMLFramework';
-        break;
-      case 'AIMLFramework':
-        if (event.type === 'TOGGLE_AIML_FRAMEWORK') this.currentState = 'MembraneFramework';
-        break;
-      case 'MembraneFramework':
-        if (event.type === 'TOGGLE_MEMBRANE_FRAMEWORK') this.currentState = 'Khepri';
-        break;
-      case 'Khepri':
-        if (event.type === 'TOGGLE_KHEPRI') this.currentState = 'GodotEngine';
-        break;
-    }
+  state Ada {
+    Ada --> ElixirPhoenix: TOGGLE_ADA [specificCondition]
+    Ada --> GodotEngine: TOGGLE_GODOT_ENGINE
+    Ada --> OpenMfxSupport: TOGGLE_OPEN_MFX_SUPPORT
+    Ada --> BlenderClient: TOGGLE_BLENDER_CLIENT
+    Ada --> ElixirNx: TOGGLE_ELIXIR_NX
+    Ada --> AIMLFramework: TOGGLE_AIML_FRAMEWORK
+    Ada --> MembraneFramework: TOGGLE_MEMBRANE_FRAMEWORK
+    Ada --> Khepri: TOGGLE_KHEPRI
   }
 
-  public getCurrentState(): string {
-    return this.currentState;
+  state MembraneFramework {
+    MembraneFramework --> GodotEngine: TOGGLE_GODOT_ENGINE
+    MembraneFramework --> OpenMfxSupport: TOGGLE_OPEN_MFX_SUPPORT
+    MembraneFramework --> BlenderClient: TOGGLE_BLENDER_CLIENT
+    MembraneFramework --> ElixirNx: TOGGLE_ELIXIR_NX
+    MembraneFramework --> AIMLFramework: TOGGLE_AIML_FRAMEWORK
+    MembraneFramework --> Khepri: TOGGLE_KHEPRI
   }
-}
-
-const PersonMachine = Machine<PersonContext, any, PersonEvent>({
-  id: 'Person',
-  initial: 'Alice',
-  context: { id: '', additionalStates: new AdditionalStates() },
-  states: {
-    Alice: {
-      on: {
-        TOGGLE_ALICE: [{ target: 'ElixirPhoenix', cond: filter }],
-        ...Object.fromEntries(
-          ['TOGGLE_GODOT_ENGINE', 'TOGGLE_OPEN_MFX_SUPPORT', 'TOGGLE_BLENDER_CLIENT', 'TOGGLE_ELIXIR_NX', 'TOGGLE_AIML_FRAMEWORK', 'TOGGLE_MEMBRANE_FRAMEWORK', 'TOGGLE_KHEPRI'].map((type) => [
-            type,
-            { actions: assign({ additionalStates: (context, event) => context.additionalStates.handleEvent(event) }) },
-          ])
-        ),
-      },
-    },
-    ElixirPhoenix: {
-      on: {
-        TOGGLE_ELIXIR_PHOENIX: { target: 'Alice', cond: filter },
-        ...Object.fromEntries(
-          ['TOGGLE_GODOT_ENGINE', 'TOGGLE_OPEN_MFX_SUPPORT', 'TOGGLE_BLENDER_CLIENT', 'TOGGLE_ELIXIR_NX', 'TOGGLE_AIML_FRAMEWORK', 'TOGGLE_MEMBRANE_FRAMEWORK', 'TOGGLE_KHEPRI'].map((type) => [
-            type,
-            { actions: assign({ additionalStates: (context, event) => context.additionalStates.handleEvent(event) }) },
-          ])
-        ),
-      },
-    },
-  },
-});
 ```
 
 In this diagram, Alice, Bob, Carol, and BlenderClient can act as both sources and sinks. The other components are filters that process the data between the sources/sinks.
