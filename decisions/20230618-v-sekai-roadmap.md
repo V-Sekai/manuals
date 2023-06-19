@@ -22,7 +22,7 @@ To prioritize WAP, NET, and UIUX, we need to avoid working on User Generated Scr
 
 ### Goals
 
-```
+```mermaid
 sequenceDiagram
     participant Aria
     participant SourceRepo
