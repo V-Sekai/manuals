@@ -42,6 +42,10 @@ sequenceDiagram
     MembraneFramework->>AIMLFramework: TOGGLE_AIML_FRAMEWORK
     MembraneFramework->>Khepri: TOGGLE_KHEPRI
   end
+
+  box "Sink & Source of Data" #FFCCCC
+    participant Khepri
+  end
 ```
 
 In this diagram, Alice, Bob, Carol, and BlenderClient can act as both sources and sinks. The other components are filters that process the data between the sources/sinks.
