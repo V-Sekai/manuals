@@ -23,7 +23,7 @@ By avoiding work on User Generated Content (UGC) and world building, we can prio
 ```mermaid
 sequenceDiagram
     participant Aria
-    participant SourceRepo
+    participant V-Sekai
     participant Player
     participant Creator
     participant Lyuma as "Lyuma (VRM1 - WAP)"
@@ -31,15 +31,15 @@ sequenceDiagram
 
     Note over Lyuma: WAP: World / Avatar Performance
 
-    Aria->>SourceRepo: LIGHT_ASSETS_AND_ASYNC_LOADING
-    SourceRepo->>Player: MODERN_RENDERING_AND_HIGH_PERF_LIBS
+    Aria->>V-Sekai: LIGHT_ASSETS_AND_ASYNC_LOADING
+    V-Sekai->>Player: MODERN_RENDERING_AND_HIGH_PERF_LIBS
     Player->>Creator: APPLY_NETWORK_OPT_AND_LOW_LATENCY_PROT
 
     Note over Player, Creator: NET: Network Optimization Techniques
 
     Creator->>Aria: EFFICIENT_DATA_FORMATS_AND_OPTIMIZED_COMP_ALG
-    Aria->>SourceRepo: RESPECT_ACCURATE_IK_POINTS
-    SourceRepo->>Player: EXPLORE_MULTIPLE_TECH_AND_ALT_SOLUTIONS
+    Aria->>V-Sekai: RESPECT_ACCURATE_IK_POINTS
+    V-Sekai->>Player: EXPLORE_MULTIPLE_TECH_AND_ALT_SOLUTIONS
     Lyuma->>Fire: PARTICIPATING_IN_THE_PROCESS
     Fire->>Creator: OPTIMIZE_FTUX_BY_IMPROVING_LOADING_PROCESS
 
