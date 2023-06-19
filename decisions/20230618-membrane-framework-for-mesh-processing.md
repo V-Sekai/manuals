@@ -34,6 +34,16 @@ sequenceDiagram
     MembraneFramework->>Khepri: TOGGLE_KHEPRI
   end
 
+  box "Source" #CCFFCC
+    participant MembraneFramework
+    participant GodotEngineAndBlenderClient
+  end
+
+  box "Filter" #FFFFCC
+    participant ElixirNx
+    participant AIMLFramework
+  end
+
   box "Sink & Source of Data" #FFCCCC
     participant Khepri
   end
