@@ -29,19 +29,22 @@ sequenceDiagram
     participant Fire
 
     Note over Lyuma: WAP: World / Avatar Performance
+    Note over Lyuma: Timeline: Q2-Q3
 
-    Creator->>V-Sekai: Implement light assets and asynchronous loading
-    V-Sekai->>Player: Utilize modern rendering techniques and high-performance libraries
-    Player->>Creator: Apply network optimization and low latency protocols for better performance
+    Creator->>V-Sekai: Implement light assets and asynchronous loading (reduce load time by 30%)
+    V-Sekai->>Player: Utilize modern rendering techniques and high-performance libraries (achieve 60 FPS on mid-range devices)
+    Player->>Creator: Apply network optimization and low latency protocols for better performance (reduce latency by 50%)
 
     Note over Player, Creator: NET: Network Optimization Techniques
+    Note over Player, Creator: Timeline: Q2-Q3
 
-    Creator->>V-Sekai: Use efficient data formats and optimized compression algorithms
-    V-Sekai->>Player: Ensure accurate IK points are respected
-    V-Sekai->>Player: Explore multiple technologies and alternative solutions for continuous improvement
-    Fire->>Creator: Optimize first-time user experience by improving the loading process
+    Creator->>V-Sekai: Use efficient data formats and optimized compression algorithms (reduce file size by 40%)
+    V-Sekai->>Player: Ensure accurate IK points are respected (achieve 95% accuracy)
+    V-Sekai->>Player: Explore multiple technologies and alternative solutions for continuous improvement (evaluate 3 new technologies per quarter)
+    Fire->>Creator: Optimize first-time user experience by improving the loading process (increase user retention by 20%)
 
     Note over Fire, Creator: FTUX: First Time User Experience
+    Note over Fire, Creator: Timeline: Q3-Q4
 ```
 
 ### Positive Consequences
