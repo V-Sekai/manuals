@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.361</generator>
-<lastBuildDate>Mon, 19 Jun 2023 02:30:09 GMT</lastBuildDate>
+<lastBuildDate>Mon, 19 Jun 2023 04:07:23 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -64,7 +64,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Mon, 19 Jun 2023 02:30:09 GMT</pubDate>
+  <pubDate>Mon, 19 Jun 2023 04:07:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -364,7 +364,171 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230618-v-sekai-roadmap.html</guid>
-  <pubDate>Mon, 19 Jun 2023 02:30:09 GMT</pubDate>
+  <pubDate>Mon, 19 Jun 2023 04:07:23 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230618-membrane-framework-for-mesh-processing.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="networked-procedural-generation-as-a-sidecar-to-the-godot-engine-server" class="level1">
+<h1>Networked Procedural Generation as a Sidecar to the Godot Engine Server</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: proposed</li>
+<li>Deciders: V-Sekai, fire</li>
+<li>Tags: V-Sekai, Chatbot GPT4 assistance, xstate typescript</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
+<p>Enable creation of more dynamic and engaging environments within V-Sekai.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>V-Sekai, an open-source virtual reality platform, aims to deliver a user-friendly experience for the VR community. To boost its functionality and compatibility with other tools, we propose integrating networked procedural generation as a sidecar to the Godot engine server, allowing for more dynamic and immersive environments in V-Sekai.</p>
+<p>To further address V-Sekai’s limitations, we suggest incorporating the Membrane Framework along with other relevant technologies such as Godot Engine, OpenMfx Support, Elixir Phoenix, and Elixir Nx. This comprehensive integration will not only enhance V-Sekai’s capabilities but also increase its versatility across various use cases.</p>
+<p>The implementation involves connecting V-Sekai with the components mentioned in the Membrane Framework diagram below:</p>
+<pre><code>import { Machine, assign } from 'xstate';
+
+interface PersonContext {
+  id: string;
+}
+
+type PersonEvent =
+  | { type: 'TOGGLE_ALICE' }
+  | { type: 'TOGGLE_ELIXIR_PHOENIX' }
+  | { type: 'TOGGLE_GODOT_ENGINE' }
+  | { type: 'TOGGLE_OPEN_MFX_SUPPORT' }
+  | { type: 'TOGGLE_BLENDER_CLIENT' }
+  | { type: 'TOGGLE_ELIXIR_NX' }
+  | { type: 'TOGGLE_AIML_FRAMEWORK' }
+  | { type: 'TOGGLE_MEMBRANE_FRAMEWORK' }
+  | { type: 'TOGGLE_KHEPRI' };
+
+const filter = (context: PersonContext, event: PersonEvent) =&gt; context.id === 'specificCondition';
+
+class AdditionalStates {
+  private currentState: string;
+
+  constructor() {
+    this.currentState = 'GodotEngine';
+  }
+
+  public handleEvent(event: PersonEvent): void {
+    switch (this.currentState) {
+      case 'GodotEngine':
+        if (event.type === 'TOGGLE_GODOT_ENGINE') this.currentState = 'OpenMfxSupport';
+        break;
+      case 'OpenMfxSupport':
+        if (event.type === 'TOGGLE_OPEN_MFX_SUPPORT') this.currentState = 'BlenderClient';
+        break;
+      case 'BlenderClient':
+        if (event.type === 'TOGGLE_BLENDER_CLIENT') this.currentState = 'ElixirNx';
+        break;
+      case 'ElixirNx':
+        if (event.type === 'TOGGLE_ELIXIR_NX') this.currentState = 'AIMLFramework';
+        break;
+      case 'AIMLFramework':
+        if (event.type === 'TOGGLE_AIML_FRAMEWORK') this.currentState = 'MembraneFramework';
+        break;
+      case 'MembraneFramework':
+        if (event.type === 'TOGGLE_MEMBRANE_FRAMEWORK') this.currentState = 'Khepri';
+        break;
+      case 'Khepri':
+        if (event.type === 'TOGGLE_KHEPRI') this.currentState = 'GodotEngine';
+        break;
+    }
+  }
+
+  public getCurrentState(): string {
+    return this.currentState;
+  }
+}
+
+const PersonMachine = Machine&lt;PersonContext, any, PersonEvent&gt;({
+  id: 'Person',
+  initial: 'Alice',
+  context: { id: '', additionalStates: new AdditionalStates() },
+  states: {
+    Alice: {
+      on: {
+        TOGGLE_ALICE: [{ target: 'ElixirPhoenix', cond: filter }],
+        ...Object.fromEntries(
+          ['TOGGLE_GODOT_ENGINE', 'TOGGLE_OPEN_MFX_SUPPORT', 'TOGGLE_BLENDER_CLIENT', 'TOGGLE_ELIXIR_NX', 'TOGGLE_AIML_FRAMEWORK', 'TOGGLE_MEMBRANE_FRAMEWORK', 'TOGGLE_KHEPRI'].map((type) =&gt; [
+            type,
+            { actions: assign({ additionalStates: (context, event) =&gt; context.additionalStates.handleEvent(event) }) },
+          ])
+        ),
+      },
+    },
+    ElixirPhoenix: {
+      on: {
+        TOGGLE_ELIXIR_PHOENIX: { target: 'Alice', cond: filter },
+        ...Object.fromEntries(
+          ['TOGGLE_GODOT_ENGINE', 'TOGGLE_OPEN_MFX_SUPPORT', 'TOGGLE_BLENDER_CLIENT', 'TOGGLE_ELIXIR_NX', 'TOGGLE_AIML_FRAMEWORK', 'TOGGLE_MEMBRANE_FRAMEWORK', 'TOGGLE_KHEPRI'].map((type) =&gt; [
+            type,
+            { actions: assign({ additionalStates: (context, event) =&gt; context.additionalStates.handleEvent(event) }) },
+          ])
+        ),
+      },
+    },
+  },
+});</code></pre>
+<p>In this diagram, Alice, Bob, Carol, and BlenderClient can act as both sources and sinks. The other components are filters that process the data between the sources/sinks.</p>
+<p>By integrating these components, V-Sekai will benefit from the features and enhancements provided by each technology, such as Godot Engine’s native glTF exporter, OpenMfx support for Blender, C++, and Houdini, and Elixir Phoenix and Nx for web applications and numerical computing.</p>
+</section>
+<section id="positive-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
+<ul>
+<li>Improved functionality and versatility of V-Sekai</li>
+<li>Enhanced compatibility with other tools and platforms</li>
+<li>Greater potential for collaboration and community involvement</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
+<ul>
+<li>Increased complexity in implementation and maintenance</li>
+<li>Potential performance overhead due to integration of multiple components</li>
+</ul>
+</section>
+<section id="option-graveyard" class="level2">
+<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
+</section>
+<section id="option-graveyard-1" class="level2">
+<h2 class="anchored" data-anchor-id="option-graveyard-1">Option Graveyard</h2>
+<ol type="1">
+<li><p><strong>Standalone procedural generation</strong>: Implementing procedural generation as a standalone feature without integrating it with the Godot Engine server. This option was discarded because it would not provide the same level of compatibility and versatility as the proposed solution.</p></li>
+<li><p><strong>Using pre-built assets</strong>: Relying on pre-built assets for creating environments instead of implementing networked procedural generation. This option was discarded due to the limited flexibility and potential for repetitive content, which could negatively impact user engagement.</p></li>
+<li><p><strong>Third-party procedural generation tools</strong>: Integrating third-party procedural generation tools instead of developing a custom solution. This option was discarded because it may not offer the same level of control and customization required for V-Sekai’s specific needs.</p></li>
+<li><p><strong>Static environment design</strong>: Focusing on static environment design rather than dynamic, procedurally generated content. This option was discarded because it would not provide the desired level of immersion and interactivity for V-Sekai users.</p></li>
+</ol>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
+<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
+<p>No, the proposed solution involves integrating multiple technologies and cannot be achieved with a simple script workaround.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
+<p>Yes, addressing the limitations of V-Sekai is crucial for its success and adoption within the VR community. By integrating the proposed technologies, we can ensure that V-Sekai remains competitive and relevant in the rapidly evolving VR landscape.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230618-membrane-framework-for-mesh-processing.html</guid>
+  <pubDate>Mon, 19 Jun 2023 04:07:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -447,7 +611,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230616-pmx-to-vrm.html</guid>
-  <pubDate>Mon, 19 Jun 2023 02:30:09 GMT</pubDate>
+  <pubDate>Mon, 19 Jun 2023 04:07:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -525,7 +689,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230614-llm-statechart.html</guid>
-  <pubDate>Mon, 19 Jun 2023 02:30:09 GMT</pubDate>
+  <pubDate>Mon, 19 Jun 2023 04:07:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -658,7 +822,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230611-wasm-in-v-sekai.html</guid>
-  <pubDate>Mon, 19 Jun 2023 02:30:09 GMT</pubDate>
+  <pubDate>Mon, 19 Jun 2023 04:07:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -737,7 +901,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230608-v-sekai-roadmap.html</guid>
-  <pubDate>Mon, 19 Jun 2023 02:30:09 GMT</pubDate>
+  <pubDate>Mon, 19 Jun 2023 04:07:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -810,7 +974,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230602-v-sekai-roadmap.html</guid>
-  <pubDate>Mon, 19 Jun 2023 02:30:09 GMT</pubDate>
+  <pubDate>Mon, 19 Jun 2023 04:07:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -899,7 +1063,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230602-pmx-module-integration.html</guid>
-  <pubDate>Mon, 19 Jun 2023 02:30:09 GMT</pubDate>
+  <pubDate>Mon, 19 Jun 2023 04:07:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -984,7 +1148,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230602-limited-tracker-placement.html</guid>
-  <pubDate>Mon, 19 Jun 2023 02:30:09 GMT</pubDate>
+  <pubDate>Mon, 19 Jun 2023 04:07:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1064,7 +1228,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230531-godot-engine-learning.html</guid>
-  <pubDate>Mon, 19 Jun 2023 02:30:09 GMT</pubDate>
+  <pubDate>Mon, 19 Jun 2023 04:07:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1158,7 +1322,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230531-godot-engine-ipad.html</guid>
-  <pubDate>Mon, 19 Jun 2023 02:30:09 GMT</pubDate>
+  <pubDate>Mon, 19 Jun 2023 04:07:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1232,7 +1396,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-v-sekai-roadmap.html</guid>
-  <pubDate>Mon, 19 Jun 2023 02:30:09 GMT</pubDate>
+  <pubDate>Mon, 19 Jun 2023 04:07:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1344,7 +1508,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-sidecar.html</guid>
-  <pubDate>Mon, 19 Jun 2023 02:30:09 GMT</pubDate>
+  <pubDate>Mon, 19 Jun 2023 04:07:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1422,7 +1586,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-side-content-validation.html</guid>
-  <pubDate>Mon, 19 Jun 2023 02:30:09 GMT</pubDate>
+  <pubDate>Mon, 19 Jun 2023 04:07:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1545,7 +1709,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-performance-test.html</guid>
-  <pubDate>Mon, 19 Jun 2023 02:30:09 GMT</pubDate>
+  <pubDate>Mon, 19 Jun 2023 04:07:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1623,7 +1787,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-cdn-session-url.html</guid>
-  <pubDate>Mon, 19 Jun 2023 02:30:09 GMT</pubDate>
+  <pubDate>Mon, 19 Jun 2023 04:07:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1705,7 +1869,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-organization.html</guid>
-  <pubDate>Mon, 19 Jun 2023 02:30:09 GMT</pubDate>
+  <pubDate>Mon, 19 Jun 2023 04:07:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1784,7 +1948,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-godot-test-game.html</guid>
-  <pubDate>Mon, 19 Jun 2023 02:30:09 GMT</pubDate>
+  <pubDate>Mon, 19 Jun 2023 04:07:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1873,100 +2037,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230525-animation-ik-node.html</guid>
-  <pubDate>Mon, 19 Jun 2023 02:30:09 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20230523-marketing-cycle.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="improve-v-sekai-marketing" class="level1">
-<h1>Improve V-Sekai marketing</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li>Status: draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
-<li>Deciders: V-Sekai</li>
-<li>Tags: V-Sekai, GPT-4</li>
-</ul>
-</section>
-<section id="context-and-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
-<p>V-Sekai is a virtual world platform that allows users to create, explore, and interact with others in various immersive environments.</p>
-<p>V-Sekai is facing a limitation in its marketing efforts. The challenge is to find a way to make marketing more manageable and effective for V-Sekai.</p>
-</section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<ol type="1">
-<li>Strategy</li>
-<li>Positioning</li>
-<li>Messaging</li>
-<li>Experimentation</li>
-</ol>
-<p>The first three steps are initial preparations that create a strong foundation for marketing efforts. The fourth step, Experimentation, is a recurring process that helps us continuously improve our marketing strategies.</p>
-</section>
-<section id="implementation" class="level2">
-<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
-<section id="step-1-strategy" class="level3">
-<h3 class="anchored" data-anchor-id="step-1-strategy">Step 1: Strategy</h3>
-<p>Define the overall marketing strategy by identifying target audiences, setting goals, and determining the best channels to reach potential customers.</p>
-</section>
-<section id="step-2-positioning" class="level3">
-<h3 class="anchored" data-anchor-id="step-2-positioning">Step 2: Positioning</h3>
-<p>Establish a unique selling proposition (USP) that sets the product or service apart from competitors. This will help potential customers understand why they should choose the offering over others in the market.</p>
-</section>
-<section id="step-3-messaging" class="level3">
-<h3 class="anchored" data-anchor-id="step-3-messaging">Step 3: Messaging</h3>
-<p>Develop clear and compelling messaging that communicates the USP and resonates with the target audience. This messaging should be consistent across all marketing channels.</p>
-</section>
-<section id="step-4-experimentation" class="level3">
-<h3 class="anchored" data-anchor-id="step-4-experimentation">Step 4: Experimentation</h3>
-<p>Conduct regular experiments to test and refine marketing tactics. This can include A/B testing, trying new channels, or adjusting messaging. Analyze the results of these experiments and use the insights gained to improve future marketing efforts.</p>
-</section>
-</section>
-<section id="positive-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
-<ul>
-<li>Improved marketing effectiveness for V-Sekai</li>
-<li>Better time management and prioritization of tasks</li>
-<li>Increased revenue and business growth</li>
-</ul>
-</section>
-<section id="negative-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
-<ul>
-<li>Potential initial time investment in setting up the marketing habit</li>
-<li>Possible resistance to change or adopting new habits</li>
-</ul>
-</section>
-<section id="option-graveyard" class="level2">
-<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
-<p>Do nothing.</p>
-</section>
-<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
-<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
-<p>No, this marketing strategy is a comprehensive marketing approach that requires ongoing commitment and cannot be replaced by a simple script.</p>
-</section>
-<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
-<p>Yes, as the creators and maintainers of V-Sekai, we have the best understanding of our product and target audience. By taking charge of our marketing efforts, we can ensure that our messaging and strategies align with our goals and vision, ultimately leading to better results.</p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ul>
-<li><a href="https://v-sekai.org/">V-Sekai</a></li>
-<li><a href="https://2quiet2market.com">Material from 2quiet2market</a></li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20230523-marketing-cycle.html</guid>
-  <pubDate>Mon, 19 Jun 2023 02:30:09 GMT</pubDate>
+  <pubDate>Mon, 19 Jun 2023 04:07:23 GMT</pubDate>
 </item>
 </channel>
 </rss>
