@@ -19,30 +19,34 @@ To further address V-Sekai's limitations, we suggest incorporating the Membrane 
 The implementation involves connecting V-Sekai with the components mentioned in the Membrane Framework diagram below:
 
 ```mermaid
-stateDiagram-v2
-  state Initial {
-    [*] --> Ada
-  }
+sequenceDiagram
+  participant Initial as [*]
+  participant Ada
+  participant ElixirPhoenix
+  participant GodotEngine
+  participant OpenMfxSupport
+  participant BlenderClient
+  participant ElixirNx
+  participant AIMLFramework
+  participant MembraneFramework
+  participant Khepri
 
-  state Ada {
-    Ada --> ElixirPhoenix: TOGGLE_ADA [specificCondition]
-    Ada --> GodotEngine: TOGGLE_GODOT_ENGINE
-    Ada --> OpenMfxSupport: TOGGLE_OPEN_MFX_SUPPORT
-    Ada --> BlenderClient: TOGGLE_BLENDER_CLIENT
-    Ada --> ElixirNx: TOGGLE_ELIXIR_NX
-    Ada --> AIMLFramework: TOGGLE_AIML_FRAMEWORK
-    Ada --> MembraneFramework: TOGGLE_MEMBRANE_FRAMEWORK
-    Ada --> Khepri: TOGGLE_KHEPRI
-  }
+  Initial->>Ada: TOGGLE_ADA [specificCondition]
+  Ada->>ElixirPhoenix: TOGGLE_ADA [specificCondition]
+  Ada->>GodotEngine: TOGGLE_GODOT_ENGINE
+  Ada->>OpenMfxSupport: TOGGLE_OPEN_MFX_SUPPORT
+  Ada->>BlenderClient: TOGGLE_BLENDER_CLIENT
+  Ada->>ElixirNx: TOGGLE_ELIXIR_NX
+  Ada->>AIMLFramework: TOGGLE_AIML_FRAMEWORK
+  Ada->>MembraneFramework: TOGGLE_MEMBRANE_FRAMEWORK
+  Ada->>Khepri: TOGGLE_KHEPRI
 
-  state MembraneFramework {
-    MembraneFramework --> GodotEngine: TOGGLE_GODOT_ENGINE
-    MembraneFramework --> OpenMfxSupport: TOGGLE_OPEN_MFX_SUPPORT
-    MembraneFramework --> BlenderClient: TOGGLE_BLENDER_CLIENT
-    MembraneFramework --> ElixirNx: TOGGLE_ELIXIR_NX
-    MembraneFramework --> AIMLFramework: TOGGLE_AIML_FRAMEWORK
-    MembraneFramework --> Khepri: TOGGLE_KHEPRI
-  }
+  MembraneFramework->>GodotEngine: TOGGLE_GODOT_ENGINE
+  MembraneFramework->>OpenMfxSupport: TOGGLE_OPEN_MFX_SUPPORT
+  MembraneFramework->>BlenderClient: TOGGLE_BLENDER_CLIENT
+  MembraneFramework->>ElixirNx: TOGGLE_ELIXIR_NX
+  MembraneFramework->>AIMLFramework: TOGGLE_AIML_FRAMEWORK
+  MembraneFramework->>Khepri: TOGGLE_KHEPRI
 ```
 
 In this diagram, Alice, Bob, Carol, and BlenderClient can act as both sources and sinks. The other components are filters that process the data between the sources/sinks.
