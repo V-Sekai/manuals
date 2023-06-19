@@ -20,20 +20,19 @@ The implementation involves connecting V-Sekai with the components mentioned in 
 
 ```mermaid
 sequenceDiagram
-  participant Initial as [*]
   participant Ada
   participant ElixirPhoenix
+  participant MembraneFramework
   participant GodotEngine
   participant OpenMfxSupport
   participant BlenderClient
   participant ElixirNx
   participant AIMLFramework
-  participant MembraneFramework
   participant Khepri
 
-  Initial->>Ada: TOGGLE_ADA [specificCondition]
-  Initial->>ElixirPhoenix: TOGGLE_ADA [specificCondition]
-  Ada->>MembraneFramework: TOGGLE_MEMBRANE_FRAMEWORK
+  Ada->>ElixirPhoenix: TOGGLE_ELIXIR_PHOENIX
+
+  MembraneFramework->>ElixirPhoenix: TOGGLE_MEMBRANE_FRAMEWORK
 
   MembraneFramework->>GodotEngine: TOGGLE_GODOT_ENGINE
   MembraneFramework->>OpenMfxSupport: TOGGLE_OPEN_MFX_SUPPORT
