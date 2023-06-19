@@ -26,7 +26,6 @@ sequenceDiagram
     participant Player
     participant Creator
     participant Lyuma as "Lyuma (VRM1 - WAP)"
-    participant Fire
 
     Note over Lyuma: WAP: World / Avatar Performance
     Note over Lyuma: Timeline: Q2-Q3
@@ -41,10 +40,6 @@ sequenceDiagram
     Creator->>V-Sekai: Use efficient data formats and optimized compression algorithms (reduce file size by 40%)
     V-Sekai->>Player: Ensure accurate IK points are respected (achieve 95% accuracy)
     V-Sekai->>Player: Explore multiple technologies and alternative solutions for continuous improvement (evaluate 3 new technologies per quarter)
-    Fire->>Creator: Optimize first-time user experience by improving the loading process (increase user retention by 20%)
-
-    Note over Fire, Creator: FTUX: First Time User Experience
-    Note over Fire, Creator: Timeline: Q3-Q4
 
     %% Metrics
     Note over Player, Creator: Metrics:
@@ -52,9 +47,23 @@ sequenceDiagram
     Player->>Player: IK accuracy
     Player->>Player: Technologies evaluated
 
+```
+
+```mermaid
+sequenceDiagram
+    participant Fire
+    participant Creator
+
+    Fire->>Creator: Optimize first-time user experience by improving the loading process (increase user retention by 20%)
+
+    Note over Fire, Creator: FTUX: First Time User Experience
+    Note over Fire, Creator: Timeline: Q3-Q4
+
+    %% Metrics
     Note over Fire, Creator: Metrics:
     Fire->>Fire: Load time reduction
-    Fire->>Fire: Frame rate (FPS)
+    Fire->>Fire: Frame rate (FPS) for flat desktop
+    Fire->>Fire: Frame rate (FPS) for VR desktop
     Fire->>Fire: Latency reduction
     Fire->>Fire: User retention rate
 ```
