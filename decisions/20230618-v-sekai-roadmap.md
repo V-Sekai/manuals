@@ -39,10 +39,12 @@ sequenceDiagram
     Creator->>V-Sekai: EFFICIENT_DATA_FORMATS_AND_OPTIMIZED_COMP_ALG
     V-Sekai->>Player: RESPECT_ACCURATE_IK_POINTS
     V-Sekai->>Player: EXPLORE_MULTIPLE_TECH_AND_ALT_SOLUTIONS
-    Lyuma->>Fire: PARTICIPATING_IN_THE_PROCESS
+    Lyuma->>V-Sekai: PARTICIPATING_IN_THE_PROCESS
+    Fire->>V-Sekai: PARTICIPATING_IN_THE_PROCESS
     Fire->>Creator: OPTIMIZE_FTUX_BY_IMPROVING_LOADING_PROCESS
 
     Note over Fire, Creator: FTUX: First Time User Experience
+
 ```
 
 ### Positive Consequences
