@@ -22,7 +22,7 @@ To prioritize WAP, NET, and UIUX, we need to avoid working on User Generated Scr
 
 ### Goals
 
-```mermaid
+```
 sequenceDiagram
     participant Aria
     participant SourceRepo
@@ -31,14 +31,21 @@ sequenceDiagram
     participant Lyuma as "Lyuma (VRM1 - WAP)"
     participant Fire
 
+    Note over Lyuma: WAP: World and Player
+
     Aria->>SourceRepo: LIGHT_ASSETS_AND_ASYNC_LOADING
     SourceRepo->>Player: MODERN_RENDERING_AND_HIGH_PERF_LIBS
     Player->>Creator: APPLY_NETWORK_OPT_AND_LOW_LATENCY_PROT
+
+    Note over Player, Creator: NET: Network Optimization Techniques
+
     Creator->>Aria: EFFICIENT_DATA_FORMATS_AND_OPTIMIZED_COMP_ALG
     Aria->>SourceRepo: RESPECT_ACCURATE_IK_POINTS
     SourceRepo->>Player: EXPLORE_MULTIPLE_TECH_AND_ALT_SOLUTIONS
     Lyuma->>Fire: PARTICIPATING_IN_THE_PROCESS
     Fire->>Creator: OPTIMIZE_FTUX_BY_IMPROVING_LOADING_PROCESS
+
+    Note over Fire, Creator: FTUX: First Time User Experience
 ```
 
 ### Positive Consequences
