@@ -21,14 +21,14 @@ The implementation involves connecting V-Sekai with the components mentioned in 
 ```mermaid
 sequenceDiagram
   participant MembraneFramework
-  participant GodotEngineAndBlenderClient
+  participant WebAndGodotEngineAndBlenderClient
   participant ElixirNx
   participant AIMLFramework
   participant Khepri
 
   rect rgb(240, 248, 255)
     note over MembraneFramework, Khepri: Toggle Actions
-    MembraneFramework->>GodotEngineAndBlenderClient: TOGGLE_GAME_ENGINE_AND_CLIENTS
+    MembraneFramework->>WebAndGodotEngineAndBlenderClient: TOGGLE_GAME_ENGINE_AND_CLIENTS
     MembraneFramework->>ElixirNx: ACCELERATE_MEMBRANE_FRAMEWORK
     MembraneFramework->>AIMLFramework: TOGGLE_AIML_FRAMEWORK
     MembraneFramework->>Khepri: TOGGLE_KHEPRI
@@ -36,7 +36,7 @@ sequenceDiagram
 
   box "Source" #CCFFCC
     participant MembraneFramework
-    participant GodotEngineAndBlenderClient
+    participant WebAndGodotEngineAndBlenderClient
   end
 
   box "Filter" #FFFFCC
