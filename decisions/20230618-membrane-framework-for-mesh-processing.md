@@ -4,7 +4,7 @@
 
 - Status: proposed
 - Deciders: V-Sekai, fire
-- Tags: V-Sekai, Chatbot GPT4 assistance, xstate typescript
+- Tags: V-Sekai, Chatbot GPT4 assistance
 
 ## Context and Problem Statement
 
@@ -63,8 +63,6 @@ By integrating these components, V-Sekai will benefit from the features and enha
 
 - Increased complexity in implementation and maintenance
 - Potential performance overhead due to integration of multiple components
-
-## Option graveyard
 
 ## Option Graveyard
 
