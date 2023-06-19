@@ -154,30 +154,34 @@ ul.task-list li input[type="checkbox"] {
 <p>V-Sekai, an open-source virtual reality platform, aims to deliver a user-friendly experience for the VR community. To boost its functionality and compatibility with other tools, we propose integrating networked procedural generation as a sidecar to the Godot engine server, allowing for more dynamic and immersive environments in V-Sekai.</p>
 <p>To further address V-Sekai’s limitations, we suggest incorporating the Membrane Framework along with other relevant technologies such as Godot Engine, OpenMfx Support, Elixir Phoenix, and Elixir Nx. This comprehensive integration will not only enhance V-Sekai’s capabilities but also increase its versatility across various use cases.</p>
 <p>The implementation involves connecting V-Sekai with the components mentioned in the Membrane Framework diagram below:</p>
-<pre class="mermaid"><code>stateDiagram-v2
-  state Initial {
-    [*] --&gt; Ada
-  }
+<pre class="mermaid"><code>sequenceDiagram
+  participant Initial as [*]
+  participant Ada
+  participant ElixirPhoenix
+  participant GodotEngine
+  participant OpenMfxSupport
+  participant BlenderClient
+  participant ElixirNx
+  participant AIMLFramework
+  participant MembraneFramework
+  participant Khepri
 
-  state Ada {
-    Ada --&gt; ElixirPhoenix: TOGGLE_ADA [specificCondition]
-    Ada --&gt; GodotEngine: TOGGLE_GODOT_ENGINE
-    Ada --&gt; OpenMfxSupport: TOGGLE_OPEN_MFX_SUPPORT
-    Ada --&gt; BlenderClient: TOGGLE_BLENDER_CLIENT
-    Ada --&gt; ElixirNx: TOGGLE_ELIXIR_NX
-    Ada --&gt; AIMLFramework: TOGGLE_AIML_FRAMEWORK
-    Ada --&gt; MembraneFramework: TOGGLE_MEMBRANE_FRAMEWORK
-    Ada --&gt; Khepri: TOGGLE_KHEPRI
-  }
+  Initial-&gt;&gt;Ada: TOGGLE_ADA [specificCondition]
+  Ada-&gt;&gt;ElixirPhoenix: TOGGLE_ADA [specificCondition]
+  Ada-&gt;&gt;GodotEngine: TOGGLE_GODOT_ENGINE
+  Ada-&gt;&gt;OpenMfxSupport: TOGGLE_OPEN_MFX_SUPPORT
+  Ada-&gt;&gt;BlenderClient: TOGGLE_BLENDER_CLIENT
+  Ada-&gt;&gt;ElixirNx: TOGGLE_ELIXIR_NX
+  Ada-&gt;&gt;AIMLFramework: TOGGLE_AIML_FRAMEWORK
+  Ada-&gt;&gt;MembraneFramework: TOGGLE_MEMBRANE_FRAMEWORK
+  Ada-&gt;&gt;Khepri: TOGGLE_KHEPRI
 
-  state MembraneFramework {
-    MembraneFramework --&gt; GodotEngine: TOGGLE_GODOT_ENGINE
-    MembraneFramework --&gt; OpenMfxSupport: TOGGLE_OPEN_MFX_SUPPORT
-    MembraneFramework --&gt; BlenderClient: TOGGLE_BLENDER_CLIENT
-    MembraneFramework --&gt; ElixirNx: TOGGLE_ELIXIR_NX
-    MembraneFramework --&gt; AIMLFramework: TOGGLE_AIML_FRAMEWORK
-    MembraneFramework --&gt; Khepri: TOGGLE_KHEPRI
-  }</code></pre>
+  MembraneFramework-&gt;&gt;GodotEngine: TOGGLE_GODOT_ENGINE
+  MembraneFramework-&gt;&gt;OpenMfxSupport: TOGGLE_OPEN_MFX_SUPPORT
+  MembraneFramework-&gt;&gt;BlenderClient: TOGGLE_BLENDER_CLIENT
+  MembraneFramework-&gt;&gt;ElixirNx: TOGGLE_ELIXIR_NX
+  MembraneFramework-&gt;&gt;AIMLFramework: TOGGLE_AIML_FRAMEWORK
+  MembraneFramework-&gt;&gt;Khepri: TOGGLE_KHEPRI</code></pre>
 <p>In this diagram, Alice, Bob, Carol, and BlenderClient can act as both sources and sinks. The other components are filters that process the data between the sources/sinks.</p>
 <p>By integrating these components, V-Sekai will benefit from the features and enhancements provided by each technology, such as Godot Engine’s native glTF exporter, OpenMfx support for Blender, C++, and Houdini, and Elixir Phoenix and Nx for web applications and numerical computing.</p>
 </section>
