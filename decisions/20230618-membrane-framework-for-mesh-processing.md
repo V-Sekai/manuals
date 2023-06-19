@@ -31,15 +31,17 @@ sequenceDiagram
   participant Khepri
 
   Ada->>ElixirPhoenix: TOGGLE_ELIXIR_PHOENIX
-
   MembraneFramework->>ElixirPhoenix: TOGGLE_MEMBRANE_FRAMEWORK
 
-  MembraneFramework->>GodotEngine: TOGGLE_GODOT_ENGINE
-  MembraneFramework->>OpenMfxSupport: TOGGLE_OPEN_MFX_SUPPORT
-  MembraneFramework->>BlenderClient: TOGGLE_BLENDER_CLIENT
-  MembraneFramework->>ElixirNx: TOGGLE_ELIXIR_NX
-  MembraneFramework->>AIMLFramework: TOGGLE_AIML_FRAMEWORK
-  MembraneFramework->>Khepri: TOGGLE_KHEPRI
+  rect rgb(240, 248, 255)
+    note over MembraneFramework, Khepri: Toggle Actions
+    MembraneFramework->>GodotEngine: TOGGLE_GODOT_ENGINE
+    MembraneFramework->>OpenMfxSupport: TOGGLE_OPEN_MFX_SUPPORT
+    MembraneFramework->>BlenderClient: TOGGLE_BLENDER_CLIENT
+    MembraneFramework->>ElixirNx: TOGGLE_ELIXIR_NX
+    MembraneFramework->>AIMLFramework: TOGGLE_AIML_FRAMEWORK
+    MembraneFramework->>Khepri: TOGGLE_KHEPRI
+  end
 ```
 
 In this diagram, Alice, Bob, Carol, and BlenderClient can act as both sources and sinks. The other components are filters that process the data between the sources/sinks.
