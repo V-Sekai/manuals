@@ -22,56 +22,23 @@ To prioritize WAP, NET, and UIUX, we need to avoid working on User Generated Scr
 
 ### Goals
 
-```typescript
-import { createMachine } from 'xstate';
+```
+sequenceDiagram
+    participant Aria
+    participant SourceRepo
+    participant Player
+    participant Creator
+    participant Lyuma as "Lyuma (VRM1 - WAP)"
+    participant Fire
 
-interface Context {}
-
-type Event =
-  | { type: 'LIGHT_ASSETS_AND_ASYNC_LOADING' }
-  | { type: 'MODERN_RENDERING_AND_HIGH_PERF_LIBS' }
-  | { type: 'APPLY_NETWORK_OPT_AND_LOW_LATENCY_PROT' }
-  | { type: 'EFFICIENT_DATA_FORMATS_AND_OPTIMIZED_COMP_ALG' }
-  | { type: 'RESPECT_ACCURATE_IK_POINTS' }
-  | { type: 'EXPLORE_MULTIPLE_TECH_AND_ALT_SOLUTIONS' };
-
-const machine = createMachine<Context, Event>({
-  id: 'prioritiesMachine',
-  initial: 'FTUX',
-  states: {
-    FTUX: {
-      on: {
-        LIGHT_ASSETS_AND_ASYNC_LOADING: 'NET',
-      },
-    },
-    NET: {
-      on: {
-        MODERN_RENDERING_AND_HIGH_PERF_LIBS: 'WAP',
-      },
-    },
-    WAP: {
-      initial: 'dataTransfer',
-      states: {
-        dataTransfer: {
-          on: {
-            APPLY_NETWORK_OPT_AND_LOW_LATENCY_PROT: 'ikPoints',
-          },
-        },
-        ikPoints: {
-          on: {
-            EFFICIENT_DATA_FORMATS_AND_OPTIMIZED_COMP_ALG: 'investigate',
-          },
-        },
-        investigate: {
-          on: {
-            RESPECT_ACCURATE_IK_POINTS: 'userInterface',
-          },
-        },
-        userInterface: { type: 'final' },
-      },
-    },
-  },
-});
+    Aria->>SourceRepo: LIGHT_ASSETS_AND_ASYNC_LOADING
+    SourceRepo->>Player: MODERN_RENDERING_AND_HIGH_PERF_LIBS
+    Player->>Creator: APPLY_NETWORK_OPT_AND_LOW_LATENCY_PROT
+    Creator->>Aria: EFFICIENT_DATA_FORMATS_AND_OPTIMIZED_COMP_ALG
+    Aria->>SourceRepo: RESPECT_ACCURATE_IK_POINTS
+    SourceRepo->>Player: EXPLORE_MULTIPLE_TECH_AND_ALT_SOLUTIONS
+    Lyuma->>Fire: PARTICIPATING_IN_THE_PROCESS
+    Fire->>Creator: OPTIMIZE_FTUX_BY_IMPROVING_LOADING_PROCESS
 ```
 
 ### Positive Consequences
