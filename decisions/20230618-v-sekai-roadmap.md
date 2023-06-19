@@ -29,7 +29,7 @@ sequenceDiagram
     participant Lyuma as "Lyuma (VRM1 - WAP)"
     participant Fire
 
-    Note over Lyuma: WAP: World and Player
+    Note over Lyuma: WAP: World / Avatar Performance
 
     Aria->>SourceRepo: LIGHT_ASSETS_AND_ASYNC_LOADING
     SourceRepo->>Player: MODERN_RENDERING_AND_HIGH_PERF_LIBS
