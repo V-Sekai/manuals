@@ -32,14 +32,8 @@ sequenceDiagram
   participant Khepri
 
   Initial->>Ada: TOGGLE_ADA [specificCondition]
-  Ada->>ElixirPhoenix: TOGGLE_ADA [specificCondition]
-  Ada->>GodotEngine: TOGGLE_GODOT_ENGINE
-  Ada->>OpenMfxSupport: TOGGLE_OPEN_MFX_SUPPORT
-  Ada->>BlenderClient: TOGGLE_BLENDER_CLIENT
-  Ada->>ElixirNx: TOGGLE_ELIXIR_NX
-  Ada->>AIMLFramework: TOGGLE_AIML_FRAMEWORK
+  Initial->>ElixirPhoenix: TOGGLE_ADA [specificCondition]
   Ada->>MembraneFramework: TOGGLE_MEMBRANE_FRAMEWORK
-  Ada->>Khepri: TOGGLE_KHEPRI
 
   MembraneFramework->>GodotEngine: TOGGLE_GODOT_ENGINE
   MembraneFramework->>OpenMfxSupport: TOGGLE_OPEN_MFX_SUPPORT
