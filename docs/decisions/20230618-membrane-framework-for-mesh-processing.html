@@ -154,92 +154,30 @@ ul.task-list li input[type="checkbox"] {
 <p>V-Sekai, an open-source virtual reality platform, aims to deliver a user-friendly experience for the VR community. To boost its functionality and compatibility with other tools, we propose integrating networked procedural generation as a sidecar to the Godot engine server, allowing for more dynamic and immersive environments in V-Sekai.</p>
 <p>To further address V-Sekai’s limitations, we suggest incorporating the Membrane Framework along with other relevant technologies such as Godot Engine, OpenMfx Support, Elixir Phoenix, and Elixir Nx. This comprehensive integration will not only enhance V-Sekai’s capabilities but also increase its versatility across various use cases.</p>
 <p>The implementation involves connecting V-Sekai with the components mentioned in the Membrane Framework diagram below:</p>
-<pre><code>import { Machine, assign } from 'xstate';
-
-interface PersonContext {
-  id: string;
-}
-
-type PersonEvent =
-  | { type: 'TOGGLE_ALICE' }
-  | { type: 'TOGGLE_ELIXIR_PHOENIX' }
-  | { type: 'TOGGLE_GODOT_ENGINE' }
-  | { type: 'TOGGLE_OPEN_MFX_SUPPORT' }
-  | { type: 'TOGGLE_BLENDER_CLIENT' }
-  | { type: 'TOGGLE_ELIXIR_NX' }
-  | { type: 'TOGGLE_AIML_FRAMEWORK' }
-  | { type: 'TOGGLE_MEMBRANE_FRAMEWORK' }
-  | { type: 'TOGGLE_KHEPRI' };
-
-const filter = (context: PersonContext, event: PersonEvent) =&gt; context.id === 'specificCondition';
-
-class AdditionalStates {
-  private currentState: string;
-
-  constructor() {
-    this.currentState = 'GodotEngine';
+<pre class="mermaid"><code>stateDiagram-v2
+  state Initial {
+    [*] --&gt; Ada
   }
 
-  public handleEvent(event: PersonEvent): void {
-    switch (this.currentState) {
-      case 'GodotEngine':
-        if (event.type === 'TOGGLE_GODOT_ENGINE') this.currentState = 'OpenMfxSupport';
-        break;
-      case 'OpenMfxSupport':
-        if (event.type === 'TOGGLE_OPEN_MFX_SUPPORT') this.currentState = 'BlenderClient';
-        break;
-      case 'BlenderClient':
-        if (event.type === 'TOGGLE_BLENDER_CLIENT') this.currentState = 'ElixirNx';
-        break;
-      case 'ElixirNx':
-        if (event.type === 'TOGGLE_ELIXIR_NX') this.currentState = 'AIMLFramework';
-        break;
-      case 'AIMLFramework':
-        if (event.type === 'TOGGLE_AIML_FRAMEWORK') this.currentState = 'MembraneFramework';
-        break;
-      case 'MembraneFramework':
-        if (event.type === 'TOGGLE_MEMBRANE_FRAMEWORK') this.currentState = 'Khepri';
-        break;
-      case 'Khepri':
-        if (event.type === 'TOGGLE_KHEPRI') this.currentState = 'GodotEngine';
-        break;
-    }
+  state Ada {
+    Ada --&gt; ElixirPhoenix: TOGGLE_ADA [specificCondition]
+    Ada --&gt; GodotEngine: TOGGLE_GODOT_ENGINE
+    Ada --&gt; OpenMfxSupport: TOGGLE_OPEN_MFX_SUPPORT
+    Ada --&gt; BlenderClient: TOGGLE_BLENDER_CLIENT
+    Ada --&gt; ElixirNx: TOGGLE_ELIXIR_NX
+    Ada --&gt; AIMLFramework: TOGGLE_AIML_FRAMEWORK
+    Ada --&gt; MembraneFramework: TOGGLE_MEMBRANE_FRAMEWORK
+    Ada --&gt; Khepri: TOGGLE_KHEPRI
   }
 
-  public getCurrentState(): string {
-    return this.currentState;
-  }
-}
-
-const PersonMachine = Machine&lt;PersonContext, any, PersonEvent&gt;({
-  id: 'Person',
-  initial: 'Alice',
-  context: { id: '', additionalStates: new AdditionalStates() },
-  states: {
-    Alice: {
-      on: {
-        TOGGLE_ALICE: [{ target: 'ElixirPhoenix', cond: filter }],
-        ...Object.fromEntries(
-          ['TOGGLE_GODOT_ENGINE', 'TOGGLE_OPEN_MFX_SUPPORT', 'TOGGLE_BLENDER_CLIENT', 'TOGGLE_ELIXIR_NX', 'TOGGLE_AIML_FRAMEWORK', 'TOGGLE_MEMBRANE_FRAMEWORK', 'TOGGLE_KHEPRI'].map((type) =&gt; [
-            type,
-            { actions: assign({ additionalStates: (context, event) =&gt; context.additionalStates.handleEvent(event) }) },
-          ])
-        ),
-      },
-    },
-    ElixirPhoenix: {
-      on: {
-        TOGGLE_ELIXIR_PHOENIX: { target: 'Alice', cond: filter },
-        ...Object.fromEntries(
-          ['TOGGLE_GODOT_ENGINE', 'TOGGLE_OPEN_MFX_SUPPORT', 'TOGGLE_BLENDER_CLIENT', 'TOGGLE_ELIXIR_NX', 'TOGGLE_AIML_FRAMEWORK', 'TOGGLE_MEMBRANE_FRAMEWORK', 'TOGGLE_KHEPRI'].map((type) =&gt; [
-            type,
-            { actions: assign({ additionalStates: (context, event) =&gt; context.additionalStates.handleEvent(event) }) },
-          ])
-        ),
-      },
-    },
-  },
-});</code></pre>
+  state MembraneFramework {
+    MembraneFramework --&gt; GodotEngine: TOGGLE_GODOT_ENGINE
+    MembraneFramework --&gt; OpenMfxSupport: TOGGLE_OPEN_MFX_SUPPORT
+    MembraneFramework --&gt; BlenderClient: TOGGLE_BLENDER_CLIENT
+    MembraneFramework --&gt; ElixirNx: TOGGLE_ELIXIR_NX
+    MembraneFramework --&gt; AIMLFramework: TOGGLE_AIML_FRAMEWORK
+    MembraneFramework --&gt; Khepri: TOGGLE_KHEPRI
+  }</code></pre>
 <p>In this diagram, Alice, Bob, Carol, and BlenderClient can act as both sources and sinks. The other components are filters that process the data between the sources/sinks.</p>
 <p>By integrating these components, V-Sekai will benefit from the features and enhancements provided by each technology, such as Godot Engine’s native glTF exporter, OpenMfx support for Blender, C++, and Houdini, and Elixir Phoenix and Nx for web applications and numerical computing.</p>
 </section>
