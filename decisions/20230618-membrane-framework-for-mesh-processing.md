@@ -20,25 +20,21 @@ The implementation involves connecting V-Sekai with the components mentioned in 
 
 ```mermaid
 sequenceDiagram
-  participant Ada
+  participant WebBrowser
   participant ElixirPhoenix
   participant MembraneFramework
-  participant GodotEngine
-  participant OpenMfxSupport
-  participant BlenderClient
+  participant GodotEngineAndBlenderClient
   participant ElixirNx
   participant AIMLFramework
   participant Khepri
 
-  Ada->>ElixirPhoenix: TOGGLE_ELIXIR_PHOENIX
+  WebBrowser->>ElixirPhoenix: TOGGLE_ELIXIR_PHOENIX
   MembraneFramework->>ElixirPhoenix: TOGGLE_MEMBRANE_FRAMEWORK
 
   rect rgb(240, 248, 255)
     note over MembraneFramework, Khepri: Toggle Actions
-    MembraneFramework->>GodotEngine: TOGGLE_GODOT_ENGINE
-    MembraneFramework->>OpenMfxSupport: TOGGLE_OPEN_MFX_SUPPORT
-    MembraneFramework->>BlenderClient: TOGGLE_BLENDER_CLIENT
-    MembraneFramework->>ElixirNx: TOGGLE_ELIXIR_NX
+    MembraneFramework->>GodotEngineAndBlenderClient: TOGGLE_GAME_ENGINE_AND_CLIENTS
+    MembraneFramework->>ElixirNx: ACCELERATE_MEMBRANE_FRAMEWORK
     MembraneFramework->>AIMLFramework: TOGGLE_AIML_FRAMEWORK
     MembraneFramework->>Khepri: TOGGLE_KHEPRI
   end
