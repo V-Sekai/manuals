@@ -24,14 +24,14 @@ sequenceDiagram
   participant WebAndGodotEngineAndBlenderClient
   participant ElixirNx
   participant AIMLFramework
-  participant Khepri
+  participant Yugabyte
 
   rect rgb(240, 248, 255)
-    note over MembraneFramework, Khepri: Toggle Actions
+    note over MembraneFramework, Yugabyte: Toggle Actions
     MembraneFramework->>WebAndGodotEngineAndBlenderClient: TOGGLE_GAME_ENGINE_AND_CLIENTS
     MembraneFramework->>ElixirNx: ACCELERATE_MEMBRANE_FRAMEWORK
     MembraneFramework->>AIMLFramework: TOGGLE_AIML_FRAMEWORK
-    MembraneFramework->>Khepri: TOGGLE_KHEPRI
+    MembraneFramework->>Yugabyte: TOGGLE_YUGABYTE
   end
 
   box "Source" #CCFFCC
@@ -45,7 +45,7 @@ sequenceDiagram
   end
 
   box "Sink & Source of Data" #FFCCCC
-    participant Khepri
+    participant Yugabyte
   end
 ```
 
