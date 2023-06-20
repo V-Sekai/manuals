@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>V-Sekai - Manuals – move-cockroachdb-to-yugabyte</title>
+<title>V-Sekai - Manuals – present-t5-jsonformer-xstate</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -114,9 +114,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#v-sekai-database-solution-for-50000-concurrent-online-users" id="toc-v-sekai-database-solution-for-50000-concurrent-online-users" class="nav-link active" data-scroll-target="#v-sekai-database-solution-for-50000-concurrent-online-users">V-Sekai Database Solution for 50,000 Concurrent Online Users</a>
-  <ul class="collapse">
-  <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
+  <li><a href="#metadata" id="toc-metadata" class="nav-link active" data-scroll-target="#metadata">Metadata</a></li>
   <li><a href="#context-and-problem-statement" id="toc-context-and-problem-statement" class="nav-link" data-scroll-target="#context-and-problem-statement">Context and Problem Statement</a></li>
   <li><a href="#proposed-solution" id="toc-proposed-solution" class="nav-link" data-scroll-target="#proposed-solution">Proposed Solution</a></li>
   <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation">Implementation</a></li>
@@ -126,88 +124,175 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" id="toc-if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="nav-link" data-scroll-target="#if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</a></li>
   <li><a href="#is-there-a-reason-why-this-should-be-core-and-done-by-us" id="toc-is-there-a-reason-why-this-should-be-core-and-done-by-us" class="nav-link" data-scroll-target="#is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/decisions/20230619-move-cockroachdb-to-yugabyte.md" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/decisions/present-t5-jsonformer-xstate.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-<section id="v-sekai-database-solution-for-50000-concurrent-online-users" class="level1">
-<h1>V-Sekai Database Solution for 50,000 Concurrent Online Users</h1>
+<p>Here’s the updated proposal template:</p>
 <section id="metadata" class="level2">
 <h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
 <li>Status: proposed</li>
-<li>Deciders: V-Sekai, fire</li>
-<li>Tags: V-Sekai, llm summarization</li>
+<li>Deciders: V-Sekai</li>
+<li>Tags: V-Sekai</li>
 </ul>
 </section>
 <section id="context-and-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
-<p>V-Sekai is currently facing a decision on which database solution to use for their project that can handle the load of 50,000 concurrent online users. The options being considered are <a href="https://www.postgresql.org/">PostgreSQL</a>, <a href="https://www.cockroachlabs.com/">CockroachDB</a>, <a href="https://forums.foundationdb.org/t/mvsqlite-distributed-mvcc-sqlite-that-runs-on-foundationdb/3493">SQLite on FoundationDB</a>, or <a href="https://docs.yugabyte.com/stable/api/ysql/datatypes/">YugabyteDB</a>. Each option has its own set of advantages and disadvantages, and the team needs to determine which one best fits their requirements.</p>
+<p>V-Sekai is facing a limitation that requires a solution to convert natural language text into XState JSON format for executing behavior statecharts for digital beings. This can be achieved by using the T5 (Text-to-Text Transfer Transformer) model with JSON-former for XState in Godot Engine 4.0.</p>
 </section>
 <section id="proposed-solution" class="level2">
 <h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>Based on the discussion, it seems that YugabyteDB might be a suitable choice for V-Sekai’s needs. It offers a single-node setup with the potential for growth, supports a wide range of data types, and provides externally consistent transaction levels. Additionally, YugabyteDB appears to be more compatible with the existing schema compared to SQLite.</p>
+<p>The proposed solution involves using the T5 model to generate text based on input text and then converting the generated text into XState JSON format, all within the Godot Engine 4.0 environment.</p>
 </section>
 <section id="implementation" class="level2">
 <h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
-<p>To implement YugabyteDB as the chosen database solution, the following steps should be taken:</p>
+<p>To use T5 (Text-to-Text Transfer Transformer) with JSON-former for XState in Godot Engine 4.0, you’ll need to follow these steps:</p>
 <ol type="1">
-<li>Evaluate YugabyteDB’s compatibility with the existing schema and identify any necessary adjustments.</li>
-<li>Set up a single-node YugabyteDB instance for initial development and testing.</li>
-<li>Migrate existing data from the current database solution to YugabyteDB.</li>
-<li>Update the application code to work with YugabyteDB.</li>
-<li>Perform thorough testing to ensure stability and performance meet expectations.</li>
+<li><strong>Load the necessary libraries</strong></li>
 </ol>
+<pre class="gd"><code>var transformers = preload("res://path/to/transformers.gd")
+var torch = preload("res://path/to/torch.gd")</code></pre>
+<ol start="2" type="1">
+<li><strong>Load the T5 model and tokenizer</strong></li>
+</ol>
+<pre class="gd"><code>var model_name = "t5-small"
+var tokenizer = transformers.load_T5Tokenizer(model_name)
+var model = transformers.load_T5ForConditionalGeneration(model_name)</code></pre>
+<ol start="3" type="1">
+<li><strong>Create a function to generate text using T5</strong></li>
+</ol>
+<pre class="gd"><code>func generate_text(input_text: String) -&gt; String:
+    var input_ids = tokenizer.encode(input_text)
+    var outputs = model.generate(input_ids)
+    var generated_text = tokenizer.decode(outputs[0])
+    return generated_text</code></pre>
+<ol start="4" type="1">
+<li><strong>Create a function to replace placeholders in T5 output</strong></li>
+</ol>
+<pre class="gd"><code>func replace_placeholders(text: String) -&gt; String:
+    var formatted_text = text.replace("&lt;extra_id_0&gt;", "event").replace("&lt;extra_id_1&gt;", "state")
+    return formatted_text</code></pre>
+<ol start="5" type="1">
+<li><strong>Create a function to parse JSON from formatted text</strong></li>
+</ol>
+<pre class="gd"><code>func parse_JSON(formatted_text: String) -&gt; Dictionary:
+    var json_object = JSON.parse(formatted_text).result
+    return json_object</code></pre>
+<ol start="6" type="1">
+<li><strong>Create a function to convert T5 output to XState JSON format</strong></li>
+</ol>
+<pre class="gd"><code>func t5_to_jsonformer_xstate(text: String) -&gt; Dictionary:
+    var formatted_text = replace_placeholders(text)
+    var json_object = parse_JSON(formatted_text)
+    return json_object</code></pre>
+<ol start="7" type="1">
+<li><strong>Use the functions to generate XState JSON</strong></li>
+</ol>
+<pre class="gd"><code>func _ready():
+    var input_text = "your input text here"
+    var t5_output = generate_text(input_text)
+    var xstate_json = t5_to_jsonformer_xstate(t5_output)
+    print(xstate_json)</code></pre>
+<p>This will give you the XState JSON format for the given input text. Note that the T5 model might need to be fine-tuned on a dataset specific to your use case to generate accurate XState JSON representations.</p>
 </section>
 <section id="positive-consequences" class="level2">
 <h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
 <ul>
-<li>Single-node setup with the potential for growth</li>
-<li>Compatibility with the existing schema</li>
-<li>Support for a wide range of data types</li>
-<li>Externally consistent transaction levels</li>
+<li>Automates the process of converting natural language text into XState JSON format within the Godot Engine 4.0 environment.</li>
+<li>Reduces manual effort and potential errors in creating XState JSON representations.</li>
 </ul>
 </section>
 <section id="negative-consequences" class="level2">
 <h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
 <ul>
-<li>Potential new problems and challenges associated with adopting a new database solution</li>
-<li>Possible learning curve for the team in working with YugabyteDB</li>
+<li>The T5 model may require fine-tuning on a specific dataset to generate accurate XState JSON representations.</li>
+<li>There might be limitations in understanding complex or ambiguous input text.</li>
 </ul>
 </section>
 <section id="option-graveyard" class="level2">
 <h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
+<p>Here are some option graveyard items for the proposal:</p>
 <ol type="1">
-<li><strong>PostgreSQL</strong>: While a popular and powerful database solution, it may not offer the desired single-node setup with growth potential.</li>
-<li><strong>CockroachDB</strong>: The current implementation has been problematic due to its 3-node distributed configuration in Kubernetes.</li>
-<li><strong>SQLite on FoundationDB</strong>: Limited data types and compatibility issues with the existing schema make this option less desirable.</li>
+<li><p><strong>Using rule-based natural language processing (NLP) techniques</strong></p>
+<ul>
+<li>Pros:
+<ul>
+<li>Easier to implement and understand.</li>
+<li>No need for training data or fine-tuning.</li>
+</ul></li>
+<li>Cons:
+<ul>
+<li>Limited in handling complex or ambiguous input text.</li>
+<li>Requires manual updates to rules as new use cases emerge.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Using other pre-trained NLP models (e.g., GPT-3, BERT)</strong></p>
+<ul>
+<li>Pros:
+<ul>
+<li>Can leverage existing state-of-the-art NLP models.</li>
+<li>May provide better performance on certain tasks.</li>
+</ul></li>
+<li>Cons:
+<ul>
+<li>May require additional fine-tuning or adaptation for the specific task.</li>
+<li>Some models may have higher computational requirements or costs.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Creating a custom NLP model from scratch</strong></p>
+<ul>
+<li>Pros:
+<ul>
+<li>Tailored specifically for the task of converting natural language text into XState JSON format.</li>
+<li>Potential for better performance if designed well.</li>
+</ul></li>
+<li>Cons:
+<ul>
+<li>Requires significant time and effort to develop, train, and maintain.</li>
+<li>May not perform as well as existing state-of-the-art models.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Using an external API or service for natural language understanding</strong></p>
+<ul>
+<li>Pros:
+<ul>
+<li>Offloads the complexity of NLP to an external service.</li>
+<li>Can potentially leverage more advanced NLP techniques.</li>
+</ul></li>
+<li>Cons:
+<ul>
+<li>Introduces dependency on an external service.</li>
+<li>May incur additional costs or usage limitations.</li>
+</ul></li>
+</ul></li>
 </ol>
+<p>These options were considered but ultimately discarded in favor of using the T5 model with JSON-former for XState in Godot Engine 4.0 due to its balance of performance, ease of implementation, and adaptability to the specific task.</p>
 </section>
 <section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
 <h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
-<p>No, the choice of database solution is a core aspect of the project and cannot be easily worked around with a script.</p>
+<p>The proposed solution requires more than a few lines of script and involves using a pre-trained model (T5) to generate the desired output within the Godot Engine 4.0 environment.</p>
 </section>
 <section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
-<p>Yes, selecting the appropriate database solution is crucial for the success and stability of V-Sekai. It directly impacts the performance, scalability, and maintainability of the platform.</p>
+<p>Implementing this solution as part of the core functionality can help V-Sekai users automate the process of generating XState JSON representations from natural language text within the Godot Engine 4.0 environment, improving efficiency and reducing manual effort.</p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <ul>
 <li><a href="https://v-sekai.org/">V-Sekai</a></li>
-<li><a href="https://docs.yugabyte.com/stable/api/ysql/datatypes/">YugabyteDB Data Types</a></li>
-<li><a href="https://www.cockroachlabs.com/">Cockroach Labs</a></li>
-<li><a href="https://forums.foundationdb.org/t/mvsqlite-distributed-mvcc-sqlite-that-runs-on-foundationdb/3493">MVSQLite: Distributed MVCC SQLite that runs on FoundationDB</a></li>
-<li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
+<li><a href="https://godotengine.org/">Godot Engine</a></li>
+<li><a href="https://docs.godotengine.org/en/stable/getting_started/scripting/gdscript/gdscript_basics.html">GDScript documentation</a></li>
+<li><a href="https://arxiv.org/abs/1910.10683">T5 (Text-to-Text Transfer Transformer)</a></li>
+<li><a href="https://huggingface.co/transformers/">Transformers library</a></li>
+<li><a href="https://xstate.js.org/docs/">XState documentation</a></li>
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
