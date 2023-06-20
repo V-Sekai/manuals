@@ -3,8 +3,8 @@
 ## Metadata
 
 - Status: proposed
-- Deciders: V-Sekai
-- Tags: V-Sekai
+- Deciders: V-Sekai, fire
+- Tags: V-Sekai, llm summarization
 
 ## Context and Problem Statement
 
