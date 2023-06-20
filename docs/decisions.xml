@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.361</generator>
-<lastBuildDate>Tue, 20 Jun 2023 02:50:33 GMT</lastBuildDate>
+<lastBuildDate>Tue, 20 Jun 2023 05:55:35 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -64,7 +64,108 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Tue, 20 Jun 2023 02:50:33 GMT</pubDate>
+  <pubDate>Tue, 20 Jun 2023 05:55:35 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230619-membrane-framework-for-mesh-processing.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="networked-procedural-generation-as-a-sidecar-to-the-godot-engine-server" class="level1">
+<h1>Networked Procedural Generation as a Sidecar to the Godot Engine Server</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: proposed</li>
+<li>Deciders: V-Sekai, fire</li>
+<li>Tags: V-Sekai, Chatbot GPT4 assistance</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
+<p>Enable creation of more dynamic and engaging environments within V-Sekai.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>V-Sekai, an open-source virtual reality platform, aims to deliver a user-friendly experience for the VR community. To boost its functionality and compatibility with other tools, we propose integrating networked procedural generation as a sidecar to the Godot engine server, allowing for more dynamic and immersive environments in V-Sekai.</p>
+<p>To further address V-Sekai’s limitations, we suggest incorporating the Membrane Framework along with other relevant technologies such as Godot Engine, OpenMfx Support, Elixir Phoenix, and Elixir Nx. This comprehensive integration will not only enhance V-Sekai’s capabilities but also increase its versatility across various use cases.</p>
+<p>The implementation involves connecting V-Sekai with the components mentioned in the Membrane Framework diagram below:</p>
+<pre class="mermaid"><code>sequenceDiagram
+  participant MembraneFramework
+  participant WebAndGodotEngineAndBlenderClient
+  participant ElixirNx
+  participant AIMLFramework
+  participant Yugabyte
+
+  rect rgb(240, 248, 255)
+    note over MembraneFramework, Yugabyte: Toggle Actions
+    MembraneFramework-&gt;&gt;WebAndGodotEngineAndBlenderClient: TOGGLE_GAME_ENGINE_AND_CLIENTS
+    MembraneFramework-&gt;&gt;ElixirNx: ACCELERATE_MEMBRANE_FRAMEWORK
+    MembraneFramework-&gt;&gt;AIMLFramework: TOGGLE_AIML_FRAMEWORK
+    MembraneFramework-&gt;&gt;Yugabyte: TOGGLE_YUGABYTE
+  end
+
+  box "Source" #CCFFCC
+    participant MembraneFramework
+    participant WebAndGodotEngineAndBlenderClient
+  end
+
+  box "Filter" #FFFFCC
+    participant ElixirNx
+    participant AIMLFramework
+  end
+
+  box "Sink &amp; Source of Data" #FFCCCC
+    participant Yugabyte
+  end</code></pre>
+</section>
+<section id="positive-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
+<ul>
+<li>Improved functionality and versatility of V-Sekai</li>
+<li>Enhanced compatibility with other tools and platforms</li>
+<li>Greater potential for collaboration and community involvement</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
+<ul>
+<li>Increased complexity in implementation and maintenance</li>
+<li>Potential performance overhead due to integration of multiple components</li>
+</ul>
+</section>
+<section id="option-graveyard" class="level2">
+<h2 class="anchored" data-anchor-id="option-graveyard">Option Graveyard</h2>
+<ol type="1">
+<li><p><strong>Standalone procedural generation</strong>: Implementing procedural generation as a standalone feature without integrating it with the Godot Engine server. This option was discarded because it would not provide the same level of compatibility and versatility as the proposed solution.</p></li>
+<li><p><strong>Using pre-built assets</strong>: Relying on pre-built assets for creating environments instead of implementing networked procedural generation. This option was discarded due to the limited flexibility and potential for repetitive content, which could negatively impact user engagement.</p></li>
+<li><p><strong>Third-party procedural generation tools</strong>: Integrating third-party procedural generation tools instead of developing a custom solution. This option was discarded because it may not offer the same level of control and customization required for V-Sekai’s specific needs.</p></li>
+<li><p><strong>Static environment design</strong>: Focusing on static environment design rather than dynamic, procedurally generated content. This option was discarded because it would not provide the desired level of immersion and interactivity for V-Sekai users.</p></li>
+</ol>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
+<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
+<p>No, the proposed solution involves integrating multiple technologies and cannot be achieved with a simple script workaround.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
+<p>Yes, addressing the limitations of V-Sekai is crucial for its success and adoption within the VR community. By integrating the proposed technologies, we can ensure that V-Sekai remains competitive and relevant in the rapidly evolving VR landscape.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230619-membrane-framework-for-mesh-processing.html</guid>
+  <pubDate>Tue, 20 Jun 2023 05:55:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -207,108 +308,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230618-v-sekai-roadmap.html</guid>
-  <pubDate>Tue, 20 Jun 2023 02:50:33 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20230618-membrane-framework-for-mesh-processing.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="networked-procedural-generation-as-a-sidecar-to-the-godot-engine-server" class="level1">
-<h1>Networked Procedural Generation as a Sidecar to the Godot Engine Server</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li>Status: proposed</li>
-<li>Deciders: V-Sekai, fire</li>
-<li>Tags: V-Sekai, Chatbot GPT4 assistance</li>
-</ul>
-</section>
-<section id="context-and-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
-<p>Enable creation of more dynamic and engaging environments within V-Sekai.</p>
-</section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>V-Sekai, an open-source virtual reality platform, aims to deliver a user-friendly experience for the VR community. To boost its functionality and compatibility with other tools, we propose integrating networked procedural generation as a sidecar to the Godot engine server, allowing for more dynamic and immersive environments in V-Sekai.</p>
-<p>To further address V-Sekai’s limitations, we suggest incorporating the Membrane Framework along with other relevant technologies such as Godot Engine, OpenMfx Support, Elixir Phoenix, and Elixir Nx. This comprehensive integration will not only enhance V-Sekai’s capabilities but also increase its versatility across various use cases.</p>
-<p>The implementation involves connecting V-Sekai with the components mentioned in the Membrane Framework diagram below:</p>
-<pre class="mermaid"><code>sequenceDiagram
-  participant MembraneFramework
-  participant WebAndGodotEngineAndBlenderClient
-  participant ElixirNx
-  participant AIMLFramework
-  participant Khepri
-
-  rect rgb(240, 248, 255)
-    note over MembraneFramework, Khepri: Toggle Actions
-    MembraneFramework-&gt;&gt;WebAndGodotEngineAndBlenderClient: TOGGLE_GAME_ENGINE_AND_CLIENTS
-    MembraneFramework-&gt;&gt;ElixirNx: ACCELERATE_MEMBRANE_FRAMEWORK
-    MembraneFramework-&gt;&gt;AIMLFramework: TOGGLE_AIML_FRAMEWORK
-    MembraneFramework-&gt;&gt;Khepri: TOGGLE_KHEPRI
-  end
-
-  box "Source" #CCFFCC
-    participant MembraneFramework
-    participant WebAndGodotEngineAndBlenderClient
-  end
-
-  box "Filter" #FFFFCC
-    participant ElixirNx
-    participant AIMLFramework
-  end
-
-  box "Sink &amp; Source of Data" #FFCCCC
-    participant Khepri
-  end</code></pre>
-</section>
-<section id="positive-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
-<ul>
-<li>Improved functionality and versatility of V-Sekai</li>
-<li>Enhanced compatibility with other tools and platforms</li>
-<li>Greater potential for collaboration and community involvement</li>
-</ul>
-</section>
-<section id="negative-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
-<ul>
-<li>Increased complexity in implementation and maintenance</li>
-<li>Potential performance overhead due to integration of multiple components</li>
-</ul>
-</section>
-<section id="option-graveyard" class="level2">
-<h2 class="anchored" data-anchor-id="option-graveyard">Option Graveyard</h2>
-<ol type="1">
-<li><p><strong>Standalone procedural generation</strong>: Implementing procedural generation as a standalone feature without integrating it with the Godot Engine server. This option was discarded because it would not provide the same level of compatibility and versatility as the proposed solution.</p></li>
-<li><p><strong>Using pre-built assets</strong>: Relying on pre-built assets for creating environments instead of implementing networked procedural generation. This option was discarded due to the limited flexibility and potential for repetitive content, which could negatively impact user engagement.</p></li>
-<li><p><strong>Third-party procedural generation tools</strong>: Integrating third-party procedural generation tools instead of developing a custom solution. This option was discarded because it may not offer the same level of control and customization required for V-Sekai’s specific needs.</p></li>
-<li><p><strong>Static environment design</strong>: Focusing on static environment design rather than dynamic, procedurally generated content. This option was discarded because it would not provide the desired level of immersion and interactivity for V-Sekai users.</p></li>
-</ol>
-</section>
-<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
-<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
-<p>No, the proposed solution involves integrating multiple technologies and cannot be achieved with a simple script workaround.</p>
-</section>
-<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
-<p>Yes, addressing the limitations of V-Sekai is crucial for its success and adoption within the VR community. By integrating the proposed technologies, we can ensure that V-Sekai remains competitive and relevant in the rapidly evolving VR landscape.</p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ul>
-<li><a href="https://v-sekai.org/">V-Sekai</a></li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20230618-membrane-framework-for-mesh-processing.html</guid>
-  <pubDate>Tue, 20 Jun 2023 02:50:33 GMT</pubDate>
+  <pubDate>Tue, 20 Jun 2023 05:55:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -391,7 +391,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230616-pmx-to-vrm.html</guid>
-  <pubDate>Tue, 20 Jun 2023 02:50:33 GMT</pubDate>
+  <pubDate>Tue, 20 Jun 2023 05:55:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -469,7 +469,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230614-llm-statechart.html</guid>
-  <pubDate>Tue, 20 Jun 2023 02:50:33 GMT</pubDate>
+  <pubDate>Tue, 20 Jun 2023 05:55:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -602,7 +602,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230611-wasm-in-v-sekai.html</guid>
-  <pubDate>Tue, 20 Jun 2023 02:50:33 GMT</pubDate>
+  <pubDate>Tue, 20 Jun 2023 05:55:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -681,7 +681,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230608-v-sekai-roadmap.html</guid>
-  <pubDate>Tue, 20 Jun 2023 02:50:33 GMT</pubDate>
+  <pubDate>Tue, 20 Jun 2023 05:55:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -754,7 +754,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230602-v-sekai-roadmap.html</guid>
-  <pubDate>Tue, 20 Jun 2023 02:50:33 GMT</pubDate>
+  <pubDate>Tue, 20 Jun 2023 05:55:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -843,7 +843,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230602-pmx-module-integration.html</guid>
-  <pubDate>Tue, 20 Jun 2023 02:50:33 GMT</pubDate>
+  <pubDate>Tue, 20 Jun 2023 05:55:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -928,7 +928,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230602-limited-tracker-placement.html</guid>
-  <pubDate>Tue, 20 Jun 2023 02:50:33 GMT</pubDate>
+  <pubDate>Tue, 20 Jun 2023 05:55:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1008,7 +1008,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230531-godot-engine-learning.html</guid>
-  <pubDate>Tue, 20 Jun 2023 02:50:33 GMT</pubDate>
+  <pubDate>Tue, 20 Jun 2023 05:55:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1102,7 +1102,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230531-godot-engine-ipad.html</guid>
-  <pubDate>Tue, 20 Jun 2023 02:50:33 GMT</pubDate>
+  <pubDate>Tue, 20 Jun 2023 05:55:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1176,7 +1176,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-v-sekai-roadmap.html</guid>
-  <pubDate>Tue, 20 Jun 2023 02:50:33 GMT</pubDate>
+  <pubDate>Tue, 20 Jun 2023 05:55:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1288,7 +1288,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-sidecar.html</guid>
-  <pubDate>Tue, 20 Jun 2023 02:50:33 GMT</pubDate>
+  <pubDate>Tue, 20 Jun 2023 05:55:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1366,7 +1366,7 @@ func should_sync():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-side-content-validation.html</guid>
-  <pubDate>Tue, 20 Jun 2023 02:50:33 GMT</pubDate>
+  <pubDate>Tue, 20 Jun 2023 05:55:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1489,7 +1489,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-performance-test.html</guid>
-  <pubDate>Tue, 20 Jun 2023 02:50:33 GMT</pubDate>
+  <pubDate>Tue, 20 Jun 2023 05:55:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1567,7 +1567,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-server-cdn-session-url.html</guid>
-  <pubDate>Tue, 20 Jun 2023 02:50:33 GMT</pubDate>
+  <pubDate>Tue, 20 Jun 2023 05:55:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1649,7 +1649,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-organization.html</guid>
-  <pubDate>Tue, 20 Jun 2023 02:50:33 GMT</pubDate>
+  <pubDate>Tue, 20 Jun 2023 05:55:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1728,7 +1728,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230527-godot-test-game.html</guid>
-  <pubDate>Tue, 20 Jun 2023 02:50:33 GMT</pubDate>
+  <pubDate>Tue, 20 Jun 2023 05:55:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1817,7 +1817,7 @@ font-style: inherit;">;</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230525-animation-ik-node.html</guid>
-  <pubDate>Tue, 20 Jun 2023 02:50:33 GMT</pubDate>
+  <pubDate>Tue, 20 Jun 2023 05:55:35 GMT</pubDate>
 </item>
 </channel>
 </rss>
