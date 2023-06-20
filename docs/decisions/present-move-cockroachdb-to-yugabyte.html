@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>V-Sekai - Manuals – membrane-framework-for-mesh-processing</title>
+<title>V-Sekai - Manuals – present-move-cockroachdb-to-yugabyte</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -114,122 +114,96 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#networked-procedural-generation-as-a-sidecar-to-the-godot-engine-server" id="toc-networked-procedural-generation-as-a-sidecar-to-the-godot-engine-server" class="nav-link active" data-scroll-target="#networked-procedural-generation-as-a-sidecar-to-the-godot-engine-server">Networked Procedural Generation as a Sidecar to the Godot Engine Server</a>
+  <li><a href="#v-sekai-database-solution-for-50000-concurrent-online-users" id="toc-v-sekai-database-solution-for-50000-concurrent-online-users" class="nav-link active" data-scroll-target="#v-sekai-database-solution-for-50000-concurrent-online-users">V-Sekai Database Solution for 50,000 Concurrent Online Users</a>
   <ul class="collapse">
   <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
   <li><a href="#context-and-problem-statement" id="toc-context-and-problem-statement" class="nav-link" data-scroll-target="#context-and-problem-statement">Context and Problem Statement</a></li>
-  <li><a href="#proposed-solution" id="toc-proposed-solution" class="nav-link" data-scroll-target="#proposed-solution">Proposed Solution</a>
-  <ul class="collapse">
-  <li><a href="#using-read-replicas" id="toc-using-read-replicas" class="nav-link" data-scroll-target="#using-read-replicas">Using Read Replicas</a></li>
-  </ul></li>
+  <li><a href="#proposed-solution" id="toc-proposed-solution" class="nav-link" data-scroll-target="#proposed-solution">Proposed Solution</a></li>
+  <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation">Implementation</a></li>
   <li><a href="#positive-consequences" id="toc-positive-consequences" class="nav-link" data-scroll-target="#positive-consequences">Positive Consequences</a></li>
   <li><a href="#negative-consequences" id="toc-negative-consequences" class="nav-link" data-scroll-target="#negative-consequences">Negative Consequences</a></li>
-  <li><a href="#option-graveyard" id="toc-option-graveyard" class="nav-link" data-scroll-target="#option-graveyard">Option Graveyard</a></li>
+  <li><a href="#option-graveyard" id="toc-option-graveyard" class="nav-link" data-scroll-target="#option-graveyard">Option graveyard</a></li>
   <li><a href="#if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" id="toc-if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="nav-link" data-scroll-target="#if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</a></li>
   <li><a href="#is-there-a-reason-why-this-should-be-core-and-done-by-us" id="toc-is-there-a-reason-why-this-should-be-core-and-done-by-us" class="nav-link" data-scroll-target="#is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/decisions/20230619-membrane-framework-for-mesh-processing.md" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/decisions/present-move-cockroachdb-to-yugabyte.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-<section id="networked-procedural-generation-as-a-sidecar-to-the-godot-engine-server" class="level1">
-<h1>Networked Procedural Generation as a Sidecar to the Godot Engine Server</h1>
+<section id="v-sekai-database-solution-for-50000-concurrent-online-users" class="level1">
+<h1>V-Sekai Database Solution for 50,000 Concurrent Online Users</h1>
 <section id="metadata" class="level2">
 <h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
 <li>Status: proposed</li>
-<li>Deciders: V-Sekai, fire</li>
-<li>Tags: V-Sekai, Chatbot GPT4 assistance</li>
+<li>Deciders: V-Sekai</li>
+<li>Tags: V-Sekai</li>
 </ul>
 </section>
 <section id="context-and-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
-<p>Enable creation of more dynamic and engaging environments within V-Sekai.</p>
+<p>V-Sekai is currently facing a decision on which database solution to use for their project that can handle the load of 50,000 concurrent online users. The options being considered are <a href="https://www.postgresql.org/">PostgreSQL</a>, <a href="https://www.cockroachlabs.com/">CockroachDB</a>, <a href="https://forums.foundationdb.org/t/mvsqlite-distributed-mvcc-sqlite-that-runs-on-foundationdb/3493">SQLite on FoundationDB</a>, or <a href="https://docs.yugabyte.com/stable/api/ysql/datatypes/">YugabyteDB</a>. Each option has its own set of advantages and disadvantages, and the team needs to determine which one best fits their requirements.</p>
 </section>
 <section id="proposed-solution" class="level2">
 <h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>V-Sekai, an open-source virtual reality platform, aims to deliver a user-friendly experience for the VR community. To boost its functionality and compatibility with other tools, we propose integrating networked procedural generation as a sidecar to the Godot engine server, allowing for more dynamic and immersive environments in V-Sekai.</p>
-<p>To further address V-Sekai’s limitations, we suggest incorporating the Membrane Framework along with other relevant technologies such as Godot Engine, OpenMfx Support, Elixir Phoenix, and Elixir Nx. This comprehensive integration will not only enhance V-Sekai’s capabilities but also increase its versatility across various use cases.</p>
-<p>The implementation involves connecting V-Sekai with the components mentioned in the Membrane Framework diagram below:</p>
-<pre class="mermaid"><code>sequenceDiagram
-  participant MembraneFramework
-  participant WebAndGodotEngineAndBlenderClient
-  participant ElixirNx
-  participant AIMLFramework
-  participant Yugabyte
-
-  rect rgb(240, 248, 255)
-    note over MembraneFramework, Yugabyte: Toggle Actions
-    MembraneFramework-&gt;&gt;WebAndGodotEngineAndBlenderClient: TOGGLE_GAME_ENGINE_AND_CLIENTS
-    MembraneFramework-&gt;&gt;ElixirNx: ACCELERATE_MEMBRANE_FRAMEWORK
-    MembraneFramework-&gt;&gt;AIMLFramework: TOGGLE_AIML_FRAMEWORK
-    MembraneFramework-&gt;&gt;Yugabyte: TOGGLE_YUGABYTE
-  end
-
-  box "Source" #CCFFCC
-    participant MembraneFramework
-    participant WebAndGodotEngineAndBlenderClient
-  end
-
-  box "Filter" #FFFFCC
-    participant ElixirNx
-    participant AIMLFramework
-  end
-
-  box "Sink &amp; Source of Data" #FFCCCC
-    participant Yugabyte
-  end</code></pre>
-<section id="using-read-replicas" class="level3">
-<h3 class="anchored" data-anchor-id="using-read-replicas">Using Read Replicas</h3>
-<p>We propose using read replicas for applications needing single-zone writes and multi-region reads. Benefits include:</p>
-<ul>
-<li><strong>Resilience</strong>: Zone-level resilience with primary cluster nodes across multiple zones.</li>
-<li><strong>Consistency</strong>: Timeline consistency in replica clusters, better than eventual consistency.</li>
-<li><strong>Latency</strong>: Quick reads from primary and replica clusters; write latency depends on client-primary cluster distance.</li>
-</ul>
+<p>Based on the discussion, it seems that YugabyteDB might be a suitable choice for V-Sekai’s needs. It offers a single-node setup with the potential for growth, supports a wide range of data types, and provides externally consistent transaction levels. Additionally, YugabyteDB appears to be more compatible with the existing schema compared to SQLite.</p>
 </section>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<p>To implement YugabyteDB as the chosen database solution, the following steps should be taken:</p>
+<ol type="1">
+<li>Evaluate YugabyteDB’s compatibility with the existing schema and identify any necessary adjustments.</li>
+<li>Set up a single-node YugabyteDB instance for initial development and testing.</li>
+<li>Migrate existing data from the current database solution to YugabyteDB.</li>
+<li>Update the application code to work with YugabyteDB.</li>
+<li>Perform thorough testing to ensure stability and performance meet expectations.</li>
+</ol>
 </section>
 <section id="positive-consequences" class="level2">
 <h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
 <ul>
-<li>Improved functionality and versatility of V-Sekai</li>
-<li>Enhanced compatibility with other tools and platforms</li>
-<li>Greater potential for collaboration and community involvement</li>
+<li>Single-node setup with the potential for growth</li>
+<li>Compatibility with the existing schema</li>
+<li>Support for a wide range of data types</li>
+<li>Externally consistent transaction levels</li>
 </ul>
 </section>
 <section id="negative-consequences" class="level2">
 <h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
 <ul>
-<li>Increased complexity in implementation and maintenance</li>
-<li>Potential performance overhead due to integration of multiple components</li>
+<li>Potential new problems and challenges associated with adopting a new database solution</li>
+<li>Possible learning curve for the team in working with YugabyteDB</li>
 </ul>
 </section>
 <section id="option-graveyard" class="level2">
-<h2 class="anchored" data-anchor-id="option-graveyard">Option Graveyard</h2>
+<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
 <ol type="1">
-<li><p><strong>Standalone procedural generation</strong>: Implementing procedural generation as a standalone feature without integrating it with the Godot Engine server. This option was discarded because it would not provide the same level of compatibility and versatility as the proposed solution.</p></li>
-<li><p><strong>Using pre-built assets</strong>: Relying on pre-built assets for creating environments instead of implementing networked procedural generation. This option was discarded due to the limited flexibility and potential for repetitive content, which could negatively impact user engagement.</p></li>
-<li><p><strong>Third-party procedural generation tools</strong>: Integrating third-party procedural generation tools instead of developing a custom solution. This option was discarded because it may not offer the same level of control and customization required for V-Sekai’s specific needs.</p></li>
-<li><p><strong>Static environment design</strong>: Focusing on static environment design rather than dynamic, procedurally generated content. This option was discarded because it would not provide the desired level of immersion and interactivity for V-Sekai users.</p></li>
+<li><strong>PostgreSQL</strong>: While a popular and powerful database solution, it may not offer the desired single-node setup with growth potential.</li>
+<li><strong>CockroachDB</strong>: The current implementation has been problematic due to its 3-node distributed configuration in Kubernetes.</li>
+<li><strong>SQLite on FoundationDB</strong>: Limited data types and compatibility issues with the existing schema make this option less desirable.</li>
 </ol>
 </section>
 <section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
 <h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
-<p>No, the proposed solution involves integrating multiple technologies and cannot be achieved with a simple script workaround.</p>
+<p>No, the choice of database solution is a core aspect of the project and cannot be easily worked around with a script.</p>
 </section>
 <section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
-<p>Yes, addressing the limitations of V-Sekai is crucial for its success and adoption within the VR community. By integrating the proposed technologies, we can ensure that V-Sekai remains competitive and relevant in the rapidly evolving VR landscape.</p>
+<p>Yes, selecting the appropriate database solution is crucial for the success and stability of V-Sekai. It directly impacts the performance, scalability, and maintainability of the platform.</p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <ul>
 <li><a href="https://v-sekai.org/">V-Sekai</a></li>
+<li><a href="https://docs.yugabyte.com/stable/api/ysql/datatypes/">YugabyteDB Data Types</a></li>
+<li><a href="https://www.cockroachlabs.com/">Cockroach Labs</a></li>
+<li><a href="https://forums.foundationdb.org/t/mvsqlite-distributed-mvcc-sqlite-that-runs-on-foundationdb/3493">MVSQLite: Distributed MVCC SQLite that runs on FoundationDB</a></li>
+<li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
 </ul>
 
 
