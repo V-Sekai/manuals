@@ -49,6 +49,14 @@ sequenceDiagram
   end
 ```
 
+### Using Read Replicas
+
+We propose using read replicas for applications needing single-zone writes and multi-region reads. Benefits include:
+
+- **Resilience**: Zone-level resilience with primary cluster nodes across multiple zones.
+- **Consistency**: Timeline consistency in replica clusters, better than eventual consistency.
+- **Latency**: Quick reads from primary and replica clusters; write latency depends on client-primary cluster distance.
+
 ## Positive Consequences
 
 - Improved functionality and versatility of V-Sekai
