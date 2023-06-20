@@ -1,4 +1,4 @@
-Here's the updated proposal template:
+# Large language model t5 generating xstate json reliabily for digital beings
 
 ## Metadata
 
