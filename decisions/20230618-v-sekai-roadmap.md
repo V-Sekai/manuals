@@ -20,6 +20,27 @@ By avoiding work on User Generated Content (UGC) and world building, we can prio
 
 ### Goals
 
+#### World / Avatar Performance (WAP)
+
+- Timeline: Q2-Q3
+- Implement light assets and asynchronous loading to reduce load time by 30%
+- Utilize modern rendering techniques and high-performance libraries to achieve 60 FPS on mid-range devices
+- Apply network optimization and low latency protocols for better performance, reducing latency by 50%
+
+#### Networking (NET)
+
+- Timeline: Q2-Q3
+- Use efficient data formats and optimized compression algorithms to reduce file size by 40%
+- Ensure accurate IK points are respected, achieving 95% accuracy
+- Explore multiple technologies and alternative solutions for continuous improvement, evaluating 3 new technologies per quarter
+
+#### First Time User Experience (FTUX)
+
+- Timeline: Q3-Q4
+- Optimize first-time user experience by improving the loading process, increasing user retention by 20%
+
+#### Diagram
+
 ```mermaid
 sequenceDiagram
     participant V-Sekai
@@ -79,7 +100,6 @@ sequenceDiagram
 
 ### Option graveyard
 
-- Implementing a custom voice chat solution instead of using onevoip.
 - Waiting for Godot Engine 4.2 instead of assisting with 4.1 features.
 
 ### If this enhancement will be used infrequently, can it be worked around with a few lines of script?
