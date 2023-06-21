@@ -61,3 +61,4 @@ Yes, allocating a permanent DOI to V-Sekai's digital artifacts guarantees long-t
 - [V-Sekai](https://v-sekai.org/)
 - [Github](https://github.com/)
 - [Zenodo](https://zenodo.org/)
+- https://github.com/GlobalEcologyFlinders/assignDOI
