@@ -112,3 +112,36 @@ Yes, as it directly impacts the audio experience within V-Sekai environments, it
 - **Ray Tracing**: A technique used to simulate sound propagation in 3D environments by casting rays from the sound source and tracing their paths as they interact with the environment (reflect, refract, and diffract).
 - **Convolution Reverb**: A technique that uses recorded impulse responses (IRs) of real spaces or digital simulations to recreate the reverberation characteristics of those spaces by convolving the dry audio signal with the impulse response.
 - **Impulse Response (IR)**: A recording or simulation of the acoustic properties of a space, used in convolution reverb to recreate the reverberation characteristics of that space.
+
+## Computational and I/O Complexity: An Example
+
+Let's consider an example of implementing a Feedback Delay Network (FDN) for audio reverb simulation with 8 delay lines. We will analyze the computational and I/O complexity involved in this specific case.
+
+### FDN reverb claims may need to be verified
+
+1. For a medium-quality reverb effect, let's consider using 8 delay lines in the FDN.
+2. For an 8x8 matrix, there are 64 multiplications and 56 additions required for each sample.
+3. Overall, the computational complexity for a medium-quality reverb effect with 8 delay lines is manageable for most modern CPUs and can be efficiently processed in real-time.
+4. In summary, implementing a medium-quality reverb effect using an FDN with 8 delay lines has a manageable computational and I/O complexity, making it suitable for real-time processing on most modern hardware.
+
+### Computational Complexity
+
+For a medium-quality reverb effect, let's consider using 8 delay lines in the FDN. The main components contributing to the computational complexity are:
+
+1. **Delay Lines**: Each delay line requires memory for storing the delayed samples and computations for updating the delay buffer. For 8 delay lines, the complexity scales linearly with the number of delay lines.
+
+2. **Matrix Mixing**: The mixing matrix combines the outputs of the delay lines in a specific way to create the desired reverb effect. For an 8x8 matrix, there are 64 multiplications and 56 additions required for each sample.
+
+3. **Feedback and Input/Output Processing**: Additional processing, such as filtering or gain adjustments, may be applied to the input, output, or feedback paths. This complexity depends on the specific filters or processing used but is generally proportional to the number of delay lines.
+
+Overall, the computational complexity for a medium-quality reverb effect with 8 delay lines is manageable for most modern CPUs and can be efficiently processed in real-time.
+
+### I/O Complexity
+
+The I/O complexity refers to the amount of data that needs to be read from and written to memory during the processing of the reverb effect. In the case of an FDN with 8 delay lines, the I/O complexity is mainly determined by:
+
+1. **Reading and Writing Delay Line Buffers**: Each delay line requires reading and writing operations for updating the delay buffer. The I/O complexity scales linearly with the number of delay lines.
+
+2. **Input and Output Audio Data**: The audio input data must be read, processed, and combined with the output of the FDN to generate the final reverberated audio signal. The I/O complexity for input and output audio data is generally low compared to the delay line buffer operations.
+
+In summary, implementing a medium-quality reverb effect using an FDN with 8 delay lines has a manageable computational and I/O complexity, making it suitable for real-time processing on most modern hardware.
