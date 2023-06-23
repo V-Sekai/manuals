@@ -129,6 +129,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" id="toc-if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="nav-link" data-scroll-target="#if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</a></li>
   <li><a href="#is-there-a-reason-why-this-should-be-core-and-done-by-us" id="toc-is-there-a-reason-why-this-should-be-core-and-done-by-us" class="nav-link" data-scroll-target="#is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</a></li>
   <li><a href="#glossary-implementing-feedback-delay-networks-for-enhanced-audio-reverb-simulation-in-v-sekai" id="toc-glossary-implementing-feedback-delay-networks-for-enhanced-audio-reverb-simulation-in-v-sekai" class="nav-link" data-scroll-target="#glossary-implementing-feedback-delay-networks-for-enhanced-audio-reverb-simulation-in-v-sekai">Glossary: Implementing Feedback Delay Networks for Enhanced Audio Reverb Simulation in V-Sekai</a></li>
+  <li><a href="#computational-and-io-complexity-an-example" id="toc-computational-and-io-complexity-an-example" class="nav-link" data-scroll-target="#computational-and-io-complexity-an-example">Computational and I/O Complexity: An Example</a>
+  <ul class="collapse">
+  <li><a href="#fdn-reverb-claims-may-need-to-be-verified" id="toc-fdn-reverb-claims-may-need-to-be-verified" class="nav-link" data-scroll-target="#fdn-reverb-claims-may-need-to-be-verified">FDN reverb claims may need to be verified</a></li>
+  <li><a href="#computational-complexity" id="toc-computational-complexity" class="nav-link" data-scroll-target="#computational-complexity">Computational Complexity</a></li>
+  <li><a href="#io-complexity" id="toc-io-complexity" class="nav-link" data-scroll-target="#io-complexity">I/O Complexity</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/decisions/20230623-fdn-reverb-solution.md" class="toc-action">Edit this page</a></p></div></div></nav>
@@ -262,8 +268,40 @@ func apply_mixing_matrix(delay_outputs: Array) -&gt; Array:
 <li><strong>Convolution Reverb</strong>: A technique that uses recorded impulse responses (IRs) of real spaces or digital simulations to recreate the reverberation characteristics of those spaces by convolving the dry audio signal with the impulse response.</li>
 <li><strong>Impulse Response (IR)</strong>: A recording or simulation of the acoustic properties of a space, used in convolution reverb to recreate the reverberation characteristics of that space.</li>
 </ul>
+</section>
+<section id="computational-and-io-complexity-an-example" class="level2">
+<h2 class="anchored" data-anchor-id="computational-and-io-complexity-an-example">Computational and I/O Complexity: An Example</h2>
+<p>Let’s consider an example of implementing a Feedback Delay Network (FDN) for audio reverb simulation with 8 delay lines. We will analyze the computational and I/O complexity involved in this specific case.</p>
+<section id="fdn-reverb-claims-may-need-to-be-verified" class="level3">
+<h3 class="anchored" data-anchor-id="fdn-reverb-claims-may-need-to-be-verified">FDN reverb claims may need to be verified</h3>
+<ol type="1">
+<li>For a medium-quality reverb effect, let’s consider using 8 delay lines in the FDN.</li>
+<li>For an 8x8 matrix, there are 64 multiplications and 56 additions required for each sample.</li>
+<li>Overall, the computational complexity for a medium-quality reverb effect with 8 delay lines is manageable for most modern CPUs and can be efficiently processed in real-time.</li>
+<li>In summary, implementing a medium-quality reverb effect using an FDN with 8 delay lines has a manageable computational and I/O complexity, making it suitable for real-time processing on most modern hardware.</li>
+</ol>
+</section>
+<section id="computational-complexity" class="level3">
+<h3 class="anchored" data-anchor-id="computational-complexity">Computational Complexity</h3>
+<p>For a medium-quality reverb effect, let’s consider using 8 delay lines in the FDN. The main components contributing to the computational complexity are:</p>
+<ol type="1">
+<li><p><strong>Delay Lines</strong>: Each delay line requires memory for storing the delayed samples and computations for updating the delay buffer. For 8 delay lines, the complexity scales linearly with the number of delay lines.</p></li>
+<li><p><strong>Matrix Mixing</strong>: The mixing matrix combines the outputs of the delay lines in a specific way to create the desired reverb effect. For an 8x8 matrix, there are 64 multiplications and 56 additions required for each sample.</p></li>
+<li><p><strong>Feedback and Input/Output Processing</strong>: Additional processing, such as filtering or gain adjustments, may be applied to the input, output, or feedback paths. This complexity depends on the specific filters or processing used but is generally proportional to the number of delay lines.</p></li>
+</ol>
+<p>Overall, the computational complexity for a medium-quality reverb effect with 8 delay lines is manageable for most modern CPUs and can be efficiently processed in real-time.</p>
+</section>
+<section id="io-complexity" class="level3">
+<h3 class="anchored" data-anchor-id="io-complexity">I/O Complexity</h3>
+<p>The I/O complexity refers to the amount of data that needs to be read from and written to memory during the processing of the reverb effect. In the case of an FDN with 8 delay lines, the I/O complexity is mainly determined by:</p>
+<ol type="1">
+<li><p><strong>Reading and Writing Delay Line Buffers</strong>: Each delay line requires reading and writing operations for updating the delay buffer. The I/O complexity scales linearly with the number of delay lines.</p></li>
+<li><p><strong>Input and Output Audio Data</strong>: The audio input data must be read, processed, and combined with the output of the FDN to generate the final reverberated audio signal. The I/O complexity for input and output audio data is generally low compared to the delay line buffer operations.</p></li>
+</ol>
+<p>In summary, implementing a medium-quality reverb effect using an FDN with 8 delay lines has a manageable computational and I/O complexity, making it suitable for real-time processing on most modern hardware.</p>
 
 
+</section>
 </section>
 </section>
 
