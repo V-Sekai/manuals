@@ -4,7 +4,7 @@
 
 - Status: proposed
 - Deciders: V-Sekai, ellenhp, fire
-- Tags: V-Sekai
+- Tags: V-Sekai, ai assisted
 
 ## Context and Problem Statement
 
