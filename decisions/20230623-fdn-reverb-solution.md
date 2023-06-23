@@ -97,3 +97,18 @@ No, implementing FDNs requires a more complex algorithm and cannot be achieved w
 ## Is there a reason why this should be core and done by us?
 
 Yes, as it directly impacts the audio experience within V-Sekai environments, it should be a core feature to ensure consistent and high-quality audio reverb simulation.
+
+## Glossary: Implementing Feedback Delay Networks for Enhanced Audio Reverb Simulation in V-Sekai
+
+- **V-Sekai**: A virtual reality platform that allows users to create and explore immersive environments.
+- **Godot Engine 4**: An open-source game engine used for creating 2D and 3D games and interactive applications.
+- **Audio Reverb**: The persistence of sound in a particular space after the original sound has stopped, caused by reflections off surfaces within the environment.
+- **Feedback Delay Networks (FDNs)**: A method for simulating artificial reverberation using multiple delay lines connected in a feedback loop with a mixing matrix.
+- **Delay Line**: A digital signal processing technique that introduces a time delay to an input signal, often used in audio effects such as reverb and echo.
+- **Mixing Matrix**: A mathematical construct used to control the energy distribution between the delay lines in an FDN.
+- **Room Characteristics**: Acoustic properties of a room or environment, such as absorption, reflection, and diffusion, which affect how sound propagates within the space.
+- **Reverberation Time**: The time it takes for the sound level in a room to decrease by 60 decibels after the sound source has stopped.
+- **Digital Waveguide Network (DWN)**: An alternative method for simulating audio reverb by modeling sound propagation as waves traveling along waveguides with bidirectional delay lines and scattering junctions.
+- **Ray Tracing**: A technique used to simulate sound propagation in 3D environments by casting rays from the sound source and tracing their paths as they interact with the environment (reflect, refract, and diffract).
+- **Convolution Reverb**: A technique that uses recorded impulse responses (IRs) of real spaces or digital simulations to recreate the reverberation characteristics of those spaces by convolving the dry audio signal with the impulse response.
+- **Impulse Response (IR)**: A recording or simulation of the acoustic properties of a space, used in convolution reverb to recreate the reverberation characteristics of that space.
