@@ -18,17 +18,9 @@ The roadmap presented here is short-term.
 
 By avoiding work on User Generated Content (UGC) and world building, we can prioritize the three main states in the roadmap: "World / Avatar Performance" (WAP), "Networking" (NET), and "UI/UX". This allows the team to focus on the core aspects of V-Sekai and achieve the goals more efficiently.
 
-#### World / Avatar Performance (WAP)
+1. **Monitoring and Logging System Test**: Verify that logs are generated for all critical events, and the monitoring system displays real-time metrics (e.g., response times, error rates) in a dashboard.
 
-1. **Research light assets**: Spend 4 hours researching suitable light assets for implementation.
-2. **Async loading techniques**: Dedicate 4 hours to understanding and planning the integration of async loading techniques into the project.
-3. **Modern rendering techniques**: Allocate 4 hours to investigate modern rendering techniques and high-performance libraries compatible with the current system.
-
-#### Networking (NET)
-
-1. **Data formats and compression analysis**: Use 4 hours to analyze existing data formats and compression algorithms, identifying areas for improvement.
-2. **Refining IK points accuracy**: Spend 4 hours working on refining IK points accuracy.
-3. **New technologies research**: Allocate 4 hours to research potential new technologies for evaluation and continuous improvement.
+2. **Test Environment with Simulated Data Test**: Successfully run a test scenario that mimics user interactions and load patterns, and compare the results with expected outcomes to ensure the test environment behaves as intended.
 
 ### Positive Consequences
 
