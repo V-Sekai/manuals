@@ -1,9 +1,9 @@
-# V-Sekai Roadmap and Goals 2023-06-18
+# V-Sekai Roadmap and Goals 2023-06-24
 
 ### Metadata
 
-- Status: superseded
-- Deciders: V-Sekai, fire, guillefix
+- Status: accepted
+- Deciders: V-Sekai, fire
 - Tags: V-Sekai, chatgpt4 summary,
 
 ### Context and Problem Statement
@@ -47,20 +47,32 @@ sequenceDiagram
     participant Player
     participant Creator
     participant Lyuma as "Lyuma (VRM1 - WAP)"
+    participant Fire
 
     Note over Lyuma: WAP: World / Avatar Performance
     Note over Lyuma: Timeline: Q2-Q3
-
-    Creator->>V-Sekai: Implement light assets and asynchronous loading (reduce load time by 30%)
-    V-Sekai->>Player: Utilize modern rendering techniques and high-performance libraries (achieve 60 FPS on mid-range devices)
-    Player->>Creator: Apply network optimization and low latency protocols for better performance (reduce latency by 50%)
-
     Note over Player, Creator: NET: Network Optimization Techniques
     Note over Player, Creator: Timeline: Q2-Q3
+    Note over Fire, Creator: FTUX: First Time User Experience
+    Note over Fire, Creator: Timeline: Q3-Q4
 
-    Creator->>V-Sekai: Use efficient data formats and optimized compression algorithms (reduce file size by 40%)
-    V-Sekai->>Player: Ensure accurate IK points are respected (achieve 95% accuracy)
-    V-Sekai->>Player: Explore multiple technologies and alternative solutions for continuous improvement (evaluate 3 new technologies per quarter)
+    %% Profiling
+    Creator->>Creator: Perform profiling to identify slowdowns
+
+    %% Most Important
+    Player->>Creator: Apply network optimization (reduce latency by 50%)
+    Fire->>Creator: Optimize first-time user experience (increase user retention by 20%)
+
+    %% Important
+    Creator->>V-Sekai: Implement light assets and async loading (reduce load time by 30%)
+    V-Sekai->>Player: Utilize modern rendering techniques (achieve 60 FPS on mid-range devices)
+
+    %% Less Important
+    Creator->>V-Sekai: Use efficient data formats (reduce file size by 40%)
+    V-Sekai->>Player: Ensure accurate IK points (achieve 95% accuracy)
+
+    %% Least Important
+    V-Sekai->>Player: Explore multiple technologies (evaluate 3 new technologies per quarter)
 
     %% Metrics
     Note over Player, Creator: Metrics:
@@ -68,19 +80,6 @@ sequenceDiagram
     Player->>Player: IK accuracy
     Player->>Player: Technologies evaluated
 
-```
-
-```mermaid
-sequenceDiagram
-    participant Fire
-    participant Creator
-
-    Fire->>Creator: Optimize first-time user experience by improving the loading process (increase user retention by 20%)
-
-    Note over Fire, Creator: FTUX: First Time User Experience
-    Note over Fire, Creator: Timeline: Q3-Q4
-
-    %% Metrics
     Note over Fire, Creator: Metrics:
     Fire->>Fire: Load time reduction
     Fire->>Fire: Frame rate (FPS) for flat desktop
