@@ -18,75 +18,17 @@ The roadmap presented here is short-term.
 
 By avoiding work on User Generated Content (UGC) and world building, we can prioritize the three main states in the roadmap: "World / Avatar Performance" (WAP), "Networking" (NET), and "UI/UX". This allows the team to focus on the core aspects of V-Sekai and achieve the goals more efficiently.
 
-### Goals
-
 #### World / Avatar Performance (WAP)
 
-- Timeline: Q2-Q3
-- Implement light assets and asynchronous loading to reduce load time by 30%
-- Utilize modern rendering techniques and high-performance libraries to achieve 60 FPS on mid-range devices
-- Apply network optimization and low latency protocols for better performance, reducing latency by 50%
+1. **Research light assets**: Spend 4 hours researching suitable light assets for implementation.
+2. **Async loading techniques**: Dedicate 4 hours to understanding and planning the integration of async loading techniques into the project.
+3. **Modern rendering techniques**: Allocate 4 hours to investigate modern rendering techniques and high-performance libraries compatible with the current system.
 
 #### Networking (NET)
 
-- Timeline: Q2-Q3
-- Use efficient data formats and optimized compression algorithms to reduce file size by 40%
-- Ensure accurate IK points are respected, achieving 95% accuracy
-- Explore multiple technologies and alternative solutions for continuous improvement, evaluating 3 new technologies per quarter
-
-#### First Time User Experience (FTUX)
-
-- Timeline: Q3-Q4
-- Optimize first-time user experience by improving the loading process, increasing user retention by 20%
-
-#### Diagram
-
-```mermaid
-sequenceDiagram
-    participant V-Sekai
-    participant Player
-    participant Creator
-    participant Lyuma as "Lyuma (VRM1 - WAP)"
-    participant Fire
-
-    Note over Lyuma: WAP: World / Avatar Performance
-    Note over Lyuma: Timeline: Q2-Q3
-    Note over Player, Creator: NET: Network Optimization Techniques
-    Note over Player, Creator: Timeline: Q2-Q3
-    Note over Fire, Creator: FTUX: First Time User Experience
-    Note over Fire, Creator: Timeline: Q3-Q4
-
-    %% Profiling
-    Creator->>Creator: Perform profiling to identify slowdowns
-
-    %% Most Important
-    Player->>Creator: Apply network optimization (reduce latency by 50%)
-    Fire->>Creator: Optimize first-time user experience (increase user retention by 20%)
-
-    %% Important
-    Creator->>V-Sekai: Implement light assets and async loading (reduce load time by 30%)
-    V-Sekai->>Player: Utilize modern rendering techniques (achieve 60 FPS on mid-range devices)
-
-    %% Less Important
-    Creator->>V-Sekai: Use efficient data formats (reduce file size by 40%)
-    V-Sekai->>Player: Ensure accurate IK points (achieve 95% accuracy)
-
-    %% Least Important
-    V-Sekai->>Player: Explore multiple technologies (evaluate 3 new technologies per quarter)
-
-    %% Metrics
-    Note over Player, Creator: Metrics:
-    Player->>Player: File size reduction
-    Player->>Player: IK accuracy
-    Player->>Player: Technologies evaluated
-
-    Note over Fire, Creator: Metrics:
-    Fire->>Fire: Load time reduction
-    Fire->>Fire: Frame rate (FPS) for flat desktop
-    Fire->>Fire: Frame rate (FPS) for VR desktop
-    Fire->>Fire: Latency reduction
-    Fire->>Fire: User retention rate
-```
+1. **Data formats and compression analysis**: Use 4 hours to analyze existing data formats and compression algorithms, identifying areas for improvement.
+2. **Refining IK points accuracy**: Spend 4 hours working on refining IK points accuracy.
+3. **New technologies research**: Allocate 4 hours to research potential new technologies for evaluation and continuous improvement.
 
 ### Positive Consequences
 
