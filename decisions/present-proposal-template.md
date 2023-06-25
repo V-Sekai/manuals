@@ -1,4 +1,4 @@
-# A possible solution to solve a V-Sekai limitation
+# This enhancement solves a V-Sekai limitation
 
 ## Metadata
 
