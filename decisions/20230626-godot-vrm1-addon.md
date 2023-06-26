@@ -17,7 +17,7 @@ Ship Godot Engine VRM1 to Godot Engine asset Library.
 ## Implementation
 
 1. Implement basic humanoid avatar functionality such as rigging, animation, and basic physics through VRM1 spring bones.
-2. Implement support for the  mtoon1 and mtoon0 together material type, which provides a more physically-based rendering approach for anime-style graphics. Both materials are similar.
+2. Implement support for both MToon1 and MToon0 materials, which provide a physically-based rendering approach for anime-style graphics.
 3. Implement support for the glTF PBR material type, which provides a more physically-based rendering approach for realistic graphics.
 4. Implement facial expressions, eye tracking, and lip syncing for a more immersive experience.
 5. Implement export by copying the import code in reverse, and refine it over time.
