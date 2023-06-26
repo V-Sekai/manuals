@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>V-Sekai - Manuals – create-a-godot-engine-asset-store-service-on-elixir-and-on-sqlite</title>
+<title>V-Sekai - Manuals – godot-vrm1-addon</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -114,111 +114,102 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#create-a-godot-engine-asset-store-service-on-elixir-and-on-sqlite." id="toc-create-a-godot-engine-asset-store-service-on-elixir-and-on-sqlite." class="nav-link active" data-scroll-target="#create-a-godot-engine-asset-store-service-on-elixir-and-on-sqlite.">Create a Godot Engine asset store service on elixir and on sqlite.</a>
+  <li><a href="#ship-godot-engine-vrm1-to-solve-portable-humanoid-avatars" id="toc-ship-godot-engine-vrm1-to-solve-portable-humanoid-avatars" class="nav-link active" data-scroll-target="#ship-godot-engine-vrm1-to-solve-portable-humanoid-avatars">Ship Godot Engine VRM1 to solve portable humanoid avatars</a>
   <ul class="collapse">
+  <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
   <li><a href="#context-and-problem-statement" id="toc-context-and-problem-statement" class="nav-link" data-scroll-target="#context-and-problem-statement">Context and Problem Statement</a></li>
-  <li><a href="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" id="toc-describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="nav-link" data-scroll-target="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</a></li>
-  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</a></li>
-  <li><a href="#positive-consequences" id="toc-positive-consequences" class="nav-link" data-scroll-target="#positive-consequences">Positive Consequences <!-- optional --></a></li>
-  <li><a href="#negative-consequences" id="toc-negative-consequences" class="nav-link" data-scroll-target="#negative-consequences">Negative Consequences <!-- optional --></a></li>
-  <li><a href="#option-graveyard" id="toc-option-graveyard" class="nav-link" data-scroll-target="#option-graveyard">Option graveyard: <!-- same as above --></a></li>
-  <li><a href="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" id="toc-if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="nav-link" data-scroll-target="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</a></li>
+  <li><a href="#proposed-solution" id="toc-proposed-solution" class="nav-link" data-scroll-target="#proposed-solution">Proposed Solution</a></li>
+  <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation">Implementation</a></li>
+  <li><a href="#positive-consequences" id="toc-positive-consequences" class="nav-link" data-scroll-target="#positive-consequences">Positive Consequences</a></li>
+  <li><a href="#negative-consequences" id="toc-negative-consequences" class="nav-link" data-scroll-target="#negative-consequences">Negative Consequences</a></li>
+  <li><a href="#option-graveyard" id="toc-option-graveyard" class="nav-link" data-scroll-target="#option-graveyard">Option graveyard</a></li>
+  <li><a href="#if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" id="toc-if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="nav-link" data-scroll-target="#if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</a></li>
   <li><a href="#is-there-a-reason-why-this-should-be-core-and-done-by-us" id="toc-is-there-a-reason-why-this-should-be-core-and-done-by-us" class="nav-link" data-scroll-target="#is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References <!-- optional --></a></li>
-  <li><a href="#derivative-license" id="toc-derivative-license" class="nav-link" data-scroll-target="#derivative-license">Derivative License</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/decisions/20211129-create-a-godot-engine-asset-store-service-on-elixir-and-on-sqlite.md" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/decisions/20230626-godot-vrm1-addon.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-<section id="create-a-godot-engine-asset-store-service-on-elixir-and-on-sqlite." class="level1">
-<h1>Create a Godot Engine asset store service on elixir and on sqlite.</h1>
+<section id="ship-godot-engine-vrm1-to-solve-portable-humanoid-avatars" class="level1">
+<h1>Ship Godot Engine VRM1 to solve portable humanoid avatars</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
-<li>Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by --></li>
-<li>Deciders: V-Sekai,fire,</li>
-<li>Tags: V-Sekai,</li>
+<li>Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by --></li>
+<li>Deciders: V-Sekai, fire, lyuma</li>
+<li>Tags: V-Sekai, ai copilot</li>
 </ul>
+</section>
 <section id="context-and-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
-<p>Godot Engine lacks an asset store service.</p>
+<p>Have portable humanoid avatars.</p>
 </section>
-<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level2">
-<h2 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h2>
-<p>Write an elixir service that stores data in a database.</p>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>Ship Godot Engine VRM1 to Godot Engine asset Library.</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>Use elixir.</p>
-<p>Use ecto with sqlite.</p>
-<ul class="task-list">
-<li><input type="checkbox" checked="">Upgrade elixir-sqlite/exqlite to 3.37.0</li>
-<li><input type="checkbox">Upgrade elixir-sqlite/ecto_sqlite3 to support strict mode.</li>
-<li><input type="checkbox">Punt using elixir-sqlite/ecto_sqlite3</li>
-</ul>
-<p>Use ecto with cockroachdb.</p>
-<ul class="task-list">
-<li><input type="checkbox">Make distribution of OSS cockroachdb for windows.</li>
-</ul>
-<p>Convert godot asset store api to an openapi schema.</p>
-<ul class="task-list">
-<li><input type="checkbox">https://mermade.github.io/openapi-gui/</li>
-</ul>
-<p>Provide a phoenix web server.</p>
-<p>Works on Windows.</p>
-<p>Design a sqlite dataabase schema.</p>
-<p>Investigate membrane framework.</p>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<ol type="1">
+<li>Implement basic humanoid avatar functionality such as rigging, animation, and basic physics though vrm1 spring bones.</li>
+<li>Implement support for the MToon1 material type and provides a more physically-based rendering approach for anime-style graphics.</li>
+<li>Implement support for the glTF PBR material type and provides a more physically-based rendering approach for realistic graphics.</li>
+<li>Implement facial expressions, eye tracking, and lip syncing for a more immersive experience.</li>
+<li>Implement export by copying the import code in reverse, and refine it over time.</li>
+<li>Use the VRM spec’s suggested algorithm for implementing first-person view, which eliminates the need for head scaling.</li>
+<li>Prioritize necessary features and say no to suggestions that are not necessary to avoid feature bloat.</li>
+</ol>
 </section>
 <section id="positive-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences <!-- optional --></h2>
+<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
 <ul>
-<li>Able to publish v-sekai addons.</li>
-<li>Overlay existing asset library</li>
-<li>Able to in a future feature post process packed scenes exported by V-Selai</li>
+<li>Portable humanoid avatars can be easily created and used in Godot Engine projects.</li>
+<li>The addition of MToon1 material support provides a more physically-based rendering approach for anime-style graphics.</li>
+<li>Facial expressions, eye tracking, and lip syncing enhance the immersive experience for users.</li>
+<li>Export functionality allows for easy sharing of avatars between projects and with other users.</li>
+<li>The use of the VRM spec’s suggested algorithm for implementing first-person view simplifies the implementation process.</li>
 </ul>
 </section>
 <section id="negative-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences <!-- optional --></h2>
+<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
 <ul>
-<li>[e.g., compromising quality attribute, follow-up decisions required, …]</li>
+<li>The implementation of these features may require additional development time and resources.</li>
+<li>The addition of new features may increase the complexity of the codebase and require additional maintenance.</li>
+<li>The use of the MToon1 material may require additional GPU resources and may not be suitable for low-end hardware.</li>
+<li>The implementation of facial expressions, eye tracking, and lip syncing may require additional hardware or software support.</li>
 </ul>
-<p>[this section can be repeated for each option if more than one option is open for consideration]</p>
 </section>
 <section id="option-graveyard" class="level2">
-<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard: <!-- same as above --></h2>
-<ul>
-<li>Option: Use the existing asset library backend</li>
-<li>Rejection Reason: Does not use a modern tech stack.</li>
-</ul>
+<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
+<ol type="1">
+<li>We are not implementing support for the VRM0 format, which is an older version of the VRM specification. This could limit compatibility with existing VRM assets that use the older format.</li>
+<li>We are not implementing support for other material types beyond MToon1 and gltf PBR, which could limit the range of visual styles that can be achieved with Godot Engine.</li>
+</ol>
 </section>
-<section id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
-<h2 class="anchored" data-anchor-id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</h2>
-<p>Don’t need a line of script.</p>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
+<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
+<p>It is unlikely that these enhancements can be easily worked around with a few lines of script, as they require significant development effort and integration with the Godot Engine codebase.</p>
 </section>
 <section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
-<p>This is a V-Sekai service and I know of an approach.</p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References <!-- optional --></h2>
 <ul>
-<li>https://github.com/godotengine/godot-asset-library/blob/master/API.md</li>
-<li>https://godotengine.org/</li>
-<li>https://www.sqlite.org/draft/stricttables.html</li>
-<li>https://github.com/elixir-sqlite/ecto_sqlite3/issues</li>
-<li>https://www.phoenixframework.org/</li>
-<li>https://github.com/elixir-sqlite/exqlite/issues/175 Ugrade to Sqlite 3.37</li>
+<li>Portable humanoid avatars are a key feature for many Godot Engine projects, and the ability to easily create and use them is important for the success of the engine.</li>
+<li>The addition of MToon1 material support and other enhancements will improve the quality and visual fidelity of Godot Engine projects.</li>
+<li>By implementing these features in-house, we can ensure that they are well-integrated with the Godot Engine codebase and meet our quality standards.</li>
 </ul>
 </section>
-<section id="derivative-license" class="level2">
-<h2 class="anchored" data-anchor-id="derivative-license">Derivative License</h2>
-<p>Copyright (c) 2021 V-Sekai contributors.</p>
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+<li>https://github.com/vrm-c/vrm-specification</li>
+<li>https://github.com/vrm-c/vrm-specification/blob/master/specification/VRMC_vrm-1.0/firstPerson.md#meshannotationauto-algorithm</li>
+</ul>
 
 
 </section>
