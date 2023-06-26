@@ -42,7 +42,7 @@ Ship Godot Engine VRM1 to Godot Engine asset Library.
 
 ## Option graveyard
 
-2. We are not implementing support for other material types beyond MToon0, MToon1 and gltf PBR, which could limit the range of visual styles that can be achieved with Godot Engine.
+We are not implementing support for other material types beyond MToon0, MToon1 and gltf PBR, which could limit the range of visual styles that can be achieved with Godot Engine.
 
 ## If this enhancement will be used infrequently, can it be worked around with a few lines of script?
 
