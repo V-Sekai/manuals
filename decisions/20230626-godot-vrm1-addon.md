@@ -28,7 +28,7 @@ Ship Godot Engine VRM1 to Godot Engine asset Library.
 ## Positive Consequences
 
 - Portable humanoid avatars can be easily created and used in Godot Engine projects.
-- The addition of MToon1 material support provides a more physically-based rendering approach for anime-style graphics.
+- The addition of MToon1 material support provides a physically-based rendering approach for anime-style graphics.
 - Facial expressions, eye tracking, and lip syncing enhance the immersive experience for users.
 - Export functionality allows for easy sharing of avatars between projects and with other users.
 - The use of the VRM spec's suggested algorithm for implementing first-person view simplifies the implementation process.
