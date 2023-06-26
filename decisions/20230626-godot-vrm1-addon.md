@@ -23,6 +23,7 @@ Ship Godot Engine VRM1 to Godot Engine asset Library.
 5. Implement export by copying the import code in reverse, and refine it over time.
 6. Use the VRM spec's suggested algorithm for implementing first-person view, which eliminates the need for head scaling.
 7. Prioritize necessary features and say no to suggestions that are not necessary to avoid feature bloat.
+
 ## Positive Consequences
 
 - Portable humanoid avatars can be easily created and used in Godot Engine projects.
