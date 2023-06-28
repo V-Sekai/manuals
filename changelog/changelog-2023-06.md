@@ -23,3 +23,27 @@ In June 2023, various developments and discussions took place in the Godot commu
 - New commits in `v-sekai-game:main`, including removing hardcoded gravity and gravity direction, inverting state machine condition, and setting up work in progress state chart (03/06/2023)
 - New branch created in `V-Sekai/v-sekai-game`: `state-chart` (03/06/2023)
 - Skeleton3D now correctly resets `rest_dirty` only after all bone transforms have been updated (PR 78025 by lyuma). This also resolves the SkeletonGizmo display issue when there is more than one bone root.
+
+## Simplified Setup and Advanced Solver System
+
+The team has introduced a feature that allows for easy setup with just a single click. Additionally, they're now utilizing an advanced system known as the Many Bones' solver.
+
+## Graphics Processing Unit (GPU) Performance
+
+There were some concerns about how much time the GPU was spending on processing the shader - think of the shader like a set of instructions telling the GPU how to draw each pixel. The frame times, or the speed at which frames are processed, seemed to be slower than expected. However, it was clarified that these tests were being run in a mode designed for finding errors (debug mode), not for optimal performance.
+
+## Comparing Performance Across Platforms
+
+The team discussed how their system's performance stacks up against other virtual reality social platforms. They used different types of hardware for these comparisons, similar to comparing the performance of different cars using various types of roads and conditions.
+
+## Tailoring Performance for Different Devices
+
+The team also talked about how to best optimize their system for different devices. This is akin to tuning a car's engine differently depending on whether it's going to be driven in the city or on a racetrack. 
+
+## Rendering Avatars
+
+There were discussions about the challenges of rendering avatars, especially when there are multiple avatars on the screen at once. It's like trying to paint multiple portraits at the same time - the more you have, the harder it gets. The team discussed the need for guidelines to help avatar creators optimize their designs for less powerful hardware.
+
+## Future Plans
+
+Looking ahead, the team plans to conduct more tests, particularly focusing on how well their system handles complex 3D models on Android devices. They also aim to create a benchmark scenario where they expect good performance across most platforms, much like setting a standard track to test different cars' performances.
