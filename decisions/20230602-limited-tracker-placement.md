@@ -20,7 +20,7 @@ The proposed option involves prioritizing tracker placement for the head, hands,
 1. Head: At the base of the neck to monitor head rotation and tilt.
 2. Left Hand: On the left wrist to track the overall motion of the left hand.
 3. Right Hand: On the right wrist to track the overall motion of the right hand.
-4. Hips: A tracker on the hips to monitor lower body movement.
+4. Hips: A tracker on the hips to monitor lower body movement. Placed behind the body.
 5. Left Foot: A tracker on the left foot to capture left foot movement, essential for both soccer and dancing.
 6. Right Foot: A tracker on the right foot to capture right foot movement, also crucial for both activities.
 
