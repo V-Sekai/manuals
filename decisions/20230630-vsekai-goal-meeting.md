@@ -41,10 +41,10 @@ Meeting goal: determine what we can feasibly build and what we can enable others
 - Mirrors + camera
 - Video player (static + playback of videos without a duration aka live) libvlc or ffmpeg
 - Local API (http OR jsonrpc OR local pipe OR OSC etc.) for Extending the Platform
-- - Allow users to write scripts and plugins for V-Sekai
-- - Or allow a local user to write custom GDScript into V-Sekai
-- - API to create an object.
-- - Determine RPCs or functions to expose)
+  - Allow users to write scripts and plugins for V-Sekai
+  - Or allow a local user to write custom GDScript into V-Sekai
+  - API to create an object.
+  - Determine RPCs or functions to expose)
 
 ## Web Requests (HTTP or WebSocket) to Servers
  
