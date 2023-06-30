@@ -90,7 +90,7 @@ Looking ahead, the team plans to conduct more tests, particularly focusing on ho
 - Or allow a local user to write custom GDScript into v-sekai
 - API to create an object.
 
-## Web Requests (WebSocket) to Servers
+## Web Requests ~~(WebSocket)~~ to Servers
 
 - Needs API or scripting language. What RPCs or functions can you use?
 
