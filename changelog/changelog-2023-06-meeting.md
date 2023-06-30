@@ -1,4 +1,3 @@
-
 # V-Sekai Meeting - Friday, June 30, 2023
 
 ## Principles
