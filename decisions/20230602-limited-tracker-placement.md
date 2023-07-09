@@ -17,6 +17,8 @@ The proposed option involves prioritizing tracker placement for the head, hands,
 
 ### Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
+VR Tracker USB dongles need line of sight.
+
 1. Head: At the base of the neck to monitor head rotation and tilt.
 2. Left Hand: On the left wrist to track the overall motion of the left hand.
 3. Right Hand: On the right wrist to track the overall motion of the right hand.
