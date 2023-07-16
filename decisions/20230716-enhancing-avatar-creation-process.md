@@ -96,3 +96,4 @@ The proposed enhancement addresses the limitations in V-Sekai's avatar creation 
 - [V-Sekai](https://v-sekai.org/)
 - [Detail Tweaker](https://civitai.com/models/58390/detail-tweaker-lora-lora)
 - [InstructBLIP: Towards General-purpose Vision-Language Models with Instruction Tuning](https://github.com/gfodor/instructblip-replicate)
+- [Petals](https://github.com/bigscience-workshop/petals)
