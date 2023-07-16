@@ -42,29 +42,29 @@ Here is a list of raw processes to be broken down.
 
 ### Advanced Customization Steps:
 
-12. **Correcting colors and addressing pleated folds:** Address any color correction issues in the clothing and ignore pleated folds initially, if present.
+1. **Correcting colors and addressing pleated folds:** Address any color correction issues in the clothing and ignore pleated folds initially, if present.
 
-13. **Creating complex structures:** Utilize sculpting and rigging techniques to create intricate and detailed structures.
+2. **Creating complex structures:** Utilize sculpting and rigging techniques to create intricate and detailed structures.
 
-14. **Importing the avatar into Godot Engine and "Project Mirage":** Import the customized avatar into the Godot Engine and the "Project Mirage" framework for further development.
+3. **Importing the avatar into Godot Engine and "Project Mirage":** Import the customized avatar into the Godot Engine and the "Project Mirage" framework for further development.
 
-15. **Refining the imported avatar:** Fine-tune and refine the avatar within "Project Mirage" to ensure optimal appearance and functionality.
+4. **Refining the imported avatar:** Fine-tune and refine the avatar within "Project Mirage" to ensure optimal appearance and functionality.
 
-16. **Converting spring bone to physical simulation bones and colliders:** Convert spring bone "jiggle bones" to physics bones and colliders for enhanced realism and interaction.
+5. **Converting spring bone to physical simulation bones and colliders:** Convert spring bone "jiggle bones" to physics bones and colliders for enhanced realism and interaction.
 
-17. **Addressing painting errors:** Resolve any painting errors such as mesh clipping or seams on clothing to improve the overall visual quality.
+6. **Addressing painting errors:** Resolve any painting errors such as mesh clipping or seams on clothing to improve the overall visual quality.
 
-18. **Choosing a material:** Decide whether to use the existing VRM MToon material or implement a custom SCSS shader in "Project Mirage".
+7. **Choosing a material:** Decide whether to use the existing VRM MToon material or implement a custom SCSS shader in "Project Mirage".
 
-19. **Resolving issues with materials and bones:** Rectify any issues related to material counts and bone structure in "Project Mirage".
+8. **Resolving issues with materials and bones:** Rectify any issues related to material counts and bone structure in "Project Mirage".
 
-20. **Establishing file transfer process:** Set up a seamless file transfer process between "Project Mirage" and the Godot Engine for efficient collaboration and asset management.
+9. **Establishing file transfer process:** Set up a seamless file transfer process between "Project Mirage" and the Godot Engine for efficient collaboration and asset management.
 
-21. **Utilizing Vroid Hub's hair painter and mesh generator:** Utilize Vroid Hub's hair painting tools and mesh generation capabilities to customize and enhance the avatar's hairstyle.
+10. **Utilizing Vroid Hub's hair painter and mesh generator:** Utilize Vroid Hub's hair painting tools and mesh generation capabilities to customize and enhance the avatar's hairstyle.
 
-22. **Adding facial expressions for motion capture:** Implement "perfect sync" facial expressions for capturing realistic facial movements through motion capture technology.
+11. **Adding facial expressions for motion capture:** Implement "perfect sync" facial expressions for capturing realistic facial movements through motion capture technology.
 
-23. **Setting up motion capture:** Configure motion capture using the Steam VR Lighthouse system or a similar setup to capture and translate physical movements onto the avatar.
+12. **Setting up motion capture:** Configure motion capture using the Steam VR Lighthouse system or a similar setup to capture and translate physical movements onto the avatar.
 
 ## Positive Consequences
 
