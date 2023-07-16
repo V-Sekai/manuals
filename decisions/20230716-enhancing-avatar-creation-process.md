@@ -22,6 +22,8 @@ Here is a list of raw processes to be broken down.
 
 3. **Selecting the best-looking avatars:** Evaluate and choose the most visually appealing avatars from a pool of options.
 
+3. **Removing the background Image:** Remove the background image to make rework easier. May provide worse results with edge details.
+
 4. **Adding a body:** Incorporate a body to the avatar using Blender's CC0 base mesh or a similar tool.
 
 5. **Creating a 3D model of the back of the avatar:** If feasible, attempt to create a 3D model of the back of the avatar for a more comprehensive representation.
