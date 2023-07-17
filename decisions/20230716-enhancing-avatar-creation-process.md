@@ -50,21 +50,21 @@ To implement the requested changes, here are the modified instructions:
    - Input mime type: Digital drawing/image file (e.g., PNG, SVG)
    - Output mime type: Digital drawing/image file (e.g., PNG, SVG)
 
-9. **Using a 2D reference image in Blender:** Uses a 2D reference image within Blender to guide the customization process.
-   - Input mime type: Digital drawing/image file (e.g., PNG, SVG)
-   - Output mime type: None
-
-10. **Placing the 2D image as a reference:** Positions the 2D reference image in front of the 3D model to serve as a visual guide during customization.
+9. **Placing the 2D image as a reference:** Positions the 2D reference image in front of the 3D model to serve as a visual guide during customization.
    - Input mime type: Digital drawing/image file (e.g., PNG, SVG), 3D model file (e.g., GLTF)
    - Output mime type: 3D model file (e.g., GLTF)
 
-11. **Capturing and enhancing images:** Captures images from various angles using a camera and enhances them to improve the overall quality.
+10. **Capturing and enhancing images:** Captures images from various angles using a camera and enhances them to improve the overall quality.
    - Input mime type: Digital drawing/image file (e.g., PNG, SVG)
    - Output mime type: Digital image file (e.g., PNG, SVG)
 
-12. **Generating text captions:** Creates descriptive text captions for the captured images to provide additional context or information.
-    - Input mime type: Digital image file (e.g., PNG, SVG)
-    - Output mime type: Text file (e.g., TXT)
+11. **Generating text captions:** Creates descriptive text captions for the captured images to provide additional context or information.
+   - Input mime type: Digital image file (e.g., PNG, SVG)
+   - Output mime type: Text file (e.g., TXT)
+
+12. **Using a 2D reference image in Blender:** Uses a 2D reference image within Blender to guide the customization process.
+   - Input mime type: Digital drawing/image file (e.g., PNG, SVG)
+   - Output mime type: None
 
 Please note that JPEG format has been replaced with GLTF format for 3D model files and SVG is preferred over PNG for image files. Lossy formats like JPEG have been avoided to ensure better quality.
 
