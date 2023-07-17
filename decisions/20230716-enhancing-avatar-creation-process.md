@@ -64,7 +64,7 @@ To implement the requested changes, here are the modified instructions:
 
 12. **Using a 2D reference image in Blender:** Uses a 2D reference image within Blender to guide the customization process.
    - Input mime type: Digital drawing/image file (e.g., PNG, SVG)
-   - Output mime type: None
+   - Output mime type: 3D model file (e.g., GLTF)
 
 Please note that JPEG format has been replaced with GLTF format for 3D model files and SVG is preferred over PNG for image files. Lossy formats like JPEG have been avoided to ensure better quality.
 
