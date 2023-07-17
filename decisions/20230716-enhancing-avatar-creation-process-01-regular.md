@@ -52,7 +52,7 @@ To implement the requested changes, here are the modified instructions:
 
 9. **Placing the 2D image as a reference:** Positions the 2D reference image in front of the 3D model to serve as a visual guide during customization.
    - Input mime type: Digital drawing/image file (e.g., PNG, SVG), 3D model file (e.g., GLTF)
-   - Output mime type: 3D model file (e.g., GLTF)
+   - Output mime type: 3D model file (e.g., GLTF), Digital image file (e.g., PNG, SVG)
 
 10. **Capturing and enhancing images:** Captures images from various angles using a camera and enhances them to improve the overall quality.
    - Input mime type: Digital drawing/image file (e.g., PNG, SVG)
@@ -64,7 +64,7 @@ To implement the requested changes, here are the modified instructions:
 
 12. **Using a 2D reference image in Blender:** Uses a 2D reference image within Blender to guide the customization process.
    - Input mime type: Digital drawing/image file (e.g., PNG, SVG)
-   - Output mime type: 3D model file (e.g., GLTF)
+   - Output mime type: 3D model file (e.g., GLTF), Digital image file (e.g., PNG, SVG)
 
 ## Positive Consequences
 
