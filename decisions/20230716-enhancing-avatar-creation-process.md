@@ -36,11 +36,11 @@ To implement the requested changes, here are the modified instructions:
 
 5. **Adding a body:** Incorporates a body to the avatar using Blender's CC0 base mesh or a similar tool.
    - Input mime type: Digital drawing/image file (e.g., PNG, SVG)
-   - Output mime type: 3D model file (e.g., GLTF)
+   - Output mime type: Digital drawing/image file (e.g., PNG, SVG)
 
 6. **Creating a 3D model of the back of the avatar:** If feasible, attempts to create a 3D model of the back of the avatar for a more comprehensive representation.
-   - Input mime type: 3D model file (e.g., GLTF)
-   - Output mime type: 3D model file (e.g., GLTF)
+   - Input mime type: Digital drawing/image file (e.g., PNG, SVG)
+   - Output mime type: Digital drawing/image file (e.g., PNG, SVG)
 
 7. **Simplifying images:** Uses a tool to simplify and refine the entire avatar image as a whole, removing any unnecessary image details or complexities.
    - Input mime type: Digital drawing/image file (e.g., PNG, SVG)
@@ -55,12 +55,12 @@ To implement the requested changes, here are the modified instructions:
    - Output mime type: None
 
 10. **Placing the 2D image as a reference:** Positions the 2D reference image in front of the 3D model to serve as a visual guide during customization.
-    - Input mime type: Digital drawing/image file (e.g., PNG, SVG), 3D model file (e.g., GLTF)
-    - Output mime type: None
+   - Input mime type: Digital drawing/image file (e.g., PNG, SVG), 3D model file (e.g., GLTF)
+   - Output mime type: 3D model file (e.g., GLTF)
 
 11. **Capturing and enhancing images:** Captures images from various angles using a camera and enhances them to improve the overall quality.
-    - Input mime type: None
-    - Output mime type: Digital image file (e.g., PNG, SVG)
+   - Input mime type: Digital drawing/image file (e.g., PNG, SVG)
+   - Output mime type: Digital image file (e.g., PNG, SVG)
 
 12. **Generating text captions:** Creates descriptive text captions for the captured images to provide additional context or information.
     - Input mime type: Digital image file (e.g., PNG, SVG)
