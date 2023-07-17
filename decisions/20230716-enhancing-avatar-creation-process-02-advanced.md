@@ -65,16 +65,16 @@ Here are the converted inputs and outputs in the xstate format for each step:
    - Output: smoothed data
 
 10. **Utilizing Vroid Hub's hair painter and mesh generator:**
-    - Input: Vroid Hub data
-    - Output: `.vrm` enhanced data
+   - Input: Vroid Hub data
+   - Output: `.vrm` enhanced data
 
 11. **Adding facial expressions for motion capture:**
-    - Input: facial expression data
-    - Output: `.gltf` motion capture data
+   - Input: facial expression data
+   - Output: `.gltf` motion capture data
 
 12. **Setting up motion capture:**
-    - Input: SteamVR data
-    - Output: `.gltf` animations data
+   - Input: SteamVR data
+   - Output: `.gltf` animations data
 
 ## Positive Consequences
 
