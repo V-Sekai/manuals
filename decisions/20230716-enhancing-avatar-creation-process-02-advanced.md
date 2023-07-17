@@ -29,52 +29,48 @@ Note: To avoid lossy formats, we are using PNG or SVG for 2D images and GLTF for
 Here are the converted inputs and outputs in the xstate format for each step:
 
 1. **Importing the avatar into Godot Engine and "Project Mirage":**
-   - Input: `.gltf` file
-   - Output: `.gltf` file
+   - Input: `.vrm` file
+   - Output: `.vrm` file
 
 2. **Refining the imported avatar:**
-   - Input: `.gltf` file
-   - Output: `.gltf` file
+   - Input: `.vrm` file
+   - Output: `.vrm` file
 
 3. **Converting spring bone to physical simulation bones and colliders:**
-   - Input: `.gltf` file
-   - Output: `.gltf` file
+   - Input: `.vrm` file
+   - Output: assetpackage file
 
 4. **Addressing painting errors:**
-   - Input: `.gltf` file
-   - Output: `.gltf` file
+   - Input: `.vrm` file
+   - Output: `.vrm` file
 
 5. **Choosing a material:**
-   - Input: `.gltf` file
-   - Output: `.gltf` file
+   - Input: `.vrm` file
+   - Output: `.vrm` file
 
 6. **Resolving issues with materials and bones:**
-   - Input: `.gltf` file
-   - Output: `.gltf` file
+   - Input: `.vrm` file
+   - Output: `.vrm` file
 
 7. **Correcting colors and addressing pleated folds:**
-   - Input: `.gltf` file
-   - Output: `.gltf` file
+   - Input: `.vrm` file
+   - Output: `.vrm` file
 
-8. **Creating complex structures:**
-   - Input: sculpting data
-   - Output: `.gltf` file
-
-9. **Establishing file transfer process:**
-   - Input: setup data
-   - Output: smoothed data
+8. **Creating complex geometric structures:**
+   - Input: `.vrm` file
+   - Output: `.vrm` file
 
 10. **Utilizing Vroid Hub's hair painter and mesh generator:**
-   - Input: Vroid Hub data
+   - Input: `.vrm` file
    - Output: `.vrm` enhanced data
 
 11. **Adding facial expressions for motion capture:**
-   - Input: facial expression data
+   - Input: `.vrm` file
    - Output: `.gltf` motion capture data
 
 12. **Setting up motion capture:**
-   - Input: SteamVR data
-   - Output: `.gltf` animations data
+   - Input: `.vrm` file
+   - Output: vrm animations data stored as `.gltf`.
 
 ## Positive Consequences
 
@@ -104,6 +100,3 @@ The proposed enhancement addresses the limitations in V-Sekai's avatar creation 
 ## References
 
 - [V-Sekai](https://v-sekai.org/)
-- [Detail Tweaker](https://civitai.com/models/58390/detail-tweaker-lora-lora)
-- [InstructBLIP: Towards General-purpose Vision-Language Models with Instruction Tuning](https://github.com/gfodor/instructblip-replicate)
-- [Petals](https://github.com/bigscience-workshop/petals)
