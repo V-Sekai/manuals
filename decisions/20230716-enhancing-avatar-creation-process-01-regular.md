@@ -66,8 +66,6 @@ To implement the requested changes, here are the modified instructions:
    - Input mime type: Digital drawing/image file (e.g., PNG, SVG)
    - Output mime type: 3D model file (e.g., GLTF)
 
-Please note that JPEG format has been replaced with GLTF format for 3D model files and SVG is preferred over PNG for image files. Lossy formats like JPEG have been avoided to ensure better quality.
-
 ## Positive Consequences
 
 - Users will be able to create highly customizable avatars with specific features.
