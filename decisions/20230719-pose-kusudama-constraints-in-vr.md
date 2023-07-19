@@ -16,7 +16,7 @@ Our solution involves creating a VR mode specifically for posing Many Bone IK ku
 
 1. Take an off the shelf VR controller.
 2. Take an off the shelf multiplayer functionality.
-3. Develop a tool selection ui
+3. Develop a tool selection ui. Collaborate with guillefix.
 4. Adjust the kusudama constraint attributes to match posing.
 
 ## Implementation
