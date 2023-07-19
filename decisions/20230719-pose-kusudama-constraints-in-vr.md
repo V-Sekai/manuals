@@ -16,8 +16,7 @@ Our solution involves creating a VR mode specifically for posing Many Bone IK ku
 
 1. Develop a VR controller.
 2. Implement multiplayer functionality.
-3. Adjust the kusudama constraint attributes to suit VR environment.
-4. Embody the avatar in the VR space.
+3. Adjust the kusudama constraint attributes to match posing.
 
 ## Implementation
 
