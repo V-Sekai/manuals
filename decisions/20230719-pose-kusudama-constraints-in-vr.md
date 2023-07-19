@@ -24,9 +24,11 @@ Our solution involves creating a VR mode specifically for posing Many Bone IK ku
 
 1. Investigate Saracen's VR networking prototype.
 1. Rebuild character posing without tracking the physical sensors
-2. Apply Many Bone IK
-3. Adjust for quality
-4. Complete configuration
+2. Apply Many Bone IK tracking
+3. Rotation swing (10x Vector4)
+4. Rotation twist (From and range)
+5. Adjust for quality
+6. Complete configuration
 
 Assigning physical sensors to IK points is non-goal.
 
