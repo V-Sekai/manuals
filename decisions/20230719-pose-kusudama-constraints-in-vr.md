@@ -27,7 +27,7 @@ Our solution involves creating a VR mode specifically for posing Many Bone IK ku
 3. Adjust for quality
 4. Complete configuration
 
-Assigning physical sensors to IK trackers is not in this milestone.
+Assigning physical sensors to IK points is non-goal.
 
 ## Option Graveyard
 
