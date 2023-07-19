@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Wed, 19 Jul 2023 22:53:37 GMT</lastBuildDate>
+<lastBuildDate>Wed, 19 Jul 2023 23:06:41 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -64,7 +64,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Wed, 19 Jul 2023 22:53:37 GMT</pubDate>
+  <pubDate>Wed, 19 Jul 2023 23:06:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -149,7 +149,88 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230719-pose-kusudama-constraints-in-vr.html</guid>
-  <pubDate>Wed, 19 Jul 2023 22:53:37 GMT</pubDate>
+  <pubDate>Wed, 19 Jul 2023 23:06:41 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230719-dual-databases-cockroachdb-khepri.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="game-simulation-server-sidekick-process" class="level1">
+<h1>Game simulation server sidekick process</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: proposed</li>
+<li>Deciders: V-Sekai</li>
+<li>Tags: V-Sekai, Godot Engine, khepri, elixir</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
+<p>We want to provide each game server a sidekick process that restarts Godot Engine on crash and acts as a local processor before upload to the source of truth backend database. This will ensure continuous gameplay and data integrity.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>We propose to use khepri for sidekick server data with an elixir frontend.</p>
+<p>Khepri provides robustness and reliability while Elixir offers scalability and fault-tolerance.</p>
+</section>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<ol type="1">
+<li>Develop a sidekick process using khepri that monitors the Godot Engine.</li>
+<li>In case of a crash, the sidekick process should be able to restart the Godot Engine.</li>
+<li>The sidekick process should also act as a local processor for game data before it’s uploaded to the backend database.</li>
+<li>Implement an Elixir frontend to interact with the sidekick process.</li>
+</ol>
+</section>
+<section id="positive-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
+<ul>
+<li>Improved game server stability.</li>
+<li>Continuous gameplay even in the event of a crash.</li>
+<li>Ensured data integrity before upload to the backend database.</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
+<ul>
+<li>Additional development time and resources required.</li>
+<li>Potential complexity in managing the sidekick process.</li>
+</ul>
+</section>
+<section id="option-graveyard" class="level2">
+<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
+<ol type="1">
+<li><p><strong>Using a simple watchdog script:</strong> A simple script that monitors the Godot Engine and restarts it in case of a crash. This was rejected due to its inability to act as a local processor for game data before upload.</p></li>
+<li><p><strong>Relying on third-party services:</strong> There are several third-party services that offer process monitoring and automatic restarts. However, these were rejected due to potential issues with customization, cost, and data privacy.</p></li>
+<li><p><strong>Building a custom solution from scratch:</strong> While this would give us the most control, it was deemed too resource-intensive and unnecessary given the existence of suitable tools like khepri and Elixir.</p></li>
+<li><p><strong>Do nothing:</strong> The option to maintain the status quo was considered but ultimately rejected due to the negative impact on user experience and data integrity.</p></li>
+</ol>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
+<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
+<p>No, this enhancement is fundamental to the stability of the game servers and cannot be achieved with a simple script workaround.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
+<p>Yes, as this directly impacts the user experience and the integrity of our game data, it is crucial that we have full control over its implementation and maintenance.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a> <!-- - This article [is / or is not] assisted by AI. --></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230719-dual-databases-cockroachdb-khepri.html</guid>
+  <pubDate>Wed, 19 Jul 2023 23:06:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -293,7 +374,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230716-enhancing-avatar-creation-process-02-advanced.html</guid>
-  <pubDate>Wed, 19 Jul 2023 22:53:37 GMT</pubDate>
+  <pubDate>Wed, 19 Jul 2023 23:06:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -436,7 +517,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230716-enhancing-avatar-creation-process-01-regular.html</guid>
-  <pubDate>Wed, 19 Jul 2023 22:53:37 GMT</pubDate>
+  <pubDate>Wed, 19 Jul 2023 23:06:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -627,7 +708,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230701-vsekai-broken-down-goals.html</guid>
-  <pubDate>Wed, 19 Jul 2023 22:53:37 GMT</pubDate>
+  <pubDate>Wed, 19 Jul 2023 23:06:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -743,7 +824,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230630-vsekai-goal-meeting.html</guid>
-  <pubDate>Wed, 19 Jul 2023 22:53:37 GMT</pubDate>
+  <pubDate>Wed, 19 Jul 2023 23:06:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -832,7 +913,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230626-godot-vrm1-addon.html</guid>
-  <pubDate>Wed, 19 Jul 2023 22:53:37 GMT</pubDate>
+  <pubDate>Wed, 19 Jul 2023 23:06:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -918,7 +999,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230624-v-sekai-roadmap.html</guid>
-  <pubDate>Wed, 19 Jul 2023 22:53:37 GMT</pubDate>
+  <pubDate>Wed, 19 Jul 2023 23:06:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1090,7 +1171,7 @@ func apply_mixing_matrix(delay_outputs: Array) -&gt; Array:
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230623-fdn-reverb-solution.html</guid>
-  <pubDate>Wed, 19 Jul 2023 22:53:37 GMT</pubDate>
+  <pubDate>Wed, 19 Jul 2023 23:06:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1266,7 +1347,7 @@ var model = transformers.load_T5ForConditionalGeneration(model_name)</code></pre
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230620-t5-jsonformer-xstate.html</guid>
-  <pubDate>Wed, 19 Jul 2023 22:53:37 GMT</pubDate>
+  <pubDate>Wed, 19 Jul 2023 23:06:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1353,7 +1434,7 @@ var model = transformers.load_T5ForConditionalGeneration(model_name)</code></pre
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230620-doi-github.html</guid>
-  <pubDate>Wed, 19 Jul 2023 22:53:37 GMT</pubDate>
+  <pubDate>Wed, 19 Jul 2023 23:06:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1439,7 +1520,7 @@ var model = transformers.load_T5ForConditionalGeneration(model_name)</code></pre
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230619-move-cockroachdb-to-yugabyte.html</guid>
-  <pubDate>Wed, 19 Jul 2023 22:53:37 GMT</pubDate>
+  <pubDate>Wed, 19 Jul 2023 23:06:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1549,7 +1630,7 @@ var model = transformers.load_T5ForConditionalGeneration(model_name)</code></pre
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230619-membrane-framework-for-mesh-processing.html</guid>
-  <pubDate>Wed, 19 Jul 2023 22:53:37 GMT</pubDate>
+  <pubDate>Wed, 19 Jul 2023 23:06:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1692,7 +1773,7 @@ var model = transformers.load_T5ForConditionalGeneration(model_name)</code></pre
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230618-v-sekai-roadmap.html</guid>
-  <pubDate>Wed, 19 Jul 2023 22:53:37 GMT</pubDate>
+  <pubDate>Wed, 19 Jul 2023 23:06:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1775,7 +1856,7 @@ var model = transformers.load_T5ForConditionalGeneration(model_name)</code></pre
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230616-pmx-to-vrm.html</guid>
-  <pubDate>Wed, 19 Jul 2023 22:53:37 GMT</pubDate>
+  <pubDate>Wed, 19 Jul 2023 23:06:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1853,7 +1934,7 @@ var model = transformers.load_T5ForConditionalGeneration(model_name)</code></pre
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230614-llm-statechart.html</guid>
-  <pubDate>Wed, 19 Jul 2023 22:53:37 GMT</pubDate>
+  <pubDate>Wed, 19 Jul 2023 23:06:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1986,7 +2067,7 @@ var model = transformers.load_T5ForConditionalGeneration(model_name)</code></pre
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230611-wasm-in-v-sekai.html</guid>
-  <pubDate>Wed, 19 Jul 2023 22:53:37 GMT</pubDate>
+  <pubDate>Wed, 19 Jul 2023 23:06:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2065,7 +2146,7 @@ var model = transformers.load_T5ForConditionalGeneration(model_name)</code></pre
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230608-v-sekai-roadmap.html</guid>
-  <pubDate>Wed, 19 Jul 2023 22:53:37 GMT</pubDate>
+  <pubDate>Wed, 19 Jul 2023 23:06:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2138,96 +2219,7 @@ var model = transformers.load_T5ForConditionalGeneration(model_name)</code></pre
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230602-v-sekai-roadmap.html</guid>
-  <pubDate>Wed, 19 Jul 2023 22:53:37 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20230602-pmx-module-integration.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="pmx-module-integration" class="level1">
-<h1>Pmx module integration</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li>Status: proposed</li>
-<li>Deciders: V-Sekai</li>
-<li>Tags: V-Sekai, GPT-4</li>
-</ul>
-</section>
-<section id="context-and-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
-<p>State process for importing a godot engine module work and publish.</p>
-</section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>Integrate the Godot PMX module into the V-Sekai project by following the implementation steps below.</p>
-</section>
-<section id="implementation" class="level2">
-<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
-<ol type="1">
-<li>Go to <code>https://github.com/V-Sekai/godot</code></li>
-<li>Make sure the 4.0 branch is synced with <code>https://github.com/godotengine/godot</code></li>
-<li>Create a branch.
-<ul>
-<li>Let’s use an example like <code>vsk-pmx</code>.</li>
-</ul></li>
-<li>Switch to the branch.</li>
-<li>Run <code>git subrepo clone https://github.com/V-Sekai/godot-pmx modules/pmx</code> in the terminal or command prompt.</li>
-<li>Code the module.</li>
-<li>Run <code>git subrepo pull modules/pmx</code> in the terminal or command prompt to merge with upstream repo.</li>
-<li>Code the module.</li>
-<li>Run <code>git subrepo push modules/pmx</code> in the terminal or command prompt to publish.</li>
-<li>Make sure GitHub CI/CD tests pass.</li>
-</ol>
-</section>
-<section id="positive-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
-<ul>
-<li>Seamless integration of the PMX module into the V-Sekai project</li>
-<li>Improved functionality and features for users</li>
-<li>Easier maintenance and updates for the module</li>
-</ul>
-</section>
-<section id="negative-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
-<ul>
-<li>Potential increase in complexity and dependencies</li>
-<li>Possible performance impact if not optimized properly</li>
-</ul>
-</section>
-<section id="option-graveyard" class="level2">
-<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
-<ol type="1">
-<li><p><strong>Manual integration of the PMX module</strong>: Instead of using <code>git subrepo</code>, manually copy and integrate the PMX module into the V-Sekai project. This option is less efficient and harder to maintain, as it requires manual updates and synchronization with the original PMX repository.</p></li>
-<li><p><strong>Using Git Submodules</strong>: Use <code>git submodule</code> to include the PMX module in the V-Sekai project. While this approach allows for easier updates and maintenance, it can be more complex to set up and manage compared to <code>git subrepo</code>.</p></li>
-<li><p><strong>Creating a separate plugin</strong>: Develop the PMX module as a standalone plugin that users can install and enable in their projects. This option reduces the complexity of the core V-Sekai project but may result in less seamless integration and increased setup effort for users.</p></li>
-<li><p><strong>Forking the Godot Engine</strong>: Fork the entire Godot Engine and directly modify its source code to include the PMX module. This option is not recommended, as it would make it difficult to keep the fork updated with upstream changes and could lead to compatibility issues.</p></li>
-</ol>
-</section>
-<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
-<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
-<p>This enhancement cannot be easily worked around with a few lines of script, as it involves integrating a new module into the core project.</p>
-</section>
-<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
-<p>Integrating the PMX module into the core project ensures that it is maintained and updated alongside the main project, providing a consistent and reliable experience for users.</p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ul>
-<li><a href="https://v-sekai.org/">V-Sekai</a></li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20230602-pmx-module-integration.html</guid>
-  <pubDate>Wed, 19 Jul 2023 22:53:37 GMT</pubDate>
+  <pubDate>Wed, 19 Jul 2023 23:06:41 GMT</pubDate>
 </item>
 </channel>
 </rss>
