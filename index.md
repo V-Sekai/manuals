@@ -6,7 +6,7 @@ V-Sekai caters to the needs of the open source VR community. We're trying to mak
 
 ## Collaborative
 
-Our objective is to develop social virtual reality spaces, and we rely on the dedication of many Godot Engine contributors. More than 100 V-Sekai pull requests have been effectively incorporated into the heart of the Godot Engine.
+We rely on the dedication of many Godot Engine contributors. More than 100 V-Sekai pull requests have been effectively incorporated into the heart of the Godot Engine.
 
 ## Get Involved
 
