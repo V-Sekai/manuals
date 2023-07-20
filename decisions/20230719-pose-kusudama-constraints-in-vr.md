@@ -20,6 +20,15 @@ Our solution involves creating a VR mode specifically for posing Many Bone IK ku
 4. Adjust the kusudama constraint attributes to match posing.
 5. Save attributes.
 
+### Definition of a Kusudama
+
+Imagine you have a ball. There are two ways you can move it:
+
+1. **Twist**: Like spinning a globe on its stand.
+2. **Swing**: Like moving your finger from one spot to another on the ball.
+
+Think of a Kusudama (a type of origami that forms a sphere) as an example for the swing movement. The pieces of paper move just like your finger would on the ball.
+
 ## Implementation
 
 1. Investigate Saracen's VR networking prototype.
