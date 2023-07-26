@@ -1,6 +1,8 @@
 # Play the latest build
 
-Instructions last checked 2023-05-07.
+Instructions last checked 2023-07-26.
+
+**Currently not working.**
 
 V-Sekai uses rolling releases and is alpha quality.
 
