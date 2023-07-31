@@ -2,7 +2,7 @@
 
 ## Metadata
 
-- Status: proposed
+- Status: rejected
 - Deciders: V-Sekai, fire
 - Tags: V-Sekai, llm summarization
 
@@ -35,6 +35,7 @@ To implement YugabyteDB as the chosen database solution, the following steps sho
 
 - Potential new problems and challenges associated with adopting a new database solution
 - Possible learning curve for the team in working with YugabyteDB
+- Cannot do online primary key upgrades.
 
 ## Option graveyard
 
