@@ -53,5 +53,4 @@ Implementing VRM 1.0 support and publishing it to the Godot Engine asset library
 
 ## References
 
-- [VRM 1.0 Specification](https://vrm.dev/en/docs/vrm1.0/)
-- [Godot Engine Asset Library Submission Guidelines](https://docs.godotengine.org/en/stable/tutorials/assetlib/uploading_to_assetlib.html)
+- [VRM 1.0 Specification](https://vrm.dev/en/vrm1/)
