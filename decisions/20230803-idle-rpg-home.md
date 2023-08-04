@@ -30,7 +30,7 @@ Our game is set in a "Comfortable Cyberprep" realm. It merges sci-fi with ease, 
 ### Systems
 
 1. RPG idle game with fake cash chests: Players can earn fake currency through continuous play, even when they are not actively engaged.
-2. Combat System: Players can choose between different types of weapons such as a sword or wand, or opt for defensive items like shields or healing items. This adds a strategic element to the game, especially in multiplayer mode.
+2. Combat System: Players can choose between different types of weapons such as a sword or a wand, or opt for defensive items like shields or healing items. This adds a strategic element to the game, especially in multiplayer mode.
 3. Stationary Attacked Target System: A combat mechanism enabling player engagement with immobile targets.
 
 ### Development Limits
