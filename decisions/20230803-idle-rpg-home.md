@@ -37,7 +37,6 @@ Our game is set in a "Comfortable Cyberprep" realm. It merges sci-fi with ease, 
 1. Settings are not persisted past server restart.
 2. Limited number of weapon choices: To maintain balance in the game, the number of weapon choices can be limited.
 3. Cooldown period for using healing items: To prevent spamming of healing items, a cooldown period can be implemented.
-4. Limit on the number of fake cash chests that can be earned in a day: This can prevent exploitation of the system and ensure fair play.
 
 ## Implementation
 
