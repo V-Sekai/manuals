@@ -1,4 +1,4 @@
-# Make an Idle RPG World
+# Make a Social RPG World
 
 ## Metadata
 
@@ -8,7 +8,7 @@
 
 ## Context and Problem Statement
 
-We aim to provide a compelling reason for users to stay engaged in the V-Sekai world. An idle RPG game could be the solution, offering continuous gameplay that encourages prolonged interaction.
+We aim to provide a compelling reason for users to stay engaged in the V-Sekai world. A social RPG game could be the solution, offering continuous gameplay that encourages prolonged interaction.
 
 ## Proposed Solution
 
@@ -24,11 +24,11 @@ Our game is set in a "Comfortable Cyberprep" realm. It merges sci-fi with ease, 
 ### Story
 
 1. Chill and hang with friends: The game will provide a relaxed environment where players can socialize.
-2. Play a game: Beyond socializing, players can engage in an idle RPG game that is fun and rewarding.
+2. Play a game: Beyond socializing, players can engage in an RPG game that is fun and rewarding.
 
 ### Systems
 
-1. RPG idle game with fake cash chests: Players can earn fake currency through continuous play, even when they are not actively engaged.
+1. RPG game with level rewards: Players improve through play.
 2. Combat System: Players can choose between different types of weapons such as a sword or a wand, or opt for defensive items like shields or healing items. This adds a strategic element to the game, especially in multiplayer mode.
 3. Stationary Attacked Target System: A combat mechanism enabling player engagement with immobile targets.
 
@@ -52,7 +52,7 @@ The implementation details will be decided upon acceptance of this proposal.
 ## Negative Consequences
 
 - Potential increase in development time and resources
-- Risk of unbalanced gameplay if the idle RPG system is not properly designed
+- Risk of unbalanced gameplay if the RPG system is not properly designed
 
 ## Option Graveyard
 
@@ -60,11 +60,11 @@ This section will be filled as we explore different options and discard those th
 
 ## If this enhancement will be used infrequently, can it be worked around with a few lines of script?
 
-The frequency of use will depend on the players' engagement level. However, given the complexity of an idle RPG system, it cannot be simply worked around with a few lines of script.
+The frequency of use will depend on the players' engagement level. However, given the complexity of an RPG system, it cannot be simply worked around with a few lines of script.
 
 ## Is there a reason why this should be core and done by us?
 
-Creating an idle RPG system as a feature of V-Sekai will enhance the overall user experience and engagement, which aligns with our goal of providing a compelling virtual world.
+Creating an RPG system as a feature of V-Sekai will enhance the overall user experience and engagement, which aligns with our goal of providing a compelling virtual world.
 
 ## References
 
