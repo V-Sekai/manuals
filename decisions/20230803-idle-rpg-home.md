@@ -30,7 +30,7 @@ Our game is set in a "Comfortable Cyberprep" realm. It merges sci-fi with ease, 
 
 1. RPG game with level rewards: Players improve through play.
 2. Combat System: Players choose between different types of weapons or defensive items.
-3. Stationary Attacked Target System: A combat mechanism for player engagement.
+3. Stationary Target Combat System: A mechanism where players engage in combat with fixed-position targets.
 
 ### Development Limits
 
