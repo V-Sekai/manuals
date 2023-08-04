@@ -56,7 +56,9 @@ The implementation details will be decided upon acceptance of this proposal.
 
 ## Option Graveyard
 
-This section will be filled as we explore different options and discard those that are not feasible or effective.
+In this section, we document the options that were considered but ultimately discarded for various reasons.
+
+- **Idle RPG Mechanic**: Initially, an idle RPG game was proposed to keep users engaged. However, after careful consideration, it was decided to remove this feature. The idle mechanic could potentially lead to less active engagement from players as the game progresses on its own over time. We aim for a more interactive experience where players are actively involved in the gameplay. Therefore, this option has been moved to the graveyard.
 
 ## If this enhancement will be used infrequently, can it be worked around with a few lines of script?
 
