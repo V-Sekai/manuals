@@ -15,10 +15,10 @@ We aim to provide a compelling reason for users to stay engaged in the V-Sekai w
 ### Setting
 
 1. A well made sharp and cozy place.
-1. Static couch collider: A fixed location where players can interact or rest.
-2. Static bed without collider: A place for characters to rejuvenate without any physical interaction.
-3. Mirror that is off: A decorative element that can be turned on for various uses.
-4. Video player screen that is off: A feature that can be activated for entertainment or information.
+2. Static couch collider: A fixed location where players can interact or rest.
+3. Static bed without collider: A place for characters to rejuvenate without any physical interaction.
+4. Mirror that is off: A decorative element that can be turned on for various uses.
+5. Video player screen that is off: A feature that can be activated for entertainment or information.
 
 ### Story
 
@@ -28,7 +28,15 @@ We aim to provide a compelling reason for users to stay engaged in the V-Sekai w
 ### Systems
 
 1. RPG idle game with fake cash chests: Players can earn fake currency through continuous play, even when they are not actively engaged.
-2. Settings are not persisted past server restart
+2. Combat System: Players can choose between different types of weapons such as a sword or wand, or opt for defensive items like shields or healing items. This adds a strategic element to the game, especially in multiplayer mode.
+3. Stationary Attacked Target System: A combat mechanism enabling player engagement with immobile targets.
+
+### Development Limits
+
+1. Settings are not persisted past server restart.
+2. Limited number of weapon choices: To maintain balance in the game, the number of weapon choices can be limited.
+3. Cooldown period for using healing items: To prevent spamming of healing items, a cooldown period can be implemented.
+4. Limit on the number of fake cash chests that can be earned in a day: This can prevent exploitation of the system and ensure fair play.
 
 ## Implementation
 
