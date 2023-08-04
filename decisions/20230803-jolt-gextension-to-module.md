@@ -29,6 +29,7 @@ The implementation details will be decided upon acceptance of this proposal.
 - More control over the engine's core functionality.
 - Ability to experiment with soft physics.
 - Better integration with Godot's core systems.
+- Enable double precision support
 
 ## Negative Consequences
 
