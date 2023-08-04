@@ -25,7 +25,7 @@ Our game is set in a "Comfortable Cyberprep" realm. It merges sci-fi with ease, 
 ### Story
 
 1. Chill and hang with friends: The game will provide a relaxed environment where players can socialize.
-2. Play a game: Beyond socializing, players can engage in an idle RPG game for fun and rewards.
+2. Play a game: Beyond socializing, players can engage in an idle RPG game that is fun and rewarding.
 
 ### Systems
 
