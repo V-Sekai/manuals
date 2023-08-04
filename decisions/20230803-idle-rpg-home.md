@@ -17,9 +17,9 @@ We aim to provide a compelling reason for users to stay engaged in the V-Sekai w
 Our game is set in a "Comfortable Cyberprep" realm. It merges sci-fi with ease, where tech and humans harmoniously coexist. Players explore a future city where technology is part of life. The city glows with neon lights, holographic interfaces, and advanced AI, yet retains homeliness. Buildings radiate warmth, digital trees line streets changing hues with seasons, and cafes serve VR pods with coffee. This blend of high-tech and cozy creates a unique, thrilling yet soothing ambiance, ideal for our game.
 
 1. Static couch collider: A fixed location where players can interact or rest.
-2. Static bed without collider: A place for characters to rejuvenate without any physical interaction.
-3. Mirror that is off: A decorative element that can be turned on for various uses.
-4. Video player screen that is off: A feature that can be activated for entertainment or information.
+2. **Non-functional** Static bed without collider: A place for characters to rejuvenate without any physical interaction.
+3. **Non-functional** Mirror that is off: A decorative element that can be turned on for various uses.
+4. **Non-functional** Video player screen that is off: A feature that can be activated for entertainment or information.
 
 ### Story
 
