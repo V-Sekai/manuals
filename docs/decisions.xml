@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Sat, 05 Aug 2023 02:08:16 GMT</lastBuildDate>
+<lastBuildDate>Sat, 05 Aug 2023 17:00:52 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -64,7 +64,89 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sat, 05 Aug 2023 02:08:16 GMT</pubDate>
+  <pubDate>Sat, 05 Aug 2023 17:00:52 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230804-dokku.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="dokku-for-v-sekai-uro-backend-services-hosting-and-development" class="level1">
+<h1>Dokku for V-Sekai URO Backend Services Hosting and Development</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: Proposed</li>
+<li>Deciders: V-Sekai</li>
+<li>Tags: V-Sekai, Dokku, Backend, Hosting, Development</li>
+</ul>
+</section>
+<section id="context-and-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
+<p>V-Sekai is exploring options to improve its backend services hosting and development. The goal is to find a system that can offer scalability, ease of deployment, and efficient resource management.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>One potential solution could be <a href="http://dokku.viewdocs.io/dokku/">Dokku</a>, a Docker-powered mini-Heroku. Dokku provides a platform that could potentially meet our needs for building, deploying and managing applications effectively.</p>
+</section>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<p>If Dokku were chosen, the implementation would involve setting up a Dokku server, migrating existing services, and training the team on how to use Dokku for development and deployment.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Install Dokku</span></span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">wget</span> https://raw.githubusercontent.com/dokku/dokku/v0.21.4/bootstrap.sh<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> DOKKU_TAG=v0.21.4 bash bootstrap.sh</span></code></pre></div>
+</section>
+<section id="potential-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="potential-benefits">Potential Benefits</h2>
+<ul>
+<li><strong>Scalability</strong>: Dokku has features that could allow us to scale our applications based on demand.</li>
+<li><strong>Ease of Deployment</strong>: Dokku’s git-based deployment system might simplify the process of deploying new versions of our applications.</li>
+<li><strong>Resource Management</strong>: Dokku’s use of Docker containers could lead to more efficient use of system resources.</li>
+</ul>
+</section>
+<section id="potential-drawbacks" class="level2">
+<h2 class="anchored" data-anchor-id="potential-drawbacks">Potential Drawbacks</h2>
+<ul>
+<li>There might be a learning curve for the team members who are not familiar with Dokku or Docker.</li>
+<li>Migration of existing services to a new platform could require significant time and resources.</li>
+</ul>
+</section>
+<section id="option-graveyard" class="level2">
+<h2 class="anchored" data-anchor-id="option-graveyard">Option Graveyard</h2>
+<p>Other options considered include traditional VM-based hosting and other PaaS solutions like Heroku or AWS Elastic Beanstalk. These options have their own sets of advantages and disadvantages that need to be weighed against those of Dokku.</p>
+</section>
+<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
+<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
+<p>This depends on the specific requirements of our backend services. If the enhancement is fundamental to the hosting and development of our backend services, it may not be possible to work around it with a few lines of script.</p>
+</section>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
+<p>The choice of hosting and development environment is crucial for the efficiency and effectiveness of our operations. Whether Dokku or another solution is chosen, it will be important for us to maintain control over this aspect of our infrastructure.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+<li><a href="http://dokku.viewdocs.io/dokku/">Dokku Documentation</a></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230804-dokku.html</guid>
+  <pubDate>Sat, 05 Aug 2023 17:00:52 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -165,7 +247,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230803-subrepo-addon-management.html</guid>
-  <pubDate>Sat, 05 Aug 2023 02:08:16 GMT</pubDate>
+  <pubDate>Sat, 05 Aug 2023 17:00:52 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -248,7 +330,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230803-publish-vrm-to-assetlibrary.html</guid>
-  <pubDate>Sat, 05 Aug 2023 02:08:16 GMT</pubDate>
+  <pubDate>Sat, 05 Aug 2023 17:00:52 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -330,7 +412,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230803-jolt-gextension-to-module.html</guid>
-  <pubDate>Sat, 05 Aug 2023 02:08:16 GMT</pubDate>
+  <pubDate>Sat, 05 Aug 2023 17:00:52 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -435,7 +517,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230803-idle-rpg-home.html</guid>
-  <pubDate>Sat, 05 Aug 2023 02:08:16 GMT</pubDate>
+  <pubDate>Sat, 05 Aug 2023 17:00:52 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -506,7 +588,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230726-solve-renik-directly-rather-than-many-bone-ik.html</guid>
-  <pubDate>Sat, 05 Aug 2023 02:08:16 GMT</pubDate>
+  <pubDate>Sat, 05 Aug 2023 17:00:52 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -603,7 +685,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230719-pose-kusudama-constraints-in-vr.html</guid>
-  <pubDate>Sat, 05 Aug 2023 02:08:16 GMT</pubDate>
+  <pubDate>Sat, 05 Aug 2023 17:00:52 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -684,7 +766,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230719-dual-databases-cockroachdb-khepri.html</guid>
-  <pubDate>Sat, 05 Aug 2023 02:08:16 GMT</pubDate>
+  <pubDate>Sat, 05 Aug 2023 17:00:52 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -828,7 +910,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230716-enhancing-avatar-creation-process-02-advanced.html</guid>
-  <pubDate>Sat, 05 Aug 2023 02:08:16 GMT</pubDate>
+  <pubDate>Sat, 05 Aug 2023 17:00:52 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -971,7 +1053,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230716-enhancing-avatar-creation-process-01-regular.html</guid>
-  <pubDate>Sat, 05 Aug 2023 02:08:16 GMT</pubDate>
+  <pubDate>Sat, 05 Aug 2023 17:00:52 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1162,7 +1244,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230701-vsekai-broken-down-goals.html</guid>
-  <pubDate>Sat, 05 Aug 2023 02:08:16 GMT</pubDate>
+  <pubDate>Sat, 05 Aug 2023 17:00:52 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1278,7 +1360,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230630-vsekai-goal-meeting.html</guid>
-  <pubDate>Sat, 05 Aug 2023 02:08:16 GMT</pubDate>
+  <pubDate>Sat, 05 Aug 2023 17:00:52 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1367,7 +1449,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230626-godot-vrm1-addon.html</guid>
-  <pubDate>Sat, 05 Aug 2023 02:08:16 GMT</pubDate>
+  <pubDate>Sat, 05 Aug 2023 17:00:52 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1453,7 +1535,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230624-v-sekai-roadmap.html</guid>
-  <pubDate>Sat, 05 Aug 2023 02:08:16 GMT</pubDate>
+  <pubDate>Sat, 05 Aug 2023 17:00:52 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1625,7 +1707,7 @@ func apply_mixing_matrix(delay_outputs: Array) -&gt; Array:
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230623-fdn-reverb-solution.html</guid>
-  <pubDate>Sat, 05 Aug 2023 02:08:16 GMT</pubDate>
+  <pubDate>Sat, 05 Aug 2023 17:00:52 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1801,7 +1883,7 @@ var model = transformers.load_T5ForConditionalGeneration(model_name)</code></pre
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230620-t5-jsonformer-xstate.html</guid>
-  <pubDate>Sat, 05 Aug 2023 02:08:16 GMT</pubDate>
+  <pubDate>Sat, 05 Aug 2023 17:00:52 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1888,7 +1970,7 @@ var model = transformers.load_T5ForConditionalGeneration(model_name)</code></pre
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230620-doi-github.html</guid>
-  <pubDate>Sat, 05 Aug 2023 02:08:16 GMT</pubDate>
+  <pubDate>Sat, 05 Aug 2023 17:00:52 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1975,7 +2057,7 @@ var model = transformers.load_T5ForConditionalGeneration(model_name)</code></pre
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230619-move-cockroachdb-to-yugabyte.html</guid>
-  <pubDate>Sat, 05 Aug 2023 02:08:16 GMT</pubDate>
+  <pubDate>Sat, 05 Aug 2023 17:00:52 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2085,150 +2167,7 @@ var model = transformers.load_T5ForConditionalGeneration(model_name)</code></pre
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230619-membrane-framework-for-mesh-processing.html</guid>
-  <pubDate>Sat, 05 Aug 2023 02:08:16 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20230618-v-sekai-roadmap.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="v-sekai-roadmap-and-goals-2023-06-18" class="level1">
-<h1>V-Sekai Roadmap and Goals 2023-06-18</h1>
-<section id="metadata" class="level3">
-<h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
-<ul>
-<li>Status: superseded</li>
-<li>Deciders: V-Sekai, fire, guillefix</li>
-<li>Tags: V-Sekai, chatgpt4 summary,</li>
-</ul>
-</section>
-<section id="context-and-problem-statement" class="level3">
-<h3 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h3>
-<p>What is the V-Sekai Roadmap and Goals?</p>
-</section>
-<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level3">
-<h3 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h3>
-<p>The roadmap presented here is short-term.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level3">
-<h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h3>
-<p>By avoiding work on User Generated Content (UGC) and world building, we can prioritize the three main states in the roadmap: “World / Avatar Performance” (WAP), “Networking” (NET), and “UI/UX”. This allows the team to focus on the core aspects of V-Sekai and achieve the goals more efficiently.</p>
-</section>
-<section id="goals" class="level3">
-<h3 class="anchored" data-anchor-id="goals">Goals</h3>
-<section id="world-avatar-performance-wap" class="level4">
-<h4 class="anchored" data-anchor-id="world-avatar-performance-wap">World / Avatar Performance (WAP)</h4>
-<ul>
-<li>Timeline: Q2-Q3</li>
-<li>Implement light assets and asynchronous loading to reduce load time by 30%</li>
-<li>Utilize modern rendering techniques and high-performance libraries to achieve 60 FPS on mid-range devices</li>
-<li>Apply network optimization and low latency protocols for better performance, reducing latency by 50%</li>
-</ul>
-</section>
-<section id="networking-net" class="level4">
-<h4 class="anchored" data-anchor-id="networking-net">Networking (NET)</h4>
-<ul>
-<li>Timeline: Q2-Q3</li>
-<li>Use efficient data formats and optimized compression algorithms to reduce file size by 40%</li>
-<li>Ensure accurate IK points are respected, achieving 95% accuracy</li>
-<li>Explore multiple technologies and alternative solutions for continuous improvement, evaluating 3 new technologies per quarter</li>
-</ul>
-</section>
-<section id="first-time-user-experience-ftux" class="level4">
-<h4 class="anchored" data-anchor-id="first-time-user-experience-ftux">First Time User Experience (FTUX)</h4>
-<ul>
-<li>Timeline: Q3-Q4</li>
-<li>Optimize first-time user experience by improving the loading process, increasing user retention by 20%</li>
-</ul>
-</section>
-<section id="diagram" class="level4">
-<h4 class="anchored" data-anchor-id="diagram">Diagram</h4>
-<pre class="mermaid"><code>sequenceDiagram
-    participant V-Sekai
-    participant Player
-    participant Creator
-    participant Lyuma as "Lyuma (VRM1 - WAP)"
-
-    Note over Lyuma: WAP: World / Avatar Performance
-    Note over Lyuma: Timeline: Q2-Q3
-
-    Creator-&gt;&gt;V-Sekai: Implement light assets and asynchronous loading (reduce load time by 30%)
-    V-Sekai-&gt;&gt;Player: Utilize modern rendering techniques and high-performance libraries (achieve 60 FPS on mid-range devices)
-    Player-&gt;&gt;Creator: Apply network optimization and low latency protocols for better performance (reduce latency by 50%)
-
-    Note over Player, Creator: NET: Network Optimization Techniques
-    Note over Player, Creator: Timeline: Q2-Q3
-
-    Creator-&gt;&gt;V-Sekai: Use efficient data formats and optimized compression algorithms (reduce file size by 40%)
-    V-Sekai-&gt;&gt;Player: Ensure accurate IK points are respected (achieve 95% accuracy)
-    V-Sekai-&gt;&gt;Player: Explore multiple technologies and alternative solutions for continuous improvement (evaluate 3 new technologies per quarter)
-
-    %% Metrics
-    Note over Player, Creator: Metrics:
-    Player-&gt;&gt;Player: File size reduction
-    Player-&gt;&gt;Player: IK accuracy
-    Player-&gt;&gt;Player: Technologies evaluated
-</code></pre>
-<pre class="mermaid"><code>sequenceDiagram
-    participant Fire
-    participant Creator
-
-    Fire-&gt;&gt;Creator: Optimize first-time user experience by improving the loading process (increase user retention by 20%)
-
-    Note over Fire, Creator: FTUX: First Time User Experience
-    Note over Fire, Creator: Timeline: Q3-Q4
-
-    %% Metrics
-    Note over Fire, Creator: Metrics:
-    Fire-&gt;&gt;Fire: Load time reduction
-    Fire-&gt;&gt;Fire: Frame rate (FPS) for flat desktop
-    Fire-&gt;&gt;Fire: Frame rate (FPS) for VR desktop
-    Fire-&gt;&gt;Fire: Latency reduction
-    Fire-&gt;&gt;Fire: User retention rate</code></pre>
-</section>
-</section>
-<section id="positive-consequences" class="level3">
-<h3 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h3>
-<ul>
-<li>Easier creation of V-Sekai.</li>
-<li>Focused development on core aspects.</li>
-</ul>
-</section>
-<section id="negative-consequences" class="level3">
-<h3 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h3>
-<ul>
-<li>Potential overhead challenges.</li>
-</ul>
-</section>
-<section id="option-graveyard" class="level3">
-<h3 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h3>
-<ul>
-<li>Waiting for Godot Engine 4.2 instead of assisting with 4.1 features.</li>
-</ul>
-</section>
-<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level3">
-<h3 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h3>
-<p>No.&nbsp;This is a process.</p>
-</section>
-<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level3">
-<h3 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h3>
-<p>This is a core process for V-Sekai.</p>
-</section>
-<section id="references" class="level3">
-<h3 class="anchored" data-anchor-id="references">References</h3>
-<ul>
-<li><a href="https://v-sekai.org/">V-Sekai</a></li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20230618-v-sekai-roadmap.html</guid>
-  <pubDate>Sat, 05 Aug 2023 02:08:16 GMT</pubDate>
+  <pubDate>Sat, 05 Aug 2023 17:00:52 GMT</pubDate>
 </item>
 </channel>
 </rss>
