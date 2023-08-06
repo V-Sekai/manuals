@@ -1,4 +1,4 @@
-# This enhancement solves a V-Sekai limitation
+# This blueprint solves a V-Sekai limitation
 
 ## Metadata
 
@@ -6,23 +6,23 @@
 - Deciders: V-Sekai
 - Tags: V-Sekai
 
-## Context and Problem Statement
+## The Backdrop
 
-## Proposed Solution
+## The Challenge
 
-## Implementation
+## The Strategy
 
-## Positive Consequences
+## The Upside
 
-## Negative Consequences
+## The Downside
 
-## Option graveyard
+## The Road Not Taken
 
-## If this enhancement will be used infrequently, can it be worked around with a few lines of script?
+## The Infrequent Use Case
 
-## Is there a reason why this should be core and done by us?
+## The Core Reason
 
-## References
+## Further Reading
 
 - [V-Sekai](https://v-sekai.org/)
-<!-- - This article [is / or is not] assisted by AI. -->
+- This article is assisted by AI.
