@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Sun, 06 Aug 2023 15:20:34 GMT</lastBuildDate>
+<lastBuildDate>Sun, 06 Aug 2023 16:55:41 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -64,7 +64,120 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 06 Aug 2023 15:20:34 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 16:55:41 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230806-music-gen.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="generating-music-with-computer-assistance" class="level1">
+<h1>Generating Music with Computer Assistance</h1>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>The goal is to generate music with computer assistance.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>A potential solution is to use .ABC files, which have been successful in generating outputs with ChatGPT. These files also contain data in the header section like the key signature, tempo, and time signature, which can be added to the prompt.</p>
+<p>Alternatively, you could ask ChatGPT to write a script for you. For instance, you could request a Python script that writes the chromatic 7th intervals from C to B in eighth notes in a convenient output format like Lilypond or MusicXML.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Sample Python script to generate chromatic 7th intervals from C to B in eighth notes</span></span>
+<span id="cb1-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> generate_chromatic_seventh_intervals():</span>
+<span id="cb1-3">    notes <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'C'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'C#'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'D'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'D#'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'E'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'F'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'F#'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'G'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'G#'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'A'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'A#'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'B'</span>]</span>
+<span id="cb1-4">    intervals <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="cb1-5"></span>
+<span id="cb1-6">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> i <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(notes)):</span>
+<span id="cb1-7">        seventh_interval <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(notes)</span>
+<span id="cb1-8">        intervals.append((notes[i], notes[seventh_interval]))</span>
+<span id="cb1-9"></span>
+<span id="cb1-10">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> intervals</span>
+<span id="cb1-11"></span>
+<span id="cb1-12"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(generate_chromatic_seventh_intervals())</span></code></pre></div>
+<p>ChatGPT can also generate Lilypond syntax, which might be another viable solution.</p>
+</section>
+<section id="positive-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
+<ul>
+<li>This approach will allow for easier generation of music.</li>
+<li>It will bypass the limitations posed by the complex structure of MusicXML.</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
+<ul>
+<li>There may be some wrinkles when using ChatGPT to generate Lilypond syntax.</li>
+<li>Training small transformers to output syntactically correct .ABC files might pose a challenge.</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://gwern.net/gpt-2-music">Example .ABC files</a></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230806-music-gen.html</guid>
+  <pubDate>Sun, 06 Aug 2023 16:55:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -146,7 +259,7 @@ font-style: inherit;">sudo</span> DOKKU_TAG=v0.21.4 bash bootstrap.sh</span></co
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230804-dokku.html</guid>
-  <pubDate>Sun, 06 Aug 2023 15:20:34 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 16:55:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -247,7 +360,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230803-subrepo-addon-management.html</guid>
-  <pubDate>Sun, 06 Aug 2023 15:20:34 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 16:55:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -330,7 +443,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230803-publish-vrm-to-assetlibrary.html</guid>
-  <pubDate>Sun, 06 Aug 2023 15:20:34 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 16:55:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -412,7 +525,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230803-jolt-gextension-to-module.html</guid>
-  <pubDate>Sun, 06 Aug 2023 15:20:34 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 16:55:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -517,7 +630,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230803-idle-rpg-home.html</guid>
-  <pubDate>Sun, 06 Aug 2023 15:20:34 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 16:55:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -588,7 +701,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230726-solve-renik-directly-rather-than-many-bone-ik.html</guid>
-  <pubDate>Sun, 06 Aug 2023 15:20:34 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 16:55:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -685,7 +798,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230719-pose-kusudama-constraints-in-vr.html</guid>
-  <pubDate>Sun, 06 Aug 2023 15:20:34 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 16:55:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -766,7 +879,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230719-dual-databases-cockroachdb-khepri.html</guid>
-  <pubDate>Sun, 06 Aug 2023 15:20:34 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 16:55:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -910,7 +1023,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230716-enhancing-avatar-creation-process-02-advanced.html</guid>
-  <pubDate>Sun, 06 Aug 2023 15:20:34 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 16:55:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1053,7 +1166,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230716-enhancing-avatar-creation-process-01-regular.html</guid>
-  <pubDate>Sun, 06 Aug 2023 15:20:34 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 16:55:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1244,7 +1357,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230701-vsekai-broken-down-goals.html</guid>
-  <pubDate>Sun, 06 Aug 2023 15:20:34 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 16:55:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1360,7 +1473,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230630-vsekai-goal-meeting.html</guid>
-  <pubDate>Sun, 06 Aug 2023 15:20:34 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 16:55:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1449,7 +1562,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230626-godot-vrm1-addon.html</guid>
-  <pubDate>Sun, 06 Aug 2023 15:20:34 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 16:55:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1535,7 +1648,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230624-v-sekai-roadmap.html</guid>
-  <pubDate>Sun, 06 Aug 2023 15:20:34 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 16:55:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1707,7 +1820,7 @@ func apply_mixing_matrix(delay_outputs: Array) -&gt; Array:
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230623-fdn-reverb-solution.html</guid>
-  <pubDate>Sun, 06 Aug 2023 15:20:34 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 16:55:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1883,7 +1996,7 @@ var model = transformers.load_T5ForConditionalGeneration(model_name)</code></pre
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230620-t5-jsonformer-xstate.html</guid>
-  <pubDate>Sun, 06 Aug 2023 15:20:34 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 16:55:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1970,7 +2083,7 @@ var model = transformers.load_T5ForConditionalGeneration(model_name)</code></pre
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230620-doi-github.html</guid>
-  <pubDate>Sun, 06 Aug 2023 15:20:34 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 16:55:41 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2057,117 +2170,7 @@ var model = transformers.load_T5ForConditionalGeneration(model_name)</code></pre
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230619-move-cockroachdb-to-yugabyte.html</guid>
-  <pubDate>Sun, 06 Aug 2023 15:20:34 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20230619-membrane-framework-for-mesh-processing.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="networked-procedural-generation-as-a-sidecar-to-the-godot-engine-server" class="level1">
-<h1>Networked Procedural Generation as a Sidecar to the Godot Engine Server</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li>Status: proposed</li>
-<li>Deciders: V-Sekai, fire</li>
-<li>Tags: V-Sekai, Chatbot GPT4 assistance</li>
-</ul>
-</section>
-<section id="context-and-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
-<p>Enable creation of more dynamic and engaging environments within V-Sekai.</p>
-</section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>V-Sekai, an open-source virtual reality platform, aims to deliver a user-friendly experience for the VR community. To boost its functionality and compatibility with other tools, we propose integrating networked procedural generation as a sidecar to the Godot engine server, allowing for more dynamic and immersive environments in V-Sekai.</p>
-<p>To further address V-Sekai’s limitations, we suggest incorporating the Membrane Framework along with other relevant technologies such as Godot Engine, OpenMfx Support, Elixir Phoenix, and Elixir Nx. This comprehensive integration will not only enhance V-Sekai’s capabilities but also increase its versatility across various use cases.</p>
-<p>The implementation involves connecting V-Sekai with the components mentioned in the Membrane Framework diagram below:</p>
-<pre class="mermaid"><code>sequenceDiagram
-  participant MembraneFramework
-  participant WebAndGodotEngineAndBlenderClient
-  participant ElixirNx
-  participant AIMLFramework
-  participant Yugabyte
-
-  rect rgb(240, 248, 255)
-    note over MembraneFramework, Yugabyte: Toggle Actions
-    MembraneFramework-&gt;&gt;WebAndGodotEngineAndBlenderClient: TOGGLE_GAME_ENGINE_AND_CLIENTS
-    MembraneFramework-&gt;&gt;ElixirNx: ACCELERATE_MEMBRANE_FRAMEWORK
-    MembraneFramework-&gt;&gt;AIMLFramework: TOGGLE_AIML_FRAMEWORK
-    MembraneFramework-&gt;&gt;Yugabyte: TOGGLE_YUGABYTE
-  end
-
-  box "Source" #CCFFCC
-    participant MembraneFramework
-    participant WebAndGodotEngineAndBlenderClient
-  end
-
-  box "Filter" #FFFFCC
-    participant ElixirNx
-    participant AIMLFramework
-  end
-
-  box "Sink &amp; Source of Data" #FFCCCC
-    participant Yugabyte
-  end</code></pre>
-<section id="using-read-replicas" class="level3">
-<h3 class="anchored" data-anchor-id="using-read-replicas">Using Read Replicas</h3>
-<p>We propose using read replicas for applications needing single-zone writes and multi-region reads. Benefits include:</p>
-<ul>
-<li><strong>Resilience</strong>: Zone-level resilience with primary cluster nodes across multiple zones.</li>
-<li><strong>Consistency</strong>: Timeline consistency in replica clusters, better than eventual consistency.</li>
-<li><strong>Latency</strong>: Quick reads from primary and replica clusters; write latency depends on client-primary cluster distance.</li>
-</ul>
-</section>
-</section>
-<section id="positive-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
-<ul>
-<li>Improved functionality and versatility of V-Sekai</li>
-<li>Enhanced compatibility with other tools and platforms</li>
-<li>Greater potential for collaboration and community involvement</li>
-</ul>
-</section>
-<section id="negative-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
-<ul>
-<li>Increased complexity in implementation and maintenance</li>
-<li>Potential performance overhead due to integration of multiple components</li>
-</ul>
-</section>
-<section id="option-graveyard" class="level2">
-<h2 class="anchored" data-anchor-id="option-graveyard">Option Graveyard</h2>
-<ol type="1">
-<li><p><strong>Standalone procedural generation</strong>: Implementing procedural generation as a standalone feature without integrating it with the Godot Engine server. This option was discarded because it would not provide the same level of compatibility and versatility as the proposed solution.</p></li>
-<li><p><strong>Using pre-built assets</strong>: Relying on pre-built assets for creating environments instead of implementing networked procedural generation. This option was discarded due to the limited flexibility and potential for repetitive content, which could negatively impact user engagement.</p></li>
-<li><p><strong>Third-party procedural generation tools</strong>: Integrating third-party procedural generation tools instead of developing a custom solution. This option was discarded because it may not offer the same level of control and customization required for V-Sekai’s specific needs.</p></li>
-<li><p><strong>Static environment design</strong>: Focusing on static environment design rather than dynamic, procedurally generated content. This option was discarded because it would not provide the desired level of immersion and interactivity for V-Sekai users.</p></li>
-</ol>
-</section>
-<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
-<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
-<p>No, the proposed solution involves integrating multiple technologies and cannot be achieved with a simple script workaround.</p>
-</section>
-<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
-<p>Yes, addressing the limitations of V-Sekai is crucial for its success and adoption within the VR community. By integrating the proposed technologies, we can ensure that V-Sekai remains competitive and relevant in the rapidly evolving VR landscape.</p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ul>
-<li><a href="https://v-sekai.org/">V-Sekai</a></li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20230619-membrane-framework-for-mesh-processing.html</guid>
-  <pubDate>Sun, 06 Aug 2023 15:20:34 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 16:55:41 GMT</pubDate>
 </item>
 </channel>
 </rss>
