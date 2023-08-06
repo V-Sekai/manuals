@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Sun, 06 Aug 2023 16:56:28 GMT</lastBuildDate>
+<lastBuildDate>Sun, 06 Aug 2023 17:02:45 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -64,7 +64,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 06 Aug 2023 16:56:28 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 17:02:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -83,21 +83,23 @@
 <li>Tags: music, generation, AI, GPT-3, Python</li>
 </ul>
 </section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>In the 21st century, technology has become an integral part of our lives. It has also made significant strides in the field of music. One such advancement is the use of artificial intelligence (AI) to generate music. This document proposes a solution for generating music with computer assistance.</p>
+</section>
 <section id="problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>The goal is to generate music with computer assistance.</p>
+<p>The goal is to generate music with the help of computer programs.</p>
 </section>
 <section id="proposed-solution" class="level2">
 <h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>A potential solution is to use .ABC files, which have been successful in generating outputs with ChatGPT. These files also contain data in the header section like the key signature, tempo, and time signature, which can be added to the prompt.</p>
-<p>Alternatively, you could ask ChatGPT to write a script for you. For instance, you could request a Python script that writes the chromatic 7th intervals from C to B in eighth notes in a convenient output format like Lilypond or MusicXML.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Sample Python script to generate chromatic 7th intervals from C to B in eighth notes</span></span>
-<span id="cb1-2"><span class="kw" style="color: #003B4F;
+<p>One potential solution is to use .ABC files. These files have been successful in generating outputs with AI models like GPT-3. The .ABC files contain data in the header section like the key signature, tempo, and time signature, which can be added to the prompt.</p>
+<p>Alternatively, we could use AI models to write a script for us. For instance, we could request a Python script that writes the chromatic 7th intervals from C to B in eighth notes. The output format could be something convenient like Lilypond or MusicXML.</p>
+<p>Here’s a sample Python script:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">def</span> generate_chromatic_seventh_intervals():</span>
-<span id="cb1-3">    notes <span class="op" style="color: #5E5E5E;
+<span id="cb1-2">    notes <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
 background-color: null;
@@ -124,11 +126,11 @@ background-color: null;
 font-style: inherit;">'A#'</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'B'</span>]</span>
-<span id="cb1-4">    intervals <span class="op" style="color: #5E5E5E;
+<span id="cb1-3">    intervals <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> []</span>
-<span id="cb1-5"></span>
-<span id="cb1-6">    <span class="cf" style="color: #003B4F;
+<span id="cb1-4"></span>
+<span id="cb1-5">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">for</span> i <span class="kw" style="color: #003B4F;
 background-color: null;
@@ -137,7 +139,7 @@ background-color: null;
 font-style: inherit;">range</span>(<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">len</span>(notes)):</span>
-<span id="cb1-7">        seventh_interval <span class="op" style="color: #5E5E5E;
+<span id="cb1-6">        seventh_interval <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> (i <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -148,16 +150,42 @@ background-color: null;
 font-style: inherit;">%</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">len</span>(notes)</span>
-<span id="cb1-8">        intervals.append((notes[i], notes[seventh_interval]))</span>
-<span id="cb1-9"></span>
-<span id="cb1-10">    <span class="cf" style="color: #003B4F;
+<span id="cb1-7">        intervals.append((notes[i], notes[seventh_interval]))</span>
+<span id="cb1-8"></span>
+<span id="cb1-9">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">return</span> intervals</span>
-<span id="cb1-11"></span>
-<span id="cb1-12"><span class="bu" style="color: null;
+<span id="cb1-10"></span>
+<span id="cb1-11"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(generate_chromatic_seventh_intervals())</span></code></pre></div>
-<p>ChatGPT can also generate Lilypond syntax, which might be another viable solution.</p>
+<p>Another viable solution might be to use AI models to generate Lilypond syntax. Lilypond is a powerful and flexible tool for engraving tasks of all kinds, for example sheet music, complex notation, vocal music, etc. Here is an example of a simple Lilypond syntax:</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode lilypond code-with-copy"><code class="sourceCode lilypond"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">\relative c'</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb2-2">  c<span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span> d e f <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">|</span></span>
+<span id="cb2-3">  g a b c <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">|</span></span>
+<span id="cb2-4"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div>
+<p>This code will generate a sequence of eighth notes from C to C.</p>
+</section>
+<section id="discarded-options" class="level2">
+<h2 class="anchored" data-anchor-id="discarded-options">Discarded Options</h2>
+<p>During the process of finding a solution, several options were considered and discarded for various reasons:</p>
+<ol type="1">
+<li><p><strong>Using MIDI files:</strong> While MIDI files are commonly used for music generation, they were discarded due to their complexity and the difficulty in generating them programmatically.</p></li>
+<li><p><strong>Using MusicXML:</strong> Although MusicXML is a comprehensive and widely supported format, it was discarded due to its verbose and complex structure, which makes it difficult to generate programmatically.</p></li>
+<li><p><strong>Using other music notation software:</strong> Other music notation software like Finale and Sibelius were considered, but discarded due to their proprietary nature and lack of support for programmatic generation of music.</p></li>
+</ol>
 </section>
 <section id="positive-consequences" class="level2">
 <h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
@@ -169,7 +197,7 @@ font-style: inherit;">print</span>(generate_chromatic_seventh_intervals())</span
 <section id="negative-consequences" class="level2">
 <h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
 <ul>
-<li>There may be some wrinkles when using ChatGPT to generate Lilypond syntax.</li>
+<li>There may be some challenges when using AI models to generate Lilypond syntax.</li>
 <li>Training small transformers to output syntactically correct .ABC files might pose a challenge.</li>
 </ul>
 </section>
@@ -177,6 +205,7 @@ font-style: inherit;">print</span>(generate_chromatic_seventh_intervals())</span
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <ul>
 <li><a href="https://gwern.net/gpt-2-music">Example .ABC files</a></li>
+<li><a href="http://lilypond.org/doc/v2.18/Documentation/notation/index">Lilypond Notation Reference</a></li>
 </ul>
 
 
@@ -185,7 +214,7 @@ font-style: inherit;">print</span>(generate_chromatic_seventh_intervals())</span
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230806-music-gen.html</guid>
-  <pubDate>Sun, 06 Aug 2023 16:56:28 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 17:02:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -267,7 +296,7 @@ font-style: inherit;">sudo</span> DOKKU_TAG=v0.21.4 bash bootstrap.sh</span></co
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230804-dokku.html</guid>
-  <pubDate>Sun, 06 Aug 2023 16:56:28 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 17:02:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -368,7 +397,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230803-subrepo-addon-management.html</guid>
-  <pubDate>Sun, 06 Aug 2023 16:56:28 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 17:02:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -451,7 +480,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230803-publish-vrm-to-assetlibrary.html</guid>
-  <pubDate>Sun, 06 Aug 2023 16:56:28 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 17:02:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -533,7 +562,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230803-jolt-gextension-to-module.html</guid>
-  <pubDate>Sun, 06 Aug 2023 16:56:28 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 17:02:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -638,7 +667,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230803-idle-rpg-home.html</guid>
-  <pubDate>Sun, 06 Aug 2023 16:56:28 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 17:02:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -709,7 +738,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230726-solve-renik-directly-rather-than-many-bone-ik.html</guid>
-  <pubDate>Sun, 06 Aug 2023 16:56:28 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 17:02:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -806,7 +835,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230719-pose-kusudama-constraints-in-vr.html</guid>
-  <pubDate>Sun, 06 Aug 2023 16:56:28 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 17:02:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -887,7 +916,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230719-dual-databases-cockroachdb-khepri.html</guid>
-  <pubDate>Sun, 06 Aug 2023 16:56:28 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 17:02:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1031,7 +1060,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230716-enhancing-avatar-creation-process-02-advanced.html</guid>
-  <pubDate>Sun, 06 Aug 2023 16:56:28 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 17:02:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1174,7 +1203,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230716-enhancing-avatar-creation-process-01-regular.html</guid>
-  <pubDate>Sun, 06 Aug 2023 16:56:28 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 17:02:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1365,7 +1394,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230701-vsekai-broken-down-goals.html</guid>
-  <pubDate>Sun, 06 Aug 2023 16:56:28 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 17:02:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1481,7 +1510,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230630-vsekai-goal-meeting.html</guid>
-  <pubDate>Sun, 06 Aug 2023 16:56:28 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 17:02:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1570,7 +1599,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230626-godot-vrm1-addon.html</guid>
-  <pubDate>Sun, 06 Aug 2023 16:56:28 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 17:02:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1656,7 +1685,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230624-v-sekai-roadmap.html</guid>
-  <pubDate>Sun, 06 Aug 2023 16:56:28 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 17:02:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1828,7 +1857,7 @@ func apply_mixing_matrix(delay_outputs: Array) -&gt; Array:
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230623-fdn-reverb-solution.html</guid>
-  <pubDate>Sun, 06 Aug 2023 16:56:28 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 17:02:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2004,7 +2033,7 @@ var model = transformers.load_T5ForConditionalGeneration(model_name)</code></pre
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230620-t5-jsonformer-xstate.html</guid>
-  <pubDate>Sun, 06 Aug 2023 16:56:28 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 17:02:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2091,7 +2120,7 @@ var model = transformers.load_T5ForConditionalGeneration(model_name)</code></pre
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230620-doi-github.html</guid>
-  <pubDate>Sun, 06 Aug 2023 16:56:28 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 17:02:45 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2178,7 +2207,7 @@ var model = transformers.load_T5ForConditionalGeneration(model_name)</code></pre
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230619-move-cockroachdb-to-yugabyte.html</guid>
-  <pubDate>Sun, 06 Aug 2023 16:56:28 GMT</pubDate>
+  <pubDate>Sun, 06 Aug 2023 17:02:45 GMT</pubDate>
 </item>
 </channel>
 </rss>

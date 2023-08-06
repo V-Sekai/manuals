@@ -4904,7 +4904,7 @@
     "href": "decisions/20230806-music-gen.html",
     "title": "Generating Music with Computer Assistance",
     "section": "",
-    "text": "Status: proposed\nDeciders: V-Sekai\nTags: music, generation, AI, GPT-3, Python\n\n\n\n\nThe goal is to generate music with computer assistance.\n\n\n\nA potential solution is to use .ABC files, which have been successful in generating outputs with ChatGPT. These files also contain data in the header section like the key signature, tempo, and time signature, which can be added to the prompt.\nAlternatively, you could ask ChatGPT to write a script for you. For instance, you could request a Python script that writes the chromatic 7th intervals from C to B in eighth notes in a convenient output format like Lilypond or MusicXML.\n# Sample Python script to generate chromatic 7th intervals from C to B in eighth notes\ndef generate_chromatic_seventh_intervals():\n    notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']\n    intervals = []\n\n    for i in range(len(notes)):\n        seventh_interval = (i + 10) % len(notes)\n        intervals.append((notes[i], notes[seventh_interval]))\n\n    return intervals\n\nprint(generate_chromatic_seventh_intervals())\nChatGPT can also generate Lilypond syntax, which might be another viable solution.\n\n\n\n\nThis approach will allow for easier generation of music.\nIt will bypass the limitations posed by the complex structure of MusicXML.\n\n\n\n\n\nThere may be some wrinkles when using ChatGPT to generate Lilypond syntax.\nTraining small transformers to output syntactically correct .ABC files might pose a challenge.\n\n\n\n\n\nExample .ABC files"
+    "text": "Status: proposed\nDeciders: V-Sekai\nTags: music, generation, AI, GPT-3, Python\n\n\n\n\nIn the 21st century, technology has become an integral part of our lives. It has also made significant strides in the field of music. One such advancement is the use of artificial intelligence (AI) to generate music. This document proposes a solution for generating music with computer assistance.\n\n\n\nThe goal is to generate music with the help of computer programs.\n\n\n\nOne potential solution is to use .ABC files. These files have been successful in generating outputs with AI models like GPT-3. The .ABC files contain data in the header section like the key signature, tempo, and time signature, which can be added to the prompt.\nAlternatively, we could use AI models to write a script for us. For instance, we could request a Python script that writes the chromatic 7th intervals from C to B in eighth notes. The output format could be something convenient like Lilypond or MusicXML.\nHere’s a sample Python script:\ndef generate_chromatic_seventh_intervals():\n    notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']\n    intervals = []\n\n    for i in range(len(notes)):\n        seventh_interval = (i + 10) % len(notes)\n        intervals.append((notes[i], notes[seventh_interval]))\n\n    return intervals\n\nprint(generate_chromatic_seventh_intervals())\nAnother viable solution might be to use AI models to generate Lilypond syntax. Lilypond is a powerful and flexible tool for engraving tasks of all kinds, for example sheet music, complex notation, vocal music, etc. Here is an example of a simple Lilypond syntax:\n\\relative c' {\n  c4 d e f |\n  g a b c |\n}\nThis code will generate a sequence of eighth notes from C to C.\n\n\n\nDuring the process of finding a solution, several options were considered and discarded for various reasons:\n\nUsing MIDI files: While MIDI files are commonly used for music generation, they were discarded due to their complexity and the difficulty in generating them programmatically.\nUsing MusicXML: Although MusicXML is a comprehensive and widely supported format, it was discarded due to its verbose and complex structure, which makes it difficult to generate programmatically.\nUsing other music notation software: Other music notation software like Finale and Sibelius were considered, but discarded due to their proprietary nature and lack of support for programmatic generation of music.\n\n\n\n\n\nThis approach will allow for easier generation of music.\nIt will bypass the limitations posed by the complex structure of MusicXML.\n\n\n\n\n\nThere may be some challenges when using AI models to generate Lilypond syntax.\nTraining small transformers to output syntactically correct .ABC files might pose a challenge.\n\n\n\n\n\nExample .ABC files\nLilypond Notation Reference"
   },
   {
     "objectID": "decisions/20230806-music-gen.html#metadata",
@@ -4914,18 +4914,32 @@
     "text": "Status: proposed\nDeciders: V-Sekai\nTags: music, generation, AI, GPT-3, Python"
   },
   {
+    "objectID": "decisions/20230806-music-gen.html#context",
+    "href": "decisions/20230806-music-gen.html#context",
+    "title": "Generating Music with Computer Assistance",
+    "section": "",
+    "text": "In the 21st century, technology has become an integral part of our lives. It has also made significant strides in the field of music. One such advancement is the use of artificial intelligence (AI) to generate music. This document proposes a solution for generating music with computer assistance."
+  },
+  {
     "objectID": "decisions/20230806-music-gen.html#problem-statement",
     "href": "decisions/20230806-music-gen.html#problem-statement",
     "title": "Generating Music with Computer Assistance",
     "section": "",
-    "text": "The goal is to generate music with computer assistance."
+    "text": "The goal is to generate music with the help of computer programs."
   },
   {
     "objectID": "decisions/20230806-music-gen.html#proposed-solution",
     "href": "decisions/20230806-music-gen.html#proposed-solution",
     "title": "Generating Music with Computer Assistance",
     "section": "",
-    "text": "A potential solution is to use .ABC files, which have been successful in generating outputs with ChatGPT. These files also contain data in the header section like the key signature, tempo, and time signature, which can be added to the prompt.\nAlternatively, you could ask ChatGPT to write a script for you. For instance, you could request a Python script that writes the chromatic 7th intervals from C to B in eighth notes in a convenient output format like Lilypond or MusicXML.\n# Sample Python script to generate chromatic 7th intervals from C to B in eighth notes\ndef generate_chromatic_seventh_intervals():\n    notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']\n    intervals = []\n\n    for i in range(len(notes)):\n        seventh_interval = (i + 10) % len(notes)\n        intervals.append((notes[i], notes[seventh_interval]))\n\n    return intervals\n\nprint(generate_chromatic_seventh_intervals())\nChatGPT can also generate Lilypond syntax, which might be another viable solution."
+    "text": "One potential solution is to use .ABC files. These files have been successful in generating outputs with AI models like GPT-3. The .ABC files contain data in the header section like the key signature, tempo, and time signature, which can be added to the prompt.\nAlternatively, we could use AI models to write a script for us. For instance, we could request a Python script that writes the chromatic 7th intervals from C to B in eighth notes. The output format could be something convenient like Lilypond or MusicXML.\nHere’s a sample Python script:\ndef generate_chromatic_seventh_intervals():\n    notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']\n    intervals = []\n\n    for i in range(len(notes)):\n        seventh_interval = (i + 10) % len(notes)\n        intervals.append((notes[i], notes[seventh_interval]))\n\n    return intervals\n\nprint(generate_chromatic_seventh_intervals())\nAnother viable solution might be to use AI models to generate Lilypond syntax. Lilypond is a powerful and flexible tool for engraving tasks of all kinds, for example sheet music, complex notation, vocal music, etc. Here is an example of a simple Lilypond syntax:\n\\relative c' {\n  c4 d e f |\n  g a b c |\n}\nThis code will generate a sequence of eighth notes from C to C."
+  },
+  {
+    "objectID": "decisions/20230806-music-gen.html#discarded-options",
+    "href": "decisions/20230806-music-gen.html#discarded-options",
+    "title": "Generating Music with Computer Assistance",
+    "section": "",
+    "text": "During the process of finding a solution, several options were considered and discarded for various reasons:\n\nUsing MIDI files: While MIDI files are commonly used for music generation, they were discarded due to their complexity and the difficulty in generating them programmatically.\nUsing MusicXML: Although MusicXML is a comprehensive and widely supported format, it was discarded due to its verbose and complex structure, which makes it difficult to generate programmatically.\nUsing other music notation software: Other music notation software like Finale and Sibelius were considered, but discarded due to their proprietary nature and lack of support for programmatic generation of music."
   },
   {
     "objectID": "decisions/20230806-music-gen.html#positive-consequences",
@@ -4939,14 +4953,14 @@
     "href": "decisions/20230806-music-gen.html#negative-consequences",
     "title": "Generating Music with Computer Assistance",
     "section": "",
-    "text": "There may be some wrinkles when using ChatGPT to generate Lilypond syntax.\nTraining small transformers to output syntactically correct .ABC files might pose a challenge."
+    "text": "There may be some challenges when using AI models to generate Lilypond syntax.\nTraining small transformers to output syntactically correct .ABC files might pose a challenge."
   },
   {
     "objectID": "decisions/20230806-music-gen.html#references",
     "href": "decisions/20230806-music-gen.html#references",
     "title": "Generating Music with Computer Assistance",
     "section": "",
-    "text": "Example .ABC files"
+    "text": "Example .ABC files\nLilypond Notation Reference"
   },
   {
     "objectID": "decisions/20220601-lightweight-quality-avatars.html",

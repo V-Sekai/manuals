@@ -151,8 +151,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#generating-music-with-computer-assistance" id="toc-generating-music-with-computer-assistance" class="nav-link active" data-scroll-target="#generating-music-with-computer-assistance">Generating Music with Computer Assistance</a>
   <ul class="collapse">
   <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
   <li><a href="#problem-statement" id="toc-problem-statement" class="nav-link" data-scroll-target="#problem-statement">Problem Statement</a></li>
   <li><a href="#proposed-solution" id="toc-proposed-solution" class="nav-link" data-scroll-target="#proposed-solution">Proposed Solution</a></li>
+  <li><a href="#discarded-options" id="toc-discarded-options" class="nav-link" data-scroll-target="#discarded-options">Discarded Options</a></li>
   <li><a href="#positive-consequences" id="toc-positive-consequences" class="nav-link" data-scroll-target="#positive-consequences">Positive Consequences</a></li>
   <li><a href="#negative-consequences" id="toc-negative-consequences" class="nav-link" data-scroll-target="#negative-consequences">Negative Consequences</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
@@ -175,27 +177,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Tags: music, generation, AI, GPT-3, Python</li>
 </ul>
 </section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>In the 21st century, technology has become an integral part of our lives. It has also made significant strides in the field of music. One such advancement is the use of artificial intelligence (AI) to generate music. This document proposes a solution for generating music with computer assistance.</p>
+</section>
 <section id="problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>The goal is to generate music with computer assistance.</p>
+<p>The goal is to generate music with the help of computer programs.</p>
 </section>
 <section id="proposed-solution" class="level2">
 <h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>A potential solution is to use .ABC files, which have been successful in generating outputs with ChatGPT. These files also contain data in the header section like the key signature, tempo, and time signature, which can be added to the prompt.</p>
-<p>Alternatively, you could ask ChatGPT to write a script for you. For instance, you could request a Python script that writes the chromatic 7th intervals from C to B in eighth notes in a convenient output format like Lilypond or MusicXML.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample Python script to generate chromatic 7th intervals from C to B in eighth notes</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_chromatic_seventh_intervals():</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    notes <span class="op">=</span> [<span class="st">'C'</span>, <span class="st">'C#'</span>, <span class="st">'D'</span>, <span class="st">'D#'</span>, <span class="st">'E'</span>, <span class="st">'F'</span>, <span class="st">'F#'</span>, <span class="st">'G'</span>, <span class="st">'G#'</span>, <span class="st">'A'</span>, <span class="st">'A#'</span>, <span class="st">'B'</span>]</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    intervals <span class="op">=</span> []</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(notes)):</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        seventh_interval <span class="op">=</span> (i <span class="op">+</span> <span class="dv">10</span>) <span class="op">%</span> <span class="bu">len</span>(notes)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        intervals.append((notes[i], notes[seventh_interval]))</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> intervals</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(generate_chromatic_seventh_intervals())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>ChatGPT can also generate Lilypond syntax, which might be another viable solution.</p>
+<p>One potential solution is to use .ABC files. These files have been successful in generating outputs with AI models like GPT-3. The .ABC files contain data in the header section like the key signature, tempo, and time signature, which can be added to the prompt.</p>
+<p>Alternatively, we could use AI models to write a script for us. For instance, we could request a Python script that writes the chromatic 7th intervals from C to B in eighth notes. The output format could be something convenient like Lilypond or MusicXML.</p>
+<p>Here’s a sample Python script:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_chromatic_seventh_intervals():</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    notes <span class="op">=</span> [<span class="st">'C'</span>, <span class="st">'C#'</span>, <span class="st">'D'</span>, <span class="st">'D#'</span>, <span class="st">'E'</span>, <span class="st">'F'</span>, <span class="st">'F#'</span>, <span class="st">'G'</span>, <span class="st">'G#'</span>, <span class="st">'A'</span>, <span class="st">'A#'</span>, <span class="st">'B'</span>]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    intervals <span class="op">=</span> []</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(notes)):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        seventh_interval <span class="op">=</span> (i <span class="op">+</span> <span class="dv">10</span>) <span class="op">%</span> <span class="bu">len</span>(notes)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        intervals.append((notes[i], notes[seventh_interval]))</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> intervals</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(generate_chromatic_seventh_intervals())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Another viable solution might be to use AI models to generate Lilypond syntax. Lilypond is a powerful and flexible tool for engraving tasks of all kinds, for example sheet music, complex notation, vocal music, etc. Here is an example of a simple Lilypond syntax:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode lilypond code-with-copy"><code class="sourceCode lilypond"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\relative c'</span> <span class="kw">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  c<span class="dt">4</span> d e f <span class="dv">|</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  g a b c <span class="dv">|</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This code will generate a sequence of eighth notes from C to C.</p>
+</section>
+<section id="discarded-options" class="level2">
+<h2 class="anchored" data-anchor-id="discarded-options">Discarded Options</h2>
+<p>During the process of finding a solution, several options were considered and discarded for various reasons:</p>
+<ol type="1">
+<li><p><strong>Using MIDI files:</strong> While MIDI files are commonly used for music generation, they were discarded due to their complexity and the difficulty in generating them programmatically.</p></li>
+<li><p><strong>Using MusicXML:</strong> Although MusicXML is a comprehensive and widely supported format, it was discarded due to its verbose and complex structure, which makes it difficult to generate programmatically.</p></li>
+<li><p><strong>Using other music notation software:</strong> Other music notation software like Finale and Sibelius were considered, but discarded due to their proprietary nature and lack of support for programmatic generation of music.</p></li>
+</ol>
 </section>
 <section id="positive-consequences" class="level2">
 <h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
@@ -207,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="negative-consequences" class="level2">
 <h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
 <ul>
-<li>There may be some wrinkles when using ChatGPT to generate Lilypond syntax.</li>
+<li>There may be some challenges when using AI models to generate Lilypond syntax.</li>
 <li>Training small transformers to output syntactically correct .ABC files might pose a challenge.</li>
 </ul>
 </section>
@@ -215,6 +235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <ul>
 <li><a href="https://gwern.net/gpt-2-music">Example .ABC files</a></li>
+<li><a href="http://lilypond.org/doc/v2.18/Documentation/notation/index">Lilypond Notation Reference</a></li>
 </ul>
 
 
