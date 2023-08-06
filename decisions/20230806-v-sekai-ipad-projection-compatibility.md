@@ -38,7 +38,7 @@ Navmesh and 3D Navigation Points were considered but not chosen due to their ina
 
 While Navmesh and 3D Navigation Points provide an intuitive user interface for navigating 3D spaces, they might not translate well to continuous interaction on touchscreens, which is often expected by users on such devices.
 
-## The Core Reason
+## In Core and Done by Us? 
 
 The core reason for choosing the virtual joystick option is its ability to ensure compatibility with iPads and large projector screens, and its cost-effectiveness.
 
