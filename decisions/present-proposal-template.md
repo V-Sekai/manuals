@@ -1,4 +1,4 @@
-# This blueprint solves a V-Sekai limitation
+# This decision solves a V-Sekai limitation
 
 ## Metadata
 
