@@ -1,4 +1,4 @@
-# This enhancement solves a metaverse usage limitation
+# This guide solves a metaverse usage limitation
 
 ## Metadata
 
