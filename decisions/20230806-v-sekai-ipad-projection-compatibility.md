@@ -8,7 +8,7 @@
 
 ## The Backdrop
 
-We are developing a VR game that needs to be compatible with both iPads and large projector screens for presentations.
+We are developing a VR game that needs to be compatible with both iPads and large projector screens for presentations. These devices represent the flat mode devices which are used by 99% of the global computer user population. Our goal is to make our VR game accessible and enjoyable for this vast majority of users.
 
 ## The Challenge
 
@@ -40,7 +40,7 @@ While Navmesh and 3D Navigation Points provide an intuitive user interface for n
 
 ## In Core and Done by Us? 
 
-The core reason for choosing the virtual joystick option is its ability to ensure compatibility with iPads and large projector screens, and its cost-effectiveness.
+Yes, the decision to implement a virtual joystick for touchscreen devices was made by us, V-Sekai. This decision is at the core of our strategy to ensure compatibility with iPads and large projector screens while also being cost-effective.
 
 ## Further Reading
 
