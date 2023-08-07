@@ -1,4 +1,4 @@
-# V-Sekai Flat Screen Compatibility with VR
+# V-Sekai Navigation Compatibility with VR
 
 ## Metadata
 
