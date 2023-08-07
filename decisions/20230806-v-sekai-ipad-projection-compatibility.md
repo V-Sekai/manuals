@@ -8,7 +8,7 @@
 
 ## The Backdrop
 
-We are developing a VR game that MUST be compatible with a wide range of devices including iPads, tablets, computer desktops, laptops, phones, and large projector screens for presentations. These devices represent the flat mode devices which are used by most of the global computer user population. Our goal is to make our VR game accessible and enjoyable for this vast majority of users.
+We are developing a VR game that MUST be compatible with a wide range of devices. These devices represent the flat mode devices which are used by most of the global computer user population. Our goal is to make our VR game accessible and enjoyable for this vast majority of users.
 
 ## The Challenge
 
