@@ -32,7 +32,11 @@ We considered two options: Virtual joystick for touchscreen devices and Navmesh 
 
 ## The Road Not Taken
 
-Navmesh and 3D Navigation Points were considered but not chosen due to their inability to address the core issue of ensuring compatibility with iPads and large projector screens.
+Navmesh and 3D Navigation Points were evaluated but ultimately not selected due to their inability to address the fundamental issue of ensuring compatibility with iPads and large projector screens.
+
+To be able to click on a surface and navigate freely around that surface (where permitted), a navmesh is required to define that surface. Waypoints, while useful, have limitations - they are not well-suited for defining traversable spaces that aren't already defined, such as grids.
+
+One of the performance challenges currently faced by Godot is that any modification triggers a rebuild of the entire navigation map. Consequently, if the navigation map is large and complex, taking a significant amount of time to rebuild, it can lead to performance issues.
 
 ## The Infrequent Use Case
 
