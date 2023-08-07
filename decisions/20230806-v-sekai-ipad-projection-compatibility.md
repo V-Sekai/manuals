@@ -1,4 +1,4 @@
-# V-Sekai iPad and Presentation Screen Compatibility with VR
+# V-Sekai Flat Screen Compatibility with VR
 
 ## Metadata
 
