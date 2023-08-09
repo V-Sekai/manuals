@@ -4,6 +4,16 @@
 
 ### Added
 
+# V-Sekai Changelog - August 2023
+
+## [Unreleased]
+
+### Added
+
+- RechieKho Integrated the iree.gd library with Godot game engine and allows Godot projects to leverage IREE for machine learning workflows.
+    - Addition of Godot image <-> IREE buffer view conversion utilities
+    - Exposure of IREE workflow
+    - Addition of Godot demos showing IREE integration
 - Recreated [Architext demo](https://huggingface.co/spaces/ifire/Architext_deployed) for testing apartment blueprint generation.
 - **Godot VRM** has been submitted to the asset library for 4.x by Lyuma on 2023-08-03. It's now usable and most bugs have been fixed. One known issue is that node constraints have some issues on models which were retargeted (needed bone rotation). If anyone wants to play with godot-vrm, feel free to clone it from github: it's the same as the version that will be available in the Godot Asset Library. Readme is updated. Feel free to check it out and give feedback. [Github Link](https://github.com/V-Sekai/godot-vrm/)
 - New commits to godot_uro:main by Lyuma and Fire.
