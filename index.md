@@ -1,28 +1,22 @@
 # V-Sekai Social VR
 
-V-Sekai caters to the needs of the open source VR community. We're trying to make a user-friendly and free virtual reality platform. Become a part of the [V-Sekai](https://v-sekai.org) team by joining our [Discord server](https://discord.gg/7BQDHesck8)! 
+Join V-Sekai, our open-source VR community on [Discord](https://discord.gg/7BQDHesck8)! 
 
 `vī-sekai` translates to "V-World" in English.
 
-## Collaborative
+We've contributed 100+ pull requests to the Godot Engine core.
 
-We rely on the dedication of many Godot Engine contributors. More than 100 V-Sekai pull requests have been effectively incorporated into the heart of the Godot Engine.
+## Participate
 
-## Get Involved
+1. **Chat**: On [Discord](https://discord.gg/7BQDHesck8).
+2. **Test**: Our latest builds [here](https://v-sekai.github.io/manuals/features/play_latest.html).
+3. **Visit**: [v-sekai.org](https://v-sekai.org).
+4. **Follow**: Us on [Twitter](https://twitter.com/VSekaiOfficial).
+5. **Contribute**: On GitHub [here](https://github.com/V-Sekai).
+6. **Track**: Proposals [here](https://github.com/V-Sekai/manuals/issues).
+7. **Organize**: Issues [here](https://github.com/V-Sekai/v-sekai-game/issues).
+8. **Contact**: SaracenOne, Lyuma, or Fire.
 
-- Join our ad-hoc meetings and discuss efforts on [Discord](https://discord.gg/7BQDHesck8).
-- Test our builds: [Latest](https://v-sekai.github.io/manuals/features/play_latest.html)
-- Visit our website: [v-sekai.org](https://v-sekai.org)
-- Follow us on Twitter: [twitter.com/VSekaiOfficial](https://twitter.com/VSekaiOfficial)
-- Contribute on Github: [github.com/V-Sekai](https://github.com/V-Sekai)
-- Track proposals with [V-Sekai Manual Issues](https://github.com/V-Sekai/manuals/issues)
-- Organize issues using [V-Sekai-game issues](https://github.com/V-Sekai/v-sekai-game/issues)
-- For questions, contact group leads SaracenOne, Lyuma, or Fire.
+# Meetings
 
-## Commitments
-
-- Recurring meetings are ad-hoc.
-- Our working agreement is on this page.
-- We do not hold monthly group retrospectives.
-- Meetings are not recorded.
-- Agendas are created before recurring meetings, and notes are taken during meetings.
+Our meetings are ad-hoc and not recorded. We use a Lean Coffee style approach, building the agenda at the start of each meeting to encourage spontaneous discussion.

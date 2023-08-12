@@ -4,12 +4,6 @@
 
 ### Added
 
-# V-Sekai Changelog - August 2023
-
-## [Unreleased]
-
-### Added
-
 - RechieKho Integrated the iree.gd library with Godot game engine and allows Godot projects to leverage IREE for machine learning workflows.
     - Addition of Godot image <-> IREE buffer view conversion utilities
     - Exposure of IREE workflow
@@ -43,7 +37,7 @@
 
 ### Removed
 
-- Not applicable for this month.
+- Many Bone IK has been removed temporarily to ensure the engine builds and passes tests.
 
 ### Security
 
