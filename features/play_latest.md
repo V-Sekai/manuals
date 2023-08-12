@@ -2,7 +2,7 @@
 
 Instructions last checked 2023-08-12.
 
-**Currently built for Linux only due to a export crash.**
+**Currently built for Linux only due to an export crash.**
 
 V-Sekai uses rolling releases and is alpha quality.
 
