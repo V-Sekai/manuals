@@ -1,4 +1,4 @@
-# This decision solves a V-Sekai limitation 
+# Overcoming V-Sekai limitations by documentation
  
 ## Metadata 
  
