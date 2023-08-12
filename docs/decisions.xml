@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Sat, 12 Aug 2023 16:49:02 GMT</lastBuildDate>
+<lastBuildDate>Sat, 12 Aug 2023 16:58:38 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -18,8 +18,8 @@
 
 
 
-<section id="overcoming-v-sekai-limitations-by-documentation" class="level1">
-<h1>Overcoming V-Sekai limitations by documentation</h1>
+<section id="configuring-gocd-agents-in-v-sekai" class="level1">
+<h1>Configuring GoCD Agents in V-Sekai</h1>
 <section id="metadata" class="level2">
 <h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
@@ -30,27 +30,43 @@
 </section>
 <section id="the-backdrop" class="level2">
 <h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
+<p>V-Sekai is a platform that requires regular configuration of GoCD agents. This process can be time-consuming and prone to errors if not done correctly.</p>
 </section>
 <section id="the-challenge" class="level2">
 <h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
+<p>The challenge is to configure the GoCD agents after a restart of the host machine. This involves accessing the GoCD server, navigating to the Agents page, enabling new agents, configuring agent resources, assigning environments, and saving changes.</p>
 </section>
 <section id="the-strategy" class="level2">
 <h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
+<p>The strategy is to follow a step-by-step guide to ensure that all the necessary configurations are made correctly. This includes:</p>
+<ol type="1">
+<li>Accessing the GoCD Server</li>
+<li>Navigating to the Agents Page</li>
+<li>Enabling New Agents</li>
+<li>Configuring Agent Resources</li>
+<li>Assigning Environments</li>
+<li>Saving Changes</li>
+</ol>
 </section>
 <section id="the-upside" class="level2">
 <h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
+<p>By following this guide, users can ensure that their GoCD agents are configured correctly and ready to run jobs. This can save time and reduce the risk of errors.</p>
 </section>
 <section id="the-downside" class="level2">
 <h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
+<p>The downside is that this process needs to be repeated every time the host machine is restarted. However, this is a necessary step to ensure that the GoCD agents function correctly.</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An alternative approach could be to automate this process using scripts or other automation tools. However, this would require additional technical expertise and may not be feasible for all users.</p>
 </section>
 <section id="the-infrequent-use-case" class="level2">
 <h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>In some cases, users may need to configure additional settings or use different resources and environments. These cases will require additional steps and may not be covered by this guide.</p>
 </section>
 <section id="in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
+<p>Yes, this guide was created by us and is part of our core documentation.</p>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
@@ -58,6 +74,51 @@
 <li><a href="https://v-sekai.org/">V-Sekai</a></li>
 <li>This article is assisted by AI.</li>
 </ul>
+</section>
+<section id="example-configuration" class="level2">
+<h2 class="anchored" data-anchor-id="example-configuration">Example configuration</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Agent Type</th>
+<th>Resources</th>
+<th>Environments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>gocd-agent-59dbf9989-vp4d66</td>
+<td>linux, mingw5</td>
+<td>development, itch-fire</td>
+</tr>
+<tr class="even">
+<td>gocd-agent-dind-96575468d4-s29l2</td>
+<td>dind</td>
+<td>development, itch-fire</td>
+</tr>
+<tr class="odd">
+<td>gocd-agent-59dbf9989-cczqj</td>
+<td>linux, mingw5</td>
+<td>development, itch-fire</td>
+</tr>
+<tr class="even">
+<td>gocd-agent-59dbf9989-p6vs5</td>
+<td>linux, mingw5</td>
+<td>development, itch-fire</td>
+</tr>
+<tr class="odd">
+<td>gocd-agent-59dbf9989-t4ckd</td>
+<td>linux, mingw5</td>
+<td>development, itch-fire</td>
+</tr>
+<tr class="even">
+<td>gocd-agent-dind-96575468d4-b6gq9</td>
+<td>dind</td>
+<td>development, itch-fire</td>
+</tr>
+</tbody>
+</table>
+<p>Please note that the actual resources and environments will vary based on your specific setup.</p>
 
 
 </section>
@@ -65,7 +126,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sat, 12 Aug 2023 16:49:02 GMT</pubDate>
+  <pubDate>Sat, 12 Aug 2023 16:58:38 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -137,7 +198,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230812-unmerge-and-merge-procedure-source-code-tree.html</guid>
-  <pubDate>Sat, 12 Aug 2023 16:49:02 GMT</pubDate>
+  <pubDate>Sat, 12 Aug 2023 16:58:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -201,7 +262,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230812-constraint-all-bones.html</guid>
-  <pubDate>Sat, 12 Aug 2023 16:49:02 GMT</pubDate>
+  <pubDate>Sat, 12 Aug 2023 16:58:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -287,7 +348,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230811-punchline-reports.html</guid>
-  <pubDate>Sat, 12 Aug 2023 16:49:02 GMT</pubDate>
+  <pubDate>Sat, 12 Aug 2023 16:58:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -360,7 +421,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230806-v-sekai-ipad-projection-compatibility.html</guid>
-  <pubDate>Sat, 12 Aug 2023 16:49:02 GMT</pubDate>
+  <pubDate>Sat, 12 Aug 2023 16:58:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -511,7 +572,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230806-music-gen.html</guid>
-  <pubDate>Sat, 12 Aug 2023 16:49:02 GMT</pubDate>
+  <pubDate>Sat, 12 Aug 2023 16:58:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -593,7 +654,7 @@ font-style: inherit;">sudo</span> DOKKU_TAG=v0.21.4 bash bootstrap.sh</span></co
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230804-dokku.html</guid>
-  <pubDate>Sat, 12 Aug 2023 16:49:02 GMT</pubDate>
+  <pubDate>Sat, 12 Aug 2023 16:58:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -694,7 +755,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230803-subrepo-addon-management.html</guid>
-  <pubDate>Sat, 12 Aug 2023 16:49:02 GMT</pubDate>
+  <pubDate>Sat, 12 Aug 2023 16:58:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -777,7 +838,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230803-publish-vrm-to-assetlibrary.html</guid>
-  <pubDate>Sat, 12 Aug 2023 16:49:02 GMT</pubDate>
+  <pubDate>Sat, 12 Aug 2023 16:58:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -859,7 +920,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230803-jolt-gextension-to-module.html</guid>
-  <pubDate>Sat, 12 Aug 2023 16:49:02 GMT</pubDate>
+  <pubDate>Sat, 12 Aug 2023 16:58:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -964,7 +1025,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230803-idle-rpg-home.html</guid>
-  <pubDate>Sat, 12 Aug 2023 16:49:02 GMT</pubDate>
+  <pubDate>Sat, 12 Aug 2023 16:58:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1035,7 +1096,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230726-solve-renik-directly-rather-than-many-bone-ik.html</guid>
-  <pubDate>Sat, 12 Aug 2023 16:49:02 GMT</pubDate>
+  <pubDate>Sat, 12 Aug 2023 16:58:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1132,7 +1193,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230719-pose-kusudama-constraints-in-vr.html</guid>
-  <pubDate>Sat, 12 Aug 2023 16:49:02 GMT</pubDate>
+  <pubDate>Sat, 12 Aug 2023 16:58:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1213,7 +1274,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230719-dual-databases-cockroachdb-khepri.html</guid>
-  <pubDate>Sat, 12 Aug 2023 16:49:02 GMT</pubDate>
+  <pubDate>Sat, 12 Aug 2023 16:58:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1357,7 +1418,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230716-enhancing-avatar-creation-process-02-advanced.html</guid>
-  <pubDate>Sat, 12 Aug 2023 16:49:02 GMT</pubDate>
+  <pubDate>Sat, 12 Aug 2023 16:58:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1500,7 +1561,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230716-enhancing-avatar-creation-process-01-regular.html</guid>
-  <pubDate>Sat, 12 Aug 2023 16:49:02 GMT</pubDate>
+  <pubDate>Sat, 12 Aug 2023 16:58:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1691,7 +1752,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230701-vsekai-broken-down-goals.html</guid>
-  <pubDate>Sat, 12 Aug 2023 16:49:02 GMT</pubDate>
+  <pubDate>Sat, 12 Aug 2023 16:58:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1807,7 +1868,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230630-vsekai-goal-meeting.html</guid>
-  <pubDate>Sat, 12 Aug 2023 16:49:02 GMT</pubDate>
+  <pubDate>Sat, 12 Aug 2023 16:58:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1896,7 +1957,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230626-godot-vrm1-addon.html</guid>
-  <pubDate>Sat, 12 Aug 2023 16:49:02 GMT</pubDate>
+  <pubDate>Sat, 12 Aug 2023 16:58:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1982,7 +2043,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230624-v-sekai-roadmap.html</guid>
-  <pubDate>Sat, 12 Aug 2023 16:49:02 GMT</pubDate>
+  <pubDate>Sat, 12 Aug 2023 16:58:39 GMT</pubDate>
 </item>
 </channel>
 </rss>

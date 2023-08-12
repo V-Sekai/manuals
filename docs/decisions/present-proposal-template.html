@@ -114,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overcoming-v-sekai-limitations-by-documentation" id="toc-overcoming-v-sekai-limitations-by-documentation" class="nav-link active" data-scroll-target="#overcoming-v-sekai-limitations-by-documentation">Overcoming V-Sekai limitations by documentation</a>
+  <li><a href="#configuring-gocd-agents-in-v-sekai" id="toc-configuring-gocd-agents-in-v-sekai" class="nav-link active" data-scroll-target="#configuring-gocd-agents-in-v-sekai">Configuring GoCD Agents in V-Sekai</a>
   <ul class="collapse">
   <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
   <li><a href="#the-backdrop" id="toc-the-backdrop" class="nav-link" data-scroll-target="#the-backdrop">The Backdrop</a></li>
@@ -126,6 +126,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#the-infrequent-use-case" id="toc-the-infrequent-use-case" class="nav-link" data-scroll-target="#the-infrequent-use-case">The Infrequent Use Case</a></li>
   <li><a href="#in-core-and-done-by-us" id="toc-in-core-and-done-by-us" class="nav-link" data-scroll-target="#in-core-and-done-by-us">In Core and Done by Us?</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  <li><a href="#example-configuration" id="toc-example-configuration" class="nav-link" data-scroll-target="#example-configuration">Example configuration</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/decisions/present-proposal-template.md" class="toc-action">Edit this page</a></p></div></div></nav>
@@ -135,8 +136,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="overcoming-v-sekai-limitations-by-documentation" class="level1">
-<h1>Overcoming V-Sekai limitations by documentation</h1>
+<section id="configuring-gocd-agents-in-v-sekai" class="level1">
+<h1>Configuring GoCD Agents in V-Sekai</h1>
 <section id="metadata" class="level2">
 <h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
@@ -147,27 +148,43 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="the-backdrop" class="level2">
 <h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
+<p>V-Sekai is a platform that requires regular configuration of GoCD agents. This process can be time-consuming and prone to errors if not done correctly.</p>
 </section>
 <section id="the-challenge" class="level2">
 <h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
+<p>The challenge is to configure the GoCD agents after a restart of the host machine. This involves accessing the GoCD server, navigating to the Agents page, enabling new agents, configuring agent resources, assigning environments, and saving changes.</p>
 </section>
 <section id="the-strategy" class="level2">
 <h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
+<p>The strategy is to follow a step-by-step guide to ensure that all the necessary configurations are made correctly. This includes:</p>
+<ol type="1">
+<li>Accessing the GoCD Server</li>
+<li>Navigating to the Agents Page</li>
+<li>Enabling New Agents</li>
+<li>Configuring Agent Resources</li>
+<li>Assigning Environments</li>
+<li>Saving Changes</li>
+</ol>
 </section>
 <section id="the-upside" class="level2">
 <h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
+<p>By following this guide, users can ensure that their GoCD agents are configured correctly and ready to run jobs. This can save time and reduce the risk of errors.</p>
 </section>
 <section id="the-downside" class="level2">
 <h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
+<p>The downside is that this process needs to be repeated every time the host machine is restarted. However, this is a necessary step to ensure that the GoCD agents function correctly.</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An alternative approach could be to automate this process using scripts or other automation tools. However, this would require additional technical expertise and may not be feasible for all users.</p>
 </section>
 <section id="the-infrequent-use-case" class="level2">
 <h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>In some cases, users may need to configure additional settings or use different resources and environments. These cases will require additional steps and may not be covered by this guide.</p>
 </section>
 <section id="in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
+<p>Yes, this guide was created by us and is part of our core documentation.</p>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
@@ -175,6 +192,51 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://v-sekai.org/">V-Sekai</a></li>
 <li>This article is assisted by AI.</li>
 </ul>
+</section>
+<section id="example-configuration" class="level2">
+<h2 class="anchored" data-anchor-id="example-configuration">Example configuration</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Agent Type</th>
+<th>Resources</th>
+<th>Environments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>gocd-agent-59dbf9989-vp4d66</td>
+<td>linux, mingw5</td>
+<td>development, itch-fire</td>
+</tr>
+<tr class="even">
+<td>gocd-agent-dind-96575468d4-s29l2</td>
+<td>dind</td>
+<td>development, itch-fire</td>
+</tr>
+<tr class="odd">
+<td>gocd-agent-59dbf9989-cczqj</td>
+<td>linux, mingw5</td>
+<td>development, itch-fire</td>
+</tr>
+<tr class="even">
+<td>gocd-agent-59dbf9989-p6vs5</td>
+<td>linux, mingw5</td>
+<td>development, itch-fire</td>
+</tr>
+<tr class="odd">
+<td>gocd-agent-59dbf9989-t4ckd</td>
+<td>linux, mingw5</td>
+<td>development, itch-fire</td>
+</tr>
+<tr class="even">
+<td>gocd-agent-dind-96575468d4-b6gq9</td>
+<td>dind</td>
+<td>development, itch-fire</td>
+</tr>
+</tbody>
+</table>
+<p>Please note that the actual resources and environments will vary based on your specific setup.</p>
 
 
 </section>
