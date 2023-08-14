@@ -4365,7 +4365,7 @@
     "href": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html",
     "title": "Rewriting Mixer Broadcaster Into Membrane Framework Pipelines",
     "section": "",
-    "text": "Status: Proposed\nDeciders: V-Sekai\n\nTags: V-Sekai, Elixir, Membrane Framework, Multiplayer Blender\n\n\n\n\nUbisoft’s mixer broadcaster code has been the only available solution for handling multiplayer blender. However, it has its limitations when it comes to scalability and real-time performance. This proposal aims to rewrite the code using Elixir and the Membrane Framework.\n\n\n\nThe main challenge is to translate the existing code into Elixir while maintaining the functionality and improving upon the limitations of the current system. This includes ensuring that the new code can handle larger volumes of users and provide real-time updates without lag or delay.\n\n\n\nThe strategy is designed to leverage the unique features of Elixir and the Membrane Framework. It also considers the use of the Khepri database library instead of PostgreSQL. Khepri is a tree-like replicated on-disk database library for Erlang and Elixir, which relies on Ra, an Erlang implementation of the Raft consensus algorithm, for consistency, replication, and data management.\n\n\n\nBy rewriting the code in Elixir, using the Membrane Framework, and implementing the Khepri database library, we can expect improved scalability and real-time performance. This will allow for more users to use the system simultaneously without experiencing delays or lags. Additionally, the fault-tolerance feature of Elixir will ensure that the system remains operational even when errors occur.\n\n\n\nImproved scalability and real-time performance. More users can use the system simultaneously without experiencing delays or lags.\n\n\n\nRewriting the code will require time and resources. There may also be a learning curve for developers who are not familiar with Elixir, the Membrane Framework, and the Khepri database library.\n\n\n\nAn alternative approach would have been to optimize the existing code instead of rewriting it. However, this would not have addressed the inherent limitations of the current system.\n\n\n\nIn cases where the number of users is low and real-time updates are not critical, the current system may still be sufficient. However, as the user base grows and the demand for real-time updates increases, the need for a more scalable and efficient system becomes apparent.\n\n\n\nYes, the rewriting of the code will indeed be done by us as we also maintain the uro backend services.\n\n\n\n\nV-Sekai\n\nElixir\nMembrane Framework\nKhepri Database Library\n\nThis article is assisted by AI."
+    "text": "Status: Proposed\nDeciders: V-Sekai\n\nTags: V-Sekai, Elixir, Membrane Framework, Multiplayer Blender\n\n\n\n\nUbisoft’s mixer broadcaster code has been the only available solution for handling multiplayer blender. However, it has its limitations when it comes to scalability and real-time performance. This proposal aims to rewrite the code using Elixir and the Membrane Framework.\n\n\n\nThe main challenge is to translate the existing code into Elixir while maintaining the functionality and improving upon the limitations of the current system. This includes ensuring that the new code can handle larger volumes of users and provide real-time updates without lag or delay.\n\n\n\nThe strategy is designed to leverage the unique features of Elixir and the Membrane Framework. It also considers the use of the Khepri database library instead of PostgreSQL. Khepri is a tree-like replicated on-disk database library for Erlang and Elixir, which relies on Ra, an Erlang implementation of the Raft consensus algorithm, for consistency, replication, and data management.\n\n\n\nBy rewriting the code in Elixir, using the Membrane Framework, and implementing the Khepri database library, we can expect improved scalability and real-time performance. This will allow for more users to use the system simultaneously without experiencing delays or lags. Additionally, the fault-tolerance feature of Elixir will ensure that the system remains operational even when errors occur.\n\n\n\nRewriting the code will require time and resources. There may also be a learning curve for developers who are not familiar with Elixir, the Membrane Framework, and the Khepri database library.\n\n\n\nAn alternative approach would have been to optimize the existing code instead of rewriting it. However, this would not have addressed the inherent limitations of the current system.\n\n\n\nIn cases where the number of users is low and real-time updates are not critical, the current system may still be sufficient. However, as the user base grows and the demand for real-time updates increases, the need for a more scalable and efficient system becomes apparent.\n\n\n\nYes, the rewriting of the code will indeed be done by us as we also maintain the uro backend services.\n\n\n\n\nV-Sekai\n\nElixir\nMembrane Framework\nKhepri Database Library\n\nThis article is assisted by AI."
   },
   {
     "objectID": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#metadata",
@@ -4375,71 +4375,64 @@
     "text": "Status: Proposed\nDeciders: V-Sekai\n\nTags: V-Sekai, Elixir, Membrane Framework, Multiplayer Blender"
   },
   {
-    "objectID": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#context-and-problem-statement",
-    "href": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#context-and-problem-statement",
+    "objectID": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#the-backdrop",
+    "href": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#the-backdrop",
     "title": "Rewriting Mixer Broadcaster Into Membrane Framework Pipelines",
     "section": "",
     "text": "Ubisoft’s mixer broadcaster code has been the only available solution for handling multiplayer blender. However, it has its limitations when it comes to scalability and real-time performance. This proposal aims to rewrite the code using Elixir and the Membrane Framework."
   },
   {
-    "objectID": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#decision-drivers",
-    "href": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#decision-drivers",
+    "objectID": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#the-challenge",
+    "href": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#the-challenge",
     "title": "Rewriting Mixer Broadcaster Into Membrane Framework Pipelines",
     "section": "",
     "text": "The main challenge is to translate the existing code into Elixir while maintaining the functionality and improving upon the limitations of the current system. This includes ensuring that the new code can handle larger volumes of users and provide real-time updates without lag or delay."
   },
   {
-    "objectID": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#considered-options",
-    "href": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#considered-options",
+    "objectID": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#the-strategy",
+    "href": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#the-strategy",
     "title": "Rewriting Mixer Broadcaster Into Membrane Framework Pipelines",
     "section": "",
     "text": "The strategy is designed to leverage the unique features of Elixir and the Membrane Framework. It also considers the use of the Khepri database library instead of PostgreSQL. Khepri is a tree-like replicated on-disk database library for Erlang and Elixir, which relies on Ra, an Erlang implementation of the Raft consensus algorithm, for consistency, replication, and data management."
   },
   {
-    "objectID": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#decision-outcome",
-    "href": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#decision-outcome",
+    "objectID": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#the-upside",
+    "href": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#the-upside",
     "title": "Rewriting Mixer Broadcaster Into Membrane Framework Pipelines",
     "section": "",
     "text": "By rewriting the code in Elixir, using the Membrane Framework, and implementing the Khepri database library, we can expect improved scalability and real-time performance. This will allow for more users to use the system simultaneously without experiencing delays or lags. Additionally, the fault-tolerance feature of Elixir will ensure that the system remains operational even when errors occur."
   },
   {
-    "objectID": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#positive-consequences",
-    "href": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#positive-consequences",
-    "title": "Rewriting Mixer Broadcaster Into Membrane Framework Pipelines",
-    "section": "",
-    "text": "Improved scalability and real-time performance. More users can use the system simultaneously without experiencing delays or lags."
-  },
-  {
-    "objectID": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#negative-consequences",
-    "href": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#negative-consequences",
+    "objectID": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#the-downside",
+    "href": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#the-downside",
     "title": "Rewriting Mixer Broadcaster Into Membrane Framework Pipelines",
     "section": "",
     "text": "Rewriting the code will require time and resources. There may also be a learning curve for developers who are not familiar with Elixir, the Membrane Framework, and the Khepri database library."
   },
   {
-    "objectID": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#prospects-for-the-future",
-    "href": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#prospects-for-the-future",
+    "objectID": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#the-road-not-taken",
+    "href": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#the-road-not-taken",
     "title": "Rewriting Mixer Broadcaster Into Membrane Framework Pipelines",
     "section": "",
     "text": "An alternative approach would have been to optimize the existing code instead of rewriting it. However, this would not have addressed the inherent limitations of the current system."
   },
   {
-    "objectID": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#infrequent-use-case",
-    "href": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#infrequent-use-case",
+    "objectID": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#the-infrequent-use-case",
+    "href": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#the-infrequent-use-case",
     "title": "Rewriting Mixer Broadcaster Into Membrane Framework Pipelines",
     "section": "",
     "text": "In cases where the number of users is low and real-time updates are not critical, the current system may still be sufficient. However, as the user base grows and the demand for real-time updates increases, the need for a more scalable and efficient system becomes apparent."
   },
   {
-    "objectID": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#ownership",
-    "href": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#ownership",
+    "objectID": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#in-core-and-done-by-us",
+    "href": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#in-core-and-done-by-us",
     "title": "Rewriting Mixer Broadcaster Into Membrane Framework Pipelines",
     "section": "",
     "text": "Yes, the rewriting of the code will indeed be done by us as we also maintain the uro backend services."
   },
   {
-    "objectID": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#links",
-    "href": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#links",
+    "objectID": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#further-reading",
+    "href": "decisions/20230813-mixer-broadcaster-into-membrane-framework.html#further-reading",
     "title": "Rewriting Mixer Broadcaster Into Membrane Framework Pipelines",
     "section": "",
     "text": "V-Sekai\n\nElixir\nMembrane Framework\nKhepri Database Library\n\nThis article is assisted by AI."
