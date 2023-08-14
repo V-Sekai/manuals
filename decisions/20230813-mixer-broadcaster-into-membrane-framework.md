@@ -16,11 +16,11 @@ The main challenge is to translate the existing code into Elixir while maintaini
 
 ## Considered Options  
 
-The strategy is designed to leverage the unique features of Elixir and the Membrane Framework. It aims to address the limitations of the current system by optimizing these features.
+The strategy is designed to leverage the unique features of Elixir and the Membrane Framework. It also considers the use of the Khepri database library instead of PostgreSQL. Khepri is a tree-like replicated on-disk database library for Erlang and Elixir, which relies on Ra, an Erlang implementation of the Raft consensus algorithm, for consistency, replication, and data management.
 
 ## Decision Outcome  
 
-By rewriting the code in Elixir and using the Membrane Framework, we can expect improved scalability and real-time performance. This will allow for more users to use the system simultaneously without experiencing delays or lags. Additionally, the fault-tolerance feature of Elixir will ensure that the system remains operational even when errors occur.
+By rewriting the code in Elixir, using the Membrane Framework, and implementing the Khepri database library, we can expect improved scalability and real-time performance. This will allow for more users to use the system simultaneously without experiencing delays or lags. Additionally, the fault-tolerance feature of Elixir will ensure that the system remains operational even when errors occur.
 
 ## Positive Consequences  
 
@@ -28,7 +28,7 @@ Improved scalability and real-time performance. More users can use the system si
 
 ## Negative Consequences  
 
-Rewriting the code will require time and resources. There may also be a learning curve for developers who are not familiar with Elixir and the Membrane Framework.
+Rewriting the code will require time and resources. There may also be a learning curve for developers who are not familiar with Elixir, the Membrane Framework, and the Khepri database library.
 
 ## Prospects for the Future  
 
@@ -47,5 +47,6 @@ Yes, the rewriting of the code will indeed be done by us as we also maintain the
 - [V-Sekai](https://v-sekai.org/)  
 - [Elixir](https://elixir-lang.org/)
 - [Membrane Framework](https://www.membraneframework.org/)
+- [Khepri Database Library](https://hex.pm/packages/khepri)
 
 *This article is assisted by AI.*
