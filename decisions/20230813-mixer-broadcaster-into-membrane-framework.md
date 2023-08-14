@@ -2,7 +2,7 @@
 
 ## Metadata  
 
-- **Status**: Proposed
+- **Status**: Rejected
 - **Deciders**: V-Sekai  
 - **Tags**: V-Sekai, Elixir, Membrane Framework, Multiplayer Blender
 
