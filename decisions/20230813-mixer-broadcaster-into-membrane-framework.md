@@ -8,15 +8,48 @@
 
 ## The Backdrop  
 
-Ubisoft's mixer broadcaster code has been the only available solution for handling multiplayer blender. However, it has its limitations when it comes to scalability and real-time performance. This proposal aims to rewrite the code using Elixir and the Membrane Framework.
+Ubisoft's mixer broadcaster code has been the only available solution for handling multiplayer Blender. However, it has its limitations when it comes to scalability and real-time performance. This proposal aims to rewrite the code using Elixir and the Membrane Framework.
 
 ## The Challenge  
 
 The main challenge is to translate the existing code into Elixir while maintaining the functionality and improving upon the limitations of the current system. This includes ensuring that the new code can handle larger volumes of users and provide real-time updates without lag or delay.
 
-## The Strategy  
+## Strategy  
 
-The strategy is designed to leverage the unique features of Elixir and the Membrane Framework. It also considers the use of the Khepri database library instead of PostgreSQL. Khepri is a tree-like replicated on-disk database library for Erlang and Elixir, which relies on Ra, an Erlang implementation of the Raft consensus algorithm, for consistency, replication, and data management.
+```mermaid
+graph LR
+  A[Ubisoft's Mixer Broadcaster Code] --> B[Elixir & Membrane Framework Code]
+  C[No Authentication] --> D[GitHub OAuth 2.0 Login]
+  E[No Database] --> F[Khepri Database Library]
+```
+
+This strategy leverages Elixir and the Membrane Framework's unique features, uses the Khepri database library for data management, and implements GitHub login using OAuth 2.0 protocol for single sign-on.
+
+Here are the key steps:
+
+- **Codebase**: Transition from Ubisoft's Mixer Broadcaster Code to Elixir & Membrane Framework Code, tracked in a version control system.
+  
+- **Dependencies**: Declare and isolate dependencies explicitly, avoiding reliance on system-wide packages.
+
+- **Config**: Store configuration (including GitHub OAuth 2.0 Login credentials) in the environment, not in the code.
+
+- **Backing Services**: Replace in-memory data persistence with Khepri Database Library, attached as a backing service.
+
+- **Build, Release, Run**: Strictly separate these stages, facilitated by the Elixir & Membrane Framework Code.
+
+- **Processes**: Execute application as one or more stateless processes, storing needed state in the Khepri database.
+
+- **Port Binding**: Export services via port binding, making the application self-contained.
+
+- **Concurrency**: Scale out the application via the process model, allowing for handling increased load.
+
+- **Disposability**: Aim for fast startup and graceful shutdown to maximize robustness.
+
+- **Dev/Prod Parity**: Keep development, staging, and production environments as similar as possible.
+
+- **Logs**: Treat logs as event streams, handled by the executing environment.
+
+- **Admin Processes**: Run any needed one-off administrative tasks in an identical environment as the regular long-running processes of the app.
 
 ## The Upside  
 
