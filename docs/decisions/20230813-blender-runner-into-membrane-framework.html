@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>V-Sekai - Manuals – mixer-broadcaster-into-membrane-framework</title>
+<title>V-Sekai - Manuals – blender-runner-into-membrane-framework</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -114,10 +114,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#rewriting-mixer-broadcaster-into-membrane-framework-pipelines" id="toc-rewriting-mixer-broadcaster-into-membrane-framework-pipelines" class="nav-link active" data-scroll-target="#rewriting-mixer-broadcaster-into-membrane-framework-pipelines">Rewriting Mixer Broadcaster Into Membrane Framework Pipelines</a>
+  <li><a href="#transitioning-to-membrane-framework-pipelines-with-json-rpc-blender-runner" id="toc-transitioning-to-membrane-framework-pipelines-with-json-rpc-blender-runner" class="nav-link active" data-scroll-target="#transitioning-to-membrane-framework-pipelines-with-json-rpc-blender-runner">Transitioning to Membrane Framework Pipelines with JSON-RPC Blender Runner</a>
   <ul class="collapse">
   <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
-  <li><a href="#the-backdrop" id="toc-the-backdrop" class="nav-link" data-scroll-target="#the-backdrop">The Backdrop</a></li>
+  <li><a href="#backdrop" id="toc-backdrop" class="nav-link" data-scroll-target="#backdrop">Backdrop</a>
+  <ul class="collapse">
+  <li><a href="#character-posing" id="toc-character-posing" class="nav-link" data-scroll-target="#character-posing">Character Posing</a></li>
+  <li><a href="#world-sharing" id="toc-world-sharing" class="nav-link" data-scroll-target="#world-sharing">World Sharing</a></li>
+  <li><a href="#procedural-generation" id="toc-procedural-generation" class="nav-link" data-scroll-target="#procedural-generation">Procedural Generation</a></li>
+  <li><a href="#grease-pencil-sharing" id="toc-grease-pencil-sharing" class="nav-link" data-scroll-target="#grease-pencil-sharing">Grease Pencil Sharing</a></li>
+  <li><a href="#json-rpc-blender-runner" id="toc-json-rpc-blender-runner" class="nav-link" data-scroll-target="#json-rpc-blender-runner">JSON-RPC Blender Runner</a></li>
+  </ul></li>
   <li><a href="#the-challenge" id="toc-the-challenge" class="nav-link" data-scroll-target="#the-challenge">The Challenge</a></li>
   <li><a href="#strategy" id="toc-strategy" class="nav-link" data-scroll-target="#strategy">Strategy</a></li>
   <li><a href="#the-upside" id="toc-the-upside" class="nav-link" data-scroll-target="#the-upside">The Upside</a></li>
@@ -128,27 +135,48 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/decisions/20230813-mixer-broadcaster-into-membrane-framework.md" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/decisions/20230813-blender-runner-into-membrane-framework.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-<section id="rewriting-mixer-broadcaster-into-membrane-framework-pipelines" class="level1">
-<h1>Rewriting Mixer Broadcaster Into Membrane Framework Pipelines</h1>
+<section id="transitioning-to-membrane-framework-pipelines-with-json-rpc-blender-runner" class="level1">
+<h1>Transitioning to Membrane Framework Pipelines with JSON-RPC Blender Runner</h1>
 <section id="metadata" class="level2">
 <h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
-<li><strong>Status</strong>: Rejected</li>
+<li><strong>Status</strong>: Proposed</li>
 <li><strong>Deciders</strong>: V-Sekai<br>
 </li>
-<li><strong>Tags</strong>: V-Sekai, Elixir, Membrane Framework, Multiplayer Blender</li>
+<li><strong>Tags</strong>: V-Sekai, Elixir, Membrane Framework, Multiplayer Blender, JSON-RPC</li>
 </ul>
 </section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>Ubisoft’s mixer broadcaster code has been the only available solution for handling multiplayer Blender. However, it has its limitations when it comes to scalability and real-time performance. This proposal aims to rewrite the code using Elixir and the Membrane Framework.</p>
+<section id="backdrop" class="level2">
+<h2 class="anchored" data-anchor-id="backdrop">Backdrop</h2>
+<p>The current solution for handling multiplayer Blender has its limitations when it comes to scalability and real-time performance. To address these issues, we propose a new approach that leverages Elixir and the Membrane Framework. This will involve rewriting the code and introducing a JSON-RPC Blender runner.</p>
+<section id="character-posing" class="level3">
+<h3 class="anchored" data-anchor-id="character-posing">Character Posing</h3>
+<p>In this new approach, character posing will be handled in real-time and shared across multiple clients. This means that any changes made to a 3D model by one user will be immediately reflected on all other connected clients. This feature will enhance the collaborative experience and allow users to interact with the same 3D models simultaneously.</p>
+</section>
+<section id="world-sharing" class="level3">
+<h3 class="anchored" data-anchor-id="world-sharing">World Sharing</h3>
+<p>The state of the world, including objects, lighting, camera position, etc., will also be synchronized across all clients. This ensures that all users are experiencing the same environment, further enhancing the sense of immersion and collaboration.</p>
+</section>
+<section id="procedural-generation" class="level3">
+<h3 class="anchored" data-anchor-id="procedural-generation">Procedural Generation</h3>
+<p>We will introduce procedural generation techniques to create unique and dynamic environments. These generated worlds will be shared across all clients, ensuring that each user’s experience is not only immersive but also unique and engaging.</p>
+</section>
+<section id="grease-pencil-sharing" class="level3">
+<h3 class="anchored" data-anchor-id="grease-pencil-sharing">Grease Pencil Sharing</h3>
+<p>Any drawings or annotations made using the Grease Pencil tool will be visible to all clients. This allows for collaborative sketching and planning, making it easier for teams to communicate their ideas visually.</p>
+</section>
+<section id="json-rpc-blender-runner" class="level3">
+<h3 class="anchored" data-anchor-id="json-rpc-blender-runner">JSON-RPC Blender Runner</h3>
+<p>To facilitate efficient communication with Blender, we’ll implement a JSON-RPC Blender runner. This will allow us to send commands to Blender and receive responses in a structured and standardized format. This feature will streamline the process of interacting with Blender, making it more efficient and user-friendly.</p>
+<p>By implementing these features, we aim to improve the scalability and real-time performance of our multiplayer Blender solution. This will lead to a more immersive and collaborative experience for our users.</p>
+</section>
 </section>
 <section id="the-challenge" class="level2">
 <h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
@@ -157,13 +185,15 @@ ul.task-list li input[type="checkbox"] {
 <section id="strategy" class="level2">
 <h2 class="anchored" data-anchor-id="strategy">Strategy</h2>
 <pre class="mermaid"><code>graph LR
-  A[Ubisoft's Mixer Broadcaster Code] --&gt; B[Elixir &amp; Membrane Framework Code]
+  A[Current Code] --&gt; B[Elixir &amp; Membrane Framework Code]
   C[No Authentication] --&gt; D[GitHub OAuth 2.0 Login]
-  E[No Database] --&gt; F[Khepri Database Library]</code></pre>
-<p>This strategy leverages Elixir and the Membrane Framework’s unique features, uses the Khepri database library for data management, and implements GitHub login using OAuth 2.0 protocol for single sign-on.</p>
+  E[No Database] --&gt; F[Khepri Database Library]
+  G[Blender Runner] --&gt; H[JSON-RPC Blender Runner]
+  I[Triangle Only] --&gt; J[Airlocks for Environment Translation]</code></pre>
+<p>This strategy leverages Elixir and the Membrane Framework’s unique features, uses the Khepri database library for data management, implements GitHub login using OAuth 2.0 protocol for single sign-on, introduces a JSON-RPC Blender runner for improved communication with Blender, and focuses on the use of triangles (a polygon with 3 vertices) and “Airlocks” for environment translation.</p>
 <p>Here are the key steps:</p>
 <ul>
-<li><p><strong>Codebase</strong>: Transition from Ubisoft’s Mixer Broadcaster Code to Elixir &amp; Membrane Framework Code, tracked in a version control system.</p></li>
+<li><p><strong>Codebase</strong>: Transition from the current code to Elixir &amp; Membrane Framework Code, tracked in a version control system.</p></li>
 <li><p><strong>Dependencies</strong>: Declare and isolate dependencies explicitly, avoiding reliance on system-wide packages.</p></li>
 <li><p><strong>Config</strong>: Store configuration (including GitHub OAuth 2.0 Login credentials) in the environment, not in the code.</p></li>
 <li><p><strong>Backing Services</strong>: Replace in-memory data persistence with Khepri Database Library, attached as a backing service.</p></li>
@@ -175,15 +205,18 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>Dev/Prod Parity</strong>: Keep development, staging, and production environments as similar as possible.</p></li>
 <li><p><strong>Logs</strong>: Treat logs as event streams, handled by the executing environment.</p></li>
 <li><p><strong>Admin Processes</strong>: Run any needed one-off administrative tasks in an identical environment as the regular long-running processes of the app.</p></li>
+<li><p><strong>Blender Runner</strong>: Implement a JSON-RPC Blender runner to facilitate efficient communication with Blender.</p></li>
+<li><p><strong>Triangle Only</strong>: This principle ensures that only triangles (polygons with 3 vertices) are used in the graphical representation. This simplifies the rendering process and reduces computational complexity.</p></li>
+<li><p><strong>Airlocks</strong>: Use airlocks to translate the remote environment to the local environment. This allows for seamless interaction between different parts of the system while maintaining isolation and security.</p></li>
 </ul>
 </section>
 <section id="the-upside" class="level2">
 <h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<p>By rewriting the code in Elixir, using the Membrane Framework, and implementing the Khepri database library, we can expect improved scalability and real-time performance. This will allow for more users to use the system simultaneously without experiencing delays or lags. Additionally, the fault-tolerance feature of Elixir will ensure that the system remains operational even when errors occur.</p>
+<p>By rewriting the code in Elixir, using the Membrane Framework, implementing the Khepri database library, introducing a JSON-RPC Blender runner, focusing on the use of triangles, and employing the “Airlocks” principles, we can expect improved scalability and real-time performance. This will allow for more users to use the system simultaneously without experiencing delays or lags. Additionally, the fault-tolerance feature of Elixir will ensure that the system remains operational even when errors occur.</p>
 </section>
 <section id="the-downside" class="level2">
 <h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<p>Rewriting the code will require time and resources. There may also be a learning curve for developers who are not familiar with Elixir, the Membrane Framework, and the Khepri database library.</p>
+<p>Rewriting the code will require time and resources. There may also be a learning curve for developers who are not familiar with Elixir, the Membrane Framework, the Khepri database library, JSON-RPC, the concept of using triangles in graphics, and “Airlocks”.</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
@@ -195,7 +228,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>Yes, the rewriting of the code will indeed be done by us as we also maintain the uro backend services.</p>
+<p>Yes, the rewriting of the code will indeed be done by us as we also maintain the backend services.</p>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
@@ -205,6 +238,7 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://elixir-lang.org/">Elixir</a></li>
 <li><a href="https://www.membraneframework.org/">Membrane Framework</a></li>
 <li><a href="https://hex.pm/packages/khepri">Khepri Database Library</a></li>
+<li><a href="https://www.jsonrpc.org/">JSON-RPC</a></li>
 </ul>
 <p><em>This article is assisted by AI.</em></p>
 

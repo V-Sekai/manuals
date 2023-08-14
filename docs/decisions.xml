@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Mon, 14 Aug 2023 06:18:40 GMT</lastBuildDate>
+<lastBuildDate>Mon, 14 Aug 2023 06:37:57 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -68,11 +68,11 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Mon, 14 Aug 2023 06:18:40 GMT</pubDate>
+  <pubDate>Mon, 14 Aug 2023 06:37:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20230813-mixer-broadcaster-into-membrane-framework.html</link>
+  <link>https://v-sekai.github.io/manuals/decisions/20230813-mixer-broadcaster-into-membrane-framework copy.html</link>
   <description><![CDATA[ 
 
 
@@ -155,8 +155,123 @@
 </section>
 
  ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20230813-mixer-broadcaster-into-membrane-framework.html</guid>
-  <pubDate>Mon, 14 Aug 2023 06:18:40 GMT</pubDate>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230813-mixer-broadcaster-into-membrane-framework copy.html</guid>
+  <pubDate>Mon, 14 Aug 2023 06:37:57 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230813-blender-runner-into-membrane-framework.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="transitioning-to-membrane-framework-pipelines-with-json-rpc-blender-runner" class="level1">
+<h1>Transitioning to Membrane Framework Pipelines with JSON-RPC Blender Runner</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li><strong>Status</strong>: Proposed</li>
+<li><strong>Deciders</strong>: V-Sekai<br>
+</li>
+<li><strong>Tags</strong>: V-Sekai, Elixir, Membrane Framework, Multiplayer Blender, JSON-RPC</li>
+</ul>
+</section>
+<section id="backdrop" class="level2">
+<h2 class="anchored" data-anchor-id="backdrop">Backdrop</h2>
+<p>The current solution for handling multiplayer Blender has its limitations when it comes to scalability and real-time performance. To address these issues, we propose a new approach that leverages Elixir and the Membrane Framework. This will involve rewriting the code and introducing a JSON-RPC Blender runner.</p>
+<section id="character-posing" class="level3">
+<h3 class="anchored" data-anchor-id="character-posing">Character Posing</h3>
+<p>In this new approach, character posing will be handled in real-time and shared across multiple clients. This means that any changes made to a 3D model by one user will be immediately reflected on all other connected clients. This feature will enhance the collaborative experience and allow users to interact with the same 3D models simultaneously.</p>
+</section>
+<section id="world-sharing" class="level3">
+<h3 class="anchored" data-anchor-id="world-sharing">World Sharing</h3>
+<p>The state of the world, including objects, lighting, camera position, etc., will also be synchronized across all clients. This ensures that all users are experiencing the same environment, further enhancing the sense of immersion and collaboration.</p>
+</section>
+<section id="procedural-generation" class="level3">
+<h3 class="anchored" data-anchor-id="procedural-generation">Procedural Generation</h3>
+<p>We will introduce procedural generation techniques to create unique and dynamic environments. These generated worlds will be shared across all clients, ensuring that each user’s experience is not only immersive but also unique and engaging.</p>
+</section>
+<section id="grease-pencil-sharing" class="level3">
+<h3 class="anchored" data-anchor-id="grease-pencil-sharing">Grease Pencil Sharing</h3>
+<p>Any drawings or annotations made using the Grease Pencil tool will be visible to all clients. This allows for collaborative sketching and planning, making it easier for teams to communicate their ideas visually.</p>
+</section>
+<section id="json-rpc-blender-runner" class="level3">
+<h3 class="anchored" data-anchor-id="json-rpc-blender-runner">JSON-RPC Blender Runner</h3>
+<p>To facilitate efficient communication with Blender, we’ll implement a JSON-RPC Blender runner. This will allow us to send commands to Blender and receive responses in a structured and standardized format. This feature will streamline the process of interacting with Blender, making it more efficient and user-friendly.</p>
+<p>By implementing these features, we aim to improve the scalability and real-time performance of our multiplayer Blender solution. This will lead to a more immersive and collaborative experience for our users.</p>
+</section>
+</section>
+<section id="the-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
+<p>The main challenge is to translate the existing code into Elixir while maintaining the functionality and improving upon the limitations of the current system. This includes ensuring that the new code can handle larger volumes of users and provide real-time updates without lag or delay.</p>
+</section>
+<section id="strategy" class="level2">
+<h2 class="anchored" data-anchor-id="strategy">Strategy</h2>
+<pre class="mermaid"><code>graph LR
+  A[Current Code] --&gt; B[Elixir &amp; Membrane Framework Code]
+  C[No Authentication] --&gt; D[GitHub OAuth 2.0 Login]
+  E[No Database] --&gt; F[Khepri Database Library]
+  G[Blender Runner] --&gt; H[JSON-RPC Blender Runner]
+  I[Triangle Only] --&gt; J[Airlocks for Environment Translation]</code></pre>
+<p>This strategy leverages Elixir and the Membrane Framework’s unique features, uses the Khepri database library for data management, implements GitHub login using OAuth 2.0 protocol for single sign-on, introduces a JSON-RPC Blender runner for improved communication with Blender, and focuses on the use of triangles (a polygon with 3 vertices) and “Airlocks” for environment translation.</p>
+<p>Here are the key steps:</p>
+<ul>
+<li><p><strong>Codebase</strong>: Transition from the current code to Elixir &amp; Membrane Framework Code, tracked in a version control system.</p></li>
+<li><p><strong>Dependencies</strong>: Declare and isolate dependencies explicitly, avoiding reliance on system-wide packages.</p></li>
+<li><p><strong>Config</strong>: Store configuration (including GitHub OAuth 2.0 Login credentials) in the environment, not in the code.</p></li>
+<li><p><strong>Backing Services</strong>: Replace in-memory data persistence with Khepri Database Library, attached as a backing service.</p></li>
+<li><p><strong>Build, Release, Run</strong>: Strictly separate these stages, facilitated by the Elixir &amp; Membrane Framework Code.</p></li>
+<li><p><strong>Processes</strong>: Execute application as one or more stateless processes, storing needed state in the Khepri database.</p></li>
+<li><p><strong>Port Binding</strong>: Export services via port binding, making the application self-contained.</p></li>
+<li><p><strong>Concurrency</strong>: Scale out the application via the process model, allowing for handling increased load.</p></li>
+<li><p><strong>Disposability</strong>: Aim for fast startup and graceful shutdown to maximize robustness.</p></li>
+<li><p><strong>Dev/Prod Parity</strong>: Keep development, staging, and production environments as similar as possible.</p></li>
+<li><p><strong>Logs</strong>: Treat logs as event streams, handled by the executing environment.</p></li>
+<li><p><strong>Admin Processes</strong>: Run any needed one-off administrative tasks in an identical environment as the regular long-running processes of the app.</p></li>
+<li><p><strong>Blender Runner</strong>: Implement a JSON-RPC Blender runner to facilitate efficient communication with Blender.</p></li>
+<li><p><strong>Triangle Only</strong>: This principle ensures that only triangles (polygons with 3 vertices) are used in the graphical representation. This simplifies the rendering process and reduces computational complexity.</p></li>
+<li><p><strong>Airlocks</strong>: Use airlocks to translate the remote environment to the local environment. This allows for seamless interaction between different parts of the system while maintaining isolation and security.</p></li>
+</ul>
+</section>
+<section id="the-upside" class="level2">
+<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
+<p>By rewriting the code in Elixir, using the Membrane Framework, implementing the Khepri database library, introducing a JSON-RPC Blender runner, focusing on the use of triangles, and employing the “Airlocks” principles, we can expect improved scalability and real-time performance. This will allow for more users to use the system simultaneously without experiencing delays or lags. Additionally, the fault-tolerance feature of Elixir will ensure that the system remains operational even when errors occur.</p>
+</section>
+<section id="the-downside" class="level2">
+<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
+<p>Rewriting the code will require time and resources. There may also be a learning curve for developers who are not familiar with Elixir, the Membrane Framework, the Khepri database library, JSON-RPC, the concept of using triangles in graphics, and “Airlocks”.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An alternative approach would have been to optimize the existing code instead of rewriting it. However, this would not have addressed the inherent limitations of the current system.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>In cases where the number of users is low and real-time updates are not critical, the current system may still be sufficient. However, as the user base grows and the demand for real-time updates increases, the need for a more scalable and efficient system becomes apparent.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
+<p>Yes, the rewriting of the code will indeed be done by us as we also maintain the backend services.</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a><br>
+</li>
+<li><a href="https://elixir-lang.org/">Elixir</a></li>
+<li><a href="https://www.membraneframework.org/">Membrane Framework</a></li>
+<li><a href="https://hex.pm/packages/khepri">Khepri Database Library</a></li>
+<li><a href="https://www.jsonrpc.org/">JSON-RPC</a></li>
+</ul>
+<p><em>This article is assisted by AI.</em></p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230813-blender-runner-into-membrane-framework.html</guid>
+  <pubDate>Mon, 14 Aug 2023 06:37:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -224,7 +339,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230812-vsekai-update-process.html</guid>
-  <pubDate>Mon, 14 Aug 2023 06:18:40 GMT</pubDate>
+  <pubDate>Mon, 14 Aug 2023 06:37:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -296,7 +411,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230812-unmerge-and-merge-procedure-source-code-tree.html</guid>
-  <pubDate>Mon, 14 Aug 2023 06:18:40 GMT</pubDate>
+  <pubDate>Mon, 14 Aug 2023 06:37:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -413,7 +528,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230812-gocd-agent-setup.html</guid>
-  <pubDate>Mon, 14 Aug 2023 06:18:40 GMT</pubDate>
+  <pubDate>Mon, 14 Aug 2023 06:37:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -477,7 +592,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230812-constraint-all-bones.html</guid>
-  <pubDate>Mon, 14 Aug 2023 06:18:40 GMT</pubDate>
+  <pubDate>Mon, 14 Aug 2023 06:37:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -563,7 +678,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230811-punchline-reports.html</guid>
-  <pubDate>Mon, 14 Aug 2023 06:18:40 GMT</pubDate>
+  <pubDate>Mon, 14 Aug 2023 06:37:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -636,7 +751,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230806-v-sekai-ipad-projection-compatibility.html</guid>
-  <pubDate>Mon, 14 Aug 2023 06:18:40 GMT</pubDate>
+  <pubDate>Mon, 14 Aug 2023 06:37:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -787,7 +902,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230806-music-gen.html</guid>
-  <pubDate>Mon, 14 Aug 2023 06:18:40 GMT</pubDate>
+  <pubDate>Mon, 14 Aug 2023 06:37:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -869,7 +984,7 @@ font-style: inherit;">sudo</span> DOKKU_TAG=v0.21.4 bash bootstrap.sh</span></co
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230804-dokku.html</guid>
-  <pubDate>Mon, 14 Aug 2023 06:18:40 GMT</pubDate>
+  <pubDate>Mon, 14 Aug 2023 06:37:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -970,7 +1085,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230803-subrepo-addon-management.html</guid>
-  <pubDate>Mon, 14 Aug 2023 06:18:40 GMT</pubDate>
+  <pubDate>Mon, 14 Aug 2023 06:37:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1053,7 +1168,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230803-publish-vrm-to-assetlibrary.html</guid>
-  <pubDate>Mon, 14 Aug 2023 06:18:40 GMT</pubDate>
+  <pubDate>Mon, 14 Aug 2023 06:37:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1135,7 +1250,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230803-jolt-gextension-to-module.html</guid>
-  <pubDate>Mon, 14 Aug 2023 06:18:40 GMT</pubDate>
+  <pubDate>Mon, 14 Aug 2023 06:37:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1240,7 +1355,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230803-idle-rpg-home.html</guid>
-  <pubDate>Mon, 14 Aug 2023 06:18:40 GMT</pubDate>
+  <pubDate>Mon, 14 Aug 2023 06:37:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1311,7 +1426,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230726-solve-renik-directly-rather-than-many-bone-ik.html</guid>
-  <pubDate>Mon, 14 Aug 2023 06:18:40 GMT</pubDate>
+  <pubDate>Mon, 14 Aug 2023 06:37:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1408,7 +1523,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230719-pose-kusudama-constraints-in-vr.html</guid>
-  <pubDate>Mon, 14 Aug 2023 06:18:40 GMT</pubDate>
+  <pubDate>Mon, 14 Aug 2023 06:37:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1489,7 +1604,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230719-dual-databases-cockroachdb-khepri.html</guid>
-  <pubDate>Mon, 14 Aug 2023 06:18:40 GMT</pubDate>
+  <pubDate>Mon, 14 Aug 2023 06:37:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1633,7 +1748,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230716-enhancing-avatar-creation-process-02-advanced.html</guid>
-  <pubDate>Mon, 14 Aug 2023 06:18:40 GMT</pubDate>
+  <pubDate>Mon, 14 Aug 2023 06:37:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1776,198 +1891,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230716-enhancing-avatar-creation-process-01-regular.html</guid>
-  <pubDate>Mon, 14 Aug 2023 06:18:40 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20230701-vsekai-broken-down-goals.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="v-sekai-feature-enhancement-proposal" class="level1">
-<h1>V-Sekai Feature Enhancement Proposal</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li><strong>Status</strong>: Proposed</li>
-<li><strong>Deciders</strong>: V-Sekai</li>
-<li><strong>Tags</strong>: V-Sekai, ai summarized</li>
-</ul>
-</section>
-<section id="context-and-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
-<p>We are developing a virtual reality platform, V-Sekai. To ensure the platform meets user needs and expectations, we have identified several features that need to be implemented. These features have been categorized based on their priority and necessity for the initial release.</p>
-</section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>The features have been organized into three categories: Must-Have, Nice-to-Have, and Out of Scope Initially. The priority within each category reflects the relative importance of the features for an initial release.</p>
-<section id="must-have-features" class="level3">
-<h3 class="anchored" data-anchor-id="must-have-features">Must-Have Features</h3>
-<table class="table">
-<colgroup>
-<col style="width: 32%">
-<col style="width: 25%">
-<col style="width: 41%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Priority</th>
-<th style="text-align: left;">Feature</th>
-<th style="text-align: left;">Dependencies</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: left;">Environment (scene loading, world hosting, instancing)</td>
-<td style="text-align: left;">None</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td style="text-align: left;">Web requests to servers (HTTP/WebSocket API)</td>
-<td style="text-align: left;">Environment</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3</td>
-<td style="text-align: left;">Person to person interaction (avatars, animation, synchronization)</td>
-<td style="text-align: left;">Environment</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
-<td style="text-align: left;">Interaction with the world (interactive elements, physics)</td>
-<td style="text-align: left;">Environment</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="nice-to-have-features" class="level3">
-<h3 class="anchored" data-anchor-id="nice-to-have-features">Nice-to-Have Features</h3>
-<table class="table">
-<colgroup>
-<col style="width: 32%">
-<col style="width: 25%">
-<col style="width: 41%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Priority</th>
-<th style="text-align: left;">Feature</th>
-<th style="text-align: left;">Dependencies</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td style="text-align: left;">Collaboration features (doodling, modeling, content loading)</td>
-<td style="text-align: left;">Environment, Person to person interaction</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">6</td>
-<td style="text-align: left;">Static content creation in editor (import avatars, create worlds)</td>
-<td style="text-align: left;">Environment</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">7</td>
-<td style="text-align: left;">Shareable content (inventory)</td>
-<td style="text-align: left;">Environment, Static content creation in editor</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">8</td>
-<td style="text-align: left;">Local API for extending platform</td>
-<td style="text-align: left;">Environment, Web requests to servers</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">9</td>
-<td style="text-align: left;">Video playback</td>
-<td style="text-align: left;">Environment</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">10</td>
-<td style="text-align: left;">Support for proprietary video hosting</td>
-<td style="text-align: left;">Video playback</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="out-of-scope-initially" class="level3">
-<h3 class="anchored" data-anchor-id="out-of-scope-initially">Out of Scope Initially</h3>
-<table class="table">
-<colgroup>
-<col style="width: 32%">
-<col style="width: 25%">
-<col style="width: 41%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Priority</th>
-<th style="text-align: left;">Feature</th>
-<th style="text-align: left;">Dependencies</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">11</td>
-<td style="text-align: left;">Text chat</td>
-<td style="text-align: left;">Environment, Person to person interaction</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">12</td>
-<td style="text-align: left;">Screen sharing (OBS)</td>
-<td style="text-align: left;">Environment, Person to person interaction</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">13</td>
-<td style="text-align: left;">Modeling and 3D Creation (Blender)</td>
-<td style="text-align: left;">Environment, Static content creation in editor</td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="implementation" class="level2">
-<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
-<p>The implementation details will be determined once the proposal is accepted and the features are finalized.</p>
-</section>
-<section id="positive-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
-<ul>
-<li>A well-structured and prioritized feature list will guide development efforts.</li>
-<li>Clear categorization helps manage stakeholder expectations about what will be included in the initial release.</li>
-</ul>
-</section>
-<section id="negative-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
-<ul>
-<li>Some features may require more time and resources than initially estimated.</li>
-<li>Stakeholders may have different opinions on the priority of certain features.</li>
-</ul>
-</section>
-<section id="option-graveyard" class="level2">
-<h2 class="anchored" data-anchor-id="option-graveyard">Option Graveyard</h2>
-<p>This section will include any options considered but ultimately rejected during the decision-making process.</p>
-</section>
-<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
-<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
-<p>This question will be addressed during the implementation phase for each feature.</p>
-</section>
-<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
-<p>As these features form the core functionality of the V-Sekai platform, they should be developed by our team to ensure quality and consistency.</p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ul>
-<li><a href="https://v-sekai.org/">V-Sekai</a></li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20230701-vsekai-broken-down-goals.html</guid>
-  <pubDate>Mon, 14 Aug 2023 06:18:40 GMT</pubDate>
+  <pubDate>Mon, 14 Aug 2023 06:37:57 GMT</pubDate>
 </item>
 </channel>
 </rss>
