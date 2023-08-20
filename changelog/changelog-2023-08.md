@@ -4,6 +4,7 @@
 
 ### Added
 
+- Basisu (ktx2) for gltf was merged to allow compressing the textures to KTX2, which is GPU compatible and has a very small size. Our project also deals with hundreds and thousands of models placed in one scene, making the file size of each model crucial.
 - RechieKho Integrated the iree.gd library with Godot game engine and allows Godot projects to leverage IREE for machine learning workflows.
     - Addition of Godot image <-> IREE buffer view conversion utilities
     - Exposure of IREE workflow
