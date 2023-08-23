@@ -181,22 +181,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The proposed strategy involves creating a custom model that accepts speech as input and outputs both text and blendshapes. This unified model would incorporate a shared encoder to process the speech input, and a single decoder to generate the text and blendshape outputs. The Outlines 〰 library will be used to conform the output to the desired format.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> outlines <span class="im">import</span> Outline</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> SpeechEncoderDecoderModel, Speech2Text2Processor, Wav2Vec2Model</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the processor and encoder</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>processor <span class="op">=</span> Speech2Text2Processor.from_pretrained(<span class="st">"facebook/s2t-small-librispeech-asr"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>encoder <span class="op">=</span> Wav2Vec2Model.from_pretrained(<span class="st">"facebook/wav2vec2-base-960h"</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the decoder</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>decoder <span class="op">=</span> Speech2Text2Model.from_pretrained(<span class="st">"facebook/s2t-small-librispeech-asr"</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the unified model</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> UnifiedSpeechEncoderDecoderModel(encoder<span class="op">=</span>encoder, decoder<span class="op">=</span>decoder)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Define an outline for the model</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>outline <span class="op">=</span> Outline(model).to(device)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate text and blendshapes</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>generated_text, generated_blendshapes <span class="op">=</span> outline.generate(input_speech)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the processor and encoder</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>processor <span class="op">=</span> Speech2Text2Processor.from_pretrained(<span class="st">"facebook/s2t-small-librispeech-asr"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>encoder <span class="op">=</span> Wav2Vec2Model.from_pretrained(<span class="st">"facebook/wav2vec2-base-960h"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the decoder</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>decoder <span class="op">=</span> Speech2Text2Model.from_pretrained(<span class="st">"facebook/s2t-small-librispeech-asr"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the unified model</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> UnifiedSpeechEncoderDecoderModel(encoder<span class="op">=</span>encoder, decoder<span class="op">=</span>decoder)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Define an outline for the model</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>outline <span class="op">=</span> Outline(model).to(device)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate text and blendshapes</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>generated_text, generated_blendshapes <span class="op">=</span> outline.generate(input_speech)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Conform to JSON schema</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>blendshapes_keys <span class="op">=</span> [<span class="st">"BrowInnerUp"</span>, <span class="st">"BrowDownLeft"</span>, <span class="st">"BrowDownRight"</span>, <span class="st">"BrowOuterUpLeft"</span>, <span class="st">"BrowOuterUpRight"</span>,</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"EyeLookUpLeft"</span>, <span class="st">"EyeLookUpRight"</span>, <span class="st">"EyeLookDownLeft"</span>, <span class="st">"EyeLookDownRight"</span>, <span class="st">"EyeLookInLeft"</span>,</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"EyeLookInRight"</span>, <span class="st">"EyeLookOutLeft"</span>, <span class="st">"EyeLookOutRight"</span>, <span class="st">"EyeBlinkLeft"</span>, <span class="st">"EyeBlinkRight"</span>,</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"EyeSquintRight"</span>, <span class="st">"EyeSquintLeft"</span>, <span class="st">"EyeWideLeft"</span>, <span class="st">"EyeWideRight"</span>, <span class="st">"CheekPuff"</span>,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"CheekSquintLeft"</span>, <span class="st">"CheekSquintRight"</span>, <span class="st">"NoseSneerLeft"</span>, <span class="st">"NoseSneerRight"</span>, <span class="st">"JawOpen"</span>,</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"JawForward"</span>, <span class="st">"JawLeft"</span>, <span class="st">"JawRight"</span>, <span class="st">"MouthFunnel"</span>, <span class="st">"MouthPucker"</span>, <span class="st">"MouthLeft"</span>,</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"MouthRight"</span>, <span class="st">"MouthRollUpper"</span>, <span class="st">"MouthRollLower"</span>, <span class="st">"MouthShrugUpper"</span>, <span class="st">"MouthShrugLower"</span>,</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"MouthClose"</span>, <span class="st">"MouthSmileLeft"</span>, <span class="st">"MouthSmileRight"</span>, <span class="st">"MouthFrownLeft"</span>, <span class="st">"MouthFrownRight"</span>,</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"MouthDimpleLeft"</span>, <span class="st">"MouthDimpleRight"</span>, <span class="st">"MouthUpperUpLeft"</span>, <span class="st">"MouthUpperUpRight"</span>,</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"MouthLowerDownLeft"</span>, <span class="st">"MouthLowerDownRight"</span>, <span class="st">"MouthPressLeft"</span>, <span class="st">"MouthPressRight"</span>,</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"MouthStretchLeft"</span>, <span class="st">"MouthStretchRight"</span>, <span class="st">"TongueOut"</span>]</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> {</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">"text"</span>: generated_text,</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">"blendshapes"</span>: <span class="bu">dict</span>(<span class="bu">zip</span>(blendshapes_keys, generated_blendshapes))</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>json_output <span class="op">=</span> json.dumps(output)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In this setup, the <code>UnifiedSpeechEncoderDecoderModel</code>, and <code>Outline</code> are placeholders for your actual unified model classes, and outline respectively. You would need to implement these classes yourself, or find pre-trained models that suit your needs.</p>
 </section>
 <section id="limitations" class="level2">
