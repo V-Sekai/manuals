@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -114,18 +148,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#developing-dual-mode-models-for-speech-to-facial-shape-generation-in-virtual-reality-applications" id="toc-developing-dual-mode-models-for-speech-to-facial-shape-generation-in-virtual-reality-applications" class="nav-link active" data-scroll-target="#developing-dual-mode-models-for-speech-to-facial-shape-generation-in-virtual-reality-applications">Developing Dual-Mode Models for Speech-to-Facial Shape Generation in Virtual Reality Applications</a>
+  <li><a href="#developing-a-unified-model-for-speech-to-facial-shape-generation-using-outlines-library" id="toc-developing-a-unified-model-for-speech-to-facial-shape-generation-using-outlines-library" class="nav-link active" data-scroll-target="#developing-a-unified-model-for-speech-to-facial-shape-generation-using-outlines-library">Developing a Unified Model for Speech-to-Facial Shape Generation Using Outlines 〰 Library</a>
   <ul class="collapse">
-  <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
-  <li><a href="#the-backdrop" id="toc-the-backdrop" class="nav-link" data-scroll-target="#the-backdrop">The Backdrop</a></li>
-  <li><a href="#the-challenge" id="toc-the-challenge" class="nav-link" data-scroll-target="#the-challenge">The Challenge</a></li>
-  <li><a href="#the-strategy" id="toc-the-strategy" class="nav-link" data-scroll-target="#the-strategy">The Strategy</a></li>
-  <li><a href="#the-upside" id="toc-the-upside" class="nav-link" data-scroll-target="#the-upside">The Upside</a></li>
-  <li><a href="#the-downside" id="toc-the-downside" class="nav-link" data-scroll-target="#the-downside">The Downside</a></li>
-  <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
-  <li><a href="#the-infrequent-use-case" id="toc-the-infrequent-use-case" class="nav-link" data-scroll-target="#the-infrequent-use-case">The Infrequent Use Case</a></li>
-  <li><a href="#in-core-and-done-by-us" id="toc-in-core-and-done-by-us" class="nav-link" data-scroll-target="#in-core-and-done-by-us">In Core and Done by Us?</a></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
+  <li><a href="#problem-statement" id="toc-problem-statement" class="nav-link" data-scroll-target="#problem-statement">Problem Statement</a></li>
+  <li><a href="#proposed-solution" id="toc-proposed-solution" class="nav-link" data-scroll-target="#proposed-solution">Proposed Solution</a></li>
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/decisions/20230823-speech-to-blendshapes.md" class="toc-action">Edit this page</a></p></div></div></nav>
@@ -135,56 +164,48 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="developing-dual-mode-models-for-speech-to-facial-shape-generation-in-virtual-reality-applications" class="level1">
-<h1>Developing Dual-Mode Models for Speech-to-Facial Shape Generation in Virtual Reality Applications</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li><strong>Status:</strong> Proposed</li>
-<li><strong>Deciders:</strong> V-Sekai</li>
-<li><strong>Tags:</strong> V-Sekai, AI, Speech Recognition, Facial Shape Generation</li>
-</ul>
+<section id="developing-a-unified-model-for-speech-to-facial-shape-generation-using-outlines-library" class="level1">
+<h1>Developing a Unified Model for Speech-to-Facial Shape Generation Using Outlines 〰 Library</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>V-Sekai is embarking on a project that translates speech into corresponding facial shapes for virtual reality applications. This process eliminates the need for a face camera and leverages the <code>SpeechEncoderDecoderModel</code> from Hugging Face’s Transformers library for comprehensive speech recognition.</p>
+<p>The SpeakingFaces dataset, a collection from 142 diverse subjects, will be utilized for this project. The dataset is accessible via the server of the Institute for Smart Systems and Artificial Intelligence (ISSAI) under the Creative Commons Attribution 4.0 International License.</p>
+<p>Outlines 〰, a neural text generation library, will also play a crucial role in this project. It offers robust prompting primitives, separates the prompting from the execution logic, and is compatible with all models. It interfaces with models through the next-token logits and can be used with API-based models as well.</p>
 </section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>V-Sekai’s key task is to translate speech into corresponding facial shapes for virtual reality applications without the need for a face camera. This involves using the <code>SpeechEncoderDecoderModel</code> from Hugging Face’s Transformers library for end-to-end speech recognition.</p>
-<p>We plan to use the SpeakingFaces dataset for this project. The dataset, collected from 142 subjects of various backgrounds, is available through the server of the Institute for Smart Systems and Artificial Intelligence (ISSAI) under Creative Commons Attribution 4.0 International License.</p>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>The primary challenge lies in developing a model capable of generating text and blendshapes simultaneously from the same input speech using the Outlines 〰 library.</p>
 </section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>The challenge lies in developing and maintaining two separate models - one for translating speech into text (debugging phase) and another for generating corresponding facial shapes (release phase). Creating two different instances of <code>SpeechEncoderDecoderModel</code> with different decoders can be complex and requires careful implementation.</p>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>The proposed strategy involves creating a custom model that accepts speech as input and outputs both text and blendshapes. This unified model would incorporate a shared encoder to process the speech input, and a single decoder to generate the text and blendshape outputs. The Outlines 〰 library will be used to conform the output to the desired format.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> outlines <span class="im">import</span> Outline</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> SpeechEncoderDecoderModel, Speech2Text2Processor, Wav2Vec2Model</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the processor and encoder</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>processor <span class="op">=</span> Speech2Text2Processor.from_pretrained(<span class="st">"facebook/s2t-small-librispeech-asr"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>encoder <span class="op">=</span> Wav2Vec2Model.from_pretrained(<span class="st">"facebook/wav2vec2-base-960h"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the decoder</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>decoder <span class="op">=</span> Speech2Text2Model.from_pretrained(<span class="st">"facebook/s2t-small-librispeech-asr"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the unified model</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> UnifiedSpeechEncoderDecoderModel(encoder<span class="op">=</span>encoder, decoder<span class="op">=</span>decoder)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Define an outline for the model</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>outline <span class="op">=</span> Outline(model).to(device)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate text and blendshapes</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>generated_text, generated_blendshapes <span class="op">=</span> outline.generate(input_speech)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this setup, the <code>UnifiedSpeechEncoderDecoderModel</code>, and <code>Outline</code> are placeholders for your actual unified model classes, and outline respectively. You would need to implement these classes yourself, or find pre-trained models that suit your needs.</p>
 </section>
-<section id="the-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>Our strategy involves initializing the processor and encoder common to both models, then initializing the text output model and the blend shape output model separately. For the text output model, we can use a decoder-only transformer model like <code>Speech2Text2</code>. For the blend shape output model, a custom decoder trained to generate blend shapes from audio input is required. Any speech encoder-only model such as <code>Wave2Vec2</code> can be used with these decoders.</p>
+<section id="limitations" class="level2">
+<h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
+<p>The limitation of this approach is that the <code>UnifiedSpeechEncoderDecoderModel</code>, and <code>Outline</code> are placeholders for your actual unified model classes, and outline respectively. You would need to implement these classes yourself, or find pre-trained models that suit your needs.</p>
 </section>
-<section id="the-upside" class="level2">
-<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<p>This setup allows switching between the two models depending on whether you’re in the debugging or release phase. The text output model can be useful for understanding what the model is doing at a high level, while the blend shape output model can be used for the final product.</p>
-</section>
-<section id="the-downside" class="level2">
-<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<p>The downside is that the <code>BlendShapeDecoder</code> is a placeholder for your actual blend shape decoder class. You would need to implement this class yourself, or find a pre-trained model that suits your needs.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>An alternative approach could have been to use a single model that can output both text and blend shapes. However, this would likely increase the complexity of the model and make it harder to debug and understand.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>In cases where only text output or blend shape output is needed, it may not be necessary to initialize and maintain two separate models.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>Creating our own models for debugging and release is a strategic decision that offers us greater control and customization to meet our specific needs. It not only enhances our understanding of the models, aiding in troubleshooting and improvements, but also allows us to optimize them for better performance and efficiency. Being independent in maintaining and updating our models eliminates reliance on third parties, providing flexibility to make changes as needed. Additionally, it ensures seamless integration with other parts of our system. Although this approach requires more initial effort, the potential for improvement and fine-tuning with our unique data sets makes it worthwhile, leading to superior results in the long run.</p>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ul>
-<li><a href="https://v-sekai.org/">V-Sekai</a></li>
-<li><a href="https://doi.org/10.48333/smgd-yj77">SpeakingFaces Dataset</a></li>
-<li>This article is assisted by AI.</li>
-</ul>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Developing our own unified model for generating both text and blendshapes from speech using the Outlines 〰 library is a strategic move that provides us with greater control and customization to meet our specific needs. It not only deepens our understanding of the model, aiding in troubleshooting and improvements, but also allows us to optimize it for better performance and efficiency. Being self-reliant in maintaining and updating our model eliminates dependence on third parties, providing flexibility to make changes as needed. Moreover, it ensures seamless integration with other parts of our system. While this approach requires more initial effort, the potential for improvement and fine-tuning with our unique data sets makes it worthwhile, leading to superior results in the long run.</p>
 
 
 </section>
