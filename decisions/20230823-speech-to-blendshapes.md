@@ -1,47 +1,48 @@
-# Developing Dual-Mode Models for Speech-to-Facial Shape Generation in Virtual Reality Applications
+# Developing a Unified Model for Speech-to-Facial Shape Generation Using Outlines 〰 Library
 
-## Metadata
+## Context
 
-- **Status:** Proposed
-- **Deciders:** V-Sekai
-- **Tags:** V-Sekai, AI, Speech Recognition, Facial Shape Generation
+V-Sekai is embarking on a project that translates speech into corresponding facial shapes for virtual reality applications. This process eliminates the need for a face camera and leverages the `SpeechEncoderDecoderModel` from Hugging Face's Transformers library for comprehensive speech recognition.
 
-## The Backdrop
+The SpeakingFaces dataset, a collection from 142 diverse subjects, will be utilized for this project. The dataset is accessible via the server of the Institute for Smart Systems and Artificial Intelligence (ISSAI) under the Creative Commons Attribution 4.0 International License.
 
-V-Sekai's key task is to translate speech into corresponding facial shapes for virtual reality applications without the need for a face camera. This involves using the `SpeechEncoderDecoderModel` from Hugging Face's Transformers library for end-to-end speech recognition.
+Outlines 〰, a neural text generation library, will also play a crucial role in this project. It offers robust prompting primitives, separates the prompting from the execution logic, and is compatible with all models. It interfaces with models through the next-token logits and can be used with API-based models as well.
 
-We plan to use the SpeakingFaces dataset for this project. The dataset, collected from 142 subjects of various backgrounds, is available through the server of the Institute for Smart Systems and Artificial Intelligence (ISSAI) under Creative Commons Attribution 4.0 International License.
+## Problem Statement
 
-## The Challenge
+The primary challenge lies in developing a model capable of generating text and blendshapes simultaneously from the same input speech using the Outlines 〰 library.
 
-The challenge lies in developing and maintaining two separate models - one for translating speech into text (debugging phase) and another for generating corresponding facial shapes (release phase). Creating two different instances of `SpeechEncoderDecoderModel` with different decoders can be complex and requires careful implementation.
+## Proposed Solution
 
-## The Strategy
+The proposed strategy involves creating a custom model that accepts speech as input and outputs both text and blendshapes. This unified model would incorporate a shared encoder to process the speech input, and a single decoder to generate the text and blendshape outputs. The Outlines 〰 library will be used to conform the output to the desired format.
 
-Our strategy involves initializing the processor and encoder common to both models, then initializing the text output model and the blend shape output model separately. For the text output model, we can use a decoder-only transformer model like `Speech2Text2`. For the blend shape output model, a custom decoder trained to generate blend shapes from audio input is required. Any speech encoder-only model such as `Wave2Vec2` can be used with these decoders.
+```python
+from outlines import Outline
+from transformers import SpeechEncoderDecoderModel, Speech2Text2Processor, Wav2Vec2Model
 
-## The Upside
+# Initialize the processor and encoder
+processor = Speech2Text2Processor.from_pretrained("facebook/s2t-small-librispeech-asr")
+encoder = Wav2Vec2Model.from_pretrained("facebook/wav2vec2-base-960h")
 
-This setup allows switching between the two models depending on whether you're in the debugging or release phase. The text output model can be useful for understanding what the model is doing at a high level, while the blend shape output model can be used for the final product.
+# Initialize the decoder
+decoder = Speech2Text2Model.from_pretrained("facebook/s2t-small-librispeech-asr")
 
-## The Downside
+# Initialize the unified model
+model = UnifiedSpeechEncoderDecoderModel(encoder=encoder, decoder=decoder)
 
-The downside is that the `BlendShapeDecoder` is a placeholder for your actual blend shape decoder class. You would need to implement this class yourself, or find a pre-trained model that suits your needs.
+# Define an outline for the model
+outline = Outline(model).to(device)
 
-## The Road Not Taken
+# Generate text and blendshapes
+generated_text, generated_blendshapes = outline.generate(input_speech)
+```
 
-An alternative approach could have been to use a single model that can output both text and blend shapes. However, this would likely increase the complexity of the model and make it harder to debug and understand.
+In this setup, the `UnifiedSpeechEncoderDecoderModel`, and `Outline` are placeholders for your actual unified model classes, and outline respectively. You would need to implement these classes yourself, or find pre-trained models that suit your needs.
 
-## The Infrequent Use Case
+## Limitations
 
-In cases where only text output or blend shape output is needed, it may not be necessary to initialize and maintain two separate models.
+The limitation of this approach is that the `UnifiedSpeechEncoderDecoderModel`, and `Outline` are placeholders for your actual unified model classes, and outline respectively. You would need to implement these classes yourself, or find pre-trained models that suit your needs.
 
-## In Core and Done by Us?
+## Conclusion
 
-Creating our own models for debugging and release is a strategic decision that offers us greater control and customization to meet our specific needs. It not only enhances our understanding of the models, aiding in troubleshooting and improvements, but also allows us to optimize them for better performance and efficiency. Being independent in maintaining and updating our models eliminates reliance on third parties, providing flexibility to make changes as needed. Additionally, it ensures seamless integration with other parts of our system. Although this approach requires more initial effort, the potential for improvement and fine-tuning with our unique data sets makes it worthwhile, leading to superior results in the long run.
-
-## Further Reading
-
-- [V-Sekai](https://v-sekai.org/)
-- [SpeakingFaces Dataset](https://doi.org/10.48333/smgd-yj77)
-- This article is assisted by AI.
+Developing our own unified model for generating both text and blendshapes from speech using the Outlines 〰 library is a strategic move that provides us with greater control and customization to meet our specific needs. It not only deepens our understanding of the model, aiding in troubleshooting and improvements, but also allows us to optimize it for better performance and efficiency. Being self-reliant in maintaining and updating our model eliminates dependence on third parties, providing flexibility to make changes as needed. Moreover, it ensures seamless integration with other parts of our system. While this approach requires more initial effort, the potential for improvement and fine-tuning with our unique data sets makes it worthwhile, leading to superior results in the long run.
