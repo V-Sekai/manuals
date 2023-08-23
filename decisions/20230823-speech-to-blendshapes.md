@@ -19,6 +19,7 @@ The proposed strategy involves creating a custom model that accepts speech as in
 ```python
 from outlines import Outline
 from transformers import SpeechEncoderDecoderModel, Speech2Text2Processor, Wav2Vec2Model
+import json
 
 # Initialize the processor and encoder
 processor = Speech2Text2Processor.from_pretrained("facebook/s2t-small-librispeech-asr")
@@ -35,6 +36,26 @@ outline = Outline(model).to(device)
 
 # Generate text and blendshapes
 generated_text, generated_blendshapes = outline.generate(input_speech)
+
+# Conform to JSON schema
+blendshapes_keys = ["BrowInnerUp", "BrowDownLeft", "BrowDownRight", "BrowOuterUpLeft", "BrowOuterUpRight",
+                    "EyeLookUpLeft", "EyeLookUpRight", "EyeLookDownLeft", "EyeLookDownRight", "EyeLookInLeft",
+                    "EyeLookInRight", "EyeLookOutLeft", "EyeLookOutRight", "EyeBlinkLeft", "EyeBlinkRight",
+                    "EyeSquintRight", "EyeSquintLeft", "EyeWideLeft", "EyeWideRight", "CheekPuff",
+                    "CheekSquintLeft", "CheekSquintRight", "NoseSneerLeft", "NoseSneerRight", "JawOpen",
+                    "JawForward", "JawLeft", "JawRight", "MouthFunnel", "MouthPucker", "MouthLeft",
+                    "MouthRight", "MouthRollUpper", "MouthRollLower", "MouthShrugUpper", "MouthShrugLower",
+                    "MouthClose", "MouthSmileLeft", "MouthSmileRight", "MouthFrownLeft", "MouthFrownRight",
+                    "MouthDimpleLeft", "MouthDimpleRight", "MouthUpperUpLeft", "MouthUpperUpRight",
+                    "MouthLowerDownLeft", "MouthLowerDownRight", "MouthPressLeft", "MouthPressRight",
+                    "MouthStretchLeft", "MouthStretchRight", "TongueOut"]
+
+output = {
+    "text": generated_text,
+    "blendshapes": dict(zip(blendshapes_keys, generated_blendshapes))
+}
+
+json_output = json.dumps(output)
 ```
 
 In this setup, the `UnifiedSpeechEncoderDecoderModel`, and `Outline` are placeholders for your actual unified model classes, and outline respectively. You would need to implement these classes yourself, or find pre-trained models that suit your needs.
