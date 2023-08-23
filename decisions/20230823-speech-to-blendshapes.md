@@ -2,17 +2,15 @@
 
 ## Metadata
 
-- Status: Proposed
-- Deciders: V-Sekai
-- Tags: V-Sekai, AI, Speech Recognition, Facial Shape Generation
+- **Status:** Proposed
+- **Deciders:** V-Sekai
+- **Tags:** V-Sekai, AI, Speech Recognition, Facial Shape Generation
 
 ## The Backdrop
 
-One of the key tasks of V-Sekai is to translate speech into corresponding facial shapes for virtual reality applications without the need for a face camera. This involves using the `SpeechEncoderDecoderModel` from Hugging Face's Transformers library for end-to-end speech recognition.
+V-Sekai's key task is to translate speech into corresponding facial shapes for virtual reality applications without the need for a face camera. This involves using the `SpeechEncoderDecoderModel` from Hugging Face's Transformers library for end-to-end speech recognition.
 
-For this project, we plan to use the SpeakingFaces dataset. The SpeakingFaces dataset is available through the server of the Institute for Smart Systems and Artificial Intelligence (ISSAI) under Creative Commons Attribution 4.0 International License. ISSAI is a member of DataCite and a digital object identifier (DOI) was assigned by the ISSAI Repository to the SpeakingFaces dataset (https://doi.org/10.48333/smgd-yj77). This research project was approved by the Institutional Research Ethics Committee of Nazarbayev University. All participants signed informed consent forms to participate in the study, and agreed with the public sharing of the data.
-
-The data was collected from 142 subjects of various backgrounds. Each subject participated in two trials that were held on two separate days. There were two types of sessions during a single trial. In the first session, subjects were silent and still, with the operator capturing the visual and thermal video streams through the procession of nine collection angles. The second session consisted of the subject reading a series of commands as presented one-by-one on the video screens, as the visual, thermal and audio data was collected from the same nine camera positions. The commands were sourced from Thingpedia, an open and crowd-sourced knowledge base for virtual assistants, along with publicly available commands for Siri.
+We plan to use the SpeakingFaces dataset for this project. The dataset, collected from 142 subjects of various backgrounds, is available through the server of the Institute for Smart Systems and Artificial Intelligence (ISSAI) under Creative Commons Attribution 4.0 International License.
 
 ## The Challenge
 
@@ -20,7 +18,7 @@ The challenge lies in developing and maintaining two separate models - one for t
 
 ## The Strategy
 
-The proposed strategy involves initializing the processor and encoder common to both models, then initializing the text output model and the blend shape output model separately. For the text output model, a decoder like `BertLMHeadModel` is used. For the blend shape output model, a custom decoder trained to generate blend shapes from audio input is required.
+Our strategy involves initializing the processor and encoder common to both models, then initializing the text output model and the blend shape output model separately. For the text output model, we can use a decoder-only transformer model like `Speech2Text2`. For the blend shape output model, a custom decoder trained to generate blend shapes from audio input is required. Any speech encoder-only model such as `Wave2Vec2` can be used with these decoders.
 
 ## The Upside
 
