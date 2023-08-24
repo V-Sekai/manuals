@@ -34,11 +34,6 @@ Consistently use verbs like:
 
 Keeping things simple, clear, and consistent makes it easier for users to concentrate on the process and remember new details.
 
-## Prompting guides.
-
-1. Use `be concise` to reduce costs.
-1. I like `be concise, use plain style and use grade school language`. for the writing style.
-
 ## Contributors
 
 This page was written with advice from gdquest.
