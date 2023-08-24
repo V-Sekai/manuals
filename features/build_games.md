@@ -1,8 +1,8 @@
-# Creating Virtual Reality Games
+# Creating Virtual Reality Games with V-Sekai
 
 ## Supported File Types
 
-The platform supports various file types out of the box, including:
+V-Sekai supports various file types out of the box, including:
 
 - Audio: `.ogg`, `.mp3`, `.wav`
 - Image: `.png`, `.jpg`, `.tga`, `.exr`
@@ -11,33 +11,20 @@ The platform supports various file types out of the box, including:
 
 ### glTF2 Specification
 
-- Royalty-free 3D content specification
-- Easy-to-read JSON format
-- Extensible with Khronos extension registry on Github
-- Replaces proprietary FBX and older COLLADA formats
-- Wide application support (Blender, Godot, etc.)
-- ISO/IEC 12113 standard
-- Adopted by Unity, Unreal Engine, and other software
-- Tools: glTF-Blender-IO (Khronos), glTF Transform (Don McCurdy), Godot GLTFDocumentExtension API
-- FBX2glTF by Facebook for near-perfect FBX to glTF conversion (open source, uses Autodesk SDK)
+We use the royalty-free 3D content specification, glTF2. It's easy-to-read JSON format and is extensible with Khronos extension registry on Github. It replaces proprietary FBX and older COLLADA formats and has wide application support (Blender, Godot, etc.). It's an ISO/IEC 12113 standard and adopted by Unity, Unreal Engine, and other software.
 
 ## Virtual Reality Support
 
-- V-Sekai runs on OpenXR and Vulkan
+V-Sekai runs on OpenXR and Vulkan.
 
 ## Godot User Tools
 
-- File loader for various file types (2D & 3D assets, scenes, scripts, meshes, textures)
-- Editable assets within the editor
+We provide a file loader for various file types (2D & 3D assets, scenes, scripts, meshes, textures) and editable assets within the editor.
 
 ## Scripting
 
-- Built-in script editor
-- GDScript: In-house scripting language
-- GDExtension: C++ binding ABI with cross-version compatibility
-- C++ Modules: Native performance
+We offer a built-in script editor, GDScript: In-house scripting language, GDExtension: C++ binding ABI with cross-version compatibility, and C++ Modules: Native performance.
 
 ## Sandbox Scripting Environment (WIP)
 
-- Active research: [godot-wasm project](https://github.com/ashtonmeuser/godot-wasm)
-- Security-focused sandboxing
+We're actively researching a security-focused sandboxing environment. You can follow our progress on the [godot-wasm project](https://github.com/ashtonmeuser/godot-wasm).
