@@ -1,6 +1,6 @@
 # V-Sekai Social VR
 
-As a part of V-Sekai, I (Fire) am proud to be in a community of developers who are passionate about creating open-source VR technology. We started with a dream to build an open-source VR tech stack using the Godot Engine, a popular open-source game engine. Our goal was not only to contribute to the social VR space but also to provide alternatives to proprietary engines like Unity and Unreal.
+As a part of V-Sekai, I (Fire) am proud to be in a group of developers who are passionate about creating open-source VR technology. We started with a dream to build an open-source VR tech stack using the Godot Engine, a popular open-source game engine. Our goal was not only to contribute to the social VR space but also to provide alternatives to proprietary engines like Unity and Unreal.
 
 We've worked on many projects for Godot, including support for the VRM virtual character model format, an importer for Unitypackage content, systems for IK and character animation retargeting, more robust networking solutions, a WebAssembly-based scripting engine, improvements to Godot’s VR support, and much more.
 
@@ -8,7 +8,7 @@ Our journey had its challenges. For instance, our booth at Virtual Market 6, one
 
 Today, V-Sekai has grown into a global community of open technology enthusiasts who are committed to advancing open standards and open-source software for virtual worlds. We continue to welcome others who share our values to join us and contribute to the future of open-source VR technology.
 
-Join V-Sekai, our open-source VR community on [Discord](https://discord.gg/7BQDHesck8)!
+Join V-Sekai, our open-source VR group on [Discord](https://discord.gg/7BQDHesck8)!
 
 ## Participate
 
