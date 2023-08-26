@@ -59,3 +59,38 @@ X X
 ```
 
 "Cybernetic Charm" offers a unique blend of turn-based strategy and RPG elements, making each battle a test of both tactical skill and quick decision-making.
+
+## Arc Menu Feature: Spell Selection
+
+In "Cybernetic Charm", LuminNet has a variety of spells at her disposal. To make these spells easily accessible during combat, an arc menu feature is implemented.
+
+### The Arc Menu
+
+The arc menu, also known as radial or pie menu, is a circular contextual menu where selection depends on direction. It's a compact and efficient way of presenting multiple options, perfect for quick spell selection in the heat of battle.
+
+```markdown
+Arc Menu Structure:
+
+1. Open Arc Menu (Press designated button)
+2. Navigate through Spells (Move joystick or cursor in the direction of the desired spell)
+3. Select Spell (Release button)
+```
+
+### Spell Selection
+
+When Elysia transforms into LuminNet, she gains access to her spell arsenal. These spells are categorized and arranged in the arc menu based on their type and power level. For example, defensive spells like shields and healing abilities might be grouped together, while offensive spells like energy blasts could be in another section.
+
+Here's an example of what the arc menu might look like:
+
+```markdown
+Arc Menu Layout:
+
+  Shield   Heal
+     \     /
+      \   /
+Energy Blast
+```
+
+Each spell in the arc menu has a unique icon and color coding for easy identification. Hovering over a spell reveals a tooltip with more information about the spell, such as its effects, range, and cooldown time.
+
+This arc menu feature allows for quick, intuitive spell selection, adding another layer of strategy to the game's combat system.
