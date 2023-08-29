@@ -17,7 +17,7 @@ https://github.com/V-Sekai/godot-seurat is dependent on being able to fetch 16 b
 4. The server sees all clients but the clients only see the server and not each other.
 5. The vr pose is incorrect but you can see the error so it hasn't catastrophically exploded.
 
-![image](https://user-images.githubusercontent.com/32321/170520914-088ac169-12f8-44c5-b248-f2c83ca1fb3a.png)
+![image](attachments/170520914-088ac169-12f8-44c5-b248-f2c83ca1fb3a.png)
 
 ## 2022-05-07
 
