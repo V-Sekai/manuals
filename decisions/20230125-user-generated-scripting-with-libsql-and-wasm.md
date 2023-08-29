@@ -40,7 +40,7 @@ We ONLY support floating point, integers, strings and byte arrays.
 - [ ] Save a UDF of the notification function of \_notification as a string of arbitrary length
 - [ ] returns a row
 
-![image](https://user-images.githubusercontent.com/32321/214701442-92179b40-a869-4290-a328-c2ad4c56264a.png)
+![image](attachments/214701442-92179b40-a869-4290-a328-c2ad4c56264a.png)
 
 ### Positive Consequences
 
