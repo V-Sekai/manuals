@@ -30,7 +30,7 @@ For movement update the table once and only once per frame.
 
 For avatar paths that change batch notify once per frame.
 
-![image](https://user-images.githubusercontent.com/32321/196743240-092dba67-98e7-4a92-937c-48dd26284d4f.png)
+![image](attachments/196743240-092dba67-98e7-4a92-937c-48dd26284d4f.png)
 
 ## Positive Consequences <!-- optional -->
 

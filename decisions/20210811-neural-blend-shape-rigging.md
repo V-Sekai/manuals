@@ -28,7 +28,7 @@ Clone neural blend shapes
 3. Enable the mesh align Blender addon
 4. Select the rest of the meshes and then the smpl_std mesh
 5. Align base_mesh.obj to the base mesh and then translate it so it stands on the floor
-   ![image](https://user-images.githubusercontent.com/32321/125210550-4bfe8100-e255-11eb-9bc3-cbc7bfe4b98e.png)
+   ![image](attachments/125210550-4bfe8100-e255-11eb-9bc3-cbc7bfe4b98e.png)
 
 #### Neural Blend Shapes
 
@@ -53,7 +53,7 @@ flatpak run org.blender.Blender -b -P `pwd`/nbs_fbx_output.py -- --input `pwd`/.
 
 #### VRM
 
-![image](https://user-images.githubusercontent.com/32321/125210653-0b533780-e256-11eb-8758-caeca92a16e2.png)
+![image](attachments/125210653-0b533780-e256-11eb-8758-caeca92a16e2.png)
 
 1. Set bone mappings
 2. In the scripting set first person json to use bone "22" for the head
