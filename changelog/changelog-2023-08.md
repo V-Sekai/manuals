@@ -20,14 +20,24 @@
 - New commits to godot-vrm:only-addon by Lyuma.
 - New commits to godot-vrm:master by Lyuma.
 - New commits to godot:vsk-flac-4.2 by Fire.
-
+- New commits to godot:vsk-subdiv-4-0 branch.
+- Force-pushed updates to godot branches: vsk-subdiv-4-0, groups-staging-4.2, scene-import-fixes, faster-generate-lod.
+- Deletion of branches in V-Sekai/v-sekai-game: migrate-authors, all-contributors/add-lyuma, all-contributors/add-EnthWyrr.
+- Creation of new branches in V-Sekai/v-sekai-game: gh-readonly-queue/main/pr-213-d5fbc97d5854516d4305eb94fb6a81307256c978, all-contributors/- add-s-ilent, gh-readonly-queue/main/pr-215-e72f9297674c4c2f82dcc59ba8af18a03fd86fcc, gh-readonly-queue/main/pr-215-d5fbc97d5854516d4305eb94fb6a81307256c978, gh-readonly-queue/main/pr-213-2a174801a0b88ccdfc9c3671230911f6978477bd.
+- New commits to godot:groups-staging-4.2 branch.
+- Creation of new branches in V-Sekai/godot: groups-staging-lbfgs, vsk-lbfgs-4.2.
+- Bump of github/codeql-action from 2.21.4 to 2.21.5 in V-Sekai/v-sekai-game.
+- Creation of new branch in V-Sekai/v-sekai-game: dependabot/github_actions/github/codeql-action-2.21.5.
+- Pull requests #213 and #215 in V-Sekai/v-sekai-game.
+- Pull request #216 (Bump github/codeql-action from 2.21.4 to 2.21.5) in V-Sekai/v-sekai-game.
 ### Changed
 
 - Updated localization files for VR manager and menu strings by Fire.
 - Updated the ref value for the v-sekai-game repository to groups-4.2.2023-08-01T161313Z by Fire.
 - Updated godot-deps action.yml by Fire.
 - Updated icons path in FLAC config module by Fire.
-
+- Updates to README.md and .all-contributorsrc in V-Sekai/v-sekai-game.
+- Refactoring and updates in godot:groups-staging-4.2 and godot:vsk-lbfgs-4.2 branches.
 ### Fixed
 
 - Fix theme of export dialog by Lyuma.
@@ -39,7 +49,8 @@
 ### Removed
 
 - Many Bone IK has been removed temporarily to ensure the engine builds and passes tests.
-
+- Deletion of branches in V-Sekai/v-sekai-game: gh-readonly-queue/main/pr-213-d5fbc97d5854516d4305eb94fb6a81307256c978, gh-readonly-queue/main/pr-215-e72f9297674c4c2f82dcc59ba8af18a03fd86fcc, gh-readonly-queue/main/pr-215-d5fbc97d5854516d4305eb94fb6a81307256c978, gh-readonly-queue/main/pr-213-2a174801a0b88ccdfc9c3671230911f6978477bd, groups-4.2-latest, dependabot/github_actions/github/codeql-action-2.21.5.
+MMD PMX scene importer in godot:groups-staging-4.2 branch.
 ### Security
 
 - Not applicable for this month.
