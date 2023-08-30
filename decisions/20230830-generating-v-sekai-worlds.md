@@ -1,4 +1,4 @@
-# Enhancing V-Sekai: Expanding Worlds
+# Expanding Worlds
 
 ## Metadata
 
