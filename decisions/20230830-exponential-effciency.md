@@ -1,4 +1,4 @@
-# Overcoming V-Sekai limitations by improving efficiency in development
+# Improving efficiency in development
 
 ## Metadata
 
