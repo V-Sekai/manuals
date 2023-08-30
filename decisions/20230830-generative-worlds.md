@@ -2,7 +2,7 @@
 
 ## Metadata
 
-- **Status**: Proposed
+- **Status**: Rejected
 - **Deciders**: V-Sekai, Fire
 - **Tags**: V-Sekai
 
