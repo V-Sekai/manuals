@@ -16,11 +16,7 @@ V-Sekai currently faces several limitations, including non-functional menus in V
 
 ### Proposed Solutions
 
-1. **Generating More Worlds**: By creating new VR worlds within V-Sekai, users will have a wider range of experiences to explore. This involves designing and implementing new environments to expand the options available.
-
-2. **Improving Object Pickup and Menus**: Enhancing object pickup mechanics and menus can make interactions within V-Sekai more intuitive and user-friendly. This may include refining controls, feedback mechanisms for object pickup, and finding alternative methods to access menus while in VR mode.
-
-3. **Exploring Backend Services Integration**: Integrating V-Sekai with backend services can enhance the platform's features and capabilities. This could involve incorporating external APIs or services to provide additional resources and functionalities.
+**Exploring Backend Services Integration**: Integrating V-Sekai with backend services can enhance the platform's features and capabilities. This could involve incorporating external APIs or services to provide additional resources and functionalities.
 
 ## The Strategy
 
