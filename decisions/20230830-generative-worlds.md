@@ -8,21 +8,21 @@
 
 ## The Backdrop
 
-The current challenge faced is the inability to generate a hundred worlds in game development due to performance limitations. A solution involving automation is required to achieve this goal.
+The current challenge faced is the inability to generate a hundred apartments in game development due to performance limitations. A solution involving automation is required to achieve this goal.
 
 ## The Challenge
 
-The goal is to generate a hundred worlds in game development using generative techniques. However, the scalability and performance constraints of manual creation make this a significant challenge.
+The goal is to generate a hundred apartments in game development using generative techniques. However, the scalability and performance constraints of manual creation make this a significant challenge.
 
 ## The Strategy
 
-To overcome these limitations, the proposed strategy involves creating a sidekick application using Elixir that executes Godot Engine commands as a mesh processor. This sidekick will automate various tasks involved in world generation. The sidekick will utilize JSON utilities and tabular formats like SQLite for data processing. Tasks that can be automated include improving 3D mesh, converting glTF files, uploading VRM to the CDN, generating collision hulls, placing objects in a scene, generating images using procedural math, and generating terrain.
+To overcome these limitations, the proposed strategy involves creating a sidekick application using Elixir that automates various tasks involved in world generation. This sidekick will execute Godot Engine commands as a mesh processor. It will utilize JSON utilities and tabular formats like SQLite for data processing. Tasks that can be automated include improving 3D mesh, converting glTF files, uploading VRM to the CDN, generating collision hulls, placing objects in a scene, generating images using procedural math, and generating terrain.
 
 ## The Upside
 
 By implementing this strategy, several benefits can be achieved:
 
-- Automation enables the generation of a hundred worlds in game development, which would not be feasible with manual creation.
+- Automation enables the efficient generation of a hundred apartments in game development, which would not be feasible with manual creation.
 - Utilizing a sidekick application written in Elixir improves efficiency, saving time and effort.
 - Integration with external libraries and tools expands the capabilities of V-Sekai, providing users with more options and flexibility.
 
@@ -36,7 +36,7 @@ There are some downsides to consider:
 
 ## The Road Not Taken
 
-An alternative approach could involve developing new features within V-Sekai directly to address scalability and performance limitations. However, this may require significant resources and time, whereas automation using a sidekick application can be implemented relatively quickly.
+An alternative approach could involve developing new features within V-Sekai directly to address scalability and performance limitations. However, this may require significant resources and time. Automation using a sidekick application can be implemented relatively quickly and provide immediate benefits.
 
 ## The Infrequent Use Case
 
