@@ -1,4 +1,4 @@
-# Enhancing V-Sekai: Improving VR Experience
+# Improving VR Experience
 
 ## Metadata
 
