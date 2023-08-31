@@ -1,4 +1,4 @@
-# Enhancing V-Sekai: Improving VR Experience, Expanding Worlds, and Integrating Backend Services
+# Integrating Backend Services
 
 ## Metadata
 
