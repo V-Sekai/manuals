@@ -16,19 +16,19 @@ Currently, developers working with VRM files in Godot Engine face difficulties w
 
 ## The Strategy
 
-The proposed strategy is to leverage the computational power of cloud GPUs provided by replicate.com in order to run a GPU blender instance that performs an identity operation on the VRM input, converting it to Blender format. This will greatly simplify the process of converting VRM files to Blender format, enabling developers to seamlessly work with VRM models within the Godot Engine ecosystem.
+The proposed strategy for enabling VRM to Blender conversion involves leveraging the computational power of cloud GPUs provided by replicate.com. By running a GPU-accelerated Blender instance, developers can perform an identity operation on the VRM input, converting it to Blender format. This simplifies the process of converting VRM files to Blender format and allows seamless work with VRM models within the Godot Engine ecosystem.
 
-1. VRM to Blender:
-   To convert VRM files to Blender format, you can follow these steps. First, install the necessary libraries or plugins in both Godot Engine and Blender that support the VRM format. Next, leverage replicate.com's infrastructure to spin up a GPU-accelerated Blender instance. Then, develop a script or tool that takes the VRM file as input in Godot Engine and sends it to the GPU-accelerated Blender instance via a REST interface. In the GPU-accelerated Blender instance, use the installed libraries or plugins to perform the conversion from VRM to Blender format. Finally, return the converted Blender file to Godot Engine for further editing or manipulation.
+To convert VRM files to Blender format, developers can follow these steps:
 
-2. Blender to Blender:
-   To transfer Blender files between different instances of Blender, you can consider the following approach. First, implement a file transfer mechanism, such as using FTP or a cloud storage service, to move the Blender files from one instance to another. Ensure that both instances have the same versions of Blender and any required plugins or dependencies. Next, copy the Blender file from the source instance to the destination instance. The destination instance will then be able to open and work with the transferred Blender file.
+1. Install the necessary libraries or plugins in both Godot Engine and Blender that support the VRM format.
+2. Leverage replicate.com's infrastructure to spin up a GPU-accelerated Blender instance.
+3. Develop a script or tool that takes the VRM file as input in Godot Engine and sends it to the GPU-accelerated Blender instance via a REST interface.
+4. In the GPU-accelerated Blender instance, use the installed libraries or plugins to perform the conversion from VRM to Blender format.
+5. Finally, return the converted Blender file to Godot Engine for further editing or manipulation.
 
-3. Blender to VRM:
-   To convert Blender files to VRM format, you can follow these steps. Start by installing the necessary libraries or plugins in Blender that support the VRM format. Then, develop a script or tool in Blender that takes the Blender file as input and performs the conversion to VRM format using the installed libraries or plugins. Once the conversion is complete, save the resulting VRM file to a desired location.
+This strategy streamlines the workflow for developers, saving time and improving collaboration between designers and developers. The use of cloud GPUs and replicate.com's infrastructure ensures fast and efficient conversion processes.
 
-4. VRM to Blender Conversion with Cloud GPUs and replicate.com:
-   The proposed strategy for enabling VRM to Blender conversion involves leveraging the computational power of cloud GPUs provided by replicate.com. By running a GPU-accelerated Blender instance, you can perform an identity operation on the VRM input, converting it to Blender format. This simplifies the process of converting VRM files to Blender format, allowing developers to seamlessly work with VRM models within the Godot Engine ecosystem. The use of cloud GPUs and replicate.com's infrastructure ensures fast and efficient conversion processes, leading to a streamlined workflow, time-saving, and improved collaboration between designers and developers.
+Additionally, this strategy can also be extended to other software applications or websites that can utilize a REST interface, allowing developers working with VRM files to convert them to Blender format seamlessly, regardless of the software they are using.
 
 ## The Upside
 
