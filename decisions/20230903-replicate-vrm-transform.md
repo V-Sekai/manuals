@@ -16,17 +16,15 @@ Currently, developers working with VRM files in Godot Engine face difficulties w
 
 ## The Strategy
 
-The proposed strategy for enabling VRM to Blender conversion involves leveraging the computational power of cloud GPUs provided by replicate.com. By running a GPU-accelerated Blender instance, developers can perform an identity operation on the VRM input, converting it to Blender format. This simplifies the process of converting VRM files to Blender format and allows seamless work with VRM models within the Godot Engine ecosystem.
+The proposed strategy for enabling VRM to Blender conversion involves leveraging the computational power of cloud GPUs provided by replicate.com. By running a GPU-accelerated Blender instance, developers can perform an identity operation on the VRM input, converting it to Blender format. This simplifies the process of converting VRM files to Blender format.
 
 To convert VRM files to Blender format, developers can follow these steps:
 
-1. Install the necessary libraries or plugins in both Godot Engine and Blender that support the VRM format.
+1. Install the necessary libraries or plugins in Blender that support the VRM format.
 2. Leverage replicate.com's infrastructure to spin up a GPU-accelerated Blender instance.
-3. Develop a script or tool that takes the VRM file as input in Godot Engine and sends it to the GPU-accelerated Blender instance via a REST interface.
+3. Develop a script or tool that takes the VRM file as input and sends it to the GPU-accelerated Blender instance via a REST interface.
 4. In the GPU-accelerated Blender instance, use the installed libraries or plugins to perform the conversion from VRM to Blender format.
 5. Also use Blender to perform the conversion from Blender to VRM/GLTF format.
-6. We can also start Godot Engine to import GLTF and export TSCN.
-7. Finally, return the converted Blender file to Godot Engine for further editing or manipulation.
 
 This strategy streamlines the workflow for developers, saving time and improving collaboration between designers and developers. The use of cloud GPUs and replicate.com's infrastructure ensures fast and efficient conversion processes.
 
