@@ -8,6 +8,9 @@ Our journey had its challenges. For instance, our booth at Virtual Market 6, one
 
 Today, V-Sekai has grown into a global community of open technology enthusiasts who are committed to advancing open standards and open-source software for virtual worlds. We continue to welcome others who share our values to join us and contribute to the future of open-source VR technology.
 
+### V-SEKAI | SEEKING CO-FOUNDER | Innovative Technology | CEO/Sales | USA/Canada | Pre-Seed
+
+
 ## Participate
 
 1. **Chat**: On [Discord](https://discord.gg/7BQDHesck8).

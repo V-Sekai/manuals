@@ -1,0 +1,1 @@
+In semantic versioning (semver), the first alpha release would typically be denoted with a hyphen followed by the word "alpha" and a number. For example, it could be something like "1.0.0-alpha.1". The specific alpha release number may vary depending on the project and its release cycle.
