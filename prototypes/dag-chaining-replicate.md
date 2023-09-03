@@ -1,4 +1,6 @@
-# Idea of DAG chaining
+# Idea of DAG chaining through replicate.com
+
+Must support batching.
 
 1. blender upload
 1. generate thumbnails
