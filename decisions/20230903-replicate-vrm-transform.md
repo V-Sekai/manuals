@@ -24,7 +24,9 @@ To convert VRM files to Blender format, developers can follow these steps:
 2. Leverage replicate.com's infrastructure to spin up a GPU-accelerated Blender instance.
 3. Develop a script or tool that takes the VRM file as input in Godot Engine and sends it to the GPU-accelerated Blender instance via a REST interface.
 4. In the GPU-accelerated Blender instance, use the installed libraries or plugins to perform the conversion from VRM to Blender format.
-5. Finally, return the converted Blender file to Godot Engine for further editing or manipulation.
+5. Also use Blender to perform the conversion from Blender to VRM/GLTF format.
+6. We can also start Godot Engine to import GLTF and export TSCN.
+7. Finally, return the converted Blender file to Godot Engine for further editing or manipulation.
 
 This strategy streamlines the workflow for developers, saving time and improving collaboration between designers and developers. The use of cloud GPUs and replicate.com's infrastructure ensures fast and efficient conversion processes.
 
