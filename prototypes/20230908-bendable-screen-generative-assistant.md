@@ -49,11 +49,10 @@ Here is the Mermaid diagram to illustrate the complete system setup:
 
 ```mermaid
 graph TD
-A[VRM1 Character Layer] --> B[Motion Matching Posing Tech for Assistant Actions]
-B --> C[Whisper.cpp for Speech-to-Text]
-C --> D[Action Handler from Text-to-Text]
-D --> E[1080p+ Monitor in Portrait Mode] -- DisplayPort/HDMI --> F[HDMI Capture Card]
-F -- HDMI --> G[High-Performance Linux Server Cluster]
-H[Keyboard and Mouse] -- USB --> G
-I[Microphone] -- Audio Input --> G
+A[Edge Device: Compute Unit] -->|Processing & Analytics| B[VRM1 Character Layer]
+B --> C[Motion Matching Posing Tech for Assistant Actions]
+C --> D[Whisper.cpp for Speech-to-Text]
+D --> E[Action Handler from Text-to-Text]
+E --> F[1080p+ Monitor in Portrait Mode]
+H[Microphone] -- Audio Input --> A
 ```
