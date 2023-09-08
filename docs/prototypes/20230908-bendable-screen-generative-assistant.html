@@ -118,15 +118,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#prototyping-a-generative-assistant-screen-with-iree" id="toc-prototyping-a-generative-assistant-screen-with-iree" class="nav-link active" data-scroll-target="#prototyping-a-generative-assistant-screen-with-iree">Prototyping a Generative Assistant Screen with IREE</a>
+  <li><a href="#translationtranscription-badge-with-iree" id="toc-translationtranscription-badge-with-iree" class="nav-link active" data-scroll-target="#translationtranscription-badge-with-iree">Translation/Transcription Badge with IREE</a>
   <ul class="collapse">
-  <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
-  <li><a href="#the-backdrop" id="toc-the-backdrop" class="nav-link" data-scroll-target="#the-backdrop">The Backdrop</a></li>
-  <li><a href="#the-challenge" id="toc-the-challenge" class="nav-link" data-scroll-target="#the-challenge">The Challenge</a></li>
-  <li><a href="#the-downside" id="toc-the-downside" class="nav-link" data-scroll-target="#the-downside">The Downside</a></li>
-  <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
-  <li><a href="#the-infrequent-use-case" id="toc-the-infrequent-use-case" class="nav-link" data-scroll-target="#the-infrequent-use-case">The Infrequent Use Case</a></li>
-  <li><a href="#in-core-and-done-by-us" id="toc-in-core-and-done-by-us" class="nav-link" data-scroll-target="#in-core-and-done-by-us">In Core and Done by Us?</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#key-features" id="toc-key-features" class="nav-link" data-scroll-target="#key-features">Key Features</a></li>
+  <li><a href="#potential-challenges" id="toc-potential-challenges" class="nav-link" data-scroll-target="#potential-challenges">Potential Challenges</a></li>
+  <li><a href="#alternatives-not-considered" id="toc-alternatives-not-considered" class="nav-link" data-scroll-target="#alternatives-not-considered">Alternatives Not Considered</a></li>
+  <li><a href="#target-audience" id="toc-target-audience" class="nav-link" data-scroll-target="#target-audience">Target Audience</a></li>
+  <li><a href="#development-strategy" id="toc-development-strategy" class="nav-link" data-scroll-target="#development-strategy">Development Strategy</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   <li><a href="#system-diagram" id="toc-system-diagram" class="nav-link" data-scroll-target="#system-diagram">System Diagram</a></li>
   </ul></li>
@@ -138,52 +137,47 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="prototyping-a-generative-assistant-screen-with-iree" class="level1">
-<h1>Prototyping a Generative Assistant Screen with IREE</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li><strong>Status</strong>: Proposed</li>
-<li><strong>Deciders</strong>: V-Sekai, fire, cyberpunkmermaid</li>
-<li><strong>Tags</strong>: <code>V-Sekai</code></li>
-</ul>
+<section id="translationtranscription-badge-with-iree" class="level1">
+<h1>Translation/Transcription Badge with IREE</h1>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This project proposes the development of a precursor to a generative assistant, focusing on creating a translation/transcription badge using IREE, an MLIR-based compiler that optimizes Machine Learning (ML) models for mobile and edge deployments. The primary focus is on voice interactions and command processing.</p>
 </section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>The primary challenge lies in leveraging IREE, an MLIR-based end-to-end compiler that lowers Machine Learning (ML) models to a unified IR optimized for mobile and edge deployments, for both conversation interactions (openllama) and voice commands (whisper). Our objective is to develop a digital assistant, but the intricacies of game development present significant obstacles.</p>
+<section id="key-features" class="level2">
+<h2 class="anchored" data-anchor-id="key-features">Key Features</h2>
+<ol type="1">
+<li><p><strong>Voice Interactions</strong>: The system will prioritize voice interactions, leveraging IREE’s capabilities to create a responsive AI. Note that Python will not be used in this context.</p></li>
+<li><p><strong>Speech-to-Text Interface</strong>: A speech-to-text interface will be incorporated to process and respond to voice commands effectively.</p></li>
+<li><p><strong>Direct Connection to Compute Module</strong>: The display, set in portrait mode, will connect directly to the compute module, a standard Linux amd64 computer, eliminating the need for embedded software development.</p></li>
+<li><p><strong>No Holograph Displays</strong>: The design will be streamlined and efficient, excluding holograph displays.</p></li>
+</ol>
 </section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>Our proposed strategy is to concentrate solely on voice interactions and a speech-to-text interface using IREE, excluding Python. This approach necessitates a profound understanding of IREE and its applications in creating an interactive and responsive AI capable of effectively processing and responding to voice commands.</p>
-<p>We aim to bypass embedded software development and connect the portrait mode display directly to the compute module, while also avoiding holograph displays.</p>
-<p>The potential upside is the creation of a unique digital assistant that harnesses the power of generative AI. This could revolutionize how we interact with technology and open up new possibilities in the field of AI.</p>
+<section id="potential-challenges" class="level2">
+<h2 class="anchored" data-anchor-id="potential-challenges">Potential Challenges</h2>
+<p>The project’s complexity and the expertise required in areas such as IREE, the Godot engine, and AI development pose significant challenges.</p>
 </section>
-<section id="the-downside" class="level2">
-<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<p>The project’s complexity and difficulty are the main drawbacks. It demands a high level of expertise and knowledge in several areas, including IREE, the Godot engine, and AI development.</p>
+<section id="alternatives-not-considered" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-not-considered">Alternatives Not Considered</h2>
+<p>We have decided against integrating Python with IREE and using a pre-existing AI framework instead of developing one from scratch.</p>
 </section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>One alternative considered but not pursued was integrating Python alongside IREE. While Python is a powerful and versatile language that could have added more flexibility to the project, it was ultimately decided that focusing solely on IREE would allow for a more specialized and optimized system. Another unexplored option was using a pre-existing AI framework instead of building one from scratch. This could have saved time and resources, but it would have limited the customization and unique features of our digital assistant.</p>
+<section id="target-audience" class="level2">
+<h2 class="anchored" data-anchor-id="target-audience">Target Audience</h2>
+<p>The project may not be suitable for individuals without familiarity with IREE or a background in AI development.</p>
 </section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>This project may not be suitable for those unfamiliar with IREE or without a background in AI development.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>Yes, this project will be developed in-house, leveraging our expertise in AI and game development.</p>
+<section id="development-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="development-strategy">Development Strategy</h2>
+<p>The project will be developed in-house, utilizing our expertise in AI and game development.</p>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<p>For more information, please refer to these resources:</p>
 <ul>
-<li><a href="https://v-sekai.org/">V-Sekai</a>: A platform for VRM characters.</li>
-<li><a href="https://github.com/openxla/iree">IREE on GitHub</a>: The official repository of IREE (Intermediate Representation Execution Environment), an open-source compiler and runtime infrastructure.</li>
-<li><a href="https://github.com/sanchit-gandhi/whisper-jax">Whisper JAX on GitHub</a>: The repository for Whisper, a Speech-to-Text module, implemented with JAX.</li>
-<li><a href="https://github.com/iree-org/iree-jax">IREE JAX on GitHub</a>: The IREE JAX API provides a compiler and runtime bridge between JAX and IREE. It allows programs to be extracted and compiled from JAX for deployment with IREE, without a Python or JAX dependency.</li>
-<li><a href="https://huggingface.co/spaces/sanchit-gandhi/whisper-jax">Whisper JAX on Hugging Face Spaces</a>: Whisper JAX is an optimised implementation of the Whisper model by OpenAI. It runs on JAX with a TPU v4-8 in the backend. Compared to PyTorch on an A100 GPU, it is over 70x faster, making it the fastest Whisper API available.</li>
-<li><a href="https://twitter.com/jav6868/status/1698260873352212662?s=20">Twitter inspiration</a>: A tweet that inspired this project.</li>
-<li>This article is assisted by AI.</li>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+<li><a href="https://github.com/openxla/iree">IREE on GitHub</a></li>
+<li><a href="https://github.com/sanchit-gandhi/whisper-jax">Whisper JAX on GitHub</a></li>
+<li><a href="https://github.com/iree-org/iree-jax">IREE JAX on GitHub</a></li>
+<li><a href="https://huggingface.co/spaces/sanchit-gandhi/whisper-jax">Whisper JAX on Hugging Face Spaces</a></li>
+<li><a href="https://twitter.com/jav6868/status/1698260873352212662?s=20">Twitter inspiration</a></li>
 </ul>
 </section>
 <section id="system-diagram" class="level2">
@@ -193,14 +187,14 @@ A[Edge Device: Compute Unit] --&gt;|Hosts| B[VRM1 Character Layer]
 C[Whisper for Speech-to-Text running on IREE] -- Audio Processing --&gt; B
 B --&gt; D[1080p+ Monitor in Portrait Mode]
 E[Microphone] -- Audio Input --&gt; C</code></pre>
-<p><strong>System Diagram Description:</strong></p>
+<p><strong>System Diagram Explanation:</strong></p>
 <ol type="1">
-<li>The interaction begins with the <strong>Edge Device: Compute Unit (A)</strong>, which hosts the <strong>VRM1 Character Layer (B)</strong>.</li>
-<li>The <strong>Whisper for Speech-to-Text module (C)</strong>, now specifically running on IREE, captures audio input from the <strong>Microphone (E)</strong> and converts the spoken words into text.</li>
-<li>This processed data is used to create a virtual character in the VRM1 Character Layer. This character can be in speaking mode or idle animation.</li>
-<li>These texts are then displayed on the <strong>1080p+ Monitor in Portrait Mode (D)</strong>.</li>
+<li>The <strong>Edge Device: Compute Unit (A)</strong>, a standard Linux amd64 computer, hosts the <strong>VRM1 Character Layer (B)</strong>.</li>
+<li>The <strong>Whisper for Speech-to-Text module (C)</strong>, running on IREE, captures audio input from the <strong>Microphone (E)</strong> and converts it into text.</li>
+<li>This processed data is used to animate a virtual character in the VRM1 Character Layer, which can be in speaking or idle mode.</li>
+<li>The resulting texts are displayed on the <strong>1080p+ Monitor in Portrait Mode (D)</strong>.</li>
 </ol>
-<p>The system currently only supports speaking state and idle state. Other modes are not available at this time.</p>
+<p>Please note that the system currently only supports speaking and idle states. Other modes are not available at this time.</p>
 
 
 </section>
