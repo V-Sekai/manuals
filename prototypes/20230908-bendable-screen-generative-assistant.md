@@ -16,9 +16,9 @@ The primary challenge lies in utilizing GGML for both conversation interactions 
 
 ## The Strategy
 
-The proposed strategy involves focusing exclusively on voice interactions and a speech-to-text interface using GGML, excluding Python. This approach necessitates a profound understanding of GGML and its applications in creating interactive and responsive AI capable of effectively processing and responding to voice commands.
+The proposed strategy is to concentrate solely on voice interactions and a speech-to-text interface using GGML, excluding Python. This approach demands an in-depth understanding of GGML and its applications in creating an interactive and responsive AI that can efficiently process and respond to voice commands.
 
-We aim to avoid embedded software development and connect the display directly to the compute.
+Our goal is to bypass embedded software development and connect the portrait mode display directly to the compute module.
 
 ## The Upside
 
