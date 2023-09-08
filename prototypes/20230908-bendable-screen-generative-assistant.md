@@ -55,6 +55,7 @@ C --> D[Action Handler from Text-to-Text]
 D --> E[1080p+ Monitor in Portrait Mode] -- DisplayPort/HDMI --> F[HDMI Capture Card]
 F -- HDMI --> G[Linux Computer]
 H[Keyboard and Mouse] -- USB --> G
+I[Microphone] -- Audio Input --> G
 ```
 
 In this diagram:
@@ -65,4 +66,5 @@ In this diagram:
 - The Action Handler from Text-to-Text outputs to a 1080p+ Monitor set in portrait mode, which connects to the HDMI Capture Card via DisplayPort or HDMI.
 - The HDMI Capture Card then connects to the Linux computer via HDMI.
 - The keyboard and mouse are connected to the Linux computer via USB.
+- The microphone connects to the Linux computer as an audio input.
 - All cables (usb-c and others) must be compliant with the capture card.
