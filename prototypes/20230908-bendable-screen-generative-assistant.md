@@ -36,9 +36,11 @@ Yes, this project will be developed in-house, leveraging our expertise in AI and
 
 ## Further Reading
 
-- [V-Sekai](https://v-sekai.org/)
-- [IREE on GitHub](https://github.com/openxla/iree)
-- [Twitter inspiration](https://twitter.com/jav6868/status/1698260873352212662?s=20)
+- [V-Sekai](https://v-sekai.org/): A platform for VRM characters.
+- [IREE on GitHub](https://github.com/openxla/iree): The official repository of IREE (Intermediate Representation Execution Environment), an open-source compiler and runtime infrastructure.
+- [Whisper JAX on GitHub](https://github.com/sanchit-gandhi/whisper-jax): The repository for Whisper, a Speech-to-Text module, implemented with JAX.
+- [IREE JAX on GitHub](https://github.com/iree-org/iree-jax): The IREE JAX API provides a compiler and runtime bridge between JAX and IREE. It allows programs to be extracted and compiled from JAX for deployment with IREE, without a Python or JAX dependency.
+- [Twitter inspiration](https://twitter.com/jav6868/status/1698260873352212662?s=20): A tweet that inspired this project.
 - This article is assisted by AI.
 
 ## System Diagram
