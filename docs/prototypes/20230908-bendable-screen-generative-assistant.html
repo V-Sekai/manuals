@@ -118,13 +118,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#prototyping-a-generative-assistant-screen" id="toc-prototyping-a-generative-assistant-screen" class="nav-link active" data-scroll-target="#prototyping-a-generative-assistant-screen">Prototyping a Generative Assistant Screen</a>
+  <li><a href="#prototyping-a-generative-assistant-screen-with-ggml" id="toc-prototyping-a-generative-assistant-screen-with-ggml" class="nav-link active" data-scroll-target="#prototyping-a-generative-assistant-screen-with-ggml">Prototyping a Generative Assistant Screen with GGML</a>
   <ul class="collapse">
   <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
   <li><a href="#the-backdrop" id="toc-the-backdrop" class="nav-link" data-scroll-target="#the-backdrop">The Backdrop</a></li>
   <li><a href="#the-challenge" id="toc-the-challenge" class="nav-link" data-scroll-target="#the-challenge">The Challenge</a></li>
-  <li><a href="#the-strategy" id="toc-the-strategy" class="nav-link" data-scroll-target="#the-strategy">The Strategy</a></li>
-  <li><a href="#the-upside" id="toc-the-upside" class="nav-link" data-scroll-target="#the-upside">The Upside</a></li>
   <li><a href="#the-downside" id="toc-the-downside" class="nav-link" data-scroll-target="#the-downside">The Downside</a></li>
   <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
   <li><a href="#the-infrequent-use-case" id="toc-the-infrequent-use-case" class="nav-link" data-scroll-target="#the-infrequent-use-case">The Infrequent Use Case</a></li>
@@ -140,8 +138,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="prototyping-a-generative-assistant-screen" class="level1">
-<h1>Prototyping a Generative Assistant Screen</h1>
+<section id="prototyping-a-generative-assistant-screen-with-ggml" class="level1">
+<h1>Prototyping a Generative Assistant Screen with GGML</h1>
 <section id="metadata" class="level2">
 <h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
@@ -152,20 +150,14 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="the-backdrop" class="level2">
 <h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>V-Sekai is a platform that enables the creation of generative AI using the Godot engine. This AI can be displayed on a device with an OLED display and incorporates various sensors and a posing compute module. The platform also supports direct importing of VRM1 avatars.</p>
+<p>The primary challenge lies in leveraging GGML, a C++ library for standalone offline large language model inference, for both conversation interactions (openllama) and voice commands (whisper). Our objective is to develop a digital assistant, but the intricacies of game development present significant obstacles.</p>
 </section>
 <section id="the-challenge" class="level2">
 <h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>The primary challenge lies in utilizing GGML for both conversation interactions (openllama) and voice commands (whisper). The objective is to develop a digital assistant, but the intricacies of game development present significant obstacles.</p>
-</section>
-<section id="the-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
+<p>Our proposed strategy is to concentrate solely on voice interactions and a speech-to-text interface using GGML, excluding Python. This approach necessitates a profound understanding of GGML and its applications in creating an interactive and responsive AI capable of effectively processing and responding to voice commands.</p>
+<p>We aim to bypass embedded software development and connect the portrait mode display directly to the compute module, while also avoiding holograph displays.</p>
 <p>The proposed strategy is to focus solely on voice interactions and a speech-to-text interface using GGML, excluding Python. This approach requires a deep understanding of GGML and its applications in creating an interactive and responsive AI that can effectively process and respond to voice commands.</p>
-<p>Our goal is to avoid embedded software development and connect the portrait mode display directly to the compute module, while also steering clear of holograph displays.</p>
-</section>
-<section id="the-upside" class="level2">
-<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<p>The potential benefit is the creation of a unique digital assistant that harnesses the power of generative AI. This could transform how we interact with technology and pave the way for new possibilities in the field of AI.</p>
+<p>The potential upside is the creation of a unique digital assistant that harnesses the power of generative AI. This could revolutionize how we interact with technology and open up new possibilities in the field of AI.</p>
 </section>
 <section id="the-downside" class="level2">
 <h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
@@ -194,7 +186,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="system-diagram" class="level2">
 <h2 class="anchored" data-anchor-id="system-diagram">System Diagram</h2>
-<p>Here is the merged Mermaid diagram to illustrate the complete system setup:</p>
+<p>Here is the Mermaid diagram to illustrate the complete system setup:</p>
 <pre class="mermaid"><code>graph TD
 A[VRM1 Character Layer] --&gt; B[Motion Matching Posing Tech for Assistant Actions]
 B --&gt; C[Whisper.cpp for Speech-to-Text]
@@ -202,7 +194,16 @@ C --&gt; D[Action Handler from Text-to-Text]
 D --&gt; E[1080p+ Monitor in Portrait Mode] -- DisplayPort/HDMI --&gt; F[HDMI Capture Card]
 F -- HDMI --&gt; G[Linux Computer]
 H[Keyboard and Mouse] -- USB --&gt; G</code></pre>
-<p>In this diagram: - The VRM1 Character Layer connects to the Motion Matching Posing Tech for Assistant Actions. - The Motion Matching Posing Tech then connects to Whisper.cpp for Speech-to-Text. - The Whisper.cpp for Speech-to-Text connects to the Action Handler from Text-to-Text. - The Action Handler from Text-to-Text outputs to a 1080p+ Monitor set in portrait mode, which connects to the HDMI Capture Card via DisplayPort or HDMI. - The HDMI Capture Card then connects to the Linux computer via HDMI. - The keyboard and mouse are connected to the Linux computer via USB. - All cables (usb-c and others) must be compliant with the capture card.</p>
+<p>In this diagram:</p>
+<ul>
+<li>The VRM1 Character Layer connects to the Motion Matching Posing Tech for Assistant Actions.</li>
+<li>The Motion Matching Posing Tech then connects to Whisper.cpp for Speech-to-Text.</li>
+<li>The Whisper.cpp for Speech-to-Text connects to the Action Handler from Text-to-Text.</li>
+<li>The Action Handler from Text-to-Text outputs to a 1080p+ Monitor set in portrait mode, which connects to the HDMI Capture Card via DisplayPort or HDMI.</li>
+<li>The HDMI Capture Card then connects to the Linux computer via HDMI.</li>
+<li>The keyboard and mouse are connected to the Linux computer via USB.</li>
+<li>All cables (usb-c and others) must be compliant with the capture card.</li>
+</ul>
 
 
 </section>
