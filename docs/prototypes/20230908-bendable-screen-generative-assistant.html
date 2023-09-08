@@ -128,6 +128,13 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#development-strategy" id="toc-development-strategy" class="nav-link" data-scroll-target="#development-strategy">Development Strategy</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   <li><a href="#system-diagram" id="toc-system-diagram" class="nav-link" data-scroll-target="#system-diagram">System Diagram</a></li>
+  <li><a href="#system-diagram-explanation" id="toc-system-diagram-explanation" class="nav-link" data-scroll-target="#system-diagram-explanation">System Diagram Explanation:</a>
+  <ul class="collapse">
+  <li><a href="#edge-device-compute-unit-a" id="toc-edge-device-compute-unit-a" class="nav-link" data-scroll-target="#edge-device-compute-unit-a">1. Edge Device: Compute Unit (A)</a></li>
+  <li><a href="#whisper-for-speech-to-text-module-c" id="toc-whisper-for-speech-to-text-module-c" class="nav-link" data-scroll-target="#whisper-for-speech-to-text-module-c">2. Whisper for Speech-to-Text module (C)</a></li>
+  <li><a href="#vrm1-character-layer-b" id="toc-vrm1-character-layer-b" class="nav-link" data-scroll-target="#vrm1-character-layer-b">3. VRM1 Character Layer (B)</a></li>
+  <li><a href="#wisecoco-6-inch-flexible-oled-display-in-portrait-mode-d" id="toc-wisecoco-6-inch-flexible-oled-display-in-portrait-mode-d" class="nav-link" data-scroll-target="#wisecoco-6-inch-flexible-oled-display-in-portrait-mode-d">4. Wisecoco 6-inch Flexible OLED Display in Portrait Mode (D)</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/prototypes/20230908-bendable-screen-generative-assistant.md" class="toc-action">Edit this page</a></p></div></div></nav>
@@ -189,17 +196,34 @@ A[Edge Device: Compute Unit] --&gt;|Hosts| B[VRM1 Character Layer]
 C[Whisper for Speech-to-Text running on IREE] -- Audio Processing --&gt; B
 B --&gt; D[Wisecoco 6-inch Flexible OLED Display in Portrait Mode]
 E[Microphone] -- Audio Input --&gt; C</code></pre>
-<p><strong>System Diagram Explanation:</strong></p>
-<ol type="1">
-<li>The <strong>Edge Device: Compute Unit (A)</strong>, a standard Linux amd64 computer, hosts the <strong>VRM1 Character Layer (B)</strong>.</li>
-<li>The <strong>Whisper for Speech-to-Text module (C)</strong>, running on IREE, captures audio input from the <strong>Microphone (E)</strong> and converts it into text.</li>
-<li>This processed data is used to animate a virtual character in the VRM1 Character Layer, which can be in speaking or idle mode.</li>
-<li>The resulting texts are displayed on the <strong>Wisecoco 6-inch Flexible OLED Display in Portrait Mode (D)</strong>.</li>
-</ol>
-<p>Please note that the system currently only supports speaking and idle states. Other modes are not available at this time.</p>
-<p>The choice of portrait mode for the display aligns with the specific needs and constraints of your project. Given that your project heavily relies on text-based interactions, specifically transcriptions, portrait mode allows more lines of text to be visible at once, improving the user experience. The system will utilize a 6-inch flexible OLED display from Wisecoco, which can be wall-mounted. Portrait mode is more space-efficient in such scenarios, taking up less horizontal space while still providing ample vertical space for text display. Considering that the primary focus of your project is voice interactions, the display mode should ideally support easy reading of transcriptions. Portrait mode, with its vertical orientation, is more suited to this task as it mimics the natural top-to-bottom reading flow. As per your system diagram, the processed data from the Whisper for Speech-to-Text module running on IREE is used to animate a virtual character and display resulting texts. Given that these texts are likely to be dialogue or conversation-based, portrait mode would allow for a more coherent and continuous display of these text blocks.</p>
+</section>
+<section id="system-diagram-explanation" class="level2">
+<h2 class="anchored" data-anchor-id="system-diagram-explanation">System Diagram Explanation:</h2>
+<section id="edge-device-compute-unit-a" class="level3">
+<h3 class="anchored" data-anchor-id="edge-device-compute-unit-a">1. Edge Device: Compute Unit (A)</h3>
+<p>This unit is a standard Linux amd64 computer that hosts the VRM1 Character Layer (B).</p>
+</section>
+<section id="whisper-for-speech-to-text-module-c" class="level3">
+<h3 class="anchored" data-anchor-id="whisper-for-speech-to-text-module-c">2. Whisper for Speech-to-Text module (C)</h3>
+<p>This module, running on IREE, captures audio input from the Microphone (E) and converts it into text.</p>
+</section>
+<section id="vrm1-character-layer-b" class="level3">
+<h3 class="anchored" data-anchor-id="vrm1-character-layer-b">3. VRM1 Character Layer (B)</h3>
+<p>The processed data from the Whisper module animates a virtual character in this layer. The character can be in speaking or idle mode.</p>
+</section>
+<section id="wisecoco-6-inch-flexible-oled-display-in-portrait-mode-d" class="level3">
+<h3 class="anchored" data-anchor-id="wisecoco-6-inch-flexible-oled-display-in-portrait-mode-d">4. Wisecoco 6-inch Flexible OLED Display in Portrait Mode (D)</h3>
+<p>The resulting texts are displayed on this screen.</p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> Currently, the system only supports speaking and idle states. Other modes are not available.</p>
+</blockquote>
+<p>The choice of portrait mode for the display aligns with the specific needs and constraints of the project. As the project heavily relies on text-based interactions, specifically transcriptions, portrait mode allows more lines of text to be visible at once, thereby improving the user experience.</p>
+<p>The system utilizes a 6-inch flexible OLED display from Wisecoco, which can be wall-mounted. Portrait mode is more space-efficient in such scenarios, taking up less horizontal space while still providing ample vertical space for text display.</p>
+<p>Given that the primary focus of the project is voice interactions, the display mode should ideally support easy reading of transcriptions. Portrait mode, with its vertical orientation, is more suited to this task as it mimics the natural top-to-bottom reading flow.</p>
+<p>According to the system diagram, the processed data from the Whisper for Speech-to-Text module running on IREE is used to animate a virtual character and display the resulting texts. These texts are likely to be dialogue or conversation-based, and portrait mode would allow for a more coherent and continuous display of these text blocks.</p>
 
 
+</section>
 </section>
 </section>
 
