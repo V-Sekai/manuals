@@ -45,13 +45,18 @@ Yes, this project will be developed in-house, leveraging our expertise in AI and
 
 ## System Diagram
 
-Here is the Mermaid diagram to illustrate the complete system setup:
-
 ```mermaid
 graph TD
 A[Edge Device: Compute Unit] -->|Processing & Analytics| B[VRM1 Character Layer]
 B --> D[Whisper.cpp for Speech-to-Text]
-D --> E[Action Handler from Text-to-Text]
-E --> F[1080p+ Monitor in Portrait Mode]
+D --> F[1080p+ Monitor in Portrait Mode]
 H[Microphone] -- Audio Input --> A
 ```
+
+1. The interaction begins with the **Edge Device: Compute Unit (A)**, which processes and analyzes data at the source.
+2. The processed data is used to create a virtual character in the **VRM1 Character Layer (B)**. This character can be in speaking mode or idle animation.
+3. The **Whisper.cpp for Speech-to-Text (D)** module converts the spoken words into text.
+4. These texts are then displayed on the **1080p+ Monitor in Portrait Mode (F)**.
+5. Finally, the **Microphone (H)** captures audio input, which is sent to the Edge Device for processing.
+
+The system currently only supports speaking mode and idle animations. Other modes are not available at this time.
