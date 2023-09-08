@@ -18,6 +18,8 @@ The main challenge lies in the use of GGML for both conversation interactions (o
 
 The proposed strategy is to focus solely on voice interactions and a speech-to-text interface using GGML, excluding Python. This approach will require a deep understanding of GGML and its applications in creating interactive and responsive AI that can effectively process and respond to voice commands.
 
+Avoid embedded software development. Connect the display directly to the compute.
+
 ## The Upside
 
 The upside is the potential creation of a unique digital assistant that leverages the power of generative AI. This could revolutionize the way we interact with technology and open up new possibilities in the field of AI.
