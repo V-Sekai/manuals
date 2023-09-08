@@ -41,4 +41,5 @@ Yes, this project will be developed by us, leveraging our expertise in AI and ga
 ## Further Reading
 
 - [V-Sekai](https://v-sekai.org/)
+- [GGML on GitHub](https://github.com/ggerganov/ggml)
 - This article is assisted by AI.
