@@ -118,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#prototyping-a-generative-assistant-screen-with-ggml" id="toc-prototyping-a-generative-assistant-screen-with-ggml" class="nav-link active" data-scroll-target="#prototyping-a-generative-assistant-screen-with-ggml">Prototyping a Generative Assistant Screen with GGML</a>
+  <li><a href="#prototyping-a-generative-assistant-screen-with-iree" id="toc-prototyping-a-generative-assistant-screen-with-iree" class="nav-link active" data-scroll-target="#prototyping-a-generative-assistant-screen-with-iree">Prototyping a Generative Assistant Screen with IREE</a>
   <ul class="collapse">
   <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
   <li><a href="#the-backdrop" id="toc-the-backdrop" class="nav-link" data-scroll-target="#the-backdrop">The Backdrop</a></li>
@@ -138,8 +138,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="prototyping-a-generative-assistant-screen-with-ggml" class="level1">
-<h1>Prototyping a Generative Assistant Screen with GGML</h1>
+<section id="prototyping-a-generative-assistant-screen-with-iree" class="level1">
+<h1>Prototyping a Generative Assistant Screen with IREE</h1>
 <section id="metadata" class="level2">
 <h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
@@ -150,26 +150,25 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="the-backdrop" class="level2">
 <h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>The primary challenge lies in leveraging GGML, a C++ library for standalone offline large language model inference, for both conversation interactions (openllama) and voice commands (whisper). Our objective is to develop a digital assistant, but the intricacies of game development present significant obstacles.</p>
+<p>The primary challenge lies in leveraging IREE, an MLIR-based end-to-end compiler that lowers Machine Learning (ML) models to a unified IR optimized for mobile and edge deployments, for both conversation interactions (openllama) and voice commands (whisper). Our objective is to develop a digital assistant, but the intricacies of game development present significant obstacles.</p>
 </section>
 <section id="the-challenge" class="level2">
 <h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>Our proposed strategy is to concentrate solely on voice interactions and a speech-to-text interface using GGML, excluding Python. This approach necessitates a profound understanding of GGML and its applications in creating an interactive and responsive AI capable of effectively processing and responding to voice commands.</p>
+<p>Our proposed strategy is to concentrate solely on voice interactions and a speech-to-text interface using IREE, excluding Python. This approach necessitates a profound understanding of IREE and its applications in creating an interactive and responsive AI capable of effectively processing and responding to voice commands.</p>
 <p>We aim to bypass embedded software development and connect the portrait mode display directly to the compute module, while also avoiding holograph displays.</p>
-<p>The proposed strategy is to focus solely on voice interactions and a speech-to-text interface using GGML, excluding Python. This approach requires a deep understanding of GGML and its applications in creating an interactive and responsive AI that can effectively process and respond to voice commands.</p>
 <p>The potential upside is the creation of a unique digital assistant that harnesses the power of generative AI. This could revolutionize how we interact with technology and open up new possibilities in the field of AI.</p>
 </section>
 <section id="the-downside" class="level2">
 <h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<p>The project’s complexity and difficulty are the main drawbacks. It demands a high level of expertise and knowledge in several areas, including GGML, the Godot engine, and AI development.</p>
+<p>The project’s complexity and difficulty are the main drawbacks. It demands a high level of expertise and knowledge in several areas, including IREE, the Godot engine, and AI development.</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>One alternative considered but not pursued was integrating Python alongside GGML. While Python is a powerful and versatile language that could have added more flexibility to the project, it was ultimately decided that focusing solely on GGML would allow for a more specialized and optimized system. Another unexplored option was using a pre-existing AI framework instead of building one from scratch. This could have saved time and resources, but it would have limited the customization and unique features of our digital assistant.</p>
+<p>One alternative considered but not pursued was integrating Python alongside IREE. While Python is a powerful and versatile language that could have added more flexibility to the project, it was ultimately decided that focusing solely on IREE would allow for a more specialized and optimized system. Another unexplored option was using a pre-existing AI framework instead of building one from scratch. This could have saved time and resources, but it would have limited the customization and unique features of our digital assistant.</p>
 </section>
 <section id="the-infrequent-use-case" class="level2">
 <h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>This project may not be suitable for those unfamiliar with GGML or without a background in AI development.</p>
+<p>This project may not be suitable for those unfamiliar with IREE or without a background in AI development.</p>
 </section>
 <section id="in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
@@ -179,7 +178,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <ul>
 <li><a href="https://v-sekai.org/">V-Sekai</a></li>
-<li><a href="https://github.com/ggerganov/ggml">GGML on GitHub</a></li>
+<li><a href="https://github.com/openxla/iree">IREE on GitHub</a></li>
 <li><a href="https://twitter.com/jav6868/status/1698260873352212662?s=20">Twitter inspiration</a></li>
 <li>This article is assisted by AI.</li>
 </ul>
@@ -187,15 +186,15 @@ ul.task-list li input[type="checkbox"] {
 <section id="system-diagram" class="level2">
 <h2 class="anchored" data-anchor-id="system-diagram">System Diagram</h2>
 <pre class="mermaid"><code>graph TD
-A[Edge Device: Compute Unit] --&gt;|Processing &amp; Analytics with IREE| B[VRM1 Character Layer]
-B --&gt; D[Whisper.cpp for Speech-to-Text]
+A[Edge Device: Compute Unit] --&gt; B[VRM1 Character Layer]
+B --&gt; D[Whisper for Speech-to-Text running on IREE]
 D --&gt; F[1080p+ Monitor in Portrait Mode]
 H[Microphone] -- Audio Input --&gt; A</code></pre>
 <p><strong>System Diagram Description:</strong></p>
 <ol type="1">
-<li>The interaction begins with the <strong>Edge Device: Compute Unit (A)</strong>, which processes and analyzes data at the source using IREE. IREE is an MLIR-based end-to-end compiler that lowers Machine Learning (ML) models to a unified IR optimized for mobile and edge deployments.</li>
+<li>The interaction begins with the <strong>Edge Device: Compute Unit (A)</strong>, which processes and analyzes data at the source.</li>
 <li>The processed data is used to create a virtual character in the <strong>VRM1 Character Layer (B)</strong>. This character can be in speaking mode or idle animation.</li>
-<li>The <strong>Whisper.cpp for Speech-to-Text (D)</strong> module converts the spoken words into text.</li>
+<li>The <strong>Whisper for Speech-to-Text (D)</strong> module, now specifically running on IREE, converts the spoken words into text.</li>
 <li>These texts are then displayed on the <strong>1080p+ Monitor in Portrait Mode (F)</strong>.</li>
 <li>Finally, the <strong>Microphone (H)</strong> captures audio input, which is sent to the Edge Device for processing.</li>
 </ol>
