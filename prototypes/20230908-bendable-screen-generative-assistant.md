@@ -40,6 +40,7 @@ Yes, this project will be developed in-house, leveraging our expertise in AI and
 - [IREE on GitHub](https://github.com/openxla/iree): The official repository of IREE (Intermediate Representation Execution Environment), an open-source compiler and runtime infrastructure.
 - [Whisper JAX on GitHub](https://github.com/sanchit-gandhi/whisper-jax): The repository for Whisper, a Speech-to-Text module, implemented with JAX.
 - [IREE JAX on GitHub](https://github.com/iree-org/iree-jax): The IREE JAX API provides a compiler and runtime bridge between JAX and IREE. It allows programs to be extracted and compiled from JAX for deployment with IREE, without a Python or JAX dependency.
+- [Whisper JAX on Hugging Face Spaces](https://huggingface.co/spaces/sanchit-gandhi/whisper-jax): Whisper JAX is an optimised implementation of the Whisper model by OpenAI. It runs on JAX with a TPU v4-8 in the backend. Compared to PyTorch on an A100 GPU, it is over 70x faster, making it the fastest Whisper API available.
 - [Twitter inspiration](https://twitter.com/jav6868/status/1698260873352212662?s=20): A tweet that inspired this project.
 - This article is assisted by AI.
 
