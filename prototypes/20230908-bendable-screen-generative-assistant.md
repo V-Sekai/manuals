@@ -58,4 +58,5 @@ Yes, this project will be developed in-house, leveraging our expertise in AI and
 
 - [V-Sekai](https://v-sekai.org/)
 - [GGML on GitHub](https://github.com/ggerganov/ggml)
+- [Twitter inspiration](https://twitter.com/jav6868/status/1698260873352212662?s=20)
 - This article is assisted by AI.
