@@ -20,21 +20,6 @@ The proposed strategy is to focus solely on voice interactions and a speech-to-t
 
 Our goal is to avoid embedded software development and connect the portrait mode display directly to the compute module, while also steering clear of holograph displays.
 
-Below is a Mermaid diagram to illustrate the system setup:
-
-```mermaid
-graph LR
-A[1080p+ Monitor in Portrait Mode] -- DisplayPort/HDMI --> B[HDMI Capture Card]
-B -- HDMI --> C[Linux Computer]
-D[Keyboard and Mouse] -- USB --> C
-```
-
-In this diagram:
-- Cables (usb-c and others) must be compliant with the capture card
-- The 1080p+ monitor (set in portrait mode) connects to the HDMI capture card via DisplayPort or HDMI.
-- The HDMI capture card then connects to the Linux computer via HDMI.
-- The keyboard and mouse are connected to the Linux computer via USB.
-
 ## The Upside
 
 The potential benefit is the creation of a unique digital assistant that harnesses the power of generative AI. This could transform how we interact with technology and pave the way for new possibilities in the field of AI.
@@ -61,3 +46,20 @@ Yes, this project will be developed in-house, leveraging our expertise in AI and
 - [GGML on GitHub](https://github.com/ggerganov/ggml)
 - [Twitter inspiration](https://twitter.com/jav6868/status/1698260873352212662?s=20)
 - This article is assisted by AI.
+
+## System Diagram
+
+Below is a Mermaid diagram to illustrate the system setup:
+
+```mermaid
+graph LR
+A[1080p+ Monitor in Portrait Mode] -- DisplayPort/HDMI --> B[HDMI Capture Card]
+B -- HDMI --> C[Linux Computer]
+D[Keyboard and Mouse] -- USB --> C
+```
+
+In this diagram:
+- Cables (usb-c and others) must be compliant with the capture card
+- The 1080p+ monitor (set in portrait mode) connects to the HDMI capture card via DisplayPort or HDMI.
+- The HDMI capture card then connects to the Linux computer via HDMI.
+- The keyboard and mouse are connected to the Linux computer via USB.
