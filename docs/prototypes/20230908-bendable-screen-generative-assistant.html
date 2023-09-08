@@ -141,16 +141,17 @@ ul.task-list li input[type="checkbox"] {
 <h1>Translation/Transcription Badge with IREE</h1>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This project proposes the development of a precursor to a generative assistant, focusing on creating a translation/transcription badge using IREE, an MLIR-based compiler that optimizes Machine Learning (ML) models for mobile and edge deployments. The primary focus is on voice interactions and command processing.</p>
+<p>The project aims to develop a translation/transcription badge using IREE, an MLIR-based compiler that optimizes Machine Learning (ML) models for mobile and edge deployments. The primary focus is on voice interactions.</p>
 </section>
 <section id="key-features" class="level2">
 <h2 class="anchored" data-anchor-id="key-features">Key Features</h2>
-<ol type="1">
-<li><p><strong>Voice Interactions</strong>: The system will prioritize voice interactions, leveraging IREE’s capabilities to create a responsive AI. Note that Python will not be used in this context.</p></li>
-<li><p><strong>Speech-to-Text Interface</strong>: A speech-to-text interface will be incorporated to process and respond to voice commands effectively.</p></li>
-<li><p><strong>Direct Connection to Compute Module</strong>: The display, set in portrait mode, will connect directly to the compute module, a standard Linux amd64 computer, eliminating the need for embedded software development.</p></li>
-<li><p><strong>No Holograph Displays</strong>: The design will be streamlined and efficient, excluding holograph displays.</p></li>
-</ol>
+<ul>
+<li><strong>Voice Interactions</strong>: The system will prioritize voice interactions, leveraging IREE’s capabilities to create a responsive AI. Python will not be used in this context.</li>
+<li><strong>Speech-to-Text Interface</strong>: A speech-to-text interface will be incorporated to process voice inputs effectively.</li>
+<li><strong>Direct Connection to Compute Module</strong>: The display, set in portrait mode, will connect directly to the compute module, a standard Linux amd64 computer, eliminating the need for embedded software development.</li>
+<li><strong>Flexible OLED Display</strong>: The system will utilize a 6-inch flexible OLED display from Wisecoco with a resolution of 2880*1440 at 60Hz refresh rate. This display offers a wide viewing angle of 178 degrees and can be wall-mounted.</li>
+<li><strong>No Holograph Displays</strong>: The design will be streamlined and efficient, excluding holograph displays.</li>
+</ul>
 </section>
 <section id="potential-challenges" class="level2">
 <h2 class="anchored" data-anchor-id="potential-challenges">Potential Challenges</h2>
@@ -178,6 +179,7 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://github.com/iree-org/iree-jax">IREE JAX on GitHub</a></li>
 <li><a href="https://huggingface.co/spaces/sanchit-gandhi/whisper-jax">Whisper JAX on Hugging Face Spaces</a></li>
 <li><a href="https://twitter.com/jav6868/status/1698260873352212662?s=20">Twitter inspiration</a></li>
+<li><a href="https://www.amazon.ca/wisecoco-Flexible-Display-Screen-Bendable/dp/B0C7YY16Z5">wisecoco 6 inch 2K Flexible OLED Display IPS 2880 * 1440 Flexible Screen Curved Bendable Screen</a></li>
 </ul>
 </section>
 <section id="system-diagram" class="level2">
@@ -185,16 +187,17 @@ ul.task-list li input[type="checkbox"] {
 <pre class="mermaid"><code>graph TD
 A[Edge Device: Compute Unit] --&gt;|Hosts| B[VRM1 Character Layer]
 C[Whisper for Speech-to-Text running on IREE] -- Audio Processing --&gt; B
-B --&gt; D[1080p+ Monitor in Portrait Mode]
+B --&gt; D[Wisecoco 6-inch Flexible OLED Display in Portrait Mode]
 E[Microphone] -- Audio Input --&gt; C</code></pre>
 <p><strong>System Diagram Explanation:</strong></p>
 <ol type="1">
 <li>The <strong>Edge Device: Compute Unit (A)</strong>, a standard Linux amd64 computer, hosts the <strong>VRM1 Character Layer (B)</strong>.</li>
 <li>The <strong>Whisper for Speech-to-Text module (C)</strong>, running on IREE, captures audio input from the <strong>Microphone (E)</strong> and converts it into text.</li>
 <li>This processed data is used to animate a virtual character in the VRM1 Character Layer, which can be in speaking or idle mode.</li>
-<li>The resulting texts are displayed on the <strong>1080p+ Monitor in Portrait Mode (D)</strong>.</li>
+<li>The resulting texts are displayed on the <strong>Wisecoco 6-inch Flexible OLED Display in Portrait Mode (D)</strong>.</li>
 </ol>
 <p>Please note that the system currently only supports speaking and idle states. Other modes are not available at this time.</p>
+<p>The choice of portrait mode for the display aligns with the specific needs and constraints of your project. Given that your project heavily relies on text-based interactions, specifically transcriptions, portrait mode allows more lines of text to be visible at once, improving the user experience. The system will utilize a 6-inch flexible OLED display from Wisecoco, which can be wall-mounted. Portrait mode is more space-efficient in such scenarios, taking up less horizontal space while still providing ample vertical space for text display. Considering that the primary focus of your project is voice interactions, the display mode should ideally support easy reading of transcriptions. Portrait mode, with its vertical orientation, is more suited to this task as it mimics the natural top-to-bottom reading flow. As per your system diagram, the processed data from the Whisper for Speech-to-Text module running on IREE is used to animate a virtual character and display resulting texts. Given that these texts are likely to be dialogue or conversation-based, portrait mode would allow for a more coherent and continuous display of these text blocks.</p>
 
 
 </section>
