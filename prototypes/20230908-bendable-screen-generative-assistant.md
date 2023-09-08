@@ -1,4 +1,4 @@
-# Prototyping a Generative Assistant Screen
+# Prototyping a Generative Assistant Screen with GGML
 
 ## Metadata
 
@@ -8,21 +8,17 @@
 
 ## The Backdrop
 
-V-Sekai is a platform that enables the creation of generative AI using the Godot engine. This AI can be displayed on a device with an OLED display and incorporates various sensors and a posing compute module. The platform also supports direct importing of VRM1 avatars.
+The primary challenge lies in leveraging GGML, a C++ library for standalone offline large language model inference, for both conversation interactions (openllama) and voice commands (whisper). Our objective is to develop a digital assistant, but the intricacies of game development present significant obstacles.
 
 ## The Challenge
 
-The primary challenge lies in utilizing GGML for both conversation interactions (openllama) and voice commands (whisper). The objective is to develop a digital assistant, but the intricacies of game development present significant obstacles.
+Our proposed strategy is to concentrate solely on voice interactions and a speech-to-text interface using GGML, excluding Python. This approach necessitates a profound understanding of GGML and its applications in creating an interactive and responsive AI capable of effectively processing and responding to voice commands.
 
-## The Strategy
+We aim to bypass embedded software development and connect the portrait mode display directly to the compute module, while also avoiding holograph displays.
 
 The proposed strategy is to focus solely on voice interactions and a speech-to-text interface using GGML, excluding Python. This approach requires a deep understanding of GGML and its applications in creating an interactive and responsive AI that can effectively process and respond to voice commands.
 
-Our goal is to avoid embedded software development and connect the portrait mode display directly to the compute module, while also steering clear of holograph displays.
-
-## The Upside
-
-The potential benefit is the creation of a unique digital assistant that harnesses the power of generative AI. This could transform how we interact with technology and pave the way for new possibilities in the field of AI.
+The potential upside is the creation of a unique digital assistant that harnesses the power of generative AI. This could revolutionize how we interact with technology and open up new possibilities in the field of AI.
 
 ## The Downside
 
@@ -49,7 +45,7 @@ Yes, this project will be developed in-house, leveraging our expertise in AI and
 
 ## System Diagram
 
-Here is the merged Mermaid diagram to illustrate the complete system setup:
+Here is the Mermaid diagram to illustrate the complete system setup:
 
 ```mermaid
 graph TD
@@ -62,6 +58,7 @@ H[Keyboard and Mouse] -- USB --> G
 ```
 
 In this diagram:
+
 - The VRM1 Character Layer connects to the Motion Matching Posing Tech for Assistant Actions.
 - The Motion Matching Posing Tech then connects to Whisper.cpp for Speech-to-Text.
 - The Whisper.cpp for Speech-to-Text connects to the Action Handler from Text-to-Text.
