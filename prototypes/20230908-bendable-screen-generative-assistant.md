@@ -45,18 +45,17 @@ Yes, this project will be developed in-house, leveraging our expertise in AI and
 
 ```mermaid
 graph TD
-A[Edge Device: Compute Unit] --> B[VRM1 Character Layer]
-B --> D[Whisper for Speech-to-Text running on IREE]
-D --> F[1080p+ Monitor in Portrait Mode]
-H[Microphone] -- Audio Input --> A
+A[Edge Device: Compute Unit] -->|Hosts| B[VRM1 Character Layer]
+C[Whisper for Speech-to-Text running on IREE] -- Audio Processing --> B
+B --> D[1080p+ Monitor in Portrait Mode]
+E[Microphone] -- Audio Input --> C
 ```
 
 **System Diagram Description:**
 
-1. The interaction begins with the **Edge Device: Compute Unit (A)**, which processes and analyzes data at the source.
-2. The processed data is used to create a virtual character in the **VRM1 Character Layer (B)**. This character can be in speaking mode or idle animation.
-3. The **Whisper for Speech-to-Text (D)** module, now specifically running on IREE, converts the spoken words into text.
-4. These texts are then displayed on the **1080p+ Monitor in Portrait Mode (F)**.
-5. Finally, the **Microphone (H)** captures audio input, which is sent to the Edge Device for processing.
+1. The interaction begins with the **Edge Device: Compute Unit (A)**, which hosts the **VRM1 Character Layer (B)**.
+2. The **Whisper for Speech-to-Text module (C)**, now specifically running on IREE, captures audio input from the **Microphone (E)** and converts the spoken words into text.
+3. This processed data is used to create a virtual character in the VRM1 Character Layer. This character can be in speaking mode or idle animation.
+4. These texts are then displayed on the **1080p+ Monitor in Portrait Mode (D)**.
 
 The system currently only supports speaking state and idle state. Other modes are not available at this time.
