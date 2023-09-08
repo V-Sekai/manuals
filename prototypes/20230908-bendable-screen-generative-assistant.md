@@ -24,7 +24,7 @@ Below is a Mermaid diagram to illustrate the system setup:
 
 ```mermaid
 graph LR
-A[1080p+ Monitor<br>(Portrait Mode)] -- DisplayPort/HDMI --> B[HDMI Capture Card]
+A[1080p+ Monitor in Portrait Mode] -- DisplayPort/HDMI --> B[HDMI Capture Card]
 B -- HDMI --> C[Linux PopOS Computer]
 D[Keyboard and Mouse] -- USB --> C
 ```
