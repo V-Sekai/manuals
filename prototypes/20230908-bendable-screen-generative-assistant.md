@@ -9,7 +9,7 @@ The project aims to develop a translation/transcription badge using IREE, an MLI
 - **Voice Interactions**: The system will prioritize voice interactions, leveraging IREE's capabilities to create a responsive AI. Python will not be used in this context.
 - **Speech-to-Text Interface**: A speech-to-text interface will be incorporated to process voice inputs effectively.
 - **Direct Connection to Compute Module**: The display, set in portrait mode, will connect directly to the compute module, a standard Linux amd64 computer, eliminating the need for embedded software development.
-- **Flexible OLED Display**: The system will utilize a 6-inch flexible OLED display from Wisecoco with a resolution of 2880\*1440 at 60Hz refresh rate. This display offers a wide viewing angle of 178 degrees and can be wall-mounted.
+- **Flexible OLED Display**: The system will utilize a 6-inch flexible OLED display from Wisecoco with a resolution of 2880\*1440 at 60Hz refresh rate.
 - **No Holograph Displays**: The design will be streamlined and efficient, excluding holograph displays.
 
 ## Potential Challenges
@@ -72,7 +72,7 @@ The resulting texts are displayed on this screen.
 
 The choice of portrait mode for the display aligns with the specific needs and constraints of the project. As the project heavily relies on text-based interactions, specifically transcriptions, portrait mode allows more lines of text to be visible at once, thereby improving the user experience.
 
-The system utilizes a 6-inch flexible OLED display from Wisecoco, which can be wall-mounted. Portrait mode is more space-efficient in such scenarios, taking up less horizontal space while still providing ample vertical space for text display.
+The system utilizes a 6-inch flexible OLED display from Wisecoco. Portrait mode is more space-efficient in such scenarios, taking up less horizontal space while still providing ample vertical space for text display.
 
 Given that the primary focus of the project is voice interactions, the display mode should ideally support easy reading of transcriptions. Portrait mode, with its vertical orientation, is more suited to this task as it mimics the natural top-to-bottom reading flow.
 
