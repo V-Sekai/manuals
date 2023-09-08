@@ -53,18 +53,7 @@ A[VRM1 Character Layer] --> B[Motion Matching Posing Tech for Assistant Actions]
 B --> C[Whisper.cpp for Speech-to-Text]
 C --> D[Action Handler from Text-to-Text]
 D --> E[1080p+ Monitor in Portrait Mode] -- DisplayPort/HDMI --> F[HDMI Capture Card]
-F -- HDMI --> G[Linux Computer]
+F -- HDMI --> G[High-Performance Linux Server Cluster]
 H[Keyboard and Mouse] -- USB --> G
 I[Microphone] -- Audio Input --> G
 ```
-
-In this diagram:
-
-- The VRM1 Character Layer connects to the Motion Matching Posing Tech for Assistant Actions.
-- The Motion Matching Posing Tech then connects to Whisper.cpp for Speech-to-Text.
-- The Whisper.cpp for Speech-to-Text connects to the Action Handler from Text-to-Text.
-- The Action Handler from Text-to-Text outputs to a 1080p+ Monitor set in portrait mode, which connects to the HDMI Capture Card via DisplayPort or HDMI.
-- The HDMI Capture Card then connects to the Linux computer via HDMI.
-- The keyboard and mouse are connected to the Linux computer via USB.
-- The microphone connects to the Linux computer as an audio input.
-- All cables (usb-c and others) must be compliant with the capture card.
