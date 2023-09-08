@@ -30,6 +30,7 @@ D[Keyboard and Mouse] -- USB --> C
 ```
 
 In this diagram:
+- Cables (usb-c and others) must be compliant with the capture card
 - The 1080p+ monitor (set in portrait mode) connects to the HDMI capture card via DisplayPort or HDMI.
 - The HDMI capture card then connects to the Linux PopOS computer via HDMI.
 - The keyboard and mouse are connected to the Linux PopOS computer via USB.
