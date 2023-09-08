@@ -50,8 +50,7 @@ Here is the Mermaid diagram to illustrate the complete system setup:
 ```mermaid
 graph TD
 A[Edge Device: Compute Unit] -->|Processing & Analytics| B[VRM1 Character Layer]
-B --> C[Motion Matching Posing Tech for Assistant Actions]
-C --> D[Whisper.cpp for Speech-to-Text]
+B --> D[Whisper.cpp for Speech-to-Text]
 D --> E[Action Handler from Text-to-Text]
 E --> F[1080p+ Monitor in Portrait Mode]
 H[Microphone] -- Audio Input --> A
