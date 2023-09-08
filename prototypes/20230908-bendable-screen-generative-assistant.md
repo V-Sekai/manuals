@@ -16,7 +16,7 @@ The main challenge lies in the use of GGML for both conversation interactions (o
 
 ## The Strategy
 
-The proposed strategy is to focus on using GGML, excluding Python. This approach will require a deep understanding of GGML and its applications in creating interactive and responsive AI.
+The proposed strategy is to focus solely on voice interactions and a speech-to-text interface using GGML, excluding Python. This approach will require a deep understanding of GGML and its applications in creating interactive and responsive AI that can effectively process and respond to voice commands.
 
 ## The Upside
 
