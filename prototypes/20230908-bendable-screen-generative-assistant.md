@@ -12,7 +12,7 @@ V-Sekai is a platform that allows for the creation of generative AI using the Go
 
 ## The Challenge
 
-The main challenge lies in the use of GGML for both conversation interactions (openllama) and voice commands (whisper). The goal is to create a digital assistant similar to Siri, but the complexity of game development presents significant hurdles.
+The main challenge lies in the use of GGML for both conversation interactions (openllama) and voice commands (whisper). The goal is to create a digital assistant, but the complexity of game development presents significant hurdles.
 
 ## The Strategy
 
