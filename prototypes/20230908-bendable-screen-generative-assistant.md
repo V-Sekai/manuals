@@ -47,16 +47,18 @@ Yes, this project will be developed in-house, leveraging our expertise in AI and
 
 ```mermaid
 graph TD
-A[Edge Device: Compute Unit] -->|Processing & Analytics| B[VRM1 Character Layer]
+A[Edge Device: Compute Unit] -->|Processing & Analytics with IREE| B[VRM1 Character Layer]
 B --> D[Whisper.cpp for Speech-to-Text]
 D --> F[1080p+ Monitor in Portrait Mode]
 H[Microphone] -- Audio Input --> A
 ```
 
-1. The interaction begins with the **Edge Device: Compute Unit (A)**, which processes and analyzes data at the source.
+**System Diagram Description:**
+
+1. The interaction begins with the **Edge Device: Compute Unit (A)**, which processes and analyzes data at the source using IREE. IREE is an MLIR-based end-to-end compiler that lowers Machine Learning (ML) models to a unified IR optimized for mobile and edge deployments.
 2. The processed data is used to create a virtual character in the **VRM1 Character Layer (B)**. This character can be in speaking mode or idle animation.
 3. The **Whisper.cpp for Speech-to-Text (D)** module converts the spoken words into text.
 4. These texts are then displayed on the **1080p+ Monitor in Portrait Mode (F)**.
 5. Finally, the **Microphone (H)** captures audio input, which is sent to the Edge Device for processing.
 
-The system currently only supports speaking mode and idle animations. Other modes are not available at this time.
+The system currently only supports speaking state and idle state. Other modes are not available at this time.
