@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Mon, 11 Sep 2023 07:31:36 GMT</lastBuildDate>
+<lastBuildDate>Mon, 11 Sep 2023 07:35:15 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -68,7 +68,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Mon, 11 Sep 2023 07:31:36 GMT</pubDate>
+  <pubDate>Mon, 11 Sep 2023 07:35:15 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -124,7 +124,99 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230911-xr-grid-with-drawing.html</guid>
-  <pubDate>Mon, 11 Sep 2023 07:31:36 GMT</pubDate>
+  <pubDate>Mon, 11 Sep 2023 07:35:15 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230908-bendable-screen-generative-assistant-ggml.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="translationtranscription-badge-with-ggmls-whisper" class="level1">
+<h1>Translation/Transcription Badge with GGML’s Whisper</h1>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>The project aims to develop a translation/transcription badge using GGML’s Whisper, a part of the GGML library that provides access to large language models (LLMs). The primary focus is on voice interactions.</p>
+</section>
+<section id="key-features" class="level2">
+<h2 class="anchored" data-anchor-id="key-features">Key Features</h2>
+<ul>
+<li><strong>Voice Interactions</strong>: The system will prioritize voice interactions, leveraging GGML’s Whisper capabilities to create a responsive AI. Python will not be used in this context.</li>
+<li><strong>Speech-to-Text Interface</strong>: A speech-to-text interface will be incorporated to process voice inputs effectively.</li>
+<li><strong>Direct Connection to Compute Module</strong>: The display, set in portrait mode, will connect directly to the compute module, a standard Linux amd64 computer, eliminating the need for embedded software development.</li>
+<li><strong>Flexible OLED Display</strong>: The system will utilize a 6-inch flexible OLED display from Wisecoco with a resolution of 2880*1440 at 60Hz refresh rate.</li>
+<li><strong>No Holograph Displays</strong>: The design will be streamlined and efficient, excluding holograph displays.</li>
+</ul>
+</section>
+<section id="potential-challenges" class="level2">
+<h2 class="anchored" data-anchor-id="potential-challenges">Potential Challenges</h2>
+<p>The project’s complexity and the expertise required in areas such as GGML, the Godot engine, and AI development pose significant challenges.</p>
+</section>
+<section id="alternatives-not-considered" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-not-considered">Alternatives Not Considered</h2>
+<p>We have decided against integrating Python with GGML and using a pre-existing AI framework instead of developing one from scratch.</p>
+</section>
+<section id="target-audience" class="level2">
+<h2 class="anchored" data-anchor-id="target-audience">Target Audience</h2>
+<p>The project may not be suitable for individuals without familiarity with GGML or a background in AI development.</p>
+</section>
+<section id="development-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="development-strategy">Development Strategy</h2>
+<p>The project will be developed in-house, utilizing our expertise in AI and game development.</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<p>For more information, please refer to these resources:</p>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+<li><a href="https://github.com/georgi-gerganov/ggml">GGML on GitHub</a></li>
+<li><a href="https://github.com/sanchit-gandhi/whisper-jax">Whisper JAX on GitHub</a></li>
+<li><a href="https://twitter.com/jav6868/status/1698260873352212662?s=20">Twitter inspiration</a></li>
+<li><a href="https://www.amazon.ca/wisecoco-Flexible-Display-Screen-Bendable/dp/B0C7YY16Z5">wisecoco 6 inch 2K Flexible OLED Display IPS 2880 * 1440 Flexible Screen Curved Bendable Screen</a></li>
+</ul>
+</section>
+<section id="system-diagram" class="level2">
+<h2 class="anchored" data-anchor-id="system-diagram">System Diagram</h2>
+<pre class="mermaid"><code>graph TD
+A[Edge Device: Compute Unit] --&gt;|Hosts| B[VRM1 Character Layer]
+C[Whisper for Speech-to-Text running on GGML] -- Audio Processing --&gt; B
+B --&gt; D[Wisecoco 6-inch Flexible OLED Display in Portrait Mode]
+E[Microphone] -- Audio Input --&gt; C</code></pre>
+</section>
+<section id="system-diagram-explanation" class="level2">
+<h2 class="anchored" data-anchor-id="system-diagram-explanation">System Diagram Explanation:</h2>
+<section id="edge-device-compute-unit-a" class="level3">
+<h3 class="anchored" data-anchor-id="edge-device-compute-unit-a">1. Edge Device: Compute Unit (A)</h3>
+<p>This unit is a standard Linux amd64 computer that hosts the VRM1 Character Layer (B).</p>
+</section>
+<section id="whisper-for-speech-to-text-module-c" class="level3">
+<h3 class="anchored" data-anchor-id="whisper-for-speech-to-text-module-c">2. Whisper for Speech-to-Text module (C)</h3>
+<p>This module, running on GGML, captures audio input from the Microphone (E) and converts it into text.</p>
+</section>
+<section id="vrm1-character-layer-b" class="level3">
+<h3 class="anchored" data-anchor-id="vrm1-character-layer-b">3. VRM1 Character Layer (B)</h3>
+<p>The processed data from the Whisper module animates a virtual character in this layer. The character can be in speaking or idle mode.</p>
+</section>
+<section id="wisecoco-6-inch-flexible-oled-display-in-portrait-mode-d" class="level3">
+<h3 class="anchored" data-anchor-id="wisecoco-6-inch-flexible-oled-display-in-portrait-mode-d">4. Wisecoco 6-inch Flexible OLED Display in Portrait Mode (D)</h3>
+<p>The resulting texts are displayed on this screen.</p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> Currently, the system only supports speaking and idle states. Other modes are not available.</p>
+</blockquote>
+<p>The choice of portrait mode for the display aligns with the specific needs and constraints of the project. As the project heavily relies on text-based interactions, specifically transcriptions, portrait mode allows more lines of text to be visible at once, thereby improving the user experience.</p>
+<p>The system utilizes a 6-inch flexible OLED display from Wisecoco. Portrait mode is more space-efficient in such scenarios, taking up less horizontal space while still providing ample vertical space for text display.</p>
+<p>Given that the primary focus of the project is voice interactions, the display mode should ideally support easy reading of transcriptions. Portrait mode, with its vertical orientation, is more suited to this task as it mimics the natural top-to-bottom reading flow.</p>
+<p>According to the system diagram, the processed data from the Whisper for Speech-to-Text module running on GGML is used to animate a virtual character and display the resulting texts. These texts are likely to be dialogue or conversation-based, and portrait mode would allow for a more coherent and continuous display of these text blocks.</p>
+
+
+</section>
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230908-bendable-screen-generative-assistant-ggml.html</guid>
+  <pubDate>Mon, 11 Sep 2023 07:35:15 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -209,7 +301,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230903-replicate-vrm-transform.html</guid>
-  <pubDate>Mon, 11 Sep 2023 07:31:36 GMT</pubDate>
+  <pubDate>Mon, 11 Sep 2023 07:35:15 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -274,7 +366,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230831-fixing-upload-limits.html</guid>
-  <pubDate>Mon, 11 Sep 2023 07:31:36 GMT</pubDate>
+  <pubDate>Mon, 11 Sep 2023 07:35:15 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -337,7 +429,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230831-fixing-menus.html</guid>
-  <pubDate>Mon, 11 Sep 2023 07:31:36 GMT</pubDate>
+  <pubDate>Mon, 11 Sep 2023 07:35:15 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -419,7 +511,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230830-generating-v-sekai-worlds.html</guid>
-  <pubDate>Mon, 11 Sep 2023 07:31:36 GMT</pubDate>
+  <pubDate>Mon, 11 Sep 2023 07:35:15 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -483,7 +575,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230830-better-object-pick.html</guid>
-  <pubDate>Mon, 11 Sep 2023 07:31:36 GMT</pubDate>
+  <pubDate>Mon, 11 Sep 2023 07:35:15 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -547,7 +639,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230830-better-backend-services.html</guid>
-  <pubDate>Mon, 11 Sep 2023 07:31:36 GMT</pubDate>
+  <pubDate>Mon, 11 Sep 2023 07:35:15 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -718,7 +810,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230829-omifest-2023.html</guid>
-  <pubDate>Mon, 11 Sep 2023 07:31:36 GMT</pubDate>
+  <pubDate>Mon, 11 Sep 2023 07:35:15 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -784,7 +876,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230824-subdiv-for-lods.html</guid>
-  <pubDate>Mon, 11 Sep 2023 07:31:36 GMT</pubDate>
+  <pubDate>Mon, 11 Sep 2023 07:35:15 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1051,7 +1143,7 @@ font-style: inherit;">=</span> json.dumps(output)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230823-speech-to-blendshapes.html</guid>
-  <pubDate>Mon, 11 Sep 2023 07:31:36 GMT</pubDate>
+  <pubDate>Mon, 11 Sep 2023 07:35:15 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1120,7 +1212,7 @@ font-style: inherit;">=</span> json.dumps(output)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230819-train-game.html</guid>
-  <pubDate>Mon, 11 Sep 2023 07:31:36 GMT</pubDate>
+  <pubDate>Mon, 11 Sep 2023 07:35:15 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1208,7 +1300,7 @@ font-style: inherit;">=</span> json.dumps(output)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230813-mixer-broadcaster-into-membrane-framework copy.html</guid>
-  <pubDate>Mon, 11 Sep 2023 07:31:36 GMT</pubDate>
+  <pubDate>Mon, 11 Sep 2023 07:35:15 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1323,7 +1415,7 @@ font-style: inherit;">=</span> json.dumps(output)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230813-blender-runner-into-membrane-framework.html</guid>
-  <pubDate>Mon, 11 Sep 2023 07:31:36 GMT</pubDate>
+  <pubDate>Mon, 11 Sep 2023 07:35:15 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1391,7 +1483,7 @@ font-style: inherit;">=</span> json.dumps(output)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230812-vsekai-update-process.html</guid>
-  <pubDate>Mon, 11 Sep 2023 07:31:36 GMT</pubDate>
+  <pubDate>Mon, 11 Sep 2023 07:35:15 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1463,7 +1555,7 @@ font-style: inherit;">=</span> json.dumps(output)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230812-unmerge-and-merge-procedure-source-code-tree.html</guid>
-  <pubDate>Mon, 11 Sep 2023 07:31:36 GMT</pubDate>
+  <pubDate>Mon, 11 Sep 2023 07:35:15 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1580,7 +1672,7 @@ font-style: inherit;">=</span> json.dumps(output)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230812-gocd-agent-setup.html</guid>
-  <pubDate>Mon, 11 Sep 2023 07:31:36 GMT</pubDate>
+  <pubDate>Mon, 11 Sep 2023 07:35:15 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1644,7 +1736,7 @@ font-style: inherit;">=</span> json.dumps(output)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230812-constraint-all-bones.html</guid>
-  <pubDate>Mon, 11 Sep 2023 07:31:36 GMT</pubDate>
+  <pubDate>Mon, 11 Sep 2023 07:35:15 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1730,80 +1822,7 @@ font-style: inherit;">=</span> json.dumps(output)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230811-punchline-reports.html</guid>
-  <pubDate>Mon, 11 Sep 2023 07:31:36 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20230806-v-sekai-ipad-projection-compatibility.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="v-sekai-navigation-compatibility-with-vr" class="level1">
-<h1>V-Sekai Navigation Compatibility with VR</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li><strong>Status:</strong> Proposed</li>
-<li><strong>Deciders:</strong> V-Sekai</li>
-<li><strong>Tags:</strong> V-Sekai, iPad, Presentation Screen, Compatibility</li>
-</ul>
-</section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>We are developing a VR game that MUST be compatible with a wide range of devices. Our goal is to make our VR game accessible and enjoyable for this vast majority of users.</p>
-</section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>The challenge is to ensure the game’s user interface and controls work seamlessly across these different display sizes and touch interfaces.</p>
-</section>
-<section id="the-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>We considered two options: Virtual joystick for touchscreen devices and Navmesh and 3D navigation points. We chose the “Virtual joystick for touchscreen devices” because it addresses the core issue of ensuring compatibility with iPads and large projector screens, and it is more cost-effective.</p>
-</section>
-<section id="the-upside" class="level2">
-<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<ul>
-<li>Improved user experience across different devices and screen sizes.</li>
-<li>Increased versatility of the game, making it suitable for various applications.</li>
-<li>Enhanced navigation in 3D spaces.</li>
-<li>More cost-effective solution.</li>
-</ul>
-</section>
-<section id="the-downside" class="level2">
-<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<ul>
-<li>Potential increase in development time and costs.</li>
-<li>Additional resources for testing on different devices and screens.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Navmeshes and 3D Navigation Points are tools used to define traversable spaces in a 3D environment. However, they might not be suitable when the spaces aren’t already defined, such as grids. Waypoints have similar limitations.</p>
-<p>In Godot, any modification triggers a rebuild of the entire navigation map. If the map is large and complex, this rebuilding process can take a significant amount of time and lead to performance issues.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>While Navmesh and 3D Navigation Points provide an intuitive user interface for navigating 3D spaces, they might not translate well to continuous interaction on touchscreens, which is often expected by users on such devices.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>Yes, the decision to implement a virtual joystick for touchscreen devices was made by us, V-Sekai. This decision is at the core of our strategy to ensure compatibility with iPads and large projector screens while also being cost-effective.</p>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ul>
-<li><a href="https://v-sekai.org/">V-Sekai</a></li>
-<li>This article is assisted by AI.</li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20230806-v-sekai-ipad-projection-compatibility.html</guid>
-  <pubDate>Mon, 11 Sep 2023 07:31:36 GMT</pubDate>
+  <pubDate>Mon, 11 Sep 2023 07:35:15 GMT</pubDate>
 </item>
 </channel>
 </rss>

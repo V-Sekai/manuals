@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>V-Sekai - Manuals – guide-voice-conversion</title>
+<title>V-Sekai - Manuals – bendable-screen-generative-assistant-ggml</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -152,93 +118,110 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#realtime-voice-conversion-guide" id="toc-realtime-voice-conversion-guide" class="nav-link active" data-scroll-target="#realtime-voice-conversion-guide">Realtime Voice Conversion Guide</a>
+  <li><a href="#translationtranscription-badge-with-ggmls-whisper" id="toc-translationtranscription-badge-with-ggmls-whisper" class="nav-link active" data-scroll-target="#translationtranscription-badge-with-ggmls-whisper">Translation/Transcription Badge with GGML’s Whisper</a>
   <ul class="collapse">
-  <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
-  <li><a href="#context-and-problem-statement" id="toc-context-and-problem-statement" class="nav-link" data-scroll-target="#context-and-problem-statement">Context and Problem Statement</a></li>
-  <li><a href="#proposed-solution" id="toc-proposed-solution" class="nav-link" data-scroll-target="#proposed-solution">Proposed Solution</a></li>
-  <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation">Implementation</a></li>
-  <li><a href="#positive-consequences" id="toc-positive-consequences" class="nav-link" data-scroll-target="#positive-consequences">Positive Consequences</a></li>
-  <li><a href="#negative-consequences" id="toc-negative-consequences" class="nav-link" data-scroll-target="#negative-consequences">Negative Consequences</a></li>
-  <li><a href="#option-graveyard" id="toc-option-graveyard" class="nav-link" data-scroll-target="#option-graveyard">Option Graveyard</a></li>
-  <li><a href="#if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" id="toc-if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="nav-link" data-scroll-target="#if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</a></li>
-  <li><a href="#is-there-a-reason-why-this-should-be-core-and-done-by-us" id="toc-is-there-a-reason-why-this-should-be-core-and-done-by-us" class="nav-link" data-scroll-target="#is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#key-features" id="toc-key-features" class="nav-link" data-scroll-target="#key-features">Key Features</a></li>
+  <li><a href="#potential-challenges" id="toc-potential-challenges" class="nav-link" data-scroll-target="#potential-challenges">Potential Challenges</a></li>
+  <li><a href="#alternatives-not-considered" id="toc-alternatives-not-considered" class="nav-link" data-scroll-target="#alternatives-not-considered">Alternatives Not Considered</a></li>
+  <li><a href="#target-audience" id="toc-target-audience" class="nav-link" data-scroll-target="#target-audience">Target Audience</a></li>
+  <li><a href="#development-strategy" id="toc-development-strategy" class="nav-link" data-scroll-target="#development-strategy">Development Strategy</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  <li><a href="#system-diagram" id="toc-system-diagram" class="nav-link" data-scroll-target="#system-diagram">System Diagram</a></li>
+  <li><a href="#system-diagram-explanation" id="toc-system-diagram-explanation" class="nav-link" data-scroll-target="#system-diagram-explanation">System Diagram Explanation:</a>
+  <ul class="collapse">
+  <li><a href="#edge-device-compute-unit-a" id="toc-edge-device-compute-unit-a" class="nav-link" data-scroll-target="#edge-device-compute-unit-a">1. Edge Device: Compute Unit (A)</a></li>
+  <li><a href="#whisper-for-speech-to-text-module-c" id="toc-whisper-for-speech-to-text-module-c" class="nav-link" data-scroll-target="#whisper-for-speech-to-text-module-c">2. Whisper for Speech-to-Text module (C)</a></li>
+  <li><a href="#vrm1-character-layer-b" id="toc-vrm1-character-layer-b" class="nav-link" data-scroll-target="#vrm1-character-layer-b">3. VRM1 Character Layer (B)</a></li>
+  <li><a href="#wisecoco-6-inch-flexible-oled-display-in-portrait-mode-d" id="toc-wisecoco-6-inch-flexible-oled-display-in-portrait-mode-d" class="nav-link" data-scroll-target="#wisecoco-6-inch-flexible-oled-display-in-portrait-mode-d">4. Wisecoco 6-inch Flexible OLED Display in Portrait Mode (D)</a></li>
+  </ul></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/prototypes/20230806-guide-voice-conversion.md" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/decisions/20230908-bendable-screen-generative-assistant-ggml.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-<section id="realtime-voice-conversion-guide" class="level1">
-<h1>Realtime Voice Conversion Guide</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<section id="translationtranscription-badge-with-ggmls-whisper" class="level1">
+<h1>Translation/Transcription Badge with GGML’s Whisper</h1>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>The project aims to develop a translation/transcription badge using GGML’s Whisper, a part of the GGML library that provides access to large language models (LLMs). The primary focus is on voice interactions.</p>
+</section>
+<section id="key-features" class="level2">
+<h2 class="anchored" data-anchor-id="key-features">Key Features</h2>
 <ul>
-<li>Status: Proposed</li>
-<li>Deciders: [Decider’s Name]</li>
-<li>Tags: [Relevant Tags]</li>
+<li><strong>Voice Interactions</strong>: The system will prioritize voice interactions, leveraging GGML’s Whisper capabilities to create a responsive AI. Python will not be used in this context.</li>
+<li><strong>Speech-to-Text Interface</strong>: A speech-to-text interface will be incorporated to process voice inputs effectively.</li>
+<li><strong>Direct Connection to Compute Module</strong>: The display, set in portrait mode, will connect directly to the compute module, a standard Linux amd64 computer, eliminating the need for embedded software development.</li>
+<li><strong>Flexible OLED Display</strong>: The system will utilize a 6-inch flexible OLED display from Wisecoco with a resolution of 2880*1440 at 60Hz refresh rate.</li>
+<li><strong>No Holograph Displays</strong>: The design will be streamlined and efficient, excluding holograph displays.</li>
 </ul>
 </section>
-<section id="context-and-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
-<p>We are facing a limitation in the metaverse usage due to lack of realtime voice conversion support. This issue is causing difficulties in real-time communication and interaction.</p>
+<section id="potential-challenges" class="level2">
+<h2 class="anchored" data-anchor-id="potential-challenges">Potential Challenges</h2>
+<p>The project’s complexity and the expertise required in areas such as GGML, the Godot engine, and AI development pose significant challenges.</p>
 </section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>The proposed solution is to use SoftVC VITS, a fork of so-vits-svc that adds realtime voice conversion support and an improved interface. It will involve installing the package, using its GUI or CLI for voice conversion, and training the system for better results.</p>
+<section id="alternatives-not-considered" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-not-considered">Alternatives Not Considered</h2>
+<p>We have decided against integrating Python with GGML and using a pre-existing AI framework instead of developing one from scratch.</p>
 </section>
-<section id="implementation" class="level2">
-<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
-<p>The implementation of this solution will require the following resources, time, and steps:</p>
-<ol type="1">
-<li>Install the package using pip:</li>
-</ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pip install <span class="op">-</span>U so<span class="op">-</span>vits<span class="op">-</span>svc<span class="op">-</span>fork</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="2" type="1">
-<li>Use the GUI or CLI for voice conversion.</li>
-<li>Train the system for better results.</li>
-</ol>
+<section id="target-audience" class="level2">
+<h2 class="anchored" data-anchor-id="target-audience">Target Audience</h2>
+<p>The project may not be suitable for individuals without familiarity with GGML or a background in AI development.</p>
 </section>
-<section id="positive-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
+<section id="development-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="development-strategy">Development Strategy</h2>
+<p>The project will be developed in-house, utilizing our expertise in AI and game development.</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<p>For more information, please refer to these resources:</p>
 <ul>
-<li>The solution will resolve the current limitation by providing realtime voice conversion support.</li>
-<li>It will improve the overall user experience in the metaverse.</li>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+<li><a href="https://github.com/georgi-gerganov/ggml">GGML on GitHub</a></li>
+<li><a href="https://github.com/sanchit-gandhi/whisper-jax">Whisper JAX on GitHub</a></li>
+<li><a href="https://twitter.com/jav6868/status/1698260873352212662?s=20">Twitter inspiration</a></li>
+<li><a href="https://www.amazon.ca/wisecoco-Flexible-Display-Screen-Bendable/dp/B0C7YY16Z5">wisecoco 6 inch 2K Flexible OLED Display IPS 2880 * 1440 Flexible Screen Curved Bendable Screen</a></li>
 </ul>
 </section>
-<section id="negative-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
-<ul>
-<li>Potential challenges could include the need for regular updates to get the latest features and fixes.</li>
-</ul>
+<section id="system-diagram" class="level2">
+<h2 class="anchored" data-anchor-id="system-diagram">System Diagram</h2>
+<pre class="mermaid"><code>graph TD
+A[Edge Device: Compute Unit] --&gt;|Hosts| B[VRM1 Character Layer]
+C[Whisper for Speech-to-Text running on GGML] -- Audio Processing --&gt; B
+B --&gt; D[Wisecoco 6-inch Flexible OLED Display in Portrait Mode]
+E[Microphone] -- Audio Input --&gt; C</code></pre>
 </section>
-<section id="option-graveyard" class="level2">
-<h2 class="anchored" data-anchor-id="option-graveyard">Option Graveyard</h2>
-<p>This section includes options that were considered but ultimately discarded. These include:</p>
-<ol type="1">
-<li>Using other voice conversion tools without real-time support.</li>
-<li>Developing a new tool from scratch.</li>
-</ol>
+<section id="system-diagram-explanation" class="level2">
+<h2 class="anchored" data-anchor-id="system-diagram-explanation">System Diagram Explanation:</h2>
+<section id="edge-device-compute-unit-a" class="level3">
+<h3 class="anchored" data-anchor-id="edge-device-compute-unit-a">1. Edge Device: Compute Unit (A)</h3>
+<p>This unit is a standard Linux amd64 computer that hosts the VRM1 Character Layer (B).</p>
 </section>
-<section id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
-<h2 class="anchored" data-anchor-id="if-this-enhancement-will-be-used-infrequently-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will be used infrequently, can it be worked around with a few lines of script?</h2>
-<p>No, this enhancement cannot be worked around with a few lines of script as it involves complex voice conversion processes.</p>
+<section id="whisper-for-speech-to-text-module-c" class="level3">
+<h3 class="anchored" data-anchor-id="whisper-for-speech-to-text-module-c">2. Whisper for Speech-to-Text module (C)</h3>
+<p>This module, running on GGML, captures audio input from the Microphone (E) and converts it into text.</p>
 </section>
-<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
-<p>To be determined.</p>
+<section id="vrm1-character-layer-b" class="level3">
+<h3 class="anchored" data-anchor-id="vrm1-character-layer-b">3. VRM1 Character Layer (B)</h3>
+<p>The processed data from the Whisper module animates a virtual character in this layer. The character can be in speaking or idle mode.</p>
 </section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ul>
-<li><a href="https://github.com/voicepaw/so-vits-svc-fork.git">SoftVC VITS GitHub Repository</a></li>
-</ul>
+<section id="wisecoco-6-inch-flexible-oled-display-in-portrait-mode-d" class="level3">
+<h3 class="anchored" data-anchor-id="wisecoco-6-inch-flexible-oled-display-in-portrait-mode-d">4. Wisecoco 6-inch Flexible OLED Display in Portrait Mode (D)</h3>
+<p>The resulting texts are displayed on this screen.</p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> Currently, the system only supports speaking and idle states. Other modes are not available.</p>
+</blockquote>
+<p>The choice of portrait mode for the display aligns with the specific needs and constraints of the project. As the project heavily relies on text-based interactions, specifically transcriptions, portrait mode allows more lines of text to be visible at once, thereby improving the user experience.</p>
+<p>The system utilizes a 6-inch flexible OLED display from Wisecoco. Portrait mode is more space-efficient in such scenarios, taking up less horizontal space while still providing ample vertical space for text display.</p>
+<p>Given that the primary focus of the project is voice interactions, the display mode should ideally support easy reading of transcriptions. Portrait mode, with its vertical orientation, is more suited to this task as it mimics the natural top-to-bottom reading flow.</p>
+<p>According to the system diagram, the processed data from the Whisper for Speech-to-Text module running on GGML is used to animate a virtual character and display the resulting texts. These texts are likely to be dialogue or conversation-based, and portrait mode would allow for a more coherent and continuous display of these text blocks.</p>
 
 
+</section>
 </section>
 </section>
 
