@@ -371,53 +371,39 @@
     "text": "We’re actively researching a security-focused sandboxing environment. You can follow our progress on the godot-wasm project."
   },
   {
-    "objectID": "prototypes/block_meshing.html",
-    "href": "prototypes/block_meshing.html",
-    "title": "Block meshing for prototyping worlds",
-    "section": "",
-    "text": "Block meshing for prototyping worlds"
-  },
-  {
-    "objectID": "prototypes/first-alpha-tag.html",
-    "href": "prototypes/first-alpha-tag.html",
-    "title": "V-Sekai - Manuals",
-    "section": "",
-    "text": "In semantic versioning (semver), the first alpha release would typically be denoted with a hyphen followed by the word “alpha” and a number. For example, it could be something like “0.1.0-alpha.1”. The specific alpha release number may vary depending on the project and its release cycle."
-  },
-  {
-    "objectID": "prototypes/networked_physics.html",
-    "href": "prototypes/networked_physics.html",
+    "objectID": "prototypes/20230911-networked_physics.html",
+    "href": "prototypes/20230911-networked_physics.html",
     "title": "V-Sekai - Manuals",
     "section": "",
     "text": "import { Machine, assign } from 'xstate';\nimport { Vector3, Quaternion, Vector3 as Scale } from 'three';\n\ninterface Server {\n  color: string;\n}\n\ninterface Player {\n  color: string;\n  inventory: string[];\n}\n\ninterface PosePoint {\n  position: Vector3;\n  rotation: Quaternion;\n}\n\ninterface Context {\n  authority: Server | null;\n  ownership: Player | null;\n  cdnId: string;\n  avatarState: {\n    position: Vector3;\n    rotation: Quaternion;\n    scale: Scale;\n    timeDifference: number;\n    posePoints: PosePoint[];\n    blendShapes: { [key: string]: number };\n  };\n  errorMessage: string;\n}\n\ntype Event =\n  | { type: 'INTERACT'; player: Player }\n  | { type: 'GRAB'; player: Player; itemId: string }\n  | { type: 'UPDATE_AVATAR_STATE'; newState: Context['avatarState'] }\n  | { type: 'STOP_ACTION' }\n  | { type: 'SERVER_AUTHORITY'; server: Server }\n  | { type: 'ERROR'; message: string };\n\nconst update = (key, value) =&gt; assign({ [key]: (_, event) =&gt; event[value] });\n\nconst grabTransition = {\n  actions: [\n    update('ownership', 'player'),\n    assign({ inventory: (context, event) =&gt; [...context.ownership.inventory, event.itemId] }),\n  ],\n  target: 'owned',\n};\n\nconst setAuthority = (authorityType) =&gt; (context, event) =&gt; {\n  if (event.type === 'INTERACT') {\n    return event.player;\n  } else if (event.type === 'SERVER_AUTHORITY') {\n    return event.server;\n  }\n  return context[authorityType];\n};\n\nconst machine = Machine&lt;Context, Event&gt;({\n  id: 'networkedPhysics',\n  initial: 'defaultAuthority',\n  context: {\n    authority: null,\n    ownership: null,\n    cdnId: '',\n    avatarState: {\n      position: new Vector3(),\n      rotation: new Quaternion(),\n      scale: new Scale(1, 1, 1),\n      timeDifference: 0,\n      posePoints: Array(11).fill({ position: new Vector3(), rotation: new Quaternion() }),\n      blendShapes: {},\n    },\n    errorMessage: '',\n  },\n  on: {\n    UPDATE_AVATAR_STATE: { actions: update('avatarState', 'newState') },\n    ERROR: { actions: update('errorMessage', 'message'), target: 'error' },\n  },\n  states: {\n    defaultAuthority: {\n      on: {\n        INTERACT: {\n          actions: update('authority', setAuthority('authority')),\n          target: 'activeAuthority',\n        },\n        GRAB: grabTransition,\n        SERVER_AUTHORITY: {\n          actions: update('authority', setAuthority('authority')),\n          target: 'activeAuthority',\n        },\n      },\n    },\n    activeAuthority: {\n      on: {\n        INTERACT: { actions: update('authority', setAuthority('authority')) },\n        STOP_ACTION: { target: 'defaultAuthority' },\n        GRAB: grabTransition,\n        SERVER_AUTHORITY: {\n          actions: update('authority', setAuthority('authority')),\n        },\n      },\n    },\n    owned: {\n      on: {\n        STOP_ACTION: {\n          actions: update('ownership', () =&gt; null),\n          target: 'defaultAuthority',\n        },\n        SERVER_AUTHORITY: {\n          actions: update('authority', setAuthority('authority')),\n          target: 'activeAuthority',\n        },\n      },\n    },\n    error: {\n      on: {\n        RESET_ERROR: {\n          actions: assign({ errorMessage: '' }),\n          target: 'defaultAuthority',\n        },\n      },\n    },\n  },\n});\n\nexport default machine;"
   },
   {
-    "objectID": "prototypes/networked_physics.html#network-state-machine-draft",
-    "href": "prototypes/networked_physics.html#network-state-machine-draft",
+    "objectID": "prototypes/20230911-networked_physics.html#network-state-machine-draft",
+    "href": "prototypes/20230911-networked_physics.html#network-state-machine-draft",
     "title": "V-Sekai - Manuals",
     "section": "",
     "text": "import { Machine, assign } from 'xstate';\nimport { Vector3, Quaternion, Vector3 as Scale } from 'three';\n\ninterface Server {\n  color: string;\n}\n\ninterface Player {\n  color: string;\n  inventory: string[];\n}\n\ninterface PosePoint {\n  position: Vector3;\n  rotation: Quaternion;\n}\n\ninterface Context {\n  authority: Server | null;\n  ownership: Player | null;\n  cdnId: string;\n  avatarState: {\n    position: Vector3;\n    rotation: Quaternion;\n    scale: Scale;\n    timeDifference: number;\n    posePoints: PosePoint[];\n    blendShapes: { [key: string]: number };\n  };\n  errorMessage: string;\n}\n\ntype Event =\n  | { type: 'INTERACT'; player: Player }\n  | { type: 'GRAB'; player: Player; itemId: string }\n  | { type: 'UPDATE_AVATAR_STATE'; newState: Context['avatarState'] }\n  | { type: 'STOP_ACTION' }\n  | { type: 'SERVER_AUTHORITY'; server: Server }\n  | { type: 'ERROR'; message: string };\n\nconst update = (key, value) =&gt; assign({ [key]: (_, event) =&gt; event[value] });\n\nconst grabTransition = {\n  actions: [\n    update('ownership', 'player'),\n    assign({ inventory: (context, event) =&gt; [...context.ownership.inventory, event.itemId] }),\n  ],\n  target: 'owned',\n};\n\nconst setAuthority = (authorityType) =&gt; (context, event) =&gt; {\n  if (event.type === 'INTERACT') {\n    return event.player;\n  } else if (event.type === 'SERVER_AUTHORITY') {\n    return event.server;\n  }\n  return context[authorityType];\n};\n\nconst machine = Machine&lt;Context, Event&gt;({\n  id: 'networkedPhysics',\n  initial: 'defaultAuthority',\n  context: {\n    authority: null,\n    ownership: null,\n    cdnId: '',\n    avatarState: {\n      position: new Vector3(),\n      rotation: new Quaternion(),\n      scale: new Scale(1, 1, 1),\n      timeDifference: 0,\n      posePoints: Array(11).fill({ position: new Vector3(), rotation: new Quaternion() }),\n      blendShapes: {},\n    },\n    errorMessage: '',\n  },\n  on: {\n    UPDATE_AVATAR_STATE: { actions: update('avatarState', 'newState') },\n    ERROR: { actions: update('errorMessage', 'message'), target: 'error' },\n  },\n  states: {\n    defaultAuthority: {\n      on: {\n        INTERACT: {\n          actions: update('authority', setAuthority('authority')),\n          target: 'activeAuthority',\n        },\n        GRAB: grabTransition,\n        SERVER_AUTHORITY: {\n          actions: update('authority', setAuthority('authority')),\n          target: 'activeAuthority',\n        },\n      },\n    },\n    activeAuthority: {\n      on: {\n        INTERACT: { actions: update('authority', setAuthority('authority')) },\n        STOP_ACTION: { target: 'defaultAuthority' },\n        GRAB: grabTransition,\n        SERVER_AUTHORITY: {\n          actions: update('authority', setAuthority('authority')),\n        },\n      },\n    },\n    owned: {\n      on: {\n        STOP_ACTION: {\n          actions: update('ownership', () =&gt; null),\n          target: 'defaultAuthority',\n        },\n        SERVER_AUTHORITY: {\n          actions: update('authority', setAuthority('authority')),\n          target: 'activeAuthority',\n        },\n      },\n    },\n    error: {\n      on: {\n        RESET_ERROR: {\n          actions: assign({ errorMessage: '' }),\n          target: 'defaultAuthority',\n        },\n      },\n    },\n  },\n});\n\nexport default machine;"
   },
   {
-    "objectID": "prototypes/can-poly-green-coords-extend-to-3d.html",
-    "href": "prototypes/can-poly-green-coords-extend-to-3d.html",
-    "title": "Can Poly Green Coords extend to 3d?",
+    "objectID": "prototypes/20230911-xpr.html",
+    "href": "prototypes/20230911-xpr.html",
+    "title": "V-Sekai - Manuals",
     "section": "",
-    "text": "Can Poly Green Coords extend to 3d?\nReminded by works by pixar: https://graphics.pixar.com/library/ProfileMover/\nHow applicable is this to 3d polygonal cages?\n          You may be interested by *[Green Coordinates for Triquad Cages in 3D](https://research.adobe.com/publication/green-coordinates-for-triquad-cages-in-3d/)* by Thiery and Boubekeur (SIGGRAPH Asia 2022). It is only for straight polygons though, the deformed cage cannot have Bézier arcs like this 2D version has, that's future work. ;) Profile curves are definitly a very nice and related work!\nOriginally posted by @eliemichel in https://github.com/eliemichel/PolyGreenCoords/issues/1#issuecomment-1683045650"
+    "text": "defmodule AveragableLerpable do\n  @callback average(a :: any(), b :: any(), t :: number()) :: any()\n  @callback lerp(a :: any(), b :: any(), t :: number()) :: any()\n  @callback spherical_interpolate(a :: any(), b :: any(), t :: number()) :: any()\n  @callback spherical_cubic_interpolate(a :: any(), b :: any(), c :: any(), d :: any(), t1 :: number(), t2 :: number(), t3 :: number(), t4 :: number()) :: any()\n  @callback cubic_interpolate(a :: any(), b :: any(), c :: any(), d :: any(), t1 :: number(), t2 :: number(), t3 :: number(), t4 :: number()) :: any()\nend\n\ndefmodule Rotation6D do\n  @behaviour AveragableLerpable\n\n  defstruct [:x1, :y1, :z1, :x2, :y2, :z2]\n\n  # Implement the required methods here\nend\n\ndefmodule Position3D do\n  @behaviour AveragableLerpable\n\n  defstruct [:x, :y, :z]\n\n  # Implement the required methods here\nend\n\ndefmodule LightCone do\n  @type t :: %{\n          count: [AveragableLerpable.t()],\n          accumulate: [function()],\n          array: [AveragableLerpable.t()],\n          set: MapSet.t(any())\n        }\nend\n\n@type event ::\n        {:expand}\n        | {:superposition}\n        | {:spacetime_bubble}\n        | {:light_cone}\n        | {:collapse}\n        | {:avg_lerp}\n        | {:plus}\n        | {:union}\n\ndefmodule PropagateFilter do\n  use Membrane.Filter\n\n  @impl true\n  def handle_init(_) do\n    {:ok, %{}}\n  end\n\n  @impl true\n  def handle_demand(:output, size, :buffers, _ctx) do\n    {{:ok, demand: {:input, size}}, %{}}\n  end\n\n  @impl true\n  def handle_process(:input, buffer, _ctx) do\n    # Process the input data and generate the output data\n    output_data = process(buffer.payload)\n\n    # Create a new buffer with the output data\n    output_buffer = %Membrane.Buffer{payload: output_data}\n\n    {{:ok, buffer: {:output, output_buffer}}, %{}}\n  end\n\n  defp process(input_data) do\n    # Implement your processing logic here\n    # For example, if input_data is a list of numbers, you can calculate their sum:\n    Enum.reduce(input_data, 0, &(&1 + &2))\n  end\nend\n\n\ndefmodule XprPipeline do\n  use Membrane.Pipeline\n\n  alias Membrane.Element.Tee.Master\n  alias Membrane.Element.Funnel\n  alias Membrane.Element.Clock\n\n  @impl true\n  def handle_init(_) do\n    children = [\n      clock: Clock,\n      light_cone: LightConeElement,\n      expanding: ExpandingElement,\n      collapsing: CollapsingElement,\n      reduce: ReduceElement,\n      update: UpdateElement,\n      tee: Master,\n      funnel: Funnel,\n      propagate: PropagateFilter\n    ]\n\n    links = [\n      link(:clock)\n      |&gt; via_out(:tick, options: [interval: 1000]) # Adjust the interval as needed\n      |&gt; to(:tee)\n      |&gt; to(:expanding)\n      |&gt; to(:light_cone)\n      |&gt; to(:collapsing)\n      |&gt; to(:reduce)\n      |&gt; to(:propagate)\n      |&gt; to(:funnel)\n      |&gt; to(:update)\n    ]\n\n    {{:ok, %ParentSpec{children: children, links: links}}, %{}}\n  end\nend"
   },
   {
-    "objectID": "prototypes/ideas.html",
-    "href": "prototypes/ideas.html",
+    "objectID": "prototypes/20230911-commit-message-bot.html",
+    "href": "prototypes/20230911-commit-message-bot.html",
+    "title": "Commit message bot",
+    "section": "",
+    "text": "Commit message bot\nTake a deep breath. Commit Messages must have a short description that is less than 50 characters followed by a newline and a more detailed description. - Write concisely using an informal tone - List significant changes - Do not use specific names or files from the code - Do not use phrases like “this commit”, “this change”, etc. - You have only one paragraph and rarely two paragraphs."
+  },
+  {
+    "objectID": "prototypes/20230911-ideas.html",
+    "href": "prototypes/20230911-ideas.html",
     "title": "Ideas",
     "section": "",
     "text": "Ideas\n\nfade out mic icon"
-  },
-  {
-    "objectID": "prototypes/dag-chaining-replicate.html",
-    "href": "prototypes/dag-chaining-replicate.html",
-    "title": "Idea of DAG chaining through replicate.com",
-    "section": "",
-    "text": "Idea of DAG chaining through replicate.com\nMust support batching.\n\nblender upload\ngenerate thumbnails\nrun gltf pack\noutput glb"
   },
   {
     "objectID": "decisions/20220108-bake-blend-shapes-to-skeletons-for-performance.html",
@@ -13566,11 +13552,11 @@
     "text": "Construct the virtual #world\n\nContext and Problem Statement\nIt’s hard to create the virtual world.\n\n\nDescribe the feature / enhancement and how it helps to overcome the problem or limitation\nUse a way to create 3d in a virtual world.\n\n\nDescribe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams\n\npacked scenes\nblockmesh\ncassie\nSpark joy.\n\n\n\nIf this enhancement will not be used often, can it be worked around with a few lines of script?\nNot trivial.\n\n\nPositive Consequences\nNo response\n\n\nNegative Consequences\nNo response\n\n\nIs there a reason why this should be core and done by us?\nI know how to do this.\n\n\nReferences\n\nCASSIE\n\n\n\nDerivative License\nCopyright (c) 2020-2021 V-Sekai contributors.\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
   },
   {
-    "objectID": "prototypes/xpr.html",
-    "href": "prototypes/xpr.html",
+    "objectID": "prototypes/20230911-first-alpha-tag.html",
+    "href": "prototypes/20230911-first-alpha-tag.html",
     "title": "V-Sekai - Manuals",
     "section": "",
-    "text": "defmodule AveragableLerpable do\n  @callback average(a :: any(), b :: any(), t :: number()) :: any()\n  @callback lerp(a :: any(), b :: any(), t :: number()) :: any()\n  @callback spherical_interpolate(a :: any(), b :: any(), t :: number()) :: any()\n  @callback spherical_cubic_interpolate(a :: any(), b :: any(), c :: any(), d :: any(), t1 :: number(), t2 :: number(), t3 :: number(), t4 :: number()) :: any()\n  @callback cubic_interpolate(a :: any(), b :: any(), c :: any(), d :: any(), t1 :: number(), t2 :: number(), t3 :: number(), t4 :: number()) :: any()\nend\n\ndefmodule Rotation6D do\n  @behaviour AveragableLerpable\n\n  defstruct [:x1, :y1, :z1, :x2, :y2, :z2]\n\n  # Implement the required methods here\nend\n\ndefmodule Position3D do\n  @behaviour AveragableLerpable\n\n  defstruct [:x, :y, :z]\n\n  # Implement the required methods here\nend\n\ndefmodule LightCone do\n  @type t :: %{\n          count: [AveragableLerpable.t()],\n          accumulate: [function()],\n          array: [AveragableLerpable.t()],\n          set: MapSet.t(any())\n        }\nend\n\n@type event ::\n        {:expand}\n        | {:superposition}\n        | {:spacetime_bubble}\n        | {:light_cone}\n        | {:collapse}\n        | {:avg_lerp}\n        | {:plus}\n        | {:union}\n\ndefmodule PropagateFilter do\n  use Membrane.Filter\n\n  @impl true\n  def handle_init(_) do\n    {:ok, %{}}\n  end\n\n  @impl true\n  def handle_demand(:output, size, :buffers, _ctx) do\n    {{:ok, demand: {:input, size}}, %{}}\n  end\n\n  @impl true\n  def handle_process(:input, buffer, _ctx) do\n    # Process the input data and generate the output data\n    output_data = process(buffer.payload)\n\n    # Create a new buffer with the output data\n    output_buffer = %Membrane.Buffer{payload: output_data}\n\n    {{:ok, buffer: {:output, output_buffer}}, %{}}\n  end\n\n  defp process(input_data) do\n    # Implement your processing logic here\n    # For example, if input_data is a list of numbers, you can calculate their sum:\n    Enum.reduce(input_data, 0, &(&1 + &2))\n  end\nend\n\n\ndefmodule XprPipeline do\n  use Membrane.Pipeline\n\n  alias Membrane.Element.Tee.Master\n  alias Membrane.Element.Funnel\n  alias Membrane.Element.Clock\n\n  @impl true\n  def handle_init(_) do\n    children = [\n      clock: Clock,\n      light_cone: LightConeElement,\n      expanding: ExpandingElement,\n      collapsing: CollapsingElement,\n      reduce: ReduceElement,\n      update: UpdateElement,\n      tee: Master,\n      funnel: Funnel,\n      propagate: PropagateFilter\n    ]\n\n    links = [\n      link(:clock)\n      |&gt; via_out(:tick, options: [interval: 1000]) # Adjust the interval as needed\n      |&gt; to(:tee)\n      |&gt; to(:expanding)\n      |&gt; to(:light_cone)\n      |&gt; to(:collapsing)\n      |&gt; to(:reduce)\n      |&gt; to(:propagate)\n      |&gt; to(:funnel)\n      |&gt; to(:update)\n    ]\n\n    {{:ok, %ParentSpec{children: children, links: links}}, %{}}\n  end\nend"
+    "text": "In semantic versioning (semver), the first alpha release would typically be denoted with a hyphen followed by the word “alpha” and a number. For example, it could be something like “0.1.0-alpha.1”. The specific alpha release number may vary depending on the project and its release cycle."
   },
   {
     "objectID": "prototypes/20230806-find-friends-on-vrc.html",
@@ -13580,81 +13566,67 @@
     "text": "VRCX is an assistant application for VRChat that provides a more convenient way to manage various aspects of VRChat than relying solely on the VRChat client (desktop or VR) or website. It also includes several other useful features.\nTo get started with VRCX, download and run the latest installer (VRCX_Setup.exe) from here.\nVRCX offers a wide range of features:\nFriend, World, and Avatar List Management: Manage your friends list, world/group/avatar lists outside of VRChat. Monitor the world/avatar activity of your friends and check their online status. Keep track of when you first added them and when you last saw them. See how much time you’ve spent together in worlds and how many times. Keep track of friend name changes. Save notes to help remember how you met.\nAutomatically Launch Apps When You Start VRChat: You can configure VRCX to launch other apps when you start VRChat. For example, you could have VRCX launch an OSC app or a voice changer app when VRChat opens up.\nWorld Persistence: For worlds that support the feature, VRCX can save world settings, save states, inventories, and other data! Note: To use this feature, you must have “Allow Untrusted URLs” enabled in your VRChat settings. For Developers: Wiki Page - World Persistence (PWI)\nSearch for Avatars, Users, Worlds, and Groups\nBuild a Local, Unrestricted World Favorites List\nStore World Data in the Pictures You Take In-Game\nMonitor/Respond to Notifications: You can send/receive invites and friend requests from VRCX as well as see the instance info of invites that you receive.\nSee Stats/Players for Your Current Instance\nSee the Links to Videos and That Are Playing in the World You’re In\nImproved Discord Rich Presence: You can optionally display more information about your current instance in Discord. World integration for popular worlds like PyPyDance, LSMedia, Movies&Chill and VRDancing. This includes the world thumbnail, name, instance ID, and player count, depending on your settings and whether the lobby is private. You can also add a join button for public lobbies!\nVR Overlay with Configurable Live Feed of All Supported Events/Notifications\nUpload Avatar/World Images Without Unity\nManage and Edit Uploaded Avatar/World Details Without Unity\nAutomatically Restart and Join Last Instance When VRC Crashes\nExport/Import Favorite Groups\nFor those who want a new look for VRCX, check out Themes. Instructions on how to build VRCX from source can be found here. For a guide on how to run VRCX on linux, see here.\nScreenshots of VRCX can be found at the following links: Login , 2fa , Feed , GameLog , UserInfo , Friend , World instance , Favorite Friend , World , Avatar , Friend Log , Discord Rich Presence .\nVRCX is not against VRChat’s TOS. It is an external tool that uses the VRChat API to provide its features. It does not modify the game in any way, only using the API responsibly. It is not a mod, cheat, or any other form of game modification. For VRChat’s stance on API usage, see the #faq channel in the VRChat Discord.\nVRCX is not endorsed by VRChat and does not reflect the views or opinions of VRChat or anyone officially involved in producing or managing VRChat properties. VRChat and all associated properties are trademarks or registered trademarks of VRChat Inc. VRChat © VRChat Inc."
   },
   {
-    "objectID": "prototypes/avatar_to_avatar.html",
-    "href": "prototypes/avatar_to_avatar.html",
-    "title": "Avatar to avatar demo",
+    "objectID": "prototypes/20230911-can-poly-green-coords-extend-to-3d.html",
+    "href": "prototypes/20230911-can-poly-green-coords-extend-to-3d.html",
+    "title": "Can Poly Green Coords extend to 3d?",
     "section": "",
-    "text": "Avatar to avatar demo\n\nAvatar to Avatar trailer demo."
+    "text": "Can Poly Green Coords extend to 3d?\nReminded by works by pixar: https://graphics.pixar.com/library/ProfileMover/\nHow applicable is this to 3d polygonal cages?\n          You may be interested by *[Green Coordinates for Triquad Cages in 3D](https://research.adobe.com/publication/green-coordinates-for-triquad-cages-in-3d/)* by Thiery and Boubekeur (SIGGRAPH Asia 2022). It is only for straight polygons though, the deformed cage cannot have Bézier arcs like this 2D version has, that's future work. ;) Profile curves are definitly a very nice and related work!\nOriginally posted by @eliemichel in https://github.com/eliemichel/PolyGreenCoords/issues/1#issuecomment-1683045650"
   },
   {
-    "objectID": "prototypes/commit-message-bot.html",
-    "href": "prototypes/commit-message-bot.html",
-    "title": "Commit message bot",
-    "section": "",
-    "text": "Commit message bot\nTake a deep breath. Commit Messages must have a short description that is less than 50 characters followed by a newline and a more detailed description. - Write concisely using an informal tone - List significant changes - Do not use specific names or files from the code - Do not use phrases like “this commit”, “this change”, etc. - You have only one paragraph and rarely two paragraphs."
-  },
-  {
-    "objectID": "prototypes/avatar-checklist.html",
-    "href": "prototypes/avatar-checklist.html",
-    "title": "V-Sekai - Manuals",
-    "section": "",
-    "text": "Weighted to 4 bone weights and range of motion doesn’t break the skinning\nshader motion\ntastt’s text player\noverly or dimm bright lights don’t break the avatar surface\nGut feel check"
-  },
-  {
-    "objectID": "prototypes/avatar-checklist.html#avatar-preflight-checklist",
-    "href": "prototypes/avatar-checklist.html#avatar-preflight-checklist",
-    "title": "V-Sekai - Manuals",
-    "section": "",
-    "text": "Weighted to 4 bone weights and range of motion doesn’t break the skinning\nshader motion\ntastt’s text player\noverly or dimm bright lights don’t break the avatar surface\nGut feel check"
-  },
-  {
-    "objectID": "prototypes/cybernetic_charm.html",
-    "href": "prototypes/cybernetic_charm.html",
+    "objectID": "prototypes/20230911-cybernetic_charm.html",
+    "href": "prototypes/20230911-cybernetic_charm.html",
     "title": "V-Sekai - Manuals",
     "section": "",
     "text": "Elysia is a high school student with a passion for technology. She has the unique ability to transform into her digital avatar - LuminNet.\n\n\n\nIn a world where society uses digital avatars in a vast cyber network, Elysia stumbles upon a dormant program that awakens to become LuminNet. Together, they uncover a plot to infect the cyber network with a devastating virus.\n\n\n\nWhen it’s time for battle, Elysia transforms into LuminNet. This transformation changes Elysia from her human form into a radiant digital entity.\nTransformation Sequence:\n\n1. Elysia initiates the transformation process.\n2. Her physical form digitizes, becoming a stream of data.\n3. This data stream merges with LuminNet, completing the transformation.\n\n\n\nAs LuminNet, Elysia can manipulate data to create shields and launch energy blasts. She can also purify corrupted data, making her an invaluable asset against viruses.\nHer ultimate attack, “Datastream Deluge”, channels the raw power of the network into a massive wave of energy."
   },
   {
-    "objectID": "prototypes/cybernetic_charm.html#cybernetic-charm-a-tale-of-magic-and-technology---mvp-demo",
-    "href": "prototypes/cybernetic_charm.html#cybernetic-charm-a-tale-of-magic-and-technology---mvp-demo",
+    "objectID": "prototypes/20230911-cybernetic_charm.html#cybernetic-charm-a-tale-of-magic-and-technology---mvp-demo",
+    "href": "prototypes/20230911-cybernetic_charm.html#cybernetic-charm-a-tale-of-magic-and-technology---mvp-demo",
     "title": "V-Sekai - Manuals",
     "section": "",
     "text": "Elysia is a high school student with a passion for technology. She has the unique ability to transform into her digital avatar - LuminNet.\n\n\n\nIn a world where society uses digital avatars in a vast cyber network, Elysia stumbles upon a dormant program that awakens to become LuminNet. Together, they uncover a plot to infect the cyber network with a devastating virus.\n\n\n\nWhen it’s time for battle, Elysia transforms into LuminNet. This transformation changes Elysia from her human form into a radiant digital entity.\nTransformation Sequence:\n\n1. Elysia initiates the transformation process.\n2. Her physical form digitizes, becoming a stream of data.\n3. This data stream merges with LuminNet, completing the transformation.\n\n\n\nAs LuminNet, Elysia can manipulate data to create shields and launch energy blasts. She can also purify corrupted data, making her an invaluable asset against viruses.\nHer ultimate attack, “Datastream Deluge”, channels the raw power of the network into a massive wave of energy."
   },
   {
-    "objectID": "prototypes/cybernetic_charm.html#combat-mechanics",
-    "href": "prototypes/cybernetic_charm.html#combat-mechanics",
+    "objectID": "prototypes/20230911-cybernetic_charm.html#combat-mechanics",
+    "href": "prototypes/20230911-cybernetic_charm.html#combat-mechanics",
     "title": "V-Sekai - Manuals",
     "section": "Combat Mechanics",
     "text": "Combat Mechanics\nIn “Cybernetic Charm”, combat takes place on a 2x2 grid. This setup allows for strategic depth in battles but reduces the complexity of the game system.\n\nBattle System\nThe battle system is a turn-based strategy format. With the 2x2 grid, positioning and movement become crucial elements of strategy.\nBattle System Flow:\n\n1. Elysia selects an action (Move, Attack, Defend).\n2. LuminNet performs the selected action.\n3. The enemy reacts and counters.\n\n\nGrid-Based Combat\nOn the 2x2 grid, each cell can be occupied by either LuminNet or an enemy, or remain empty. LuminNet and enemies can move to any adjacent cell, attack enemies within range, or use abilities.\nHere’s an example of what the battlefield might look like:\nL = LuminNet\nE = Enemy\nX = Empty Cell\n\nLuminNet's Grid:\nL X\nX X\n“Cybernetic Charm” offers a unique blend of turn-based strategy and RPG elements, making each battle a test of both tactical skill and quick decision-making."
   },
   {
-    "objectID": "prototypes/cybernetic_charm.html#feature-arc-menu-for-spell-selection",
-    "href": "prototypes/cybernetic_charm.html#feature-arc-menu-for-spell-selection",
+    "objectID": "prototypes/20230911-cybernetic_charm.html#feature-arc-menu-for-spell-selection",
+    "href": "prototypes/20230911-cybernetic_charm.html#feature-arc-menu-for-spell-selection",
     "title": "V-Sekai - Manuals",
     "section": "Feature: Arc Menu for Spell Selection",
     "text": "Feature: Arc Menu for Spell Selection\nIn “Cybernetic Charm”, the character LuminNet has a variety of spells at her disposal. To make these spells easily accessible during combat, an arc menu feature is implemented.\n\nThe Arc Menu\nThe arc menu, also known as radial or pie menu, is a circular contextual menu where selection depends on direction. It’s a compact and efficient way of presenting multiple options, perfect for quick spell selection in the heat of battle.\nArc Menu Structure:\n\n1. Open Arc Menu (Press designated button)\n2. Navigate through Spells (Move joystick or cursor in the direction of the desired spell)\n3. Select Spell (Release button)\n\n\nSpell Selection\nWhen the character Elysia transforms into LuminNet, she gains access to her spell arsenal. These spells are categorized and arranged in the arc menu based on their type and power level. For example, defensive spells like shields and healing abilities might be grouped together, while offensive spells like energy blasts could be in another section.\nHere’s an example of what the arc menu might look like:\nArc Menu Layout:\n\n  Shield   Heal\n     \\     /\n      \\   /\nEnergy Blast\nEach spell in the arc menu has a unique icon and color coding for easy identification. Hovering over a spell reveals a tooltip with more information about the spell, such as its effects, range, and cooldown time.\nThis arc menu feature allows for quick, intuitive spell selection, adding another layer of strategy to the game’s combat system."
   },
   {
-    "objectID": "prototypes/cybernetic_charm.html#transitioning-to-virtual-reality-vr",
-    "href": "prototypes/cybernetic_charm.html#transitioning-to-virtual-reality-vr",
+    "objectID": "prototypes/20230911-cybernetic_charm.html#transitioning-to-virtual-reality-vr",
+    "href": "prototypes/20230911-cybernetic_charm.html#transitioning-to-virtual-reality-vr",
     "title": "V-Sekai - Manuals",
     "section": "Transitioning to Virtual Reality (VR)",
     "text": "Transitioning to Virtual Reality (VR)\nTransitioning “Cybernetic Charm” from a desktop game to a VR experience involves several adjustments to ensure an immersive and interactive gameplay. Here are some of the key changes required:\n\n1. User Interface (UI) Adjustments\nIn VR, the UI needs to be more intuitive and less intrusive. The arc menu, for instance, can be transformed into a 3D radial menu that appears around the player’s hand when activated.\nVR Arc Menu Activation:\n\n1. Player raises their hand (or controller).\n2. Arc menu materializes around the hand.\n3. Player selects spell by pointing in the direction of the desired spell.\n4. Spell is selected upon release.\n\n\n2. Spatial Awareness and Movement\nIn VR, players have a full 360-degree view of their surroundings. This means the 2x2 grid combat system will need to be adapted to allow for movement in all directions.\nVR Grid-Based Combat:\n\n1. Player physically moves to navigate LuminNet on the grid.\n2. Hand gestures or controller inputs are used for actions like attack or defend.\n3. Enemies react and counter in real-time.\n\n\n3. Enhanced Spell Casting\nSpell casting in VR can be more interactive. Instead of selecting a spell from a menu, players can perform specific hand gestures or movements to cast spells.\nVR Spell Casting:\n\n1. Player performs a specific gesture or movement.\n2. LuminNet casts the corresponding spell.\n3. The effect of the spell is immediately visible in the VR environment."
   },
   {
-    "objectID": "prototypes/cybernetic_charm.html#asymmetric-board-game",
-    "href": "prototypes/cybernetic_charm.html#asymmetric-board-game",
+    "objectID": "prototypes/20230911-cybernetic_charm.html#asymmetric-board-game",
+    "href": "prototypes/20230911-cybernetic_charm.html#asymmetric-board-game",
     "title": "V-Sekai - Manuals",
     "section": "Asymmetric Board Game",
     "text": "Asymmetric Board Game\nIn this game, you have two players with different roles and objectives. The gameplay is asymmetric, meaning each player has unique abilities and goals.\n- **Player 1 (Defender)**: This player's role is to protect their assets and achieve certain goals. They use their turns to build barriers (represented by tokens or cards) on their 4x4 grid and accumulate resources. Each square on their board could represent a location they need to safeguard.\n\n- **Player 2 (Attacker)**: This player's role is to breach the defender's barriers and disrupt their plans. They use their turns to develop their tools (also represented by tokens or cards), examine the defender's barriers, and initiate breaches. Their 4x4 grid could represent different types of actions or tools they can utilize.\n\n- **Interaction**: The game could involve a lot of strategic deception and deduction, as the defender tries to mislead the attacker about where their most valuable locations are, and the attacker tries to figure out where to breach. Actions that affect the opponent's board could be incorporated into the gameplay.\n\n- **Winning Condition**: The game ends when the defender achieves a certain number of goals, or when the attacker accumulates enough points by successfully breaching the defender's locations.\nThis design maintains the resource management and strategic planning elements of many strategy games, but adds a layer of direct conflict and asymmetry."
   },
   {
-    "objectID": "prototypes/a-hundred-worlds-vsekai.html",
-    "href": "prototypes/a-hundred-worlds-vsekai.html",
-    "title": "A Concept for V-Sekai",
+    "objectID": "prototypes/20230911-avatar-checklist.html",
+    "href": "prototypes/20230911-avatar-checklist.html",
+    "title": "V-Sekai - Manuals",
     "section": "",
-    "text": "A Concept for V-Sekai\nI’ve been contemplating an unconventional concept for V-Sekai. The idea revolves around the creation of not just one or two, but a hundred interactive worlds from me!\nDrawing inspiration from VRChat, which boasts millions of such interactive environments, I believe it’s feasible to create a hundred of my own.\nThe challenge lies not in the quantity but in the quality and interactivity of these worlds. However, with the right amount of dedication and creativity, I am confident that this ambitious project can be realized."
+    "text": "Weighted to 4 bone weights and range of motion doesn’t break the skinning\nshader motion\ntastt’s text player\noverly or dimm bright lights don’t break the avatar surface\nGut feel check"
+  },
+  {
+    "objectID": "prototypes/20230911-avatar-checklist.html#avatar-preflight-checklist",
+    "href": "prototypes/20230911-avatar-checklist.html#avatar-preflight-checklist",
+    "title": "V-Sekai - Manuals",
+    "section": "",
+    "text": "Weighted to 4 bone weights and range of motion doesn’t break the skinning\nshader motion\ntastt’s text player\noverly or dimm bright lights don’t break the avatar surface\nGut feel check"
   },
   {
     "objectID": "index.html",
