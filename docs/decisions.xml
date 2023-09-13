@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Wed, 13 Sep 2023 02:22:16 GMT</lastBuildDate>
+<lastBuildDate>Wed, 13 Sep 2023 15:24:13 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -68,7 +68,124 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Wed, 13 Sep 2023 02:22:16 GMT</pubDate>
+  <pubDate>Wed, 13 Sep 2023 15:24:13 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230913-V-Sekai-bugs.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="challenges-that-need-to-be-addressed-in-v-sekai" class="level1">
+<h1>Challenges that need to be addressed in V-Sekai</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li><strong>Status:</strong> Proposed</li>
+<li><strong>Deciders:</strong> V-Sekai</li>
+<li><strong>Tags:</strong> V-Sekai</li>
+</ul>
+</section>
+<section id="the-backdrop" class="level2">
+<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
+<p>In our quest to expand our community, we are faced with several challenges that need to be addressed.</p>
+</section>
+<section id="the-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
+<p>Our game has been QA Engineered by Facade, which was a great help. However, there are still issues that need to be resolved.</p>
+</section>
+<section id="the-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
+<p>We have identified several areas of concern and have charted them in the following flow diagram:</p>
+<pre class="mermaid"><code>graph TD
+  IK["IK errors ingame #256"]
+  VOIP["Restore VOIP #255"]
+  Gestures["Restore gestures #254"]
+  Sensitivity["Increase default mouse sensitivity #253"]
+  Text["UI dropdown text is invisible until hovered #252"]
+  Escape["Escape button in menu should go back, instead does nothing #251"]
+  Freeze["Pressing escape button while ingame freezes client #250"]
+  Mirror["Restore mirror in the preview server #249"]
+  Deadzones["Stick deadzones #248"]
+  Invisible["When loading into a server without selecting an avatar, the default is invisible #247"]
+  Raycast["Raycast rays from the menu remain visible in game #246"]
+  Uploads["Restore world uploads #244"]
+  Avatar["Restore avatar upload #243"]
+  VR["VR doesn't work #228"]
+
+  Crash["V-Sekai crash on start on RADV, Ubuntu 22.04.2 LTS (Jammy Jellyfish) #115"]
+  Fingers["Corruption near the fingers #57"]
+  Login["Allow another way to login from the map &amp; avatar list dialog #52"]
+  Loading["Avatars should load after the loading screen ends but before the menu screen #51"]
+  Logout["People tend to be logged out by Uro #50"]
+  Pause["Players get disoriented by the pause menu flow #31"]
+  Speech["Player speech appears to stop forever #28"]
+  Menu["Menu doesn't work in VR #8"]
+  Jumping["Jumping doesn't work #6"]
+  Grab["Restore grabbing and environmental interactions for players #47"]
+  Upload["Couldn't upload a large map #68"]
+
+  IK--&gt;VOIP
+  VOIP--&gt;Gestures
+  Gestures--&gt;Sensitivity
+  Sensitivity--&gt;Text
+  Text--&gt;Escape
+  Escape--&gt;Freeze
+  Freeze--&gt;Mirror
+  Mirror--&gt;Deadzones
+  Deadzones--&gt;Invisible
+  Invisible--&gt;Raycast
+  Raycast--&gt;Uploads
+  Uploads--&gt;Avatar
+  Avatar--&gt;VR
+
+  VR--&gt;Crash
+  Crash--&gt;Fingers
+  Fingers--&gt;Login
+  Login--&gt;Loading
+  Loading--&gt;Logout
+  Logout--&gt;Pause
+  Pause--&gt;Speech
+  Speech--&gt;Menu
+  Menu--&gt;Jumping
+  Jumping--&gt;Grab
+  Grab--&gt;Upload</code></pre>
+</section>
+<section id="the-upside" class="level2">
+<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
+<p>Addressing these issues will significantly improve the user experience, making our game more enjoyable and accessible. This could lead to an increase in our user base and community engagement.</p>
+</section>
+<section id="the-downside" class="level2">
+<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
+<p>The process of resolving these issues may require significant time and resources. It might also involve some trial and error, which could potentially introduce new bugs or problems.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>Ignoring these issues is not an option as it would negatively impact the user experience and could hinder the growth of our community.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>While some of these issues might only affect a small number of users or occur under specific circumstances, it’s important to address them to ensure a smooth and enjoyable experience for all users.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
+<p>Yes, these issues are core to the functionality of our game and should be addressed by our team.</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://v-sekai.org/">V-Sekai</a></li>
+<li>This article is assisted by AI.</li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230913-V-Sekai-bugs.html</guid>
+  <pubDate>Wed, 13 Sep 2023 15:24:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -139,7 +256,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230912-target-most-popular-resolution.html</guid>
-  <pubDate>Wed, 13 Sep 2023 02:22:16 GMT</pubDate>
+  <pubDate>Wed, 13 Sep 2023 15:24:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -195,7 +312,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230911-xr-grid-with-drawing.html</guid>
-  <pubDate>Wed, 13 Sep 2023 02:22:16 GMT</pubDate>
+  <pubDate>Wed, 13 Sep 2023 15:24:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -287,7 +404,7 @@ E[Microphone] -- Audio Input --&gt; C</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230908-bendable-screen-generative-assistant-ggml.html</guid>
-  <pubDate>Wed, 13 Sep 2023 02:22:16 GMT</pubDate>
+  <pubDate>Wed, 13 Sep 2023 15:24:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -372,7 +489,7 @@ E[Microphone] -- Audio Input --&gt; C</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230903-replicate-vrm-transform.html</guid>
-  <pubDate>Wed, 13 Sep 2023 02:22:16 GMT</pubDate>
+  <pubDate>Wed, 13 Sep 2023 15:24:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -437,7 +554,7 @@ E[Microphone] -- Audio Input --&gt; C</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230831-fixing-upload-limits.html</guid>
-  <pubDate>Wed, 13 Sep 2023 02:22:16 GMT</pubDate>
+  <pubDate>Wed, 13 Sep 2023 15:24:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -500,7 +617,7 @@ E[Microphone] -- Audio Input --&gt; C</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230831-fixing-menus.html</guid>
-  <pubDate>Wed, 13 Sep 2023 02:22:16 GMT</pubDate>
+  <pubDate>Wed, 13 Sep 2023 15:24:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -582,7 +699,7 @@ E[Microphone] -- Audio Input --&gt; C</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230830-generating-v-sekai-worlds.html</guid>
-  <pubDate>Wed, 13 Sep 2023 02:22:16 GMT</pubDate>
+  <pubDate>Wed, 13 Sep 2023 15:24:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -646,7 +763,7 @@ E[Microphone] -- Audio Input --&gt; C</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230830-better-object-pick.html</guid>
-  <pubDate>Wed, 13 Sep 2023 02:22:16 GMT</pubDate>
+  <pubDate>Wed, 13 Sep 2023 15:24:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -710,7 +827,7 @@ E[Microphone] -- Audio Input --&gt; C</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230830-better-backend-services.html</guid>
-  <pubDate>Wed, 13 Sep 2023 02:22:16 GMT</pubDate>
+  <pubDate>Wed, 13 Sep 2023 15:24:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -881,7 +998,7 @@ E[Microphone] -- Audio Input --&gt; C</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230829-omifest-2023.html</guid>
-  <pubDate>Wed, 13 Sep 2023 02:22:16 GMT</pubDate>
+  <pubDate>Wed, 13 Sep 2023 15:24:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -947,7 +1064,7 @@ E[Microphone] -- Audio Input --&gt; C</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230824-subdiv-for-lods.html</guid>
-  <pubDate>Wed, 13 Sep 2023 02:22:16 GMT</pubDate>
+  <pubDate>Wed, 13 Sep 2023 15:24:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1214,7 +1331,7 @@ font-style: inherit;">=</span> json.dumps(output)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230823-speech-to-blendshapes.html</guid>
-  <pubDate>Wed, 13 Sep 2023 02:22:16 GMT</pubDate>
+  <pubDate>Wed, 13 Sep 2023 15:24:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1283,7 +1400,7 @@ font-style: inherit;">=</span> json.dumps(output)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230819-train-game.html</guid>
-  <pubDate>Wed, 13 Sep 2023 02:22:16 GMT</pubDate>
+  <pubDate>Wed, 13 Sep 2023 15:24:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1371,7 +1488,7 @@ font-style: inherit;">=</span> json.dumps(output)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230813-mixer-broadcaster-into-membrane-framework copy.html</guid>
-  <pubDate>Wed, 13 Sep 2023 02:22:16 GMT</pubDate>
+  <pubDate>Wed, 13 Sep 2023 15:24:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1486,7 +1603,7 @@ font-style: inherit;">=</span> json.dumps(output)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230813-blender-runner-into-membrane-framework.html</guid>
-  <pubDate>Wed, 13 Sep 2023 02:22:16 GMT</pubDate>
+  <pubDate>Wed, 13 Sep 2023 15:24:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1554,7 +1671,7 @@ font-style: inherit;">=</span> json.dumps(output)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230812-vsekai-update-process.html</guid>
-  <pubDate>Wed, 13 Sep 2023 02:22:16 GMT</pubDate>
+  <pubDate>Wed, 13 Sep 2023 15:24:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1626,7 +1743,7 @@ font-style: inherit;">=</span> json.dumps(output)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230812-unmerge-and-merge-procedure-source-code-tree.html</guid>
-  <pubDate>Wed, 13 Sep 2023 02:22:16 GMT</pubDate>
+  <pubDate>Wed, 13 Sep 2023 15:24:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1743,71 +1860,7 @@ font-style: inherit;">=</span> json.dumps(output)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230812-gocd-agent-setup.html</guid>
-  <pubDate>Wed, 13 Sep 2023 02:22:16 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20230812-constraint-all-bones.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="constrain-the-entire-godot-humanoid-skeleton" class="level1">
-<h1>Constrain the entire Godot Humanoid Skeleton</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li><strong>Status:</strong> proposed</li>
-<li><strong>Deciders:</strong> V-Sekai, fire</li>
-<li><strong>Tags:</strong> V-Sekai</li>
-</ul>
-</section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>The current Godot humanoid skeleton system lacks proper constraints for all bones, specifically in terms of rotation swing and rotation twist limits. This has led to issues when trying to move parts of the skeleton such as the head or legs towards the torso.</p>
-</section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>The challenge lies in implementing these constraints without causing other issues within the system. Some bones are not solved and should not be constrained, adding complexity to the task.</p>
-</section>
-<section id="the-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>The strategy is to carefully analyze each bone and determine the appropriate constraints. This will involve a combination of swing rotation and twist rotation constraints, depending on the specific bone.</p>
-</section>
-<section id="the-upside" class="level2">
-<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<p>By implementing these constraints, we can improve the functionality and reliability of the Godot humanoid skeleton system. This will allow for more realistic movements and prevent system errors when moving certain parts of the skeleton.</p>
-</section>
-<section id="the-downside" class="level2">
-<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<p>There may be potential challenges in implementing these constraints, particularly for the unsolved bones. It will require careful testing and adjustment to ensure that the new constraints do not introduce new issues.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>An alternative would be to leave the system as it is, accepting its limitations. However, this would mean missing out on the potential improvements that could be achieved through this proposal.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>In some rare cases, the lack of constraints might actually be beneficial, allowing for unusual or exaggerated movements. These cases will need to be considered and potentially addressed separately.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>Yes, this change would be implemented in the core system by the V-Sekai team.</p>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ul>
-<li><a href="https://v-sekai.org/">V-Sekai</a></li>
-<li>This article is assisted by AI.</li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20230812-constraint-all-bones.html</guid>
-  <pubDate>Wed, 13 Sep 2023 02:22:16 GMT</pubDate>
+  <pubDate>Wed, 13 Sep 2023 15:24:13 GMT</pubDate>
 </item>
 </channel>
 </rss>
