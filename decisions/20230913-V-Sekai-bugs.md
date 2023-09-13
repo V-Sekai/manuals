@@ -34,7 +34,7 @@ graph TD
   Uploads["Restore world uploads #244"]
   Avatar["Restore avatar upload #243"]
   VR["VR doesn't work #228"]
-
+  
   Crash["V-Sekai crash on start on RADV, Ubuntu 22.04.2 LTS (Jammy Jellyfish) #115"]
   Fingers["Corruption near the fingers #57"]
   Login["Allow another way to login from the map & avatar list dialog #52"]
@@ -46,7 +46,7 @@ graph TD
   Jumping["Jumping doesn't work #6"]
   Grab["Restore grabbing and environmental interactions for players #47"]
   Upload["Couldn't upload a large map #68"]
-
+  
   IK-->VOIP
   VOIP-->Gestures
   Gestures-->Sensitivity
@@ -60,7 +60,7 @@ graph TD
   Raycast-->Uploads
   Uploads-->Avatar
   Avatar-->VR
-
+  
   VR-->Crash
   Crash-->Fingers
   Fingers-->Login
