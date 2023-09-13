@@ -20,58 +20,31 @@ We have identified several areas of concern and have charted them in the followi
 
 ```mermaid
 graph TD
-  IK["IK errors ingame #256"]
-  VOIP["Restore VOIP #255"]
-  Gestures["Restore gestures #254"]
-  Sensitivity["Increase default mouse sensitivity #253"]
-  Text["UI dropdown text is invisible until hovered #252"]
-  Escape["Escape button in menu should go back, instead does nothing #251"]
-  Freeze["Pressing escape button while ingame freezes client #250"]
-  Mirror["Restore mirror in the preview server #249"]
-  Deadzones["Stick deadzones #248"]
-  Invisible["When loading into a server without selecting an avatar, the default is invisible #247"]
-  Raycast["Raycast rays from the menu remain visible in game #246"]
-  Uploads["Restore world uploads #244"]
-  Avatar["Restore avatar upload #243"]
-  VR["VR doesn't work #228"]
-
+graph TD
   Crash["V-Sekai crash on start on RADV, Ubuntu 22.04.2 LTS (Jammy Jellyfish) #115"]
-  Fingers["Corruption near the fingers #57"]
-  Login["Allow another way to login from the map & avatar list dialog #52"]
-  Loading["Avatars should load after the loading screen ends but before the menu screen #51"]
-  Logout["People tend to be logged out by Uro #50"]
-  Pause["Players get disoriented by the pause menu flow #31"]
-  Speech["Player speech appears to stop forever #28"]
-  Menu["Menu doesn't work in VR #8"]
-  Jumping["Jumping doesn't work #6"]
-  Grab["Restore grabbing and environmental interactions for players #47"]
-  Upload["Couldn't upload a large map #68"]
-
-  IK-->VOIP
-  VOIP-->Gestures
-  Gestures-->Sensitivity
-  Sensitivity-->Text
-  Text-->Escape
-  Escape-->Freeze
-  Freeze-->Mirror
-  Mirror-->Deadzones
-  Deadzones-->Invisible
-  Invisible-->Raycast
-  Raycast-->Uploads
-  Uploads-->Avatar
-  Avatar-->VR
-
-  VR-->Crash
-  Crash-->Fingers
-  Fingers-->Login
-  Login-->Loading
-  Loading-->Logout
-  Logout-->Pause
-  Pause-->Speech
-  Speech-->Menu
-  Menu-->Jumping
-  Jumping-->Grab
-  Grab-->Upload
+  VR["VR doesn't work #228"]
+  Avatar["Restore avatar upload #243"]
+  Uploads["Restore world uploads #244"]
+  Mirror["Restore mirror in the preview server #249"]
+  Freeze["Pressing escape button while ingame freezes client #250"]
+  Escape["Escape button in menu should go back, instead does nothing #251"]
+  Text["UI dropdown text is invisible until hovered #252"]
+  Sensitivity["Increase default mouse sensitivity #253"]
+  Gestures["Restore gestures #254"]
+  VOIP["Restore VOIP #255"]
+  IK["IK errors ingame #256"]
+  
+  Crash-->VR
+  VR-->Avatar
+  Avatar-->Uploads
+  Uploads-->Mirror
+  Mirror-->Freeze
+  Freeze-->Escape
+  Escape-->Text
+  Text-->Sensitivity
+  Sensitivity-->Gestures
+  Gestures-->VOIP
+  VOIP-->IK
 ```
 
 ## The Upside
