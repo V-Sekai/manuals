@@ -2,7 +2,7 @@
 
 ## Metadata
 
-- Status: proposed
+- Status: rejected
 - Deciders: V-Sekai, fire, antpb
 - Tags: V-Sekai
 
