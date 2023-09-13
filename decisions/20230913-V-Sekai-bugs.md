@@ -20,31 +20,30 @@ We have identified several areas of concern and have charted them in the followi
 
 ```mermaid
 graph TD
-graph TD
-  Crash["V-Sekai crash on start on RADV, Ubuntu 22.04.2 LTS (Jammy Jellyfish) #115"]
-  VR["VR doesn't work #228"]
-  Avatar["Restore avatar upload #243"]
-  Uploads["Restore world uploads #244"]
-  Mirror["Restore mirror in the preview server #249"]
-  Freeze["Pressing escape button while ingame freezes client #250"]
-  Escape["Escape button in menu should go back, instead does nothing #251"]
-  Text["UI dropdown text is invisible until hovered #252"]
-  Sensitivity["Increase default mouse sensitivity #253"]
-  Gestures["Restore gestures #254"]
-  VOIP["Restore VOIP #255"]
-  IK["IK errors ingame #256"]
-  
-  Crash-->VR
-  VR-->Avatar
-  Avatar-->Uploads
-  Uploads-->Mirror
-  Mirror-->Freeze
-  Freeze-->Escape
-  Escape-->Text
-  Text-->Sensitivity
-  Sensitivity-->Gestures
-  Gestures-->VOIP
-  VOIP-->IK
+    Crash["V-Sekai crash on start on RADV, Ubuntu 22.04.2 LTS (Jammy Jellyfish) #115"]
+    VR["VR doesn't work #228"]
+    Avatar["Restore avatar upload #243"]
+    Uploads["Restore world uploads #244"]
+    Mirror["Restore mirror in the preview server #249"]
+    Freeze["Pressing escape button while ingame freezes client #250"]
+    Escape["Escape button in menu should go back, instead does nothing #251"]
+    Text["UI dropdown text is invisible until hovered #252"]
+    Sensitivity["Increase default mouse sensitivity #253"]
+    Gestures["Restore gestures #254"]
+    VOIP["Restore VOIP #255"]
+    IK["IK errors ingame #256"]
+
+    Crash-->VR
+    VR-->Avatar
+    Avatar-->Uploads
+    Uploads-->Mirror
+    Mirror-->Freeze
+    Freeze-->Escape
+    Escape-->Text
+    Text-->Sensitivity
+    Sensitivity-->Gestures
+    Gestures-->VOIP
+    VOIP-->IK
 ```
 
 ## The Upside
