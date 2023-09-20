@@ -55,4 +55,5 @@ This modification would need to be done by us, as it involves changing the SeaGO
 ## Further Reading
 
 - [V-Sekai](https://v-sekai.org/)
+- [SeaGOAT](https://github.com/kantord/SeaGOAT)
 - This article is assisted by AI.
