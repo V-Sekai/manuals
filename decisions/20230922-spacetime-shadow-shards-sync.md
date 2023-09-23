@@ -12,19 +12,19 @@ V-Sekai, leveraging the Godot client-server model, aspires to support 1000-2000 
 
 ## Challenges
 
-Key challenges encompass managing single shard overload, administering shadow shards, executing the spacetime model, and enabling lightcone transitions. These tasks necessitate precise planning, execution, and monitoring for peak performance.
+Key challenges encompass managing single shard overload, administering shadow shards, and implementing state synchronization and game state transitions. These tasks necessitate precise planning, execution, and monitoring for peak performance.
 
 ## Approach
 
-A simple gameplay session will be started where an art sourcer can upload artwork. The game environment will be a flat surface with a boundary, allowing for mathematical movement calculations without a navigation mesh.
+A simple gameplay session will be initiated where an art sourcer can upload artwork. The game environment will be a flat surface with a boundary, allowing for mathematical movement calculations without a navigation mesh.
 
 The number of clients connecting to the server will be gradually increased, starting small and eventually reaching 2000. This will test the server's capacity to handle multiple connections. During testing, system resources will be monitored to estimate the cost and resources required to support 2000 players. Gameplay sessions will be recorded for the trade show and load testing will be conducted to ensure our server can manage the maximum number of players without crashing or significant slowdowns.
 
 1. **Server Configuration**: Set up a Godot server that listens on a designated port.
 2. **Client Development**: Build a Godot client that connects to our server using High-Level Networking.
 3. **Shadow Shard Administration**: Generate shadow copies of the original shard, serialize them for network transmission, and synchronize their state periodically.
-4. **Spacetime Model Execution**: Develop data structures symbolizing different parts of the model and outline their interactions.
-5. **Lightcone Transitions**: Preserve the current game state, pinpoint the target lightcone, transition to it, and validate the transition.
+4. **State Synchronization**: Develop `Ref<Animation>` data structures symbolizing different parts of the model and outline their interactions.
+5. **Game State Transitions**: Preserve the current game state, pinpoint the target state, transition to it, and validate the transition using an orphan `AnimationTree`.
 
 ## Advantages
 
