@@ -16,6 +16,10 @@ Key challenges encompass managing single shard overload, administering shadow sh
 
 ## Approach
 
+A simple gameplay session will be started where an art sourcer can upload artwork. The game environment will be a flat surface with a boundary, allowing for mathematical movement calculations without a navigation mesh.
+
+The number of clients connecting to the server will be gradually increased, starting small and eventually reaching 2000. This will test the server's capacity to handle multiple connections. During testing, system resources will be monitored to estimate the cost and resources required to support 2000 players. Gameplay sessions will be recorded for the trade show and load testing will be conducted to ensure our server can manage the maximum number of players without crashing or significant slowdowns.
+
 Our tactical blueprint includes:
 
 1. **Server Configuration**: Set up a Godot server that listens on a designated port.
