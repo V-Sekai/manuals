@@ -1,8 +1,8 @@
-# Overcoming V-Sekai limitations by documentation 
+# Overcoming a V-Sekai limit
   
 ## Metadata  
   
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->  
+- Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->  
 - Deciders: V-Sekai  
 - Tags: V-Sekai  
   
@@ -24,5 +24,5 @@
   
 ## Further Reading  
   
-- [V-Sekai](https://v-sekai.org/)  
-- This article is assisted by AI.  
+- [V-Sekai]
+- AI assists this article.  
