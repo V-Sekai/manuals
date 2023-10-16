@@ -7357,18 +7357,95 @@
     "text": "In semantic versioning (semver), the first alpha release would typically be denoted with a hyphen followed by the word “alpha” and a number. For example, it could be something like “0.1.0-alpha.1”. The specific alpha release number may vary depending on the project and its release cycle."
   },
   {
-    "objectID": "prototypes/20230911-xpr.html",
-    "href": "prototypes/20230911-xpr.html",
-    "title": "V-Sekai - Manuals",
+    "objectID": "prototypes/20231016-mmog-rpg.html",
+    "href": "prototypes/20231016-mmog-rpg.html",
+    "title": "VR MMOG Project Design",
     "section": "",
-    "text": "defmodule AveragableLerpable do\n  @callback average(a :: any(), b :: any(), t :: number()) :: any()\n  @callback lerp(a :: any(), b :: any(), t :: number()) :: any()\n  @callback spherical_interpolate(a :: any(), b :: any(), t :: number()) :: any()\n  @callback spherical_cubic_interpolate(a :: any(), b :: any(), c :: any(), d :: any(), t1 :: number(), t2 :: number(), t3 :: number(), t4 :: number()) :: any()\n  @callback cubic_interpolate(a :: any(), b :: any(), c :: any(), d :: any(), t1 :: number(), t2 :: number(), t3 :: number(), t4 :: number()) :: any()\nend\n\ndefmodule Rotation6D do\n  @behaviour AveragableLerpable\n\n  defstruct [:x1, :y1, :z1, :x2, :y2, :z2]\n\n  # Implement the required methods here\nend\n\ndefmodule Position3D do\n  @behaviour AveragableLerpable\n\n  defstruct [:x, :y, :z]\n\n  # Implement the required methods here\nend\n\ndefmodule LightCone do\n  @type t :: %{\n          count: [AveragableLerpable.t()],\n          accumulate: [function()],\n          array: [AveragableLerpable.t()],\n          set: MapSet.t(any())\n        }\nend\n\n@type event ::\n        {:expand}\n        | {:superposition}\n        | {:spacetime_bubble}\n        | {:light_cone}\n        | {:collapse}\n        | {:avg_lerp}\n        | {:plus}\n        | {:union}\n\ndefmodule PropagateFilter do\n  use Membrane.Filter\n\n  @impl true\n  def handle_init(_) do\n    {:ok, %{}}\n  end\n\n  @impl true\n  def handle_demand(:output, size, :buffers, _ctx) do\n    {{:ok, demand: {:input, size}}, %{}}\n  end\n\n  @impl true\n  def handle_process(:input, buffer, _ctx) do\n    # Process the input data and generate the output data\n    output_data = process(buffer.payload)\n\n    # Create a new buffer with the output data\n    output_buffer = %Membrane.Buffer{payload: output_data}\n\n    {{:ok, buffer: {:output, output_buffer}}, %{}}\n  end\n\n  defp process(input_data) do\n    # Implement your processing logic here\n    # For example, if input_data is a list of numbers, you can calculate their sum:\n    Enum.reduce(input_data, 0, &(&1 + &2))\n  end\nend\n\n\ndefmodule XprPipeline do\n  use Membrane.Pipeline\n\n  alias Membrane.Element.Tee.Master\n  alias Membrane.Element.Funnel\n  alias Membrane.Element.Clock\n\n  @impl true\n  def handle_init(_) do\n    children = [\n      clock: Clock,\n      light_cone: LightConeElement,\n      expanding: ExpandingElement,\n      collapsing: CollapsingElement,\n      reduce: ReduceElement,\n      update: UpdateElement,\n      tee: Master,\n      funnel: Funnel,\n      propagate: PropagateFilter\n    ]\n\n    links = [\n      link(:clock)\n      |&gt; via_out(:tick, options: [interval: 1000]) # Adjust the interval as needed\n      |&gt; to(:tee)\n      |&gt; to(:expanding)\n      |&gt; to(:light_cone)\n      |&gt; to(:collapsing)\n      |&gt; to(:reduce)\n      |&gt; to(:propagate)\n      |&gt; to(:funnel)\n      |&gt; to(:update)\n    ]\n\n    {{:ok, %ParentSpec{children: children, links: links}}, %{}}\n  end\nend"
+    "text": "The project at hand is a Virtual Reality Massively Multiplayer Online Game (VR MMOG). This is an ambitious and exciting venture that will require significant focus and dedication over the coming weeks. The game will be immersive, interactive, and offer a unique gaming experience to players.\n\n\n\nPlayers will have the option to choose from 3-4 distinct classes. Each class will come equipped with its own set of unique gadgets that aid in performing specific actions related to that class. This adds variety and depth to gameplay, allowing players to choose a playstyle that best suits them.\n\n\n\nThe gadgets provided to each class enable players to perform a wide range of actions:\n\nObject Manipulation: Players can move objects around by blocking or pushing them.\nLong-Range Targeting: Players can aim at targets from far away.\nSurveillance: Using screens, players can monitor other players from afar.\nSpell Casting: From a menu, players can select and cast spells or buffs.\n\nThese gadgets add layers of strategy and complexity to the game, enhancing player engagement.\n\n\n\nA unique concept being introduced in this game is “skill gates”. These are checkpoints where players must demonstrate a specific skill they’ve learned to progress. This serves as a test of their understanding and mastery of the skills they’ve acquired throughout the game.\n\n\n\nAs the level designer, it’s crucial to ensure that players are adequately prepared for each challenge they face. For instance, before encountering a boss that requires parrying, the player should have been taught this skill during their journey leading up to the boss. This ensures a fair and balanced gaming experience, where success is determined by skill and understanding rather than luck."
   },
   {
-    "objectID": "prototypes/20230911-can-poly-green-coords-extend-to-3d.html",
-    "href": "prototypes/20230911-can-poly-green-coords-extend-to-3d.html",
-    "title": "Can Poly Green Coords extend to 3d?",
+    "objectID": "prototypes/20231016-mmog-rpg.html#introduction",
+    "href": "prototypes/20231016-mmog-rpg.html#introduction",
+    "title": "VR MMOG Project Design",
     "section": "",
-    "text": "Can Poly Green Coords extend to 3d?\nReminded by works by pixar: https://graphics.pixar.com/library/ProfileMover/\nHow applicable is this to 3d polygonal cages?\n          You may be interested by *[Green Coordinates for Triquad Cages in 3D](https://research.adobe.com/publication/green-coordinates-for-triquad-cages-in-3d/)* by Thiery and Boubekeur (SIGGRAPH Asia 2022). It is only for straight polygons though, the deformed cage cannot have Bézier arcs like this 2D version has, that's future work. ;) Profile curves are definitly a very nice and related work!\nOriginally posted by @eliemichel in https://github.com/eliemichel/PolyGreenCoords/issues/1#issuecomment-1683045650"
+    "text": "The project at hand is a Virtual Reality Massively Multiplayer Online Game (VR MMOG). This is an ambitious and exciting venture that will require significant focus and dedication over the coming weeks. The game will be immersive, interactive, and offer a unique gaming experience to players."
+  },
+  {
+    "objectID": "prototypes/20231016-mmog-rpg.html#player-classes",
+    "href": "prototypes/20231016-mmog-rpg.html#player-classes",
+    "title": "VR MMOG Project Design",
+    "section": "",
+    "text": "Players will have the option to choose from 3-4 distinct classes. Each class will come equipped with its own set of unique gadgets that aid in performing specific actions related to that class. This adds variety and depth to gameplay, allowing players to choose a playstyle that best suits them."
+  },
+  {
+    "objectID": "prototypes/20231016-mmog-rpg.html#class-gadgets",
+    "href": "prototypes/20231016-mmog-rpg.html#class-gadgets",
+    "title": "VR MMOG Project Design",
+    "section": "",
+    "text": "The gadgets provided to each class enable players to perform a wide range of actions:\n\nObject Manipulation: Players can move objects around by blocking or pushing them.\nLong-Range Targeting: Players can aim at targets from far away.\nSurveillance: Using screens, players can monitor other players from afar.\nSpell Casting: From a menu, players can select and cast spells or buffs.\n\nThese gadgets add layers of strategy and complexity to the game, enhancing player engagement."
+  },
+  {
+    "objectID": "prototypes/20231016-mmog-rpg.html#skill-gates",
+    "href": "prototypes/20231016-mmog-rpg.html#skill-gates",
+    "title": "VR MMOG Project Design",
+    "section": "",
+    "text": "A unique concept being introduced in this game is “skill gates”. These are checkpoints where players must demonstrate a specific skill they’ve learned to progress. This serves as a test of their understanding and mastery of the skills they’ve acquired throughout the game."
+  },
+  {
+    "objectID": "prototypes/20231016-mmog-rpg.html#level-design",
+    "href": "prototypes/20231016-mmog-rpg.html#level-design",
+    "title": "VR MMOG Project Design",
+    "section": "",
+    "text": "As the level designer, it’s crucial to ensure that players are adequately prepared for each challenge they face. For instance, before encountering a boss that requires parrying, the player should have been taught this skill during their journey leading up to the boss. This ensures a fair and balanced gaming experience, where success is determined by skill and understanding rather than luck."
+  },
+  {
+    "objectID": "prototypes/20230911-ideas.html",
+    "href": "prototypes/20230911-ideas.html",
+    "title": "Ideas",
+    "section": "",
+    "text": "Ideas\n\nfade out mic icon"
+  },
+  {
+    "objectID": "play_latest.html",
+    "href": "play_latest.html",
+    "title": "Play the latest build",
+    "section": "",
+    "text": "Instructions last checked 2023-09-27.\n\nAlpha software may not contain all of the features that are planned for the final version. Alpha software is not thoroughly tested by the developer before it is released to customers. (Definition from Wikipedia.)\n\nOur V-Sekai CI is located at ci.v-sekai.cloud - you must use Guest to login, since GitLab is admin-only.\nHere are links to each of the latest jobs. Generally, you will want to click the Artifacts tab from each of these to download things.\n\n\n\nVR Menu does not work.\nDesktop mode is black with VR display on.\n\n\n\n\n\nlinux_job\nwindows_job\n\n\n\n\n\ndefault_job\n\n\n\n\n\nlinuxDesktopJob\nwindowsJob\n\n\n\n\n\nexport_linuxbsd.zip\nexport_windows.zip\n\nThe included .exe are fully functioning Godot editors. However, note that the .exe will not function properly as an editor unless you copy it or rename to be different from the .pck. Again, you must use Guest when it asks you to sign in then, from those links, you can click the Artifacts tab."
+  },
+  {
+    "objectID": "play_latest.html#known-issues-help-welcome",
+    "href": "play_latest.html#known-issues-help-welcome",
+    "title": "Play the latest build",
+    "section": "",
+    "text": "VR Menu does not work.\nDesktop mode is black with VR display on."
+  },
+  {
+    "objectID": "play_latest.html#editor-linux-windows",
+    "href": "play_latest.html#editor-linux-windows",
+    "title": "Play the latest build",
+    "section": "",
+    "text": "linux_job\nwindows_job"
+  },
+  {
+    "objectID": "play_latest.html#templates.tpz-for-making-export",
+    "href": "play_latest.html#templates.tpz-for-making-export",
+    "title": "Play the latest build",
+    "section": "",
+    "text": "default_job"
+  },
+  {
+    "objectID": "play_latest.html#v-sekai-demo-release-linux-windows",
+    "href": "play_latest.html#v-sekai-demo-release-linux-windows",
+    "title": "Play the latest build",
+    "section": "",
+    "text": "linuxDesktopJob\nwindowsJob"
+  },
+  {
+    "objectID": "play_latest.html#direct-.zip-downloads-of-the-releases-can-be-found-here-linux-windows",
+    "href": "play_latest.html#direct-.zip-downloads-of-the-releases-can-be-found-here-linux-windows",
+    "title": "Play the latest build",
+    "section": "",
+    "text": "export_linuxbsd.zip\nexport_windows.zip\n\nThe included .exe are fully functioning Godot editors. However, note that the .exe will not function properly as an editor unless you copy it or rename to be different from the .pck. Again, you must use Guest when it asks you to sign in then, from those links, you can click the Artifacts tab."
   },
   {
     "objectID": "be_an_avatar_visit_places.html",
@@ -7427,53 +7504,18 @@
     "text": "We’re actively researching a security-focused sandboxing environment. You can follow our progress on the godot-wasm project."
   },
   {
-    "objectID": "play_latest.html",
-    "href": "play_latest.html",
-    "title": "Play the latest build",
+    "objectID": "prototypes/20230911-can-poly-green-coords-extend-to-3d.html",
+    "href": "prototypes/20230911-can-poly-green-coords-extend-to-3d.html",
+    "title": "Can Poly Green Coords extend to 3d?",
     "section": "",
-    "text": "Instructions last checked 2023-09-27.\n\nAlpha software may not contain all of the features that are planned for the final version. Alpha software is not thoroughly tested by the developer before it is released to customers. (Definition from Wikipedia.)\n\nOur V-Sekai CI is located at ci.v-sekai.cloud - you must use Guest to login, since GitLab is admin-only.\nHere are links to each of the latest jobs. Generally, you will want to click the Artifacts tab from each of these to download things.\n\n\n\nVR Menu does not work.\nDesktop mode is black with VR display on.\n\n\n\n\n\nlinux_job\nwindows_job\n\n\n\n\n\ndefault_job\n\n\n\n\n\nlinuxDesktopJob\nwindowsJob\n\n\n\n\n\nexport_linuxbsd.zip\nexport_windows.zip\n\nThe included .exe are fully functioning Godot editors. However, note that the .exe will not function properly as an editor unless you copy it or rename to be different from the .pck. Again, you must use Guest when it asks you to sign in then, from those links, you can click the Artifacts tab."
+    "text": "Can Poly Green Coords extend to 3d?\nReminded by works by pixar: https://graphics.pixar.com/library/ProfileMover/\nHow applicable is this to 3d polygonal cages?\n          You may be interested by *[Green Coordinates for Triquad Cages in 3D](https://research.adobe.com/publication/green-coordinates-for-triquad-cages-in-3d/)* by Thiery and Boubekeur (SIGGRAPH Asia 2022). It is only for straight polygons though, the deformed cage cannot have Bézier arcs like this 2D version has, that's future work. ;) Profile curves are definitly a very nice and related work!\nOriginally posted by @eliemichel in https://github.com/eliemichel/PolyGreenCoords/issues/1#issuecomment-1683045650"
   },
   {
-    "objectID": "play_latest.html#known-issues-help-welcome",
-    "href": "play_latest.html#known-issues-help-welcome",
-    "title": "Play the latest build",
+    "objectID": "prototypes/20230911-xpr.html",
+    "href": "prototypes/20230911-xpr.html",
+    "title": "V-Sekai - Manuals",
     "section": "",
-    "text": "VR Menu does not work.\nDesktop mode is black with VR display on."
-  },
-  {
-    "objectID": "play_latest.html#editor-linux-windows",
-    "href": "play_latest.html#editor-linux-windows",
-    "title": "Play the latest build",
-    "section": "",
-    "text": "linux_job\nwindows_job"
-  },
-  {
-    "objectID": "play_latest.html#templates.tpz-for-making-export",
-    "href": "play_latest.html#templates.tpz-for-making-export",
-    "title": "Play the latest build",
-    "section": "",
-    "text": "default_job"
-  },
-  {
-    "objectID": "play_latest.html#v-sekai-demo-release-linux-windows",
-    "href": "play_latest.html#v-sekai-demo-release-linux-windows",
-    "title": "Play the latest build",
-    "section": "",
-    "text": "linuxDesktopJob\nwindowsJob"
-  },
-  {
-    "objectID": "play_latest.html#direct-.zip-downloads-of-the-releases-can-be-found-here-linux-windows",
-    "href": "play_latest.html#direct-.zip-downloads-of-the-releases-can-be-found-here-linux-windows",
-    "title": "Play the latest build",
-    "section": "",
-    "text": "export_linuxbsd.zip\nexport_windows.zip\n\nThe included .exe are fully functioning Godot editors. However, note that the .exe will not function properly as an editor unless you copy it or rename to be different from the .pck. Again, you must use Guest when it asks you to sign in then, from those links, you can click the Artifacts tab."
-  },
-  {
-    "objectID": "prototypes/20230911-ideas.html",
-    "href": "prototypes/20230911-ideas.html",
-    "title": "Ideas",
-    "section": "",
-    "text": "Ideas\n\nfade out mic icon"
+    "text": "defmodule AveragableLerpable do\n  @callback average(a :: any(), b :: any(), t :: number()) :: any()\n  @callback lerp(a :: any(), b :: any(), t :: number()) :: any()\n  @callback spherical_interpolate(a :: any(), b :: any(), t :: number()) :: any()\n  @callback spherical_cubic_interpolate(a :: any(), b :: any(), c :: any(), d :: any(), t1 :: number(), t2 :: number(), t3 :: number(), t4 :: number()) :: any()\n  @callback cubic_interpolate(a :: any(), b :: any(), c :: any(), d :: any(), t1 :: number(), t2 :: number(), t3 :: number(), t4 :: number()) :: any()\nend\n\ndefmodule Rotation6D do\n  @behaviour AveragableLerpable\n\n  defstruct [:x1, :y1, :z1, :x2, :y2, :z2]\n\n  # Implement the required methods here\nend\n\ndefmodule Position3D do\n  @behaviour AveragableLerpable\n\n  defstruct [:x, :y, :z]\n\n  # Implement the required methods here\nend\n\ndefmodule LightCone do\n  @type t :: %{\n          count: [AveragableLerpable.t()],\n          accumulate: [function()],\n          array: [AveragableLerpable.t()],\n          set: MapSet.t(any())\n        }\nend\n\n@type event ::\n        {:expand}\n        | {:superposition}\n        | {:spacetime_bubble}\n        | {:light_cone}\n        | {:collapse}\n        | {:avg_lerp}\n        | {:plus}\n        | {:union}\n\ndefmodule PropagateFilter do\n  use Membrane.Filter\n\n  @impl true\n  def handle_init(_) do\n    {:ok, %{}}\n  end\n\n  @impl true\n  def handle_demand(:output, size, :buffers, _ctx) do\n    {{:ok, demand: {:input, size}}, %{}}\n  end\n\n  @impl true\n  def handle_process(:input, buffer, _ctx) do\n    # Process the input data and generate the output data\n    output_data = process(buffer.payload)\n\n    # Create a new buffer with the output data\n    output_buffer = %Membrane.Buffer{payload: output_data}\n\n    {{:ok, buffer: {:output, output_buffer}}, %{}}\n  end\n\n  defp process(input_data) do\n    # Implement your processing logic here\n    # For example, if input_data is a list of numbers, you can calculate their sum:\n    Enum.reduce(input_data, 0, &(&1 + &2))\n  end\nend\n\n\ndefmodule XprPipeline do\n  use Membrane.Pipeline\n\n  alias Membrane.Element.Tee.Master\n  alias Membrane.Element.Funnel\n  alias Membrane.Element.Clock\n\n  @impl true\n  def handle_init(_) do\n    children = [\n      clock: Clock,\n      light_cone: LightConeElement,\n      expanding: ExpandingElement,\n      collapsing: CollapsingElement,\n      reduce: ReduceElement,\n      update: UpdateElement,\n      tee: Master,\n      funnel: Funnel,\n      propagate: PropagateFilter\n    ]\n\n    links = [\n      link(:clock)\n      |&gt; via_out(:tick, options: [interval: 1000]) # Adjust the interval as needed\n      |&gt; to(:tee)\n      |&gt; to(:expanding)\n      |&gt; to(:light_cone)\n      |&gt; to(:collapsing)\n      |&gt; to(:reduce)\n      |&gt; to(:propagate)\n      |&gt; to(:funnel)\n      |&gt; to(:update)\n    ]\n\n    {{:ok, %ParentSpec{children: children, links: links}}, %{}}\n  end\nend"
   },
   {
     "objectID": "prototypes/20230911-networked_physics.html",
