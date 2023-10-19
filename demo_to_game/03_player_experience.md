@@ -18,10 +18,6 @@ For instance, if a player has learned a new combat move or magic spell, they mig
 
 ## Level Design
 
-| Warning |
-|:------------------|
-| As of October 19th, 2023, this is still in planning stages. Please note that the information provided here may change as the development progresses. |
-
 The level design in the game plays a crucial role in ensuring that players acquire necessary skills and abilities before they encounter major challenges. This is achieved through various means:
 
 The game's levels are designed with a **Progressive Difficulty** curve. This means that early levels are relatively easy, allowing players to learn the basic mechanics and controls of the game. As players progress, the levels become more challenging, requiring them to apply and refine the skills they've learned.
