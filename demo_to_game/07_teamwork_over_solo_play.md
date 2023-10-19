@@ -1,4 +1,4 @@
-## 7. Teamwork Over Solo Play
+## 6. Teamwork Over Solo Play
 
 | Warning |
 |:------------------|

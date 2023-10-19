@@ -1,4 +1,4 @@
-# 8. Custom Avatars and Voice Chat
+# 7. Custom Avatars and Voice Chat
 
 | Warning |
 |:------------------|

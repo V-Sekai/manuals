@@ -1,4 +1,4 @@
-# 5. Skill Gates
+# 4. Skill Gates
 
 | Warning |
 |:------------------|

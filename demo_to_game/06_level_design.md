@@ -1,4 +1,4 @@
-## 6. Level Design
+## 5. Level Design
 
 | Warning |
 |:------------------|
