@@ -1,4 +1,4 @@
-# 1. Game
+# 1. V-Sekai Game
 
 | Warning |
 |:------------------|
