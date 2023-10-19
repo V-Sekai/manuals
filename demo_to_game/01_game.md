@@ -1,4 +1,4 @@
-# Game
+# 1. Game
 
 The game is a first-person adventure set in a vast universe. The setting is a post-apocalyptic future where humans have moved beyond their biological limits and spread across the solar system.
 
