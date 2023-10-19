@@ -4,7 +4,7 @@ The conversation between iFire and cyberpunkmermaid reveals an innovative idea o
 
 iFire has a cart with a PCVR computer in it. This setup streams to a Quest 3, which is a virtual reality headset. The system uses portable light houses on clamped sticks for tracking.
 
-You can use 8 HTC or Tundra trackers motion capture. One tracker is dedicated to the continuous calibration with the Meta Quest 3 HMD and the SteamVR ecosystem. You can find more details [here](https://github.com/ArcticFox8515/OpenVR-SpaceCalibrator/releases/tag/v1.4-bd_%2Baf-r5). Two are used for the foot, two for the shoulders, one for the chest, one for the hips (optional).
+You can use 6 HTC or Tundra trackers motion capture. One tracker is dedicated to the continuous calibration with the Meta Quest 3 HMD and the SteamVR ecosystem. You can find more details [here](https://github.com/ArcticFox8515/OpenVR-SpaceCalibrator/releases/tag/v1.4-bd_%2Baf-r5). Two are used for the foot, two for the shoulders, one for the chest, one for the hips (optional).
 
 The setup also includes 2 or 4 light houses and requires the purchase of Virtual Desktop for the Meta Quest 3.
 
