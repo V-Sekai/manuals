@@ -1,5 +1,9 @@
 # 4. Gadget Mechanics
 
+| :warning: Warning |
+|:------------------|
+| As of October 19th, 2023, this is still in planning stages. Please note that the information provided here may change as the development progresses. |
+
 In this game, the traditional concept of distinct classes is replaced with a more flexible and dynamic system - the gadget mechanics. This innovative feature provides players with access to various gadgets, each enabling a wide range of actions that add depth and complexity to gameplay.
 
 One such gadget allows for **Object Manipulation**. With it, players can move objects around within the game environment, either by blocking or pushing them. This opens up new possibilities for puzzle-solving and strategic planning.

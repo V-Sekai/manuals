@@ -1,5 +1,9 @@
 # 1. Game
 
+| :warning: Warning |
+|:------------------|
+| As of October 19th, 2023, this is still in planning stages. Please note that the information provided here may change as the development progresses. |
+
 The game we're discussing is a first-person adventure that takes place in an expansive universe. The backdrop of the game is a post-apocalyptic future where humanity has transcended its biological boundaries and colonized the solar system.
 
 This game masterfully blends elements of science fiction and horror to create an immersive gaming experience. It provides a variety of gameplay options, including player versus player and player versus environment scenarios, ensuring a thrilling and unpredictable journey for players.

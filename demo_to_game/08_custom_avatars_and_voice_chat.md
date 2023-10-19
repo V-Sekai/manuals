@@ -1,5 +1,9 @@
 # 8. Custom Avatars and Voice Chat
 
+| :warning: Warning |
+|:------------------|
+| As of October 19th, 2023, this is still in planning stages. Please note that the information provided here may change as the development progresses. |
+
 The game offers two key features that significantly enhance the player experience: custom avatars and voice chat.
 
 The **Custom Avatars** feature empowers players to craft unique, personalized characters, or avatars, to represent themselves within the game world. This feature amplifies the immersive experience by providing an avenue for players to express their individuality and engage more deeply with the game environment. It's not just about playing a game; it's about living in it as a character of your own creation.
