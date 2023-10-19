@@ -1,4 +1,3 @@
-```elixir
 defmodule AveragableLerpable do
   @callback average(a :: any(), b :: any(), t :: number()) :: any()
   @callback lerp(a :: any(), b :: any(), t :: number()) :: any()
@@ -111,4 +110,3 @@ defmodule XprPipeline do
     {{:ok, %ParentSpec{children: children, links: links}}, %{}}
   end
 end
-```
