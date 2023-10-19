@@ -27,3 +27,5 @@ This project does not adhere to [Semantic Versioning](https://semver.org/spec/v2
 ## Misc
 
 - Convinced PolygonJS to change their license to the MIT license.
+- Reviewed a character genrerator with OMI and JIN
+- Discussed svg in gltf at OMI
