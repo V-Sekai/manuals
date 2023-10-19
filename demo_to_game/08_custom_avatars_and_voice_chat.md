@@ -1,6 +1,6 @@
 # 8. Custom Avatars and Voice Chat
 
-| :warning: Warning |
+| Warning |
 |:------------------|
 | As of October 19th, 2023, this is still in planning stages. Please note that the information provided here may change as the development progresses. |
 
