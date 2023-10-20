@@ -24,5 +24,5 @@
   
 ## Further Reading  
   
-- [V-Sekai]
+- [V-Sekai](https://github.com/v-sekai/)
 - AI assists this article.  
