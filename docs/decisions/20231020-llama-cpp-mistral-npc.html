@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>V-Sekai - Manuals – present-proposal-template</title>
+<title>V-Sekai - Manuals – llama-cpp-mistral-npc</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -122,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overcoming-a-v-sekai-limit" id="toc-overcoming-a-v-sekai-limit" class="nav-link active" data-scroll-target="#overcoming-a-v-sekai-limit">Overcoming a V-Sekai limit</a>
+  <li><a href="#llama-cpp-ai-model-npc" id="toc-llama-cpp-ai-model-npc" class="nav-link active" data-scroll-target="#llama-cpp-ai-model-npc">Llama CPP AI Model NPC</a>
   <ul class="collapse">
   <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
   <li><a href="#the-backdrop" id="toc-the-backdrop" class="nav-link" data-scroll-target="#the-backdrop">The Backdrop</a></li>
@@ -136,54 +136,68 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/decisions/present-proposal-template.md" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/decisions/20231020-llama-cpp-mistral-npc.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-<section id="overcoming-a-v-sekai-limit" class="level1">
-<h1>Overcoming a V-Sekai limit</h1>
+<section id="llama-cpp-ai-model-npc" class="level1">
+<h1>Llama CPP AI Model NPC</h1>
 <section id="metadata" class="level2">
 <h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
-<li>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --><br>
-</li>
+<li>Status: Proposed</li>
 <li>Deciders: V-Sekai<br>
 </li>
-<li>Tags: V-Sekai</li>
+<li>Tags: V-Sekai, AI, NPC, Godot 4</li>
 </ul>
 </section>
 <section id="the-backdrop" class="level2">
 <h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
+<p>In the realm of game development, creating engaging and dynamic Non-Player Characters (NPCs) is a challenging task. With advancements in AI, there’s an opportunity to leverage these technologies to enhance NPC interactions.</p>
 </section>
 <section id="the-challenge" class="level2">
 <h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
+<p>The challenge lies in effectively using various AI models to create the “brain” of an AI NPC in Godot 4. This involves generating realistic and contextually appropriate dialogues for the NPCs.</p>
 </section>
 <section id="the-strategy" class="level2">
 <h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
+<p>The strategy involves using a local GPT4All model for generating AI-based NPC dialogue. The script includes several exported variables that can be set in the Godot editor, such as <code>npc_background_directions</code>, <code>sample_npc_question_prompt</code>, and <code>sample_npc_prompt_response</code>. These variables are used to configure the behavior of the AI dialogue generation.</p>
+<p>Key functions include:</p>
+<ul>
+<li><code>call_model(prompt)</code>: Calls the local model with a given prompt.</li>
+<li><code>set_model(new_model_name : String)</code>: Sets the model name.</li>
+</ul>
 </section>
 <section id="the-upside" class="level2">
 <h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
+<p>Leveraging AI for NPC dialogue generation can lead to more dynamic and engaging gameplay. It allows for a wide range of responses and can adapt to different player inputs.</p>
 </section>
 <section id="the-downside" class="level2">
 <h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
+<p>AI models require significant computational resources and may not be suitable for all platforms. Additionally, ensuring the appropriateness and quality of generated dialogues can be challenging.</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>Traditional methods of NPC dialogue generation involve pre-scripted dialogues or simple decision trees. While these methods are less resource-intensive, they lack the dynamism and adaptability of AI-generated dialogues.</p>
 </section>
 <section id="the-infrequent-use-case" class="level2">
 <h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>In games with minimal NPC interactions or where dialogue is not a significant aspect of gameplay, the use of AI for dialogue generation may not be necessary.</p>
 </section>
 <section id="in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
+<p>Yes, the implementation of this strategy is done by us in the core of our game development process.</p>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <ul>
-<li><a href="https://github.com/v-sekai/">V-Sekai</a></li>
-<li>AI assists this article.</li>
+<li><a href="https://github.com/v-sekai/">V-Sekai GitHub</a></li>
+<li>AI assists this article.<br>
+</li>
+<li><a href="https://github.com/OpenAccess-AI-Collective/axolotl/tree/main/examples/mistral">Axolotl Mistral Example</a></li>
 </ul>
 
 
