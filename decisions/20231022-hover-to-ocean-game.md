@@ -3,7 +3,7 @@
 ## Metadata
 
 - Status: Proposed
-- Deciders: V-Sekai
+- Deciders: V-Sekai, fire, cyberpunkmermaid
 - Tags: V-Sekai
 
 ## The Backdrop
