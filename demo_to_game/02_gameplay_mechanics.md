@@ -4,11 +4,11 @@
 |:------------------|
 | As of October 23rd, 2023, this is still in planning stages. Please note that the information provided here may change as the development progresses. |
 
-The gameplay mechanics of this game are designed around a squad-based system, promoting players to form teams and develop strategies under the leadership of a commander. The role of the commander is multifaceted, involving the oversight of strategy, handling of resources, and tech upgrades. This design encourages strategic planning and effective resource management among players.
+The gameplay mechanics of this game are designed around a team-based system, promoting players to form teams and develop strategies under the leadership of a commander. The role of the commander is multifaceted, involving the oversight of strategy, handling of resources, and tech upgrades. This design encourages strategic planning and effective resource management among players.
 
 ## Integration of Gadget Mechanics in Gameplay Mechanics
 
-The `Gadget Mechanics` play a crucial role in enhancing the `Gameplay Mechanics`. Each gadget provides unique abilities that can be utilized strategically within the squad-based system.
+The `Gadget Mechanics` play a crucial role in enhancing the `Gameplay Mechanics`. Each gadget provides unique abilities that can be utilized strategically within the team-based system.
 
 - **Object Manipulation**: This gadget can be used to create barriers or clear paths, aiding in strategic planning and resource management. It can also be used to solve puzzles that could lead to resource acquisition or unlocking new areas on the map.
 
