@@ -16,7 +16,7 @@ The challenge lies in integrating the power of the Valve VR ecosystem with the p
 
 ## The Strategy
 
-The strategy involves using 6 HTC or Tundra trackers motion capture. One tracker is dedicated to the continuous calibration with the Meta Quest 3 HMD and the SteamVR ecosystem. Two are used for the foot, two for the shoulders, one for the chest, one for the hips (optional). The setup also includes 2 or 4 light houses and requires the purchase of Virtual Desktop for the Meta Quest 3.
+The strategy involves using 6 HTC or Tundra trackers motion capture. One tracker is dedicated to the continuous calibration with the Meta Quest 3 HMD and the SteamVR ecosystem. Two are used for the foot, two for the shoulders, one for the chest, one for the hips. The setup also includes 2 or 4 light houses and requires the purchase of Virtual Desktop for the Meta Quest 3.
 
 ## The Upside
 
