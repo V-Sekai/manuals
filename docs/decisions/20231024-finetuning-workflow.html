@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>V-Sekai - Manuals – commit-message-bot</title>
+<title>V-Sekai - Manuals – finetuning-workflow</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -122,20 +122,84 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#commit-message-bot" id="toc-commit-message-bot" class="nav-link active" data-scroll-target="#commit-message-bot">Commit message bot</a></li>
+  <li><a href="#enhancing-task-specific-model-performance-through-fine-tuning-with-axolotl" id="toc-enhancing-task-specific-model-performance-through-fine-tuning-with-axolotl" class="nav-link active" data-scroll-target="#enhancing-task-specific-model-performance-through-fine-tuning-with-axolotl">Enhancing Task-Specific Model Performance through Fine-Tuning with Axolotl</a>
+  <ul class="collapse">
+  <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
+  <li><a href="#the-backdrop" id="toc-the-backdrop" class="nav-link" data-scroll-target="#the-backdrop">The Backdrop</a></li>
+  <li><a href="#the-challenge" id="toc-the-challenge" class="nav-link" data-scroll-target="#the-challenge">The Challenge</a></li>
+  <li><a href="#the-strategy" id="toc-the-strategy" class="nav-link" data-scroll-target="#the-strategy">The Strategy</a></li>
+  <li><a href="#the-upside" id="toc-the-upside" class="nav-link" data-scroll-target="#the-upside">The Upside</a></li>
+  <li><a href="#the-downside" id="toc-the-downside" class="nav-link" data-scroll-target="#the-downside">The Downside</a></li>
+  <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
+  <li><a href="#the-infrequent-use-case" id="toc-the-infrequent-use-case" class="nav-link" data-scroll-target="#the-infrequent-use-case">The Infrequent Use Case</a></li>
+  <li><a href="#in-core-and-done-by-us" id="toc-in-core-and-done-by-us" class="nav-link" data-scroll-target="#in-core-and-done-by-us">In Core and Done by Us?</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/prototypes/20230911-commit-message-bot.md" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/decisions/20231024-finetuning-workflow.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-<section id="commit-message-bot" class="level1">
-<h1>Commit message bot</h1>
-<p>Take a deep breath. Commit Messages must have a short description that is less than 50 characters followed by a newline and a more detailed description. - Write concisely using an informal tone - List significant changes - Do not use specific names or files from the code - Do not use phrases like “this commit”, “this change”, etc. - You have only one paragraph and rarely two paragraphs.</p>
+<section id="enhancing-task-specific-model-performance-through-fine-tuning-with-axolotl" class="level1">
+<h1>Enhancing Task-Specific Model Performance through Fine-Tuning with Axolotl</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: Proposed</li>
+<li>Deciders: V-Sekai, fire</li>
+<li>Tags: V-Sekai, Model Fine-tuning, Axolotl</li>
+</ul>
+</section>
+<section id="the-backdrop" class="level2">
+<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
+<p>We have multiple tasks each with a minimum of 100 samples and we want to fine-tune the latest models with our data. We are considering using the <a href="https://github.com/OpenAccess-AI-Collective/axolotl">Axolotl</a> library in a mode that batches the inputs.</p>
+</section>
+<section id="the-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
+<p>The challenge is to effectively use these samples to fine-tune the model for each task without overfitting, while also ensuring that the model generalizes well to unseen data.</p>
+</section>
+<section id="the-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
+<ol type="1">
+<li><p><strong>Data Preparation</strong>: First, we need to prepare our data for each task. This involves cleaning the data and splitting it into training and validation sets.</p></li>
+<li><p><strong>Model Selection</strong>: Next, we select the latest models that we want to fine-tune. These could be models from Hugging Face’s model hub or any other source.</p></li>
+<li><p><strong>Fine-tuning with Axolotl</strong>: We will use the Axolotl library for fine-tuning. We can batch-mask our inputs to efficiently utilize our computational resources. This process will be repeated for each task.</p></li>
+<li><p><strong>Evaluation</strong>: After fine-tuning, we evaluate the model on our validation set for each task to see how well it performs.</p></li>
+</ol>
+</section>
+<section id="the-upside" class="level2">
+<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
+<p>By fine-tuning the latest models on our specific tasks, we can potentially achieve better performance than using pre-trained models out-of-the-box. Also, Axolotl provides an easy-to-use interface for fine-tuning models.</p>
+</section>
+<section id="the-downside" class="level2">
+<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
+<p>Fine-tuning models requires computational resources and time. Also, with only 100 samples per task, there’s a risk of overfitting.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An alternative approach could be to use data augmentation techniques to increase the size of our dataset before fine-tuning.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>If we have tasks that are infrequently performed, it might not be worth the effort to fine-tune a model specifically for these tasks.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
+<p>Yes, this strategy involves us actively participating in the fine-tuning process.</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://github.com/v-sekai/">V-Sekai</a></li>
+<li><a href="https://github.com/OpenAccess-AI-Collective/axolotl">Axolotl</a></li>
+<li>AI assists this article.</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

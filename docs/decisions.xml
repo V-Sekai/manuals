@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Mon, 23 Oct 2023 22:52:52 GMT</lastBuildDate>
+<lastBuildDate>Tue, 24 Oct 2023 15:47:07 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -67,7 +67,77 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Mon, 23 Oct 2023 22:52:52 GMT</pubDate>
+  <pubDate>Tue, 24 Oct 2023 15:47:07 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20231024-finetuning-workflow.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="enhancing-task-specific-model-performance-through-fine-tuning-with-axolotl" class="level1">
+<h1>Enhancing Task-Specific Model Performance through Fine-Tuning with Axolotl</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: Proposed</li>
+<li>Deciders: V-Sekai, fire</li>
+<li>Tags: V-Sekai, Model Fine-tuning, Axolotl</li>
+</ul>
+</section>
+<section id="the-backdrop" class="level2">
+<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
+<p>We have multiple tasks each with a minimum of 100 samples and we want to fine-tune the latest models with our data. We are considering using the <a href="https://github.com/OpenAccess-AI-Collective/axolotl">Axolotl</a> library in a mode that batches the inputs.</p>
+</section>
+<section id="the-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
+<p>The challenge is to effectively use these samples to fine-tune the model for each task without overfitting, while also ensuring that the model generalizes well to unseen data.</p>
+</section>
+<section id="the-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
+<ol type="1">
+<li><p><strong>Data Preparation</strong>: First, we need to prepare our data for each task. This involves cleaning the data and splitting it into training and validation sets.</p></li>
+<li><p><strong>Model Selection</strong>: Next, we select the latest models that we want to fine-tune. These could be models from Hugging Face’s model hub or any other source.</p></li>
+<li><p><strong>Fine-tuning with Axolotl</strong>: We will use the Axolotl library for fine-tuning. We can batch-mask our inputs to efficiently utilize our computational resources. This process will be repeated for each task.</p></li>
+<li><p><strong>Evaluation</strong>: After fine-tuning, we evaluate the model on our validation set for each task to see how well it performs.</p></li>
+</ol>
+</section>
+<section id="the-upside" class="level2">
+<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
+<p>By fine-tuning the latest models on our specific tasks, we can potentially achieve better performance than using pre-trained models out-of-the-box. Also, Axolotl provides an easy-to-use interface for fine-tuning models.</p>
+</section>
+<section id="the-downside" class="level2">
+<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
+<p>Fine-tuning models requires computational resources and time. Also, with only 100 samples per task, there’s a risk of overfitting.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An alternative approach could be to use data augmentation techniques to increase the size of our dataset before fine-tuning.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>If we have tasks that are infrequently performed, it might not be worth the effort to fine-tune a model specifically for these tasks.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
+<p>Yes, this strategy involves us actively participating in the fine-tuning process.</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://github.com/v-sekai/">V-Sekai</a></li>
+<li><a href="https://github.com/OpenAccess-AI-Collective/axolotl">Axolotl</a></li>
+<li>AI assists this article.</li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20231024-finetuning-workflow.html</guid>
+  <pubDate>Tue, 24 Oct 2023 15:47:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -126,7 +196,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231022-hover-to-ocean-game.html</guid>
-  <pubDate>Mon, 23 Oct 2023 22:52:52 GMT</pubDate>
+  <pubDate>Tue, 24 Oct 2023 15:47:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -198,7 +268,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231020-llama-cpp-mistral-npc.html</guid>
-  <pubDate>Mon, 23 Oct 2023 22:52:52 GMT</pubDate>
+  <pubDate>Tue, 24 Oct 2023 15:47:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -263,7 +333,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231019-quest3-mocap-steam-lighthouse.html</guid>
-  <pubDate>Mon, 23 Oct 2023 22:52:52 GMT</pubDate>
+  <pubDate>Tue, 24 Oct 2023 15:47:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -335,7 +405,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230922-spacetime-shadow-shards-sync.html</guid>
-  <pubDate>Mon, 23 Oct 2023 22:52:52 GMT</pubDate>
+  <pubDate>Tue, 24 Oct 2023 15:47:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -426,7 +496,7 @@ font-style: inherit;">".xml"</span></span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230920-godot-project-search.html</guid>
-  <pubDate>Mon, 23 Oct 2023 22:52:52 GMT</pubDate>
+  <pubDate>Tue, 24 Oct 2023 15:47:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -515,7 +585,7 @@ font-style: inherit;">".xml"</span></span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230913-V-Sekai-bugs.html</guid>
-  <pubDate>Mon, 23 Oct 2023 22:52:52 GMT</pubDate>
+  <pubDate>Tue, 24 Oct 2023 15:47:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -586,7 +656,7 @@ font-style: inherit;">".xml"</span></span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230912-target-most-popular-resolution.html</guid>
-  <pubDate>Mon, 23 Oct 2023 22:52:52 GMT</pubDate>
+  <pubDate>Tue, 24 Oct 2023 15:47:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -642,7 +712,61 @@ font-style: inherit;">".xml"</span></span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230911-xr-grid-with-drawing.html</guid>
-  <pubDate>Mon, 23 Oct 2023 22:52:52 GMT</pubDate>
+  <pubDate>Tue, 24 Oct 2023 15:47:07 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230911-xpr.exs.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="xpr-in-elixir" class="level1">
+<h1>XPR in Elixir</h1>
+<p>defmodule AveragableLerpable do <span class="citation" data-cites="callback">@callback</span> average(a :: any(), b :: any(), t :: number()) :: any() <span class="citation" data-cites="callback">@callback</span> lerp(a :: any(), b :: any(), t :: number()) :: any() <span class="citation" data-cites="callback">@callback</span> spherical_interpolate(a :: any(), b :: any(), t :: number()) :: any() <span class="citation" data-cites="callback">@callback</span> spherical_cubic_interpolate(a :: any(), b :: any(), c :: any(), d :: any(), t1 :: number(), t2 :: number(), t3 :: number(), t4 :: number()) :: any() <span class="citation" data-cites="callback">@callback</span> cubic_interpolate(a :: any(), b :: any(), c :: any(), d :: any(), t1 :: number(), t2 :: number(), t3 :: number(), t4 :: number()) :: any() end</p>
+<p>defmodule Rotation6D do <span class="citation" data-cites="behaviour">@behaviour</span> AveragableLerpable</p>
+<p>defstruct [:x1, :y1, :z1, :x2, :y2, :z2]</p>
+<p># Implement the required methods here end</p>
+<p>defmodule Position3D do <span class="citation" data-cites="behaviour">@behaviour</span> AveragableLerpable</p>
+<p>defstruct [:x, :y, :z]</p>
+<p># Implement the required methods here end</p>
+<p>defmodule LightCone do <span class="citation" data-cites="type">@type</span> t :: %{ count: [AveragableLerpable.t()], accumulate: [function()], array: [AveragableLerpable.t()], set: MapSet.t(any()) } end</p>
+<p><span class="citation" data-cites="type">@type</span> event :: {:expand} | {:superposition} | {:spacetime_bubble} | {:light_cone} | {:collapse} | {:avg_lerp} | {:plus} | {:union}</p>
+<p>defmodule PropagateFilter do use Membrane.Filter</p>
+<p><span class="citation" data-cites="impl">@impl</span> true def handle_init(_) do {:ok, %{}} end</p>
+<p><span class="citation" data-cites="impl">@impl</span> true def handle_demand(:output, size, :buffers, _ctx) do {{:ok, demand: {:input, size}}, %{}} end</p>
+<p><span class="citation" data-cites="impl">@impl</span> true def handle_process(:input, buffer, _ctx) do # Process the input data and generate the output data output_data = process(buffer.payload)</p>
+<pre><code># Create a new buffer with the output data
+output_buffer = %Membrane.Buffer{payload: output_data}
+
+{{:ok, buffer: {:output, output_buffer}}, %{}}</code></pre>
+<p>end</p>
+<p>defp process(input_data) do # Implement your processing logic here # For example, if input_data is a list of numbers, you can calculate their sum: Enum.reduce(input_data, 0, &amp;(&amp;1 + &amp;2)) end end</p>
+<p>defmodule XprPipeline do use Membrane.Pipeline</p>
+<p>alias Membrane.Element.Tee.Master alias Membrane.Element.Funnel alias Membrane.Element.Clock</p>
+<p><span class="citation" data-cites="impl">@impl</span> true def handle_init(_) do children = [ clock: Clock, light_cone: LightConeElement, expanding: ExpandingElement, collapsing: CollapsingElement, reduce: ReduceElement, update: UpdateElement, tee: Master, funnel: Funnel, propagate: PropagateFilter ]</p>
+<pre><code>links = [
+  link(:clock)
+  |&gt; via_out(:tick, options: [interval: 1000]) # Adjust the interval as needed
+  |&gt; to(:tee)
+  |&gt; to(:expanding)
+  |&gt; to(:light_cone)
+  |&gt; to(:collapsing)
+  |&gt; to(:reduce)
+  |&gt; to(:propagate)
+  |&gt; to(:funnel)
+  |&gt; to(:update)
+]
+
+{{:ok, %ParentSpec{children: children, links: links}}, %{}}</code></pre>
+<p>end end</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230911-xpr.exs.html</guid>
+  <pubDate>Tue, 24 Oct 2023 15:47:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -706,7 +830,28 @@ font-style: inherit;">".xml"</span></span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230911-first-alpha-tag.html</guid>
-  <pubDate>Mon, 23 Oct 2023 22:52:52 GMT</pubDate>
+  <pubDate>Tue, 24 Oct 2023 15:47:07 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20230911-can-poly-green-coords-extend-to-3d.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="can-poly-green-coords-extend-to-3d" class="level1">
+<h1>Can Poly Green Coords extend to 3d?</h1>
+<p>Reminded by works by pixar: https://graphics.pixar.com/library/ProfileMover/</p>
+<p>How applicable is this to 3d polygonal cages?</p>
+<pre><code>You may be interested by *[Green Coordinates for Triquad Cages in 3D](https://research.adobe.com/publication/green-coordinates-for-triquad-cages-in-3d/)* by Thiery and Boubekeur (SIGGRAPH Asia 2022). It is only for straight polygons though, the deformed cage cannot have Bézier arcs like this 2D version has, that's future work. ;) Profile curves are definitly a very nice and related work!</code></pre>
+<p><em>Originally posted by <span class="citation" data-cites="eliemichel">@eliemichel</span> in https://github.com/eliemichel/PolyGreenCoords/issues/1#issuecomment-1683045650</em></p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20230911-can-poly-green-coords-extend-to-3d.html</guid>
+  <pubDate>Tue, 24 Oct 2023 15:47:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -798,7 +943,7 @@ E[Microphone] -- Audio Input --&gt; C</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230908-bendable-screen-generative-assistant-ggml.html</guid>
-  <pubDate>Mon, 23 Oct 2023 22:52:52 GMT</pubDate>
+  <pubDate>Tue, 24 Oct 2023 15:47:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -883,7 +1028,7 @@ E[Microphone] -- Audio Input --&gt; C</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230903-replicate-vrm-transform.html</guid>
-  <pubDate>Mon, 23 Oct 2023 22:52:52 GMT</pubDate>
+  <pubDate>Tue, 24 Oct 2023 15:47:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -948,7 +1093,7 @@ E[Microphone] -- Audio Input --&gt; C</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230831-fixing-upload-limits.html</guid>
-  <pubDate>Mon, 23 Oct 2023 22:52:52 GMT</pubDate>
+  <pubDate>Tue, 24 Oct 2023 15:47:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1011,7 +1156,7 @@ E[Microphone] -- Audio Input --&gt; C</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230831-fixing-menus.html</guid>
-  <pubDate>Mon, 23 Oct 2023 22:52:52 GMT</pubDate>
+  <pubDate>Tue, 24 Oct 2023 15:47:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1093,7 +1238,7 @@ E[Microphone] -- Audio Input --&gt; C</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230830-generating-v-sekai-worlds.html</guid>
-  <pubDate>Mon, 23 Oct 2023 22:52:52 GMT</pubDate>
+  <pubDate>Tue, 24 Oct 2023 15:47:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1157,7 +1302,7 @@ E[Microphone] -- Audio Input --&gt; C</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230830-better-object-pick.html</guid>
-  <pubDate>Mon, 23 Oct 2023 22:52:52 GMT</pubDate>
+  <pubDate>Tue, 24 Oct 2023 15:47:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1221,511 +1366,7 @@ E[Microphone] -- Audio Input --&gt; C</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230830-better-backend-services.html</guid>
-  <pubDate>Mon, 23 Oct 2023 22:52:52 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20230829-omifest-2023.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="omifest-2023---the-call" class="level1">
-<h1>OMIFest 2023 - The Call</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li><strong>Status</strong>: Proposed</li>
-<li><strong>Deciders</strong>: OMIGroup, Fire, Indiebio</li>
-<li><strong>Tags</strong>: OMIGroup, V-Sekai</li>
-</ul>
-</section>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<section id="the-backdrop" class="level3">
-<h3 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h3>
-<p>OMIFest 2023 is an online event set against the backdrop of a rapidly evolving digital landscape. As virtual reality and augmented reality technologies become more accessible, there’s an increasing need for platforms that allow artists, tinkerers, hackers, players, and professionals to showcase their talents and collaborate in a digital environment.</p>
-</section>
-<section id="the-challenge" class="level3">
-<h3 class="anchored" data-anchor-id="the-challenge">The Challenge</h3>
-<p>The challenge is to create an event that not only celebrates these individuals but also encourages conversation and collaboration within our community. We aim to build a webpage on the OMI website for more information and updates about this online event.</p>
-</section>
-</section>
-<section id="decision" class="level2">
-<h2 class="anchored" data-anchor-id="decision">Decision</h2>
-<section id="the-strategy" class="level3">
-<h3 class="anchored" data-anchor-id="the-strategy">The Strategy</h3>
-<p>Our strategy is to host a series of monthly events leading up to the main event in October 2024. Each month we will focus on different aspects of the event, such as building the vehicle, avatars, textures, scenery, and workshops on content creation.</p>
-<section id="goals-sorted-by-ease" class="level4">
-<h4 class="anchored" data-anchor-id="goals-sorted-by-ease">Goals (Sorted by ease)</h4>
-<ol type="1">
-<li><strong>Research</strong>: Held in conjunction with an academically minded in-person conference.</li>
-<li><strong>Assets, protocols, and specification testing</strong>: Build assets and test protocols to ensure interoperability.</li>
-<li><strong>Community Celebration</strong>: Celebrate with the global community in a digital setting.</li>
-</ol>
-</section>
-<section id="who-can-participate" class="level4">
-<h4 class="anchored" data-anchor-id="who-can-participate">Who Can Participate?</h4>
-<p>This online event is open to everyone. Individuals, teams, corporate members, community groups, anyone and everyone can submit an entry. Registration will be required for our information, and some moderation may be required, but everyone is welcome.</p>
-</section>
-<section id="event-features-sorted-by-ease" class="level4">
-<h4 class="anchored" data-anchor-id="event-features-sorted-by-ease">Event Features (Sorted by ease)</h4>
-<ol type="1">
-<li>Notice boards for help needed, job board, find a team etc</li>
-<li>Limited poster advertising</li>
-<li>Music</li>
-<li>Booths for nonprofit, education, community organisations</li>
-<li>Metaverse library/blockbuster to find how-to guides, videos, etc</li>
-<li>Thrift shop for free stuff</li>
-<li>Market for assets</li>
-<li>Junk yard for abandoned assets</li>
-<li>Portals to other worlds</li>
-<li>Assets that are created remain in the world</li>
-<li>Scenery around the parade</li>
-<li>Parade with floats</li>
-</ol>
-</section>
-<section id="cost-to-enter" class="level4">
-<h4 class="anchored" data-anchor-id="cost-to-enter">Cost to Enter</h4>
-<p>It is free to register and submit assets. The event will be free to attend. Some aspects and mini events may require payment.</p>
-</section>
-<section id="sponsorship" class="level4">
-<h4 class="anchored" data-anchor-id="sponsorship">Sponsorship</h4>
-<p>We are open to sponsorships for this online event. More details will be provided soon.</p>
-</section>
-<section id="calendar-of-events" class="level4">
-<h4 class="anchored" data-anchor-id="calendar-of-events">Calendar of Events</h4>
-<p>Here is a rough schedule of our monthly events:</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Date</th>
-<th>Topic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>August 2023</td>
-<td>Content sharing workshop</td>
-</tr>
-<tr class="even">
-<td>September 2023</td>
-<td>Making a basic vehicle</td>
-</tr>
-<tr class="odd">
-<td>October 2023</td>
-<td>Making an avatar</td>
-</tr>
-<tr class="even">
-<td>November 2023</td>
-<td>Making textures</td>
-</tr>
-<tr class="odd">
-<td>December 2023</td>
-<td>Making scenery</td>
-</tr>
-<tr class="even">
-<td>January 2024</td>
-<td>Music in the metaverse</td>
-</tr>
-<tr class="odd">
-<td>February 2024</td>
-<td>AI</td>
-</tr>
-<tr class="even">
-<td>March 2024</td>
-<td>Community, public spheres</td>
-</tr>
-<tr class="odd">
-<td>April 2024</td>
-<td>Portals</td>
-</tr>
-<tr class="even">
-<td>May 2024</td>
-<td>(repeat the above?)</td>
-</tr>
-<tr class="odd">
-<td>June 2024</td>
-<td>Use art to explore data</td>
-</tr>
-<tr class="even">
-<td>July 2024</td>
-<td>Real world challenge</td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="the-upside" class="level3">
-<h3 class="anchored" data-anchor-id="the-upside">The Upside</h3>
-<p>The upside of this online event is that it provides a platform for individuals from various backgrounds to showcase their talents, learn from each other, and collaborate on projects. It also helps in promoting the use of VR/AR technologies and encourages innovation in this field.</p>
-</section>
-<section id="the-downside" class="level3">
-<h3 class="anchored" data-anchor-id="the-downside">The Downside</h3>
-<p>The downside could be the potential logistical challenges involved in organizing such a large-scale online event. There might also be issues related to ensuring fair participation and dealing with intellectual property rights.</p>
-</section>
-<section id="the-road-not-taken" class="level3">
-<h3 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h3>
-<p>An alternative approach could have been to organize smaller, more frequent online events throughout the year. However, we decided to go with a larger annual event to create more impact and allow participants enough time to prepare.</p>
-</section>
-<section id="the-infrequent-use-case" class="level3">
-<h3 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h3>
-<p>While the event is designed to cater to a wide range of participants, there might be some who might not be able to participate due to lack of access to necessary technology or skills. We plan to address this by providing resources and learning materials to help them get started.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level3">
-<h3 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h3>
-<p>Yes, the event is being organized by us, OMIGroup, in collaboration with V-Sekai. We are responsible for planning, coordinating, and executing aspects of the event. The success of such a large-scale online event relies on the collective efforts of many individuals and organizations.</p>
-</section>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ul>
-<li><a href="https://omigroup.org/">OMIGroup</a></li>
-<li><a href="https://v-sekai.org/">V-Sekai</a></li>
-<li><a href="https://hackmd.io/@indiebio/metaverse-float-parade">Metaverse Float Parade</a></li>
-<li>This article is assisted by AI.</li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20230829-omifest-2023.html</guid>
-  <pubDate>Mon, 23 Oct 2023 22:52:52 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20230824-subdiv-for-lods.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="use-opensubdiv-for-lods" class="level1">
-<h1>Use opensubdiv for lods</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li>Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by --><br>
-</li>
-<li>Deciders: V-Sekai, fire</li>
-<li>Tags: V-Sekai</li>
-</ul>
-</section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>Creators want more. Players want more. The platform can only support a limited amount of content.</p>
-</section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>The challenge lies in optimizing the content to fit within the platform’s limitations without compromising on the quality and detail.</p>
-</section>
-<section id="the-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>Use OpenSubdiv to increase detail, which can then be reduced through Godot Engine’s LOD (Level of Detail) scheme. This allows for high-quality models that are optimized for performance.</p>
-</section>
-<section id="the-upside" class="level2">
-<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<p>The upside is that this approach allows for more detailed models while still maintaining good performance.</p>
-</section>
-<section id="the-downside" class="level2">
-<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<p>The downside is that it requires additional processing to create the LOD models, which could potentially slow down the development process.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>An alternative approach would have been to manually create lower detail models for use in less demanding scenarios. However, this would require significantly more work from the creators.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>This strategy might not be beneficial for very simple models or scenes where the level of detail is not a significant factor.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>Yes, this strategy is implemented in the core of our platform and maintained by us.</p>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ul>
-<li><a href="https://v-sekai.org/">V-Sekai</a><br>
-</li>
-<li>This article is assisted by AI.</li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20230824-subdiv-for-lods.html</guid>
-  <pubDate>Mon, 23 Oct 2023 22:52:52 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20230823-speech-to-blendshapes.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="developing-a-unified-model-for-speech-to-facial-shape-generation-using-outlines-library" class="level1">
-<h1>Developing a Unified Model for Speech-to-Facial Shape Generation Using Outlines 〰 Library</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li>Status: proposed</li>
-<li>Deciders: V-Sekai</li>
-<li>Tags: V-Sekai</li>
-</ul>
-</section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>V-Sekai is embarking on a project that translates speech into corresponding facial shapes for virtual reality applications. This process eliminates the need for a face camera and leverages the <code>SpeechEncoderDecoderModel</code> from Hugging Face’s Transformers library for comprehensive speech recognition.</p>
-<p>The SpeakingFaces dataset, a collection from 142 diverse subjects, will be utilized for this project. The dataset is accessible via the server of the Institute for Smart Systems and Artificial Intelligence (ISSAI) under the Creative Commons Attribution 4.0 International License.</p>
-<p>Outlines 〰, a neural text generation library, will also play a crucial role in this project. It offers robust prompting primitives, separates the prompting from the execution logic, and is compatible with all models. It interfaces with models through the next-token logits and can be used with API-based models as well.</p>
-</section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>The primary challenge lies in developing a model capable of generating text and blendshapes simultaneously from the same input speech using the Outlines 〰 library.</p>
-</section>
-<section id="the-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>The proposed strategy involves creating a custom model that accepts speech as input and outputs both text and blendshapes. This unified model would incorporate a shared encoder to process the speech input, and a single decoder to generate the text and blendshape outputs. The Outlines 〰 library will be used to conform the output to the desired format.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> outlines <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> Outline</span>
-<span id="cb1-2"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> transformers <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> SpeechEncoderDecoderModel, Speech2Text2Processor, Wav2Vec2Model</span>
-<span id="cb1-3"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> json</span>
-<span id="cb1-4"></span>
-<span id="cb1-5"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Initialize the processor and encoder</span></span>
-<span id="cb1-6">processor <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> Speech2Text2Processor.from_pretrained(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"facebook/s2t-small-librispeech-asr"</span>)</span>
-<span id="cb1-7">encoder <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> Wav2Vec2Model.from_pretrained(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"facebook/wav2vec2-base-960h"</span>)</span>
-<span id="cb1-8"></span>
-<span id="cb1-9"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Initialize the decoder</span></span>
-<span id="cb1-10">decoder <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> Speech2Text2Model.from_pretrained(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"facebook/s2t-small-librispeech-asr"</span>)</span>
-<span id="cb1-11"></span>
-<span id="cb1-12"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Initialize the unified model</span></span>
-<span id="cb1-13">model <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> UnifiedSpeechEncoderDecoderModel(encoder<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>encoder, decoder<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>decoder)</span>
-<span id="cb1-14"></span>
-<span id="cb1-15"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Define an outline for the model</span></span>
-<span id="cb1-16">outline <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> Outline(model).to(device)</span>
-<span id="cb1-17"></span>
-<span id="cb1-18"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Generate text and blendshapes</span></span>
-<span id="cb1-19">generated_text, generated_blendshapes <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> outline.generate(input_speech)</span>
-<span id="cb1-20"></span>
-<span id="cb1-21"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Conform to JSON schemaßß</span></span>
-<span id="cb1-22">blendshapes_keys <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"BrowInnerUp"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"BrowDownLeft"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"BrowDownRight"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"BrowOuterUpLeft"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"BrowOuterUpRight"</span>,</span>
-<span id="cb1-23">                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"EyeLookUpLeft"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"EyeLookUpRight"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"EyeLookDownLeft"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"EyeLookDownRight"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"EyeLookInLeft"</span>,</span>
-<span id="cb1-24">                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"EyeLookInRight"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"EyeLookOutLeft"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"EyeLookOutRight"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"EyeBlinkLeft"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"EyeBlinkRight"</span>,</span>
-<span id="cb1-25">                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"EyeSquintRight"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"EyeSquintLeft"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"EyeWideLeft"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"EyeWideRight"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"CheekPuff"</span>,</span>
-<span id="cb1-26">                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"CheekSquintLeft"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"CheekSquintRight"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"NoseSneerLeft"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"NoseSneerRight"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"JawOpen"</span>,</span>
-<span id="cb1-27">                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"JawForward"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"JawLeft"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"JawRight"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MouthFunnel"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MouthPucker"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MouthLeft"</span>,</span>
-<span id="cb1-28">                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MouthRight"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MouthRollUpper"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MouthRollLower"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MouthShrugUpper"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MouthShrugLower"</span>,</span>
-<span id="cb1-29">                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MouthClose"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MouthSmileLeft"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MouthSmileRight"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MouthFrownLeft"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MouthFrownRight"</span>,</span>
-<span id="cb1-30">                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MouthDimpleLeft"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MouthDimpleRight"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MouthUpperUpLeft"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MouthUpperUpRight"</span>,</span>
-<span id="cb1-31">                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MouthLowerDownLeft"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MouthLowerDownRight"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MouthPressLeft"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MouthPressRight"</span>,</span>
-<span id="cb1-32">                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MouthStretchLeft"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MouthStretchRight"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"TongueOut"</span>]</span>
-<span id="cb1-33"></span>
-<span id="cb1-34">output <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> {</span>
-<span id="cb1-35">    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"text"</span>: generated_text,</span>
-<span id="cb1-36">    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"blendshapes"</span>: <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">dict</span>(<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">zip</span>(blendshapes_keys, generated_blendshapes))</span>
-<span id="cb1-37">}</span>
-<span id="cb1-38"></span>
-<span id="cb1-39">json_output <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> json.dumps(output)</span></code></pre></div>
-</section>
-<section id="the-upside" class="level2">
-<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<p>Developing our own unified model for generating both text and blendshapes from speech using the Outlines 〰 library is a strategic move that provides us with greater control and customization to meet our specific needs. It not only deepens our understanding of the model, aiding in troubleshooting and improvements, but also allows us to optimize it for better performance and efficiency.</p>
-</section>
-<section id="the-downside" class="level2">
-<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<p>The limitation of this approach is that the <code>UnifiedSpeechEncoderDecoderModel</code>, and <code>Outline</code> are placeholders for your actual unified model classes, and outline respectively. You would need to implement these classes yourself, or find pre-trained models that suit your needs.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Being self-reliant in maintaining and updating our model eliminates dependence on third parties, providing flexibility to make changes as needed. Moreover, it ensures seamless integration with other parts of our system.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>While this approach requires more initial effort, the potential for improvement and fine-tuning with our unique data sets makes it worthwhile, leading to superior results in the long run.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>Yes, the development and maintenance of the unified model will be done by us.</p>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ul>
-<li><a href="https://v-sekai.org/">V-Sekai</a></li>
-<li>This article is assisted by AI.</li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20230823-speech-to-blendshapes.html</guid>
-  <pubDate>Mon, 23 Oct 2023 22:52:52 GMT</pubDate>
+  <pubDate>Tue, 24 Oct 2023 15:47:07 GMT</pubDate>
 </item>
 </channel>
 </rss>
