@@ -27,8 +27,10 @@ This project does not adhere to [Semantic Versioning](https://semver.org/spec/v2
 ## Misc
 
 - Convinced PolygonJS to change their license to the MIT license.
-- Reviewed a character genrerator with OMI and JIN
+- Reviewed a character generator with OMI and JIN
 - Discussed svg in gltf at OMI
+- Proposed feature request to add an extractor to save 3d assets, gltf files, CAD files, shapefiles, STLs, etc to ArchiveBox. https://github.com/ArchiveBox/ArchiveBox/issues/668
+- Discovered a method of json document sync. https://jsonjoy.com/
 
 ## Quotes of the month
 
