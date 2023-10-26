@@ -1,5 +1,5 @@
-# Overcoming a V-Sekai limit
-  
+# Solve Blender versions by locking LTS versions on Blender (3.6)
+
 ## Metadata  
   
 - Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->  
@@ -16,7 +16,7 @@ We want to pin the blender version.
   
 ## The Strategy  
 
-Pin the blender version to the steam version of LTS Blender.
+Pin the blender version to the steam version of LTS Blender -- Blender (3.6)
   
 ## The Upside  
 
