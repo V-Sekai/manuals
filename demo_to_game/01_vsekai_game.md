@@ -2,7 +2,7 @@
 
 | Warning                                                                                                                                              |
 | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
-| As of October 19th, 2023, this is still in planning stages. Please note that the information provided here may change as the development progresses. |
+| As of October 23rd, 2023, this is still in planning stages. Please note that the information provided here may change as the development progresses. |
 
 The game we're discussing is a first-person adventure that takes place in an expansive universe. The backdrop of the game is a post-apocalyptic future where humanity has transcended its biological boundaries and colonized the solar system.
 
@@ -11,10 +11,6 @@ This game masterfully blends elements of science fiction and horror to create an
 In this game, forming alliances and strategizing are key aspects of gameplay. As part of an alliance that combines advanced AI with human intellect, your task is to protect humanity from potential existential threats. The decisions you make in this game are significant and have the power to shape the future of this virtual universe. This adds a layer of depth and realism to the game, making it not just about winning battles, but also about making choices that could impact the fate of humanity within the game's universe.
 
 # 2. Gameplay Mechanics
-
-| Warning                                                                                                                                              |
-| :--------------------------------------------------------------------------------------------------------------------------------------------------- |
-| As of October 23rd, 2023, this is still in planning stages. Please note that the information provided here may change as the development progresses. |
 
 The gameplay mechanics of this game are designed around a team-based system, promoting players to form teams and develop strategies under the leadership of a lead. The role of the lead is multifaceted, involving the oversight of strategy, handling of resources, and tech upgrades. This design encourages strategic planning and effective resource management among players.
 
@@ -31,10 +27,6 @@ The `Gadget Mechanics` play a crucial role in enhancing the `Gameplay Mechanics`
 - **Tactical Overlay**: This gadget is a crucial tool for strategic planning and execution. It provides real-time data about the battlefield, including enemy positions, terrain features, and resource locations. The Tactical Overlay allows players to make informed decisions about their strategies, whether they're planning an attack, setting up defenses, or allocating resources. It offers a comprehensive view of the game world, enabling effective exploration and strategy formulation.
 
 # 3. Player Experience
-
-| Warning                                                                                                                                              |
-| :--------------------------------------------------------------------------------------------------------------------------------------------------- |
-| As of October 19th, 2023, this is still in planning stages. Please note that the information provided here may change as the development progresses. |
 
 The essence of this game lies in its cooperative environment that not only encourages but also rewards teamwork. The game presents challenges and obstacles that are not just hurdles to be overcome by a single player's skill, but rather puzzles that demand a collective effort and strategy.
 
@@ -62,10 +54,6 @@ Major challenges, such as **Boss Battles**, are typically placed at the end of l
 
 ## 6. Teamwork Over Solo Play
 
-| Warning                                                                                                                                              |
-| :--------------------------------------------------------------------------------------------------------------------------------------------------- |
-| As of October 19th, 2023, this is still in planning stages. Please note that the information provided here may change as the development progresses. |
-
 In this game, teamwork is given more importance than solo play. This design choice reflects the cooperative nature of the game, where players are encouraged to form parties or teams and face challenges together.
 
 The game's **Cooperative Gameplay** design ensures that many of its missions and challenges are best tackled as a team. This could involve strategizing together, combining different character abilities, or simply working together to overcome powerful enemies or complex puzzles. This approach encourages social interaction and cooperation among players, making the game a truly collaborative experience.
@@ -75,10 +63,6 @@ To support this cooperative gameplay, the game provides an option for players to
 The game's emphasis on **Overcoming Challenges Together** fosters a sense of camaraderie and shared achievement among players. When players overcome a difficult challenge together, it creates a rewarding experience that can be more satisfying than solo victories. This shared success promotes a sense of unity and accomplishment, enhancing the overall gaming experience.
 
 # 7. Custom Avatars and Voice Chat
-
-| Warning                                                                                                                                              |
-| :--------------------------------------------------------------------------------------------------------------------------------------------------- |
-| As of October 19th, 2023, this is still in planning stages. Please note that the information provided here may change as the development progresses. |
 
 The game offers two key features that significantly enhance the player experience: custom avatars and voice chat.
 
