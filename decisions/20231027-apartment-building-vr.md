@@ -3,7 +3,7 @@
 ## Metadata
 
 - **Status:** Proposed
-- **Deciders:** V-Sekai
+- **Deciders:** V-Sekai, fire
 - **Tags:** V-Sekai, VR, 3D Modeling, Virtual Reality
 
 ## The Backdrop
