@@ -1,4 +1,4 @@
-# Build an Apartment in VR
+# Build a Cozy Apartment in VR for V-Sekai
 
 ## Metadata
 
@@ -8,11 +8,11 @@
 
 ## The Backdrop
 
-Virtual Reality (VR) is a rapidly growing technology with applications in various fields. One such application is the creation of virtual environments, such as apartments. This proposal aims to outline a strategy for building an apartment in VR.
+Virtual Reality (VR) is a rapidly growing technology with applications in various fields. One such application is the creation of virtual environments, such as apartments. This proposal aims to outline a strategy for building a cozy apartment in VR as a default environment for V-Sekai.
 
 ## The Challenge
 
-The main challenge is to create a realistic and immersive virtual environment that accurately represents an apartment. This includes creating detailed 3D models of the apartment's interior and exterior, as well as implementing realistic lighting and textures.
+The main challenge is to create a realistic and immersive virtual environment that accurately represents a cozy apartment. This includes creating detailed 3D models of the apartment's interior and exterior, as well as implementing realistic lighting and textures.
 
 ## The Strategy
 
@@ -24,7 +24,7 @@ The main challenge is to create a realistic and immersive virtual environment th
 
 ## The Upside
 
-Building an apartment in VR can provide a unique and immersive experience for users. It can also be used for various purposes such as virtual tours, real estate marketing, and interior design planning.
+Building a cozy apartment in VR can provide a unique and immersive experience for users. It can also be used for various purposes such as virtual tours, real estate marketing, and interior design planning.
 
 ## The Downside
 
