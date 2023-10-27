@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Fri, 27 Oct 2023 22:16:47 GMT</lastBuildDate>
+<lastBuildDate>Fri, 27 Oct 2023 22:22:34 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -23,10 +23,8 @@
 <section id="metadata" class="level2">
 <h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
-<li>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --><br>
-</li>
-<li>Deciders: V-Sekai<br>
-</li>
+<li>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></li>
+<li>Deciders: V-Sekai</li>
 <li>Tags: V-Sekai</li>
 </ul>
 </section>
@@ -58,8 +56,8 @@
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <ul>
 <li><a href="https://github.com/v-sekai/">V-Sekai</a></li>
-<li>AI assists this article.</li>
 </ul>
+<p>This article was assisted by AI.</p>
 
 
 </section>
@@ -67,7 +65,611 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Fri, 27 Oct 2023 22:16:47 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 22:22:34 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20231027-write-a-list-of-github-pull-requests.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="write-list-of-github-pull-requests-for-review" class="level1">
+<h1>Write List of Github Pull Requests for Review</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li><strong>Status:</strong> Proposed</li>
+<li><strong>Deciders:</strong> V-Sekai</li>
+<li><strong>Tags:</strong> V-Sekai, Elixir, GitHub API, Pull Requests</li>
+</ul>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>The objective is to fetch and compile a list of open pull requests from the Godot Engine repository on GitHub using Elixir.</p>
+</section>
+<section id="problem" class="level2">
+<h2 class="anchored" data-anchor-id="problem">Problem</h2>
+<p>The challenge lies in utilizing the GitHub GraphQL API to retrieve data about open pull requests in a specific milestone of the Godot Engine repository. This data should then be written to a text file for subsequent review.</p>
+</section>
+<section id="solution" class="level2">
+<h2 class="anchored" data-anchor-id="solution">Solution</h2>
+<p>Here’s the proposed solution:</p>
+<ol type="1">
+<li>Utilize the <code>HTTPoison</code> library to send a POST request to the GitHub GraphQL API.</li>
+<li>Parse the response with the <code>Jason</code> library.</li>
+<li>Write the relevant data to a text file using Elixir’s built-in <code>File</code> module.</li>
+</ol>
+</section>
+<section id="advantages" class="level2">
+<h2 class="anchored" data-anchor-id="advantages">Advantages</h2>
+<p>This method allows us to fetch and store data about open pull requests in a structured and automated manner. It also facilitates offline review of this data or sharing it with others.</p>
+</section>
+<section id="disadvantages" class="level2">
+<h2 class="anchored" data-anchor-id="disadvantages">Disadvantages</h2>
+<p>While the script is designed to handle pagination and fetch all open pull requests, it may still encounter issues if the number of requests exceeds the rate limit set by GitHub’s API. In such cases, some data might not be fetched until the rate limit resets. Additionally, as the script fetches data in batches of 50, it could take a significant amount of time to fetch all data if there are hundreds or thousands of open pull requests.</p>
+</section>
+<section id="alternatives" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives">Alternatives</h2>
+<p>An alternative approach could have been to use the GitHub REST API instead of the GraphQL API. However, the GraphQL API allows for more flexible and efficient data fetching.</p>
+</section>
+<section id="limitations" class="level2">
+<h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
+<p>This script might not be suitable if you need to fetch data about closed pull requests or pull requests in other repositories or milestones.</p>
+</section>
+<section id="ownership" class="level2">
+<h2 class="anchored" data-anchor-id="ownership">Ownership</h2>
+<p>Yes, this is a core part of our development process and is done by us.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>For more information, you can visit the following links:</p>
+<ul>
+<li><a href="https://github.com/v-sekai/">V-Sekai</a></li>
+<li><a href="https://docs.github.com/en/graphql">GitHub GraphQL API</a></li>
+<li><a href="https://hexdocs.pm/httpoison/readme.html">Elixir HTTPoison Library</a></li>
+<li><a href="https://hexdocs.pm/jason/readme.html">Elixir Jason Library</a></li>
+</ul>
+<p>This article was assisted by AI.</p>
+</section>
+</section>
+<section id="reference-code-notebook" class="level1">
+<h1>Reference Code Notebook</h1>
+<!-- livebook:{"persist_outputs":true} -->
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb1-1"><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Mix</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>install<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span></span>
+<span id="cb1-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:jason</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"~&gt; 1.2"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span>,</span>
+<span id="cb1-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:csv</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"~&gt; 2.4"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span>,</span>
+<span id="cb1-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:httpoison</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"~&gt; 2.1"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-5"><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span></span></code></pre></div>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">Section</h2>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb2-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">defmodule</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">PullRequestFetcher</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">do</span></span>
+<span id="cb2-2">  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">@query</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"""</span></span>
+<span id="cb2-3"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  {</span></span>
+<span id="cb2-4"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    repository(owner: "godotengine", name: "godot") {</span></span>
+<span id="cb2-5"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">      milestone(number: 18) {</span></span>
+<span id="cb2-6"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        title</span></span>
+<span id="cb2-7"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        pullRequests(states: OPEN, first: 50) {</span></span>
+<span id="cb2-8"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          pageInfo {</span></span>
+<span id="cb2-9"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">            endCursor</span></span>
+<span id="cb2-10"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">            hasNextPage</span></span>
+<span id="cb2-11"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          }</span></span>
+<span id="cb2-12"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          nodes {</span></span>
+<span id="cb2-13"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">            number</span></span>
+<span id="cb2-14"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">            title</span></span>
+<span id="cb2-15"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">            labels(first: 10) {</span></span>
+<span id="cb2-16"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">              nodes {</span></span>
+<span id="cb2-17"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">                name</span></span>
+<span id="cb2-18"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">              }</span></span>
+<span id="cb2-19"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">            }</span></span>
+<span id="cb2-20"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          }</span></span>
+<span id="cb2-21"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        }</span></span>
+<span id="cb2-22"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">      }</span></span>
+<span id="cb2-23"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    }</span></span>
+<span id="cb2-24"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  }</span></span>
+<span id="cb2-25"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  """</span></span>
+<span id="cb2-26"></span>
+<span id="cb2-27">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> fetch_and_write_pull_requests<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span>query \\ <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">@query</span>, file \\ <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">nil</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">do</span></span>
+<span id="cb2-28">    file <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> file, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">do:</span> file, <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span>: <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">File</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>open!<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"pull_requests.txt"</span>, <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:write</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:utf8</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb2-29"></span>
+<span id="cb2-30">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:ok</span>, response<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span></span>
+<span id="cb2-31">      <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">HTTPoison</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>post<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span></span>
+<span id="cb2-32">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://api.github.com/graphql"</span>,</span>
+<span id="cb2-33">        <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Jason</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>encode!<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span>%<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">query:</span> query<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">})</span>,</span>
+<span id="cb2-34">        <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span></span>
+<span id="cb2-35">          <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Authorization"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Bearer </span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">#{</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">System</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>fetch_env!<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"LB_GITHUB_TOKEN"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span>,</span>
+<span id="cb2-36">          <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Content-Type"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"application/json"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb2-37">        <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span>,</span>
+<span id="cb2-38">        <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">timeout:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">500_000</span>,</span>
+<span id="cb2-39">        <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">reciv_timeout:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">500_000</span></span>
+<span id="cb2-40">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb2-41"></span>
+<span id="cb2-42">    data <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Jason</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>decode!<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span>response<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>body<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb2-43">    pull_requests <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> data<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"data"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">][</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"repository"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">][</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"milestone"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">][</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"pullRequests"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span></span>
+<span id="cb2-44"></span>
+<span id="cb2-45">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> pull_request <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;-</span> pull_requests<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"nodes"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">do</span></span>
+<span id="cb2-46">      labels <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pull_request<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"labels"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">][</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"nodes"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Enum</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>map<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&amp;</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&amp;</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"name"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Enum</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>join<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">", "</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb2-47">      row <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">#{</span>pull_request<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"title"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> (#</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">#{</span>pull_request<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"number"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">) - Labels: [</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">#{</span>labels<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">]"</span></span>
+<span id="cb2-48">      <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">IO</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>write<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span>file, row <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;&gt;</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"\n"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb2-49">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">end</span></span>
+<span id="cb2-50"></span>
+<span id="cb2-51">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> pull_requests<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"pageInfo"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">][</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hasNextPage"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">do</span></span>
+<span id="cb2-52">      next_query <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"""</span></span>
+<span id="cb2-53"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">      {</span></span>
+<span id="cb2-54"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        repository(owner: "godotengine", name: "godot") {</span></span>
+<span id="cb2-55"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          milestone(number: 18) {</span></span>
+<span id="cb2-56"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">            title</span></span>
+<span id="cb2-57"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">            pullRequests(states: OPEN, first: 50, after: "#{pull_requests["pageInfo"]["endCursor"]}") {</span></span>
+<span id="cb2-58"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">              pageInfo {</span></span>
+<span id="cb2-59"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">                endCursor</span></span>
+<span id="cb2-60"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">                hasNextPage</span></span>
+<span id="cb2-61"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">              }</span></span>
+<span id="cb2-62"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">              nodes {</span></span>
+<span id="cb2-63"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">                number</span></span>
+<span id="cb2-64"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">                title</span></span>
+<span id="cb2-65"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">                labels(first: 10) {</span></span>
+<span id="cb2-66"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">                  nodes {</span></span>
+<span id="cb2-67"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">                    name</span></span>
+<span id="cb2-68"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">                  }</span></span>
+<span id="cb2-69"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">                }</span></span>
+<span id="cb2-70"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">              }</span></span>
+<span id="cb2-71"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">            }</span></span>
+<span id="cb2-72"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">          }</span></span>
+<span id="cb2-73"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        }</span></span>
+<span id="cb2-74"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">      }</span></span>
+<span id="cb2-75"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">      """</span></span>
+<span id="cb2-76"></span>
+<span id="cb2-77">      fetch_and_write_pull_requests<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span>next_query, file<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb2-78">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span></span>
+<span id="cb2-79">      <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:ok</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">File</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>close<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span>file<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb2-80">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">end</span></span>
+<span id="cb2-81">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">end</span></span>
+<span id="cb2-82"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">end</span></span>
+<span id="cb2-83"></span>
+<span id="cb2-84"><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">PullRequestFetcher</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>fetch_and_write_pull_requests<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">()</span></span></code></pre></div>
+<!-- livebook:{"output":true} -->
+<pre><code>:ok</code></pre>
+<!-- livebook:{"offset":2421,"stamp":{"token":"XCP.D8ekCw4i8O5H1Ia3GtS9sQIJ336xzpQIAfqskwhhWt_2LRllPx_INw7FtdhD84mB913O9RVrBuP2O194VuLjdtNmexowzH3wRLDG-j4zGkY_Ngh3VDD1","version":2}} -->
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20231027-write-a-list-of-github-pull-requests.html</guid>
+  <pubDate>Fri, 27 Oct 2023 22:22:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -140,7 +742,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231027-dreamcraft3d-workflow.html</guid>
-  <pubDate>Fri, 27 Oct 2023 22:16:47 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 22:22:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -210,7 +812,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231027-drawing-concept-to-blockout.html</guid>
-  <pubDate>Fri, 27 Oct 2023 22:16:47 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 22:22:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -280,7 +882,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231027-apartment-building-vr.html</guid>
-  <pubDate>Fri, 27 Oct 2023 22:16:47 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 22:22:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -348,7 +950,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231026-blender-steam-beta-version.html</guid>
-  <pubDate>Fri, 27 Oct 2023 22:16:47 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 22:22:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -412,7 +1014,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231024-training-simulators.html</guid>
-  <pubDate>Fri, 27 Oct 2023 22:16:47 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 22:22:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -482,7 +1084,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231024-finetuning-workflow.html</guid>
-  <pubDate>Fri, 27 Oct 2023 22:16:47 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 22:22:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -541,7 +1143,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231022-hover-to-ocean-game.html</guid>
-  <pubDate>Fri, 27 Oct 2023 22:16:47 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 22:22:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -613,7 +1215,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231020-llama-cpp-mistral-npc.html</guid>
-  <pubDate>Fri, 27 Oct 2023 22:16:47 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 22:22:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -678,7 +1280,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231019-quest3-mocap-steam-lighthouse.html</guid>
-  <pubDate>Fri, 27 Oct 2023 22:16:47 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 22:22:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -750,7 +1352,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230922-spacetime-shadow-shards-sync.html</guid>
-  <pubDate>Fri, 27 Oct 2023 22:16:47 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 22:22:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -841,7 +1443,7 @@ font-style: inherit;">".xml"</span></span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230920-godot-project-search.html</guid>
-  <pubDate>Fri, 27 Oct 2023 22:16:47 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 22:22:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -930,7 +1532,7 @@ font-style: inherit;">".xml"</span></span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230913-V-Sekai-bugs.html</guid>
-  <pubDate>Fri, 27 Oct 2023 22:16:47 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 22:22:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1001,7 +1603,7 @@ font-style: inherit;">".xml"</span></span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230912-target-most-popular-resolution.html</guid>
-  <pubDate>Fri, 27 Oct 2023 22:16:47 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 22:22:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1057,7 +1659,7 @@ font-style: inherit;">".xml"</span></span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230911-xr-grid-with-drawing.html</guid>
-  <pubDate>Fri, 27 Oct 2023 22:16:47 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 22:22:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1111,7 +1713,7 @@ output_buffer = %Membrane.Buffer{payload: output_data}
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230911-xpr.exs.html</guid>
-  <pubDate>Fri, 27 Oct 2023 22:16:47 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 22:22:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1175,7 +1777,7 @@ output_buffer = %Membrane.Buffer{payload: output_data}
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230911-first-alpha-tag.html</guid>
-  <pubDate>Fri, 27 Oct 2023 22:16:47 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 22:22:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1196,7 +1798,7 @@ output_buffer = %Membrane.Buffer{payload: output_data}
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230911-can-poly-green-coords-extend-to-3d.html</guid>
-  <pubDate>Fri, 27 Oct 2023 22:16:47 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 22:22:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1288,92 +1890,7 @@ E[Microphone] -- Audio Input --&gt; C</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230908-bendable-screen-generative-assistant-ggml.html</guid>
-  <pubDate>Fri, 27 Oct 2023 22:16:47 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20230903-replicate-vrm-transform.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="enabling-vrm-to-blender-conversion-with-cloud-gpus-and-replicate.com" class="level1">
-<h1>Enabling VRM to Blender Conversion with Cloud GPUs and replicate.com</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li>Status: rejected</li>
-<li>Deciders: V-Sekai, fire, antpb</li>
-<li>Tags: V-Sekai</li>
-</ul>
-</section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>The VRM format is becoming increasingly popular in the field of 3D modeling and animation. It allows for easy sharing and transfer of humanoid 3D models with skeletal animations between different software applications. One such application is the Godot Engine, a popular open-source game engine.</p>
-</section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>Currently, developers working with VRM files in Godot Engine face difficulties when trying to convert these files to Blender format for further editing or manipulation. Manual conversion processes can be time-consuming and error-prone.</p>
-</section>
-<section id="the-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>The proposed strategy for enabling VRM to Blender conversion involves leveraging the computational power of cloud GPUs provided by replicate.com. By running a GPU-accelerated Blender instance, developers can perform an identity operation on the VRM input, converting it to Blender format. This simplifies the process of converting VRM files to Blender format.</p>
-<p>To convert VRM files to Blender format, developers can follow these steps:</p>
-<ol type="1">
-<li>Install the necessary libraries or plugins in Blender that support the VRM format.</li>
-<li>Leverage replicate.com’s infrastructure to spin up a GPU-accelerated Blender instance.</li>
-<li>Develop a script or tool that takes the VRM file as input and sends it to the GPU-accelerated Blender instance via a REST interface.</li>
-<li>In the GPU-accelerated Blender instance, use the installed libraries or plugins to perform the conversion from VRM to Blender format.</li>
-<li>Also use Blender to perform the conversion from Blender to VRM/GLTF format.</li>
-</ol>
-<p>This strategy streamlines the workflow for developers, saving time and improving collaboration between designers and developers. The use of cloud GPUs and replicate.com’s infrastructure ensures fast and efficient conversion processes.</p>
-<p>Additionally, this strategy can also be extended to other software applications or websites that can utilize a REST interface, allowing developers working with VRM files to convert them to Blender format seamlessly, regardless of the software they are using.</p>
-</section>
-<section id="the-upside" class="level2">
-<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<ul>
-<li>Streamlined workflow: Developers can easily convert VRM files to Blender format, opening up a wide range of editing and manipulation possibilities.</li>
-<li>Time-saving: The use of cloud GPUs and replicate.com’s infrastructure ensures fast and efficient conversion processes.</li>
-<li>Improved collaboration: The ability to work with VRM models in both Godot Engine and Blender facilitates collaboration between designers and developers.</li>
-</ul>
-</section>
-<section id="the-downside" class="level2">
-<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<ul>
-<li>Development effort and expertise: Creating the necessary library or plugin may require significant technical knowledge in both the Godot Engine and VRM format.</li>
-<li>Compatibility issues: Different versions of FBX or GLB files may introduce compatibility challenges during the conversion process.</li>
-<li>Maintenance challenges: Keeping up with future updates to the Godot Engine and VRM specifications may require ongoing effort.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>We considered developing a web application, but it was deemed to have heavy engineering costs.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>While the proposed solution focuses on streamlining VRM to Blender conversion for the Godot Engine ecosystem, the same concept can be extended to other software applications or websites that can utilize a REST interface. This allows developers working with VRM files to convert them to Blender format seamlessly, regardless of the software they are using. The use of cloud GPUs and replicate.com’s infrastructure still ensures fast and efficient conversion processes.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>Fire knows the way.</p>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ul>
-<li><a href="https://v-sekai.org/">V-Sekai</a></li>
-<li><a href="https://github.com/vrm-c/vrm-specification/tree/master/specification/VRMC_vrm_animation-1.0">VRM Animation Specification</a></li>
-<li><a href="https://replicate.com/fire/v-sekai.mediapipe-labeler">Replicate - Cloud GPU Toy</a></li>
-</ul>
-<p>This article is assisted by AI.</p>
-<p>Is there anything else I can assist you with?</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20230903-replicate-vrm-transform.html</guid>
-  <pubDate>Fri, 27 Oct 2023 22:16:47 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 22:22:34 GMT</pubDate>
 </item>
 </channel>
 </rss>
