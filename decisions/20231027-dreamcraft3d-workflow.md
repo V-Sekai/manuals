@@ -3,7 +3,7 @@
 ## Metadata
 
 - **Status:** Proposed
-- **Deciders:** V-Sekai, iFire, Joseph Cat
+- **Deciders:** V-Sekai, fire, Joseph Cat
 - **Tags:** V-Sekai, VRM, Rigging, 3D Modeling, DreamCraft3D
 
 ## Context
