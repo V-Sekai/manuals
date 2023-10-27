@@ -3,7 +3,7 @@
 ## Metadata
 
 - **Status:** Proposed
-- **Deciders:** V-Sekai
+- **Deciders:** V-Sekai, fire
 - **Tags:** V-Sekai, Elixir, GitHub API, Pull Requests
 
 ## Context
