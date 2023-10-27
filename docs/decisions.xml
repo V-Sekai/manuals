@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Fri, 27 Oct 2023 16:05:20 GMT</lastBuildDate>
+<lastBuildDate>Fri, 27 Oct 2023 18:08:12 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -67,7 +67,80 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Fri, 27 Oct 2023 16:05:20 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 18:08:12 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20231027-dreamcraft3d-workflow.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="dreamcraft3d-a-hierarchical-3d-content-generation-method" class="level1">
+<h1>DreamCraft3D: A Hierarchical 3D Content Generation Method</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li><strong>Status:</strong> Proposed</li>
+<li><strong>Deciders:</strong> V-Sekai, iFire, Joseph</li>
+<li><strong>Tags:</strong> V-Sekai, VRM, Rigging, 3D Modeling, DreamCraft3D</li>
+</ul>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>DreamCraft3D is a hierarchical 3D content generation method that produces high-fidelity and coherent 3D objects. It uses a 2D reference image to guide the stages of geometry sculpting and texture boosting.</p>
+</section>
+<section id="problem" class="level2">
+<h2 class="anchored" data-anchor-id="problem">Problem</h2>
+<p>The main challenge lies in addressing the consistency issue that existing works encounter. To sculpt geometries that render coherently, DreamCraft3D performs score distillation sampling via a view-dependent diffusion model.</p>
+</section>
+<section id="solution" class="level2">
+<h2 class="anchored" data-anchor-id="solution">Solution</h2>
+<p>The strategy for implementing DreamCraft3D involves several steps:</p>
+<ol type="1">
+<li>Use DreamCraft3D to generate high-fidelity and coherent 3D objects from 2D concept art.</li>
+<li>Utilize existing projects like <a href="https://www.mixamo.com/">Mixamo</a> or <a href="https://actorcore.reallusion.com/auto-rig">AccuRig</a> for rigging models.</li>
+<li>If the topology isn’t suitable for animation, employ tools such as <a href="https://github.com/cgg-bern/quadwild-bimdf">Quadwild BIMDF</a> or <a href="https://exoside.com/quadremesher/">Exoside’s Quad Remesher</a> to enhance it.</li>
+<li>Correct bad rigs using delta mush with the help of the <a href="https://github.com/V-Sekai/V-Sekai.blender-game-tools/tree/main/addons/corrective_smooth_baker">Corrective Smooth Baker</a> addon for Blender.</li>
+<li>Develop software to perform clothing simulation differentially, referring to <a href="https://github.com/V-Sekai/V-Sekai.cloth-dynamics">V-Sekai’s Cloth Dynamics</a> as a guide.</li>
+</ol>
+</section>
+<section id="pros" class="level2">
+<h2 class="anchored" data-anchor-id="pros">Pros</h2>
+<p>DreamCraft3D, with its tailored 3D priors throughout the hierarchical generation, can generate coherent 3D objects with photorealistic renderings. This advances the state-of-the-art in 3D content generation.</p>
+</section>
+<section id="cons" class="level2">
+<h2 class="anchored" data-anchor-id="cons">Cons</h2>
+<p>The process of converting 2D concept art into a rigged 3D model can be complex and time-consuming. It also requires expertise in 3D modeling and rigging.</p>
+</section>
+<section id="alternatives" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives">Alternatives</h2>
+<p>An alternative approach could have been to manually create and rig the 3D models. However, this would be even more time-consuming and require even more expertise.</p>
+</section>
+<section id="infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
+<p>If the feature is used infrequently, it may not justify the time and resources spent on developing it.</p>
+</section>
+<section id="ownership" class="level2">
+<h2 class="anchored" data-anchor-id="ownership">Ownership</h2>
+<p>This project aligns with our core expertise in VR technologies and 3D modeling. Therefore, it can be done by us.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>For further reading, please refer to:</p>
+<ul>
+<li><a href="https://github.com/v-sekai/">V-Sekai GitHub Repository</a></li>
+<li><a href="https://github.com/deepseek-ai/DreamCraft3D">DreamCraft3D Code</a></li>
+<li>AI assists this article.</li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20231027-dreamcraft3d-workflow.html</guid>
+  <pubDate>Fri, 27 Oct 2023 18:08:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -137,7 +210,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231027-apartment-building-vr.html</guid>
-  <pubDate>Fri, 27 Oct 2023 16:05:20 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 18:08:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -205,7 +278,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231026-blender-steam-beta-version.html</guid>
-  <pubDate>Fri, 27 Oct 2023 16:05:20 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 18:08:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -269,7 +342,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231024-training-simulators.html</guid>
-  <pubDate>Fri, 27 Oct 2023 16:05:20 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 18:08:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -339,7 +412,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231024-finetuning-workflow.html</guid>
-  <pubDate>Fri, 27 Oct 2023 16:05:20 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 18:08:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -398,7 +471,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231022-hover-to-ocean-game.html</guid>
-  <pubDate>Fri, 27 Oct 2023 16:05:20 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 18:08:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -470,7 +543,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231020-llama-cpp-mistral-npc.html</guid>
-  <pubDate>Fri, 27 Oct 2023 16:05:20 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 18:08:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -535,7 +608,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231019-quest3-mocap-steam-lighthouse.html</guid>
-  <pubDate>Fri, 27 Oct 2023 16:05:20 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 18:08:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -607,7 +680,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230922-spacetime-shadow-shards-sync.html</guid>
-  <pubDate>Fri, 27 Oct 2023 16:05:20 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 18:08:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -698,7 +771,7 @@ font-style: inherit;">".xml"</span></span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230920-godot-project-search.html</guid>
-  <pubDate>Fri, 27 Oct 2023 16:05:20 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 18:08:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -787,7 +860,7 @@ font-style: inherit;">".xml"</span></span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230913-V-Sekai-bugs.html</guid>
-  <pubDate>Fri, 27 Oct 2023 16:05:20 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 18:08:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -858,7 +931,7 @@ font-style: inherit;">".xml"</span></span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230912-target-most-popular-resolution.html</guid>
-  <pubDate>Fri, 27 Oct 2023 16:05:20 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 18:08:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -914,7 +987,7 @@ font-style: inherit;">".xml"</span></span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230911-xr-grid-with-drawing.html</guid>
-  <pubDate>Fri, 27 Oct 2023 16:05:20 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 18:08:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -968,7 +1041,7 @@ output_buffer = %Membrane.Buffer{payload: output_data}
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230911-xpr.exs.html</guid>
-  <pubDate>Fri, 27 Oct 2023 16:05:20 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 18:08:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1032,7 +1105,7 @@ output_buffer = %Membrane.Buffer{payload: output_data}
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230911-first-alpha-tag.html</guid>
-  <pubDate>Fri, 27 Oct 2023 16:05:20 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 18:08:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1053,7 +1126,7 @@ output_buffer = %Membrane.Buffer{payload: output_data}
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230911-can-poly-green-coords-extend-to-3d.html</guid>
-  <pubDate>Fri, 27 Oct 2023 16:05:20 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 18:08:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1145,7 +1218,7 @@ E[Microphone] -- Audio Input --&gt; C</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230908-bendable-screen-generative-assistant-ggml.html</guid>
-  <pubDate>Fri, 27 Oct 2023 16:05:20 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 18:08:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1230,7 +1303,7 @@ E[Microphone] -- Audio Input --&gt; C</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230903-replicate-vrm-transform.html</guid>
-  <pubDate>Fri, 27 Oct 2023 16:05:20 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 18:08:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1295,70 +1368,7 @@ E[Microphone] -- Audio Input --&gt; C</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230831-fixing-upload-limits.html</guid>
-  <pubDate>Fri, 27 Oct 2023 16:05:20 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20230831-fixing-menus.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="fix-menus-in-game" class="level1">
-<h1>Fix menus in-game</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li>Status: accepted</li>
-<li>Deciders: V-Sekai</li>
-<li>Tags: V-Sekai</li>
-</ul>
-</section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-</section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>The menus in-game are unable to capture events from the VR controllers.</p>
-</section>
-<section id="the-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>Debug the <code>on_pointer_pressed</code> function as it is not working correctly due to an issue with <code>Transform3D.xform_inv</code>. The current implementation mimics mouse input, but it fails to translate global positions correctly. Review the <code>global_to_viewport</code> function and ensure it returns the correct value for <code>local_at</code>.</p>
-</section>
-<section id="the-upside" class="level2">
-<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<p>Fixing the menus will enable players to interact with them using VR controllers, enhancing the user experience.</p>
-</section>
-<section id="the-downside" class="level2">
-<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<p>Fixing the menus may require significant code changes, introducing potential bugs or conflicts that need proper testing to ensure stability.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Exploring alternative input systems specifically designed for VR controllers could be considered, but it may involve rewriting a large portion of the menu code and potentially introducing new dependencies.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>This fix targets players using VR controllers to interact with the menus. Players without VR controllers will not be affected.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>Yes, this issue falls within our core development responsibilities, and we will take ownership of fixing the menus.</p>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ul>
-<li><a href="https://v-sekai.org/">V-Sekai</a></li>
-<li>This article is assisted by AI.</li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20230831-fixing-menus.html</guid>
-  <pubDate>Fri, 27 Oct 2023 16:05:20 GMT</pubDate>
+  <pubDate>Fri, 27 Oct 2023 18:08:12 GMT</pubDate>
 </item>
 </channel>
 </rss>
