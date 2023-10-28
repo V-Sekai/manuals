@@ -11,7 +11,7 @@ Gadgets play a crucial role in enhancing the gameplay mechanics. Each gadget pro
 
 ## Contextual Factors and Gameplay Mechanics
 
-The game we're discussing is set in a post-apocalyptic future where humanity has colonized the solar system. It's an open-world game with classless character progression, drawing inspiration from games like Code Vein and Gun Gale Online. The gameplay involves both player versus player (PvP) and player versus environment (PvE) scenarios, with players forming alliances and strategizing to protect humanity from existential threats. Decisions made in the game can shape the future of the virtual universe.
+The game we're discussing is set in a post-apocalyptic future where humanity has colonized the solar system. It's an open-world game with classless character progression. The gameplay involves both player versus player (PvP) and player versus environment (PvE) scenarios, with players forming alliances and strategizing to protect humanity from existential threats. Decisions made in the game can shape the future of the virtual universe.
 
 The gameplay mechanics are designed around a team-based system, promoting players to form teams and develop strategies under the leadership of a lead. This design encourages strategic planning and effective resource management among players.
 
