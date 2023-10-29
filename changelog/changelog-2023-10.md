@@ -8,7 +8,13 @@
 
 ### Changed
 
-- Not applicable for this month.
+- Updated `casync` for `v-sekai-game`. This is still using the old version binaries.
+
+```bash
+git clone https://github.com/V-Sekai/casync-v-sekai-game.git
+cd casync-v-sekai-game
+./extract.sh
+```
 
 ### Fixed
 
