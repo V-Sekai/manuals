@@ -4,15 +4,23 @@
 
 ### Added
 
-## Changed
+- Not applicable for this month.
+
+### Changed
+
+- Not applicable for this month.
 
 ### Fixed
+
+- Fixed an issue with GLTF images being referenced directly instead of going through the GLTFState.textures mapping. This was causing texture mis-matches on some VRMs when loaded. The fix involved passing the GLTF state into a few more functions, replacing the image list, so we could also access the textures mapping directly alongside them. ([#82](https://github.com/V-Sekai/godot-vrm/pull/82))
 
 ### Deprecated
 
 - Not applicable for this month.
 
 ### Removed
+
+- Not applicable for this month.
 
 ### Security
 
@@ -29,9 +37,9 @@ This project does not adhere to [Semantic Versioning](https://semver.org/spec/v2
 - Convinced PolygonJS to change their license to the MIT license.
 - Reviewed a character generator with OMI and JIN
 - Discussed svg in gltf at OMI
-- Proposed feature request to add an extractor to save 3d assets, gltf files, CAD files, shapefiles, STLs, etc to ArchiveBox. https://github.com/ArchiveBox/ArchiveBox/issues/668
-- Discovered a method of json document sync. https://jsonjoy.com/
+- Proposed feature request to add an extractor to save 3d assets, gltf files, CAD files, shapefiles, STLs, etc to ArchiveBox. [Issue #668](https://github.com/ArchiveBox/ArchiveBox/issues/668)
+- Discovered a method of json document sync. [JsonJoy](https://jsonjoy.com/)
 
 ## Quotes of the month
 
-/<Wikipedia> The term logbook originated with the ship's log, a maritime record of important events in the management, operation, and navigation of a ship. The captain was responsible for keeping a log, as a minimum, of navigational wind, speed, direction and position. 
+> "The term logbook originated with the ship's log, a maritime record of important events in the management, operation, and navigation of a ship. The captain was responsible for keeping a log, as a minimum, of navigational wind, speed, direction and position." - Wikipedia
