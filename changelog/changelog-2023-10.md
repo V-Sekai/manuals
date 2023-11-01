@@ -4,7 +4,9 @@
 
 ### Added
 
-- Not applicable for this month.
+- Lyuma has pushed support to GodotEngine Unidot-Importer for humanoid unity .anim import including lox9973's center of mass correction for hips. [#gamedev](https://vxtwitter.com/Lyuma2d/status/1718394964109935094)
+- Humanoid anim support is complete, including arm/leg twist! Import of standalone Avatar assets is now functional (such as converted VRM files).
+- Unpacked avatar prefabs are now extracted into their own scenes.
 
 ### Changed
 
