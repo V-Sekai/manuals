@@ -14,7 +14,7 @@ To prevent scene corruption after merging, the Godot Editor should provide a mer
 
 The merge tool should be intelligent enough to detect node movements, renaming, and other complex scene semantics. It should also allow users to edit the merged scene before saving it.
 
-![Merge Scene Tool Example](https://example.com/merge-scene-tool.gif)
+![Merge Scene Tool Example](attachments/merge-scene-tool.gif)
 
 ### FlatBuffer-based JSON Serialization for Merge Tool State
 
