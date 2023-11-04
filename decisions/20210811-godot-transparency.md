@@ -1,4 +1,4 @@
-# Proposed: OIT in Godot Engine
+# Accepted: OIT in Godot Engine
 
 ### Context and Problem Statement
 
