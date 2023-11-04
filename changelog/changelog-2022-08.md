@@ -1,4 +1,4 @@
-# Changelog 2022-08
+# V-Sekai Changelog - 2022-08
 
 ## Lyuma — 04/08/2022
 

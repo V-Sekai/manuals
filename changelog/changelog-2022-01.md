@@ -1,4 +1,4 @@
-# Changelog 2022-01
+# V-Sekai Changelog - 2022-01
 
 iFire wrote with Lyuma some proposals:
 

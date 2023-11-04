@@ -1,4 +1,4 @@
-# Changelog 2022-06
+# V-Sekai Changelog - 2022-06
 
 ## 2022-06-24
 

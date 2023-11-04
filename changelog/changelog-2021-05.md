@@ -1,9 +1,9 @@
-# Changelog 2021-05
-
+# V-Sekai Changelog - 2021-05
 
 # Changelog
 
 ### 2021-05-31
+
 - **21:30:03Z** fire: [Godot4OVRTest](https://github.com/Ozzadar/Godot4OVRTest.git) and [godot-fire](https://github.com/godot-extended-libraries/godot-fire/tree/multiview-stero-openxr)
 - **21:29:42Z** fire: Context. Porting OpenXR to run on Godot Engine 4
 - **21:29:29Z** fire: haagch's input on VkPhysicalDevices and VkInstances
@@ -14,6 +14,7 @@
 - **21:10:45Z** fire: Lyuma Merged [PR #49120](https://github.com/godotengine/godot/pull/49120) 👏 (2)
 
 ### 2021-05-30
+
 - **12:58:28Z** fire: [V-Sekai VRM addon release](https://godotengine.org/asset-library/asset/964)
 - **10:58:12Z** lyuma: "Submitted the asset ""VRM Importer and MToon Shader"" - it will be at [asset/3693](https://godotengine.org/asset-library/asset/3693) once approved.
   - [Issue comment](https://github.com/V-Sekai/godot-vrm/issues/14#issuecomment-850979766)
@@ -21,16 +22,19 @@
 - **00:57:51Z** fire: Merged LOD fix [PR #49197](https://github.com/godotengine/godot/pull/49197)
 
 ### 2021-05-29
+
 - **22:08:49Z** fire: Found a bug in LOD on integer locations. Asked someone to handle it for me.
 - **17:52:04Z** fire: Lyuma May need an ubuntu version too. Not sure how the test matrix works. I want fedora and ubuntu LTS (the oldest one)
 - **17:13:00Z** lyuma: Progress on godot-cpp, Godette-Chan model port to VRM, and other updates
 - **17:09:27Z** lyuma: Debugging an issue causing the outlines to look too bright in MixedLight mode, then I'll demonstrate exporting a default character from vroid studio as well.
 
 ### 2021-05-29
+
 - **17:06:50Z** lyuma: [Godette-Chan model in VRM format](https://cdn.discordapp.com/attachments/836651615532482611/848246017954021416/godette_chan_v22.vrm)
 - **16:59:06Z** lyuma: [Godette-Chan model port result](https://cdn.discordapp.com/attachments/836651615532482611/848244072161345586/unknown.png) 👏 (1)
 
 ### 2021-05-28
+
 - **22:45:48Z** fire: Spent the afternoon on organizing work on the CMValley Godot Demo
 - **21:53:32Z** lyuma: Updated godot-cpp; fixed SConstruct lines and resolved errors with clang and the gltf GDNative plugin
 - **21:15:35Z** fire: Investigating the Godot Engine open content map "CMValley_to_Godot_Demo" (Ask me for the doc if you want it)
@@ -39,9 +43,11 @@
 - **06:24:04Z** fire: Code review gltf the entire afternoon
 
 ### 2021-05-27
+
 - **18:45:25Z** fire: Spent time summoning peers about making a realistically lit 3d game level environment in Godot Engine. Official Godot Engine business. -\_-
 
 ### 2021-05-26
+
 - **21:43:14Z** lyuma: Filed bugs and pull requests
 - **21:17:25Z** fire: Tokage improved the Skeleton Gizmos with better color choices and bugfix for a shadow problem with depth
 - **17:43:36Z** fire: We contributed to the drafting of them.
@@ -49,11 +55,13 @@
 - **10:38:49Z** lyuma: [Twitter post](https://twitter.com/Lyuma2d/status/1397501932827078658)
 
 ### 2021-05-26
+
 - **09:26:03Z** lyuma: For now anyway, the VRM module is only for import.
 - **09:25:40Z** lyuma: there's a lot of untested code related to export, since there are still bugs, but I expect to be able to incorporate any bugfixes made to export
 - **09:25:09Z** lyuma: After finishing the backport of the Fire's latest gltf module to 3.x as a module / draft PR, I had success in porting the gltf module to GDNative: The VRM module now runs in Godot 3.3-stable: [Screenshot](https://cdn.discordapp.com/attachments/836651615532482611/847042666822893598/unknown.png)
 
 ### 2021-05-24
+
 - **18:13:44Z** fire: Evaluating curve fitter from Maya2glTF. [Reducer-fire branch](https://github.com/fire/Maya2glTF/tree/reducer-fire) [Screenshot](https://cdn.discordapp.com/attachments/836651615532482611/846450916281417778/unknown.png)
 - **18:08:49Z** Saracen: Progress on asset validation layer and remaining issues
 - **15:37:50Z** fire: (blender)
@@ -67,17 +75,20 @@
 - After quads in glTF2, better mesh simplification and LODs that work on quads"
 
 ### 2021-05-22
+
 - **16:23:18Z** fire: [PR #47764](https://github.com/godotengine/godot/pull/47764/files) Lod Merge! 👏 (4)
 - **03:41:06Z** lyuma: is it GLES2 or GLES3?
 - **03:12:33Z** fire: humbletim [Screenshot](https://cdn.discordapp.com/attachments/836651615532482611/845499351346315264/unknown.png)
 - **02:30:08Z** fire: Investigating V-Sekai compiled for javascript
 
 ### 2021-05-21
+
 - **23:38:30Z** fire: [Screenshot](https://cdn.discordapp.com/attachments/836651615532482611/845445481622667304/unknown.png)
 - **23:32:27Z** fire: What do I do, Victoria Day on Monday. How is the Queen!?
 - **23:31:24Z** fire: Discussed 15 frames encoding into a QR / DataMatrix code [ShaderMotion](https://lox9973.com/ShaderMotion/player-gltf.html) Writing a obs script in python to read data.
 
 ### 2021-05-21
+
 - **15:37:50Z** fire: (blender)
 - **15:37:37Z** fire: [Screenshot](https://cdn.discordapp.com/attachments/703726244436508722/846370817701183488/unknown.png) 👍 (2)
 - **15:37:09Z** fire: Worked with hutty to transfer gltf export tech to his voxel drawing tool

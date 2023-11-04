@@ -1,4 +1,4 @@
-# Changelog 2023-06
+# V-Sekai Changelog - 2023-06
 
 In June 2023, various developments and discussions took place in the Godot community, particularly within the V-Sekai project. Key highlights include updates to the `godot-vrm` repository, security improvements in the `v-sekai-game` repository, and progress on animation retargeting and PMX character structure. Additionally, a fix was implemented for Skeleton3D's `rest_dirty` reset issue.
 

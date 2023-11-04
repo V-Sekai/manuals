@@ -1,4 +1,4 @@
-# Changelog 2021-08
+# V-Sekai Changelog - 2021-08
 
 - 2021-08-31 23:04:24Z fire: Did a few hours of work learning Blender with Cleam last night. Did some testing of Tokage's skeleton gizmo.
 - 2021-08-30 17:09:35Z MMMaellon#2053 nice

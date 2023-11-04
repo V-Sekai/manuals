@@ -1,4 +1,4 @@
-# Changelog 2022-12
+# V-Sekai Changelog - 2022-12
 
 This is the changelog for December 2022.
 
