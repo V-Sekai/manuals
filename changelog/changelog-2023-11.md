@@ -5,7 +5,7 @@
 ### Added
 
 - **MacOS Editor Builds**: MacOS editor builds have been added to the project. ([Commit: df041f0](https://github.com/V-Sekai/v-sekai-game/commit/df041f0))
-- **Export Mac Game**: The game can now be exported for Mac. ([Commit: ea069e7](https://github.com/V-Sekai/v-sekai-game/commit/ea069e7))
+- **Export Mac Game**: The game can now be exported for Mac.
 - **Golang Installation**: Golang has been installed in the project. ([Commit: c25456b](https://github.com/V-Sekai/v-sekai-game/commit/c25456b))
 - **Unidot Dependency Removal**: The dependency on the post-import script by Unidot has been removed after conversion is complete. This means the converted assets will work standalone without the Unidot importer, with one exception\*.
 - **Supported Asset Types**: Supported asset types are listed in the readme. It should support many types of meshes, animations, Standard shader materials, scenes/prefabs and physics objects.
