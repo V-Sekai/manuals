@@ -1,4 +1,4 @@
-# Default test plan for testing V-Sekai engine upgrades.
+# Accepted: Default test plan for testing V-Sekai engine upgrades.
 
 - Status: accepted <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,

@@ -1,4 +1,4 @@
-# Can Poly Green Coords extend to 3d?
+# Draft: Can Poly Green Coords extend to 3d?
 
 Reminded by works by pixar: https://graphics.pixar.com/library/ProfileMover/
 

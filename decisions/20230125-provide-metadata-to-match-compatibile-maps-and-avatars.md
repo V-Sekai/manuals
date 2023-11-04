@@ -1,4 +1,4 @@
-# Provide metadata to pre-check if maps and avatars are compatible to load
+# Proposed: Provide metadata to pre-check if maps and avatars are compatible to load
 
 ### Metadata
 

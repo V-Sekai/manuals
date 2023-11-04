@@ -1,4 +1,4 @@
-# Prepare godot-vrm for asset library publishing
+# Proposed: Prepare godot-vrm for asset library publishing
 
 - Status: accepted <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,lyuma,fire,

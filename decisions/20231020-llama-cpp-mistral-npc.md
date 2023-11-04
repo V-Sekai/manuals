@@ -1,4 +1,4 @@
-# Llama CPP AI Model NPC
+# Proposed: Llama CPP AI Model NPC
   
 ## Metadata  
   

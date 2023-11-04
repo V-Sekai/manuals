@@ -1,4 +1,4 @@
-# Rank skeleton #bone names with catboost
+# Accepted: Rank skeleton #bone names with catboost
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 

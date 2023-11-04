@@ -1,4 +1,4 @@
-# Better Godot Engine integration with Blender with gltf extensions
+# Proposed: Better Godot Engine integration with Blender with gltf extensions
 
 ### Context and Problem Statement
 
@@ -10,7 +10,7 @@ The import of Godot Shaders to Godot Engine can help developers and developer ar
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-Write a design for embed the Godot shader and material information in the exported GLTF as an extension, then parse it in the Godot importer 
+Write a design for embed the Godot shader and material information in the exported GLTF as an extension, then parse it in the Godot importer
 
 ### Positive Consequences
 
@@ -37,7 +37,6 @@ We manage the Godot Engine import experience.
 ### References
 
 - [V-Sekai](https://v-sekai.org/)
-
 
 ### License of the contribution
 

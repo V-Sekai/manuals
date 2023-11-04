@@ -1,4 +1,4 @@
-# Efficiently managing and synchronizing game data with a server sidecar
+# Proposed: Efficiently managing and synchronizing game data with a server sidecar
 
 ## Metadata
 

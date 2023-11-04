@@ -1,4 +1,4 @@
-# Create a 12x12 meter 3D demo map with 2-meter-high obstacles and walls
+# Proposed: Create a 12x12 meter 3D demo map with 2-meter-high obstacles and walls
 
 ## Metadata
 

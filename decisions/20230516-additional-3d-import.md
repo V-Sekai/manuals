@@ -1,4 +1,4 @@
-# Additional 3D Import Functionality
+# Rejected: Additional 3D Import Functionality
 
 ## Metadata
 

@@ -1,4 +1,4 @@
-# Following Tracks: Enhancing VR Train Station Simulation in V-Sekai using Godot Engine
+# Proposed: Following Tracks: Enhancing VR Train Station Simulation in V-Sekai using Godot Engine
 
 ## Metadata
 

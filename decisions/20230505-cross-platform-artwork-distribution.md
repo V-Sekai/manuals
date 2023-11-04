@@ -1,4 +1,4 @@
-# Enhancing Cross-Platform Compatibility and User Experience for V-Sekai VR Social Players
+# Proposed: Enhancing Cross-Platform Compatibility and User Experience for V-Sekai VR Social Players
 
 ## Metadata
 

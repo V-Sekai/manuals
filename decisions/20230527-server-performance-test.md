@@ -1,4 +1,4 @@
-# Generating Random Text Data for testing V-Sekai systems
+# Proposed: Generating Random Text Data for testing V-Sekai systems
 
 ## Metadata
 

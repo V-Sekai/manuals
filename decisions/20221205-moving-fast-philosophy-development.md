@@ -1,4 +1,4 @@
-# Move fast without breaking things for V-Sekai
+# Proposed: Move fast without breaking things for V-Sekai
 
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,

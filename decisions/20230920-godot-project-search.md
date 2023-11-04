@@ -1,4 +1,4 @@
-# Use embedding search with Godot Engine projects
+# Proposed: Use embedding search with Godot Engine projects
 
 ## Metadata
 

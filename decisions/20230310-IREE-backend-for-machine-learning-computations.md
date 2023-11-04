@@ -1,4 +1,4 @@
-# Creating a Godot Engine C++ module with IREE backend for machine learning computations using Vulkan and CUDA
+# Superseded: Creating a Godot Engine C++ module with IREE backend for machine learning computations using Vulkan and CUDA
 
 ### Metadata
 

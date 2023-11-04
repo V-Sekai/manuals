@@ -1,4 +1,4 @@
-# Profile using perf
+# Proposed: Profile using perf
 
 ### Describe the status of the issue.
 

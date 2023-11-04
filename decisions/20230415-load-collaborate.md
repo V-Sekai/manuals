@@ -1,4 +1,4 @@
-#  Hit a collaborate button to load up into V-Sekai
+# Proposed: Hit a collaborate button to load up into V-Sekai
 
 ### Context and Problem Statement
 
@@ -7,8 +7,8 @@ Load up into V-Sekai as a server and then they hit a collaborate button
 ### Describe the proposed option and how it helps to overcome the problem or limitation
 
 1. The host player invites friends to their world
-3. The friends' clients will automatically connect to the caching solution
-4. The host player has a valid V-Sekai map project on their computer that they load up into V-Sekai as a server
+2. The friends' clients will automatically connect to the caching solution
+3. The host player has a valid V-Sekai map project on their computer that they load up into V-Sekai as a server
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
@@ -37,7 +37,6 @@ We are driving this.
 ### References
 
 - [V-Sekai](https://v-sekai.org/)
-
 
 ### License of the contribution
 

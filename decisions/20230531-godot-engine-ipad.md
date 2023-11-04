@@ -1,4 +1,4 @@
-# Build a Single-Instance MacOS Editor for the iPad
+# Proposed: Build a Single-Instance MacOS Editor for the iPad
 
 ## Metadata
 

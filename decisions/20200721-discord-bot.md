@@ -1,4 +1,4 @@
-# Notify community members and users about activity and updates via a Discord bot
+# Draft: Notify community members and users about activity and updates via a Discord bot
 
 - Status: draft
 

@@ -1,4 +1,4 @@
-# Networked Procedural Generation as a Sidecar to the Godot Engine Server
+# Proposed: Networked Procedural Generation as a Sidecar to the Godot Engine Server
 
 ## Metadata
 

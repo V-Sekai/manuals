@@ -1,4 +1,4 @@
-# Grow the community with a reactive Discord bot.
+# Proposed: Grow the community with a reactive Discord bot.
 
 ### Metadata
 

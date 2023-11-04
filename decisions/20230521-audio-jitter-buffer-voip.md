@@ -1,4 +1,4 @@
-# Improving Jitter-Buffer Implementation for Voice Chat in V-Sekai Projects
+# Proposed: Improving Jitter-Buffer Implementation for Voice Chat in V-Sekai Projects
 
 ## Metadata
 

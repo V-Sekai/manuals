@@ -1,4 +1,4 @@
-# Manage backend resources on one or more physical machines with K3S
+# Accepted: Manage backend resources on one or more physical machines with K3S
 
 ## Context and Problem Statement
 

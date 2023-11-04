@@ -1,4 +1,4 @@
-# VR design application for V-Sekai
+# Proposed: VR design application for V-Sekai
 
 ## Metadata
 

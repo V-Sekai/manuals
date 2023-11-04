@@ -1,4 +1,5 @@
-#  Procedurally create variations for our props, environments and avatars
+# Proposed: Procedurally create variations for our props, environments and avatars
+
 ### Metadata
 
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->

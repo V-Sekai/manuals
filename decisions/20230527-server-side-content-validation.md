@@ -1,4 +1,4 @@
-# Implement server-side content validation export followed by a sanitization service and CDN support
+# Proposed: Implement server-side content validation export followed by a sanitization service and CDN support
 
 ## Metadata
 

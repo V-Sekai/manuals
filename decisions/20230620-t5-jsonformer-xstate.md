@@ -1,4 +1,4 @@
-# Large language model t5 generating xstate json reliabily for digital beings
+# Proposed: Large language model t5 generating xstate json reliabily for digital beings
 
 ## Metadata
 

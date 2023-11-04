@@ -1,4 +1,4 @@
-# Social RPG World Proposal
+# Proposed: Social RPG World Proposal
 
 ## Metadata
 

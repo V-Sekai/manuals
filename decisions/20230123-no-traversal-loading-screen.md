@@ -1,11 +1,10 @@
-# No traversal loading screen
+# Proposed: No traversal loading screen
 
 ### Metadata
 
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
-
 
 ### Context and Problem Statement
 
@@ -47,7 +46,6 @@ We could even add a little button you click once you are ready to be transported
 - Option: The status quo. <!-- List the proposed options no longer open for consideration. -->
 - Rejection Reason: This solves nothing. <!-- List the reasons for the rejection: (the bad traits) -->
 
-
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 
 Not script.
@@ -59,7 +57,6 @@ World traversal is a problem.
 ### References
 
 - [V-Sekai](https://v-sekai.org/)
-
 
 ### License of the contribution
 

@@ -1,4 +1,4 @@
-# Ship Godot Engine VRM1 to solve portable humanoid avatars
+# Proposed: Ship Godot Engine VRM1 to solve portable humanoid avatars
 
 ## Metadata
 

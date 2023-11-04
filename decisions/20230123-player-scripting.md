@@ -1,4 +1,4 @@
-# Provide user generated scripting using WasGO
+# Proposed: Provide user generated scripting using WasGO
 
 ### Metadata
 

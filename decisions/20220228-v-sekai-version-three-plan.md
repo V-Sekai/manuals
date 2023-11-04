@@ -1,4 +1,4 @@
-# Planning V-Sekai Version 3 on 2022-02-28
+# Accepted: Planning V-Sekai Version 3 on 2022-02-28
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,ifire,lyuma,

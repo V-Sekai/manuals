@@ -1,4 +1,4 @@
-#  Publish Godot VRM for Godot 4 for production use
+# Proposed: Publish Godot VRM for Godot 4 for production use
 
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
@@ -14,7 +14,7 @@ By publishing we will have reviewed the bugs and decide it is ready to be use.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-Submit godot vrm to the godot 4 asset library lyuma 
+Submit godot vrm to the godot 4 asset library lyuma
 
 Started because of discussion with https://twitter.com/AlfredBaudisch/status/1586999148171198465?s=20&t=nUHLXskgrxnTbPFN9WzZxQ about mtoon outlines
 

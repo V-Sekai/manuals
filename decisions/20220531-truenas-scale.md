@@ -1,4 +1,4 @@
-# To create a deployment kit use truescale to host gocd agents for cicd.
+# Rejected: To create a deployment kit use truescale to host gocd agents for cicd.
 
 ### Describe the status of the issue.
 

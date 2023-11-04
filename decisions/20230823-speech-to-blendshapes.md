@@ -1,4 +1,4 @@
-# Developing a Unified Model for Speech-to-Facial Shape Generation Using Outlines 〰 Library
+# Proposed: Developing a Unified Model for Speech-to-Facial Shape Generation Using Outlines 〰 Library
 
 ## Metadata
 

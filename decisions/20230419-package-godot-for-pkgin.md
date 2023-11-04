@@ -1,8 +1,8 @@
-# Package Godot for pkgin
+# Rejected: Package Godot for pkgin
 
 ### Metadata
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: rejected <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
 - Tags: V-Sekai,chatgpt4,
 

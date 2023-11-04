@@ -1,4 +1,4 @@
-# Provide user generated scripting with libsql and wasm
+# Proposed: Provide user generated scripting with libsql and wasm
 
 ### Metadata
 

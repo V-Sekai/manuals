@@ -1,4 +1,4 @@
-# Translation/Transcription Badge with GGML's Whisper
+# Draft: Translation/Transcription Badge with GGML's Whisper
 
 ## Overview
 

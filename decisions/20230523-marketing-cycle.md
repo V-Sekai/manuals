@@ -1,4 +1,4 @@
-# Improve V-Sekai marketing
+# Draft: Improve V-Sekai marketing
 
 ## Metadata
 

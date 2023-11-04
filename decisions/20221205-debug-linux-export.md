@@ -1,4 +1,4 @@
-# Short title that solves problem with solution
+# Proposed: Debug Linux Export
 
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,

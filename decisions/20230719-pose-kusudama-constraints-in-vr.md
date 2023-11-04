@@ -1,4 +1,4 @@
-# Enhancing the Many Bone IK Configuration
+# Proposed: Enhancing the Many Bone IK Configuration
 
 ## Metadata
 

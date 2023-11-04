@@ -1,4 +1,4 @@
-# Propose a solution to improve V-Sekai contributors' design skills for navigating 3D environments
+# Proposed: Propose a solution to improve V-Sekai contributors' design skills for navigating 3D environments
 
 ## Metadata
 

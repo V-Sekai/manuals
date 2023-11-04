@@ -1,4 +1,4 @@
-# Powershell autocomplete uses right arrow
+# Proposed: Powershell autocomplete uses right arrow
 
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,

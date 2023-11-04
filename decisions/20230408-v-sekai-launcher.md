@@ -1,10 +1,10 @@
-# Provide v-sekai-game in a launcher to make it easier to use v-sekai
+# Proposed: Provide v-sekai-game in a launcher to make it easier to use v-sekai
+
 ### Metadata
 
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
-
 
 ### Context and Problem Statement
 

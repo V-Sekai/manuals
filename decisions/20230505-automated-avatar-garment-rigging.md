@@ -1,4 +1,4 @@
-# Automated avatar garment rigging
+# Proposed: Automated avatar garment rigging
 
 ## Metadata
 

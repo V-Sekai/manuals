@@ -1,4 +1,4 @@
-# Implementing Semantic Versioning for Alpha Releases in V-Sekai
+# Proposed: Implementing Semantic Versioning for Alpha Releases in V-Sekai
 
 ## Metadata
 

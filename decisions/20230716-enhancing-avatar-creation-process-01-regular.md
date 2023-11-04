@@ -1,4 +1,4 @@
-# Enhancing Avatar Creation Process in V-Sekai Regular
+# Proposed: Enhancing Avatar Creation Process in V-Sekai Regular
 
 ## Metadata
 

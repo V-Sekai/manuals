@@ -1,4 +1,4 @@
-# Wasm in V-Sekai Proposal
+# Proposed: Wasm in V-Sekai Proposal
 
 ## Metadata
 

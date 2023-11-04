@@ -1,4 +1,4 @@
-# How to start a development environment for cockroach and elixir?
+# Accepted: How to start a development environment for cockroach and elixir?
 
 ### Describe the status of the issue.
 

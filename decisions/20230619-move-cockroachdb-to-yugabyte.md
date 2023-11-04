@@ -1,4 +1,4 @@
-# V-Sekai Database Solution for 50,000 Concurrent Online Users
+# Rejected: V-Sekai Database Solution for 50,000 Concurrent Online Users
 
 ## Metadata
 

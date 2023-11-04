@@ -1,4 +1,4 @@
-# Rewriting Mixer Broadcaster Into Membrane Framework Pipelines
+# Rejected: Rewriting Mixer Broadcaster Into Membrane Framework Pipelines
 
 ## Metadata  
 

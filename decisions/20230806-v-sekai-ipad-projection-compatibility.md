@@ -1,8 +1,8 @@
-# V-Sekai Navigation Compatibility with VR
+# Proposed: V-Sekai Navigation Compatibility with VR
 
 ## Metadata
 
-- **Status:** Proposed
+- **Status:** proposed
 - **Deciders:** V-Sekai
 - **Tags:** V-Sekai, iPad, Presentation Screen, Compatibility
 

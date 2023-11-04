@@ -1,4 +1,4 @@
-## Use godot rgbaf textures to store integers
+# Proposed: Use godot rgbaf textures to store integers
 
 ### Metadata
 

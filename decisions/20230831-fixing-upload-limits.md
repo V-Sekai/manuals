@@ -1,4 +1,4 @@
-# Enhancing Map Uploads
+# Accepted: Enhancing Map Uploads
 
 ## Metadata
 

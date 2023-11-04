@@ -1,4 +1,4 @@
-# Git Subrepo Addon Management
+# Accepted: Git Subrepo Addon Management
 
 ## Context and Problem Statement
 

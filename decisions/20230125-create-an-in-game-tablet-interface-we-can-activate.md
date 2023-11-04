@@ -1,4 +1,4 @@
-# Create an in-game tablet interface we can activate
+# Proposed: Create an in-game tablet interface we can activate
 
 ### Metadata
 

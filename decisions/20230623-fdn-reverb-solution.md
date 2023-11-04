@@ -1,4 +1,4 @@
-# Implementing Feedback Delay Networks for Enhanced Audio Reverb Simulation in V-Sekai
+# Proposed: Implementing Feedback Delay Networks for Enhanced Audio Reverb Simulation in V-Sekai
 
 ## Metadata
 

@@ -1,4 +1,4 @@
-# Aquarium Nightclub Booth for Virtual Market Exhibition
+# Accepted: Aquarium Nightclub Booth for Virtual Market Exhibition
 
 ## Metadata
 

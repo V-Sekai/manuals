@@ -1,4 +1,4 @@
-## Describe a avatar publishing workflow for portability
+# Draft:  Describe a avatar publishing workflow for portability
 
 ## Metadata
 

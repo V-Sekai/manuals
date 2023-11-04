@@ -1,4 +1,4 @@
-# Handling access to session based game data
+# Proposed: Handling access to session based game data
 
 ## Metadata
 

@@ -1,4 +1,4 @@
-# To avoid git submodule but recreate the gocd pipelines
+# Accepted: To avoid git submodule but recreate the gocd pipelines
 
 ### Describe the status of the issue.
 

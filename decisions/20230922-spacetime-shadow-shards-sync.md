@@ -1,4 +1,4 @@
-# Streamlining V-Sekai Performance
+# Proposed: Streamlining V-Sekai Performance
 
 ## Metadata
 

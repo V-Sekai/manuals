@@ -1,4 +1,4 @@
-# V-Sekai Roadmap and Goals 2023-04-20
+# Superseded: V-Sekai Roadmap and Goals 2023-04-20
 
 ### Metadata
 

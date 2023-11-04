@@ -1,4 +1,4 @@
-# Enabling VRM to Blender Conversion with Cloud GPUs and replicate.com
+# Rejected: Enabling VRM to Blender Conversion with Cloud GPUs and replicate.com
 
 ## Metadata
 

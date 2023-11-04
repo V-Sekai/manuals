@@ -1,4 +1,4 @@
-# Use junit xml based tests in github
+# Proposed: Use junit xml based tests in github
 
 ### Metadata
 

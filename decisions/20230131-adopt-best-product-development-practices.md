@@ -1,11 +1,10 @@
-# Adopt best practices for product development
+# Proposed: Adopt best practices for product development
 
 ### Metadata
 
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
-
 
 ### Context and Problem Statement
 
@@ -20,9 +19,9 @@ Toyota has a system that was designed with decades of best practices.
 1. Coordination Based on Writing
 2. Mentoring Supervisors
 3. Integrative Leaders
-4. Standard Skills 
-5. Flexible Work Standards 
-6. Living Design Standards 
+4. Standard Skills
+5. Flexible Work Standards
+6. Living Design Standards
 
 The six mechanisms that make up the quality control system are mentoring supervision, chief engineers, cross-functional communication, working instructions and standards.
 
@@ -42,7 +41,6 @@ These aspects can be incompatible with current practices.
 
 - Option: The status quo. <!-- List the proposed options no longer open for consideration. -->
 - Rejection Reason: This solves nothing. <!-- List the reasons for the rejection: (the bad traits) -->
-
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 

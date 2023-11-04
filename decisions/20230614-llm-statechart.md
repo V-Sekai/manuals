@@ -1,4 +1,4 @@
-# Increase variety and quality with generated animation trees
+# Proposed: Increase variety and quality with generated animation trees
 
 ## Metadata
 

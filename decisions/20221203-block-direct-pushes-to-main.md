@@ -1,4 +1,4 @@
-# Blocking direct push to MAIN to avoid build breakage
+# Rejected: Blocking direct push to MAIN to avoid build breakage
 
 - Status: rejected <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,lyuma,

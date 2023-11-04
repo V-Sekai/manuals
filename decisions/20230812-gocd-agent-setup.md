@@ -1,4 +1,4 @@
-# Configuring GoCD Agents in V-Sekai
+# Proposed: Configuring GoCD Agents in V-Sekai
 
 ## Metadata 
 

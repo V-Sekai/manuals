@@ -1,4 +1,4 @@
-### Connect Mediapipe to Blender
+# Proposed: Connect Mediapipe to Blender
 
 ### Context and Problem Statement
 

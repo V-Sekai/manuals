@@ -1,4 +1,4 @@
-# Port Godot Jolt from GDExtension to C++ Module
+# Proposed: Port Godot Jolt from GDExtension to C++ Module
 
 ## Metadata
 

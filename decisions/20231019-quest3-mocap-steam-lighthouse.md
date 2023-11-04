@@ -1,4 +1,4 @@
-# Valve VR Ecosystem with Quest 3
+# Proposed: Valve VR Ecosystem with Quest 3
 
 ## Metadata
 

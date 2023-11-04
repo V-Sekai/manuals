@@ -1,4 +1,4 @@
-# Use Easy Charts for observability
+# Proposed: Use Easy Charts for observability
 
 ### Metadata
 

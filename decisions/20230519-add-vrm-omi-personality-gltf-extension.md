@@ -1,4 +1,4 @@
-# Add VRM portable avatars and OMI_personality to the GLTF Transform tool
+# Proposed: Add VRM portable avatars and OMI_personality to the GLTF Transform tool
 
 ## Metadata
 

@@ -1,4 +1,4 @@
-# Defeating your fictional enemies in their blood
+# Rejected: Defeating your fictional enemies in their blood
 
 Propose a solution to enhance realism in enemy defeat simulations.
 

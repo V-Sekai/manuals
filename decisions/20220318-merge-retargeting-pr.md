@@ -1,4 +1,4 @@
-# Merge retargeting feature into Godot Engine master
+# Proposed: Merge retargeting feature into Godot Engine master
 
 ### Describe the status of the issue.
 

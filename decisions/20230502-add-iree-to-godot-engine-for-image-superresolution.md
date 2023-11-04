@@ -1,4 +1,4 @@
-# Adding IREE to Godot Engine for Image Superresolution
+# Accepted: Adding IREE to Godot Engine for Image Superresolution
 
 ### Metadata
 

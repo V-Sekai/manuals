@@ -1,4 +1,4 @@
-# A Potential Solution for V-Sekai's Identifier Assignment Challenge
+# Proposed: A Potential Solution for V-Sekai's Identifier Assignment Challenge
 
 ## Metadata
 

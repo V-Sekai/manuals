@@ -1,4 +1,4 @@
-# Possible futures
+# Proposed: Possible futures
 
 ### Metadata
 

@@ -1,4 +1,4 @@
-# Unidot is optional
+# Proposed: Unidot is optional
 
 - Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,MalekiRe

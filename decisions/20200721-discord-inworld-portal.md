@@ -1,4 +1,4 @@
-# View the worlds and interact with people in VR without being in VR via a Discord Inward Portal
+# Draft: View the worlds and interact with people in VR without being in VR via a Discord Inward Portal
 
 ## Context and Problem Statement
 

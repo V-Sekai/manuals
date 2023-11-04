@@ -1,4 +1,4 @@
-# Improving VR Experience
+# Proposed: Improving VR Experience
 
 ## Metadata
 

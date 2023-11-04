@@ -1,4 +1,4 @@
-# Separate walking controller from RenIK for ManyBoneIK
+# Accepted: Separate walking controller from RenIK for ManyBoneIK
 
 - Status: accepted <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,lyuma,

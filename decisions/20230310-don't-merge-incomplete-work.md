@@ -1,4 +1,4 @@
-# Don't merge incomplete work.
+# Proposed: Don't merge incomplete work.
 
 ### V-Sekai version
 

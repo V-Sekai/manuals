@@ -1,8 +1,8 @@
-# Completing VRM 1.0 Support and Publishing to Godot Engine Asset Library
+# Accepted: Completing VRM 1.0 Support and Publishing to Godot Engine Asset Library
 
 ## Metadata
 
-- Status: Proposed
+- Status: Accepted
 - Deciders: V-Sekai, lyuma, fire 
 - Tags: VRM, Avatars, VRM 1.0, Export, Godot Engine
 

@@ -1,4 +1,4 @@
-### Use specular vec3 from gltf to show multicoloured metals
+# Proposed: Use specular vec3 from gltf to show multicoloured metals
 
 ### Desc
 

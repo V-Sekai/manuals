@@ -1,4 +1,4 @@
-# Update V-Sekai game engine procedure
+# Proposed: Update V-Sekai game engine procedure
 
 ## Metadata
 

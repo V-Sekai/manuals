@@ -1,4 +1,4 @@
-# Navigating New Horizons: A Proposal for Expanding Exploration in V-Sekai
+# Proposed: Navigating New Horizons: A Proposal for Expanding Exploration in V-Sekai
 
 ## Metadata
 

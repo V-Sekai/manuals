@@ -1,4 +1,4 @@
-# Expanding Worlds
+# Proposed: Expanding Worlds
 
 ## Metadata
 

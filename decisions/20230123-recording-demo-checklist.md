@@ -1,4 +1,4 @@
-# Recording demo checklist
+# Proposed: Recording demo checklist
 
 ### Context and Problem Statement
 
@@ -15,7 +15,6 @@ I want to have consistency for the videos I record.
 - [ ] Does the video have a work in progress disclaimer?
 - [ ] Do I have a time code bar with V-Sekai Game prefix and a timezone suffix? https://obsproject.com/forum/resources/rtc-timecode-generator.1301/
 - [ ] Is it under 4 megabytes?
-
 
 ### Positive Consequences
 
@@ -40,7 +39,6 @@ Wanted to write down my preferences.
 ### References
 
 - [V-Sekai](https://v-sekai.org/)
-
 
 ### License of the contribution
 

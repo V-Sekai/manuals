@@ -1,4 +1,4 @@
-# How to start a EXPERIMENTAL environment for sqlite and elixir?
+# Accepted: How to start a EXPERIMENTAL environment for sqlite and elixir?
 
 ### Describe the status of the issue.
 

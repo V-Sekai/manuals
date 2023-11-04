@@ -1,4 +1,4 @@
-# Procedure to unmerge and then merge solves a V-Sekai source code broken tree
+# Proposed: Procedure to unmerge and then merge solves a V-Sekai source code broken tree
 
 ## Metadata 
 

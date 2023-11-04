@@ -1,4 +1,4 @@
-# Pmx module integration
+# Proposed: Pmx module integration
 
 ## Metadata
 

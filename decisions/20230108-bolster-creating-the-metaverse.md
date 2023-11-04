@@ -1,4 +1,4 @@
-# Bolster creating the metaverse
+# Accepted: Bolster creating the metaverse
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 

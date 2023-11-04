@@ -1,4 +1,4 @@
-# Finding ways to attract users, developers, and creators sustaining V-Sekai
+# Draft: Finding ways to attract users, developers, and creators sustaining V-Sekai
 
 ## Metadata
 

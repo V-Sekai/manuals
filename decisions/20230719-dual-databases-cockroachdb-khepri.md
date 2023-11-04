@@ -1,4 +1,4 @@
-# Game simulation server sidekick process
+# Proposed: Game simulation server sidekick process
 
 ## Metadata
 

@@ -1,4 +1,4 @@
-# Convert IK solvers to be using the AnimationTree
+# Proposed: Convert IK solvers to be using the AnimationTree
 
 ## Metadata
 

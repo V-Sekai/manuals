@@ -1,4 +1,4 @@
-# Cover 80% to 95% of the player base.
+# Proposed: Cover 80% to 95% of the player base.
 
 ### Metadata
 

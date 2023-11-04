@@ -1,4 +1,4 @@
-# Solve V-Sekai limitations using ChatGPT-4 AI completion.
+# Superseded: Solve V-Sekai limitations using ChatGPT-4 AI completion.
 
 ## Metadata
 

@@ -1,4 +1,4 @@
-# Have two groups move towards each other battle demo
+# Proposed: Have two groups move towards each other battle demo
 
 ### Metadata
 

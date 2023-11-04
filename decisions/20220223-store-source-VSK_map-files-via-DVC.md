@@ -1,5 +1,5 @@
 ---
-title: Storing raw VSK_map files via DVC to avoid limitations
+title: Rejected: Storing raw VSK_map files via DVC to avoid limitations
 categories:
   - pipeline
   - V-Sekai

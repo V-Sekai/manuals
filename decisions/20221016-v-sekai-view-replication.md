@@ -1,4 +1,4 @@
-# Use view replication algorithm for multiplayer multirelay sync
+# Rejected: Use view replication algorithm for multiplayer multirelay sync
 
 - Status: rejected
 - Deciders: V-Sekai,fire,

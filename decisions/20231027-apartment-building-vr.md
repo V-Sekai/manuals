@@ -1,4 +1,4 @@
-# Build a Cozy Apartment in VR for V-Sekai
+# Proposed: Build a Cozy Apartment in VR for V-Sekai
 
 ## Metadata
 

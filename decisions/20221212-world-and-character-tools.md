@@ -1,4 +1,4 @@
-# Tools helpful for creating Avatars and Worlds
+# Proposed: Tools helpful for creating Avatars and Worlds
 
 - Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,

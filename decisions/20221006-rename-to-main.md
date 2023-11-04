@@ -1,4 +1,4 @@
-# Rename master to godot3 and main to godot4
+# Proposed: Rename master to godot3 and main to godot4
 
 - Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,lyuma,fire

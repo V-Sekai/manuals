@@ -1,4 +1,4 @@
-# Solve Renik directly rather than through many bone ik
+# Proposed: Solve Renik directly rather than through many bone ik
 
 ## Metadata
 

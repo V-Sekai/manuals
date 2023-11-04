@@ -1,4 +1,4 @@
-# Make a market booth creation tutorial.
+# Proposed: Make a market booth creation tutorial.
 
 ### Context and Problem Statement
 
