@@ -14,8 +14,6 @@ To prevent scene corruption after merging, the Godot Editor should provide a mer
 
 The merge tool should be intelligent enough to detect node movements, renaming, and other complex scene semantics. It should also allow users to edit the merged scene before saving it.
 
-![Merge Scene Tool Example](attachments/merge-scene-tool.gif)
-
 ### FlatBuffer-based JSON Serialization for Merge Tool State
 
 To ensure efficient serialization of the internal state of the merge tool at the start, in between, and at the end, FlatBuffer-based JSON should be used. This will allow for faster processing and better performance while maintaining human-readability.
