@@ -43,5 +43,5 @@ This project does not adhere to [Semantic Versioning](https://semver.org/spec/v2
 
 - Shaders or MonoBehaviors/scripts are not currently supported. This will not be part of the initial release. The goal for now is scene / character / animation conversion.
 - AnimationTree uses the standalone runtime/anim_tree.gd script as a blackboard system to simulate unity parameters. This file should remain.
-
-[Unidot Importer Github Link](https://github.com/V-Sekai/Unidot_Importer)
+- [Unidot Importer Github Link](https://github.com/V-Sekai/Unidot_Importer)
+- A wild spooky dev snapshot appears! 👻 🎃 Contributors are making great progress on solving regressions in Godot 4.2! This new 4.2 beta 4 should be significantly more stable and reliable to upgrade 4.1 projects (not perfect yet though!). [Godot Engine Dev snapshot: Godot 4.2 beta 4](https://godotengine.org/article/dev-snapshot-godot-4-2-beta-4/) We continue iterating quickly on beta snapshots for Godot 4.2 to ensure that we can solve regressions before the stable release.
