@@ -4,12 +4,18 @@
 
 ### Added
 
-- Unidot now no longer depends on the post-import script after conversion is complete. This means the converted assets will work standalone without unidot importer with one exception\*.
-- Supported asset types are listed in the readme, but basically it should support many types of meshes, animations, Standard shader materials, scenes/prefabs and physics objects.
+- **MacOS Editor Builds**: MacOS editor builds have been added to the project. ([Commit: df041f0](https://github.com/V-Sekai/v-sekai-game/commit/df041f0))
+- **Export Mac Game**: The game can now be exported for Mac. ([Commit: ea069e7](https://github.com/V-Sekai/v-sekai-game/commit/ea069e7))
+- **Golang Installation**: Golang has been installed in the project. ([Commit: c25456b](https://github.com/V-Sekai/v-sekai-game/commit/c25456b))
+- **Unidot Dependency Removal**: The dependency on the post-import script by Unidot has been removed after conversion is complete. This means the converted assets will work standalone without the Unidot importer, with one exception\*.
+- **Supported Asset Types**: Supported asset types are listed in the readme. It should support many types of meshes, animations, Standard shader materials, scenes/prefabs and physics objects.
 
 ### Changed
 
-- Unidot is now considered to be in a beta / early RC for the first release.
+- **Game Name Variable**: A game name variable has been implemented on Github Actions. ([Commit: 08d87db](https://github.com/V-Sekai/v-sekai-game/commit/08d87db))
+- **Godot Engine Repository Update**: The Godot engine repository and reference in build workflows have been updated. ([Commit: f7f609d](https://github.com/V-Sekai/v-sekai-game/commit/f7f609d))
+- **Imports Update**: Imports in the project have been updated. ([Commit: 896cb7c](https://github.com/V-Sekai/v-sekai-game/commit/896cb7c))
+- **Unidot Beta Release**: Unidot is now in a beta / early RC for the first release.
 
 ### Fixed
 
@@ -25,7 +31,7 @@
 
 ### Security
 
-- Not applicable for this month.
+- **Security Best Practices**: Applied security best practices as recommended by StepSecurity. ([Commit: d641001](https://github.com/V-Sekai/v-sekai-game/commit/d641001))
 
 This project does not adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
