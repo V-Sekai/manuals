@@ -1,4 +1,4 @@
-# Have an WebXR version of V-Sekai that is more accessible
+# Rejected: Have an WebXR version of V-Sekai that is more accessible
 
 - Status: rejected <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,

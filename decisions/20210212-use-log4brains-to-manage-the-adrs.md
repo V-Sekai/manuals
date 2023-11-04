@@ -1,4 +1,4 @@
-# Use Log4brains to manage the ADRs
+# Superseded: Use Log4brains to manage the ADRs
 
 - Status: superseded
 - Date: 2021-02-11

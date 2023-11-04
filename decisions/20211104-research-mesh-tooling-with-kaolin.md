@@ -1,4 +1,4 @@
-# Research mesh tooling with kaolin
+# Draft: Research mesh tooling with kaolin
 
 - Status: draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,

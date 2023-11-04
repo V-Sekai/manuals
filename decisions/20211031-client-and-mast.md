@@ -1,4 +1,4 @@
-# Client and Mast
+# Proposed: Client and Mast
 
 ### Context and Problem Statement
 

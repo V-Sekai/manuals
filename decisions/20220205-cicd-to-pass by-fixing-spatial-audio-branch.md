@@ -1,4 +1,4 @@
-# Allow cicd to pass by fixing spatial audio branch
+# Accepted: Allow cicd to pass by fixing spatial audio branch
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,

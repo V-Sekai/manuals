@@ -1,4 +1,4 @@
-# Research mesh tooling with nglod
+# Draft: Research mesh tooling with nglod
 
 - Status: draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,

@@ -1,4 +1,4 @@
-# Play preprocessed #animation on any VRM model
+# Superseded: Play preprocessed #animation on any VRM model
 
 Superseded
 

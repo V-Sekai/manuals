@@ -1,4 +1,4 @@
-# Use single player WebXR in Godot Engine to prototype CASSIE.
+# Draft: Use single player WebXR in Godot Engine to prototype CASSIE.
 
 - Status: draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire

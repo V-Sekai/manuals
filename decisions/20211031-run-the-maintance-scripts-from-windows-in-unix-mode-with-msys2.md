@@ -1,4 +1,4 @@
-# Run the maintenance scripts from Windows in Unix mode with msys2
+# Proposed: Run the maintenance scripts from Windows in Unix mode with msys2
 
 - Status: proposed <-- draft | rejected | accepted | deprecated | superseded by -->
 

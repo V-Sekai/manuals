@@ -1,4 +1,4 @@
-# Convert FBX and glTF2 to VRM via flow-avatar-asset-pipeline
+# Proposed: Convert FBX and glTF2 to VRM via flow-avatar-asset-pipeline
 
 ## Context and Problem Statement
 

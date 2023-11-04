@@ -1,4 +1,4 @@
-# Use KVM to test our AMD APU test computer via Barrier.
+# Proposed: Use KVM to test our AMD APU test computer via Barrier.
 
 ### Context and Problem Statement
 

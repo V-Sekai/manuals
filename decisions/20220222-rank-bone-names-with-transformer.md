@@ -1,4 +1,4 @@
-# Rank skeleton #bone names with transformer4rec
+# Accepted: Rank skeleton #bone names with transformer4rec
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 

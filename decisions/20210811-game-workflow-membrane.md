@@ -1,4 +1,4 @@
-# Membrane Framework to Process Game Workflows
+# Proposed: Membrane Framework to Process Game Workflows
 
 ### Context and Problem Statement
 

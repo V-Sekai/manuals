@@ -1,4 +1,4 @@
-# Convert gltf to a scene with AudioStreamPlayer3D, convert AudiostreamPlayer3D to gltf and expose usability.
+# Accepted: Convert gltf to a scene with AudioStreamPlayer3D, convert AudiostreamPlayer3D to gltf and expose usability.
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,lyuma,

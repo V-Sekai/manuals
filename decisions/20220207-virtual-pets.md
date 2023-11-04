@@ -1,4 +1,4 @@
-# To make a virtual pet game given Jeana's designs
+# Accepted: To make a virtual pet game given Jeana's designs
 
 - Status: accepted
 - Deciders: V-Sekai,ifire,Jeana,lyuma,

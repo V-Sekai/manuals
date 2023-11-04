@@ -1,4 +1,4 @@
-# Performance profile the game with AMDuProf
+# Proposed: Performance profile the game with AMDuProf
 
 ## Context and Problem Statement
 

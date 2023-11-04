@@ -1,4 +1,4 @@
-# Complete glTF2 / VRM import and export pipeline in Godot Engine
+# Accepted: Complete glTF2 / VRM import and export pipeline in Godot Engine
 
 ## Context and Problem Statement
 

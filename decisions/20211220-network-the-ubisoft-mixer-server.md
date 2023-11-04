@@ -1,4 +1,4 @@
-# Network the Ubisoft Mixer server
+# Rejected: Network the Ubisoft Mixer server
 
 - Status: rejected <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,

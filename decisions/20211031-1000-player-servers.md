@@ -1,4 +1,4 @@
-# 1000 player servers
+# Proposed: 1000 player servers
 
 ### Context and Problem Statement
 

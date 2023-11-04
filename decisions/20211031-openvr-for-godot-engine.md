@@ -1,4 +1,4 @@
-# OpenVR for Godot Engine
+# Rejected: OpenVR for Godot Engine
 
 ### Context and Problem Statement
 

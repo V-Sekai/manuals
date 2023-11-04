@@ -1,4 +1,4 @@
-# Allow Godot Asset Library browser to use alternative sources
+# Proposed: Allow Godot Asset Library browser to use alternative sources
 
 - Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,

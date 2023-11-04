@@ -1,4 +1,4 @@
-# Avoid avatar breaking by following quality checklist
+# Accepted: Avoid avatar breaking by following quality checklist
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,

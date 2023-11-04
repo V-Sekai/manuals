@@ -1,4 +1,4 @@
-# Log change notifications using DiscordChatExporter
+# Proposed: Log change notifications using DiscordChatExporter
 
 - Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,

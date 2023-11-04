@@ -1,4 +1,4 @@
-# Spoke to V-Sekai
+# Proposed: Spoke to V-Sekai
 
 ### Context and Problem Statement
 

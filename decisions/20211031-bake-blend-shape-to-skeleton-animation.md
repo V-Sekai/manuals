@@ -1,4 +1,4 @@
-# Bake blend shape to skeleton animation
+# Proposed: Bake blend shape to skeleton animation
 
 ### Context and Problem Statement
 

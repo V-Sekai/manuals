@@ -1,4 +1,4 @@
-# Support more flexible texture import via Basis Universal in Godot Engine
+# Accepted: Support more flexible texture import via Basis Universal in Godot Engine
 
 ## Context and Problem Statement
 

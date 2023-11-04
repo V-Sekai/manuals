@@ -1,4 +1,4 @@
-# Create a standard procedure from adding spring bones to VRM models.
+# Proposed: Create a standard procedure from adding spring bones to VRM models.
 
 ## Context and Problem Statement
 

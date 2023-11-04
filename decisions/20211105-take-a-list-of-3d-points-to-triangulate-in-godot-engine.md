@@ -1,4 +1,4 @@
-# Take a list of 3D points that form a vaguely closed boundary in space and triangulate in Godot Engine
+# Accepted: Take a list of 3D points that form a vaguely closed boundary in space and triangulate in Godot Engine
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,em-yu

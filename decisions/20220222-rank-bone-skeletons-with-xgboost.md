@@ -1,4 +1,4 @@
-# Rank skeleton #bone names with xgboost
+# Accepted: Rank skeleton #bone names with xgboost
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 

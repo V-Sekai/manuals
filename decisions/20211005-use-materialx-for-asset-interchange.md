@@ -1,4 +1,4 @@
-# Use #materialx for asset interchange
+# Proposed: Use materialx for asset interchange
 
 ### Context and Problem Statement
 

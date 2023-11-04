@@ -1,4 +1,4 @@
-# Soiree party mode
+# Proposed: Soiree party mode
 
 ### Context and Problem Statement
 

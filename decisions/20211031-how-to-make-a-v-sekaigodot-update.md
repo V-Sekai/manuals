@@ -1,4 +1,4 @@
-# How to make a V-Sekai/godot update?
+# Proposed: How to make a V-Sekai/godot update?
 
 ### Context and Problem Statement
 

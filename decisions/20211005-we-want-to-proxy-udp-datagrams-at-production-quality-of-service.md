@@ -1,4 +1,4 @@
-# We want to proxy udp datagrams at production quality of service.
+# Proposed: We want to proxy udp datagrams at production quality of service.
 
 ### Context and Problem Statement
 

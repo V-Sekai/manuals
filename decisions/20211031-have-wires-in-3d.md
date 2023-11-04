@@ -1,4 +1,4 @@
-# Have wires in 3d
+# Proposed: Have wires in 3d
 
 ### Context and Problem Statement
 

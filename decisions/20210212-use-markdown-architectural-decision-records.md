@@ -1,4 +1,4 @@
-# Use Markdown Architectural Decision Records
+# Accepted: Use Markdown Architectural Decision Records
 
 - Status: accepted
 - Date: 2021-02-11

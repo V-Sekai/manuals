@@ -1,4 +1,4 @@
-# Create a demo viewer gallery
+# Proposed: Create a demo viewer gallery
 
 ## Context and Problem Statement
 

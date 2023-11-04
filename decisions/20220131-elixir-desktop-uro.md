@@ -1,4 +1,4 @@
-# Make a desktop version of Uro for ease of development.
+# Proposed: Make a desktop version of Uro for ease of development.
 
 - Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,

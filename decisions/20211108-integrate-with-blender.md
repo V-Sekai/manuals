@@ -1,4 +1,4 @@
-# Integrate with blender
+# Proposed: Integrate with blender
 
 - Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,

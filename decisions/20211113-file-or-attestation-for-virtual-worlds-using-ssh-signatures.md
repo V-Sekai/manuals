@@ -1,4 +1,4 @@
-# File or attestation for virtual worlds using ssh signatures
+# Rejected: File or attestation for virtual worlds using ssh signatures
 
 - Status: rejected <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,

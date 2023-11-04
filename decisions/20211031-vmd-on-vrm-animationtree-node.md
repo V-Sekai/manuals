@@ -1,4 +1,4 @@
-# VMD on VRM AnimationTree Node
+# Draft: VMD on VRM AnimationTree Node
 
 ### Context and Problem Statement
 

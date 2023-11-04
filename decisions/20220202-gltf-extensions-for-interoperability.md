@@ -1,4 +1,4 @@
-# Interoperability between platforms using gltf extensions
+# Accepted: Interoperability between platforms using gltf extensions
 
 - Status: accepted
 - Deciders: V-Sekai,fire,lyuma,humbletim,codefloof,

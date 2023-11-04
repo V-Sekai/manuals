@@ -1,6 +1,6 @@
-# Run meetings using Lean Coffee
+# Acceptd: Run meetings using Lean Coffee
 
-- Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
+- Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,Mr. Metaverse,fire,
 - Tags: V-Sekai,
 

@@ -1,4 +1,4 @@
-# For Godot Engine changes use a decision flowchart
+# Accepted: For Godot Engine changes use a decision flowchart
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,lyuma,

@@ -1,4 +1,4 @@
-# Godot Engine implementation of disconnected IPFS
+# Proposed: Godot Engine implementation of disconnected IPFS
 
 ### Context and Problem Statement
 

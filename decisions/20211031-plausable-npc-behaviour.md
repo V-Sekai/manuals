@@ -1,4 +1,4 @@
-# Plausable npc behaviour
+# Proposed: Plausable npc behaviour
 
 ### Context and Problem Statement
 

@@ -1,4 +1,4 @@
-# Polish demo of V-Sekai by making invisible meshes appear via the use of the exporter.
+# Proposed: Polish demo of V-Sekai by making invisible meshes appear via the use of the exporter.
 
 - Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,

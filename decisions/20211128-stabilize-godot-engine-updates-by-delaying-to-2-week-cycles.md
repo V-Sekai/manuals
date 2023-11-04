@@ -1,4 +1,4 @@
-# Stabilize Godot Engine updates by delaying to 2 week cycles
+# Accepted: Stabilize Godot Engine updates by delaying to 2 week cycles
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,

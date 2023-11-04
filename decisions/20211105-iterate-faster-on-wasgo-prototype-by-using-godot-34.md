@@ -1,4 +1,4 @@
-# Iterate faster on WasGo prototype by using Godot 3.4
+# Rejected: Iterate faster on WasGo prototype by using Godot 3.4
 
 - Status: rejected <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,

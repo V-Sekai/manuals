@@ -1,4 +1,4 @@
-# To deploy backend services like Uro safely use a defined process
+# Proposed: To deploy backend services like Uro safely use a defined process
 
 - Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,

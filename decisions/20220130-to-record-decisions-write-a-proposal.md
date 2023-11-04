@@ -1,4 +1,4 @@
-# To record decisions write a proposal.
+# Accepted: To record decisions write a proposal.
 
 - Status: accepted
 - Deciders: V-Sekai,ifire,

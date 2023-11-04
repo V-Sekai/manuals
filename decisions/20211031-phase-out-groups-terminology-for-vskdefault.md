@@ -1,4 +1,4 @@
-# Phase out groups in the branding to make it more recognizable
+# Proposed: Phase out groups in the branding to make it more recognizable
 
 ## Context and Problem Statement
 

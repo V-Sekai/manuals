@@ -1,4 +1,4 @@
-# Create Steamdeck hardware proxy by installing Fedora Silverblue and #steam
+# Rejected: Create Steamdeck hardware proxy by installing Fedora Silverblue and #steam
 
 - Status: rejected <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,

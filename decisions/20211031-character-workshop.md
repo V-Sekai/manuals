@@ -1,4 +1,4 @@
-# Character workshop
+# Proposed: Character workshop
 
 ### Context and Problem Statement
 

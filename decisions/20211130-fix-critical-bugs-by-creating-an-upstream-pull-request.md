@@ -1,4 +1,4 @@
-# Create an upstream pull request for all non-V-Sekai related patches
+# Accepted: Create an upstream pull request for all non-V-Sekai related patches
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,lyuma,

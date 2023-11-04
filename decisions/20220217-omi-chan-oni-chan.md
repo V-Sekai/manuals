@@ -1,4 +1,4 @@
-# To create omi chan rig a \#256FES
+# Accepted: To create omi chan rig a \#256FES
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,jeana,fire,

@@ -1,4 +1,4 @@
-# Meeting area
+# Proposed: Meeting area
 
 ### Context and Problem Statement
 

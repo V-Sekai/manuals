@@ -1,4 +1,4 @@
-# Create a VRM character by experimenting with written workflows.
+# Draft: Create a VRM character by experimenting with written workflows.
 
 - Status: draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,

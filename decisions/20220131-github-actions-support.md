@@ -1,6 +1,6 @@
-# To have an alternative CICD use Github Actions.
+# Accepted: To have an alternative CICD use Github Actions.
 
-- Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
+- Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
 

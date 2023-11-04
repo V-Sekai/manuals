@@ -1,4 +1,4 @@
-# To make it easier to upload V-Sekai maps and Avatars use Godot Engine 4 script templates.
+# Accepted: To make it easier to upload V-Sekai maps and Avatars use Godot Engine 4 script templates.
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,saracen

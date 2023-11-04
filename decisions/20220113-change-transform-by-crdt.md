@@ -1,4 +1,4 @@
-# Change transform by CRDT.
+# Proposal: Change transform by CRDT.
 
 - Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,

@@ -1,4 +1,4 @@
-# Create an open metaverse by working on V-Sekai
+# Accepted: Create an open metaverse by working on V-Sekai
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,lyuma,fire,MrMetaverse,

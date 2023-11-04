@@ -1,4 +1,4 @@
-# Distribute trusted clients with notary
+# Proposed: Distribute trusted clients with notary
 
 ## Context and Problem Statement
 

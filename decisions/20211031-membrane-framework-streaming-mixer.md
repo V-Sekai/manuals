@@ -1,4 +1,4 @@
-# Membrane Framework streaming Mixer
+# Proposed: Membrane Framework streaming Mixer
 
 ### Context and Problem Statement
 

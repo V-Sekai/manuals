@@ -1,4 +1,4 @@
-# Extract proposals into proposals
+# Proposed: Extract proposals into proposals
 
 ### Context and Problem Statement
 

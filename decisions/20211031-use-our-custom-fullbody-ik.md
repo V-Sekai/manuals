@@ -1,4 +1,4 @@
-# Use our custom fullbody IK
+# Accepted: Use our custom fullbody IK
 
 ### Context and Problem Statement
 

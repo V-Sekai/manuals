@@ -1,4 +1,4 @@
-# To allow independent deployment run our own infrastructure
+# Rejected: To allow independent deployment run our own infrastructure
 
 - Status: rejected <!-- proposed | draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,

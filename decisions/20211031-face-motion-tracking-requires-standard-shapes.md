@@ -1,4 +1,4 @@
-# Face motion tracking requires standard shapes
+# Proposed: Face motion tracking requires standard shapes
 
 ### Context and Problem Statement
 

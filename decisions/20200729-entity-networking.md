@@ -1,4 +1,4 @@
-# Adding Entity Networking to Groups
+# Accepted: Adding Entity Networking to Groups
 
 - Status: accepted
 - Deciders: V-Sekai,Lyuma,SaracenOne

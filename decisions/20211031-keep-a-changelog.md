@@ -1,4 +1,4 @@
-# Keep a changelog
+# Accepted: Keep a changelog
 
 - Status: accepted
 
