@@ -1,4 +1,4 @@
-# AProposed: Address Screen Resolution Compatibility Issues
+# Proposed: Address Screen Resolution Compatibility Issues
 
 ## Metadata
 
