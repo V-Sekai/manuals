@@ -1,4 +1,4 @@
-# Merge Scene Tool for Godot Editor with FlatBuffer-based JSON Serialization
+# Rejected: Merge Scene Tool for Godot Editor with FlatBuffer-based JSON Serialization
 
 ## Problem: Merging Scenes in Collaborative Projects
 
