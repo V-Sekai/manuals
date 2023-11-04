@@ -1,15 +1,19 @@
----
-title: Rejected: Storing raw VSK_map files via DVC to avoid limitations
-categories:
-  - pipeline
-  - V-Sekai
-status:
-  - rejected <!-- draft | rejected | accepted | deprecated | superseded by -->
-deciders:
-  - V-Sekai
-  - ifire
-  - lyuma
----
+# Rejected: Storing raw VSK_map files via DVC to avoid limitations
+
+## Categories:
+
+- pipeline
+- V-Sekai
+
+## Status:
+
+- rejected <!-- draft | rejected | accepted | deprecated | superseded by -->
+
+## Deciders:
+
+- V-Sekai
+- ifire
+- lyuma
 
 ## Context and Problem Statement
 
