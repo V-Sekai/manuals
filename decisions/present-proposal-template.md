@@ -1,4 +1,4 @@
-# Overcoming a V-Sekai limit with Documentation
+# Proposed: Overcoming a V-Sekai limit with Documentation
 
 ## Metadata
 
