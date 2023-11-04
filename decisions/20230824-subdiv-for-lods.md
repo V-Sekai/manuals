@@ -1,4 +1,4 @@
-# Accepted: Use opensubdiv for lods
+# Accepted: Use opensubdiv for level of detail
   
 ## Metadata  
   
