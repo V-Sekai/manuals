@@ -6,7 +6,7 @@
 
 - **Release Version**: 0.1.0-rc1
 - **Changes**: The game name environment variable has been updated in the build workflow. A new commit was also made to set the draft flag to false for the release.
-- [Release Link](https://github.com/V-Sekai/xr-grid/releases/tag/0.1.0-rc1)
+- [Release Link](https://github.com/V-Sekai/V-Sekai.xr-grid/releases/tag/0.1.0-rc1)
 
 ### model_explorer
 
