@@ -1,5 +1,19 @@
 # V-Sekai Changelog - November 2023
 
+## [Released]
+
+### xr-grid
+
+- **Release Version**: 0.1.0-rc1
+- **Changes**: The game name environment variable has been updated in the build workflow. A new commit was also made to set the draft flag to false for the release.
+- [Release Link](https://github.com/V-Sekai/xr-grid/releases/tag/0.1.0-rc1)
+
+### model_explorer
+
+- **Release Version**: v0.2.0-rc1
+- **Changes**: The GAME_NAME environment variable value has been changed to "vsekai_model_explorer_". The macos_editor_macos_deploy job from builds.yml has been removed. A README.md for GitHub actions has been added and the warning has been moved to the top of the file.
+- [Release Link](https://github.com/V-Sekai/TOOL_model_explorer/releases/tag/v0.2.0-rc1)
+
 ## [Unreleased]
 
 ### Added
