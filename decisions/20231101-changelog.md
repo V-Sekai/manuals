@@ -16,9 +16,9 @@ V-Sekai.xr-grid is a VR interaction tool.
 V-Sekai Model Explorer is a 3D model viewer built with Godot 4. It supports various model formats like VRM and glTF 2.0. With this tool, you can dive deep into the components of a 3D model - inspecting meshes, materials, textures, and animations.
 
 - **First release**
-- **Release Version**: v0.2.0-rc1
+- **Release Version**: v0.2.0-rc2
 - **Changes**: The GAME_NAME environment variable value has been changed to "vsekai_model_explorer_". The macos_editor_macos_deploy job from builds.yml has been removed. A README.md for GitHub actions has been added and the warning has been moved to the top of the file.
-- [Release Link](https://github.com/V-Sekai/TOOL_model_explorer/releases/tag/v0.2.0-rc1)
+- [Release Link](https://github.com/V-Sekai/TOOL_model_explorer/releases/tag/v0.2.0-rc2)
 
 ## [Unreleased]
 
