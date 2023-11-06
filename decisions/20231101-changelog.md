@@ -29,6 +29,7 @@ V-Sekai Model Explorer is a 3D model viewer built with Godot 4. It supports vari
 - **Golang Installation**: Golang has been installed in the project. ([Commit: c25456b](https://github.com/V-Sekai/v-sekai-game/commit/c25456b))
 - **Unidot Dependency Removal**: The dependency on the post-import script by Unidot has been removed after conversion is complete. This means the converted assets will work standalone without the Unidot importer, with one exception\*.
 - **Supported Asset Types**: Supported asset types are listed in the readme. It should support many types of meshes, animations, Standard shader materials, scenes/prefabs and physics objects.
+- **Optimization for Generating Tangents in Mikktspace:** An optimization has been added for generating tangents in mikktspace. ([Pull Request #83648](https://github.com/godotengine/godot/pull/83648/files))
 
 ### Changed
 
