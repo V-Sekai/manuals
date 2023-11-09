@@ -6,11 +6,9 @@ We've worked on many projects for Godot, including support for the VRM virtual c
 
 Our journey had its challenges. For instance, our booth at Virtual Market 6, one of the world's largest virtual conventions, was removed two days after opening due to alleged violations of VRChat, Inc.’s terms of service. But this setback only strengthened our resolve and highlighted the need for open solutions in the social VR space.
 
-```markdown
 | Note 🌍                                                                                                                                                                                                                                                                              |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | The name "V-Sekai" is short, memorable, and aligns well with our project's focus on virtual reality (VR). In Japanese, "Sekai" means "World", so the name can be interpreted as "Virtual World". This reflects our mission to create immersive and interactive virtual environments. |
-```
 
 Today, V-Sekai has grown into a global community of open technology enthusiasts who are committed to advancing open standards and open-source software for virtual worlds. We continue to welcome others who share our values to join us and contribute to the future of open-source VR technology.
 
@@ -25,7 +23,6 @@ Today, V-Sekai has grown into a global community of open technology enthusiasts 
 7. **Organize**: Issues [here](https://github.com/V-Sekai/v-sekai-game/issues).
 8. **Contact**: SaracenOne, Lyuma, or Fire.
 
-```markdown
 | Note 🌍 |
 | :------ |
 
@@ -36,7 +33,6 @@ Here's how to pronounce "V-Sekai":
 - **Kai**: Sounds like 'sky' without the 's'. Rhymes with 'tie', 'buy', and 'lie'.
 
 So, when you put it all together, it sounds like: "Vee-Say-Kai".
-```
 
 # Meetings
 
