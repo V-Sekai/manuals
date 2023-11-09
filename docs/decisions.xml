@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Thu, 09 Nov 2023 03:46:35 GMT</lastBuildDate>
+<lastBuildDate>Thu, 09 Nov 2023 04:14:19 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -65,7 +65,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Thu, 09 Nov 2023 03:46:35 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 04:14:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -135,7 +135,89 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-nier-automata-world-expansion.html</guid>
-  <pubDate>Thu, 09 Nov 2023 03:46:35 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 04:14:19 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20231108-ansible-new-server-provisioning.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="proposed-ansible-server-provisioning" class="level1">
+<h1>Proposed: Ansible Server Provisioning</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: Proposed</li>
+<li>Deciders: V-Sekai</li>
+<li>Tags: V-Sekai</li>
+</ul>
+</section>
+<section id="the-backdrop" class="level2">
+<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
+<p>In the world of DevOps, server provisioning is a critical task. It involves setting up a server to a particular specification. This includes installing an operating system, software packages, and configuring settings.</p>
+</section>
+<section id="the-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
+<p>The challenge lies in choosing the right configuration management tool for a small project. Factors such as ease of use, scalability, and community support are crucial.</p>
+</section>
+<section id="the-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
+<p>Based on these parameters, <strong>Ansible</strong> emerges as a strong contender. Its simple syntax written in YAML makes it easy to understand even for those new to automation. Being agentless, it’s easier to manage and scale. Moreover, Ansible has a large and active community, providing plenty of resources and support.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Sample Ansible playbook</span></span>
+<span id="cb1-2"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">---</span></span>
+<span id="cb1-3"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> hosts: webservers</span>
+<span id="cb1-4">  tasks:</span>
+<span id="cb1-5">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> name: ensure apache <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">is</span> at the latest version</span>
+<span id="cb1-6">      yum:</span>
+<span id="cb1-7">        name: httpd</span>
+<span id="cb1-8">        state: latest</span></code></pre></div>
+</section>
+<section id="the-upside" class="level2">
+<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
+<p>Choosing Ansible can simplify server provisioning due to its simplicity and ease of use. It doesn’t require any special coding skills, making it accessible for beginners.</p>
+</section>
+<section id="the-downside" class="level2">
+<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
+<p>While Ansible is powerful and user-friendly, it may not be as feature-rich as some other tools like Chef or Puppet. However, for a small project, this might not be a significant concern.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>Other tools like Chef, Puppet, and SaltStack were also considered. While they all have their strengths, they may not be as beginner-friendly as Ansible.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>For complex infrastructures or specific use cases, other tools might be more suitable. It’s always a good idea to try out different tools before making a decision.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
+<p>The decision to use Ansible for server provisioning is proposed by V-Sekai.</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://github.com/v-sekai/">V-Sekai</a></li>
+</ul>
+<p>This article was assisted by Aria, an AI.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20231108-ansible-new-server-provisioning.html</guid>
+  <pubDate>Thu, 09 Nov 2023 04:14:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -199,7 +281,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231105-pdf-embed-raster-svg-vr.html</guid>
-  <pubDate>Thu, 09 Nov 2023 03:46:35 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 04:14:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -257,7 +339,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231104-flatbuffer_packed_scenes.html</guid>
-  <pubDate>Thu, 09 Nov 2023 03:46:35 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 04:14:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -360,7 +442,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231101-changelog.html</guid>
-  <pubDate>Thu, 09 Nov 2023 03:46:35 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 04:14:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -965,7 +1047,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231027-write-a-list-of-github-pull-requests.html</guid>
-  <pubDate>Thu, 09 Nov 2023 03:46:35 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 04:14:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1038,7 +1120,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231027-dreamcraft3d-workflow.html</guid>
-  <pubDate>Thu, 09 Nov 2023 03:46:35 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 04:14:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1108,7 +1190,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231027-drawing-concept-to-blockout.html</guid>
-  <pubDate>Thu, 09 Nov 2023 03:46:35 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 04:14:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1178,7 +1260,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231027-apartment-building-vr.html</guid>
-  <pubDate>Thu, 09 Nov 2023 03:46:35 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 04:14:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1246,7 +1328,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231026-blender-steam-beta-version.html</guid>
-  <pubDate>Thu, 09 Nov 2023 03:46:35 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 04:14:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1310,7 +1392,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231024-training-simulators.html</guid>
-  <pubDate>Thu, 09 Nov 2023 03:46:35 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 04:14:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1380,7 +1462,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231024-finetuning-workflow.html</guid>
-  <pubDate>Thu, 09 Nov 2023 03:46:35 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 04:14:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1439,7 +1521,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231022-hover-to-ocean-game.html</guid>
-  <pubDate>Thu, 09 Nov 2023 03:46:35 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 04:14:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1511,7 +1593,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231020-llama-cpp-mistral-npc.html</guid>
-  <pubDate>Thu, 09 Nov 2023 03:46:35 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 04:14:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1576,7 +1658,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231019-quest3-mocap-steam-lighthouse.html</guid>
-  <pubDate>Thu, 09 Nov 2023 03:46:35 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 04:14:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1666,7 +1748,7 @@ font-style: inherit;">./extract.sh</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231001-changelog.html</guid>
-  <pubDate>Thu, 09 Nov 2023 03:46:35 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 04:14:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1738,7 +1820,7 @@ font-style: inherit;">./extract.sh</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230922-spacetime-shadow-shards-sync.html</guid>
-  <pubDate>Thu, 09 Nov 2023 03:46:35 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 04:14:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1829,7 +1911,7 @@ font-style: inherit;">".xml"</span></span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230920-godot-project-search.html</guid>
-  <pubDate>Thu, 09 Nov 2023 03:46:35 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 04:14:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1918,78 +2000,7 @@ font-style: inherit;">".xml"</span></span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20230913-V-Sekai-bugs.html</guid>
-  <pubDate>Thu, 09 Nov 2023 03:46:35 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20230912-target-most-popular-resolution.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="proposed-address-screen-resolution-compatibility-issues" class="level1">
-<h1>Proposed: Address Screen Resolution Compatibility Issues</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li><strong>Status:</strong> Proposed</li>
-<li><strong>Deciders:</strong> V-Sekai</li>
-<li><strong>Tags:</strong> V-Sekai</li>
-</ul>
-</section>
-<section id="context-and-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
-<p>Several users, including Lyuma, have reported that their monitors are not compatible with the V-Sekai menu system. This issue is causing a significant hindrance in the user experience.</p>
-</section>
-<section id="decision-drivers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-drivers">Decision Drivers</h2>
-<ul>
-<li>User satisfaction</li>
-<li>Compatibility with various screen resolutions</li>
-</ul>
-</section>
-<section id="considered-options" class="level2">
-<h2 class="anchored" data-anchor-id="considered-options">Considered Options</h2>
-<ol type="1">
-<li>Leave as is</li>
-<li>Set V-Sekai’s screen resolution to fit the default resolution of the Valve hardware survey’s most popular resolution.</li>
-</ol>
-</section>
-<section id="decision-outcome" class="level2">
-<h2 class="anchored" data-anchor-id="decision-outcome">Decision Outcome</h2>
-<p>Chosen option: “Set V-Sekai’s screen resolution to fit the default resolution of the Valve hardware survey’s most popular resolution.”, because it will increase compatibility and improve user experience.</p>
-</section>
-<section id="pros-and-cons-of-the-options" class="level2">
-<h2 class="anchored" data-anchor-id="pros-and-cons-of-the-options">Pros and Cons of the Options</h2>
-<section id="setting-v-sekais-screen-resolution-to-fit-the-default-resolution-of-the-valve-hardware-surveys-most-popular-resolution" class="level3">
-<h3 class="anchored" data-anchor-id="setting-v-sekais-screen-resolution-to-fit-the-default-resolution-of-the-valve-hardware-surveys-most-popular-resolution">Setting V-Sekai’s Screen Resolution to Fit the Default Resolution of the Valve Hardware Survey’s Most Popular Resolution</h3>
-<ul>
-<li>Good, because it increases compatibility with the majority of users’ monitors.</li>
-<li>Bad, because it may not cover all possible monitor resolutions, leaving some users still facing issues.</li>
-</ul>
-</section>
-<section id="leaving-as-is" class="level3">
-<h3 class="anchored" data-anchor-id="leaving-as-is">Leaving as Is</h3>
-<ul>
-<li>Good, because it requires no additional work or changes.</li>
-<li>Bad, because it does not solve the problem and leaves users frustrated.</li>
-</ul>
-</section>
-</section>
-<section id="links" class="level2">
-<h2 class="anchored" data-anchor-id="links">Links</h2>
-<ul>
-<li><a href="https://v-sekai.org/">V-Sekai</a></li>
-<li>This article is assisted by AI.</li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20230912-target-most-popular-resolution.html</guid>
-  <pubDate>Thu, 09 Nov 2023 03:46:35 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 04:14:19 GMT</pubDate>
 </item>
 </channel>
 </rss>
