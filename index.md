@@ -23,16 +23,9 @@ Today, V-Sekai has grown into a global community of open technology enthusiasts 
 7. **Organize**: Issues [here](https://github.com/V-Sekai/v-sekai-game/issues).
 8. **Contact**: SaracenOne, Lyuma, or Fire.
 
-| Note 🌍 |
-| :------ |
-
-Here's how to pronounce "V-Sekai":
-
-- **Vee**: Just like the letter 'V'. Rhymes with 'see', 'tree', and 'bee'.
-- **Say**: As in saying something out loud. Rhymes with 'day', 'play', and 'bay'.
-- **Kai**: Sounds like 'sky' without the 's'. Rhymes with 'tie', 'buy', and 'lie'.
-
-So, when you put it all together, it sounds like: "Vee-Say-Kai".
+| Note 🌍                                                                                                                                                                                                                                                                                                                                                                 |
+| :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Here's how to pronounce "V-Sekai": <br> - **Vee**: Just like the letter 'V'. Rhymes with 'see', 'tree', and 'bee'. <br> - **Say**: As in saying something out loud. Rhymes with 'day', 'play', and 'bay'. <br> - **Kai**: Sounds like 'sky' without the 's'. Rhymes with 'tie', 'buy', and 'lie'. <br> So, when you put it all together, it sounds like: "Vee-Say-Kai". |
 
 # Meetings
 
