@@ -114,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#proposed-leveraging-neons-bottomless-storage-for-v-sekais-cdn-data" id="toc-proposed-leveraging-neons-bottomless-storage-for-v-sekais-cdn-data" class="nav-link active" data-scroll-target="#proposed-leveraging-neons-bottomless-storage-for-v-sekais-cdn-data">Proposed: Leveraging Neon’s Bottomless Storage for V-Sekai’s CDN Data</a>
+  <li><a href="#proposed-adopting-neons-bottomless-storage-with-s3-compatible-object-store-for-edge-cdn-data-management" id="toc-proposed-adopting-neons-bottomless-storage-with-s3-compatible-object-store-for-edge-cdn-data-management" class="nav-link active" data-scroll-target="#proposed-adopting-neons-bottomless-storage-with-s3-compatible-object-store-for-edge-cdn-data-management">Proposed: Adopting Neon’s Bottomless Storage with S3-Compatible Object Store for Edge CDN Data Management</a>
   <ul class="collapse">
   <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
   <li><a href="#the-backdrop" id="toc-the-backdrop" class="nav-link" data-scroll-target="#the-backdrop">The Backdrop</a></li>
@@ -135,61 +135,61 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="proposed-leveraging-neons-bottomless-storage-for-v-sekais-cdn-data" class="level1">
-<h1>Proposed: Leveraging Neon’s Bottomless Storage for V-Sekai’s CDN Data</h1>
+<section id="proposed-adopting-neons-bottomless-storage-with-s3-compatible-object-store-for-edge-cdn-data-management" class="level1">
+<h1>Proposed: Adopting Neon’s Bottomless Storage with S3-Compatible Object Store for Edge CDN Data Management</h1>
 <section id="metadata" class="level2">
 <h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
 <li>Status: Proposed</li>
 <li>Deciders: V-Sekai, Fire</li>
-<li>Tags: V-Sekai, Neon, Postgres, Edge Hosting, Bottomless Storage, CDN, S3</li>
+<li>Tags: V-Sekai, Neon, Edge Hosting, Bottomless Storage, S3 Compatible, CDN, PostgreSQL, <code>bytea</code></li>
 </ul>
 </section>
 <section id="the-backdrop" class="level2">
 <h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>V-Sekai, which provides CDN services for avatars and worlds, is exploring scalable and cost-efficient storage solutions to handle increasing data demands.</p>
+<p>V-Sekai operates an open-source platform and is in need of a scalable, high-performance solution for storing and managing CDN data for avatars and worlds at the edge.</p>
 </section>
 <section id="the-challenge" class="level2">
 <h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>How can V-Sekai take advantage of Neon’s bottomless storage, which flushes PostgreSQL pages to S3 object storage, for our CDN needs?</p>
+<p>How can V-Sekai effectively use Neon’s bottomless storage, which leverages PostgreSQL’s capabilities and an S3-compatible object store, for edge-hosted CDN data management?</p>
 </section>
 <section id="the-strategy" class="level2">
 <h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>Integrate Neon’s bottomless storage for V-Sekai’s CDN data, which involves PostgreSQL pages being efficiently stored and managed in S3 object storage, allowing for scalability and cost-effectiveness at the edge.</p>
+<p>Implement an edge computing architecture with Neon’s PostgreSQL services, employing the <code>bytea</code> data type for binary data storage and Neon’s bottomless storage system for flushing PostgreSQL pages to an S3-compatible object store.</p>
 </section>
 <section id="the-upside" class="level2">
 <h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
 <ul>
-<li>Scalability with Neon’s bottomless feature, moving data seamlessly to S3.</li>
-<li>Cost benefits of using object storage for large amounts of data.</li>
-<li>The potential for better performance at the edge due to reduced local storage needs.</li>
+<li>Edge-hosted architecture for optimal performance and data sovereignty.</li>
+<li>S3-compatible storage enables cost-effective scaling and redundancy.</li>
+<li>The use of PostgreSQL’s <code>bytea</code> accommodates efficient binary data management without special maintenance.</li>
 </ul>
 </section>
 <section id="the-downside" class="level2">
 <h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
 <ul>
-<li>Dependence on S3’s availability and performance characteristics.</li>
-<li>Possible complexity in managing data lifecycle between edge storage and S3.</li>
+<li><code>bytea</code> data type has a 1GB size limit and requires loading full data into memory for operations, which might affect performance with large objects.</li>
+<li>Dependence on the reliability of S3-compatible services at the edge.</li>
 </ul>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Continued reliance on traditional database storage solutions without the advantages of Neon’s cloud-native approach.</p>
+<p>Centralized or non-S3-compatible storage solutions that may not provide the latency and scalability benefits of an edge-hosted environment.</p>
 </section>
 <section id="the-infrequent-use-case" class="level2">
 <h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>Edge cases where the immediate availability of large datasets is crucial and may require hybrid storage solutions.</p>
+<p>Cases where binary data exceeds the <code>bytea</code> size limit, necessitating additional strategies for data segmentation or alternative storage methods.</p>
 </section>
 <section id="in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>Yes, implementing Neon’s bottomless storage as a key part of V-Sekai’s backend is proposed, with the plan to manage the integration and maintenance internally.</p>
+<p>Yes, the edge-hosted Neon infrastructure with an S3-compatible object store is planned to be developed and maintained in-house as a core component of V-Sekai’s backend.</p>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <ul>
 <li><a href="https://github.com/v-sekai/">V-Sekai on GitHub</a></li>
-<li><a href="https://neon.tech/docs/introduction/about">Neon’s Architecture Details</a></li>
-<li><a href="https://neon.tech/docs/concepts/storage">Neon’s Storage Explanation</a></li>
+<li><a href="https://neon.tech/docs/introduction/about">Neon’s Architecture and Bottomless Storage Details</a></li>
+<li><a href="https://www.cybertec-postgresql.com/en/binary-data-performance-in-postgresql/">PostgreSQL <code>bytea</code> Performance Considerations</a>​<code>【oaicite:0】</code>​</li>
 </ul>
 <p>This article was assisted by AI.</p>
 
