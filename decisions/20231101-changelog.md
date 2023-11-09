@@ -62,6 +62,7 @@ This project does not adhere to [Semantic Versioning](https://semver.org/spec/v2
 
 ## Misc
 
+- Lyuma, a member of the V-Sekai team, recently attended the Godot Engine Munich 2023 conference.
 - Shaders or MonoBehaviors/scripts are not currently supported. This will not be part of the initial release. The goal for now is scene / character / animation conversion.
 - AnimationTree uses the standalone runtime/anim_tree.gd script as a blackboard system to simulate unity parameters. This file should remain.
 - [Unidot Importer Github Link](https://github.com/V-Sekai/Unidot_Importer)
