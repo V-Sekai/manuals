@@ -1,51 +1,50 @@
-# Proposed: Implementing Neon for Edge Hosting of V-Sekai's CDN Data with bytea Storage
+# Proposed: Utilizing Neon for Edge Hosting with `bytea` for V-Sekai's CDN Data
 
 ## Metadata
 
 - Status: Proposed
 - Deciders: V-Sekai, Fire
-- Tags: V-Sekai, Neon, Postgres, Edge Hosting, Bottomless Storage, CDN, bytea
+- Tags: V-Sekai, Neon, Postgres, Edge Hosting, `bytea`, Bottomless Storage, CDN
 
 ## The Backdrop
 
-V-Sekai, which manages a vast array of CDN data for avatars and worlds, requires a scalable and locally manageable storage solution with low latency.
+V-Sekai manages an extensive array of CDN data for avatars and worlds. There is a need for a storage solution that is both scalable and manageable at the edge.
 
 ## The Challenge
 
-Can V-Sekai effectively use Neon's bottomless storage and local hosting to manage our CDN data at the edge, storing binary data as `bytea` in PostgreSQL?
+How can V-Sekai use Neon's bottomless storage to manage our CDN data for avatars and worlds at the edge, considering the `bytea` data type's 1GB size limitation and in-memory load requirement for read/write operations in PostgreSQL?
 
 ## The Strategy
 
-Implement Neon's bottomless storage system at edge locations, using the `bytea` data type for storing binary data to maximize CDN data performance and manageability. This approach will utilize PostgreSQL's TOAST system for efficient out-of-line storage.
+Deploy Neon's storage system at edge locations, using the `bytea` data type within PostgreSQL for binary data. This will utilize TOAST for efficient out-of-line storage while considering the `bytea` limitations within Neon's architecture.
 
 ## The Upside
 
-- Enhanced performance with data stored at the edge, reducing latency for end-users.
-- The scalability of Neon's bottomless storage, using `bytea` for efficient binary data management.
-- The manageability of PostgreSQL's storage system, with no special maintenance for `bytea` data.
+- Edge hosting for reduced latency and improved user experience.
+- Neon's bottomless storage for scalable data management.
+- PostgreSQL's `bytea` for direct, no-maintenance storage of binary data.
 
 ## The Downside
 
-- The `bytea` data type comes with a 1GB size limit for each field, which may require consideration for larger CDN assets.
-- Full `bytea` data must be loaded into memory for read/write operations, which could impact performance with large binary objects.
+- Constraints of `bytea`'s 1GB size limit for large CDN assets.
+- The necessity of loading entire `bytea` data into memory for operations, impacting performance with large data sizes.
 
 ## The Road Not Taken
 
-Centralized cloud solutions or other data types that may not offer the edge performance benefits or the straightforward management of `bytea`.
+Other data storage solutions that might not provide the edge latency benefits or the straightforward binary data management with `bytea`.
 
 ## The Infrequent Use Case
 
-Handling exceptionally large binary data objects that exceed the `bytea` size limit, necessitating alternative storage strategies.
+Handling very large binary files that exceed the `bytea` size limit, which would require segmentation or alternative storage approaches.
 
 ## In Core and Done by Us?
 
-Yes, the implementation of Neon for edge hosting, with `bytea` for data storage, is intended to be a core part of V-Sekai's infrastructure, managed internally.
+Yes, the integration of Neon with `bytea` data type storage is proposed as a central infrastructure component, to be developed and maintained by V-Sekai's team.
 
 ## Further Reading
 
 - [V-Sekai on GitHub](https://github.com/v-sekai/)
-- [Neon's Architecture Details](https://neon.tech/docs/introduction/architecture-overview)
-- [What is Neon? - Neon Docs](https://neon.tech/docs/introduction/about)
-- [Discussion on Neon's Local Hosting Capabilities](https://community.neon.tech/t/can-neon-be-self-hosted/51)
+- [Neon's Architecture Details](https://neon.tech/docs/introduction/about)
+- [Binary data performance in PostgreSQL - CYBERTEC](https://www.cybertec-postgresql.com/en/binary-data-performance-in-postgresql/)
 
 This article was assisted by AI.
