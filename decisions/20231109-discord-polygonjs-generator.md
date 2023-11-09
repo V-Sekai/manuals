@@ -54,6 +54,10 @@ The core functionality of the bot aligns with V-Sekai's objectives and values. T
 
 ## Further Reading
 
-- [V-Sekai](https://github.com/v-sekai/)
+1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine
+2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine
+3. [V-Sekai Official Website](https://v-sekai.org) - Community of enthusiasts building a next-generation social and gaming VR platform powered by the Godot Engine 4.0
+4. [NousResearch Yarn Mistral 7b 128k - Hugging Face](https://huggingface.co/spaces/realgenius/NousResearch-Yarn-Mistral-7b-128k) - A Hugging Face Space by realgenius
+5. [Issue #68 · polygonjs/polygonjs - GitHub](https://github.com/polygonjs/polygonjs/issues/68) - Discussion on using polygon.js as a Discord webhook watcher to output messages and attachments
 
 This article was assisted by AI.
