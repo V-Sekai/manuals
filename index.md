@@ -15,10 +15,6 @@
 | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Here's how to pronounce "V-Sekai": <br> - **Vee**: Just like the letter 'V'. Rhymes with 'see', 'tree', and 'bee'. <br> - **Say**: As in saying something out loud. Rhymes with 'day', 'play', and 'bay'. <br> - **Kai**: Sounds like 'sky' without the 's'. Rhymes with 'tie', 'buy', and 'lie'. <br> So, when you put it all together, it sounds like: "Vee-Say-Kai". |
 
-## Meetings
-
-Our meetings are ad-hoc and not recorded. We use a Lean Coffee style approach, building the agenda at the start of each meeting to encourage spontaneous discussion.
-
 ## Letter
 
 As a part of V-Sekai, I (Fire) am joyed to be in a group of developers who are passionate about creating open-source VR technology. We started with a dream to build an open-source VR tech stack using the Godot Engine, a popular open-source game engine. Our goal was not only to contribute to the social VR space but also to provide alternatives to proprietary engines like Unity and Unreal.
