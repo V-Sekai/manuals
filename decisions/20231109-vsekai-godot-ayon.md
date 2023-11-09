@@ -8,15 +8,15 @@
 
 ## The Backdrop
 
-V-Sekai is an open-source collective focused on improving Godot Engine's 3D and animation capabilities. The community is founded on strong principles of inclusivity, sharing knowledge, and fostering a friendly environment for all contributors.
+V-Sekai is an open-source collective focused on improving [Godot Engine's](https://godotengine.org/) 3D and animation capabilities. The community is founded on strong principles of inclusivity, sharing knowledge, and fostering a friendly environment for all contributors.
 
 ## The Challenge
 
-The collective aims to enhance the Godot Engine's 3D pipeline, addressing the need for a robust workflow that can efficiently integrate USD and Maya within a Blender-to-Godot environment, improve asset storage, automate conversions, manage CDN distributions, and develop a specialized Godot Engine Launcher.
+The collective aims to enhance the Godot Engine's 3D pipeline, addressing the need for a robust workflow that can efficiently integrate [USD](https://openusd.org/release/index.html) and Maya within a Blender-to-Godot environment, improve asset storage, automate conversions, manage CDN distributions, and develop a specialized Godot Engine Launcher.
 
 ## The Strategy
 
-To collaborate with AYON, drawing on their expertise to bolster the Godot Engine's pipeline. This partnership will focus on developing strategies and tools that align with the collective’s vision and the broader needs of the game development community.
+To collaborate with [AYON](https://ayon.ynput.io/), drawing on their expertise to bolster the Godot Engine's pipeline. This partnership will focus on developing strategies and tools that align with the collective’s vision and the broader needs of the game development community.
 
 ## The Upside
 
@@ -42,7 +42,8 @@ While the initiative is core to V-Sekai's mission, the partnership with AYON wil
 
 For a deeper understanding of V-Sekai's goals, community-driven projects, and the progression of the Godot FBX importer:
 
-- [V-Sekai](https://github.com/v-sekai/)
+- [V-Sekai GitHub](https://github.com/v-sekai/)
+- [Godot Engine Documentation on TSCN file format](https://docs.godotengine.org/en/stable/contributing/development/file_formats/tscn.html)
 
 This article was assisted by AI, synthesizing V-Sekai's collaborative spirit and the potential of its partnership with AYON to advance the Godot Engine's capabilities.
 
