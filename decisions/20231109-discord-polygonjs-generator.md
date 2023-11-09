@@ -3,7 +3,7 @@
 ## Metadata
 
 - Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
-- Deciders: V-Sekai Team
+- Deciders: V-Sekai, fire
 - Tags: V-Sekai, Character Customization, Discord Bot, PoC
 
 ## The Backdrop
