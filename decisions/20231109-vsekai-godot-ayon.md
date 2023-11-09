@@ -45,3 +45,19 @@ For a deeper understanding of V-Sekai's goals, community-driven projects, and th
 - [V-Sekai](https://github.com/v-sekai/)
 
 This article was assisted by AI, synthesizing V-Sekai's collaborative spirit and the potential of its partnership with AYON to advance the Godot Engine's capabilities.
+
+## Letter
+
+I'm with V-Sekai, where we work with the Godot Engine, focusing on enhancing 3D formats and animations through open-source collaboration. Our group is built on the principles of community, friendliness, and shared knowledge.
+
+We've put together a promising alpha-level Godot FBX importer, thanks to our community-driven approach. While formal testing isn't our forte, we're lucky to have a broad user base willing to test and provide feedback, which is vital for refining a game engine pipeline.
+
+We're reaching out to learn from AYON's expertise in a few specific areas:
+
+- **USD & Maya Integration:** Strategies to integrate USD and Maya within a Blender-to-Godot workflow.
+- **Asset Storage Solutions:** Viable alternatives to mainstream asset storage systems.
+- **Automated Conversion Services:** Tools for validating and converting source formats to Godot's native formats (.tscn, .scn, .res, .tres).
+- **CDN Management:** Techniques to differentiate between production and development CDNs to streamline asset and code management.
+- **Godot Engine Launcher:** Assistance in creating an automated custom launcher for the Godot Engine, aiding studios in managing updates and projects for their custom engine changes.
+
+We're excited about the possibility of collaborating to build a pipeline that serves the game development community and keeps up with industry needs.
