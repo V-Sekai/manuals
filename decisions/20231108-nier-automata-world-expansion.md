@@ -16,9 +16,9 @@ The primary challenge in game development lies in striking a balance between ope
 
 ## Strategy
 
-Yoko Taro emphasized the importance of incorporating freedom in a game while maintaining a balance between an open-world and rich content. He drew inspiration from The Legend of Zelda: Ocarina of Time when building the world of NieR. This strategy involves creating easy-to-learn gameplay without hindering the flow of the experience.
-
 > "Freedom is in a future that you did not have in the past" - Yoko Taro (40:40)
+
+Yoko Taro emphasized the importance of incorporating freedom in a game while maintaining a balance between an open-world and rich content. He drew inspiration from The Legend of Zelda: Ocarina of Time when building the world of NieR. This strategy involves creating easy-to-learn gameplay without hindering the flow of the experience.
 
 ## Pros
 
