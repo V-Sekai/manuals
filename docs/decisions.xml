@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Thu, 09 Nov 2023 05:40:57 GMT</lastBuildDate>
+<lastBuildDate>Thu, 09 Nov 2023 05:44:54 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -65,7 +65,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:40:57 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 05:44:54 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -169,7 +169,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-changelog.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:40:57 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 05:44:54 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -239,7 +239,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-nier-automata-world-expansion.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:40:57 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 05:44:54 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -317,7 +317,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-neon-postgresql.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:40:57 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 05:44:54 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -326,62 +326,61 @@
 
 
 
-<section id="proposed-implementing-neon-for-edge-hosting-of-v-sekais-cdn-data-with-bytea-storage" class="level1">
-<h1>Proposed: Implementing Neon for Edge Hosting of V-Sekai’s CDN Data with bytea Storage</h1>
+<section id="proposed-utilizing-neon-for-edge-hosting-with-bytea-for-v-sekais-cdn-data" class="level1">
+<h1>Proposed: Utilizing Neon for Edge Hosting with <code>bytea</code> for V-Sekai’s CDN Data</h1>
 <section id="metadata" class="level2">
 <h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
 <li>Status: Proposed</li>
 <li>Deciders: V-Sekai, Fire</li>
-<li>Tags: V-Sekai, Neon, Postgres, Edge Hosting, Bottomless Storage, CDN, bytea</li>
+<li>Tags: V-Sekai, Neon, Postgres, Edge Hosting, <code>bytea</code>, Bottomless Storage, CDN</li>
 </ul>
 </section>
 <section id="the-backdrop" class="level2">
 <h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>V-Sekai, which manages a vast array of CDN data for avatars and worlds, requires a scalable and locally manageable storage solution with low latency.</p>
+<p>V-Sekai manages an extensive array of CDN data for avatars and worlds. There is a need for a storage solution that is both scalable and manageable at the edge.</p>
 </section>
 <section id="the-challenge" class="level2">
 <h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>Can V-Sekai effectively use Neon’s bottomless storage and local hosting to manage our CDN data at the edge, storing binary data as <code>bytea</code> in PostgreSQL?</p>
+<p>How can V-Sekai use Neon’s bottomless storage to manage our CDN data for avatars and worlds at the edge, considering the <code>bytea</code> data type’s 1GB size limitation and in-memory load requirement for read/write operations in PostgreSQL?</p>
 </section>
 <section id="the-strategy" class="level2">
 <h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>Implement Neon’s bottomless storage system at edge locations, using the <code>bytea</code> data type for storing binary data to maximize CDN data performance and manageability. This approach will utilize PostgreSQL’s TOAST system for efficient out-of-line storage.</p>
+<p>Deploy Neon’s storage system at edge locations, using the <code>bytea</code> data type within PostgreSQL for binary data. This will utilize TOAST for efficient out-of-line storage while considering the <code>bytea</code> limitations within Neon’s architecture.</p>
 </section>
 <section id="the-upside" class="level2">
 <h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
 <ul>
-<li>Enhanced performance with data stored at the edge, reducing latency for end-users.</li>
-<li>The scalability of Neon’s bottomless storage, using <code>bytea</code> for efficient binary data management.</li>
-<li>The manageability of PostgreSQL’s storage system, with no special maintenance for <code>bytea</code> data.</li>
+<li>Edge hosting for reduced latency and improved user experience.</li>
+<li>Neon’s bottomless storage for scalable data management.</li>
+<li>PostgreSQL’s <code>bytea</code> for direct, no-maintenance storage of binary data.</li>
 </ul>
 </section>
 <section id="the-downside" class="level2">
 <h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
 <ul>
-<li>The <code>bytea</code> data type comes with a 1GB size limit for each field, which may require consideration for larger CDN assets.</li>
-<li>Full <code>bytea</code> data must be loaded into memory for read/write operations, which could impact performance with large binary objects.</li>
+<li>Constraints of <code>bytea</code>’s 1GB size limit for large CDN assets.</li>
+<li>The necessity of loading entire <code>bytea</code> data into memory for operations, impacting performance with large data sizes.</li>
 </ul>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Centralized cloud solutions or other data types that may not offer the edge performance benefits or the straightforward management of <code>bytea</code>.</p>
+<p>Other data storage solutions that might not provide the edge latency benefits or the straightforward binary data management with <code>bytea</code>.</p>
 </section>
 <section id="the-infrequent-use-case" class="level2">
 <h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>Handling exceptionally large binary data objects that exceed the <code>bytea</code> size limit, necessitating alternative storage strategies.</p>
+<p>Handling very large binary files that exceed the <code>bytea</code> size limit, which would require segmentation or alternative storage approaches.</p>
 </section>
 <section id="in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>Yes, the implementation of Neon for edge hosting, with <code>bytea</code> for data storage, is intended to be a core part of V-Sekai’s infrastructure, managed internally.</p>
+<p>Yes, the integration of Neon with <code>bytea</code> data type storage is proposed as a central infrastructure component, to be developed and maintained by V-Sekai’s team.</p>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <ul>
 <li><a href="https://github.com/v-sekai/">V-Sekai on GitHub</a></li>
-<li><a href="https://neon.tech/docs/introduction/architecture-overview">Neon’s Architecture Details</a></li>
-<li><a href="https://neon.tech/docs/introduction/about">What is Neon? - Neon Docs</a></li>
-<li><a href="https://community.neon.tech/t/can-neon-be-self-hosted/51">Discussion on Neon’s Local Hosting Capabilities</a></li>
+<li><a href="https://neon.tech/docs/introduction/about">Neon’s Architecture Details</a></li>
+<li><a href="https://www.cybertec-postgresql.com/en/binary-data-performance-in-postgresql/">Binary data performance in PostgreSQL - CYBERTEC</a></li>
 </ul>
 <p>This article was assisted by AI.</p>
 
@@ -391,7 +390,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-neon-1-gb-scene-storage.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:40:57 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 05:44:54 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -455,7 +454,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-munich-godot-engine-conference.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:40:57 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 05:44:54 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -538,7 +537,7 @@ font-style: inherit;">is</span> at the latest version</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-ansible-new-server-provisioning.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:40:57 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 05:44:54 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -602,7 +601,7 @@ font-style: inherit;">is</span> at the latest version</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231105-pdf-embed-raster-svg-vr.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:40:57 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 05:44:54 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -660,7 +659,7 @@ font-style: inherit;">is</span> at the latest version</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231104-flatbuffer_packed_scenes.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:40:57 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 05:44:54 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1265,7 +1264,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231027-write-a-list-of-github-pull-requests.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:40:57 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 05:44:54 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1338,7 +1337,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231027-dreamcraft3d-workflow.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:40:57 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 05:44:54 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1408,7 +1407,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231027-drawing-concept-to-blockout.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:40:57 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 05:44:54 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1478,7 +1477,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231027-apartment-building-vr.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:40:57 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 05:44:54 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1546,7 +1545,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231026-blender-steam-beta-version.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:40:57 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 05:44:54 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1610,7 +1609,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231024-training-simulators.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:40:57 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 05:44:54 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1680,7 +1679,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231024-finetuning-workflow.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:40:57 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 05:44:54 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1739,7 +1738,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231022-hover-to-ocean-game.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:40:57 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 05:44:54 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1811,7 +1810,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231020-llama-cpp-mistral-npc.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:40:57 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 05:44:54 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1876,7 +1875,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231019-quest3-mocap-steam-lighthouse.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:40:57 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 05:44:54 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1966,7 +1965,7 @@ font-style: inherit;">./extract.sh</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231001-changelog.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:40:57 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 05:44:54 GMT</pubDate>
 </item>
 </channel>
 </rss>

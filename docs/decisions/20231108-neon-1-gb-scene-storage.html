@@ -114,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#proposed-implementing-neon-for-edge-hosting-of-v-sekais-cdn-data-with-bytea-storage" id="toc-proposed-implementing-neon-for-edge-hosting-of-v-sekais-cdn-data-with-bytea-storage" class="nav-link active" data-scroll-target="#proposed-implementing-neon-for-edge-hosting-of-v-sekais-cdn-data-with-bytea-storage">Proposed: Implementing Neon for Edge Hosting of V-Sekai’s CDN Data with bytea Storage</a>
+  <li><a href="#proposed-utilizing-neon-for-edge-hosting-with-bytea-for-v-sekais-cdn-data" id="toc-proposed-utilizing-neon-for-edge-hosting-with-bytea-for-v-sekais-cdn-data" class="nav-link active" data-scroll-target="#proposed-utilizing-neon-for-edge-hosting-with-bytea-for-v-sekais-cdn-data">Proposed: Utilizing Neon for Edge Hosting with <code>bytea</code> for V-Sekai’s CDN Data</a>
   <ul class="collapse">
   <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
   <li><a href="#the-backdrop" id="toc-the-backdrop" class="nav-link" data-scroll-target="#the-backdrop">The Backdrop</a></li>
@@ -135,62 +135,61 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="proposed-implementing-neon-for-edge-hosting-of-v-sekais-cdn-data-with-bytea-storage" class="level1">
-<h1>Proposed: Implementing Neon for Edge Hosting of V-Sekai’s CDN Data with bytea Storage</h1>
+<section id="proposed-utilizing-neon-for-edge-hosting-with-bytea-for-v-sekais-cdn-data" class="level1">
+<h1>Proposed: Utilizing Neon for Edge Hosting with <code>bytea</code> for V-Sekai’s CDN Data</h1>
 <section id="metadata" class="level2">
 <h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
 <li>Status: Proposed</li>
 <li>Deciders: V-Sekai, Fire</li>
-<li>Tags: V-Sekai, Neon, Postgres, Edge Hosting, Bottomless Storage, CDN, bytea</li>
+<li>Tags: V-Sekai, Neon, Postgres, Edge Hosting, <code>bytea</code>, Bottomless Storage, CDN</li>
 </ul>
 </section>
 <section id="the-backdrop" class="level2">
 <h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>V-Sekai, which manages a vast array of CDN data for avatars and worlds, requires a scalable and locally manageable storage solution with low latency.</p>
+<p>V-Sekai manages an extensive array of CDN data for avatars and worlds. There is a need for a storage solution that is both scalable and manageable at the edge.</p>
 </section>
 <section id="the-challenge" class="level2">
 <h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>Can V-Sekai effectively use Neon’s bottomless storage and local hosting to manage our CDN data at the edge, storing binary data as <code>bytea</code> in PostgreSQL?</p>
+<p>How can V-Sekai use Neon’s bottomless storage to manage our CDN data for avatars and worlds at the edge, considering the <code>bytea</code> data type’s 1GB size limitation and in-memory load requirement for read/write operations in PostgreSQL?</p>
 </section>
 <section id="the-strategy" class="level2">
 <h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>Implement Neon’s bottomless storage system at edge locations, using the <code>bytea</code> data type for storing binary data to maximize CDN data performance and manageability. This approach will utilize PostgreSQL’s TOAST system for efficient out-of-line storage.</p>
+<p>Deploy Neon’s storage system at edge locations, using the <code>bytea</code> data type within PostgreSQL for binary data. This will utilize TOAST for efficient out-of-line storage while considering the <code>bytea</code> limitations within Neon’s architecture.</p>
 </section>
 <section id="the-upside" class="level2">
 <h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
 <ul>
-<li>Enhanced performance with data stored at the edge, reducing latency for end-users.</li>
-<li>The scalability of Neon’s bottomless storage, using <code>bytea</code> for efficient binary data management.</li>
-<li>The manageability of PostgreSQL’s storage system, with no special maintenance for <code>bytea</code> data.</li>
+<li>Edge hosting for reduced latency and improved user experience.</li>
+<li>Neon’s bottomless storage for scalable data management.</li>
+<li>PostgreSQL’s <code>bytea</code> for direct, no-maintenance storage of binary data.</li>
 </ul>
 </section>
 <section id="the-downside" class="level2">
 <h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
 <ul>
-<li>The <code>bytea</code> data type comes with a 1GB size limit for each field, which may require consideration for larger CDN assets.</li>
-<li>Full <code>bytea</code> data must be loaded into memory for read/write operations, which could impact performance with large binary objects.</li>
+<li>Constraints of <code>bytea</code>’s 1GB size limit for large CDN assets.</li>
+<li>The necessity of loading entire <code>bytea</code> data into memory for operations, impacting performance with large data sizes.</li>
 </ul>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Centralized cloud solutions or other data types that may not offer the edge performance benefits or the straightforward management of <code>bytea</code>.</p>
+<p>Other data storage solutions that might not provide the edge latency benefits or the straightforward binary data management with <code>bytea</code>.</p>
 </section>
 <section id="the-infrequent-use-case" class="level2">
 <h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>Handling exceptionally large binary data objects that exceed the <code>bytea</code> size limit, necessitating alternative storage strategies.</p>
+<p>Handling very large binary files that exceed the <code>bytea</code> size limit, which would require segmentation or alternative storage approaches.</p>
 </section>
 <section id="in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>Yes, the implementation of Neon for edge hosting, with <code>bytea</code> for data storage, is intended to be a core part of V-Sekai’s infrastructure, managed internally.</p>
+<p>Yes, the integration of Neon with <code>bytea</code> data type storage is proposed as a central infrastructure component, to be developed and maintained by V-Sekai’s team.</p>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <ul>
 <li><a href="https://github.com/v-sekai/">V-Sekai on GitHub</a></li>
-<li><a href="https://neon.tech/docs/introduction/architecture-overview">Neon’s Architecture Details</a></li>
-<li><a href="https://neon.tech/docs/introduction/about">What is Neon? - Neon Docs</a></li>
-<li><a href="https://community.neon.tech/t/can-neon-be-self-hosted/51">Discussion on Neon’s Local Hosting Capabilities</a></li>
+<li><a href="https://neon.tech/docs/introduction/about">Neon’s Architecture Details</a></li>
+<li><a href="https://www.cybertec-postgresql.com/en/binary-data-performance-in-postgresql/">Binary data performance in PostgreSQL - CYBERTEC</a></li>
 </ul>
 <p>This article was assisted by AI.</p>
 
