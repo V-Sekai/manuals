@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Thu, 09 Nov 2023 05:53:49 GMT</lastBuildDate>
+<lastBuildDate>Thu, 09 Nov 2023 06:01:39 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -65,7 +65,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:53:49 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 06:01:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -169,7 +169,78 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-changelog.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:53:49 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 06:01:39 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20231108-postgres-bytea-optimizations.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="proposed-postgresql-bytea-storage-optimization-for-v-sekais-edge-cdn" class="level1">
+<h1>Proposed: PostgreSQL <code>bytea</code> Storage Optimization for V-Sekai’s Edge CDN</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: Proposed</li>
+<li>Deciders: V-Sekai, Fire</li>
+<li>Tags: V-Sekai, PostgreSQL, Edge Hosting, CDN, <code>bytea</code>, TOAST, Optimization</li>
+</ul>
+</section>
+<section id="the-backdrop" class="level2">
+<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
+<p>V-Sekai maintains an open-source CDN platform and seeks database optimizations for better performance and scalability.</p>
+</section>
+<section id="the-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
+<p>How can V-Sekai enhance binary data storage and access by leveraging PostgreSQL’s <code>bytea</code> type with EXTERNAL storage, independent of Neon’s bottomless feature?</p>
+</section>
+<section id="the-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
+<p>Optimize the PostgreSQL database schema for CDN data by setting <code>bytea</code> columns to use EXTERNAL storage. This facilitates out-of-line and uncompressed storage of binary data, improving read performance and enabling streaming capabilities.</p>
+</section>
+<section id="the-upside" class="level2">
+<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
+<ul>
+<li>Reduced CPU usage by bypassing compression for binary data.</li>
+<li>Efficient access to specific data segments without loading entire objects, beneficial for streaming content.</li>
+</ul>
+</section>
+<section id="the-downside" class="level2">
+<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
+<ul>
+<li>Complexity in managing custom TOAST configurations.</li>
+<li>Need for precise database management to ensure performance gains.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>Defaulting to the EXTENDED storage type, which compresses <code>bytea</code> data but may not be as efficient for V-Sekai’s use case.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>Scenarios requiring compressed storage for binary data, where the EXTENDED storage type might be more appropriate.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
+<p>The PostgreSQL optimization will be implemented by V-Sekai’s team as a crucial part of our infrastructure enhancements.</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://github.com/v-sekai/">V-Sekai on GitHub</a></li>
+<li><a href="https://www.cybertec-postgresql.com/en/binary-data-performance-in-postgresql/">Binary Data Performance in PostgreSQL - CYBERTEC</a>​<code>【oaicite:0】</code>​</li>
+</ul>
+<p>This article was assisted by AI.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20231108-postgres-bytea-optimizations.html</guid>
+  <pubDate>Thu, 09 Nov 2023 06:01:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -239,7 +310,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-nier-automata-world-expansion.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:53:49 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 06:01:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -317,7 +388,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-neon-postgresql.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:53:49 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 06:01:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -390,7 +461,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-neon-1-gb-scene-storage.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:53:49 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 06:01:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -454,7 +525,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-munich-godot-engine-conference.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:53:49 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 06:01:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -537,7 +608,7 @@ font-style: inherit;">is</span> at the latest version</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-ansible-new-server-provisioning.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:53:49 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 06:01:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -601,7 +672,7 @@ font-style: inherit;">is</span> at the latest version</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231105-pdf-embed-raster-svg-vr.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:53:49 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 06:01:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -659,7 +730,7 @@ font-style: inherit;">is</span> at the latest version</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231104-flatbuffer_packed_scenes.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:53:49 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 06:01:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1264,7 +1335,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231027-write-a-list-of-github-pull-requests.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:53:49 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 06:01:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1337,7 +1408,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231027-dreamcraft3d-workflow.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:53:49 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 06:01:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1407,7 +1478,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231027-drawing-concept-to-blockout.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:53:49 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 06:01:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1477,7 +1548,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231027-apartment-building-vr.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:53:49 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 06:01:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1545,7 +1616,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231026-blender-steam-beta-version.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:53:49 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 06:01:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1609,7 +1680,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231024-training-simulators.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:53:49 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 06:01:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1679,7 +1750,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231024-finetuning-workflow.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:53:49 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 06:01:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1738,7 +1809,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231022-hover-to-ocean-game.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:53:49 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 06:01:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1810,7 +1881,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231020-llama-cpp-mistral-npc.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:53:49 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 06:01:39 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1875,97 +1946,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231019-quest3-mocap-steam-lighthouse.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:53:49 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20231001-changelog.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="v-sekai-changelog---october-2023" class="level1">
-<h1>V-Sekai Changelog - October 2023</h1>
-<section id="unreleased" class="level2">
-<h2 class="anchored" data-anchor-id="unreleased">[Unreleased]</h2>
-<section id="added" class="level3">
-<h3 class="anchored" data-anchor-id="added">Added</h3>
-<ul>
-<li>Lyuma has pushed support to GodotEngine Unidot-Importer for humanoid unity .anim import including lox9973’s center of mass correction for hips. <a href="https://vxtwitter.com/Lyuma2d/status/1718394964109935094">#gamedev</a></li>
-<li>Humanoid anim support is complete, including arm/leg twist! Import of standalone Avatar assets is now functional (such as converted VRM files).</li>
-<li>Unpacked avatar prefabs are now extracted into their own scenes.</li>
-</ul>
-</section>
-<section id="changed" class="level3">
-<h3 class="anchored" data-anchor-id="changed">Changed</h3>
-<ul>
-<li>Updated <code>casync</code> for <code>v-sekai-game</code>. This is still using the old version binaries.</li>
-</ul>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">git</span> clone https://github.com/V-Sekai/casync-v-sekai-game.git</span>
-<span id="cb1-2"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">cd</span> casync-v-sekai-game</span>
-<span id="cb1-3"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">./extract.sh</span></span></code></pre></div>
-</section>
-<section id="fixed" class="level3">
-<h3 class="anchored" data-anchor-id="fixed">Fixed</h3>
-<ul>
-<li>Fixed an issue with GLTF images being referenced directly instead of going through the GLTFState.textures mapping. This was causing texture mis-matches on some VRMs when loaded. The fix involved passing the GLTF state into a few more functions, replacing the image list, so we could also access the textures mapping directly alongside them. (<a href="https://github.com/V-Sekai/godot-vrm/pull/82">#82</a>)</li>
-</ul>
-</section>
-<section id="deprecated" class="level3">
-<h3 class="anchored" data-anchor-id="deprecated">Deprecated</h3>
-<ul>
-<li>Not applicable for this month.</li>
-</ul>
-</section>
-<section id="removed" class="level3">
-<h3 class="anchored" data-anchor-id="removed">Removed</h3>
-<ul>
-<li>Not applicable for this month.</li>
-</ul>
-</section>
-<section id="security" class="level3">
-<h3 class="anchored" data-anchor-id="security">Security</h3>
-<ul>
-<li>Not applicable for this month.</li>
-</ul>
-<p>This project does not adhere to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
-</section>
-</section>
-<section id="previous-releases" class="level2">
-<h2 class="anchored" data-anchor-id="previous-releases">[Previous Releases]</h2>
-<ul>
-<li>Not applicable for this month.</li>
-</ul>
-</section>
-<section id="misc" class="level2">
-<h2 class="anchored" data-anchor-id="misc">Misc</h2>
-<ul>
-<li>Convinced PolygonJS to change their license to the MIT license.</li>
-<li>Reviewed a character generator with OMI and JIN</li>
-<li>Discussed svg in gltf at OMI</li>
-<li>Proposed feature request to add an extractor to save 3d assets, gltf files, CAD files, shapefiles, STLs, etc to ArchiveBox. <a href="https://github.com/ArchiveBox/ArchiveBox/issues/668">Issue #668</a></li>
-<li>Discovered a method of json document sync. <a href="https://jsonjoy.com/">JsonJoy</a></li>
-</ul>
-</section>
-<section id="quotes-of-the-month" class="level2">
-<h2 class="anchored" data-anchor-id="quotes-of-the-month">Quotes of the month</h2>
-<blockquote class="blockquote">
-<p>“The term logbook originated with the ship’s log, a maritime record of important events in the management, operation, and navigation of a ship. The captain was responsible for keeping a log, as a minimum, of navigational wind, speed, direction and position.” - Wikipedia</p>
-</blockquote>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20231001-changelog.html</guid>
-  <pubDate>Thu, 09 Nov 2023 05:53:49 GMT</pubDate>
+  <pubDate>Thu, 09 Nov 2023 06:01:39 GMT</pubDate>
 </item>
 </channel>
 </rss>
