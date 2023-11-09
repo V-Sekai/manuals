@@ -1,50 +1,50 @@
-# Proposed: Leveraging Neon's Bottomless Storage for V-Sekai's CDN Data
+# Proposed: Adopting Neon's Bottomless Storage with S3-Compatible Object Store for Edge CDN Data Management
 
 ## Metadata
 
 - Status: Proposed
 - Deciders: V-Sekai, Fire
-- Tags: V-Sekai, Neon, Postgres, Edge Hosting, Bottomless Storage, CDN, S3
+- Tags: V-Sekai, Neon, Edge Hosting, Bottomless Storage, S3 Compatible, CDN, PostgreSQL, `bytea`
 
 ## The Backdrop
 
-V-Sekai, which provides CDN services for avatars and worlds, is exploring scalable and cost-efficient storage solutions to handle increasing data demands.
+V-Sekai operates an open-source platform and is in need of a scalable, high-performance solution for storing and managing CDN data for avatars and worlds at the edge.
 
 ## The Challenge
 
-How can V-Sekai take advantage of Neon's bottomless storage, which flushes PostgreSQL pages to S3 object storage, for our CDN needs?
+How can V-Sekai effectively use Neon's bottomless storage, which leverages PostgreSQL's capabilities and an S3-compatible object store, for edge-hosted CDN data management?
 
 ## The Strategy
 
-Integrate Neon's bottomless storage for V-Sekai's CDN data, which involves PostgreSQL pages being efficiently stored and managed in S3 object storage, allowing for scalability and cost-effectiveness at the edge.
+Implement an edge computing architecture with Neon's PostgreSQL services, employing the `bytea` data type for binary data storage and Neon's bottomless storage system for flushing PostgreSQL pages to an S3-compatible object store.
 
 ## The Upside
 
-- Scalability with Neon's bottomless feature, moving data seamlessly to S3.
-- Cost benefits of using object storage for large amounts of data.
-- The potential for better performance at the edge due to reduced local storage needs.
+- Edge-hosted architecture for optimal performance and data sovereignty.
+- S3-compatible storage enables cost-effective scaling and redundancy.
+- The use of PostgreSQL's `bytea` accommodates efficient binary data management without special maintenance.
 
 ## The Downside
 
-- Dependence on S3's availability and performance characteristics.
-- Possible complexity in managing data lifecycle between edge storage and S3.
+- `bytea` data type has a 1GB size limit and requires loading full data into memory for operations, which might affect performance with large objects.
+- Dependence on the reliability of S3-compatible services at the edge.
 
 ## The Road Not Taken
 
-Continued reliance on traditional database storage solutions without the advantages of Neon's cloud-native approach.
+Centralized or non-S3-compatible storage solutions that may not provide the latency and scalability benefits of an edge-hosted environment.
 
 ## The Infrequent Use Case
 
-Edge cases where the immediate availability of large datasets is crucial and may require hybrid storage solutions.
+Cases where binary data exceeds the `bytea` size limit, necessitating additional strategies for data segmentation or alternative storage methods.
 
 ## In Core and Done by Us?
 
-Yes, implementing Neon's bottomless storage as a key part of V-Sekai's backend is proposed, with the plan to manage the integration and maintenance internally.
+Yes, the edge-hosted Neon infrastructure with an S3-compatible object store is planned to be developed and maintained in-house as a core component of V-Sekai's backend.
 
 ## Further Reading
 
 - [V-Sekai on GitHub](https://github.com/v-sekai/)
-- [Neon's Architecture Details](https://neon.tech/docs/introduction/about)
-- [Neon's Storage Explanation](https://neon.tech/docs/concepts/storage)
+- [Neon's Architecture and Bottomless Storage Details](https://neon.tech/docs/introduction/about)
+- [PostgreSQL `bytea` Performance Considerations](https://www.cybertec-postgresql.com/en/binary-data-performance-in-postgresql/)&#8203;`【oaicite:0】`&#8203;
 
 This article was assisted by AI.
