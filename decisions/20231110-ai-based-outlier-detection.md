@@ -18,7 +18,7 @@ The challenge lies in identifying and correcting the common errors in game asset
 
 Implement an AI-Based Outlier Detector game creation assistant that detects common errors. This system would analyze game assets, identify outliers or anomalies, and suggest corrections. To handle the large token context, we propose the use of proxy resources. Proxy resources are simplified versions of the original assets that retain enough detail for the AI to perform its analysis. This approach allows us to reduce the amount of data being processed without losing critical information. Aria will call the necessary functions to perform these tests, rather than implementing them directly.
 
-A crucial requirement is for the assistant to retain any input data only until it has been processed. Ask for permission to incorporate into the learning dataset. This ensures that the AI system adheres to user privacy and data security.
+A crucial requirement is for the assistant to retain any input data only until it has been processed. Require permission to incorporate into the learning dataset. This ensures that the AI system adheres to user privacy and data security.
 
 ## The Upside
 
