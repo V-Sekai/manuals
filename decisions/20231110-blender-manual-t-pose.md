@@ -19,7 +19,7 @@ The issue arises when Blender VRM defaults the skeleton without adjusting the po
 Here's a step-by-step guide to overcome this limitation:
 
 1. Select all bones and create an animation pose for A-Pose. (Optional)
-2. Click on the butterfly icon and the x-axis.
+2. Click on the mirror axis butterfly icon and the x-axis.
 3. Adjust the shoulder by approximately 15 degrees and position the upper arm to form a T-Pose.
 4. Select all bones again and create an animation pose for T-Pose. (Optional)
 
