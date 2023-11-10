@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Fri, 10 Nov 2023 19:03:37 GMT</lastBuildDate>
+<lastBuildDate>Fri, 10 Nov 2023 19:05:59 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -66,7 +66,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:05:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -141,7 +141,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template copy.html</guid>
-  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:05:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -308,7 +308,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-v-sekai-dependencies.html</guid>
-  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:05:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -380,7 +380,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-blender-manual-t-pose.html</guid>
-  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:05:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -401,32 +401,40 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 </section>
 <section id="the-backdrop" class="level2">
 <h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>Game assets commonly have defects. Aria, an AI-based game creation assistant, can be utilized to detect and rectify these issues. However, the tests need not be implemented by the AI itself. Instead, Aria can call functions as needed to perform the tests.</p>
+<p>Game assets often contain defects. Aria, an AI-based game creation assistant, can help detect and rectify these issues by calling necessary functions to perform tests.</p>
 </section>
 <section id="the-challenge" class="level2">
 <h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>The challenge lies in identifying and correcting the common errors in game assets which can range from minor glitches to major bugs that affect gameplay. Manual detection is time-consuming and prone to human error. Furthermore, using a large language model (LLM) with a 128k token context suggests the need for managing the size of the data being processed.</p>
+<p>The challenge is to efficiently identify and correct common errors in game assets, ranging from minor glitches to major bugs. Manual detection is time-consuming and prone to human error. Additionally, managing the size of data being processed by a large language model (LLM) with a 128k token context presents a challenge.</p>
 </section>
 <section id="the-strategy" class="level2">
 <h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>Implement an AI-Based Outlier Detector game creation assistant that detects common errors. This system would analyze game assets, identify outliers or anomalies, and suggest corrections. To handle the large token context, we propose the use of proxy resources. Proxy resources are simplified versions of the original assets that retain enough detail for the AI to perform its analysis. This approach allows us to reduce the amount of data being processed without losing critical information. Aria will call the necessary functions to perform these tests, rather than implementing them directly.</p>
-<p>A crucial requirement is for the assistant to retain any input data only until it has been processed. Permission is required to incorporate any input data into the learning dataset. This ensures that the AI system adheres to user privacy and data security.</p>
+<p>We propose implementing an AI-Based Outlier Detector game creation assistant that detects common errors. This system would analyze game assets, identify anomalies, and suggest corrections. To manage the large token context, we suggest using proxy resources - simplified versions of original assets that retain enough detail for the AI to perform its analysis.</p>
+<p>A key requirement is for the assistant to retain input data only until it has been processed. Permission is required to incorporate any input data into the learning dataset, ensuring user privacy and data security.</p>
 </section>
 <section id="the-upside" class="level2">
 <h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<p>The implementation of this AI system will significantly reduce the time spent on debugging and error correction. It will also improve the quality of the game by ensuring all assets are functioning as intended. Using proxy resources will allow us to process large amounts of data efficiently.</p>
+<ul>
+<li>Reduces debugging and error correction time.</li>
+<li>Improves game quality by ensuring all assets function as intended.</li>
+<li>Efficiently processes large amounts of data using proxy resources.</li>
+</ul>
 </section>
 <section id="the-downside" class="level2">
 <h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<p>The development and integration of such a system could require significant resources. Additionally, while AI can catch many errors, it may not be able to identify all types of bugs, especially those that require contextual understanding. Using proxy resources may not capture all the nuances of the original assets.</p>
+<ul>
+<li>Requires significant resources for development and integration.</li>
+<li>May not identify all types of bugs, especially those requiring contextual understanding.</li>
+<li>Proxy resources may not capture all nuances of original assets.</li>
+</ul>
 </section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>An alternative approach could be to enhance the existing manual testing processes or use traditional bug tracking software. However, these methods may not offer the same level of efficiency and accuracy as an AI-based system.</p>
+<section id="alternatives" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives">Alternatives</h2>
+<p>An alternative could be enhancing existing manual testing processes or using traditional bug tracking software. However, these methods may not offer the same efficiency and accuracy as an AI-based system.</p>
 </section>
 <section id="the-infrequent-use-case" class="level2">
 <h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>This solution is particularly useful for large-scale game projects with numerous assets where manual error detection would be highly time-consuming and inefficient.</p>
+<p>This solution is particularly useful for large-scale game projects with numerous assets where manual error detection would be inefficient.</p>
 </section>
 <section id="in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
@@ -435,11 +443,11 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
-<li><a href="https://huggingface.co/spaces/realgenius/NousResearch-Yarn-Mistral-7b-128k">NousResearch Yarn Mistral 7b 128k - Hugging Face</a> - A Hugging Face Space by realgenius</li>
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a></li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a></li>
+<li><a href="https://huggingface.co/spaces/realgenius/NousResearch-Yarn-Mistral-7b-128k">NousResearch Yarn Mistral 7b 128k - Hugging Face</a></li>
 </ol>
-<p>This article was assisted by AI.</p>
+<p><em>This proposal was assisted by Aria, an AI assistant.</em></p>
 
 
 </section>
@@ -447,7 +455,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-ai-based-outlier-detection.html</guid>
-  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:05:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -527,7 +535,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-vsekai-godot-ayon.html</guid>
-  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:05:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -604,7 +612,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-discord-polygonjs-generator.html</guid>
-  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:05:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -708,7 +716,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-changelog.html</guid>
-  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:05:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -792,7 +800,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-v-sekai-chat-bot.html</guid>
-  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:05:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -863,7 +871,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-postgres-bytea-optimizations.html</guid>
-  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:05:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -933,7 +941,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-nier-automata-world-expansion.html</guid>
-  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:05:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1018,7 +1026,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-neon-vercel-functions-toy-problem.html</guid>
-  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:05:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1096,7 +1104,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-neon-postgresql.html</guid>
-  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:05:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1169,7 +1177,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-neon-1-gb-scene-storage.html</guid>
-  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:05:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1233,7 +1241,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-munich-godot-engine-conference.html</guid>
-  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:05:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1316,7 +1324,7 @@ font-style: inherit;">is</span> at the latest version</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-ansible-new-server-provisioning.html</guid>
-  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:05:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1380,7 +1388,7 @@ font-style: inherit;">is</span> at the latest version</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231105-pdf-embed-raster-svg-vr.html</guid>
-  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:05:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1438,7 +1446,7 @@ font-style: inherit;">is</span> at the latest version</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231104-flatbuffer_packed_scenes.html</guid>
-  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:05:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2043,7 +2051,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231027-write-a-list-of-github-pull-requests.html</guid>
-  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:05:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2116,7 +2124,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231027-dreamcraft3d-workflow.html</guid>
-  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:05:59 GMT</pubDate>
 </item>
 </channel>
 </rss>
