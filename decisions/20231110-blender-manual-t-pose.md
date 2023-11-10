@@ -3,7 +3,7 @@
 ## Metadata
 
 - Status: Accepted
-- Deciders: V-Sekai, fire, Lyuma, Zodiepupper
+- Deciders: V-Sekai, fire, Lyuma, Zodiepupper, Cthulhoo
 - Tags: V-Sekai, VRM, Godot Engine, T-Pose, A-Pose
 
 ## Context
@@ -21,7 +21,8 @@ Here's a step-by-step guide to overcome this limitation:
 1. Select all bones and create an animation pose for A-Pose. (Optional)
 2. Click on the mirror axis butterfly icon and the x-axis.
 3. Adjust the shoulder by approximately 15 degrees and position the upper arm to form a T-Pose.
-4. Select all bones again and create an animation pose for T-Pose. (Optional)
+4. Position the legs straight and at shoulder width apart to match the T-Pose.
+5. Select all bones again and create an animation pose for T-Pose. (Optional)
 
 ## Benefits
 
