@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Fri, 10 Nov 2023 18:39:06 GMT</lastBuildDate>
+<lastBuildDate>Fri, 10 Nov 2023 19:03:37 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -66,7 +66,82 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Fri, 10 Nov 2023 18:39:06 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template copy.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="proposed-efficient-training-of-llms-in-v-sekai" class="level1">
+<h1>Proposed: Efficient Training of LLMs in V-Sekai</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: Proposed</li>
+<li>Deciders: V-Sekai</li>
+<li>Tags: V-Sekai, LLM, Training</li>
+</ul>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>Given the limited resources available to V-Sekai, it is crucial to optimize the training time for Language Learning Models (LLMs) like Aria assistant.</p>
+</section>
+<section id="problem" class="level2">
+<h2 class="anchored" data-anchor-id="problem">Problem</h2>
+<p>The challenge lies in efficiently training these models within a constrained timeframe - ideally not exceeding one day.</p>
+</section>
+<section id="solution" class="level2">
+<h2 class="anchored" data-anchor-id="solution">Solution</h2>
+<p>To expedite the training process, we propose the following adjustments to Ludwig:</p>
+<ol type="1">
+<li>Set <code>trainable=false</code> to make training over 50x faster.</li>
+<li>Enable Automatic Mixed Precision (AMP) training, which is available when both <code>trainable=true</code> and <code>trainable=false</code>.</li>
+<li>Implement approximate training set evaluation (<code>evaluate_training_set=false</code>). This computes the reported training set metrics at the end of each epoch as a running aggregation of the metrics during training, rather than a separate pass over the training set at the end of each epoch of training. Although this may result in “noisy” metrics in the early epochs, it generally leads to a 33% speedup in training time.</li>
+</ol>
+</section>
+<section id="pros-and-cons" class="level2">
+<h2 class="anchored" data-anchor-id="pros-and-cons">Pros and Cons</h2>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Significantly reduces training time.</li>
+<li>Allows for more efficient use of resources.</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Early training metrics may appear “noisy”.</li>
+</ul>
+</section>
+<section id="alternatives" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives">Alternatives</h2>
+<p>This section will be updated with potential alternatives if the proposed solution does not yield the expected results.</p>
+</section>
+<section id="rare-use-cases" class="level2">
+<h2 class="anchored" data-anchor-id="rare-use-cases">Rare Use Cases</h2>
+<p>This section will be updated with infrequent use cases that may arise during the implementation of the proposed solution.</p>
+</section>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<p>Is this solution core to our operations and will it be implemented by us? This section will be updated accordingly.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a></li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a></li>
+<li><a href="https://ludwig.ai/latest/examples/llms/llm_classification/">LLM Classification - Ludwig</a></li>
+</ol>
+<p><em>This proposal was assisted by Aria, an AI assistant.</em></p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template copy.html</guid>
+  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -233,7 +308,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-v-sekai-dependencies.html</guid>
-  <pubDate>Fri, 10 Nov 2023 18:39:06 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -305,7 +380,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-blender-manual-t-pose.html</guid>
-  <pubDate>Fri, 10 Nov 2023 18:39:06 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -372,7 +447,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-ai-based-outlier-detection.html</guid>
-  <pubDate>Fri, 10 Nov 2023 18:39:06 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -452,7 +527,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-vsekai-godot-ayon.html</guid>
-  <pubDate>Fri, 10 Nov 2023 18:39:06 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -529,7 +604,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-discord-polygonjs-generator.html</guid>
-  <pubDate>Fri, 10 Nov 2023 18:39:06 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -633,7 +708,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-changelog.html</guid>
-  <pubDate>Fri, 10 Nov 2023 18:39:06 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -717,7 +792,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-v-sekai-chat-bot.html</guid>
-  <pubDate>Fri, 10 Nov 2023 18:39:06 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -788,7 +863,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-postgres-bytea-optimizations.html</guid>
-  <pubDate>Fri, 10 Nov 2023 18:39:06 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -858,7 +933,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-nier-automata-world-expansion.html</guid>
-  <pubDate>Fri, 10 Nov 2023 18:39:06 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -943,7 +1018,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-neon-vercel-functions-toy-problem.html</guid>
-  <pubDate>Fri, 10 Nov 2023 18:39:06 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1021,7 +1096,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-neon-postgresql.html</guid>
-  <pubDate>Fri, 10 Nov 2023 18:39:06 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1094,7 +1169,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-neon-1-gb-scene-storage.html</guid>
-  <pubDate>Fri, 10 Nov 2023 18:39:06 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1158,7 +1233,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-munich-godot-engine-conference.html</guid>
-  <pubDate>Fri, 10 Nov 2023 18:39:06 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1241,7 +1316,7 @@ font-style: inherit;">is</span> at the latest version</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-ansible-new-server-provisioning.html</guid>
-  <pubDate>Fri, 10 Nov 2023 18:39:06 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1305,7 +1380,7 @@ font-style: inherit;">is</span> at the latest version</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231105-pdf-embed-raster-svg-vr.html</guid>
-  <pubDate>Fri, 10 Nov 2023 18:39:06 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1363,7 +1438,7 @@ font-style: inherit;">is</span> at the latest version</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231104-flatbuffer_packed_scenes.html</guid>
-  <pubDate>Fri, 10 Nov 2023 18:39:06 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1968,7 +2043,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231027-write-a-list-of-github-pull-requests.html</guid>
-  <pubDate>Fri, 10 Nov 2023 18:39:06 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2041,77 +2116,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231027-dreamcraft3d-workflow.html</guid>
-  <pubDate>Fri, 10 Nov 2023 18:39:06 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20231027-drawing-concept-to-blockout.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="proposed-drawing-concept-to-blockout" class="level1">
-<h1>Proposed: Drawing Concept to Blockout</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li><strong>Status:</strong> Proposed</li>
-<li><strong>Deciders:</strong> V-Sekai, fire</li>
-<li><strong>Tags:</strong> V-Sekai</li>
-</ul>
-</section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>The goal is to add more finished vrms to V-Sekai.</p>
-</section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>The task at hand is to create some concept art for an existing VRoid character model.</p>
-</section>
-<section id="the-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>Here’s the proposed strategy:</p>
-<ol type="1">
-<li>Start with greyscale outlines to focus on shapes rather than color.</li>
-<li>Use a off-white background, an outline color, a shadow color and a solid color.</li>
-<li>Focus on the overall shapes and silhouette first before adding details.</li>
-</ol>
-</section>
-<section id="the-upside" class="level2">
-<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<p>This process will help nail down the overall look and feel before getting distracted by details and color. Starting with outlines and simple shapes will make it easier to iterate quickly.</p>
-</section>
-<section id="the-downside" class="level2">
-<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<p>The downside could be that focusing too much on the overall shape might lead to neglecting the finer details which are also important in character design. Also, this approach may not work as effectively for complex designs.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>An alternative approach could have been to start with detailed sketches instead of broad shapes. This would allow for more detail early on but could potentially slow down the iteration process.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>This method might not be suitable if the character design is already well established and does not require significant changes to its overall shape and structure.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>Yes, this is a core part of our design process and is done by us.</p>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<p>For more information, you can visit the following links:</p>
-<ul>
-<li><a href="https://github.com/v-sekai/">V-Sekai</a></li>
-<li>AI assists this article.</li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20231027-drawing-concept-to-blockout.html</guid>
-  <pubDate>Fri, 10 Nov 2023 18:39:06 GMT</pubDate>
+  <pubDate>Fri, 10 Nov 2023 19:03:37 GMT</pubDate>
 </item>
 </channel>
 </rss>
