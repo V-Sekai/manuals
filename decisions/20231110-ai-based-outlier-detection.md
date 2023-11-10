@@ -8,33 +8,37 @@
 
 ## The Backdrop
 
-Game assets commonly have defects. Aria, an AI-based game creation assistant, can be utilized to detect and rectify these issues. However, the tests need not be implemented by the AI itself. Instead, Aria can call functions as needed to perform the tests.
+Game assets often contain defects. Aria, an AI-based game creation assistant, can help detect and rectify these issues by calling necessary functions to perform tests.
 
 ## The Challenge
 
-The challenge lies in identifying and correcting the common errors in game assets which can range from minor glitches to major bugs that affect gameplay. Manual detection is time-consuming and prone to human error. Furthermore, using a large language model (LLM) with a 128k token context suggests the need for managing the size of the data being processed.
+The challenge is to efficiently identify and correct common errors in game assets, ranging from minor glitches to major bugs. Manual detection is time-consuming and prone to human error. Additionally, managing the size of data being processed by a large language model (LLM) with a 128k token context presents a challenge.
 
 ## The Strategy
 
-Implement an AI-Based Outlier Detector game creation assistant that detects common errors. This system would analyze game assets, identify outliers or anomalies, and suggest corrections. To handle the large token context, we propose the use of proxy resources. Proxy resources are simplified versions of the original assets that retain enough detail for the AI to perform its analysis. This approach allows us to reduce the amount of data being processed without losing critical information. Aria will call the necessary functions to perform these tests, rather than implementing them directly.
+We propose implementing an AI-Based Outlier Detector game creation assistant that detects common errors. This system would analyze game assets, identify anomalies, and suggest corrections. To manage the large token context, we suggest using proxy resources - simplified versions of original assets that retain enough detail for the AI to perform its analysis.
 
-A crucial requirement is for the assistant to retain any input data only until it has been processed. Permission is required to incorporate any input data into the learning dataset. This ensures that the AI system adheres to user privacy and data security.
+A key requirement is for the assistant to retain input data only until it has been processed. Permission is required to incorporate any input data into the learning dataset, ensuring user privacy and data security.
 
 ## The Upside
 
-The implementation of this AI system will significantly reduce the time spent on debugging and error correction. It will also improve the quality of the game by ensuring all assets are functioning as intended. Using proxy resources will allow us to process large amounts of data efficiently.
+- Reduces debugging and error correction time.
+- Improves game quality by ensuring all assets function as intended.
+- Efficiently processes large amounts of data using proxy resources.
 
 ## The Downside
 
-The development and integration of such a system could require significant resources. Additionally, while AI can catch many errors, it may not be able to identify all types of bugs, especially those that require contextual understanding. Using proxy resources may not capture all the nuances of the original assets.
+- Requires significant resources for development and integration.
+- May not identify all types of bugs, especially those requiring contextual understanding.
+- Proxy resources may not capture all nuances of original assets.
 
-## The Road Not Taken
+## Alternatives
 
-An alternative approach could be to enhance the existing manual testing processes or use traditional bug tracking software. However, these methods may not offer the same level of efficiency and accuracy as an AI-based system.
+An alternative could be enhancing existing manual testing processes or using traditional bug tracking software. However, these methods may not offer the same efficiency and accuracy as an AI-based system.
 
 ## The Infrequent Use Case
 
-This solution is particularly useful for large-scale game projects with numerous assets where manual error detection would be highly time-consuming and inefficient.
+This solution is particularly useful for large-scale game projects with numerous assets where manual error detection would be inefficient.
 
 ## In Core and Done by Us?
 
@@ -42,8 +46,8 @@ Yes, this proposal suggests the development of an in-house AI system tailored to
 
 ## Further Reading
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine
-3. [NousResearch Yarn Mistral 7b 128k - Hugging Face](https://huggingface.co/spaces/realgenius/NousResearch-Yarn-Mistral-7b-128k) - A Hugging Face Space by realgenius
+1. [V-Sekai · GitHub](https://github.com/v-sekai)
+2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
+3. [NousResearch Yarn Mistral 7b 128k - Hugging Face](https://huggingface.co/spaces/realgenius/NousResearch-Yarn-Mistral-7b-128k)
 
-This article was assisted by AI.
+_This proposal was assisted by Aria, an AI assistant._
