@@ -16,6 +16,7 @@ One of the market leaders in VRSNS, the OMEGA project, is tied to a specific gam
 
 1. The size of the bundle would be quite large.
 2. They are separate entities that require commercial terms to bundle together.
+3. Components are not commercial-friendly opensource.
 
 We have the opportunity to enhance AYON to create a superior launcher for the Godot Engine and the Project, something many of our competitors cannot do due to similar constraints.
 
