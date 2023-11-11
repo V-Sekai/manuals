@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Sat, 11 Nov 2023 02:32:16 GMT</lastBuildDate>
+<lastBuildDate>Sat, 11 Nov 2023 18:23:56 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -58,7 +58,7 @@
 <li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
 <li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
 </ol>
-<p>This article was assisted by AI.</p>
+<p>This article was assisted by AI assistant Aria.</p>
 
 
 </section>
@@ -66,7 +66,110 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sat, 11 Nov 2023 02:32:16 GMT</pubDate>
+  <pubDate>Sat, 11 Nov 2023 18:23:56 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20231111-ayon-evaluation.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="proposed-evaluate-ayon-pipeline-platform-on-hosted-cloud-services" class="level1">
+<h1>Proposed: Evaluate AYON pipeline platform on hosted cloud services</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: Proposed</li>
+<li>Deciders: V-Sekai</li>
+<li>Tags: V-Sekai</li>
+</ul>
+</section>
+<section id="the-backdrop" class="level2">
+<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
+<section id="ayon" class="level3">
+<h3 class="anchored" data-anchor-id="ayon">AYON</h3>
+<p>AYON is an open-source pipeline platform designed for creative studios, particularly those involved in animation and visual effects (VFX). It provides a robust and scalable solution for managing and executing creative projects. AYON’s source code is publicly accessible, allowing for community-driven development and customization. It is geared towards creative studios, particularly those working in animation and VFX. Evolved from OpenPype, it has been used since 2018 in various production environments. Supported and funded by the creative industry, AYON also offers comprehensive documentation for users, including guides for administrators and developers.</p>
+</section>
+<section id="hosted-cloud-services" class="level3">
+<h3 class="anchored" data-anchor-id="hosted-cloud-services">Hosted Cloud Services</h3>
+<p>Hosted cloud services provide a flexible and scalable infrastructure solution that can be tailored to meet the specific needs of an organization. They offer a range of services including compute power, storage, and networking capabilities, as well as advanced services such as machine learning and data analytics. These services are typically provided on a pay-as-you-go basis, making them a cost-effective option for many organizations.</p>
+</section>
+</section>
+<section id="the-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
+<p>Evaluate AYON on hosted cloud services for a game development studio.</p>
+</section>
+<section id="the-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
+<p>Deploy AYON using a single Docker image with hosted cloud services for Redis and PostgreSQL.</p>
+<section id="revised-deployment-plan-for-ayon-on-digitalocean" class="level3">
+<h3 class="anchored" data-anchor-id="revised-deployment-plan-for-ayon-on-digitalocean">Revised Deployment Plan for AYON on DigitalOcean</h3>
+<ol type="1">
+<li><p><strong>Use a Single Docker Image</strong>: Instead of multiple containers, use one Docker image for the AYON server. This image can be pulled from Docker Hub and configured to connect with external Redis and PostgreSQL services.</p></li>
+<li><p><strong>Hosted Cloud Redis and PostgreSQL</strong>:</p>
+<ul>
+<li><strong>Cloud Redis</strong>: Use DigitalOcean’s Managed Redis service for caching and real-time data processing.</li>
+<li><strong>Cloud PostgreSQL</strong>: Utilize DigitalOcean’s Managed PostgreSQL for your database needs.</li>
+<li><strong>Health Check</strong>: http://localhost:5000/api/info</li>
+<li><strong>Configure Environment Variables</strong>: Set environment variables in your Docker configuration to connect to the Managed Redis and PostgreSQL instances.</li>
+</ul></li>
+<li><p><strong>Deploy on DigitalOcean</strong>: Use DigitalOcean’s App Platform or a Droplet to deploy your Docker image. Configure it to connect to the Managed Redis and PostgreSQL services.</p></li>
+</ol>
+<p>For more detailed guidance on using DigitalOcean’s Managed Redis and PostgreSQL, and for best practices in Docker image deployment on DigitalOcean, a search on DigitalOcean’s documentation and resources would be beneficial.</p>
+<section id="configure-ayon-for-a-game-development-studio" class="level4">
+<h4 class="anchored" data-anchor-id="configure-ayon-for-a-game-development-studio">Configure AYON for a Game Development Studio</h4>
+<p>Next, we will configure AYON according to the needs of a typical game development studio. This includes setting up workflows for creating assets and assemblages in Blender, and importing them into the Godot Engine.</p>
+</section>
+</section>
+<section id="integrate-google-drive-with-the-ayon-homesite" class="level3">
+<h3 class="anchored" data-anchor-id="integrate-google-drive-with-the-ayon-homesite">Integrate Google Drive with the AYON homesite</h3>
+<p>In this step, we will integrate Google Drive with the AYON homesite. This will allow us to store all our files and data directly into Google Drive from the AYON homesite.</p>
+</section>
+<section id="run-tests" class="level3">
+<h3 class="anchored" data-anchor-id="run-tests">Run Tests</h3>
+<p>We will then run a series of tests to assess the performance, reliability, and usability of AYON on hosted cloud services. These tests will simulate tasks a 3D game studio would typically perform, such as creating and modifying assets in Blender, and importing these assets into the Godot Engine.</p>
+</section>
+<section id="document-findings-and-provide-recommendations" class="level3">
+<h3 class="anchored" data-anchor-id="document-findings-and-provide-recommendations">Document Findings and Provide Recommendations</h3>
+<p>Finally, we will document our findings from the tests and provide recommendations based on the evaluation results. This will help us understand how well AYON performs on hosted cloud services, and whether it is a suitable solution for game development studios using the Godot Engine.</p>
+</section>
+</section>
+<section id="the-upside" class="level2">
+<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
+<p>Implementing AYON on hosted cloud services could potentially streamline the workflow of game development studios, making project management more efficient and effective.</p>
+</section>
+<section id="the-downside" class="level2">
+<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
+<p>There may be compatibility issues between AYON and hosted cloud services that could affect performance or functionality. Additionally, there may be a learning curve for teams unfamiliar with AYON.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>Alternative solutions such as proprietary pipeline platforms were considered. However, the open-source nature of AYON provides more flexibility and customization options.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>In cases where the studio is working on multiple platforms or using a variety of software, additional configuration and testing may be required to ensure AYON works seamlessly across all environments.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
+<p>This evaluation aligns with our core competencies in evaluating and implementing technology solutions. As such, it should be executed by our team.</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
+</ol>
+<p>This article was assisted by AI assistant Aria.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20231111-ayon-evaluation.html</guid>
+  <pubDate>Sat, 11 Nov 2023 18:23:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -233,7 +336,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-v-sekai-dependencies.html</guid>
-  <pubDate>Sat, 11 Nov 2023 02:32:16 GMT</pubDate>
+  <pubDate>Sat, 11 Nov 2023 18:23:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -308,7 +411,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-efficient-llm-training.html</guid>
-  <pubDate>Sat, 11 Nov 2023 02:32:16 GMT</pubDate>
+  <pubDate>Sat, 11 Nov 2023 18:23:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -380,7 +483,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-blender-manual-t-pose.html</guid>
-  <pubDate>Sat, 11 Nov 2023 02:32:16 GMT</pubDate>
+  <pubDate>Sat, 11 Nov 2023 18:23:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -409,6 +512,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 <ol type="1">
 <li>The size of the bundle would be quite large.</li>
 <li>They are separate entities that require commercial terms to bundle together.</li>
+<li>Components are not commercial-friendly opensource.</li>
 </ol>
 <p>We have the opportunity to enhance AYON to create a superior launcher for the Godot Engine and the Project, something many of our competitors cannot do due to similar constraints.</p>
 </section>
@@ -453,7 +557,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-better-pipeline-tools.html</guid>
-  <pubDate>Sat, 11 Nov 2023 02:32:16 GMT</pubDate>
+  <pubDate>Sat, 11 Nov 2023 18:23:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -528,7 +632,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-ai-based-outlier-detection.html</guid>
-  <pubDate>Sat, 11 Nov 2023 02:32:16 GMT</pubDate>
+  <pubDate>Sat, 11 Nov 2023 18:23:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -605,7 +709,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-discord-polygonjs-generator.html</guid>
-  <pubDate>Sat, 11 Nov 2023 02:32:16 GMT</pubDate>
+  <pubDate>Sat, 11 Nov 2023 18:23:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -709,7 +813,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-changelog.html</guid>
-  <pubDate>Sat, 11 Nov 2023 02:32:16 GMT</pubDate>
+  <pubDate>Sat, 11 Nov 2023 18:23:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -793,7 +897,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-v-sekai-chat-bot.html</guid>
-  <pubDate>Sat, 11 Nov 2023 02:32:16 GMT</pubDate>
+  <pubDate>Sat, 11 Nov 2023 18:23:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -864,7 +968,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-postgres-bytea-optimizations.html</guid>
-  <pubDate>Sat, 11 Nov 2023 02:32:16 GMT</pubDate>
+  <pubDate>Sat, 11 Nov 2023 18:23:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -934,7 +1038,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-nier-automata-world-expansion.html</guid>
-  <pubDate>Sat, 11 Nov 2023 02:32:16 GMT</pubDate>
+  <pubDate>Sat, 11 Nov 2023 18:23:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1019,7 +1123,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-neon-vercel-functions-toy-problem.html</guid>
-  <pubDate>Sat, 11 Nov 2023 02:32:16 GMT</pubDate>
+  <pubDate>Sat, 11 Nov 2023 18:23:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1097,7 +1201,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-neon-postgresql.html</guid>
-  <pubDate>Sat, 11 Nov 2023 02:32:16 GMT</pubDate>
+  <pubDate>Sat, 11 Nov 2023 18:23:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1170,7 +1274,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-neon-1-gb-scene-storage.html</guid>
-  <pubDate>Sat, 11 Nov 2023 02:32:16 GMT</pubDate>
+  <pubDate>Sat, 11 Nov 2023 18:23:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1234,7 +1338,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-munich-godot-engine-conference.html</guid>
-  <pubDate>Sat, 11 Nov 2023 02:32:16 GMT</pubDate>
+  <pubDate>Sat, 11 Nov 2023 18:23:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1317,7 +1421,7 @@ font-style: inherit;">is</span> at the latest version</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-ansible-new-server-provisioning.html</guid>
-  <pubDate>Sat, 11 Nov 2023 02:32:16 GMT</pubDate>
+  <pubDate>Sat, 11 Nov 2023 18:23:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1381,7 +1485,7 @@ font-style: inherit;">is</span> at the latest version</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231105-pdf-embed-raster-svg-vr.html</guid>
-  <pubDate>Sat, 11 Nov 2023 02:32:16 GMT</pubDate>
+  <pubDate>Sat, 11 Nov 2023 18:23:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1439,7 +1543,7 @@ font-style: inherit;">is</span> at the latest version</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231104-flatbuffer_packed_scenes.html</guid>
-  <pubDate>Sat, 11 Nov 2023 02:32:16 GMT</pubDate>
+  <pubDate>Sat, 11 Nov 2023 18:23:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2044,80 +2148,7 @@ font-style: inherit;">()</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231027-write-a-list-of-github-pull-requests.html</guid>
-  <pubDate>Sat, 11 Nov 2023 02:32:16 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20231027-dreamcraft3d-workflow.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="proposed-dreamcraft3d---a-hierarchical-3d-content-generation-method" class="level1">
-<h1>Proposed: DreamCraft3D - A Hierarchical 3D Content Generation Method</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li><strong>Status:</strong> Proposed</li>
-<li><strong>Deciders:</strong> V-Sekai, fire, Joseph Cat</li>
-<li><strong>Tags:</strong> V-Sekai, VRM, Rigging, 3D Modeling, DreamCraft3D</li>
-</ul>
-</section>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>DreamCraft3D is a hierarchical 3D content generation method that produces high-fidelity and coherent 3D objects. It uses a 2D reference image to guide the stages of geometry sculpting and texture boosting.</p>
-</section>
-<section id="problem" class="level2">
-<h2 class="anchored" data-anchor-id="problem">Problem</h2>
-<p>The main challenge lies in addressing the consistency issue that existing works encounter. To sculpt geometries that render coherently, DreamCraft3D performs score distillation sampling via a view-dependent diffusion model.</p>
-</section>
-<section id="solution" class="level2">
-<h2 class="anchored" data-anchor-id="solution">Solution</h2>
-<p>The strategy for implementing DreamCraft3D involves several steps:</p>
-<ol type="1">
-<li>Use DreamCraft3D to generate high-fidelity and coherent 3D objects from 2D concept art.</li>
-<li>Utilize existing projects like <a href="https://www.mixamo.com/">Mixamo</a> or <a href="https://actorcore.reallusion.com/auto-rig">AccuRig</a> for rigging models.</li>
-<li>If the topology isn’t suitable for animation, employ tools such as <a href="https://github.com/cgg-bern/quadwild-bimdf">Quadwild BIMDF</a> or <a href="https://exoside.com/quadremesher/">Exoside’s Quad Remesher</a> to enhance it.</li>
-<li>Correct bad rigs using delta mush with the help of the <a href="https://github.com/V-Sekai/V-Sekai.blender-game-tools/tree/main/addons/corrective_smooth_baker">Corrective Smooth Baker</a> addon for Blender.</li>
-<li>Develop software to perform clothing simulation differentially, referring to <a href="https://github.com/V-Sekai/V-Sekai.cloth-dynamics">V-Sekai’s Cloth Dynamics</a> as a guide.</li>
-</ol>
-</section>
-<section id="pros" class="level2">
-<h2 class="anchored" data-anchor-id="pros">Pros</h2>
-<p>DreamCraft3D, with its tailored 3D priors throughout the hierarchical generation, can generate coherent 3D objects with photorealistic renderings. This advances the state-of-the-art in 3D content generation.</p>
-</section>
-<section id="cons" class="level2">
-<h2 class="anchored" data-anchor-id="cons">Cons</h2>
-<p>The process of converting 2D concept art into a rigged 3D model can be complex and time-consuming. It also requires expertise in 3D modeling and rigging.</p>
-</section>
-<section id="alternatives" class="level2">
-<h2 class="anchored" data-anchor-id="alternatives">Alternatives</h2>
-<p>An alternative approach could have been to manually create and rig the 3D models. However, this would be even more time-consuming and require even more expertise.</p>
-</section>
-<section id="infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
-<p>If the feature is used infrequently, it may not justify the time and resources spent on developing it.</p>
-</section>
-<section id="ownership" class="level2">
-<h2 class="anchored" data-anchor-id="ownership">Ownership</h2>
-<p>This project aligns with our core expertise in VR technologies and 3D modeling. Therefore, it can be done by us.</p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<p>For further reading, please refer to:</p>
-<ul>
-<li><a href="https://github.com/v-sekai/">V-Sekai GitHub Repository</a></li>
-<li><a href="https://github.com/deepseek-ai/DreamCraft3D">DreamCraft3D Code</a></li>
-<li>AI assists this article.</li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20231027-dreamcraft3d-workflow.html</guid>
-  <pubDate>Sat, 11 Nov 2023 02:32:16 GMT</pubDate>
+  <pubDate>Sat, 11 Nov 2023 18:23:56 GMT</pubDate>
 </item>
 </channel>
 </rss>
