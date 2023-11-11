@@ -1,4 +1,4 @@
-# Acceptd: Run meetings using Lean Coffee
+# Accepted: Run meetings using Lean Coffee
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,Mr. Metaverse,fire,
