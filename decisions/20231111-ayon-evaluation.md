@@ -28,12 +28,17 @@ Deploy AYON using a single Docker image with hosted cloud services for Redis and
 
 Run a release of https://github.com/ynput/OpenPype/releases on Windows 11 desktop.
 
+#### Questions
+
+1. Why does OpenPype use mongodb?
+
 #### Configure AYON for a Game Development Studio
 
 Next, we will configure AYON according to the needs of a typical game development studio. This includes setting up workflows for creating assets and assemblages in Blender, and importing them into the Godot Engine.
 
 1. Set the fps to 30.
 1. Set the resolution to 3840 × 2160
+
 
 ### Integrate Google Drive with the AYON homesite
 
