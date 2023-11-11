@@ -79,5 +79,6 @@ This evaluation aligns with our core competencies in evaluating and implementing
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine
+3. [AYON docjer](https://github.com/ynput/ayon-docker)
 
 This article was assisted by AI assistant Aria.
