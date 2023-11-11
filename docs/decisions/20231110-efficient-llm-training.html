@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>V-Sekai - Manuals – vsekai-godot-ayon</title>
+<title>V-Sekai - Manuals – efficient-llm-training</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -114,92 +114,85 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#proposed-enhancing-godot-engines-3d-pipeline-through-open-source-collaboration" id="toc-proposed-enhancing-godot-engines-3d-pipeline-through-open-source-collaboration" class="nav-link active" data-scroll-target="#proposed-enhancing-godot-engines-3d-pipeline-through-open-source-collaboration">Proposed: Enhancing Godot Engine’s 3D Pipeline through Open-Source Collaboration</a>
+  <li><a href="#proposed-efficient-training-of-llms-in-v-sekai" id="toc-proposed-efficient-training-of-llms-in-v-sekai" class="nav-link active" data-scroll-target="#proposed-efficient-training-of-llms-in-v-sekai">Proposed: Efficient Training of LLMs in V-Sekai</a>
   <ul class="collapse">
   <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
-  <li><a href="#the-backdrop" id="toc-the-backdrop" class="nav-link" data-scroll-target="#the-backdrop">The Backdrop</a></li>
-  <li><a href="#the-challenge" id="toc-the-challenge" class="nav-link" data-scroll-target="#the-challenge">The Challenge</a></li>
-  <li><a href="#the-strategy" id="toc-the-strategy" class="nav-link" data-scroll-target="#the-strategy">The Strategy</a></li>
-  <li><a href="#the-upside" id="toc-the-upside" class="nav-link" data-scroll-target="#the-upside">The Upside</a></li>
-  <li><a href="#the-downside" id="toc-the-downside" class="nav-link" data-scroll-target="#the-downside">The Downside</a></li>
-  <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
-  <li><a href="#the-infrequent-use-case" id="toc-the-infrequent-use-case" class="nav-link" data-scroll-target="#the-infrequent-use-case">The Infrequent Use Case</a></li>
-  <li><a href="#in-core-and-done-by-us" id="toc-in-core-and-done-by-us" class="nav-link" data-scroll-target="#in-core-and-done-by-us">In Core and Done by Us?</a></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
-  <li><a href="#letter" id="toc-letter" class="nav-link" data-scroll-target="#letter">Letter</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
+  <li><a href="#problem" id="toc-problem" class="nav-link" data-scroll-target="#problem">Problem</a></li>
+  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
+  <li><a href="#pros-and-cons" id="toc-pros-and-cons" class="nav-link" data-scroll-target="#pros-and-cons">Pros and Cons</a></li>
+  <li><a href="#alternatives" id="toc-alternatives" class="nav-link" data-scroll-target="#alternatives">Alternatives</a></li>
+  <li><a href="#rare-use-cases" id="toc-rare-use-cases" class="nav-link" data-scroll-target="#rare-use-cases">Rare Use Cases</a></li>
+  <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation">Implementation</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/decisions/20231109-vsekai-godot-ayon.md" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/decisions/20231110-efficient-llm-training.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-<section id="proposed-enhancing-godot-engines-3d-pipeline-through-open-source-collaboration" class="level1">
-<h1>Proposed: Enhancing Godot Engine’s 3D Pipeline through Open-Source Collaboration</h1>
+<section id="proposed-efficient-training-of-llms-in-v-sekai" class="level1">
+<h1>Proposed: Efficient Training of LLMs in V-Sekai</h1>
 <section id="metadata" class="level2">
 <h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
-<li><strong>Status:</strong> Proposed</li>
-<li><strong>Deciders:</strong> V-Sekai, fire</li>
-<li><strong>Tags:</strong> V-Sekai, Godot Engine, FBX Importer, Open-Source, Collaboration</li>
+<li>Status: Proposed</li>
+<li>Deciders: V-Sekai</li>
+<li>Tags: V-Sekai, LLM, Training</li>
 </ul>
 </section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>V-Sekai is an open-source collective focused on improving <a href="https://godotengine.org/">Godot Engine’s</a> 3D and animation capabilities. The community is founded on strong principles of inclusivity, sharing knowledge, and fostering a friendly environment for all contributors.</p>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>Given the limited resources available to V-Sekai, it is crucial to optimize the training time for Language Learning Models (LLMs) like Aria assistant.</p>
 </section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>The collective aims to enhance the Godot Engine’s 3D pipeline, addressing the need for a robust workflow that can efficiently integrate <a href="https://openusd.org/release/index.html">USD</a> and Maya within a Blender-to-Godot environment, improve asset storage, automate conversions, manage CDN distributions, and develop a specialized Godot Engine Launcher.</p>
+<section id="problem" class="level2">
+<h2 class="anchored" data-anchor-id="problem">Problem</h2>
+<p>The challenge lies in efficiently training these models within a constrained timeframe - ideally not exceeding one day.</p>
 </section>
-<section id="the-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>To collaborate with <a href="https://ayon.ynput.io/">AYON</a>, drawing on their expertise to bolster the Godot Engine’s pipeline. This partnership will focus on developing strategies and tools that align with the collective’s vision and the broader needs of the game development community.</p>
+<section id="solution" class="level2">
+<h2 class="anchored" data-anchor-id="solution">Solution</h2>
+<p>To expedite the training process, we propose the following adjustments to Ludwig:</p>
+<ol type="1">
+<li>Set <code>trainable=false</code> to make training over 50x faster.</li>
+<li>Enable Automatic Mixed Precision (AMP) training, which is available when both <code>trainable=true</code> and <code>trainable=false</code>.</li>
+<li>Implement approximate training set evaluation (<code>evaluate_training_set=false</code>). This computes the reported training set metrics at the end of each epoch as a running aggregation of the metrics during training, rather than a separate pass over the training set at the end of each epoch of training. Although this may result in “noisy” metrics in the early epochs, it generally leads to a 33% speedup in training time.</li>
+</ol>
 </section>
-<section id="the-upside" class="level2">
-<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<p>The collaboration with AYON could accelerate the development of an optimized pipeline, leading to increased efficiency, better asset management, and a more intuitive experience for artists and developers alike.</p>
-</section>
-<section id="the-downside" class="level2">
-<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<p>This initiative may encounter challenges in integrating feedback from a broad user base and balancing the technical direction with the varied needs of community members.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Without AYON’s collaboration, V-Sekai might continue to rely on a less optimized pipeline, potentially slowing innovation and the integration of new technologies within the Godot Engine community.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>The partnership will aim to create flexible pipeline solutions that not only cater to common use cases but also accommodate less frequent, specialized workflows, ensuring a broad applicability.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>While the initiative is core to V-Sekai’s mission, the partnership with AYON will bring in external expertise to complement the in-house capabilities, fostering a balanced approach to pipeline development.</p>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<p>For a deeper understanding of V-Sekai’s goals, community-driven projects, and the progression of the Godot FBX importer:</p>
+<section id="pros-and-cons" class="level2">
+<h2 class="anchored" data-anchor-id="pros-and-cons">Pros and Cons</h2>
+<p><strong>Pros:</strong></p>
 <ul>
-<li><a href="https://github.com/v-sekai/">V-Sekai GitHub</a></li>
-<li><a href="https://docs.godotengine.org/en/stable/contributing/development/file_formats/tscn.html">Godot Engine Documentation on TSCN file format</a></li>
+<li>Significantly reduces training time.</li>
+<li>Allows for more efficient use of resources.</li>
 </ul>
-<p>This article was assisted by AI, synthesizing V-Sekai’s collaborative spirit and the potential of its partnership with AYON to advance the Godot Engine’s capabilities.</p>
-</section>
-<section id="letter" class="level2">
-<h2 class="anchored" data-anchor-id="letter">Letter</h2>
-<p>I’m with V-Sekai, where we work with the Godot Engine, focusing on enhancing 3D formats and animations through open-source collaboration. Our group is built on the principles of community, friendliness, and shared knowledge.</p>
-<p>We’ve put together a promising alpha-level Godot FBX importer, thanks to our community-driven approach. While formal testing isn’t our forte, we’re lucky to have a broad user base willing to test and provide feedback, which is vital for refining a game engine pipeline.</p>
-<p>We’re reaching out to learn from AYON’s expertise in a few specific areas:</p>
+<p><strong>Cons:</strong></p>
 <ul>
-<li><strong>USD &amp; Maya Integration:</strong> Strategies to integrate USD and Maya within a Blender-to-Godot workflow.</li>
-<li><strong>Asset Storage Solutions:</strong> Viable alternatives to mainstream asset storage systems.</li>
-<li><strong>Automated Conversion Services:</strong> Tools for validating and converting source formats to Godot’s native formats (.tscn, .scn, .res, .tres).</li>
-<li><strong>CDN Management:</strong> Techniques to differentiate between production and development CDNs to streamline asset and code management.</li>
-<li><strong>Godot Engine Launcher:</strong> Assistance in creating an automated custom launcher for the Godot Engine, aiding studios in managing updates and projects for their custom engine changes.</li>
+<li>Early training metrics may appear “noisy”.</li>
 </ul>
-<p>We’re excited about the possibility of collaborating to build a pipeline that serves the game development community and keeps up with industry needs.</p>
+</section>
+<section id="alternatives" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives">Alternatives</h2>
+<p>This section will be updated with potential alternatives if the proposed solution does not yield the expected results.</p>
+</section>
+<section id="rare-use-cases" class="level2">
+<h2 class="anchored" data-anchor-id="rare-use-cases">Rare Use Cases</h2>
+<p>This section will be updated with infrequent use cases that may arise during the implementation of the proposed solution.</p>
+</section>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<p>Is this solution core to our operations and will it be implemented by us? This section will be updated accordingly.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a></li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a></li>
+<li><a href="https://ludwig.ai/latest/examples/llms/llm_classification/">LLM Classification - Ludwig</a></li>
+</ol>
+<p><em>This proposal was assisted by Aria, an AI assistant.</em></p>
 
 
 </section>
