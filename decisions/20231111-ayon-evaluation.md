@@ -26,7 +26,7 @@ Deploy AYON using a single Docker image with hosted cloud services for Redis and
 
 ### Deployment Plan for AYON
 
-Run a release of https://github.com/ynput/OpenPype/releases on Windows 11 desktop.
+~~Run a release of https://github.com/ynput/OpenPype/releases on Windows 11 desktop.~~
 
 #### Questions
 
