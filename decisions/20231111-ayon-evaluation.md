@@ -24,7 +24,7 @@ Evaluate AYON on hosted cloud services for a game development studio.
 
 Deploy AYON using a single Docker image with hosted cloud services for Redis and PostgreSQL.
 
-### Revised Deployment Plan for AYON on DigitalOcean
+### Deployment Plan for AYON on DigitalOcean
 
 1. **Use a Single Docker Image**: Instead of multiple containers, use one Docker image for the AYON server. This image can be pulled from Docker Hub and configured to connect with external Redis and PostgreSQL services.
 
