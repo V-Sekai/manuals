@@ -12,7 +12,7 @@ V-Sekai is an open-source project that brings social VR/VRSNS/metaverse componen
 
 ## Problem
 
-The current system lacks a mechanism to validate scenes, count triangles, convert GLTF to Godot scene, and strip bad code from Godot scenes. This can lead to errors and inefficiencies in the development process.
+The current backend system lacks a mechanism to validate scenes, count triangles, convert GLTF to Godot scene, and strip bad code from Godot scenes. This can lead to errors and inefficiencies in the development process.
 
 ## Proposed Solution
 
