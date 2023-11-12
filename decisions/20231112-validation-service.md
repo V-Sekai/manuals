@@ -18,10 +18,11 @@ The current system lacks a mechanism to validate scenes, count triangles, conver
 
 The proposed solution is to create a validator service that conforms to a specific specification. This service would:
 
-1. Go over the scene and print the number of triangles.
-2. Convert GLTF to Godot scene.
-3. Run a validation that strips the bad code from the Godot scene.
-4. Use websockets and an API for communication and function calls.
+1. Convert GLTF to Godot scene.
+2. Go over the scene and print the number of triangles.
+3. If necessary, run LOD on the scene.
+4. Run a validation that strips the bad code from the Godot scene.
+5. Use websockets and an API for communication and function calls.
 
 The front-end for this service could be a CLI that calls the function locally. The asset service would call the validator service, which would then notify the websocket service via its API call.
 
