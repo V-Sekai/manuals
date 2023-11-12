@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Sun, 12 Nov 2023 17:38:06 GMT</lastBuildDate>
+<lastBuildDate>Sun, 12 Nov 2023 17:58:08 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -66,7 +66,90 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 12 Nov 2023 17:38:06 GMT</pubDate>
+  <pubDate>Sun, 12 Nov 2023 17:58:08 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20231112-validation-service.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="proposal-validator-service-for-v-sekai" class="level1">
+<h1>Proposal: Validator Service for V-Sekai</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: Proposed</li>
+<li>Deciders: iFire, Bioblaze Payne, V-Sekai Team</li>
+<li>Tags: V-Sekai, Validator Service, Godot Engine, GLTF, Websockets, API</li>
+</ul>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>V-Sekai is an open-source project that brings social VR/VRSNS/metaverse components to the Godot Engine. The team is considering implementing a validator service to enhance the functionality and reliability of their projects.</p>
+</section>
+<section id="problem" class="level2">
+<h2 class="anchored" data-anchor-id="problem">Problem</h2>
+<p>The current system lacks a mechanism to validate scenes, count triangles, convert GLTF to Godot scene, and strip bad code from Godot scenes. This can lead to errors and inefficiencies in the development process.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>The proposed solution is to create a validator service that conforms to a specific specification. This service would:</p>
+<ol type="1">
+<li>Go over the scene and print the number of triangles.</li>
+<li>Convert GLTF to Godot scene.</li>
+<li>Run a validation that strips the bad code from the Godot scene.</li>
+<li>Use websockets and an API for communication and function calls.</li>
+</ol>
+<p>The front-end for this service could be a CLI that calls the function locally. The asset service would call the validator service, which would then notify the websocket service via its API call.</p>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<p>Implementing this validator service would provide several benefits:</p>
+<ol type="1">
+<li>Improved accuracy and efficiency in the development process.</li>
+<li>Enhanced error detection and prevention.</li>
+<li>Streamlined communication between different parts of the system.</li>
+</ol>
+</section>
+<section id="potential-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="potential-downsides">Potential Downsides</h2>
+<p>Potential challenges or downsides could include:</p>
+<ol type="1">
+<li>Complexity in setting up and maintaining the validator service.</li>
+<li>Need for thorough testing to ensure the validator service works as expected.</li>
+</ol>
+</section>
+<section id="alternatives-considered" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
+<p>An alternative approach could be to use gdscript + webrtc instead of websockets + API for communication and function calls. However, this would need to be evaluated for feasibility and efficiency.</p>
+</section>
+<section id="next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps">Next Steps</h2>
+<p>The next steps would be to:</p>
+<ol type="1">
+<li>Finalize the specification for the validator service.</li>
+<li>Develop the validator service according to the agreed-upon specification.</li>
+<li>Test the validator service thoroughly to ensure it works as expected.</li>
+<li>Implement the validator service in the V-Sekai system.</li>
+</ol>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
+</ol>
+<p>This proposal was assisted by AI assistant Aria.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20231112-validation-service.html</guid>
+  <pubDate>Sun, 12 Nov 2023 17:58:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -142,7 +225,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231112-archive-projects.html</guid>
-  <pubDate>Sun, 12 Nov 2023 17:38:06 GMT</pubDate>
+  <pubDate>Sun, 12 Nov 2023 17:58:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -246,7 +329,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231111-ayon-evaluation.html</guid>
-  <pubDate>Sun, 12 Nov 2023 17:38:06 GMT</pubDate>
+  <pubDate>Sun, 12 Nov 2023 17:58:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -413,7 +496,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-v-sekai-dependencies.html</guid>
-  <pubDate>Sun, 12 Nov 2023 17:38:06 GMT</pubDate>
+  <pubDate>Sun, 12 Nov 2023 17:58:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -488,7 +571,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-efficient-llm-training.html</guid>
-  <pubDate>Sun, 12 Nov 2023 17:38:06 GMT</pubDate>
+  <pubDate>Sun, 12 Nov 2023 17:58:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -560,7 +643,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-blender-manual-t-pose.html</guid>
-  <pubDate>Sun, 12 Nov 2023 17:38:06 GMT</pubDate>
+  <pubDate>Sun, 12 Nov 2023 17:58:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -634,7 +717,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-better-pipeline-tools.html</guid>
-  <pubDate>Sun, 12 Nov 2023 17:38:06 GMT</pubDate>
+  <pubDate>Sun, 12 Nov 2023 17:58:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -709,7 +792,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-ai-based-outlier-detection.html</guid>
-  <pubDate>Sun, 12 Nov 2023 17:38:06 GMT</pubDate>
+  <pubDate>Sun, 12 Nov 2023 17:58:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -786,7 +869,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-discord-polygonjs-generator.html</guid>
-  <pubDate>Sun, 12 Nov 2023 17:38:06 GMT</pubDate>
+  <pubDate>Sun, 12 Nov 2023 17:58:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -890,7 +973,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-changelog.html</guid>
-  <pubDate>Sun, 12 Nov 2023 17:38:06 GMT</pubDate>
+  <pubDate>Sun, 12 Nov 2023 17:58:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -974,7 +1057,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-v-sekai-chat-bot.html</guid>
-  <pubDate>Sun, 12 Nov 2023 17:38:06 GMT</pubDate>
+  <pubDate>Sun, 12 Nov 2023 17:58:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1045,7 +1128,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-postgres-bytea-optimizations.html</guid>
-  <pubDate>Sun, 12 Nov 2023 17:38:06 GMT</pubDate>
+  <pubDate>Sun, 12 Nov 2023 17:58:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1115,7 +1198,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-nier-automata-world-expansion.html</guid>
-  <pubDate>Sun, 12 Nov 2023 17:38:06 GMT</pubDate>
+  <pubDate>Sun, 12 Nov 2023 17:58:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1200,7 +1283,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-neon-vercel-functions-toy-problem.html</guid>
-  <pubDate>Sun, 12 Nov 2023 17:38:06 GMT</pubDate>
+  <pubDate>Sun, 12 Nov 2023 17:58:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1278,7 +1361,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-neon-postgresql.html</guid>
-  <pubDate>Sun, 12 Nov 2023 17:38:06 GMT</pubDate>
+  <pubDate>Sun, 12 Nov 2023 17:58:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1351,7 +1434,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-neon-1-gb-scene-storage.html</guid>
-  <pubDate>Sun, 12 Nov 2023 17:38:06 GMT</pubDate>
+  <pubDate>Sun, 12 Nov 2023 17:58:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1415,7 +1498,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-munich-godot-engine-conference.html</guid>
-  <pubDate>Sun, 12 Nov 2023 17:38:06 GMT</pubDate>
+  <pubDate>Sun, 12 Nov 2023 17:58:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1498,7 +1581,7 @@ font-style: inherit;">is</span> at the latest version</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-ansible-new-server-provisioning.html</guid>
-  <pubDate>Sun, 12 Nov 2023 17:38:06 GMT</pubDate>
+  <pubDate>Sun, 12 Nov 2023 17:58:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1562,65 +1645,7 @@ font-style: inherit;">is</span> at the latest version</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231105-pdf-embed-raster-svg-vr.html</guid>
-  <pubDate>Sun, 12 Nov 2023 17:38:06 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20231104-flatbuffer_packed_scenes.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="rejected-merge-scene-tool-for-godot-editor-with-flatbuffer-based-json-serialization" class="level1">
-<h1>Rejected: Merge Scene Tool for Godot Editor with FlatBuffer-based JSON Serialization</h1>
-<section id="problem-merging-scenes-in-collaborative-projects" class="level2">
-<h2 class="anchored" data-anchor-id="problem-merging-scenes-in-collaborative-projects">Problem: Merging Scenes in Collaborative Projects</h2>
-<p>In collaborative projects, team members may edit the same scene in different ways. Version control systems (VCS) like Git can help manage these modifications through merging. However, merging scenes (TSCN format) can be challenging due to their complex semantics and potential for corruption.</p>
-</section>
-<section id="solution-integrate-a-merge-scene-tool-in-godot-editor" class="level2">
-<h2 class="anchored" data-anchor-id="solution-integrate-a-merge-scene-tool-in-godot-editor">Solution: Integrate a Merge Scene Tool in Godot Editor</h2>
-<p>To prevent scene corruption after merging, the Godot Editor should provide a merge scene window that allows users to merge TSCN files. This tool should:</p>
-<ol type="1">
-<li>Detect Git merge conflict placeholders (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>)</li>
-<li>Reconstruct local and remote scenes</li>
-<li>Display a merged scene tree with actions to accept or discard changes, or choose between local and remote versions</li>
-</ol>
-<p>The merge tool should be intelligent enough to detect node movements, renaming, and other complex scene semantics. It should also allow users to edit the merged scene before saving it.</p>
-<section id="flatbuffer-based-json-serialization-for-merge-tool-state" class="level3">
-<h3 class="anchored" data-anchor-id="flatbuffer-based-json-serialization-for-merge-tool-state">FlatBuffer-based JSON Serialization for Merge Tool State</h3>
-<p>To ensure efficient serialization of the internal state of the merge tool at the start, in between, and at the end, FlatBuffer-based JSON should be used. This will allow for faster processing and better performance while maintaining human-readability.</p>
-</section>
-</section>
-<section id="reason-for-core-integration" class="level2">
-<h2 class="anchored" data-anchor-id="reason-for-core-integration">Reason for Core Integration</h2>
-<p>While this feature could be implemented as an add-on, a merge tool is a common feature in modern IDEs and should be fully integrated into the Godot Editor for a seamless user experience.</p>
-</section>
-</section>
-<section id="alternative-file-formats-for-godot-scenes" class="level1">
-<h1>Alternative File Formats for Godot Scenes</h1>
-<section id="problem-limited-scene-file-format-options" class="level2">
-<h2 class="anchored" data-anchor-id="problem-limited-scene-file-format-options">Problem: Limited Scene File Format Options</h2>
-<p>When working on a project related to Godot, such as game development or add-ons, you may encounter limitations with the current scene file formats:</p>
-<ul>
-<li><strong>escn</strong>: For scenes created by external tools (e.g., importing from Blender)</li>
-<li><strong>scn</strong>: Binary format, small but not very useful when collaborating on a project</li>
-<li><strong>tscn</strong>: Textual format, INI/TOML-like syntax, human-readable, and encouraged for use</li>
-</ul>
-<p>The TSCN format is proprietary and not widely used, leading to issues such as difficulty editing scenes outside of the Godot Editor and a lack of supporting tools like linters or syntax checkers.</p>
-</section>
-<section id="solution-support-flatbuffer-based-json-as-an-alternative-human-readable-file-format" class="level2">
-<h2 class="anchored" data-anchor-id="solution-support-flatbuffer-based-json-as-an-alternative-human-readable-file-format">Solution: Support FlatBuffer-based JSON as an Alternative Human-Readable File Format</h2>
-<p>To overcome these limitations, it would be beneficial for Godot to support alternative human-readable file formats, such as FlatBuffer-based JSON. FlatBuffers provide a more efficient way to serialize and deserialize data compared to standard JSON while still being human-readable.</p>
-<p>This feature should be part of the core engine to ensure official support and seamless integration.</p>
-<p>Use the extension <code>FBJSCN</code>.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20231104-flatbuffer_packed_scenes.html</guid>
-  <pubDate>Sun, 12 Nov 2023 17:38:06 GMT</pubDate>
+  <pubDate>Sun, 12 Nov 2023 17:58:08 GMT</pubDate>
 </item>
 </channel>
 </rss>
