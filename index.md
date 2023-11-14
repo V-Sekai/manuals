@@ -11,13 +11,9 @@
 7. **Organize**: Issues [here](https://github.com/V-Sekai/v-sekai-game/issues).
 8. **Contact**: SaracenOne, Lyuma, or Fire.
 
-| Note 🌍                                                                                                                                                                                                                                                                                                                                                                 |
-| :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Here's how to pronounce "V-Sekai": <br> - **Vee**: Just like the letter 'V'. Rhymes with 'see', 'tree', and 'bee'. <br> - **Say**: As in saying something out loud. Rhymes with 'day', 'play', and 'bay'. <br> - **Kai**: Sounds like 'sky' without the 's'. Rhymes with 'tie', 'buy', and 'lie'. <br> So, when you put it all together, it sounds like: "Vee-Say-Kai". |
-
 ## Letter
 
-As a part of V-Sekai, I (Fire) am joyed to be in a group of developers who are passionate about creating open-source VR technology. We started with a dream to build an open-source VR tech stack using the Godot Engine, a popular open-source game engine. Our goal was not only to contribute to the social VR space but also to provide alternatives to proprietary engines like Unity and Unreal.
+As a part of V-Sekai (pronounced vee-say-kai), I (Fire) am joyed to be in a group of developers who are passionate about creating open-source VR technology. We started with a dream to build an open-source VR tech stack using the Godot Engine, a popular open-source game engine. Our goal was not only to contribute to the social VR space but also to provide alternatives to proprietary engines like Unity and Unreal.
 
 We've worked on many projects for Godot, including support for the VRM virtual character model format, an importer for Unitypackage content, systems for IK and character animation retargeting, more robust networking solutions, a WebAssembly-based scripting engine, improvements to Godot’s VR support, and much more.
 
