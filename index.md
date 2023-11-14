@@ -3,7 +3,6 @@
 ## Participate
 
 1. **Chat**: On [Discord](https://discord.gg/7BQDHesck8).
-2. **Test**: Our latest builds [here](https://v-sekai.github.io/manuals/play_latest.html).
 3. **Visit**: [v-sekai.org](https://v-sekai.org).
 4. **Follow**: Us on [Twitter](https://twitter.com/VSekaiOfficial).
 5. **Contribute**: On GitHub [here](https://github.com/V-Sekai).
