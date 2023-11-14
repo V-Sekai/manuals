@@ -1,4 +1,4 @@
-# Proposed: Defining the List of Godot Types in Elixir Godot Parsers #4
+# Proposed: Defining the List of Godot Types in Elixir Godot Parsers
 
 ## Metadata
 
