@@ -10,7 +10,1161 @@
 <atom:link href="https://v-sekai.github.io/manuals/demo_to_game.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Tue, 14 Nov 2023 18:10:58 GMT</lastBuildDate>
+<lastBuildDate>Mon, 20 Nov 2023 06:12:05 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/demo_to_game/00_ingest_validate.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="prototype-0-push-an-asset-to-a-service" class="level2">
+<h2 class="anchored" data-anchor-id="prototype-0-push-an-asset-to-a-service">Prototype 0: Push an Asset to a Service</h2>
+<p>This prototype involves pushing an asset to a service with sanitization and validation. The service will separate the Node3D, colliders, and skeletons. Then, the game server pulls those elements in.</p>
+<section id="input" class="level3">
+<h3 class="anchored" data-anchor-id="input">Input</h3>
+<p>The input for this prototype is either a Godot text scene or a Godot binary scene.</p>
+</section>
+<section id="data-structures" class="level3">
+<h3 class="anchored" data-anchor-id="data-structures">Data Structures</h3>
+<p>There are two main data structures used in this prototype:</p>
+<ul>
+<li>An Elixir struct representing a Godot Scene.</li>
+<li>An Elixir struct that represents the list of validations for 3D modeling and animation.</li>
+</ul>
+<section id="godot-scene" class="level4">
+<h4 class="anchored" data-anchor-id="godot-scene">Godot Scene</h4>
+<p>The Godot Scene does the following:</p>
+<ol type="1">
+<li>Reconstructs a virtual tree from a flat array of nodes to prevent node paths from breaking out of the scene.</li>
+<li>Strips resources like gdscripts in the packed scene using a whitelist.</li>
+</ol>
+</section>
+<section id="node3d-validations" class="level4">
+<h4 class="anchored" data-anchor-id="node3d-validations">Node3D Validations</h4>
+<p>The Node3D Validations include:</p>
+<ol type="1">
+<li><strong>Validate Node3D Naming Suffix</strong>: This confirms that the naming suffix for Node3D is correct.</li>
+<li><strong>Validate Unique Names</strong>: This verifies that all names in the Node3D are unique.</li>
+</ol>
+</section>
+<section id="colliders-validations" class="level4">
+<h4 class="anchored" data-anchor-id="colliders-validations">Colliders Validations</h4>
+<p>The Colliders Validations include:</p>
+<ol type="1">
+<li><strong>Validate Collider Shape</strong>: This ensures that each collider has a valid shape assigned.</li>
+<li><strong>Validate Collider Position</strong>: This checks that each collider’s position is within the expected range.</li>
+<li><strong>Validate Collider Size</strong>: This confirms that each collider’s size is within the expected range.</li>
+</ol>
+</section>
+<section id="skeleton-validations" class="level4">
+<h4 class="anchored" data-anchor-id="skeleton-validations">Skeleton Validations</h4>
+<p>The Skeleton Validations include:</p>
+<ol type="1">
+<li><strong>Validate Skeleton Bones</strong>: This ensures that each bone in the skeleton is connected to at least one other bone.</li>
+<li><strong>Validate Skeleton Bind Pose</strong>: This checks that the bind pose of the skeleton is correctly defined.</li>
+<li><strong>Validate Skeleton Weight Painting</strong>: This confirms that the weight painting of the skeleton is correctly done.</li>
+</ol>
+</section>
+</section>
+<section id="output" class="level3">
+<h3 class="anchored" data-anchor-id="output">Output</h3>
+<p>The output for this prototype is a Godot Scene.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/demo_to_game/00_ingest_validate.html</guid>
+  <pubDate>Mon, 20 Nov 2023 06:12:05 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/demo_to_game/00_store.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="setup-summary" class="level1">
+<h1>Setup Summary</h1>
+<p>This guide provides a step-by-step process to set up Dokku, configure SeaweedFS for local file storage with S3 compatible services, deploy an Elixir application named ‘uro’, and start CockroachDB and Godot Engine Server.</p>
+</section>
+<section id="table-of-contents" class="level1">
+<h1>Table of Contents</h1>
+<ol type="1">
+<li>Hardware Requirements</li>
+<li>Install Dokku</li>
+<li>Setup Dokku</li>
+<li>Install and Configure SeaweedFS</li>
+<li>Deploying the Elixir Application</li>
+<li>Starting CockroachDB in Dokku</li>
+<li>Starting Godot Engine Server</li>
+<li>Exposing the Servers using Tailscale</li>
+</ol>
+<section id="hardware-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="hardware-requirements">Hardware Requirements</h2>
+<p>The following hardware requirements are recommended for the setup:</p>
+<ul>
+<li>CPU: 2 GHz or faster processor</li>
+<li>Memory: 4 GB RAM</li>
+<li>Storage: SSD with at least 20 GB of available space</li>
+<li>Network: Broadband Internet connection</li>
+</ul>
+<p>Please note that a GPU is not required for this setup.</p>
+</section>
+<section id="step-1-install-dokku" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-install-dokku">Step 1: Install Dokku</h2>
+<p>First, you need to install Dokku. You can do this on a Ubuntu system with the following commands:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">wget</span> https://raw.githubusercontent.com/dokku/dokku/v0.24.10/bootstrap.sh<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> DOKKU_TAG=v0.24.10 bash bootstrap.sh</span></code></pre></div>
+</section>
+<section id="step-2-setup-dokku" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-setup-dokku">Step 2: Setup Dokku</h2>
+<p>After installation, you can then proceed to set up Dokku by visiting your server’s IP address in your web browser.</p>
+</section>
+<section id="step-3-install-and-configure-seaweedfs" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-install-and-configure-seaweedfs">Step 3: Install and Configure SeaweedFS</h2>
+<p>Next, you need to install SeaweedFS and start the SeaweedFS master and volume servers:</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">wget</span> https://github.com/chrislusf/seaweedfs/releases/download/2.59/linux_amd64.tar.gz</span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tar</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-zxvf</span> linux_amd64.tar.gz</span>
+<span id="cb2-3"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">./weed</span> master</span>
+<span id="cb2-4"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">./weed</span> s3</span></code></pre></div>
+<p>This will start the SeaweedFS master server and the S3 gateway.</p>
+</section>
+<section id="step-4-deploying-the-elixir-application" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-deploying-the-elixir-application">Step 4: Deploying the Elixir Application</h2>
+<p>Create a new app on Dokku and push your app to Dokku:</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">dokku</span> apps:create uro</span>
+<span id="cb3-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">git</span> remote add dokku dokku@your-server-ip:uro</span>
+<span id="cb3-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">git</span> push dokku master</span></code></pre></div>
+</section>
+<section id="step-5-starting-cockroachdb-in-dokku" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-starting-cockroachdb-in-dokku">Step 5: Starting CockroachDB in Dokku</h2>
+<p>To start CockroachDB in Dokku, install the Dokku docker-options plugin, set the Docker options for your app, pull the CockroachDB Docker image, and start CockroachDB:</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> dokku plugin:install https://github.com/dokku/dokku-docker-options.git docker-options</span>
+<span id="cb4-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">dokku</span> docker-options:add uro deploy <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"-p 26257:26257"</span></span>
+<span id="cb4-3"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">dokku</span> docker-options:add uro deploy <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"-p 8080:8080"</span></span>
+<span id="cb4-4"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">docker</span> pull cockroachdb/cockroach:v20.2.8</span>
+<span id="cb4-5"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">docker</span> run <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-d</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--name</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>cockroachdb <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-p</span> 26257:26257 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-p</span> 8080:8080 cockroachdb/cockroach:v20.2.8 start <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--insecure</span></span></code></pre></div>
+</section>
+<section id="step-6-starting-godot-engine-server" class="level2">
+<h2 class="anchored" data-anchor-id="step-6-starting-godot-engine-server">Step 6: Starting Godot Engine Server</h2>
+<p>Starting a Godot engine server involves pulling the Godot Docker image, setting the Docker options for your app, and starting the server:</p>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># The version is for reference and is not the correct Godot Engine image tag.</span></span>
+<span id="cb5-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">docker</span> pull godotengine/godot:4.2.0</span>
+<span id="cb5-3"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">dokku</span> docker-options:add uro deploy <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"-p 47989:47989"</span></span>
+<span id="cb5-4"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">dokku</span> docker-options:add uro deploy <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"-p 6007:6007"</span></span>
+<span id="cb5-5"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">docker</span> run <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-d</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--name</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>godot-server <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-p</span> 47989:47989 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-p</span> 6007:6007 godotengine/godot:4.2.0</span></code></pre></div>
+</section>
+<section id="exposing-the-servers-using-tailscale" class="level2">
+<h2 class="anchored" data-anchor-id="exposing-the-servers-using-tailscale">Exposing the Servers using Tailscale</h2>
+<p>Tailscale can be used to securely expose your ‘uro’ server and game server to the world. Here’s how you can do it:</p>
+<ol type="1">
+<li>Install Tailscale on your server:</li>
+</ol>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">curl</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-fsSL</span> https://pkgs.tailscale.com/stable/ubuntu/focal.gpg <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> apt-key add <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-</span></span>
+<span id="cb6-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">curl</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-fsSL</span> https://pkgs.tailscale.com/stable/ubuntu/focal.list <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> tee /etc/apt/sources.list.d/tailscale.list</span>
+<span id="cb6-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> apt-get update</span>
+<span id="cb6-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> apt-get install tailscale</span></code></pre></div>
+<ol start="2" type="1">
+<li>Authenticate Tailscale:</li>
+</ol>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> tailscale up</span></code></pre></div>
+<p>Follow the prompts to authenticate Tailscale with your Tailscale account.</p>
+<ol start="3" type="1">
+<li>Now, your servers should be accessible from any device logged into your Tailscale network. You can check the IP addresses assigned to your servers by Tailscale with:</li>
+</ol>
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">tailscale</span> ip <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-4</span></span></code></pre></div>
+<p>Please note that you’ll need to replace <code>your-server-ip</code> with the actual IP address of your server. Also, the port numbers used here are just examples. You should use the port numbers that are appropriate for your setup.</p>
+</section>
+<section id="todo-generate-certificate-with-caddy" class="level2">
+<h2 class="anchored" data-anchor-id="todo-generate-certificate-with-caddy">TODO: Generate certificate with Caddy</h2>
+<p>Instruct how to generate certificates with Caddy.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/demo_to_game/00_store.html</guid>
+  <pubDate>Mon, 20 Nov 2023 06:12:05 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/demo_to_game/01_push.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="prototype-1-element-instantiation-and-uploading" class="level1">
+<h1>Prototype 1: Element Instantiation and Uploading</h1>
+<p>This prototype involves two main steps:</p>
+<section id="instantiating-elements-into-the-virtual-world" class="level2">
+<h2 class="anchored" data-anchor-id="instantiating-elements-into-the-virtual-world">Instantiating Elements into the Virtual World</h2>
+<p>The first part of this prototype is focused on instantiating elements into our virtual world. These elements will be available for user interaction.</p>
+<section id="elements-include" class="level3">
+<h3 class="anchored" data-anchor-id="elements-include">Elements include:</h3>
+<ol type="1">
+<li><strong>Colliders</strong>: These are invisible objects that simulate solid matter.</li>
+<li><strong>Per Bone Capsules</strong>: These are simplified user avatars used for collision detection.</li>
+</ol>
+</section>
+</section>
+<section id="pulling-elements-for-user-interaction" class="level2">
+<h2 class="anchored" data-anchor-id="pulling-elements-for-user-interaction">Pulling Elements for User Interaction</h2>
+<p>After instantiation, these elements will be pulled for user interaction. This allows users to interact with the colliders and per bone capsules within the virtual environment.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/demo_to_game/01_push.html</guid>
+  <pubDate>Mon, 20 Nov 2023 06:12:05 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/demo_to_game/02_packaging_marker3D_and_quad_plane.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="prototype-2-packaging-marker3d-and-quad-plane" class="level1">
+<h1>Prototype 2: Packaging, Marker3D, and Quad Plane</h1>
+<p>This prototype involves several key components:</p>
+<section id="packaging-colliders-and-per-bone-capsules" class="level2">
+<h2 class="anchored" data-anchor-id="packaging-colliders-and-per-bone-capsules">Packaging Colliders and Per Bone Capsules</h2>
+<p>The first part of this prototype is focused on packaging colliders and per bone capsules. These elements will be prepared for upload/download processes.</p>
+</section>
+<section id="introduction-of-marker3d" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-of-marker3d">Introduction of Marker3D</h2>
+<p>We will introduce a <code>Marker3D</code> at coordinates <code>(0, 0, 1)</code>. This will serve as a reference point in the 3D space.</p>
+</section>
+<section id="addition-of-quad-plane" class="level2">
+<h2 class="anchored" data-anchor-id="addition-of-quad-plane">Addition of Quad Plane</h2>
+<p>Lastly, we will add a quad plane to our virtual world. This will serve as a basic surface or platform within the environment.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/demo_to_game/02_packaging_marker3D_and_quad_plane.html</guid>
+  <pubDate>Mon, 20 Nov 2023 06:12:05 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/demo_to_game/03_tree.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="prototype-3-tree-concept-decision-and-texture-packaging" class="level2">
+<h2 class="anchored" data-anchor-id="prototype-3-tree-concept-decision-and-texture-packaging">Prototype 3: Tree Concept Decision and Texture Packaging</h2>
+<p>This prototype is divided into two main parts:</p>
+<section id="part-1-tree-concept-decision" class="level3">
+<h3 class="anchored" data-anchor-id="part-1-tree-concept-decision">Part 1: Tree Concept Decision</h3>
+<p>In this part, we will make a decision between the following concepts:</p>
+<ul>
+<li><p><strong>GLTF2 Concept of a Unified Node Tree</strong>: This is one of the options we are considering.</p></li>
+<li><p><strong>Godot Engine / Blender Concept of Armatures</strong>: This is the alternative option under consideration.</p></li>
+</ul>
+</section>
+<section id="part-2-texture-packaging" class="level3">
+<h3 class="anchored" data-anchor-id="part-2-texture-packaging">Part 2: Texture Packaging</h3>
+<p>Once the tree concept decision has been made, we will move on to the packaging of various elements at the marker. These include:</p>
+<ul>
+<li>Textures</li>
+<li>Materials</li>
+<li>Meshes</li>
+<li>IDs</li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/demo_to_game/03_tree.html</guid>
+  <pubDate>Mon, 20 Nov 2023 06:12:05 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/demo_to_game/04_object_uploads_and_positioning.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="prototype-4-object-uploads-and-positioning" class="level2">
+<h2 class="anchored" data-anchor-id="prototype-4-object-uploads-and-positioning">Prototype 4: Object Uploads and Positioning</h2>
+<p>This prototype is divided into two main sections:</p>
+<section id="part-1-object-uploads" class="level3">
+<h3 class="anchored" data-anchor-id="part-1-object-uploads">Part 1: Object Uploads</h3>
+<p>In this part, we will develop the capability to upload various objects. These include:</p>
+<ul>
+<li>A teacup (which could possibly be a collider)</li>
+<li>An avatar</li>
+</ul>
+</section>
+<section id="part-2-object-positioning" class="level3">
+<h3 class="anchored" data-anchor-id="part-2-object-positioning">Part 2: Object Positioning</h3>
+<p>Once the objects have been uploaded, users will have the ability to manipulate these objects in the following ways:</p>
+<ul>
+<li>Dragging</li>
+<li>Scaling</li>
+</ul>
+<p>The objects will have the following properties:</p>
+<ul>
+<li><strong>Name</strong>: The name of the object.</li>
+<li><strong>User_UID</strong>: The unique identifier for the user.</li>
+<li><strong>Attachments</strong>: This includes:
+<ul>
+<li>Avatar (which consists of materials, meshes, animations)</li>
+<li>Colliders</li>
+</ul></li>
+<li><strong>Scale</strong>: The scale of the object.</li>
+<li><strong>Skeleton</strong>: The skeleton structure of the object.</li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/demo_to_game/04_object_uploads_and_positioning.html</guid>
+  <pubDate>Mon, 20 Nov 2023 06:12:05 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/demo_to_game/05_servers_and_script.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="prototype-5-server-management-and-scripting" class="level2">
+<h2 class="anchored" data-anchor-id="prototype-5-server-management-and-scripting">Prototype 5: Server Management and Scripting</h2>
+<p>This prototype is divided into two main sections:</p>
+<section id="part-1-server-management" class="level3">
+<h3 class="anchored" data-anchor-id="part-1-server-management">Part 1: Server Management</h3>
+<p>In this part, we will focus on various server management considerations. These include:</p>
+<ul>
+<li>Handling server downtime</li>
+<li>Managing user logouts/logins</li>
+</ul>
+</section>
+<section id="part-2-scripting" class="level3">
+<h3 class="anchored" data-anchor-id="part-2-scripting">Part 2: Scripting</h3>
+<p>In the second part of this prototype, we will incorporate scripting into the system. This will allow for more dynamic and interactive functionalities.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/demo_to_game/05_servers_and_script.html</guid>
+  <pubDate>Mon, 20 Nov 2023 06:12:05 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/demo_to_game/06_physics.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="prototype-6-physics" class="level2">
+<h2 class="anchored" data-anchor-id="prototype-6-physics">Prototype 6: Physics</h2>
+<p>The sixth prototype is dedicated to the implementation of physics in our virtual world. This will be broken down into two main sections:</p>
+<section id="part-1-understanding-physics" class="level3">
+<h3 class="anchored" data-anchor-id="part-1-understanding-physics">Part 1: Understanding Physics</h3>
+<p>In this section, we will delve into the basic understanding of physics and how it applies to our virtual world.</p>
+</section>
+<section id="part-2-implementation" class="level3">
+<h3 class="anchored" data-anchor-id="part-2-implementation">Part 2: Implementation</h3>
+<p>This part will focus on the actual implementation of physics into our virtual environment. We will discuss the challenges faced and the solutions implemented.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/demo_to_game/06_physics.html</guid>
+  <pubDate>Mon, 20 Nov 2023 06:12:05 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/demo_to_game/07_capacity_limits.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="prototype-7-server-capacity-and-bandwidth-limit" class="level2">
+<h2 class="anchored" data-anchor-id="prototype-7-server-capacity-and-bandwidth-limit">Prototype 7: Server Capacity and Bandwidth Limit</h2>
+<p>The seventh and final prototype is focused on server capacity and bandwidth limit. This will be divided into three main sections:</p>
+<section id="part-1-server-capacity" class="level3">
+<h3 class="anchored" data-anchor-id="part-1-server-capacity">Part 1: Server Capacity</h3>
+<p>In this section, we will work towards ensuring that the server can handle up to 100 people per instance.</p>
+</section>
+<section id="part-2-bandwidth-and-objectmesh-complexity-limit" class="level3">
+<h3 class="anchored" data-anchor-id="part-2-bandwidth-and-objectmesh-complexity-limit">Part 2: Bandwidth and Object/Mesh Complexity Limit</h3>
+<p>This part will involve calculating the bandwidth and determining the object/mesh complexity limit.</p>
+</section>
+<section id="part-3-project-timeline" class="level3">
+<h3 class="anchored" data-anchor-id="part-3-project-timeline">Part 3: Project Timeline</h3>
+<p>The estimated timeline for this project is between 2 to 4 weeks. We will discuss the schedule in detail, including milestones and potential challenges.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/demo_to_game/07_capacity_limits.html</guid>
+  <pubDate>Mon, 20 Nov 2023 06:12:05 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/demo_to_game/110_peer_platforms.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="platforms-of-note" class="level1">
+<h1>Platforms of Note</h1>
+<p>Some platforms from a presentation, titled “Frequently used Social VR”, from the “Social VR Lifestyle Survey 2023”. It’s a bar graph showing the popularity of various social VR platforms by region, with the regions being Europe, North America, Asia (excluding Japan), and Japan.</p>
+<ol type="1">
+<li><p><strong>VRChat</strong></p>
+<ul>
+<li><strong>Description</strong>: VRChat is a virtual reality social platform that allows user interaction through 3D character models. Users can explore and create virtual worlds <a href="https://en.m.wikipedia.org/wiki/VRChat#:~:text=VRChat%20is%20a%20virtual%20reality,Graham%20Gaylor%20and%20Jesse%20Joudrey">Wikipedia: VRChat</a>.</li>
+<li><strong>Features</strong>: The platform supports user-created 3D avatars and worlds, focusing on immersive virtual reality social experiences <a href="https://en.wikipedia.org/wiki/VRChat#:~:text=VRChat%20is%20an%20online%20virtual,created%203D%20avatars%20and%20worlds">VRChat is an online virtual,created 3D avatars and worlds</a>.</li>
+<li><strong>Accessibility</strong>: It is a free-to-play platform, emphasizing user creation and community interaction in a variety of virtual settings <a href="https://www.g2.com/articles/vrchat#:~:text=VRChat%20is%20an%20immersive%20virtual,by%20others%20using%20the%20platform">g2 VRChat</a>.</li>
+</ul></li>
+<li><p><strong>Cluster</strong></p>
+<ul>
+<li><strong>Description</strong>: <a href="https://cluster.mu/en/e#:~:text=,participate%20in%20at%20any%20time">Cluster</a> is a metaverse platform accessible from various devices including smartphones, PCs, and VR devices. It allows users to gather and engage in virtual spaces.</li>
+<li><strong>World Creation</strong>: Users can create their own virtual worlds, with guides available for beginners to assist in world creation using tools like Unity and the <a href="https://help.cluster.mu/hc/en-us/articles/360042705211-Information-for-Beginners#:~:text=Creating%20Worlds%20World%20Creation%20Information,and%20the%20Cluster%20Creator%20Kit">Cluster Creator Kit</a>.</li>
+<li><strong>Goal and Research</strong>: Cluster’s main goal is to accelerate human creativity, backed by research in fields like computer vision, computer graphics, human-computer interaction, and virtual reality. More about this can be found on their <a href="https://lab.cluster.mu/en/#:~:text=The%20Metaverse%20Lab%20leads%20Cluster%27s,aim%20is%20to%20produce">research lab page</a>.</li>
+</ul></li>
+<li><p><strong>Resonite</strong></p>
+<ul>
+<li><strong>Description</strong>: Resonite is a novel digital universe offering infinite possibilities, ranging from casual conversations and game playing to creative endeavors in art and game programming <a href="https://store.steampowered.com/app/2519830/Resonite/#:~:text=Resonite%20Enter%20a%20novel%20digital,184%29%20All%20Reviews">Steam: Resonite</a>.</li>
+<li><strong>Features</strong>: It is a platform where users can socialize, build, create, and develop various forms of interactive content, emphasizing endless customization and community inclusion <a href="https://steamcommunity.com/app/2519830/guides/">Steam Community: Resonite</a>.</li>
+<li><strong>Background</strong>: Developed by Yellow Dog Man Studios, Resonite originated from Neos VR’s former lead developer and focuses on user-generated content in a social VR context <a href="https://www.uploadvr.com/resonite-vr-steam-early-access/#:~:text=Developed%20by%20Yellow%20Dog%20Man,lead%20developer%2C%20Tom%C3%A1%C5%A1%20%E2%80%9CFrooxius%E2%80%9D%20Marian%C4%8D%C3%ADk">UploadVR: Resonite Early Access</a>.</li>
+<li><strong>Launch and Accessibility</strong>: It launched into early access on SteamVR headsets and is a free-to-play metaverse platform on Steam <a href="https://www.roadtovr.com/neos-vr-spiritual-successor-resonite-reveal-steamvr/#:~:text=Resonite%2C%20a%20new%20social%20VR,Update%20%28October%203rd%2C%202023">RoadToVR</a></li>
+</ul></li>
+<li><p><strong>VirtualCast</strong></p>
+<ul>
+<li><strong>Description</strong>: VirtualCast is a metaverse communication service that allows sharing of extraordinary experiences with friends, featuring unique events, VR games, and personal spaces filled with memories.</li>
+<li><strong>Functionality</strong>: It’s a VR real-time service tool that enables users to become a virtual character and live broadcast. Users can either use pre-installed model characters or upload their own, requiring only a VR headset and a compatible PC.</li>
+<li><strong>URLs</strong>:</li>
+<li>Steam Store: <a href="https://store.steampowered.com/app/947890/VirtualCast/">VirtualCast on Steam</a></li>
+</ul></li>
+<li><p><strong>ChilloutVR</strong></p>
+<ul>
+<li><strong>Description</strong>: ChilloutVR is a social sandbox game that enables players and content creators to create, share, and explore content in a massive multiplayer metaverse. It supports both VR and desktop modes, making it accessible with or without a VR headset.</li>
+<li><strong>Gameplay and Community</strong>: The game focuses on social interaction, allowing players to meet new people and explore virtual worlds together.</li>
+<li><strong>Development</strong>: Developed and published by Alpha Bend, ChilloutVR was released on Steam for Microsoft Windows on February 9, 2021.</li>
+<li><strong>URLs</strong>:</li>
+<li>Steam Store: <a href="https://store.steampowered.com/app/661130/ChilloutVR/">ChilloutVR on Steam</a></li>
+<li>Ryan Schultz Blog: <a href="https://ryanschultz.com/2021/01/28/chilloutvr-a-brief-introduction/">ChilloutVR: A Brief Introduction</a></li>
+<li>VR Fandom: <a href="https://vr.fandom.com/wiki/ChilloutVR">ChilloutVR - Virtual Reality Wiki</a></li>
+</ul></li>
+<li><p><strong>Rec Room</strong></p>
+<ul>
+<li><strong>Overview</strong>: <a href="https://en.wikipedia.org/wiki/Rec_Room_(video_game)#:~:text=Rec%20Room%20is%20a%20virtual,Gameplay">Rec Room</a> is a virtual reality massively multiplayer online game with an integrated game creation system, launched in 2016. It’s available on a wide range of platforms including Microsoft Windows, Xbox, PlayStation, iOS, Android, and various VR headsets.</li>
+<li><strong>Features</strong>: The platform is a hub for building and playing games, allowing users to explore millions of player-created rooms, chat, and hang out with friends worldwide. More about this can be found on their <a href="https://store.steampowered.com/app/471710/rec_room">Steam page</a> and <a href="https://recroom.com/#:~:text=00%3A30%20,from%20phones%20to%20VR%20headsets">official website</a>.</li>
+<li><strong>Community and Accessibility</strong>: Rec Room fosters a global community for playing and creating games, offering cross-platform playability on everything from phones to VR headsets, and it’s free to use. More about this can be found on their <a href="https://pitchbook.com/profiles/company/156041-29#:~:text=Rec%20Room%20Rec%20Room%20Overview,to%20play%20and%20create%20games">Pitchbook profile</a>.</li>
+</ul></li>
+<li><p><strong>Mozilla Hubs</strong></p>
+<ul>
+<li><strong>Overview</strong>: Mozilla Hubs is a virtual collaboration platform, designed for educators, teams, and organizations, functioning directly in web browsers without requiring software downloads <a href="https://hubs.mozilla.com/#:~:text=Welcome%20to%20Mozilla%20Hubs%2C%20the,all%20while%20prioritizing%20your%20privacy">hubs.mozilla.com</a>.</li>
+<li><strong>Functionality</strong>: It allows the creation of 3D spaces and provides a platform for remote connection, making it suitable for education and virtual meetings <a href="https://www.xrpedagogy.com/en/what-is-hubs-by-mozilla/">xrpedagogy</a>.</li>
+<li><strong>Content Integration</strong>: Users can import diverse media types like 3D models, images, and videos from various sources for use in their virtual spaces <a href="https://hubs.mozilla.com/docs/intro-hubs.html#:~:text=In%20Hubs%20you%20can%20import,the%20top%20of%20the%20screen">hubs.mozilla.com/docs</a>.</li>
+<li><strong>Accessibility</strong>: This hardware-agnostic platform is accessible on various devices, offering avatar customization and other features without needing permanent profiles <a href="https://www.makeuseof.com/how-to-use-mozilla-hubs-new-features/#:~:text=Mozilla%20Hubs%20is%20a%20free,with%20perks%20like%20avatar%20customization">makeuseof</a>.</li>
+</ul></li>
+<li><p><strong>Roblox</strong></p>
+<ul>
+<li><strong>Description</strong>: Roblox is an online game platform and game creation system, allowing users to program and play games created by others. It uses Lua for coding and hosts a variety of game genres <a href="https://en.wikipedia.org/wiki/Roblox#:~:text=Roblox%20,in%20the%20programming%20language%20Lua">Wikipedia: Roblox</a>.</li>
+<li><strong>Features</strong>: It combines gaming, social media, and commerce. Users can socialize, build spaces, and engage in virtual commerce within this “ultimate virtual universe” <a href="https://blog.hootsuite.com/what-is-roblox/#:~:text=Roblox%20is%20an%20app%20that,earn%20and%20spend%20virtual%20money">what-is-roblox</a>.</li>
+<li><strong>Functionality</strong>: Roblox is a platform and storefront for user-made games, rather than being a game itself. It enables users to create and play games developed by others <a href="https://www.polygon.com/22326123/what-is-roblox-explainer-public-offering#:~:text=Roblox%20is%20an%20online%20platform,this%20sense%2C%20it%20is%20more">what-is-roblox-explainer</a>.</li>
+<li><strong>Vision</strong>: Roblox aims to empower people to create immersive experiences, reimagining how people collaborate creatively and socially <a href="https://corp.roblox.com/">corp.roblox.com</a>.</li>
+<li><strong>Community</strong>: Launched in 2007, Roblox boasts 64 million monthly players and around 178 million accounts, positioning itself as an ‘Imagination Platform’ <a href="https://www.webwise.ie/parents/explainers/explained-what-is-roblox/#:~:text=Roblox%20advertises%20itself%20as%20an,million%20accounts%20on%20the%20platform">explained-what-is-roblox</a>.</li>
+</ul></li>
+<li><p><strong>Meta Horizon Worlds</strong></p>
+<ul>
+<li><strong>Description</strong>: <a href="https://en.wikipedia.org/wiki/Horizon_Worlds#:~:text=Meta%20Horizon%20is%20a%20virtual,Platforms%2C%20formerly%20known%20as%20Facebook">Meta Horizon</a> is a virtual reality platform enabling users to create, explore, and socialize in various virtual worlds. It offers profile and avatar customization to match user preferences and identities.</li>
+<li><strong>Collaborative Platform</strong>: It’s known for its collaborative capabilities in VR, offering virtual realities and multiplayer games. More about this can be found on their <a href="https://horizon.meta.com/#:~:text=Explore%20Meta%20Horizon%20on%20Meta,that%20will%20bring%20your%20wildest">official website</a>.</li>
+<li><strong>Components</strong>: The platform includes Meta Horizon Worlds, Meta Horizon Workrooms, and Meta Horizon Home, each serving different purposes like social VR experiences and virtual workrooms. More about this can be found on their <a href="https://www.meta.com/help/quest/articles/in-vr-experiences/social-features-and-sharing/what-is-horizon/#:~:text=Meta%20Horizon%20includes%20destinations%20like,currently%20available%20in%20select%20countries">help page</a>.</li>
+<li><strong>Meta Accounts</strong>: In 2022, Meta introduced a new system for VR headset login that doesn’t require a Facebook account, further integrating users into the Meta Horizon ecosystem. More about this can be found on their <a href="https://about.fb.com/news/2022/07/meta-accounts-and-horizon-profiles-for-vr/#:~:text=July%207%2C%202022%20Takeaways%20In,your%20social%20profile%20in%20VR">news page</a>.</li>
+</ul></li>
+<li><p><strong>Overte</strong></p>
+<ul>
+<li><strong>Architecture</strong>: Overte provides a comprehensive VR experience through its interface and domain server, enabling users to explore VR worlds, socialize, and participate in events <a href="https://docs.overte.org/en/latest/explore/get-started/architecture.html">docs.overte.org</a>.</li>
+<li><strong>Open Source Nature</strong>: As an open-source virtual world and social VR software, it supports both VR and desktop experiences, allowing users to create and host their own virtual worlds <a href="https://overte.org/#:~:text=About%20,VR%20events%2C%20and%20much%20more">overte</a> <a href="https://docs.overte.org/en/latest/#:~:text=Overte%20is%20open,in%20social">docs.overte.org/en/latest</a>.</li>
+<li><strong>Community and Creativity</strong>: It fosters a community-focused environment where users can create, explore, and interact in various virtual worlds, emphasizing immersive and interactive experiences <a href="https://docs.overte.org/en/latest/explore.html#:~:text=Explore,interactive%20experience%20with%20realistic">docs.overte.org</a>.</li>
+</ul></li>
+<li><p><strong>Second Life</strong></p>
+<ul>
+<li><strong>Overview</strong>: Second Life is an online multimedia platform that allows users to create avatars for interacting with others and user-created content within a virtual world <a href="https://en.wikipedia.org/wiki/Second_Life#:~:text=,user%20online%20virtual%20world">Wikipedia: Second Life</a>.</li>
+<li><strong>Characteristics</strong>: It is a free 3D virtual world and metaverse where users can create, connect, and communicate using voice and text, hosting a rich array of user-generated content <a href="https://secondlife.com/#:~:text=Second%20Life%20is%20a%20free,world%20using%20voice%20and%20text">secondlife.com</a>.</li>
+<li><strong>Content and Economy</strong>: The platform supports real-time interaction and features a thriving in-world economy, launched in 2003 by Linden Lab <a href="https://www.makeuseof.com/what-is-second-life-history-metaverse/#:~:text=Second%20Life%20is%20a%20vast,at%20least%20the%20late%201990s">makeuseof: Second Life</a>.</li>
+<li><strong>Functionality</strong>: Users in Second Life, known as residents, can do more than just communicate; they can interact with various virtual environments and objects <a href="https://computer.howstuffworks.com/internet/social-networking/networks/second-life.htm#:~:text=Second%20Life%20is%20an%20online,than%20communicate%20with%20one%20another">howstuffworks: Second Life</a>.</li>
+<li><strong>Applications</strong>: Second Life is used for various purposes, including music clubs, roleplaying, virtual cinemas, and hosting virtual meetings and classes <a href="https://secondlife.com/index.php?v=1&amp;lang=en-US#:~:text=Music%20clubs%2C%20roleplaying%20communities%2C%20virtual,for%20events%20and%20remote%20meetings">Second Life: Events</a>.</li>
+</ul></li>
+<li><p><strong>IMVU</strong></p>
+<ul>
+<li><strong>Description</strong>: IMVU is a leading friendship discovery and social platform, boasting a wide user base and ranking as a top-grossing app in both iOS/Apple App Store and Google Play Store. It allows millions of users to customize their avatars and explore over 40,000 destinations for social connections <a href="https://www.crunchbase.com/organization/imvu#:~:text=Contact%20Email%20socialmedia%40imvu,40%2C000%2B%20destinations%20to%20connect">CrunchBase: IMVU</a>.</li>
+<li><strong>Avatar and Social Features</strong>: Known as the world’s largest avatar social platform, it enables users to create stunning collections of customizable avatars and unique 3D chat-based environments for immersive social experiences <a href="https://www.crunchbase.com/organization/imvu#:~:text=Contact%20Email%20socialmedia%40imvu,40%2C000%2B%20destinations%20to%20connect">crunchbase: IMVU</a>.</li>
+<li><strong>Metaverse Characteristics</strong>: IMVU is considered a metaverse where users can shop for clothing, furniture, and accessories, engage in user-generated content, and maintain a safe online identity. It combines aspects of virtual reality with an e-commerce engine and 3D characters <a href="https://openstax.org/books/entrepreneurship/pages/10-1-launching-the-imperfect-business-lean-startup#:~:text=After%20his%20first%20startup%20proved,D%20characters">IMVU: Lean Startup</a>.</li>
+<li><strong>Digital Economy Integration</strong>: The platform has integrated blockchain technology with the creation of VCOIN, an ERC-20 token, enhancing its digital currency capabilities and peer-to-peer transactions <a href="https://www.prnewswire.com/news-releases/imvu-sets-new-standard-for-digital-currencies-with-vcoin-launch-301207660.html#:~:text=Created%20by%20IMVU%2C%20the%20world%27s,peer">prnewswire: VCOIN</a>.</li>
+</ul></li>
+<li><p><strong>VKet Cloud</strong></p>
+<ul>
+<li><strong>Description</strong>: VKet Cloud is a development engine designed for deploying metaverse services directly in the browser, catering to both creators and business users.</li>
+<li><strong>Accessibility and Features</strong>: The platform emphasizes ease of access as it operates in the browser, eliminating the need for high-performance PCs, IT knowledge, or VR goggles. It allows for the creation of personal metaverses and supports features like voice and text chat.</li>
+<li><strong>URLs</strong>:</li>
+<li>VKet Cloud: <a href="https://cloud.vket.com/">Vket Cloud ｜ Develop your own virtual world service</a></li>
+<li>VKet Magazine: <a href="https://magazine.vket.com/vketcloud-tour/">Vket Cloud Commentary Article</a></li>
+<li>The Metaculture: <a href="https://www.themetaculture.co/articles/hikky-expands-with-vket-cloud-an-engine-that-works-on-your-phone-and-its-free">HIKKY Expands With Vket Cloud</a></li>
+</ul></li>
+<li><p><strong>xambr social VR (Tokyo Game Show VR)</strong></p>
+<ul>
+<li><strong>Description</strong>: Tokyo Game Show VR is a virtual space that hosts the Tokyo Game Show, offering a super-participatory experience where attendees can explore as avatars and enjoy special content from various exhibitors and sponsors.</li>
+<li><strong>Platform and Accessibility</strong>: It operates on the xambr social VR platform, accessible via Oculus Quest, PC VR headsets, and regular PCs, ensuring wide availability for different users.</li>
+<li><strong>Experience</strong>: The virtual world of TGS is divided into several “islands,” providing an exploratory experience where attendees can teleport between islands and visit virtual booths.</li>
+<li><strong>URLs</strong>:</li>
+<li>Tokyo Game Show VR: <a href="https://www.tgsvr.com/">TOKYO GAME SHOW VR 2023</a></li>
+<li>UploadVR: <a href="https://www.uploadvr.com/tokyo-game-show-vr-how-to-attend/">Tokyo Game Show VR: How To Attend</a></li>
+<li>Skarred Ghost: <a href="https://skarredghost.com/2023/10/05/tokyo-game-show-vr-2023-feels-like-a-magical-trip-to-a-fantasy-japanese-theme-park/">Tokyo Game Show VR 2023 feels like a magical trip</a></li>
+</ul></li>
+</ol>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/demo_to_game/110_peer_platforms.html</guid>
+  <pubDate>Mon, 20 Nov 2023 06:12:05 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/demo_to_game/70_packet_format.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="variable-bit-rate-encoding" class="level1">
+<h1>Variable bit rate encoding</h1>
+<p>The strategy we want to use is called variable bit rate encoding to optimize the use of bandwidth.</p>
+<p>In the context of our game, this strategy can be applied to reduce the amount of data that needs to be sent over the network for each snapshot. Here’s how it could work with our <code>TimeOffsetPacket</code> and <code>DataPacket</code> structures:</p>
+<ol type="1">
+<li><p><strong>Keyframe Omission</strong>: Instead of sending a full update (a keyframe) for every single frame, you only send keyframes at certain intervals. In between these keyframes, you send smaller updates (delta frames) that describe how the game state has changed since the last keyframe. This is where the <code>frame_within_metablock</code> and <code>frame_offset</code> fields come into play. They allow you to specify which keyframe a particular delta frame is relative to.</p></li>
+<li><p><strong>Interpolation</strong>: On the receiving end, the game client uses the data from the keyframes and delta frames to interpolate the game state for the frames in between. This means that even though you’re sending less data, the client can still produce a smooth animation. The <code>x_offset</code>, <code>y_offset</code>, and <code>z_offset</code> fields in the <code>DataPacket</code> structure are used for this purpose. They provide the information needed to calculate the position of an entity at any given frame.</p></li>
+<li><p><strong>Variable Bit Rate Encoding</strong>: The <code>time_bit_width</code>, <code>x_bit_width</code>, <code>y_bit_width</code>, and <code>z_bit_width</code> fields in the <code>TimeOffsetPacket</code> structure allow you to use different amounts of bits for different types of data. For example, if the x, y, and z positions of an entity don’t change much from one frame to the next, you might choose to use fewer bits to represent these values. This can help to further reduce the size of your snapshots.</p></li>
+<li><p><strong>Octahedral Compression</strong>: The rotation of the rigid bodies is stored as an octahedral normal, which is a very efficient way to represent 3D rotations. This can significantly reduce the amount of data needed to represent the orientation of each rigid body.</p></li>
+</ol>
+<section id="entity" class="level2">
+<h2 class="anchored" data-anchor-id="entity">Entity</h2>
+<p>Given the <code>Entity</code> struct:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">struct</span> TimeOffsetPacket <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-2">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">uint16_t</span> frame_within_metablock<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Bits 0-15</span></span>
+<span id="cb1-3">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">uint8_t</span> time_bit_width<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span>          <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Bits 16-19</span></span>
+<span id="cb1-4">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">uint8_t</span> x_bit_width<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span>             <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Bits 20-23</span></span>
+<span id="cb1-5">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">uint8_t</span> y_bit_width<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span>             <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Bits 24-27</span></span>
+<span id="cb1-6">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">uint8_t</span> z_bit_width<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span>             <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Bits 28-31</span></span>
+<span id="cb1-7">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">uint32_t</span> byte_offset_to_first_packet<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Bits 0-23 of high word</span></span>
+<span id="cb1-8">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">uint8_t</span> amount_of_packets_that_follow<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Bits 24-31 of high word</span></span>
+<span id="cb1-9"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">};</span></span>
+<span id="cb1-10"></span>
+<span id="cb1-11"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">struct</span> DataPacket <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-12">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">uint16_t</span> base_x_value<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// bits 0-15</span></span>
+<span id="cb1-13">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">uint16_t</span> base_y_value<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// bits 16-31</span></span>
+<span id="cb1-14">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">uint16_t</span> base_z_value<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// bits 32-47</span></span>
+<span id="cb1-15">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// The following fields are bit-compressed</span></span>
+<span id="cb1-16">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">uint16_t</span> frame_offset<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// [Time bit width] (unsigned)</span></span>
+<span id="cb1-17">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">int16_t</span> x_offset<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span>      <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// [X bit width] (signed)</span></span>
+<span id="cb1-18">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">int16_t</span> y_offset<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span>      <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// [Y bit width] (signed)</span></span>
+<span id="cb1-19">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">int16_t</span> z_offset<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span>      <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// [Z bit width] (signed)</span></span>
+<span id="cb1-20"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">};</span></span></code></pre></div>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Given values</span></span>
+<span id="cb2-2"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">int</span> size_of_time_offset_packet <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">11</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb2-3"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">int</span> size_of_data_packet <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">14</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb2-4"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">int</span> total_bytes <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1596</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb2-5"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">int</span> packets_per_entity <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb2-6"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">int</span> packets_per_bone <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb2-7"></span>
+<span id="cb2-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Calculate the number of DataPackets we can store after accounting for one TimeOffsetPacket</span></span>
+<span id="cb2-9"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">int</span> data_packet_count <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>total_bytes <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> size_of_time_offset_packet<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> size_of_data_packet<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// This will be 113</span></span>
+<span id="cb2-10"></span>
+<span id="cb2-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Calculate the number of DataPackets we can store after accounting for the entity's position, orientation, linear_velocity and angular_velocity</span></span>
+<span id="cb2-12">data_packet_count <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> data_packet_count <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> packets_per_entity<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// This will be 109</span></span>
+<span id="cb2-13"></span>
+<span id="cb2-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Now, let's solve for the number of bones</span></span>
+<span id="cb2-15"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">int</span> total_bones <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> data_packet_count <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> packets_per_bone<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// This will be 54</span></span></code></pre></div>
+<ol type="1">
+<li><code>TimeOffsetPacket</code></li>
+<li>A full RigidBody structure on the server consists of position, orientation, linear_velocity and angular_velocity.</li>
+<li>Rotation is stored as x/y is an octahedral normal storing axis, while z is the rotation. Converting from this to quaternion is extremely efficient.</li>
+<li>A bone is similar to the rigid body.</li>
+<li>We omit frames for the worst representation to represent a user at distances.</li>
+<li>Lets assume all bones are in constant motion at all time.</li>
+<li>We can pretend a entity is a skeleton without bones and that will work out since a skeleton is a Node3D.</li>
+</ol>
+</section>
+<section id="unknowns" class="level2">
+<h2 class="anchored" data-anchor-id="unknowns">Unknowns</h2>
+<p>Define some character limitations, for the skeleton.</p>
+<p>We need to define that before we start coding on it, else your going to be chasing a very long ouroboros and it will come back to bite you.</p>
+<p>Distance limitations, farther you get the higher the positional precision losses which will cause issues with converting for math.</p>
+<p>Also need some sort of id system for player info.</p>
+<p>Max number of bones, min number of bones, bone important so as you move farther away the # of bones decreases in association to what informaiton you need to send.</p>
+<p>The limitation boundaries based on distance from the player.</p>
+</section>
+<section id="targets" class="level2">
+<h2 class="anchored" data-anchor-id="targets">Targets</h2>
+<p>For AAA game development, target $2.50 to $3 USD per user per server per month.</p>
+<p>00knight at Winter Pixel Games tries to keep each players state update under 1.2 kilobytes. So 1.2 kilobytes x 30hz x number of players + whatever meta data is transferred at a lesser rate.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li><a href="https://gafferongames.com/post/serialization_strategies/">Serialization Strategies</a></li>
+<li><a href="https://www.youtube.com/watch?v=sx4IIQL0x7c">Networked Physics in Virtual Reality</a></li>
+<li><a href="https://github.com/godotengine/godot-proposals/issues/3375">Godot Engine Proposal</a></li>
+<li><a href="https://aws.amazon.com/blogs/gametech/how-to-host-your-unreal-engine-game-for-under-1-per-player-with-amazon-gamelift/">Host your Unreal Engine game for under $1 USD</a> ```</li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/demo_to_game/70_packet_format.html</guid>
+  <pubDate>Mon, 20 Nov 2023 06:12:05 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/demo_to_game/71_lod_strategy.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="lod" class="level1">
+<h1>LOD</h1>
+<p>Like instead of the entire body, you only get the base packet and a popup cardboard.</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/demo_to_game/71_lod_strategy.html</guid>
+  <pubDate>Mon, 20 Nov 2023 06:12:05 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/demo_to_game/80_validations.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="godot-scene" class="level1">
+<h1>Godot Scene</h1>
+<ol type="1">
+<li>Reconstructs a virtual tree from a flat array of nodes to prevent node paths from breaking out of the scene.</li>
+<li>Strips resources like gdscripts in the packed scene using a whitelist.</li>
+<li>Handles different scenes differently based on their context:
+<ul>
+<li>Avatar or maps</li>
+<li>Applies different whitelists</li>
+<li>Allows 2D nodes only if they’re part of another viewport.</li>
+</ul></li>
+</ol>
+<section id="mesh-vertex-attributes" class="level4">
+<h4 class="anchored" data-anchor-id="mesh-vertex-attributes">Mesh Vertex Attributes</h4>
+<ol type="1">
+<li><strong>Validate Mesh Vertices Have Edges</strong>: Ensure that each vertex in the mesh is connected to at least one edge.</li>
+<li><strong>Validate Mesh Has Overlapping UVs</strong>: Check if any UV coordinates in the mesh overlap.</li>
+<li><strong>Validate Mesh Single UV Set</strong>: Confirm that the mesh only has one set of UV coordinates.</li>
+<li><strong>Validate Mesh Has UVs</strong>: Verify that the mesh has UV coordinates.</li>
+<li><strong>Validate Mesh No Co-Planar Faces</strong>: Ensure that there are no faces in the mesh that lie on the same plane.</li>
+<li><strong>Validate Mesh Ngons</strong>: Check for the presence of polygons with more than four sides in the mesh.</li>
+<li><strong>Validate Mesh Non-Manifold</strong>: Confirm that the mesh does not have any non-manifold geometry.</li>
+<li><strong>Validate Mesh No Negative Scale</strong>: Ensure that the scale of the mesh is not negative.</li>
+<li><strong>Validate Mesh Edge Length Non Zero</strong>: Verify that all edges in the mesh have a length greater than zero.</li>
+<li><strong>Validate Mesh Normals Unlocked</strong>: Check that the normals of the mesh are not locked and can be modified.</li>
+<li><strong>Validate Mesh UV Set Map 1</strong>: Confirm that the first UV set map of the mesh is correctly configured.</li>
+<li><strong>Validate if Mesh is Triangulated</strong>: Ensure that the mesh is composed entirely of triangular faces.</li>
+</ol>
+</section>
+<section id="material" class="level4">
+<h4 class="anchored" data-anchor-id="material">Material</h4>
+<ol start="13" type="1">
+<li><strong>Validate Color Sets</strong>: Check that the color sets used in the material are valid.</li>
+<li><strong>Validate Model’s default uv set exists</strong>: Confirm that the model has a default UV set.</li>
+</ol>
+</section>
+<section id="general" class="level4">
+<h4 class="anchored" data-anchor-id="general">General</h4>
+<ol start="15" type="1">
+<li><strong>Validate Model Name</strong>: Ensure that the model has a valid name.</li>
+<li><strong>Validate Model Content</strong>: Check that the content of the model is valid.</li>
+<li><strong>Validate Node3D Naming Suffix</strong>: Confirm that the naming suffix for Node3D is correct.</li>
+<li><strong>Validate No Node3D Transforms</strong>: Check that there are no null or empty Node3D transforms in the model.</li>
+<li><strong>Validate No Unknown Nodes</strong>: Confirm that there are no unknown nodes in the model.</li>
+<li><strong>Validate Node No Ghosting</strong>: Verify that there is no ghosting effect on any node.</li>
+<li><strong>Validate Shape Default Names</strong>: Ensure that the default names for shapes are valid.</li>
+<li><strong>Validate Shape Render Stats</strong>: Check the render statistics for each shape.</li>
+<li><strong>Validate Shape Zero</strong>: Confirm that the zero position for each shape is correctly set.</li>
+<li><strong>Validate Transform Zero</strong>: Ensure that the zero position for each transform is correctly set.</li>
+<li><strong>Validate Unique Names</strong>: Verify that all names in the model are unique.</li>
+</ol>
+</section>
+<section id="animations" class="level4">
+<h4 class="anchored" data-anchor-id="animations">Animations</h4>
+<ol start="28" type="1">
+<li><strong>Validate No Animation</strong>: Check that there are no animations in the model.</li>
+<li><strong>Ensure no keyframes on nodes in the Instance</strong>: Confirm that there are no keyframes on any nodes in the instance.</li>
+</ol>
+</section>
+<section id="output" class="level3">
+<h3 class="anchored" data-anchor-id="output">Output</h3>
+<ol type="1">
+<li>Output Godot Scene</li>
+</ol>
+<p>Before the game client/server architecture is sound, we need to be able to push an asset to a service with sanitization and validation. This service will separate the colliders and other elements. Then, the game server pulls those colliders in.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/demo_to_game/80_validations.html</guid>
+  <pubDate>Mon, 20 Nov 2023 06:12:05 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/demo_to_game/90_basic_tooling.html</link>
+  <description><![CDATA[ 
+
+
+
+<p>Sure, here’s a simplified version of your document:</p>
+<section id="basic-tooling-bill-of-materials" class="level1">
+<h1>Basic Tooling: Bill of Materials</h1>
+<p>This section outlines the essential tools we use in our VR world architecture.</p>
+<section id="vr-software" class="level2">
+<h2 class="anchored" data-anchor-id="vr-software">VR Software</h2>
+<p>We utilize:</p>
+<ol type="1">
+<li><strong>Godot Engine</strong>: An open-source game engine supporting both 2D and 3D games as well as interactive experiences.</li>
+<li><strong>Blender</strong>: A comprehensive, free, and open-source 3D creation suite.</li>
+</ol>
+</section>
+<section id="file-formats" class="level2">
+<h2 class="anchored" data-anchor-id="file-formats">File Formats</h2>
+<p>We adhere to the following standards for 3D models:</p>
+<ul>
+<li><strong>glTF (GL Transmission Format)</strong>: A standard file format for three-dimensional scenes and models.</li>
+<li><strong>VRM</strong>: A 3D avatar file format for VR applications based on glTF 2.0.</li>
+<li><strong>Godot Scene (.tscn)</strong>: Godot’s native scene format.</li>
+</ul>
+</section>
+<section id="software-languages" class="level2">
+<h2 class="anchored" data-anchor-id="software-languages">Software Languages</h2>
+<p>Software languages are indispensable for infusing interactivity into our VR worlds:</p>
+<ul>
+<li><strong>C++</strong></li>
+<li><strong>GDScript</strong>: The native scripting language for Godot Engine.</li>
+<li><strong>Elixir</strong></li>
+</ul>
+</section>
+<section id="infrastructure-automation-tools" class="level2">
+<h2 class="anchored" data-anchor-id="infrastructure-automation-tools">Infrastructure Automation Tools</h2>
+<p>To manage and automate our infrastructure, we use:</p>
+<ul>
+<li><strong>OpenTofu</strong>: An open-source infrastructure as code software tool.</li>
+<li><strong>VictoriaMetrics</strong> A fast, cost-effective and scalable time series database.</li>
+</ul>
+</section>
+<section id="local-and-cloud-storage" class="level2">
+<h2 class="anchored" data-anchor-id="local-and-cloud-storage">Local and Cloud Storage</h2>
+<p>For local storage, we use:</p>
+<ul>
+<li><strong>SeaweedFS</strong>: A simple and highly scalable distributed file system.</li>
+</ul>
+<p>For cloud storage, we use:</p>
+<ul>
+<li><strong>Cloud’s S3 Compatible Storage</strong>: Many cloud service providers offer storage solutions that are compatible with the S3 API.</li>
+</ul>
+</section>
+<section id="database" class="level2">
+<h2 class="anchored" data-anchor-id="database">Database</h2>
+<p>Our choice for database management is <strong>CockroachDB</strong>, an open-source, distributed SQL database.</p>
+</section>
+<section id="hardware" class="level2">
+<h2 class="anchored" data-anchor-id="hardware">Hardware</h2>
+<p>To test and experience our virtual worlds, VR hardware is essential:</p>
+<ul>
+<li><strong>VR Headsets</strong>: Devices such as the Meta Quest 2, Meta Quest 3, Beyond HMD, or Valve Index.</li>
+<li><strong>Controllers</strong>: These devices facilitate user interaction with the virtual environment.</li>
+<li><strong>VR GPUs</strong>: Graphics processing units for rendering VR content.</li>
+</ul>
+</section>
+<section id="performance-testing" class="level2">
+<h2 class="anchored" data-anchor-id="performance-testing">Performance Testing</h2>
+<p>Load test our VR world architecture. It simulates a user-defined number of users to stress test a URL.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/demo_to_game/90_basic_tooling.html</guid>
+  <pubDate>Mon, 20 Nov 2023 06:12:05 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/demo_to_game/99_further_prototypes.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="v-sekai-other-world-architecture-sorted-prototypes" class="level1">
+<h1>V-Sekai Other World Architecture: Sorted Prototypes</h1>
+<section id="priority-prototypes" class="level2">
+<h2 class="anchored" data-anchor-id="priority-prototypes">Priority Prototypes</h2>
+<p>These prototypes are crucial for the basic functionality and user experience of the VR social networking service.</p>
+<ol type="1">
+<li><strong>VOIP Integration</strong>: This prototype will focus on integrating Voice over IP (VoIP) into the virtual world for real-time voice communication.</li>
+<li><strong>VR Interaction Menus</strong>: This prototype will develop interaction menus for Virtual Reality (VR) users.</li>
+<li><strong>Social Interactions</strong>: This prototype will implement social interactions such as friend requests, private messaging, and public chat rooms.</li>
+<li><strong>Avatar Customization</strong>: This prototype will allow users to customize their avatars with different outfits, accessories, and animations.</li>
+<li><strong>User Interface (UI) Design</strong>: This prototype will focus on designing a user-friendly and intuitive interface for navigating the virtual world and interacting with its elements.</li>
+<li><strong>Cross-platform Compatibility</strong>: This prototype will ensure the virtual world is compatible with various platforms, including PC, consoles, and mobile devices.</li>
+<li><strong>Onboarding Experience</strong>: This prototype will design an engaging and informative onboarding experience to welcome new users to the virtual world.</li>
+<li><strong>Help Center</strong>: This prototype will establish a comprehensive help center with guides, FAQs, and troubleshooting tips.</li>
+<li><strong>Live Support Chat</strong>: This prototype will implement a live support chat feature for immediate assistance with issues.</li>
+<li><strong>Account Management Features</strong>: This prototype will develop features for managing user accounts, such as password resets, account recovery, and privacy settings.</li>
+</ol>
+</section>
+<section id="prototypes" class="level2">
+<h2 class="anchored" data-anchor-id="prototypes">Prototypes</h2>
+<p>These prototypes are important for enhancing the user experience and ensuring smooth operation of the service.</p>
+<ol type="1">
+<li><strong>Gameplay Mechanics</strong>: This prototype will introduce gameplay mechanics like quests, combat systems, and item collection.</li>
+<li><strong>Inventory Synchronization</strong>: This prototype will establish a system for synchronizing inventory between the datastore and the Digital Content Creation (DCC) tools.</li>
+<li><strong>Asset Validation</strong>: This prototype will create a process for validating assets before they are uploaded to the server.</li>
+<li><strong>Asset Optimization</strong>: This prototype will develop methods for optimizing assets to ensure efficient use of resources.</li>
+<li><strong>Environment Customization</strong>: This prototype will allow users to customize their environment within the virtual world, such as changing the landscape, weather conditions, and time of day.</li>
+<li><strong>NPC Interactions</strong>: This prototype will introduce Non-Player Characters (NPCs) into the virtual world. Users can interact with these NPCs, who can provide quests, information, or goods.</li>
+<li><strong>Economy System</strong>: This prototype will establish an in-game economy system where users can trade items, services, or virtual currency.</li>
+<li><strong>Achievement System</strong>: This prototype will implement an achievement system to reward users for accomplishing specific tasks or milestones within the virtual world.</li>
+<li><strong>User Feedback System</strong>: This prototype will create a system for collecting and analyzing user feedback to continuously improve the virtual world.</li>
+<li><strong>Performance Monitoring</strong>: This prototype will implement tools to monitor performance and identify areas for optimization.</li>
+</ol>
+</section>
+<section id="nice-to-have-prototypes" class="level2">
+<h2 class="anchored" data-anchor-id="nice-to-have-prototypes">Nice-to-have Prototypes</h2>
+<p>These prototypes are nice-to-have features that can further enhance the user experience and functionality of the service.</p>
+<ol type="1">
+<li><strong>Asset Moderation</strong>: This prototype will implement a system for moderating user-generated content to maintain a safe and enjoyable environment for all users.</li>
+<li><strong>Accessibility Features</strong>: This prototype will ensure the virtual world is accessible to all users, including those with disabilities. This could involve text-to-speech functionality, colorblind modes, and customizable control schemes.</li>
+<li><strong>Security Measures</strong>: This prototype will develop security measures to protect user data and prevent malicious activities within the virtual world.</li>
+<li><strong>Multi-language Support</strong>: This prototype will implement multi-language support to cater to users from different linguistic backgrounds.</li>
+<li><strong>Music and Sound Effects</strong>: This prototype will add background music and sound effects to enhance the immersive experience of the virtual world.</li>
+<li><strong>Tutorial System</strong>: This prototype will create a tutorial system to guide new users through the basics of navigating and interacting with the virtual world.</li>
+<li><strong>Dynamic Weather System</strong>: This prototype will introduce a dynamic weather system into the virtual world, affecting both visuals and gameplay.</li>
+<li><strong>Emote System</strong>: This prototype will implement an emote system for users to express themselves non-verbally in the virtual world.</li>
+<li><strong>Mini-games</strong>: This prototype will introduce various mini-games that users can participate in for fun or rewards.</li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/demo_to_game/99_further_prototypes.html</guid>
+  <pubDate>Mon, 20 Nov 2023 06:12:05 GMT</pubDate>
+</item>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/demo_to_game/design_process.html</link>
@@ -66,7 +1220,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/demo_to_game/design_process.html</guid>
-  <pubDate>Tue, 14 Nov 2023 18:10:58 GMT</pubDate>
+  <pubDate>Mon, 20 Nov 2023 06:12:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -117,7 +1271,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/demo_to_game/help_write_documentation.html</guid>
-  <pubDate>Tue, 14 Nov 2023 18:10:58 GMT</pubDate>
+  <pubDate>Mon, 20 Nov 2023 06:12:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -174,7 +1328,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/demo_to_game/v_sekai_game.html</guid>
-  <pubDate>Tue, 14 Nov 2023 18:10:58 GMT</pubDate>
+  <pubDate>Mon, 20 Nov 2023 06:12:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -199,7 +1353,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/demo_to_game/virtual_interactions.html</guid>
-  <pubDate>Tue, 14 Nov 2023 18:10:58 GMT</pubDate>
+  <pubDate>Mon, 20 Nov 2023 06:12:05 GMT</pubDate>
 </item>
 </channel>
 </rss>
