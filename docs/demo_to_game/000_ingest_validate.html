@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>V-Sekai - Manuals – push</title>
+<title>V-Sekai - Manuals – ingest_validate</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -110,39 +110,72 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#prototype-1-element-instantiation-and-uploading" id="toc-prototype-1-element-instantiation-and-uploading" class="nav-link active" data-scroll-target="#prototype-1-element-instantiation-and-uploading">Prototype 1: Element Instantiation and Uploading</a>
+  <li><a href="#prototype-0-push-an-asset-to-a-service" id="toc-prototype-0-push-an-asset-to-a-service" class="nav-link active" data-scroll-target="#prototype-0-push-an-asset-to-a-service">Prototype 0: Push an Asset to a Service</a>
   <ul class="collapse">
-  <li><a href="#instantiating-elements-into-the-virtual-world" id="toc-instantiating-elements-into-the-virtual-world" class="nav-link" data-scroll-target="#instantiating-elements-into-the-virtual-world">Instantiating Elements into the Virtual World</a>
-  <ul class="collapse">
-  <li><a href="#elements-include" id="toc-elements-include" class="nav-link" data-scroll-target="#elements-include">Elements include:</a></li>
-  </ul></li>
-  <li><a href="#pulling-elements-for-user-interaction" id="toc-pulling-elements-for-user-interaction" class="nav-link" data-scroll-target="#pulling-elements-for-user-interaction">Pulling Elements for User Interaction</a></li>
+  <li><a href="#input" id="toc-input" class="nav-link" data-scroll-target="#input">Input</a></li>
+  <li><a href="#data-structures" id="toc-data-structures" class="nav-link" data-scroll-target="#data-structures">Data Structures</a></li>
+  <li><a href="#output" id="toc-output" class="nav-link" data-scroll-target="#output">Output</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/demo_to_game/01_push.md" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/demo_to_game/000_ingest_validate.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-<section id="prototype-1-element-instantiation-and-uploading" class="level1">
-<h1>Prototype 1: Element Instantiation and Uploading</h1>
-<p>This prototype involves two main steps:</p>
-<section id="instantiating-elements-into-the-virtual-world" class="level2">
-<h2 class="anchored" data-anchor-id="instantiating-elements-into-the-virtual-world">Instantiating Elements into the Virtual World</h2>
-<p>The first part of this prototype is focused on instantiating elements into our virtual world. These elements will be available for user interaction.</p>
-<section id="elements-include" class="level3">
-<h3 class="anchored" data-anchor-id="elements-include">Elements include:</h3>
+<section id="prototype-0-push-an-asset-to-a-service" class="level2">
+<h2 class="anchored" data-anchor-id="prototype-0-push-an-asset-to-a-service">Prototype 0: Push an Asset to a Service</h2>
+<p>This prototype involves pushing an asset to a service with sanitization and validation. The service will separate the Node3D, colliders, and skeletons. Then, the game server pulls those elements in.</p>
+<section id="input" class="level3">
+<h3 class="anchored" data-anchor-id="input">Input</h3>
+<p>The input for this prototype is either a Godot text scene or a Godot binary scene.</p>
+</section>
+<section id="data-structures" class="level3">
+<h3 class="anchored" data-anchor-id="data-structures">Data Structures</h3>
+<p>There are two main data structures used in this prototype:</p>
+<ul>
+<li>An Elixir struct representing a Godot Scene.</li>
+<li>An Elixir struct that represents the list of validations for 3D modeling and animation.</li>
+</ul>
+<section id="godot-scene" class="level4">
+<h4 class="anchored" data-anchor-id="godot-scene">Godot Scene</h4>
+<p>The Godot Scene does the following:</p>
 <ol type="1">
-<li><strong>Colliders</strong>: These are invisible objects that simulate solid matter.</li>
-<li><strong>Per Bone Capsules</strong>: These are simplified user avatars used for collision detection.</li>
+<li>Reconstructs a virtual tree from a flat array of nodes to prevent node paths from breaking out of the scene.</li>
+<li>Strips resources like gdscripts in the packed scene using a whitelist.</li>
+</ol>
+</section>
+<section id="node3d-validations" class="level4">
+<h4 class="anchored" data-anchor-id="node3d-validations">Node3D Validations</h4>
+<p>The Node3D Validations include:</p>
+<ol type="1">
+<li><strong>Validate Node3D Naming Suffix</strong>: This confirms that the naming suffix for Node3D is correct.</li>
+<li><strong>Validate Unique Names</strong>: This verifies that all names in the Node3D are unique.</li>
+</ol>
+</section>
+<section id="colliders-validations" class="level4">
+<h4 class="anchored" data-anchor-id="colliders-validations">Colliders Validations</h4>
+<p>The Colliders Validations include:</p>
+<ol type="1">
+<li><strong>Validate Collider Shape</strong>: This ensures that each collider has a valid shape assigned.</li>
+<li><strong>Validate Collider Position</strong>: This checks that each collider’s position is within the expected range.</li>
+<li><strong>Validate Collider Size</strong>: This confirms that each collider’s size is within the expected range.</li>
+</ol>
+</section>
+<section id="skeleton-validations" class="level4">
+<h4 class="anchored" data-anchor-id="skeleton-validations">Skeleton Validations</h4>
+<p>The Skeleton Validations include:</p>
+<ol type="1">
+<li><strong>Validate Skeleton Bones</strong>: This ensures that each bone in the skeleton is connected to at least one other bone.</li>
+<li><strong>Validate Skeleton Bind Pose</strong>: This checks that the bind pose of the skeleton is correctly defined.</li>
+<li><strong>Validate Skeleton Weight Painting</strong>: This confirms that the weight painting of the skeleton is correctly done.</li>
 </ol>
 </section>
 </section>
-<section id="pulling-elements-for-user-interaction" class="level2">
-<h2 class="anchored" data-anchor-id="pulling-elements-for-user-interaction">Pulling Elements for User Interaction</h2>
-<p>After instantiation, these elements will be pulled for user interaction. This allows users to interact with the colliders and per bone capsules within the virtual environment.</p>
+<section id="output" class="level3">
+<h3 class="anchored" data-anchor-id="output">Output</h3>
+<p>The output for this prototype is a Godot Scene.</p>
 
 
 </section>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>V-Sekai - Manuals – ingest_validate</title>
+<title>V-Sekai - Manuals – tree</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -110,72 +110,39 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#prototype-0-push-an-asset-to-a-service" id="toc-prototype-0-push-an-asset-to-a-service" class="nav-link active" data-scroll-target="#prototype-0-push-an-asset-to-a-service">Prototype 0: Push an Asset to a Service</a>
+  <li><a href="#prototype-3-tree-concept-decision-and-texture-packaging" id="toc-prototype-3-tree-concept-decision-and-texture-packaging" class="nav-link active" data-scroll-target="#prototype-3-tree-concept-decision-and-texture-packaging">Prototype 3: Tree Concept Decision and Texture Packaging</a>
   <ul class="collapse">
-  <li><a href="#input" id="toc-input" class="nav-link" data-scroll-target="#input">Input</a></li>
-  <li><a href="#data-structures" id="toc-data-structures" class="nav-link" data-scroll-target="#data-structures">Data Structures</a></li>
-  <li><a href="#output" id="toc-output" class="nav-link" data-scroll-target="#output">Output</a></li>
+  <li><a href="#part-1-tree-concept-decision" id="toc-part-1-tree-concept-decision" class="nav-link" data-scroll-target="#part-1-tree-concept-decision">Part 1: Tree Concept Decision</a></li>
+  <li><a href="#part-2-texture-packaging" id="toc-part-2-texture-packaging" class="nav-link" data-scroll-target="#part-2-texture-packaging">Part 2: Texture Packaging</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/demo_to_game/00_ingest_validate.md" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/demo_to_game/003_tree.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-<section id="prototype-0-push-an-asset-to-a-service" class="level2">
-<h2 class="anchored" data-anchor-id="prototype-0-push-an-asset-to-a-service">Prototype 0: Push an Asset to a Service</h2>
-<p>This prototype involves pushing an asset to a service with sanitization and validation. The service will separate the Node3D, colliders, and skeletons. Then, the game server pulls those elements in.</p>
-<section id="input" class="level3">
-<h3 class="anchored" data-anchor-id="input">Input</h3>
-<p>The input for this prototype is either a Godot text scene or a Godot binary scene.</p>
-</section>
-<section id="data-structures" class="level3">
-<h3 class="anchored" data-anchor-id="data-structures">Data Structures</h3>
-<p>There are two main data structures used in this prototype:</p>
+<section id="prototype-3-tree-concept-decision-and-texture-packaging" class="level2">
+<h2 class="anchored" data-anchor-id="prototype-3-tree-concept-decision-and-texture-packaging">Prototype 3: Tree Concept Decision and Texture Packaging</h2>
+<p>This prototype is divided into two main parts:</p>
+<section id="part-1-tree-concept-decision" class="level3">
+<h3 class="anchored" data-anchor-id="part-1-tree-concept-decision">Part 1: Tree Concept Decision</h3>
+<p>In this part, we will make a decision between the following concepts:</p>
 <ul>
-<li>An Elixir struct representing a Godot Scene.</li>
-<li>An Elixir struct that represents the list of validations for 3D modeling and animation.</li>
+<li><p><strong>GLTF2 Concept of a Unified Node Tree</strong>: This is one of the options we are considering.</p></li>
+<li><p><strong>Godot Engine / Blender Concept of Armatures</strong>: This is the alternative option under consideration.</p></li>
 </ul>
-<section id="godot-scene" class="level4">
-<h4 class="anchored" data-anchor-id="godot-scene">Godot Scene</h4>
-<p>The Godot Scene does the following:</p>
-<ol type="1">
-<li>Reconstructs a virtual tree from a flat array of nodes to prevent node paths from breaking out of the scene.</li>
-<li>Strips resources like gdscripts in the packed scene using a whitelist.</li>
-</ol>
 </section>
-<section id="node3d-validations" class="level4">
-<h4 class="anchored" data-anchor-id="node3d-validations">Node3D Validations</h4>
-<p>The Node3D Validations include:</p>
-<ol type="1">
-<li><strong>Validate Node3D Naming Suffix</strong>: This confirms that the naming suffix for Node3D is correct.</li>
-<li><strong>Validate Unique Names</strong>: This verifies that all names in the Node3D are unique.</li>
-</ol>
-</section>
-<section id="colliders-validations" class="level4">
-<h4 class="anchored" data-anchor-id="colliders-validations">Colliders Validations</h4>
-<p>The Colliders Validations include:</p>
-<ol type="1">
-<li><strong>Validate Collider Shape</strong>: This ensures that each collider has a valid shape assigned.</li>
-<li><strong>Validate Collider Position</strong>: This checks that each collider’s position is within the expected range.</li>
-<li><strong>Validate Collider Size</strong>: This confirms that each collider’s size is within the expected range.</li>
-</ol>
-</section>
-<section id="skeleton-validations" class="level4">
-<h4 class="anchored" data-anchor-id="skeleton-validations">Skeleton Validations</h4>
-<p>The Skeleton Validations include:</p>
-<ol type="1">
-<li><strong>Validate Skeleton Bones</strong>: This ensures that each bone in the skeleton is connected to at least one other bone.</li>
-<li><strong>Validate Skeleton Bind Pose</strong>: This checks that the bind pose of the skeleton is correctly defined.</li>
-<li><strong>Validate Skeleton Weight Painting</strong>: This confirms that the weight painting of the skeleton is correctly done.</li>
-</ol>
-</section>
-</section>
-<section id="output" class="level3">
-<h3 class="anchored" data-anchor-id="output">Output</h3>
-<p>The output for this prototype is a Godot Scene.</p>
+<section id="part-2-texture-packaging" class="level3">
+<h3 class="anchored" data-anchor-id="part-2-texture-packaging">Part 2: Texture Packaging</h3>
+<p>Once the tree concept decision has been made, we will move on to the packaging of various elements at the marker. These include:</p>
+<ul>
+<li>Textures</li>
+<li>Materials</li>
+<li>Meshes</li>
+<li>IDs</li>
+</ul>
 
 
 </section>

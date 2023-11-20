@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>V-Sekai - Manuals – packet_format</title>
+<title>V-Sekai - Manuals – basic_tooling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -144,101 +110,90 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#variable-bit-rate-encoding" id="toc-variable-bit-rate-encoding" class="nav-link active" data-scroll-target="#variable-bit-rate-encoding">Variable bit rate encoding</a>
+  <li><a href="#basic-tooling-bill-of-materials" id="toc-basic-tooling-bill-of-materials" class="nav-link active" data-scroll-target="#basic-tooling-bill-of-materials">Basic Tooling: Bill of Materials</a>
   <ul class="collapse">
-  <li><a href="#entity" id="toc-entity" class="nav-link" data-scroll-target="#entity">Entity</a></li>
-  <li><a href="#unknowns" id="toc-unknowns" class="nav-link" data-scroll-target="#unknowns">Unknowns</a></li>
-  <li><a href="#targets" id="toc-targets" class="nav-link" data-scroll-target="#targets">Targets</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#vr-software" id="toc-vr-software" class="nav-link" data-scroll-target="#vr-software">VR Software</a></li>
+  <li><a href="#file-formats" id="toc-file-formats" class="nav-link" data-scroll-target="#file-formats">File Formats</a></li>
+  <li><a href="#software-languages" id="toc-software-languages" class="nav-link" data-scroll-target="#software-languages">Software Languages</a></li>
+  <li><a href="#infrastructure-automation-tools" id="toc-infrastructure-automation-tools" class="nav-link" data-scroll-target="#infrastructure-automation-tools">Infrastructure Automation Tools</a></li>
+  <li><a href="#local-and-cloud-storage" id="toc-local-and-cloud-storage" class="nav-link" data-scroll-target="#local-and-cloud-storage">Local and Cloud Storage</a></li>
+  <li><a href="#database" id="toc-database" class="nav-link" data-scroll-target="#database">Database</a></li>
+  <li><a href="#hardware" id="toc-hardware" class="nav-link" data-scroll-target="#hardware">Hardware</a></li>
+  <li><a href="#performance-testing" id="toc-performance-testing" class="nav-link" data-scroll-target="#performance-testing">Performance Testing</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/demo_to_game/70_packet_format.md" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/demo_to_game/090_basic_tooling.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-<section id="variable-bit-rate-encoding" class="level1">
-<h1>Variable bit rate encoding</h1>
-<p>The strategy we want to use is called variable bit rate encoding to optimize the use of bandwidth.</p>
-<p>In the context of our game, this strategy can be applied to reduce the amount of data that needs to be sent over the network for each snapshot. Here’s how it could work with our <code>TimeOffsetPacket</code> and <code>DataPacket</code> structures:</p>
+<p>Sure, here’s a simplified version of your document:</p>
+<section id="basic-tooling-bill-of-materials" class="level1">
+<h1>Basic Tooling: Bill of Materials</h1>
+<p>This section outlines the essential tools we use in our VR world architecture.</p>
+<section id="vr-software" class="level2">
+<h2 class="anchored" data-anchor-id="vr-software">VR Software</h2>
+<p>We utilize:</p>
 <ol type="1">
-<li><p><strong>Keyframe Omission</strong>: Instead of sending a full update (a keyframe) for every single frame, you only send keyframes at certain intervals. In between these keyframes, you send smaller updates (delta frames) that describe how the game state has changed since the last keyframe. This is where the <code>frame_within_metablock</code> and <code>frame_offset</code> fields come into play. They allow you to specify which keyframe a particular delta frame is relative to.</p></li>
-<li><p><strong>Interpolation</strong>: On the receiving end, the game client uses the data from the keyframes and delta frames to interpolate the game state for the frames in between. This means that even though you’re sending less data, the client can still produce a smooth animation. The <code>x_offset</code>, <code>y_offset</code>, and <code>z_offset</code> fields in the <code>DataPacket</code> structure are used for this purpose. They provide the information needed to calculate the position of an entity at any given frame.</p></li>
-<li><p><strong>Variable Bit Rate Encoding</strong>: The <code>time_bit_width</code>, <code>x_bit_width</code>, <code>y_bit_width</code>, and <code>z_bit_width</code> fields in the <code>TimeOffsetPacket</code> structure allow you to use different amounts of bits for different types of data. For example, if the x, y, and z positions of an entity don’t change much from one frame to the next, you might choose to use fewer bits to represent these values. This can help to further reduce the size of your snapshots.</p></li>
-<li><p><strong>Octahedral Compression</strong>: The rotation of the rigid bodies is stored as an octahedral normal, which is a very efficient way to represent 3D rotations. This can significantly reduce the amount of data needed to represent the orientation of each rigid body.</p></li>
-</ol>
-<section id="entity" class="level2">
-<h2 class="anchored" data-anchor-id="entity">Entity</h2>
-<p>Given the <code>Entity</code> struct:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> TimeOffsetPacket <span class="op">{</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint16_t</span> frame_within_metablock<span class="op">;</span> <span class="co">// Bits 0-15</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint8_t</span> time_bit_width<span class="op">;</span>          <span class="co">// Bits 16-19</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint8_t</span> x_bit_width<span class="op">;</span>             <span class="co">// Bits 20-23</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint8_t</span> y_bit_width<span class="op">;</span>             <span class="co">// Bits 24-27</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint8_t</span> z_bit_width<span class="op">;</span>             <span class="co">// Bits 28-31</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint32_t</span> byte_offset_to_first_packet<span class="op">;</span> <span class="co">// Bits 0-23 of high word</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint8_t</span> amount_of_packets_that_follow<span class="op">;</span> <span class="co">// Bits 24-31 of high word</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> DataPacket <span class="op">{</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint16_t</span> base_x_value<span class="op">;</span> <span class="co">// bits 0-15</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint16_t</span> base_y_value<span class="op">;</span> <span class="co">// bits 16-31</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint16_t</span> base_z_value<span class="op">;</span> <span class="co">// bits 32-47</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">// The following fields are bit-compressed</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint16_t</span> frame_offset<span class="op">;</span> <span class="co">// [Time bit width] (unsigned)</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int16_t</span> x_offset<span class="op">;</span>      <span class="co">// [X bit width] (signed)</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int16_t</span> y_offset<span class="op">;</span>      <span class="co">// [Y bit width] (signed)</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int16_t</span> z_offset<span class="op">;</span>      <span class="co">// [Z bit width] (signed)</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Given values</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> size_of_time_offset_packet <span class="op">=</span> <span class="dv">11</span><span class="op">;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> size_of_data_packet <span class="op">=</span> <span class="dv">14</span><span class="op">;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> total_bytes <span class="op">=</span> <span class="dv">1596</span><span class="op">;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> packets_per_entity <span class="op">=</span> <span class="dv">4</span><span class="op">;</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> packets_per_bone <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">// Calculate the number of DataPackets we can store after accounting for one TimeOffsetPacket</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> data_packet_count <span class="op">=</span> <span class="op">(</span>total_bytes <span class="op">-</span> size_of_time_offset_packet<span class="op">)</span> <span class="op">/</span> size_of_data_packet<span class="op">;</span> <span class="co">// This will be 113</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">// Calculate the number of DataPackets we can store after accounting for the entity's position, orientation, linear_velocity and angular_velocity</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>data_packet_count <span class="op">=</span> data_packet_count <span class="op">-</span> packets_per_entity<span class="op">;</span> <span class="co">// This will be 109</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">// Now, let's solve for the number of bones</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> total_bones <span class="op">=</span> data_packet_count <span class="op">/</span> packets_per_bone<span class="op">;</span> <span class="co">// This will be 54</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol type="1">
-<li><code>TimeOffsetPacket</code></li>
-<li>A full RigidBody structure on the server consists of position, orientation, linear_velocity and angular_velocity.</li>
-<li>Rotation is stored as x/y is an octahedral normal storing axis, while z is the rotation. Converting from this to quaternion is extremely efficient.</li>
-<li>A bone is similar to the rigid body.</li>
-<li>We omit frames for the worst representation to represent a user at distances.</li>
-<li>Lets assume all bones are in constant motion at all time.</li>
-<li>We can pretend a entity is a skeleton without bones and that will work out since a skeleton is a Node3D.</li>
+<li><strong>Godot Engine</strong>: An open-source game engine supporting both 2D and 3D games as well as interactive experiences.</li>
+<li><strong>Blender</strong>: A comprehensive, free, and open-source 3D creation suite.</li>
 </ol>
 </section>
-<section id="unknowns" class="level2">
-<h2 class="anchored" data-anchor-id="unknowns">Unknowns</h2>
-<p>Define some character limitations, for the skeleton.</p>
-<p>We need to define that before we start coding on it, else your going to be chasing a very long ouroboros and it will come back to bite you.</p>
-<p>Distance limitations, farther you get the higher the positional precision losses which will cause issues with converting for math.</p>
-<p>Also need some sort of id system for player info.</p>
-<p>Max number of bones, min number of bones, bone important so as you move farther away the # of bones decreases in association to what informaiton you need to send.</p>
-<p>The limitation boundaries based on distance from the player.</p>
+<section id="file-formats" class="level2">
+<h2 class="anchored" data-anchor-id="file-formats">File Formats</h2>
+<p>We adhere to the following standards for 3D models:</p>
+<ul>
+<li><strong>glTF (GL Transmission Format)</strong>: A standard file format for three-dimensional scenes and models.</li>
+<li><strong>VRM</strong>: A 3D avatar file format for VR applications based on glTF 2.0.</li>
+<li><strong>Godot Scene (.tscn)</strong>: Godot’s native scene format.</li>
+</ul>
 </section>
-<section id="targets" class="level2">
-<h2 class="anchored" data-anchor-id="targets">Targets</h2>
-<p>For AAA game development, target $2.50 to $3 USD per user per server per month.</p>
-<p>00knight at Winter Pixel Games tries to keep each players state update under 1.2 kilobytes. So 1.2 kilobytes x 30hz x number of players + whatever meta data is transferred at a lesser rate.</p>
+<section id="software-languages" class="level2">
+<h2 class="anchored" data-anchor-id="software-languages">Software Languages</h2>
+<p>Software languages are indispensable for infusing interactivity into our VR worlds:</p>
+<ul>
+<li><strong>C++</strong></li>
+<li><strong>GDScript</strong>: The native scripting language for Godot Engine.</li>
+<li><strong>Elixir</strong></li>
+</ul>
 </section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ol type="1">
-<li><a href="https://gafferongames.com/post/serialization_strategies/">Serialization Strategies</a></li>
-<li><a href="https://www.youtube.com/watch?v=sx4IIQL0x7c">Networked Physics in Virtual Reality</a></li>
-<li><a href="https://github.com/godotengine/godot-proposals/issues/3375">Godot Engine Proposal</a></li>
-<li><a href="https://aws.amazon.com/blogs/gametech/how-to-host-your-unreal-engine-game-for-under-1-per-player-with-amazon-gamelift/">Host your Unreal Engine game for under $1 USD</a> ```</li>
-</ol>
+<section id="infrastructure-automation-tools" class="level2">
+<h2 class="anchored" data-anchor-id="infrastructure-automation-tools">Infrastructure Automation Tools</h2>
+<p>To manage and automate our infrastructure, we use:</p>
+<ul>
+<li><strong>OpenTofu</strong>: An open-source infrastructure as code software tool.</li>
+<li><strong>VictoriaMetrics</strong> A fast, cost-effective and scalable time series database.</li>
+</ul>
+</section>
+<section id="local-and-cloud-storage" class="level2">
+<h2 class="anchored" data-anchor-id="local-and-cloud-storage">Local and Cloud Storage</h2>
+<p>For local storage, we use:</p>
+<ul>
+<li><strong>SeaweedFS</strong>: A simple and highly scalable distributed file system.</li>
+</ul>
+<p>For cloud storage, we use:</p>
+<ul>
+<li><strong>Cloud’s S3 Compatible Storage</strong>: Many cloud service providers offer storage solutions that are compatible with the S3 API.</li>
+</ul>
+</section>
+<section id="database" class="level2">
+<h2 class="anchored" data-anchor-id="database">Database</h2>
+<p>Our choice for database management is <strong>CockroachDB</strong>, an open-source, distributed SQL database.</p>
+</section>
+<section id="hardware" class="level2">
+<h2 class="anchored" data-anchor-id="hardware">Hardware</h2>
+<p>To test and experience our virtual worlds, VR hardware is essential:</p>
+<ul>
+<li><strong>VR Headsets</strong>: Devices such as the Meta Quest 2, Meta Quest 3, Beyond HMD, or Valve Index.</li>
+<li><strong>Controllers</strong>: These devices facilitate user interaction with the virtual environment.</li>
+<li><strong>VR GPUs</strong>: Graphics processing units for rendering VR content.</li>
+</ul>
+</section>
+<section id="performance-testing" class="level2">
+<h2 class="anchored" data-anchor-id="performance-testing">Performance Testing</h2>
+<p>Load test our VR world architecture. It simulates a user-defined number of users to stress test a URL.</p>
 
 
 </section>

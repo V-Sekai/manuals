@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>V-Sekai - Manuals – validations</title>
+<title>V-Sekai - Manuals – servers_and_script</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -110,83 +110,33 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#godot-scene" id="toc-godot-scene" class="nav-link active" data-scroll-target="#godot-scene">Godot Scene</a>
+  <li><a href="#prototype-5-server-management-and-scripting" id="toc-prototype-5-server-management-and-scripting" class="nav-link active" data-scroll-target="#prototype-5-server-management-and-scripting">Prototype 5: Server Management and Scripting</a>
   <ul class="collapse">
-  <li><a href="#output" id="toc-output" class="nav-link" data-scroll-target="#output">Output</a></li>
+  <li><a href="#part-1-server-management" id="toc-part-1-server-management" class="nav-link" data-scroll-target="#part-1-server-management">Part 1: Server Management</a></li>
+  <li><a href="#part-2-scripting" id="toc-part-2-scripting" class="nav-link" data-scroll-target="#part-2-scripting">Part 2: Scripting</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/demo_to_game/80_validations.md" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/master/demo_to_game/005_servers_and_script.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-<section id="godot-scene" class="level1">
-<h1>Godot Scene</h1>
-<ol type="1">
-<li>Reconstructs a virtual tree from a flat array of nodes to prevent node paths from breaking out of the scene.</li>
-<li>Strips resources like gdscripts in the packed scene using a whitelist.</li>
-<li>Handles different scenes differently based on their context:
+<section id="prototype-5-server-management-and-scripting" class="level2">
+<h2 class="anchored" data-anchor-id="prototype-5-server-management-and-scripting">Prototype 5: Server Management and Scripting</h2>
+<p>This prototype is divided into two main sections:</p>
+<section id="part-1-server-management" class="level3">
+<h3 class="anchored" data-anchor-id="part-1-server-management">Part 1: Server Management</h3>
+<p>In this part, we will focus on various server management considerations. These include:</p>
 <ul>
-<li>Avatar or maps</li>
-<li>Applies different whitelists</li>
-<li>Allows 2D nodes only if they’re part of another viewport.</li>
-</ul></li>
-</ol>
-<section id="mesh-vertex-attributes" class="level4">
-<h4 class="anchored" data-anchor-id="mesh-vertex-attributes">Mesh Vertex Attributes</h4>
-<ol type="1">
-<li><strong>Validate Mesh Vertices Have Edges</strong>: Ensure that each vertex in the mesh is connected to at least one edge.</li>
-<li><strong>Validate Mesh Has Overlapping UVs</strong>: Check if any UV coordinates in the mesh overlap.</li>
-<li><strong>Validate Mesh Single UV Set</strong>: Confirm that the mesh only has one set of UV coordinates.</li>
-<li><strong>Validate Mesh Has UVs</strong>: Verify that the mesh has UV coordinates.</li>
-<li><strong>Validate Mesh No Co-Planar Faces</strong>: Ensure that there are no faces in the mesh that lie on the same plane.</li>
-<li><strong>Validate Mesh Ngons</strong>: Check for the presence of polygons with more than four sides in the mesh.</li>
-<li><strong>Validate Mesh Non-Manifold</strong>: Confirm that the mesh does not have any non-manifold geometry.</li>
-<li><strong>Validate Mesh No Negative Scale</strong>: Ensure that the scale of the mesh is not negative.</li>
-<li><strong>Validate Mesh Edge Length Non Zero</strong>: Verify that all edges in the mesh have a length greater than zero.</li>
-<li><strong>Validate Mesh Normals Unlocked</strong>: Check that the normals of the mesh are not locked and can be modified.</li>
-<li><strong>Validate Mesh UV Set Map 1</strong>: Confirm that the first UV set map of the mesh is correctly configured.</li>
-<li><strong>Validate if Mesh is Triangulated</strong>: Ensure that the mesh is composed entirely of triangular faces.</li>
-</ol>
+<li>Handling server downtime</li>
+<li>Managing user logouts/logins</li>
+</ul>
 </section>
-<section id="material" class="level4">
-<h4 class="anchored" data-anchor-id="material">Material</h4>
-<ol start="13" type="1">
-<li><strong>Validate Color Sets</strong>: Check that the color sets used in the material are valid.</li>
-<li><strong>Validate Model’s default uv set exists</strong>: Confirm that the model has a default UV set.</li>
-</ol>
-</section>
-<section id="general" class="level4">
-<h4 class="anchored" data-anchor-id="general">General</h4>
-<ol start="15" type="1">
-<li><strong>Validate Model Name</strong>: Ensure that the model has a valid name.</li>
-<li><strong>Validate Model Content</strong>: Check that the content of the model is valid.</li>
-<li><strong>Validate Node3D Naming Suffix</strong>: Confirm that the naming suffix for Node3D is correct.</li>
-<li><strong>Validate No Node3D Transforms</strong>: Check that there are no null or empty Node3D transforms in the model.</li>
-<li><strong>Validate No Unknown Nodes</strong>: Confirm that there are no unknown nodes in the model.</li>
-<li><strong>Validate Node No Ghosting</strong>: Verify that there is no ghosting effect on any node.</li>
-<li><strong>Validate Shape Default Names</strong>: Ensure that the default names for shapes are valid.</li>
-<li><strong>Validate Shape Render Stats</strong>: Check the render statistics for each shape.</li>
-<li><strong>Validate Shape Zero</strong>: Confirm that the zero position for each shape is correctly set.</li>
-<li><strong>Validate Transform Zero</strong>: Ensure that the zero position for each transform is correctly set.</li>
-<li><strong>Validate Unique Names</strong>: Verify that all names in the model are unique.</li>
-</ol>
-</section>
-<section id="animations" class="level4">
-<h4 class="anchored" data-anchor-id="animations">Animations</h4>
-<ol start="28" type="1">
-<li><strong>Validate No Animation</strong>: Check that there are no animations in the model.</li>
-<li><strong>Ensure no keyframes on nodes in the Instance</strong>: Confirm that there are no keyframes on any nodes in the instance.</li>
-</ol>
-</section>
-<section id="output" class="level3">
-<h3 class="anchored" data-anchor-id="output">Output</h3>
-<ol type="1">
-<li>Output Godot Scene</li>
-</ol>
-<p>Before the game client/server architecture is sound, we need to be able to push an asset to a service with sanitization and validation. This service will separate the colliders and other elements. Then, the game server pulls those colliders in.</p>
+<section id="part-2-scripting" class="level3">
+<h3 class="anchored" data-anchor-id="part-2-scripting">Part 2: Scripting</h3>
+<p>In the second part of this prototype, we will incorporate scripting into the system. This will allow for more dynamic and interactive functionalities.</p>
 
 
 </section>
