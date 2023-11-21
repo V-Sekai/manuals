@@ -28,7 +28,7 @@ The downside could be the complexity of the setup and the cost of purchasing all
 
 ## The Road Not Taken
 
-An alternative approach could be to use a standalone VR headset like the Oculus Quest 2, but this would not provide the same level of performance and compatibility with the Valve VR ecosystem.
+An alternative approach could be to use a standalone VR headset like the HTC Focus 3 and provide the same level of performance and compatibility with the Valve VR ecosystem.
 
 ## The Infrequent Use Case
 
