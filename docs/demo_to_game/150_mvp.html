@@ -128,30 +128,30 @@ ul.task-list li input[type="checkbox"] {
 <section id="key-features" class="level2">
 <h2 class="anchored" data-anchor-id="key-features">Key Features</h2>
 <ol type="1">
-<li><strong>VR Prototype</strong>: A basic VR environment with one avatar and one chair.</li>
-<li><strong>Physics</strong>: The chair behaves as a rigid body, reacting to forces applied by the avatar. It has properties such as position, rotation, velocity, and angular velocity.</li>
+<li><strong>VR Prototype</strong>: A primary VR environment with one avatar and one chair.</li>
+<li><strong>Physics</strong>: The chair behaves as a rigid body, reacting to forces applied by the avatar. The chair has position, rotation, angular, and linear velocity properties.</li>
 <li><strong>Object Interaction</strong>: The avatar can interact with the chair (e.g., sit on it, push it).</li>
-<li><strong>Event-Driven</strong>: The system is designed to respond to events (like avatar sitting on the chair) instead of being updated every frame.</li>
-<li><strong>State Changes</strong>: The states of the avatar and the chair change based on their interaction.</li>
+<li><strong>Event-Driven</strong>: The system is designed to respond to events (like an avatar sitting on the chair) instead of being updated every frame.</li>
+<li><strong>State Changes</strong>: The avatar and chair states change based on their interaction.</li>
 <li><strong>Mastership vs Ownership</strong>: The master simulates the physics of the objects, while the owner controls the objects’ actions.</li>
-<li><strong>Networking</strong>: The state changes are sent to the server, then synchronized across all clients.</li>
+<li><strong>Networking</strong>: The state changes are sent to the server and synchronized across all clients.</li>
 </ol>
 </section>
 <section id="development-steps" class="level2">
 <h2 class="anchored" data-anchor-id="development-steps">Development Steps</h2>
 <ol type="1">
 <li><strong>Create the VR Environment</strong>: Use Godot to create a simple VR environment with one avatar and one chair.</li>
-<li><strong>Upload and Validate Visual Mesh, Colliders, and Skeletons</strong>: Upload the visual mesh, colliders, and skeletons for both the chair and the avatar. Validate these assets to ensure they meet the necessary requirements for the VR environment.</li>
-<li><strong>Implement Physics</strong>: Make the chair a rigid body that can react to forces. For example, if the avatar pushes the chair, it should move accordingly. The chair’s state includes its position, rotation, velocity, and angular velocity.</li>
-<li><strong>Implement Object Interaction</strong>: Allow the avatar to interact with the chair. This could include sitting on the chair or applying a force to it.</li>
-<li><strong>Handle State Changes</strong>: When the avatar interacts with the chair, update the states of both the avatar and the chair. This includes the position, rotation, velocity, and angular velocity of the chair if it has been moved.</li>
-<li><strong>Implement Event-Driven Logic</strong>: Instead of updating the game state every tick, use signals in Godot to trigger updates when certain events occur. For example, when the avatar sits on the chair, emit a signal that triggers the state update.</li>
-<li><strong>Set Up Networking</strong>: Set up a client-server network model using Elixir. When the state changes occur, send them to the server. The server then updates the game state and sends it back to the client(s).</li>
-<li><strong>Encode State Changes</strong>: Before sending the state changes over the network, encode them. This will ensure efficient parsing and hash consistent representations.</li>
+<li><strong>Upload and Validate Visual Mesh, Colliders, and Skeletons</strong>: Upload the visual mesh, colliders, and skeletons for both the chair and the avatar. Validate these assets to ensure they meet the requirements for the VR environment.</li>
+<li><strong>Implement Physics</strong>: Make the chair a rigid body that can react to forces. For example, if the avatar pushes the chair, it should move accordingly. The chair’s state includes its position, rotation, linear, and angular velocity.</li>
+<li><strong>Implement Object Interaction</strong>: Allow the avatar to interact with the chair, including sitting on the chair or applying force.</li>
+<li><strong>Handle State Changes</strong>: When the avatar interacts with the chair, update the states of both the avatar and the chair. This includes the chair’s position, rotation, linear velocity, and angular velocity if it has been moved.</li>
+<li><strong>Implement Event-Driven Logic</strong>: Instead of updating the game state every tick, use signals in Godot to trigger updates when certain events occur. For example, when the avatar sits on the chair, it emits a signal that triggers the state update.</li>
+<li><strong>Set Up Networking</strong>: Set up a client-server network model using Elixir. When the state changes occur, could you send them to the server? The server then updates the game state and returns it to the client(s).</li>
+<li><strong>Encode State Changes</strong>: Before sending the state changes over the network, encode them to ensure efficient parsing and hash-consistent representations.</li>
 <li><strong>Implement Mastership and Ownership</strong>: Assign mastership and ownership roles for each object in the VR environment. The master will be responsible for simulating the physics of the objects, while the owner will control the objects’ actions.</li>
 <li><strong>Test the System</strong>: Test the system by interacting with the chair in the VR environment. Check if the state changes, including those related to physics, are correctly sent to the server and synchronized across all clients.</li>
 </ol>
-<p>This proof of concept will allow us to validate our approach and identify any potential issues early in the development process. Once this basic functionality is working, we can incrementally add more features, such as additional interactive objects and avatars, more complex physics interactions, and so on.</p>
+<p>This proof of concept will allow us to validate our approach and identify potential issues early in development. Once this basic functionality works, we can incrementally add more features, such as additional interactive objects and avatars, more complex physics interactions, etc.</p>
 
 
 </section>
