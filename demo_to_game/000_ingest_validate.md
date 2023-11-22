@@ -8,17 +8,17 @@ The input for this prototype is either a Godot text scene or a Godot binary scen
 
 ### Data Structures
 
-There are two main data structures used in this prototype:
+There are two primary data structures used in this prototype:
 
-- An Elixir struct representing a Godot Scene.
-- An Elixir struct that represents the list of validations for 3D modeling and animation.
+- An Elixir structure representing a Godot Scene.
+- An Elixir structure that represents the list of validations for 3D modeling and animation.
 
 #### Godot Scene
 
 The Godot Scene does the following:
 
 1. Reconstructs a virtual tree from a flat array of nodes to prevent node paths from breaking out of the scene.
-2. Strips resources like gdscripts in the packed scene using a whitelist.
+2. Strips resources like gdscripts in the packed scene using an allowlist.
 
 #### Node3D Validations
 
@@ -31,9 +31,9 @@ The Node3D Validations include:
 
 The Colliders Validations include:
 
-1. **Validate Collider Shape**: This ensures that each collider has a valid shape assigned.
+1. **Validate Collider Shape**: This ensures each collider has a valid shape assigned.
 2. **Validate Collider Position**: This checks that each collider's position is within the expected range.
-3. **Validate Collider Size**: This confirms that each collider's size is within the expected range.
+3. **Validate Collider Size**: This confirms that each collider's size is within the desired range.
 
 #### Skeleton Validations
 
@@ -41,7 +41,7 @@ The Skeleton Validations include:
 
 1. **Validate Skeleton Bones**: This ensures that each bone in the skeleton is connected to at least one other bone.
 2. **Validate Skeleton Bind Pose**: This checks that the bind pose of the skeleton is correctly defined.
-3. **Validate Skeleton Weight Painting**: This confirms that the weight painting of the skeleton is correctly done.
+3. **Validate Skeleton Weight Painting**: This confirms that the weight painting of the skeleton is perfectly done.
 
 ### Output
 

@@ -16,7 +16,7 @@ We utilize:
 We adhere to the following standards for 3D models:
 
 - **glTF (GL Transmission Format)**: A standard file format for three-dimensional scenes and models.
-- **VRM**: A 3D avatar file format for VR applications based on glTF 2.0.
+-- **VRM**: A 3D avatar file format based on glTF 2.0 for VR applications.
 - **Godot Scene (.tscn)**: Godot's native scene format.
 
 ## Software Languages
@@ -31,8 +31,8 @@ Software languages are indispensable for infusing interactivity into our VR worl
 
 To manage and automate our infrastructure, we use:
 
-- **OpenTofu**: An open-source infrastructure as code software tool.
-- **VictoriaMetrics** A fast, cost-effective and scalable time series database.
+- **OpenTofu**: An open-source infrastructure as a code software tool.
+- **VictoriaMetrics**: A fast, cost-effective, and scalable time series database.
 
 ## Local and Cloud Storage
 
@@ -42,7 +42,7 @@ For local storage, we use:
 
 For cloud storage, we use:
 
-- **Cloud's S3 Compatible Storage**: Many cloud service providers offer storage solutions that are compatible with the S3 API.
+- **Cloud's S3 Compatible Storage**: Many cloud service providers offer storage solutions compatible with the S3 API.
 
 ## Database
 
@@ -52,7 +52,7 @@ Our choice for database management is **CockroachDB**, an open-source, distribut
 
 To test and experience our virtual worlds, VR hardware is essential:
 
-- **VR Headsets**: Devices such as the Meta Quest 2, Meta Quest 3, Beyond HMD, or Valve Index.
+- **VR Headsets**: Devices like the Meta Quest 2, Meta Quest 3, Beyond HMD, or Valve Index.
 - **Controllers**: These devices facilitate user interaction with the virtual environment.
 - **VR GPUs**: Graphics processing units for rendering VR content.
 

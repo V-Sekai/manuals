@@ -9,7 +9,7 @@ For instance, when writing about Godot XR, the user should learn:
 - What is XR? (link to a page or provide a brief explanation)
 - What is Godot? (link to a previous page if covered, and briefly re-explain in one sentence)
 - How XR works in Godot and how our product utilizes it
-- Concrete achievements possible with this feature/knowledge
+- What concrete achievements are possible with this feature/knowledge?
 - Limitations of the technology affecting our product
 
 Draft each page as a bullet list like this, allowing writers to understand the points to cover quickly.

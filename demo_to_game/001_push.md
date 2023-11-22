@@ -4,7 +4,7 @@ This prototype involves two main steps:
 
 ## Instantiating Elements into the Virtual World
 
-The first part of this prototype is focused on instantiating elements into our virtual world. These elements will be available for user interaction.
+This prototype's first part focuses on instantiating elements into our virtual world. These elements will be available for user interaction.
 
 ### Elements include:
 
@@ -13,4 +13,4 @@ The first part of this prototype is focused on instantiating elements into our v
 
 ## Pulling Elements for User Interaction
 
-After instantiation, these elements will be pulled for user interaction. This allows users to interact with the colliders and per bone capsules within the virtual environment.
+After instantiation, these elements will be pulled for user interaction. This allows users to interact with the colliders and per-bone capsules within the virtual environment.

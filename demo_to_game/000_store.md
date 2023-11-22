@@ -48,7 +48,7 @@ tar -zxvf linux_amd64.tar.gz
 ./weed s3
 ```
 
-This will start the SeaweedFS master server and the S3 gateway.
+This will start the SeaweedFS primary server and the S3 gateway.
 
 ## Step 4: Deploying the Elixir Application
 
@@ -74,7 +74,7 @@ docker run -d --name=cockroachdb -p 26257:26257 -p 8080:8080 cockroachdb/cockroa
 
 ## Step 6: Starting Godot Engine Server
 
-Starting a Godot engine server involves pulling the Godot Docker image, setting the Docker options for your app, and starting the server:
+Starting a Godot engine server involves pulling the Godot Docker image, setting the Docker options for your app, and creating the server:
 
 ```bash
 # The version is for reference and is not the correct Godot Engine image tag.
@@ -105,7 +105,7 @@ sudo tailscale up
 
 Follow the prompts to authenticate Tailscale with your Tailscale account.
 
-3. Now, your servers should be accessible from any device logged into your Tailscale network. You can check the IP addresses assigned to your servers by Tailscale with:
+3. Now, your servers should be accessible from any device logged into your Tailscale network. You can check the IP addresses assigned to your servers by Tailscale with the following:
 
 ```bash
 tailscale ip -4
@@ -113,6 +113,6 @@ tailscale ip -4
 
 Please note that you'll need to replace `your-server-ip` with the actual IP address of your server. Also, the port numbers used here are just examples. You should use the port numbers that are appropriate for your setup.
 
-## TODO: Generate certificate with Caddy
+## TODO: Generate the certificate with Caddy
 
 Instruct how to generate certificates with Caddy.

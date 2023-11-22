@@ -1,16 +1,16 @@
 # Variable bit rate encoding
 
-The strategy we want to use is called variable bit rate encoding to optimize the use of bandwidth.
+The strategy we want to use is called variable bit rate encoding to optimize bandwidth use.
 
 In the context of our game, this strategy can be applied to reduce the amount of data that needs to be sent over the network for each snapshot. Here's how it could work with our `TimeOffsetPacket` and `DataPacket` structures:
 
-1. **Keyframe Omission**: Instead of sending a full update (a keyframe) for every single frame, you only send keyframes at certain intervals. In between these keyframes, you send smaller updates (delta frames) that describe how the game state has changed since the last keyframe. This is where the `frame_within_metablock` and `frame_offset` fields come into play. They allow you to specify which keyframe a particular delta frame is relative to.
+1. **Keyframe Omission**: Instead of sending a full update (a keyframe) for every frame, you only send keyframes at specific intervals. In between these keyframes, you send more minor updates (delta frames) that describe how the game state has changed since the last keyframe. This is where the `frame_within_metablock` and `frame_offset` fields come into play. They allow you to specify which keyframe a particular delta frame is relative to.
 
-2. **Interpolation**: On the receiving end, the game client uses the data from the keyframes and delta frames to interpolate the game state for the frames in between. This means that even though you're sending less data, the client can still produce a smooth animation. The `x_offset`, `y_offset`, and `z_offset` fields in the `DataPacket` structure are used for this purpose. They provide the information needed to calculate the position of an entity at any given frame.
+2. **Interpolation**: On the receiving end, the game client uses the data from the keyframes and delta frames to interpolate the game state for the frames in between. This means that even though you send less data, the client can still produce a smooth animation. The `x_offset`, `y_offset`, and `z_offset` fields in the `DataPacket` structure are used for this purpose. They provide the information needed to calculate the position of an entity at any given frame.
 
-3. **Variable Bit Rate Encoding**: The `time_bit_width`, `x_bit_width`, `y_bit_width`, and `z_bit_width` fields in the `TimeOffsetPacket` structure allow you to use different amounts of bits for different types of data. For example, if the x, y, and z positions of an entity don't change much from one frame to the next, you might choose to use fewer bits to represent these values. This can help to further reduce the size of your snapshots.
+3. **Variable Bit Rate Encoding**: The `time_bit_width`, `x_bit_width`, `y_bit_width`, and `z_bit_width` fields in the `TimeOffsetPacket` structure allow you to use different amounts of bits for different types of data. For example, if an entity's x, y, and z positions don't change much from one frame to the next, you might use fewer bits to represent these values. This can help to reduce the size of your snapshots further.
 
-4. **Octahedral Compression**: The rotation of the rigid bodies is stored as an octahedral normal, which is a very efficient way to represent 3D rotations. This can significantly reduce the amount of data needed to represent the orientation of each rigid body.
+4. **Octahedral Compression**: The rotation of the rigid bodies is stored as an octahedral normal, which is a very efficient way to represent 3D rotations. This can significantly reduce the data needed to represent the orientation of each rigid body.
 
 ## Entity
 
@@ -58,32 +58,32 @@ int total_bones = data_packet_count / packets_per_bone; // This will be 54
 ```
 
 1. `TimeOffsetPacket`
-1. A full RigidBody structure on the server consists of position, orientation, linear_velocity and angular_velocity.
-1. Rotation is stored as x/y is an octahedral normal storing axis, while z is the rotation. Converting from this to quaternion is extremely efficient.
-1. A bone is similar to the rigid body.
+1. A complete RigidBody structure on the server consists of position, orientation, linear_velocity, and angular_velocity.
+1. Rotation is stored as x/y is an octahedral normal storing axis, while z is the rotation. Converting from this to quaternion is highly efficient.
+1. A bone is similar to a rigid body.
 1. We omit frames for the worst representation to represent a user at distances.
-1. Lets assume all bones are in constant motion at all time.
-1. We can pretend a entity is a skeleton without bones and that will work out since a skeleton is a Node3D.
+1. Let's assume all bones are in constant motion at all times.
+1. We can pretend an entity is a skeleton without bones, which will work out since a skeleton is a Node3D.
 
 ## Unknowns
 
-Define some character limitations, for the skeleton.
+Define some character limitations for the skeleton.
 
-We need to define that before we start coding on it, else your going to be chasing a very long ouroboros and it will come back to bite you.
+We need to define that before we start coding on it, or else you will be chasing a very long ouroboros, and it will come back to bite you.
 
-Distance limitations, farther you get the higher the positional precision losses which will cause issues with converting for math.
+Distance limitations: the farther you get, the higher the positional precision losses will cause issues with converting for math.
 
-Also need some sort of id system for player info.
+Also, we need an ID system for player info.
 
-Max number of bones, min number of bones, bone important so as you move farther away the # of bones decreases in association to what informaiton you need to send.
+Max number of bones, min number of bones, bone important so as you move farther away, the # of bones decreases in association to what information you need to send.
 
-The limitation boundaries based on distance from the player.
+The limitation boundaries are based on distance from the player.
 
 ## Targets
 
-For AAA game development, target $2.50 to $3 USD per user per server per month.
+For AAA game development, target $2.50 to USD 3 per user per server per month.
 
-00knight at Winter Pixel Games tries to keep each players state update under 1.2 kilobytes. So 1.2 kilobytes x 30hz x number of players + whatever meta data is transferred at a lesser rate.
+00knight at Winter Pixel Games tries to keep each player's state update under 1.2 kilobytes. So 1.2 kilobytes x 30hz x number of players + whatever metadata is transferred at a lesser rate.
 
 ## References
 
