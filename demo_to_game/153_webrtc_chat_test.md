@@ -1,0 +1,7 @@
+# Webrtc chat test
+
+The conversation between "iFire" and "Bioblaze Payne" focuses on testing WebRTC (Web Real-Time Communication) in a gaming context, specifically in relation to Unreal Engine. iFire queries about creating a chat message scenario that could simulate the stress of 280 peers, to which Bioblaze suggests using a JSON object with random names and messages replicated across all clients. They discuss generating these messages at random intervals to stress test the system.
+
+Bioblaze recommends including a random vector 3 and vector 4 in the messages, though they are unsure of the exact length needed. The discussion then shifts to the simulation of a "rigid body chair" and a character with 200 bones, with iFire contemplating the number of bones in a chair. Bioblaze advises sending packages containing all player bones, randomized repeatedly, to test the system's load capacity.
+
+They also propose monitoring the time response between client communications, breaking it down into specific millisecond intervals (16ms, 32ms, 64ms, 128ms) for replication sync. The idea is to measure the lag in responses. iFire mentions a UTC timestamp function they created in Godot, which leads to Bioblaze suggesting that each client should record the time and details of received messages for later analysis. This data would then be compiled into a database, with SQL queries used to determine average response times and lag compensation. The conversation concludes with iFire deciding to document the discussion for future reference.
