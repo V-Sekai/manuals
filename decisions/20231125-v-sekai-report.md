@@ -3,7 +3,7 @@
 ## Metadata
 
 - **Status:** Accepted
-- **Deciders:** V-Sekai, fire, PLYSHKA🐧
+- **Deciders:** V-Sekai, fire, PLYSHKA🐧, SaracenOne
 - **Tags:** V-Sekai, Linux, Bug Fix, Godot Engine, User Support
 
 ## What is V-Sekai?
