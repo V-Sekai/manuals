@@ -1,8 +1,8 @@
-# V-Sekai 2023-11-25 Report
+# Accepted: V-Sekai 2023-11-25 Report
 
 ## Metadata
 
-- **Status:** Proposed
+- **Status:** Accepted
 - **Deciders:** V-Sekai, fire, PLYSHKA🐧
 - **Tags:** V-Sekai, Linux, Bug Fix, Godot Engine, User Support
 
@@ -40,7 +40,7 @@ What state is V-Sekai in, and what can it do?
 
 3. **Menu Editing:** In V-Sekai, menus can't be edited in VR. They can only be edited on the desktop before entering a game.
 4. **Default Avatar:** V-Sekai does not have a default avatar. This causes confusion as players load in with an error avatar.
-4. **Default Avatar IK:** V-Sekai's default ik is currently twisted incorrectly.
+5. **Default Avatar IK:** V-Sekai's default ik is currently twisted incorrectly.
 
 ### Successes
 
