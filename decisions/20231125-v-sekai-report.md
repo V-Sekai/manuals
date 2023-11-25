@@ -39,7 +39,8 @@ What state is V-Sekai in, and what can it do?
 ### Major Issues
 
 3. **Menu Editing:** In V-Sekai, menus can't be edited in VR. They can only be edited on the desktop before entering a game.
-4. **Default Avatar:** V-Sekai does not have a default avatar. This causes confusion as players load in with a default avatar.
+4. **Default Avatar:** V-Sekai does not have a default avatar. This causes confusion as players load in with an error avatar.
+4. **Default Avatar IK:** V-Sekai's default ik is currently twisted incorrectly.
 
 ### Successes
 
