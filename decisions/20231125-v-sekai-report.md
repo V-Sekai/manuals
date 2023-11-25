@@ -53,7 +53,7 @@ What state is V-Sekai in, and what can it do?
 
 ## Timeline for the Next Weeks
 
-Fire is set to merge ufbx, freeing the industry-standard FBX file format from the Autodesk ecosystem for V-Sekai. However, due to limited funding, we won't be able to implement the upcoming 3D format standard USDZ next month.
+Fire is set to merge ufbx, freeing the industry-standard FBX file format from the Autodesk ecosystem for V-Sekai. However, due to limited funding, we won't be able to implement the upcoming 3D format standard USDZ in next months.
 
 | Week Starting       | Task                                                    |
 | ------------------- | ------------------------------------------------------- |
