@@ -1,8 +1,8 @@
-# Superseded: V-Sekai 2023-11-25 Report
+# Accepted: V-Sekai 2023-11-25 Report
 
 ## Metadata
 
-- **Status:** Superseded by `20231126-v-sekai-report.md`
+- **Status:** Accepted
 - **Deciders:** V-Sekai, fire, PLYSHKA🐧, SaracenOne
 - **Tags:** V-Sekai, Linux, Bug Fix, Godot Engine, User Support
 
@@ -18,6 +18,10 @@ Our strategy focuses on providing comprehensive documentation and support to hel
 
 Over the past month, our team has been deeply involved in the Godot Engine conference in Munich, Germany. Our primary responsibility during this period has been to prepare for the upcoming launch of Godot Engine 4.2, to which we are contributing as part of the animation and 3D pipeline teams.
 
+PLYSHKA🐧 asked on our Discord about the current state of V-Sekai:
+
+> PLYSHKA🐧> I'm fairly new to this platform overall, can someone explain in what state its currently in? What can it do and what can't? I couldn't launch Linux build properly (black screen), and when started from terminal it just opened Godot editor (it was game binary), so not sure what's happening there, maybe I don't understand something
+
 ## Problem Statement
 
 What state is V-Sekai in, and what can it do?
@@ -26,19 +30,36 @@ What state is V-Sekai in, and what can it do?
 
 ### Critical Issues
 
-1. **Multiplayer Voice Chat:** The multiplayer voice chat feature in V-Sekai is broken.
-2. **Menu Editing:** In V-Sekai, menus can't be edited in VR. They can only be edited on the desktop before entering a game.
-3. **Default Avatar IK:** V-Sekai's default ik is currently twisted incorrectly.
+1. **Desktop Mode Loading:** V-Sekai is currently unable to load in desktop mode.
+
+2. **The purple screen on the desktop:** The black screen issue seems related to our current problem of [Issue #341](https://github.com/V-Sekai/v-sekai-game/issues/341)
+
+3. **Multiplayer Voice Chat:** The multiplayer voice chat feature in V-Sekai is broken.
+
+### Major Issues
+
+3. **Menu Editing:** In V-Sekai, menus can't be edited in VR. They can only be edited on the desktop before entering a game.
+4. **Default Avatar:** V-Sekai does not have a default avatar. This causes confusion as players load in with an error avatar.
+5. **Default Avatar IK:** V-Sekai's default ik is currently twisted incorrectly.
 
 ### Successes
 
-4. **Avatar Uploading and Downloading:** V-Sekai can upload from the editor and, download avatars, and load them into the game at runtime.
-5. **World Uploading and Downloading:** V-Sekai can upload from the editor and, download worlds, and load them into the game at runtime.
+5. **Avatar Uploading and Downloading**:** V-Sekai can upload from the editor and, download avatars, and load them into the game at runtime.
+5. **World Uploading and Downloading**:** V-Sekai can upload from the editor and, download worlds, and load them into the game at runtime.
 6. **VR Mode Loading:** V-Sekai can successfully load in VR mode.
 
 ### Opportunities
 
 7. **Contributions:** V-Sekai is actively looking for more contributions.
+
+## Timeline for the Next Weeks
+
+Fire is set to merge ufbx, freeing the industry-standard FBX file format from the Autodesk ecosystem for V-Sekai. However, due to limited funding, we won't be able to implement the upcoming 3D format standard USDZ in next months.
+
+| Week Starting       | Task                                                    |
+| ------------------- | ------------------------------------------------------- |
+| November 26th, 2023 | Investigate and resolve "purple screen" bug in V-Sekai. |
+| December 3rd, 2023  | Initiate the merging of godot-ufbx in Godot Engine 4.3. |
 
 ## Pros and Cons
 
