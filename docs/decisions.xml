@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Mon, 27 Nov 2023 07:28:19 GMT</lastBuildDate>
+<lastBuildDate>Mon, 27 Nov 2023 20:51:08 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -66,7 +66,105 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Mon, 27 Nov 2023 07:28:19 GMT</pubDate>
+  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20231127-performance-test.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="accepted-benchmarking-network-performance-for-scalable-multiplayer-in-godot" class="level1">
+<h1>Accepted: Benchmarking Network Performance for Scalable Multiplayer in Godot</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></li>
+<li>Deciders: V-Sekai Team, Bioblaze Payne, fire</li>
+<li>Tags: Networking, Performance, Godot Engine, V-Sekai, Test</li>
+</ul>
+</section>
+<section id="the-backdrop" class="level2">
+<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
+<p>In the pursuit of optimizing network performance for the V-Sekai project, we’re at a point where we need to evaluate different networking strategies provided by the Godot Engine.</p>
+</section>
+<section id="the-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
+<p>Design a comprehensive series of tests to measure and compare the performance of the three different networked multiplayer strategies within the Godot Engine:</p>
+<ol type="1">
+<li><strong>The many servers approach</strong>: A decentralized model where numerous smaller servers handle subsets of users.</li>
+<li><strong>The many worlds approach</strong>: A single server hosts multiple distinct world instances.</li>
+<li><strong>The one world with threaded process group nodes</strong>: A monolithic single world that leverages threading to manage users and activities.</li>
+</ol>
+</section>
+<section id="the-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
+<p>The testing was suggested by Bioblaze Payne, who has outlined a sequential approach:</p>
+<ul>
+<li><strong>Phase 1</strong>: Basic Connection Test
+<ul>
+<li>Connect a user, send a message, await 1000 messages in return, disconnect, then reconnect.</li>
+</ul></li>
+<li><strong>Phase 2</strong>: Large Scale Stress Test
+<ul>
+<li>Simultaneously connect 4000 users, with each sending a message upon connection every 500ms. Ensure all messages are replicated to all connected clients.</li>
+</ul></li>
+</ul>
+<p>During these tests, we’ll monitor:</p>
+<ul>
+<li>Load times for initial connections and reconnections.</li>
+<li>Throughput and latency of message delivery.</li>
+<li>Server resource usage (CPU, RAM, Network I/O).</li>
+<li>Any errors or dropped connections that occur.</li>
+</ul>
+<p>All relevant events should be timestamped and logged to a centralized logging system for analysis.</p>
+</section>
+<section id="the-upside" class="level2">
+<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
+<p>By conducting this research, we aim to:</p>
+<ul>
+<li>Identify the most scalable and efficient networking strategy for the V-Sekai project.</li>
+<li>Gather empirical data to inform future development decisions.</li>
+<li>Contribute findings back to the wider Godot community to aid in similar multiplayer projects.</li>
+</ul>
+</section>
+<section id="the-downside" class="level2">
+<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
+<p>Potential risks and drawbacks include:</p>
+<ul>
+<li>Time and resources required for test setup and execution.</li>
+<li>Interpretation of results may vary, leading to indecision.</li>
+<li>Possible discovery of fundamental issues that could delay project timelines.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>This section will detail alternative methods and practices considered but ultimately not chosen, with justifications for their exclusion.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>We will also explore less common user scenarios that may have unique performance characteristics under each networking strategy.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
+<p>Discussion on whether the outcomes of this initiative should be integrated into the core V-Sekai codebase or maintained as separate modules.</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p><em>This design document was completed with assistance from AI developer Aria.</em></p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20231127-performance-test.html</guid>
+  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -157,7 +255,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231126-v-sekai-report.html</guid>
-  <pubDate>Mon, 27 Nov 2023 07:28:19 GMT</pubDate>
+  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -286,7 +384,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231125-v-sekai-report.html</guid>
-  <pubDate>Mon, 27 Nov 2023 07:28:19 GMT</pubDate>
+  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -351,7 +449,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-upload-creative-commons-fbx-test-files.html</guid>
-  <pubDate>Mon, 27 Nov 2023 07:28:19 GMT</pubDate>
+  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -417,7 +515,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-maintain-svgcleaner.html</guid>
-  <pubDate>Mon, 27 Nov 2023 07:28:19 GMT</pubDate>
+  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -482,7 +580,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-elixir-definition-of-godot-types.html</guid>
-  <pubDate>Mon, 27 Nov 2023 07:28:19 GMT</pubDate>
+  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -566,7 +664,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231112-validation-service.html</guid>
-  <pubDate>Mon, 27 Nov 2023 07:28:19 GMT</pubDate>
+  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -642,7 +740,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231112-archive-projects.html</guid>
-  <pubDate>Mon, 27 Nov 2023 07:28:19 GMT</pubDate>
+  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -746,7 +844,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231111-ayon-evaluation.html</guid>
-  <pubDate>Mon, 27 Nov 2023 07:28:19 GMT</pubDate>
+  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -913,7 +1011,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-v-sekai-dependencies.html</guid>
-  <pubDate>Mon, 27 Nov 2023 07:28:19 GMT</pubDate>
+  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -988,7 +1086,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-efficient-llm-training.html</guid>
-  <pubDate>Mon, 27 Nov 2023 07:28:19 GMT</pubDate>
+  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1060,7 +1158,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-blender-manual-t-pose.html</guid>
-  <pubDate>Mon, 27 Nov 2023 07:28:19 GMT</pubDate>
+  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1134,7 +1232,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-better-pipeline-tools.html</guid>
-  <pubDate>Mon, 27 Nov 2023 07:28:19 GMT</pubDate>
+  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1209,7 +1307,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-ai-based-outlier-detection.html</guid>
-  <pubDate>Mon, 27 Nov 2023 07:28:19 GMT</pubDate>
+  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1286,7 +1384,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-discord-polygonjs-generator.html</guid>
-  <pubDate>Mon, 27 Nov 2023 07:28:19 GMT</pubDate>
+  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1390,7 +1488,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-changelog.html</guid>
-  <pubDate>Mon, 27 Nov 2023 07:28:19 GMT</pubDate>
+  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1474,7 +1572,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-v-sekai-chat-bot.html</guid>
-  <pubDate>Mon, 27 Nov 2023 07:28:19 GMT</pubDate>
+  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1545,7 +1643,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-postgres-bytea-optimizations.html</guid>
-  <pubDate>Mon, 27 Nov 2023 07:28:19 GMT</pubDate>
+  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1615,92 +1713,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-nier-automata-world-expansion.html</guid>
-  <pubDate>Mon, 27 Nov 2023 07:28:19 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20231108-neon-vercel-functions-toy-problem.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="proposed-development-of-a-community-polling-discord-bot-using-vercel-and-neon-postgresql" class="level1">
-<h1>Proposed: Development of a Community Polling Discord Bot Using Vercel and Neon PostgreSQL</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li>Status: Proposed</li>
-<li>Deciders: V-Sekai Technical Team</li>
-<li>Tags: Discord, Polling, Vercel, Serverless, PostgreSQL, Neon, Reactions, Community Engagement</li>
-</ul>
-</section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>V-Sekai is aiming to boost community engagement by implementing interactive polling through Discord. The objective is to create a polling system where users can vote via reactions, and the results are managed in real-time.</p>
-</section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>How can V-Sekai develop a Discord bot that facilitates community polls using message reactions and records the results in a Neon-managed PostgreSQL database in a serverless environment?</p>
-</section>
-<section id="the-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<ul>
-<li>Construct a Discord bot deployed on Vercel that can post poll messages with emoji reactions for voting.</li>
-<li>Monitor reaction additions and removals on these messages to count votes.</li>
-<li>Integrate with Neon’s PostgreSQL database to store and update poll data, ensuring one vote per user.</li>
-<li>Provide real-time feedback and results tallying through the Discord bot.</li>
-</ul>
-</section>
-<section id="the-upside" class="level2">
-<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<ul>
-<li>Engages the community in decision-making processes with interactive polls.</li>
-<li>Gathers real-time data on community preferences and opinions.</li>
-<li>Demonstrates the real-time data handling capabilities of serverless functions and PostgreSQL databases.</li>
-</ul>
-</section>
-<section id="the-downside" class="level2">
-<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<ul>
-<li>Additional complexity in reaction event handling and vote deduplication.</li>
-<li>Ensuring database performance under high concurrency during active polls.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<ul>
-<li>Using traditional polling methods without leveraging Discord’s interactive capabilities.</li>
-<li>Reliance on external polling services that may not integrate seamlessly with Discord or offer real-time updates.</li>
-</ul>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<ul>
-<li>Detailed analysis of voting patterns over time, which may require complex database queries.</li>
-</ul>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<ul>
-<li>Yes, the implementation of the Community Polling Discord bot using Neon’s PostgreSQL service will be developed and maintained internally as part of V-Sekai’s commitment to interactive community engagement.</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ul>
-<li><a href="https://discord.com/developers/docs/intro">Discord Bots: An Introduction</a></li>
-<li><a href="https://vercel.com/docs/serverless-functions/introduction">Vercel Serverless Functions</a></li>
-<li><a href="https://neon.tech/docs/introduction/about">Neon’s PostgreSQL Edge Capabilities</a></li>
-</ul>
-<p>This strategy was formulated with AI assistance.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20231108-neon-vercel-functions-toy-problem.html</guid>
-  <pubDate>Mon, 27 Nov 2023 07:28:19 GMT</pubDate>
+  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
 </item>
 </channel>
 </rss>
