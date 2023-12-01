@@ -120,14 +120,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#unique-use-cases-catered-to" id="toc-unique-use-cases-catered-to" class="nav-link" data-scroll-target="#unique-use-cases-catered-to">Unique Use Cases Catered To</a></li>
   </ul></li>
   <li><a href="#compatibility-with-other-systems" id="toc-compatibility-with-other-systems" class="nav-link" data-scroll-target="#compatibility-with-other-systems">Compatibility with Other Systems</a></li>
-  <li><a href="#metadata-1" id="toc-metadata-1" class="nav-link" data-scroll-target="#metadata-1">Metadata</a></li>
-  <li><a href="#the-backdrop-1" id="toc-the-backdrop-1" class="nav-link" data-scroll-target="#the-backdrop-1">The Backdrop</a></li>
-  <li><a href="#the-challenge-1" id="toc-the-challenge-1" class="nav-link" data-scroll-target="#the-challenge-1">The Challenge</a></li>
-  <li><a href="#the-strategy-1" id="toc-the-strategy-1" class="nav-link" data-scroll-target="#the-strategy-1">The Strategy</a>
-  <ul class="collapse">
-  <li><a href="#unique-use-cases-catered-to-1" id="toc-unique-use-cases-catered-to-1" class="nav-link" data-scroll-target="#unique-use-cases-catered-to-1">Unique Use Cases Catered To</a></li>
-  </ul></li>
-  <li><a href="#compatibility-with-other-systems-1" id="toc-compatibility-with-other-systems-1" class="nav-link" data-scroll-target="#compatibility-with-other-systems-1">Compatibility with Other Systems</a></li>
   <li><a href="#non-xr-use-cases-showcasing-broader-utility" id="toc-non-xr-use-cases-showcasing-broader-utility" class="nav-link" data-scroll-target="#non-xr-use-cases-showcasing-broader-utility">Non-XR Use Cases Showcasing Broader Utility</a></li>
   <li><a href="#core-components" id="toc-core-components" class="nav-link" data-scroll-target="#core-components">Core Components</a></li>
   <li><a href="#application-scenarios" id="toc-application-scenarios" class="nav-link" data-scroll-target="#application-scenarios">Application Scenarios</a></li>
@@ -157,56 +149,10 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="the-challenge" class="level2">
 <h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>OpenXR currently provides a bone structure model for hand tracking data, which the Godot Engine incorporates through an <code>OpenXRHand</code> helper node. This implementation transforms global position and orientation data into local space. However, this approach is restrictive due to the requirement that mesh structures strictly adhere to the OpenXR standard, causing compatibility issues. Moreover, there’s an impending need to support solutions in anticipation of vendor APIs offering “full body tracking” skeletons.</p>
+<p>The current implementation of OpenXR provides a bone structure model for hand tracking data, which is incorporated into the Godot Engine through an <code>OpenXRHand</code> helper node. This node transforms global position and orientation data into local space. However, this approach has compatibility issues due to the requirement that mesh structures strictly adhere to the OpenXR standard. Additionally, there’s a growing need to support solutions for vendor APIs offering “full body tracking” skeletons.</p>
 </section>
 <section id="the-strategy" class="level2">
 <h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>To address these limitations, we propose the introduction of an <code>OpenXRSkeleton3D</code> node, which would feature:</p>
-<ul>
-<li>A canonical hand skeleton conforming to the OpenXR standard for consistency.</li>
-<li>Hardcoded rest poses based on open hands recorded using OpenXR to simplify development.</li>
-<li>Functionality to apply tracked OpenXR data dynamically to generate pose animations.</li>
-</ul>
-<p>This approach enables various advanced retargeting scenarios, such as applying partial tracking data to hand meshes, integrating with humanoid skeletons, and blending tracked poses with static ones for specific interactions like object manipulation.</p>
-<section id="unique-use-cases-catered-to" class="level3">
-<h3 class="anchored" data-anchor-id="unique-use-cases-catered-to">Unique Use Cases Catered To</h3>
-<section id="augmented-reality-ar" class="level4">
-<h4 class="anchored" data-anchor-id="augmented-reality-ar">Augmented Reality (AR)</h4>
-<p>For AR, the ability to deform mesh to match the player’s actual hands and fingers can enhance realism significantly.</p>
-</section>
-<section id="virtual-reality-vr" class="level4">
-<h4 class="anchored" data-anchor-id="virtual-reality-vr">Virtual Reality (VR)</h4>
-<p>VR enables the representation of fixed-size avatar hands that do not vary with the player’s actual hand size, much like the hands seen in games like “Half-Life Alyx.”</p>
-</section>
-</section>
-</section>
-<section id="compatibility-with-other-systems" class="level2">
-<h2 class="anchored" data-anchor-id="compatibility-with-other-systems">Compatibility with Other Systems</h2>
-<p>Provisions would be made for interoperability with other systems and standards, such as:</p>
-<ul>
-<li><strong>Apple’s Vision Pro</strong>: Implementing an <code>AppleSkeleton3D</code> node to accommodate format and skeleton definitions differences.</li>
-<li><strong>WebXR</strong>: Potentially aligning with the OpenXR system.</li>
-<li><strong>Godot Engine</strong>: Including additional metacarpal bones in the engine’s humanoid skeleton for accurate retargeting. a# Proposed: Enhanced XR Tracking in Godot Engine with OpenXRSkeleton3D Node</li>
-</ul>
-</section>
-<section id="metadata-1" class="level2">
-<h2 class="anchored" data-anchor-id="metadata-1">Metadata</h2>
-<ul>
-<li><strong>Status</strong>: Proposed</li>
-<li><strong>Deciders</strong>: V-Sekai Project Maintainers</li>
-<li><strong>Tags</strong>: XR, Hand Tracking, Full Body Tracking, OpenXR, Godot Engine, Animation Retargeting</li>
-</ul>
-</section>
-<section id="the-backdrop-1" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop-1">The Backdrop</h2>
-<p>This proposal introduces the need for enhanced hand and full body tracking in extended reality (XR) applications within the Godot Engine. As virtual and augmented reality technologies advance, developers are seeking methods to integrate external skeleton data, such as OpenXR hand tracking or “full body tracking” skeletons, with existing imported and skinned meshes.</p>
-</section>
-<section id="the-challenge-1" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge-1">The Challenge</h2>
-<p>The current implementation of OpenXR provides a bone structure model for hand tracking data, which is incorporated into the Godot Engine through an <code>OpenXRHand</code> helper node. This node transforms global position and orientation data into local space. However, this approach has compatibility issues due to the requirement that mesh structures strictly adhere to the OpenXR standard. Additionally, there’s a growing need to support solutions for vendor APIs offering “full body tracking” skeletons.</p>
-</section>
-<section id="the-strategy-1" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy-1">The Strategy</h2>
 <p>To address these limitations, we propose the introduction of an <code>OpenXRSkeleton3D</code> node. This new node will:</p>
 <ul>
 <li>Conform to the OpenXR standard for consistency.</li>
@@ -214,20 +160,20 @@ ul.task-list li input[type="checkbox"] {
 <li>Apply tracked OpenXR data dynamically to generate pose animations.</li>
 </ul>
 <p>This strategy enables advanced retargeting scenarios and improves the integration of partial tracking data to hand meshes, humanoid skeletons, and blending of tracked poses with static ones for specific interactions like object manipulation.</p>
-<section id="unique-use-cases-catered-to-1" class="level3">
-<h3 class="anchored" data-anchor-id="unique-use-cases-catered-to-1">Unique Use Cases Catered To</h3>
-<section id="augmented-reality-ar-1" class="level4">
-<h4 class="anchored" data-anchor-id="augmented-reality-ar-1">Augmented Reality (AR)</h4>
+<section id="unique-use-cases-catered-to" class="level3">
+<h3 class="anchored" data-anchor-id="unique-use-cases-catered-to">Unique Use Cases Catered To</h3>
+<section id="augmented-reality-ar" class="level4">
+<h4 class="anchored" data-anchor-id="augmented-reality-ar">Augmented Reality (AR)</h4>
 <p>In AR, deforming the mesh to match the player’s actual hands and fingers can significantly enhance realism.</p>
 </section>
-<section id="virtual-reality-vr-1" class="level4">
-<h4 class="anchored" data-anchor-id="virtual-reality-vr-1">Virtual Reality (VR)</h4>
+<section id="virtual-reality-vr" class="level4">
+<h4 class="anchored" data-anchor-id="virtual-reality-vr">Virtual Reality (VR)</h4>
 <p>In VR, this strategy enables the representation of fixed-size avatar hands that do not vary with the player’s real hand size, similar to games like “Half-Life Alyx.”</p>
 </section>
 </section>
 </section>
-<section id="compatibility-with-other-systems-1" class="level2">
-<h2 class="anchored" data-anchor-id="compatibility-with-other-systems-1">Compatibility with Other Systems</h2>
+<section id="compatibility-with-other-systems" class="level2">
+<h2 class="anchored" data-anchor-id="compatibility-with-other-systems">Compatibility with Other Systems</h2>
 <p>The proposed solution will improve interoperability with other systems and standards, such as:</p>
 <ul>
 <li><strong>Apple’s Vision Pro</strong>: By implementing an <code>AppleSkeleton3D</code> node to accommodate format and skeleton definitions differences.</li>
