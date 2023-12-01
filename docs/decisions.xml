@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Mon, 27 Nov 2023 20:51:08 GMT</lastBuildDate>
+<lastBuildDate>Fri, 01 Dec 2023 15:18:43 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -66,7 +66,176 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
+  <pubDate>Fri, 01 Dec 2023 15:18:43 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20231201-xr-hands-animation-node.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="proposed-seamless-integration-of-xr-tracking-in-godot-engine" class="level1">
+<h1>Proposed: Seamless Integration of XR Tracking in Godot Engine</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li><strong>Status</strong>: Proposed</li>
+<li><strong>Deciders</strong>: V-Sekai Project Maintainers</li>
+<li><strong>Tags</strong>: XR, Hand Tracking, Full Body Tracking, OpenXR, Godot Engine, Animation Retargeting</li>
+</ul>
+</section>
+<section id="the-backdrop" class="level2">
+<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
+<p>The document outlines the need for supporting hand and full body tracking in extended reality (XR) applications. As virtual and augmented reality technologies improve, developers seek methods to integrate external skeleton data, such as OpenXR hand tracking or “full body tracking” skeletons, with existing imported and skinned meshes within the Godot Engine.</p>
+</section>
+<section id="the-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
+<p>OpenXR currently provides a bone structure model for hand tracking data, which the Godot Engine incorporates through an <code>OpenXRHand</code> helper node. This implementation transforms global position and orientation data into local space. However, this approach is restrictive due to the requirement that mesh structures strictly adhere to the OpenXR standard, causing compatibility issues. Moreover, there’s an impending need to support solutions in anticipation of vendor APIs offering “full body tracking” skeletons.</p>
+</section>
+<section id="the-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
+<p>To address these limitations, we propose the introduction of an <code>OpenXRSkeleton3D</code> node, which would feature:</p>
+<ul>
+<li>A canonical hand skeleton conforming to the OpenXR standard for consistency.</li>
+<li>Hardcoded rest poses based on open hands recorded using OpenXR to simplify development.</li>
+<li>Functionality to apply tracked OpenXR data dynamically to generate pose animations.</li>
+</ul>
+<p>This approach enables various advanced retargeting scenarios, such as applying partial tracking data to hand meshes, integrating with humanoid skeletons, and blending tracked poses with static ones for specific interactions like object manipulation.</p>
+<section id="unique-use-cases-catered-to" class="level3">
+<h3 class="anchored" data-anchor-id="unique-use-cases-catered-to">Unique Use Cases Catered To</h3>
+<section id="augmented-reality-ar" class="level4">
+<h4 class="anchored" data-anchor-id="augmented-reality-ar">Augmented Reality (AR)</h4>
+<p>For AR, the ability to deform mesh to match the player’s actual hands and fingers can enhance realism significantly.</p>
+</section>
+<section id="virtual-reality-vr" class="level4">
+<h4 class="anchored" data-anchor-id="virtual-reality-vr">Virtual Reality (VR)</h4>
+<p>VR enables the representation of fixed-size avatar hands that do not vary with the player’s actual hand size, much like the hands seen in games like “Half-Life Alyx.”</p>
+</section>
+</section>
+</section>
+<section id="compatibility-with-other-systems" class="level2">
+<h2 class="anchored" data-anchor-id="compatibility-with-other-systems">Compatibility with Other Systems</h2>
+<p>Provisions would be made for interoperability with other systems and standards, such as:</p>
+<ul>
+<li><strong>Apple’s Vision Pro</strong>: Implementing an <code>AppleSkeleton3D</code> node to accommodate format and skeleton definitions differences.</li>
+<li><strong>WebXR</strong>: Potentially aligning with the OpenXR system.</li>
+<li><strong>Godot Engine</strong>: Including additional metacarpal bones in the engine’s humanoid skeleton for accurate retargeting. a# Proposed: Enhanced XR Tracking in Godot Engine with OpenXRSkeleton3D Node</li>
+</ul>
+</section>
+<section id="metadata-1" class="level2">
+<h2 class="anchored" data-anchor-id="metadata-1">Metadata</h2>
+<ul>
+<li><strong>Status</strong>: Proposed</li>
+<li><strong>Deciders</strong>: V-Sekai Project Maintainers</li>
+<li><strong>Tags</strong>: XR, Hand Tracking, Full Body Tracking, OpenXR, Godot Engine, Animation Retargeting</li>
+</ul>
+</section>
+<section id="the-backdrop-1" class="level2">
+<h2 class="anchored" data-anchor-id="the-backdrop-1">The Backdrop</h2>
+<p>This proposal introduces the need for enhanced hand and full body tracking in extended reality (XR) applications within the Godot Engine. As virtual and augmented reality technologies advance, developers are seeking methods to integrate external skeleton data, such as OpenXR hand tracking or “full body tracking” skeletons, with existing imported and skinned meshes.</p>
+</section>
+<section id="the-challenge-1" class="level2">
+<h2 class="anchored" data-anchor-id="the-challenge-1">The Challenge</h2>
+<p>The current implementation of OpenXR provides a bone structure model for hand tracking data, which is incorporated into the Godot Engine through an <code>OpenXRHand</code> helper node. This node transforms global position and orientation data into local space. However, this approach has compatibility issues due to the requirement that mesh structures strictly adhere to the OpenXR standard. Additionally, there’s a growing need to support solutions for vendor APIs offering “full body tracking” skeletons.</p>
+</section>
+<section id="the-strategy-1" class="level2">
+<h2 class="anchored" data-anchor-id="the-strategy-1">The Strategy</h2>
+<p>To address these limitations, we propose the introduction of an <code>OpenXRSkeleton3D</code> node. This new node will:</p>
+<ul>
+<li>Conform to the OpenXR standard for consistency.</li>
+<li>Include hardcoded rest poses based on open hands recorded using OpenXR to simplify development.</li>
+<li>Apply tracked OpenXR data dynamically to generate pose animations.</li>
+</ul>
+<p>This strategy enables advanced retargeting scenarios and improves the integration of partial tracking data to hand meshes, humanoid skeletons, and blending of tracked poses with static ones for specific interactions like object manipulation.</p>
+<section id="unique-use-cases-catered-to-1" class="level3">
+<h3 class="anchored" data-anchor-id="unique-use-cases-catered-to-1">Unique Use Cases Catered To</h3>
+<section id="augmented-reality-ar-1" class="level4">
+<h4 class="anchored" data-anchor-id="augmented-reality-ar-1">Augmented Reality (AR)</h4>
+<p>In AR, deforming the mesh to match the player’s actual hands and fingers can significantly enhance realism.</p>
+</section>
+<section id="virtual-reality-vr-1" class="level4">
+<h4 class="anchored" data-anchor-id="virtual-reality-vr-1">Virtual Reality (VR)</h4>
+<p>In VR, this strategy enables the representation of fixed-size avatar hands that do not vary with the player’s real hand size, similar to games like “Half-Life Alyx.”</p>
+</section>
+</section>
+</section>
+<section id="compatibility-with-other-systems-1" class="level2">
+<h2 class="anchored" data-anchor-id="compatibility-with-other-systems-1">Compatibility with Other Systems</h2>
+<p>The proposed solution will improve interoperability with other systems and standards, such as:</p>
+<ul>
+<li><strong>Apple’s Vision Pro</strong>: By implementing an <code>AppleSkeleton3D</code> node to accommodate format and skeleton definitions differences.</li>
+<li><strong>WebXR</strong>: Potentially aligning with the OpenXR system.</li>
+<li><strong>Godot Engine</strong>: Including additional metacarpal bones in the engine’s humanoid skeleton for accurate retargeting.</li>
+</ul>
+</section>
+<section id="non-xr-use-cases-showcasing-broader-utility" class="level2">
+<h2 class="anchored" data-anchor-id="non-xr-use-cases-showcasing-broader-utility">Non-XR Use Cases Showcasing Broader Utility</h2>
+<p>The system could also be beneficial for non-XR applications such as:</p>
+<ul>
+<li>Adjusting leg movement to avoid ground collision.</li>
+<li>Supporting procedural foot-planting techniques for realistic animation.</li>
+<li>Tracking arms for dynamic motion capture.</li>
+<li>Allowing inverse kinematics setups similar to classic shooters like Doom (2016).</li>
+<li>Providing active ragdolls for lifelike physics responses, exemplified in <a href="https://www.youtube.com/watch?v=0MHY2TDeMLM">Godot Engine Active Ragdolls</a>.</li>
+</ul>
+</section>
+<section id="core-components" class="level2">
+<h2 class="anchored" data-anchor-id="core-components">Core Components</h2>
+<ol type="1">
+<li><strong>XR-Specific Node</strong>: This component extracts and refines hand-tracking data into a specialized <code>Skeleton3D</code> node.</li>
+<li><strong>Animation BlendTree Node</strong>: This node handles the complex task of retargeting data across different skeletons, enabling a mix-and-match approach to animation and physical interactions.</li>
+</ol>
+</section>
+<section id="application-scenarios" class="level2">
+<h2 class="anchored" data-anchor-id="application-scenarios">Application Scenarios</h2>
+<p>A typical use case may involve two hand skeletons from different tracking sources being retargeted onto a third skeleton dedicated to visual representation within the Godot Engine environment or for physics-based interactions.</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p><em>AI assistant Aria assisted with this article.</em></p>
+</section>
+<section id="non-xr-use-cases-showcasing-broader-utility-1" class="level2">
+<h2 class="anchored" data-anchor-id="non-xr-use-cases-showcasing-broader-utility-1">Non-XR Use Cases Showcasing Broader Utility</h2>
+<p>The system could also be beneficial for non-XR applications such as:</p>
+<ul>
+<li>Adjust leg movement, avoiding a ground collision.</li>
+<li>Support procedural foot-planting techniques for realistic animation.</li>
+<li>Track arms for dynamic motion capture.</li>
+<li>Allow Inverse kinematics setups similar to classic shooters like Doom (2016).</li>
+<li>Active ragdolls provide lifelike physics responses, exemplified in <a href="https://www.youtube.com/watch?v=0MHY2TDeMLM">Godot Engine Active Ragdolls</a>.</li>
+</ul>
+</section>
+<section id="core-components-1" class="level2">
+<h2 class="anchored" data-anchor-id="core-components-1">Core Components</h2>
+<ol type="1">
+<li><strong>XR-Specific Node</strong>: Extracts and refines hand-tracking data into a specialized <code>Skeleton3D</code> node.</li>
+<li><strong>Animation BlendTree Node</strong>: Handles the complex task of retargeting data across different skeletons, enabling a mix-and-match approach to animation and physical interactions.</li>
+</ol>
+</section>
+<section id="application-scenarios-1" class="level2">
+<h2 class="anchored" data-anchor-id="application-scenarios-1">Application Scenarios</h2>
+<p>A typical use case may involve two hand skeletons from different tracking sources being retargeted onto a third skeleton dedicated to visual representation within the Godot Engine environment or for physics-based interactions.</p>
+</section>
+<section id="further-reading-1" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading-1">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p><em>AI assistant Aria assisted with this article.</em></p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20231201-xr-hands-animation-node.html</guid>
+  <pubDate>Fri, 01 Dec 2023 15:18:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -164,7 +333,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231127-performance-test.html</guid>
-  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
+  <pubDate>Fri, 01 Dec 2023 15:18:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -255,7 +424,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231126-v-sekai-report.html</guid>
-  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
+  <pubDate>Fri, 01 Dec 2023 15:18:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -384,7 +553,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231125-v-sekai-report.html</guid>
-  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
+  <pubDate>Fri, 01 Dec 2023 15:18:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -449,7 +618,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-upload-creative-commons-fbx-test-files.html</guid>
-  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
+  <pubDate>Fri, 01 Dec 2023 15:18:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -515,7 +684,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-maintain-svgcleaner.html</guid>
-  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
+  <pubDate>Fri, 01 Dec 2023 15:18:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -580,7 +749,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-elixir-definition-of-godot-types.html</guid>
-  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
+  <pubDate>Fri, 01 Dec 2023 15:18:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -664,7 +833,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231112-validation-service.html</guid>
-  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
+  <pubDate>Fri, 01 Dec 2023 15:18:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -740,7 +909,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231112-archive-projects.html</guid>
-  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
+  <pubDate>Fri, 01 Dec 2023 15:18:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -844,7 +1013,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231111-ayon-evaluation.html</guid>
-  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
+  <pubDate>Fri, 01 Dec 2023 15:18:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1011,7 +1180,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-v-sekai-dependencies.html</guid>
-  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
+  <pubDate>Fri, 01 Dec 2023 15:18:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1086,7 +1255,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-efficient-llm-training.html</guid>
-  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
+  <pubDate>Fri, 01 Dec 2023 15:18:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1158,7 +1327,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-blender-manual-t-pose.html</guid>
-  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
+  <pubDate>Fri, 01 Dec 2023 15:18:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1232,7 +1401,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-better-pipeline-tools.html</guid>
-  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
+  <pubDate>Fri, 01 Dec 2023 15:18:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1307,7 +1476,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-ai-based-outlier-detection.html</guid>
-  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
+  <pubDate>Fri, 01 Dec 2023 15:18:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1384,7 +1553,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-discord-polygonjs-generator.html</guid>
-  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
+  <pubDate>Fri, 01 Dec 2023 15:18:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1488,7 +1657,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-changelog.html</guid>
-  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
+  <pubDate>Fri, 01 Dec 2023 15:18:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1572,7 +1741,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-v-sekai-chat-bot.html</guid>
-  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
+  <pubDate>Fri, 01 Dec 2023 15:18:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1643,77 +1812,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-postgres-bytea-optimizations.html</guid>
-  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20231108-nier-automata-world-expansion.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="proposal-freedom-is-in-a-future-that-you-did-not-have-in-the-past---a-game-development-philosophy-from-nierautomata" class="level1">
-<h1>Proposal: “Freedom is in a future that you did not have in the past” - A Game Development Philosophy from NieR:Automata</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li><strong>Status:</strong> Proposed</li>
-<li><strong>Deciders:</strong> V-Sekai</li>
-<li><strong>Tags:</strong> V-Sekai, Game Development, Open-world, Rich Content</li>
-</ul>
-</section>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>During GDC 2018, Yoko Taro and Takahisa Taura, key figures behind the creation of ‘NieR:Automata’, shared their insights on game development. Their panel was among the most attended, shedding light on the philosophy of game development and the intricacies of crafting an immersive world.</p>
-</section>
-<section id="problem" class="level2">
-<h2 class="anchored" data-anchor-id="problem">Problem</h2>
-<p>The primary challenge in game development lies in striking a balance between open-world freedom and rich content. While gamers often equate ultimate freedom with open-world games, many such titles lack depth. The goal should be to design the right gameplay mechanics while ensuring high player immersion.</p>
-</section>
-<section id="strategy" class="level2">
-<h2 class="anchored" data-anchor-id="strategy">Strategy</h2>
-<blockquote class="blockquote">
-<p>“Freedom is in a future that you did not have in the past” - Yoko Taro (40:40)</p>
-</blockquote>
-<p>Yoko Taro emphasized the importance of incorporating freedom in a game while maintaining a balance between an open-world and rich content. He drew inspiration from The Legend of Zelda: Ocarina of Time when building the world of NieR. This strategy involves creating easy-to-learn gameplay without hindering the flow of the experience.</p>
-</section>
-<section id="pros" class="level2">
-<h2 class="anchored" data-anchor-id="pros">Pros</h2>
-<p>This approach fosters a more immersive gaming experience. By concentrating on the appropriate gameplay mechanics and balancing open-world freedom with rich content, developers can produce games that are both engaging and meaningful.</p>
-</section>
-<section id="cons" class="level2">
-<h2 class="anchored" data-anchor-id="cons">Cons</h2>
-<p>The downside to this approach is that it may necessitate more time and resources for development. Achieving a balance between open-world freedom and rich content can be a complex task, demanding meticulous planning and execution.</p>
-</section>
-<section id="alternative-approach" class="level2">
-<h2 class="anchored" data-anchor-id="alternative-approach">Alternative Approach</h2>
-<p>An alternative strategy could involve focusing exclusively on either open-world freedom or rich content. However, this could lead to a game that lacks depth or fails to fully captivate players.</p>
-</section>
-<section id="limited-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="limited-use-case">Limited Use Case</h2>
-<p>This approach may not be suitable for all types of games. For instance, games that are heavily story-driven may not benefit from an open-world format.</p>
-</section>
-<section id="alignment-with-our-core-philosophy" class="level2">
-<h2 class="anchored" data-anchor-id="alignment-with-our-core-philosophy">Alignment with Our Core Philosophy?</h2>
-<p>This strategy is in line with our core philosophy of game development. We believe in crafting immersive experiences that balance freedom with rich content.</p>
-</section>
-<section id="additional-resources" class="level2">
-<h2 class="anchored" data-anchor-id="additional-resources">Additional Resources</h2>
-<p>For more insights on this topic, consider the following resources:</p>
-<ul>
-<li><a href="https://github.com/v-sekai/">V-Sekai</a>: The official GitHub page of V-Sekai, featuring various projects and initiatives related to game development.</li>
-<li><a href="https://8bitdigi.com/gdc-2018-a-fun-time-in-which-some-no-good-game-developers-may-or-may-not-discuss-how-we-made-nier/">GDC 2018: A Fun Time in Which Some No-Good Game Developers May Discuss How We Made ‘NieR:Automata’</a>: A comprehensive report on the GDC 2018 panel featuring Yoko Taro and Takahisa Taura discussing the creation process of ‘NieR:Automata’.</li>
-<li><a href="https://www.youtube.com/watch?v=jKbH9i5axxU">GDC 2018 Video: A Fun Time in Which Some No-Good Game Developers May Discuss How We Made ‘NieR:Automata’</a></li>
-</ul>
-<p><em>This article was assisted by AI.</em></p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20231108-nier-automata-world-expansion.html</guid>
-  <pubDate>Mon, 27 Nov 2023 20:51:08 GMT</pubDate>
+  <pubDate>Fri, 01 Dec 2023 15:18:43 GMT</pubDate>
 </item>
 </channel>
 </rss>
