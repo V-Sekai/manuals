@@ -110,29 +110,3 @@ A typical use case may involve two hand skeletons from different tracking source
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine.
 
 _AI assistant Aria assisted with this article._
-
-## Non-XR Use Cases Showcasing Broader Utility
-
-The system could also be beneficial for non-XR applications such as:
-
-- Adjust leg movement, avoiding a ground collision.
-- Support procedural foot-planting techniques for realistic animation.
-- Track arms for dynamic motion capture.
-- Allow Inverse kinematics setups similar to classic shooters like Doom (2016).
-- Active ragdolls provide lifelike physics responses, exemplified in [Godot Engine Active Ragdolls](https://www.youtube.com/watch?v=0MHY2TDeMLM).
-
-## Core Components
-
-1. **XR-Specific Node**: Extracts and refines hand-tracking data into a specialized `Skeleton3D` node.
-2. **Animation BlendTree Node**: Handles the complex task of retargeting data across different skeletons, enabling a mix-and-match approach to animation and physical interactions.
-
-## Application Scenarios
-
-A typical use case may involve two hand skeletons from different tracking sources being retargeted onto a third skeleton dedicated to visual representation within the Godot Engine environment or for physics-based interactions.
-
-## Further Reading
-
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine.
-
-_AI assistant Aria assisted with this article._
