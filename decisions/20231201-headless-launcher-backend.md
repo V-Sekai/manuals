@@ -18,20 +18,20 @@ Build an updater that is simple yet robust, handling automated game updates in t
 
 Use Elixir for concurrent services and SQLite on the server for data management:
 
-1. **Client CLI**
+1. **Headless CLI**
 
    - Implement desync for data synchronization.
 
-2. **Updater Implementation:**
+2. **Updater Online Service:**
 
    - Create a lightweight updater service.
    - Use Elixir for web requests handling.
    - Utilize server-side SQLite for persistence.
+   - Integrate desync protocol in the Service.
 
 3. **GUI Launcher Creation:**
 
-   - Design an intuitive GUI launcher.
-   - Ensure communication with the headless updater.
+   - Design an intuitive Godot Engine GUI launcher.
    - Integrate desync protocol in the GUI.
 
 4. **Game Setup Efforts:**
