@@ -18,20 +18,23 @@ Build an updater that is simple yet robust, handling automated game updates in t
 
 Use Elixir for concurrent services and SQLite on the server for data management:
 
-1. **Updater Implementation:**
+1. **Client CLI**
+
+   - Implement desync for data synchronization.
+
+2. **Updater Implementation:**
 
    - Create a lightweight updater service.
    - Use Elixir for web requests handling.
-   - Implement desync for data synchronization.
    - Utilize server-side SQLite for persistence.
 
-2. **GUI Launcher Creation:**
+3. **GUI Launcher Creation:**
 
    - Design an intuitive GUI launcher.
    - Ensure communication with the headless updater.
    - Integrate desync protocol in the GUI.
 
-3. **Game Setup Efforts:**
+4. **Game Setup Efforts:**
    - Develop a basic visual setup with V-Sekai branding.
 
 #### Upside
