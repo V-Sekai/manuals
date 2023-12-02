@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Sat, 02 Dec 2023 04:54:08 GMT</lastBuildDate>
+<lastBuildDate>Sat, 02 Dec 2023 05:04:27 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -66,7 +66,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sat, 02 Dec 2023 04:54:08 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 05:04:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -159,7 +159,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231201-xr-hands-animation-node.html</guid>
-  <pubDate>Sat, 02 Dec 2023 04:54:08 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 05:04:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -168,75 +168,86 @@
 
 
 
-<section id="proposed-headless-launcher-backend-with-elixir-and-server-side-sqlite" class="level1">
-<h1>Proposed: Headless Launcher Backend with Elixir and Server-Side SQLite</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<section id="client-side-game-updater-with-server-side-endpoint" class="level3">
+<h3 class="anchored" data-anchor-id="client-side-game-updater-with-server-side-endpoint">Client-Side Game Updater with Server-Side Endpoint</h3>
+<section id="metadata" class="level4">
+<h4 class="anchored" data-anchor-id="metadata">Metadata</h4>
 <ul>
 <li><strong>Status:</strong> Proposed</li>
 <li><strong>Deciders:</strong> V-Sekai Team</li>
-<li><strong>Tags:</strong> <code>headless</code>, <code>backend</code>, <code>launcher</code>, <code>updater</code>, <code>V-Sekai</code>, <code>Elixir</code>, <code>SQLite</code></li>
+<li><strong>Tags:</strong> V-Sekai, client-side, updater, backend, SAAS</li>
 </ul>
 </section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>We aim to enhance the gaming experience by introducing a headless backend launcher. Its purpose will be to automate game updates, ensuring that players have continuous access to the latest content with minimal inputs required.</p>
+<section id="backdrop" class="level4">
+<h4 class="anchored" data-anchor-id="backdrop">Backdrop</h4>
+<p>The intent is to create a client-side game updater system that interfaces with a server-side endpoint to facilitate consistent and automated game updates.</p>
 </section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>The task at hand is to build an updater that maintains a balance between simplicity and robust feature set, capable of handling automated processes like fetching and rolling out game updates quietly in the background.</p>
+<section id="challenge" class="level4">
+<h4 class="anchored" data-anchor-id="challenge">Challenge</h4>
+<p>To build a robust client-side updater mechanism that seamlessly interacts with the server to download and install game patches without manual user intervention.</p>
 </section>
-<section id="the-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>Our strategic approach involves leveraging the strengths of Elixir for concurrent web services and utilizing SQLite on the server side to manage data:</p>
+<section id="strategy" class="level4">
+<h4 class="anchored" data-anchor-id="strategy">Strategy</h4>
+<p>Our approach involves creating an updater system on the client side while using a backend API to manage updates:</p>
 <ol type="1">
-<li><p><strong>Headless Updater Implementation:</strong></p>
+<li><p><strong>Client-Side Updater Service:</strong></p>
 <ul>
-<li>Build a lightweight but effective updater service as a background application.</li>
-<li>Integrate web endpoints penned in Elixir to handle requests efficiently in real-time.</li>
-<li>Employ desync for thorough and reliable data synchronization.</li>
-<li>Adopt server-side SQLite for data persistence, including update logs, user settings, and version control.</li>
+<li>Implement an updater within the client’s environment capable of checking for new updates.</li>
+<li>Utilize a robust version control system for the client-side updater.</li>
+<li>Isolate dependencies and configuration, ensuring no conflict with the game’s operational dependencies.</li>
+<li>Separate the configuration management to not be hardcoded within the updater’s codebase.</li>
 </ul></li>
-<li><p><strong>Graphical User Interface (GUI) Launcher Creation:</strong></p>
+<li><p><strong>Server-Side Update Endpoint:</strong></p>
 <ul>
-<li>Design an intuitive GUI launcher that provides an easy interface for users to interact with update functions.</li>
-<li>Ensure seamless communication between the GUI and the headless updater for smooth content delivery.</li>
-<li>Embed desync protocol within the GUI to automate sync tasks without user intervention.</li>
+<li>Deploy a server-side service using Elixir to handle update requests from the client-side updater.</li>
+<li>Structure the endpoint to authenticate clients and authorize update actions securely.</li>
+<li>Design the update service to provide update packages, changelogs, and status reports back to clients.</li>
 </ul></li>
-<li><p><strong>Initial Game Setup Efforts:</strong></p>
+<li><p><strong>Integration of GUI Launcher with Backend:</strong></p>
 <ul>
-<li>Develop a basic visual setup featuring the V-Sekai branding, which will serve as the default content presented by the launcher.</li>
+<li>Develop a graphical user interface (GUI) launcher on the client side that communicates with the server-side update endpoint.</li>
+<li>Define clear communication protocols for the GUI launcher to retrieve update information and execute update operations.</li>
+</ul></li>
+<li><p><strong>Deployment and Database Management:</strong></p>
+<ul>
+<li>Employ server-side SQLite for efficient database management of version metadata and update logs.</li>
+<li>Design the service to run efficient, stateless processes that scale with the user base.</li>
+<li>Ensure consistency across development, staging, and production environments by using containerization and continuous integration strategies.</li>
+</ul></li>
+<li><p><strong>Game Setup Efforts:</strong></p>
+<ul>
+<li>Develop a basic visual setup with V-Sekai branding.</li>
 </ul></li>
 </ol>
 </section>
-<section id="the-upside" class="level2">
-<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<p>Such a system promotes an uninterrupted and cutting-edge gaming environment. Using Elixir in tandem with server-side SQLite offers high performance and reliability suited to our backend needs.</p>
+<section id="upside" class="level4">
+<h4 class="anchored" data-anchor-id="upside">Upside</h4>
+<p>This strategy allows streamlined distribution of updates directly to users while keeping the complexity away from end-users, enabling a frictionless gaming experience.</p>
 </section>
-<section id="the-downside" class="level2">
-<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<p>Integrating new technologies introduces potential risks like complex issue diagnosis and ensuring compatibility across diverse platforms and environments.</p>
+<section id="downside" class="level4">
+<h4 class="anchored" data-anchor-id="downside">Downside</h4>
+<p>Diverse technologies between client and server can introduce challenges; however, careful design and planning can mitigate potential issues.</p>
 </section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>We opted against external updaters or manual patches due to their intrusive nature and higher demands on player involvement.</p>
+<section id="road-not-taken" class="level4">
+<h4 class="anchored" data-anchor-id="road-not-taken">Road Not Taken</h4>
+<p>Options like direct game patching or standalone updaters have been ruled out in favor of a more integrated solution that simplifies the user experience.</p>
 </section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>Acknowledging occasional preferences for manual interventions—in scenarios such as limited bandwidth—our design must include capabilities for users to manually initiate updates.</p>
+<section id="infrequent-use-case" class="level4">
+<h4 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h4>
+<p>Designed to account for scenarios where users may need to trigger updates manually due to network restrictions or other constraints.</p>
 </section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>With a focus on alignment and quality, the V-Sekai team will retain internal control over the development and maintenance of this launcher backend.</p>
+<section id="core-and-done-by-us" class="level4">
+<h4 class="anchored" data-anchor-id="core-and-done-by-us">Core and Done by Us?</h4>
+<p>Absolutely. The core development and maintenance of both the client-side updater and the server-side endpoint will be managed in-house by the V-Sekai team.</p>
 </section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<section id="further-reading" class="level4">
+<h4 class="anchored" data-anchor-id="further-reading">Further Reading</h4>
 <ul>
-<li><a href="https://github.com/v-sekai"><strong>V-Sekai · GitHub</strong></a> - Explore our GitHub presence, dedicated to pioneering VR advances using the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game"><strong>V-Sekai/v-sekai-game</strong></a> - Visit the repository where our open-source endeavors to fuse VR and social experiences using Godot unfold.</li>
-<li><a href="https://github.com/folbricht/desync"><strong>Desync</strong></a> - Alternative casync implementation</li>
+<li><a href="https://github.com/v-sekai"><strong>V-Sekai GitHub</strong></a> - Our repository showcasing VR experiences and developments with Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game"><strong>V-Sekai Game Repo</strong></a> - This repository hosts our open-source, community-centric VR game source code.</li>
+<li><a href="https://github.com/folbricht/desync"><strong>Desync</strong></a> - A tool being evaluated for its content synchronization capabilities as a possible fallback.</li>
 </ul>
-<p><strong>Assistance from AI</strong>: Guidance provided by AI assistant Aria contributed to the formulation of this document.</p>
+<p>This comprehensive design plan delineates a cohesive structure for a client-server architecture aimed at delivering seamless game updates and a high-quality user experience.</p>
 
 
 </section>
@@ -244,7 +255,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231201-headless-launcher-backend.html</guid>
-  <pubDate>Sat, 02 Dec 2023 04:54:08 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 05:04:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -342,7 +353,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231127-performance-test.html</guid>
-  <pubDate>Sat, 02 Dec 2023 04:54:08 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 05:04:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -433,7 +444,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231126-v-sekai-report.html</guid>
-  <pubDate>Sat, 02 Dec 2023 04:54:08 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 05:04:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -562,7 +573,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231125-v-sekai-report.html</guid>
-  <pubDate>Sat, 02 Dec 2023 04:54:08 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 05:04:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -627,7 +638,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-upload-creative-commons-fbx-test-files.html</guid>
-  <pubDate>Sat, 02 Dec 2023 04:54:08 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 05:04:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -693,7 +704,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-maintain-svgcleaner.html</guid>
-  <pubDate>Sat, 02 Dec 2023 04:54:08 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 05:04:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -758,7 +769,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-elixir-definition-of-godot-types.html</guid>
-  <pubDate>Sat, 02 Dec 2023 04:54:08 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 05:04:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -842,7 +853,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231112-validation-service.html</guid>
-  <pubDate>Sat, 02 Dec 2023 04:54:08 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 05:04:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -918,7 +929,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231112-archive-projects.html</guid>
-  <pubDate>Sat, 02 Dec 2023 04:54:08 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 05:04:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1022,7 +1033,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231111-ayon-evaluation.html</guid>
-  <pubDate>Sat, 02 Dec 2023 04:54:08 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 05:04:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1189,7 +1200,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-v-sekai-dependencies.html</guid>
-  <pubDate>Sat, 02 Dec 2023 04:54:08 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 05:04:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1264,7 +1275,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-efficient-llm-training.html</guid>
-  <pubDate>Sat, 02 Dec 2023 04:54:08 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 05:04:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1336,7 +1347,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-blender-manual-t-pose.html</guid>
-  <pubDate>Sat, 02 Dec 2023 04:54:08 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 05:04:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1410,7 +1421,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-better-pipeline-tools.html</guid>
-  <pubDate>Sat, 02 Dec 2023 04:54:08 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 05:04:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1485,7 +1496,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-ai-based-outlier-detection.html</guid>
-  <pubDate>Sat, 02 Dec 2023 04:54:08 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 05:04:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1562,7 +1573,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-discord-polygonjs-generator.html</guid>
-  <pubDate>Sat, 02 Dec 2023 04:54:08 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 05:04:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1666,7 +1677,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-changelog.html</guid>
-  <pubDate>Sat, 02 Dec 2023 04:54:08 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 05:04:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1750,7 +1761,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-v-sekai-chat-bot.html</guid>
-  <pubDate>Sat, 02 Dec 2023 04:54:08 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 05:04:27 GMT</pubDate>
 </item>
 </channel>
 </rss>
