@@ -139,6 +139,28 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="strategy" class="level4">
 <h4 class="anchored" data-anchor-id="strategy">Strategy</h4>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; Idle
+    Idle --&gt; CheckForUpdates : Update Triggered
+    CheckForUpdates --&gt; Updating
+    Updating --&gt; Idle : Update Successful
+    
+    state CheckForUpdates {
+        [*] --&gt; Checking
+        Checking --&gt; NoUpdateFound
+        NoUpdateFound --&gt; [*]
+        
+        Checking --&gt; UpdateAvailable
+        UpdateAvailable --&gt; PreparingUpdate
+        PreparingUpdate --&gt; DownloadingUpdate
+        DownloadingUpdate --&gt; ApplyingUpdate
+        ApplyingUpdate --&gt; FinalizingUpdate
+        FinalizingUpdate --&gt; UpdateSuccessful
+        UpdateSuccessful --&gt; [*]
+    }
+    
+    Updating: Update in progress
+    Idle: Waiting for update trigger</code></pre>
 <p>Use Elixir for concurrent services and SQLite on the server for data management:</p>
 <ol type="1">
 <li><p><strong>Headless CLI</strong></p>
