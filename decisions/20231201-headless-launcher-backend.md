@@ -1,4 +1,4 @@
-### Headless Launcher Backend with Elixir and Server-Side SQLite
+### Proposed: Headless Launcher Backend with Elixir and Server-Side SQLite
 
 #### Metadata
 
