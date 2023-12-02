@@ -16,6 +16,32 @@ Build an updater that is simple yet robust, handling automated game updates in t
 
 #### Strategy
 
+```mermaid
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> CheckForUpdates : Update Triggered
+    CheckForUpdates --> Updating
+    Updating --> Idle : Update Successful
+    
+    state CheckForUpdates {
+        [*] --> Checking
+        Checking --> NoUpdateFound
+        NoUpdateFound --> [*]
+        
+        Checking --> UpdateAvailable
+        UpdateAvailable --> PreparingUpdate
+        PreparingUpdate --> DownloadingUpdate
+        DownloadingUpdate --> ApplyingUpdate
+        ApplyingUpdate --> FinalizingUpdate
+        FinalizingUpdate --> UpdateSuccessful
+        UpdateSuccessful --> [*]
+    }
+    
+    Updating: Update in progress
+    Idle: Waiting for update trigger
+```
+
+
 Use Elixir for concurrent services and SQLite on the server for data management:
 
 1. **Headless CLI**
