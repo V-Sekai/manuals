@@ -1,64 +1,61 @@
-# Proposed: Headless Launcher Backend with Elixir and Server-Side SQLite
+### Headless Launcher Backend with Elixir and Server-Side SQLite
 
-## Metadata
+#### Metadata
 
 - **Status:** Proposed
 - **Deciders:** V-Sekai Team
-- **Tags:** `headless`, `backend`, `launcher`, `updater`, `V-Sekai`, `Elixir`, `SQLite`
+- **Tags:** `headless`, `backend`, `launcher`, `updater`
 
-## The Backdrop
+#### Backdrop
 
-We aim to enhance the gaming experience by introducing a headless backend launcher. Its purpose will be to automate game updates, ensuring that players have continuous access to the latest content with minimal inputs required.
+Introduce a headless backend launcher to automate game updates for enhanced gaming experience.
 
-## The Challenge
+#### Challenge
 
-The task at hand is to build an updater that maintains a balance between simplicity and robust feature set, capable of handling automated processes like fetching and rolling out game updates quietly in the background.
+Build an updater that is simple yet robust, handling automated game updates in the background.
 
-## The Strategy
+#### Strategy
 
-Our strategic approach involves leveraging the strengths of Elixir for concurrent web services and utilizing SQLite on the server side to manage data:
+Use Elixir for concurrent services and SQLite on the server for data management:
 
-1. **Headless Updater Implementation:**
+1. **Updater Implementation:**
 
-   - Build a lightweight but effective updater service as a background application.
-   - Integrate web endpoints penned in Elixir to handle requests efficiently in real-time.
-   - Employ desync for thorough and reliable data synchronization.
-   - Adopt server-side SQLite for data persistence, including update logs, user settings, and version control.
+   - Create a lightweight updater service.
+   - Use Elixir for web requests handling.
+   - Implement desync for data synchronization.
+   - Utilize server-side SQLite for persistence.
 
-2. **Graphical User Interface (GUI) Launcher Creation:**
+2. **GUI Launcher Creation:**
 
-   - Design an intuitive GUI launcher that provides an easy interface for users to interact with update functions.
-   - Ensure seamless communication between the GUI and the headless updater for smooth content delivery.
-   - Embed desync protocol within the GUI to automate sync tasks without user intervention.
+   - Design an intuitive GUI launcher.
+   - Ensure communication with the headless updater.
+   - Integrate desync protocol in the GUI.
 
-3. **Initial Game Setup Efforts:**
+3. **Game Setup Efforts:**
+   - Develop a basic visual setup with V-Sekai branding.
 
-   - Develop a basic visual setup featuring the V-Sekai branding, which will serve as the default content presented by the launcher.
+#### Upside
 
-## The Upside
+This system promotes seamless gaming with high performance and reliability from Elixir and SQLite.
 
-Such a system promotes an uninterrupted and cutting-edge gaming environment. Using Elixir in tandem with server-side SQLite offers high performance and reliability suited to our backend needs.
+#### Downside
 
-## The Downside
+Technology integration may lead to complex issues and compatibility challenges.
 
-Integrating new technologies introduces potential risks like complex issue diagnosis and ensuring compatibility across diverse platforms and environments.
+#### Road Not Taken
 
-## The Road Not Taken
+External updaters and manual patches were dismissed for their demanding nature.
 
-We opted against external updaters or manual patches due to their intrusive nature and higher demands on player involvement.
+#### Infrequent Use Case
 
-## The Infrequent Use Case
+Design will allow manual update initiation for situations like limited bandwidth.
 
-Acknowledging occasional preferences for manual interventions—in scenarios such as limited bandwidth—our design must include capabilities for users to manually initiate updates.
+#### Core and Done by Us?
 
-## In Core and Done by Us?
+The V-Sekai team will develop and maintain this launcher backend.
 
-With a focus on alignment and quality, the V-Sekai team will retain internal control over the development and maintenance of this launcher backend.
+#### Further Reading
 
-## Further Reading
-
-- [**V-Sekai · GitHub**](https://github.com/v-sekai) - Explore our GitHub presence, dedicated to pioneering VR advances using the Godot Engine.
-- [**V-Sekai/v-sekai-game**](https://github.com/v-sekai/v-sekai-game) - Visit the repository where our open-source endeavors to fuse VR and social experiences using Godot unfold.
-- [**Desync**](https://github.com/folbricht/desync) - Alternative casync implementation
-
-**Assistance from AI**: Guidance provided by AI assistant Aria contributed to the formulation of this document.
+- [**V-Sekai GitHub**](https://github.com/v-sekai) - Our efforts in VR using Godot Engine.
+- [**V-Sekai Game Repo**](https://github.com/v-sekai/v-sekai-game) - Our open-source VR and social experiences project.
+- [**Desync**](https://github.com/folbricht/desync) - Alternative casync implementation.
