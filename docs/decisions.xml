@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Sat, 02 Dec 2023 13:53:44 GMT</lastBuildDate>
+<lastBuildDate>Sat, 02 Dec 2023 13:57:05 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -66,7 +66,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sat, 02 Dec 2023 13:53:44 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 13:57:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -159,7 +159,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231201-xr-hands-animation-node.html</guid>
-  <pubDate>Sat, 02 Dec 2023 13:53:44 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 13:57:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -168,26 +168,26 @@
 
 
 
-<section id="proposed-headless-launcher-backend-with-elixir-and-server-side-cockroachdb" class="level3">
-<h3 class="anchored" data-anchor-id="proposed-headless-launcher-backend-with-elixir-and-server-side-cockroachdb">Proposed: Headless Launcher Backend with Elixir and Server-Side CockroachDB</h3>
-<section id="metadata" class="level4">
-<h4 class="anchored" data-anchor-id="metadata">Metadata</h4>
+<section id="proposed-headless-launcher-backend-with-elixir-and-server-side-cockroachdb" class="level1">
+<h1>Proposed: Headless Launcher Backend with Elixir and Server-Side CockroachDB</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
 <li><strong>Status:</strong> Proposed</li>
 <li><strong>Deciders:</strong> V-Sekai Team</li>
 <li><strong>Tags:</strong> <code>headless</code>, <code>backend</code>, <code>launcher</code>, <code>updater</code></li>
 </ul>
 </section>
-<section id="backdrop" class="level4">
-<h4 class="anchored" data-anchor-id="backdrop">Backdrop</h4>
+<section id="backdrop" class="level2">
+<h2 class="anchored" data-anchor-id="backdrop">Backdrop</h2>
 <p>Introduce a headless backend launcher to automate game updates for enhanced gaming experience.</p>
 </section>
-<section id="challenge" class="level4">
-<h4 class="anchored" data-anchor-id="challenge">Challenge</h4>
+<section id="challenge" class="level2">
+<h2 class="anchored" data-anchor-id="challenge">Challenge</h2>
 <p>Build an updater that is simple yet robust, handling automated game updates in the background.</p>
 </section>
-<section id="strategy" class="level4">
-<h4 class="anchored" data-anchor-id="strategy">Strategy</h4>
+<section id="strategy" class="level2">
+<h2 class="anchored" data-anchor-id="strategy">Strategy</h2>
 <pre class="mermaid"><code>stateDiagram-v2
     [*] --&gt; Idle
     Idle --&gt; CheckForUpdates : Update Triggered
@@ -215,6 +215,7 @@
 <li><p><strong>Headless CLI</strong></p>
 <ul>
 <li>Implement desync for data synchronization.</li>
+<li>Detail how desync will be integrated into the service and GUI.</li>
 </ul></li>
 <li><p><strong>Updater Online Service:</strong></p>
 <ul>
@@ -222,40 +223,49 @@
 <li>Use Elixir for web requests handling.</li>
 <li>Utilize server-side CockroachDB for persistence.</li>
 <li>Integrate desync protocol in the Service.</li>
+<li>Include error handling strategy for failed updates or data synchronization issues.</li>
 </ul></li>
 <li><p><strong>GUI Launcher Creation:</strong></p>
 <ul>
 <li>Design an intuitive Godot Engine GUI launcher.</li>
 <li>Integrate desync protocol in the GUI.</li>
+<li>Detail the basic visual setup with V-Sekai branding.</li>
 </ul></li>
 <li><p><strong>Game Setup Efforts:</strong></p>
 <ul>
 <li>Develop a basic visual setup with V-Sekai branding.</li>
+<li>Include a plan for testing each component to ensure functionality.</li>
+<li>Address security concerns, including user data protection and secure updates.</li>
+<li>Discuss scalability potential with increasing users or larger game updates.</li>
 </ul></li>
 </ol>
 </section>
-<section id="upside" class="level4">
-<h4 class="anchored" data-anchor-id="upside">Upside</h4>
+<section id="upside" class="level2">
+<h2 class="anchored" data-anchor-id="upside">Upside</h2>
 <p>This system promotes seamless gaming with high performance and reliability from Elixir and CockroachDB.</p>
 </section>
-<section id="downside" class="level4">
-<h4 class="anchored" data-anchor-id="downside">Downside</h4>
+<section id="downside" class="level2">
+<h2 class="anchored" data-anchor-id="downside">Downside</h2>
 <p>Technology integration may lead to complex issues and compatibility challenges.</p>
 </section>
-<section id="road-not-taken" class="level4">
-<h4 class="anchored" data-anchor-id="road-not-taken">Road Not Taken</h4>
+<section id="road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="road-not-taken">Road Not Taken</h2>
 <p>External updaters and manual patches were dismissed for their demanding nature.</p>
 </section>
-<section id="infrequent-use-case" class="level4">
-<h4 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h4>
+<section id="infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
 <p>Design will allow manual update initiation for situations like limited bandwidth.</p>
 </section>
-<section id="core-and-done-by-us" class="level4">
-<h4 class="anchored" data-anchor-id="core-and-done-by-us">Core and Done by Us?</h4>
-<p>The V-Sekai team will develop and maintain this launcher backend.</p>
+<section id="core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="core-and-done-by-us">Core and Done by Us?</h2>
+<p>The V-Sekai team will develop and maintain this launcher backend. A detailed maintenance plan will be provided.</p>
 </section>
-<section id="further-reading" class="level4">
-<h4 class="anchored" data-anchor-id="further-reading">Further Reading</h4>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
+<p>A comprehensive documentation will be created for understanding the system and onboarding new team members.</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <ul>
 <li><a href="https://github.com/v-sekai"><strong>V-Sekai GitHub</strong></a> - Our efforts in VR using Godot Engine.</li>
 <li><a href="https://github.com/v-sekai/v-sekai-game"><strong>V-Sekai Game Repo</strong></a> - Our open-source VR and social experiences project.</li>
@@ -268,7 +278,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231201-headless-launcher-backend.html</guid>
-  <pubDate>Sat, 02 Dec 2023 13:53:44 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 13:57:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -366,7 +376,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231127-performance-test.html</guid>
-  <pubDate>Sat, 02 Dec 2023 13:53:44 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 13:57:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -457,7 +467,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231126-v-sekai-report.html</guid>
-  <pubDate>Sat, 02 Dec 2023 13:53:44 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 13:57:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -586,7 +596,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231125-v-sekai-report.html</guid>
-  <pubDate>Sat, 02 Dec 2023 13:53:44 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 13:57:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -651,7 +661,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-upload-creative-commons-fbx-test-files.html</guid>
-  <pubDate>Sat, 02 Dec 2023 13:53:44 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 13:57:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -717,7 +727,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-maintain-svgcleaner.html</guid>
-  <pubDate>Sat, 02 Dec 2023 13:53:44 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 13:57:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -782,7 +792,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-elixir-definition-of-godot-types.html</guid>
-  <pubDate>Sat, 02 Dec 2023 13:53:44 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 13:57:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -866,7 +876,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231112-validation-service.html</guid>
-  <pubDate>Sat, 02 Dec 2023 13:53:44 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 13:57:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -942,7 +952,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231112-archive-projects.html</guid>
-  <pubDate>Sat, 02 Dec 2023 13:53:44 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 13:57:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1046,7 +1056,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231111-ayon-evaluation.html</guid>
-  <pubDate>Sat, 02 Dec 2023 13:53:44 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 13:57:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1213,7 +1223,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-v-sekai-dependencies.html</guid>
-  <pubDate>Sat, 02 Dec 2023 13:53:44 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 13:57:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1288,7 +1298,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-efficient-llm-training.html</guid>
-  <pubDate>Sat, 02 Dec 2023 13:53:44 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 13:57:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1360,7 +1370,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-blender-manual-t-pose.html</guid>
-  <pubDate>Sat, 02 Dec 2023 13:53:44 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 13:57:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1434,7 +1444,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-better-pipeline-tools.html</guid>
-  <pubDate>Sat, 02 Dec 2023 13:53:44 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 13:57:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1509,7 +1519,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-ai-based-outlier-detection.html</guid>
-  <pubDate>Sat, 02 Dec 2023 13:53:44 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 13:57:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1586,7 +1596,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-discord-polygonjs-generator.html</guid>
-  <pubDate>Sat, 02 Dec 2023 13:53:44 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 13:57:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1690,7 +1700,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-changelog.html</guid>
-  <pubDate>Sat, 02 Dec 2023 13:53:44 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 13:57:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1774,7 +1784,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-v-sekai-chat-bot.html</guid>
-  <pubDate>Sat, 02 Dec 2023 13:53:44 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 13:57:05 GMT</pubDate>
 </item>
 </channel>
 </rss>

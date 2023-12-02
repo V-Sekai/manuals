@@ -110,7 +110,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#proposed-headless-launcher-backend-with-elixir-and-server-side-cockroachdb" id="toc-proposed-headless-launcher-backend-with-elixir-and-server-side-cockroachdb" class="nav-link active" data-scroll-target="#proposed-headless-launcher-backend-with-elixir-and-server-side-cockroachdb">Proposed: Headless Launcher Backend with Elixir and Server-Side CockroachDB</a></li>
+  <li><a href="#proposed-headless-launcher-backend-with-elixir-and-server-side-cockroachdb" id="toc-proposed-headless-launcher-backend-with-elixir-and-server-side-cockroachdb" class="nav-link active" data-scroll-target="#proposed-headless-launcher-backend-with-elixir-and-server-side-cockroachdb">Proposed: Headless Launcher Backend with Elixir and Server-Side CockroachDB</a>
+  <ul class="collapse">
+  <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
+  <li><a href="#backdrop" id="toc-backdrop" class="nav-link" data-scroll-target="#backdrop">Backdrop</a></li>
+  <li><a href="#challenge" id="toc-challenge" class="nav-link" data-scroll-target="#challenge">Challenge</a></li>
+  <li><a href="#strategy" id="toc-strategy" class="nav-link" data-scroll-target="#strategy">Strategy</a></li>
+  <li><a href="#upside" id="toc-upside" class="nav-link" data-scroll-target="#upside">Upside</a></li>
+  <li><a href="#downside" id="toc-downside" class="nav-link" data-scroll-target="#downside">Downside</a></li>
+  <li><a href="#road-not-taken" id="toc-road-not-taken" class="nav-link" data-scroll-target="#road-not-taken">Road Not Taken</a></li>
+  <li><a href="#infrequent-use-case" id="toc-infrequent-use-case" class="nav-link" data-scroll-target="#infrequent-use-case">Infrequent Use Case</a></li>
+  <li><a href="#core-and-done-by-us" id="toc-core-and-done-by-us" class="nav-link" data-scroll-target="#core-and-done-by-us">Core and Done by Us?</a></li>
+  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20231201-headless-launcher-backend.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
@@ -119,26 +132,26 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="proposed-headless-launcher-backend-with-elixir-and-server-side-cockroachdb" class="level3">
-<h3 class="anchored" data-anchor-id="proposed-headless-launcher-backend-with-elixir-and-server-side-cockroachdb">Proposed: Headless Launcher Backend with Elixir and Server-Side CockroachDB</h3>
-<section id="metadata" class="level4">
-<h4 class="anchored" data-anchor-id="metadata">Metadata</h4>
+<section id="proposed-headless-launcher-backend-with-elixir-and-server-side-cockroachdb" class="level1">
+<h1>Proposed: Headless Launcher Backend with Elixir and Server-Side CockroachDB</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
 <li><strong>Status:</strong> Proposed</li>
 <li><strong>Deciders:</strong> V-Sekai Team</li>
 <li><strong>Tags:</strong> <code>headless</code>, <code>backend</code>, <code>launcher</code>, <code>updater</code></li>
 </ul>
 </section>
-<section id="backdrop" class="level4">
-<h4 class="anchored" data-anchor-id="backdrop">Backdrop</h4>
+<section id="backdrop" class="level2">
+<h2 class="anchored" data-anchor-id="backdrop">Backdrop</h2>
 <p>Introduce a headless backend launcher to automate game updates for enhanced gaming experience.</p>
 </section>
-<section id="challenge" class="level4">
-<h4 class="anchored" data-anchor-id="challenge">Challenge</h4>
+<section id="challenge" class="level2">
+<h2 class="anchored" data-anchor-id="challenge">Challenge</h2>
 <p>Build an updater that is simple yet robust, handling automated game updates in the background.</p>
 </section>
-<section id="strategy" class="level4">
-<h4 class="anchored" data-anchor-id="strategy">Strategy</h4>
+<section id="strategy" class="level2">
+<h2 class="anchored" data-anchor-id="strategy">Strategy</h2>
 <pre class="mermaid"><code>stateDiagram-v2
     [*] --&gt; Idle
     Idle --&gt; CheckForUpdates : Update Triggered
@@ -166,6 +179,7 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>Headless CLI</strong></p>
 <ul>
 <li>Implement desync for data synchronization.</li>
+<li>Detail how desync will be integrated into the service and GUI.</li>
 </ul></li>
 <li><p><strong>Updater Online Service:</strong></p>
 <ul>
@@ -173,40 +187,49 @@ ul.task-list li input[type="checkbox"] {
 <li>Use Elixir for web requests handling.</li>
 <li>Utilize server-side CockroachDB for persistence.</li>
 <li>Integrate desync protocol in the Service.</li>
+<li>Include error handling strategy for failed updates or data synchronization issues.</li>
 </ul></li>
 <li><p><strong>GUI Launcher Creation:</strong></p>
 <ul>
 <li>Design an intuitive Godot Engine GUI launcher.</li>
 <li>Integrate desync protocol in the GUI.</li>
+<li>Detail the basic visual setup with V-Sekai branding.</li>
 </ul></li>
 <li><p><strong>Game Setup Efforts:</strong></p>
 <ul>
 <li>Develop a basic visual setup with V-Sekai branding.</li>
+<li>Include a plan for testing each component to ensure functionality.</li>
+<li>Address security concerns, including user data protection and secure updates.</li>
+<li>Discuss scalability potential with increasing users or larger game updates.</li>
 </ul></li>
 </ol>
 </section>
-<section id="upside" class="level4">
-<h4 class="anchored" data-anchor-id="upside">Upside</h4>
+<section id="upside" class="level2">
+<h2 class="anchored" data-anchor-id="upside">Upside</h2>
 <p>This system promotes seamless gaming with high performance and reliability from Elixir and CockroachDB.</p>
 </section>
-<section id="downside" class="level4">
-<h4 class="anchored" data-anchor-id="downside">Downside</h4>
+<section id="downside" class="level2">
+<h2 class="anchored" data-anchor-id="downside">Downside</h2>
 <p>Technology integration may lead to complex issues and compatibility challenges.</p>
 </section>
-<section id="road-not-taken" class="level4">
-<h4 class="anchored" data-anchor-id="road-not-taken">Road Not Taken</h4>
+<section id="road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="road-not-taken">Road Not Taken</h2>
 <p>External updaters and manual patches were dismissed for their demanding nature.</p>
 </section>
-<section id="infrequent-use-case" class="level4">
-<h4 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h4>
+<section id="infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
 <p>Design will allow manual update initiation for situations like limited bandwidth.</p>
 </section>
-<section id="core-and-done-by-us" class="level4">
-<h4 class="anchored" data-anchor-id="core-and-done-by-us">Core and Done by Us?</h4>
-<p>The V-Sekai team will develop and maintain this launcher backend.</p>
+<section id="core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="core-and-done-by-us">Core and Done by Us?</h2>
+<p>The V-Sekai team will develop and maintain this launcher backend. A detailed maintenance plan will be provided.</p>
 </section>
-<section id="further-reading" class="level4">
-<h4 class="anchored" data-anchor-id="further-reading">Further Reading</h4>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
+<p>A comprehensive documentation will be created for understanding the system and onboarding new team members.</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <ul>
 <li><a href="https://github.com/v-sekai"><strong>V-Sekai GitHub</strong></a> - Our efforts in VR using Godot Engine.</li>
 <li><a href="https://github.com/v-sekai/v-sekai-game"><strong>V-Sekai Game Repo</strong></a> - Our open-source VR and social experiences project.</li>

@@ -14387,9 +14387,86 @@
   {
     "objectID": "decisions/20231201-headless-launcher-backend.html",
     "href": "decisions/20231201-headless-launcher-backend.html",
-    "title": "V-Sekai - Manuals",
+    "title": "Proposed: Headless Launcher Backend with Elixir and Server-Side CockroachDB",
     "section": "",
-    "text": "Proposed: Headless Launcher Backend with Elixir and Server-Side CockroachDB\n\nMetadata\n\nStatus: Proposed\nDeciders: V-Sekai Team\nTags: headless, backend, launcher, updater\n\n\n\nBackdrop\nIntroduce a headless backend launcher to automate game updates for enhanced gaming experience.\n\n\nChallenge\nBuild an updater that is simple yet robust, handling automated game updates in the background.\n\n\nStrategy\nstateDiagram-v2\n    [*] --&gt; Idle\n    Idle --&gt; CheckForUpdates : Update Triggered\n    CheckForUpdates --&gt; Updating\n    Updating --&gt; Idle : Update Successful\n\n    state CheckForUpdates {\n        [*] --&gt; Checking\n        Checking --&gt; NoUpdateFound\n        NoUpdateFound --&gt; [*]\n\n        Checking --&gt; UpdateAvailable\n        UpdateAvailable --&gt; PreparingUpdate\n        PreparingUpdate --&gt; DownloadingUpdate\n        DownloadingUpdate --&gt; ApplyingUpdate\n        ApplyingUpdate --&gt; FinalizingUpdate\n        FinalizingUpdate --&gt; UpdateSuccessful\n        UpdateSuccessful --&gt; [*]\n    }\n\n    Updating: Update in progress\n    Idle: Waiting for update trigger\nUse Elixir for concurrent services and CockroachDB on the server for data management:\n\nHeadless CLI\n\nImplement desync for data synchronization.\n\nUpdater Online Service:\n\nCreate a lightweight updater service.\nUse Elixir for web requests handling.\nUtilize server-side CockroachDB for persistence.\nIntegrate desync protocol in the Service.\n\nGUI Launcher Creation:\n\nDesign an intuitive Godot Engine GUI launcher.\nIntegrate desync protocol in the GUI.\n\nGame Setup Efforts:\n\nDevelop a basic visual setup with V-Sekai branding.\n\n\n\n\nUpside\nThis system promotes seamless gaming with high performance and reliability from Elixir and CockroachDB.\n\n\nDownside\nTechnology integration may lead to complex issues and compatibility challenges.\n\n\nRoad Not Taken\nExternal updaters and manual patches were dismissed for their demanding nature.\n\n\nInfrequent Use Case\nDesign will allow manual update initiation for situations like limited bandwidth.\n\n\nCore and Done by Us?\nThe V-Sekai team will develop and maintain this launcher backend.\n\n\nFurther Reading\n\nV-Sekai GitHub - Our efforts in VR using Godot Engine.\nV-Sekai Game Repo - Our open-source VR and social experiences project.\nDesync - Alternative casync implementation."
+    "text": "Status: Proposed\nDeciders: V-Sekai Team\nTags: headless, backend, launcher, updater\n\n\n\n\nIntroduce a headless backend launcher to automate game updates for enhanced gaming experience.\n\n\n\nBuild an updater that is simple yet robust, handling automated game updates in the background.\n\n\n\nstateDiagram-v2\n    [*] --&gt; Idle\n    Idle --&gt; CheckForUpdates : Update Triggered\n    CheckForUpdates --&gt; Updating\n    Updating --&gt; Idle : Update Successful\n\n    state CheckForUpdates {\n        [*] --&gt; Checking\n        Checking --&gt; NoUpdateFound\n        NoUpdateFound --&gt; [*]\n\n        Checking --&gt; UpdateAvailable\n        UpdateAvailable --&gt; PreparingUpdate\n        PreparingUpdate --&gt; DownloadingUpdate\n        DownloadingUpdate --&gt; ApplyingUpdate\n        ApplyingUpdate --&gt; FinalizingUpdate\n        FinalizingUpdate --&gt; UpdateSuccessful\n        UpdateSuccessful --&gt; [*]\n    }\n\n    Updating: Update in progress\n    Idle: Waiting for update trigger\nUse Elixir for concurrent services and CockroachDB on the server for data management:\n\nHeadless CLI\n\nImplement desync for data synchronization.\nDetail how desync will be integrated into the service and GUI.\n\nUpdater Online Service:\n\nCreate a lightweight updater service.\nUse Elixir for web requests handling.\nUtilize server-side CockroachDB for persistence.\nIntegrate desync protocol in the Service.\nInclude error handling strategy for failed updates or data synchronization issues.\n\nGUI Launcher Creation:\n\nDesign an intuitive Godot Engine GUI launcher.\nIntegrate desync protocol in the GUI.\nDetail the basic visual setup with V-Sekai branding.\n\nGame Setup Efforts:\n\nDevelop a basic visual setup with V-Sekai branding.\nInclude a plan for testing each component to ensure functionality.\nAddress security concerns, including user data protection and secure updates.\nDiscuss scalability potential with increasing users or larger game updates.\n\n\n\n\n\nThis system promotes seamless gaming with high performance and reliability from Elixir and CockroachDB.\n\n\n\nTechnology integration may lead to complex issues and compatibility challenges.\n\n\n\nExternal updaters and manual patches were dismissed for their demanding nature.\n\n\n\nDesign will allow manual update initiation for situations like limited bandwidth.\n\n\n\nThe V-Sekai team will develop and maintain this launcher backend. A detailed maintenance plan will be provided.\n\n\n\nA comprehensive documentation will be created for understanding the system and onboarding new team members.\n\n\n\n\nV-Sekai GitHub - Our efforts in VR using Godot Engine.\nV-Sekai Game Repo - Our open-source VR and social experiences project.\nDesync - Alternative casync implementation."
+  },
+  {
+    "objectID": "decisions/20231201-headless-launcher-backend.html#metadata",
+    "href": "decisions/20231201-headless-launcher-backend.html#metadata",
+    "title": "Proposed: Headless Launcher Backend with Elixir and Server-Side CockroachDB",
+    "section": "",
+    "text": "Status: Proposed\nDeciders: V-Sekai Team\nTags: headless, backend, launcher, updater"
+  },
+  {
+    "objectID": "decisions/20231201-headless-launcher-backend.html#backdrop",
+    "href": "decisions/20231201-headless-launcher-backend.html#backdrop",
+    "title": "Proposed: Headless Launcher Backend with Elixir and Server-Side CockroachDB",
+    "section": "",
+    "text": "Introduce a headless backend launcher to automate game updates for enhanced gaming experience."
+  },
+  {
+    "objectID": "decisions/20231201-headless-launcher-backend.html#challenge",
+    "href": "decisions/20231201-headless-launcher-backend.html#challenge",
+    "title": "Proposed: Headless Launcher Backend with Elixir and Server-Side CockroachDB",
+    "section": "",
+    "text": "Build an updater that is simple yet robust, handling automated game updates in the background."
+  },
+  {
+    "objectID": "decisions/20231201-headless-launcher-backend.html#strategy",
+    "href": "decisions/20231201-headless-launcher-backend.html#strategy",
+    "title": "Proposed: Headless Launcher Backend with Elixir and Server-Side CockroachDB",
+    "section": "",
+    "text": "stateDiagram-v2\n    [*] --&gt; Idle\n    Idle --&gt; CheckForUpdates : Update Triggered\n    CheckForUpdates --&gt; Updating\n    Updating --&gt; Idle : Update Successful\n\n    state CheckForUpdates {\n        [*] --&gt; Checking\n        Checking --&gt; NoUpdateFound\n        NoUpdateFound --&gt; [*]\n\n        Checking --&gt; UpdateAvailable\n        UpdateAvailable --&gt; PreparingUpdate\n        PreparingUpdate --&gt; DownloadingUpdate\n        DownloadingUpdate --&gt; ApplyingUpdate\n        ApplyingUpdate --&gt; FinalizingUpdate\n        FinalizingUpdate --&gt; UpdateSuccessful\n        UpdateSuccessful --&gt; [*]\n    }\n\n    Updating: Update in progress\n    Idle: Waiting for update trigger\nUse Elixir for concurrent services and CockroachDB on the server for data management:\n\nHeadless CLI\n\nImplement desync for data synchronization.\nDetail how desync will be integrated into the service and GUI.\n\nUpdater Online Service:\n\nCreate a lightweight updater service.\nUse Elixir for web requests handling.\nUtilize server-side CockroachDB for persistence.\nIntegrate desync protocol in the Service.\nInclude error handling strategy for failed updates or data synchronization issues.\n\nGUI Launcher Creation:\n\nDesign an intuitive Godot Engine GUI launcher.\nIntegrate desync protocol in the GUI.\nDetail the basic visual setup with V-Sekai branding.\n\nGame Setup Efforts:\n\nDevelop a basic visual setup with V-Sekai branding.\nInclude a plan for testing each component to ensure functionality.\nAddress security concerns, including user data protection and secure updates.\nDiscuss scalability potential with increasing users or larger game updates."
+  },
+  {
+    "objectID": "decisions/20231201-headless-launcher-backend.html#upside",
+    "href": "decisions/20231201-headless-launcher-backend.html#upside",
+    "title": "Proposed: Headless Launcher Backend with Elixir and Server-Side CockroachDB",
+    "section": "",
+    "text": "This system promotes seamless gaming with high performance and reliability from Elixir and CockroachDB."
+  },
+  {
+    "objectID": "decisions/20231201-headless-launcher-backend.html#downside",
+    "href": "decisions/20231201-headless-launcher-backend.html#downside",
+    "title": "Proposed: Headless Launcher Backend with Elixir and Server-Side CockroachDB",
+    "section": "",
+    "text": "Technology integration may lead to complex issues and compatibility challenges."
+  },
+  {
+    "objectID": "decisions/20231201-headless-launcher-backend.html#road-not-taken",
+    "href": "decisions/20231201-headless-launcher-backend.html#road-not-taken",
+    "title": "Proposed: Headless Launcher Backend with Elixir and Server-Side CockroachDB",
+    "section": "",
+    "text": "External updaters and manual patches were dismissed for their demanding nature."
+  },
+  {
+    "objectID": "decisions/20231201-headless-launcher-backend.html#infrequent-use-case",
+    "href": "decisions/20231201-headless-launcher-backend.html#infrequent-use-case",
+    "title": "Proposed: Headless Launcher Backend with Elixir and Server-Side CockroachDB",
+    "section": "",
+    "text": "Design will allow manual update initiation for situations like limited bandwidth."
+  },
+  {
+    "objectID": "decisions/20231201-headless-launcher-backend.html#core-and-done-by-us",
+    "href": "decisions/20231201-headless-launcher-backend.html#core-and-done-by-us",
+    "title": "Proposed: Headless Launcher Backend with Elixir and Server-Side CockroachDB",
+    "section": "",
+    "text": "The V-Sekai team will develop and maintain this launcher backend. A detailed maintenance plan will be provided."
+  },
+  {
+    "objectID": "decisions/20231201-headless-launcher-backend.html#documentation",
+    "href": "decisions/20231201-headless-launcher-backend.html#documentation",
+    "title": "Proposed: Headless Launcher Backend with Elixir and Server-Side CockroachDB",
+    "section": "",
+    "text": "A comprehensive documentation will be created for understanding the system and onboarding new team members."
+  },
+  {
+    "objectID": "decisions/20231201-headless-launcher-backend.html#further-reading",
+    "href": "decisions/20231201-headless-launcher-backend.html#further-reading",
+    "title": "Proposed: Headless Launcher Backend with Elixir and Server-Side CockroachDB",
+    "section": "",
+    "text": "V-Sekai GitHub - Our efforts in VR using Godot Engine.\nV-Sekai Game Repo - Our open-source VR and social experiences project.\nDesync - Alternative casync implementation."
   },
   {
     "objectID": "decisions/20230522-JOKE-fictional-blood-combat.html",
