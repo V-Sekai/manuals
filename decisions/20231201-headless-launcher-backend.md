@@ -1,4 +1,4 @@
-### Proposed: Headless Launcher Backend with Elixir and Server-Side SQLite
+### Proposed: Headless Launcher Backend with Elixir and Server-Side CockroachDB
 
 #### Metadata
 
@@ -22,12 +22,12 @@ stateDiagram-v2
     Idle --> CheckForUpdates : Update Triggered
     CheckForUpdates --> Updating
     Updating --> Idle : Update Successful
-    
+
     state CheckForUpdates {
         [*] --> Checking
         Checking --> NoUpdateFound
         NoUpdateFound --> [*]
-        
+
         Checking --> UpdateAvailable
         UpdateAvailable --> PreparingUpdate
         PreparingUpdate --> DownloadingUpdate
@@ -36,13 +36,12 @@ stateDiagram-v2
         FinalizingUpdate --> UpdateSuccessful
         UpdateSuccessful --> [*]
     }
-    
+
     Updating: Update in progress
     Idle: Waiting for update trigger
 ```
 
-
-Use Elixir for concurrent services and SQLite on the server for data management:
+Use Elixir for concurrent services and CockroachDB on the server for data management:
 
 1. **Headless CLI**
 
@@ -52,7 +51,7 @@ Use Elixir for concurrent services and SQLite on the server for data management:
 
    - Create a lightweight updater service.
    - Use Elixir for web requests handling.
-   - Utilize server-side SQLite for persistence.
+   - Utilize server-side CockroachDB for persistence.
    - Integrate desync protocol in the Service.
 
 3. **GUI Launcher Creation:**
@@ -65,7 +64,7 @@ Use Elixir for concurrent services and SQLite on the server for data management:
 
 #### Upside
 
-This system promotes seamless gaming with high performance and reliability from Elixir and SQLite.
+This system promotes seamless gaming with high performance and reliability from Elixir and CockroachDB.
 
 #### Downside
 
