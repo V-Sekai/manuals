@@ -1,74 +1,61 @@
-### Client-Side Game Updater with Server-Side Endpoint
+### Headless Launcher Backend with Elixir and Server-Side SQLite
 
 #### Metadata
 
 - **Status:** Proposed
 - **Deciders:** V-Sekai Team
-- **Tags:** V-Sekai, client-side, updater, backend, SAAS
+- **Tags:** `headless`, `backend`, `launcher`, `updater`
 
 #### Backdrop
 
-The intent is to create a client-side game updater system that interfaces with a server-side endpoint to facilitate consistent and automated game updates.
+Introduce a headless backend launcher to automate game updates for enhanced gaming experience.
 
 #### Challenge
 
-To build a robust client-side updater mechanism that seamlessly interacts with the server to download and install game patches without manual user intervention.
+Build an updater that is simple yet robust, handling automated game updates in the background.
 
 #### Strategy
 
-Our approach involves creating an updater system on the client side while using a backend API to manage updates:
+Use Elixir for concurrent services and SQLite on the server for data management:
 
-1. **Client-Side Updater Service:**
+1. **Updater Implementation:**
 
-   - Implement an updater within the client's environment capable of checking for new updates.
-   - Utilize a robust version control system for the client-side updater.
-   - Isolate dependencies and configuration, ensuring no conflict with the game's operational dependencies.
-   - Separate the configuration management to not be hardcoded within the updater's codebase.
+   - Create a lightweight updater service.
+   - Use Elixir for web requests handling.
+   - Implement desync for data synchronization.
+   - Utilize server-side SQLite for persistence.
 
-2. **Server-Side Update Endpoint:**
+2. **GUI Launcher Creation:**
 
-   - Deploy a server-side service using Elixir to handle update requests from the client-side updater.
-   - Structure the endpoint to authenticate clients and authorize update actions securely.
-   - Design the update service to provide update packages, changelogs, and status reports back to clients.
+   - Design an intuitive GUI launcher.
+   - Ensure communication with the headless updater.
+   - Integrate desync protocol in the GUI.
 
-3. **Integration of GUI Launcher with Backend:**
-
-   - Develop a graphical user interface (GUI) launcher on the client side that communicates with the server-side update endpoint.
-   - Define clear communication protocols for the GUI launcher to retrieve update information and execute update operations.
-
-4. **Deployment and Database Management:**
-
-   - Employ server-side SQLite for efficient database management of version metadata and update logs.
-   - Design the service to run efficient, stateless processes that scale with the user base.
-   - Ensure consistency across development, staging, and production environments by using containerization and continuous integration strategies.
-
-5. **Game Setup Efforts:**
+3. **Game Setup Efforts:**
    - Develop a basic visual setup with V-Sekai branding.
 
 #### Upside
 
-This strategy allows streamlined distribution of updates directly to users while keeping the complexity away from end-users, enabling a frictionless gaming experience.
+This system promotes seamless gaming with high performance and reliability from Elixir and SQLite.
 
 #### Downside
 
-Diverse technologies between client and server can introduce challenges; however, careful design and planning can mitigate potential issues.
+Technology integration may lead to complex issues and compatibility challenges.
 
 #### Road Not Taken
 
-Options like direct game patching or standalone updaters have been ruled out in favor of a more integrated solution that simplifies the user experience.
+External updaters and manual patches were dismissed for their demanding nature.
 
 #### Infrequent Use Case
 
-Designed to account for scenarios where users may need to trigger updates manually due to network restrictions or other constraints.
+Design will allow manual update initiation for situations like limited bandwidth.
 
 #### Core and Done by Us?
 
-Absolutely. The core development and maintenance of both the client-side updater and the server-side endpoint will be managed in-house by the V-Sekai team.
+The V-Sekai team will develop and maintain this launcher backend.
 
 #### Further Reading
 
-- [**V-Sekai GitHub**](https://github.com/v-sekai) - Our repository showcasing VR experiences and developments with Godot Engine.
-- [**V-Sekai Game Repo**](https://github.com/v-sekai/v-sekai-game) - This repository hosts our open-source, community-centric VR game source code.
-- [**Desync**](https://github.com/folbricht/desync) - A tool being evaluated for its content synchronization capabilities as a possible fallback.
-
-This comprehensive design plan delineates a cohesive structure for a client-server architecture aimed at delivering seamless game updates and a high-quality user experience.
+- [**V-Sekai GitHub**](https://github.com/v-sekai) - Our efforts in VR using Godot Engine.
+- [**V-Sekai Game Repo**](https://github.com/v-sekai/v-sekai-game) - Our open-source VR and social experiences project.
+- [**Desync**](https://github.com/folbricht/desync) - Alternative casync implementation.
