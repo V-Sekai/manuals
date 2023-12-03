@@ -64,7 +64,7 @@ vsekai mode current
 # List all available modes.
 vsekai mode list
 
-# Always updates to the stable mode.
+# Always updates according to semantic versioning to the mode.
 ./headless-vsekai-v0.1.0.exe --update C:/v-sekai/launcher
 ./headless-vsekai-v0.1.1.exe --update C:/v-sekai/launcher
 ./headless-vsekai-v0.2.0.exe --update C:/v-sekai/launcher
