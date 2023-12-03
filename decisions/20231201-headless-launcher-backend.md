@@ -51,7 +51,16 @@ Use Elixir for concurrent services and CockroachDB on the server for data manage
 ```bash
 vsekai --help
 vsekai --version
-./headless-vsekai-v0.0.1-v0.05.exe --update C:/v-sekai/launcher
+# Switch to a different profile.
+vsekai profile switch --profile_name stable
+# Check the current profile.
+vsekai profile current
+# List all available profiles.
+vsekai profile list
+# Always updates to the stable profile.
+./headless-vsekai-v0.1.0.exe --update C:/v-sekai/launcher 
+./headless-vsekai-v0.1.1.exe --update C:/v-sekai/launcher
+./headless-vsekai-v0.2.0.exe --update C:/v-sekai/launcher
 # Pseudo code for update process
 check_launcher_folder()
 validate_manifest_file_and_version()
