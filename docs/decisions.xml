@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Sun, 03 Dec 2023 20:50:57 GMT</lastBuildDate>
+<lastBuildDate>Sun, 03 Dec 2023 21:19:24 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -66,7 +66,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 03 Dec 2023 20:50:57 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 21:19:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -159,7 +159,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231201-xr-hands-animation-node.html</guid>
-  <pubDate>Sun, 03 Dec 2023 20:50:57 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 21:19:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -188,6 +188,56 @@
 </section>
 <section id="strategy" class="level2">
 <h2 class="anchored" data-anchor-id="strategy">Strategy</h2>
+<p>The strategy for this proposal is to develop a headless backend launcher using Elixir and CockroachDB. The main components of the system will be:</p>
+<p>The Headless CLI will implement <code>desync</code> for data synchronization and provide commands for displaying help information, version information, switching modes, checking current mode, listing all available modes, and updating according to semantic versioning.</p>
+<p>The Updater Online Service will be a lightweight service that uses Elixir for handling web requests and CockroachDB for persistence. It will integrate the <code>desync</code> protocol and include error handling strategies for failed updates or data synchronization issues.</p>
+<p>The GUI Launcher will be designed using the Godot Engine and will also integrate the <code>desync</code> protocol. It will feature a basic visual setup with V-Sekai branding.</p>
+<p>The Game Sample will involve developing a basic visual sample with V-Sekai branding, planning for testing each component to ensure functionality, addressing security concerns including user data protection and secure updates, and discussing scalability potential with increasing users or larger game updates.</p>
+<p>The data model for this system will be in 6NF database normalization and will include:</p>
+<ul>
+<li>Modes Table</li>
+<li>ModeValidity Table</li>
+<li>Version Table</li>
+<li>VersionValidity Table</li>
+<li>UpdateProcess Table</li>
+<li>UpdateProcessValidity Table</li>
+</ul>
+<p>Each table will have its own schema module representing different aspects of the application such as modes, versions, and update processes.</p>
+</section>
+<section id="upside" class="level2">
+<h2 class="anchored" data-anchor-id="upside">Upside</h2>
+<p>This system promotes seamless gaming with high performance and reliability from Elixir and CockroachDB.</p>
+</section>
+<section id="downside" class="level2">
+<h2 class="anchored" data-anchor-id="downside">Downside</h2>
+<p>Technology integration may lead to complex issues and compatibility challenges.</p>
+</section>
+<section id="road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="road-not-taken">Road Not Taken</h2>
+<p>External updaters and manual patches were dismissed for their demanding nature.</p>
+</section>
+<section id="infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
+<p>Design will allow manual update initiation for situations like limited bandwidth.</p>
+</section>
+<section id="core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="core-and-done-by-us">Core and Done by Us?</h2>
+<p>The V-Sekai team will develop and maintain this launcher backend. A detailed maintenance plan will be provided.</p>
+</section>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
+<p>A comprehensive documentation will be created for understanding the system and onboarding new team members.</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://github.com/v-sekai"><strong>V-Sekai GitHub</strong></a> - Our efforts in VR using Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game"><strong>V-Sekai Game Repo</strong></a> - Our open-source VR and social experiences project.</li>
+<li><a href="https://github.com/folbricht/desync"><strong>Desync</strong></a> - Alternative casync implementation.</li>
+</ul>
+</section>
+<section id="code-snippets" class="level2">
+<h2 class="anchored" data-anchor-id="code-snippets">Code Snippets</h2>
 <pre class="mermaid"><code>stateDiagram-v2
     [*] --&gt; Idle
     Idle --&gt; CheckForUpdates : Update Triggered
@@ -322,10 +372,8 @@ font-style: inherit;">setup_registry_values()</span></span></code></pre></div>
 <li>Discuss scalability potential with increasing users or larger game updates.</li>
 </ul></li>
 </ol>
-<section id="data-model" class="level3">
-<h3 class="anchored" data-anchor-id="data-model">Data model</h3>
-<p>CockroachDB is a distributed SQL database that is designed for cloud services. It supports JSONB data type which can be used to store array or map data.</p>
-<p>To support all the features and normalize 6NF the tables, we need to create several tables:</p>
+<section id="data-model-in-6nf-database-normalization" class="level3">
+<h3 class="anchored" data-anchor-id="data-model-in-6nf-database-normalization">Data model in 6NF database normalization</h3>
 <ol type="1">
 <li><strong>Modes Table</strong></li>
 </ol>
@@ -340,7 +388,22 @@ background-color: null;
 font-style: inherit;">Mode</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">do</span></span>
-<span id="cb3-2">  <span class="im" style="color: #00769E;
+<span id="cb3-2">  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">@moduledoc """</span></span>
+<span id="cb3-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">  A schema module representing the modes in the application.</span></span>
+<span id="cb3-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">  Each mode has a unique ID and a name.</span></span>
+<span id="cb3-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">  </span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">"""</span></span>
+<span id="cb3-6"></span>
+<span id="cb3-7">  <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">use</span> <span class="cn" style="color: #8f5902;
 background-color: null;
@@ -349,13 +412,18 @@ background-color: null;
 font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">Schema</span></span>
-<span id="cb3-3"></span>
-<span id="cb3-4">  schema <span class="st" style="color: #20794D;
+<span id="cb3-8"></span>
+<span id="cb3-9">  schema <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"modes"</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">do</span></span>
-<span id="cb3-5">    field <span class="va" style="color: #111111;
+<span id="cb3-10">    field <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:name</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:string</span></span>
+<span id="cb3-11">    field <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">:id</span>, <span class="cn" style="color: #8f5902;
 background-color: null;
@@ -372,44 +440,123 @@ background-color: null;
 font-style: inherit;">primary_key:</span> <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">true</span></span>
-<span id="cb3-6">    field <span class="va" style="color: #111111;
+<span id="cb3-12"></span>
+<span id="cb3-13">    has_one <span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">:name</span>, <span class="va" style="color: #111111;
+font-style: inherit;">:validity</span>, <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">:string</span></span>
-<span id="cb3-7">    field <span class="va" style="color: #111111;
+font-style: inherit;">VSekaiNebula</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">:is_current</span>, <span class="va" style="color: #111111;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">:boolean</span>, <span class="va" style="color: #111111;
+font-style: inherit;">ModeValidity</span></span>
+<span id="cb3-14"></span>
+<span id="cb3-15">    timestamps<span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">default:</span> <span class="cn" style="color: #8f5902;
+font-style: inherit;">()</span></span>
+<span id="cb3-16">  <span class="kw" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">false</span></span>
-<span id="cb3-8">    field <span class="va" style="color: #111111;
+font-style: inherit;">end</span></span>
+<span id="cb3-17"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">end</span></span></code></pre></div>
+<p><strong>ModeValidity Table</strong></p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb4-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">defmodule</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">VSekaiNebula</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">ModeValidity</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">do</span></span>
+<span id="cb4-2">  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">@moduledoc """</span></span>
+<span id="cb4-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">  A schema module representing the validity of each mode.</span></span>
+<span id="cb4-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">  It includes the valid</span>_<span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">from and valid</span>_<span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">to fields to specify the validity period of a mode.</span></span>
+<span id="cb4-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">  </span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">"""</span></span>
+<span id="cb4-6"></span>
+<span id="cb4-7">  <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">use</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Ecto</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Schema</span></span>
+<span id="cb4-8"></span>
+<span id="cb4-9">  schema <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mode_validities"</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">do</span></span>
+<span id="cb4-10">    field <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">:valid_from</span>, <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">:utc_datetime</span></span>
-<span id="cb3-9">    field <span class="va" style="color: #111111;
+<span id="cb4-11">    field <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">:valid_to</span>, <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">:utc_datetime</span></span>
-<span id="cb3-10"></span>
-<span id="cb3-11">    timestamps<span class="fu" style="color: #4758AB;
+<span id="cb4-12">    field <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:id</span>, <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Ecto</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">UUID</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">autogenerate:</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">true</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">primary_key:</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">true</span></span>
+<span id="cb4-13"></span>
+<span id="cb4-14">    belongs_to <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:mode</span>, <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">VSekaiNebula</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Mode</span></span>
+<span id="cb4-15"></span>
+<span id="cb4-16">    timestamps<span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">()</span></span>
-<span id="cb3-12">  <span class="kw" style="color: #003B4F;
+<span id="cb4-17">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">end</span></span>
-<span id="cb3-13"><span class="kw" style="color: #003B4F;
+<span id="cb4-18"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">end</span></span></code></pre></div>
 <ol start="2" type="1">
 <li><strong>Version Table</strong></li>
 </ol>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb4-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb5-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">defmodule</span> <span class="cn" style="color: #8f5902;
 background-color: null;
@@ -420,7 +567,30 @@ background-color: null;
 font-style: inherit;">Version</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">do</span></span>
-<span id="cb4-2">  <span class="im" style="color: #00769E;
+<span id="cb5-2">  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">@moduledoc """</span></span>
+<span id="cb5-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">  A schema module representing the versions of a product.</span></span>
+<span id="cb5-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">  Each version has a major</span>_<span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">version, minor</span>_<span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">version, patch</span>_<span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">version, tag, executable</span>_<span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">path, and a unique ID.</span></span>
+<span id="cb5-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">  </span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">"""</span></span>
+<span id="cb5-6"></span>
+<span id="cb5-7">  <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">use</span> <span class="cn" style="color: #8f5902;
 background-color: null;
@@ -429,13 +599,38 @@ background-color: null;
 font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">Schema</span></span>
-<span id="cb4-3"></span>
-<span id="cb4-4">  schema <span class="st" style="color: #20794D;
+<span id="cb5-8"></span>
+<span id="cb5-9">  schema <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"versions"</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">do</span></span>
-<span id="cb4-5">    field <span class="va" style="color: #111111;
+<span id="cb5-10">    field <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:major_version</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:integer</span></span>
+<span id="cb5-11">    field <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:minor_version</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:integer</span></span>
+<span id="cb5-12">    field <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:patch_version</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:integer</span></span>
+<span id="cb5-13">    field <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:tag</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:string</span></span>
+<span id="cb5-14">    field <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:executable_path</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:string</span></span>
+<span id="cb5-15">    field <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">:id</span>, <span class="cn" style="color: #8f5902;
 background-color: null;
@@ -452,40 +647,133 @@ background-color: null;
 font-style: inherit;">primary_key:</span> <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">true</span></span>
-<span id="cb4-6">    field <span class="va" style="color: #111111;
+<span id="cb5-16"></span>
+<span id="cb5-17">    belongs_to <span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">:version_number</span>, <span class="va" style="color: #111111;
+font-style: inherit;">:product</span>, <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">:string</span></span>
-<span id="cb4-7">    field <span class="va" style="color: #111111;
+font-style: inherit;">VSekaiNebula</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">:executable_path</span>, <span class="va" style="color: #111111;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">:string</span></span>
-<span id="cb4-8">    field <span class="va" style="color: #111111;
+font-style: inherit;">Product</span></span>
+<span id="cb5-18"></span>
+<span id="cb5-19">    has_one <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:validity</span>, <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">VSekaiNebula</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">VersionValidity</span></span>
+<span id="cb5-20"></span>
+<span id="cb5-21">    timestamps<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">()</span></span>
+<span id="cb5-22">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">end</span></span>
+<span id="cb5-23"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">end</span></span></code></pre></div>
+<p><strong>VersionValidity Table</strong></p>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb6-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">defmodule</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">VSekaiNebula</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">VersionValidity</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">do</span></span>
+<span id="cb6-2">  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">@moduledoc """</span></span>
+<span id="cb6-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">  A schema module representing the validity of each version.</span></span>
+<span id="cb6-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">  It includes the valid</span>_<span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">from and valid</span>_<span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">to fields to specify the validity period of a version.</span></span>
+<span id="cb6-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">  </span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">"""</span></span>
+<span id="cb6-6"></span>
+<span id="cb6-7">  <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">use</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Ecto</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Schema</span></span>
+<span id="cb6-8"></span>
+<span id="cb6-9">  schema <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"version_validities"</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">do</span></span>
+<span id="cb6-10">    field <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">:valid_from</span>, <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">:utc_datetime</span></span>
-<span id="cb4-9">    field <span class="va" style="color: #111111;
+<span id="cb6-11">    field <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">:valid_to</span>, <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">:utc_datetime</span></span>
-<span id="cb4-10"></span>
-<span id="cb4-11">    timestamps<span class="fu" style="color: #4758AB;
+<span id="cb6-12">    field <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:id</span>, <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Ecto</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">UUID</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">autogenerate:</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">true</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">primary_key:</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">true</span></span>
+<span id="cb6-13"></span>
+<span id="cb6-14">    belongs_to <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:version</span>, <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">VSekaiNebula</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Version</span></span>
+<span id="cb6-15"></span>
+<span id="cb6-16">    timestamps<span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">()</span></span>
-<span id="cb4-12">  <span class="kw" style="color: #003B4F;
+<span id="cb6-17">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">end</span></span>
-<span id="cb4-13"><span class="kw" style="color: #003B4F;
+<span id="cb6-18"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">end</span></span></code></pre></div>
 <ol start="3" type="1">
 <li><strong>Update Process Table</strong></li>
 </ol>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb5-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb7-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">defmodule</span> <span class="cn" style="color: #8f5902;
 background-color: null;
@@ -496,7 +784,36 @@ background-color: null;
 font-style: inherit;">UpdateProcess</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">do</span></span>
-<span id="cb5-2">  <span class="im" style="color: #00769E;
+<span id="cb7-2">  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">@moduledoc """</span></span>
+<span id="cb7-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">  A schema module representing the update process in the application.</span></span>
+<span id="cb7-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">  Each update process has a launcher</span>_<span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">folder, manifest</span>_<span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">file</span>_<span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">and</span>_<span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">version, files</span>_<span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">for</span>_<span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">update, registry</span>_<span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">values, and a unique ID.</span></span>
+<span id="cb7-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">  </span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">"""</span></span>
+<span id="cb7-6"></span>
+<span id="cb7-7">  <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">use</span> <span class="cn" style="color: #8f5902;
 background-color: null;
@@ -505,13 +822,45 @@ background-color: null;
 font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">Schema</span></span>
-<span id="cb5-3"></span>
-<span id="cb5-4">  schema <span class="st" style="color: #20794D;
+<span id="cb7-8"></span>
+<span id="cb7-9">  schema <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"update_processes"</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">do</span></span>
-<span id="cb5-5">    field <span class="va" style="color: #111111;
+<span id="cb7-10">    field <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:launcher_folder</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:string</span></span>
+<span id="cb7-11">    field <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:manifest_file_and_version</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:string</span></span>
+<span id="cb7-12">    field <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:files_for_update</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:array</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:string</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb7-13">    field <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:registry_values</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:map</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:string</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb7-14">    field <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">:id</span>, <span class="cn" style="color: #8f5902;
 background-color: null;
@@ -528,117 +877,128 @@ background-color: null;
 font-style: inherit;">primary_key:</span> <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">true</span></span>
-<span id="cb5-6">    field <span class="va" style="color: #111111;
+<span id="cb7-15"></span>
+<span id="cb7-16">    has_one <span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">:launcher_folder</span>, <span class="va" style="color: #111111;
+font-style: inherit;">:validity</span>, <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">:string</span></span>
-<span id="cb5-7">    field <span class="va" style="color: #111111;
+font-style: inherit;">VSekaiNebula</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">:manifest_file_and_version</span>, <span class="va" style="color: #111111;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">:string</span></span>
-<span id="cb5-8">    field <span class="va" style="color: #111111;
+font-style: inherit;">UpdateProcessValidity</span></span>
+<span id="cb7-17"></span>
+<span id="cb7-18">    timestamps<span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">:files_for_update</span>, <span class="fu" style="color: #4758AB;
+font-style: inherit;">()</span></span>
+<span id="cb7-19">  <span class="kw" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">{</span><span class="va" style="color: #111111;
+font-style: inherit;">end</span></span>
+<span id="cb7-20"><span class="kw" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">:array</span>, <span class="va" style="color: #111111;
+font-style: inherit;">end</span></span></code></pre></div>
+<p><strong>UpdateProcessValidity Table</strong></p>
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb8-1"><span class="kw" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">:string</span><span class="fu" style="color: #4758AB;
+font-style: inherit;">defmodule</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">}</span></span>
-<span id="cb5-9">    field <span class="va" style="color: #111111;
+font-style: inherit;">VSekaiNebula</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">:temp_download_path</span>, <span class="va" style="color: #111111;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">:string</span></span>
-<span id="cb5-10">    field <span class="va" style="color: #111111;
+font-style: inherit;">UpdateProcessValidity</span> <span class="kw" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">:old_files_path</span>, <span class="fu" style="color: #4758AB;
+font-style: inherit;">do</span></span>
+<span id="cb8-2">  <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">{</span><span class="va" style="color: #111111;
+font-style: inherit;">@moduledoc """</span></span>
+<span id="cb8-3"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">:array</span>, <span class="va" style="color: #111111;
+font-style: inherit;">  A schema module representing the validity of each update process.</span></span>
+<span id="cb8-4"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">:string</span><span class="fu" style="color: #4758AB;
+font-style: inherit;">  It includes the valid</span>_<span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">}</span></span>
-<span id="cb5-11">    field <span class="va" style="color: #111111;
+font-style: inherit;">from and valid</span>_<span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">:registry_values</span>, <span class="fu" style="color: #4758AB;
+font-style: inherit;">to fields to specify the validity period of an update process.</span></span>
+<span id="cb8-5"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">{</span><span class="va" style="color: #111111;
+font-style: inherit;">  </span><span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">:map</span>, <span class="va" style="color: #111111;
+font-style: inherit;">"""</span></span>
+<span id="cb8-6"></span>
+<span id="cb8-7">  <span class="im" style="color: #00769E;
 background-color: null;
-font-style: inherit;">:string</span><span class="fu" style="color: #4758AB;
+font-style: inherit;">use</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">}</span></span>
-<span id="cb5-12">    field <span class="va" style="color: #111111;
+font-style: inherit;">Ecto</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Schema</span></span>
+<span id="cb8-8"></span>
+<span id="cb8-9">  schema <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"update_process_validities"</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">do</span></span>
+<span id="cb8-10">    field <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">:valid_from</span>, <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">:utc_datetime</span></span>
-<span id="cb5-13">    field <span class="va" style="color: #111111;
+<span id="cb8-11">    field <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">:valid_to</span>, <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">:utc_datetime</span></span>
-<span id="cb5-14"></span>
-<span id="cb5-15">    timestamps<span class="fu" style="color: #4758AB;
+<span id="cb8-12">    field <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:id</span>, <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Ecto</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">UUID</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">autogenerate:</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">true</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">primary_key:</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">true</span></span>
+<span id="cb8-13"></span>
+<span id="cb8-14">    belongs_to <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:update_process</span>, <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">VSekaiNebula</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">UpdateProcess</span></span>
+<span id="cb8-15"></span>
+<span id="cb8-16">    timestamps<span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">()</span></span>
-<span id="cb5-16">  <span class="kw" style="color: #003B4F;
+<span id="cb8-17">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">end</span></span>
-<span id="cb5-17"><span class="kw" style="color: #003B4F;
+<span id="cb8-18"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">end</span></span></code></pre></div>
-<p>In these schemas, <code>valid_from</code> and <code>valid_to</code> fields are used to track the period during which a particular record is valid. This allows you to keep a history of changes over time.</p>
-<p>The <code>{:array, :string}</code> and <code>{:map, :string}</code> data types are used for <code>files_for_update</code>, <code>old_files_path</code>, and <code>registry_values</code> to store array or map data.</p>
-</section>
-</section>
-<section id="upside" class="level2">
-<h2 class="anchored" data-anchor-id="upside">Upside</h2>
-<p>This system promotes seamless gaming with high performance and reliability from Elixir and CockroachDB.</p>
-</section>
-<section id="downside" class="level2">
-<h2 class="anchored" data-anchor-id="downside">Downside</h2>
-<p>Technology integration may lead to complex issues and compatibility challenges.</p>
-</section>
-<section id="road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="road-not-taken">Road Not Taken</h2>
-<p>External updaters and manual patches were dismissed for their demanding nature.</p>
-</section>
-<section id="infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
-<p>Design will allow manual update initiation for situations like limited bandwidth.</p>
-</section>
-<section id="core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="core-and-done-by-us">Core and Done by Us?</h2>
-<p>The V-Sekai team will develop and maintain this launcher backend. A detailed maintenance plan will be provided.</p>
-</section>
-<section id="documentation" class="level2">
-<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
-<p>A comprehensive documentation will be created for understanding the system and onboarding new team members.</p>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ul>
-<li><a href="https://github.com/v-sekai"><strong>V-Sekai GitHub</strong></a> - Our efforts in VR using Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game"><strong>V-Sekai Game Repo</strong></a> - Our open-source VR and social experiences project.</li>
-<li><a href="https://github.com/folbricht/desync"><strong>Desync</strong></a> - Alternative casync implementation.</li>
-</ul>
 
 
+</section>
 </section>
 </section>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231201-headless-launcher-backend.html</guid>
-  <pubDate>Sun, 03 Dec 2023 20:50:57 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 21:19:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -736,7 +1096,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231127-performance-test.html</guid>
-  <pubDate>Sun, 03 Dec 2023 20:50:57 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 21:19:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -827,7 +1187,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231126-v-sekai-report.html</guid>
-  <pubDate>Sun, 03 Dec 2023 20:50:57 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 21:19:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -956,7 +1316,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231125-v-sekai-report.html</guid>
-  <pubDate>Sun, 03 Dec 2023 20:50:57 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 21:19:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1021,7 +1381,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-upload-creative-commons-fbx-test-files.html</guid>
-  <pubDate>Sun, 03 Dec 2023 20:50:57 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 21:19:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1087,7 +1447,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-maintain-svgcleaner.html</guid>
-  <pubDate>Sun, 03 Dec 2023 20:50:57 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 21:19:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1152,7 +1512,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-elixir-definition-of-godot-types.html</guid>
-  <pubDate>Sun, 03 Dec 2023 20:50:57 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 21:19:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1236,7 +1596,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231112-validation-service.html</guid>
-  <pubDate>Sun, 03 Dec 2023 20:50:57 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 21:19:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1312,7 +1672,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231112-archive-projects.html</guid>
-  <pubDate>Sun, 03 Dec 2023 20:50:57 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 21:19:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1416,7 +1776,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231111-ayon-evaluation.html</guid>
-  <pubDate>Sun, 03 Dec 2023 20:50:57 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 21:19:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1583,7 +1943,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-v-sekai-dependencies.html</guid>
-  <pubDate>Sun, 03 Dec 2023 20:50:57 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 21:19:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1658,7 +2018,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-efficient-llm-training.html</guid>
-  <pubDate>Sun, 03 Dec 2023 20:50:57 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 21:19:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1730,7 +2090,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-blender-manual-t-pose.html</guid>
-  <pubDate>Sun, 03 Dec 2023 20:50:57 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 21:19:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1804,7 +2164,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-better-pipeline-tools.html</guid>
-  <pubDate>Sun, 03 Dec 2023 20:50:57 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 21:19:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1879,7 +2239,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-ai-based-outlier-detection.html</guid>
-  <pubDate>Sun, 03 Dec 2023 20:50:57 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 21:19:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1956,7 +2316,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-discord-polygonjs-generator.html</guid>
-  <pubDate>Sun, 03 Dec 2023 20:50:57 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 21:19:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2060,7 +2420,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-changelog.html</guid>
-  <pubDate>Sun, 03 Dec 2023 20:50:57 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 21:19:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2144,7 +2504,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-v-sekai-chat-bot.html</guid>
-  <pubDate>Sun, 03 Dec 2023 20:50:57 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 21:19:24 GMT</pubDate>
 </item>
 </channel>
 </rss>

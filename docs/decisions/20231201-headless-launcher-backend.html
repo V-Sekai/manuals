@@ -149,10 +149,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
   <li><a href="#backdrop" id="toc-backdrop" class="nav-link" data-scroll-target="#backdrop">Backdrop</a></li>
   <li><a href="#challenge" id="toc-challenge" class="nav-link" data-scroll-target="#challenge">Challenge</a></li>
-  <li><a href="#strategy" id="toc-strategy" class="nav-link" data-scroll-target="#strategy">Strategy</a>
-  <ul class="collapse">
-  <li><a href="#data-model" id="toc-data-model" class="nav-link" data-scroll-target="#data-model">Data model</a></li>
-  </ul></li>
+  <li><a href="#strategy" id="toc-strategy" class="nav-link" data-scroll-target="#strategy">Strategy</a></li>
   <li><a href="#upside" id="toc-upside" class="nav-link" data-scroll-target="#upside">Upside</a></li>
   <li><a href="#downside" id="toc-downside" class="nav-link" data-scroll-target="#downside">Downside</a></li>
   <li><a href="#road-not-taken" id="toc-road-not-taken" class="nav-link" data-scroll-target="#road-not-taken">Road Not Taken</a></li>
@@ -160,6 +157,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#core-and-done-by-us" id="toc-core-and-done-by-us" class="nav-link" data-scroll-target="#core-and-done-by-us">Core and Done by Us?</a></li>
   <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  <li><a href="#code-snippets" id="toc-code-snippets" class="nav-link" data-scroll-target="#code-snippets">Code Snippets</a>
+  <ul class="collapse">
+  <li><a href="#data-model-in-6nf-database-normalization" id="toc-data-model-in-6nf-database-normalization" class="nav-link" data-scroll-target="#data-model-in-6nf-database-normalization">Data model in 6NF database normalization</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20231201-headless-launcher-backend.md" class="toc-action">Edit this page</a></p></div></div></nav>
@@ -189,6 +190,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="strategy" class="level2">
 <h2 class="anchored" data-anchor-id="strategy">Strategy</h2>
+<p>The strategy for this proposal is to develop a headless backend launcher using Elixir and CockroachDB. The main components of the system will be:</p>
+<p>The Headless CLI will implement <code>desync</code> for data synchronization and provide commands for displaying help information, version information, switching modes, checking current mode, listing all available modes, and updating according to semantic versioning.</p>
+<p>The Updater Online Service will be a lightweight service that uses Elixir for handling web requests and CockroachDB for persistence. It will integrate the <code>desync</code> protocol and include error handling strategies for failed updates or data synchronization issues.</p>
+<p>The GUI Launcher will be designed using the Godot Engine and will also integrate the <code>desync</code> protocol. It will feature a basic visual setup with V-Sekai branding.</p>
+<p>The Game Sample will involve developing a basic visual sample with V-Sekai branding, planning for testing each component to ensure functionality, addressing security concerns including user data protection and secure updates, and discussing scalability potential with increasing users or larger game updates.</p>
+<p>The data model for this system will be in 6NF database normalization and will include:</p>
+<ul>
+<li>Modes Table</li>
+<li>ModeValidity Table</li>
+<li>Version Table</li>
+<li>VersionValidity Table</li>
+<li>UpdateProcess Table</li>
+<li>UpdateProcessValidity Table</li>
+</ul>
+<p>Each table will have its own schema module representing different aspects of the application such as modes, versions, and update processes.</p>
+</section>
+<section id="upside" class="level2">
+<h2 class="anchored" data-anchor-id="upside">Upside</h2>
+<p>This system promotes seamless gaming with high performance and reliability from Elixir and CockroachDB.</p>
+</section>
+<section id="downside" class="level2">
+<h2 class="anchored" data-anchor-id="downside">Downside</h2>
+<p>Technology integration may lead to complex issues and compatibility challenges.</p>
+</section>
+<section id="road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="road-not-taken">Road Not Taken</h2>
+<p>External updaters and manual patches were dismissed for their demanding nature.</p>
+</section>
+<section id="infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
+<p>Design will allow manual update initiation for situations like limited bandwidth.</p>
+</section>
+<section id="core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="core-and-done-by-us">Core and Done by Us?</h2>
+<p>The V-Sekai team will develop and maintain this launcher backend. A detailed maintenance plan will be provided.</p>
+</section>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
+<p>A comprehensive documentation will be created for understanding the system and onboarding new team members.</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://github.com/v-sekai"><strong>V-Sekai GitHub</strong></a> - Our efforts in VR using Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game"><strong>V-Sekai Game Repo</strong></a> - Our open-source VR and social experiences project.</li>
+<li><a href="https://github.com/folbricht/desync"><strong>Desync</strong></a> - Alternative casync implementation.</li>
+</ul>
+</section>
+<section id="code-snippets" class="level2">
+<h2 class="anchored" data-anchor-id="code-snippets">Code Snippets</h2>
 <pre class="mermaid"><code>stateDiagram-v2
     [*] --&gt; Idle
     Idle --&gt; CheckForUpdates : Update Triggered
@@ -269,99 +320,137 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Discuss scalability potential with increasing users or larger game updates.</li>
 </ul></li>
 </ol>
-<section id="data-model" class="level3">
-<h3 class="anchored" data-anchor-id="data-model">Data model</h3>
-<p>CockroachDB is a distributed SQL database that is designed for cloud services. It supports JSONB data type which can be used to store array or map data.</p>
-<p>To support all the features and normalize 6NF the tables, we need to create several tables:</p>
+<section id="data-model-in-6nf-database-normalization" class="level3">
+<h3 class="anchored" data-anchor-id="data-model-in-6nf-database-normalization">Data model in 6NF database normalization</h3>
 <ol type="1">
 <li><strong>Modes Table</strong></li>
 </ol>
 <div class="sourceCode" id="cb3"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">defmodule</span> <span class="cn">VSekaiNebula</span><span class="op">.</span><span class="cn">Mode</span> <span class="kw">do</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="im">use</span> <span class="cn">Ecto</span><span class="op">.</span><span class="cn">Schema</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  schema <span class="st">"modes"</span> <span class="kw">do</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:id</span>, <span class="cn">Ecto</span><span class="op">.</span><span class="cn">UUID</span>, <span class="va">autogenerate:</span> <span class="cn">true</span>, <span class="va">primary_key:</span> <span class="cn">true</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:name</span>, <span class="va">:string</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:is_current</span>, <span class="va">:boolean</span>, <span class="va">default:</span> <span class="cn">false</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:valid_from</span>, <span class="va">:utc_datetime</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:valid_to</span>, <span class="va">:utc_datetime</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    timestamps<span class="fu">()</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">@moduledoc """</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">  A schema module representing the modes in the application.</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">  Each mode has a unique ID and a name.</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">  </span><span class="ot">"""</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="im">use</span> <span class="cn">Ecto</span><span class="op">.</span><span class="cn">Schema</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  schema <span class="st">"modes"</span> <span class="kw">do</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:name</span>, <span class="va">:string</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:id</span>, <span class="cn">Ecto</span><span class="op">.</span><span class="cn">UUID</span>, <span class="va">autogenerate:</span> <span class="cn">true</span>, <span class="va">primary_key:</span> <span class="cn">true</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    has_one <span class="va">:validity</span>, <span class="cn">VSekaiNebula</span><span class="op">.</span><span class="cn">ModeValidity</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    timestamps<span class="fu">()</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>ModeValidity Table</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">defmodule</span> <span class="cn">VSekaiNebula</span><span class="op">.</span><span class="cn">ModeValidity</span> <span class="kw">do</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">@moduledoc """</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">  A schema module representing the validity of each mode.</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">  It includes the valid</span>_<span class="co">from and valid</span>_<span class="co">to fields to specify the validity period of a mode.</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">  </span><span class="ot">"""</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="im">use</span> <span class="cn">Ecto</span><span class="op">.</span><span class="cn">Schema</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  schema <span class="st">"mode_validities"</span> <span class="kw">do</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:valid_from</span>, <span class="va">:utc_datetime</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:valid_to</span>, <span class="va">:utc_datetime</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:id</span>, <span class="cn">Ecto</span><span class="op">.</span><span class="cn">UUID</span>, <span class="va">autogenerate:</span> <span class="cn">true</span>, <span class="va">primary_key:</span> <span class="cn">true</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    belongs_to <span class="va">:mode</span>, <span class="cn">VSekaiNebula</span><span class="op">.</span><span class="cn">Mode</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    timestamps<span class="fu">()</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="2" type="1">
 <li><strong>Version Table</strong></li>
 </ol>
-<div class="sourceCode" id="cb4"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">defmodule</span> <span class="cn">VSekaiNebula</span><span class="op">.</span><span class="cn">Version</span> <span class="kw">do</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="im">use</span> <span class="cn">Ecto</span><span class="op">.</span><span class="cn">Schema</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  schema <span class="st">"versions"</span> <span class="kw">do</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:id</span>, <span class="cn">Ecto</span><span class="op">.</span><span class="cn">UUID</span>, <span class="va">autogenerate:</span> <span class="cn">true</span>, <span class="va">primary_key:</span> <span class="cn">true</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:version_number</span>, <span class="va">:string</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:executable_path</span>, <span class="va">:string</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:valid_from</span>, <span class="va">:utc_datetime</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:valid_to</span>, <span class="va">:utc_datetime</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    timestamps<span class="fu">()</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">defmodule</span> <span class="cn">VSekaiNebula</span><span class="op">.</span><span class="cn">Version</span> <span class="kw">do</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">@moduledoc """</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">  A schema module representing the versions of a product.</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">  Each version has a major</span>_<span class="co">version, minor</span>_<span class="co">version, patch</span>_<span class="co">version, tag, executable</span>_<span class="co">path, and a unique ID.</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">  </span><span class="ot">"""</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="im">use</span> <span class="cn">Ecto</span><span class="op">.</span><span class="cn">Schema</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  schema <span class="st">"versions"</span> <span class="kw">do</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:major_version</span>, <span class="va">:integer</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:minor_version</span>, <span class="va">:integer</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:patch_version</span>, <span class="va">:integer</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:tag</span>, <span class="va">:string</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:executable_path</span>, <span class="va">:string</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:id</span>, <span class="cn">Ecto</span><span class="op">.</span><span class="cn">UUID</span>, <span class="va">autogenerate:</span> <span class="cn">true</span>, <span class="va">primary_key:</span> <span class="cn">true</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    belongs_to <span class="va">:product</span>, <span class="cn">VSekaiNebula</span><span class="op">.</span><span class="cn">Product</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    has_one <span class="va">:validity</span>, <span class="cn">VSekaiNebula</span><span class="op">.</span><span class="cn">VersionValidity</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    timestamps<span class="fu">()</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>VersionValidity Table</strong></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">defmodule</span> <span class="cn">VSekaiNebula</span><span class="op">.</span><span class="cn">VersionValidity</span> <span class="kw">do</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">@moduledoc """</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">  A schema module representing the validity of each version.</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">  It includes the valid</span>_<span class="co">from and valid</span>_<span class="co">to fields to specify the validity period of a version.</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">  </span><span class="ot">"""</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="im">use</span> <span class="cn">Ecto</span><span class="op">.</span><span class="cn">Schema</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  schema <span class="st">"version_validities"</span> <span class="kw">do</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:valid_from</span>, <span class="va">:utc_datetime</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:valid_to</span>, <span class="va">:utc_datetime</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:id</span>, <span class="cn">Ecto</span><span class="op">.</span><span class="cn">UUID</span>, <span class="va">autogenerate:</span> <span class="cn">true</span>, <span class="va">primary_key:</span> <span class="cn">true</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    belongs_to <span class="va">:version</span>, <span class="cn">VSekaiNebula</span><span class="op">.</span><span class="cn">Version</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    timestamps<span class="fu">()</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="3" type="1">
 <li><strong>Update Process Table</strong></li>
 </ol>
-<div class="sourceCode" id="cb5"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">defmodule</span> <span class="cn">VSekaiNebula</span><span class="op">.</span><span class="cn">UpdateProcess</span> <span class="kw">do</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="im">use</span> <span class="cn">Ecto</span><span class="op">.</span><span class="cn">Schema</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  schema <span class="st">"update_processes"</span> <span class="kw">do</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:id</span>, <span class="cn">Ecto</span><span class="op">.</span><span class="cn">UUID</span>, <span class="va">autogenerate:</span> <span class="cn">true</span>, <span class="va">primary_key:</span> <span class="cn">true</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:launcher_folder</span>, <span class="va">:string</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:manifest_file_and_version</span>, <span class="va">:string</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:files_for_update</span>, <span class="fu">{</span><span class="va">:array</span>, <span class="va">:string</span><span class="fu">}</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:temp_download_path</span>, <span class="va">:string</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:old_files_path</span>, <span class="fu">{</span><span class="va">:array</span>, <span class="va">:string</span><span class="fu">}</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:registry_values</span>, <span class="fu">{</span><span class="va">:map</span>, <span class="va">:string</span><span class="fu">}</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:valid_from</span>, <span class="va">:utc_datetime</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:valid_to</span>, <span class="va">:utc_datetime</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    timestamps<span class="fu">()</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>In these schemas, <code>valid_from</code> and <code>valid_to</code> fields are used to track the period during which a particular record is valid. This allows you to keep a history of changes over time.</p>
-<p>The <code>{:array, :string}</code> and <code>{:map, :string}</code> data types are used for <code>files_for_update</code>, <code>old_files_path</code>, and <code>registry_values</code> to store array or map data.</p>
-</section>
-</section>
-<section id="upside" class="level2">
-<h2 class="anchored" data-anchor-id="upside">Upside</h2>
-<p>This system promotes seamless gaming with high performance and reliability from Elixir and CockroachDB.</p>
-</section>
-<section id="downside" class="level2">
-<h2 class="anchored" data-anchor-id="downside">Downside</h2>
-<p>Technology integration may lead to complex issues and compatibility challenges.</p>
-</section>
-<section id="road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="road-not-taken">Road Not Taken</h2>
-<p>External updaters and manual patches were dismissed for their demanding nature.</p>
-</section>
-<section id="infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
-<p>Design will allow manual update initiation for situations like limited bandwidth.</p>
-</section>
-<section id="core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="core-and-done-by-us">Core and Done by Us?</h2>
-<p>The V-Sekai team will develop and maintain this launcher backend. A detailed maintenance plan will be provided.</p>
-</section>
-<section id="documentation" class="level2">
-<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
-<p>A comprehensive documentation will be created for understanding the system and onboarding new team members.</p>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ul>
-<li><a href="https://github.com/v-sekai"><strong>V-Sekai GitHub</strong></a> - Our efforts in VR using Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game"><strong>V-Sekai Game Repo</strong></a> - Our open-source VR and social experiences project.</li>
-<li><a href="https://github.com/folbricht/desync"><strong>Desync</strong></a> - Alternative casync implementation.</li>
-</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">defmodule</span> <span class="cn">VSekaiNebula</span><span class="op">.</span><span class="cn">UpdateProcess</span> <span class="kw">do</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">@moduledoc """</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">  A schema module representing the update process in the application.</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">  Each update process has a launcher</span>_<span class="co">folder, manifest</span>_<span class="co">file</span>_<span class="co">and</span>_<span class="co">version, files</span>_<span class="co">for</span>_<span class="co">update, registry</span>_<span class="co">values, and a unique ID.</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">  </span><span class="ot">"""</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="im">use</span> <span class="cn">Ecto</span><span class="op">.</span><span class="cn">Schema</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  schema <span class="st">"update_processes"</span> <span class="kw">do</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:launcher_folder</span>, <span class="va">:string</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:manifest_file_and_version</span>, <span class="va">:string</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:files_for_update</span>, <span class="fu">{</span><span class="va">:array</span>, <span class="va">:string</span><span class="fu">}</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:registry_values</span>, <span class="fu">{</span><span class="va">:map</span>, <span class="va">:string</span><span class="fu">}</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:id</span>, <span class="cn">Ecto</span><span class="op">.</span><span class="cn">UUID</span>, <span class="va">autogenerate:</span> <span class="cn">true</span>, <span class="va">primary_key:</span> <span class="cn">true</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    has_one <span class="va">:validity</span>, <span class="cn">VSekaiNebula</span><span class="op">.</span><span class="cn">UpdateProcessValidity</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    timestamps<span class="fu">()</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>UpdateProcessValidity Table</strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">defmodule</span> <span class="cn">VSekaiNebula</span><span class="op">.</span><span class="cn">UpdateProcessValidity</span> <span class="kw">do</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">@moduledoc """</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">  A schema module representing the validity of each update process.</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">  It includes the valid</span>_<span class="co">from and valid</span>_<span class="co">to fields to specify the validity period of an update process.</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">  </span><span class="ot">"""</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="im">use</span> <span class="cn">Ecto</span><span class="op">.</span><span class="cn">Schema</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  schema <span class="st">"update_process_validities"</span> <span class="kw">do</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:valid_from</span>, <span class="va">:utc_datetime</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:valid_to</span>, <span class="va">:utc_datetime</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:id</span>, <span class="cn">Ecto</span><span class="op">.</span><span class="cn">UUID</span>, <span class="va">autogenerate:</span> <span class="cn">true</span>, <span class="va">primary_key:</span> <span class="cn">true</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    belongs_to <span class="va">:update_process</span>, <span class="cn">VSekaiNebula</span><span class="op">.</span><span class="cn">UpdateProcess</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    timestamps<span class="fu">()</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 </section>
 </section>
 
