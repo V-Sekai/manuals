@@ -248,3 +248,32 @@ defmodule VSekaiNebula.UpdateProcess do
   # TODO changeset/2
 end
 ```
+
+**CDN Table**
+
+Here is how you can define a CDN table using Ecto.Schema in Elixir:
+
+```elixir
+defmodule MyApp.CDN do
+  @moduledoc """
+  A schema module representing the CDN in the application.
+  Each CDN has a unique ID, name, URI, last checked on date, region, updated on date and created on date.
+  """
+
+  use Ecto.Schema
+
+  import Ecto.Changeset
+
+  schema "cdn" do
+    field :uid, :string
+    field :name, :string
+    field :uri, :string
+    field :last_checked_on, :utc_datetime
+    field :region, :string
+
+    timestamps()
+  end
+
+  # TODO changeset/2
+end
+```
