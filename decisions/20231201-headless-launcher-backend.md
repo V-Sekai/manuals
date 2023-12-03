@@ -142,7 +142,7 @@ setup_registry_values()
    - Address security concerns, including user data protection and secure updates.
    - Discuss scalability potential with increasing users or larger game updates.
 
-### Data model in 6NF database normalization
+### Data model in the database
 
 1. **Modes Table**
 
