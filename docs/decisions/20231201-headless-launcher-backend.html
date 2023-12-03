@@ -149,7 +149,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
   <li><a href="#backdrop" id="toc-backdrop" class="nav-link" data-scroll-target="#backdrop">Backdrop</a></li>
   <li><a href="#challenge" id="toc-challenge" class="nav-link" data-scroll-target="#challenge">Challenge</a></li>
-  <li><a href="#strategy" id="toc-strategy" class="nav-link" data-scroll-target="#strategy">Strategy</a></li>
+  <li><a href="#strategy" id="toc-strategy" class="nav-link" data-scroll-target="#strategy">Strategy</a>
+  <ul class="collapse">
+  <li><a href="#data-model" id="toc-data-model" class="nav-link" data-scroll-target="#data-model">Data model</a></li>
+  <li><a href="#cockroachdb" id="toc-cockroachdb" class="nav-link" data-scroll-target="#cockroachdb">CockroachDB</a></li>
+  <li><a href="#data-model-1" id="toc-data-model-1" class="nav-link" data-scroll-target="#data-model-1">Data Model</a></li>
+  </ul></li>
   <li><a href="#upside" id="toc-upside" class="nav-link" data-scroll-target="#upside">Upside</a></li>
   <li><a href="#downside" id="toc-downside" class="nav-link" data-scroll-target="#downside">Downside</a></li>
   <li><a href="#road-not-taken" id="toc-road-not-taken" class="nav-link" data-scroll-target="#road-not-taken">Road Not Taken</a></li>
@@ -266,6 +271,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Discuss scalability potential with increasing users or larger game updates.</li>
 </ul></li>
 </ol>
+<section id="data-model" class="level3">
+<h3 class="anchored" data-anchor-id="data-model">Data model</h3>
+<p>Sure, here’s the updated markdown:</p>
+</section>
+<section id="cockroachdb" class="level3">
+<h3 class="anchored" data-anchor-id="cockroachdb">CockroachDB</h3>
+<p>CockroachDB is a distributed SQL database that is designed for cloud services. It supports JSONB data type which can be used to store array or map data.</p>
+</section>
+<section id="data-model-1" class="level3">
+<h3 class="anchored" data-anchor-id="data-model-1">Data Model</h3>
+<p>To support all the features and normalize 6NF the tables, we need to create several tables:</p>
+<ol type="1">
+<li><strong>Modes Table</strong></li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">defmodule</span> <span class="cn">MyApp</span><span class="op">.</span><span class="cn">Mode</span> <span class="kw">do</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="im">use</span> <span class="cn">Ecto</span><span class="op">.</span><span class="cn">Schema</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  schema <span class="st">"modes"</span> <span class="kw">do</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:name</span>, <span class="va">:string</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:is_current</span>, <span class="va">:boolean</span>, <span class="va">default:</span> <span class="cn">false</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:valid_from</span>, <span class="va">:utc_datetime</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:valid_to</span>, <span class="va">:utc_datetime</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    timestamps<span class="fu">()</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li><strong>Version Table</strong></li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">defmodule</span> <span class="cn">MyApp</span><span class="op">.</span><span class="cn">Version</span> <span class="kw">do</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="im">use</span> <span class="cn">Ecto</span><span class="op">.</span><span class="cn">Schema</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  schema <span class="st">"versions"</span> <span class="kw">do</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:version_number</span>, <span class="va">:string</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:executable_path</span>, <span class="va">:string</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:valid_from</span>, <span class="va">:utc_datetime</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:valid_to</span>, <span class="va">:utc_datetime</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    timestamps<span class="fu">()</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li><strong>Update Process Table</strong></li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">defmodule</span> <span class="cn">MyApp</span><span class="op">.</span><span class="cn">UpdateProcess</span> <span class="kw">do</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="im">use</span> <span class="cn">Ecto</span><span class="op">.</span><span class="cn">Schema</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  schema <span class="st">"update_processes"</span> <span class="kw">do</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:launcher_folder</span>, <span class="va">:string</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:manifest_file_and_version</span>, <span class="va">:string</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:files_for_update</span>, <span class="fu">{</span><span class="va">:array</span>, <span class="va">:string</span><span class="fu">}</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:temp_download_path</span>, <span class="va">:string</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:old_files_path</span>, <span class="fu">{</span><span class="va">:array</span>, <span class="va">:string</span><span class="fu">}</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:registry_values</span>, <span class="fu">{</span><span class="va">:map</span>, <span class="va">:string</span><span class="fu">}</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:valid_from</span>, <span class="va">:utc_datetime</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:valid_to</span>, <span class="va">:utc_datetime</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    timestamps<span class="fu">()</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In these schemas, <code>valid_from</code> and <code>valid_to</code> fields are used to track the period during which a particular record is valid. This allows you to keep a history of changes over time.</p>
+<p>The <code>{:array, :string}</code> and <code>{:map, :string}</code> data types are used for <code>files_for_update</code>, <code>old_files_path</code>, and <code>registry_values</code> to store array or map data.</p>
+</section>
 </section>
 <section id="upside" class="level2">
 <h2 class="anchored" data-anchor-id="upside">Upside</h2>
