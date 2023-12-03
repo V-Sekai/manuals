@@ -182,6 +182,7 @@ defmodule VSekaiNebula.Version do
   schema "versions" do
     field :version, :string
     field :skip_update, :bool
+    field :manifest_file_uri, :string
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
 
     belongs_to :mode, VSekaiNebula.Mode
