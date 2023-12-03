@@ -451,24 +451,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb9"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">defmodule</span> <span class="cn">VSekaiNebula</span><span class="op">.</span><span class="cn">UpdateProcess</span> <span class="kw">do</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">@moduledoc """</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">  A schema module representing the update process in the application.</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">  Each update process has a launcher</span>_<span class="co">folder, manifest</span>_<span class="co">file</span>_<span class="co">and</span>_<span class="co">version, files</span>_<span class="co">for</span>_<span class="co">update, registry</span>_<span class="co">values, and a unique ID.</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">  Each update process has a manifest</span>_<span class="co">file</span>_<span class="co">and</span>_<span class="co">version, registry</span>_<span class="co">values, and a unique ID.</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">  </span><span class="ot">"""</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="im">use</span> <span class="cn">Ecto</span><span class="op">.</span><span class="cn">Schema</span></span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  schema <span class="st">"update_processes"</span> <span class="kw">do</span></span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:manifest_file_and_version</span>, <span class="va">:string</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:files_for_update</span>, <span class="fu">{</span><span class="va">:array</span>, <span class="va">:string</span><span class="fu">}</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:registry_values</span>, <span class="fu">{</span><span class="va">:map</span>, <span class="va">:string</span><span class="fu">}</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:id</span>, <span class="cn">Ecto</span><span class="op">.</span><span class="cn">UUID</span>, <span class="va">autogenerate:</span> <span class="cn">true</span>, <span class="va">primary_key:</span> <span class="cn">true</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    has_one <span class="va">:update_process_validity</span>, <span class="cn">VSekaiNebula</span><span class="op">.</span><span class="cn">UpdateProcessValidity</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    timestamps<span class="fu">()</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># </span><span class="al">TODO</span><span class="co"> changeset/2</span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:registry_values</span>, <span class="fu">{</span><span class="va">:map</span>, <span class="va">:string</span><span class="fu">}</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    field <span class="va">:id</span>, <span class="cn">Ecto</span><span class="op">.</span><span class="cn">UUID</span>, <span class="va">autogenerate:</span> <span class="cn">true</span>, <span class="va">primary_key:</span> <span class="cn">true</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    has_one <span class="va">:update_process_validity</span>, <span class="cn">VSekaiNebula</span><span class="op">.</span><span class="cn">UpdateProcessValidity</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    timestamps<span class="fu">()</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># </span><span class="al">TODO</span><span class="co"> changeset/2</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>UpdateProcessValidity Table</strong></p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">defmodule</span> <span class="cn">VSekaiNebula</span><span class="op">.</span><span class="cn">UpdateProcessValidity</span> <span class="kw">do</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">@moduledoc """</span></span>
