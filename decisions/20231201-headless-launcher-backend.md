@@ -57,33 +57,6 @@ vsekai portal check-status
 vsekai portal launch
 vsekai portal restart
 vsekai portal close
-vsekai sync start --source your_source_directory --destination your_destination_directory
-vsekai sync pause
-vsekai sync resume
-vsekai sync check-status
-vsekai sync extract --index your_index_file
-vsekai sync verify --store your_store_location
-vsekai sync list-chunks --index your_index_file
-vsekai sync make --blob your_blob --chunk_size min:avg:max
-vsekai sync mount-index --index your_index_file --mountpoint your_mountpoint
-vsekai sync tar --catar your_catar_file
-vsekai sync untar --catar your_catar_file
-vsekai sync prune --store your_store_location
-```
-
-```bash
-# Next
-vsekai system update
-vsekai system check
-vsekai version upload --file your_version_file
-vsekai version list
-vsekai version download --version your_version_number
-vsekai version delete --version your_version_number
-vsekai profile switch --profile_name your_profile_name
-vsekai log view
-vsekai auth login --client_id your_client_id --client_secret your_client_secret --redirect_uri your_redirect_uri --scope user:email
-vsekai auth token
-vsekai auth logout
 ```
 
 2. **Updater Online Service:**
