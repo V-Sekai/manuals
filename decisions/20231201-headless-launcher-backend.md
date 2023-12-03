@@ -237,6 +237,7 @@ defmodule VSekaiNebula.UpdateProcess do
 
   schema "update_processes" do
     field :manifest_file_and_version, :string
+    field :uri_path, {:array, :string}
     field :registry_values, {:map, :string}
     field :valid_from, :utc_datetime
     field :valid_to, :utc_datetime
@@ -246,31 +247,5 @@ defmodule VSekaiNebula.UpdateProcess do
   end
 
   # TODO changeset/2
-end
-```
-
-**Casync_caches Table**
-
-```elixir
-defmodule VSekaiNebula.CasyncCache do
-  use Ecto.Schema
-
-  schema "casync_caches" do
-    field :uri_path, :string
-    field :valid_from, :utc_datetime
-    field :valid_to, :utc_datetime
-    field :id, Ecto.UUID, autogenerate: true, primary_key: true
-
-    belongs_to :update_process, VSekaiNebula.UpdateProcess
-
-    timestamps()
-  end
-
-  def changeset(struct, params \\ %{}) do
-    struct
-    |> Ecto.Changeset.cast(params, [:uri_path, :valid_from, :valid_to])
-    |> Ecto.Changeset.validate_required([:uri_path, :valid_from, :valid_to])
-    |> Ecto.Changeset.foreign_key_constraint(:update_process_id)
-  end
 end
 ```
