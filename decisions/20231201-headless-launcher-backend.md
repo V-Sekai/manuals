@@ -164,7 +164,7 @@ defmodule VSekaiNebula.Mode do
   schema "modes" do
     field :name, :string
     field :is_active, :bool
-    field :update_to,
+    field :update_to, Ecto.UUID
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
 
     timestamps()
