@@ -100,13 +100,7 @@ setup_registry_values()
 
 ### Data model
 
-Sure, here's the updated markdown:
-
-### CockroachDB
-
 CockroachDB is a distributed SQL database that is designed for cloud services. It supports JSONB data type which can be used to store array or map data.
-
-### Data Model
 
 To support all the features and normalize 6NF the tables, we need to create several tables:
 
@@ -117,6 +111,7 @@ defmodule MyApp.Mode do
   use Ecto.Schema
 
   schema "modes" do
+    field :id, Ecto.UUID, autogenerate: true, primary_key: true
     field :name, :string
     field :is_current, :boolean, default: false
     field :valid_from, :utc_datetime
@@ -134,6 +129,7 @@ defmodule MyApp.Version do
   use Ecto.Schema
 
   schema "versions" do
+    field :id, Ecto.UUID, autogenerate: true, primary_key: true
     field :version_number, :string
     field :executable_path, :string
     field :valid_from, :utc_datetime
@@ -151,6 +147,7 @@ defmodule MyApp.UpdateProcess do
   use Ecto.Schema
 
   schema "update_processes" do
+    field :id, Ecto.UUID, autogenerate: true, primary_key: true
     field :launcher_folder, :string
     field :manifest_file_and_version, :string
     field :files_for_update, {:array, :string}
