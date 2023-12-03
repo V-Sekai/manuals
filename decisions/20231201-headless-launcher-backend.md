@@ -18,28 +18,13 @@ Build an updater that is simple yet robust, handling automated game updates in t
 
 The strategy for this proposal is to develop a headless backend launcher using Elixir and CockroachDB. The main components of the system will be:
 
-1. **Headless CLI**
-2. **Updater Online Service**
-3. **GUI Launcher**
-4. **Game Setup Efforts**
-
-### Headless CLI
-
 The Headless CLI will implement `desync` for data synchronization and provide commands for displaying help information, version information, switching modes, checking current mode, listing all available modes, and updating according to semantic versioning.
-
-### Updater Online Service
 
 The Updater Online Service will be a lightweight service that uses Elixir for handling web requests and CockroachDB for persistence. It will integrate the `desync` protocol and include error handling strategies for failed updates or data synchronization issues.
 
-### GUI Launcher
-
 The GUI Launcher will be designed using the Godot Engine and will also integrate the `desync` protocol. It will feature a basic visual setup with V-Sekai branding.
 
-### Game Sample
-
 The Game Sample will involve developing a basic visual sample with V-Sekai branding, planning for testing each component to ensure functionality, addressing security concerns including user data protection and secure updates, and discussing scalability potential with increasing users or larger game updates.
-
-## Data Model
 
 The data model for this system will be in 6NF database normalization and will include:
 
