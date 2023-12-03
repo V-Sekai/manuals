@@ -237,8 +237,7 @@ defmodule VSekaiNebula.CDN do
     field :uid, :string
     field :name, :string
     field :uri, :string
-    field :valid_from, :utc_datetime
-    field :valid_to, :utc_datetime
+    field :last_checked_on, :utc_datetime
     field :region, :string
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
 
