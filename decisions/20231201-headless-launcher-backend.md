@@ -181,6 +181,7 @@ defmodule VSekaiNebula.Version do
 
   schema "versions" do
     field :version, :string
+    field :skip_update, :bool
     field :valid_from, :utc_datetime
     field :valid_to, :utc_datetime
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
