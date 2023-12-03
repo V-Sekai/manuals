@@ -310,7 +310,6 @@ defmodule VSekaiNebula.UpdateProcess do
   use Ecto.Schema
 
   schema "update_processes" do
-    field :launcher_folder, :string
     field :manifest_file_and_version, :string
     field :files_for_update, {:array, :string}
     field :registry_values, {:map, :string}
