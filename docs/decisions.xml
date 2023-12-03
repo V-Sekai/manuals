@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Sun, 03 Dec 2023 22:41:35 GMT</lastBuildDate>
+<lastBuildDate>Sun, 03 Dec 2023 22:45:03 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -66,7 +66,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 03 Dec 2023 22:41:35 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 22:45:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -159,7 +159,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231201-xr-hands-animation-node.html</guid>
-  <pubDate>Sun, 03 Dec 2023 22:41:35 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 22:45:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -416,15 +416,10 @@ background-color: null;
 font-style: inherit;">:string</span></span>
 <span id="cb3-11">    field <span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">:valid_from</span>, <span class="va" style="color: #111111;
+font-style: inherit;">:is_active</span>, <span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">:utc_datetime</span></span>
+font-style: inherit;">:bool</span></span>
 <span id="cb3-12">    field <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">:valid_to</span>, <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">:utc_datetime</span></span>
-<span id="cb3-13">    field <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">:id</span>, <span class="cn" style="color: #8f5902;
 background-color: null;
@@ -441,22 +436,22 @@ background-color: null;
 font-style: inherit;">primary_key:</span> <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">true</span></span>
-<span id="cb3-14"></span>
-<span id="cb3-15">    timestamps<span class="fu" style="color: #4758AB;
+<span id="cb3-13"></span>
+<span id="cb3-14">    timestamps<span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">()</span></span>
-<span id="cb3-16">  <span class="kw" style="color: #003B4F;
+<span id="cb3-15">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">end</span></span>
-<span id="cb3-17"></span>
-<span id="cb3-18">  <span class="co" style="color: #5E5E5E;
+<span id="cb3-16"></span>
+<span id="cb3-17">  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># </span><span class="al" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">TODO</span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"> changeset/2</span></span>
-<span id="cb3-19"><span class="kw" style="color: #003B4F;
+<span id="cb3-18"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">end</span></span></code></pre></div>
 <p><strong>Version Table</strong></p>
@@ -479,15 +474,9 @@ background-color: null;
 font-style: inherit;">  A schema module representing the versions of a product.</span></span>
 <span id="cb4-4"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">  Each version has a major</span>_<span class="co" style="color: #5E5E5E;
+font-style: inherit;">  Each version has a version, skip</span>_<span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">version, minor</span>_<span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">version, patch</span>_<span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">version, tag, executable</span>_<span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">path, and a unique ID.</span></span>
+font-style: inherit;">update, and a unique ID.</span></span>
 <span id="cb4-5"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">  </span><span class="ot" style="color: #003B4F;
@@ -521,16 +510,6 @@ background-color: null;
 font-style: inherit;">:bool</span></span>
 <span id="cb4-12">    field <span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">:valid_from</span>, <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">:utc_datetime</span></span>
-<span id="cb4-13">    field <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">:valid_to</span>, <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">:utc_datetime</span></span>
-<span id="cb4-14">    field <span class="va" style="color: #111111;
-background-color: null;
 font-style: inherit;">:id</span>, <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">Ecto</span><span class="op" style="color: #5E5E5E;
@@ -546,8 +525,8 @@ background-color: null;
 font-style: inherit;">primary_key:</span> <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">true</span></span>
-<span id="cb4-15"></span>
-<span id="cb4-16">    belongs_to <span class="va" style="color: #111111;
+<span id="cb4-13"></span>
+<span id="cb4-14">    belongs_to <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">:mode</span>, <span class="cn" style="color: #8f5902;
 background-color: null;
@@ -556,22 +535,22 @@ background-color: null;
 font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">Mode</span></span>
-<span id="cb4-17"></span>
-<span id="cb4-18">    timestamps<span class="fu" style="color: #4758AB;
+<span id="cb4-15"></span>
+<span id="cb4-16">    timestamps<span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">()</span></span>
-<span id="cb4-19">  <span class="kw" style="color: #003B4F;
+<span id="cb4-17">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">end</span></span>
-<span id="cb4-20"></span>
-<span id="cb4-21">  <span class="co" style="color: #5E5E5E;
+<span id="cb4-18"></span>
+<span id="cb4-19">  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># </span><span class="al" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">TODO</span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"> changeset/2</span></span>
-<span id="cb4-22"><span class="kw" style="color: #003B4F;
+<span id="cb4-20"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">end</span></span></code></pre></div>
 <p><strong>Files Table</strong></p>
@@ -631,16 +610,6 @@ background-color: null;
 font-style: inherit;">:string</span></span>
 <span id="cb5-11">    field <span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">:valid_from</span>, <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">:utc_datetime</span></span>
-<span id="cb5-12">    field <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">:valid_to</span>, <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">:utc_datetime</span></span>
-<span id="cb5-13">    field <span class="va" style="color: #111111;
-background-color: null;
 font-style: inherit;">:id</span>, <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">Ecto</span><span class="op" style="color: #5E5E5E;
@@ -656,22 +625,22 @@ background-color: null;
 font-style: inherit;">primary_key:</span> <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">true</span></span>
-<span id="cb5-14"></span>
-<span id="cb5-15">    timestamps<span class="fu" style="color: #4758AB;
+<span id="cb5-12"></span>
+<span id="cb5-13">    timestamps<span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">()</span></span>
-<span id="cb5-16">  <span class="kw" style="color: #003B4F;
+<span id="cb5-14">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">end</span></span>
-<span id="cb5-17"></span>
-<span id="cb5-18">  <span class="co" style="color: #5E5E5E;
+<span id="cb5-15"></span>
+<span id="cb5-16">  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># </span><span class="al" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">TODO</span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"> changeset/2</span></span>
-<span id="cb5-19"><span class="kw" style="color: #003B4F;
+<span id="cb5-17"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">end</span></span></code></pre></div>
 <p><strong>CDN Table</strong></p>
@@ -795,7 +764,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231201-headless-launcher-backend.html</guid>
-  <pubDate>Sun, 03 Dec 2023 22:41:35 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 22:45:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -893,7 +862,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231127-performance-test.html</guid>
-  <pubDate>Sun, 03 Dec 2023 22:41:35 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 22:45:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -984,7 +953,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231126-v-sekai-report.html</guid>
-  <pubDate>Sun, 03 Dec 2023 22:41:35 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 22:45:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1113,7 +1082,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231125-v-sekai-report.html</guid>
-  <pubDate>Sun, 03 Dec 2023 22:41:35 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 22:45:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1178,7 +1147,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-upload-creative-commons-fbx-test-files.html</guid>
-  <pubDate>Sun, 03 Dec 2023 22:41:35 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 22:45:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1244,7 +1213,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-maintain-svgcleaner.html</guid>
-  <pubDate>Sun, 03 Dec 2023 22:41:35 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 22:45:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1309,7 +1278,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-elixir-definition-of-godot-types.html</guid>
-  <pubDate>Sun, 03 Dec 2023 22:41:35 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 22:45:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1393,7 +1362,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231112-validation-service.html</guid>
-  <pubDate>Sun, 03 Dec 2023 22:41:35 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 22:45:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1469,7 +1438,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231112-archive-projects.html</guid>
-  <pubDate>Sun, 03 Dec 2023 22:41:35 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 22:45:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1573,7 +1542,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231111-ayon-evaluation.html</guid>
-  <pubDate>Sun, 03 Dec 2023 22:41:35 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 22:45:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1740,7 +1709,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-v-sekai-dependencies.html</guid>
-  <pubDate>Sun, 03 Dec 2023 22:41:35 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 22:45:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1815,7 +1784,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-efficient-llm-training.html</guid>
-  <pubDate>Sun, 03 Dec 2023 22:41:35 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 22:45:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1887,7 +1856,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-blender-manual-t-pose.html</guid>
-  <pubDate>Sun, 03 Dec 2023 22:41:35 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 22:45:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1961,7 +1930,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-better-pipeline-tools.html</guid>
-  <pubDate>Sun, 03 Dec 2023 22:41:35 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 22:45:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2036,7 +2005,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-ai-based-outlier-detection.html</guid>
-  <pubDate>Sun, 03 Dec 2023 22:41:35 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 22:45:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2113,7 +2082,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-discord-polygonjs-generator.html</guid>
-  <pubDate>Sun, 03 Dec 2023 22:41:35 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 22:45:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2217,7 +2186,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-changelog.html</guid>
-  <pubDate>Sun, 03 Dec 2023 22:41:35 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 22:45:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2301,7 +2270,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231108-v-sekai-chat-bot.html</guid>
-  <pubDate>Sun, 03 Dec 2023 22:41:35 GMT</pubDate>
+  <pubDate>Sun, 03 Dec 2023 22:45:03 GMT</pubDate>
 </item>
 </channel>
 </rss>
