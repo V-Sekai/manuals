@@ -250,7 +250,7 @@ end
 Here is how you can define a CDN table using Ecto.Schema in Elixir:
 
 ```elixir
-defmodule MyApp.CDN do
+defmodule VSekaiNebula.CDN do
   @moduledoc """
   A schema module representing the CDN in the application.
   Each CDN has a unique ID, name, URI, last checked on date, region, updated on date and created on date.
@@ -264,8 +264,10 @@ defmodule MyApp.CDN do
     field :uid, :string
     field :name, :string
     field :uri, :string
-    field :last_checked_on, :utc_datetime
+    field :valid_from, :utc_datetime
+    field :valid_to, :utc_datetime
     field :region, :string
+    field :id, Ecto.UUID, autogenerate: true, primary_key: true
 
     timestamps()
   end
