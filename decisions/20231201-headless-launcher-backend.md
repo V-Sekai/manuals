@@ -194,10 +194,10 @@ defmodule VSekaiNebula.Version do
 end
 ```
 
-**Update Process Table**
+**Files Table**
 
 ```elixir
-defmodule VSekaiNebula.UpdateProcess do
+defmodule VSekaiNebula.Files do
   @moduledoc """
   A schema module representing the update process in the application.
   Each update process has a manifest_file_and_version, a cdn_uri, a unique ID, and a validity period.
@@ -205,7 +205,7 @@ defmodule VSekaiNebula.UpdateProcess do
 
   use Ecto.Schema
 
-  schema "update_processes" do
+  schema "files" do
     field :manifest_file_and_version, :string
     field :valid_from, :utc_datetime
     field :valid_to, :utc_datetime
