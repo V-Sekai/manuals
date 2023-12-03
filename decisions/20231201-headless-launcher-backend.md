@@ -215,6 +215,7 @@ defmodule VSekaiNebula.Version do
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
 
     belongs_to :product, VSekaiNebula.Product
+    belongs_to :mode, VSekaiNebula.Mode
 
     timestamps()
   end
