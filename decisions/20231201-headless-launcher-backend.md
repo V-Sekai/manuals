@@ -98,6 +98,77 @@ setup_registry_values()
    - Address security concerns, including user data protection and secure updates.
    - Discuss scalability potential with increasing users or larger game updates.
 
+### Data model
+
+Sure, here's the updated markdown:
+
+### CockroachDB
+
+CockroachDB is a distributed SQL database that is designed for cloud services. It supports JSONB data type which can be used to store array or map data.
+
+### Data Model
+
+To support all the features and normalize 6NF the tables, we need to create several tables:
+
+1. **Modes Table**
+
+```elixir
+defmodule MyApp.Mode do
+  use Ecto.Schema
+
+  schema "modes" do
+    field :name, :string
+    field :is_current, :boolean, default: false
+    field :valid_from, :utc_datetime
+    field :valid_to, :utc_datetime
+
+    timestamps()
+  end
+end
+```
+
+2. **Version Table**
+
+```elixir
+defmodule MyApp.Version do
+  use Ecto.Schema
+
+  schema "versions" do
+    field :version_number, :string
+    field :executable_path, :string
+    field :valid_from, :utc_datetime
+    field :valid_to, :utc_datetime
+
+    timestamps()
+  end
+end
+```
+
+3. **Update Process Table**
+
+```elixir
+defmodule MyApp.UpdateProcess do
+  use Ecto.Schema
+
+  schema "update_processes" do
+    field :launcher_folder, :string
+    field :manifest_file_and_version, :string
+    field :files_for_update, {:array, :string}
+    field :temp_download_path, :string
+    field :old_files_path, {:array, :string}
+    field :registry_values, {:map, :string}
+    field :valid_from, :utc_datetime
+    field :valid_to, :utc_datetime
+
+    timestamps()
+  end
+end
+```
+
+In these schemas, `valid_from` and `valid_to` fields are used to track the period during which a particular record is valid. This allows you to keep a history of changes over time.
+
+The `{:array, :string}` and `{:map, :string}` data types are used for `files_for_update`, `old_files_path`, and `registry_values` to store array or map data.
+
 ## Upside
 
 This system promotes seamless gaming with high performance and reliability from Elixir and CockroachDB.
