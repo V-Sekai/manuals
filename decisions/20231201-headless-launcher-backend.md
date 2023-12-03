@@ -206,10 +206,7 @@ defmodule VSekaiNebula.Version do
   use Ecto.Schema
 
   schema "versions" do
-    field :major_version, :integer
-    field :minor_version, :integer
-    field :patch_version, :integer
-    field :tag, :string
+    field :version, :string
     field :valid_from, :utc_datetime
     field :valid_to, :utc_datetime
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
