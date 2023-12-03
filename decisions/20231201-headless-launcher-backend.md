@@ -230,14 +230,14 @@ end
 defmodule VSekaiNebula.UpdateProcess do
   @moduledoc """
   A schema module representing the update process in the application.
-  Each update process has a manifest_file_and_version, a unique ID, and a validity period.
+  Each update process has a manifest_file_and_version, a cdn_uri, a unique ID, and a validity period.
   """
 
   use Ecto.Schema
 
   schema "update_processes" do
     field :manifest_file_and_version, :string
-    field :uri_path, {:array, :string}
+    field :cdn_uri, {:array, :string}
     field :valid_from, :utc_datetime
     field :valid_to, :utc_datetime
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
