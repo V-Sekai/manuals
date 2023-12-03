@@ -49,18 +49,26 @@ Use Elixir for concurrent services and CockroachDB on the server for data manage
    - Detail how desync will be integrated into the service and GUI.
 
 ```bash
+# Display help information
 vsekai --help
+
+# Display version information
 vsekai --version
-# Switch to a different profile.
-vsekai profile switch --profile_name stable
-# Check the current profile.
-vsekai profile current
-# List all available profiles.
-vsekai profile list
-# Always updates to the stable profile.
-./headless-vsekai-v0.1.0.exe --update C:/v-sekai/launcher 
+
+# Switch to a different mode. Modes allow different operations for the software.
+vsekai mode switch --profile_name stable
+
+# Check the current mode.
+vsekai mode current
+
+# List all available modes.
+vsekai mode list
+
+# Always updates to the stable mode.
+./headless-vsekai-v0.1.0.exe --update C:/v-sekai/launcher
 ./headless-vsekai-v0.1.1.exe --update C:/v-sekai/launcher
 ./headless-vsekai-v0.2.0.exe --update C:/v-sekai/launcher
+
 # Pseudo code for update process
 check_launcher_folder()
 validate_manifest_file_and_version()
