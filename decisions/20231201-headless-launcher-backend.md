@@ -210,7 +210,6 @@ defmodule VSekaiNebula.Version do
     field :minor_version, :integer
     field :patch_version, :integer
     field :tag, :string
-    field :executable_path, :string
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
 
     belongs_to :product, VSekaiNebula.Product
