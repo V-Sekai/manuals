@@ -26,7 +26,7 @@ The GUI Launcher will be designed using the Godot Engine and will also integrate
 
 The Game Sample will involve developing a basic visual sample with V-Sekai branding, planning for testing each component to ensure functionality, addressing security concerns including user data protection and secure updates, and discussing scalability potential with increasing users or larger game updates.
 
-The data model for this system will be in 6NF database normalization. Each table will have its own schema module representing different aspects of the application such as modes, versions, and update processes.
+Each table will have its own schema module representing different aspects of the application such as modes, versions, and update processes.
 
 ## Upside
 
