@@ -234,7 +234,6 @@ defmodule VSekaiNebula.UpdateProcess do
 
   schema "update_processes" do
     field :manifest_file_and_version, :string
-    field :cdn_uri, {:array, :string}
     field :valid_from, :utc_datetime
     field :valid_to, :utc_datetime
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
