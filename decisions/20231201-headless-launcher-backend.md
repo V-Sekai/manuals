@@ -205,7 +205,7 @@ defmodule VSekaiNebula.Files do
   use Ecto.Schema
 
   schema "files" do
-    field :manifest_file_and_version, :string
+    field :file_name, :string
     field :file_uri, :string
     field :checksum_hash, :string
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
