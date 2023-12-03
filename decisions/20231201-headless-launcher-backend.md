@@ -107,7 +107,7 @@ To support all the features and normalize 6NF the tables, we need to create seve
 1. **Modes Table**
 
 ```elixir
-defmodule MyApp.Mode do
+defmodule VSekaiNebula.Mode do
   use Ecto.Schema
 
   schema "modes" do
@@ -125,7 +125,7 @@ end
 2. **Version Table**
 
 ```elixir
-defmodule MyApp.Version do
+defmodule VSekaiNebula.Version do
   use Ecto.Schema
 
   schema "versions" do
@@ -143,7 +143,7 @@ end
 3. **Update Process Table**
 
 ```elixir
-defmodule MyApp.UpdateProcess do
+defmodule VSekaiNebula.UpdateProcess do
   use Ecto.Schema
 
   schema "update_processes" do
