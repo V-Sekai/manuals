@@ -157,6 +157,8 @@ defmodule VSekaiNebula.Mode do
 
   schema "modes" do
     field :name, :string
+    field :valid_from, :utc_datetime
+    field :valid_to, :utc_datetime
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
 
     timestamps()
@@ -179,6 +181,8 @@ defmodule VSekaiNebula.Product do
 
   schema "products" do
     field :name, :string
+    field :valid_from, :utc_datetime
+    field :valid_to, :utc_datetime
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
 
     has_many :versions, VSekaiNebula.Version
@@ -206,11 +210,11 @@ defmodule VSekaiNebula.Version do
     field :minor_version, :integer
     field :patch_version, :integer
     field :tag, :string
+    field :valid_from, :utc_datetime
+    field :valid_to, :utc_datetime
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
 
     belongs_to :product, VSekaiNebula.Product
-
-    has_one :validity, VSekaiNebula.VersionValidity
 
     timestamps()
   end
@@ -234,6 +238,8 @@ defmodule VSekaiNebula.UpdateProcess do
     field :manifest_file_and_version, :string
     field :uri_path, {:array, :string}
     field :registry_values, {:map, :string}
+    field :valid_from, :utc_datetime
+    field :valid_to, :utc_datetime
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
 
     timestamps()
