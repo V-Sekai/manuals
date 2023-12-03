@@ -56,7 +56,7 @@ vsekai --help
 vsekai --version
 
 # Switch to a different mode. Modes allow different operations for the software.
-vsekai mode switch --profile_name stable
+vsekai mode switch --mode_name stable
 
 # Check the current mode.
 vsekai mode current
