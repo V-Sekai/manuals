@@ -150,7 +150,7 @@ setup_registry_values()
 defmodule VSekaiNebula.Mode do
   @moduledoc """
   A schema module representing the modes in the application.
-  Each mode has a unique ID and a name.
+  Each mode has a unique ID, a name, and a validity period.
   """
 
   use Ecto.Schema
@@ -158,33 +158,8 @@ defmodule VSekaiNebula.Mode do
   schema "modes" do
     field :name, :string
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
-
-    has_one :validity, VSekaiNebula.ModeValidity
-
-    timestamps()
-  end
-
-  # TODO changeset/2
-end
-```
-
-**ModeValidity Table**
-
-```elixir
-defmodule VSekaiNebula.ModeValidity do
-  @moduledoc """
-  A schema module representing the validity of each mode.
-  It includes the valid_from and valid_to fields to specify the validity period of a mode.
-  """
-
-  use Ecto.Schema
-
-  schema "mode_validities" do
     field :valid_from, :utc_datetime
     field :valid_to, :utc_datetime
-    field :id, Ecto.UUID, autogenerate: true, primary_key: true
-
-    belongs_to :mode, VSekaiNebula.Mode
 
     timestamps()
   end
@@ -199,7 +174,7 @@ end
 defmodule VSekaiNebula.Product do
   @moduledoc """
   A schema module representing the products in the application.
-  Each product has a unique ID and a name.
+  Each product has a unique ID, a name, and a validity period.
   """
 
   use Ecto.Schema
@@ -207,34 +182,10 @@ defmodule VSekaiNebula.Product do
   schema "products" do
     field :name, :string
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
-
-    has_many :versions, VSekaiNebula.Version
-    has_one :validity, VSekaiNebula.ProductValidity
-
-    timestamps()
-  end
-
-  # TODO changeset/2
-end
-```
-
-**ProductValidity Table**
-
-```elixir
-defmodule VSekaiNebula.ProductValidity do
-  @moduledoc """
-  A schema module representing the validity of each product.
-  It includes the valid_from and valid_to fields to specify the validity period of a product.
-  """
-
-  use Ecto.Schema
-
-  schema "product_validities" do
     field :valid_from, :utc_datetime
     field :valid_to, :utc_datetime
-    field :id, Ecto.UUID, autogenerate: true, primary_key: true
 
-    belongs_to :product, VSekaiNebula.Product
+    has_many :versions, VSekaiNebula.Version
 
     timestamps()
   end
@@ -273,38 +224,13 @@ defmodule VSekaiNebula.Version do
 end
 ```
 
-**VersionValidity Table**
-
-```elixir
-defmodule VSekaiNebula.VersionValidity do
-  @moduledoc """
-  A schema module representing the validity of each version.
-  It includes the valid_from and valid_to fields to specify the validity period of a version.
-  """
-
-  use Ecto.Schema
-
-  schema "version_validities" do
-    field :valid_from, :utc_datetime
-    field :valid_to, :utc_datetime
-    field :id, Ecto.UUID, autogenerate: true, primary_key: true
-
-    belongs_to :version, VSekaiNebula.Version
-
-    timestamps()
-  end
-
-  # TODO changeset/2
-end
-```
-
-3. **Update Process Table**
+**Update Process Table**
 
 ```elixir
 defmodule VSekaiNebula.UpdateProcess do
   @moduledoc """
   A schema module representing the update process in the application.
-  Each update process has a manifest_file_and_version, registry_values, and a unique ID.
+  Each update process has a manifest_file_and_version, registry_values, a unique ID, and a validity period.
   """
 
   use Ecto.Schema
@@ -313,33 +239,8 @@ defmodule VSekaiNebula.UpdateProcess do
     field :manifest_file_and_version, :string
     field :registry_values, {:map, :string}
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
-
-    has_one :update_process_validity, VSekaiNebula.UpdateProcessValidity
-
-    timestamps()
-  end
-
-  # TODO changeset/2
-end
-```
-
-**UpdateProcessValidity Table**
-
-```elixir
-defmodule VSekaiNebula.UpdateProcessValidity do
-  @moduledoc """
-  A schema module representing the validity of each update process.
-  It includes the valid_from and valid_to fields to specify the validity period of an update process.
-  """
-
-  use Ecto.Schema
-
-  schema "update_process_validities" do
     field :valid_from, :utc_datetime
     field :valid_to, :utc_datetime
-    field :id, Ecto.UUID, autogenerate: true, primary_key: true
-
-    belongs_to :update_process, VSekaiNebula.UpdateProcess
 
     timestamps()
   end
@@ -355,8 +256,10 @@ defmodule VSekaiNebula.CasyncCache do
   use Ecto.Schema
 
   schema "casync_caches" do
-    field :path, :string
+    field :uri_path, :string
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
+    field :valid_from, :utc_datetime
+    field :valid_to, :utc_datetime
 
     belongs_to :update_process, VSekaiNebula.UpdateProcess
 
@@ -365,36 +268,9 @@ defmodule VSekaiNebula.CasyncCache do
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> Ecto.Changeset.cast(params, [:path])
-    |> Ecto.Changeset.validate_required([:path])
+    |> Ecto.Changeset.cast(params, [:uri_path, :valid_from, :valid_to])
+    |> Ecto.Changeset.validate_required([:uri_path, :valid_from, :valid_to])
     |> Ecto.Changeset.foreign_key_constraint(:update_process_id)
   end
-end
-```
-
-**CasyncCacheHistory Table**
-
-```elixir
-defmodule VSekaiNebula.CasyncCacheHistory do
-  @moduledoc """
-  A schema module representing the historical states of the casync cache folder in the application.
-  Each record has a unique ID, a path, an associated update process, and the time period during which this state was valid.
-  """
-
-  use Ecto.Schema
-
-  schema "casync_cache_histories" do
-    field :path, :string
-    field :valid_from, :utc_datetime
-    field :valid_to, :utc_datetime
-    field :id, Ecto.UUID, autogenerate: true, primary_key: true
-
-    belongs_to :update_process, VSekaiNebula.UpdateProcess
-    belongs_to :casync_cache, VSekaiNebula.CasyncCache
-
-    timestamps()
-  end
-
-  # TODO changeset/2
 end
 ```
