@@ -158,7 +158,7 @@ defmodule VSekaiNebula.Mode do
   schema "modes" do
     field :name, :string
     field :is_active, :bool
-    field :update_to, 
+    field :update_to,
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
 
     timestamps()
@@ -205,7 +205,7 @@ defmodule VSekaiNebula.Files do
   use Ecto.Schema
 
   schema "files" do
-    field :manifest_file_and_version, :string    
+    field :manifest_file_and_version, :string
     field :checksum_hash, :string
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
 
