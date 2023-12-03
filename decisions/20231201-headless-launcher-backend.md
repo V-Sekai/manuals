@@ -157,8 +157,7 @@ defmodule VSekaiNebula.Mode do
 
   schema "modes" do
     field :name, :string
-    field :valid_from, :utc_datetime
-    field :valid_to, :utc_datetime
+    field :is_active, :bool
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
 
     timestamps()
@@ -174,7 +173,7 @@ end
 defmodule VSekaiNebula.Version do
   @moduledoc """
   A schema module representing the versions of a product.
-  Each version has a major_version, minor_version, patch_version, tag, executable_path, and a unique ID.
+  Each version has a version, skip_update, and a unique ID.
   """
 
   use Ecto.Schema
@@ -182,8 +181,6 @@ defmodule VSekaiNebula.Version do
   schema "versions" do
     field :version, :string
     field :skip_update, :bool
-    field :valid_from, :utc_datetime
-    field :valid_to, :utc_datetime
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
 
     belongs_to :mode, VSekaiNebula.Mode
@@ -208,8 +205,6 @@ defmodule VSekaiNebula.Files do
 
   schema "files" do
     field :manifest_file_and_version, :string
-    field :valid_from, :utc_datetime
-    field :valid_to, :utc_datetime
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
 
     timestamps()
