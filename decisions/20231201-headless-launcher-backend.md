@@ -212,8 +212,6 @@ defmodule VSekaiNebula.Files do
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
 
     belongs_to :version, VSekaiNebula.Version
-
-    timestamps()
   end
 
   # TODO changeset/2
@@ -242,8 +240,6 @@ defmodule VSekaiNebula.CDN do
     field :last_checked_on, :utc_datetime
     field :region, :string
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
-
-    timestamps()
   end
 
   # TODO changeset/2
