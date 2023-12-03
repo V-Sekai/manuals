@@ -51,12 +51,14 @@ Use Elixir for concurrent services and CockroachDB on the server for data manage
 ```bash
 vsekai --help
 vsekai --version
-vsekai config set --key your_key --value your_value
-vsekai config get --key your_key
-vsekai portal check-status
-vsekai portal launch
-vsekai portal restart
-vsekai portal close
+./headless-vsekai-v0.0.1-v0.05.exe --update C:/v-sekai/launcher
+# Pseudo code for update process
+check_launcher_folder()
+validate_manifest_file_and_version()
+ensure_correct_files_for_update()
+download_to_temp()
+delete_old_and_move_over()
+setup_registry_values()
 ```
 
 2. **Updater Online Service:**
