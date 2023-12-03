@@ -304,14 +304,13 @@ end
 defmodule VSekaiNebula.UpdateProcess do
   @moduledoc """
   A schema module representing the update process in the application.
-  Each update process has a launcher_folder, manifest_file_and_version, files_for_update, registry_values, and a unique ID.
+  Each update process has a manifest_file_and_version, registry_values, and a unique ID.
   """
 
   use Ecto.Schema
 
   schema "update_processes" do
     field :manifest_file_and_version, :string
-    field :files_for_update, {:array, :string}
     field :registry_values, {:map, :string}
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
 
