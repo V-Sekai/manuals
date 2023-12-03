@@ -257,9 +257,9 @@ defmodule VSekaiNebula.CasyncCache do
 
   schema "casync_caches" do
     field :uri_path, :string
-    field :id, Ecto.UUID, autogenerate: true, primary_key: true
     field :valid_from, :utc_datetime
     field :valid_to, :utc_datetime
+    field :id, Ecto.UUID, autogenerate: true, primary_key: true
 
     belongs_to :update_process, VSekaiNebula.UpdateProcess
 
