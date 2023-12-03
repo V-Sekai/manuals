@@ -168,32 +168,6 @@ defmodule VSekaiNebula.Mode do
 end
 ```
 
-**Product Table**
-
-```elixir
-defmodule VSekaiNebula.Product do
-  @moduledoc """
-  A schema module representing the products in the application.
-  Each product has a unique ID, a name, and a validity period.
-  """
-
-  use Ecto.Schema
-
-  schema "products" do
-    field :name, :string
-    field :valid_from, :utc_datetime
-    field :valid_to, :utc_datetime
-    field :id, Ecto.UUID, autogenerate: true, primary_key: true
-
-    has_many :versions, VSekaiNebula.Version
-
-    timestamps()
-  end
-
-  # TODO changeset/2
-end
-```
-
 **Version Table**
 
 ```elixir
@@ -211,7 +185,6 @@ defmodule VSekaiNebula.Version do
     field :valid_to, :utc_datetime
     field :id, Ecto.UUID, autogenerate: true, primary_key: true
 
-    belongs_to :product, VSekaiNebula.Product
     belongs_to :mode, VSekaiNebula.Mode
 
     timestamps()
