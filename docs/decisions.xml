@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Mon, 04 Dec 2023 03:00:18 GMT</lastBuildDate>
+<lastBuildDate>Mon, 04 Dec 2023 03:04:37 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -66,7 +66,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Mon, 04 Dec 2023 03:00:18 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 03:04:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -95,18 +95,35 @@
 </section>
 <section id="strategy" class="level2">
 <h2 class="anchored" data-anchor-id="strategy">Strategy</h2>
-<p>The MeshRWKV model implementation is a sequence-based approach to autoregressively generate triangle meshes as sequences of triangles. The conversion process to RWKV4 can be broken down into two main steps:</p>
-</section>
-<section id="step-1-learning-a-vocabulary-for-triangle-meshes" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-learning-a-vocabulary-for-triangle-meshes">Step 1: Learning a Vocabulary for Triangle Meshes</h2>
-<p>The first step involves learning a vocabulary that can accurately represent triangle meshes from a large collection of 3D object meshes. This allows triangles to be encoded to and decoded from this embedding.</p>
-<p>A graph convolution encoder is employed, operating on triangles of a mesh and their neighborhood to extract geometrically rich features that capture the intricate details of 3D shapes. These features are quantized as embeddings of a codebook using residual quantization, effectively reducing sequence lengths of the mesh representation.</p>
+<p>The MeshRWKV model implementation is a sequence-based approach that autoregressively generates triangle meshes as sequences of triangles. The conversion process to RWKV4 can be divided into two main steps:</p>
+<section id="step-1-learning-a-vocabulary-for-triangle-meshes" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-learning-a-vocabulary-for-triangle-meshes">Step 1: Learning a Vocabulary for Triangle Meshes</h3>
+<p>The first step involves learning a vocabulary capable of accurately representing triangle meshes from a large collection of 3D object meshes. This allows triangles to be encoded and decoded from this embedding.</p>
+<p>A graph convolution encoder is used, which operates on the triangles of a mesh and their neighborhood to extract geometrically rich features that capture the intricate details of 3D shapes. These features are quantized as embeddings of a codebook using residual quantization, effectively reducing the sequence lengths of the mesh representation.</p>
 <p>These embeddings are sequenced and then decoded by a 1D ResNet guided by a reconstruction loss. This phase lays the groundwork for the subsequent training of the transformer.</p>
 </section>
-<section id="step-2-autoregressive-mesh-generation" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-autoregressive-mesh-generation">Step 2: Autoregressive Mesh Generation</h2>
+<section id="step-2-autoregressive-mesh-generation" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-autoregressive-mesh-generation">Step 2: Autoregressive Mesh Generation</h3>
 <p>The next step is to train RWKV4, which leverages these quantized geometric embeddings. Given a sequence of geometric embeddings extracted from the triangles of a mesh, the transformer is trained to predict the codebook index of the next embedding in the sequence.</p>
 <p>Once trained, the transformer can be auto-regressively sampled to predict sequences of embeddings. These embeddings can then be decoded to generate novel and diverse mesh structures that display efficient, irregular triangulations similar to human-crafted meshes.</p>
+</section>
+<section id="ablations" class="level3">
+<h3 class="anchored" data-anchor-id="ablations">Ablations</h3>
+<p>In Table 3, a set of ablations on the task of unconditional mesh generation on ShapeNet Chair category is shown. Further ablations are detailed in the supplementary.</p>
+<ul>
+<li>Naive tokenization(w/o Learned Tokens) and naive per face quantization (w/o per-vertex quantization) markedly diminishes shape quality.</li>
+<li>Longer sequences without sequence compression (w/o Sequence Compression) lead to the model forgetting the context and repeating shape elements in the output.</li>
+<li>Using geometric embeddings in vocabulary learning significantly improves over naive coordinate tokenization (w/o Learned Tokens).</li>
+<li>A model with a shorter sequence length performs better than without (w/o Sequence Compression), as shorter sequence lengths fit transformer context windows better.</li>
+<li>An alternative to having embeddings aggregated and quantized across vertex indices, is to simply have the same number of embeddings directly per face (w/o per Vertex Quantization). This makes sequences much harder to learn with the transformer.</li>
+<li>An alternative to using embeddings from the graph encoder and the codebook is to only use the codebook indices of these tokens as input to the transformer, and let the transformer learn the discrete token embeddings (w/o Encoder Features). While the transformer is able to still learn meaningful embeddings, these are still not as effective as using graph encoder features.</li>
+<li>Training only on shapes from individual categories (w/o Pretraining) leads to overfitting and suboptimal performance, in contrast to pre-training our GPT transformer on all ShapeNet train shapes.</li>
+</ul>
+<section id="limitations" class="level4">
+<h4 class="anchored" data-anchor-id="limitations">Limitations</h4>
+<p>MeshGPT significantly advances direct mesh generation but faces several limitations. Its autoregressive nature leads to slower sampling performance, with mesh generation times taking 30 to 90 seconds. Despite our learned tokenization approach reducing sequence lengths, which suffices for single object generation, it may not be as effective for scene-scale generation, suggesting an area for future enhancement. Moreover, our current computational resources limit us to using a GPT2-medium transformer, which is smaller than more sophisticated models like Llama2 [58]. Given that larger language models benefit from increased data and computational power, expanding these resources could significantly boost MeshGPT’s performance and capabilities.</p>
+</section>
+</section>
 <section id="key-terms" class="level3">
 <h3 class="anchored" data-anchor-id="key-terms">Key Terms</h3>
 <ul>
@@ -174,7 +191,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231204-mesh-rwkv.html</guid>
-  <pubDate>Mon, 04 Dec 2023 03:00:18 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 03:04:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -267,7 +284,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231201-xr-hands-animation-node.html</guid>
-  <pubDate>Mon, 04 Dec 2023 03:00:18 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 03:04:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1101,7 +1118,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231201-headless-launcher-backend.html</guid>
-  <pubDate>Mon, 04 Dec 2023 03:00:18 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 03:04:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1199,7 +1216,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231127-performance-test.html</guid>
-  <pubDate>Mon, 04 Dec 2023 03:00:18 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 03:04:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1290,7 +1307,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231126-v-sekai-report.html</guid>
-  <pubDate>Mon, 04 Dec 2023 03:00:18 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 03:04:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1419,7 +1436,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231125-v-sekai-report.html</guid>
-  <pubDate>Mon, 04 Dec 2023 03:00:18 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 03:04:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1484,7 +1501,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-upload-creative-commons-fbx-test-files.html</guid>
-  <pubDate>Mon, 04 Dec 2023 03:00:18 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 03:04:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1550,7 +1567,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-maintain-svgcleaner.html</guid>
-  <pubDate>Mon, 04 Dec 2023 03:00:18 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 03:04:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1615,7 +1632,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-elixir-definition-of-godot-types.html</guid>
-  <pubDate>Mon, 04 Dec 2023 03:00:18 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 03:04:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1699,7 +1716,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231112-validation-service.html</guid>
-  <pubDate>Mon, 04 Dec 2023 03:00:18 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 03:04:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1775,7 +1792,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231112-archive-projects.html</guid>
-  <pubDate>Mon, 04 Dec 2023 03:00:18 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 03:04:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1879,7 +1896,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231111-ayon-evaluation.html</guid>
-  <pubDate>Mon, 04 Dec 2023 03:00:18 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 03:04:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2046,7 +2063,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-v-sekai-dependencies.html</guid>
-  <pubDate>Mon, 04 Dec 2023 03:00:18 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 03:04:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2121,7 +2138,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-efficient-llm-training.html</guid>
-  <pubDate>Mon, 04 Dec 2023 03:00:18 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 03:04:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2193,7 +2210,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-blender-manual-t-pose.html</guid>
-  <pubDate>Mon, 04 Dec 2023 03:00:18 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 03:04:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2267,7 +2284,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-better-pipeline-tools.html</guid>
-  <pubDate>Mon, 04 Dec 2023 03:00:18 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 03:04:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2342,7 +2359,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-ai-based-outlier-detection.html</guid>
-  <pubDate>Mon, 04 Dec 2023 03:00:18 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 03:04:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2419,7 +2436,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-discord-polygonjs-generator.html</guid>
-  <pubDate>Mon, 04 Dec 2023 03:00:18 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 03:04:37 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2523,7 +2540,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-changelog.html</guid>
-  <pubDate>Mon, 04 Dec 2023 03:00:18 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 03:04:37 GMT</pubDate>
 </item>
 </channel>
 </rss>
