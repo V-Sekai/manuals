@@ -127,6 +127,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#special-use-case" id="toc-special-use-case" class="nav-link" data-scroll-target="#special-use-case">Special Use Case</a></li>
   <li><a href="#core-implemented-by-us" id="toc-core-implemented-by-us" class="nav-link" data-scroll-target="#core-implemented-by-us">Core &amp; Implemented by Us?</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#meshgpts-model-and-metrics" id="toc-meshgpts-model-and-metrics" class="nav-link" data-scroll-target="#meshgpts-model-and-metrics">MeshGPT’s Model and Metrics</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20231204-mesh-rwkv.md" class="toc-action">Edit this page</a></p></div></div></nav>
@@ -213,6 +214,21 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://nihalsid.github.io/mesh-gpt/">MeshGPT</a></li>
 </ol>
 <p>Assisted by AI assistant Aria.</p>
+</section>
+<section id="meshgpts-model-and-metrics" class="level2">
+<h2 class="anchored" data-anchor-id="meshgpts-model-and-metrics">MeshGPT’s Model and Metrics</h2>
+<p>In this experiment, a computer model is trained to generate 3D shapes. The training uses a dataset known as ShapeNetV2, which includes various categories of 3D shapes. The model is specifically fine-tuned, meaning it receives special training on four categories: Chair, Table, Bench, and Lamp.</p>
+<p>During the training phase, several techniques are employed to enhance the model’s ability to create diverse shapes. These techniques include random shifts (altering parts of the shape), scaling (modifying the size of the shape), and planar decimation (simplifying the shape).</p>
+<p>The performance of the model is evaluated using several metrics:</p>
+<ul>
+<li>Minimum Matching Distance (MMD): This metric measures how closely the generated shape matches the real one. A lower MMD value indicates a closer match.</li>
+<li>Coverage (COV): This metric assesses how much of the actual shape is covered by the generated shape. A higher COV value is preferable.</li>
+<li>1-Nearest-Neighbor Accuracy (1-NNA): This metric evaluates how frequently the closest shape to the generated one is the actual one. A score of 50% is considered optimal.</li>
+<li>Chamfer Distance (CD): This is a method for measuring distance in 3D.</li>
+</ul>
+<p>To evaluate the visual similarity between the generated shapes and the actual ones, both are rendered as images from eight different viewpoints using a software called Blender. Two scores, FID and KID, are then calculated to measure the similarity between these image sets. Lower FID and KID scores indicate greater similarity.</p>
+<p>Lastly, compactness is measured, which is the average number of vertices (corners) and faces (flat surfaces) in the generated shapes.</p>
+<p>The results demonstrate that the MeshGPT model outperforms other models in generating high-quality, visually similar, and compact 3D shapes.</p>
 
 
 </section>
