@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>V-Sekai - Manuals – mesh-rwkv</title>
+<title>V-Sekai - Manuals – mesh-rwkv-test-metrics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -110,114 +110,82 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#proposed-triangle-meshes-inferencing-with-meshrwkv" id="toc-proposed-triangle-meshes-inferencing-with-meshrwkv" class="nav-link active" data-scroll-target="#proposed-triangle-meshes-inferencing-with-meshrwkv">Proposed: Triangle Meshes Inferencing with MeshRWKV</a>
+  <li><a href="#draft-initial-training-of-the-meshrwvk-model" id="toc-draft-initial-training-of-the-meshrwvk-model" class="nav-link active" data-scroll-target="#draft-initial-training-of-the-meshrwvk-model">Draft: Initial Training of the MeshRWVK Model</a>
   <ul class="collapse">
   <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
-  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
   <li><a href="#problem" id="toc-problem" class="nav-link" data-scroll-target="#problem">Problem</a></li>
-  <li><a href="#strategy" id="toc-strategy" class="nav-link" data-scroll-target="#strategy">Strategy</a>
-  <ul class="collapse">
-  <li><a href="#step-1-learning-a-vocabulary-for-triangle-meshes" id="toc-step-1-learning-a-vocabulary-for-triangle-meshes" class="nav-link" data-scroll-target="#step-1-learning-a-vocabulary-for-triangle-meshes">Step 1: Learning a Vocabulary for Triangle Meshes</a></li>
-  <li><a href="#step-2-autoregressive-mesh-generation" id="toc-step-2-autoregressive-mesh-generation" class="nav-link" data-scroll-target="#step-2-autoregressive-mesh-generation">Step 2: Autoregressive Mesh Generation</a></li>
-  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
-  </ul></li>
+  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
+  <li><a href="#evaluation" id="toc-evaluation" class="nav-link" data-scroll-target="#evaluation">Evaluation</a></li>
   <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
-  <li><a href="#future-work" id="toc-future-work" class="nav-link" data-scroll-target="#future-work">Future Work</a></li>
-  <li><a href="#drawbacks" id="toc-drawbacks" class="nav-link" data-scroll-target="#drawbacks">Drawbacks</a></li>
+  <li><a href="#risks" id="toc-risks" class="nav-link" data-scroll-target="#risks">Risks</a></li>
   <li><a href="#alternatives" id="toc-alternatives" class="nav-link" data-scroll-target="#alternatives">Alternatives</a></li>
-  <li><a href="#special-use-case" id="toc-special-use-case" class="nav-link" data-scroll-target="#special-use-case">Special Use Case</a></li>
-  <li><a href="#core-implemented-by-us" id="toc-core-implemented-by-us" class="nav-link" data-scroll-target="#core-implemented-by-us">Core &amp; Implemented by Us?</a></li>
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
+  <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation">Implementation</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20231203-mesh-rwkv.md" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20231203-mesh-rwkv-test-metrics.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-<section id="proposed-triangle-meshes-inferencing-with-meshrwkv" class="level1">
-<h1>Proposed: Triangle Meshes Inferencing with MeshRWKV</h1>
+<section id="draft-initial-training-of-the-meshrwvk-model" class="level1">
+<h1>Draft: Initial Training of the MeshRWVK Model</h1>
 <section id="metadata" class="level2">
 <h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
-<li>Status: Proposed</li>
-<li>Deciders: V-Sekai</li>
-<li>Tags: V-Sekai</li>
+<li><strong>Status:</strong> Draft</li>
+<li><strong>Deciders:</strong> V-Sekai</li>
+<li><strong>Tags:</strong> V-Sekai</li>
 </ul>
 </section>
-<section id="background" class="level2">
-<h2 class="anchored" data-anchor-id="background">Background</h2>
-<p>MeshGPT uses a transformer model trained on geometric vocabulary to generate triangle meshes, resulting in clean, coherent, and compact meshes.</p>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>Currently, there is no model for MeshRWVK. This presents a challenge in generating diverse and complex 3D shapes for virtual environments.</p>
 </section>
 <section id="problem" class="level2">
 <h2 class="anchored" data-anchor-id="problem">Problem</h2>
-<p>Adapting GPT-like generative models for the 3D domain is a challenge. Automated triangle mesh generation needs a robust solution.</p>
+<p>The lack of a model for MeshRWVK limits the diversity and complexity of 3D shapes that can be generated for virtual environments.</p>
 </section>
-<section id="strategy" class="level2">
-<h2 class="anchored" data-anchor-id="strategy">Strategy</h2>
-<p>The MeshRWKV model employs a sequence-based approach that autoregressively generates triangle meshes as sequences of triangles. The conversion process to RWKV4 can be broken down into two primary steps:</p>
-<section id="step-1-learning-a-vocabulary-for-triangle-meshes" class="level3">
-<h3 class="anchored" data-anchor-id="step-1-learning-a-vocabulary-for-triangle-meshes">Step 1: Learning a Vocabulary for Triangle Meshes</h3>
-<p>The initial step involves learning a vocabulary that can accurately represent triangle meshes from a large collection of 3D object meshes. This enables the encoding and decoding of triangles from this embedding.</p>
-<p>A graph convolution encoder, specifically a series of SAGE-Conv graph convolution layers, is utilized in this process. This encoder processes the mesh in the form of a face graph. For each graph node, input features include the positionally encoded 9 coordinates of the face triangle, its area, the angles between its edges, and the normal of the face.</p>
-<p>These geometrically rich features capture the intricate details of 3D shapes and are quantized as embeddings of a codebook using residual quantization. This effectively reduces the sequence lengths of the mesh representation.</p>
-<p>These embeddings are then sequenced and decoded by a 1D ResNet-34 network, which interprets the face features as a 1D sequence. It outputs logits corresponding to the 9 discrete coordinates of each face triangle. The size of the codebook C and the discretization space are determined based on the specific requirements and constraints of the model.</p>
+<section id="solution" class="level2">
+<h2 class="anchored" data-anchor-id="solution">Solution</h2>
+<p>To address this issue, we propose to enhance the training of the GPT model using a dataset known as Objaverse-XL, which includes various categories of 3D shapes. The training phase will employ several techniques such as random shifts, scaling, and planar decimation to improve the model’s ability to create diverse shapes.</p>
 </section>
-<section id="step-2-autoregressive-mesh-generation" class="level3">
-<h3 class="anchored" data-anchor-id="step-2-autoregressive-mesh-generation">Step 2: Autoregressive Mesh Generation</h3>
-<p>The next step is to train RWKV4, which leverages these quantized geometric embeddings. Given a sequence of geometric embeddings extracted from the triangles of a mesh, the transformer is trained to predict the codebook index of the next embedding in the sequence.</p>
-<p>Once trained, the transformer can be auto-regressively sampled to predict sequences of embeddings. These embeddings can then be decoded to generate novel and diverse mesh structures that display efficient, irregular triangulations similar to human-crafted meshes.</p>
-</section>
-<section id="limitations" class="level3">
-<h3 class="anchored" data-anchor-id="limitations">Limitations</h3>
-<p>MeshGPT has made significant strides in the field of direct mesh generation, but it is not without its limitations. The autoregressive nature of the model results in slower sampling performance, with mesh generation times ranging from 30 to 90 seconds. The MeshGPT team’s learned tokenization approach has been successful in reducing sequence lengths for single object generation, but it may not be as effective when applied to scene-scale generation. This presents an opportunity for future enhancement.</p>
-<p>Furthermore, MeshGPT’s current computational resources restrict it to using the GPT2-medium transformer, which is less sophisticated than models like Llama2. Given that larger language models tend to benefit from increased data and computational power, expanding these resources could significantly enhance MeshGPT’s performance and capabilities.</p>
-<p>It’s important to note that the RWKV (Receptance Weighted Key Value) model’s context size is significantly larger than that of GPT2. In machine learning, context size refers to the amount of information from previous steps that a model can consider while making predictions for the next step. It essentially determines how much ‘memory’ the model has about past data.</p>
-<p>The larger context size of RWKV means that it can remember and utilize more past information while generating outputs. This feature potentially enables it to handle larger and more complex tasks, provided there are sufficient computational resources.</p>
-<p>However, a larger context size also implies higher computational demands. More processing power and memory are required to store and manage such large amounts of data. This could pose challenges in terms of hardware requirements and efficiency, particularly when dealing with very large datasets or complex tasks.</p>
-</section>
+<section id="evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="evaluation">Evaluation</h2>
+<p>The performance of the model will be evaluated using several metrics including Minimum Matching Distance (MMD), Coverage (COV), 1-Nearest-Neighbor Accuracy (1-NNA), Chamfer Distance (CD), FID and KID scores, and compactness.</p>
 </section>
 <section id="benefits" class="level2">
 <h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
-<p>Our approach produces compact meshes with sharp geometric details. It can suggest multiple shape completions for incomplete shapes.</p>
+<p>Enhancing the training of the GPT model will improve its ability to generate more complex 3D shapes, allowing for greater diversity and realism in the virtual environments created by V-Sekai.</p>
 </section>
-<section id="future-work" class="level2">
-<h2 class="anchored" data-anchor-id="future-work">Future Work</h2>
-<p>Given that the MeshGPT model has already developed a process for converting mesh data into logits, this simplifies the task of applying the MeshRWKV model to skeletal animation.</p>
-<p>The fundamental concept would involve representing a sequence of animation frames (from frame0 to frameN) as meshes. The recursive nature of RWKV could potentially offer significant advantages in this scenario. It might facilitate efficient encoding and decoding of sequential frames, which could lead to the generation of smooth and coherent animations.</p>
-<p>With the mesh-to-logits conversion challenge addressed by MeshGPT, the primary focus can be on developing new training methodologies and loss functions tailored for animation data. This approach could significantly broaden the applicability of the MeshRWKV model, opening up exciting possibilities for future research and development in the field of 3D animation.</p>
-</section>
-<section id="drawbacks" class="level2">
-<h2 class="anchored" data-anchor-id="drawbacks">Drawbacks</h2>
-<p>Training the model may require significant computational resources. Learning a vocabulary for triangle meshes could be complex.</p>
+<section id="risks" class="level2">
+<h2 class="anchored" data-anchor-id="risks">Risks</h2>
+<p>The proposed strategy may require significant computational resources and time. There may also be a learning curve associated with understanding and implementing the proposed enhancements.</p>
 </section>
 <section id="alternatives" class="level2">
 <h2 class="anchored" data-anchor-id="alternatives">Alternatives</h2>
-<p>Other methods like neural field-based approaches exist but often miss geometric details or produce over-triangulated meshes.</p>
+<p>An alternative approach could have been to use a different model for generating 3D shapes. However, this would require a complete overhaul of the current system and may not necessarily yield better results.</p>
 </section>
-<section id="special-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="special-use-case">Special Use Case</h2>
-<p>Generating complex 3D shapes for niche applications might need additional model training or fine-tuning.</p>
+<section id="limitations" class="level2">
+<h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
+<p>The proposed enhancements may not be necessary for simpler virtual environments. In such cases, the current implementation of the MeshGPT model may suffice.</p>
 </section>
-<section id="core-implemented-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="core-implemented-by-us">Core &amp; Implemented by Us?</h2>
-<p>Yes, this proposal is core to our work at V-Sekai and will be implemented by us.</p>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<p>Yes, the proposed enhancements will be implemented by the V-Sekai development team.</p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a></li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a></li>
-<li><a href="https://nihalsid.github.io/mesh-gpt/">MeshGPT</a></li>
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
 <li><a href="https://huggingface.co/datasets/allenai/objaverse-xl">Objaverse-XL</a></li>
-<li><a href="https://huggingface.co/NousResearch/Nous-Hermes-2-Vision-Alpha">Nous-Hermes-2-Vision</a></li>
-<li><a href="https://pragprog.com/titles/smelixir/machine-learning-in-elixir/">Machine Learning in Elixir</a></li>
-<li><a href="https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.conv.SAGEConv.html">PyTorch Geometric SAGEConv</a></li>
-<li><a href="https://arxiv.org/pdf/1706.02216.pdf">Inductive Representation Learning on Large Graphs</a></li>
 </ol>
-<p>Assisted by AI assistant Aria.</p>
+<p><em>This article was assisted by AI assistant, Aria.</em></p>
 
 
 </section>

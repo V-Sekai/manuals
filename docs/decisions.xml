@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Mon, 04 Dec 2023 06:27:30 GMT</lastBuildDate>
+<lastBuildDate>Mon, 04 Dec 2023 06:33:03 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -66,7 +66,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Mon, 04 Dec 2023 06:27:30 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:33:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -156,21 +156,6 @@
 <li><a href="https://arxiv.org/pdf/1706.02216.pdf">Inductive Representation Learning on Large Graphs</a></li>
 </ol>
 <p>Assisted by AI assistant Aria.</p>
-</section>
-<section id="meshgpts-model-and-metrics" class="level2">
-<h2 class="anchored" data-anchor-id="meshgpts-model-and-metrics">MeshGPT’s Model and Metrics</h2>
-<p>In this experiment, a computer model is trained to generate 3D shapes. The training uses a dataset known as ShapeNetV2, which includes various categories of 3D shapes. The model is specifically fine-tuned, meaning it receives special training on four categories: Chair, Table, Bench, and Lamp.</p>
-<p>During the training phase, several techniques are employed to enhance the model’s ability to create diverse shapes. These techniques include random shifts (altering parts of the shape), scaling (modifying the size of the shape), and planar decimation (simplifying the shape).</p>
-<p>The performance of the model is evaluated using several metrics:</p>
-<ul>
-<li>Minimum Matching Distance (MMD): This metric measures how closely the generated shape matches the real one. A lower MMD value indicates a closer match.</li>
-<li>Coverage (COV): This metric assesses how much of the actual shape is covered by the generated shape. A higher COV value is preferable.</li>
-<li>1-Nearest-Neighbor Accuracy (1-NNA): This metric evaluates how frequently the closest shape to the generated one is the actual one. A score of 50% is considered optimal.</li>
-<li>Chamfer Distance (CD): This is a method for measuring distance in 3D.</li>
-</ul>
-<p>To evaluate the visual similarity between the generated shapes and the actual ones, both are rendered as images from eight different viewpoints using a software called Blender. Two scores, FID and KID, are then calculated to measure the similarity between these image sets. Lower FID and KID scores indicate greater similarity.</p>
-<p>Lastly, compactness is measured, which is the average number of vertices (corners) and faces (flat surfaces) in the generated shapes.</p>
-<p>The results demonstrate that the MeshGPT model outperforms other models in generating high-quality, visually similar, and compact 3D shapes.</p>
 
 
 </section>
@@ -178,7 +163,77 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231203-mesh-rwkv.html</guid>
-  <pubDate>Mon, 04 Dec 2023 06:27:30 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:33:03 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20231203-mesh-rwkv-test-metrics.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="draft-initial-training-of-the-meshrwvk-model" class="level1">
+<h1>Draft: Initial Training of the MeshRWVK Model</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li><strong>Status:</strong> Draft</li>
+<li><strong>Deciders:</strong> V-Sekai</li>
+<li><strong>Tags:</strong> V-Sekai</li>
+</ul>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>Currently, there is no model for MeshRWVK. This presents a challenge in generating diverse and complex 3D shapes for virtual environments.</p>
+</section>
+<section id="problem" class="level2">
+<h2 class="anchored" data-anchor-id="problem">Problem</h2>
+<p>The lack of a model for MeshRWVK limits the diversity and complexity of 3D shapes that can be generated for virtual environments.</p>
+</section>
+<section id="solution" class="level2">
+<h2 class="anchored" data-anchor-id="solution">Solution</h2>
+<p>To address this issue, we propose to enhance the training of the GPT model using a dataset known as Objaverse-XL, which includes various categories of 3D shapes. The training phase will employ several techniques such as random shifts, scaling, and planar decimation to improve the model’s ability to create diverse shapes.</p>
+</section>
+<section id="evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="evaluation">Evaluation</h2>
+<p>The performance of the model will be evaluated using several metrics including Minimum Matching Distance (MMD), Coverage (COV), 1-Nearest-Neighbor Accuracy (1-NNA), Chamfer Distance (CD), FID and KID scores, and compactness.</p>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<p>Enhancing the training of the GPT model will improve its ability to generate more complex 3D shapes, allowing for greater diversity and realism in the virtual environments created by V-Sekai.</p>
+</section>
+<section id="risks" class="level2">
+<h2 class="anchored" data-anchor-id="risks">Risks</h2>
+<p>The proposed strategy may require significant computational resources and time. There may also be a learning curve associated with understanding and implementing the proposed enhancements.</p>
+</section>
+<section id="alternatives" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives">Alternatives</h2>
+<p>An alternative approach could have been to use a different model for generating 3D shapes. However, this would require a complete overhaul of the current system and may not necessarily yield better results.</p>
+</section>
+<section id="limitations" class="level2">
+<h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
+<p>The proposed enhancements may not be necessary for simpler virtual environments. In such cases, the current implementation of the MeshGPT model may suffice.</p>
+</section>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<p>Yes, the proposed enhancements will be implemented by the V-Sekai development team.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
+<li><a href="https://huggingface.co/datasets/allenai/objaverse-xl">Objaverse-XL</a></li>
+</ol>
+<p><em>This article was assisted by AI assistant, Aria.</em></p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20231203-mesh-rwkv-test-metrics.html</guid>
+  <pubDate>Mon, 04 Dec 2023 06:33:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -301,7 +356,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231203-graphsage-embedding-generation.html</guid>
-  <pubDate>Mon, 04 Dec 2023 06:27:30 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:33:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -394,7 +449,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231201-xr-hands-animation-node.html</guid>
-  <pubDate>Mon, 04 Dec 2023 06:27:30 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:33:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1228,7 +1283,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231201-headless-launcher-backend.html</guid>
-  <pubDate>Mon, 04 Dec 2023 06:27:30 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:33:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1326,7 +1381,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231127-performance-test.html</guid>
-  <pubDate>Mon, 04 Dec 2023 06:27:30 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:33:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1417,7 +1472,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231126-v-sekai-report.html</guid>
-  <pubDate>Mon, 04 Dec 2023 06:27:30 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:33:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1546,7 +1601,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231125-v-sekai-report.html</guid>
-  <pubDate>Mon, 04 Dec 2023 06:27:30 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:33:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1611,7 +1666,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-upload-creative-commons-fbx-test-files.html</guid>
-  <pubDate>Mon, 04 Dec 2023 06:27:30 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:33:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1677,7 +1732,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-maintain-svgcleaner.html</guid>
-  <pubDate>Mon, 04 Dec 2023 06:27:30 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:33:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1742,7 +1797,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-elixir-definition-of-godot-types.html</guid>
-  <pubDate>Mon, 04 Dec 2023 06:27:30 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:33:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1826,7 +1881,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231112-validation-service.html</guid>
-  <pubDate>Mon, 04 Dec 2023 06:27:30 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:33:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1902,7 +1957,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231112-archive-projects.html</guid>
-  <pubDate>Mon, 04 Dec 2023 06:27:30 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:33:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2006,7 +2061,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231111-ayon-evaluation.html</guid>
-  <pubDate>Mon, 04 Dec 2023 06:27:30 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:33:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2173,7 +2228,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-v-sekai-dependencies.html</guid>
-  <pubDate>Mon, 04 Dec 2023 06:27:30 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:33:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2248,7 +2303,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-efficient-llm-training.html</guid>
-  <pubDate>Mon, 04 Dec 2023 06:27:30 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:33:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2320,7 +2375,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-blender-manual-t-pose.html</guid>
-  <pubDate>Mon, 04 Dec 2023 06:27:30 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:33:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2394,7 +2449,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-better-pipeline-tools.html</guid>
-  <pubDate>Mon, 04 Dec 2023 06:27:30 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:33:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2469,84 +2524,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-ai-based-outlier-detection.html</guid>
-  <pubDate>Mon, 04 Dec 2023 06:27:30 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20231109-discord-polygonjs-generator.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="proposed-character-customization-discord-bot-poc-for-v-sekai" class="level1">
-<h1>Proposed: Character Customization Discord Bot PoC for V-Sekai</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></li>
-<li>Deciders: V-Sekai, fire</li>
-<li>Tags: V-Sekai, Character Customization, Discord Bot, PoC</li>
-</ul>
-</section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>Within the V-Sekai community, there is a desire to enhance user engagement through interactive tools that allow for creative expression. The community seeks to leverage Discord as a platform to introduce such tools.</p>
-</section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>The current challenge is to create an interactive Discord bot that allows for immersive character customization, aligning with V-Sekai’s vision of fostering a creative and engaged community.</p>
-</section>
-<section id="the-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>To create a Discord bot as a Proof of Concept (PoC) that demonstrates the feasibility of character customization using trait-based input, we will execute the following steps:</p>
-<ol type="1">
-<li><p><strong>Define Key Traits:</strong> We will select a set of fundamental character traits such as height, body shape, hair color, and clothing style. Each trait will be associated with a Unicode emoji for straightforward identification and interaction within the Discord interface.</p></li>
-<li><p><strong>Bot Development:</strong> A bot will be developed to parse textual commands linked to each trait. For example, a user might input <code>!height 📏</code> to set the character’s height or <code>!hair 🎨</code> to choose a hair color.</p></li>
-<li><p><strong>Image Generation:</strong> The bot will map each trait to a specific set of 2D image assets. It will have the logic to composite these assets into a single image that represents the character based on the selected traits.</p></li>
-<li><p><strong>User Interaction:</strong> Reaction buttons for ‘like’ 👍, ‘dislike’ 👎, and ‘regenerate’ 🔄 will be implemented to allow users to interact with the generated character. This will provide immediate feedback mechanisms for the community.</p></li>
-<li><p><strong>Testing and Iteration:</strong> The bot will be deployed in a controlled Discord environment and tested by real users. Their feedback will be crucial for refining the bot’s functionality and user experience.</p></li>
-<li><p><strong>Documentation:</strong> All development processes, user interactions, and iterations will be thoroughly documented. This documentation will be critical for understanding user needs and will inform future development cycles.</p></li>
-</ol>
-<p>This PoC will serve to validate the core idea, engage the user community early in the development process, and provide critical insights for scaling the bot to handle more complex trait manipulation and 3D character rendering in future phases.</p>
-</section>
-<section id="the-upside" class="level2">
-<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<p>Implementing this bot will potentially increase community engagement by providing a fun and interactive character creation tool. It will also lay the foundation for future developments in VR and character design within the V-Sekai ecosystem.</p>
-</section>
-<section id="the-downside" class="level2">
-<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<p>The initial development of the bot may require significant resources and there is a risk of low user adoption. Additionally, ensuring the bot’s scalability and handling user feedback for improvements could be challenging.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Alternatives, such as outsourcing the tool or purchasing an existing solution, were considered but ultimately rejected in favor of in-house development to retain creative control and better integration with V-Sekai’s infrastructure.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>There might be less frequent use cases for the bot, such as character customization for one-time events or non-regular users. The bot’s design will need to account for these to ensure it remains relevant and accessible.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>The core functionality of the bot aligns with V-Sekai’s objectives and values. The development will be handled internally to ensure the tool’s compatibility with the community’s needs and expectations.</p>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
-<li><a href="https://v-sekai.org">V-Sekai Official Website</a> - Community of enthusiasts building a next-generation social and gaming VR platform powered by the Godot Engine 4.0</li>
-<li><a href="https://huggingface.co/spaces/realgenius/NousResearch-Yarn-Mistral-7b-128k">NousResearch Yarn Mistral 7b 128k - Hugging Face</a> - A Hugging Face Space by realgenius</li>
-<li><a href="https://github.com/polygonjs/polygonjs/issues/68">Issue #68 · polygonjs/polygonjs - GitHub</a> - Discussion on using polygon.js as a Discord webhook watcher to output messages and attachments</li>
-</ol>
-<p>This article was assisted by AI.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20231109-discord-polygonjs-generator.html</guid>
-  <pubDate>Mon, 04 Dec 2023 06:27:30 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:33:03 GMT</pubDate>
 </item>
 </channel>
 </rss>
