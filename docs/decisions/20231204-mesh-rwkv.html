@@ -119,7 +119,7 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#step-1-learning-a-vocabulary-for-triangle-meshes" id="toc-step-1-learning-a-vocabulary-for-triangle-meshes" class="nav-link" data-scroll-target="#step-1-learning-a-vocabulary-for-triangle-meshes">Step 1: Learning a Vocabulary for Triangle Meshes</a></li>
   <li><a href="#step-2-autoregressive-mesh-generation" id="toc-step-2-autoregressive-mesh-generation" class="nav-link" data-scroll-target="#step-2-autoregressive-mesh-generation">Step 2: Autoregressive Mesh Generation</a></li>
-  <li><a href="#ablations" id="toc-ablations" class="nav-link" data-scroll-target="#ablations">Ablations</a></li>
+  <li><a href="#ablations-in-meshgpt" id="toc-ablations-in-meshgpt" class="nav-link" data-scroll-target="#ablations-in-meshgpt">Ablations in MeshGPT</a></li>
   <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   </ul></li>
   <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
@@ -170,17 +170,17 @@ ul.task-list li input[type="checkbox"] {
 <p>The next step is to train RWKV4, which leverages these quantized geometric embeddings. Given a sequence of geometric embeddings extracted from the triangles of a mesh, the transformer is trained to predict the codebook index of the next embedding in the sequence.</p>
 <p>Once trained, the transformer can be auto-regressively sampled to predict sequences of embeddings. These embeddings can then be decoded to generate novel and diverse mesh structures that display efficient, irregular triangulations similar to human-crafted meshes.</p>
 </section>
-<section id="ablations" class="level3">
-<h3 class="anchored" data-anchor-id="ablations">Ablations</h3>
-<p>In Table 3, a set of ablations on the task of unconditional mesh generation on ShapeNet Chair category is shown. Further ablations are detailed in the supplementary.</p>
+<section id="ablations-in-meshgpt" class="level3">
+<h3 class="anchored" data-anchor-id="ablations-in-meshgpt">Ablations in MeshGPT</h3>
+<p>Table 3 presents a set of ablations on the task of unconditional mesh generation on ShapeNet Chair category. Additional ablations are detailed in the supplementary.</p>
 <ul>
-<li>Naive tokenization(w/o Learned Tokens) and naive per face quantization (w/o per-vertex quantization) markedly diminishes shape quality.</li>
-<li>Longer sequences without sequence compression (w/o Sequence Compression) lead to the model forgetting the context and repeating shape elements in the output.</li>
-<li>Using geometric embeddings in vocabulary learning significantly improves over naive coordinate tokenization (w/o Learned Tokens).</li>
-<li>A model with a shorter sequence length performs better than without (w/o Sequence Compression), as shorter sequence lengths fit transformer context windows better.</li>
-<li>An alternative to having embeddings aggregated and quantized across vertex indices, is to simply have the same number of embeddings directly per face (w/o per Vertex Quantization). This makes sequences much harder to learn with the transformer.</li>
-<li>An alternative to using embeddings from the graph encoder and the codebook is to only use the codebook indices of these tokens as input to the transformer, and let the transformer learn the discrete token embeddings (w/o Encoder Features). While the transformer is able to still learn meaningful embeddings, these are still not as effective as using graph encoder features.</li>
-<li>Training only on shapes from individual categories (w/o Pretraining) leads to overfitting and suboptimal performance, in contrast to pre-training our GPT transformer on all ShapeNet train shapes.</li>
+<li>Replacing naive tokenization with learned tokens and switching from per face quantization to per-vertex quantization significantly enhances shape quality.</li>
+<li>Implementing sequence compression in place of longer sequences prevents the model from forgetting the context and repeating shape elements in the output, thereby improving the model’s performance.</li>
+<li>The use of geometric embeddings in vocabulary learning offers substantial improvement over naive coordinate tokenization.</li>
+<li>Opting for a model with a shorter sequence length, as opposed to one without sequence compression, results in better performance as shorter sequence lengths fit transformer context windows more effectively.</li>
+<li>Instead of having the same number of embeddings directly per face, aggregating and quantizing embeddings across vertex indices makes sequences easier to learn with the transformer.</li>
+<li>Using embeddings from the graph encoder and the codebook, rather than only using the codebook indices of these tokens as input to the transformer, proves to be more effective even though the transformer can still learn meaningful embeddings without encoder features.</li>
+<li>Pre-training our GPT transformer on all ShapeNet train shapes, instead of training only on shapes from individual categories, avoids overfitting and leads to optimal performance.</li>
 </ul>
 <section id="limitations" class="level4">
 <h4 class="anchored" data-anchor-id="limitations">Limitations</h4>
