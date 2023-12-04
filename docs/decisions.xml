@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Sun, 03 Dec 2023 23:59:14 GMT</lastBuildDate>
+<lastBuildDate>Mon, 04 Dec 2023 02:36:08 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -66,7 +66,90 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 03 Dec 2023 23:59:14 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 02:36:08 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20231204-mesh-rwkv.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="proposed-triangle-meshes-inferencing-with-meshrwkv" class="level1">
+<h1>Proposed: Triangle Meshes Inferencing with MeshRWKV</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: Proposed</li>
+<li>Deciders: V-Sekai</li>
+<li>Tags: V-Sekai</li>
+</ul>
+</section>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>MeshGPT uses a transformer model trained on geometric vocabulary to generate triangle meshes, resulting in clean, coherent, and compact meshes.</p>
+</section>
+<section id="problem" class="level2">
+<h2 class="anchored" data-anchor-id="problem">Problem</h2>
+<p>The challenge is adapting GPT-like generative models for the 3D domain. Automated triangle mesh generation needs a robust solution.</p>
+</section>
+<section id="strategy" class="level2">
+<h2 class="anchored" data-anchor-id="strategy">Strategy</h2>
+<p>Our strategy revolves around the creation of a model called MeshRWKV. This model will be specifically trained for Elixir using RWKV4. The process involves two main steps:</p>
+<ol type="1">
+<li><p><strong>Learning a Vocabulary for Triangle Meshes:</strong> The first step is to learn a vocabulary that can accurately represent triangle meshes. This vocabulary will serve as the foundation for our mesh generation.</p></li>
+<li><p><strong>Autoregressive Mesh Generation:</strong> Once we have our vocabulary, we use it for autoregressive generation of a mesh. This process is carried out by an encoder-decoder network. This network features vector quantization at its bottleneck, which allows us to maintain the compactness and coherence of the generated meshes.</p></li>
+</ol>
+<p>After the training phase, our model will be capable of directly sampling meshes as sequences from this vocabulary. This means that given a sequence of words from our vocabulary, the model can generate a corresponding mesh.</p>
+<section id="glossary-of-existing-terms" class="level3">
+<h3 class="anchored" data-anchor-id="glossary-of-existing-terms">Glossary of Existing Terms</h3>
+<ol type="1">
+<li><p><strong>Encoder-Decoder Network:</strong> This is a type of artificial neural network designed to convert inputs into a set of features, and then decode those features to produce a new output. It’s often used in machine translation and image recognition tasks.</p></li>
+<li><p><strong>Vector Quantization (VQ):</strong> This is a technique often used in lossy data compression. In the context of our model, VQ is used at the bottleneck of the encoder-decoder network to maintain the compactness and coherence of the generated meshes.</p></li>
+<li><p><strong>RWKV4:</strong> This is a robust and efficient model architecture called Receptance Weighted Key Value (RWKV) that we’re using to train our MeshRWKV model for Elixir.</p></li>
+<li><p><strong>MeshRWKV:</strong> This is the model we’re proposing. It’s specifically trained for Elixir using RWKV4 and uses an encoder-decoder network with vector quantization to generate triangle meshes from a learned vocabulary.</p></li>
+<li><p><strong>Autoregressive Model:</strong> This is a type of statistical model used for time series data. In our case, we’re using it to generate a mesh based on the sequence of words from our learned vocabulary.</p></li>
+<li><p><strong>Elixir:</strong> This is a functional, concurrent, general-purpose programming language that runs on the Erlang virtual machine (BEAM). We’re training our MeshRWKV model specifically for this language.</p></li>
+<li><p><strong>Triangle Meshes:</strong> These are a type of polygon mesh commonly used in 3D computer graphics. They’re composed entirely of triangular facets. Our model is designed to generate these meshes from a learned vocabulary.</p></li>
+</ol>
+</section>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<p>Our approach produces compact meshes with sharp geometric details. It can suggest multiple shape completions for incomplete shapes.</p>
+</section>
+<section id="drawbacks" class="level2">
+<h2 class="anchored" data-anchor-id="drawbacks">Drawbacks</h2>
+<p>Training the model may require significant computational resources. Learning a vocabulary for triangle meshes could be complex.</p>
+</section>
+<section id="alternatives" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives">Alternatives</h2>
+<p>Other methods like neural field-based approaches exist but often miss geometric details or produce over-triangulated meshes.</p>
+</section>
+<section id="special-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="special-use-case">Special Use Case</h2>
+<p>Generating complex 3D shapes for niche applications might need additional model training or fine-tuning.</p>
+</section>
+<section id="core-implemented-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="core-implemented-by-us">Core &amp; Implemented by Us?</h2>
+<p>Yes, this proposal is core to our work at V-Sekai and will be implemented by us.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a></li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a></li>
+<li><a href="https://nihalsid.github.io/mesh-gpt/">MeshGPT</a></li>
+</ol>
+<p>Assisted by AI assistant Aria.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20231204-mesh-rwkv.html</guid>
+  <pubDate>Mon, 04 Dec 2023 02:36:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -159,7 +242,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231201-xr-hands-animation-node.html</guid>
-  <pubDate>Sun, 03 Dec 2023 23:59:14 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 02:36:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -993,7 +1076,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231201-headless-launcher-backend.html</guid>
-  <pubDate>Sun, 03 Dec 2023 23:59:14 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 02:36:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1091,7 +1174,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231127-performance-test.html</guid>
-  <pubDate>Sun, 03 Dec 2023 23:59:14 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 02:36:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1182,7 +1265,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231126-v-sekai-report.html</guid>
-  <pubDate>Sun, 03 Dec 2023 23:59:14 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 02:36:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1311,7 +1394,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231125-v-sekai-report.html</guid>
-  <pubDate>Sun, 03 Dec 2023 23:59:14 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 02:36:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1376,7 +1459,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-upload-creative-commons-fbx-test-files.html</guid>
-  <pubDate>Sun, 03 Dec 2023 23:59:14 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 02:36:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1442,7 +1525,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-maintain-svgcleaner.html</guid>
-  <pubDate>Sun, 03 Dec 2023 23:59:14 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 02:36:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1507,7 +1590,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-elixir-definition-of-godot-types.html</guid>
-  <pubDate>Sun, 03 Dec 2023 23:59:14 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 02:36:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1591,7 +1674,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231112-validation-service.html</guid>
-  <pubDate>Sun, 03 Dec 2023 23:59:14 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 02:36:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1667,7 +1750,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231112-archive-projects.html</guid>
-  <pubDate>Sun, 03 Dec 2023 23:59:14 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 02:36:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1771,7 +1854,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231111-ayon-evaluation.html</guid>
-  <pubDate>Sun, 03 Dec 2023 23:59:14 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 02:36:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1938,7 +2021,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-v-sekai-dependencies.html</guid>
-  <pubDate>Sun, 03 Dec 2023 23:59:14 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 02:36:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2013,7 +2096,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-efficient-llm-training.html</guid>
-  <pubDate>Sun, 03 Dec 2023 23:59:14 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 02:36:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2085,7 +2168,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-blender-manual-t-pose.html</guid>
-  <pubDate>Sun, 03 Dec 2023 23:59:14 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 02:36:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2159,7 +2242,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-better-pipeline-tools.html</guid>
-  <pubDate>Sun, 03 Dec 2023 23:59:14 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 02:36:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2234,7 +2317,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-ai-based-outlier-detection.html</guid>
-  <pubDate>Sun, 03 Dec 2023 23:59:14 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 02:36:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2311,7 +2394,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-discord-polygonjs-generator.html</guid>
-  <pubDate>Sun, 03 Dec 2023 23:59:14 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 02:36:08 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2415,91 +2498,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-changelog.html</guid>
-  <pubDate>Sun, 03 Dec 2023 23:59:14 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20231108-v-sekai-chat-bot.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="proposed-creation-of-an-ask-v-sekai-chatbot-using-vercel-openai-and-neon-postgresql" class="level1">
-<h1>Proposed: Creation of an ‘Ask V-Sekai’ Chatbot Using Vercel, OpenAI, and Neon PostgreSQL</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li>Status: Proposed</li>
-<li>Deciders: V-Sekai Development Team</li>
-<li>Tags: V-Sekai, Chatbot, Vercel, OpenAI, Neon, PostgreSQL, AI, Serverless</li>
-</ul>
-</section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>V-Sekai aims to provide immediate, AI-driven answers to community queries using a chatbot integrated with Discord.</p>
-</section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>How to develop an ‘Ask V-Sekai’ chatbot that utilizes Vercel serverless functions for interaction, OpenAI for natural language understanding, and Neon PostgreSQL for storing and retrieving knowledge?</p>
-</section>
-<section id="the-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<ul>
-<li>Design and deploy a serverless function on Vercel that interfaces with Discord to receive questions.</li>
-<li>Use OpenAI’s API to process natural language queries and generate responses.</li>
-<li>Store and retrieve chatbot training and interaction data using Neon’s PostgreSQL service, leveraging the <code>pgvector</code> extension for efficient similarity analysis.</li>
-<li>Continuously improve the chatbot’s accuracy and response quality through data analytics and model fine-tuning.</li>
-</ul>
-</section>
-<section id="the-upside" class="level2">
-<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<ul>
-<li>Quick, accurate responses to user inquiries, enhancing the V-Sekai community experience.</li>
-<li>Leverage cutting-edge AI and serverless technologies for a scalable, low-overhead solution.</li>
-<li>Gather valuable interaction data to refine the chatbot and community support strategies.</li>
-</ul>
-</section>
-<section id="the-downside" class="level2">
-<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<ul>
-<li>Initial complexity in setting up the integration between Vercel, OpenAI, and Neon PostgreSQL.</li>
-<li>Ongoing maintenance and potential costs associated with OpenAI API usage.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<ul>
-<li>Traditional FAQ systems that do not offer real-time, AI-driven interaction and learning capabilities.</li>
-</ul>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<ul>
-<li>Complex queries that require human intervention and are not yet within the scope of the AI’s training.</li>
-</ul>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<ul>
-<li>The development, deployment, and maintenance of the ‘Ask V-Sekai’ chatbot will be managed internally as a strategic tool for community engagement.</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ul>
-<li><a href="https://vercel.com/docs/serverless-functions/introduction">Vercel Serverless Functions Documentation</a></li>
-<li><a href="https://beta.openai.com/docs/">OpenAI API Documentation</a></li>
-<li><a href="https://neon.tech/blog/building-an-ai-powered-chatbot-using-vercel-openai-and-postgres">Neon Tech Blog on Building an AI ChatBot</a></li>
-<li><a href="https://github.com/neondatabase/ask-neon.git">Ask Neon</a> This strategy was formulated with AI assistance.</li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20231108-v-sekai-chat-bot.html</guid>
-  <pubDate>Sun, 03 Dec 2023 23:59:14 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 02:36:08 GMT</pubDate>
 </item>
 </channel>
 </rss>
