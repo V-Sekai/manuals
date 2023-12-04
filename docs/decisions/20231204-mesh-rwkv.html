@@ -119,8 +119,7 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#step-1-learning-a-vocabulary-for-triangle-meshes" id="toc-step-1-learning-a-vocabulary-for-triangle-meshes" class="nav-link" data-scroll-target="#step-1-learning-a-vocabulary-for-triangle-meshes">Step 1: Learning a Vocabulary for Triangle Meshes</a></li>
   <li><a href="#step-2-autoregressive-mesh-generation" id="toc-step-2-autoregressive-mesh-generation" class="nav-link" data-scroll-target="#step-2-autoregressive-mesh-generation">Step 2: Autoregressive Mesh Generation</a></li>
-  <li><a href="#ablations-in-meshgpt" id="toc-ablations-in-meshgpt" class="nav-link" data-scroll-target="#ablations-in-meshgpt">Ablations in MeshGPT</a></li>
-  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
   </ul></li>
   <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
   <li><a href="#drawbacks" id="toc-drawbacks" class="nav-link" data-scroll-target="#drawbacks">Drawbacks</a></li>
@@ -154,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="problem" class="level2">
 <h2 class="anchored" data-anchor-id="problem">Problem</h2>
-<p>The challenge is adapting GPT-like generative models for the 3D domain. Automated triangle mesh generation needs a robust solution.</p>
+<p>Adapting GPT-like generative models for the 3D domain is a challenge. Automated triangle mesh generation needs a robust solution.</p>
 </section>
 <section id="strategy" class="level2">
 <h2 class="anchored" data-anchor-id="strategy">Strategy</h2>
@@ -164,45 +163,16 @@ ul.task-list li input[type="checkbox"] {
 <p>The initial step involves learning a vocabulary that can accurately represent triangle meshes from a large collection of 3D object meshes. This enables the encoding and decoding of triangles from this embedding.</p>
 <p>A graph convolution encoder, specifically a series of SAGE-Conv graph convolution layers, is utilized in this process. This encoder processes the mesh in the form of a face graph. For each graph node, input features include the positionally encoded 9 coordinates of the face triangle, its area, the angles between its edges, and the normal of the face.</p>
 <p>These geometrically rich features capture the intricate details of 3D shapes and are quantized as embeddings of a codebook using residual quantization. This effectively reduces the sequence lengths of the mesh representation.</p>
-<p>These embeddings are then sequenced and decoded by a 1D ResNet-34 network, which interprets the face features as a 1D sequence. It outputs logits corresponding to the 9 discrete coordinates of each face triangle, which are discretized within a 1283 space. The codebook C has a size of 16384.</p>
+<p>These embeddings are then sequenced and decoded by a 1D ResNet-34 network, which interprets the face features as a 1D sequence. It outputs logits corresponding to the 9 discrete coordinates of each face triangle. The size of the codebook C and the discretization space are determined based on the specific requirements and constraints of the model.</p>
 </section>
 <section id="step-2-autoregressive-mesh-generation" class="level3">
 <h3 class="anchored" data-anchor-id="step-2-autoregressive-mesh-generation">Step 2: Autoregressive Mesh Generation</h3>
 <p>The next step is to train RWKV4, which leverages these quantized geometric embeddings. Given a sequence of geometric embeddings extracted from the triangles of a mesh, the transformer is trained to predict the codebook index of the next embedding in the sequence.</p>
 <p>Once trained, the transformer can be auto-regressively sampled to predict sequences of embeddings. These embeddings can then be decoded to generate novel and diverse mesh structures that display efficient, irregular triangulations similar to human-crafted meshes.</p>
 </section>
-<section id="ablations-in-meshgpt" class="level3">
-<h3 class="anchored" data-anchor-id="ablations-in-meshgpt">Ablations in MeshGPT</h3>
-<p>Table 3 presents a set of ablations on the task of unconditional mesh generation on ShapeNet Chair category. Additional ablations are detailed in the supplementary.</p>
-<ul>
-<li>Replacing naive tokenization with learned tokens and switching from per face quantization to per-vertex quantization significantly enhances shape quality.</li>
-<li>Implementing sequence compression in place of longer sequences prevents the model from forgetting the context and repeating shape elements in the output, thereby improving the model’s performance.</li>
-<li>The use of geometric embeddings in vocabulary learning offers substantial improvement over naive coordinate tokenization.</li>
-<li>Opting for a model with a shorter sequence length, as opposed to one without sequence compression, results in better performance as shorter sequence lengths fit transformer context windows more effectively.</li>
-<li>Instead of having the same number of embeddings directly per face, aggregating and quantizing embeddings across vertex indices makes sequences easier to learn with the transformer.</li>
-<li>Using embeddings from the graph encoder and the codebook, rather than only using the codebook indices of these tokens as input to the transformer, proves to be more effective even though the transformer can still learn meaningful embeddings without encoder features.</li>
-<li>Pre-training our GPT transformer on all ShapeNet train shapes, instead of training only on shapes from individual categories, avoids overfitting and leads to optimal performance.</li>
-</ul>
-<section id="limitations" class="level4">
-<h4 class="anchored" data-anchor-id="limitations">Limitations</h4>
+<section id="limitations" class="level3">
+<h3 class="anchored" data-anchor-id="limitations">Limitations</h3>
 <p>MeshGPT significantly advances direct mesh generation but faces several limitations. Its autoregressive nature leads to slower sampling performance, with mesh generation times taking 30 to 90 seconds. Despite our learned tokenization approach reducing sequence lengths, which suffices for single object generation, it may not be as effective for scene-scale generation, suggesting an area for future enhancement. Moreover, our current computational resources limit us to using a GPT2-medium transformer, which is smaller than more sophisticated models like Llama2 [58]. Given that larger language models benefit from increased data and computational power, expanding these resources could significantly boost MeshGPT’s performance and capabilities.</p>
-</section>
-</section>
-<section id="key-terms" class="level3">
-<h3 class="anchored" data-anchor-id="key-terms">Key Terms</h3>
-<ul>
-<li><strong>Encoder-Decoder Network:</strong> A type of artificial neural network designed to convert inputs into a set of features, and then decode those features to produce a new output.</li>
-<li><strong>Residual Quantization:</strong> A technique used to reduce the sequence lengths of the mesh representation.</li>
-<li><strong>1D ResNet34:</strong> A type of convolutional neural network that is used to decode the sequenced embeddings.</li>
-<li><strong>RWKV4:</strong> A robust and efficient model architecture called Receptance Weighted Key Value (RWKV) that we’re using to train our MeshRWKV model for Elixir.</li>
-<li><strong>MeshRWKV:</strong> The model we’re proposing. It’s specifically trained for Elixir using RWKV4 and uses an encoder-decoder network with vector quantization to generate triangle meshes from a learned vocabulary.</li>
-<li><strong>Autoregressive Model:</strong> A type of statistical model used for time series data. In our case, we’re using it to generate a mesh based on the sequence of words from our learned vocabulary.</li>
-<li><strong>Elixir:</strong> A functional, concurrent, general-purpose programming language that runs on the Erlang virtual machine (BEAM). We’re training our MeshRWKV model specifically for this language.</li>
-<li><strong>Triangle Meshes:</strong> A type of polygon mesh commonly used in 3D computer graphics. They’re composed entirely of triangular facets. Our model is designed to generate these meshes from a learned vocabulary.</li>
-<li><strong>Geometric Embeddings:</strong> These are representations of triangles in a high-dimensional space that capture their geometric properties.</li>
-<li><strong>Graph Convolution Encoder:</strong> This is a type of neural network architecture designed to operate on graph-structured data.</li>
-<li><strong>Auto-regressive Sampling:</strong> A method of generating new data points based on previously generated ones.</li>
-</ul>
 </section>
 </section>
 <section id="benefits" class="level2">
