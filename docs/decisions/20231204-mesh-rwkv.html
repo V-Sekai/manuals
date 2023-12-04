@@ -115,9 +115,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
   <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
   <li><a href="#problem" id="toc-problem" class="nav-link" data-scroll-target="#problem">Problem</a></li>
-  <li><a href="#strategy" id="toc-strategy" class="nav-link" data-scroll-target="#strategy">Strategy</a>
+  <li><a href="#strategy" id="toc-strategy" class="nav-link" data-scroll-target="#strategy">Strategy</a></li>
+  <li><a href="#step-1-learning-a-vocabulary-for-triangle-meshes" id="toc-step-1-learning-a-vocabulary-for-triangle-meshes" class="nav-link" data-scroll-target="#step-1-learning-a-vocabulary-for-triangle-meshes">Step 1: Learning a Vocabulary for Triangle Meshes</a></li>
+  <li><a href="#step-2-autoregressive-mesh-generation" id="toc-step-2-autoregressive-mesh-generation" class="nav-link" data-scroll-target="#step-2-autoregressive-mesh-generation">Step 2: Autoregressive Mesh Generation</a>
   <ul class="collapse">
-  <li><a href="#glossary-of-existing-terms" id="toc-glossary-of-existing-terms" class="nav-link" data-scroll-target="#glossary-of-existing-terms">Glossary of Existing Terms</a></li>
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   </ul></li>
   <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
   <li><a href="#drawbacks" id="toc-drawbacks" class="nav-link" data-scroll-target="#drawbacks">Drawbacks</a></li>
@@ -154,23 +156,33 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="strategy" class="level2">
 <h2 class="anchored" data-anchor-id="strategy">Strategy</h2>
-<p>Our strategy revolves around the creation of a model called MeshRWKV. This model will be specifically trained for Elixir using RWKV4. The process involves two main steps:</p>
-<ol type="1">
-<li><p><strong>Learning a Vocabulary for Triangle Meshes:</strong> The first step is to learn a vocabulary that can accurately represent triangle meshes. This vocabulary will serve as the foundation for our mesh generation.</p></li>
-<li><p><strong>Autoregressive Mesh Generation:</strong> Once we have our vocabulary, we use it for autoregressive generation of a mesh. This process is carried out by an encoder-decoder network. This network features vector quantization at its bottleneck, which allows us to maintain the compactness and coherence of the generated meshes.</p></li>
-</ol>
-<p>After the training phase, our model will be capable of directly sampling meshes as sequences from this vocabulary. This means that given a sequence of words from our vocabulary, the model can generate a corresponding mesh.</p>
-<section id="glossary-of-existing-terms" class="level3">
-<h3 class="anchored" data-anchor-id="glossary-of-existing-terms">Glossary of Existing Terms</h3>
-<ol type="1">
-<li><p><strong>Encoder-Decoder Network:</strong> This is a type of artificial neural network designed to convert inputs into a set of features, and then decode those features to produce a new output. It’s often used in machine translation and image recognition tasks.</p></li>
-<li><p><strong>Vector Quantization (VQ):</strong> This is a technique often used in lossy data compression. In the context of our model, VQ is used at the bottleneck of the encoder-decoder network to maintain the compactness and coherence of the generated meshes.</p></li>
-<li><p><strong>RWKV4:</strong> This is a robust and efficient model architecture called Receptance Weighted Key Value (RWKV) that we’re using to train our MeshRWKV model for Elixir.</p></li>
-<li><p><strong>MeshRWKV:</strong> This is the model we’re proposing. It’s specifically trained for Elixir using RWKV4 and uses an encoder-decoder network with vector quantization to generate triangle meshes from a learned vocabulary.</p></li>
-<li><p><strong>Autoregressive Model:</strong> This is a type of statistical model used for time series data. In our case, we’re using it to generate a mesh based on the sequence of words from our learned vocabulary.</p></li>
-<li><p><strong>Elixir:</strong> This is a functional, concurrent, general-purpose programming language that runs on the Erlang virtual machine (BEAM). We’re training our MeshRWKV model specifically for this language.</p></li>
-<li><p><strong>Triangle Meshes:</strong> These are a type of polygon mesh commonly used in 3D computer graphics. They’re composed entirely of triangular facets. Our model is designed to generate these meshes from a learned vocabulary.</p></li>
-</ol>
+<p>The MeshRWKV model implementation is a sequence-based approach to autoregressively generate triangle meshes as sequences of triangles. The conversion process to RWKV4 can be broken down into two main steps:</p>
+</section>
+<section id="step-1-learning-a-vocabulary-for-triangle-meshes" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-learning-a-vocabulary-for-triangle-meshes">Step 1: Learning a Vocabulary for Triangle Meshes</h2>
+<p>The first step involves learning a vocabulary that can accurately represent triangle meshes from a large collection of 3D object meshes. This allows triangles to be encoded to and decoded from this embedding.</p>
+<p>A graph convolution encoder is employed, operating on triangles of a mesh and their neighborhood to extract geometrically rich features that capture the intricate details of 3D shapes. These features are quantized as embeddings of a codebook using residual quantization, effectively reducing sequence lengths of the mesh representation.</p>
+<p>These embeddings are sequenced and then decoded by a 1D ResNet guided by a reconstruction loss. This phase lays the groundwork for the subsequent training of the transformer.</p>
+</section>
+<section id="step-2-autoregressive-mesh-generation" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-autoregressive-mesh-generation">Step 2: Autoregressive Mesh Generation</h2>
+<p>The next step is to train RWKV4, which leverages these quantized geometric embeddings. Given a sequence of geometric embeddings extracted from the triangles of a mesh, the transformer is trained to predict the codebook index of the next embedding in the sequence.</p>
+<p>Once trained, the transformer can be auto-regressively sampled to predict sequences of embeddings. These embeddings can then be decoded to generate novel and diverse mesh structures that display efficient, irregular triangulations similar to human-crafted meshes.</p>
+<section id="key-terms" class="level3">
+<h3 class="anchored" data-anchor-id="key-terms">Key Terms</h3>
+<ul>
+<li><p><strong>Encoder-Decoder Network:</strong> A type of artificial neural network designed to convert inputs into a set of features, and then decode those features to produce a new output.</p></li>
+<li><p><strong>Residual Quantization:</strong> A technique used to reduce the sequence lengths of the mesh representation.</p></li>
+<li><p><strong>1D ResNet:</strong> A type of convolutional neural network that is used to decode the sequenced embeddings.</p></li>
+<li><p><strong>RWKV4:</strong> A robust and efficient model architecture called Receptance Weighted Key Value (RWKV) that we’re using to train our MeshRWKV model for Elixir.</p></li>
+<li><p><strong>MeshRWKV:</strong> The model we’re proposing. It’s specifically trained for Elixir using RWKV4 and uses an encoder-decoder network with vector quantization to generate triangle meshes from a learned vocabulary.</p></li>
+<li><p><strong>Autoregressive Model:</strong> A type of statistical model used for time series data. In our case, we’re using it to generate a mesh based on the sequence of words from our learned vocabulary.</p></li>
+<li><p><strong>Elixir:</strong> A functional, concurrent, general-purpose programming language that runs on the Erlang virtual machine (BEAM). We’re training our MeshRWKV model specifically for this language.</p></li>
+<li><p><strong>Triangle Meshes:</strong> A type of polygon mesh commonly used in 3D computer graphics. They’re composed entirely of triangular facets. Our model is designed to generate these meshes from a learned vocabulary.</p></li>
+<li><p><strong>Geometric Embeddings:</strong> These are representations of triangles in a high-dimensional space that capture their geometric properties.</p></li>
+<li><p><strong>Graph Convolution Encoder:</strong> This is a type of neural network architecture designed to operate on graph-structured data.</p></li>
+<li><p><strong>Auto-regressive Sampling:</strong> A method of generating new data points based on previously generated ones.</p></li>
+</ul>
 </section>
 </section>
 <section id="benefits" class="level2">
