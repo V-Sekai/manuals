@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Mon, 04 Dec 2023 05:15:41 GMT</lastBuildDate>
+<lastBuildDate>Mon, 04 Dec 2023 06:26:55 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -66,11 +66,11 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Mon, 04 Dec 2023 05:15:41 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:26:55 GMT</pubDate>
 </item>
 <item>
   <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20231204-mesh-rwkv.html</link>
+  <link>https://v-sekai.github.io/manuals/decisions/20231203-mesh-rwkv.html</link>
   <description><![CDATA[ 
 
 
@@ -177,8 +177,130 @@
 </section>
 
  ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20231204-mesh-rwkv.html</guid>
-  <pubDate>Mon, 04 Dec 2023 05:15:41 GMT</pubDate>
+  <guid>https://v-sekai.github.io/manuals/decisions/20231203-mesh-rwkv.html</guid>
+  <pubDate>Mon, 04 Dec 2023 06:26:55 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20231203-graphsage-embedding-generation.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="draft-graphsage-embedding-algorithm-explanation" class="level1">
+<h1>Draft: GraphSAGE Embedding Algorithm Explanation</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li>Status: Draft</li>
+<li>Deciders: V-Sekai</li>
+<li>Tags: V-Sekai</li>
+</ul>
+</section>
+<section id="the-backdrop" class="level2">
+<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
+<p>In the world of graph-based machine learning, the GraphSAGE algorithm has emerged as a powerful tool for generating node embeddings. It’s an inductive method that learns to generate embeddings by leveraging node feature information and the graph structure.</p>
+</section>
+<section id="the-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
+<p>Understanding the GraphSAGE algorithm can be challenging due to its complex nature and the use of various mathematical concepts. This proposal aims to break down the algorithm into understandable components and explain how it works in a clear and concise manner.</p>
+</section>
+<section id="the-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
+<section id="intuition" class="level3">
+<h3 class="anchored" data-anchor-id="intuition">Intuition</h3>
+<ul>
+<li>The algorithm incrementally aggregates and updates the representations of each node by considering the information from its local neighbors at each depth.</li>
+<li>As the depth K increases, nodes incorporate information from a wider neighborhood.</li>
+<li>The choice of aggregator functions can vary and has a significant impact on the performance and the type of information aggregated.</li>
+</ul>
+</section>
+<section id="inputs" class="level3">
+<h3 class="anchored" data-anchor-id="inputs">Inputs</h3>
+<ol type="1">
+<li><strong>Graph G(V,E)G(V,E)</strong>: The input graph with nodes VV and edges EE.</li>
+<li><strong>Input Features {xv∀v∈V}{xv​∀v∈V}</strong>: The features for each node in the graph.</li>
+<li><strong>Depth KK</strong>: The depth of the search or the number of iterations.</li>
+<li><strong>Weight Matrices Wk∀k∈{1…K}Wk​∀k∈{1…K}</strong>: The weight matrices used for each depth kk.</li>
+<li><strong>Non-linearity σσ</strong>: A non-linear activation function.</li>
+<li><strong>Aggregator Functions AGGREGATEk∀k∈{1…K}AGGREGATEk​∀k∈{1…K}</strong>: Functions that aggregate information from the node’s neighbors.</li>
+<li><strong>Neighborhood Function NN</strong>: A function that returns the set of neighbors for a given node.</li>
+</ol>
+</section>
+<section id="output" class="level3">
+<h3 class="anchored" data-anchor-id="output">Output</h3>
+<ul>
+<li><strong>Vector Representations zv∀v∈Vzv​∀v∈V</strong>: The resulting vector representations for all nodes in the graph.</li>
+</ul>
+</section>
+<section id="steps" class="level3">
+<h3 class="anchored" data-anchor-id="steps">Steps</h3>
+<ol type="1">
+<li><strong>Initialization</strong>: Each node’s feature vector xvxv​ is used as the initial representation hv0hv0​.</li>
+<li><strong>Iteration for Depth KK</strong>: For each depth level from 1 to KK:
+<ul>
+<li>For each node vv in the graph:
+<ul>
+<li>Aggregate the representations of the nodes in its neighborhood N(v)N(v) using the aggregator function AGGREGATEkAGGREGATEk​ for that depth. This results in a new vector hN(v)khN(v)k​.</li>
+<li>Concatenate this aggregated vector with the node’s current representation hvk−1hvk−1​, and apply the weight matrix WkWk​ followed by the non-linearity σσ. This results in the updated representation hvkhvk​.</li>
+<li>Normalize the updated representation.</li>
+</ul></li>
+</ul></li>
+<li><strong>Final Representations</strong>: After the final iteration KK, the output for each node vv, zvzv​, is set as its last representation hvKhvK​.</li>
+</ol>
+</section>
+<section id="intuition-1" class="level3">
+<h3 class="anchored" data-anchor-id="intuition-1">Intuition</h3>
+<ul>
+<li>The algorithm incrementally aggregates and updates the representations of each node by considering the information from its local neighbors at each depth.</li>
+<li>As the depth KK increases, nodes incorporate information from a wider neighborhood.</li>
+<li>The choice of aggregator functions can vary and has a significant impact on the performance and the type of information aggregated.</li>
+</ul>
+</section>
+<section id="key-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="key-concepts">Key Concepts</h3>
+<ul>
+<li><strong>Inductive Learning</strong>: Unlike traditional methods that require retraining for new nodes, this algorithm can generate embeddings for unseen nodes.</li>
+<li><strong>Flexibility</strong>: The algorithm can be adapted to different types of graphs and feature sets.</li>
+<li><strong>Scalability</strong>: It’s designed to work efficiently on large graphs.</li>
+</ul>
+<p>Understanding this algorithm helps in applying it to real-world graph problems, such as social network analysis, recommendation systems, and more, where the structure and features of the graph can be leveraged to learn informative node embeddings.</p>
+</section>
+</section>
+<section id="the-upside" class="level2">
+<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
+<p>The GraphSAGE algorithm provides a flexible and scalable solution for generating node embeddings in large graphs. It allows for inductive learning, which means it can handle unseen nodes without requiring retraining. This makes it particularly useful for dynamic graphs where nodes may be added or removed over time.</p>
+</section>
+<section id="the-downside" class="level2">
+<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
+<p>The algorithm’s performance heavily depends on the choice of aggregator functions and the quality of node features. Poorly chosen functions or low-quality features can lead to suboptimal embeddings. Additionally, the algorithm may not perform well on graphs with complex structures or those that lack sufficient node feature information.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>Alternative methods for generating node embeddings, such as transductive learning algorithms, could be considered. However, these methods typically require retraining when new nodes are added, making them less suitable for dynamic graphs.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>While GraphSAGE is highly effective for many graph-based machine learning tasks, it may not be the best choice for all scenarios. For instance, in cases where the graph structure is less important than node features, other methods like feature-based machine learning models might be more appropriate.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
+<p>Yes, this explanation of the GraphSAGE algorithm has been developed by us, with assistance from AI assistant Aria.</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20231203-graphsage-embedding-generation.html</guid>
+  <pubDate>Mon, 04 Dec 2023 06:26:55 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -271,7 +393,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231201-xr-hands-animation-node.html</guid>
-  <pubDate>Mon, 04 Dec 2023 05:15:41 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:26:55 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1105,7 +1227,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231201-headless-launcher-backend.html</guid>
-  <pubDate>Mon, 04 Dec 2023 05:15:41 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:26:55 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1203,7 +1325,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231127-performance-test.html</guid>
-  <pubDate>Mon, 04 Dec 2023 05:15:41 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:26:55 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1294,7 +1416,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231126-v-sekai-report.html</guid>
-  <pubDate>Mon, 04 Dec 2023 05:15:41 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:26:55 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1423,7 +1545,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231125-v-sekai-report.html</guid>
-  <pubDate>Mon, 04 Dec 2023 05:15:41 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:26:55 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1488,7 +1610,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-upload-creative-commons-fbx-test-files.html</guid>
-  <pubDate>Mon, 04 Dec 2023 05:15:41 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:26:55 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1554,7 +1676,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-maintain-svgcleaner.html</guid>
-  <pubDate>Mon, 04 Dec 2023 05:15:41 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:26:55 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1619,7 +1741,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-elixir-definition-of-godot-types.html</guid>
-  <pubDate>Mon, 04 Dec 2023 05:15:41 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:26:55 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1703,7 +1825,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231112-validation-service.html</guid>
-  <pubDate>Mon, 04 Dec 2023 05:15:41 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:26:55 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1779,7 +1901,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231112-archive-projects.html</guid>
-  <pubDate>Mon, 04 Dec 2023 05:15:41 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:26:55 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1883,7 +2005,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231111-ayon-evaluation.html</guid>
-  <pubDate>Mon, 04 Dec 2023 05:15:41 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:26:55 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2050,7 +2172,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-v-sekai-dependencies.html</guid>
-  <pubDate>Mon, 04 Dec 2023 05:15:41 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:26:55 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2125,7 +2247,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-efficient-llm-training.html</guid>
-  <pubDate>Mon, 04 Dec 2023 05:15:41 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:26:55 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2197,7 +2319,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-blender-manual-t-pose.html</guid>
-  <pubDate>Mon, 04 Dec 2023 05:15:41 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:26:55 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2271,7 +2393,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-better-pipeline-tools.html</guid>
-  <pubDate>Mon, 04 Dec 2023 05:15:41 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:26:55 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2346,7 +2468,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-ai-based-outlier-detection.html</guid>
-  <pubDate>Mon, 04 Dec 2023 05:15:41 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:26:55 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2423,111 +2545,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231109-discord-polygonjs-generator.html</guid>
-  <pubDate>Mon, 04 Dec 2023 05:15:41 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20231109-changelog.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="v-sekai-changelog---november-2023" class="level1">
-<h1>V-Sekai Changelog - November 2023</h1>
-<section id="released" class="level2">
-<h2 class="anchored" data-anchor-id="released">[Released]</h2>
-<section id="xr-grid" class="level3">
-<h3 class="anchored" data-anchor-id="xr-grid">xr-grid</h3>
-<p>V-Sekai.xr-grid is a VR interaction tool.</p>
-<ul>
-<li><strong>First release</strong></li>
-<li><strong>Release Version</strong>: 0.1.0-rc1</li>
-<li><strong>Changes</strong>: The game name environment variable has been updated in the build workflow. A new commit was also made to set the draft flag to false for the release.</li>
-<li><a href="https://github.com/V-Sekai/V-Sekai.xr-grid/releases/tag/0.1.0-rc1">Release Link</a></li>
-</ul>
-</section>
-<section id="model_explorer" class="level3">
-<h3 class="anchored" data-anchor-id="model_explorer">model_explorer</h3>
-<p>V-Sekai Model Explorer is a 3D model viewer built with Godot 4. It supports various model formats like VRM and glTF 2.0. With this tool, you can dive deep into the components of a 3D model - inspecting meshes, materials, textures, and animations.</p>
-<ul>
-<li><strong>First release</strong></li>
-<li><strong>Release Version</strong>: v0.2.0-rc2</li>
-<li><strong>Changes</strong>: The GAME_NAME environment variable value has been changed to “vsekai_model_explorer_”. The macos_editor_macos_deploy job from builds.yml has been removed. A README.md for GitHub actions has been added and the warning has been moved to the top of the file.</li>
-<li><a href="https://github.com/V-Sekai/TOOL_model_explorer/releases/tag/v0.2.0-rc2">Release Link</a></li>
-</ul>
-</section>
-</section>
-<section id="unreleased" class="level2">
-<h2 class="anchored" data-anchor-id="unreleased">[Unreleased]</h2>
-<section id="added" class="level3">
-<h3 class="anchored" data-anchor-id="added">Added</h3>
-<ul>
-<li><strong>MacOS Editor Builds</strong>: MacOS editor builds have been added to the project. (<a href="https://github.com/V-Sekai/v-sekai-game/commit/df041f0">Commit: df041f0</a>)</li>
-<li><strong>Export Mac Game</strong>: The game can now be exported for Mac. Pending code-signing and App support.</li>
-<li><strong>Golang Installation</strong>: Golang has been installed in the project. (<a href="https://github.com/V-Sekai/v-sekai-game/commit/c25456b">Commit: c25456b</a>)</li>
-<li><strong>Unidot Dependency Removal</strong>: The dependency on the post-import script by Unidot has been removed after conversion is complete. This means the converted assets will work standalone without the Unidot importer, with one exception*.</li>
-<li><strong>Supported Asset Types</strong>: Supported asset types are listed in the readme. It should support many types of meshes, animations, Standard shader materials, scenes/prefabs and physics objects.</li>
-<li><strong>Optimization for Generating Tangents in Mikktspace:</strong> An optimization has been added for generating tangents in mikktspace. (<a href="https://github.com/godotengine/godot/pull/83648/files">Pull Request #83648</a>)</li>
-</ul>
-</section>
-<section id="changed" class="level3">
-<h3 class="anchored" data-anchor-id="changed">Changed</h3>
-<ul>
-<li><strong>Game Name Variable</strong>: A game name variable has been implemented on Github Actions. (<a href="https://github.com/V-Sekai/v-sekai-game/commit/08d87db">Commit: 08d87db</a>)</li>
-<li><strong>Godot Engine Repository Update</strong>: The Godot engine repository and reference in build workflows have been updated. (<a href="https://github.com/V-Sekai/v-sekai-game/commit/f7f609d">Commit: f7f609d</a>)</li>
-<li><strong>Imports Update</strong>: Imports in the project have been updated. (<a href="https://github.com/V-Sekai/v-sekai-game/commit/896cb7c">Commit: 896cb7c</a>)</li>
-<li><strong>Unidot Beta Release</strong>: Unidot is now in a beta / early RC for the first release.</li>
-</ul>
-</section>
-<section id="fixed" class="level3">
-<h3 class="anchored" data-anchor-id="fixed">Fixed</h3>
-<ul>
-<li>Not applicable for this month.</li>
-</ul>
-</section>
-<section id="deprecated" class="level3">
-<h3 class="anchored" data-anchor-id="deprecated">Deprecated</h3>
-<ul>
-<li>Not applicable for this month.</li>
-</ul>
-</section>
-<section id="removed" class="level3">
-<h3 class="anchored" data-anchor-id="removed">Removed</h3>
-<ul>
-<li>Not applicable for this month.</li>
-</ul>
-</section>
-<section id="security" class="level3">
-<h3 class="anchored" data-anchor-id="security">Security</h3>
-<ul>
-<li><strong>Security Best Practices</strong>: Applied security best practices as recommended by StepSecurity. (<a href="https://github.com/V-Sekai/v-sekai-game/commit/d641001">Commit: d641001</a>)</li>
-</ul>
-<p>This project does not adhere to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
-</section>
-</section>
-<section id="previous-releases" class="level2">
-<h2 class="anchored" data-anchor-id="previous-releases">[Previous Releases]</h2>
-<ul>
-<li>Not applicable for this month.</li>
-</ul>
-</section>
-<section id="misc" class="level2">
-<h2 class="anchored" data-anchor-id="misc">Misc</h2>
-<ul>
-<li>Lyuma, a member of the V-Sekai team, recently attended the Godot Engine Munich 2023 conference.</li>
-<li>Shaders or MonoBehaviors/scripts are not currently supported. This will not be part of the initial release. The goal for now is scene / character / animation conversion.</li>
-<li>AnimationTree uses the standalone runtime/anim_tree.gd script as a blackboard system to simulate unity parameters. This file should remain.</li>
-<li><a href="https://github.com/V-Sekai/Unidot_Importer">Unidot Importer Github Link</a></li>
-<li>A wild spooky dev snapshot appears! 👻 🎃 Contributors are making great progress on solving regressions in Godot 4.2! This new 4.2 beta 4 should be significantly more stable and reliable to upgrade 4.1 projects (not perfect yet though!). <a href="https://godotengine.org/article/dev-snapshot-godot-4-2-beta-4/">Godot Engine Dev snapshot: Godot 4.2 beta 4</a> We continue iterating quickly on beta snapshots for Godot 4.2 to ensure that we can solve regressions before the stable release.</li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20231109-changelog.html</guid>
-  <pubDate>Mon, 04 Dec 2023 05:15:41 GMT</pubDate>
+  <pubDate>Mon, 04 Dec 2023 06:26:55 GMT</pubDate>
 </item>
 </channel>
 </rss>
