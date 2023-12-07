@@ -25,7 +25,7 @@ Day | Topic | Hours
 5   | Worked on Github godot engine and UFBX Part 1 | 2h
 5   | Worked on Github godot engine UFBX Part 2  | 1.5h
 6   | Write two proposals for mesh tangent unification and object using ImporterMesh and other paperwork.  | 2h
-7   | Worked on Github godot engine.  Optimize tangents and add obj unification. | 2h
+7   | Worked on Github godot engine.  Optimize tangents and add obj tangent unification. | 2h
 
 ### Fixed
 
