@@ -21,7 +21,7 @@
 Day | Topic | Hours
 ----| ----- | -----
 4   | Worked on UFBX | 1h
-4   | Juan & Adam review of workpackage design and implementation. Priority list. UFBX. USD notes on MTLX materials.  | 2h
+4   | Juan & Adam review of workpackage design and implementation. Priority list. Non-priority list. UFBX. AnimationNode. USD notes on MTLX materials.  | 2h
 5   | Worked on Github godot engine and UFBX Part 1 | 2h
 5   | Worked on Github godot engine UFBX Part 2  | 1.5h
 6   | Write two proposals for mesh tangent unification and object using ImporterMesh and other paperwork.  | 2h
