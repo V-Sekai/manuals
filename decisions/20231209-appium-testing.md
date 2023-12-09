@@ -1,10 +1,10 @@
-# Proposed: Appium Testing
+# Proposed: Appium Testing for Single Device on Windows 11
 
 ## Metadata
 
-- Status: Proposed
-- Deciders: V-Sekai
-- Tags: V-Sekai
+- **Status**: Proposed
+- **Deciders**: V-Sekai
+- **Tags**: V-Sekai
 
 ## The Backdrop
 
@@ -12,23 +12,15 @@ In the rapidly evolving world of game development, ensuring a seamless user expe
 
 ## The Challenge
 
-The primary challenge lies in implementing a robust testing framework that can handle cross-platform compatibility, 3D model conversion, UI testing, multiplayer load testing, and cost-effective testing solutions.
+The primary challenge lies in implementing a robust testing framework that can handle cross-platform compatibility, specifically for VR compatible desktop mode on Windows 11.
 
 ## The Strategy
 
-Our strategy involves leveraging the capabilities of Appium, a versatile testing framework, for cross-platform testing. This will ensure consistent game performance across different devices like iPads, Windows 11, OSX, and web browsers.
-
-We also plan to automate the conversion of FBX files into GLB format, a common task in front-end game development involving 3D models.
-
-For UI testing, we will focus on the functionality and user-friendliness of the V-Sekai interface.
-
-To ensure scalability in a multiplayer environment, we will use web clients for multiplayer load testing.
-
-Lastly, to achieve cost-effective testing, we propose using Digital Ocean's droplets and serverless functions to simulate a large number of users.
+Our strategy involves leveraging the capabilities of Appium, a versatile testing framework, for cross-platform testing. However, for this specific test, we will only be focusing on one device type - Windows 11 desktop.
 
 ## The Upside
 
-Implementing this strategy will ensure a high-quality gaming experience across various platforms. It will also streamline the process of 3D model conversion and improve the user interface of V-Sekai. Moreover, it will help us maintain server stability under heavy loads and provide a cost-effective solution for large-scale testing.
+Implementing this strategy will ensure a high-quality gaming experience across various platforms.
 
 ## The Downside
 
