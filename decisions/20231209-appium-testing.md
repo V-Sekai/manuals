@@ -1,4 +1,4 @@
-# Proposed: Appium Testing for Single Device on Windows 11
+# Appium Testing for Windows 11
 
 ## Metadata
 
@@ -8,32 +8,31 @@
 
 ## The Backdrop
 
-In the rapidly evolving world of game development, ensuring a seamless user experience across multiple platforms is paramount. This requires rigorous testing methodologies that can effectively simulate real-world scenarios and identify potential issues before they impact the end-user.
+Game development needs seamless user experience across platforms. This requires effective testing methodologies.
 
 ## The Challenge
 
-The primary challenge lies in implementing a robust testing framework that can handle cross-platform compatibility, specifically for VR compatible desktop mode on Windows 11.
+The challenge is to implement a robust testing framework for cross-platform compatibility, specifically for VR compatible desktop mode on Windows 11.
 
 ## The Strategy
 
-Our strategy involves leveraging the capabilities of Appium, a versatile testing framework, for cross-platform testing. However, for this specific test, we will only be focusing on one device type - Windows 11 desktop.
+We propose using Appium for cross-platform testing, focusing on Windows 11 desktop.
 
 ## The Upside
 
-Implementing this strategy will ensure a high-quality gaming experience across various platforms.
+This strategy ensures high-quality gaming experience. The downside could be the resources required and potential unforeseen challenges.
 
 ## The Downside
 
-The main downside could be the time and resources required to implement and maintain this comprehensive testing strategy. Additionally, there may be unforeseen challenges or limitations associated with the tools and technologies involved.
+Other testing frameworks were considered but our proposed strategy offers the best balance of effectiveness and efficiency.
 
 ## The Road Not Taken
 
-Alternative testing frameworks and strategies could have been considered. However, given the specific requirements and constraints of this project, we believe that our proposed strategy offers the best balance of effectiveness and efficiency.
+Our strategy may not address infrequent or edge cases in game development. These will be identified and addressed as needed.
 
 ## The Infrequent Use Case
 
-While our strategy covers a wide range of common scenarios in game development, there may be infrequent or edge cases that it does not address. We will need to identify these cases and develop appropriate solutions as needed.
-
+Yes, this strategy is core to our project and will be implemented by us.
 ## In Core and Done by Us?
 
 Yes, this strategy is core to our project and will be implemented by our team.
