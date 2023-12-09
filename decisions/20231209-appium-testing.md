@@ -33,6 +33,7 @@ Our strategy may not address infrequent or edge cases in game development. These
 ## The Infrequent Use Case
 
 Yes, this strategy is core to our project and will be implemented by us.
+
 ## In Core and Done by Us?
 
 Yes, this strategy is core to our project and will be implemented by our team.
