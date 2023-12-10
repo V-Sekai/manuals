@@ -22,7 +22,7 @@ Our primary challenge is automating the testing process using Appium. A signific
 2. Launch the server using the `appium` command.
 3. Use `appium driver list` and `appium driver update [driverName]`. For iOS, install drivers with `appium driver install xcuitest` and install `appium driver install xcuitest`
 4. Install plugins with `appium plugin install [pluginName]` and integrate them using `appium --use-plugins=[appiumPlugin]`.
-2. Install all the plugins
+5. Install all the plugins
 
 ```
 appium plugin install execute-driver
@@ -34,15 +34,17 @@ appium plugin install relaxed-caps
 #### Windows Client Instructions:
 
 1. Install scoop npm.
+
 ```
 scoop install sudo
 # sudo scoop install tailscale # optional
 scoop install nodejs
 ```
-1. On Windows, install the Appium client using Node Package Manager (NPM) with the command `npm install -g appium`.
-1. Force Install https://github.com/microsoft/WinAppDriver/releases/download/v1.2.1/WindowsApplicationDriver_1.2.1.msi
-1. Use `appium driver list` and `appium driver update [driverName]`. For Windows, install drivers with `appium driver install --source=npm appium-windows-driver`
-2. Install all the plugins
+
+2. On Windows, install the Appium client using Node Package Manager (NPM) with the command `npm install -g appium`.
+3. Force Install https://github.com/microsoft/WinAppDriver/releases/download/v1.2.1/WindowsApplicationDriver_1.2.1.msi
+4. Use `appium driver list` and `appium driver update [driverName]`. For Windows, install drivers with `appium driver install --source=npm appium-windows-driver`
+5. Install all the plugins
 
 ```
 appium plugin install execute-driver
@@ -50,7 +52,8 @@ appium plugin install images
 appium plugin install universal-xml
 appium plugin install relaxed-caps
 ```
-3. Run `appium --use-plugins "execute-driver,images,universal-xml,relaxed-caps"`
+
+6. Run `appium --use-plugins "execute-driver,images,universal-xml,relaxed-caps"`
 
 Ensure that the network settings and firewall configurations on both the Windows client and the Mac server are compatible for seamless communication.
 
