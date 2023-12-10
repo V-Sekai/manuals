@@ -2,7 +2,7 @@
 
 ## Metadata
 
-- **Status**: Proposed
+- **Status**: Draft
 - **Deciders**: V-Sekai, fire
 - **Tags**: V-Sekai
 
@@ -18,17 +18,16 @@ Our primary challenge is automating the testing process using Appium. A signific
 
 #### Mac OS Server Instructions:
 
-1. **Install Appium Server**: Install the Appium server on the Mac using `sudo npm install -g appium@next`. Make sure Node.js version 12 or higher is installed.
+1. **Install Appium Server**: Install the Appium server on the Mac using `sudo npm install -g appium`. Make sure Node.js version 12 or higher is installed.
 2. **Start Appium Server**: Launch the server using the `appium` command.
-3. **Install Necessary Drivers**: For iOS, install drivers with `appium driver install xcuitest`.
-4. **Verify Installation**: Check the setup with `appium-doctor` using commands like `appium-doctor --version` and `appium-doctor —-ios`.
-5. **Manage Drivers**: Use `appium driver list` and `appium driver update [driverName]`.
-6. **Use Plugins**: Install plugins with `appium plugin install [pluginName]` and integrate them using `appium --use-plugins=[appiumPlugin]`.
+3. **Install Necessary Drivers**: Use `appium driver list` and `appium driver update [driverName]`. For iOS, install drivers with `appium driver install xcuitest` and install `appium driver install xcuitest`
+4. **Use Plugins**: Install plugins with `appium plugin install [pluginName]` and integrate them using `appium --use-plugins=[appiumPlugin]`.
 
 #### Windows Client Instructions:
 
+1. Install scoop npm. `scoop install nodejs`
 1. **Install Appium Client**: On Windows, install the Appium client using Node Package Manager (NPM) with the command `npm install -g appium`.
-2. **Configure Client**: Set up your test scripts or Appium client configuration to point to the Appium server running on the Mac. This includes specifying the server's IP address and port number.
+1. **Install Necessary Drivers**: Use `appium driver list` and `appium driver update [driverName]`. For Windows, install drivers with `appium driver install xcuitest`
 
 Ensure that the network settings and firewall configurations on both the Windows client and the Mac server are compatible for seamless communication.
 
