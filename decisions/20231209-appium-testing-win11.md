@@ -27,7 +27,7 @@ Our primary challenge is automating the testing process using Appium. A signific
 
 1. Install scoop npm. `scoop install nodejs`
 1. **Install Appium Client**: On Windows, install the Appium client using Node Package Manager (NPM) with the command `npm install -g appium`.
-1. **Install Necessary Drivers**: Use `appium driver list` and `appium driver update [driverName]`. For Windows, install drivers with `appium driver install xcuitest`
+1. **Install Necessary Drivers**: Use `appium driver list` and `appium driver update [driverName]`. For Windows, install drivers with `appium driver install --source=npm appium-windows-driver`
 
 Ensure that the network settings and firewall configurations on both the Windows client and the Mac server are compatible for seamless communication.
 
