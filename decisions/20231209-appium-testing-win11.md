@@ -16,18 +16,21 @@ Our primary challenge is automating the testing process using Appium. A signific
 
 ## Solution
 
-To set up and use Appium 2 for a client-server configuration, specifically between a Windows client and a Mac OS server, follow these steps:
+#### Mac OS Server Instructions:
 
-1. Appium 2 introduces several changes like decoupling individual Appium drivers, introducing Appium plugins, supporting W3C protocol standards, and updates to Appium capabilities【28†source】.
-2. On your Mac, install the latest version of Appium server using the command `sudo npm install -g appium@next`. Ensure that Node.js version 12 or higher is installed. To start the Appium server, use the `appium` command and verify the version with `appium -v`.
-3. In Appium 2, drivers are installed individually.
-4. Use the `appium-doctor` npm package to verify installations. Commands like `appium-doctor --version`, `appium-doctor —-windows`, can be used to check the setup for Android and iOS devices.
-5. To list and update Appium drivers, use commands like `appium driver list`, `appium driver list --updates`, and `appium driver update [driverName]`.
-6. Appium 2 allows the use of plugins to extend its functionality. Install plugins using `appium plugin install [pluginName]` and use them with the server using `appium --use-plugins=[appiumPlugin]`.
-7. DesiredCapabilities in Appium are now renamed as Appium capabilities and should be prefixed with the `appium:` keyword. This is used in Appium Inspector or in the code to launch simulators or real devices.
-8. There's an `appium:options` section introduced to capture multiple Appium capabilities. This is used in configuration files like WebdriverIO's `wdio.conf.ts` file.
+1. **Install Appium Server**: Install the Appium server on the Mac using `sudo npm install -g appium@next`. Make sure Node.js version 12 or higher is installed.
+2. **Start Appium Server**: Launch the server using the `appium` command.
+3. **Install Necessary Drivers**: For iOS, install drivers with `appium driver install xcuitest`.
+4. **Verify Installation**: Check the setup with `appium-doctor` using commands like `appium-doctor --version` and `appium-doctor —-ios`.
+5. **Manage Drivers**: Use `appium driver list` and `appium driver update [driverName]`.
+6. **Use Plugins**: Install plugins with `appium plugin install [pluginName]` and integrate them using `appium --use-plugins=[appiumPlugin]`.
 
-Ensure that the network and firewall settings on both the Windows (client) and Mac OS (server) machines allow for proper communication between them. Also, keep in mind the specific requirements for the mobile platform you are testing.
+#### Windows Client Instructions:
+
+1. **Install Appium Client**: On Windows, install the Appium client using Node Package Manager (NPM) with the command `npm install -g appium`.
+2. **Configure Client**: Set up your test scripts or Appium client configuration to point to the Appium server running on the Mac. This includes specifying the server's IP address and port number.
+
+Ensure that the network settings and firewall configurations on both the Windows client and the Mac server are compatible for seamless communication.
 
 ## Benefits
 
