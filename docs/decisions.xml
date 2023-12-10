@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Sat, 09 Dec 2023 23:59:38 GMT</lastBuildDate>
+<lastBuildDate>Sun, 10 Dec 2023 00:18:59 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -66,7 +66,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sat, 09 Dec 2023 23:59:38 GMT</pubDate>
+  <pubDate>Sun, 10 Dec 2023 00:18:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -131,7 +131,83 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231209-appium-testing.html</guid>
-  <pubDate>Sat, 09 Dec 2023 23:59:38 GMT</pubDate>
+  <pubDate>Sun, 10 Dec 2023 00:18:59 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20231209-appium-testing-win11.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="proposal-automating-game-testing-process-using-appium-2" class="level1">
+<h1>Proposal: Automating Game Testing Process Using Appium 2</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li><strong>Status</strong>: Proposed</li>
+<li><strong>Deciders</strong>: V-Sekai, fire</li>
+<li><strong>Tags</strong>: V-Sekai</li>
+</ul>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>In the field of game development, it’s crucial to provide a seamless user experience across various platforms. This requires the implementation of effective testing methodologies.</p>
+</section>
+<section id="problem" class="level2">
+<h2 class="anchored" data-anchor-id="problem">Problem</h2>
+<p>Our primary challenge is automating the testing process using Appium. A significant part of this strategy involves converting FBX files, which are commonly used formats for 3D models and animations, into GLB format.</p>
+</section>
+<section id="solution" class="level2">
+<h2 class="anchored" data-anchor-id="solution">Solution</h2>
+<p>To set up and use Appium 2 for a client-server configuration, specifically between a Windows client and a Mac OS server, follow these steps:</p>
+<ol type="1">
+<li>Appium 2 introduces several changes like decoupling individual Appium drivers, introducing Appium plugins, supporting W3C protocol standards, and updates to Appium capabilities【28†source】.</li>
+<li>On your Mac, install the latest version of Appium server using the command <code>sudo npm install -g appium@next</code>. Ensure that Node.js version 12 or higher is installed. To start the Appium server, use the <code>appium</code> command and verify the version with <code>appium -v</code>.</li>
+<li>In Appium 2, drivers are installed individually.</li>
+<li>Use the <code>appium-doctor</code> npm package to verify installations. Commands like <code>appium-doctor --version</code>, <code>appium-doctor —-windows</code>, can be used to check the setup for Android and iOS devices.</li>
+<li>To list and update Appium drivers, use commands like <code>appium driver list</code>, <code>appium driver list --updates</code>, and <code>appium driver update [driverName]</code>.</li>
+<li>Appium 2 allows the use of plugins to extend its functionality. Install plugins using <code>appium plugin install [pluginName]</code> and use them with the server using <code>appium --use-plugins=[appiumPlugin]</code>.</li>
+<li>DesiredCapabilities in Appium are now renamed as Appium capabilities and should be prefixed with the <code>appium:</code> keyword. This is used in Appium Inspector or in the code to launch simulators or real devices.</li>
+<li>There’s an <code>appium:options</code> section introduced to capture multiple Appium capabilities. This is used in configuration files like WebdriverIO’s <code>wdio.conf.ts</code> file.</li>
+</ol>
+<p>Ensure that the network and firewall settings on both the Windows (client) and Mac OS (server) machines allow for proper communication between them. Also, keep in mind the specific requirements for the mobile platform you are testing.</p>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<p>The proposed strategy will ensure a high-quality gaming experience by automating the testing process. It will also save time and resources by reducing manual testing efforts.</p>
+</section>
+<section id="risks" class="level2">
+<h2 class="anchored" data-anchor-id="risks">Risks</h2>
+<p>The implementation of this strategy may require substantial resources and could potentially present unforeseen challenges. Additionally, there might be compatibility issues between different versions of Appium and the operating systems.</p>
+</section>
+<section id="alternatives" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives">Alternatives</h2>
+<p>We have considered other testing frameworks, but our proposed strategy with Appium offers the best balance between effectiveness and efficiency.</p>
+</section>
+<section id="limitations" class="level2">
+<h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
+<p>Our strategy might not cover infrequent or edge cases in game development. However, these will be identified and addressed as they arise.</p>
+</section>
+<section id="ownership" class="level2">
+<h2 class="anchored" data-anchor-id="ownership">Ownership</h2>
+<p>Yes, this strategy is core to our project and will be implemented by our team.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
+</ol>
+<p>Assisted by Aria, an AI assistant.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20231209-appium-testing-win11.html</guid>
+  <pubDate>Sun, 10 Dec 2023 00:18:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -196,7 +272,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231209-appium-testing-fbx-to-gltf.html</guid>
-  <pubDate>Sat, 09 Dec 2023 23:59:38 GMT</pubDate>
+  <pubDate>Sun, 10 Dec 2023 00:18:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -293,7 +369,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231203-mesh-rwkv.html</guid>
-  <pubDate>Sat, 09 Dec 2023 23:59:38 GMT</pubDate>
+  <pubDate>Sun, 10 Dec 2023 00:18:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -363,7 +439,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231203-mesh-rwkv-test-metrics.html</guid>
-  <pubDate>Sat, 09 Dec 2023 23:59:38 GMT</pubDate>
+  <pubDate>Sun, 10 Dec 2023 00:18:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -486,7 +562,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231203-graphsage-embedding-generation.html</guid>
-  <pubDate>Sat, 09 Dec 2023 23:59:38 GMT</pubDate>
+  <pubDate>Sun, 10 Dec 2023 00:18:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -579,7 +655,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231201-xr-hands-animation-node.html</guid>
-  <pubDate>Sat, 09 Dec 2023 23:59:38 GMT</pubDate>
+  <pubDate>Sun, 10 Dec 2023 00:18:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1413,7 +1489,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231201-headless-launcher-backend.html</guid>
-  <pubDate>Sat, 09 Dec 2023 23:59:38 GMT</pubDate>
+  <pubDate>Sun, 10 Dec 2023 00:18:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1511,7 +1587,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231127-performance-test.html</guid>
-  <pubDate>Sat, 09 Dec 2023 23:59:38 GMT</pubDate>
+  <pubDate>Sun, 10 Dec 2023 00:18:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1602,7 +1678,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231126-v-sekai-report.html</guid>
-  <pubDate>Sat, 09 Dec 2023 23:59:38 GMT</pubDate>
+  <pubDate>Sun, 10 Dec 2023 00:18:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1731,7 +1807,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231125-v-sekai-report.html</guid>
-  <pubDate>Sat, 09 Dec 2023 23:59:38 GMT</pubDate>
+  <pubDate>Sun, 10 Dec 2023 00:18:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1796,7 +1872,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-upload-creative-commons-fbx-test-files.html</guid>
-  <pubDate>Sat, 09 Dec 2023 23:59:38 GMT</pubDate>
+  <pubDate>Sun, 10 Dec 2023 00:18:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1862,7 +1938,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-maintain-svgcleaner.html</guid>
-  <pubDate>Sat, 09 Dec 2023 23:59:38 GMT</pubDate>
+  <pubDate>Sun, 10 Dec 2023 00:18:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1927,7 +2003,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231114-elixir-definition-of-godot-types.html</guid>
-  <pubDate>Sat, 09 Dec 2023 23:59:38 GMT</pubDate>
+  <pubDate>Sun, 10 Dec 2023 00:18:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2011,7 +2087,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231112-validation-service.html</guid>
-  <pubDate>Sat, 09 Dec 2023 23:59:38 GMT</pubDate>
+  <pubDate>Sun, 10 Dec 2023 00:18:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2087,7 +2163,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231112-archive-projects.html</guid>
-  <pubDate>Sat, 09 Dec 2023 23:59:38 GMT</pubDate>
+  <pubDate>Sun, 10 Dec 2023 00:18:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2191,7 +2267,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231111-ayon-evaluation.html</guid>
-  <pubDate>Sat, 09 Dec 2023 23:59:38 GMT</pubDate>
+  <pubDate>Sun, 10 Dec 2023 00:18:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2358,7 +2434,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-v-sekai-dependencies.html</guid>
-  <pubDate>Sat, 09 Dec 2023 23:59:38 GMT</pubDate>
+  <pubDate>Sun, 10 Dec 2023 00:18:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2433,79 +2509,7 @@ font-style: inherit;">-F</span> file=@/path/to/file http://localhost:9333/dir/as
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231110-efficient-llm-training.html</guid>
-  <pubDate>Sat, 09 Dec 2023 23:59:38 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20231110-blender-manual-t-pose.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="accepted-overcoming-the-blender-t-pose-limitation-with-documentation" class="level1">
-<h1>Accepted: Overcoming the Blender T-Pose Limitation with Documentation</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li>Status: Accepted</li>
-<li>Deciders: V-Sekai, fire, Lyuma, Zodiepupper, Cthulhoo</li>
-<li>Tags: V-Sekai, VRM, Godot Engine, T-Pose, A-Pose</li>
-</ul>
-</section>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>The VRM importer and specification in Godot Engine necessitates a T-Pose. However, artists often prefer using an A-Pose as it simplifies body modelling.</p>
-</section>
-<section id="problem" class="level2">
-<h2 class="anchored" data-anchor-id="problem">Problem</h2>
-<p>The issue arises when Blender VRM defaults the skeleton without adjusting the pose.</p>
-</section>
-<section id="solution" class="level2">
-<h2 class="anchored" data-anchor-id="solution">Solution</h2>
-<p>Here’s a step-by-step guide to overcome this limitation:</p>
-<ol type="1">
-<li>Select all bones and create an animation pose for A-Pose. (Optional)</li>
-<li>Click on the mirror axis butterfly icon and the x-axis.</li>
-<li>Adjust the shoulder by approximately 15 degrees and position the upper arm to form a T-Pose.</li>
-<li>Position the legs straight and at shoulder width apart to match the T-Pose.</li>
-<li>Select all bones again and create an animation pose for T-Pose. (Optional)</li>
-</ol>
-</section>
-<section id="benefits" class="level2">
-<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
-<p>This solution allows artists to continue using their preferred A-Pose for modeling while still meeting the T-Pose requirement of the VRM importer in Godot Engine.</p>
-</section>
-<section id="drawbacks" class="level2">
-<h2 class="anchored" data-anchor-id="drawbacks">Drawbacks</h2>
-<p>The process of manually adjusting the pose from A-Pose to T-Pose can be time-consuming and may require some technical knowledge.</p>
-</section>
-<section id="alternatives-not-pursued" class="level2">
-<h2 class="anchored" data-anchor-id="alternatives-not-pursued">Alternatives Not Pursued</h2>
-<p>At this time, no other alternatives have been pursued.</p>
-</section>
-<section id="rare-use-cases" class="level2">
-<h2 class="anchored" data-anchor-id="rare-use-cases">Rare Use Cases</h2>
-<p>This solution is primarily beneficial for artists who prefer using A-Pose for modeling but need to meet the T-Pose requirement of the VRM importer in Godot Engine.</p>
-</section>
-<section id="in-house-solution" class="level2">
-<h2 class="anchored" data-anchor-id="in-house-solution">In-House Solution?</h2>
-<p>Yes, this solution was developed by us.</p>
-</section>
-<section id="additional-resources" class="level2">
-<h2 class="anchored" data-anchor-id="additional-resources">Additional Resources</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - The official GitHub account for the V-Sekai development community, which focuses on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - The GitHub page for the V-Sekai open-source project that brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-</ol>
-<p>This article was assisted by AI.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20231110-blender-manual-t-pose.html</guid>
-  <pubDate>Sat, 09 Dec 2023 23:59:38 GMT</pubDate>
+  <pubDate>Sun, 10 Dec 2023 00:18:59 GMT</pubDate>
 </item>
 </channel>
 </rss>
