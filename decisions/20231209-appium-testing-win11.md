@@ -25,7 +25,12 @@ Our primary challenge is automating the testing process using Appium. A signific
 
 #### Windows Client Instructions:
 
-1. Install scoop npm. `scoop install nodejs`
+1. Install scoop npm.
+```
+scoop install sudo
+sudo scoop install tailscale
+scoop install nodejs
+```
 1. **Install Appium Client**: On Windows, install the Appium client using Node Package Manager (NPM) with the command `npm install -g appium`.
 1. **Install Necessary Drivers**: Use `appium driver list` and `appium driver update [driverName]`. For Windows, install drivers with `appium driver install --source=npm appium-windows-driver`
 
