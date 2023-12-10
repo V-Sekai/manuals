@@ -39,6 +39,7 @@ scoop install sudo
 # sudo scoop install tailscale # optional
 scoop install nodejs
 ```
+1. Install https://github.com/microsoft/WinAppDriver/releases/download/v1.2.1/WindowsApplicationDriver_1.2.1.msi
 1. On Windows, install the Appium client using Node Package Manager (NPM) with the command `npm install -g appium`.
 1. Use `appium driver list` and `appium driver update [driverName]`. For Windows, install drivers with `appium driver install --source=npm appium-windows-driver`
 2. Install all the plugins
