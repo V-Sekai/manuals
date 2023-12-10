@@ -33,6 +33,14 @@ scoop install nodejs
 ```
 1. **Install Appium Client**: On Windows, install the Appium client using Node Package Manager (NPM) with the command `npm install -g appium`.
 1. **Install Necessary Drivers**: Use `appium driver list` and `appium driver update [driverName]`. For Windows, install drivers with `appium driver install --source=npm appium-windows-driver`
+2. Install all the plugins
+
+```
+appium plugin install execute-driver
+appium plugin install images
+appium plugin install universal-xml
+appium plugin install relaxed-caps
+```
 
 Ensure that the network settings and firewall configurations on both the Windows client and the Mac server are compatible for seamless communication.
 
