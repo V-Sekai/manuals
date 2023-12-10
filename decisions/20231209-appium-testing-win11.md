@@ -50,6 +50,8 @@ appium plugin install universal-xml
 appium plugin install relaxed-caps
 ```
 
+3. Run `appium --use-plugins "execute-driver,images,universal-xml,relaxed-caps"`
+
 Ensure that the network settings and firewall configurations on both the Windows client and the Mac server are compatible for seamless communication.
 
 ## Benefits
