@@ -36,7 +36,7 @@ appium plugin install relaxed-caps
 1. Install scoop npm.
 ```
 scoop install sudo
-sudo scoop install tailscale
+# sudo scoop install tailscale # optional
 scoop install nodejs
 ```
 1. On Windows, install the Appium client using Node Package Manager (NPM) with the command `npm install -g appium`.
