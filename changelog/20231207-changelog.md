@@ -49,6 +49,7 @@ This project does not adhere to [Semantic Versioning](https://semver.org/spec/v2
 | 6   | Write two proposals for mesh tangent unification and object using ImporterMesh and other paperwork.                                              | 2h     |
 | 7   | Worked on Github godot engine. Optimize tangents and add obj tangent unification.                                                                | 2h     |
 | 7   | GLTF Meeting - Fire & Lyuma & Aaron Franke & Antpb & Jin                                                                                         | 3h 40m |
+| 12   | UFBX                                                                                         | 4h |
 
 ### Fire - V-Sekai
 
