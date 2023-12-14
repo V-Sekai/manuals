@@ -12,7 +12,7 @@
 
 | Note 🌍                                                                                                                                                                                                                                                                              |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| The name "V-Sekai" is short, memorable, and works well with our project's focus on virtual reality (VR). In Japanese, "Sekai" means "World", so the name can be interpreted as "Virtual World". This reflects our work to create immersive and interactive virtual environments. |
+| The name "V-Sekai" is short, memorable, and in Japanese, "Sekai" means "World", so the name can be interpreted as "Virtual World".|
 
 ## Letter
 
