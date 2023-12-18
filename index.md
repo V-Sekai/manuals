@@ -1,14 +1,14 @@
 # V-Sekai Social VR
 
-## Participate
+## Embark on a Virtual Adventure!
 
-1. **Chat**: On [Discord](https://discord.gg/7BQDHesck8).
-3. **Visit**: [v-sekai.org](https://v-sekai.org).
-4. **Follow**: Us on [Twitter](https://twitter.com/VSekaiOfficial).
-5. **Contribute**: On GitHub [here](https://github.com/V-Sekai).
-6. **Track**: Proposals [here](https://github.com/V-Sekai/manuals/issues).
-7. **Organize**: Issues [here](https://github.com/V-Sekai/v-sekai-game/issues).
-8. **Contact**: SaracenOne, Lyuma, or Fire.
+1. **Chit-Chat**: On [Discord](https://discord.gg/7BQDHesck8).
+2. **Embark**: To our realm at [v-sekai.org](https://v-sekai.org).
+3. **Stay Updated**: Follow us on [Twitter](https://twitter.com/VSekaiOfficial).
+4. **Join the Contributors**: Contribute on GitHub [here](https://github.com/V-Sekai).
+5. **Track Our Quests**: Check out proposals [here](https://github.com/V-Sekai/manuals/issues).
+6. **Organize Your Missions**: Manage issues [here](https://github.com/V-Sekai/v-sekai-game/issues).
+7. **Reach Out**: SaracenOne, Lyuma, or Fire.
 
 | Note 🌍                                                                                                                                                                                                                                                                              |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
