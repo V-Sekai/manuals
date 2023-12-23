@@ -41,5 +41,5 @@ This setup is not part of the core V-Sekai offering but is an innovative idea pr
 ## Further Reading
 
 - [V-Sekai] - AI assists this article.
-- [OpenVR-SpaceCalibrator](https://github.com/ArcticFox8515/OpenVR-SpaceCalibrator/releases/tag/v1.4-bd_%2Baf-r5)
+- [OpenVR-SpaceCalibrator](https://github.com/ArcticFox8515/OpenVR-SpaceCalibrator/releases/tag/v1.4-bd_%2Baf-r6)
 - [V-Sekai-faceless](https://github.com/V-Sekai/V-Sekai-faceless)
