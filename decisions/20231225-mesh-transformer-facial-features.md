@@ -4,7 +4,7 @@
 
 - Status: Proposed
 - Deciders: V-Sekai
-- Tags: V-Sekai
+- Tags: V-Sekai, first rank
 
 ## The Backdrop
 
