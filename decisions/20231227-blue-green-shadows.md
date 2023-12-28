@@ -1,4 +1,4 @@
-# Proposed: Overcoming a V-Sekai limit with Documentation
+# Proposed: Blue Green new shadows for new avatars
 
 ## Metadata
 
