@@ -7,12 +7,12 @@
 
 ### Added
 
-- Initial commit on `TOOL_game_start:main` branch. ([Commit: ca14d7d](https://github.com/fire/TOOL_game_start/commit/ca14d7d))
-- New commits to `godot:master` adding various features and fixes. ([Commit: bddf246](https://github.com/fire/godot/commit/bddf246) and others)
-- Unify tangents in obj on `godot:unify-tangents-obj` branch. ([Commit: 83615de](https://github.com/fire/godot/commit/83615de))
-- Updates to `manuals:main` branch. ([Commit: ed43c6d](https://github.com/fire/manuals/commit/ed43c6d), [Commit: ce0d194](https://github.com/fire/manuals/commit/ce0d194), [Commit: 796e84c](https://github.com/fire/manuals/commit/796e84c))
-- Addition of mtlx on `godot:godot-mtlx-4.2` branch. ([Commit: 41b3259](https://github.com/fire/godot/commit/41b3259))
-- Updates to `godot-usd:main` branch. ([Commit: 8e75e68](https://github.com/fire/godot-usd/commit/8e75e68), [Commit: 3636af0](https://github.com/fire/godot-usd/commit/3636af0))
+- Initial commit on `TOOL_game_start:main` branch.
+- New commits to `godot:master` adding various features and fixes.
+- Unify tangents in obj on `godot:unify-tangents-obj` branch.
+- Updates to `manuals:main` branch.
+- Addition of mtlx on `godot:godot-mtlx-4.2` branch.
+- Updates to `godot-usd:main` branch
 - Updated https://saracenone.itch.io/groups-4x on godot engine master (4.3). DX12 is not enabled.
 
 ### Changed
