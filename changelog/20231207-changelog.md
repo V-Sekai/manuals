@@ -18,7 +18,7 @@
 ### Changed
 
 - Force-pushed changes to various branches in the `godot` repository.
-- Merged pull requests on `V-Sekai.xr-grid:main` branch. ([Commit: 15fbf30](https://github.com/fire/V-Sekai.xr-grid/commit/15fbf30), [Commit: 5add9eb](https://github.com/fire/V-Sekai.xr-grid/commit/5add9eb))
+- Merged pull requests on `V-Sekai.xr-grid:main` branch.
 
 ### Fixed
 
@@ -30,11 +30,11 @@
 
 ### Removed
 
-- Removal of git submodules on `godot-mtlx:godot-rebase` branch. ([Commit: 8be7045](https://github.com/fire/godot-mtlx/commit/8be7045))
+- Removal of git submodules on `godot-mtlx:godot-rebase` branch.
 
 ### Security
 
-- **Security Best Practices**: Applied security best practices as recommended by StepSecurity. ([Commit: d641001](https://github.com/V-Sekai/v-sekai-game/commit/d641001))
+- **Security Best Practices**: Applied security best practices as recommended by StepSecurity.
 
 This project does not adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
