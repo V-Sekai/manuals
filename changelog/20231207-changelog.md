@@ -13,11 +13,10 @@
 - Unify tangents in obj on `godot:unify-tangents-obj` branch. ([Commit: 83615de](https://github.com/fire/godot/commit/83615de))
 - Update modules/csg/csg_shape.h on `godot:unify-tangents-obj` branch. ([Commit: ac5c095](https://github.com/fire/godot/commit/ac5c095))
 - Updates to `manuals:main` branch. ([Commit: ed43c6d](https://github.com/fire/manuals/commit/ed43c6d), [Commit: ce0d194](https://github.com/fire/manuals/commit/ce0d194), [Commit: 796e84c](https://github.com/fire/manuals/commit/796e84c))
-- Numerous new commits to `godot-mtlx:godot-rebase` branch. ([Commit: 512f293](https://github.com/fire/godot-mtlx/commit/512f293) and others)
 - Addition of mtlx on `godot:godot-mtlx-4.2` branch. ([Commit: 41b3259](https://github.com/fire/godot/commit/41b3259))
-- Restoration of material compilation on `godot:godot-mtlx-4.2` branch. ([Commit: ac541eb](https://github.com/fire/godot/commit/ac541eb))
 - Update to actions/download-artifact from 4.0.0 to 4.1.0 on `V-Sekai.xr-grid:dependabot/github_actions/actions/download-artifact-4.1.0` branch. ([Commit: f8604af](https://github.com/fire/V-Sekai.xr-grid/commit/f8604af))
 - Updates to `godot-usd:main` branch. ([Commit: 8e75e68](https://github.com/fire/godot-usd/commit/8e75e68), [Commit: 3636af0](https://github.com/fire/godot-usd/commit/3636af0))
+- Updated https://saracenone.itch.io/groups-4x on godot engine master (4.3). DX12 is not enabled.
 
 ### Changed
 
