@@ -1,6 +1,6 @@
 # V-Sekai Social VR
 
-## Embark on a Virtual Adventure!
+## Gateways to Virtual Worlds!
 
 1. **Chit-Chat**: On [Discord](https://discord.gg/7BQDHesck8).
 2. **Embark**: To our realm at [v-sekai.org](https://v-sekai.org).
