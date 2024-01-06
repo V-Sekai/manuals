@@ -1,4 +1,4 @@
-# Proposed: Valid configuration of Spatiallabs and Openxr
+# Deprecated: Valid configuration of Spatiallabs and Openxr
 
 ## Metadata
 
