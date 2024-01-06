@@ -1,55 +1,53 @@
-# Proposed: 1 Meter Unit Cube 128 Quantized Format
+# Proposed: Overcoming a V-Sekai limit with Documentation
 
 ## Metadata
 
-- Status: Proposed
-- Deciders: V-Sekai Team
-- Tags: Procedural Generation, VR, 3D Modeling, Efficiency, Godot Engine
+- Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+- Deciders: V-Sekai
+- Tags: V-Sekai
 
-## Overview
+## The Backdrop
 
-MeshGPT's "1 Meter Cubed 128 Quantized" enables precise VR content creation within a unit cube, offering a standardized approach to spatial data representation.
+MeshGPT's "1 Meter Cubed 128 Quantized" format has emerged as a potential method to achieve standardized precision within virtual reality (VR) content creation, centring around polygonal modeling rather than voxel methods.
 
-## Objective
+## The Challenge
 
-The goal is to harness the "1 Meter Cubed 128 Quantized" format to streamline and enhance procedural generation in VR development.
+The key objective is to harness the potential of the "1 Meter Cubed 128 Quantized" format to enhance procedural generation processes within VR development.
 
-## Plan of Action
+## The Strategy
 
-- Develop a framework that utilizes the quantized format for rapid environment generation.
-- Integrate real-time adaptive algorithms for responsive and evolving VR designs.
-- Apply modular design principles to improve the efficiency of VR environment construction.
+- Develop a comprehensive framework for environment generation that leverages the strengths of the polygonal quantized format.
+- Integrate adaptive algorithms tailored for this format to ensure dynamic responsiveness in VR spaces.
+- Embrace modular design paradigms that align with polygonal modeling to expedite the construction of VR environments.
 
-## Prospects
+## The Upside
 
-- Facilitates AI understanding and collaboration in design.
-- Simplifies onboarding for new creators and accelerates productivity.
-- Enhances procedural generation speed and resource management.
-- Scales and adapts to diverse VR environment requirements.
+- Fosters a more intuitive AI-creator collaboration using a polygonal format conducive to AI tools.
+- Lowers barriers to entry for creators, leading to increased efficiency and innovation.
+- Streamlines procedural generation to operate with enhanced speed and reduced resource consumption.
+- Provides a scalable and flexible model to cater to diverse design requirements in VR environments.
 
-## Considerations
+## The Downside
 
-- Initial R&D investment necessary for advanced technique integration.
-- Learning curve associated with adopting new procedures.
+- Requires considerable investment in research and development for effective technique integration.
+- May present a learning curve for developers not familiar with non-voxel formats.
 
-## Alternatives Foregone
+## The Road Not Taken
 
-- Opting out of these advanced, adaptive procedural generation techniques.
+- Dependence on traditional voxel-based procedural generation technologies could be left behind in favor of the enhanced capabilities offered by the polygonal quantized format.
 
-## Specialized Usage
+## The Infrequent Use Case
 
-- Tailored environments may require specific generation strategies beyond the scope of the quantized format.
+- Specialized VR environments may demand generation methods that extend beyond the standard capacities of the "1 Meter Cubed 128 Quantized" format.
 
-## Implementation and Ownership
+## In Core and Done by Us?
 
-- V-Sekai Team will lead the enhancement of procedural generation technologies as part of this initiative.
+- The enhancement of procedural generation via the adoption of the 1 Meter Cubed 128 Quantized polygonal format is an initiative headed by the V-Sekai team.
 
----
+## Further Reading
 
-### Resources and Collaboration
-
-- [V-Sekai GitHub](https://github.com/v-sekai): Home to V-Sekai's social VR projects on Godot Engine.
-- [V-Sekai Game Repository](https://github.com/v-sekai/v-sekai-game): Open-source project for social VR innovations in Godot.
-- [Shadows of Doubt on Steam](https://store.steampowered.com/app/986130/Shadows_of_Doubt/): A game reflecting procedural generation advancements.
+1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine
+2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine
+3. [Shadows of Doubt on Steam](https://store.steampowered.com/app/986130/Shadows_of_Doubt/) - A showcase of the advancements made possible through procedural generation in gaming.
 
 _Assisted by AI Aria._
