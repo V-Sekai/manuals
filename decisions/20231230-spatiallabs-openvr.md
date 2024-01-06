@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- **Status:** Proposed
+- **Status:** Deprecated
 - **Deciders:** V-Sekai
-- **Tags:** V-Sekai
+- **Tags:** V-Sekai, fixed
 
 ## The Backdrop
 
