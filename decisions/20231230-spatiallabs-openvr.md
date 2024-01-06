@@ -1,10 +1,10 @@
-# Proposed: Valid configuration of Spatiallabs and Openxr
+# Deprecated: Valid configuration of Spatiallabs and Openxr
 
 ## Metadata
 
-- **Status:** Proposed
+- **Status:** Deprecated
 - **Deciders:** V-Sekai
-- **Tags:** V-Sekai
+- **Tags:** V-Sekai, fixed
 
 ## The Backdrop
 
