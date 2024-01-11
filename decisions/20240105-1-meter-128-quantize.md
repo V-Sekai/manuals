@@ -1,4 +1,4 @@
-# Proposed: Overcoming a V-Sekai limit with Documentation
+# Proposed: 1 Meter Cubed 128 Quantized
 
 ## Metadata
 
