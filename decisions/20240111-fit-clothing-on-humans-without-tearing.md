@@ -1,8 +1,8 @@
-# Proposal: Fit Clothing on Humans Without Tearing
+# Draft: Fit Clothing on Humans Without Tearing
 
 ## Metadata
 
-- **Status**: Proposed
+- **Status**: Draft
 - **Deciders**: V-Sekai, Fire, Joe Cat
 - **Tags**: V-Sekai
 
@@ -24,6 +24,32 @@ The constraint solver used in this process is a cloth simulator that can solve b
 
 The stitches can be used to piecewise divide the meshse.
 
+````gdscript
+class_name HullMesh
+var base_mesh: ImporterMesh
+var base_mesh_hull: ImporterMesh
+var clothing_mesh: ImporterMesh
+var clothing_mesh_hull: ImporterMesh
+
+func _init(base_mesh: ImporterMesh, base_mesh_hull: ImporterMesh, clothing_mesh: ImporterMesh, clothing_mesh_hull: ImporterMesh):
+    self.base_mesh = base_mesh
+    self.base_mesh_hull = base_mesh_hull
+    self.clothing_mesh = clothing_mesh
+    self.clothing_mesh_hull = clothing_mesh_hull
+
+func mesh_wrap(source: HullMesh, target: HullMesh) -> ImporterMesh:
+    '''
+    Wraps two clothing mesh hulls around two base mesh hulls.
+
+    Parameters:
+    - source: The source HullMesh instance.
+    - target: The target HullMesh instance.
+
+    Returns:
+    A new Mesh instance representing the base mesh hulls with the clothing mesh hulls wrapped around them.
+    '''
+```
+
 ## Alternatives
 
 To be determined.
@@ -42,3 +68,4 @@ To be determined.
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine
 
 _This article was assisted by Aria, an AI assistant._
+````
