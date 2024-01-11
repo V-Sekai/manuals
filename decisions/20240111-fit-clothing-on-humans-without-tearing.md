@@ -10,21 +10,15 @@
 
 The challenge is to accurately fit clothing on a 3D human model without causing any tearing in the fabric. The proposed solution involves utilizing machine learning technology that ensures constraints are maintained for vertex faces during the fitting process.
 
-## Strategy
+# Strategy
 
-The cloth simulation's user interface allows for the pinning of vertex positions. This functionality should enable the corresponding base mesh hull to be pinned to clothing hulls. The strategy revolves around finding a method to establish correspondence between these two elements.
+Use the cloth simulation's pinning functionality to attach the base mesh hull to the clothing hulls. This is achieved by implementing an algorithm that selects optimal vertices based on certain criteria such as distance from the texel or texture similarity.
 
-Instead of selecting random vertices that are near the same texel, akin to a shrink wrap operator, consider implementing an algorithm that selects the most optimal vertices based on certain criteria such as distance from the texel or similarity in texture. This approach could provide a more accurate and consistent fit for the clothing on the 3D model.
+Use machine learning technology to maintain constraints for vertex faces and effectively fit clothing on a 3D model.
 
-### Technical Discussion
+**Providing Two Hulls**: One on the base mesh and another on the clothing. The goal here is to first generate the material/clothing and then wrap it onto the character.
 
-The discussion primarily focuses on the use of machine learning technology to maintain constraints for vertex faces and effectively fit clothing on a 3D model. The author suggests the use of colliders, but this introduces a complex problem. An alternative method discussed involves providing two hulls, one on the base mesh and another on the clothing. The objective here is to first generate the material/clothing and then wrap it onto the character.
-
-The constraint solver employed in this process is a reasonably fast cloth simulator. It solves backwards and forwards differentially, which is unique as most physics engines can't solve backwards for a large number of vertices.
-
-While the topology may not be perfect, one suggestion is to project clothing material onto a subdivided quad and then employ the seam sewing method. However, this would limit the style of clothing.
-
-Another idea is to use UV'd texels for the seam sewing method if you're okay with simulating for a while. The artist provides a base mesh with a single hull and a clothing mesh with two hulls, one on the base mesh and the second on the clothing on the base mesh.
+The constraint solver used in this process is a cloth simulator that can solve backwards and forwards differentially. This is unique as most physics engines can't solve backwards for a large number of vertices.
 
 ## Identified Problems and Proposed Solutions
 
