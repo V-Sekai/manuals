@@ -22,9 +22,7 @@ Leverage machine learning technology to maintain constraints for vertex faces an
 
 The constraint solver used in this process is a cloth simulator that can solve backwards and forwards differentially. This is unique as most physics engines can't solve backwards for a large number of vertices.
 
-## Pros and Cons
-
-To be determined.
+The stitches can be used to piecewise divide the meshse.
 
 ## Alternatives
 
