@@ -36,5 +36,6 @@ We need to assess whether in-house tool development justifies the required inves
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
 3. [SideFX Tutorial on Pivot Painter](https://www.sidefx.com/tutorials/pivot-painter-version-1-and-2/)
 4. [Blender Pivot Painter](https://github.com/Gvgeo/Pivot-Painter-for-Blender)
+5. [Not Unreal Tools: Vertex Animation Tools](https://github.com/yanorax/unreal_tools)
 
 Assistance from AI assistant Aria acknowledged.
