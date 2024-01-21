@@ -8,18 +8,18 @@
 
 ## Backdrop
 
-The initiative is to leverage Elixir NX for data science and numerical computing applications relevant to V-Sekai.
+The goal is to utilize Elixir NX for data science and numerical computing applications relevant to V-Sekai.
 
 ## Challenge
 
-Ensuring a successful installation and configuration of Elixir Livebook on Fedora 39, which will serve as a development platform.
+The challenge lies in ensuring a successful installation and configuration of Elixir Livebook on Fedora 39, which will serve as a development platform.
 
 ## Strategy
 
-- Evaluate compatibility between Elixir Livebook and Fedora 39.
+- Assess compatibility between Elixir Livebook and Fedora 39.
 - Identify all dependencies required for Elixir Livebook.
-- Create comprehensive guidelines for the installation process.
-- Execute a test run of the install procedure on a Fedora 39 system.
+- Develop comprehensive guidelines for the installation process.
+- Conduct a test run of the install procedure on a Fedora 39 system.
 
 Create a dedicated user for running Livebook and determine an appropriate location for the installation, such as `/opt/livebook`.
 
@@ -90,7 +90,7 @@ WantedBy=multi-user.target
 EOF
 ```
 
-Make sure that you have the necessary permissions to write to `/etc/systemd/system/`.
+Ensure that you have the necessary permissions to write to `/etc/systemd/system/`.
 
 After saving the file, reload systemd to apply the changes:
 
@@ -116,13 +116,13 @@ Remember to adjust the path specified in the `ExecStart` directive if required a
 
 ## Upside
 
-- Delivers a real-time collaborative tool for Elixir development.
-- Aids in verifying Elixir NX’s capabilities through visualization.
+- Provides a real-time collaborative tool for Elixir development.
+- Helps in verifying Elixir NX’s capabilities through visualization.
 - Streamlines the code development cycle with instant feedback.
 
 ## Downside
 
-- Allocation of time needed for the seamless functioning of Livebook on Fedora 39.
+- Time allocation needed for the seamless functioning of Livebook on Fedora 39.
 - Dependencies might add a layer of complexity in ongoing maintenance.
 - The initial setup could pose challenges for non-expert users.
 
