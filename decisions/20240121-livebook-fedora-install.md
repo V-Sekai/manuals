@@ -65,7 +65,6 @@ erl -version
 elixir -v
 mix do local.rebar --force, local.hex --force
 mix escript.install hex livebook --force
-livebook server # --help
 ```
 
 To insert or overwrite the existing systemd service configuration for Elixir Livebook directly from the shell, you can use the following commands:
