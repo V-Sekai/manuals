@@ -48,8 +48,6 @@ sudo dnf install -y \
 useradd --system --create-home --home-dir /opt/livebook livebook
 chown -R livebook: /opt/livebook
 su - livebook
-
-# Clone the repository as the livebook user
 cd /opt/livebook
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bashrc
