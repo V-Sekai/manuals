@@ -21,11 +21,29 @@ Ensuring a successful installation and configuration of Elixir Livebook on Fedor
 - Create comprehensive guidelines for the installation process.
 - Execute a test run of the install procedure on a Fedora 39 system.
 
-## Installation and Permissions
-
 Create a dedicated user for running Livebook and determine an appropriate location for the installation, such as `/opt/livebook`.
 
 ```bash
+sudo yum groupinstall -y 'Development Tools' 'C Development Tools and Libraries'
+sudo dnf install -y \
+  autoconf \
+  ncurses-devel \
+  wxGTK3-devel \
+  wxBase3 \
+  openssl-devel \
+  java-1.8.0-openjdk-devel \
+  libiodbc \
+  unixODBC-devel.x86_64 \
+  erlang-odbc.x86_64 \
+  libxslt \
+  fop \
+  automake \
+  readline-devel \
+  git \
+  gcc \
+  unzip \
+  curl
+
 # As root or using sudo
 useradd --system --create-home --home-dir /opt/livebook livebook
 chown -R livebook: /opt/livebook
@@ -34,11 +52,26 @@ su - livebook
 # Clone the repository as the livebook user
 git clone https://github.com/livebook-dev/livebook.git /opt/livebook/app
 cd /opt/livebook/app
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bashrc
+echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc
+source ~/.bashrc
+asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
+asdf install erlang 26.2.1
+asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
+asdf install elixir 1.15.7-otp-26
+asdf global elixir 1.15.7-otp-26
+erl -version
+elixir -v
+yes | mix local.hex
 ```
 
-## Systemd Configuration
+To insert or overwrite the existing systemd service configuration for Elixir Livebook directly from the shell, you can use the following commands:
 
-```ini
+First, open your terminal and use `cat` combined with a here-document to overwrite the file with the new configuration:
+
+```bash
+sudo cat > /etc/systemd/system/livebook.service <<EOF
 [Unit]
 Description=Elixir Livebook server
 After=network.target
@@ -46,15 +79,32 @@ After=network.target
 [Service]
 User=livebook
 WorkingDirectory=/opt/livebook/app
-ExecStart=/usr/local/bin/mix phx.server
+ExecStart=/usr/bin/mix phx.server
 Environment=MIX_ENV=prod
 Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
+EOF
 ```
 
-_Note: Ensure that the `ExecStart` command points to the mix binary if it's not located in `/usr/local/bin/`. You may also need to set `HOME=/opt/livebook` in the `Environment` section if Elixir requires access to a home directory._
+Make sure that you have the necessary permissions to write to `/etc/systemd/system/`.
+
+After saving the file, reload systemd to apply the changes:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable livebook.service
+sudo systemctl restart livebook.service
+```
+
+Verify that the service is running correctly with:
+
+```bash
+sudo systemctl status livebook.service
+```
+
+Remember to adjust the path specified in the `ExecStart` directive if required and set any additional environment variables as needed.
 
 ## Upside
 
