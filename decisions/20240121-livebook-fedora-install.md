@@ -105,7 +105,7 @@ sudo systemctl restart livebook.service
 Verify that the service is running correctly with:
 
 ```bash
-sudo systemctl status livebook.service
+sudo systemctl status livebook.service # Check this for the authentication token.
 ```
 
 Debug the service with journalctl.
