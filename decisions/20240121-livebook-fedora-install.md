@@ -58,12 +58,14 @@ echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc
 source ~/.bashrc
 asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
 asdf install erlang 26.2.1
+asdf global erlang 26.2.1
 asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
-asdf install elixir 1.15.7-otp-26
-asdf global elixir 1.15.7-otp-26
+asdf install elixir 1.16-otp-26
+asdf global elixir 1.16-otp-26
 erl -version
 elixir -v
-yes | mix local.hex
+mix local.hex --force
+mix deps.get
 ```
 
 To insert or overwrite the existing systemd service configuration for Elixir Livebook directly from the shell, you can use the following commands:
@@ -79,7 +81,7 @@ After=network.target
 [Service]
 User=livebook
 WorkingDirectory=/opt/livebook/app
-ExecStart=/usr/bin/mix phx.server
+ExecStart=/opt/livebook/.asdf/shims/mix phx.server
 Environment=MIX_ENV=prod
 Restart=on-failure
 
@@ -102,6 +104,12 @@ Verify that the service is running correctly with:
 
 ```bash
 sudo systemctl status livebook.service
+```
+
+Debug the service with journalctl.
+
+```bash
+sudo journalctl -u livebook.service
 ```
 
 Remember to adjust the path specified in the `ExecStart` directive if required and set any additional environment variables as needed.
