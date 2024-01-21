@@ -50,8 +50,7 @@ chown -R livebook: /opt/livebook
 su - livebook
 
 # Clone the repository as the livebook user
-git clone https://github.com/livebook-dev/livebook.git /opt/livebook/app
-cd /opt/livebook/app
+cd /opt/livebook
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bashrc
 echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc
@@ -64,8 +63,9 @@ asdf install elixir 1.16-otp-26
 asdf global elixir 1.16-otp-26
 erl -version
 elixir -v
-mix local.hex --force
-mix deps.get
+mix do local.rebar --force, local.hex --force
+mix escript.install hex livebook --force
+livebook server # --help
 ```
 
 To insert or overwrite the existing systemd service configuration for Elixir Livebook directly from the shell, you can use the following commands:
@@ -80,9 +80,12 @@ After=network.target
 
 [Service]
 User=livebook
-WorkingDirectory=/opt/livebook/app
-ExecStart=/opt/livebook/.asdf/shims/mix phx.server
+WorkingDirectory=/opt/livebook
+ExecStart=/bin/bash -c '. /opt/livebook/.asdf/asdf.sh && exec /opt/livebook/.asdf/installs/elixir/1.16-otp-26/.mix/escripts/livebook server'
 Environment=MIX_ENV=prod
+Environment=LIVEBOOK_PORT=8080
+Environment=LIVEBOOK_IP=0.0.0.0
+Environment=LIVEBOOK_HOME=/opt/livebook
 Restart=on-failure
 
 [Install]
