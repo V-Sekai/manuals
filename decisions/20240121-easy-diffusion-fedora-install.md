@@ -30,6 +30,36 @@ useradd --system --create-home --home-dir /opt/easy_diffusion easy_diffusion_use
 mkdir -p /opt/easy_diffusion
 curl -L https://github.com/cmdr2/stable-diffusion-ui/releases/latest/download/Easy-Diffusion-Linux.zip -o /opt/easy_diffusion/Easy-Diffusion-Linux.zip
 unzip /opt/easy_diffusion/Easy-Diffusion-Linux.zip -d /opt/easy_diffusion/
+
+sudo bash -c 'cat > /opt/easy_diffusion/easy-diffusion/config.yaml <<EOF
+# Configuration for Easy Diffusion
+# Change listen_port if port 9000 is already in use on your system.
+# Set listen_to_network to true to make Easy Diffusion accessible on your local network.
+
+net:
+  listen_port: 9000
+  listen_to_network: true
+
+# Multi GPU setup
+render_devices: auto
+
+# Set open_browser_on_start to false to disable opening a new browser tab on each restart.
+ui:
+  open_browser_on_start: false
+
+# Set update_branch to main to use the stable version, or to beta to use the experimental
+# beta version.
+update_branch: beta
+
+# Set force_save_path to enforce an auto save path. Clients will not be able to change or
+# disable auto save when this option is set. Please adapt the path in the examples to your
+# needs.
+# Windows:
+# force_save_path: C:\\Easy Diffusion Images\\
+# Linux:
+# force_save_path: /data/easy-diffusion-images/
+force_save_path: /opt/easy_diffusion/easy-diffusion-images/
+EOF'
 chown -R easy_diffusion_user: /opt/easy_diffusion
 chmod +x /opt/easy_diffusion/easy-diffusion/start.sh
 ```
