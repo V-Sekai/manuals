@@ -57,8 +57,8 @@ update_branch: beta
 # Windows:
 # force_save_path: C:\\Easy Diffusion Images\\
 # Linux:
-# force_save_path: /data/easy-diffusion-images/
-force_save_path: /opt/easy_diffusion/easy-diffusion-images/
+# force_save_path: /data/easy_diffusion_images/
+force_save_path: /opt/easy_diffusion/easy_diffusion_images/
 EOF'
 chown -R easy_diffusion_user: /opt/easy_diffusion
 chmod +x /opt/easy_diffusion/easy-diffusion/start.sh
