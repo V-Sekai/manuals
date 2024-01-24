@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -49,7 +49,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -58,6 +64,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -96,15 +103,42 @@ ul.task-list li input[type="checkbox"] {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="alternate" type="application/rss+xml" title="V-Sekai - Manuals" href="demo_to_game.xml"></head>
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="alternate" type="application/rss+xml" title="V-Sekai - Manuals" href="demo_to_game.xml" data-external="1"></head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
     <img src="./68604884.png" alt="V-Sekai" class="navbar-logo">
     </a>
@@ -119,26 +153,26 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./changelog.html" rel="" target="">
- <span class="menu-text">Changes</span></a>
+    <a class="nav-link" href="./changelog.html"> 
+<span class="menu-text">Changes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./decisions.html" rel="" target="">
- <span class="menu-text">Decisions</span></a>
+    <a class="nav-link" href="./decisions.html"> 
+<span class="menu-text">Decisions</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./demo_to_game.html" rel="" target="" aria-current="page">
- <span class="menu-text">Demo to Game</span></a>
+    <a class="nav-link active" href="./demo_to_game.html" aria-current="page"> 
+<span class="menu-text">Demo to Game</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./awesome.html" rel="" target="">
- <span class="menu-text">Awesome</span></a>
+    <a class="nav-link" href="./awesome.html"> 
+<span class="menu-text">Awesome</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -167,7 +201,9 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 <table class="table">
 <colgroup>
@@ -202,7 +238,6 @@ ul.task-list li input[type="checkbox"] {
      </select>
   </div>
 </div>
-
 <table class="quarto-listing-table table">
 <thead>
 <tr>
@@ -214,7 +249,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="2" data-listing-title-sort="Prototype 0: Push an Asset to a Service" data-listing-filename-sort="000_ingest_validate.md">
+<tr data-index="0" data-listing-file-modified-sort="1706129308220" data-listing-reading-time-sort="2" data-listing-word-count-sort="258" data-listing-title-sort="Prototype 0: Push an Asset to a Service" data-listing-filename-sort="000_ingest_validate.md">
 <td>
 <a href="./demo_to_game/000_ingest_validate.html" class="title listing-title">Prototype 0: Push an Asset to a Service</a>
 </td>
@@ -222,7 +257,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="1" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="3" data-listing-title-sort="Setup Summary" data-listing-filename-sort="000_store.md">
+<tr data-index="1" data-listing-file-modified-sort="1706129308220" data-listing-reading-time-sort="3" data-listing-word-count-sort="473" data-listing-title-sort="Setup Summary" data-listing-filename-sort="000_store.md">
 <td>
 <a href="./demo_to_game/000_store.html" class="title listing-title">Setup Summary</a>
 </td>
@@ -230,7 +265,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="2" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="1" data-listing-title-sort="Prototype 1: Element Instantiation and Uploading" data-listing-filename-sort="001_push.md">
+<tr data-index="2" data-listing-file-modified-sort="1706129308220" data-listing-reading-time-sort="1" data-listing-word-count-sort="83" data-listing-title-sort="Prototype 1: Element Instantiation and Uploading" data-listing-filename-sort="001_push.md">
 <td>
 <a href="./demo_to_game/001_push.html" class="title listing-title">Prototype 1: Element Instantiation and Uploading</a>
 </td>
@@ -238,7 +273,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="3" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="1" data-listing-title-sort="Prototype 2: Packaging, Marker3D, and Quad Plane" data-listing-filename-sort="002_packaging_marker3D_and_quad_plane.md">
+<tr data-index="3" data-listing-file-modified-sort="1706129308220" data-listing-reading-time-sort="1" data-listing-word-count-sort="78" data-listing-title-sort="Prototype 2: Packaging, Marker3D, and Quad Plane" data-listing-filename-sort="002_packaging_marker3D_and_quad_plane.md">
 <td>
 <a href="./demo_to_game/002_packaging_marker3D_and_quad_plane.html" class="title listing-title">Prototype 2: Packaging, Marker3D, and Quad Plane</a>
 </td>
@@ -246,7 +281,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="4" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="1" data-listing-title-sort="Prototype 3: Tree Concept Decision and Texture Packaging" data-listing-filename-sort="003_tree.md">
+<tr data-index="4" data-listing-file-modified-sort="1706129308220" data-listing-reading-time-sort="1" data-listing-word-count-sort="84" data-listing-title-sort="Prototype 3: Tree Concept Decision and Texture Packaging" data-listing-filename-sort="003_tree.md">
 <td>
 <a href="./demo_to_game/003_tree.html" class="title listing-title">Prototype 3: Tree Concept Decision and Texture Packaging</a>
 </td>
@@ -254,7 +289,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="5" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="1" data-listing-title-sort="Prototype 4: Object Uploads and Positioning" data-listing-filename-sort="004_object_uploads_and_positioning.md">
+<tr data-index="5" data-listing-file-modified-sort="1706129308220" data-listing-reading-time-sort="1" data-listing-word-count-sort="106" data-listing-title-sort="Prototype 4: Object Uploads and Positioning" data-listing-filename-sort="004_object_uploads_and_positioning.md">
 <td>
 <a href="./demo_to_game/004_object_uploads_and_positioning.html" class="title listing-title">Prototype 4: Object Uploads and Positioning</a>
 </td>
@@ -262,7 +297,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="6" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="1" data-listing-title-sort="Prototype 5: Server Management and Scripting" data-listing-filename-sort="005_servers_and_script.md">
+<tr data-index="6" data-listing-file-modified-sort="1706129308220" data-listing-reading-time-sort="1" data-listing-word-count-sort="55" data-listing-title-sort="Prototype 5: Server Management and Scripting" data-listing-filename-sort="005_servers_and_script.md">
 <td>
 <a href="./demo_to_game/005_servers_and_script.html" class="title listing-title">Prototype 5: Server Management and Scripting</a>
 </td>
@@ -270,7 +305,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="7" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="1" data-listing-title-sort="Prototype 6: Physics" data-listing-filename-sort="006_physics.md">
+<tr data-index="7" data-listing-file-modified-sort="1706129308220" data-listing-reading-time-sort="1" data-listing-word-count-sort="68" data-listing-title-sort="Prototype 6: Physics" data-listing-filename-sort="006_physics.md">
 <td>
 <a href="./demo_to_game/006_physics.html" class="title listing-title">Prototype 6: Physics</a>
 </td>
@@ -278,7 +313,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="8" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="1" data-listing-title-sort="Prototype 7: Server Capacity and Bandwidth Limit" data-listing-filename-sort="007_capacity_limits.md">
+<tr data-index="8" data-listing-file-modified-sort="1706129308220" data-listing-reading-time-sort="1" data-listing-word-count-sort="61" data-listing-title-sort="Prototype 7: Server Capacity and Bandwidth Limit" data-listing-filename-sort="007_capacity_limits.md">
 <td>
 <a href="./demo_to_game/007_capacity_limits.html" class="title listing-title">Prototype 7: Server Capacity and Bandwidth Limit</a>
 </td>
@@ -286,7 +321,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="9" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="5" data-listing-title-sort="Variable bit rate encoding" data-listing-filename-sort="070_packet_format.md">
+<tr data-index="9" data-listing-file-modified-sort="1706129308220" data-listing-reading-time-sort="5" data-listing-word-count-sort="850" data-listing-title-sort="Variable bit rate encoding" data-listing-filename-sort="070_packet_format.md">
 <td>
 <a href="./demo_to_game/070_packet_format.html" class="title listing-title">Variable bit rate encoding</a>
 </td>
@@ -294,7 +329,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="10" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="1" data-listing-title-sort="LOD" data-listing-filename-sort="071_lod_strategy.md">
+<tr data-index="10" data-listing-file-modified-sort="1706129308220" data-listing-reading-time-sort="1" data-listing-word-count-sort="15" data-listing-title-sort="LOD" data-listing-filename-sort="071_lod_strategy.md">
 <td>
 <a href="./demo_to_game/071_lod_strategy.html" class="title listing-title">LOD</a>
 </td>
@@ -302,7 +337,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="11" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="3" data-listing-title-sort="Godot Scene" data-listing-filename-sort="080_validations.md">
+<tr data-index="11" data-listing-file-modified-sort="1706129308220" data-listing-reading-time-sort="3" data-listing-word-count-sort="492" data-listing-title-sort="Godot Scene" data-listing-filename-sort="080_validations.md">
 <td>
 <a href="./demo_to_game/080_validations.html" class="title listing-title">Godot Scene</a>
 </td>
@@ -310,7 +345,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="12" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="2" data-listing-title-sort="Basic Tooling: Bill of Materials" data-listing-filename-sort="090_basic_tooling.md">
+<tr data-index="12" data-listing-file-modified-sort="1706129308224" data-listing-reading-time-sort="2" data-listing-word-count-sort="256" data-listing-title-sort="Basic Tooling: Bill of Materials" data-listing-filename-sort="090_basic_tooling.md">
 <td>
 <a href="./demo_to_game/090_basic_tooling.html" class="title listing-title">Basic Tooling: Bill of Materials</a>
 </td>
@@ -318,7 +353,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="13" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="4" data-listing-title-sort="V-Sekai Other World Architecture: Sorted Prototypes" data-listing-filename-sort="099_further_prototypes.md">
+<tr data-index="13" data-listing-file-modified-sort="1706129308224" data-listing-reading-time-sort="4" data-listing-word-count-sort="620" data-listing-title-sort="V-Sekai Other World Architecture: Sorted Prototypes" data-listing-filename-sort="099_further_prototypes.md">
 <td>
 <a href="./demo_to_game/099_further_prototypes.html" class="title listing-title">V-Sekai Other World Architecture: Sorted Prototypes</a>
 </td>
@@ -326,7 +361,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="14" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="9" data-listing-title-sort="Platforms of Note" data-listing-filename-sort="110_peer_platforms.md">
+<tr data-index="14" data-listing-file-modified-sort="1706129308224" data-listing-reading-time-sort="9" data-listing-word-count-sort="1723" data-listing-title-sort="Platforms of Note" data-listing-filename-sort="110_peer_platforms.md">
 <td>
 <a href="./demo_to_game/110_peer_platforms.html" class="title listing-title">Platforms of Note</a>
 </td>
@@ -334,7 +369,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="15" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="2" data-listing-title-sort="Inspirations" data-listing-filename-sort="120_inspirations.md">
+<tr data-index="15" data-listing-file-modified-sort="1706129308224" data-listing-reading-time-sort="2" data-listing-word-count-sort="322" data-listing-title-sort="Inspirations" data-listing-filename-sort="120_inspirations.md">
 <td>
 <a href="./demo_to_game/120_inspirations.html" class="title listing-title">Inspirations</a>
 </td>
@@ -342,7 +377,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="16" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="2" data-listing-title-sort="Help Us Write About V-Sekai" data-listing-filename-sort="130_help_write_documentation.md">
+<tr data-index="16" data-listing-file-modified-sort="1706129308224" data-listing-reading-time-sort="2" data-listing-word-count-sort="228" data-listing-title-sort="Help Us Write About V-Sekai" data-listing-filename-sort="130_help_write_documentation.md">
 <td>
 <a href="./demo_to_game/130_help_write_documentation.html" class="title listing-title">Help Us Write About V-Sekai</a>
 </td>
@@ -350,7 +385,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="17" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="3" data-listing-title-sort="V-Sekai Game Discussion" data-listing-filename-sort="140_game.md">
+<tr data-index="17" data-listing-file-modified-sort="1706129308224" data-listing-reading-time-sort="3" data-listing-word-count-sort="499" data-listing-title-sort="V-Sekai Game Discussion" data-listing-filename-sort="140_game.md">
 <td>
 <a href="./demo_to_game/140_game.html" class="title listing-title">V-Sekai Game Discussion</a>
 </td>
@@ -358,7 +393,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="18" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="3" data-listing-title-sort="V-Sekai Game Discussion" data-listing-filename-sort="141_game_mvp.md">
+<tr data-index="18" data-listing-file-modified-sort="1706129308224" data-listing-reading-time-sort="3" data-listing-word-count-sort="406" data-listing-title-sort="V-Sekai Game Discussion" data-listing-filename-sort="141_game_mvp.md">
 <td>
 <a href="./demo_to_game/141_game_mvp.html" class="title listing-title">V-Sekai Game Discussion</a>
 </td>
@@ -366,7 +401,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="19" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="3" data-listing-title-sort="MVP with Rigid Body Physics" data-listing-filename-sort="150_mvp.md">
+<tr data-index="19" data-listing-file-modified-sort="1706129308224" data-listing-reading-time-sort="3" data-listing-word-count-sort="475" data-listing-title-sort="MVP with Rigid Body Physics" data-listing-filename-sort="150_mvp.md">
 <td>
 <a href="./demo_to_game/150_mvp.html" class="title listing-title">MVP with Rigid Body Physics</a>
 </td>
@@ -374,7 +409,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="20" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="1" data-listing-title-sort="VR Cursor" data-listing-filename-sort="150_vr_cursor.md">
+<tr data-index="20" data-listing-file-modified-sort="1706129308224" data-listing-reading-time-sort="1" data-listing-word-count-sort="16" data-listing-title-sort="VR Cursor" data-listing-filename-sort="150_vr_cursor.md">
 <td>
 <a href="./demo_to_game/150_vr_cursor.html" class="title listing-title">VR Cursor</a>
 </td>
@@ -382,7 +417,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="21" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="2" data-listing-title-sort="Avoiding the O(n^n) State Update Problem" data-listing-filename-sort="151_avoid_n_squared_state_updates.md">
+<tr data-index="21" data-listing-file-modified-sort="1706129308224" data-listing-reading-time-sort="2" data-listing-word-count-sort="317" data-listing-title-sort="Avoiding the O(n^n) State Update Problem" data-listing-filename-sort="151_avoid_n_squared_state_updates.md">
 <td>
 <a href="./demo_to_game/151_avoid_n_squared_state_updates.html" class="title listing-title">Avoiding the O(n^n) State Update Problem</a>
 </td>
@@ -390,7 +425,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="22" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="2" data-listing-title-sort="References" data-listing-filename-sort="152_references.md">
+<tr data-index="22" data-listing-file-modified-sort="1706129308224" data-listing-reading-time-sort="2" data-listing-word-count-sort="238" data-listing-title-sort="References" data-listing-filename-sort="152_references.md">
 <td>
 <a href="./demo_to_game/152_references.html" class="title listing-title">References</a>
 </td>
@@ -398,7 +433,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="23" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="3" data-listing-title-sort="Networked Physics in Virtual Reality" data-listing-filename-sort="153_gaffer_on_games_summary.md">
+<tr data-index="23" data-listing-file-modified-sort="1706129308224" data-listing-reading-time-sort="3" data-listing-word-count-sort="493" data-listing-title-sort="Networked Physics in Virtual Reality" data-listing-filename-sort="153_gaffer_on_games_summary.md">
 <td>
 <a href="./demo_to_game/153_gaffer_on_games_summary.html" class="title listing-title">Networked Physics in Virtual Reality</a>
 </td>
@@ -406,7 +441,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="24" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="2" data-listing-title-sort="Networked Physics in Virtual Reality: V-Sekai's Chair Edition with Avatar Interaction" data-listing-filename-sort="153_stacking_chairs.md">
+<tr data-index="24" data-listing-file-modified-sort="1706129308224" data-listing-reading-time-sort="2" data-listing-word-count-sort="357" data-listing-title-sort="Networked Physics in Virtual Reality: V-Sekai's Chair Edition with Avatar Interaction" data-listing-filename-sort="153_stacking_chairs.md">
 <td>
 <a href="./demo_to_game/153_stacking_chairs.html" class="title listing-title">Networked Physics in Virtual Reality: V-Sekai’s Chair Edition with Avatar Interaction</a>
 </td>
@@ -414,7 +449,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="25" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="2" data-listing-title-sort="Webrtc chat test" data-listing-filename-sort="153_webrtc_chat_test.md">
+<tr data-index="25" data-listing-file-modified-sort="1706129308224" data-listing-reading-time-sort="2" data-listing-word-count-sort="231" data-listing-title-sort="Webrtc chat test" data-listing-filename-sort="153_webrtc_chat_test.md">
 <td>
 <a href="./demo_to_game/153_webrtc_chat_test.html" class="title listing-title">Webrtc chat test</a>
 </td>
@@ -422,7 +457,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 </tr>
-<tr data-index="26" data-listing-file-modified-sort="1705885334603" data-listing-reading-time-sort="1" data-listing-title-sort="Quotes" data-listing-filename-sort="160_quotes.md">
+<tr data-index="26" data-listing-file-modified-sort="1706129308224" data-listing-reading-time-sort="1" data-listing-word-count-sort="33" data-listing-title-sort="Quotes" data-listing-filename-sort="160_quotes.md">
 <td>
 <a href="./demo_to_game/160_quotes.html" class="title listing-title">Quotes</a>
 </td>
@@ -431,7 +466,6 @@ ul.task-list li input[type="checkbox"] {
 </td>
 </tr>
 </tbody>
-
 </table>
 <div class="listing-no-matching d-none">
 No matching items
@@ -478,6 +512,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -546,13 +607,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -631,10 +694,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -644,8 +706,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -658,6 +729,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -701,6 +891,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -726,6 +917,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -793,7 +1010,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/main/demo_to_game.qmd" class="toc-action">Edit this page</a></p></div></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/demo_to_game.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
@@ -824,6 +1041,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 

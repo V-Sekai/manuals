@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>V-Sekai - Manuals – t5-jsonformer-xstate</title>
+<title>V-Sekai - Manuals</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -47,7 +81,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -56,6 +96,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -69,9 +110,9 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
     <img src="../68604884.png" alt="V-Sekai" class="navbar-logo">
     </a>
@@ -86,26 +127,26 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../changelog.html" rel="" target="">
- <span class="menu-text">Changes</span></a>
+    <a class="nav-link" href="../changelog.html"> 
+<span class="menu-text">Changes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../decisions.html" rel="" target="">
- <span class="menu-text">Decisions</span></a>
+    <a class="nav-link" href="../decisions.html"> 
+<span class="menu-text">Decisions</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../demo_to_game.html" rel="" target="">
- <span class="menu-text">Demo to Game</span></a>
+    <a class="nav-link" href="../demo_to_game.html"> 
+<span class="menu-text">Demo to Game</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../awesome.html" rel="" target="">
- <span class="menu-text">Awesome</span></a>
+    <a class="nav-link" href="../awesome.html"> 
+<span class="menu-text">Awesome</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -132,10 +173,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20230620-t5-jsonformer-xstate.md" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20230620-t5-jsonformer-xstate.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
+
 
 
 
@@ -163,49 +205,49 @@ ul.task-list li input[type="checkbox"] {
 <ol type="1">
 <li><strong>Load the necessary libraries</strong></li>
 </ol>
-<pre class="gd"><code>var transformers = preload("res://path/to/transformers.gd")
-var torch = preload("res://path/to/torch.gd")</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode gd code-with-copy"><code class="sourceCode gap"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">var</span> <span class="va">transformers</span> <span class="op">=</span> <span class="va">preload</span>(<span class="st">"res://path/to/transformers.gd"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="va">var</span> <span class="va">torch</span> <span class="op">=</span> <span class="va">preload</span>(<span class="st">"res://path/to/torch.gd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="2" type="1">
 <li><strong>Load the T5 model and tokenizer</strong></li>
 </ol>
-<pre class="gd"><code>var model_name = "t5-small"
-var tokenizer = transformers.load_T5Tokenizer(model_name)
-var model = transformers.load_T5ForConditionalGeneration(model_name)</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode gd code-with-copy"><code class="sourceCode gap"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="va">var</span> <span class="va">model_name</span> <span class="op">=</span> <span class="st">"t5-small"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="va">var</span> <span class="va">tokenizer</span> <span class="op">=</span> <span class="va">transformers</span>.<span class="va">load_T5Tokenizer</span>(<span class="va">model_name</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="va">var</span> <span class="va">model</span> <span class="op">=</span> <span class="va">transformers</span>.<span class="va">load_T5ForConditionalGeneration</span>(<span class="va">model_name</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="3" type="1">
 <li><strong>Create a function to generate text using T5</strong></li>
 </ol>
-<pre class="gd"><code>func generate_text(input_text: String) -&gt; String:
-    var input_ids = tokenizer.encode(input_text)
-    var outputs = model.generate(input_ids)
-    var generated_text = tokenizer.decode(outputs[0])
-    return generated_text</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode gd code-with-copy"><code class="sourceCode gap"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">func</span> <span class="va">generate_text</span>(<span class="va">input_text</span><span class="op">:</span> <span class="bu">String</span>) <span class="op">-&gt;</span> <span class="bu">String</span><span class="op">:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">var</span> <span class="va">input_ids</span> <span class="op">=</span> <span class="va">tokenizer</span>.<span class="va">encode</span>(<span class="va">input_text</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">var</span> <span class="va">outputs</span> <span class="op">=</span> <span class="va">model</span>.<span class="va">generate</span>(<span class="va">input_ids</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="va">var</span> <span class="va">generated_text</span> <span class="op">=</span> <span class="va">tokenizer</span>.<span class="va">decode</span>(<span class="va">outputs</span>[<span class="fl">0</span>])</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">return</span> <span class="va">generated_text</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="4" type="1">
 <li><strong>Create a function to replace placeholders in T5 output</strong></li>
 </ol>
-<pre class="gd"><code>func replace_placeholders(text: String) -&gt; String:
-    var formatted_text = text.replace("&lt;extra_id_0&gt;", "event").replace("&lt;extra_id_1&gt;", "state")
-    return formatted_text</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode gd code-with-copy"><code class="sourceCode gap"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="va">func</span> <span class="va">replace_placeholders</span>(<span class="va">text</span><span class="op">:</span> <span class="bu">String</span>) <span class="op">-&gt;</span> <span class="bu">String</span><span class="op">:</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">var</span> <span class="va">formatted_text</span> <span class="op">=</span> <span class="va">text</span>.<span class="va">replace</span>(<span class="st">"&lt;extra_id_0&gt;"</span><span class="op">,</span> <span class="st">"event"</span>).<span class="va">replace</span>(<span class="st">"&lt;extra_id_1&gt;"</span><span class="op">,</span> <span class="st">"state"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">return</span> <span class="va">formatted_text</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="5" type="1">
 <li><strong>Create a function to parse JSON from formatted text</strong></li>
 </ol>
-<pre class="gd"><code>func parse_JSON(formatted_text: String) -&gt; Dictionary:
-    var json_object = JSON.parse(formatted_text).result
-    return json_object</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode gd code-with-copy"><code class="sourceCode gap"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">func</span> <span class="va">parse_JSON</span>(<span class="va">formatted_text</span><span class="op">:</span> <span class="bu">String</span>) <span class="op">-&gt;</span> <span class="va">Dictionary</span><span class="op">:</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">var</span> <span class="va">json_object</span> <span class="op">=</span> <span class="va">JSON</span>.<span class="va">parse</span>(<span class="va">formatted_text</span>).<span class="va">result</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">return</span> <span class="va">json_object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="6" type="1">
 <li><strong>Create a function to convert T5 output to XState JSON format</strong></li>
 </ol>
-<pre class="gd"><code>func t5_to_jsonformer_xstate(text: String) -&gt; Dictionary:
-    var formatted_text = replace_placeholders(text)
-    var json_object = parse_JSON(formatted_text)
-    return json_object</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode gd code-with-copy"><code class="sourceCode gap"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="va">func</span> <span class="va">t5_to_jsonformer_xstate</span>(<span class="va">text</span><span class="op">:</span> <span class="bu">String</span>) <span class="op">-&gt;</span> <span class="va">Dictionary</span><span class="op">:</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">var</span> <span class="va">formatted_text</span> <span class="op">=</span> <span class="va">replace_placeholders</span>(<span class="va">text</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">var</span> <span class="va">json_object</span> <span class="op">=</span> <span class="va">parse_JSON</span>(<span class="va">formatted_text</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">return</span> <span class="va">json_object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="7" type="1">
 <li><strong>Use the functions to generate XState JSON</strong></li>
 </ol>
-<pre class="gd"><code>func _ready():
-    var input_text = "your input text here"
-    var t5_output = generate_text(input_text)
-    var xstate_json = t5_to_jsonformer_xstate(t5_output)
-    print(xstate_json)</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode gd code-with-copy"><code class="sourceCode gap"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="va">func</span> _<span class="va">ready</span>()<span class="op">:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">var</span> <span class="va">input_text</span> <span class="op">=</span> <span class="st">"your input text here"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">var</span> <span class="va">t5_output</span> <span class="op">=</span> <span class="va">generate_text</span>(<span class="va">input_text</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="va">var</span> <span class="va">xstate_json</span> <span class="op">=</span> <span class="va">t5_to_jsonformer_xstate</span>(<span class="va">t5_output</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">print</span>(<span class="va">xstate_json</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will give you the XState JSON format for the given input text. Note that the T5 model might need to be fine-tuned on a dataset specific to your use case to generate accurate XState JSON representations.</p>
 </section>
 <section id="positive-consequences" class="level2">
@@ -348,6 +390,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
   const toggleColorMode = (alternate) => {
     // Switch the stylesheets
     const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
@@ -414,13 +483,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -499,10 +570,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -512,8 +582,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -526,6 +605,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -569,6 +767,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -594,6 +793,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -661,7 +886,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    </div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20230620-t5-jsonformer-xstate.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
@@ -692,6 +917,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 
