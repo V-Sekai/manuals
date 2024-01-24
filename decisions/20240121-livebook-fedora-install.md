@@ -43,6 +43,7 @@ sudo dnf install -y \
   gcc \
   unzip \
   curl
+sudo dnf copr enable vbatts/bazel -y && dnf install bazel4 -y
 
 # As root or using sudo
 useradd --system --create-home --home-dir /opt/livebook livebook
