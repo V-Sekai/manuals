@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/demo_to_game.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.549</generator>
-<lastBuildDate>Sat, 27 Jan 2024 20:11:01 GMT</lastBuildDate>
+<lastBuildDate>Mon, 29 Jan 2024 17:53:44 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/demo_to_game/000_ingest_validate.html</link>
@@ -78,219 +78,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/demo_to_game/000_ingest_validate.html</guid>
-  <pubDate>Sat, 27 Jan 2024 20:11:01 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/demo_to_game/000_store.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="setup-summary" class="level1">
-<h1>Setup Summary</h1>
-<p>This guide provides a step-by-step process to set up Dokku, configure SeaweedFS for local file storage with S3 compatible services, deploy an Elixir application named ‘uro’, and start CockroachDB and Godot Engine Server.</p>
-</section>
-<section id="table-of-contents" class="level1">
-<h1>Table of Contents</h1>
-<ol type="1">
-<li>Hardware Requirements</li>
-<li>Install Dokku</li>
-<li>Setup Dokku</li>
-<li>Install and Configure SeaweedFS</li>
-<li>Deploying the Elixir Application</li>
-<li>Starting CockroachDB in Dokku</li>
-<li>Starting Godot Engine Server</li>
-<li>Exposing the Servers using Tailscale</li>
-</ol>
-<section id="hardware-requirements" class="level2">
-<h2 class="anchored" data-anchor-id="hardware-requirements">Hardware Requirements</h2>
-<p>The following hardware requirements are recommended for the setup:</p>
-<ul>
-<li>CPU: 2 GHz or faster processor</li>
-<li>Memory: 4 GB RAM</li>
-<li>Storage: SSD with at least 20 GB of available space</li>
-<li>Network: Broadband Internet connection</li>
-</ul>
-<p>Please note that a GPU is not required for this setup.</p>
-</section>
-<section id="step-1-install-dokku" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-install-dokku">Step 1: Install Dokku</h2>
-<p>First, you need to install Dokku. You can do this on a Ubuntu system with the following commands:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">wget</span> https://raw.githubusercontent.com/dokku/dokku/v0.24.10/bootstrap.sh<span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb1-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> DOKKU_TAG=v0.24.10 bash bootstrap.sh</span></code></pre></div>
-</section>
-<section id="step-2-setup-dokku" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-setup-dokku">Step 2: Setup Dokku</h2>
-<p>After installation, you can then proceed to set up Dokku by visiting your server’s IP address in your web browser.</p>
-</section>
-<section id="step-3-install-and-configure-seaweedfs" class="level2">
-<h2 class="anchored" data-anchor-id="step-3-install-and-configure-seaweedfs">Step 3: Install and Configure SeaweedFS</h2>
-<p>Next, you need to install SeaweedFS and start the SeaweedFS master and volume servers:</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">wget</span> https://github.com/chrislusf/seaweedfs/releases/download/2.59/linux_amd64.tar.gz</span>
-<span id="cb2-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">tar</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-zxvf</span> linux_amd64.tar.gz</span>
-<span id="cb2-3"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">./weed</span> master</span>
-<span id="cb2-4"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">./weed</span> s3</span></code></pre></div>
-<p>This will start the SeaweedFS primary server and the S3 gateway.</p>
-</section>
-<section id="step-4-deploying-the-elixir-application" class="level2">
-<h2 class="anchored" data-anchor-id="step-4-deploying-the-elixir-application">Step 4: Deploying the Elixir Application</h2>
-<p>Create a new app on Dokku and push your app to Dokku:</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">dokku</span> apps:create uro</span>
-<span id="cb3-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">git</span> remote add dokku dokku@your-server-ip:uro</span>
-<span id="cb3-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">git</span> push dokku master</span></code></pre></div>
-</section>
-<section id="step-5-starting-cockroachdb-in-dokku" class="level2">
-<h2 class="anchored" data-anchor-id="step-5-starting-cockroachdb-in-dokku">Step 5: Starting CockroachDB in Dokku</h2>
-<p>To start CockroachDB in Dokku, install the Dokku docker-options plugin, set the Docker options for your app, pull the CockroachDB Docker image, and start CockroachDB:</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> dokku plugin:install https://github.com/dokku/dokku-docker-options.git docker-options</span>
-<span id="cb4-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">dokku</span> docker-options:add uro deploy <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"-p 26257:26257"</span></span>
-<span id="cb4-3"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">dokku</span> docker-options:add uro deploy <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"-p 8080:8080"</span></span>
-<span id="cb4-4"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">docker</span> pull cockroachdb/cockroach:v20.2.8</span>
-<span id="cb4-5"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">docker</span> run <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-d</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--name</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>cockroachdb <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-p</span> 26257:26257 <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-p</span> 8080:8080 cockroachdb/cockroach:v20.2.8 start <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--insecure</span></span></code></pre></div>
-</section>
-<section id="step-6-starting-godot-engine-server" class="level2">
-<h2 class="anchored" data-anchor-id="step-6-starting-godot-engine-server">Step 6: Starting Godot Engine Server</h2>
-<p>Starting a Godot engine server involves pulling the Godot Docker image, setting the Docker options for your app, and creating the server:</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># The version is for reference and is not the correct Godot Engine image tag.</span></span>
-<span id="cb5-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">docker</span> pull godotengine/godot:4.2.0</span>
-<span id="cb5-3"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">dokku</span> docker-options:add uro deploy <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"-p 47989:47989"</span></span>
-<span id="cb5-4"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">dokku</span> docker-options:add uro deploy <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"-p 6007:6007"</span></span>
-<span id="cb5-5"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">docker</span> run <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-d</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--name</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>godot-server <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-p</span> 47989:47989 <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-p</span> 6007:6007 godotengine/godot:4.2.0</span></code></pre></div>
-</section>
-<section id="exposing-the-servers-using-tailscale" class="level2">
-<h2 class="anchored" data-anchor-id="exposing-the-servers-using-tailscale">Exposing the Servers using Tailscale</h2>
-<p>Tailscale can be used to securely expose your ‘uro’ server and game server to the world. Here’s how you can do it:</p>
-<ol type="1">
-<li>Install Tailscale on your server:</li>
-</ol>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">curl</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-fsSL</span> https://pkgs.tailscale.com/stable/ubuntu/focal.gpg <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> apt-key add <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-</span></span>
-<span id="cb6-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">curl</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-fsSL</span> https://pkgs.tailscale.com/stable/ubuntu/focal.list <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> tee /etc/apt/sources.list.d/tailscale.list</span>
-<span id="cb6-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> apt-get update</span>
-<span id="cb6-4"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> apt-get install tailscale</span></code></pre></div>
-<ol start="2" type="1">
-<li>Authenticate Tailscale:</li>
-</ol>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> tailscale up</span></code></pre></div>
-<p>Follow the prompts to authenticate Tailscale with your Tailscale account.</p>
-<ol start="3" type="1">
-<li>Now, your servers should be accessible from any device logged into your Tailscale network. You can check the IP addresses assigned to your servers by Tailscale with the following:</li>
-</ol>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">tailscale</span> ip <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-4</span></span></code></pre></div>
-<p>Please note that you’ll need to replace <code>your-server-ip</code> with the actual IP address of your server. Also, the port numbers used here are just examples. You should use the port numbers that are appropriate for your setup.</p>
-</section>
-<section id="todo-generate-the-certificate-with-caddy" class="level2">
-<h2 class="anchored" data-anchor-id="todo-generate-the-certificate-with-caddy">TODO: Generate the certificate with Caddy</h2>
-<p>Instruct how to generate certificates with Caddy.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/demo_to_game/000_store.html</guid>
-  <pubDate>Sat, 27 Jan 2024 20:11:01 GMT</pubDate>
+  <pubDate>Mon, 29 Jan 2024 17:53:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -324,7 +112,7 @@ font-style: inherit;">-4</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/demo_to_game/001_push.html</guid>
-  <pubDate>Sat, 27 Jan 2024 20:11:01 GMT</pubDate>
+  <pubDate>Mon, 29 Jan 2024 17:53:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -355,7 +143,7 @@ font-style: inherit;">-4</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/demo_to_game/002_packaging_marker3D_and_quad_plane.html</guid>
-  <pubDate>Sat, 27 Jan 2024 20:11:01 GMT</pubDate>
+  <pubDate>Mon, 29 Jan 2024 17:53:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -392,7 +180,7 @@ font-style: inherit;">-4</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/demo_to_game/003_tree.html</guid>
-  <pubDate>Sat, 27 Jan 2024 20:11:01 GMT</pubDate>
+  <pubDate>Mon, 29 Jan 2024 17:53:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -439,7 +227,7 @@ font-style: inherit;">-4</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/demo_to_game/004_object_uploads_and_positioning.html</guid>
-  <pubDate>Sat, 27 Jan 2024 20:11:01 GMT</pubDate>
+  <pubDate>Mon, 29 Jan 2024 17:53:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -470,7 +258,7 @@ font-style: inherit;">-4</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/demo_to_game/005_servers_and_script.html</guid>
-  <pubDate>Sat, 27 Jan 2024 20:11:01 GMT</pubDate>
+  <pubDate>Mon, 29 Jan 2024 17:53:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -497,7 +285,7 @@ font-style: inherit;">-4</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/demo_to_game/006_physics.html</guid>
-  <pubDate>Sat, 27 Jan 2024 20:11:01 GMT</pubDate>
+  <pubDate>Mon, 29 Jan 2024 17:53:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -524,7 +312,7 @@ font-style: inherit;">-4</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/demo_to_game/007_capacity_limits.html</guid>
-  <pubDate>Sat, 27 Jan 2024 20:11:01 GMT</pubDate>
+  <pubDate>Mon, 29 Jan 2024 17:53:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -801,7 +589,7 @@ font-style: inherit;">// This will be 54</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/demo_to_game/070_packet_format.html</guid>
-  <pubDate>Sat, 27 Jan 2024 20:11:01 GMT</pubDate>
+  <pubDate>Mon, 29 Jan 2024 17:53:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -820,7 +608,7 @@ font-style: inherit;">// This will be 54</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/demo_to_game/071_lod_strategy.html</guid>
-  <pubDate>Sat, 27 Jan 2024 20:11:01 GMT</pubDate>
+  <pubDate>Mon, 29 Jan 2024 17:53:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -902,7 +690,7 @@ font-style: inherit;">// This will be 54</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/demo_to_game/080_validations.html</guid>
-  <pubDate>Sat, 27 Jan 2024 20:11:01 GMT</pubDate>
+  <pubDate>Mon, 29 Jan 2024 17:53:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -983,72 +771,7 @@ font-style: inherit;">// This will be 54</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/demo_to_game/090_basic_tooling.html</guid>
-  <pubDate>Sat, 27 Jan 2024 20:11:01 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/demo_to_game/099_further_prototypes.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="v-sekai-other-world-architecture-sorted-prototypes" class="level1">
-<h1>V-Sekai Other World Architecture: Sorted Prototypes</h1>
-<section id="priority-prototypes" class="level2">
-<h2 class="anchored" data-anchor-id="priority-prototypes">Priority Prototypes</h2>
-<p>These prototypes are crucial for the VR social networking service’s basic functionality and user experience.</p>
-<ol type="1">
-<li><strong>VOIP Integration</strong>: This prototype will focus on integrating Voice over IP (VoIP) into the virtual world for real-time voice communication.</li>
-<li><strong>VR Interaction Menus</strong>: This prototype will develop Virtual Reality (VR) user interaction menus.</li>
-<li><strong>Social Interactions</strong>: This prototype will implement interactions such as friend requests, private messaging, and public chat rooms.</li>
-<li><strong>Avatar Customization</strong>: This prototype will allow users to customize their avatars with outfits, accessories, and animations.</li>
-<li><strong>User Interface (UI) Design</strong>: This prototype will focus on designing a user-friendly and intuitive interface for navigating the virtual world and interacting with its elements.</li>
-<li><strong>Cross-platform Compatibility</strong>: This prototype will ensure the virtual world is compatible with various platforms, including PCs, consoles, and mobile devices.</li>
-<li><strong>Onboarding Experience</strong>: This prototype will design an engaging and informative onboarding experience to welcome new users to the virtual world.</li>
-<li><strong>Help Center</strong>: This prototype will establish a comprehensive help center with guides, FAQs, and troubleshooting tips.</li>
-<li><strong>Live Support Chat</strong>: This prototype will implement a live support chat feature for immediate assistance with issues.</li>
-<li><strong>Account Management Features</strong>: This prototype will develop features for managing user accounts, such as password resets, account recovery, and privacy settings.</li>
-</ol>
-</section>
-<section id="prototypes" class="level2">
-<h2 class="anchored" data-anchor-id="prototypes">Prototypes</h2>
-<p>These prototypes are essential for enhancing the user experience and ensuring the smooth operation of the service.</p>
-<ol type="1">
-<li><strong>Gameplay Mechanics</strong>: This prototype will introduce gameplay mechanics like quests, combat systems, and item collection.</li>
-<li><strong>Inventory Synchronization</strong>: This prototype will establish a system for synchronizing inventory between the data store and the Digital Content Creation (DCC) tools.</li>
-<li><strong>Asset Validation</strong>: This prototype will create a process for validating assets before uploading them to the server.</li>
-<li><strong>Asset Optimization</strong>: This prototype will develop methods for optimizing assets to ensure efficient use of resources.</li>
-<li><strong>Environment Customization</strong>: This prototype will allow users to customize their environment within the virtual world, such as changing the landscape, weather conditions, and time of day.</li>
-<li><strong>NPC Interactions</strong>: This prototype will introduce Non-Player Characters (NPCs) into the virtual world. Users can interact with these NPCs, who can provide quests, information, or goods.</li>
-<li><strong>Economy System</strong>: This prototype will establish an in-game economy system where users can trade items, services, or virtual currency.</li>
-<li><strong>Achievement System</strong>: This prototype will implement an achievement system to reward users for accomplishing specific tasks or milestones within the virtual world.</li>
-<li><strong>User Feedback System</strong>: This prototype will create a system for continuously collecting and analyzing user feedback to improve the virtual world.</li>
-<li><strong>Performance Monitoring</strong>: This prototype will implement tools to monitor performance and identify areas for optimization.</li>
-</ol>
-</section>
-<section id="nice-to-have-prototypes" class="level2">
-<h2 class="anchored" data-anchor-id="nice-to-have-prototypes">Nice-to-have Prototypes</h2>
-<p>These prototypes are nice-to-have features that can further enhance the user experience and functionality of the service.</p>
-<ol type="1">
-<li><strong>Asset Moderation</strong>: This prototype will implement a system for moderating user-generated content to maintain a safe and enjoyable environment for all users.</li>
-<li><strong>Accessibility Features</strong>: This prototype will ensure the virtual world is accessible to all users, including those with disabilities. This could involve text-to-speech functionality, colorblind modes, and customizable control schemes.</li>
-<li><strong>Security Measures</strong>: This prototype will develop security measures to protect user data and prevent malicious activities within the virtual world.</li>
-<li><strong>Multi-language Support</strong>: This prototype will implement multi-language support to cater to users from different linguistic backgrounds.</li>
-<li><strong>Music and Sound Effects</strong>: This prototype will add background music and sound effects to enhance the immersive experience of the virtual world.</li>
-<li><strong>Tutorial System</strong>: This prototype will create a tutorial system to guide new users through navigating and interacting with the virtual world.</li>
-<li><strong>Dynamic Weather System</strong>: This prototype will introduce a dynamic weather system into the virtual world, affecting visuals and gameplay.</li>
-<li><strong>Emote System</strong>: This prototype will implement an emote system for users to express themselves non-verbally in the virtual world.</li>
-<li><strong>Mini-games</strong>: This prototype will introduce various mini-games that users can participate in for fun or rewards.</li>
-</ol>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/demo_to_game/099_further_prototypes.html</guid>
-  <pubDate>Sat, 27 Jan 2024 20:11:01 GMT</pubDate>
+  <pubDate>Mon, 29 Jan 2024 17:53:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1173,7 +896,7 @@ font-style: inherit;">// This will be 54</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/demo_to_game/110_peer_platforms.html</guid>
-  <pubDate>Sat, 27 Jan 2024 20:11:01 GMT</pubDate>
+  <pubDate>Mon, 29 Jan 2024 17:53:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1208,7 +931,7 @@ font-style: inherit;">// This will be 54</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/demo_to_game/120_inspirations.html</guid>
-  <pubDate>Sat, 27 Jan 2024 20:11:01 GMT</pubDate>
+  <pubDate>Mon, 29 Jan 2024 17:53:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1260,7 +983,7 @@ font-style: inherit;">// This will be 54</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/demo_to_game/130_help_write_documentation.html</guid>
-  <pubDate>Sat, 27 Jan 2024 20:11:01 GMT</pubDate>
+  <pubDate>Mon, 29 Jan 2024 17:53:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1318,7 +1041,7 @@ font-style: inherit;">// This will be 54</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/demo_to_game/140_game.html</guid>
-  <pubDate>Sat, 27 Jan 2024 20:11:01 GMT</pubDate>
+  <pubDate>Mon, 29 Jan 2024 17:53:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1367,7 +1090,7 @@ font-style: inherit;">// This will be 54</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/demo_to_game/141_game_mvp.html</guid>
-  <pubDate>Sat, 27 Jan 2024 20:11:01 GMT</pubDate>
+  <pubDate>Mon, 29 Jan 2024 17:53:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1413,7 +1136,94 @@ font-style: inherit;">// This will be 54</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/demo_to_game/150_mvp.html</guid>
-  <pubDate>Sat, 27 Jan 2024 20:11:01 GMT</pubDate>
+  <pubDate>Mon, 29 Jan 2024 17:53:44 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/demo_to_game/150_vr_cursor.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="vr-cursor" class="level1">
+<h1>VR Cursor</h1>
+<p>Add the concept of a vr cursor that gives us more precision than a rough swipe.</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/demo_to_game/150_vr_cursor.html</guid>
+  <pubDate>Mon, 29 Jan 2024 17:53:44 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/demo_to_game/151_avoid_n_squared_state_updates.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="avoiding-the-onn-state-update-problem" class="level1">
+<h1>Avoiding the O(n^n) State Update Problem</h1>
+<p>The O(n^n) state update problem arises when every change in state requires updating all other states, leading to an exponential increase in computations as the number of states (n) increases. This can be a significant issue in a VR environment with many interactive objects and players.</p>
+<p>To avoid this problem, we can use the following strategies:</p>
+<section id="incremental-state-updates" class="level3">
+<h3 class="anchored" data-anchor-id="incremental-state-updates">1. Incremental State Updates</h3>
+<p>As mentioned earlier, when an avatar interacts with an object like a chair, only the relevant changes to the state are recorded and sent to the server. This means that instead of updating the entire state for every interaction, we only modify the parts of the state that have changed.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb1-1">server<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>put<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span>chair_path, %<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">occupied:</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">true</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">occupied_by:</span> avatar_id<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">})</span></span>
+<span id="cb1-2">server<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>put<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span>avatar_path, %<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">sitting:</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">true</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">sitting_on:</span> chair_id<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">})</span></span></code></pre></div>
+<p>This approach significantly reduces the amount of data that needs to be processed and transmitted, making it much more efficient.</p>
+</section>
+<section id="event-driven-updates" class="level3">
+<h3 class="anchored" data-anchor-id="event-driven-updates">2. Event-Driven Updates</h3>
+<p>Instead of continuously updating all states, we can use an event-driven model where updates are triggered by specific events. For example, when an avatar sits on a chair, an event is triggered which updates the states of the avatar and the chair. This way, we only perform updates when necessary, reducing the computational load.</p>
+</section>
+<section id="spatial-partitioning" class="level3">
+<h3 class="anchored" data-anchor-id="spatial-partitioning">3. Spatial Partitioning</h3>
+<p>In a large VR environment, not all objects interact with each other. We can divide the environment into smaller regions or partitions, and only update the states within the same partition. This technique, known as spatial partitioning, can greatly reduce the number of state updates required.</p>
+</section>
+<section id="prioritizing-updates" class="level3">
+<h3 class="anchored" data-anchor-id="prioritizing-updates">4. Prioritizing Updates</h3>
+<p>Not all state updates are equally important. Some updates might have a bigger impact on the game than others. By prioritizing updates based on their importance, we can ensure that the most critical updates are processed first, improving the overall performance and responsiveness of the game.</p>
+<p>By using these strategies, we can avoid the O(n^n) state update problem and ensure that our VR environment remains scalable and efficient, even as the number of players and interactions increases.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/demo_to_game/151_avoid_n_squared_state_updates.html</guid>
+  <pubDate>Mon, 29 Jan 2024 17:53:44 GMT</pubDate>
 </item>
 </channel>
 </rss>
