@@ -6,18 +6,17 @@ V-Sekai is an open-source project that aims to bring social VR/VRSNS/metaverse c
 
 A curated list of all the projects V-Sekai has been involved with in the field of social VR.
 
-## Contents
+## Tools that bring me joy
 
-*   [Applications](#applications)
-*   [Websites](#websites)
-*   [Artwork](#artwork)
-*   [Plugins and Scripts](#plugins-and-scripts)
-*   [Modules](#modules)
-*   [Tools](#tools)
-*   [Tools that bring me joy](#tools-that-bring-me-joy)
-*   [Groups](#groups)
-*   [Experiments](#experiments)
-*   [Machine Learning experiments](#machine-learning-experiments)
+*   [Elk: Mastadon client](https://elk.zone)
+*   [Libhunt: Shows trending github repositories based on social media links](https://www.libhunt.com)
+*   [Threadreaderapp: Provides pdf summaries of Twitter threads](https://threadreaderapp.com/)
+*   [Rhino3d: CAD modeller with a visual procedural graph](https://www.rhino3d.com/)
+*   [Discord timestamps](https://r.3v.fi/discord-timestamps/)
+*   [When2meet helps you find the best time for a group to get together](https://www.when2meet.com/)
+*   [Hack for quick note taking](https://hackmd.io/)
+*   [Image comparison](https://imgsli.com)
+*   [Code Name Generator: Colors, Metal, Animals](https://www.codenamegenerator.com/)
 
 ## Applications
 
@@ -73,7 +72,7 @@ Modules extend Godot Engine core (C++).
 *   [Hydro](https://github.com/godot-extended-libraries/hydro)
 *   [ashtonmeuser/godot-wasm](https://github.com/ashtonmeuser/godot-wasm)
 
-## Tools
+## Other Tools
 
 *   [SQLpage](https://github.com/lovasoa/SQLpage)
 *   [V-Sekai Blender Game Tools](https://github.com/V-Sekai/vsekai-blender-game-tools)
@@ -90,18 +89,6 @@ Modules extend Godot Engine core (C++).
 *   [Lateral Thinking with Weathered Technology](https://en.wikipedia.org/wiki/Gunpei_Yokoi)
 *   [Generate Blender Rigify armatures for VRM models.](https://github.com/nanoskript/vrm-rigify)
 *   [Three VRM Inspector](https://0b5vr.com/three-vrm-inspector/)
-
-## Tools that bring me joy
-
-*   [Elk: Mastadon client](https://elk.zone)
-*   [Libhunt: Shows trending github repositories based on social media links](https://www.libhunt.com)
-*   [Threadreaderapp: Provides pdf summaries of Twitter threads](https://threadreaderapp.com/)
-*   [Rhino3d: CAD modeller with a visual procedural graph](https://www.rhino3d.com/)
-*   [Discord timestamps](https://r.3v.fi/discord-timestamps/)
-*   [When2meet helps you find the best time for a group to get together](https://www.when2meet.com/)
-*   [Hack for quick note taking](https://hackmd.io/)
-*   [Image comparison](https://imgsli.com)
-*   [Code Name Generator: Colors, Metal, Animals](https://www.codenamegenerator.com/)
 
 ## Articles
 
