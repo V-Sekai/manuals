@@ -1,4 +1,4 @@
-# Proposed: Overcoming a V-Sekai limit with Documentation
+# Proposed:
 
 ## Metadata
 
@@ -6,21 +6,21 @@
 - Deciders: V-Sekai
 - Tags: V-Sekai
 
-## The Backdrop
+## The Context
 
-## The Challenge
+## The Problem Statement
 
-## The Strategy
+## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
-## The Upside
+## The Benefits
 
-## The Downside
+## The Downsides
 
 ## The Road Not Taken
 
 ## The Infrequent Use Case
 
-## In Core and Done by Us?
+## In Core and Done by Us
 
 ## Further Reading
 
