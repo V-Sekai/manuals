@@ -10,38 +10,7 @@ The current scope of facial expression customization in V-Sekai is limited. It l
 
 #### Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
-```gdscript
-class_name AIExpressionGenerator
-
-# Function to generate a facial expression based on emotion and optional modifiers.
-func generate_expression(emotion: String, modifiers: Dictionary) -> Animation:
-    var blend_shape: PackedFloat32Array = AIModel.predict(emotion, modifiers)
-    var animation_data: Animation = convert_to_vrcft(blend_shape)
-    return animation_data
-
-# Function to convert blend shape data into an Animation resource.
-func convert_to_vrcft(blend_shape: PackedFloat32Array) -> Animation:
-    var animation = Animation.new()
-    # Further implementation required to create tracks and keys for animation
-    return animation
-
-# Example usage:
-
-# Instantiate the expression generator
-var expression_generator = AIExpressionGenerator.new()
-
-# Define the user-selected emotion and any modifiers
-var user_emotion: String = "happy"
-var user_modifiers: Dictionary = {"intensity": 0.8}
-
-# Generate facial expression animation data
-var facial_animation: Animation = expression_generator.generate_expression(user_emotion, user_modifiers)
-
-# Apply the generated animation to an avatar's AnimationPlayer node
-var avatar_animation_player: AnimationPlayer = $Avatar/AnimationPlayer
-avatar_animation_player.add_animation("facial_expression", facial_animation)
-avatar_animation_player.play("facial_expression")
-```
+To be determined.
 
 #### The Benefits
 
