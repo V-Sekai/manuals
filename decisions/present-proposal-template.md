@@ -1,11 +1,5 @@
 # Proposed:
 
-## Metadata
-
-- Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
-- Deciders: V-Sekai
-- Tags: V-Sekai
-
 ## The Context
 
 ## The Problem Statement
@@ -21,6 +15,18 @@
 ## The Infrequent Use Case
 
 ## In Core and Done by Us
+
+## Status
+
+Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+
+## Decision Makers
+
+- V-Sekai development team and community stakeholders.
+
+## Tags
+
+- V-Sekai, Avatar Customization, AI, Facial Expressions
 
 ## Further Reading
 

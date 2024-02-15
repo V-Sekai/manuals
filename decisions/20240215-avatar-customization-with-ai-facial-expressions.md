@@ -1,34 +1,44 @@
-# Proposed: Avatar Customization with AI-Generated Facial Expressions
+# Avatar Customization with AI-Generated Facial Expressions
 
-## Metadata
+## Overview
 
-- **Status**: Proposed
-- **Deciders**: V-Sekai
-- **Tags**: V-Sekai
+This proposal aims to enhance avatar customization in V-Sekai by incorporating AI-generated facial expressions, providing users the ability to create more realistic and diverse avatars with ease.
 
 ## Context and Problem Statement
 
-Currently, V-Sekai offers limited options for customizing avatars' facial expressions. This can be a hindrance for users who want to create more realistic and expressive characters. To address this, we propose an enhancement that introduces AI-generated facial expressions to provide a more comprehensive avatar creation process.
+Customization of avatars' facial expressions within V-Sekai is somewhat limited, restricting users from fully realizing the potential of their virtual characters. There lacks a streamlined process that allows for the creation of nuanced and emotionally rich expressions vital for immersive interactions.
 
 ## Proposed Solution
 
-We propose to integrate an AI-based system that generates realistic and diverse facial expressions for avatars. This system will use machine learning algorithms to analyze and generate various emotions, such as happiness, sadness, anger, surprise, and fear. The generated expressions will be seamlessly integrated into the avatar's animation system, allowing users to create more expressive characters without the need for manual editing or rigging.
+The integration of an AI-based system capable of generating a wide array of realistic facial expressions can significantly augment the current limitations faced by V-Sekai users. Below outlines the components and mechanisms of the proposed solution:
 
-### Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+### Components
 
-1.  Train an AI model using a large dataset of facial expressions: The first step is to train an AI model using a dataset containing various facial expressions. This can be done using machine learning algorithms such as Convolutional Neural Networks (CNNs), or Transformers or Generative Adversarial Networks (GANs).
-2.  Generate new facial expressions based on user input: Once the AI model is trained, users will be able to generate new facial expressions by providing input parameters such as emotion type, intensity, and duration. The AI model will then generate a realistic and diverse set of expressions based on this input.
-3.  Integrate the generated expressions into the avatar's animation system: The generated facial expressions will be seamlessly integrated into the avatar's animation system, allowing users to create more expressive characters without the need for manual editing or rigging.
+1. **AI Model Training**: An extensive collection of facial expression data will be used to train machine learning models specializing in emotion recognition and generation.
+2. **Expression Generation Interface**: Users will interact with a simple interface to specify desired emotions and modifiers which the AI model will use to output unique facial expressions.
+3. **Animation System Integration**: The generated expressions will be formatted compatibly with the VRCFT's Unified Expressions animation systems, ensuring smooth integration and ease of use.
 
 ### Benefits
 
-- More realistic and diverse facial expressions
-- Enhanced avatar customization options
-- Improved user experience
+- **Enhanced Realism**: Avatars will possess the capacity to display genuinely convincing emotions.
+- **Diversity in Expression**: A wider range of emotional responses increases the depth of social interactions.
+- **User Experience**: Simplifies the expression creation process, making avatar personalization more accessible.
 
-### Further Reading
+## Decision Makers
 
-1.  [Generative Adversarial Networks (GANs) - Wikipedia](https://en.wikipedia.org/wiki/Generative_adversarial_network)
-2.  [Convolutional Neural Networks (CNNs) - Wikipedia](https://en.wikipedia.org/wiki/Convolutional_neural_network)
+- V-Sekai development team and community stakeholders.
 
-_This proposal was assisted by Aria, an AI assistant._
+## Tags
+
+- V-Sekai, Avatar Customization, AI, Facial Expressions
+
+## VRCFaceTracking (VRCFT)
+
+VRCFaceTracking (VRCFT) serves as a platform facilitating eye and face tracking data integration. The introduction of Unified Expressions standardizes the face shapes and expressions usable across various avatars, enhancing compatibility and user experience. The platform also allows developers to leverage an SDK for external tracking modules, enabling broader support for face tracking technologies. With this groundwork laid out, there is potential to push the boundaries of avatar expressiveness further using AI.
+
+## Further Reading
+
+1. [Generative Adversarial Networks (GANs) - Wikipedia](https://en.wikipedia.org/wiki/Generative_adversarial_network)
+2. [Convolutional Neural Networks (CNNs) - Wikipedia](https://en.wikipedia.org/wiki/Convolutional_neural_network)
+
+**Authored with assistance from Aria**
