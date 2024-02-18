@@ -6,14 +6,13 @@
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
 
-
 ### Context and Problem Statement
 
 Use godot rgbaf textures to store integer.
 
 ### Describe the proposed option and how it helps to overcome the problem or limitation
 
- Godot Shader to extract the raw 16-bit integer in a FORMAT_RGBAH texture by Lyuma.
+Godot Shader to extract the raw 16-bit integer in a FORMAT_RGBAH texture by Lyuma.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
@@ -67,7 +66,7 @@ void fragment() {
 		// mantissa | exponent | signbit
 		((data & uvec4(0x007FFFFF)) >> uvec4(13)) | exps | (((data >> uvec4(31)) & uvec4(1)) << uvec4(15)),
 		// Denormalized case: exponent is all over the place, so instead we add the smallest non-denormalized half, then extract the mantessa bits.
-		// Finally, or the sign bit (and exponent = 0) 
+		// Finally, or the sign bit (and exponent = 0)
 		(((floatBitsToUint(uintBitsToFloat(data & uvec4(0x7FFFFFFF)) + 1.0/16384.0) & uvec4(0x007FFFFF)) >> uvec4(13))) | (((data >> uvec4(31)) & uvec4(1)) << uvec4(15)),
 		// Denormalized case can be detected with half exponent <= -15.
 		lessThanEqual((data) & uvec4(0x7F800000), uvec4(0x38000000)));

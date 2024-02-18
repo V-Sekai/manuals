@@ -24,9 +24,9 @@ Integrate the Godot PMX module into the V-Sekai project by following the impleme
 5. Run `git subrepo clone https://github.com/V-Sekai/godot-pmx modules/pmx` in the terminal or command prompt.
 6. Code the module.
 7. Run `git subrepo pull modules/pmx` in the terminal or command prompt to merge with upstream repo.
-6. Code the module.
-8. Run `git subrepo push modules/pmx` in the terminal or command prompt to publish.
-9. Make sure GitHub CI/CD tests pass.
+8. Code the module.
+9. Run `git subrepo push modules/pmx` in the terminal or command prompt to publish.
+10. Make sure GitHub CI/CD tests pass.
 
 ## Positive Consequences
 

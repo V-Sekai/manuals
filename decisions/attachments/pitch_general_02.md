@@ -18,18 +18,18 @@ To summarize, V-Sekai's main objectives are:
 
 • Enabling open communication through voice/text chat and VRM 1.0 avatars
 
-• Providing simple, flexible spaces for any activity or collaboration 
+• Providing simple, flexible spaces for any activity or collaboration
 
-• Sharing media, tools, and abilities to create together 
+• Sharing media, tools, and abilities to create together
 
-• Educating and supporting the community 
+• Educating and supporting the community
 
 • Providing open access for user and creator contributions
 
-• Fostering human relationships and co-creation in virtual reality 
+• Fostering human relationships and co-creation in virtual reality
 
-• Keeping the platform accessible to all while being open-ended enough for creativity 
+• Keeping the platform accessible to all while being open-ended enough for creativity
 
-• Building a foundation for connection focused on user experience 
+• Building a foundation for connection focused on user experience
 
 • Developing an ecosystem where people power imagination and potential.

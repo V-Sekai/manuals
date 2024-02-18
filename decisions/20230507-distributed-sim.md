@@ -1,4 +1,4 @@
-# Rejected:  Distributed simulation
+# Rejected: Distributed simulation
 
 ### Metadata
 

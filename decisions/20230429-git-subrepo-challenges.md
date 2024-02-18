@@ -24,19 +24,17 @@ Avoid storing godot and modules inside of the v-sekai-game.
 
 ### Positive Consequences
 
-* Improved organization and compatibility of assets and libraries across branches.
-* Simplified workflow for project updates and synchronization.
+- Improved organization and compatibility of assets and libraries across branches.
+- Simplified workflow for project updates and synchronization.
 
 ### Negative Consequences
 
- * Potential learning curve for developers unfamiliar with Git subrepo management.
- * Possible limitations in implementing other features.
-
+- Potential learning curve for developers unfamiliar with Git subrepo management.
+- Possible limitations in implementing other features.
 
 ### Option graveyard
 
 Workarounds using scripts may be possible, but they are likely to be less efficient and more prone to errors compared to a Git subrepo management system.
-
 
 ### If this enhancement will be used infrequently, can it be worked around with a few lines of script?
 
@@ -45,7 +43,6 @@ Not a few lines of code. It is also devops.
 ### Is there a reason why this should be core and done by us?
 
 Integrating a Git subrepo management system as a core feature ensures consistency and maintainability across the entire V-Sekai project. It promotes better collaboration among team members and streamlines the development process.
-
 
 ### References
 

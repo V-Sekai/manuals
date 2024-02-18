@@ -1,4 +1,4 @@
-# Draft:  Describe a avatar publishing workflow for portability
+# Draft: Describe a avatar publishing workflow for portability
 
 ## Metadata
 
@@ -18,11 +18,11 @@ The proposed solution involves using the VRM portable avatar format, Silent's sh
 
 1. Import avatar in VRM0 portable avatar format.
 2. Install Silent's shader 1.11.
-3. Convert VRM to compatible platform's internal format. 
-  a. Avoid "Combine Mesh" option.
-  b. The Cutout Rendering Mode matches VRM's usual transparency usage.
-  c. UNRESOLVED: VRM Colliders cause greatly increased count of simulated physics objects
-     ii. Try switching to inside bounds instead of bone as spheres
+3. Convert VRM to compatible platform's internal format.
+   a. Avoid "Combine Mesh" option.
+   b. The Cutout Rendering Mode matches VRM's usual transparency usage.
+   c. UNRESOLVED: VRM Colliders cause greatly increased count of simulated physics objects
+   ii. Try switching to inside bounds instead of bone as spheres
 4. Swap the mtoon material for Silent's shader's crosstone material. Fire doesn't use the light-ramp shader.
 5. Many bones need to be the first child for IK to work.
 6. Fire prefers solid colour backgrounds for avatar photos
@@ -61,4 +61,4 @@ Yes, creating a standardized workflow for avatar publishing ensures consistency 
 - Booth.pm: [Booth.pm](https://booth.pm/)
 - Sketchfab: [Sketchfab](https://sketchfab.com/)
 - VRM converter for compatible platform: [VRM converter](https://booth.pm/en/items/1025226)
-  * Automatically installs Univrm: [Univrm](https://github.com/vrm-c/UniVRM)
+  - Automatically installs Univrm: [Univrm](https://github.com/vrm-c/UniVRM)

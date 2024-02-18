@@ -27,9 +27,9 @@ Provide IREE to godot engine.
 Uses the Vulkan back end.
 
 1. input_count
-4. input/0/data (TypedArray)
-5. output_count
-6. output/0/data (TypedArray)
+2. input/0/data (TypedArray)
+3. output_count
+4. output/0/data (TypedArray)
 
 ### Positive Consequences
 

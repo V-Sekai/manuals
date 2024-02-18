@@ -33,13 +33,13 @@ This project does not adhere to [Semantic Versioning](https://semver.org/spec/v2
 commit dc4754b - (main) Merge pull request #242 from V-Sekai/move-utility
 Move the utility folder.
 
-commit f854698 - (main) Merge pull request #241 from V-Sekai/better-svgs 
+commit f854698 - (main) Merge pull request #241 from V-Sekai/better-svgs
 Improve the logos.
 
 commit 5928dee - (main) Merge pull request #239 from V-Sekai/remove-unused-01
 Remove unnecessary files and configurations for Mac development in vs code.
 
-commit 8c34654 - (remove-unused-math-utils) Remove unused math utils. 
+commit 8c34654 - (remove-unused-math-utils) Remove unused math utils.
 
 commit 9860967 - (main) Merge pull request #245 from V-Sekai/xr-on
 Make xr mode on.
@@ -47,7 +47,7 @@ Make xr mode on.
 commit 6147202 - (xr-on) Make xr mode on.
 
 commit dc4754b - (main) Merge pull request #242 from V-Sekai/move-utility
-Move the utility folder. 
+Move the utility folder.
 
 commit 83b4490 - (move-utility) Move the utility folder.
 
@@ -63,7 +63,7 @@ Write a github action for godot engine so I can push releases
 Update github actions for tagged release. Use the `0.1.0-alpha1` tag.
 
 Investigate https://about.signpath.io/product/open-source for part 2
- 
+
 Launcher https://gist.github.com/fire/e5a16d3e738e8575b8ce7f527c245d27
 
 People are asking about 3d ik so I need to increase the code quality of https://github.com/V-Sekai/renik

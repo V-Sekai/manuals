@@ -19,16 +19,17 @@ The roadmap presented here is short-term.
 By avoiding work on User Generated Content (UGC) and world building, we can prioritize the three main states in the roadmap: "World / Avatar Performance" (WAP), "Networking" (NET), and "UI/UX". This allows the team to focus on the core aspects of V-Sekai and achieve the goals more efficiently.
 
 1. **Monitoring and Logging System Test**:
-    1. Setup logging framework
-    2. Configure monitoring system
-    3. Create a dashboard
+
+   1. Setup logging framework
+   2. Configure monitoring system
+   3. Create a dashboard
 
 2. **Test Environment with Simulated Data Test**:
-    1. Create test scenarios
-    2. Generate simulated data
-    3. Configure test environment
-    4. Execute test scenarios
-    5. Analyze test results
+   1. Create test scenarios
+   2. Generate simulated data
+   3. Configure test environment
+   4. Execute test scenarios
+   5. Analyze test results
 
 ### Positive Consequences
 

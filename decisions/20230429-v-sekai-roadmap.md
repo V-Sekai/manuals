@@ -70,7 +70,6 @@ Overhead might be hard.
 - Relying on informal communication and ad-hoc collaboration
 - Continuing with the current approach without a structured process
 
-
 ### If this enhancement will be used infrequently, can it be worked around with a few lines of script?
 
 No. This is a process.

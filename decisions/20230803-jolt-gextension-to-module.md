@@ -2,9 +2,9 @@
 
 ## Metadata
 
-*   Status: Proposed
-*   Deciders: v-sekai, fire
-*   Tags: Godot, Jolt, GDExtension, C++ Module, SCons, CMake
+- Status: Proposed
+- Deciders: v-sekai, fire
+- Tags: Godot, Jolt, GDExtension, C++ Module, SCons, CMake
 
 ## Context and Problem Statement
 
@@ -26,15 +26,15 @@ The implementation details will be decided upon acceptance of this proposal.
 
 ## Positive Consequences
 
-*   More control over the engine's core functionality.
-*   Ability to experiment with soft physics.
-*   Better integration with Godot's core systems.
-*   Enable double precision support
+- More control over the engine's core functionality.
+- Ability to experiment with soft physics.
+- Better integration with Godot's core systems.
+- Enable double precision support
 
 ## Negative Consequences
 
-*   Requires knowledge of both CMake and SCons.
-*   Potential increase in development time due to the complexity of porting.
+- Requires knowledge of both CMake and SCons.
+- Potential increase in development time due to the complexity of porting.
 
 ## Option Graveyard
 
@@ -50,6 +50,6 @@ Porting Godot Jolt to a C++ module will provide more flexibility and control ove
 
 ## References
 
-*   [Godot Engine](https://godotengine.org/)
-*   [SCons](https://scons.org/)
-*   [CMake](https://cmake.org/)
+- [Godot Engine](https://godotengine.org/)
+- [SCons](https://scons.org/)
+- [CMake](https://cmake.org/)

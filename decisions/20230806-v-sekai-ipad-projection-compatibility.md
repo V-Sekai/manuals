@@ -40,7 +40,7 @@ In Godot, any modification triggers a rebuild of the entire navigation map. If t
 
 While Navmesh and 3D Navigation Points provide an intuitive user interface for navigating 3D spaces, they might not translate well to continuous interaction on touchscreens, which is often expected by users on such devices.
 
-## In Core and Done by Us? 
+## In Core and Done by Us?
 
 Yes, the decision to implement a virtual joystick for touchscreen devices was made by us, V-Sekai. This decision is at the core of our strategy to ensure compatibility with iPads and large projector screens while also being cost-effective.
 

@@ -6,7 +6,6 @@
 - Deciders: V-Sekai,
 - Tags: V-Sekai,Roadmap,Collaboration,chatgpt4 summary,
 
-
 ### Context and Problem Statement
 
 The V-Sekai project has an extensive roadmap with short-term, mid-term, and long-term goals, but it lacks a project manager and struggles to find collaborators who share the vision and can dedicate enough time to contribute. How can we improve the collaboration process and attract more contributors to work on the project more effectively?
@@ -42,18 +41,15 @@ Develop a clear and concise project documentation that outlines the project's go
 3. Faster progress towards project milestones
 4. Clear understanding of project goals and priorities
 
-
 ### Negative Consequences
 
 1. Increased management and coordination overhead
 2. Potential for disagreements on priorities and approaches
 
-
 ### Option graveyard
 
 1. Relying on informal communication and ad-hoc collaboration
 2. Continuing with the current approach without a structured process
-
 
 ### If this enhancement will be used infrequently, can it be worked around with a few lines of script?
 

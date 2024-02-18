@@ -2,9 +2,9 @@
 
 ## Metadata
 
-*   Status: Proposed
-*   Deciders: V-Sekai
-*   Tags: V-Sekai
+- Status: Proposed
+- Deciders: V-Sekai
+- Tags: V-Sekai
 
 ## The Backdrop
 
@@ -20,8 +20,8 @@ According to [AlternativeTo](https://alternativeto.net/software/mobaxterm/?licen
 
 Key points:
 
-*   mRemoteNG is the most popular Windows alternative to MobaXterm.
-*   mRemoteNG is the most popular Open Source & free alternative to MobaXterm.
+- mRemoteNG is the most popular Windows alternative to MobaXterm.
+- mRemoteNG is the most popular Open Source & free alternative to MobaXterm.
 
 ## The Upside
 

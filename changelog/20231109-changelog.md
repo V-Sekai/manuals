@@ -17,7 +17,7 @@ V-Sekai Model Explorer is a 3D model viewer built with Godot 4. It supports vari
 
 - **First release**
 - **Release Version**: v0.2.0-rc2
-- **Changes**: The GAME_NAME environment variable value has been changed to "vsekai_model_explorer_". The macos_editor_macos_deploy job from builds.yml has been removed. A README.md for GitHub actions has been added and the warning has been moved to the top of the file.
+- **Changes**: The GAME*NAME environment variable value has been changed to "vsekai_model_explorer*". The macos_editor_macos_deploy job from builds.yml has been removed. A README.md for GitHub actions has been added and the warning has been moved to the top of the file.
 - [Release Link](https://github.com/V-Sekai/TOOL_model_explorer/releases/tag/v0.2.0-rc2)
 
 ## [Unreleased]

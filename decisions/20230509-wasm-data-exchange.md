@@ -1,4 +1,4 @@
-# Draft:  Exchange data between Godot Engine and WASM using handles
+# Draft: Exchange data between Godot Engine and WASM using handles
 
 ## Metadata
 

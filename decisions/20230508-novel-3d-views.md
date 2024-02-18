@@ -19,17 +19,21 @@ Use Meta's image segmentation model and zero123's 3D reconstruction algorithm to
 1. **Preprocess the input image**: Resize and normalize the input image to meet the requirements of Meta's image segmentation model.
 
 2. **Extract the garment using Meta's image segmentation model**:
+
    - Load the pre-trained Meta's image segmentation model.
    - Pass the preprocessed input image through the model to obtain the segmented garment image.
 
 3. **Prepare the segmented garment for 3D reconstruction**:
+
    - Load segmented garment image into zero123's 3D novel view algorithm.
 
 4. **Apply zero123's 3D reconstruction algorithm**:
+
    - Load the pre-trained zero123's 3D reconstruction model.
    - Pass the prepared segmented garment image through the model to generate novel 3d views of the garment.
 
 5. **Generate novel 3D views of the garment**:
+
    - Rotate the 3D camera at intervals of 20 degrees around the garment to capture multiple 3D views.
 
 6. **Manually model the garment using views**:

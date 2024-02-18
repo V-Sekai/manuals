@@ -80,7 +80,7 @@
 - 2021-06-10 03:11:20Z fire: https://cdn.discordapp.com/attachments/845777129605300255/852383622606094346/unknown.png https://cdn.discordapp.com/attachments/845777129605300255/852383560882323487/unknown.png I tested compute graphs earlier. This is is the important part. I can now start a github action, start a kubernetes server, start a argo server, start an alpine linux image, have a whale message a hello world and then save it as a file and have it be download as a github artifact
 - 2021-06-09 20:50:29Z lyuma: "I tried baking lighting in the ""AirBNB"" and ran into this error:
   > WARNING: Inconsistency found in triangulation while building BSP, probe interpolation quality may degrade a bit.
-  > at: LightmapGI::_compute_bsp_tree (scene\3d\lightmap_gi.cpp:460)
+  > at: LightmapGI::\_compute_bsp_tree (scene\3d\lightmap_gi.cpp:460)
   >
   > Jfons informed me it is an issue with separating tetrahedrons. The scene has 2641 light probes so there's probably something suspect there. I'll have to look into it further. I think I have an idea: we have to make sure there are probes above and below to form a complete tetrahedron"
 - 2021-06-09 20:49:09Z lyuma: "Summary about lightmap UV problem: Mesh scale & import scale matters when dealing with lightmaps. There were bugs reading the scale, but now that is fixed and the issue with losing polygons will only happen on triangles with 1e-7 edge length in world space.

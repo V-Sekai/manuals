@@ -14,8 +14,8 @@ Within the device manager, open the category "System Devices."
 
 Scroll down to Thunderbolt(TM) Controller - (model number here)
 
-*Right-click on it, select "Uninstall Device," and check the box "Delete the driver software for this device."
+\*Right-click on it, select "Uninstall Device," and check the box "Delete the driver software for this device."
 
 Once removed, rerun the Thunderbolt installer or the update through the Dell Command Updater.
 
-*If you are worried about uninstalling the driver in the device manager, fret not. The driver will reinstall itself on reboot if you have an internet connection.
+\*If you are worried about uninstalling the driver in the device manager, fret not. The driver will reinstall itself on reboot if you have an internet connection.

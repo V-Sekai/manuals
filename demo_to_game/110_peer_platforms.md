@@ -88,6 +88,7 @@ Some platforms from a "Frequently Used Social VR" presentation from the "Social 
     - **Digital Economy Integration**: The platform has integrated blockchain technology with the creation of VCOIN, an ERC-20 token, enhancing its digital currency capabilities and peer-to-peer transactions [prnewswire: VCOIN](https://www.prnewswire.com/news-releases/imvu-sets-new-standard-for-digital-currencies-with-vcoin-launch-301207660.html#:~:text=Created%20by%20IMVU%2C%20the%20world%27s,peer).
 
 13. **VKet Cloud**
+
     - **Description**: VKet Cloud is a development engine designed to deploy metaverse services directly in the browser, catering to creators and business users.
     - **Accessibility and Features**: The platform emphasizes ease of access as it operates in the browser, eliminating the need for high-performance PCs, IT knowledge, or VR goggles. It allows for creating personal metaverses and supports features like voice and text chat.
     - **URLs**:

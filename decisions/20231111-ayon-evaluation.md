@@ -39,7 +39,6 @@ Next, we will configure AYON according to the needs of a typical game developmen
 1. Set the fps to 30.
 1. Set the resolution to 3840 × 2160
 
-
 ### Integrate Google Drive with the AYON homesite
 
 In this step, we will integrate Google Drive with the AYON homesite. This will allow us to store all our files and data directly into Google Drive from the AYON homesite.

@@ -2,9 +2,9 @@
 
 ## Metadata
 
-*   **Status:** proposed
-*   **Deciders:** V-Sekai, fire
-*   **Tags:** V-Sekai
+- **Status:** proposed
+- **Deciders:** V-Sekai, fire
+- **Tags:** V-Sekai
 
 ## The Backdrop
 
@@ -40,5 +40,5 @@ Yes, this change would be implemented in the core system by the V-Sekai team.
 
 ## Further Reading
 
-*   [V-Sekai](https://v-sekai.org/)
-*   This article is assisted by AI.
+- [V-Sekai](https://v-sekai.org/)
+- This article is assisted by AI.

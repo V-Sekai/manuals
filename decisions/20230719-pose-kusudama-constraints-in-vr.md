@@ -2,7 +2,7 @@
 
 ## Metadata
 
-- Status: proposed 
+- Status: proposed
 - Deciders: V-Sekai
 - Tags: V-Sekai, VR, Game Development
 
@@ -33,11 +33,11 @@ Think of a Kusudama (a type of origami that forms a sphere) as an example for th
 
 1. Investigate Saracen's VR networking prototype.
 1. Rebuild character posing without tracking the physical sensors
-2. Apply Many Bone IK tracking
-3. Rotation swing (10x Vector4)
-4. Rotation twist (From and range)
-5. Adjust for quality
-6. Complete configuration
+1. Apply Many Bone IK tracking
+1. Rotation swing (10x Vector4)
+1. Rotation twist (From and range)
+1. Adjust for quality
+1. Complete configuration
 
 Assigning physical sensors to IK points is non-goal.
 

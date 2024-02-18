@@ -85,10 +85,10 @@ func apply_mixing_matrix(delay_outputs: Array) -> Array:
 
 ## Option graveyard
 
-* Generalized Dijkstra Pathfinding
-* DWN (Digital Waveguide Network): A method for simulating audio reverb by modeling sound propagation as waves traveling along waveguides with bidirectional delay lines and scattering junctions.
-* Ray tracing can be used to simulate sound propagation in 3D environments. It involves casting rays from the sound source and tracing their paths as they interact with the environment (reflect, refract, and diffract). By calculating the time delay and attenuation of each ray reaching the listener, you can generate an impulse response that represents the acoustic properties of the space.
-* Convolution reverb is a technique that uses recorded impulse responses (IRs) of real spaces or digital simulations to recreate the reverberation characteristics of those spaces. The process involves convolving the dry audio signal with the impulse response to produce the reverberated audio.
+- Generalized Dijkstra Pathfinding
+- DWN (Digital Waveguide Network): A method for simulating audio reverb by modeling sound propagation as waves traveling along waveguides with bidirectional delay lines and scattering junctions.
+- Ray tracing can be used to simulate sound propagation in 3D environments. It involves casting rays from the sound source and tracing their paths as they interact with the environment (reflect, refract, and diffract). By calculating the time delay and attenuation of each ray reaching the listener, you can generate an impulse response that represents the acoustic properties of the space.
+- Convolution reverb is a technique that uses recorded impulse responses (IRs) of real spaces or digital simulations to recreate the reverberation characteristics of those spaces. The process involves convolving the dry audio signal with the impulse response to produce the reverberated audio.
 
 ## If this enhancement will be used infrequently, can it be worked around with a few lines of script?
 
