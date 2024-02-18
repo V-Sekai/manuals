@@ -1,4 +1,4 @@
-# Proposal for Improving V-Sekai
+# Proposal for using workloads to emulate the usage patterns
 
 ## Context
 
@@ -59,7 +59,7 @@ The setup and customization of the YCSB benchmark will be done by the V-Sekai de
 
 ## Status
 
-Status: Proposed
+Status: Rejected
 
 ## Decision Makers
 
