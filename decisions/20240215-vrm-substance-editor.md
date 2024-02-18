@@ -2,7 +2,7 @@
 
 ## The Context
 
-Virtual Reality Model (VRM) is a file format for handling 3D humanoid avatars in VR applications. It's designed to be a versatile and exchangeable format across various systems. mtoon is a toon shader used with VRM models to give them a distinct, stylized look that emulates 2D animation within a 3D space.
+VRM is a file format for handling 3D humanoid avatars in VR applications. It's designed to be a versatile and exchangeable format across various systems. mtoon is a toon shader used with VRM models to give them a distinct, stylized look that emulates 2D animation within a 3D space.
 
 Substance Designer is a powerful node-based texturing tool essential for creating realistic textures for 3D models. By implementing mtoon support in Substance Designer, we can bridge the gap between high-quality texture design and VRM character customization.
 
