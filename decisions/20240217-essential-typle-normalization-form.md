@@ -36,12 +36,6 @@ ETNF, or Essential Tuple Normalization Form, addresses the shortcomings of exist
 - **Optimized Performance**: By reducing redundancy, ETNF will streamline data storage and retrieval processes, enhancing overall system performance.
 - **Strategic Data Management**: Adopting ETNF aligns with strategic initiatives for scalable, efficient, and consistent data management practices.
 
-## Conclusion
-
-The adoption of ETNF represents a strategic move towards standardized, efficient, and integrity-focused database management within V-Sekai. This proposal outlines a clear path for implementation, offering substantial benefits to the organization's data management capabilities.
-
-By providing a thorough understanding of ETNF's principles and its practical application, this revised proposal aims to equip database practitioners with the necessary knowledge and tools to effectively implement ETNF within V-Sekai, paving the way for enhanced data consistency, integrity, and system performance.
-
 ## Further Reading
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine
