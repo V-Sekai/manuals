@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.550</generator>
-<lastBuildDate>Sun, 18 Feb 2024 18:43:28 GMT</lastBuildDate>
+<lastBuildDate>Sun, 18 Feb 2024 23:30:04 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 18 Feb 2024 18:43:28 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 23:30:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -156,7 +156,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-blender-to-godot.html</guid>
-  <pubDate>Sun, 18 Feb 2024 18:43:28 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 23:30:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -262,7 +262,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-workload-benchmarking.html</guid>
-  <pubDate>Sun, 18 Feb 2024 18:43:28 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 23:30:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -374,7 +374,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-intended-effort-versioning.html</guid>
-  <pubDate>Sun, 18 Feb 2024 18:43:28 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 23:30:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -577,7 +577,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-essential-typle-normalization-form.html</guid>
-  <pubDate>Sun, 18 Feb 2024 18:43:28 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 23:30:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -670,7 +670,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-documentation-guidelines.html</guid>
-  <pubDate>Sun, 18 Feb 2024 18:43:28 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 23:30:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -757,7 +757,418 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-container-2-wasm.html</guid>
-  <pubDate>Sun, 18 Feb 2024 18:43:28 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 23:30:04 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240215-vrm-substance-editor.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-vrm-mtoon-in-substance-designer" class="level1">
+<h1>Proposed VRM mtoon in Substance Designer</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>Virtual Reality Model (VRM) is a file format for handling 3D humanoid avatars in VR applications. It’s designed to be a versatile and exchangeable format across various systems. mtoon is a toon shader used with VRM models to give them a distinct, stylized look that emulates 2D animation within a 3D space.</p>
+<p>Substance Designer is a powerful node-based texturing tool essential for creating realistic textures for 3D models. By implementing mtoon support in Substance Designer, we can bridge the gap between high-quality texture design and VRM character customization.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>The current workflow for applying toon shading to VRM models is disconnected from the process of designing textures, often requiring multiple tools and manual adjustments. We aim to simplify the workflow by integrating mtoon support directly into Substance Designer, allowing for a more cohesive and efficient design process.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>The implementation would involve developing a custom Substance Designer node set or a template that encapsulates mtoon’s parameters and replicates its shading model within the Substance Designer environment. This would allow artists to preview and tweak the toon shader settings in real-time while crafting the textures.</p>
+<p>A mock-up interface would present these parameters within Substance Designer, where each one directly corresponds to a property in the VRM mtoon shader.</p>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li>Streamlined Workflow: Artists can create and adjust VRM textures and toon shaders all within Substance Designer.</li>
+<li>Real-time Previews: Immediate feedback on how changes to textures and shader parameters impact the final appearance.</li>
+<li>Consistency: Reduces discrepancies between the design phase and the final rendering in VR applications.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li>Development Time: Significant time investment required to develop and maintain the custom node set/template.</li>
+<li>Complexity: Adds an additional layer of complexity within Substance Designer, which could be overwhelming for new users.</li>
+<li>Niche Audience: The feature might only cater to a relatively small audience of VRM content creators.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>We could have chosen to maintain the status quo, requiring VRM creators to switch between multiple tools to finalize their avatar’s appearance. However, this would prolong the existing inefficiencies in the production pipeline.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>While most VRM mtoon use cases involve common elements like lit colors and normal maps, less frequent use cases could involve highly custom properties such as UV animations or unique rim lighting effects.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>The development of this feature would be in-house, ensuring deep integration with existing Substance Designer systems and full control over the implementation and updates.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team and community stakeholders.</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai, Avatar Customization, AI, Facial Expressions</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+<p>Below is a table of parameters for the proposed VRM mtoon Substance Designer node set/template:</p>
+<table class="table">
+<colgroup>
+<col style="width: 1%">
+<col style="width: 12%">
+<col style="width: 3%">
+<col style="width: 67%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Rank</th>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Impact Level</th>
+<th>Range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><code>_Color</code></td>
+<td>vec4</td>
+<td>Lit Color, Alpha (Lit RGB, Alpha A)</td>
+<td>High</td>
+<td>[0, 1]</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><code>_MainTex</code></td>
+<td>texture</td>
+<td>Main Texture (RGB)</td>
+<td>High</td>
+<td>[0, 1]</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><code>_ShadeColor</code></td>
+<td>vec4</td>
+<td>Shade Color (Shade RGB)</td>
+<td>High</td>
+<td>[0, 1]</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><code>_ShadeTexture</code></td>
+<td>texture</td>
+<td>Shade Texture (RGB)</td>
+<td>High</td>
+<td>[0, 1]</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td><code>_ShadeToony</code></td>
+<td>float</td>
+<td>Shading Toony (0.0 is Lambert. Higher value get toony shading.)</td>
+<td>High</td>
+<td>[0.0, 1.0]</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td><code>_RimColor</code></td>
+<td>vec4</td>
+<td>Rim Color (RGB)</td>
+<td>High</td>
+<td>[0, 1]</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td><code>_RimTexture</code></td>
+<td>texture</td>
+<td>Rim Texture (RGB)</td>
+<td>High</td>
+<td>[0, 1]</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td><code>_EmissionColor</code></td>
+<td>vec4</td>
+<td>Emission Color (RGB)</td>
+<td>High</td>
+<td>[0, 1]</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td><code>_EmissionMap</code></td>
+<td>texture</td>
+<td>Emission Map (RGB)</td>
+<td>High</td>
+<td>[0, 1]</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td><code>_Cutoff</code></td>
+<td>float</td>
+<td>Alpha Cutoff (Discard pixels below this value in Cutout mode)</td>
+<td>High</td>
+<td>[0.0, 1.0]</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td><code>_AlphaCutoutEnable</code></td>
+<td>int</td>
+<td>Rendering Type (TransparentWithZWrite mode can cause problems with rendering.)</td>
+<td>High</td>
+<td>{0, 1}</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td><code>_MainTex_ST</code></td>
+<td>vec4</td>
+<td>UV Offset (UV Scale X,Y, UV Offset X,Y)</td>
+<td>High</td>
+<td>[0, 1]</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td><code>_BumpScale</code></td>
+<td>vec2</td>
+<td>Normal Map and Multiplier for normals in tangent space</td>
+<td>High</td>
+<td>[0.0, 1.0]</td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td><code>_BumpMap</code></td>
+<td>texture</td>
+<td>Normal Map (RGB)</td>
+<td>High</td>
+<td>[0, 1]</td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td><code>_OutlineWidth</code></td>
+<td>float</td>
+<td>Width (Outline Width)</td>
+<td>High</td>
+<td>[0.01, ∞)</td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td><code>_OutlineWidthTexture</code></td>
+<td>texture</td>
+<td>Outline Width Texture (R)</td>
+<td>High</td>
+<td>[0, 1]</td>
+</tr>
+<tr class="odd">
+<td>17</td>
+<td><code>_OutlineColor</code></td>
+<td>vec4</td>
+<td>Outline Color (RGB)</td>
+<td>High</td>
+<td>[0, 1]</td>
+</tr>
+<tr class="even">
+<td>18</td>
+<td><code>_SphereAdd</code></td>
+<td>texture</td>
+<td>MatCap Texture (RGB)</td>
+<td>Subtle</td>
+<td>[0, 1]</td>
+</tr>
+<tr class="odd">
+<td>19</td>
+<td><code>_ShadeShift</code></td>
+<td>float</td>
+<td>Shading Shift (Zero is Default. Negative value increase lit area. Positive value increase shade area.)</td>
+<td>Moderate</td>
+<td>[-1.0, ∞)</td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td><code>_ReceiveShadowRate</code></td>
+<td>float</td>
+<td>Shadow Receive (Texture R * Rate. White is Default. Black attenuates shadows.)</td>
+<td>Moderate</td>
+<td>[0.0, 1.0]</td>
+</tr>
+<tr class="odd">
+<td>21</td>
+<td><code>_ReceiveShadowTexture</code></td>
+<td>texture</td>
+<td>Receive Shadow Texture (R)</td>
+<td>Moderate</td>
+<td>[0, 1]</td>
+</tr>
+<tr class="even">
+<td>22</td>
+<td><code>_ShadingGradeRate</code></td>
+<td>float</td>
+<td>Shading Grade (Lit &amp; Shade Mixing Multiplier: Texture R * Rate. Compatible with UTS2 ShadingGradeMap. White is Default. Black amplifies shade.)</td>
+<td>Moderate</td>
+<td>[0.0, 1.0]</td>
+</tr>
+<tr class="odd">
+<td>23</td>
+<td><code>_ShadingGradeTexture</code></td>
+<td>texture</td>
+<td>Shading Grade Texture (R)</td>
+<td>Moderate</td>
+<td>[0, 1]</td>
+</tr>
+<tr class="even">
+<td>24</td>
+<td><code>_LightColorAttenuation</code></td>
+<td>float</td>
+<td>Light Color Attenuation</td>
+<td>Moderate</td>
+<td>[0.0, ∞)</td>
+</tr>
+<tr class="odd">
+<td>25</td>
+<td><code>_IndirectLightIntensity</code></td>
+<td>float</td>
+<td>GI Intensity (Indirect Light Intensity)</td>
+<td>Moderate</td>
+<td>[0.0, ∞)</td>
+</tr>
+<tr class="even">
+<td>26</td>
+<td><code>_MatcapColor</code></td>
+<td>vec4</td>
+<td>MatCap Color (Color multiplied with Additive Sphere map / MatCap Texture RGB)</td>
+<td>Subtle</td>
+<td>[0, 1]</td>
+</tr>
+<tr class="odd">
+<td>27</td>
+<td><code>_RimLightingMix</code></td>
+<td>float</td>
+<td>Rim Lighting Mix</td>
+<td>Subtle</td>
+<td>[0.0, 1.0]</td>
+</tr>
+<tr class="even">
+<td>28</td>
+<td><code>_RimFresnelPower</code></td>
+<td>float</td>
+<td>Fresnel Power (If you increase this value, you get sharper rim light.)</td>
+<td>Subtle</td>
+<td>[0.0, 100.0]</td>
+</tr>
+<tr class="odd">
+<td>29</td>
+<td><code>_RimLift</code></td>
+<td>float</td>
+<td>Rim Lift (If you increase this value, you can lift rim light.)</td>
+<td>Subtle</td>
+<td>[0.0, ∞)</td>
+</tr>
+<tr class="even">
+<td>30</td>
+<td><code>_OutlineWidthMode</code></td>
+<td>int</td>
+<td>Mode (None = outline pass disabled; World = outline in world coordinates; Screen = screen pixel thickness)</td>
+<td>Outline-Specific</td>
+<td>{0, 1, 2}</td>
+</tr>
+<tr class="odd">
+<td>31</td>
+<td><code>_OutlineScaledMaxDistance</code></td>
+<td>float</td>
+<td>Outline Scaled Distance (Width Scaled Max Distance)</td>
+<td>Outline-Specific</td>
+<td>[1.0, 10.0]</td>
+</tr>
+<tr class="even">
+<td>32</td>
+<td><code>_OutlineColorMode</code></td>
+<td>int</td>
+<td>Color Mode (FixedColor = unshaded; MixedLighting = match environment light (recommended))</td>
+<td>Outline-Specific</td>
+<td>{0, 1}</td>
+</tr>
+<tr class="odd">
+<td>33</td>
+<td><code>_OutlineLightingMix</code></td>
+<td>float</td>
+<td>Outline Mix (Outline Lighting Mix)</td>
+<td>Outline-Specific</td>
+<td>[0.0, 1.0]</td>
+</tr>
+<tr class="even">
+<td>34</td>
+<td><code>_UvAnimMaskTexture</code></td>
+<td>texture</td>
+<td>Auto Animation Mask Texture (R)</td>
+<td>UV Animation</td>
+<td>[0, 1]</td>
+</tr>
+<tr class="odd">
+<td>35</td>
+<td><code>_UvAnimScrollX</code></td>
+<td>float</td>
+<td>UV Scroll X (per second)</td>
+<td>UV Animation</td>
+<td>[-100.0, 100.0]</td>
+</tr>
+<tr class="even">
+<td>36</td>
+<td><code>_UvAnimScrollY</code></td>
+<td>float</td>
+<td>UV Scroll Y (per second)</td>
+<td>UV Animation</td>
+<td>[-100.0, 100.0]</td>
+</tr>
+<tr class="odd">
+<td>37</td>
+<td><code>_UvAnimRotation</code></td>
+<td>float</td>
+<td>UV Rotation (per second)</td>
+<td>UV Animation</td>
+<td>[-100.0, 100.0]</td>
+</tr>
+<tr class="even">
+<td>38</td>
+<td><code>_DebugMode</code></td>
+<td>int</td>
+<td>Visualize (Debugging Visualization: Normal or Lighting)</td>
+<td>Debugging</td>
+<td>{0, 1, 2}</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240215-vrm-substance-editor.html</guid>
+  <pubDate>Sun, 18 Feb 2024 23:30:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -839,7 +1250,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240215-avatar-customization-with-ai-facial-expressions.html</guid>
-  <pubDate>Sun, 18 Feb 2024 18:43:28 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 23:30:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -905,7 +1316,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240127-urban-explorer-gdc-2024-sample.html</guid>
-  <pubDate>Sun, 18 Feb 2024 18:43:28 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 23:30:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1054,7 +1465,7 @@ sudo launchctl list | grep com.gocd.agent</code></pre></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-mac-setup.html</guid>
-  <pubDate>Sun, 18 Feb 2024 18:43:28 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 23:30:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1385,7 +1796,7 @@ font-style: inherit;">-u</span> livebook.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-livebook-fedora-install.html</guid>
-  <pubDate>Sun, 18 Feb 2024 18:43:28 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 23:30:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1507,7 +1918,7 @@ font-style: inherit;"># Disable key expiry</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-install-tailscale.html</guid>
-  <pubDate>Sun, 18 Feb 2024 18:43:28 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 23:30:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1761,7 +2172,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-easy-diffusion-fedora-install.html</guid>
-  <pubDate>Sun, 18 Feb 2024 18:43:28 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 23:30:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1873,7 +2284,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240120-vr-armature-system.html</guid>
-  <pubDate>Sun, 18 Feb 2024 18:43:28 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 23:30:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1934,7 +2345,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240117-pivot-painting.html</guid>
-  <pubDate>Sun, 18 Feb 2024 18:43:28 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 23:30:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2017,7 +2428,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240111-fspy.html</guid>
-  <pubDate>Sun, 18 Feb 2024 18:43:28 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 23:30:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2101,7 +2512,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240111-fit-clothing-on-humans-without-tearing.html</guid>
-  <pubDate>Sun, 18 Feb 2024 18:43:28 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 23:30:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2233,7 +2644,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240110-magical-girls-college-novel.html</guid>
-  <pubDate>Sun, 18 Feb 2024 18:43:28 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 23:30:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2318,79 +2729,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240105-1-meter-128-quantize.html</guid>
-  <pubDate>Sun, 18 Feb 2024 18:43:28 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20231230-spatiallabs-openvr.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="deprecated-valid-configuration-of-spatiallabs-and-openxr" class="level1">
-<h1>Deprecated: Valid configuration of Spatiallabs and Openxr</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li><strong>Status:</strong> Deprecated</li>
-<li><strong>Deciders:</strong> V-Sekai</li>
-<li><strong>Tags:</strong> V-Sekai, fixed</li>
-</ul>
-</section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>This proposal aims to define a valid configuration of OpenVR and SpatialLabs display.</p>
-</section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>The main challenge is to display Unity applications like SteamVR home and others.</p>
-</section>
-<section id="the-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>To overcome the challenge, use these exact versions:</p>
-<ol type="1">
-<li><code>SpatialLabs EC PRO_Acer_1.2.288_Win11x64</code></li>
-<li><code>Acer SteamVR Bridge.Installer.1.00.1001</code></li>
-</ol>
-</section>
-<section id="the-upside" class="level2">
-<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<p>By using these specific versions, we can avoid the latest update that causes the screen to be black. This ensures a seamless experience for users.</p>
-</section>
-<section id="the-downside" class="level2">
-<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<p>The downside of this approach is that we are losing out on the latest updates and improvements that come with them.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>An alternative approach could have been to use a different product like the Looking Glass Factory, but they don’t support openxr.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>Another infrequent use case could be only flat desktop.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>I have access to equipment and it’s not easy to get access. This means that the implementation and testing of this proposal will be done by us.</p>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine.</li>
-</ol>
-<blockquote class="blockquote">
-<p>AI assistant Aria assisted with this article.</p>
-</blockquote>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20231230-spatiallabs-openvr.html</guid>
-  <pubDate>Sun, 18 Feb 2024 18:43:28 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 23:30:04 GMT</pubDate>
 </item>
 </channel>
 </rss>
