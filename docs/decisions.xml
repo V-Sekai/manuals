@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.550</generator>
-<lastBuildDate>Sun, 18 Feb 2024 03:01:17 GMT</lastBuildDate>
+<lastBuildDate>Sun, 18 Feb 2024 03:06:02 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,119 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:01:17 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:06:02 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240217-intended-effort-versioning.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-adoption-of-intended-effort-versioning-effver-in-v-sekai" class="level1">
+<h1>Proposed: Adoption of Intended Effort Versioning (EffVer) in V-Sekai</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>V-Sekai currently does not adhere to any specific versioning scheme. This can lead to confusion and inefficiency when users try to adopt new versions of the software.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Without a clear versioning system, users may struggle to understand the effort required to adopt new versions of V-Sekai. This can result in wasted time and resources, and potentially deter users from updating to newer versions.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>We propose adopting EffVer, short for Intended Effort Versioning. This versioning scheme categorizes version increments into Macro, Meso, and Micro, based on the effort needed for adoption—large, some, and little to no effort, respectively.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Example of EffVer in action</span></span>
+<span id="cb1-2">version <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"1.0.0"</span>  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Initial release</span></span>
+<span id="cb1-3"></span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># A micro update requiring little to no effort to adopt</span></span>
+<span id="cb1-5">version <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"1.0.1"</span></span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># A meso update requiring some effort to adopt</span></span>
+<span id="cb1-8">version <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"1.1.0"</span></span>
+<span id="cb1-9"></span>
+<span id="cb1-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># A macro update requiring large effort to adopt</span></span>
+<span id="cb1-11">version <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"2.0.0"</span></span></code></pre></div>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>Adopting EffVer would provide clear communication to users about the expected effort required to adopt new versions of V-Sekai. This respects users’ time by quantifying and communicating the adoption effort upfront.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>The main downside is that it requires the development team to accurately estimate the effort required for each update, which could be subjective and vary between users.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>Alternatives such as Semantic Versioning (SemVer) and Calendar Versioning (CalVer) were considered. However, these focus on technical orthogonality or time of release, rather than the intended impact of changes.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>EffVer may not be as effective for infrequent users who are less familiar with the software and may require more effort to adopt new versions regardless of the changes made.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>The implementation of EffVer would be done by the V-Sekai development team and integrated into the core project.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team and community stakeholders.</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai, Avatar Customization, AI, Facial Expressions</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
+<li><a href="https://jacobtomlinson.dev/effver/">Intended Effort Versioning (EffVer)</a></li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240217-intended-effort-versioning.html</guid>
+  <pubDate>Sun, 18 Feb 2024 03:06:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -157,7 +269,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240215-avatar-customization-with-ai-facial-expressions.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:01:17 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:06:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -223,7 +335,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240127-urban-explorer-gdc-2024-sample.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:01:17 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:06:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -372,7 +484,7 @@ sudo launchctl list | grep com.gocd.agent</code></pre></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-mac-setup.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:01:17 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:06:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -703,7 +815,7 @@ font-style: inherit;">-u</span> livebook.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-livebook-fedora-install.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:01:17 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:06:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -825,7 +937,7 @@ font-style: inherit;"># Disable key expiry</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-install-tailscale.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:01:17 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:06:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1079,7 +1191,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-easy-diffusion-fedora-install.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:01:17 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:06:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1191,7 +1303,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240120-vr-armature-system.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:01:17 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:06:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1252,7 +1364,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240117-pivot-painting.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:01:17 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:06:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1335,7 +1447,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240111-fspy.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:01:17 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:06:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1419,7 +1531,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240111-fit-clothing-on-humans-without-tearing.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:01:17 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:06:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1551,7 +1663,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240110-magical-girls-college-novel.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:01:17 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:06:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1636,7 +1748,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240105-1-meter-128-quantize.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:01:17 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:06:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1708,7 +1820,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231230-spatiallabs-openvr.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:01:17 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:06:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1779,7 +1891,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231229-mRemoteNG.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:01:17 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:06:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1845,7 +1957,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231229-byobu.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:01:17 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:06:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1913,7 +2025,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231228-v-sekai-slogan.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:01:17 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:06:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1993,7 +2105,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231227-punchline-reports.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:01:17 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:06:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2077,73 +2189,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231227-blue-green-shadows.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:01:17 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20231226-furniture-vs-organic.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposal-hardsurface-vs-organic" class="level1">
-<h1>Proposal: Hardsurface vs Organic</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li><strong>Status:</strong> Proposed</li>
-<li><strong>Deciders:</strong> V-Sekai, fire, msstabby</li>
-<li><strong>Tags:</strong> V-Sekai, VR, Godot Engine, 3D Modeling, Performance Optimization</li>
-</ul>
-</section>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>V-Sekai is a vibrant platform for social VR experiences built on the Godot Engine. Its success hinges on the seamless integration of visually appealing 3D environments and characters that perform optimally across various VR hardware.</p>
-</section>
-<section id="problem" class="level2">
-<h2 class="anchored" data-anchor-id="problem">Problem</h2>
-<p>The challenge lies in striking a balance between hardsurface (static objects) and organic (characters) modeling within V-Sekai. The goal is to optimize both types of models, reducing geometric complexity without compromising on visual richness or functional requirements of rigging and animation.</p>
-</section>
-<section id="possible-solution" class="level2">
-<h2 class="anchored" data-anchor-id="possible-solution">Possible Solution</h2>
-<p>Adopt different strategies for hardsurface and organic modeling. For hardsurface models, focus on reducing the number of triangles, especially for non-moving geometry like furniture. For organic models, ensure even distribution of triangles to meet the unique requirements of rigging and deformation during animation.</p>
-</section>
-<section id="pros" class="level2">
-<h2 class="anchored" data-anchor-id="pros">Pros</h2>
-<p>Such optimization can lead to improved performance, reduced latency, and a more immersive VR experience for users.</p>
-</section>
-<section id="cons" class="level2">
-<h2 class="anchored" data-anchor-id="cons">Cons</h2>
-<p>It may require rethinking and overhauling existing modeling workflows, which could be resource-intensive.</p>
-</section>
-<section id="alternatives" class="level2">
-<h2 class="anchored" data-anchor-id="alternatives">Alternatives</h2>
-<p>Ignoring the optimization could result in suboptimal performance, impacting the user experience and the scalability of V-Sekai projects.</p>
-</section>
-<section id="special-considerations" class="level2">
-<h2 class="anchored" data-anchor-id="special-considerations">Special Considerations</h2>
-<p>Rare or unique objects and characters that require a departure from standard optimization practices to maintain their distinctiveness or functionality.</p>
-</section>
-<section id="implementation" class="level2">
-<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
-<p>The proposal recommends integrating these optimization practices into the core development workflow of V-Sekai, handled by the internal team.</p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine.</li>
-</ol>
-<p><em>This proposal was assisted by Aria, an AI assistant.</em></p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20231226-furniture-vs-organic.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:01:17 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:06:02 GMT</pubDate>
 </item>
 </channel>
 </rss>
