@@ -1,10 +1,10 @@
-import { Machine, assign } from 'xstate';
-import * as flatbuffers from 'flatbuffers'; // Import FlatBuffers library
-import { MySchema } from './MySchema_generated'; // Import your schema
+import { Machine, assign } from "xstate";
+import * as flatbuffers from "flatbuffers"; // Import FlatBuffers library
+import { MySchema } from "./MySchema_generated"; // Import your schema
 
 const sceneMachine = Machine({
-  id: 'scene',
-  initial: 'idle',
+  id: "scene",
+  initial: "idle",
   context: {
     scene: null,
   },
@@ -12,7 +12,7 @@ const sceneMachine = Machine({
     idle: {
       on: {
         LOAD_SCENE: {
-          target: 'loadFlatBuffer',
+          target: "loadFlatBuffer",
           actions: assign({ scene: (_, event) => event.data }),
         },
       },
@@ -25,11 +25,11 @@ const sceneMachine = Machine({
           return MySchema.Scene.getRootAsScene(buffer);
         },
         onDone: {
-          target: 'translateCStructure',
+          target: "translateCStructure",
           actions: assign({ scene: (_, event) => event.data }),
         },
         onError: {
-          target: 'validationError',
+          target: "validationError",
         },
       },
     },
@@ -39,26 +39,25 @@ const sceneMachine = Machine({
           // Implement C structure translation to Godot PackedScene using C++ API here
         },
         onDone: {
-          target: 'final',
+          target: "final",
         },
         onError: {
-          target: 'translationError',
+          target: "translationError",
         },
       },
     },
     final: {
-      type: 'final',
+      type: "final",
     },
     validationError: {
       on: {
-        RETRY_VALIDATION: 'loadFlatBuffer',
+        RETRY_VALIDATION: "loadFlatBuffer",
       },
     },
     translationError: {
       on: {
-        RETRY_TRANSLATION: 'translateCStructure',
+        RETRY_TRANSLATION: "translateCStructure",
       },
     },
   },
 });
-

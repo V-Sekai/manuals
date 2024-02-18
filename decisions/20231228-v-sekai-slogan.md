@@ -2,9 +2,9 @@
 
 ## Metadata
 
-*   Status: Proposed
-*   Deciders: V-Sekai
-*   Tags: V-Sekai, Slogan, Virtual Reality, VR
+- Status: Proposed
+- Deciders: V-Sekai
+- Tags: V-Sekai, Slogan, Virtual Reality, VR
 
 ## The Backdrop
 

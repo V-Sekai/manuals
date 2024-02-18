@@ -3,7 +3,7 @@
 ## Metadata
 
 - Status: Accepted
-- Deciders: V-Sekai, lyuma, fire 
+- Deciders: V-Sekai, lyuma, fire
 - Tags: VRM, Avatars, VRM 1.0, Export, Godot Engine
 
 ## Context and Problem Statement

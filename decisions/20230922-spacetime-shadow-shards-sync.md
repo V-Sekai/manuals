@@ -7,6 +7,7 @@
 - Tags: V-Sekai, Godot, Networking
 
 ## Background
+
 V-Sekai, leveraging the Godot client-server model, aspires to support 1000-2000 clients. The objective is to deliver uninterrupted gameplay and a comprehensive gaming experience.
 
 ## Challenges

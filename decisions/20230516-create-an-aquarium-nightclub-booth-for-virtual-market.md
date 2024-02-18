@@ -4,7 +4,7 @@
 
 - Status: accepted <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai, fire, ect, Aeris, cyberpunkmermaid,
-- Tags: V-Sekai, GPT-4, Virtual Reality, Cocoon Art Aquarium, VKET 2023 Summer, Voiceless, 
+- Tags: V-Sekai, GPT-4, Virtual Reality, Cocoon Art Aquarium, VKET 2023 Summer, Voiceless,
 
 ## Context and Problem Statement
 
@@ -20,8 +20,8 @@ Create an immersive environment combining aquarium and nightclub elements, inclu
 2. Implement the ambience of a nightclub.
 3. **Interactive elements**: Add interactive components, such as touch-sensitive screens or motion sensors, to allow visitors to interact with the marine life and control the lighting effects.
 4. **Jellyfish Hostess**:
-   * **JellyBell**: Enchanting hostess engaging visitors in the booth experience.
-   * **Iridescent Gown**: Amplifies her aquatic charm with sheer fabric and ribbons
+   - **JellyBell**: Enchanting hostess engaging visitors in the booth experience.
+   - **Iridescent Gown**: Amplifies her aquatic charm with sheer fabric and ribbons
 5. **Ambient music**: Include background music that complements the aquarium and nightclub themes.
 
 ## Implementation

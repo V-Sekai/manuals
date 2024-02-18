@@ -2,7 +2,7 @@
 
 ## Metadata
 
-- Status: proposed 
+- Status: proposed
 - Deciders: V-Sekai
 - Tags: V-Sekai
 
@@ -29,48 +29,59 @@ Note: To avoid lossy formats, we are using PNG or SVG for 2D images and GLTF for
 Here are the converted inputs and outputs in the xstate format for each step:
 
 1. **Importing the avatar into Godot Engine and "Project Mirage":**
+
    - Input: `.vrm` file
    - Output: `.vrm` file
 
 2. **Refining the imported avatar:**
+
    - Input: `.vrm` file
    - Output: `.vrm` file
 
 3. **Converting spring bone to physical simulation bones and colliders:**
+
    - Input: `.vrm` file
    - Output: assetpackage file
 
 4. **Addressing painting errors:**
+
    - Input: `.vrm` file
    - Output: `.vrm` file
 
 5. **Choosing a material:**
+
    - Input: `.vrm` file
    - Output: `.vrm` file
 
 6. **Resolving issues with materials and bones:**
+
    - Input: `.vrm` file
    - Output: `.vrm` file
 
 7. **Correcting colors and addressing pleated folds:**
+
    - Input: `.vrm` file
    - Output: `.vrm` file
 
 8. **Creating complex geometric structures:**
+
    - Input: `.vrm` file
    - Output: `.vrm` file
 
-10. **Utilizing Vroid Hub's hair painter and mesh generator:**
-   - Input: `.vrm` file
-   - Output: `.vrm` enhanced data
+9. **Utilizing Vroid Hub's hair painter and mesh generator:**
+
+- Input: `.vrm` file
+- Output: `.vrm` enhanced data
 
 11. **Adding facial expressions for motion capture:**
-   - Input: `.vrm` file
-   - Output: `.gltf` motion capture data
+
+- Input: `.vrm` file
+- Output: `.gltf` motion capture data
 
 12. **Setting up motion capture:**
-   - Input: `.vrm` file
-   - Output: vrm animations data stored as `.gltf`.
+
+- Input: `.vrm` file
+- Output: vrm animations data stored as `.gltf`.
 
 ## Positive Consequences
 

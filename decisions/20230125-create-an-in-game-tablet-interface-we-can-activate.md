@@ -6,7 +6,6 @@
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
 
-
 ### Context and Problem Statement
 
 We want to activate things in vr
@@ -19,7 +18,7 @@ Show a menu on each hand and have it be possible to activate grid cell options.
 
 1. Trigger presents a menu
 2. Short press
-3. Long press 
+3. Long press
 
 ### Positive Consequences
 
@@ -33,7 +32,6 @@ We cannot get other features to trigger things.
 
 - Option: The status quo to go out of the game to trigger menus. <!-- List the proposed options no longer open for consideration. -->
 - Rejection Reason: This solves nothing. <!-- List the reasons for the rejection: (the bad traits) -->
-
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 

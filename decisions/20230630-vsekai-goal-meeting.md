@@ -7,35 +7,35 @@ Original pad (90 day expiration): https://pad.sfconservancy.org/p/v-sekai-goals-
 Meeting goal: determine what we can feasibly build and what we can enable others to build.
 
 ## Principles
- 
+
 - Optimally piggybacking on systems others have built / are maintaining.
 - Build things we would want to use
 
 ## Foundational Runtime Features (Provided by the Platform)
- 
+
 ### Environment
 
 - Scene loading support
 - World hosting (network protocol)
 - Instancing: Holepunching (users host?) and relay system and Multi-instance server system?
- 
+
 ### Person to person interaction
- 
+
 - Avatar support
 - Avatar animation system
 - VoIP (voice communication)
 - IK synchronization and other player / avatar synchronization
 - Object parenting support (chairs)
- 
+
 ### Interaction with the World
- 
+
 - Interactive elements
 - Grabbable objects
 - Buttons
 - Physics
- 
+
 ### Additional Features
- 
+
 - Doodling (with a builtin script to save to a file)
 - Cameras (take a picture - screenshot?)
 - Mirrors + camera
@@ -47,23 +47,23 @@ Meeting goal: determine what we can feasibly build and what we can enable others
   - Determine RPCs or functions to expose)
 
 ## Web Requests (HTTP or WebSocket) to Servers
- 
+
 - Needs API or scripting language.
- 
+
 ## Foundational Static Content Creation/SDK Features (in the Editor)
- 
+
 - VRM import (avatars)
 - Godot editor
 - World creation
 - Uploading / sharing content items to an inventory.
- 
+
 ## Features that We Can interface with Third Parties
- 
+
 - Screen sharing (OBS)
 - Modeling and 3D Creation (Blender)
- 
+
 ## Features that We Can Enable Platform Developers to Build
- 
+
 - Text chat
 - Collaboration features / meeting spaces
   - Doodling

@@ -68,5 +68,5 @@ Yes, implementing this feature will provide a valuable addition to the GLTF Tran
 - [V-Sekai](https://v-sekai.org/)
 - For an example similar to KHR_lights_punctual, refer to [this implementation](https://github.com/donmccurdy/glTF-Transform/blob/main/packages/extensions/src/khr-lights-punctual/lights-punctual.ts).
 - No known design for VRM glTF_transform. However, there are two npm packages by [quantumcraft](https://www.npmjs.com/~quantumcraft) that deal with VRM data, but they're not open source.
-- The glTF Transform CLI allows specifying a config file, which can register additional glTF extensions and CLI functionality. Check out the [CLI configuration documentation](https://gltf-transform.donmccurdy.com/cli-configuration). Needle Tools has been trying this approach for NEEDLE_* extensions.
+- The glTF Transform CLI allows specifying a config file, which can register additional glTF extensions and CLI functionality. Check out the [CLI configuration documentation](https://gltf-transform.donmccurdy.com/cli-configuration). Needle Tools has been trying this approach for NEEDLE\_\* extensions.
 - [OMI_personality](https://github.com/omigroup/gltf-extensions/tree/main/extensions/2.0/OMI_personality)

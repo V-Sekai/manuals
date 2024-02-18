@@ -38,11 +38,11 @@ Implement an automated rigging and wrapping system using known base meshes and g
 - Additional development time required to implement the automated system
 - Potential compatibility issues with existing assets or workflows
 - Dependent on third party addons
-  * Research and evaluate alternative solutions or develop custom tools to replace or supplement the functionality provided by these third-party add-ons. This will help ensure long-term stability and maintainability of the project.
+  - Research and evaluate alternative solutions or develop custom tools to replace or supplement the functionality provided by these third-party add-ons. This will help ensure long-term stability and maintainability of the project.
 - Performance concerns with complex avatars and garments
-  * Optimize the algorithms used in the automated rigging and wrapping process to handle complex models efficiently. Additionally, consider implementing a level of detail (LOD) system to reduce the complexity of models during runtime without compromising visual quality.
-- Difficulty in handling edge cases. 
-  * Develop a set of guidelines for creating avatar and garment models that work well with the automated system. Additionally, provide manual intervention options for users to fine-tune the rigging and wrapping results in case of edge cases.
+  - Optimize the algorithms used in the automated rigging and wrapping process to handle complex models efficiently. Additionally, consider implementing a level of detail (LOD) system to reduce the complexity of models during runtime without compromising visual quality.
+- Difficulty in handling edge cases.
+  - Develop a set of guidelines for creating avatar and garment models that work well with the automated system. Additionally, provide manual intervention options for users to fine-tune the rigging and wrapping results in case of edge cases.
 
 ## Option graveyard
 

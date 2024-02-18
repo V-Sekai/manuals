@@ -19,52 +19,64 @@ Here is a list of raw processes to be broken down.
 To implement the requested changes, here are the modified instructions:
 
 1. **Creating the avatar face:** Utilizes digital drawing techniques to design and create the facial features of the avatar.
+
    - Input mime type: None
    - Output mime type: Digital drawing/image file (e.g., PNG, SVG)
 
 2. **Changing colors:** Utilizes a digital paintbrush tool like Penpot to modify and customize the colors of the avatar.
+
    - Input mime type: Digital drawing/image file (e.g., PNG, SVG)
    - Output mime type: Digital drawing/image file (e.g., PNG, SVG)
 
 3. **Selecting the best-looking avatars:** Evaluates and chooses the most visually appealing avatars from a pool of options.
+
    - Input mime type: Digital drawing/image file (e.g., PNG, SVG)
    - Output mime type: Digital drawing/image file (e.g., PNG, SVG)
 
 4. **Removing the background image:** Removes the background image to make rework easier. May provide worse results with edge details.
+
    - Input mime type: Digital drawing/image file (e.g., PNG, SVG)
    - Output mime type: Digital drawing/image file (e.g., PNG, SVG)
 
 5. **Adding a body:** Incorporates a body to the avatar using Blender's CC0 base mesh or a similar tool.
+
    - Input mime type: Digital drawing/image file (e.g., PNG, SVG)
    - Output mime type: Digital drawing/image file (e.g., PNG, SVG)
 
 6. **Creating a 3D model of the back of the avatar:** If feasible, attempts to create a 3D model of the back of the avatar for a more comprehensive representation.
+
    - Input mime type: Digital drawing/image file (e.g., PNG, SVG)
    - Output mime type: Digital drawing/image file (e.g., PNG, SVG)
 
 7. **Simplifying images:** Uses a tool to simplify and refine the entire avatar image as a whole, removing any unnecessary image details or complexities.
+
    - Input mime type: Digital drawing/image file (e.g., PNG, SVG)
    - Output mime type: Digital drawing/image file (e.g., PNG, SVG)
 
 8. **Adding clothing and accessories:** Enhances the avatar by adding clothing and accessories using tools like Vroid Hub.
+
    - Input mime type: Digital drawing/image file (e.g., PNG, SVG)
    - Output mime type: Digital drawing/image file (e.g., PNG, SVG)
 
 9. **Placing the 2D image as a reference:** Positions the 2D reference image in front of the 3D model to serve as a visual guide during customization.
+
    - Input mime type: Digital drawing/image file (e.g., PNG, SVG), 3D model file (e.g., GLTF)
    - Output mime type: 3D model file (e.g., GLTF), Digital image file (e.g., PNG, SVG)
 
 10. **Capturing and enhancing images:** Captures images from various angles using a camera and enhances them to improve the overall quality.
-   - Input mime type: Digital drawing/image file (e.g., PNG, SVG)
-   - Output mime type: Digital image file (e.g., PNG, SVG)
+
+- Input mime type: Digital drawing/image file (e.g., PNG, SVG)
+- Output mime type: Digital image file (e.g., PNG, SVG)
 
 11. **Generating text captions:** Creates descriptive text captions for the captured images to provide additional context or information.
-   - Input mime type: Digital image file (e.g., PNG, SVG)
-   - Output mime type: Text file (e.g., TXT)
+
+- Input mime type: Digital image file (e.g., PNG, SVG)
+- Output mime type: Text file (e.g., TXT)
 
 12. **Using a 2D reference image in Blender:** Uses a 2D reference image within Blender to guide the customization process.
-   - Input mime type: Digital drawing/image file (e.g., PNG, SVG)
-   - Output mime type: 3D model file (e.g., GLTF), Digital image file (e.g., PNG, SVG)
+
+- Input mime type: Digital drawing/image file (e.g., PNG, SVG)
+- Output mime type: 3D model file (e.g., GLTF), Digital image file (e.g., PNG, SVG)
 
 ## Positive Consequences
 

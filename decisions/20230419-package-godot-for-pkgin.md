@@ -18,12 +18,12 @@ According to Netflix, the BSD-type operating systems are competitive, and suppor
 
 1. Effortless installation and updates: Packaging Godot Engine for pkgin makes it easier to install and update the software on macOS, Linux, and NetBSD, offering a smooth experience for users at all expertise levels.
 2. Wider platform support: By embracing pkgsrc and packaging Godot Engine for pkgin, compatibility with an array of UNIX-like systems is ensured, broadening the user base and fostering adoption across different platforms.
-4. Promoting cooperation: V-Sekai's support for pkgsrc and packaging of the Godot Engine for pkgin enables collaboration through the vast third-party software ecosystem available for UNIX-like systems, stimulating the exchange of ideas and resources.
-5. Reinforcing open-source ideals: V-Sekai's decision to package the Godot Engine for pkgin strengthens its commitment to open-source values like accessibility, transparency, and community-driven development, enhancing growth within the VR community.
+3. Promoting cooperation: V-Sekai's support for pkgsrc and packaging of the Godot Engine for pkgin enables collaboration through the vast third-party software ecosystem available for UNIX-like systems, stimulating the exchange of ideas and resources.
+4. Reinforcing open-source ideals: V-Sekai's decision to package the Godot Engine for pkgin strengthens its commitment to open-source values like accessibility, transparency, and community-driven development, enhancing growth within the VR community.
 
 ### Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
- ```mermaid
+```mermaid
 graph LR
 A[Godot Engine Source Code] --> B[Build and Package]
 B --> C[Godot Engine pkgin Package]

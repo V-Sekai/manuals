@@ -2,7 +2,7 @@
 
 ## Metadata
 
-- Status: proposed 
+- Status: proposed
 - Deciders: V-Sekai
 - Tags: V-Sekai, Godot Engine, khepri, elixir
 

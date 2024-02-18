@@ -1,20 +1,20 @@
 # Rejected: Rewriting Mixer Broadcaster Into Membrane Framework Pipelines
 
-## Metadata  
+## Metadata
 
 - **Status**: Rejected
-- **Deciders**: V-Sekai  
+- **Deciders**: V-Sekai
 - **Tags**: V-Sekai, Elixir, Membrane Framework, Multiplayer Blender
 
-## The Backdrop  
+## The Backdrop
 
 Ubisoft's mixer broadcaster code has been the only available solution for handling multiplayer Blender. However, it has its limitations when it comes to scalability and real-time performance. This proposal aims to rewrite the code using Elixir and the Membrane Framework.
 
-## The Challenge  
+## The Challenge
 
 The main challenge is to translate the existing code into Elixir while maintaining the functionality and improving upon the limitations of the current system. This includes ensuring that the new code can handle larger volumes of users and provide real-time updates without lag or delay.
 
-## Strategy  
+## Strategy
 
 ```mermaid
 graph LR
@@ -28,7 +28,6 @@ This strategy leverages Elixir and the Membrane Framework's unique features, use
 Here are the key steps:
 
 - **Codebase**: Transition from Ubisoft's Mixer Broadcaster Code to Elixir & Membrane Framework Code, tracked in a version control system.
-  
 - **Dependencies**: Declare and isolate dependencies explicitly, avoiding reliance on system-wide packages.
 
 - **Config**: Store configuration (including GitHub OAuth 2.0 Login credentials) in the environment, not in the code.
@@ -51,31 +50,31 @@ Here are the key steps:
 
 - **Admin Processes**: Run any needed one-off administrative tasks in an identical environment as the regular long-running processes of the app.
 
-## The Upside  
+## The Upside
 
 By rewriting the code in Elixir, using the Membrane Framework, and implementing the Khepri database library, we can expect improved scalability and real-time performance. This will allow for more users to use the system simultaneously without experiencing delays or lags. Additionally, the fault-tolerance feature of Elixir will ensure that the system remains operational even when errors occur.
 
-## The Downside  
+## The Downside
 
 Rewriting the code will require time and resources. There may also be a learning curve for developers who are not familiar with Elixir, the Membrane Framework, and the Khepri database library.
 
-## The Road Not Taken  
+## The Road Not Taken
 
 An alternative approach would have been to optimize the existing code instead of rewriting it. However, this would not have addressed the inherent limitations of the current system.
 
-## The Infrequent Use Case  
+## The Infrequent Use Case
 
 In cases where the number of users is low and real-time updates are not critical, the current system may still be sufficient. However, as the user base grows and the demand for real-time updates increases, the need for a more scalable and efficient system becomes apparent.
 
-## In Core and Done by Us?  
+## In Core and Done by Us?
 
 Yes, the rewriting of the code will indeed be done by us as we also maintain the uro backend services.
 
-## Further Reading  
+## Further Reading
 
-- [V-Sekai](https://v-sekai.org/)  
+- [V-Sekai](https://v-sekai.org/)
 - [Elixir](https://elixir-lang.org/)
 - [Membrane Framework](https://www.membraneframework.org/)
 - [Khepri Database Library](https://hex.pm/packages/khepri)
 
-*This article is assisted by AI.*
+_This article is assisted by AI._

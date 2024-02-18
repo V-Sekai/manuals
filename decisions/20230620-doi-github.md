@@ -2,9 +2,9 @@
 
 ## Metadata
 
-*   Status: proposed
-*   Deciders: V-Sekai, fire
-*   Tags: V-Sekai, AI-augmented
+- Status: proposed
+- Deciders: V-Sekai, fire
+- Tags: V-Sekai, AI-augmented
 
 ## Context and Problem Statement
 
@@ -27,14 +27,14 @@ Follow these steps in the guide below:
 
 ## Positive Consequences
 
-*   Persistent DOIs for data and code
-*   Effortless referencing of repositories across browsers
-*   Enhanced visibility and accessibility of V-Sekai's digital artifacts
+- Persistent DOIs for data and code
+- Effortless referencing of repositories across browsers
+- Enhanced visibility and accessibility of V-Sekai's digital artifacts
 
 ## Negative Consequences
 
-*   Necessitates managing multiple platforms (Github and Zenodo)
-*   Possible learning curve for users unfamiliar with Github and Zenodo
+- Necessitates managing multiple platforms (Github and Zenodo)
+- Possible learning curve for users unfamiliar with Github and Zenodo
 
 ## Alternative Options
 
@@ -58,7 +58,7 @@ Yes, allocating a permanent DOI to V-Sekai's digital artifacts guarantees long-t
 
 ## References
 
-*   [V-Sekai](https://v-sekai.org/)
-*   [Github](https://github.com/)
-*   [Zenodo](https://zenodo.org/)
-*   <https://github.com/GlobalEcologyFlinders/assignDOI>
+- [V-Sekai](https://v-sekai.org/)
+- [Github](https://github.com/)
+- [Zenodo](https://zenodo.org/)
+- <https://github.com/GlobalEcologyFlinders/assignDOI>

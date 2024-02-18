@@ -91,4 +91,3 @@ For AAA game development, target $2.50 to USD 3 per user per server per month.
 2. [Networked Physics in Virtual Reality](https://www.youtube.com/watch?v=sx4IIQL0x7c)
 3. [Godot Engine Proposal](https://github.com/godotengine/godot-proposals/issues/3375)
 4. [Host your Unreal Engine game for under $1 USD](https://aws.amazon.com/blogs/gametech/how-to-host-your-unreal-engine-game-for-under-1-per-player-with-amazon-gamelift/)
-```

@@ -16,7 +16,7 @@ We utilize:
 We adhere to the following standards for 3D models:
 
 - **glTF (GL Transmission Format)**: A standard file format for three-dimensional scenes and models.
--- **VRM**: A 3D avatar file format based on glTF 2.0 for VR applications.
+  -- **VRM**: A 3D avatar file format based on glTF 2.0 for VR applications.
 - **Godot Scene (.tscn)**: Godot's native scene format.
 
 ## Software Languages

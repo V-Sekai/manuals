@@ -27,7 +27,6 @@ May have cheating with this type of replication.
 Option: The status quo.
 Rejection Reason: This solves nothing.
 
-
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 
 Not trivial.
@@ -39,7 +38,6 @@ We are doing this.
 ### References
 
 - [V-Sekai](https://v-sekai.org/)
-
 
 ### License of the contribution
 

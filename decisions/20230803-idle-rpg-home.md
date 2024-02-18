@@ -2,7 +2,7 @@
 
 ## Metadata
 
-- Status: Proposed 
+- Status: Proposed
 - Deciders: V-Sekai
 - Tags: V-Sekai
 

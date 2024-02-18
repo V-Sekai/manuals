@@ -6,7 +6,6 @@
 - Deciders: V-Sekai,fire,
 - Tags: V-Sekai,
 
-
 ### Context and Problem Statement
 
 In our current VR project, we face the challenge of capturing accurate body movements for both soccer and dancing experiences with a limited budget. How can we prioritize the placement of a limited number of trackers to ensure a realistic and immersive experience for both activities?

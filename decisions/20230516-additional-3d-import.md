@@ -5,12 +5,12 @@
 - Status: rejected <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
 - Tags: V-Sekai,ChatGPT-4,AI_assistance
- 
+
 ## Propose a possible solution to solve a V-Sekai limitation. If this doesn't look right, choose a different type.
 
 Improve the 3D import functionality in Godot Engine for V-Sekai by enhancing the existing import process and adding support for more file formats.
 
-***This proposal is rejected because it doesn't improve the 3D import functionality compared to its effort***
+**_This proposal is rejected because it doesn't improve the 3D import functionality compared to its effort_**
 
 ## Metadata
 

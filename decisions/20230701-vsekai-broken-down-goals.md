@@ -16,31 +16,31 @@ The features have been organized into three categories: Must-Have, Nice-to-Have,
 
 ### Must-Have Features
 
-| Priority | Feature | Dependencies |
-|:--------:|:-------|:------------|
-|    1     | Environment (scene loading, world hosting, instancing) | None |
-|    2     | Web requests to servers (HTTP/WebSocket API) | Environment |
-|    3     | Person to person interaction (avatars, animation, synchronization) | Environment |
-|    4     | Interaction with the world (interactive elements, physics) | Environment |
+| Priority | Feature                                                            | Dependencies |
+| :------: | :----------------------------------------------------------------- | :----------- |
+|    1     | Environment (scene loading, world hosting, instancing)             | None         |
+|    2     | Web requests to servers (HTTP/WebSocket API)                       | Environment  |
+|    3     | Person to person interaction (avatars, animation, synchronization) | Environment  |
+|    4     | Interaction with the world (interactive elements, physics)         | Environment  |
 
 ### Nice-to-Have Features
 
-| Priority | Feature | Dependencies |
-|:--------:|:-------|:------------|
-|    5     | Collaboration features (doodling, modeling, content loading) | Environment, Person to person interaction |
-|    6     | Static content creation in editor (import avatars, create worlds) | Environment |
-|    7     | Shareable content (inventory) | Environment, Static content creation in editor |
-|    8     | Local API for extending platform | Environment, Web requests to servers |
-|    9     | Video playback | Environment |
-|   10     | Support for proprietary video hosting | Video playback |
+| Priority | Feature                                                           | Dependencies                                   |
+| :------: | :---------------------------------------------------------------- | :--------------------------------------------- |
+|    5     | Collaboration features (doodling, modeling, content loading)      | Environment, Person to person interaction      |
+|    6     | Static content creation in editor (import avatars, create worlds) | Environment                                    |
+|    7     | Shareable content (inventory)                                     | Environment, Static content creation in editor |
+|    8     | Local API for extending platform                                  | Environment, Web requests to servers           |
+|    9     | Video playback                                                    | Environment                                    |
+|    10    | Support for proprietary video hosting                             | Video playback                                 |
 
 ### Out of Scope Initially
 
-| Priority | Feature | Dependencies |
-|:--------:|:-------|:------------|
-|   11     | Text chat | Environment, Person to person interaction |
-|   12     | Screen sharing (OBS) | Environment, Person to person interaction |
-|   13     | Modeling and 3D Creation (Blender) | Environment, Static content creation in editor |
+| Priority | Feature                            | Dependencies                                   |
+| :------: | :--------------------------------- | :--------------------------------------------- |
+|    11    | Text chat                          | Environment, Person to person interaction      |
+|    12    | Screen sharing (OBS)               | Environment, Person to person interaction      |
+|    13    | Modeling and 3D Creation (Blender) | Environment, Static content creation in editor |
 
 ## Implementation
 

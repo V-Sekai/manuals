@@ -44,9 +44,9 @@ What state is V-Sekai in, and what can it do?
 
 ### Successes
 
-5. **Avatar Uploading and Downloading**:** V-Sekai can upload from the editor and, download avatars, and load them into the game at runtime.
-5. **World Uploading and Downloading**:** V-Sekai can upload from the editor and, download worlds, and load them into the game at runtime.
-6. **VR Mode Loading:** V-Sekai can successfully load in VR mode.
+5. **Avatar Uploading and Downloading**:\*\* V-Sekai can upload from the editor and, download avatars, and load them into the game at runtime.
+6. **World Uploading and Downloading**:\*\* V-Sekai can upload from the editor and, download worlds, and load them into the game at runtime.
+7. **VR Mode Loading:** V-Sekai can successfully load in VR mode.
 
 ### Opportunities
 

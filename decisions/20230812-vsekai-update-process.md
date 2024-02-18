@@ -47,4 +47,4 @@ This section can be used to discuss whether this decision is core to the project
 
 For more information about V-Sekai, you can visit their [official website](https://v-sekai.org/).
 
-*This article is assisted by AI.*
+_This article is assisted by AI._

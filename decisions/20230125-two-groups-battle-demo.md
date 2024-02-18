@@ -23,19 +23,19 @@ Make a game out of having two groups attack each other.
 
 ```javascript
 function createGroups() {
-  massA = createGroupA()
-  massB = createGroupB()
+  massA = createGroupA();
+  massB = createGroupB();
 }
 
 function update() {
-  pathfind(massA, massB)
-  pathfind(massB, massA)
+  pathfind(massA, massB);
+  pathfind(massB, massA);
 
-  avoidance(massA)
-  avoidance(massB)
+  avoidance(massA);
+  avoidance(massB);
 
-  attack(massA, massB)
-  attack(massB, massA)
+  attack(massA, massB);
+  attack(massB, massA);
 }
 ```
 
