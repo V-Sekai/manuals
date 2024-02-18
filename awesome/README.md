@@ -6,18 +6,6 @@ V-Sekai is an open-source project that aims to bring social VR/VRSNS/metaverse c
 
 A curated list of all the projects V-Sekai has been involved with in the field of social VR.
 
-## Tools that bring me joy
-
-- [Elk: Mastadon client](https://elk.zone)
-- [Libhunt: Shows trending github repositories based on social media links](https://www.libhunt.com)
-- [Threadreaderapp: Provides pdf summaries of Twitter threads](https://threadreaderapp.com/)
-- [Rhino3d: CAD modeller with a visual procedural graph](https://www.rhino3d.com/)
-- [Discord timestamps](https://r.3v.fi/discord-timestamps/)
-- [When2meet helps you find the best time for a group to get together](https://www.when2meet.com/)
-- [Hack for quick note taking](https://hackmd.io/)
-- [Image comparison](https://imgsli.com)
-- [Code Name Generator: Colors, Metal, Animals](https://www.codenamegenerator.com/)
-
 ## Applications
 
 - [V-Sekai Game](https://github.com/V-Sekai/v-sekai-game)
@@ -25,18 +13,6 @@ A curated list of all the projects V-Sekai has been involved with in the field o
 - [Shader Motion Website](https://github.com/V-Sekai/shader-motion-navy-lead-ostrich)
 - [VSK Model Explorer](https://github.com/V-Sekai/VSK_model_explorer)
 - [Open RTS](https://github.com/lampe-games/godot-open-rts)
-
-## Websites
-
-- [V-Sekai Manuals Website](https://github.com/V-Sekai/manuals)
-- [Godot GLTF 2.0 Scene Exporter](https://godotengine.org/article/introducing-the-godot-gltf-2-0-scene-exporter/)
-- [Animation Retargeting in Godot 4.0](https://godotengine.org/article/animation-retargeting-in-godot-4-0/)
-- [Godot Engine PRs by File](https://godotengine.github.io/godot-prs-by-file/)
-
-## Artwork
-
-- [Blender Art Blue Tin Fox Models](https://github.com/V-Sekai/blender-art-blue-tin-fox-models)
-- [V-Sekai Fire Artwork & Tools](https://github.com/v-sekai-fire)
 
 ## Plugins and Scripts
 
@@ -72,6 +48,18 @@ Modules extend Godot Engine core (C++).
 - [Hydro](https://github.com/godot-extended-libraries/hydro)
 - [ashtonmeuser/godot-wasm](https://github.com/ashtonmeuser/godot-wasm)
 
+## Websites
+
+- [V-Sekai Manuals Website](https://github.com/V-Sekai/manuals)
+- [Godot GLTF 2.0 Scene Exporter](https://godotengine.org/article/introducing-the-godot-gltf-2-0-scene-exporter/)
+- [Animation Retargeting in Godot 4.0](https://godotengine.org/article/animation-retargeting-in-godot-4-0/)
+- [Godot Engine PRs by File](https://godotengine.github.io/godot-prs-by-file/)
+
+## Artwork
+
+- [Blender Art Blue Tin Fox Models](https://github.com/V-Sekai/blender-art-blue-tin-fox-models)
+- [V-Sekai Fire Artwork & Tools](https://github.com/v-sekai-fire)
+
 ## Other Tools
 
 - [SQLpage](https://github.com/lovasoa/SQLpage)
@@ -89,6 +77,18 @@ Modules extend Godot Engine core (C++).
 - [Lateral Thinking with Weathered Technology](https://en.wikipedia.org/wiki/Gunpei_Yokoi)
 - [Generate Blender Rigify armatures for VRM models.](https://github.com/nanoskript/vrm-rigify)
 - [Three VRM Inspector](https://0b5vr.com/three-vrm-inspector/)
+
+## Tools that bring me joy
+
+- [Elk: Mastadon client](https://elk.zone)
+- [Libhunt: Shows trending github repositories based on social media links](https://www.libhunt.com)
+- [Threadreaderapp: Provides pdf summaries of Twitter threads](https://threadreaderapp.com/)
+- [Rhino3d: CAD modeller with a visual procedural graph](https://www.rhino3d.com/)
+- [Discord timestamps](https://r.3v.fi/discord-timestamps/)
+- [When2meet helps you find the best time for a group to get together](https://www.when2meet.com/)
+- [Hack for quick note taking](https://hackmd.io/)
+- [Image comparison](https://imgsli.com)
+- [Code Name Generator: Colors, Metal, Animals](https://www.codenamegenerator.com/)
 
 ## Articles
 
