@@ -16,6 +16,52 @@ We propose the implementation of ETNF, a normalization form that offers an optim
 
 ETNF, or Essential Tuple Normalization Form, addresses the shortcomings of existing normalization forms by focusing on the elimination of unnecessary redundancy without the extensive decomposition associated with 5NF. It is designed to ensure that every tuple (record) in the database is essential, meaning that no tuple can be generated as a combination of other tuples in the database. This form is particularly effective in relational databases where constraints are governed by functional dependencies (FDs) and join dependencies (JDs).
 
+#### Example 1: Non-Normalized Data
+
+Consider a V-Sekai database table that stores information about parts, suppliers, and the respective shipments. The table is not normalized and contains redundant data.
+
+| SupplierID | SupplierName | PartID | PartName | ShipmentQuantity |
+| ---------- | ------------ | ------ | -------- | ---------------- |
+| S1         | Alice        | P1     | Part1    | 100              |
+| S1         | Alice        | P2     | Part2    | 200              |
+| S2         | Bob          | P1     | Part1    | 150              |
+| S2         | Bob          | P3     | Part3    | 300              |
+| S3         | Charlie      | P2     | Part2    | 250              |
+
+In the above table, the `SupplierName` and `PartName` are repeated for each `SupplierID` and `PartID`, respectively. This redundancy can lead to inconsistencies and anomalies.
+
+#### Example 2: ETNF Normalized Data
+
+To normalize the above table into ETNF, we would decompose it into three separate tables: `Supplier`, `Part`, and `Shipment`.
+
+##### Supplier Table
+
+| SupplierID | SupplierName |
+| ---------- | ------------ |
+| S1         | Alice        |
+| S2         | Bob          |
+| S3         | Charlie      |
+
+##### Part Table
+
+| PartID | PartName |
+| ------ | -------- |
+| P1     | Part1    |
+| P2     | Part2    |
+| P3     | Part3    |
+
+##### Shipment Table
+
+| SupplierID | PartID | ShipmentQuantity |
+| ---------- | ------ | ---------------- |
+| S1         | P1     | 100              |
+| S1         | P2     | 200              |
+| S2         | P1     | 150              |
+| S2         | P3     | 300              |
+| S3         | P2     | 250              |
+
+In the normalized tables, each tuple is essential and there is no redundancy. The `SupplierName` is not repeated for each shipment from the same supplier, and similarly, the `PartName` is not repeated for each shipment of the same part. This design adheres to the principles of ETNF, enhancing data integrity and consistency.
+
 #### Key Characteristics:
 
 - **Redundancy Reduction**: ETNF effectively reduces data redundancy by ensuring that all data stored in the database is essential and non-repetitive.
