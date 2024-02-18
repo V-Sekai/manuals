@@ -39,7 +39,6 @@ Modules extend Godot Engine core (C++).
 #### Godot 4.0
 
 - [Godot Speech](https://github.com/v-sekai/godot_speech)
-- [Godot libsql](https://github.com/V-Sekai/godot-libsql)
 - [Fast Subdivision with opensubdiv](https://github.com/V-Sekai/godot-subdiv)
 - [Inverse Kinematics System Solver for Multi-chain Skeletons and with Constraints](https://github.com/V-Sekai/many_bone_ik)
 - [Humanoid Inverse Kinematics Rig for Avatars](https://github.com/V-Sekai/renik)
