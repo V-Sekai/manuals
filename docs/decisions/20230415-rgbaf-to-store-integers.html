@@ -216,7 +216,7 @@ void fragment() {
         // mantissa | exponent | signbit
         ((data &amp; uvec4(0x007FFFFF)) &gt;&gt; uvec4(13)) | exps | (((data &gt;&gt; uvec4(31)) &amp; uvec4(1)) &lt;&lt; uvec4(15)),
         // Denormalized case: exponent is all over the place, so instead we add the smallest non-denormalized half, then extract the mantessa bits.
-        // Finally, or the sign bit (and exponent = 0) 
+        // Finally, or the sign bit (and exponent = 0)
         (((floatBitsToUint(uintBitsToFloat(data &amp; uvec4(0x7FFFFFFF)) + 1.0/16384.0) &amp; uvec4(0x007FFFFF)) &gt;&gt; uvec4(13))) | (((data &gt;&gt; uvec4(31)) &amp; uvec4(1)) &lt;&lt; uvec4(15)),
         // Denormalized case can be detected with half exponent &lt;= -15.
         lessThanEqual((data) &amp; uvec4(0x7F800000), uvec4(0x38000000)));
