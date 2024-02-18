@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.550</generator>
-<lastBuildDate>Sun, 18 Feb 2024 03:51:21 GMT</lastBuildDate>
+<lastBuildDate>Sun, 18 Feb 2024 06:28:18 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:51:21 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -187,7 +187,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-intended-effort-versioning.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:51:21 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -390,7 +390,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-essential-typle-normalization-form.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:51:21 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -483,7 +483,94 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-documentation-guidelines.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:51:21 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240217-container-2-wasm.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-container2wasm-integration-in-v-sekai" class="level1">
+<h1>Proposed: Container2Wasm Integration in V-Sekai</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>V-Sekai is a project focused on social VR functionality for the Godot Engine. It aims to bring social VR/VRSNS/metaverse components to the Godot Engine, enhancing avatar customization and AI-driven facial expressions.</p>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>Integrating complex backend services directly within a browser or lightweight client environments can be challenging. This integration is crucial for enhancing avatar customization and AI-driven facial expressions by leveraging containerized services.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>We propose to use <code>container2wasm</code>, a tool that converts container images to WebAssembly (WASM) format. This will enable these containers to run on WASM with emulation support for x86_64 and riscv64 containers. The tool works with various WASI runtimes like wasmtime, wamr, wasmer, wasmedge, and wazero, and it can also run in the browser.</p>
+<ol type="1">
+<li>Convert container image to WASM using container2wasm</li>
+<li>Deploy the WASM module in the desired environment</li>
+<li>Run the WASM module using a suitable WASI runtime</li>
+</ol>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<ul>
+<li>Enables running of containerized services directly in the browser or lightweight client environments.</li>
+<li>Enhances avatar customization and AI-driven facial expressions in V-Sekai.</li>
+<li>Leverages the power of WASM for efficient, safe, and portable execution.</li>
+</ul>
+</section>
+<section id="downsides" class="level2">
+<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
+<ul>
+<li>Requires understanding and maintenance of WASM modules.</li>
+<li>Potential compatibility issues with certain containerized services.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An alternative would be to run the backend services on dedicated servers and communicate with them via APIs. However, this could introduce latency and require more resources.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>In scenarios where the backend service is not frequently used, converting it to WASM might not provide significant benefits.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>The integration of <code>container2wasm</code> will be done by the V-Sekai development team with support from the community stakeholders.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team and community stakeholders.</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai, Avatar Customization, AI, Facial Expressions</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a></li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a></li>
+<li><a href="https://github.com/ktock/container2wasm">Container2Wasm · GitHub</a></li>
+</ol>
+<p><em>This proposal was assisted by Aria, an AI assistant.</em></p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240217-container-2-wasm.html</guid>
+  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -565,7 +652,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240215-avatar-customization-with-ai-facial-expressions.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:51:21 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -631,7 +718,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240127-urban-explorer-gdc-2024-sample.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:51:21 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -780,7 +867,7 @@ sudo launchctl list | grep com.gocd.agent</code></pre></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-mac-setup.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:51:21 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1111,7 +1198,7 @@ font-style: inherit;">-u</span> livebook.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-livebook-fedora-install.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:51:21 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1233,7 +1320,7 @@ font-style: inherit;"># Disable key expiry</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-install-tailscale.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:51:21 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1487,7 +1574,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-easy-diffusion-fedora-install.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:51:21 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1599,7 +1686,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240120-vr-armature-system.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:51:21 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1660,7 +1747,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240117-pivot-painting.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:51:21 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1743,7 +1830,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240111-fspy.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:51:21 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1827,7 +1914,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240111-fit-clothing-on-humans-without-tearing.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:51:21 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1959,7 +2046,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240110-magical-girls-college-novel.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:51:21 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2044,7 +2131,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240105-1-meter-128-quantize.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:51:21 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2116,7 +2203,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231230-spatiallabs-openvr.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:51:21 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2187,7 +2274,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231229-mRemoteNG.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:51:21 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2253,75 +2340,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231229-byobu.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:51:21 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20231228-v-sekai-slogan.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-v-sekai-gateways-to-virtual-worlds" class="level1">
-<h1>Proposed: V-Sekai: Gateways to Virtual Worlds</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li>Status: Proposed</li>
-<li>Deciders: V-Sekai</li>
-<li>Tags: V-Sekai, Slogan, Virtual Reality, VR</li>
-</ul>
-</section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>V-Sekai is a project in the realm of virtual reality. Our aim is to create immersive and interactive virtual worlds that offer users an awesome experience.</p>
-</section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>It’s important to have a slogan that encapsulates our vision and mission. It should be catchy, memorable, and reflective of what we do.</p>
-</section>
-<section id="the-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>We propose the slogan: <strong>V-Sekai: Gateways to Virtual Worlds</strong></p>
-<p>This slogan succinctly communicates our goal of providing access to expansive virtual realities.</p>
-</section>
-<section id="the-upside" class="level2">
-<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<p>The proposed slogan is concise, catchy, and directly related to our work. It emphasizes our role as a gateway to new, immersive experiences.</p>
-</section>
-<section id="the-downside" class="level2">
-<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<p>The term “Virtual Worlds” might be too broad or vague for some people, potentially leading to misunderstandings about our specific services.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Alternative slogans were considered, such as “V-Sekai: Forging Gateways to Virtual Worlds”, but they didn’t convey our message as effectively.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>For those unfamiliar with the concept of virtual reality, the slogan might require further explanation.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>Yes, this proposal was created internally by the V-Sekai team with assistance from AI assistant Aria.</p>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine.</li>
-<li><a href="https://vxtwitter.com/ri_ri_ru_na/status/1730922247223931005?s=20">Vket 2023: Tram Ride</a></li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20231228-v-sekai-slogan.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:51:21 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
 </item>
 </channel>
 </rss>
