@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.550</generator>
-<lastBuildDate>Sun, 18 Feb 2024 06:28:18 GMT</lastBuildDate>
+<lastBuildDate>Sun, 18 Feb 2024 06:37:32 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,113 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240217-workload-benchmarking.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposal-for-improving-v-sekai" class="level1">
+<h1>Proposal for Improving V-Sekai</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>V-Sekai is a social virtual reality platform. Users interact with each other through avatars in different environments. The main operations include high read operations, moderate to high write operations, and latency sensitivity.</p>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>To ensure the best performance and user experience, we need to understand how the database system might perform under conditions similar to those experienced by V-Sekai. This includes balancing between high read operations for content delivery and write operations for dynamic user interactions, all while maintaining low latency.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>We propose to use the Yahoo! Cloud Serving Benchmark (YCSB) workload to emulate the usage patterns of V-Sekai. This would involve a combination of workloads:</p>
+<section id="workload-a" class="level3">
+<h3 class="anchored" data-anchor-id="workload-a">Workload A</h3>
+<ul>
+<li>50% read and 50% update operations.</li>
+<li>Simulates user interactions within V-Sekai, such as position updates, gestures, or environment interactions.</li>
+</ul>
+</section>
+<section id="workload-b" class="level3">
+<h3 class="anchored" data-anchor-id="workload-b">Workload B</h3>
+<ul>
+<li>95% read and 5% update operations.</li>
+<li>Represents the frequent fetching of environment and avatar details.</li>
+</ul>
+</section>
+<section id="customized-workload" class="level3">
+<h3 class="anchored" data-anchor-id="customized-workload">Customized Workload</h3>
+<ul>
+<li>Adjusting the read and write ratios to reflect the real-time, interactive nature of V-Sekai.</li>
+<li>Emphasizing low latency in the benchmarking parameters.</li>
+</ul>
+<pre class="pseudo"><code>1. Set up YCSB with Workload A and B
+2. Customize the read/write ratio based on V-Sekai's usage patterns
+3. Emphasize low latency in the benchmarking parameters
+4. Run the benchmark and analyze the results</code></pre>
+</section>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<ul>
+<li>Provides insights into how a database system might perform under V-Sekai-like conditions.</li>
+<li>Helps optimize the balance between read and write operations.</li>
+<li>Ensures low latency for a seamless user experience.</li>
+</ul>
+</section>
+<section id="downsides" class="level2">
+<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
+<ul>
+<li>Requires careful tuning and understanding of YCSB workloads.</li>
+<li>The benchmark results might not perfectly reflect real-world usage due to the synthetic nature of benchmarks.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An alternative would be to use pre-defined YCSB workloads without customization. However, this might not accurately reflect V-Sekai’s specific usage patterns.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>In scenarios where the usage patterns are not consistent or predictable, customizing the YCSB workload might not provide accurate insights.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>The setup and customization of the YCSB benchmark will be done by the V-Sekai development team with support from the community stakeholders.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team and community stakeholders.</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai, Performance Benchmarking, Database Optimization</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a></li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a></li>
+</ol>
+<p><em>This proposal was assisted by Aria, an AI assistant.</em></p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240217-workload-benchmarking.html</guid>
+  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -187,7 +293,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-intended-effort-versioning.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -390,7 +496,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-essential-typle-normalization-form.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -483,7 +589,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-documentation-guidelines.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -570,7 +676,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-container-2-wasm.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -652,7 +758,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240215-avatar-customization-with-ai-facial-expressions.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -718,7 +824,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240127-urban-explorer-gdc-2024-sample.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -867,7 +973,7 @@ sudo launchctl list | grep com.gocd.agent</code></pre></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-mac-setup.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1198,7 +1304,7 @@ font-style: inherit;">-u</span> livebook.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-livebook-fedora-install.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1320,7 +1426,7 @@ font-style: inherit;"># Disable key expiry</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-install-tailscale.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1574,7 +1680,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-easy-diffusion-fedora-install.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1686,7 +1792,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240120-vr-armature-system.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1747,7 +1853,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240117-pivot-painting.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1830,7 +1936,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240111-fspy.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1914,7 +2020,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240111-fit-clothing-on-humans-without-tearing.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2046,7 +2152,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240110-magical-girls-college-novel.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2131,7 +2237,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240105-1-meter-128-quantize.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2203,7 +2309,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231230-spatiallabs-openvr.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2274,73 +2380,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231229-mRemoteNG.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20231229-byobu.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-byobu-terminal-multiplexer" class="level1">
-<h1>Proposed: Byobu terminal multiplexer</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li>Status: Proposed </li>
-<li>Deciders: V-Sekai</li>
-<li>Tags: V-Sekai</li>
-</ul>
-</section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>In the world of software development, having a robust and user-friendly terminal environment is crucial. Developers often need to manage multiple terminal sessions at once, which can be challenging without the right tools.</p>
-</section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>The challenge is to find a usable terminal multiplexer that can handle multiple terminal sessions efficiently and effectively.</p>
-</section>
-<section id="the-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>Our strategy is to use Byobu, a GPLv3 open source text-based window manager and terminal multiplexer. It was chosen for its ease of use and robust feature set.</p>
-</section>
-<section id="the-upside" class="level2">
-<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<p>By using Byobu, developers can easily manage multiple terminal sessions from a single interface. This can greatly improve productivity and efficiency.</p>
-</section>
-<section id="the-downside" class="level2">
-<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<p>As with any tool, there may be a learning curve associated with Byobu. However, its benefits far outweigh this minor inconvenience.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Other options like Screen and tmux were considered but found not as user friendly. Tmux, in particular, didn’t correctly scroll and did not advertise the option to start on terminal.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>While Byobu is an excellent tool for managing multiple terminal sessions, it may not be necessary for developers who only occasionally need to work with multiple terminals.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>This decision to use Byobu is part of our core strategy to provide the best tools and environment for our developers.</p>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20231229-byobu.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:28:18 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
 </item>
 </channel>
 </rss>
