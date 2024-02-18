@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.550</generator>
-<lastBuildDate>Sun, 18 Feb 2024 03:23:46 GMT</lastBuildDate>
+<lastBuildDate>Sun, 18 Feb 2024 03:28:31 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:23:46 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:28:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -187,7 +187,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-intended-effort-versioning.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:23:46 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:28:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -213,6 +213,153 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 <section id="comprehensive-description-of-etnf" class="level3">
 <h3 class="anchored" data-anchor-id="comprehensive-description-of-etnf">Comprehensive Description of ETNF</h3>
 <p>ETNF, or Essential Tuple Normalization Form, addresses the shortcomings of existing normalization forms by focusing on the elimination of unnecessary redundancy without the extensive decomposition associated with 5NF. It is designed to ensure that every tuple (record) in the database is essential, meaning that no tuple can be generated as a combination of other tuples in the database. This form is particularly effective in relational databases where constraints are governed by functional dependencies (FDs) and join dependencies (JDs).</p>
+<section id="example-1-non-normalized-data" class="level4">
+<h4 class="anchored" data-anchor-id="example-1-non-normalized-data">Example 1: Non-Normalized Data</h4>
+<p>Consider a V-Sekai database table that stores information about parts, suppliers, and the respective shipments. The table is not normalized and contains redundant data.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>SupplierID</th>
+<th>SupplierName</th>
+<th>PartID</th>
+<th>PartName</th>
+<th>ShipmentQuantity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>S1</td>
+<td>Alice</td>
+<td>P1</td>
+<td>Part1</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td>S1</td>
+<td>Alice</td>
+<td>P2</td>
+<td>Part2</td>
+<td>200</td>
+</tr>
+<tr class="odd">
+<td>S2</td>
+<td>Bob</td>
+<td>P1</td>
+<td>Part1</td>
+<td>150</td>
+</tr>
+<tr class="even">
+<td>S2</td>
+<td>Bob</td>
+<td>P3</td>
+<td>Part3</td>
+<td>300</td>
+</tr>
+<tr class="odd">
+<td>S3</td>
+<td>Charlie</td>
+<td>P2</td>
+<td>Part2</td>
+<td>250</td>
+</tr>
+</tbody>
+</table>
+<p>In the above table, the <code>SupplierName</code> and <code>PartName</code> are repeated for each <code>SupplierID</code> and <code>PartID</code>, respectively. This redundancy can lead to inconsistencies and anomalies.</p>
+</section>
+<section id="example-2-etnf-normalized-data" class="level4">
+<h4 class="anchored" data-anchor-id="example-2-etnf-normalized-data">Example 2: ETNF Normalized Data</h4>
+<p>To normalize the above table into ETNF, we would decompose it into three separate tables: <code>Supplier</code>, <code>Part</code>, and <code>Shipment</code>.</p>
+<section id="supplier-table" class="level5">
+<h5 class="anchored" data-anchor-id="supplier-table">Supplier Table</h5>
+<table class="table">
+<thead>
+<tr class="header">
+<th>SupplierID</th>
+<th>SupplierName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>S1</td>
+<td>Alice</td>
+</tr>
+<tr class="even">
+<td>S2</td>
+<td>Bob</td>
+</tr>
+<tr class="odd">
+<td>S3</td>
+<td>Charlie</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="part-table" class="level5">
+<h5 class="anchored" data-anchor-id="part-table">Part Table</h5>
+<table class="table">
+<thead>
+<tr class="header">
+<th>PartID</th>
+<th>PartName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>P1</td>
+<td>Part1</td>
+</tr>
+<tr class="even">
+<td>P2</td>
+<td>Part2</td>
+</tr>
+<tr class="odd">
+<td>P3</td>
+<td>Part3</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="shipment-table" class="level5">
+<h5 class="anchored" data-anchor-id="shipment-table">Shipment Table</h5>
+<table class="table">
+<thead>
+<tr class="header">
+<th>SupplierID</th>
+<th>PartID</th>
+<th>ShipmentQuantity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>S1</td>
+<td>P1</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td>S1</td>
+<td>P2</td>
+<td>200</td>
+</tr>
+<tr class="odd">
+<td>S2</td>
+<td>P1</td>
+<td>150</td>
+</tr>
+<tr class="even">
+<td>S2</td>
+<td>P3</td>
+<td>300</td>
+</tr>
+<tr class="odd">
+<td>S3</td>
+<td>P2</td>
+<td>250</td>
+</tr>
+</tbody>
+</table>
+<p>In the normalized tables, each tuple is essential and there is no redundancy. The <code>SupplierName</code> is not repeated for each shipment from the same supplier, and similarly, the <code>PartName</code> is not repeated for each shipment of the same part. This design adheres to the principles of ETNF, enhancing data integrity and consistency.</p>
+</section>
+</section>
 <section id="key-characteristics" class="level4">
 <h4 class="anchored" data-anchor-id="key-characteristics">Key Characteristics:</h4>
 <ul>
@@ -254,7 +401,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-essential-typle-normalization-form.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:23:46 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:28:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -336,7 +483,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240215-avatar-customization-with-ai-facial-expressions.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:23:46 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:28:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -402,7 +549,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240127-urban-explorer-gdc-2024-sample.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:23:46 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:28:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -551,7 +698,7 @@ sudo launchctl list | grep com.gocd.agent</code></pre></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-mac-setup.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:23:46 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:28:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -882,7 +1029,7 @@ font-style: inherit;">-u</span> livebook.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-livebook-fedora-install.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:23:46 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:28:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1004,7 +1151,7 @@ font-style: inherit;"># Disable key expiry</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-install-tailscale.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:23:46 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:28:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1258,7 +1405,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-easy-diffusion-fedora-install.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:23:46 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:28:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1370,7 +1517,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240120-vr-armature-system.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:23:46 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:28:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1431,7 +1578,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240117-pivot-painting.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:23:46 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:28:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1514,7 +1661,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240111-fspy.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:23:46 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:28:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1598,7 +1745,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240111-fit-clothing-on-humans-without-tearing.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:23:46 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:28:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1730,7 +1877,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240110-magical-girls-college-novel.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:23:46 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:28:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1815,7 +1962,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240105-1-meter-128-quantize.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:23:46 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:28:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1887,7 +2034,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231230-spatiallabs-openvr.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:23:46 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:28:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1958,7 +2105,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231229-mRemoteNG.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:23:46 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:28:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2024,7 +2171,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231229-byobu.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:23:46 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:28:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2092,7 +2239,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231228-v-sekai-slogan.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:23:46 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:28:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2172,7 +2319,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231227-punchline-reports.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:23:46 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:28:31 GMT</pubDate>
 </item>
 </channel>
 </rss>

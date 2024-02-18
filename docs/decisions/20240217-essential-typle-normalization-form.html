@@ -162,6 +162,153 @@ ul.task-list li input[type="checkbox"] {
 <section id="comprehensive-description-of-etnf" class="level3">
 <h3 class="anchored" data-anchor-id="comprehensive-description-of-etnf">Comprehensive Description of ETNF</h3>
 <p>ETNF, or Essential Tuple Normalization Form, addresses the shortcomings of existing normalization forms by focusing on the elimination of unnecessary redundancy without the extensive decomposition associated with 5NF. It is designed to ensure that every tuple (record) in the database is essential, meaning that no tuple can be generated as a combination of other tuples in the database. This form is particularly effective in relational databases where constraints are governed by functional dependencies (FDs) and join dependencies (JDs).</p>
+<section id="example-1-non-normalized-data" class="level4">
+<h4 class="anchored" data-anchor-id="example-1-non-normalized-data">Example 1: Non-Normalized Data</h4>
+<p>Consider a V-Sekai database table that stores information about parts, suppliers, and the respective shipments. The table is not normalized and contains redundant data.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>SupplierID</th>
+<th>SupplierName</th>
+<th>PartID</th>
+<th>PartName</th>
+<th>ShipmentQuantity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>S1</td>
+<td>Alice</td>
+<td>P1</td>
+<td>Part1</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td>S1</td>
+<td>Alice</td>
+<td>P2</td>
+<td>Part2</td>
+<td>200</td>
+</tr>
+<tr class="odd">
+<td>S2</td>
+<td>Bob</td>
+<td>P1</td>
+<td>Part1</td>
+<td>150</td>
+</tr>
+<tr class="even">
+<td>S2</td>
+<td>Bob</td>
+<td>P3</td>
+<td>Part3</td>
+<td>300</td>
+</tr>
+<tr class="odd">
+<td>S3</td>
+<td>Charlie</td>
+<td>P2</td>
+<td>Part2</td>
+<td>250</td>
+</tr>
+</tbody>
+</table>
+<p>In the above table, the <code>SupplierName</code> and <code>PartName</code> are repeated for each <code>SupplierID</code> and <code>PartID</code>, respectively. This redundancy can lead to inconsistencies and anomalies.</p>
+</section>
+<section id="example-2-etnf-normalized-data" class="level4">
+<h4 class="anchored" data-anchor-id="example-2-etnf-normalized-data">Example 2: ETNF Normalized Data</h4>
+<p>To normalize the above table into ETNF, we would decompose it into three separate tables: <code>Supplier</code>, <code>Part</code>, and <code>Shipment</code>.</p>
+<section id="supplier-table" class="level5">
+<h5 class="anchored" data-anchor-id="supplier-table">Supplier Table</h5>
+<table class="table">
+<thead>
+<tr class="header">
+<th>SupplierID</th>
+<th>SupplierName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>S1</td>
+<td>Alice</td>
+</tr>
+<tr class="even">
+<td>S2</td>
+<td>Bob</td>
+</tr>
+<tr class="odd">
+<td>S3</td>
+<td>Charlie</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="part-table" class="level5">
+<h5 class="anchored" data-anchor-id="part-table">Part Table</h5>
+<table class="table">
+<thead>
+<tr class="header">
+<th>PartID</th>
+<th>PartName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>P1</td>
+<td>Part1</td>
+</tr>
+<tr class="even">
+<td>P2</td>
+<td>Part2</td>
+</tr>
+<tr class="odd">
+<td>P3</td>
+<td>Part3</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="shipment-table" class="level5">
+<h5 class="anchored" data-anchor-id="shipment-table">Shipment Table</h5>
+<table class="table">
+<thead>
+<tr class="header">
+<th>SupplierID</th>
+<th>PartID</th>
+<th>ShipmentQuantity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>S1</td>
+<td>P1</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td>S1</td>
+<td>P2</td>
+<td>200</td>
+</tr>
+<tr class="odd">
+<td>S2</td>
+<td>P1</td>
+<td>150</td>
+</tr>
+<tr class="even">
+<td>S2</td>
+<td>P3</td>
+<td>300</td>
+</tr>
+<tr class="odd">
+<td>S3</td>
+<td>P2</td>
+<td>250</td>
+</tr>
+</tbody>
+</table>
+<p>In the normalized tables, each tuple is essential and there is no redundancy. The <code>SupplierName</code> is not repeated for each shipment from the same supplier, and similarly, the <code>PartName</code> is not repeated for each shipment of the same part. This design adheres to the principles of ETNF, enhancing data integrity and consistency.</p>
+</section>
+</section>
 <section id="key-characteristics" class="level4">
 <h4 class="anchored" data-anchor-id="key-characteristics">Key Characteristics:</h4>
 <ul>
