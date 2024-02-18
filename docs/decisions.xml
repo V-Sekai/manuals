@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.550</generator>
-<lastBuildDate>Sun, 18 Feb 2024 03:31:26 GMT</lastBuildDate>
+<lastBuildDate>Sun, 18 Feb 2024 03:35:51 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:31:26 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:35:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -187,7 +187,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-intended-effort-versioning.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:31:26 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:35:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -210,14 +210,12 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 <section id="proposal-overview-etnf-implementation" class="level2">
 <h2 class="anchored" data-anchor-id="proposal-overview-etnf-implementation">Proposal Overview: ETNF Implementation</h2>
 <p>We propose implementing ETNF, a normalization form that strikes an optimal balance between eliminating redundancy and maintaining manageable complexity in database schemas. Positioned between the fourth normal form (4NF) and the fifth normal form (5NF), ETNF provides a sophisticated yet practical approach to database normalization.</p>
-<section id="comprehensive-description-of-etnf" class="level3">
-<h3 class="anchored" data-anchor-id="comprehensive-description-of-etnf">Comprehensive Description of ETNF</h3>
-<p>ETNF, or Essential Tuple Normalization Form, addresses the shortcomings of existing normalization forms by focusing on the elimination of unnecessary redundancy without the extensive decomposition associated with 5NF. It ensures that every tuple (record) in the database is essential, meaning no tuple can be generated as a combination of other tuples in the database. This form is particularly effective in relational databases where constraints are governed by functional dependencies (FDs) and join dependencies (JDs).</p>
-<section id="mathematical-description-of-etnf" class="level4">
-<h4 class="anchored" data-anchor-id="mathematical-description-of-etnf">Mathematical Description of ETNF</h4>
-<p>A relation R is in ETNF if for every nontrivial join dependency {R1, R2, …, Rn} that holds over R, the intersection of each pair of Ri and Rj is a superkey for at least one of Ri or Rj.</p>
-<p>This mathematical description ensures that no tuple in the database can be generated from other tuples, thus eliminating redundancy.</p>
-</section>
+<section id="description-of-etnf" class="level3">
+<h3 class="anchored" data-anchor-id="description-of-etnf">Description of ETNF</h3>
+<p>A relation schema R is in Essential Tuple Normal Form (ETNF) if every tuple in every instance of R is essential. This means that no tuple in the database can be generated from other tuples, thus eliminating redundancy.</p>
+<p>In mathematical terms, a relation R is in ETNF if and only if it is in Boyce-Codd Normal Form (BCNF) and some component of every explicit join dependency (JD) of R is a superkey. Specifically, for every nontrivial join dependency {R1, R2, …, Rn} that holds over R, the intersection of each pair of Ri and Rj is a superkey for at least one of Ri or Rj.</p>
+<p>This concept is further illustrated by the theorem stating that if R is a relation schema specified only by functional dependencies (FDs) and join dependencies (JDs), then R is in ETNF if and only if it is in BCNF and some component of every explicit JD of R is a superkey.</p>
+<p>Therefore, ETNF is an effective normalization form that reduces data redundancy while maintaining manageable complexity in database schemas. It provides a balance between the elimination of unnecessary redundancy and the avoidance of extensive decomposition associated with higher normal forms like 5NF.</p>
 <section id="example-1-non-normalized-data" class="level4">
 <h4 class="anchored" data-anchor-id="example-1-non-normalized-data">Example 1: Non-Normalized Data</h4>
 <p>Consider a V-Sekai database table storing information about parts, suppliers, and respective shipments. The table is not normalized and contains redundant data.</p>
@@ -392,7 +390,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-essential-typle-normalization-form.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:31:26 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:35:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -474,7 +472,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240215-avatar-customization-with-ai-facial-expressions.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:31:26 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:35:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -540,7 +538,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240127-urban-explorer-gdc-2024-sample.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:31:26 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:35:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -689,7 +687,7 @@ sudo launchctl list | grep com.gocd.agent</code></pre></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-mac-setup.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:31:26 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:35:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1020,7 +1018,7 @@ font-style: inherit;">-u</span> livebook.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-livebook-fedora-install.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:31:26 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:35:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1142,7 +1140,7 @@ font-style: inherit;"># Disable key expiry</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-install-tailscale.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:31:26 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:35:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1396,7 +1394,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-easy-diffusion-fedora-install.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:31:26 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:35:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1508,7 +1506,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240120-vr-armature-system.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:31:26 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:35:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1569,7 +1567,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240117-pivot-painting.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:31:26 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:35:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1652,7 +1650,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240111-fspy.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:31:26 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:35:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1736,7 +1734,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240111-fit-clothing-on-humans-without-tearing.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:31:26 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:35:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1868,7 +1866,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240110-magical-girls-college-novel.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:31:26 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:35:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1953,7 +1951,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240105-1-meter-128-quantize.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:31:26 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:35:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2025,7 +2023,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231230-spatiallabs-openvr.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:31:26 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:35:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2096,7 +2094,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231229-mRemoteNG.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:31:26 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:35:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2162,7 +2160,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231229-byobu.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:31:26 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:35:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2230,7 +2228,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231228-v-sekai-slogan.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:31:26 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:35:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2310,7 +2308,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231227-punchline-reports.html</guid>
-  <pubDate>Sun, 18 Feb 2024 03:31:26 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 03:35:51 GMT</pubDate>
 </item>
 </channel>
 </rss>
