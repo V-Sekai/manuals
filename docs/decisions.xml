@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.550</generator>
-<lastBuildDate>Sun, 18 Feb 2024 06:37:32 GMT</lastBuildDate>
+<lastBuildDate>Sun, 18 Feb 2024 18:13:34 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,88 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 18:13:34 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240218-blender-to-godot.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-blender-to-godot-api-conversion" class="level1">
+<h1>Proposed: Blender to Godot API Conversion</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>The current project involves transferring scene tree, mesh data, animation data, and sometimes textures from Blender to Godot. There are challenges due to extra data hiding in metadata and the shifting Blender API.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>The Blender API keeps changing, causing issues with the transfer of data to Godot. Additionally, dumping all properties from Blender can cause crashes.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>Instead of trying to adapt to the shifting Blender API, we propose to keep the Blender API the same and create a converter on the Godot side. This way, the Blender side only needs to focus on sending/linking data, while Godot handles the conversion and integration.</p>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li>Reduces dependency on Blender’s shifting API.</li>
+<li>Simplifies the process for engineers on both Blender and Godot sides.</li>
+<li>Makes it easier to update if things change.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li>Requires development of a robust converter on the Godot side.</li>
+<li>Any changes in Blender’s data structure might still require updates to the converter.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An alternative approach would be to continually adapt to the shifting Blender API, but this could lead to more complex maintenance and potential crashes.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>In cases where there is additional metadata or other non-standard data types, these would need to be handled separately by the converter.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>This proposal suggests a core change in our approach to handling Blender data, moving the conversion responsibility to the Godot side.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team and community stakeholders.</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai, Blender, Godot, API Conversion</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240218-blender-to-godot.html</guid>
+  <pubDate>Sun, 18 Feb 2024 18:13:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -181,7 +262,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-workload-benchmarking.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 18:13:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -293,7 +374,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-intended-effort-versioning.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 18:13:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -496,7 +577,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-essential-typle-normalization-form.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 18:13:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -589,7 +670,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-documentation-guidelines.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 18:13:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -676,7 +757,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-container-2-wasm.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 18:13:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -758,7 +839,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240215-avatar-customization-with-ai-facial-expressions.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 18:13:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -824,7 +905,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240127-urban-explorer-gdc-2024-sample.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 18:13:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -973,7 +1054,7 @@ sudo launchctl list | grep com.gocd.agent</code></pre></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-mac-setup.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 18:13:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1304,7 +1385,7 @@ font-style: inherit;">-u</span> livebook.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-livebook-fedora-install.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 18:13:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1426,7 +1507,7 @@ font-style: inherit;"># Disable key expiry</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-install-tailscale.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 18:13:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1680,7 +1761,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-easy-diffusion-fedora-install.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 18:13:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1792,7 +1873,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240120-vr-armature-system.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 18:13:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1853,7 +1934,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240117-pivot-painting.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 18:13:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1936,7 +2017,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240111-fspy.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 18:13:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2020,7 +2101,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240111-fit-clothing-on-humans-without-tearing.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 18:13:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2152,7 +2233,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240110-magical-girls-college-novel.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 18:13:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2237,7 +2318,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240105-1-meter-128-quantize.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 18:13:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2309,78 +2390,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20231230-spatiallabs-openvr.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20231229-mRemoteNG.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-choosing-a-terminal-emulator-for-windows" class="level1">
-<h1>Proposed: Choosing a terminal emulator for Windows</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li>Status: Proposed</li>
-<li>Deciders: V-Sekai</li>
-<li>Tags: V-Sekai</li>
-</ul>
-</section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>A need for efficient and effective remote access to multiple devices. As the world becomes more interconnected, the ability to manage and control various devices remotely has become crucial.</p>
-</section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>Software that can log into multiple devices, providing users with the ability to perform tasks on those devices without physical access.</p>
-</section>
-<section id="the-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>According to <a href="https://alternativeto.net/software/mobaxterm/?license=opensource">AlternativeTo</a>, mRemoteNG is a popular open-source alternative to MobaXterm. It’s a fork of mRemote, an open source, tabbed, multi-protocol, remote connections manager.</p>
-<p>Key points:</p>
-<ul>
-<li>mRemoteNG is the most popular Windows alternative to MobaXterm.</li>
-<li>mRemoteNG is the most popular Open Source &amp; free alternative to MobaXterm.</li>
-</ul>
-</section>
-<section id="the-upside" class="level2">
-<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<p>The upside of using mRemoteNG is its versatility and cost-effectiveness. Being an open-source tool, it allows for customization and improvements from the user community. It also supports multiple protocols for managing remote connections.</p>
-</section>
-<section id="the-downside" class="level2">
-<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<p>The downside could be the potential learning curve associated with using a new tool. Additionally, as it is open-source, support might not be as readily available or comprehensive as with commercial software.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>The road not taken would be sticking with traditional, possibly proprietary, terminal emulators. While these may offer robust features and dedicated support, they often come at a significant cost and lack the flexibility of open-source solutions.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>An infrequent use case might be using mRemoteNG for managing a small number of devices or connections. In such cases, the full potential of the tool may not be utilized.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>This strategy is not in core and done by us. It involves leveraging an existing open-source solution to address our needs.</p>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20231229-mRemoteNG.html</guid>
-  <pubDate>Sun, 18 Feb 2024 06:37:32 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 18:13:34 GMT</pubDate>
 </item>
 </channel>
 </rss>
