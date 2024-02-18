@@ -12,15 +12,15 @@ Currently, V-Sekai's database systems lack a standardized approach to normalizat
 
 We propose implementing ETNF, a normalization form that strikes an optimal balance between eliminating redundancy and maintaining manageable complexity in database schemas. Positioned between the fourth normal form (4NF) and the fifth normal form (5NF), ETNF provides a sophisticated yet practical approach to database normalization.
 
-### Comprehensive Description of ETNF
+### Description of ETNF
 
-ETNF, or Essential Tuple Normalization Form, addresses the shortcomings of existing normalization forms by focusing on the elimination of unnecessary redundancy without the extensive decomposition associated with 5NF. It ensures that every tuple (record) in the database is essential, meaning no tuple can be generated as a combination of other tuples in the database. This form is particularly effective in relational databases where constraints are governed by functional dependencies (FDs) and join dependencies (JDs).
+A relation schema R is in Essential Tuple Normal Form (ETNF) if every tuple in every instance of R is essential. This means that no tuple in the database can be generated from other tuples, thus eliminating redundancy.
 
-#### Mathematical Description of ETNF
+In mathematical terms, a relation R is in ETNF if and only if it is in Boyce-Codd Normal Form (BCNF) and some component of every explicit join dependency (JD) of R is a superkey. Specifically, for every nontrivial join dependency {R1, R2, ..., Rn} that holds over R, the intersection of each pair of Ri and Rj is a superkey for at least one of Ri or Rj.
 
-A relation R is in ETNF if for every nontrivial join dependency {R1, R2, ..., Rn} that holds over R, the intersection of each pair of Ri and Rj is a superkey for at least one of Ri or Rj.
+This concept is further illustrated by the theorem stating that if R is a relation schema specified only by functional dependencies (FDs) and join dependencies (JDs), then R is in ETNF if and only if it is in BCNF and some component of every explicit JD of R is a superkey.
 
-This mathematical description ensures that no tuple in the database can be generated from other tuples, thus eliminating redundancy.
+Therefore, ETNF is an effective normalization form that reduces data redundancy while maintaining manageable complexity in database schemas. It provides a balance between the elimination of unnecessary redundancy and the avoidance of extensive decomposition associated with higher normal forms like 5NF.
 
 #### Example 1: Non-Normalized Data
 
