@@ -8,10 +8,12 @@
 
 ### Added
 
-- **2024-02-01**: Spring bones now import with Unidot Importer! It's compatible with various popular formats and supports all features of the vrm spring bone script. Currently no advanced features like axis locks or inside colliders. While the vrm script supports curves, Unity curve sampling has not been implemented yet, so each bone in the chain imports with a constant value.
-- **2024-02-06**: An update to godot-vrm on git has been pushed to make it easier and more straightforward to edit spring bones in the inspector.
-- **2024-02-07**: A lot of bugfixes have been made to the VRM import/export, unidot import pipeline, and springbone support. It's becoming a lot easier to import a set of assets from unitypackage including booth outfits, attach them, and then export a VRM with functional spring bones!
-- **2024-02-15**: ArchVizPro volume 6 imported with ufbx. The importer is exceptionally good, and during testing it appears to perfectly replicate the result obtained in the autodesk SDK. This means Unidot in Godot 4.3 will be able to import directly to fbx out of the box without having to go through gltf!
+- **Unidot Spring Bones**: Spring bones now import with Unidot Importer! It's compatible with various popular formats and supports all features of the vrm spring bone script. Currently no advanced features like axis locks or inside colliders. While the vrm script supports curves, Unity curve sampling has not been implemented yet, so each bone in the chain imports with a constant value.
+- **godot-vrm**: An update to godot-vrm on git has been pushed to make it easier and more straightforward to edit spring bones in the inspector.
+- **Unidot**: A lot of bugfixes have been made to the VRM import/export, unidot import pipeline, and springbone support. It's becoming a lot easier to import a set of assets from unitypackage including booth outfits, attach them, and then export a VRM with functional spring bones!
+- **Godot FBX Importer**: ArchVizPro volume 6 imported with ufbx. The importer is exceptionally good, and during testing it appears to perfectly replicate the result obtained in the autodesk SDK. This means Unidot in Godot 4.3 will be able to import directly to fbx out of the box without having to go through gltf!
+- **godot-whisper**: Added support for real-time audio transcription within the Godot Engine, which includes enhanced compatibility for the Metal API on Apple devices and improved threading performance. (Commit: 2d85a0e update)
+- **godot-steamaudio**: Updated the Steam Audio integration by refactoring the build configuration and audio stream handling process. (Commit: 8f15de1 Refactor build configuration)
 
 ### Changed
 
