@@ -80,4 +80,16 @@ In these normalized tables, each tuple is essential and there is no redundancy. 
 2. **Schema Evaluation and Restructuring**: Evaluate existing database schemas against ETNF criteria, identifying areas where restructuring is required to eliminate redundancy and enhance efficiency.
 3. **Practical Application and Migration**: Implement the ETNF principles through schema redesign and careful data migration, ensuring that the transition does not impact data integrity or system availability.
 
-## Benefits for V-Sek
+## Benefits for V-Sekai
+
+- **Enhanced Data Integrity**: Implementation of ETNF will significantly improve the integrity and reliability of V-Sekai's data.
+- **Optimized Performance**: By reducing redundancy, ETNF will streamline data storage and retrieval processes, enhancing overall system performance.
+- **Strategic Data Management**: Adopting ETNF aligns with strategic initiatives for scalable, efficient, and consistent data management practices.
+
+## Further Reading
+
+1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine
+2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine
+3. [A normal form for preventing redundant tuples in relational databases](https://dl.acm.org/doi/10.1145/2274576.2274589)
+
+AI assistant Aria assisted with this article.
