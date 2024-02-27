@@ -8,6 +8,7 @@
 
 ### Added
 
+- **UFBX Importer**: Merged into Godot Engine master for version 4.3.
 - **Unidot Spring Bones**: Spring bones now import with Unidot Importer! It's compatible with various popular formats and supports all features of the vrm spring bone script. Currently no advanced features like axis locks or inside colliders. While the vrm script supports curves, Unity curve sampling has not been implemented yet, so each bone in the chain imports with a constant value.
 - **godot-vrm**: An update to godot-vrm on git has been pushed to make it easier and more straightforward to edit spring bones in the inspector.
 - **Unidot**: A lot of bugfixes have been made to the VRM import/export, unidot import pipeline, and springbone support. It's becoming a lot easier to import a set of assets from unitypackage including booth outfits, attach them, and then export a VRM with functional spring bones!
