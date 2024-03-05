@@ -1,8 +1,10 @@
-# Proposed Solution: V-Sekai Game Launcher
+# Proposed: V-Sekai Game Launcher
 
 ## The Context
 
 The game project's current distribution and dependency management is a challenge. The existing setup, which involves a Godot project with multiple add-ons, is complex and challenging to manage and distribute.
+
+## The Problem Statement
 
 1. The editor plugin is deeply intertwined with the gameplay elements, making it hard to develop.
 2. We aim to make the editor plugin lightweight and easy to distribute so that users can easily incorporate it into their regular projects to convert their existing Godot content into V-Sekai-compatible content.
