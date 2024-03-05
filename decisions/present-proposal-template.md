@@ -22,11 +22,11 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Decision Makers
 
-- V-Sekai development team and community stakeholders.
+- V-Sekai development team
 
 ## Tags
 
-- V-Sekai, Avatar Customization, AI, Facial Expressions
+- V-Sekai
 
 ## Further Reading
 
