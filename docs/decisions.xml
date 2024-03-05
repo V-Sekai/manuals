@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.550</generator>
-<lastBuildDate>Tue, 27 Feb 2024 05:32:17 GMT</lastBuildDate>
+<lastBuildDate>Tue, 05 Mar 2024 11:25:14 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -52,13 +52,13 @@
 <section id="decision-makers" class="level2">
 <h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
 <ul>
-<li>V-Sekai development team and community stakeholders.</li>
+<li>V-Sekai development team</li>
 </ul>
 </section>
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>V-Sekai, Avatar Customization, AI, Facial Expressions</li>
+<li>V-Sekai</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
@@ -75,7 +75,95 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Tue, 27 Feb 2024 05:32:17 GMT</pubDate>
+  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240305-v-sekai-launcher.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-v-sekai-game-launcher" class="level1">
+<h1>Proposed: V-Sekai Game Launcher</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>The game project’s current distribution and dependency management is a challenge. The existing setup, which involves a Godot project with multiple add-ons, is complex and challenging to manage and distribute.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<ol type="1">
+<li>The editor plugin is deeply intertwined with the gameplay elements, making it hard to develop.</li>
+<li>We aim to make the editor plugin lightweight and easy to distribute so that users can easily incorporate it into their regular projects to convert their existing Godot content into V-Sekai-compatible content.</li>
+<li>There is a code duplication problem between <code>vsk_game</code> and <code>vsk_editor/sdk</code>.</li>
+<li>We must consider what changes we can make to the plugin’s design to make it more user-friendly.</li>
+<li>The lack of a package manager and universal plugins or a dependency graph for plugins is a significant issue, potentially overlapping with a core problem in Godot.</li>
+</ol>
+<p>The priority question is how to transform this into an SDK with the cleanest possible distribution method.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>To address these issues, we propose the creation of a V-Sekai Game Launcher. This launcher will be built using Godot and will replace the regular Godot project manager. It will handle all package-related tasks, ensuring smooth distribution and dependency management.</p>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ol type="1">
+<li>Simplified distribution: The launcher will handle the distribution of the game, making it easier for users to access and install the game.</li>
+<li>Improved dependency management: The launcher will also manage the game’s dependencies, resolving the current issues faced due to the lack of a package manager.</li>
+<li>Enhanced user experience: With the launcher handling package and project management, users can focus on creating content or playing the game.</li>
+</ol>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ol type="1">
+<li>Development time: Building a new launcher will require additional development time and resources.</li>
+<li>User adoption: Users may need time to adapt to the new launcher and its functionalities.</li>
+</ol>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An alternative solution considered was to use the Godot Asset Store for distribution. However, it does not solve the dependency management problem and is not ready yet for such a task.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>In cases where users want to manage their packages manually or prefer using the regular Godot project manager, they may find the launcher unnecessary or intrusive.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>The V-Sekai development team will develop the V-Sekai Game Launcher.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team and community stakeholders.</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai, Avatar Customization, AI, Facial Expressions, Game Launcher</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>AI assistant Aria assisted with this proposal.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240305-v-sekai-launcher.html</guid>
+  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -486,7 +574,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-vrm-substance-editor.html</guid>
-  <pubDate>Tue, 27 Feb 2024 05:32:17 GMT</pubDate>
+  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -562,7 +650,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-vrm-acronym-correction.html</guid>
-  <pubDate>Tue, 27 Feb 2024 05:32:17 GMT</pubDate>
+  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -643,7 +731,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-blender-to-godot.html</guid>
-  <pubDate>Tue, 27 Feb 2024 05:32:17 GMT</pubDate>
+  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -749,7 +837,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-workload-benchmarking.html</guid>
-  <pubDate>Tue, 27 Feb 2024 05:32:17 GMT</pubDate>
+  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -861,7 +949,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-intended-effort-versioning.html</guid>
-  <pubDate>Tue, 27 Feb 2024 05:32:17 GMT</pubDate>
+  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1078,7 +1166,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-essential-typle-normalization-form.html</guid>
-  <pubDate>Tue, 27 Feb 2024 05:32:17 GMT</pubDate>
+  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1171,7 +1259,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-documentation-guidelines.html</guid>
-  <pubDate>Tue, 27 Feb 2024 05:32:17 GMT</pubDate>
+  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1258,7 +1346,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-container-2-wasm.html</guid>
-  <pubDate>Tue, 27 Feb 2024 05:32:17 GMT</pubDate>
+  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1340,7 +1428,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240215-avatar-customization-with-ai-facial-expressions.html</guid>
-  <pubDate>Tue, 27 Feb 2024 05:32:17 GMT</pubDate>
+  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1406,7 +1494,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240127-urban-explorer-gdc-2024-sample.html</guid>
-  <pubDate>Tue, 27 Feb 2024 05:32:17 GMT</pubDate>
+  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1555,7 +1643,7 @@ sudo launchctl list | grep com.gocd.agent</code></pre></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-mac-setup.html</guid>
-  <pubDate>Tue, 27 Feb 2024 05:32:17 GMT</pubDate>
+  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1886,7 +1974,7 @@ font-style: inherit;">-u</span> livebook.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-livebook-fedora-install.html</guid>
-  <pubDate>Tue, 27 Feb 2024 05:32:17 GMT</pubDate>
+  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2008,7 +2096,7 @@ font-style: inherit;"># Disable key expiry</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-install-tailscale.html</guid>
-  <pubDate>Tue, 27 Feb 2024 05:32:17 GMT</pubDate>
+  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2262,7 +2350,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-easy-diffusion-fedora-install.html</guid>
-  <pubDate>Tue, 27 Feb 2024 05:32:17 GMT</pubDate>
+  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2374,7 +2462,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240120-vr-armature-system.html</guid>
-  <pubDate>Tue, 27 Feb 2024 05:32:17 GMT</pubDate>
+  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2435,7 +2523,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240117-pivot-painting.html</guid>
-  <pubDate>Tue, 27 Feb 2024 05:32:17 GMT</pubDate>
+  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2518,7 +2606,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240111-fspy.html</guid>
-  <pubDate>Tue, 27 Feb 2024 05:32:17 GMT</pubDate>
+  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2602,139 +2690,7 @@ _This article was assisted by Aria, an AI assistant._</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240111-fit-clothing-on-humans-without-tearing.html</guid>
-  <pubDate>Tue, 27 Feb 2024 05:32:17 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240110-magical-girls-college-novel.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposal-magical-girls-college-manager-simulator" class="level1">
-<h1>Proposal: Magical Girls College Manager Simulator</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li><strong>Status</strong>: Proposed</li>
-<li><strong>Deciders</strong>: V-Sekai, Cthulhoo, fire</li>
-<li><strong>Tags</strong>: <code>V-Sekai</code></li>
-</ul>
-</section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>A new game concept where players manage a college for magical girls has been proposed. Inspired by “Shadows of Doubt,” the game will focus on time management, relationship building, and academic success in a magical setting.</p>
-<section id="inspiration-source" class="level3">
-<h3 class="anchored" data-anchor-id="inspiration-source">Inspiration Source</h3>
-<p><a href="https://store.steampowered.com/app/986130/Shadows_of_Doubt/">Shadows of Doubt on Steam</a></p>
-<p>A sandbox stealth game set in an alternate 1980s universe, blending detective work with gathering intelligence and solving cases.</p>
-</section>
-</section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>Develop engaging planner scenarios for the player to navigate over the course of a week.</p>
-</section>
-<section id="the-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>Utilize VRM 3D chibis for character representation; initially limiting characters to five core members:</p>
-<ol type="1">
-<li>The Protagonist</li>
-<li>Four love interests</li>
-</ol>
-<section id="character-interaction-dynamics" class="level3">
-<h3 class="anchored" data-anchor-id="character-interaction-dynamics">Character Interaction Dynamics</h3>
-<section id="study-points-acquisition" class="level4">
-<h4 class="anchored" data-anchor-id="study-points-acquisition">Study Points Acquisition</h4>
-<p>Students can earn study points by:</p>
-<ul>
-<li>Attending lectures</li>
-<li>Completing homework</li>
-<li>Studying in the library</li>
-<li>Engaging in practical exercises</li>
-</ul>
-</section>
-<section id="socialization" class="level4">
-<h4 class="anchored" data-anchor-id="socialization">Socialization</h4>
-<p>Characters can build relationships through activities:</p>
-<ul>
-<li>Eating at the mess hall <em>(easy, small benefit)</em></li>
-<li>Grabbing coffee together <em>(small benefit)</em></li>
-<li>Watching movies at the cinema <em>(moderate difficulty and benefit)</em></li>
-<li>Hanging out at the pool <em>(moderately challenging, moderate benefit)</em></li>
-<li>Picnicking in the park <em>(challenging, moderate benefit)</em></li>
-<li>Beach trips <em>(most challenging, high benefit)</em></li>
-</ul>
-</section>
-<section id="rest-and-recreational-activities" class="level4">
-<h4 class="anchored" data-anchor-id="rest-and-recreational-activities">Rest and Recreational Activities</h4>
-<p>To prevent burnout, students can:</p>
-<ul>
-<li>Read books</li>
-<li>Partake in hobbies</li>
-<li>Participate in club activities</li>
-<li>Engage in chaste handholding</li>
-</ul>
-<p>Special considerations are given to individual preferences affecting decision outcomes, such as preferred or disliked activities impacting the willingness to participate.</p>
-</section>
-</section>
-</section>
-<section id="gameplay-mechanics" class="level2">
-<h2 class="anchored" data-anchor-id="gameplay-mechanics">Gameplay Mechanics</h2>
-<ul>
-<li><strong>Burnout Management</strong>: A single meter may represent stamina and morale, balancing academic and social demands.</li>
-<li><strong>Planning Interface</strong>: Players plan weekly activities that unfold in real-time, adapting to emergent scenarios and random events.</li>
-<li><strong>Duration</strong>: Each playthrough is one week long, split into weekdays and weekends, offering a chance to assess and strategize for the coming weeks.</li>
-</ul>
-</section>
-<section id="the-upside" class="level2">
-<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<p>This simulator offers a unique blend of time management, relationship simulation, and supernatural elements that appeal to various gaming audiences.</p>
-</section>
-<section id="the-downside" class="level2">
-<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<p>Complex AI planning and character interaction mechanics could pose development challenges.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>The decision to exclude a Pokemon-style battle system indicates a conscious move away from combat-oriented gameplay in favor of a simulation that emphasizes time management and social interactions within an academic setting. This choice differentiates the game from typical fantasy or RPG genres, focusing instead on daily life and relationship dynamics amongst magical girls.</p>
-<p>Alternative paths that were not taken might include:</p>
-<ul>
-<li>Complex combat systems with magical abilities.</li>
-<li>An overarching narrative driven by external conflicts or villains.</li>
-<li>Expansion of the school’s supernatural elements beyond academic settings into broader world-saving quests.</li>
-</ul>
-<p>By not pursuing these elements, the game remains intimate, allowing players to deeply explore the nuances of daily decisions and their impacts on personal growth and friendships.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>Though primary focus lies on managing relationships and academics within the college, rare use cases might involve:</p>
-<ul>
-<li>Handling exceptional magical crises that disrupt the normal flow of school life, requiring strategic changes to weekly planning.</li>
-<li>Special events such as magical tournaments or festivals, where characters must balance celebration with responsibilities.</li>
-<li>Unique narrative branches that only occur under specific conditions, adding replayability and depth to the character arcs.</li>
-</ul>
-<p>Addressing infrequent use cases can add layers of complexity and engagement for players, offering surprises and challenges that disrupt the routine management aspects of the game.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>The V-Sekai team will decide core features and their implementation internally.</p>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai GitHub Account</a></li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai Game Repository</a></li>
-</ol>
-<p><em>AI assistant Aria contributed to this proposal.</em></p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240110-magical-girls-college-novel.html</guid>
-  <pubDate>Tue, 27 Feb 2024 05:32:17 GMT</pubDate>
+  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
 </item>
 </channel>
 </rss>
