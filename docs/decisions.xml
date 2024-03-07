@@ -9,8 +9,8 @@
 <link>https://v-sekai.github.io/manuals/decisions.html</link>
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.4.550</generator>
-<lastBuildDate>Tue, 05 Mar 2024 11:25:14 GMT</lastBuildDate>
+<generator>quarto-1.4.551</generator>
+<lastBuildDate>Thu, 07 Mar 2024 18:12:50 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,92 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
+  <pubDate>Thu, 07 Mar 2024 18:12:50 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240707-rabbitmq-ra.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposal-implement-ra-in-v-sekai" class="level2">
+<h2 class="anchored" data-anchor-id="proposal-implement-ra-in-v-sekai">Proposal: Implement Ra in V-Sekai</h2>
+<section id="context" class="level3">
+<h3 class="anchored" data-anchor-id="context">Context</h3>
+<p>V-Sekai, a VR social network, needs reliable state machines for data persistence. Current system may struggle with data consistency and failure recovery.</p>
+</section>
+<section id="problem" class="level3">
+<h3 class="anchored" data-anchor-id="problem">Problem</h3>
+<p>User experience can be disrupted due to potential data inconsistencies and loss, leading to issues like lost interactions and inconsistent virtual states.</p>
+</section>
+<section id="solution" class="level3">
+<h3 class="anchored" data-anchor-id="solution">Solution</h3>
+<p>Implement Ra, a Raft implementation by Team RabbitMQ, in any Erlang or Elixir project. Ra enables persistent, fault-tolerant, replicated state machines.</p>
+</section>
+<section id="benefits" class="level3">
+<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
+<ul>
+<li><strong>Fault Tolerance</strong>: Ra ensures data consistency via leader election and log replication.</li>
+<li><strong>Efficiency</strong>: Supports log compaction and snapshot installation.</li>
+<li><strong>Scalability</strong>: Suitable for large-scale applications like V-Sekai.</li>
+</ul>
+</section>
+<section id="downsides" class="level3">
+<h3 class="anchored" data-anchor-id="downsides">Downsides</h3>
+<ul>
+<li><strong>Learning Curve</strong>: Developers need to learn Ra and the Raft consensus algorithm.</li>
+<li><strong>Dependency</strong>: Ra could increase project complexity.</li>
+</ul>
+</section>
+<section id="alternatives" class="level3">
+<h3 class="anchored" data-anchor-id="alternatives">Alternatives</h3>
+<p>Other solutions like CRDTs were considered but have major shortcomings.</p>
+</section>
+<section id="infrequent-use-case" class="level3">
+<h3 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h3>
+<p>In small distributed systems with rare failures, Ra’s benefits may not be fully realized.</p>
+</section>
+<section id="implementation" class="level3">
+<h3 class="anchored" data-anchor-id="implementation">Implementation</h3>
+<p>The V-Sekai team will implement Ra.</p>
+</section>
+<section id="status" class="level3">
+<h3 class="anchored" data-anchor-id="status">Status</h3>
+<p>Proposed</p>
+</section>
+<section id="decision-makers" class="level3">
+<h3 class="anchored" data-anchor-id="decision-makers">Decision Makers</h3>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level3">
+<h3 class="anchored" data-anchor-id="tags">Tags</h3>
+<ul>
+<li>V-Sekai</li>
+<li>Ra</li>
+<li>Erlang</li>
+<li>Elixir</li>
+<li>Distributed Systems</li>
+</ul>
+</section>
+<section id="further-reading" class="level3">
+<h3 class="anchored" data-anchor-id="further-reading">Further Reading</h3>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a></li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a></li>
+</ol>
+<p>Assisted by Aria, an AI assistant.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240707-rabbitmq-ra.html</guid>
+  <pubDate>Thu, 07 Mar 2024 18:12:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -163,7 +248,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240305-v-sekai-launcher.html</guid>
-  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
+  <pubDate>Thu, 07 Mar 2024 18:12:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -574,7 +659,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-vrm-substance-editor.html</guid>
-  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
+  <pubDate>Thu, 07 Mar 2024 18:12:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -650,7 +735,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-vrm-acronym-correction.html</guid>
-  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
+  <pubDate>Thu, 07 Mar 2024 18:12:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -731,7 +816,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-blender-to-godot.html</guid>
-  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
+  <pubDate>Thu, 07 Mar 2024 18:12:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -837,7 +922,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-workload-benchmarking.html</guid>
-  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
+  <pubDate>Thu, 07 Mar 2024 18:12:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -949,7 +1034,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-intended-effort-versioning.html</guid>
-  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
+  <pubDate>Thu, 07 Mar 2024 18:12:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1166,7 +1251,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-essential-typle-normalization-form.html</guid>
-  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
+  <pubDate>Thu, 07 Mar 2024 18:12:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1259,7 +1344,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-documentation-guidelines.html</guid>
-  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
+  <pubDate>Thu, 07 Mar 2024 18:12:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1346,7 +1431,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-container-2-wasm.html</guid>
-  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
+  <pubDate>Thu, 07 Mar 2024 18:12:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1428,7 +1513,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240215-avatar-customization-with-ai-facial-expressions.html</guid>
-  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
+  <pubDate>Thu, 07 Mar 2024 18:12:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1494,7 +1579,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240127-urban-explorer-gdc-2024-sample.html</guid>
-  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
+  <pubDate>Thu, 07 Mar 2024 18:12:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1643,7 +1728,7 @@ sudo launchctl list | grep com.gocd.agent</code></pre></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-mac-setup.html</guid>
-  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
+  <pubDate>Thu, 07 Mar 2024 18:12:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1974,7 +2059,7 @@ font-style: inherit;">-u</span> livebook.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-livebook-fedora-install.html</guid>
-  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
+  <pubDate>Thu, 07 Mar 2024 18:12:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2096,7 +2181,7 @@ font-style: inherit;"># Disable key expiry</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-install-tailscale.html</guid>
-  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
+  <pubDate>Thu, 07 Mar 2024 18:12:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2350,7 +2435,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-easy-diffusion-fedora-install.html</guid>
-  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
+  <pubDate>Thu, 07 Mar 2024 18:12:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2462,7 +2547,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240120-vr-armature-system.html</guid>
-  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
+  <pubDate>Thu, 07 Mar 2024 18:12:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2523,7 +2608,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240117-pivot-painting.html</guid>
-  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
+  <pubDate>Thu, 07 Mar 2024 18:12:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2606,91 +2691,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240111-fspy.html</guid>
-  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240111-fit-clothing-on-humans-without-tearing.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="draft-fit-clothing-on-humans-without-tearing" class="level1">
-<h1>Draft: Fit Clothing on Humans Without Tearing</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li><strong>Status</strong>: Draft</li>
-<li><strong>Deciders</strong>: V-Sekai, Fire, Joe Cat</li>
-<li><strong>Tags</strong>: V-Sekai</li>
-</ul>
-</section>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>The challenge is to accurately fit clothing on a 3D human model without causing any tearing in the fabric. The proposed solution involves utilizing machine learning technology that ensures constraints are maintained for vertex faces during the fitting process.</p>
-</section>
-</section>
-<section id="strategy" class="level1">
-<h1>Strategy</h1>
-</section>
-<section id="direct-strategy" class="level1">
-<h1>Direct Strategy</h1>
-<p>Implement the cloth simulation’s pinning functionality to attach the base mesh hull to the clothing hulls. This can be achieved by developing an algorithm that selects optimal vertices based on certain criteria such as distance from the texel or texture similarity.</p>
-<p>Leverage machine learning technology to maintain constraints for vertex faces and effectively fit clothing on a 3D model.</p>
-<p><strong>Two Hulls Provision</strong>: Provide one hull on the base mesh and another on the clothing. The objective here is to first generate the material/clothing and then wrap it onto the character.</p>
-<p>The constraint solver used in this process is a cloth simulator that can solve backwards and forwards differentially. This is unique as most physics engines can’t solve backwards for a large number of vertices.</p>
-<p>The stitches can be used to piecewise divide the meshse.</p>
-<pre class="gdscript"><code>class_name HullMesh
-var base_mesh: ImporterMesh
-var base_mesh_hull: ImporterMesh
-var clothing_mesh: ImporterMesh
-var clothing_mesh_hull: ImporterMesh
-
-func _init(base_mesh: ImporterMesh, base_mesh_hull: ImporterMesh, clothing_mesh: ImporterMesh, clothing_mesh_hull: ImporterMesh):
-    self.base_mesh = base_mesh
-    self.base_mesh_hull = base_mesh_hull
-    self.clothing_mesh = clothing_mesh
-    self.clothing_mesh_hull = clothing_mesh_hull
-
-func mesh_wrap(source: HullMesh, target: HullMesh) -&gt; ImporterMesh:
-    '''
-    Wraps two clothing mesh hulls around two base mesh hulls.
-
-    Parameters:
-    - source: The source HullMesh instance.
-    - target: The target HullMesh instance.
-
-    Returns:
-    A new Mesh instance representing the base mesh hulls with the clothing mesh hulls wrapped around them.
-    '''
-```
-
-## Alternatives
-
-To be determined.
-
-## Rare Use Cases
-
-To be determined.
-
-## Core Functionality?
-
-To be determined.
-
-## Further Reading
-
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine
-
-_This article was assisted by Aria, an AI assistant._</code></pre>
-
-
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240111-fit-clothing-on-humans-without-tearing.html</guid>
-  <pubDate>Tue, 05 Mar 2024 11:25:14 GMT</pubDate>
+  <pubDate>Thu, 07 Mar 2024 18:12:50 GMT</pubDate>
 </item>
 </channel>
 </rss>
