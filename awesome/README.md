@@ -12,7 +12,6 @@ A curated list of all the projects V-Sekai has been involved with in the field o
 - [V-Sekai Uro Online Services](https://github.com/V-Sekai/uro/issues/new/choose)
 - [Shader Motion Website](https://github.com/V-Sekai/shader-motion-navy-lead-ostrich)
 - [VSK Model Explorer](https://github.com/V-Sekai/VSK_model_explorer)
-- [Open RTS](https://github.com/lampe-games/godot-open-rts)
 
 ## Plugins and Scripts
 
