@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.551</generator>
-<lastBuildDate>Thu, 14 Mar 2024 18:24:38 GMT</lastBuildDate>
+<lastBuildDate>Thu, 14 Mar 2024 18:25:06 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Thu, 14 Mar 2024 18:24:38 GMT</pubDate>
+  <pubDate>Thu, 14 Mar 2024 18:25:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -156,7 +156,92 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240714-live-collab.html</guid>
-  <pubDate>Thu, 14 Mar 2024 18:24:38 GMT</pubDate>
+  <pubDate>Thu, 14 Mar 2024 18:25:06 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240707-rabbitmq-ra.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposal-implement-ra-in-v-sekai" class="level2">
+<h2 class="anchored" data-anchor-id="proposal-implement-ra-in-v-sekai">Proposal: Implement Ra in V-Sekai</h2>
+<section id="context" class="level3">
+<h3 class="anchored" data-anchor-id="context">Context</h3>
+<p>V-Sekai, a VR social network, needs reliable state machines for data persistence. Current system may struggle with data consistency and failure recovery.</p>
+</section>
+<section id="problem" class="level3">
+<h3 class="anchored" data-anchor-id="problem">Problem</h3>
+<p>User experience can be disrupted due to potential data inconsistencies and loss, leading to issues like lost interactions and inconsistent virtual states.</p>
+</section>
+<section id="solution" class="level3">
+<h3 class="anchored" data-anchor-id="solution">Solution</h3>
+<p>Implement Ra, a Raft implementation by Team RabbitMQ, in any Erlang or Elixir project. Ra enables persistent, fault-tolerant, replicated state machines.</p>
+</section>
+<section id="benefits" class="level3">
+<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
+<ul>
+<li><strong>Fault Tolerance</strong>: Ra ensures data consistency via leader election and log replication.</li>
+<li><strong>Efficiency</strong>: Supports log compaction and snapshot installation.</li>
+<li><strong>Scalability</strong>: Suitable for large-scale applications like V-Sekai.</li>
+</ul>
+</section>
+<section id="downsides" class="level3">
+<h3 class="anchored" data-anchor-id="downsides">Downsides</h3>
+<ul>
+<li><strong>Learning Curve</strong>: Developers need to learn Ra and the Raft consensus algorithm.</li>
+<li><strong>Dependency</strong>: Ra could increase project complexity.</li>
+</ul>
+</section>
+<section id="alternatives" class="level3">
+<h3 class="anchored" data-anchor-id="alternatives">Alternatives</h3>
+<p>Other solutions like CRDTs were considered but have major shortcomings.</p>
+</section>
+<section id="infrequent-use-case" class="level3">
+<h3 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h3>
+<p>In small distributed systems with rare failures, Ra’s benefits may not be fully realized.</p>
+</section>
+<section id="implementation" class="level3">
+<h3 class="anchored" data-anchor-id="implementation">Implementation</h3>
+<p>The V-Sekai team will implement Ra.</p>
+</section>
+<section id="status" class="level3">
+<h3 class="anchored" data-anchor-id="status">Status</h3>
+<p>Proposed</p>
+</section>
+<section id="decision-makers" class="level3">
+<h3 class="anchored" data-anchor-id="decision-makers">Decision Makers</h3>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level3">
+<h3 class="anchored" data-anchor-id="tags">Tags</h3>
+<ul>
+<li>V-Sekai</li>
+<li>Ra</li>
+<li>Erlang</li>
+<li>Elixir</li>
+<li>Distributed Systems</li>
+</ul>
+</section>
+<section id="further-reading" class="level3">
+<h3 class="anchored" data-anchor-id="further-reading">Further Reading</h3>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a></li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a></li>
+</ol>
+<p>Assisted by Aria, an AI assistant.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240707-rabbitmq-ra.html</guid>
+  <pubDate>Thu, 14 Mar 2024 18:25:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -244,7 +329,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240305-v-sekai-launcher.html</guid>
-  <pubDate>Thu, 14 Mar 2024 18:24:38 GMT</pubDate>
+  <pubDate>Thu, 14 Mar 2024 18:25:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -655,7 +740,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-vrm-substance-editor.html</guid>
-  <pubDate>Thu, 14 Mar 2024 18:24:38 GMT</pubDate>
+  <pubDate>Thu, 14 Mar 2024 18:25:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -731,7 +816,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-vrm-acronym-correction.html</guid>
-  <pubDate>Thu, 14 Mar 2024 18:24:38 GMT</pubDate>
+  <pubDate>Thu, 14 Mar 2024 18:25:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -812,7 +897,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-blender-to-godot.html</guid>
-  <pubDate>Thu, 14 Mar 2024 18:24:38 GMT</pubDate>
+  <pubDate>Thu, 14 Mar 2024 18:25:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -918,7 +1003,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-workload-benchmarking.html</guid>
-  <pubDate>Thu, 14 Mar 2024 18:24:38 GMT</pubDate>
+  <pubDate>Thu, 14 Mar 2024 18:25:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1030,7 +1115,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-intended-effort-versioning.html</guid>
-  <pubDate>Thu, 14 Mar 2024 18:24:38 GMT</pubDate>
+  <pubDate>Thu, 14 Mar 2024 18:25:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1247,7 +1332,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-essential-typle-normalization-form.html</guid>
-  <pubDate>Thu, 14 Mar 2024 18:24:38 GMT</pubDate>
+  <pubDate>Thu, 14 Mar 2024 18:25:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1340,7 +1425,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-documentation-guidelines.html</guid>
-  <pubDate>Thu, 14 Mar 2024 18:24:38 GMT</pubDate>
+  <pubDate>Thu, 14 Mar 2024 18:25:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1427,7 +1512,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-container-2-wasm.html</guid>
-  <pubDate>Thu, 14 Mar 2024 18:24:38 GMT</pubDate>
+  <pubDate>Thu, 14 Mar 2024 18:25:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1509,7 +1594,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240215-avatar-customization-with-ai-facial-expressions.html</guid>
-  <pubDate>Thu, 14 Mar 2024 18:24:38 GMT</pubDate>
+  <pubDate>Thu, 14 Mar 2024 18:25:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1575,7 +1660,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240127-urban-explorer-gdc-2024-sample.html</guid>
-  <pubDate>Thu, 14 Mar 2024 18:24:38 GMT</pubDate>
+  <pubDate>Thu, 14 Mar 2024 18:25:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1724,7 +1809,7 @@ sudo launchctl list | grep com.gocd.agent</code></pre></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-mac-setup.html</guid>
-  <pubDate>Thu, 14 Mar 2024 18:24:38 GMT</pubDate>
+  <pubDate>Thu, 14 Mar 2024 18:25:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2055,7 +2140,7 @@ font-style: inherit;">-u</span> livebook.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-livebook-fedora-install.html</guid>
-  <pubDate>Thu, 14 Mar 2024 18:24:38 GMT</pubDate>
+  <pubDate>Thu, 14 Mar 2024 18:25:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2177,7 +2262,7 @@ font-style: inherit;"># Disable key expiry</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-install-tailscale.html</guid>
-  <pubDate>Thu, 14 Mar 2024 18:24:38 GMT</pubDate>
+  <pubDate>Thu, 14 Mar 2024 18:25:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2431,7 +2516,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-easy-diffusion-fedora-install.html</guid>
-  <pubDate>Thu, 14 Mar 2024 18:24:38 GMT</pubDate>
+  <pubDate>Thu, 14 Mar 2024 18:25:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2543,7 +2628,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240120-vr-armature-system.html</guid>
-  <pubDate>Thu, 14 Mar 2024 18:24:38 GMT</pubDate>
+  <pubDate>Thu, 14 Mar 2024 18:25:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2604,90 +2689,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240117-pivot-painting.html</guid>
-  <pubDate>Thu, 14 Mar 2024 18:24:38 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240111-fspy.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-camera-matching-with-fspy." class="level1">
-<h1>Proposed: Camera matching with fSpy.</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li><strong>Status:</strong> Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></li>
-<li><strong>Deciders:</strong> V-Sekai</li>
-<li><strong>Tags:</strong> V-Sekai</li>
-</ul>
-</section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>V-Sekai’s mission to be gateways to 3D environments needs camera matching, which is currently a bottleneck in our workflow.</p>
-</section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>Our artists and developers need to align concept screenshots within the 3D spaces due to inconsistent camera parameter estimation.</p>
-</section>
-<section id="the-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>We will adopt the fSpy tool that uses vanishing points to estimate camera parameters from images, facilitating a more precise camera match-moving process.</p>
-<section id="guide" class="level3">
-<h3 class="anchored" data-anchor-id="guide">Guide</h3>
-<ol type="1">
-<li>Find parallel lines and use the longest lines you can.</li>
-<li>You can move the axes to recenter.</li>
-</ol>
-</section>
-</section>
-<section id="the-upside" class="level2">
-<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<p>The integration of fSpy into our workflow promises:</p>
-<ol type="1">
-<li>A considerable reduction in time for setting up camera parameters.</li>
-<li>Enhanced accuracy and realism in matching 3D models with background images.</li>
-<li>Streamlined asset creation processes, thereby supporting quick iterations.</li>
-</ol>
-</section>
-<section id="the-downside" class="level2">
-<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<p>Some challenges associated with this strategy include:</p>
-<ul>
-<li>An initial learning phase required for effective use of the fSpy tool.</li>
-<li>Potential limitations in images that lack well-defined perspective lines or geometric structure.</li>
-<li>Reliance on an external tool which may necessitate ongoing maintenance efforts.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Rather than using fSpy, we could continue manual estimation techniques or even develop a custom solution tailored to our specific requirements—both are valid but likely less efficient approaches.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>For cases where fSpy struggles due to images with no clear vanishing points, alternative methods of camera estimation must be devised, potentially falling back on manual techniques or other specialized tools.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>fSpy integration should become central to our asset creation pipeline. We’ll need to invest in training and potentially develop complementary in-house tools to bridge the gap between fSpy outputs and our existing systems.</p>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai GitHub Repository</a> - Explore how V-Sekai leverages social VR functions within Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai Game Project</a> - Delve into the collaborative effort of creating social VR/VRSNS/metaverse elements, all open-source and accessible.</li>
-</ol>
-<p><em>AI assistant Aria assisted with this proposal.</em></p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240111-fspy.html</guid>
-  <pubDate>Thu, 14 Mar 2024 18:24:38 GMT</pubDate>
+  <pubDate>Thu, 14 Mar 2024 18:25:06 GMT</pubDate>
 </item>
 </channel>
 </rss>
