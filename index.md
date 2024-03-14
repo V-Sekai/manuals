@@ -12,4 +12,4 @@
 
 | Note 🌍                                                                                                                            |
 | :--------------------------------------------------------------------------------------------------------------------------------- |
-| The name "V-Sekai" is short, memorable, and in Japanese, "Sekai" means "World", so the name can be interpreted as "Virtual World". |
+| The name "V-Sekai" (pronounced vee-say-kai) is short, memorable, and in Japanese, "Sekai" means "World". |
