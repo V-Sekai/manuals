@@ -121,15 +121,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#proposal-implement-ra-in-v-sekai" id="toc-proposal-implement-ra-in-v-sekai" class="nav-link active" data-scroll-target="#proposal-implement-ra-in-v-sekai">Proposal: Implement Ra in V-Sekai</a>
+  <li><a href="#proposed-real-time-motion-capture-and-animation-synchronization" id="toc-proposed-real-time-motion-capture-and-animation-synchronization" class="nav-link active" data-scroll-target="#proposed-real-time-motion-capture-and-animation-synchronization">Proposed: Real-Time Motion Capture and Animation Synchronization</a>
   <ul class="collapse">
   <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
   <li><a href="#problem" id="toc-problem" class="nav-link" data-scroll-target="#problem">Problem</a></li>
   <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
   <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
   <li><a href="#downsides" id="toc-downsides" class="nav-link" data-scroll-target="#downsides">Downsides</a></li>
-  <li><a href="#alternatives" id="toc-alternatives" class="nav-link" data-scroll-target="#alternatives">Alternatives</a></li>
-  <li><a href="#infrequent-use-case" id="toc-infrequent-use-case" class="nav-link" data-scroll-target="#infrequent-use-case">Infrequent Use Case</a></li>
+  <li><a href="#mvp" id="toc-mvp" class="nav-link" data-scroll-target="#mvp">MVP</a></li>
   <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation">Implementation</a></li>
   <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
   <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
@@ -137,7 +136,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20240707-rabbitmq-ra.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20240714-live-collab-rabbitmq-ra.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -145,46 +144,42 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="proposal-implement-ra-in-v-sekai" class="level2">
-<h2 class="anchored" data-anchor-id="proposal-implement-ra-in-v-sekai">Proposal: Implement Ra in V-Sekai</h2>
+<section id="proposed-real-time-motion-capture-and-animation-synchronization" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-real-time-motion-capture-and-animation-synchronization">Proposed: Real-Time Motion Capture and Animation Synchronization</h2>
 <section id="context" class="level3">
 <h3 class="anchored" data-anchor-id="context">Context</h3>
-<p>V-Sekai, a VR social network, needs reliable state machines for data persistence. Current system may struggle with data consistency and failure recovery.</p>
+<p>In the context of V-Sekai, a VR social network, we are looking to enhance the user experience by introducing real-time motion capture and animation synchronization features. This would allow users to interact with each other in real-time within the Godot engine.</p>
 </section>
 <section id="problem" class="level3">
 <h3 class="anchored" data-anchor-id="problem">Problem</h3>
-<p>User experience can be disrupted due to potential data inconsistencies and loss, leading to issues like lost interactions and inconsistent virtual states.</p>
+<p>Currently, there’s no mechanism for real-time synchronization of skeleton motion capture (mocap), blend shape animations, and skeleton animations between different users. This limits the interactive capabilities of the platform and hinders the creation of a truly immersive virtual environment.</p>
 </section>
 <section id="solution" class="level3">
 <h3 class="anchored" data-anchor-id="solution">Solution</h3>
-<p>Implement Ra, a Raft implementation by Team RabbitMQ, in any Erlang or Elixir project. Ra enables persistent, fault-tolerant, replicated state machines.</p>
+<p>We propose to extend the live collaboration feature built on top of Ra, a Raft implementation by Team RabbitMQ, to include real-time synchronization of mocap and animations. This will enable users to see each other’s movements and expressions in real-time, further enhancing the interactivity of the platform.</p>
 </section>
 <section id="benefits" class="level3">
 <h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
 <ul>
-<li><strong>Fault Tolerance</strong>: Ra ensures data consistency via leader election and log replication.</li>
-<li><strong>Efficiency</strong>: Supports log compaction and snapshot installation.</li>
-<li><strong>Scalability</strong>: Suitable for large-scale applications like V-Sekai.</li>
+<li><strong>Real-Time Interaction</strong>: Users can see each other’s movements and expressions in real-time, creating a more immersive and interactive experience.</li>
+<li><strong>Animation Synchronization</strong>: Changes made to the animations by one user are instantly visible to others.</li>
+<li><strong>Enhanced User Experience</strong>: The ability to interact with each other in a more realistic manner greatly enhances the overall user experience.</li>
 </ul>
 </section>
 <section id="downsides" class="level3">
 <h3 class="anchored" data-anchor-id="downsides">Downsides</h3>
 <ul>
-<li><strong>Learning Curve</strong>: Developers need to learn Ra and the Raft consensus algorithm.</li>
-<li><strong>Dependency</strong>: Ra could increase project complexity.</li>
+<li><strong>Increased Complexity</strong>: The addition of mocap and animation synchronization could increase the complexity of the project.</li>
+<li><strong>Performance Impact</strong>: Real-time synchronization of animations could have an impact on performance, especially for users with slower internet connections.</li>
 </ul>
 </section>
-<section id="alternatives" class="level3">
-<h3 class="anchored" data-anchor-id="alternatives">Alternatives</h3>
-<p>Other solutions like CRDTs were considered but have major shortcomings.</p>
-</section>
-<section id="infrequent-use-case" class="level3">
-<h3 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h3>
-<p>In small distributed systems with rare failures, Ra’s benefits may not be fully realized.</p>
+<section id="mvp" class="level3">
+<h3 class="anchored" data-anchor-id="mvp">MVP</h3>
+<p>The minimum viable product would include the ability to move a model around on one machine and have those positions updated on another, as well as the ability to perform basic animations that are visible to other users. Given the simplicity of the Godot scene format, this should be achievable.</p>
 </section>
 <section id="implementation" class="level3">
 <h3 class="anchored" data-anchor-id="implementation">Implementation</h3>
-<p>The V-Sekai team will implement Ra.</p>
+<p>The V-Sekai team will implement this feature.</p>
 </section>
 <section id="status" class="level3">
 <h3 class="anchored" data-anchor-id="status">Status</h3>
@@ -204,6 +199,10 @@ ul.task-list li input[type="checkbox"] {
 <li>Erlang</li>
 <li>Elixir</li>
 <li>Distributed Systems</li>
+<li>Godot</li>
+<li>Live Collaboration</li>
+<li>Motion Capture</li>
+<li>Animation Synchronization</li>
 </ul>
 </section>
 <section id="further-reading" class="level3">
@@ -780,7 +779,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20240707-rabbitmq-ra.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20240714-live-collab-rabbitmq-ra.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
