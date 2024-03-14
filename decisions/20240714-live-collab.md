@@ -10,7 +10,7 @@ Currently, there's no mechanism for real-time synchronization of skeleton motion
 
 ### Solution
 
-We propose to extend the live collaboration feature built on top of Ra, a Raft implementation by Team RabbitMQ, to include real-time synchronization of mocap and animations. This will enable users to see each other's movements and expressions in real-time, further enhancing the interactivity of the platform.
+We propose to extend the live collaboration feature to include real-time synchronization of mocap and animations. This will enable users to see each other's movements and expressions in real-time, further enhancing the interactivity of the platform.
 
 ### Benefits
 
@@ -42,10 +42,6 @@ Proposed
 ### Tags
 
 - V-Sekai
-- Ra
-- Erlang
-- Elixir
-- Distributed Systems
 - Godot
 - Live Collaboration
 - Motion Capture
