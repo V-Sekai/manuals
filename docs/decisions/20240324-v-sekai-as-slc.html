@@ -155,20 +155,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#suggestion-implementing-v-sekai-using-the-slc-framework" id="toc-suggestion-implementing-v-sekai-using-the-slc-framework" class="nav-link active" data-scroll-target="#suggestion-implementing-v-sekai-using-the-slc-framework">Suggestion: Implementing V-Sekai Using the SLC Framework</a>
+  <li><a href="#proposal-v-sekai-implementation-using-slc-framework" id="toc-proposal-v-sekai-implementation-using-slc-framework" class="nav-link active" data-scroll-target="#proposal-v-sekai-implementation-using-slc-framework">Proposal: V-Sekai Implementation Using SLC Framework</a>
   <ul class="collapse">
-  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
-  <li><a href="#issue" id="toc-issue" class="nav-link" data-scroll-target="#issue">Issue</a></li>
-  <li><a href="#plan" id="toc-plan" class="nav-link" data-scroll-target="#plan">Plan</a></li>
-  <li><a href="#advantages" id="toc-advantages" class="nav-link" data-scroll-target="#advantages">Advantages</a></li>
-  <li><a href="#drawbacks" id="toc-drawbacks" class="nav-link" data-scroll-target="#drawbacks">Drawbacks</a></li>
-  <li><a href="#alternative-strategy" id="toc-alternative-strategy" class="nav-link" data-scroll-target="#alternative-strategy">Alternative Strategy</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
+  <li><a href="#problem" id="toc-problem" class="nav-link" data-scroll-target="#problem">Problem</a></li>
+  <li><a href="#proposal" id="toc-proposal" class="nav-link" data-scroll-target="#proposal">Proposal</a></li>
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#downsides" id="toc-downsides" class="nav-link" data-scroll-target="#downsides">Downsides</a></li>
+  <li><a href="#alternate-approach" id="toc-alternate-approach" class="nav-link" data-scroll-target="#alternate-approach">Alternate Approach</a></li>
   <li><a href="#infrequent-users-consideration" id="toc-infrequent-users-consideration" class="nav-link" data-scroll-target="#infrequent-users-consideration">Infrequent Users Consideration</a></li>
-  <li><a href="#development-approach" id="toc-development-approach" class="nav-link" data-scroll-target="#development-approach">Development Approach</a></li>
-  <li><a href="#current-status" id="toc-current-status" class="nav-link" data-scroll-target="#current-status">Current Status</a></li>
+  <li><a href="#development-philosophy" id="toc-development-philosophy" class="nav-link" data-scroll-target="#development-philosophy">Development Philosophy</a></li>
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
   <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
-  <li><a href="#labels" id="toc-labels" class="nav-link" data-scroll-target="#labels">Labels</a></li>
-  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
+  <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags">Tags</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20240324-v-sekai-as-slc.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -179,34 +179,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="suggestion-implementing-v-sekai-using-the-slc-framework" class="level1">
-<h1>Suggestion: Implementing V-Sekai Using the SLC Framework</h1>
-<section id="background" class="level2">
-<h2 class="anchored" data-anchor-id="background">Background</h2>
-<p>The VR gaming landscape necessitates a seamless and inviting experience. A VR dating game can leverage this by adhering to principles of simplicity, engagement, and completeness.</p>
+<section id="proposal-v-sekai-implementation-using-slc-framework" class="level1">
+<h1>Proposal: V-Sekai Implementation Using SLC Framework</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>VR gaming requires a seamless, inviting experience. A VR dating game can utilize simplicity, engagement, and completeness principles.</p>
 </section>
-<section id="issue" class="level2">
-<h2 class="anchored" data-anchor-id="issue">Issue</h2>
-<p>The difficulty lies in crafting a VR dating game that is easy for beginners, engaging enough to retain users, and offers a comprehensive set of features from the get-go without depending on future updates or add-ons.</p>
+<section id="problem" class="level2">
+<h2 class="anchored" data-anchor-id="problem">Problem</h2>
+<p>The challenge is creating an intuitive, engaging VR dating game with a comprehensive feature set from the start.</p>
 </section>
-<section id="plan" class="level2">
-<h2 class="anchored" data-anchor-id="plan">Plan</h2>
-<p>By employing the SLC framework—Simple, Lovable, Complete—the project should:</p>
+<section id="proposal" class="level2">
+<h2 class="anchored" data-anchor-id="proposal">Proposal</h2>
+<p>Using the SLC framework—Simple, Lovable, Complete—the project should:</p>
 <ul>
-<li><p><strong>Simple:</strong> Prioritize user-friendly design with straightforward instructions and effortless navigation.</p>
+<li><p><strong>Simple:</strong> Emphasize user-friendly design and easy navigation.</p>
 <pre class="pseudo"><code>function interact_with_object(object):
     if object.is_interactable:
         show_prompt("Press X to interact")
         wait_for_input()
         execute_interaction()</code></pre></li>
-<li><p><strong>Lovable:</strong> Develop attractive characters and environments that augment the virtual dating experience.</p>
+<li><p><strong>Lovable:</strong> Develop appealing characters and environments.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://example.com/character-customization.png" class="img-fluid figure-img"></p>
 <figcaption>Character customization concept art</figcaption>
 </figure>
 </div></li>
-<li><p><strong>Complete:</strong> Debut with an exhaustive set of features such as varied scenarios and detailed character interactions.</p>
+<li><p><strong>Complete:</strong> Launch with diverse scenarios and detailed character interactions.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">launch_features</span><span class="kw">:</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> CompleteCharacterCustomization</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> DiverseScenarios</span></span>
@@ -214,28 +214,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> RealTimeChat</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
-<section id="advantages" class="level2">
-<h2 class="anchored" data-anchor-id="advantages">Advantages</h2>
-<p>This strategy guarantees a product that’s accessible, enthralling, and fulfilling without the necessity for immediate expansion, appealing to a broad audience.</p>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<p>This approach ensures an accessible, captivating product without immediate expansion need, catering to a wide audience.</p>
 </section>
-<section id="drawbacks" class="level2">
-<h2 class="anchored" data-anchor-id="drawbacks">Drawbacks</h2>
-<p>A more thorough initial development phase might postpone the release, and a focus on simplicity could potentially restrict advanced functionalities.</p>
+<section id="downsides" class="level2">
+<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
+<p>An extensive initial development phase may delay release, and simplicity could limit advanced functionalities.</p>
 </section>
-<section id="alternative-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="alternative-strategy">Alternative Strategy</h2>
-<p>Choosing a leaner initial version could permit an earlier release but might also risk alienating early adopters if their expectations are not met.</p>
+<section id="alternate-approach" class="level2">
+<h2 class="anchored" data-anchor-id="alternate-approach">Alternate Approach</h2>
+<p>A leaner initial version might allow earlier release but risk losing early adopters.</p>
 </section>
 <section id="infrequent-users-consideration" class="level2">
 <h2 class="anchored" data-anchor-id="infrequent-users-consideration">Infrequent Users Consideration</h2>
-<p>Design a user-friendly re-engagement process ensuring that returning users can easily pick up where they left off and understand new features.</p>
+<p>Design a user-friendly re-engagement process for returning users.</p>
 </section>
-<section id="development-approach" class="level2">
-<h2 class="anchored" data-anchor-id="development-approach">Development Approach</h2>
-<p>Concentrate on core features crucial at launch, with the potential to expand based on user feedback.</p>
+<section id="development-philosophy" class="level2">
+<h2 class="anchored" data-anchor-id="development-philosophy">Development Philosophy</h2>
+<p>Focus on essential launch features, expand based on user feedback.</p>
 </section>
-<section id="current-status" class="level2">
-<h2 class="anchored" data-anchor-id="current-status">Current Status</h2>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
 <p><strong>Status:</strong> Proposed</p>
 </section>
 <section id="decision-makers" class="level2">
@@ -244,17 +244,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>V-Sekai development team</li>
 </ul>
 </section>
-<section id="labels" class="level2">
-<h2 class="anchored" data-anchor-id="labels">Labels</h2>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
 <li>V-Sekai</li>
 </ul>
 </section>
-<section id="additional-resources" class="level2">
-<h2 class="anchored" data-anchor-id="additional-resources">Additional Resources</h2>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai GitHub Repository</a> - The hub of the V-Sekai project, dedicated to social VR via the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai Game Project</a> - The repository for the V-Sekai game, merging VR and social elements into Godot.</li>
+<li><a href="https://github.com/v-sekai">V-Sekai GitHub Repository</a></li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai Game Project</a></li>
 </ol>
 <p>Assistance provided by AI assistant Aria.</p>
 
