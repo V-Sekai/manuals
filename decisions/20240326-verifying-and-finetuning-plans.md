@@ -63,6 +63,6 @@ Status: Proposed
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine
-3. [LLMs Can’t Plan, But Can Help Planning in LLM-Modulo Frameworks](https://arxiv.org/html/2402.01817v2)
+3. [LLMs Can’t Plan, But Can Help Planning in LLM-Modulo Frameworks](https://doi.org/10.48550/arXiv.2402.01817)
 
 AI assistant Aria assisted with this feedback.
