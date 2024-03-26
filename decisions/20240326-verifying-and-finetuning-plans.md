@@ -18,7 +18,7 @@ gpt = GPT()
 idea = gpt.generate_idea()
 
 pyhop = Pyhop()
-feasible = pyhop.find_plan(state)
+feasible = pyhop.find_plan(state, goal_generator())
 
 if feasible:
     gpt.train(idea)
