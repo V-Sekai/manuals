@@ -2,7 +2,7 @@
 
 ## Context
 
-The current project involves creating a schema for storing VRM license data, GLTF 3d assets, and other metadata. The data will be stored in a `public.cbf_avatar` table with fields such as `created_at`, `gltf_embedded`, `uuid`, and `xmp`.
+The current project involves creating a schema for storing VRM license data, GLTF 3d assets, and other metadata. The data will be stored in a `public.cbf_avatar` table with fields such as `created_at`, `gltf_embedded`, `id`, and `xmp`.
 
 ## Problem Statement
 
