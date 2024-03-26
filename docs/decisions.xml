@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.551</generator>
-<lastBuildDate>Mon, 25 Mar 2024 06:08:14 GMT</lastBuildDate>
+<lastBuildDate>Tue, 26 Mar 2024 04:18:16 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,143 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Mon, 25 Mar 2024 06:08:14 GMT</pubDate>
+  <pubDate>Tue, 26 Mar 2024 04:18:16 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240325-table-avatar-embedded-xmp.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposal-for-3d-asset-schema-design-and-database-backend-selection" class="level1">
+<h1>Proposal for 3d Asset Schema Design and Database Backend Selection</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>The current project involves creating a schema for storing VRM license data, GLTF 3d assets, and other metadata. The data will be stored in a <code>public.cbf_avatar</code> table with fields such as <code>created_at</code>, <code>gltf_embedded</code>, <code>uuid</code>, and <code>xmp</code>.</p>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>The main challenge is deciding on the appropriate database backend and determining whether storing large files in a relational database is a good practice.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">CREATE</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">TABLE</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">public</span>.cbf_avatar (</span>
+<span id="cb1-2">    created_at timestamptz <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">DEFAULT</span> now() <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">NOT</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">NULL</span>,</span>
+<span id="cb1-3">    gltf_embedded jsonb <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">DEFAULT</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'{}'</span>:<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:jsonb</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">NOT</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">NULL</span>,</span>
+<span id="cb1-4">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">id</span> uuid <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">DEFAULT</span> gen_random_uuid() <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">NOT</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">NULL</span>,</span>
+<span id="cb1-5">    xmp jsonb <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">DEFAULT</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'{}'</span>:<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">:jsonb</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">NOT</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">NULL</span>,</span>
+<span id="cb1-6">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">CONSTRAINT</span> cbf_avatar_pkey <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">PRIMARY</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">KEY</span> (<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">id</span>)</span>
+<span id="cb1-7">);</span></code></pre></div>
+<p>The proposed solution involves using either Supabase PostgreSQL or FoundationDB with SQLite as the database backend. The <code>gltf_embedded</code> field will store GLTF 3d asset data as JSON binary, while the <code>xmp</code> field will store VRM license data and other metadata.</p>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<ul>
+<li>The use of JSON binary allows for efficient storage and retrieval of GLTF 3d assets.</li>
+<li>The chosen database backends are robust and reliable, ensuring data integrity and consistency.</li>
+</ul>
+</section>
+<section id="downsides" class="level2">
+<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
+<ul>
+<li>Storing large files in a relational database could potentially lead to disk thrashing and other performance issues.</li>
+<li>Fields in databases generally have a size limit, which could pose problems if the data exceeds this limit.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An alternative approach would be to store the large files in a separate file system and only keep references to these files in the database. However, this might complicate the data management process.</p>
+</section>
+<section id="infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
+<p>This schema design and database backend selection may not be suitable for applications that require extremely high performance or have strict limitations on data size.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>The schema design and database backend selection will be implemented by the V-Sekai development team.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
+<li><a href="https://blog.rustprooflabs.com/2020/07/postgres-storing-large-text">Postgres Storing Large Text</a> - A 2020 article suggesting that larger file storage in a relational database is okay.</li>
+</ol>
+<p>This proposal was assisted by Aria, an AI assistant.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240325-table-avatar-embedded-xmp.html</guid>
+  <pubDate>Tue, 26 Mar 2024 04:18:16 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -198,7 +334,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240324-v-sekai-as-slc.html</guid>
-  <pubDate>Mon, 25 Mar 2024 06:08:14 GMT</pubDate>
+  <pubDate>Tue, 26 Mar 2024 04:18:16 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -279,7 +415,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240314-live-collab.html</guid>
-  <pubDate>Mon, 25 Mar 2024 06:08:14 GMT</pubDate>
+  <pubDate>Tue, 26 Mar 2024 04:18:16 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -364,7 +500,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240307-rabbitmq-ra.html</guid>
-  <pubDate>Mon, 25 Mar 2024 06:08:14 GMT</pubDate>
+  <pubDate>Tue, 26 Mar 2024 04:18:16 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -452,7 +588,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240305-v-sekai-launcher.html</guid>
-  <pubDate>Mon, 25 Mar 2024 06:08:14 GMT</pubDate>
+  <pubDate>Tue, 26 Mar 2024 04:18:16 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -863,7 +999,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-vrm-substance-editor.html</guid>
-  <pubDate>Mon, 25 Mar 2024 06:08:14 GMT</pubDate>
+  <pubDate>Tue, 26 Mar 2024 04:18:16 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -939,7 +1075,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-vrm-acronym-correction.html</guid>
-  <pubDate>Mon, 25 Mar 2024 06:08:14 GMT</pubDate>
+  <pubDate>Tue, 26 Mar 2024 04:18:16 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1020,7 +1156,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-blender-to-godot.html</guid>
-  <pubDate>Mon, 25 Mar 2024 06:08:14 GMT</pubDate>
+  <pubDate>Tue, 26 Mar 2024 04:18:16 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1126,7 +1262,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-workload-benchmarking.html</guid>
-  <pubDate>Mon, 25 Mar 2024 06:08:14 GMT</pubDate>
+  <pubDate>Tue, 26 Mar 2024 04:18:16 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1238,7 +1374,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-intended-effort-versioning.html</guid>
-  <pubDate>Mon, 25 Mar 2024 06:08:14 GMT</pubDate>
+  <pubDate>Tue, 26 Mar 2024 04:18:16 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1455,7 +1591,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-essential-typle-normalization-form.html</guid>
-  <pubDate>Mon, 25 Mar 2024 06:08:14 GMT</pubDate>
+  <pubDate>Tue, 26 Mar 2024 04:18:16 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1548,7 +1684,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-documentation-guidelines.html</guid>
-  <pubDate>Mon, 25 Mar 2024 06:08:14 GMT</pubDate>
+  <pubDate>Tue, 26 Mar 2024 04:18:16 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1635,7 +1771,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-container-2-wasm.html</guid>
-  <pubDate>Mon, 25 Mar 2024 06:08:14 GMT</pubDate>
+  <pubDate>Tue, 26 Mar 2024 04:18:16 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1717,7 +1853,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240215-avatar-customization-with-ai-facial-expressions.html</guid>
-  <pubDate>Mon, 25 Mar 2024 06:08:14 GMT</pubDate>
+  <pubDate>Tue, 26 Mar 2024 04:18:16 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1783,7 +1919,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240127-urban-explorer-gdc-2024-sample.html</guid>
-  <pubDate>Mon, 25 Mar 2024 06:08:14 GMT</pubDate>
+  <pubDate>Tue, 26 Mar 2024 04:18:16 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1932,7 +2068,7 @@ sudo launchctl list | grep com.gocd.agent</code></pre></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-mac-setup.html</guid>
-  <pubDate>Mon, 25 Mar 2024 06:08:14 GMT</pubDate>
+  <pubDate>Tue, 26 Mar 2024 04:18:16 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2263,7 +2399,7 @@ font-style: inherit;">-u</span> livebook.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-livebook-fedora-install.html</guid>
-  <pubDate>Mon, 25 Mar 2024 06:08:14 GMT</pubDate>
+  <pubDate>Tue, 26 Mar 2024 04:18:16 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2385,7 +2521,7 @@ font-style: inherit;"># Disable key expiry</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-install-tailscale.html</guid>
-  <pubDate>Mon, 25 Mar 2024 06:08:14 GMT</pubDate>
+  <pubDate>Tue, 26 Mar 2024 04:18:16 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2639,119 +2775,7 @@ font-style: inherit;">-u</span> easy-diffusion.service</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240121-easy-diffusion-fedora-install.html</guid>
-  <pubDate>Mon, 25 Mar 2024 06:08:14 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240120-vr-armature-system.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposal-advanced-vr-armature-system-for-v-sekai" class="level1">
-<h1>Proposal: Advanced VR Armature System for V-Sekai</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li><strong>Status:</strong> Proposed</li>
-<li><strong>Deciders:</strong> V-Sekai Core Team</li>
-<li><strong>Tags:</strong> Virtual Reality, Rigging, Animation, IK Systems, Development</li>
-</ul>
-</section>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>The V-Sekai community needs better rigging and animation tools specifically tailored for VR. The goal is to move beyond the current limitations of traditional approaches.</p>
-</section>
-<section id="objective" class="level2">
-<h2 class="anchored" data-anchor-id="objective">Objective</h2>
-<p>Develop an intuitive inverse kinematics (IK) system for VR avatars that removes the need for numerical input, enhancing the user experience.</p>
-</section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>The proposed VR Armature System includes:</p>
-<ul>
-<li>Handles designed for VR interaction.</li>
-<li>Visual indicators for joint movement ranges.</li>
-<li>Straightforward adjustment methods without requiring numbers.</li>
-</ul>
-</section>
-<section id="technical-implementation-steps" class="level2">
-<h2 class="anchored" data-anchor-id="technical-implementation-steps">Technical Implementation Steps</h2>
-<ol type="1">
-<li><p><strong>Handle Control Design:</strong></p>
-<ul>
-<li>Craft VR-appropriate ergonomic handles.</li>
-<li>Track VR controller for handle interaction.</li>
-</ul></li>
-<li><p><strong>Visual Indicator Development:</strong></p>
-<ul>
-<li>Visualize joint limits.</li>
-<li>Update indicators with joint movement.</li>
-</ul></li>
-<li><p><strong>IK Solver Integration:</strong></p>
-<ul>
-<li>Employ IK solver for joint positioning.</li>
-<li>Validate across different avatar models.</li>
-</ul></li>
-<li><p><strong>Interface &amp; Interaction:</strong></p>
-<ul>
-<li>Interface design for easy joint manipulation.</li>
-<li>Implement feedback for joint limit reach.</li>
-</ul></li>
-<li><p><strong>Testing &amp; Debugging:</strong></p>
-<ul>
-<li>User testing for intuitive use.</li>
-<li>Refine system via user feedback.</li>
-</ul></li>
-<li><p><strong>System Finalization:</strong></p>
-<ul>
-<li>Establish final iteration post-testing.</li>
-<li>Optimize for VR performance.</li>
-</ul></li>
-<li><p><strong>Documentation &amp; Training:</strong></p>
-<ul>
-<li>Produce user guides and tutorials.</li>
-<li>Conduct capability and usage training sessions.</li>
-</ul></li>
-</ol>
-</section>
-<section id="benefits" class="level2">
-<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
-<p>Implementing this system aims to improve the creation process in VR and establish V-Sekai as a cutting-edge developer of VR tools.</p>
-</section>
-<section id="considerations" class="level2">
-<h2 class="anchored" data-anchor-id="considerations">Considerations</h2>
-<p>The introduction of a new system may require substantial resources and time for users to become familiar with it.</p>
-</section>
-<section id="alternatives-evaluated" class="level2">
-<h2 class="anchored" data-anchor-id="alternatives-evaluated">Alternatives Evaluated</h2>
-<p>Other options, like enhancing existing numerical controls or looking into traditional motion capture technologies, were considered but didn’t meet our immersive needs.</p>
-</section>
-<section id="extended-applications" class="level2">
-<h2 class="anchored" data-anchor-id="extended-applications">Extended Applications</h2>
-<p>While focused on VR, this system could also benefit animators using more conventional methods by providing improved interfaces and easier rig manipulation.</p>
-</section>
-<section id="alignment-with-v-sekai" class="level2">
-<h2 class="anchored" data-anchor-id="alignment-with-v-sekai">Alignment with V-Sekai</h2>
-<p>It’s crucial for V-Sekai to maintain this project to ensure it meets our quality standards and integrates seamlessly with our core technologies.</p>
-</section>
-<section id="resources" class="level2">
-<h2 class="anchored" data-anchor-id="resources">Resources</h2>
-<p>For insights into V-Sekai’s contributions to social VR in Godot Engine and our open-source work, please see:</p>
-<ul>
-<li><a href="https://github.com/v-sekai">V-Sekai GitHub Repository</a></li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai Game Repository</a></li>
-</ul>
-<p><em>This proposal was refined with assistance from Aria.</em></p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240120-vr-armature-system.html</guid>
-  <pubDate>Mon, 25 Mar 2024 06:08:14 GMT</pubDate>
+  <pubDate>Tue, 26 Mar 2024 04:18:16 GMT</pubDate>
 </item>
 </channel>
 </rss>
