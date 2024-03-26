@@ -24,7 +24,7 @@ Using the SLC framework—Simple, Lovable, Complete—the project should:
 
 - **Lovable:** Develop appealing characters and environments.
 
-  ![Character customization concept art](https://example.com/character-customization.png)
+  Character customization concept art
 
 - **Complete:** Launch with diverse scenarios and detailed character interactions.
 
