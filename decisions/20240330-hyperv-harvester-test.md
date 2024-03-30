@@ -12,13 +12,11 @@ Our existing testing environment does not cater to Windows-based applications. W
 
 We can utilize Hyper-V to establish a Harvester HCI virtual machine (VM) on our current Windows desktop. Here's a basic outline of the steps involved:
 
-```bash
 1. Install Hyper-V on the Windows desktop.
 2. Create a new VM using Hyper-V.
 3. Install Harvester HCI on the new VM.
 4. Configure the Harvester HCI VM for our testing needs.
 5. Run tests on the Harvester HCI VM.
-```
 
 ## The Benefits
 
