@@ -23,6 +23,7 @@ sudo kubectl apply -f https://raw.githubusercontent.com/harvester/experimental-a
 # Users can define the rancher url and password via addon interface.
 # hostname: "rancher.172.19.108.3.sslip.io"
 # password: "hunter2"
+# Open https://rancher.192.168.0.65.sslip.io/dashboard/auth/setup
 ```
 
 This command will fetch the `rancher-vcluster.yaml` file from the `experimental-addons` repository and apply it to your Kubernetes cluster.
