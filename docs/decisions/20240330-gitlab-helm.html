@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>V-Sekai - Manuals - Game</title>
+<title>V-Sekai - Manuals</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,29 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,67 +102,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="alternate" type="application/rss+xml" title="V-Sekai - Manuals" href="demo_to_game.xml" data-external="1"></head>
+</head>
 
 <body class="nav-fixed">
 
@@ -139,10 +113,10 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./68604884.png" alt="V-Sekai" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../68604884.png" alt="V-Sekai" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">V-Sekai - Manuals</span>
     </a>
   </div>
@@ -153,15 +127,15 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./changelog.html"> 
+    <a class="nav-link" href="../changelog.html"> 
 <span class="menu-text">Changes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./decisions.html"> 
+    <a class="nav-link" href="../decisions.html"> 
 <span class="menu-text">Decisions</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./awesome.html"> 
+    <a class="nav-link" href="../awesome.html"> 
 <span class="menu-text">Awesome</span></a>
   </li>  
 </ul>
@@ -177,272 +151,169 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#proposed-integrating-helm-for-kubernetes-runner-installation-with-s3-cache" id="toc-proposed-integrating-helm-for-kubernetes-runner-installation-with-s3-cache" class="nav-link active" data-scroll-target="#proposed-integrating-helm-for-kubernetes-runner-installation-with-s3-cache">Proposed: Integrating Helm for Kubernetes Runner Installation with S3 Cache</a>
+  <ul class="collapse">
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
+  <li><a href="#problem-statement" id="toc-problem-statement" class="nav-link" data-scroll-target="#problem-statement">Problem Statement</a></li>
+  <li><a href="#proposed-solution" id="toc-proposed-solution" class="nav-link" data-scroll-target="#proposed-solution">Proposed Solution</a>
+  <ul class="collapse">
+  <li><a href="#step-1-install-helm" id="toc-step-1-install-helm" class="nav-link" data-scroll-target="#step-1-install-helm">Step 1: Install Helm</a></li>
+  <li><a href="#step-2-add-the-gitlab-runner-helm-chart" id="toc-step-2-add-the-gitlab-runner-helm-chart" class="nav-link" data-scroll-target="#step-2-add-the-gitlab-runner-helm-chart">Step 2: Add the GitLab Runner Helm Chart</a></li>
+  <li><a href="#step-3-customize-the-gitlab-runner-configuration" id="toc-step-3-customize-the-gitlab-runner-configuration" class="nav-link" data-scroll-target="#step-3-customize-the-gitlab-runner-configuration">Step 3: Customize the GitLab Runner Configuration</a></li>
+  <li><a href="#step-4-create-an-s3-access-secret" id="toc-step-4-create-an-s3-access-secret" class="nav-link" data-scroll-target="#step-4-create-an-s3-access-secret">Step 4: Create an S3 Access Secret</a></li>
+  <li><a href="#step-5-install-the-gitlab-runner-using-helm" id="toc-step-5-install-the-gitlab-runner-using-helm" class="nav-link" data-scroll-target="#step-5-install-the-gitlab-runner-using-helm">Step 5: Install the GitLab Runner using Helm</a></li>
+  </ul></li>
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#downsides" id="toc-downsides" class="nav-link" data-scroll-target="#downsides">Downsides</a></li>
+  <li><a href="#alternatives-not-chosen" id="toc-alternatives-not-chosen" class="nav-link" data-scroll-target="#alternatives-not-chosen">Alternatives Not Chosen</a></li>
+  <li><a href="#infrequent-use-case" id="toc-infrequent-use-case" class="nav-link" data-scroll-target="#infrequent-use-case">Infrequent Use Case</a></li>
+  <li><a href="#in-core-and-done-by-us" id="toc-in-core-and-done-by-us" class="nav-link" data-scroll-target="#in-core-and-done-by-us">In Core and Done by Us</a></li>
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
+  <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags">Tags</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20240330-gitlab-helm.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Game</h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
+<section id="proposed-integrating-helm-for-kubernetes-runner-installation-with-s3-cache" class="level1">
+<h1>Proposed: Integrating Helm for Kubernetes Runner Installation with S3 Cache</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>The V-Sekai project, focused on integrating social VR capabilities into the Godot Engine, necessitates a flexible and scalable CI/CD infrastructure to manage the development workflow across various environments effectively. Given the diversity of platforms our contributors use, including Linux, macOS, Windows, Docker, and Kubernetes, there is a critical need to standardize our CI/CD processes to ensure consistency and efficiency.</p>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>The current CI/CD setup at V-Sekai lacks a unified approach to deploying and managing runners in Kubernetes clusters, leading to potential inconsistencies in build and test environments. This fragmentation could slow down the development pipeline and impact the project’s ability to iterate rapidly on new features.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>We propose to enhance our CI/CD pipeline by integrating Helm to streamline the installation and management of GitLab Runners in our Kubernetes clusters. Additionally, we will configure the runners to use S3 (Digital Ocean Spaces) as a cache, improving build times and reducing network traffic. Here’s how we plan to implement this solution:</p>
+<section id="step-1-install-helm" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-install-helm">Step 1: Install Helm</h3>
+<p>Ensure Helm is installed on your system. Helm will be used to deploy GitLab Runner instances as Helm charts, providing an easy and scalable way to manage runners within Kubernetes clusters.</p>
+<pre class="shell"><code>curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash</code></pre>
+</section>
+<section id="step-2-add-the-gitlab-runner-helm-chart" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-add-the-gitlab-runner-helm-chart">Step 2: Add the GitLab Runner Helm Chart</h3>
+<p>Add the GitLab Runner Helm chart repository to your Helm setup. This repository contains the necessary templates for deploying GitLab Runners in a Kubernetes cluster.</p>
+<pre class="shell"><code>helm repo add gitlab https://charts.gitlab.io/
+helm repo update</code></pre>
+</section>
+<section id="step-3-customize-the-gitlab-runner-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-customize-the-gitlab-runner-configuration">Step 3: Customize the GitLab Runner Configuration</h3>
+<p>Update your <code>values.yaml</code> file with the following values to switch to the Ubuntu-based image and configure S3 as a cache:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the Ubuntu image. Remember to set the version. You can also use the `ubuntu` or `latest` tags.</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span><span class="kw">:</span><span class="at"> gitlab/gitlab-runner:v16.5.0</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Update the security context values to the user ID in the ubuntu image</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">securityContext</span><span class="kw">:</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">fsGroup</span><span class="kw">:</span><span class="at"> </span><span class="dv">999</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">runAsUser</span><span class="kw">:</span><span class="at"> </span><span class="dv">999</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Configure S3 as a cache</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">runners</span><span class="kw">:</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">  config</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    [[runners]]</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>      [runners.kubernetes]</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        image = "ubuntu:22.04"</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>      [runners.cache]</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        Type = "s3"</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        Path = "runner"</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        Shared = true</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        [runners.cache.s3]</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>          ServerAddress = "s3.amazonaws.com"</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>          BucketName = "my_bucket_name"</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>          BucketLocation = "eu-west-1"</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>          Insecure = false</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>          AuthenticationType = "access-key"</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">cache</span><span class="kw">:</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">secretName</span><span class="kw">:</span><span class="at"> s3access</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="step-4-create-an-s3-access-secret" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-create-an-s3-access-secret">Step 4: Create an S3 Access Secret</h3>
+<p>Create an <code>s3access</code> Kubernetes secret that contains your access key and secret key:</p>
+<pre class="shell"><code>kubectl create secret generic s3access --from-literal=accesskey="YourAccessKey" --from-literal=secretkey="YourSecretKey"</code></pre>
+</section>
+<section id="step-5-install-the-gitlab-runner-using-helm" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-install-the-gitlab-runner-using-helm">Step 5: Install the GitLab Runner using Helm</h3>
+<p>Deploy the GitLab Runner using Helm with the customized <code>values.yaml</code> file.</p>
+<pre class="shell"><code>helm install gitlab-runner gitlab/gitlab-runner -f values.yaml</code></pre>
+<p>Ensure to replace <code>https://gitlab.example.com/</code> with your GitLab instance URL and <code>"REGISTRATION_TOKEN"</code> with your actual registration token.</p>
+</section>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<ul>
+<li><strong>Scalable and Efficient CI/CD</strong>: Leveraging Kubernetes for CI/CD runners allows for dynamic scaling based on the workload, improving resource efficiency.</li>
+<li><strong>Consistency Across Environments</strong>: Using Helm charts for deployment ensures consistent environments for all CI/CD pipelines, reducing “it works on my machine” issues.</li>
+<li><strong>Improved Build Times and Reduced Network Traffic</strong>: By using S3 as a cache, build times can be significantly reduced and network traffic minimized.</li>
+</ul>
+</section>
+<section id="downsides" class="level2">
+<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
+<ul>
+<li><strong>Complexity</strong>: The initial setup and configuration may require a deep understanding of Kubernetes and Helm, posing a learning curve for some team members.</li>
+<li><strong>Maintenance</strong>: Ongoing maintenance of Helm charts could increase operational overhead.</li>
+</ul>
+</section>
+<section id="alternatives-not-chosen" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-not-chosen">Alternatives Not Chosen</h2>
+<ul>
+<li><strong>Manual Runner Installation</strong>: Avoided due to its lack of scalability and increased potential for configuration errors.</li>
+</ul>
+</section>
+<section id="infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
+<ul>
+<li><strong>Temporary or One-off CI/CD Tasks</strong>: For tasks that do not justify the overhead of Kubernetes runners, alternative, simpler CI/CD solutions might be temporarily employed.</li>
+</ul>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>This initiative aligns with our core mission of developing social VR capabilities within the Godot Engine. The V-Sekai development team will lead this project, ensuring it meets our technical standards and project goals.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai, CI/CD, Kubernetes, Helm, S3 Cache</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://helm.sh/docs/">Helm Documentation</a></li>
+<li><a href="https://charts.gitlab.io/">GitLab Runner Helm Chart</a></li>
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
+</ol>
+<p>Assisted by Aria, your AI assistant.</p>
 
-    
-  
-    
-  </div>
-  
 
+</section>
+</section>
 
-</header>
-
-
-<table class="table">
-<colgroup>
-<col style="width: 100%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Warning</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">As of October 26rd, 2023, this is still in planning stages. Please note that the information provided here may change as the development progresses.</td>
-</tr>
-</tbody>
-</table>
-<p>A tech demo is a great way to showcase the capabilities of a platform, but it’s just that - a demonstration. It doesn’t fully utilize the potential of the platform or provide a comprehensive user experience. By developing a full game project, we can truly show what our platform is capable of and give users an immersive, engaging experience.</p>
-
-
-
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title-sort" data-direction="asc">
-          Title
-        </option>
-     </select>
-  </div>
-</div>
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
-</th>
-<th>
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="2" data-listing-word-count-sort="258" data-listing-title-sort="Prototype 0: Push an Asset to a Service" data-listing-filename-sort="000_ingest_validate.md">
-<td>
-<a href="./demo_to_game/000_ingest_validate.html" class="title listing-title">Prototype 0: Push an Asset to a Service</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-<tr data-index="1" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="1" data-listing-word-count-sort="83" data-listing-title-sort="Prototype 1: Element Instantiation and Uploading" data-listing-filename-sort="001_push.md">
-<td>
-<a href="./demo_to_game/001_push.html" class="title listing-title">Prototype 1: Element Instantiation and Uploading</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-<tr data-index="2" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="1" data-listing-word-count-sort="78" data-listing-title-sort="Prototype 2: Packaging, Marker3D, and Quad Plane" data-listing-filename-sort="002_packaging_marker3D_and_quad_plane.md">
-<td>
-<a href="./demo_to_game/002_packaging_marker3D_and_quad_plane.html" class="title listing-title">Prototype 2: Packaging, Marker3D, and Quad Plane</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-<tr data-index="3" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="1" data-listing-word-count-sort="84" data-listing-title-sort="Prototype 3: Tree Concept Decision and Texture Packaging" data-listing-filename-sort="003_tree.md">
-<td>
-<a href="./demo_to_game/003_tree.html" class="title listing-title">Prototype 3: Tree Concept Decision and Texture Packaging</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-<tr data-index="4" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="1" data-listing-word-count-sort="106" data-listing-title-sort="Prototype 4: Object Uploads and Positioning" data-listing-filename-sort="004_object_uploads_and_positioning.md">
-<td>
-<a href="./demo_to_game/004_object_uploads_and_positioning.html" class="title listing-title">Prototype 4: Object Uploads and Positioning</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-<tr data-index="5" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="1" data-listing-word-count-sort="55" data-listing-title-sort="Prototype 5: Server Management and Scripting" data-listing-filename-sort="005_servers_and_script.md">
-<td>
-<a href="./demo_to_game/005_servers_and_script.html" class="title listing-title">Prototype 5: Server Management and Scripting</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-<tr data-index="6" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="1" data-listing-word-count-sort="68" data-listing-title-sort="Prototype 6: Physics" data-listing-filename-sort="006_physics.md">
-<td>
-<a href="./demo_to_game/006_physics.html" class="title listing-title">Prototype 6: Physics</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-<tr data-index="7" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="1" data-listing-word-count-sort="61" data-listing-title-sort="Prototype 7: Server Capacity and Bandwidth Limit" data-listing-filename-sort="007_capacity_limits.md">
-<td>
-<a href="./demo_to_game/007_capacity_limits.html" class="title listing-title">Prototype 7: Server Capacity and Bandwidth Limit</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-<tr data-index="8" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="5" data-listing-word-count-sort="850" data-listing-title-sort="Variable bit rate encoding" data-listing-filename-sort="070_packet_format.md">
-<td>
-<a href="./demo_to_game/070_packet_format.html" class="title listing-title">Variable bit rate encoding</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-<tr data-index="9" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="1" data-listing-word-count-sort="15" data-listing-title-sort="LOD" data-listing-filename-sort="071_lod_strategy.md">
-<td>
-<a href="./demo_to_game/071_lod_strategy.html" class="title listing-title">LOD</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-<tr data-index="10" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="3" data-listing-word-count-sort="492" data-listing-title-sort="Godot Scene" data-listing-filename-sort="080_validations.md">
-<td>
-<a href="./demo_to_game/080_validations.html" class="title listing-title">Godot Scene</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-<tr data-index="11" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="2" data-listing-word-count-sort="258" data-listing-title-sort="Basic Tooling: Bill of Materials" data-listing-filename-sort="090_basic_tooling.md">
-<td>
-<a href="./demo_to_game/090_basic_tooling.html" class="title listing-title">Basic Tooling: Bill of Materials</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-<tr data-index="12" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="9" data-listing-word-count-sort="1723" data-listing-title-sort="Platforms of Note" data-listing-filename-sort="110_peer_platforms.md">
-<td>
-<a href="./demo_to_game/110_peer_platforms.html" class="title listing-title">Platforms of Note</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-<tr data-index="13" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="2" data-listing-word-count-sort="322" data-listing-title-sort="Inspirations" data-listing-filename-sort="120_inspirations.md">
-<td>
-<a href="./demo_to_game/120_inspirations.html" class="title listing-title">Inspirations</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-<tr data-index="14" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="3" data-listing-word-count-sort="499" data-listing-title-sort="V-Sekai Game Discussion" data-listing-filename-sort="140_game.md">
-<td>
-<a href="./demo_to_game/140_game.html" class="title listing-title">V-Sekai Game Discussion</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-<tr data-index="15" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="3" data-listing-word-count-sort="406" data-listing-title-sort="V-Sekai Game Discussion" data-listing-filename-sort="141_game_mvp.md">
-<td>
-<a href="./demo_to_game/141_game_mvp.html" class="title listing-title">V-Sekai Game Discussion</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-<tr data-index="16" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="3" data-listing-word-count-sort="491" data-listing-title-sort="MVP with Rigid Body Physics" data-listing-filename-sort="150_mvp.md">
-<td>
-<a href="./demo_to_game/150_mvp.html" class="title listing-title">MVP with Rigid Body Physics</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-<tr data-index="17" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="1" data-listing-word-count-sort="16" data-listing-title-sort="VR Cursor" data-listing-filename-sort="150_vr_cursor.md">
-<td>
-<a href="./demo_to_game/150_vr_cursor.html" class="title listing-title">VR Cursor</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-<tr data-index="18" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="2" data-listing-word-count-sort="317" data-listing-title-sort="Avoiding the O(n^n) State Update Problem" data-listing-filename-sort="151_avoid_n_squared_state_updates.md">
-<td>
-<a href="./demo_to_game/151_avoid_n_squared_state_updates.html" class="title listing-title">Avoiding the O(n^n) State Update Problem</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-<tr data-index="19" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="2" data-listing-word-count-sort="238" data-listing-title-sort="References" data-listing-filename-sort="152_references.md">
-<td>
-<a href="./demo_to_game/152_references.html" class="title listing-title">References</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-<tr data-index="20" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="3" data-listing-word-count-sort="493" data-listing-title-sort="Networked Physics in Virtual Reality" data-listing-filename-sort="153_gaffer_on_games_summary.md">
-<td>
-<a href="./demo_to_game/153_gaffer_on_games_summary.html" class="title listing-title">Networked Physics in Virtual Reality</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-<tr data-index="21" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="2" data-listing-word-count-sort="357" data-listing-title-sort="Networked Physics in Virtual Reality: V-Sekai's Chair Edition with Avatar Interaction" data-listing-filename-sort="153_stacking_chairs.md">
-<td>
-<a href="./demo_to_game/153_stacking_chairs.html" class="title listing-title">Networked Physics in Virtual Reality: V-Sekai’s Chair Edition with Avatar Interaction</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-<tr data-index="22" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="1" data-listing-word-count-sort="22" data-listing-title-sort="Quotes" data-listing-filename-sort="160_dream.md">
-<td>
-<a href="./demo_to_game/160_dream.html" class="title listing-title">Quotes</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-<tr data-index="23" data-listing-file-modified-sort="1711804579775" data-listing-reading-time-sort="1" data-listing-word-count-sort="33" data-listing-title-sort="Quotes" data-listing-filename-sort="170_client_limits.md">
-<td>
-<a href="./demo_to_game/170_client_limits.html" class="title listing-title">Quotes</a>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1004,7 +875,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/demo_to_game.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20240330-gitlab-helm.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
