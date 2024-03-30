@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.552</generator>
-<lastBuildDate>Sat, 30 Mar 2024 13:40:27 GMT</lastBuildDate>
+<lastBuildDate>Sat, 30 Mar 2024 13:47:11 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sat, 30 Mar 2024 13:40:27 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:47:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -155,7 +155,103 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-k8s-harvester-hci.html</guid>
-  <pubDate>Sat, 30 Mar 2024 13:40:27 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:47:11 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240330-hyperv-harvester-test.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-hyperv-windows-harvester-test" class="level1">
+<h1>Proposed: Hyperv windows Harvester Test</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>Currently, we are operating a Kubernetes cluster in a Linux environment. However, the need to test our applications in a Windows environment has been identified. This is where Hyper-V Windows Harvester becomes relevant.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Our existing testing environment does not cater to Windows-based applications. We require a solution that enables us to test these applications in a Windows environment without the necessity of setting up an entirely new cluster.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>We can utilize Hyper-V to establish a Harvester HCI virtual machine (VM) on our current Windows desktop. Here’s a basic outline of the steps involved:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">1.</span> Install Hyper-V on the Windows desktop.</span>
+<span id="cb1-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">2.</span> Create a new VM using Hyper-V.</span>
+<span id="cb1-3"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">3.</span> Install Harvester HCI on the new VM.</span>
+<span id="cb1-4"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">4.</span> Configure the Harvester HCI VM for our testing needs.</span>
+<span id="cb1-5"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">5.</span> Run tests on the Harvester HCI VM.</span></code></pre></div>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li>Enables us to test Windows-based applications without the need for a separate Windows server.</li>
+<li>Conserves resources by leveraging our existing infrastructure.</li>
+<li>Enhances our testing coverage and improves the quality of our software.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li>Requires additional configuration and maintenance.</li>
+<li>Potential performance issues due to running a VM on top of the Windows desktop.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>We could have opted to set up a separate Windows server for testing. However, this would necessitate significant resources and may not be cost-effective.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>This setup might not be ideal if we need to run high-performance applications that demand all the resources of a dedicated server.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>The implementation of this proposal will be carried out by our internal development team.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240330-hyperv-harvester-test.html</guid>
+  <pubDate>Sat, 30 Mar 2024 13:47:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -354,7 +450,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-gitlab-helm.html</guid>
-  <pubDate>Sat, 30 Mar 2024 13:40:27 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:47:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -457,7 +553,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-cicd-gitlab.html</guid>
-  <pubDate>Sat, 30 Mar 2024 13:40:27 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:47:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -543,7 +639,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240329-ready-to-go-kit-windows-11.html</guid>
-  <pubDate>Sat, 30 Mar 2024 13:40:27 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:47:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -646,7 +742,7 @@ font-style: inherit;">if</span> feasible:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240326-verifying-and-finetuning-plans.html</guid>
-  <pubDate>Sat, 30 Mar 2024 13:40:27 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:47:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -739,7 +835,7 @@ function initiate_conversation(character):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240326-heartstrings-vr.html</guid>
-  <pubDate>Sat, 30 Mar 2024 13:40:27 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:47:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -875,7 +971,7 @@ font-style: inherit;">id</span>)</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240325-table-avatar-embedded-xmp.html</guid>
-  <pubDate>Sat, 30 Mar 2024 13:40:27 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:47:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -997,7 +1093,7 @@ font-style: inherit;">self</span>.fdb.update(state)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240325-fdb-sqlite-blender-godot.html</guid>
-  <pubDate>Sat, 30 Mar 2024 13:40:27 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:47:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1115,7 +1211,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240324-v-sekai-as-slc.html</guid>
-  <pubDate>Sat, 30 Mar 2024 13:40:27 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:47:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1196,7 +1292,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240314-live-collab.html</guid>
-  <pubDate>Sat, 30 Mar 2024 13:40:27 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:47:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1281,7 +1377,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240307-rabbitmq-ra.html</guid>
-  <pubDate>Sat, 30 Mar 2024 13:40:27 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:47:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1369,7 +1465,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240305-v-sekai-launcher.html</guid>
-  <pubDate>Sat, 30 Mar 2024 13:40:27 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:47:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1780,7 +1876,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-vrm-substance-editor.html</guid>
-  <pubDate>Sat, 30 Mar 2024 13:40:27 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:47:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1856,7 +1952,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-vrm-acronym-correction.html</guid>
-  <pubDate>Sat, 30 Mar 2024 13:40:27 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:47:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1937,7 +2033,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-blender-to-godot.html</guid>
-  <pubDate>Sat, 30 Mar 2024 13:40:27 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:47:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2043,7 +2139,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-workload-benchmarking.html</guid>
-  <pubDate>Sat, 30 Mar 2024 13:40:27 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:47:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2155,7 +2251,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-intended-effort-versioning.html</guid>
-  <pubDate>Sat, 30 Mar 2024 13:40:27 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:47:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2372,100 +2468,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-essential-typle-normalization-form.html</guid>
-  <pubDate>Sat, 30 Mar 2024 13:40:27 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240217-documentation-guidelines.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposal-comprehensive-documentation-for-v-sekai" class="level1">
-<h1>Proposal: Comprehensive Documentation for V-Sekai</h1>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>V-Sekai is a project that brings social VR/VRSNS/metaverse components to the Godot Engine. It has numerous features and topics that need comprehensive documentation for both developers and users.</p>
-</section>
-<section id="problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>The current documentation lacks detailed information about significant features and topics, making it difficult for users and developers to understand and utilize V-Sekai’s full potential.</p>
-</section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>We propose creating dedicated pages for each feature with descriptive titles and bullet lists of essential points. For instance:</p>
-<section id="topic-godot-xr" class="level3">
-<h3 class="anchored" data-anchor-id="topic-godot-xr">Topic: Godot XR</h3>
-<ul>
-<li>Explanation of XR and Godot</li>
-<li>How XR works in Godot and how V-Sekai utilizes it</li>
-<li>Achievements possible with this feature/knowledge</li>
-<li>Limitations of the technology affecting our product</li>
-</ul>
-<p>For step-by-step instructions, we will use straightforward language and consistent verbs and phrasing. For example:</p>
-</section>
-<section id="changing-game-resolution" class="level3">
-<h3 class="anchored" data-anchor-id="changing-game-resolution">Changing Game Resolution</h3>
-<ol type="1">
-<li>Open the Project -&gt; Project Settings… menu.</li>
-<li>Navigate to Display -&gt; Window in the left column.</li>
-<li>Scroll down to the resolution setting.</li>
-<li>Click the numbers to change the resolution (values are in pixels).</li>
-</ol>
-</section>
-</section>
-<section id="benefits" class="level2">
-<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
-<p>This proposal will make it easier for users and developers to understand and use V-Sekai. It will also provide a foundation for further development and improvements.</p>
-</section>
-<section id="downsides" class="level2">
-<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
-<p>Creating comprehensive documentation requires time and resources. However, the benefits outweigh the costs.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Without comprehensive documentation, users and developers may struggle to understand and use V-Sekai effectively.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>Even infrequent or advanced features should be documented to ensure all users can fully utilize V-Sekai.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>This proposal will be implemented by the V-Sekai development team and community stakeholders.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team, community stakeholders, GDQuest, Fire</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai, Avatar Customization, AI, Facial Expressions</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a></li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a></li>
-</ol>
-<p>AI assistant Aria assisted with this proposal.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240217-documentation-guidelines.html</guid>
-  <pubDate>Sat, 30 Mar 2024 13:40:27 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:47:11 GMT</pubDate>
 </item>
 </channel>
 </rss>
