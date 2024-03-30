@@ -196,7 +196,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Installing the <code>rancher-vcluster</code> Addon The <code>rancher-vcluster</code> addon is not packaged with Harvester, but you can find it in the experimental-addons repository.</li>
 </ol>
 <p>Assuming you are using the Harvester kubeconfig, you can run the following command to apply the YAML file:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">kubectl</span> apply <span class="at">-f</span> https://raw.githubusercontent.com/harvester/experimental-addons/main/rancher-vcluster/rancher-vcluster.yaml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> rancher@xxx.xxx.xxx.xx</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> kubectl apply <span class="at">-f</span> https://raw.githubusercontent.com/harvester/experimental-addons/main/rancher-vcluster/rancher-vcluster.yaml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This command will fetch the <code>rancher-vcluster.yaml</code> file from the <code>experimental-addons</code> repository and apply it to your Kubernetes cluster.</p>
 <ol start="2" type="1">
 <li><strong>Configuring the Addon</strong>: Configure the addon through the Harvester UI under Advanced &gt; Addons. Edit the config for the <code>rancher-vcluster</code> addon, specify a hostname that points to the Harvester VIP and set a bootstrap password for Rancher.</li>
