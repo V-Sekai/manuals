@@ -18,7 +18,8 @@ The solution involves:
 Assuming you are using the Harvester kubeconfig, you can run the following command to apply the YAML file:
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/harvester/experimental-addons/main/rancher-vcluster/rancher-vcluster.yaml
+ssh rancher@xxx.xxx.xxx.xx
+sudo kubectl apply -f https://raw.githubusercontent.com/harvester/experimental-addons/main/rancher-vcluster/rancher-vcluster.yaml
 ```
 
 This command will fetch the `rancher-vcluster.yaml` file from the `experimental-addons` repository and apply it to your Kubernetes cluster.
