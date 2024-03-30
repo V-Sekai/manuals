@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.552</generator>
-<lastBuildDate>Sat, 30 Mar 2024 14:45:47 GMT</lastBuildDate>
+<lastBuildDate>Sat, 30 Mar 2024 15:52:44 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sat, 30 Mar 2024 14:45:47 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 15:52:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -180,7 +180,7 @@ font-style: inherit;"># Open https://rancher.192.168.0.65.sslip.io/dashboard/aut
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-k8s-harvester-hci.html</guid>
-  <pubDate>Sat, 30 Mar 2024 14:45:47 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 15:52:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -268,7 +268,7 @@ font-style: inherit;"># Open https://rancher.192.168.0.65.sslip.io/dashboard/aut
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-hyperv-harvester-test.html</guid>
-  <pubDate>Sat, 30 Mar 2024 14:45:47 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 15:52:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -467,7 +467,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-gitlab-helm.html</guid>
-  <pubDate>Sat, 30 Mar 2024 14:45:47 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 15:52:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -570,7 +570,95 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-cicd-gitlab.html</guid>
-  <pubDate>Sat, 30 Mar 2024 14:45:47 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 15:52:44 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240330-bitnami-rancher-helm-catalog.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-installing-helm-chart-from-a-git-repository-using-rancher" class="level1">
+<h1>Proposed: Installing Helm Chart from a Git Repository using Rancher</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>Rancher is an open-source platform for managing Kubernetes at scale. It provides a user-friendly interface for deploying, scaling and managing applications on top of Kubernetes.</p>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>You want to install a Helm chart from a specific location, in this case, a Git repository: <code>https://github.com/bitnami/charts.git</code>, using Rancher.</p>
+</section>
+<section id="solution" class="level2">
+<h2 class="anchored" data-anchor-id="solution">Solution</h2>
+<p>Rancher does not directly support installing Helm charts from a Git repository. However, you can add the Git repository as a catalog in Rancher, and then use Rancher’s UI to deploy the chart.</p>
+<p>Here’s how you can do it:</p>
+<ol type="1">
+<li>Navigate to the Rancher UI.</li>
+<li>Go to Global -&gt; Catalogs.</li>
+<li>Click on “Add Catalog”, fill in the details:
+<ul>
+<li>Name: Give your catalog a name.</li>
+<li>URL: Enter the URL of your Git repository (<code>https://github.com/bitnami/charts.git</code>).</li>
+<li>Branch: Specify the branch to use (usually <code>master</code> or <code>main</code>).</li>
+</ul></li>
+<li>Click on “Create”.</li>
+<li>Now, you can navigate to your project, click on “Apps” -&gt; “Launch”, and you should see your newly added catalog. You can select the chart you want to install and follow the prompts.</li>
+</ol>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<p>This method allows you to manage and deploy Helm charts directly from the Rancher UI, providing a more user-friendly way to handle deployments.</p>
+</section>
+<section id="downsides" class="level2">
+<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
+<p>The main downside is that this method requires manual setup in the Rancher UI, which might not be ideal for automated workflows.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An alternative approach would be to clone the Git repository locally, package the chart into a .tgz file, and upload it directly to Rancher.</p>
+</section>
+<section id="infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
+<p>This approach is particularly useful when you want to manage your Helm charts and deployments through a user-friendly interface, rather than dealing with command-line tools.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>This solution is based on the core functionality provided by Rancher and does not require any additional tools or services.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine.</li>
+<li><a href="https://github.com/bitnami/charts/tree/main">bitnami/charts</a></li>
+</ol>
+<p>This article was assisted by Aria, your AI assistant.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240330-bitnami-rancher-helm-catalog.html</guid>
+  <pubDate>Sat, 30 Mar 2024 15:52:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -656,7 +744,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240329-ready-to-go-kit-windows-11.html</guid>
-  <pubDate>Sat, 30 Mar 2024 14:45:47 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 15:52:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -759,7 +847,7 @@ font-style: inherit;">if</span> feasible:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240326-verifying-and-finetuning-plans.html</guid>
-  <pubDate>Sat, 30 Mar 2024 14:45:47 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 15:52:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -852,7 +940,7 @@ function initiate_conversation(character):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240326-heartstrings-vr.html</guid>
-  <pubDate>Sat, 30 Mar 2024 14:45:47 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 15:52:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -988,7 +1076,7 @@ font-style: inherit;">id</span>)</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240325-table-avatar-embedded-xmp.html</guid>
-  <pubDate>Sat, 30 Mar 2024 14:45:47 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 15:52:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1110,7 +1198,7 @@ font-style: inherit;">self</span>.fdb.update(state)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240325-fdb-sqlite-blender-godot.html</guid>
-  <pubDate>Sat, 30 Mar 2024 14:45:47 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 15:52:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1228,7 +1316,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240324-v-sekai-as-slc.html</guid>
-  <pubDate>Sat, 30 Mar 2024 14:45:47 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 15:52:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1309,7 +1397,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240314-live-collab.html</guid>
-  <pubDate>Sat, 30 Mar 2024 14:45:47 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 15:52:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1394,7 +1482,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240307-rabbitmq-ra.html</guid>
-  <pubDate>Sat, 30 Mar 2024 14:45:47 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 15:52:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1482,7 +1570,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240305-v-sekai-launcher.html</guid>
-  <pubDate>Sat, 30 Mar 2024 14:45:47 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 15:52:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1893,7 +1981,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-vrm-substance-editor.html</guid>
-  <pubDate>Sat, 30 Mar 2024 14:45:47 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 15:52:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1969,7 +2057,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-vrm-acronym-correction.html</guid>
-  <pubDate>Sat, 30 Mar 2024 14:45:47 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 15:52:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2050,7 +2138,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-blender-to-godot.html</guid>
-  <pubDate>Sat, 30 Mar 2024 14:45:47 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 15:52:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2156,7 +2244,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-workload-benchmarking.html</guid>
-  <pubDate>Sat, 30 Mar 2024 14:45:47 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 15:52:44 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2268,224 +2356,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-intended-effort-versioning.html</guid>
-  <pubDate>Sat, 30 Mar 2024 14:45:47 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240217-essential-typle-normalization-form.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="updated-proposal-implementation-of-essential-tuple-normalization-form-etnf-in-v-sekai" class="level1">
-<h1>Updated Proposal: Implementation of Essential Tuple Normalization Form (ETNF) in V-Sekai</h1>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>V-Sekai is committed to enhancing data integrity, optimizing database performance, and standardizing data storage practices. To achieve these goals, we propose the adoption of the Essential Tuple Normalization Form (ETNF) across our database systems.</p>
-</section>
-<section id="problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>Currently, V-Sekai’s database systems lack a standardized approach to normalization. This leads to data redundancy, inconsistency, and inefficiencies in data management, which can hamper system performance and scalability.</p>
-</section>
-<section id="proposal-overview-etnf-implementation" class="level2">
-<h2 class="anchored" data-anchor-id="proposal-overview-etnf-implementation">Proposal Overview: ETNF Implementation</h2>
-<p>We propose implementing ETNF, a normalization form that strikes an optimal balance between eliminating redundancy and maintaining manageable complexity in database schemas. Positioned between the fourth normal form (4NF) and the fifth normal form (5NF), ETNF provides a sophisticated yet practical approach to database normalization.</p>
-<section id="description-of-etnf" class="level3">
-<h3 class="anchored" data-anchor-id="description-of-etnf">Description of ETNF</h3>
-<p>A relation schema R is in Essential Tuple Normal Form (ETNF) if every tuple in every instance of R is essential. This means that no tuple in the database can be generated from other tuples, thus eliminating redundancy.</p>
-<p>In mathematical terms, a relation R is in ETNF if and only if it is in Boyce-Codd Normal Form (BCNF) and some component of every explicit join dependency (JD) of R is a superkey. Specifically, for every nontrivial join dependency {R1, R2, …, Rn} that holds over R, the intersection of each pair of Ri and Rj is a superkey for at least one of Ri or Rj.</p>
-<p>This concept is further illustrated by the theorem stating that if R is a relation schema specified only by functional dependencies (FDs) and join dependencies (JDs), then R is in ETNF if and only if it is in BCNF and some component of every explicit JD of R is a superkey.</p>
-<p>Therefore, ETNF is an effective normalization form that reduces data redundancy while maintaining manageable complexity in database schemas. It provides a balance between the elimination of unnecessary redundancy and the avoidance of extensive decomposition associated with higher normal forms like 5NF.</p>
-<section id="example-1-non-normalized-data" class="level4">
-<h4 class="anchored" data-anchor-id="example-1-non-normalized-data">Example 1: Non-Normalized Data</h4>
-<p>Consider a V-Sekai database table storing information about parts, suppliers, and respective shipments. The table is not normalized and contains redundant data.</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>SupplierID</th>
-<th>SupplierName</th>
-<th>PartID</th>
-<th>PartName</th>
-<th>ShipmentQuantity</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>S1</td>
-<td>Alice</td>
-<td>P1</td>
-<td>Part1</td>
-<td>100</td>
-</tr>
-<tr class="even">
-<td>S1</td>
-<td>Alice</td>
-<td>P2</td>
-<td>Part2</td>
-<td>200</td>
-</tr>
-<tr class="odd">
-<td>S2</td>
-<td>Bob</td>
-<td>P1</td>
-<td>Part1</td>
-<td>150</td>
-</tr>
-<tr class="even">
-<td>S2</td>
-<td>Bob</td>
-<td>P3</td>
-<td>Part3</td>
-<td>300</td>
-</tr>
-<tr class="odd">
-<td>S3</td>
-<td>Charlie</td>
-<td>P2</td>
-<td>Part2</td>
-<td>250</td>
-</tr>
-</tbody>
-</table>
-<p>In this table, <code>SupplierName</code> and <code>PartName</code> are repeated for each <code>SupplierID</code> and <code>PartID</code>, respectively. This redundancy can lead to inconsistencies and anomalies.</p>
-</section>
-<section id="example-2-etnf-normalized-data" class="level4">
-<h4 class="anchored" data-anchor-id="example-2-etnf-normalized-data">Example 2: ETNF Normalized Data</h4>
-<p>To normalize the above table into ETNF, we would decompose it into three separate tables: <code>Supplier</code>, <code>Part</code>, and <code>Shipment</code>.</p>
-<section id="supplier-table" class="level5">
-<h5 class="anchored" data-anchor-id="supplier-table">Supplier Table</h5>
-<table class="table">
-<thead>
-<tr class="header">
-<th>SupplierID</th>
-<th>SupplierName</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>S1</td>
-<td>Alice</td>
-</tr>
-<tr class="even">
-<td>S2</td>
-<td>Bob</td>
-</tr>
-<tr class="odd">
-<td>S3</td>
-<td>Charlie</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="part-table" class="level5">
-<h5 class="anchored" data-anchor-id="part-table">Part Table</h5>
-<table class="table">
-<thead>
-<tr class="header">
-<th>PartID</th>
-<th>PartName</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>P1</td>
-<td>Part1</td>
-</tr>
-<tr class="even">
-<td>P2</td>
-<td>Part2</td>
-</tr>
-<tr class="odd">
-<td>P3</td>
-<td>Part3</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="shipment-table" class="level5">
-<h5 class="anchored" data-anchor-id="shipment-table">Shipment Table</h5>
-<table class="table">
-<thead>
-<tr class="header">
-<th>SupplierID</th>
-<th>PartID</th>
-<th>ShipmentQuantity</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>S1</td>
-<td>P1</td>
-<td>100</td>
-</tr>
-<tr class="even">
-<td>S1</td>
-<td>P2</td>
-<td>200</td>
-</tr>
-<tr class="odd">
-<td>S2</td>
-<td>P1</td>
-<td>150</td>
-</tr>
-<tr class="even">
-<td>S2</td>
-<td>P3</td>
-<td>300</td>
-</tr>
-<tr class="odd">
-<td>S3</td>
-<td>P2</td>
-<td>250</td>
-</tr>
-</tbody>
-</table>
-<p>In these normalized tables, each tuple is essential and there is no redundancy. The <code>SupplierName</code> is not repeated for each shipment from the same supplier, and similarly, the <code>PartName</code> is not repeated for each shipment of the same part. This design adheres to the principles of ETNF, enhancing data integrity and consistency.</p>
-</section>
-</section>
-</section>
-<section id="key-characteristics-of-etnf" class="level3">
-<h3 class="anchored" data-anchor-id="key-characteristics-of-etnf">Key Characteristics of ETNF:</h3>
-<ul>
-<li><strong>Redundancy Reduction</strong>: ETNF effectively reduces data redundancy by ensuring that all data stored in the database is essential and non-repetitive.</li>
-<li><strong>Data Integrity and Consistency</strong>: By minimizing redundancy, ETNF enhances the integrity and consistency of the database, making data more reliable and accurate.</li>
-<li><strong>Balanced Complexity</strong>: ETNF offers a middle ground between 4NF and 5NF, reducing redundancy without the complexity of decomposing relations into smaller, more numerous relations as often required by 5NF.</li>
-</ul>
-</section>
-<section id="operational-implications-for-database-practitioners" class="level3">
-<h3 class="anchored" data-anchor-id="operational-implications-for-database-practitioners">Operational Implications for Database Practitioners</h3>
-<ol type="1">
-<li><strong>Dependency Analysis</strong>: The first step involves a detailed analysis of all functional and join dependencies across the database to identify redundancy and determine the scope for normalization to ETNF.</li>
-<li><strong>Schema Evaluation and Restructuring</strong>: Evaluate existing database schemas against ETNF criteria, identifying areas where restructuring is required to eliminate redundancy and enhance efficiency.</li>
-<li><strong>Practical Application and Migration</strong>: Implement the ETNF principles through schema redesign and careful data migration, ensuring that the transition does not impact data integrity or system availability.</li>
-</ol>
-</section>
-</section>
-<section id="benefits-for-v-sekai" class="level2">
-<h2 class="anchored" data-anchor-id="benefits-for-v-sekai">Benefits for V-Sekai</h2>
-<ul>
-<li><strong>Enhanced Data Integrity</strong>: Implementation of ETNF will significantly improve the integrity and reliability of V-Sekai’s data.</li>
-<li><strong>Optimized Performance</strong>: By reducing redundancy, ETNF will streamline data storage and retrieval processes, enhancing overall system performance.</li>
-<li><strong>Strategic Data Management</strong>: Adopting ETNF aligns with strategic initiatives for scalable, efficient, and consistent data management practices.</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
-<li><a href="https://dl.acm.org/doi/10.1145/2274576.2274589">A normal form for preventing redundant tuples in relational databases</a></li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240217-essential-typle-normalization-form.html</guid>
-  <pubDate>Sat, 30 Mar 2024 14:45:47 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 15:52:44 GMT</pubDate>
 </item>
 </channel>
 </rss>
