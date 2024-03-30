@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.552</generator>
-<lastBuildDate>Sat, 30 Mar 2024 03:16:11 GMT</lastBuildDate>
+<lastBuildDate>Sat, 30 Mar 2024 13:00:13 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,110 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sat, 30 Mar 2024 03:16:11 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:00:13 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240330-cicd-gitlab.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-cicd-setup-with-docker-and-other-platforms" class="level1">
+<h1>Proposed: CI/CD Setup with Docker and Other Platforms</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>The V-Sekai project is focused on enhancing the Godot Engine by introducing social VR capabilities. To ensure a seamless development process across various environments, we need a robust CI/CD setup. This setup should cater to the diverse platforms our developers and contributors use, including Linux, macOS, Windows, Docker, and Kubernetes clusters.</p>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>Our current CI/CD setup does not efficiently cover all operating systems and environments our developers use. This leads to inconsistent build and test results across different platforms. This inconsistency hinders our ability to rapidly develop and deploy features for the V-Sekai project.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>To address this, we propose registering GitLab Runners for Linux, macOS, Windows, Docker, and Kubernetes. Each runner will be configured to handle builds and tests specific to its platform. Here’s a simplified view of how each runner would be set up:</p>
+<p>For Linux, macOS, and Windows Runners:</p>
+<ol type="1">
+<li>Install GitLab Runner on the respective OS.</li>
+<li>Use the <code>gitlab-runner register</code> command with the platform-specific registration token.</li>
+<li>Configure the runner to use an executor appropriate for the OS (e.g., shell for Linux/macOS, PowerShell for Windows).</li>
+</ol>
+<p>For Docker Runner:</p>
+<ol type="1">
+<li>Install Docker on the host machine.</li>
+<li>Pull the GitLab Runner Docker image.</li>
+<li>Run the GitLab Runner container with the Docker executor.</li>
+</ol>
+<p>For Kubernetes Runner:</p>
+<ol type="1">
+<li>Deploy the GitLab Runner Helm chart to the Kubernetes cluster.</li>
+<li>Configure the runner to use the Kubernetes executor.</li>
+<li>Use a registration token from the GitLab instance to link the Kubernetes runner.</li>
+</ol>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<ul>
+<li><strong>Consistency Across Platforms</strong>: Ensures builds and tests are consistent across all supported platforms.</li>
+<li><strong>Increased Development Speed</strong>: Faster feedback loops for developers working on different platforms.</li>
+<li><strong>Scalability</strong>: Kubernetes runners can dynamically scale to handle increased loads, improving CI/CD pipeline performance.</li>
+</ul>
+</section>
+<section id="downsides" class="level2">
+<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
+<ul>
+<li><strong>Maintenance Overhead</strong>: Requires initial setup and ongoing maintenance of runners across multiple platforms.</li>
+<li><strong>Complexity</strong>: Adds complexity to the CI/CD setup, especially managing different executors and environments.</li>
+</ul>
+</section>
+<section id="alternatives-not-chosen" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-not-chosen">Alternatives Not Chosen</h2>
+<ul>
+<li>Relying solely on cloud-based CI/CD services. While simpler, this would not provide the level of control and customization needed for our specific development needs.</li>
+</ul>
+</section>
+<section id="infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
+<ul>
+<li>Handling builds or tests that require very specific environment configurations not commonly used by the development team. These cases might still need bespoke solutions outside the standard CI/CD pipeline.</li>
+</ul>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>This initiative is core to our mission of enhancing the Godot Engine with social VR capabilities. It will be executed by the V-Sekai development team, ensuring alignment with our project’s goals and technical standards.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
+</ol>
+<p>Assisted by Aria, your AI assistant.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240330-cicd-gitlab.html</guid>
+  <pubDate>Sat, 30 Mar 2024 13:00:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -161,7 +264,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240329-ready-to-go-kit-windows-11.html</guid>
-  <pubDate>Sat, 30 Mar 2024 03:16:11 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:00:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -264,7 +367,7 @@ font-style: inherit;">if</span> feasible:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240326-verifying-and-finetuning-plans.html</guid>
-  <pubDate>Sat, 30 Mar 2024 03:16:11 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:00:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -357,7 +460,7 @@ function initiate_conversation(character):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240326-heartstrings-vr.html</guid>
-  <pubDate>Sat, 30 Mar 2024 03:16:11 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:00:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -493,7 +596,7 @@ font-style: inherit;">id</span>)</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240325-table-avatar-embedded-xmp.html</guid>
-  <pubDate>Sat, 30 Mar 2024 03:16:11 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:00:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -615,7 +718,7 @@ font-style: inherit;">self</span>.fdb.update(state)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240325-fdb-sqlite-blender-godot.html</guid>
-  <pubDate>Sat, 30 Mar 2024 03:16:11 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:00:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -733,7 +836,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240324-v-sekai-as-slc.html</guid>
-  <pubDate>Sat, 30 Mar 2024 03:16:11 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:00:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -814,7 +917,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240314-live-collab.html</guid>
-  <pubDate>Sat, 30 Mar 2024 03:16:11 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:00:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -899,7 +1002,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240307-rabbitmq-ra.html</guid>
-  <pubDate>Sat, 30 Mar 2024 03:16:11 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:00:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -987,7 +1090,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240305-v-sekai-launcher.html</guid>
-  <pubDate>Sat, 30 Mar 2024 03:16:11 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:00:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1398,7 +1501,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-vrm-substance-editor.html</guid>
-  <pubDate>Sat, 30 Mar 2024 03:16:11 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:00:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1474,7 +1577,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-vrm-acronym-correction.html</guid>
-  <pubDate>Sat, 30 Mar 2024 03:16:11 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:00:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1555,7 +1658,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-blender-to-godot.html</guid>
-  <pubDate>Sat, 30 Mar 2024 03:16:11 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:00:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1661,7 +1764,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-workload-benchmarking.html</guid>
-  <pubDate>Sat, 30 Mar 2024 03:16:11 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:00:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1773,7 +1876,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-intended-effort-versioning.html</guid>
-  <pubDate>Sat, 30 Mar 2024 03:16:11 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:00:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1990,7 +2093,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-essential-typle-normalization-form.html</guid>
-  <pubDate>Sat, 30 Mar 2024 03:16:11 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:00:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2083,7 +2186,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-documentation-guidelines.html</guid>
-  <pubDate>Sat, 30 Mar 2024 03:16:11 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:00:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2170,7 +2273,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-container-2-wasm.html</guid>
-  <pubDate>Sat, 30 Mar 2024 03:16:11 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:00:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2252,73 +2355,7 @@ font-style: inherit;">"2.0.0"</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240215-avatar-customization-with-ai-facial-expressions.html</guid>
-  <pubDate>Sat, 30 Mar 2024 03:16:11 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240127-urban-explorer-gdc-2024-sample.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-urban-navigator-the-city-unveiled" class="level1">
-<h1>Proposed: Urban Navigator: The City Unveiled</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li><strong>Status</strong>: Proposed</li>
-<li><strong>Deciders</strong>: V-Sekai</li>
-<li><strong>Tags</strong>: V-Sekai</li>
-</ul>
-</section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>The aim is to present a demo at the Game Developer Conference 2024 that will showcase the capabilities of the Godot Engine animation and Godot Engine 3D pipelines.</p>
-</section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>The task at hand is to create a Godot Engine demo within a span of one week.</p>
-</section>
-<section id="the-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>The proposed idea is “Urban Navigator: The City Unveiled”. Embark on an exploratory journey through the heart of a city. Unravel the secrets of a sprawling metropolis where every street corner has a story to tell. With the help of advanced motion matching technology, your gamepad inputs are transformed into lifelike movements, enabling seamless interaction with the city.</p>
-</section>
-<section id="the-upside" class="level2">
-<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<p>The project will demonstrate the power and flexibility of the Godot Engine, potentially attracting more developers to use it. It also provides an opportunity to innovate in the field of urban exploration games.</p>
-</section>
-<section id="the-downside" class="level2">
-<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<p>The tight timeline could lead to compromises in quality or scope. There’s also a risk that the final product may not fully meet the expectations set by the proposal.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>An alternative approach could have been to focus on a different genre or type of game that might be less complex but still showcases the capabilities of the Godot Engine.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>While the primary use case is for the Game Developer Conference demo, the developed game could also be used as a benchmarking tool for testing hardware performance with the Godot Engine.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>Yes, this project is core to our mission of showcasing the capabilities of the Godot Engine and can be done by our team.</p>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - This is the official GitHub account for the V-Sekai development community which focuses on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - This is the GitHub page for the V-Sekai open-source project that brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-</ol>
-<p>This article was assisted by AI assistant Aria.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240127-urban-explorer-gdc-2024-sample.html</guid>
-  <pubDate>Sat, 30 Mar 2024 03:16:11 GMT</pubDate>
+  <pubDate>Sat, 30 Mar 2024 13:00:13 GMT</pubDate>
 </item>
 </channel>
 </rss>
