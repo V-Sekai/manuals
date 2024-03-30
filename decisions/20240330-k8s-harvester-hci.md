@@ -20,6 +20,8 @@ Assuming you are using the Harvester kubeconfig, you can run the following comma
 ```bash
 ssh rancher@xxx.xxx.xxx.xx
 sudo kubectl apply -f https://raw.githubusercontent.com/harvester/experimental-addons/main/rancher-vcluster/rancher-vcluster.yaml
+# Users can define the rancher url via the valuesContent section in the addon.
+# hostname: "rancher.172.19.108.3.sslip.io"
 ```
 
 This command will fetch the `rancher-vcluster.yaml` file from the `experimental-addons` repository and apply it to your Kubernetes cluster.
