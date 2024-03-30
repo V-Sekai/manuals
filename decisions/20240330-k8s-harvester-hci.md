@@ -1,4 +1,4 @@
-# Proposed: k8s on harvester hci
+# Accepted: k8s on harvester hci
 
 ## The Context
 
@@ -40,7 +40,7 @@ The user performs the entire process of installing and configuring the `rancher-
 
 ## Status
 
-Status: Proposed
+Status: Accepted
 
 ## Decision Makers
 
