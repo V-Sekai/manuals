@@ -6,7 +6,7 @@ Rancher is an open-source platform for managing Kubernetes at scale. It provides
 
 ## Problem Statement
 
-You want to install a Helm chart from a specific location, in this case, a Git repository: `https://github.com/bitnami/charts.git`, using Rancher.
+You want to install a Helm chart from a specific location, in this case, a Git repository: `https://charts.bitnami.com/bitnami`, using Rancher.
 
 ## Solution
 
@@ -18,7 +18,7 @@ Here's how you can do it:
 2. Go to Global -> Catalogs.
 3. Click on "Add Catalog", fill in the details:
    - Name: Give your catalog a name.
-   - URL: Enter the URL of your Git repository (`https://github.com/bitnami/charts.git`).
+   - URL: Enter the URL of your Git repository (`https://charts.bitnami.com/bitnami`).
    - Branch: Specify the branch to use (usually `master` or `main`).
 4. Click on "Create".
 5. Now, you can navigate to your project, click on "Apps" -> "Launch", and you should see your newly added catalog. You can select the chart you want to install and follow the prompts.
