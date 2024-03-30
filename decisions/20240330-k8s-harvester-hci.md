@@ -12,7 +12,17 @@ The challenge is installing Rancher directly on a Harvester VM using the `ranche
 
 The solution involves:
 
-1. **Installing the `rancher-vcluster` Addon**: Apply a YAML file from the Harvester experimental-addons repository using the Harvester kubeconfig for kubectl commands.
+1. Installing the `rancher-vcluster` Addon
+   The `rancher-vcluster` addon is not packaged with Harvester, but you can find it in the experimental-addons repository.
+
+Assuming you are using the Harvester kubeconfig, you can run the following command to apply the YAML file:
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/harvester/experimental-addons/main/rancher-vcluster/rancher-vcluster.yaml
+```
+
+This command will fetch the `rancher-vcluster.yaml` file from the `experimental-addons` repository and apply it to your Kubernetes cluster.
+
 2. **Configuring the Addon**: Configure the addon through the Harvester UI under Advanced > Addons. Edit the config for the `rancher-vcluster` addon, specify a hostname that points to the Harvester VIP and set a bootstrap password for Rancher.
 3. **Accessing Rancher**: Access Rancher using the DNS hostname provided during configuration after installation.
 
