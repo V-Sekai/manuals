@@ -34,8 +34,8 @@
 
 ### Security
 
-- **Security Best Practices**: Applied security best practices as recommended by StepSecurity. ([Commit: d641001](https://github.com/V-Sekai/v-sekai-game/commit/d641001))
-
+- **Security Best Practices**:
+- 
 This project does not adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Previous Releases]
