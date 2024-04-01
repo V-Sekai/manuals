@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.552</generator>
-<lastBuildDate>Sun, 31 Mar 2024 05:10:08 GMT</lastBuildDate>
+<lastBuildDate>Mon, 01 Apr 2024 01:26:57 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,115 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 31 Mar 2024 05:10:08 GMT</pubDate>
+  <pubDate>Mon, 01 Apr 2024 01:26:57 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240331-vrc-vrm-compatibility.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-vrc-and-vrm-compatibility" class="level1">
+<h1>Proposed: VRC and VRM compatibility</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>VRChat (VRC) and Virtual Reality Model (VRM) are two popular things used in the creation of virtual reality content. However, they are not inherently compatible with each other, which can cause issues for developers trying to use both in their projects.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>The lack of compatibility between VRC and VRM can lead to inefficiencies and limitations in the development process. This proposal aims to address this issue by providing a solution that allows for seamless integration of these two groups.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>The proposed solution involves a series of steps outlined in the README below:</p>
+<ol type="1">
+<li>Add face shapes with hana tool</li>
+<li>DO NOT remove transparent triangles for [hair, face, body]</li>
+<li>Unpack the prefab.</li>
+<li>Convert to vrchat. Combine meshes, remove upper chest</li>
+<li>Delete skirt bones that are not used.</li>
+<li>Add vrcfury bounding box fix</li>
+<li>Add vrcfury direct tree</li>
+<li>Add vrcfury jerry’s templates</li>
+<li>Change the eyes to move up or down [-2, 2].</li>
+<li>Make sure the <code>Body</code> has the perfect sync blend shapes.</li>
+<li>Remove empty vrc parameters</li>
+<li>Remove Physbones with missing transforms from secondary.</li>
+<li>Convert bone clusters in sphere colliders to capsule colliders to go from VERY POOR to POOR.</li>
+<li>Continue converting capsules until satisfied “POOR”.</li>
+<li>The FX controller must match the name and not be temporary.</li>
+<li>Remove all face blend shapes.</li>
+<li>Use the reader to add face blend shapes (perfect sync)</li>
+<li>Delete VRM tools.</li>
+<li>Make sure all pipeline IDs are detached.</li>
+<li>Remember to delete the upper chest from the humanoid.</li>
+<li>Eye look is behind the nose</li>
+<li>Make sure the breast bones are parented as the same bone as the clothing chest bones correspond to.</li>
+<li>Upload. (Pick a new slot. DO NOT REUSE A SLOT.)</li>
+</ol>
+<section id="installed-packages" class="level3">
+<h3 class="anchored" data-anchor-id="installed-packages">Installed packages</h3>
+<ol type="1">
+<li>vrc sdk base</li>
+<li>vrc sdk avatar</li>
+<li>vrcfury</li>
+<li>vrcft - jerry’s templates</li>
+</ol>
+</section>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>The proposed solution will allow developers to use VRC and VRM together in their projects, leading to increased flexibility and efficiency.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>The process may be complex and time-consuming, especially for those unfamiliar with these formats.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An alternative approach could involve developing a new format that combines the features of both VRC and VRM. However, this would likely require significant resources and may not be feasible for all developers.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>This proposal may not be beneficial for developers who only use one of these formats in their projects.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>The proposed solution has been developed by us and is integrated into our core system.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240331-vrc-vrm-compatibility.html</guid>
+  <pubDate>Mon, 01 Apr 2024 01:26:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -180,7 +288,7 @@ font-style: inherit;"># Open https://rancher.192.168.0.65.sslip.io/dashboard/aut
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-k8s-harvester-hci.html</guid>
-  <pubDate>Sun, 31 Mar 2024 05:10:08 GMT</pubDate>
+  <pubDate>Mon, 01 Apr 2024 01:26:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -268,7 +376,7 @@ font-style: inherit;"># Open https://rancher.192.168.0.65.sslip.io/dashboard/aut
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-hyperv-harvester-test.html</guid>
-  <pubDate>Sun, 31 Mar 2024 05:10:08 GMT</pubDate>
+  <pubDate>Mon, 01 Apr 2024 01:26:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -467,7 +575,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-gitlab-helm.html</guid>
-  <pubDate>Sun, 31 Mar 2024 05:10:08 GMT</pubDate>
+  <pubDate>Mon, 01 Apr 2024 01:26:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -570,7 +678,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-cicd-gitlab.html</guid>
-  <pubDate>Sun, 31 Mar 2024 05:10:08 GMT</pubDate>
+  <pubDate>Mon, 01 Apr 2024 01:26:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -658,7 +766,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-bitnami-rancher-helm-catalog.html</guid>
-  <pubDate>Sun, 31 Mar 2024 05:10:08 GMT</pubDate>
+  <pubDate>Mon, 01 Apr 2024 01:26:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -744,7 +852,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240329-ready-to-go-kit-windows-11.html</guid>
-  <pubDate>Sun, 31 Mar 2024 05:10:08 GMT</pubDate>
+  <pubDate>Mon, 01 Apr 2024 01:26:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -847,7 +955,7 @@ font-style: inherit;">if</span> feasible:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240326-verifying-and-finetuning-plans.html</guid>
-  <pubDate>Sun, 31 Mar 2024 05:10:08 GMT</pubDate>
+  <pubDate>Mon, 01 Apr 2024 01:26:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -940,7 +1048,7 @@ function initiate_conversation(character):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240326-heartstrings-vr.html</guid>
-  <pubDate>Sun, 31 Mar 2024 05:10:08 GMT</pubDate>
+  <pubDate>Mon, 01 Apr 2024 01:26:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1076,7 +1184,7 @@ font-style: inherit;">id</span>)</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240325-table-avatar-embedded-xmp.html</guid>
-  <pubDate>Sun, 31 Mar 2024 05:10:08 GMT</pubDate>
+  <pubDate>Mon, 01 Apr 2024 01:26:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1198,7 +1306,7 @@ font-style: inherit;">self</span>.fdb.update(state)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240325-fdb-sqlite-blender-godot.html</guid>
-  <pubDate>Sun, 31 Mar 2024 05:10:08 GMT</pubDate>
+  <pubDate>Mon, 01 Apr 2024 01:26:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1316,7 +1424,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240324-v-sekai-as-slc.html</guid>
-  <pubDate>Sun, 31 Mar 2024 05:10:08 GMT</pubDate>
+  <pubDate>Mon, 01 Apr 2024 01:26:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1397,7 +1505,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240314-live-collab.html</guid>
-  <pubDate>Sun, 31 Mar 2024 05:10:08 GMT</pubDate>
+  <pubDate>Mon, 01 Apr 2024 01:26:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1482,7 +1590,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240307-rabbitmq-ra.html</guid>
-  <pubDate>Sun, 31 Mar 2024 05:10:08 GMT</pubDate>
+  <pubDate>Mon, 01 Apr 2024 01:26:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1570,7 +1678,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240305-v-sekai-launcher.html</guid>
-  <pubDate>Sun, 31 Mar 2024 05:10:08 GMT</pubDate>
+  <pubDate>Mon, 01 Apr 2024 01:26:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1981,7 +2089,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-vrm-substance-editor.html</guid>
-  <pubDate>Sun, 31 Mar 2024 05:10:08 GMT</pubDate>
+  <pubDate>Mon, 01 Apr 2024 01:26:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2057,7 +2165,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-vrm-acronym-correction.html</guid>
-  <pubDate>Sun, 31 Mar 2024 05:10:08 GMT</pubDate>
+  <pubDate>Mon, 01 Apr 2024 01:26:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2138,7 +2246,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-blender-to-godot.html</guid>
-  <pubDate>Sun, 31 Mar 2024 05:10:08 GMT</pubDate>
+  <pubDate>Mon, 01 Apr 2024 01:26:57 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2244,119 +2352,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240217-workload-benchmarking.html</guid>
-  <pubDate>Sun, 31 Mar 2024 05:10:08 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240217-intended-effort-versioning.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-adoption-of-intended-effort-versioning-effver-in-v-sekai" class="level1">
-<h1>Proposed: Adoption of Intended Effort Versioning (EffVer) in V-Sekai</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>V-Sekai currently does not adhere to any specific versioning scheme. This can lead to confusion and inefficiency when users try to adopt new versions of the software.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Without a clear versioning system, users may struggle to understand the effort required to adopt new versions of V-Sekai. This can result in wasted time and resources, and potentially deter users from updating to newer versions.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>We propose adopting EffVer, short for Intended Effort Versioning. This versioning scheme categorizes version increments into Macro, Meso, and Micro, based on the effort needed for adoption—large, some, and little to no effort, respectively.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Example of EffVer in action</span></span>
-<span id="cb1-2">version <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"1.0.0"</span>  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Initial release</span></span>
-<span id="cb1-3"></span>
-<span id="cb1-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># A micro update requiring little to no effort to adopt</span></span>
-<span id="cb1-5">version <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"1.0.1"</span></span>
-<span id="cb1-6"></span>
-<span id="cb1-7"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># A meso update requiring some effort to adopt</span></span>
-<span id="cb1-8">version <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"1.1.0"</span></span>
-<span id="cb1-9"></span>
-<span id="cb1-10"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># A macro update requiring large effort to adopt</span></span>
-<span id="cb1-11">version <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"2.0.0"</span></span></code></pre></div>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p>Adopting EffVer would provide clear communication to users about the expected effort required to adopt new versions of V-Sekai. This respects users’ time by quantifying and communicating the adoption effort upfront.</p>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>The main downside is that it requires the development team to accurately estimate the effort required for each update, which could be subjective and vary between users.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Alternatives such as Semantic Versioning (SemVer) and Calendar Versioning (CalVer) were considered. However, these focus on technical orthogonality or time of release, rather than the intended impact of changes.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>EffVer may not be as effective for infrequent users who are less familiar with the software and may require more effort to adopt new versions regardless of the changes made.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>The implementation of EffVer would be done by the V-Sekai development team and integrated into the core project.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team and community stakeholders.</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai, Avatar Customization, AI, Facial Expressions</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
-<li><a href="https://jacobtomlinson.dev/effver/">Intended Effort Versioning (EffVer)</a></li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240217-intended-effort-versioning.html</guid>
-  <pubDate>Sun, 31 Mar 2024 05:10:08 GMT</pubDate>
+  <pubDate>Mon, 01 Apr 2024 01:26:57 GMT</pubDate>
 </item>
 </channel>
 </rss>
