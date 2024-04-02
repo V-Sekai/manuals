@@ -1,16 +1,16 @@
-# V-Sekai Changelog - Template
+# V-Sekai Changelog - March 2024
 
-## \[Released]
+## [Released]
 
 - Not applicable for this month.
 
-## \[Unreleased]
+## [Unreleased]
 
 - Not applicable for this month.
 
 ### Added
 
-- Not applicable for this month.
+- **GDC Demo**: We attended the Game Developers Conference (GDC) in San Francisco, California, USA. We demonstrated the capabilities of the Godot Engine on an Android tablet.
 
 ### Changed
 
@@ -34,6 +34,6 @@
 
 This project does not adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## \[Previous Releases]
+## [Previous Releases]
 
 - Not applicable for this month.

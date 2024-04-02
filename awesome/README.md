@@ -52,6 +52,7 @@ Modules extend Godot Engine core (C++).
 - [Godot GLTF 2.0 Scene Exporter](https://godotengine.org/article/introducing-the-godot-gltf-2-0-scene-exporter/)
 - [Animation Retargeting in Godot 4.0](https://godotengine.org/article/animation-retargeting-in-godot-4-0/)
 - [Godot Engine PRs by File](https://godotengine.github.io/godot-prs-by-file/)
+- [Getty OpenContent CC0](https://www.getty.edu/art/collection/search?open_content=true)
 
 ## Artwork
 
