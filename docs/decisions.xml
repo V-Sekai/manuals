@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.552</generator>
-<lastBuildDate>Mon, 01 Apr 2024 21:25:25 GMT</lastBuildDate>
+<lastBuildDate>Tue, 02 Apr 2024 05:46:13 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,162 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Mon, 01 Apr 2024 21:25:25 GMT</pubDate>
+  <pubDate>Tue, 02 Apr 2024 05:46:13 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240401-shader-graphic.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-material-shader-graphic-shirt-with-sharp-edges" class="level1">
+<h1>Proposed: Material Shader Graphic Shirt with Sharp Edges</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>In the vibrant and ever-evolving realm of virtual reality, personal expression is paramount. Users crave the ability to showcase their unique style and personality through their avatars. One powerful avenue for this self-expression is through avatar apparel customization. In this scenario, we’re exploring the creation of a virtual shirt adorned with two distinct patterns. These patterns are applied using SVG files that are converted into a signed distance field mask, ensuring the edges remain crisp and sharp.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>At present, there’s no straightforward method to design a shirt featuring two different patterns using SVG files in MaterialX, while also maintaining sharp pattern edges. This proposal seeks to address and resolve this issue.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>We can harness the power of MaterialX’s shader graph system to craft a custom shader for our shirt. Here’s a rudimentary sketch of how it might be structured:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Import MaterialX library</span></span>
+<span id="cb1-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> MaterialX <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> mx</span>
+<span id="cb1-3"></span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create a new document</span></span>
+<span id="cb1-5">doc <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> mx.createDocument()</span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create a new shader graph</span></span>
+<span id="cb1-8">shaderGraph <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> doc.addNode(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'shadergraph'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'myShaderGraph'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'surfaceshader'</span>)</span>
+<span id="cb1-9"></span>
+<span id="cb1-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add two image nodes for our SVG patterns</span></span>
+<span id="cb1-11">pattern1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> shaderGraph.addInput(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'pattern1'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'filename'</span>)</span>
+<span id="cb1-12">pattern2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> shaderGraph.addInput(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'pattern2'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'filename'</span>)</span>
+<span id="cb1-13"></span>
+<span id="cb1-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Convert SVGs to signed distance fields for sharp edges</span></span>
+<span id="cb1-15">sdfPattern1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> convertSVGToSDF(pattern1)</span>
+<span id="cb1-16">sdfPattern2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> convertSVGToSDF(pattern2)</span>
+<span id="cb1-17"></span>
+<span id="cb1-18"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add a mix node to blend the two patterns together</span></span>
+<span id="cb1-19">mix <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> shaderGraph.addNode(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'mix'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'mix'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'color3'</span>)</span>
+<span id="cb1-20">mix.setInputValue(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'fg'</span>, sdfPattern1)</span>
+<span id="cb1-21">mix.setInputValue(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'bg'</span>, sdfPattern2)</span>
+<span id="cb1-22"></span>
+<span id="cb1-23"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Connect the mix node to the shader graph output</span></span>
+<span id="cb1-24">shaderGraph.setOutputValue(mix)</span></code></pre></div>
+<p>Please note, this is a simplified example and may require adjustments based on your project’s specific needs.</p>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>Implementing this feature will empower users with additional options for avatar customization. This could potentially boost user engagement and satisfaction. Moreover, by utilizing signed distance fields, we can guarantee sharp pattern edges, enhancing the visual appeal of the shirt.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>The primary drawback is that this feature could potentially amplify the complexity of the codebase. It may also necessitate additional resources for implementation and ongoing maintenance.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An alternative approach might involve using a different library or tool that already supports this feature. However, this could potentially introduce other challenges such as compatibility issues or increased project complexity.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>This feature might not see frequent use if the majority of users favor simpler designs for their avatars’ clothing. Nonetheless, it could still prove beneficial for those desiring more advanced customization options.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>This feature will be developed by the V-Sekai development team and will form an integral part of our project’s core functionality.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240401-shader-graphic.html</guid>
+  <pubDate>Tue, 02 Apr 2024 05:46:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -183,7 +338,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240331-vrc-vrm-compatibility.html</guid>
-  <pubDate>Mon, 01 Apr 2024 21:25:25 GMT</pubDate>
+  <pubDate>Tue, 02 Apr 2024 05:46:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -288,7 +443,7 @@ font-style: inherit;"># Open https://rancher.192.168.0.65.sslip.io/dashboard/aut
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-k8s-harvester-hci.html</guid>
-  <pubDate>Mon, 01 Apr 2024 21:25:25 GMT</pubDate>
+  <pubDate>Tue, 02 Apr 2024 05:46:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -376,7 +531,7 @@ font-style: inherit;"># Open https://rancher.192.168.0.65.sslip.io/dashboard/aut
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-hyperv-harvester-test.html</guid>
-  <pubDate>Mon, 01 Apr 2024 21:25:25 GMT</pubDate>
+  <pubDate>Tue, 02 Apr 2024 05:46:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -575,7 +730,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-gitlab-helm.html</guid>
-  <pubDate>Mon, 01 Apr 2024 21:25:25 GMT</pubDate>
+  <pubDate>Tue, 02 Apr 2024 05:46:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -678,7 +833,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-cicd-gitlab.html</guid>
-  <pubDate>Mon, 01 Apr 2024 21:25:25 GMT</pubDate>
+  <pubDate>Tue, 02 Apr 2024 05:46:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -766,7 +921,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-bitnami-rancher-helm-catalog.html</guid>
-  <pubDate>Mon, 01 Apr 2024 21:25:25 GMT</pubDate>
+  <pubDate>Tue, 02 Apr 2024 05:46:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -852,7 +1007,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240329-ready-to-go-kit-windows-11.html</guid>
-  <pubDate>Mon, 01 Apr 2024 21:25:25 GMT</pubDate>
+  <pubDate>Tue, 02 Apr 2024 05:46:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -955,7 +1110,7 @@ font-style: inherit;">if</span> feasible:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240326-verifying-and-finetuning-plans.html</guid>
-  <pubDate>Mon, 01 Apr 2024 21:25:25 GMT</pubDate>
+  <pubDate>Tue, 02 Apr 2024 05:46:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1048,7 +1203,7 @@ function initiate_conversation(character):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240326-heartstrings-vr.html</guid>
-  <pubDate>Mon, 01 Apr 2024 21:25:25 GMT</pubDate>
+  <pubDate>Tue, 02 Apr 2024 05:46:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1184,7 +1339,7 @@ font-style: inherit;">id</span>)</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240325-table-avatar-embedded-xmp.html</guid>
-  <pubDate>Mon, 01 Apr 2024 21:25:25 GMT</pubDate>
+  <pubDate>Tue, 02 Apr 2024 05:46:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1306,7 +1461,7 @@ font-style: inherit;">self</span>.fdb.update(state)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240325-fdb-sqlite-blender-godot.html</guid>
-  <pubDate>Mon, 01 Apr 2024 21:25:25 GMT</pubDate>
+  <pubDate>Tue, 02 Apr 2024 05:46:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1424,7 +1579,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240324-v-sekai-as-slc.html</guid>
-  <pubDate>Mon, 01 Apr 2024 21:25:25 GMT</pubDate>
+  <pubDate>Tue, 02 Apr 2024 05:46:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1505,7 +1660,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240314-live-collab.html</guid>
-  <pubDate>Mon, 01 Apr 2024 21:25:25 GMT</pubDate>
+  <pubDate>Tue, 02 Apr 2024 05:46:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1590,7 +1745,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240307-rabbitmq-ra.html</guid>
-  <pubDate>Mon, 01 Apr 2024 21:25:25 GMT</pubDate>
+  <pubDate>Tue, 02 Apr 2024 05:46:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1678,7 +1833,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240305-v-sekai-launcher.html</guid>
-  <pubDate>Mon, 01 Apr 2024 21:25:25 GMT</pubDate>
+  <pubDate>Tue, 02 Apr 2024 05:46:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2089,7 +2244,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-vrm-substance-editor.html</guid>
-  <pubDate>Mon, 01 Apr 2024 21:25:25 GMT</pubDate>
+  <pubDate>Tue, 02 Apr 2024 05:46:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2165,7 +2320,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-vrm-acronym-correction.html</guid>
-  <pubDate>Mon, 01 Apr 2024 21:25:25 GMT</pubDate>
+  <pubDate>Tue, 02 Apr 2024 05:46:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2246,113 +2401,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240218-blender-to-godot.html</guid>
-  <pubDate>Mon, 01 Apr 2024 21:25:25 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240217-workload-benchmarking.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposal-for-using-workloads-to-emulate-the-usage-patterns" class="level1">
-<h1>Proposal for using workloads to emulate the usage patterns</h1>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>V-Sekai is a social virtual reality platform. Users interact with each other through avatars in different environments. The main operations include high read operations, moderate to high write operations, and latency sensitivity.</p>
-</section>
-<section id="problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>To ensure the best performance and user experience, we need to understand how the database system might perform under conditions similar to those experienced by V-Sekai. This includes balancing between high read operations for content delivery and write operations for dynamic user interactions, all while maintaining low latency.</p>
-</section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>We propose to use the Yahoo! Cloud Serving Benchmark (YCSB) workload to emulate the usage patterns of V-Sekai. This would involve a combination of workloads:</p>
-<section id="workload-a" class="level3">
-<h3 class="anchored" data-anchor-id="workload-a">Workload A</h3>
-<ul>
-<li>50% read and 50% update operations.</li>
-<li>Simulates user interactions within V-Sekai, such as position updates, gestures, or environment interactions.</li>
-</ul>
-</section>
-<section id="workload-b" class="level3">
-<h3 class="anchored" data-anchor-id="workload-b">Workload B</h3>
-<ul>
-<li>95% read and 5% update operations.</li>
-<li>Represents the frequent fetching of environment and avatar details.</li>
-</ul>
-</section>
-<section id="customized-workload" class="level3">
-<h3 class="anchored" data-anchor-id="customized-workload">Customized Workload</h3>
-<ul>
-<li>Adjusting the read and write ratios to reflect the real-time, interactive nature of V-Sekai.</li>
-<li>Emphasizing low latency in the benchmarking parameters.</li>
-</ul>
-<pre class="pseudo"><code>1. Set up YCSB with Workload A and B
-2. Customize the read/write ratio based on V-Sekai's usage patterns
-3. Emphasize low latency in the benchmarking parameters
-4. Run the benchmark and analyze the results</code></pre>
-</section>
-</section>
-<section id="benefits" class="level2">
-<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
-<ul>
-<li>Provides insights into how a database system might perform under V-Sekai-like conditions.</li>
-<li>Helps optimize the balance between read and write operations.</li>
-<li>Ensures low latency for a seamless user experience.</li>
-</ul>
-</section>
-<section id="downsides" class="level2">
-<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
-<ul>
-<li>Requires careful tuning and understanding of YCSB workloads.</li>
-<li>The benchmark results might not perfectly reflect real-world usage due to the synthetic nature of benchmarks.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>An alternative would be to use pre-defined YCSB workloads without customization. However, this might not accurately reflect V-Sekai’s specific usage patterns.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>In scenarios where the usage patterns are not consistent or predictable, customizing the YCSB workload might not provide accurate insights.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>The setup and customization of the YCSB benchmark will be done by the V-Sekai development team with support from the community stakeholders.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Rejected</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team and community stakeholders.</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai, Performance Benchmarking, Database Optimization</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a></li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a></li>
-</ol>
-<p><em>This proposal was assisted by Aria, an AI assistant.</em></p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240217-workload-benchmarking.html</guid>
-  <pubDate>Mon, 01 Apr 2024 21:25:25 GMT</pubDate>
+  <pubDate>Tue, 02 Apr 2024 05:46:13 GMT</pubDate>
 </item>
 </channel>
 </rss>
