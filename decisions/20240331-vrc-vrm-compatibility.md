@@ -22,6 +22,7 @@ The proposed solution involves a series of steps outlined in the README below:
 8. Add vrcfury jerry's templates
 9. Change the eyes to move up or down [-2, 2].
 10. Make sure the `Body` has the perfect sync blend shapes. Delete closed mouth blend shape.
+10. Choose either the MPEG4 blendshapes or Perfect sync. Delete one or the other.
 11. Remove empty vrc parameters
 12. Remove Physbones with missing transforms from secondary.
 13. Convert bone clusters in sphere colliders to capsule colliders to go from VERY POOR to POOR.
