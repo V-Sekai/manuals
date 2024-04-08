@@ -1,8 +1,8 @@
-# Proposed:
+# Proposed: Provide a V-Sekai Starter Kit
 
 ## The Context
 
-Need to generate a V-Sekai sdk on itch.
+Provide a V-Sekai starter kit that is complete and usable.
 
 ## The Problem Statement
 
