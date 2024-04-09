@@ -1,4 +1,4 @@
-# V-Sekai: Focusing on PCVR vs Android Build
+# Accepted: Focusing on PCVR vs Android Build
 
 ## Context
 
@@ -36,7 +36,7 @@ The decision to focus on PCVR will be a core strategy for V-Sekai, implemented b
 
 ## Status
 
-Proposed
+Accepted
 
 ## Decision Makers
 
