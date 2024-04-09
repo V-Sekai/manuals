@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.553</generator>
-<lastBuildDate>Tue, 09 Apr 2024 07:18:48 GMT</lastBuildDate>
+<lastBuildDate>Tue, 09 Apr 2024 14:24:12 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Tue, 09 Apr 2024 07:18:48 GMT</pubDate>
+  <pubDate>Tue, 09 Apr 2024 14:24:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -170,7 +170,111 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240409-elixir-raft-vs-sqlite-fdb.html</guid>
-  <pubDate>Tue, 09 Apr 2024 07:18:48 GMT</pubDate>
+  <pubDate>Tue, 09 Apr 2024 14:24:12 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240409-crud-godot-tiles.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-sunny-park-test-case-for-3d-tile-sync" class="level1">
+<h1>Proposed: “Sunny Park” Test Case for 3D Tile Sync</h1>
+<section id="objective" class="level2">
+<h2 class="anchored" data-anchor-id="objective">Objective</h2>
+<p>This test case uses selected database technology to evaluate the efficiency and accuracy of syncing 3D tiles between Blender and Godot. The test will involve basic CRUD operations on a set of 3D tiles representing a park.</p>
+</section>
+<section id="components" class="level2">
+<h2 class="anchored" data-anchor-id="components">Components</h2>
+<ul>
+<li><strong>3D Tiles</strong>: Grass, Pathway, Bench, Tree, Pond</li>
+<li><strong>Tools</strong>: Blender (creation/editing), Godot Engine (scene assembly), Database (syncing)</li>
+</ul>
+</section>
+<section id="steps" class="level2">
+<h2 class="anchored" data-anchor-id="steps">Steps</h2>
+<ol type="1">
+<li><strong>Create (Blender)</strong>: Design 5 3D park tiles and store their data in the database.</li>
+<li><strong>Read (Godot)</strong>: Import tiles from the database into Godot and assemble “Sunny Park.”</li>
+<li><strong>Update (Blender)</strong>: Modify a tile (e.g., bench color), update the database, and check the update in Godot.</li>
+<li><strong>Delete (Blender)</strong>: Remove a tile (e.g., pond), delete it from the database, and confirm removal in Godot.</li>
+</ol>
+</section>
+<section id="evaluation-criteria" class="level2">
+<h2 class="anchored" data-anchor-id="evaluation-criteria">Evaluation Criteria</h2>
+<ul>
+<li><strong>Synchronization Accuracy</strong>: Ensure Blender changes are accurately reflected in Godot.</li>
+<li><strong>Performance</strong>: Measure time for sync operations.</li>
+<li><strong>Ease of Use</strong>: Assess the complexity of sync steps.</li>
+<li><strong>Error Handling</strong>: Check the system’s response to errors like missing data.</li>
+</ul>
+<p>Tiling will be done by brickworks schema. See also lawnjelly’s spergler algorithm and libgodot.</p>
+</section>
+</section>
+<section id="proposal" class="level1">
+<h1>Proposal</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>The context of this proposal is the need for efficient and accurate synchronization of 3D tiles between Blender and Godot Engine.</p>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>The problem is determining whether sqlite-fdb, multi raft or cockroachdb would be faster for Blender to Godot engine 3D tiles sync.</p>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<p>The benefits of this proposal include improved performance, ease of use, and error handling in the synchronization process.</p>
+</section>
+<section id="downsides" class="level2">
+<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
+<p>Potential downsides may include increased complexity and potential for errors during synchronization.</p>
+</section>
+<section id="road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="road-not-taken">Road Not Taken</h2>
+<p>Alternatives not considered include other database technologies that could potentially be used for synchronization.</p>
+</section>
+<section id="infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
+<p>This proposal may not apply to projects that do not require frequent synchronization of 3D tiles between Blender and Godot Engine.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>The V-Sekai development team will implement this proposal.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+<li><a href="https://pure.bond.edu.au/ws/portalfiles/portal/18275482/Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG_.pdf">Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG by Prasetya, Kusno</a></li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240409-crud-godot-tiles.html</guid>
+  <pubDate>Tue, 09 Apr 2024 14:24:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -252,7 +356,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240407-pcvr-vs-standalone.html</guid>
-  <pubDate>Tue, 09 Apr 2024 07:18:48 GMT</pubDate>
+  <pubDate>Tue, 09 Apr 2024 14:24:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -333,7 +437,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240406-web-based-explore.html</guid>
-  <pubDate>Tue, 09 Apr 2024 07:18:48 GMT</pubDate>
+  <pubDate>Tue, 09 Apr 2024 14:24:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -420,7 +524,7 @@ font-style: inherit;">butler</span> push myproject.catar user/game:channel</span
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240406-itch-github-actions.html</guid>
-  <pubDate>Tue, 09 Apr 2024 07:18:48 GMT</pubDate>
+  <pubDate>Tue, 09 Apr 2024 14:24:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -575,7 +679,7 @@ font-style: inherit;"># Connect the mix node to the shader graph output</span></
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240401-shader-graphic.html</guid>
-  <pubDate>Tue, 09 Apr 2024 07:18:48 GMT</pubDate>
+  <pubDate>Tue, 09 Apr 2024 14:24:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -684,7 +788,7 @@ font-style: inherit;"># Connect the mix node to the shader graph output</span></
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240331-vrc-vrm-compatibility.html</guid>
-  <pubDate>Tue, 09 Apr 2024 07:18:48 GMT</pubDate>
+  <pubDate>Tue, 09 Apr 2024 14:24:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -789,7 +893,7 @@ font-style: inherit;"># Open https://rancher.192.168.0.65.sslip.io/dashboard/aut
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-k8s-harvester-hci.html</guid>
-  <pubDate>Tue, 09 Apr 2024 07:18:48 GMT</pubDate>
+  <pubDate>Tue, 09 Apr 2024 14:24:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -877,7 +981,7 @@ font-style: inherit;"># Open https://rancher.192.168.0.65.sslip.io/dashboard/aut
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-hyperv-harvester-test.html</guid>
-  <pubDate>Tue, 09 Apr 2024 07:18:48 GMT</pubDate>
+  <pubDate>Tue, 09 Apr 2024 14:24:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1076,7 +1180,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-gitlab-helm.html</guid>
-  <pubDate>Tue, 09 Apr 2024 07:18:48 GMT</pubDate>
+  <pubDate>Tue, 09 Apr 2024 14:24:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1179,7 +1283,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-cicd-gitlab.html</guid>
-  <pubDate>Tue, 09 Apr 2024 07:18:48 GMT</pubDate>
+  <pubDate>Tue, 09 Apr 2024 14:24:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1267,7 +1371,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-bitnami-rancher-helm-catalog.html</guid>
-  <pubDate>Tue, 09 Apr 2024 07:18:48 GMT</pubDate>
+  <pubDate>Tue, 09 Apr 2024 14:24:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1353,7 +1457,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240329-ready-to-go-kit-windows-11.html</guid>
-  <pubDate>Tue, 09 Apr 2024 07:18:48 GMT</pubDate>
+  <pubDate>Tue, 09 Apr 2024 14:24:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1456,7 +1560,7 @@ font-style: inherit;">if</span> feasible:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240326-verifying-and-finetuning-plans.html</guid>
-  <pubDate>Tue, 09 Apr 2024 07:18:48 GMT</pubDate>
+  <pubDate>Tue, 09 Apr 2024 14:24:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1549,7 +1653,7 @@ function initiate_conversation(character):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240326-heartstrings-vr.html</guid>
-  <pubDate>Tue, 09 Apr 2024 07:18:48 GMT</pubDate>
+  <pubDate>Tue, 09 Apr 2024 14:24:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1685,7 +1789,7 @@ font-style: inherit;">id</span>)</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240325-table-avatar-embedded-xmp.html</guid>
-  <pubDate>Tue, 09 Apr 2024 07:18:48 GMT</pubDate>
+  <pubDate>Tue, 09 Apr 2024 14:24:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1807,7 +1911,7 @@ font-style: inherit;">self</span>.fdb.update(state)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240325-fdb-sqlite-blender-godot.html</guid>
-  <pubDate>Tue, 09 Apr 2024 07:18:48 GMT</pubDate>
+  <pubDate>Tue, 09 Apr 2024 14:24:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1925,7 +2029,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240324-v-sekai-as-slc.html</guid>
-  <pubDate>Tue, 09 Apr 2024 07:18:48 GMT</pubDate>
+  <pubDate>Tue, 09 Apr 2024 14:24:12 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2006,92 +2110,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240314-live-collab.html</guid>
-  <pubDate>Tue, 09 Apr 2024 07:18:48 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240307-rabbitmq-ra.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposal-implement-ra-in-v-sekai" class="level2">
-<h2 class="anchored" data-anchor-id="proposal-implement-ra-in-v-sekai">Proposal: Implement Ra in V-Sekai</h2>
-<section id="context" class="level3">
-<h3 class="anchored" data-anchor-id="context">Context</h3>
-<p>V-Sekai, a VR social network, needs reliable state machines for data persistence. Current system may struggle with data consistency and failure recovery.</p>
-</section>
-<section id="problem" class="level3">
-<h3 class="anchored" data-anchor-id="problem">Problem</h3>
-<p>User experience can be disrupted due to potential data inconsistencies and loss, leading to issues like lost interactions and inconsistent virtual states.</p>
-</section>
-<section id="solution" class="level3">
-<h3 class="anchored" data-anchor-id="solution">Solution</h3>
-<p>Implement Ra, a Raft implementation by Team RabbitMQ, in any Erlang or Elixir project. Ra enables persistent, fault-tolerant, replicated state machines.</p>
-</section>
-<section id="benefits" class="level3">
-<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
-<ul>
-<li><strong>Fault Tolerance</strong>: Ra ensures data consistency via leader election and log replication.</li>
-<li><strong>Efficiency</strong>: Supports log compaction and snapshot installation.</li>
-<li><strong>Scalability</strong>: Suitable for large-scale applications like V-Sekai.</li>
-</ul>
-</section>
-<section id="downsides" class="level3">
-<h3 class="anchored" data-anchor-id="downsides">Downsides</h3>
-<ul>
-<li><strong>Learning Curve</strong>: Developers need to learn Ra and the Raft consensus algorithm.</li>
-<li><strong>Dependency</strong>: Ra could increase project complexity.</li>
-</ul>
-</section>
-<section id="alternatives" class="level3">
-<h3 class="anchored" data-anchor-id="alternatives">Alternatives</h3>
-<p>Other solutions like CRDTs were considered but have major shortcomings.</p>
-</section>
-<section id="infrequent-use-case" class="level3">
-<h3 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h3>
-<p>In small distributed systems with rare failures, Ra’s benefits may not be fully realized.</p>
-</section>
-<section id="implementation" class="level3">
-<h3 class="anchored" data-anchor-id="implementation">Implementation</h3>
-<p>The V-Sekai team will implement Ra.</p>
-</section>
-<section id="status" class="level3">
-<h3 class="anchored" data-anchor-id="status">Status</h3>
-<p>Proposed</p>
-</section>
-<section id="decision-makers" class="level3">
-<h3 class="anchored" data-anchor-id="decision-makers">Decision Makers</h3>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level3">
-<h3 class="anchored" data-anchor-id="tags">Tags</h3>
-<ul>
-<li>V-Sekai</li>
-<li>Ra</li>
-<li>Erlang</li>
-<li>Elixir</li>
-<li>Distributed Systems</li>
-</ul>
-</section>
-<section id="further-reading" class="level3">
-<h3 class="anchored" data-anchor-id="further-reading">Further Reading</h3>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a></li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a></li>
-</ol>
-<p>Assisted by Aria, an AI assistant.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240307-rabbitmq-ra.html</guid>
-  <pubDate>Tue, 09 Apr 2024 07:18:48 GMT</pubDate>
+  <pubDate>Tue, 09 Apr 2024 14:24:12 GMT</pubDate>
 </item>
 </channel>
 </rss>
