@@ -155,44 +155,43 @@ ul.task-list li input[type="checkbox"] {
 <h1>Proposed: “Sunny Park” Test Case for 3D Tile Sync</h1>
 <section id="objective" class="level2">
 <h2 class="anchored" data-anchor-id="objective">Objective</h2>
-<p>This test case uses selected database technology to evaluate the efficiency and accuracy of syncing 3D tiles between Blender and Godot. The test will involve basic CRUD operations on a set of 3D tiles representing a park.</p>
+<p>This test case aims to utilize a specific database technology, sqlite-fdb, to assess the efficiency and accuracy of syncing 3D tiles between Blender and Godot. The test will involve basic CRUD operations on a set of 3D tiles representing a park.</p>
 </section>
 <section id="components" class="level2">
 <h2 class="anchored" data-anchor-id="components">Components</h2>
 <ul>
-<li><strong>3D Tiles</strong>: Grass, Pathway, Bench, Tree, Pond</li>
-<li><strong>Tools</strong>: Blender (creation/editing), Godot Engine (scene assembly), Database (syncing)</li>
+<li><strong>3D Tiles</strong>: These include Grass, Pathway, Bench, Tree, Pond.</li>
+<li><strong>Tools</strong>: The tools used in this process are Blender (for creation/editing), Godot Engine (for scene assembly), and Database (for syncing).</li>
 </ul>
 </section>
 <section id="steps" class="level2">
 <h2 class="anchored" data-anchor-id="steps">Steps</h2>
 <ol type="1">
-<li><strong>Create (Blender)</strong>: Design 5 3D park tiles and store their data in the database.</li>
-<li><strong>Read (Godot)</strong>: Import tiles from the database into Godot and assemble “Sunny Park.”</li>
-<li><strong>Update (Blender)</strong>: Modify a tile (e.g., bench color), update the database, and check the update in Godot.</li>
-<li><strong>Delete (Blender)</strong>: Remove a tile (e.g., pond), delete it from the database, and confirm removal in Godot.</li>
+<li><strong>Create (Blender)</strong>: Design 5 different 3D park tiles and store their data in the database.</li>
+<li><strong>Read (Godot)</strong>: Import the tiles from the database into Godot and assemble the “Sunny Park.”</li>
+<li><strong>Update (Blender)</strong>: Modify a tile (e.g., change the color of the bench), update the database, and verify the update in Godot.</li>
+<li><strong>Delete (Blender)</strong>: Remove a tile (e.g., pond), delete it from the database, and confirm its removal in Godot.</li>
 </ol>
 </section>
 <section id="evaluation-criteria" class="level2">
 <h2 class="anchored" data-anchor-id="evaluation-criteria">Evaluation Criteria</h2>
 <ul>
-<li><strong>Synchronization Accuracy</strong>: Ensure Blender changes are accurately reflected in Godot.</li>
-<li><strong>Performance</strong>: Measure time for sync operations.</li>
-<li><strong>Ease of Use</strong>: Assess the complexity of sync steps.</li>
-<li><strong>Error Handling</strong>: Check the system’s response to errors like missing data.</li>
+<li><strong>Synchronization Accuracy</strong>: Ensure that changes made in Blender are accurately reflected in Godot.</li>
+<li><strong>Performance</strong>: Measure the time taken for sync operations.</li>
+<li><strong>Ease of Use</strong>: Evaluate the complexity of the sync steps.</li>
+<li><strong>Error Handling</strong>: Check how the system responds to errors such as missing data.</li>
 </ul>
-<p>Tiling will be done by brickworks schema. See also lawnjelly’s spergler algorithm and libgodot.</p>
 </section>
 </section>
 <section id="proposal" class="level1">
 <h1>Proposal</h1>
 <section id="context" class="level2">
 <h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>The context of this proposal is the need for efficient and accurate synchronization of 3D tiles between Blender and Godot Engine.</p>
+<p>This proposal arises from the need for an efficient and accurate synchronization of 3D tiles between Blender and Godot Engine.</p>
 </section>
 <section id="problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>The problem is determining whether sqlite-fdb, multi raft or cockroachdb would be faster for Blender to Godot engine 3D tiles sync.</p>
+<p>The problem is determining whether SQLite-fdb would be faster for syncing 3D tiles from Blender to Godot engine compared to multi raft or cockroachdb.</p>
 </section>
 <section id="benefits" class="level2">
 <h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
@@ -204,7 +203,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="road-not-taken">Road Not Taken</h2>
-<p>Alternatives not considered include other database technologies that could potentially be used for synchronization.</p>
+<p>This proposal did not consider other database technologies that could be used for synchronization.</p>
 </section>
 <section id="infrequent-use-case" class="level2">
 <h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
@@ -212,7 +211,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>The V-Sekai development team will implement this proposal.</p>
+<p>The V-Sekai development team will be responsible for implementing this proposal.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
@@ -236,6 +235,8 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
 <li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
 <li><a href="https://pure.bond.edu.au/ws/portalfiles/portal/18275482/Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG_.pdf">Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG by Prasetya, Kusno</a></li>
+<li>lawnjelly’s spergler algorithm for splitting meshes</li>
+<li>libgodot.</li>
 </ol>
 <p>AI assistant Aria assisted with this article.</p>
 
