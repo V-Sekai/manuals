@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.553</generator>
-<lastBuildDate>Thu, 11 Apr 2024 05:52:25 GMT</lastBuildDate>
+<lastBuildDate>Thu, 11 Apr 2024 14:31:43 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:52:25 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 14:31:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -89,24 +89,25 @@
 <h1>Proposal: Implementing Elixir Data Models for Memory, Local, Bulk, and Global Storage</h1>
 <section id="context" class="level2">
 <h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>We aim to efficiently and reliably store bulk model data and manage game entity replication.</p>
+<p>The goal is to effectively manage large volumes of 3D model data and game entity replication in a reliable and efficient manner.</p>
 </section>
 <section id="problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>The existing system struggles with storing large volumes of 3D model data and managing game entity replication effectively. This results in performance issues and potential data loss.</p>
+<p>The current system faces challenges with handling large amounts of 3D model data and managing game entity replication. This leads to performance issues and potential data loss.</p>
 </section>
 <section id="proposed-solution" class="level2">
 <h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>The proposed solution involves a series of steps to ensure data consistency and durability.</p>
-<p>Firstly, we will create a Content Delivery Network (CDN) like a static sftp file store. This will help us efficiently deliver our content to users.</p>
-<p>Next, we will configure Etso for Erlang Term Storage (ETS). Etso manages ephemeral, in-memory data structures with Ecto schemas in Elixir applications. It’s an ideal choice for quick data manipulation and caching.</p>
-<p>To ensure distributed consensus across system nodes, which is crucial for coordinated state changes and maintaining data consistency, we will deploy Raft/Ra.</p>
-<p>For persistent storage of critical, structured data that requires ACID transactions and global accessibility, we will utilize CockroachDB. This ensures the durability of our data.</p>
-<p>Data flow management is another essential aspect of our solution. We will establish protocols to move temporary data from Etso/ETS to the CDN for bulk storage. For structured data persistence, we will use CockroachDB.</p>
-<p>Finally, we will use Raft/Ra to manage write operations across the cdn and CockroachDB to ensure consistency and fault tolerance. This comprehensive approach will provide a robust solution for managing and maintaining data consistency.</p>
+<p>The solution involves several steps to ensure data consistency and durability:</p>
+<ol type="1">
+<li><p><strong>Content Delivery Network (CDN)</strong>: We will create a CDN similar to a static sftp file store for efficient content delivery.</p></li>
+<li><p><strong>Etso for Erlang Term Storage (ETS)</strong>: Etso will be configured to manage temporary, in-memory data structures with Ecto schemas in Elixir applications. This is ideal for quick data manipulation and caching.</p></li>
+<li><p><strong>Raft/Ra for Distributed Consensus</strong>: Raft/Ra will be deployed to ensure distributed consensus across system nodes, which is crucial for coordinated state changes and maintaining data consistency.</p></li>
+<li><p><strong>CockroachDB for Persistent Storage</strong>: CockroachDB will be utilized for persistent storage of critical, structured data that requires ACID transactions and global accessibility. This ensures the durability of our data.</p></li>
+<li><p><strong>Data Flow Management</strong>: Protocols will be established to move temporary data from Etso/ETS to the CDN for bulk storage. For structured data persistence, we will use CockroachDB.</p></li>
+<li><p><strong>Consistency Management</strong>: Raft/Ra will manage write operations across the CDN and CockroachDB to ensure consistency and fault tolerance.</p></li>
+</ol>
 <section id="configure-etso-for-ets" class="level3">
 <h3 class="anchored" data-anchor-id="configure-etso-for-ets">Configure Etso for ETS</h3>
-<p>Etso will manage temporary, in-memory data structures with Ecto schemas in Elixir applications. This is ideal for quick data manipulation and caching.</p>
 <div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb1-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">defmodule</span> <span class="cn" style="color: #8f5902;
@@ -158,19 +159,19 @@ font-style: inherit;">end</span></span></code></pre></div>
 </section>
 <section id="deploy-raftra-for-consensus" class="level3">
 <h3 class="anchored" data-anchor-id="deploy-raftra-for-consensus">Deploy Raft/Ra for Consensus</h3>
-<p>We will implement Raft/Ra to ensure distributed consensus across system nodes. This is crucial for coordinated state changes and maintaining data consistency.</p>
+<p>Raft/Ra will be implemented to ensure distributed consensus across system nodes.</p>
 </section>
 <section id="utilize-cockroachdb-for-persistent-storage" class="level3">
 <h3 class="anchored" data-anchor-id="utilize-cockroachdb-for-persistent-storage">Utilize CockroachDB for Persistent Storage</h3>
-<p>CockroachDB will store critical, structured data requiring ACID transactions and global accessibility. This ensures data durability.</p>
+<p>CockroachDB will be used for storing critical, structured data that requires ACID transactions and global accessibility.</p>
 </section>
 <section id="data-flow-management-with-membrane-framework" class="level3">
 <h3 class="anchored" data-anchor-id="data-flow-management-with-membrane-framework">Data Flow Management with Membrane Framework</h3>
-<p>We will establish data flow protocols using the Membrane Framework to move temporary data from Etso/ETS to Desync for bulk storage and CockroachDB for structured data persistence.</p>
+<p>Data flow protocols will be established using the Membrane Framework to move temporary data from Etso/ETS to the CDN for bulk storage and CockroachDB for structured data persistence.</p>
 </section>
 <section id="ensure-consistency" class="level3">
 <h3 class="anchored" data-anchor-id="ensure-consistency">Ensure Consistency</h3>
-<p>Raft/Ra will manage write operations across Desync and CockroachDB, ensuring consistency and fault tolerance.</p>
+<p>Raft/Ra will manage write operations across the CDN and CockroachDB, ensuring consistency and fault tolerance.</p>
 </section>
 </section>
 <section id="benefits" class="level2">
@@ -191,7 +192,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 </section>
 <section id="alternatives-considered" class="level2">
 <h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
-<p>We considered traditional databases or file systems as alternatives, but they were rejected due to their limitations in handling large volumes of 3D model data and managing game entity replication.</p>
+<p>Traditional databases or file systems were considered but rejected due to their limitations in handling large volumes of 3D model data and managing game entity replication.</p>
 </section>
 <section id="infrequent-use-case" class="level2">
 <h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
@@ -231,7 +232,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240410-data-storage-elixir.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:52:25 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 14:31:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -326,7 +327,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240409-elixir-raft-vs-sqlite-fdb.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:52:25 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 14:31:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -431,7 +432,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240409-crud-godot-tiles.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:52:25 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 14:31:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -513,7 +514,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240407-pcvr-vs-standalone.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:52:25 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 14:31:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -594,7 +595,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240406-web-based-explore.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:52:25 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 14:31:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -681,7 +682,7 @@ font-style: inherit;">butler</span> push myproject.catar user/game:channel</span
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240406-itch-github-actions.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:52:25 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 14:31:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -836,7 +837,7 @@ font-style: inherit;"># Connect the mix node to the shader graph output</span></
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240401-shader-graphic.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:52:25 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 14:31:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -945,7 +946,7 @@ font-style: inherit;"># Connect the mix node to the shader graph output</span></
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240331-vrc-vrm-compatibility.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:52:25 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 14:31:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1050,7 +1051,7 @@ font-style: inherit;"># Open https://rancher.192.168.0.65.sslip.io/dashboard/aut
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-k8s-harvester-hci.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:52:25 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 14:31:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1138,7 +1139,7 @@ font-style: inherit;"># Open https://rancher.192.168.0.65.sslip.io/dashboard/aut
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-hyperv-harvester-test.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:52:25 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 14:31:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1337,7 +1338,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-gitlab-helm.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:52:25 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 14:31:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1440,7 +1441,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-cicd-gitlab.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:52:25 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 14:31:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1528,7 +1529,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-bitnami-rancher-helm-catalog.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:52:25 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 14:31:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1614,7 +1615,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240329-ready-to-go-kit-windows-11.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:52:25 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 14:31:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1717,7 +1718,7 @@ font-style: inherit;">if</span> feasible:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240326-verifying-and-finetuning-plans.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:52:25 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 14:31:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1810,7 +1811,7 @@ function initiate_conversation(character):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240326-heartstrings-vr.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:52:25 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 14:31:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1946,7 +1947,7 @@ font-style: inherit;">id</span>)</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240325-table-avatar-embedded-xmp.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:52:25 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 14:31:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2068,7 +2069,7 @@ font-style: inherit;">self</span>.fdb.update(state)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240325-fdb-sqlite-blender-godot.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:52:25 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 14:31:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2186,7 +2187,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240324-v-sekai-as-slc.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:52:25 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 14:31:43 GMT</pubDate>
 </item>
 </channel>
 </rss>
