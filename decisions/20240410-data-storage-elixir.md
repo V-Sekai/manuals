@@ -2,11 +2,11 @@
 
 ## Context
 
-The goal is to effectively manage large volumes of 3D model data and game entity replication in a reliable and efficient manner.
+The goal is to effectively manage large volumes of 3D model data and game entity replication reliably and efficiently.
 
 ## Problem Statement
 
-The current system faces challenges with handling large amounts of 3D model data and managing game entity replication. This leads to performance issues and potential data loss.
+The current system faces challenges handling large amounts of 3D model data and managing game entity replication. This leads to performance issues and potential data loss.
 
 ## Proposed Solution
 
@@ -18,7 +18,7 @@ The solution involves several steps to ensure data consistency and durability:
 
 3. **Raft/Ra for Distributed Consensus**: Raft/Ra will be deployed to ensure distributed consensus across system nodes, which is crucial for coordinated state changes and maintaining data consistency.
 
-4. **CockroachDB for Persistent Storage**: CockroachDB will be utilized for persistent storage of critical, structured data that requires ACID transactions and global accessibility. This ensures the durability of our data.
+4. **CockroachDB for Persistent Storage**: CockroachDB will store critical, structured data that requires ACID transactions and global accessibility. This ensures the durability of our data.
 
 5. **Data Flow Management**: Protocols will be established to move temporary data from Etso/ETS to the CDN for bulk storage. For structured data persistence, we will use CockroachDB.
 
@@ -41,11 +41,11 @@ Raft/Ra will be implemented to ensure distributed consensus across system nodes.
 
 ### Utilize CockroachDB for Persistent Storage
 
-CockroachDB will be used for storing critical, structured data that requires ACID transactions and global accessibility.
+CockroachDB will store critical, structured data that requires ACID transactions and global accessibility.
 
 ### Data Flow Management with Membrane Framework
 
-Data flow protocols will be established using the Membrane Framework to move temporary data from Etso/ETS to the CDN for bulk storage and CockroachDB for structured data persistence.
+The Membrane Framework will establish Data flow protocols to move temporary data from Etso/ETS to the CDN for bulk storage and CockroachDB for structured data persistence.
 
 ### Ensure Consistency
 
