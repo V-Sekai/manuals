@@ -12,7 +12,7 @@ The existing system struggles with storing large volumes of 3D model data and ma
 
 The proposed solution involves a series of steps to ensure data consistency and durability.
 
-Firstly, we will create a Content Delivery Network (CDN) using casync. This will help us efficiently deliver our content to users.
+Firstly, we will create a Content Delivery Network (CDN). This will help us efficiently deliver our content to users.
 
 Next, we will configure Etso for Erlang Term Storage (ETS). Etso manages ephemeral, in-memory data structures with Ecto schemas in Elixir applications. It's an ideal choice for quick data manipulation and caching.
 
@@ -22,18 +22,9 @@ For persistent storage of critical, structured data that requires ACID transacti
 
 Data flow management is another essential aspect of our solution. We will establish protocols to move temporary data from Etso/ETS to SeaweedFS for bulk storage. For structured data persistence, we will use CockroachDB.
 
-Finally, we will use Raft/Ra to manage write operations across SeaweedFS and CockroachDB to ensure consistency and fault tolerance. This comprehensive approach will provide a robust solution for managing and maintaining data consistency.
+Finally, we will use Raft/Ra to manage write operations across the cdn and CockroachDB to ensure consistency and fault tolerance. This comprehensive approach will provide a robust solution for managing and maintaining data consistency.
 
-### 1. Setup Desync (casync)
-
-We will use Desync as the primary storage for bulk 3D models. Desync is a content-addressable data synchronization tool that uses the CAS chunking from casync but operates on a higher level and works efficiently over HTTP/2.
-
-```bash
-go get github.com/folbricht/desync
-desync make -s /path/to/store.castr /path/to/input
-```
-
-### 2. Configure Etso for ETS
+### Configure Etso for ETS
 
 Etso will manage temporary, in-memory data structures with Ecto schemas in Elixir applications. This is ideal for quick data manipulation and caching.
 
@@ -46,19 +37,19 @@ defmodule MyApp.Cache do
 end
 ```
 
-### 3. Deploy Raft/Ra for Consensus
+### Deploy Raft/Ra for Consensus
 
 We will implement Raft/Ra to ensure distributed consensus across system nodes. This is crucial for coordinated state changes and maintaining data consistency.
 
-### 4. Utilize CockroachDB for Persistent Storage
+### Utilize CockroachDB for Persistent Storage
 
 CockroachDB will store critical, structured data requiring ACID transactions and global accessibility. This ensures data durability.
 
-### 5. Data Flow Management with Membrane Framework
+### Data Flow Management with Membrane Framework
 
 We will establish data flow protocols using the Membrane Framework to move temporary data from Etso/ETS to Desync for bulk storage and CockroachDB for structured data persistence.
 
-### 6. Ensure Consistency
+### Ensure Consistency
 
 Raft/Ra will manage write operations across Desync and CockroachDB, ensuring consistency and fault tolerance.
 
