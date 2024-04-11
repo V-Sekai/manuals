@@ -2,31 +2,29 @@
 
 ## Context
 
-We aim to efficiently and reliably store bulk model data and manage game entity replication.
+The goal is to effectively manage large volumes of 3D model data and game entity replication in a reliable and efficient manner.
 
 ## Problem Statement
 
-The existing system struggles with storing large volumes of 3D model data and managing game entity replication effectively. This results in performance issues and potential data loss.
+The current system faces challenges with handling large amounts of 3D model data and managing game entity replication. This leads to performance issues and potential data loss.
 
 ## Proposed Solution
 
-The proposed solution involves a series of steps to ensure data consistency and durability.
+The solution involves several steps to ensure data consistency and durability:
 
-Firstly, we will create a Content Delivery Network (CDN) like a static sftp file store. This will help us efficiently deliver our content to users.
+1. **Content Delivery Network (CDN)**: We will create a CDN similar to a static sftp file store for efficient content delivery.
 
-Next, we will configure Etso for Erlang Term Storage (ETS). Etso manages ephemeral, in-memory data structures with Ecto schemas in Elixir applications. It's an ideal choice for quick data manipulation and caching.
+2. **Etso for Erlang Term Storage (ETS)**: Etso will be configured to manage temporary, in-memory data structures with Ecto schemas in Elixir applications. This is ideal for quick data manipulation and caching.
 
-To ensure distributed consensus across system nodes, which is crucial for coordinated state changes and maintaining data consistency, we will deploy Raft/Ra.
+3. **Raft/Ra for Distributed Consensus**: Raft/Ra will be deployed to ensure distributed consensus across system nodes, which is crucial for coordinated state changes and maintaining data consistency.
 
-For persistent storage of critical, structured data that requires ACID transactions and global accessibility, we will utilize CockroachDB. This ensures the durability of our data.
+4. **CockroachDB for Persistent Storage**: CockroachDB will be utilized for persistent storage of critical, structured data that requires ACID transactions and global accessibility. This ensures the durability of our data.
 
-Data flow management is another essential aspect of our solution. We will establish protocols to move temporary data from Etso/ETS to the CDN for bulk storage. For structured data persistence, we will use CockroachDB.
+5. **Data Flow Management**: Protocols will be established to move temporary data from Etso/ETS to the CDN for bulk storage. For structured data persistence, we will use CockroachDB.
 
-Finally, we will use Raft/Ra to manage write operations across the cdn and CockroachDB to ensure consistency and fault tolerance. This comprehensive approach will provide a robust solution for managing and maintaining data consistency.
+6. **Consistency Management**: Raft/Ra will manage write operations across the CDN and CockroachDB to ensure consistency and fault tolerance.
 
 ### Configure Etso for ETS
-
-Etso will manage temporary, in-memory data structures with Ecto schemas in Elixir applications. This is ideal for quick data manipulation and caching.
 
 ```elixir
 defmodule MyApp.Cache do
@@ -39,19 +37,19 @@ end
 
 ### Deploy Raft/Ra for Consensus
 
-We will implement Raft/Ra to ensure distributed consensus across system nodes. This is crucial for coordinated state changes and maintaining data consistency.
+Raft/Ra will be implemented to ensure distributed consensus across system nodes.
 
 ### Utilize CockroachDB for Persistent Storage
 
-CockroachDB will store critical, structured data requiring ACID transactions and global accessibility. This ensures data durability.
+CockroachDB will be used for storing critical, structured data that requires ACID transactions and global accessibility.
 
 ### Data Flow Management with Membrane Framework
 
-We will establish data flow protocols using the Membrane Framework to move temporary data from Etso/ETS to Desync for bulk storage and CockroachDB for structured data persistence.
+Data flow protocols will be established using the Membrane Framework to move temporary data from Etso/ETS to the CDN for bulk storage and CockroachDB for structured data persistence.
 
 ### Ensure Consistency
 
-Raft/Ra will manage write operations across Desync and CockroachDB, ensuring consistency and fault tolerance.
+Raft/Ra will manage write operations across the CDN and CockroachDB, ensuring consistency and fault tolerance.
 
 ## Benefits
 
@@ -67,7 +65,7 @@ Raft/Ra will manage write operations across Desync and CockroachDB, ensuring con
 
 ## Alternatives Considered
 
-We considered traditional databases or file systems as alternatives, but they were rejected due to their limitations in handling large volumes of 3D model data and managing game entity replication.
+Traditional databases or file systems were considered but rejected due to their limitations in handling large volumes of 3D model data and managing game entity replication.
 
 ## Infrequent Use Case
 
