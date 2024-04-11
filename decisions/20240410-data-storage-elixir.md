@@ -12,7 +12,7 @@ The existing system struggles with storing large volumes of 3D model data and ma
 
 The proposed solution involves a series of steps to ensure data consistency and durability.
 
-Firstly, we will create a Content Delivery Network (CDN). This will help us efficiently deliver our content to users.
+Firstly, we will create a Content Delivery Network (CDN) like a static sftp file store. This will help us efficiently deliver our content to users.
 
 Next, we will configure Etso for Erlang Term Storage (ETS). Etso manages ephemeral, in-memory data structures with Ecto schemas in Elixir applications. It's an ideal choice for quick data manipulation and caching.
 
