@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>V-Sekai - Manuals - Changes to V-Sekai</title>
+<title>V-Sekai - Manuals</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,29 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,68 +102,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      page: 30,
-    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
-      searchColumns: ["listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="alternate" type="application/rss+xml" title="V-Sekai - Manuals" href="changelog.xml" data-external="1"></head>
+</head>
 
 <body class="nav-fixed">
 
@@ -140,10 +113,10 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./68604884.png" alt="V-Sekai" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../68604884.png" alt="V-Sekai" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">V-Sekai - Manuals</span>
     </a>
   </div>
@@ -154,15 +127,15 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./changelog.html" aria-current="page"> 
+    <a class="nav-link" href="../changelog.html"> 
 <span class="menu-text">Changes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./decisions.html"> 
+    <a class="nav-link" href="../decisions.html"> 
 <span class="menu-text">Decisions</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./awesome.html"> 
+    <a class="nav-link" href="../awesome.html"> 
 <span class="menu-text">Awesome</span></a>
   </li>  
 </ul>
@@ -178,243 +151,122 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#proposed-use-bundlex-for-binding-gdextension-to-elixir-for-libgodot-to-implement-a-distributed-simulation" id="toc-proposed-use-bundlex-for-binding-gdextension-to-elixir-for-libgodot-to-implement-a-distributed-simulation" class="nav-link active" data-scroll-target="#proposed-use-bundlex-for-binding-gdextension-to-elixir-for-libgodot-to-implement-a-distributed-simulation">Proposed: Use Bundlex for Binding GDExtension to Elixir for Libgodot to Implement a Distributed Simulation</a>
+  <ul class="collapse">
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
+  <li><a href="#problem-statement" id="toc-problem-statement" class="nav-link" data-scroll-target="#problem-statement">Problem Statement</a></li>
+  <li><a href="#proposed-solution" id="toc-proposed-solution" class="nav-link" data-scroll-target="#proposed-solution">Proposed Solution</a></li>
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#downsides" id="toc-downsides" class="nav-link" data-scroll-target="#downsides">Downsides</a></li>
+  <li><a href="#alternatives-considered" id="toc-alternatives-considered" class="nav-link" data-scroll-target="#alternatives-considered">Alternatives Considered</a></li>
+  <li><a href="#infrequent-use-case" id="toc-infrequent-use-case" class="nav-link" data-scroll-target="#infrequent-use-case">Infrequent Use Case</a></li>
+  <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation">Implementation</a></li>
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
+  <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags">Tags</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20240411-elixir-libgodot-bundlex.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Changes to V-Sekai</h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
+<section id="proposed-use-bundlex-for-binding-gdextension-to-elixir-for-libgodot-to-implement-a-distributed-simulation" class="level1">
+<h1>Proposed: Use Bundlex for Binding GDExtension to Elixir for Libgodot to Implement a Distributed Simulation</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>The V-Sekai development team is striving to enhance the simulation experience in our VR game. We aim to create a more immersive and interactive environment for our players.</p>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>We can bind GDExtension to a C-like language for libgodot to implement a distributed simulation.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>Instead of godot-zig, we propose using <strong>Bundlex</strong>, a multi-platform tool for compiling C and C++ code along with Elixir projects. This will allow us to leverage the power of Elixir’s concurrency and fault-tolerance features, which are ideal for creating distributed simulations.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">defmodule</span> <span class="cn">MyProject</span> <span class="kw">do</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="im">use</span> <span class="cn">Bundlex</span><span class="op">.</span><span class="cn">Project</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> project<span class="fu">()</span> <span class="kw">do</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="ot">[</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      <span class="va">app:</span> <span class="va">:my_project</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>      <span class="va">compilers:</span> <span class="ot">[</span><span class="va">:bundlex</span><span class="ot">]</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>      <span class="va">deps:</span> deps<span class="fu">()</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">defp</span> deps <span class="kw">do</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="ot">[</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span><span class="va">:bundlex</span>, <span class="st">"~&gt; 0.2"</span><span class="fu">}</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<ul>
+<li>Enhanced simulation performance due to Elixir’s efficient handling of concurrent processes.</li>
+<li>Improved fault tolerance, as Elixir’s supervisor trees can automatically recover from errors.</li>
+<li>Increased developer productivity, as Elixir’s syntax is concise and expressive.</li>
+</ul>
+</section>
+<section id="downsides" class="level2">
+<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
+<ul>
+<li>Requires learning a new programming language (Elixir), which may increase the development time initially.</li>
+<li>Potential compatibility issues between Elixir and existing parts of the system.</li>
+</ul>
+</section>
+<section id="alternatives-considered" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
+<p>We considered using other languages like Rust or Go, but they did not offer the same level of concurrency and fault-tolerance features as Elixir.</p>
+</section>
+<section id="infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
+<p>This proposal may not be suitable for smaller projects that do not require complex distributed simulations.</p>
+</section>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<p>The V-Sekai development team will implement this proposal.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+<li><a href="https://hex.pm/packages/bundlex">Bundlex</a></li>
+</ol>
+<p>Assisted by Aria.</p>
 
-    
-  
-    
-  </div>
-  
 
+</section>
+</section>
 
-</header>
-
-
-<p>All notable changes to this project will be documented in this file.</p>
-<p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>, and this project does <strong>not</strong> adhere to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
-<p><strong>Added</strong> for new features.</p>
-<p><strong>Changed</strong> for changes in existing functionality.</p>
-<p><strong>Deprecated</strong> for soon-to-be removed features.</p>
-<p><strong>Removed</strong> for now removed features.</p>
-<p><strong>Fixed</strong> for any bug fixes.</p>
-<p><strong>Security</strong> in case of vulnerabilities.</p>
-
-
-
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title-sort" data-direction="asc">
-          Title
-        </option>
-     </select>
-  </div>
-</div>
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1712849910565" data-listing-reading-time-sort="1" data-listing-word-count-sort="61" data-listing-title-sort="V-Sekai Changelog - Template" data-listing-filename-sort="latest-changelog.md">
-<td>
-<a href="./changelog/latest-changelog.html" class="title listing-title">V-Sekai Changelog - Template</a>
-</td>
-</tr>
-<tr data-index="1" data-listing-file-modified-sort="1712849910565" data-listing-reading-time-sort="1" data-listing-word-count-sort="82" data-listing-title-sort="V-Sekai Changelog - March 2024" data-listing-filename-sort="20240330-changelog.md">
-<td>
-<a href="./changelog/20240330-changelog.html" class="title listing-title">V-Sekai Changelog - March 2024</a>
-</td>
-</tr>
-<tr data-index="2" data-listing-file-modified-sort="1712849910565" data-listing-reading-time-sort="2" data-listing-word-count-sort="344" data-listing-title-sort="V-Sekai Changelog - February 2024" data-listing-filename-sort="20240202-changelog.md">
-<td>
-<a href="./changelog/20240202-changelog.html" class="title listing-title">V-Sekai Changelog - February 2024</a>
-</td>
-</tr>
-<tr data-index="3" data-listing-file-modified-sort="1712849910565" data-listing-reading-time-sort="1" data-listing-word-count-sort="71" data-listing-title-sort="V-Sekai Changelog - January 2024" data-listing-filename-sort="20240101-changelog.md">
-<td>
-<a href="./changelog/20240101-changelog.html" class="title listing-title">V-Sekai Changelog - January 2024</a>
-</td>
-</tr>
-<tr data-index="4" data-listing-file-modified-sort="1712849910565" data-listing-reading-time-sort="1" data-listing-word-count-sort="198" data-listing-title-sort="V-Sekai Changelog - December 2023" data-listing-filename-sort="20231207-changelog.md">
-<td>
-<a href="./changelog/20231207-changelog.html" class="title listing-title">V-Sekai Changelog - December 2023</a>
-</td>
-</tr>
-<tr data-index="5" data-listing-file-modified-sort="1712849910565" data-listing-reading-time-sort="3" data-listing-word-count-sort="494" data-listing-title-sort="V-Sekai Changelog - November 2023" data-listing-filename-sort="20231109-changelog.md">
-<td>
-<a href="./changelog/20231109-changelog.html" class="title listing-title">V-Sekai Changelog - November 2023</a>
-</td>
-</tr>
-<tr data-index="6" data-listing-file-modified-sort="1712849910565" data-listing-reading-time-sort="2" data-listing-word-count-sort="260" data-listing-title-sort="V-Sekai Changelog - October 2023" data-listing-filename-sort="20231001-changelog.md">
-<td>
-<a href="./changelog/20231001-changelog.html" class="title listing-title">V-Sekai Changelog - October 2023</a>
-</td>
-</tr>
-<tr data-index="7" data-listing-file-modified-sort="1712849910565" data-listing-reading-time-sort="2" data-listing-word-count-sort="305" data-listing-title-sort="V-Sekai Changelog - September 2023" data-listing-filename-sort="20230901-changelog.md">
-<td>
-<a href="./changelog/20230901-changelog.html" class="title listing-title">V-Sekai Changelog - September 2023</a>
-</td>
-</tr>
-<tr data-index="8" data-listing-file-modified-sort="1712849910565" data-listing-reading-time-sort="3" data-listing-word-count-sort="476" data-listing-title-sort="V-Sekai Changelog - August 2023" data-listing-filename-sort="20230801-changelog.md">
-<td>
-<a href="./changelog/20230801-changelog.html" class="title listing-title">V-Sekai Changelog - August 2023</a>
-</td>
-</tr>
-<tr data-index="9" data-listing-file-modified-sort="1712849910565" data-listing-reading-time-sort="1" data-listing-word-count-sort="173" data-listing-title-sort="V-Sekai Changelog - July 2023" data-listing-filename-sort="20230701-changelog.md">
-<td>
-<a href="./changelog/20230701-changelog.html" class="title listing-title">V-Sekai Changelog - July 2023</a>
-</td>
-</tr>
-<tr data-index="10" data-listing-file-modified-sort="1712849910565" data-listing-reading-time-sort="4" data-listing-word-count-sort="629" data-listing-title-sort="V-Sekai Changelog - 2023-06" data-listing-filename-sort="20230601-changelog.md">
-<td>
-<a href="./changelog/20230601-changelog.html" class="title listing-title">V-Sekai Changelog - 2023-06</a>
-</td>
-</tr>
-<tr data-index="11" data-listing-file-modified-sort="1712849910565" data-listing-reading-time-sort="2" data-listing-word-count-sort="300" data-listing-title-sort="V-Sekai Changelog - 2023-05" data-listing-filename-sort="20230501-changelog.md">
-<td>
-<a href="./changelog/20230501-changelog.html" class="title listing-title">V-Sekai Changelog - 2023-05</a>
-</td>
-</tr>
-<tr data-index="12" data-listing-file-modified-sort="1712849910561" data-listing-reading-time-sort="7" data-listing-word-count-sort="1376" data-listing-title-sort="V-Sekai Changelog - 2023-03" data-listing-filename-sort="20230301-changelog.md">
-<td>
-<a href="./changelog/20230301-changelog.html" class="title listing-title">V-Sekai Changelog - 2023-03</a>
-</td>
-</tr>
-<tr data-index="13" data-listing-file-modified-sort="1712849910561" data-listing-reading-time-sort="1" data-listing-word-count-sort="134" data-listing-title-sort="V-Sekai Changelog - 2023-02" data-listing-filename-sort="20230201-changelog.md">
-<td>
-<a href="./changelog/20230201-changelog.html" class="title listing-title">V-Sekai Changelog - 2023-02</a>
-</td>
-</tr>
-<tr data-index="14" data-listing-file-modified-sort="1712849910561" data-listing-reading-time-sort="1" data-listing-word-count-sort="7" data-listing-title-sort="V-Sekai Changelog - 2023-01" data-listing-filename-sort="20230101-changelog.md">
-<td>
-<a href="./changelog/20230101-changelog.html" class="title listing-title">V-Sekai Changelog - 2023-01</a>
-</td>
-</tr>
-<tr data-index="15" data-listing-file-modified-sort="1712849910561" data-listing-reading-time-sort="2" data-listing-word-count-sort="230" data-listing-title-sort="V-Sekai Changelog - 2022-12" data-listing-filename-sort="20221201-changelog.md">
-<td>
-<a href="./changelog/20221201-changelog.html" class="title listing-title">V-Sekai Changelog - 2022-12</a>
-</td>
-</tr>
-<tr data-index="16" data-listing-file-modified-sort="1712849910561" data-listing-reading-time-sort="2" data-listing-word-count-sort="267" data-listing-title-sort="V-Sekai Changelog - 2022-11" data-listing-filename-sort="20221101-changelog.md">
-<td>
-<a href="./changelog/20221101-changelog.html" class="title listing-title">V-Sekai Changelog - 2022-11</a>
-</td>
-</tr>
-<tr data-index="17" data-listing-file-modified-sort="1712849910561" data-listing-reading-time-sort="8" data-listing-word-count-sort="1452" data-listing-title-sort="V-Sekai Changelog - 2022-10" data-listing-filename-sort="20221001-changelog.md">
-<td>
-<a href="./changelog/20221001-changelog.html" class="title listing-title">V-Sekai Changelog - 2022-10</a>
-</td>
-</tr>
-<tr data-index="18" data-listing-file-modified-sort="1712849910561" data-listing-reading-time-sort="1" data-listing-word-count-sort="162" data-listing-title-sort="V-Sekai Changelog - 2022-09" data-listing-filename-sort="20220901-changelog.md">
-<td>
-<a href="./changelog/20220901-changelog.html" class="title listing-title">V-Sekai Changelog - 2022-09</a>
-</td>
-</tr>
-<tr data-index="19" data-listing-file-modified-sort="1712849910561" data-listing-reading-time-sort="1" data-listing-word-count-sort="77" data-listing-title-sort="V-Sekai Changelog - 2022-08" data-listing-filename-sort="20220801-changelog.md">
-<td>
-<a href="./changelog/20220801-changelog.html" class="title listing-title">V-Sekai Changelog - 2022-08</a>
-</td>
-</tr>
-<tr data-index="20" data-listing-file-modified-sort="1712849910561" data-listing-reading-time-sort="3" data-listing-word-count-sort="427" data-listing-title-sort="V-Sekai Changelog - 2022-06" data-listing-filename-sort="20220601-changelog.md">
-<td>
-<a href="./changelog/20220601-changelog.html" class="title listing-title">V-Sekai Changelog - 2022-06</a>
-</td>
-</tr>
-<tr data-index="21" data-listing-file-modified-sort="1712849910561" data-listing-reading-time-sort="1" data-listing-word-count-sort="115" data-listing-title-sort="V-Sekai Changelog - 2022-05" data-listing-filename-sort="20220501-changelog.md">
-<td>
-<a href="./changelog/20220501-changelog.html" class="title listing-title">V-Sekai Changelog - 2022-05</a>
-</td>
-</tr>
-<tr data-index="22" data-listing-file-modified-sort="1712849910561" data-listing-reading-time-sort="3" data-listing-word-count-sort="459" data-listing-title-sort="V-Sekai Changelog - 2022-04" data-listing-filename-sort="20220401-changelog.md">
-<td>
-<a href="./changelog/20220401-changelog.html" class="title listing-title">V-Sekai Changelog - 2022-04</a>
-</td>
-</tr>
-<tr data-index="23" data-listing-file-modified-sort="1712849910561" data-listing-reading-time-sort="2" data-listing-word-count-sort="227" data-listing-title-sort="V-Sekai Changelog - 2022-03" data-listing-filename-sort="20220301-changelog.md">
-<td>
-<a href="./changelog/20220301-changelog.html" class="title listing-title">V-Sekai Changelog - 2022-03</a>
-</td>
-</tr>
-<tr data-index="24" data-listing-file-modified-sort="1712849910561" data-listing-reading-time-sort="1" data-listing-word-count-sort="152" data-listing-title-sort="V-Sekai Changelog - 2022-02" data-listing-filename-sort="20220201-changelog.md">
-<td>
-<a href="./changelog/20220201-changelog.html" class="title listing-title">V-Sekai Changelog - 2022-02</a>
-</td>
-</tr>
-<tr data-index="25" data-listing-file-modified-sort="1712849910561" data-listing-reading-time-sort="1" data-listing-word-count-sort="79" data-listing-title-sort="V-Sekai Changelog - 2022-01" data-listing-filename-sort="20220101-changelog.md">
-<td>
-<a href="./changelog/20220101-changelog.html" class="title listing-title">V-Sekai Changelog - 2022-01</a>
-</td>
-</tr>
-<tr data-index="26" data-listing-file-modified-sort="1712849910561" data-listing-reading-time-sort="2" data-listing-word-count-sort="354" data-listing-title-sort="V-Sekai Changelog - 2021-11" data-listing-filename-sort="20211101-changelog.md">
-<td>
-<a href="./changelog/20211101-changelog.html" class="title listing-title">V-Sekai Changelog - 2021-11</a>
-</td>
-</tr>
-<tr data-index="27" data-listing-file-modified-sort="1712849910561" data-listing-reading-time-sort="8" data-listing-word-count-sort="1453" data-listing-title-sort="V-Sekai Changelog - 2021-10" data-listing-filename-sort="20211001-changelog.md">
-<td>
-<a href="./changelog/20211001-changelog.html" class="title listing-title">V-Sekai Changelog - 2021-10</a>
-</td>
-</tr>
-<tr data-index="28" data-listing-file-modified-sort="1712849910561" data-listing-reading-time-sort="10" data-listing-word-count-sort="1895" data-listing-title-sort="V-Sekai Changelog - 2021-09" data-listing-filename-sort="20210901-changelog.md">
-<td>
-<a href="./changelog/20210901-changelog.html" class="title listing-title">V-Sekai Changelog - 2021-09</a>
-</td>
-</tr>
-<tr data-index="29" data-listing-file-modified-sort="1712849910561" data-listing-reading-time-sort="5" data-listing-word-count-sort="911" data-listing-title-sort="V-Sekai Changelog - 2021-08" data-listing-filename-sort="20210801-changelog.md">
-<td>
-<a href="./changelog/20210801-changelog.html" class="title listing-title">V-Sekai Changelog - 2021-08</a>
-</td>
-</tr>
-<tr data-index="30" data-listing-file-modified-sort="1712849910561" data-listing-reading-time-sort="6" data-listing-word-count-sort="1026" data-listing-title-sort="V-Sekai Changelog - 2021-07" data-listing-filename-sort="20210701-changelog.md">
-<td>
-<a href="./changelog/20210701-changelog.html" class="title listing-title">V-Sekai Changelog - 2021-07</a>
-</td>
-</tr>
-<tr data-index="31" data-listing-file-modified-sort="1712849910561" data-listing-reading-time-sort="10" data-listing-word-count-sort="1961" data-listing-title-sort="V-Sekai Changelog - 2021-06" data-listing-filename-sort="20210601-changelog.md">
-<td>
-<a href="./changelog/20210601-changelog.html" class="title listing-title">V-Sekai Changelog - 2021-06</a>
-</td>
-</tr>
-<tr data-index="32" data-listing-file-modified-sort="1712849910561" data-listing-reading-time-sort="18" data-listing-word-count-sort="3494" data-listing-title-sort="V-Sekai Changelog - 2021-05" data-listing-filename-sort="20210501-changelog.md">
-<td>
-<a href="./changelog/20210501-changelog.html" class="title listing-title">V-Sekai Changelog - 2021-05</a>
-</td>
-</tr>
-<tr data-index="33" data-listing-file-modified-sort="1712849910561" data-listing-reading-time-sort="2" data-listing-word-count-sort="357" data-listing-title-sort="V-Sekai Changelog - 2021-04" data-listing-filename-sort="20210401-changelog.md">
-<td>
-<a href="./changelog/20210401-changelog.html" class="title listing-title">V-Sekai Changelog - 2021-04</a>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
-  <ul class="pagination"></ul>
-</nav>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -976,7 +828,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/changelog.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20240411-elixir-libgodot-bundlex.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

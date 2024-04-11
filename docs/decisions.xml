@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.553</generator>
-<lastBuildDate>Thu, 11 Apr 2024 15:36:58 GMT</lastBuildDate>
+<lastBuildDate>Thu, 11 Apr 2024 15:39:01 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:36:58 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -168,7 +168,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240411-multiplayer-movement-with-parented-obejcts.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:36:58 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -251,7 +251,168 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240411-elixir-libgodot-zig.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:36:58 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240411-elixir-libgodot-bundlex.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-use-bundlex-for-binding-gdextension-to-elixir-for-libgodot-to-implement-a-distributed-simulation" class="level1">
+<h1>Proposed: Use Bundlex for Binding GDExtension to Elixir for Libgodot to Implement a Distributed Simulation</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>The V-Sekai development team is striving to enhance the simulation experience in our VR game. We aim to create a more immersive and interactive environment for our players.</p>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>We can bind GDExtension to a C-like language for libgodot to implement a distributed simulation.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>Instead of godot-zig, we propose using <strong>Bundlex</strong>, a multi-platform tool for compiling C and C++ code along with Elixir projects. This will allow us to leverage the power of Elixir’s concurrency and fault-tolerance features, which are ideal for creating distributed simulations.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb1-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">defmodule</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">MyProject</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">do</span></span>
+<span id="cb1-2">  <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">use</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Bundlex</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Project</span></span>
+<span id="cb1-3"></span>
+<span id="cb1-4">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> project<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">()</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">do</span></span>
+<span id="cb1-5">    <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span></span>
+<span id="cb1-6">      <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">app:</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:my_project</span>,</span>
+<span id="cb1-7">      <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">compilers:</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:bundlex</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span>,</span>
+<span id="cb1-8">      <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">deps:</span> deps<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">()</span></span>
+<span id="cb1-9">    <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span></span>
+<span id="cb1-10">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">end</span></span>
+<span id="cb1-11"></span>
+<span id="cb1-12">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">defp</span> deps <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">do</span></span>
+<span id="cb1-13">    <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span></span>
+<span id="cb1-14">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:bundlex</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"~&gt; 0.2"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-15">    <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span></span>
+<span id="cb1-16">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">end</span></span>
+<span id="cb1-17"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">end</span></span></code></pre></div>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<ul>
+<li>Enhanced simulation performance due to Elixir’s efficient handling of concurrent processes.</li>
+<li>Improved fault tolerance, as Elixir’s supervisor trees can automatically recover from errors.</li>
+<li>Increased developer productivity, as Elixir’s syntax is concise and expressive.</li>
+</ul>
+</section>
+<section id="downsides" class="level2">
+<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
+<ul>
+<li>Requires learning a new programming language (Elixir), which may increase the development time initially.</li>
+<li>Potential compatibility issues between Elixir and existing parts of the system.</li>
+</ul>
+</section>
+<section id="alternatives-considered" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
+<p>We considered using other languages like Rust or Go, but they did not offer the same level of concurrency and fault-tolerance features as Elixir.</p>
+</section>
+<section id="infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
+<p>This proposal may not be suitable for smaller projects that do not require complex distributed simulations.</p>
+</section>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<p>The V-Sekai development team will implement this proposal.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+<li><a href="https://hex.pm/packages/bundlex">Bundlex</a></li>
+</ol>
+<p>Assisted by Aria.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240411-elixir-libgodot-bundlex.html</guid>
+  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -408,7 +569,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240410-data-storage-elixir.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:36:58 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -503,7 +664,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240409-elixir-raft-vs-sqlite-fdb.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:36:58 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -608,7 +769,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240409-crud-godot-tiles.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:36:58 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -690,7 +851,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240407-pcvr-vs-standalone.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:36:58 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -771,7 +932,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240406-web-based-explore.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:36:58 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -858,7 +1019,7 @@ font-style: inherit;">butler</span> push myproject.catar user/game:channel</span
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240406-itch-github-actions.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:36:58 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1013,7 +1174,7 @@ font-style: inherit;"># Connect the mix node to the shader graph output</span></
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240401-shader-graphic.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:36:58 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1122,7 +1283,7 @@ font-style: inherit;"># Connect the mix node to the shader graph output</span></
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240331-vrc-vrm-compatibility.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:36:58 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1227,7 +1388,7 @@ font-style: inherit;"># Open https://rancher.192.168.0.65.sslip.io/dashboard/aut
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-k8s-harvester-hci.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:36:58 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1315,7 +1476,7 @@ font-style: inherit;"># Open https://rancher.192.168.0.65.sslip.io/dashboard/aut
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-hyperv-harvester-test.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:36:58 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1514,7 +1675,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-gitlab-helm.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:36:58 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1617,7 +1778,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-cicd-gitlab.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:36:58 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1705,7 +1866,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-bitnami-rancher-helm-catalog.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:36:58 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1791,7 +1952,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240329-ready-to-go-kit-windows-11.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:36:58 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1894,7 +2055,7 @@ font-style: inherit;">if</span> feasible:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240326-verifying-and-finetuning-plans.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:36:58 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1987,143 +2148,7 @@ function initiate_conversation(character):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240326-heartstrings-vr.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:36:58 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240325-table-avatar-embedded-xmp.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposal-for-3d-asset-schema-design-and-database-backend-selection" class="level1">
-<h1>Proposal for 3d Asset Schema Design and Database Backend Selection</h1>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>The current project involves creating a schema for storing VRM license data, GLTF 3d assets, and other metadata. The data will be stored in a <code>public.cbf_avatar</code> table with fields such as <code>created_at</code>, <code>gltf_embedded</code>, <code>id</code>, and <code>xmp</code>.</p>
-</section>
-<section id="problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>The main challenge is deciding on the appropriate database backend and determining whether storing large files in a relational database is a good practice.</p>
-</section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">CREATE</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">TABLE</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">public</span>.cbf_avatar (</span>
-<span id="cb1-2">    created_at timestamptz <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">DEFAULT</span> now() <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">NOT</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">NULL</span>,</span>
-<span id="cb1-3">    gltf_embedded jsonb <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">DEFAULT</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'{}'</span>:<span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">:jsonb</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">NOT</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">NULL</span>,</span>
-<span id="cb1-4">    <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">id</span> uuid <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">DEFAULT</span> gen_random_uuid() <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">NOT</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">NULL</span>,</span>
-<span id="cb1-5">    xmp jsonb <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">DEFAULT</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'{}'</span>:<span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">:jsonb</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">NOT</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">NULL</span>,</span>
-<span id="cb1-6">    <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">CONSTRAINT</span> cbf_avatar_pkey <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">PRIMARY</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">KEY</span> (<span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">id</span>)</span>
-<span id="cb1-7">);</span></code></pre></div>
-<p>The proposed solution involves using either Supabase PostgreSQL or FoundationDB with SQLite as the database backend. The <code>gltf_embedded</code> field will store GLTF 3d asset data as JSON binary, while the <code>xmp</code> field will store VRM license data and other metadata.</p>
-</section>
-<section id="benefits" class="level2">
-<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
-<ul>
-<li>The use of JSON binary allows for efficient storage and retrieval of GLTF 3d assets.</li>
-<li>The chosen database backends are robust and reliable, ensuring data integrity and consistency.</li>
-</ul>
-</section>
-<section id="downsides" class="level2">
-<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
-<ul>
-<li>Storing large files in a relational database could potentially lead to disk thrashing and other performance issues.</li>
-<li>Fields in databases generally have a size limit, which could pose problems if the data exceeds this limit.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>An alternative approach would be to store the large files in a separate file system and only keep references to these files in the database. However, this might complicate the data management process.</p>
-</section>
-<section id="infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
-<p>This schema design and database backend selection may not be suitable for applications that require extremely high performance or have strict limitations on data size.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>The schema design and database backend selection will be implemented by the V-Sekai development team.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
-<li><a href="https://blog.rustprooflabs.com/2020/07/postgres-storing-large-text">Postgres Storing Large Text</a> - A 2020 article suggesting that larger file storage in a relational database is okay.</li>
-</ol>
-<p>This proposal was assisted by Aria, an AI assistant.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240325-table-avatar-embedded-xmp.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:36:58 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
 </item>
 </channel>
 </rss>
