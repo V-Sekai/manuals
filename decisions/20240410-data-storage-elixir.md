@@ -10,6 +10,20 @@ The existing system struggles with storing large volumes of 3D model data and ma
 
 ## Proposed Solution
 
+The proposed solution involves a series of steps to ensure data consistency and durability.
+
+Firstly, we will create a Content Delivery Network (CDN) using casync. This will help us efficiently deliver our content to users.
+
+Next, we will configure Etso for Erlang Term Storage (ETS). Etso manages ephemeral, in-memory data structures with Ecto schemas in Elixir applications. It's an ideal choice for quick data manipulation and caching.
+
+To ensure distributed consensus across system nodes, which is crucial for coordinated state changes and maintaining data consistency, we will deploy Raft/Ra.
+
+For persistent storage of critical, structured data that requires ACID transactions and global accessibility, we will utilize CockroachDB. This ensures the durability of our data.
+
+Data flow management is another essential aspect of our solution. We will establish protocols to move temporary data from Etso/ETS to SeaweedFS for bulk storage. For structured data persistence, we will use CockroachDB.
+
+Finally, we will use Raft/Ra to manage write operations across SeaweedFS and CockroachDB to ensure consistency and fault tolerance. This comprehensive approach will provide a robust solution for managing and maintaining data consistency.
+
 ### 1. Setup Desync (casync)
 
 We will use Desync as the primary storage for bulk 3D models. Desync is a content-addressable data synchronization tool that uses the CAS chunking from casync but operates on a higher level and works efficiently over HTTP/2.
