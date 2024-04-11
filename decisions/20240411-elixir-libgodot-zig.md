@@ -1,4 +1,4 @@
-# Proposal: Binding GDExtension to a C-like Language for Libgodot to Implement a Distributed Simulation
+# Rejected: Binding GDExtension to a C-like Language for Libgodot to Implement a Distributed Simulation
 
 ## The Context
 
@@ -37,7 +37,7 @@ The V-Sekai development team will implement this proposal.
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Rejected <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 
