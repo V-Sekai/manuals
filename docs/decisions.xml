@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.553</generator>
-<lastBuildDate>Thu, 11 Apr 2024 05:11:03 GMT</lastBuildDate>
+<lastBuildDate>Thu, 11 Apr 2024 05:49:59 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:11:03 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 05:49:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -98,28 +98,16 @@
 <section id="proposed-solution" class="level2">
 <h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
 <p>The proposed solution involves a series of steps to ensure data consistency and durability.</p>
-<p>Firstly, we will create a Content Delivery Network (CDN) using casync. This will help us efficiently deliver our content to users.</p>
+<p>Firstly, we will create a Content Delivery Network (CDN). This will help us efficiently deliver our content to users.</p>
 <p>Next, we will configure Etso for Erlang Term Storage (ETS). Etso manages ephemeral, in-memory data structures with Ecto schemas in Elixir applications. It’s an ideal choice for quick data manipulation and caching.</p>
 <p>To ensure distributed consensus across system nodes, which is crucial for coordinated state changes and maintaining data consistency, we will deploy Raft/Ra.</p>
 <p>For persistent storage of critical, structured data that requires ACID transactions and global accessibility, we will utilize CockroachDB. This ensures the durability of our data.</p>
 <p>Data flow management is another essential aspect of our solution. We will establish protocols to move temporary data from Etso/ETS to SeaweedFS for bulk storage. For structured data persistence, we will use CockroachDB.</p>
-<p>Finally, we will use Raft/Ra to manage write operations across SeaweedFS and CockroachDB to ensure consistency and fault tolerance. This comprehensive approach will provide a robust solution for managing and maintaining data consistency.</p>
-<section id="setup-desync-casync" class="level3">
-<h3 class="anchored" data-anchor-id="setup-desync-casync">1. Setup Desync (casync)</h3>
-<p>We will use Desync as the primary storage for bulk 3D models. Desync is a content-addressable data synchronization tool that uses the CAS chunking from casync but operates on a higher level and works efficiently over HTTP/2.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">go</span> get github.com/folbricht/desync</span>
-<span id="cb1-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">desync</span> make <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-s</span> /path/to/store.castr /path/to/input</span></code></pre></div>
-</section>
+<p>Finally, we will use Raft/Ra to manage write operations across the cdn and CockroachDB to ensure consistency and fault tolerance. This comprehensive approach will provide a robust solution for managing and maintaining data consistency.</p>
 <section id="configure-etso-for-ets" class="level3">
-<h3 class="anchored" data-anchor-id="configure-etso-for-ets">2. Configure Etso for ETS</h3>
+<h3 class="anchored" data-anchor-id="configure-etso-for-ets">Configure Etso for ETS</h3>
 <p>Etso will manage temporary, in-memory data structures with Ecto schemas in Elixir applications. This is ideal for quick data manipulation and caching.</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb2-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb1-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">defmodule</span> <span class="cn" style="color: #8f5902;
 background-color: null;
@@ -130,7 +118,7 @@ background-color: null;
 font-style: inherit;">Cache</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">do</span></span>
-<span id="cb2-2">  <span class="im" style="color: #00769E;
+<span id="cb1-2">  <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">use</span> <span class="cn" style="color: #8f5902;
 background-color: null;
@@ -139,7 +127,7 @@ background-color: null;
 font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">Schema</span></span>
-<span id="cb2-3">  <span class="ot" style="color: #003B4F;
+<span id="cb1-3">  <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">@primary_key</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -154,34 +142,34 @@ background-color: null;
 font-style: inherit;">true</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">}</span></span>
-<span id="cb2-4">  field <span class="va" style="color: #111111;
+<span id="cb1-4">  field <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">:key</span>, <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">:string</span></span>
-<span id="cb2-5">  field <span class="va" style="color: #111111;
+<span id="cb1-5">  field <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">:value</span>, <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">:any</span></span>
-<span id="cb2-6"><span class="kw" style="color: #003B4F;
+<span id="cb1-6"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">end</span></span></code></pre></div>
 </section>
 <section id="deploy-raftra-for-consensus" class="level3">
-<h3 class="anchored" data-anchor-id="deploy-raftra-for-consensus">3. Deploy Raft/Ra for Consensus</h3>
+<h3 class="anchored" data-anchor-id="deploy-raftra-for-consensus">Deploy Raft/Ra for Consensus</h3>
 <p>We will implement Raft/Ra to ensure distributed consensus across system nodes. This is crucial for coordinated state changes and maintaining data consistency.</p>
 </section>
 <section id="utilize-cockroachdb-for-persistent-storage" class="level3">
-<h3 class="anchored" data-anchor-id="utilize-cockroachdb-for-persistent-storage">4. Utilize CockroachDB for Persistent Storage</h3>
+<h3 class="anchored" data-anchor-id="utilize-cockroachdb-for-persistent-storage">Utilize CockroachDB for Persistent Storage</h3>
 <p>CockroachDB will store critical, structured data requiring ACID transactions and global accessibility. This ensures data durability.</p>
 </section>
 <section id="data-flow-management-with-membrane-framework" class="level3">
-<h3 class="anchored" data-anchor-id="data-flow-management-with-membrane-framework">5. Data Flow Management with Membrane Framework</h3>
+<h3 class="anchored" data-anchor-id="data-flow-management-with-membrane-framework">Data Flow Management with Membrane Framework</h3>
 <p>We will establish data flow protocols using the Membrane Framework to move temporary data from Etso/ETS to Desync for bulk storage and CockroachDB for structured data persistence.</p>
 </section>
 <section id="ensure-consistency" class="level3">
-<h3 class="anchored" data-anchor-id="ensure-consistency">6. Ensure Consistency</h3>
+<h3 class="anchored" data-anchor-id="ensure-consistency">Ensure Consistency</h3>
 <p>Raft/Ra will manage write operations across Desync and CockroachDB, ensuring consistency and fault tolerance.</p>
 </section>
 </section>
@@ -243,7 +231,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240410-data-storage-elixir.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:11:03 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 05:49:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -338,7 +326,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240409-elixir-raft-vs-sqlite-fdb.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:11:03 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 05:49:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -443,7 +431,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240409-crud-godot-tiles.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:11:03 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 05:49:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -525,7 +513,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240407-pcvr-vs-standalone.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:11:03 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 05:49:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -606,7 +594,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240406-web-based-explore.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:11:03 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 05:49:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -693,7 +681,7 @@ font-style: inherit;">butler</span> push myproject.catar user/game:channel</span
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240406-itch-github-actions.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:11:03 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 05:49:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -848,7 +836,7 @@ font-style: inherit;"># Connect the mix node to the shader graph output</span></
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240401-shader-graphic.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:11:03 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 05:49:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -957,7 +945,7 @@ font-style: inherit;"># Connect the mix node to the shader graph output</span></
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240331-vrc-vrm-compatibility.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:11:03 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 05:49:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1062,7 +1050,7 @@ font-style: inherit;"># Open https://rancher.192.168.0.65.sslip.io/dashboard/aut
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-k8s-harvester-hci.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:11:03 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 05:49:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1150,7 +1138,7 @@ font-style: inherit;"># Open https://rancher.192.168.0.65.sslip.io/dashboard/aut
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-hyperv-harvester-test.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:11:03 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 05:49:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1349,7 +1337,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-gitlab-helm.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:11:03 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 05:49:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1452,7 +1440,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-cicd-gitlab.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:11:03 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 05:49:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1540,7 +1528,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-bitnami-rancher-helm-catalog.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:11:03 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 05:49:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1626,7 +1614,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240329-ready-to-go-kit-windows-11.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:11:03 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 05:49:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1729,7 +1717,7 @@ font-style: inherit;">if</span> feasible:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240326-verifying-and-finetuning-plans.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:11:03 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 05:49:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1822,7 +1810,7 @@ function initiate_conversation(character):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240326-heartstrings-vr.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:11:03 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 05:49:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1958,7 +1946,7 @@ font-style: inherit;">id</span>)</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240325-table-avatar-embedded-xmp.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:11:03 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 05:49:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2080,7 +2068,7 @@ font-style: inherit;">self</span>.fdb.update(state)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240325-fdb-sqlite-blender-godot.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:11:03 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 05:49:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2198,7 +2186,7 @@ font-style: inherit;"> RealTimeChat</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240324-v-sekai-as-slc.html</guid>
-  <pubDate>Thu, 11 Apr 2024 05:11:03 GMT</pubDate>
+  <pubDate>Thu, 11 Apr 2024 05:49:59 GMT</pubDate>
 </item>
 </channel>
 </rss>

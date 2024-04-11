@@ -161,12 +161,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#problem-statement" id="toc-problem-statement" class="nav-link" data-scroll-target="#problem-statement">Problem Statement</a></li>
   <li><a href="#proposed-solution" id="toc-proposed-solution" class="nav-link" data-scroll-target="#proposed-solution">Proposed Solution</a>
   <ul class="collapse">
-  <li><a href="#setup-desync-casync" id="toc-setup-desync-casync" class="nav-link" data-scroll-target="#setup-desync-casync">1. Setup Desync (casync)</a></li>
-  <li><a href="#configure-etso-for-ets" id="toc-configure-etso-for-ets" class="nav-link" data-scroll-target="#configure-etso-for-ets">2. Configure Etso for ETS</a></li>
-  <li><a href="#deploy-raftra-for-consensus" id="toc-deploy-raftra-for-consensus" class="nav-link" data-scroll-target="#deploy-raftra-for-consensus">3. Deploy Raft/Ra for Consensus</a></li>
-  <li><a href="#utilize-cockroachdb-for-persistent-storage" id="toc-utilize-cockroachdb-for-persistent-storage" class="nav-link" data-scroll-target="#utilize-cockroachdb-for-persistent-storage">4. Utilize CockroachDB for Persistent Storage</a></li>
-  <li><a href="#data-flow-management-with-membrane-framework" id="toc-data-flow-management-with-membrane-framework" class="nav-link" data-scroll-target="#data-flow-management-with-membrane-framework">5. Data Flow Management with Membrane Framework</a></li>
-  <li><a href="#ensure-consistency" id="toc-ensure-consistency" class="nav-link" data-scroll-target="#ensure-consistency">6. Ensure Consistency</a></li>
+  <li><a href="#configure-etso-for-ets" id="toc-configure-etso-for-ets" class="nav-link" data-scroll-target="#configure-etso-for-ets">Configure Etso for ETS</a></li>
+  <li><a href="#deploy-raftra-for-consensus" id="toc-deploy-raftra-for-consensus" class="nav-link" data-scroll-target="#deploy-raftra-for-consensus">Deploy Raft/Ra for Consensus</a></li>
+  <li><a href="#utilize-cockroachdb-for-persistent-storage" id="toc-utilize-cockroachdb-for-persistent-storage" class="nav-link" data-scroll-target="#utilize-cockroachdb-for-persistent-storage">Utilize CockroachDB for Persistent Storage</a></li>
+  <li><a href="#data-flow-management-with-membrane-framework" id="toc-data-flow-management-with-membrane-framework" class="nav-link" data-scroll-target="#data-flow-management-with-membrane-framework">Data Flow Management with Membrane Framework</a></li>
+  <li><a href="#ensure-consistency" id="toc-ensure-consistency" class="nav-link" data-scroll-target="#ensure-consistency">Ensure Consistency</a></li>
   </ul></li>
   <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
   <li><a href="#downsides" id="toc-downsides" class="nav-link" data-scroll-target="#downsides">Downsides</a></li>
@@ -200,42 +199,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="proposed-solution" class="level2">
 <h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
 <p>The proposed solution involves a series of steps to ensure data consistency and durability.</p>
-<p>Firstly, we will create a Content Delivery Network (CDN) using casync. This will help us efficiently deliver our content to users.</p>
+<p>Firstly, we will create a Content Delivery Network (CDN). This will help us efficiently deliver our content to users.</p>
 <p>Next, we will configure Etso for Erlang Term Storage (ETS). Etso manages ephemeral, in-memory data structures with Ecto schemas in Elixir applications. It’s an ideal choice for quick data manipulation and caching.</p>
 <p>To ensure distributed consensus across system nodes, which is crucial for coordinated state changes and maintaining data consistency, we will deploy Raft/Ra.</p>
 <p>For persistent storage of critical, structured data that requires ACID transactions and global accessibility, we will utilize CockroachDB. This ensures the durability of our data.</p>
 <p>Data flow management is another essential aspect of our solution. We will establish protocols to move temporary data from Etso/ETS to SeaweedFS for bulk storage. For structured data persistence, we will use CockroachDB.</p>
-<p>Finally, we will use Raft/Ra to manage write operations across SeaweedFS and CockroachDB to ensure consistency and fault tolerance. This comprehensive approach will provide a robust solution for managing and maintaining data consistency.</p>
-<section id="setup-desync-casync" class="level3">
-<h3 class="anchored" data-anchor-id="setup-desync-casync">1. Setup Desync (casync)</h3>
-<p>We will use Desync as the primary storage for bulk 3D models. Desync is a content-addressable data synchronization tool that uses the CAS chunking from casync but operates on a higher level and works efficiently over HTTP/2.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">go</span> get github.com/folbricht/desync</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">desync</span> make <span class="at">-s</span> /path/to/store.castr /path/to/input</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
+<p>Finally, we will use Raft/Ra to manage write operations across the cdn and CockroachDB to ensure consistency and fault tolerance. This comprehensive approach will provide a robust solution for managing and maintaining data consistency.</p>
 <section id="configure-etso-for-ets" class="level3">
-<h3 class="anchored" data-anchor-id="configure-etso-for-ets">2. Configure Etso for ETS</h3>
+<h3 class="anchored" data-anchor-id="configure-etso-for-ets">Configure Etso for ETS</h3>
 <p>Etso will manage temporary, in-memory data structures with Ecto schemas in Elixir applications. This is ideal for quick data manipulation and caching.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">defmodule</span> <span class="cn">MyApp</span><span class="op">.</span><span class="cn">Cache</span> <span class="kw">do</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="im">use</span> <span class="cn">Etso</span><span class="op">.</span><span class="cn">Schema</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="ot">@primary_key</span> <span class="fu">{</span><span class="va">:id</span>, <span class="va">:binary_id</span>, <span class="va">autogenerate:</span> <span class="cn">true</span><span class="fu">}</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  field <span class="va">:key</span>, <span class="va">:string</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  field <span class="va">:value</span>, <span class="va">:any</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">defmodule</span> <span class="cn">MyApp</span><span class="op">.</span><span class="cn">Cache</span> <span class="kw">do</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="im">use</span> <span class="cn">Etso</span><span class="op">.</span><span class="cn">Schema</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="ot">@primary_key</span> <span class="fu">{</span><span class="va">:id</span>, <span class="va">:binary_id</span>, <span class="va">autogenerate:</span> <span class="cn">true</span><span class="fu">}</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  field <span class="va">:key</span>, <span class="va">:string</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  field <span class="va">:value</span>, <span class="va">:any</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="deploy-raftra-for-consensus" class="level3">
-<h3 class="anchored" data-anchor-id="deploy-raftra-for-consensus">3. Deploy Raft/Ra for Consensus</h3>
+<h3 class="anchored" data-anchor-id="deploy-raftra-for-consensus">Deploy Raft/Ra for Consensus</h3>
 <p>We will implement Raft/Ra to ensure distributed consensus across system nodes. This is crucial for coordinated state changes and maintaining data consistency.</p>
 </section>
 <section id="utilize-cockroachdb-for-persistent-storage" class="level3">
-<h3 class="anchored" data-anchor-id="utilize-cockroachdb-for-persistent-storage">4. Utilize CockroachDB for Persistent Storage</h3>
+<h3 class="anchored" data-anchor-id="utilize-cockroachdb-for-persistent-storage">Utilize CockroachDB for Persistent Storage</h3>
 <p>CockroachDB will store critical, structured data requiring ACID transactions and global accessibility. This ensures data durability.</p>
 </section>
 <section id="data-flow-management-with-membrane-framework" class="level3">
-<h3 class="anchored" data-anchor-id="data-flow-management-with-membrane-framework">5. Data Flow Management with Membrane Framework</h3>
+<h3 class="anchored" data-anchor-id="data-flow-management-with-membrane-framework">Data Flow Management with Membrane Framework</h3>
 <p>We will establish data flow protocols using the Membrane Framework to move temporary data from Etso/ETS to Desync for bulk storage and CockroachDB for structured data persistence.</p>
 </section>
 <section id="ensure-consistency" class="level3">
-<h3 class="anchored" data-anchor-id="ensure-consistency">6. Ensure Consistency</h3>
+<h3 class="anchored" data-anchor-id="ensure-consistency">Ensure Consistency</h3>
 <p>Raft/Ra will manage write operations across Desync and CockroachDB, ensuring consistency and fault tolerance.</p>
 </section>
 </section>
