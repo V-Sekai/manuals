@@ -20,7 +20,7 @@ To ensure distributed consensus across system nodes, which is crucial for coordi
 
 For persistent storage of critical, structured data that requires ACID transactions and global accessibility, we will utilize CockroachDB. This ensures the durability of our data.
 
-Data flow management is another essential aspect of our solution. We will establish protocols to move temporary data from Etso/ETS to SeaweedFS for bulk storage. For structured data persistence, we will use CockroachDB.
+Data flow management is another essential aspect of our solution. We will establish protocols to move temporary data from Etso/ETS to the CDN for bulk storage. For structured data persistence, we will use CockroachDB.
 
 Finally, we will use Raft/Ra to manage write operations across the cdn and CockroachDB to ensure consistency and fault tolerance. This comprehensive approach will provide a robust solution for managing and maintaining data consistency.
 
