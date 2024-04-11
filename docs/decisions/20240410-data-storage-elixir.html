@@ -165,7 +165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#configure-etso-for-ets" id="toc-configure-etso-for-ets" class="nav-link" data-scroll-target="#configure-etso-for-ets">2. Configure Etso for ETS</a></li>
   <li><a href="#deploy-raftra-for-consensus" id="toc-deploy-raftra-for-consensus" class="nav-link" data-scroll-target="#deploy-raftra-for-consensus">3. Deploy Raft/Ra for Consensus</a></li>
   <li><a href="#utilize-cockroachdb-for-persistent-storage" id="toc-utilize-cockroachdb-for-persistent-storage" class="nav-link" data-scroll-target="#utilize-cockroachdb-for-persistent-storage">4. Utilize CockroachDB for Persistent Storage</a></li>
-  <li><a href="#data-flow-management" id="toc-data-flow-management" class="nav-link" data-scroll-target="#data-flow-management">5. Data Flow Management</a></li>
+  <li><a href="#data-flow-management-with-membrane-framework" id="toc-data-flow-management-with-membrane-framework" class="nav-link" data-scroll-target="#data-flow-management-with-membrane-framework">5. Data Flow Management with Membrane Framework</a></li>
   <li><a href="#ensure-consistency" id="toc-ensure-consistency" class="nav-link" data-scroll-target="#ensure-consistency">6. Ensure Consistency</a></li>
   </ul></li>
   <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
@@ -207,7 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="configure-etso-for-ets" class="level3">
 <h3 class="anchored" data-anchor-id="configure-etso-for-ets">2. Configure Etso for ETS</h3>
-<p>Etso will be used to manage temporary, in-memory data structures with Ecto schemas in Elixir applications. This is ideal for quick data manipulation and caching.</p>
+<p>Etso will manage temporary, in-memory data structures with Ecto schemas in Elixir applications. This is ideal for quick data manipulation and caching.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">defmodule</span> <span class="cn">MyApp</span><span class="op">.</span><span class="cn">Cache</span> <span class="kw">do</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="im">use</span> <span class="cn">Etso</span><span class="op">.</span><span class="cn">Schema</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="ot">@primary_key</span> <span class="fu">{</span><span class="va">:id</span>, <span class="va">:binary_id</span>, <span class="va">autogenerate:</span> <span class="cn">true</span><span class="fu">}</span></span>
@@ -223,9 +223,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="utilize-cockroachdb-for-persistent-storage">4. Utilize CockroachDB for Persistent Storage</h3>
 <p>CockroachDB will store critical, structured data requiring ACID transactions and global accessibility. This ensures data durability.</p>
 </section>
-<section id="data-flow-management" class="level3">
-<h3 class="anchored" data-anchor-id="data-flow-management">5. Data Flow Management</h3>
-<p>We will establish data flow protocols to move temporary data from Etso/ETS to Desync for bulk storage and CockroachDB for structured data persistence.</p>
+<section id="data-flow-management-with-membrane-framework" class="level3">
+<h3 class="anchored" data-anchor-id="data-flow-management-with-membrane-framework">5. Data Flow Management with Membrane Framework</h3>
+<p>We will establish data flow protocols using the Membrane Framework to move temporary data from Etso/ETS to Desync for bulk storage and CockroachDB for structured data persistence.</p>
 </section>
 <section id="ensure-consistency" class="level3">
 <h3 class="anchored" data-anchor-id="ensure-consistency">6. Ensure Consistency</h3>
