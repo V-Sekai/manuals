@@ -81,7 +81,7 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Decision Makers
 
-- V-Sekai development team
+- V-Sekai development team, "Bioblaze Payne", "fire"
 
 ## Tags
 
