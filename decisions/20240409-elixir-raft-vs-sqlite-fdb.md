@@ -1,4 +1,4 @@
-# Proposed: RabbitMQ RA vs SQLite on FoundationDB vs CockroachDB
+# Rejected: RabbitMQ RA vs SQLite on FoundationDB vs CockroachDB
 
 ## Context
 
@@ -49,7 +49,7 @@ Our development team will decide whether to use any of these systems. We will al
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Rejected <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 
