@@ -203,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Next, we will configure Etso for Erlang Term Storage (ETS). Etso manages ephemeral, in-memory data structures with Ecto schemas in Elixir applications. It’s an ideal choice for quick data manipulation and caching.</p>
 <p>To ensure distributed consensus across system nodes, which is crucial for coordinated state changes and maintaining data consistency, we will deploy Raft/Ra.</p>
 <p>For persistent storage of critical, structured data that requires ACID transactions and global accessibility, we will utilize CockroachDB. This ensures the durability of our data.</p>
-<p>Data flow management is another essential aspect of our solution. We will establish protocols to move temporary data from Etso/ETS to SeaweedFS for bulk storage. For structured data persistence, we will use CockroachDB.</p>
+<p>Data flow management is another essential aspect of our solution. We will establish protocols to move temporary data from Etso/ETS to the CDN for bulk storage. For structured data persistence, we will use CockroachDB.</p>
 <p>Finally, we will use Raft/Ra to manage write operations across the cdn and CockroachDB to ensure consistency and fault tolerance. This comprehensive approach will provide a robust solution for managing and maintaining data consistency.</p>
 <section id="configure-etso-for-ets" class="level3">
 <h3 class="anchored" data-anchor-id="configure-etso-for-ets">Configure Etso for ETS</h3>
