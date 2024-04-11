@@ -21,7 +21,7 @@ desync make -s /path/to/store.castr /path/to/input
 
 ### 2. Configure Etso for ETS
 
-Etso will be used to manage temporary, in-memory data structures with Ecto schemas in Elixir applications. This is ideal for quick data manipulation and caching.
+Etso will manage temporary, in-memory data structures with Ecto schemas in Elixir applications. This is ideal for quick data manipulation and caching.
 
 ```elixir
 defmodule MyApp.Cache do
@@ -40,9 +40,9 @@ We will implement Raft/Ra to ensure distributed consensus across system nodes. T
 
 CockroachDB will store critical, structured data requiring ACID transactions and global accessibility. This ensures data durability.
 
-### 5. Data Flow Management
+### 5. Data Flow Management with Membrane Framework
 
-We will establish data flow protocols to move temporary data from Etso/ETS to Desync for bulk storage and CockroachDB for structured data persistence.
+We will establish data flow protocols using the Membrane Framework to move temporary data from Etso/ETS to Desync for bulk storage and CockroachDB for structured data persistence.
 
 ### 6. Ensure Consistency
 
