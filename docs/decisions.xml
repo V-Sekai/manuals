@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.553</generator>
-<lastBuildDate>Sat, 13 Apr 2024 16:13:38 GMT</lastBuildDate>
+<lastBuildDate>Sat, 13 Apr 2024 16:49:51 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,105 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:13:38 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240413-training-quad-based-meshgpt-with-40gb-vram.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-train-quad-based-meshgpt-within-constraints" class="level1">
+<h1>Proposed: Train quad-based Meshgpt within constraints</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>The goal is to train a MeshGPT model for quad-based geometry with limited resources of one day using fixed Nvidia GPU hardware to evaluate its performance.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Describe a workflow for training Meshgpt with quad-based meshes to create a set of LODs (Level of Detail) within the given constraints.</p>
+</section>
+<section id="proposed-workflow-with-data-selection-section" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-workflow-with-data-selection-section">Proposed Workflow (with Data Selection Section)</h2>
+<ol type="1">
+<li><p><strong>Data Preparation</strong>: Collect a diverse dataset of quad-based meshes suitable for generating LODs. This involves cleaning and normalizing the data to ensure consistency and remove inconsistencies or errors. Categorizing the data based on complexity and size allows for targeted training and model performance evaluation across different mesh types. A requirement is to attribute every available source 3d model. Gather a dataset of quad-based meshes representing various objects within the distance range of interest.</p></li>
+<li><p><strong>Model Architecture Selection</strong>: Choose an appropriate language model architecture to handle geometric data effectively. MeshGPT could be a good starting point due to its success in handling 3D mesh generation tasks.</p></li>
+<li><p><strong>Batch Processing Technique</strong>: Implement a batch processing technique to optimize the use of GPU resources.</p></li>
+<li><p><strong>Hyperparameter Tuning</strong>: Fine-tune the hyperparameters, such as learning rate, batch size, and number of layers, to achieve optimal performance within the given time constraint. This may involve experimentation with different values and configurations to find the best setup for the chosen model architecture and dataset.</p></li>
+<li><p><strong>Training Process</strong>: Train the MeshGPT model using the prepared dataset with the chosen architecture, optimized batch processing technique, and fine-tuned hyperparameters for over one day. This involves monitoring the training process and making necessary adjustments to ensure optimal performance within the given timeframe.</p></li>
+<li><p><strong>Evaluation</strong>: Evaluate the trained model’s performance by generating LODs for a diverse quad-based mesh and comparing them to ground truth data or existing LOD generation methods.</p></li>
+<li><p><strong>Results Analysis</strong>: Analyze the results obtained from the evaluation stage, focusing on metrics such as accuracy, speed, and resource usage.</p></li>
+</ol>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li>Efficient utilization of Video RAM in training large language models for mesh generation tasks.</li>
+<li>Ability to train the MeshGPT model within a one-day timeframe.</li>
+<li>Improved LOD generation capabilities for quad-based meshes.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li>Limited flexibility due to the constraint of Video RAM.</li>
+<li>Training large language models can be computationally intensive and require significant processing power, potentially impacting system performance.</li>
+<li>Requires careful hyperparameter tuning for optimal results within the given timeframe.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<ul>
+<li>Using less powerful hardware or smaller video RAM would result in longer training times or lower model capacity.</li>
+<li>Opting for a more complex model architecture without optimizations could lead to overfitting and poor performance on the LOD generation task.</li>
+</ul>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>In cases where more advanced GPU hardware is available, this workflow may not be necessary as it would allow for larger models or longer training times, potentially resulting in better performance. However, the proposed workflow can be a starting point for those with limited resources or time constraints.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<ul>
+<li>Workflow design specifically tailored to train MeshGPT on quad-based meshes within one day using a fixed sized video RAM.</li>
+<li>Hyperparameter tuning and optimization techniques are implemented to maximize performance under the given constraints.</li>
+</ul>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+<li><a href="https://www.runpod.io/">Runpod</a></li>
+<li><a href="https://github.com/lucidrains/meshgpt-pytorch/issues/54">MeshGPT with Quads</a></li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240413-training-quad-based-meshgpt-with-40gb-vram.html</guid>
+  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -214,7 +312,7 @@ font-style: inherit;">}</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240413-calling-opensource-llm-with-aria.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:13:38 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -307,7 +405,7 @@ font-style: inherit;">}</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240411-multiplayer-movement-with-parented-obejcts.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:13:38 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -390,7 +488,7 @@ font-style: inherit;">}</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240411-elixir-libgodot-zig.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:13:38 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -551,7 +649,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240411-elixir-libgodot-bundlex.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:13:38 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -708,7 +806,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240410-data-storage-elixir.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:13:38 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -803,7 +901,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240409-elixir-raft-vs-sqlite-fdb.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:13:38 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -908,7 +1006,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240409-crud-godot-tiles.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:13:38 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -990,7 +1088,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240407-pcvr-vs-standalone.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:13:38 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1071,7 +1169,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240406-web-based-explore.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:13:38 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1158,7 +1256,7 @@ font-style: inherit;">butler</span> push myproject.catar user/game:channel</span
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240406-itch-github-actions.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:13:38 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1313,7 +1411,7 @@ font-style: inherit;"># Connect the mix node to the shader graph output</span></
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240401-shader-graphic.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:13:38 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1422,7 +1520,7 @@ font-style: inherit;"># Connect the mix node to the shader graph output</span></
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240331-vrc-vrm-compatibility.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:13:38 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1527,7 +1625,7 @@ font-style: inherit;"># Open https://rancher.192.168.0.65.sslip.io/dashboard/aut
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-k8s-harvester-hci.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:13:38 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1615,7 +1713,7 @@ font-style: inherit;"># Open https://rancher.192.168.0.65.sslip.io/dashboard/aut
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-hyperv-harvester-test.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:13:38 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1814,7 +1912,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-gitlab-helm.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:13:38 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1917,7 +2015,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-cicd-gitlab.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:13:38 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2005,7 +2103,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-bitnami-rancher-helm-catalog.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:13:38 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2091,110 +2189,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240329-ready-to-go-kit-windows-11.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:13:38 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240326-verifying-and-finetuning-plans.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-teaching-large-language-models-llms-with-goal-task-planners" class="level1">
-<h1>Proposed: Teaching Large Language Models (LLMs) with Goal-Task Planners</h1>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>We’re looking at using LLMs and goal-task planners like pyhop to generate innovative, executable plans. This approach combines the creativity of LLMs with the structured planning processes of goal-task planners.</p>
-</section>
-<section id="problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>The main challenges are computational overhead due to the two-step process and potential inaccuracies in the feasibility check.</p>
-</section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>We propose using an LLM for idea generation and a goal-task planner for checking feasibility. This could lead to creative and feasible plans. The accurate plans generated by this model can then be used to further train the LLM.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Pseudo-code</span></span>
-<span id="cb1-2">gpt <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> GPT()</span>
-<span id="cb1-3">idea <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> gpt.generate_idea()</span>
-<span id="cb1-4"></span>
-<span id="cb1-5">pyhop <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> Pyhop()</span>
-<span id="cb1-6">feasible <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> pyhop.find_plan(state, goal_generator())</span>
-<span id="cb1-7"></span>
-<span id="cb1-8"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> feasible:</span>
-<span id="cb1-9">    gpt.train(idea)</span></code></pre></div>
-</section>
-<section id="benefits" class="level2">
-<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
-<ol type="1">
-<li><strong>Innovation</strong>: Using LLMs for idea generation can lead to creative ideas.</li>
-<li><strong>Practicality</strong>: Passing the generated ideas through a goal-task planner ensures that the plans are innovative but also feasible and executable.</li>
-<li><strong>Continuous Learning</strong>: The LLM can learn from the accurate plans, improving its performance over time.</li>
-</ol>
-</section>
-<section id="downsides" class="level2">
-<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
-<ol type="1">
-<li><strong>Computational Overhead</strong>: There might be a computational overhead due to the two-step process.</li>
-<li><strong>Accuracy of Feasibility Check</strong>: The feasibility check might not always be accurate.</li>
-</ol>
-</section>
-<section id="road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="road-not-taken">Road Not Taken</h2>
-<p>An alternative approach could be to run the LLM and the goal-task planner in parallel to address the computational overhead.</p>
-</section>
-<section id="infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
-<p>This method may not be suitable for tasks that require immediate results due to the time taken by the two-step process.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>The V-Sekai development team will implement this proposal.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
-<li><a href="https://doi.org/10.48550/arXiv.2402.01817">LLMs Can’t Plan, But Can Help Planning in LLM-Modulo Frameworks</a></li>
-</ol>
-<p>AI assistant Aria assisted with this feedback.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240326-verifying-and-finetuning-plans.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:13:38 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
 </item>
 </channel>
 </rss>
