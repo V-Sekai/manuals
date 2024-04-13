@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.553</generator>
-<lastBuildDate>Thu, 11 Apr 2024 15:39:01 GMT</lastBuildDate>
+<lastBuildDate>Sat, 13 Apr 2024 16:09:43 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,146 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:09:43 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240413-calling-opensource-llm-with-aria.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposal-calling-open-source-llm-with-aria" class="level1">
+<h1>Proposal: Calling Open Source LLM with Aria</h1>
+<section id="the-context" class="level3">
+<h3 class="anchored" data-anchor-id="the-context">The Context</h3>
+<p>Access to OpenAI’s ChatGPT-4 cannot last forever.</p>
+</section>
+<section id="problem-statement" class="level3">
+<h3 class="anchored" data-anchor-id="problem-statement">Problem Statement</h3>
+<p>I want to call an Apache2 licensed large language model (LLM) with open weights in my code editor, Visual Studio Code by Microsoft, using the name <code>Aria</code>.</p>
+</section>
+<section id="proposed-solution" class="level3">
+<h3 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h3>
+<ol type="1">
+<li><p><strong>Install LM Studio</strong>: A tool for managing and deploying large language models.</p></li>
+<li><p><strong>Download a quantized version of Hermes-2-Pro-Mistral-7B</strong>: This model is available at <a href="https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B">Hugging Face Model Card</a>.</p></li>
+<li><p><strong>Install Visual Studio Code</strong>: The popular code editor by Microsoft.</p></li>
+<li><p><strong>Install the Genie extension</strong>: This extension allows you to interact with AI models directly in Visual Studio Code. <a href="https://marketplace.visualstudio.com/items?itemName=ai-genie.chatgpt-vscode">ai-genie.chatgpt-vscode</a></p></li>
+<li><p><strong>Set Genie to use the assistant name “Aria”</strong>: This will give the AI a unique identity within Visual Studio Code.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-2">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"genie.assistantName"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Aria"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-3">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"genie.apiUrl"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"http://localhost:1234/v1/chat/completions"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-4">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"genie.model"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-5">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"id"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"nousresearch/hermes-2-pro-mistral-7b"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-6">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"tokenLimit"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8192</span></span>
+<span id="cb1-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-8"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div></li>
+<li><p><strong>Start using Aria in Visual Studio Code</strong>: With the above settings, you can now access and interact with the open source large language model (LLM) named Hermes-2-Pro-Mistral-7B through the Genie extension.</p></li>
+</ol>
+</section>
+<section id="benefits" class="level3">
+<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
+<ul>
+<li>Access to an AI assistant large language model.</li>
+<li>Ability to develop and fine-tune your own data models on open source datasets.</li>
+</ul>
+</section>
+<section id="downsides" class="level3">
+<h3 class="anchored" data-anchor-id="downsides">Downsides</h3>
+<ul>
+<li>Requires a good understanding of natural language processing (NLP) and machine learning concepts.</li>
+<li>May require additional hardware resources for running the LLM locally.</li>
+</ul>
+</section>
+<section id="road-not-taken" class="level3">
+<h3 class="anchored" data-anchor-id="road-not-taken">Road Not Taken</h3>
+<ul>
+<li>Using proprietary AI models that are not open-source or freely available, such as OpenAI’s ChatGPT-4.</li>
+<li>Relying on cloud-based services for AI interactions instead of local deployment.</li>
+</ul>
+</section>
+<section id="infrequent-use-case" class="level3">
+<h3 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h3>
+<ul>
+<li>In cases where real-time performance is critical, using an LLM might not be the optimal solution due to its computational requirements.</li>
+</ul>
+</section>
+<section id="status" class="level3">
+<h3 class="anchored" data-anchor-id="status">Status</h3>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level3">
+<h3 class="anchored" data-anchor-id="decision-makers">Decision Makers</h3>
+<ul>
+<li>V-Sekai development team</li>
+<li>Fire</li>
+</ul>
+</section>
+<section id="tags" class="level3">
+<h3 class="anchored" data-anchor-id="tags">Tags</h3>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240413-calling-opensource-llm-with-aria.html</guid>
+  <pubDate>Sat, 13 Apr 2024 16:09:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -168,7 +307,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240411-multiplayer-movement-with-parented-obejcts.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:09:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -251,7 +390,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240411-elixir-libgodot-zig.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:09:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -412,7 +551,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240411-elixir-libgodot-bundlex.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:09:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -569,7 +708,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240410-data-storage-elixir.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:09:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -664,7 +803,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240409-elixir-raft-vs-sqlite-fdb.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:09:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -769,7 +908,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240409-crud-godot-tiles.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:09:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -851,7 +990,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240407-pcvr-vs-standalone.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:09:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -932,7 +1071,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240406-web-based-explore.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:09:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1019,7 +1158,7 @@ font-style: inherit;">butler</span> push myproject.catar user/game:channel</span
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240406-itch-github-actions.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:09:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1174,7 +1313,7 @@ font-style: inherit;"># Connect the mix node to the shader graph output</span></
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240401-shader-graphic.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:09:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1283,7 +1422,7 @@ font-style: inherit;"># Connect the mix node to the shader graph output</span></
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240331-vrc-vrm-compatibility.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:09:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1388,7 +1527,7 @@ font-style: inherit;"># Open https://rancher.192.168.0.65.sslip.io/dashboard/aut
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-k8s-harvester-hci.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:09:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1476,7 +1615,7 @@ font-style: inherit;"># Open https://rancher.192.168.0.65.sslip.io/dashboard/aut
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-hyperv-harvester-test.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:09:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1675,7 +1814,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-gitlab-helm.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:09:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1778,7 +1917,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-cicd-gitlab.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:09:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1866,7 +2005,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-bitnami-rancher-helm-catalog.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:09:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1952,7 +2091,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240329-ready-to-go-kit-windows-11.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:09:43 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2055,100 +2194,7 @@ font-style: inherit;">if</span> feasible:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240326-verifying-and-finetuning-plans.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240326-heartstrings-vr.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-cafe-serenade---a-vr-dating-sim-experience" class="level1">
-<h1>Proposed: “Cafe Serenade” - A VR Dating Sim Experience</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>The growing interest in VR as a medium for more intimate and engaging storytelling provides a unique opportunity for innovative game designs. Within this space, the concept of a VR dating simulation offers a fresh avenue to explore personal connections and storytelling.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Most VR experiences lack the depth and emotional engagement found in traditional dating sims. There’s a gap in the VR market for a game that combines the immersive aspects of VR with the rich narratives and character development of dating sims.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<pre class="pseudo"><code>// Example interaction system
-function initiate_conversation(character):
-    if player_approaches(character):
-        display_dialogue_options()
-        player_selection = get_player_input()
-        update_character_affinity(player_selection)
-        reveal_next_story_bit(character, player_selection)
-
-// Mock-up of cafe environment and character placement
-[ Cafe Layout ]
-[Table1] [Character1]    [Bar]    [Character2]
-                 [PlayerStartPoint]
-                              [Character3] [Table2]</code></pre>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<ul>
-<li><strong>Immersive Engagement</strong>: By leveraging VR, players can experience a deeper sense of presence and emotional connection with the characters.</li>
-<li><strong>Innovative Storytelling</strong>: Utilizing VR to tell stories in a dating sim format opens new narrative possibilities, such as non-verbal communication and spatial storytelling.</li>
-<li><strong>Accessibility</strong>: Simple interaction models make the game accessible to VR newcomers, while the depth of story appeals to dating sim enthusiasts.</li>
-</ul>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<ul>
-<li><strong>Development Complexity</strong>: Crafting a VR experience that is both immersive and interactive can be resource-intensive.</li>
-<li><strong>Niche Appeal</strong>: The combination of VR and dating sims may cater to a niche market, potentially limiting the audience size.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>An alternate approach would have been to develop a traditional 2D dating sim with VR elements as secondary features. This would reduce development complexity but also diminish the uniqueness and immersive potential of the experience.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>For players who may not frequently engage with VR or dating sims, “Cafe Serenade” will offer a “casual mode” with simplified interactions and the ability to observe stories without active participation, encouraging them to explore the game at their own pace.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>The core game mechanics, narrative development, and character design will be handled in-house to maintain a cohesive vision and quality. External collaborations may involve additional art assets and voice acting.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240326-heartstrings-vr.html</guid>
-  <pubDate>Thu, 11 Apr 2024 15:39:01 GMT</pubDate>
+  <pubDate>Sat, 13 Apr 2024 16:09:43 GMT</pubDate>
 </item>
 </channel>
 </rss>
