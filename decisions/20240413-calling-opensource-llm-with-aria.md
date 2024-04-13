@@ -6,7 +6,7 @@ Access to OpenAI's ChatGPT-4 cannot last forever.
 
 ### Problem Statement
 
-I want to call an Apache2 licensed large language model (LLM) with open weights in my code editor, Visual Studio Code by Microsoft, using the name `Aria`.
+Using the assistant name Aria, I want to call an Apache2 licensed large language model (LLM) with open weights in my code editor, Visual Studio Code by Microsoft.
 
 ### Proposed Solution
 
@@ -16,7 +16,7 @@ I want to call an Apache2 licensed large language model (LLM) with open weights 
 
 3. **Install Visual Studio Code**: The popular code editor by Microsoft.
 
-4. **Install the Genie extension**: This extension allows you to interact with AI models directly in Visual Studio Code. [ai-genie.chatgpt-vscode](https://marketplace.visualstudio.com/items?itemName=ai-genie.chatgpt-vscode)
+4. **Install the Genie extension**: This lets you interact with AI models directly in Visual Studio Code. [ai-genie.chatgpt-vscode](https://marketplace.visualstudio.com/items?itemName=ai-genie.chatgpt-vscode)
 
 5. **Set Genie to use the assistant name "Aria"**: This will give the AI a unique identity within Visual Studio Code.
    ```json
@@ -34,7 +34,7 @@ I want to call an Apache2 licensed large language model (LLM) with open weights 
 ### Benefits
 
 - Access to an AI assistant large language model.
-- Ability to develop and fine-tune your own data models on open source datasets.
+- Ability to develop and fine-tune your data models on open-source datasets.
 
 ### Downsides
 
