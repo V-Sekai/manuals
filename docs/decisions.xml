@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.553</generator>
-<lastBuildDate>Sat, 13 Apr 2024 16:49:51 GMT</lastBuildDate>
+<lastBuildDate>Tue, 16 Apr 2024 21:13:07 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,98 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
+  <pubDate>Tue, 16 Apr 2024 21:13:07 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240416-previewer-upload-gltf-to-glb.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposal-implementing-a-3d-previewer-for-gltf-with-xmp-metadata" class="level1">
+<h1>Proposal: Implementing a 3D Previewer for GLTF with XMP Metadata</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>The current project involves the use of 3D models in GLTF format. These models also contain XMP metadata which needs to be previewed.</p>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>The challenge lies in creating a 3D previewer that handles GLTF files and their associated XMP metadata. The aim is to have one file per entry, making it easier to manage and organize the data.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>The proposed solution involves loading a GLTF file and saving it as a GLB file. This process is lossless, meaning no data will be lost during the conversion. The GLB file will then preview the 3D model and its metadata.</p>
+<pre class="pseudo"><code>function convertToGLB(gltfFile) {
+    // Load the GLTF file
+    var gltf = loadGLTF(gltfFile);
+
+    // Convert the GLTF to GLB
+    var glb = gltf.toGLB();
+
+    // Save the GLB file
+    saveGLB(glb);
+}</code></pre>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<ul>
+<li>Simplifies the workflow by having only one file per entry.</li>
+<li>No loss of data during the conversion from GLTF to GLB.</li>
+<li>Makes it easier to compress in Godot Engine’s workflow.</li>
+</ul>
+</section>
+<section id="downsides" class="level2">
+<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
+<ul>
+<li>Requires additional processing to convert GLTF files to GLB.</li>
+<li>Might increase the overall size of the project due to the conversion.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An alternative approach could be to keep the GLTF and XMP metadata separate and create a previewer that can handle multiple files. However, this would complicate the workflow and make it harder to manage the data.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>This proposal might not be beneficial for projects that do not require a 3D previewer or do not use GLTF files.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>The implementation of this proposal will be done by the V-Sekai development team.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p><em>This proposal was assisted by AI assistant Aria.</em></p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240416-previewer-upload-gltf-to-glb.html</guid>
+  <pubDate>Tue, 16 Apr 2024 21:13:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -173,7 +264,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240413-training-quad-based-meshgpt-with-40gb-vram.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
+  <pubDate>Tue, 16 Apr 2024 21:13:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -312,7 +403,7 @@ font-style: inherit;">}</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240413-calling-opensource-llm-with-aria.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
+  <pubDate>Tue, 16 Apr 2024 21:13:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -405,7 +496,7 @@ font-style: inherit;">}</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240411-multiplayer-movement-with-parented-obejcts.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
+  <pubDate>Tue, 16 Apr 2024 21:13:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -488,7 +579,7 @@ font-style: inherit;">}</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240411-elixir-libgodot-zig.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
+  <pubDate>Tue, 16 Apr 2024 21:13:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -649,7 +740,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240411-elixir-libgodot-bundlex.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
+  <pubDate>Tue, 16 Apr 2024 21:13:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -806,7 +897,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240410-data-storage-elixir.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
+  <pubDate>Tue, 16 Apr 2024 21:13:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -901,7 +992,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240409-elixir-raft-vs-sqlite-fdb.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
+  <pubDate>Tue, 16 Apr 2024 21:13:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1006,7 +1097,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240409-crud-godot-tiles.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
+  <pubDate>Tue, 16 Apr 2024 21:13:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1088,7 +1179,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240407-pcvr-vs-standalone.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
+  <pubDate>Tue, 16 Apr 2024 21:13:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1169,7 +1260,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240406-web-based-explore.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
+  <pubDate>Tue, 16 Apr 2024 21:13:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1256,7 +1347,7 @@ font-style: inherit;">butler</span> push myproject.catar user/game:channel</span
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240406-itch-github-actions.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
+  <pubDate>Tue, 16 Apr 2024 21:13:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1411,7 +1502,7 @@ font-style: inherit;"># Connect the mix node to the shader graph output</span></
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240401-shader-graphic.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
+  <pubDate>Tue, 16 Apr 2024 21:13:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1520,7 +1611,7 @@ font-style: inherit;"># Connect the mix node to the shader graph output</span></
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240331-vrc-vrm-compatibility.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
+  <pubDate>Tue, 16 Apr 2024 21:13:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1625,7 +1716,7 @@ font-style: inherit;"># Open https://rancher.192.168.0.65.sslip.io/dashboard/aut
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-k8s-harvester-hci.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
+  <pubDate>Tue, 16 Apr 2024 21:13:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1713,7 +1804,7 @@ font-style: inherit;"># Open https://rancher.192.168.0.65.sslip.io/dashboard/aut
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-hyperv-harvester-test.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
+  <pubDate>Tue, 16 Apr 2024 21:13:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1912,7 +2003,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-gitlab-helm.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
+  <pubDate>Tue, 16 Apr 2024 21:13:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2015,7 +2106,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-cicd-gitlab.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
+  <pubDate>Tue, 16 Apr 2024 21:13:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2103,93 +2194,7 @@ font-style: inherit;"> s3access</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240330-bitnami-rancher-helm-catalog.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240329-ready-to-go-kit-windows-11.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-v-sekai-setup-as-a-ready-to-go-kit" class="level1">
-<h1>Proposed: V-Sekai Setup as a Ready-to-Go Kit</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>V-Sekai is an open-source project that focuses on bringing social VR functionality to the Godot Engine. It aims to create a metaverse where users can interact and engage in various activities.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>The current setup process for V-Sekai is complex and time-consuming, which may deter potential users and developers. We need to simplify this process by creating a ready-to-go kit.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>The ready-to-go kit will be a pre-configured package containing all necessary files and dependencies for running V-Sekai. Users will simply need to download and extract the package to get started.</p>
-<ol type="1">
-<li>Download V-Sekai Kit</li>
-<li>Extract Files</li>
-<li>Run V-Sekai</li>
-</ol>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<ul>
-<li>Simplified setup process</li>
-<li>Increased accessibility for non-technical users</li>
-<li>Potential increase in user base and community contributions</li>
-</ul>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<ul>
-<li>Maintenance of the kit could become resource-intensive if not automated</li>
-<li>Potential security risks if not properly managed</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>We could have continued with the existing setup process, but this would likely limit the growth and accessibility of V-Sekai.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>Users who wish to customize their V-Sekai experience extensively may find the ready-to-go kit limiting. However, they still have the option to manually set up V-Sekai.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>This proposal will be implemented by the V-Sekai development team.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240329-ready-to-go-kit-windows-11.html</guid>
-  <pubDate>Sat, 13 Apr 2024 16:49:51 GMT</pubDate>
+  <pubDate>Tue, 16 Apr 2024 21:13:07 GMT</pubDate>
 </item>
 </channel>
 </rss>
