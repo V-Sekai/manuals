@@ -1,4 +1,4 @@
-# Updated Proposal: Implementation of Essential Tuple Normalization Form (ETNF) in V-Sekai
+# Updated Proposal: Implementation of Essential Tuple Normalization Form (ETNF) for relational databases (rdbms, sql)
 
 ## Context
 
