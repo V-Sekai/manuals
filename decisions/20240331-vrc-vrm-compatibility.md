@@ -30,7 +30,7 @@ The proposed solution involves a series of steps outlined in the README below:
 15. The FX controller must match the name and not be temporary.
 16. Remove all face blend shapes.
 17. Use the reader to add face blend shapes (perfect sync)
-18. Delete `mouthRollUpper`, `mouthRollLower` and `mouseClose`. 
+18. Delete `mouthRollUpper`, `mouthRollLower` and `mouthClose`. 
 19. Delete VRM tools.
 20. Make sure all pipeline IDs are detached.
 21. Remember to delete the upper chest from the humanoid.
