@@ -30,12 +30,13 @@ The proposed solution involves a series of steps outlined in the README below:
 15. The FX controller must match the name and not be temporary.
 16. Remove all face blend shapes.
 17. Use the reader to add face blend shapes (perfect sync)
-18. Delete VRM tools.
-19. Make sure all pipeline IDs are detached.
-20. Remember to delete the upper chest from the humanoid.
-21. Eye look is behind the nose
-22. Make sure the breast bones are parented as the same bone as the clothing chest bones correspond to.
-23. Upload. (Pick a new slot. DO NOT REUSE A SLOT.)
+18. Delete `mouthRollUpper`, `mouthRollLower` and `mouseClose`. 
+19. Delete VRM tools.
+20. Make sure all pipeline IDs are detached.
+21. Remember to delete the upper chest from the humanoid.
+22. Eye look is behind the nose
+23. Make sure the breast bones are parented as the same bone as the clothing chest bones correspond to.
+24. Upload. (Pick a new slot. DO NOT REUSE A SLOT.)
 
 ### Installed packages
 
