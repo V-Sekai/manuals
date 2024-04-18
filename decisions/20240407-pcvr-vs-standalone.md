@@ -1,8 +1,8 @@
-# Accepted: Focusing on PCVR vs Android Build
+# Accepted: Focusing on PCVR vs Android Build vs Web Build
 
 ## Context
 
-V-Sekai is a project that aims to bring social VR functionality to the Godot Engine. The current dilemma is whether to focus on an Android build, potentially moving away from PCVR as the primary platform, or continue focusing on PCVR.
+V-Sekai is a project that aims to bring social VR functionality to the Godot Engine. The current dilemma is whether to focus on an Android/Web build, potentially moving away from PCVR as the primary platform, or continue focusing on PCVR.
 
 ## Problem Statement
 
