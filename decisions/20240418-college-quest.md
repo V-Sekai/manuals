@@ -2,15 +2,15 @@
 
 ## The Context
 
-In the current gaming market, there is a lack of immersive, open-world games that are set in realistic environments such as a college town. Most games focus on fantasy or post-apocalyptic settings, leaving a gap for games that simulate everyday life in a fun and engaging way.
+In the current gaming landscape, there is a noticeable gap for immersive, open-world games set in realistic environments such as a college town. Most games focus on fantasy or post-apocalyptic settings, leaving room for games that engagingly simulate everyday life.
 
 ## The Problem Statement
 
-We need to create an open-world game that provides players with a unique and dynamic environment, offering them a fresh experience every time they play. The game should be set in a bustling college town and allow players to take on the role of a delivery person completing quests.
+The goal is to create an open-world game that provides players with a unique and dynamic environment, offering a fresh experience every time they play. The game should be set in a bustling college town and allow players to take on the role of a delivery person completing quests.
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
-"College Quest" will be developed using the Godot Engine. The game world will be procedurally generated, ensuring that no two playthroughs are identical. NPCs will assign delivery quests to the player, who must navigate the town and deliver items within a specified time limit.
+"College Quest" will be developed using the Godot Engine. The game world will be procedurally generated, ensuring that no two playthroughs are identical. NPCs will assign delivery quests to the player, who must navigate the town and deliver items within a specified time limit. We will utilize the preexisting vehicle code from "Crappy Contraptions" to facilitate the movement mechanics in our game.
 
 ## The Benefits
 
@@ -34,7 +34,7 @@ The core gameplay mechanics, including movement, item pickup, and quest assignme
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Proposed
 
 ## Decision Makers
 
@@ -48,5 +48,6 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
+3. [Crappy Contraptions](https://github.com/V-Sekai-fire/ludum-dare-55.git)
 
 AI assistant Aria assisted with this article.
