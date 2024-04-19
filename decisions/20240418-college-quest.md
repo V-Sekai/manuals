@@ -1,4 +1,4 @@
-# Proposed: College Quest
+# Proposed: Town Courier
 
 ## The Context
 
@@ -10,7 +10,7 @@ The goal is to create an open-world game that provides players with a unique and
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
-"College Quest" will be developed using the Godot Engine. The game world will be procedurally generated, ensuring that no two playthroughs are identical. NPCs will assign delivery quests to the player, who must navigate the town and deliver items on a moped within a specified time limit. We will utilize the preexisting vehicle code from "Crappy Contraptions" to facilitate the movement mechanics in our game.
+"Town Couriert" will be developed using the Godot Engine. The game world will be procedurally generated, ensuring that no two playthroughs are identical. NPCs will assign delivery quests to the player, who must navigate the town and deliver items on a moped within a specified time limit. We will utilize the preexisting vehicle code from "Crappy Contraptions" to facilitate the movement mechanics in our game.
 
 ## The Benefits
 
