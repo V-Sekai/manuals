@@ -16,16 +16,15 @@ Given the current market situation and V-Sekai's capabilities, it is suggested t
 
 - Ability to offer high-quality AAA games with lots of content.
 - Less crowded market compared to the standalone VR software market.
-
-## Downsides
-
-- Requires a significant investment in PCVR development.
-- The market for PCVR is growing but lacks spotlight.
 - We can make more experiences.
 - We can make better experiences.
 - The PCVR hardware is more capable (vulkan, shader functions, less need to optimize), so the same experiences are easier to create.
 - PCVR is easier to develop and test.
 
+## Downsides
+
+- Requires a significant investment in PCVR development.
+- The market for PCVR is growing but lacks spotlight.
 
 ## The Road Not Taken
 
