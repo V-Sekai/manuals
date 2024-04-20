@@ -22,6 +22,7 @@ Given the current market situation and V-Sekai's capabilities, it is suggested t
 - We can make better experiences.
 - The PCVR hardware is more capable (vulkan, shader functions, less need to optimize), so the same experiences are easier to create.
 - PCVR is easier to develop and test.
+- PCVR is more open to collaboration.
 
 ## Downsides
 
