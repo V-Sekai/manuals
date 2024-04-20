@@ -21,6 +21,11 @@ Given the current market situation and V-Sekai's capabilities, it is suggested t
 
 - Requires a significant investment in PCVR development.
 - The market for PCVR is growing but lacks spotlight.
+- We can make more experiences.
+- We can make better experiences.
+- The PCVR hardware is more capable (vulkan, shader functions, less need to optimize), so the same experiences are easier to create.
+- PCVR is easier to develop and test.
+
 
 ## The Road Not Taken
 
