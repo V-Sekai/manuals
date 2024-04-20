@@ -8,6 +8,8 @@ V-Sekai is a project that aims to bring social VR functionality to the Godot Eng
 
 The team lacks a high-powered enterprise sales team for enterprise PCVR. The mobile Vulkan is considered due to its ability to use compute shaders to skeleton skin meshes for large avatar counts. However, Meta dominates the standalone VR software market, and matching their offerings requires a superior product.
 
+Meta dominates the standalone VR software market but they are limited by the laws of physics.
+
 ## Proposal
 
 Given the current market situation and V-Sekai's capabilities, it is suggested to focus on PCVR. This platform can offer high-quality AAA games with lots of content, which standalone games cannot currently provide.
