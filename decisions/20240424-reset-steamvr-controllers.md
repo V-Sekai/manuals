@@ -19,7 +19,6 @@ To address this problem, we propose turning the SteamVR Index controller on and 
 
 ## The Downsides
 
-- Requires additional code implementation.
 - May need to be adjusted for different hardware configurations.
 
 ## The Road Not Taken
