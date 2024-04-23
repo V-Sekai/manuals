@@ -2,7 +2,7 @@
 
 ## The Context
 
-We are considering the use of Quest 3 and light housed tracked index controllers for our project.
+We are considering the use of Quest 3 and light housed tracked index controllers for our project when using playspace calibration.
 
 ## The Problem Statement
 
