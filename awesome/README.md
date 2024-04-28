@@ -78,6 +78,7 @@ Modules extend Godot Engine core (C++).
 - [Three VRM Inspector](https://0b5vr.com/three-vrm-inspector/)
 - [Worldtime Buddy](https://www.worldtimebuddy.com/)
 - [Booth Avatars](https://boothplorer.com/avatars)
+- [Lazygit](https://github.com/jesseduffield/lazygit)
 
 ## Tools that bring me joy
 
