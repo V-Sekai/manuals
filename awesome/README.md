@@ -77,6 +77,7 @@ Modules extend Godot Engine core (C++).
 - [Generate Blender Rigify armatures for VRM models.](https://github.com/nanoskript/vrm-rigify)
 - [Three VRM Inspector](https://0b5vr.com/three-vrm-inspector/)
 - [Worldtime Buddy](https://www.worldtimebuddy.com/)
+- [Booth Avatars](https://boothplorer.com/avatars)
 
 ## Tools that bring me joy
 
@@ -89,6 +90,7 @@ Modules extend Godot Engine core (C++).
 - [Hack for quick note taking](https://hackmd.io/)
 - [Image comparison](https://imgsli.com)
 - [Code Name Generator: Colors, Metal, Animals](https://www.codenamegenerator.com/)
+- [Voice Changer Guide](https://rentry.co/VoiceChangerGuide)
 
 ## Articles
 
