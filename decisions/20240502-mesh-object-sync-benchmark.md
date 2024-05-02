@@ -10,9 +10,12 @@ We need to ensure that the networking system of the Godot engine can handle the 
 
 ## Solution
 
-We propose to conduct stress testing on the Godot engine's networking system. This will involve creating multiple virtual users and simulating high traffic scenarios to evaluate how the system performs under heavy load.
+We propose to conduct stress testing on the Godot engine's networking system.
+
+This will involve creating multiple virtual users and simulating high traffic scenarios to evaluate how the system performs under heavy load.
 
 ```gdscript
+# This is a single node example.
 # Assuming we have a list of props and a World instance
 var props = [prop1, prop2, prop3]
 var world = World.new()
