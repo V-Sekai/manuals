@@ -6,7 +6,7 @@ We are considering the use of Quest 3 and Lighthouse tracked Valve Index control
 
 ## The Problem Statement
 
-The issue we face is that when a Meta Quest 3 is used, it takes over the controller priority.
+The issue we face is that when a Meta Quest 3 is used, it takes over the controller priority. So we're unable to open the steamvr menu.
 
 ## Solution Proposal
 
