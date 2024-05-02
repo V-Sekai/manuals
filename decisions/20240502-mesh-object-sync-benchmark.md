@@ -13,16 +13,23 @@ We need to ensure that the networking system of the Godot engine can handle the 
 We propose to conduct stress testing on the Godot engine's networking system. This will involve creating multiple virtual users and simulating high traffic scenarios to evaluate how the system performs under heavy load.
 
 ```gdscript
-# Assuming we have a list of virtual users and a server instance
-var virtualUsers = [user1, user2, user3]
-var server = Server.new()
+# Assuming we have a list of props and a World instance
+var props = [prop1, prop2, prop3]
+var world = World.new()
 
-for user in virtualUsers:
-    var randomSentence = generate_random_sentence() # Function to generate a random sentence
-    server.send_message(user, randomSentence)
+for i in range(1000): # Simulate 10 users
+    var user = User.new() # Create a new user
+    var selected_props = [] # List to store selected props
 
-    if server.stressMode:
-        server.rebroadcast_message(randomSentence)
+    for _ in range(randi()%props.size()+1): # Randomly select props
+        var prop = props[randi()%props.size()]
+        selected_props.append(prop)
+
+    user.glue_props(selected_props) # Glue selected props together
+    world.merge(user.get_changed_world()) # Merge the changed world into the main world
+
+# Now, let's read back the changed world
+print(world.get_state())
 ```
 
 ## Benefits
