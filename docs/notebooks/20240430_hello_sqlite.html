@@ -117,16 +117,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#v-sekai-changelog---2022-09" id="toc-v-sekai-changelog---2022-09" class="nav-link active" data-scroll-target="#v-sekai-changelog---2022-09">V-Sekai Changelog - 2022-09</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">2022-09-05</a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2022-09-06</a></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">2022-09-09</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/changelog/20220901-changelog.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -134,28 +125,67 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="v-sekai-changelog---2022-09" class="level1">
-<h1>V-Sekai Changelog - 2022-09</h1>
-</section>
-<section id="section" class="level1">
-<h1>2022-09-05</h1>
-<p>tefusion took iFire’s previous Godot Engine 3 branch and forward ported quad subdivision to an gdextension addon https://github.com/tefusion/godot-subdiv</p>
-<p>We discuss with Reduz, Calinou and Lyuma about astc and limiting astc block size to 4x4, 8x8, and 12x12 block sizes. 4x4 was agreed on. Others have not yet.</p>
-</section>
-<section id="section-1" class="level1">
-<h1>2022-09-06</h1>
-<p>Restored Lillybyte’s https://github.com/godotengine/godot/pull/59675 Show the 3D transform gizmo in the center when otherwise offscreen work.</p>
-<p>Godot Engine astc block size agreed to be 4x4 and 8x8.</p>
-<p>Saracen’s Make auto-advance flag a requirement for conditional/expression evaluation with design amendments approved. https://github.com/godotengine/godot/pull/65312</p>
-<p>https://twitter.com/KenneyNL made a V-Sekai logo for us. https://twitter.com/KenneyNL/status/1567077172866596868?s=20&amp;t=RIGyiux3A_KNX_HCLCVKvg</p>
-</section>
-<section id="section-2" class="level1">
-<h1>2022-09-09</h1>
-<p>https://github.com/Geequlim/ECMAScript/issues/131#issuecomment-1241570998 Javascript update.</p>
-<p>https://github.com/fire/ewbik Collaborated with Eron and Lyuma. Worked on the design of EWBIK bone weights and bone priority. Worked on the different bone rolls vs silhouette problem in regular 3d formats versus VRM which has a indentity bone roll. (Use the original bone and then parent the change to be in ewbik bone roll.) Made the EWBIK solve less jello. Also discussion using kusudama constraints in Godot Engine core.</p>
+<div id="58cf6d50-e8c8-48e4-96bf-eb2f2cddb623" class="cell" data-execution_count="12">
+<pre class="sage cell-code"><code># Import necessary libraries
+import sqlite3
+from sage.all import *
+
+# Connect to the SQLite database
+connection = sqlite3.connect("20240430_hello_list.db")
+
+# Execute SQL commands
+connection.execute("DROP TABLE IF EXISTS elliptic_curves")
+connection.execute("""
+    CREATE TABLE elliptic_curves (
+        cremona_label text primary key, 
+        a_1 int, 
+        a_2 int, 
+        a_3 int, 
+        a_4 int, 
+        a_6 int, 
+        rank int, 
+        regulator float
+    )
+""")
+
+# Create an elliptic curve
+E = EllipticCurve("389a")
+
+# Insert data into the table
+connection.execute("""
+    INSERT INTO elliptic_curves(
+        cremona_label,
+        a_1,
+        a_2,
+        a_3,
+        a_4,
+        a_6,
+        rank,
+        regulator
+    ) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+""", ('389a', int(E.a1()), int(E.a2()), int(E.a3()), int(E.a4()), int(E.a6()), int(E.rank()), float(E.regulator())))
+
+# Fetch and print data from the table where rank=1
+result = connection.execute("SELECT * FROM elliptic_curves WHERE rank=1")
+print(result.fetchone())
+
+# Fetch and print data from the table where rank=2
+result = connection.execute("SELECT * FROM elliptic_curves WHERE rank=2")
+print(result.fetchone())
+
+# Delete data from the table
+connection.execute("DELETE FROM elliptic_curves WHERE cremona_label = ?", ("389a",))
+
+# Commit changes and close the connection
+connection.commit()
+connection.close()</code></pre>
+<div class="cell-output cell-output-error">
+<pre><code>OperationalError: database is locked</code></pre>
+</div>
+</div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -719,7 +749,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/changelog/20220901-changelog.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.dev/V-Sekai/manuals/blob/main/notebooks/20240430_hello_sqlite.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
