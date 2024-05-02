@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.554</generator>
-<lastBuildDate>Thu, 02 May 2024 17:50:42 GMT</lastBuildDate>
+<lastBuildDate>Thu, 02 May 2024 18:08:29 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,300 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Thu, 02 May 2024 17:50:42 GMT</pubDate>
+  <pubDate>Thu, 02 May 2024 18:08:29 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240502-mvsqlite-launchd.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-launching-the-mvsqlite-rdbms-server" class="level1">
+<h1>Proposed: Launching the mvsqlite rdbms server</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>In software development and maintenance, automation of routine tasks is crucial for efficiency. One such task is launching a database server at system startup. For macOS users, this can be achieved using <code>launchd</code>, an open-source service management framework. In this context, we are specifically interested in automating the launch of the <code>mvsqlite</code> RDBMS server.</p>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>The task at hand is to create a <code>launchd</code> service for macOS that will automatically run the following command at system startup:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">/usr/local/bin/mvstore</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--data-plane</span> 127.0.0.1:7000 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--admin-api</span> 127.0.0.1:7001 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--metadata-prefix</span> mvstore-test <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--raw-data-prefix</span> m <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--auto-create-namespace</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--cluster</span> /usr/local/etc/foundationdb/fdb.cluster</span></code></pre></div>
+<p>Additionally, we need to be able to retrieve logs from this service and check its status.</p>
+</section>
+<section id="solution" class="level2">
+<h2 class="anchored" data-anchor-id="solution">Solution</h2>
+<p>To solve this problem, we can create a <code>.plist</code> file in the <code>~/Library/LaunchAgents</code> directory. This file will define our <code>launchd</code> service and specify the command it should run. We can also add keys to redirect the standard output and error to log files. Finally, we can use the <code>launchctl list</code> command to check the status of our service.</p>
+<p>Here are the detailed steps:</p>
+<section id="creating-the-.plist-file" class="level3">
+<h3 class="anchored" data-anchor-id="creating-the-.plist-file">Creating the .plist File</h3>
+<ol type="1">
+<li>Open Terminal and navigate to the LaunchAgents directory:</li>
+</ol>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> ~/Library/LaunchAgents</span></code></pre></div>
+<ol start="2" type="1">
+<li>Create a new <code>.plist</code> file called <code>com.user.mvstore.plist</code>:</li>
+</ol>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">touch</span> com.user.mvstore.plist</span></code></pre></div>
+<ol start="3" type="1">
+<li>Open the file with a text editor (e.g., nano):</li>
+</ol>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nano</span> com.user.mvstore.plist</span></code></pre></div>
+<ol start="4" type="1">
+<li>Paste the following content into the file:</li>
+</ol>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">&lt;?xml</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;"> version=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"1.0"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;"> encoding=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"UTF-8"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">?&gt;</span></span>
+<span id="cb5-2"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">&lt;!DOCTYPE</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">plist</span> PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"<span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">&gt;</span></span>
+<span id="cb5-3">&lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">plist</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;"> version=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"1.0"</span>&gt;</span>
+<span id="cb5-4">&lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">dict</span>&gt;</span>
+<span id="cb5-5">    &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">key</span>&gt;Label&lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">key</span>&gt;</span>
+<span id="cb5-6">    &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;com.user.mvstore&lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;</span>
+<span id="cb5-7">    &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">key</span>&gt;ProgramArguments&lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">key</span>&gt;</span>
+<span id="cb5-8">    &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">array</span>&gt;</span>
+<span id="cb5-9">        &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;/usr/local/bin/mvstore&lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;</span>
+<span id="cb5-10">        &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;--data-plane&lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;</span>
+<span id="cb5-11">        &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;127.0.0.1:7000&lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;</span>
+<span id="cb5-12">        &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;--admin-api&lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;</span>
+<span id="cb5-13">        &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;127.0.0.1:7001&lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;</span>
+<span id="cb5-14">        &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;--metadata-prefix&lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;</span>
+<span id="cb5-15">        &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;mvstore-test&lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;</span>
+<span id="cb5-16">        &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;--raw-data-prefix&lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;</span>
+<span id="cb5-17">        &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;m&lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;</span>
+<span id="cb5-18">        &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;--auto-create-namespace&lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;</span>
+<span id="cb5-19">        &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;--cluster&lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;</span>
+<span id="cb5-20">        &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;/usr/local/etc/foundationdb/fdb.cluster&lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;</span>
+<span id="cb5-21">    &lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">array</span>&gt;</span>
+<span id="cb5-22">    &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">key</span>&gt;RunAtLoad&lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">key</span>&gt;</span>
+<span id="cb5-23">    &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">true</span>/&gt;</span>
+<span id="cb5-24">    &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">key</span>&gt;EnvironmentVariables&lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">key</span>&gt;</span>
+<span id="cb5-25">    &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">dict</span>&gt;</span>
+<span id="cb5-26">        &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">key</span>&gt;RUST_LOG&lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">key</span>&gt;</span>
+<span id="cb5-27">        &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;info&lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;</span>
+<span id="cb5-28">        &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">key</span>&gt;DYLD_LIBRARY_PATH&lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">key</span>&gt;</span>
+<span id="cb5-29">        &lt;<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;/usr/local/lib&lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">string</span>&gt;</span>
+<span id="cb5-30">    &lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">dict</span>&gt;</span>
+<span id="cb5-31">&lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">dict</span>&gt;</span>
+<span id="cb5-32">&lt;/<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">plist</span>&gt;</span></code></pre></div>
+<ol start="5" type="1">
+<li><p>Save and close the file.</p></li>
+<li><p>Load the new service:</p></li>
+</ol>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">launchctl</span> load ~/Library/LaunchAgents/com.user.mvstore.plist</span></code></pre></div>
+</section>
+<section id="retrieving-logs" class="level3">
+<h3 class="anchored" data-anchor-id="retrieving-logs">Retrieving Logs</h3>
+<p>To retrieve logs from the <code>launchd</code> service, add the <code>StandardOutPath</code> and <code>StandardErrorPath</code> keys to the <code>.plist</code> file. These keys will redirect the standard output (stdout) and standard error (stderr) to specified log files.</p>
+</section>
+<section id="checking-the-service-status" class="level3">
+<h3 class="anchored" data-anchor-id="checking-the-service-status">Checking the Service Status</h3>
+<p>To check the <code>launchd</code> status for <code>mvsqlite</code>, use the <code>launchctl list</code> command:</p>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">launchctl</span> list <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grep</span> mvstore</span></code></pre></div>
+</section>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<p>Automating tasks with <code>launchd</code> can save time and reduce the risk of errors. It also provides a standardized way to manage services on macOS.</p>
+</section>
+<section id="downsides" class="level2">
+<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
+<p>The main downside is that <code>launchd</code> is specific to macOS, so this solution won’t work on other operating systems.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An alternative approach could be to use cron jobs or another task scheduler, but these may not offer the same level of control and flexibility as <code>launchd</code>.</p>
+</section>
+<section id="infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
+<p>This solution is most useful for developers who frequently need to run certain commands at system startup. It may be less relevant for casual users or those who don’t use macOS.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>This solution was developed in-house by the V-Sekai development team.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>Assistance provided by Aria, an AI assistant.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240502-mvsqlite-launchd.html</guid>
+  <pubDate>Thu, 02 May 2024 18:08:29 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -170,7 +463,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240502-install-windows-on-older-computers.html</guid>
-  <pubDate>Thu, 02 May 2024 17:50:42 GMT</pubDate>
+  <pubDate>Thu, 02 May 2024 18:08:29 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -249,7 +542,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240425-recharge-cycle.html</guid>
-  <pubDate>Thu, 02 May 2024 17:50:42 GMT</pubDate>
+  <pubDate>Thu, 02 May 2024 18:08:29 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -329,7 +622,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240425-proposal-prompt-system.html</guid>
-  <pubDate>Thu, 02 May 2024 17:50:42 GMT</pubDate>
+  <pubDate>Thu, 02 May 2024 18:08:29 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -408,7 +701,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240424-reset-steamvr-controllers.html</guid>
-  <pubDate>Thu, 02 May 2024 17:50:42 GMT</pubDate>
+  <pubDate>Thu, 02 May 2024 18:08:29 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -491,7 +784,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240423-building-metaverse-with-glue-mechanic.html</guid>
-  <pubDate>Thu, 02 May 2024 17:50:42 GMT</pubDate>
+  <pubDate>Thu, 02 May 2024 18:08:29 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -567,7 +860,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240418-college-quest.html</guid>
-  <pubDate>Thu, 02 May 2024 17:50:42 GMT</pubDate>
+  <pubDate>Thu, 02 May 2024 18:08:29 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -658,7 +951,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240416-previewer-upload-gltf-to-glb.html</guid>
-  <pubDate>Thu, 02 May 2024 17:50:42 GMT</pubDate>
+  <pubDate>Thu, 02 May 2024 18:08:29 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -756,7 +1049,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240413-training-quad-based-meshgpt-with-40gb-vram.html</guid>
-  <pubDate>Thu, 02 May 2024 17:50:42 GMT</pubDate>
+  <pubDate>Thu, 02 May 2024 18:08:29 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -895,7 +1188,7 @@ font-style: inherit;">}</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240413-calling-opensource-llm-with-aria.html</guid>
-  <pubDate>Thu, 02 May 2024 17:50:42 GMT</pubDate>
+  <pubDate>Thu, 02 May 2024 18:08:29 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -988,7 +1281,7 @@ font-style: inherit;">}</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240411-multiplayer-movement-with-parented-obejcts.html</guid>
-  <pubDate>Thu, 02 May 2024 17:50:42 GMT</pubDate>
+  <pubDate>Thu, 02 May 2024 18:08:29 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1071,7 +1364,7 @@ font-style: inherit;">}</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240411-elixir-libgodot-zig.html</guid>
-  <pubDate>Thu, 02 May 2024 17:50:42 GMT</pubDate>
+  <pubDate>Thu, 02 May 2024 18:08:29 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1232,7 +1525,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240411-elixir-libgodot-bundlex.html</guid>
-  <pubDate>Thu, 02 May 2024 17:50:42 GMT</pubDate>
+  <pubDate>Thu, 02 May 2024 18:08:29 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1389,7 +1682,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240410-data-storage-elixir.html</guid>
-  <pubDate>Thu, 02 May 2024 17:50:42 GMT</pubDate>
+  <pubDate>Thu, 02 May 2024 18:08:29 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1484,7 +1777,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240409-elixir-raft-vs-sqlite-fdb.html</guid>
-  <pubDate>Thu, 02 May 2024 17:50:42 GMT</pubDate>
+  <pubDate>Thu, 02 May 2024 18:08:29 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1589,7 +1882,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240409-crud-godot-tiles.html</guid>
-  <pubDate>Thu, 02 May 2024 17:50:42 GMT</pubDate>
+  <pubDate>Thu, 02 May 2024 18:08:29 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1677,7 +1970,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240407-pcvr-vs-standalone.html</guid>
-  <pubDate>Thu, 02 May 2024 17:50:42 GMT</pubDate>
+  <pubDate>Thu, 02 May 2024 18:08:29 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1758,7 +2051,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240406-web-based-explore.html</guid>
-  <pubDate>Thu, 02 May 2024 17:50:42 GMT</pubDate>
+  <pubDate>Thu, 02 May 2024 18:08:29 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1845,162 +2138,7 @@ font-style: inherit;">butler</span> push myproject.catar user/game:channel</span
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240406-itch-github-actions.html</guid>
-  <pubDate>Thu, 02 May 2024 17:50:42 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240401-shader-graphic.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-material-shader-graphic-shirt-with-sharp-edges" class="level1">
-<h1>Proposed: Material Shader Graphic Shirt with Sharp Edges</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>In the vibrant and ever-evolving realm of virtual reality, personal expression is paramount. Users crave the ability to showcase their unique style and personality through their avatars. One powerful avenue for this self-expression is through avatar apparel customization. In this scenario, we’re exploring the creation of a virtual shirt adorned with two distinct patterns. These patterns are applied using SVG files that are converted into a signed distance field mask, ensuring the edges remain crisp and sharp.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>At present, there’s no straightforward method to design a shirt featuring two different patterns using SVG files in MaterialX, while also maintaining sharp pattern edges. This proposal seeks to address and resolve this issue.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>We can harness the power of MaterialX’s shader graph system to craft a custom shader for our shirt. Here’s a rudimentary sketch of how it might be structured:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Import MaterialX library</span></span>
-<span id="cb1-2"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> MaterialX <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> mx</span>
-<span id="cb1-3"></span>
-<span id="cb1-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Create a new document</span></span>
-<span id="cb1-5">doc <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> mx.createDocument()</span>
-<span id="cb1-6"></span>
-<span id="cb1-7"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Create a new shader graph</span></span>
-<span id="cb1-8">shaderGraph <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> doc.addNode(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'shadergraph'</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'myShaderGraph'</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'surfaceshader'</span>)</span>
-<span id="cb1-9"></span>
-<span id="cb1-10"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Add two image nodes for our SVG patterns</span></span>
-<span id="cb1-11">pattern1 <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> shaderGraph.addInput(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'pattern1'</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'filename'</span>)</span>
-<span id="cb1-12">pattern2 <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> shaderGraph.addInput(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'pattern2'</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'filename'</span>)</span>
-<span id="cb1-13"></span>
-<span id="cb1-14"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Convert SVGs to signed distance fields for sharp edges</span></span>
-<span id="cb1-15">sdfPattern1 <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> convertSVGToSDF(pattern1)</span>
-<span id="cb1-16">sdfPattern2 <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> convertSVGToSDF(pattern2)</span>
-<span id="cb1-17"></span>
-<span id="cb1-18"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Add a mix node to blend the two patterns together</span></span>
-<span id="cb1-19">mix <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> shaderGraph.addNode(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'mix'</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'mix'</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'color3'</span>)</span>
-<span id="cb1-20">mix.setInputValue(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'fg'</span>, sdfPattern1)</span>
-<span id="cb1-21">mix.setInputValue(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'bg'</span>, sdfPattern2)</span>
-<span id="cb1-22"></span>
-<span id="cb1-23"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Connect the mix node to the shader graph output</span></span>
-<span id="cb1-24">shaderGraph.setOutputValue(mix)</span></code></pre></div>
-<p>Please note, this is a simplified example and may require adjustments based on your project’s specific needs.</p>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p>Implementing this feature will empower users with additional options for avatar customization. This could potentially boost user engagement and satisfaction. Moreover, by utilizing signed distance fields, we can guarantee sharp pattern edges, enhancing the visual appeal of the shirt.</p>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>The primary drawback is that this feature could potentially amplify the complexity of the codebase. It may also necessitate additional resources for implementation and ongoing maintenance.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>An alternative approach might involve using a different library or tool that already supports this feature. However, this could potentially introduce other challenges such as compatibility issues or increased project complexity.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>This feature might not see frequent use if the majority of users favor simpler designs for their avatars’ clothing. Nonetheless, it could still prove beneficial for those desiring more advanced customization options.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>This feature will be developed by the V-Sekai development team and will form an integral part of our project’s core functionality.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240401-shader-graphic.html</guid>
-  <pubDate>Thu, 02 May 2024 17:50:42 GMT</pubDate>
+  <pubDate>Thu, 02 May 2024 18:08:29 GMT</pubDate>
 </item>
 </channel>
 </rss>
