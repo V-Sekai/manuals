@@ -62,4 +62,5 @@ Status: Proposed
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community.
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - The GitHub page for the V-Sekai open-source project.
 3. [Toms Hardware: bypass-windows-11-tpm-requirement](https://www.tomshardware.com/how-to/bypass-windows-11-tpm-requirement)
-   Assisted by AI assistant Aria.
+
+Assisted by AI assistant Aria.
