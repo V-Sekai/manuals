@@ -12,10 +12,11 @@ We need to ensure that the networking system of the Godot engine can handle the 
 
 Create in three stages:
 
-1. local
-2. remote
-3. client - remote
-4. Does not test infrastructure implementation.
+1. local client to local server
+2. local client to remote server
+3. remote client to remote server
+
+Does not test infrastructure implementation.
 
 We propose to conduct stress testing on the Godot engine's networking system.
 
