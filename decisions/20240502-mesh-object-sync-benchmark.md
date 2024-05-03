@@ -39,6 +39,8 @@ print(world.get_state())
 # To be determined realistic multclient version.
 ```
 
+Test personal computer and digital ocean.
+
 ## Benefits
 
 - Identify potential bottlenecks in the system.
