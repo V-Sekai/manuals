@@ -10,6 +10,13 @@ We need to ensure that the networking system of the Godot engine can handle the 
 
 ## Solution
 
+Create in three stages:
+
+1. local
+2. remote
+3. client - remote
+4. Does not test infrastructure implementation.
+
 We propose to conduct stress testing on the Godot engine's networking system.
 
 This will involve creating multiple virtual users and simulating high traffic scenarios to evaluate how the system performs under heavy load.
