@@ -1,4 +1,4 @@
-# Proposal: Stress Testing Godot Engine's Networking System - Single Node
+# Proposal: Stress Testing Godot Engine's Networking System
 
 ## Context
 
@@ -9,6 +9,14 @@ The V-Sekai development team is working on a project that involves avatar, world
 We need to ensure that the networking system of the Godot engine can handle the increased load and perform optimally under stress.
 
 ## Solution
+
+Create in three stages:
+
+1. local client to local server
+2. local client to remote server
+3. remote client to remote server
+
+Does not test infrastructure implementation.
 
 We propose to conduct stress testing on the Godot engine's networking system.
 
@@ -34,6 +42,12 @@ for i in range(10): # Simulate 10 users
 # Now, let's read back the changed world
 print(world.get_state())
 ```
+
+```
+# To be determined realistic multclient version.
+```
+
+Test personal computer and digital ocean.
 
 ## Benefits
 
@@ -75,5 +89,6 @@ Status: Proposed
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
 3. [Stress testing Unity’s LLAPI, what are the limits?](https://www.codedojo.com/?p=2091)
+4. [Crappy Contraption](https://ifiregames.itch.io/crappy-contraptions)
 
 This proposal was assisted by Aria, an AI assistant.
