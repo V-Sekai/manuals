@@ -1,4 +1,4 @@
-# Proposed:
+# Proposed: Template
 
 ## The Context
 
