@@ -10,8 +10,8 @@
 
 ### Added
 
-- **WebRTC**: Worked on browser and native webrtc interop
-- **libgodot**: Worked on embedding libgodot to where it doesn't belong
+- **WebRTC**: Worked on browser and native webrtc interop. https://ifiregames.itch.io/webrtc-native-web-interoperability
+- **libgodot**: Worked on embedding libgodot to where it doesn't belong.
 
 ### Changed
 
