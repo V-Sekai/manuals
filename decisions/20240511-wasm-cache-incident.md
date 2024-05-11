@@ -36,8 +36,8 @@ env:
   # Used for the cache key. Add version suffix to force clean build.
   GODOT_BASE_BRANCH: master # Add a suffix here.
 ```
-
-2. Commit the changes.
+2. Combine master with em version: `master-em-3.1.59`
+3. Commit the changes.
 
 ## Benefits
 
