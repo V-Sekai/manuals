@@ -1,4 +1,4 @@
-# Proposed: Can I use this for 3d assets & 3d extensions?
+# Proposed: Can I use V-Sekai for 3d assets & 3d extensions?
 
 ## The Context
 
