@@ -1,4 +1,4 @@
-# Proposal: Wasm Cache Incident Report
+# Accepted: Wasm Cache Incident Report
 
 ## Context
 
@@ -61,7 +61,7 @@ This proposal is made by us and is intended to be implemented in the core build 
 
 ## Status
 
-Status: Proposed
+Status: Accepted
 
 ## Decision Makers
 
