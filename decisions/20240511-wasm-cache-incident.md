@@ -39,8 +39,6 @@ env:
 
 2. Commit the changes.
 
-3. Revert the commit after the build is successful.
-
 ## Benefits
 
 This solution will help in resolving the current build issue and ensure that the Godot Engine 4.3 desync module is built successfully.
