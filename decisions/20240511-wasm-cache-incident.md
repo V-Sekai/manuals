@@ -6,7 +6,7 @@ The issue arose while attempting to build the desync module for Godot Engine 4.3
 
 ## Problem Statement
 
-The following error was encountered:
+The following error was encountered even though the module is disabled from building and other code was identical to master:
 
 ```bash
 error: undefined symbol: saveSetjmp (referenced by root reference (e.g. compiled C/C++ code))
