@@ -2,7 +2,7 @@
 
 ## Context
 
-The issue arose while attempting to build the desync module for Godot Engine 4.3.
+The issue arose while attempting to build the desync module for Godot Engine 4.3 on Github actions.
 
 ## Problem Statement
 
