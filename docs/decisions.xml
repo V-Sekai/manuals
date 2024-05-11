@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.554</generator>
-<lastBuildDate>Tue, 07 May 2024 10:55:17 GMT</lastBuildDate>
+<lastBuildDate>Sat, 11 May 2024 19:58:02 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,199 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Tue, 07 May 2024 10:55:17 GMT</pubDate>
+  <pubDate>Sat, 11 May 2024 19:58:02 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240511-wasm-cache-incident.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposal-wasm-cache-incident-report" class="level1">
+<h1>Proposal: Wasm Cache Incident Report</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>The issue arose while attempting to build the desync module for Godot Engine 4.3.</p>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>The following error was encountered:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">error:</span> undefined symbol: saveSetjmp <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">(</span><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">referenced</span> by root reference <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">(</span><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">e.g.</span> compiled C/C++ code<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">))</span></span>
+<span id="cb1-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">warning:</span> To disable errors for undefined symbols use <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">`</span><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">-sERROR_ON_UNDEFINED_SYMBOLS=0</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">`</span></span>
+<span id="cb1-3"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">warning:</span> _saveSetjmp may need to be added to EXPORTED_FUNCTIONS if it arrives from a system library</span>
+<span id="cb1-4"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">error:</span> undefined symbol: testSetjmp <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">(</span><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">referenced</span> by root reference <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">(</span><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">e.g.</span> compiled C/C++ code<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">))</span></span>
+<span id="cb1-5"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">warning:</span> _testSetjmp may need to be added to EXPORTED_FUNCTIONS if it arrives from a system library</span>
+<span id="cb1-6"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Error:</span> Aborting compilation due to previous errors</span>
+<span id="cb1-7"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">em++:</span> error: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'/home/runner/work/_temp/5ca5bc6c-db6b-4fae-a502-2fde903054ae/emsdk-main/node/16.20.0_64bit/bin/node /home/runner/work/_temp/5ca5bc6c-db6b-4fae-a502-2fde903054ae/emsdk-main/upstream/emscripten/src/compiler.mjs /tmp/tmpjyhtoot1.json'</span> failed <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">(</span><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">returned</span> 1<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb1-8"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">scons:</span> <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">***</span> <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">[</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">bin/godot.web.template_release.wasm32.js</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">]</span> Error 1</span>
+<span id="cb1-9"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">scons:</span> building terminated because of errors.</span></code></pre></div>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>The proposed solution involves modifying the web build Github Actions and suffixing the branch name. The steps are as follows:</p>
+<ol type="1">
+<li>Modify the <code>GODOT_BASE_BRANCH</code> environment variable in the Github Actions workflow file:</li>
+</ol>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">name</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> 🌐 Web Builds</span></span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">on</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb2-3"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">workflow_call</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb2-4"></span>
+<span id="cb2-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Global Settings</span></span>
+<span id="cb2-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">env</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb2-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">  # Used for the cache key. Add version suffix to force clean build.</span></span>
+<span id="cb2-8"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">GODOT_BASE_BRANCH</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> master</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> # Add a suffix here.</span></span></code></pre></div>
+<ol start="2" type="1">
+<li><p>Commit the changes.</p></li>
+<li><p>Revert the commit after the build is successful.</p></li>
+</ol>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<p>This solution will help in resolving the current build issue and ensure that the Godot Engine 4.3 desync module is built successfully.</p>
+</section>
+<section id="downsides" class="level2">
+<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
+<p>The downside of this approach is that it requires manual intervention for each build process, which might not be feasible for continuous integration/continuous deployment (CI/CD) pipelines.</p>
+</section>
+<section id="alternatives-considered" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
+<p>An alternative could be to investigate the root cause of the undefined symbols and fix them at the source code level.</p>
+</section>
+<section id="infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
+<p>This solution is specifically for the current build issue and may not apply to other build problems or modules.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>This proposal is made by us and is intended to be implemented in the core build process of the Godot Engine.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - The GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>This proposal was assisted by Aria, an AI assistant.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240511-wasm-cache-incident.html</guid>
+  <pubDate>Sat, 11 May 2024 19:58:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -150,7 +342,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240502-where-can-I-use-gltf.html</guid>
-  <pubDate>Tue, 07 May 2024 10:55:17 GMT</pubDate>
+  <pubDate>Sat, 11 May 2024 19:58:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -443,7 +635,7 @@ font-style: inherit;">grep</span> mvstore</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240502-mvsqlite-launchd.html</guid>
-  <pubDate>Tue, 07 May 2024 10:55:17 GMT</pubDate>
+  <pubDate>Sat, 11 May 2024 19:58:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -554,7 +746,7 @@ print(world.get_state())</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240502-mesh-object-sync-benchmark.html</guid>
-  <pubDate>Tue, 07 May 2024 10:55:17 GMT</pubDate>
+  <pubDate>Sat, 11 May 2024 19:58:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -750,7 +942,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240502-membrane-framework-identity-post.html</guid>
-  <pubDate>Tue, 07 May 2024 10:55:17 GMT</pubDate>
+  <pubDate>Sat, 11 May 2024 19:58:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -845,7 +1037,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240502-install-windows-on-older-computers.html</guid>
-  <pubDate>Tue, 07 May 2024 10:55:17 GMT</pubDate>
+  <pubDate>Sat, 11 May 2024 19:58:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -928,7 +1120,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240502-gltf-fbx-tscn-vrm.html</guid>
-  <pubDate>Tue, 07 May 2024 10:55:17 GMT</pubDate>
+  <pubDate>Sat, 11 May 2024 19:58:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1007,7 +1199,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240425-recharge-cycle.html</guid>
-  <pubDate>Tue, 07 May 2024 10:55:17 GMT</pubDate>
+  <pubDate>Sat, 11 May 2024 19:58:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1087,7 +1279,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240425-proposal-prompt-system.html</guid>
-  <pubDate>Tue, 07 May 2024 10:55:17 GMT</pubDate>
+  <pubDate>Sat, 11 May 2024 19:58:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1166,7 +1358,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240424-reset-steamvr-controllers.html</guid>
-  <pubDate>Tue, 07 May 2024 10:55:17 GMT</pubDate>
+  <pubDate>Sat, 11 May 2024 19:58:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1249,7 +1441,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240423-building-metaverse-with-glue-mechanic.html</guid>
-  <pubDate>Tue, 07 May 2024 10:55:17 GMT</pubDate>
+  <pubDate>Sat, 11 May 2024 19:58:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1325,7 +1517,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240418-college-quest.html</guid>
-  <pubDate>Tue, 07 May 2024 10:55:17 GMT</pubDate>
+  <pubDate>Sat, 11 May 2024 19:58:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1416,7 +1608,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240416-previewer-upload-gltf-to-glb.html</guid>
-  <pubDate>Tue, 07 May 2024 10:55:17 GMT</pubDate>
+  <pubDate>Sat, 11 May 2024 19:58:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1514,7 +1706,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240413-training-quad-based-meshgpt-with-40gb-vram.html</guid>
-  <pubDate>Tue, 07 May 2024 10:55:17 GMT</pubDate>
+  <pubDate>Sat, 11 May 2024 19:58:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1653,7 +1845,7 @@ font-style: inherit;">}</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240413-calling-opensource-llm-with-aria.html</guid>
-  <pubDate>Tue, 07 May 2024 10:55:17 GMT</pubDate>
+  <pubDate>Sat, 11 May 2024 19:58:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1746,7 +1938,7 @@ font-style: inherit;">}</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240411-multiplayer-movement-with-parented-obejcts.html</guid>
-  <pubDate>Tue, 07 May 2024 10:55:17 GMT</pubDate>
+  <pubDate>Sat, 11 May 2024 19:58:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1829,7 +2021,7 @@ font-style: inherit;">}</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240411-elixir-libgodot-zig.html</guid>
-  <pubDate>Tue, 07 May 2024 10:55:17 GMT</pubDate>
+  <pubDate>Sat, 11 May 2024 19:58:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1990,7 +2182,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240411-elixir-libgodot-bundlex.html</guid>
-  <pubDate>Tue, 07 May 2024 10:55:17 GMT</pubDate>
+  <pubDate>Sat, 11 May 2024 19:58:02 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2147,102 +2339,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240410-data-storage-elixir.html</guid>
-  <pubDate>Tue, 07 May 2024 10:55:17 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240409-elixir-raft-vs-sqlite-fdb.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="rejected-rabbitmq-ra-vs-sqlite-on-foundationdb-vs-cockroachdb" class="level1">
-<h1>Rejected: RabbitMQ RA vs SQLite on FoundationDB vs CockroachDB</h1>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>We are at a critical juncture in our system design process. The primary question is whether to utilize the RabbitMQ RA system for distributed state machines, implement an SQLite cluster database built on top of FoundationDB, or use CockroachDB.</p>
-</section>
-<section id="problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>The core issue is identifying which options deliver the fastest and most reliable service. We require a system capable of handling high data volumes, maintaining consistency, and ensuring rapid response times, particularly when transferring 3D scene format tiles from Blender or Godot Engine.</p>
-</section>
-<section id="proposal" class="level2">
-<h2 class="anchored" data-anchor-id="proposal">Proposal</h2>
-<section id="rabbitmq-ra-system" class="level3">
-<h3 class="anchored" data-anchor-id="rabbitmq-ra-system">RabbitMQ RA System</h3>
-<p>RabbitMQ RA system might be the better choice if speed and low latency are the primary concerns. It’s designed for high-throughput scenarios and can handle many messages without significant delays.</p>
-</section>
-<section id="sqlite-cluster-database-on-foundationdb" class="level3">
-<h3 class="anchored" data-anchor-id="sqlite-cluster-database-on-foundationdb">SQLite Cluster Database on FoundationDB</h3>
-<p>An SQLite cluster database on FoundationDB, while also fast, focuses more on providing ACID transactions and scalability. Therefore, it could be better if the workload involves complex transactions or needs to scale over time.</p>
-</section>
-<section id="cockroachdb" class="level3">
-<h3 class="anchored" data-anchor-id="cockroachdb">CockroachDB</h3>
-<p>CockroachDB is a cloud-native SQL database for building global, scalable cloud services that survive disasters. It provides ACID transactional consistency and versioned values as first-class features.</p>
-</section>
-</section>
-<section id="benefits" class="level2">
-<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
-<ul>
-<li>All three systems offer robust solutions for handling large amounts of data.</li>
-<li>RabbitMQ RA system provides a reliable messaging system focusing on processing speed and low latency.</li>
-<li>SQLite cluster database on FoundationDB offers a scalable solution with ACID transactions.</li>
-<li>CockroachDB is a cloud-native SQL database that provides global scalability and disaster recovery.</li>
-</ul>
-</section>
-<section id="downsides" class="level2">
-<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
-<ul>
-<li>RabbitMQ RA system may not be as scalable as the SQLite cluster database on FoundationDB or CockroachDB.</li>
-<li>SQLite cluster database on FoundationDB might have slower response times than the RabbitMQ RA system.</li>
-<li>CockroachDB, while offering strong consistency and scalability, might not be as fast as RabbitMQ RA system for certain workloads.</li>
-</ul>
-</section>
-<section id="alternatives" class="level2">
-<h2 class="anchored" data-anchor-id="alternatives">Alternatives</h2>
-<p>We could also consider other databases or messaging systems, but these three options seem the most promising given our specific needs and constraints.</p>
-</section>
-<section id="infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
-<p>In cases where data volume is low, the difference in performance between these three systems may not be significant.</p>
-</section>
-<section id="implementation" class="level2">
-<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
-<p>Our development team will decide whether to use any of these systems. We will also handle the implementation and maintenance of the chosen system.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Rejected <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-<li><a href="https://pure.bond.edu.au/ws/portalfiles/portal/18275482/Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG_.pdf">Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG</a></li>
-</ol>
-<p>Aria assisted with this analysis.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240409-elixir-raft-vs-sqlite-fdb.html</guid>
-  <pubDate>Tue, 07 May 2024 10:55:17 GMT</pubDate>
+  <pubDate>Sat, 11 May 2024 19:58:02 GMT</pubDate>
 </item>
 </channel>
 </rss>
