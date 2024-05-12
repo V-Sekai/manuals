@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.554</generator>
-<lastBuildDate>Sun, 12 May 2024 16:38:34 GMT</lastBuildDate>
+<lastBuildDate>Sun, 12 May 2024 18:19:11 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 12 May 2024 16:38:34 GMT</pubDate>
+  <pubDate>Sun, 12 May 2024 18:19:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -267,7 +267,7 @@ font-style: inherit;"> # Add a suffix here.</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240511-wasm-cache-incident.html</guid>
-  <pubDate>Sun, 12 May 2024 16:38:34 GMT</pubDate>
+  <pubDate>Sun, 12 May 2024 18:19:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -377,8 +377,7 @@ func generate_uuid() -&gt; String:
 <h3 class="anchored" data-anchor-id="world-servers">World Servers</h3>
 <p>We are going with the grid approach. Our world is a 1km by 1km area and each grid cell is 100m squared.</p>
 <p>Player servers need to regularly update the world server with the state of each player.</p>
-<p>After the player simulation completes, the player server forwards the shallow player state to the world server 10 times per second.</p>
-<p>We have 80 players per world server. This gives us 80 x 10 x 10 = 8,000 bytes per second, or 64,000 bits per second.</p>
+<p>After the player simulation completes, the player server forwards the shallow player state to the world server 100 times per second.</p>
 <p>A 1x1 grid of 100m squared requires 1 world server.</p>
 <p>The World Server goes to the player databases and selects, modifies, and inserts.</p>
 <pre class="gdscript"><code>var id : int
@@ -419,8 +418,8 @@ func get_player_states():
 </section>
 <section id="world-database" class="level3">
 <h3 class="anchored" data-anchor-id="world-database">World Database</h3>
-<p>Our player server is designed to accommodate up to 80 game players. These players are distributed across 32 CPUs. Each CPU is tasked with managing a total of 2.5 players.</p>
-<p>To handle such a load, we run 2.5 processes per CPU. These processes block on some asynchronous calls out to world servers.</p>
+<p>Our player server is designed to accommodate up to 80 game players. These players are distributed across TBD CPUs. Each CPU is tasked with managing a total of TBD players.</p>
+<p>To handle such a load, we run TBD processes per CPU. These processes block on some asynchronous calls out to world servers.</p>
 <p>Our choice of database for this world is SQLite FoundationDB.</p>
 </section>
 <section id="game-state-delivery" class="level3">
@@ -454,7 +453,7 @@ func get_player_states():
         player_states.append(player_state)
 
     return player_states</code></pre>
-<p>This list can then be used to generate the 1 mbit/sec stream of packets that is sent from each world server. The total of 100 mbit generated per second is achieved by running this process across all 10 world servers.</p>
+<p>This list can then be used to generate the 1 mbit/sec stream of packets that is sent from each world server. The total of 100 mbit generated per second is achieved by running this process across all 125 world servers.</p>
 <p>Please note that the limiting factor here is due to the lack of multicast support over the internet.</p>
 </section>
 <section id="state-updates-per-second" class="level3">
@@ -473,7 +472,7 @@ func get_player_states():
 <th>Operation</th>
 <th>Frequency</th>
 <th>Transactions per Second</th>
-<th>Player Count Per Server</th>
+<th>Input Count</th>
 </tr>
 </thead>
 <tbody>
@@ -560,7 +559,7 @@ func get_player_states():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240511-review-10000-vr.html</guid>
-  <pubDate>Sun, 12 May 2024 16:38:34 GMT</pubDate>
+  <pubDate>Sun, 12 May 2024 18:19:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -635,7 +634,7 @@ func get_player_states():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240502-where-can-I-use-gltf.html</guid>
-  <pubDate>Sun, 12 May 2024 16:38:34 GMT</pubDate>
+  <pubDate>Sun, 12 May 2024 18:19:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -928,7 +927,7 @@ font-style: inherit;">grep</span> mvstore</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240502-mvsqlite-launchd.html</guid>
-  <pubDate>Sun, 12 May 2024 16:38:34 GMT</pubDate>
+  <pubDate>Sun, 12 May 2024 18:19:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1039,7 +1038,7 @@ print(world.get_state())</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240502-mesh-object-sync-benchmark.html</guid>
-  <pubDate>Sun, 12 May 2024 16:38:34 GMT</pubDate>
+  <pubDate>Sun, 12 May 2024 18:19:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1235,7 +1234,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240502-membrane-framework-identity-post.html</guid>
-  <pubDate>Sun, 12 May 2024 16:38:34 GMT</pubDate>
+  <pubDate>Sun, 12 May 2024 18:19:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1330,7 +1329,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240502-install-windows-on-older-computers.html</guid>
-  <pubDate>Sun, 12 May 2024 16:38:34 GMT</pubDate>
+  <pubDate>Sun, 12 May 2024 18:19:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1413,7 +1412,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240502-gltf-fbx-tscn-vrm.html</guid>
-  <pubDate>Sun, 12 May 2024 16:38:34 GMT</pubDate>
+  <pubDate>Sun, 12 May 2024 18:19:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1492,7 +1491,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240425-recharge-cycle.html</guid>
-  <pubDate>Sun, 12 May 2024 16:38:34 GMT</pubDate>
+  <pubDate>Sun, 12 May 2024 18:19:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1572,7 +1571,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240425-proposal-prompt-system.html</guid>
-  <pubDate>Sun, 12 May 2024 16:38:34 GMT</pubDate>
+  <pubDate>Sun, 12 May 2024 18:19:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1651,7 +1650,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240424-reset-steamvr-controllers.html</guid>
-  <pubDate>Sun, 12 May 2024 16:38:34 GMT</pubDate>
+  <pubDate>Sun, 12 May 2024 18:19:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1734,7 +1733,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240423-building-metaverse-with-glue-mechanic.html</guid>
-  <pubDate>Sun, 12 May 2024 16:38:34 GMT</pubDate>
+  <pubDate>Sun, 12 May 2024 18:19:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1810,7 +1809,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240418-college-quest.html</guid>
-  <pubDate>Sun, 12 May 2024 16:38:34 GMT</pubDate>
+  <pubDate>Sun, 12 May 2024 18:19:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1901,7 +1900,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240416-previewer-upload-gltf-to-glb.html</guid>
-  <pubDate>Sun, 12 May 2024 16:38:34 GMT</pubDate>
+  <pubDate>Sun, 12 May 2024 18:19:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1999,7 +1998,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240413-training-quad-based-meshgpt-with-40gb-vram.html</guid>
-  <pubDate>Sun, 12 May 2024 16:38:34 GMT</pubDate>
+  <pubDate>Sun, 12 May 2024 18:19:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2138,7 +2137,7 @@ font-style: inherit;">}</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240413-calling-opensource-llm-with-aria.html</guid>
-  <pubDate>Sun, 12 May 2024 16:38:34 GMT</pubDate>
+  <pubDate>Sun, 12 May 2024 18:19:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2231,7 +2230,7 @@ font-style: inherit;">}</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240411-multiplayer-movement-with-parented-obejcts.html</guid>
-  <pubDate>Sun, 12 May 2024 16:38:34 GMT</pubDate>
+  <pubDate>Sun, 12 May 2024 18:19:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2314,7 +2313,7 @@ font-style: inherit;">}</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240411-elixir-libgodot-zig.html</guid>
-  <pubDate>Sun, 12 May 2024 16:38:34 GMT</pubDate>
+  <pubDate>Sun, 12 May 2024 18:19:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2475,7 +2474,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240411-elixir-libgodot-bundlex.html</guid>
-  <pubDate>Sun, 12 May 2024 16:38:34 GMT</pubDate>
+  <pubDate>Sun, 12 May 2024 18:19:11 GMT</pubDate>
 </item>
 </channel>
 </rss>
