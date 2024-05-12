@@ -130,6 +130,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#world-servers" id="toc-world-servers" class="nav-link" data-scroll-target="#world-servers">World Servers</a></li>
   <li><a href="#world-database" id="toc-world-database" class="nav-link" data-scroll-target="#world-database">World Database</a></li>
   <li><a href="#game-state-delivery" id="toc-game-state-delivery" class="nav-link" data-scroll-target="#game-state-delivery">Game State Delivery</a></li>
+  <li><a href="#state-updates-per-second" id="toc-state-updates-per-second" class="nav-link" data-scroll-target="#state-updates-per-second">State updates per second</a></li>
   </ul></li>
   <li><a href="#the-benefits" id="toc-the-benefits" class="nav-link" data-scroll-target="#the-benefits">The Benefits</a></li>
   <li><a href="#the-downsides" id="toc-the-downsides" class="nav-link" data-scroll-target="#the-downsides">The Downsides</a></li>
@@ -324,6 +325,55 @@ func get_player_states():
     return player_states</code></pre>
 <p>This list can then be used to generate the 1 mbit/sec stream of packets that is sent from each world server. The total of 100 mbit generated per second is achieved by running this process across all 10 world servers.</p>
 <p>Please note that the limiting factor here is due to the lack of multicast support over the internet.</p>
+</section>
+<section id="state-updates-per-second" class="level3">
+<h3 class="anchored" data-anchor-id="state-updates-per-second">State updates per second</h3>
+<table class="table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 27%">
+<col style="width: 14%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Server Type</th>
+<th>Operation</th>
+<th>Frequency</th>
+<th>Transactions per Second</th>
+<th>Player Count</th>
+<th>World Count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Player</td>
+<td>Write</td>
+<td>100 FPS</td>
+<td>100 writes/sec</td>
+<td>10,000</td>
+<td>N/A</td>
+</tr>
+<tr class="even">
+<td>World</td>
+<td>Write</td>
+<td>100 FPS</td>
+<td>100 writes/sec</td>
+<td>N/A</td>
+<td>100</td>
+</tr>
+<tr class="odd">
+<td>Game State Delivery</td>
+<td>Read</td>
+<td>100 FPS</td>
+<td>100 reads/sec</td>
+<td>10,000</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 <section id="the-benefits" class="level2">
