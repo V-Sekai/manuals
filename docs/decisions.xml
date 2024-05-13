@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.554</generator>
-<lastBuildDate>Sun, 12 May 2024 23:07:16 GMT</lastBuildDate>
+<lastBuildDate>Mon, 13 May 2024 13:55:22 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 12 May 2024 23:07:16 GMT</pubDate>
+  <pubDate>Mon, 13 May 2024 13:55:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -267,18 +267,18 @@ font-style: inherit;"> # Add a suffix here.</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240511-wasm-cache-incident.html</guid>
-  <pubDate>Sun, 12 May 2024 23:07:16 GMT</pubDate>
+  <pubDate>Mon, 13 May 2024 13:55:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240511-review-10000-vr.html</link>
+  <link>https://v-sekai.github.io/manuals/decisions/20240511-review-80-vr.html</link>
   <description><![CDATA[ 
 
 
 
 
-<section id="proposed-vr-game-with-80-players-and-one-world-server" class="level1">
-<h1>Proposed: VR Game with 80 Players and One World Server</h1>
+<section id="rejected-vr-game-with-80-players-and-one-world-server" class="level1">
+<h1>Rejected: VR Game with 80 Players and One World Server</h1>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
 <p>We aim to create a virtual reality (VR) game that can support eighty players simultaneously using a single world server.</p>
@@ -286,205 +286,14 @@ font-style: inherit;"> # Add a suffix here.</span></span></code></pre></div>
 <section id="the-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
 <p>The challenge lies in managing the load of player simulations, world server, and game state delivery.</p>
-<section id="player-simulation-results" class="level3">
-<h3 class="anchored" data-anchor-id="player-simulation-results">Player Simulation Results</h3>
-<pre class="gdscript"><code># Create 80 player nodes, each on a separate SQLite database on a TBD CPU bare metal machine
-extends Node
-
-class_name Player
-var id : String
-var state : PackedByteArray
-
-var db := MVSQLite.new()
-var http_request = HTTPRequest.new()
-
-# Declare the query as an instance variable
-var insert_query
-
-func _ready():
-    self.add_child(http_request)
-    http_request.connect("request_completed", self, "_on_request_completed")
-
-    var player := Player.new()
-    player.id = generate_uuid()
-    player.state = PackedByteArray()
-
-    var err = http_request.request("http://localhost:7001/api/create_namespace",
-                                   ["Content-Type: application/json"],
-                                   true,
-                                   HTTPClient.METHOD_POST,
-                                   '{"key":"' + player.id + '"}')
-    if err == OK:
-        print("Request sent")
-    else:
-        print("Error sending request")
-
-    if db.open(player.id):
-        var sql := "CREATE TABLE IF NOT EXISTS players (id TEXT PRIMARY KEY, state BLOB)"
-        var query = db.create_query(sql)
-        query.execute()
-
-        sql = "INSERT INTO players (id, state) VALUES (?, ?)"
-        insert_query = db.create_query(sql)
-
-    else:
-        print("Error: ", db.get_last_error_message())
-
-func update_player_states(players):
-    for player in players:
-        # TODO: open player databases
-        var db = dbs[player.id % 100]
-        var sql := "INSERT OR REPLACE INTO players (id, state) VALUES (?, ?)"
-        var query = db.create_query(sql)
-        query.execute([player.id, player.state])
-
-func _process(_delta):
-    var player_state := PackedByteArray()
-    for j in range(10):
-        player_state.append(randi() % 256)
-
-    var player := Player.new()
-    player.id = generate_uuid()
-    player.state = player_state
-
-    insert_query.execute([player.id, player.state])
-
-    if insert_query.get_last_error_message() != "":
-        print("Error: ", insert_query.get_last_error_message())
-
-func _on_request_completed(result, response_code, headers, body):
-    var str = body.get_string_from_utf8()
-    if response_code == 200:
-        print("Request completed successfully")
-    else:
-        print("Request failed with response code: ", response_code)
-        print("Response body: ", str)
-
-func generate_uuid() -&gt; String:
-    var uuid := PackedByteArray.generate_random_bytes(16)
-    return "%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x" % [
-        uuid[0], uuid[1], uuid[2], uuid[3], uuid[4], uuid[5], uuid[6], uuid[7],
-        uuid[8], uuid[9], uuid[10], uuid[11], uuid[12], uuid[13], uuid[14], uuid[15]
-    ]</code></pre>
-</section>
-<section id="world-server" class="level3">
-<h3 class="anchored" data-anchor-id="world-server">World Server</h3>
+<p>We update the state of PLAYER_COUNT vsync times on a TBD CPU bare metal machine.</p>
+<p>It takes 30ms to update the database on the prototype on <code>VSK_godot/modules/mvsqlite/demo</code> returning the list of all changed states.</p>
 <p>We are going with the grid approach. Our world is a 1km by 1km area and each grid cell is 100m squared.</p>
-<p>Player servers need to regularly update the world server with the state of each player.</p>
-<p>After the player simulation completes, the player server forwards the shallow player state to the world server 100 times per second.</p>
-<p>A 1x1 grid of 100m squared requires only 1 world server.</p>
-<p>The World Server goes to the player databases and selects, modifies, and inserts.</p>
-<pre class="gdscript"><code>var id : int
-var db := MVSQLite.new()
-
-func _init():
-    if !db.open("world_server.db"):
-        print("Error: ", db.get_last_error_message())
-
-func update_player_states(players):
-    for player in players:
-        var sql := "INSERT OR REPLACE INTO players (id, state) VALUES (?, ?)"
-        var query = db.create_query(sql)
-        query.execute([player.id, player.state])
-
-        if query.get_last_error_message() != "":
-            print("Error: ", query.get_last_error_message())
-
-func get_player_states():
-    var player_states = []
-    var sql := "SELECT id, state FROM players"
-    var query = db.create_query(sql)
-    query.execute([])
-
-    while query.step() == SQLiteQuery.BUSY:
-        var player_state = {}
-        player_state["id"] = query.get_column_text(0)
-        player_state["state"] = query.get_column_blob(1)
-        player_states.append(player_state)
-
-    return player_states</code></pre>
-</section>
-<section id="world-database" class="level3">
-<h3 class="anchored" data-anchor-id="world-database">World Database</h3>
-<p>Our player server is designed to accommodate up to 80 game players. These players are distributed across TBD CPUs. Each CPU is tasked with managing a total of TBD players.</p>
-<p>To handle such a load, we run TBD processes per CPU. These processes block on some asynchronous calls out to the world server.</p>
-<p>Our choice of database for this world is SQLite FoundationDB.</p>
-</section>
-<section id="game-state-delivery" class="level3">
-<h3 class="anchored" data-anchor-id="game-state-delivery">Game State Delivery</h3>
+<p>A 1x1 grid of 100m squared requires 1 server.</p>
+<p>Our database is SQLite FoundationDB.</p>
 <p>The game state delivery process involves the world server generating a stream of data containing the states of all players. This data is then sent to the client-side for rendering and interaction.</p>
-<pre class="gdscript"><code>var db := MVSQLite.new()
-var query = null
-
-func _init():
-    if !db.open("world_server"):
-        print("Error: ", db.get_last_error_message())
-    else:
-        prepare_query()
-
-func prepare_query():
-    var sql := "SELECT id, state FROM players"
-    query = db.create_query(sql)
-
-func get_player_states():
-    if query == null:
-        print("Error: Query not prepared")
-        return []
-
-    var results = query.execute([])
-
-    var player_states = []
-    for row in results:
-        var player_state = {}
-        player_state["id"] = row[0]
-        player_state["state"] = row[1]
-        player_states.append(player_state)
-
-    return player_states</code></pre>
 <p>This list can then be used to generate the TBD gigabit/sec stream of packets that is sent from the world server.</p>
 <p>Please note that the limiting factor here is due to the lack of multicast support over the internet.</p>
-</section>
-<section id="state-updates-per-second" class="level3">
-<h3 class="anchored" data-anchor-id="state-updates-per-second">State updates per second</h3>
-<table class="table">
-<colgroup>
-<col style="width: 8%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 38%">
-<col style="width: 14%">
-<col style="width: 24%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Server Type</th>
-<th>Operation</th>
-<th>Frequency</th>
-<th>Transactions per Second</th>
-<th>Server Inputs</th>
-<th>Server Outputs</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Player</td>
-<td>Write</td>
-<td>100 FPS</td>
-<td>100 * ( 1 + 80 ) writes/sec</td>
-<td>80 (from player)</td>
-<td>1 (to world) + 80 (to database)</td>
-</tr>
-<tr class="even">
-<td>World</td>
-<td>Write</td>
-<td>100 FPS</td>
-<td>100 * ( 1 ) writes/sec + 100 * (80 ) reads</td>
-<td>80 (from database)</td>
-<td>1 (to player servers)</td>
-</tr>
-</tbody>
-</table>
-</section>
 </section>
 <section id="the-benefits" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
@@ -516,7 +325,7 @@ func get_player_states():
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+<p>Status: Rejected <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
 </section>
 <section id="decision-makers" class="level2">
 <h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
@@ -544,8 +353,8 @@ func get_player_states():
 </section>
 
  ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240511-review-10000-vr.html</guid>
-  <pubDate>Sun, 12 May 2024 23:07:16 GMT</pubDate>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240511-review-80-vr.html</guid>
+  <pubDate>Mon, 13 May 2024 13:55:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -620,7 +429,7 @@ func get_player_states():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240502-where-can-I-use-gltf.html</guid>
-  <pubDate>Sun, 12 May 2024 23:07:16 GMT</pubDate>
+  <pubDate>Mon, 13 May 2024 13:55:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -913,7 +722,7 @@ font-style: inherit;">grep</span> mvstore</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240502-mvsqlite-launchd.html</guid>
-  <pubDate>Sun, 12 May 2024 23:07:16 GMT</pubDate>
+  <pubDate>Mon, 13 May 2024 13:55:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1024,7 +833,7 @@ print(world.get_state())</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240502-mesh-object-sync-benchmark.html</guid>
-  <pubDate>Sun, 12 May 2024 23:07:16 GMT</pubDate>
+  <pubDate>Mon, 13 May 2024 13:55:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1220,7 +1029,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240502-membrane-framework-identity-post.html</guid>
-  <pubDate>Sun, 12 May 2024 23:07:16 GMT</pubDate>
+  <pubDate>Mon, 13 May 2024 13:55:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1315,7 +1124,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240502-install-windows-on-older-computers.html</guid>
-  <pubDate>Sun, 12 May 2024 23:07:16 GMT</pubDate>
+  <pubDate>Mon, 13 May 2024 13:55:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1398,7 +1207,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240502-gltf-fbx-tscn-vrm.html</guid>
-  <pubDate>Sun, 12 May 2024 23:07:16 GMT</pubDate>
+  <pubDate>Mon, 13 May 2024 13:55:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1477,7 +1286,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240425-recharge-cycle.html</guid>
-  <pubDate>Sun, 12 May 2024 23:07:16 GMT</pubDate>
+  <pubDate>Mon, 13 May 2024 13:55:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1557,7 +1366,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240425-proposal-prompt-system.html</guid>
-  <pubDate>Sun, 12 May 2024 23:07:16 GMT</pubDate>
+  <pubDate>Mon, 13 May 2024 13:55:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1636,7 +1445,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240424-reset-steamvr-controllers.html</guid>
-  <pubDate>Sun, 12 May 2024 23:07:16 GMT</pubDate>
+  <pubDate>Mon, 13 May 2024 13:55:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1719,7 +1528,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240423-building-metaverse-with-glue-mechanic.html</guid>
-  <pubDate>Sun, 12 May 2024 23:07:16 GMT</pubDate>
+  <pubDate>Mon, 13 May 2024 13:55:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1795,7 +1604,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240418-college-quest.html</guid>
-  <pubDate>Sun, 12 May 2024 23:07:16 GMT</pubDate>
+  <pubDate>Mon, 13 May 2024 13:55:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1886,7 +1695,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240416-previewer-upload-gltf-to-glb.html</guid>
-  <pubDate>Sun, 12 May 2024 23:07:16 GMT</pubDate>
+  <pubDate>Mon, 13 May 2024 13:55:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1984,7 +1793,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240413-training-quad-based-meshgpt-with-40gb-vram.html</guid>
-  <pubDate>Sun, 12 May 2024 23:07:16 GMT</pubDate>
+  <pubDate>Mon, 13 May 2024 13:55:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2123,7 +1932,7 @@ font-style: inherit;">}</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240413-calling-opensource-llm-with-aria.html</guid>
-  <pubDate>Sun, 12 May 2024 23:07:16 GMT</pubDate>
+  <pubDate>Mon, 13 May 2024 13:55:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2216,7 +2025,7 @@ font-style: inherit;">}</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240411-multiplayer-movement-with-parented-obejcts.html</guid>
-  <pubDate>Sun, 12 May 2024 23:07:16 GMT</pubDate>
+  <pubDate>Mon, 13 May 2024 13:55:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2299,7 +2108,7 @@ font-style: inherit;">}</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240411-elixir-libgodot-zig.html</guid>
-  <pubDate>Sun, 12 May 2024 23:07:16 GMT</pubDate>
+  <pubDate>Mon, 13 May 2024 13:55:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2460,7 +2269,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240411-elixir-libgodot-bundlex.html</guid>
-  <pubDate>Sun, 12 May 2024 23:07:16 GMT</pubDate>
+  <pubDate>Mon, 13 May 2024 13:55:22 GMT</pubDate>
 </item>
 </channel>
 </rss>
