@@ -40,12 +40,6 @@ Premigration and migration border via Prasetya, Kusno's design.
 
 Server state transfer.
 
-<img src="./attachments/20221022_server_state_transfer_load.png" alt="20221022_server_state_transfer_load" width="50%">
-
-Sql schema based on Tigerbeetle.
-
-<img src="./attachments/20221022_mvsqlite_sql_query.png" alt="20221022_server_state_transfer_load" width="50%">
-
 4. Test using a multiplayer simulator via Prasetya, Kusno's design
 
 <img src="./attachments/20221022_multiplayer_sim_variables.png" alt="20221022_multiplayer_sim_variables by Prasetya, Kusno" width="25%">
