@@ -54,6 +54,7 @@ The proposed solution involves a series of steps outlined in the README below:
 4. VRCFury fix write defaults
 5. VRCFury unlimited parameters
 6. VRCFury anchor override fix
+7. VRCFury GoGo
 
 ## The Benefits
 
