@@ -490,13 +490,6 @@
     "text": "Not applicable for this month."
   },
   {
-    "objectID": "notebooks/20240430_hello_world.html",
-    "href": "notebooks/20240430_hello_world.html",
-    "title": "V-Sekai - Manuals",
-    "section": "",
-    "text": "print(\"Hello World\")\n\nHello World"
-  },
-  {
     "objectID": "decisions/20211005-use-kvm-to-test-our-amd-apu-test-computer-via-barrier.html",
     "href": "decisions/20211005-use-kvm-to-test-our-amd-apu-test-computer-via-barrier.html",
     "title": "Proposed: Use KVM to test our AMD APU test computer via Barrier.",
@@ -23084,13 +23077,6 @@
     "title": "Proposed: Export / Import testing via robot-framework and swiftshader",
     "section": "",
     "text": "Proposed: Export / Import testing via robot-framework and swiftshader\n\nContext and Problem Statement\nNeed to automated test the game\n\n\nDescribe the feature / enhancement and how it helps to overcome the problem or limitation\nUse robot framework and swift shader.\n\n\nDescribe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams\nExport / Import testing via robot-framework and swiftshader\nAutomate scripts.\n\n\nIf this enhancement will not be used often, can it be worked around with a few lines of script?\nNot trivial.\n\n\nPositive Consequences\nNo response\n\n\nNegative Consequences\nNo response\n\n\nIs there a reason why this should be core and done by us?\nI can improve this.\n\n\nReferences\nNo response\n\n\nDerivative License\nCopyright (c) 2020-2021 V-Sekai contributors.\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
-  },
-  {
-    "objectID": "notebooks/20240430_hello_sqlite.html",
-    "href": "notebooks/20240430_hello_sqlite.html",
-    "title": "V-Sekai - Manuals",
-    "section": "",
-    "text": "# Import necessary libraries\nimport sqlite3\nfrom sage.all import *\n\n# Connect to the SQLite database\nconnection = sqlite3.connect(\"20240430_hello_list.db\")\n\n# Execute SQL commands\nconnection.execute(\"DROP TABLE IF EXISTS elliptic_curves\")\nconnection.execute(\"\"\"\n    CREATE TABLE elliptic_curves (\n        cremona_label text primary key, \n        a_1 int, \n        a_2 int, \n        a_3 int, \n        a_4 int, \n        a_6 int, \n        rank int, \n        regulator float\n    )\n\"\"\")\n\n# Create an elliptic curve\nE = EllipticCurve(\"389a\")\n\n# Insert data into the table\nconnection.execute(\"\"\"\n    INSERT INTO elliptic_curves(\n        cremona_label,\n        a_1,\n        a_2,\n        a_3,\n        a_4,\n        a_6,\n        rank,\n        regulator\n    ) \n    VALUES (?, ?, ?, ?, ?, ?, ?, ?)\n\"\"\", ('389a', int(E.a1()), int(E.a2()), int(E.a3()), int(E.a4()), int(E.a6()), int(E.rank()), float(E.regulator())))\n\n# Fetch and print data from the table where rank=1\nresult = connection.execute(\"SELECT * FROM elliptic_curves WHERE rank=1\")\nprint(result.fetchone())\n\n# Fetch and print data from the table where rank=2\nresult = connection.execute(\"SELECT * FROM elliptic_curves WHERE rank=2\")\nprint(result.fetchone())\n\n# Delete data from the table\nconnection.execute(\"DELETE FROM elliptic_curves WHERE cremona_label = ?\", (\"389a\",))\n\n# Commit changes and close the connection\nconnection.commit()\nconnection.close()\n\nOperationalError: database is locked"
   },
   {
     "objectID": "changelog/20230601-changelog.html",
