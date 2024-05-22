@@ -1,4 +1,4 @@
-# Take a streaming godot game and streaming the VRM to OpenSoundControl
+# Proposed: Take a streaming godot game and streaming the VRM to OpenSoundControl
 
 ### Context and Problem Statement
 
