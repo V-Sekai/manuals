@@ -1,4 +1,4 @@
-# #shadermotion to BVH
+# Draft: shadermotion to BVH
 
 ## Context and Problem Statement
 
