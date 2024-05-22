@@ -46,6 +46,16 @@ The proposed solution involves a series of steps outlined in the README below:
 3. vrcfury
 4. vrcft - jerry's templates
 
+### List of my default VRCFury components
+
+1. VRCFury blink controller
+2. VRCFury blend shape optimizer
+3. VRCFury direct tree optimizer
+4. VRCFury fix write defaults
+5. VRCFury unlimited parameters
+6. VRCFury anchor override fix
+7. VRCFury GoGo
+
 ## The Benefits
 
 The proposed solution will allow developers to use VRC and VRM together in their projects, leading to increased flexibility and efficiency.
