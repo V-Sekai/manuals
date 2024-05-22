@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -121,21 +155,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#proposed-run-the-maintenance-scripts-from-windows-in-unix-mode-with-msys2" id="toc-proposed-run-the-maintenance-scripts-from-windows-in-unix-mode-with-msys2" class="nav-link active" data-scroll-target="#proposed-run-the-maintenance-scripts-from-windows-in-unix-mode-with-msys2">Proposed: Run the maintenance scripts from Windows in Unix mode with msys2</a>
+  <li><a href="#proposed-standard-backup-procedures" id="toc-proposed-standard-backup-procedures" class="nav-link active" data-scroll-target="#proposed-standard-backup-procedures">Proposed: Standard backup procedures</a>
   <ul class="collapse">
   <li><a href="#context-and-problem-statement" id="toc-context-and-problem-statement" class="nav-link" data-scroll-target="#context-and-problem-statement">Context and Problem Statement</a></li>
-  <li><a href="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" id="toc-describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="nav-link" data-scroll-target="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</a></li>
-  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</a></li>
-  <li><a href="#positive-consequences" id="toc-positive-consequences" class="nav-link" data-scroll-target="#positive-consequences">Positive Consequences <!-- optional --></a></li>
-  <li><a href="#negative-consequences" id="toc-negative-consequences" class="nav-link" data-scroll-target="#negative-consequences">Negative Consequences <!-- optional --></a></li>
-  <li><a href="#option-graveyard" id="toc-option-graveyard" class="nav-link" data-scroll-target="#option-graveyard">Option graveyard: <!-- same as above --></a></li>
+  <li><a href="#describe-the-feature-enhancement-and-how-it-helps-to-overcome-the-problem-or-limitation" id="toc-describe-the-feature-enhancement-and-how-it-helps-to-overcome-the-problem-or-limitation" class="nav-link" data-scroll-target="#describe-the-feature-enhancement-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the feature / enhancement and how it helps to overcome the problem or limitation</a></li>
+  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-andor-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-andor-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-andor-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams</a></li>
   <li><a href="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" id="toc-if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="nav-link" data-scroll-target="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</a></li>
+  <li><a href="#positive-consequences" id="toc-positive-consequences" class="nav-link" data-scroll-target="#positive-consequences">Positive Consequences</a></li>
+  <li><a href="#negative-consequences" id="toc-negative-consequences" class="nav-link" data-scroll-target="#negative-consequences">Negative Consequences</a></li>
   <li><a href="#is-there-a-reason-why-this-should-be-core-and-done-by-us" id="toc-is-there-a-reason-why-this-should-be-core-and-done-by-us" class="nav-link" data-scroll-target="#is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References <!-- optional --></a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   <li><a href="#derivative-license" id="toc-derivative-license" class="nav-link" data-scroll-target="#derivative-license">Derivative License</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.11 Proposed 10/20211031-run-the-maintance-scripts-from-windows-in-unix-mode-with-msys2.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.10 Proposed 10/20211031-standard-backup-procedures.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -143,71 +176,60 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="proposed-run-the-maintenance-scripts-from-windows-in-unix-mode-with-msys2" class="level1">
-<h1>Proposed: Run the maintenance scripts from Windows in Unix mode with msys2</h1>
-<ul>
-<li>Status: proposed &lt;– draft | rejected | accepted | deprecated | superseded by –&gt;</li>
-</ul>
-<section id="context-and-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
-<p>I want to use Unix tools but the experience of Linux is lacking.</p>
+<section id="proposed-standard-backup-procedures" class="level1">
+<h1>Proposed: Standard backup procedures</h1>
+<section id="context-and-problem-statement" class="level3">
+<h3 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h3>
+<p>Things that aren’t backed up get lost.</p>
 </section>
-<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level2">
-<h2 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h2>
-<p>Use msys2 on Windows to improve this.</p>
+<section id="describe-the-feature-enhancement-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level3">
+<h3 class="anchored" data-anchor-id="describe-the-feature-enhancement-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the feature / enhancement and how it helps to overcome the problem or limitation</h3>
+<p>Backup V-Sekai Github organization with V-Sekai-gitm and V-Sekai-github-backup.</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h2>
-<ul>
-<li>Install Windows 10 or Windows 11</li>
-<li>Open Powershell.</li>
-<li><code>Set-ExecutionPolicy RemoteSigned -scope CurrentUser</code></li>
-<li><code>iwr -useb get.scoop.sh | iex</code></li>
-<li><code>scoop install msys</code></li>
-<li><code>msys2</code></li>
-<li><code>pacman -S ssh-pageant openssh git python3</code></li>
-<li>Copy to ~/.bashrc</li>
-<li><code>eval $(/usr/bin/ssh-pageant -r -a "/tmp/.ssh-pageant-$USERNAME")</code></li>
-</ul>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-andor-diagrams" class="level3">
+<h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-andor-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams</h3>
+<p>Use https://github.com/muhasturk/gitim to backup V-sekai. (tested 7b6e898b7587f61b0c5f00c3ab9862868f94479d )</p>
+<pre><code>git clone https://github.com/muhasturk/gitim.git
+cd gitim
+pip install .
+cd -
+export ACCESS_TOKEN=AAAA
+python3 -m gitim -o V-Sekai -d V-Sekai-godot-gitm-`date --iso=date --utc` --ssh --token $ACCESS_TOKEN</code></pre>
+<p>Use https://github.com/josegonzalez/python-github-backup to backup. (tested 0.40.0)</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install github-backup</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">ACCESS_TOKEN</span><span class="op">=</span>AAAA</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">github-backup</span> V-Sekai <span class="at">--token</span> <span class="va">$ACCESS_TOKEN</span> <span class="at">--organization</span> <span class="at">--output-directory</span> V-Sekai-Backup-<span class="kw">`</span><span class="fu">date</span> <span class="at">--iso</span><span class="op">=</span>date <span class="at">--utc</span><span class="kw">`</span> <span class="at">--incremental</span> <span class="at">--prefer-ssh</span> <span class="at">--lfs</span> <span class="at">--private</span> <span class="at">--fork</span> <span class="at">--private</span> <span class="at">--all</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="positive-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences <!-- optional --></h2>
-<ul>
-<li>[e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]</li>
-<li>[…]</li>
-</ul>
+<section id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="level3">
+<h3 class="anchored" data-anchor-id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</h3>
+<p>Not able to.</p>
 </section>
-<section id="negative-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences <!-- optional --></h2>
+<section id="positive-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h3>
 <ul>
-<li>I can use the better experience of Windows without the frustration of Linux.</li>
-</ul>
-<p>[this section can be repeated for each option if more than one option is open for consideration]</p>
-</section>
-<section id="option-graveyard" class="level2">
-<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard: <!-- same as above --></h2>
-<ul>
-<li>Option: <!-- [List the proposed options no longer open for consideration.] --></li>
-<li>Rejection Reason: <!-- [List the reasons for the rejection: (the Bad traits)] --></li>
+<li>Two backups combined should cover all cases</li>
 </ul>
 </section>
-<section id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
-<h2 class="anchored" data-anchor-id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</h2>
-<p>This is a quality of life improvement.</p>
-</section>
-<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
-<p>I use this.</p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References <!-- optional --></h2>
+<section id="negative-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h3>
 <ul>
-<li>https://www.msys2.org/</li>
-<li>https://github.com/cuviper/ssh-pageant</li>
+<li>github-backup doesn’t backup repos that are accessible in the dependencies</li>
+<li>gitm doesn’t backup issues</li>
 </ul>
 </section>
-<section id="derivative-license" class="level2">
-<h2 class="anchored" data-anchor-id="derivative-license">Derivative License</h2>
+<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level3">
+<h3 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h3>
+<p>Only we have access to a complete copy of the repo.</p>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li>https://github.com/josegonzalez/python-github-backup</li>
+<li>https://github.com/muhasturk/gitim</li>
+</ul>
+</section>
+<section id="derivative-license" class="level3">
+<h3 class="anchored" data-anchor-id="derivative-license">Derivative License</h3>
 <p>Copyright (c) 2020-2021 V-Sekai contributors.</p>
 <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
 <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
@@ -779,7 +801,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.11 Proposed 10/20211031-run-the-maintance-scripts-from-windows-in-unix-mode-with-msys2.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.10 Proposed 10/20211031-standard-backup-procedures.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

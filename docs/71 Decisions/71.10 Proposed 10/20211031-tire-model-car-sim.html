@@ -121,7 +121,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#proposed-take-a-streaming-godot-game-and-streaming-the-vrm-to-opensoundcontrol" id="toc-proposed-take-a-streaming-godot-game-and-streaming-the-vrm-to-opensoundcontrol" class="nav-link active" data-scroll-target="#proposed-take-a-streaming-godot-game-and-streaming-the-vrm-to-opensoundcontrol">Proposed: Take a streaming godot game and streaming the VRM to OpenSoundControl</a>
+  <li><a href="#proposed-tire-model-car-sim" id="toc-proposed-tire-model-car-sim" class="nav-link active" data-scroll-target="#proposed-tire-model-car-sim">Proposed: Tire model car sim</a>
   <ul class="collapse">
   <li><a href="#context-and-problem-statement" id="toc-context-and-problem-statement" class="nav-link" data-scroll-target="#context-and-problem-statement">Context and Problem Statement</a></li>
   <li><a href="#describe-the-feature-enhancement-and-how-it-helps-to-overcome-the-problem-or-limitation" id="toc-describe-the-feature-enhancement-and-how-it-helps-to-overcome-the-problem-or-limitation" class="nav-link" data-scroll-target="#describe-the-feature-enhancement-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the feature / enhancement and how it helps to overcome the problem or limitation</a></li>
@@ -134,7 +134,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#derivative-license" id="toc-derivative-license" class="nav-link" data-scroll-target="#derivative-license">Derivative License</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.11 Proposed 10/20211031-streaming-godot-to-opensoundcontrol.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.10 Proposed 10/20211031-tire-model-car-sim.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -142,28 +142,23 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="proposed-take-a-streaming-godot-game-and-streaming-the-vrm-to-opensoundcontrol" class="level1">
-<h1>Proposed: Take a streaming godot game and streaming the VRM to OpenSoundControl</h1>
+<section id="proposed-tire-model-car-sim" class="level1">
+<h1>Proposed: Tire model car sim</h1>
 <section id="context-and-problem-statement" class="level3">
 <h3 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h3>
-<p>Streaming to Godot OSC to jsons.</p>
+<p>Create a vehicle simulation</p>
 </section>
 <section id="describe-the-feature-enhancement-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level3">
 <h3 class="anchored" data-anchor-id="describe-the-feature-enhancement-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the feature / enhancement and how it helps to overcome the problem or limitation</h3>
-<p>Stream the animation player because we have no way to stream Godot as a autonomous program.</p>
+<p>Use physx’s tire simulation. While citing their mit license.</p>
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-andor-diagrams" class="level3">
 <h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-andor-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams</h3>
-<ol type="1">
-<li>Take animation player</li>
-<li>Put it in a animation tree</li>
-<li>Animation node streams motions to osc</li>
-<li>Take osc to node.js</li>
-</ol>
+<p>Use math model.</p>
 </section>
 <section id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="level3">
 <h3 class="anchored" data-anchor-id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</h3>
-<p>Not trivial</p>
+<p>One does not simply make a vehicle sim.</p>
 </section>
 <section id="positive-consequences" class="level3">
 <h3 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h3>
@@ -175,13 +170,23 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level3">
 <h3 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h3>
-<p>It’s rare to know how to dothis.</p>
+<p>Maybe out of scope? But I have an approach.</p>
 </section>
 <section id="references" class="level3">
 <h3 class="anchored" data-anchor-id="references">References</h3>
+<blockquote class="blockquote">
+<p id="section" class="heading"></p>
+<p>Tire Modeling #########################################</p>
+<p>The default tire model employed by PhysX vehicles is discussed in Appendix H of the CarSimEd documentation:</p>
+<pre><code>http://www.eggert.highpeakpress.com/ME485/Docs/CarSimEd.pdf</code></pre>
+<p>PhysX vehicles allow any tire model to be simulated by specifying a tire shader, as discussed in :ref:<code>Tire Shaders</code>. A tire model commonly used in engineering simulation is the Pacejka tire model:</p>
+<pre><code>http://phors.locost7.info/phors21.htm
+
+http://phors.locost7.info/phors22.htm</code></pre>
+</blockquote>
 <ul>
-<li>to node js https://github.com/colinbdclark/osc.js js</li>
-<li>https://github.com/infosia/vmc2bvh</li>
+<li>https://github.com/NVIDIAGameWorks/PhysX/blob/ae80dede0546d652040ae6260a810e53e20a06fa/physx/documentation/PhysXGuide/_sources/Manual/Vehicles.txt#L2058</li>
+<li>https://web.archive.org/web/20180712141747/http://www.eggert.highpeakpress.com/ME485/Docs/CarSimEd.pdf</li>
 </ul>
 </section>
 <section id="derivative-license" class="level3">
@@ -757,7 +762,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.11 Proposed 10/20211031-streaming-godot-to-opensoundcontrol.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.10 Proposed 10/20211031-tire-model-car-sim.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
