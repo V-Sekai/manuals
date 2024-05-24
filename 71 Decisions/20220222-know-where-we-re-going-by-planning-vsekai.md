@@ -1,4 +1,4 @@
-# Supeseded: Planning V-Sekai on 2022-02-21 Superseded
+# Superseded: Planning V-Sekai on 2022-02-21 Superseded
 
 - Status: superseded <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,ifire,lyuma,
