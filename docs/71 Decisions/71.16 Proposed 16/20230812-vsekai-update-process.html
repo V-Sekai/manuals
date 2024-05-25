@@ -121,23 +121,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#proposed-implementing-a-3d-multiplayer-movement-system-with-parented-objects-and-inventory-management" id="toc-proposed-implementing-a-3d-multiplayer-movement-system-with-parented-objects-and-inventory-management" class="nav-link active" data-scroll-target="#proposed-implementing-a-3d-multiplayer-movement-system-with-parented-objects-and-inventory-management">Proposed: Implementing a 3D Multiplayer Movement System with Parented Objects and Inventory Management</a>
+  <li><a href="#proposed-update-v-sekai-game-engine-procedure" id="toc-proposed-update-v-sekai-game-engine-procedure" class="nav-link active" data-scroll-target="#proposed-update-v-sekai-game-engine-procedure">Proposed: Update V-Sekai game engine procedure</a>
   <ul class="collapse">
-  <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
-  <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
-  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</a></li>
-  <li><a href="#the-benefits" id="toc-the-benefits" class="nav-link" data-scroll-target="#the-benefits">The Benefits</a></li>
-  <li><a href="#the-downsides" id="toc-the-downsides" class="nav-link" data-scroll-target="#the-downsides">The Downsides</a></li>
+  <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
+  <li><a href="#the-backdrop" id="toc-the-backdrop" class="nav-link" data-scroll-target="#the-backdrop">The Backdrop</a></li>
+  <li><a href="#the-challenge" id="toc-the-challenge" class="nav-link" data-scroll-target="#the-challenge">The Challenge</a></li>
+  <li><a href="#the-strategy" id="toc-the-strategy" class="nav-link" data-scroll-target="#the-strategy">The Strategy</a></li>
+  <li><a href="#the-upside" id="toc-the-upside" class="nav-link" data-scroll-target="#the-upside">The Upside</a></li>
+  <li><a href="#the-downside" id="toc-the-downside" class="nav-link" data-scroll-target="#the-downside">The Downside</a></li>
   <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
   <li><a href="#the-infrequent-use-case" id="toc-the-infrequent-use-case" class="nav-link" data-scroll-target="#the-infrequent-use-case">The Infrequent Use Case</a></li>
-  <li><a href="#in-core-and-done-by-us" id="toc-in-core-and-done-by-us" class="nav-link" data-scroll-target="#in-core-and-done-by-us">In Core and Done by Us</a></li>
-  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
-  <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
-  <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags">Tags</a></li>
+  <li><a href="#in-core-and-done-by-us" id="toc-in-core-and-done-by-us" class="nav-link" data-scroll-target="#in-core-and-done-by-us">In Core and Done by Us?</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.21 Mixed 21/20240411-multiplayer-movement-with-parented-obejcts.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.16 Proposed 16/20230812-vsekai-update-process.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -145,82 +143,58 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="proposed-implementing-a-3d-multiplayer-movement-system-with-parented-objects-and-inventory-management" class="level1">
-<h1>Proposed: Implementing a 3D Multiplayer Movement System with Parented Objects and Inventory Management</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>The V-Sekai development team is working on enhancing the multiplayer experience in our VR game. We aim to create a more immersive and interactive environment for our players, akin to electrons circling in an atom or bustling activity on an MMOG street.</p>
+<section id="proposed-update-v-sekai-game-engine-procedure" class="level1">
+<h1>Proposed: Update V-Sekai game engine procedure</h1>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<ul>
+<li><strong>Status:</strong> proposed</li>
+<li><strong>Deciders:</strong> V-Sekai</li>
+<li><strong>Tags:</strong> V-Sekai</li>
+</ul>
 </section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Our VR game lacks a robust system for managing 3D multiplayer movement, parented objects, tracking validation, authentication, account metadata information, server boundaries, inventory management, and asset delivery. We also need to implement a mechanism for players to seamlessly leave and rejoin the game.</p>
+<section id="the-backdrop" class="level2">
+<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
+<p>V-Sekai is an open-source project that aims to create a virtual world. However, it has some limitations that need to be addressed to improve its performance and user experience.</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>Our proposed solution involves implementing a series of features:</p>
+<section id="the-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
+<p>The main challenge is to update the V-Sekai game engine to enhance its features and fix existing issues.</p>
+</section>
+<section id="the-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
+<p>Here are the steps we propose to take:</p>
 <ol type="1">
-<li><p><strong>3D Multiplayer Movement</strong>: We will use the libgodot process to manage 3D multiplayer movements. This will allow players to interactively move around in the 3D space, similar to electrons circling in an atom.</p></li>
-<li><p><strong>Parented Objects</strong>: We will develop a system to handle parented objects, allowing for complex interactions between game entities.</p></li>
-<li><p><strong>Tracking Validation &amp; Authentication</strong>: We will implement mechanisms to validate cross-communication and user inputs, along with an authentication system for account security.</p></li>
-<li><p><strong>Account Metadata Information</strong>: We will store and manage account metadata information to personalize the user experience.</p></li>
-<li><p><strong>Server Boundaries</strong>: We will set limitations on the server, such as boundaries, to maintain game balance and performance.</p></li>
-<li><p><strong>Inventory Management</strong>: Players can spawn items from their inventory, create new items, and return them to the inventory.</p></li>
-<li><p><strong>Game Rejoining</strong>: Players will have the ability to leave and rejoin the game without losing their progress.</p></li>
-<li><p><strong>Asset Delivery and Upload</strong>: We will establish an efficient asset delivery and upload system.</p></li>
-<li><p><strong>Voice Communication</strong>: We plan to add voice communication to enhance player interaction.</p></li>
+<li>Update the Godot Engine fork with git assembler.</li>
+<li>Release the fork to the godot engine branch.</li>
+<li>Update the V-Sekai-game engine commit hash.</li>
+<li>Check the built V-Sekai-game binaries on Github.</li>
 </ol>
 </section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<ul>
-<li>Enhanced player interaction with 3D multiplayer movement and voice communication.</li>
-<li>Improved game balance and performance with server boundaries.</li>
-<li>Better user experience with personalized account metadata information.</li>
-<li>Seamless gameplay with the ability to leave and rejoin the game.</li>
-</ul>
+<section id="the-upside" class="level2">
+<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
+<p>Updating the game engine will provide better performance, improved features, and a more enjoyable user experience.</p>
 </section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<ul>
-<li>Requires significant development effort.</li>
-<li>Potential for increased system complexity.</li>
-</ul>
+<section id="the-downside" class="level2">
+<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
+<p>The downside could be potential bugs or issues that might arise during the update process. It may also require additional resources and time to implement the updates.</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>We considered using existing game engines or libraries, but they did not meet our specific requirements for a highly interactive and immersive VR game.</p>
+<p>There might be other solutions or strategies that were considered but not chosen for this particular challenge. These could be documented here for future reference.</p>
 </section>
 <section id="the-infrequent-use-case" class="level2">
 <h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>This proposal may not be suitable for smaller projects that do not require complex 3D multiplayer interactions or inventory management.</p>
+<p>This section can be used to discuss any infrequent use cases that might arise from implementing this decision.</p>
 </section>
 <section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>The V-Sekai development team will implement this proposal.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team, “Bioblaze Payne”, “fire”</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
+<p>This section can be used to discuss whether this decision is core to the project and whether it should be implemented by us or outsourced to another team.</p>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-</ol>
-<p>Assisted by Aria.</p>
+<p>For more information about V-Sekai, you can visit their <a href="https://v-sekai.org/">official website</a>.</p>
+<p><em>This article is assisted by AI.</em></p>
 
 
 </section>
@@ -788,7 +762,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.21 Mixed 21/20240411-multiplayer-movement-with-parented-obejcts.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.16 Proposed 16/20230812-vsekai-update-process.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

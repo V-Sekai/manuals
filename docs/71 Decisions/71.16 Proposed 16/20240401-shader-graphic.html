@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -121,21 +155,23 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#proposed-procedure-to-unmerge-and-then-merge-solves-a-v-sekai-source-code-broken-tree" id="toc-proposed-procedure-to-unmerge-and-then-merge-solves-a-v-sekai-source-code-broken-tree" class="nav-link active" data-scroll-target="#proposed-procedure-to-unmerge-and-then-merge-solves-a-v-sekai-source-code-broken-tree">Proposed: Procedure to unmerge and then merge solves a V-Sekai source code broken tree</a>
+  <li><a href="#proposed-material-shader-graphic-shirt-with-sharp-edges" id="toc-proposed-material-shader-graphic-shirt-with-sharp-edges" class="nav-link active" data-scroll-target="#proposed-material-shader-graphic-shirt-with-sharp-edges">Proposed: Material Shader Graphic Shirt with Sharp Edges</a>
   <ul class="collapse">
-  <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
-  <li><a href="#the-backdrop" id="toc-the-backdrop" class="nav-link" data-scroll-target="#the-backdrop">The Backdrop</a></li>
-  <li><a href="#the-challenge" id="toc-the-challenge" class="nav-link" data-scroll-target="#the-challenge">The Challenge</a></li>
-  <li><a href="#the-strategy" id="toc-the-strategy" class="nav-link" data-scroll-target="#the-strategy">The Strategy</a></li>
-  <li><a href="#the-upside" id="toc-the-upside" class="nav-link" data-scroll-target="#the-upside">The Upside</a></li>
-  <li><a href="#the-downside" id="toc-the-downside" class="nav-link" data-scroll-target="#the-downside">The Downside</a></li>
+  <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
+  <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
+  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</a></li>
+  <li><a href="#the-benefits" id="toc-the-benefits" class="nav-link" data-scroll-target="#the-benefits">The Benefits</a></li>
+  <li><a href="#the-downsides" id="toc-the-downsides" class="nav-link" data-scroll-target="#the-downsides">The Downsides</a></li>
   <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
   <li><a href="#the-infrequent-use-case" id="toc-the-infrequent-use-case" class="nav-link" data-scroll-target="#the-infrequent-use-case">The Infrequent Use Case</a></li>
-  <li><a href="#in-core-and-done-by-us" id="toc-in-core-and-done-by-us" class="nav-link" data-scroll-target="#in-core-and-done-by-us">In Core and Done by Us?</a></li>
+  <li><a href="#in-core-and-done-by-us" id="toc-in-core-and-done-by-us" class="nav-link" data-scroll-target="#in-core-and-done-by-us">In Core and Done by Us</a></li>
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
+  <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags">Tags</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.21 Mixed 21/20230812-unmerge-and-merge-procedure-source-code-tree.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.16 Proposed 16/20240401-shader-graphic.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -143,62 +179,88 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="proposed-procedure-to-unmerge-and-then-merge-solves-a-v-sekai-source-code-broken-tree" class="level1">
-<h1>Proposed: Procedure to unmerge and then merge solves a V-Sekai source code broken tree</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<ul>
-<li>Status: proposed</li>
-<li>Deciders: V-Sekai</li>
-<li>Tags: V-Sekai</li>
-</ul>
+<section id="proposed-material-shader-graphic-shirt-with-sharp-edges" class="level1">
+<h1>Proposed: Material Shader Graphic Shirt with Sharp Edges</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>In the vibrant and ever-evolving realm of virtual reality, personal expression is paramount. Users crave the ability to showcase their unique style and personality through their avatars. One powerful avenue for this self-expression is through avatar apparel customization. In this scenario, we’re exploring the creation of a virtual shirt adorned with two distinct patterns. These patterns are applied using SVG files that are converted into a signed distance field mask, ensuring the edges remain crisp and sharp.</p>
 </section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>The V-Sekai source code tree has been broken due to an unsuccessful merge. This has resulted in a halt in the development process, causing delays in project timelines.</p>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>At present, there’s no straightforward method to design a shirt featuring two different patterns using SVG files in MaterialX, while also maintaining sharp pattern edges. This proposal seeks to address and resolve this issue.</p>
 </section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>The main challenge is to unmerge the broken tree and then successfully merge it again. This requires careful analysis of the code and understanding the root cause of the initial failed merge.</p>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>We can harness the power of MaterialX’s shader graph system to craft a custom shader for our shirt. Here’s a rudimentary sketch of how it might be structured:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import MaterialX library</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> MaterialX <span class="im">as</span> mx</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new document</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>doc <span class="op">=</span> mx.createDocument()</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new shader graph</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>shaderGraph <span class="op">=</span> doc.addNode(<span class="st">'shadergraph'</span>, <span class="st">'myShaderGraph'</span>, <span class="st">'surfaceshader'</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Add two image nodes for our SVG patterns</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>pattern1 <span class="op">=</span> shaderGraph.addInput(<span class="st">'pattern1'</span>, <span class="st">'filename'</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>pattern2 <span class="op">=</span> shaderGraph.addInput(<span class="st">'pattern2'</span>, <span class="st">'filename'</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert SVGs to signed distance fields for sharp edges</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>sdfPattern1 <span class="op">=</span> convertSVGToSDF(pattern1)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>sdfPattern2 <span class="op">=</span> convertSVGToSDF(pattern2)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a mix node to blend the two patterns together</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>mix <span class="op">=</span> shaderGraph.addNode(<span class="st">'mix'</span>, <span class="st">'mix'</span>, <span class="st">'color3'</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>mix.setInputValue(<span class="st">'fg'</span>, sdfPattern1)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>mix.setInputValue(<span class="st">'bg'</span>, sdfPattern2)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Connect the mix node to the shader graph output</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>shaderGraph.setOutputValue(mix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Please note, this is a simplified example and may require adjustments based on your project’s specific needs.</p>
 </section>
-<section id="the-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>We use a tool called Git Assembly which makes reapplying branches on master easy. Here’s the strategy:</p>
-<ol type="1">
-<li>Identify the commit hash where the merge went wrong.</li>
-<li>Remove the item from the Git Assembler.</li>
-<li>Analyze the code and identify the conflicts that caused the merge to fail.</li>
-<li>Resolve the conflicts manually.</li>
-<li>Fix the branch.</li>
-<li>Reapply the branch on master using Git Assembly.</li>
-</ol>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>Implementing this feature will empower users with additional options for avatar customization. This could potentially boost user engagement and satisfaction. Moreover, by utilizing signed distance fields, we can guarantee sharp pattern edges, enhancing the visual appeal of the shirt.</p>
 </section>
-<section id="the-upside" class="level2">
-<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<p>By following this strategy, we can potentially fix the broken source code tree without losing any significant work. This will allow us to resume the development process and meet our project deadlines.</p>
-</section>
-<section id="the-downside" class="level2">
-<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<p>The process of unmerging and merging can be time-consuming and complex. If not done correctly, it may lead to further issues in the codebase.</p>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>The primary drawback is that this feature could potentially amplify the complexity of the codebase. It may also necessitate additional resources for implementation and ongoing maintenance.</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>An alternative approach could have been to abandon the current branch and start a new one from the last known good state. However, this would mean losing all the changes made after the last good state.</p>
+<p>An alternative approach might involve using a different library or tool that already supports this feature. However, this could potentially introduce other challenges such as compatibility issues or increased project complexity.</p>
 </section>
 <section id="the-infrequent-use-case" class="level2">
 <h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>This procedure is not commonly used as merges usually go smoothly. It’s only needed when a merge results in a broken source code tree.</p>
+<p>This feature might not see frequent use if the majority of users favor simpler designs for their avatars’ clothing. Nonetheless, it could still prove beneficial for those desiring more advanced customization options.</p>
 </section>
 <section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>Yes, this procedure is core to our operations and is performed by our team.</p>
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>This feature will be developed by the V-Sekai development team and will form an integral part of our project’s core functionality.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ul>
-<li><a href="https://v-sekai.org/">V-Sekai</a></li>
-<li>This article is assisted by AI.</li>
-</ul>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
 
 
 </section>
@@ -766,7 +828,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.21 Mixed 21/20230812-unmerge-and-merge-procedure-source-code-tree.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.16 Proposed 16/20240401-shader-graphic.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

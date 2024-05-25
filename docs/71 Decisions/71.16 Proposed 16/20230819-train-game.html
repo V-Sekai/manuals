@@ -121,7 +121,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#proposed-constrain-the-entire-godot-humanoid-skeleton" id="toc-proposed-constrain-the-entire-godot-humanoid-skeleton" class="nav-link active" data-scroll-target="#proposed-constrain-the-entire-godot-humanoid-skeleton">Proposed: Constrain the entire Godot Humanoid Skeleton</a>
+  <li><a href="#proposed-following-tracks-enhancing-vr-train-station-simulation-in-v-sekai-using-godot-engine" id="toc-proposed-following-tracks-enhancing-vr-train-station-simulation-in-v-sekai-using-godot-engine" class="nav-link active" data-scroll-target="#proposed-following-tracks-enhancing-vr-train-station-simulation-in-v-sekai-using-godot-engine">Proposed: Following Tracks: Enhancing VR Train Station Simulation in V-Sekai using Godot Engine</a>
   <ul class="collapse">
   <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
   <li><a href="#the-backdrop" id="toc-the-backdrop" class="nav-link" data-scroll-target="#the-backdrop">The Backdrop</a></li>
@@ -135,7 +135,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.21 Mixed 21/20230812-constraint-all-bones.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.16 Proposed 16/20230819-train-game.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -143,54 +143,59 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="proposed-constrain-the-entire-godot-humanoid-skeleton" class="level1">
-<h1>Proposed: Constrain the entire Godot Humanoid Skeleton</h1>
+<section id="proposed-following-tracks-enhancing-vr-train-station-simulation-in-v-sekai-using-godot-engine" class="level1">
+<h1>Proposed: Following Tracks: Enhancing VR Train Station Simulation in V-Sekai using Godot Engine</h1>
 <section id="metadata" class="level2">
 <h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
 <ul>
-<li><strong>Status:</strong> proposed</li>
-<li><strong>Deciders:</strong> V-Sekai, fire</li>
-<li><strong>Tags:</strong> V-Sekai</li>
+<li>Status: proposed</li>
+<li>Deciders: V-Sekai</li>
+<li>Tags: V-Sekai, Godot Engine, VR Development</li>
 </ul>
 </section>
 <section id="the-backdrop" class="level2">
 <h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>The current Godot humanoid skeleton system lacks proper constraints for all bones, specifically in terms of rotation swing and rotation twist limits. This has led to issues when trying to move parts of the skeleton such as the head or legs towards the torso.</p>
+<p>V-Sekai is a platform that specializes in VR development with the Godot engine. It’s currently facing challenges because there isn’t a test game available. The goal is to develop a minimal viable product for a train station simulator. This simulator will focus on avatar rendering, networking simulation, and parented objects in the train.</p>
 </section>
 <section id="the-challenge" class="level2">
 <h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>The challenge lies in implementing these constraints without causing other issues within the system. Some bones are not solved and should not be constrained, adding complexity to the task.</p>
+<p>The main problems are the need for precise controls in VR and the ability to render and network large groups of people in VR. This also includes extensive NPC tests with skeletal animation in the Godot engine for VR.</p>
 </section>
 <section id="the-strategy" class="level2">
 <h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>The strategy is to carefully analyze each bone and determine the appropriate constraints. This will involve a combination of swing rotation and twist rotation constraints, depending on the specific bone.</p>
+<p>The strategy involves adding new features to V-Sekai to address these challenges:</p>
+<ol type="1">
+<li><strong>Networking Avatar Crowds:</strong> The aim here is to develop efficient methods for networking large groups of avatars in VR. This will involve creating a system that can handle the high data traffic required for real-time interaction between numerous avatars, while maintaining performance and stability. This could be achieved by implementing advanced networking protocols and optimization techniques to ensure smooth communication between avatars without overloading the network.</li>
+</ol>
 </section>
 <section id="the-upside" class="level2">
 <h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
-<p>By implementing these constraints, we can improve the functionality and reliability of the Godot humanoid skeleton system. This will allow for more realistic movements and prevent system errors when moving certain parts of the skeleton.</p>
+<p>If this strategy is implemented successfully, it could enhance the user experience in VR games developed using the Godot engine. It could also enable the creation of more diverse and complex VR environments.</p>
 </section>
 <section id="the-downside" class="level2">
 <h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
-<p>There may be potential challenges in implementing these constraints, particularly for the unsolved bones. It will require careful testing and adjustment to ensure that the new constraints do not introduce new issues.</p>
+<p>This process may require significant resources and time, and there might be technical limitations.</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>An alternative would be to leave the system as it is, accepting its limitations. However, this would mean missing out on the potential improvements that could be achieved through this proposal.</p>
+<p>An alternative could have been to use a different game engine that already supports these features. However, this wouldn’t contribute to the improvement of the Godot engine.</p>
 </section>
 <section id="the-infrequent-use-case" class="level2">
 <h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>In some rare cases, the lack of constraints might actually be beneficial, allowing for unusual or exaggerated movements. These cases will need to be considered and potentially addressed separately.</p>
+<p>These improvements might not benefit all types of games or developers. Their relevance depends on the specific needs and goals of each project.</p>
 </section>
 <section id="in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>Yes, this change would be implemented in the core system by the V-Sekai team.</p>
+<p>V-Sekai’s expertise in VR development and understanding of its challenges make it well-suited to lead these improvements. By doing so, V-Sekai can align with developer needs, contribute to the open-source Godot engine, and help build a stronger community around it.</p>
+<p>Despite requiring effort and resources, the potential benefits for both V-Sekai and the wider Godot engine community make it a worthwhile investment.</p>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <ul>
 <li><a href="https://v-sekai.org/">V-Sekai</a></li>
-<li>This article is assisted by AI.</li>
+<li><a href="https://github.com/godotengine/godot-proposals/discussions/4233">Godot Engine Proposal Discussion</a></li>
 </ul>
+<p>This article is assisted by AI.</p>
 
 
 </section>
@@ -758,7 +763,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.21 Mixed 21/20230812-constraint-all-bones.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.16 Proposed 16/20230819-train-game.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

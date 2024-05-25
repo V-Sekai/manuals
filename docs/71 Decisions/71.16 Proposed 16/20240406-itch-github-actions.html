@@ -155,22 +155,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#proposed-integrating-helm-for-kubernetes-runner-installation-with-s3-cache" id="toc-proposed-integrating-helm-for-kubernetes-runner-installation-with-s3-cache" class="nav-link active" data-scroll-target="#proposed-integrating-helm-for-kubernetes-runner-installation-with-s3-cache">Proposed: Integrating Helm for Kubernetes Runner Installation with S3 Cache</a>
+  <li><a href="#proposed-provide-a-v-sekai-starter-kit" id="toc-proposed-provide-a-v-sekai-starter-kit" class="nav-link active" data-scroll-target="#proposed-provide-a-v-sekai-starter-kit">Proposed: Provide a V-Sekai Starter Kit</a>
   <ul class="collapse">
-  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
-  <li><a href="#problem-statement" id="toc-problem-statement" class="nav-link" data-scroll-target="#problem-statement">Problem Statement</a></li>
-  <li><a href="#proposed-solution" id="toc-proposed-solution" class="nav-link" data-scroll-target="#proposed-solution">Proposed Solution</a>
-  <ul class="collapse">
-  <li><a href="#step-1-install-helm" id="toc-step-1-install-helm" class="nav-link" data-scroll-target="#step-1-install-helm">Step 1: Install Helm</a></li>
-  <li><a href="#step-2-add-the-gitlab-runner-helm-chart" id="toc-step-2-add-the-gitlab-runner-helm-chart" class="nav-link" data-scroll-target="#step-2-add-the-gitlab-runner-helm-chart">Step 2: Add the GitLab Runner Helm Chart</a></li>
-  <li><a href="#step-3-customize-the-gitlab-runner-configuration" id="toc-step-3-customize-the-gitlab-runner-configuration" class="nav-link" data-scroll-target="#step-3-customize-the-gitlab-runner-configuration">Step 3: Customize the GitLab Runner Configuration</a></li>
-  <li><a href="#step-4-create-an-s3-access-secret" id="toc-step-4-create-an-s3-access-secret" class="nav-link" data-scroll-target="#step-4-create-an-s3-access-secret">Step 4: Create an S3 Access Secret</a></li>
-  <li><a href="#step-5-install-the-gitlab-runner-using-helm" id="toc-step-5-install-the-gitlab-runner-using-helm" class="nav-link" data-scroll-target="#step-5-install-the-gitlab-runner-using-helm">Step 5: Install the GitLab Runner using Helm</a></li>
-  </ul></li>
-  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
-  <li><a href="#downsides" id="toc-downsides" class="nav-link" data-scroll-target="#downsides">Downsides</a></li>
-  <li><a href="#alternatives-not-chosen" id="toc-alternatives-not-chosen" class="nav-link" data-scroll-target="#alternatives-not-chosen">Alternatives Not Chosen</a></li>
-  <li><a href="#infrequent-use-case" id="toc-infrequent-use-case" class="nav-link" data-scroll-target="#infrequent-use-case">Infrequent Use Case</a></li>
+  <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
+  <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
+  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</a></li>
+  <li><a href="#the-benefits" id="toc-the-benefits" class="nav-link" data-scroll-target="#the-benefits">The Benefits</a></li>
+  <li><a href="#the-downsides" id="toc-the-downsides" class="nav-link" data-scroll-target="#the-downsides">The Downsides</a></li>
+  <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
+  <li><a href="#the-infrequent-use-case" id="toc-the-infrequent-use-case" class="nav-link" data-scroll-target="#the-infrequent-use-case">The Infrequent Use Case</a></li>
   <li><a href="#in-core-and-done-by-us" id="toc-in-core-and-done-by-us" class="nav-link" data-scroll-target="#in-core-and-done-by-us">In Core and Done by Us</a></li>
   <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
   <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
@@ -178,7 +171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.21 Mixed 21/20240330-gitlab-helm.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.16 Proposed 16/20240406-itch-github-actions.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -186,102 +179,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="proposed-integrating-helm-for-kubernetes-runner-installation-with-s3-cache" class="level1">
-<h1>Proposed: Integrating Helm for Kubernetes Runner Installation with S3 Cache</h1>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>The V-Sekai project, focused on integrating social VR capabilities into the Godot Engine, necessitates a flexible and scalable CI/CD infrastructure to manage the development workflow across various environments effectively. Given the diversity of platforms our contributors use, including Linux, macOS, Windows, Docker, and Kubernetes, there is a critical need to standardize our CI/CD processes to ensure consistency and efficiency.</p>
+<section id="proposed-provide-a-v-sekai-starter-kit" class="level1">
+<h1>Proposed: Provide a V-Sekai Starter Kit</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>Provide a V-Sekai starter kit that is complete and usable.</p>
 </section>
-<section id="problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>The current CI/CD setup at V-Sekai lacks a unified approach to deploying and managing runners in Kubernetes clusters, leading to potential inconsistencies in build and test environments. This fragmentation could slow down the development pipeline and impact the project’s ability to iterate rapidly on new features.</p>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Use desync (casync) to generate catars. Then upload this to itchio.</p>
 </section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>We propose to enhance our CI/CD pipeline by integrating Helm to streamline the installation and management of GitLab Runners in our Kubernetes clusters. Additionally, we will configure the runners to use S3 (Digital Ocean Spaces) as a cache, improving build times and reducing network traffic. Here’s how we plan to implement this solution:</p>
-<section id="step-1-install-helm" class="level3">
-<h3 class="anchored" data-anchor-id="step-1-install-helm">Step 1: Install Helm</h3>
-<p>Ensure Helm is installed on your system. Helm will be used to deploy GitLab Runner instances as Helm charts, providing an easy and scalable way to manage runners within Kubernetes clusters.</p>
-<pre class="shell"><code>curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash</code></pre>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>We will use the <code>casync</code> tool to create <code>.catar</code> files from our project directory. This will be followed by uploading these files to Itch.io using their Butler CLI tool.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate .catar file</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">casync</span> make myproject.catar myproject/</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Upload to Itch.io</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">butler</span> push myproject.catar user/game:channel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="step-2-add-the-gitlab-runner-helm-chart" class="level3">
-<h3 class="anchored" data-anchor-id="step-2-add-the-gitlab-runner-helm-chart">Step 2: Add the GitLab Runner Helm Chart</h3>
-<p>Add the GitLab Runner Helm chart repository to your Helm setup. This repository contains the necessary templates for deploying GitLab Runners in a Kubernetes cluster.</p>
-<pre class="shell"><code>helm repo add gitlab https://charts.gitlab.io/
-helm repo update</code></pre>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>Seed a cdn. This will allow us to distribute our SDK more efficiently and reliably.</p>
 </section>
-<section id="step-3-customize-the-gitlab-runner-configuration" class="level3">
-<h3 class="anchored" data-anchor-id="step-3-customize-the-gitlab-runner-configuration">Step 3: Customize the GitLab Runner Configuration</h3>
-<p>Update your <code>values.yaml</code> file with the following values to switch to the Ubuntu-based image and configure S3 as a cache:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the Ubuntu image. Remember to set the version. You can also use the `ubuntu` or `latest` tags.</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span><span class="kw">:</span><span class="at"> gitlab/gitlab-runner:v16.5.0</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Update the security context values to the user ID in the ubuntu image</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">securityContext</span><span class="kw">:</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">fsGroup</span><span class="kw">:</span><span class="at"> </span><span class="dv">999</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">runAsUser</span><span class="kw">:</span><span class="at"> </span><span class="dv">999</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Configure S3 as a cache</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">runners</span><span class="kw">:</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">  config</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    [[runners]]</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>      [runners.kubernetes]</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        image = "ubuntu:22.04"</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>      [runners.cache]</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        Type = "s3"</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        Path = "runner"</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        Shared = true</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        [runners.cache.s3]</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>          ServerAddress = "s3.amazonaws.com"</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>          BucketName = "my_bucket_name"</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>          BucketLocation = "eu-west-1"</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>          Insecure = false</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>          AuthenticationType = "access-key"</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">cache</span><span class="kw">:</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">secretName</span><span class="kw">:</span><span class="at"> s3access</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>The main downside is the additional complexity introduced by the use of <code>casync</code> and Butler. There may also be potential issues with compatibility or performance.</p>
 </section>
-<section id="step-4-create-an-s3-access-secret" class="level3">
-<h3 class="anchored" data-anchor-id="step-4-create-an-s3-access-secret">Step 4: Create an S3 Access Secret</h3>
-<p>Create an <code>s3access</code> Kubernetes secret that contains your access key and secret key:</p>
-<pre class="shell"><code>kubectl create secret generic s3access --from-literal=accesskey="YourAccessKey" --from-literal=secretkey="YourSecretKey"</code></pre>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An alternative approach could have been to directly upload the SDK files to Itch.io without using <code>casync</code>. However, this would not provide the benefits of seeding a CDN.</p>
 </section>
-<section id="step-5-install-the-gitlab-runner-using-helm" class="level3">
-<h3 class="anchored" data-anchor-id="step-5-install-the-gitlab-runner-using-helm">Step 5: Install the GitLab Runner using Helm</h3>
-<p>Deploy the GitLab Runner using Helm with the customized <code>values.yaml</code> file.</p>
-<pre class="shell"><code>helm install gitlab-runner gitlab/gitlab-runner -f values.yaml</code></pre>
-<p>Ensure to replace <code>https://gitlab.example.com/</code> with your GitLab instance URL and <code>"REGISTRATION_TOKEN"</code> with your actual registration token.</p>
-</section>
-</section>
-<section id="benefits" class="level2">
-<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
-<ul>
-<li><strong>Scalable and Efficient CI/CD</strong>: Leveraging Kubernetes for CI/CD runners allows for dynamic scaling based on the workload, improving resource efficiency.</li>
-<li><strong>Consistency Across Environments</strong>: Using Helm charts for deployment ensures consistent environments for all CI/CD pipelines, reducing “it works on my machine” issues.</li>
-<li><strong>Improved Build Times and Reduced Network Traffic</strong>: By using S3 as a cache, build times can be significantly reduced and network traffic minimized.</li>
-</ul>
-</section>
-<section id="downsides" class="level2">
-<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
-<ul>
-<li><strong>Complexity</strong>: The initial setup and configuration may require a deep understanding of Kubernetes and Helm, posing a learning curve for some team members.</li>
-<li><strong>Maintenance</strong>: Ongoing maintenance of Helm charts could increase operational overhead.</li>
-</ul>
-</section>
-<section id="alternatives-not-chosen" class="level2">
-<h2 class="anchored" data-anchor-id="alternatives-not-chosen">Alternatives Not Chosen</h2>
-<ul>
-<li><strong>Manual Runner Installation</strong>: Avoided due to its lack of scalability and increased potential for configuration errors.</li>
-</ul>
-</section>
-<section id="infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
-<ul>
-<li><strong>Temporary or One-off CI/CD Tasks</strong>: For tasks that do not justify the overhead of Kubernetes runners, alternative, simpler CI/CD solutions might be temporarily employed.</li>
-</ul>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>This process might be less efficient for small updates, as it involves creating a new <code>.catar</code> file and uploading it each time.</p>
 </section>
 <section id="in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>This initiative aligns with our core mission of developing social VR capabilities within the Godot Engine. The V-Sekai development team will lead this project, ensuring it meets our technical standards and project goals.</p>
+<p>This proposal is core to our project and will be implemented by the V-Sekai development team.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
@@ -296,18 +231,16 @@ helm repo update</code></pre>
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>V-Sekai, CI/CD, Kubernetes, Helm, S3 Cache</li>
+<li>V-Sekai</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <ol type="1">
-<li><a href="https://helm.sh/docs/">Helm Documentation</a></li>
-<li><a href="https://charts.gitlab.io/">GitLab Runner Helm Chart</a></li>
 <li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine</li>
 <li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine</li>
 </ol>
-<p>Assisted by Aria, your AI assistant.</p>
+<p>AI assistant Aria assisted with this article.</p>
 
 
 </section>
@@ -875,7 +808,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.21 Mixed 21/20240330-gitlab-helm.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.16 Proposed 16/20240406-itch-github-actions.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

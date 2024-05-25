@@ -155,23 +155,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#proposed-use-bundlex-for-binding-gdextension-to-elixir-for-libgodot-to-implement-a-distributed-simulation" id="toc-proposed-use-bundlex-for-binding-gdextension-to-elixir-for-libgodot-to-implement-a-distributed-simulation" class="nav-link active" data-scroll-target="#proposed-use-bundlex-for-binding-gdextension-to-elixir-for-libgodot-to-implement-a-distributed-simulation">Proposed: Use Bundlex for Binding GDExtension to Elixir for Libgodot to Implement a Distributed Simulation</a>
+  <li><a href="#proposed-sonic-symphony-crafting-melodies-with-machine-intelligence" id="toc-proposed-sonic-symphony-crafting-melodies-with-machine-intelligence" class="nav-link active" data-scroll-target="#proposed-sonic-symphony-crafting-melodies-with-machine-intelligence">Proposed: Sonic Symphony: Crafting Melodies with Machine Intelligence</a>
   <ul class="collapse">
-  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
-  <li><a href="#problem-statement" id="toc-problem-statement" class="nav-link" data-scroll-target="#problem-statement">Problem Statement</a></li>
-  <li><a href="#proposed-solution" id="toc-proposed-solution" class="nav-link" data-scroll-target="#proposed-solution">Proposed Solution</a></li>
-  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
-  <li><a href="#downsides" id="toc-downsides" class="nav-link" data-scroll-target="#downsides">Downsides</a></li>
-  <li><a href="#alternatives-considered" id="toc-alternatives-considered" class="nav-link" data-scroll-target="#alternatives-considered">Alternatives Considered</a></li>
-  <li><a href="#infrequent-use-case" id="toc-infrequent-use-case" class="nav-link" data-scroll-target="#infrequent-use-case">Infrequent Use Case</a></li>
-  <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation">Implementation</a></li>
-  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
-  <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
-  <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags">Tags</a></li>
+  <li><a href="#the-blueprint" id="toc-the-blueprint" class="nav-link" data-scroll-target="#the-blueprint">The Blueprint</a></li>
+  <li><a href="#the-backdrop" id="toc-the-backdrop" class="nav-link" data-scroll-target="#the-backdrop">The Backdrop</a></li>
+  <li><a href="#the-challenge" id="toc-the-challenge" class="nav-link" data-scroll-target="#the-challenge">The Challenge</a></li>
+  <li><a href="#the-strategy" id="toc-the-strategy" class="nav-link" data-scroll-target="#the-strategy">The Strategy</a></li>
+  <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
+  <li><a href="#the-upside" id="toc-the-upside" class="nav-link" data-scroll-target="#the-upside">The Upside</a></li>
+  <li><a href="#the-downside" id="toc-the-downside" class="nav-link" data-scroll-target="#the-downside">The Downside</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.21 Mixed 21/20240411-elixir-libgodot-bundlex.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.16 Proposed 16/20230806-music-gen.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -179,88 +175,77 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="proposed-use-bundlex-for-binding-gdextension-to-elixir-for-libgodot-to-implement-a-distributed-simulation" class="level1">
-<h1>Proposed: Use Bundlex for Binding GDExtension to Elixir for Libgodot to Implement a Distributed Simulation</h1>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>The V-Sekai development team is striving to enhance the simulation experience in our VR game. We aim to create a more immersive and interactive environment for our players.</p>
-</section>
-<section id="problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>We can bind GDExtension to a C-like language for libgodot to implement a distributed simulation.</p>
-</section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>Instead of godot-zig, we propose using <strong>Bundlex</strong>, a multi-platform tool for compiling C and C++ code along with Elixir projects. This will allow us to leverage the power of Elixir’s concurrency and fault-tolerance features, which are ideal for creating distributed simulations.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">defmodule</span> <span class="cn">MyProject</span> <span class="kw">do</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="im">use</span> <span class="cn">Bundlex</span><span class="op">.</span><span class="cn">Project</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> project<span class="fu">()</span> <span class="kw">do</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="ot">[</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      <span class="va">app:</span> <span class="va">:my_project</span>,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>      <span class="va">compilers:</span> <span class="ot">[</span><span class="va">:bundlex</span><span class="ot">]</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>      <span class="va">deps:</span> deps<span class="fu">()</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">defp</span> deps <span class="kw">do</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="ot">[</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span><span class="va">:bundlex</span>, <span class="st">"~&gt; 0.2"</span><span class="fu">}</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="benefits" class="level2">
-<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<section id="proposed-sonic-symphony-crafting-melodies-with-machine-intelligence" class="level1">
+<h1>Proposed: Sonic Symphony: Crafting Melodies with Machine Intelligence</h1>
+<section id="the-blueprint" class="level2">
+<h2 class="anchored" data-anchor-id="the-blueprint">The Blueprint</h2>
 <ul>
-<li>Enhanced simulation performance due to Elixir’s efficient handling of concurrent processes.</li>
-<li>Improved fault tolerance, as Elixir’s supervisor trees can automatically recover from errors.</li>
-<li>Increased developer productivity, as Elixir’s syntax is concise and expressive.</li>
+<li><strong>Status:</strong> proposed</li>
+<li><strong>Masterminds:</strong> V-Sekai, fire</li>
+<li><strong>Keywords:</strong> Music, AI, GPT-3, Python, Generation</li>
 </ul>
 </section>
-<section id="downsides" class="level2">
-<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
+<section id="the-backdrop" class="level2">
+<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
+<p>As we navigate the 21st century, technology has become an inseparable part of our existence. It’s been making waves in the realm of music too. One such wave is the use of artificial intelligence (AI) to craft melodies. This blueprint proposes a method for creating music using computer algorithms.</p>
+</section>
+<section id="the-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
+<p>The mission is to create music using computer programs.</p>
+</section>
+<section id="the-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
+<p>One promising strategy is to employ .ABC files. These files have proven effective in generating outputs with AI models like GPT-3. The .ABC files carry data in the header section, such as the key signature, tempo, and time signature, which can be incorporated into the prompt.</p>
+<p>Alternatively, we could leverage AI models to script for us. For instance, we could ask for a Python script that composes the chromatic 7th intervals from C to B in eighth notes. The output format could be something user-friendly like Lilypond or MusicXML.</p>
+<p>Here’s a sneak peek at a Python script:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_chromatic_seventh_intervals():</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    notes <span class="op">=</span> [<span class="st">'C'</span>, <span class="st">'C#'</span>, <span class="st">'D'</span>, <span class="st">'D#'</span>, <span class="st">'E'</span>, <span class="st">'F'</span>, <span class="st">'F#'</span>, <span class="st">'G'</span>, <span class="st">'G#'</span>, <span class="st">'A'</span>, <span class="st">'A#'</span>, <span class="st">'B'</span>]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    intervals <span class="op">=</span> []</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(notes)):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        seventh_interval <span class="op">=</span> (i <span class="op">+</span> <span class="dv">10</span>) <span class="op">%</span> <span class="bu">len</span>(notes)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        intervals.append((notes[i], notes[seventh_interval]))</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> intervals</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(generate_chromatic_seventh_intervals())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Another feasible strategy might be to use AI models to generate Lilypond syntax. Lilypond is a robust and adaptable tool for engraving tasks of all kinds, including sheet music, complex notation, vocal music, etc. Here is an example of a simple Lilypond syntax:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode lilypond code-with-copy"><code class="sourceCode lilypond"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\relative c'</span> <span class="kw">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  c<span class="dt">4</span> d e f <span class="dv">|</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  g a b c <span class="dv">|</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This code will compose a sequence of eighth notes from C to C.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>During the journey to find a solution, several paths were explored and abandoned for various reasons:</p>
+<ol type="1">
+<li><p><strong>Using MIDI files:</strong> While MIDI files are a common choice for music creation, they were left behind due to their complexity and the challenge in crafting them programmatically.</p></li>
+<li><p><strong>Using MusicXML:</strong> Despite MusicXML being a comprehensive and widely supported format, it was abandoned due to its lengthy and intricate structure, which makes it tough to craft programmatically.</p></li>
+<li><p><strong>Using other music notation software:</strong> Other music notation software like Finale and Sibelius were considered but left behind due to their proprietary nature and lack of support for the programmatic generation of music.</p></li>
+</ol>
+</section>
+<section id="the-upside" class="level2">
+<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
 <ul>
-<li>Requires learning a new programming language (Elixir), which may increase the development time initially.</li>
-<li>Potential compatibility issues between Elixir and existing parts of the system.</li>
+<li>This approach will pave the way for easier music creation.</li>
+<li>It will sidestep the limitations posed by the intricate structure of MusicXML.</li>
 </ul>
 </section>
-<section id="alternatives-considered" class="level2">
-<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
-<p>We considered using other languages like Rust or Go, but they did not offer the same level of concurrency and fault-tolerance features as Elixir.</p>
-</section>
-<section id="infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
-<p>This proposal may not be suitable for smaller projects that do not require complex distributed simulations.</p>
-</section>
-<section id="implementation" class="level2">
-<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
-<p>The V-Sekai development team will implement this proposal.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<section id="the-downside" class="level2">
+<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
 <ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
+<li>There may be some hurdles when using AI models to generate Lilypond syntax.</li>
+<li>Training small transformers to output syntactically correct .ABC files might pose a challenge.</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-<li><a href="https://hex.pm/packages/bundlex">Bundlex</a></li>
-</ol>
-<p>Assisted by Aria.</p>
+<ul>
+<li><a href="https://gwern.net/gpt-2-music">Sample .ABC files</a></li>
+<li><a href="https://lilypond.org/doc/v2.24/Documentation/notation/index">Lilypond Notation Reference</a></li>
+<li><a href="https://news.ycombinator.com/item?id=37016049">Ask HN: AI that produces sheet music for practice?</a></li>
+</ul>
 
 
 </section>
@@ -828,7 +813,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.21 Mixed 21/20240411-elixir-libgodot-bundlex.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.16 Proposed 16/20230806-music-gen.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -121,21 +155,23 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#proposed-v-sekai-navigation-compatibility-with-vr" id="toc-proposed-v-sekai-navigation-compatibility-with-vr" class="nav-link active" data-scroll-target="#proposed-v-sekai-navigation-compatibility-with-vr">Proposed: V-Sekai Navigation Compatibility with VR</a>
+  <li><a href="#proposed-use-bundlex-for-binding-gdextension-to-elixir-for-libgodot-to-implement-a-distributed-simulation" id="toc-proposed-use-bundlex-for-binding-gdextension-to-elixir-for-libgodot-to-implement-a-distributed-simulation" class="nav-link active" data-scroll-target="#proposed-use-bundlex-for-binding-gdextension-to-elixir-for-libgodot-to-implement-a-distributed-simulation">Proposed: Use Bundlex for Binding GDExtension to Elixir for Libgodot to Implement a Distributed Simulation</a>
   <ul class="collapse">
-  <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
-  <li><a href="#the-backdrop" id="toc-the-backdrop" class="nav-link" data-scroll-target="#the-backdrop">The Backdrop</a></li>
-  <li><a href="#the-challenge" id="toc-the-challenge" class="nav-link" data-scroll-target="#the-challenge">The Challenge</a></li>
-  <li><a href="#the-strategy" id="toc-the-strategy" class="nav-link" data-scroll-target="#the-strategy">The Strategy</a></li>
-  <li><a href="#the-upside" id="toc-the-upside" class="nav-link" data-scroll-target="#the-upside">The Upside</a></li>
-  <li><a href="#the-downside" id="toc-the-downside" class="nav-link" data-scroll-target="#the-downside">The Downside</a></li>
-  <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
-  <li><a href="#the-infrequent-use-case" id="toc-the-infrequent-use-case" class="nav-link" data-scroll-target="#the-infrequent-use-case">The Infrequent Use Case</a></li>
-  <li><a href="#in-core-and-done-by-us" id="toc-in-core-and-done-by-us" class="nav-link" data-scroll-target="#in-core-and-done-by-us">In Core and Done by Us?</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
+  <li><a href="#problem-statement" id="toc-problem-statement" class="nav-link" data-scroll-target="#problem-statement">Problem Statement</a></li>
+  <li><a href="#proposed-solution" id="toc-proposed-solution" class="nav-link" data-scroll-target="#proposed-solution">Proposed Solution</a></li>
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#downsides" id="toc-downsides" class="nav-link" data-scroll-target="#downsides">Downsides</a></li>
+  <li><a href="#alternatives-considered" id="toc-alternatives-considered" class="nav-link" data-scroll-target="#alternatives-considered">Alternatives Considered</a></li>
+  <li><a href="#infrequent-use-case" id="toc-infrequent-use-case" class="nav-link" data-scroll-target="#infrequent-use-case">Infrequent Use Case</a></li>
+  <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation">Implementation</a></li>
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
+  <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags">Tags</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.21 Mixed 21/20230806-v-sekai-ipad-projection-compatibility.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.16 Proposed 16/20240411-elixir-libgodot-bundlex.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -143,63 +179,88 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="proposed-v-sekai-navigation-compatibility-with-vr" class="level1">
-<h1>Proposed: V-Sekai Navigation Compatibility with VR</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<section id="proposed-use-bundlex-for-binding-gdextension-to-elixir-for-libgodot-to-implement-a-distributed-simulation" class="level1">
+<h1>Proposed: Use Bundlex for Binding GDExtension to Elixir for Libgodot to Implement a Distributed Simulation</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>The V-Sekai development team is striving to enhance the simulation experience in our VR game. We aim to create a more immersive and interactive environment for our players.</p>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>We can bind GDExtension to a C-like language for libgodot to implement a distributed simulation.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>Instead of godot-zig, we propose using <strong>Bundlex</strong>, a multi-platform tool for compiling C and C++ code along with Elixir projects. This will allow us to leverage the power of Elixir’s concurrency and fault-tolerance features, which are ideal for creating distributed simulations.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">defmodule</span> <span class="cn">MyProject</span> <span class="kw">do</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="im">use</span> <span class="cn">Bundlex</span><span class="op">.</span><span class="cn">Project</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> project<span class="fu">()</span> <span class="kw">do</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="ot">[</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      <span class="va">app:</span> <span class="va">:my_project</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>      <span class="va">compilers:</span> <span class="ot">[</span><span class="va">:bundlex</span><span class="ot">]</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>      <span class="va">deps:</span> deps<span class="fu">()</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">defp</span> deps <span class="kw">do</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="ot">[</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span><span class="va">:bundlex</span>, <span class="st">"~&gt; 0.2"</span><span class="fu">}</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
 <ul>
-<li><strong>Status:</strong> proposed</li>
-<li><strong>Deciders:</strong> V-Sekai</li>
-<li><strong>Tags:</strong> V-Sekai, iPad, Presentation Screen, Compatibility</li>
+<li>Enhanced simulation performance due to Elixir’s efficient handling of concurrent processes.</li>
+<li>Improved fault tolerance, as Elixir’s supervisor trees can automatically recover from errors.</li>
+<li>Increased developer productivity, as Elixir’s syntax is concise and expressive.</li>
 </ul>
 </section>
-<section id="the-backdrop" class="level2">
-<h2 class="anchored" data-anchor-id="the-backdrop">The Backdrop</h2>
-<p>We are developing a VR game that MUST be compatible with a wide range of devices. Our goal is to make our VR game accessible and enjoyable for this vast majority of users.</p>
-</section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>The challenge is to ensure the game’s user interface and controls work seamlessly across these different display sizes and touch interfaces.</p>
-</section>
-<section id="the-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="the-strategy">The Strategy</h2>
-<p>We considered two options: Virtual joystick for touchscreen devices and Navmesh and 3D navigation points. We chose the “Virtual joystick for touchscreen devices” because it addresses the core issue of ensuring compatibility with iPads and large projector screens, and it is more cost-effective.</p>
-</section>
-<section id="the-upside" class="level2">
-<h2 class="anchored" data-anchor-id="the-upside">The Upside</h2>
+<section id="downsides" class="level2">
+<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
 <ul>
-<li>Improved user experience across different devices and screen sizes.</li>
-<li>Increased versatility of the game, making it suitable for various applications.</li>
-<li>Enhanced navigation in 3D spaces.</li>
-<li>More cost-effective solution.</li>
+<li>Requires learning a new programming language (Elixir), which may increase the development time initially.</li>
+<li>Potential compatibility issues between Elixir and existing parts of the system.</li>
 </ul>
 </section>
-<section id="the-downside" class="level2">
-<h2 class="anchored" data-anchor-id="the-downside">The Downside</h2>
+<section id="alternatives-considered" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
+<p>We considered using other languages like Rust or Go, but they did not offer the same level of concurrency and fault-tolerance features as Elixir.</p>
+</section>
+<section id="infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
+<p>This proposal may not be suitable for smaller projects that do not require complex distributed simulations.</p>
+</section>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<p>The V-Sekai development team will implement this proposal.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
 <ul>
-<li>Potential increase in development time and costs.</li>
-<li>Additional resources for testing on different devices and screens.</li>
+<li>V-Sekai development team</li>
 </ul>
 </section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Navmeshes and 3D Navigation Points are tools used to define traversable spaces in a 3D environment. However, they might not be suitable when the spaces aren’t already defined, such as grids. Waypoints have similar limitations.</p>
-<p>In Godot, any modification triggers a rebuild of the entire navigation map. If the map is large and complex, this rebuilding process can take a significant amount of time and lead to performance issues.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>While Navmesh and 3D Navigation Points provide an intuitive user interface for navigating 3D spaces, they might not translate well to continuous interaction on touchscreens, which is often expected by users on such devices.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us?</h2>
-<p>Yes, the decision to implement a virtual joystick for touchscreen devices was made by us, V-Sekai. This decision is at the core of our strategy to ensure compatibility with iPads and large projector screens while also being cost-effective.</p>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ul>
-<li><a href="https://v-sekai.org/">V-Sekai</a></li>
-<li>This article is assisted by AI.</li>
-</ul>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+<li><a href="https://hex.pm/packages/bundlex">Bundlex</a></li>
+</ol>
+<p>Assisted by Aria.</p>
 
 
 </section>
@@ -767,7 +828,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.21 Mixed 21/20230806-v-sekai-ipad-projection-compatibility.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.16 Proposed 16/20240411-elixir-libgodot-bundlex.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
