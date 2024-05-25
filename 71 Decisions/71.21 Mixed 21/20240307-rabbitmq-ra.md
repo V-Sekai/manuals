@@ -1,49 +1,49 @@
-## Proposed: Implement Ra in V-Sekai
+# Proposed: Implement Ra in V-Sekai
 
-### Context
+## Context
 
 V-Sekai, a VR social network, needs reliable state machines for data persistence. Current system may struggle with data consistency and failure recovery.
 
-### Problem
+## Problem
 
 User experience can be disrupted due to potential data inconsistencies and loss, leading to issues like lost interactions and inconsistent virtual states.
 
-### Solution
+## Solution
 
 Implement Ra, a Raft implementation by Team RabbitMQ, in any Erlang or Elixir project. Ra enables persistent, fault-tolerant, replicated state machines.
 
-### Benefits
+## Benefits
 
 - **Fault Tolerance**: Ra ensures data consistency via leader election and log replication.
 - **Efficiency**: Supports log compaction and snapshot installation.
 - **Scalability**: Suitable for large-scale applications like V-Sekai.
 
-### Downsides
+## Downsides
 
 - **Learning Curve**: Developers need to learn Ra and the Raft consensus algorithm.
 - **Dependency**: Ra could increase project complexity.
 
-### Alternatives
+## Alternatives
 
 Other solutions like CRDTs were considered but have major shortcomings.
 
-### Infrequent Use Case
+## Infrequent Use Case
 
 In small distributed systems with rare failures, Ra's benefits may not be fully realized.
 
-### Implementation
+## Implementation
 
 The V-Sekai team will implement Ra.
 
-### Status
+## Status
 
 Proposed
 
-### Decision Makers
+## Decision Makers
 
 - V-Sekai development team
 
-### Tags
+## Tags
 
 - V-Sekai
 - Ra
@@ -51,7 +51,7 @@ Proposed
 - Elixir
 - Distributed Systems
 
-### Further Reading
+## Further Reading
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai)
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
