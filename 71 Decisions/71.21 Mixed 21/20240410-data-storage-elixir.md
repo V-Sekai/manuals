@@ -1,4 +1,4 @@
-# Proposal: Implementing Elixir Data Models for Memory, Local, Bulk, and Global Storage
+# Proposed: Implementing Elixir Data Models for Memory, Local, Bulk, and Global Storage
 
 ## Context
 

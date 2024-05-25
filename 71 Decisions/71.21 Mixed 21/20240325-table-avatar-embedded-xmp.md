@@ -1,4 +1,4 @@
-# Proposal for 3d Asset Schema Design and Database Backend Selection
+# Proposed: for 3d Asset Schema Design and Database Backend Selection
 
 ## Context
 

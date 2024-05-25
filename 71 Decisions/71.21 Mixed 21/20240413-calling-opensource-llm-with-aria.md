@@ -1,4 +1,4 @@
-# Proposal: Calling Open Source LLM with Aria
+# Proposed: Calling Open Source LLM with Aria
 
 ### The Context
 

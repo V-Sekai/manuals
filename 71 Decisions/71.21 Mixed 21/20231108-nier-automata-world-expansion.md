@@ -1,4 +1,4 @@
-# Proposal: "Freedom is in a future that you did not have in the past" - A Game Development Philosophy from NieR:Automata
+# Proposed: "Freedom is in a future that you did not have in the past" - A Game Development Philosophy from NieR:Automata
 
 ## Metadata
 

@@ -1,4 +1,4 @@
-# Proposal: Stress Testing Godot Engine's Networking System
+# Proposed: Stress Testing Godot Engine's Networking System
 
 ## Context
 

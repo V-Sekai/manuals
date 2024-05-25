@@ -1,4 +1,4 @@
-# Proposal: Automating Game Testing Process Using Appium 2
+# Proposed: Automating Game Testing Process Using Appium 2
 
 ## Metadata
 

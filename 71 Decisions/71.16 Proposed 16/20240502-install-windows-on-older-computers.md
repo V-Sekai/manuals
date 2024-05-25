@@ -1,4 +1,4 @@
-# Proposal: Enable Windows 11 Installation on Older Computers
+# Proposed: Enable Windows 11 Installation on Older Computers
 
 ## Context
 

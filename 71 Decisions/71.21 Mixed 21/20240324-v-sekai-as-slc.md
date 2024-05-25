@@ -1,4 +1,4 @@
-# Proposal: V-Sekai Implementation Using SLC Framework
+# Proposed: V-Sekai Implementation Using SLC Framework
 
 ## Context
 

@@ -1,4 +1,4 @@
-# Proposal: Implementing a 3D Multiplayer Movement System with Parented Objects and Inventory Management
+# Proposed: Implementing a 3D Multiplayer Movement System with Parented Objects and Inventory Management
 
 ## The Context
 

@@ -1,4 +1,4 @@
-# Proposal: Comprehensive Documentation for V-Sekai
+# Proposed: Comprehensive Documentation for V-Sekai
 
 ## Context
 

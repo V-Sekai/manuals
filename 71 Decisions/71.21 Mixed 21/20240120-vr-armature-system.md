@@ -1,4 +1,4 @@
-# Proposal: Advanced VR Armature System for V-Sekai
+# Proposed: Advanced VR Armature System for V-Sekai
 
 ## Metadata
 

@@ -1,4 +1,4 @@
-# Proposal: Magical Girls College Manager Simulator
+# Proposed: Magical Girls College Manager Simulator
 
 ## Metadata
 

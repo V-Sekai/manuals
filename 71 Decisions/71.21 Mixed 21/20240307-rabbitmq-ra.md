@@ -1,4 +1,4 @@
-## Proposal: Implement Ra in V-Sekai
+## Proposed: Implement Ra in V-Sekai
 
 ### Context
 

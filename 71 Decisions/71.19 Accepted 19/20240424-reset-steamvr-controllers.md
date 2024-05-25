@@ -1,4 +1,4 @@
-# Proposed: Prioritizing Valve Controllers Over Meta Quest 3 Controllers
+# Accepted: Prioritizing Valve Controllers Over Meta Quest 3 Controllers
 
 ## The Context
 

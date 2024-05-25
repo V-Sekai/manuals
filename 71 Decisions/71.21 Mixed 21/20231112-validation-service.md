@@ -1,4 +1,4 @@
-# Proposal: Validator Service for V-Sekai
+# Proposed: Validator Service for V-Sekai
 
 ## Metadata
 

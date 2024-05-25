@@ -1,4 +1,4 @@
-# Proposal: Installing Tailscale on Linux Fedora 39
+# Proposed: Installing Tailscale on Linux Fedora 39
 
 ## Metadata
 

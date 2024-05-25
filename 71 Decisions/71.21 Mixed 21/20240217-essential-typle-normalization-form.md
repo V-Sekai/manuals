@@ -1,4 +1,4 @@
-# Updated Proposal: Implementation of Essential Tuple Normalization Form (ETNF) for relational databases (rdbms, sql)
+# Proposed: Implementation of Essential Tuple Normalization Form (ETNF) for relational databases (rdbms, sql)
 
 ## Context
 
@@ -8,7 +8,7 @@ V-Sekai is committed to enhancing data integrity, optimizing database performanc
 
 Currently, V-Sekai's database systems lack a standardized approach to normalization. This leads to data redundancy, inconsistency, and inefficiencies in data management, which can hamper system performance and scalability.
 
-## Proposal Overview: ETNF Implementation
+## Proposed: Overview: ETNF Implementation
 
 We propose implementing ETNF, a normalization form that strikes an optimal balance between eliminating redundancy and maintaining manageable complexity in database schemas. Positioned between the fourth normal form (4NF) and the fifth normal form (5NF), ETNF provides a sophisticated yet practical approach to database normalization.
 

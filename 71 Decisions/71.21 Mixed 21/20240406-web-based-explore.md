@@ -1,4 +1,4 @@
-# Proposal: Web-Based Exploration of V-Sekai
+# Proposed: Web-Based Exploration of V-Sekai
 
 ## Context
 

@@ -1,4 +1,4 @@
-# Proposal: Implementing a 3D Previewer for GLTF with XMP Metadata
+# Proposed: Implementing a 3D Previewer for GLTF with XMP Metadata
 
 ## Context
 

@@ -1,4 +1,4 @@
-# Proposal: ChatGPT-4 Based Proposal Prompt System
+# Proposed: ChatGPT-4 Based Proposal Prompt System
 
 ## Context
 
