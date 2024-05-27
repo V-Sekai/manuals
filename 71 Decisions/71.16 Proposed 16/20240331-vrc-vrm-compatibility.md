@@ -100,5 +100,6 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine
 4. [https://vcc.vrcfury.com]
 5. [https://Adjerry91.github.io/VRCFaceTracking-Templates/index.json]
+6. [https://esperecyan.github.io/VRMConverterForVRChat/registry.json]
 
 AI assistant Aria assisted with this article.
