@@ -93,7 +93,7 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 1. [vrc-get gui](https://github.com/vrc-get/vrc-get/releases/tag/gui-v0.1.0-beta.16)
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine
-4. https://vcc.vrcfury.com
-5. https://Adjerry91.github.io/VRCFaceTracking-Templates/index.json
+4. [https://vcc.vrcfury.com]
+5. [https://Adjerry91.github.io/VRCFaceTracking-Templates/index.json]
 
 AI assistant Aria assisted with this article.
