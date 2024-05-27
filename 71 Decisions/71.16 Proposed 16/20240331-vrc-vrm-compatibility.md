@@ -17,7 +17,7 @@ The proposed solution involves a series of steps outlined in the README below:
 1. Add face shapes with hana tool
 2. Split the skin from the clothing using separate by material.
 3. On all the clothing delete vertex groups.
-4. Use Robust Weight Transfer for Blender
+4. Use Robust Weight Transfer for Blender to rig clothing
 6. Unpack the prefab.
 7. Convert to vrchat. Combine meshes, remove upper chest
 8. Delete skirt bones that are not used.
