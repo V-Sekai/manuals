@@ -24,7 +24,7 @@ The proposed solution involves a series of steps outlined in the README below:
 9. ~~Add vrcfury bounding box fix~~
 10. Add vrcfury direct tree
 11. Add vrcfury fix write defaults
-11. Add vrcfury blend shape optimizer
+11. ~~Add vrcfury blend shape optimizer~~
 11. Add vrcfury anchor override fix
 12. Add vrcfury jerry's templates
 12. Add vrcfury unlimited parameters
