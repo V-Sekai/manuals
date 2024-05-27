@@ -21,7 +21,7 @@ The proposed solution involves a series of steps outlined in the README below:
 6. Unpack the prefab.
 7. Convert to vrchat. Combine meshes, remove upper chest
 8. Delete skirt bones that are not used.
-9. Add vrcfury bounding box fix
+9. ~~Add vrcfury bounding box fix~~
 10. Add vrcfury direct tree
 11. Add vrcfury jerry's templates
 12. Change the eyes to move up or down [-2, 2].
