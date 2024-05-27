@@ -15,14 +15,15 @@ The proposed solution involves a series of steps outlined in the README below:
 1. Make sure the `Body` has the all blend shapes deleted.
 1. Add face shapes with hana tool
 2. DO NOT remove transparent triangles for [hair, face, body]
-3. Unpack the prefab.
-4. Convert to vrchat. Combine meshes, remove upper chest
-5. Delete skirt bones that are not used.
-6. Add vrcfury bounding box fix
-7. Add vrcfury direct tree
-8. Add vrcfury jerry's templates
-9. Change the eyes to move up or down [-2, 2].
-10. Make sure the `Body` has the perfect sync blend shapes.
+3. Use Robust Weight Transfer for Blender
+4. Unpack the prefab.
+5. Convert to vrchat. Combine meshes, remove upper chest
+6. Delete skirt bones that are not used.
+7. Add vrcfury bounding box fix
+8. Add vrcfury direct tree
+9. Add vrcfury jerry's templates
+10. Change the eyes to move up or down [-2, 2].
+11. Make sure the `Body` has the perfect sync blend shapes.
 10. Choose either the MPEG4 blendshapes or Perfect sync. Delete one or the other.
 11. Remove empty vrc parameters
 12. Remove Physbones with missing transforms from secondary.
