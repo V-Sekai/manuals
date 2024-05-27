@@ -15,15 +15,17 @@ The proposed solution involves a series of steps outlined in the README below:
 1. DO NOT remove transparent triangles for [hair, face, body]
 1. Make sure the `Body` has the all blend shapes deleted.
 1. Add face shapes with hana tool
-3. Use Robust Weight Transfer for Blender
-4. Unpack the prefab.
-5. Convert to vrchat. Combine meshes, remove upper chest
-6. Delete skirt bones that are not used.
-7. Add vrcfury bounding box fix
-8. Add vrcfury direct tree
-9. Add vrcfury jerry's templates
-10. Change the eyes to move up or down [-2, 2].
-11. Make sure the `Body` has the perfect sync blend shapes.
+2. Split the skin from the clothing using separate by material.
+3. On all the clothing delete vertex groups.
+4. Use Robust Weight Transfer for Blender
+6. Unpack the prefab.
+7. Convert to vrchat. Combine meshes, remove upper chest
+8. Delete skirt bones that are not used.
+9. Add vrcfury bounding box fix
+10. Add vrcfury direct tree
+11. Add vrcfury jerry's templates
+12. Change the eyes to move up or down [-2, 2].
+13. Make sure the `Body` has the perfect sync blend shapes.
 10. Choose either the MPEG4 blendshapes or Perfect sync. Delete one or the other.
 11. Remove empty vrc parameters
 12. Remove Physbones with missing transforms from secondary.
