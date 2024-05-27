@@ -12,9 +12,9 @@ The lack of compatibility between VRC and VRM can lead to inefficiencies and lim
 
 The proposed solution involves a series of steps outlined in the README below:
 
+1. DO NOT remove transparent triangles for [hair, face, body]
 1. Make sure the `Body` has the all blend shapes deleted.
 1. Add face shapes with hana tool
-2. DO NOT remove transparent triangles for [hair, face, body]
 3. Use Robust Weight Transfer for Blender
 4. Unpack the prefab.
 5. Convert to vrchat. Combine meshes, remove upper chest
