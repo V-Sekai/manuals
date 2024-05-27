@@ -36,7 +36,7 @@ The proposed solution involves a series of steps outlined in the README below:
 19. Delete VRM tools.
 20. Make sure all pipeline IDs are detached.
 21. Remember to delete the upper chest from the humanoid.
-22. Eye look is behind the nose
+22. Eye look is behind the nose bridge
 23. Make sure the breast bones are parented as the same bone as the clothing chest bones correspond to.
 24. Cross eyed fix in vrcfury breaks eye tracking.
 25. Upload. (Pick a new slot. DO NOT REUSE A SLOT.)
