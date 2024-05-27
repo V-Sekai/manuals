@@ -23,9 +23,10 @@ The proposed solution involves a series of steps outlined in the README below:
 8. Delete skirt bones that are not used.
 9. ~~Add vrcfury bounding box fix~~
 10. Add vrcfury direct tree
-11. Add vrcfury jerry's templates
-12. Change the eyes to move up or down [-2, 2].
-13. Make sure the `Body` has the perfect sync blend shapes.
+11. Add vrcfury fix write defaults
+12. Add vrcfury jerry's templates
+13. ~~Change the eyes to move up or down [-2, 2].~~
+14. Make sure the `Body` has the perfect sync blend shapes.
 10. Choose either the MPEG4 blendshapes or Perfect sync. Delete one or the other.
 11. Remove empty vrc parameters
 12. Remove Physbones with missing transforms from secondary.
