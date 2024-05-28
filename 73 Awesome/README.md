@@ -76,6 +76,7 @@ Modules extend Godot Engine core (C++).
 - [Lateral Thinking with Weathered Technology](https://en.wikipedia.org/wiki/Gunpei_Yokoi)
 - [Generate Blender Rigify armatures for VRM models.](https://github.com/nanoskript/vrm-rigify)
 - [Three VRM Inspector](https://0b5vr.com/three-vrm-inspector/)
+- [ultorg: A User Interface for Relational Data](https://www.ultorg.com/)
 - [Worldtime Buddy](https://www.worldtimebuddy.com/)
 - [Booth Avatars](https://boothplorer.com/avatars)
 - [Lazygit](https://github.com/jesseduffield/lazygit)
@@ -92,6 +93,8 @@ Modules extend Godot Engine core (C++).
 - [Image comparison](https://imgsli.com)
 - [Code Name Generator: Colors, Metal, Animals](https://www.codenamegenerator.com/)
 - [Voice Changer Guide](https://rentry.co/VoiceChangerGuide)
+- [Sapling: A Scalable, User-Friendly Source Control System](https://github.com/facebook/sapling.git)
+- [Provide the user with inverse control over the hyper-parameters through a brush stroke metaphor](https://github.com/eliemichel/DagAmendment)
 
 ## Articles
 
