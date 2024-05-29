@@ -8,7 +8,7 @@ There are concerns regarding the security of gltf and fbx document code in Godot
 
 The current implementation of gltf and fbx document code in Godot Engine may pose potential security risks.
 
-## Solution Proposal
+## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
 The proposal is to compile Godot Engine as wasm and run the wasm workers in batch on the incoming files. This can be achieved without the need for node, using Rustler + wasmtime.
 
