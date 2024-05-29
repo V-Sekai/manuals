@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -121,15 +155,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#proposed-chatgpt-4-based-proposal-prompt-system" id="toc-proposed-chatgpt-4-based-proposal-prompt-system" class="nav-link active" data-scroll-target="#proposed-chatgpt-4-based-proposal-prompt-system">Proposed: ChatGPT-4 Based Proposal Prompt System</a>
+  <li><a href="#proposed-launching-the-mvsqlite-rdbms-server" id="toc-proposed-launching-the-mvsqlite-rdbms-server" class="nav-link active" data-scroll-target="#proposed-launching-the-mvsqlite-rdbms-server">Proposed: Launching the mvsqlite rdbms server</a>
   <ul class="collapse">
   <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
   <li><a href="#problem-statement" id="toc-problem-statement" class="nav-link" data-scroll-target="#problem-statement">Problem Statement</a></li>
-  <li><a href="#proposed-solution" id="toc-proposed-solution" class="nav-link" data-scroll-target="#proposed-solution">Proposed Solution</a></li>
+  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a>
+  <ul class="collapse">
+  <li><a href="#creating-the-.plist-file" id="toc-creating-the-.plist-file" class="nav-link" data-scroll-target="#creating-the-.plist-file">Creating the .plist File</a></li>
+  <li><a href="#retrieving-logs" id="toc-retrieving-logs" class="nav-link" data-scroll-target="#retrieving-logs">Retrieving Logs</a></li>
+  <li><a href="#checking-the-service-status" id="toc-checking-the-service-status" class="nav-link" data-scroll-target="#checking-the-service-status">Checking the Service Status</a></li>
+  </ul></li>
   <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
   <li><a href="#downsides" id="toc-downsides" class="nav-link" data-scroll-target="#downsides">Downsides</a></li>
   <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
-  <li><a href="#the-infrequent-use-case" id="toc-the-infrequent-use-case" class="nav-link" data-scroll-target="#the-infrequent-use-case">The Infrequent Use Case</a></li>
+  <li><a href="#infrequent-use-case" id="toc-infrequent-use-case" class="nav-link" data-scroll-target="#infrequent-use-case">Infrequent Use Case</a></li>
   <li><a href="#in-core-and-done-by-us" id="toc-in-core-and-done-by-us" class="nav-link" data-scroll-target="#in-core-and-done-by-us">In Core and Done by Us</a></li>
   <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
   <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
@@ -137,7 +176,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.16 Proposed 16/20240425-proposal-prompt-system.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.22 Proposed 22/20240502-mvsqlite-launchd.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -145,43 +184,106 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="proposed-chatgpt-4-based-proposal-prompt-system" class="level1">
-<h1>Proposed: ChatGPT-4 Based Proposal Prompt System</h1>
+<section id="proposed-launching-the-mvsqlite-rdbms-server" class="level1">
+<h1>Proposed: Launching the mvsqlite rdbms server</h1>
 <section id="context" class="level2">
 <h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>In the current scenario, creating proposals can be a time-consuming task. It requires a lot of brainstorming and writing which can sometimes lead to inefficiency and delay in work.</p>
+<p>In software development and maintenance, automation of routine tasks is crucial for efficiency. One such task is launching a database server at system startup. For macOS users, this can be achieved using <code>launchd</code>, an open-source service management framework. In this context, we are specifically interested in automating the launch of the <code>mvsqlite</code> RDBMS server.</p>
 </section>
 <section id="problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>The problem lies in the manual creation of proposals. The process is slow and often lacks creativity due to human limitations. There is a need for an automated system that can generate proposals efficiently and creatively.</p>
+<p>The task at hand is to create a <code>launchd</code> service for macOS that will automatically run the following command at system startup:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/local/bin/mvstore</span> <span class="at">--data-plane</span> 127.0.0.1:7000 <span class="at">--admin-api</span> 127.0.0.1:7001 <span class="at">--metadata-prefix</span> mvstore-test <span class="at">--raw-data-prefix</span> m <span class="at">--auto-create-namespace</span> <span class="at">--cluster</span> /usr/local/etc/foundationdb/fdb.cluster</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Additionally, we need to be able to retrieve logs from this service and check its status.</p>
 </section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>We propose a system that uses OpenAI’s ChatGPT-4 to generate proposals. The user will provide a prompt such as <code>Create a proposal. Don't be purple. Be snappy.</code> and the system will use this prompt to generate a proposal.</p>
+<section id="solution" class="level2">
+<h2 class="anchored" data-anchor-id="solution">Solution</h2>
+<p>To solve this problem, we can create a <code>.plist</code> file in the <code>~/Library/LaunchAgents</code> directory. This file will define our <code>launchd</code> service and specify the command it should run. We can also add keys to redirect the standard output and error to log files. Finally, we can use the <code>launchctl list</code> command to check the status of our service.</p>
+<p>Here are the detailed steps:</p>
+<section id="creating-the-.plist-file" class="level3">
+<h3 class="anchored" data-anchor-id="creating-the-.plist-file">Creating the .plist File</h3>
+<ol type="1">
+<li>Open Terminal and navigate to the LaunchAgents directory:</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Library/LaunchAgents</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Create a new <code>.plist</code> file called <code>com.user.mvstore.plist</code>:</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> com.user.mvstore.plist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>Open the file with a text editor (e.g., nano):</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> com.user.mvstore.plist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" type="1">
+<li>Paste the following content into the file:</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">"1.0"</span><span class="ot"> encoding=</span><span class="st">"UTF-8"</span><span class="fu">?&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> <span class="dt">plist</span> PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"<span class="dt">&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">plist</span><span class="ot"> version=</span><span class="st">"1.0"</span>&gt;</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">dict</span>&gt;</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">key</span>&gt;Label&lt;/<span class="kw">key</span>&gt;</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">string</span>&gt;com.user.mvstore&lt;/<span class="kw">string</span>&gt;</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">key</span>&gt;ProgramArguments&lt;/<span class="kw">key</span>&gt;</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">array</span>&gt;</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">string</span>&gt;/usr/local/bin/mvstore&lt;/<span class="kw">string</span>&gt;</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">string</span>&gt;--data-plane&lt;/<span class="kw">string</span>&gt;</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">string</span>&gt;127.0.0.1:7000&lt;/<span class="kw">string</span>&gt;</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">string</span>&gt;--admin-api&lt;/<span class="kw">string</span>&gt;</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">string</span>&gt;127.0.0.1:7001&lt;/<span class="kw">string</span>&gt;</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">string</span>&gt;--metadata-prefix&lt;/<span class="kw">string</span>&gt;</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">string</span>&gt;mvstore-test&lt;/<span class="kw">string</span>&gt;</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">string</span>&gt;--raw-data-prefix&lt;/<span class="kw">string</span>&gt;</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">string</span>&gt;m&lt;/<span class="kw">string</span>&gt;</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">string</span>&gt;--auto-create-namespace&lt;/<span class="kw">string</span>&gt;</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">string</span>&gt;--cluster&lt;/<span class="kw">string</span>&gt;</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">string</span>&gt;/usr/local/etc/foundationdb/fdb.cluster&lt;/<span class="kw">string</span>&gt;</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">array</span>&gt;</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">key</span>&gt;RunAtLoad&lt;/<span class="kw">key</span>&gt;</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">true</span>/&gt;</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">key</span>&gt;EnvironmentVariables&lt;/<span class="kw">key</span>&gt;</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">dict</span>&gt;</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">key</span>&gt;RUST_LOG&lt;/<span class="kw">key</span>&gt;</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">string</span>&gt;info&lt;/<span class="kw">string</span>&gt;</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">key</span>&gt;DYLD_LIBRARY_PATH&lt;/<span class="kw">key</span>&gt;</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">string</span>&gt;/usr/local/lib&lt;/<span class="kw">string</span>&gt;</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">dict</span>&gt;</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">dict</span>&gt;</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">plist</span>&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="5" type="1">
+<li><p>Save and close the file.</p></li>
+<li><p>Load the new service:</p></li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">launchctl</span> load ~/Library/LaunchAgents/com.user.mvstore.plist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="retrieving-logs" class="level3">
+<h3 class="anchored" data-anchor-id="retrieving-logs">Retrieving Logs</h3>
+<p>To retrieve logs from the <code>launchd</code> service, add the <code>StandardOutPath</code> and <code>StandardErrorPath</code> keys to the <code>.plist</code> file. These keys will redirect the standard output (stdout) and standard error (stderr) to specified log files.</p>
+</section>
+<section id="checking-the-service-status" class="level3">
+<h3 class="anchored" data-anchor-id="checking-the-service-status">Checking the Service Status</h3>
+<p>To check the <code>launchd</code> status for <code>mvsqlite</code>, use the <code>launchctl list</code> command:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">launchctl</span> list <span class="kw">|</span> <span class="fu">grep</span> mvstore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 <section id="benefits" class="level2">
 <h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
-<ol type="1">
-<li><strong>Efficiency</strong>: This system will significantly reduce the time taken to create proposals.</li>
-<li><strong>Creativity</strong>: With GPT-4’s advanced language model, the proposals generated will be creative and engaging.</li>
-<li><strong>Ease of Use</strong>: Users just need to provide a prompt and the system will take care of the rest.</li>
-</ol>
+<p>Automating tasks with <code>launchd</code> can save time and reduce the risk of errors. It also provides a standardized way to manage services on macOS.</p>
 </section>
 <section id="downsides" class="level2">
 <h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
-<p>The system may not always provide the best decision but only the most common wisdom. It might require human intervention to fine-tune the proposals.</p>
+<p>The main downside is that <code>launchd</code> is specific to macOS, so this solution won’t work on other operating systems.</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>There could be other AI models or methods to automate the proposal generation process. However, considering the performance and capabilities of GPT-4, it seems to be the most suitable choice.</p>
+<p>An alternative approach could be to use cron jobs or another task scheduler, but these may not offer the same level of control and flexibility as <code>launchd</code>.</p>
 </section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>This system might not be very useful for users who rarely need to create proposals.</p>
+<section id="infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
+<p>This solution is most useful for developers who frequently need to run certain commands at system startup. It may be less relevant for casual users or those who don’t use macOS.</p>
 </section>
 <section id="in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>The system will be developed and maintained by the V-Sekai development team.</p>
+<p>This solution was developed in-house by the V-Sekai development team.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
@@ -197,17 +299,15 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
 <li>V-Sekai</li>
-<li>Proposal Generation</li>
-<li>GPT-4</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <ol type="1">
 <li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
 </ol>
-<p>This proposal was assisted by AI assistant Aria.</p>
+<p>Assistance provided by Aria, an AI assistant.</p>
 
 
 </section>
@@ -775,7 +875,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.16 Proposed 16/20240425-proposal-prompt-system.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.22 Proposed 22/20240502-mvsqlite-launchd.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
