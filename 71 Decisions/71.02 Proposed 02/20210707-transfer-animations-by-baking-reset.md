@@ -1,8 +1,8 @@
-# Proposed: Transfer #animation by baking reset
+# Proposed: Transfer animation by baking reset
 
 ## Context and Problem Statement
 
-Given two #animation `.glb`s in gltf, you cannot transfer the #animation between the same character in different files in some cases.
+Given two animations `.glb`s in gltf, you cannot transfer the animation between the same character in different files in some cases.
 
 Fixes: https://github.com/godotengine/godot/issues/50212
 
