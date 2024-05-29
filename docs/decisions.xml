@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.554</generator>
-<lastBuildDate>Tue, 28 May 2024 23:42:47 GMT</lastBuildDate>
+<lastBuildDate>Wed, 29 May 2024 00:13:05 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/71 Decisions/present-proposal-template.html</link>
@@ -75,7 +75,90 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/present-proposal-template.html</guid>
-  <pubDate>Tue, 28 May 2024 23:42:47 GMT</pubDate>
+  <pubDate>Wed, 29 May 2024 00:13:05 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/71 Decisions/71.16 Proposed 16/20240528-pipeline-godot-wasm-importer.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-godot-engine-as-wasm-importer" class="level1">
+<h1>Proposed: Godot Engine as Wasm Importer</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>There are concerns regarding the security of gltf and fbx document code in Godot Engine.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>The current implementation of gltf and fbx document code in Godot Engine may pose potential security risks.</p>
+</section>
+<section id="solution-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="solution-proposal">Solution Proposal</h2>
+<p>The proposal is to compile Godot Engine as wasm and run the wasm workers in batch on the incoming files. This can be achieved without the need for node, using Rustler + wasmtime.</p>
+<pre class="pseudo"><code>1. Compile Godot Engine as wasm
+2. Run wasm workers on incoming files</code></pre>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li>Enhanced security for gltf and fbx document code.</li>
+<li>Efficient handling of incoming files.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li>Potential increase in complexity due to the introduction of wasm.</li>
+<li>Possible performance overhead from running wasm workers.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An additional layer of Godot Engine text scene and text resource to JSON could be implemented to avoid parsing errors.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>This solution might not be beneficial for smaller projects or those that do not use gltf and fbx document code extensively.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>This proposal involves core changes to the Godot Engine and will be implemented by the V-Sekai development team.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team, Fire, Benbot</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+<li><a href="https://github.com/revelrylabs/elixir-nodejs">Elixi Nodejs</a></li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/71 Decisions/71.16 Proposed 16/20240528-pipeline-godot-wasm-importer.html</guid>
+  <pubDate>Wed, 29 May 2024 00:13:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -141,7 +224,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.01 Draft 01/20240522-webrtc-relay-test.html</guid>
-  <pubDate>Tue, 28 May 2024 23:42:47 GMT</pubDate>
+  <pubDate>Wed, 29 May 2024 00:13:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -241,7 +324,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.01 Draft 01/20240522-shader-motion-to-bvh.html</guid>
-  <pubDate>Tue, 28 May 2024 23:42:47 GMT</pubDate>
+  <pubDate>Wed, 29 May 2024 00:13:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -304,7 +387,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.01 Draft 01/20240522-discord-inworld-portal.html</guid>
-  <pubDate>Tue, 28 May 2024 23:42:47 GMT</pubDate>
+  <pubDate>Wed, 29 May 2024 00:13:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -382,7 +465,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.01 Draft 01/20240522-discord-bot.html</guid>
-  <pubDate>Tue, 28 May 2024 23:42:47 GMT</pubDate>
+  <pubDate>Wed, 29 May 2024 00:13:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -574,7 +657,7 @@ font-style: inherit;"> # Add a suffix here.</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.19 Accepted 19/20240511-wasm-cache-incident.html</guid>
-  <pubDate>Tue, 28 May 2024 23:42:47 GMT</pubDate>
+  <pubDate>Wed, 29 May 2024 00:13:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -661,7 +744,7 @@ font-style: inherit;"> # Add a suffix here.</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.04 Rejected 04/20240511-review-80-vr.html</guid>
-  <pubDate>Tue, 28 May 2024 23:42:47 GMT</pubDate>
+  <pubDate>Wed, 29 May 2024 00:13:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -736,7 +819,7 @@ font-style: inherit;"> # Add a suffix here.</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.16 Proposed 16/20240502-where-can-I-use-gltf.html</guid>
-  <pubDate>Tue, 28 May 2024 23:42:47 GMT</pubDate>
+  <pubDate>Wed, 29 May 2024 00:13:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1029,7 +1112,7 @@ font-style: inherit;">grep</span> mvstore</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.16 Proposed 16/20240502-mvsqlite-launchd.html</guid>
-  <pubDate>Tue, 28 May 2024 23:42:47 GMT</pubDate>
+  <pubDate>Wed, 29 May 2024 00:13:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1140,7 +1223,7 @@ print(world.get_state())</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.16 Proposed 16/20240502-mesh-object-sync-benchmark.html</guid>
-  <pubDate>Tue, 28 May 2024 23:42:47 GMT</pubDate>
+  <pubDate>Wed, 29 May 2024 00:13:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1336,7 +1419,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.16 Proposed 16/20240502-membrane-framework-identity-post.html</guid>
-  <pubDate>Tue, 28 May 2024 23:42:47 GMT</pubDate>
+  <pubDate>Wed, 29 May 2024 00:13:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1431,7 +1514,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.16 Proposed 16/20240502-install-windows-on-older-computers.html</guid>
-  <pubDate>Tue, 28 May 2024 23:42:47 GMT</pubDate>
+  <pubDate>Wed, 29 May 2024 00:13:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1514,7 +1597,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.16 Proposed 16/20240502-gltf-fbx-tscn-vrm.html</guid>
-  <pubDate>Tue, 28 May 2024 23:42:47 GMT</pubDate>
+  <pubDate>Wed, 29 May 2024 00:13:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1593,7 +1676,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.16 Proposed 16/20240425-recharge-cycle.html</guid>
-  <pubDate>Tue, 28 May 2024 23:42:47 GMT</pubDate>
+  <pubDate>Wed, 29 May 2024 00:13:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1673,7 +1756,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.16 Proposed 16/20240425-proposal-prompt-system.html</guid>
-  <pubDate>Tue, 28 May 2024 23:42:47 GMT</pubDate>
+  <pubDate>Wed, 29 May 2024 00:13:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1752,7 +1835,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.19 Accepted 19/20240424-reset-steamvr-controllers.html</guid>
-  <pubDate>Tue, 28 May 2024 23:42:47 GMT</pubDate>
+  <pubDate>Wed, 29 May 2024 00:13:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1835,7 +1918,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.19 Accepted 19/20240423-building-metaverse-with-glue-mechanic.html</guid>
-  <pubDate>Tue, 28 May 2024 23:42:47 GMT</pubDate>
+  <pubDate>Wed, 29 May 2024 00:13:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1911,7 +1994,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.16 Proposed 16/20240418-college-quest.html</guid>
-  <pubDate>Tue, 28 May 2024 23:42:47 GMT</pubDate>
+  <pubDate>Wed, 29 May 2024 00:13:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2002,105 +2085,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.16 Proposed 16/20240416-previewer-upload-gltf-to-glb.html</guid>
-  <pubDate>Tue, 28 May 2024 23:42:47 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/71 Decisions/71.16 Proposed 16/20240413-training-quad-based-meshgpt-with-40gb-vram.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-train-quad-based-meshgpt-within-constraints" class="level1">
-<h1>Proposed: Train quad-based Meshgpt within constraints</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>The goal is to train a MeshGPT model for quad-based geometry with limited resources of one day using fixed Nvidia GPU hardware to evaluate its performance.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Describe a workflow for training Meshgpt with quad-based meshes to create a set of LODs (Level of Detail) within the given constraints.</p>
-</section>
-<section id="proposed-workflow-with-data-selection-section" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-workflow-with-data-selection-section">Proposed Workflow (with Data Selection Section)</h2>
-<ol type="1">
-<li><p><strong>Data Preparation</strong>: Collect a diverse dataset of quad-based meshes suitable for generating LODs. This involves cleaning and normalizing the data to ensure consistency and remove inconsistencies or errors. Categorizing the data based on complexity and size allows for targeted training and model performance evaluation across different mesh types. A requirement is to attribute every available source 3d model. Gather a dataset of quad-based meshes representing various objects within the distance range of interest.</p></li>
-<li><p><strong>Model Architecture Selection</strong>: Choose an appropriate language model architecture to handle geometric data effectively. MeshGPT could be a good starting point due to its success in handling 3D mesh generation tasks.</p></li>
-<li><p><strong>Batch Processing Technique</strong>: Implement a batch processing technique to optimize the use of GPU resources.</p></li>
-<li><p><strong>Hyperparameter Tuning</strong>: Fine-tune the hyperparameters, such as learning rate, batch size, and number of layers, to achieve optimal performance within the given time constraint. This may involve experimentation with different values and configurations to find the best setup for the chosen model architecture and dataset.</p></li>
-<li><p><strong>Training Process</strong>: Train the MeshGPT model using the prepared dataset with the chosen architecture, optimized batch processing technique, and fine-tuned hyperparameters for over one day. This involves monitoring the training process and making necessary adjustments to ensure optimal performance within the given timeframe.</p></li>
-<li><p><strong>Evaluation</strong>: Evaluate the trained model’s performance by generating LODs for a diverse quad-based mesh and comparing them to ground truth data or existing LOD generation methods.</p></li>
-<li><p><strong>Results Analysis</strong>: Analyze the results obtained from the evaluation stage, focusing on metrics such as accuracy, speed, and resource usage.</p></li>
-</ol>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<ul>
-<li>Efficient utilization of Video RAM in training large language models for mesh generation tasks.</li>
-<li>Ability to train the MeshGPT model within a one-day timeframe.</li>
-<li>Improved LOD generation capabilities for quad-based meshes.</li>
-</ul>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<ul>
-<li>Limited flexibility due to the constraint of Video RAM.</li>
-<li>Training large language models can be computationally intensive and require significant processing power, potentially impacting system performance.</li>
-<li>Requires careful hyperparameter tuning for optimal results within the given timeframe.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<ul>
-<li>Using less powerful hardware or smaller video RAM would result in longer training times or lower model capacity.</li>
-<li>Opting for a more complex model architecture without optimizations could lead to overfitting and poor performance on the LOD generation task.</li>
-</ul>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>In cases where more advanced GPU hardware is available, this workflow may not be necessary as it would allow for larger models or longer training times, potentially resulting in better performance. However, the proposed workflow can be a starting point for those with limited resources or time constraints.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<ul>
-<li>Workflow design specifically tailored to train MeshGPT on quad-based meshes within one day using a fixed sized video RAM.</li>
-<li>Hyperparameter tuning and optimization techniques are implemented to maximize performance under the given constraints.</li>
-</ul>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-<li><a href="https://www.runpod.io/">Runpod</a></li>
-<li><a href="https://github.com/lucidrains/meshgpt-pytorch/issues/54">MeshGPT with Quads</a></li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/71 Decisions/71.16 Proposed 16/20240413-training-quad-based-meshgpt-with-40gb-vram.html</guid>
-  <pubDate>Tue, 28 May 2024 23:42:47 GMT</pubDate>
+  <pubDate>Wed, 29 May 2024 00:13:05 GMT</pubDate>
 </item>
 </channel>
 </rss>
