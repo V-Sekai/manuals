@@ -26,7 +26,7 @@ The proposed solution involves a series of steps outlined in the README below:
 11. Add vrcfury fix write defaults
 11. ~~Add vrcfury blend shape optimizer~~
 11. Add vrcfury anchor override fix
-12. Add vrcfury PawlygonStudio/VRC-Facetracking
+12. Add vrcfury jerry's templates
 12. Add vrcfury unlimited parameters
 13. ~~Change the eyes to move up or down [-2, 2].~~
 14. Make sure the `Body` has the perfect sync blend shapes.
@@ -49,10 +49,11 @@ The proposed solution involves a series of steps outlined in the README below:
 1. vrc sdk base
 2. vrc sdk avatar
 3. vrcfury
-4. PawlygonStudio/VRC-Facetracking
+4. vrcft - jerry's templates
 
 ### List of my default VRCFury components
 
+1. VRCFury blink controller
 2. VRCFury blend shape optimizer
 3. VRCFury direct tree optimizer
 4. VRCFury fix write defaults
@@ -98,7 +99,7 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine
 4. [https://vcc.vrcfury.com]
-5. [https://github.com/PawlygonStudio/VRC-Facetracking]
+5. [https://Adjerry91.github.io/VRCFaceTracking-Templates/index.json]
 6. [https://esperecyan.github.io/VRMConverterForVRChat/registry.json]
 
 AI assistant Aria assisted with this article.
