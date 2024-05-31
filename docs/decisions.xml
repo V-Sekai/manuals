@@ -10,7 +10,91 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.554</generator>
-<lastBuildDate>Fri, 31 May 2024 02:10:43 GMT</lastBuildDate>
+<lastBuildDate>Fri, 31 May 2024 16:59:59 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/71 Decisions/present-skin-weight-transfer-skeleton-merge.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="accepted-better-skeleton-merge-with-robust-skin-weight-transfer" class="level1">
+<h1>Accepted: Better Skeleton Merge with Robust Skin Weight Transfer</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>Rigging and clothing fitting are intricate tasks in game development, demanding a deep understanding of 3D modeling, animation, and the specific requirements of the game engine. In the context of V-Sekai, a social VR game built on the Godot Engine, these tasks become even more challenging due to the need for real-time performance and compatibility with various hardware devices.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Our goal is to provide a solution that enables players and creators to incorporate their own clothing into the V-Sekai game, without turning the game into an impenetrable black box. The current process of rigging and fitting clothing onto characters is labor-intensive and requires specialized knowledge, limiting the ability of players and creators to fully express themselves through their avatars.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>The proposed solution involves aligning the vertices from one set of faces to match the vertices in the other set. In Godot, this can be achieved by retrieving mesh arrays and invoking a function with <code>arrays[Mesh.ARRAY_VERTEX]</code>, <code>arrays[Mesh.ARRAY_INDEX]</code>.</p>
+<p>Passing in the <code>Skeleton3D</code> is not necessary. The recently merged API by smix8 allows baking a skeleton to a static mesh, which can be used for baking and then applying the delta.</p>
+<p>We plan to utilize robust skin weight transfer code and robust Laplacians. The robust Laplacians algorithm is implemented in geometry-central, which loads a mesh, constructs our intrinsic tufted cover, and generates the resulting Laplace (and mass) matrix.</p>
+<p>Player creators will have a fully skin-weighted base mesh (a naked character mesh with no clothing). They can then use robust skin weight transfer with a variable distance and the infilling feature to rig their clothing for use in V-Sekai and anywhere that can handle VRM1.</p>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li>Player customization: Our solution empowers players to use their own clothing designs in the game, enhancing their ability to express themselves and engage with the game world.</li>
+<li>Enhanced game experience: By offering more customization options, we can boost player engagement and satisfaction.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li>Limited platform support: Not all platforms support VRM1 for avatars; most only support VRM0. This could restrict the compatibility of our solution with other platforms and games.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An alternative approach would have been to create a set of predefined clothing options within the game itself. However, this would limit the creativity and expression of our players. By enabling them to use their own clothing designs, we are fostering a more vibrant and diverse game community.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>While the primary use case is for players to rig and fit their own clothing designs, this solution could also be used by game developers to quickly and easily rig and fit clothing for non-player characters (NPCs). This could save development time and resources.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>This proposal is core to the functionality of the V-Sekai game and will be implemented by us. It aligns with our goal of creating a highly customizable and immersive social VR experience.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+<li><a href="https://doi.org/10.1145/3610543.3626180">Robust Skin Weights Transfer via Weight Inpainting</a></li>
+<li><a href="https://doi.org/10.1111/cgf.14069">A Laplacian for Nonmanifold Triangle Meshes</a></li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/71 Decisions/present-skin-weight-transfer-skeleton-merge.html</guid>
+  <pubDate>Fri, 31 May 2024 16:59:59 GMT</pubDate>
+</item>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/71 Decisions/present-proposal-template.html</link>
@@ -75,11 +159,11 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/present-proposal-template.html</guid>
-  <pubDate>Fri, 31 May 2024 02:10:43 GMT</pubDate>
+  <pubDate>Fri, 31 May 2024 16:59:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
-  <link>https://v-sekai.github.io/manuals/71 Decisions/20240529-imrpove godot import ecosystem.html</link>
+  <link>https://v-sekai.github.io/manuals/71 Decisions/20240529-improve-godot-import-ecosystem.html</link>
   <description><![CDATA[ 
 
 
@@ -177,8 +261,8 @@
 </section>
 
  ]]></description>
-  <guid>https://v-sekai.github.io/manuals/71 Decisions/20240529-imrpove godot import ecosystem.html</guid>
-  <pubDate>Fri, 31 May 2024 02:10:43 GMT</pubDate>
+  <guid>https://v-sekai.github.io/manuals/71 Decisions/20240529-improve-godot-import-ecosystem.html</guid>
+  <pubDate>Fri, 31 May 2024 16:59:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -262,7 +346,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240528-pipeline-godot-wasm-importer.html</guid>
-  <pubDate>Fri, 31 May 2024 02:10:43 GMT</pubDate>
+  <pubDate>Fri, 31 May 2024 16:59:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -328,7 +412,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.01 Draft 01/20240522-webrtc-relay-test.html</guid>
-  <pubDate>Fri, 31 May 2024 02:10:43 GMT</pubDate>
+  <pubDate>Fri, 31 May 2024 16:59:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -428,7 +512,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.01 Draft 01/20240522-shader-motion-to-bvh.html</guid>
-  <pubDate>Fri, 31 May 2024 02:10:43 GMT</pubDate>
+  <pubDate>Fri, 31 May 2024 16:59:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -491,7 +575,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.01 Draft 01/20240522-discord-inworld-portal.html</guid>
-  <pubDate>Fri, 31 May 2024 02:10:43 GMT</pubDate>
+  <pubDate>Fri, 31 May 2024 16:59:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -569,7 +653,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.01 Draft 01/20240522-discord-bot.html</guid>
-  <pubDate>Fri, 31 May 2024 02:10:43 GMT</pubDate>
+  <pubDate>Fri, 31 May 2024 16:59:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -761,7 +845,7 @@ font-style: inherit;"> # Add a suffix here.</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.19 Accepted 19/20240511-wasm-cache-incident.html</guid>
-  <pubDate>Fri, 31 May 2024 02:10:43 GMT</pubDate>
+  <pubDate>Fri, 31 May 2024 16:59:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -848,7 +932,7 @@ font-style: inherit;"> # Add a suffix here.</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.04 Rejected 04/20240511-review-80-vr.html</guid>
-  <pubDate>Fri, 31 May 2024 02:10:43 GMT</pubDate>
+  <pubDate>Fri, 31 May 2024 16:59:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -923,7 +1007,7 @@ font-style: inherit;"> # Add a suffix here.</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240502-where-can-I-use-gltf.html</guid>
-  <pubDate>Fri, 31 May 2024 02:10:43 GMT</pubDate>
+  <pubDate>Fri, 31 May 2024 16:59:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1216,7 +1300,7 @@ font-style: inherit;">grep</span> mvstore</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240502-mvsqlite-launchd.html</guid>
-  <pubDate>Fri, 31 May 2024 02:10:43 GMT</pubDate>
+  <pubDate>Fri, 31 May 2024 16:59:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1327,7 +1411,7 @@ print(world.get_state())</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240502-mesh-object-sync-benchmark.html</guid>
-  <pubDate>Fri, 31 May 2024 02:10:43 GMT</pubDate>
+  <pubDate>Fri, 31 May 2024 16:59:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1523,7 +1607,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240502-membrane-framework-identity-post.html</guid>
-  <pubDate>Fri, 31 May 2024 02:10:43 GMT</pubDate>
+  <pubDate>Fri, 31 May 2024 16:59:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1618,7 +1702,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240502-install-windows-on-older-computers.html</guid>
-  <pubDate>Fri, 31 May 2024 02:10:43 GMT</pubDate>
+  <pubDate>Fri, 31 May 2024 16:59:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1701,7 +1785,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240502-gltf-fbx-tscn-vrm.html</guid>
-  <pubDate>Fri, 31 May 2024 02:10:43 GMT</pubDate>
+  <pubDate>Fri, 31 May 2024 16:59:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1780,7 +1864,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240425-recharge-cycle.html</guid>
-  <pubDate>Fri, 31 May 2024 02:10:43 GMT</pubDate>
+  <pubDate>Fri, 31 May 2024 16:59:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1860,7 +1944,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240425-proposal-prompt-system.html</guid>
-  <pubDate>Fri, 31 May 2024 02:10:43 GMT</pubDate>
+  <pubDate>Fri, 31 May 2024 16:59:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1939,7 +2023,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.19 Accepted 19/20240424-reset-steamvr-controllers.html</guid>
-  <pubDate>Fri, 31 May 2024 02:10:43 GMT</pubDate>
+  <pubDate>Fri, 31 May 2024 16:59:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2022,83 +2106,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.19 Accepted 19/20240423-building-metaverse-with-glue-mechanic.html</guid>
-  <pubDate>Fri, 31 May 2024 02:10:43 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240418-college-quest.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-town-courier" class="level1">
-<h1>Proposed: Town Courier</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>In the current gaming landscape, there is a noticeable gap for immersive, open-world games set in realistic environments such as a college town. Most games focus on fantasy or post-apocalyptic settings, leaving room for games that engagingly simulate everyday life.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>The goal is to create an open-world game that provides players with a unique and dynamic environment, offering a fresh experience every time they play. The game should be set in a bustling college town and allow players to take on the role of a delivery person completing quests. The delivery person will navigate the town on a moped, adding an extra layer of fun and challenge to the gameplay.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>“Town Courier” will be developed using the Godot Engine. The game world will be procedurally generated, ensuring that no two playthroughs are identical. NPCs will assign delivery quests to the player, who must navigate the town and deliver items on a moped within a specified time limit. We will utilize the preexisting vehicle code from “Crappy Contraptions” to facilitate the movement mechanics in our game.</p>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p>This game will fill a niche in the market for realistic, open-world games. It will provide players with a unique and dynamic gaming experience, keeping them engaged and encouraging replayability.</p>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>The development of a procedurally generated open-world game can be complex and time-consuming. Additionally, balancing the difficulty of the quests to ensure they are challenging but not frustrating may require extensive testing and tweaking.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>An alternative approach could be to create a static game world with pre-defined quests. However, this would not provide the same level of replayability and could become repetitive for players.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>In rare cases, the procedural generation may create a game world that is difficult or impossible to navigate. This will need to be addressed during testing.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>The core gameplay mechanics, including movement, item pickup, and quest assignment, will be developed by our team. We will also handle the creation of the procedurally generated game world.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-<li><a href="https://github.com/V-Sekai-fire/ludum-dare-55.git">Crappy Contraptions</a></li>
-<li><a href="https://sketchfab.com/3d-models/city-grid-block-3488e40ceca846bb9023f894a749c398">“City Grid Block” (https://skfb.ly/onMzQ) by antoniojmonteiro is licensed under Creative Commons Attribution</a></li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240418-college-quest.html</guid>
-  <pubDate>Fri, 31 May 2024 02:10:43 GMT</pubDate>
+  <pubDate>Fri, 31 May 2024 16:59:59 GMT</pubDate>
 </item>
 </channel>
 </rss>
