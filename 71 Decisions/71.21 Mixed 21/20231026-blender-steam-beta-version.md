@@ -20,7 +20,7 @@ Pin the blender version to the steam version of LTS Blender -- Blender (3.6)
 
 ## The Upside
 
-We get the fast upgrades of steam and the pinning requirement satisified.
+We get the fast upgrades of steam and the pinning requirement satisfied.
 
 ## The Downside
 

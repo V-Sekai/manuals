@@ -21,7 +21,7 @@ To install, do scoop install v-sekai-game.
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
 1. Create a scoop bucket at https://github.com/V-Sekai/v-sekai-central
-2. Store game builds in git repos using desync to put seperate the files into chunks.
+2. Store game builds in git repos using desync to put separate the files into chunks.
 3. In the manifest decompress the desync files.
 
 ### Positive Consequences

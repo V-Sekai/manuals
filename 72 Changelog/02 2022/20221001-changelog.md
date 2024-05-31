@@ -96,7 +96,7 @@ Meeting between betalars, fire, lyuma, jeana and others about usability in 3d ga
 ### What are constraints?
 
 - Milas needs to write a masters thesis on accessibility-driven Game-Development
-- At the end of December of each year, CCC holds a big conference, this year it is going to be a decentralised bunch of small-scale events due to the pandemic
+- At the end of December of each year, CCC holds a big conference, this year it is going to be a decentralized bunch of small-scale events due to the pandemic
 - iFire wants to be able to present meaningful progress by march 2023
 
 ### Benefits of joining online-chaos-experience development efforts into v-sekai

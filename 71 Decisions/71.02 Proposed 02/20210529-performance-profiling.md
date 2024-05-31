@@ -38,7 +38,7 @@ The workflow is for each item start from the top and go down.
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
-Not appliable.
+Not applicable.
 
 ## Is there a reason why this should be core and done by us?
 

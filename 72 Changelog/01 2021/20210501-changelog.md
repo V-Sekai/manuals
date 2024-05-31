@@ -103,7 +103,7 @@
 
   1. Radical change to glTF parser to treat all subtree nodes as part of a single skeleton recursively. (What we were just testing) I believe this would be unacceptable in 3.x because it is almost guaranteed to break compatibility with all content, but it may be desirable in 4.x.
   2. Add BoneAttachments to skeletons directly parented to skeletons. (We tried this). This may be required in 3.x.
-  3. While in `_determine_skeletons`, detect the specific case in which two skeletons would be directly parented and add them to the disjoint set in this case (look at the parent objects at the end). Do not actully add the parent bone to the disjoint set: only do it if this would hit the problem case. Issue: this may require doing another iteration of the `_determine_skeletons` code? Is this possible without causing more bugs? This could be a compromise if it is possible.
+  3. While in `_determine_skeletons`, detect the specific case in which two skeletons would be directly parented and add them to the disjoint set in this case (look at the parent objects at the end). Do not actually add the parent bone to the disjoint set: only do it if this would hit the problem case. Issue: this may require doing another iteration of the `_determine_skeletons` code? Is this possible without causing more bugs? This could be a compromise if it is possible.
 
   Bugs:
 
@@ -167,8 +167,8 @@ I am considering submitting Godot-MToon-Shader to the asset library, separately 
 - 2021-05-16 21:11:54Z lyuma: Spent most of the day learning how to make a custom shader inspector using EditorInspectorPlugin. I'm pretty happy with how it turned out https://cdn.discordapp.com/attachments/836651615532482611/843596648855896084/mtoon_shader_inspector.png
 - 2021-05-16 16:15:16Z fire: Thanks lox9973 for linking me to enough training data for my pose motion transfer tests. https://www.youtube.com/playlist?list=PLmwqDOin_Zt4WCMWqoK6SdHlg0C_WeCP6 (cc-by)
 - 2021-05-16 15:11:34Z fire: Brainstorming an intermediate format that isn't exact per bone joint orientation but general across characters
-- 2021-05-16 05:53:14Z fire: Investigating ShaderMotion. Now that I can go from some anims to Unity Mechanim / UE4 / VRM skeletons, I want to investigate writing a shader motion player.
-- 2021-05-16 01:16:04Z lyuma: https://github.com/V-Sekai/godot-vrm godot3 branch (Godot 3.3): Runtime support requries no patches. Editor requires gltf module. master branch: Runtime support requires no patches. Editor requires two small engine fixes.
+- 2021-05-16 05:53:14Z fire: Investigating ShaderMotion. Now that I can go from some anims to Unity Mechanism / UE4 / VRM skeletons, I want to investigate writing a shader motion player.
+- 2021-05-16 01:16:04Z lyuma: https://github.com/V-Sekai/godot-vrm godot3 branch (Godot 3.3): Runtime support requires no patches. Editor requires gltf module. master branch: Runtime support requires no patches. Editor requires two small engine fixes.
 - 2021-05-16 01:13:55Z lyuma: Getting very close to a releasable fully featured (Import-only) VRM addon for Godot. Let me know what you think in #pipeline https://cdn.discordapp.com/attachments/836651615532482611/843295167603015700/godot_vrm_1.0.0_beta.mp4
 - 2021-05-15 23:15:29Z fire: VRM from jin. Motion from Perfume dance webgl demo from 2013 in bvh format
 - 2021-05-15 23:15:13Z fire: Testing animation retargeting software from the Blender ecosystem. https://cdn.discordapp.com/attachments/842452265296986134/843264562430214164/2021-05-15_16-10-49.mp4

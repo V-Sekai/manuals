@@ -14,7 +14,7 @@ We were chatting late night and the idea of a virtual pet game was challenged.
 
 1. VRM with spring bones
 1. reverse bone direction
-1. Simulate virtual pet behaviours
+1. Simulate virtual pet behaviors
 
 ### Design 2
 

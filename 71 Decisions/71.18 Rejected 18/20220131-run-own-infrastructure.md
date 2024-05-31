@@ -29,7 +29,7 @@ It needs to be possible to replicate (or substitute) all of the existing infrast
   - Add a block volume for $10. TrueNAS requires a separate block device.
   - Do not enable backups because TrueNAS has its own backup systems.
 - Add one extra block volume after the machine spins up to get redundancy (RAID-1?)
-- (Note that block volumes can be moved between VMs, so doing things this way gives pretty good redudancy.
+- (Note that block volumes can be moved between VMs, so doing things this way gives pretty good redundancy.
 
 ## Positive Consequences <!-- optional -->
 

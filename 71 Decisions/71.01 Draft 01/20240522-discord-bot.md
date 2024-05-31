@@ -25,7 +25,7 @@ I would also like to poll #information such as CI/CD builds and deployments. We 
 
 ## Negative Consequences <!-- optional -->
 
-- Maintenence costs of having a service fed
+- Maintenance costs of having a service fed
 
 # Other proposal: Integration with Discord via Webhook
 

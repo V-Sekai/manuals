@@ -12,11 +12,11 @@ In the realm of game development, creating engaging and dynamic Non-Player Chara
 
 ## The Challenge
 
-The challenge lies in effectively using various AI models to create the "brain" of an AI NPC in Godot 4. This involves generating realistic and contextually appropriate dialogues for the NPCs.
+The challenge lies in effectively using various AI models to create the "brain" of an AI NPC in Godot 4. This involves generating realistic and contextually appropriate dialogs for the NPCs.
 
 ## The Strategy
 
-The strategy involves using a local GPT4All model for generating AI-based NPC dialogue. The script includes several exported variables that can be set in the Godot editor, such as `npc_background_directions`, `sample_npc_question_prompt`, and `sample_npc_prompt_response`. These variables are used to configure the behavior of the AI dialogue generation.
+The strategy involves using a local GPT4All model for generating AI-based NPC dialog. The script includes several exported variables that can be set in the Godot editor, such as `npc_background_directions`, `sample_npc_question_prompt`, and `sample_npc_prompt_response`. These variables are used to configure the behavior of the AI dialog generation.
 
 Key functions include:
 
@@ -25,19 +25,19 @@ Key functions include:
 
 ## The Upside
 
-Leveraging AI for NPC dialogue generation can lead to more dynamic and engaging gameplay. It allows for a wide range of responses and can adapt to different player inputs.
+Leveraging AI for NPC dialog generation can lead to more dynamic and engaging gameplay. It allows for a wide range of responses and can adapt to different player inputs.
 
 ## The Downside
 
-AI models require significant computational resources and may not be suitable for all platforms. Additionally, ensuring the appropriateness and quality of generated dialogues can be challenging.
+AI models require significant computational resources and may not be suitable for all platforms. Additionally, ensuring the appropriateness and quality of generated dialogs can be challenging.
 
 ## The Road Not Taken
 
-Traditional methods of NPC dialogue generation involve pre-scripted dialogues or simple decision trees. While these methods are less resource-intensive, they lack the dynamism and adaptability of AI-generated dialogues.
+Traditional methods of NPC dialog generation involve pre-scripted dialogs or simple decision trees. While these methods are less resource-intensive, they lack the dynamism and adaptability of AI-generated dialogs.
 
 ## The Infrequent Use Case
 
-In games with minimal NPC interactions or where dialogue is not a significant aspect of gameplay, the use of AI for dialogue generation may not be necessary.
+In games with minimal NPC interactions or where dialog is not a significant aspect of gameplay, the use of AI for dialog generation may not be necessary.
 
 ## In Core and Done by Us?
 

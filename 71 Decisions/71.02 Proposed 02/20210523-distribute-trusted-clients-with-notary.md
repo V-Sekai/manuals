@@ -19,7 +19,7 @@ We distribute the notary updater and make it fetch the launcher and V-Sekai.
 
 We provide a notary server.
 
-We setup the #trust relationship during the install and maintance.
+We setup the #trust relationship during the install and maintenance.
 
 ### Positive Consequences <!-- optional -->
 
@@ -48,7 +48,7 @@ List the reasons for the rejection: (the Bad traits)
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
-Not trivial. The documentaion of Notary start by the description of a possible security model and provides several attacks against it.
+Not trivial. The documentation of Notary start by the description of a possible security model and provides several attacks against it.
 
 ## Is there a reason why this should be core and done by us?
 

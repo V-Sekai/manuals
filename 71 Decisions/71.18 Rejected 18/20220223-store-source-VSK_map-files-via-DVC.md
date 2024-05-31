@@ -85,7 +85,7 @@ Discussed with Lyuma how it is possible to make a V-Sekai alternative organizati
 ## Option graveyard: <!-- same as above -->
 
 - Option: Do not use DVC remote on Google drive.
-- Rejection Reason: Google Drive does not have two implementions
+- Rejection Reason: Google Drive does not have two implementations
 
 - Option: Use Github with git-lfs
 - Rejection Reason: The last time I checked it was 50 USD per 50 gigabytes.

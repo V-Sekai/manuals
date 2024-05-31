@@ -27,7 +27,7 @@ Scripts that let you do new stuff, or enhance Godot functionality.
 - [Godot Splerger to Split and Merge Godot Engine Scenes](https://github.com/V-Sekai/godot-splerger)
 - [Task Goal Planner](https://github.com/V-Sekai/godot-task-goal-planner)
 - [Verlet Rope Simulation](https://github.com/V-Sekai/godot-verlet-rope)
-- [In-editor box modelling for gray boxing or prototyping 3d levels.](https://github.com/jarneson/godot-ply)
+- [In-editor box modeling for gray boxing or prototyping 3d levels.](https://github.com/jarneson/godot-ply)
 - [IREE.gd combines the IREE runtime with the Godot game engine, which facilitates the seamless integration of machine learning features into video games](https://github.com/RechieKho/IREE.gd)
 - [AndreaCatania/godot_tracy: provides visibility into Godot Engine performance](https://github.com/AndreaCatania/godot_tracy)
 
@@ -86,7 +86,7 @@ Modules extend Godot Engine core (C++).
 - [Elk: Mastadon client](https://elk.zone)
 - [Libhunt: Shows trending github repositories based on social media links](https://www.libhunt.com)
 - [Threadreaderapp: Provides pdf summaries of Twitter threads](https://threadreaderapp.com/)
-- [Rhino3d: CAD modeller with a visual procedural graph](https://www.rhino3d.com/)
+- [Rhino3d: CAD modeler with a visual procedural graph](https://www.rhino3d.com/)
 - [Discord timestamps](https://r.3v.fi/discord-timestamps/)
 - [When2meet helps you find the best time for a group to get together](https://www.when2meet.com/)
 - [Hack for quick note taking](https://hackmd.io/)

@@ -15,7 +15,7 @@ Build V-Sekai.
 - Spatialized audio and VOIP support
 - A custom networking stack
 - A security-focused sandboxed scripting environment backed by WASM
-- Customisable servers with their own individual game rules
+- Customizable servers with their own individual game rules
 - Dependable for important presentations
 
 As a 3d world builder, I want to upload a world to invite my friends to experience (Voice Communication, Reliability, Networked) with me.

@@ -6,7 +6,7 @@
 
 ## Context and Problem Statement
 
-Stream a character from a webcam to the vmc protocol so it can be played in any VMC reciever.
+Stream a character from a webcam to the vmc protocol so it can be played in any VMC receiver.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 

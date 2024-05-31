@@ -38,7 +38,7 @@ If not possible, or non-upstreamable (for example, V-Sekai related), leave a com
 ## Positive Consequences <!-- optional -->
 
 - synced
-- easier maintainance
+- easier maintenance
 
 ## Negative Consequences <!-- optional -->
 

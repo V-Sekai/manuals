@@ -19,7 +19,7 @@
   Don't get your hopes up quite yet: A lot of the lower level dependencies for scene packing and t-posing are not converted yet, but the tool scripts work now, so it's a start :-p" 🔥 (1)
 - 2021-06-23 00:19:07Z lyuma: Worked with fire to get the avatar conversion tool updated, using the high level vsk_avatar vsk_vrm_avatar_tool modules: https://cdn.discordapp.com/attachments/836651615532482611/857052116593803284/unknown.png
 - 2021-06-22 23:48:06Z lyuma: mux says they also keep hitting this issue. they also made the connection to set_name() interestingly
-- 2021-06-22 23:47:51Z lyuma: after a day of debuggin, Saracen got a reproduction project here: https://github.com/godotengine/godot/issues/49843
+- 2021-06-22 23:47:51Z lyuma: after a day of debugging, Saracen got a reproduction project here: https://github.com/godotengine/godot/issues/49843
 - 2021-06-22 23:22:17Z fire: Another day. Implement vrm quaternion format from lox9973 from ShaderMotion to move godot VRMs
 - 2021-06-22 21:00:23Z fire: We ported the avatar T-Poser to the point the menu popup shows and checkpointed, then concluded for lunch. Multiple modules were ported.
 - 2021-06-22 20:56:35Z fire: https://github.com/godotengine/godot-proposals/issues/2903 Lyuma wrote a proposal
@@ -47,7 +47,7 @@
 - 2021-06-19 18:01:49Z Saracen: Some more progress on the Amethyst port
 - 2021-06-19 07:45:39Z fire: Can now export blends to gltf2 and save as an artifact. Also installs vrm plugin.
 - 2021-06-19 07:45:30Z fire: https://github.com/V-Sekai/blue-tin-fox-models
-- 2021-06-19 00:16:57Z fire: Discussed with Saracen and Acquaintances to add a female mannequin to add coloured characters.
+- 2021-06-19 00:16:57Z fire: Discussed with Saracen and Acquaintances to add a female mannequin to add colored characters.
 - 2021-06-18 21:01:16Z fire: https://github.com/godotengine/godot/pull/49717
 - 2021-06-18 20:15:22Z lyuma: That's a bug with shadow mesh actually
 - 2021-06-18 20:14:42Z fire: https://github.com/godotengine/godot/issues/49706
@@ -56,7 +56,7 @@
 - 2021-06-18 10:27:51Z lyuma: I'm proud to announce that Unidot Importer was finally able to import the "Vol. 6" AirBnB House without any major errors! https://cdn.discordapp.com/attachments/836651615532482611/855393367545085983/unknown.png
 - 2021-06-17 22:53:22Z fire: 2 visual script godot engine prs merged
 - 2021-06-17 17:01:09Z fire: !!!
-- 2021-06-17 16:59:42Z Saracen: I pushed an experimental branch of Amethyst designed to work in 4.0 upstream to a new branch. The behaviour tree is still broken though.
+- 2021-06-17 16:59:42Z Saracen: I pushed an experimental branch of Amethyst designed to work in 4.0 upstream to a new branch. The behavior tree is still broken though.
 - 2021-06-16 23:24:26Z fire: https://github.com/fire/godot/tree/bc7enc_rdo Updated
 - 2021-06-16 23:23:49Z fire: https://github.com/godotengine/godot/pull/49669 Lyuma not sure if it's the crash
 - 2021-06-16 17:55:57Z fire: OMI meeting notes.
@@ -96,7 +96,7 @@ The issue with removing mesh edges still exists, in theory, but in practice it s
 - 2021-06-08 16:57:57Z fire: Blank screen
 - 2021-06-08 16:57:53Z fire:
 
-```OpenVR: initialising OpenVR context
+```OpenVR: initializing OpenVR context
 Application in scene (normal) mode.
 Main OpenVR interface has been initialized
 Main render models interface has been initialized.

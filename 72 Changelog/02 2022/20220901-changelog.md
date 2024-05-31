@@ -20,4 +20,4 @@ https://twitter.com/KenneyNL made a V-Sekai logo for us. https://twitter.com/Ken
 
 https://github.com/Geequlim/ECMAScript/issues/131#issuecomment-1241570998 Javascript update.
 
-https://github.com/fire/ewbik Collaborated with Eron and Lyuma. Worked on the design of EWBIK bone weights and bone priority. Worked on the different bone rolls vs silhouette problem in regular 3d formats versus VRM which has a indentity bone roll. (Use the original bone and then parent the change to be in ewbik bone roll.) Made the EWBIK solve less jello. Also discussion using kusudama constraints in Godot Engine core.
+https://github.com/fire/ewbik Collaborated with Eron and Lyuma. Worked on the design of EWBIK bone weights and bone priority. Worked on the different bone rolls vs silhouette problem in regular 3d formats versus VRM which has a identity bone roll. (Use the original bone and then parent the change to be in ewbik bone roll.) Made the EWBIK solve less jello. Also discussion using kusudama constraints in Godot Engine core.

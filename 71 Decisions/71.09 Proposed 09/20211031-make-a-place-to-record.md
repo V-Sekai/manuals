@@ -10,7 +10,7 @@ Create a stage for 3d avatars to move.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-Create a 3d enviorment
+Create a 3d environment
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 

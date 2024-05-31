@@ -74,4 +74,4 @@ The system utilizes a 6-inch flexible OLED display from Wisecoco. Portrait mode 
 
 Given that the primary focus of the project is voice interactions, the display mode should ideally support easy reading of transcriptions. Portrait mode, with its vertical orientation, is more suited to this task as it mimics the natural top-to-bottom reading flow.
 
-According to the system diagram, the processed data from the Whisper for Speech-to-Text module running on GGML is used to animate a virtual character and display the resulting texts. These texts are likely to be dialogue or conversation-based, and portrait mode would allow for a more coherent and continuous display of these text blocks.
+According to the system diagram, the processed data from the Whisper for Speech-to-Text module running on GGML is used to animate a virtual character and display the resulting texts. These texts are likely to be dialog or conversation-based, and portrait mode would allow for a more coherent and continuous display of these text blocks.

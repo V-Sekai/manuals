@@ -27,7 +27,7 @@ By writing a c++ executable on Linux, we can connect Mediapipe to Blender.
 
 I looked at your mediapipe code.
 
-I can write pseudocode but since i don't have a cpp toolchain, i cant guarantee it'll work
+I can write pseudocode but since i don't have a cpp toolchain, i can't guarantee it'll work
 
 You might take a look at my code
 

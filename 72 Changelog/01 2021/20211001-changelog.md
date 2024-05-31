@@ -33,7 +33,7 @@
 - 2021-10-23 08:08:18Z fire: https://cdn.discordapp.com/attachments/836651615532482611/901381505526415360/unknown.png
 - 2021-10-23 06:18:32Z fire: sync with samsung thorvg team need pr review about paint replacement through iteration for color replacement
 - 2021-10-23 01:48:51Z fire: Got godot speech C++ module to compile. At some point in the future need to try uncompressed audio after the api changes. There's a test project. 🗣️ (2)
-- 2021-10-23 00:36:32Z fire: Extracing godot-speech into a C++ module
+- 2021-10-23 00:36:32Z fire: Extracting godot-speech into a C++ module
 - 2021-10-23 00:25:44Z fire: Lyuma told me about this tool. So cleaned it a bit https://github.com/V-Sekai/V-Sekai-Blender-tools/tree/main/addons/ApplyModifierForObjectWithShapeKeys
 - 2021-10-21 03:27:13Z lyuma: fire made a lot of progress debugging the frame lag and random hangs. we have mitigations for some issues, but might not be fully correct
 - 2021-10-20 07:26:46Z fire: **VERY POOR 1 FRAME STUTTER** Got the sample working with our own build of the openvr gdextension. https://github.com/V-Sekai/v-sekai-openvr-sample/releases/tag/v0.2 Includes the godot 4 editor.
@@ -93,7 +93,7 @@ Some hints that it could be ""a few days more to mature"" beyond ""this week"" s
   https://github.com/godotengine/godot/pull/45699" gdhearteyes (1),PartyParrot (2),mikuleek (1),SkellyDance (1)
 - 2021-10-06 19:17:15Z fire: https://github.com/godotengine/godot/pull/53298
 - 2021-10-06 19:05:46Z fire: Also to bake blend shapes.
-- 2021-10-06 19:05:37Z fire: The goal is to remove the dem bones repo is remove FBX and ABC depenencies
+- 2021-10-06 19:05:37Z fire: The goal is to remove the dem bones repo is remove FBX and ABC dependencies
 - 2021-10-06 19:04:50Z fire: https://github.com/V-Sekai/godot-dem-bones/tree/godot working on it for a few hours
 - 2021-10-06 19:01:30Z fire: Still working on a summary of UIUX proposals. https://hackmd.io/26BUnwWOSYuMFIvvpoLa5Q
 - 2021-10-06 13:18:17Z fire: https://github.com/godotengine/godot/pull/53473 Lyuma トカゲ 🆗 (1)
@@ -118,7 +118,7 @@ Some hints that it could be ""a few days more to mature"" beyond ""this week"" s
 - 2021-10-02 19:26:59Z fire: https://github.com/godotengine/godot/pull/53337 merged
 - 2021-10-02 16:51:51Z fire: Need to a tech limits design. The Last of Us Part II Abby has a total joint count of 1075 Animated - 520 (includes face) and 555 procedural.
 - 2021-10-02 16:34:45Z fire: "Everything is back to working. Yesterday everything broke
-  ref: meshes disappeared and crash with skeleton because minimum verts. Fixes from Lyuma. Also tested occulusion culling"
+  ref: meshes disappeared and crash with skeleton because minimum verts. Fixes from Lyuma. Also tested occlusion culling"
 - 2021-10-02 14:35:34Z fire: Lyuma The platform creator of Tokyo Game Show 2021 liked my post. https://cdn.discordapp.com/attachments/836651615532482611/893868818038915132/unknown.png
 - 2021-10-02 12:52:57Z Saracen: Cool, I'll read through it later today
 - 2021-10-02 12:48:43Z lyuma: "Saracen fire New proposal by reduz for animation import without bone rest pose:

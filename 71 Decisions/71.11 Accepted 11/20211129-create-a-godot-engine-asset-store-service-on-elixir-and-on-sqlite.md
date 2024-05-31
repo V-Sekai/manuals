@@ -70,7 +70,7 @@ This is a V-Sekai service and I know of an approach.
 - https://www.sqlite.org/draft/stricttables.html
 - https://github.com/elixir-sqlite/ecto_sqlite3/issues
 - https://www.phoenixframework.org/
-- https://github.com/elixir-sqlite/exqlite/issues/175 Ugrade to Sqlite 3.37
+- https://github.com/elixir-sqlite/exqlite/issues/175 Upgrade to Sqlite 3.37
 
 ## Derivative License
 

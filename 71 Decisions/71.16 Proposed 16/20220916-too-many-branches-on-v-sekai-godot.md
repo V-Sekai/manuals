@@ -22,7 +22,7 @@ Less confusion.
 
 ### Negative Consequences
 
-Accidently deleting a used branch.
+Accidentally deleting a used branch.
 
 ### Option graveyard
 

@@ -1,4 +1,4 @@
-# Draft: Convert segmented front facing 3D Garment images to novel 3d views for 3d modelling
+# Draft: Convert segmented front facing 3D Garment images to novel 3d views for 3d modeling
 
 ## Metadata
 

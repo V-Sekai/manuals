@@ -12,7 +12,7 @@ Developers often find themselves stuck on a problem, unable to make progress. Th
 
 The proposed solution is a "Stuck/Recharge" cycle. When a developer finds themselves stuck on a problem, they switch to working on someone else's problem. This change in perspective can help recharge their mental energy and when they return to their original problem, they may find that they are able to approach it with a fresh mindset.
 
-```javscript
+```javascript
 if (developer.isStuck()) {
     developer.switchTask();
     developer.recharge();

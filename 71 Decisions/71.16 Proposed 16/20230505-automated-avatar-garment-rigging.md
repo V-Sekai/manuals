@@ -4,7 +4,7 @@
 
 - Status: proposed
 - Deciders: V-Sekai,
-- Tags: V-Sekai, chatgpt4, automated rigging, avatar customization, garment application, 3d modelling, Blender addons,
+- Tags: V-Sekai, chatgpt4, automated rigging, avatar customization, garment application, 3d modeling, Blender addons,
 
 ## Context and Problem Statement
 

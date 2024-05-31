@@ -4,7 +4,7 @@
 
 Lacking characters motions to work with.
 
-Transfering motions across platforms via video.
+Transferring motions across platforms via video.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
@@ -40,7 +40,7 @@ KEEP THE WINDOW FOCUSED
 
 Once completed, look for `yourvideo.bvh`
 
-### Acknowledgements
+### Acknowledgments
 
 **Thanks to humbletim for being the scribe**
 

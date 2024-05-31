@@ -1,4 +1,4 @@
-# Draft: Use a standard reference #platform called VFX Reference #platform
+# Draft: Use a standard reference platform called VFX Reference platform
 
 - Status: draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
@@ -6,7 +6,7 @@
 
 ## Context and Problem Statement
 
-> [A standard reference platform's purpose is to] minimise incompatibilities between different software packages, ease the support burden for Linux-based pipelines and encourage further adoption of Linux by software vendors.
+> [A standard reference platform's purpose is to] minimize incompatibilities between different software packages, ease the support burden for Linux-based pipelines and encourage further adoption of Linux by software vendors.
 
 Here are some problems:
 
@@ -15,7 +15,7 @@ Here are some problems:
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-> The VFX Reference #platform is a set of tool and library versions to be used as a common target #platform for building software for the VFX industry. Its purpose is to minimise incompatibilities between different software packages, ease the support burden for Linux-based pipelines and encourage further adoption of Linux by software vendors. The Reference #platform is updated annually by a group of software vendors in collaboration with the Visual Effects Society Technology Committee.
+> The VFX Reference #platform is a set of tool and library versions to be used as a common target #platform for building software for the VFX industry. Its purpose is to minimize incompatibilities between different software packages, ease the support burden for Linux-based pipelines and encourage further adoption of Linux by software vendors. The Reference #platform is updated annually by a group of software vendors in collaboration with the Visual Effects Society Technology Committee.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 

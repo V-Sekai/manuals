@@ -36,13 +36,13 @@ None yet. We may try prototyping this type of system in multiple ways.
 
 ## Positive Consequences <!-- improvement of quality attribute satisfaction, follow-up decisions required -->
 
-This keeps low latency but reduces the needed bandwidth to sync 100,000 entites.
+This keeps low latency but reduces the needed bandwidth to sync 100,000 entities.
 
 Napkin math:
 
     50 bytes per frame per object * 100,000 objects = 5MB per frame.
     5MB/frame * 20 fps = 100MB = 1Gbps
-    If we send updates of all obejcts to all objects, that requires 100Tb/s
+    If we send updates of all objects to all objects, that requires 100Tb/s
 
     > yea 100k users at once is impossible any way you put it. I think a realistic goal is 1k, as like, our max goal
 

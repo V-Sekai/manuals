@@ -1,12 +1,12 @@
-# Proposed: Plausable npc behaviour
+# Proposed: Plausible npc behavior
 
 ### Context and Problem Statement
 
-Create plausable npc behaviour
+Create plausible npc behavior
 
 ### Describe the feature / enhancement and how it helps to overcome the problem or limitation
 
-Plausable npc behaviour using a htn planner
+Plausible npc behavior using a htn planner
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 

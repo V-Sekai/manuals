@@ -12,7 +12,7 @@ V-Sekai projects currently face challenges in managing and synchronizing multipl
 
 ### Describe the proposed option and how it helps to overcome the problem or limitation
 
-Implement a Git subrepo management system to separate assets and libraries, enabling easier tracking and synchronization between branches. This solution streamlines the development proces
+Implement a Git subrepo management system to separate assets and libraries, enabling easier tracking and synchronization between branches. This solution streamlines the development process
 
 ### Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 

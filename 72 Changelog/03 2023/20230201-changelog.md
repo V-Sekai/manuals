@@ -1,6 +1,6 @@
 # V-Sekai Changelog - 2023-02
 
-This is the changelog for Feburary 2023.
+This is the changelog for February 2023.
 
 The sdk has the entire v-sekai-game project, all the builds and git .
 
@@ -14,7 +14,7 @@ https://nightly.link/V-Sekai/v-sekai-game/workflows/vsk_linux_builds/main
 
 1. Someone wanted me to help out on voip so I assisted
 2. A v-tuber, expiredpopsicle, is using godot-vrm! and contributed.
-3. Faolan is a Godot contribtor. Fire gifted libgodot code to him and now he's able to run his vr platform on the Meta Quest with dotnet.
+3. Faolan is a Godot contributor. Fire gifted libgodot code to him and now he's able to run his vr platform on the Meta Quest with dotnet.
 
 ## Fire
 

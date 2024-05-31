@@ -28,7 +28,7 @@ We're trying to see if we can do better by working together than taking some exi
 
 OMI work is valid even if a unity package standard exists. We don't need to be the only standard.
 
-iFire didn't exhaust all the details of the point, but we can make a Gltf transform for as many standards we can catalogue.
+iFire didn't exhaust all the details of the point, but we can make a Gltf transform for as many standards we can catalog.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 

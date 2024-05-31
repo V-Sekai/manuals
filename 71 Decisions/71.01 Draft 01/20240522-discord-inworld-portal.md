@@ -26,7 +26,7 @@ Players can stream using OBS or discord screen sharing, but this requires player
 
 ## Is there a reason why this should be core and done by us?
 
-It should be a standalone project based on Groups, but not core. The WebRTC depdendency, if needed, would make integration difficult.
+It should be a standalone project based on Groups, but not core. The WebRTC dependency, if needed, would make integration difficult.
 
 ## References <!-- optional -->
 

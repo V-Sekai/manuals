@@ -6,7 +6,7 @@
 
 ## Context and Problem Statement
 
-I don't have a #steam Deck since it was delayed til Feburary 2022 to test V-Sekai.
+I don't have a #steam Deck since it was delayed til February 2022 to test V-Sekai.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 

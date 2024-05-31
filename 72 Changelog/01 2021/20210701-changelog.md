@@ -79,10 +79,10 @@
   https://github.com/V-Sekai/godot/commit/99a9f79e25f7760cb5a0990e67545d78e9dd0423"
 - 2021-07-05 15:29:30Z fire: "I figured out the bug with the ewbik ui. need to separate the concept of the stored ""serialisable"" data vs the internal runtime data
   because the serialisable data can't access the skeleton."
-- 2021-07-03 23:41:32Z fire: worked with eron and also seperately got the ik to not reset every solve on ewbik
+- 2021-07-03 23:41:32Z fire: worked with eron and also separately got the ik to not reset every solve on ewbik
 - 2021-07-02 07:14:33Z fire: https://github.com/materialx/MaterialX/pull/651 Standalone material baker
 - 2021-07-01 19:13:21Z fire: Vket6 booth summoning of discord here?!
 - 2021-07-01 15:35:11Z fire: Poked https://github.com/SigNoz/signoz/issues/193
-- 2021-07-01 14:48:52Z fire: Discussed with HumbleTim the concept of a source glb we run again as many individual solvers for the input data, if the input is solved and it passes QA, that is one that is the outputed.
+- 2021-07-01 14:48:52Z fire: Discussed with HumbleTim the concept of a source glb we run again as many individual solvers for the input data, if the input is solved and it passes QA, that is one that is the outputted.
 - 2021-07-01 14:22:16Z fire: https://github.com/materialx/MaterialX/issues/650#issuecomment-871921261
 - 2021-07-01 14:21:54Z fire: ThorVG now supports images! in svg

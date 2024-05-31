@@ -18,7 +18,7 @@ The task at hand is to create some concept art for an existing VRoid character m
 
 Here's the proposed strategy:
 
-1. Start with greyscale outlines to focus on shapes rather than color.
+1. Start with grayscale outlines to focus on shapes rather than color.
 2. Use a off-white background, an outline color, a shadow color and a solid color.
 3. Focus on the overall shapes and silhouette first before adding details.
 

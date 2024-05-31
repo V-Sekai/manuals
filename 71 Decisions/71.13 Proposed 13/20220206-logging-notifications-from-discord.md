@@ -21,7 +21,7 @@ Use DiscordChatExporter to export our change notifications.
 
 ## Positive Consequences <!-- optional -->
 
-- Logs can be created for notificiations.
+- Logs can be created for notifications.
 
 ## Negative Consequences <!-- optional -->
 

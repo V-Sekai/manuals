@@ -2,7 +2,7 @@
 
 ### Describe the status of the issue.
 
-Superceded by the https://github.com/V-Sekai/V-Sekai.github.io/issues/229 proposal.
+Superseded by the https://github.com/V-Sekai/V-Sekai.github.io/issues/229 proposal.
 
 ### List the deciders of the issue.
 

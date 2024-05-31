@@ -40,7 +40,7 @@ Workflow for updating merge script.
 
 ## Negative Consequences <!-- optional -->
 
-- Loss of flexbility.
+- Loss of flexibility.
 
 ## Option graveyard: <!-- same as above -->
 

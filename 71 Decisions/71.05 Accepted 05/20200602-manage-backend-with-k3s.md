@@ -383,7 +383,7 @@ sudo kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/m
 
 (Optional in theory, but you have to remove enabled platforms in gocd):
 
-Start by grabbing a legitmate copy of `MacOSX10.15.sdk.tar.xz` from your local MacBook or Mac Mini.
+Start by grabbing a legitimate copy of `MacOSX10.15.sdk.tar.xz` from your local MacBook or Mac Mini.
 
 Then do the following to build:
 
@@ -597,7 +597,7 @@ and apply with:
 sudo kubectl patch deployments/gocd-agent -p "$(cat gocd-agent-patch.yaml)"
 ```
 
-Make sure to enable the Agents when they come up on the GoCD Dashboard. Add every server to the "`developement`" environment. Also, assign linux servers to "`mingw`" and "`linux`". Assign the dind agents to "`dind`".
+Make sure to enable the Agents when they come up on the GoCD Dashboard. Add every server to the "`development`" environment. Also, assign linux servers to "`mingw`" and "`linux`". Assign the dind agents to "`dind`".
 
 For GitLab, go to https://ci.v-sekai.cloud/go/admin/security/auth_configs and select `Create new authorization configuration` -> `gitlab-auth-config` / `GitLab Authentication plugin` / follow documentation here: https://github.com/gocd-contrib/gitlab-oauth-authorization-plugin/blob/master/INSTALL.md - **Do not check Allow only known users to login yet**. If this works, you can skip the text auth step and corresponding passwd commands.
 

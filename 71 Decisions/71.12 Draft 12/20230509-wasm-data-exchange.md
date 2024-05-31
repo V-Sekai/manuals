@@ -8,7 +8,7 @@
 
 ## Context and Problem Statement
 
-V-Sekai faces a limitation in sending complex data types between the Godot Engine and WebAssembly (WASM) modules. Simple Variant types can be marshalled or copied onto the stack, but arrays, dictionaries, and Object types require a more efficient approach.
+V-Sekai faces a limitation in sending complex data types between the Godot Engine and WebAssembly (WASM) modules. Simple Variant types can be marshaled or copied onto the stack, but arrays, dictionaries, and Object types require a more efficient approach.
 
 ## Proposed Solution
 

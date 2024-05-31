@@ -8,7 +8,7 @@
 
 ## Context
 
-The VRM importer and specification in Godot Engine necessitates a T-Pose. However, artists often prefer using an A-Pose as it simplifies body modelling.
+The VRM importer and specification in Godot Engine necessitates a T-Pose. However, artists often prefer using an A-Pose as it simplifies body modeling.
 
 ## Problem
 

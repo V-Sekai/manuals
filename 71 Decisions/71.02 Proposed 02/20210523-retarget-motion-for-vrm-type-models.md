@@ -63,7 +63,7 @@ A: Check the armature bone name mappings
 - at most, each target bone name should appear once
 - leave BVH joints not present in your avatar blank
 
-### Acknowledgements
+### Acknowledgments
 
 **Thanks to humbletim for being the scribe**
 
