@@ -59,3 +59,22 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 4. [A Laplacian for Nonmanifold Triangle Meshes](https://doi.org/10.1111/cgf.14069)
 
 AI assistant Aria assisted with this article.
+
+### Game Development Jargon
+
+1. **Rigging**: The process of creating a skeleton for a 3D model (character or object) and defining how it can move. This is crucial for animation in video games.
+2. **Clothing Fitting**: In the context of game development, this refers to the process of designing and applying clothing to a character model in a way that it moves naturally with the character's movements.
+3. **3D Modeling**: The process of creating a three-dimensional representation of any surface or object by manipulating polygons, edges, and vertices in simulated 3D space.
+4. **Animation**: The technique of photographing successive drawings or positions of puppets or models to create an illusion of movement when the movie is shown as a sequence.
+5. **Game Engine**: A software framework designed for the creation and development of video games. Developers use them to create games for consoles, mobile devices, and personal computers.
+6. **Real-Time Performance**: Refers to the ability of a computing system or software to instantly respond to user input. In gaming, real-time performance is critical to ensure smooth gameplay and user experience.
+7. **Vertices**: In 3D modeling, a vertex is a data structure that describes certain attributes, like the position of a point in 2D or 3D space or multiple points on a surface.
+8. **Mesh Arrays**: In computer graphics, a mesh is a collection of vertices, edges, and faces that define the shape of a polyhedral object in 3D applications.
+9. **Skeleton3D**: A node that represents a skeleton in Godot Engine. It contains a hierarchy of bones, which are used to animate the vertices of a MeshInstance.
+10. **Robust Skin Weight Transfer**: A method used in 3D modeling to transfer the skin weights from one model to another. This is useful when you want to apply the same skinning (deformation) properties from one model to another.
+11. **Robust Laplacians**: A method used in 3D modeling for smoothing and enhancing the quality of a mesh.
+12. **VRM1**: A file format for handling 3D humanoid avatar data for VR applications. It's based on glTF2.0, a file format standard by Khronos Group.
+13. **Non-Player Characters (NPCs)**: In video games, these are the characters that are not controlled by a player. They can be friends, foes, merchants, or even neutral parties in the game world.
+14. **Social VR**: Virtual Reality that allows users to interact with each other in a virtual environment. It's like social media but in VR.
+15. **Godot Engine**: An open-source game engine developed by the community-driven Godot Engine project. It's used for creating both 2D and 3D games.
+16. **V-Sekai**: A social VR game built on the Godot Engine. The game focuses on providing a highly customizable and immersive social VR experience.
