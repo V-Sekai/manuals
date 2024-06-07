@@ -53,6 +53,11 @@ The proposed solution involves a series of steps outlined in the README below:
 3. vrcfury
 4. vrcft - jerry's templates
 
+### How to prioritize spring bone removal
+
+1. Core movement
+2. Ears :3
+
 ### List of my default VRCFury components
 
 1. VRCFury blink controller
