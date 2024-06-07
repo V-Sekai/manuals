@@ -53,6 +53,14 @@ The proposed solution involves a series of steps outlined in the README below:
 3. vrcfury
 4. vrcft - jerry's templates
 
+### Overly bright 
+
+1. in liltoon turn saturation to 2.
+
+### Seams when moving
+
+1. Try in blender to merge by distance
+
 ### How to prioritize spring bone removal
 
 1. Core movement
