@@ -63,7 +63,7 @@ The proposed solution involves a series of steps outlined in the README below:
 
 ### Weight Transfer matching
 
-1. 0.004 m for distance
+1. 0.025 m for distance
 2. 15 degrees for angle match
 
 ### How to prioritize spring bone removal
