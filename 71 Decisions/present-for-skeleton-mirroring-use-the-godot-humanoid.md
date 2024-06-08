@@ -1,4 +1,4 @@
-# Proposal: Use the Humanoid Profile for Character Motion Mirroring
+# Accepted: Use the Humanoid Profile for Character Motion Mirroring
 
 ## Context
 
@@ -65,15 +65,27 @@ This proposal involves using an existing feature of the Godot Engine the V-Sekai
 
 ## Status
 
-Status: Proposed
+Status: Accepted
 
 ## Decision Makers
 
 - V-Sekai development team
 
 ## Tags
+Here is the updated list with sentence case:
 
+## Tags
+
+- Godot Engine
+- Humanoid Profile
+- Animation Mirroring
+- Bone Rolls
+- Character Avatar Motion
+- 3D Modeling
+- T-Pose Conversion
+- Animation Reusability
 - V-Sekai
+- VR Animation
 
 ## Further Reading
 
