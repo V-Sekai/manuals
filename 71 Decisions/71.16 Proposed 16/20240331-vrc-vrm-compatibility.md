@@ -53,6 +53,24 @@ The proposed solution involves a series of steps outlined in the README below:
 3. vrcfury
 4. vrcft - jerry's templates
 
+### Overly bright 
+
+1. in liltoon turn saturation to 2.
+
+### Seams when moving
+
+1. Try in blender to merge by distance
+
+### Weight Transfer matching
+
+1. 0.0125 m for distance
+2. 15 degrees for angle match
+
+### How to prioritize spring bone removal
+
+1. Core movement
+2. Ears :3
+
 ### List of my default VRCFury components
 
 1. VRCFury blink controller
