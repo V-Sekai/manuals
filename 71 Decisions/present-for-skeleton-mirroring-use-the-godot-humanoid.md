@@ -95,9 +95,9 @@ AI assistant Aria assisted with this article.
 ## Mirroring script
 
 ```gdscript
-# SPDX-License-Identifier: CC0-1.0
-#
-# Author: Daniel Snd
+## SPDX-License-Identifier: CC0-1.0
+##
+## Author: Daniel Snd
 
 @export var left_name:String = "Left"
 @export var right_name:String = "Right"
