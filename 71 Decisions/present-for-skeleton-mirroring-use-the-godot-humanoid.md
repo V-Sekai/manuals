@@ -72,9 +72,6 @@ Status: Accepted
 - V-Sekai development team
 
 ## Tags
-Here is the updated list with sentence case:
-
-## Tags
 
 - Godot Engine
 - Humanoid Profile
