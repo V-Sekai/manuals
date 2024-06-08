@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.555</generator>
-<lastBuildDate>Sat, 08 Jun 2024 15:42:18 GMT</lastBuildDate>
+<lastBuildDate>Sat, 08 Jun 2024 15:43:49 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/71 Decisions/present-proposal-template.html</link>
@@ -75,11 +75,116 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/present-proposal-template.html</guid>
-  <pubDate>Sat, 08 Jun 2024 15:42:18 GMT</pubDate>
+  <pubDate>Sat, 08 Jun 2024 15:43:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
-  <link>https://v-sekai.github.io/manuals/71 Decisions/present-for-skeleton-mirroring-use-the-godot-humanoid.html</link>
+  <link>https://v-sekai.github.io/manuals/71 Decisions/71.23 Proposal 23/20240608-skin-weight-transfer-skeleton-merge.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="accepted-better-skeleton-merge-with-robust-skin-weight-transfer" class="level1">
+<h1>Accepted: Better Skeleton Merge with Robust Skin Weight Transfer</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>Rigging and clothing fitting are intricate tasks in game development, demanding a deep understanding of 3D modeling, animation, and the specific requirements of the game engine. In the context of V-Sekai, a social VR game built on the Godot Engine, these tasks become even more challenging due to the need for real-time performance and compatibility with various hardware devices.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Our goal is to provide a solution that enables players and creators to incorporate their own clothing into the V-Sekai game, without turning the game into an impenetrable black box. The current process of rigging and fitting clothing onto characters is labor-intensive and requires specialized knowledge, limiting the ability of players and creators to fully express themselves through their avatars.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>The proposed solution involves aligning the vertices from one set of faces to match the vertices in the other set. In Godot, this can be achieved by retrieving mesh arrays and invoking a function with <code>arrays[Mesh.ARRAY_VERTEX]</code>, <code>arrays[Mesh.ARRAY_INDEX]</code>.</p>
+<p>Passing in the <code>Skeleton3D</code> is not necessary. The recently merged API by smix8 allows baking a skeleton to a static mesh, which can be used for baking and then applying the delta.</p>
+<p>We plan to utilize robust skin weight transfer code and robust Laplacians. The robust Laplacians algorithm is implemented in geometry-central, which loads a mesh, constructs our intrinsic tufted cover, and generates the resulting Laplace (and mass) matrix.</p>
+<p>Player creators will have a fully skin-weighted base mesh (a naked character mesh with no clothing). They can then use robust skin weight transfer with a variable distance and the infilling feature to rig their clothing for use in V-Sekai and anywhere that can handle VRM1.</p>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li>Player customization: Our solution empowers players to use their own clothing designs in the game, enhancing their ability to express themselves and engage with the game world.</li>
+<li>Enhanced game experience: By offering more customization options, we can boost player engagement and satisfaction.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li>Limited platform support: Not all platforms support VRM1 for avatars; most only support VRM0. This could restrict the compatibility of our solution with other platforms and games.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An alternative approach would have been to create a set of predefined clothing options within the game itself. However, this would limit the creativity and expression of our players. By enabling them to use their own clothing designs, we are fostering a more vibrant and diverse game community.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>While the primary use case is for players to rig and fit their own clothing designs, this solution could also be used by game developers to quickly and easily rig and fit clothing for non-player characters (NPCs). This could save development time and resources.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>This proposal is core to the functionality of the V-Sekai game and will be implemented by us. It aligns with our goal of creating a highly customizable and immersive social VR experience.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+<li><a href="https://doi.org/10.1145/3610543.3626180">Robust Skin Weights Transfer via Weight Inpainting</a></li>
+<li><a href="https://doi.org/10.1111/cgf.14069">A Laplacian for Nonmanifold Triangle Meshes</a></li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+<section id="game-development-jargon" class="level3">
+<h3 class="anchored" data-anchor-id="game-development-jargon">Game Development Jargon</h3>
+<ol type="1">
+<li><strong>Rigging</strong>: The process of creating a skeleton for a 3D model (character or object) and defining how it can move. This is crucial for animation in video games.</li>
+<li><strong>Clothing Fitting</strong>: In the context of game development, this refers to the process of designing and applying clothing to a character model in a way that it moves naturally with the character’s movements.</li>
+<li><strong>3D Modeling</strong>: The process of creating a three-dimensional representation of any surface or object by manipulating polygons, edges, and vertices in simulated 3D space.</li>
+<li><strong>Animation</strong>: The technique of photographing successive drawings or positions of puppets or models to create an illusion of movement when the movie is shown as a sequence.</li>
+<li><strong>Game Engine</strong>: A software framework designed for the creation and development of video games. Developers use them to create games for consoles, mobile devices, and personal computers.</li>
+<li><strong>Real-Time Performance</strong>: Refers to the ability of a computing system or software to instantly respond to user input. In gaming, real-time performance is critical to ensure smooth gameplay and user experience.</li>
+<li><strong>Vertices</strong>: In 3D modeling, a vertex is a data structure that describes certain attributes, like the position of a point in 2D or 3D space or multiple points on a surface.</li>
+<li><strong>Mesh Arrays</strong>: In computer graphics, a mesh is a collection of vertices, edges, and faces that define the shape of a polyhedral object in 3D applications.</li>
+<li><strong>Skeleton3D</strong>: A node that represents a skeleton in Godot Engine. It contains a hierarchy of bones, which are used to animate the vertices of a MeshInstance.</li>
+<li><strong>Robust Skin Weight Transfer</strong>: A method used in 3D modeling to transfer the skin weights from one model to another. This is useful when you want to apply the same skinning (deformation) properties from one model to another.</li>
+<li><strong>Robust Laplacians</strong>: A method used in 3D modeling for smoothing and enhancing the quality of a mesh.</li>
+<li><strong>VRM1</strong>: A file format for handling 3D humanoid avatar data for VR applications. It’s based on glTF2.0, a file format standard by Khronos Group.</li>
+<li><strong>Non-Player Characters (NPCs)</strong>: In video games, these are the characters that are not controlled by a player. They can be friends, foes, merchants, or even neutral parties in the game world.</li>
+<li><strong>Social VR</strong>: Virtual Reality that allows users to interact with each other in a virtual environment. It’s like social media but in VR.</li>
+<li><strong>Godot Engine</strong>: An open-source game engine developed by the community-driven Godot Engine project. It’s used for creating both 2D and 3D games.</li>
+<li><strong>V-Sekai</strong>: A social VR game built on the Godot Engine. The game focuses on providing a highly customizable and immersive social VR experience.</li>
+</ol>
+
+
+</section>
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/71 Decisions/71.23 Proposal 23/20240608-skin-weight-transfer-skeleton-merge.html</guid>
+  <pubDate>Sat, 08 Jun 2024 15:43:49 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/71 Decisions/71.23 Proposal 23/20240608-for-skeleton-mirroring-use-the-godot-humanoid.html</link>
   <description><![CDATA[ 
 
 
@@ -246,113 +351,8 @@ func mirror_pose(bone_name):
 </section>
 
  ]]></description>
-  <guid>https://v-sekai.github.io/manuals/71 Decisions/present-for-skeleton-mirroring-use-the-godot-humanoid.html</guid>
-  <pubDate>Sat, 08 Jun 2024 15:42:18 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/71 Decisions/71.23 Proposal 23/20240608-skin-weight-transfer-skeleton-merge.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="accepted-better-skeleton-merge-with-robust-skin-weight-transfer" class="level1">
-<h1>Accepted: Better Skeleton Merge with Robust Skin Weight Transfer</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>Rigging and clothing fitting are intricate tasks in game development, demanding a deep understanding of 3D modeling, animation, and the specific requirements of the game engine. In the context of V-Sekai, a social VR game built on the Godot Engine, these tasks become even more challenging due to the need for real-time performance and compatibility with various hardware devices.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Our goal is to provide a solution that enables players and creators to incorporate their own clothing into the V-Sekai game, without turning the game into an impenetrable black box. The current process of rigging and fitting clothing onto characters is labor-intensive and requires specialized knowledge, limiting the ability of players and creators to fully express themselves through their avatars.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>The proposed solution involves aligning the vertices from one set of faces to match the vertices in the other set. In Godot, this can be achieved by retrieving mesh arrays and invoking a function with <code>arrays[Mesh.ARRAY_VERTEX]</code>, <code>arrays[Mesh.ARRAY_INDEX]</code>.</p>
-<p>Passing in the <code>Skeleton3D</code> is not necessary. The recently merged API by smix8 allows baking a skeleton to a static mesh, which can be used for baking and then applying the delta.</p>
-<p>We plan to utilize robust skin weight transfer code and robust Laplacians. The robust Laplacians algorithm is implemented in geometry-central, which loads a mesh, constructs our intrinsic tufted cover, and generates the resulting Laplace (and mass) matrix.</p>
-<p>Player creators will have a fully skin-weighted base mesh (a naked character mesh with no clothing). They can then use robust skin weight transfer with a variable distance and the infilling feature to rig their clothing for use in V-Sekai and anywhere that can handle VRM1.</p>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<ul>
-<li>Player customization: Our solution empowers players to use their own clothing designs in the game, enhancing their ability to express themselves and engage with the game world.</li>
-<li>Enhanced game experience: By offering more customization options, we can boost player engagement and satisfaction.</li>
-</ul>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<ul>
-<li>Limited platform support: Not all platforms support VRM1 for avatars; most only support VRM0. This could restrict the compatibility of our solution with other platforms and games.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>An alternative approach would have been to create a set of predefined clothing options within the game itself. However, this would limit the creativity and expression of our players. By enabling them to use their own clothing designs, we are fostering a more vibrant and diverse game community.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>While the primary use case is for players to rig and fit their own clothing designs, this solution could also be used by game developers to quickly and easily rig and fit clothing for non-player characters (NPCs). This could save development time and resources.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>This proposal is core to the functionality of the V-Sekai game and will be implemented by us. It aligns with our goal of creating a highly customizable and immersive social VR experience.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-<li><a href="https://doi.org/10.1145/3610543.3626180">Robust Skin Weights Transfer via Weight Inpainting</a></li>
-<li><a href="https://doi.org/10.1111/cgf.14069">A Laplacian for Nonmanifold Triangle Meshes</a></li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-<section id="game-development-jargon" class="level3">
-<h3 class="anchored" data-anchor-id="game-development-jargon">Game Development Jargon</h3>
-<ol type="1">
-<li><strong>Rigging</strong>: The process of creating a skeleton for a 3D model (character or object) and defining how it can move. This is crucial for animation in video games.</li>
-<li><strong>Clothing Fitting</strong>: In the context of game development, this refers to the process of designing and applying clothing to a character model in a way that it moves naturally with the character’s movements.</li>
-<li><strong>3D Modeling</strong>: The process of creating a three-dimensional representation of any surface or object by manipulating polygons, edges, and vertices in simulated 3D space.</li>
-<li><strong>Animation</strong>: The technique of photographing successive drawings or positions of puppets or models to create an illusion of movement when the movie is shown as a sequence.</li>
-<li><strong>Game Engine</strong>: A software framework designed for the creation and development of video games. Developers use them to create games for consoles, mobile devices, and personal computers.</li>
-<li><strong>Real-Time Performance</strong>: Refers to the ability of a computing system or software to instantly respond to user input. In gaming, real-time performance is critical to ensure smooth gameplay and user experience.</li>
-<li><strong>Vertices</strong>: In 3D modeling, a vertex is a data structure that describes certain attributes, like the position of a point in 2D or 3D space or multiple points on a surface.</li>
-<li><strong>Mesh Arrays</strong>: In computer graphics, a mesh is a collection of vertices, edges, and faces that define the shape of a polyhedral object in 3D applications.</li>
-<li><strong>Skeleton3D</strong>: A node that represents a skeleton in Godot Engine. It contains a hierarchy of bones, which are used to animate the vertices of a MeshInstance.</li>
-<li><strong>Robust Skin Weight Transfer</strong>: A method used in 3D modeling to transfer the skin weights from one model to another. This is useful when you want to apply the same skinning (deformation) properties from one model to another.</li>
-<li><strong>Robust Laplacians</strong>: A method used in 3D modeling for smoothing and enhancing the quality of a mesh.</li>
-<li><strong>VRM1</strong>: A file format for handling 3D humanoid avatar data for VR applications. It’s based on glTF2.0, a file format standard by Khronos Group.</li>
-<li><strong>Non-Player Characters (NPCs)</strong>: In video games, these are the characters that are not controlled by a player. They can be friends, foes, merchants, or even neutral parties in the game world.</li>
-<li><strong>Social VR</strong>: Virtual Reality that allows users to interact with each other in a virtual environment. It’s like social media but in VR.</li>
-<li><strong>Godot Engine</strong>: An open-source game engine developed by the community-driven Godot Engine project. It’s used for creating both 2D and 3D games.</li>
-<li><strong>V-Sekai</strong>: A social VR game built on the Godot Engine. The game focuses on providing a highly customizable and immersive social VR experience.</li>
-</ol>
-
-
-</section>
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/71 Decisions/71.23 Proposal 23/20240608-skin-weight-transfer-skeleton-merge.html</guid>
-  <pubDate>Sat, 08 Jun 2024 15:42:18 GMT</pubDate>
+  <guid>https://v-sekai.github.io/manuals/71 Decisions/71.23 Proposal 23/20240608-for-skeleton-mirroring-use-the-godot-humanoid.html</guid>
+  <pubDate>Sat, 08 Jun 2024 15:43:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -435,7 +435,7 @@ func mirror_pose(bone_name):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.23 Proposal 23/20240605-sustainable-version-management-for-godot-engine-in-v-sekai.html</guid>
-  <pubDate>Sat, 08 Jun 2024 15:42:18 GMT</pubDate>
+  <pubDate>Sat, 08 Jun 2024 15:43:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -538,7 +538,7 @@ func mirror_pose(bone_name):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.23 Proposal 23/20240529-improve-godot-import-ecosystem.html</guid>
-  <pubDate>Sat, 08 Jun 2024 15:42:18 GMT</pubDate>
+  <pubDate>Sat, 08 Jun 2024 15:43:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -622,7 +622,7 @@ func mirror_pose(bone_name):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240528-pipeline-godot-wasm-importer.html</guid>
-  <pubDate>Sat, 08 Jun 2024 15:42:18 GMT</pubDate>
+  <pubDate>Sat, 08 Jun 2024 15:43:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -688,7 +688,7 @@ func mirror_pose(bone_name):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.01 Draft 01/20240522-webrtc-relay-test.html</guid>
-  <pubDate>Sat, 08 Jun 2024 15:42:18 GMT</pubDate>
+  <pubDate>Sat, 08 Jun 2024 15:43:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -788,7 +788,7 @@ func mirror_pose(bone_name):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.01 Draft 01/20240522-shader-motion-to-bvh.html</guid>
-  <pubDate>Sat, 08 Jun 2024 15:42:18 GMT</pubDate>
+  <pubDate>Sat, 08 Jun 2024 15:43:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -851,7 +851,7 @@ func mirror_pose(bone_name):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.01 Draft 01/20240522-discord-inworld-portal.html</guid>
-  <pubDate>Sat, 08 Jun 2024 15:42:18 GMT</pubDate>
+  <pubDate>Sat, 08 Jun 2024 15:43:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -929,7 +929,7 @@ func mirror_pose(bone_name):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.01 Draft 01/20240522-discord-bot.html</guid>
-  <pubDate>Sat, 08 Jun 2024 15:42:18 GMT</pubDate>
+  <pubDate>Sat, 08 Jun 2024 15:43:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1121,7 +1121,7 @@ font-style: inherit;"> # Add a suffix here.</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.19 Accepted 19/20240511-wasm-cache-incident.html</guid>
-  <pubDate>Sat, 08 Jun 2024 15:42:18 GMT</pubDate>
+  <pubDate>Sat, 08 Jun 2024 15:43:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1208,7 +1208,7 @@ font-style: inherit;"> # Add a suffix here.</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.04 Rejected 04/20240511-review-80-vr.html</guid>
-  <pubDate>Sat, 08 Jun 2024 15:42:18 GMT</pubDate>
+  <pubDate>Sat, 08 Jun 2024 15:43:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1283,7 +1283,7 @@ font-style: inherit;"> # Add a suffix here.</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240502-where-can-I-use-gltf.html</guid>
-  <pubDate>Sat, 08 Jun 2024 15:42:18 GMT</pubDate>
+  <pubDate>Sat, 08 Jun 2024 15:43:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1576,7 +1576,7 @@ font-style: inherit;">grep</span> mvstore</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240502-mvsqlite-launchd.html</guid>
-  <pubDate>Sat, 08 Jun 2024 15:42:18 GMT</pubDate>
+  <pubDate>Sat, 08 Jun 2024 15:43:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1687,7 +1687,7 @@ print(world.get_state())</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240502-mesh-object-sync-benchmark.html</guid>
-  <pubDate>Sat, 08 Jun 2024 15:42:18 GMT</pubDate>
+  <pubDate>Sat, 08 Jun 2024 15:43:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1883,7 +1883,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240502-membrane-framework-identity-post.html</guid>
-  <pubDate>Sat, 08 Jun 2024 15:42:18 GMT</pubDate>
+  <pubDate>Sat, 08 Jun 2024 15:43:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1978,7 +1978,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240502-install-windows-on-older-computers.html</guid>
-  <pubDate>Sat, 08 Jun 2024 15:42:18 GMT</pubDate>
+  <pubDate>Sat, 08 Jun 2024 15:43:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2061,7 +2061,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240502-gltf-fbx-tscn-vrm.html</guid>
-  <pubDate>Sat, 08 Jun 2024 15:42:18 GMT</pubDate>
+  <pubDate>Sat, 08 Jun 2024 15:43:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2164,7 +2164,7 @@ font-style: inherit;">;</span></span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240425-recharge-cycle.html</guid>
-  <pubDate>Sat, 08 Jun 2024 15:42:18 GMT</pubDate>
+  <pubDate>Sat, 08 Jun 2024 15:43:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2244,7 +2244,7 @@ font-style: inherit;">;</span></span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240425-proposal-prompt-system.html</guid>
-  <pubDate>Sat, 08 Jun 2024 15:42:18 GMT</pubDate>
+  <pubDate>Sat, 08 Jun 2024 15:43:49 GMT</pubDate>
 </item>
 </channel>
 </rss>
