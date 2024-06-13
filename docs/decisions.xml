@@ -10,7 +10,98 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.555</generator>
-<lastBuildDate>Wed, 12 Jun 2024 04:42:15 GMT</lastBuildDate>
+<lastBuildDate>Thu, 13 Jun 2024 18:52:59 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/71 Decisions/71.24 Proposal 24/present-training-dataset.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-dataset-size-for-training-mesh-transformer" class="level1">
+<h1>Proposed: Dataset Size for Training Mesh Transformer</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>We are working on training a mesh transformer to create 3D avatar characters. The avatars are represented using quads, and we aim to keep the quad count to 1024 or less.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>The question at hand is determining the size of the dataset needed for training the model effectively.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>The size of the dataset required for training a model effectively depends on the desired type of outputs from the model.</p>
+<ul>
+<li><p><strong>Generic Outputs</strong>: If the goal is to have the model generate outputs that it has already seen during training, a smaller dataset is sufficient. In this case, a dataset size in the range of 2,000 to 10,000 would be appropriate.</p></li>
+<li><p><strong>Novel Outputs</strong>: On the other hand, if the aim is for the model to generate novel or never-seen-before outputs, a larger dataset is necessary. Here, a dataset size between 10,000 and 100,000 would be more suitable.</p></li>
+</ul>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li>A smaller dataset is easier to manage and requires less computational resources for training.</li>
+<li>A larger dataset allows the model to generate novel outputs, enhancing its creativity and versatility.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li>A smaller dataset might limit the model’s ability to generate novel outputs.</li>
+<li>A larger dataset requires more computational resources for training and may lead to longer training times.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<ul>
+<li>We could have chosen to use a fixed dataset size without considering the type of outputs we want from the model.</li>
+</ul>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<ul>
+<li>This approach may not be suitable if we want the model to generate both generic and novel outputs equally well.</li>
+</ul>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<ul>
+<li>The decision on the dataset size and the training of the mesh transformer will be done by us, using our acquired resources and expertise.</li>
+</ul>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/71 Decisions/71.24 Proposal 24/present-training-dataset.html</guid>
+  <pubDate>Thu, 13 Jun 2024 18:52:59 GMT</pubDate>
+</item>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/71 Decisions/present-proposal-template.html</link>
@@ -75,7 +166,263 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/present-proposal-template.html</guid>
-  <pubDate>Wed, 12 Jun 2024 04:42:15 GMT</pubDate>
+  <pubDate>Thu, 13 Jun 2024 18:52:59 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/71 Decisions/71.24 Proposal 24/20240613-1k-quad-limit.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-training-mesh-transformer-for-3d-avatar-creation" class="level1">
+<h1>Proposed: Training Mesh Transformer for 3D Avatar Creation</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>We are working with mesh transformer large language models.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>The goal is to train the mesh transformer to create 3D avatar characters. The challenge lies in managing the complexity of the model and the computational resources required for training.</p>
+</section>
+<section id="proposal" class="level2">
+<h2 class="anchored" data-anchor-id="proposal">Proposal</h2>
+<p>Our approach involves using quad support for the avatars, which allows us to cut the avatar into smaller objects as part of the body. This method is more manageable and efficient than trying to train the model on larger body parts or the entire avatar.</p>
+<p>However, it’s important to note that we cannot use triangles and quads at the same time. Also, having a context length of 32k or more will require a bigger model, which might not be feasible unless we have a substantial GPU budget for computation.</p>
+<p>For our training data, we aim to keep the triangle count below 5k triangles. We also need to consider the shape of the training data and the type of quad data we need to provide.</p>
+<p>In terms of numbers, we’re looking at around 1500 triangles, which would result in 6k to 9k tokens. If these triangles are converted to quads and there is a reduction, we could aim for around MAX 8k tokens. In this case, 1 triangle equals 6 tokens, and 1 quad equals 8 tokens.</p>
+<p>This means that 8,000 tokens would equate to 1,000 quads.</p>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li>Training the mesh transformer on smaller body parts will make it more manageable and efficient.</li>
+<li>Using quads instead of triangles could potentially reduce the complexity of the model.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li>The process requires a significant amount of GPU compute power, which could be expensive.</li>
+<li>The model might not be able to handle large context lengths effectively.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<ul>
+<li>We could have chosen to train the model on larger body parts or the entire avatar, but this would require significantly more computational resources.</li>
+</ul>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<ul>
+<li>This approach may not be suitable for avatars with complex structures or high polygon counts.</li>
+</ul>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<ul>
+<li>The training of the mesh transformer will be done by us, using our acquired resources and expertise.</li>
+</ul>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/71 Decisions/71.24 Proposal 24/20240613-1k-quad-limit.html</guid>
+  <pubDate>Thu, 13 Jun 2024 18:52:59 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/71 Decisions/71.24 Proposal 24/20240611-test-1x-and-4x.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-managing-multiple-training-runs-in-separate-pods" class="level1">
+<h1>Proposed: Managing Multiple Training Runs in Separate Pods</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>We are working on training a model using multiple GPUs. We have encountered issues when trying to run two training runs in the same pod.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>The problem is that we cannot run multiple GPU training runs in the same pod. This limits our ability to parallelize our training and make full use of our resources.</p>
+</section>
+<section id="proposal" class="level2">
+<h2 class="anchored" data-anchor-id="proposal">Proposal</h2>
+<p>Based on the discussion, the proposal is to manage the training runs in separate pods. Specifically:</p>
+<ul>
+<li>Start a pod with a single X1 4090 for stable training.</li>
+<li>Start another new pod with 4x 4090 to test the theory that you can only run the multi-GPU once per session.</li>
+</ul>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li>This approach allows us to run multiple training runs simultaneously, making full use of our resources.</li>
+<li>It also enables us to isolate the training runs, reducing the risk of one affecting the other.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li>Managing multiple pods might be more complex than managing a single one.</li>
+<li>There may be additional overhead associated with running multiple pods.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<ul>
+<li>We could have continued trying to run multiple training runs in the same pod, but this was causing issues.</li>
+</ul>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<ul>
+<li>This approach may not be necessary if we only need to run a single training run at a time.</li>
+</ul>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<ul>
+<li>The decision on how to manage the pods and the training runs will be made by us, using our acquired resources and expertise.</li>
+</ul>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/71 Decisions/71.24 Proposal 24/20240611-test-1x-and-4x.html</guid>
+  <pubDate>Thu, 13 Jun 2024 18:52:59 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/71 Decisions/71.24 Proposal 24/20240611-lower-learning-rate.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-switch-learning-rate-to-be-lower." class="level1">
+<h1>Proposed: Switch learning rate to be lower.</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>We are currently training a mesh transformer’s auto encoder.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>The current learning rate might not be optimal for our training process. We need to find a way to adjust it dynamically based on the progress of the training.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>We propose to monitor the reconstruction loss after each epoch. If the loss decreases by less than 0.004 per epoch, we switch the learning rate to 1e-4.</p>
+<p><strong>Note:</strong> Don’t forget to change the load method that the model uses to load the model.</p>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>By adjusting the learning rate based on the progress of the training, we can potentially achieve better results and prevent overfitting.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>This approach requires careful monitoring of the training process and might require additional computational resources.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An alternative could be to use a fixed learning rate throughout the training process. However, this might not yield optimal results.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>This approach might not be suitable for all types of models or datasets.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>This proposal is made by the V-Sekai development team and will be implemented by us.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/71 Decisions/71.24 Proposal 24/20240611-lower-learning-rate.html</guid>
+  <pubDate>Thu, 13 Jun 2024 18:52:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -180,7 +527,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.23 Proposal 23/20240608-skin-weight-transfer-skeleton-merge.html</guid>
-  <pubDate>Wed, 12 Jun 2024 04:42:15 GMT</pubDate>
+  <pubDate>Thu, 13 Jun 2024 18:52:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -352,7 +699,7 @@ func mirror_pose(bone_name):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.23 Proposal 23/20240608-for-skeleton-mirroring-use-the-godot-humanoid.html</guid>
-  <pubDate>Wed, 12 Jun 2024 04:42:15 GMT</pubDate>
+  <pubDate>Thu, 13 Jun 2024 18:52:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -435,7 +782,7 @@ func mirror_pose(bone_name):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.23 Proposal 23/20240605-sustainable-version-management-for-godot-engine-in-v-sekai.html</guid>
-  <pubDate>Wed, 12 Jun 2024 04:42:15 GMT</pubDate>
+  <pubDate>Thu, 13 Jun 2024 18:52:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -538,7 +885,7 @@ func mirror_pose(bone_name):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.23 Proposal 23/20240529-improve-godot-import-ecosystem.html</guid>
-  <pubDate>Wed, 12 Jun 2024 04:42:15 GMT</pubDate>
+  <pubDate>Thu, 13 Jun 2024 18:52:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -622,7 +969,7 @@ func mirror_pose(bone_name):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240528-pipeline-godot-wasm-importer.html</guid>
-  <pubDate>Wed, 12 Jun 2024 04:42:15 GMT</pubDate>
+  <pubDate>Thu, 13 Jun 2024 18:52:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -688,7 +1035,7 @@ func mirror_pose(bone_name):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.01 Draft 01/20240522-webrtc-relay-test.html</guid>
-  <pubDate>Wed, 12 Jun 2024 04:42:15 GMT</pubDate>
+  <pubDate>Thu, 13 Jun 2024 18:52:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -788,7 +1135,7 @@ func mirror_pose(bone_name):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.01 Draft 01/20240522-shader-motion-to-bvh.html</guid>
-  <pubDate>Wed, 12 Jun 2024 04:42:15 GMT</pubDate>
+  <pubDate>Thu, 13 Jun 2024 18:52:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -851,7 +1198,7 @@ func mirror_pose(bone_name):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.01 Draft 01/20240522-discord-inworld-portal.html</guid>
-  <pubDate>Wed, 12 Jun 2024 04:42:15 GMT</pubDate>
+  <pubDate>Thu, 13 Jun 2024 18:52:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -929,7 +1276,7 @@ func mirror_pose(bone_name):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.01 Draft 01/20240522-discord-bot.html</guid>
-  <pubDate>Wed, 12 Jun 2024 04:42:15 GMT</pubDate>
+  <pubDate>Thu, 13 Jun 2024 18:52:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1121,7 +1468,7 @@ font-style: inherit;"> # Add a suffix here.</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.19 Accepted 19/20240511-wasm-cache-incident.html</guid>
-  <pubDate>Wed, 12 Jun 2024 04:42:15 GMT</pubDate>
+  <pubDate>Thu, 13 Jun 2024 18:52:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1208,7 +1555,7 @@ font-style: inherit;"> # Add a suffix here.</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.04 Rejected 04/20240511-review-80-vr.html</guid>
-  <pubDate>Wed, 12 Jun 2024 04:42:15 GMT</pubDate>
+  <pubDate>Thu, 13 Jun 2024 18:52:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1283,7 +1630,7 @@ font-style: inherit;"> # Add a suffix here.</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240502-where-can-I-use-gltf.html</guid>
-  <pubDate>Wed, 12 Jun 2024 04:42:15 GMT</pubDate>
+  <pubDate>Thu, 13 Jun 2024 18:52:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1576,7 +1923,7 @@ font-style: inherit;">grep</span> mvstore</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240502-mvsqlite-launchd.html</guid>
-  <pubDate>Wed, 12 Jun 2024 04:42:15 GMT</pubDate>
+  <pubDate>Thu, 13 Jun 2024 18:52:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1687,7 +2034,7 @@ print(world.get_state())</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240502-mesh-object-sync-benchmark.html</guid>
-  <pubDate>Wed, 12 Jun 2024 04:42:15 GMT</pubDate>
+  <pubDate>Thu, 13 Jun 2024 18:52:59 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1883,368 +2230,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240502-membrane-framework-identity-post.html</guid>
-  <pubDate>Wed, 12 Jun 2024 04:42:15 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240502-install-windows-on-older-computers.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-enable-windows-11-installation-on-older-computers" class="level1">
-<h1>Proposed: Enable Windows 11 Installation on Older Computers</h1>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>Many users with older computers wish to upgrade to Windows 11, but face compatibility issues.</p>
-</section>
-<section id="problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>Facilitating the installation of Windows 11 on older computer systems.</p>
-</section>
-<section id="solution-overview" class="level2">
-<h2 class="anchored" data-anchor-id="solution-overview">Solution Overview</h2>
-<p>The following steps outline a method to bypass certain system requirements during the Windows 11 installation process:</p>
-<ol type="1">
-<li>Initiate the Windows 11 installer.</li>
-<li>Press SHIFT + F10 to open the command prompt.</li>
-<li>Enter <code>regedit</code> and press Enter to open the registry editor.</li>
-<li>Navigate to <code>HKEY_LOCAL_MACHINE\SYSTEM\Setup</code>.</li>
-<li>Create a new registry key under Setup named <code>LabConfig</code>.</li>
-<li>Within <code>LabConfig</code>, create DWORD values named <code>BypassTPMCheck</code> and <code>BypassSecureBootCheck</code>, setting each to <code>1</code>. If you also want to bypass the RAM requirement, add a DWORD value for <code>BypassRAMCheck</code>.</li>
-<li>Close both regedit and the command prompt. You should now be able to proceed with your Windows 11 installation.</li>
-</ol>
-</section>
-<section id="benefits" class="level2">
-<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
-<ul>
-<li>Allows users with older hardware to access Windows 11 features.</li>
-<li>Extends the lifespan of older devices.</li>
-</ul>
-</section>
-<section id="downsides" class="level2">
-<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
-<ul>
-<li>Potential security risks due to bypassing TPM and Secure Boot checks.</li>
-<li>Performance may not be optimal on older hardware.</li>
-</ul>
-</section>
-<section id="alternatives-considered" class="level2">
-<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
-<ul>
-<li>Upgrading hardware to meet Windows 11 requirements.</li>
-<li>Sticking with Windows 10 or other operating systems.</li>
-</ul>
-</section>
-<section id="infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
-<p>This proposal is primarily beneficial for users with older hardware who wish to use Windows 11.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>This proposal is currently under consideration by the V-Sekai development team.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai Development Team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-<li>Windows 11</li>
-<li>Installation</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - The GitHub page for the V-Sekai open-source project.</li>
-<li><a href="https://www.tomshardware.com/how-to/bypass-windows-11-tpm-requirement">Toms Hardware: bypass-windows-11-tpm-requirement</a></li>
-</ol>
-<p>Assisted by AI assistant Aria.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240502-install-windows-on-older-computers.html</guid>
-  <pubDate>Wed, 12 Jun 2024 04:42:15 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240502-gltf-fbx-tscn-vrm.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-workflows-for-3d-model-conversion" class="level1">
-<h1>Proposed: Workflows for 3D Model Conversion</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>In the realm of 3D modeling and animation, there are numerous file formats each with their own unique features and capabilities. However, not all software can support every format, leading to a need for conversion tools.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>The challenge lies in creating a tool that can convert between different 3D model formats, specifically from glTF to FBX, while maintaining the integrity of the original model.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>We propose to develop a workflow for 3D model conversion using the Elixir Membrane Framework.</p>
-<p>The primary function of this tool would be to take a glTF file as input and export it as an FBX file. This tool could also potentially support other formats such as USD, Godot Engine tscn, and VRM.</p>
-<p>Additionally, we propose a feature where the tool can take a post and return a result. This could be useful for batch processing or automated tasks.</p>
-<p>To make these services accessible, we plan to expose them via a Tailscale funnel.</p>
-<p>For many of the flows, we can use USD to glTF, then glTF to Godot Engine, and finally Godot Engine to VRM and back. This approach allows us to leverage existing conversion libraries and tools, reducing the amount of custom code we need to write.</p>
-<pre class="mermaid"><code>graph LR
-    A[USD] --&gt; B[glTF]
-    B --&gt; C[Godot Engine]
-    C --&gt; D[VRM]
-    D --&gt; B</code></pre>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p>This tool would greatly simplify the process of converting 3D models between different formats, saving time and reducing potential errors.</p>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>There may be some loss of data or quality during the conversion process, depending on the complexity of the model and the capabilities of the target format.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Alternative solutions could involve using existing conversion tools or plugins, but these may not offer the same level of control or flexibility as a custom-built tool.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>While the primary use case is for converting glTF to FBX, the tool could also be used for other less common conversions.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>This tool would be developed in-house by the V-Sekai development team.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240502-gltf-fbx-tscn-vrm.html</guid>
-  <pubDate>Wed, 12 Jun 2024 04:42:15 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240425-recharge-cycle.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-stuck-recharge-cycle" class="level1">
-<h1>Proposed: Stuck / Recharge Cycle</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>In the realm of software development, it’s common for developers to hit a wall or get “stuck” on a particular problem. This can lead to frustration and decreased productivity.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Developers often find themselves stuck on a problem, unable to make progress. This can be due to a variety of reasons such as lack of understanding, complexity of the problem, or simply mental fatigue.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>The proposed solution is a “Stuck/Recharge” cycle. When a developer finds themselves stuck on a problem, they switch to working on someone else’s problem. This change in perspective can help recharge their mental energy and when they return to their original problem, they may find that they are able to approach it with a fresh mindset.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> (developer<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">isStuck</span>()) {</span>
-<span id="cb1-2">    developer<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">switchTask</span>()<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb1-3">    developer<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">recharge</span>()<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb1-4">    developer<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">returnToOriginalTask</span>()<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb1-5">}</span></code></pre></div>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p>This approach can help prevent burnout and increase overall productivity. It also promotes collaboration and knowledge sharing among the team.</p>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>There could be potential downsides such as context switching overhead and disruption of flow. However, these can be mitigated with proper task management and communication within the team.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>An alternative approach could be to have dedicated “unsticking” sessions where developers come together to brainstorm solutions for stuck problems. However, this requires coordination and may not be as flexible as the proposed solution.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>This proposal may not be beneficial for simple tasks or for developers who rarely get stuck.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>This proposal is applicable to our core development process and can be implemented by us.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240425-recharge-cycle.html</guid>
-  <pubDate>Wed, 12 Jun 2024 04:42:15 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240425-proposal-prompt-system.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-chatgpt-4-based-proposal-prompt-system" class="level1">
-<h1>Proposed: ChatGPT-4 Based Proposal Prompt System</h1>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>In the current scenario, creating proposals can be a time-consuming task. It requires a lot of brainstorming and writing which can sometimes lead to inefficiency and delay in work.</p>
-</section>
-<section id="problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>The problem lies in the manual creation of proposals. The process is slow and often lacks creativity due to human limitations. There is a need for an automated system that can generate proposals efficiently and creatively.</p>
-</section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>We propose a system that uses OpenAI’s ChatGPT-4 to generate proposals. The user will provide a prompt such as <code>Create a proposal. Don't be purple. Be snappy.</code> and the system will use this prompt to generate a proposal.</p>
-</section>
-<section id="benefits" class="level2">
-<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
-<ol type="1">
-<li><strong>Efficiency</strong>: This system will significantly reduce the time taken to create proposals.</li>
-<li><strong>Creativity</strong>: With GPT-4’s advanced language model, the proposals generated will be creative and engaging.</li>
-<li><strong>Ease of Use</strong>: Users just need to provide a prompt and the system will take care of the rest.</li>
-</ol>
-</section>
-<section id="downsides" class="level2">
-<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
-<p>The system may not always provide the best decision but only the most common wisdom. It might require human intervention to fine-tune the proposals.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>There could be other AI models or methods to automate the proposal generation process. However, considering the performance and capabilities of GPT-4, it seems to be the most suitable choice.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>This system might not be very useful for users who rarely need to create proposals.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>The system will be developed and maintained by the V-Sekai development team.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-<li>Proposal Generation</li>
-<li>GPT-4</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-</ol>
-<p>This proposal was assisted by AI assistant Aria.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240425-proposal-prompt-system.html</guid>
-  <pubDate>Wed, 12 Jun 2024 04:42:15 GMT</pubDate>
+  <pubDate>Thu, 13 Jun 2024 18:52:59 GMT</pubDate>
 </item>
 </channel>
 </rss>
