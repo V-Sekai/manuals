@@ -61,5 +61,6 @@ Status: Proposed
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - The GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
 3. [objaverse_annotations](https://github.com/google-deepmind/objaverse_annotations)
 4. [V-Sekai.blue-tin-fox-models](https://github.com/V-Sekai/V-Sekai.blue-tin-fox-models)
+5. [https://github.com/maria-korosteleva/garment-pattern-generator]
 
 AI assistant Aria assisted with this article.
