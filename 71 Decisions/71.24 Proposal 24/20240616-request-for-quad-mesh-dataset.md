@@ -8,7 +8,7 @@ Mesh Transformers, which consist of a construction worker (auto encoder) and an 
 
 The task at hand is to create a triangle mesh to quad mesh dataset that's suitable for machine learning training. The meshes should be converted from triangles to quads, have captions, contain a maximum of 1k quads, and include at least 100 objects.
 
-Note that triangulation a quad mesh is not the same task.
+Note that triangulating a quad mesh is not the same task.
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
