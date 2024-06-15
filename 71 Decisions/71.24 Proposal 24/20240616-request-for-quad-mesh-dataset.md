@@ -1,16 +1,16 @@
 # Proposed: Triangle to Quad Mesh Dataset Creation
 
-## Context
+## The Context
 
 Mesh Transformers, which consist of a construction worker (auto encoder) and an architect (transformer), aim to simplify the process of generating 3D models. Users can generate a 3D model using a prompt, eliminating the need to search through numerous 3D libraries.
 
-## Problem Statement
+## The Problem Statement
 
 The task at hand is to create a triangle mesh to quad mesh dataset that's suitable for machine learning training. The meshes should be converted from triangles to quads, have captions, contain a maximum of 1k quads, and include at least 100 objects.
 
 Note that quad mesh to triangle mesh is not the same task.
 
-## Proposal
+## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
 We propose using remeshing tools convert triangle meshes to quad meshes.
 
@@ -20,19 +20,19 @@ We propose using remeshing tools convert triangle meshes to quad meshes.
 - type annotation
 - material annotation
 
-## Benefits
+## The Benefits
 
 This proposal simplifies the process of creating 3D models. It allows users to quickly receive a 3D model that fits their needs.
 
-## Downsides
+## The Downsides
 
 The proposal may require significant computational resources. Additionally, there may be some loss of detail during the conversion process.
 
-## Road Not Taken
+## The Road Not Taken
 
 An alternative approach would involve manually converting each quad mesh to a triangle mesh and adding captions. However, this method would be time-consuming and not feasible for large datasets.
 
-## Infrequent Use Case
+## The Infrequent Use Case
 
 The proposal may not benefit users who only need a small number of 3D models or those with very specific requirements.
 
