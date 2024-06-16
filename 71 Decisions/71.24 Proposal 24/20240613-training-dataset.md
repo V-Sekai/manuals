@@ -1,4 +1,4 @@
-# Proposed: Dataset Size for Training Mesh Transformer
+# Proposed: Dataset Scaling for Training Mesh Transformer
 
 ## The Context
 
