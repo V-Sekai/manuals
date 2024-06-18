@@ -18,6 +18,7 @@ Here's a Python script that uses the Gradio client to generate captions for imag
 ```python
 # Copyright (c) 2019-2022 K. S. Ernest (iFire) Lee (fire)
 # SPDX-License-Identifier: MIT
+# pip3 install gradio_client
 from gradio_client import Client, handle_file
 
 file_or_url_paths = ["//192.168.1.72/share/Screenshot 2024-05-22 at 6.05.58 PM.png"]
