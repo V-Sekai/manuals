@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.555</generator>
-<lastBuildDate>Mon, 17 Jun 2024 05:16:30 GMT</lastBuildDate>
+<lastBuildDate>Tue, 18 Jun 2024 21:52:51 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/71 Decisions/present-proposal-template.html</link>
@@ -75,11 +75,259 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/present-proposal-template.html</guid>
-  <pubDate>Mon, 17 Jun 2024 05:16:30 GMT</pubDate>
+  <pubDate>Tue, 18 Jun 2024 21:52:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
-  <link>https://v-sekai.github.io/manuals/71 Decisions/71.25 Proposal 25/present-4-player-test-vsekai.html</link>
+  <link>https://v-sekai.github.io/manuals/71 Decisions/71.25 Proposal 25/present-caption-photos-for-cicd.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-image-captioning-tool" class="level1">
+<h1>Proposed: Image Captioning Tool</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>In the V-Sekai project, we are developing a continuous integration and continuous delivery (CI/CD) tool for Meta Platform Inc.’s Virtual Reality OpenXR API headset simulator (Windows 11). A key feature of this tool is the ability to caption images.</p>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>We need to caption images for two main reasons:</p>
+<ol type="1">
+<li>Debugging: Developers can quickly identify issues by reading the captions.</li>
+<li>Dataset Creation: We can create a nominal vs anomaly dataset for visual anomaly detection.</li>
+</ol>
+</section>
+<section id="proposal" class="level2">
+<h2 class="anchored" data-anchor-id="proposal">Proposal</h2>
+<p>Here’s a Python script that uses the Gradio client to generate captions for images:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Copyright (c) 2019-2022 K. S. Ernest (iFire) Lee (fire)</span></span>
+<span id="cb1-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span><span class="an" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">SPDX-License-Identifier:</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> MIT</span></span>
+<span id="cb1-3"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> gradio_client <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> Client, handle_file</span>
+<span id="cb1-4"></span>
+<span id="cb1-5">file_or_url_paths <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"//192.168.1.72/share/Screenshot 2024-05-22 at 6.05.58 PM.png"</span>]</span>
+<span id="cb1-6">client <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Client(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gokaygokay/PaliGemma-PixelProse"</span>)</span>
+<span id="cb1-7"></span>
+<span id="cb1-8"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> path <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> file_or_url_paths:</span>
+<span id="cb1-9">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">try</span>:</span>
+<span id="cb1-10">        result <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> client.predict(</span>
+<span id="cb1-11">            image<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>handle_file(path),</span>
+<span id="cb1-12">            api_name<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"/create_captions_rich"</span></span>
+<span id="cb1-13">        )</span>
+<span id="cb1-14">        <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(result)</span>
+<span id="cb1-15">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">except</span> <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">Exception</span> <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> e:</span>
+<span id="cb1-16">        <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"An error occurred while processing </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>path<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>e<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<ul>
+<li>Improved debugging process.</li>
+<li>Facilitates the creation of a dataset for visual anomaly detection.</li>
+</ul>
+</section>
+<section id="downsides" class="level2">
+<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
+<ul>
+<li>The accuracy of the captions depends on the performance of the Gradio client.</li>
+</ul>
+</section>
+<section id="road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="road-not-taken">Road Not Taken</h2>
+<ul>
+<li>We could have used other image captioning tools or libraries, but we chose Gradio due to its simplicity and ease of use.</li>
+</ul>
+</section>
+<section id="infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
+<ul>
+<li>This tool may not be useful when working with non-visual data or when debugging is not required.</li>
+</ul>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<ul>
+<li>This feature will be developed and maintained by the V-Sekai development team.</li>
+</ul>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - The GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>This proposal was assisted by Aria, an AI assistant.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/71 Decisions/71.25 Proposal 25/present-caption-photos-for-cicd.html</guid>
+  <pubDate>Tue, 18 Jun 2024 21:52:51 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/71 Decisions/71.25 Proposal 25/20240618-schedule-as-binary-tree.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-transforming-schedule-dag-into-a-left-child-right-sibling-binary-tree" class="level1">
+<h1>Proposed: Transforming Schedule DAG into a Left-child Right-sibling Binary Tree</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>You have a Directed Acyclic Graph (DAG) for a schedule.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>You want to transform the schedule DAG into a Left-child right-sibling binary tree. This transformation will help in finding ways to hasten the critical path.</p>
+</section>
+<section id="solution-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="solution-proposal">Solution Proposal</h2>
+<p>The original graph was a Directed Acyclic Graph (DAG) where each node could have multiple children. The operations performed on this DAG were aimed at transforming it into a Left-child right-sibling binary tree. Here’s a description of the operations:</p>
+<ol type="1">
+<li><p><strong>Identifying the First Child:</strong> For each node in the original DAG, we identified the first child node. This is the left-most child in the original diagram.</p></li>
+<li><p><strong>Identifying Siblings:</strong> For each first child identified in step 1, we then identified its siblings. These are the nodes that share the same parent as the first child.</p></li>
+<li><p><strong>Creating Binary Tree:</strong> We created a new binary tree where each node has at most two children: the left child is the first child from the original diagram, and the right child is the next sibling of the left child.</p></li>
+<li><p><strong>Preserving Order:</strong> The order of the nodes in the binary tree follows the order of the nodes in the original DAG.</p></li>
+</ol>
+<p>The resulting binary tree maintains the directed acyclic property of the original DAG, but now each node has at most two children, making it easier to traverse and manage.</p>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>Transforming the schedule DAG into a Left-child right-sibling binary tree simplifies the structure, making it easier to traverse and manage. It also helps in identifying the critical path more efficiently, which can lead to improved scheduling and better resource allocation.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>The transformation process may require additional computational resources, especially for large DAGs. Also, if the original DAG has nodes with more than two children, some information may be lost in the transformation.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An alternative approach could have been to keep the original DAG structure and optimize the scheduling algorithm. However, this would not simplify the structure or make it easier to manage.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>This proposal may not be beneficial for small DAGs or DAGs where the critical path is easily identifiable without transformation.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>The proposed transformation process will be implemented by the V-Sekai development team.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+<li>Fire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+<li>DAG</li>
+<li>Binary Tree</li>
+<li>Schedule Optimization</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/71 Decisions/71.25 Proposal 25/20240618-schedule-as-binary-tree.html</guid>
+  <pubDate>Tue, 18 Jun 2024 21:52:51 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/71 Decisions/71.25 Proposal 25/20240618-4-player-test-vsekai.html</link>
   <description><![CDATA[ 
 
 
@@ -161,8 +409,8 @@
 </section>
 
  ]]></description>
-  <guid>https://v-sekai.github.io/manuals/71 Decisions/71.25 Proposal 25/present-4-player-test-vsekai.html</guid>
-  <pubDate>Mon, 17 Jun 2024 05:16:30 GMT</pubDate>
+  <guid>https://v-sekai.github.io/manuals/71 Decisions/71.25 Proposal 25/20240618-4-player-test-vsekai.html</guid>
+  <pubDate>Tue, 18 Jun 2024 21:52:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -251,7 +499,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.24 Proposal 24/20240616-request-for-quad-mesh-dataset.html</guid>
-  <pubDate>Mon, 17 Jun 2024 05:16:30 GMT</pubDate>
+  <pubDate>Tue, 18 Jun 2024 21:52:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -327,7 +575,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.24 Proposal 24/20240615-what-is-mesh-transformers.html</guid>
-  <pubDate>Mon, 17 Jun 2024 05:16:30 GMT</pubDate>
+  <pubDate>Tue, 18 Jun 2024 21:52:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -418,7 +666,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.24 Proposal 24/20240613-training-dataset.html</guid>
-  <pubDate>Mon, 17 Jun 2024 05:16:30 GMT</pubDate>
+  <pubDate>Tue, 18 Jun 2024 21:52:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -509,7 +757,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.24 Proposal 24/20240613-training-dataset-creation-with-csg.html</guid>
-  <pubDate>Mon, 17 Jun 2024 05:16:30 GMT</pubDate>
+  <pubDate>Tue, 18 Jun 2024 21:52:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -593,7 +841,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.24 Proposal 24/20240613-modifying-the-mesh-transformer-for-quads.html</guid>
-  <pubDate>Mon, 17 Jun 2024 05:16:30 GMT</pubDate>
+  <pubDate>Tue, 18 Jun 2024 21:52:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -684,7 +932,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.24 Proposal 24/20240613-1k-quad-limit.html</guid>
-  <pubDate>Mon, 17 Jun 2024 05:16:30 GMT</pubDate>
+  <pubDate>Tue, 18 Jun 2024 21:52:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -774,7 +1022,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.24 Proposal 24/20240611-test-1x-and-4x.html</guid>
-  <pubDate>Mon, 17 Jun 2024 05:16:30 GMT</pubDate>
+  <pubDate>Tue, 18 Jun 2024 21:52:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -849,7 +1097,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.24 Proposal 24/20240611-lower-learning-rate.html</guid>
-  <pubDate>Mon, 17 Jun 2024 05:16:30 GMT</pubDate>
+  <pubDate>Tue, 18 Jun 2024 21:52:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -954,7 +1202,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.23 Proposal 23/20240608-skin-weight-transfer-skeleton-merge.html</guid>
-  <pubDate>Mon, 17 Jun 2024 05:16:30 GMT</pubDate>
+  <pubDate>Tue, 18 Jun 2024 21:52:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1126,7 +1374,7 @@ func mirror_pose(bone_name):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.23 Proposal 23/20240608-for-skeleton-mirroring-use-the-godot-humanoid.html</guid>
-  <pubDate>Mon, 17 Jun 2024 05:16:30 GMT</pubDate>
+  <pubDate>Tue, 18 Jun 2024 21:52:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1209,7 +1457,7 @@ func mirror_pose(bone_name):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.23 Proposal 23/20240605-sustainable-version-management-for-godot-engine-in-v-sekai.html</guid>
-  <pubDate>Mon, 17 Jun 2024 05:16:30 GMT</pubDate>
+  <pubDate>Tue, 18 Jun 2024 21:52:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1312,7 +1560,7 @@ func mirror_pose(bone_name):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.23 Proposal 23/20240529-improve-godot-import-ecosystem.html</guid>
-  <pubDate>Mon, 17 Jun 2024 05:16:30 GMT</pubDate>
+  <pubDate>Tue, 18 Jun 2024 21:52:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1396,7 +1644,7 @@ func mirror_pose(bone_name):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.22 Proposed 22/20240528-pipeline-godot-wasm-importer.html</guid>
-  <pubDate>Mon, 17 Jun 2024 05:16:30 GMT</pubDate>
+  <pubDate>Tue, 18 Jun 2024 21:52:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1462,7 +1710,7 @@ func mirror_pose(bone_name):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.01 Draft 01/20240522-webrtc-relay-test.html</guid>
-  <pubDate>Mon, 17 Jun 2024 05:16:30 GMT</pubDate>
+  <pubDate>Tue, 18 Jun 2024 21:52:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1562,7 +1810,7 @@ func mirror_pose(bone_name):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.01 Draft 01/20240522-shader-motion-to-bvh.html</guid>
-  <pubDate>Mon, 17 Jun 2024 05:16:30 GMT</pubDate>
+  <pubDate>Tue, 18 Jun 2024 21:52:51 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1625,277 +1873,7 @@ func mirror_pose(bone_name):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/71 Decisions/71.01 Draft 01/20240522-discord-inworld-portal.html</guid>
-  <pubDate>Mon, 17 Jun 2024 05:16:30 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/71 Decisions/71.01 Draft 01/20240522-discord-bot.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="draft-notify-community-members-and-users-about-activity-and-updates-via-a-discord-bot" class="level1">
-<h1>Draft: Notify community members and users about activity and updates via a Discord bot</h1>
-<ul>
-<li>Status: draft</li>
-</ul>
-<section id="context-and-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
-<p>We want a way to notify community members and users about activity and updates.</p>
-</section>
-<section id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="level2">
-<h2 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h2>
-<p>A discord bot would be able to inform users via Discord about updates and changes.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>We would connect to Discord API from Elixir using one of several integration libraries.</p>
-<p>We can report #information such as server player count by editing a message; or updating the bot status.</p>
-<p>I would also like to poll #information such as CI/CD builds and deployments. We could make an API where someone or something can post a message displayed in Discord using curl or some command, though we would have to make sure this is locked behind a secret key. Unclear.</p>
-</section>
-<section id="positive-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences <!-- optional --></h2>
-<ul>
-<li>Grow the community</li>
-<li>Help us manage the project</li>
-</ul>
-</section>
-<section id="negative-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences <!-- optional --></h2>
-<ul>
-<li>Maintenance costs of having a service fed</li>
-</ul>
-</section>
-</section>
-<section id="other-proposal-integration-with-discord-via-webhook" class="level1">
-<h1>Other proposal: Integration with Discord via Webhook</h1>
-<section id="positive-consequences-1" class="level2">
-<h2 class="anchored" data-anchor-id="positive-consequences-1">Positive Consequences</h2>
-<ul>
-<li>Lower maintenance burden</li>
-</ul>
-</section>
-<section id="negative-consequences-1" class="level2">
-<h2 class="anchored" data-anchor-id="negative-consequences-1">Negative Consequences</h2>
-<ul>
-<li>No access to commands or statuses. Only capable of posting messages.</li>
-</ul>
-</section>
-<section id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="level2">
-<h2 class="anchored" data-anchor-id="if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</h2>
-<p>Yes, it is possible to script querying the itch.io or Uro shards API. This proposal aims to make this #information more accessible to those who would not script it.</p>
-</section>
-<section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
-<p>We need this to grow the community.</p>
-</section>
-<section id="derivative-license" class="level2">
-<h2 class="anchored" data-anchor-id="derivative-license">Derivative License</h2>
-<p>Copyright (c) 2020-2021 V-Sekai contributors.</p>
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/71 Decisions/71.01 Draft 01/20240522-discord-bot.html</guid>
-  <pubDate>Mon, 17 Jun 2024 05:16:30 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/71 Decisions/71.19 Accepted 19/20240511-wasm-cache-incident.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="accepted-wasm-cache-incident-report" class="level1">
-<h1>Accepted: Wasm Cache Incident Report</h1>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>The issue arose while attempting to build the desync module for Godot Engine 4.3 on Github actions.</p>
-</section>
-<section id="problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>The following error was encountered even though the module is disabled from building and other code was identical to master:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">error:</span> undefined symbol: saveSetjmp <span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">(</span><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">referenced</span> by root reference <span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">(</span><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">e.g.</span> compiled C/C++ code<span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">))</span></span>
-<span id="cb1-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">warning:</span> To disable errors for undefined symbols use <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">`</span><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">-sERROR_ON_UNDEFINED_SYMBOLS=0</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">`</span></span>
-<span id="cb1-3"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">warning:</span> _saveSetjmp may need to be added to EXPORTED_FUNCTIONS if it arrives from a system library</span>
-<span id="cb1-4"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">error:</span> undefined symbol: testSetjmp <span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">(</span><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">referenced</span> by root reference <span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">(</span><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">e.g.</span> compiled C/C++ code<span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">))</span></span>
-<span id="cb1-5"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">warning:</span> _testSetjmp may need to be added to EXPORTED_FUNCTIONS if it arrives from a system library</span>
-<span id="cb1-6"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Error:</span> Aborting compilation due to previous errors</span>
-<span id="cb1-7"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">em++:</span> error: <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'/home/runner/work/_temp/5ca5bc6c-db6b-4fae-a502-2fde903054ae/emsdk-main/node/16.20.0_64bit/bin/node /home/runner/work/_temp/5ca5bc6c-db6b-4fae-a502-2fde903054ae/emsdk-main/upstream/emscripten/src/compiler.mjs /tmp/tmpjyhtoot1.json'</span> failed <span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">(</span><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">returned</span> 1<span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span id="cb1-8"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">scons:</span> <span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">***</span> <span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">[</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">bin/godot.web.template_release.wasm32.js</span><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">]</span> Error 1</span>
-<span id="cb1-9"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">scons:</span> building terminated because of errors.</span></code></pre></div>
-</section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>The proposed solution involves modifying the web build Github Actions and suffixing the branch name. The steps are as follows:</p>
-<ol type="1">
-<li>Modify the <code>GODOT_BASE_BRANCH</code> environment variable in the Github Actions workflow file:</li>
-</ol>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">name</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> 🌐 Web Builds</span></span>
-<span id="cb2-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">on</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span></span>
-<span id="cb2-3"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">workflow_call</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span></span>
-<span id="cb2-4"></span>
-<span id="cb2-5"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Global Settings</span></span>
-<span id="cb2-6"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">env</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span></span>
-<span id="cb2-7"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">  # Used for the cache key. Add version suffix to force clean build.</span></span>
-<span id="cb2-8"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">GODOT_BASE_BRANCH</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> master</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"> # Add a suffix here.</span></span></code></pre></div>
-<ol start="2" type="1">
-<li>Combine master with em version: <code>master-em-3.1.59</code></li>
-<li>Commit the changes.</li>
-</ol>
-</section>
-<section id="benefits" class="level2">
-<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
-<p>This solution will help in resolving the current build issue and ensure that the Godot Engine 4.3 desync module is built successfully.</p>
-</section>
-<section id="downsides" class="level2">
-<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
-<p>The downside of this approach is that it requires manual intervention for each build process, which might not be feasible for continuous integration/continuous deployment (CI/CD) pipelines.</p>
-</section>
-<section id="alternatives-considered" class="level2">
-<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
-<p>An alternative could be to investigate the root cause of the undefined symbols and fix them at the source code level.</p>
-</section>
-<section id="infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
-<p>This solution is specifically for the current build issue and may not apply to other build problems or modules.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>This proposal is made by us and is intended to be implemented in the core build process of the Godot Engine.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Accepted</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - The GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-</ol>
-<p>This proposal was assisted by Aria, an AI assistant.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/71 Decisions/71.19 Accepted 19/20240511-wasm-cache-incident.html</guid>
-  <pubDate>Mon, 17 Jun 2024 05:16:30 GMT</pubDate>
+  <pubDate>Tue, 18 Jun 2024 21:52:51 GMT</pubDate>
 </item>
 </channel>
 </rss>

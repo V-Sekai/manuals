@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -121,15 +155,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#proposed-4-player-test-v-sekai" id="toc-proposed-4-player-test-v-sekai" class="nav-link active" data-scroll-target="#proposed-4-player-test-v-sekai">Proposed: 4 Player Test V-Sekai</a>
+  <li><a href="#proposed-image-captioning-tool" id="toc-proposed-image-captioning-tool" class="nav-link active" data-scroll-target="#proposed-image-captioning-tool">Proposed: Image Captioning Tool</a>
   <ul class="collapse">
   <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
   <li><a href="#problem-statement" id="toc-problem-statement" class="nav-link" data-scroll-target="#problem-statement">Problem Statement</a></li>
-  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
+  <li><a href="#proposal" id="toc-proposal" class="nav-link" data-scroll-target="#proposal">Proposal</a></li>
   <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
   <li><a href="#downsides" id="toc-downsides" class="nav-link" data-scroll-target="#downsides">Downsides</a></li>
-  <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
-  <li><a href="#the-infrequent-use-case" id="toc-the-infrequent-use-case" class="nav-link" data-scroll-target="#the-infrequent-use-case">The Infrequent Use Case</a></li>
+  <li><a href="#road-not-taken" id="toc-road-not-taken" class="nav-link" data-scroll-target="#road-not-taken">Road Not Taken</a></li>
+  <li><a href="#infrequent-use-case" id="toc-infrequent-use-case" class="nav-link" data-scroll-target="#infrequent-use-case">Infrequent Use Case</a></li>
   <li><a href="#in-core-and-done-by-us" id="toc-in-core-and-done-by-us" class="nav-link" data-scroll-target="#in-core-and-done-by-us">In Core and Done by Us</a></li>
   <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
   <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
@@ -137,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.25 Proposal 25/present-4-player-test-vsekai.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.25 Proposal 25/present-caption-photos-for-cicd.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -145,52 +179,70 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="proposed-4-player-test-v-sekai" class="level1">
-<h1>Proposed: 4 Player Test V-Sekai</h1>
+<section id="proposed-image-captioning-tool" class="level1">
+<h1>Proposed: Image Captioning Tool</h1>
 <section id="context" class="level2">
 <h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>V-Sekai is a social VR functionality for the Godot Engine. It’s an open-source project that brings social VR/VRSNS/metaverse components to the Godot Engine.</p>
+<p>In the V-Sekai project, we are developing a continuous integration and continuous delivery (CI/CD) tool for Meta Platform Inc.’s Virtual Reality OpenXR API headset simulator (Windows 11). A key feature of this tool is the ability to caption images.</p>
 </section>
 <section id="problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>We want to host a 4 player test tonight.</p>
-</section>
-<section id="solution" class="level2">
-<h2 class="anchored" data-anchor-id="solution">Solution</h2>
-<p>Here is a step-by-step guide on how we can achieve this:</p>
+<p>We need to caption images for two main reasons:</p>
 <ol type="1">
-<li><strong>Import a map into V-Sekai</strong>: We will use a map with a CC-BY or CC0 license for the world upload.</li>
-<li><strong>Start a server</strong>: We will set up and start a server where the test will be hosted.</li>
-<li><strong>Invite people</strong>: We will then invite the players to join the test.</li>
+<li>Debugging: Developers can quickly identify issues by reading the captions.</li>
+<li>Dataset Creation: We can create a nominal vs anomaly dataset for visual anomaly detection.</li>
 </ol>
+</section>
+<section id="proposal" class="level2">
+<h2 class="anchored" data-anchor-id="proposal">Proposal</h2>
+<p>Here’s a Python script that uses the Gradio client to generate captions for images:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Copyright (c) 2019-2022 K. S. Ernest (iFire) Lee (fire)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="an">SPDX-License-Identifier:</span><span class="co"> MIT</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gradio_client <span class="im">import</span> Client, handle_file</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>file_or_url_paths <span class="op">=</span> [<span class="st">"//192.168.1.72/share/Screenshot 2024-05-22 at 6.05.58 PM.png"</span>]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> Client(<span class="st">"gokaygokay/PaliGemma-PixelProse"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> path <span class="kw">in</span> file_or_url_paths:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> client.predict(</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            image<span class="op">=</span>handle_file(path),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            api_name<span class="op">=</span><span class="st">"/create_captions_rich"</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(result)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"An error occurred while processing </span><span class="sc">{</span>path<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="benefits" class="level2">
 <h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
-<p>Hosting a 4 player test will allow us to:</p>
 <ul>
-<li>Understand the performance of our application with multiple users.</li>
-<li>Identify any bugs or issues that may arise in a multi-player environment.</li>
+<li>Improved debugging process.</li>
+<li>Facilitates the creation of a dataset for visual anomaly detection.</li>
 </ul>
 </section>
 <section id="downsides" class="level2">
 <h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
-<p>Potential downsides could include:</p>
 <ul>
-<li>Server issues due to multiple connections.</li>
-<li>Unidentified bugs causing disruptions during the test.</li>
+<li>The accuracy of the captions depends on the performance of the Gradio client.</li>
 </ul>
 </section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Alternative solutions could have been to conduct individual tests with each player, but this would not give us insights into the multi-player experience.</p>
+<section id="road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="road-not-taken">Road Not Taken</h2>
+<ul>
+<li>We could have used other image captioning tools or libraries, but we chose Gradio due to its simplicity and ease of use.</li>
+</ul>
 </section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>This proposal does not cover scenarios where more than 4 players are needed for testing.</p>
+<section id="infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
+<ul>
+<li>This tool may not be useful when working with non-visual data or when debugging is not required.</li>
+</ul>
 </section>
 <section id="in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>The entire process from importing the map to inviting the players will be done by the V-Sekai development team.</p>
+<ul>
+<li>This feature will be developed and maintained by the V-Sekai development team.</li>
+</ul>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
@@ -212,9 +264,9 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <ol type="1">
 <li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - The GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
 </ol>
-<p>AI assistant Aria assisted with this article.</p>
+<p>This proposal was assisted by Aria, an AI assistant.</p>
 
 
 </section>
@@ -782,7 +834,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.25 Proposal 25/present-4-player-test-vsekai.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/71 Decisions/71.25 Proposal 25/present-caption-photos-for-cicd.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
