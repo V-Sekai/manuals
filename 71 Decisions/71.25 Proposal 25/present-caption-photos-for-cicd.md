@@ -72,5 +72,9 @@ Status: Proposed
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - The GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
+3. [https://github.com/V-Sekai-fire/character-rigging-anomaly-detection]
+4. [https://anomalib.readthedocs.io/en/v1.1.0/]
+5. [https://developer.oculus.com/documentation/native/xrsim-intro/]
+6. [https://github.com/V-Sekai-fire/cog-caption-image.git]
 
 This proposal was assisted by Aria, an AI assistant.
