@@ -17,7 +17,7 @@ Our approach to this problem involves leveraging existing resources and tools:
 3. Use mingw for Windows builds.
 4. Apply clang for Linux builds.
 5. Implement emscripten for web assembly.
-6. Utilize the android sdk on linux for Android builds.
+6. ~~Utilize the android sdk on linux for Android builds.~~
 
 In addition to these steps, we will also implement automated testing to ensure consistency across all systems. This will involve creating test scripts that can run on each platform, checking for any discrepancies or issues.
 
