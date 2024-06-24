@@ -6,7 +6,7 @@ V-Sekai is a Virtual Reality Social Network Service (VRSNS).
 
 ## The Problem Statement
 
-What length should a game demo be?s
+What length should a game demo be?
 
 ## Proposal
 
