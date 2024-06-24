@@ -10,9 +10,13 @@ There is a need to explain the architecture of V-Sekai, specifically the roles a
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
-- Game Client connect to Uro and Game Servers
-- Game Backend "Uro"
-- Game Servers
+The game client is the application that users interact with. It connects to both Uro, our backend service, and directly to game servers.
+
+The game editor is a separate tool used by game designers. They use it to create and upload new worlds, props, and avatars to the Uro backend.
+
+Uro is the backend service for our game. It handles requests from both the game client and game editor. It stores and serves game assets like worlds, props, and avatars.
+
+Game servers are responsible for running the game logic in real-time. They communicate with the game clients to keep the game state synchronized between all players.
 
 ## The Benefits
 
