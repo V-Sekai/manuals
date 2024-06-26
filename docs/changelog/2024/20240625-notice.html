@@ -117,22 +117,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#v-sekai-changelog---june-2024" id="toc-v-sekai-changelog---june-2024" class="nav-link active" data-scroll-target="#v-sekai-changelog---june-2024">V-Sekai Changelog - June 2024</a>
+  <li><a href="#special-notice-v-sekai-2023-2024" id="toc-special-notice-v-sekai-2023-2024" class="nav-link active" data-scroll-target="#special-notice-v-sekai-2023-2024">Special Notice: V-Sekai 2023-2024</a>
   <ul class="collapse">
-  <li><a href="#released" id="toc-released" class="nav-link" data-scroll-target="#released">[Released]</a></li>
-  <li><a href="#unreleased" id="toc-unreleased" class="nav-link" data-scroll-target="#unreleased">[Unreleased]</a>
+  <li><a href="#stuff-we-did-over-the-past-year" id="toc-stuff-we-did-over-the-past-year" class="nav-link" data-scroll-target="#stuff-we-did-over-the-past-year">Stuff we did over the past year:</a>
   <ul class="collapse">
-  <li><a href="#added" id="toc-added" class="nav-link" data-scroll-target="#added">Added</a></li>
-  <li><a href="#changed" id="toc-changed" class="nav-link" data-scroll-target="#changed">Changed</a></li>
-  <li><a href="#fixed" id="toc-fixed" class="nav-link" data-scroll-target="#fixed">Fixed</a></li>
-  <li><a href="#deprecated" id="toc-deprecated" class="nav-link" data-scroll-target="#deprecated">Deprecated</a></li>
-  <li><a href="#removed" id="toc-removed" class="nav-link" data-scroll-target="#removed">Removed</a></li>
-  <li><a href="#security" id="toc-security" class="nav-link" data-scroll-target="#security">Security</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">2023</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2023</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">2024</a></li>
   </ul></li>
-  <li><a href="#previous-releases" id="toc-previous-releases" class="nav-link" data-scroll-target="#previous-releases">[Previous Releases]</a></li>
+  <li><a href="#current-work" id="toc-current-work" class="nav-link" data-scroll-target="#current-work">Current work:</a></li>
+  <li><a href="#other-projects-in-progress" id="toc-other-projects-in-progress" class="nav-link" data-scroll-target="#other-projects-in-progress">Other projects in progress:</a></li>
+  <li><a href="#wtfawry-what-do-we-need-to-get-v-sekai-game-working-with-the-new-architecture" id="toc-wtfawry-what-do-we-need-to-get-v-sekai-game-working-with-the-new-architecture" class="nav-link" data-scroll-target="#wtfawry-what-do-we-need-to-get-v-sekai-game-working-with-the-new-architecture">WTFAWRY: What do we need to get v-sekai-game working with the new architecture:</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/changelog/2024/20240603-changelog.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/changelog/2024/20240625-notice.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -140,65 +138,59 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="v-sekai-changelog---june-2024" class="level1">
-<h1>V-Sekai Changelog - June 2024</h1>
-<section id="released" class="level2">
-<h2 class="anchored" data-anchor-id="released">[Released]</h2>
+<section id="special-notice-v-sekai-2023-2024" class="level1">
+<h1>Special Notice: V-Sekai 2023-2024</h1>
+<section id="stuff-we-did-over-the-past-year" class="level2">
+<h2 class="anchored" data-anchor-id="stuff-we-did-over-the-past-year">Stuff we did over the past year:</h2>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section">2023</h3>
 <ul>
-<li>Not applicable for this month.</li>
+<li>Focused on Unidot and VRM (import pipeline).</li>
+<li>Godot 4.0 bugfixes and animation. Lots of engine dev.</li>
+<li>July–Aug spent time working on new CDN downloader and starting to rethink avatar controller.</li>
 </ul>
 </section>
-<section id="unreleased" class="level2">
-<h2 class="anchored" data-anchor-id="unreleased">[Unreleased]</h2>
-<section id="added" class="level3">
-<h3 class="anchored" data-anchor-id="added">Added</h3>
+<section id="section-1" class="level3">
+<h3 class="anchored" data-anchor-id="section-1">2023</h3>
 <ul>
-<li>Worked on a pull request for motion blur, which included:
-<ul>
-<li>Pushing updates to the <code>vsk-motion-blur-4.3-beta1</code> branch in the Godot repository.</li>
-</ul></li>
-<li>Initiated and updated a paint mixer spectral.js project in the <code>world:main</code> branch</li>
-<li>Pushed an update to the mirror script at V-Sekai/avatar_vr_demo so it works in desktop mode as well as XR, and works at arbitrary aspect ratios. Thanks iFire for rubber duckying and encouraging me. Note that if you want square pixels and wish to use the screenspace mode, you need this commit V-Sekai/godot. However, it also supports using Godot’s builtin Frustum camera in non-screenspace mode where the pixels will be aligned along the plane of the mirror. See if you can spot the differences. (the skybox shader doesn’t fully support frustum mode)</li>
-<li>Integrated OpenTelemetry into the codebase for enhanced debugging capabilities. This will allow developers to trace and monitor application performance in real-time, helping to identify and resolve issues more efficiently.</li>
+<li>New networking system committed to v-sekai-game and to a demo repository. It is missing basic features like support for pickup items so we haven’t enabled it yet.</li>
 </ul>
 </section>
-<section id="changed" class="level3">
-<h3 class="anchored" data-anchor-id="changed">Changed</h3>
+<section id="section-2" class="level3">
+<h3 class="anchored" data-anchor-id="section-2">2024</h3>
 <ul>
-<li>Not applicable for this month.</li>
+<li>Jan–Mar focused on FBX support and GDC.</li>
+<li>Apr–May focused on updating Unidot to support FBX.</li>
 </ul>
 </section>
-<section id="fixed" class="level3">
-<h3 class="anchored" data-anchor-id="fixed">Fixed</h3>
+</section>
+<section id="current-work" class="level2">
+<h2 class="anchored" data-anchor-id="current-work">Current work:</h2>
 <ul>
-<li>Not applicable for this month.</li>
+<li>Since early June, Lyuma started to revisit the incomplete code from 10 months ago. Lyuma is currently working on tracker binding / skeleton calibration (e.g.&nbsp;full body).</li>
+<li>4.3 release was delayed. Lyuma wants to release 4.3-compatible updates to Unidot and VRM.</li>
+<li>Lyuma had some difficulties with API integration.</li>
+<li>Some Godot 4.3 bugs are still on Lyuma’s plate.</li>
 </ul>
 </section>
-<section id="deprecated" class="level3">
-<h3 class="anchored" data-anchor-id="deprecated">Deprecated</h3>
+<section id="other-projects-in-progress" class="level2">
+<h2 class="anchored" data-anchor-id="other-projects-in-progress">Other projects in progress:</h2>
 <ul>
-<li>Not applicable for this month.</li>
+<li>New in-game UI update. A draft was committed a couple weeks ago but saracen has been away on vacation.</li>
+<li>Saracen has also been working some more on physics sync.</li>
+<li>API/backend redesign.</li>
 </ul>
 </section>
-<section id="removed" class="level3">
-<h3 class="anchored" data-anchor-id="removed">Removed</h3>
+<section id="wtfawry-what-do-we-need-to-get-v-sekai-game-working-with-the-new-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="wtfawry-what-do-we-need-to-get-v-sekai-game-working-with-the-new-architecture">WTFAWRY: What do we need to get v-sekai-game working with the new architecture:</h2>
 <ul>
-<li>Not applicable for this month.</li>
+<li>Integration of UI code into game.</li>
+<li>Network syncing support of props/objects using the new system.</li>
+<li>Integration of other game features between avatar_vr_demo (player controller) and v-sekai-game (legacy codebase).</li>
+<li>New backend so we can reenable registration.</li>
+<li>Some OpenAPI wrapper so we can talk to the new backend.</li>
 </ul>
-</section>
-<section id="security" class="level3">
-<h3 class="anchored" data-anchor-id="security">Security</h3>
-<ul>
-<li>Bumped github/codeql-action from 3.25.6 to 3.25.7 for security best practices.</li>
-</ul>
-<p>This project does not adhere to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
-</section>
-</section>
-<section id="previous-releases" class="level2">
-<h2 class="anchored" data-anchor-id="previous-releases">[Previous Releases]</h2>
-<ul>
-<li>Not applicable for this month.</li>
-</ul>
+<p>Lyuma thinks we should put more focus on getting something lightweight we can run and play levels in. Lyuma is of half a mind to put more focus into making avatar demo runnable with custom content rather than fully integrating network syncing just so we can get off the ground more easily with content creation.</p>
 
 
 </section>
@@ -766,7 +758,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/changelog/2024/20240603-changelog.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/changelog/2024/20240625-notice.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
