@@ -1,4 +1,4 @@
-# V-Sekai Changelog
+# V-Sekai Changelog - June 2024
 
 ## [Released]
 
