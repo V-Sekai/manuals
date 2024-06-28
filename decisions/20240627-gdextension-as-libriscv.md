@@ -19,6 +19,7 @@ This could potentially allow wrapping up the entire gdextension API.
 Here's an example of how function calls into the guest VM could work:
 
 ```c
+// See further reading section.
 // Host:
 int ret = machine.vmcall("test", 111, 222, "333");
 printf("test returned %d\n", ret);
