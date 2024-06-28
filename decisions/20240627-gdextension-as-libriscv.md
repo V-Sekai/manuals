@@ -4,8 +4,6 @@
 
 In the current development landscape, there is a growing need for more efficient and flexible ways to handle gdextension binaries. This proposal was inspired by a conversation between Fire and ホロ on June 27, 2024.
 
-We also want to investigate players distributing riscv binaries as user generated scripts inside of godot scenes.
-
 ## The Problem Statement
 
 Traditionally we have to compile gdextension for like 5-10 platform variants which is inefficient.
