@@ -33,7 +33,7 @@ int test(int a, int b, const char* c) {
 
 This approach would make arbitrary function calls into the VM guest possible. The functions must be C ABI, and if you use the string name, the function must be in the symbol table.
 
-This can also be a future approach into compiling gdscript bytecode as more performant code via templating the bytecode as c and compiling it, but that is reserved for future work.
+This can also be a future approach into compiling gdscript bytecode as more performant code via string templating the bytecode as c and compiling it, but that is reserved for future work.
 
 ## The Benefits
 
