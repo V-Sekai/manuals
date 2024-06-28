@@ -10,6 +10,6 @@ Gateways to Virtual Worlds!
 6.  **Organize Your Missions**: Manage issues [here](https://github.com/V-Sekai/v-sekai-game/issues).
 7.  **Reach Out**: SaracenOne, Lyuma, or Fire.
 
-| Note 🌍                                                                                                                            |
+| Note                                                                                                                               |
 | :--------------------------------------------------------------------------------------------------------------------------------- |
 | The name "V-Sekai" (pronounced vee-say-kai) is short, memorable, and in Japanese, "Sekai" means "World". |
