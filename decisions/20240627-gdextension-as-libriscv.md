@@ -10,7 +10,11 @@ Traditionally we have to compile gdextension for like 5-10 platform variants whi
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
-Fire proposed an idea where all the RISCV binaries are only methods, functioning like shared libraries via librisc emulation both as an interpter and a register machine. This could potentially allow wrapping up the entire gdextension API.
+Fire proposed an idea where many gdexenstions can be compiled as RISCV binaries.
+
+Functioning like shared libraries via librisc emulation both as an intepreter or a register machine. 
+
+This could potentially allow wrapping up the entire gdextension API.
 
 Here's an example of how function calls into the guest VM could work:
 
