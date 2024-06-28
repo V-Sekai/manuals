@@ -42,6 +42,7 @@ This can also be a future approach into compiling gdscript bytecode as more perf
 - Increased efficiency and flexibility in handling RISCV binaries.
 - Potential to wrap the entire gdextension API.
 - More convenient and capable of doing things that can't be done in gdscript.
+- Can also be built as a gdextension.
 
 ## The Downsides
 
