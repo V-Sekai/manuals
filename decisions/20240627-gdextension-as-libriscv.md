@@ -45,8 +45,7 @@ This approach would make arbitrary function calls into the VM guest possible. Th
 
 ## The Road Not Taken
 
-- Continuing with the traditional approach of handling RISCV binaries.
-- Exploring other methods of improving the efficiency and flexibility of RISCV binaries.
+- Exploring other methods of improving flexibility of loading binaries - like wasm.
 - Holo has givening an implementation of riscv processors in godot engine via zig language.
 
 ## The Infrequent Use Case
