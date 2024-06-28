@@ -9,8 +9,8 @@
 <link>https://v-sekai.github.io/manuals/decisions.html</link>
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.4.555</generator>
-<lastBuildDate>Wed, 26 Jun 2024 19:22:31 GMT</lastBuildDate>
+<generator>quarto-1.4.557</generator>
+<lastBuildDate>Fri, 28 Jun 2024 13:31:13 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,498 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Wed, 26 Jun 2024 19:22:31 GMT</pubDate>
+  <pubDate>Fri, 28 Jun 2024 13:31:13 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240627-gdextension-as-libriscv.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-riscv-binaries-as-shared-libraries" class="level1">
+<h1>Proposed: RISCV Binaries as Shared Libraries</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>In the current development landscape, there is a growing need for more efficient and flexible ways to handle virtual machine (VM) binaries. This proposal was inspired by a conversation between Fire and ホロ on June 27, 2024.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>The traditional approach to handling RISCV binaries can be cumbersome and inefficient. There is a need for a method that allows RISCV binaries to function like shared libraries, increasing their flexibility and usability.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>Fire proposed an idea where all the RISCV binaries are only methods, functioning like shared libraries. This could potentially allow wrapping up the entire gdextension API.</p>
+<p>Here’s an example of how function calls into the guest VM could work:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Host:</span></span>
+<span id="cb1-2"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">int</span> ret <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> machine<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>vmcall<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"test"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">111</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">222</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"333"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">);</span></span>
+<span id="cb1-3">printf<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"test returned </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%d\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> ret<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">);</span></span>
+<span id="cb1-4"></span>
+<span id="cb1-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Guest:</span></span>
+<span id="cb1-6"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">extern</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"C"</span> __attribute__<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">((</span>used<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> retain<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">))</span></span>
+<span id="cb1-7"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">int</span> test<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">int</span> a<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">int</span> b<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">const</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">char</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> c<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-8">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> a <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> b<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-9"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div>
+<p>This approach would make arbitrary function calls into the VM guest possible. The functions must be C ABI, and if you use the string name, the function must be in the symbol table.</p>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li>Increased efficiency and flexibility in handling RISCV binaries.</li>
+<li>Potential to wrap the entire gdextension API.</li>
+<li>More convenient and capable of doing things that can’t be done in gdscript.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li>Requires significant changes to the existing system.</li>
+<li>May introduce new complexities and potential security risks.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<ul>
+<li>Continuing with the traditional approach of handling RISCV binaries.</li>
+<li>Exploring other methods of improving the efficiency and flexibility of RISCV binaries.</li>
+</ul>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<ul>
+<li>This proposal may not be beneficial for small-scale projects or those that do not require high levels of efficiency and flexibility in handling RISCV binaries.</li>
+</ul>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<ul>
+<li>This proposal will be implemented by the V-Sekai development team, with potential contributions from the wider open-source community.</li>
+</ul>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+<li><a href="https://github.com/fwsGonzo/libriscv/blob/master/docs/VMCALL.md">libriscv VM Call Documentation</a> - Detailed documentation on making function calls into the VM guest.</li>
+<li>[https://c9x.me/compile/]</li>
+<li>[https://github.com/Vahera/godot-orchestrator]</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240627-gdextension-as-libriscv.html</guid>
+  <pubDate>Fri, 28 Jun 2024 13:31:13 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240627-every-commit-push-pass-cicd.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-every-commit-push-pass-cicd" class="level1">
+<h1>Proposed: Every Commit Push Pass Cicd</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>We are working on V-Sekai, a virtual reality social network. Our development workflow involves multiple developers making frequent changes to the codebase.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>We have trouble understanding the logical flow of work. This is causing delays in development and making it difficult to track changes and debug issues. Currently, our commits are checked after they are merged into the main branch, which can lead to problems if the commit does not pass the checks.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>The proposal is to implement a system where every commit and push operation passes through our CI/CD pipeline as a logical unit before being checked into the main branch. This means that each commit will trigger a build and test process, ensuring that all changes are validated before they are merged.</p>
+<pre class="pseudo"><code>On every commit:
+  Trigger CI/CD pipeline
+    Build application
+    Run tests
+If tests pass:
+  Allow check-in to main branch
+Else:
+  Return error and prevent check-in</code></pre>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li>Improved traceability of changes</li>
+<li>Faster identification and resolution of issues</li>
+<li>More efficient development workflow</li>
+<li>Prevention of problematic commits entering the main branch</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li>Potential increase in build times</li>
+<li>Requires investment in robust testing infrastructure</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An alternative approach could be to only run the CI/CD pipeline on specific branches or at specific times. However, this would not provide the same level of validation and could lead to issues being missed.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>In cases where commits are made infrequently, this approach may result in longer periods between builds. However, the benefits of improved traceability and issue resolution outweigh this potential downside.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>This change will be implemented by the V-Sekai development team and will become a core part of our development workflow.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240627-every-commit-push-pass-cicd.html</guid>
+  <pubDate>Fri, 28 Jun 2024 13:31:13 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240626-update-python3-macos-certicates.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-update-python3-macos-certificates" class="level1">
+<h1>Proposed: Update python3 macOS Certificates</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>In the current scenario, all Python network certificates are not functioning as expected. This is causing a significant hindrance in the smooth execution of network-related tasks and operations.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>All python network certificates don’t work on the Macos.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>Here is a Python script that installs or updates a set of default Root Certificates for the SSL module using the certificates provided by the certifi package:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Install_Certificates.command</span></span>
+<span id="cb1-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># install_certifi.py</span></span>
+<span id="cb1-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#</span></span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># sample script to install or update a set of default Root Certificates</span></span>
+<span id="cb1-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># for the ssl module.  Uses the certificates provided by the certifi package:</span></span>
+<span id="cb1-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#       https://pypi.python.org/pypi/certifi</span></span>
+<span id="cb1-7"></span>
+<span id="cb1-8"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> os</span>
+<span id="cb1-9"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> os.path</span>
+<span id="cb1-10"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> ssl</span>
+<span id="cb1-11"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> stat</span>
+<span id="cb1-12"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> subprocess</span>
+<span id="cb1-13"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> sys</span>
+<span id="cb1-14"></span>
+<span id="cb1-15">STAT_0o775 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> ( stat.S_IRUSR <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span> stat.S_IWUSR <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span> stat.S_IXUSR</span>
+<span id="cb1-16">             <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span> stat.S_IRGRP <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span> stat.S_IWGRP <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span> stat.S_IXGRP</span>
+<span id="cb1-17">             <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span> stat.S_IROTH <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span>                stat.S_IXOTH )</span>
+<span id="cb1-18"></span>
+<span id="cb1-19"></span>
+<span id="cb1-20"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> main():</span>
+<span id="cb1-21">    openssl_dir, openssl_cafile <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> os.path.split(</span>
+<span id="cb1-22">        ssl.get_default_verify_paths().openssl_cafile)</span>
+<span id="cb1-23"></span>
+<span id="cb1-24">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" -- pip install --upgrade certifi"</span>)</span>
+<span id="cb1-25">    subprocess.check_call([sys.executable,</span>
+<span id="cb1-26">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"-E"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"-s"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"-m"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"pip"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"install"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"--upgrade"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"certifi"</span>])</span>
+<span id="cb1-27"></span>
+<span id="cb1-28">    <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> certifi</span>
+<span id="cb1-29"></span>
+<span id="cb1-30">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># change working directory to the default SSL directory</span></span>
+<span id="cb1-31">    os.chdir(openssl_dir)</span>
+<span id="cb1-32">    relpath_to_certifi_cafile <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> os.path.relpath(certifi.where())</span>
+<span id="cb1-33">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" -- removing any existing file or link"</span>)</span>
+<span id="cb1-34">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">try</span>:</span>
+<span id="cb1-35">        os.remove(openssl_cafile)</span>
+<span id="cb1-36">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">except</span> <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">FileNotFoundError</span>:</span>
+<span id="cb1-37">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">pass</span></span>
+<span id="cb1-38">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" -- creating symlink to certifi certificate bundle"</span>)</span>
+<span id="cb1-39">    os.symlink(relpath_to_certifi_cafile, openssl_cafile)</span>
+<span id="cb1-40">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" -- setting permissions"</span>)</span>
+<span id="cb1-41">    os.chmod(openssl_cafile, STAT_0o775)</span>
+<span id="cb1-42">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" -- update complete"</span>)</span>
+<span id="cb1-43"></span>
+<span id="cb1-44"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">__name__</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'__main__'</span>:</span>
+<span id="cb1-45">    main()</span></code></pre></div>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>The proposed solution will ensure that the Python network certificates are updated and functioning correctly. This will facilitate smooth network operations and tasks.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>There might be some initial downtime during the update process. Also, any issues with the certifi package could potentially affect the certificate update process.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An alternative approach could have been to manually update each certificate. However, this would have been a time-consuming and error-prone process.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>This solution may not be applicable for systems that do not use Python or where network certificates are managed differently.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>The proposed solution is core to our operations as it directly impacts the functionality of our network operations. The implementation will be done by us, the V-Sekai development team.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240626-update-python3-macos-certicates.html</guid>
+  <pubDate>Fri, 28 Jun 2024 13:31:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -162,7 +653,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240623-what-is-uro-backend.html</guid>
-  <pubDate>Wed, 26 Jun 2024 19:22:31 GMT</pubDate>
+  <pubDate>Fri, 28 Jun 2024 13:31:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -243,7 +734,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240623-talk-length-prototypes.html</guid>
-  <pubDate>Wed, 26 Jun 2024 19:22:31 GMT</pubDate>
+  <pubDate>Fri, 28 Jun 2024 13:31:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -317,7 +808,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240623-only-save-tools-in-our-cdn.html</guid>
-  <pubDate>Wed, 26 Jun 2024 19:22:31 GMT</pubDate>
+  <pubDate>Fri, 28 Jun 2024 13:31:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -400,7 +891,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240623-do-cdn-for-launcher.html</guid>
-  <pubDate>Wed, 26 Jun 2024 19:22:31 GMT</pubDate>
+  <pubDate>Fri, 28 Jun 2024 13:31:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -484,7 +975,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240622-process-for-testing-vsekai.html</guid>
-  <pubDate>Wed, 26 Jun 2024 19:22:31 GMT</pubDate>
+  <pubDate>Fri, 28 Jun 2024 13:31:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -563,7 +1054,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240622-gocd-agent-docker-image-update.html</guid>
-  <pubDate>Wed, 26 Jun 2024 19:22:31 GMT</pubDate>
+  <pubDate>Fri, 28 Jun 2024 13:31:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -647,7 +1138,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240622-build-for-many-platforms.html</guid>
-  <pubDate>Wed, 26 Jun 2024 19:22:31 GMT</pubDate>
+  <pubDate>Fri, 28 Jun 2024 13:31:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -713,7 +1204,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240621-proposal-template copy.html</guid>
-  <pubDate>Wed, 26 Jun 2024 19:22:31 GMT</pubDate>
+  <pubDate>Fri, 28 Jun 2024 13:31:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -884,7 +1375,7 @@ font-style: inherit;">"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240621-caption-photos-for-cicd.html</guid>
-  <pubDate>Wed, 26 Jun 2024 19:22:31 GMT</pubDate>
+  <pubDate>Fri, 28 Jun 2024 13:31:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -969,7 +1460,7 @@ font-style: inherit;">"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240618-schedule-as-binary-tree.html</guid>
-  <pubDate>Wed, 26 Jun 2024 19:22:31 GMT</pubDate>
+  <pubDate>Fri, 28 Jun 2024 13:31:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1056,7 +1547,7 @@ font-style: inherit;">"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240618-4-player-test-vsekai.html</guid>
-  <pubDate>Wed, 26 Jun 2024 19:22:31 GMT</pubDate>
+  <pubDate>Fri, 28 Jun 2024 13:31:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1145,7 +1636,7 @@ font-style: inherit;">"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240616-request-for-quad-mesh-dataset.html</guid>
-  <pubDate>Wed, 26 Jun 2024 19:22:31 GMT</pubDate>
+  <pubDate>Fri, 28 Jun 2024 13:31:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1221,7 +1712,7 @@ font-style: inherit;">"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240615-what-is-mesh-transformers.html</guid>
-  <pubDate>Wed, 26 Jun 2024 19:22:31 GMT</pubDate>
+  <pubDate>Fri, 28 Jun 2024 13:31:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1312,7 +1803,7 @@ font-style: inherit;">"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240613-training-dataset.html</guid>
-  <pubDate>Wed, 26 Jun 2024 19:22:31 GMT</pubDate>
+  <pubDate>Fri, 28 Jun 2024 13:31:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1403,7 +1894,7 @@ font-style: inherit;">"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240613-training-dataset-creation-with-csg.html</guid>
-  <pubDate>Wed, 26 Jun 2024 19:22:31 GMT</pubDate>
+  <pubDate>Fri, 28 Jun 2024 13:31:13 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1487,263 +1978,7 @@ font-style: inherit;">"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240613-modifying-the-mesh-transformer-for-quads.html</guid>
-  <pubDate>Wed, 26 Jun 2024 19:22:31 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240613-1k-quad-limit.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-training-mesh-transformer-for-3d-avatar-creation" class="level1">
-<h1>Proposed: Training Mesh Transformer for 3D Avatar Creation</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>We are working with mesh transformer large language models.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>The goal is to train the mesh transformer to create 3D avatar characters. The challenge lies in managing the complexity of the model and the computational resources required for training.</p>
-</section>
-<section id="proposal" class="level2">
-<h2 class="anchored" data-anchor-id="proposal">Proposal</h2>
-<p>Our approach involves using quad support for the avatars, which allows us to cut the avatar into smaller objects as part of the body. This method is more manageable and efficient than trying to train the model on larger body parts or the entire avatar.</p>
-<p>However, it’s important to note that we cannot use triangles and quads at the same time. Also, having a context length of 32k or more will require a bigger model, which might not be feasible unless we have a substantial GPU budget for computation.</p>
-<p>For our training data, we aim to keep the triangle count below 5k triangles. We also need to consider the shape of the training data and the type of quad data we need to provide.</p>
-<p>In terms of numbers, we’re looking at around 1500 triangles, which would result in 6k to 9k tokens. If these triangles are converted to quads and there is a reduction, we could aim for around MAX 8k tokens. In this case, 1 triangle equals 6 tokens, and 1 quad equals 8 tokens.</p>
-<p>This means that 8,000 tokens would equate to 1,000 quads.</p>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<ul>
-<li>Training the mesh transformer on smaller body parts will make it more manageable and efficient.</li>
-<li>Using quads instead of triangles could potentially reduce the complexity of the model.</li>
-</ul>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<ul>
-<li>The process requires a significant amount of GPU compute power, which could be expensive.</li>
-<li>The model might not be able to handle large context lengths effectively.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<ul>
-<li>We could have chosen to train the model on larger body parts or the entire avatar, but this would require significantly more computational resources.</li>
-</ul>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<ul>
-<li>This approach may not be suitable for avatars with complex structures or high polygon counts.</li>
-</ul>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<ul>
-<li>The training of the mesh transformer will be done by us, using our acquired resources and expertise.</li>
-</ul>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-<li>iFire</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240613-1k-quad-limit.html</guid>
-  <pubDate>Wed, 26 Jun 2024 19:22:31 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240611-test-1x-and-4x.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-managing-multiple-training-runs-in-separate-pods" class="level1">
-<h1>Proposed: Managing Multiple Training Runs in Separate Pods</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>We are working on training a model using multiple GPUs. We have encountered issues when trying to run two training runs in the same pod.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>The problem is that we cannot run multiple GPU training runs in the same pod. This limits our ability to parallelize our training and make full use of our resources.</p>
-</section>
-<section id="proposal" class="level2">
-<h2 class="anchored" data-anchor-id="proposal">Proposal</h2>
-<p>Based on the discussion, the proposal is to manage the training runs in separate pods. Specifically:</p>
-<ul>
-<li>Start a pod with a single X1 4090 for stable training.</li>
-<li>Start another new pod with 4x 4090 to test the theory that you can only run the multi-GPU once per session.</li>
-</ul>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<ul>
-<li>This approach allows us to run multiple training runs simultaneously, making full use of our resources.</li>
-<li>It also enables us to isolate the training runs, reducing the risk of one affecting the other.</li>
-</ul>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<ul>
-<li>Managing multiple pods might be more complex than managing a single one.</li>
-<li>There may be additional overhead associated with running multiple pods.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<ul>
-<li>We could have continued trying to run multiple training runs in the same pod, but this was causing issues.</li>
-</ul>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<ul>
-<li>This approach may not be necessary if we only need to run a single training run at a time.</li>
-</ul>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<ul>
-<li>The decision on how to manage the pods and the training runs will be made by us, using our acquired resources and expertise.</li>
-</ul>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240611-test-1x-and-4x.html</guid>
-  <pubDate>Wed, 26 Jun 2024 19:22:31 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240611-lower-learning-rate.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-switch-learning-rate-to-be-lower." class="level1">
-<h1>Proposed: Switch learning rate to be lower.</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>We are currently training a mesh transformer’s auto encoder.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>The current learning rate might not be optimal for our training process. We need to find a way to adjust it dynamically based on the progress of the training.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>We propose to monitor the reconstruction loss after each epoch. If the loss decreases by less than 0.004 per epoch, we switch the learning rate to 1e-4.</p>
-<p><strong>Note:</strong> Don’t forget to change the load method that the model uses to load the model.</p>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p>By adjusting the learning rate based on the progress of the training, we can potentially achieve better results and prevent overfitting.</p>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>This approach requires careful monitoring of the training process and might require additional computational resources.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>An alternative could be to use a fixed learning rate throughout the training process. However, this might not yield optimal results.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>This approach might not be suitable for all types of models or datasets.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>This proposal is made by the V-Sekai development team and will be implemented by us.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240611-lower-learning-rate.html</guid>
-  <pubDate>Wed, 26 Jun 2024 19:22:31 GMT</pubDate>
+  <pubDate>Fri, 28 Jun 2024 13:31:13 GMT</pubDate>
 </item>
 </channel>
 </rss>
