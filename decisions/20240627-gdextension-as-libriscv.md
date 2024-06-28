@@ -70,5 +70,6 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
 3. [libriscv VM Call Documentation](https://github.com/fwsGonzo/libriscv/blob/master/docs/VMCALL.md) - Detailed documentation on making function calls into the VM guest.
 4. [https://c9x.me/compile/]
+5. [https://github.com/Vahera/godot-orchestrator]
 
 AI assistant Aria assisted with this article.
