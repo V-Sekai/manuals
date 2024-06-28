@@ -2,11 +2,11 @@
 
 ## The Context
 
-In the current development landscape, there is a growing need for more efficient and flexible ways to handle virtual machine (VM) binaries. This proposal was inspired by a conversation between Fire and ホロ on June 27, 2024.
+In the current development landscape, there is a growing need for more efficient and flexible ways to handle gdextension binaries. This proposal was inspired by a conversation between Fire and ホロ on June 27, 2024.
 
 ## The Problem Statement
 
-The traditional approach to handling RISCV binaries can be cumbersome and inefficient. There is a need for a method that allows RISCV binaries to function like shared libraries, increasing their flexibility and usability.
+Traditionally we have to compile gdextension for like 5-10 platform variants which is inefficient.
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
