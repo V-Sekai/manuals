@@ -8,7 +8,7 @@ In virtual reality and gaming, predicting human motion is a critical aspect. It 
 
 ### The Problem Statement
 
-The main problem we are trying to solve is to predict the next tokens for motion. This will help us in creating more realistic movements for our characters in the game.
+The main problem we are trying to solve is to predict the next tokens for motion. This will help us in creating more realistic movements for our characters in the game. Additionally, it can be used for generating new animations and for networking compression.
 
 ### Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
@@ -27,6 +27,8 @@ def MotionGPT(data):
 - Improved accuracy in motion prediction.
 - More realistic character movements.
 - Enhanced user experience.
+- Generation of new animations.
+- Networking compression.
 
 ### The Downsides
 
