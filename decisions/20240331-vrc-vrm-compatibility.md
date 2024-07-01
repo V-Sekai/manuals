@@ -121,5 +121,6 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 4. [https://vcc.vrcfury.com]
 5. [https://Adjerry91.github.io/VRCFaceTracking-Templates/index.json]
 6. [https://esperecyan.github.io/VRMConverterForVRChat/registry.json]
+7. [vcc://vpm/addRepo?url=https://vpm.nadena.dev/vpm.json]
 
 AI assistant Aria assisted with this article.
