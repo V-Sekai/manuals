@@ -8,7 +8,7 @@
 
 - Worked on libriscv loading and executing a hello world function call with a shared object.
 - Worked on godot-llama trying to get the new PHI-3 model working. https://github.com/V-Sekai/godot-llama
-- 
+
 ### Added
 
 - Not applicable for this month.
