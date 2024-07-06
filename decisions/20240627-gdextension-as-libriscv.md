@@ -1,4 +1,4 @@
-# Proposed: RISCV Binaries as Shared Libraries
+# Superceded: RISCV Binaries as Shared Libraries
 
 ## The Context
 
@@ -64,7 +64,7 @@ This can also be a future approach into compiling gdscript bytecode as more perf
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Superseded by [Build a tiny RISC virtual machine which can interpret and execute GDExtensions](https://github.com/godotengine/godot-proposals/issues/10071)
 
 ## Decision Makers
 
