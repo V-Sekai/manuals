@@ -1,7 +1,4 @@
-# V-Sekai Charter (JUNE 8 2020)
-
-Mozilla Builders Summer MVP Lab
-(SUBMITTED ON JUNE 8 2020)
+# Mozilla Builders Summer MVP Lab (SUBMITTED ON JUNE 8 2020)
 
 Did you apply for our Spring MVP Lab program?
 
