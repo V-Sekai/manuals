@@ -12,4 +12,4 @@ Gateways to Virtual Worlds!
 
 | Note                                                                                                                               |
 | :--------------------------------------------------------------------------------------------------------------------------------- |
-| The name "V-Sekai" (pronounced vee-say-kai) is short, memorable, and in Japanese, "Sekai" means "World". |
+| The name "V-Sekai" (pronounced vee-say-kai) stands for virtual, and in Japanese, "Sekai" means "World". |
