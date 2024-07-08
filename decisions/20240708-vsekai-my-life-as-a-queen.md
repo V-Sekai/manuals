@@ -45,22 +45,50 @@ You start in a little cabin in the woods. You have a cave you can venture into, 
 ### Initial Prototype Reversal
 
 ```gdscript
-var memories: Dictionary = {
+var strategic_memories: Dictionary = {
     "is_at": {
-        "queen": "royal cabin",
+        "queen": "royal cabin"
+    },
+    "goal": "retrieve treasure from the cave",
+    "preparation_status": "not_started"
+}
+
+var strategic_plan: Array = [
+    "Set goal to retrieve treasure from the cave",
+    "Ensure adventurer is prepared for the journey"
+]
+
+var tactical_memories: Dictionary = {
+    "is_at": {
         "adventurer": "adventurer's cabin"
     },
-    "is_outside_of": {"cave entrance": "adventurer's cabin"},
+    "known_locations": ["adventurer's cabin", "cave entrance"],
+    "route_planned": false
+}
+
+var tactical_plan: Array = [
+    "Move adventurer to the adventurer's cabin",
+    "Locate the cave entrance",
+    "Plan route through the cave to the treasure room"
+]
+
+var operational_memories: Dictionary = {
+    "is_at": {"adventurer": "adventurer's cabin"},
+    "visited": [],
     "contains": {"first_room": "treasure"}
 }
 
-var todo_list: Array = [
-    "Instruct adventurers from the royal cabin",
-    "Guide them to the adventurer's cabin",
-    "Direct them to find the cave entrance",
-    "Order them to enter the cave",
-    "Command them to reach the treasure room"
+var operational_plan: Array = [
+    "Walk to the adventurer's cabin",
+    "Search for the cave entrance",
+    "Enter the cave",
+    "Navigate to the first room",
+    "Collect the treasure"
 ]
+
+# The queen sets the strategy, which includes high-level goals and preparations.
+# The tactical planner breaks down these goals into actionable plans.
+# The operational planner executes the specific tasks required to achieve the goals.
 ```
 
 In the initial prototype, you explore the cave yourself. In "V-Sekai: My Life as a Queen," you will reverse this concept by taking on the role of the queen who supplies adventurers with instructions to explore the cave and retrieve treasures. This shift from direct exploration to strategic management aligns with the relaxation theme.
