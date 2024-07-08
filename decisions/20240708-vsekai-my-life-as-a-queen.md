@@ -2,13 +2,13 @@
 
 ## The Context
 
-Welcome to the second Godot XR Game Jam!
-
-This game jam is organized by the Godot XR Community and offers a fun opportunity to build something using Godot's XR capabilities.
-
-Godot XR offers a lightweight entry into making XR games. With the expected release of Godot 4.3, there are loads of improvements, especially around AR-related features.
-
-The theme for this game jam is: **Relaxation!**
+> Welcome to the second Godot XR Game Jam!
+>
+> This game jam is organized by the Godot XR Community and offers a fun opportunity to build something using Godot's XR capabilities.
+>
+> Godot XR offers a lightweight entry into making XR games. With the expected release of Godot 4.3, there are loads of improvements, especially around AR-related features.
+> 
+> The theme for this game jam is: **Relaxation!**
 
 ## The Problem Statement
 
