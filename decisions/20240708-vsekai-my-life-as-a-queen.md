@@ -2,7 +2,7 @@
 
 ## The Context
 
-The second Godot XR Game Jam is organized by the Godot XR Community is occuring on July 8th 2024 and the jam theme is: **Relaxation!**
+The second Godot XR Game Jam is organized by the Godot XR Community and is occurring on July 8th, 2024. The jam theme is: **Relaxation!**
 
 ## The Problem Statement
 
@@ -12,19 +12,19 @@ Create an Android XR game using the theme of "Relaxation" and utilizing Godot En
 
 In "V-Sekai: My Life as a Princess," players assume the role of a princess tasked with rebuilding and managing a kingdom. The game focuses on relaxation through planning, resource management, VR interactions, and adventurer tasking.
 
-- **Conversation Menu**: Press 'A' to open a conversation menu.
-- **Day Cycles**: The game operates on 5-minute day cycles, providing a sense of urgency and rhythm to daily tasks.
-- **Assistant**: An in-game assistant character helps guide players through their tasks, offering tips and reminders.
-- **lasso**: The lasso aims to simplify object selection in VR environments, especially when objects are unevenly distributed or the user has shaky hands. 
+- Conversation Menu: Press 'A' to open a conversation menu.
+- Day Cycles: The game operates on 5-minute day cycles, providing a sense of urgency and rhythm to daily tasks.
+- Assistant: An in-game assistant character helps guide players through their tasks, offering tips and reminders.
+- Lasso: The lasso aims to simplify object selection in VR environments, especially when objects are unevenly distributed or the user has shaky hands.
 
 ### Design Principles
 
-1. **Lateral Thinking with Weathered Technology**
-2. **Reduce Modal Menus**
-   - **Main Menu**: A serene landscape with options to start a new game, load a saved game, and access settings.
-   - **In-Game HUD**: Minimalistic interface showing resources, current tasks, and a map of the kingdom.
-   - **Kingdom View**: A top-down view of the kingdom where players can place buildings, gardens, and other structures.
-   - **Adventurer Management Screen**: Interface to manage and send adventurers on quests.
+1. Lateral Thinking with Weathered Technology
+2. Reduce Modal Menus
+   - Main Menu: A serene landscape with options to start a new game, load a saved game, and access settings.
+   - In-Game HUD: Minimalistic interface showing resources, current tasks, and a map of the kingdom.
+   - Kingdom View: A top-down view of the kingdom where players can place buildings, gardens, and other structures.
+   - Adventurer Management Screen: Interface to manage and send adventurers on quests.
 
 ### Initial Prototype
 
@@ -117,28 +117,28 @@ In the initial prototype, you explore the cave yourself. In "V-Sekai: My Life as
 
 ## The Benefits
 
-- **Relaxing Gameplay**: Focuses on non-combat activities like building, gardening, organizing events, and sending adventurers on quests.
-- **Immersive Experience**: Utilizes VRM technology for customizable avatars and Godot's XR capabilities for an engaging experience.
-- **Dynamic Task Management**: The HTN planner ensures that tasks are generated based on player actions, providing a unique experience each time.
+- Relaxing Gameplay: Focuses on non-combat activities like building, gardening, organizing events, and sending adventurers on quests.
+- Immersive Experience: Utilizes VRM technology for customizable avatars and Godot's XR capabilities for an engaging experience.
+- Dynamic Task Management: The HTN planner ensures that tasks are generated based on player actions, providing a unique experience each time.
 
 ## The Downsides
 
-- **Learning Curve**: Players unfamiliar with resource management games may find it challenging initially.
-- **Hardware Requirements**: Requires a VR-capable device, which may limit accessibility.
+- Learning Curve: Players unfamiliar with resource management games may find it challenging initially.
+- Hardware Requirements: Requires a VR-capable device, which may limit accessibility.
 
 ## The Road Not Taken
 
-- **Combat Mechanics**: Instead of focusing on relaxation, we could have included combat elements, but this would detract from the theme of relaxation.
-- **Linear Storyline**: A fixed storyline could have been implemented, but dynamic task generation offers more replayability.
+- Combat Mechanics: Instead of focusing on relaxation, we could have included combat elements, but this would detract from the theme of relaxation.
+- Linear Storyline: A fixed storyline could have been implemented, but dynamic task generation offers more replayability.
 
 ## The Infrequent Use Case
 
-- **Seasonal Events**: While the game includes various activities, seasonal events such as festivals or special quests tied to real-world holidays are not included. These could add variety but would require additional development time and resources.
+- Seasonal Events: While the game includes various activities, seasonal events such as festivals or special quests tied to real-world holidays are not included. These could add variety but would require additional development time and resources.
 
 ## In Core and Done by Us
 
-- **Core Development**: The V-Sekai development team will handle all core aspects of the game, including coding, art, and design.
-- **Community Contributions**: Open to contributions from the Godot XR community for additional content and features.
+- Core Development: The V-Sekai development team will handle all core aspects of the game, including coding, art, and design.
+- Community Contributions: Open to contributions from the Godot XR community for additional content and features.
 
 ## Status
 
