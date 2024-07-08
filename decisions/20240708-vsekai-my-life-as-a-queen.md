@@ -23,6 +23,14 @@ In "V-Sekai: My Life as a Queen," players assume the role of a queen tasked with
 - **Kingdom View**: A top-down view of the kingdom where players can place buildings, gardens, and other structures.
 - **Adventurer Management Screen**: Interface to manage and send adventurers on quests.
 
+### Initial Prototype
+
+You start in a little cabin in the woods. You have a cave you can venture into, and at the end is treasure. This initial prototype serves as a simple introduction to the game's mechanics and environment.
+
+### Initial Prototype Reversal
+
+In the initial prototype, you explore the cave yourself. In "V-Sekai: My Life as a Queen," you will reverse this concept by taking on the role of the queen who supplies adventurers with instructions to explore the cave and retrieve treasures. This shift from direct exploration to strategic management aligns with the relaxation theme.
+
 ## The Benefits
 
 - **Relaxing Gameplay**: Focuses on non-combat activities like building, gardening, organizing events, and sending adventurers on quests.
@@ -55,6 +63,8 @@ Status: Proposed
 ## Decision Makers
 
 - V-Sekai development team
+- iFire
+- Brune
 
 ## Tags
 
