@@ -46,11 +46,9 @@ You start in a little cabin in the woods. You have a cave you can venture into, 
 
 ```gdscript
 var strategic_memories: Dictionary = {
-    "is_at": {
-        "princess": "royal cabin"
-    },
-    "goal": "retrieve treasure from the cave",
-    "preparation_status": "not_started"
+    "is_at": {"princess": "royal cabin"},
+    "has_goal": {"princess": "retrieve treasure from the cave"},
+    "preparation_status": {"princess": "not_started"}
 }
 
 var strategic_plan: Array = [
@@ -59,11 +57,9 @@ var strategic_plan: Array = [
 ]
 
 var tactical_memories: Dictionary = {
-    "is_at": {
-        "adventurer": "adventurer's cabin"
-    },
-    "known_locations": ["adventurer's cabin", "cave entrance"],
-    "route_planned": false
+    "is_at": {"adventurer": "adventurer's cabin"},
+    "knows_location": {"adventurer": ["adventurer's cabin", "cave entrance"]},
+    "route_planned": {"adventurer": false}
 }
 
 var tactical_plan: Array = [
@@ -74,7 +70,7 @@ var tactical_plan: Array = [
 
 var operational_memories: Dictionary = {
     "is_at": {"adventurer": "adventurer's cabin"},
-    "visited": [],
+    "visited": {"adventurer": []},
     "contains": {"first_room": "treasure"}
 }
 
