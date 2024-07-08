@@ -15,6 +15,7 @@ In "V-Sekai: My Life as a Princess," players assume the role of a princess taske
 ### Design Principles
 
 1. Lateral Thinking with Weathered Technology
+2. Designed so both planning and people can do the same things
 
 ### Initial Prototype
 
