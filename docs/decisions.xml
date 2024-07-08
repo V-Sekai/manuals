@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.5.53</generator>
-<lastBuildDate>Mon, 08 Jul 2024 20:50:36 GMT</lastBuildDate>
+<lastBuildDate>Mon, 08 Jul 2024 20:56:46 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Mon, 08 Jul 2024 20:50:36 GMT</pubDate>
+  <pubDate>Mon, 08 Jul 2024 20:56:46 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -127,42 +127,480 @@ var todo_list: Array = [
 </section>
 <section id="initial-prototype-reversal" class="level3">
 <h3 class="anchored" data-anchor-id="initial-prototype-reversal">Initial Prototype Reversal</h3>
-<pre class="gdscript"><code>var strategic_memories: Dictionary = {
-    "is_at": {"princess": "royal cabin"},
-    "has_goal": {"princess": "retrieve treasure from the cave"},
-    "preparation_status": {"princess": "not_started"}
-}
-
-var strategic_plan: Array = [
-    "Set goal to retrieve treasure from the cave",
-    "Ensure adventurer is prepared for the journey"
-]
-
-var tactical_memories: Dictionary = {
-    "is_at": {"adventurer": "adventurer's cabin"},
-    "knows_location": {"adventurer": ["adventurer's cabin", "cave entrance"]},
-    "route_planned": {"adventurer": false}
-}
-
-var tactical_plan: Array = [
-    "Move adventurer to the adventurer's cabin",
-    "Locate the cave entrance",
-    "Plan route through the cave to the treasure room"
-]
-
-var operational_memories: Dictionary = {
-    "is_at": {"adventurer": "adventurer's cabin"},
-    "visited": {"adventurer": []},
-    "contains": {"first_room": "treasure"}
-}
-
-var operational_plan: Array = [
-    "Walk to the adventurer's cabin",
-    "Search for the cave entrance",
-    "Enter the cave",
-    "Navigate to the first room",
-    "Collect the treasure"
-]</code></pre>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode swift code-with-copy"><code class="sourceCode swift"><span id="cb2-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">var</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">princess_strategic_memories</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> Dictionary <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb2-2">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"is_at"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"princess"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"royal cabin"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb2-3">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"has_goal"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"princess"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"retrieve treasure from the cave"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb2-4">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"preparation_status"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"princess"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"not_started"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb2-5"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb2-6"></span>
+<span id="cb2-7"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">var</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">princess_strategic_plan</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> Array <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span></span>
+<span id="cb2-8">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Set goal to retrieve treasure from the cave"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb2-9">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Prepare for the journey"</span></span>
+<span id="cb2-10"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">]</span></span>
+<span id="cb2-11"></span>
+<span id="cb2-12"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">var</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">princess_tactical_memories</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> Dictionary <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb2-13">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"is_at"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"princess"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"royal cabin"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb2-14">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"knows_location"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"princess"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"royal cabin"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cave entrance"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">]},</span></span>
+<span id="cb2-15">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"route_planned"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"princess"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">false</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb2-16"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb2-17"></span>
+<span id="cb2-18"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">var</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">princess_tactical_plan</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> Array <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span></span>
+<span id="cb2-19">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Move to the royal cabin"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb2-20">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Locate the cave entrance"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb2-21">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Plan route through the cave to the treasure room"</span></span>
+<span id="cb2-22"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">]</span></span>
+<span id="cb2-23"></span>
+<span id="cb2-24"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">var</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">princess_operational_memories</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> Dictionary <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb2-25">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"is_at"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"princess"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"royal cabin"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb2-26">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"visited"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"princess"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[]},</span></span>
+<span id="cb2-27">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"contains"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"first_room"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"treasure"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb2-28"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb2-29"></span>
+<span id="cb2-30"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">var</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">princess_operational_plan</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> Array <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span></span>
+<span id="cb2-31">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Walk to the royal cabin"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb2-32">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Search for the cave entrance"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb2-33">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Enter the cave"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb2-34">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Navigate to the first room"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb2-35">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Collect the treasure"</span></span>
+<span id="cb2-36"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">]</span></span>
+<span id="cb2-37"></span>
+<span id="cb2-38"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">var</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">adventurer_tactical_memories</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> Dictionary <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb2-39">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"is_at"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"adventurer"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"adventurer's cabin"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb2-40">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"knows_location"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"adventurer"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"adventurer's cabin"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cave entrance"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">]},</span></span>
+<span id="cb2-41">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"route_planned"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"adventurer"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">false</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb2-42"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb2-43"></span>
+<span id="cb2-44"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">var</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">adventurer_tactical_plan</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> Array <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span></span>
+<span id="cb2-45">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Move to the adventurer's cabin"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb2-46">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Locate the cave entrance"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb2-47">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Plan route through the cave to the treasure room"</span></span>
+<span id="cb2-48"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">]</span></span>
+<span id="cb2-49"></span>
+<span id="cb2-50"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">var</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">adventurer_operational_memories</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> Dictionary <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb2-51">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"is_at"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"adventurer"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"adventurer's cabin"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb2-52">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"visited"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"adventurer"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[]},</span></span>
+<span id="cb2-53">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"contains"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"first_room"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"treasure"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb2-54"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb2-55"></span>
+<span id="cb2-56"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">var</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">adventurer_operational_plan</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> Array <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span></span>
+<span id="cb2-57">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Walk to the adventurer's cabin"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb2-58">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Search for the cave entrance"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb2-59">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Enter the cave"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb2-60">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Navigate to the first room"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb2-61">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Collect the treasure"</span></span>
+<span id="cb2-62"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">]</span></span></code></pre></div>
 <p>In the initial prototype, you explore the cave yourself. In “V-Sekai: My Life as a Princess,” you will reverse this concept by taking on the role of the princess who supplies adventurers with instructions to explore the cave and retrieve treasures. This shift from direct exploration to strategic management aligns with the relaxation theme.</p>
 </section>
 </section>
@@ -239,7 +677,7 @@ var operational_plan: Array = [
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240708-vsekai-my-life-as-a-queen.html</guid>
-  <pubDate>Mon, 08 Jul 2024 20:50:36 GMT</pubDate>
+  <pubDate>Mon, 08 Jul 2024 20:56:46 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -417,7 +855,7 @@ var operational_plan: Array = [
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240706-motion-capture-bill-of-materials.html</guid>
-  <pubDate>Mon, 08 Jul 2024 20:50:36 GMT</pubDate>
+  <pubDate>Mon, 08 Jul 2024 20:56:46 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -501,7 +939,7 @@ var operational_plan: Array = [
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240705-rpg_town.html</guid>
-  <pubDate>Mon, 08 Jul 2024 20:50:36 GMT</pubDate>
+  <pubDate>Mon, 08 Jul 2024 20:56:46 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -603,7 +1041,7 @@ font-style: inherit;">return</span> model.generate_motion()</span></code></pre><
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240630-use-motion-transformers-for-prediction.html</guid>
-  <pubDate>Mon, 08 Jul 2024 20:50:36 GMT</pubDate>
+  <pubDate>Mon, 08 Jul 2024 20:56:46 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -795,7 +1233,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240627-gdextension-as-libriscv.html</guid>
-  <pubDate>Mon, 08 Jul 2024 20:50:36 GMT</pubDate>
+  <pubDate>Mon, 08 Jul 2024 20:56:46 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -885,7 +1323,7 @@ Else:
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240627-every-commit-push-pass-cicd.html</guid>
-  <pubDate>Mon, 08 Jul 2024 20:50:36 GMT</pubDate>
+  <pubDate>Mon, 08 Jul 2024 20:56:46 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1109,7 +1547,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240626-update-python3-macos-certicates.html</guid>
-  <pubDate>Mon, 08 Jul 2024 20:50:36 GMT</pubDate>
+  <pubDate>Mon, 08 Jul 2024 20:56:46 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1196,7 +1634,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240623-what-is-uro-backend.html</guid>
-  <pubDate>Mon, 08 Jul 2024 20:50:36 GMT</pubDate>
+  <pubDate>Mon, 08 Jul 2024 20:56:46 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1277,7 +1715,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240623-talk-length-prototypes.html</guid>
-  <pubDate>Mon, 08 Jul 2024 20:50:36 GMT</pubDate>
+  <pubDate>Mon, 08 Jul 2024 20:56:46 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1351,7 +1789,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240623-only-save-tools-in-our-cdn.html</guid>
-  <pubDate>Mon, 08 Jul 2024 20:50:36 GMT</pubDate>
+  <pubDate>Mon, 08 Jul 2024 20:56:46 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1434,7 +1872,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240623-do-cdn-for-launcher.html</guid>
-  <pubDate>Mon, 08 Jul 2024 20:50:36 GMT</pubDate>
+  <pubDate>Mon, 08 Jul 2024 20:56:46 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1518,7 +1956,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240622-process-for-testing-vsekai.html</guid>
-  <pubDate>Mon, 08 Jul 2024 20:50:36 GMT</pubDate>
+  <pubDate>Mon, 08 Jul 2024 20:56:46 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1597,7 +2035,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240622-gocd-agent-docker-image-update.html</guid>
-  <pubDate>Mon, 08 Jul 2024 20:50:36 GMT</pubDate>
+  <pubDate>Mon, 08 Jul 2024 20:56:46 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1681,7 +2119,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240622-build-for-many-platforms.html</guid>
-  <pubDate>Mon, 08 Jul 2024 20:50:36 GMT</pubDate>
+  <pubDate>Mon, 08 Jul 2024 20:56:46 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1747,7 +2185,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240621-proposal-template copy.html</guid>
-  <pubDate>Mon, 08 Jul 2024 20:50:36 GMT</pubDate>
+  <pubDate>Mon, 08 Jul 2024 20:56:46 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1922,7 +2360,7 @@ font-style: inherit;">"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240621-caption-photos-for-cicd.html</guid>
-  <pubDate>Mon, 08 Jul 2024 20:50:36 GMT</pubDate>
+  <pubDate>Mon, 08 Jul 2024 20:56:46 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2007,7 +2445,7 @@ font-style: inherit;">"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240618-schedule-as-binary-tree.html</guid>
-  <pubDate>Mon, 08 Jul 2024 20:50:36 GMT</pubDate>
+  <pubDate>Mon, 08 Jul 2024 20:56:46 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2094,7 +2532,7 @@ font-style: inherit;">"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240618-4-player-test-vsekai.html</guid>
-  <pubDate>Mon, 08 Jul 2024 20:50:36 GMT</pubDate>
+  <pubDate>Mon, 08 Jul 2024 20:56:46 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2183,7 +2621,7 @@ font-style: inherit;">"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240616-request-for-quad-mesh-dataset.html</guid>
-  <pubDate>Mon, 08 Jul 2024 20:50:36 GMT</pubDate>
+  <pubDate>Mon, 08 Jul 2024 20:56:46 GMT</pubDate>
 </item>
 </channel>
 </rss>
