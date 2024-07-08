@@ -16,7 +16,7 @@ Create an Android XR game using the theme of "Relaxation" and utilizing Godot En
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
-In "V-Sekai: My Life as a princess," players assume the role of a princess tasked with rebuilding and managing a kingdom. The game focuses on relaxation through planning, resource management, VR interactions, and adventurer tasking.
+In "V-Sekai: My Life as a Princess," players assume the role of a princess tasked with rebuilding and managing a kingdom. The game focuses on relaxation through planning, resource management, VR interactions, and adventurer tasking.
 
 - **Main Menu**: A serene landscape with options to start a new game, load a saved game, and access settings.
 - **In-Game HUD**: Minimalistic interface showing resources, current tasks, and a map of the kingdom.
@@ -85,13 +85,9 @@ var operational_plan: Array = [
     "Navigate to the first room",
     "Collect the treasure"
 ]
-
-# The princess sets the strategy, which includes high-level goals and preparations.
-# The tactical planner breaks down these goals into actionable plans.
-# The operational planner executes the specific tasks required to achieve the goals.
 ```
 
-In the initial prototype, you explore the cave yourself. In "V-Sekai: My Life as a princess," you will reverse this concept by taking on the role of the princess who supplies adventurers with instructions to explore the cave and retrieve treasures. This shift from direct exploration to strategic management aligns with the relaxation theme.
+In the initial prototype, you explore the cave yourself. In "V-Sekai: My Life as a Princess," you will reverse this concept by taking on the role of the princess who supplies adventurers with instructions to explore the cave and retrieve treasures. This shift from direct exploration to strategic management aligns with the relaxation theme.
 
 ## The Benefits
 
