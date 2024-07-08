@@ -2,13 +2,7 @@
 
 ## The Context
 
-> Welcome to the second Godot XR Game Jam!
->
-> This game jam is organized by the Godot XR Community and offers a fun opportunity to build something using Godot's XR capabilities.
->
-> Godot XR offers a lightweight entry into making XR games. With the expected release of Godot 4.3, there are loads of improvements, especially around AR-related features.
->
-> The theme for this game jam is: **Relaxation!**
+The second Godot XR Game Jam is organized by the Godot XR Community is occuring on July 8th 2024 and the jam theme is: **Relaxation!**
 
 ## The Problem Statement
 
@@ -18,13 +12,19 @@ Create an Android XR game using the theme of "Relaxation" and utilizing Godot En
 
 In "V-Sekai: My Life as a Princess," players assume the role of a princess tasked with rebuilding and managing a kingdom. The game focuses on relaxation through planning, resource management, VR interactions, and adventurer tasking.
 
-- **Main Menu**: A serene landscape with options to start a new game, load a saved game, and access settings.
-- **In-Game HUD**: Minimalistic interface showing resources, current tasks, and a map of the kingdom.
-- **Kingdom View**: A top-down view of the kingdom where players can place buildings, gardens, and other structures.
-- **Adventurer Management Screen**: Interface to manage and send adventurers on quests.
+- **Conversation Menu**: Press 'A' to open a conversation menu.
 - **Day Cycles**: The game operates on 5-minute day cycles, providing a sense of urgency and rhythm to daily tasks.
 - **Assistant**: An in-game assistant character helps guide players through their tasks, offering tips and reminders.
-- **Battle Log**: A detailed log that records all combat encounters, including outcomes, rewards, and adventurer performance.
+- **lasso**: The lasso aims to simplify object selection in VR environments, especially when objects are unevenly distributed or the user has shaky hands. 
+
+### Design Principles
+
+1. **Lateral Thinking with Weathered Technology**
+2. **Reduce Modal Menus**
+   - **Main Menu**: A serene landscape with options to start a new game, load a saved game, and access settings.
+   - **In-Game HUD**: Minimalistic interface showing resources, current tasks, and a map of the kingdom.
+   - **Kingdom View**: A top-down view of the kingdom where players can place buildings, gardens, and other structures.
+   - **Adventurer Management Screen**: Interface to manage and send adventurers on quests.
 
 ### Initial Prototype
 
