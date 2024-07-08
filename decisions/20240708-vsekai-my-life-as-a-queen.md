@@ -22,6 +22,9 @@ In "V-Sekai: My Life as a Princess," players assume the role of a princess taske
 - **In-Game HUD**: Minimalistic interface showing resources, current tasks, and a map of the kingdom.
 - **Kingdom View**: A top-down view of the kingdom where players can place buildings, gardens, and other structures.
 - **Adventurer Management Screen**: Interface to manage and send adventurers on quests.
+- **Day Cycles**: The game operates on 5-minute day cycles, providing a sense of urgency and rhythm to daily tasks.
+- **Assistant**: An in-game assistant character helps guide players through their tasks, offering tips and reminders.
+- **Battle Log**: A detailed log that records all combat encounters, including outcomes, rewards, and adventurer performance.
 
 ### Initial Prototype
 
