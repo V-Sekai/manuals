@@ -75,11 +75,11 @@ var princess_operational_memories: Dictionary = {
 }
 
 var princess_operational_plan: Array = [
-    "Walk to the royal cabin",
-    "Search for the cave entrance",
-    "Enter the cave",
-    "Navigate to the first room",
-    "Collect the treasure"
+    "Gather supplies for the journey",
+    "Travel to the cave entrance",
+    "Wait for the adventurer",
+    "Provide support from outside the cave",
+    "Receive the treasure from the adventurer"
 ]
 
 var adventurer_tactical_memories: Dictionary = {
@@ -105,7 +105,8 @@ var adventurer_operational_plan: Array = [
     "Search for the cave entrance",
     "Enter the cave",
     "Navigate to the first room",
-    "Collect the treasure"
+    "Collect the treasure",
+    "Return to the cave entrance and hand over the treasure to the princess"
 ]
 ```
 
