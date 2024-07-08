@@ -7,7 +7,7 @@
 > This game jam is organized by the Godot XR Community and offers a fun opportunity to build something using Godot's XR capabilities.
 >
 > Godot XR offers a lightweight entry into making XR games. With the expected release of Godot 4.3, there are loads of improvements, especially around AR-related features.
-> 
+>
 > The theme for this game jam is: **Relaxation!**
 
 ## The Problem Statement
@@ -25,9 +25,43 @@ In "V-Sekai: My Life as a Queen," players assume the role of a queen tasked with
 
 ### Initial Prototype
 
+```gdscript
+var memories: Dictionary = {
+    "is_at": {"player": "cabin"},
+    "is_outside_of": {"cave entrance": "cabin"},
+    "contains": {"first_room": "treasure"}
+}
+
+var todo_list: Array = [
+    "Explore the cabin",
+    "Find the cave entrance",
+    "Enter the cave",
+    "Reach the treasure room"
+]
+```
+
 You start in a little cabin in the woods. You have a cave you can venture into, and at the end is treasure. This initial prototype serves as a simple introduction to the game's mechanics and environment.
 
 ### Initial Prototype Reversal
+
+```gdscript
+var memories: Dictionary = {
+    "is_at": {
+        "queen": "royal cabin",
+        "adventurer": "adventurer's cabin"
+    },
+    "is_outside_of": {"cave entrance": "adventurer's cabin"},
+    "contains": {"first_room": "treasure"}
+}
+
+var todo_list: Array = [
+    "Instruct adventurers from the royal cabin",
+    "Guide them to the adventurer's cabin",
+    "Direct them to find the cave entrance",
+    "Order them to enter the cave",
+    "Command them to reach the treasure room"
+]
+```
 
 In the initial prototype, you explore the cave yourself. In "V-Sekai: My Life as a Queen," you will reverse this concept by taking on the role of the queen who supplies adventurers with instructions to explore the cave and retrieve treasures. This shift from direct exploration to strategic management aligns with the relaxation theme.
 
