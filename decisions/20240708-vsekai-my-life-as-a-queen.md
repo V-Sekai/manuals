@@ -44,37 +44,63 @@ You start in a little cabin in the woods. You have a cave you can venture into, 
 
 ### Initial Prototype Reversal
 
-```gdscript
-var strategic_memories: Dictionary = {
+```swift
+var princess_strategic_memories: Dictionary = {
     "is_at": {"princess": "royal cabin"},
     "has_goal": {"princess": "retrieve treasure from the cave"},
     "preparation_status": {"princess": "not_started"}
 }
 
-var strategic_plan: Array = [
+var princess_strategic_plan: Array = [
     "Set goal to retrieve treasure from the cave",
-    "Ensure adventurer is prepared for the journey"
+    "Prepare for the journey"
 ]
 
-var tactical_memories: Dictionary = {
+var princess_tactical_memories: Dictionary = {
+    "is_at": {"princess": "royal cabin"},
+    "knows_location": {"princess": ["royal cabin", "cave entrance"]},
+    "route_planned": {"princess": false}
+}
+
+var princess_tactical_plan: Array = [
+    "Move to the royal cabin",
+    "Locate the cave entrance",
+    "Plan route through the cave to the treasure room"
+]
+
+var princess_operational_memories: Dictionary = {
+    "is_at": {"princess": "royal cabin"},
+    "visited": {"princess": []},
+    "contains": {"first_room": "treasure"}
+}
+
+var princess_operational_plan: Array = [
+    "Walk to the royal cabin",
+    "Search for the cave entrance",
+    "Enter the cave",
+    "Navigate to the first room",
+    "Collect the treasure"
+]
+
+var adventurer_tactical_memories: Dictionary = {
     "is_at": {"adventurer": "adventurer's cabin"},
     "knows_location": {"adventurer": ["adventurer's cabin", "cave entrance"]},
     "route_planned": {"adventurer": false}
 }
 
-var tactical_plan: Array = [
-    "Move adventurer to the adventurer's cabin",
+var adventurer_tactical_plan: Array = [
+    "Move to the adventurer's cabin",
     "Locate the cave entrance",
     "Plan route through the cave to the treasure room"
 ]
 
-var operational_memories: Dictionary = {
+var adventurer_operational_memories: Dictionary = {
     "is_at": {"adventurer": "adventurer's cabin"},
     "visited": {"adventurer": []},
     "contains": {"first_room": "treasure"}
 }
 
-var operational_plan: Array = [
+var adventurer_operational_plan: Array = [
     "Walk to the adventurer's cabin",
     "Search for the cave entrance",
     "Enter the cave",
