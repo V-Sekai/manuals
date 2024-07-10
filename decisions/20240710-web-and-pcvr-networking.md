@@ -30,6 +30,22 @@ To test the interoperability between PCVR and web platforms, we propose developi
 - Using Godot's high-level multiplayer API to handle message sending and receiving.
 - Ensuring that messages sent from the PCVR client appear in real-time on the web client and vice versa.
 
+To enhance the functionality and flexibility of the communication system, we propose implementing multiple channels for different types of data. This will allow for more organized and efficient data transfer. The channels could include:
+
+1. **Text Channel**:
+
+   - For sending and receiving text messages.
+   - Used in the real-time chat application.
+
+2. **Voice Channel**:
+
+   - For transmitting voice data.
+   - Enables real-time voice communication between PCVR and web clients.
+
+3. **Data Channel**:
+   - For sending miscellaneous data such as user actions, game state updates, etc.
+   - Ensures that non-textual data is transmitted efficiently.
+
 ## The Benefits
 
 Ensures real-time interaction between PCVR and web platforms.
