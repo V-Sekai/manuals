@@ -1,5 +1,10 @@
 # V-Sekai Changelog - July 2024
 
+- Experimental (🧪): This stage is for features that are still being tested and may not be stable.
+- Feature complete (🎯): This stage is for features that have all planned functionality implemented.
+- Beta (🚧): This stage is for features that are largely complete but may still have bugs.
+- General release (🚀): This stage is for features that have been fully tested and are now released.
+
 ## [Released]
 
 - Not applicable for this month.
@@ -11,62 +16,26 @@
 - Worked on PaperWork🔥
 - Worked on ServerBackend🚫
 - Worked on TrollVsGoatTrafficSimulator
-- On 2024-07-09 1hour 30minutes worked on elaish/manifold for CSG
-
-### Added
-
-- Not applicable for this month.
-
-### Changed
-
-- Experimental (🧪): This stage is for features that are still being tested and may not be stable.
-- Feature complete (🎯): This stage is for features that have all planned functionality implemented.
-- Beta (🚧): This stage is for features that are largely complete but may still have bugs.
-- General release (🚀): This stage is for features that have been fully tested and are now released.
-
-**Godot 4.4 Release**
-
-- CommandTraceswithServerBackend 🚫
-
-**Godot 4.3 Release**
-
-- Unified Godot Humanoid Skeleton 🚀
-- Involves Contributors
-  - Saracen
-  - iFire
-  - Tokage
-  - lyuma
-  - Silent
-  - Bioblaze Payne
-- Robust Weight Painting (Experimental 🧪) (iFire)
-  - Relies on Lyuma's Skeleton Merging Tool
-- VR Multiplayer (Experimental 🧪)
-  - 3-4 Players
-  - Used by Editor
-- Editor
-  - Creates:
-    - Unidot Unity Package Importer
-      - Done March 2023 - May 2024 🚀
-    - FBX 🚧
-  - Releases:
-    - glTF2.0 general release
-      - Concurrent with Godot 4.0 Release 🚀
-  - Depends on:
-    - VRM 1.0
-      - Depends on glTF2.0 general release 🚀
-  - Used by:
-    - Constructive Solid Geometry with Manifold 🚧
-    - Experimental Mirrors: Engine Patch 🧪
-    - Experimental Mirrors: Screenspace 🧪
-    - Resource Whitelister 🎯
-    - Built-in Blender Importer 🚀
-    - MeshTransform
-      - Done by iFire & MarcusLoppe 🧪
-- 3D Mesh
+- Worked on elaish/manifold for Constructive Solid Geometry
+- Worked on Vahera/godot-orchestrator for riscv and a merge for node formatting
+- Worked with fwsGonzo/libriscv for riscv. V8 now works.
+- Worked on 3D Mesh
   - Tokenized into Sequence of Tokens
   - Inputted into Transformer Model
   - Generates New Meshes
   - Modifies Existing Meshes
+- Experimental Mirrors: Engine Patch 🧪
+- Experimental Mirrors: Screenspace 🧪
+- Maintained Resource Whitelister 🎯
+- Maintained VRM 🎯
+- Robust Weight Painting (Experimental 🧪) (iFire)
+  - Relies on Lyuma's Skeleton Merging Tool
+
+### Added
+
+- Unified Godot Humanoid Skeleton 🚀
+- Unidot Unity Package Importer
+- FBX 🚧
 
 ### Fixed
 
