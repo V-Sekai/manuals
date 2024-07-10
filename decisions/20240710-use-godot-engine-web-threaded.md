@@ -10,15 +10,14 @@ When developing web applications with Godot, we face challenges related to loadi
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
-| Feature              | Multi-Threaded | Single-Threaded |
-| -------------------- | -------------- | --------------- |
-| Audio Sampling       | x              | x               |
-| Normal Audio Files   | x              |                 |
-| Shared Array Buffer  | x              |                 |
-| Full Browser Support |                | x               |
-| Potential Bugs       |                | x               |
-
-If we design for the single-threaded version, we can't load maps in the background if they are large.
+| Feature                           | Multi-Threaded | Single-Threaded |
+| --------------------------------- | -------------- | --------------- |
+| Audio Sampling                    | x              | x               |
+| Normal Audio Files                | x              |                 |
+| Shared Array Buffer               | x              |                 |
+| Load Large Maps in the Background | x              |                 |
+| Full Browser Support              |                | x               |
+| Potential Bugs                    |                | x               |
 
 ## The Benefits
 
