@@ -21,6 +21,15 @@ PCVR platforms must be able to communicate with the web platform in a low latenc
 - **Custom Patch for Godot WebRTC**: Utilize our custom patch for Godot WebRTC for PCVR.
 - **Standard Browser WebRTC**: Employ the standard browser WebRTC for the web.
 
+#### Real-Time Chat Application
+
+To test the interoperability between PCVR and web platforms, we propose developing a simple real-time chat application. This will involve:
+
+- A basic text input field and display area for messages on both PCVR and web platforms.
+- Establishing a UDP connection between the PCVR and web clients.
+- Using Godot's high-level multiplayer API to handle message sending and receiving.
+- Ensuring that messages sent from the PCVR client appear in real-time on the web client and vice versa.
+
 ## The Benefits
 
 Ensures real-time interaction between PCVR and web platforms.
