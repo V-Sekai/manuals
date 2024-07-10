@@ -2,7 +2,7 @@
 
 ## The Context
 
-Constant problems with WiFi video streaming for vr.
+Constant problems with WiFi video streaming for vr in the stupid summer heat.
 
 ## The Problem Statement
 
