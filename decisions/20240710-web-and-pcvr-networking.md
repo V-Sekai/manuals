@@ -1,0 +1,67 @@
+# Proposed: Networking PCVR with the Web
+
+## The Context
+
+In the development of virtual reality (VR) applications, focusing on both PC-based VR (PCVR) and web platforms can provide a broader reach and enhanced user experience.
+
+**Note:** When referring to "web" in this document, it specifically means web desktop platforms and not WebXR.
+
+We use Godot Engine 4.3 pre-release. PCVR uses OpenXR and the web uses threading.
+
+## The Problem Statement
+
+PCVR platforms must be able to communicate with the web platform in a low latency (UDP) network.
+
+## Proposal
+
+### Implementation Details
+
+- **Communication Protocol**: Implement a UDP-based communication protocol for low-latency data transfer between PCVR and web platforms.
+- **Godot's Multiplayer API**: Use Godot's high-level multiplayer API to manage connections and data synchronization.
+- **Custom Patch for Godot WebRTC**: Utilize our custom patch for Godot WebRTC for PCVR.
+- **Standard Browser WebRTC**: Employ the standard browser WebRTC for the web.
+
+## The Benefits
+
+Ensures real-time interaction between PCVR and web platforms.
+
+Expands the user base by supporting both PCVR and web platforms.
+
+Provides seamless integration and interaction across different platforms.
+
+## The Downsides
+
+Increased complexity in managing cross-platform communication.
+
+Requires ongoing maintenance and updates to ensure compatibility and performance.
+
+## The Road Not Taken
+
+Consideration of other communication protocols like TCP, which may offer reliability but at the cost of higher latency.
+
+## The Infrequent Use Case
+
+Handling scenarios where network conditions are poor or intermittent, requiring robust error handling and reconnection strategies.
+
+## In Core and Done by Us
+
+This proposal involves integrating the solution directly into the core of the V-Sekai project, managed by the V-Sekai development team.
+
+## Status
+
+Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+
+## Decision Makers
+
+- V-Sekai development team
+
+## Tags
+
+- V-Sekai
+
+## Further Reading
+
+1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
+2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
+
+AI assistant Aria assisted with this article.
