@@ -4,6 +4,8 @@
 
 In the development of virtual reality (VR) applications, focusing on both PC-based VR (PCVR) and web platforms can provide a broader reach and enhanced user experience.
 
+Note: When referring to "web" in this document, it specifically means web desktop platforms and not WebXR.
+
 ## The Problem Statement
 
 Balancing the development efforts between PCVR and web platforms presents challenges in terms of resource allocation and maintaining consistent performance across different environments.
