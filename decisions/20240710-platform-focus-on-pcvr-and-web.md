@@ -11,10 +11,11 @@ Balancing the development efforts between PCVR and web platforms presents challe
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
 1. **Unified Codebase**: Develop a unified codebase that supports both PCVR and web platforms to ensure consistency and reduce maintenance overhead.
-2. **Platform-Specific Optimizations**: Implement platform-specific optimizations to leverage the strengths of each environment.
-3. **Responsive Design**: Ensure the user interface is responsive and adapts seamlessly to different devices and screen sizes.
-4. **Performance Monitoring**: Continuously monitor performance metrics to identify and address any platform-specific issues promptly.
-5. **Multithreaded Web**: Opt for a multithreaded web approach instead of a single-threaded one to enhance performance and responsiveness on web platforms.
+2. **Unified Networking**: A PCVR client can communicate with a web client.
+3. **Platform-Specific Optimizations**: Implement platform-specific optimizations to leverage the strengths of each environment.
+4. **Responsive Design**: Ensure the user interface is responsive and adapts seamlessly to different devices and screen sizes.
+5. **Performance Monitoring**: Continuously monitor performance metrics to identify and address any platform-specific issues promptly.
+6. **Multithreaded Web**: Opt for a multithreaded web approach instead of a single-threaded one to enhance performance and responsiveness on web platforms.
 
 ## The Benefits
 
