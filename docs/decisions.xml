@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.5.54</generator>
-<lastBuildDate>Wed, 10 Jul 2024 04:38:29 GMT</lastBuildDate>
+<lastBuildDate>Wed, 10 Jul 2024 15:37:10 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,209 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Wed, 10 Jul 2024 04:38:29 GMT</pubDate>
+  <pubDate>Wed, 10 Jul 2024 15:37:10 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240710-use-godot-engine-web-threaded.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-use-godot-engine-web-threaded" class="level1">
+<h1>Proposed: Use Godot Engine Web Threaded</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>In the development of web-based applications using the Godot Engine, performance and responsiveness are critical. Leveraging multi-threading can significantly enhance these aspects.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>When developing web applications with Godot, we face challenges related to loading large resources and maintaining smooth audio playback. Single-threaded implementations often fall short in handling these tasks efficiently.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Multi-Threaded</th>
+<th>Single-Threaded</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Audio Sampling</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr class="even">
+<td>Normal Audio Files</td>
+<td>x</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Shared Array Buffer</td>
+<td>x</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Full Browser Support</td>
+<td></td>
+<td>x</td>
+</tr>
+<tr class="odd">
+<td>Potential Bugs</td>
+<td></td>
+<td>x</td>
+</tr>
+</tbody>
+</table>
+<p>If we design for the single-threaded version, we can’t load maps in the background if they are large.</p>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li><strong>Improved Performance</strong>: Multi-threading allows for background resource loading, enhancing application responsiveness.</li>
+<li><strong>Better User Experience</strong>: Smooth audio playback and faster load times contribute to a more seamless user experience.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li><strong>Complexity</strong>: Implementing multi-threading can introduce complexity and potential bugs.</li>
+<li><strong>Browser Compatibility</strong>: Ensuring full browser support for multi-threaded features may require additional effort.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>Alternative approaches such as sticking with single-threaded implementations were considered but ultimately deemed less effective for handling large resources.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>In cases where the application does not involve large resources or complex audio processing, single-threaded implementation might suffice.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>This proposal aligns with our core values of efficiency and performance and will be implemented by our team.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240710-use-godot-engine-web-threaded.html</guid>
+  <pubDate>Wed, 10 Jul 2024 15:37:10 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240710-ai-assisted-proposal-style-guide.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-ai-assisted-style-guide" class="level1">
+<h1>Proposed: AI Assisted Style Guide</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>In the realm of proposal writing, maintaining a consistent and professional style is crucial. However, when utilizing AI to assist in this process, the output often lacks the desired stylistic quality.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>When we instruct AI to help complete our proposals, we often encounter issues with poor style and inconsistent formatting.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<ol type="1">
+<li><strong>Avoid Purple Speech</strong>: Ensure that the language used is clear and concise, avoiding overly elaborate or flowery expressions.</li>
+<li><strong>Be Snappy</strong>: Keep sentences short and to the point to maintain reader engagement.</li>
+<li><strong>Avoid Redundant Phrases</strong>: Refrain from using redundant phrases like “effective altruism” since true altruism inherently implies effectiveness.</li>
+<li><strong>Maintain Consistent Headers</strong>: Adhere to the header structure provided in the template to ensure uniformity across documents.</li>
+</ol>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li><strong>Improved Readability</strong>: Clear and concise language enhances the readability of proposals.</li>
+<li><strong>Consistency</strong>: Maintaining a consistent style ensures that all documents have a professional appearance.</li>
+<li><strong>Efficiency</strong>: Streamlined guidelines make it easier for AI to generate high-quality content quickly.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li><strong>Limited Creativity</strong>: Strict adherence to style guidelines may limit creative expression.</li>
+<li><strong>Initial Setup Time</strong>: Establishing and fine-tuning the style guide may require an initial investment of time and resources.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>Alternative approaches such as manual editing or using different AI models were considered but ultimately deemed less efficient or effective.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>In scenarios where highly specialized or technical language is required, additional human oversight may be necessary to ensure accuracy and appropriateness.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>This proposal aligns with our core values of efficiency and professionalism and will be implemented by our team.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240710-ai-assisted-proposal-style-guide.html</guid>
+  <pubDate>Wed, 10 Jul 2024 15:37:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -162,7 +364,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240709-wired-first.html</guid>
-  <pubDate>Wed, 10 Jul 2024 04:38:29 GMT</pubDate>
+  <pubDate>Wed, 10 Jul 2024 15:37:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -250,7 +452,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240709-anwave-set-nvidia-watt-limit.html</guid>
-  <pubDate>Wed, 10 Jul 2024 04:38:29 GMT</pubDate>
+  <pubDate>Wed, 10 Jul 2024 15:37:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -854,7 +1056,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240708-vsekai-my-life-as-a-queen.html</guid>
-  <pubDate>Wed, 10 Jul 2024 04:38:29 GMT</pubDate>
+  <pubDate>Wed, 10 Jul 2024 15:37:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1032,7 +1234,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240706-motion-capture-bill-of-materials.html</guid>
-  <pubDate>Wed, 10 Jul 2024 04:38:29 GMT</pubDate>
+  <pubDate>Wed, 10 Jul 2024 15:37:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1116,7 +1318,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240705-rpg_town.html</guid>
-  <pubDate>Wed, 10 Jul 2024 04:38:29 GMT</pubDate>
+  <pubDate>Wed, 10 Jul 2024 15:37:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1218,7 +1420,7 @@ font-style: inherit;">return</span> model.generate_motion()</span></code></pre><
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240630-use-motion-transformers-for-prediction.html</guid>
-  <pubDate>Wed, 10 Jul 2024 04:38:29 GMT</pubDate>
+  <pubDate>Wed, 10 Jul 2024 15:37:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1410,7 +1612,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240627-gdextension-as-libriscv.html</guid>
-  <pubDate>Wed, 10 Jul 2024 04:38:29 GMT</pubDate>
+  <pubDate>Wed, 10 Jul 2024 15:37:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1500,7 +1702,7 @@ Else:
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240627-every-commit-push-pass-cicd.html</guid>
-  <pubDate>Wed, 10 Jul 2024 04:38:29 GMT</pubDate>
+  <pubDate>Wed, 10 Jul 2024 15:37:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1724,7 +1926,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240626-update-python3-macos-certicates.html</guid>
-  <pubDate>Wed, 10 Jul 2024 04:38:29 GMT</pubDate>
+  <pubDate>Wed, 10 Jul 2024 15:37:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1811,7 +2013,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240623-what-is-uro-backend.html</guid>
-  <pubDate>Wed, 10 Jul 2024 04:38:29 GMT</pubDate>
+  <pubDate>Wed, 10 Jul 2024 15:37:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1892,7 +2094,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240623-talk-length-prototypes.html</guid>
-  <pubDate>Wed, 10 Jul 2024 04:38:29 GMT</pubDate>
+  <pubDate>Wed, 10 Jul 2024 15:37:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1966,7 +2168,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240623-only-save-tools-in-our-cdn.html</guid>
-  <pubDate>Wed, 10 Jul 2024 04:38:29 GMT</pubDate>
+  <pubDate>Wed, 10 Jul 2024 15:37:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2049,7 +2251,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240623-do-cdn-for-launcher.html</guid>
-  <pubDate>Wed, 10 Jul 2024 04:38:29 GMT</pubDate>
+  <pubDate>Wed, 10 Jul 2024 15:37:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2133,7 +2335,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240622-process-for-testing-vsekai.html</guid>
-  <pubDate>Wed, 10 Jul 2024 04:38:29 GMT</pubDate>
+  <pubDate>Wed, 10 Jul 2024 15:37:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2212,7 +2414,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240622-gocd-agent-docker-image-update.html</guid>
-  <pubDate>Wed, 10 Jul 2024 04:38:29 GMT</pubDate>
+  <pubDate>Wed, 10 Jul 2024 15:37:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2296,7 +2498,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240622-build-for-many-platforms.html</guid>
-  <pubDate>Wed, 10 Jul 2024 04:38:29 GMT</pubDate>
+  <pubDate>Wed, 10 Jul 2024 15:37:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2362,267 +2564,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240621-proposal-template copy.html</guid>
-  <pubDate>Wed, 10 Jul 2024 04:38:29 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240621-caption-photos-for-cicd.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-image-captioning-tool" class="level1">
-<h1>Proposed: Image Captioning Tool</h1>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>In the V-Sekai project, we are developing a continuous integration and continuous delivery (CI/CD) tool for Meta Platform Inc.’s Virtual Reality OpenXR API headset simulator (Windows 11). A key feature of this tool is the ability to caption images.</p>
-</section>
-<section id="problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>We need to caption images for two main reasons:</p>
-<ol type="1">
-<li>Debugging: Developers can quickly identify issues by reading the captions.</li>
-<li>Dataset Creation: We can create a nominal vs anomaly dataset for visual anomaly detection.</li>
-</ol>
-</section>
-<section id="proposal" class="level2">
-<h2 class="anchored" data-anchor-id="proposal">Proposal</h2>
-<p>Here’s a Python script that uses the Gradio client to generate captions for images:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Copyright (c) 2019-2022 K. S. Ernest (iFire) Lee (fire)</span></span>
-<span id="cb1-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># </span><span class="an" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">SPDX-License-Identifier:</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"> MIT</span></span>
-<span id="cb1-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># pip3 install gradio_client</span></span>
-<span id="cb1-4"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> gradio_client <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> Client, handle_file</span>
-<span id="cb1-5"></span>
-<span id="cb1-6">file_or_url_paths <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"//192.168.1.72/share/Screenshot 2024-05-22 at 6.05.58 PM.png"</span>]</span>
-<span id="cb1-7">client <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> Client(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"gokaygokay/PaliGemma-PixelProse"</span>)</span>
-<span id="cb1-8"></span>
-<span id="cb1-9"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> path <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> file_or_url_paths:</span>
-<span id="cb1-10">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">try</span>:</span>
-<span id="cb1-11">        result <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> client.predict(</span>
-<span id="cb1-12">            image<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>handle_file(path),</span>
-<span id="cb1-13">            api_name<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"/create_captions_rich"</span></span>
-<span id="cb1-14">        )</span>
-<span id="cb1-15">        <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(result)</span>
-<span id="cb1-16">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">except</span> <span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">Exception</span> <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> e:</span>
-<span id="cb1-17">        <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">f"An error occurred while processing </span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span>path<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">: </span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span>e<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span>)</span></code></pre></div>
-</section>
-<section id="benefits" class="level2">
-<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
-<ul>
-<li>Improved debugging process.</li>
-<li>Facilitates the creation of a dataset for visual anomaly detection.</li>
-</ul>
-</section>
-<section id="downsides" class="level2">
-<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
-<ul>
-<li>The accuracy of the captions depends on the performance of the Gradio client.</li>
-</ul>
-</section>
-<section id="road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="road-not-taken">Road Not Taken</h2>
-<ul>
-<li>We could have used other image captioning tools or libraries, but we chose Gradio due to its simplicity and ease of use.</li>
-</ul>
-</section>
-<section id="infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="infrequent-use-case">Infrequent Use Case</h2>
-<ul>
-<li>This tool may not be useful when working with non-visual data or when debugging is not required.</li>
-</ul>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<ul>
-<li>This feature will be developed and maintained by the V-Sekai development team.</li>
-</ul>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - The GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-<li>[https://github.com/V-Sekai-fire/character-rigging-anomaly-detection]</li>
-<li>[https://anomalib.readthedocs.io/en/v1.1.0/]</li>
-<li>[https://developer.oculus.com/documentation/native/xrsim-intro/]</li>
-<li>[<sub>https://github.com/V-Sekai-fire/cog-caption-image.git</sub>]</li>
-<li>[https://huggingface.co/spaces/gokaygokay/Florence-2]</li>
-</ol>
-<p>This proposal was assisted by Aria, an AI assistant.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240621-caption-photos-for-cicd.html</guid>
-  <pubDate>Wed, 10 Jul 2024 04:38:29 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240618-schedule-as-binary-tree.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-transforming-schedule-dag-into-a-left-child-right-sibling-binary-tree" class="level1">
-<h1>Proposed: Transforming Schedule DAG into a Left-child Right-sibling Binary Tree</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>You have a Directed Acyclic Graph (DAG) for a schedule.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>You want to transform the schedule DAG into a Left-child right-sibling binary tree. This transformation will help in finding ways to hasten the critical path.</p>
-</section>
-<section id="solution-proposal" class="level2">
-<h2 class="anchored" data-anchor-id="solution-proposal">Solution Proposal</h2>
-<p>The original graph was a Directed Acyclic Graph (DAG) where each node could have multiple children. The operations performed on this DAG were aimed at transforming it into a Left-child right-sibling binary tree. Here’s a description of the operations:</p>
-<ol type="1">
-<li><p><strong>Identifying the First Child:</strong> For each node in the original DAG, we identified the first child node. This is the left-most child in the original diagram.</p></li>
-<li><p><strong>Identifying Siblings:</strong> For each first child identified in step 1, we then identified its siblings. These are the nodes that share the same parent as the first child.</p></li>
-<li><p><strong>Creating Binary Tree:</strong> We created a new binary tree where each node has at most two children: the left child is the first child from the original diagram, and the right child is the next sibling of the left child.</p></li>
-<li><p><strong>Preserving Order:</strong> The order of the nodes in the binary tree follows the order of the nodes in the original DAG.</p></li>
-</ol>
-<p>The resulting binary tree maintains the directed acyclic property of the original DAG, but now each node has at most two children, making it easier to traverse and manage.</p>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p>Transforming the schedule DAG into a Left-child right-sibling binary tree simplifies the structure, making it easier to traverse and manage. It also helps in identifying the critical path more efficiently, which can lead to improved scheduling and better resource allocation.</p>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>The transformation process may require additional computational resources, especially for large DAGs. Also, if the original DAG has nodes with more than two children, some information may be lost in the transformation.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>An alternative approach could have been to keep the original DAG structure and optimize the scheduling algorithm. However, this would not simplify the structure or make it easier to manage.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>This proposal may not be beneficial for small DAGs or DAGs where the critical path is easily identifiable without transformation.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>The proposed transformation process will be implemented by the V-Sekai development team.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-<li>Fire</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-<li>DAG</li>
-<li>Binary Tree</li>
-<li>Schedule Optimization</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240618-schedule-as-binary-tree.html</guid>
-  <pubDate>Wed, 10 Jul 2024 04:38:29 GMT</pubDate>
+  <pubDate>Wed, 10 Jul 2024 15:37:10 GMT</pubDate>
 </item>
 </channel>
 </rss>
