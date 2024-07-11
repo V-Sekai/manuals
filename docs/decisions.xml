@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.5.54</generator>
-<lastBuildDate>Wed, 10 Jul 2024 19:41:54 GMT</lastBuildDate>
+<lastBuildDate>Thu, 11 Jul 2024 02:59:25 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Wed, 10 Jul 2024 19:41:54 GMT</pubDate>
+  <pubDate>Thu, 11 Jul 2024 02:59:25 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -190,7 +190,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-web-and-pcvr-networking.html</guid>
-  <pubDate>Wed, 10 Jul 2024 19:41:54 GMT</pubDate>
+  <pubDate>Thu, 11 Jul 2024 02:59:25 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -274,7 +274,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-use-webrtc-to-native-interop.html</guid>
-  <pubDate>Wed, 10 Jul 2024 19:41:54 GMT</pubDate>
+  <pubDate>Thu, 11 Jul 2024 02:59:25 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -394,7 +394,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-use-godot-engine-web-threaded.html</guid>
-  <pubDate>Wed, 10 Jul 2024 19:41:54 GMT</pubDate>
+  <pubDate>Thu, 11 Jul 2024 02:59:25 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -484,7 +484,165 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-platform-focus-on-pcvr-and-web.html</guid>
-  <pubDate>Wed, 10 Jul 2024 19:41:54 GMT</pubDate>
+  <pubDate>Thu, 11 Jul 2024 02:59:25 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240710-convert-blender-cc0-base-mesh-to-godot-engine-t-pose.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-convert-blender-cc0-base-mesh-to-godot-engine-t-pose" class="level1">
+<h1>Proposed: Convert Blender CC0 Base Mesh to Godot Engine T-Pose</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>We would like to have several base meshes for testing and for skeleton merge clothing tests.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>The current process of converting Blender CC0 base meshes to a format compatible with the Godot Engine is cumbersome and lacks a standardized approach. This proposal aims to streamline the conversion process, ensuring consistency and efficiency.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<ol type="1">
+<li><p><strong>Install Blender 4.1.1</strong></p></li>
+<li><p><strong>Download “Human Base Meshes bundle by Blender Studio CC0 Licensed”</strong></p></li>
+<li><p><strong>Test Auto Rig Pro version 3.70.38</strong></p></li>
+<li><p><strong>Pick a category</strong>:</p>
+<ul>
+<li>A. Stylized</li>
+<li>B. Realistic</li>
+<li>C. Stylized Parts</li>
+<li>D. Realistic Parts</li>
+</ul>
+<p>We’re picking realistic.</p></li>
+<li><p><strong>Pick feminine or masculine</strong>: We’re picking feminine.</p></li>
+<li><p><strong>Select all the meshes</strong></p></li>
+<li><p><strong>Use Auto-Rig Pro Smart</strong>: “Get Selected Objects”</p></li>
+<li><p><strong>Add armature</strong>: Human</p>
+<ul>
+<li>Set biped</li>
+<li>Add additional: Twist</li>
+</ul></li>
+<li><p><strong>Click on the body parts</strong>:</p>
+<ol type="1">
+<li>Neck (This is the base of the neck)</li>
+<li>Chin (This is the tip of the chin)</li>
+<li>Shoulder (It’s in between the arm.)</li>
+<li>Spine root (Crotch area.)</li>
+<li>Ankles (Above the foot.)</li>
+</ol></li>
+<li><p><strong>Set skeleton type to “UE5 Manny-Quinn”</strong></p></li>
+<li><p><strong>Add facial</strong></p></li>
+<li><p><strong>Remember to set eyes (required)</strong></p></li>
+<li><p><strong>Set pelvis up to be enabled</strong></p></li>
+<li><p><strong>Click on the facial areas</strong>:</p>
+<ol type="1">
+<li>Eyebrows</li>
+<li>Eyes</li>
+<li>Mouth</li>
+</ol></li>
+<li><p><strong>Set character name</strong> (it’s an option in misc tab) to <code>body_feminine_realistic</code></p></li>
+<li><p><strong>Click match to rig</strong></p></li>
+<li><p><strong>Select all meshes, and the rig. Then go to the Skin tab</strong></p></li>
+<li><p><strong>Select scale fix</strong></p></li>
+<li><p><strong>Do not enable preserve volume</strong></p></li>
+<li><p><strong>Then hit bind</strong> (Ensure the engine is heat map, voxel skinning gives poor results around the shoulder blades on base meshes.)</p></li>
+<li><p><strong>Go to Rig</strong></p></li>
+<li><p><strong>Do not set pose to T-Pose</strong>. It is not reversible.</p></li>
+<li><p><strong>Set the pose to “UE5 Manny-Quinn”</strong></p></li>
+<li><p><strong>TODO: Create a new animation action and name it “A-POSE”</strong></p></li>
+<li><p><strong>Set pose to rest</strong></p></li>
+<li><p><strong>Set the pose to “T-Pose”</strong></p></li>
+<li><p><strong>TODO: Create a new animation action and name it “RESET”</strong></p></li>
+<li><p><strong>Configure FBX exporter</strong>:</p>
+<ol type="1">
+<li>Unity humanoid</li>
+<li>Click fix rig (again)</li>
+<li>Select advanced</li>
+<li>Full facial</li>
+<li>Export root bone <code>c_traj</code></li>
+<li>Set root motion</li>
+</ol></li>
+<li><p><strong>Ensure that the multi-mesh <code>GEO-body_female_realistic</code> is set to render disabled</strong></p></li>
+<li><p><strong>Export as GLB</strong></p></li>
+<li><p><strong>Open GLB in Godot Engine</strong></p></li>
+<li><p><strong>TODO: Instructions on the bone map</strong></p></li>
+<li><p><strong>TODO: Instructions on silhouette fixer</strong>:</p>
+<ol type="1">
+<li>Disable list:
+<ol type="1">
+<li>LeftFoot</li>
+<li>RightFoot</li>
+<li>Neck</li>
+<li>Head</li>
+<li>UpperChest</li>
+</ol></li>
+</ol></li>
+</ol>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li><strong>Improved Efficiency</strong>: Streamlining the conversion process saves time and reduces manual effort.</li>
+<li><strong>Consistency</strong>: Standardizing the approach ensures uniformity across different base meshes.</li>
+<li><strong>Enhanced Compatibility</strong>: Ensures that the converted meshes are fully compatible with the Godot Engine.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li><strong>Initial Learning Curve</strong>: Team members may need time to familiarize themselves with the new process.</li>
+<li><strong>Tool Dependency</strong>: Reliance on specific tools like Auto Rig Pro may limit flexibility.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>Alternative approaches such as manual rigging or using different software were considered but ultimately deemed less efficient or effective.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>In rare cases where highly specialized or technical requirements arise, additional human oversight may be necessary to ensure accuracy and appropriateness.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>This proposal aligns with our core values of efficiency and professionalism and will be implemented by our team.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+<li><a href="https://www.blender.org/wp-content/uploads/2023/11/human_base_meshes_bundle_v1.1.jpg">Human Base Meshes bundle by Blender Studio CC0 Licensed</a> - Human Base Meshes bundle by Blender Studio includes 17 separate meshes, including complete male and female figures, plus individual body parts like feet, hands, heads, jaws, and eyeballs.</li>
+<li><a href="https://blendermarket.com/products/auto-rig-pro">Auto Rig Pro</a></li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240710-convert-blender-cc0-base-mesh-to-godot-engine-t-pose.html</guid>
+  <pubDate>Thu, 11 Jul 2024 02:59:25 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -575,7 +733,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-art-direction-in-vsekai.html</guid>
-  <pubDate>Wed, 10 Jul 2024 19:41:54 GMT</pubDate>
+  <pubDate>Thu, 11 Jul 2024 02:59:25 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -661,7 +819,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Wed, 10 Jul 2024 19:41:54 GMT</pubDate>
+  <pubDate>Thu, 11 Jul 2024 02:59:25 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -748,7 +906,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240709-wired-first.html</guid>
-  <pubDate>Wed, 10 Jul 2024 19:41:54 GMT</pubDate>
+  <pubDate>Thu, 11 Jul 2024 02:59:25 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -836,7 +994,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240709-anwave-set-nvidia-watt-limit.html</guid>
-  <pubDate>Wed, 10 Jul 2024 19:41:54 GMT</pubDate>
+  <pubDate>Thu, 11 Jul 2024 02:59:25 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1440,7 +1598,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240708-vsekai-my-life-as-a-queen.html</guid>
-  <pubDate>Wed, 10 Jul 2024 19:41:54 GMT</pubDate>
+  <pubDate>Thu, 11 Jul 2024 02:59:25 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1618,7 +1776,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240706-motion-capture-bill-of-materials.html</guid>
-  <pubDate>Wed, 10 Jul 2024 19:41:54 GMT</pubDate>
+  <pubDate>Thu, 11 Jul 2024 02:59:25 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1702,7 +1860,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240705-rpg_town.html</guid>
-  <pubDate>Wed, 10 Jul 2024 19:41:54 GMT</pubDate>
+  <pubDate>Thu, 11 Jul 2024 02:59:25 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1804,7 +1962,7 @@ font-style: inherit;">return</span> model.generate_motion()</span></code></pre><
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240630-use-motion-transformers-for-prediction.html</guid>
-  <pubDate>Wed, 10 Jul 2024 19:41:54 GMT</pubDate>
+  <pubDate>Thu, 11 Jul 2024 02:59:25 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1996,7 +2154,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240627-gdextension-as-libriscv.html</guid>
-  <pubDate>Wed, 10 Jul 2024 19:41:54 GMT</pubDate>
+  <pubDate>Thu, 11 Jul 2024 02:59:25 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2086,7 +2244,7 @@ Else:
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240627-every-commit-push-pass-cicd.html</guid>
-  <pubDate>Wed, 10 Jul 2024 19:41:54 GMT</pubDate>
+  <pubDate>Thu, 11 Jul 2024 02:59:25 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2310,7 +2468,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240626-update-python3-macos-certicates.html</guid>
-  <pubDate>Wed, 10 Jul 2024 19:41:54 GMT</pubDate>
+  <pubDate>Thu, 11 Jul 2024 02:59:25 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2397,7 +2555,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240623-what-is-uro-backend.html</guid>
-  <pubDate>Wed, 10 Jul 2024 19:41:54 GMT</pubDate>
+  <pubDate>Thu, 11 Jul 2024 02:59:25 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2478,7 +2636,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240623-talk-length-prototypes.html</guid>
-  <pubDate>Wed, 10 Jul 2024 19:41:54 GMT</pubDate>
+  <pubDate>Thu, 11 Jul 2024 02:59:25 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2552,90 +2710,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240623-only-save-tools-in-our-cdn.html</guid>
-  <pubDate>Wed, 10 Jul 2024 19:41:54 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240623-do-cdn-for-launcher.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-use-github-actions-and-digital-ocean-spaces-for-a-v-sekai-launcher" class="level1">
-<h1>Proposed: Use GitHub Actions and Digital Ocean Spaces for a V-Sekai Launcher</h1>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>V-Sekai is an open-source project that brings social VR/VRSNS/metaverse components to the Godot Engine. The current setup for providing a launcher to players via itch.io is too complicated and needs simplification.</p>
-</section>
-<section id="problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>We need a more streamlined process to provide a launcher to players.</p>
-</section>
-<section id="proposal" class="level2">
-<h2 class="anchored" data-anchor-id="proposal">Proposal</h2>
-<p>Leverage GitHub Actions to build the launcher and then upload it to Digital Ocean Spaces using the casync protocol (with the Desync golang library). This approach will replace the current reliance on gocd.</p>
-</section>
-<section id="benefits" class="level2">
-<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
-<ul>
-<li>Simplified deployment process.</li>
-<li>Reduced dependency on other developers.</li>
-<li>Utilization of familiar and widely-used technologies (GitHub Actions, Digital Ocean Spaces).</li>
-</ul>
-</section>
-<section id="downsides" class="level2">
-<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
-<p>The potential downsides could include:</p>
-<ul>
-<li>Learning curve associated with new technologies for some team members.</li>
-<li>Potential costs associated with using Digital Ocean Spaces.</li>
-<li>Possible limitations or issues with the cassync protocol or the Desync golang library.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Alternative solutions such as continuing with the itch.io setup or exploring other cloud storage services were considered. However, they were not chosen due to their complexity or potential cost implications.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>This solution might not be optimal in scenarios where there are significant changes in the game’s codebase that would require substantial modifications to the GitHub Actions scripts.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>This proposal is core to the V-Sekai project and will be implemented by the V-Sekai development team.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project.</li>
-</ol>
-<p><em>AI assistant Aria assisted with this article.</em></p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240623-do-cdn-for-launcher.html</guid>
-  <pubDate>Wed, 10 Jul 2024 19:41:54 GMT</pubDate>
+  <pubDate>Thu, 11 Jul 2024 02:59:25 GMT</pubDate>
 </item>
 </channel>
 </rss>
