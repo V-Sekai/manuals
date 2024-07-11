@@ -30,6 +30,7 @@
 - Maintained VRM 🎯
 - Robust Weight Painting (Experimental 🧪) (iFire)
   - Relies on Lyuma's Skeleton Merging Tool
+- Update to Godot Engien 4.3-beta3
 
 ### Added
 
