@@ -52,9 +52,6 @@ The current process of converting Blender CC0 base meshes to a format compatible
 22. **Do not set pose to T-Pose**. It is not reversible.
 23. **Set the pose to "UE5 Manny-Quinn"**
 24. **TODO: Create a new animation action and name it "A-POSE"**
-25. **Set pose to rest**
-26. **Set the pose to "T-Pose"**
-27. **TODO: Create a new animation action and name it "RESET"**
 28. **Configure FBX exporter**:
     1. Unity humanoid
     2. Click fix rig (again)
