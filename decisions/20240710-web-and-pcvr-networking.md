@@ -10,7 +10,7 @@ We use Godot Engine 4.3 pre-release. PCVR uses OpenXR and the web uses threading
 
 ## The Problem Statement
 
-PCVR platforms must be able to communicate with the web platform in a low latency (UDP) network.
+PCVR platforms must be able to communicate with the web platform in a low latency (UDP) network so the web can be a fallback to support everyone.
 
 ## Proposal
 
