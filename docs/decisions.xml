@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.5.54</generator>
-<lastBuildDate>Mon, 15 Jul 2024 22:48:52 GMT</lastBuildDate>
+<lastBuildDate>Mon, 15 Jul 2024 22:52:23 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Mon, 15 Jul 2024 22:48:52 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:52:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -375,6 +375,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 <section id="recorded-the-byte-counts-of-every-synced-variable-type-in-udon" class="level3">
 <h3 class="anchored" data-anchor-id="recorded-the-byte-counts-of-every-synced-variable-type-in-udon">Recorded the byte count(s) of every synced variable type in udon</h3>
 <p><a href="https://vxtwitter.com/Centauri2442/status/1747888817518879039">Recorded the byte count(s) of every synced variable type in udon</a></p>
+<p>Here’s the table without using the “^” symbol for repetitions:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 16%">
@@ -433,49 +434,49 @@ font-style: inherit;">}</span></span></code></pre></div>
 <td>4</td>
 <td>2</td>
 <td>UShort</td>
-<td>^</td>
+<td>Swaps every other</td>
 </tr>
 <tr class="odd">
 <td>System.Int32</td>
 <td>8</td>
 <td>4</td>
 <td>Int</td>
-<td>^</td>
+<td>Swaps every other</td>
 </tr>
 <tr class="even">
 <td>System.UInt32</td>
 <td>8</td>
 <td>4</td>
 <td>UInt</td>
-<td>^</td>
+<td>Swaps every other</td>
 </tr>
 <tr class="odd">
 <td>System.Int64</td>
 <td>12</td>
 <td>8</td>
 <td>Long</td>
-<td>^</td>
+<td>Swaps every other</td>
 </tr>
 <tr class="even">
 <td>System.UInt64</td>
 <td>12</td>
 <td>8</td>
 <td>ULong</td>
-<td>^</td>
+<td>Swaps every other</td>
 </tr>
 <tr class="odd">
 <td>System.Single</td>
 <td>8</td>
 <td>4</td>
 <td>Float</td>
-<td>^</td>
+<td>Swaps every other</td>
 </tr>
 <tr class="even">
 <td>System.Double</td>
 <td>12</td>
 <td>8</td>
 <td>Double</td>
-<td>^</td>
+<td>Swaps every other</td>
 </tr>
 <tr class="odd">
 <td>UnityEngine.Vector2</td>
@@ -545,21 +546,21 @@ font-style: inherit;">}</span></span></code></pre></div>
 <td>80</td>
 <td>80</td>
 <td>CharArray</td>
-<td>^</td>
+<td>80 + array size in increments of 4 as buffer (80, 84, 88, etc) | Will increase every 4 values (5, 9, 13, etc)</td>
 </tr>
 <tr class="odd">
 <td>System.ByteArray</td>
 <td>80</td>
 <td>80</td>
 <td>ByteArray</td>
-<td>^</td>
+<td>80 + array size in increments of 4 as buffer (80, 84, 88, etc) | Will increase every 4 values (5, 9, 13, etc)</td>
 </tr>
 <tr class="even">
 <td>System.SByteArray</td>
 <td>80</td>
 <td>80</td>
 <td>SByteArray</td>
-<td>^</td>
+<td>80 + array size in increments of 4 as buffer (80, 84, 88, etc) | Will increase every 4 values (5, 9, 13, etc)</td>
 </tr>
 <tr class="odd">
 <td>System.Int16Array</td>
@@ -573,77 +574,77 @@ font-style: inherit;">}</span></span></code></pre></div>
 <td>80</td>
 <td>80</td>
 <td>UShortArray</td>
-<td>^</td>
+<td>80 + array size in increments of 4 as buffer (80, 84, 88, etc) | Will increase every 2 values (3, 5, 7, etc)</td>
 </tr>
 <tr class="odd">
 <td>System.Int32Array</td>
 <td>80</td>
 <td>80</td>
 <td>IntArray</td>
-<td>80 + array size _ 4</td>
+<td>80 + array size * 4</td>
 </tr>
 <tr class="even">
 <td>System.UInt32Array</td>
 <td>80</td>
 <td>80</td>
 <td>UIntArray</td>
-<td>^</td>
+<td>80 + array size * 4</td>
 </tr>
 <tr class="odd">
 <td>System.Int64Array</td>
 <td>80</td>
 <td>80</td>
 <td>LongArray</td>
-<td>80 + array size _ 8</td>
+<td>80 + array size * 8</td>
 </tr>
 <tr class="even">
 <td>System.UInt64Array</td>
 <td>80</td>
 <td>80</td>
 <td>ULongArray</td>
-<td>^</td>
+<td>80 + array size * 8</td>
 </tr>
 <tr class="odd">
 <td>System.SingleArray</td>
 <td>80</td>
 <td>80</td>
 <td>FloatArray</td>
-<td>80 + array size _ 4</td>
+<td>80 + array size * 4</td>
 </tr>
 <tr class="even">
 <td>System.DoubleArray</td>
 <td>80</td>
 <td>80</td>
 <td>DoubleArray</td>
-<td>80 + array size _ 8</td>
+<td>80 + array size * 8</td>
 </tr>
 <tr class="odd">
 <td>UnityEngine.Vector2Array</td>
 <td>80</td>
 <td>80</td>
 <td>Vector2Array</td>
-<td>80 + array size _ 8</td>
+<td>80 + array size * 8</td>
 </tr>
 <tr class="even">
 <td>UnityEngine.Vector3Array</td>
 <td>80</td>
 <td>80</td>
 <td>Vector3Array</td>
-<td>80 + array size _ 12</td>
+<td>80 + array size * 12</td>
 </tr>
 <tr class="odd">
 <td>UnityEngine.Vector4Array</td>
 <td>80</td>
 <td>80</td>
 <td>Vector4Array</td>
-<td>80 + array size _ 16</td>
+<td>80 + array size * 16</td>
 </tr>
 <tr class="even">
 <td>UnityEngine.QuaternionArray</td>
 <td>80</td>
 <td>80</td>
 <td>QuaternionArray</td>
-<td>^</td>
+<td>80 + array size * 16</td>
 </tr>
 <tr class="odd">
 <td>System.StringArray</td>
@@ -657,14 +658,14 @@ font-style: inherit;">}</span></span></code></pre></div>
 <td>80</td>
 <td>80</td>
 <td>RVCUStringArray</td>
-<td>^</td>
+<td>84 + (2, 4, or 8 bytes per character)</td>
 </tr>
 <tr class="odd">
 <td>UnityEngine.ColorArray</td>
 <td>80</td>
 <td>80</td>
 <td>ColorArray</td>
-<td>80 + array size _ 16</td>
+<td>80 + array size * 16</td>
 </tr>
 <tr class="even">
 <td>UnityEngine.Color32Array</td>
@@ -697,7 +698,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240715-vrchat-networking-mental-model.html</guid>
-  <pubDate>Mon, 15 Jul 2024 22:48:52 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:52:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -784,7 +785,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240712-use-shrinkwrap-blender-modiifer-to-fit.html</guid>
-  <pubDate>Mon, 15 Jul 2024 22:48:52 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:52:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -901,7 +902,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-web-and-pcvr-networking.html</guid>
-  <pubDate>Mon, 15 Jul 2024 22:48:52 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:52:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -985,7 +986,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-use-webrtc-to-native-interop.html</guid>
-  <pubDate>Mon, 15 Jul 2024 22:48:52 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:52:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1105,7 +1106,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-use-godot-engine-web-threaded.html</guid>
-  <pubDate>Mon, 15 Jul 2024 22:48:52 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:52:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1195,7 +1196,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-platform-focus-on-pcvr-and-web.html</guid>
-  <pubDate>Mon, 15 Jul 2024 22:48:52 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:52:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1350,7 +1351,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-convert-blender-cc0-base-mesh-to-godot-engine-t-pose.html</guid>
-  <pubDate>Mon, 15 Jul 2024 22:48:52 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:52:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1441,7 +1442,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-art-direction-in-vsekai.html</guid>
-  <pubDate>Mon, 15 Jul 2024 22:48:52 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:52:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1527,7 +1528,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Mon, 15 Jul 2024 22:48:52 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:52:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1614,7 +1615,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240709-wired-first.html</guid>
-  <pubDate>Mon, 15 Jul 2024 22:48:52 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:52:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1702,7 +1703,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240709-anwave-set-nvidia-watt-limit.html</guid>
-  <pubDate>Mon, 15 Jul 2024 22:48:52 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:52:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2306,7 +2307,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240708-vsekai-my-life-as-a-queen.html</guid>
-  <pubDate>Mon, 15 Jul 2024 22:48:52 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:52:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2484,7 +2485,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240706-motion-capture-bill-of-materials.html</guid>
-  <pubDate>Mon, 15 Jul 2024 22:48:52 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:52:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2568,7 +2569,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240705-rpg_town.html</guid>
-  <pubDate>Mon, 15 Jul 2024 22:48:52 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:52:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2670,7 +2671,7 @@ font-style: inherit;">return</span> model.generate_motion()</span></code></pre><
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240630-use-motion-transformers-for-prediction.html</guid>
-  <pubDate>Mon, 15 Jul 2024 22:48:52 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:52:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2862,7 +2863,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240627-gdextension-as-libriscv.html</guid>
-  <pubDate>Mon, 15 Jul 2024 22:48:52 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:52:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2952,7 +2953,7 @@ Else:
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240627-every-commit-push-pass-cicd.html</guid>
-  <pubDate>Mon, 15 Jul 2024 22:48:52 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:52:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3176,7 +3177,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240626-update-python3-macos-certicates.html</guid>
-  <pubDate>Mon, 15 Jul 2024 22:48:52 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:52:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3263,7 +3264,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240623-what-is-uro-backend.html</guid>
-  <pubDate>Mon, 15 Jul 2024 22:48:52 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:52:23 GMT</pubDate>
 </item>
 </channel>
 </rss>
