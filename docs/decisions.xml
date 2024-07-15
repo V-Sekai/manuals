@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.5.54</generator>
-<lastBuildDate>Sun, 14 Jul 2024 02:41:33 GMT</lastBuildDate>
+<lastBuildDate>Mon, 15 Jul 2024 22:34:11 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,318 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 14 Jul 2024 02:41:33 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:34:11 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240715-vrchat-networking-mental-model.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-create-a-mental-model-of-vrchat-networking" class="level1">
+<h1>Proposed: Create a Mental Model of VRChat Networking</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>In the realm of virtual reality, particularly within VRChat, understanding the networking model is crucial for developers. This proposal aims to create a comprehensive mental model of VRChat’s networking system.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Developers often struggle with the intricacies of VRChat’s networking, leading to inefficient code and suboptimal user experiences. A clear and concise guide is needed to demystify the process.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe How Your Proposal Will Work with Code, Pseudo-Code, Mock-Ups, or Diagrams</h2>
+<section id="sending-data-in-vrchat" class="level3">
+<h3 class="anchored" data-anchor-id="sending-data-in-vrchat">Sending Data in VRChat</h3>
+<p>There are two primary methods to send data in VRChat:</p>
+<ol type="1">
+<li><p><strong>Udonsynced Variables</strong>:</p>
+<ul>
+<li>Mark variables as <code>[UdonSynced]</code>.</li>
+<li>Call <code>RequestSerialization()</code> in the script to send a copy of the synced variables to all other clients.</li>
+<li>Only the owner can call <code>RequestSerialization()</code>, so ensure you call <code>Networking.SetOwner()</code> first.</li>
+<li>An event called <code>OnDeserialization</code> is triggered when a network packet is received.</li>
+</ul></li>
+<li><p><strong>Network Events</strong>:</p>
+<ul>
+<li>Use <code>SendCustomNetworkEvent()</code> to send an event.</li>
+<li>Specify a string that matches the name of a function taking no arguments; this function will run upon receiving the event.</li>
+<li>Choose to send the event either to the owner or all clients.</li>
+</ul></li>
+</ol>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode csharp code-with-copy"><code class="sourceCode cs"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Example of Udonsynced variable</span></span>
+<span id="cb1-2"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">UdonBehaviourSyncMode</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>BehaviourSyncMode<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Manual</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)]</span></span>
+<span id="cb1-3"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">public</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">class</span> SyncExample <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> UdonSharpBehaviour</span>
+<span id="cb1-4"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-5">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span>UdonSynced<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">]</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">private</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">int</span> syncedVariable<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-6"></span>
+<span id="cb1-7">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">public</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">void</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">UpdateVariable</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">int</span> newValue<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb1-8">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-9">        <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>Networking<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">IsOwner</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>gameObject<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">))</span></span>
+<span id="cb1-10">        <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-11">            syncedVariable <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> newValue<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-12">            <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">RequestSerialization</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">();</span></span>
+<span id="cb1-13">        <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-14">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-15"></span>
+<span id="cb1-16">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">public</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">override</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">void</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">OnDeserialization</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">()</span></span>
+<span id="cb1-17">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-18">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Handle deserialized data</span></span>
+<span id="cb1-19">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-20"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-21"></span>
+<span id="cb1-22"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Example of Network Event</span></span>
+<span id="cb1-23"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">public</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">class</span> EventExample <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> UdonSharpBehaviour</span>
+<span id="cb1-24"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-25">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">public</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">void</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">TriggerEvent</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">()</span></span>
+<span id="cb1-26">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-27">        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">SendCustomNetworkEvent</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>VRC<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Udon</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Common</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Interfaces</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">NetworkEventTarget</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">All</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"HandleEvent"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">);</span></span>
+<span id="cb1-28">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-29"></span>
+<span id="cb1-30">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">public</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">void</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">HandleEvent</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">()</span></span>
+<span id="cb1-31">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-32">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Handle the event</span></span>
+<span id="cb1-33">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-34"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div>
+</section>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li><strong>Improved Readability</strong>: Clear guidelines enhance the readability of networking code.</li>
+<li><strong>Consistency</strong>: Ensures uniformity in how networking tasks are handled across different projects.</li>
+<li><strong>Efficiency</strong>: Streamlined processes make it easier for developers to implement networking features quickly.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li><strong>Initial Setup Time</strong>: Establishing and fine-tuning the mental model requires an initial investment of time and resources.</li>
+<li><strong>Limited Flexibility</strong>: Strict adherence to the model may limit creative solutions to unique problems.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>Alternative approaches such as manual editing or using different networking models were considered but ultimately impossible as we don’t run VRChat.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>In scenarios where highly specialized or technical networking solutions are required, additional human oversight may be necessary to ensure accuracy and appropriateness.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>We need to understand how networking models work.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+<li>Fire</li>
+<li>MMMaellon</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><p><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</p></li>
+<li><p><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</p></li>
+<li><p><a href="https://vxtwitter.com/Centauri2442/status/1747888817518879039">Recorded the byte count(s) of every synced variable type in udon</a> | System Type | maxByte | minByte | variableType | Notes | |———————————-|———|———|———————–|———————————————————————–| | System.Boolean | 2 | 2 | Bool | | | System.Char | 2 | 2 | Char | | | System.Byte | 2 | 2 | Byte | | | System.SByte | 2 | 2 | SByte | | | System.Int16 | 4 | 2 | Short | Swaps every other | | System.UInt16 | 4 | 2 | UShort | ^ | | System.Int32 | 8 | 4 | Int | ^ | | System.UInt32 | 8 | 4 | UInt | ^ | | System.Int64 | 12 | 8 | Long | ^ | | System.UInt64 | 12 | 8 | ULong | ^ | | System.Single | 8 | 4 | Float | ^ | | System.Double | 12 | 8 | Double | ^ | | UnityEngine.Vector2 | 8 | 8 | Vector2 | | | UnityEngine.Vector3 | 12 | 12 | Vector3 | | | UnityEngine.Vector4 | 16 | 16 | Vector4 | | | UnityEngine.Quaternion | 16 | 16 | Quaternion | | | System.String | 84 | 1 | String | Null: No serialization | 84 + 1 byte per character, byte size allocated per for (84, 88, 92, etc) | | RVCUInt | 8 | 8 | RVCUInt | | | UnityEngine.Color | 8 | 8 | Color | | | UnityEngine.Color32 | 8 | 8 | Color32 | | | System.BooleanArray | 80 | 80 | BooleanArray | 80 + array size in increments of 4 as buffer (80, 84, 88, etc) | Will increase every 4 values (5, 9, 13, etc) | | System.CharArray | 80 | 80 | CharArray | ^ | | System.ByteArray | 80 | 80 | ByteArray | ^ | | System.SByteArray | 80 | 80 | SByteArray | ^ | | System.Int16Array | 80 | 80 | ShortArray | 80 + array size in increments of 4 as buffer (80, 84, 88, etc) | Will increase every 2 values (3, 5, 7, etc) | | System.UInt16Array | 80 | 80 | UShortArray | ^ | | System.Int32Array | 80 | 80 | IntArray | 80 + array size _ 4 | | System.UInt32Array | 80 | 80 | UIntArray | ^ | | System.Int64Array | 80 | 80 | LongArray | 80 + array size _ 8 | | System.UInt64Array | 80 | 80 | ULongArray | ^ | | System.SingleArray | 80 | 80 | FloatArray | 80 + array size _ 4 | | System.DoubleArray | 80 | 80 | DoubleArray | 80 + array size _ 8 | | UnityEngine.Vector2Array | 80 | 80 | Vector2Array | 80 + array size _ 8 | | UnityEngine.Vector3Array | 80 | 80 | Vector3Array | 80 + array size _ 12 | | UnityEngine.Vector4Array | 80 | 80 | Vector4Array | 80 + array size _ 16 | | UnityEngine.QuaternionArray | 80 | 80 | QuaternionArray | ^ | | System.StringArray | 80 | 80 | StringArray | 84 + (2, 4, or 8 bytes per character) | | RVCUStringArray | 80 | 80 | RVCUStringArray | ^ | | UnityEngine.ColorArray | 80 | 80 | ColorArray | 80 + array size _ 16 | | UnityEngine.Color32Array | 80 | 80 | Color32Array | 80 + array size * 4 |</p>
+<p>Notes:</p>
+<ul>
+<li>Size of 0: 84 bytes</li>
+<li>Size greater than 0 but with any null values: 0 bytes</li>
+<li>Size greater than 0 with all valid strings: 84 + (2, 4, or 8 bytes per character)</li>
+</ul></li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240715-vrchat-networking-mental-model.html</guid>
+  <pubDate>Mon, 15 Jul 2024 22:34:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -162,7 +473,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240712-use-shrinkwrap-blender-modiifer-to-fit.html</guid>
-  <pubDate>Sun, 14 Jul 2024 02:41:33 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:34:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -279,7 +590,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-web-and-pcvr-networking.html</guid>
-  <pubDate>Sun, 14 Jul 2024 02:41:33 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:34:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -363,7 +674,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-use-webrtc-to-native-interop.html</guid>
-  <pubDate>Sun, 14 Jul 2024 02:41:33 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:34:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -483,7 +794,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-use-godot-engine-web-threaded.html</guid>
-  <pubDate>Sun, 14 Jul 2024 02:41:33 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:34:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -573,7 +884,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-platform-focus-on-pcvr-and-web.html</guid>
-  <pubDate>Sun, 14 Jul 2024 02:41:33 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:34:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -728,7 +1039,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-convert-blender-cc0-base-mesh-to-godot-engine-t-pose.html</guid>
-  <pubDate>Sun, 14 Jul 2024 02:41:33 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:34:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -819,7 +1130,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-art-direction-in-vsekai.html</guid>
-  <pubDate>Sun, 14 Jul 2024 02:41:33 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:34:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -905,7 +1216,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Sun, 14 Jul 2024 02:41:33 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:34:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -992,7 +1303,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240709-wired-first.html</guid>
-  <pubDate>Sun, 14 Jul 2024 02:41:33 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:34:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1080,7 +1391,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240709-anwave-set-nvidia-watt-limit.html</guid>
-  <pubDate>Sun, 14 Jul 2024 02:41:33 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:34:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1684,7 +1995,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240708-vsekai-my-life-as-a-queen.html</guid>
-  <pubDate>Sun, 14 Jul 2024 02:41:33 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:34:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1862,7 +2173,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240706-motion-capture-bill-of-materials.html</guid>
-  <pubDate>Sun, 14 Jul 2024 02:41:33 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:34:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1946,7 +2257,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240705-rpg_town.html</guid>
-  <pubDate>Sun, 14 Jul 2024 02:41:33 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:34:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2048,7 +2359,7 @@ font-style: inherit;">return</span> model.generate_motion()</span></code></pre><
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240630-use-motion-transformers-for-prediction.html</guid>
-  <pubDate>Sun, 14 Jul 2024 02:41:33 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:34:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2240,7 +2551,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240627-gdextension-as-libriscv.html</guid>
-  <pubDate>Sun, 14 Jul 2024 02:41:33 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:34:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2330,7 +2641,7 @@ Else:
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240627-every-commit-push-pass-cicd.html</guid>
-  <pubDate>Sun, 14 Jul 2024 02:41:33 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:34:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2554,7 +2865,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240626-update-python3-macos-certicates.html</guid>
-  <pubDate>Sun, 14 Jul 2024 02:41:33 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:34:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2641,88 +2952,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240623-what-is-uro-backend.html</guid>
-  <pubDate>Sun, 14 Jul 2024 02:41:33 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240623-talk-length-prototypes.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-talk-length-game-prototypes" class="level1">
-<h1>Proposed: Talk Length Game Prototypes</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>V-Sekai is a Virtual Reality Social Network Service (VRSNS).</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>What length should a game demo be?</p>
-</section>
-<section id="proposal" class="level2">
-<h2 class="anchored" data-anchor-id="proposal">Proposal</h2>
-<p>One suggestion is to make the game demo the length of a TED talk. A TED Talk is typically 18 minutes long. This duration is considered optimal for maintaining audience attention and conveying a powerful message, which is exactly what we aim to achieve with our game demo.</p>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<ul>
-<li><strong>Attention Span</strong>: An 18-minute demo aligns well with the average person’s attention span. It’s long enough to immerse the player in the game world and showcase its features, but not so long that it risks losing the player’s interest.</li>
-<li><strong>Depth of Experience</strong>: This length allows us to provide a substantial preview of the game without overwhelming the player. We can introduce the main gameplay mechanics, narrative elements, and unique features within this timeframe.</li>
-<li><strong>Unique Selling Point</strong>: Having a TED talk-length game demo could serve as a unique selling point, distinguishing V-Sekai from other VRSNS.</li>
-</ul>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<ul>
-<li><strong>Not One-Size-Fits-All</strong>: The length of a TED talk may not be suitable for all types of games. Some games might require longer playtimes to fully appreciate their depth and complexity.</li>
-<li><strong>Player Preferences</strong>: Some players might prefer shorter or longer demos. We would need to ensure that our target audience is comfortable with this length.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Alternative lengths for the game demo could be considered, such as the length of a typical movie or TV episode.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>This proposal may not apply to games that are designed to be played in short bursts.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>This proposal would be implemented by the V-Sekai development team.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - The GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-</ol>
-<p>This proposal was assisted by AI assistant Aria.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240623-talk-length-prototypes.html</guid>
-  <pubDate>Sun, 14 Jul 2024 02:41:33 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:34:11 GMT</pubDate>
 </item>
 </channel>
 </rss>
