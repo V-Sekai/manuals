@@ -111,8 +111,6 @@ AI assistant Aria assisted with this article.
 
 [Recorded the byte count(s) of every synced variable type in udon](https://vxtwitter.com/Centauri2442/status/1747888817518879039)
 
-Here's the table without using the "^" symbol for repetitions:
-
 | System Type                 | maxByte | minByte | variableType    | Notes                                                                                                          |
 | --------------------------- | ------- | ------- | --------------- | -------------------------------------------------------------------------------------------------------------- |
 | System.Boolean              | 2       | 2       | Bool            |                                                                                                                |
