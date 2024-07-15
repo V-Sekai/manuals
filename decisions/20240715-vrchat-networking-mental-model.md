@@ -104,7 +104,12 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
-3. [Recorded the byte count(s) of every synced variable type in udon](https://vxtwitter.com/Centauri2442/status/1747888817518879039)
+
+AI assistant Aria assisted with this article.
+
+### Recorded the byte count(s) of every synced variable type in udon
+
+[Recorded the byte count(s) of every synced variable type in udon](https://vxtwitter.com/Centauri2442/status/1747888817518879039)
 
 | System Type                 | maxByte | minByte | variableType    | Notes                                                                                                          |
 | --------------------------- | ------- | ------- | --------------- | -------------------------------------------------------------------------------------------------------------- |
@@ -154,8 +159,6 @@ Notes:
 - Size of 0: 84 bytes
 - Size greater than 0 but with any null values: 0 bytes
 - Size greater than 0 with all valid strings: 84 + (2, 4, or 8 bytes per character)
-
-AI assistant Aria assisted with this article.
 
 ### Question: How should I represent the entire state in a networked application?
 
