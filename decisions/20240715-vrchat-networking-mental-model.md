@@ -105,53 +105,62 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
 3. [Recorded the byte count(s) of every synced variable type in udon](https://vxtwitter.com/Centauri2442/status/1747888817518879039)
-   | System Type | maxByte | minByte | variableType | Notes |
-   |----------------------------------|---------|---------|-----------------------|-----------------------------------------------------------------------|
-   | System.Boolean | 2 | 2 | Bool | |
-   | System.Char | 2 | 2 | Char | |
-   | System.Byte | 2 | 2 | Byte | |
-   | System.SByte | 2 | 2 | SByte | |
-   | System.Int16 | 4 | 2 | Short | Swaps every other |
-   | System.UInt16 | 4 | 2 | UShort | ^ |
-   | System.Int32 | 8 | 4 | Int | ^ |
-   | System.UInt32 | 8 | 4 | UInt | ^ |
-   | System.Int64 | 12 | 8 | Long | ^ |
-   | System.UInt64 | 12 | 8 | ULong | ^ |
-   | System.Single | 8 | 4 | Float | ^ |
-   | System.Double | 12 | 8 | Double | ^ |
-   | UnityEngine.Vector2 | 8 | 8 | Vector2 | |
-   | UnityEngine.Vector3 | 12 | 12 | Vector3 | |
-   | UnityEngine.Vector4 | 16 | 16 | Vector4 | |
-   | UnityEngine.Quaternion | 16 | 16 | Quaternion | |
-   | System.String | 84 | 1 | String | Null: No serialization | 84 + 1 byte per character, byte size allocated per for (84, 88, 92, etc) |
-   | RVCUInt | 8 | 8 | RVCUInt | |
-   | UnityEngine.Color | 8 | 8 | Color | |
-   | UnityEngine.Color32 | 8 | 8 | Color32 | |
-   | System.BooleanArray | 80 | 80 | BooleanArray | 80 + array size in increments of 4 as buffer (80, 84, 88, etc) | Will increase every 4 values (5, 9, 13, etc) |
-   | System.CharArray | 80 | 80 | CharArray | ^ |
-   | System.ByteArray | 80 | 80 | ByteArray | ^ |
-   | System.SByteArray | 80 | 80 | SByteArray | ^ |
-   | System.Int16Array | 80 | 80 | ShortArray | 80 + array size in increments of 4 as buffer (80, 84, 88, etc) | Will increase every 2 values (3, 5, 7, etc) |
-   | System.UInt16Array | 80 | 80 | UShortArray | ^ |
-   | System.Int32Array | 80 | 80 | IntArray | 80 + array size _ 4 |
-   | System.UInt32Array | 80 | 80 | UIntArray | ^ |
-   | System.Int64Array | 80 | 80 | LongArray | 80 + array size _ 8 |
-   | System.UInt64Array | 80 | 80 | ULongArray | ^ |
-   | System.SingleArray | 80 | 80 | FloatArray | 80 + array size _ 4 |
-   | System.DoubleArray | 80 | 80 | DoubleArray | 80 + array size _ 8 |
-   | UnityEngine.Vector2Array | 80 | 80 | Vector2Array | 80 + array size _ 8 |
-   | UnityEngine.Vector3Array | 80 | 80 | Vector3Array | 80 + array size _ 12 |
-   | UnityEngine.Vector4Array | 80 | 80 | Vector4Array | 80 + array size _ 16 |
-   | UnityEngine.QuaternionArray | 80 | 80 | QuaternionArray | ^ |
-   | System.StringArray | 80 | 80 | StringArray | 84 + (2, 4, or 8 bytes per character) |
-   | RVCUStringArray | 80 | 80 | RVCUStringArray | ^ |
-   | UnityEngine.ColorArray | 80 | 80 | ColorArray | 80 + array size _ 16 |
-   | UnityEngine.Color32Array | 80 | 80 | Color32Array | 80 + array size \* 4 |
 
-   Notes:
+| System Type                 | maxByte | minByte | variableType    | Notes                                                                                                          |
+| --------------------------- | ------- | ------- | --------------- | -------------------------------------------------------------------------------------------------------------- |
+| System.Boolean              | 2       | 2       | Bool            |                                                                                                                |
+| System.Char                 | 2       | 2       | Char            |                                                                                                                |
+| System.Byte                 | 2       | 2       | Byte            |                                                                                                                |
+| System.SByte                | 2       | 2       | SByte           |                                                                                                                |
+| System.Int16                | 4       | 2       | Short           | Swaps every other                                                                                              |
+| System.UInt16               | 4       | 2       | UShort          | ^                                                                                                              |
+| System.Int32                | 8       | 4       | Int             | ^                                                                                                              |
+| System.UInt32               | 8       | 4       | UInt            | ^                                                                                                              |
+| System.Int64                | 12      | 8       | Long            | ^                                                                                                              |
+| System.UInt64               | 12      | 8       | ULong           | ^                                                                                                              |
+| System.Single               | 8       | 4       | Float           | ^                                                                                                              |
+| System.Double               | 12      | 8       | Double          | ^                                                                                                              |
+| UnityEngine.Vector2         | 8       | 8       | Vector2         |                                                                                                                |
+| UnityEngine.Vector3         | 12      | 12      | Vector3         |                                                                                                                |
+| UnityEngine.Vector4         | 16      | 16      | Vector4         |                                                                                                                |
+| UnityEngine.Quaternion      | 16      | 16      | Quaternion      |                                                                                                                |
+| System.String               | 84      | 1       | String          | Null: No serialization \| 84 + 1 byte per character, byte size allocated per for (84, 88, 92, etc)             |
+| RVCUInt                     | 8       | 8       | RVCUInt         |                                                                                                                |
+| UnityEngine.Color           | 8       | 8       | Color           |                                                                                                                |
+| UnityEngine.Color32         | 8       | 8       | Color32         |                                                                                                                |
+| System.BooleanArray         | 80      | 80      | BooleanArray    | 80 + array size in increments of 4 as buffer (80, 84, 88, etc) \| Will increase every 4 values (5, 9, 13, etc) |
+| System.CharArray            | 80      | 80      | CharArray       | ^                                                                                                              |
+| System.ByteArray            | 80      | 80      | ByteArray       | ^                                                                                                              |
+| System.SByteArray           | 80      | 80      | SByteArray      | ^                                                                                                              |
+| System.Int16Array           | 80      | 80      | ShortArray      | 80 + array size in increments of 4 as buffer (80, 84, 88, etc) \| Will increase every 2 values (3, 5, 7, etc)  |
+| System.UInt16Array          | 80      | 80      | UShortArray     | ^                                                                                                              |
+| System.Int32Array           | 80      | 80      | IntArray        | 80 + array size \_ 4                                                                                           |
+| System.UInt32Array          | 80      | 80      | UIntArray       | ^                                                                                                              |
+| System.Int64Array           | 80      | 80      | LongArray       | 80 + array size \_ 8                                                                                           |
+| System.UInt64Array          | 80      | 80      | ULongArray      | ^                                                                                                              |
+| System.SingleArray          | 80      | 80      | FloatArray      | 80 + array size \_ 4                                                                                           |
+| System.DoubleArray          | 80      | 80      | DoubleArray     | 80 + array size \_ 8                                                                                           |
+| UnityEngine.Vector2Array    | 80      | 80      | Vector2Array    | 80 + array size \_ 8                                                                                           |
+| UnityEngine.Vector3Array    | 80      | 80      | Vector3Array    | 80 + array size \_ 12                                                                                          |
+| UnityEngine.Vector4Array    | 80      | 80      | Vector4Array    | 80 + array size \_ 16                                                                                          |
+| UnityEngine.QuaternionArray | 80      | 80      | QuaternionArray | ^                                                                                                              |
+| System.StringArray          | 80      | 80      | StringArray     | 84 + (2, 4, or 8 bytes per character)                                                                          |
+| RVCUStringArray             | 80      | 80      | RVCUStringArray | ^                                                                                                              |
+| UnityEngine.ColorArray      | 80      | 80      | ColorArray      | 80 + array size \_ 16                                                                                          |
+| UnityEngine.Color32Array    | 80      | 80      | Color32Array    | 80 + array size \* 4                                                                                           |
 
-   - Size of 0: 84 bytes
-   - Size greater than 0 but with any null values: 0 bytes
-   - Size greater than 0 with all valid strings: 84 + (2, 4, or 8 bytes per character)
+Notes:
+
+- Size of 0: 84 bytes
+- Size greater than 0 but with any null values: 0 bytes
+- Size greater than 0 with all valid strings: 84 + (2, 4, or 8 bytes per character)
 
 AI assistant Aria assisted with this article.
+
+### Question: How should I represent the entire state in a networked application?
+
+**Answer:** You want the entire state to be represented by your synced variables. If you have a one-time event, like a sound effect playing, you might be able to get away with sending a custom network event. However, one uses variables for 90% of networking tasks.
+
+### Question: How can the order and exact value changes of three variables affect their interpretation in a networked system?
+
+**Answer:** Assume we calculate the state of the world independently for each frame, without depending on previous frames. This means that while the exact values of the three variables are crucial for determining the current state, the order of changes within the same frame does not affect the final state interpretation at that frame.
