@@ -1,4 +1,4 @@
-# Proposed: Create a Mental Model of VRChat Networking
+# Proposed: Create a Conceptual Model of VRChat Networking
 
 ## The Context
 
