@@ -107,7 +107,7 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 AI assistant Aria assisted with this article.
 
-### Recorded the byte count(s) of every synced variable type in udon
+### The byte count(s) of every synced variable type in udon
 
 [Centauri2442 recorded the byte count(s) of every synced variable type in udon](https://vxtwitter.com/Centauri2442/status/1747888817518879039)
 
