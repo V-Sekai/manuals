@@ -170,6 +170,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a>
   <ul class="collapse">
   <li><a href="#recorded-the-byte-counts-of-every-synced-variable-type-in-udon" id="toc-recorded-the-byte-counts-of-every-synced-variable-type-in-udon" class="nav-link" data-scroll-target="#recorded-the-byte-counts-of-every-synced-variable-type-in-udon">Recorded the byte count(s) of every synced variable type in udon</a></li>
+  <li><a href="#question-how-many-udonsharpbehaviour-can-a-server-have" id="toc-question-how-many-udonsharpbehaviour-can-a-server-have" class="nav-link" data-scroll-target="#question-how-many-udonsharpbehaviour-can-a-server-have">Question: How many UdonSharpBehaviour can a server have?</a></li>
+  <li><a href="#question-can-udonsharpbehaviour-instances-communicate-with-each-other" id="toc-question-can-udonsharpbehaviour-instances-communicate-with-each-other" class="nav-link" data-scroll-target="#question-can-udonsharpbehaviour-instances-communicate-with-each-other">Question: Can UdonSharpBehaviour instances communicate with each other?</a></li>
   <li><a href="#question-how-should-i-represent-the-entire-state-in-a-networked-application" id="toc-question-how-should-i-represent-the-entire-state-in-a-networked-application" class="nav-link" data-scroll-target="#question-how-should-i-represent-the-entire-state-in-a-networked-application">Question: How should I represent the entire state in a networked application?</a></li>
   <li><a href="#question-how-can-the-order-and-exact-value-changes-of-three-variables-affect-their-interpretation-in-a-networked-system" id="toc-question-how-can-the-order-and-exact-value-changes-of-three-variables-affect-their-interpretation-in-a-networked-system" class="nav-link" data-scroll-target="#question-how-can-the-order-and-exact-value-changes-of-three-variables-affect-their-interpretation-in-a-networked-system">Question: How can the order and exact value changes of three variables affect their interpretation in a networked system?</a></li>
   </ul></li>
@@ -604,6 +606,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+</section>
+<section id="question-how-many-udonsharpbehaviour-can-a-server-have" class="level3">
+<h3 class="anchored" data-anchor-id="question-how-many-udonsharpbehaviour-can-a-server-have">Question: How many UdonSharpBehaviour can a server have?</h3>
+<p><strong>Answer:</strong> In VRChat, which uses UdonSharp for scripting, there isn’t a hard limit on the number of <code>UdonSharpBehaviour</code> instances a world (or server instance) can have. However, practical limits are imposed by performance considerations. Each <code>UdonSharpBehaviour</code> consumes memory and processing power, so the total number you can effectively use will depend on the complexity of your scripts and the capabilities of the hardware running the world. It’s essential to optimize your scripts and manage resources efficiently to ensure smooth performance.</p>
+</section>
+<section id="question-can-udonsharpbehaviour-instances-communicate-with-each-other" class="level3">
+<h3 class="anchored" data-anchor-id="question-can-udonsharpbehaviour-instances-communicate-with-each-other">Question: Can UdonSharpBehaviour instances communicate with each other?</h3>
+<p><strong>Answer:</strong> Yes, <code>UdonSharpBehaviour</code> instances can communicate with each other. You can send custom network events (with zero parameters) to trigger actions in other <code>UdonSharpBehaviour</code> instances. The receiver won’t know who the sender is, and the action will be performed locally on the <code>UdonSharpBehaviour</code>’s current frame.</p>
 </section>
 <section id="question-how-should-i-represent-the-entire-state-in-a-networked-application" class="level3">
 <h3 class="anchored" data-anchor-id="question-how-should-i-represent-the-entire-state-in-a-networked-application">Question: How should I represent the entire state in a networked application?</h3>
