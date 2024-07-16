@@ -613,7 +613,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="question-can-udonsharpbehaviour-instances-communicate-with-each-other" class="level3">
 <h3 class="anchored" data-anchor-id="question-can-udonsharpbehaviour-instances-communicate-with-each-other">Question: Can UdonSharpBehaviour instances communicate with each other?</h3>
-<p><strong>Answer:</strong> Yes, <code>UdonSharpBehaviour</code> instances can communicate with each other. You can send custom network events (with zero parameters) to trigger actions in other <code>UdonSharpBehaviour</code> instances. The receiver won’t know who the sender is, and the action will be performed locally on the <code>UdonSharpBehaviour</code>’s current frame.</p>
+<p><strong>Answer:</strong> Yes, <code>UdonSharpBehaviour</code> instances can communicate with each other. Here are some ways they can interact:</p>
+<ul>
+<li><strong>Custom Network Events:</strong> You can send custom network events (with zero parameters) to trigger actions in other <code>UdonSharpBehaviour</code> instances. The receiver won’t know who the sender is, and the action will be performed locally on the <code>UdonSharpBehaviour</code>’s current frame.</li>
+<li><strong>Synced Variables:</strong> If you need to send data, it’s better to use synced variables rather than mixing them with network events. When these variables get updated, the <code>OnDeserialization()</code> method will be called. This is a function in <code>UdonSharpBehaviour</code> that you can override to handle any work needed with the updated variables.</li>
+</ul>
 </section>
 <section id="question-how-should-i-represent-the-entire-state-in-a-networked-application" class="level3">
 <h3 class="anchored" data-anchor-id="question-how-should-i-represent-the-entire-state-in-a-networked-application">Question: How should I represent the entire state in a networked application?</h3>
