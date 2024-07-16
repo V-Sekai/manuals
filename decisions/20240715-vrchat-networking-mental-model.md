@@ -160,7 +160,10 @@ AI assistant Aria assisted with this article.
 
 ### Question: Can UdonSharpBehaviour instances communicate with each other?
 
-**Answer:** Yes, `UdonSharpBehaviour` instances can communicate with each other. You can send custom network events (with zero parameters) to trigger actions in other `UdonSharpBehaviour` instances. The receiver won't know who the sender is, and the action will be performed locally on the `UdonSharpBehaviour`'s current frame.
+**Answer:** Yes, `UdonSharpBehaviour` instances can communicate with each other. Here are some ways they can interact:
+
+- **Custom Network Events:** You can send custom network events (with zero parameters) to trigger actions in other `UdonSharpBehaviour` instances. The receiver won't know who the sender is, and the action will be performed locally on the `UdonSharpBehaviour`'s current frame.
+- **Synced Variables:** If you need to send data, it's better to use synced variables rather than mixing them with network events. When these variables get updated, the `OnDeserialization()` method will be called. This is a function in `UdonSharpBehaviour` that you can override to handle any work needed with the updated variables.
 
 ### Question: How should I represent the entire state in a networked application?
 
