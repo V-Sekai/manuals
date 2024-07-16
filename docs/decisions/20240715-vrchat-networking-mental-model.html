@@ -174,6 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#question-can-udonsharpbehaviour-instances-communicate-with-each-other" id="toc-question-can-udonsharpbehaviour-instances-communicate-with-each-other" class="nav-link" data-scroll-target="#question-can-udonsharpbehaviour-instances-communicate-with-each-other">Question: Can UdonSharpBehaviour instances communicate with each other?</a></li>
   <li><a href="#question-how-should-i-represent-the-entire-state-in-a-networked-application" id="toc-question-how-should-i-represent-the-entire-state-in-a-networked-application" class="nav-link" data-scroll-target="#question-how-should-i-represent-the-entire-state-in-a-networked-application">Question: How should I represent the entire state in a networked application?</a></li>
   <li><a href="#question-does-using-fieldchangecallbacks-affect-performance-in-space-and-time" id="toc-question-does-using-fieldchangecallbacks-affect-performance-in-space-and-time" class="nav-link" data-scroll-target="#question-does-using-fieldchangecallbacks-affect-performance-in-space-and-time">Question: Does using FieldChangeCallbacks affect performance in space and time?</a></li>
+  <li><a href="#question-how-can-the-order-and-exact-value-changes-of-three-variables-affect-their-interpretation-in-a-networked-system" id="toc-question-how-can-the-order-and-exact-value-changes-of-three-variables-affect-their-interpretation-in-a-networked-system" class="nav-link" data-scroll-target="#question-how-can-the-order-and-exact-value-changes-of-three-variables-affect-their-interpretation-in-a-networked-system">Question: How can the order and exact value changes of three variables affect their interpretation in a networked system?</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -626,6 +627,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="question-does-using-fieldchangecallbacks-affect-performance-in-space-and-time" class="level3">
 <h3 class="anchored" data-anchor-id="question-does-using-fieldchangecallbacks-affect-performance-in-space-and-time">Question: Does using FieldChangeCallbacks affect performance in space and time?</h3>
 <p><strong>Answer:</strong> There’s an advanced feature called <code>FieldChangeCallbacks</code> that allows for code simplification. Basically, create a C# property with a getter and a setter and specify it as the field change callback. The setter will be called in addition to <code>OnDeserialization</code> when network updates come in. This helps combine the code for local and remote clients in the setter. This is an advanced code-writing optimization for making your code cleaner. No, it does not affect performance in terms of space and time. <code>FieldChangeCallbacks</code> reduces code repetition, thereby simplifying the codebase and making it more maintainable.</p>
+</section>
+<section id="question-how-can-the-order-and-exact-value-changes-of-three-variables-affect-their-interpretation-in-a-networked-system" class="level3">
+<h3 class="anchored" data-anchor-id="question-how-can-the-order-and-exact-value-changes-of-three-variables-affect-their-interpretation-in-a-networked-system">Question: How can the order and exact value changes of three variables affect their interpretation in a networked system?</h3>
+<p><strong>Answer:</strong> Assume we calculate the state of the world independently for each frame, without depending on previous frames. This means that while the exact values of the three variables are crucial for determining the current state, the order of changes within the same frame does not affect the final state interpretation at that frame.</p>
 
 
 </section>
