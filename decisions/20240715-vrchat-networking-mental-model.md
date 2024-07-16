@@ -172,3 +172,7 @@ AI assistant Aria assisted with this article.
 ### Question: Does using FieldChangeCallbacks affect performance in space and time?
 
 **Answer:** There's an advanced feature called `FieldChangeCallbacks` that allows for code simplification. Basically, create a C# property with a getter and a setter and specify it as the field change callback. The setter will be called in addition to `OnDeserialization` when network updates come in. This helps combine the code for local and remote clients in the setter. This is an advanced code-writing optimization for making your code cleaner. No, it does not affect performance in terms of space and time. `FieldChangeCallbacks` reduces code repetition, thereby simplifying the codebase and making it more maintainable.
+
+### Question: How can the order and exact value changes of three variables affect their interpretation in a networked system?
+
+**Answer:** Assume we calculate the state of the world independently for each frame, without depending on previous frames. This means that while the exact values of the three variables are crucial for determining the current state, the order of changes within the same frame does not affect the final state interpretation at that frame.
