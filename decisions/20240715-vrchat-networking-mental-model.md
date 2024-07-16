@@ -154,6 +154,14 @@ AI assistant Aria assisted with this article.
 | UnityEngine.ColorArray      | 80      | 80      | ColorArray      | 80 + array size \* 16                                                                                                                                                                                |
 | UnityEngine.Color32Array    | 80      | 80      | Color32Array    | 80 + array size \* 4                                                                                                                                                                                 |
 
+### Question: How many UdonSharpBehaviour can a server have?
+
+**Answer:** In VRChat, which uses UdonSharp for scripting, there isn't a hard limit on the number of `UdonSharpBehaviour` instances a world (or server instance) can have. However, practical limits are imposed by performance considerations. Each `UdonSharpBehaviour` consumes memory and processing power, so the total number you can effectively use will depend on the complexity of your scripts and the capabilities of the hardware running the world. It's essential to optimize your scripts and manage resources efficiently to ensure smooth performance.
+
+### Question: Can UdonSharpBehaviour instances communicate with each other?
+
+**Answer:** Yes, `UdonSharpBehaviour` instances can communicate with each other. You can send custom network events (with zero parameters) to trigger actions in other `UdonSharpBehaviour` instances. The receiver won't know who the sender is, and the action will be performed locally on the `UdonSharpBehaviour`'s current frame.
+
 ### Question: How should I represent the entire state in a networked application?
 
 **Answer:** You want the entire state to be represented by your synced variables. If you have a one-time event, like a sound effect playing, you might be able to get away with sending a custom network event. However, one uses variables for 90% of networking tasks.
