@@ -2,7 +2,7 @@
 
 ## The Context
 
-In the realm of virtual reality, particularly within VRChat, understanding the networking model is crucial for developers. This proposal aims to create a comprehensive mental model of VRChat's networking system.
+In the realm of virtual reality, particularly within VRChat, understanding the networking model is crucial for developers. This proposal aims to create a comprehensive conceptual model of VRChat's networking system.
 
 ## The Problem Statement
 
