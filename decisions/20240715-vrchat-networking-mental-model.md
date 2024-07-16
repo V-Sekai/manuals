@@ -109,7 +109,7 @@ AI assistant Aria assisted with this article.
 
 ### Recorded the byte count(s) of every synced variable type in udon
 
-[Recorded the byte count(s) of every synced variable type in udon](https://vxtwitter.com/Centauri2442/status/1747888817518879039)
+[Centauri2442 recorded the byte count(s) of every synced variable type in udon](https://vxtwitter.com/Centauri2442/status/1747888817518879039)
 
 | System Type                 | maxByte | minByte | variableType    | Notes                                                                                                                                                                                                |
 | --------------------------- | ------- | ------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
