@@ -154,7 +154,7 @@ AI assistant Aria assisted with this article.
 | UnityEngine.ColorArray      | 80      | 80      | ColorArray      | 80 + array size \* 16                                                                                                                                                                                |
 | UnityEngine.Color32Array    | 80      | 80      | Color32Array    | 80 + array size \* 4                                                                                                                                                                                 |
 
-### Question: How many UdonSharpBehaviour can a server have?
+### Question: How many UdonSharpBehaviour instances can a server have?
 
 **Answer:** In VRChat, which uses UdonSharp for scripting, there isn't a hard limit on the number of `UdonSharpBehaviour` instances a world (or server instance) can have. However, practical limits are imposed by performance considerations. Each `UdonSharpBehaviour` consumes memory and processing power, so the total number you can effectively use will depend on the complexity of your scripts and the capabilities of the hardware running the world. It's essential to optimize your scripts and manage resources efficiently to ensure smooth performance.
 
@@ -167,8 +167,8 @@ AI assistant Aria assisted with this article.
 
 ### Question: How should I represent the entire state in a networked application?
 
-**Answer:** You want the entire state to be represented by your synced variables. If you have a one-time event, like a sound effect playing, you might be able to get away with sending a custom network event. However, one uses variables for 90% of networking tasks.
+**Answer:** You typically don't mix network events with synced variables. If you need to send data, just use synced variables. When the variables get updated, `OnDeserialization()` will be called. That's a function in `UdonSharpBehaviour` that you can override. Do all the work needed with the variables in `OnDeserialization`.
 
-### Question: How can the order and exact value changes of three variables affect their interpretation in a networked system?
+### Question: Does using FieldChangeCallbacks affect performance in space and time?
 
-**Answer:** Assume we calculate the state of the world independently for each frame, without depending on previous frames. This means that while the exact values of the three variables are crucial for determining the current state, the order of changes within the same frame does not affect the final state interpretation at that frame.
+**Answer:** There's an advanced feature called `FieldChangeCallbacks` that allows for code simplification. Basically, create a C# property with a getter and a setter and specify it as the field change callback. The setter will be called in addition to `OnDeserialization` when network updates come in. This helps combine the code for local and remote clients in the setter. This is an advanced code-writing optimization for making your code cleaner. No, it does not affect performance in terms of space and time. `FieldChangeCallbacks` reduces code repetition, thereby simplifying the codebase and making it more maintainable.
