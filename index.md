@@ -8,4 +8,4 @@
 
 | Note                                                                                                                               |
 | :--------------------------------------------------------------------------------------------------------------------------------- |
-| The name "V-Sekai" (pronounced vee-say-kai) stands for virtual, and in Japanese, "Sekai" means "World". |
+| "V-Sekai" (pronounced vee-say-kai) stands for virtual, and in Japanese, "Sekai" means "World". |
