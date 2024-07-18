@@ -20,7 +20,7 @@ To address these issues, we propose separating the core scripts into WebAssembly
 
 ## The Benefits
 
-- **Performance**: Wasm provides near-native performance, making it faster than GDScript.
+- **Performance**: Wasm provides just-in-time compiling and native code translation performance, making it faster than GDScript.
 - **Security**: Wasm's sandboxed environment enhances security by isolating the execution of scripts.
 - **Maintainability**: Using the stock Godot Engine reduces the burden of maintaining a forked version and simplifies updates.
 - **Flexibility**: Developers can write core scripts in languages that compile to Wasm, such as C++ or Rust.
