@@ -10,7 +10,15 @@ The V-Sekai team faces challenges with maintaining a forked version of the Godot
 
 ## Proposed Solution
 
-To address these issues, we propose separating the core scripts into WebAssembly (Wasm) modules. This approach allows us to use the stock Godot Engine while leveraging the performance benefits of Wasm. The core scripts will be loaded as Wasm modules, and a single GDExtension will handle the integration between Godot and the Wasm runtime.
+If we move all core scripts to Wasm, we'll need to make only one GDExtension, and then it will never change. So it will be one build that we can all share. We will only need to update when we want a new update from the main Godot Engine repository.
+
+It might be hard, but encapsulating complex types is a bridge we're going to have to cross no matter what.
+
+MMMaellon originally thought the reason why we want to move to Wasm is because the team doesn't want to edit the C++ code. Perfectly matching the old API sounds really, really hard. But if we're allowed to take shortcuts and figure out workarounds, MMMaellon thinks making a Wasm layer that allows us to do enough is doable. As long as the bar isn't that it has to be an exact perfect replica of the old API.
+
+We propose separating the core scripts into WebAssembly (Wasm) modules. This approach allows us to use the stock Godot Engine while leveraging the performance benefits of Wasm.
+
+The core scripts will be loaded as Wasm modules, and a single GDExtension will handle the integration between Godot and the Wasm runtime.
 
 ### How It Works
 
@@ -20,7 +28,7 @@ To address these issues, we propose separating the core scripts into WebAssembly
 
 ## The Benefits
 
-- **Performance**: Wasm provides just-in-time compiling and native code translation performance, making it faster than GDScript.
+- **Performance**: Wasm provides near-native performance, making it faster than GDScript.
 - **Security**: Wasm's sandboxed environment enhances security by isolating the execution of scripts.
 - **Maintainability**: Using the stock Godot Engine reduces the burden of maintaining a forked version and simplifies updates.
 - **Flexibility**: Developers can write core scripts in languages that compile to Wasm, such as C++ or Rust.
