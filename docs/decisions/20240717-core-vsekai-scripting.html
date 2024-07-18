@@ -156,7 +156,11 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="proposed-solution" class="level2">
 <h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>To address these issues, we propose separating the core scripts into WebAssembly (Wasm) modules. This approach allows us to use the stock Godot Engine while leveraging the performance benefits of Wasm. The core scripts will be loaded as Wasm modules, and a single GDExtension will handle the integration between Godot and the Wasm runtime.</p>
+<p>If we move all core scripts to Wasm, we’ll need to make only one GDExtension, and then it will never change. So it will be one build that we can all share. We will only need to update when we want a new update from the main Godot Engine repository.</p>
+<p>It might be hard, but encapsulating complex types is a bridge we’re going to have to cross no matter what.</p>
+<p>MMMaellon originally thought the reason why we want to move to Wasm is because the team doesn’t want to edit the C++ code. Perfectly matching the old API sounds really, really hard. But if we’re allowed to take shortcuts and figure out workarounds, MMMaellon thinks making a Wasm layer that allows us to do enough is doable. As long as the bar isn’t that it has to be an exact perfect replica of the old API.</p>
+<p>We propose separating the core scripts into WebAssembly (Wasm) modules. This approach allows us to use the stock Godot Engine while leveraging the performance benefits of Wasm.</p>
+<p>The core scripts will be loaded as Wasm modules, and a single GDExtension will handle the integration between Godot and the Wasm runtime.</p>
 <section id="how-it-works" class="level3">
 <h3 class="anchored" data-anchor-id="how-it-works">How It Works</h3>
 <ol type="1">
@@ -169,7 +173,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="the-benefits" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
 <ul>
-<li><strong>Performance</strong>: Wasm provides just-in-time compiling and native code translation performance, making it faster than GDScript.</li>
+<li><strong>Performance</strong>: Wasm provides near-native performance, making it faster than GDScript.</li>
 <li><strong>Security</strong>: Wasm’s sandboxed environment enhances security by isolating the execution of scripts.</li>
 <li><strong>Maintainability</strong>: Using the stock Godot Engine reduces the burden of maintaining a forked version and simplifies updates.</li>
 <li><strong>Flexibility</strong>: Developers can write core scripts in languages that compile to Wasm, such as C++ or Rust.</li>

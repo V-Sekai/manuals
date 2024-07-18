@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.5.54</generator>
-<lastBuildDate>Thu, 18 Jul 2024 05:21:55 GMT</lastBuildDate>
+<lastBuildDate>Thu, 18 Jul 2024 05:32:19 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Thu, 18 Jul 2024 05:21:55 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:32:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -97,7 +97,11 @@
 </section>
 <section id="proposed-solution" class="level2">
 <h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>To address these issues, we propose separating the core scripts into WebAssembly (Wasm) modules. This approach allows us to use the stock Godot Engine while leveraging the performance benefits of Wasm. The core scripts will be loaded as Wasm modules, and a single GDExtension will handle the integration between Godot and the Wasm runtime.</p>
+<p>If we move all core scripts to Wasm, we’ll need to make only one GDExtension, and then it will never change. So it will be one build that we can all share. We will only need to update when we want a new update from the main Godot Engine repository.</p>
+<p>It might be hard, but encapsulating complex types is a bridge we’re going to have to cross no matter what.</p>
+<p>MMMaellon originally thought the reason why we want to move to Wasm is because the team doesn’t want to edit the C++ code. Perfectly matching the old API sounds really, really hard. But if we’re allowed to take shortcuts and figure out workarounds, MMMaellon thinks making a Wasm layer that allows us to do enough is doable. As long as the bar isn’t that it has to be an exact perfect replica of the old API.</p>
+<p>We propose separating the core scripts into WebAssembly (Wasm) modules. This approach allows us to use the stock Godot Engine while leveraging the performance benefits of Wasm.</p>
+<p>The core scripts will be loaded as Wasm modules, and a single GDExtension will handle the integration between Godot and the Wasm runtime.</p>
 <section id="how-it-works" class="level3">
 <h3 class="anchored" data-anchor-id="how-it-works">How It Works</h3>
 <ol type="1">
@@ -110,7 +114,7 @@
 <section id="the-benefits" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
 <ul>
-<li><strong>Performance</strong>: Wasm provides just-in-time compiling and native code translation performance, making it faster than GDScript.</li>
+<li><strong>Performance</strong>: Wasm provides near-native performance, making it faster than GDScript.</li>
 <li><strong>Security</strong>: Wasm’s sandboxed environment enhances security by isolating the execution of scripts.</li>
 <li><strong>Maintainability</strong>: Using the stock Godot Engine reduces the burden of maintaining a forked version and simplifies updates.</li>
 <li><strong>Flexibility</strong>: Developers can write core scripts in languages that compile to Wasm, such as C++ or Rust.</li>
@@ -170,7 +174,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240717-core-vsekai-scripting.html</guid>
-  <pubDate>Thu, 18 Jul 2024 05:21:55 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:32:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -802,7 +806,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240715-vrchat-networking-mental-model.html</guid>
-  <pubDate>Thu, 18 Jul 2024 05:21:55 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:32:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -889,7 +893,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240712-use-shrinkwrap-blender-modiifer-to-fit.html</guid>
-  <pubDate>Thu, 18 Jul 2024 05:21:55 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:32:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1006,7 +1010,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-web-and-pcvr-networking.html</guid>
-  <pubDate>Thu, 18 Jul 2024 05:21:55 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:32:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1090,7 +1094,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-use-webrtc-to-native-interop.html</guid>
-  <pubDate>Thu, 18 Jul 2024 05:21:55 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:32:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1210,7 +1214,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-use-godot-engine-web-threaded.html</guid>
-  <pubDate>Thu, 18 Jul 2024 05:21:55 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:32:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1300,7 +1304,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-platform-focus-on-pcvr-and-web.html</guid>
-  <pubDate>Thu, 18 Jul 2024 05:21:55 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:32:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1455,7 +1459,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-convert-blender-cc0-base-mesh-to-godot-engine-t-pose.html</guid>
-  <pubDate>Thu, 18 Jul 2024 05:21:55 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:32:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1546,7 +1550,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-art-direction-in-vsekai.html</guid>
-  <pubDate>Thu, 18 Jul 2024 05:21:55 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:32:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1632,7 +1636,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Thu, 18 Jul 2024 05:21:55 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:32:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1719,7 +1723,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240709-wired-first.html</guid>
-  <pubDate>Thu, 18 Jul 2024 05:21:55 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:32:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1807,7 +1811,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240709-anwave-set-nvidia-watt-limit.html</guid>
-  <pubDate>Thu, 18 Jul 2024 05:21:55 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:32:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2411,7 +2415,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240708-vsekai-my-life-as-a-queen.html</guid>
-  <pubDate>Thu, 18 Jul 2024 05:21:55 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:32:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2589,7 +2593,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240706-motion-capture-bill-of-materials.html</guid>
-  <pubDate>Thu, 18 Jul 2024 05:21:55 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:32:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2673,7 +2677,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240705-rpg_town.html</guid>
-  <pubDate>Thu, 18 Jul 2024 05:21:55 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:32:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2775,7 +2779,7 @@ font-style: inherit;">return</span> model.generate_motion()</span></code></pre><
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240630-use-motion-transformers-for-prediction.html</guid>
-  <pubDate>Thu, 18 Jul 2024 05:21:55 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:32:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2967,7 +2971,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240627-gdextension-as-libriscv.html</guid>
-  <pubDate>Thu, 18 Jul 2024 05:21:55 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:32:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3057,7 +3061,7 @@ Else:
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240627-every-commit-push-pass-cicd.html</guid>
-  <pubDate>Thu, 18 Jul 2024 05:21:55 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:32:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3281,7 +3285,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240626-update-python3-macos-certicates.html</guid>
-  <pubDate>Thu, 18 Jul 2024 05:21:55 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:32:19 GMT</pubDate>
 </item>
 </channel>
 </rss>
