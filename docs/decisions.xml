@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.5.54</generator>
-<lastBuildDate>Wed, 17 Jul 2024 03:22:56 GMT</lastBuildDate>
+<lastBuildDate>Thu, 18 Jul 2024 05:11:23 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,100 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Wed, 17 Jul 2024 03:22:56 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:11:23 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240717-core-vsekai-scripting.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposal-core-v-sekai-scripting-with-wasm" class="level1">
+<h1>Proposal: Core V-Sekai Scripting with Wasm</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>The V-Sekai project aims to enhance the Godot Engine with social VR functionality. Currently, the project uses a forked version of the Godot Engine, which complicates development and maintenance due to frequent updates from the main Godot repository.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>The V-Sekai team faces challenges with maintaining a forked version of the Godot Engine. Some team members prefer using the stock Godot Engine to avoid long compilation times and complex build processes. Additionally, there is a need for faster and more secure scripting capabilities than what GDScript offers.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>To address these issues, we propose separating the core scripts into WebAssembly (Wasm) modules. This approach allows us to use the stock Godot Engine while leveraging the performance benefits of Wasm. The core scripts will be loaded as Wasm modules, and a single GDExtension will handle the integration between Godot and the Wasm runtime.</p>
+<section id="how-it-works" class="level3">
+<h3 class="anchored" data-anchor-id="how-it-works">How It Works</h3>
+<ol type="1">
+<li><strong>Core Scripts in Wasm</strong>: Move all core scripts to Wasm modules. These scripts will handle essential functionalities like security checks and editor tools.</li>
+<li><strong>GDExtension for Wasm Integration</strong>: Develop a GDExtension that loads and executes the Wasm modules. This extension will act as a bridge between Godot and the Wasm runtime.</li>
+<li><strong>Single Binary Distribution</strong>: By using Wasm, we can distribute a single binary executable that includes the GDExtension and Wasm modules, simplifying the deployment process.</li>
+</ol>
+</section>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li><strong>Performance</strong>: Wasm provides near-native performance, making it faster than GDScript.</li>
+<li><strong>Security</strong>: Wasm’s sandboxed environment enhances security by isolating the execution of scripts.</li>
+<li><strong>Maintainability</strong>: Using the stock Godot Engine reduces the burden of maintaining a forked version and simplifies updates.</li>
+<li><strong>Flexibility</strong>: Developers can write core scripts in languages that compile to Wasm, such as C++ or Rust.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li><strong>Complexity</strong>: Developing and integrating Wasm modules adds complexity to the project.</li>
+<li><strong>Learning Curve</strong>: Team members may need to learn new technologies and tools related to Wasm.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<ul>
+<li><strong>Sticking with Forked Godot</strong>: Continuing to use a forked version of Godot would require ongoing maintenance and could deter contributors.</li>
+<li><strong>Using Only GDExtension</strong>: While GDExtension provides native performance, it requires code signing and can be cumbersome to manage across multiple modules.</li>
+</ul>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>In scenarios where the performance and security benefits of Wasm are not critical, simpler scripting solutions like GDScript or native GDExtensions might suffice.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>This proposal involves significant changes to the core architecture of the V-Sekai project. The development team will be responsible for implementing and maintaining the Wasm integration and GDExtension.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240717-core-vsekai-scripting.html</guid>
+  <pubDate>Thu, 18 Jul 2024 05:11:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -707,7 +800,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240715-vrchat-networking-mental-model.html</guid>
-  <pubDate>Wed, 17 Jul 2024 03:22:56 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:11:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -794,7 +887,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240712-use-shrinkwrap-blender-modiifer-to-fit.html</guid>
-  <pubDate>Wed, 17 Jul 2024 03:22:56 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:11:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -911,7 +1004,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-web-and-pcvr-networking.html</guid>
-  <pubDate>Wed, 17 Jul 2024 03:22:56 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:11:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -995,7 +1088,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-use-webrtc-to-native-interop.html</guid>
-  <pubDate>Wed, 17 Jul 2024 03:22:56 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:11:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1115,7 +1208,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-use-godot-engine-web-threaded.html</guid>
-  <pubDate>Wed, 17 Jul 2024 03:22:56 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:11:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1205,7 +1298,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-platform-focus-on-pcvr-and-web.html</guid>
-  <pubDate>Wed, 17 Jul 2024 03:22:56 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:11:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1360,7 +1453,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-convert-blender-cc0-base-mesh-to-godot-engine-t-pose.html</guid>
-  <pubDate>Wed, 17 Jul 2024 03:22:56 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:11:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1451,7 +1544,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-art-direction-in-vsekai.html</guid>
-  <pubDate>Wed, 17 Jul 2024 03:22:56 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:11:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1537,7 +1630,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Wed, 17 Jul 2024 03:22:56 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:11:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1624,7 +1717,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240709-wired-first.html</guid>
-  <pubDate>Wed, 17 Jul 2024 03:22:56 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:11:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1712,7 +1805,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240709-anwave-set-nvidia-watt-limit.html</guid>
-  <pubDate>Wed, 17 Jul 2024 03:22:56 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:11:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2316,7 +2409,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240708-vsekai-my-life-as-a-queen.html</guid>
-  <pubDate>Wed, 17 Jul 2024 03:22:56 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:11:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2494,7 +2587,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240706-motion-capture-bill-of-materials.html</guid>
-  <pubDate>Wed, 17 Jul 2024 03:22:56 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:11:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2578,7 +2671,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240705-rpg_town.html</guid>
-  <pubDate>Wed, 17 Jul 2024 03:22:56 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:11:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2680,7 +2773,7 @@ font-style: inherit;">return</span> model.generate_motion()</span></code></pre><
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240630-use-motion-transformers-for-prediction.html</guid>
-  <pubDate>Wed, 17 Jul 2024 03:22:56 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:11:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2872,7 +2965,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240627-gdextension-as-libriscv.html</guid>
-  <pubDate>Wed, 17 Jul 2024 03:22:56 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:11:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2962,7 +3055,7 @@ Else:
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240627-every-commit-push-pass-cicd.html</guid>
-  <pubDate>Wed, 17 Jul 2024 03:22:56 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:11:23 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3186,94 +3279,7 @@ font-style: inherit;">'__main__'</span>:</span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240626-update-python3-macos-certicates.html</guid>
-  <pubDate>Wed, 17 Jul 2024 03:22:56 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240623-what-is-uro-backend.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-why-did-we-build-uro" class="level1">
-<h1>Proposed: Why did we build “Uro”?</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>V-Sekai is an open-source project that brings social VR/VRSNS/metaverse components to the Godot Engine. It has a complex architecture involving multiple components, including a game client, a backend called “Uro”, and game servers.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>There is a need to explain the architecture of V-Sekai, specifically the roles and interactions of the game client, the Uro backend, and the game servers.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>The game client is the application that users interact with. It connects to both Uro, our backend service, and directly to game servers.</p>
-<p>The game editor is a separate tool used by game designers. They use it to create and upload new worlds, props, and avatars to the Uro backend.</p>
-<p>Uro is the backend service for our game. It handles requests from both the game client and game editor. It stores and serves game assets like worlds, props, and avatars.</p>
-<p>Game servers are responsible for running the game logic in real-time. They communicate with the game clients to keep the game state synchronized between all players.</p>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p>Understanding the architecture of V-Sekai can help developers contribute more effectively to the project. It can also help users troubleshoot issues and understand the capabilities and limitations of the system.</p>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>The complexity of the architecture may be daunting for some, and there may be a learning curve involved in understanding it.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<ul>
-<li>An alternative approach could have been to implement a Peer-to-Peer (P2P) architecture. In this setup, each game client also acts as a mini-server, communicating directly with other clients.</li>
-<li>Another alternative would be to use cloud-based game backends such as Microsoft’s PlayFab. These services can automatically scale up or down based on demand, ensuring that there’s always enough capacity for all players.</li>
-<li>Nakama is an open-source distributed social and realtime server for games and apps. It has a rich feature set including user accounts, chat, social, matchmaker, realtime multiplayer, and much more.</li>
-</ul>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>The primary use case for the Uro server is to facilitate interactions between the game client and the game servers, there may be infrequent use cases where its functionality could be extended or used in different ways. For example, it is can be used to implement additional features such as leaderboards, achievements, or social networking features within the game. These use cases, while not common, should still be considered when designing and implementing the Uro server.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>This proposal is core to the V-Sekai project and will be implemented by the V-Sekai development team.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-<li>Fire</li>
-<li>Aries</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-<li>Uro Backend</li>
-<li>Game Architecture</li>
-<li>Open-source Project</li>
-<li>Godot Engine</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240623-what-is-uro-backend.html</guid>
-  <pubDate>Wed, 17 Jul 2024 03:22:56 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2024 05:11:23 GMT</pubDate>
 </item>
 </channel>
 </rss>
