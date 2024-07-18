@@ -50,6 +50,8 @@ Status: Proposed
 ## Decision Makers
 
 - V-Sekai development team
+- Fire
+- MMMaellon
 
 ## Tags
 
