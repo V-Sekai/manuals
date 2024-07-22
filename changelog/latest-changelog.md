@@ -13,7 +13,7 @@
 
 - Replaced fabrik ik solver in renik ik character controler with qcp ik solver.
 - Manifold for Godot Engine CSG ready for review
-- Worked on Wasgo for WASM32-CPUs for tooling and runtime user generated code.
+- ~~Worked on Wasgo for WASM32-CPUs for tooling and runtime user generated code.~~
 - Worked on libriscv loading and executing a hello world function call with a shared object.
 - Worked on godot-llama trying to get the new PHI-3 model working. https://github.com/V-Sekai/godot-llama
 - Worked on ServerBackend🚫
