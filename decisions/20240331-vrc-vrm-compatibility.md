@@ -121,5 +121,6 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 1. [https://vpm.nadena.dev/vpm.json]
 1. [https://fujisunflower.booth.pm/items/2087178]
 1. [VRM Downgrader](https://vrm-downgrader.pages.dev/)
+1. [GoGo Loco](https://franadavrc.gumroad.com/l/gogoloco)
 
 AI assistant Aria assisted with this article.
