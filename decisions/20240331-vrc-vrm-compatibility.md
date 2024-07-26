@@ -119,6 +119,7 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 1. [https://Adjerry91.github.io/VRCFaceTracking-Templates/index.json]
 1. [https://esperecyan.github.io/VRMConverterForVRChat/registry.json]
 1. [https://vpm.nadena.dev/vpm.json]
+1. [https://lilxyzw.github.io/vpm-repos/vpm.json]
 1. [https://fujisunflower.booth.pm/items/2087178]
 1. [VRM Downgrader](https://vrm-downgrader.pages.dev/)
 1. [GoGo Loco](https://franadavrc.gumroad.com/l/gogoloco)
