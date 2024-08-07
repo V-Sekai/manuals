@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.55">
+<meta name="generator" content="quarto-1.5.56">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -155,7 +155,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
   <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
-  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
+  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a>
+  <ul class="collapse">
+  <li><a href="#to-forcefully-remove-a-kubernetes-namespace-that-is-stuck-in-the-terminating-state-you-can-follow-these-steps" id="toc-to-forcefully-remove-a-kubernetes-namespace-that-is-stuck-in-the-terminating-state-you-can-follow-these-steps" class="nav-link" data-scroll-target="#to-forcefully-remove-a-kubernetes-namespace-that-is-stuck-in-the-terminating-state-you-can-follow-these-steps">To forcefully remove a Kubernetes namespace that is stuck in the <code>Terminating</code> state, you can follow these steps:</a></li>
+  </ul></li>
   <li><a href="#the-benefits" id="toc-the-benefits" class="nav-link" data-scroll-target="#the-benefits">The Benefits</a></li>
   <li><a href="#the-downsides" id="toc-the-downsides" class="nav-link" data-scroll-target="#the-downsides">The Downsides</a></li>
   <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
@@ -204,6 +207,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Accessing Rancher</strong>: Access Rancher using the DNS hostname provided during configuration after installation.</li>
 </ol>
 <p>This approach integrates Rancher into Harvester, leveraging Harvester’s infrastructure to manage both VMs and containers centrally.</p>
+<section id="to-forcefully-remove-a-kubernetes-namespace-that-is-stuck-in-the-terminating-state-you-can-follow-these-steps" class="level3">
+<h3 class="anchored" data-anchor-id="to-forcefully-remove-a-kubernetes-namespace-that-is-stuck-in-the-terminating-state-you-can-follow-these-steps">To forcefully remove a Kubernetes namespace that is stuck in the <code>Terminating</code> state, you can follow these steps:</h3>
+<ol type="1">
+<li><p><strong>Edit the namespace to remove its finalizers:</strong></p>
+<p>First, you’ll need to edit the namespace to remove any finalizers that are preventing it from being deleted.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">kubectl</span> get namespace rancher-vcluster <span class="at">-o</span> json <span class="op">&gt;</span> tmp.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Open the <code>tmp.json</code> file and remove the <code>finalizers</code> field:</strong></p>
+<p>Look for the <code>spec</code> section and remove the <code>finalizers</code> array. It should look something like this:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="er">"spec":</span> <span class="fu">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"finalizers"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"kubernetes"</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After removal, it should look like this:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="er">"spec":</span> <span class="fu">{}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Apply the modified JSON back to the cluster:</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">kubectl</span> replace <span class="at">--raw</span> <span class="st">"/api/v1/namespaces/rancher-vcluster/finalize"</span> <span class="at">-f</span> ./tmp.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Verify the namespace has been deleted:</strong></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">kubectl</span> get namespaces</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+<p>If the namespace still does not delete, you may need to manually clean up resources within the namespace before retrying the above steps.</p>
+<section id="important-note" class="level4">
+<h4 class="anchored" data-anchor-id="important-note">Important Note:</h4>
+<p>Forcefully removing a namespace can lead to orphaned resources. Ensure that you understand the implications of this action and have backups if necessary.</p>
+</section>
+</section>
 </section>
 <section id="the-benefits" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
