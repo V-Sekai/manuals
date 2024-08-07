@@ -33,6 +33,51 @@ This command will fetch the `rancher-vcluster.yaml` file from the `experimental-
 
 This approach integrates Rancher into Harvester, leveraging Harvester's infrastructure to manage both VMs and containers centrally.
 
+### To forcefully remove a Kubernetes namespace that is stuck in the `Terminating` state, you can follow these steps:
+
+1. **Edit the namespace to remove its finalizers:**
+
+   First, you'll need to edit the namespace to remove any finalizers that are preventing it from being deleted.
+
+   ```sh
+   kubectl get namespace rancher-vcluster -o json > tmp.json
+   ```
+
+2. **Open the `tmp.json` file and remove the `finalizers` field:**
+
+   Look for the `spec` section and remove the `finalizers` array. It should look something like this:
+
+   ```json
+   "spec": {
+     "finalizers": [
+       "kubernetes"
+     ]
+   }
+   ```
+
+   After removal, it should look like this:
+
+   ```json
+   "spec": {}
+   ```
+
+3. **Apply the modified JSON back to the cluster:**
+
+   ```sh
+   kubectl replace --raw "/api/v1/namespaces/rancher-vcluster/finalize" -f ./tmp.json
+   ```
+
+4. **Verify the namespace has been deleted:**
+
+   ```sh
+   kubectl get namespaces
+   ```
+
+If the namespace still does not delete, you may need to manually clean up resources within the namespace before retrying the above steps.
+
+#### Important Note:
+Forcefully removing a namespace can lead to orphaned resources. Ensure that you understand the implications of this action and have backups if necessary.
+
 ## The Benefits
 
 This setup enables creation and management of Kubernetes clusters through Harvester's integration with Rancher and deployment of a Kubernetes cluster based on specific requirements (K3s).
