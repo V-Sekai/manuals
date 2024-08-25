@@ -2,11 +2,11 @@
 
 ## The Context
 
-Debugging Godot Engine speech C++ module's audio code.
+Testing audio input and output for VOIP applications.
 
 ## The Problem Statement
 
-Fix corrupted audio.
+Simulate microphone input and capture speaker output to debug and test audio functionality.
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
