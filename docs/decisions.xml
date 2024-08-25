@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.5.56</generator>
-<lastBuildDate>Sat, 10 Aug 2024 20:01:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 25 Aug 2024 00:57:49 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,187 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sat, 10 Aug 2024 20:01:00 GMT</pubDate>
+  <pubDate>Sun, 25 Aug 2024 00:57:49 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240824-ffmpeg-wav-mic-speaker-play.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-ffmpeg-wavemic-and-speakerplay" class="level1">
+<h1>Proposed: FFMPEG Wave/Mic and Speaker/Play</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>Debugging Godot Engine speech C++ module’s audio code.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Fix corrupted audio.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#!/bin/bash</span></span>
+<span id="cb1-2"></span>
+<span id="cb1-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Define file paths and device IDs</span></span>
+<span id="cb1-4"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">INPUT_WAV</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"/path/to/input.wav"</span></span>
+<span id="cb1-5"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">OUTPUT_WAV</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"/path/to/output/speaker_output.wav"</span></span>
+<span id="cb1-6"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">MIC_DEVICE</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"plughw:0,0"</span>      <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Replace with your actual mic device ID</span></span>
+<span id="cb1-7"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">SPEAKER_DEVICE</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"plughw:0,0"</span>  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Replace with your actual speaker device ID</span></span>
+<span id="cb1-8"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">DURATION</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>10                   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Duration in seconds</span></span>
+<span id="cb1-9"></span>
+<span id="cb1-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Play the WAV file as microphone input using ffmpeg</span></span>
+<span id="cb1-11"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">ffmpeg</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-re</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-i</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$INPUT_WAV</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-f</span> alsa <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-ac</span> 2 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-ar</span> 44100 hw:<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$MIC_DEVICE</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">&amp;</span></span>
+<span id="cb1-12"></span>
+<span id="cb1-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Record the speaker output to a WAV file</span></span>
+<span id="cb1-14"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">ffmpeg</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-f</span> alsa <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-i</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$SPEAKER_DEVICE</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-t</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$DURATION</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-ac</span> 2 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-ar</span> 44100 <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$OUTPUT_WAV</span></span>
+<span id="cb1-15"></span>
+<span id="cb1-16"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Wait for background processes to finish</span></span>
+<span id="cb1-17"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">wait</span></span></code></pre></div>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li><strong>Automated Testing</strong>: Enables automated testing of VOIP clients.</li>
+<li><strong>Versatility</strong>: Can be used to test various VOIP applications like Discord and VRChat.</li>
+<li><strong>Prototyping</strong>: Useful for prototyping WebRTC later.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li><strong>Complex Setup</strong>: Requires knowledge of Linux audio systems and command-line tools.</li>
+<li><strong>Potential Compatibility Issues</strong>: May not work seamlessly across all hardware configurations.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>Using Godot-specific audio stream players and effects was considered but found to be too closely tied to Godot, limiting broader application testing.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>In cases where precise audio sample rate configuration is critical, additional adjustments may be needed to avoid issues.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>This approach aligns with our goal of robust and versatile testing methodologies and will be implemented by our team.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240824-ffmpeg-wav-mic-speaker-play.html</guid>
+  <pubDate>Sun, 25 Aug 2024 00:57:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -164,7 +344,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240810-steamvr-dongles-separate.html</guid>
-  <pubDate>Sat, 10 Aug 2024 20:01:00 GMT</pubDate>
+  <pubDate>Sun, 25 Aug 2024 00:57:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -263,7 +443,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240717-core-vsekai-scripting.html</guid>
-  <pubDate>Sat, 10 Aug 2024 20:01:00 GMT</pubDate>
+  <pubDate>Sun, 25 Aug 2024 00:57:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -895,7 +1075,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240715-vrchat-networking-mental-model.html</guid>
-  <pubDate>Sat, 10 Aug 2024 20:01:00 GMT</pubDate>
+  <pubDate>Sun, 25 Aug 2024 00:57:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -982,7 +1162,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240712-use-shrinkwrap-blender-modiifer-to-fit.html</guid>
-  <pubDate>Sat, 10 Aug 2024 20:01:00 GMT</pubDate>
+  <pubDate>Sun, 25 Aug 2024 00:57:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1099,7 +1279,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-web-and-pcvr-networking.html</guid>
-  <pubDate>Sat, 10 Aug 2024 20:01:00 GMT</pubDate>
+  <pubDate>Sun, 25 Aug 2024 00:57:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1183,7 +1363,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-use-webrtc-to-native-interop.html</guid>
-  <pubDate>Sat, 10 Aug 2024 20:01:00 GMT</pubDate>
+  <pubDate>Sun, 25 Aug 2024 00:57:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1303,7 +1483,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-use-godot-engine-web-threaded.html</guid>
-  <pubDate>Sat, 10 Aug 2024 20:01:00 GMT</pubDate>
+  <pubDate>Sun, 25 Aug 2024 00:57:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1393,7 +1573,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-platform-focus-on-pcvr-and-web.html</guid>
-  <pubDate>Sat, 10 Aug 2024 20:01:00 GMT</pubDate>
+  <pubDate>Sun, 25 Aug 2024 00:57:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1548,7 +1728,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-convert-blender-cc0-base-mesh-to-godot-engine-t-pose.html</guid>
-  <pubDate>Sat, 10 Aug 2024 20:01:00 GMT</pubDate>
+  <pubDate>Sun, 25 Aug 2024 00:57:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1639,7 +1819,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-art-direction-in-vsekai.html</guid>
-  <pubDate>Sat, 10 Aug 2024 20:01:00 GMT</pubDate>
+  <pubDate>Sun, 25 Aug 2024 00:57:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1725,7 +1905,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Sat, 10 Aug 2024 20:01:00 GMT</pubDate>
+  <pubDate>Sun, 25 Aug 2024 00:57:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1812,7 +1992,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240709-wired-first.html</guid>
-  <pubDate>Sat, 10 Aug 2024 20:01:00 GMT</pubDate>
+  <pubDate>Sun, 25 Aug 2024 00:57:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1900,7 +2080,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240709-anwave-set-nvidia-watt-limit.html</guid>
-  <pubDate>Sat, 10 Aug 2024 20:01:00 GMT</pubDate>
+  <pubDate>Sun, 25 Aug 2024 00:57:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2504,7 +2684,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240708-vsekai-my-life-as-a-queen.html</guid>
-  <pubDate>Sat, 10 Aug 2024 20:01:00 GMT</pubDate>
+  <pubDate>Sun, 25 Aug 2024 00:57:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2682,7 +2862,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240706-motion-capture-bill-of-materials.html</guid>
-  <pubDate>Sat, 10 Aug 2024 20:01:00 GMT</pubDate>
+  <pubDate>Sun, 25 Aug 2024 00:57:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2766,7 +2946,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240705-rpg_town.html</guid>
-  <pubDate>Sat, 10 Aug 2024 20:01:00 GMT</pubDate>
+  <pubDate>Sun, 25 Aug 2024 00:57:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2868,7 +3048,7 @@ font-style: inherit;">return</span> model.generate_motion()</span></code></pre><
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240630-use-motion-transformers-for-prediction.html</guid>
-  <pubDate>Sat, 10 Aug 2024 20:01:00 GMT</pubDate>
+  <pubDate>Sun, 25 Aug 2024 00:57:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3060,97 +3240,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240627-gdextension-as-libriscv.html</guid>
-  <pubDate>Sat, 10 Aug 2024 20:01:00 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240627-every-commit-push-pass-cicd.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-every-commit-push-pass-cicd" class="level1">
-<h1>Proposed: Every Commit Push Pass Cicd</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>We are working on V-Sekai, a virtual reality social network. Our development workflow involves multiple developers making frequent changes to the codebase.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>We have trouble understanding the logical flow of work. This is causing delays in development and making it difficult to track changes and debug issues. Currently, our commits are checked after they are merged into the main branch, which can lead to problems if the commit does not pass the checks.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>The proposal is to implement a system where every commit and push operation passes through our CI/CD pipeline as a logical unit before being checked into the main branch. This means that each commit will trigger a build and test process, ensuring that all changes are validated before they are merged.</p>
-<pre class="pseudo"><code>On every commit:
-  Trigger CI/CD pipeline
-    Build application
-    Run tests
-If tests pass:
-  Allow check-in to main branch
-Else:
-  Return error and prevent check-in</code></pre>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<ul>
-<li>Improved traceability of changes</li>
-<li>Faster identification and resolution of issues</li>
-<li>More efficient development workflow</li>
-<li>Prevention of problematic commits entering the main branch</li>
-</ul>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<ul>
-<li>Potential increase in build times</li>
-<li>Requires investment in robust testing infrastructure</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>An alternative approach could be to only run the CI/CD pipeline on specific branches or at specific times. However, this would not provide the same level of validation and could lead to issues being missed.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>In cases where commits are made infrequently, this approach may result in longer periods between builds. However, the benefits of improved traceability and issue resolution outweigh this potential downside.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>This change will be implemented by the V-Sekai development team and will become a core part of our development workflow.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240627-every-commit-push-pass-cicd.html</guid>
-  <pubDate>Sat, 10 Aug 2024 20:01:00 GMT</pubDate>
+  <pubDate>Sun, 25 Aug 2024 00:57:49 GMT</pubDate>
 </item>
 </channel>
 </rss>
