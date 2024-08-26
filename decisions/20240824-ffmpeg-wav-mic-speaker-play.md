@@ -10,6 +10,10 @@ Simulate microphone input and capture speaker output to debug and test audio fun
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
+The following script uses `ffmpeg` to play a WAV file as microphone input and record the speaker output. This setup is designed to work on macOS, Windows, and Linux.
+
+### Bash Script (macOS/Linux)
+
 ```bash
 #!/bin/bash
 
@@ -30,6 +34,59 @@ ffmpeg -f alsa -i $SPEAKER_DEVICE -t $DURATION -ac 2 -ar 44100 $OUTPUT_WAV
 wait
 ```
 
+### Batch Script (Windows)
+
+```batch
+@echo off
+
+:: Define file paths and device IDs
+set INPUT_WAV=C:\path\to\input.wav
+set OUTPUT_WAV=C:\path\to\output\speaker_output.wav
+set MIC_DEVICE=audio="Microphone (Realtek High Definition Audio)"  :: Replace with your actual mic device name
+set SPEAKER_DEVICE=audio="Speakers (Realtek High Definition Audio)" :: Replace with your actual speaker device name
+set DURATION=10  :: Duration in seconds
+
+:: Play the WAV file as microphone input using ffmpeg
+start /B ffmpeg -re -i %INPUT_WAV% -f dshow -i %MIC_DEVICE%
+
+:: Record the speaker output to a WAV file
+ffmpeg -f dshow -i %SPEAKER_DEVICE% -t %DURATION% -ac 2 -ar 44100 %OUTPUT_WAV%
+
+:: Wait for background processes to finish
+wait
+```
+
+### Listing Devices on Windows
+
+To list available audio devices on Windows, you can use the following command:
+
+```batch
+ffmpeg -list_devices true -f dshow -i dummy
+```
+
+This will output a list of all available audio devices, which you can then use to replace the `MIC_DEVICE` and `SPEAKER_DEVICE` placeholders in the batch script.
+
+### Steps:
+
+1. **Define File Paths and Device IDs**:
+
+   - `INPUT_WAV`: Path to the input WAV file.
+   - `OUTPUT_WAV`: Path where the recorded speaker output will be saved.
+   - `MIC_DEVICE`: Microphone device ID (replace with actual device ID).
+   - `SPEAKER_DEVICE`: Speaker device ID (replace with actual device ID).
+   - `DURATION`: Duration of the recording in seconds.
+
+2. **Play the WAV File as Microphone Input**:
+
+   - Use `ffmpeg` to play the input WAV file as if it were coming from the microphone.
+
+3. **Record the Speaker Output**:
+
+   - Use `ffmpeg` to record the speaker output to a WAV file for the specified duration.
+
+4. **Wait for Background Processes**:
+   - Ensure all background processes complete before the script exits.
+
 ## The Benefits
 
 - **Automated Testing**: Enables automated testing of VOIP clients.
@@ -38,7 +95,7 @@ wait
 
 ## The Downsides
 
-- **Complex Setup**: Requires knowledge of Linux audio systems and command-line tools.
+- **Complex Setup**: Requires knowledge of audio systems and command-line tools.
 - **Potential Compatibility Issues**: May not work seamlessly across all hardware configurations.
 
 ## The Road Not Taken
