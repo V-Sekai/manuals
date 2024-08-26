@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.5.56</generator>
-<lastBuildDate>Sun, 25 Aug 2024 00:59:32 GMT</lastBuildDate>
+<lastBuildDate>Mon, 26 Aug 2024 00:12:01 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 25 Aug 2024 00:59:32 GMT</pubDate>
+  <pubDate>Mon, 26 Aug 2024 00:12:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -97,6 +97,9 @@
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>The following script uses <code>ffmpeg</code> to play a WAV file as microphone input and record the speaker output. This setup is designed to work on macOS, Windows, and Linux.</p>
+<section id="bash-script-macoslinux" class="level3">
+<h3 class="anchored" data-anchor-id="bash-script-macoslinux">Bash Script (macOS/Linux)</h3>
 <div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#!/bin/bash</span></span>
@@ -198,6 +201,58 @@ font-style: inherit;"># Wait for background processes to finish</span></span>
 background-color: null;
 font-style: inherit;">wait</span></span></code></pre></div>
 </section>
+<section id="batch-script-windows" class="level3">
+<h3 class="anchored" data-anchor-id="batch-script-windows">Batch Script (Windows)</h3>
+<pre class="batch"><code>@echo off
+
+:: Define file paths and device IDs
+set INPUT_WAV=C:\path\to\input.wav
+set OUTPUT_WAV=C:\path\to\output\speaker_output.wav
+set MIC_DEVICE=audio="Microphone (Realtek High Definition Audio)"  :: Replace with your actual mic device name
+set SPEAKER_DEVICE=audio="Speakers (Realtek High Definition Audio)" :: Replace with your actual speaker device name
+set DURATION=10  :: Duration in seconds
+
+:: Play the WAV file as microphone input using ffmpeg
+start /B ffmpeg -re -i %INPUT_WAV% -f dshow -i %MIC_DEVICE%
+
+:: Record the speaker output to a WAV file
+ffmpeg -f dshow -i %SPEAKER_DEVICE% -t %DURATION% -ac 2 -ar 44100 %OUTPUT_WAV%
+
+:: Wait for background processes to finish
+wait</code></pre>
+</section>
+<section id="listing-devices-on-windows" class="level3">
+<h3 class="anchored" data-anchor-id="listing-devices-on-windows">Listing Devices on Windows</h3>
+<p>To list available audio devices on Windows, you can use the following command:</p>
+<pre class="batch"><code>ffmpeg -list_devices true -f dshow -i dummy</code></pre>
+<p>This will output a list of all available audio devices, which you can then use to replace the <code>MIC_DEVICE</code> and <code>SPEAKER_DEVICE</code> placeholders in the batch script.</p>
+</section>
+<section id="steps" class="level3">
+<h3 class="anchored" data-anchor-id="steps">Steps:</h3>
+<ol type="1">
+<li><p><strong>Define File Paths and Device IDs</strong>:</p>
+<ul>
+<li><code>INPUT_WAV</code>: Path to the input WAV file.</li>
+<li><code>OUTPUT_WAV</code>: Path where the recorded speaker output will be saved.</li>
+<li><code>MIC_DEVICE</code>: Microphone device ID (replace with actual device ID).</li>
+<li><code>SPEAKER_DEVICE</code>: Speaker device ID (replace with actual device ID).</li>
+<li><code>DURATION</code>: Duration of the recording in seconds.</li>
+</ul></li>
+<li><p><strong>Play the WAV File as Microphone Input</strong>:</p>
+<ul>
+<li>Use <code>ffmpeg</code> to play the input WAV file as if it were coming from the microphone.</li>
+</ul></li>
+<li><p><strong>Record the Speaker Output</strong>:</p>
+<ul>
+<li>Use <code>ffmpeg</code> to record the speaker output to a WAV file for the specified duration.</li>
+</ul></li>
+<li><p><strong>Wait for Background Processes</strong>:</p>
+<ul>
+<li>Ensure all background processes complete before the script exits.</li>
+</ul></li>
+</ol>
+</section>
+</section>
 <section id="the-benefits" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
 <ul>
@@ -209,7 +264,7 @@ font-style: inherit;">wait</span></span></code></pre></div>
 <section id="the-downsides" class="level2">
 <h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
 <ul>
-<li><strong>Complex Setup</strong>: Requires knowledge of Linux audio systems and command-line tools.</li>
+<li><strong>Complex Setup</strong>: Requires knowledge of audio systems and command-line tools.</li>
 <li><strong>Potential Compatibility Issues</strong>: May not work seamlessly across all hardware configurations.</li>
 </ul>
 </section>
@@ -255,7 +310,7 @@ font-style: inherit;">wait</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240824-ffmpeg-wav-mic-speaker-play.html</guid>
-  <pubDate>Sun, 25 Aug 2024 00:59:32 GMT</pubDate>
+  <pubDate>Mon, 26 Aug 2024 00:12:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -344,7 +399,7 @@ font-style: inherit;">wait</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240810-steamvr-dongles-separate.html</guid>
-  <pubDate>Sun, 25 Aug 2024 00:59:32 GMT</pubDate>
+  <pubDate>Mon, 26 Aug 2024 00:12:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -443,7 +498,7 @@ font-style: inherit;">wait</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240717-core-vsekai-scripting.html</guid>
-  <pubDate>Sun, 25 Aug 2024 00:59:32 GMT</pubDate>
+  <pubDate>Mon, 26 Aug 2024 00:12:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1075,7 +1130,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240715-vrchat-networking-mental-model.html</guid>
-  <pubDate>Sun, 25 Aug 2024 00:59:32 GMT</pubDate>
+  <pubDate>Mon, 26 Aug 2024 00:12:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1162,7 +1217,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240712-use-shrinkwrap-blender-modiifer-to-fit.html</guid>
-  <pubDate>Sun, 25 Aug 2024 00:59:32 GMT</pubDate>
+  <pubDate>Mon, 26 Aug 2024 00:12:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1279,7 +1334,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-web-and-pcvr-networking.html</guid>
-  <pubDate>Sun, 25 Aug 2024 00:59:32 GMT</pubDate>
+  <pubDate>Mon, 26 Aug 2024 00:12:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1363,7 +1418,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-use-webrtc-to-native-interop.html</guid>
-  <pubDate>Sun, 25 Aug 2024 00:59:32 GMT</pubDate>
+  <pubDate>Mon, 26 Aug 2024 00:12:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1483,7 +1538,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-use-godot-engine-web-threaded.html</guid>
-  <pubDate>Sun, 25 Aug 2024 00:59:32 GMT</pubDate>
+  <pubDate>Mon, 26 Aug 2024 00:12:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1573,7 +1628,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-platform-focus-on-pcvr-and-web.html</guid>
-  <pubDate>Sun, 25 Aug 2024 00:59:32 GMT</pubDate>
+  <pubDate>Mon, 26 Aug 2024 00:12:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1728,7 +1783,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-convert-blender-cc0-base-mesh-to-godot-engine-t-pose.html</guid>
-  <pubDate>Sun, 25 Aug 2024 00:59:32 GMT</pubDate>
+  <pubDate>Mon, 26 Aug 2024 00:12:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1819,7 +1874,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-art-direction-in-vsekai.html</guid>
-  <pubDate>Sun, 25 Aug 2024 00:59:32 GMT</pubDate>
+  <pubDate>Mon, 26 Aug 2024 00:12:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1905,7 +1960,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Sun, 25 Aug 2024 00:59:32 GMT</pubDate>
+  <pubDate>Mon, 26 Aug 2024 00:12:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1992,7 +2047,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240709-wired-first.html</guid>
-  <pubDate>Sun, 25 Aug 2024 00:59:32 GMT</pubDate>
+  <pubDate>Mon, 26 Aug 2024 00:12:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2080,7 +2135,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240709-anwave-set-nvidia-watt-limit.html</guid>
-  <pubDate>Sun, 25 Aug 2024 00:59:32 GMT</pubDate>
+  <pubDate>Mon, 26 Aug 2024 00:12:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2684,7 +2739,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240708-vsekai-my-life-as-a-queen.html</guid>
-  <pubDate>Sun, 25 Aug 2024 00:59:32 GMT</pubDate>
+  <pubDate>Mon, 26 Aug 2024 00:12:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2862,7 +2917,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240706-motion-capture-bill-of-materials.html</guid>
-  <pubDate>Sun, 25 Aug 2024 00:59:32 GMT</pubDate>
+  <pubDate>Mon, 26 Aug 2024 00:12:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2946,7 +3001,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240705-rpg_town.html</guid>
-  <pubDate>Sun, 25 Aug 2024 00:59:32 GMT</pubDate>
+  <pubDate>Mon, 26 Aug 2024 00:12:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3048,7 +3103,7 @@ font-style: inherit;">return</span> model.generate_motion()</span></code></pre><
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240630-use-motion-transformers-for-prediction.html</guid>
-  <pubDate>Sun, 25 Aug 2024 00:59:32 GMT</pubDate>
+  <pubDate>Mon, 26 Aug 2024 00:12:01 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3240,7 +3295,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240627-gdextension-as-libriscv.html</guid>
-  <pubDate>Sun, 25 Aug 2024 00:59:32 GMT</pubDate>
+  <pubDate>Mon, 26 Aug 2024 00:12:01 GMT</pubDate>
 </item>
 </channel>
 </rss>
