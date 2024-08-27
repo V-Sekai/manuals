@@ -66,7 +66,9 @@ ffmpeg -f dshow -i %SPEAKER_DEVICE% -t %DURATION% -ac 2 -ar 44100 %OUTPUT_WAV%
 wait
 ```
 
-### Listing Devices on Windows
+### Listing Devices on Windows, macOS, and Linux
+
+#### **Windows**
 
 To list available audio devices on Windows, you can use the following command:
 
@@ -75,6 +77,26 @@ ffmpeg -list_devices true -f dshow -i dummy
 ```
 
 This will output a list of all available audio devices, which you can then use to replace the `MIC_DEVICE` and `SPEAKER_DEVICE` placeholders in the batch script.
+
+#### **macOS**
+
+On macOS, you can list audio devices using the following command:
+
+```bash
+ffmpeg -f avfoundation -list_devices true -i ""
+```
+
+This command will display both video and audio devices. Look for the audio devices and use their indices or names as needed in your scripts.
+
+#### **Linux**
+
+For Linux, you can use the following command to list audio devices:
+
+```bash
+arecord -l
+```
+
+This command lists all sound cards and digital audio devices. You can identify the card number and device number (e.g., `card 1: device 0`) to use in your ALSA-based commands or configurations.
 
 ### Steps:
 
