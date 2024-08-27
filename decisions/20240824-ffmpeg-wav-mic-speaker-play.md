@@ -90,13 +90,13 @@ This command will display both video and audio devices. Look for the audio devic
 
 #### **Linux**
 
-For Linux, you can use the following command to list audio devices:
+For Linux, to list audio devices using ffmpeg, you can execute the following command:
 
 ```bash
-arecord -l
+ffmpeg -f alsa -list_devices true -i dummy
 ```
 
-This command lists all sound cards and digital audio devices. You can identify the card number and device number (e.g., `card 1: device 0`) to use in your ALSA-based commands or configurations.
+This command will help identify available ALSA audio devices, which can be used similarly to how devices are specified in scripts on other operating systems.
 
 ### Steps:
 
