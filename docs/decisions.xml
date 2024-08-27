@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.5.56</generator>
-<lastBuildDate>Mon, 26 Aug 2024 00:14:46 GMT</lastBuildDate>
+<lastBuildDate>Tue, 27 Aug 2024 01:12:47 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Mon, 26 Aug 2024 00:14:46 GMT</pubDate>
+  <pubDate>Tue, 27 Aug 2024 01:12:47 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -262,28 +262,180 @@ font-style: inherit;">wait</span></span></code></pre></div>
 </section>
 <section id="batch-script-windows" class="level3">
 <h3 class="anchored" data-anchor-id="batch-script-windows">Batch Script (Windows)</h3>
-<pre class="batch"><code>@echo off
-
-:: Define file paths and device IDs
-set INPUT_WAV=  :: Path to an optional input WAV file
-set OUTPUT_WAV=C:\path\to\output\speaker_output.wav
-set MIC_DEVICE=audio="Microphone (Realtek High Definition Audio)"  :: Replace with your actual mic device name
-set SPEAKER_DEVICE=audio="Speakers (Realtek High Definition Audio)" :: Replace with your actual speaker device name
-set DURATION=10  :: Duration in seconds
-
-if "%INPUT_WAV%"=="" (
-    :: Generate a test tone and play it as microphone input using ffmpeg
-    start /B ffmpeg -f lavfi -i "sine=frequency=1000:duration=%DURATION%" -f dshow -i %MIC_DEVICE%
-) else (
-    :: Play the provided WAV file as microphone input using ffmpeg
-    start /B ffmpeg -re -i %INPUT_WAV% -f dshow -i %MIC_DEVICE%
-)
-
-:: Record the speaker output to a WAV file
-ffmpeg -f dshow -i %SPEAKER_DEVICE% -t %DURATION% -ac 2 -ar 44100 %OUTPUT_WAV%
-
-:: Wait for background processes to finish
-wait</code></pre>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb2-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">@</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">echo off</span></span>
+<span id="cb2-2"></span>
+<span id="cb2-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:: Define file paths and device IDs</span></span>
+<span id="cb2-4"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">set</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">INPUT_WAV</span>=  :: Path to an optional input WAV file</span>
+<span id="cb2-5"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">set</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">OUTPUT_WAV</span>=C:\path\to\output\speaker_output.wav</span>
+<span id="cb2-6"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">set</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">MIC_DEVICE</span>=audio=<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Microphone (Realtek High Definition Audio)"</span>  :: Replace with your actual mic device name</span>
+<span id="cb2-7"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">set</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">SPEAKER_DEVICE</span>=audio=<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Speakers (Realtek High Definition Audio)"</span> :: Replace with your actual speaker device name</span>
+<span id="cb2-8"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">set</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">DURATION</span>=10  :: Duration in seconds</span>
+<span id="cb2-9"></span>
+<span id="cb2-10"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">%</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">INPUT_WAV</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">%</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">==</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">(</span></span>
+<span id="cb2-11">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:: Generate a test tone and play it as microphone input using ffmpeg</span></span>
+<span id="cb2-12">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">start</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">/B</span> ffmpeg <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-f</span> lavfi <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-i</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"sine=frequency=1000:duration=</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">%</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">DURATION</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">%</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-f</span> dshow <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-i</span> <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">%</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">MIC_DEVICE</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">%</span></span>
+<span id="cb2-13"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">)</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">(</span></span>
+<span id="cb2-14">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:: Play the provided WAV file as microphone input using ffmpeg</span></span>
+<span id="cb2-15">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">start</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">/B</span> ffmpeg <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-re</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-i</span> <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">%</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">INPUT_WAV</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">%</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-f</span> dshow <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-i</span> <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">%</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">MIC_DEVICE</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">%</span></span>
+<span id="cb2-16"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">)</span></span>
+<span id="cb2-17"></span>
+<span id="cb2-18"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:: Record the speaker output to a WAV file</span></span>
+<span id="cb2-19">ffmpeg <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-f</span> dshow <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-i</span> <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">%</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">SPEAKER_DEVICE</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">%</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-t</span> <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">%</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">DURATION</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">%</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-ac</span> 2 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-ar</span> 44100 <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">%</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">OUTPUT_WAV</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">%</span></span>
+<span id="cb2-20"></span>
+<span id="cb2-21"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:: Wait for background processes to finish</span></span>
+<span id="cb2-22">wait</span></code></pre></div>
 </section>
 <section id="listing-devices-on-windows" class="level3">
 <h3 class="anchored" data-anchor-id="listing-devices-on-windows">Listing Devices on Windows</h3>
@@ -375,7 +527,7 @@ wait</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240824-ffmpeg-wav-mic-speaker-play.html</guid>
-  <pubDate>Mon, 26 Aug 2024 00:14:46 GMT</pubDate>
+  <pubDate>Tue, 27 Aug 2024 01:12:47 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -464,7 +616,7 @@ wait</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240810-steamvr-dongles-separate.html</guid>
-  <pubDate>Mon, 26 Aug 2024 00:14:46 GMT</pubDate>
+  <pubDate>Tue, 27 Aug 2024 01:12:47 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -563,7 +715,7 @@ wait</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240717-core-vsekai-scripting.html</guid>
-  <pubDate>Mon, 26 Aug 2024 00:14:46 GMT</pubDate>
+  <pubDate>Tue, 27 Aug 2024 01:12:47 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1195,7 +1347,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240715-vrchat-networking-mental-model.html</guid>
-  <pubDate>Mon, 26 Aug 2024 00:14:46 GMT</pubDate>
+  <pubDate>Tue, 27 Aug 2024 01:12:47 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1282,7 +1434,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240712-use-shrinkwrap-blender-modiifer-to-fit.html</guid>
-  <pubDate>Mon, 26 Aug 2024 00:14:46 GMT</pubDate>
+  <pubDate>Tue, 27 Aug 2024 01:12:47 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1399,7 +1551,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-web-and-pcvr-networking.html</guid>
-  <pubDate>Mon, 26 Aug 2024 00:14:46 GMT</pubDate>
+  <pubDate>Tue, 27 Aug 2024 01:12:47 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1483,7 +1635,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-use-webrtc-to-native-interop.html</guid>
-  <pubDate>Mon, 26 Aug 2024 00:14:46 GMT</pubDate>
+  <pubDate>Tue, 27 Aug 2024 01:12:47 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1603,7 +1755,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-use-godot-engine-web-threaded.html</guid>
-  <pubDate>Mon, 26 Aug 2024 00:14:46 GMT</pubDate>
+  <pubDate>Tue, 27 Aug 2024 01:12:47 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1693,7 +1845,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-platform-focus-on-pcvr-and-web.html</guid>
-  <pubDate>Mon, 26 Aug 2024 00:14:46 GMT</pubDate>
+  <pubDate>Tue, 27 Aug 2024 01:12:47 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1848,7 +2000,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-convert-blender-cc0-base-mesh-to-godot-engine-t-pose.html</guid>
-  <pubDate>Mon, 26 Aug 2024 00:14:46 GMT</pubDate>
+  <pubDate>Tue, 27 Aug 2024 01:12:47 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1939,7 +2091,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-art-direction-in-vsekai.html</guid>
-  <pubDate>Mon, 26 Aug 2024 00:14:46 GMT</pubDate>
+  <pubDate>Tue, 27 Aug 2024 01:12:47 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2025,7 +2177,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Mon, 26 Aug 2024 00:14:46 GMT</pubDate>
+  <pubDate>Tue, 27 Aug 2024 01:12:47 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2112,7 +2264,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240709-wired-first.html</guid>
-  <pubDate>Mon, 26 Aug 2024 00:14:46 GMT</pubDate>
+  <pubDate>Tue, 27 Aug 2024 01:12:47 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2200,7 +2352,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240709-anwave-set-nvidia-watt-limit.html</guid>
-  <pubDate>Mon, 26 Aug 2024 00:14:46 GMT</pubDate>
+  <pubDate>Tue, 27 Aug 2024 01:12:47 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2804,7 +2956,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240708-vsekai-my-life-as-a-queen.html</guid>
-  <pubDate>Mon, 26 Aug 2024 00:14:46 GMT</pubDate>
+  <pubDate>Tue, 27 Aug 2024 01:12:47 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2982,7 +3134,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240706-motion-capture-bill-of-materials.html</guid>
-  <pubDate>Mon, 26 Aug 2024 00:14:46 GMT</pubDate>
+  <pubDate>Tue, 27 Aug 2024 01:12:47 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3066,7 +3218,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240705-rpg_town.html</guid>
-  <pubDate>Mon, 26 Aug 2024 00:14:46 GMT</pubDate>
+  <pubDate>Tue, 27 Aug 2024 01:12:47 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3168,7 +3320,7 @@ font-style: inherit;">return</span> model.generate_motion()</span></code></pre><
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240630-use-motion-transformers-for-prediction.html</guid>
-  <pubDate>Mon, 26 Aug 2024 00:14:46 GMT</pubDate>
+  <pubDate>Tue, 27 Aug 2024 01:12:47 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3360,7 +3512,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240627-gdextension-as-libriscv.html</guid>
-  <pubDate>Mon, 26 Aug 2024 00:14:46 GMT</pubDate>
+  <pubDate>Tue, 27 Aug 2024 01:12:47 GMT</pubDate>
 </item>
 </channel>
 </rss>

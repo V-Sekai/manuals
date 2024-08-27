@@ -221,28 +221,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="batch-script-windows" class="level3">
 <h3 class="anchored" data-anchor-id="batch-script-windows">Batch Script (Windows)</h3>
-<pre class="batch"><code>@echo off
-
-:: Define file paths and device IDs
-set INPUT_WAV=  :: Path to an optional input WAV file
-set OUTPUT_WAV=C:\path\to\output\speaker_output.wav
-set MIC_DEVICE=audio="Microphone (Realtek High Definition Audio)"  :: Replace with your actual mic device name
-set SPEAKER_DEVICE=audio="Speakers (Realtek High Definition Audio)" :: Replace with your actual speaker device name
-set DURATION=10  :: Duration in seconds
-
-if "%INPUT_WAV%"=="" (
-    :: Generate a test tone and play it as microphone input using ffmpeg
-    start /B ffmpeg -f lavfi -i "sine=frequency=1000:duration=%DURATION%" -f dshow -i %MIC_DEVICE%
-) else (
-    :: Play the provided WAV file as microphone input using ffmpeg
-    start /B ffmpeg -re -i %INPUT_WAV% -f dshow -i %MIC_DEVICE%
-)
-
-:: Record the speaker output to a WAV file
-ffmpeg -f dshow -i %SPEAKER_DEVICE% -t %DURATION% -ac 2 -ar 44100 %OUTPUT_WAV%
-
-:: Wait for background processes to finish
-wait</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">@</span><span class="bu">echo off</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">:: Define file paths and device IDs</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="va">INPUT_WAV</span>=  :: Path to an optional input WAV file</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="va">OUTPUT_WAV</span>=C:\path\to\output\speaker_output.wav</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="va">MIC_DEVICE</span>=audio=<span class="st">"Microphone (Realtek High Definition Audio)"</span>  :: Replace with your actual mic device name</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="va">SPEAKER_DEVICE</span>=audio=<span class="st">"Speakers (Realtek High Definition Audio)"</span> :: Replace with your actual speaker device name</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="va">DURATION</span>=10  :: Duration in seconds</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"</span><span class="pp">%</span><span class="va">INPUT_WAV</span><span class="pp">%</span><span class="st">"</span><span class="kw">==</span><span class="st">""</span> <span class="kw">(</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">:: Generate a test tone and play it as microphone input using ffmpeg</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">start</span> <span class="at">/B</span> ffmpeg <span class="at">-f</span> lavfi <span class="at">-i</span> <span class="st">"sine=frequency=1000:duration=</span><span class="pp">%</span><span class="va">DURATION</span><span class="pp">%</span><span class="st">"</span> <span class="at">-f</span> dshow <span class="at">-i</span> <span class="pp">%</span><span class="va">MIC_DEVICE</span><span class="pp">%</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="kw">)</span> <span class="cf">else</span> <span class="kw">(</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">:: Play the provided WAV file as microphone input using ffmpeg</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">start</span> <span class="at">/B</span> ffmpeg <span class="at">-re</span> <span class="at">-i</span> <span class="pp">%</span><span class="va">INPUT_WAV</span><span class="pp">%</span> <span class="at">-f</span> dshow <span class="at">-i</span> <span class="pp">%</span><span class="va">MIC_DEVICE</span><span class="pp">%</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="kw">)</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">:: Record the speaker output to a WAV file</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>ffmpeg <span class="at">-f</span> dshow <span class="at">-i</span> <span class="pp">%</span><span class="va">SPEAKER_DEVICE</span><span class="pp">%</span> <span class="at">-t</span> <span class="pp">%</span><span class="va">DURATION</span><span class="pp">%</span> <span class="at">-ac</span> 2 <span class="at">-ar</span> 44100 <span class="pp">%</span><span class="va">OUTPUT_WAV</span><span class="pp">%</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co">:: Wait for background processes to finish</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>wait</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="listing-devices-on-windows" class="level3">
 <h3 class="anchored" data-anchor-id="listing-devices-on-windows">Listing Devices on Windows</h3>
