@@ -159,7 +159,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#bash-script-macoslinux" id="toc-bash-script-macoslinux" class="nav-link" data-scroll-target="#bash-script-macoslinux">Bash Script (macOS/Linux)</a></li>
   <li><a href="#batch-script-windows" id="toc-batch-script-windows" class="nav-link" data-scroll-target="#batch-script-windows">Batch Script (Windows)</a></li>
-  <li><a href="#listing-devices-on-windows" id="toc-listing-devices-on-windows" class="nav-link" data-scroll-target="#listing-devices-on-windows">Listing Devices on Windows</a></li>
+  <li><a href="#listing-devices-on-windows-macos-and-linux" id="toc-listing-devices-on-windows-macos-and-linux" class="nav-link" data-scroll-target="#listing-devices-on-windows-macos-and-linux">Listing Devices on Windows, macOS, and Linux</a></li>
   <li><a href="#steps" id="toc-steps" class="nav-link" data-scroll-target="#steps">Steps:</a></li>
   </ul></li>
   <li><a href="#the-benefits" id="toc-the-benefits" class="nav-link" data-scroll-target="#the-benefits">The Benefits</a></li>
@@ -244,11 +244,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co">:: Wait for background processes to finish</span></span>
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>wait</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="listing-devices-on-windows" class="level3">
-<h3 class="anchored" data-anchor-id="listing-devices-on-windows">Listing Devices on Windows</h3>
+<section id="listing-devices-on-windows-macos-and-linux" class="level3">
+<h3 class="anchored" data-anchor-id="listing-devices-on-windows-macos-and-linux">Listing Devices on Windows, macOS, and Linux</h3>
+<section id="windows" class="level4">
+<h4 class="anchored" data-anchor-id="windows"><strong>Windows</strong></h4>
 <p>To list available audio devices on Windows, you can use the following command:</p>
 <pre class="batch"><code>ffmpeg -list_devices true -f dshow -i dummy</code></pre>
 <p>This will output a list of all available audio devices, which you can then use to replace the <code>MIC_DEVICE</code> and <code>SPEAKER_DEVICE</code> placeholders in the batch script.</p>
+</section>
+<section id="macos" class="level4">
+<h4 class="anchored" data-anchor-id="macos"><strong>macOS</strong></h4>
+<p>On macOS, you can list audio devices using the following command:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ffmpeg</span> <span class="at">-f</span> avfoundation <span class="at">-list_devices</span> true <span class="at">-i</span> <span class="st">""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This command will display both video and audio devices. Look for the audio devices and use their indices or names as needed in your scripts.</p>
+</section>
+<section id="linux" class="level4">
+<h4 class="anchored" data-anchor-id="linux"><strong>Linux</strong></h4>
+<p>For Linux, to list audio devices using ffmpeg, you can execute the following command:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ffmpeg</span> <span class="at">-f</span> alsa <span class="at">-list_devices</span> true <span class="at">-i</span> dummy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This command will help identify available ALSA audio devices, which can be used similarly to how devices are specified in scripts on other operating systems.</p>
+</section>
 </section>
 <section id="steps" class="level3">
 <h3 class="anchored" data-anchor-id="steps">Steps:</h3>
