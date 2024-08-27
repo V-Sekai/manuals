@@ -41,7 +41,7 @@ wait
 
 ### Batch Script (Windows)
 
-```batch
+```bat
 @echo off
 
 :: Define file paths and device IDs
