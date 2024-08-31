@@ -22,6 +22,7 @@ We aim to migrate our backend services from Kubernetes to Dokku to simplify oper
 - **Caddy**: Set up Caddy as a web server and reverse proxy for secure HTTP and SSL management.
 - **RabbitMQ**: Integrate RabbitMQ for robust messaging and queuing capabilities.
 - **Backups**: Implement an S3 compatible backup storage solution.
+- **Telemetry**: Use OpenTelemetry for monitoring and tracing by integrating it with Signoz as outlined in [this guide](https://signoz.io/blog/opentelemetry-apm/).
 
 ### Code Example
 
@@ -38,6 +39,9 @@ dokku rabbitmq:create my-messaging-service
 
 # Deploy Elixir application
 git push dokku master
+
+# Setup OpenTelemetry
+# Follow the specific instructions from the Signoz guide
 ```
 
 ## Benefits
