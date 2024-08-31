@@ -54,21 +54,18 @@ task vr_menus "V-Sekai cannot use the virtual reality menus" {
 }
 
 task present_vsekai "Present V-Sekai at the Godot Engine Conference 2024" {
-  start 2024-08-17
-  end 2024-08-18
+  end 2024-10-12
   depends !vr_menus
 }
 
 task vsekai_bricks "V-Sekai Bricks prototype" {
-  start 2024-08-19
-  end 2024-08-20
+  end 2025-06-29
   depends !present_vsekai
 }
 
 task design_conversation_godot_sandbox "Design conversation with fwsGonzo & dragoos on the implementation of godot-sandbox properties" {
   start 2024-08-21
   end 2024-08-22
-  depends !vsekai_bricks
 }
 
 task update_godot "Update godot 4.4 PRs by fire" {
@@ -149,5 +146,5 @@ taskreport overview "V-Sekai Social Virtual Reality Project Report" {
   columns bsi { title 'WBS' },
           name, start, end, effort, chart { ${TaskTip} }
   formats html
-  sorttasks end.down
+  sorttasks tree
 }
