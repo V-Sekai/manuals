@@ -14,15 +14,17 @@ Transition our backend services from Kubernetes to Dokku to reduce complexity an
 
 Implement the following Dokku services as equivalents to our existing Kubernetes services:
 
-1. **PostgreSQL** - Set up a PostgreSQL service in Dokku for database management.
-2. **File Object Store** - Implement a storage solution within Dokku for handling file uploads and static assets.
+1. **PostgreSQL** - Set up a [PostgreSQL service in Dokku](https://github.com/dokku/dokku-postgres) for database management.
+2. **File Object Store** - Implement a storage solution within Dokku for handling file uploads and static assets, using S3 compatible APIs.
 3. **Elixir "Uro" Backend** - Deploy our Elixir-based application on Dokku, ensuring it functions seamlessly as it did on Kubernetes.
+4. **Caddy** - Utilize [Caddy](https://caddyserver.com/) as a web server and reverse proxy for HTTPS support and automatic SSL.
 
 ## The Benefits
 
 - **Reduced Costs**: Lower operational and maintenance expenses compared to Kubernetes.
 - **Simplified Management**: Easier deployment and management processes with Dokku's straightforward platform.
 - **Scalability**: Efficient scaling options that meet our needs without the overhead of Kubernetes.
+- **Enhanced Security**: Automatic SSL encryption with Caddy for improved security.
 
 ## The Downsides
 
