@@ -15,17 +15,20 @@ resource developer "Software Developer" {
 task vsekai_review "V-Sekai stream with review" {
   start 2024-08-04
   end 2024-08-05
+  complete 100
 }
 
 task prototype_vsekai_networking "Prototype V-Sekai game networking with properties and events" {
   start 2024-08-05
   end 2024-08-06
+  complete 0
   depends !vsekai_review
 }
 
 task playtesting_vsekai_pc "Playtesting 100% covers V-Sekai PC platform" {
   start 2024-08-07
   end 2024-08-08
+  complete 0
   depends !prototype_vsekai_networking
 }
 
@@ -44,12 +47,14 @@ task object_property_replication "Object property replication" {
 task fix_jitter_buffer "Fix jitter buffer in speech addon" {
   start 2024-08-13
   end 2024-08-14
+  complete 0
   depends !object_property_replication
 }
 
 task vr_menus "V-Sekai cannot use the virtual reality menus" {
   start 2024-08-15
   end 2024-08-16
+  complete 0
   depends !fix_jitter_buffer
 }
 
@@ -60,12 +65,14 @@ task present_vsekai "Present V-Sekai at the Godot Engine Conference 2024" {
 
 task vsekai_bricks "V-Sekai Bricks prototype" {
   end 2025-06-29
+  complete 0
   depends !present_vsekai
 }
 
 task design_conversation_godot_sandbox "Design conversation with fwsGonzo & dragoos on the implementation of godot-sandbox properties" {
   start 2024-08-21
   end 2024-08-22
+  complete 100
 }
 
 task update_godot "Update godot 4.4 PRs by fire" {
@@ -144,7 +151,7 @@ macro TaskTip [
 
 taskreport overview "V-Sekai Social Virtual Reality Project Report" {
   columns bsi { title 'WBS' },
-          name, start, end, effort, chart { ${TaskTip} }
+          name, start, end, effort, complete, chart { ${TaskTip} }
   formats html
   sorttasks tree
 }
