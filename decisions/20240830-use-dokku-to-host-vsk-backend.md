@@ -81,5 +81,7 @@ The transition will be managed internally by our development team.
 
 1. [V-Sekai GitHub](https://github.com/v-sekai) - Explore more about V-Sekai's initiatives on social VR.
 2. [V-Sekai Game Repository](https://github.com/v-sekai/v-sekai-game) - Official repository for the V-Sekai game project.
+3. [TigrisData](https://www.tigrisdata.com/docs/pricing/)
+4. [Digital Ocean Spaces](https://www.digitalocean.com/products/spaces)
 
 _Assisted by AI assistant Aria._
