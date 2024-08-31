@@ -45,18 +45,8 @@ task object_property_replication "Object property replication" {
   depends !integrate_godot_sandbox
 }
 
-task fix_jitter_buffer "Fix jitter buffer in speech addon" {
-  start 2024-08-13
-  end 2024-08-14
-  complete 0
-  depends !object_property_replication
-}
-
 task vr_menus "V-Sekai cannot use the virtual reality menus" {
-  start 2024-08-15
-  end 2024-08-16
   complete 0
-  depends !fix_jitter_buffer
 }
 
 task present_vsekai "Present V-Sekai at the Godot Engine Conference 2024" {
@@ -107,12 +97,6 @@ task qa_godot_sandbox "QA’d godot-sandbox with HumbleTim and Gonzo for release
   depends !revert_speech_cpp
 }
 
-task design_testing_voip "Design a way to make testing VoIP less painful" {
-  start 2024-09-02
-  end 2024-09-03
-  depends !qa_godot_sandbox
-}
-
 task industry_vr "Double the player count in VR with 3-point tracking to 160" {
   note "iFire sees potential for the industry through enhanced networking. After querying about player numbers, Aural_state confirmed that 160 players would double the current count."
   allocate developer
@@ -161,5 +145,5 @@ taskreport overview "V-Sekai Social Virtual Reality Project Report" {
   columns bsi { title 'WBS' },
           name, start, end, effort, complete, chart { ${TaskTip} }
   formats html
-  sorttasks tree, complete.up
+  sorttasks tree
 }
