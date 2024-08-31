@@ -1,0 +1,27 @@
+project myProject "V-Sekai Social Virtual Reality Project" 2020-06-08 - 2025-06-30 {
+  timezone "America/Vancouver"
+}
+
+resource manager "Project Manager" {
+  rate 60.0
+  limits { dailymax 4h }
+}
+
+resource developer "Software Developer" {
+  rate 60.0
+  limits { dailymax 4h }
+}
+
+task conference "Present at Godot Conference Berlin, Germany" {
+  start 2023-10-12
+  end 2023-10-13
+  allocate manager
+  allocate developer
+}
+
+taskreport overview "V-Sekai Social Virtual Reality Project Report" {
+  columns bsi { title 'WBS' },
+          name, start, end, effort, cost,
+          revenue
+  formats html
+}
