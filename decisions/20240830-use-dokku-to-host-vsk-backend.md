@@ -1,54 +1,73 @@
-# Proposed: Transition to Dokku from Kubernetes
+# Transition to Dokku from Kubernetes Proposal
 
-## The Context
+## Overview
 
-Dokku is an open-source PAAS that serves as a simpler, cost-effective alternative to Heroku.
+This proposal outlines the transition of our backend services from Kubernetes to Dokku, aiming to reduce complexity and maintenance costs.
 
-Our current backend infrastructure utilizes Kubernetes, which has become costly and complex to maintain. This complexity has led to operational paralysis.
+## Context
 
-## The Problem Statement
+Dokku is a minimalistic, open-source PAAS that provides a cost-effective alternative to Heroku. Our current use of Kubernetes has become prohibitively complex and expensive.
 
-Transition our backend services from Kubernetes to Dokku to reduce complexity and maintenance costs.
+## Problem Statement
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+We aim to migrate our backend services from Kubernetes to Dokku to simplify operations and reduce expenses.
 
-Implement the following Dokku services as equivalents to our existing Kubernetes services:
+## Implementation Details
 
-1. **PostgreSQL** - Set up a [PostgreSQL service in Dokku](https://github.com/dokku/dokku-postgres) for database management.
-2. **File Object Store** - Implement a storage solution within Dokku for handling file uploads and static assets, using S3 compatible APIs.
-3. **Elixir "Uro" Backend** - Deploy our Elixir-based application on Dokku, ensuring it functions seamlessly as it did on Kubernetes.
-4. **Caddy** - Utilize [Caddy](https://caddyserver.com/) as a web server and reverse proxy for HTTPS support and automatic SSL.
-5. **RabbitMQ** - Integrate [RabbitMQ](https://www.rabbitmq.com/) for messaging and queue management, facilitating asynchronous task processing and inter-service communication.
+### Services Migration
 
-## The Benefits
+- **PostgreSQL**: Deploy using the [Dokku PostgreSQL plugin](https://github.com/dokku/dokku-postgres).
+- **File Object Store**: Implement an S3 compatible storage solution within Dokku.
+- **Elixir "Uro" Backend**: Ensure seamless deployment and operation of our Elixir application on Dokku.
+- **Caddy**: Set up Caddy as a web server and reverse proxy for secure HTTP and SSL management.
+- **RabbitMQ**: Integrate RabbitMQ for robust messaging and queuing capabilities.
 
-- **Reduced Costs**: Lower operational and maintenance expenses compared to Kubernetes.
-- **Simplified Management**: Easier deployment and management processes with Dokku's straightforward platform.
-- **Scalability**: Efficient scaling options that meet our needs without the overhead of Kubernetes.
-- **Enhanced Security**: Automatic SSL encryption with Caddy for improved security.
-- **Robust Messaging**: Reliable messaging and queuing mechanisms with RabbitMQ.
+### Code Example
 
-## The Downsides
+```bash
+# Install Dokku plugins
+dokku plugin:install https://github.com/dokku/dokku-postgres.git postgres
+dokku plugin:install https://github.com/dokku/dokku-rabbitmq.git rabbitmq
 
-- **Feature Limitations**: Potential limitations in features compared to the extensive capabilities of Kubernetes.
-- **Migration Challenges**: Initial challenges related to migrating services and data from Kubernetes to Dokku.
+# Create PostgreSQL service
+dokku postgres:create my-database
 
-## The Road Not Taken
+# Create RabbitMQ service
+dokku rabbitmq:create my-messaging-service
 
-- Continuing with Kubernetes despite the high cost and complexity.
-- Switching to other PAAS solutions like Heroku or AWS Elastic Beanstalk.
+# Deploy Elixir application
+git push dokku master
+```
 
-## The Infrequent Use Case
+## Benefits
 
-Handling extremely high traffic might require additional configuration and optimization in Dokku, which is more straightforward in Kubernetes.
+- **Cost Efficiency**: Significant reduction in operational and maintenance costs.
+- **Simplicity**: Streamlined management and deployment processes.
+- **Scalability**: Adequate scaling capabilities without Kubernetes' overhead.
+- **Security**: Enhanced security features with automatic SSL through Caddy.
+- **Reliability**: Dependable inter-service communication with RabbitMQ.
 
-## In Core and Done by Us
+## Potential Downsides
 
-The transition and maintenance of the Dokku infrastructure will be managed internally by our development team.
+- **Feature Limitations**: Dokku may not support all Kubernetes features.
+- **Migration Challenges**: Initial hurdles in transferring services and data.
 
-## Status
+## Alternatives Considered
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+- Persisting with Kubernetes despite its drawbacks.
+- Adopting other PAAS solutions like Heroku or AWS Elastic Beanstalk.
+
+## Special Considerations
+
+Handling very high traffic levels might require additional Dokku configurations, which are inherently simpler in Kubernetes.
+
+## Project Management
+
+The transition will be managed internally by our development team.
+
+## Current Status
+
+**Status**: Proposed
 
 ## Decision Makers
 
@@ -56,11 +75,11 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Tags
 
-- V-Sekai
+- `V-Sekai`
 
-## Further Reading
+## Further Information
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project, bringing social VR/VRSNS/metaverse components to the Godot Engine.
+1. [V-Sekai GitHub](https://github.com/v-sekai) - Explore more about V-Sekai's initiatives on social VR.
+2. [V-Sekai Game Repository](https://github.com/v-sekai/v-sekai-game) - Official repository for the V-Sekai game project.
 
-AI assistant Aria assisted with this article.
+_Assisted by AI assistant Aria._
