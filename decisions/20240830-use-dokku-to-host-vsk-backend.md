@@ -18,6 +18,7 @@ Implement the following Dokku services as equivalents to our existing Kubernetes
 2. **File Object Store** - Implement a storage solution within Dokku for handling file uploads and static assets, using S3 compatible APIs.
 3. **Elixir "Uro" Backend** - Deploy our Elixir-based application on Dokku, ensuring it functions seamlessly as it did on Kubernetes.
 4. **Caddy** - Utilize [Caddy](https://caddyserver.com/) as a web server and reverse proxy for HTTPS support and automatic SSL.
+5. **RabbitMQ** - Integrate [RabbitMQ](https://www.rabbitmq.com/) for messaging and queue management, facilitating asynchronous task processing and inter-service communication.
 
 ## The Benefits
 
@@ -25,6 +26,7 @@ Implement the following Dokku services as equivalents to our existing Kubernetes
 - **Simplified Management**: Easier deployment and management processes with Dokku's straightforward platform.
 - **Scalability**: Efficient scaling options that meet our needs without the overhead of Kubernetes.
 - **Enhanced Security**: Automatic SSL encryption with Caddy for improved security.
+- **Robust Messaging**: Reliable messaging and queuing mechanisms with RabbitMQ.
 
 ## The Downsides
 
