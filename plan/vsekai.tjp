@@ -19,7 +19,7 @@ task conference "Present at Godot Conference Berlin, Germany" {
   allocate developer
 }
 
-// Existing completed tasks
+// Existing completed tasks with dependencies
 task vsekai_review "V-Sekai stream with review" {
   start 2024-08-04
   end 2024-08-05
@@ -28,82 +28,100 @@ task vsekai_review "V-Sekai stream with review" {
 task prototype_vsekai_networking "Prototype V-Sekai game networking with properties and events" {
   start 2024-08-05
   end 2024-08-06
+  depends !vsekai_review
 }
 
 task playtesting_vsekai_pc "Playtesting 100% covers V-Sekai PC platform" {
   start 2024-08-07
   end 2024-08-08
+  depends !prototype_vsekai_networking
 }
 
 task integrate_godot_sandbox "Integrate godot-sandbox into V-Sekai for user and tool scripting" {
-  start 2024-08-07
-  end 2024-08-08
+  start 2024-08-09  // Adjusted start date
+  end 2024-08-10    // Adjusted end date
+  depends !playtesting_vsekai_pc
 }
 
 task object_property_replication "Object property replication" {
-  start 2024-08-08
-  end 2024-08-09
+  start 2024-08-11  // Previously adjusted start date
+  end 2024-08-12    // Previously adjusted end date
+  depends !integrate_godot_sandbox
 }
 
 task fix_jitter_buffer "Fix jitter buffer in speech addon" {
-  start 2024-08-09
-  end 2024-08-10
+  start 2024-08-13  // Adjusted start date
+  end 2024-08-14    // Adjusted end date
+  depends !object_property_replication
 }
 
 task vr_menus "V-Sekai cannot use the virtual reality menus" {
-  start 2024-08-11
-  end 2024-08-12
+  start 2024-08-15  // Adjusted start date
+  end 2024-08-16    // Adjusted end date
+  depends !fix_jitter_buffer
 }
 
 task present_vsekai "Present V-Sekai at the Godot Engine Conference 2024" {
-  start 2024-08-14
-  end 2024-08-15
+  start 2024-08-17  // Previously adjusted start date
+  end 2024-08-18    // Previously adjusted end date
+  depends !vr_menus
 }
 
 task vsekai_bricks "V-Sekai Bricks prototype" {
-  start 2024-08-16
-  end 2024-08-17
+  start 2024-08-19  // Adjusted start date
+  end 2024-08-20    // Adjusted end date
+  depends !present_vsekai
 }
 
 task design_conversation_godot_sandbox "Design conversation with fwsGonzo & dragoos on the implementation of godot-sandbox properties" {
-  start 2024-08-17
-  end 2024-08-18
+  start 2024-08-21  // Adjusted start date
+  end 2024-08-22    // Adjusted end date
+  depends !vsekai_bricks
 }
 
 task update_godot "Update godot 4.4 PRs by fire" {
-  start 2024-08-18
-  end 2024-08-19
+  start 2024-08-23  // Adjusted start date
+  end 2024-08-24    // Adjusted end date
+  depends !design_conversation_godot_sandbox
 }
 
 task update_xr_grid "Update xr-grid to the latest godot engine" {
-  start 2024-08-19
-  end 2024-08-20
+  start 2024-08-25  // Adjusted start date
+  end 2024-08-26    // Adjusted end date
+  depends !update_godot
 }
 
 task cleanup_goal_task_planner "Cleanup tests for goal-task-planner" {
-  start 2024-08-20
-  end 2024-08-21
+  start 2024-08-27  // Adjusted start date
+  end 2024-08-28    // Adjusted end date
+  depends !update_xr_grid
 }
 
 task revert_speech_cpp "Reverted speech C++ module to an earlier state" {
-  start 2024-08-21
-  end 2024-08-22
+  start 2024-08-29  // Adjusted start date
+  end 2024-08-30    // Adjusted end date
+  depends !cleanup_goal_task_planner
 }
 
 task qa_godot_sandbox "QA’d godot-sandbox with HumbleTim and Gonzo for release stability" {
-  start 2024-08-22
-  end 2024-08-23
+  start 2024-08-31  // Adjusted start date
+  end 2024-09-01    // Adjusted end date
+  depends !revert_speech_cpp
 }
 
 task design_testing_voip "Design a way to make testing VoIP less painful" {
-  start 2024-08-23
-  end 2024-08-24
+  start 2024-09-02  // Adjusted start date
+  end 2024-09-03    // Adjusted end date
+  depends !qa_godot_sandbox
 }
 
-task industry_revolution_vr "iFire aims to set a new industry standard by doubling the player count in VR with 3-point tracking" {
-  note "iFire sees potential for revolutionizing the industry through enhanced networking. After querying about player numbers, Aural_state confirmed that 160 players would double the current count."
-  start 2024-08-25
-  end 2024-08-30
+task industry_vr "iFire aims to set a new standard by doubling the player count in VR with 3-point tracking" {
+  note "iFire sees potential for the industry through enhanced networking. After querying about player numbers, Aural_state confirmed that 160 players would double the current count."
+  start 2024-09-04  // Adjusted start date
+  end 2024-09-09    // Adjusted end date
+  depends !design_testing_voip
+  allocate manager, developer
+  priority 1 // Highest priority
 }
 
 taskreport overview "V-Sekai Social Virtual Reality Project Report" {
