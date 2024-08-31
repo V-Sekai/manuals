@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.5.57</generator>
-<lastBuildDate>Fri, 30 Aug 2024 23:32:50 GMT</lastBuildDate>
+<lastBuildDate>Sat, 31 Aug 2024 04:23:35 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Fri, 30 Aug 2024 23:32:50 GMT</pubDate>
+  <pubDate>Sat, 31 Aug 2024 04:23:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -161,7 +161,97 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Fri, 30 Aug 2024 23:32:50 GMT</pubDate>
+  <pubDate>Sat, 31 Aug 2024 04:23:35 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240830-use-dokku-to-host-vsk-backend.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-transition-to-dokku-from-kubernetes" class="level1">
+<h1>Proposed: Transition to Dokku from Kubernetes</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>Dokku is an open-source PAAS that serves as a simpler, cost-effective alternative to Heroku.</p>
+<p>Our current backend infrastructure utilizes Kubernetes, which has become costly and complex to maintain. This complexity has led to operational paralysis.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Transition our backend services from Kubernetes to Dokku to reduce complexity and maintenance costs.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>Implement the following Dokku services as equivalents to our existing Kubernetes services:</p>
+<ol type="1">
+<li><strong>PostgreSQL</strong> - Set up a PostgreSQL service in Dokku for database management.</li>
+<li><strong>File Object Store</strong> - Implement a storage solution within Dokku for handling file uploads and static assets.</li>
+<li><strong>Elixir “Uro” Backend</strong> - Deploy our Elixir-based application on Dokku, ensuring it functions seamlessly as it did on Kubernetes.</li>
+</ol>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li><strong>Reduced Costs</strong>: Lower operational and maintenance expenses compared to Kubernetes.</li>
+<li><strong>Simplified Management</strong>: Easier deployment and management processes with Dokku’s straightforward platform.</li>
+<li><strong>Scalability</strong>: Efficient scaling options that meet our needs without the overhead of Kubernetes.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li><strong>Feature Limitations</strong>: Potential limitations in features compared to the extensive capabilities of Kubernetes.</li>
+<li><strong>Migration Challenges</strong>: Initial challenges related to migrating services and data from Kubernetes to Dokku.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<ul>
+<li>Continuing with Kubernetes despite the high cost and complexity.</li>
+<li>Switching to other PAAS solutions like Heroku or AWS Elastic Beanstalk.</li>
+</ul>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>Handling extremely high traffic might require additional configuration and optimization in Dokku, which is more straightforward in Kubernetes.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>The transition and maintenance of the Dokku infrastructure will be managed internally by our development team.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project, bringing social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240830-use-dokku-to-host-vsk-backend.html</guid>
+  <pubDate>Sat, 31 Aug 2024 04:23:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -259,7 +349,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240830-pcie-lane-depletion-thunderbolt-4-issues.html</guid>
-  <pubDate>Fri, 30 Aug 2024 23:32:50 GMT</pubDate>
+  <pubDate>Sat, 31 Aug 2024 04:23:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -744,7 +834,7 @@ font-style: inherit;">-i</span> dummy</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240824-ffmpeg-wav-mic-speaker-play.html</guid>
-  <pubDate>Fri, 30 Aug 2024 23:32:50 GMT</pubDate>
+  <pubDate>Sat, 31 Aug 2024 04:23:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -833,7 +923,7 @@ font-style: inherit;">-i</span> dummy</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240810-steamvr-dongles-separate.html</guid>
-  <pubDate>Fri, 30 Aug 2024 23:32:50 GMT</pubDate>
+  <pubDate>Sat, 31 Aug 2024 04:23:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -932,7 +1022,7 @@ font-style: inherit;">-i</span> dummy</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240717-core-vsekai-scripting.html</guid>
-  <pubDate>Fri, 30 Aug 2024 23:32:50 GMT</pubDate>
+  <pubDate>Sat, 31 Aug 2024 04:23:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1564,7 +1654,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240715-vrchat-networking-mental-model.html</guid>
-  <pubDate>Fri, 30 Aug 2024 23:32:50 GMT</pubDate>
+  <pubDate>Sat, 31 Aug 2024 04:23:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1651,7 +1741,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240712-use-shrinkwrap-blender-modiifer-to-fit.html</guid>
-  <pubDate>Fri, 30 Aug 2024 23:32:50 GMT</pubDate>
+  <pubDate>Sat, 31 Aug 2024 04:23:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1768,7 +1858,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-web-and-pcvr-networking.html</guid>
-  <pubDate>Fri, 30 Aug 2024 23:32:50 GMT</pubDate>
+  <pubDate>Sat, 31 Aug 2024 04:23:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1852,7 +1942,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-use-webrtc-to-native-interop.html</guid>
-  <pubDate>Fri, 30 Aug 2024 23:32:50 GMT</pubDate>
+  <pubDate>Sat, 31 Aug 2024 04:23:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1972,7 +2062,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-use-godot-engine-web-threaded.html</guid>
-  <pubDate>Fri, 30 Aug 2024 23:32:50 GMT</pubDate>
+  <pubDate>Sat, 31 Aug 2024 04:23:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2062,7 +2152,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-platform-focus-on-pcvr-and-web.html</guid>
-  <pubDate>Fri, 30 Aug 2024 23:32:50 GMT</pubDate>
+  <pubDate>Sat, 31 Aug 2024 04:23:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2217,7 +2307,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-convert-blender-cc0-base-mesh-to-godot-engine-t-pose.html</guid>
-  <pubDate>Fri, 30 Aug 2024 23:32:50 GMT</pubDate>
+  <pubDate>Sat, 31 Aug 2024 04:23:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2308,7 +2398,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-art-direction-in-vsekai.html</guid>
-  <pubDate>Fri, 30 Aug 2024 23:32:50 GMT</pubDate>
+  <pubDate>Sat, 31 Aug 2024 04:23:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2395,7 +2485,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240709-wired-first.html</guid>
-  <pubDate>Fri, 30 Aug 2024 23:32:50 GMT</pubDate>
+  <pubDate>Sat, 31 Aug 2024 04:23:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2483,7 +2573,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240709-anwave-set-nvidia-watt-limit.html</guid>
-  <pubDate>Fri, 30 Aug 2024 23:32:50 GMT</pubDate>
+  <pubDate>Sat, 31 Aug 2024 04:23:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3087,7 +3177,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240708-vsekai-my-life-as-a-queen.html</guid>
-  <pubDate>Fri, 30 Aug 2024 23:32:50 GMT</pubDate>
+  <pubDate>Sat, 31 Aug 2024 04:23:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3265,7 +3355,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240706-motion-capture-bill-of-materials.html</guid>
-  <pubDate>Fri, 30 Aug 2024 23:32:50 GMT</pubDate>
+  <pubDate>Sat, 31 Aug 2024 04:23:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3349,109 +3439,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240705-rpg_town.html</guid>
-  <pubDate>Fri, 30 Aug 2024 23:32:50 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240630-use-motion-transformers-for-prediction.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-use-motion-transformers-for-motion-prediction" class="level1">
-<h1>Proposed: Use motion transformers for motion prediction</h1>
-<section id="motiongpt-human-motion-as-foreign-language" class="level2">
-<h2 class="anchored" data-anchor-id="motiongpt-human-motion-as-foreign-language">MotionGPT: Human Motion as Foreign Language</h2>
-<section id="the-context" class="level3">
-<h3 class="anchored" data-anchor-id="the-context">The Context</h3>
-<p>In virtual reality and gaming, predicting human motion is a critical aspect. It helps in creating more realistic characters and enhancing user interaction. Currently, we use traditional methods that are not very efficient and lack accuracy.</p>
-</section>
-<section id="the-problem-statement" class="level3">
-<h3 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h3>
-<p>The main problem we are trying to solve is to predict the next tokens for motion. This will help us in creating more realistic movements for our characters in the game. Additionally, it can be used for generating new animations and for networking compression.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level3">
-<h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h3>
-<p>We propose to use MotionGPT, a transformer-based model that treats human motion as a foreign language. It learns the ‘grammar’ of human motion from data and uses it to generate new motions.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Pseudo-code for MotionGPT</span></span>
-<span id="cb1-2"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">def</span> MotionGPT(data):</span>
-<span id="cb1-3">    model <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> TransformerModel()</span>
-<span id="cb1-4">    model.train(data)</span>
-<span id="cb1-5">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">return</span> model.generate_motion()</span></code></pre></div>
-</section>
-<section id="the-benefits" class="level3">
-<h3 class="anchored" data-anchor-id="the-benefits">The Benefits</h3>
-<ul>
-<li>Improved accuracy in motion prediction.</li>
-<li>More realistic character movements.</li>
-<li>Enhanced user experience.</li>
-<li>Generation of new animations.</li>
-<li>Networking compression.</li>
-</ul>
-</section>
-<section id="the-downsides" class="level3">
-<h3 class="anchored" data-anchor-id="the-downsides">The Downsides</h3>
-<ul>
-<li>Requires large amounts of data for training.</li>
-<li>Might be computationally expensive.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level3">
-<h3 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h3>
-<p>We could have continued using traditional methods for motion prediction but they lack the efficiency and accuracy provided by transformer models.</p>
-</section>
-<section id="the-infrequent-use-case" class="level3">
-<h3 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h3>
-<p>This proposal might not be beneficial for games that do not require realistic human motion or where the computational resources are limited.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level3">
-<h3 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h3>
-<p>This proposal is core to our project as it directly impacts the realism and user experience of our game. It will be implemented by our development team.</p>
-</section>
-<section id="status" class="level3">
-<h3 class="anchored" data-anchor-id="status">Status</h3>
-<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level3">
-<h3 class="anchored" data-anchor-id="decision-makers">Decision Makers</h3>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level3">
-<h3 class="anchored" data-anchor-id="tags">Tags</h3>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level3">
-<h3 class="anchored" data-anchor-id="further-reading">Further Reading</h3>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-<li><a href="https://motion-gpt.github.io/">MotionGPT: Human Motion</a></li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240630-use-motion-transformers-for-prediction.html</guid>
-  <pubDate>Fri, 30 Aug 2024 23:32:50 GMT</pubDate>
+  <pubDate>Sat, 31 Aug 2024 04:23:35 GMT</pubDate>
 </item>
 </channel>
 </rss>
