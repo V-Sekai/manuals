@@ -12,17 +12,10 @@ resource developer "Software Developer" {
   limits { dailymax 4h }
 }
 
-task vsekai_review "V-Sekai stream with review" {
-  start 2024-08-04
-  end 2024-08-05
-  complete 100
-}
-
 task prototype_vsekai_networking "Prototype V-Sekai game networking with properties and events" {
   start 2024-08-05
   end 2024-08-06
   complete 0
-  depends !vsekai_review
   allocate developer
 }
 
@@ -60,23 +53,9 @@ task vsekai_bricks "V-Sekai Bricks prototype" {
   complete 0
 }
 
-task design_conversation_godot_sandbox "Designed godot-sandbox properties" {
-  note "With fwsGonzo & dragos"
-  start 2024-08-21
-  end 2024-08-22
-  complete 100
-}
-
-task update_godot "Update godot 4.4 PRs by fire" {
-  start 2024-08-23
-  end 2024-08-24
-  depends !design_conversation_godot_sandbox
-}
-
 task update_xr_grid "Update xr-grid to the latest godot engine" {
   start 2024-08-25
   end 2024-08-26
-  depends !update_godot
 }
 
 task cleanup_goal_task_planner "Cleanup tests for goal-task-planner" {
@@ -89,13 +68,6 @@ task revert_speech_cpp "Reverted speech C++ module to an earlier state" {
   start 2024-08-29
   end 2024-08-30
   depends !cleanup_goal_task_planner
-}
-
-task qa_godot_sandbox "QA’d godot-sandbox with HumbleTim and Gonzo for release stability" {
-  start 2024-08-31
-  end 2024-09-01
-  complete 100
-  depends !revert_speech_cpp
 }
 
 task industry_vr "Double the player count in VR with 3-point tracking to 160" {
@@ -114,13 +86,6 @@ task godot_conference_2024 "Godot Conference 2024. Present at Godot Conference B
 task godot_conference_sprint_2024 "Godot Conference 2024 Sprint" {
   start 2024-10-10
   end 2024-10-11
-}
-
-task godot_json_to_native "Godot Engine JSON to native" {
-  start 2024-06-01
-  end 2024-08-30
-  complete 100
-  allocate developer
 }
 
 task ci_integration "Continuous Integration for Windows SteamVR, Meta Quest, and Linux Server" {
