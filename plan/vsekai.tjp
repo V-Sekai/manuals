@@ -12,29 +12,24 @@ resource developer "Software Developer" {
   limits { dailymax 4h }
 }
 
-task prototype_vsekai_networking "Prototype V-Sekai game networking with properties and events" {
+task prototype_vsekai_networking "Prototype game networking with properties and events" {
   start 2024-08-05
   end 2024-08-06
   complete 0
   allocate developer
 }
 
-task playtesting_vsekai_pc "Playtesting covers V-Sekai platform" {
+task playtesting_vsekai_pc "Playtesting covers platform" {
   start 2024-08-07
-  end 2024-08-08
   complete 0
   depends !prototype_vsekai_networking
 }
 
 task integrate_godot_sandbox "Integrate godot-sandbox into V-Sekai for user and tool scripting" {
-  start 2024-08-09
-  end 2024-08-10
   depends !playtesting_vsekai_pc
 }
 
 task object_property_replication "Object property replication" {
-  start 2024-08-11
-  end 2024-08-12
   depends !integrate_godot_sandbox
 }
 
@@ -54,6 +49,14 @@ task industry_vr "Double the player count in VR with 3-point tracking to 160 con
   priority 1
   depends !prototype_vsekai_networking
   depends !vsekai_bricks
+  depends !media_stream_integration
+}
+
+task media_stream_integration "Integrate MP4 Media Streaming Capabilities" {
+  start 2024-10-16
+  end 2024-10-31
+  complete 0
+  allocate developer
 }
 
 task godot_conference_2024 "Godot Conference 2024. Present at Godot Conference Berlin, Germany" {
@@ -194,7 +197,7 @@ macro TaskTip [
 
 taskreport overview "V-Sekai Social Virtual Reality Project Report" {
   columns bsi { title 'WBS' },
-          name, start, end, effort, complete, chart { ${TaskTip} }
+          name, start, end, effort, chart { ${TaskTip} }
   formats html
   sorttasks tree
 }
