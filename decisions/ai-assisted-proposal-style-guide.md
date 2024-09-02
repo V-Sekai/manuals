@@ -1,4 +1,4 @@
-# Proposed: AI Assisted Style Guide
+# Accepted: AI Assisted Style Guide
 
 ## The Context
 
@@ -40,7 +40,7 @@ This proposal aligns with our core values of efficiency and professionalism and 
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 
