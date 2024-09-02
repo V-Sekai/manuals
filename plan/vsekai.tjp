@@ -13,6 +13,12 @@ resource developer "Software Developer" {
 }
 
 task m1 "Initial Prototype Completion" {
+  task text_based_elixir_libgodot "Prototype text based interface" {
+    complete 0 
+    effort 20h
+    allocate developer
+  }
+
   task prototype_vsekai_networking "Prototype game networking with properties and events" {
     complete 0 
     effort 40h
@@ -23,6 +29,7 @@ task m1 "Initial Prototype Completion" {
     complete 0
     effort 20h
     depends !prototype_vsekai_networking
+    depends !text_based_elixir_libgodot
     allocate developer
   }
 
