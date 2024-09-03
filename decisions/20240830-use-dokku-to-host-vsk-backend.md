@@ -1,4 +1,4 @@
-# Transition to Dokku from Kubernetes Proposal
+# Proposed: Transition to Dokku from Kubernetes Proposal
 
 ## Overview
 
