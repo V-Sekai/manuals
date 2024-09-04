@@ -13,13 +13,19 @@ resource developer "Software Developer" {
 }
 
 task m1 "Initial Prototype Completion" {
-  task muscle_humanoid_ik "Humanoid muscle ik." {
+  task muscle_humanoid_ik "Humanoid muscle ik" {
     complete 0
     effort 40h
     allocate developer
   }
-  task avatar_demo "Update the avatar demo with 160 concurrent" {
+  task build_android_avatar_demo "Add android avatar demo" {
+    complete 0
     depends !muscle_humanoid_ik
+    effort 10h
+    allocate developer
+  }
+  task avatar_demo "Update the avatar demo with 160 concurrent" {
+    depends !build_android_avatar_demo
     complete 0 
     effort 40h
     allocate developer
