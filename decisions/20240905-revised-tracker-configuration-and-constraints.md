@@ -6,7 +6,7 @@ In virtual reality (VR), precise motion tracking is import for immersive experie
 
 ## The Problem Statement
 
-Tracker configurations distribution across available dongles, affects the accuracy and responsiveness of motion capture in VR applications, particularly with the HTC VIVE XR Elite.
+Tracker configurations distribution across available dongles, affects the setup of motion capture in VR applications, particularly with the HTC VIVE XR Elite.
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
