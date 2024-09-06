@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.5.57</generator>
-<lastBuildDate>Fri, 06 Sep 2024 07:47:54 GMT</lastBuildDate>
+<lastBuildDate>Fri, 06 Sep 2024 08:44:05 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Fri, 06 Sep 2024 07:47:54 GMT</pubDate>
+  <pubDate>Fri, 06 Sep 2024 08:44:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -161,7 +161,131 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Fri, 06 Sep 2024 07:47:54 GMT</pubDate>
+  <pubDate>Fri, 06 Sep 2024 08:44:05 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20240905-revised-tracker-configuration-and-constraints.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-revised-tracker-configuration-and-constraints-for-htc-vive-xr-elite" class="level1">
+<h1>Proposed: Revised Tracker Configuration and Constraints for HTC VIVE XR Elite</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>In the rapidly evolving field of virtual reality (VR), precise motion tracking is paramount for creating immersive experiences. Effective tracker configuration is essential to enhance user interaction within VR environments, specifically tailored for the HTC VIVE XR Elite.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Current tracker configurations often lead to suboptimal performance due to inefficient distribution across available dongles, affecting the accuracy and responsiveness of motion capture in VR applications, particularly with the HTC VIVE XR Elite.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="dongle-1-connected-to-htc-vive-xr-elite-hmd" class="level3">
+<h3 class="anchored" data-anchor-id="dongle-1-connected-to-htc-vive-xr-elite-hmd">Dongle 1 (connected to HTC VIVE XR Elite HMD)</h3>
+<ul>
+<li><strong>Knee Right</strong> (1 tracker)</li>
+<li><strong>Knee Left</strong> (1 tracker)</li>
+<li><strong>Elbow Left</strong> (1 tracker)</li>
+<li><strong>Elbow Right</strong> (1 tracker)</li>
+</ul>
+</section>
+<section id="dongle-2-connected-to-pc" class="level3">
+<h3 class="anchored" data-anchor-id="dongle-2-connected-to-pc">Dongle 2 (connected to PC)</h3>
+<ul>
+<li><strong>Hips</strong> (1 tracker)</li>
+<li><strong>Hips Secondary</strong> (1 tracker)</li>
+<li><strong>Chest</strong> (1 tracker)</li>
+<li><strong>Foot Right</strong> (1 tracker)</li>
+<li><strong>Foot Left</strong> (1 tracker)</li>
+</ul>
+</section>
+<section id="constraints" class="level3">
+<h3 class="anchored" data-anchor-id="constraints">Constraints</h3>
+<p>Each dongle supports a maximum of <strong>5 trackers</strong>. This constraint is critical in determining how trackers are distributed between the two dongles to ensure optimal performance without exceeding the connectivity limit, specifically for the HTC VIVE XR Elite.</p>
+</section>
+<section id="rationale-behind-the-revised-setup" class="level3">
+<h3 class="anchored" data-anchor-id="rationale-behind-the-revised-setup">Rationale Behind the Revised Setup</h3>
+<section id="dongle-1-hmd" class="level4">
+<h4 class="anchored" data-anchor-id="dongle-1-hmd"><strong>Dongle 1 (HMD)</strong></h4>
+<ul>
+<li><strong>Enhanced Lower Limb Tracking</strong>: By connecting both knee trackers to the HMD dongle, we ensure precise tracking of lower limb movements, which is essential for accurate motion capture in activities that involve significant leg movement.</li>
+<li><strong>Upper Extremity Tracking</strong>: Including both elbow trackers on this dongle allows for detailed arm movement tracking, enhancing the realism and responsiveness of upper body interactions in VR.</li>
+</ul>
+</section>
+<section id="dongle-2-pc" class="level4">
+<h4 class="anchored" data-anchor-id="dongle-2-pc"><strong>Dongle 2 (PC)</strong></h4>
+<ul>
+<li><strong>Comprehensive Upper Body Tracking</strong>:
+<ul>
+<li><strong>Chest and Hips Trackers</strong>: These trackers are crucial for capturing the core movements of the body, providing a stable base for upper body motion tracking.</li>
+<li><strong>Dual Foot Tracking</strong>: Placing the foot trackers on the PC-connected dongle ensures that foot movements are captured accurately, which is vital for walking, running, and other foot-based interactions in VR environments.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li><strong>Improved Accuracy</strong>: Optimized tracker placement enhances the precision of motion capture.</li>
+<li><strong>Enhanced User Experience</strong>: More accurate tracking translates to a more immersive and responsive VR experience.</li>
+<li><strong>Scalability</strong>: This setup allows for easy adjustments and scalability as new trackers or technologies become available.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li><strong>Complex Setup</strong>: Initial configuration and calibration may be more complex and time-consuming.</li>
+<li><strong>Hardware Dependency</strong>: Performance is heavily dependent on the quality and capability of the hardware used.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>Alternative configurations that involved different distributions of trackers were considered but were not pursued due to potential compromises in tracking accuracy and performance.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>In cases where extreme precision is not required, such as in less interactive VR applications, a simpler tracker setup might suffice.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>This proposal aligns with our core mission to push the boundaries of VR technology and will be implemented by our internal development team, focusing on the HTC VIVE XR Elite.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+<li>HTC VIVE XR Elite</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20240905-revised-tracker-configuration-and-constraints.html</guid>
+  <pubDate>Fri, 06 Sep 2024 08:44:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -303,7 +427,7 @@ font-style: inherit;"># Follow the specific instructions from the Signoz guide</
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240830-use-dokku-to-host-vsk-backend.html</guid>
-  <pubDate>Fri, 06 Sep 2024 07:47:54 GMT</pubDate>
+  <pubDate>Fri, 06 Sep 2024 08:44:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -401,7 +525,7 @@ font-style: inherit;"># Follow the specific instructions from the Signoz guide</
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240830-pcie-lane-depletion-thunderbolt-4-issues.html</guid>
-  <pubDate>Fri, 06 Sep 2024 07:47:54 GMT</pubDate>
+  <pubDate>Fri, 06 Sep 2024 08:44:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -886,7 +1010,7 @@ font-style: inherit;">-i</span> dummy</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240824-ffmpeg-wav-mic-speaker-play.html</guid>
-  <pubDate>Fri, 06 Sep 2024 07:47:54 GMT</pubDate>
+  <pubDate>Fri, 06 Sep 2024 08:44:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -975,7 +1099,7 @@ font-style: inherit;">-i</span> dummy</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240810-steamvr-dongles-separate.html</guid>
-  <pubDate>Fri, 06 Sep 2024 07:47:54 GMT</pubDate>
+  <pubDate>Fri, 06 Sep 2024 08:44:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1074,7 +1198,7 @@ font-style: inherit;">-i</span> dummy</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240717-core-vsekai-scripting.html</guid>
-  <pubDate>Fri, 06 Sep 2024 07:47:54 GMT</pubDate>
+  <pubDate>Fri, 06 Sep 2024 08:44:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1706,7 +1830,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240715-vrchat-networking-mental-model.html</guid>
-  <pubDate>Fri, 06 Sep 2024 07:47:54 GMT</pubDate>
+  <pubDate>Fri, 06 Sep 2024 08:44:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1793,7 +1917,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240712-use-shrinkwrap-blender-modiifer-to-fit.html</guid>
-  <pubDate>Fri, 06 Sep 2024 07:47:54 GMT</pubDate>
+  <pubDate>Fri, 06 Sep 2024 08:44:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1910,7 +2034,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-web-and-pcvr-networking.html</guid>
-  <pubDate>Fri, 06 Sep 2024 07:47:54 GMT</pubDate>
+  <pubDate>Fri, 06 Sep 2024 08:44:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1994,7 +2118,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-use-webrtc-to-native-interop.html</guid>
-  <pubDate>Fri, 06 Sep 2024 07:47:54 GMT</pubDate>
+  <pubDate>Fri, 06 Sep 2024 08:44:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2114,7 +2238,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-use-godot-engine-web-threaded.html</guid>
-  <pubDate>Fri, 06 Sep 2024 07:47:54 GMT</pubDate>
+  <pubDate>Fri, 06 Sep 2024 08:44:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2204,7 +2328,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-platform-focus-on-pcvr-and-web.html</guid>
-  <pubDate>Fri, 06 Sep 2024 07:47:54 GMT</pubDate>
+  <pubDate>Fri, 06 Sep 2024 08:44:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2359,7 +2483,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-convert-blender-cc0-base-mesh-to-godot-engine-t-pose.html</guid>
-  <pubDate>Fri, 06 Sep 2024 07:47:54 GMT</pubDate>
+  <pubDate>Fri, 06 Sep 2024 08:44:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2450,7 +2574,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-art-direction-in-vsekai.html</guid>
-  <pubDate>Fri, 06 Sep 2024 07:47:54 GMT</pubDate>
+  <pubDate>Fri, 06 Sep 2024 08:44:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2537,7 +2661,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240709-wired-first.html</guid>
-  <pubDate>Fri, 06 Sep 2024 07:47:54 GMT</pubDate>
+  <pubDate>Fri, 06 Sep 2024 08:44:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2625,7 +2749,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240709-anwave-set-nvidia-watt-limit.html</guid>
-  <pubDate>Fri, 06 Sep 2024 07:47:54 GMT</pubDate>
+  <pubDate>Fri, 06 Sep 2024 08:44:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3229,7 +3353,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240708-vsekai-my-life-as-a-queen.html</guid>
-  <pubDate>Fri, 06 Sep 2024 07:47:54 GMT</pubDate>
+  <pubDate>Fri, 06 Sep 2024 08:44:05 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3407,91 +3531,7 @@ font-style: inherit;">]</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240706-motion-capture-bill-of-materials.html</guid>
-  <pubDate>Fri, 06 Sep 2024 07:47:54 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240705-rpg_town.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposal-rpg-town-in-v-sekai" class="level1">
-<h1>Proposal: RPG Town in V-Sekai</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>Researchers have been studying emergent AI behaviors in sandbox environments inspired by games like The Sims. This proposal aims to leverage these insights to enhance the V-Sekai game, which features 25 NPCs running goal-task hierarchical task network (GT-HTN).</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>The challenge is to create a dynamic and engaging environment where NPCs exhibit complex behaviors that can be streamed 24/7. The goal is to make the game interesting enough for Twitch streaming while ensuring the NPCs’ actions are meaningful and not just random clicks.</p>
-</section>
-<section id="describe-how-your-proposal-will-work" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work">Describe How Your Proposal Will Work</h2>
-<p>For HTN implementation, we will study the GOAP framework from Vinicius Gerevini’s GitHub and define tasks and goals for NPCs using predicate, subject-object triplet variables, or method calls. Networking and traffic simulation will involve implementing network traffic tests to ensure smooth operation and using tools like Microsoft’s GraphRAG for generating predicate and subject objects. For LLM integration, we will integrate Large Language Models (LLMs) to set goals for NPCs based on Twitch chat summaries, using LLMs to help plan but not directly control NPC actions.</p>
-<section id="mock-ups-and-diagrams" class="level3">
-<h3 class="anchored" data-anchor-id="mock-ups-and-diagrams">Mock-Ups and Diagrams</h3>
-<p><strong>NPC Interaction Flow</strong>:</p>
-<pre class="mermaid"><code>graph TD;
-    A[Start] --&gt; B[Define Goals];
-    B --&gt; C[Assign Tasks];
-    C --&gt; D[Execute Actions];
-    D --&gt; E[Monitor and Adjust];
-    E --&gt; F[Stream to Twitch];</code></pre>
-<p><strong>System Architecture</strong>:</p>
-<pre class="mermaid"><code>graph LR;
-    A[User Input] --&gt; B[LLM];
-    B --&gt; C[Goal Setting];
-    C --&gt; D[GTHTN Engine];
-    D --&gt; E[NPC Actions];
-    E --&gt; F[Twitch Stream];</code></pre>
-</section>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p>Creating an interactive and dynamic environment suitable for Twitch streaming will result in engaging content. It allows for complex and unpredictable NPC interactions, fostering emergent behaviors. Additionally, it engages the community by summarizing Twitch chat to set NPC goals.</p>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>Implementing and maintaining such a system can be challenging due to its complexity. It also requires significant computational resources for real-time processing and streaming.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Manually setting NPC goals and actions would be less dynamic and engaging. Using simpler AI models may not exhibit complex behaviors.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>Running the game without Twitch integration, focusing solely on NPC interactions, represents an infrequent use case.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>We will implement the GOAP framework within the V-Sekai game and integrate LLMs for goal setting based on community input.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<p>The decision makers for this proposal are the V-Sekai development team.</p>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<p>V-Sekai</p>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<p>For more information, you can visit the <a href="https://github.com/v-sekai">V-Sekai GitHub account</a>, which focuses on social VR functionality for the Godot Engine. You can also check out the <a href="https://github.com/v-sekai/v-sekai-game">V-Sekai open-source project</a>, which brings social VR/VRSNS/metaverse components to the Godot Engine.</p>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240705-rpg_town.html</guid>
-  <pubDate>Fri, 06 Sep 2024 07:47:54 GMT</pubDate>
+  <pubDate>Fri, 06 Sep 2024 08:44:05 GMT</pubDate>
 </item>
 </channel>
 </rss>
