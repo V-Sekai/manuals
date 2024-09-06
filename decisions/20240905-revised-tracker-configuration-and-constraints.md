@@ -84,3 +84,21 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
 
 AI assistant Aria assisted with this article.
+
+## Alternative layout alpha
+
+### Dongle 1 (connected to HTC VIVE XR Elite HMD)
+
+- **Knee Right** (1 tracker)
+- **Knee Left** (1 tracker)
+- **Elbow Left** (1 tracker)
+- **Elbow Right** (1 tracker)
+- **Chest** (1 tracker)
+
+### Dongle 2 (connected to PC)
+
+- **Hips** (1 tracker)
+- **Foot Right** (1 tracker)
+- **Foot Left** (1 tracker)
+- **Wrists Right** (1 tracker)
+- **Wrists Left** (1 tracker)
