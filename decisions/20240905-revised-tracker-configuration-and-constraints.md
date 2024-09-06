@@ -92,13 +92,11 @@ AI assistant Aria assisted with this article.
 - **Hips** (1 tracker)
 - **Foot Right** (1 tracker)
 - **Foot Left** (1 tracker)
-- **Wrists Right** (1 tracker)
-- **Wrists Left** (1 tracker)
+- **Elbow Left** (1 tracker)
+- **Elbow Right** (1 tracker)
 
 ### Dongle 2 (connected to PC)
 
+- **Chest** (1 tracker)
 - **Knee Right** (1 tracker)
 - **Knee Left** (1 tracker)
-- **Elbow Left** (1 tracker)
-- **Elbow Right** (1 tracker)
-- **Chest** (1 tracker)
