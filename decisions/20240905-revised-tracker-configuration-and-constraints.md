@@ -100,3 +100,5 @@ AI assistant Aria assisted with this article.
 - **Chest** (1 tracker)
 - **Knee Right** (1 tracker)
 - **Knee Left** (1 tracker)
+- **Wrists Right** (1 tracker)
+- **Wrists Left** (1 tracker)
