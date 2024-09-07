@@ -12,6 +12,13 @@ resource developer "Software Developer" {
   limits { dailymax 4h }
 }
 
+task godot_sandbox_webservice "Setup Godot Sandbox Webservice" {
+  complete 0
+  effort 2h
+  allocate developer
+  note "Develop a webservice using Elixir, including a mounted volume and PostgreSQL database, ensuring compatibility with Linux OS. The service must compile RustScript and C++Script into .elf format. Consider using Docker for deployment flexibility and potential reuse of existing containers. Address performance concerns due to latency issues from Brisbane, Australia to Accra, Ghana, which may require efficient data handling and possibly regional server deployment. API functionality requirements outlined by fwsgonzo include: -o output for building programs, --version for API versioning, and line printing functionalities. Input structure will be a nested directory of source files, potentially received as a zip file, which will be extracted by the web service."
+}
+
 task m1 "Initial Prototype Completion" {
   task muscle_humanoid_ik "Update the ik with humanoid muscle" {
     complete 0
@@ -29,8 +36,14 @@ task m1 "Initial Prototype Completion" {
     effort 10h
     allocate developer
     depends !muscle_humanoid_ik
-    note "Targeting high-quality animations focusing on humanoid skeletons for Godot Engine (vrm) and Unreal Engine ecosystems."
-    note "Useful for cyclic motion matching."
+    note "Targeting high-quality animations focusing on humanoid skeletons for Godot Engine (vrm) and Unreal Engine ecosystems. Useful for cyclic motion matching."
+  }
+  task motion_matching_integration "Integrate Motion Matching Techniques" {
+    complete 0
+    effort 30h
+    allocate developer
+    depends !muscle_humanoid_ik
+    note "Implement advanced motion matching algorithms to enhance real-time animation adaptability."
   }
 }
 
@@ -39,19 +52,19 @@ task m2 "Initial Prototype Completion" {
 
   task prototype_vsekai_networking "Prototype game networking with properties and events" {
     complete 0 
-    effort 40h
+    effort 1h
     allocate developer
   }
 
   task playtesting_vsekai_pc "Playtesting covers platform" {
     complete 0
-    effort 20h
+    effort 1h
     depends !prototype_vsekai_networking
     allocate developer
   }
 
   task godot_conference_2024 "Godot Conference & Sprint 2024. Present at Godot Conference Berlin, Germany" {
-    end 2024-10-13
+    end 2024-10-12
     allocate developer
   }
 }
