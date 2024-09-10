@@ -22,9 +22,9 @@ Tracker configurations distribution across available dongles, affects the setup 
 
 - **Knee Right** (1 tracker)
 - **Knee Left** (1 tracker)
+- **Hips** (1 tracker)
 - **Chest** (1 tracker)
-- **Wrist Right** (1 tracker)
-- **Wrist Left** (1 tracker)
+- **Chest** (1 tracker)
 
 ### Constraints
 
