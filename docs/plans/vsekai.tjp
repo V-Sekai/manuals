@@ -32,13 +32,6 @@ task m2 "Initial Prototype Completion" {
     allocate developer
   }
 
-  task playtesting_vsekai_pc "Playtesting covers platform" {
-    complete 0
-    effort 1h
-    depends !prototype_vsekai_networking
-    allocate developer
-  }
-
   task godot_conference_2024 "Godot Conference & Sprint 2024. Present at Godot Conference Berlin, Germany" {
     end 2024-10-12
     allocate developer
@@ -62,17 +55,10 @@ task m3 "Double the player count in VR with 3-point tracking to 160 concurrent."
     note "Use nut and ffmpeg. See proposal?"
   }
 
-  task ci_integration "Continuous Integration for Windows SteamVR, Meta Quest, and Linux Server" {
-    complete 0
-    effort 40h
-    depends !media_stream_integration
-    allocate developer
-  }
-
   task voip_implementation "VOIP Implementation: Basic Lipsync and Spatialization" {
     complete 0
     effort 30h
-    depends !ci_integration
+    depends !media_stream_integration
     allocate developer
   }
 
@@ -81,13 +67,6 @@ task m3 "Double the player count in VR with 3-point tracking to 160 concurrent."
     complete 0
     effort 25h
     depends !voip_implementation
-    allocate developer
-  }
-
-  task headless_clients "Implement Headless Clients for Stress Testing" {
-    complete 0
-    effort 20h
-    depends !ik_improvement
     allocate developer
   }
 }
@@ -122,17 +101,10 @@ task m4 "Exploration & Development" {
     allocate developer
   }
 
-  task content_scripting_api "Use Scripting API for Physics-Based Games" {
-    complete 0
-    effort 22h
-    depends !crash_reporting_system
-    allocate developer
-  }
-
   task engine_optimization "Engine Changes for Smooth Framerates During Content Loading" {
     complete 0
     effort 28h
-    depends !content_scripting_api
+    depends !crash_reporting_system
     allocate developer
   }
 
@@ -192,24 +164,10 @@ task m4 "Exploration & Development" {
     allocate developer
   }
 
-  task continue_content "Continue Working on Content" {
-    complete 0
-    effort 30h
-    depends !closed_registration
-    allocate developer
-  }
-
-  task bug_fixes "Fix Bugs and Issues as Needed" {
-    complete 0
-    effort 25h
-    depends !continue_content
-    allocate developer
-  }
-
   task video_playback_integration "Integration of Video Playback" {
     complete 0
     effort 18h
-    depends !bug_fixes
+    depends !closed_registration
     allocate developer
   }
 
@@ -220,17 +178,10 @@ task m4 "Exploration & Development" {
     allocate developer
   }
 
-  task bug_fixes_testing "Fix Bugs Discovered During Testing" {
-    complete 0
-    effort 15h
-    depends !stress_testing
-    allocate developer
-  }
-
   task performance_monitoring "Monitor and Fix Performance Metrics" {
     complete 0
     effort 17h
-    depends !bug_fixes_testing
+    depends !stress_testing
     allocate developer
   }
 }
