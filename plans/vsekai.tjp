@@ -12,166 +12,158 @@ resource developer "Software Developer" {
   limits { dailymax 4h }
 }
 
-task m2 "Initial Prototype Completion" {
-  task prototype_vsekai_networking "Prototype game networking with properties and events" {
-    complete 0 
-    effort 1h
-    allocate developer
-  }
-
-  task godot_conference_2024 "Godot Conference & Sprint 2024. Present at Godot Conference Berlin, Germany" {
-    end 2024-10-12
-    allocate developer
-  }
+task prototype_vsekai_networking "Prototype game networking with properties and events" {
+  complete 0 
+  effort 1h
+  allocate developer
 }
 
-task m3 "Double the player count in VR with 3-point tracking to 160 concurrent." {
-  depends !m2
+task godot_conference_2024 "Godot Conference & Sprint 2024. Present at Godot Conference Berlin, Germany" {
+  end 2024-10-12
+  allocate developer
+}
+
+task media_stream_integration "Integrate MP4 Media Streaming Capabilities" {
+  effort 50h
+  complete 0
+  allocate developer
+  note "Use nut and ffmpeg. See proposal?"
+}
+
+task voip_implementation "VOIP Implementation: Basic Lipsync and Spatialization" {
+  complete 0
+  effort 30h
+  depends !media_stream_integration
+  allocate developer
+}
+
+task ik_improvement "Improve Inverse Kinematics and Add Non-VR Support" {
+  note "Added humanoid muscle encoding to/from quaternion. We can use this in the future for more efficient network serialization (similar to ShaderMotion's format, or networked IK)"
+  complete 0
+  effort 25h
+  depends !voip_implementation
+  allocate developer
+}
+
+task muscle_humanoid_ik "Update the ik with humanoid muscle" {
+  complete 0
+  effort 40h
+  allocate developer
+}
+
+task avatar_demo "Update the avatar demo with 160 concurrent" {
   note "iFire sees potential for the industry through enhanced networking. After querying about player numbers, Aural_state confirmed that 160 players would double the current count."
-
-  task media_stream_integration "Integrate MP4 Media Streaming Capabilities" {
-    effort 50h
-    complete 0
-    allocate developer
-    note "Use nut and ffmpeg. See proposal?"
-  }
-
-  task voip_implementation "VOIP Implementation: Basic Lipsync and Spatialization" {
-    complete 0
-    effort 30h
-    depends !media_stream_integration
-    allocate developer
-  }
-
-  task ik_improvement "Improve Inverse Kinematics and Add Non-VR Support" {
-    note "Added humanoid muscle encoding to/from quaternion. We can use this in the future for more efficient network serialization (similar to ShaderMotion's format, or networked IK)"
-    complete 0
-    effort 25h
-    depends !voip_implementation
-    allocate developer
-  }
+  complete 0 
+  effort 40h
+  allocate developer
+}
+task animation_pack_creation "Create Animation Pack for Booth.pm and Unreal Engine Marketplace" {
+  complete 0
+  effort 10h
+  allocate developer
+  note "Targeting high-quality animations focusing on humanoid skeletons for Godot Engine (vrm) and Unreal Engine ecosystems. Useful for cyclic motion matching."
+}
+task motion_matching_integration "Integrate Motion Matching Techniques" {
+  complete 0
+  effort 30h
+  allocate developer
+  note "Implement advanced motion matching algorithms to enhance real-time animation adaptability."
+}
+task crash_reporting_system "Implement Crash Reporting System and Performance Metrics" {
+  complete 0
+  effort 18h
+  allocate developer
 }
 
-task m4 "Exploration & Development" {  
-  depends !m3
-  task muscle_humanoid_ik "Update the ik with humanoid muscle" {
-    complete 0
-    effort 40h
-    allocate developer
-  }
-  task avatar_demo "Update the avatar demo with 160 concurrent" {
-    complete 0 
-    effort 40h
-    allocate developer
-  }
-  task animation_pack_creation "Create Animation Pack for Booth.pm and Unreal Engine Marketplace" {
-    complete 0
-    effort 10h
-    allocate developer
-    note "Targeting high-quality animations focusing on humanoid skeletons for Godot Engine (vrm) and Unreal Engine ecosystems. Useful for cyclic motion matching."
-  }
-  task motion_matching_integration "Integrate Motion Matching Techniques" {
-    complete 0
-    effort 30h
-    allocate developer
-    note "Implement advanced motion matching algorithms to enhance real-time animation adaptability."
-  }
-  task crash_reporting_system "Implement Crash Reporting System and Performance Metrics" {
-    complete 0
-    effort 18h
-    allocate developer
-  }
+task engine_optimization "Engine Changes for Smooth Framerates During Content Loading" {
+  complete 0
+  effort 28h
+  depends !crash_reporting_system
+  allocate developer
+}
 
-  task engine_optimization "Engine Changes for Smooth Framerates During Content Loading" {
-    complete 0
-    effort 28h
-    depends !crash_reporting_system
-    allocate developer
-  }
+task network_interpolation "Networking Interpolation to Eliminate Stuttering" {
+  complete 0
+  effort 32h
+  depends !engine_optimization
+  allocate developer
+}
 
-  task network_interpolation "Networking Interpolation to Eliminate Stuttering" {
-    complete 0
-    effort 32h
-    depends !engine_optimization
-    allocate developer
-  }
+task preload_content "Pre-load Content to Avoid Stutters" {
+  complete 0
+  effort 24h
+  depends !network_interpolation
+  allocate developer
+}
 
-  task preload_content "Pre-load Content to Avoid Stutters" {
-    complete 0
-    effort 24h
-    depends !network_interpolation
-    allocate developer
-  }
+task hardcoded_avatars "Begin Work on Hardcoded Avatars" {
+  complete 0
+  effort 26h
+  depends !preload_content
+  allocate developer
+}
 
-  task hardcoded_avatars "Begin Work on Hardcoded Avatars" {
-    complete 0
-    effort 26h
-    depends !preload_content
-    allocate developer
-  }
+task recruit_artist "Recruit Artist for Default Home Map" {
+  complete 0
+  effort 14h
+  depends !hardcoded_avatars
+  allocate developer
+}
 
-  task recruit_artist "Recruit Artist for Default Home Map" {
-    complete 0
-    effort 14h
-    depends !hardcoded_avatars
-    allocate developer
-  }
+task physics_fixes "Fix Physics Errors Such as Sliding Down Ramps" {
+  complete 0
+  effort 16h
+  depends !recruit_artist
+  allocate developer
+}
 
-  task physics_fixes "Fix Physics Errors Such as Sliding Down Ramps" {
-    complete 0
-    effort 16h
-    depends !recruit_artist
-    allocate developer
-  }
+task performance_testing "Test Performance on Regular VR Hardware and Optimization" {
+  complete 0
+  effort 20h
+  depends !physics_fixes
+  allocate developer
+}
 
-  task performance_testing "Test Performance on Regular VR Hardware and Optimization" {
-    complete 0
-    effort 20h
-    depends !physics_fixes
-    allocate developer
-  }
+task account_system "Implement Account System, TOS, Privacy Policy" {
+  complete 0
+  effort 12h
+  depends !performance_testing
+  allocate developer
+}
 
-  task account_system "Implement Account System, TOS, Privacy Policy" {
-    complete 0
-    effort 12h
-    depends !performance_testing
-    allocate developer
-  }
+task closed_registration "Allow Closed Registration of Users" {
+  complete 0
+  effort 10h
+  depends !account_system
+  allocate developer
+}
 
-  task closed_registration "Allow Closed Registration of Users" {
-    complete 0
-    effort 10h
-    depends !account_system
-    allocate developer
-  }
+task video_playback_integration "Integration of Video Playback" {
+  complete 0
+  effort 18h
+  depends !closed_registration
+  allocate developer
+}
 
-  task video_playback_integration "Integration of Video Playback" {
-    complete 0
-    effort 18h
-    depends !closed_registration
-    allocate developer
-  }
+task stress_testing "Focus on Stress Testing" {
+  complete 0
+  effort 20h
+  depends !video_playback_integration
+  allocate developer
+}
 
-  task stress_testing "Focus on Stress Testing" {
-    complete 0
-    effort 20h
-    depends !video_playback_integration
-    allocate developer
-  }
-
-  task performance_monitoring "Monitor and Fix Performance Metrics" {
-    complete 0
-    effort 17h
-    depends !stress_testing
-    allocate developer
-  }
-  task vsekai_bricks "Prototype V-Sekai Bricks with 8192 blocks" {
-    note "virtual reality menus, flying, and block placement."
-    depends !performance_monitoring
-    complete 0
-    effort 35h
-    allocate developer
-  }
+task performance_monitoring "Monitor and Fix Performance Metrics" {
+  complete 0
+  effort 17h
+  depends !stress_testing
+  allocate developer
+}
+task vsekai_bricks "Prototype V-Sekai Bricks with 8192 blocks" {
+  note "virtual reality menus, flying, and block placement."
+  depends !performance_monitoring
+  complete 0
+  effort 35h
+  allocate developer
 }
 
 macro TaskTip [
