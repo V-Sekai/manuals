@@ -12,19 +12,6 @@ resource developer "Software Developer" {
   limits { dailymax 4h }
 }
 
-task godot_sandbox_webservice "Setup Godot Sandbox Webservice" {
-  complete 0
-  effort 2h
-  allocate developer
-  note "Develop a webservice using Elixir, including a mounted volume and PostgreSQL database, ensuring compatibility with Linux OS. The service must compile RustScript and C++Script into .elf format. Consider using Docker for deployment flexibility and potential reuse of existing containers. Address performance concerns due to latency issues from Brisbane, Australia to Accra, Ghana, which may require efficient data handling and possibly regional server deployment. API functionality requirements outlined by fwsgonzo include: -o output for building programs, --version for API versioning, and line printing functionalities. Input structure will be a nested directory of source files, potentially received as a zip file, which will be extracted by the web service."
-}
-
-task godot_uro_webservice "Setup Godot Uro Webservice with dokku" {
-  complete 0
-  effort 8h
-  allocate developer
-}
-
 task m2 "Initial Prototype Completion" {
   task prototype_vsekai_networking "Prototype game networking with properties and events" {
     complete 0 
