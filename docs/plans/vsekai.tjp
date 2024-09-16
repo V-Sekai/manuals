@@ -30,7 +30,6 @@ task media_stream_integration "Integrate MP4 Media Streaming Capabilities" {
 task voip_implementation "VOIP Implementation: Basic Lipsync and Spatialization" {
   complete 0
   effort 30h
-  depends !media_stream_integration
   allocate developer
 }
 
@@ -134,14 +133,12 @@ task account_system "Implement Account System, TOS, Privacy Policy" {
 task closed_registration "Allow Closed Registration of Users" {
   complete 0
   effort 10h
-  depends !account_system
   allocate developer
 }
 
 task video_playback_integration "Integration of Video Playback" {
   complete 0
   effort 18h
-  depends !closed_registration
   allocate developer
 }
 
@@ -158,6 +155,7 @@ task performance_monitoring "Monitor and Fix Performance Metrics" {
   depends !stress_testing
   allocate developer
 }
+
 task vsekai_bricks "Prototype V-Sekai Bricks with 8192 blocks" {
   note "virtual reality menus, flying, and block placement."
   complete 0
