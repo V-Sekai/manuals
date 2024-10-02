@@ -1,4 +1,4 @@
-# V-Sekai Changelog - October 2024
+# V-Sekai Changelog - September 2024
 
 - Experimental (🧪): This stage is for features that are still being tested and may not be stable.
 - Feature complete (🎯): This stage is for features that have all planned functionality implemented.
@@ -13,7 +13,10 @@
 
 ### Added
 
-- Not applicable for this month.
+* Work in progress with humanoid muscle encoding to/from quaternion. We can use this in the future for more efficient network serialization (similar to ShaderMotion's format, or networked IK)
+* Some progress on CDN code to make it a bit more reliable and engineered. It supports both gltf and godot scene format.
+* fire and fwsGonzo have been working hard on godot-sandbox, a scripting system which allows you to write C++ code which acts like GDScript, via a sandboxed risc-v VM
+* In terms of engine features, typed dictionaries are in! https://godotengine.org/article/dev-snapshot-godot-4-4-dev-2/ That said, code which uses typed dictionaries will be incompatible with Godot 4.3 and earlier.
 
 ### Fixed
 
