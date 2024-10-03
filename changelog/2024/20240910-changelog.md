@@ -13,7 +13,7 @@
 
 ### Added
 
-- Not applicable for this month.
+- https://gonzerelli.itch.io/demo - fwsgonzo decided to embed LuaJIT to Godot Sandbox as a proof-of-concept. Touching the first coin will open up a Lua "console" which redirects print() to a TextEdit
 
 ### Fixed
 
