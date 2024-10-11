@@ -24,7 +24,7 @@ We propose a system that utilizes depth map comparisons between rendered images 
 
 - **Input Data**: Anime images with manually labeled MakeHuman parameters for initial calibration.
 - **Depth Comparison**: Analyze the discrepancies between the depth maps produced by Godot and those derived from anime images.
-- **Optimization Process**: Utilize a search algorithm (e.g., genetic algorithm) to iteratively adjust and determine optimal MakeHuman parameters.
+- **Optimization Process**: Utilize a search algorithm (e.g., genetic algorithm or bayesian optimization) to iteratively adjust and determine optimal MakeHuman parameters.
 
 #### Work Breakdown
 
