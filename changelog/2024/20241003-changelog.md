@@ -19,7 +19,7 @@
 
 ### Fixed
 
-- Not applicable for this month.
+- Try to release iree-gd for godot engine 4.3 stable. https://github.com/iree-gd/iree.gd/pull/87
 
 ### Deprecated
 
