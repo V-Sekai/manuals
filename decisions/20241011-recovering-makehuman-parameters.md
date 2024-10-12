@@ -87,5 +87,6 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
 3. [DepthPro Demo with 3D Visualization](https://huggingface.co/spaces/A19grey/Depth-Pro-in-Meters)
+4. [Hyper_parameter_optimization like bayensian optimization](https://ludwig.ai/0.4/developer_guide/hyper_parameter_optimization/)
 
 AI assistant Aria assisted with this article.
