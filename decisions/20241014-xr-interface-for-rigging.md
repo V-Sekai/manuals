@@ -64,6 +64,7 @@ The proposed system will allow users to interact directly with avatar bone struc
 |    * (Wrist)                                   |
 |                                                |
 |  [Tool Palette]                                |
+|    - Grab Tool                                 |
 |    - Rotate Tool                               |
 |    - Swing Tool                                |
 |    - Twist Tool                                |
