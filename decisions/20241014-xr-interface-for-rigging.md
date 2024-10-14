@@ -29,7 +29,7 @@ The proposed system will allow users to interact directly with avatar bone struc
 3. **Constraint Manipulation Tools**:
 
    - A virtual tool palette will be available to the user, containing different constraint modifiers.
-   - Users can grab these tools and attach them to bones to adjust constraints like angles and rotations.
+   - Users can grab these tools and attach them to bones to adjust constraints like positions and rotations.
 
 4. **Tool Switcher Interface**:
 
