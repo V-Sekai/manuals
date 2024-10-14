@@ -36,6 +36,7 @@ The proposed system will allow users to interact directly with avatar bone struc
 5. **Intuitive Constraint Adjustment**:
 
    - For rotational constraints, a 3D gizmo will appear, allowing users to manipulate the angle directly within the VR space.
+   - Twist constraints will be adjusted using a 2d disk arc interface where permissible rotation areas are defined by the user.
    - Swing constraints will be adjusted using a spherical interface where permissible rotation areas are defined by the user.
 
 6. **Feedback and Precision**:
