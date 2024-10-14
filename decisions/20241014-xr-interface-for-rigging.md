@@ -85,6 +85,8 @@ The proposed system will allow users to interact directly with avatar bone struc
 
 - **Complexity in Implementation**: Developing a fully interactive 3D UI with precise control mechanisms can be challenging and time-consuming.
 - **Performance Concerns**: High fidelity models and real-time updates in VR may lead to performance issues on lower-end systems.
+- In a shared space app on the Apple Vision Pro neither switching or tool palette will work.
+- In an immersive app on the Apple Vision Pro either switching or tool palette will work with hand tracking.
 
 ## The Road Not Taken
 
