@@ -88,6 +88,10 @@ The proposed system will allow users to interact directly with avatar bone struc
 
 - **2D GUI for Constraint Management**: Using a traditional 2D interface for constraint management was considered but rejected due to the lack of immersion and intuitiveness in a VR context.
 
+Scale will be implemented for use matching clothing with the character body.
+
+Constraint weight can be used to adjust the strength of the constraint.
+
 ## In Core and Done by Us
 
 This feature is core to the V-Sekai project's mission of enhancing VR interaction and will be developed internally to maintain control over quality and integration.
