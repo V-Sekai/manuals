@@ -8,6 +8,8 @@ V-Sekai is a social VR community.
 
 We aim to develop a prototype interface for editing bone constraints such as position, rotation, twist rotation, and swing rotation on character body bones within an immersive environment.
 
+Interactivity makes a difference, similar to the feeling of presence and being fully engaged with the editor. This greater flow state occurs because you don't have to switch contexts, allowing for continuous interaction and focus.
+
 ## Proposal Description
 
 ### Interactive Design Concept
