@@ -6,13 +6,14 @@ The project will enable users to interact in real-time by manipulating objects w
 
 ## The Problem Statement
 
-I want to extend V-Sekai's functionality to support real-time interaction with uploaded character and world scenes. This includes the ability for users to manipulate objects within the scene and have those changes reflected in real-time for other users connected to the same session.
+I want to extend V-Sekai's functionality to support real-time interaction with uploaded character and world scenes. This includes the ability for users to manipulate objects within the scene and have those changes reflected in real-time for other users connected to the same session. Additionally, seamless integration of new elements into the environment is crucial.
 
 Here’s a detailed breakdown of the features we plan to implement:
 
 - **Real-time Interaction**: Users can move and rotate objects in the scene. Changes appear instantly, providing immediate visual feedback.
 - **Networked Synchronization**: When one user modifies something, the change is immediately visible to all other users in the same session.
 - **Object Persistence**: Users can save their current scene setup to continue working on it later or retrieve it in another session.
+- **Dynamic Environment Integration**: Facilitate the introduction of new interactive elements during live sessions.
 - **Mediator Role**: A special user, called a mediator, can manage permissions like who can move what, start or end the session, and oversee interactions between users.
 - **Limited Scope**: Initially, this feature will support multiple users interacting in one scene without additional complexities like handling multiple scenes or advanced physics.
 
@@ -79,4 +80,4 @@ Real-time interaction, basic object manipulation, networked synchronization, use
 1. [Project GitHub](https://github.com/project) - Official GitHub account for the project development community focusing on enhancing virtual interaction capabilities.
 2. [Project Documentation](https://docs.project.com) - Comprehensive documentation on the project's features and development guidelines.
 
-AI assistant Aria assisted with this article.
+_AI assistant Aria assisted with this article._
