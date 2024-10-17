@@ -21,6 +21,7 @@
 
 - Try to release iree-gd for godot engine 4.3 stable. https://github.com/iree-gd/iree.gd/pull/87
 - Cleanup 3d cage for porting to python. https://github.com/V-Sekai-fire/godot_cage_deformer
+- Updated manifold to remove GLM - https://github.com/godotengine/godot/pull/94321
 
 ### Deprecated
 
