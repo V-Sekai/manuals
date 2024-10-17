@@ -6,7 +6,7 @@ In addressing the security concerns related to the V-Sekai content distribution,
 
 ## The Problem Statement
 
-Our goal is to safely initialize a chair from the V-Sekai content distribution network into the virtual world without compromising security or performance.
+Our goal is to safely initialize an avatar body from the V-Sekai content distribution network into the virtual world without compromising security or performance.
 
 We wish to enable Godot to load older content seamlessly.
 
