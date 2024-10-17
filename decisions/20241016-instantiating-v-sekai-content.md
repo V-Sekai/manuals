@@ -16,7 +16,7 @@ We want to avoid animations causing security issues.
 
 ### Option 1: Instantiate and Validate binary PackedScene
 
-This method involves loading chunks of an average packed scene from the web, instantiating it in the sandbox, and applying runtime verification. This approach prevents double initializer security concerns and avoids using triple memory to copy PackedScene.
+This method involves loading chunks of an average packed scene from the web, instantiating it in the sandbox, and applying runtime verification. This approach prevents double initializer security concerns and avoids using double the memory to copy PackedScene.
 
 #### Double initializer security concern
 
