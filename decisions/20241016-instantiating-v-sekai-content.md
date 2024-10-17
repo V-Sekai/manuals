@@ -10,6 +10,8 @@ We aim to safely initialize an avatar body from the V-Sekai content distribution
 
 We wish to enable Godot to load older content seamlessly.
 
+We are concerned about security vulnerabilities especially things like animations.
+
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
 ### Option 1: Instantiate and Validate binary PackedScene
