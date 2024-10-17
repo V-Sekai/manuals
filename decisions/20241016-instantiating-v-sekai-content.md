@@ -2,7 +2,7 @@
 
 ## The Context
 
-To address the security concerns related to the V-Sekai content distribution, we are focusing on several key issues, including the sandbox API surface, file size management, resource loading, and packed scene instantiation.
+Address security concerns with V-Sekai content distribution like including the sandbox API surface, file size management, resource loading, and packed scene instantiation.
 
 ## The Problem Statement
 
