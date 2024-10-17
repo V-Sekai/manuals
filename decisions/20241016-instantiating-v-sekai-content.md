@@ -20,7 +20,7 @@ This method involves loading chunks of an average packed scene from the web, ins
 
 #### Double initializer security concern
 
-The drift between different content initializers becomes a security problem as code drifts and fixes are lost.
+Different content initializers becomes a security problem as code drifts and fixes are lost.
 
 ### Option 2: Instantiate and Validate binary GLTF
 
