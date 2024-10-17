@@ -32,7 +32,7 @@ Creating a JSON schema for arbitrary Godot-packed scene resources that have been
 
 ## The Benefits
 
-A significant benefit of these approaches is the ability to enforce specific requirements, such as using PCVR and mobile image textures through formats like basis, BPTC, and ASTC during upload and download. By controlling the instantiation process, we can also prevent loading when, for example, an avatar exceeds a polycount of 70,000 triangles. We can size worlds according to predefined constraints, with various optimization settings available.
+A significant benefit of these approaches is the ability to enforce specific requirements, such as using PCVR and mobile image textures through formats like Basis Universal, BPTC, and ASTC during upload and download. By controlling the instantiation process, we can also prevent loading when, for example, an avatar exceeds a polycount of 70,000 triangles. We can size worlds according to predefined constraints, with various optimization settings available.
 
 ## The Downsides
 
