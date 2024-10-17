@@ -10,7 +10,7 @@ We aim to safely initialize an avatar body from the V-Sekai content distribution
 
 We wish to enable Godot to load older content seamlessly.
 
-We are concerned about security vulnerabilities especially things like animations.
+We want to avoid animations causing security issues.
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
