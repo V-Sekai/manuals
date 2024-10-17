@@ -59,6 +59,7 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 - V-Sekai development team
 - Fire
 - Lyuma
+- fwsgonzo
 
 ## Tags
 
