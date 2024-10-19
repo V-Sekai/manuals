@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.5.57</generator>
-<lastBuildDate>Sat, 19 Oct 2024 14:38:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 19 Oct 2024 18:51:10 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sat, 19 Oct 2024 14:38:00 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 18:51:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -161,7 +161,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Sat, 19 Oct 2024 14:38:00 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 18:51:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -196,106 +196,9 @@
 <li>The objective is to minimize the size differences between the capsules (nodes) and the volume of the skin mesh. This is quantified using a cost function that measures the deviation from ideal capsule sizes.</li>
 </ul>
 </section>
-<section id="implementation-using-gdscript" class="level3">
-<h3 class="anchored" data-anchor-id="implementation-using-gdscript">Implementation Using GDScript</h3>
-<pre class="gdscript"><code># SPDX-FileCopyrightText: 2024 K. S. Ernest "iFire" Lee &lt;ernest.lee@chibifire.com&gt;
-# SPDX-License-Identifier: MIT
-
-extends Node
-
-class Node:
-    var id: int
-    var position: Vector3
-    var flow: float = 0.0
-    var target_size: float = 0.0  # Ideal size for the capsule around this node
-
-    func _init(id: int, position: Vector3, target_size: float):
-        self.id = id
-        self.position = position
-        self.target_size = target_size
-
-class Edge:
-    var u: Node
-    var v: Node
-    var cost_function: Callable
-
-    func _init(u: Node, v: Node, cost_function: Callable):
-        self.u = u
-        self.v = v
-        self.cost_function = cost_function
-
-class BiMDF:
-    var nodes: Dictionary = {}
-    var edges: Array = []
-
-    func add_node(position: Vector3, target_size: float) -&gt; Node:
-        var new_node = Node(nodes.size(), position, target_size)
-        nodes[new_node.id] = new_node
-        return new_node
-
-    func add_edge(u: Node, v: Node, cost_function: Callable) -&gt; Edge:
-        var new_edge = Edge(u, v, cost_function)
-        edges.append(new_edge)
-        return new_edge
-
-    func solve() -&gt; Dictionary:
-        # Placeholder for Bi-MDF algorithm implementation
-        # Return a sample output structure for demonstration
-        return {"cost": 0, "solution": {}}
-
-# Cost Function Definitions
-func quad_deviation(flow: float, target: float) -&gt; float:
-    return pow(flow - target, 2)  # Quadratic cost based on deviation
-
-# Function to create a cost function with specific parameters
-func create_cost_function(target_size: float, weight: float) -&gt; Callable:
-    return Callable(self, "quad_deviation").bind(target_size * weight)
-
-# Main function to set up and run the Bi-MDF problem
-func _ready():
-    var bimdf = BiMDF.new()
-    var array_mesh: ArrayMesh = preload("res://path_to_your_mesh.mesh")
-    var mesh_data_tool = MeshDataTool.new()
-    mesh_data_tool.create_from_surface(array_mesh, 0)
-
-    # Extract vertices using MeshDataTool
-    var vertex_count = mesh_data_tool.get_vertex_count()
-    for i in range(vertex_count):
-        var vertex_position = mesh_data_tool.get_vertex(i)
-        bimdf.add_node(vertex_position, 1.0)  # Assuming a default target size for simplicity
-
-    # Example setup for bones (if applicable)
-    var bone1 = bimdf.add_node(Vector3(0, 0, 0), 3.0)  # Position and target size for bone1
-    var bone2 = bimdf.add_node(Vector3(1, 0, 0), 2.0)  # Position and target size for bone2
-
-    # Example skin weights (adjust according to your specific setup)
-    var weights = {
-        vertex1: [0.5, 0.5],  # Vertex 1 influenced equally by bone1 and bone2
-        vertex2: [0.7, 0.3],  # More influence from bone1
-        vertex3: [0.9, 0.1],  # Mostly bone1
-        vertex4: [0.6, 0.4],  # Somewhat balanced
-        vertex5: [0.4, 0.6],  # More influence from bone2
-        vertex6: [0.2, 0.8],  # Mostly bone2
-        vertex7: [0.3, 0.7],  # More influence from bone2
-        vertex8: [0.5, 0.5]   # Equally influenced
-    }
-
-    # Connect bones to vertices based on skin weights
-    for vertex_id in weights.keys():
-        var vertex = bimdf.nodes[vertex_id]
-        var weight1 = weights[vertex_id][0]
-        var weight2 = weights[vertex_id][1]
-        var cost_func1 = create_cost_function(vertex.target_size, weight1)
-        var cost_func2 = create_cost_function(vertex.target_size, weight2)
-        bimdf.add_edge(bone1, vertex, cost_func1)
-        bimdf.add_edge(bone2, vertex, cost_func2)
-
-    # Solve the Bi-MDF problem
-    var result = bimdf.solve()
-    print("Total cost: ", result["cost"])
-
-    for edge in bimdf.edges:
-        print("Flow on edge: ", edge.u.flow + edge.v.flow)  # Placeholder for flow values</code></pre>
+<section id="implementation" class="level3">
+<h3 class="anchored" data-anchor-id="implementation">Implementation</h3>
+<p>I have no idea.</p>
 </section>
 </section>
 <section id="the-benefits" class="level2">
@@ -361,7 +264,7 @@ func _ready():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241019-reduce-size-difference-between-capsules-and-mesh-volume.html</guid>
-  <pubDate>Sat, 19 Oct 2024 14:38:00 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 18:51:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -455,7 +358,7 @@ func _ready():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241016-instantiating-v-sekai-content.html</guid>
-  <pubDate>Sat, 19 Oct 2024 14:38:00 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 18:51:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -606,7 +509,7 @@ func _ready():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-xr-interface-for-rigging.html</guid>
-  <pubDate>Sat, 19 Oct 2024 14:38:00 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 18:51:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -707,7 +610,7 @@ func _ready():
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-basic-realtime-interaction.html</guid>
-  <pubDate>Sat, 19 Oct 2024 14:38:00 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 18:51:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -810,7 +713,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-app-updater.html</guid>
-  <pubDate>Sat, 19 Oct 2024 14:38:00 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 18:51:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -940,7 +843,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241011-recovering-makehuman-parameters.html</guid>
-  <pubDate>Sat, 19 Oct 2024 14:38:00 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 18:51:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1026,7 +929,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241006-restore-onedrive-shortcut-overrides.html</guid>
-  <pubDate>Sat, 19 Oct 2024 14:38:00 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 18:51:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1109,7 +1012,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241001-small-game-tools.html</guid>
-  <pubDate>Sat, 19 Oct 2024 14:38:00 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 18:51:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1212,7 +1115,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240914-godot-engine-xr-elite-conference-setup.html</guid>
-  <pubDate>Sat, 19 Oct 2024 14:38:00 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 18:51:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1337,7 +1240,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240905-revised-tracker-configuration-and-constraints.html</guid>
-  <pubDate>Sat, 19 Oct 2024 14:38:00 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 18:51:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1479,7 +1382,7 @@ font-style: inherit;"># Follow the specific instructions from the Signoz guide</
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240830-use-dokku-to-host-vsk-backend.html</guid>
-  <pubDate>Sat, 19 Oct 2024 14:38:00 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 18:51:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1577,7 +1480,7 @@ font-style: inherit;"># Follow the specific instructions from the Signoz guide</
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240830-pcie-lane-depletion-thunderbolt-4-issues.html</guid>
-  <pubDate>Sat, 19 Oct 2024 14:38:00 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 18:51:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2062,7 +1965,7 @@ font-style: inherit;">-i</span> dummy</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240824-ffmpeg-wav-mic-speaker-play.html</guid>
-  <pubDate>Sat, 19 Oct 2024 14:38:00 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 18:51:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2151,7 +2054,7 @@ font-style: inherit;">-i</span> dummy</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240810-steamvr-dongles-separate.html</guid>
-  <pubDate>Sat, 19 Oct 2024 14:38:00 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 18:51:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2250,7 +2153,7 @@ font-style: inherit;">-i</span> dummy</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240717-core-vsekai-scripting.html</guid>
-  <pubDate>Sat, 19 Oct 2024 14:38:00 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 18:51:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2882,7 +2785,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240715-vrchat-networking-mental-model.html</guid>
-  <pubDate>Sat, 19 Oct 2024 14:38:00 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 18:51:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2969,7 +2872,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240712-use-shrinkwrap-blender-modiifer-to-fit.html</guid>
-  <pubDate>Sat, 19 Oct 2024 14:38:00 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 18:51:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3086,7 +2989,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-web-and-pcvr-networking.html</guid>
-  <pubDate>Sat, 19 Oct 2024 14:38:00 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 18:51:10 GMT</pubDate>
 </item>
 </channel>
 </rss>
