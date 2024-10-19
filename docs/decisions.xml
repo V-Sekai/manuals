@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.5.57</generator>
-<lastBuildDate>Thu, 17 Oct 2024 17:07:02 GMT</lastBuildDate>
+<lastBuildDate>Sat, 19 Oct 2024 14:16:26 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Thu, 17 Oct 2024 17:07:02 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 14:16:26 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -161,7 +161,176 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Thu, 17 Oct 2024 17:07:02 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 14:16:26 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20241019-reduce_size_difference_between_capsules_and_mesh_volume.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-reduce-size-difference-between-capsules-and-mesh-volume" class="level3">
+<h3 class="anchored" data-anchor-id="proposed-reduce-size-difference-between-capsules-and-mesh-volume">Proposed: Reduce Size Difference Between Capsules and Mesh Volume</h3>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>Accurately fit capsules around bones in skinned skeleton meshes. The example provided involves a rectangle skinned by two bones, with each vertex influenced by up to 8 weights.</p>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>The goal is to minimize the size discrepancies between the capsules surrounding the bones and the actual volume defined by the skin mesh. This will be approached using the Minimum Deviation Flow problem in bidirected graphs (Bi-MDF).</p>
+</section>
+<section id="approach-to-minimize-capsule-size-errors" class="level2">
+<h2 class="anchored" data-anchor-id="approach-to-minimize-capsule-size-errors">Approach to Minimize Capsule Size Errors</h2>
+<section id="step-1-representation-of-the-skeleton-and-skin-mesh" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-representation-of-the-skeleton-and-skin-mesh">Step 1: Representation of the Skeleton and Skin Mesh</h3>
+<ul>
+<li><strong>Skeleton</strong>: Represent each bone as a node in a graph.</li>
+<li><strong>Skin Mesh</strong>: Each vertex of the mesh is also a node. Connect a bone to a vertex with an edge if the vertex is influenced by that bone, based on skin weights.</li>
+</ul>
+</section>
+<section id="step-2-define-the-objective" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-define-the-objective">Step 2: Define the Objective</h3>
+<ul>
+<li>The objective is to minimize the size differences between the capsules (nodes) and the volume of the skin mesh. This is quantified using a cost function that measures the deviation from ideal capsule sizes.</li>
+</ul>
+</section>
+</section>
+<section id="implementation-using-gdscript" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-using-gdscript">Implementation Using GDScript</h2>
+<pre class="gdscript"><code># SPDX-FileCopyrightText: 2023 Your Name &lt;your.email@example.com&gt;
+# SPDX-License-Identifier: MIT
+
+extends Node
+
+class Node:
+    var id: int
+    var flow: float = 0.0
+    var target_size: float = 0.0  # The ideal size for this node (capsule)
+
+    func _init(id: int, target_size: float):
+        self.id = id
+        self.target_size = target_size
+
+class Edge:
+    var u: Node
+    var v: Node
+    var cost_function: Callable
+
+    func _init(u: Node, v: Node, cost_function: Callable):
+        self.u = u
+        self.v = v
+        self.cost_function = cost_function
+
+class BiMDF:
+    var nodes: Dictionary = {}
+    var edges: Array = []
+
+    func add_node(target_size: float) -&gt; Node:
+        var new_node = Node(nodes.size(), target_size)
+        nodes[new_node.id] = new_node
+        return new_node
+
+    func add_edge(u: Node, v: Node, cost_function: Callable) -&gt; Edge:
+        var new_edge = Edge(u, v, cost_function)
+        edges.append(new_edge)
+        return new_edge
+
+    func solve() -&gt; Dictionary:
+        # Placeholder for Bi-MDF algorithm implementation
+        # Ideally, it should return {"cost": total_cost, "solution": flow_values}
+        return {"cost": 0, "solution": {}}
+
+# Cost Function Definitions
+func quad_deviation(flow: float, target: float) -&gt; float:
+    return pow(flow - target, 2)  # Quadratic cost based on deviation
+
+# Main function to set up and run the Bi-MDF problem
+func _ready():
+    var bimdf = BiMDF.new()
+
+    # Example of setting up the skeleton (nodes)
+    var bone1 = bimdf.add_node(4.0)  # Example target size for bone1 capsule
+    var bone2 = bimdf.add_node(2.5)  # Example target size for bone2 capsule
+    var bone3 = bimdf.add_node(3.0)  # Example target size for bone3 capsule
+
+    # Skin Mesh vertices (example)
+    var vertex1 = bimdf.add_node(1.0)  # Target size for this vertex
+    var vertex2 = bimdf.add_node(0.5)  # Target size for this vertex
+    var vertex3 = bimdf.add_node(0.75) # Target size for this vertex
+
+    # Connect bones to vertices based on skin weights
+    bimdf.add_edge(bone1, vertex1, func(flow: float) -&gt; float: return quad_deviation(flow, vertex1.target_size))
+    bimdf.add_edge(bone1, vertex2, func(flow: float) -&gt; float: return quad_deviation(flow, vertex2.target_size))
+    bimdf.add_edge(bone2, vertex2, func(flow: float) -&gt; float: return quad_deviation(flow, vertex2.target_size))
+    bimdf.add_edge(bone2, vertex3, func(flow: float) -&gt; float: return quad_deviation(flow, vertex3.target_size))
+    bimdf.add_edge(bone3, vertex3, func(flow: float) -&gt; float: return quad_deviation(flow, vertex3.target_size))
+
+    # Solve the Bi-MDF problem
+    var result = bimdf.solve()
+    print("Total cost: ", result.cost)
+
+    for edge in bimdf.edges:
+        print("Flow on edge: ", edge.u.flow + edge.v.flow)  # Placeholder for flow values</code></pre>
+<section id="key-components" class="level3">
+<h3 class="anchored" data-anchor-id="key-components">Key Components</h3>
+<ul>
+<li><strong>Nodes</strong>: Represent bones and vertices with target sizes.</li>
+<li><strong>Edges</strong>: Connect bones to vertices with a cost function based on weight influence and deviation.</li>
+<li><strong>Bi-MDF Algorithm</strong>: Solves the optimization problem to minimize total cost.</li>
+</ul>
+</section>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<ul>
+<li><strong>Accuracy</strong>: Improves the fit of capsules to the actual mesh, enhancing animation quality.</li>
+<li><strong>Efficiency</strong>: Reduces computational overhead by focusing on significant discrepancies.</li>
+</ul>
+</section>
+<section id="downsides" class="level2">
+<h2 class="anchored" data-anchor-id="downsides">Downsides</h2>
+<ul>
+<li><strong>Complexity</strong>: Implementing and tuning the Bi-MDF algorithm can be complex.</li>
+<li><strong>Dependency</strong>: Relies heavily on accurate weight assignments and initial conditions.</li>
+</ul>
+</section>
+<section id="further-steps" class="level2">
+<h2 class="anchored" data-anchor-id="further-steps">Further Steps</h2>
+<ul>
+<li><strong>Algorithm Implementation</strong>: Complete the <code>solve</code> method with the actual Bi-MDF logic.</li>
+<li><strong>Testing and Validation</strong>: Ensure the model works across various scenarios and meshes.</li>
+<li><strong>Integration</strong>: Seamlessly integrate this solution into existing animation pipelines.</li>
+</ul>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai GitHub</a></li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai Game Repository</a></li>
+</ol>
+<p>This proposal was assisted by AI assistant Aria.</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20241019-reduce_size_difference_between_capsules_and_mesh_volume.html</guid>
+  <pubDate>Sat, 19 Oct 2024 14:16:26 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -255,7 +424,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241016-instantiating-v-sekai-content.html</guid>
-  <pubDate>Thu, 17 Oct 2024 17:07:02 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 14:16:26 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -406,7 +575,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-xr-interface-for-rigging.html</guid>
-  <pubDate>Thu, 17 Oct 2024 17:07:02 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 14:16:26 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -507,7 +676,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-basic-realtime-interaction.html</guid>
-  <pubDate>Thu, 17 Oct 2024 17:07:02 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 14:16:26 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -610,7 +779,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-app-updater.html</guid>
-  <pubDate>Thu, 17 Oct 2024 17:07:02 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 14:16:26 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -740,7 +909,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241011-recovering-makehuman-parameters.html</guid>
-  <pubDate>Thu, 17 Oct 2024 17:07:02 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 14:16:26 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -826,7 +995,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241006-restore-onedrive-shortcut-overrides.html</guid>
-  <pubDate>Thu, 17 Oct 2024 17:07:02 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 14:16:26 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -909,7 +1078,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241001-small-game-tools.html</guid>
-  <pubDate>Thu, 17 Oct 2024 17:07:02 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 14:16:26 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1012,7 +1181,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240914-godot-engine-xr-elite-conference-setup.html</guid>
-  <pubDate>Thu, 17 Oct 2024 17:07:02 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 14:16:26 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1137,7 +1306,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240905-revised-tracker-configuration-and-constraints.html</guid>
-  <pubDate>Thu, 17 Oct 2024 17:07:02 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 14:16:26 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1279,7 +1448,7 @@ font-style: inherit;"># Follow the specific instructions from the Signoz guide</
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240830-use-dokku-to-host-vsk-backend.html</guid>
-  <pubDate>Thu, 17 Oct 2024 17:07:02 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 14:16:26 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1377,7 +1546,7 @@ font-style: inherit;"># Follow the specific instructions from the Signoz guide</
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240830-pcie-lane-depletion-thunderbolt-4-issues.html</guid>
-  <pubDate>Thu, 17 Oct 2024 17:07:02 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 14:16:26 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1862,7 +2031,7 @@ font-style: inherit;">-i</span> dummy</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240824-ffmpeg-wav-mic-speaker-play.html</guid>
-  <pubDate>Thu, 17 Oct 2024 17:07:02 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 14:16:26 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1951,7 +2120,7 @@ font-style: inherit;">-i</span> dummy</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240810-steamvr-dongles-separate.html</guid>
-  <pubDate>Thu, 17 Oct 2024 17:07:02 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 14:16:26 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2050,7 +2219,7 @@ font-style: inherit;">-i</span> dummy</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240717-core-vsekai-scripting.html</guid>
-  <pubDate>Thu, 17 Oct 2024 17:07:02 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 14:16:26 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2682,7 +2851,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240715-vrchat-networking-mental-model.html</guid>
-  <pubDate>Thu, 17 Oct 2024 17:07:02 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 14:16:26 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2769,7 +2938,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240712-use-shrinkwrap-blender-modiifer-to-fit.html</guid>
-  <pubDate>Thu, 17 Oct 2024 17:07:02 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 14:16:26 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2886,91 +3055,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240710-web-and-pcvr-networking.html</guid>
-  <pubDate>Thu, 17 Oct 2024 17:07:02 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240710-use-webrtc-to-native-interop.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-use-webrtc-to-native-to-interop-with-godot-engine" class="level1">
-<h1>Proposed: Use WebRTC to Native to Interop with Godot Engine</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>In the realm of game development, particularly with the Godot Engine, enabling seamless communication between native clients and web clients is crucial. This proposal aims to address this need by leveraging WebRTC for interoperability.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>We cannot connect between native clients and web clients for our Godot Engine game. This limitation hinders the user experience and restricts the game’s accessibility across different platforms.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>Implement WebRTC in both native and web clients to facilitate real-time communication.</p>
-<p>Set up a signaling server to manage the initial connection setup between clients.</p>
-<p>Utilize WebRTC data channels for efficient data transfer between clients.</p>
-<p>Integrate WebRTC functionalities within the Godot Engine to ensure smooth operation.</p>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<ul>
-<li><strong>Improved Connectivity</strong>: Enables seamless communication between native and web clients.</li>
-<li><strong>Enhanced User Experience</strong>: Provides a consistent gaming experience across different platforms.</li>
-<li><strong>Scalability</strong>: Facilitates the addition of new features that require real-time communication.</li>
-</ul>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<ul>
-<li><strong>Complexity</strong>: Implementing WebRTC can be complex and may require significant development effort.</li>
-<li><strong>Performance Overhead</strong>: Real-time communication may introduce performance overhead, especially on lower-end devices.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Alternative approaches such as using traditional client-server models or other communication protocols were considered but ultimately deemed less efficient or effective for real-time communication needs.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>In scenarios where highly specialized or technical language is required, additional human oversight may be necessary to ensure accuracy and appropriateness.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>This proposal aligns with our core values of efficiency and professionalism and will be implemented by our team.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240710-use-webrtc-to-native-interop.html</guid>
-  <pubDate>Thu, 17 Oct 2024 17:07:02 GMT</pubDate>
+  <pubDate>Sat, 19 Oct 2024 14:16:26 GMT</pubDate>
 </item>
 </channel>
 </rss>
