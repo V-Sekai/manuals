@@ -29,11 +29,13 @@ extends Node
 
 class Node:
     var id: int
+    var position: Vector3
     var flow: float = 0.0
     var target_size: float = 0.0  # Ideal size for the capsule around this node
 
-    func _init(id: int, target_size: float):
+    func _init(id: int, position: Vector3, target_size: float):
         self.id = id
+        self.position = position
         self.target_size = target_size
 
 class Edge:
@@ -50,8 +52,8 @@ class BiMDF:
     var nodes: Dictionary = {}
     var edges: Array = []
 
-    func add_node(target_size: float) -> Node:
-        var new_node = Node(nodes.size(), target_size)
+    func add_node(position: Vector3, target_size: float) -> Node:
+        var new_node = Node(nodes.size(), position, target_size)
         nodes[new_node.id] = new_node
         return new_node
 
@@ -69,25 +71,28 @@ class BiMDF:
 func quad_deviation(flow: float, target: float) -> float:
     return pow(flow - target, 2)  # Quadratic cost based on deviation
 
+# Function to create a cost function with specific parameters
+func create_cost_function(target_size: float, weight: float) -> Callable:
+    return Callable(self, "quad_deviation").bind(target_size * weight)
+
 # Main function to set up and run the Bi-MDF problem
 func _ready():
     var bimdf = BiMDF.new()
+    var array_mesh: ArrayMesh = preload("res://path_to_your_mesh.mesh")
+    var mesh_data_tool = MeshDataTool.new()
+    mesh_data_tool.create_from_surface(array_mesh, 0)
 
-    # Setup: Two bones with ideal capsule sizes
-    var bone1 = bimdf.add_node(3.0)  # Target size for capsule around bone1
-    var bone2 = bimdf.add_node(2.0)  # Target size for capsule around bone2
+    # Extract vertices using MeshDataTool
+    var vertex_count = mesh_data_tool.get_vertex_count()
+    for i in range(vertex_count):
+        var vertex_position = mesh_data_tool.get_vertex(i)
+        bimdf.add_node(vertex_position, 1.0)  # Assuming a default target size for simplicity
 
-    # Setup: Rectangle vertices (8 vertices for this example)
-    var vertex1 = bimdf.add_node(1.0)  # Target size for this vertex
-    var vertex2 = bimdf.add_node(1.0)  # Target size for this vertex
-    var vertex3 = bimdf.add_node(1.0)  # Target size for this vertex
-    var vertex4 = bimdf.add_node(1.0)  # Target size for this vertex
-    var vertex5 = bimdf.add_node(1.0)  # Target size for this vertex
-    var vertex6 = bimdf.add_node(1.0)  # Target size for this vertex
-    var vertex7 = bimdf.add_node(1.0)  # Target size for this vertex
-    var vertex8 = bimdf.add_node(1.0)  # Target size for this vertex
+    # Example setup for bones (if applicable)
+    var bone1 = bimdf.add_node(Vector3(0, 0, 0), 3.0)  # Position and target size for bone1
+    var bone2 = bimdf.add_node(Vector3(1, 0, 0), 2.0)  # Position and target size for bone2
 
-    # Skin weights (example): Assuming each vertex is influenced by the two bones
+    # Example skin weights (adjust according to your specific setup)
     var weights = {
         vertex1: [0.5, 0.5],  # Vertex 1 influenced equally by bone1 and bone2
         vertex2: [0.7, 0.3],  # More influence from bone1
@@ -100,15 +105,18 @@ func _ready():
     }
 
     # Connect bones to vertices based on skin weights
-    for vertex in weights.keys():
-        var weight1 = weights[vertex][0]
-        var weight2 = weights[vertex][1]
-        bimdf.add_edge(bone1, vertex, func(flow: float) -> float: return quad_deviation(flow, vertex.target_size * weight1))
-        bimdf.add_edge(bone2, vertex, func(flow: float) -> float: return quad_deviation(flow, vertex.target_size * weight2))
+    for vertex_id in weights.keys():
+        var vertex = bimdf.nodes[vertex_id]
+        var weight1 = weights[vertex_id][0]
+        var weight2 = weights[vertex_id][1]
+        var cost_func1 = create_cost_function(vertex.target_size, weight1)
+        var cost_func2 = create_cost_function(vertex.target_size, weight2)
+        bimdf.add_edge(bone1, vertex, cost_func1)
+        bimdf.add_edge(bone2, vertex, cost_func2)
 
     # Solve the Bi-MDF problem
     var result = bimdf.solve()
-    print("Total cost: ", result.cost)
+    print("Total cost: ", result["cost"])
 
     for edge in bimdf.edges:
         print("Flow on edge: ", edge.u.flow + edge.v.flow)  # Placeholder for flow values
