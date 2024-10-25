@@ -16,7 +16,7 @@
 - 🎯 https://gonzerelli.itch.io/demo - fwsgonzo decided to embed LuaJIT to Godot Sandbox as a proof-of-concept. Touching the first coin will open up a Lua "console" which redirects print() to a TextEdit
 - 🎯 https://gonzerelli.itch.io/demo - We enabled binary translation for LuaJIT on Godot Sandbox.
 - 🚀 Installed Discord on the Meta Quest 3 and was able to stream Godot Engine and ecosystem applications.
-- 🎯 Added a double build of steam audio. https://github.com/V-Sekai-fire/godot-steam-audio/tree/double
+- 🎯 Added a [double build of steam audio](https://github.com/V-Sekai-fire/godot-steam-audio/tree/double)
 - 🎯 Steam Audio now works without a custom Godot Engine fork.
 - 🧪 The VRM Consortium, Inc., the creator and advocate of the VRM 3D avatar file format, which is based on the glTF™ 2.0 open standard, has announced a [collaboration with The Khronos Group, the developer of glTF, to advance the international standardization of VRM.](https://www.khronos.org/news/press/the-khronos-group-and-vrm-consortium-collaborate-to-advance-international-standardization-of-the-vrm-3d-avatar-file-format)
 - 🚀 Submitted IREE.gd to [Awesome-Godot-Scientific](https://github.com/Ivorforce/Awesome-Godot-Scientific)
