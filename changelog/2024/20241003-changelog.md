@@ -17,7 +17,7 @@
 - https://gonzerelli.itch.io/demo - We enabled binary translation for LuaJIT on Godot Sandbox.
 - Installed Discord on the Meta Quest 3 and was able to stream Godot Engine and ecosystem applications.
 - Added a double build of steam audio. https://github.com/V-Sekai-fire/godot-steam-audio/tree/double
-- Steam Audio now works without a custom engine fork
+- Steam Audio now works without a custom Godot Engine fork
 
 ### Fixed
 
