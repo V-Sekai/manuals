@@ -19,7 +19,7 @@
 - 🎯 Added a double build of steam audio. https://github.com/V-Sekai-fire/godot-steam-audio/tree/double
 - 🎯 Steam Audio now works without a custom Godot Engine fork.
 - 🧪 The VRM Consortium, Inc., the creator and advocate of the VRM 3D avatar file format, which is based on the glTF™ 2.0 open standard, has announced a collaboration with The Khronos Group, the developer of glTF, to advance the international standardization of VRM. https://www.khronos.org/news/press/the-khronos-group-and-vrm-consortium-collaborate-to-advance-international-standardization-of-the-vrm-3d-avatar-file-format
-- 🚀 Joined [Awesome-Godot-Scientific](https://github.com/Ivorforce/Awesome-Godot-Scientific)
+- 🚀 Submitted IREE.gd to [Awesome-Godot-Scientific](https://github.com/Ivorforce/Awesome-Godot-Scientific)
 
 ### Fixed
 
