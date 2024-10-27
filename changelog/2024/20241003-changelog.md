@@ -20,6 +20,8 @@
 - 🎯 Steam Audio now works without a custom Godot Engine fork.
 - 🧪 The VRM Consortium, Inc., the creator and advocate of the VRM 3D avatar file format, which is based on the glTF™ 2.0 open standard, has announced a [collaboration with The Khronos Group, the developer of glTF, to advance the international standardization of VRM.](https://www.khronos.org/news/press/the-khronos-group-and-vrm-consortium-collaborate-to-advance-international-standardization-of-the-vrm-3d-avatar-file-format)
 - 🚀 Submitted IREE.gd to [Awesome-Godot-Scientific](https://github.com/Ivorforce/Awesome-Godot-Scientific)
+- 🧪 Collaboration with [GuilhermeGSousa/godot-motion-matching](https://github.com/GuilhermeGSousa/godot-motion-matching/)
+- 🚀 Found opensource animation assets. [O3DE MotionMatching Animation Assets](https://github.com/o3de/o3de/tree/development/Gems/MotionMatching/Assets/Animations)
 
 ### Fixed
 
