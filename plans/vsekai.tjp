@@ -1,4 +1,4 @@
-project myProject "V-Sekai Social Virtual Reality Project Planning (Results may vary from plan)" 2024-09-16 - 2025-03-01 {
+project myProject "V-Sekai Social Virtual Reality Project Planning (Results may vary from plan)" 2024-09-16 +8m {
   timezone "America/Vancouver"
 }
 
@@ -9,32 +9,24 @@ resource developer "Software Developer" {
 
 task be_a_fab_seller "Be a Fab Seller" {
   start 2024-10-23
-  end 2024-10-23
-  effort 1d
   allocate developer
-  depends !taxes_2024
 }
 
 task present_at_gdc_2025 "Present at GDC 2025" {
   start 2025-03-17
   end 2025-03-17
-  effort 1d
   allocate developer
-  depends !be_a_fab_seller
 }
 
 task godot_sandbox_script "Godot Sandbox Script" {
   start 2024-10-23
   end 2024-10-23
-  effort 1d
   allocate developer
-  depends !be_a_fab_seller
 }
 
 task restore_old_v_sekai "Restore old V-Sekai" {
   start 2024-10-23
   end 2024-10-23
-  effort 1d
   allocate developer
   depends !godot_sandbox_script
 }
@@ -42,7 +34,6 @@ task restore_old_v_sekai "Restore old V-Sekai" {
 task update_game_system "Update game system" {
   start 2024-10-28
   end 2024-10-28
-  effort 1d
   allocate developer
   depends !restore_old_v_sekai
 }
@@ -50,7 +41,6 @@ task update_game_system "Update game system" {
 task clean_garage "Clean Garage" {
   start 2024-10-23
   end 2024-10-23
-  effort 1d
   allocate developer
   depends !restore_old_v_sekai
 }
@@ -58,31 +48,26 @@ task clean_garage "Clean Garage" {
 task game_telemetry_system "Game Telemetry System" {
   start 2024-10-28
   end 2024-10-28
-  effort 1d
   allocate developer
   depends !update_game_system
 }
 
-task manyboneik3d_as_godot_gdextension "ManyBoneIK3D as godot gdextension" {
+task  "ManyBoneIK3D as godot gdextension" {
   start 2024-10-30
   end 2024-10-30
-  effort 1d
   allocate developer
   depends !game_telemetry_system
 }
 
-task draw_character_body_art "Draw character body art" {
+task  "Draw character body art" {
   start 2024-10-30
   end 2024-10-30
-  effort 1d
   allocate developer
-  depends !manyboneik3d_as_godot_gdextension
 }
 
 task voip_implementation_basic_lipsync "VOIP Implementation: Basic Lipsync" {
   start 2024-10-28
   end 2024-10-28
-  effort 1d
   allocate developer
   depends !game_telemetry_system
 }
@@ -90,7 +75,6 @@ task voip_implementation_basic_lipsync "VOIP Implementation: Basic Lipsync" {
 task update_the_ik_with_humanoid_muscle "Update the ik with humanoid muscle" {
   start 2024-10-23
   end 2024-10-23
-  effort 1d
   allocate developer
   depends !clean_garage
 }
@@ -98,7 +82,6 @@ task update_the_ik_with_humanoid_muscle "Update the ik with humanoid muscle" {
 task meshgpt_vs_spacemesh "MeshGPT vs SpaceMesh" {
   start 2024-10-23
   end 2024-10-23
-  effort 1d
   allocate developer
   depends !update_the_ik_with_humanoid_muscle
 }
@@ -106,7 +89,6 @@ task meshgpt_vs_spacemesh "MeshGPT vs SpaceMesh" {
 task audio_spatialization_with_godot_steam_audio "Audio Spatialization with godot-steam-audio" {
   start 2024-10-28
   end 2024-10-28
-  effort 1d
   allocate developer
   depends !voip_implementation_basic_lipsync
 }
@@ -114,7 +96,6 @@ task audio_spatialization_with_godot_steam_audio "Audio Spatialization with godo
 task concurrent_players "160 concurrent players" {
   start 2025-03-18
   end 2025-03-18
-  effort 1d
   allocate developer
   depends !present_at_gdc_2025
 }
@@ -122,7 +103,6 @@ task concurrent_players "160 concurrent players" {
 task animation_pack_for_motion_matching "Animation Pack for Motion Matching" {
   start 2024-10-28
   end 2024-10-28
-  effort 1d
   allocate developer
   depends !audio_spatialization_with_godot_steam_audio
 }
@@ -130,14 +110,11 @@ task animation_pack_for_motion_matching "Animation Pack for Motion Matching" {
 task integrate_motion_matching_techniques "Integrate Motion Matching Techniques" {
   start 2024-10-29
   end 2024-10-29
-  effort 1d
   allocate developer
   depends !animation_pack_for_motion_matching
 }
 
 task implement_crash_reporting_system_and_performance_metrics "Implement Crash Reporting System and Performance Metrics" {
-  start 2024-10-28
-  end 2024-10-28
   effort 1d
   allocate developer
   depends !integrate_motion_matching_techniques
@@ -146,7 +123,6 @@ task implement_crash_reporting_system_and_performance_metrics "Implement Crash R
 task optimize_engine_for_smooth_framerates_during_content_loading "Optimize Engine for Smooth Framerates During Content Loading" {
   start 2024-10-31
   end 2024-10-31
-  effort 1d
   allocate developer
   depends !implement_crash_reporting_system_and_performance_metrics
 }
@@ -154,14 +130,11 @@ task optimize_engine_for_smooth_framerates_during_content_loading "Optimize Engi
 task networking_interpolation_to_eliminate_teleporting "Networking Interpolation to Eliminate Teleporting" {
   start 2024-10-29
   end 2024-10-29
-  effort 1d
   allocate developer
   depends !integrate_motion_matching_techniques
 }
 
 task preload_content_to_avoid_stutters "Pre-load Content to Avoid Stutters" {
-  start 2024-10-28
-  end 2024-10-28
   effort 1d
   allocate developer
   depends !optimize_engine_for_smooth_framerates_during_content_loading
@@ -170,38 +143,29 @@ task preload_content_to_avoid_stutters "Pre-load Content to Avoid Stutters" {
 task begin_work_on_hardcoded_avatars "Begin Work on Hardcoded Avatars" {
   start 2024-10-23
   end 2024-10-23
-  effort 1d
   allocate developer
   depends !meshgpt_vs_spacemesh
 }
 
 task recruit_artist_for_default_home_map "Recruit Artist for Default Home Map" {
-  start 2024-10-28
-  end 2024-10-28
   effort 1d
   allocate developer
   depends !preload_content_to_avoid_stutters
 }
 
 task fix_physics_errors_such_as_sliding_down_ramps "Fix Physics Errors Such as Sliding Down Ramps" {
-  start 2024-10-28
-  end 2024-10-28
   effort 1d
   allocate developer
   depends !recruit_artist_for_default_home_map
 }
 
 task test_performance_on_regular_vr_hardware_and_optimization "Test Performance on Regular VR Hardware and Optimization" {
-  start 2024-10-28
-  end 2024-10-28
   effort 1d
   allocate developer
   depends !fix_physics_errors_such_as_sliding_down_ramps
 }
 
 task implement_account_system_tos_privacy_policy "Implement Account System, TOS, Privacy Policy" {
-  start 2024-10-28
-  end 2024-10-28
   effort 1d
   allocate developer
   depends !test_performance_on_regular_vr_hardware_and_optimization
@@ -210,7 +174,6 @@ task implement_account_system_tos_privacy_policy "Implement Account System, TOS,
 task allow_closed_registration_of_users "Allow Closed Registration of Users" {
   start 2024-10-23
   end 2024-10-23
-  effort 1d
   allocate developer
   depends !begin_work_on_hardcoded_avatars
 }
@@ -218,7 +181,6 @@ task allow_closed_registration_of_users "Allow Closed Registration of Users" {
 task integration_of_video_playback_and_streaming "Integration of Video Playback & Streaming" {
   start 2024-10-24
   end 2024-10-24
-  effort 1d
   allocate developer
   depends !allow_closed_registration_of_users
 }
@@ -226,7 +188,6 @@ task integration_of_video_playback_and_streaming "Integration of Video Playback 
 task stress_test "Stress Test" {
   start 2024-10-30
   end 2024-10-30
-  effort 1d
   allocate developer
   depends !integration_of_video_playback_and_streaming
 }
@@ -234,7 +195,6 @@ task stress_test "Stress Test" {
 task monitor_and_fix_performance_metrics "Monitor and Fix Performance Metrics" {
   start 2024-10-30
   end 2024-10-30
-  effort 1d
   allocate developer
   depends !stress_test
 }
@@ -242,7 +202,6 @@ task monitor_and_fix_performance_metrics "Monitor and Fix Performance Metrics" {
 task prototype_v_sekai_bricks_with_8192_blocks "Prototype V-Sekai Bricks with 8192 blocks" {
   start 2025-03-18
   end 2025-03-18
-  effort 1d
   allocate developer
   depends !concurrent_players
 }
