@@ -23,6 +23,7 @@
 - 🧪 Collaboration with [GuilhermeGSousa/godot-motion-matching](https://github.com/GuilhermeGSousa/godot-motion-matching/)
 - 🚀 Found opensource animation assets. Useful bases for retargeting and also stylizing motions. [O3DE MotionMatching Animation Assets](https://github.com/o3de/o3de/tree/development/Gems/MotionMatching/Assets/Animations)
 - 🧪 Collaboration with [maiself/godot-python-extension](https://github.com/maiself/godot-python-extension)
+- 🧪 Split V-Sekai world into world_editor and world_game
 
 ### Fixed
 
