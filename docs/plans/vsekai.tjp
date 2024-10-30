@@ -1,190 +1,181 @@
 project myProject "V-Sekai Social Virtual Reality Project" 2024-09-16 +24m {
   timezone "America/Vancouver"
   currency "USD"
+  timeformat "%Y-%m-%d"
+  numberformat "-" "" "," "." 1
+  currencyformat "(" ")" "," "." 0
 }
 
-resource developer "Software Developer" {
-  rate 60.0
+rate 60.0
+
+resource fire "Software Developer, Fire" {
   limits { dailymax 6h }
 }
 
 task present_at_gdc_2025 "Present at GDC 2025" {
   start 2025-03-17
   end 2025-03-17
-  allocate developer
+  allocate fire
 }
 
 task restore_old_v_sekai "Restore old V-Sekai" {
-  start 2024-10-23
   effort 8d
-  allocate developer
+  allocate fire
+  complete 5
+  journalentry 2024-10-29 "First entry" {
+    author fire
+  }
 }
 
 task update_game_system "Update game system" {
-  start 2024-10-28
   effort 5d
-  allocate developer
+  allocate fire
   depends !restore_old_v_sekai
 }
 
 task game_telemetry_system "Game Telemetry System" {
-  start 2024-10-28
   effort 6d
-  allocate developer
+  allocate fire
   depends !update_game_system
 }
 
 task "ManyBoneIK3D as godot gdextension" {
-  start 2024-10-30
   effort 7d
-  allocate developer
+  allocate fire
   depends !game_telemetry_system
 }
 
 task "Draw character body art" {
-  start 2024-10-30
   effort 2d
-  allocate developer
+  allocate fire
 }
 
 task voip_implementation_basic_lipsync "VOIP Implementation: Basic Lipsync" {
-  start 2024-10-28
   effort 3d
-  allocate developer
+  allocate fire
   depends !game_telemetry_system
 }
 
 task update_the_ik_with_humanoid_muscle "Update the ik with humanoid muscle" {
-  start 2024-10-23
   effort 4d
-  allocate developer
+  allocate fire
   depends !restore_old_v_sekai
 }
 
 task meshgpt_vs_spacemesh "MeshGPT vs SpaceMesh" {
-  start 2024-10-23
   effort 5d
-  allocate developer
+  allocate fire
   depends !update_the_ik_with_humanoid_muscle
 }
 
 task audio_spatialization_with_godot_steam_audio "Audio Spatialization with godot-steam-audio" {
-  start 2024-10-28
   effort 6d
-  allocate developer
+  allocate fire
   depends !voip_implementation_basic_lipsync
 }
 
 task concurrent_players "160 concurrent players" {
-  start 2025-03-18
   effort 1d
-  allocate developer
+  allocate fire
   depends !present_at_gdc_2025
 }
 
 task animation_pack_for_motion_matching "Animation Pack for Motion Matching" {
-  start 2024-10-28
   effort 7d
-  allocate developer
+  complete 100
+  allocate fire
   depends !audio_spatialization_with_godot_steam_audio
 }
 
 task integrate_motion_matching_techniques "Integrate Motion Matching Techniques" {
-  start 2024-10-29
   effort 8d
-  allocate developer
+  complete 50
+  allocate fire
   depends !animation_pack_for_motion_matching
 }
 
 task implement_crash_reporting_system_and_performance_metrics "Implement Crash Reporting System and Performance Metrics" {
   effort 9d
-  allocate developer
+  allocate fire
   depends !integrate_motion_matching_techniques
 }
 
 task optimize_engine_for_smooth_framerates_during_content_loading "Optimize Engine for Smooth Framerates During Content Loading" {
-  start 2024-10-31
   effort 10d
-  allocate developer
+  allocate fire
   depends !implement_crash_reporting_system_and_performance_metrics
 }
 
 task networking_interpolation_to_eliminate_teleporting "Networking Interpolation to Eliminate Teleporting" {
-  start 2024-10-29
   effort 11d
-  allocate developer
+  allocate fire
   depends !integrate_motion_matching_techniques
 }
 
 task preload_content_to_avoid_stutters "Pre-load Content to Avoid Stutters" {
   effort 12d
-  allocate developer
+  allocate fire
   depends !optimize_engine_for_smooth_framerates_during_content_loading
 }
 
 task begin_work_on_hardcoded_avatars "Begin Work on Hardcoded Avatars" {
-  start 2024-10-23
   effort 13d
-  allocate developer
+  allocate fire
   depends !meshgpt_vs_spacemesh
 }
 
 task recruit_artist_for_default_home_map "Recruit Artist for Default Home Map" {
   effort 14d
-  allocate developer
+  allocate fire
   depends !preload_content_to_avoid_stutters
 }
 
 task fix_physics_errors_such_as_sliding_down_ramps "Fix Physics Errors Such as Sliding Down Ramps" {
   effort 15d
-  allocate developer
+  allocate fire
   depends !recruit_artist_for_default_home_map
 }
 
 task test_performance_on_regular_vr_hardware_and_optimization "Test Performance on Regular VR Hardware and Optimization" {
   effort 16d
-  allocate developer
+  allocate fire
   depends !fix_physics_errors_such_as_sliding_down_ramps
 }
 
 task implement_account_system_tos_privacy_policy "Implement Account System, TOS, Privacy Policy" {
   effort 17d
-  allocate developer
+  allocate fire
   depends !test_performance_on_regular_vr_hardware_and_optimization
 }
 
 task allow_closed_registration_of_users "Allow Closed Registration of Users" {
   start 2024-10-23
   effort 18d
-  allocate developer
+  allocate fire
   depends !begin_work_on_hardcoded_avatars
 }
 
 task integration_of_video_playback_and_streaming "Integration of Video Playback & Streaming" {
-  start 2024-10-24
   effort 19d
-  allocate developer
+  allocate fire
   depends !allow_closed_registration_of_users
 }
 
 task stress_test "Stress Test" {
-  start 2024-10-30
   effort 20d
-  allocate developer
+  allocate fire
   depends !integration_of_video_playback_and_streaming
 }
 
 task monitor_and_fix_performance_metrics "Monitor and Fix Performance Metrics" {
-  start 2024-10-30
   effort 21d
-  allocate developer
+  allocate fire
   depends !stress_test
 }
 
 task prototype_v_sekai_bricks_with_8192_blocks "Prototype V-Sekai Bricks with 8192 blocks" {
-  start 2025-03-18
   effort 22d
-  allocate developer
+  allocate fire
   depends !concurrent_players
 }
 
