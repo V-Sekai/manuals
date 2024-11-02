@@ -9,4 +9,3 @@
 - Follow us on [Twitter](https://twitter.com/VSekaiOfficial).
 - Contribute to GitHub [here](https://github.com/V-Sekai).
 - Reach Out to SaracenOne, Lyuma, or Fire.
-
