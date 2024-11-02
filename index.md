@@ -12,10 +12,8 @@
 
 ```mermaid
 %% V-Sekai Social Virtual Reality Project
-
 graph TD
-    %% Define tasks and dependencies based on your project
-
+    Z[Restore Backend Server]
     A[Restore old V-Sekai]
     B[Game Telemetry System]
     C[Integrate Motion Matching Techniques]
@@ -25,6 +23,7 @@ graph TD
     G[Implement Account System, TOS, Privacy Policy]
     H[Integration of Video Playback & Streaming]
 
+    Z --> A
     A --> C
     C --> D
     D --> E
