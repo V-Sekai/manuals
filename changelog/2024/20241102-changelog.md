@@ -1,9 +1,9 @@
 # V-Sekai Changelog - November 2024
 
-- Experimental (🧪): This stage is for features that are still being tested and may not be stable.
-- Feature complete (🎯): This stage is for features that have all planned functionality implemented.
-- Beta (🚧): This stage is for features that are largely complete but may still have bugs.
-- General release (🚀): This stage is for features that have been fully tested and are now released.
+- Experimental (🧪): This stage is for features still being tested and may not be stable.
+- Feature complete (🎯): This stage is for features with all planned functionality implemented.
+- Beta (🚧): This stage is for essentially complete features that may still have bugs.
+- General release (🚀): This stage is for features that have been thoroughly tested and are now released.
 
 ## [Released]
 
@@ -15,7 +15,7 @@
 
 - 🧪 **Animation Node** was merged in godot motion matching.
 - 🧪 **Godot cpp as C++ module**: Dragos shows us a photo of godot-sandbox as a C++ module.
-- 🧪 Uploaded a new **godot vrm for motion matching web demo**. Now with debugging gizmos. [View Demo](https://ifiregames.itch.io/godot-motion-matching)
+- 🧪 Uploaded a new **godot vrm for motion matching web demo**. Now, with debugging gizmos. [View Demo](https://ifiregames.itch.io/godot-motion-matching)
 - 🧪 Found research on **transpiling GDScript to Godot Engine C++** with tailcalls as jumps. [Read More](http://www.emulators.com/docs/nx25_nostradamus.htm) | [ACM1](https://dl.acm.org/doi/10.1145/277650.277719) | [ACM2](https://dl.acm.org/doi/10.1145/1869643.1869651) | [Hacker News Discussion](https://news.ycombinator.com/item?id=18052482)
 
 ### Fixed
