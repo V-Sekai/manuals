@@ -9,6 +9,7 @@
 
 - 🚀 [ifiregames.itch.io/godot-motion-matching](https://ifiregames.itch.io/godot-motion-matching)
 - 🧪 [V-Sekai/world-editor](https://github.com/V-Sekai/world-editor)
+- 🚀 [Ughuuu/gdextension-to-module](https://github.com/Ughuuu/gdextension-to-module)
 
 ## [Unreleased]
 
