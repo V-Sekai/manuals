@@ -7,7 +7,7 @@
 
 ## [Released]
 
-- Not applicable for this month.
+- 🚀 [ifiregames.itch.io/godot-motion-matching](https://ifiregames.itch.io/godot-motion-matching)
 
 ## [Unreleased]
 
