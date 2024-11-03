@@ -8,6 +8,7 @@
 ## [Released]
 
 - 🚀 [ifiregames.itch.io/godot-motion-matching](https://ifiregames.itch.io/godot-motion-matching)
+- 🧪 [V-Sekai/world-editor](https://github.com/V-Sekai/world-editor)
 
 ## [Unreleased]
 
