@@ -24,6 +24,7 @@
 ### Fixed
 
 - 🚧 Steam audio runs in standalone mode for PC, and nothing technical stops it from running on the Android Quest 3 after the Godot Engine feature enhancement was merged last week. [stechyo/godot-steam-audio](https://github.com/stechyo/godot-steam-audio)
+- 🎯 Vulkan pose estimation demo now runs on IREE.gd. [iree-gd/iree.gd](https://github.com/iree-gd/iree.gd)
 
 ### Deprecated
 
