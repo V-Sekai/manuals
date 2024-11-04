@@ -24,7 +24,7 @@
 - 🧪 Uploaded a new **godot vrm for motion matching web demo**. Now, with debugging gizmos. [View Demo](https://ifiregames.itch.io/godot-motion-matching)
 - 🧪 Found research on **transpiling GDScript to Godot Engine C++** with tailcalls as jumps. [Read More](http://www.emulators.com/docs/nx25_nostradamus.htm) | [ACM1](https://dl.acm.org/doi/10.1145/277650.277719) | [ACM2](https://dl.acm.org/doi/10.1145/1869643.1869651) | [Hacker News Discussion](https://news.ycombinator.com/item?id=18052482)
 - 🎯 1% runtime improvement with lod rendering in Godot Engine [Rewrite index optimization code for maximum efficiency](https://github.com/godotengine/godot/pull/98801)
-
+- 🧪 [Provide VRM exports with humanizer](https://github.com/NitroxNova/humanizer/issues/36)
 ### Fixed
 
 - 🚧 Steam audio runs in standalone mode for PC, and nothing technical stops it from running on the Android Quest 3 after the Godot Engine feature enhancement was merged last week. [stechyo/godot-steam-audio](https://github.com/stechyo/godot-steam-audio)
