@@ -7,6 +7,7 @@
 
 ## [Released]
 
+- 🧪 Prototype a repository for visual anomaly detection with Anomalib. [V-Sekai-fire/godot-visual-anomaly-detection](https://github.com/V-Sekai-fire/godot-visual-anomaly-detection)
 - 🚀 [ifiregames.itch.io/godot-motion-matching](https://ifiregames.itch.io/godot-motion-matching)
 - 🧪 [V-Sekai/world-editor](https://github.com/V-Sekai/world-editor)
 - 🚀 [Ughuuu/gdextension-to-module](https://github.com/Ughuuu/gdextension-to-module)
