@@ -23,7 +23,7 @@
 
 ### Fixed
 
-- Not applicable for this month.
+- 🚧 Steam audio runs in standalone mode for PC, and nothing technical stops it from running on the Android Quest 3 after the Godot Engine feature enhancement was merged last week. [stechyo/godot-steam-audio](https://github.com/stechyo/godot-steam-audio)
 
 ### Deprecated
 
