@@ -10,7 +10,7 @@
 - 🚀 [ifiregames.itch.io/godot-motion-matching](https://ifiregames.itch.io/godot-motion-matching)
 - 🧪 [V-Sekai/world-editor](https://github.com/V-Sekai/world-editor)
 - 🚀 [Ughuuu/gdextension-to-module](https://github.com/Ughuuu/gdextension-to-module)
-- 🚀 Walk the Dog is a vector-quantized periodic autoencoder. It learns a disconnected 1D phase manifold that aligns motion regardless of morphologies while requiring no paired data or any joint correspondence [PeizhuoLi/walk-the-dog](https://github.com/PeizhuoLi/walk-the-dog)
+- 🚀 Walk the Dog is a vector-quantized periodic autoencoder. Walk the Dog is now MIT-licensed opensource. It learns a disconnected 1D phase manifold that aligns motion regardless of morphologies while requiring no paired data or any joint correspondence [PeizhuoLi/walk-the-dog](https://github.com/PeizhuoLi/walk-the-dog)
 
 ## [Unreleased]
 
