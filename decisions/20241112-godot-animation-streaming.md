@@ -8,14 +8,6 @@ Animation streaming is a technique for handling extremely long animations. It in
 
 We need a system to handle the streaming of long animations in a way that minimizes memory usage and ensures smooth playback. The system should be configurable and handle various animation lengths and complexities.
 
-1. **Character Animations**: In an open-world game, characters may have complex animations such as walking, running, jumping, and interacting with the environment. Animation streaming ensures that only the necessary parts of these animations are loaded, reducing memory usage and improving performance.
-
-2. **Environmental Animations**: Open-world games often feature dynamic environments with animations like trees swaying, water flowing, and weather changes. Streaming these animations helps maintain a seamless experience without overloading the system.
-
-3. **Cutscenes and Cinematics**: Long cutscenes and cinematic sequences can be streamed to avoid loading large animation files simultaneously, ensuring smooth transitions and playback.
-
-4. **NPC Interactions**: Non-player characters (NPCs) in open-world games may have varied and lengthy interaction animations. Streaming these animations allows for more complex and varied NPC behaviours without compromising performance.
-
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
 We have a resource, `AnimationStreamingData`, which, when exported, is a custom binary resource containing animation pages. Export animation compressed data to this.
@@ -145,9 +137,15 @@ class AnimationPlayer:
 
 ## The Benefits
 
-- Efficient memory usage by loading only necessary animation data.
-- Let you import extremely long animations and stream them.
-- Configurable settings to suit different project needs.
+Efficient memory usage by loading only necessary animation data. This allows for the import of extremely long animations and streaming them, with configurable settings to suit different project needs.
+
+1. **Character Animations**: In an open-world game, characters may have complex animations such as walking, running, jumping, and interacting with the environment. Animation streaming ensures that only the necessary parts of these animations are loaded, reducing memory usage and improving performance.
+
+2. **Environmental Animations**: Open-world games often feature dynamic environments with animations like trees swaying, water flowing, and weather changes. Streaming these animations helps maintain a seamless experience without overloading the system.
+
+3. **Cutscenes and Cinematics**: Long cutscenes and cinematic sequences can be streamed to avoid loading large animation files simultaneously, ensuring smooth transitions and playback.
+
+4. **NPC Interactions**: Non-player characters (NPCs) in open-world games may have varied and lengthy interaction animations. Streaming these animations allows for more complex and varied NPC behaviors without compromising performance.
 
 ## The Downsides
 
