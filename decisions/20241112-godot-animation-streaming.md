@@ -103,7 +103,7 @@ class AnimationStreamingData:
 
 ```gdscript
 class AnimationPlayer:
-    var buffer_size = 2.0 / 3.0
+    var buffer_size = 3.0 # FIXME: Calculate a better buffer size.
     var worker_pool = WorkerThreadPool.new()
     var streaming_data = AnimationStreamingData.new()
 
@@ -117,7 +117,7 @@ class AnimationPlayer:
         stream_pages_ahead()
 
     func load_initial_buffer():
-        # Load the first 2/3 seconds of animation into RingBuffer
+        # Load the first 3 seconds of animation into RingBuffer
         for i in range(buffer_size):
             var page_info = streaming_data.get_page_info(i)
             var page = streaming_data.fetch_page(page_info)
