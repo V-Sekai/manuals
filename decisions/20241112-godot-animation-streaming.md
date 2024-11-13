@@ -30,14 +30,14 @@ When opening this, you should have an index (file offset, size, and position in 
 
 ```gdscript
 class AnimationStreamingData:
-    var index: Array = []
-    var pages: Dictionary = {}
-    var ring_buffer: RingBuffer = RingBuffer.new()  # Custom type for ring buffer
-    var usage: Array = []  # Track usage for LRU
+    var index = []  # Array of arrays (file_offset, size, position_in_timeline)
+    var pages = {}
+    var ring_buffer = RingBuffer.new()  # Custom type for ring buffer
+    var usage = []  # Track usage for LRU
 
     func _init():
         load_index()
-        var buffer_size: int = 16  # Example size, adjust as needed
+        var buffer_size = 16  # Example size, adjust as needed
         ring_buffer.resize(buffer_size)
         usage.resize(buffer_size)
 
@@ -45,50 +45,51 @@ class AnimationStreamingData:
         # Load index from binary resource
         pass
 
-    func get_page_info(page_number: int) -> Dictionary:
+    func get_page_info(page_number):
         # Retrieve page info from index
-        return index[page_number]
+        var page_info = index[page_number]
+        return {"file_offset": page_info[0], "size": page_info[1], "position_in_timeline": page_info[2]}
 
-    func store_page(page_number: int, page_data: Dictionary):
+    func store_page(page_number, page_data):
         # Store compressed animation page data
         pages[page_number] = page_data
 
-    func load_page(page_number: int) -> Dictionary:
+    func load_page(page_number):
         # Load compressed animation page data
         return pages.get(page_number, null)
 
-    func fetch_page(page_number: int) -> Dictionary:
+    func fetch_page(page_number):
         # Fetch page data from AnimationStreamingData
         return load_page(page_number)
 
-    func stream_page(page_number: int) -> Dictionary:
+    func stream_page(page_number):
         # Stream page data from RingBuffer
         if ring_buffer.data_left() > 0:
-            var page: Dictionary = ring_buffer.read()
+            var page = ring_buffer.read()
             update_usage(page_number)
             return page
         else:
             return null
 
-    func write_page(page_data: Dictionary, page_number: int):
+    func write_page(page_data, page_number):
         # Write page data to RingBuffer
         if ring_buffer.space_left() < 1:
             # Find and replace the least recently used page
-            var lru_index: int = find_lru()
+            var lru_index = find_lru()
             ring_buffer.write_pos = lru_index
         ring_buffer.write(page_data)
         update_usage(page_number)
 
-    func update_usage(page_number: int):
+    func update_usage(page_number):
         # Update usage list
         for i in range(usage.size()):
             usage[i] += 1
         usage[page_number] = 0
 
-    func find_lru() -> int:
+    func find_lru():
         # Find the least recently used page
-        var max_usage: int = -1
-        var lru_index: int = -1
+        var max_usage = -1
+        var lru_index = -1
         for i in range(usage.size()):
             if usage[i] > max_usage:
                 max_usage = usage[i]
@@ -100,9 +101,9 @@ class AnimationStreamingData:
 
 ```gdscript
 class AnimationPlayer:
-    var buffer_size: float = 2.0 / 3.0
-    var worker_pool: WorkerThreadPool = WorkerThreadPool.new()
-    var streaming_data: AnimationStreamingData = AnimationStreamingData.new()
+    var buffer_size = 2.0 / 3.0
+    var worker_pool = WorkerThreadPool.new()
+    var streaming_data = AnimationStreamingData.new()
 
     func _init():
         streaming_data.load_index()
@@ -116,8 +117,8 @@ class AnimationPlayer:
     func load_initial_buffer():
         # Load the first 2/3 seconds of animation into RingBuffer
         for i in range(buffer_size):
-            var page_info: Dictionary = streaming_data.get_page_info(i)
-            var page: Dictionary = streaming_data.fetch_page(page_info)
+            var page_info = streaming_data.get_page_info(i)
+            var page = streaming_data.fetch_page(page_info)
             if page != null:
                 streaming_data.write_page(page, i)
 
@@ -126,12 +127,12 @@ class AnimationPlayer:
         worker_pool.queue_task(callable(self, "_load_next_page"))
 
     func _load_next_page():
-        var next_page_info: Dictionary = streaming_data.get_page_info(buffer_size)
-        var next_page: Dictionary = streaming_data.fetch_page(next_page_info)
+        var next_page_info = streaming_data.get_page_info(buffer_size)
+        var next_page = streaming_data.fetch_page(next_page_info)
         if next_page != null:
             streaming_data.write_page(next_page, buffer_size)
 
-    func free_page(page: Dictionary):
+    func free_page(page):
         # Free page after use
         streaming_data.ring_buffer.advance_read(1)
 ```
