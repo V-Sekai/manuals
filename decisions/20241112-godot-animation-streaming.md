@@ -136,7 +136,6 @@ class AnimationPlayer:
         streaming_data.ring_buffer.advance_read(1)
 ```
 
-
 ## The Benefits
 
 Efficient memory usage by loading only necessary animation data. This allows for the import of extremely long animations and streaming them, with configurable settings to suit different project needs.
