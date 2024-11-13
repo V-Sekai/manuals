@@ -123,17 +123,19 @@ class AnimationPlayer:
 
     func stream_pages_ahead():
         # Queue loading of pages ahead of playback cursor
-        worker_pool.queue_task(func():
-            var next_page_info: Dictionary = streaming_data.get_page_info(buffer_size)
-            var next_page: Dictionary = streaming_data.fetch_page(next_page_info)
-            if next_page != null:
-                streaming_data.write_page(next_page, buffer_size)
-        )
+        worker_pool.queue_task(callable(self, "_load_next_page"))
+
+    func _load_next_page():
+        var next_page_info: Dictionary = streaming_data.get_page_info(buffer_size)
+        var next_page: Dictionary = streaming_data.fetch_page(next_page_info)
+        if next_page != null:
+            streaming_data.write_page(next_page, buffer_size)
 
     func free_page(page: Dictionary):
         # Free page after use
         streaming_data.ring_buffer.advance_read(1)
 ```
+
 
 ## The Benefits
 
