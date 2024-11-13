@@ -159,7 +159,11 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>We propose the creation of a resource called <code>AnimationStreamingData</code>, which will be a custom binary resource containing animation pages. The process involves:</p>
+<p>We have a resource, AnimationStreamingData, which, when exported, is a custom binary resource containing animation pages. Export animation compressed data to this.</p>
+<p>If you have an LRU of pages in the animation resource, you can customize this in the project settings (animation page LRU). I would like to know the number of pages, time, or size. Time is best, say 2/3 seconds.</p>
+<p>Have a particular track for streamed animations. Always load the first 2/3 seconds of animation (buffer size). For the rest, while playing the animation, you can use WorkerThreadPool to queue loading resource pages ahead of you on a thread. Always strive to have 2/3 seconds (again, buffer size) ahead of the playback cursor. After you are done with a page, you can just free it.</p>
+<p>AnimationStreamingData should be a binary format, custom-made, with all pages saved.</p>
+<p>When opening this, you should have an index (file offset, size, and position in the timeline) that you load first from it, then stream pages as you go.</p>
 <ol type="1">
 <li>Exporting animation compressed data to <code>AnimationStreamingData</code>.</li>
 <li>Implementing an LRU (Least Recently Used) cache for animation pages, configurable in the project settings (animation page LRU).</li>
@@ -253,7 +257,7 @@ class AnimationPlayer:
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
 <ul>
 <li>Efficient memory usage by loading only necessary animation data.</li>
-<li>Smooth playback of long animations.</li>
+<li>Let you import extremely long animations and stream them.</li>
 <li>Configurable settings to suit different project needs.</li>
 </ul>
 </section>

@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.5.57</generator>
-<lastBuildDate>Wed, 13 Nov 2024 00:28:36 GMT</lastBuildDate>
+<lastBuildDate>Wed, 13 Nov 2024 00:33:11 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:33:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -161,7 +161,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:33:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -189,7 +189,11 @@
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>We propose the creation of a resource called <code>AnimationStreamingData</code>, which will be a custom binary resource containing animation pages. The process involves:</p>
+<p>We have a resource, AnimationStreamingData, which, when exported, is a custom binary resource containing animation pages. Export animation compressed data to this.</p>
+<p>If you have an LRU of pages in the animation resource, you can customize this in the project settings (animation page LRU). I would like to know the number of pages, time, or size. Time is best, say 2/3 seconds.</p>
+<p>Have a particular track for streamed animations. Always load the first 2/3 seconds of animation (buffer size). For the rest, while playing the animation, you can use WorkerThreadPool to queue loading resource pages ahead of you on a thread. Always strive to have 2/3 seconds (again, buffer size) ahead of the playback cursor. After you are done with a page, you can just free it.</p>
+<p>AnimationStreamingData should be a binary format, custom-made, with all pages saved.</p>
+<p>When opening this, you should have an index (file offset, size, and position in the timeline) that you load first from it, then stream pages as you go.</p>
 <ol type="1">
 <li>Exporting animation compressed data to <code>AnimationStreamingData</code>.</li>
 <li>Implementing an LRU (Least Recently Used) cache for animation pages, configurable in the project settings (animation page LRU).</li>
@@ -283,7 +287,7 @@ class AnimationPlayer:
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
 <ul>
 <li>Efficient memory usage by loading only necessary animation data.</li>
-<li>Smooth playback of long animations.</li>
+<li>Let you import extremely long animations and stream them.</li>
 <li>Configurable settings to suit different project needs.</li>
 </ul>
 </section>
@@ -338,7 +342,7 @@ class AnimationPlayer:
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241112-godot-animation-streaming.html</guid>
-  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:33:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -414,7 +418,7 @@ class AnimationPlayer:
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241102-plan-november-2024.html</guid>
-  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:33:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -495,7 +499,7 @@ class AnimationPlayer:
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241028-use-data-tables-for-godot-constraints.html</guid>
-  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:33:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -598,7 +602,7 @@ class AnimationPlayer:
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241019-reduce-size-difference-between-capsules-and-mesh-volume.html</guid>
-  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:33:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -692,7 +696,7 @@ class AnimationPlayer:
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241016-instantiating-v-sekai-content.html</guid>
-  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:33:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -843,7 +847,7 @@ class AnimationPlayer:
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-xr-interface-for-rigging.html</guid>
-  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:33:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -944,7 +948,7 @@ class AnimationPlayer:
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-basic-realtime-interaction.html</guid>
-  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:33:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1047,7 +1051,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-app-updater.html</guid>
-  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:33:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1177,7 +1181,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241011-recovering-makehuman-parameters.html</guid>
-  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:33:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1263,7 +1267,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241006-restore-onedrive-shortcut-overrides.html</guid>
-  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:33:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1346,7 +1350,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241001-small-game-tools.html</guid>
-  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:33:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1449,7 +1453,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240914-godot-engine-xr-elite-conference-setup.html</guid>
-  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:33:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1574,7 +1578,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240905-revised-tracker-configuration-and-constraints.html</guid>
-  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:33:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1716,7 +1720,7 @@ font-style: inherit;"># Follow the specific instructions from the Signoz guide</
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240830-use-dokku-to-host-vsk-backend.html</guid>
-  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:33:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1814,7 +1818,7 @@ font-style: inherit;"># Follow the specific instructions from the Signoz guide</
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240830-pcie-lane-depletion-thunderbolt-4-issues.html</guid>
-  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:33:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2299,7 +2303,7 @@ font-style: inherit;">-i</span> dummy</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240824-ffmpeg-wav-mic-speaker-play.html</guid>
-  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:33:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2388,7 +2392,7 @@ font-style: inherit;">-i</span> dummy</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240810-steamvr-dongles-separate.html</guid>
-  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:33:11 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2487,7 +2491,7 @@ font-style: inherit;">-i</span> dummy</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240717-core-vsekai-scripting.html</guid>
-  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:33:11 GMT</pubDate>
 </item>
 </channel>
 </rss>
