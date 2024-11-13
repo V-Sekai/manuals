@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.5.57</generator>
-<lastBuildDate>Fri, 08 Nov 2024 22:16:11 GMT</lastBuildDate>
+<lastBuildDate>Wed, 13 Nov 2024 00:28:36 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Fri, 08 Nov 2024 22:16:11 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -161,7 +161,184 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Fri, 08 Nov 2024 22:16:11 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20241112-godot-animation-streaming.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-godot-animation-streaming" class="level1">
+<h1>Proposed: Godot Animation streaming</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>Animation streaming is a technique for handling extremely long animations. It involves loading only portions of the animation data as needed, which helps manage memory efficiently and ensures smooth playback without requiring the entire animation to be loaded into memory at once.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>We need a system to handle the streaming of long animations in a way that minimizes memory usage and ensures smooth playback. The system should be configurable and handle various animation lengths and complexities.</p>
+<ol type="1">
+<li><p><strong>Character Animations</strong>: In an open-world game, characters may have complex animations such as walking, running, jumping, and interacting with the environment. Animation streaming ensures that only the necessary parts of these animations are loaded, reducing memory usage and improving performance.</p></li>
+<li><p><strong>Environmental Animations</strong>: Open-world games often feature dynamic environments with animations like trees swaying, water flowing, and weather changes. Streaming these animations helps maintain a seamless experience without overloading the system.</p></li>
+<li><p><strong>Cutscenes and Cinematics</strong>: Long cutscenes and cinematic sequences can be streamed to avoid loading large animation files simultaneously, ensuring smooth transitions and playback.</p></li>
+<li><p><strong>NPC Interactions</strong>: Non-player characters (NPCs) in open-world games may have varied and lengthy interaction animations. Streaming these animations allows for more complex and varied NPC behaviours without compromising performance.</p></li>
+</ol>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>We propose the creation of a resource called <code>AnimationStreamingData</code>, which will be a custom binary resource containing animation pages. The process involves:</p>
+<ol type="1">
+<li>Exporting animation compressed data to <code>AnimationStreamingData</code>.</li>
+<li>Implementing an LRU (Least Recently Used) cache for animation pages, configurable in the project settings (animation page LRU).</li>
+<li>Loading the first 2/3 seconds of animation as a buffer.</li>
+<li>Using <code>WorkerThreadPool</code> to queue loading resource pages ahead of the playback cursor.</li>
+<li>Freeing pages after they are no longer needed.</li>
+</ol>
+<pre class="gdscript"><code>class AnimationStreamingData:
+    var pages: RingBuffer = RingBuffer.new()  # Custom type for ring buffer
+    var index: Array = []
+    var usage: Array = []  # Track usage for LRU
+
+    func _init():
+        pass
+
+    func load_index():
+        # Load index from binary resource
+        # Initialize RingBuffer with appropriate size
+        var buffer_size: int = 16  # Example size, adjust as needed
+        pages.resize(buffer_size)
+        usage.resize(buffer_size)
+
+    func stream_page(page_number: int) -&gt; Dictionary:
+        # Stream page data from RingBuffer
+        if pages.data_left() &gt; 0:
+            var page: Dictionary = pages.read()
+            update_usage(page_number)
+            return page
+        else:
+            return null
+
+    func write_page(page_data: Dictionary, page_number: int):
+        # Write page data to RingBuffer
+        if pages.space_left() &lt; 1:
+            # Find and replace the least recently used page
+            var lru_index: int = find_lru()
+            pages.write_pos = lru_index
+        pages.write(page_data)
+        update_usage(page_number)
+
+    func update_usage(page_number: int):
+        # Update usage list
+        for i in range(usage.size()):
+            usage[i] += 1
+        usage[page_number] = 0
+
+    func find_lru() -&gt; int:
+        # Find the least recently used page
+        var max_usage: int = -1
+        var lru_index: int = -1
+        for i in range(usage.size()):
+            if usage[i] &gt; max_usage:
+                max_usage = usage[i]
+                lru_index = i
+        return lru_index
+
+class AnimationPlayer:
+    var buffer_size: float = 2.0 / 3.0
+    var worker_pool: WorkerThreadPool = WorkerThreadPool.new()
+    var streaming_data: AnimationStreamingData = AnimationStreamingData.new()
+
+    func _init():
+        streaming_data.load_index()
+
+    func play_animation():
+        # Load initial buffer
+        load_initial_buffer()
+        # Stream pages ahead of playback cursor
+        stream_pages_ahead()
+
+    func load_initial_buffer():
+        # Load the first 2/3 seconds of animation into RingBuffer
+        for i in range(buffer_size):
+            var page: Dictionary = streaming_data.stream_page(i)
+            if page != null:
+                streaming_data.write_page(page, i)
+
+    func stream_pages_ahead():
+        # Queue loading of pages ahead of playback cursor
+        worker_pool.queue_task(func():
+            var next_page: Dictionary = streaming_data.stream_page(buffer_size)
+            if next_page != null:
+                streaming_data.write_page(next_page, buffer_size)
+        )
+
+    func free_page(page: Dictionary):
+        # Free page after use
+        streaming_data.pages.advance_read(1)</code></pre>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li>Efficient memory usage by loading only necessary animation data.</li>
+<li>Smooth playback of long animations.</li>
+<li>Configurable settings to suit different project needs.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li>Increased complexity in animation handling.</li>
+<li>Potential latency in loading pages if not appropriately managed.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>An alternative approach could be to load the entire animation into memory, simplifying the implementation but resulting in high memory usage and potential performance issues for long animations.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>Handling extremely short animations where streaming might not be necessary.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>The V-Sekai development team will implement this proposal as part of the core functionality for handling animations in the Godot Engine.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+<li>fire</li>
+<li>reduz</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20241112-godot-animation-streaming.html</guid>
+  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -237,7 +414,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241102-plan-november-2024.html</guid>
-  <pubDate>Fri, 08 Nov 2024 22:16:11 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -318,7 +495,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241028-use-data-tables-for-godot-constraints.html</guid>
-  <pubDate>Fri, 08 Nov 2024 22:16:11 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -421,7 +598,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241019-reduce-size-difference-between-capsules-and-mesh-volume.html</guid>
-  <pubDate>Fri, 08 Nov 2024 22:16:11 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -515,7 +692,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241016-instantiating-v-sekai-content.html</guid>
-  <pubDate>Fri, 08 Nov 2024 22:16:11 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -666,7 +843,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-xr-interface-for-rigging.html</guid>
-  <pubDate>Fri, 08 Nov 2024 22:16:11 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -767,7 +944,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-basic-realtime-interaction.html</guid>
-  <pubDate>Fri, 08 Nov 2024 22:16:11 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -870,7 +1047,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-app-updater.html</guid>
-  <pubDate>Fri, 08 Nov 2024 22:16:11 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1000,7 +1177,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241011-recovering-makehuman-parameters.html</guid>
-  <pubDate>Fri, 08 Nov 2024 22:16:11 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1086,7 +1263,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241006-restore-onedrive-shortcut-overrides.html</guid>
-  <pubDate>Fri, 08 Nov 2024 22:16:11 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1169,7 +1346,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241001-small-game-tools.html</guid>
-  <pubDate>Fri, 08 Nov 2024 22:16:11 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1272,7 +1449,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240914-godot-engine-xr-elite-conference-setup.html</guid>
-  <pubDate>Fri, 08 Nov 2024 22:16:11 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1397,7 +1574,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240905-revised-tracker-configuration-and-constraints.html</guid>
-  <pubDate>Fri, 08 Nov 2024 22:16:11 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1539,7 +1716,7 @@ font-style: inherit;"># Follow the specific instructions from the Signoz guide</
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240830-use-dokku-to-host-vsk-backend.html</guid>
-  <pubDate>Fri, 08 Nov 2024 22:16:11 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1637,7 +1814,7 @@ font-style: inherit;"># Follow the specific instructions from the Signoz guide</
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240830-pcie-lane-depletion-thunderbolt-4-issues.html</guid>
-  <pubDate>Fri, 08 Nov 2024 22:16:11 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2122,7 +2299,7 @@ font-style: inherit;">-i</span> dummy</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240824-ffmpeg-wav-mic-speaker-play.html</guid>
-  <pubDate>Fri, 08 Nov 2024 22:16:11 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2211,7 +2388,7 @@ font-style: inherit;">-i</span> dummy</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240810-steamvr-dongles-separate.html</guid>
-  <pubDate>Fri, 08 Nov 2024 22:16:11 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2310,639 +2487,7 @@ font-style: inherit;">-i</span> dummy</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240717-core-vsekai-scripting.html</guid>
-  <pubDate>Fri, 08 Nov 2024 22:16:11 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240715-vrchat-networking-mental-model.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-create-a-conceptual-model-of-vrchat-networking" class="level1">
-<h1>Proposed: Create a Conceptual Model of VRChat Networking</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>In the realm of virtual reality, particularly within VRChat, understanding the networking model is crucial for developers. This proposal aims to create a comprehensive conceptual model of VRChat’s networking system.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Developers often struggle with the intricacies of VRChat’s networking, leading to inefficient code and suboptimal user experiences. A clear and concise guide is needed to demystify the process.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe How Your Proposal Will Work with Code, Pseudo-Code, Mock-Ups, or Diagrams</h2>
-<section id="sending-data-in-vrchat" class="level3">
-<h3 class="anchored" data-anchor-id="sending-data-in-vrchat">Sending Data in VRChat</h3>
-<p>There are two primary methods to send data in VRChat:</p>
-<ol type="1">
-<li><p><strong>Udonsynced Variables</strong>:</p>
-<ul>
-<li>Mark variables as <code>[UdonSynced]</code>.</li>
-<li>Call <code>RequestSerialization()</code> in the script to send a copy of the synced variables to all other clients.</li>
-<li>Only the owner can call <code>RequestSerialization()</code>, so ensure you call <code>Networking.SetOwner()</code> first.</li>
-<li>An event called <code>OnDeserialization</code> is triggered when a network packet is received.</li>
-</ul></li>
-<li><p><strong>Network Events</strong>:</p>
-<ul>
-<li>Use <code>SendCustomNetworkEvent()</code> to send an event.</li>
-<li>Specify a string that matches the name of a function taking no arguments; this function will run upon receiving the event.</li>
-<li>Choose to send the event either to the owner or all clients.</li>
-</ul></li>
-</ol>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode csharp code-with-copy"><code class="sourceCode cs"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">// Example of Udonsynced variable</span></span>
-<span id="cb1-2"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">UdonBehaviourSyncMode</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>BehaviourSyncMode<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">Manual</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)]</span></span>
-<span id="cb1-3"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">public</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">class</span> SyncExample <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> UdonSharpBehaviour</span>
-<span id="cb1-4"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span></span>
-<span id="cb1-5">    <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span>UdonSynced<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">]</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">private</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">int</span> syncedVariable<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb1-6"></span>
-<span id="cb1-7">    <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">public</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">void</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">UpdateVariable</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">int</span> newValue<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span id="cb1-8">    <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span></span>
-<span id="cb1-9">        <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>Networking<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">IsOwner</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>gameObject<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">))</span></span>
-<span id="cb1-10">        <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span></span>
-<span id="cb1-11">            syncedVariable <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> newValue<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb1-12">            <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">RequestSerialization</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">();</span></span>
-<span id="cb1-13">        <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span></span>
-<span id="cb1-14">    <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span></span>
-<span id="cb1-15"></span>
-<span id="cb1-16">    <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">public</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">override</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">void</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">OnDeserialization</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">()</span></span>
-<span id="cb1-17">    <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span></span>
-<span id="cb1-18">        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">// Handle deserialized data</span></span>
-<span id="cb1-19">    <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span></span>
-<span id="cb1-20"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span></span>
-<span id="cb1-21"></span>
-<span id="cb1-22"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">// Example of Network Event</span></span>
-<span id="cb1-23"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">public</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">class</span> EventExample <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> UdonSharpBehaviour</span>
-<span id="cb1-24"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span></span>
-<span id="cb1-25">    <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">public</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">void</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">TriggerEvent</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">()</span></span>
-<span id="cb1-26">    <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span></span>
-<span id="cb1-27">        <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">SendCustomNetworkEvent</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>VRC<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">Udon</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">Common</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">Interfaces</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">NetworkEventTarget</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">All</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"HandleEvent"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">);</span></span>
-<span id="cb1-28">    <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span></span>
-<span id="cb1-29"></span>
-<span id="cb1-30">    <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">public</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">void</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">HandleEvent</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">()</span></span>
-<span id="cb1-31">    <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span></span>
-<span id="cb1-32">        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">// Handle the event</span></span>
-<span id="cb1-33">    <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span></span>
-<span id="cb1-34"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
-</section>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<ul>
-<li><strong>Improved Readability</strong>: Clear guidelines enhance the readability of networking code.</li>
-<li><strong>Consistency</strong>: Ensures uniformity in how networking tasks are handled across different projects.</li>
-<li><strong>Efficiency</strong>: Streamlined processes make it easier for developers to implement networking features quickly.</li>
-</ul>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<ul>
-<li><strong>Initial Setup Time</strong>: Establishing and fine-tuning the mental model requires an initial investment of time and resources.</li>
-<li><strong>Limited Flexibility</strong>: Strict adherence to the model may limit creative solutions to unique problems.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Alternative approaches such as manual editing or using different networking models were considered but ultimately impossible as we don’t run VRChat.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>In scenarios where highly specialized or technical networking solutions are required, additional human oversight may be necessary to ensure accuracy and appropriateness.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>We need to understand how networking models work.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-<li>Fire</li>
-<li>MMMaellon</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-<section id="the-byte-counts-of-every-synced-variable-type-in-udon" class="level3">
-<h3 class="anchored" data-anchor-id="the-byte-counts-of-every-synced-variable-type-in-udon">The byte count(s) of every synced variable type in udon</h3>
-<p><a href="https://vxtwitter.com/Centauri2442/status/1747888817518879039">Centauri2442 recorded the byte count(s) of every synced variable type in udon</a></p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 10%">
-<col style="width: 2%">
-<col style="width: 2%">
-<col style="width: 5%">
-<col style="width: 77%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>System Type</th>
-<th>maxByte</th>
-<th>minByte</th>
-<th>variableType</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>System.Boolean</td>
-<td>2</td>
-<td>2</td>
-<td>Bool</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>System.Char</td>
-<td>2</td>
-<td>2</td>
-<td>Char</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>System.Byte</td>
-<td>2</td>
-<td>2</td>
-<td>Byte</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>System.SByte</td>
-<td>2</td>
-<td>2</td>
-<td>SByte</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>System.Int16</td>
-<td>4</td>
-<td>2</td>
-<td>Short</td>
-<td>Swaps every other</td>
-</tr>
-<tr class="even">
-<td>System.UInt16</td>
-<td>4</td>
-<td>2</td>
-<td>UShort</td>
-<td>Swaps every other</td>
-</tr>
-<tr class="odd">
-<td>System.Int32</td>
-<td>8</td>
-<td>4</td>
-<td>Int</td>
-<td>Swaps every other</td>
-</tr>
-<tr class="even">
-<td>System.UInt32</td>
-<td>8</td>
-<td>4</td>
-<td>UInt</td>
-<td>Swaps every other</td>
-</tr>
-<tr class="odd">
-<td>System.Int64</td>
-<td>12</td>
-<td>8</td>
-<td>Long</td>
-<td>Swaps every other</td>
-</tr>
-<tr class="even">
-<td>System.UInt64</td>
-<td>12</td>
-<td>8</td>
-<td>ULong</td>
-<td>Swaps every other</td>
-</tr>
-<tr class="odd">
-<td>System.Single</td>
-<td>8</td>
-<td>4</td>
-<td>Float</td>
-<td>Swaps every other</td>
-</tr>
-<tr class="even">
-<td>System.Double</td>
-<td>12</td>
-<td>8</td>
-<td>Double</td>
-<td>Swaps every other</td>
-</tr>
-<tr class="odd">
-<td>UnityEngine.Vector2</td>
-<td>8</td>
-<td>8</td>
-<td>Vector2</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>UnityEngine.Vector3</td>
-<td>12</td>
-<td>12</td>
-<td>Vector3</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>UnityEngine.Vector4</td>
-<td>16</td>
-<td>16</td>
-<td>Vector4</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>UnityEngine.Quaternion</td>
-<td>16</td>
-<td>16</td>
-<td>Quaternion</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>System.String</td>
-<td>84</td>
-<td>1</td>
-<td>String</td>
-<td>Null: No serialization | 84 + 1 byte per character, byte size allocated per for (84, 88, 92, etc)</td>
-</tr>
-<tr class="even">
-<td>RVCUInt</td>
-<td>8</td>
-<td>8</td>
-<td>RVCUInt</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>UnityEngine.Color</td>
-<td>8</td>
-<td>8</td>
-<td>Color</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>UnityEngine.Color32</td>
-<td>8</td>
-<td>8</td>
-<td>Color32</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>System.BooleanArray</td>
-<td>80</td>
-<td>80</td>
-<td>BooleanArray</td>
-<td>80 + array size in increments of 4 as buffer (80, 84, 88, etc) | Will increase every 4 values (5, 9, 13, etc)</td>
-</tr>
-<tr class="even">
-<td>System.CharArray</td>
-<td>80</td>
-<td>80</td>
-<td>CharArray</td>
-<td>80 + array size in increments of 4 as buffer (80, 84, 88, etc) | Will increase every 4 values (5, 9, 13, etc)</td>
-</tr>
-<tr class="odd">
-<td>System.ByteArray</td>
-<td>80</td>
-<td>80</td>
-<td>ByteArray</td>
-<td>80 + array size in increments of 4 as buffer (80, 84, 88, etc) | Will increase every 4 values (5, 9, 13, etc)</td>
-</tr>
-<tr class="even">
-<td>System.SByteArray</td>
-<td>80</td>
-<td>80</td>
-<td>SByteArray</td>
-<td>80 + array size in increments of 4 as buffer (80, 84, 88, etc) | Will increase every 4 values (5, 9, 13, etc)</td>
-</tr>
-<tr class="odd">
-<td>System.Int16Array</td>
-<td>80</td>
-<td>80</td>
-<td>ShortArray</td>
-<td>80 + array size in increments of 4 as buffer (80, 84, 88, etc) | Will increase every 2 values (3, 5, 7, etc)</td>
-</tr>
-<tr class="even">
-<td>System.UInt16Array</td>
-<td>80</td>
-<td>80</td>
-<td>UShortArray</td>
-<td>80 + array size in increments of 4 as buffer (80, 84, 88, etc) | Will increase every 2 values (3, 5, 7, etc)</td>
-</tr>
-<tr class="odd">
-<td>System.Int32Array</td>
-<td>80</td>
-<td>80</td>
-<td>IntArray</td>
-<td>80 + array size * 4</td>
-</tr>
-<tr class="even">
-<td>System.UInt32Array</td>
-<td>80</td>
-<td>80</td>
-<td>UIntArray</td>
-<td>80 + array size * 4</td>
-</tr>
-<tr class="odd">
-<td>System.Int64Array</td>
-<td>80</td>
-<td>80</td>
-<td>LongArray</td>
-<td>80 + array size * 8</td>
-</tr>
-<tr class="even">
-<td>System.UInt64Array</td>
-<td>80</td>
-<td>80</td>
-<td>ULongArray</td>
-<td>80 + array size * 8</td>
-</tr>
-<tr class="odd">
-<td>System.SingleArray</td>
-<td>80</td>
-<td>80</td>
-<td>FloatArray</td>
-<td>80 + array size * 4</td>
-</tr>
-<tr class="even">
-<td>System.DoubleArray</td>
-<td>80</td>
-<td>80</td>
-<td>DoubleArray</td>
-<td>80 + array size * 8</td>
-</tr>
-<tr class="odd">
-<td>UnityEngine.Vector2Array</td>
-<td>80</td>
-<td>80</td>
-<td>Vector2Array</td>
-<td>80 + array size * 8</td>
-</tr>
-<tr class="even">
-<td>UnityEngine.Vector3Array</td>
-<td>80</td>
-<td>80</td>
-<td>Vector3Array</td>
-<td>80 + array size * 12</td>
-</tr>
-<tr class="odd">
-<td>UnityEngine.Vector4Array</td>
-<td>80</td>
-<td>80</td>
-<td>Vector4Array</td>
-<td>80 + array size * 16</td>
-</tr>
-<tr class="even">
-<td>UnityEngine.QuaternionArray</td>
-<td>80</td>
-<td>80</td>
-<td>QuaternionArray</td>
-<td>80 + array size * 16</td>
-</tr>
-<tr class="odd">
-<td>System.StringArray</td>
-<td>80</td>
-<td>80</td>
-<td>StringArray</td>
-<td>84 + (2, 4, or 8 bytes per character). Size of 0: 84 bytes. Size greater than 0 but with any null values: 0 bytes. Size greater than 0 with all valid strings: 84 + (2, 4, or 8 bytes per character)</td>
-</tr>
-<tr class="even">
-<td>RVCUStringArray</td>
-<td>80</td>
-<td>80</td>
-<td>RVCUStringArray</td>
-<td>84 + (2, 4, or 8 bytes per character). Size of 0: 84 bytes. Size greater than 0 but with any null values: 0 bytes. Size greater than 0 with all valid strings: 84 + (2, 4, or 8 bytes per character)</td>
-</tr>
-<tr class="odd">
-<td>UnityEngine.ColorArray</td>
-<td>80</td>
-<td>80</td>
-<td>ColorArray</td>
-<td>80 + array size * 16</td>
-</tr>
-<tr class="even">
-<td>UnityEngine.Color32Array</td>
-<td>80</td>
-<td>80</td>
-<td>Color32Array</td>
-<td>80 + array size * 4</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="question-how-many-udonsharpbehaviour-instances-can-a-server-have" class="level3">
-<h3 class="anchored" data-anchor-id="question-how-many-udonsharpbehaviour-instances-can-a-server-have">Question: How many UdonSharpBehaviour instances can a server have?</h3>
-<p><strong>Answer:</strong> In VRChat, which uses UdonSharp for scripting, there isn’t a hard limit on the number of <code>UdonSharpBehaviour</code> instances a world (or server instance) can have. However, practical limits are imposed by performance considerations. Each <code>UdonSharpBehaviour</code> consumes memory and processing power, so the total number you can effectively use will depend on the complexity of your scripts and the capabilities of the hardware running the world. It’s essential to optimize your scripts and manage resources efficiently to ensure smooth performance.</p>
-</section>
-<section id="question-can-udonsharpbehaviour-instances-communicate-with-each-other" class="level3">
-<h3 class="anchored" data-anchor-id="question-can-udonsharpbehaviour-instances-communicate-with-each-other">Question: Can UdonSharpBehaviour instances communicate with each other?</h3>
-<p><strong>Answer:</strong> Yes, <code>UdonSharpBehaviour</code> instances can communicate with each other. Here are some ways they can interact:</p>
-<ul>
-<li><strong>Custom Network Events:</strong> You can send custom network events (with zero parameters) to trigger actions in other <code>UdonSharpBehaviour</code> instances. The receiver won’t know who the sender is, and the action will be performed locally on the <code>UdonSharpBehaviour</code>’s current frame.</li>
-<li><strong>Synced Variables:</strong> If you need to send data, it’s better to use synced variables rather than mixing them with network events. When these variables get updated, the <code>OnDeserialization()</code> method will be called. This is a function in <code>UdonSharpBehaviour</code> that you can override to handle any work needed with the updated variables.</li>
-</ul>
-</section>
-<section id="question-how-should-i-represent-the-entire-state-in-a-networked-application" class="level3">
-<h3 class="anchored" data-anchor-id="question-how-should-i-represent-the-entire-state-in-a-networked-application">Question: How should I represent the entire state in a networked application?</h3>
-<p><strong>Answer:</strong> You typically don’t mix network events with synced variables. If you need to send data, just use synced variables. When the variables get updated, <code>OnDeserialization()</code> will be called. That’s a function in <code>UdonSharpBehaviour</code> that you can override. Do all the work needed with the variables in <code>OnDeserialization</code>.</p>
-</section>
-<section id="question-does-using-fieldchangecallbacks-affect-performance-in-space-and-time" class="level3">
-<h3 class="anchored" data-anchor-id="question-does-using-fieldchangecallbacks-affect-performance-in-space-and-time">Question: Does using FieldChangeCallbacks affect performance in space and time?</h3>
-<p><strong>Answer:</strong> There’s an advanced feature called <code>FieldChangeCallbacks</code> that allows for code simplification. Basically, create a C# property with a getter and a setter and specify it as the field change callback. The setter will be called in addition to <code>OnDeserialization</code> when network updates come in. This helps combine the code for local and remote clients in the setter. This is an advanced code-writing optimization for making your code cleaner. No, it does not affect performance in terms of space and time. <code>FieldChangeCallbacks</code> reduces code repetition, thereby simplifying the codebase and making it more maintainable.</p>
-</section>
-<section id="question-how-can-the-order-and-exact-value-changes-of-three-variables-affect-their-interpretation-in-a-networked-system" class="level3">
-<h3 class="anchored" data-anchor-id="question-how-can-the-order-and-exact-value-changes-of-three-variables-affect-their-interpretation-in-a-networked-system">Question: How can the order and exact value changes of three variables affect their interpretation in a networked system?</h3>
-<p><strong>Answer:</strong> Assume we calculate the state of the world independently for each frame, without depending on previous frames. This means that while the exact values of the three variables are crucial for determining the current state, the order of changes within the same frame does not affect the final state interpretation at that frame.</p>
-
-
-</section>
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240715-vrchat-networking-mental-model.html</guid>
-  <pubDate>Fri, 08 Nov 2024 22:16:11 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 00:28:36 GMT</pubDate>
 </item>
 </channel>
 </rss>
