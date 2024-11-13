@@ -18,15 +18,17 @@ We need a system to handle the streaming of long animations in a way that minimi
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
-We have a resource, AnimationStreamingData, which, when exported, is a custom binary resource containing animation pages. Export animation compressed data to this.
+We have a resource, `AnimationStreamingData`, which, when exported, is a custom binary resource containing animation pages. Export animation compressed data to this.
 
 If you have an LRU of pages in the animation resource, you can customize this in the project settings (animation page LRU). I would like to know the number of pages, time, or size. Time is best, say 2/3 seconds.
 
-Have a particular track for streamed animations. Always load the first 2/3 seconds of animation (buffer size). For the rest, while playing the animation, you can use WorkerThreadPool to queue loading resource pages ahead of you on a thread. Always strive to have 2/3 seconds (again, buffer size) ahead of the playback cursor. After you are done with a page, you can just free it.
+Have a particular track for streamed animations. Always load the first 2/3 seconds of animation (buffer size). For the rest, while playing the animation, you can use `WorkerThreadPool` to queue loading resource pages ahead of you on a thread. Always strive to have 2/3 seconds (again, buffer size) ahead of the playback cursor. After you are done with a page, you can just free it.
 
-AnimationStreamingData should be a binary format, custom-made, with all pages saved.
+`AnimationStreamingData` should be a binary format, custom-made, with all pages saved.
 
 When opening this, you should have an index (file offset, size, and position in the timeline) that you load first from it, then stream pages as you go.
+
+### AnimationStreamingData (Stored on Disk)
 
 1. Exporting animation compressed data to `AnimationStreamingData`.
 2. Implementing an LRU (Least Recently Used) cache for animation pages, configurable in the project settings (animation page LRU).
@@ -36,19 +38,46 @@ When opening this, you should have an index (file offset, size, and position in 
 
 ```gdscript
 class AnimationStreamingData:
-    var pages: RingBuffer = RingBuffer.new()  # Custom type for ring buffer
     var index: Array = []
-    var usage: Array = []  # Track usage for LRU
+    var pages: Dictionary = {}
 
     func _init():
-        pass
+        load_index()
 
     func load_index():
         # Load index from binary resource
-        # Initialize RingBuffer with appropriate size
+        pass
+
+    func get_page_info(page_number: int) -> Dictionary:
+        # Retrieve page info from index
+        return index[page_number]
+
+    func store_page(page_number: int, page_data: Dictionary):
+        # Store compressed animation page data
+        pages[page_number] = page_data
+
+    func load_page(page_number: int) -> Dictionary:
+        # Load compressed animation page data
+        return pages.get(page_number, null)
+```
+
+### AnimationStreamingRuntime (Runtime Component)
+
+```gdscript
+class AnimationStreamingRuntime:
+    var pages: RingBuffer = RingBuffer.new()  # Custom type for ring buffer
+    var usage: Array = []  # Track usage for LRU
+    var streaming_data: AnimationStreamingData = AnimationStreamingData.new()
+
+    func _init():
+        streaming_data.load_index()
         var buffer_size: int = 16  # Example size, adjust as needed
         pages.resize(buffer_size)
         usage.resize(buffer_size)
+
+    func fetch_page(page_number: int) -> Dictionary:
+        # Fetch page data from AnimationStreamingData
+        return streaming_data.load_page(page_number)
 
     func stream_page(page_number: int) -> Dictionary:
         # Stream page data from RingBuffer
@@ -83,14 +112,18 @@ class AnimationStreamingData:
                 max_usage = usage[i]
                 lru_index = i
         return lru_index
+```
 
+### AnimationPlayer
+
+```gdscript
 class AnimationPlayer:
     var buffer_size: float = 2.0 / 3.0
     var worker_pool: WorkerThreadPool = WorkerThreadPool.new()
-    var streaming_data: AnimationStreamingData = AnimationStreamingData.new()
+    var runtime: AnimationStreamingRuntime = AnimationStreamingRuntime.new()
 
     func _init():
-        streaming_data.load_index()
+        runtime.streaming_data.load_index()
 
     func play_animation():
         # Load initial buffer
@@ -101,21 +134,23 @@ class AnimationPlayer:
     func load_initial_buffer():
         # Load the first 2/3 seconds of animation into RingBuffer
         for i in range(buffer_size):
-            var page: Dictionary = streaming_data.stream_page(i)
+            var page_info: Dictionary = runtime.streaming_data.get_page_info(i)
+            var page: Dictionary = runtime.fetch_page(page_info)
             if page != null:
-                streaming_data.write_page(page, i)
+                runtime.write_page(page, i)
 
     func stream_pages_ahead():
         # Queue loading of pages ahead of playback cursor
         worker_pool.queue_task(func():
-            var next_page: Dictionary = streaming_data.stream_page(buffer_size)
+            var next_page_info: Dictionary = runtime.streaming_data.get_page_info(buffer_size)
+            var next_page: Dictionary = runtime.fetch_page(next_page_info)
             if next_page != null:
-                streaming_data.write_page(next_page, buffer_size)
+                runtime.write_page(next_page, buffer_size)
         )
 
     func free_page(page: Dictionary):
         # Free page after use
-        streaming_data.pages.advance_read(1)
+        runtime.pages.advance_read(1)
 ```
 
 ## The Benefits
