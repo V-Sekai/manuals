@@ -2,7 +2,7 @@
 
 ## The Context
 
-Animation streaming is a technique for handling extremely long animations. It involves loading only portions of the animation data as needed, which helps manage memory efficiently and ensures smooth playback without requiring the entire animation to be loaded into memory at once.
+Animation streaming is a technique for handling extremely long animations. It involves loading only portions of the animation data as needed, which helps manage memory efficiently and ensures smooth playback without requiring the entire animation to be loaded into memory simultaneously.
 
 ## The Problem Statement
 
@@ -14,9 +14,11 @@ We have a resource, `AnimationStreamingData`, which, when exported, is a custom 
 
 If you have an LRU of pages in the animation resource, you can customize this in the project settings (animation page LRU). I would like to know the number of pages, time, or size. Time is best, say 2/3 seconds.
 
-Have a particular track for streamed animations. Always load the first 2/3 seconds of animation (buffer size). For the rest, while playing the animation, you can use `WorkerThreadPool` to queue loading resource pages ahead of you on a thread. Always strive to have 2/3 seconds (again, buffer size) ahead of the playback cursor. After you are done with a page, you can just free it.
+Have a particular track for streamed animations. Always load the first 2/3 seconds of animation (buffer size). For the rest, while playing the animation, you can use `WorkerThreadPool` to queue loading resource pages ahead of you on a thread. Always strive to have 2/3 seconds (again, buffer size) ahead of the playback cursor. After you are done with a page, you can free it.
 
 `AnimationStreamingData` should be a binary format, custom-made, with all pages saved.
+
+Animation streaming must be restricted to compressed keyframe pages.
 
 When opening this, you should have an index (file offset, size, and position in the timeline) that you load first from it, then stream pages as you go.
 
@@ -46,7 +48,7 @@ class AnimationStreamingData:
         pass
 
     func get_page_info(page_number):
-        # Retrieve page info from index
+        # Retrieve page info from the index
         var page_info = index[page_number]
         return {"file_offset": page_info[0], "size": page_info[1], "position_in_timeline": page_info[2]}
 
@@ -139,7 +141,7 @@ class AnimationPlayer:
 
 ## The Benefits
 
-Efficient memory usage by loading only necessary animation data. This allows for the import of extremely long animations and streaming them, with configurable settings to suit different project needs.
+Efficient memory usage by loading only necessary animation data. This allows for the import and streaming of extremely long animations with configurable settings to suit different project needs.
 
 1. **Character Animations**: In an open-world game, characters may have complex animations such as walking, running, jumping, and interacting with the environment. Animation streaming ensures that only the necessary parts of these animations are loaded, reducing memory usage and improving performance.
 
@@ -147,7 +149,7 @@ Efficient memory usage by loading only necessary animation data. This allows for
 
 3. **Cutscenes and Cinematics**: Long cutscenes and cinematic sequences can be streamed to avoid loading large animation files simultaneously, ensuring smooth transitions and playback.
 
-4. **NPC Interactions**: Non-player characters (NPCs) in open-world games may have varied and lengthy interaction animations. Streaming these animations allows for more complex and varied NPC behaviors without compromising performance.
+4. **NPC Interactions**: Non-player characters (NPCs) in open-world games may have varied and lengthy interaction animations. Streaming these animations allows for more complex and varied NPC behaviours without compromising performance.
 
 ## The Downsides
 
