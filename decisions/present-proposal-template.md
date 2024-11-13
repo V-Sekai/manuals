@@ -14,7 +14,7 @@
 
 ## The Infrequent Use Case
 
-## In Core and Done by Us
+## Why is it in Core and done by us?
 
 ## Status
 
