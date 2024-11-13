@@ -123,8 +123,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
   <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</a>
   <ul class="collapse">
-  <li><a href="#animationstreamingdata-stored-on-disk" id="toc-animationstreamingdata-stored-on-disk" class="nav-link" data-scroll-target="#animationstreamingdata-stored-on-disk">AnimationStreamingData (Stored on Disk)</a></li>
-  <li><a href="#animationstreamingruntime-runtime-component" id="toc-animationstreamingruntime-runtime-component" class="nav-link" data-scroll-target="#animationstreamingruntime-runtime-component">AnimationStreamingRuntime (Runtime Component)</a></li>
+  <li><a href="#animationstreamingdata-stored-on-disk-and-runtime-component" id="toc-animationstreamingdata-stored-on-disk-and-runtime-component" class="nav-link" data-scroll-target="#animationstreamingdata-stored-on-disk-and-runtime-component">AnimationStreamingData (Stored on Disk and Runtime Component)</a></li>
   <li><a href="#animationplayer" id="toc-animationplayer" class="nav-link" data-scroll-target="#animationplayer">AnimationPlayer</a></li>
   </ul></li>
   <li><a href="#the-benefits" id="toc-the-benefits" class="nav-link" data-scroll-target="#the-benefits">The Benefits</a></li>
@@ -169,8 +168,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Have a particular track for streamed animations. Always load the first 2/3 seconds of animation (buffer size). For the rest, while playing the animation, you can use <code>WorkerThreadPool</code> to queue loading resource pages ahead of you on a thread. Always strive to have 2/3 seconds (again, buffer size) ahead of the playback cursor. After you are done with a page, you can just free it.</p>
 <p><code>AnimationStreamingData</code> should be a binary format, custom-made, with all pages saved.</p>
 <p>When opening this, you should have an index (file offset, size, and position in the timeline) that you load first from it, then stream pages as you go.</p>
-<section id="animationstreamingdata-stored-on-disk" class="level3">
-<h3 class="anchored" data-anchor-id="animationstreamingdata-stored-on-disk">AnimationStreamingData (Stored on Disk)</h3>
+<section id="animationstreamingdata-stored-on-disk-and-runtime-component" class="level3">
+<h3 class="anchored" data-anchor-id="animationstreamingdata-stored-on-disk-and-runtime-component">AnimationStreamingData (Stored on Disk and Runtime Component)</h3>
 <ol type="1">
 <li>Exporting animation compressed data to <code>AnimationStreamingData</code>.</li>
 <li>Implementing an LRU (Least Recently Used) cache for animation pages, configurable in the project settings (animation page LRU).</li>
@@ -181,9 +180,14 @@ ul.task-list li input[type="checkbox"] {
 <pre class="gdscript"><code>class AnimationStreamingData:
     var index: Array = []
     var pages: Dictionary = {}
+    var ring_buffer: RingBuffer = RingBuffer.new()  # Custom type for ring buffer
+    var usage: Array = []  # Track usage for LRU
 
     func _init():
         load_index()
+        var buffer_size: int = 16  # Example size, adjust as needed
+        ring_buffer.resize(buffer_size)
+        usage.resize(buffer_size)
 
     func load_index():
         # Load index from binary resource
@@ -199,29 +203,16 @@ ul.task-list li input[type="checkbox"] {
 
     func load_page(page_number: int) -&gt; Dictionary:
         # Load compressed animation page data
-        return pages.get(page_number, null)</code></pre>
-</section>
-<section id="animationstreamingruntime-runtime-component" class="level3">
-<h3 class="anchored" data-anchor-id="animationstreamingruntime-runtime-component">AnimationStreamingRuntime (Runtime Component)</h3>
-<pre class="gdscript"><code>class AnimationStreamingRuntime:
-    var pages: RingBuffer = RingBuffer.new()  # Custom type for ring buffer
-    var usage: Array = []  # Track usage for LRU
-    var streaming_data: AnimationStreamingData = AnimationStreamingData.new()
-
-    func _init():
-        streaming_data.load_index()
-        var buffer_size: int = 16  # Example size, adjust as needed
-        pages.resize(buffer_size)
-        usage.resize(buffer_size)
+        return pages.get(page_number, null)
 
     func fetch_page(page_number: int) -&gt; Dictionary:
         # Fetch page data from AnimationStreamingData
-        return streaming_data.load_page(page_number)
+        return load_page(page_number)
 
     func stream_page(page_number: int) -&gt; Dictionary:
         # Stream page data from RingBuffer
-        if pages.data_left() &gt; 0:
-            var page: Dictionary = pages.read()
+        if ring_buffer.data_left() &gt; 0:
+            var page: Dictionary = ring_buffer.read()
             update_usage(page_number)
             return page
         else:
@@ -229,11 +220,11 @@ ul.task-list li input[type="checkbox"] {
 
     func write_page(page_data: Dictionary, page_number: int):
         # Write page data to RingBuffer
-        if pages.space_left() &lt; 1:
+        if ring_buffer.space_left() &lt; 1:
             # Find and replace the least recently used page
             var lru_index: int = find_lru()
-            pages.write_pos = lru_index
-        pages.write(page_data)
+            ring_buffer.write_pos = lru_index
+        ring_buffer.write(page_data)
         update_usage(page_number)
 
     func update_usage(page_number: int):
@@ -257,10 +248,10 @@ ul.task-list li input[type="checkbox"] {
 <pre class="gdscript"><code>class AnimationPlayer:
     var buffer_size: float = 2.0 / 3.0
     var worker_pool: WorkerThreadPool = WorkerThreadPool.new()
-    var runtime: AnimationStreamingRuntime = AnimationStreamingRuntime.new()
+    var streaming_data: AnimationStreamingData = AnimationStreamingData.new()
 
     func _init():
-        runtime.streaming_data.load_index()
+        streaming_data.load_index()
 
     func play_animation():
         # Load initial buffer
@@ -271,23 +262,23 @@ ul.task-list li input[type="checkbox"] {
     func load_initial_buffer():
         # Load the first 2/3 seconds of animation into RingBuffer
         for i in range(buffer_size):
-            var page_info: Dictionary = runtime.streaming_data.get_page_info(i)
-            var page: Dictionary = runtime.fetch_page(page_info)
+            var page_info: Dictionary = streaming_data.get_page_info(i)
+            var page: Dictionary = streaming_data.fetch_page(page_info)
             if page != null:
-                runtime.write_page(page, i)
+                streaming_data.write_page(page, i)
 
     func stream_pages_ahead():
         # Queue loading of pages ahead of playback cursor
         worker_pool.queue_task(func():
-            var next_page_info: Dictionary = runtime.streaming_data.get_page_info(buffer_size)
-            var next_page: Dictionary = runtime.fetch_page(next_page_info)
+            var next_page_info: Dictionary = streaming_data.get_page_info(buffer_size)
+            var next_page: Dictionary = streaming_data.fetch_page(next_page_info)
             if next_page != null:
-                runtime.write_page(next_page, buffer_size)
+                streaming_data.write_page(next_page, buffer_size)
         )
 
     func free_page(page: Dictionary):
         # Free page after use
-        runtime.pages.advance_read(1)</code></pre>
+        streaming_data.ring_buffer.advance_read(1)</code></pre>
 </section>
 </section>
 <section id="the-benefits" class="level2">
