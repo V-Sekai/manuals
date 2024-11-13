@@ -12,9 +12,9 @@ We need a system to handle the streaming of long animations in a way that minimi
 
 We have a resource, `AnimationStreamingData`, which, when exported, is a custom binary resource containing animation pages. Export animation compressed data to this.
 
-If you have an LRU of pages in the animation resource, you can customize this in the project settings (animation page LRU). I would like to know the number of pages, time, or size. Time is best, say 2/3 seconds.
+If you have an LRU of pages in the animation resource, you can customize this in the project settings (animation page LRU). I would like to know the number of pages, time, or size. Time is best, say 3 seconds.
 
-Have a particular track for streamed animations. Always load the first 2/3 seconds of animation (buffer size). For the rest, while playing the animation, you can use `WorkerThreadPool` to queue loading resource pages ahead of you on a thread. Always strive to have 2/3 seconds (again, buffer size) ahead of the playback cursor. After you are done with a page, you can free it.
+Have a particular track for streamed animations. Always load the first 3 seconds of animation (buffer size). For the rest, while playing the animation, you can use `WorkerThreadPool` to queue loading resource pages ahead of you on a thread. Always strive to have 3 seconds (again, buffer size) ahead of the playback cursor. After you are done with a page, you can free it.
 
 `AnimationStreamingData` should be a binary format, custom-made, with all pages saved.
 
