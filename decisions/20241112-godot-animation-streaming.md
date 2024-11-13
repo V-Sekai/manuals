@@ -18,7 +18,15 @@ We need a system to handle the streaming of long animations in a way that minimi
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
-We propose the creation of a resource called `AnimationStreamingData`, which will be a custom binary resource containing animation pages. The process involves:
+We have a resource, AnimationStreamingData, which, when exported, is a custom binary resource containing animation pages. Export animation compressed data to this.
+
+If you have an LRU of pages in the animation resource, you can customize this in the project settings (animation page LRU). I would like to know the number of pages, time, or size. Time is best, say 2/3 seconds.
+
+Have a particular track for streamed animations. Always load the first 2/3 seconds of animation (buffer size). For the rest, while playing the animation, you can use WorkerThreadPool to queue loading resource pages ahead of you on a thread. Always strive to have 2/3 seconds (again, buffer size) ahead of the playback cursor. After you are done with a page, you can just free it.
+
+AnimationStreamingData should be a binary format, custom-made, with all pages saved.
+
+When opening this, you should have an index (file offset, size, and position in the timeline) that you load first from it, then stream pages as you go.
 
 1. Exporting animation compressed data to `AnimationStreamingData`.
 2. Implementing an LRU (Least Recently Used) cache for animation pages, configurable in the project settings (animation page LRU).
@@ -113,7 +121,7 @@ class AnimationPlayer:
 ## The Benefits
 
 - Efficient memory usage by loading only necessary animation data.
-- Smooth playback of long animations.
+- Let you import extremely long animations and stream them.
 - Configurable settings to suit different project needs.
 
 ## The Downsides
