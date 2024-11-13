@@ -26,7 +26,7 @@ When opening this, you should have an index (file offset, size, and position in 
 
 1. Exporting animation compressed data to `AnimationStreamingData`.
 2. Implementing an LRU (Least Recently Used) cache for animation pages, configurable in the project settings (animation page LRU).
-3. Loading the first 2/3 seconds of animation as a buffer.
+3. Loading the first 3 seconds of animation as a buffer.
 4. Using `WorkerThreadPool` to queue loading resource pages ahead of the playback cursor.
 5. Freeing pages after they are no longer needed.
 
