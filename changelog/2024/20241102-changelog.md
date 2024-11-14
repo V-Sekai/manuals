@@ -22,7 +22,8 @@
 - 🎯 **Godot Lottie** for animated vector graphics is ready to be merged into Godot Master.
 - 🎯 **Godot Manifold** for mesh add, mesh subtraction and mesh overlap is ready to be merged in Godot Master.
 - 🧪 **Animation Node** was merged in godot motion matching.
-  -  [Designing Motion Matching as an animation node](https://github.com/GuilhermeGSousa/godot-motion-matching/discussions/52)
+  - 🧪 Assist with `Add animation node extension` godot engine patch for animation node gdextensions.
+  - 🧪 [Designing Motion Matching as an animation node](https://github.com/GuilhermeGSousa/godot-motion-matching/discussions/52)
 - 🧪 **Godot cpp as C++ module**: Dragos shows us a photo of godot-sandbox as a C++ module.
   * 🧪 We made a way to compile all `gdextensions` as a C++ module by extending `GDExtensionLoader.` [Ughuuu/gdextension-to-module](https://github.com/Ughuuu/gdextension-to-module)
 - 🧪 Uploaded a new **godot vrm for motion matching web demo**. Now, with debugging gizmos. [View Demo](https://ifiregames.itch.io/godot-motion-matching)
