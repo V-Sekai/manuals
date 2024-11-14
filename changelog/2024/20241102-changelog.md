@@ -11,9 +11,9 @@
 - 🚧 [ifiregames.itch.io/godot-motion-matching](https://ifiregames.itch.io/godot-motion-matching)
 - 🧪 [V-Sekai/world-editor](https://github.com/V-Sekai/world-editor)
 - 🚀 [Ughuuu/gdextension-to-module](https://github.com/Ughuuu/gdextension-to-module)
-- 🚀 Walk the Dog is a vector-quantized periodic autoencoder. Walk the Dog is now MIT-licensed opensource. It learns a disconnected 1D phase manifold that aligns motion regardless of morphologies while requiring no paired data or any joint correspondence [PeizhuoLi/walk-the-dog](https://github.com/PeizhuoLi/walk-the-dog)
-- 🚀 Submitted an update to Godot-VRM version 2.1.0 which finally adds much-needed support for Godot 4.3 SkeletonModifier3D, an import (or runtime) option to adjust head hiding method, and several bugfixes. It will be released on the asset library when approved, likely next week, but can be downloaded from github.
-  - Known issues: Node constraints are still imported incorrectly due to not adjusting for rotated bones during retargeting. Newer VRM features such as vrma animation are not yet supported.
+- 🚀 Walk the Dog is a vector-quantized periodic autoencoder. Walk the Dog is now MIT-licensed open source. It learns a disconnected 1D phase manifold that aligns motion regardless of morphologies while requiring no paired data or any joint correspondence [PeizhuoLi/walk-the-dog](https://github.com/PeizhuoLi/walk-the-dog)
+- 🚀 Submitted an update to Godot-VRM version 2.1.0, which finally adds much-needed support for Godot 4.3 SkeletonModifier3D, an import (or runtime) option to adjust the head hiding method, and several bugfixes. It will be released on the asset library when approved, likely next week, but it can be downloaded from GitHub.
+  Known issues: Node constraints are still imported incorrectly because they are not adjusted for rotated bones during retargeting. Newer VRM features, such as VRMA animation, are not yet supported.
 
 ## [Unreleased]
 
