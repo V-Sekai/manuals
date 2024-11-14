@@ -19,8 +19,8 @@
 
 ### Added
 
-- 🧪 **Godot Lottie** for animated vector graphics is ready to be merged into Godot Master.
-- 🧪 **Godot Manifold** for mesh add, mesh subtraction and mesh overlap is ready to be merged in Godot Master.
+- 🎯 **Godot Lottie** for animated vector graphics is ready to be merged into Godot Master.
+- 🎯 **Godot Manifold** for mesh add, mesh subtraction and mesh overlap is ready to be merged in Godot Master.
 - 🧪 **Animation Node** was merged in godot motion matching.
   -  [Designing Motion Matching as an animation node](https://github.com/GuilhermeGSousa/godot-motion-matching/discussions/52)
 - 🧪 **Godot cpp as C++ module**: Dragos shows us a photo of godot-sandbox as a C++ module.
