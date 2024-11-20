@@ -14,7 +14,7 @@
 - 🚀 [Ughuuu/gdextension-to-module](https://github.com/Ughuuu/gdextension-to-module)
 - 🚀 Walk the Dog is a vector-quantized periodic autoencoder. Walk the Dog is now MIT-licensed open source. It learns a disconnected 1D phase manifold that aligns motion regardless of morphologies while requiring no paired data or any joint correspondence [PeizhuoLi/walk-the-dog](https://github.com/PeizhuoLi/walk-the-dog)
 - 🚀 Submitted an update to Godot-VRM version 2.1.0, adding much-needed support for Godot 4.3 SkeletonModifier3D, an import (or runtime) option to adjust the head hiding method, and several bug fixes. It will be released on the asset library when approved, likely next week, but it can be downloaded from GitHub.
-  Known issues: Node constraints are still imported incorrectly because they are not adjusted for rotated bones during retargeting. Newer VRM features, such as VRMA animation, still need to be supported.
+  Known issues: Node constraints are still imported incorrectly because they are not adjusted for rotated bones during retargeting. Newer VRM features, such as VRMA animation, still need support.
 - 🎯 https://github.com/V-Sekai/world-godot and https://github.com/V-Sekai/world-kit are now the new repository of Godot Engine and the world kit.
 
 ## [Unreleased]
@@ -56,9 +56,9 @@ This project does not adhere to [Semantic Versioning](https://semver.org/spec/v2
 
 - Not applicable for this month.
 
-## Ask yourself why the fuck aren't we released yet?
+## Ask yourself why the fuck aren't released yet?
 
-1. No one wants to work on our game because it's a fork of godot engine -> we made godot sandbox.
-1. I don't know how to hyperscale godot networking.
-1. We need things to do - I hate the word content but content.
+1. No one wants to work on our game because it's a fork of the godot engine -> we made a godot sandbox.
+1. I need to learn how to hyper-scale godot networking -> greater than 25 players
+1. We need things to do - I'm not too fond of the word content but content. -> metro transit map
 
