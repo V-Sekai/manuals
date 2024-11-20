@@ -60,5 +60,6 @@ This project does not adhere to [Semantic Versioning](https://semver.org/spec/v2
 
 1. No one wants to work on our game because it's a fork of the godot engine -> we made a godot sandbox.
 1. I need to learn how to hyper-scale godot networking -> greater than 25 players
-1. We need things to do - I'm not too fond of the word content but content. -> metro transit map
+1. We need things to do - I'm not too fond of the word content but content. -> Metro transit map
+2. https://wtfawry.com/
 
