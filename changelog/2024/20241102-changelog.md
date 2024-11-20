@@ -7,7 +7,8 @@
 
 ## [Released]
 
-- 🧪 Updated godot-sandbox [cmake sample](https://github.com/libriscv/godot-sandbox-demo/tree/master/json_diff_sample]
+- 🧪 Updated godot-sandbox [json_diff_sample cmake sample](https://github.com/libriscv/godot-sandbox-demo/tree/master/json_diff_sample)
+- 🧪 Updated godot-sandbox [weight transfer sample](https://github.com/V-Sekai-fire/godot-sandbox-robust-weight-transfer)
 - 🧪 Prototype a repository for visual anomaly detection with Anomalib. [V-Sekai-fire/godot-visual-anomaly-detection](https://github.com/V-Sekai-fire/godot-visual-anomaly-detection)
 - 🚧 [ifiregames.itch.io/godot-motion-matching](https://ifiregames.itch.io/godot-motion-matching)
 - 🧪 [V-Sekai/world-editor](https://github.com/V-Sekai/world-editor)
