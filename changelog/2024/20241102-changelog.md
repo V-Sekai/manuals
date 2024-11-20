@@ -61,6 +61,6 @@ This project does not adhere to [Semantic Versioning](https://semver.org/spec/v2
 ## Ask yourself why the fuck aren't released yet?
 
 1. No one wants to work on our game because it's a fork of the godot engine -> we made a godot-sandbox as a gdextension.
-1. I must learn to hyper-scale godot networking -> greater than 25 players. Shared databases in the cloud are banned. Authoritative ownership schemes are ok.   
+1. I must learn to hyper-scale godot networking -> greater than 25 players. Shared databases in the cloud are not good. Authoritative ownership schemes are ok.   
 1. We need things to do -> Begin a metro transit hub system that connects the world.
 
