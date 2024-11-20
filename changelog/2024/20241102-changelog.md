@@ -7,6 +7,7 @@
 
 ## [Released]
 
+- 🚀 V-Sekai discord onboarding is now enabled.
 - 🧪 Updated godot-sandbox [json_diff_sample cmake sample](https://github.com/libriscv/godot-sandbox-demo/tree/master/json_diff_sample)
 - 🧪 Updated godot-sandbox [weight transfer sample](https://github.com/V-Sekai-fire/godot-sandbox-robust-weight-transfer)
 - 🧪 Prototype a repository for visual anomaly detection with Anomalib. [V-Sekai-fire/godot-visual-anomaly-detection](https://github.com/V-Sekai-fire/godot-visual-anomaly-detection)
