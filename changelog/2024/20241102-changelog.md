@@ -56,3 +56,9 @@ This project does not adhere to [Semantic Versioning](https://semver.org/spec/v2
 
 - Not applicable for this month.
 
+## Ask yourself why the fuck aren't we released yet?
+
+1. No one wants to work on our game because it's a fork of godot engine -> we made godot sandbox.
+1. I don't know how to hyperscale godot networking.
+1. We need things to do - I hate the word content but content.
+
