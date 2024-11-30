@@ -24,7 +24,7 @@
 ### Added
 
 - 🎯 **Godot Lottie** for animated vector graphics is ready to be merged into Godot Master.
-- 🎯 **Godot Manifold** for mesh add, mesh subtraction and mesh overlap is ready to be merged in Godot Master.
+- 🎯 **Godot Manifold** for mesh add, mesh subtraction and mesh overlap is merged in Godot Master 4.4.
 - 🧪 **Animation Node** was merged in godot motion matching.
   - 🧪 Assist with `Add animation node extension` godot engine patch for animation node gdextensions.
   - 🧪 [Designing Motion Matching as an animation node](https://github.com/GuilhermeGSousa/godot-motion-matching/discussions/52)
