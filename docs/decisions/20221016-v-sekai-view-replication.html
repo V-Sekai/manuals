@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,12 +69,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-b462b520c49e3378ea14e691ca3e1ae4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-3ab42859e8ac5ae76f831331553c47dd.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -169,7 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20221016-v-sekai-view-replication.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
@@ -211,45 +211,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>See <code>Variant bytes_to_var_with_objects (PackedByteArray bytes)</code> and <code>PackedByteArray var_to_bytes_with_objects (Variant variable)</code>.</p>
 <section id="create_property_interpolate" class="level5">
 <h5 class="anchored" data-anchor-id="create_property_interpolate">create_property_interpolate</h5>
-<pre class="zig"><code>create_property_interpolate {
-           id: 16 bytes (128-bit)
-   past_entity_id: 16 bytes (128-bit)
-current_entity_id: 16 bytes (128-bit) [to allow interpolation between different entities]
-    user_data: 16 bytes (128-bit) [optional, e.g. opaque third-party identifier to link
-        this transfer (many-to-one) to an external entity]
-     reserved: 16 bytes (128-bit) [reserved, for accounting policy primitives]
-       pending_id: 16 bytes (128-bit) [optional, required to post or void an existing but pending transfer]
-      timeout:  8 bytes (64-bit) [optional, required only for a pending transfer, a quantity of time,
-        i.e. an offset in nanoseconds from timestamp]
-        shard:  4 bytes (32-bit) [required, to enforce isolation by ensuring that all transfers
-        are between entities of the same shard]
-         code:  2 bytes (16-bit) [required, an opaque entity code describing the type
-        of the interpolation, e.g. player, map, prop]
-        flags:  2 bytes (16-bit) [optional, to modify the usage of the reserved field and for future feature expansion.]
-        value:  n bytes (n-bit) [required, variant of the past property and current property,
-        which must be the same for both properties. Uses var_to_bytes_with_objects.]
-    timestamp:  8 bytes (64-bit) [reserved, assigned by the leader before journaling]
-} = n bytes (n CPU cache lines)</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode zig code-with-copy"><code class="sourceCode zig"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>create_property_interpolate {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>           id<span class="op">:</span> <span class="dv">16</span> bytes (<span class="dv">128</span><span class="op">-</span>bit)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>   past_entity_id<span class="op">:</span> <span class="dv">16</span> bytes (<span class="dv">128</span><span class="op">-</span>bit)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>current_entity_id<span class="op">:</span> <span class="dv">16</span> bytes (<span class="dv">128</span><span class="op">-</span>bit) [to allow interpolation between different entities]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    user_data<span class="op">:</span> <span class="dv">16</span> bytes (<span class="dv">128</span><span class="op">-</span>bit) [optional<span class="op">,</span> e<span class="op">.</span>g<span class="op">.</span> <span class="kw">opaque</span> third<span class="op">-</span>party identifier to link</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        this transfer (many<span class="op">-</span>to<span class="op">-</span>one) to an external entity]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>     reserved<span class="op">:</span> <span class="dv">16</span> bytes (<span class="dv">128</span><span class="op">-</span>bit) [reserved<span class="op">,</span> <span class="cf">for</span> accounting policy primitives]</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>       pending_id<span class="op">:</span> <span class="dv">16</span> bytes (<span class="dv">128</span><span class="op">-</span>bit) [optional<span class="op">,</span> required to post <span class="kw">or</span> <span class="dt">void</span> an existing but pending transfer]</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>      timeout<span class="op">:</span>  <span class="dv">8</span> bytes (<span class="dv">64</span><span class="op">-</span>bit) [optional<span class="op">,</span> required only <span class="cf">for</span> a pending transfer<span class="op">,</span> a quantity of time<span class="op">,</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        i<span class="op">.</span>e<span class="op">.</span> an offset in nanoseconds from timestamp]</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        shard<span class="op">:</span>  <span class="dv">4</span> bytes (<span class="dv">32</span><span class="op">-</span>bit) [required<span class="op">,</span> to enforce isolation by ensuring that all transfers</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        are between entities of the same shard]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>         code<span class="op">:</span>  <span class="dv">2</span> bytes (<span class="dv">16</span><span class="op">-</span>bit) [required<span class="op">,</span> an <span class="kw">opaque</span> entity code describing the <span class="dt">type</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        of the interpolation<span class="op">,</span> e<span class="op">.</span>g<span class="op">.</span> player<span class="op">,</span> map<span class="op">,</span> prop]</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        flags<span class="op">:</span>  <span class="dv">2</span> bytes (<span class="dv">16</span><span class="op">-</span>bit) [optional<span class="op">,</span> to modify the usage of the reserved field <span class="kw">and</span> <span class="cf">for</span> future feature expansion<span class="op">.</span>]</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        value<span class="op">:</span>  n bytes (n<span class="op">-</span>bit) [required<span class="op">,</span> variant of the past property <span class="kw">and</span> current property<span class="op">,</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        which must be the same <span class="cf">for</span> both properties<span class="op">.</span> Uses var_to_bytes_with_objects<span class="op">.</span>]</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    timestamp<span class="op">:</span>  <span class="dv">8</span> bytes (<span class="dv">64</span><span class="op">-</span>bit) [reserved<span class="op">,</span> assigned by the leader before journaling]</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>} <span class="op">=</span> n bytes (n CPU cache lines)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="create_property" class="level5">
 <h5 class="anchored" data-anchor-id="create_property">create_property</h5>
-<pre class="zig"><code>   create_property {
-          id: 16 bytes (128-bit)
-       user_data: 16 bytes (128-bit) [optional, opaque third-party identifier to link this account
-        (many-to-one) to an external entity]
-    reserved: 48 bytes (384-bit) [reserved for future accounting policy primitives]
-       shard:  4 bytes (32-bit) [required, to enforce isolation by ensuring that all transfers
-        are between accounts of the same ledger]
-        code:  2 bytes (16-bit) [required, an opaque entity code describing the type
-        of the interpolation, e.g. player, map, prop]
-       flags:  2 bytes (16-bit) [optional, net balance limits:
-        e.g. debits_must_not_exceed_credits or credits_must_not_exceed_debits]
-     past_interpolations_pending: n bytes (n-bit variant. Uses var_to_bytes_with_objects.)
-      past_interpolations_posted: n bytes (n-bit variant. Uses var_to_bytes_with_objects.)
-  current_interpolations_pending: n bytes (n-bit variant. Uses var_to_bytes_with_objects.)
-   current_interpolations_posted: n bytes (n-bit variant. Uses var_to_bytes_with_objects.)
-               timestamp: 8 bytes ( 64-bit) [reserved]
-} = n bytes (n CPU cache lines)</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode zig code-with-copy"><code class="sourceCode zig"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>   create_property {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>          id<span class="op">:</span> <span class="dv">16</span> bytes (<span class="dv">128</span><span class="op">-</span>bit)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>       user_data<span class="op">:</span> <span class="dv">16</span> bytes (<span class="dv">128</span><span class="op">-</span>bit) [optional<span class="op">,</span> <span class="kw">opaque</span> third<span class="op">-</span>party identifier to link this account</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        (many<span class="op">-</span>to<span class="op">-</span>one) to an external entity]</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    reserved<span class="op">:</span> <span class="dv">48</span> bytes (<span class="dv">384</span><span class="op">-</span>bit) [reserved <span class="cf">for</span> future accounting policy primitives]</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>       shard<span class="op">:</span>  <span class="dv">4</span> bytes (<span class="dv">32</span><span class="op">-</span>bit) [required<span class="op">,</span> to enforce isolation by ensuring that all transfers</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        are between accounts of the same ledger]</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        code<span class="op">:</span>  <span class="dv">2</span> bytes (<span class="dv">16</span><span class="op">-</span>bit) [required<span class="op">,</span> an <span class="kw">opaque</span> entity code describing the <span class="dt">type</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        of the interpolation<span class="op">,</span> e<span class="op">.</span>g<span class="op">.</span> player<span class="op">,</span> map<span class="op">,</span> prop]</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>       flags<span class="op">:</span>  <span class="dv">2</span> bytes (<span class="dv">16</span><span class="op">-</span>bit) [optional<span class="op">,</span> net balance limits<span class="op">:</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        e<span class="op">.</span>g<span class="op">.</span> debits_must_not_exceed_credits <span class="kw">or</span> credits_must_not_exceed_debits]</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>     past_interpolations_pending<span class="op">:</span> n bytes (n<span class="op">-</span>bit variant<span class="op">.</span> Uses var_to_bytes_with_objects<span class="op">.</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>      past_interpolations_posted<span class="op">:</span> n bytes (n<span class="op">-</span>bit variant<span class="op">.</span> Uses var_to_bytes_with_objects<span class="op">.</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  current_interpolations_pending<span class="op">:</span> n bytes (n<span class="op">-</span>bit variant<span class="op">.</span> Uses var_to_bytes_with_objects<span class="op">.</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>   current_interpolations_posted<span class="op">:</span> n bytes (n<span class="op">-</span>bit variant<span class="op">.</span> Uses var_to_bytes_with_objects<span class="op">.</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>               timestamp<span class="op">:</span> <span class="dv">8</span> bytes ( <span class="dv">64</span><span class="op">-</span>bit) [reserved]</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>} <span class="op">=</span> n bytes (n CPU cache lines)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 </section>
@@ -807,8 +807,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -919,7 +917,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
