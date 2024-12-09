@@ -1,4 +1,4 @@
-# Proposed: Focus on PCVR and the Web
+# Deprecated: Focus on PCVR and the Web
 
 ## The Context
 
@@ -44,7 +44,7 @@ This proposal aligns with our core values of inclusivity and innovation and will
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Deprecated <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 
