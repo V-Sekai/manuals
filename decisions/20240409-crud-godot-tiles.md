@@ -1,4 +1,4 @@
-# Accepted: "Sunny Park" Test Case for 3D Tile Sync
+# Rejected: "Sunny Park" Test Case for 3D Tile Sync
 
 ## Objective
 
@@ -55,7 +55,7 @@ The V-Sekai development team will be responsible for implementing this proposal.
 
 ## Status
 
-Status: Accepted
+Status: Rejected
 
 ## Decision Makers
 
