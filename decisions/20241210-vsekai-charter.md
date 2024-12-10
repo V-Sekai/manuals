@@ -229,3 +229,4 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
 
 AI assistant Aria assisted with this article.
+
