@@ -40,7 +40,7 @@ We believe in giving power back to individuals through decentralized technology.
 
 We are building this for users of social virtual reality, online collaboration, and communication products. Social VR is growing, and its potential is just starting to be realized.
 
-Even though VR is still new, it has a large potential market, especially with affordable headsets like the Meta Quest. For example, VRChat has between 12,000 and 15,000 concurrent users, with about 4,000 using VR.
+Even though VR is still new, it has a large potential market, especially with affordable headsets like the Meta Quest. For example, VRChat has between 12,000 and 15,000 concurrent users, with about 4,000 using VR in 2019.
 
 **What is your connection to the service & the user group you plan to reach with your product?**
 
