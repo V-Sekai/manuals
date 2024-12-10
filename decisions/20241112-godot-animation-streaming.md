@@ -1,4 +1,4 @@
-# Proposed: Godot Animation streaming
+# Accepted: Godot Animation streaming
 
 ## The Context
 
@@ -170,7 +170,7 @@ The V-Sekai development team will implement this proposal as part of the core fu
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 
