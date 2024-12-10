@@ -1,4 +1,4 @@
-# Proposed: Enhancing VR Book Reading through SVG Optimization
+# Draft: Enhancing VR Book Reading through SVG Optimization
 
 ## Metadata
 

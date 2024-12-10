@@ -1,4 +1,4 @@
-# Proposed: Adoption of Intended Effort Versioning (EffVer) in V-Sekai
+# Draft: Adoption of Intended Effort Versioning (EffVer) in V-Sekai
 
 ## The Context
 
@@ -48,7 +48,7 @@ The implementation of EffVer would be done by the V-Sekai development team and i
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

@@ -1,4 +1,4 @@
-# Proposed: glTF - importer should bind animation players to the closest root node
+# Draft: glTF - importer should bind animation players to the closest root node
 
 ### Context and Problem Statement
 

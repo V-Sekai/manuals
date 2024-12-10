@@ -1,8 +1,8 @@
-# Proposed: Development of a Community Polling Discord Bot Using Vercel and Neon PostgreSQL
+# Draft: Development of a Community Polling Discord Bot Using Vercel and Neon PostgreSQL
 
 ## Metadata
 
-- Status: Proposed
+- Status: Draft
 - Deciders: V-Sekai Technical Team
 - Tags: Discord, Polling, Vercel, Serverless, PostgreSQL, Neon, Reactions, Community Engagement
 

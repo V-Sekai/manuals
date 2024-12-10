@@ -1,4 +1,4 @@
-# Proposed: Enhancing Avatar Expressiveness with AI-Generated Blend Shapes
+# Draft: Enhancing Avatar Expressiveness with AI-Generated Blend Shapes
 
 ## The Context
 

@@ -1,8 +1,8 @@
-# Proposed: Procedure to unmerge and then merge solves a V-Sekai source code broken tree
+# Draft: Procedure to unmerge and then merge solves a V-Sekai source code broken tree
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai
 

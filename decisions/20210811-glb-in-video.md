@@ -1,4 +1,4 @@
-# Proposed: GLB data in a Movie
+# Draft: GLB data in a Movie
 
 ### Context and Problem Statement
 

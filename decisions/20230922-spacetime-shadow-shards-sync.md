@@ -1,8 +1,8 @@
-# Proposed: Streamlining V-Sekai Performance
+# Draft: Streamlining V-Sekai Performance
 
 ## Metadata
 
-- Status: Proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai, Godot, Networking
 

@@ -1,8 +1,8 @@
-# Proposed: Pmx module integration
+# Draft: Pmx module integration
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai, GPT-4
 

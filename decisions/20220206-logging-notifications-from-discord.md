@@ -1,6 +1,6 @@
-# Proposed: Log change notifications using DiscordChatExporter
+# Draft: Log change notifications using DiscordChatExporter
 
-- Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
 

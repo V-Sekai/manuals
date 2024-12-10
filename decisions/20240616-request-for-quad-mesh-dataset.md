@@ -1,4 +1,4 @@
-# Proposed: Triangle to Quad Mesh Dataset Creation
+# Draft: Triangle to Quad Mesh Dataset Creation
 
 ## The Context
 
@@ -44,7 +44,7 @@ The V-Sekai development team will be responsible for creating and converting the
 
 ## Status
 
-Status: Proposed
+Status: Draft
 
 ## Decision Makers
 

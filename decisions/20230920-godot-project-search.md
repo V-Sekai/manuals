@@ -1,8 +1,8 @@
-# Proposed: Use embedding search with Godot Engine projects
+# Draft: Use embedding search with Godot Engine projects
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai
 

@@ -1,6 +1,6 @@
 # Proposal: Stream a character from a webcam to the vmc protocol
 
-- Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
 

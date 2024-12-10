@@ -1,4 +1,4 @@
-# Proposed: Better Godot Engine integration with Blender with gltf extensions
+# Draft: Better Godot Engine integration with Blender with gltf extensions
 
 ### Context and Problem Statement
 

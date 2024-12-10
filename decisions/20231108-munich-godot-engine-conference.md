@@ -1,8 +1,8 @@
-# Proposed: Enhancing V-Sekai Through Effective Documentation
+# Draft: Enhancing V-Sekai Through Effective Documentation
 
 ## Metadata
 
-- Status: Proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai
 

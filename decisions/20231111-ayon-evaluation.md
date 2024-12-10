@@ -1,8 +1,8 @@
-# Proposed: Evaluate AYON pipeline platform on hosted cloud services
+# Draft: Evaluate AYON pipeline platform on hosted cloud services
 
 ## Metadata
 
-- Status: Proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai
 

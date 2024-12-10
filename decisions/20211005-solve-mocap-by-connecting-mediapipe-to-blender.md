@@ -1,4 +1,4 @@
-# Proposed: Solve Mocap By Connecting Mediapipe to Blender
+# Draft: Solve Mocap By Connecting Mediapipe to Blender
 
 ## Context and Problem Statement
 

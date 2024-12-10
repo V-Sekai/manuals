@@ -1,4 +1,4 @@
-# Proposed: Spreadsheet Animation Preview
+# Draft: Spreadsheet Animation Preview
 
 ### Context and Problem Statement
 

@@ -1,4 +1,4 @@
-# Proposed: Urban Navigator: The City Unveiled
+# Draft: Urban Navigator: The City Unveiled
 
 ## Metadata
 

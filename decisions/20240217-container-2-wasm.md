@@ -1,4 +1,4 @@
-# Proposed: Container2Wasm Integration in V-Sekai
+# Draft: Container2Wasm Integration in V-Sekai
 
 ## Context
 
@@ -41,7 +41,7 @@ The integration of `container2wasm` will be done by the V-Sekai development team
 
 ## Status
 
-Status: Proposed
+Status: Draft
 
 ## Decision Makers
 

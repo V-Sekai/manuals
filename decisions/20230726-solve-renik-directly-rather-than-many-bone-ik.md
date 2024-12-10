@@ -1,8 +1,8 @@
-# Proposed: Solve Renik directly rather than through many bone ik
+# Draft: Solve Renik directly rather than through many bone ik
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai
 

@@ -1,6 +1,6 @@
 # Proposal: Bake blend shapes to skeletons for performance
 
-- Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
 - Tags: V-Sekai,
 

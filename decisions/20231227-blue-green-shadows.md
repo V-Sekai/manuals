@@ -1,4 +1,4 @@
-# Proposed: Blue Green new shadows for new avatars
+# Draft: Blue Green new shadows for new avatars
 
 ## Metadata
 

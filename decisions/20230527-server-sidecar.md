@@ -1,8 +1,8 @@
-# Proposed: Efficiently managing and synchronizing game data with a server sidecar
+# Draft: Efficiently managing and synchronizing game data with a server sidecar
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai, Bioblaze Payne, fire
 - Tags: V-Sekai, GPT-4
 

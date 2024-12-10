@@ -1,4 +1,4 @@
-# Proposed: Improve Meshing Results by Subdivision in Godot Engine
+# Draft: Improve Meshing Results by Subdivision in Godot Engine
 
 ## Context and Problem Statement
 

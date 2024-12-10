@@ -1,8 +1,8 @@
-# Proposed: Llama CPP AI Model NPC
+# Draft: Llama CPP AI Model NPC
 
 ## Metadata
 
-- Status: Proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai, AI, NPC, Godot 4
 

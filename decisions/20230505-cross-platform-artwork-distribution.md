@@ -1,8 +1,8 @@
-# Proposed: Enhancing Cross-Platform Compatibility and User Experience for V-Sekai VR Social Players
+# Draft: Enhancing Cross-Platform Compatibility and User Experience for V-Sekai VR Social Players
 
 ## Metadata
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai, fire
 - Tags: V-Sekai, ChatGPT-4
 

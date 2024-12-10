@@ -1,4 +1,4 @@
-# Proposed: Reduce Size Difference Between Capsules and Mesh Volume
+# Draft: Reduce Size Difference Between Capsules and Mesh Volume
 
 ## The Context
 
@@ -47,7 +47,7 @@ I have no idea.
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

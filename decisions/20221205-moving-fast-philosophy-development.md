@@ -1,6 +1,6 @@
-# Proposed: Move fast without breaking things for V-Sekai
+# Draft: Move fast without breaking things for V-Sekai
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
 - Tags: V-Sekai,
 

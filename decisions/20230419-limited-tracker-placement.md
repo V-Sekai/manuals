@@ -1,4 +1,4 @@
-# Proposed: Capturing accurate body movements with limited tracker placement
+# Draft: Capturing accurate body movements with limited tracker placement
 
 ### Metadata
 

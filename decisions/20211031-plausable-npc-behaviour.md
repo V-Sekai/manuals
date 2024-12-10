@@ -1,4 +1,4 @@
-# Proposed: Plausible npc behavior
+# Draft: Plausible npc behavior
 
 ### Context and Problem Statement
 

@@ -1,4 +1,4 @@
-# Proposed: Hit a collaborate button to load up into V-Sekai
+# Draft: Hit a collaborate button to load up into V-Sekai
 
 ### Context and Problem Statement
 

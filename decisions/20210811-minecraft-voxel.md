@@ -1,4 +1,4 @@
-# Proposed: Import Minecraft worlds to Godot Engine
+# Draft: Import Minecraft worlds to Godot Engine
 
 ### Context and Problem Statement
 

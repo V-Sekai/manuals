@@ -1,4 +1,4 @@
-# Proposed: Trial install of Gravity for Kubernetes
+# Draft: Trial install of Gravity for Kubernetes
 
 - Status: rejected
 

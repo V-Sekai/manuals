@@ -1,4 +1,4 @@
-# Proposed: Retarget VRM Motion Blender Workflow
+# Draft: Retarget VRM Motion Blender Workflow
 
 ## Context and Problem Statement
 

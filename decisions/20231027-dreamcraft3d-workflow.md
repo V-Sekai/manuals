@@ -1,4 +1,4 @@
-# Proposed: DreamCraft3D - A Hierarchical 3D Content Generation Method
+# Draft: DreamCraft3D - A Hierarchical 3D Content Generation Method
 
 ## Metadata
 

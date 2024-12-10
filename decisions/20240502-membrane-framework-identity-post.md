@@ -1,4 +1,4 @@
-# Proposed: Process the glTF2 input file and return it as is
+# Draft: Process the glTF2 input file and return it as is
 
 ## The Context
 
@@ -55,7 +55,7 @@ This feature will be implemented by the V-Sekai development team.
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

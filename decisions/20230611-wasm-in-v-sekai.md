@@ -1,8 +1,8 @@
-# Proposed: Wasm in V-Sekai Proposal
+# Draft: Wasm in V-Sekai Proposal
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai, fire
 - Tags: V-Sekai
 

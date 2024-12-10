@@ -1,8 +1,8 @@
-# Proposed: A Potential Solution for V-Sekai's Identifier Assignment Challenge
+# Draft: A Potential Solution for V-Sekai's Identifier Assignment Challenge
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai, fire
 - Tags: V-Sekai, AI-augmented
 

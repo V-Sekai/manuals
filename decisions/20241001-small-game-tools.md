@@ -1,4 +1,4 @@
-# Proposed: Small V-Sekai Creation Tools
+# Draft: Small V-Sekai Creation Tools
 
 ## The Context
 
@@ -38,7 +38,7 @@ This initiative aligns with our core mission to innovate within accessible VR an
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

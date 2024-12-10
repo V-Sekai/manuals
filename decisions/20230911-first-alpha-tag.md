@@ -1,8 +1,8 @@
-# Proposed: Implementing Semantic Versioning for Alpha Releases in V-Sekai
+# Draft: Implementing Semantic Versioning for Alpha Releases in V-Sekai
 
 ## Metadata
 
-- Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+- Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 - Deciders: V-Sekai
 - Tags: V-Sekai, Semantic Versioning, Alpha Release
 

@@ -1,4 +1,4 @@
-# Proposed: ChatGPT-4 Based Proposal Prompt System
+# Draft: ChatGPT-4 Based Proposal Prompt System
 
 ## Context
 
@@ -36,7 +36,7 @@ The system will be developed and maintained by the V-Sekai development team.
 
 ## Status
 
-Status: Proposed
+Status: Draft
 
 ## Decision Makers
 

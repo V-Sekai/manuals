@@ -14,7 +14,7 @@ Improve the 3D import functionality in Godot Engine for V-Sekai by enhancing the
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai, GPT-4
 

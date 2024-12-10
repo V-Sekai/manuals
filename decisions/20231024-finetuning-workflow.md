@@ -1,8 +1,8 @@
-# Proposed: Enhancing Task-Specific Model Performance through Fine-Tuning with Axolotl
+# Draft: Enhancing Task-Specific Model Performance through Fine-Tuning with Axolotl
 
 ## Metadata
 
-- Status: Proposed
+- Status: Draft
 - Deciders: V-Sekai, fire
 - Tags: V-Sekai, Model Fine-tuning, Axolotl
 

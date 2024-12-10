@@ -1,8 +1,8 @@
-# Proposed: Have two groups move towards each other battle demo
+# Draft: Have two groups move towards each other battle demo
 
 ### Metadata
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
 

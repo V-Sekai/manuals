@@ -1,8 +1,8 @@
-# Proposed: Ship Godot Engine VRM1 to solve portable humanoid avatars
+# Draft: Ship Godot Engine VRM1 to solve portable humanoid avatars
 
 ## Metadata
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai, fire, lyuma
 - Tags: V-Sekai, ai copilot
 

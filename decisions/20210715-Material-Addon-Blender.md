@@ -1,4 +1,4 @@
-# Proposed: Material Addon Blender
+# Draft: Material Addon Blender
 
 ### Context and Problem Statement
 

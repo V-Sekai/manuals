@@ -1,6 +1,6 @@
-# Proposed: To remember how to update the engine and game write a procedure
+# Draft: To remember how to update the engine and game write a procedure
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
 

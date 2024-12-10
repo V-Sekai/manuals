@@ -1,8 +1,8 @@
-# Proposed: Adopt best practices for product development
+# Draft: Adopt best practices for product development
 
 ### Metadata
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
 

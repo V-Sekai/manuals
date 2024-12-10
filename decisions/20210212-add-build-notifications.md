@@ -1,4 +1,4 @@
-# Proposed: Add build notifications
+# Draft: Add build notifications
 
 ## Context and Problem Statement
 

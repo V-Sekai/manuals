@@ -1,4 +1,4 @@
-# Proposed: Material Shader Graphic Shirt with Sharp Edges
+# Draft: Material Shader Graphic Shirt with Sharp Edges
 
 ## The Context
 
@@ -63,7 +63,7 @@ This feature will be developed by the V-Sekai development team and will form an 
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

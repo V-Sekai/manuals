@@ -1,4 +1,4 @@
-# Proposed: CICD Export V-Sekai
+# Draft: CICD Export V-Sekai
 
 ### Context and Problem Statement
 

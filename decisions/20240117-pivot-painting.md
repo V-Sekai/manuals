@@ -1,4 +1,4 @@
-# Proposed: Provide Pivot Painting Resources
+# Draft: Provide Pivot Painting Resources
 
 ## Metadata
 

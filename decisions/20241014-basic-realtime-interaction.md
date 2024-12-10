@@ -1,4 +1,4 @@
-# Proposed: Basic Real-Time Interaction for Character and World Scenes
+# Draft: Basic Real-Time Interaction for Character and World Scenes
 
 ## The Context
 
@@ -63,7 +63,7 @@ This feature is core to the project's mission of enhancing interactive capabilit
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

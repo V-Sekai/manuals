@@ -1,4 +1,4 @@
-# Proposed: Use Bundlex for Binding GDExtension to Elixir for Libgodot to Implement a Distributed Simulation
+# Draft: Use Bundlex for Binding GDExtension to Elixir for Libgodot to Implement a Distributed Simulation
 
 ## Context
 
@@ -57,7 +57,7 @@ The V-Sekai development team will implement this proposal.
 
 ## Status
 
-Status: Proposed
+Status: Draft
 
 ## Decision Makers
 

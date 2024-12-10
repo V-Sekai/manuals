@@ -1,8 +1,8 @@
-# Proposed: No traversal loading screen
+# Draft: No traversal loading screen
 
 ### Metadata
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
 

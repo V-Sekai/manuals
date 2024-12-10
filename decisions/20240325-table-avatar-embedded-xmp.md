@@ -1,4 +1,4 @@
-# Proposed: for 3d Asset Schema Design and Database Backend Selection
+# Draft: for 3d Asset Schema Design and Database Backend Selection
 
 ## Context
 
@@ -46,7 +46,7 @@ The schema design and database backend selection will be implemented by the V-Se
 
 ## Status
 
-Status: Proposed
+Status: Draft
 
 ## Decision Makers
 

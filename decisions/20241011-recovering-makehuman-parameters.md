@@ -1,4 +1,4 @@
-# Proposed: Recovering MakeHuman Parameters Using Depth Map Comparison with Godot Engine
+# Draft: Recovering MakeHuman Parameters Using Depth Map Comparison with Godot Engine
 
 ## The Context
 
@@ -72,7 +72,7 @@ This project aligns with our core mission of enhancing digital interaction exper
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

@@ -1,4 +1,4 @@
-# Proposed: Maximum Streaming Bill of Materials Setup for Motion Capture
+# Draft: Maximum Streaming Bill of Materials Setup for Motion Capture
 
 ## The Context
 
@@ -52,7 +52,7 @@ The V-Sekai development team will handle the integration and setup of the propos
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

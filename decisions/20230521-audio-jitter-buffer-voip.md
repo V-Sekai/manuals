@@ -1,8 +1,8 @@
-# Proposed: Improving Jitter-Buffer Implementation for Voice Chat in V-Sekai Projects
+# Draft: Improving Jitter-Buffer Implementation for Voice Chat in V-Sekai Projects
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai, lyuma, Dreadpon,
 - Tags: V-Sekai, GPT-4, jitter-buffer, voice-chat, godot-speech, audio-quality, adaptive-jitter-buffer, Speex
 

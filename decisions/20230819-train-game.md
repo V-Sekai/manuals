@@ -1,8 +1,8 @@
-# Proposed: Following Tracks: Enhancing VR Train Station Simulation in V-Sekai using Godot Engine
+# Draft: Following Tracks: Enhancing VR Train Station Simulation in V-Sekai using Godot Engine
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai, Godot Engine, VR Development
 

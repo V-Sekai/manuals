@@ -1,8 +1,8 @@
-# Proposed: Port Godot Jolt from GDExtension to C++ Module
+# Draft: Port Godot Jolt from GDExtension to C++ Module
 
 ## Metadata
 
-- Status: Proposed
+- Status: Draft
 - Deciders: v-sekai, fire
 - Tags: Godot, Jolt, GDExtension, C++ Module, SCons, CMake
 

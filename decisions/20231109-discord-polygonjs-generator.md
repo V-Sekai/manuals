@@ -1,8 +1,8 @@
-# Proposed: Character Customization Discord Bot PoC for V-Sekai
+# Draft: Character Customization Discord Bot PoC for V-Sekai
 
 ## Metadata
 
-- Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+- Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 - Deciders: V-Sekai, fire
 - Tags: V-Sekai, Character Customization, Discord Bot, PoC
 

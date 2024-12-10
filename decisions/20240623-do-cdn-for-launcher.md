@@ -1,4 +1,4 @@
-# Proposed: Use GitHub Actions and Digital Ocean Spaces for a V-Sekai Launcher
+# Draft: Use GitHub Actions and Digital Ocean Spaces for a V-Sekai Launcher
 
 ## Context
 
@@ -40,7 +40,7 @@ This proposal is core to the V-Sekai project and will be implemented by the V-Se
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

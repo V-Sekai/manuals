@@ -1,4 +1,4 @@
-# Proposed: Transfer animation by baking reset
+# Draft: Transfer animation by baking reset
 
 ## Context and Problem Statement
 

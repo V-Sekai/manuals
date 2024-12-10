@@ -1,8 +1,8 @@
-# Proposed: Developing a Unified Model for Speech-to-Facial Shape Generation Using Outlines 〰 Library
+# Draft: Developing a Unified Model for Speech-to-Facial Shape Generation Using Outlines 〰 Library
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai
 

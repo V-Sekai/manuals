@@ -1,8 +1,8 @@
-# Proposed: Valve VR Ecosystem with Quest 3
+# Draft: Valve VR Ecosystem with Quest 3
 
 ## Metadata
 
-- Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+- Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 - Deciders: V-Sekai
 - Tags: V-Sekai, Valve VR Ecosystem, Quest 3
 

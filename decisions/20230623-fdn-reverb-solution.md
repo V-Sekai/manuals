@@ -1,8 +1,8 @@
-# Proposed: Implementing Feedback Delay Networks for Enhanced Audio Reverb Simulation in V-Sekai
+# Draft: Implementing Feedback Delay Networks for Enhanced Audio Reverb Simulation in V-Sekai
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai, ellenhp, fire
 - Tags: V-Sekai, ai assisted
 

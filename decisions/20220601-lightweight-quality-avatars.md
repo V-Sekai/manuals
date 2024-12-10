@@ -1,4 +1,4 @@
-# Proposed: Lightweight quality avatars
+# Draft: Lightweight quality avatars
 
 ### Describe the status of the issue.
 

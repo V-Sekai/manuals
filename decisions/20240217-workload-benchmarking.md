@@ -1,4 +1,4 @@
-# Proposed: for using workloads to emulate the usage patterns
+# Draft: for using workloads to emulate the usage patterns
 
 ## Context
 

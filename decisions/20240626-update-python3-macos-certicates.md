@@ -1,4 +1,4 @@
-# Proposed: Update python3 macOS Certificates
+# Draft: Update python3 macOS Certificates
 
 ## The Context
 
@@ -82,7 +82,7 @@ The proposed solution is core to our operations as it directly impacts the funct
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

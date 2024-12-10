@@ -1,8 +1,8 @@
-# Proposed: Mesh Transformer Expressive Facial Features
+# Draft: Mesh Transformer Expressive Facial Features
 
 ## Metadata
 
-- Status: Proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai, first rank
 

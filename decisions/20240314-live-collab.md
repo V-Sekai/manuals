@@ -1,4 +1,4 @@
-# Proposed: Real-Time Motion Capture and Animation Synchronization
+# Draft: Real-Time Motion Capture and Animation Synchronization
 
 ## Context
 

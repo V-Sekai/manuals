@@ -1,4 +1,4 @@
-# Proposed: Create SOP for VRM #creation
+# Draft: Create SOP for VRM #creation
 
 ### Context and Problem Statement
 

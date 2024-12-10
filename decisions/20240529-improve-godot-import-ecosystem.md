@@ -1,4 +1,4 @@
-# Proposed: Improve the Godot Ecosystem
+# Draft: Improve the Godot Ecosystem
 
 ## The Context
 
@@ -61,7 +61,7 @@ The proposed improvements will be implemented in the core of the Godot engine an
 
 ## Status
 
-Status: Proposed
+Status: Draft
 
 ## Decision Makers
 

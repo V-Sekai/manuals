@@ -1,4 +1,4 @@
-# Proposed: Test Google Mediapipe
+# Draft: Test Google Mediapipe
 
 ## Context and Problem Statement
 

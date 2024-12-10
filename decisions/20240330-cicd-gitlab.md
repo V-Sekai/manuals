@@ -1,4 +1,4 @@
-# Proposed: CI/CD Setup with Docker and Other Platforms
+# Draft: CI/CD Setup with Docker and Other Platforms
 
 ## Context
 
@@ -55,7 +55,7 @@ This initiative is core to our mission of enhancing the Godot Engine with social
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

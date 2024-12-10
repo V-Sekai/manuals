@@ -1,6 +1,6 @@
-# Proposed: Integrate with blender
+# Draft: Integrate with blender
 
-- Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
 

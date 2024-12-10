@@ -1,4 +1,4 @@
-# Proposed: Hardsurface vs Organic
+# Draft: Hardsurface vs Organic
 
 ## Metadata
 

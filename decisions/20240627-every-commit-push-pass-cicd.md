@@ -1,4 +1,4 @@
-# Proposed: Every Commit Push Pass Cicd
+# Draft: Every Commit Push Pass Cicd
 
 ## The Context
 
@@ -49,7 +49,7 @@ This change will be implemented by the V-Sekai development team and will become 
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

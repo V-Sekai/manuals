@@ -1,4 +1,4 @@
-# Proposed: V-Sekai: My Life as a Princess
+# Draft: V-Sekai: My Life as a Princess
 
 ## The Context
 
@@ -133,7 +133,7 @@ In the initial prototype, you explore the cave yourself. In "V-Sekai: My Life as
 
 ## Status
 
-Status: Proposed
+Status: Draft
 
 ## Decision Makers
 

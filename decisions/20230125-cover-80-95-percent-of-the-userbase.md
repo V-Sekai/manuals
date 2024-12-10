@@ -1,8 +1,8 @@
-# Proposed: Cover 80% to 95% of the player base.
+# Draft: Cover 80% to 95% of the player base.
 
 ### Metadata
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
 

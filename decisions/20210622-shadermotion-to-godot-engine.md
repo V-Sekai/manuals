@@ -1,4 +1,4 @@
-# Proposed: Convert #shadermotion to be played in Godot Engine
+# Draft: Convert #shadermotion to be played in Godot Engine
 
 ## Context and Problem Statement
 

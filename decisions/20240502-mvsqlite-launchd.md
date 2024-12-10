@@ -1,4 +1,4 @@
-# Proposed: Launching the mvsqlite rdbms server
+# Draft: Launching the mvsqlite rdbms server
 
 ## Context
 
@@ -119,7 +119,7 @@ This solution was developed in-house by the V-Sekai development team.
 
 ## Status
 
-Status: Proposed
+Status: Draft
 
 ## Decision Makers
 

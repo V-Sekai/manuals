@@ -1,4 +1,4 @@
-# Proposed: Integrating Helm for Kubernetes Runner Installation with S3 Cache
+# Draft: Integrating Helm for Kubernetes Runner Installation with S3 Cache
 
 ## Context
 
@@ -105,7 +105,7 @@ This initiative aligns with our core mission of developing social VR capabilitie
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

@@ -1,4 +1,4 @@
-# Proposed: Stress Testing Godot Engine's Networking System
+# Draft: Stress Testing Godot Engine's Networking System
 
 ## Context
 
@@ -74,7 +74,7 @@ The proposed stress testing will be conducted by the V-Sekai development team.
 
 ## Status
 
-Status: Proposed
+Status: Draft
 
 ## Decision Makers
 

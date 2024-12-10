@@ -1,4 +1,4 @@
-# Proposed: Neural Blend Shape Rigging
+# Draft: Neural Blend Shape Rigging
 
 ### Context and Problem Statement
 

@@ -1,8 +1,8 @@
-# Proposed: Game simulation server sidekick process
+# Draft: Game simulation server sidekick process
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai, Godot Engine, khepri, elixir
 

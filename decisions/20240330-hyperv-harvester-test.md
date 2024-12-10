@@ -1,4 +1,4 @@
-# Proposed: Hyperv windows Harvester Test
+# Draft: Hyperv windows Harvester Test
 
 ## The Context
 
@@ -43,7 +43,7 @@ The implementation of this proposal will be carried out by our internal developm
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

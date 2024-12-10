@@ -1,4 +1,4 @@
-# Proposed: Evaluate three proposals for V-Sekai content distribution
+# Draft: Evaluate three proposals for V-Sekai content distribution
 
 ## The Context
 
@@ -54,7 +54,7 @@ We will maintain the core functionality of the sandbox and basic loaders, ensuri
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

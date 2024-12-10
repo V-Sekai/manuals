@@ -1,4 +1,4 @@
-# Proposed: Town Courier
+# Draft: Town Courier
 
 ## The Context
 
@@ -34,7 +34,7 @@ The core gameplay mechanics, including movement, item pickup, and quest assignme
 
 ## Status
 
-Status: Proposed
+Status: Draft
 
 ## Decision Makers
 

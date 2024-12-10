@@ -1,8 +1,8 @@
-# Proposed: Mesh Transformer Clothing
+# Draft: Mesh Transformer Clothing
 
 ## Metadata
 
-- Status: Proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai, second rank
 

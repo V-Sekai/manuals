@@ -1,4 +1,4 @@
-# Proposed: Updater No-Op Implementation Using Velopack
+# Draft: Updater No-Op Implementation Using Velopack
 
 ## The Context
 
@@ -57,7 +57,7 @@ Handled internally to ensure seamless integration with Velopack.
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

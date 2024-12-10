@@ -1,8 +1,8 @@
-# Proposed: Adopting Neon's Bottomless Storage with S3-Compatible Object Store for Edge CDN Data Management
+# Draft: Adopting Neon's Bottomless Storage with S3-Compatible Object Store for Edge CDN Data Management
 
 ## Metadata
 
-- Status: Proposed
+- Status: Draft
 - Deciders: V-Sekai, Fire
 - Tags: V-Sekai, Neon, Edge Hosting, Bottomless Storage, S3 Compatible, CDN, PostgreSQL, `bytea`
 

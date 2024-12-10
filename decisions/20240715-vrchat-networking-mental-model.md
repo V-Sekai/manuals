@@ -1,4 +1,4 @@
-# Proposed: Create a Conceptual Model of VRChat Networking
+# Draft: Create a Conceptual Model of VRChat Networking
 
 ## The Context
 
@@ -88,7 +88,7 @@ We need to understand how networking models work.
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

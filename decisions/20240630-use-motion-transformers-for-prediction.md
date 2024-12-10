@@ -1,4 +1,4 @@
-# Proposed: Use motion transformers for motion prediction
+# Draft: Use motion transformers for motion prediction
 
 ## MotionGPT: Human Motion as Foreign Language
 
@@ -49,7 +49,7 @@ This proposal is core to our project as it directly impacts the realism and user
 
 ### Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ### Decision Makers
 

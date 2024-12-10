@@ -1,8 +1,8 @@
-# Proposed: Generating Random Text Data for testing V-Sekai systems
+# Draft: Generating Random Text Data for testing V-Sekai systems
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai, Bioblaze Payne, fire
 - Tags: V-Sekai, GPT-4
 

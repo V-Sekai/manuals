@@ -1,4 +1,4 @@
-# Proposed: Art Direction in V-Sekai Process
+# Draft: Art Direction in V-Sekai Process
 
 ## The Context
 
@@ -44,7 +44,7 @@ This proposal aligns with our core values of efficiency and professionalism and 
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

@@ -1,4 +1,4 @@
-# Proposed: Recording demo checklist
+# Draft: Recording demo checklist
 
 ### Context and Problem Statement
 

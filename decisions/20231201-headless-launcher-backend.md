@@ -1,4 +1,4 @@
-# Proposed: Headless Launcher Backend with Elixir and Server-Side CockroachDB
+# Draft: Headless Launcher Backend with Elixir and Server-Side CockroachDB
 
 ## Metadata
 

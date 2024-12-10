@@ -1,4 +1,4 @@
-# Proposed: Dataset Scaling for Training Mesh Transformer
+# Draft: Dataset Scaling for Training Mesh Transformer
 
 ## The Context
 
@@ -40,7 +40,7 @@ The size of the dataset required for training a model effectively depends on the
 
 ## Status
 
-Status: Proposed 
+Status: Draft 
 
 ## Decision Makers
 

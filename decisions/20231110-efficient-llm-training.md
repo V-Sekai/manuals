@@ -1,8 +1,8 @@
-# Proposed: Efficient Training of LLMs in V-Sekai
+# Draft: Efficient Training of LLMs in V-Sekai
 
 ## Metadata
 
-- Status: Proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai, LLM, Training
 

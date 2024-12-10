@@ -1,4 +1,4 @@
-# Proposed: Workflows for 3D Model Conversion
+# Draft: Workflows for 3D Model Conversion
 
 ## The Context
 
@@ -50,7 +50,7 @@ This tool would be developed in-house by the V-Sekai development team.
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

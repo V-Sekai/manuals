@@ -1,8 +1,8 @@
-# Proposed: Increase variety and quality with generated animation trees
+# Draft: Increase variety and quality with generated animation trees
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai, ai assisted
 

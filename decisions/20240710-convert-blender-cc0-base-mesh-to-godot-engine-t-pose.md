@@ -1,4 +1,4 @@
-# Proposed: Convert Blender CC0 Base Mesh to Godot Engine T-Pose
+# Draft: Convert Blender CC0 Base Mesh to Godot Engine T-Pose
 
 ## The Context
 
@@ -96,7 +96,7 @@ This proposal aligns with our core values of efficiency and professionalism and 
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

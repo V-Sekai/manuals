@@ -1,8 +1,8 @@
-# Proposed: Streamlining Game Development with AI-Based Aria's Guidance
+# Draft: Streamlining Game Development with AI-Based Aria's Guidance
 
 ## Metadata
 
-- Status: Proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai, AI, Game Development, Outlier Detection
 

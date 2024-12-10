@@ -1,4 +1,4 @@
-# Proposed: Implementing Advanced Training Simulators in V-Sekai
+# Draft: Implementing Advanced Training Simulators in V-Sekai
 
 ## Metadata
 

@@ -1,4 +1,4 @@
-# Proposed: We have too many branches on V-Sekai/godot.
+# Draft: We have too many branches on V-Sekai/godot.
 
 ### Context and Problem Statement
 

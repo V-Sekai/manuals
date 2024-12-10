@@ -1,4 +1,4 @@
-# Proposed: Can I use V-Sekai for 3d assets & 3d extensions?
+# Draft: Can I use V-Sekai for 3d assets & 3d extensions?
 
 ## The Context
 
@@ -34,7 +34,7 @@ This project would be developed and maintained by the V-Sekai development team.
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

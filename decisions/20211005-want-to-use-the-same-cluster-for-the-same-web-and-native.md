@@ -1,4 +1,4 @@
-# Proposed: Want to use the same cluster for the same web and native.
+# Draft: Want to use the same cluster for the same web and native.
 
 ### Context and Problem Statement
 

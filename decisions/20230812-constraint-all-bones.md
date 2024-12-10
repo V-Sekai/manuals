@@ -1,4 +1,4 @@
-# Proposed: Constrain the entire Godot Humanoid Skeleton
+# Draft: Constrain the entire Godot Humanoid Skeleton
 
 ## Metadata
 

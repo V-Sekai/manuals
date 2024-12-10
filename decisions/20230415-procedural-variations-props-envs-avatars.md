@@ -1,8 +1,8 @@
-# Proposed: Procedurally create variations for our props, environments and avatars
+# Draft: Procedurally create variations for our props, environments and avatars
 
 ### Metadata
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
 - Tags: V-Sekai,chatgp4,
 

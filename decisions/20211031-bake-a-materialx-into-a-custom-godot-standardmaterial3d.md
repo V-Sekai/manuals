@@ -1,4 +1,4 @@
-# Proposed: Bake a #materialx into a custom Godot StandardMaterial3D
+# Draft: Bake a #materialx into a custom Godot StandardMaterial3D
 
 ### Context and Problem Statement
 

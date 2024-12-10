@@ -1,4 +1,4 @@
-# Proposed: Train quad-based Meshgpt within constraints
+# Draft: Train quad-based Meshgpt within constraints
 
 ## The Context
 
@@ -52,7 +52,7 @@ In cases where more advanced GPU hardware is available, this workflow may not be
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

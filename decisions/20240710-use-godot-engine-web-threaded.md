@@ -1,4 +1,4 @@
-# Proposed: Use Godot Engine Web Threaded
+# Draft: Use Godot Engine Web Threaded
 
 ## The Context
 
@@ -43,7 +43,7 @@ This proposal aligns with our core values of efficiency and performance and will
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

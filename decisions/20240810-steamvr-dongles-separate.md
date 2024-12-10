@@ -1,4 +1,4 @@
-# Proposed: Improving Connectivity for Valve StreamVR Light House Dongles
+# Draft: Improving Connectivity for Valve StreamVR Light House Dongles
 
 ## The Context
 
@@ -39,7 +39,7 @@ Use the supplied HTCVive cradles for the dongles. Keep the dongles upright.
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

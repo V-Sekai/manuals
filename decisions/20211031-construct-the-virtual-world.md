@@ -1,4 +1,4 @@
-# Proposed: Construct the virtual #world
+# Draft: Construct the virtual #world
 
 ### Context and Problem Statement
 

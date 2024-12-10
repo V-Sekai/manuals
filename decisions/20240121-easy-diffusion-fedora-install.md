@@ -1,4 +1,4 @@
-# Proposed: Easy Diffusion AI Setup on Linux Systems
+# Draft: Easy Diffusion AI Setup on Linux Systems
 
 ## Metadata
 

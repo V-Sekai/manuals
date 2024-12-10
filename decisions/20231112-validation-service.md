@@ -1,8 +1,8 @@
-# Proposed: Validator Service for V-Sekai
+# Draft: Validator Service for V-Sekai
 
 ## Metadata
 
-- Status: Proposed
+- Status: Draft
 - Deciders: iFire, Bioblaze Payne, V-Sekai Team
 - Tags: V-Sekai, Validator Service, Godot Engine, GLTF, Websockets, API
 

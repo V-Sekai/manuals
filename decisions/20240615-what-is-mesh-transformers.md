@@ -1,4 +1,4 @@
-# Proposed: Explain the concept of Mesh Transformers
+# Draft: Explain the concept of Mesh Transformers
 
 ## The Context
 
@@ -38,7 +38,7 @@ This proposal involves developing a new feature for our platform, which will be 
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

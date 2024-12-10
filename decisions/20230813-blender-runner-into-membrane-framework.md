@@ -1,4 +1,4 @@
-# Proposed: Transitioning to Membrane Framework Pipelines with JSON-RPC Blender Runner
+# Draft: Transitioning to Membrane Framework Pipelines with JSON-RPC Blender Runner
 
 ## Metadata
 

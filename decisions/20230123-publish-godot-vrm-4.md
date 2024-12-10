@@ -1,6 +1,6 @@
-# Proposed: Publish Godot VRM for Godot 4 for production use
+# Draft: Publish Godot VRM for Godot 4 for production use
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
 

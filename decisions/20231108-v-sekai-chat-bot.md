@@ -1,8 +1,8 @@
-# Proposed: Creation of an 'Ask V-Sekai' Chatbot Using Vercel, OpenAI, and Neon PostgreSQL
+# Draft: Creation of an 'Ask V-Sekai' Chatbot Using Vercel, OpenAI, and Neon PostgreSQL
 
 ## Metadata
 
-- Status: Proposed
+- Status: Draft
 - Deciders: V-Sekai Development Team
 - Tags: V-Sekai, Chatbot, Vercel, OpenAI, Neon, PostgreSQL, AI, Serverless
 

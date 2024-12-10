@@ -1,8 +1,8 @@
-# Proposed: Build a Single-Instance MacOS Editor for the iPad
+# Draft: Build a Single-Instance MacOS Editor for the iPad
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai, GPT-4, MacOS, iPad
 

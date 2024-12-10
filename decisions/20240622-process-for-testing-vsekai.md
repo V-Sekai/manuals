@@ -1,4 +1,4 @@
-# Proposed: Create a process for testing V-Sekai.
+# Draft: Create a process for testing V-Sekai.
 
 ## The Context
 
@@ -39,7 +39,7 @@ The testing framework would be part of the core game engine and maintained by us
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

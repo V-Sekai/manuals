@@ -1,8 +1,8 @@
-# Proposed: Convert IK solvers to be using the AnimationTree
+# Draft: Convert IK solvers to be using the AnimationTree
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai, fire,
 - Tags: V-Sekai, GPT-4
 

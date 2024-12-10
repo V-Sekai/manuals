@@ -1,8 +1,8 @@
-# Proposed: Navigating New Horizons: A Proposal for Expanding Exploration in V-Sekai
+# Draft: Navigating New Horizons: A Proposal for Expanding Exploration in V-Sekai
 
 ## Metadata
 
-- Status: Proposed
+- Status: Draft
 - Deciders: V-Sekai, fire, cyberpunkmermaid
 - Tags: V-Sekai
 

@@ -1,4 +1,4 @@
-# Proposed: Image Captioning Tool
+# Draft: Image Captioning Tool
 
 ## Context
 
@@ -58,7 +58,7 @@ for path in file_or_url_paths:
 
 ## Status
 
-Status: Proposed
+Status: Draft
 
 ## Decision Makers
 

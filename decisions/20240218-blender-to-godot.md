@@ -1,4 +1,4 @@
-# Proposed: Blender to Godot API Conversion
+# Draft: Blender to Godot API Conversion
 
 ## The Context
 
@@ -37,7 +37,7 @@ This proposal suggests a core change in our approach to handling Blender data, m
 
 ## Status
 
-Status: Proposed
+Status: Draft
 
 ## Decision Makers
 

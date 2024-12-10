@@ -1,4 +1,4 @@
-# Proposed: Editing Character Body Bone Constraints in Immersive Mode
+# Draft: Editing Character Body Bone Constraints in Immersive Mode
 
 ## The Context
 
@@ -101,7 +101,7 @@ This feature is core to the V-Sekai project's mission of enhancing VR interactio
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

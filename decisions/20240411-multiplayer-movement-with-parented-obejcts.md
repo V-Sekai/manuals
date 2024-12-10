@@ -1,4 +1,4 @@
-# Proposed: Implementing a 3D Multiplayer Movement System with Parented Objects and Inventory Management
+# Draft: Implementing a 3D Multiplayer Movement System with Parented Objects and Inventory Management
 
 ## The Context
 
@@ -56,7 +56,7 @@ The V-Sekai development team will implement this proposal.
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

@@ -1,4 +1,4 @@
-# Proposed: Command Traces with Server Backend
+# Draft: Command Traces with Server Backend
 
 ## The Context
 
@@ -18,7 +18,7 @@
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

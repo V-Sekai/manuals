@@ -1,6 +1,6 @@
-# Proposed: Rename master to godot3 and main to godot4
+# Draft: Rename master to godot3 and main to godot4
 
-- Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,lyuma,fire
 - Tags: V-Sekai,
 

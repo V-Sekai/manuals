@@ -1,4 +1,4 @@
-# Proposed: Minimum Specification V-Sekai Hardware
+# Draft: Minimum Specification V-Sekai Hardware
 
 ### Context and Problem Statement
 

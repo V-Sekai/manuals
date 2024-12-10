@@ -1,8 +1,8 @@
-# Proposed: PostgreSQL `bytea` Storage Optimization for V-Sekai's Edge CDN
+# Draft: PostgreSQL `bytea` Storage Optimization for V-Sekai's Edge CDN
 
 ## Metadata
 
-- Status: Proposed
+- Status: Draft
 - Deciders: V-Sekai, Fire
 - Tags: V-Sekai, PostgreSQL, Edge Hosting, CDN, `bytea`, TOAST, Optimization
 

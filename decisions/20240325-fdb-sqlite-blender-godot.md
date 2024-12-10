@@ -1,4 +1,4 @@
-# Proposed: Synchronizing Blender and FDB-SQLite for Proxy Movement
+# Draft: Synchronizing Blender and FDB-SQLite for Proxy Movement
 
 ## Context
 
@@ -51,7 +51,7 @@ This feature will be developed by our in-house team, ensuring that it fits seaml
 
 ## Status
 
-Status: Proposed
+Status: Draft
 
 ## Decision Makers
 

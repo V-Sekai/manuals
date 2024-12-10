@@ -1,8 +1,8 @@
-# Proposed: Ansible Server Provisioning
+# Draft: Ansible Server Provisioning
 
 ## Metadata
 
-- Status: Proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai
 

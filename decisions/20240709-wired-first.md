@@ -1,4 +1,4 @@
-# Proposed: A Wired-First Strategy for PCVR
+# Draft: A Wired-First Strategy for PCVR
 
 ## The Context
 
@@ -41,7 +41,7 @@ This proposal will be implemented and maintained by the V-Sekai development team
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

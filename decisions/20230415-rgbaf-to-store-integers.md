@@ -1,8 +1,8 @@
-# Proposed: Use godot rgbaf textures to store integers
+# Draft: Use godot rgbaf textures to store integers
 
 ### Metadata
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
 

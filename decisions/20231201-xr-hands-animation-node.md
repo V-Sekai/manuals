@@ -1,4 +1,4 @@
-# Proposed: Seamless Integration of XR Tracking in Godot Engine
+# Draft: Seamless Integration of XR Tracking in Godot Engine
 
 ## Metadata
 

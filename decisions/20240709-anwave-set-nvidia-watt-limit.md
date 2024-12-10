@@ -1,4 +1,4 @@
-# Proposed: Set Nvidia Watt Limit with Anwave
+# Draft: Set Nvidia Watt Limit with Anwave
 
 ## The Context
 
@@ -42,7 +42,7 @@ The implementation of this proposal will be handled internally by the V-Sekai de
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

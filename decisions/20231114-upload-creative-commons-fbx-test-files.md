@@ -1,4 +1,4 @@
-# Proposed: Upload Creative Commons FBX Test Files for Enhanced LOD Optimization in V-Sekai
+# Draft: Upload Creative Commons FBX Test Files for Enhanced LOD Optimization in V-Sekai
 
 ## Metadata
 

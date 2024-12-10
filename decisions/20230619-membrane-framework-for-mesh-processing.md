@@ -1,8 +1,8 @@
-# Proposed: Networked Procedural Generation as a Sidecar to the Godot Engine Server
+# Draft: Networked Procedural Generation as a Sidecar to the Godot Engine Server
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai, fire
 - Tags: V-Sekai, Chatbot GPT4 assistance
 

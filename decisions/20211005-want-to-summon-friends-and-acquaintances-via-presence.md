@@ -1,4 +1,4 @@
-# Proposed: Summon #friend and acquaintances via presence to the current world.
+# Draft: Summon #friend and acquaintances via presence to the current world.
 
 ### Context and Problem Statement
 

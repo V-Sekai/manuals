@@ -1,6 +1,6 @@
-# Proposed: Target 10 minutes cicd builds to improve our iterations
+# Draft: Target 10 minutes cicd builds to improve our iterations
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
 - Tags: V-Sekai,
 

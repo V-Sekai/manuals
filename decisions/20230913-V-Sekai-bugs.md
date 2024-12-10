@@ -1,4 +1,4 @@
-# Proposed: Challenges that need to be addressed in V-Sekai
+# Draft: Challenges that need to be addressed in V-Sekai
 
 ## Metadata
 

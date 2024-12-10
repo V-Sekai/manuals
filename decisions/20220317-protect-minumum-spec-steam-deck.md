@@ -1,4 +1,4 @@
-# Proposed: To protect the minimum spec maintain steam deck version of flatmode V-Sekai
+# Draft: To protect the minimum spec maintain steam deck version of flatmode V-Sekai
 
 ### Describe the status of the issue.
 

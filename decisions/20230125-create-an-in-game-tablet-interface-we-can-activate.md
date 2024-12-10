@@ -1,8 +1,8 @@
-# Proposed: Create an in-game tablet interface we can activate
+# Draft: Create an in-game tablet interface we can activate
 
 ### Metadata
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
 

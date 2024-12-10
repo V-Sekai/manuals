@@ -1,8 +1,8 @@
-# Proposed: Provide metadata to pre-check if maps and avatars are compatible to load
+# Draft: Provide metadata to pre-check if maps and avatars are compatible to load
 
 ### Metadata
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,lyuma
 - Tags: V-Sekai,
 

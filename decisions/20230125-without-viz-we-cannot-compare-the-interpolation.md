@@ -1,8 +1,8 @@
-# Proposed: Without visualization, we cannot easily compare the interpolation states
+# Draft: Without visualization, we cannot easily compare the interpolation states
 
 ### Metadata
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
 - Tags: V-Sekai,
 

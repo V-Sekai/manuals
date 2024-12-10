@@ -1,4 +1,4 @@
-# Proposed: V-Sekai Game Launcher
+# Draft: V-Sekai Game Launcher
 
 ## The Context
 
@@ -43,7 +43,7 @@ The V-Sekai development team will develop the V-Sekai Game Launcher.
 
 ## Status
 
-Status: Proposed
+Status: Draft
 
 ## Decision Makers
 

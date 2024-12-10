@@ -1,8 +1,8 @@
-# Proposed: Enhancing Avatar Creation Process in V-Sekai Regular
+# Draft: Enhancing Avatar Creation Process in V-Sekai Regular
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai
 

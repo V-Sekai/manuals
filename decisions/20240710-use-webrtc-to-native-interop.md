@@ -1,4 +1,4 @@
-# Proposed: Use WebRTC to Native to Interop with Godot Engine
+# Draft: Use WebRTC to Native to Interop with Godot Engine
 
 ## The Context
 
@@ -43,7 +43,7 @@ This proposal aligns with our core values of efficiency and professionalism and 
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

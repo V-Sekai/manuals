@@ -1,4 +1,4 @@
-# Proposed: Stream shader motion
+# Draft: Stream shader motion
 
 ### Context and Problem Statement
 

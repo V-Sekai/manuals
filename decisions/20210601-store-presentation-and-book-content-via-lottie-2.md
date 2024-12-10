@@ -1,4 +1,4 @@
-# Proposed: Store presentation and book content via Lottie
+# Draft: Store presentation and book content via Lottie
 
 ## Context and Problem Statement
 

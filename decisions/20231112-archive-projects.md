@@ -1,8 +1,8 @@
-# Proposed: Effective V-Sekai project archival strategy
+# Draft: Effective V-Sekai project archival strategy
 
 ## Metadata
 
-- Status: Proposed
+- Status: Draft
 - Deciders: V-Sekai, fire, arne
 - Tags: V-Sekai, Documentation, Project Archiving
 

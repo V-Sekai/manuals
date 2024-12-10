@@ -1,4 +1,4 @@
-# Proposed: Simplify Meshes and LODs better with Quads
+# Draft: Simplify Meshes and LODs better with Quads
 
 ## Context and Problem Statement
 

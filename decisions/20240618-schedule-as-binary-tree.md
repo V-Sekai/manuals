@@ -1,4 +1,4 @@
-# Proposed: Transforming Schedule DAG into a Left-child Right-sibling Binary Tree
+# Draft: Transforming Schedule DAG into a Left-child Right-sibling Binary Tree
 
 ## The Context
 
@@ -44,7 +44,7 @@ The proposed transformation process will be implemented by the V-Sekai developme
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

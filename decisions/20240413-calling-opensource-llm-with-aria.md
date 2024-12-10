@@ -1,4 +1,4 @@
-# Proposed: Calling Open Source LLM with Aria
+# Draft: Calling Open Source LLM with Aria
 
 ### The Context
 
@@ -52,7 +52,7 @@ Using the assistant name Aria, I want to call an Apache2 licensed large language
 
 ### Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ### Decision Makers
 

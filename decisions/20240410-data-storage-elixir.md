@@ -1,4 +1,4 @@
-# Proposed: Implementing Elixir Data Models for Memory, Local, Bulk, and Global Storage
+# Draft: Implementing Elixir Data Models for Memory, Local, Bulk, and Global Storage
 
 ## Context
 
@@ -77,7 +77,7 @@ The V-Sekai development team will implement this proposal.
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

@@ -1,4 +1,4 @@
-# Proposed: V-Sekai Feature Enhancement Proposal
+# Draft: V-Sekai Feature Enhancement Proposal
 
 ## Metadata
 

@@ -53,7 +53,7 @@ This proposal involves significant changes to the core architecture of the V-Sek
 
 ## Status
 
-Status: Proposed
+Status: Draft
 
 ## Decision Makers
 

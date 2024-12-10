@@ -1,4 +1,4 @@
-# Proposed: 4 Player Test V-Sekai
+# Draft: 4 Player Test V-Sekai
 
 ## Context
 
@@ -44,7 +44,7 @@ The entire process from importing the map to inviting the players will be done b
 
 ## Status
 
-Status: Proposed
+Status: Draft
 
 ## Decision Makers
 

@@ -1,8 +1,8 @@
-# Proposed: Capturing accurate body movements with limited tracker placement
+# Draft: Capturing accurate body movements with limited tracker placement
 
 ### Metadata
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
 - Tags: V-Sekai,
 

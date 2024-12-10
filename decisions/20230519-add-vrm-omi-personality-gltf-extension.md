@@ -1,8 +1,8 @@
-# Proposed: Add VRM portable avatars and OMI_personality to the GLTF Transform tool
+# Draft: Add VRM portable avatars and OMI_personality to the GLTF Transform tool
 
 ## Metadata
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai
 - Tags: V-Sekai, GPT-4
 

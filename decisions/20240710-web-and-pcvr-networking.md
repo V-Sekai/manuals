@@ -1,4 +1,4 @@
-# Proposed: Networking PCVR with the Web
+# Draft: Networking PCVR with the Web
 
 ## The Context
 
@@ -69,7 +69,7 @@ This proposal involves integrating the solution directly into the core of the V-
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

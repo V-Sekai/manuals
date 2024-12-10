@@ -1,8 +1,8 @@
-# Proposed: Solve a V-Sekai naming convention limitation.
+# Draft: Solve a V-Sekai naming convention limitation.
 
 ## Metadata
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
 - Tags: V-Sekai,chatgpt4,naming conventions,standardization,code organization,documentation,project management,
 

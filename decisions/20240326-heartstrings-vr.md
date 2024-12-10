@@ -1,4 +1,4 @@
-# Proposed: "Cafe Serenade" - A VR Dating Sim Experience
+# Draft: "Cafe Serenade" - A VR Dating Sim Experience
 
 ## The Context
 
@@ -51,7 +51,7 @@ The core game mechanics, narrative development, and character design will be han
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

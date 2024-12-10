@@ -1,8 +1,8 @@
-# Proposed: 1 Meter Cubed 128 Quantized
+# Draft: 1 Meter Cubed 128 Quantized
 
 ## Metadata
 
-- Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+- Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 - Deciders: V-Sekai
 - Tags: V-Sekai
 

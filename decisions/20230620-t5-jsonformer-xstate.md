@@ -1,8 +1,8 @@
-# Proposed: Large language model t5 generating xstate json reliabily for digital beings
+# Draft: Large language model t5 generating xstate json reliabily for digital beings
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai
 

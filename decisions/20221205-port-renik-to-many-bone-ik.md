@@ -1,6 +1,6 @@
-# Proposed: Port RENIK to Many Bone IK for better quality
+# Draft: Port RENIK to Many Bone IK for better quality
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
 

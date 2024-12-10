@@ -1,4 +1,4 @@
-# Proposed: Face helmet capture
+# Draft: Face helmet capture
 
 ### Context and Problem Statement
 

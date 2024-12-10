@@ -1,8 +1,8 @@
-# Proposed: V-Sekai: Gateways to Virtual Worlds
+# Draft: V-Sekai: Gateways to Virtual Worlds
 
 ## Metadata
 
-- Status: Proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai, Slogan, Virtual Reality, VR
 

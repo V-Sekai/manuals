@@ -1,8 +1,8 @@
-# Proposed: Solve Blender versions by locking LTS versions on Blender (3.6)
+# Draft: Solve Blender versions by locking LTS versions on Blender (3.6)
 
 ## Metadata
 
-- Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+- Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 - Deciders: V-Sekai
 - Tags: V-Sekai
 

@@ -1,4 +1,4 @@
-# Proposed: Extract proposals into proposals
+# Draft: Extract proposals into proposals
 
 ### Context and Problem Statement
 

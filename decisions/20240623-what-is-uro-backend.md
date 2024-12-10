@@ -1,4 +1,4 @@
-# Proposed: Why did we build "Uro"?
+# Draft: Why did we build "Uro"?
 
 ## The Context
 
@@ -42,7 +42,7 @@ This proposal is core to the V-Sekai project and will be implemented by the V-Se
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

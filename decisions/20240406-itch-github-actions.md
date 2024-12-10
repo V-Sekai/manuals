@@ -1,4 +1,4 @@
-# Proposed: Provide a V-Sekai Starter Kit
+# Draft: Provide a V-Sekai Starter Kit
 
 ## The Context
 
@@ -42,7 +42,7 @@ This proposal is core to our project and will be implemented by the V-Sekai deve
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

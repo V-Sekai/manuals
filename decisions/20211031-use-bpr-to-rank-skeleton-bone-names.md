@@ -1,6 +1,6 @@
-# Proposed: Rank skeleton bone names by using BPR
+# Draft: Rank skeleton bone names by using BPR
 
-- Status: proposed
+- Status: Draft
 
 ### Context and Problem Statement
 

@@ -1,4 +1,4 @@
-# Proposed: Host a baserow application for internal use.
+# Draft: Host a baserow application for internal use.
 
 ### Describe the status of the issue.
 

@@ -1,4 +1,4 @@
-# Proposed: ARC radial menu
+# Draft: ARC radial menu
 
 ### Context and Problem Statement
 

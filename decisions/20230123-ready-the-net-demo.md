@@ -1,4 +1,4 @@
-# Proposed: Ready net demo
+# Draft: Ready net demo
 
 ### Context and Problem Statement
 

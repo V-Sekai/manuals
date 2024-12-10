@@ -1,4 +1,4 @@
-# Proposed: Dataset Creation with CSG
+# Draft: Dataset Creation with CSG
 
 ## The Context
 
@@ -46,7 +46,7 @@ The management of the project, the provision of clear guidelines, and the review
 
 ## Status
 
-Status: Proposed
+Status: Draft
 
 ## Decision Makers
 

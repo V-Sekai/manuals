@@ -1,4 +1,4 @@
-# Proposed: Talk Length Game Prototypes
+# Draft: Talk Length Game Prototypes
 
 ## The Context
 
@@ -37,7 +37,7 @@ This proposal would be implemented by the V-Sekai development team.
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

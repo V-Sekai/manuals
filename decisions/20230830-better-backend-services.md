@@ -1,8 +1,8 @@
-# Proposed: Integrating Backend Services
+# Draft: Integrating Backend Services
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai
 

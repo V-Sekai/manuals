@@ -1,8 +1,8 @@
-# Proposed: VR design application for V-Sekai
+# Draft: VR design application for V-Sekai
 
 ## Metadata
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
 - Tags: V-Sekai,ChatGPT-4,
 

@@ -1,4 +1,4 @@
-# Proposed: Use the "Punchline Reports" Method
+# Draft: Use the "Punchline Reports" Method
 
 ## Metadata
 

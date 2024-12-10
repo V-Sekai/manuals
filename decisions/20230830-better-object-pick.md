@@ -1,8 +1,8 @@
-# Proposed: Improving VR Experience
+# Draft: Improving VR Experience
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai
 

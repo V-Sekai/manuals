@@ -1,4 +1,4 @@
-# Proposed: Godot Database viewer for proposals
+# Draft: Godot Database viewer for proposals
 
 ## Context and Problem Statement
 

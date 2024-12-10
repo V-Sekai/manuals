@@ -1,8 +1,8 @@
-# Proposed: Handling access to session based game data
+# Draft: Handling access to session based game data
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai, GPT-4
 

@@ -1,8 +1,8 @@
-# Proposed: Automated avatar garment rigging
+# Draft: Automated avatar garment rigging
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai,
 - Tags: V-Sekai, chatgpt4, automated rigging, avatar customization, garment application, 3d modeling, Blender addons,
 

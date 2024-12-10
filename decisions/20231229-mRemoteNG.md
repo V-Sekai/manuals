@@ -1,8 +1,8 @@
-# Proposed: Choosing a terminal emulator for Windows
+# Draft: Choosing a terminal emulator for Windows
 
 ## Metadata
 
-- Status: Proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai
 

@@ -1,6 +1,6 @@
-# Proposed: Learn how to scale V-Sekai using bots and multipliers
+# Draft: Learn how to scale V-Sekai using bots and multipliers
 
-- Status: proposed <!-- draft | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
 - Tags: V-Sekai,
 

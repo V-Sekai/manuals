@@ -2,7 +2,7 @@
 
 ## Metadata
 
-- Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+- Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 - Deciders: V-Sekai
 - Tags: V-Sekai
 
@@ -39,7 +39,7 @@ CREATE TABLE accounts (id INT PRIMARY KEY, balance DECIMAL);
 INSERT INTO accounts VALUES (1, 1000.50);
 ```
 
-### Proposed: SeaweedFS
+### Draft: SeaweedFS
 
 SeaweedFS is a simple and highly scalable distributed file system. It focuses on two objectives: storing billions of files, and serving them fast! SeaweedFS implements an object store with O(1) disk seek and an optional Filer with POSIX interface.
 

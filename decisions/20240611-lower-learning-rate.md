@@ -1,4 +1,4 @@
-# Proposed: Switch learning rate to be lower.
+# Draft: Switch learning rate to be lower.
 
 ## The Context
 
@@ -36,7 +36,7 @@ This proposal is made by the V-Sekai development team and will be implemented by
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

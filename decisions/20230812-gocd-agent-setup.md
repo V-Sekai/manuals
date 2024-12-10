@@ -1,8 +1,8 @@
-# Proposed: Configuring GoCD Agents in V-Sekai
+# Draft: Configuring GoCD Agents in V-Sekai
 
 ## Metadata
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai
 - Tags: V-Sekai
 

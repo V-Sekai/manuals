@@ -1,4 +1,4 @@
-# Proposed: Installing Helm Chart from a Git Repository using Rancher
+# Draft: Installing Helm Chart from a Git Repository using Rancher
 
 ## Context
 
@@ -45,7 +45,7 @@ This solution is based on the core functionality provided by Rancher and does no
 
 ## Status
 
-Status: Proposed
+Status: Draft
 
 ## Decision Makers
 

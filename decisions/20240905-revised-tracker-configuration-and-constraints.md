@@ -1,4 +1,4 @@
-# Proposed: Revised Tracker Configuration and Constraints for HTC VIVE XR Elite
+# Draft: Revised Tracker Configuration and Constraints for HTC VIVE XR Elite
 
 ## The Context
 
@@ -68,7 +68,7 @@ This proposal aligns with our core mission to push the boundaries of VR technolo
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

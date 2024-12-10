@@ -1,4 +1,4 @@
-# Proposed: Teaching Large Language Models (LLMs) with Goal-Task Planners
+# Draft: Teaching Large Language Models (LLMs) with Goal-Task Planners
 
 ## Context
 
@@ -49,7 +49,7 @@ The V-Sekai development team will implement this proposal.
 
 ## Status
 
-Status: Proposed
+Status: Draft
 
 ## Decision Makers
 

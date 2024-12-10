@@ -1,4 +1,4 @@
-# Proposed: Use shrink wrap blender modifier to fit
+# Draft: Use shrink wrap blender modifier to fit
 
 ## The Context
 
@@ -41,7 +41,7 @@ We need to fill in a starter list of content.
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

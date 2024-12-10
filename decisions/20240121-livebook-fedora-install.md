@@ -1,4 +1,4 @@
-# Proposed: Elixir Livebook on Fedora 39
+# Draft: Elixir Livebook on Fedora 39
 
 ## Metadata
 

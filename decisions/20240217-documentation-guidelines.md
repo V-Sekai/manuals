@@ -1,4 +1,4 @@
-# Proposed: Comprehensive Documentation for V-Sekai
+# Draft: Comprehensive Documentation for V-Sekai
 
 ## Context
 
@@ -50,7 +50,7 @@ This proposal will be implemented by the V-Sekai development team and community 
 
 ## Status
 
-Status: Proposed
+Status: Draft
 
 ## Decision Makers
 

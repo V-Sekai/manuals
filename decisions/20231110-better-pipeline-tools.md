@@ -1,4 +1,4 @@
-# Proposed: Enhancing V-Sekai x Godot Engine x AYON for a Superior Workflow
+# Draft: Enhancing V-Sekai x Godot Engine x AYON for a Superior Workflow
 
 ## Metadata
 

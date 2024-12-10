@@ -1,8 +1,8 @@
-# Proposed: Grow the community with a reactive Discord bot.
+# Draft: Grow the community with a reactive Discord bot.
 
 ### Metadata
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
 

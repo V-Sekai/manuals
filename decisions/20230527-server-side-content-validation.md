@@ -1,8 +1,8 @@
-# Proposed: Implement server-side content validation export followed by a sanitization service and CDN support
+# Draft: Implement server-side content validation export followed by a sanitization service and CDN support
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai, Bioblaze Payne, fire
 - Tags: V-Sekai, GPT-4
 

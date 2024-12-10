@@ -1,8 +1,8 @@
-# Proposed: Create a 12x12 meter 3D demo map with 2-meter-high obstacles and walls
+# Draft: Create a 12x12 meter 3D demo map with 2-meter-high obstacles and walls
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai, GPT-4
 

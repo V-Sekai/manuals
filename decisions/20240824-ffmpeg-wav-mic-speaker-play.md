@@ -1,4 +1,4 @@
-# Proposed: FFMPEG Wave/Mic and Speaker/Play
+# Draft: FFMPEG Wave/Mic and Speaker/Play
 
 ## The Context
 
@@ -145,7 +145,7 @@ This approach aligns with our goal of robust and versatile testing methodologies
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

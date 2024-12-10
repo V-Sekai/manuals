@@ -1,8 +1,8 @@
-# Proposed: Improve the collaboration process and attract more contributors to work on the project
+# Draft: Improve the collaboration process and attract more contributors to work on the project
 
 ### Metadata
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,Roadmap,Collaboration,chatgpt4 summary,
 

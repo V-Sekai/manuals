@@ -1,8 +1,8 @@
-# Proposed: Propose a solution to improve V-Sekai contributors' design skills for navigating 3D environments
+# Draft: Propose a solution to improve V-Sekai contributors' design skills for navigating 3D environments
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai, GPT-4
 

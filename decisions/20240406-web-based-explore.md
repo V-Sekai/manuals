@@ -1,4 +1,4 @@
-# Proposed: Web-Based Exploration of V-Sekai
+# Draft: Web-Based Exploration of V-Sekai
 
 ## Context
 
@@ -37,7 +37,7 @@ The V-Sekai development team will undertake this project.
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

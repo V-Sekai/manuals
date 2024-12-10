@@ -1,4 +1,4 @@
-# Proposed: Enable Windows 11 Installation on Older Computers
+# Draft: Enable Windows 11 Installation on Older Computers
 
 ## Context
 
@@ -45,7 +45,7 @@ This proposal is currently under consideration by the V-Sekai development team.
 
 ## Status
 
-Status: Proposed
+Status: Draft
 
 ## Decision Makers
 

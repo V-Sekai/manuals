@@ -1,6 +1,6 @@
-# Proposed: Replicate sync 100'000 entities using a solution (Revision 1)
+# Draft: Replicate sync 100'000 entities using a solution (Revision 1)
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai,fire,
 - Tags: V-Sekai,sync,view replication,
 

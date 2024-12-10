@@ -1,4 +1,4 @@
-# Proposed: Godot Engine as Wasm Importer
+# Draft: Godot Engine as Wasm Importer
 
 ## The Context
 
@@ -41,7 +41,7 @@ This proposal involves core changes to the Godot Engine and will be implemented 
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

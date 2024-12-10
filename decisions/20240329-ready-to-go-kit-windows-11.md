@@ -1,4 +1,4 @@
-# Proposed: V-Sekai Setup as a Ready-to-Go Kit
+# Draft: V-Sekai Setup as a Ready-to-Go Kit
 
 ## The Context
 
@@ -41,7 +41,7 @@ This proposal will be implemented by the V-Sekai development team.
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

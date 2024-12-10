@@ -1,4 +1,4 @@
-# Proposed: Music is important to human experience and should be bridged to XR
+# Draft: Music is important to human experience and should be bridged to XR
 
 ### Context and Problem Statement
 

@@ -1,8 +1,8 @@
-# Proposed: Expanding Worlds
+# Draft: Expanding Worlds
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai
 

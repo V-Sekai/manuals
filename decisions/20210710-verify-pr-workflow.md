@@ -1,4 +1,4 @@
-# Proposed: Describe a Godot Engine pr verification workflow
+# Draft: Describe a Godot Engine pr verification workflow
 
 ### Context and Problem Statement
 

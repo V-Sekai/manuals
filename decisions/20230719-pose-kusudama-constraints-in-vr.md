@@ -1,8 +1,8 @@
-# Proposed: Enhancing the Many Bone IK Configuration
+# Draft: Enhancing the Many Bone IK Configuration
 
 ## Metadata
 
-- Status: proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai, VR, Game Development
 

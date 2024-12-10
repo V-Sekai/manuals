@@ -1,4 +1,4 @@
-# Proposed: Stuck / Recharge Cycle
+# Draft: Stuck / Recharge Cycle
 
 ## The Context
 
@@ -42,7 +42,7 @@ This proposal is applicable to our core development process and can be implement
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

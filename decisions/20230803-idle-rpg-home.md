@@ -1,8 +1,8 @@
-# Proposed: Social RPG World Proposal
+# Draft: Social RPG World Proposal
 
 ## Metadata
 
-- Status: Proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai
 

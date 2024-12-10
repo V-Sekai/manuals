@@ -1,8 +1,8 @@
-# Proposed: Adopting Neon for a More Manageable Backend at V-Sekai
+# Draft: Adopting Neon for a More Manageable Backend at V-Sekai
 
 ## Metadata
 
-- Status: Proposed
+- Status: Draft
 - Deciders: V-Sekai, Fire
 - Tags: Backend Management, Neon, Ease-of-Use, Postgres
 

@@ -1,4 +1,4 @@
-# Proposed: Build V-Sekai editor for many platforms
+# Draft: Build V-Sekai editor for many platforms
 
 ## The Context
 
@@ -43,7 +43,7 @@ This project is core to our mission and will be executed by me. We believe that 
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 

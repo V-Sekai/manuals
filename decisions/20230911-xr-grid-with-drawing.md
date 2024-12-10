@@ -1,4 +1,4 @@
-# Proposed: Improving xr grid with new enhancements
+# Draft: Improving xr grid with new enhancements
 
 ## Metadata
 

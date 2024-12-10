@@ -1,8 +1,8 @@
-# Proposed: Provide user generated scripting using WasGO
+# Draft: Provide user generated scripting using WasGO
 
 ### Metadata
 
-- Status: proposed <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
+- Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
 - Tags: V-Sekai,
 

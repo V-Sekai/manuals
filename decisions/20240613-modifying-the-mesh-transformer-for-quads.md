@@ -1,4 +1,4 @@
-# Proposed: Modify the Mesh Transformer for Quads
+# Draft: Modify the Mesh Transformer for Quads
 
 ## The Context
 
@@ -40,7 +40,7 @@ The V-Sekai development team will handle the modification of the autoencoder/tra
 
 ## Status
 
-Status: Proposed
+Status: Draft
 
 ## Decision Makers
 

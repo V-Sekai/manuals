@@ -1,4 +1,4 @@
-# Proposed: Benchmark #animation playback
+# Draft: Benchmark #animation playback
 
 ### Context and Problem Statement
 

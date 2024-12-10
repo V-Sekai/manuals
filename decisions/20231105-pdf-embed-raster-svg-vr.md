@@ -1,8 +1,8 @@
-# Proposed: PDF to SVG Conversion for VR Books
+# Draft: PDF to SVG Conversion for VR Books
 
 ## Metadata
 
-- Status: Proposed
+- Status: Draft
 - Deciders: V-Sekai
 - Tags: V-Sekai
 

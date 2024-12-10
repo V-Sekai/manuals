@@ -1,4 +1,4 @@
-# Proposed: Training Mesh Transformer for 3D Avatar Creation
+# Draft: Training Mesh Transformer for 3D Avatar Creation
 
 ## The Context
 
@@ -44,7 +44,7 @@ This means that 8,000 tokens would equate to 1,000 quads.
 
 ## Status
 
-Status: Proposed
+Status: Draft
 
 ## Decision Makers
 

@@ -1,4 +1,4 @@
-# Proposed: V-Sekai Navigation Compatibility with VR
+# Draft: V-Sekai Navigation Compatibility with VR
 
 ## Metadata
 
