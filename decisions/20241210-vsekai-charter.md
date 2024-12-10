@@ -16,9 +16,9 @@ A fully remixable and self-hosted collaborative VR environment based on Godot En
 
 **Description of the product: What will the MVP be in 8 weeks?**
 
-Our standalone Virtual Reality (VR) application will be usable from all SteamVR-compatible PC headsets and the mobile Meta Quest VR platform. The MVP features a social hub with 3D spatialized voice, real-time upper body tracking, simple games, physics, and social video viewing.
+In 8 weeks, our standalone VR application will be usable from all SteamVR-compatible PC headsets and the mobile Meta Quest VR platform. The MVP will feature a social hub with 3D spatialized voice, real-time upper body tracking, simple games, physics, and social video viewing.
 
-**Category**
+**Category:**
 
 - Collaboration & Society
 - Decentralized Web: YES
@@ -72,76 +72,70 @@ Additionally, we see the potential for a customizable, open platform to be used 
 
 **Are you looking for any teammates? If so, please indicate what skills or roles you seek.**
 
-We have created a Slack Channel, a GitHub repository, and an issues list where you can post your project and look for teammates. You can also pivot or abandon your project as you connect with teammates.
+We have created a Slack Channel, a GitHub repository, and an issues list where you can post your project and look for teammates.
 
 **Could you describe your work plan?**
 
 **Week 1:**
 
-- Maintain continuous integration of Windows SteamVR, Meta Quest, and Linux server builds running on a public server against which to test and dogfood the product.
-- VOIP implementation: Basic lipsync is based on volume, and the spatialization library is integrated.
+- Maintain continuous integration of Windows SteamVR, Meta Quest, and Linux server builds.
+- VOIP implementation: Basic lipsync based on volume, and spatialization library integration.
 - Improve Inverse Kinematics implementation and add non-VR support.
 
 **Week 2:**
 
-- Headless clients will extensively stress test the system.
-- Implement a crash reporting system and reporting metrics, including performance.
+- Headless clients will stress test the system.
+- Implement crash reporting system and performance metrics.
 - Content: Use a basic scripting API to implement physics-based games.
-- Begin work on engine changes necessary to give smooth frame rates even during content loading.
+- Begin work on engine changes for smooth frame rates during content loading.
 
 **Week 3:**
 
 - Networking interpolation: eliminate stuttering caused by networking.
 - Godot OpenVR Plugin: fix bugs causing inconsistent framerate in VR.
-- Pre-load content where needed to avoid stutters in the 3D environment.
+- Pre-load content to avoid stutters in the 3D environment.
 
 **Week 4:**
 
-- Content: Begin work on a specific set of hardcoded avatars.
-- Content: Recruit artists to begin work on creating a default home map.
+- Content: Begin work on hardcoded avatars.
+- Content: Recruit artists for creating a default home map.
 - Physics: fix physics errors such as sliding down ramps.
 - Test performance on regular VR hardware and optimization.
 
 **Week 5-6:**
 
 - Account system, TOS, Privacy Policy.
-- Allow closed registration of users, starting with people who have already shown interest.
-- Continue working on content. Fix bugs and issues as needed.
+- Allow closed registration of users.
+- Continue working on content and fix bugs.
 - Integration of video playback.
 - Focus on stress testing.
 
 **Week 7-8:**
 
 - Fix bugs found during testing.
-- Monitor performance metrics captured by users and keep fixing performance.
+- Monitor performance metrics and keep fixing performance.
 
 **Could you describe the team's approach to developing the Minimum Viable Product throughout the summer? This includes, but is not limited to:**
 
 **Who are your competitors?**
 
-VRChat, Meta Horizon, RecRoom, AltSpace, EngageVR, Spatial (Quest), Mozilla Hubs, VirtualCast, cluster, Sansar, HTC Vive Sync, OasisVR, ChilloutVR, Lavender, Roblox VR (We are not considering non-VR capable platforms or MMORPGs as competition).
+VRChat, Meta Horizon, RecRoom, AltSpace, EngageVR, Spatial (Quest), Mozilla Hubs, VirtualCast, cluster, Sansar, HTC Vive Sync, OasisVR, ChilloutVR, Lavender, Roblox VR.
 
 **How will you attract your first 1000 users? Your first 1,000,000?**
 
-We anticipate contacts from our immediate VR communities who have already shown interest in our project will seed the first 50 users.
-
-At a minimum, we will provide the real-time presence features available in other VR platforms: appearing in a room of people who you can hear. To break past 100 users, we will need to provide experiences that are not easily accessible on other platforms, such as VRChat.
-
-To move beyond thousands of users: being a neutral, open platform to host events: for example, Virtual Market had on the order of a million visitors (https://www.youtube.com/watch?v=lLX7UNKV1fk; https://v-market.work/), was hosted just as a collection of VRChat world instances, and still had to deal with several glitches as a result of instabilities of the underlying platform.
-
-Another source of usage will be business meetings and anything where privacy and self-hosting are concerns. Making sure that it is lightweight and remains very easy to compile will allow novel uses and customizations of the platform.
+We anticipate contacts from our immediate VR communities will seed the first 50 users. To break past 100 users, we will provide unique experiences not easily accessible on other platforms. To move beyond thousands of users, we will host events and ensure privacy and self-hosting capabilities.
 
 **First 2-week development milestone**
 
 **First two weeks:**
 
-- Maintain continuous integration of Windows SteamVR, Meta Quest, and Linux server builds running on a public server against which to test and dogfood the product.
-- VOIP implementation: basic lipsync is based on volume, and the spatialization library is integrated.
+- Maintain continuous integration of Windows SteamVR, Meta Quest, and Linux server builds.
+- VOIP implementation: basic lipsync based on volume, and spatialization library integration.
 - Improve Inverse Kinematics implementation and add non-VR support.
-- Headless clients will extensively stress test the system.
-- Implement crash reporting system and reporting metrics, including performance.
+- Headless clients will stress test the system.
+- Implement crash reporting system and performance metrics.
 - Content: Use a basic scripting API to implement physics-based games.
-- Work on engine changes necessary to give smooth frame rates even during content loading.
+- Work on engine changes for smooth frame rates during content loading.
 
 **Tech stack you plan to use (Cloud services, APIs, mobile platforms, languages, etc)**
 
@@ -149,15 +143,9 @@ Godot Engine, k3s, Elixir, OAuth, CockroachDB, Nginx, Fedora, CentOS 8, Digital 
 
 **Link to simple sketches (can be as simple as paper and pencil) of your product or idea**
 
-Links to mockups, prototypes, and pitches.
+Most Social VR applications are being developed in Unity, leading to design challenges. Social platforms are strongly impacted by the network effect, which challenges acquisition. VR applications tend to have low retention compared with conventional applications.
 
 **What challenges do you anticipate with this idea?**
-
-Except for Mozilla Hubs, the now-defunct High Fidelity, and a handful of proprietary VR platforms, most Social VR applications are being developed in Unity. This leads to a design challenge in building around infrastructure and content explicitly created with Unity in mind. For example, one of the leading open model-sharing formats, VRM, only officially supports exporting from Unity.
-
-Social platforms are strongly impacted by the network effect, which challenges acquisition. VR applications, on top of this, tend to have extremely low retention compared with conventional applications. One possible reason is the restriction of only running one application at a time.
-
-We are likely to encounter several unanticipated engineering challenges. VR platforms combine most of the hardest problems in all aspects of computing, from art, networking, social features, and graphics optimization.
 
 **Team Member Locations by Country**
 
@@ -191,47 +179,47 @@ We heard about it from Hacker News: https://news.ycombinator.com/item?id=2319417
 
 **Is there anything else we should know?**
 
-Aside from being passionate about VR, we are all committed to open source and decentralization and strive to bring value to the internet community as a whole.
+We are passionate about VR, open source, and decentralization, and strive to bring value to the internet community.
 
 ## The Benefits
 
-The benefits of updating our V-Sekai charter to 2024 include:
+Updating our V-Sekai charter to 2024 will:
 
-- Ensuring the project remains relevant and aligned with current technological advancements and user needs.
-- Providing a clear roadmap and goals for the development team to follow.
-- Attracting potential investors and collaborators by demonstrating a commitment to long-term development.
-- Enhancing the project's credibility and visibility within the VR and open-source communities.
+- Keep the project relevant and aligned with current technological advancements and user needs.
+- Provide a clear roadmap and goals for the development team.
+- Attract potential investors and collaborators.
+- Enhance the project's credibility and visibility within the VR and open-source communities.
 
 ## The Downsides
 
-The downsides of updating our V-Sekai charter to 2024 include:
+Updating our V-Sekai charter to 2024 could:
 
-- Potentially overcommitting resources and time to a long-term project without guaranteed funding.
-- The risk of technological changes or market shifts that could render parts of the charter obsolete.
-- The possibility of team burnout or turnover due to the extended timeline and ambitious goals.
+- Overcommit resources and time without guaranteed funding.
+- Risk technological changes or market shifts rendering parts of the charter obsolete.
+- Lead to team burnout or turnover due to the extended timeline and ambitious goals.
 
 ## The Road Not Taken
 
-The alternative to updating our V-Sekai charter to 2024 would be to maintain the current charter and focus on short-term goals. This approach could:
+Maintaining the current charter and focusing on short-term goals could:
 
-- Allow for more flexibility and adaptability to changing market conditions and technological advancements.
-- Reduce the risk of overcommitting resources and time to a long-term project.
-- Potentially limit the project's growth and impact by not setting ambitious long-term goals.
+- Allow more flexibility and adaptability to changing market conditions.
+- Reduce the risk of overcommitting resources and time.
+- Potentially limit the project's growth and impact.
 
 ## The Infrequent Use Case
 
 An infrequent use case for our V-Sekai platform could be:
 
-- Using the platform for virtual historical reenactments or educational tours, where users can immerse themselves in a historically accurate VR environment and interact with historical figures or artifacts.
-- Hosting virtual conferences or trade shows, allowing attendees to network, attend presentations, and explore exhibitor booths in a fully immersive VR setting.
+- Virtual historical reenactments or educational tours.
+- Hosting virtual conferences or trade shows.
 
 ## Why is it in Core and done by us?
 
 Updating the V-Sekai charter to 2024 is core to our mission because:
 
-- We are committed to developing an open-source, decentralized VR platform that empowers users and fosters innovation.
-- Our team has the expertise and passion for VR and open-source technology, making us uniquely qualified to lead this project.
-- By setting long-term goals, we can ensure the project's sustainability and continued growth, benefiting the broader VR and open-source communities.
+- We are committed to developing an open-source, decentralized VR platform.
+- Our team has the expertise and passion for VR and open-source technology.
+- Setting long-term goals ensures the project's sustainability and growth.
 
 ## Status
 
@@ -251,3 +239,4 @@ Updating the V-Sekai charter to 2024 is core to our mission because:
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
 
 AI assistant Aria assisted with this article.
+
