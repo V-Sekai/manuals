@@ -1,4 +1,4 @@
-# Draft: Template
+# Draft: 2025 V-Sekai Charter
 
 ## The Context
 
