@@ -66,44 +66,29 @@ We have a Discord group, a GitHub repository, and an issues list where we can po
 
 **Could you describe your work plan?**
 
-**Week 1:**
-
-- Maintain continuous integration of Windows SteamVR, Meta Quest, and Linux server builds.
-- VOIP implementation: Basic lipsync based on volume, and spatialization library integration.
-- Improve Inverse Kinematics implementation and add non-VR support.
-
-**Week 2:**
-
-- Headless clients will stress test the system.
-- Implement crash reporting system and performance metrics.
-- Content: Use a basic scripting API to implement physics-based games.
-- Begin work on engine changes for smooth frame rates during content loading.
-
-**Week 3:**
-
-- Networking interpolation: eliminate stuttering caused by networking.
-- Godot OpenVR Plugin: fix bugs causing inconsistent framerate in VR.
-- Pre-load content to avoid stutters in the 3D environment.
-
-**Week 4:**
-
-- Content: Begin work on hardcoded avatars.
-- Content: Recruit artists for creating a default home map.
-- Physics: fix physics errors such as sliding down ramps.
-- Test performance on regular VR hardware and optimization.
-
-**Week 5-6:**
-
-- Account system, TOS, Privacy Policy.
-- Allow closed registration of users.
-- Continue working on content and fix bugs.
-- Integration of video playback.
-- Focus on stress testing.
-
-**Week 7-8:**
-
-- Fix bugs found during testing.
-- Monitor performance metrics and keep fixing performance.
+| Week       | Tasks                                                                                                      |
+|------------|------------------------------------------------------------------------------------------------------------|
+| **Week 1** | - Maintain continuous integration of Windows SteamVR, Meta Quest, and Linux server builds.                 |
+|            | - VOIP implementation: Basic lipsync based on volume, and spatialization library integration.              |
+|            | - Improve Inverse Kinematics implementation and add non-VR support.                                        |
+| **Week 2** | - Headless clients will stress test the system.                                                            |
+|            | - Implement crash reporting system and performance metrics.                                                |
+|            | - Content: Use a basic scripting API to implement physics-based games.                                     |
+|            | - Begin work on engine changes for smooth frame rates during content loading.                              |
+| **Week 3** | - Networking interpolation: eliminate stuttering caused by networking.                                     |
+|            | - Godot OpenVR Plugin: fix bugs causing inconsistent framerate in VR.                                      |
+|            | - Pre-load content to avoid stutters in the 3D environment.                                                |
+| **Week 4** | - Content: Begin work on hardcoded avatars.                                                                |
+|            | - Content: Recruit artists for creating a default home map.                                                |
+|            | - Physics: fix physics errors such as sliding down ramps.                                                  |
+|            | - Test performance on regular VR hardware and optimization.                                                |
+| **Week 5-6**| - Account system, TOS, Privacy Policy.                                                                    |
+|            | - Allow closed registration of users.                                                                     |
+|            | - Continue working on content and fix bugs.                                                               |
+|            | - Integration of video playback.                                                                          |
+|            | - Focus on stress testing.                                                                                |
+| **Week 7-8**| - Fix bugs found during testing.                                                                         |
+|            | - Monitor performance metrics and keep fixing performance.                                                |
 
 **Could you describe the team's approach to developing the Minimum Viable Product throughout the summer? This includes, but is not limited to:**
 
