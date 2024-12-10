@@ -12,11 +12,11 @@ We want to update our V-Sekai charter to 2024.
 
 **A one-line summary of the MVP:**
 
-A fully remixable and self-hosted collaborative VR environment based on Godot Engine.
+A fully customizable and self-hosted collaborative virtual reality environment based on Godot Engine.
 
 **Description of the product: What will the MVP be in 8 weeks?**
 
-In 8 weeks, our standalone VR application will be usable from all SteamVR-compatible PC headsets and the mobile Meta Quest VR platform. The MVP will feature a social hub with 3D spatialized voice, real-time upper body tracking, simple games, physics, and social video viewing.
+In 8 weeks, our standalone virtual reality application will be usable from all SteamVR-compatible PC headsets and the mobile Meta Quest virtual reality platform. The MVP will feature a social hub with 3D spatialized voice, real-time upper body tracking, simple games, physics, and social video viewing.
 
 **Category:**
 
@@ -30,19 +30,19 @@ In 8 weeks, our standalone VR application will be usable from all SteamVR-compat
 
 **Why does your idea matter? How will it help deliver on the full promise of the internet or make the internet more awesome?**
 
-The Internet's core principles are openness and communication. We see VR as the basis for a new frontier of communication products: Social VR platforms. Hastened by the closure and general failings of the once-open-source High Fidelity platform, we are now in desperate need of open-source alternatives to the growing number of closed-source VR-compatible walled gardens in development.
+The Internet's core principles are openness and communication. We see virtual reality as the basis for a new frontier of communication products: Social virtual reality platforms. Hastened by the closure and general failings of the once-open-source High Fidelity platform, we are now in desperate need of open-source alternatives to the growing number of closed-source virtual reality-compatible walled gardens in development.
 
 We are at the pinnacle of a new wave of VR and related tech, and with the impending maturity of open game engines, audio and video codecs, combined with faster internet connectivity capable of hosting services, and increasingly available VR hardware, the time is right to lead the development of an open platform.
 
-We believe in putting power back in the hands of individuals, and thus, we are firm believers in decentralized technology. Our initial goal will be to produce a polished, well-functioning service. Still, we plan to integrate decentralized authentication and encryption schemes, including GPG and the web of trust-based E2EE, as well as decentralized content distribution techs such as BitTorrent and IPFS.
+We believe in putting power back in the hands of individuals, and thus, we are firm believers in decentralized technology. Our initial goal will be to produce a polished, well-functioning service. Still, we plan to integrate decentralized authentication and encryption schemes, including GPG and the web of trust-based end-to-end encryption, as well as decentralized content distribution technologies such as BitTorrent and IPFS.
 
 **Who are your users or potential users?**
 
-We are building a product for all users of social VR, online collaboration, and communication products. Social VR is a growing space, and its potential is only beginning to be realized with a mass movement toward virtual collaboration.
+We are building a product for all users of social virtual reality, online collaboration, and communication products. Social virtual reality is a growing space, and its potential is only beginning to be realized with a mass movement toward virtual collaboration.
 
 Even VR as a whole is still in the very early stages. Still, it represents a large potential market, especially with the recent availability of affordable and easy-to-install headsets such as the Meta Quest, which has seen rapid growth since its release one year ago.
 
-An example of a leading VR platform with public numbers is VRChat, which recently had between 12,000 and 15,000 concurrent online users across VR and Desktop platforms, with roughly 4,000 concurrent VR users using this platform (out of a reported 4 million registered users as of 2019).
+An example of a leading virtual reality platform with public numbers is VRChat, which recently had between 12,000 and 15,000 concurrent online users across virtual reality and Desktop platforms, with roughly 4,000 concurrent virtual reality users using this platform (out of a reported 4 million registered users as of 2019).
 
 **What is your connection to the service & the user group you plan to reach with your product?**
 
@@ -50,7 +50,7 @@ We're a passionate team of VR enthusiasts, some of us tinkering in our spare tim
 
 In an age where collaborating and connecting at a distance is increasingly essential, meeting in real life can often be a barrier to people. VR has the potential to bring people together and immerse them in a shared space in a way that not even the best video collaboration can. Another group member has participated in Virtual Market 4, the most recent iteration of a Japanese-run exponentially growing virtual content marketplace spanning multiple platforms.
 
-Other Social VR platforms have found ways to immerse me in a multitude of realities: for example, engaging in real-time with people around the world at all times of day and night, attending live dance and music events, seeing performers breakdance and do pole acrobatics using VIVE full-body trackers, forming friendships through exchanging personal stories around a campfire, programming environments defined by a math function and then experiencing them in VR, even solving a 1000 piece jigsaw puzzle with friends. It is my dream to enable these experiences in a setting that is sustainable, open, and accessible.
+Other social virtual reality platforms have found ways to immerse me in a multitude of realities: for example, engaging in real-time with people around the world at all times of day and night, attending live dance and music events, seeing performers breakdance and do pole acrobatics using VIVE full-body trackers, forming friendships through exchanging personal stories around a campfire, programming environments defined by a math function and then experiencing them in virtual reality, even solving a 1000 piece jigsaw puzzle with friends. It is my dream to enable these experiences in a setting that is sustainable, open, and accessible.
 
 **Will your team still work on this project if we do not fund it? To what extent?**
 
@@ -60,7 +60,7 @@ If not funded, we can continue to advance it more slowly in our spare time, but 
 
 **Why did you pick this idea? Would you happen to have domain expertise? How do you know people need what you’re building?**
 
-We’re seeding the beginning of the VR frontier, and we already see a sizable fraction of the current VR population spending considerable time in Social VR walled gardens, such as VRChat.
+We’re seeding the beginning of the virtual reality frontier, and we already see a sizable fraction of the current virtual reality population spending considerable time in social virtual reality walled gardens, such as VRChat.
 
 It can be difficult or impossible to build atop walled garden platforms outside their respective visions: we’ve encountered such roadblocks in past projects. For example, a combination of lack of persistence, access to media/web requests, and general customizability has made other platforms unsuitable for building long games and complex collaboration tools. Meanwhile, our platform can be self-hosted, allows private usage, and can be modified.
 
@@ -68,7 +68,7 @@ Our team includes significant backend and operations experience and several year
 
 We suspect the need exists for an open alternative to other competing walled gardens. While many VR platforms are currently free to use and advertise minimal privacy features, there is no guarantee that popular platforms will remain free or private forever: for example, a widely used product could be acquired by a corporation with different goals.
 
-Additionally, we see the potential for a customizable, open platform to be used within enterprises and to build the foundation for games or other content that share needs with our platform, such as its VOIP or VR interaction features.
+Additionally, we see the potential for a customizable, open platform to be used within enterprises and to build the foundation for games or other content that share needs with our platform, such as its VOIP or virtual reality interaction features.
 
 **Are you looking for any teammates? If so, please indicate what skills or roles you seek.**
 
