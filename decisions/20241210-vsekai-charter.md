@@ -52,7 +52,7 @@ Other social VR platforms have allowed us to engage with people worldwide, atten
 
 **Will your team still work on this project if we do not fund it? To what extent?**
 
-Mozilla's funding will speed up our development and allow us to focus full-time on the MVP. Without funding, we will continue to work on it in our spare time, but other closed platforms are catching up, and time is crucial.
+Without funding, we will continue to work on it in our spare time, but other closed platforms are catching up, and time is crucial.
 
 **Why did you pick this idea? Would you happen to have domain expertise? How do you know people need what you’re building?**
 
