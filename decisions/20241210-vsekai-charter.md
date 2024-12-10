@@ -1,4 +1,4 @@
-# Draft: Template
+# Draft: Update V-Sekai Charter to 2024.
 
 ## The Context
 
@@ -195,13 +195,43 @@ Aside from being passionate about VR, we are all committed to open source and de
 
 ## The Benefits
 
+The benefits of updating our V-Sekai charter to 2024 include:
+
+- Ensuring the project remains relevant and aligned with current technological advancements and user needs.
+- Providing a clear roadmap and goals for the development team to follow.
+- Attracting potential investors and collaborators by demonstrating a commitment to long-term development.
+- Enhancing the project's credibility and visibility within the VR and open-source communities.
+
 ## The Downsides
+
+The downsides of updating our V-Sekai charter to 2024 include:
+
+- Potentially overcommitting resources and time to a long-term project without guaranteed funding.
+- The risk of technological changes or market shifts that could render parts of the charter obsolete.
+- The possibility of team burnout or turnover due to the extended timeline and ambitious goals.
 
 ## The Road Not Taken
 
+The alternative to updating our V-Sekai charter to 2024 would be to maintain the current charter and focus on short-term goals. This approach could:
+
+- Allow for more flexibility and adaptability to changing market conditions and technological advancements.
+- Reduce the risk of overcommitting resources and time to a long-term project.
+- Potentially limit the project's growth and impact by not setting ambitious long-term goals.
+
 ## The Infrequent Use Case
 
+An infrequent use case for our V-Sekai platform could be:
+
+- Using the platform for virtual historical reenactments or educational tours, where users can immerse themselves in a historically accurate VR environment and interact with historical figures or artifacts.
+- Hosting virtual conferences or trade shows, allowing attendees to network, attend presentations, and explore exhibitor booths in a fully immersive VR setting.
+
 ## Why is it in Core and done by us?
+
+Updating the V-Sekai charter to 2024 is core to our mission because:
+
+- We are committed to developing an open-source, decentralized VR platform that empowers users and fosters innovation.
+- Our team has the expertise and passion for VR and open-source technology, making us uniquely qualified to lead this project.
+- By setting long-term goals, we can ensure the project's sustainability and continued growth, benefiting the broader VR and open-source communities.
 
 ## Status
 
@@ -221,4 +251,3 @@ Aside from being passionate about VR, we are all committed to open source and de
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
 
 AI assistant Aria assisted with this article.
-
