@@ -12,11 +12,11 @@ We want to update our V-Sekai charter to 2024.
 
 **A one-line summary of the MVP:**
 
-A fully customizable and self-hosted collaborative virtual reality environment based on Godot Engine.
+A customizable and self-hosted virtual reality environment using Godot Engine.
 
 **Description of the product: What will the MVP be in 8 weeks?**
 
-In 8 weeks, our standalone virtual reality application will be usable from all SteamVR-compatible PC headsets and the mobile Meta Quest virtual reality platform. The MVP will feature a social hub with 3D spatialized voice, real-time upper body tracking, simple games, physics, and social video viewing.
+In 8 weeks, our virtual reality app will work with all SteamVR-compatible PC headsets and the Meta Quest VR platform. It will have a social hub with 3D voice chat, real-time body tracking, simple games, physics, and social video viewing.
 
 **Category:**
 
@@ -30,49 +30,39 @@ In 8 weeks, our standalone virtual reality application will be usable from all S
 
 **Why does your idea matter? How will it help deliver on the full promise of the internet or make the internet more awesome?**
 
-The Internet's core principles are openness and communication. We see virtual reality as the basis for a new frontier of communication products: Social virtual reality platforms. Hastened by the closure and general failings of the once-open-source High Fidelity platform, we are now in desperate need of open-source alternatives to the growing number of closed-source virtual reality-compatible walled gardens in development.
+The Internet is about openness and communication. We see virtual reality as a new way to connect people. With the closure of the High Fidelity platform, we need open-source alternatives to the growing number of closed VR platforms.
 
-We are at the pinnacle of a new wave of VR and related tech, and with the impending maturity of open game engines, audio and video codecs, combined with faster internet connectivity capable of hosting services, and increasingly available VR hardware, the time is right to lead the development of an open platform.
+We are at a point where VR and related tech are advancing quickly. With better game engines, audio and video codecs, faster internet, and more VR hardware, it's the right time to develop an open platform.
 
-We believe in putting power back in the hands of individuals, and thus, we are firm believers in decentralized technology. Our initial goal will be to produce a polished, well-functioning service. Still, we plan to integrate decentralized authentication and encryption schemes, including GPG and the web of trust-based end-to-end encryption, as well as decentralized content distribution technologies such as BitTorrent and IPFS.
+We believe in giving power back to individuals through decentralized technology. Our goal is to create a polished, well-functioning service and integrate decentralized authentication and encryption, as well as content distribution technologies like BitTorrent and IPFS.
 
 **Who are your users or potential users?**
 
-We are building a product for all users of social virtual reality, online collaboration, and communication products. Social virtual reality is a growing space, and its potential is only beginning to be realized with a mass movement toward virtual collaboration.
+We are building this for users of social virtual reality, online collaboration, and communication products. Social VR is growing, and its potential is just starting to be realized.
 
-Even VR as a whole is still in the very early stages. Still, it represents a large potential market, especially with the recent availability of affordable and easy-to-install headsets such as the Meta Quest, which has seen rapid growth since its release one year ago.
-
-An example of a leading virtual reality platform with public numbers is VRChat, which recently had between 12,000 and 15,000 concurrent online users across virtual reality and Desktop platforms, with roughly 4,000 concurrent virtual reality users using this platform (out of a reported 4 million registered users as of 2019).
+Even though VR is still new, it has a large potential market, especially with affordable headsets like the Meta Quest. For example, VRChat has between 12,000 and 15,000 concurrent users, with about 4,000 using VR.
 
 **What is your connection to the service & the user group you plan to reach with your product?**
 
-We're a passionate team of VR enthusiasts, some of us tinkering in our spare time with visual effects, level design, or graphics concepts still in research.
+We're a team of VR enthusiasts who work on visual effects, level design, and graphics in our spare time.
 
-In an age where collaborating and connecting at a distance is increasingly essential, meeting in real life can often be a barrier to people. VR has the potential to bring people together and immerse them in a shared space in a way that not even the best video collaboration can. Another group member has participated in Virtual Market 4, the most recent iteration of a Japanese-run exponentially growing virtual content marketplace spanning multiple platforms.
+In a time when connecting at a distance is important, VR can bring people together in a shared space better than video calls. One of our team members has participated in Virtual Market 4, a growing virtual content marketplace.
 
-Other social virtual reality platforms have found ways to immerse me in a multitude of realities: for example, engaging in real-time with people around the world at all times of day and night, attending live dance and music events, seeing performers breakdance and do pole acrobatics using VIVE full-body trackers, forming friendships through exchanging personal stories around a campfire, programming environments defined by a math function and then experiencing them in virtual reality, even solving a 1000 piece jigsaw puzzle with friends. It is my dream to enable these experiences in a setting that is sustainable, open, and accessible.
+Other social VR platforms have allowed us to engage with people worldwide, attend live events, and form friendships. We want to enable these experiences in an open and accessible setting.
 
 **Will your team still work on this project if we do not fund it? To what extent?**
 
-Mozilla's capital injection will speed up our development and allow me to leave my company to focus full-time on the MVP. This could enable us to outrun these walled gardens in a very short time.
-
-If not funded, we can continue to advance it more slowly in our spare time, but other closed platforms are catching up, and time is of the essence. Our project will drive development around open-source VR support and 3D tools, and we can see lasting effects from our contributions in those areas.
+Mozilla's funding will speed up our development and allow us to focus full-time on the MVP. Without funding, we will continue to work on it in our spare time, but other closed platforms are catching up, and time is crucial.
 
 **Why did you pick this idea? Would you happen to have domain expertise? How do you know people need what you’re building?**
 
-We’re seeding the beginning of the virtual reality frontier, and we already see a sizable fraction of the current virtual reality population spending considerable time in social virtual reality walled gardens, such as VRChat.
+We see a need for an open alternative to closed VR platforms. Many VR platforms are free now, but there's no guarantee they will stay that way. Our platform can be self-hosted, used privately, and modified.
 
-It can be difficult or impossible to build atop walled garden platforms outside their respective visions: we’ve encountered such roadblocks in past projects. For example, a combination of lack of persistence, access to media/web requests, and general customizability has made other platforms unsuitable for building long games and complex collaboration tools. Meanwhile, our platform can be self-hosted, allows private usage, and can be modified.
-
-Our team includes significant backend and operations experience and several years of work on Godot Engine, which will be relevant to building this platform.
-
-We suspect the need exists for an open alternative to other competing walled gardens. While many VR platforms are currently free to use and advertise minimal privacy features, there is no guarantee that popular platforms will remain free or private forever: for example, a widely used product could be acquired by a corporation with different goals.
-
-Additionally, we see the potential for a customizable, open platform to be used within enterprises and to build the foundation for games or other content that share needs with our platform, such as its VOIP or virtual reality interaction features.
+Our team has experience in backend operations and working with Godot Engine, which is relevant to building this platform.
 
 **Are you looking for any teammates? If so, please indicate what skills or roles you seek.**
 
-We have created a Discord group, a GitHub repository, and an issues list where we can post about project and look for teammates.
+We have a Discord group, a GitHub repository, and an issues list where we can post about the project and look for teammates.
 
 **Could you describe your work plan?**
 
@@ -123,7 +113,7 @@ VRChat, Meta Horizon, RecRoom, AltSpace, EngageVR, Spatial (Quest), Mozilla Hubs
 
 **How will you attract your first 1000 users? Your first 1,000,000?**
 
-We anticipate contacts from our immediate VR communities will seed the first 50 users. To break past 100 users, we will provide unique experiences not easily accessible on other platforms. To move beyond thousands of users, we will host events and ensure privacy and self-hosting capabilities.
+We will start with contacts from our VR communities to get the first 50 users. To get more users, we will offer unique experiences not available on other platforms. To reach thousands of users, we will host events and ensure privacy and self-hosting capabilities.
 
 **First 2-week development milestone**
 
@@ -239,4 +229,3 @@ Updating the V-Sekai charter to 2024 is core to our mission because:
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
 
 AI assistant Aria assisted with this article.
-
