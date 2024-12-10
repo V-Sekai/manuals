@@ -16,7 +16,7 @@ A fully remixable and self-hosted collaborative VR environment based on Godot En
 
 **Description of the product: What will the MVP be in 8 weeks?**
 
-Our standalone Virtual Reality (VR) application will be usable from all SteamVR-compatible PC headsets and the mobile Oculus Quest VR platform. The MVP features a social hub with 3D spatialized voice, real-time upper body tracking, simple games, physics, and social video viewing.
+Our standalone Virtual Reality (VR) application will be usable from all SteamVR-compatible PC headsets and the mobile Meta Quest VR platform. The MVP features a social hub with 3D spatialized voice, real-time upper body tracking, simple games, physics, and social video viewing.
 
 **Category**
 
@@ -40,7 +40,7 @@ We believe in putting power back in the hands of individuals, and thus, we are f
 
 We are building a product for all users of social VR, online collaboration, and communication products. Social VR is a growing space, and its potential is only beginning to be realized with a mass movement toward virtual collaboration.
 
-Even VR as a whole is still in the very early stages. Still, it represents a large potential market, especially with the recent availability of affordable and easy-to-install headsets such as the Oculus Quest, which has seen rapid growth since its release one year ago.
+Even VR as a whole is still in the very early stages. Still, it represents a large potential market, especially with the recent availability of affordable and easy-to-install headsets such as the Meta Quest, which has seen rapid growth since its release one year ago.
 
 An example of a leading VR platform with public numbers is VRChat, which recently had between 12,000 and 15,000 concurrent online users across VR and Desktop platforms, with roughly 4,000 concurrent VR users using this platform (out of a reported 4 million registered users as of 2019).
 
@@ -78,7 +78,7 @@ We have created a Slack Channel, a GitHub repository, and an issues list where y
 
 **Week 1:**
 
-- Maintain continuous integration of Windows SteamVR, Oculus Quest, and Linux server builds running on a public server against which to test and dogfood the product.
+- Maintain continuous integration of Windows SteamVR, Meta Quest, and Linux server builds running on a public server against which to test and dogfood the product.
 - VOIP implementation: Basic lipsync is based on volume, and the spatialization library is integrated.
 - Improve Inverse Kinematics implementation and add non-VR support.
 
@@ -119,7 +119,7 @@ We have created a Slack Channel, a GitHub repository, and an issues list where y
 
 **Who are your competitors?**
 
-VRChat, Facebook Horizon, RecRoom, AltSpace, EngageVR, Spatial (Quest), Mozilla Hubs, VirtualCast, cluster, Sansar, HTC Vive Sync, OasisVR, ChilloutVR, Lavender, Roblox VR (We are not considering non-VR capable platforms or MMORPGs as competition).
+VRChat, Meta Horizon, RecRoom, AltSpace, EngageVR, Spatial (Quest), Mozilla Hubs, VirtualCast, cluster, Sansar, HTC Vive Sync, OasisVR, ChilloutVR, Lavender, Roblox VR (We are not considering non-VR capable platforms or MMORPGs as competition).
 
 **How will you attract your first 1000 users? Your first 1,000,000?**
 
@@ -145,7 +145,7 @@ Another source of usage will be business meetings and anything where privacy and
 
 **Tech stack you plan to use (Cloud services, APIs, mobile platforms, languages, etc)**
 
-Godot Engine, k3s, Elixir, OAuth, CockroachDB, Nginx, Fedora, CentOS 8, Digital Ocean Spaces, Oculus Quest SDK on Android, Valve OpenVR on Windows.
+Godot Engine, k3s, Elixir, OAuth, CockroachDB, Nginx, Fedora, CentOS 8, Digital Ocean Spaces, Meta Quest SDK on Android, Valve OpenVR on Windows.
 
 **Link to simple sketches (can be as simple as paper and pencil) of your product or idea**
 
