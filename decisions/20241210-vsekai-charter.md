@@ -72,7 +72,7 @@ Additionally, we see the potential for a customizable, open platform to be used 
 
 **Are you looking for any teammates? If so, please indicate what skills or roles you seek.**
 
-We have created a Slack Channel, a GitHub repository, and an issues list where you can post your project and look for teammates.
+We have created a Discord group, a GitHub repository, and an issues list where we can post about project and look for teammates.
 
 **Could you describe your work plan?**
 
