@@ -66,35 +66,45 @@ We have a Discord group, a GitHub repository, and an issues list where we can po
 
 **Could you describe your work plan?**
 
-| Week       | Tasks                                                                                                      |
-|------------|------------------------------------------------------------------------------------------------------------|
-| **Week 1** | - Maintain continuous integration of Windows SteamVR, Meta Quest, and Linux server builds.                 |
-|            | - VOIP implementation: Basic lipsync based on volume, and spatialization library integration.              |
-|            | - Improve Inverse Kinematics implementation and add non-VR support.                                        |
-| **Week 2** | - Headless clients will stress test the system.                                                            |
-|            | - Implement crash reporting system and performance metrics.                                                |
-|            | - Content: Use a basic scripting API to implement physics-based games.                                     |
-|            | - Begin work on engine changes for smooth frame rates during content loading.                              |
-| **Week 3** | - Networking interpolation: eliminate stuttering caused by networking.                                     |
-|            | - Godot OpenVR Plugin: fix bugs causing inconsistent framerate in VR.                                      |
-|            | - Pre-load content to avoid stutters in the 3D environment.                                                |
-| **Week 4** | - Content: Begin work on hardcoded avatars.                                                                |
-|            | - Content: Recruit artists for creating a default home map.                                                |
-|            | - Physics: fix physics errors such as sliding down ramps.                                                  |
-|            | - Test performance on regular VR hardware and optimization.                                                |
-| **Week 5-6**| - Account system, TOS, Privacy Policy.                                                                    |
-|            | - Allow closed registration of users.                                                                     |
-|            | - Continue working on content and fix bugs.                                                               |
-|            | - Integration of video playback.                                                                          |
-|            | - Focus on stress testing.                                                                                |
-| **Week 7-8**| - Fix bugs found during testing.                                                                         |
-|            | - Monitor performance metrics and keep fixing performance.                                                |
+| Week         | Tasks                                                                                         |
+| ------------ | --------------------------------------------------------------------------------------------- |
+| **Week 1**   | - Maintain continuous integration of Windows SteamVR, Meta Quest, and Linux server builds.    |
+|              | - VOIP implementation: Basic lipsync based on volume, and spatialization library integration. |
+|              | - Improve Inverse Kinematics implementation and add non-VR support.                           |
+| **Week 2**   | - Headless clients will stress test the system.                                               |
+|              | - Implement crash reporting system and performance metrics.                                   |
+|              | - Content: Use a basic scripting API to implement physics-based games.                        |
+|              | - Begin work on engine changes for smooth frame rates during content loading.                 |
+| **Week 3**   | - Networking interpolation: eliminate stuttering caused by networking.                        |
+|              | - Godot OpenVR Plugin: fix bugs causing inconsistent framerate in VR.                         |
+|              | - Pre-load content to avoid stutters in the 3D environment.                                   |
+| **Week 4**   | - Content: Begin work on hardcoded avatars.                                                   |
+|              | - Content: Recruit artists for creating a default home map.                                   |
+|              | - Physics: fix physics errors such as sliding down ramps.                                     |
+|              | - Test performance on regular VR hardware and optimization.                                   |
+| **Week 5-6** | - Account system, TOS, Privacy Policy.                                                        |
+|              | - Allow closed registration of users.                                                         |
+|              | - Continue working on content and fix bugs.                                                   |
+|              | - Integration of video playback.                                                              |
+|              | - Focus on stress testing.                                                                    |
+| **Week 7-8** | - Fix bugs found during testing.                                                              |
+|              | - Monitor performance metrics and keep fixing performance.                                    |
 
 **Could you describe the team's approach to developing the Minimum Viable Product throughout the summer? This includes, but is not limited to:**
 
 **Who are your competitors?**
 
-VRChat, Meta Horizon, RecRoom, AltSpace, EngageVR, Spatial (Quest), Mozilla Hubs, VirtualCast, cluster, Sansar, HTC Vive Sync, OasisVR, ChilloutVR, Lavender, Roblox VR.
+| Tier S              | Tier A        | Tier B        |
+| ------------------- | ------------- | ------------- |
+| VRChat              | Rec Room      | ENGAGE VR     |
+| Meta Horizon Worlds | Roblox VR     | HTC Vive Sync |
+| cluster             | Spatial       | Oasis VR      |
+| Rec Room            | Mozilla Hubs  | ChilloutVR    |
+| Roblox VR           | VirtualCast   | Lavender      |
+| Meta Horizon Worlds | Sansar        | Resonite      |
+|                     | Somnium Space | Bigscreen     |
+|                     |               | Anyland       |
+|                     |               | VirBELA       |
 
 **How will you attract your first 1000 users? Your first 1,000,000?**
 
