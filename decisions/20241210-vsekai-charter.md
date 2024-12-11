@@ -92,20 +92,19 @@ We have a Discord group, a GitHub repository, and an issues list where we can po
 
 **Could you describe the team's approach to developing the Minimum Viable Product throughout the summer? This includes, but is not limited to:**
 
-**Who are your competitors?**
+**Who are your peers?**
 
 | Tier S              | Tier A        | Tier B        |
 | ------------------- | ------------- | ------------- |
-| VRChat              |Spatial      | ENGAGE VR     |
-| Meta Horizon Worlds | Mozilla Hubs     | HTC Vive Sync |
-| cluster             | VirtualCast        | Oasis VR      |
-| Rec Room            | Sansar  | ChilloutVR    |
-| Roblox VR           | Somnium Space  | Lavender      |
+| VRChat              | Spatial       | ENGAGE VR     |
+| Meta Horizon Worlds | Mozilla Hubs  | HTC Vive Sync |
+| cluster             | VirtualCast   | Oasis VR      |
+| Rec Room            | Sansar        | ChilloutVR    |
+| Roblox VR           | Somnium Space | Lavender      |
 |                     | Overte        | Resonite      |
-|                     |  | Bigscreen     |
-|                     |         | Anyland       |
+|                     |               | Bigscreen     |
+|                     |               | Anyland       |
 |                     |               | VirBELA       |
-
 
 **How will you attract your first 1000 users? Your first 1,000,000?**
 
