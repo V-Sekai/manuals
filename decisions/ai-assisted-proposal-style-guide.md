@@ -12,7 +12,7 @@ We often need better style and consistent formatting issues when we instruct AI 
 
 1. **Avoid Purple Speech**: Use clear and concise language, avoiding overly elaborate or flowery expressions.
 2. **Be Snappy**: Keep sentences short and concise to maintain reader engagement.
-3. **Avoid Coded Phrases**: Refrain from using redundant phrases like "effective altruism" since altruism inherently implies effectiveness.
+3. **Avoid Coded Phrases**: Refrain from using coded phrases like "effective altruism" since altruism inherently implies effectiveness and not the opposite.
 4. **Please keep consistent Headers**: Adhere to the header structure provided in the template to make sure it's consistent across documents.
 
 ## The Benefits
