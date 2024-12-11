@@ -96,14 +96,14 @@ We have a Discord group, a GitHub repository, and an issues list where we can po
 
 | Tier S              | Tier A        | Tier B        |
 | ------------------- | ------------- | ------------- |
-| VRChat              | Rec Room      | ENGAGE VR     |
-| Meta Horizon Worlds | Roblox VR     | HTC Vive Sync |
-| cluster             | Spatial       | Oasis VR      |
-| Rec Room            | Mozilla Hubs  | ChilloutVR    |
-| Roblox VR           | VirtualCast   | Lavender      |
-|                     | Sansar        | Resonite      |
-|                     | Somnium Space | Bigscreen     |
-|                     | Overte        | Anyland       |
+| VRChat              |Spatial      | ENGAGE VR     |
+| Meta Horizon Worlds | Mozilla Hubs     | HTC Vive Sync |
+| cluster             | VirtualCast        | Oasis VR      |
+| Rec Room            | Sansar  | ChilloutVR    |
+| Roblox VR           | Somnium Space  | Lavender      |
+|                     | Overte        | Resonite      |
+|                     |  | Bigscreen     |
+|                     |         | Anyland       |
 |                     |               | VirBELA       |
 
 
