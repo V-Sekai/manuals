@@ -2,18 +2,18 @@
 
 ## The Context
 
-Maintaining a consistent and professional style is crucial in proposal writing. However, when AI is utilized to assist in this process, the output often lacks the desired stylistic quality.
+Maintaining a consistent and professional style is crucial in proposal writing. However, when AI assists in this process, the output often needs more stylistic quality.
 
 ## The Problem Statement
 
-When we instruct AI to help complete our proposals, we often need better style and consistent formatting issues.
+We often need better style and consistent formatting issues when we instruct AI to help complete our proposals.
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
 1. **Avoid Purple Speech**: Use clear and concise language, avoiding overly elaborate or flowery expressions.
 2. **Be Snappy**: Keep sentences short and concise to maintain reader engagement.
-3. **Avoid Redundant Phrases**: Refrain from using redundant phrases like "effective altruism" since altruism inherently implies effectiveness.
-4. **Please keep consistent Headers**: Adhere to the header structure provided in the template to ensure consistency across documents.
+3. **Avoid Coded Phrases**: Refrain from using redundant phrases like "effective altruism" since altruism inherently implies effectiveness.
+4. **Please keep consistent Headers**: Adhere to the header structure provided in the template to make sure it's consistent across documents.
 
 ## The Benefits
 
