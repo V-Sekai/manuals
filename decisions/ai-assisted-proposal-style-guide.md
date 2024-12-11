@@ -1,24 +1,24 @@
-# Accepted: AI Assisted Style Guide
+# Accepted: AI-Assisted Style Guide
 
 ## The Context
 
-In the realm of proposal writing, maintaining a consistent and professional style is crucial. However, when utilizing AI to assist in this process, the output often lacks the desired stylistic quality.
+Maintaining a consistent and professional style is crucial in proposal writing. However, when AI is utilized to assist in this process, the output often lacks the desired stylistic quality.
 
 ## The Problem Statement
 
-When we instruct AI to help complete our proposals, we often encounter issues with poor style and inconsistent formatting.
+When we instruct AI to help complete our proposals, we often need better style and consistent formatting issues.
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
-1. **Avoid Purple Speech**: Ensure that the language used is clear and concise, avoiding overly elaborate or flowery expressions.
-2. **Be Snappy**: Keep sentences short and to the point to maintain reader engagement.
-3. **Avoid Redundant Phrases**: Refrain from using redundant phrases like "effective altruism" since true altruism inherently implies effectiveness.
-4. **Maintain Consistent Headers**: Adhere to the header structure provided in the template to ensure uniformity across documents.
+1. **Avoid Purple Speech**: Use clear and concise language, avoiding overly elaborate or flowery expressions.
+2. **Be Snappy**: Keep sentences short and concise to maintain reader engagement.
+3. **Avoid Redundant Phrases**: Refrain from using redundant phrases like "effective altruism" since altruism inherently implies effectiveness.
+4. **Please keep consistent Headers**: Adhere to the header structure provided in the template to ensure consistency across documents.
 
 ## The Benefits
 
 - **Improved Readability**: Clear and concise language enhances the readability of proposals.
-- **Consistency**: Maintaining a consistent style ensures that all documents have a professional appearance.
+- **Consistency**: Maintaining a consistent style ensures that all documents appear professionally.
 - **Efficiency**: Streamlined guidelines make it easier for AI to generate high-quality content quickly.
 
 ## The Downsides
@@ -28,7 +28,7 @@ When we instruct AI to help complete our proposals, we often encounter issues wi
 
 ## The Road Not Taken
 
-Alternative approaches such as manual editing or using different AI models were considered but ultimately deemed less efficient or effective.
+Alternative approaches, such as manual editing or using different AI models, were considered but ultimately deemed less efficient or effective.
 
 ## The Infrequent Use Case
 
