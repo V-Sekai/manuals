@@ -103,8 +103,9 @@ We have a Discord group, a GitHub repository, and an issues list where we can po
 | Roblox VR           | VirtualCast   | Lavender      |
 | Meta Horizon Worlds | Sansar        | Resonite      |
 |                     | Somnium Space | Bigscreen     |
-|                     |               | Anyland       |
+|                     | Overte        | Anyland       |
 |                     |               | VirBELA       |
+
 
 **How will you attract your first 1000 users? Your first 1,000,000?**
 
