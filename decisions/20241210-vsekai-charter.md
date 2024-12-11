@@ -101,7 +101,7 @@ We have a Discord group, a GitHub repository, and an issues list where we can po
 | cluster             | Spatial       | Oasis VR      |
 | Rec Room            | Mozilla Hubs  | ChilloutVR    |
 | Roblox VR           | VirtualCast   | Lavender      |
-| Meta Horizon Worlds | Sansar        | Resonite      |
+|                     | Sansar        | Resonite      |
 |                     | Somnium Space | Bigscreen     |
 |                     | Overte        | Anyland       |
 |                     |               | VirBELA       |
