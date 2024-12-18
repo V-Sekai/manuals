@@ -37,7 +37,7 @@
 
 - Not applicable for this month.
 
-## Ask yourself why the fuck aren't released yet?
+## Ask yourself why the fuck aren't we released yet?
 
 - Not applicable for this month.
 
