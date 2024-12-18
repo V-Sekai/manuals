@@ -31,9 +31,7 @@
 
 ### Security
 
-- **Security Best Practices**:
-
-This project does not adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+- Not applicable for this month.
 
 ## [Previous Releases]
 
@@ -42,3 +40,7 @@ This project does not adhere to [Semantic Versioning](https://semver.org/spec/v2
 ## Ask yourself why the fuck aren't released yet?
 
 - Not applicable for this month.
+
+## Semantic Versioning
+
+This project does not adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
