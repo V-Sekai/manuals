@@ -14,7 +14,11 @@ This proposal outlines a two-phase approach:
 
 Phase 1: Firefly Enhancement: New users will join the wider community as a firefly. This provides an immediate sense of community and introduces basic movement controls in a 3D space. Enhance the firefly experience with:
 
-- Interactive Elements: Introduce a firefly body that reflects interactions based on actions (code implementation with visual mock-ups).
+- Interactive Elements: Introduce a firefly body that reacts to user inputs such as movement, voice audio, and animation gestures. For example:
+  - The firefly could change color or emit light patterns based on the user's voice pitch and volume.
+  - Perform specific animations in response to facial expressions.
+  - Incorporate face visemes and face shapes to reflect the user's speech and emotional expressions.
+  - Provide visual mock-ups to illustrate these interactions.
 - Voice Chat: Enable voice chat to facilitate communication and interaction among new users (code implementation with audio integration).
 
 Phase 2: Avatar Emergence: The firefly experience gradually transitions towards avatar customization and personalization.
