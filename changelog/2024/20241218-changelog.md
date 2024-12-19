@@ -7,23 +7,31 @@
 
 ## [Released]
 
-- Not applicable for this month.
+- V-Sekai Steamdeck Gameplay Video Dec 2024
 
 ## [Unreleased]
 
-- Not applicable for this month.
+- mesh creation tooling, manifold mesh creation tooling
+- concept new V-Sekai hub world with https://github.com/V-Sekai/S_Concept_First_Station with @Transplanar-Ecological-Society, @fire and @St3nu
 
 ### Added
 
-- Not applicable for this month.
+- tech tree updated (sphere grid)
+- On December 18th call, December:
+  - attendance: @Transplanar-Ecological-Society, @fire, @humbletime, @lyuma
+  - need to retest editor upload
+  - make a tutorial for avatar uploads
+  - make a tutorial for world uploads
+  - nametag game meeting functionality
+    - getting audio working for first in engine town hall meeting 2025
 
 ### Fixed
 
-- Not applicable for this month.
+- Unbroke world loading with whitelist https://github.com/V-Sekai/godot/tree/resource_loader_whitelist_4.4
 
 ### Deprecated
 
-- Not applicable for this month.
+- GoCD broke in November 2024 and replaced with GitHub Actions
 
 ### Removed
 
@@ -31,7 +39,7 @@
 
 ### Security
 
-- Not applicable for this month.
+-  Modified the security access for loading worlds and avatars
 
 ## [Previous Releases]
 
