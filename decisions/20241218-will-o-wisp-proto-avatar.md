@@ -15,8 +15,8 @@ Phase 1: Will-o-Wisp Enhancement
 New users will join the wider community as a will-o-wisp. This provides an immediate sense of community and introduces basic movement controls in a 3D space.
 
 - Interactive Elements: Introduce a will-o-wisp body that reacts to user inputs such as movement, voice audio, and animation gestures. For example:
-  - The will-o-wisp could change color or emit light patterns based on the user's voice pitch and volume.
-  - Perform specific animations in response to facial expressions.
+  - The will-o-wisp could change color or emit light patterns based on the user's face visemes, voice pitch and volume.
+  - Perform specific animations in response to gestures.
 - Voice Chat: Enable voice chat to facilitate communication and interaction among new users (code implementation with audio integration).
 
 Phase 2: Avatar Emergence
