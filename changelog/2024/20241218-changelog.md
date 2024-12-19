@@ -18,7 +18,7 @@
 ### Added
 
 - tech tree updated (sphere grid)
-- On December 18th call, December:
+- on December 18th call, December:
   - attendance: @Transplanar-Ecological-Society, @fire, @humbletime, @lyuma
   - need to retest editor upload
   - make a tutorial for avatar uploads
