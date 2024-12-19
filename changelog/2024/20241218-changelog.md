@@ -7,12 +7,13 @@
 
 ## [Released]
 
-- V-Sekai Steamdeck Gameplay Video Dec 2024
+- Not applicable for this month.
 
 ## [Unreleased]
 
 - mesh creation tooling, manifold mesh creation tooling
 - concept new V-Sekai hub world with https://github.com/V-Sekai/S_Concept_First_Station with @Transplanar-Ecological-Society, @fire and @St3nu
+- V-Sekai Steamdeck Gameplay Video Dec 2024 recorded
 
 ### Added
 
