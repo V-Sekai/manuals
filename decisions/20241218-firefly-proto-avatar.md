@@ -1,0 +1,71 @@
+# Draft: Firefly Proto-Avatar
+
+## The Context
+
+We need a captivating and engaging starting experience for new users in V-Sekai. This experience should introduce core mechanics in a fun way and hint at the possibilities of avatar creation and interaction.
+
+## The Problem Statement
+
+New users need an engaging onboarding experience that seamlessly introduces them to V-Sekai's social VR environment and avatar customization.
+
+## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+
+This proposal outlines a two-phase approach:
+
+Phase 1: Swarm Enhancement: New users will join the wider community as a firefly. This provides an immediate sense of community and introduces basic movement controls in a 3D space. We will enhance the firefly experience with:
+
+- Light trails: Add a visual flourish to firefly movement (code implementation with visual mock-ups).
+- Interactive elements: Introduce glowing plants and objects that react to the fireflies (code implementation with level design mock-ups).
+- Voice Chat: Enable voice chat to facilitate communication and interaction among new users (code implementation with audio integration).
+
+Phase 2: Avatar Emergence: The firefly experience gradually transitions towards avatar customization and personalization.
+
+- Proto-Avatar Customization: Introduce basic shape variations for the fireflies (code implementation with visual mock-ups).
+- Avatar Previews: Provide glimpses of potential future avatars as silhouettes or holograms within the environment (3D model design and code implementation).
+- Chrysalis Chamber: Create a dedicated space where users can experiment with proto-avatar customizations and preview future avatar options (level design and UI/UX design).
+
+## The Benefits
+
+- Engaging Onboarding: Provides a fun and unique first experience for new users.
+- Community Building: The shared firefly experience fosters a sense of belonging and encourages interaction.
+- Gradual Introduction: Eases users into the concepts of avatar customization and the larger V-Sekai world.
+- Increased Retention: A captivating initial experience can improve user retention.
+
+## The Downsides
+
+- Development Time: Implementing the proposed features will require dedicated development resources.
+- Technical Challenges: Creating a seamless and performant firefly experience may present technical hurdles.
+- User Expectations: Managing user expectations about the transition from fireflies to full avatars is important.
+
+## The Road Not Taken
+
+We considered directly starting users with avatar creation, but this could be overwhelming. The firefly experience provides a gentler introduction to the 3D environment and social aspects of V-Sekai.
+
+## The Infrequent Use Case
+
+Users who prefer to immediately jump into avatar creation could be provided with an option to skip the firefly experience.
+
+## Why is it in Core and done by us?
+
+Onboarding is a crucial aspect of the V-Sekai experience. The core development team is best suited to implement this feature to ensure it aligns with the overall vision and technical architecture.
+
+## Status
+
+Status: Draft
+
+## Decision Makers
+
+- V-Sekai development team
+
+## Tags
+
+- V-Sekai
+- Onboarding
+- Avatar
+
+## Further Reading
+
+1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
+2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
+
+AI assistant Aria assisted with this article.
