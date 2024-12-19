@@ -10,8 +10,6 @@ New users need an engaging onboarding experience that seamlessly introduces them
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
-This proposal outlines a two-phase approach:
-
 Phase 1: Will-o-Wisp Enhancement: New users will join the wider community as a will-o-wisp. This provides an immediate sense of community and introduces basic movement controls in a 3D space. Enhance the will-o-wisp experience with:
 
 - Interactive Elements: Introduce a will-o-wisp body that reacts to user inputs such as movement, voice audio, and animation gestures. For example:
