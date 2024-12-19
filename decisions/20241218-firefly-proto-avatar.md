@@ -12,10 +12,9 @@ New users need an engaging onboarding experience that seamlessly introduces them
 
 This proposal outlines a two-phase approach:
 
-Phase 1: Swarm Enhancement: New users will join the wider community as a firefly. This provides an immediate sense of community and introduces basic movement controls in a 3D space. We will enhance the firefly experience with:
+Phase 1: Firefly Enhancement: New users will join the wider community as a firefly. This provides an immediate sense of community and introduces basic movement controls in a 3D space. Enhance the firefly experience with:
 
-- Light trails: Add a visual flourish to firefly movement (code implementation with visual mock-ups).
-- Interactive elements: Introduce glowing plants and objects that react to the fireflies (code implementation with level design mock-ups).
+- Interactive Elements: Introduce a firefly body that reflects interactions based on actions (code implementation with visual mock-ups).
 - Voice Chat: Enable voice chat to facilitate communication and interaction among new users (code implementation with audio integration).
 
 Phase 2: Avatar Emergence: The firefly experience gradually transitions towards avatar customization and personalization.
@@ -26,7 +25,7 @@ Phase 2: Avatar Emergence: The firefly experience gradually transitions towards 
 
 ## The Benefits
 
-- Engaging Onboarding: Provides a fun and unique first experience for new users.
+- Engaging Onboarding: Provides a fun and unique first experience.
 - Community Building: The shared firefly experience fosters a sense of belonging and encourages interaction.
 - Gradual Introduction: Eases users into the concepts of avatar customization and the larger V-Sekai world.
 - Increased Retention: A captivating initial experience can improve user retention.
