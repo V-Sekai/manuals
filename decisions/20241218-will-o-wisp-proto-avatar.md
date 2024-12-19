@@ -10,7 +10,9 @@ New users need an engaging onboarding experience that seamlessly introduces them
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
-Phase 1: Will-o-Wisp Enhancement: New users will join the wider community as a will-o-wisp. This provides an immediate sense of community and introduces basic movement controls in a 3D space. Enhance the will-o-wisp experience with:
+Phase 1: Will-o-Wisp Enhancement
+
+New users will join the wider community as a will-o-wisp. This provides an immediate sense of community and introduces basic movement controls in a 3D space.
 
 - Interactive Elements: Introduce a will-o-wisp body that reacts to user inputs such as movement, voice audio, and animation gestures. For example:
   - The will-o-wisp could change color or emit light patterns based on the user's voice pitch and volume.
@@ -19,7 +21,9 @@ Phase 1: Will-o-Wisp Enhancement: New users will join the wider community as a w
   - Provide visual mock-ups to illustrate these interactions.
 - Voice Chat: Enable voice chat to facilitate communication and interaction among new users (code implementation with audio integration).
 
-Phase 2: Avatar Emergence: The will-o-wisp experience gradually transitions towards avatar customization and personalization.
+Phase 2: Avatar Emergence
+
+The will-o-wisp experience gradually transitions towards avatar customization and personalization.
 
 - Proto-Avatar Customization: Introduce basic shape variations for the will-o-wisps (code implementation with visual mock-ups).
 - Chrysalis Chamber: Create a dedicated space where users can experiment with proto-avatar customizations and preview future avatar options (level design and UI/UX design).
