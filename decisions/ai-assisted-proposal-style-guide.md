@@ -11,19 +11,27 @@ We often need better style and consistent formatting when we instruct AI to help
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
 1. **Avoid Purple Speech**: Use clear and concise language, avoiding overly elaborate or flowery expressions.
+
 2. **Be Snappy**: Keep sentences short and concise to maintain reader engagement.
+
 3. **Avoid Coded Phrases**: Refrain from using coded phrases like "effective altruism" since altruism inherently implies effectiveness and not the opposite.
+
 4. **Keep Consistent Headers**: Please be sure to adhere to the header structure provided in the template to ensure consistency across documents.
+
+5. **Bolded Headers** Do not recommend bolding headers due to noise.
 
 ## The Benefits
 
 - **Improved Readability**: Clear and concise language enhances the readability of proposals.
+
 - **Consistency**: Maintaining a consistent style ensures that all documents appear professionally.
+
 - **Efficiency**: Streamlined guidelines make it easier for AI to generate high-quality content quickly.
 
 ## The Downsides
 
 - **Limited Creativity**: Strict adherence to style guidelines may limit creative expression.
+
 - **Initial Setup Time**: Establishing and fine-tuning the style guide may require an initial investment of time and resources.
 
 ## The Road Not Taken
@@ -53,6 +61,7 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 ## Further Reading
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
+
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
 
 AI assistant Aria assisted with this article.
