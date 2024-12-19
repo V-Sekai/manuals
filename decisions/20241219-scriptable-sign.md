@@ -26,7 +26,7 @@ Currently, V-Sekai offers limited options for users to leave persistent messages
 
 ### User Interface Integration with Godot Signals
 
-- Godot's signal system will connect sign interactions with the user interface, enabling dynamic updates of "like" counts and other relevant information in the user's HUD or profile.
+- We will connect sign interactions with the user interface, enabling dynamic updates of "like" counts and other relevant information in the user's HUD or profile.
 
 ## The Benefits
 
