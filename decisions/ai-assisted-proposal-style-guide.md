@@ -18,7 +18,7 @@ We often need better style and consistent formatting when we instruct AI to help
 
 4. **Keep Consistent Headers**: Please be sure to adhere to the header structure provided in the template to ensure consistency across documents.
 
-5. **Bolded Headers** Do not recommend bolding headers due to noise.
+5. **Avoid Bolded Headers** Do not recommend bolding headers due to noise.
 
 ## The Benefits
 
