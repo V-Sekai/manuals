@@ -20,7 +20,6 @@ Phase 1: Firefly Enhancement: New users will join the wider community as a firef
 Phase 2: Avatar Emergence: The firefly experience gradually transitions towards avatar customization and personalization.
 
 - Proto-Avatar Customization: Introduce basic shape variations for the fireflies (code implementation with visual mock-ups).
-- Avatar Previews: Provide glimpses of potential future avatars as silhouettes or holograms within the environment (3D model design and code implementation).
 - Chrysalis Chamber: Create a dedicated space where users can experiment with proto-avatar customizations and preview future avatar options (level design and UI/UX design).
 
 ## The Benefits
