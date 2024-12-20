@@ -18,11 +18,11 @@ We will utilize a predefined JSON payload as the foundation for generating chara
 
 ```json
 {
-  "numOutputsTotal": 32,
+  "numOutputsTotal": 4,
   "seed": 908967689,
   "reqBody": {
-    "prompt": "1girl, mature woman, medium breast, standing, full body, simple clothing, closed mouth, looking at viewer, white background, hands outstretched, a-pose, no shoes, short hair, closed mouth",
-    "negative_prompt": "words, intricate hairstyle, elaborate braids, flowing hair, hair accessories, jewelry, intricate patterns, excessive details, flowing scarves, complex accessories, dynamic pose, foreshortening, extreme angles, obscured limbs, young, child, teenager, youthful",
+    "prompt": "1girl, mature woman, medium breast, standing, full body, simple clothing, closed mouth, looking at viewer, white background, hands outstretched, a-pose, simple shoes, flats, loafers, sneakers, short hair, closed mouth",
+    "negative_prompt": "words, intricate hairstyle, elaborate braids, flowing hair, hair accessories, jewelry, intricate patterns, excessive details, flowing scarves, complex accessories, dynamic pose, foreshortening, extreme angles, obscured limbs, young, child, teenager, youthful, high heels",
     "active_tags": [],
     "inactive_tags": [],
     "width": 1024,
