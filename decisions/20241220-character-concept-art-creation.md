@@ -45,10 +45,10 @@ This prompt prioritizes simplicity and clarity for optimal TRELLIS conversion, w
 
 ```json
 {
-  "numOutputsTotal": 4,
+  "numOutputsTotal": 32,
   "seed": 908967689,
   "reqBody": {
-    "prompt": "1girl, reference sheet, multiple views, mature woman, medium breast, standing, full body, simple clothing, closed mouth, looking at viewer, solid color background, hands outstretched, a-pose, simple shoes, flats, loafers, sneakers, short hair, closed mouth, colour ",
+    "prompt": "1girl, reference sheet, mature woman, simple clothing,  solid color background, a-pose, simple shoes, short hair, front view, back view, side view",
     "negative_prompt": "words, intricate hairstyle, elaborate braids, flowing hair, hair accessories, jewelry, intricate patterns, excessive details, flowing scarves, complex accessories, dynamic pose, foreshortening, extreme angles, obscured limbs, young, child, teenager, youthful, high heels, white background, white",
     "active_tags": [],
     "inactive_tags": [],
