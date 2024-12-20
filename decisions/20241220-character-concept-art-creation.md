@@ -22,20 +22,6 @@ Easy Diffusion provides a user-friendly interface for Stable Diffusion. We will 
 
 ### 2. Optimized Prompting in Easy Diffusion
 
-We will use a predefined prompt structure as the foundation for generating character concepts:
-
-```
-1girl, mature woman, simple clothing, a-pose, short hair, front view, back view, side view, solid color background, identical character, same woman in all views, consistent features across all angles
-```
-
-**Negative Prompt:**
-
-```
-words, intricate hairstyle, elaborate braids, flowing hair, hair accessories, jewelry, intricate patterns, excessive details, flowing scarves, complex accessories, dynamic pose, foreshortening, extreme angles, obscured limbs, young, child, teenager, youthful, high heels, white background, white
-```
-
-This prompt prioritizes simplicity and clarity for optimal TRELLIS conversion, with negative prompts to exclude challenging elements.
-
 **Settings:**
 
 - Use the "ESRGAN_4x" upscaler with an upscale amount of 4 and latent upscaler steps of 10 to enhance the artwork with a vectorized style.
