@@ -57,6 +57,8 @@ Status: Draft
 ## Decision Makers
 
 - V-Sekai development team
+- fire
+- Transplanar-Ecological-Society
 
 ## Tags
 
