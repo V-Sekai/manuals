@@ -25,7 +25,7 @@ Easy Diffusion provides a user-friendly interface for Stable Diffusion. We will 
 We will use a predefined prompt structure as the foundation for generating character concepts:
 
 ```
-1girl, reference sheet, mature woman, simple clothing, solid color background, a-pose, simple shoes, short hair, front view
+1girl, mature woman, simple clothing, a-pose, short hair, front view, back view, side view, solid color background, identical character, same woman in all views, consistent features across all angles
 ```
 
 **Negative Prompt:**
@@ -48,7 +48,7 @@ This prompt prioritizes simplicity and clarity for optimal TRELLIS conversion, w
   "numOutputsTotal": 32,
   "seed": 908967689,
   "reqBody": {
-    "prompt": "1girl, reference sheet, mature woman, simple clothing,  solid color background, a-pose, simple shoes, short hair, front view",
+    "prompt": "1girl, mature woman, simple clothing, a-pose, short hair, front view, back view, side view, solid color background, identical character, same woman in all views, consistent features across all angles",
     "negative_prompt": "words, intricate hairstyle, elaborate braids, flowing hair, hair accessories, jewelry, intricate patterns, excessive details, flowing scarves, complex accessories, dynamic pose, foreshortening, extreme angles, obscured limbs, young, child, teenager, youthful, high heels, white background, white",
     "active_tags": [],
     "inactive_tags": [],
