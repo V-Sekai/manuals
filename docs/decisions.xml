@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.39</generator>
-<lastBuildDate>Fri, 20 Dec 2024 08:10:23 GMT</lastBuildDate>
+<lastBuildDate>Fri, 20 Dec 2024 17:42:38 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Fri, 20 Dec 2024 08:10:23 GMT</pubDate>
+  <pubDate>Fri, 20 Dec 2024 17:42:38 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -162,7 +162,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Fri, 20 Dec 2024 08:10:23 GMT</pubDate>
+  <pubDate>Fri, 20 Dec 2024 17:42:38 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -256,7 +256,436 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241220-discord-quest-3.html</guid>
-  <pubDate>Fri, 20 Dec 2024 08:10:23 GMT</pubDate>
+  <pubDate>Fri, 20 Dec 2024 17:42:38 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20241220-character-concept-art-creation.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposal-character-concept-art-creation-in-v-sekai-with-flux.1" class="level1">
+<h1>Proposal: Character Concept Art Creation in V-Sekai with FLUX.1</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>V-Sekai aims to provide a versatile platform for creating and experiencing virtual worlds. Character creation is a crucial aspect of this process, and concept art plays a vital role in visualizing and refining character designs before 3D modeling.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Generating high-quality, 3D-ready concept art currently requires significant artistic skill and time investment. While AI models like FLUX.1 can streamline this process, ensuring compatibility with 3D modeling tools like TRELLIS requires careful consideration and optimization.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>This proposal outlines a workflow for generating FLUX.1 concept art optimized for TRELLIS, leveraging AI to accelerate character creation in V-Sekai.</p>
+<section id="optimized-prompting" class="level3">
+<h3 class="anchored" data-anchor-id="optimized-prompting">Optimized Prompting</h3>
+<p>We will utilize a predefined JSON payload as the foundation for generating character concepts:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-2">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"numOutputsTotal"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">32</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-3">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"seed"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">908967689</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-4">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"reqBody"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-5">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"prompt"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"1girl, standing, full body, simple clothing, closed mouth, looking at viewer, white background, a-pose, short hair"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-6">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"negative_prompt"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"words, intricate hairstyle, elaborate braids, flowing hair, hair accessories, jewelry, intricate patterns, excessive details, flowing scarves, complex accessories, dynamic pose, foreshortening, extreme angles, obscured limbs"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-7">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"active_tags"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[]</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-8">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"inactive_tags"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[]</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-9">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"width"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1024</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-10">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"height"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1024</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-11">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"seed"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">908967689</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-12">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"num_inference_steps"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">25</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-13">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"guidance_scale"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-14">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"distilled_guidance_scale"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3.5</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-15">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"preserve_init_image_color_profile"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">true</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-16">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"use_upscale"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ESRGAN_4x"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-17">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"upscale_amount"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"4"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-18">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"latent_upscaler_steps"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"10"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-19">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"sampler_name"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"forge_flux_realistic"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-20">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"scheduler_name"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"beta"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-21">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"use_stable_diffusion_model"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"flux1-schnell-fp8"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-22">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"clip_skip"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">true</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-23">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"tiling"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-24">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"use_vae_model"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ae"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-25">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"use_controlnet_model"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-26">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"control_filter_to_apply"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-27">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"control_alpha"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-28">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"use_lora_model"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"CharacterDesign-FluxV2"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Flux DetailerV2"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-29">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"lora_alpha"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"0.5"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"1"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-30">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"num_outputs"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-31">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"stream_image_progress"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">false</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-32">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"show_only_filtered_image"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">true</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-33">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"output_format"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"png"</span></span>
+<span id="cb1-34">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-35"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div>
+<p>This prompt prioritizes simplicity and clarity for optimal TRELLIS conversion, with negative prompts to exclude challenging elements. The <code>"use_upscale": "ESRGAN_4x"</code> parameter utilizes the Logoscale model to enhance the artwork with a vectorized style.</p>
+</section>
+<section id="iterative-refinement" class="level3">
+<h3 class="anchored" data-anchor-id="iterative-refinement">Iterative Refinement</h3>
+<p>The process emphasizes iterative refinement of the prompt based on TRELLIS conversion results. This cyclical process ensures the generation of 3D-ready concept art.</p>
+</section>
+<section id="workflow" class="level3">
+<h3 class="anchored" data-anchor-id="workflow">Workflow</h3>
+<ol type="1">
+<li><strong>Define Core Concept:</strong> Establish the character’s essential characteristics.</li>
+<li><strong>Craft Optimized Prompt:</strong> Create a concise, TRELLIS-friendly prompt.</li>
+<li><strong>Generate and Evaluate:</strong> Produce images and assess their 3D conversion suitability.</li>
+<li><strong>Iterate and Refine:</strong> Adjust the prompt based on the evaluation.</li>
+<li><strong>3D Conversion:</strong> Utilize TRELLIS to generate 3D models.</li>
+</ol>
+</section>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li><strong>Efficient 3D Workflow:</strong> Streamlines 3D model creation from AI-generated art.</li>
+<li><strong>Reduced Manual Intervention:</strong> Minimizes 3D modeling cleanup.</li>
+<li><strong>Faster Iteration:</strong> Accelerates character design exploration in 3D.</li>
+<li><strong>Standardized Output:</strong> Maintains consistency in character presentation.</li>
+<li><strong>Accessibility:</strong> Empowers users with varying artistic skills to contribute.</li>
+<li><strong>Vectorized Aesthetic:</strong> Enhances the artwork with a clean, scalable style using Logoscale.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li><strong>FLUX.1 Style:</strong> Inherits the distinctive style of the FLUX.1 model.</li>
+<li><strong>TRELLIS Limitations:</strong> Complex elements may still require manual 3D refinement.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<ul>
+<li><strong>Manual creation of concept art:</strong> Offers greater control but is time-consuming.</li>
+<li><strong>Using alternative AI models:</strong> Other models may not be as compatible with TRELLIS.</li>
+</ul>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>For highly specific or complex concept art requirements, manual creation or a combination of AI generation and human artistry may be necessary.</p>
+</section>
+<section id="why-is-it-in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="why-is-it-in-core-and-done-by-us">Why is it in Core and done by us?</h2>
+<p>This aligns with V-Sekai’s core goal of democratizing virtual world creation by streamlining character creation and empowering a wider range of users.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Draft</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+<li>AI Art Generation</li>
+<li>Character Design</li>
+<li>FLUX.1</li>
+<li>TRELLIS</li>
+<li>3D Modeling</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+<li><a href="https://civitai.com/models/618692?modelVersionId=699279">flux.1 schnell - Civitai</a> - Information and downloads for the flux.1 schnell AI model.</li>
+<li><a href="https://huggingface.co/spaces/JeffreyXiang/TRELLIS">TRELLIS - Hugging Face</a> - A tool for generating 3D models from images.</li>
+<li><a href="https://civitai.com/models/100435/character-design-sheet-helper-3-perspectivescolor-palette-illustrious-xl-or-flux-or-xl-pony-or-sd-15-by-yeiyeiart">Character Design Sheet Helper - Civitai</a> - A helpful tool for character design with FLUX.</li>
+<li><a href="https://github.com/V-Sekai-fire/TOOL_logoscale/tree/main?tab=readme-ov-file">TOOL_logoscale - GitHub</a> - A FLOSS upscaling model for use with ESRGAN-compatible tools to achieve a vectorized aesthetic.</li>
+<li><a href="https://civitai.com/models/685874/detailer-flux">Flux Detailer V2 - Civitai</a></li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20241220-character-concept-art-creation.html</guid>
+  <pubDate>Fri, 20 Dec 2024 17:42:38 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -350,7 +779,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241219-unpack-fbx-udimms.html</guid>
-  <pubDate>Fri, 20 Dec 2024 08:10:23 GMT</pubDate>
+  <pubDate>Fri, 20 Dec 2024 17:42:38 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -458,7 +887,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241219-scriptable-sign.html</guid>
-  <pubDate>Fri, 20 Dec 2024 08:10:23 GMT</pubDate>
+  <pubDate>Fri, 20 Dec 2024 17:42:38 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -560,7 +989,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241218-will-o-wisp-proto-avatar.html</guid>
-  <pubDate>Fri, 20 Dec 2024 08:10:23 GMT</pubDate>
+  <pubDate>Fri, 20 Dec 2024 17:42:38 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -828,7 +1257,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241210-vsekai-charter.html</guid>
-  <pubDate>Fri, 20 Dec 2024 08:10:23 GMT</pubDate>
+  <pubDate>Fri, 20 Dec 2024 17:42:38 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1032,7 +1461,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241112-godot-animation-streaming.html</guid>
-  <pubDate>Fri, 20 Dec 2024 08:10:23 GMT</pubDate>
+  <pubDate>Fri, 20 Dec 2024 17:42:38 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1108,7 +1537,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241102-plan-november-2024.html</guid>
-  <pubDate>Fri, 20 Dec 2024 08:10:23 GMT</pubDate>
+  <pubDate>Fri, 20 Dec 2024 17:42:38 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1189,7 +1618,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241028-use-data-tables-for-godot-constraints.html</guid>
-  <pubDate>Fri, 20 Dec 2024 08:10:23 GMT</pubDate>
+  <pubDate>Fri, 20 Dec 2024 17:42:38 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1292,7 +1721,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241019-reduce-size-difference-between-capsules-and-mesh-volume.html</guid>
-  <pubDate>Fri, 20 Dec 2024 08:10:23 GMT</pubDate>
+  <pubDate>Fri, 20 Dec 2024 17:42:38 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1386,7 +1815,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241016-instantiating-v-sekai-content.html</guid>
-  <pubDate>Fri, 20 Dec 2024 08:10:23 GMT</pubDate>
+  <pubDate>Fri, 20 Dec 2024 17:42:38 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1537,7 +1966,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-xr-interface-for-rigging.html</guid>
-  <pubDate>Fri, 20 Dec 2024 08:10:23 GMT</pubDate>
+  <pubDate>Fri, 20 Dec 2024 17:42:38 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1638,7 +2067,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-basic-realtime-interaction.html</guid>
-  <pubDate>Fri, 20 Dec 2024 08:10:23 GMT</pubDate>
+  <pubDate>Fri, 20 Dec 2024 17:42:38 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1741,7 +2170,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-app-updater.html</guid>
-  <pubDate>Fri, 20 Dec 2024 08:10:23 GMT</pubDate>
+  <pubDate>Fri, 20 Dec 2024 17:42:38 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1871,7 +2300,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241011-recovering-makehuman-parameters.html</guid>
-  <pubDate>Fri, 20 Dec 2024 08:10:23 GMT</pubDate>
+  <pubDate>Fri, 20 Dec 2024 17:42:38 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1957,7 +2386,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241006-restore-onedrive-shortcut-overrides.html</guid>
-  <pubDate>Fri, 20 Dec 2024 08:10:23 GMT</pubDate>
+  <pubDate>Fri, 20 Dec 2024 17:42:38 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2040,7 +2469,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241001-small-game-tools.html</guid>
-  <pubDate>Fri, 20 Dec 2024 08:10:23 GMT</pubDate>
+  <pubDate>Fri, 20 Dec 2024 17:42:38 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2143,132 +2572,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20240914-godot-engine-xr-elite-conference-setup.html</guid>
-  <pubDate>Fri, 20 Dec 2024 08:10:23 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240905-revised-tracker-configuration-and-constraints.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="draft-revised-tracker-configuration-and-constraints-for-htc-vive-xr-elite" class="level1">
-<h1>Draft: Revised Tracker Configuration and Constraints for HTC VIVE XR Elite</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>In virtual reality (VR), precise motion tracking is import for immersive experiences. Effective tracker configuration is essential to enhance interaction within VR environments, specifically for the HTC VIVE XR Elite.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Tracker configurations distribution across available dongles, affects the setup of motion capture in VR applications, particularly with the HTC VIVE XR Elite.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<section id="dongle-1-connected-to-htc-vive-xr-elite-hmd" class="level3">
-<h3 class="anchored" data-anchor-id="dongle-1-connected-to-htc-vive-xr-elite-hmd">Dongle 1 (connected to HTC VIVE XR Elite HMD)</h3>
-<ul>
-<li><strong>Hips</strong> (1 tracker)</li>
-<li><strong>Foot Right</strong> (1 tracker)</li>
-<li><strong>Foot Left</strong> (1 tracker)</li>
-<li><strong>Elbow Left</strong> (1 tracker)</li>
-<li><strong>Elbow Right</strong> (1 tracker)</li>
-</ul>
-</section>
-<section id="dongle-2-connected-to-pc" class="level3">
-<h3 class="anchored" data-anchor-id="dongle-2-connected-to-pc">Dongle 2 (connected to PC)</h3>
-<ul>
-<li><strong>Knee Right</strong> (1 tracker)</li>
-<li><strong>Knee Left</strong> (1 tracker)</li>
-<li><strong>Chest</strong> (1 tracker)</li>
-<li><strong>Hips</strong> (1 tracker optional)</li>
-<li><strong>Chest</strong> (1 tracker optional)</li>
-</ul>
-</section>
-<section id="constraints" class="level3">
-<h3 class="anchored" data-anchor-id="constraints">Constraints</h3>
-<p>Each dongle supports a maximum of <strong>5 trackers</strong>. This constraint is critical in determining how trackers are distributed between the two dongles to ensure optimal performance without exceeding the connectivity limit, specifically for the HTC VIVE XR Elite.</p>
-</section>
-<section id="rationale-behind-the-revised-setup" class="level3">
-<h3 class="anchored" data-anchor-id="rationale-behind-the-revised-setup">Rationale Behind the Revised Setup</h3>
-<section id="dongle-1-hmd" class="level4">
-<h4 class="anchored" data-anchor-id="dongle-1-hmd"><strong>Dongle 1 (HMD)</strong></h4>
-<ul>
-<li><strong>Enhanced Lower Limb Tracking</strong>: By connecting both knee trackers to the HMD dongle, we ensure precise tracking of lower limb movements, which is essential for accurate motion capture in activities that involve significant leg movement.</li>
-<li><strong>Upper Extremity Tracking</strong>: Including both elbow trackers on this dongle allows for detailed arm movement tracking, enhancing the realism and responsiveness of upper body interactions in VR.</li>
-</ul>
-</section>
-<section id="dongle-2-pc" class="level4">
-<h4 class="anchored" data-anchor-id="dongle-2-pc"><strong>Dongle 2 (PC)</strong></h4>
-<ul>
-<li><strong>Comprehensive Upper Body Tracking</strong>:
-<ul>
-<li><strong>Chest and Hips Trackers</strong>: These trackers are crucial for capturing the core movements of the body, providing a stable base for upper body motion tracking.</li>
-<li><strong>Dual Foot Tracking</strong>: Placing the foot trackers on the PC-connected dongle ensures that foot movements are captured accurately, which is vital for walking, running, and other foot-based interactions in VR environments.</li>
-</ul></li>
-</ul>
-</section>
-</section>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<ul>
-<li><strong>Improved Accuracy</strong>: Optimized tracker placement enhances the precision of motion capture.</li>
-<li><strong>Enhanced User Experience</strong>: More accurate tracking translates to a more immersive and responsive VR experience.</li>
-<li><strong>Scalability</strong>: This setup allows for easy adjustments and scalability as new trackers or technologies become available.</li>
-</ul>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<ul>
-<li><strong>Complex Setup</strong>: Initial configuration and calibration may be more complex and time-consuming.</li>
-<li><strong>Hardware Dependency</strong>: Performance is heavily dependent on the quality and capability of the hardware used.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Alternative configurations that involved different distributions of trackers were considered but were not pursued due to potential compromises in tracking accuracy and performance.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>In cases where extreme precision is not required, such as in less interactive VR applications, a simpler tracker setup might suffice.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>This proposal aligns with our core mission to push the boundaries of VR technology and will be implemented by our internal development team, focusing on the HTC VIVE XR Elite.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-<li>HTC VIVE XR Elite</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240905-revised-tracker-configuration-and-constraints.html</guid>
-  <pubDate>Fri, 20 Dec 2024 08:10:23 GMT</pubDate>
+  <pubDate>Fri, 20 Dec 2024 17:42:38 GMT</pubDate>
 </item>
 </channel>
 </rss>
