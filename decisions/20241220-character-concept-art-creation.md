@@ -21,8 +21,8 @@ We will utilize a predefined JSON payload as the foundation for generating chara
   "numOutputsTotal": 32,
   "seed": 908967689,
   "reqBody": {
-    "prompt": "1girl, standing, full body, simple clothing, closed mouth, looking at viewer, white background, a-pose, short hair",
-    "negative_prompt": "words, intricate hairstyle, elaborate braids, flowing hair, hair accessories, jewelry, intricate patterns, excessive details, flowing scarves, complex accessories, dynamic pose, foreshortening, extreme angles, obscured limbs",
+    "prompt": "1girl, mature woman, medium breast, standing, full body, simple clothing, closed mouth, looking at viewer, white background, hands outstretched, a-pose, no shoes, short hair, closed mouth",
+    "negative_prompt": "words, intricate hairstyle, elaborate braids, flowing hair, hair accessories, jewelry, intricate patterns, excessive details, flowing scarves, complex accessories, dynamic pose, foreshortening, extreme angles, obscured limbs, young, child, teenager, youthful",
     "active_tags": [],
     "inactive_tags": [],
     "width": 1024,
