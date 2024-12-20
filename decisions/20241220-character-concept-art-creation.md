@@ -25,7 +25,7 @@ Easy Diffusion provides a user-friendly interface for Stable Diffusion. We will 
 We will use a predefined prompt structure as the foundation for generating character concepts:
 
 ```
-1girl, reference sheet, multiple views, mature woman, medium breast, standing, full body, simple clothing, closed mouth, looking at viewer, solid color background, hands outstretched, a-pose, simple shoes, flats, loafers, sneakers, short hair, closed mouth, colour
+1girl, reference sheet, mature woman, simple clothing, solid color background, a-pose, simple shoes, short hair, front view
 ```
 
 **Negative Prompt:**
