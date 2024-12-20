@@ -18,39 +18,45 @@ We will utilize a predefined JSON payload as the foundation for generating chara
 
 ```json
 {
-  "numOutputsTotal": 4,
-  "seed": 908967689,
-  "reqBody": {
-    "prompt": "1girl, mature woman, medium breast, standing, full body, simple clothing, closed mouth, looking at viewer, white background, hands outstretched, a-pose, simple shoes, flats, loafers, sneakers, short hair, closed mouth",
-    "negative_prompt": "words, intricate hairstyle, elaborate braids, flowing hair, hair accessories, jewelry, intricate patterns, excessive details, flowing scarves, complex accessories, dynamic pose, foreshortening, extreme angles, obscured limbs, young, child, teenager, youthful, high heels",
-    "active_tags": [],
-    "inactive_tags": [],
-    "width": 1024,
-    "height": 1024,
+    "numOutputsTotal": 32,
     "seed": 908967689,
-    "num_inference_steps": 25,
-    "guidance_scale": 1,
-    "distilled_guidance_scale": 3.5,
-    "preserve_init_image_color_profile": true,
-    "use_upscale": "ESRGAN_4x",
-    "upscale_amount": "4",
-    "latent_upscaler_steps": "10",
-    "sampler_name": "forge_flux_realistic",
-    "scheduler_name": "beta",
-    "use_stable_diffusion_model": "flux1-schnell-fp8",
-    "clip_skip": true,
-    "tiling": "none",
-    "use_vae_model": "ae",
-    "use_controlnet_model": "",
-    "control_filter_to_apply": "",
-    "control_alpha": 1,
-    "use_lora_model": ["CharacterDesign-FluxV2", "Flux DetailerV2"],
-    "lora_alpha": ["0.5", "1"],
-    "num_outputs": 4,
-    "stream_image_progress": false,
-    "show_only_filtered_image": true,
-    "output_format": "png"
-  }
+    "reqBody": {
+        "prompt": "1girl, mature woman, medium breast, standing, full body, simple clothing, closed mouth, looking at viewer, solid color background, hands outstretched, a-pose, simple shoes, flats, loafers, sneakers, short hair, closed mouth",
+        "negative_prompt": "words, intricate hairstyle, elaborate braids, flowing hair, hair accessories, jewelry, intricate patterns, excessive details, flowing scarves, complex accessories, dynamic pose, foreshortening, extreme angles, obscured limbs, young, child, teenager, youthful, high heels, white background, white",
+        "active_tags": [],
+        "inactive_tags": [],
+        "width": 1024,
+        "height": 1024,
+        "seed": 908967689,
+        "num_inference_steps": 25,
+        "guidance_scale": 1,
+        "distilled_guidance_scale": 3.5,
+        "preserve_init_image_color_profile": true,
+        "use_upscale": "ESRGAN_4x",
+        "upscale_amount": "4",
+        "latent_upscaler_steps": "10",
+        "sampler_name": "forge_flux_realistic",
+        "scheduler_name": "beta",
+        "use_stable_diffusion_model": "flux1-schnell-fp8",
+        "clip_skip": true,
+        "tiling": "none",
+        "use_vae_model": "ae",
+        "use_controlnet_model": "",
+        "control_filter_to_apply": "",
+        "control_alpha": 1,
+        "use_lora_model": [
+            "CharacterDesign-FluxV2",
+            "Flux DetailerV2"
+        ],
+        "lora_alpha": [
+            "0.5",
+            "1"
+        ],
+        "num_outputs": 4,
+        "stream_image_progress": false,
+        "show_only_filtered_image": true,
+        "output_format": "png"
+    }
 }
 ```
 
