@@ -151,14 +151,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#proposal-character-concept-art-creation-in-v-sekai-with-flux.1" id="toc-proposal-character-concept-art-creation-in-v-sekai-with-flux.1" class="nav-link active" data-scroll-target="#proposal-character-concept-art-creation-in-v-sekai-with-flux.1">Proposal: Character Concept Art Creation in V-Sekai with FLUX.1</a>
+  <li><a href="#draft-character-concept-art-creation" id="toc-draft-character-concept-art-creation" class="nav-link active" data-scroll-target="#draft-character-concept-art-creation">Draft: Character Concept Art Creation</a>
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
   <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
   <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</a>
   <ul class="collapse">
-  <li><a href="#optimized-prompting" id="toc-optimized-prompting" class="nav-link" data-scroll-target="#optimized-prompting">Optimized Prompting</a></li>
-  <li><a href="#iterative-refinement" id="toc-iterative-refinement" class="nav-link" data-scroll-target="#iterative-refinement">Iterative Refinement</a></li>
+  <li><a href="#easy-diffusion-setup" id="toc-easy-diffusion-setup" class="nav-link" data-scroll-target="#easy-diffusion-setup">1. Easy Diffusion Setup</a></li>
+  <li><a href="#optimized-prompting-in-easy-diffusion" id="toc-optimized-prompting-in-easy-diffusion" class="nav-link" data-scroll-target="#optimized-prompting-in-easy-diffusion">2. Optimized Prompting in Easy Diffusion</a></li>
+  <li><a href="#trellis-setup-and-execution" id="toc-trellis-setup-and-execution" class="nav-link" data-scroll-target="#trellis-setup-and-execution">3. TRELLIS Setup and Execution</a></li>
+  <li><a href="#iterative-refinement" id="toc-iterative-refinement" class="nav-link" data-scroll-target="#iterative-refinement">4. Iterative Refinement</a></li>
   <li><a href="#workflow" id="toc-workflow" class="nav-link" data-scroll-target="#workflow">Workflow</a></li>
   </ul></li>
   <li><a href="#the-benefits" id="toc-the-benefits" class="nav-link" data-scroll-target="#the-benefits">The Benefits</a></li>
@@ -180,75 +182,101 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="proposal-character-concept-art-creation-in-v-sekai-with-flux.1" class="level1">
-<h1>Proposal: Character Concept Art Creation in V-Sekai with FLUX.1</h1>
+<section id="draft-character-concept-art-creation" class="level1">
+<h1>Draft: Character Concept Art Creation</h1>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>V-Sekai aims to provide a versatile platform for creating and experiencing virtual worlds. Character creation is a crucial aspect of this process, and concept art plays a vital role in visualizing and refining character designs before 3D modeling.</p>
+<p>V-Sekai aims to provide a versatile platform for creating and experiencing virtual worlds. Character creation is a crucial aspect of this process, and concept art plays a vital role in visualizing and refining character designs before 3D modeling. This proposal focuses on integrating Easy Diffusion and TRELLIS to streamline this workflow.</p>
 </section>
 <section id="the-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Generating high-quality, 3D-ready concept art currently requires significant artistic skill and time investment. While AI models like FLUX.1 can streamline this process, ensuring compatibility with 3D modeling tools like TRELLIS requires careful consideration and optimization.</p>
+<p>Generating high-quality, 3D-ready concept art often requires significant artistic skill and time. While AI art generators like Stable Diffusion, particularly with the FLUX model, can expedite this process, setting it up and ensuring the generated art is compatible with 3D modeling tools like TRELLIS requires technical expertise and careful optimization.</p>
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>This proposal outlines a workflow for generating FLUX.1 concept art optimized for TRELLIS, leveraging AI to accelerate character creation in V-Sekai.</p>
-<section id="optimized-prompting" class="level3">
-<h3 class="anchored" data-anchor-id="optimized-prompting">Optimized Prompting</h3>
-<p>We will utilize a predefined JSON payload as the foundation for generating character concepts:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"numOutputsTotal"</span><span class="fu">:</span> <span class="dv">32</span><span class="fu">,</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"seed"</span><span class="fu">:</span> <span class="dv">908967689</span><span class="fu">,</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"reqBody"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"prompt"</span><span class="fu">:</span> <span class="st">"1girl, mature woman, medium breast, standing, full body, simple clothing, closed mouth, looking at viewer, solid color background, hands outstretched, a-pose, simple shoes, flats, loafers, sneakers, short hair, closed mouth"</span><span class="fu">,</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"negative_prompt"</span><span class="fu">:</span> <span class="st">"words, intricate hairstyle, elaborate braids, flowing hair, hair accessories, jewelry, intricate patterns, excessive details, flowing scarves, complex accessories, dynamic pose, foreshortening, extreme angles, obscured limbs, young, child, teenager, youthful, high heels, white background, white"</span><span class="fu">,</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"active_tags"</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"inactive_tags"</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"width"</span><span class="fu">:</span> <span class="dv">1024</span><span class="fu">,</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"height"</span><span class="fu">:</span> <span class="dv">1024</span><span class="fu">,</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"seed"</span><span class="fu">:</span> <span class="dv">908967689</span><span class="fu">,</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"num_inference_steps"</span><span class="fu">:</span> <span class="dv">25</span><span class="fu">,</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"guidance_scale"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"distilled_guidance_scale"</span><span class="fu">:</span> <span class="fl">3.5</span><span class="fu">,</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"preserve_init_image_color_profile"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"use_upscale"</span><span class="fu">:</span> <span class="st">"ESRGAN_4x"</span><span class="fu">,</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"upscale_amount"</span><span class="fu">:</span> <span class="st">"4"</span><span class="fu">,</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"latent_upscaler_steps"</span><span class="fu">:</span> <span class="st">"10"</span><span class="fu">,</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"sampler_name"</span><span class="fu">:</span> <span class="st">"forge_flux_realistic"</span><span class="fu">,</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"scheduler_name"</span><span class="fu">:</span> <span class="st">"beta"</span><span class="fu">,</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"use_stable_diffusion_model"</span><span class="fu">:</span> <span class="st">"flux1-schnell-fp8"</span><span class="fu">,</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"clip_skip"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"tiling"</span><span class="fu">:</span> <span class="st">"none"</span><span class="fu">,</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"use_vae_model"</span><span class="fu">:</span> <span class="st">"ae"</span><span class="fu">,</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"use_controlnet_model"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"control_filter_to_apply"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"control_alpha"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"use_lora_model"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>            <span class="st">"CharacterDesign-FluxV2"</span><span class="ot">,</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Flux DetailerV2"</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"lora_alpha"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>            <span class="st">"0.5"</span><span class="ot">,</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>            <span class="st">"1"</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"num_outputs"</span><span class="fu">:</span> <span class="dv">4</span><span class="fu">,</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"stream_image_progress"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"show_only_filtered_image"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"output_format"</span><span class="fu">:</span> <span class="st">"png"</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This prompt prioritizes simplicity and clarity for optimal TRELLIS conversion, with negative prompts to exclude challenging elements. The <code>"use_upscale": "ESRGAN_4x"</code> parameter utilizes the Logoscale model to enhance the artwork with a vectorized style.</p>
+<p>This proposal outlines a workflow using Easy Diffusion for generating concept art optimized for TRELLIS, leveraging AI to accelerate character creation in V-Sekai.</p>
+<section id="easy-diffusion-setup" class="level3">
+<h3 class="anchored" data-anchor-id="easy-diffusion-setup">1. Easy Diffusion Setup</h3>
+<p>Easy Diffusion provides a user-friendly interface for Stable Diffusion. We will use it with the FLUX model for generating character concepts.</p>
+<ul>
+<li>Install Easy Diffusion.</li>
+<li>Download the FLUX model and necessary LoRAs (CharacterDesign-FluxV2, Flux DetailerV2).</li>
+<li>Configure Easy Diffusion with the FLUX model and LoRAs.</li>
+</ul>
+</section>
+<section id="optimized-prompting-in-easy-diffusion" class="level3">
+<h3 class="anchored" data-anchor-id="optimized-prompting-in-easy-diffusion">2. Optimized Prompting in Easy Diffusion</h3>
+<p>We will use a predefined prompt structure as the foundation for generating character concepts:</p>
+<pre><code>1girl, mature woman, medium breast, standing, full body, simple clothing, closed mouth, looking at viewer, solid color background, hands outstretched, a-pose, simple shoes, flats, loafers, sneakers, short hair, closed mouth</code></pre>
+<p><strong>Negative Prompt:</strong></p>
+<pre><code>words, intricate hairstyle, elaborate braids, flowing hair, hair accessories, jewelry, intricate patterns, excessive details, flowing scarves, complex accessories, dynamic pose, foreshortening, extreme angles, obscured limbs, young, child, teenager, youthful, high heels, white background, white</code></pre>
+<p>This prompt prioritizes simplicity and clarity for optimal TRELLIS conversion, with negative prompts to exclude challenging elements.</p>
+<p><strong>Settings:</strong></p>
+<ul>
+<li>Use the “ESRGAN_4x” upscaler with an upscale amount of 4 and latent upscaler steps of 10 to enhance the artwork with a vectorized style.</li>
+<li>Set the width and height to 1024 pixels.</li>
+</ul>
+<section id="image-settings" class="level4">
+<h4 class="anchored" data-anchor-id="image-settings">Image Settings</h4>
+<div class="sourceCode" id="cb3"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"numOutputsTotal"</span><span class="fu">:</span> <span class="dv">4</span><span class="fu">,</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"seed"</span><span class="fu">:</span> <span class="dv">3635038449</span><span class="fu">,</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"reqBody"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"prompt"</span><span class="fu">:</span> <span class="st">"1girl, mature woman, medium breast, standing, full body, simple clothing, closed mouth, looking at viewer, solid color background, hands outstretched, a-pose, simple shoes, flats, loafers, sneakers, short hair, closed mouth"</span><span class="fu">,</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"negative_prompt"</span><span class="fu">:</span> <span class="st">"words, intricate hairstyle, elaborate braids, flowing hair, hair accessories, jewelry, intricate patterns, excessive details, flowing scarves, complex accessories, dynamic pose, foreshortening, extreme angles, obscured limbs, young, child, teenager, youthful, high heels, white background, white"</span><span class="fu">,</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"active_tags"</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"inactive_tags"</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"width"</span><span class="fu">:</span> <span class="dv">1024</span><span class="fu">,</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"height"</span><span class="fu">:</span> <span class="dv">1024</span><span class="fu">,</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"seed"</span><span class="fu">:</span> <span class="dv">3635038449</span><span class="fu">,</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"num_inference_steps"</span><span class="fu">:</span> <span class="dv">25</span><span class="fu">,</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"guidance_scale"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"distilled_guidance_scale"</span><span class="fu">:</span> <span class="fl">3.5</span><span class="fu">,</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"preserve_init_image_color_profile"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"use_upscale"</span><span class="fu">:</span> <span class="st">"ESRGAN_4x"</span><span class="fu">,</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"upscale_amount"</span><span class="fu">:</span> <span class="st">"4"</span><span class="fu">,</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"latent_upscaler_steps"</span><span class="fu">:</span> <span class="st">"10"</span><span class="fu">,</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"sampler_name"</span><span class="fu">:</span> <span class="st">"forge_flux_realistic"</span><span class="fu">,</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"scheduler_name"</span><span class="fu">:</span> <span class="st">"beta"</span><span class="fu">,</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"use_stable_diffusion_model"</span><span class="fu">:</span> <span class="st">"flux1-schnell-fp8"</span><span class="fu">,</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"clip_skip"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"tiling"</span><span class="fu">:</span> <span class="st">"none"</span><span class="fu">,</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"use_vae_model"</span><span class="fu">:</span> <span class="st">"ae"</span><span class="fu">,</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"use_controlnet_model"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"control_filter_to_apply"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"control_alpha"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"use_lora_model"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"CharacterDesign-FluxV2"</span><span class="ot">,</span> <span class="st">"Flux DetailerV2"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"lora_alpha"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"0.5"</span><span class="ot">,</span> <span class="st">"1"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"num_outputs"</span><span class="fu">:</span> <span class="dv">4</span><span class="fu">,</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"stream_image_progress"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"show_only_filtered_image"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"output_format"</span><span class="fu">:</span> <span class="st">"png"</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="trellis-setup-and-execution" class="level3">
+<h3 class="anchored" data-anchor-id="trellis-setup-and-execution">3. TRELLIS Setup and Execution</h3>
+<p>TRELLIS will be used for generating 3D models from the generated concept art.</p>
+<ul>
+<li>Install Docker Desktop.</li>
+<li>Install WSL2 with a compatible Linux distribution (e.g., Ubuntu).</li>
+<li>Configure Docker Desktop to utilize the WSL2 backend.</li>
+<li>Ensure GPU access is enabled within WSL2.</li>
+<li>Execute TRELLIS within WSL2 using the following command in Powershell:</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>docker run <span class="op">-</span>it <span class="op">-</span>p <span class="dv">7860</span><span class="op">:</span><span class="dv">7860</span> <span class="op">--</span>gpus all registry<span class="op">.</span><span class="fu">hf</span><span class="op">.</span><span class="fu">space</span><span class="op">/</span>jeffreyxiang-trellis<span class="op">:</span>latest python app<span class="op">.</span><span class="fu">py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="iterative-refinement" class="level3">
-<h3 class="anchored" data-anchor-id="iterative-refinement">Iterative Refinement</h3>
+<h3 class="anchored" data-anchor-id="iterative-refinement">4. Iterative Refinement</h3>
 <p>The process emphasizes iterative refinement of the prompt based on TRELLIS conversion results. This cyclical process ensures the generation of 3D-ready concept art.</p>
 </section>
 <section id="workflow" class="level3">
 <h3 class="anchored" data-anchor-id="workflow">Workflow</h3>
 <ol type="1">
 <li><strong>Define Core Concept:</strong> Establish the character’s essential characteristics.</li>
-<li><strong>Craft Optimized Prompt:</strong> Create a concise, TRELLIS-friendly prompt.</li>
-<li><strong>Generate and Evaluate:</strong> Produce images and assess their 3D conversion suitability.</li>
+<li><strong>Craft Optimized Prompt:</strong> Create a concise, TRELLIS-friendly prompt using the provided structure and Easy Diffusion.</li>
+<li><strong>Generate and Evaluate:</strong> Produce images and assess their 3D conversion suitability in TRELLIS.</li>
 <li><strong>Iterate and Refine:</strong> Adjust the prompt based on the evaluation.</li>
 <li><strong>3D Conversion:</strong> Utilize TRELLIS to generate 3D models.</li>
 </ol>
@@ -258,11 +286,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
 <ul>
 <li><strong>Efficient 3D Workflow:</strong> Streamlines 3D model creation from AI-generated art.</li>
+<li><strong>User-Friendly Interface:</strong> Easy Diffusion simplifies AI art generation.</li>
 <li><strong>Reduced Manual Intervention:</strong> Minimizes 3D modeling cleanup.</li>
 <li><strong>Faster Iteration:</strong> Accelerates character design exploration in 3D.</li>
 <li><strong>Standardized Output:</strong> Maintains consistency in character presentation.</li>
 <li><strong>Accessibility:</strong> Empowers users with varying artistic skills to contribute.</li>
-<li><strong>Vectorized Aesthetic:</strong> Enhances the artwork with a clean, scalable style using Logoscale.</li>
 </ul>
 </section>
 <section id="the-downsides" class="level2">
@@ -270,22 +298,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><strong>FLUX.1 Style:</strong> Inherits the distinctive style of the FLUX.1 model.</li>
 <li><strong>TRELLIS Limitations:</strong> Complex elements may still require manual 3D refinement.</li>
+<li><strong>WSL2 Setup:</strong> Requires users to install and configure WSL2.</li>
 </ul>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
 <ul>
 <li><strong>Manual creation of concept art:</strong> Offers greater control but is time-consuming.</li>
-<li><strong>Using alternative AI models:</strong> Other models may not be as compatible with TRELLIS.</li>
+<li><strong>Using alternative AI models:</strong> Other models may not be as compatible with TRELLIS or as user-friendly.</li>
+<li><strong>Native Windows TRELLIS:</strong> Not readily available, requiring WSL2 for now.</li>
 </ul>
 </section>
 <section id="the-infrequent-use-case" class="level2">
 <h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>For highly specific or complex concept art requirements, manual creation or a combination of AI generation and human artistry may be necessary.</p>
+<p>For highly specific or complex concept art, manual creation or a combination of AI generation and human artistry may be necessary. Users without dedicated GPUs might experience limitations with TRELLIS.</p>
 </section>
 <section id="why-is-it-in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="why-is-it-in-core-and-done-by-us">Why is it in Core and done by us?</h2>
-<p>This aligns with V-Sekai’s core goal of democratizing virtual world creation by streamlining character creation and empowering a wider range of users.</p>
+<p>This aligns with V-Sekai’s goal of democratizing virtual world creation by streamlining character creation and empowering users.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
@@ -305,21 +335,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Character Design</li>
 <li>FLUX.1</li>
 <li>TRELLIS</li>
+<li>Easy Diffusion</li>
 <li>3D Modeling</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-<li><a href="https://civitai.com/models/618692?modelVersionId=699279">flux.1 schnell - Civitai</a> - Information and downloads for the flux.1 schnell AI model.</li>
-<li><a href="https://huggingface.co/spaces/JeffreyXiang/TRELLIS">TRELLIS - Hugging Face</a> - A tool for generating 3D models from images.</li>
-<li><a href="https://civitai.com/models/100435/character-design-sheet-helper-3-perspectivescolor-palette-illustrious-xl-or-flux-or-xl-pony-or-sd-15-by-yeiyeiart">Character Design Sheet Helper - Civitai</a> - A helpful tool for character design with FLUX.</li>
-<li><a href="https://github.com/V-Sekai-fire/TOOL_logoscale/tree/main?tab=readme-ov-file">TOOL_logoscale - GitHub</a> - A FLOSS upscaling model for use with ESRGAN-compatible tools to achieve a vectorized aesthetic.</li>
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a></li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a></li>
+<li><a href="https://civitai.com/models/618692?modelVersionId=699279">flux.1 schnell - Civitai</a></li>
+<li><a href="https://huggingface.co/spaces/JeffreyXiang/TRELLIS">TRELLIS - Hugging Face</a></li>
+<li><a href="https://civitai.com/models/100435">Character Design Sheet Helper - Civitai</a></li>
+<li><a href="https://github.com/V-Sekai-fire/TOOL_logoscale/tree/main?tab=readme-ov-file">TOOL_logoscale - GitHub</a></li>
 <li><a href="https://civitai.com/models/685874/detailer-flux">Flux Detailer V2 - Civitai</a></li>
+<li><a href="https://easydiffusion.github.io/">Easy Diffusion</a></li>
+<li><a href="https://docs.microsoft.com/en-us/windows/wsl/">Windows Subsystem for Linux Documentation</a></li>
 </ol>
-<p>AI assistant Aria assisted with this article.</p>
 
 
 </section>
