@@ -25,7 +25,7 @@ Easy Diffusion provides a user-friendly interface for Stable Diffusion. We will 
 We will use a predefined prompt structure as the foundation for generating character concepts:
 
 ```
-1girl, mature woman, medium breast, standing, full body, simple clothing, closed mouth, looking at viewer, solid color background, hands outstretched, a-pose, simple shoes, flats, loafers, sneakers, short hair, closed mouth
+1girl, reference sheet, multiple views, mature woman, medium breast, standing, full body, simple clothing, closed mouth, looking at viewer, solid color background, hands outstretched, a-pose, simple shoes, flats, loafers, sneakers, short hair, closed mouth, colour
 ```
 
 **Negative Prompt:**
@@ -46,15 +46,15 @@ This prompt prioritizes simplicity and clarity for optimal TRELLIS conversion, w
 ```json
 {
   "numOutputsTotal": 4,
-  "seed": 3635038449,
+  "seed": 908967689,
   "reqBody": {
-    "prompt": "1girl, mature woman, medium breast, standing, full body, simple clothing, closed mouth, looking at viewer, solid color background, hands outstretched, a-pose, simple shoes, flats, loafers, sneakers, short hair, closed mouth",
+    "prompt": "1girl, reference sheet, multiple views, mature woman, medium breast, standing, full body, simple clothing, closed mouth, looking at viewer, solid color background, hands outstretched, a-pose, simple shoes, flats, loafers, sneakers, short hair, closed mouth, colour ",
     "negative_prompt": "words, intricate hairstyle, elaborate braids, flowing hair, hair accessories, jewelry, intricate patterns, excessive details, flowing scarves, complex accessories, dynamic pose, foreshortening, extreme angles, obscured limbs, young, child, teenager, youthful, high heels, white background, white",
     "active_tags": [],
     "inactive_tags": [],
     "width": 1024,
     "height": 1024,
-    "seed": 3635038449,
+    "seed": 908967689,
     "num_inference_steps": 25,
     "guidance_scale": 1,
     "distilled_guidance_scale": 3.5,
@@ -143,6 +143,7 @@ Status: Draft
 ## Decision Makers
 
 - V-Sekai development team
+- fire
 
 ## Tags
 
