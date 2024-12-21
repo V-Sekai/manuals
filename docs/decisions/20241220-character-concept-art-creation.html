@@ -159,8 +159,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#easy-diffusion-setup" id="toc-easy-diffusion-setup" class="nav-link" data-scroll-target="#easy-diffusion-setup">1. Easy Diffusion Setup</a></li>
   <li><a href="#optimized-prompting-in-easy-diffusion" id="toc-optimized-prompting-in-easy-diffusion" class="nav-link" data-scroll-target="#optimized-prompting-in-easy-diffusion">2. Optimized Prompting in Easy Diffusion</a></li>
-  <li><a href="#trellis-setup-and-execution" id="toc-trellis-setup-and-execution" class="nav-link" data-scroll-target="#trellis-setup-and-execution">3. TRELLIS Setup and Execution</a></li>
-  <li><a href="#iterative-refinement" id="toc-iterative-refinement" class="nav-link" data-scroll-target="#iterative-refinement">4. Iterative Refinement</a></li>
+  <li><a href="#image-editing-with-windows-11-tools" id="toc-image-editing-with-windows-11-tools" class="nav-link" data-scroll-target="#image-editing-with-windows-11-tools">3. Image Editing with Windows 11 Tools</a></li>
+  <li><a href="#sprite-creation-with-shoebox" id="toc-sprite-creation-with-shoebox" class="nav-link" data-scroll-target="#sprite-creation-with-shoebox">4. Sprite Creation with Shoebox</a></li>
+  <li><a href="#trellis-setup-and-execution-optional" id="toc-trellis-setup-and-execution-optional" class="nav-link" data-scroll-target="#trellis-setup-and-execution-optional">5. TRELLIS Setup and Execution (Optional)</a></li>
+  <li><a href="#iterative-refinement" id="toc-iterative-refinement" class="nav-link" data-scroll-target="#iterative-refinement">6. Iterative Refinement</a></li>
   <li><a href="#workflow" id="toc-workflow" class="nav-link" data-scroll-target="#workflow">Workflow</a></li>
   </ul></li>
   <li><a href="#the-benefits" id="toc-the-benefits" class="nav-link" data-scroll-target="#the-benefits">The Benefits</a></li>
@@ -186,15 +188,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Draft: Character Concept Art Creation</h1>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>V-Sekai aims to provide a versatile platform for creating and experiencing virtual worlds. Character creation is a crucial aspect of this process, and concept art plays a vital role in visualizing and refining character designs before 3D modeling. This proposal focuses on integrating Easy Diffusion and TRELLIS to streamline this workflow.</p>
+<p>V-Sekai aims to provide a versatile platform for creating and experiencing virtual worlds. Character creation is a crucial aspect of this process, and concept art plays a vital role in visualizing and refining character designs before 3D modeling. This proposal focuses on integrating Easy Diffusion, Windows 11 tools, and Shoebox to streamline this workflow.</p>
 </section>
 <section id="the-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Generating high-quality, 3D-ready concept art often requires significant artistic skill and time. While AI art generators like Stable Diffusion, particularly with the FLUX model, can expedite this process, setting it up and ensuring the generated art is compatible with 3D modeling tools like TRELLIS requires technical expertise and careful optimization.</p>
+<p>Generating high-quality, 3D-ready concept art often requires significant artistic skill and time. While AI art generators like Stable Diffusion, particularly with the FLUX model, can expedite this process, setting it up and ensuring the generated art is compatible with 3D modeling tools requires technical expertise and careful optimization. This proposal aims to simplify this process further by incorporating readily available Windows tools.</p>
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>This proposal outlines a workflow using Easy Diffusion for generating concept art optimized for TRELLIS, leveraging AI to accelerate character creation in V-Sekai.</p>
+<p>This proposal outlines a workflow using Easy Diffusion for generating concept art, Windows 11 tools for image editing, and Shoebox for sprite creation, ultimately optimizing the process for 3D character creation in V-Sekai.</p>
 <section id="easy-diffusion-setup" class="level3">
 <h3 class="anchored" data-anchor-id="easy-diffusion-setup">1. Easy Diffusion Setup</h3>
 <p>Easy Diffusion provides a user-friendly interface for Stable Diffusion. We will use it with the FLUX model for generating character concepts.</p>
@@ -212,9 +214,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Set the width and height to 1024 pixels.</li>
 </ul>
 </section>
-<section id="trellis-setup-and-execution" class="level3">
-<h3 class="anchored" data-anchor-id="trellis-setup-and-execution">3. TRELLIS Setup and Execution</h3>
-<p>TRELLIS will be used for generating 3D models from the generated concept art.</p>
+<section id="image-editing-with-windows-11-tools" class="level3">
+<h3 class="anchored" data-anchor-id="image-editing-with-windows-11-tools">3. Image Editing with Windows 11 Tools</h3>
+<ul>
+<li><strong>Background Removal:</strong> Utilize the built-in background removal tool in Windows 11’s Paint app to isolate the character from the generated image. This creates a transparent background, crucial for sprite creation.</li>
+<li><strong>Refinement (Optional):</strong> Use other tools in Paint, like the selection tools and eraser, for further refinement if needed.</li>
+</ul>
+</section>
+<section id="sprite-creation-with-shoebox" class="level3">
+<h3 class="anchored" data-anchor-id="sprite-creation-with-shoebox">4. Sprite Creation with Shoebox</h3>
+<p>Shoebox (https://renderhjs.net/shoebox/) is a free online tool for creating sprite sheets.</p>
+<ul>
+<li>Upload the alpha’d image from Paint to Shoebox.</li>
+<li>Utilize Shoebox’s features to cut the image into individual sprites.</li>
+<li>Keep only the sprites that are in different views but in the same consistent 3d shape.</li>
+</ul>
+</section>
+<section id="trellis-setup-and-execution-optional" class="level3">
+<h3 class="anchored" data-anchor-id="trellis-setup-and-execution-optional">5. TRELLIS Setup and Execution (Optional)</h3>
+<p>TRELLIS can be used for generating 3D models from the concept art or sprites.</p>
 <ul>
 <li>Install Docker Desktop.</li>
 <li>Install WSL2 with a compatible Linux distribution (e.g., Ubuntu).</li>
@@ -225,37 +243,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>docker run <span class="op">-</span>it <span class="op">-</span>p <span class="dv">7860</span><span class="op">:</span><span class="dv">7860</span> <span class="op">--</span>gpus all registry<span class="op">.</span><span class="fu">hf</span><span class="op">.</span><span class="fu">space</span><span class="op">/</span>jeffreyxiang-trellis<span class="op">:</span>latest python app<span class="op">.</span><span class="fu">py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="iterative-refinement" class="level3">
-<h3 class="anchored" data-anchor-id="iterative-refinement">4. Iterative Refinement</h3>
-<p>The process emphasizes iterative refinement of the prompt based on TRELLIS conversion results. This cyclical process ensures the generation of 3D-ready concept art.</p>
+<h3 class="anchored" data-anchor-id="iterative-refinement">6. Iterative Refinement</h3>
+<p>The process emphasizes iterative refinement of the prompt based on results from Shoebox or TRELLIS. This cyclical process ensures the generation of optimized concept art and sprites.</p>
 </section>
 <section id="workflow" class="level3">
 <h3 class="anchored" data-anchor-id="workflow">Workflow</h3>
 <ol type="1">
 <li><strong>Define Core Concept:</strong> Establish the character’s essential characteristics.</li>
-<li><strong>Craft Optimized Prompt:</strong> Create a concise, TRELLIS-friendly prompt using the provided structure and Easy Diffusion.</li>
-<li><strong>Generate and Evaluate:</strong> Produce images and assess their 3D conversion suitability in TRELLIS.</li>
+<li><strong>Craft Optimized Prompt:</strong> Create a concise, descriptive prompt using Easy Diffusion.</li>
+<li><strong>Generate and Evaluate:</strong> Produce images and assess their suitability.</li>
+<li><strong>Remove Background:</strong> Use Windows 11’s Paint app to remove the background.</li>
+<li><strong>Create Sprites:</strong> Utilize Shoebox to generate sprites from the alpha’d image.</li>
+<li><strong>(Optional) 3D Conversion:</strong> Utilize TRELLIS to generate 3D models.</li>
 <li><strong>Iterate and Refine:</strong> Adjust the prompt based on the evaluation.</li>
-<li><strong>3D Conversion:</strong> Utilize TRELLIS to generate 3D models.</li>
 </ol>
 </section>
 </section>
 <section id="the-benefits" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
 <ul>
-<li><strong>Efficient 3D Workflow:</strong> Streamlines 3D model creation from AI-generated art.</li>
-<li><strong>User-Friendly Interface:</strong> Easy Diffusion simplifies AI art generation.</li>
-<li><strong>Reduced Manual Intervention:</strong> Minimizes 3D modeling cleanup.</li>
-<li><strong>Faster Iteration:</strong> Accelerates character design exploration in 3D.</li>
+<li><strong>Simplified Workflow:</strong> Streamlines concept art and sprite creation using accessible tools.</li>
+<li><strong>Reduced Manual Effort:</strong> Minimizes image editing and sprite creation time.</li>
+<li><strong>Faster Iteration:</strong> Accelerates character design exploration.</li>
 <li><strong>Standardized Output:</strong> Maintains consistency in character presentation.</li>
 <li><strong>Accessibility:</strong> Empowers users with varying artistic skills to contribute.</li>
+<li><strong>Cost-effective:</strong> Leverages free tools readily available on Windows 11.</li>
 </ul>
 </section>
 <section id="the-downsides" class="level2">
 <h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
 <ul>
 <li><strong>FLUX.1 Style:</strong> Inherits the distinctive style of the FLUX.1 model.</li>
-<li><strong>TRELLIS Limitations:</strong> Complex elements may still require manual 3D refinement.</li>
-<li><strong>WSL2 Setup:</strong> Requires users to install and configure WSL2.</li>
+<li><strong>Shoebox Limitations:</strong> May require manual adjustments for complex sprites.</li>
+<li><strong>TRELLIS Limitations (Optional):</strong> Complex elements may still require manual 3D refinement.</li>
+<li><strong>WSL2 Setup (Optional):</strong> Requires users to install and configure WSL2 for TRELLIS.</li>
 </ul>
 </section>
 <section id="the-road-not-taken" class="level2">
@@ -263,16 +284,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><strong>Manual creation of concept art:</strong> Offers greater control but is time-consuming.</li>
 <li><strong>Using alternative AI models:</strong> Other models may not be as compatible with TRELLIS or as user-friendly.</li>
-<li><strong>Native Windows TRELLIS:</strong> Not readily available, requiring WSL2 for now.</li>
+<li><strong>Dedicated Sprite Editors:</strong> Can be more powerful but less accessible than Shoebox.</li>
 </ul>
 </section>
 <section id="the-infrequent-use-case" class="level2">
 <h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>For highly specific or complex concept art, manual creation or a combination of AI generation and human artistry may be necessary. Users without dedicated GPUs might experience limitations with TRELLIS.</p>
+<p>For highly specific or complex concept art and sprites, manual creation or a combination of AI generation and human artistry may be necessary. Users without dedicated GPUs might experience limitations with TRELLIS.</p>
 </section>
 <section id="why-is-it-in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="why-is-it-in-core-and-done-by-us">Why is it in Core and done by us?</h2>
-<p>This aligns with V-Sekai’s goal of democratizing virtual world creation by streamlining character creation and empowering users.</p>
+<p>This aligns with V-Sekai’s goal of democratizing virtual world creation by streamlining character creation and empowering users with accessible tools.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
@@ -295,6 +316,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>TRELLIS</li>
 <li>Easy Diffusion</li>
 <li>3D Modeling</li>
+<li>Windows 11</li>
+<li>Shoebox</li>
+<li>Sprite Creation</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
@@ -308,6 +332,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://github.com/V-Sekai-fire/TOOL_logoscale/tree/main?tab=readme-ov-file">TOOL_logoscale - GitHub</a></li>
 <li><a href="https://easydiffusion.github.io/">Easy Diffusion</a></li>
 <li><a href="https://docs.microsoft.com/en-us/windows/wsl/">Windows Subsystem for Linux Documentation</a></li>
+<li><a href="https://renderhjs.net/shoebox/">Shoebox</a></li>
 </ol>
 
 
