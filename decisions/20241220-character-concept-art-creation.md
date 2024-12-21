@@ -2,15 +2,15 @@
 
 ## The Context
 
-V-Sekai aims to provide a versatile platform for creating and experiencing virtual worlds. Character creation is a crucial aspect of this process, and concept art plays a vital role in visualizing and refining character designs before 3D modeling. This proposal focuses on integrating Easy Diffusion and TRELLIS to streamline this workflow.
+V-Sekai aims to provide a versatile platform for creating and experiencing virtual worlds. Character creation is a crucial aspect of this process, and concept art plays a vital role in visualizing and refining character designs before 3D modeling. This proposal focuses on integrating Easy Diffusion, Windows 11 tools, and Shoebox to streamline this workflow.
 
 ## The Problem Statement
 
-Generating high-quality, 3D-ready concept art often requires significant artistic skill and time. While AI art generators like Stable Diffusion, particularly with the FLUX model, can expedite this process, setting it up and ensuring the generated art is compatible with 3D modeling tools like TRELLIS requires technical expertise and careful optimization.
+Generating high-quality, 3D-ready concept art often requires significant artistic skill and time. While AI art generators like Stable Diffusion, particularly with the FLUX model, can expedite this process, setting it up and ensuring the generated art is compatible with 3D modeling tools requires technical expertise and careful optimization. This proposal aims to simplify this process further by incorporating readily available Windows tools.
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
-This proposal outlines a workflow using Easy Diffusion for generating concept art optimized for TRELLIS, leveraging AI to accelerate character creation in V-Sekai.
+This proposal outlines a workflow using Easy Diffusion for generating concept art, Windows 11 tools for image editing, and Shoebox for sprite creation, ultimately optimizing the process for 3D character creation in V-Sekai.
 
 ### 1. Easy Diffusion Setup
 
@@ -28,9 +28,22 @@ Easy Diffusion provides a user-friendly interface for Stable Diffusion. We will 
 
 - Set the width and height to 1024 pixels.
 
-### 3. TRELLIS Setup and Execution
+### 3. Image Editing with Windows 11 Tools
 
-TRELLIS will be used for generating 3D models from the generated concept art.
+- **Background Removal:** Utilize the built-in background removal tool in Windows 11's Paint app to isolate the character from the generated image. This creates a transparent background, crucial for sprite creation.
+- **Refinement (Optional):** Use other tools in Paint, like the selection tools and eraser, for further refinement if needed.
+
+### 4. Sprite Creation with Shoebox
+
+Shoebox (https://renderhjs.net/shoebox/) is a free online tool for creating sprite sheets.
+
+- Upload the alpha'd image from Paint to Shoebox.
+- Utilize Shoebox's features to cut the image into individual sprites.
+- Keep only the sprites that are in different views but in the same consistent 3d shape.
+
+### 5. TRELLIS Setup and Execution (Optional)
+
+TRELLIS can be used for generating 3D models from the concept art or sprites.
 
 - Install Docker Desktop.
 - Install WSL2 with a compatible Linux distribution (e.g., Ubuntu).
@@ -42,46 +55,49 @@ TRELLIS will be used for generating 3D models from the generated concept art.
 docker run -it -p 7860:7860 --gpus all registry.hf.space/jeffreyxiang-trellis:latest python app.py
 ```
 
-### 4. Iterative Refinement
+### 6. Iterative Refinement
 
-The process emphasizes iterative refinement of the prompt based on TRELLIS conversion results. This cyclical process ensures the generation of 3D-ready concept art.
+The process emphasizes iterative refinement of the prompt based on results from Shoebox or TRELLIS. This cyclical process ensures the generation of optimized concept art and sprites.
 
 ### Workflow
 
 1.  **Define Core Concept:** Establish the character's essential characteristics.
-2.  **Craft Optimized Prompt:** Create a concise, TRELLIS-friendly prompt using the provided structure and Easy Diffusion.
-3.  **Generate and Evaluate:** Produce images and assess their 3D conversion suitability in TRELLIS.
-4.  **Iterate and Refine:** Adjust the prompt based on the evaluation.
-5.  **3D Conversion:** Utilize TRELLIS to generate 3D models.
+2.  **Craft Optimized Prompt:** Create a concise, descriptive prompt using Easy Diffusion.
+3.  **Generate and Evaluate:** Produce images and assess their suitability.
+4.  **Remove Background:** Use Windows 11's Paint app to remove the background.
+5.  **Create Sprites:** Utilize Shoebox to generate sprites from the alpha'd image.
+6.  **(Optional) 3D Conversion:** Utilize TRELLIS to generate 3D models.
+7.  **Iterate and Refine:** Adjust the prompt based on the evaluation.
 
 ## The Benefits
 
-- **Efficient 3D Workflow:** Streamlines 3D model creation from AI-generated art.
-- **User-Friendly Interface:** Easy Diffusion simplifies AI art generation.
-- **Reduced Manual Intervention:** Minimizes 3D modeling cleanup.
-- **Faster Iteration:** Accelerates character design exploration in 3D.
+- **Simplified Workflow:** Streamlines concept art and sprite creation using accessible tools.
+- **Reduced Manual Effort:** Minimizes image editing and sprite creation time.
+- **Faster Iteration:** Accelerates character design exploration.
 - **Standardized Output:** Maintains consistency in character presentation.
 - **Accessibility:** Empowers users with varying artistic skills to contribute.
+- **Cost-effective:** Leverages free tools readily available on Windows 11.
 
 ## The Downsides
 
 - **FLUX.1 Style:** Inherits the distinctive style of the FLUX.1 model.
-- **TRELLIS Limitations:** Complex elements may still require manual 3D refinement.
-- **WSL2 Setup:** Requires users to install and configure WSL2.
+- **Shoebox Limitations:** May require manual adjustments for complex sprites.
+- **TRELLIS Limitations (Optional):** Complex elements may still require manual 3D refinement.
+- **WSL2 Setup (Optional):** Requires users to install and configure WSL2 for TRELLIS.
 
 ## The Road Not Taken
 
 - **Manual creation of concept art:** Offers greater control but is time-consuming.
 - **Using alternative AI models:** Other models may not be as compatible with TRELLIS or as user-friendly.
-- **Native Windows TRELLIS:** Not readily available, requiring WSL2 for now.
+- **Dedicated Sprite Editors:** Can be more powerful but less accessible than Shoebox.
 
 ## The Infrequent Use Case
 
-For highly specific or complex concept art, manual creation or a combination of AI generation and human artistry may be necessary. Users without dedicated GPUs might experience limitations with TRELLIS.
+For highly specific or complex concept art and sprites, manual creation or a combination of AI generation and human artistry may be necessary. Users without dedicated GPUs might experience limitations with TRELLIS.
 
 ## Why is it in Core and done by us?
 
-This aligns with V-Sekai's goal of democratizing virtual world creation by streamlining character creation and empowering users.
+This aligns with V-Sekai's goal of democratizing virtual world creation by streamlining character creation and empowering users with accessible tools.
 
 ## Status
 
@@ -101,6 +117,9 @@ Status: Draft
 - TRELLIS
 - Easy Diffusion
 - 3D Modeling
+- Windows 11
+- Shoebox
+- Sprite Creation
 
 ## Further Reading
 
@@ -110,5 +129,6 @@ Status: Draft
 4.  [TRELLIS - Hugging Face](https://huggingface.co/spaces/JeffreyXiang/TRELLIS)
 5.  [Character Design Sheet Helper - Civitai](https://civitai.com/models/100435)
 6.  [TOOL_logoscale - GitHub](https://github.com/V-Sekai-fire/TOOL_logoscale/tree/main?tab=readme-ov-file)
-8.  [Easy Diffusion](https://easydiffusion.github.io/)
-9.  [Windows Subsystem for Linux Documentation](https://docs.microsoft.com/en-us/windows/wsl/)
+7.  [Easy Diffusion](https://easydiffusion.github.io/)
+8.  [Windows Subsystem for Linux Documentation](https://docs.microsoft.com/en-us/windows/wsl/)
+9.  [Shoebox](https://renderhjs.net/shoebox/)
