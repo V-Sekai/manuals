@@ -32,15 +32,15 @@ Easy Diffusion provides a user-friendly interface for Stable Diffusion. We will 
 ```json
 {
   "numOutputsTotal": 32,
-  "seed": 3660024239,
+  "seed": 229484398,
   "reqBody": {
-    "prompt": "1girl, mature woman, simple clothing, a-pose, short hair, reference sheet with grid layout, front, back, angled underneath, 3/4 view, solid color background, identical character, same woman in all views, consistent features across all angles, full body, animal ears, long hair",
+    "prompt": "1girl, mature woman, simple clothing, a-pose, short hair, reference sheet with grid layout, front, back, low angle,3/4 view, solid color background, identical character, same woman in all views, consistent features across all angles, full body,  full legs, animal ears, long hair",
     "negative_prompt": "words, intricate hairstyle, elaborate braids, flowing hair, hair accessories, jewelry, intricate patterns, excessive details, flowing scarves, complex accessories, dynamic pose, foreshortening, extreme angles, obscured limbs, child, teenager, high heels, white background, white, cropped, close-up, face only, bust-up, half-body, torso only, legs only, arms only",
     "active_tags": [],
     "inactive_tags": [],
     "width": 1024,
     "height": 1024,
-    "seed": 3660024239,
+    "seed": 229484398,
     "num_inference_steps": 25,
     "guidance_scale": 1,
     "distilled_guidance_scale": 3.5,
