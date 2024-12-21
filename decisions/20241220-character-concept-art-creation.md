@@ -20,52 +20,14 @@ Easy Diffusion provides a user-friendly interface for Stable Diffusion. We will 
 - Download the FLUX model and necessary LoRAs (CharacterDesign-FluxV2, Flux DetailerV2).
 - Configure Easy Diffusion with the FLUX model and LoRAs.
 
+[concept_prompt.json](attachments/concept_prompt.json)
+
 ### 2. Optimized Prompting in Easy Diffusion
 
 **Settings:**
 
 - Use the "ESRGAN_4x" upscaler with an upscale amount of 4 and latent upscaler steps of 10 to enhance the artwork with a vectorized style.
 - Set the width and height to 1024 pixels.
-
-#### Image Settings
-
-```json
-{
-  "numOutputsTotal": 32,
-  "seed": 229484398,
-  "reqBody": {
-    "prompt": "1girl, mature woman, simple clothing,  short hair, reference sheet with grid layout, front, back, low angle, 3/4 view, solid color background, identical character, same woman in all views, consistent features across all angles, full body, full legs, animal ears, long hair, detailed thighs, thigh focus, simple shoes, sneakers, flats, sandals, overcast lighting, noon lighting, standing pose, arms at side",
-    "negative_prompt": "words, intricate hairstyle, elaborate braids, flowing hair, hair accessories, jewelry, intricate patterns, excessive details, flowing scarves, complex accessories, dynamic pose, foreshortening, extreme angles, obscured limbs, child, teenager, high heels, white background, white, cropped, close-up, face only, bust-up, half-body, torso only, legs only, arms only, high heels",
-    "active_tags": [],
-    "inactive_tags": [],
-    "width": 1024,
-    "height": 1024,
-    "seed": 229484398,
-    "num_inference_steps": 25,
-    "guidance_scale": 1,
-    "distilled_guidance_scale": 3.5,
-    "preserve_init_image_color_profile": true,
-    "use_upscale": "ESRGAN_4x",
-    "upscale_amount": "4",
-    "latent_upscaler_steps": "10",
-    "sampler_name": "forge_flux_realistic",
-    "scheduler_name": "beta",
-    "use_stable_diffusion_model": "flux1-schnell-fp8",
-    "clip_skip": true,
-    "tiling": "none",
-    "use_vae_model": "ae",
-    "use_controlnet_model": "",
-    "control_filter_to_apply": "",
-    "control_alpha": 1,
-    "use_lora_model": ["CharacterDesign-FluxV2", "Flux DetailerV2"],
-    "lora_alpha": ["0.5", "1"],
-    "num_outputs": 4,
-    "stream_image_progress": false,
-    "show_only_filtered_image": true,
-    "output_format": "png"
-  }
-}
-```
 
 ### 3. TRELLIS Setup and Execution
 
