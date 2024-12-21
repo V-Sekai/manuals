@@ -203,6 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Download the FLUX model and necessary LoRAs (CharacterDesign-FluxV2, Flux DetailerV2).</li>
 <li>Configure Easy Diffusion with the FLUX model and LoRAs.</li>
 </ul>
+<p><a href="attachments/concept_prompt.json">concept_prompt.json</a></p>
 </section>
 <section id="optimized-prompting-in-easy-diffusion" class="level3">
 <h3 class="anchored" data-anchor-id="optimized-prompting-in-easy-diffusion">2. Optimized Prompting in Easy Diffusion</h3>
@@ -211,44 +212,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Use the “ESRGAN_4x” upscaler with an upscale amount of 4 and latent upscaler steps of 10 to enhance the artwork with a vectorized style.</li>
 <li>Set the width and height to 1024 pixels.</li>
 </ul>
-<section id="image-settings" class="level4">
-<h4 class="anchored" data-anchor-id="image-settings">Image Settings</h4>
-<div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"numOutputsTotal"</span><span class="fu">:</span> <span class="dv">32</span><span class="fu">,</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"seed"</span><span class="fu">:</span> <span class="dv">229484398</span><span class="fu">,</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"reqBody"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"prompt"</span><span class="fu">:</span> <span class="st">"1girl, mature woman, simple clothing, a-pose, short hair, reference sheet with grid layout, front, back, low angle,3/4 view, solid color background, identical character, same woman in all views, consistent features across all angles, full body,  full legs, animal ears, long hair"</span><span class="fu">,</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"negative_prompt"</span><span class="fu">:</span> <span class="st">"words, intricate hairstyle, elaborate braids, flowing hair, hair accessories, jewelry, intricate patterns, excessive details, flowing scarves, complex accessories, dynamic pose, foreshortening, extreme angles, obscured limbs, child, teenager, high heels, white background, white, cropped, close-up, face only, bust-up, half-body, torso only, legs only, arms only"</span><span class="fu">,</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"active_tags"</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"inactive_tags"</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"width"</span><span class="fu">:</span> <span class="dv">1024</span><span class="fu">,</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"height"</span><span class="fu">:</span> <span class="dv">1024</span><span class="fu">,</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"seed"</span><span class="fu">:</span> <span class="dv">229484398</span><span class="fu">,</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"num_inference_steps"</span><span class="fu">:</span> <span class="dv">25</span><span class="fu">,</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"guidance_scale"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"distilled_guidance_scale"</span><span class="fu">:</span> <span class="fl">3.5</span><span class="fu">,</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"preserve_init_image_color_profile"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"use_upscale"</span><span class="fu">:</span> <span class="st">"ESRGAN_4x"</span><span class="fu">,</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"upscale_amount"</span><span class="fu">:</span> <span class="st">"4"</span><span class="fu">,</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"latent_upscaler_steps"</span><span class="fu">:</span> <span class="st">"10"</span><span class="fu">,</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"sampler_name"</span><span class="fu">:</span> <span class="st">"forge_flux_realistic"</span><span class="fu">,</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"scheduler_name"</span><span class="fu">:</span> <span class="st">"beta"</span><span class="fu">,</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"use_stable_diffusion_model"</span><span class="fu">:</span> <span class="st">"flux1-schnell-fp8"</span><span class="fu">,</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"clip_skip"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"tiling"</span><span class="fu">:</span> <span class="st">"none"</span><span class="fu">,</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"use_vae_model"</span><span class="fu">:</span> <span class="st">"ae"</span><span class="fu">,</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"use_controlnet_model"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"control_filter_to_apply"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"control_alpha"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"use_lora_model"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"CharacterDesign-FluxV2"</span><span class="ot">,</span> <span class="st">"Flux DetailerV2"</span><span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"lora_alpha"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"0.5"</span><span class="ot">,</span> <span class="st">"1"</span><span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"num_outputs"</span><span class="fu">:</span> <span class="dv">4</span><span class="fu">,</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"stream_image_progress"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"show_only_filtered_image"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"output_format"</span><span class="fu">:</span> <span class="st">"png"</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
 </section>
 <section id="trellis-setup-and-execution" class="level3">
 <h3 class="anchored" data-anchor-id="trellis-setup-and-execution">3. TRELLIS Setup and Execution</h3>
@@ -260,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Ensure GPU access is enabled within WSL2.</li>
 <li>Execute TRELLIS within WSL2 using the following command in Powershell:</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>docker run <span class="op">-</span>it <span class="op">-</span>p <span class="dv">7860</span><span class="op">:</span><span class="dv">7860</span> <span class="op">--</span>gpus all registry<span class="op">.</span><span class="fu">hf</span><span class="op">.</span><span class="fu">space</span><span class="op">/</span>jeffreyxiang-trellis<span class="op">:</span>latest python app<span class="op">.</span><span class="fu">py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>docker run <span class="op">-</span>it <span class="op">-</span>p <span class="dv">7860</span><span class="op">:</span><span class="dv">7860</span> <span class="op">--</span>gpus all registry<span class="op">.</span><span class="fu">hf</span><span class="op">.</span><span class="fu">space</span><span class="op">/</span>jeffreyxiang-trellis<span class="op">:</span>latest python app<span class="op">.</span><span class="fu">py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="iterative-refinement" class="level3">
 <h3 class="anchored" data-anchor-id="iterative-refinement">4. Iterative Refinement</h3>
