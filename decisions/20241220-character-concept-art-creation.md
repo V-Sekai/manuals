@@ -17,7 +17,7 @@ This proposal outlines a workflow using Easy Diffusion for generating concept ar
 Easy Diffusion provides a user-friendly interface for Stable Diffusion. We will use it with the FLUX model for generating character concepts.
 
 - Install Easy Diffusion.
-- Download the FLUX model and necessary LoRAs (CharacterDesign-FluxV2, Flux DetailerV2).
+- Download the FLUX model and necessary LoRAs (CharacterDesign-FluxV2).
 - Configure Easy Diffusion with the FLUX model and LoRAs.
 
 [concept_prompt.json](attachments/concept_prompt.json)
@@ -110,6 +110,5 @@ Status: Draft
 4.  [TRELLIS - Hugging Face](https://huggingface.co/spaces/JeffreyXiang/TRELLIS)
 5.  [Character Design Sheet Helper - Civitai](https://civitai.com/models/100435)
 6.  [TOOL_logoscale - GitHub](https://github.com/V-Sekai-fire/TOOL_logoscale/tree/main?tab=readme-ov-file)
-7.  [Flux Detailer V2 - Civitai](https://civitai.com/models/685874/detailer-flux)
 8.  [Easy Diffusion](https://easydiffusion.github.io/)
 9.  [Windows Subsystem for Linux Documentation](https://docs.microsoft.com/en-us/windows/wsl/)
