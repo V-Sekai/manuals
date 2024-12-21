@@ -26,7 +26,7 @@ Easy Diffusion provides a user-friendly interface for Stable Diffusion. We will 
 
 **Settings:**
 
-- Use the "ESRGAN_4x" upscaler with an upscale amount of 4 and latent upscaler steps of 10 to enhance the artwork with a vectorized style.
+- Use the "ESRGAN_4x" upscaler to enhance the artwork with a vectorized style.
 - Set the width and height to 1024 pixels.
 
 ### 3. TRELLIS Setup and Execution
