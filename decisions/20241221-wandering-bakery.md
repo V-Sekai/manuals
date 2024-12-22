@@ -10,36 +10,21 @@ Traditional game stories are often static and predictable.
 
 ### Describe how your proposal will work
 
-- Minimal Viable Product (MVP): Focus on a single core gameplay loop:
-  - One Town: A small village with a few key characters.
-  - Basic Needs: Characters have simple desires that can be fulfilled with basic pastries.
-  - Limited Recipes: A small set of recipes with clear emotional connections.
-  - Core Interaction: Dialogue with characters, baking, and observing reactions.
-- AI Storyteller: An LLM will generate the town, characters, and basic dialogue, including:
-  - World Generation: A simple map with a few key locations within the village.
-  - Character Development: A handful of characters with basic backstories and needs.
-  - Dynamic Dialogue: Simple dialogue variations based on player choices and actions.
-- Content Verification: The Goal-Task Planner's verifier will monitor and filter LLM output to ensure quality and consistency. This includes:
-  - Coherence: Ensuring the generated content makes sense within the game's context.
-  - Appropriateness: Filtering any inappropriate or offensive content.
-  - Consistency: Maintaining a consistent tone and style throughout the generated content.
-- Goal-Task Planner Integration:
-  - Domain: Define a `Domain` that encapsulates the game's environment, actions, and goals.
-  - Actions: Define `actions` like `bake_pastry(pastry_type)`, `talk_to_character(character_id)`, `give_pastry(character_id, pastry_type)`.
-  - Goals: Define `goals` like `character_satisfied(character_id)`, `recipe_unlocked(recipe_id)`, `story_event_triggered(event_id)`.
-  - Tasks: Define `tasks` like `satisfy_character(character_id)`, `unlock_recipe(recipe_id)`, `trigger_story_event(event_id)`.
-  - Multigoal: Define `Multigoal` for complex scenarios requiring multiple sub-goals to be achieved.
-  - Planning: Utilize the `Plan.find_plan()` method to generate a sequence of actions to achieve the desired goals based on the current game state.
+The Minimal Viable Product (MVP) will focus on a single core gameplay loop. It will feature one town, a small village with a few key characters. Characters will have simple desires that can be fulfilled with basic pastries, and there will be a limited set of recipes with clear emotional connections. The core interaction will involve dialogue with characters, baking, and observing reactions.
+
+An AI Storyteller, powered by an LLM, will generate the town, characters, and basic dialogue. This includes world generation with a simple map and a few key locations within the village, character development with basic backstories and needs, and dynamic dialogue with simple variations based on player choices and actions.
+
+Content verification will be handled by the Goal-Task Planner's verifier, which will monitor and filter LLM output to ensure quality and consistency. This includes ensuring coherence within the game's context, filtering inappropriate or offensive content, and maintaining a consistent tone and style throughout the generated content.
+
+The Goal-Task Planner integration will involve defining a `Domain` that encapsulates the game's environment, actions, and goals. Actions will include tasks like `bake_pastry(pastry_type)`, `talk_to_character(character_id)`, and `give_pastry(character_id, pastry_type)`. Goals will include objectives like `character_satisfied(character_id)`, `recipe_unlocked(recipe_id)`, and `story_event_triggered(event_id)`. Tasks will involve actions such as `satisfy_character(character_id)`, `unlock_recipe(recipe_id)`, and `trigger_story_event(event_id)`. For complex scenarios requiring multiple sub-goals to be achieved, a `Multigoal` will be defined. The `Plan.find_plan()` method will be utilized to generate a sequence of actions to achieve the desired goals based on the current game state.
 
 ### The Benefits
 
-- Proof of Concept: Demonstrate the potential of LLM-driven narrative.
-- Rapid Iteration: Quickly test and refine core mechanics.
+This prototype will serve as a proof of concept, demonstrating the potential of LLM-driven narrative and allowing for rapid iteration to quickly test and refine core mechanics.
 
 ### The Downsides
 
-- Limited Scope: The prototype will not represent the full vision.
-- Potential for Unexpected Behavior: LLMs may require close monitoring.
+The prototype will have a limited scope and will not represent the full vision. There is also potential for unexpected behavior, requiring close monitoring of the LLMs.
 
 ### The Road Not Taken
 
@@ -55,13 +40,11 @@ Status: Draft
 
 ### Decision Makers
 
-- V-Sekai development team
+The V-Sekai development team.
 
 ### Tags
 
-- V-Sekai
-- LLM
-- Prototype
+V-Sekai, LLM, Prototype.
 
 ### References
 
