@@ -10,29 +10,58 @@ Traditional game stories are often static and predictable.
 
 ### Describe how your proposal will work
 
-The Minimal Viable Product (MVP) will focus on a single core gameplay loop. It will feature one town, a small village with a few key characters. Characters will have simple desires that can be fulfilled with basic pastries, and there will be a limited set of recipes with clear emotional connections. The core interaction will involve dialogue with characters, baking, and observing reactions.
+The Minimal Viable Product (MVP) will focus on a single core gameplay loop centered around a traveling bakery. Each day, the player will arrive in a new procedurally generated village with a few key characters. These characters will have simple desires and backstories that can be discovered through dialogue and fulfilled with baked goods.
 
-An AI Storyteller, powered by an LLM, will generate the town, characters, and basic dialogue. This includes world generation with a simple map and a few key locations within the village, character development with basic backstories and needs, and dynamic dialogue with simple variations based on player choices and actions.
+The core gameplay loop involves:
 
-Content verification will be handled by the Goal-Task Planner's verifier, which will monitor and filter LLM output to ensure quality and consistency. This includes ensuring coherence within the game's context, filtering inappropriate or offensive content, and maintaining a consistent tone and style throughout the generated content.
+1. **Exploration:** Arriving in a new village and exploring its map, which includes key locations like a town square, a well, or a character's home.
+2. **Dialogue:** Engaging in conversations with characters to uncover their needs, desires, and backstories.
+3. **Baking:** Utilizing a recipe book and available ingredients to bake pastries with specific emotional connections (e.g., a comforting cookie, a celebratory cake). This includes managing a simple inventory and potentially purchasing ingredients.
+4. **Observation:** Delivering pastries to characters and observing their reactions, which can range from simple dialogue changes to triggering new quests or story events.
 
-The Goal-Task Planner integration will involve defining a `Domain` that encapsulates the game's environment, actions, and goals. Actions will include tasks like `bake_pastry(pastry_type)`, `talk_to_character(character_id)`, and `give_pastry(character_id, pastry_type)`. Goals will include objectives like `character_satisfied(character_id)`, `recipe_unlocked(recipe_id)`, and `story_event_triggered(event_id)`. Tasks will involve actions such as `satisfy_character(character_id)`, `unlock_recipe(recipe_id)`, and `trigger_story_event(event_id)`. For complex scenarios requiring multiple sub-goals to be achieved, a `Multigoal` will be defined. The `Plan.find_plan()` method will be utilized to generate a sequence of actions to achieve the desired goals based on the current game state.
+**LLM Integration:**
+
+An AI Storyteller, powered by an LLM, will dynamically generate the following:
+
+- **World Generation:** Creating a unique village each day with a simple map and a few key locations.
+- **Character Development:** Generating characters with basic backstories, needs, and desires. This includes a daily "special customer" with a unique and more complex need.
+- **Dynamic Dialogue:** Creating branching conversations that respond to player choices and actions, including variations based on gifted pastries and the character's emotional state.
+- **Menu Generation:** Creating a menu with dynamic pricing based on ingredient scarcity and village economy.
+
+**Content Verification:**
+
+The Goal-Task Planner's verifier will monitor and filter LLM output to ensure quality and consistency. This includes:
+
+- Ensuring coherence within the game's context.
+- Filtering inappropriate or offensive content.
+- Maintaining a consistent tone and style.
+
+**Goal-Task Planner Integration:**
+
+The Goal-Task Planner will define a `Domain` with actions, goals, and tasks:
+
+- **Actions:** `bake_pastry(pastry_type)`, `talk_to_character(character_id)`, `give_pastry(character_id, pastry_type)`, `buy_ingredients(ingredient_type, amount)`, `explore_location(location_id)`.
+- **Goals:** `character_satisfied(character_id)`, `recipe_unlocked(recipe_id)`, `story_event_triggered(event_id)`, `daily_special_fulfilled`, `earn_minimum_coins`.
+- **Tasks:** `satisfy_character(character_id)`, `unlock_recipe(recipe_id)`, `trigger_story_event(event_id)`, `fulfill_special_request`, `sell_pastries`.
+- **Multigoal:** For complex scenarios, like satisfying the daily special customer, a `Multigoal` will define the necessary sub-goals.
+
+The `Plan.find_plan()` method will generate a sequence of actions to achieve the desired goals.
 
 ### The Benefits
 
-This prototype will serve as a proof of concept, demonstrating the potential of LLM-driven narrative and allowing for rapid iteration to quickly test and refine core mechanics.
+This prototype allows for rapid iteration and testing of LLM-driven narrative generation in a contained environment. It demonstrates the potential for dynamic storytelling and emergent gameplay.
 
 ### The Downsides
 
-The prototype will have a limited scope and will not represent the full vision. There is also potential for unexpected behavior, requiring close monitoring of the LLMs.
+The prototype will have a limited scope. LLM behavior can be unpredictable, requiring close monitoring.
 
 ### The Road Not Taken
 
-A full-fledged game is too complex for an initial prototype.
+A full-fledged game is too complex for an initial prototype. Starting with a simpler, focused experience allows for faster iteration and learning.
 
 ### Why is it in Core and done by us?
 
-This aligns with our focus on innovative game development.
+This aligns with our focus on innovative game development and exploring the use of LLMs in interactive narratives.
 
 ### Status
 
@@ -44,7 +73,7 @@ The V-Sekai development team.
 
 ### Tags
 
-V-Sekai, LLM, Prototype.
+V-Sekai, LLM, Prototype, Procedural Generation, Dynamic Narrative.
 
 ### References
 
