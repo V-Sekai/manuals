@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.39</generator>
-<lastBuildDate>Sun, 22 Dec 2024 18:23:32 GMT</lastBuildDate>
+<lastBuildDate>Sun, 22 Dec 2024 22:54:36 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 22 Dec 2024 18:23:32 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 22:54:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -162,7 +162,504 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Sun, 22 Dec 2024 18:23:32 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 22:54:36 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20241222-wandering-librarian.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="draft-the-wandering-librarian---prototype" class="level1">
+<h1>Draft: The Wandering Librarian - Prototype</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>We need a way to test if LLMs can create engaging narratives in games. This prototype will serve as a testbed for exploring the potential of LLM-driven dynamic storytelling within a simplified game environment.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Traditional game stories are often static and predictable, limiting player agency and immersion. LLMs offer the potential to generate dynamic narratives that react to player choices and create emergent gameplay experiences.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>The Minimal Viable Product (MVP) will focus on a single core gameplay loop centered around a traveling librarian who visits a new procedurally generated village each day. The player interacts with villagers, learns their needs and desires, and provides them with books to fulfill those needs.</p>
+<p><strong>Core Gameplay Loop:</strong></p>
+<ol type="1">
+<li><p><strong>Arrive in Village:</strong></p>
+<ul>
+<li>The LLM generates a village with a simple map and a few key locations (e.g., town square, tavern, character homes).</li>
+</ul>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Pseudo-code for village generation</span></span>
+<span id="cb1-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> generate_village():</span>
+<span id="cb1-3">    village <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {}</span>
+<span id="cb1-4">    village[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'name'</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> LLM.generate_village_name()</span>
+<span id="cb1-5">    village[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'map'</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> LLM.generate_map_layout()</span>
+<span id="cb1-6">    village[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'locations'</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> LLM.generate_locations(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Generate 3 locations</span></span>
+<span id="cb1-7">    village[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'characters'</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> LLM.generate_characters(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>) <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Generate 3 characters</span></span>
+<span id="cb1-8">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> village</span></code></pre></div></li>
+<li><p><strong>Explore and Interact:</strong></p>
+<ul>
+<li>The player explores the village and interacts with characters through dialogue.</li>
+<li>Dialogue is dynamically generated by the LLM based on character backstories and player choices.</li>
+</ul>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Pseudo-code for dialogue interaction</span></span>
+<span id="cb2-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> talk_to_character(character_id):</span>
+<span id="cb2-3">    initial_dialogue <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> LLM.generate_initial_dialogue(character_id)</span>
+<span id="cb2-4">    display(initial_dialogue)</span>
+<span id="cb2-5">    player_response <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> get_player_input()</span>
+<span id="cb2-6">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">while</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">not</span> end_conversation:</span>
+<span id="cb2-7">        response <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> LLM.generate_response(character_id, player_response)</span>
+<span id="cb2-8">        display(response)</span>
+<span id="cb2-9">        player_response <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> get_player_input()</span></code></pre></div></li>
+<li><p><strong>Fulfill Needs with Books:</strong></p>
+<ul>
+<li>The player selects books from their inventory or purchases new ones to match character preferences.</li>
+<li>The LLM generates character needs and desires related to reading (e.g., favorite genres, desired knowledge).</li>
+</ul>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Pseudo-code for fulfilling needs</span></span>
+<span id="cb3-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> give_book(character_id, book_title):</span>
+<span id="cb3-3">    character_reaction <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> LLM.generate_reaction(character_id, book_title)</span>
+<span id="cb3-4">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> character_reaction[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'satisfied'</span>]:</span>
+<span id="cb3-5">        update_character_state(character_id, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'satisfied'</span>)</span>
+<span id="cb3-6">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Trigger potential story events or quests</span></span>
+<span id="cb3-7">    display(character_reaction[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'dialogue'</span>])</span></code></pre></div></li>
+</ol>
+<p><strong>LLM Integration:</strong></p>
+<ul>
+<li><strong>World Generation:</strong> Creates unique villages, maps, and locations.</li>
+<li><strong>Character Development:</strong> Generates characters with backstories, desires, and reading preferences.</li>
+<li><strong>Dynamic Dialogue:</strong> Handles conversations, reacting to player choices and gifted books.</li>
+<li><strong>Catalog Generation:</strong> Creates a dynamic catalog of books with varying prices and rarities.</li>
+</ul>
+<p><strong>Content Verification:</strong></p>
+<ul>
+<li>A verifier monitors LLM output to ensure coherence, filter inappropriate content, and maintain consistency.</li>
+</ul>
+<p><strong>Goal-Task Planner Integration:</strong></p>
+<ul>
+<li>Defines actions (e.g., <code>select_book</code>, <code>talk_to_character</code>, <code>give_book</code>), goals (e.g., <code>character_satisfied</code>, <code>rare_book_found</code>), and tasks (e.g., <code>satisfy_character</code>, <code>find_rare_book</code>) within the game’s domain.</li>
+<li>The <code>Plan.find_plan()</code> method helps generate sequences of actions to achieve goals.</li>
+</ul>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li><strong>Rapid Iteration:</strong> The simplified scope allows for quick testing and refinement of LLM-driven narratives.</li>
+<li><strong>Dynamic Storytelling:</strong> Creates emergent narratives and unpredictable gameplay experiences.</li>
+<li><strong>Exploration of LLM Capabilities:</strong> Provides valuable insights into using LLMs for interactive storytelling.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li><strong>Limited Scope:</strong> The prototype focuses on a narrow aspect of gameplay.</li>
+<li><strong>LLM Unpredictability:</strong> Requires careful monitoring and content filtering to ensure quality and consistency.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<ul>
+<li>Developing a full-fledged game with complex mechanics would be too time-consuming for initial exploration.</li>
+</ul>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<ul>
+<li>While the core loop is designed for daily interaction, players may occasionally skip days or play less frequently. The LLM will need to handle these infrequent interactions seamlessly, potentially by adjusting the narrative or providing catch-up mechanisms.</li>
+</ul>
+</section>
+<section id="why-is-it-in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="why-is-it-in-core-and-done-by-us">Why is it in Core and done by us?</h2>
+<p>This project aligns with our core focus on innovative game development and exploring the use of LLMs in interactive narratives. It requires deep integration with our existing technology and understanding of our long-term goals.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Draft</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+<li>LLM</li>
+<li>Prototype</li>
+<li>Procedural Generation</li>
+<li>Dynamic Narrative</li>
+<li>Books</li>
+<li>Librarian</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20241222-wandering-librarian.html</guid>
+  <pubDate>Sun, 22 Dec 2024 22:54:36 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20241222-wandering-dancer.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="draft-the-wandering-dancer---prototype" class="level1">
+<h1>Draft: The Wandering Dancer - Prototype</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>We need a way to test if LLMs can create engaging narratives in games, particularly focusing on emotional expression and non-verbal communication. This prototype explores the potential of LLM-driven dynamic storytelling through dance and movement within a simplified game environment.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Traditional game narratives often rely heavily on dialogue and explicit storytelling, potentially limiting player expression and emotional engagement. LLMs can enable new forms of interactive storytelling that tap into the nuances of body language and physical expression.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>The Minimal Viable Product (MVP) will center around a traveling dancer who visits a new procedurally generated village each day. The player observes villagers, interprets their emotions and social dynamics through their dances and movements, and then creates dances to interact and influence their emotional states.</p>
+<p><strong>Core Gameplay Loop:</strong></p>
+<ol type="1">
+<li><p><strong>Arrive in Village:</strong></p>
+<ul>
+<li>The LLM generates a village with unique cultural dances and movement styles, reflecting the villagers’ current emotional states and social dynamics.</li>
+</ul>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Pseudo-code for village generation</span></span>
+<span id="cb1-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> generate_village():</span>
+<span id="cb1-3">    village <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {}</span>
+<span id="cb1-4">    village[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'name'</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> LLM.generate_village_name()</span>
+<span id="cb1-5">    village[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'culture'</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> LLM.generate_cultural_traits() <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Includes dance styles</span></span>
+<span id="cb1-6">    village[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'atmosphere'</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> LLM.generate_emotional_atmosphere()</span>
+<span id="cb1-7">    village[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'relationships'</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> LLM.generate_character_relationships() <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Social dynamics</span></span>
+<span id="cb1-8">    village[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'locations'</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> LLM.generate_locations(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span>
+<span id="cb1-9">    village[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'characters'</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> LLM.generate_characters(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span>
+<span id="cb1-10">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> village</span></code></pre></div></li>
+<li><p><strong>Observe and Learn:</strong></p>
+<ul>
+<li>The player explores the village and observes characters, interpreting their dances and interactions to understand their customs, relationships, and individual emotions.</li>
+</ul>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Pseudo-code for observing dances</span></span>
+<span id="cb2-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> observe_dance(character_id):</span>
+<span id="cb2-3">    dance_moves <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> LLM.generate_dance_sequence(character_id, village[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'culture'</span>])</span>
+<span id="cb2-4">    display(dance_moves) <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Visual representation of the dance</span></span>
+<span id="cb2-5">    emotional_cues <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> LLM.interpret_dance_emotionally(dance_moves)</span>
+<span id="cb2-6">    display(emotional_cues) <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Textual description of emotions conveyed</span></span></code></pre></div></li>
+<li><p><strong>Interpret and Respond:</strong></p>
+<ul>
+<li>Using a simplified dance creation tool, the player interprets the observed dances and creates their own movements in response, expressing empathy, offering support, or joining in celebrations.</li>
+</ul>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Pseudo-code for dance creation</span></span>
+<span id="cb3-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> create_dance():</span>
+<span id="cb3-3">    dance <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="cb3-4">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">while</span> creating:</span>
+<span id="cb3-5">        move <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> get_player_input() <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># From dance creation tool</span></span>
+<span id="cb3-6">        dance.append(move)</span>
+<span id="cb3-7">        LLM_suggestion <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> LLM.suggest_dance_move(dance, village[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'culture'</span>])</span>
+<span id="cb3-8">        display(LLM_suggestion) <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># e.g., "Consider a move that expresses joy"</span></span>
+<span id="cb3-9">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> dance</span></code></pre></div></li>
+<li><p><strong>Observe Reactions:</strong></p>
+<ul>
+<li>The villagers react to the player’s dance, expressing their emotions through new dances, dialogue, or changes in their behavior, potentially revealing hidden stories or altering social dynamics.</li>
+</ul>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Pseudo-code for observing reactions</span></span>
+<span id="cb4-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> observe_reactions(dance):</span>
+<span id="cb4-3">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> character_id <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> village[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'characters'</span>]:</span>
+<span id="cb4-4">        reaction <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> LLM.generate_reaction_to_dance(character_id, dance)</span>
+<span id="cb4-5">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> reaction[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'story_revealed'</span>]:</span>
+<span id="cb4-6">            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Trigger a new story element or quest</span></span>
+<span id="cb4-7">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">pass</span></span>
+<span id="cb4-8">        update_character_state(character_id, reaction[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'new_emotional_state'</span>])</span>
+<span id="cb4-9">        display(reaction[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'dance'</span>]) <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Villager's dance response</span></span>
+<span id="cb4-10">        display(reaction[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'dialogue'</span>]) <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># May be empty if no dialogue</span></span></code></pre></div></li>
+</ol>
+<p><strong>LLM Integration:</strong></p>
+<ul>
+<li><strong>World Generation:</strong> Creates villages with distinct dance cultures and movement styles, reflecting their emotional atmosphere.</li>
+<li><strong>Character Development:</strong> Generates characters with unique dance vocabularies and movement patterns based on their personality and emotional state.</li>
+<li><strong>Dynamic Narrative:</strong> Guides the story based on the player’s dance interpretations and interactions, creating emergent narratives and unexpected events.</li>
+<li><strong>Dance Suggestion:</strong> Provides subtle guidance and feedback on the player’s dance creations, helping them understand and respond to the villagers’ emotional cues.</li>
+</ul>
+<p><strong>Content Verification:</strong></p>
+<ul>
+<li>A verifier monitors LLM output to ensure coherence, filter inappropriate content, and maintain consistency.</li>
+</ul>
+<p><strong>Goal-Task Planner Integration:</strong></p>
+<ul>
+<li>Defines actions (e.g., <code>observe_dance</code>, <code>create_dance</code>, <code>perform_dance</code>), goals (e.g., <code>character_comforted</code>, <code>social_dynamic_changed</code>, <code>story_revealed</code>), and tasks (e.g., <code>comfort_character</code>, <code>change_relationship</code>, <code>uncover_story</code>) within the game’s domain.</li>
+<li>The <code>Plan.find_plan()</code> method helps generate sequences of actions to achieve goals.</li>
+</ul>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li><strong>Exploration of Physical Expression:</strong> Explores the use of dance and movement as a primary means of interaction and storytelling.</li>
+<li><strong>Emotional Depth:</strong> Focuses on creating emotionally resonant experiences through non-verbal communication and nuanced character interactions.</li>
+<li><strong>Novel Gameplay Mechanics:</strong> Potentially leads to unique gameplay mechanics centered around dance interpretation, creation, and emotional influence.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li><strong>Complexity of Dance Representation:</strong> Requires effectively representing dance movements and emotions for the LLM to process.</li>
+<li><strong>User Interface Challenges:</strong> Designing an intuitive and expressive dance creation tool within the game.</li>
+<li><strong>Subjectivity of Interpretation:</strong> Evaluating the impact of the player’s dance on characters and the narrative can be subjective.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<ul>
+<li>Focusing on traditional dialogue-heavy narratives would not fully explore the potential of LLMs in generating dynamic, emotionally driven experiences through physical expression.</li>
+</ul>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<ul>
+<li>Players might visit villages infrequently. The LLM needs to handle this by adapting the narrative, potentially introducing time-related changes in the village, character relationships, and dance styles.</li>
+</ul>
+</section>
+<section id="why-is-it-in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="why-is-it-in-core-and-done-by-us">Why is it in Core and done by us?</h2>
+<p>This aligns with our focus on innovative game development and exploring the use of LLMs in interactive narratives. It requires deep integration with our game engine and understanding of our long-term goals for dynamic storytelling.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Draft</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+<li>LLM</li>
+<li>Prototype</li>
+<li>Procedural Generation</li>
+<li>Dynamic Narrative</li>
+<li>Dance</li>
+<li>Emotion</li>
+<li>Non-Verbal Communication</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20241222-wandering-dancer.html</guid>
+  <pubDate>Sun, 22 Dec 2024 22:54:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -264,7 +761,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241221-wandering-bakery.html</guid>
-  <pubDate>Sun, 22 Dec 2024 18:23:32 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 22:54:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -358,7 +855,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241220-discord-quest-3.html</guid>
-  <pubDate>Sun, 22 Dec 2024 18:23:32 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 22:54:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -553,7 +1050,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241220-character-concept-art-creation.html</guid>
-  <pubDate>Sun, 22 Dec 2024 18:23:32 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 22:54:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -647,7 +1144,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241219-unpack-fbx-udimms.html</guid>
-  <pubDate>Sun, 22 Dec 2024 18:23:32 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 22:54:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -755,7 +1252,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241219-scriptable-sign.html</guid>
-  <pubDate>Sun, 22 Dec 2024 18:23:32 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 22:54:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -857,7 +1354,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241218-will-o-wisp-proto-avatar.html</guid>
-  <pubDate>Sun, 22 Dec 2024 18:23:32 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 22:54:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1125,7 +1622,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241210-vsekai-charter.html</guid>
-  <pubDate>Sun, 22 Dec 2024 18:23:32 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 22:54:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1329,7 +1826,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241112-godot-animation-streaming.html</guid>
-  <pubDate>Sun, 22 Dec 2024 18:23:32 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 22:54:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1405,7 +1902,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241102-plan-november-2024.html</guid>
-  <pubDate>Sun, 22 Dec 2024 18:23:32 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 22:54:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1486,7 +1983,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241028-use-data-tables-for-godot-constraints.html</guid>
-  <pubDate>Sun, 22 Dec 2024 18:23:32 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 22:54:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1589,7 +2086,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241019-reduce-size-difference-between-capsules-and-mesh-volume.html</guid>
-  <pubDate>Sun, 22 Dec 2024 18:23:32 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 22:54:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1683,7 +2180,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241016-instantiating-v-sekai-content.html</guid>
-  <pubDate>Sun, 22 Dec 2024 18:23:32 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 22:54:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1834,7 +2331,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-xr-interface-for-rigging.html</guid>
-  <pubDate>Sun, 22 Dec 2024 18:23:32 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 22:54:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1935,7 +2432,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-basic-realtime-interaction.html</guid>
-  <pubDate>Sun, 22 Dec 2024 18:23:32 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 22:54:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2038,7 +2535,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-app-updater.html</guid>
-  <pubDate>Sun, 22 Dec 2024 18:23:32 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 22:54:36 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2168,176 +2665,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241011-recovering-makehuman-parameters.html</guid>
-  <pubDate>Sun, 22 Dec 2024 18:23:32 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20241006-restore-onedrive-shortcut-overrides.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="accepted-restoring-default-user-directory-structure-in-windows-11" class="level1">
-<h1>Accepted: Restoring Default User Directory Structure in Windows 11</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>Using Windows 11.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Microsoft has configured OneDrive to automatically move key user folders such as Documents, Desktop, and others from the user directory into the OneDrive folder. This change can disrupt users’ familiar file organization and system workflows.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>The solution involves two main steps:</p>
-<ol type="1">
-<li><strong>Disabling OneDrive Sync</strong>: Users need to pause or stop OneDrive from syncing these folders.</li>
-<li><strong>Running a Restore Default Paths Script</strong>: Execute a script that resets the default paths of user directories back to their original locations on the local drive.</li>
-</ol>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<ul>
-<li>Restores traditional file paths for ease of access and familiarity.</li>
-<li>Reduces dependency on cloud synchronization for essential folders.</li>
-<li>Improves system performance by reducing unnecessary sync operations.</li>
-</ul>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<ul>
-<li>Manual intervention required by users not comfortable with script execution.</li>
-<li>Potential data discrepancies if files are not fully synchronized before the change.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Alternative solutions like using third-party tools or different cloud services were considered but dismissed due to increased complexity and potential security concerns.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>Users who operate primarily offline or have strict data handling policies may find this change particularly beneficial.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>This proposal is to be implemented internally within the V-Sekai development team’s systems before considering broader deployment.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-<li><a href="https://www.winhelponline.com/blog/windows-10-shell-folders-paths-defaults-restore/">Windows 10/11 User Shell Folders Restore Default Paths</a></li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20241006-restore-onedrive-shortcut-overrides.html</guid>
-  <pubDate>Sun, 22 Dec 2024 18:23:32 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20241001-small-game-tools.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="draft-small-v-sekai-creation-tools" class="level1">
-<h1>Draft: Small V-Sekai Creation Tools</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>The Godot Editor now integrates a 2D editor on a screen for VR, which cannot be fully optimized for VR screens like the Meta Quest 3. However, the Quest 3’s multiwindow support offers new possibilities.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>We want to create a suite of tools for V-Sekai game development that leverages the capabilities of current hardware without requiring full VR integration.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>Develop a series of small, efficient tools that can connect remotely to the V-Sekai game project, facilitating world creation and other development tasks from a 2D interface displayed within a VR environment.</p>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<ul>
-<li><strong>Enhanced Accessibility</strong>: Developers can use tools within a VR environment without the need for full VR tool conversion, combining comfort with functionality.</li>
-<li><strong>Real-Time Interaction</strong>: Enables immediate feedback and interaction with the game world, enhancing development speed and efficiency.</li>
-<li><strong>Innovative Approach</strong>: By using a hybrid approach, V-Sekai remains at the cutting edge, integrating new technologies while maintaining usability.</li>
-</ul>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<ul>
-<li><strong>Technical Challenges</strong>: Creating tools that function seamlessly between 2D and VR environments is complex and may require significant resources.</li>
-<li><strong>User Adaptation</strong>: There might be a learning curve as developers adjust to using a 2D interface in a VR context.</li>
-<li><strong>Hardware Limitations</strong>: The performance and functionality are still bound by the limitations of existing VR hardware like the Meta Quest 3.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Full VR development tools and augmented reality interfaces were considered but deemed not yet viable for our goals due to current technological constraints and development focus.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>For developers who prefer traditional desktop-based environments, or where VR integration provides no clear advantage, existing non-VR tools will continue to be supported and developed.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>This initiative aligns with our core mission to innovate within accessible VR and game development tools, and will be developed internally by the V-Sekai team.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-<li>Humbletim</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20241001-small-game-tools.html</guid>
-  <pubDate>Sun, 22 Dec 2024 18:23:32 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 22:54:36 GMT</pubDate>
 </item>
 </channel>
 </rss>
