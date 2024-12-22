@@ -50,5 +50,6 @@ V-Sekai, LLM, Prototype.
 
 - [NousResearch Hermes-2-Pro-Mistral-7B](https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B)
 - [V-Sekai Godot Task Goal Planner](https://github.com/V-Sekai/godot-task-goal-planner)
+- [LLMs Can’t Plan, But Can Help Planning in LLM-Modulo Frameworks](https://arxiv.org/html/2402.01817v2)
 
 AI assistant Aria assisted with this article.
