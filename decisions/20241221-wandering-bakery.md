@@ -53,3 +53,7 @@ V-Sekai, LLM, Prototype.
 - [LLMs Can’t Plan, But Can Help Planning in LLM-Modulo Frameworks](https://arxiv.org/html/2402.01817v2)
 
 AI assistant Aria assisted with this article.
+
+### Quote
+
+"Make art. Doesn't matter if it is great or shit. Tell your story." - Member of the Seattle Blender User Group
