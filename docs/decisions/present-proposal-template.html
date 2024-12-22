@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -117,7 +151,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#draft-template" id="toc-draft-template" class="nav-link active" data-scroll-target="#draft-template">Draft: Template</a>
+  <li><a href="#draft-the-wandering-librarian---prototype" id="toc-draft-the-wandering-librarian---prototype" class="nav-link active" data-scroll-target="#draft-the-wandering-librarian---prototype">Draft: The Wandering Librarian - Prototype</a>
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
   <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
@@ -141,35 +175,154 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="draft-template" class="level1">
-<h1>Draft: Template</h1>
+<section id="draft-the-wandering-librarian---prototype" class="level1">
+<h1>Draft: The Wandering Librarian - Prototype</h1>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>We need a way to test if LLMs can create engaging narratives in games. This prototype will serve as a testbed for exploring the potential of LLM-driven dynamic storytelling within a simplified game environment.</p>
 </section>
 <section id="the-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Traditional game stories are often static and predictable, limiting player agency and immersion. LLMs offer the potential to generate dynamic narratives that react to player choices and create emergent gameplay experiences.</p>
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>The Minimal Viable Product (MVP) will focus on a single core gameplay loop centered around a traveling librarian who visits a new procedurally generated village each day. The player interacts with villagers, learns their needs and desires, and provides them with books to fulfill those needs.</p>
+<p><strong>Core Gameplay Loop:</strong></p>
+<ol type="1">
+<li><p><strong>Arrive in Village:</strong></p>
+<ul>
+<li>The LLM generates a village with a simple map and a few key locations (e.g., town square, tavern, character homes).</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pseudo-code for village generation</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_village():</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>     village <span class="op">=</span> {}</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>     village[<span class="st">'name'</span>] <span class="op">=</span> LLM.generate_village_name()</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>     village[<span class="st">'map'</span>] <span class="op">=</span> LLM.generate_map_layout()</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>     village[<span class="st">'locations'</span>] <span class="op">=</span> LLM.generate_locations(<span class="dv">3</span>)  <span class="co"># Generate 3 locations</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>     village[<span class="st">'characters'</span>] <span class="op">=</span> LLM.generate_characters(<span class="dv">3</span>) <span class="co"># Generate 3 characters</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>     <span class="cf">return</span> village</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Explore and Interact:</strong></p>
+<ul>
+<li>The player explores the village and interacts with characters through dialogue.</li>
+<li>Dialogue is dynamically generated by the LLM based on character backstories and player choices.</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pseudo-code for dialogue interaction</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> talk_to_character(character_id):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>     initial_dialogue <span class="op">=</span> LLM.generate_initial_dialogue(character_id)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>     display(initial_dialogue)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>     player_response <span class="op">=</span> get_player_input()</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>     <span class="cf">while</span> <span class="kw">not</span> end_conversation:</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>          response <span class="op">=</span> LLM.generate_response(character_id, player_response)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>          display(response)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>          player_response <span class="op">=</span> get_player_input()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Fulfill Needs with Books:</strong></p>
+<ul>
+<li>The player selects books from their inventory or purchases new ones to match character preferences.</li>
+<li>The LLM generates character needs and desires related to reading (e.g., favorite genres, desired knowledge).</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pseudo-code for fulfilling needs</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> give_book(character_id, book_title):</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>     character_reaction <span class="op">=</span> LLM.generate_reaction(character_id, book_title)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>     <span class="cf">if</span> character_reaction[<span class="st">'satisfied'</span>]:</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>          update_character_state(character_id, <span class="st">'satisfied'</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>          <span class="co"># Trigger potential story events or quests</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>     display(character_reaction[<span class="st">'dialogue'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+<p><strong>LLM Integration:</strong></p>
+<ul>
+<li><strong>World Generation:</strong> Creates unique villages, maps, and locations.</li>
+<li><strong>Character Development:</strong> Generates characters with backstories, desires, and reading preferences.</li>
+<li><strong>Dynamic Dialogue:</strong> Handles conversations, reacting to player choices and gifted books.</li>
+<li><strong>Catalog Generation:</strong> Creates a dynamic catalog of books with varying prices and rarities.</li>
+</ul>
+<p><strong>Content Verification:</strong></p>
+<ul>
+<li>A verifier monitors LLM output to ensure coherence, filter inappropriate content, and maintain consistency.</li>
+</ul>
+<p><strong>Goal-Task Planner Integration:</strong></p>
+<ul>
+<li><strong>Define predicates:</strong> The core predicates for this domain are:
+<ul>
+<li><code>at(item, location)</code>: Specifies the location of an item (book or character).</li>
+<li><code>has(character, item)</code>: Indicates a character possesses a specific item.</li>
+<li><code>satisfied(character)</code>: Denotes whether a character’s need is met.</li>
+</ul></li>
+<li><strong>Define operators:</strong> The actions in the game map to operators:
+<ul>
+<li><code>select_book(book)</code>: Adds a book to the player’s inventory.</li>
+<li><code>talk_to(character)</code>: Initiates dialogue with a character.</li>
+<li><code>give_book(character, book)</code>: Transfers a book to the character.</li>
+</ul></li>
+<li><strong>Define methods:</strong> Methods determine how to achieve goals:
+<ul>
+<li><code>satisfy_character(character)</code>: A method to fulfill a character’s need (using <code>give_book</code> if the player has the correct book).</li>
+</ul></li>
+<li><strong>State representation:</strong> The game state is a dictionary:
+<ul>
+<li><code>state.at</code>: Tracks locations of books and characters.</li>
+<li><code>state.has</code>: Tracks possession of books.</li>
+<li><code>state.satisfied</code>: Tracks character satisfaction.</li>
+</ul></li>
+</ul>
+<p><strong>Example Goal:</strong></p>
+<p>Instead of <code>character_satisfied</code>, a goal would be <code>satisfied(character_id)</code>.</p>
+<p>Example in GTPyhop style:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ... (previous code) ...</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the method</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> satisfy_character(state, character_id):</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>     <span class="cf">if</span> <span class="op">/*</span> condition to check <span class="cf">if</span> player has the right book <span class="cf">for</span> the character <span class="op">*/</span>:</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> [(<span class="st">'give_book'</span>, character_id, book_title)]</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>     <span class="cf">else</span>:</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>gtpyhop.declare_unigoal_methods(<span class="st">'satisfied'</span>, satisfy_character)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># ... (rest of the code) ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Key changes:</strong></p>
+<ul>
+<li>Goals are now predicate-subject-object triples.</li>
+<li>Actions are defined as operators.</li>
+<li>Methods are used to decompose goals into actions.</li>
+<li>The state is explicitly represented as a dictionary.</li>
+</ul>
+<p>By adhering to this structure, the prototype will effectively leverage the Goal-Task Planner for dynamic storytelling within the Wandering Librarian concept.</p>
 </section>
 <section id="the-benefits" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li><strong>Rapid Iteration:</strong> The simplified scope allows for quick testing and refinement of LLM-driven narratives.</li>
+<li><strong>Dynamic Storytelling:</strong> Creates emergent narratives and unpredictable gameplay experiences.</li>
+<li><strong>Exploration of LLM Capabilities:</strong> Provides valuable insights into using LLMs for interactive storytelling.</li>
+</ul>
 </section>
 <section id="the-downsides" class="level2">
 <h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li><strong>Limited Scope:</strong> The prototype focuses on a narrow aspect of gameplay.</li>
+<li><strong>LLM Unpredictability:</strong> Requires careful monitoring and content filtering to ensure quality and consistency.</li>
+</ul>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<ul>
+<li>Developing a full-fledged game with complex mechanics would be too time-consuming for initial exploration.</li>
+</ul>
 </section>
 <section id="the-infrequent-use-case" class="level2">
 <h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<ul>
+<li>While the core loop is designed for daily interaction, players may occasionally skip days or play less frequently. The LLM will need to handle these infrequent interactions seamlessly, potentially by adjusting the narrative or providing catch-up mechanisms.</li>
+</ul>
 </section>
 <section id="why-is-it-in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="why-is-it-in-core-and-done-by-us">Why is it in Core and done by us?</h2>
+<p>This project aligns with our core focus on innovative game development and exploring the use of LLMs in interactive narratives. It requires deep integration with our existing technology and understanding of our long-term goals.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+<p>Status: Draft</p>
 </section>
 <section id="decision-makers" class="level2">
 <h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
@@ -181,6 +334,12 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
 <li>V-Sekai</li>
+<li>LLM</li>
+<li>Prototype</li>
+<li>Procedural Generation</li>
+<li>Dynamic Narrative</li>
+<li>Books</li>
+<li>Librarian</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
