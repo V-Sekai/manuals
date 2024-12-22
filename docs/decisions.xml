@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.39</generator>
-<lastBuildDate>Sun, 22 Dec 2024 05:15:44 GMT</lastBuildDate>
+<lastBuildDate>Sun, 22 Dec 2024 07:04:09 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 22 Dec 2024 05:15:44 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 07:04:09 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -162,7 +162,114 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Sun, 22 Dec 2024 05:15:44 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 07:04:09 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20241221-wandering-bakery.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="draft-the-wandering-bakery---prototype" class="level2">
+<h2 class="anchored" data-anchor-id="draft-the-wandering-bakery---prototype">Draft: The Wandering Bakery - Prototype</h2>
+<section id="the-context" class="level3">
+<h3 class="anchored" data-anchor-id="the-context">The Context</h3>
+<p>We need a way to test if LLMs can create engaging narratives in games.</p>
+</section>
+<section id="the-problem-statement" class="level3">
+<h3 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h3>
+<p>Traditional game stories are often static and predictable.</p>
+</section>
+<section id="describe-how-your-proposal-will-work" class="level3">
+<h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work">Describe how your proposal will work</h3>
+<ul>
+<li>Minimal Viable Product (MVP): Focus on a single core gameplay loop:
+<ul>
+<li>One Town: A small village with a few key characters.</li>
+<li>Basic Needs: Characters have simple desires that can be fulfilled with basic pastries.</li>
+<li>Limited Recipes: A small set of recipes with clear emotional connections.</li>
+<li>Core Interaction: Dialogue with characters, baking, and observing reactions.</li>
+</ul></li>
+<li>AI Storyteller: An LLM will generate the town, characters, and basic dialogue, including:
+<ul>
+<li>World Generation: A simple map with a few key locations within the village.</li>
+<li>Character Development: A handful of characters with basic backstories and needs.</li>
+<li>Dynamic Dialogue: Simple dialogue variations based on player choices and actions.</li>
+</ul></li>
+<li>Content Verification: The Goal-Task Planner’s verifier will monitor and filter LLM output to ensure quality and consistency. This includes:
+<ul>
+<li>Coherence: Ensuring the generated content makes sense within the game’s context.</li>
+<li>Appropriateness: Filtering any inappropriate or offensive content.</li>
+<li>Consistency: Maintaining a consistent tone and style throughout the generated content.</li>
+</ul></li>
+<li>Goal-Task Planner Integration:
+<ul>
+<li>Domain: Define a <code>Domain</code> that encapsulates the game’s environment, actions, and goals.</li>
+<li>Actions: Define <code>actions</code> like <code>bake_pastry(pastry_type)</code>, <code>talk_to_character(character_id)</code>, <code>give_pastry(character_id, pastry_type)</code>.</li>
+<li>Goals: Define <code>goals</code> like <code>character_satisfied(character_id)</code>, <code>recipe_unlocked(recipe_id)</code>, <code>story_event_triggered(event_id)</code>.</li>
+<li>Tasks: Define <code>tasks</code> like <code>satisfy_character(character_id)</code>, <code>unlock_recipe(recipe_id)</code>, <code>trigger_story_event(event_id)</code>.</li>
+<li>Multigoal: Define <code>Multigoal</code> for complex scenarios requiring multiple sub-goals to be achieved.</li>
+<li>Planning: Utilize the <code>Plan.find_plan()</code> method to generate a sequence of actions to achieve the desired goals based on the current game state.</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-benefits" class="level3">
+<h3 class="anchored" data-anchor-id="the-benefits">The Benefits</h3>
+<ul>
+<li>Proof of Concept: Demonstrate the potential of LLM-driven narrative.</li>
+<li>Rapid Iteration: Quickly test and refine core mechanics.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level3">
+<h3 class="anchored" data-anchor-id="the-downsides">The Downsides</h3>
+<ul>
+<li>Limited Scope: The prototype will not represent the full vision.</li>
+<li>Potential for Unexpected Behavior: LLMs may require close monitoring.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level3">
+<h3 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h3>
+<p>A full-fledged game is too complex for an initial prototype.</p>
+</section>
+<section id="why-is-it-in-core-and-done-by-us" class="level3">
+<h3 class="anchored" data-anchor-id="why-is-it-in-core-and-done-by-us">Why is it in Core and done by us?</h3>
+<p>This aligns with our focus on innovative game development.</p>
+</section>
+<section id="status" class="level3">
+<h3 class="anchored" data-anchor-id="status">Status</h3>
+<p>Status: Draft</p>
+</section>
+<section id="decision-makers" class="level3">
+<h3 class="anchored" data-anchor-id="decision-makers">Decision Makers</h3>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="tags" class="level3">
+<h3 class="anchored" data-anchor-id="tags">Tags</h3>
+<ul>
+<li>V-Sekai</li>
+<li>LLM</li>
+<li>Prototype</li>
+</ul>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li><a href="https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B">NousResearch Hermes-2-Pro-Mistral-7B</a></li>
+<li><a href="https://github.com/V-Sekai/godot-task-goal-planner">V-Sekai Godot Task Goal Planner</a></li>
+</ul>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20241221-wandering-bakery.html</guid>
+  <pubDate>Sun, 22 Dec 2024 07:04:09 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -256,7 +363,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241220-discord-quest-3.html</guid>
-  <pubDate>Sun, 22 Dec 2024 05:15:44 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 07:04:09 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -451,7 +558,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241220-character-concept-art-creation.html</guid>
-  <pubDate>Sun, 22 Dec 2024 05:15:44 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 07:04:09 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -545,7 +652,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241219-unpack-fbx-udimms.html</guid>
-  <pubDate>Sun, 22 Dec 2024 05:15:44 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 07:04:09 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -653,7 +760,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241219-scriptable-sign.html</guid>
-  <pubDate>Sun, 22 Dec 2024 05:15:44 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 07:04:09 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -755,7 +862,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241218-will-o-wisp-proto-avatar.html</guid>
-  <pubDate>Sun, 22 Dec 2024 05:15:44 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 07:04:09 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1023,7 +1130,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241210-vsekai-charter.html</guid>
-  <pubDate>Sun, 22 Dec 2024 05:15:44 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 07:04:09 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1227,7 +1334,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241112-godot-animation-streaming.html</guid>
-  <pubDate>Sun, 22 Dec 2024 05:15:44 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 07:04:09 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1303,7 +1410,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241102-plan-november-2024.html</guid>
-  <pubDate>Sun, 22 Dec 2024 05:15:44 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 07:04:09 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1384,7 +1491,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241028-use-data-tables-for-godot-constraints.html</guid>
-  <pubDate>Sun, 22 Dec 2024 05:15:44 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 07:04:09 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1487,7 +1594,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241019-reduce-size-difference-between-capsules-and-mesh-volume.html</guid>
-  <pubDate>Sun, 22 Dec 2024 05:15:44 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 07:04:09 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1581,7 +1688,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241016-instantiating-v-sekai-content.html</guid>
-  <pubDate>Sun, 22 Dec 2024 05:15:44 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 07:04:09 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1732,7 +1839,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-xr-interface-for-rigging.html</guid>
-  <pubDate>Sun, 22 Dec 2024 05:15:44 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 07:04:09 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1833,7 +1940,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-basic-realtime-interaction.html</guid>
-  <pubDate>Sun, 22 Dec 2024 05:15:44 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 07:04:09 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1936,7 +2043,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-app-updater.html</guid>
-  <pubDate>Sun, 22 Dec 2024 05:15:44 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 07:04:09 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2066,7 +2173,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241011-recovering-makehuman-parameters.html</guid>
-  <pubDate>Sun, 22 Dec 2024 05:15:44 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 07:04:09 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2152,7 +2259,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241006-restore-onedrive-shortcut-overrides.html</guid>
-  <pubDate>Sun, 22 Dec 2024 05:15:44 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 07:04:09 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2235,110 +2342,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241001-small-game-tools.html</guid>
-  <pubDate>Sun, 22 Dec 2024 05:15:44 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20240914-godot-engine-xr-elite-conference-setup.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="accepted-godot-engine-xr-elite-hmd-conference-setup" class="level1">
-<h1>Accepted: Godot Engine XR Elite HMD Conference Setup</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>Fire, an independent developer previously contracted with the Godot Foundation, plans to demonstrate the capabilities of the Godot Engine XR Team’s work on the VIVE headset at an upcoming conference. This setup is crucial for showcasing advanced VR features using the XR Elite Headset.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Setting up a reliable and efficient demonstration environment for the XR Elite Headset at a conference can be challenging due to potential network issues and hardware integration complexities.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>The proposed setup involves several components to ensure a stable and high-performance demonstration:</p>
-<ol type="1">
-<li><p><strong>Hardware Connection</strong>:</p>
-<ul>
-<li>Connect the XR Elite Headset to a USB-C hub.</li>
-<li>Attach the Vive Ultimate Tracker dongle and a Belkin USB-C to Gigabit Ethernet Adapter to the hub.</li>
-</ul></li>
-<li><p><strong>Network Configuration</strong>:</p>
-<ul>
-<li>Use a wired ethernet connection to avoid Wi-Fi instability common in conference venues.</li>
-<li>Set a fixed IP address for the VIVE Business Streaming server using the VBSIpSetting.exe tool.</li>
-</ul></li>
-<li><p><strong>Software Setup</strong>:</p>
-<ul>
-<li>Ensure the business streaming server has a physical display connected to prevent the SteamVR overlay issue.</li>
-<li>Run SteamVR for VR demonstrations.</li>
-</ul></li>
-<li><p><strong>Additional Stability Measures</strong>:</p>
-<ul>
-<li>Disable Wi-Fi on the XR Elite Headset to rely solely on the wired connection.</li>
-<li>Consider using a gigabit travel router/switch to manage and shorten routing internally at the venue.</li>
-</ul></li>
-</ol>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<ul>
-<li><strong>Reliability</strong>: Wired connections reduce the risk of connectivity issues during live demonstrations.</li>
-<li><strong>Performance</strong>: Direct network connections and optimized settings ensure smooth operation of VR applications.</li>
-<li><strong>Professional Presentation</strong>: A stable setup reflects well on the Godot Engine project and its capabilities in VR.</li>
-</ul>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<ul>
-<li><strong>Complexity</strong>: The setup requires careful configuration and might be daunting for less technical users.</li>
-<li><strong>Equipment Dependency</strong>: Relies on specific hardware and software that may not be readily available at all venues.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Alternative simpler setups were considered but rejected due to their reliance on less stable wireless connections which could compromise the demonstration’s effectiveness.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>In cases where a direct internet connection is unavailable, additional configurations like mobile routers or other networking equipment might be necessary.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>This proposal aligns with our core mission to showcase the best of Godot Engine’s VR capabilities and will be implemented by fire with support from the V-Sekai development team.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20240914-godot-engine-xr-elite-conference-setup.html</guid>
-  <pubDate>Sun, 22 Dec 2024 05:15:44 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 07:04:09 GMT</pubDate>
 </item>
 </channel>
 </rss>
