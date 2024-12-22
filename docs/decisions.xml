@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.39</generator>
-<lastBuildDate>Sun, 22 Dec 2024 07:11:27 GMT</lastBuildDate>
+<lastBuildDate>Sun, 22 Dec 2024 17:45:35 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 22 Dec 2024 07:11:27 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 17:45:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -162,7 +162,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Sun, 22 Dec 2024 07:11:27 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 17:45:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -184,26 +184,54 @@
 </section>
 <section id="describe-how-your-proposal-will-work" class="level3">
 <h3 class="anchored" data-anchor-id="describe-how-your-proposal-will-work">Describe how your proposal will work</h3>
-<p>The Minimal Viable Product (MVP) will focus on a single core gameplay loop. It will feature one town, a small village with a few key characters. Characters will have simple desires that can be fulfilled with basic pastries, and there will be a limited set of recipes with clear emotional connections. The core interaction will involve dialogue with characters, baking, and observing reactions.</p>
-<p>An AI Storyteller, powered by an LLM, will generate the town, characters, and basic dialogue. This includes world generation with a simple map and a few key locations within the village, character development with basic backstories and needs, and dynamic dialogue with simple variations based on player choices and actions.</p>
-<p>Content verification will be handled by the Goal-Task Planner’s verifier, which will monitor and filter LLM output to ensure quality and consistency. This includes ensuring coherence within the game’s context, filtering inappropriate or offensive content, and maintaining a consistent tone and style throughout the generated content.</p>
-<p>The Goal-Task Planner integration will involve defining a <code>Domain</code> that encapsulates the game’s environment, actions, and goals. Actions will include tasks like <code>bake_pastry(pastry_type)</code>, <code>talk_to_character(character_id)</code>, and <code>give_pastry(character_id, pastry_type)</code>. Goals will include objectives like <code>character_satisfied(character_id)</code>, <code>recipe_unlocked(recipe_id)</code>, and <code>story_event_triggered(event_id)</code>. Tasks will involve actions such as <code>satisfy_character(character_id)</code>, <code>unlock_recipe(recipe_id)</code>, and <code>trigger_story_event(event_id)</code>. For complex scenarios requiring multiple sub-goals to be achieved, a <code>Multigoal</code> will be defined. The <code>Plan.find_plan()</code> method will be utilized to generate a sequence of actions to achieve the desired goals based on the current game state.</p>
+<p>The Minimal Viable Product (MVP) will focus on a single core gameplay loop centered around a traveling bakery. Each day, the player will arrive in a new procedurally generated village with a few key characters. These characters will have simple desires and backstories that can be discovered through dialogue and fulfilled with baked goods.</p>
+<p>The core gameplay loop involves:</p>
+<ol type="1">
+<li><strong>Exploration:</strong> Arriving in a new village and exploring its map, which includes key locations like a town square, a well, or a character’s home.</li>
+<li><strong>Dialogue:</strong> Engaging in conversations with characters to uncover their needs, desires, and backstories.</li>
+<li><strong>Baking:</strong> Utilizing a recipe book and available ingredients to bake pastries with specific emotional connections (e.g., a comforting cookie, a celebratory cake). This includes managing a simple inventory and potentially purchasing ingredients.</li>
+<li><strong>Observation:</strong> Delivering pastries to characters and observing their reactions, which can range from simple dialogue changes to triggering new quests or story events.</li>
+</ol>
+<p><strong>LLM Integration:</strong></p>
+<p>An AI Storyteller, powered by an LLM, will dynamically generate the following:</p>
+<ul>
+<li><strong>World Generation:</strong> Creating a unique village each day with a simple map and a few key locations.</li>
+<li><strong>Character Development:</strong> Generating characters with basic backstories, needs, and desires. This includes a daily “special customer” with a unique and more complex need.</li>
+<li><strong>Dynamic Dialogue:</strong> Creating branching conversations that respond to player choices and actions, including variations based on gifted pastries and the character’s emotional state.</li>
+<li><strong>Menu Generation:</strong> Creating a menu with dynamic pricing based on ingredient scarcity and village economy.</li>
+</ul>
+<p><strong>Content Verification:</strong></p>
+<p>The Goal-Task Planner’s verifier will monitor and filter LLM output to ensure quality and consistency. This includes:</p>
+<ul>
+<li>Ensuring coherence within the game’s context.</li>
+<li>Filtering inappropriate or offensive content.</li>
+<li>Maintaining a consistent tone and style.</li>
+</ul>
+<p><strong>Goal-Task Planner Integration:</strong></p>
+<p>The Goal-Task Planner will define a <code>Domain</code> with actions, goals, and tasks:</p>
+<ul>
+<li><strong>Actions:</strong> <code>bake_pastry(pastry_type)</code>, <code>talk_to_character(character_id)</code>, <code>give_pastry(character_id, pastry_type)</code>, <code>buy_ingredients(ingredient_type, amount)</code>, <code>explore_location(location_id)</code>.</li>
+<li><strong>Goals:</strong> <code>character_satisfied(character_id)</code>, <code>recipe_unlocked(recipe_id)</code>, <code>story_event_triggered(event_id)</code>, <code>daily_special_fulfilled</code>, <code>earn_minimum_coins</code>.</li>
+<li><strong>Tasks:</strong> <code>satisfy_character(character_id)</code>, <code>unlock_recipe(recipe_id)</code>, <code>trigger_story_event(event_id)</code>, <code>fulfill_special_request</code>, <code>sell_pastries</code>.</li>
+<li><strong>Multigoal:</strong> For complex scenarios, like satisfying the daily special customer, a <code>Multigoal</code> will define the necessary sub-goals.</li>
+</ul>
+<p>The <code>Plan.find_plan()</code> method will generate a sequence of actions to achieve the desired goals.</p>
 </section>
 <section id="the-benefits" class="level3">
 <h3 class="anchored" data-anchor-id="the-benefits">The Benefits</h3>
-<p>This prototype will serve as a proof of concept, demonstrating the potential of LLM-driven narrative and allowing for rapid iteration to quickly test and refine core mechanics.</p>
+<p>This prototype allows for rapid iteration and testing of LLM-driven narrative generation in a contained environment. It demonstrates the potential for dynamic storytelling and emergent gameplay.</p>
 </section>
 <section id="the-downsides" class="level3">
 <h3 class="anchored" data-anchor-id="the-downsides">The Downsides</h3>
-<p>The prototype will have a limited scope and will not represent the full vision. There is also potential for unexpected behavior, requiring close monitoring of the LLMs.</p>
+<p>The prototype will have a limited scope. LLM behavior can be unpredictable, requiring close monitoring.</p>
 </section>
 <section id="the-road-not-taken" class="level3">
 <h3 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h3>
-<p>A full-fledged game is too complex for an initial prototype.</p>
+<p>A full-fledged game is too complex for an initial prototype. Starting with a simpler, focused experience allows for faster iteration and learning.</p>
 </section>
 <section id="why-is-it-in-core-and-done-by-us" class="level3">
 <h3 class="anchored" data-anchor-id="why-is-it-in-core-and-done-by-us">Why is it in Core and done by us?</h3>
-<p>This aligns with our focus on innovative game development.</p>
+<p>This aligns with our focus on innovative game development and exploring the use of LLMs in interactive narratives.</p>
 </section>
 <section id="status" class="level3">
 <h3 class="anchored" data-anchor-id="status">Status</h3>
@@ -215,7 +243,7 @@
 </section>
 <section id="tags" class="level3">
 <h3 class="anchored" data-anchor-id="tags">Tags</h3>
-<p>V-Sekai, LLM, Prototype.</p>
+<p>V-Sekai, LLM, Prototype, Procedural Generation, Dynamic Narrative.</p>
 </section>
 <section id="references" class="level3">
 <h3 class="anchored" data-anchor-id="references">References</h3>
@@ -236,7 +264,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241221-wandering-bakery.html</guid>
-  <pubDate>Sun, 22 Dec 2024 07:11:27 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 17:45:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -330,7 +358,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241220-discord-quest-3.html</guid>
-  <pubDate>Sun, 22 Dec 2024 07:11:27 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 17:45:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -525,7 +553,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241220-character-concept-art-creation.html</guid>
-  <pubDate>Sun, 22 Dec 2024 07:11:27 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 17:45:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -619,7 +647,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241219-unpack-fbx-udimms.html</guid>
-  <pubDate>Sun, 22 Dec 2024 07:11:27 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 17:45:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -727,7 +755,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241219-scriptable-sign.html</guid>
-  <pubDate>Sun, 22 Dec 2024 07:11:27 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 17:45:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -829,7 +857,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241218-will-o-wisp-proto-avatar.html</guid>
-  <pubDate>Sun, 22 Dec 2024 07:11:27 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 17:45:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1097,7 +1125,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241210-vsekai-charter.html</guid>
-  <pubDate>Sun, 22 Dec 2024 07:11:27 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 17:45:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1301,7 +1329,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241112-godot-animation-streaming.html</guid>
-  <pubDate>Sun, 22 Dec 2024 07:11:27 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 17:45:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1377,7 +1405,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241102-plan-november-2024.html</guid>
-  <pubDate>Sun, 22 Dec 2024 07:11:27 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 17:45:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1458,7 +1486,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241028-use-data-tables-for-godot-constraints.html</guid>
-  <pubDate>Sun, 22 Dec 2024 07:11:27 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 17:45:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1561,7 +1589,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241019-reduce-size-difference-between-capsules-and-mesh-volume.html</guid>
-  <pubDate>Sun, 22 Dec 2024 07:11:27 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 17:45:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1655,7 +1683,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241016-instantiating-v-sekai-content.html</guid>
-  <pubDate>Sun, 22 Dec 2024 07:11:27 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 17:45:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1806,7 +1834,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-xr-interface-for-rigging.html</guid>
-  <pubDate>Sun, 22 Dec 2024 07:11:27 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 17:45:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1907,7 +1935,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-basic-realtime-interaction.html</guid>
-  <pubDate>Sun, 22 Dec 2024 07:11:27 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 17:45:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2010,7 +2038,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-app-updater.html</guid>
-  <pubDate>Sun, 22 Dec 2024 07:11:27 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 17:45:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2140,7 +2168,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241011-recovering-makehuman-parameters.html</guid>
-  <pubDate>Sun, 22 Dec 2024 07:11:27 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 17:45:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2226,7 +2254,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241006-restore-onedrive-shortcut-overrides.html</guid>
-  <pubDate>Sun, 22 Dec 2024 07:11:27 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 17:45:35 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2309,7 +2337,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241001-small-game-tools.html</guid>
-  <pubDate>Sun, 22 Dec 2024 07:11:27 GMT</pubDate>
+  <pubDate>Sun, 22 Dec 2024 17:45:35 GMT</pubDate>
 </item>
 </channel>
 </rss>
