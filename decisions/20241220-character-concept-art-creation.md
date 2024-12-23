@@ -30,10 +30,11 @@ Easy Diffusion provides a user-friendly interface for Stable Diffusion. We will 
 
 - Set the width and height to 1024 pixels.
 
-### 3. Image Editing with Windows 11 Tools
+### 3. Image Editing with Krita
 
-- **Background Removal:** Utilize the built-in background removal tool in Windows 11's Paint app to isolate the character from the generated image. This creates a transparent background, crucial for sprite creation.
-- **Refinement (Optional):** Use other tools in Paint, like the selection tools and eraser, for further refinement if needed.
+- **Background Removal:** Use Krita's Magic Wand tool to select and delete the background, isolating the character from the generated image. This creates a transparent background, crucial for sprite creation.
+- **Refinement (Optional):** Utilize other tools in Krita, like the selection tools and eraser, for further refinement if needed.
+
 
 ### 4. Sprite Creation with Shoebox
 
