@@ -135,5 +135,4 @@ Status: Draft
 7.  [Easy Diffusion](https://easydiffusion.github.io/)
 8.  [Windows Subsystem for Linux Documentation](https://docs.microsoft.com/en-us/windows/wsl/)
 9.  [Shoebox](https://renderhjs.net/shoebox/)
-10. [clarity-refiners-ui](https://github.com/pinokiofactory/clarity-refiners-ui)
 11. [Project-Babble/ProjectBabble](https://github.com/Project-Babble/ProjectBabble)
