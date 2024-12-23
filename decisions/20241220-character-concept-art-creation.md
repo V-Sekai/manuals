@@ -21,6 +21,7 @@ Easy Diffusion provides a user-friendly interface for Stable Diffusion. We will 
 - Use 3.5 engine
 - Download the FLUX model and necessary LoRAs (CharacterDesign-FluxV2).
 - Configure Easy Diffusion with the FLUX model and LoRAs.
+- On setttings reload remember to force the random seed option.
 
 [concept_prompt.json](attachments/FLUX_Girl_Fantasy_01.json)
 
