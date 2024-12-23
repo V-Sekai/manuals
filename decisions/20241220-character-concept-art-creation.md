@@ -22,7 +22,7 @@ Easy Diffusion provides a user-friendly interface for Stable Diffusion. We will 
 - Download the FLUX model and necessary LoRAs (CharacterDesign-FluxV2).
 - Configure Easy Diffusion with the FLUX model and LoRAs.
 
-[concept_prompt.json](attachments/concept_prompt.json)
+[concept_prompt.json](attachments/FLUX_Girl_Fantasy_01.json)
 
 ### 2. Optimized Prompting in Easy Diffusion
 
