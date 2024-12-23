@@ -17,6 +17,8 @@ This proposal outlines a workflow using Easy Diffusion for generating concept ar
 Easy Diffusion provides a user-friendly interface for Stable Diffusion. We will use it with the FLUX model for generating character concepts.
 
 - Install Easy Diffusion.
+- Use Beta
+- Use 3.5 engine
 - Download the FLUX model and necessary LoRAs (CharacterDesign-FluxV2).
 - Configure Easy Diffusion with the FLUX model and LoRAs.
 
