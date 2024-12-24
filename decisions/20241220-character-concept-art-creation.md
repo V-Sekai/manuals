@@ -21,7 +21,7 @@ Easy Diffusion provides a user-friendly interface for Stable Diffusion. We will 
 - Use 3.5 engine
 - Download the FLUX model and necessary LoRAs (CharacterDesign-FluxV2).
 - Configure Easy Diffusion with the FLUX model and LoRAs.
-- On setttings reload remember to force the random seed option.
+- On settings reload remember to force the random seed option.
 
 [concept_prompt.json](attachments/FLUX_Girl_Fantasy_01.json)
 
@@ -34,15 +34,16 @@ Easy Diffusion provides a user-friendly interface for Stable Diffusion. We will 
 ### 3. Image Editing with Krita
 
 - **Background Removal:** Use Krita's Magic Wand tool to select and delete the background, isolating the character from the generated image. This creates a transparent background, crucial for sprite creation.
+- **Face Erasure:** Use Krita's brush tools to carefully erase the eyebrows, nose, and mouth. You can use a combination of the Eraser tool and the Brush tool with a skin-tone color to blend seamlessly.
 - **Refinement (Optional):** Utilize other tools in Krita, like the selection tools and eraser, for further refinement if needed.
 
 ### 4. Sprite Creation with Shoebox
 
 Shoebox (https://renderhjs.net/shoebox/) is a free online tool for creating sprite sheets.
 
-- Upload the alpha'd image from Paint to Shoebox.
+- Upload the alpha'd image from Krita to Shoebox.
 - Utilize Shoebox's features to cut the image into individual sprites.
-- Keep only the sprites that are in different views but in the same consistent 3d shape.
+- Keep only the sprites that are in different views but in the same consistent 3D shape.
 
 ### 5. TRELLIS Setup and Execution (Optional)
 
@@ -67,10 +68,11 @@ The process emphasizes iterative refinement of the prompt based on results from 
 1.  **Define Core Concept:** Establish the character's essential characteristics.
 2.  **Craft Optimized Prompt:** Create a concise, descriptive prompt using Easy Diffusion.
 3.  **Generate and Evaluate:** Produce images and assess their suitability.
-4.  **Remove Background:** Use Windows 11's Paint app to remove the background.
-5.  **Create Sprites:** Utilize Shoebox to generate sprites from the alpha'd image.
-6.  **(Optional) 3D Conversion:** Utilize TRELLIS to generate 3D models.
-7.  **Iterate and Refine:** Adjust the prompt based on the evaluation.
+4.  **Remove Background:** Use Krita to remove the background.
+5.  **Erase Face:** Use Krita to erase the facial features (eyebrows, nose, mouth).
+6.  **Create Sprites:** Utilize Shoebox to generate sprites from the alpha'd image.
+7.  **(Optional) 3D Conversion:** Utilize TRELLIS to generate 3D models.
+8.  **Iterate and Refine:** Adjust the prompt based on the evaluation.
 
 ## The Benefits
 
@@ -135,4 +137,4 @@ Status: Draft
 7.  [Easy Diffusion](https://easydiffusion.github.io/)
 8.  [Windows Subsystem for Linux Documentation](https://docs.microsoft.com/en-us/windows/wsl/)
 9.  [Shoebox](https://renderhjs.net/shoebox/)
-11. [Project-Babble/ProjectBabble](https://github.com/Project-Babble/ProjectBabble)
+10. [Project-Babble/ProjectBabble](https://github.com/Project-Babble/ProjectBabble)
