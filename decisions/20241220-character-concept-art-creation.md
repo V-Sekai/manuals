@@ -35,6 +35,13 @@ Easy Diffusion provides a user-friendly interface for Stable Diffusion. We will 
 
 - **Background Removal:** Use Krita's Magic Wand tool to select and delete the background, isolating the character from the generated image. This creates a transparent background, crucial for sprite creation.
 - **Face Erasure:** Use Krita's brush tools to carefully erase the eyebrows, nose, and mouth. You can use a combination of the Eraser tool and the Brush tool with a skin-tone color to blend seamlessly.
+
+  **Reasoning for Face Erasure:**
+
+  - **Focus on Form:** It helps emphasize the character's overall shape, silhouette, and clothing design without getting distracted by facial features.
+  - **Flexibility for Later:** It allows for more freedom when creating the actual face in the 3D modeling stage, providing a blank canvas for the artist.
+  - **Avoiding Uncanny Valley:** Sometimes AI-generated faces can fall into the "uncanny valley," appearing slightly off-putting. Erasing the face avoids this issue.
+
 - **Refinement (Optional):** Utilize other tools in Krita, like the selection tools and eraser, for further refinement if needed.
 
 ### 4. Sprite Creation with Shoebox
