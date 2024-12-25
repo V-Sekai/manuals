@@ -33,7 +33,7 @@ Easy Diffusion provides a user-friendly interface for Stable Diffusion. We will 
 
 ### 3. Image Editing with Krita
 
-- **Background Removal:** Use Krita's Magic Wand tool with a feather of 1px to select the main part of the image (the character). Then, inverse the selection and delete the rest, isolating the character from the generated image. This creates a transparent background, crucial for 3d model creation.
+- **Background Removal:** Use Krita's Magic Wand tool with a feather of 2px to select the main part of the image (the character). Then, inverse the selection and delete the rest, isolating the character from the generated image. This creates a transparent background, crucial for 3d model creation.
 - **Face Erasure:** Use Krita's brush tools to carefully erase the eyebrows, nose, and mouth. You can use a combination of the Eraser tool and the Brush tool with a skin-tone color to blend seamlessly.
 
   **Reasoning for Face Erasure:**
