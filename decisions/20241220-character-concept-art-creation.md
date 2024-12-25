@@ -47,8 +47,6 @@ Easy Diffusion provides a user-friendly interface for Stable Diffusion. We will 
 
 - **Refinement (Optional):** Utilize other tools in Krita, like the selection tools and eraser, for further refinement if needed.
 
-- **Restore Background:** After erasing the face, restore the background to its original state to maintain the integrity of the image for further processing.
-
 ### 4. Sprite Creation with Shoebox
 
 Shoebox (https://renderhjs.net/shoebox/) is a free online tool for creating sprite sheets.
