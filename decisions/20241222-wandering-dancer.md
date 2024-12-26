@@ -165,6 +165,6 @@ Status: Draft
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
-3. [GTPyhop Documentation]: (Add a link to relevant GTPyhop documentation if available)
+3. [GTPyhop Documentation](https://github.com/dananau/GTPyhop)
 
 AI assistant Aria assisted with this article.
