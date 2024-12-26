@@ -84,6 +84,26 @@ The process emphasizes iterative refinement of the prompt based on results from 
 7.  **(Optional) 3D Conversion:** Utilize TRELLIS to generate 3D models.
 8.  **Iterate and Refine:** Adjust the prompt based on the evaluation.
 
+## Checklist
+
+- [ ] Install Easy Diffusion.
+- [ ] Use Beta.
+- [ ] Use 3.5 engine.
+- [ ] Download the FLUX model and necessary LoRAs (CharacterDesign-FluxV2).
+- [ ] Configure Easy Diffusion with the FLUX model and LoRAs.
+- [ ] Set the width and height to 1024 pixels in Easy Diffusion.
+- [ ] Use Krita's Magic Wand tool to remove the background.
+- [ ] Use Krita's brush tools to erase the eyebrows, nose, and mouth.
+- [ ] Upload the alpha'd image to Shoebox.
+- [ ] Use Shoebox to create sprites.
+- [ ] Ensure the avatar can generate all 5 fingers.
+- [ ] Ensure the avatar is in an A-pose.
+- [ ] (Optional) Install Docker Desktop.
+- [ ] (Optional) Install WSL2 with a compatible Linux distribution.
+- [ ] (Optional) Configure Docker Desktop to utilize the WSL2 backend.
+- [ ] (Optional) Ensure GPU access is enabled within WSL2.
+- [ ] (Optional) Execute TRELLIS within WSL2.
+
 ## The Benefits
 
 - **Simplified Workflow:** Streamlines concept art and sprite creation using accessible tools.
