@@ -7,7 +7,7 @@
 
 ## [Released]
 
-- Not applicable for this month.
+- Made a v0.0.3 release to iree.gd https://github.com/iree-gd/iree.gd/releases/tag/v0.0.3
 
 ## [Unreleased]
 
