@@ -84,25 +84,42 @@ The process emphasizes iterative refinement of the prompt based on results from 
 7.  **(Optional) 3D Conversion:** Utilize TRELLIS to generate 3D models.
 8.  **Iterate and Refine:** Adjust the prompt based on the evaluation.
 
-## Checklist
+## Checklist for A-Pose Avatar Creation from Concept Art
 
-- [ ] Install Easy Diffusion.
-- [ ] Use Beta.
-- [ ] Use 3.5 engine.
-- [ ] Download the FLUX model and necessary LoRAs (CharacterDesign-FluxV2).
-- [ ] Configure Easy Diffusion with the FLUX model and LoRAs.
-- [ ] Set the width and height to 1024 pixels in Easy Diffusion.
-- [ ] Use Krita's Magic Wand tool to remove the background.
-- [ ] Use Krita's brush tools to erase the eyebrows, nose, and mouth.
-- [ ] Upload the alpha'd image to Shoebox.
-- [ ] Use Shoebox to create sprites.
-- [ ] Ensure the avatar can generate all 5 fingers.
-- [ ] Ensure the avatar is in an A-pose.
-- [ ] (Optional) Install Docker Desktop.
-- [ ] (Optional) Install WSL2 with a compatible Linux distribution.
-- [ ] (Optional) Configure Docker Desktop to utilize the WSL2 backend.
-- [ ] (Optional) Ensure GPU access is enabled within WSL2.
-- [ ] (Optional) Execute TRELLIS within WSL2.
+**1. Image Generation and Preparation**
+
+- [ ] **Install Easy Diffusion:** This will be your primary AI art generation tool.
+- [ ] **Use Beta and 3.5 Engine:** Ensure you're using the latest version of Easy Diffusion with the most up-to-date Stable Diffusion engine.
+- [ ] **Download FLUX Model and LoRAs:** Get the FLUX model and the CharacterDesign-FluxV2 LoRA for optimal character generation.
+- [ ] **Configure Easy Diffusion:** Set up Easy Diffusion with the FLUX model, LoRAs, and 2048x1024 pixel resolution.
+- [ ] **Generate A-Pose Image:** Use prompts in Easy Diffusion that specifically emphasize a clear A-pose with the palms facing forward or slightly angled outwards. Include details like:
+  - "A-pose"
+  - "palms facing forward" (or "slightly outwards")
+  - "symmetrical pose"
+  - "well-defined hands"
+  - Any specific style or details from your concept art
+- [ ] **Refine in Krita:**
+  - Use the Magic Wand tool to remove the background.
+  - Use brush tools to clean up any artifacts or unwanted details. Pay close attention to the hands and fingers.
+
+**2. Sprite Creation and Rigging**
+
+- [ ] **Upload to Shoebox:** Import the cleaned image into Shoebox.
+- [ ] **Generate Sprites:** Use Shoebox to create sprites from your image.
+- [ ] **Verify Finger Generation:** Ensure all 5 fingers are clearly generated and separated in the sprites.
+- [ ] **Confirm A-Pose:** Double-check that the avatar maintains a perfect A-pose throughout the sprite generation process.
+
+**3. Advanced Setup (Optional)**
+
+- [ ] **Install Docker Desktop, WSL2, and Configure:** If you need more advanced features or prefer a Linux environment, consider setting up Docker Desktop with WSL2.
+- [ ] **Execute TRELLIS in WSL2:** TRELLIS can potentially offer more advanced rigging options if needed.
+
+**Important Notes for Palm and A-Pose:**
+
+- **Prompt Engineering:** Carefully craft your prompts in Easy Diffusion to get the desired A-pose and hand orientation. Experiment with different keywords and phrases.
+- **Iteration:** You might need to generate multiple images and refine them in Krita until you achieve a perfect A-pose with well-defined palms and fingers.
+- **Shoebox Settings:** Explore Shoebox's settings to fine-tune sprite generation and ensure it preserves the A-pose and hand details.
+- **Alternative Tools:** If Shoebox doesn't meet your needs, consider other sprite generation or 3D modeling tools that might offer more control over rigging and posing.
 
 ## The Benefits
 
