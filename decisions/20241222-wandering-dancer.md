@@ -2,15 +2,15 @@
 
 ## The Context
 
-We need a way to test if LLMs can create engaging narratives in games, particularly focusing on emotional expression and non-verbal communication. This prototype explores the potential of LLM-driven dynamic storytelling through dance and movement within a simplified game environment.
+We need a way to test whether LLMs can create engaging narratives in games, particularly those that focus on emotional expression and nonverbal communication. This prototype explores the potential of LLM-driven dynamic storytelling through dance and movement within a simplified game environment.
 
 ## The Problem Statement
 
-Traditional game narratives often rely heavily on dialogue and explicit storytelling, potentially limiting player expression and emotional engagement. LLMs can enable new forms of interactive storytelling that tap into the nuances of body language and physical expression.
+Traditional game narratives rely heavily on dialogue and explicit storytelling, potentially limiting player expression and emotional engagement. LLMs can enable new forms of interactive storytelling that tap into the nuances of body language and physical expression.
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
-The Minimal Viable Product (MVP) will center around a traveling dancer who visits a new procedurally generated village each day. The player observes villagers, interprets their emotions and social dynamics through their dances and movements, and then creates dances to interact and influence their emotional states.
+The minimal viable product (MVP) will center around a traveling dancer who visits a new procedurally generated village each day. The player observes the villagers, interprets their emotions and social dynamics through their dances and movements, and then creates dances to interact with them and influence their emotional states.
 
 **Core Gameplay Loop:**
 
@@ -46,7 +46,7 @@ The Minimal Viable Product (MVP) will center around a traveling dancer who visit
 
 3. **Interpret and Respond:**
 
-   - Using a simplified dance creation tool, the player interprets the observed dances and creates their own movements in response, expressing empathy, offering support, or joining in celebrations. The LLM can provide suggestions.
+   - Using a simplified dance creation tool, the player interprets the observed dances and creates their movements in response, expressing empathy, offering support, or joining in celebrations. The LLM can provide suggestions.
 
    ```python
    # Pseudo-code for dance creation (with LLM suggestions)
@@ -56,13 +56,13 @@ The Minimal Viable Product (MVP) will center around a traveling dancer who visit
            move = get_player_input() # From dance creation tool
            dance.append(move)
            LLM_suggestion = LLM.suggest_dance_move(dance, village['culture'])
-           display(LLM_suggestion) # e.g., "Consider a move that expresses joy"
+           display(LLM_suggestion) #, e.g., "Consider a move that expresses joy."
        return dance
    ```
 
 4. **Observe Reactions:**
 
-   - The villagers react to the player's dance, expressing their emotions through new dances, dialogue, or changes in their behavior, potentially revealing hidden stories or altering social dynamics. The LLM generates these reactions.
+   - The villagers react to the player's dance, expressing their emotions through new dances, dialogue, or changes in their behaviour, potentially revealing hidden stories or altering social dynamics. The LLM generates these reactions.
 
    ```python
    # Pseudo-code for observing reactions (using LLM)
@@ -92,12 +92,12 @@ The LLM plays a crucial role in:
 
 **Goal-Task Planner Integration (GTPyhop Style):**
 
-To further enhance the dynamic narrative, we'll integrate a Goal-Task Planner based on the GTPyhop framework. This will allow for more structured reasoning and planning within the LLM-driven story.
+We'll integrate a Goal-Task Planner based on the GTPyhop framework to further enhance the dynamic narrative. This will allow for more structured reasoning and planning within the LLM-driven story.
 
 - **Define predicates:**
   - `at(item, location)`: Specifies the location of an item (character).
   - `knows_dance(character, dance_style)`: Indicates if a character knows a particular dance style.
-  - `emotion(character, emotion_type)`: Describes the emotional state of a character.
+  - `emotion(character, emotion_type)`: Describes a character's emotional state.
   - `relationship(character1, character2, relationship_type)`: Defines the relationship between two characters.
 - **Define operators:**
   - `move_to(location)`: Moves the player to a specific location.
@@ -115,9 +115,10 @@ To further enhance the dynamic narrative, we'll integrate a Goal-Task Planner ba
 
 ## The Benefits
 
-- **Exploration of Physical Expression:** Explores the use of dance and movement as a primary means of interaction and storytelling.
+Exploration of Physical Expression explores the use of dance and movement as a primary means of interaction and storytelling.
+
 - **Emotional Depth:** Focuses on creating emotionally resonant experiences through non-verbal communication and nuanced character interactions.
-- **Novel Gameplay Mechanics:** Potentially leads to unique gameplay mechanics centered around dance interpretation, creation, and emotional influence.
+- **Novel Gameplay Mechanics:** Potentially leads to unique gameplay mechanics centred around dance interpretation, creation, and emotional influence.
 - **Dynamic Storytelling with Planning:** Combining LLM-driven narrative with a planner like GTPyhop allows for more complex and engaging storylines.
 
 ## The Downsides
@@ -130,15 +131,15 @@ To further enhance the dynamic narrative, we'll integrate a Goal-Task Planner ba
 ## The Road Not Taken
 
 - Focusing on traditional dialogue-heavy narratives would not fully explore the potential of LLMs in generating dynamic, emotionally driven experiences through physical expression.
-- Using a simpler, non-planning-based approach to narrative generation could limit the complexity and depth of the emergent stories.
+- Using a more straightforward, non-planning-based approach to narrative generation could limit the complexity and depth of the emergent stories.
 
 ## The Infrequent Use Case
 
-- Players might visit villages infrequently. The LLM needs to handle this by adapting the narrative, potentially introducing time-related changes in the village, character relationships, and dance styles.
+- Players might visit villages infrequently. The LLM needs to handle this by adapting the narrative and potentially introducing time-related changes in the village, character relationships, and dance styles.
 
 ## Why is it in Core and done by us?
 
-This aligns with our focus on innovative game development and exploring the use of LLMs in interactive narratives. It requires deep integration with our game engine and understanding of our long-term goals for dynamic storytelling.
+This aligns with our focus on innovative game development and exploring the use of LLMs in interactive narratives. It requires deep integration with our game engine and an understanding our long-term goals for dynamic storytelling.
 
 ## Status
 
