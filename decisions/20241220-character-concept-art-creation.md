@@ -72,6 +72,7 @@ docker run -it -p 7860:7860 --gpus all registry.hf.space/jeffreyxiang-trellis:la
 ### 6. Iterative Refinement
 
 The process emphasizes iterative refinement of the prompt based on results from Shoebox or TRELLIS. This cyclical process ensures the generation of optimized concept art and sprites.
+
 ### Workflow
 
 1.  **Define Core Concept:** Establish the character's essential characteristics.
@@ -99,7 +100,7 @@ The process emphasizes iterative refinement of the prompt based on results from 
   - Any specific style or details from your concept art
 - [ ] **Refine in Krita:**
   - Use the Magic Wand tool to remove the background.
-  - Use the Grounded-SAM model to identify and remove facial features, then paint the area a solid color.
+  - Use the Grounded-SAM model to identify and remove facial features, then paint the area skin color.
   - Use brush tools to clean up any artifacts or unwanted details. Pay close attention to the hands and fingers.
 
 **2. Sprite Creation and Rigging**
