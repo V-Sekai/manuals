@@ -72,14 +72,13 @@ docker run -it -p 7860:7860 --gpus all registry.hf.space/jeffreyxiang-trellis:la
 ### 6. Iterative Refinement
 
 The process emphasizes iterative refinement of the prompt based on results from Shoebox or TRELLIS. This cyclical process ensures the generation of optimized concept art and sprites.
-
 ### Workflow
 
 1.  **Define Core Concept:** Establish the character's essential characteristics.
 2.  **Craft Optimized Prompt:** Create a concise, descriptive prompt using Easy Diffusion.
 3.  **Generate and Evaluate:** Produce images and assess their suitability.
 4.  **Remove Background:** Use Krita to remove the background.
-5.  **Erase Face:** Use Krita to erase the facial features (eyebrows, nose, mouth).
+5.  **Erase Face:** Use the Grounded-SAM model to identify and remove facial features (eyebrows, nose, mouth) and paint the area skin color.
 6.  **Create Sprites:** Utilize Shoebox to generate sprites from the alpha'd image.
 7.  **(Optional) 3D Conversion:** Utilize TRELLIS to generate 3D models.
 8.  **Iterate and Refine:** Adjust the prompt based on the evaluation.
@@ -100,6 +99,7 @@ The process emphasizes iterative refinement of the prompt based on results from 
   - Any specific style or details from your concept art
 - [ ] **Refine in Krita:**
   - Use the Magic Wand tool to remove the background.
+  - Use the Grounded-SAM model to identify and remove facial features, then paint the area a solid color.
   - Use brush tools to clean up any artifacts or unwanted details. Pay close attention to the hands and fingers.
 
 **2. Sprite Creation and Rigging**
@@ -186,3 +186,4 @@ Status: Draft
 9.  [Shoebox](https://renderhjs.net/shoebox/)
 10. [Creative Image Enhancer/Upscaler](https://github.com/pinokiofactory/clarity-refiners-ui)
 11. [Project-Babble/ProjectBabble](https://github.com/Project-Babble/ProjectBabble)
+12. [schananas/grounded_sam](https://replicate.com/schananas/grounded_sam)
