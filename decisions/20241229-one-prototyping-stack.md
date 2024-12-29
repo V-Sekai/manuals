@@ -47,28 +47,20 @@ graph LR
         H --> A
         I --> A
         J --> A
-
+        
         subgraph "Explorer"
             M[Alice] --> C
+            Q[Eve - Moderator] --> C
         end
         subgraph "Socializer"
             N[Bob] --> C
+            R[Frank - Moderator] --> C
         end
         subgraph "Builder"
             O[Charlie] --> B
-        end
-        subgraph "Explorer Moderator"
-            Q[Eve] --> D
-        end
-        subgraph "Socializer Moderator"
-            R[Frank] --> C
-        end
-        subgraph "Builder Moderator"
-            S[Grace] --> B
+            S[Grace - Moderator] --> B
         end
     end
-
-    style A fill:#f9f,stroke:#333,stroke-width:2px
 ```
 
 ### The Benefits
