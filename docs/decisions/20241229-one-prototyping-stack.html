@@ -203,21 +203,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This setup provides a foundation for rapid prototyping by automating the configuration of common components like user authentication and database integration.</p>
 <p>This approach allows developers to focus on Godot while incorporating Elixir and Phoenix for cloud needs within a consistent environment.</p>
 <pre class="mermaid"><code>graph LR
-    A[Godot Game Engine] --&gt; B(GDScript Scripting Language);
-    A --&gt; C(V-Sekai Integration);
-    A --&gt; D{Web Export Functionality};
-    D -- For web-based tools --&gt; E[User Interface];
-    A -.-&gt; F[Elixir/Phoenix Backend Framework];
-    F --&gt; G(PostgreSQL Database);
-    F --&gt; H{Authentication Service};
-    H -- Magic Link Strategy --&gt; A;
-    H -- OAuth 2.0 --&gt; J{OAuth Providers};
-    J -- GitHub Authentication Service --&gt; A;
-    J -- Google Authentication Service --&gt; A;
-    J -- Discord Authentication Service --&gt; A;
-    H -- Passkey Authentication Strategy --&gt; A;
-    F -- For communication with Godot --&gt; A;
-    K[Caddy Web Server/Reverse Proxy] --&gt; F;</code></pre>
+    subgraph "Shared Resources"
+        A[Godot Engine] --&gt; B(GDScript)
+        A --&gt; C{V-Sekai Integration}
+        C --&gt; D[Elixir/Phoenix]
+        D --&gt; E(PostgreSQL)
+        A --&gt; F{Authentication Service}
+        F --&gt; G[OAuth Providers]
+        G --&gt; H(Magic Link)
+        G --&gt; I(OAuth 2.0)
+        G --&gt; J(Passkey)
+        H --&gt; A
+        I --&gt; A
+        J --&gt; A
+    end
+
+    M[Emily - Explorer] --&gt; C
+    N[Liam - Socializer] --&gt; C
+    O[Sophia - Builder] --&gt; B
+    P[Alex - Moderator] --&gt; D
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px</code></pre>
 </section>
 <section id="the-benefits" class="level3">
 <h3 class="anchored" data-anchor-id="the-benefits">The Benefits</h3>

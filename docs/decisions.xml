@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.39</generator>
-<lastBuildDate>Sun, 29 Dec 2024 19:42:07 GMT</lastBuildDate>
+<lastBuildDate>Sun, 29 Dec 2024 20:04:34 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 29 Dec 2024 19:42:07 GMT</pubDate>
+  <pubDate>Sun, 29 Dec 2024 20:04:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -162,7 +162,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Sun, 29 Dec 2024 19:42:07 GMT</pubDate>
+  <pubDate>Sun, 29 Dec 2024 20:04:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -214,21 +214,27 @@ font-style: inherit;">mix</span> ash.setup</span></code></pre></div>
 <p>This setup provides a foundation for rapid prototyping by automating the configuration of common components like user authentication and database integration.</p>
 <p>This approach allows developers to focus on Godot while incorporating Elixir and Phoenix for cloud needs within a consistent environment.</p>
 <pre class="mermaid"><code>graph LR
-    A[Godot Game Engine] --&gt; B(GDScript Scripting Language);
-    A --&gt; C(V-Sekai Integration);
-    A --&gt; D{Web Export Functionality};
-    D -- For web-based tools --&gt; E[User Interface];
-    A -.-&gt; F[Elixir/Phoenix Backend Framework];
-    F --&gt; G(PostgreSQL Database);
-    F --&gt; H{Authentication Service};
-    H -- Magic Link Strategy --&gt; A;
-    H -- OAuth 2.0 --&gt; J{OAuth Providers};
-    J -- GitHub Authentication Service --&gt; A;
-    J -- Google Authentication Service --&gt; A;
-    J -- Discord Authentication Service --&gt; A;
-    H -- Passkey Authentication Strategy --&gt; A;
-    F -- For communication with Godot --&gt; A;
-    K[Caddy Web Server/Reverse Proxy] --&gt; F;</code></pre>
+    subgraph "Shared Resources"
+        A[Godot Engine] --&gt; B(GDScript)
+        A --&gt; C{V-Sekai Integration}
+        C --&gt; D[Elixir/Phoenix]
+        D --&gt; E(PostgreSQL)
+        A --&gt; F{Authentication Service}
+        F --&gt; G[OAuth Providers]
+        G --&gt; H(Magic Link)
+        G --&gt; I(OAuth 2.0)
+        G --&gt; J(Passkey)
+        H --&gt; A
+        I --&gt; A
+        J --&gt; A
+    end
+
+    M[Emily - Explorer] --&gt; C
+    N[Liam - Socializer] --&gt; C
+    O[Sophia - Builder] --&gt; B
+    P[Alex - Moderator] --&gt; D
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px</code></pre>
 </section>
 <section id="the-benefits" class="level3">
 <h3 class="anchored" data-anchor-id="the-benefits">The Benefits</h3>
@@ -302,7 +308,7 @@ font-style: inherit;">mix</span> ash.setup</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241229-one-prototyping-stack.html</guid>
-  <pubDate>Sun, 29 Dec 2024 19:42:07 GMT</pubDate>
+  <pubDate>Sun, 29 Dec 2024 20:04:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -608,7 +614,7 @@ font-style: inherit;"># May be empty if no dialogue</span></span></code></pre></
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241222-wandering-dancer.html</guid>
-  <pubDate>Sun, 29 Dec 2024 19:42:07 GMT</pubDate>
+  <pubDate>Sun, 29 Dec 2024 20:04:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -781,7 +787,7 @@ font-style: inherit;"># ... (other code) ...</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241221-wandering-bakery.html</guid>
-  <pubDate>Sun, 29 Dec 2024 19:42:07 GMT</pubDate>
+  <pubDate>Sun, 29 Dec 2024 20:04:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -875,7 +881,7 @@ font-style: inherit;"># ... (other code) ...</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241220-discord-quest-3.html</guid>
-  <pubDate>Sun, 29 Dec 2024 19:42:07 GMT</pubDate>
+  <pubDate>Sun, 29 Dec 2024 20:04:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1130,7 +1136,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241220-character-concept-art-creation.html</guid>
-  <pubDate>Sun, 29 Dec 2024 19:42:07 GMT</pubDate>
+  <pubDate>Sun, 29 Dec 2024 20:04:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1224,7 +1230,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241219-unpack-fbx-udimms.html</guid>
-  <pubDate>Sun, 29 Dec 2024 19:42:07 GMT</pubDate>
+  <pubDate>Sun, 29 Dec 2024 20:04:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1332,7 +1338,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241219-scriptable-sign.html</guid>
-  <pubDate>Sun, 29 Dec 2024 19:42:07 GMT</pubDate>
+  <pubDate>Sun, 29 Dec 2024 20:04:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1434,7 +1440,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241218-will-o-wisp-proto-avatar.html</guid>
-  <pubDate>Sun, 29 Dec 2024 19:42:07 GMT</pubDate>
+  <pubDate>Sun, 29 Dec 2024 20:04:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1702,7 +1708,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241210-vsekai-charter.html</guid>
-  <pubDate>Sun, 29 Dec 2024 19:42:07 GMT</pubDate>
+  <pubDate>Sun, 29 Dec 2024 20:04:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1906,7 +1912,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241112-godot-animation-streaming.html</guid>
-  <pubDate>Sun, 29 Dec 2024 19:42:07 GMT</pubDate>
+  <pubDate>Sun, 29 Dec 2024 20:04:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1982,7 +1988,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241102-plan-november-2024.html</guid>
-  <pubDate>Sun, 29 Dec 2024 19:42:07 GMT</pubDate>
+  <pubDate>Sun, 29 Dec 2024 20:04:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2063,7 +2069,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241028-use-data-tables-for-godot-constraints.html</guid>
-  <pubDate>Sun, 29 Dec 2024 19:42:07 GMT</pubDate>
+  <pubDate>Sun, 29 Dec 2024 20:04:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2166,7 +2172,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241019-reduce-size-difference-between-capsules-and-mesh-volume.html</guid>
-  <pubDate>Sun, 29 Dec 2024 19:42:07 GMT</pubDate>
+  <pubDate>Sun, 29 Dec 2024 20:04:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2260,7 +2266,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241016-instantiating-v-sekai-content.html</guid>
-  <pubDate>Sun, 29 Dec 2024 19:42:07 GMT</pubDate>
+  <pubDate>Sun, 29 Dec 2024 20:04:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2411,7 +2417,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-xr-interface-for-rigging.html</guid>
-  <pubDate>Sun, 29 Dec 2024 19:42:07 GMT</pubDate>
+  <pubDate>Sun, 29 Dec 2024 20:04:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2512,7 +2518,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-basic-realtime-interaction.html</guid>
-  <pubDate>Sun, 29 Dec 2024 19:42:07 GMT</pubDate>
+  <pubDate>Sun, 29 Dec 2024 20:04:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2615,7 +2621,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241014-app-updater.html</guid>
-  <pubDate>Sun, 29 Dec 2024 19:42:07 GMT</pubDate>
+  <pubDate>Sun, 29 Dec 2024 20:04:34 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2745,7 +2751,7 @@ func notify(message):
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241011-recovering-makehuman-parameters.html</guid>
-  <pubDate>Sun, 29 Dec 2024 19:42:07 GMT</pubDate>
+  <pubDate>Sun, 29 Dec 2024 20:04:34 GMT</pubDate>
 </item>
 </channel>
 </rss>
