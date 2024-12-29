@@ -49,10 +49,12 @@ graph LR
         J --> A
     end
 
-    M[Emily - Explorer] --> C
-    N[Liam - Socializer] --> C
-    O[Sophia - Builder] --> B
-    P[Alex - Moderator] --> D
+    M[Alice - Explorer] --> C
+    N[Bob - Socializer] --> C
+    O[Charlie - Builder] --> B
+    Q[Eve - Explorer Moderator] --> C
+    R[Frank - Socializer Moderator] --> C
+    S[Grace - Builder Moderator] --> B
 
     style A fill:#f9f,stroke:#333,stroke-width:2px
 ```
