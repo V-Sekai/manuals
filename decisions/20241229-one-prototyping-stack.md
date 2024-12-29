@@ -72,6 +72,8 @@ graph LR
         subgraph "Competitor & Strategist"
             K[Gina] --> C
             L[Oliver - Moderator] --> C
+            Y[Harry] --> C 
+            Z[Quinn - Moderator] --> C
         end 
     end
 
