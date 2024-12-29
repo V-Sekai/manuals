@@ -34,21 +34,27 @@ This approach allows developers to focus on Godot while incorporating Elixir and
 
 ```mermaid
 graph LR
-    A[Godot Game Engine] --> B(GDScript Scripting Language);
-    A --> C(V-Sekai Integration);
-    A --> D{Web Export Functionality};
-    D -- For web-based tools --> E[User Interface];
-    A -.-> F[Elixir/Phoenix Backend Framework];
-    F --> G(PostgreSQL Database);
-    F --> H{Authentication Service};
-    H -- Magic Link Strategy --> A;
-    H -- OAuth 2.0 --> J{OAuth Providers};
-    J -- GitHub Authentication Service --> A;
-    J -- Google Authentication Service --> A;
-    J -- Discord Authentication Service --> A;
-    H -- Passkey Authentication Strategy --> A;
-    F -- For communication with Godot --> A;
-    K[Caddy Web Server/Reverse Proxy] --> F;
+    subgraph "Shared Resources"
+        A[Godot Engine] --> B(GDScript)
+        A --> C{V-Sekai Integration}
+        C --> D[Elixir/Phoenix]
+        D --> E(PostgreSQL)
+        A --> F{Authentication Service}
+        F --> G[OAuth Providers]
+        G --> H(Magic Link)
+        G --> I(OAuth 2.0)
+        G --> J(Passkey)
+        H --> A
+        I --> A
+        J --> A
+    end
+
+    M[Emily - Explorer] --> C
+    N[Liam - Socializer] --> C
+    O[Sophia - Builder] --> B
+    P[Alex - Moderator] --> D
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px
 ```
 
 ### The Benefits
