@@ -50,18 +50,22 @@ graph LR
         
         subgraph "Explorer & Socializer"
             M[Alice] --> C
+            Q[Moderator Bob] --> C
         end
         
         subgraph "Builder & Trader"
-            O[Bob] --> B
+            O[Charlie] --> B
+            S[Moderator David] --> B
         end
         
         subgraph "Roleplayer & Performer"
-            U[Carol] --> C
+            U[Emily] --> C
+            V[Moderator Fiona] --> C
         end
         
         subgraph "Competitor & Strategist"
-            K[David] --> C
+            K[Gina] --> C
+            L[Moderator Harry] --> C
         end 
     end
 ```
