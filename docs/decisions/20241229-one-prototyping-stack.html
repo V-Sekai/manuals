@@ -182,42 +182,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="the-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Using different technology stacks for prototyping introduces complexities. Developers may encounter inconsistent code styles and struggle to share knowledge. Managing various dependencies can also create overhead. This fragmented approach hinders productivity. A single-stack solution will foster consistency and streamline workflows.</p>
+<p>Using different technology stacks for prototyping introduces complexities. For example, imagine developers working on a virtual reality social platform. One team might use a game engine like Unity for the frontend, while another uses Node.js and Express.js for the backend API.</p>
+<p>A single-stack solution will foster consistency and streamline workflows, ultimately leading to faster development cycles and improved productivity.</p>
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
 <p>This proposal envisions a prototyping ecosystem where Godot is the foundation, integrated with Elixir and Phoenix:</p>
-<ul>
-<li><p><strong>Godot:</strong> This engine will support various prototypes, from VR/AR experiences and games to web applications. Godot’s GDScript language and V-Sekai integration enable fast prototyping. Godot’s web export capabilities facilitate web-based tools.</p></li>
-<li><p><strong>Elixir + Phoenix:</strong> These technologies extend Godot’s capabilities for cloud services, providing:</p>
-<ol type="1">
-<li><p><strong>Project Setup:</strong> Developers can generate a Phoenix project with essential features:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mix</span> igniter.new <span class="at">--with</span> phx.new <span class="at">--install</span> ash,ash_postgres,ash_phoenix,ash_authentication,ash_authentication_phoenix,ash_admin</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mix</span> ash_authentication.add_strategy magic_link</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mix</span> ash.codegen initial</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">mix</span> ecto.create</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">mix</span> ash.setup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p><strong>Rapid Iteration with LiveView:</strong> Build real-time, interactive interfaces.</p></li>
-</ol></li>
-</ul>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">mix</span> ash.setup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This setup provides a foundation for rapid prototyping by automating the configuration of common components like user authentication and database integration.</p>
 <p>This approach allows developers to focus on Godot while incorporating Elixir and Phoenix for cloud needs within a consistent environment.</p>
+<pre class="mermaid"><code>graph LR
+    A[Godot Game Engine] --&gt; B(GDScript Scripting Language);
+    A --&gt; C(V-Sekai Integration);
+    A --&gt; D{Web Export Functionality};
+    D -- For web-based tools --&gt; E[User Interface];
+    A -.-&gt; F[Elixir/Phoenix Backend Framework];
+    F --&gt; G(PostgreSQL Database);
+    F --&gt; H{Authentication Service};
+    H -- Magic Link Strategy --&gt; A;
+    H -- OAuth 2.0 --&gt; J{OAuth Providers};
+    J -- GitHub Authentication Service --&gt; A;
+    J -- Google Authentication Service --&gt; A;
+    J -- Discord Authentication Service --&gt; A;
+    H -- Passkey Authentication Strategy --&gt; A;
+    F -- For communication with Godot --&gt; A;
+    K[Caddy Web Server/Reverse Proxy] --&gt; F; </code></pre>
 </section>
 <section id="the-benefits" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
 <ul>
-<li><strong>Flexibility:</strong> Godot, Elixir, and Phoenix provide a comprehensive toolkit for prototyping diverse applications.</li>
-<li><strong>Consistency:</strong> Centering on Godot promotes consistency in code style and development practices, facilitating knowledge sharing.</li>
-<li><strong>Efficiency:</strong> This approach streamlines development, reducing the overhead of managing multiple technologies.</li>
-<li><strong>Developer Empowerment:</strong> A unified toolset empowers developers to explore new possibilities.</li>
+<li><strong>Flexibility:</strong> Godot, Elixir, and Phoenix provide tools for prototyping diverse applications, from games and VR/AR experiences to web-based tools with cloud functionalities.</li>
+<li><strong>Consistency:</strong> Centering on Godot promotes consistency in code style and development practices, facilitating knowledge sharing and reducing onboarding time for new developers.</li>
+<li><strong>Efficiency:</strong> This approach streamlines development, reducing the overhead of managing multiple technologies and leading to faster prototyping cycles.</li>
+<li><strong>Developer Empowerment:</strong> A unified toolset empowers developers to explore new possibilities and contribute more effectively to the project.</li>
 </ul>
 </section>
 <section id="addressing-potential-concerns" class="level2">
 <h2 class="anchored" data-anchor-id="addressing-potential-concerns">Addressing Potential Concerns</h2>
-<p>A single-stack approach might raise concerns about limitations in using specialized tools. This proposal allows for exceptions when functionalities beyond the capabilities of Godot, Elixir, and Phoenix are required.</p>
+<p>A single-stack approach might raise concerns about limitations in using specialized tools. This proposal allows for exceptions when functionalities beyond the capabilities of Godot, Elixir, and Phoenix are required, ensuring flexibility for unique project needs.</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Alternative approaches, such as a multi-stack approach or relying solely on Godot without cloud capabilities, were considered less efficient.</p>
+<p>Alternative approaches, such as a multi-stack approach or relying solely on Godot without cloud capabilities, were considered less efficient and less aligned with the goals of streamlining development and fostering consistency.</p>
 </section>
 <section id="in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
@@ -248,11 +258,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-<li><a href="https://elixir-lang.org/">Elixir Lang</a> - Official website for the Elixir programming language.</li>
-<li><a href="https://www.phoenixframework.org/">Phoenix Framework</a> - Official website for the Phoenix web framework.</li>
-<li><a href="https://github.com/benbot">BenBot</a> - GitHub profile of BenBot, a contributor to the V-Sekai project.</li>
+<li>&nbsp;<a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li>&nbsp;<a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+<li>&nbsp;<a href="https://elixir-lang.org/">Elixir Lang</a> - Official website for the Elixir programming language.</li>
+<li>&nbsp;<a href="https://www.phoenixframework.org/">Phoenix Framework</a> - Official website for the Phoenix web framework.</li>
+<li>&nbsp;<a href="https://github.com/benbot">BenBot</a> - GitHub profile of BenBot, a contributor to the V-Sekai project.</li>
 </ol>
 <p>AI assistant Aria assisted with this article.</p>
 
