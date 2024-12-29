@@ -68,8 +68,6 @@ graph LR
             L[Moderator Harry] --> C
         end 
     end
-
-    style A fill:#fdd,stroke:#333,stroke-width:2px
 ```
 
 ### The Benefits
