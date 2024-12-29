@@ -12,21 +12,21 @@ Utilizing multiple technology stacks for prototypes can introduce complexities a
 
 This proposal recommends adopting a single-stack approach centered around Godot, while strategically integrating Elixir and Phoenix to address specific needs:
 
-- **Godot:** Leverage Godot's versatility for game-related prototypes, VR/AR experiences, and foundational web-based applications. Utilize Godot's visual scripting capabilities and existing integration with V-Sekai. Explore Godot's web export capabilities and relevant libraries for web-based prototyping.
+- **Godot:** Leverage Godot's versatility for game-related prototypes, VR/AR experiences, and foundational web-based applications. Utilize Godot's primary scripting language, GDScript, and existing integration with V-Sekai. Explore Godot's web export capabilities and relevant libraries for web-based prototyping.
 
 - **Elixir + Phoenix:** Integrate Elixir and Phoenix to provide robust backend support and cloud functionalities. To streamline Elixir-based prototyping, utilize the following setup:
 
-  1. **Project Setup:** Utilize the following Elixir commands to generate a Phoenix project with Ash and pre-configured user authentication:
+  1.  **Project Setup:** Utilize the following Elixir commands to generate a Phoenix project with Ash and pre-configured user authentication:
 
-     ```bash
-     mix igniter.new --with phx.new --install ash,ash_postgres,ash_phoenix,ash_authentication,ash_authentication_phoenix,ash_admin
-     mix ash_authentication.add_strategy magic_link
-     mix ash.codegen initial
-     mix ecto.create
-     mix ash.setup
-     ```
+      ```bash
+      mix igniter.new --with phx.new --install ash,ash_postgres,ash_phoenix,ash_authentication,ash_authentication_phoenix,ash_admin
+      mix ash_authentication.add_strategy magic_link
+      mix ash.codegen initial
+      mix ecto.create
+      mix ash.setup
+      ```
 
-  2. **Rapid Iteration:** Develop core features using Phoenix's LiveView for real-time, interactive user interfaces.
+  2.  **Rapid Iteration:** Develop core features using Phoenix's LiveView for real-time, interactive user interfaces.
 
 This approach allows developers to focus on a primary toolset (Godot) while seamlessly incorporating complementary technologies (Elixir and Phoenix) to address specific needs and maintain a cohesive development experience.
 
@@ -74,10 +74,10 @@ Status: Draft
 
 ## Further Reading
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
-3. [Elixir Lang](https://elixir-lang.org/) - Official website for the Elixir programming language.
-4. [Phoenix Framework](https://www.phoenixframework.org/) - Official website for the Phoenix web framework.
-5. [BenBot](https://github.com/benbot) - GitHub profile of BenBot, a contributor to the V-Sekai project.
+1.  [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
+2.  [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
+3.  [Elixir Lang](https://elixir-lang.org/) - Official website for the Elixir programming language.
+4.  [Phoenix Framework](https://www.phoenixframework.org/) - Official website for the Phoenix web framework.
+5.  [BenBot](https://github.com/benbot) - GitHub profile of BenBot, a contributor to the V-Sekai project.
 
 AI assistant Aria assisted with this article.
