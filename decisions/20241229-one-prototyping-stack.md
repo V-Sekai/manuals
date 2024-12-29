@@ -52,11 +52,9 @@ graph LR
     M[Alice - Explorer] --> C
     N[Bob - Socializer] --> C
     O[Charlie - Builder] --> B
-    Q[Eve - Explorer Moderator] --> C
+    Q[Eve - Explorer Moderator] --> D
     R[Frank - Socializer Moderator] --> C
     S[Grace - Builder Moderator] --> B
-
-    style A fill:#f9f,stroke:#333,stroke-width:2px
 ```
 
 ### The Benefits
