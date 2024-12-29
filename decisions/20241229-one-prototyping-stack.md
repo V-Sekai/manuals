@@ -58,12 +58,12 @@ graph LR
             S[Moderator David] --> B
         end
         
-        subgraph "Roleplayer & Performer"
+        subgraph "Performer & Roleplayer"
             U[Emily] --> C
             V[Moderator Fiona] --> C
         end
         
-        subgraph "Competitor & Strategist"
+        subgraph "Strategist & Competitor"
             K[Gina] --> C
             L[Moderator Harry] --> C
         end 
