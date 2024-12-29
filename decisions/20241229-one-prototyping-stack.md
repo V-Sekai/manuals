@@ -48,19 +48,34 @@ graph LR
         I --> A
         J --> A
         
-        subgraph "Explorer"
+        subgraph "Explorer & Socializer"
             M[Alice] --> C
             Q[Eve - Moderator] --> C
-        end
-        subgraph "Socializer"
             N[Bob] --> C
             R[Frank - Moderator] --> C
         end
-        subgraph "Builder"
+        
+        subgraph "Builder & Trader"
             O[Charlie] --> B
             S[Grace - Moderator] --> B
+            P[David] --> D
+            T[Heidi - Moderator] --> D
         end
+        
+        subgraph "Roleplayer & Performer"
+            U[Emily] --> C
+            V[Ivan - Moderator] --> C
+            W[Fiona] --> C
+            X[Jack - Moderator] --> C
+        end
+        
+        subgraph "Competitor & Strategist"
+            K[Gina] --> C
+            L[Oliver - Moderator] --> C
+        end 
     end
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px
 ```
 
 ### The Benefits
