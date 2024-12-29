@@ -79,5 +79,6 @@ Status: Draft
 3.  [Elixir Lang](https://elixir-lang.org/) - Official website for the Elixir programming language.
 4.  [Phoenix Framework](https://www.phoenixframework.org/) - Official website for the Phoenix web framework.
 5.  [BenBot](https://github.com/benbot) - GitHub profile of BenBot, a contributor to the V-Sekai project.
+6.  [hexdocs.pm/webauthn_components](https://hexdocs.pm/webauthn_components/readme.html)
 
 AI assistant Aria assisted with this article.
