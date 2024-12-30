@@ -33,41 +33,89 @@ This setup provides a foundation for rapid prototyping by automating the configu
 This approach allows developers to focus on Godot while incorporating Elixir and Phoenix for cloud needs within a consistent environment.
 
 ```mermaid
-graph LR
-    subgraph "Shared Resources"
-        A[Godot Engine] --> B(GDScript)
-        A --> C{V-Sekai Integration}
-        C --> D[Elixir/Phoenix]
-        D --> E(PostgreSQL)
-        A --> F{Authentication Service}
-        F --> G[OAuth Providers]
-        G --> H(Magic Link)
-        G --> I(OAuth 2.0)
-        G --> J(Passkey)
-        H --> A
-        I --> A
-        J --> A
-        
-        subgraph "Explorer & Socializer"
-            M[Alice] --> C
-            Q[Coordinator Bob] --> C
-        end
-        
-        subgraph "Builder & Trader"
-            O[Charlie] --> B
-            S[Coordinator David] --> B
-        end
-        
-        subgraph "Performer & Roleplayer"
-            U[Emily] --> C
-            V[Coordinator Fiona] --> C
-        end
-        
-        subgraph "Strategist & Competitor"
-            K[Gina] --> C
-            L[Coordinator Harry] --> C
-        end 
-    end
+sequenceDiagram
+    participant Alice
+    participant Bob
+    participant Charlie
+    participant David
+    participant Emily
+    participant Fiona
+    participant Gina
+    participant Harry
+
+    Alice->>+V-Sekai Integration: Explore, Socialize
+    activate V-Sekai Integration
+    V-Sekai Integration->>-Elixir/Phoenix: User activity data
+    activate Elixir/Phoenix
+    Elixir/Phoenix->>+PostgreSQL: Store/retrieve data
+    deactivate Elixir/Phoenix
+    deactivate V-Sekai Integration
+
+    Bob->>+V-Sekai Integration: Explore, Socialize
+    activate V-Sekai Integration
+    V-Sekai Integration->>-Elixir/Phoenix: User activity data
+    activate Elixir/Phoenix
+    Elixir/Phoenix->>+PostgreSQL: Store/retrieve data
+    deactivate Elixir/Phoenix
+    deactivate V-Sekai Integration
+    Bob->>+Godot Engine: Modify Platform (Coordinator)
+    activate Godot Engine
+    Godot Engine->>-GDScript: Execute modification scripts
+    deactivate Godot Engine
+
+    Charlie->>+Godot Engine: Build, Script
+    activate Godot Engine
+    Godot Engine->>-GDScript: Execute scripts
+    deactivate Godot Engine
+
+    David->>+Godot Engine: Build, Script
+    activate Godot Engine
+    Godot Engine->>-GDScript: Execute scripts
+    deactivate Godot Engine
+    David->>+Godot Engine: Modify Platform (Coordinator)
+    activate Godot Engine
+    Godot Engine->>-GDScript: Execute modification scripts
+    deactivate Godot Engine
+
+    Emily->>+V-Sekai Integration: Perform, Roleplay
+    activate V-Sekai Integration
+    V-Sekai Integration->>-Elixir/Phoenix: User activity data
+    activate Elixir/Phoenix
+    Elixir/Phoenix->>+PostgreSQL: Store/retrieve data
+    deactivate Elixir/Phoenix
+    deactivate V-Sekai Integration
+
+    Fiona->>+V-Sekai Integration: Perform, Roleplay
+    activate V-Sekai Integration
+    V-Sekai Integration->>-Elixir/Phoenix: User activity data
+    activate Elixir/Phoenix
+    Elixir/Phoenix->>+PostgreSQL: Store/retrieve data
+    deactivate Elixir/Phoenix
+    deactivate V-Sekai Integration
+    Fiona->>+Godot Engine: Modify Platform (Coordinator)
+    activate Godot Engine
+    Godot Engine->>-GDScript: Execute modification scripts
+    deactivate Godot Engine
+
+    Gina->>+V-Sekai Integration: Strategize, Compete
+    activate V-Sekai Integration
+    V-Sekai Integration->>-Elixir/Phoenix: User activity data
+    activate Elixir/Phoenix
+    Elixir/Phoenix->>+PostgreSQL: Store/retrieve data
+    deactivate Elixir/Phoenix
+    deactivate V-Sekai Integration
+
+    Harry->>+V-Sekai Integration: Strategize, Compete
+    activate V-Sekai Integration
+    V-Sekai Integration->>-Elixir/Phoenix: User activity data
+    activate Elixir/Phoenix
+    Elixir/Phoenix->>+PostgreSQL: Store/retrieve data
+    deactivate Elixir/Phoenix
+    deactivate V-Sekai Integration
+    Harry->>+Godot Engine: Modify Platform (Coordinator)
+    activate Godot Engine
+    Godot Engine->>-GDScript: Execute modification scripts
+    deactivate Godot Engine
 ```
 
 ### The Benefits
