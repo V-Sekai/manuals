@@ -202,41 +202,89 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">mix</span> ash.setup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This setup provides a foundation for rapid prototyping by automating the configuration of common components like user authentication and database integration.</p>
 <p>This approach allows developers to focus on Godot while incorporating Elixir and Phoenix for cloud needs within a consistent environment.</p>
-<pre class="mermaid"><code>graph LR
-    subgraph "Shared Resources"
-        A[Godot Engine] --&gt; B(GDScript)
-        A --&gt; C{V-Sekai Integration}
-        C --&gt; D[Elixir/Phoenix]
-        D --&gt; E(PostgreSQL)
-        A --&gt; F{Authentication Service}
-        F --&gt; G[OAuth Providers]
-        G --&gt; H(Magic Link)
-        G --&gt; I(OAuth 2.0)
-        G --&gt; J(Passkey)
-        H --&gt; A
-        I --&gt; A
-        J --&gt; A
-        
-        subgraph "Explorer &amp; Socializer"
-            M[Alice] --&gt; C
-            Q[Coordinator Bob] --&gt; C
-        end
-        
-        subgraph "Builder &amp; Trader"
-            O[Charlie] --&gt; B
-            S[Coordinator David] --&gt; B
-        end
-        
-        subgraph "Performer &amp; Roleplayer"
-            U[Emily] --&gt; C
-            V[Coordinator Fiona] --&gt; C
-        end
-        
-        subgraph "Strategist &amp; Competitor"
-            K[Gina] --&gt; C
-            L[Coordinator Harry] --&gt; C
-        end 
-    end</code></pre>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Alice
+    participant Bob
+    participant Charlie
+    participant David
+    participant Emily
+    participant Fiona
+    participant Gina
+    participant Harry
+
+    Alice-&gt;&gt;+V-Sekai Integration: Explore, Socialize
+    activate V-Sekai Integration
+    V-Sekai Integration-&gt;&gt;-Elixir/Phoenix: User activity data
+    activate Elixir/Phoenix
+    Elixir/Phoenix-&gt;&gt;+PostgreSQL: Store/retrieve data
+    deactivate Elixir/Phoenix
+    deactivate V-Sekai Integration
+
+    Bob-&gt;&gt;+V-Sekai Integration: Explore, Socialize
+    activate V-Sekai Integration
+    V-Sekai Integration-&gt;&gt;-Elixir/Phoenix: User activity data
+    activate Elixir/Phoenix
+    Elixir/Phoenix-&gt;&gt;+PostgreSQL: Store/retrieve data
+    deactivate Elixir/Phoenix
+    deactivate V-Sekai Integration
+    Bob-&gt;&gt;+Godot Engine: Modify Platform (Coordinator)
+    activate Godot Engine
+    Godot Engine-&gt;&gt;-GDScript: Execute modification scripts
+    deactivate Godot Engine
+
+    Charlie-&gt;&gt;+Godot Engine: Build, Script
+    activate Godot Engine
+    Godot Engine-&gt;&gt;-GDScript: Execute scripts
+    deactivate Godot Engine
+
+    David-&gt;&gt;+Godot Engine: Build, Script
+    activate Godot Engine
+    Godot Engine-&gt;&gt;-GDScript: Execute scripts
+    deactivate Godot Engine
+    David-&gt;&gt;+Godot Engine: Modify Platform (Coordinator)
+    activate Godot Engine
+    Godot Engine-&gt;&gt;-GDScript: Execute modification scripts
+    deactivate Godot Engine
+
+    Emily-&gt;&gt;+V-Sekai Integration: Perform, Roleplay
+    activate V-Sekai Integration
+    V-Sekai Integration-&gt;&gt;-Elixir/Phoenix: User activity data
+    activate Elixir/Phoenix
+    Elixir/Phoenix-&gt;&gt;+PostgreSQL: Store/retrieve data
+    deactivate Elixir/Phoenix
+    deactivate V-Sekai Integration
+
+    Fiona-&gt;&gt;+V-Sekai Integration: Perform, Roleplay
+    activate V-Sekai Integration
+    V-Sekai Integration-&gt;&gt;-Elixir/Phoenix: User activity data
+    activate Elixir/Phoenix
+    Elixir/Phoenix-&gt;&gt;+PostgreSQL: Store/retrieve data
+    deactivate Elixir/Phoenix
+    deactivate V-Sekai Integration
+    Fiona-&gt;&gt;+Godot Engine: Modify Platform (Coordinator)
+    activate Godot Engine
+    Godot Engine-&gt;&gt;-GDScript: Execute modification scripts
+    deactivate Godot Engine
+
+    Gina-&gt;&gt;+V-Sekai Integration: Strategize, Compete
+    activate V-Sekai Integration
+    V-Sekai Integration-&gt;&gt;-Elixir/Phoenix: User activity data
+    activate Elixir/Phoenix
+    Elixir/Phoenix-&gt;&gt;+PostgreSQL: Store/retrieve data
+    deactivate Elixir/Phoenix
+    deactivate V-Sekai Integration
+
+    Harry-&gt;&gt;+V-Sekai Integration: Strategize, Compete
+    activate V-Sekai Integration
+    V-Sekai Integration-&gt;&gt;-Elixir/Phoenix: User activity data
+    activate Elixir/Phoenix
+    Elixir/Phoenix-&gt;&gt;+PostgreSQL: Store/retrieve data
+    deactivate Elixir/Phoenix
+    deactivate V-Sekai Integration
+    Harry-&gt;&gt;+Godot Engine: Modify Platform (Coordinator)
+    activate Godot Engine
+    Godot Engine-&gt;&gt;-GDScript: Execute modification scripts
+    deactivate Godot Engine</code></pre>
 </section>
 <section id="the-benefits" class="level3">
 <h3 class="anchored" data-anchor-id="the-benefits">The Benefits</h3>
