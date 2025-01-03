@@ -2,13 +2,17 @@
 
 ### The Context
 
-Rapid prototyping is essential for validating ideas and iterating within the V-Sekai development ecosystem. To efficiently assess designs, we need a streamlined prototyping process. This proposal recommends a single-stack approach centered around the Godot Engine, augmented by Elixir and Phoenix for cloud functionalities.
+Rapid prototyping is essential for validating ideas and iterating within the V-Sekai development ecosystem. To efficiently assess designs, we need a streamlined prototyping process. 
+
+This proposal recommends a single-stack approach centered around the Godot Engine, augmented by Elixir and Phoenix for cloud functionalities.
 
 ### The Problem Statement
 
 Even within a single-stack approach using technologies like Godot and Elixir, over-specialization can hinder rapid prototyping. Developers may naturally gravitate towards their areas of expertise, which can lead to imbalances and integration challenges when building features that span both client-side and server-side domains.
 
-For example, consider developing a virtual avatar system. A developer might excel at GDScript for client-side tasks like animation and rendering, while feeling less confident handling Elixir for server-side components like avatar customization and data persistence. This can lead to:
+For example, consider developing a virtual avatar system.
+
+A developer might excel at GDScript for client-side tasks like animation and rendering, while feeling less confident handling Elixir for server-side components like avatar customization and data persistence. This can lead to:
 
 - **Knowledge Gaps:** Developers might have a deep understanding of one aspect of the system but a limited understanding of the other, making it difficult to grasp the feature as a whole.
 - **Siloed Development:** A tendency to stay within their comfort zones can prevent developers from gaining experience across the full spectrum of development, potentially hindering their growth and the project's flexibility.
