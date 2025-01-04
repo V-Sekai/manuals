@@ -1,4 +1,4 @@
-# Proposed: Sparkly Valve Index Display Fix
+# Accepted: Sparkly Valve Index Display Fix
 
 ## What is the context of the proposal?
 
@@ -36,7 +36,7 @@ This is not a V-Sekai core responsibility. Fire implemented the DisplayPort trai
 
 ## What is the status of the proposal?
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Who is making decisions on the proposal?
 
