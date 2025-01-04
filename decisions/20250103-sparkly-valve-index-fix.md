@@ -34,7 +34,7 @@ This fix addresses users experiencing sparkling pixels on dark scenes.
 
 This is not a V-Sekai core responsibility. Fire implemented the DisplayPort training mode adjustment and found it helpful.
 
-## What status is of the proposal?
+## What is the status of the proposal?
 
 Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
@@ -45,6 +45,7 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 ## What tags does the proposal have?
 
 - V-Sekai
+- fire
 
 ## List further reading references.
 
