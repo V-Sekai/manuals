@@ -102,6 +102,7 @@ The process emphasizes iterative refinement of the prompt based on results from 
   - Use the Magic Wand tool to remove the background.
   - Use the Grounded-SAM model to identify and remove facial features, then paint the area skin color.
   - Use brush tools to clean up any artifacts or unwanted details. Pay close attention to the hands and fingers.
+- [ ] Use `pinokiofactory/clarity-refiners-ui` to get the description of the model.
 
 **2. Sprite Creation and Rigging**
 
