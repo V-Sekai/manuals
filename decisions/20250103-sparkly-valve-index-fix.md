@@ -2,7 +2,7 @@
 
 ## What is the context of the proposal?
 
-The Steam Valve Index is still a reliable and robust head-mounted display for virtual reality. We should try to use it for as long as possible.
+The Steam Valve Index is still a reliable and robust head-mounted display for virtual reality. We should use it for as long as possible.
 
 ## What is the problem being solved?
 
@@ -28,7 +28,7 @@ Alternative compatibility modes were considered but ultimately not pursued. We a
 
 ## When might the proposed solution be used rarely or not at all?
 
-This fix addresses users experiencing sparkling pixels on dark scenes.
+This fix addresses users experiencing sparkling pixels in dark scenes.
 
 ## Is this a V-Sekai core responsibility, and can it be done by us?
 
