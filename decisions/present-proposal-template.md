@@ -1,34 +1,34 @@
 # Proposed: Template
 
-## The Context
+## What is the context of the proposal?
 
-## The Problem Statement
+## What is the problem being solved?
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
 
-## The Benefits
+## What are the benefits of the proposal?
 
-## The Downsides
+## What are the downsides of the proposal?
 
-## The Road Not Taken
+## What are the alternative proposals?
 
 ## The Infrequent Use Case
 
 ## Is this a V-Sekai core responsibility, and can it be done by us?
 
-## Status
+## What status is the proposal?
 
 Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
-## Decision Makers
+## Who is making decisions on the proposal?
 
 - V-Sekai development team
 
-## Tags
+## What tags does the proposal have?
 
 - V-Sekai
 
-## Further Reading
+## List further reading references.
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
