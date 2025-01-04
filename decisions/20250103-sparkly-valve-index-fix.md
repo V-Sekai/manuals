@@ -40,12 +40,11 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Who is making decisions on the proposal?
 
-- V-Sekai development team
+- fire
 
 ## What tags does the proposal have?
 
 - V-Sekai
-- fire
 
 ## List further reading references.
 
