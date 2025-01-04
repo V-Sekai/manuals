@@ -12,11 +12,11 @@
 
 ## What are the alternative proposals?
 
-## The Infrequent Use Case
+## When might the proposed solution be used rarely or not at all?
 
 ## Is this a V-Sekai core responsibility, and can it be done by us?
 
-## What status is the proposal?
+## What status is of the proposal?
 
 Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
