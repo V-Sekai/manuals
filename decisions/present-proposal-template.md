@@ -14,7 +14,7 @@
 
 ## The Infrequent Use Case
 
-## In Core and Done by Us
+## Is this a V-Sekai core responsibility and be done by us?
 
 ## Status
 
