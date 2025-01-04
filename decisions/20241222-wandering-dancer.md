@@ -1,155 +1,65 @@
-# Draft: The Wandering Dancer - Prototype
+# Proposed: The Wandering Dancer - Prototype
 
-## The Context
+## What is the context of the proposal?
 
-We need a way to test whether LLMs can create engaging narratives in games, particularly those that focus on emotional expression and nonverbal communication. This prototype explores the potential of LLM-driven dynamic storytelling through dance and movement within a simplified game environment.
+We need a way to test whether LLMs can create engaging game narratives through emotional expression and nonverbal communication. This proposal focuses on dance and movement as a storytelling mechanic.
 
-## The Problem Statement
+## What is the problem being solved?
 
-Traditional game narratives rely heavily on dialogue and explicit storytelling, potentially limiting player expression and emotional engagement. LLMs can enable new forms of interactive storytelling that tap into the nuances of body language and physical expression.
+Relying mostly on dialogue can limit player expression. Using LLMs for interactive narratives can enable nuanced body language and physical expression.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
 
-The minimal viable product (MVP) will center around a traveling dancer who visits a new procedurally generated village each day. The player observes the villagers, interprets their emotions and social dynamics through their dances and movements, and then creates dances to interact with them and influence their emotional states.
+The MVP features a traveling dancer visiting procedurally generated villages. The LLM generates cultural dances, emotional atmospheres, and character relationships. Players observe villagers’ dances, create responses, and influence emotions:
 
-**Core Gameplay Loop:**
+```python
+def generate_village():
+  village = {}
+  village['name'] = LLM.generate_village_name()
+  village['culture'] = LLM.generate_cultural_traits()
+  village['atmosphere'] = LLM.generate_emotional_atmosphere()
+  village['relationships'] = LLM.generate_character_relationships()
+  village['locations'] = LLM.generate_locations(3)
+  village['characters'] = LLM.generate_characters(3)
+  return village
+```
 
-1. **Arrive in Village:**
+Player dance creation and villager reactions are similarly LLM-driven. A goal-task planner handles structured planning:
 
-   - The LLM generates a village with unique cultural dances and movement styles, reflecting the villagers' current emotional states and social dynamics.
+- Predicates: (e.g., at(item, location), knows_dance(character, style))
+- Operators: (e.g., move_to(location), observe(character))
+- Methods: (e.g., change_emotion(character, target_emotion))
 
-   ```python
-   # Pseudo-code for village generation (using LLM)
-   def generate_village():
-       village = {}
-       village['name'] = LLM.generate_village_name()
-       village['culture'] = LLM.generate_cultural_traits() # Includes dance styles
-       village['atmosphere'] = LLM.generate_emotional_atmosphere()
-       village['relationships'] = LLM.generate_character_relationships()
-       village['locations'] = LLM.generate_locations(3)
-       village['characters'] = LLM.generate_characters(3)
-       return village
-   ```
+## What are the benefits of the proposal?
 
-2. **Observe and Learn:**
+It promotes emotional depth, novel choreography-based gameplay, and dynamic storytelling by combining LLM outputs with structured planning.
 
-   - The player explores the village and observes characters, interpreting their dances and interactions to understand their customs, relationships, and individual emotions.
+## What are the downsides of the proposal?
 
-   ```python
-   # Pseudo-code for observing dances (using LLM)
-   def observe_dance(character_id):
-       dance_moves = LLM.generate_dance_sequence(character_id, village['culture'])
-       display(dance_moves) # Visual representation of the dance
-       emotional_cues = LLM.interpret_dance_emotionally(dance_moves)
-       display(emotional_cues) # Textual description of emotions conveyed
-   ```
+Representing dance, user interface complexity, subjective interpretations, and technical integration challenges.
 
-3. **Interpret and Respond:**
+## What are the alternative proposals?
 
-   - Using a simplified dance creation tool, the player interprets the observed dances and creates their movements in response, expressing empathy, offering support, or joining in celebrations. The LLM can provide suggestions.
+Dialogue-heavy approaches or simpler non-planning narrative generation, which might not achieve the same emotional depth.
 
-   ```python
-   # Pseudo-code for dance creation (with LLM suggestions)
-   def create_dance():
-       dance = []
-       while creating:
-           move = get_player_input() # From dance creation tool
-           dance.append(move)
-           LLM_suggestion = LLM.suggest_dance_move(dance, village['culture'])
-           display(LLM_suggestion) #, e.g., "Consider a move that expresses joy."
-       return dance
-   ```
+## When might the proposed solution be used rarely or not at all?
 
-4. **Observe Reactions:**
+If players seldom visit villages or prefer other gameplay loops, the LLM must adapt its storytelling around infrequent encounters.
 
-   - The villagers react to the player's dance, expressing their emotions through new dances, dialogue, or changes in their behaviour, potentially revealing hidden stories or altering social dynamics. The LLM generates these reactions.
+## Is this a V-Sekai core responsibility, and can it be done by us?
 
-   ```python
-   # Pseudo-code for observing reactions (using LLM)
-   def observe_reactions(dance):
-       for character_id in village['characters']:
-           reaction = LLM.generate_reaction_to_dance(character_id, dance)
-           if reaction['story_revealed']:
-               # Trigger a new story element or quest
-               pass
-           update_character_state(character_id, reaction['new_emotional_state'])
-           display(reaction['dance']) # Villager's dance response
-           display(reaction['dialogue']) # May be empty if no dialogue
-   ```
+Yes. It fits our goals for LLM-based interactive narratives and requires close integration with our existing game engine.
 
-**LLM Integration:**
+## What is the status of the proposal?
 
-The LLM plays a crucial role in:
+Status: Proposed
 
-- **World Generation:** Creates villages with distinct dance cultures and movement styles, reflecting their emotional atmosphere.
-- **Character Development:** Generates characters with unique dance vocabularies and movement patterns based on their personality and emotional state.
-- **Dynamic Narrative:** Guides the story based on the player's dance interpretations and interactions, creating emergent narratives and unexpected events.
-- **Dance Suggestion:** Provides subtle guidance and feedback on the player's dance creations, helping them understand and respond to the villagers' emotional cues.
-
-**Content Verification:**
-
-- A verifier monitors LLM output to ensure coherence, filter inappropriate content, and maintain consistency.
-
-**Goal-Task Planner Integration (GTPyhop Style):**
-
-We'll integrate a Goal-Task Planner based on the GTPyhop framework to further enhance the dynamic narrative. This will allow for more structured reasoning and planning within the LLM-driven story.
-
-- **Define predicates:**
-  - `at(item, location)`: Specifies the location of an item (character).
-  - `knows_dance(character, dance_style)`: Indicates if a character knows a particular dance style.
-  - `emotion(character, emotion_type)`: Describes a character's emotional state.
-  - `relationship(character1, character2, relationship_type)`: Defines the relationship between two characters.
-- **Define operators:**
-  - `move_to(location)`: Moves the player to a specific location.
-  - `observe(character)`: Observe a character's dance and behavior.
-  - `perform_dance(dance_style)`: Execute a dance in a particular style.
-- **Define methods:**
-  - `change_emotion(character, target_emotion)`: A method to influence a character's emotional state through dance.
-  - `improve_relationship(character1, character2)`: A method to enhance the relationship between two characters.
-  - `learn_dance(dance_style)`: A method for the player to learn a new dance style.
-- **State representation:** The game state is a dictionary that tracks character locations, known dance styles, emotions, and relationships.
-
-**Example Goal:**
-
-- `emotion(villager1, happy)`
-
-## The Benefits
-
-Exploration of Physical Expression explores the use of dance and movement as a primary means of interaction and storytelling.
-
-- **Emotional Depth:** Focuses on creating emotionally resonant experiences through non-verbal communication and nuanced character interactions.
-- **Novel Gameplay Mechanics:** Potentially leads to unique gameplay mechanics centred around dance interpretation, creation, and emotional influence.
-- **Dynamic Storytelling with Planning:** Combining LLM-driven narrative with a planner like GTPyhop allows for more complex and engaging storylines.
-
-## The Downsides
-
-- **Complexity of Dance Representation:** Requires effectively representing dance movements and emotions for the LLM to process.
-- **User Interface Challenges:** Designing an intuitive and expressive dance creation tool within the game.
-- **Subjectivity of Interpretation:** Evaluating the impact of the player's dance on characters and the narrative can be subjective.
-- **Integration Challenges:** Integrating the LLM, GTPyhop, and the game mechanics may present technical hurdles.
-
-## The Road Not Taken
-
-- Focusing on traditional dialogue-heavy narratives would not fully explore the potential of LLMs in generating dynamic, emotionally driven experiences through physical expression.
-- Using a more straightforward, non-planning-based approach to narrative generation could limit the complexity and depth of the emergent stories.
-
-## The Infrequent Use Case
-
-- Players might visit villages infrequently. The LLM needs to handle this by adapting the narrative and potentially introducing time-related changes in the village, character relationships, and dance styles.
-
-## Why is it in Core and done by us?
-
-This aligns with our focus on innovative game development and exploring the use of LLMs in interactive narratives. It requires deep integration with our game engine and an understanding our long-term goals for dynamic storytelling.
-
-## Status
-
-Status: Draft
-
-## Decision Makers
+## Who is making decisions on the proposal?
 
 - V-Sekai development team
+- Fire
 
-## Tags
+## What tags does the proposal have?
 
 - V-Sekai
 - LLM
@@ -162,10 +72,10 @@ Status: Draft
 - GTPyhop
 - Planning
 
-## Further Reading
+## List further reading references.
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
+1. [V-Sekai · GitHub](https://github.com/v-sekai)
+2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
 3. [GTPyhop Documentation](https://github.com/dananau/GTPyhop)
 
 AI assistant Aria assisted with this article.
