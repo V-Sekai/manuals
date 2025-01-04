@@ -24,7 +24,7 @@ A few moments of testing time with SteamVR.
 
 ## What are the alternative proposals?
 
-Alternative compatibility modes were considered but ultimately not pursued. We also did not replace the display cable.
+We did not replace the display cable or the headset.
 
 ## When might the proposed solution be used rarely or not at all?
 
