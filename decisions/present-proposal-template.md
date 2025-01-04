@@ -16,7 +16,7 @@
 
 ## Is this a V-Sekai core responsibility, and can it be done by us?
 
-## What status is of the proposal?
+## What is the status of the proposal?
 
 Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
