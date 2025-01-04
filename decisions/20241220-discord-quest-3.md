@@ -1,68 +1,52 @@
-# Draft: Discord on the Sidequest
+# Proposed: Discord on the Sidequest
 
-## The Context
+## What is the context of the proposal?
 
-V-Sekai users may want to communicate with others outside of VR, even if those other people aren't in VR. This could be for several reasons, such as coordinating meetups, discussing development, or simply staying socially connected.
+V-Sekai users may want to communicate with people outside VR while remaining in V-Sekai.
 
-## The Problem Statement
+## What is the problem being solved?
 
-Currently, V-Sekai users lack a convenient way to communicate with people outside of VR while still immersed in the V-Sekai experience. This can lead to a fragmented social experience and limit the potential for collaboration and community building.
+There is currently no convenient way to stay connected with non-VR users.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
 
-This proposal suggests using Discord on the Quest 3 alongside V-Sekai. This would allow users to access Discord features, such as text chat and voice channels.
+Use Sidequest to install Aliucord on a Quest 3, then run Discord side-by-side with V-Sekai.
 
-1.  **Enable Developer Mode:** Before you begin, you'll need to enable Developer Mode on your Quest 3.
-2.  **Install Sidequest:** Users would first need to install the Sidequest app on their VR device. Sidequest is a platform that allows users to sideload apps and modifications onto their VR headsets.
-3.  **Install Aliucord:** Next, users would install the Aliucord app, via Sidequest. https://sidequestvr.com/app/38748/aliucord-installer-simplified-setup-for-enhanced-discord
-4.  **Access Discord in VR:** Once installed, users can access Discord through the Horioznos interface within their VR headset. This would allow them to view their Discord channels, send and receive messages, share the display and participate in voice chats.
-5.  **Run Discord side-by-side with V-Sekai:** Users can use the multitasking feature of the Quest 3 to run Discord alongside V-Sekai, allowing them to communicate with others outside of VR without interrupting their V-Sekai experience.
+## What are the benefits of the proposal?
 
-## The Benefits
+Users can remain immersed in V-Sekai while connecting with external communities.
 
--   **Enhanced Communication:** Users can stay connected with friends and colleagues outside of VR without having to leave the V-Sekai environment.
--   **Community Building:** Facilitates communication and collaboration among V-Sekai users and the wider Discord community.
--   **Accessibility:** Leverages existing tools and platforms, making it relatively easy to implement and access.
+## What are the downsides of the proposal?
 
-## The Downsides
+It depends on a third-party platform and may affect device performance.
 
--   **Dependence on External Platform:** Relies on a third-party platform (Discord).
--   **Potential Performance Issues:** Running Discord within VR could potentially impact performance on some devices.
--   **User Interface Challenges:** The Discord interface may present some challenges in terms of usability and accessibility within VR.
+## What are the alternative proposals?
 
-## The Road Not Taken
+Building an in-house communication system instead of relying on Discord.
 
-Developing a custom communication system within V-Sekai was considered. However, leveraging existing platforms like Discord offers a more immediate and resource-efficient solution.
+## When might the proposed solution be used rarely or not at all?
 
-## The Infrequent Use Case
+If all communication remains fully within V-Sekai.
 
-While Discord integration would benefit many users, those who primarily interact with other V-Sekai users within VR might not find it as essential.
+## Is this a V-Sekai core responsibility, and can it be done by us?
 
-## Why is it in Core and done by us?
+It aligns with V-Sekai’s goal of community building and can be implemented by the dev team.
 
-This proposal aligns with our core goal of fostering a vibrant and connected community. By enabling seamless communication with the wider world, we can enhance the social experience within V-Sekai. We will implement this as it involves integrating with existing platforms and aligns with our expertise.
+## What is the status of the proposal?
 
-## Status
+Status: Proposed
 
-Status: Draft
+## Who is making decisions on the proposal?
 
-## Decision Makers
+- V-Sekai development team
 
--   V-Sekai development team
+## What tags does the proposal have?
 
-## Tags
+- V-Sekai
 
--   V-Sekai
--   Discord
--   Communication
--   Sidequest
+## List further reading references.
 
-## Further Reading
-
-1.  [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
-2.  [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
-3.  [SideQuest VR](https://sidequestvr.com/) - Platform for sideloading VR apps and modifications.
-4.  [Discord](https://discord.com/) - A communication platform.
+1. [V-Sekai · GitHub](https://github.com/v-sekai)
+2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
 
 AI assistant Aria assisted with this article.
-```
