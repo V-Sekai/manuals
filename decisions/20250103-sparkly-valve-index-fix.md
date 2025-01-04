@@ -44,7 +44,9 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## What tags does the proposal have?
 
-- V-Sekai
+- Valve Index
+- Displayport
+- Pixel Sparkles
 
 ## List further reading references.
 
