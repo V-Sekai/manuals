@@ -24,7 +24,7 @@ A few moments of testing time with SteamVR.
 
 ## The Road Not Taken
 
-Alternative compatibility modes were considered but ultimately not pursued.
+Alternative compatibility modes were considered but ultimately not pursued. We also did not replace the display cable.
 
 ## The Infrequent Use Case
 
