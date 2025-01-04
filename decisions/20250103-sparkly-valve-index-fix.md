@@ -28,11 +28,11 @@ Alternative compatibility modes were considered but ultimately not pursued. We a
 
 ## The Infrequent Use Case
 
-This fix specifically addresses users experiencing sparkling pixels on dark scenes.
+This fix addresses users experiencing sparkling pixels on dark scenes.
 
 ## In Core and Done by Us
 
-The fire implemented the DisplayPort training mode adjustment and it was doable by us.
+This is not a V-Sekai core responsibility. Fire implemented the DisplayPort training mode adjustment and found it helpful.
 
 ## Status
 
