@@ -28,7 +28,7 @@ We did not replace the display cable or the headset.
 
 ## When might the proposed solution be used rarely or not at all?
 
-This proposal is unnecessary if you're not experiencing sparkling pixels with the Valve Index.
+This proposal is only helpful if you're experiencing sparkling pixels with the Valve Index.
 
 ## Is this a V-Sekai core responsibility, and can it be done by us?
 
