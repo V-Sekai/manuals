@@ -14,7 +14,7 @@
 
 ## When might the proposed solution be used rarely or not at all?
 
-## Is this a V-Sekai core responsibility, and can it be done by us?
+## Is this a V-Sekai core responsibility, and should it be done by us?
 
 ## What is the status of the proposal?
 
