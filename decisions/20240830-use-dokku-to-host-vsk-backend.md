@@ -1,83 +1,75 @@
-# Draft: Transition to Dokku from Kubernetes Proposal
+# Proposed: Transition to Dokku from Kubernetes
 
-## Overview
+## What is the context of the proposal?
 
-This proposal outlines the transition of our backend services from Kubernetes to Dokku, aiming to reduce complexity and maintenance costs.
+A shift from Kubernetes to Dokku is proposed to reduce complexity and operating costs.
 
-## Context
+## What is the problem being solved?
 
-Dokku is a minimalistic, open-source PAAS that provides a cost-effective alternative to Heroku. Our current use of Kubernetes has become prohibitively complex and expensive.
+Kubernetes is providing more overhead than necessary, leading to higher expenses and maintenance challenges.
 
-## Problem Statement
+## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
 
-We aim to migrate our backend services from Kubernetes to Dokku to simplify operations and reduce expenses.
+1. Deploy services using Dokku plugins and minimal containers.
+1. Deploy Uro service for the Elixir application server.
+1. Deploy S3 compatible storage solution within Dokku like SeaweedFS. Minio is not license-compatible.
+1. Example code:
 
-## Implementation Details
+   ```bash
+   # Install the PostgreSQL plugin
+   # Alternative - deploy using oxide's fork of Cockroachdb. [oxidecomputer/cockroach](https://github.com/oxidecomputer/cockroach). 
+   dokku plugin:install https://github.com/dokku/dokku-postgres.git postgres
 
-### Services Migration
+   # Create a database instance
+   dokku postgres:create my-database
 
-- **Cockroachdb**: Deploy using oxide's fork of Cockroachdb. [oxidecomputer/cockroach](https://github.com/oxidecomputer/cockroach). Deploy using the [Dokku PostgreSQL plugin](https://github.com/dokku/dokku-postgres) if cockroachdb isn't possible.
-- **File Object Store**: Implement an S3 compatible storage solution within Dokku. Research suggests SeaweedFS is the only option. Minio is not license-compatible.
-- **Elixir "Uro" Backend**: Ensure seamless deployment and operation of our Elixir application on Dokku.
-- **Caddy**: Set up Caddy as a web server and reverse proxy for secure HTTP and SSL management.
-- **Backups**: Implement an S3 compatible backup storage solution.
-- **Network Access**: Implement tailscale to allow access under NATed hosts.
+   # Deploy Elixir app
+   git push dokku master
+   ```
 
-### Code Example
+1. Use Caddy for SSL and Tailscale for network access.
 
-```bash
-# Install Dokku plugins
-dokku plugin:install https://github.com/dokku/dokku-postgres.git postgres
+## What are the benefits of the proposal?
 
-# Create PostgreSQL service
-dokku postgres:create my-database
+- Reduced operational costs
+- Simpler deployments
+- Acceptable scalability
 
-# Deploy Elixir application
-git push dokku master
-```
+## What are the downsides of the proposal?
 
-## Benefits
+- Fewer features compared to Kubernetes
+- Potentially challenging migration steps
 
-- **Cost Efficiency**: Significant reduction in operational and maintenance costs.
-- **Simplicity**: Streamlined management and deployment processes.
-- **Scalability**: Adequate scaling capabilities without Kubernetes' overhead.
-- **Security**: Enhanced security features with automatic SSL through Caddy.
+## What are the alternative proposals?
 
-## Potential Downsides
+- Continue using Kubernetes
+- Adopt another PAAS like Heroku or AWS Elastic Beanstalk
 
-- **Feature Limitations**: Dokku may not support all Kubernetes features.
-- **Migration Challenges**: Initial hurdles in transferring services and data.
+## When might the proposed solution be used rarely or not at all?
 
-## Alternatives Considered
+Scenarios with extremely high traffic requirements or need for advanced Kubernetes features.
 
-- Persisting with Kubernetes despite its drawbacks.
-- Adopting other PAAS solutions like Heroku or AWS Elastic Beanstalk.
+## Is this a V-Sekai core responsibility, and should it be done by us?
 
-## Special Considerations
+Yes, to streamline operations for V-Sekai’s backend management.
 
-Handling very high traffic levels might require additional Dokku configurations, which are inherently simpler in Kubernetes.
+## What is the status of the proposal?
 
-## Project Management
+Status: Proposed
 
-Our development team will manage the transition internally.
-
-## Current Status
-
-**Status**: Proposed
-
-## Decision Makers
+## Who is making decisions on the proposal?
 
 - V-Sekai development team
 - fire
 - dragonhunt02 
 
-## Tags
+## What tags does the proposal have?
 
-- `V-Sekai`
+- V-Sekai
 
-## Further Information
+## List further reading references.
 
-1. [V-Sekai GitHub](https://github.com/v-sekai) - Explore more about V-Sekai's initiatives on social VR.
-2. [V-Sekai Game Repository](https://github.com/v-sekai/v-sekai-game) - Official repository for the V-Sekai game project.
+1. [V-Sekai · GitHub](https://github.com/v-sekai)
+2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
 
-_Assisted by AI assistant Aria._
+AI assistant Aria assisted with this article.
