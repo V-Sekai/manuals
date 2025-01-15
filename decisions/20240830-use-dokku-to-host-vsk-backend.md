@@ -12,7 +12,7 @@ Kubernetes provides more overhead than necessary, leading to higher expenses and
 
 1. Deploy services using Dokku plugins and minimal containers.
 1. Deploy Uro service for the Elixir application server.
-1. Deploy S3 compatible storage solution within Dokku like SeaweedFS. Minio is not license-compatible.
+1. ~~Deploy S3 compatible storage solution within Dokku like SeaweedFS. Minio is not license-compatible.~~ Aspirational.
 1. Example code:
 
    ```bash
