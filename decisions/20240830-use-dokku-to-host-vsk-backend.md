@@ -6,7 +6,7 @@ A shift from Kubernetes to Dokku is proposed to reduce complexity and operating 
 
 ## What is the problem being solved?
 
-Kubernetes is providing more overhead than necessary, leading to higher expenses and maintenance challenges.
+Kubernetes provides more overhead than necessary, leading to higher expenses and maintenance challenges.
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
 
