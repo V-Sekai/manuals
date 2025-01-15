@@ -68,6 +68,8 @@ Our development team will manage the transition internally.
 ## Decision Makers
 
 - V-Sekai development team
+- fire
+- dragonhunt02 
 
 ## Tags
 
