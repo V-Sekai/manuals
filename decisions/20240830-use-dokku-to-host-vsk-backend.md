@@ -16,32 +16,23 @@ We aim to migrate our backend services from Kubernetes to Dokku to simplify oper
 
 ### Services Migration
 
-- **PostgreSQL**: Deploy using the [Dokku PostgreSQL plugin](https://github.com/dokku/dokku-postgres).
-- **File Object Store**: Implement an S3 compatible storage solution within Dokku.
+- **Cockroachdb**: Deploy using oxide's fork of Cockroachdb. [oxidecomputer/cockroach](https://github.com/oxidecomputer/cockroach). Deploy using the [Dokku PostgreSQL plugin](https://github.com/dokku/dokku-postgres) if cockroachdb isn't possible.
+- **File Object Store**: Implement an S3 compatible storage solution within Dokku. Research suggests SeaweedFS is the only option. Minio is not license-compatible.
 - **Elixir "Uro" Backend**: Ensure seamless deployment and operation of our Elixir application on Dokku.
 - **Caddy**: Set up Caddy as a web server and reverse proxy for secure HTTP and SSL management.
-- **RabbitMQ**: Integrate RabbitMQ for robust messaging and queuing capabilities.
 - **Backups**: Implement an S3 compatible backup storage solution.
-- **Telemetry**: Use OpenTelemetry for monitoring and tracing by integrating it with Signoz as outlined in [this guide](https://signoz.io/blog/opentelemetry-apm/).
 
 ### Code Example
 
 ```bash
 # Install Dokku plugins
 dokku plugin:install https://github.com/dokku/dokku-postgres.git postgres
-dokku plugin:install https://github.com/dokku/dokku-rabbitmq.git rabbitmq
 
 # Create PostgreSQL service
 dokku postgres:create my-database
 
-# Create RabbitMQ service
-dokku rabbitmq:create my-messaging-service
-
 # Deploy Elixir application
 git push dokku master
-
-# Setup OpenTelemetry
-# Follow the specific instructions from the Signoz guide
 ```
 
 ## Benefits
@@ -50,7 +41,6 @@ git push dokku master
 - **Simplicity**: Streamlined management and deployment processes.
 - **Scalability**: Adequate scaling capabilities without Kubernetes' overhead.
 - **Security**: Enhanced security features with automatic SSL through Caddy.
-- **Reliability**: Dependable inter-service communication with RabbitMQ.
 
 ## Potential Downsides
 
@@ -68,7 +58,7 @@ Handling very high traffic levels might require additional Dokku configurations,
 
 ## Project Management
 
-The transition will be managed internally by our development team.
+Our development team will manage the transition internally.
 
 ## Current Status
 
@@ -86,6 +76,5 @@ The transition will be managed internally by our development team.
 
 1. [V-Sekai GitHub](https://github.com/v-sekai) - Explore more about V-Sekai's initiatives on social VR.
 2. [V-Sekai Game Repository](https://github.com/v-sekai/v-sekai-game) - Official repository for the V-Sekai game project.
-3. [TigrisData](https://www.tigrisdata.com/docs/pricing/)
 
 _Assisted by AI assistant Aria._
