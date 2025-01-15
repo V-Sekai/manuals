@@ -199,32 +199,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="services-migration" class="level3">
 <h3 class="anchored" data-anchor-id="services-migration">Services Migration</h3>
 <ul>
-<li><strong>PostgreSQL</strong>: Deploy using the <a href="https://github.com/dokku/dokku-postgres">Dokku PostgreSQL plugin</a>.</li>
-<li><strong>File Object Store</strong>: Implement an S3 compatible storage solution within Dokku.</li>
+<li><strong>Cockroachdb</strong>: Deploy using oxide’s fork of Cockroachdb. <a href="https://github.com/oxidecomputer/cockroach">oxidecomputer/cockroach</a>. Deploy using the <a href="https://github.com/dokku/dokku-postgres">Dokku PostgreSQL plugin</a> if cockroachdb isn’t possible.</li>
+<li><strong>File Object Store</strong>: Implement an S3 compatible storage solution within Dokku. Research suggests SeaweedFS is the only option. Minio is not license-compatible.</li>
 <li><strong>Elixir “Uro” Backend</strong>: Ensure seamless deployment and operation of our Elixir application on Dokku.</li>
 <li><strong>Caddy</strong>: Set up Caddy as a web server and reverse proxy for secure HTTP and SSL management.</li>
-<li><strong>RabbitMQ</strong>: Integrate RabbitMQ for robust messaging and queuing capabilities.</li>
 <li><strong>Backups</strong>: Implement an S3 compatible backup storage solution.</li>
-<li><strong>Telemetry</strong>: Use OpenTelemetry for monitoring and tracing by integrating it with Signoz as outlined in <a href="https://signoz.io/blog/opentelemetry-apm/">this guide</a>.</li>
 </ul>
 </section>
 <section id="code-example" class="level3">
 <h3 class="anchored" data-anchor-id="code-example">Code Example</h3>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install Dokku plugins</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">dokku</span> plugin:install https://github.com/dokku/dokku-postgres.git postgres</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">dokku</span> plugin:install https://github.com/dokku/dokku-rabbitmq.git rabbitmq</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create PostgreSQL service</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">dokku</span> postgres:create my-database</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create RabbitMQ service</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">dokku</span> rabbitmq:create my-messaging-service</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Deploy Elixir application</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push dokku master</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup OpenTelemetry</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Follow the specific instructions from the Signoz guide</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create PostgreSQL service</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">dokku</span> postgres:create my-database</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Deploy Elixir application</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push dokku master</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="benefits" class="level2">
@@ -234,7 +225,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Simplicity</strong>: Streamlined management and deployment processes.</li>
 <li><strong>Scalability</strong>: Adequate scaling capabilities without Kubernetes’ overhead.</li>
 <li><strong>Security</strong>: Enhanced security features with automatic SSL through Caddy.</li>
-<li><strong>Reliability</strong>: Dependable inter-service communication with RabbitMQ.</li>
 </ul>
 </section>
 <section id="potential-downsides" class="level2">
@@ -257,7 +247,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="project-management" class="level2">
 <h2 class="anchored" data-anchor-id="project-management">Project Management</h2>
-<p>The transition will be managed internally by our development team.</p>
+<p>Our development team will manage the transition internally.</p>
 </section>
 <section id="current-status" class="level2">
 <h2 class="anchored" data-anchor-id="current-status">Current Status</h2>
@@ -280,7 +270,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li><a href="https://github.com/v-sekai">V-Sekai GitHub</a> - Explore more about V-Sekai’s initiatives on social VR.</li>
 <li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai Game Repository</a> - Official repository for the V-Sekai game project.</li>
-<li><a href="https://www.tigrisdata.com/docs/pricing/">TigrisData</a></li>
 </ol>
 <p><em>Assisted by AI assistant Aria.</em></p>
 
