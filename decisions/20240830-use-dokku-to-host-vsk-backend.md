@@ -21,6 +21,7 @@ We aim to migrate our backend services from Kubernetes to Dokku to simplify oper
 - **Elixir "Uro" Backend**: Ensure seamless deployment and operation of our Elixir application on Dokku.
 - **Caddy**: Set up Caddy as a web server and reverse proxy for secure HTTP and SSL management.
 - **Backups**: Implement an S3 compatible backup storage solution.
+- **Network Access** Implement tailscale to allow access under NATed hosts.
 
 ### Code Example
 
