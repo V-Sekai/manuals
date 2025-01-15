@@ -1,4 +1,4 @@
-# Proposed: Transition to Dokku from Kubernetes
+# Accepted: Transition to Dokku from Kubernetes
 
 ## What is the context of the proposal?
 
@@ -55,7 +55,7 @@ Yes, to streamline operations for V-Sekai’s backend management.
 
 ## What is the status of the proposal?
 
-Status: Proposed
+Status: Accepted
 
 ## Who is making decisions on the proposal?
 
