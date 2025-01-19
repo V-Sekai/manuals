@@ -61,7 +61,7 @@ Permissions. Have ways for people without much technical understanding to make c
 
 We want to avoid a Guild City where only people with domain expertise are able to make contributions.
 
-## Who is making decisions on the proposal?
+## Attended
 
 - Astral_Druid
 - Lyuma
