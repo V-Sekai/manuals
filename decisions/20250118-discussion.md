@@ -66,3 +66,6 @@ We want to avoid a Guild City where only people with domain expertise are able t
 - Astral_Druid
 - Lyuma
 - Fire
+- Lox
+- Squarepeg
+ 
