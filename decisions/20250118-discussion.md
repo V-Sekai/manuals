@@ -1,4 +1,4 @@
-# V-Sekai discussion Jan 18, 2025
+# Accepted: V-Sekai discussion Jan 18, 2025
 
 Why do people care about V-Sekai?
 
@@ -18,7 +18,9 @@ Games:
   Homo Ludens
 
 System of games. Example: playground games such as foursquare have their own house rules.
+
 Why can we build a system peacefully?
+
 As long as people are encouraed to engage with VR, can create peace.
 
 Routes: creativity. Seed of acknowledging the work that we do for one another.
@@ -28,6 +30,7 @@ Platform ideas:
 - Elder care (Hospice and retirement communities). Post-scarcity setting.
 
 After godot is adopted, libraries can legally host games. also, AI models.
+
 Assumption that there will be more indie games rather than AAA.
 
 Target devices:
@@ -57,3 +60,9 @@ Haven and world scale.
 Permissions. Have ways for people without much technical understanding to make changes to the world. (Wiki Wiki Web)
 
 We want to avoid a Guild City where only people with domain expertise are able to make contributions.
+
+## Who is making decisions on the proposal?
+
+- Astral_Druid
+- Lyuma
+- Fire
