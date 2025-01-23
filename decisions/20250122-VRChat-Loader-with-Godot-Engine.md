@@ -77,3 +77,4 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 - Add colliders
 - Swap VRChat with Godot Engine Game
 - Expose local godot server with tailscale to the web
+- Automatic 30-120 second reloader
