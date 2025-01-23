@@ -66,7 +66,7 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## List further reading references.
 
-2. [V-Sekai · GitHub](https://github.com/v-sekai)
+1. [V-Sekai · GitHub](https://github.com/v-sekai)
 3. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
 1. [VRChat GLB Loader](https://github.com/vr-voyage/vrchat-glb-loader)
 4. [Galbi SDK](https://galbi-sdk-docs.pages.dev/en/)
