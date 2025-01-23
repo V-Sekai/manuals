@@ -66,7 +66,8 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## List further reading references.
 
-1. [VRChat GLB Loader](https://github.com/vr-voyage/vrchat-glb-loader)
 2. [V-Sekai · GitHub](https://github.com/v-sekai)
 3. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
+1. [VRChat GLB Loader](https://github.com/vr-voyage/vrchat-glb-loader)
 4. [Galbi SDK](https://galbi-sdk-docs.pages.dev/en/)
+5. [World Name: Project Galbi](https://vrchat.com/home/launch?worldId=wrld_068ed758-68b1-40bc-b647-f54c3b3d92fc)
