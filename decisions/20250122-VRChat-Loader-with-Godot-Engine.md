@@ -6,9 +6,11 @@ We plan to integrate a VRChat loader that fetches scenes from a Godot Engine HTT
 
 ## What is the problem being solved?
 
-The existing loader cannot directly use the Godot Engine HTTP server, limiting on-the-fly scene loading.
+Facilitate updates and management of complex scenes in VRChat by allowing external tools to efficiently modify and synchronize the world environment.
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
+
+Implement a protocol in Godot Engine for HTTP GET requests of `.glb` files.
 
 ### Scenario: Retrieve current scene from Godot Engine via HTTP GET request
 
@@ -67,8 +69,8 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 ## List further reading references.
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai)
-3. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
-1. [VRChat GLB Loader](https://github.com/vr-voyage/vrchat-glb-loader)
+2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
+3. [VRChat GLB Loader](https://github.com/vr-voyage/vrchat-glb-loader)
 4. [Galbi SDK](https://galbi-sdk-docs.pages.dev/en/)
 5. [World Name: Project Galbi](https://vrchat.com/home/launch?worldId=wrld_068ed758-68b1-40bc-b647-f54c3b3d92fc)
 
@@ -78,3 +80,4 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 - Swap VRChat with Godot Engine Game
 - Expose local godot server with tailscale to the web
 - Automatic 30-120 second reloader
+- Add optimization and limits to avoid loader lag
