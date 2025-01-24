@@ -10,7 +10,7 @@ Facilitate updates and management of complex scenes in VRChat by allowing extern
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
 
-### Stage 1: GLB with Repacked DDS Support
+### GLB with Repacked DDS Support
 
 Implement a protocol in Godot Engine for HTTP GET requests of GLB files with repacked DDS textures.
 

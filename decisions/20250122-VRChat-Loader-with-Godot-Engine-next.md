@@ -10,7 +10,7 @@ Facilitate updates and management of complex scenes in VRChat by allowing extern
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
 
-### Stage 2: 3D Tiles 1.1 Support
+### 3D Tiles 1.1 Support
 
 Extend the protocol to support HTTP GET requests of Cesium 3D Tiles 1.1 meta files.
 
