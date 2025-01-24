@@ -84,5 +84,26 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 - Optimize and set limits to prevent loader lag
 - Load colliders first, followed by bounding boxes, meshes, and materials
 - Create a JSON manifest for placing one `.glb` per object in world space
-- Concatenate multiple `.glb` URLs into a single query string for batch loading
-- Create a monolithic "whole world" `.glb` for certain scenarios
+```json
+{
+    "objects": [
+        {
+            "id": "object1",
+            "file": "path/to/object1.glb",
+            "position": { "x": 0, "y": 0, "z": 0 },
+            "rotation": { "x": 0, "y": 0, "z": 0 },
+            "scale": { "x": 1, "y": 1, "z": 1 }
+        },
+        {
+            "id": "object2",
+            "file": "path/to/object2.glb",
+            "position": { "x": 10, "y": 0, "z": 5 },
+            "rotation": { "x": 0, "y": 45, "z": 0 },
+            "scale": { "x": 1, "y": 1, "z": 1 }
+        }
+    ]
+}
+```
+- Implement a space-efficient query string for shifting objects into world space by using a compact JSON format:
+- Encode the JSON object into a base64 string to minimize the query string length:
+- http://godot-server/load-scenes.glb?data=eyJvYmplY3RzIjpbeyJpZCI6Im9iamVjdDEiLCJmaWxlIjoicGF0aC90by9vYmplY3QxLmdsYiIsInBvc2l0aW9uIjp7IngiOjAsInkiOjAsInoiOjB9LCJyb3RhdGlvbiI6eyJ4IjowLCJ5IjowLCJ6IjowfSwic2NhbGUiOnsieCI6MSwieSI6MSwieiI6MX19LHsiaWQiOiJvYmplY3QyIiwiZmlsZSI6InBhdGgvdG8vb2JqZWN0Mi5nbGIiLCJwb3NpdGlvbiI6eyJ4IjoxMCwieSI6MCwieiI6NX0sInJvdGF0aW9uIjp7IngiOjAsInkiOjQ1LCJ6IjowfSwic2NhbGUiOnsieCI6MSwieSI6MSwieiI6MX19XX0=
