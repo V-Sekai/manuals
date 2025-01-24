@@ -10,19 +10,40 @@ Facilitate updates and management of complex scenes in VRChat by allowing extern
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
 
-Implement a protocol in Godot Engine for HTTP GET requests of Cesium 3D Tiles 1.1 meta files.
+### Stage 1: GLB with Repacked DDS Support
 
-### Scenario: Retrieve current scene from Godot Engine via HTTP GET request
+Implement a protocol in Godot Engine for HTTP GET requests of GLB files with repacked DDS textures.
 
-#### Given
+#### Scenario: Retrieve current scene from Godot Engine via HTTP GET request
+
+##### Given
 
 - A VRChat loader accepting scene URLs
 
-#### When
+##### When
 
 - A request is sent to the Godot Engine HTTP server with a scene ID
 
-#### Then
+##### Then
+
+- The server returns the current scene with a DDS writer (MSFT_texture_dds) on the Godot side
+- VRChat loads the GLB file from the DDS response
+
+### Stage 2: 3D Tiles 1.1 Support
+
+Extend the protocol to support HTTP GET requests of Cesium 3D Tiles 1.1 meta files.
+
+#### Scenario: Retrieve current scene from Godot Engine via HTTP GET request
+
+##### Given
+
+- A VRChat loader accepting scene URLs
+
+##### When
+
+- A request is sent to the Godot Engine HTTP server with a scene ID
+
+##### Then
 
 - The server returns the current scene with a DDS writer (MSFT_texture_dds) on the Godot side
 - VRChat loads the Cesium 3D Tiles 1.1 meta file from the DDS response
