@@ -87,20 +87,45 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ```json
 {
-  "nodes": [
+  "extensionsRequired": ["MSFT_texture_dds", "KHR_implicit_shapes"],
+  "extensionsUsed": ["MSFT_texture_dds", "KHR_implicit_shapes"],
+  "objects": [
     {
-      "name": "object1",
-      "mesh": "path/to/object1.glb",
-      "translation": [0, 0, 0],
-      "rotation": [0, 0, 0, 1],
-      "scale": [1, 1, 1]
+      "id": "object1",
+      "mimeType": "model/gltf-binary",
+      "uri": "path/to/object1.glb",
+      "boundingVolume": {
+        "sphere": [0, 0, 0, 1]
+      },
+      "transform": {
+        "translation": [1, 0, 0],
+        "rotation": [0, 0, 0, 1],
+        "scale": [1, 1, 1]
+      }
     },
     {
-      "name": "object2",
-      "mesh": "path/to/object2.glb",
-      "translation": [10, 0, 5],
-      "rotation": [0, 0.3826834, 0, 0.9238795],
-      "scale": [1, 1, 1]
+      "id": "object2",
+      "mimeType": "model/gltf-binary",
+      "uri": "path/to/object2.glb",
+      "boundingVolume": {
+        "box": [0, 0, 0, 1, 1, 1]
+      }
+    },
+    {
+      "id": "object3",
+      "mimeType": "model/gltf-binary",
+      "uri": "path/to/object3.glb",
+      "boundingVolume": {
+        "cylinder": [0, 0, 0, 1, 0.5, 0.5]
+      }
+    },
+    {
+      "id": "object4",
+      "mimeType": "model/gltf-binary",
+      "uri": "path/to/object4.glb",
+      "boundingVolume": {
+        "capsule": [0, 0, 0, 1, 0.5, 0.5]
+      }
     }
   ]
 }
@@ -108,4 +133,4 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 - Implement a space-efficient query string for shifting objects into world space by using a compact JSON format:
 - Encode the JSON object into a base64 string to minimize the query string length:
-- http://godot-server/load-scenes.glb?data=eyJub2RlcyI6W3sibmFtZSI6Im9iamVjdDEiLCJtZXNoIjoicGF0aC90by9vYmplY3QxLmdsYiIsInRyYW5zbGF0aW9uIjpbMCwwLDBdLCJyb3RhdGlvbiI6WzAsMCwwLDFdLCJzY2FsZSI6WzEsMSwxXX0seyJuYW1lIjoib2JqZWN0MiIsIm1lc2giOiJwYXRoL3RvL29iamVjdDIuZ2xiIiwidHJhbnNsYXRpb24iOlsxMCwwLDVdLCJyb3RhdGlvbiI6WzAsMC4zODI2ODM0LDAsMC45MjM4Nzk1XSwic2NhbGUiOlsxLDEsMV19XX0=
+- http://godot-server/load-scenes.glb?data=eyJvYmplY3RzIjpbeyJpZCI6Im9iamVjdDEiLCJ0eXBlIjoibWVzaDovL2dpdGh1Yi5jb20vdi1zZWthaS92cmMtZ2xiLWVuY29kZWQvZ2xURjIuMCtERFMrUE5HIiwicmVzb3VyY2UiOiJwYXRoL3RvL29iamVjdDEuZ2xiIiwidHJhbnNmb3JtIjpbMSwwLDAsMCwwLDEsMCwwLDAsMCwxLDAsMCwwLDAsMCwxXX0seyJpZCI6Im9iamVjdDIiLCJ0eXBlIjoibWVzaDovL2dpdGh1Yi5jb20vdi1zZWthaS92cmMtZ2xiLWVuY29kZWQvZ2xURjIuMCtERFMrUE5HIiwicmVzb3VyY2UiOiJwYXRoL3RvL29iamVjdDIuZ2xiIiwidHJhbnNmb3JtIjpbMC45MjM4Nzk1MDQyMDM3OTY0LDAsMC4zODI2ODM0NTU5NDQwNjEzLDAsMCwwLDEsMCwwLC0wLjM4MjY4MzU1OTQwNjEzLDAsMC45MjM4Nzk1MDQyMDM3OTY0LDAsMTAsMCw1LDFdfV19
