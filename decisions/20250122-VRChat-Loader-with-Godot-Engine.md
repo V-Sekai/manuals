@@ -83,4 +83,4 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 - Replace VRChat with Godot Engine Game
 - Expose local Godot server to the web using Tailscale
 - Optimize to prevent loader lag
-- Use 3D Tiles 1.1 as a container for glTF2, downloadable by VRChat world, e.g., `https://example.com/3d-tiles-1.1.glb?data=https%3A%2F%2Fgithub.com%2FCesiumGS%2F3d-tiles-samples%2Fblob%2Fmain%2F1.1%2FBoundingBoxTests%2F2_0_0-4_1_1%2Ftileset.json`
+- Use 3D Tiles 1.1 as a container for glTF2, downloadable by VRChat world, e.g., `https://example.com/3d-tiles-1.1.glb?uri=https%3A%2F%2Fgithub.com%2FCesiumGS%2F3d-tiles-samples%2Fblob%2Fmain%2F1.1%2FBoundingBoxTests%2F2_0_0-4_1_1%2Ftileset.json`
