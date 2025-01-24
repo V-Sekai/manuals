@@ -1,4 +1,4 @@
-# Proposed: VRChat Loader with Godot Engine HTTP Server
+# Proposed: Godot Engine HTTP Server for GLB Download and Repack
 
 ## What is the context of the proposal?
 
@@ -13,6 +13,8 @@ Facilitate updates and management of complex scenes in VRChat by allowing extern
 ### GLB with Repacked DDS Support
 
 Implement a protocol in Godot Engine for HTTP GET requests of GLB files with repacked DDS textures.
+
+https://example.com/3d-format.glb?uri=https%3A%2F%2Fraw.githubusercontent.com%2FKhronosGroup%2FglTF-Sample-Assets%2Fmain%2FModels%2FCompareRoughness%2FglTF-Binary%2FCompareRoughness.glb
 
 #### Scenario: Retrieve current scene from Godot Engine via HTTP GET request
 
