@@ -84,4 +84,5 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 - Optimize and set limits to prevent loader lag
 - Load colliders first, followed by bounding boxes, meshes, and materials
 - Create a JSON manifest for placing one `.glb` per object in world space
+- Concatenate multiple `.glb` URLs into a single query string for batch loading
 - Create a monolithic "whole world" `.glb` for certain scenarios
