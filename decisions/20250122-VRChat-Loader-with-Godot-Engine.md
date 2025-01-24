@@ -77,60 +77,20 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Future Work
 
-- Add colliders
 - Replace VRChat with Godot Engine Game
 - Expose local Godot server to the web using Tailscale
 - Implement automatic reloader every 30-120 seconds
 - Optimize and set limits to prevent loader lag
 - Load colliders first, followed by bounding boxes, meshes, and materials
 - Create a JSON manifest for placing one `.glb` per object in world space
-
-```json
-{
-  "extensionsRequired": ["MSFT_texture_dds", "KHR_implicit_shapes"],
-  "extensionsUsed": ["MSFT_texture_dds", "KHR_implicit_shapes"],
-  "objects": [
-    {
-      "id": "object1",
-      "mimeType": "model/gltf-binary",
-      "uri": "path/to/object1.glb",
-      "boundingVolume": {
-        "sphere": [0, 0, 0, 1]
-      },
-      "transform": {
-        "translation": [1, 0, 0],
-        "rotation": [0, 0, 0, 1],
-        "scale": [1, 1, 1]
-      }
-    },
-    {
-      "id": "object2",
-      "mimeType": "model/gltf-binary",
-      "uri": "path/to/object2.glb",
-      "boundingVolume": {
-        "box": [0, 0, 0, 1, 1, 1]
-      }
-    },
-    {
-      "id": "object3",
-      "mimeType": "model/gltf-binary",
-      "uri": "path/to/object3.glb",
-      "boundingVolume": {
-        "cylinder": [0, 0, 0, 1, 0.5, 0.5]
-      }
-    },
-    {
-      "id": "object4",
-      "mimeType": "model/gltf-binary",
-      "uri": "path/to/object4.glb",
-      "boundingVolume": {
-        "capsule": [0, 0, 0, 1, 0.5, 0.5]
-      }
-    }
-  ]
-}
-```
-
-- Implement a space-efficient query string for shifting objects into world space by using a compact JSON format:
-- Encode the JSON object into a base64 string to minimize the query string length:
-- http://godot-server/load-scenes.glb?data=eyJvYmplY3RzIjpbeyJpZCI6Im9iamVjdDEiLCJ0eXBlIjoibWVzaDovL2dpdGh1Yi5jb20vdi1zZWthaS92cmMtZ2xiLWVuY29kZWQvZ2xURjIuMCtERFMrUE5HIiwicmVzb3VyY2UiOiJwYXRoL3RvL29iamVjdDEuZ2xiIiwidHJhbnNmb3JtIjpbMSwwLDAsMCwwLDEsMCwwLDAsMCwxLDAsMCwwLDAsMCwxXX0seyJpZCI6Im9iamVjdDIiLCJ0eXBlIjoibWVzaDovL2dpdGh1Yi5jb20vdi1zZWthaS92cmMtZ2xiLWVuY29kZWQvZ2xURjIuMCtERFMrUE5HIiwicmVzb3VyY2UiOiJwYXRoL3RvL29iamVjdDIuZ2xiIiwidHJhbnNmb3JtIjpbMC45MjM4Nzk1MDQyMDM3OTY0LDAsMC4zODI2ODM0NTU5NDQwNjEzLDAsMCwwLDEsMCwwLC0wLjM4MjY4MzU1OTQwNjEzLDAsMC45MjM4Nzk1MDQyMDM3OTY0LDAsMTAsMCw1LDFdfV19
+- Implement a space-efficient query string for shifting objects into world space using a compact JSON format
+- Utilize the `MSFT_texture_dds` and `KHR_implicit_shapes` extensions
+- Manage objects with unique `id`, `name`, `mimeType`, and `uri` attributes
+- Define bounding volumes such as sphere, box, cylinder, and capsule for each object
+- Implement object transformations including translation, rotation, and scale
+- Implement object transformations including matrix
+- Track `byteLength` for each object to monitor data sizes
+- Support extensions and extras for additional object metadata
+- Handle multiple objects with varying properties and transformations
+- Ensure efficient loading and rendering of `.glb` files from the Godot server
+- Optimize data encoding and query string length using base64
