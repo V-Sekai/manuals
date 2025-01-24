@@ -14,7 +14,7 @@ Facilitate updates and management of complex scenes in VRChat by allowing extern
 
 Implement a protocol in Godot Engine for HTTP GET requests of GLB files with repacked DDS textures.
 
-https://example.com/too/MSFT_texture_dds.glb?uri=https%3A%2F%2Fraw.githubusercontent.com%2FKhronosGroup%2FglTF-Sample-Assets%2Fmain%2FModels%2FCompareRoughness%2FglTF-Binary%2FCompareRoughness.glb
+https://example.com/tool/MSFT_texture_dds.glb?uri=https%3A%2F%2Fraw.githubusercontent.com%2FKhronosGroup%2FglTF-Sample-Assets%2Fmain%2FModels%2FCompareRoughness%2FglTF-Binary%2FCompareRoughness.glb
 
 #### Scenario: Retrieve current scene from Godot Engine via HTTP GET request
 
