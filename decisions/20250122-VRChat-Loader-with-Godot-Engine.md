@@ -81,4 +81,4 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 - Expose local godot server with tailscale to the web
 - Automatic 30-120 second reloader
 - Add optimization and limits to avoid loader lag
-- Use http range queries to pull only the json part and delay the data buffer parts
+- Use HTTP range queries to retrieve the JSON part initially and download (the average entire json document byte size in one request) incrementally until the end of the JSON document is reached.
