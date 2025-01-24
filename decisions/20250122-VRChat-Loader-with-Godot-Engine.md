@@ -87,6 +87,14 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 ## What tags does the proposal have?
 
 - V-Sekai
+- VRChat
+- Godot Engine
+- HTTP Server
+- GLB
+- DDS
+- 3D Tiles
+- Real-time Updates
+- Scene Management
 
 ## List further reading references.
 
@@ -97,6 +105,7 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 5. [World Name: Project Galbi](https://vrchat.com/home/launch?worldId=wrld_068ed758-68b1-40bc-b647-f54c3b3d92fc)
 6. [The-Cheap-or-Nasty-Pattern](https://zguide.zeromq.org/docs/chapter7/#The-Cheap-or-Nasty-Pattern)
 7. [CesiumGS/3d-tiles](https://github.com/CesiumGS/3d-tiles)
+8. [Cesium Plugin for Godot](https://cesium.com/blog/2024/09/26/cesium-plugin-for-godot/)
 
 ## Future Work
 
