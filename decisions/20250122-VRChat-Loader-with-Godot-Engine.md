@@ -78,20 +78,16 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Future Work
 
-- Replace VRChat with Godot Engine Game
-- Expose local Godot server to the web using Tailscale
 - Implement automatic reloader every 30-120 seconds
-- Optimize and set limits to prevent loader lag
-- Load colliders first, followed by bounding boxes, meshes, and materials
-- Create a JSON manifest for placing one `.glb` per object in world space
-- Implement a space-efficient query string for shifting objects into world space using a compact JSON format
-- Utilize the `MSFT_texture_dds` and `KHR_implicit_shapes` extensions
+- Replace VRChat with Godot Engine Game
+- Utilize the `MSFT_texture_dds` extensions
+- Expose local Godot server to the web using Tailscale
 - Manage objects with unique `id`, `name`, `mimeType`, and `uri` attributes
+- Utilize `KHR_implicit_shapes` extensions
 - Define bounding volumes such as sphere, box, cylinder, and capsule for each object
 - Implement object TRS transformations including translation, rotation, and scale
-- Implement object matrix transformations 
+- Implement object matrix transformations
+- Implement a space-efficient query string for shifting objects into world space using a compact JSON format
 - Track `byteLength` for each object to monitor data sizes
-- Support extensions and extras for additional object metadata
 - Handle multiple objects with varying properties and transformations
-- Ensure efficient loading and rendering of `.glb` files from the Godot server
-- Optimize data encoding and query string length using base64
+- Optimize and set limits to prevent loader lag
