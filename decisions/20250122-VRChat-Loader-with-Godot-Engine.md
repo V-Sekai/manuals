@@ -84,26 +84,28 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 - Optimize and set limits to prevent loader lag
 - Load colliders first, followed by bounding boxes, meshes, and materials
 - Create a JSON manifest for placing one `.glb` per object in world space
+
 ```json
 {
-    "objects": [
-        {
-            "id": "object1",
-            "file": "path/to/object1.glb",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
-        },
-        {
-            "id": "object2",
-            "file": "path/to/object2.glb",
-            "position": { "x": 10, "y": 0, "z": 5 },
-            "rotation": { "x": 0, "y": 45, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
-        }
-    ]
+  "nodes": [
+    {
+      "name": "object1",
+      "mesh": "path/to/object1.glb",
+      "translation": [0, 0, 0],
+      "rotation": [0, 0, 0, 1],
+      "scale": [1, 1, 1]
+    },
+    {
+      "name": "object2",
+      "mesh": "path/to/object2.glb",
+      "translation": [10, 0, 5],
+      "rotation": [0, 0.3826834, 0, 0.9238795],
+      "scale": [1, 1, 1]
+    }
+  ]
 }
 ```
+
 - Implement a space-efficient query string for shifting objects into world space by using a compact JSON format:
 - Encode the JSON object into a base64 string to minimize the query string length:
-- http://godot-server/load-scenes.glb?data=eyJvYmplY3RzIjpbeyJpZCI6Im9iamVjdDEiLCJmaWxlIjoicGF0aC90by9vYmplY3QxLmdsYiIsInBvc2l0aW9uIjp7IngiOjAsInkiOjAsInoiOjB9LCJyb3RhdGlvbiI6eyJ4IjowLCJ5IjowLCJ6IjowfSwic2NhbGUiOnsieCI6MSwieSI6MSwieiI6MX19LHsiaWQiOiJvYmplY3QyIiwiZmlsZSI6InBhdGgvdG8vb2JqZWN0Mi5nbGIiLCJwb3NpdGlvbiI6eyJ4IjoxMCwieSI6MCwieiI6NX0sInJvdGF0aW9uIjp7IngiOjAsInkiOjQ1LCJ6IjowfSwic2NhbGUiOnsieCI6MSwieSI6MSwieiI6MX19XX0=
+- http://godot-server/load-scenes.glb?data=eyJub2RlcyI6W3sibmFtZSI6Im9iamVjdDEiLCJtZXNoIjoicGF0aC90by9vYmplY3QxLmdsYiIsInRyYW5zbGF0aW9uIjpbMCwwLDBdLCJyb3RhdGlvbiI6WzAsMCwwLDFdLCJzY2FsZSI6WzEsMSwxXX0seyJuYW1lIjoib2JqZWN0MiIsIm1lc2giOiJwYXRoL3RvL29iamVjdDIuZ2xiIiwidHJhbnNsYXRpb24iOlsxMCwwLDVdLCJyb3RhdGlvbiI6WzAsMC4zODI2ODM0LDAsMC45MjM4Nzk1XSwic2NhbGUiOlsxLDEsMV19XX0=
