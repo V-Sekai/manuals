@@ -88,8 +88,8 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 - Utilize the `MSFT_texture_dds` and `KHR_implicit_shapes` extensions
 - Manage objects with unique `id`, `name`, `mimeType`, and `uri` attributes
 - Define bounding volumes such as sphere, box, cylinder, and capsule for each object
-- Implement object transformations including translation, rotation, and scale
-- Implement object transformations including matrix
+- Implement object TRS transformations including translation, rotation, and scale
+- Implement object matrix transformations 
 - Track `byteLength` for each object to monitor data sizes
 - Support extensions and extras for additional object metadata
 - Handle multiple objects with varying properties and transformations
