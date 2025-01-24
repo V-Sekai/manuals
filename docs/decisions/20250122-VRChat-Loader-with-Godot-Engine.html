@@ -124,7 +124,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams." id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams." class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams.">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.</a>
   <ul class="collapse">
   <li><a href="#stage-1-glb-with-repacked-dds-support" id="toc-stage-1-glb-with-repacked-dds-support" class="nav-link" data-scroll-target="#stage-1-glb-with-repacked-dds-support">Stage 1: GLB with Repacked DDS Support</a></li>
-  <li><a href="#stage-2-3d-tiles-1.1-support" id="toc-stage-2-3d-tiles-1.1-support" class="nav-link" data-scroll-target="#stage-2-3d-tiles-1.1-support">Stage 2: 3D Tiles 1.1 Support</a></li>
   </ul></li>
   <li><a href="#what-are-the-benefits-of-the-proposal" id="toc-what-are-the-benefits-of-the-proposal" class="nav-link" data-scroll-target="#what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</a></li>
   <li><a href="#what-are-the-downsides-of-the-proposal" id="toc-what-are-the-downsides-of-the-proposal" class="nav-link" data-scroll-target="#what-are-the-downsides-of-the-proposal">What are the downsides of the proposal?</a></li>
@@ -135,7 +134,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#who-is-making-decisions-on-the-proposal" id="toc-who-is-making-decisions-on-the-proposal" class="nav-link" data-scroll-target="#who-is-making-decisions-on-the-proposal">Who is making decisions on the proposal?</a></li>
   <li><a href="#what-tags-does-the-proposal-have" id="toc-what-tags-does-the-proposal-have" class="nav-link" data-scroll-target="#what-tags-does-the-proposal-have">What tags does the proposal have?</a></li>
   <li><a href="#list-further-reading-references." id="toc-list-further-reading-references." class="nav-link" data-scroll-target="#list-further-reading-references.">List further reading references.</a></li>
-  <li><a href="#future-work" id="toc-future-work" class="nav-link" data-scroll-target="#future-work">Future Work</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20250122-VRChat-Loader-with-Godot-Engine.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -180,32 +178,6 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>The server returns the current scene with a DDS writer (MSFT_texture_dds) on the Godot side</li>
 <li>VRChat loads the GLB file from the DDS response</li>
-</ul>
-</section>
-</section>
-</section>
-<section id="stage-2-3d-tiles-1.1-support" class="level3">
-<h3 class="anchored" data-anchor-id="stage-2-3d-tiles-1.1-support">Stage 2: 3D Tiles 1.1 Support</h3>
-<p>Extend the protocol to support HTTP GET requests of Cesium 3D Tiles 1.1 meta files.</p>
-<section id="scenario-retrieve-current-scene-from-godot-engine-via-http-get-request-1" class="level4">
-<h4 class="anchored" data-anchor-id="scenario-retrieve-current-scene-from-godot-engine-via-http-get-request-1">Scenario: Retrieve current scene from Godot Engine via HTTP GET request</h4>
-<section id="given-1" class="level5">
-<h5 class="anchored" data-anchor-id="given-1">Given</h5>
-<ul>
-<li>A VRChat loader accepting scene URLs</li>
-</ul>
-</section>
-<section id="when-1" class="level5">
-<h5 class="anchored" data-anchor-id="when-1">When</h5>
-<ul>
-<li>A request is sent to the Godot Engine HTTP server with a scene ID</li>
-</ul>
-</section>
-<section id="then-1" class="level5">
-<h5 class="anchored" data-anchor-id="then-1">Then</h5>
-<ul>
-<li>The server returns the current scene with a DDS writer (MSFT_texture_dds) on the Godot side</li>
-<li>VRChat loads the Cesium 3D Tiles 1.1 meta file from the DDS response</li>
 </ul>
 </section>
 </section>
@@ -266,7 +238,6 @@ ul.task-list li input[type="checkbox"] {
 <li>HTTP Server</li>
 <li>GLB</li>
 <li>DDS</li>
-<li>3D Tiles</li>
 <li>Real-time Updates</li>
 <li>Scene Management</li>
 </ul>
@@ -280,19 +251,7 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://galbi-sdk-docs.pages.dev/en/">Galbi SDK</a></li>
 <li><a href="https://vrchat.com/home/launch?worldId=wrld_068ed758-68b1-40bc-b647-f54c3b3d92fc">World Name: Project Galbi</a></li>
 <li><a href="https://zguide.zeromq.org/docs/chapter7/#The-Cheap-or-Nasty-Pattern">The-Cheap-or-Nasty-Pattern</a></li>
-<li><a href="https://github.com/CesiumGS/3d-tiles">CesiumGS/3d-tiles</a></li>
-<li><a href="https://cesium.com/blog/2024/09/26/cesium-plugin-for-godot/">Cesium Plugin for Godot</a></li>
 </ol>
-</section>
-<section id="future-work" class="level2">
-<h2 class="anchored" data-anchor-id="future-work">Future Work</h2>
-<ul>
-<li>Auto-reload every 30-120 seconds</li>
-<li>Replace VRChat with Godot Engine Game</li>
-<li>Expose local Godot server to the web using Tailscale</li>
-<li>Optimize to prevent loader lag</li>
-<li>Use 3D Tiles 1.1 as a container for glTF2, downloadable by VRChat world, e.g., <code>https://example.com/3d-tiles-1.1.glb?uri=https%3A%2F%2Fgithub.com%2FCesiumGS%2F3d-tiles-samples%2Fblob%2Fmain%2F1.1%2FBoundingBoxTests%2F2_0_0-4_1_1%2Ftileset.json</code></li>
-</ul>
 
 
 </section>
