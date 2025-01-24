@@ -157,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams." class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams.">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.</h2>
-<p>Implement a protocol in Godot Engine for HTTP GET requests of <code>.glb</code> files.</p>
+<p>Implement a protocol in Godot Engine for HTTP GET requests of Cesium 3D Tiles 1.1 meta files.</p>
 <section id="scenario-retrieve-current-scene-from-godot-engine-via-http-get-request" class="level3">
 <h3 class="anchored" data-anchor-id="scenario-retrieve-current-scene-from-godot-engine-via-http-get-request">Scenario: Retrieve current scene from Godot Engine via HTTP GET request</h3>
 <section id="given" class="level4">
@@ -175,8 +175,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="then" class="level4">
 <h4 class="anchored" data-anchor-id="then">Then</h4>
 <ul>
-<li>The server returns the current scene with a DDS writer on the Godot side</li>
-<li>VRChat loads the .glb file from the DDS response</li>
+<li>The server returns the current scene with a DDS writer (MSFT_texture_dds) on the Godot side</li>
+<li>VRChat loads the Cesium 3D Tiles 1.1 meta file from the DDS response</li>
 </ul>
 </section>
 </section>
@@ -242,24 +242,17 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://galbi-sdk-docs.pages.dev/en/">Galbi SDK</a></li>
 <li><a href="https://vrchat.com/home/launch?worldId=wrld_068ed758-68b1-40bc-b647-f54c3b3d92fc">World Name: Project Galbi</a></li>
 <li><a href="https://zguide.zeromq.org/docs/chapter7/#The-Cheap-or-Nasty-Pattern">The-Cheap-or-Nasty-Pattern</a></li>
+<li><a href="https://github.com/CesiumGS/3d-tiles">CesiumGS/3d-tiles</a></li>
 </ol>
 </section>
 <section id="future-work" class="level2">
 <h2 class="anchored" data-anchor-id="future-work">Future Work</h2>
 <ul>
-<li>Implement automatic reloader every 30-120 seconds</li>
+<li>Auto-reload every 30-120 seconds</li>
 <li>Replace VRChat with Godot Engine Game</li>
-<li>Utilize the <code>MSFT_texture_dds</code> extensions</li>
 <li>Expose local Godot server to the web using Tailscale</li>
-<li>Manage objects with unique <code>id</code>, <code>name</code>, <code>mimeType</code>, and <code>uri</code> attributes</li>
-<li>Utilize <code>KHR_implicit_shapes</code> extensions</li>
-<li>Define bounding volumes such as sphere, box, cylinder, and capsule for each object</li>
-<li>Implement object TRS transformations including translation, rotation, and scale</li>
-<li>Implement object matrix transformations</li>
-<li>Implement a space-efficient query string for shifting objects into world space using a compact JSON format</li>
-<li>Track <code>byteLength</code> for each object to monitor data sizes</li>
-<li>Handle multiple objects with varying properties and transformations</li>
-<li>Optimize and set limits to prevent loader lag</li>
+<li>Optimize to prevent loader lag</li>
+<li>Use 3D Tiles 1.1 as a container for glTF2, downloadable by VRChat world, e.g., <code>https://example.com/3d-tiles-1.1.glb?data=https%3A%2F%2Fgithub.com%2FCesiumGS%2F3d-tiles-samples%2Fblob%2Fmain%2F1.1%2FBoundingBoxTests%2F2_0_0-4_1_1%2Ftileset.json</code></li>
 </ul>
 
 
