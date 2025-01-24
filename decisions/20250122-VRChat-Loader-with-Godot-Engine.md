@@ -24,7 +24,7 @@ https://tool.example.com/MSFT_texture_dds.glb?uri=https%3A%2F%2Fraw.githubuserco
 
 ##### When
 
-- A request is sent to the Godot Engine HTTP server with a scene ID
+- A request is sent to the Godot Engine HTTP server with the uri
 
 ##### Then
 
