@@ -61,6 +61,7 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 - V-Sekai development team
 - Fire
 - Astral Druid
+- HumbleTim
 
 ## What tags does the proposal have?
 
@@ -77,8 +78,10 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 ## Future Work
 
 - Add colliders
-- Swap VRChat with Godot Engine Game
-- Expose local godot server with tailscale to the web
-- Automatic 30-120 second reloader
-- Add optimization and limits to avoid loader lag
-- Load colliders first and then bounding oxes, then meshes, then materials.
+- Replace VRChat with Godot Engine Game
+- Expose local Godot server to the web using Tailscale
+- Implement automatic reloader every 30-120 seconds
+- Optimize and set limits to prevent loader lag
+- Load colliders first, followed by bounding boxes, meshes, and materials
+- Create a JSON manifest for placing one `.glb` per object in world space
+- Create a monolithic "whole world" `.glb` for certain scenarios
