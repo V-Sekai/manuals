@@ -1,4 +1,4 @@
-# Proposed: VRChat Loader with Godot Engine HTTP Server
+# Proposed: VRChat Loader with Godot Engine HTTP Server Next
 
 ## What is the context of the proposal?
 
@@ -10,9 +10,9 @@ Facilitate updates and management of complex scenes in VRChat by allowing extern
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
 
-### Stage 1: GLB with Repacked DDS Support
+### Stage 2: 3D Tiles 1.1 Support
 
-Implement a protocol in Godot Engine for HTTP GET requests of GLB files with repacked DDS textures.
+Extend the protocol to support HTTP GET requests of Cesium 3D Tiles 1.1 meta files.
 
 #### Scenario: Retrieve current scene from Godot Engine via HTTP GET request
 
@@ -27,7 +27,7 @@ Implement a protocol in Godot Engine for HTTP GET requests of GLB files with rep
 ##### Then
 
 - The server returns the current scene with a DDS writer (MSFT_texture_dds) on the Godot side
-- VRChat loads the GLB file from the DDS response
+- VRChat loads the Cesium 3D Tiles 1.1 meta file from the DDS response
 
 ## What are the benefits of the proposal?
 
@@ -73,6 +73,7 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 - HTTP Server
 - GLB
 - DDS
+- 3D Tiles
 - Real-time Updates
 - Scene Management
 
@@ -84,3 +85,13 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 4. [Galbi SDK](https://galbi-sdk-docs.pages.dev/en/)
 5. [World Name: Project Galbi](https://vrchat.com/home/launch?worldId=wrld_068ed758-68b1-40bc-b647-f54c3b3d92fc)
 6. [The-Cheap-or-Nasty-Pattern](https://zguide.zeromq.org/docs/chapter7/#The-Cheap-or-Nasty-Pattern)
+7. [CesiumGS/3d-tiles](https://github.com/CesiumGS/3d-tiles)
+8. [Cesium Plugin for Godot](https://cesium.com/blog/2024/09/26/cesium-plugin-for-godot/)
+
+## Future Work
+
+- Auto-reload every 30-120 seconds
+- Replace VRChat with Godot Engine Game
+- Expose local Godot server to the web using Tailscale
+- Optimize to prevent loader lag
+- Use 3D Tiles 1.1 as a container for glTF2, downloadable by VRChat world, e.g., `https://example.com/3d-tiles-1.1.glb?uri=https%3A%2F%2Fgithub.com%2FCesiumGS%2F3d-tiles-samples%2Fblob%2Fmain%2F1.1%2FBoundingBoxTests%2F2_0_0-4_1_1%2Ftileset.json`
