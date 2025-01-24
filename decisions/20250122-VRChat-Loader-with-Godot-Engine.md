@@ -10,7 +10,7 @@ Facilitate updates and management of complex scenes in VRChat by allowing extern
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
 
-Implement a protocol in Godot Engine for HTTP GET requests of `.glb` files.
+Implement a protocol in Godot Engine for HTTP GET requests of Cesium 3D Tiles 1.1 meta files.
 
 ### Scenario: Retrieve current scene from Godot Engine via HTTP GET request
 
@@ -24,8 +24,8 @@ Implement a protocol in Godot Engine for HTTP GET requests of `.glb` files.
 
 #### Then
 
-- The server returns the current scene with a DDS writer on the Godot side
-- VRChat loads the .glb file from the DDS response
+- The server returns the current scene with a DDS writer (MSFT_texture_dds) on the Godot side
+- VRChat loads the Cesium 3D Tiles 1.1 meta file from the DDS response
 
 ## What are the benefits of the proposal?
 
@@ -75,19 +75,12 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 4. [Galbi SDK](https://galbi-sdk-docs.pages.dev/en/)
 5. [World Name: Project Galbi](https://vrchat.com/home/launch?worldId=wrld_068ed758-68b1-40bc-b647-f54c3b3d92fc)
 6. [The-Cheap-or-Nasty-Pattern](https://zguide.zeromq.org/docs/chapter7/#The-Cheap-or-Nasty-Pattern)
+7. [CesiumGS/3d-tiles](https://github.com/CesiumGS/3d-tiles)
 
 ## Future Work
 
-- Implement automatic reloader every 30-120 seconds
+- Auto-reload every 30-120 seconds
 - Replace VRChat with Godot Engine Game
-- Utilize the `MSFT_texture_dds` extensions
 - Expose local Godot server to the web using Tailscale
-- Manage objects with unique `id`, `name`, `mimeType`, and `uri` attributes
-- Utilize `KHR_implicit_shapes` extensions
-- Define bounding volumes such as sphere, box, cylinder, and capsule for each object
-- Implement object TRS transformations including translation, rotation, and scale
-- Implement object matrix transformations
-- Implement a space-efficient query string for shifting objects into world space using a compact JSON format
-- Track `byteLength` for each object to monitor data sizes
-- Handle multiple objects with varying properties and transformations
-- Optimize and set limits to prevent loader lag
+- Optimize to prevent loader lag
+- Use 3D Tiles 1.1 as a container for glTF2, downloadable by VRChat world, e.g., `https://example.com/3d-tiles-1.1.glb?data=https%3A%2F%2Fgithub.com%2FCesiumGS%2F3d-tiles-samples%2Fblob%2Fmain%2F1.1%2FBoundingBoxTests%2F2_0_0-4_1_1%2Ftileset.json`
