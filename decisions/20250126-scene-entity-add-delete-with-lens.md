@@ -47,7 +47,7 @@ Below is a snippet illustrating scene entity creation, selection, and lens-based
 
 ## Multiplayer Sync
 
-Multiplayer sync between different Godot editors is required.
+Multiplayer sync between different Godot editors is required but is described in a different proposal.
 
 ## What are the benefits of the proposal?
 
