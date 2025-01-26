@@ -57,21 +57,15 @@ Scene entity adds & deletes with the overlay also requires 20250126-primitive-ou
 
 ## What are the benefits of the proposal?
 
-• Streamlined object placement and removal  
-• Improved collaboration with overlay-based metadata  
-• Potential for interactive previews and user scoring
+The proposal offers streamlined object placement and removal, improved collaboration through overlay-based metadata, and the potential for interactive previews and user scoring.
 
 ## What are the downsides of the proposal?
 
-• Added complexity for new contributors  
-• Requires careful UI design to avoid clutter  
-• Potential performance overhead for large scenes
+It introduces added complexity for new contributors, requires careful UI design to avoid clutter, and may result in potential performance overhead for large scenes.
 
 ## What are the alternative proposals?
 
-• Rely on standard Godot editor workflows  
-• Use no overlay, only default selection tools  
-• Integrate separate third-party VR creation plugins
+Alternatives include relying on standard Godot editor workflows, using no overlay and only default selection tools, and integrating separate third-party VR creation plugins.
 
 ## When might the proposed solution be used rarely or not at all?
 
