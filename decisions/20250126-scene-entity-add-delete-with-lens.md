@@ -10,7 +10,7 @@ We need a more intuitive, integrated approach to placing, selecting, removing, a
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
 
-Below is a snippet illustrating scene entity creation, selection, and lens-based metadata with an outline design:
+Below is a snippet illustrating scene entity creation, selection, and lens-based metadata design:
 
 ```json
 {
@@ -18,9 +18,6 @@ Below is a snippet illustrating scene entity creation, selection, and lens-based
         {
             "asset": "SomeAssetName",
             "placement_method": "raycast_click",
-            "outline": {
-                "indices": 3
-            },
             "metadata": {
                 "creator_id": "user123",
                 "score": ["user789", "user456"]
@@ -29,9 +26,6 @@ Below is a snippet illustrating scene entity creation, selection, and lens-based
         {
             "asset": "AnotherAsset",
             "placement_method": "default_location",
-            "outline": {
-                "indices": 4
-            },
             "metadata": {
                 "creator_id": "user456",
                 "score": []
@@ -101,4 +95,3 @@ Status: Proposed
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai)
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
-3. [CESIUM Primitive Outline](https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Vendor/CESIUM_primitive_outline/README.md) CESIUM Primitive Outline extension indicates to a rendering engine that a list of triangle edges should be outlined. While it does not dictate how the rendering should be done, the fact that all lines are edges of triangles allows the rendering engine to use a higher quality – and faster – technique for rendering the lines without deducing the suitability of such a technique at runtime. Cesium uses a mipmapped 1D texture and three sets of 1D texture coordinates to render high-quality, anti-aliased lines on the edges of triangles.
