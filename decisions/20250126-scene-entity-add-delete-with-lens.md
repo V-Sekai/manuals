@@ -10,7 +10,7 @@ We need a more intuitive, integrated approach to placing, selecting, removing, a
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
 
-Below is a snippet illustrating scene entity creation, selection, and lens-based metadata design:
+Below is a snippet illustrating scene entity creation, selection, and lens-based metadata with an outline design:
 
 ```json
 {
@@ -18,6 +18,7 @@ Below is a snippet illustrating scene entity creation, selection, and lens-based
         {
             "asset": "SomeAssetName",
             "placement_method": "raycast_click",
+            "outline": ["primitive_outline",]
             "metadata": {
                 "creator_id": "user123",
                 "score": ["user789", "user456"]
@@ -26,6 +27,9 @@ Below is a snippet illustrating scene entity creation, selection, and lens-based
         {
             "asset": "AnotherAsset",
             "placement_method": "default_location",
+            "outline": {
+                "indices": 4
+            },
             "metadata": {
                 "creator_id": "user456",
                 "score": []
@@ -45,9 +49,7 @@ Below is a snippet illustrating scene entity creation, selection, and lens-based
 }
 ```
 
-## Multiplayer Sync
-
-Multiplayer sync between different Godot editors is required but is described in a different proposal.
+Scene entity add & delete with lens also requires 20250126-primitive-outline and 20250126-multipler-sync-between-godot-instance.
 
 ## What are the benefits of the proposal?
 
