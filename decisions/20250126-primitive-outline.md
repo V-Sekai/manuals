@@ -22,7 +22,7 @@ The proposal adds complexity to the rendering pipeline, potentially complicating
 
 ## What are the alternative proposals?
 
-Alternative approaches include implementing a 2D overlay system with traditional interfaces, using point-based rendering instead of outlining edges, integrating existing third-party holographic tools instead of developing in-house solutions, and simplifying interactions by removing gesture-based controls.
+The traditional way of doing outlines is via mesh extrusion. Alternative approaches include implementing a 2D overlay system with traditional interfaces, using point-based rendering instead of outlining edges, integrating existing third-party holographic tools instead of developing in-house solutions, and simplifying interactions by removing gesture-based controls.
 
 ## When might the proposed solution be used rarely or not at all?
 
