@@ -53,7 +53,7 @@ Instead of a lens, we generate an overlay using the primitive outline. The multi
 }
 ```
 
-Scene entity adds & delete with the overlay also requires 20250126-primitive-outline and 20250126-multiplayer-sync-between-godot-instance.
+Scene entity adds & deletes with the overlay also requires 20250126-primitive-outline and 20250126-multiplayer-sync-between-godot-instance.
 
 ## What are the benefits of the proposal?
 
@@ -92,6 +92,7 @@ Status: Proposed
 - Lyuma
 - Astral Druid
 - Fire
+- Nova
 
 ## What tags does the proposal have?
 
