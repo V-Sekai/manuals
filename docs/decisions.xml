@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.40</generator>
-<lastBuildDate>Fri, 24 Jan 2025 03:45:16 GMT</lastBuildDate>
+<lastBuildDate>Sun, 26 Jan 2025 22:23:03 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Fri, 24 Jan 2025 03:45:16 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:23:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -162,7 +162,125 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Fri, 24 Jan 2025 03:45:16 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:23:03 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20250126-scene-entity-add-delete-with-lens.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-scene-entity-add-delete-with-lens" class="level1">
+<h1>Proposed: Scene entity add &amp; delete with lens</h1>
+<section id="what-is-the-context-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-context-of-the-proposal">What is the context of the proposal?</h2>
+<p>V-Sekai needs a lens-based system for adding, deleting, and managing scene entities in VR environments. It aims to enhance asset creation workflows, offering improved collaboration and metadata visibility.</p>
+</section>
+<section id="what-is-the-problem-being-solved" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-problem-being-solved">What is the problem being solved?</h2>
+<p>We need a more intuitive, integrated approach to place, select, remove, and inspect scene objects. Current methods lack interactive feedback, real-time previews, or a user-friendly lens for metadata.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams." class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams.">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.</h2>
+<p>Below is a snippet illustrating scene entity creation, selection, and lens-based metadata:</p>
+<pre><code>{
+    "scene_entities": [
+        {
+            "asset": "SomeAssetName",
+            "placement_method": "raycast_click",
+            "metadata": {
+                "creator_id": "user123",
+                "score": 10
+            }
+        },
+        {
+            "asset": "AnotherAsset",
+            "placement_method": "default_location",
+            "metadata": {
+                "creator_id": "user456",
+                "score": 5
+            }
+        }
+    ],
+    "lens_interaction": {
+        "show_creator": true,
+        "show_score": true,
+        "actions": ["upvote", "hide", "save_to_inventory"]
+    },
+    "decay_system": {
+        "enabled": true,
+        "decay_threshold_days": 30,
+        "repair_action": "upvote"
+    }
+}</code></pre>
+</section>
+<section id="multiplayer-sync" class="level2">
+<h2 class="anchored" data-anchor-id="multiplayer-sync">Multiplayer Sync</h2>
+<p>Multiplayer sync between different Godot editors is required.</p>
+</section>
+<section id="what-are-the-benefits-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</h2>
+<p>• Streamlined object placement and removal<br>
+• Improved collaboration with lens-based metadata<br>
+• Potential for interactive previews and user scoring</p>
+</section>
+<section id="what-are-the-downsides-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-downsides-of-the-proposal">What are the downsides of the proposal?</h2>
+<p>• Added complexity for new contributors<br>
+• Requires careful UI design to avoid clutter<br>
+• Potential performance overhead for large scenes</p>
+</section>
+<section id="what-are-the-alternative-proposals" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-alternative-proposals">What are the alternative proposals?</h2>
+<p>• Rely on standard Godot editor workflows<br>
+• Use no lens, only default selection tools<br>
+• Integrate separate third-party VR creation plugins</p>
+</section>
+<section id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all" class="level2">
+<h2 class="anchored" data-anchor-id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all">When might the proposed solution be used rarely or not at all?</h2>
+<p>• Simple scenes without collaboration or complex user interactions<br>
+• Non-VR projects where lens-based interaction is unnecessary</p>
+</section>
+<section id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us">Is this a V-Sekai core responsibility, and should it be done by us?</h2>
+<p>Yes. It aligns with social VR features and fosters community-driven content creation and sharing.</p>
+</section>
+<section id="what-is-the-status-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-status-of-the-proposal">What is the status of the proposal?</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="who-is-making-decisions-on-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="who-is-making-decisions-on-the-proposal">Who is making decisions on the proposal?</h2>
+<ul>
+<li>V-Sekai development team</li>
+<li>Lyuma</li>
+<li>Astral Druid</li>
+<li>Fire</li>
+</ul>
+</section>
+<section id="what-tags-does-the-proposal-have" class="level2">
+<h2 class="anchored" data-anchor-id="what-tags-does-the-proposal-have">What tags does the proposal have?</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="list-further-reading-references." class="level2">
+<h2 class="anchored" data-anchor-id="list-further-reading-references.">List further reading references.</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a></li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a></li>
+<li><a href="https://cesium.com/docs/cesium-primitive-outline">CESIUM_primitive_outline</a> CESIUM_primitive_outline extension indicates to a rendering engine that a list of triangle edges should be outlined. While it does not dictate how the rendering should be done, the fact that all of the lines are actually edges of triangles allows the rendering engine to use a higher quality – and faster – technique for rendering the lines, without needing to deduce the suitability of such a technique at runtime)</li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20250126-scene-entity-add-delete-with-lens.html</guid>
+  <pubDate>Sun, 26 Jan 2025 22:23:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -285,7 +403,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250123-implement-msft-texture-dds-in-godot.html</guid>
-  <pubDate>Fri, 24 Jan 2025 03:45:16 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:23:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -411,7 +529,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250122-VRChat-Loader-with-Godot-Engine.html</guid>
-  <pubDate>Fri, 24 Jan 2025 03:45:16 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:23:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -549,7 +667,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250122-VRChat-Loader-with-Godot-Engine-next.html</guid>
-  <pubDate>Fri, 24 Jan 2025 03:45:16 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:23:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -615,7 +733,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250118-discussion.html</guid>
-  <pubDate>Fri, 24 Jan 2025 03:45:16 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:23:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -692,7 +810,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250103-sparkly-valve-index-fix.html</guid>
-  <pubDate>Fri, 24 Jan 2025 03:45:16 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:23:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -886,7 +1004,7 @@ font-style: inherit;">mix</span> ash.setup</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241229-one-prototyping-stack.html</guid>
-  <pubDate>Fri, 24 Jan 2025 03:45:16 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:23:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1022,7 +1140,7 @@ font-style: inherit;">return</span> village</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241222-wandering-dancer.html</guid>
-  <pubDate>Fri, 24 Jan 2025 03:45:16 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:23:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1096,7 +1214,7 @@ font-style: inherit;">return</span> village</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241221-wandering-bakery.html</guid>
-  <pubDate>Fri, 24 Jan 2025 03:45:16 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:23:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1170,7 +1288,7 @@ font-style: inherit;">return</span> village</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241220-discord-quest-3.html</guid>
-  <pubDate>Fri, 24 Jan 2025 03:45:16 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:23:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1426,7 +1544,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241220-character-concept-art-creation.html</guid>
-  <pubDate>Fri, 24 Jan 2025 03:45:16 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:23:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1520,7 +1638,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241219-unpack-fbx-udimms.html</guid>
-  <pubDate>Fri, 24 Jan 2025 03:45:16 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:23:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1628,7 +1746,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241219-scriptable-sign.html</guid>
-  <pubDate>Fri, 24 Jan 2025 03:45:16 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:23:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1730,7 +1848,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241218-will-o-wisp-proto-avatar.html</guid>
-  <pubDate>Fri, 24 Jan 2025 03:45:16 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:23:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1998,7 +2116,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241210-vsekai-charter.html</guid>
-  <pubDate>Fri, 24 Jan 2025 03:45:16 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:23:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2202,7 +2320,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241112-godot-animation-streaming.html</guid>
-  <pubDate>Fri, 24 Jan 2025 03:45:16 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:23:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2278,7 +2396,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241102-plan-november-2024.html</guid>
-  <pubDate>Fri, 24 Jan 2025 03:45:16 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:23:03 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2359,110 +2477,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241028-use-data-tables-for-godot-constraints.html</guid>
-  <pubDate>Fri, 24 Jan 2025 03:45:16 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20241019-reduce-size-difference-between-capsules-and-mesh-volume.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="draft-reduce-size-difference-between-capsules-and-mesh-volume" class="level1">
-<h1>Draft: Reduce Size Difference Between Capsules and Mesh Volume</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>Accurately fit capsules around bones in skinned skeleton meshes. The example provided involves a rectangle skinned by two bones, with each vertex influenced by up to 8 weights.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>The goal is to minimize the size discrepancies between the capsules surrounding the bones and the actual volume defined by the skin mesh. This will be approached using the Minimum Deviation Flow problem in bidirected graphs (Bi-MDF).</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<section id="step-1-representation-of-the-skeleton-and-skin-mesh" class="level3">
-<h3 class="anchored" data-anchor-id="step-1-representation-of-the-skeleton-and-skin-mesh">Step 1: Representation of the Skeleton and Skin Mesh</h3>
-<ul>
-<li><strong>Skeleton</strong>: Represent each bone as a node in a graph.</li>
-<li><strong>Skin Mesh</strong>: Each vertex of the mesh is also a node. Connect a bone to a vertex with an edge if the vertex is influenced by that bone, based on skin weights.</li>
-</ul>
-</section>
-<section id="step-2-define-the-objective" class="level3">
-<h3 class="anchored" data-anchor-id="step-2-define-the-objective">Step 2: Define the Objective</h3>
-<ul>
-<li>The objective is to minimize the size differences between the capsules (nodes) and the volume of the skin mesh. This is quantified using a cost function that measures the deviation from ideal capsule sizes.</li>
-</ul>
-</section>
-<section id="implementation" class="level3">
-<h3 class="anchored" data-anchor-id="implementation">Implementation</h3>
-<p>I have no idea.</p>
-</section>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<ul>
-<li><strong>Accuracy</strong>: Improves the fit of capsules to the actual mesh, enhancing animation quality.</li>
-<li><strong>Efficiency</strong>: Reduces computational overhead by focusing on significant discrepancies.</li>
-</ul>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<ul>
-<li><strong>Complexity</strong>: Implementing and tuning the Bi-MDF algorithm can be complex.</li>
-<li><strong>Dependency</strong>: Relies heavily on accurate weight assignments and initial conditions.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<ul>
-<li>Alternative methods such as direct geometric fitting or machine learning approaches were considered but not pursued due to their complexity and computational requirements.</li>
-</ul>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<ul>
-<li>Handling cases where bones have minimal influence on any vertices, which might lead to underutilized algorithms and resources.</li>
-</ul>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<ul>
-<li>The development and integration of this feature are handled internally by the V-Sekai development team, ensuring it aligns with the core functionalities of the Godot Engine used for VR.</li>
-</ul>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
-<li><a href="https://github.com/V-Sekai-fire/libsatsuma">cgg-bern/libSatsuma</a> Exact and approximate solvers for minimum-cost-flow problems in bi-directed graphs.</li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20241019-reduce-size-difference-between-capsules-and-mesh-volume.html</guid>
-  <pubDate>Fri, 24 Jan 2025 03:45:16 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:23:03 GMT</pubDate>
 </item>
 </channel>
 </rss>
