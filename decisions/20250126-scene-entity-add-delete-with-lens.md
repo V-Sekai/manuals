@@ -35,7 +35,10 @@ Below is a snippet illustrating scene entity creation, selection, and lens-based
     "lens_interaction": {
         "show_creator": true,
         "show_score": true,
-        "actions": ["upvote", "hide", "save_to_inventory", "raise_concern"]
+        "actions": ["upvote", "hide", "save_to_inventory", "raise_concern"],
+        "outline": {
+            "indices": 4
+        },
     },
     "decay_system": {
         "enabled": true,
