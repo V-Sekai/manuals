@@ -2,7 +2,7 @@
 
 ## What is the context of the proposal?
 
-V-Sekai needs a lens-based system to add, delete, and manage scene entities in VR environments. It aims to enhance asset creation workflows and offer improved collaboration and metadata visibility.
+V-Sekai needs a lens-based system to add, delete, and manage scene entities in VR environments. It aims to enhance asset creation workflows and improve collaboration and metadata visibility.
 
 ## What is the problem being solved?
 
@@ -10,7 +10,7 @@ We need a more intuitive, integrated approach to placing, selecting, removing, a
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
 
-Below is a snippet illustrating scene entity creation, selection, and lens-based metadata with an outline design:
+Below is a snippet illustrating scene entity creation, selection, and lens-based metadata design:
 
 ```json
 {
