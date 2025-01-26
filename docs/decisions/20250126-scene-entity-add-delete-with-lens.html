@@ -156,7 +156,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#what-is-the-context-of-the-proposal" id="toc-what-is-the-context-of-the-proposal" class="nav-link" data-scroll-target="#what-is-the-context-of-the-proposal">What is the context of the proposal?</a></li>
   <li><a href="#what-is-the-problem-being-solved" id="toc-what-is-the-problem-being-solved" class="nav-link" data-scroll-target="#what-is-the-problem-being-solved">What is the problem being solved?</a></li>
   <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams." id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams." class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams.">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.</a></li>
-  <li><a href="#multiplayer-sync" id="toc-multiplayer-sync" class="nav-link" data-scroll-target="#multiplayer-sync">Multiplayer Sync</a></li>
   <li><a href="#what-are-the-benefits-of-the-proposal" id="toc-what-are-the-benefits-of-the-proposal" class="nav-link" data-scroll-target="#what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</a></li>
   <li><a href="#what-are-the-downsides-of-the-proposal" id="toc-what-are-the-downsides-of-the-proposal" class="nav-link" data-scroll-target="#what-are-the-downsides-of-the-proposal">What are the downsides of the proposal?</a></li>
   <li><a href="#what-are-the-alternative-proposals" id="toc-what-are-the-alternative-proposals" class="nav-link" data-scroll-target="#what-are-the-alternative-proposals">What are the alternative proposals?</a></li>
@@ -188,41 +187,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams." class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams.">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.</h2>
-<p>Below is a snippet illustrating scene entity creation, selection, and lens-based metadata design:</p>
+<p>Below is a snippet illustrating scene entity creation, selection, and lens-based metadata with an outline design:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"scene_entities"</span><span class="fu">:</span> <span class="ot">[</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"asset"</span><span class="fu">:</span> <span class="st">"SomeAssetName"</span><span class="fu">,</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"placement_method"</span><span class="fu">:</span> <span class="st">"raycast_click"</span><span class="fu">,</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"metadata"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"creator_id"</span><span class="fu">:</span> <span class="st">"user123"</span><span class="fu">,</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"score"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"user789"</span><span class="ot">,</span> <span class="st">"user456"</span><span class="ot">]</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            <span class="fu">}</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"asset"</span><span class="fu">:</span> <span class="st">"AnotherAsset"</span><span class="fu">,</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"placement_method"</span><span class="fu">:</span> <span class="st">"default_location"</span><span class="fu">,</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"metadata"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"creator_id"</span><span class="fu">:</span> <span class="st">"user456"</span><span class="fu">,</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"score"</span><span class="fu">:</span> <span class="ot">[]</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            <span class="fu">}</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"lens_interaction"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"show_creator"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"show_score"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"actions"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"upvote"</span><span class="ot">,</span> <span class="st">"hide"</span><span class="ot">,</span> <span class="st">"save_to_inventory"</span><span class="ot">,</span> <span class="st">"raise_concern"</span><span class="ot">]</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"decay_system"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"enabled"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"decay_threshold_days"</span><span class="fu">:</span> <span class="dv">30</span><span class="fu">,</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"repair_action"</span><span class="fu">:</span> <span class="st">"upvote"</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="multiplayer-sync" class="level2">
-<h2 class="anchored" data-anchor-id="multiplayer-sync">Multiplayer Sync</h2>
-<p>Multiplayer sync between different Godot editors is required but is described in a different proposal.</p>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"outline"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"primitive_outline"</span><span class="ot">,]</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">"metadata"</span><span class="er">:</span> <span class="fu">{</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"creator_id"</span><span class="fu">:</span> <span class="st">"user123"</span><span class="fu">,</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"score"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"user789"</span><span class="ot">,</span> <span class="st">"user456"</span><span class="ot">]</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            <span class="fu">}</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"asset"</span><span class="fu">:</span> <span class="st">"AnotherAsset"</span><span class="fu">,</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"placement_method"</span><span class="fu">:</span> <span class="st">"default_location"</span><span class="fu">,</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"outline"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"indices"</span><span class="fu">:</span> <span class="dv">4</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            <span class="fu">},</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"metadata"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"creator_id"</span><span class="fu">:</span> <span class="st">"user456"</span><span class="fu">,</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"score"</span><span class="fu">:</span> <span class="ot">[]</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>            <span class="fu">}</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"lens_interaction"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"show_creator"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"show_score"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"actions"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"upvote"</span><span class="ot">,</span> <span class="st">"hide"</span><span class="ot">,</span> <span class="st">"save_to_inventory"</span><span class="ot">,</span> <span class="st">"raise_concern"</span><span class="ot">]</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"decay_system"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"enabled"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"decay_threshold_days"</span><span class="fu">:</span> <span class="dv">30</span><span class="fu">,</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"repair_action"</span><span class="fu">:</span> <span class="st">"upvote"</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Scene entity add &amp; delete with lens also requires 20250126-primitive-outline and 20250126-multipler-sync-between-godot-instance.</p>
 </section>
 <section id="what-are-the-benefits-of-the-proposal" class="level2">
 <h2 class="anchored" data-anchor-id="what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</h2>
