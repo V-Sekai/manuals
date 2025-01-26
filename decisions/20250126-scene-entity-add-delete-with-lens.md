@@ -42,6 +42,7 @@ Instead of a lens, we generate an overlay using the primitive outline. The multi
       "joystick_hide",
       "joystick_save_to_inventory",
       "joystick_raise_concern"
+      "joystick_delete",
     ]
   },
   "decay_system": {
