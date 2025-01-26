@@ -45,7 +45,7 @@ Below is a snippet illustrating scene entity creation, selection, and lens-based
 }
 ```
 
-Scene entity adds & delete with the lens also requires 20250126-primitive-outline and 20250126-multipler-sync-between-godot-instance.
+Scene entity adds & delete with the lens also requires 20250126-primitive-outline and 20250126-multiplayer-sync-between-godot-instance.
 
 ## What are the benefits of the proposal?
 
