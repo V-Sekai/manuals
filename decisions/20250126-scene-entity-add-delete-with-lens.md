@@ -77,7 +77,7 @@ Alternatives include relying on standard Godot editor workflows, using no overla
 Yes. It aligns with social VR features and fosters community-driven content creation and sharing.
 
 Nova really wanna see V-Sekai have insanely good UX since the more traditional UX isn't cutting it on any other XR social platform
-much less ones with multiplayer building like Resonite.
+There are fewer ones with multiplayer buildings like Resonite.
 
 ## What is the status of the proposal?
 
