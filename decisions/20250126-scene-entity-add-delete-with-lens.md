@@ -1,56 +1,63 @@
-# Proposed: Scene entity add & delete with lens
+# Proposed: Scene entity add & delete with overlay
 
 ## What is the context of the proposal?
 
-V-Sekai needs a lens-based system to add, delete, and manage scene entities in VR environments. It aims to enhance asset creation workflows and offer improved collaboration and metadata visibility.
+V-Sekai needs an overlay-based system to add, delete, and manage scene entities in VR environments. It aims to enhance asset creation workflows and offer improved collaboration and metadata visibility.
 
 ## What is the problem being solved?
 
-We need a more intuitive, integrated approach to placing, selecting, removing, and inspecting scene objects. Current methods lack interactive feedback, real-time previews, or a user-friendly lens for metadata.
+We need a more intuitive, integrated approach to placing, selecting, removing, and inspecting scene objects. Current methods lack interactive feedback, real-time previews, or a user-friendly overlay for metadata.
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
 
-Below is a snippet illustrating scene entity creation, selection, and lens-based metadata with an outline design:
+Instead of a lens, we generate an overlay using the primitive outline. The multi tool like Half-Life: Alyx tool’s interface surfaces entity details as a holographic overlay. Contributors can “grip” to add objects, “trigger” to open extended metadata, or “joystick” to vote.
 
 ```json
 {
-    "scene_entities": [
-        {
-            "asset": "SomeAssetName",
-            "placement_method": "raycast_click",
-            "metadata": {
-                "creator_id": "user123",
-                "score": ["user789", "user456"]
-            }
-        },
-        {
-            "asset": "AnotherAsset",
-            "placement_method": "default_location",
-            "metadata": {
-                "creator_id": "user456",
-                "score": []
-            }
-        }
-    ],
-    "lens_interaction": {
-        "show_creator": true,
-        "show_score": true,
-        "actions": ["upvote", "hide", "save_to_inventory", "raise_concern"]
+  "scene_entities": [
+    {
+      "asset": "SomeAssetName",
+      "placement_method": "raycast_click",
+      "metadata": {
+        "creator_id": "user123",
+        "score": ["user789", "user456"]
+      }
     },
-    "decay_system": {
-        "enabled": true,
-        "decay_threshold_days": 30,
-        "repair_action": "upvote"
+    {
+      "asset": "AnotherAsset",
+      "placement_method": "default_location",
+      "metadata": {
+        "creator_id": "user456",
+        "score": []
+      }
     }
+  ],
+  "overlay_interaction": {
+    "show_creator": true,
+    "show_score": true,
+    "actions": [
+      "grip_add",
+      "trigger_metadata",
+      "joystick_vote",
+      "joystick_hide",
+      "joystick_save_to_inventory",
+      "joystick_raise_concern"
+    ]
+  },
+  "decay_system": {
+    "enabled": true,
+    "decay_threshold_days": 30,
+    "repair_action": "upvote"
+  }
 }
 ```
 
-Scene entity adds & delete with the lens also requires 20250126-primitive-outline and 20250126-multiplayer-sync-between-godot-instance.
+Scene entity adds & delete with the overlay also requires 20250126-primitive-outline and 20250126-multiplayer-sync-between-godot-instance.
 
 ## What are the benefits of the proposal?
 
 • Streamlined object placement and removal  
-• Improved collaboration with lens-based metadata  
+• Improved collaboration with overlay-based metadata  
 • Potential for interactive previews and user scoring
 
 ## What are the downsides of the proposal?
@@ -62,13 +69,13 @@ Scene entity adds & delete with the lens also requires 20250126-primitive-outlin
 ## What are the alternative proposals?
 
 • Rely on standard Godot editor workflows  
-• Use no lens, only default selection tools  
+• Use no overlay, only default selection tools  
 • Integrate separate third-party VR creation plugins
 
 ## When might the proposed solution be used rarely or not at all?
 
 • Simple scenes without collaboration or complex user interactions  
-• Non-VR projects where lens-based interaction is unnecessary
+• Non-VR projects where overlay-based interaction is unnecessary
 
 ## Is this a V-Sekai core responsibility, and should it be done by us?
 
