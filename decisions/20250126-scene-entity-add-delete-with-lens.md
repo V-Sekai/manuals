@@ -20,7 +20,10 @@ Below is a snippet illustrating scene entity creation, selection, and lens-based
             "placement_method": "raycast_click",
             "metadata": {
                 "creator_id": "user123",
-                "score": 10
+                "score": 10,
+                "outline": {
+                    "indices": 3
+                },
             }
         },
         {
@@ -28,7 +31,10 @@ Below is a snippet illustrating scene entity creation, selection, and lens-based
             "placement_method": "default_location",
             "metadata": {
                 "creator_id": "user456",
-                "score": 5
+                "score": 5,
+                "outline": {
+                    "indices": 4
+                },
             }
         }
     ],
@@ -36,9 +42,6 @@ Below is a snippet illustrating scene entity creation, selection, and lens-based
         "show_creator": true,
         "show_score": true,
         "actions": ["upvote", "hide", "save_to_inventory", "raise_concern"],
-        "outline": {
-            "indices": 4
-        },
     },
     "decay_system": {
         "enabled": true,
