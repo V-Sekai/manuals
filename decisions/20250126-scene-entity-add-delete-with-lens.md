@@ -19,22 +19,22 @@ Below is a snippet illustrating scene entity creation, selection, and lens-based
             "asset": "SomeAssetName",
             "placement_method": "raycast_click",
             "outline": {
-                "indices": 3,
+                "indices": 3
             },
             "metadata": {
                 "creator_id": "user123",
-                "score": 10
+                "score": ["user789", "user456"]
             }
         },
         {
             "asset": "AnotherAsset",
             "placement_method": "default_location",
             "outline": {
-                "indices": 4,
+                "indices": 4
             },
             "metadata": {
                 "creator_id": "user456",
-                "score": 5
+                "score": []
             }
         }
     ],
