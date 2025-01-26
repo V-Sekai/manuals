@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.40</generator>
-<lastBuildDate>Sun, 26 Jan 2025 22:36:24 GMT</lastBuildDate>
+<lastBuildDate>Sun, 26 Jan 2025 22:38:19 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 26 Jan 2025 22:36:24 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:38:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -162,7 +162,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Sun, 26 Jan 2025 22:36:24 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:38:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -176,51 +176,262 @@
 <h1>Proposed: Scene entity add &amp; delete with lens</h1>
 <section id="what-is-the-context-of-the-proposal" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-the-context-of-the-proposal">What is the context of the proposal?</h2>
-<p>V-Sekai needs a lens-based system for adding, deleting, and managing scene entities in VR environments. It aims to enhance asset creation workflows, offering improved collaboration and metadata visibility.</p>
+<p>V-Sekai needs a lens-based system to add, delete, and manage scene entities in VR environments. It aims to enhance asset creation workflows and offer improved collaboration and metadata visibility.</p>
 </section>
 <section id="what-is-the-problem-being-solved" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-the-problem-being-solved">What is the problem being solved?</h2>
-<p>We need a more intuitive, integrated approach to place, select, remove, and inspect scene objects. Current methods lack interactive feedback, real-time previews, or a user-friendly lens for metadata.</p>
+<p>We need a more intuitive, integrated approach to placing, selecting, removing, and inspecting scene objects. Current methods lack interactive feedback, real-time previews, or a user-friendly lens for metadata.</p>
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams." class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams.">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.</h2>
 <p>Below is a snippet illustrating scene entity creation, selection, and lens-based metadata with an outline design:</p>
-<pre><code>{
-    "scene_entities": [
-        {
-            "asset": "SomeAssetName",
-            "placement_method": "raycast_click",
-            "outline": {
-                "indices": 3,
-            },
-            "metadata": {
-                "creator_id": "user123",
-                "score": 10
-            }
-        },
-        {
-            "asset": "AnotherAsset",
-            "placement_method": "default_location",
-            "outline": {
-                "indices": 4,
-            },
-            "metadata": {
-                "creator_id": "user456",
-                "score": 5
-            }
-        }
-    ],
-    "lens_interaction": {
-        "show_creator": true,
-        "show_score": true,
-        "actions": ["upvote", "hide", "save_to_inventory", "raise_concern"]
-    },
-    "decay_system": {
-        "enabled": true,
-        "decay_threshold_days": 30,
-        "repair_action": "upvote"
-    }
-}</code></pre>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-2">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"scene_entities"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span></span>
+<span id="cb1-3">        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-4">            <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"asset"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"SomeAssetName"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-5">            <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"placement_method"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"raycast_click"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-6">            <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"outline"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-7">                <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"indices"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-8">            <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb1-9">            <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"metadata"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-10">                <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"creator_id"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"user123"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-11">                <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"score"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span></span>
+<span id="cb1-12">            <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-13">        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-14">        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-15">            <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"asset"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"AnotherAsset"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-16">            <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"placement_method"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"default_location"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-17">            <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"outline"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-18">                <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"indices"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-19">            <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb1-20">            <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"metadata"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-21">                <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"creator_id"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"user456"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-22">                <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"score"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span></span>
+<span id="cb1-23">            <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-24">        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-25">    <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-26">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"lens_interaction"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-27">        <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"show_creator"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">true</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-28">        <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"show_score"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">true</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-29">        <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"actions"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"upvote"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hide"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"save_to_inventory"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"raise_concern"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span></span>
+<span id="cb1-30">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb1-31">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"decay_system"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-32">        <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"enabled"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">true</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-33">        <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"decay_threshold_days"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-34">        <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"repair_action"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"upvote"</span></span>
+<span id="cb1-35">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-36"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div>
 </section>
 <section id="multiplayer-sync" class="level2">
 <h2 class="anchored" data-anchor-id="multiplayer-sync">Multiplayer Sync</h2>
@@ -286,7 +497,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250126-scene-entity-add-delete-with-lens.html</guid>
-  <pubDate>Sun, 26 Jan 2025 22:36:24 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:38:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -409,7 +620,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250123-implement-msft-texture-dds-in-godot.html</guid>
-  <pubDate>Sun, 26 Jan 2025 22:36:24 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:38:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -535,7 +746,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250122-VRChat-Loader-with-Godot-Engine.html</guid>
-  <pubDate>Sun, 26 Jan 2025 22:36:24 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:38:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -673,7 +884,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250122-VRChat-Loader-with-Godot-Engine-next.html</guid>
-  <pubDate>Sun, 26 Jan 2025 22:36:24 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:38:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -739,7 +950,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250118-discussion.html</guid>
-  <pubDate>Sun, 26 Jan 2025 22:36:24 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:38:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -816,7 +1027,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250103-sparkly-valve-index-fix.html</guid>
-  <pubDate>Sun, 26 Jan 2025 22:36:24 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:38:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1010,7 +1221,7 @@ font-style: inherit;">mix</span> ash.setup</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241229-one-prototyping-stack.html</guid>
-  <pubDate>Sun, 26 Jan 2025 22:36:24 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:38:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1146,7 +1357,7 @@ font-style: inherit;">return</span> village</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241222-wandering-dancer.html</guid>
-  <pubDate>Sun, 26 Jan 2025 22:36:24 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:38:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1220,7 +1431,7 @@ font-style: inherit;">return</span> village</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241221-wandering-bakery.html</guid>
-  <pubDate>Sun, 26 Jan 2025 22:36:24 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:38:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1294,7 +1505,7 @@ font-style: inherit;">return</span> village</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241220-discord-quest-3.html</guid>
-  <pubDate>Sun, 26 Jan 2025 22:36:24 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:38:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1550,7 +1761,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241220-character-concept-art-creation.html</guid>
-  <pubDate>Sun, 26 Jan 2025 22:36:24 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:38:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1644,7 +1855,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241219-unpack-fbx-udimms.html</guid>
-  <pubDate>Sun, 26 Jan 2025 22:36:24 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:38:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1752,7 +1963,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241219-scriptable-sign.html</guid>
-  <pubDate>Sun, 26 Jan 2025 22:36:24 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:38:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1854,7 +2065,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241218-will-o-wisp-proto-avatar.html</guid>
-  <pubDate>Sun, 26 Jan 2025 22:36:24 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:38:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2122,7 +2333,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241210-vsekai-charter.html</guid>
-  <pubDate>Sun, 26 Jan 2025 22:36:24 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:38:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2326,7 +2537,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241112-godot-animation-streaming.html</guid>
-  <pubDate>Sun, 26 Jan 2025 22:36:24 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:38:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2402,7 +2613,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241102-plan-november-2024.html</guid>
-  <pubDate>Sun, 26 Jan 2025 22:36:24 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:38:19 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2483,7 +2694,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241028-use-data-tables-for-godot-constraints.html</guid>
-  <pubDate>Sun, 26 Jan 2025 22:36:24 GMT</pubDate>
+  <pubDate>Sun, 26 Jan 2025 22:38:19 GMT</pubDate>
 </item>
 </channel>
 </rss>
