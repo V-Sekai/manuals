@@ -151,7 +151,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#proposed-scene-entity-add-delete-with-lens" id="toc-proposed-scene-entity-add-delete-with-lens" class="nav-link active" data-scroll-target="#proposed-scene-entity-add-delete-with-lens">Proposed: Scene entity add &amp; delete with lens</a>
+  <li><a href="#proposed-scene-entity-add-delete-with-overlay" id="toc-proposed-scene-entity-add-delete-with-overlay" class="nav-link active" data-scroll-target="#proposed-scene-entity-add-delete-with-overlay">Proposed: Scene entity add &amp; delete with overlay</a>
   <ul class="collapse">
   <li><a href="#what-is-the-context-of-the-proposal" id="toc-what-is-the-context-of-the-proposal" class="nav-link" data-scroll-target="#what-is-the-context-of-the-proposal">What is the context of the proposal?</a></li>
   <li><a href="#what-is-the-problem-being-solved" id="toc-what-is-the-problem-being-solved" class="nav-link" data-scroll-target="#what-is-the-problem-being-solved">What is the problem being solved?</a></li>
@@ -175,55 +175,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="proposed-scene-entity-add-delete-with-lens" class="level1">
-<h1>Proposed: Scene entity add &amp; delete with lens</h1>
+<section id="proposed-scene-entity-add-delete-with-overlay" class="level1">
+<h1>Proposed: Scene entity add &amp; delete with overlay</h1>
 <section id="what-is-the-context-of-the-proposal" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-the-context-of-the-proposal">What is the context of the proposal?</h2>
-<p>V-Sekai needs a lens-based system to add, delete, and manage scene entities in VR environments. It aims to enhance asset creation workflows and improve collaboration and metadata visibility.</p>
+<p>V-Sekai needs an overlay-based system to add, delete, and manage scene entities in VR environments. It aims to enhance asset creation workflows and offer improved collaboration and metadata visibility.</p>
 </section>
 <section id="what-is-the-problem-being-solved" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-the-problem-being-solved">What is the problem being solved?</h2>
-<p>We need a more intuitive, integrated approach to placing, selecting, removing, and inspecting scene objects. Current methods lack interactive feedback, real-time previews, or a user-friendly lens for metadata.</p>
+<p>We need a more intuitive, integrated approach to placing, selecting, removing, and inspecting scene objects. Current methods lack interactive feedback, real-time previews, or a user-friendly overlay for metadata.</p>
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams." class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams.">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.</h2>
-<p>Below is a snippet illustrating scene entity creation, selection, and lens-based metadata design:</p>
+<p>Instead of a lens, we generate an overlay using the primitive outline. The multi tool like Half-Life: Alyx tool’s interface surfaces entity details as a holographic overlay. Contributors can “grip” to add objects, “trigger” to open extended metadata, or “joystick” to vote.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"scene_entities"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"asset"</span><span class="fu">:</span> <span class="st">"SomeAssetName"</span><span class="fu">,</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"placement_method"</span><span class="fu">:</span> <span class="st">"raycast_click"</span><span class="fu">,</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"metadata"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"creator_id"</span><span class="fu">:</span> <span class="st">"user123"</span><span class="fu">,</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"score"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"user789"</span><span class="ot">,</span> <span class="st">"user456"</span><span class="ot">]</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            <span class="fu">}</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"asset"</span><span class="fu">:</span> <span class="st">"AnotherAsset"</span><span class="fu">,</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"placement_method"</span><span class="fu">:</span> <span class="st">"default_location"</span><span class="fu">,</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"metadata"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"creator_id"</span><span class="fu">:</span> <span class="st">"user456"</span><span class="fu">,</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"score"</span><span class="fu">:</span> <span class="ot">[]</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            <span class="fu">}</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"lens_interaction"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"show_creator"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"show_score"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"actions"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"upvote"</span><span class="ot">,</span> <span class="st">"hide"</span><span class="ot">,</span> <span class="st">"save_to_inventory"</span><span class="ot">,</span> <span class="st">"raise_concern"</span><span class="ot">]</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"decay_system"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"enabled"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"decay_threshold_days"</span><span class="fu">:</span> <span class="dv">30</span><span class="fu">,</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"repair_action"</span><span class="fu">:</span> <span class="st">"upvote"</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Scene entity adds &amp; delete with the lens also requires 20250126-primitive-outline and 20250126-multiplayer-sync-between-godot-instance.</p>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"scene_entities"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"asset"</span><span class="fu">:</span> <span class="st">"SomeAssetName"</span><span class="fu">,</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"placement_method"</span><span class="fu">:</span> <span class="st">"raycast_click"</span><span class="fu">,</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"metadata"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"creator_id"</span><span class="fu">:</span> <span class="st">"user123"</span><span class="fu">,</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"score"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"user789"</span><span class="ot">,</span> <span class="st">"user456"</span><span class="ot">]</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"asset"</span><span class="fu">:</span> <span class="st">"AnotherAsset"</span><span class="fu">,</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"placement_method"</span><span class="fu">:</span> <span class="st">"default_location"</span><span class="fu">,</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"metadata"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"creator_id"</span><span class="fu">:</span> <span class="st">"user456"</span><span class="fu">,</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"score"</span><span class="fu">:</span> <span class="ot">[]</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"overlay_interaction"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"show_creator"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"show_score"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"actions"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>      <span class="st">"grip_add"</span><span class="ot">,</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>      <span class="st">"trigger_metadata"</span><span class="ot">,</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>      <span class="st">"joystick_vote"</span><span class="ot">,</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>      <span class="st">"joystick_hide"</span><span class="ot">,</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>      <span class="st">"joystick_save_to_inventory"</span><span class="ot">,</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>      <span class="st">"joystick_raise_concern"</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>      <span class="st">"joystick_delete"</span><span class="ot">,</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"decay_system"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"enabled"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"decay_threshold_days"</span><span class="fu">:</span> <span class="dv">30</span><span class="fu">,</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"repair_action"</span><span class="fu">:</span> <span class="st">"upvote"</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Scene entity adds &amp; delete with the overlay also requires 20250126-primitive-outline and 20250126-multiplayer-sync-between-godot-instance.</p>
 </section>
 <section id="what-are-the-benefits-of-the-proposal" class="level2">
 <h2 class="anchored" data-anchor-id="what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</h2>
 <p>• Streamlined object placement and removal<br>
-• Improved collaboration with lens-based metadata<br>
+• Improved collaboration with overlay-based metadata<br>
 • Potential for interactive previews and user scoring</p>
 </section>
 <section id="what-are-the-downsides-of-the-proposal" class="level2">
@@ -235,13 +243,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="what-are-the-alternative-proposals" class="level2">
 <h2 class="anchored" data-anchor-id="what-are-the-alternative-proposals">What are the alternative proposals?</h2>
 <p>• Rely on standard Godot editor workflows<br>
-• Use no lens, only default selection tools<br>
+• Use no overlay, only default selection tools<br>
 • Integrate separate third-party VR creation plugins</p>
 </section>
 <section id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all" class="level2">
 <h2 class="anchored" data-anchor-id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all">When might the proposed solution be used rarely or not at all?</h2>
 <p>• Simple scenes without collaboration or complex user interactions<br>
-• Non-VR projects where lens-based interaction is unnecessary</p>
+• Non-VR projects where overlay-based interaction is unnecessary</p>
 </section>
 <section id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us">Is this a V-Sekai core responsibility, and should it be done by us?</h2>
