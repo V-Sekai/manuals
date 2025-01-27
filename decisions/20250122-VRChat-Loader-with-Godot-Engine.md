@@ -1,4 +1,4 @@
-# Proposed: Godot Engine HTTP Server for GLB Download and Repack
+# Accepted: Godot Engine HTTP Server for GLB Download and Repack
 
 ## What is the context of the proposal?
 
@@ -58,7 +58,7 @@ This solution could broaden social VR possibilities. A thorough review of feasib
 
 ## What is the status of the proposal?
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Who is making decisions on the proposal?
 
@@ -86,5 +86,6 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 4. [Galbi SDK](https://galbi-sdk-docs.pages.dev/en/)
 5. [World Name: Project Galbi](https://vrchat.com/home/launch?worldId=wrld_068ed758-68b1-40bc-b647-f54c3b3d92fc)
 6. [The-Cheap-or-Nasty-Pattern](https://zguide.zeromq.org/docs/chapter7/#The-Cheap-or-Nasty-Pattern)
+7. [V-Sekai-fire/godot-http-glb-host](https://github.com/V-Sekai-fire/godot-http-glb-host)
 
 AI assistant Aria assisted with this article.
