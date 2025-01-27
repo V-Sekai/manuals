@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.40</generator>
-<lastBuildDate>Sun, 26 Jan 2025 23:48:57 GMT</lastBuildDate>
+<lastBuildDate>Mon, 27 Jan 2025 00:24:21 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 26 Jan 2025 23:48:57 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:24:21 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -162,7 +162,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Sun, 26 Jan 2025 23:48:57 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:24:21 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -553,7 +553,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250126-scene-entity-add-delete-with-lens.html</guid>
-  <pubDate>Sun, 26 Jan 2025 23:48:57 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:24:21 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -624,7 +624,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250126-primitive-outline.html</guid>
-  <pubDate>Sun, 26 Jan 2025 23:48:57 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:24:21 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -635,34 +635,59 @@ font-style: inherit;">}</span></span></code></pre></div>
 
 
 <section id="proposed-multiplayer-sync-between-different-godot-instances" class="level1">
-<h1>Proposed: Multiplayer sync between different Godot instances</h1>
+<h1>Proposed: Multiplayer Sync Between Different Godot Instances</h1>
 <section id="what-is-the-context-of-the-proposal" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-the-context-of-the-proposal">What is the context of the proposal?</h2>
+<p>We aim to enhance multiplayer capabilities in the Godot Engine by synchronizing node scene trees across different instances. We never RPC; instead, we only sync property data and do network events. Additionally, we intend to create a shadow scene tree to generate asynchronous glTF 2.0 binaries served via a web server.</p>
 </section>
 <section id="what-is-the-problem-being-solved" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-the-problem-being-solved">What is the problem being solved?</h2>
+<p>Currently, synchronizing complex node scene trees in multiplayer scenarios within Godot is challenging. There’s a need for an efficient method to ensure consistency across all client instances. Moreover, generating async glTF 2.0 binaries for web servers requires a reliable shadow scene tree mechanism.</p>
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams." class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams.">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.</h2>
+<p>The proposal involves implementing a synchronization protocol that mirrors the node scene tree structure across all multiplayer instances. This includes:</p>
+<ul>
+<li><p><strong>Syncing Node Trees:</strong> Establishing real-time updates, property synchronization, and state management to ensure all clients reflect the same scene tree.</p>
+<pre class="gdscript"><code>func sync_scene_tree(node):
+        for child in node.get_children():
+                update_network_properties(child)
+                sync_scene_tree(child)</code></pre></li>
+<li><p><strong>Shadow Scene Tree:</strong> Creating a duplicate of the main scene tree to handle asynchronous operations like glTF 2.0 binary generation.</p>
+<pre class="gdscript"><code>var shadow_tree = duplicate_scene_tree(main_tree)
+
+func generate_async_gltf():
+        Thread.new().start(shadow_tree.export_gltf())</code></pre></li>
+<li><p><strong>Web Server Integration:</strong> Serving the generated glTF binaries through a web server for external access.</p></li>
+</ul>
 </section>
 <section id="what-are-the-benefits-of-the-proposal" class="level2">
 <h2 class="anchored" data-anchor-id="what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</h2>
+<p>This proposal ensures consistency by providing all multiplayer clients with a synchronized view of the scene. Performance is enhanced by offloading heavy operations to a shadow tree, preventing main thread blockages. Scalability is facilitated through reliable synchronization of multiplayer environments. Flexibility is achieved by enabling asynchronous processing and external access to generated assets via a web server.</p>
 </section>
 <section id="what-are-the-downsides-of-the-proposal" class="level2">
 <h2 class="anchored" data-anchor-id="what-are-the-downsides-of-the-proposal">What are the downsides of the proposal?</h2>
+<p>There is increased complexity from implementing synchronization protocols and shadow trees. Resource consumption may rise due to maintaining shadow trees and processing synchronous operations. Latency issues might occur with high-frequency updates.</p>
 </section>
 <section id="what-are-the-alternative-proposals" class="level2">
 <h2 class="anchored" data-anchor-id="what-are-the-alternative-proposals">What are the alternative proposals?</h2>
+<ul>
+<li>Server-side authority: Centralizing scene management on the server to control synchronization.</li>
+<li>State interpolation: Managing discrepancies through interpolation techniques.</li>
+<li>Decentralized synchronization: Allowing clients to manage their own logic without a central protocol.</li>
+</ul>
 </section>
 <section id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all" class="level2">
 <h2 class="anchored" data-anchor-id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all">When might the proposed solution be used rarely or not at all?</h2>
+<p>In single-player environments or where scene complexity is minimal, the synchronization overhead might be unnecessary. Projects not requiring asset exports would not benefit from the shadow scene tree approach.</p>
 </section>
 <section id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us">Is this a V-Sekai core responsibility, and should it be done by us?</h2>
+<p>Yes, managing multiplayer synchronization and asset generation aligns with V-Sekai’s focus on enhancing social VR functionalities within the Godot Engine ecosystem.</p>
 </section>
 <section id="what-is-the-status-of-the-proposal" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-the-status-of-the-proposal">What is the status of the proposal?</h2>
-<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+<p>Status: Proposed</p>
 </section>
 <section id="who-is-making-decisions-on-the-proposal" class="level2">
 <h2 class="anchored" data-anchor-id="who-is-making-decisions-on-the-proposal">Who is making decisions on the proposal?</h2>
@@ -679,8 +704,8 @@ font-style: inherit;">}</span></span></code></pre></div>
 <section id="list-further-reading-references." class="level2">
 <h2 class="anchored" data-anchor-id="list-further-reading-references.">List further reading references.</h2>
 <ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a></li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a></li>
 </ol>
 <p>AI assistant Aria assisted with this article.</p>
 
@@ -690,7 +715,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250126-multiplayer-sync-between-godot-instances.html</guid>
-  <pubDate>Sun, 26 Jan 2025 23:48:57 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:24:21 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -814,7 +839,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250123-implement-msft-texture-dds-in-godot.html</guid>
-  <pubDate>Sun, 26 Jan 2025 23:48:57 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:24:21 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -941,7 +966,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250122-VRChat-Loader-with-Godot-Engine.html</guid>
-  <pubDate>Sun, 26 Jan 2025 23:48:57 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:24:21 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1080,7 +1105,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250122-VRChat-Loader-with-Godot-Engine-next.html</guid>
-  <pubDate>Sun, 26 Jan 2025 23:48:57 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:24:21 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1146,7 +1171,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250118-discussion.html</guid>
-  <pubDate>Sun, 26 Jan 2025 23:48:57 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:24:21 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1223,7 +1248,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250103-sparkly-valve-index-fix.html</guid>
-  <pubDate>Sun, 26 Jan 2025 23:48:57 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:24:21 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1417,7 +1442,7 @@ font-style: inherit;">mix</span> ash.setup</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241229-one-prototyping-stack.html</guid>
-  <pubDate>Sun, 26 Jan 2025 23:48:57 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:24:21 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1553,7 +1578,7 @@ font-style: inherit;">return</span> village</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241222-wandering-dancer.html</guid>
-  <pubDate>Sun, 26 Jan 2025 23:48:57 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:24:21 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1627,7 +1652,7 @@ font-style: inherit;">return</span> village</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241221-wandering-bakery.html</guid>
-  <pubDate>Sun, 26 Jan 2025 23:48:57 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:24:21 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1701,7 +1726,7 @@ font-style: inherit;">return</span> village</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241220-discord-quest-3.html</guid>
-  <pubDate>Sun, 26 Jan 2025 23:48:57 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:24:21 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1957,7 +1982,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241220-character-concept-art-creation.html</guid>
-  <pubDate>Sun, 26 Jan 2025 23:48:57 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:24:21 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2051,7 +2076,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241219-unpack-fbx-udimms.html</guid>
-  <pubDate>Sun, 26 Jan 2025 23:48:57 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:24:21 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2159,7 +2184,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241219-scriptable-sign.html</guid>
-  <pubDate>Sun, 26 Jan 2025 23:48:57 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:24:21 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2261,7 +2286,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241218-will-o-wisp-proto-avatar.html</guid>
-  <pubDate>Sun, 26 Jan 2025 23:48:57 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:24:21 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2529,7 +2554,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241210-vsekai-charter.html</guid>
-  <pubDate>Sun, 26 Jan 2025 23:48:57 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:24:21 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2733,7 +2758,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241112-godot-animation-streaming.html</guid>
-  <pubDate>Sun, 26 Jan 2025 23:48:57 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:24:21 GMT</pubDate>
 </item>
 </channel>
 </rss>
