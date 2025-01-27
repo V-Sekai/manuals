@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.40</generator>
-<lastBuildDate>Mon, 27 Jan 2025 00:39:47 GMT</lastBuildDate>
+<lastBuildDate>Mon, 27 Jan 2025 00:51:50 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Mon, 27 Jan 2025 00:39:47 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:51:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -162,7 +162,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Mon, 27 Jan 2025 00:39:47 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:51:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -553,7 +553,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250126-scene-entity-add-delete-with-lens.html</guid>
-  <pubDate>Mon, 27 Jan 2025 00:39:47 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:51:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -624,7 +624,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250126-primitive-outline.html</guid>
-  <pubDate>Mon, 27 Jan 2025 00:39:47 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:51:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -711,7 +711,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250126-multiplayer-sync-between-godot-instances.html</guid>
-  <pubDate>Mon, 27 Jan 2025 00:39:47 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:51:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -835,7 +835,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250123-implement-msft-texture-dds-in-godot.html</guid>
-  <pubDate>Mon, 27 Jan 2025 00:39:47 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:51:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -853,70 +853,18 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 </section>
 <section id="what-is-the-problem-being-solved" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-the-problem-being-solved">What is the problem being solved?</h2>
-<p>Facilitate updates and management of complex scenes in VRChat by allowing external tools to efficiently modify and synchronize the world environment.</p>
+<p>Allow external tools to efficiently modify and synchronize the world environment to facilitate updates and management of complex scenes in VRChat.</p>
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams." class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams.">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.</h2>
 <section id="glb-with-repacked-dds-support" class="level3">
 <h3 class="anchored" data-anchor-id="glb-with-repacked-dds-support">GLB with Repacked DDS Support</h3>
 <p>Implement a protocol in Godot Engine for HTTP GET requests of GLB files with repacked DDS textures.</p>
-<p>https://example.com/MSFT_texture_dds-proxy/raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/Models/CompareRoughness/glTF-Binary/CompareRoughness.glb</p>
-<section id="scenario-retrieve-current-scene-from-godot-engine-via-http-get-request" class="level4">
-<h4 class="anchored" data-anchor-id="scenario-retrieve-current-scene-from-godot-engine-via-http-get-request">Scenario: Retrieve current scene from Godot Engine via HTTP GET request</h4>
-<section id="given" class="level5">
-<h5 class="anchored" data-anchor-id="given">Given</h5>
-<ul>
-<li>A VRChat loader accepting scene URLs</li>
-</ul>
 </section>
-<section id="when" class="level5">
-<h5 class="anchored" data-anchor-id="when">When</h5>
-<ul>
-<li>A request is sent to the Godot Engine HTTP server with the uri</li>
-</ul>
-</section>
-<section id="then" class="level5">
-<h5 class="anchored" data-anchor-id="then">Then</h5>
-<ul>
-<li>The server returns the current scene with a DDS writer (MSFT_texture_dds) on the Godot side</li>
-<li>VRChat loads the GLB file from the DDS response</li>
-</ul>
-</section>
-</section>
-</section>
-</section>
-<section id="what-are-the-benefits-of-the-proposal" class="level2">
-<h2 class="anchored" data-anchor-id="what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</h2>
-<ul>
-<li>Supports real-time content updates in VRChat</li>
-<li>Leverages existing Godot Engine HTTP capabilities</li>
-<li>Extends VRChat’s functionality</li>
-</ul>
-</section>
-<section id="what-are-the-downsides-of-the-proposal" class="level2">
-<h2 class="anchored" data-anchor-id="what-are-the-downsides-of-the-proposal">What are the downsides of the proposal?</h2>
-<ul>
-<li>Involves extra development and testing</li>
-<li>Possible compatibility challenges with VRChat loaders</li>
-</ul>
-</section>
-<section id="what-are-the-alternative-proposals" class="level2">
-<h2 class="anchored" data-anchor-id="what-are-the-alternative-proposals">What are the alternative proposals?</h2>
-<ul>
-<li>Continue using static scene loading</li>
-<li>Create a specialized VRChat loader</li>
-</ul>
-</section>
-<section id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all" class="level2">
-<h2 class="anchored" data-anchor-id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all">When might the proposed solution be used rarely or not at all?</h2>
-<ul>
-<li>If static scenes suffice</li>
-<li>If the Godot Engine HTTP server is unavailable</li>
-</ul>
 </section>
 <section id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us">Is this a V-Sekai core responsibility, and should it be done by us?</h2>
-<p>This solution could broaden social VR possibilities. A thorough review of feasibility and integration with VRChat is necessary before adopting it as core.</p>
+<p>This solution could broaden social VR possibilities. However, before adopting it as the core, a thorough review of feasibility and integration with VRChat is necessary.</p>
 </section>
 <section id="what-is-the-status-of-the-proposal" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-the-status-of-the-proposal">What is the status of the proposal?</h2>
@@ -963,7 +911,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250122-VRChat-Loader-with-Godot-Engine.html</guid>
-  <pubDate>Mon, 27 Jan 2025 00:39:47 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:51:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1102,7 +1050,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250122-VRChat-Loader-with-Godot-Engine-next.html</guid>
-  <pubDate>Mon, 27 Jan 2025 00:39:47 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:51:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1168,7 +1116,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250118-discussion.html</guid>
-  <pubDate>Mon, 27 Jan 2025 00:39:47 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:51:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1245,7 +1193,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250103-sparkly-valve-index-fix.html</guid>
-  <pubDate>Mon, 27 Jan 2025 00:39:47 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:51:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1439,7 +1387,7 @@ font-style: inherit;">mix</span> ash.setup</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241229-one-prototyping-stack.html</guid>
-  <pubDate>Mon, 27 Jan 2025 00:39:47 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:51:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1575,7 +1523,7 @@ font-style: inherit;">return</span> village</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241222-wandering-dancer.html</guid>
-  <pubDate>Mon, 27 Jan 2025 00:39:47 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:51:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1649,7 +1597,7 @@ font-style: inherit;">return</span> village</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241221-wandering-bakery.html</guid>
-  <pubDate>Mon, 27 Jan 2025 00:39:47 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:51:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1723,7 +1671,7 @@ font-style: inherit;">return</span> village</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241220-discord-quest-3.html</guid>
-  <pubDate>Mon, 27 Jan 2025 00:39:47 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:51:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1979,7 +1927,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241220-character-concept-art-creation.html</guid>
-  <pubDate>Mon, 27 Jan 2025 00:39:47 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:51:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2073,7 +2021,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241219-unpack-fbx-udimms.html</guid>
-  <pubDate>Mon, 27 Jan 2025 00:39:47 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:51:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2181,7 +2129,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241219-scriptable-sign.html</guid>
-  <pubDate>Mon, 27 Jan 2025 00:39:47 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:51:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2283,7 +2231,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241218-will-o-wisp-proto-avatar.html</guid>
-  <pubDate>Mon, 27 Jan 2025 00:39:47 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:51:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2551,7 +2499,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241210-vsekai-charter.html</guid>
-  <pubDate>Mon, 27 Jan 2025 00:39:47 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:51:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2755,7 +2703,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241112-godot-animation-streaming.html</guid>
-  <pubDate>Mon, 27 Jan 2025 00:39:47 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 00:51:50 GMT</pubDate>
 </item>
 </channel>
 </rss>

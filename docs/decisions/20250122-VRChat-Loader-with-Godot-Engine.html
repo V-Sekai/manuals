@@ -125,10 +125,6 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#glb-with-repacked-dds-support" id="toc-glb-with-repacked-dds-support" class="nav-link" data-scroll-target="#glb-with-repacked-dds-support">GLB with Repacked DDS Support</a></li>
   </ul></li>
-  <li><a href="#what-are-the-benefits-of-the-proposal" id="toc-what-are-the-benefits-of-the-proposal" class="nav-link" data-scroll-target="#what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</a></li>
-  <li><a href="#what-are-the-downsides-of-the-proposal" id="toc-what-are-the-downsides-of-the-proposal" class="nav-link" data-scroll-target="#what-are-the-downsides-of-the-proposal">What are the downsides of the proposal?</a></li>
-  <li><a href="#what-are-the-alternative-proposals" id="toc-what-are-the-alternative-proposals" class="nav-link" data-scroll-target="#what-are-the-alternative-proposals">What are the alternative proposals?</a></li>
-  <li><a href="#when-might-the-proposed-solution-be-used-rarely-or-not-at-all" id="toc-when-might-the-proposed-solution-be-used-rarely-or-not-at-all" class="nav-link" data-scroll-target="#when-might-the-proposed-solution-be-used-rarely-or-not-at-all">When might the proposed solution be used rarely or not at all?</a></li>
   <li><a href="#is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us" id="toc-is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us" class="nav-link" data-scroll-target="#is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us">Is this a V-Sekai core responsibility, and should it be done by us?</a></li>
   <li><a href="#what-is-the-status-of-the-proposal" id="toc-what-is-the-status-of-the-proposal" class="nav-link" data-scroll-target="#what-is-the-status-of-the-proposal">What is the status of the proposal?</a></li>
   <li><a href="#who-is-making-decisions-on-the-proposal" id="toc-who-is-making-decisions-on-the-proposal" class="nav-link" data-scroll-target="#who-is-making-decisions-on-the-proposal">Who is making decisions on the proposal?</a></li>
@@ -152,70 +148,18 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="what-is-the-problem-being-solved" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-the-problem-being-solved">What is the problem being solved?</h2>
-<p>Facilitate updates and management of complex scenes in VRChat by allowing external tools to efficiently modify and synchronize the world environment.</p>
+<p>Allow external tools to efficiently modify and synchronize the world environment to facilitate updates and management of complex scenes in VRChat.</p>
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams." class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams.">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.</h2>
 <section id="glb-with-repacked-dds-support" class="level3">
 <h3 class="anchored" data-anchor-id="glb-with-repacked-dds-support">GLB with Repacked DDS Support</h3>
 <p>Implement a protocol in Godot Engine for HTTP GET requests of GLB files with repacked DDS textures.</p>
-<p>https://example.com/MSFT_texture_dds-proxy/raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/Models/CompareRoughness/glTF-Binary/CompareRoughness.glb</p>
-<section id="scenario-retrieve-current-scene-from-godot-engine-via-http-get-request" class="level4">
-<h4 class="anchored" data-anchor-id="scenario-retrieve-current-scene-from-godot-engine-via-http-get-request">Scenario: Retrieve current scene from Godot Engine via HTTP GET request</h4>
-<section id="given" class="level5">
-<h5 class="anchored" data-anchor-id="given">Given</h5>
-<ul>
-<li>A VRChat loader accepting scene URLs</li>
-</ul>
 </section>
-<section id="when" class="level5">
-<h5 class="anchored" data-anchor-id="when">When</h5>
-<ul>
-<li>A request is sent to the Godot Engine HTTP server with the uri</li>
-</ul>
-</section>
-<section id="then" class="level5">
-<h5 class="anchored" data-anchor-id="then">Then</h5>
-<ul>
-<li>The server returns the current scene with a DDS writer (MSFT_texture_dds) on the Godot side</li>
-<li>VRChat loads the GLB file from the DDS response</li>
-</ul>
-</section>
-</section>
-</section>
-</section>
-<section id="what-are-the-benefits-of-the-proposal" class="level2">
-<h2 class="anchored" data-anchor-id="what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</h2>
-<ul>
-<li>Supports real-time content updates in VRChat</li>
-<li>Leverages existing Godot Engine HTTP capabilities</li>
-<li>Extends VRChat’s functionality</li>
-</ul>
-</section>
-<section id="what-are-the-downsides-of-the-proposal" class="level2">
-<h2 class="anchored" data-anchor-id="what-are-the-downsides-of-the-proposal">What are the downsides of the proposal?</h2>
-<ul>
-<li>Involves extra development and testing</li>
-<li>Possible compatibility challenges with VRChat loaders</li>
-</ul>
-</section>
-<section id="what-are-the-alternative-proposals" class="level2">
-<h2 class="anchored" data-anchor-id="what-are-the-alternative-proposals">What are the alternative proposals?</h2>
-<ul>
-<li>Continue using static scene loading</li>
-<li>Create a specialized VRChat loader</li>
-</ul>
-</section>
-<section id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all" class="level2">
-<h2 class="anchored" data-anchor-id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all">When might the proposed solution be used rarely or not at all?</h2>
-<ul>
-<li>If static scenes suffice</li>
-<li>If the Godot Engine HTTP server is unavailable</li>
-</ul>
 </section>
 <section id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us">Is this a V-Sekai core responsibility, and should it be done by us?</h2>
-<p>This solution could broaden social VR possibilities. A thorough review of feasibility and integration with VRChat is necessary before adopting it as core.</p>
+<p>This solution could broaden social VR possibilities. However, before adopting it as the core, a thorough review of feasibility and integration with VRChat is necessary.</p>
 </section>
 <section id="what-is-the-status-of-the-proposal" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-the-status-of-the-proposal">What is the status of the proposal?</h2>
