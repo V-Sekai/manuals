@@ -14,11 +14,9 @@ Allow external tools to efficiently modify and synchronize the world environment
 
 Implement a protocol in Godot Engine for HTTP GET requests of GLB files with repacked DDS textures.
 
-https://example.com/MSFT_texture_dds-proxy/raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/Models/CompareRoughness/glTF-Binary/CompareRoughness.glb
-
 ## Is this a V-Sekai core responsibility, and should it be done by us?
 
-This solution could broaden social VR possibilities. A thorough review of feasibility and integration with VRChat is necessary before adopting it as core.
+This solution could broaden social VR possibilities. However, before adopting it as the core, a thorough review of feasibility and integration with VRChat is necessary.
 
 ## What is the status of the proposal?
 
