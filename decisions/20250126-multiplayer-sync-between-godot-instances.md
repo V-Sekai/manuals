@@ -39,7 +39,7 @@ There is increased complexity from implementing synchronization protocols. Laten
 
 In single-player environments or where scene complexity is minimal, the synchronization overhead might be unnecessary.
 
-We do not need to maintain a shadow tree for web server gltf-binary export, since it's only another synced gltf instance.
+We do not maintain a shadow tree for web server gltf-binary export, since it's only another synced gltf instance.
 
 ## Is this a V-Sekai core responsibility, and should it be done by us?
 
