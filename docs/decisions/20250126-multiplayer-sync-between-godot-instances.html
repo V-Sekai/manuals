@@ -145,11 +145,11 @@ ul.task-list li input[type="checkbox"] {
 <h1>Proposed: Multiplayer Sync Between Different Godot Instances</h1>
 <section id="what-is-the-context-of-the-proposal" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-the-context-of-the-proposal">What is the context of the proposal?</h2>
-<p>We aim to enhance multiplayer capabilities in the Godot Engine by synchronizing node scene trees across different instances. We never RPC; instead, we only sync property data and do network events. Additionally, we intend to create a shadow scene tree to generate asynchronous glTF 2.0 binaries served via a web server.</p>
+<p>We aim to enhance multiplayer capabilities in the Godot Engine by synchronizing node scene trees across different instances.</p>
 </section>
 <section id="what-is-the-problem-being-solved" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-the-problem-being-solved">What is the problem being solved?</h2>
-<p>Currently, synchronizing complex node scene trees in multiplayer scenarios within Godot is challenging. There’s a need for an efficient method to ensure consistency across all client instances. Moreover, generating async glTF 2.0 binaries for web servers requires a reliable shadow scene tree mechanism.</p>
+<p>Currently, synchronizing complex node scene trees in multiplayer scenarios within Godot is challenging. There’s a need for an efficient method to ensure consistency across all client instances.</p>
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams." class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams.">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.</h2>
@@ -160,21 +160,15 @@ ul.task-list li input[type="checkbox"] {
         for child in node.get_children():
                 update_network_properties(child)
                 sync_scene_tree(child)</code></pre></li>
-<li><p><strong>Shadow Scene Tree:</strong> Creating a duplicate of the main scene tree to handle asynchronous operations like glTF 2.0 binary generation.</p>
-<pre class="gdscript"><code>var shadow_tree = duplicate_scene_tree(main_tree)
-
-func generate_async_gltf():
-        Thread.new().start(shadow_tree.export_gltf())</code></pre></li>
-<li><p><strong>Web Server Integration:</strong> Serving the generated glTF binaries through a web server for external access.</p></li>
 </ul>
 </section>
 <section id="what-are-the-benefits-of-the-proposal" class="level2">
 <h2 class="anchored" data-anchor-id="what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</h2>
-<p>This proposal ensures consistency by providing all multiplayer clients with a synchronized view of the scene. Performance is enhanced by offloading heavy operations to a shadow tree, preventing main thread blockages. Scalability is facilitated through reliable synchronization of multiplayer environments. Flexibility is achieved by enabling asynchronous processing and external access to generated assets via a web server.</p>
+<p>This proposal ensures consistency by providing all multiplayer clients with a synchronized view of the scene. Performance is enhanced by offloading heavy operations to a shadow tree, preventing main thread blockages. Scalability is facilitated through reliable synchronization of multiplayer environments.</p>
 </section>
 <section id="what-are-the-downsides-of-the-proposal" class="level2">
 <h2 class="anchored" data-anchor-id="what-are-the-downsides-of-the-proposal">What are the downsides of the proposal?</h2>
-<p>There is increased complexity from implementing synchronization protocols and shadow trees. Resource consumption may rise due to maintaining shadow trees and processing synchronous operations. Latency issues might occur with high-frequency updates.</p>
+<p>There is increased complexity from implementing synchronization protocols. Latency issues might occur with high-frequency updates.</p>
 </section>
 <section id="what-are-the-alternative-proposals" class="level2">
 <h2 class="anchored" data-anchor-id="what-are-the-alternative-proposals">What are the alternative proposals?</h2>
@@ -186,7 +180,8 @@ func generate_async_gltf():
 </section>
 <section id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all" class="level2">
 <h2 class="anchored" data-anchor-id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all">When might the proposed solution be used rarely or not at all?</h2>
-<p>In single-player environments or where scene complexity is minimal, the synchronization overhead might be unnecessary. Projects not requiring asset exports would not benefit from the shadow scene tree approach.</p>
+<p>In single-player environments or where scene complexity is minimal, the synchronization overhead might be unnecessary.</p>
+<p>We do not need to maintain a shadow tree for web server gltf-binary export, since it’s only another synced gltf instance.</p>
 </section>
 <section id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us">Is this a V-Sekai core responsibility, and should it be done by us?</h2>
