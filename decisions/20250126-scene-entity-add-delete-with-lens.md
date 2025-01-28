@@ -1,4 +1,4 @@
-# Proposed: Scene entity add & delete with overlay
+# Rejected: Scene entity add & delete with an overlay
 
 ## What is the context of the proposal?
 
@@ -81,7 +81,9 @@ There are fewer ones with multiplayer buildings like Resonite.
 
 ## What is the status of the proposal?
 
-Status: Proposed
+Status: Rejected
+
+Needs a redo.
 
 ## Who is making decisions on the proposal?
 
