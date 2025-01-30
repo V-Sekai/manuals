@@ -1,4 +1,4 @@
-# Proposed: World Godot Build Dispatch
+# Accepted: World Godot Build Dispatch
 
 ## What is the context of the proposal?
 
@@ -42,7 +42,7 @@ Yes, because it streamlines the build workflow for V-Sekai projects.
 
 ## What is the status of the proposal?
 
-Status: Proposed
+Status: Accepted
 
 ## Who is making decisions on the proposal?
 
