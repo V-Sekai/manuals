@@ -12,7 +12,9 @@ Send automated build messages to “v-sekai/v-sekai-game” on “v-sekai/world-
 
 To enable it, add “REPO_DISPATCH” to repository secrets.
 
-A fine-grained token with Contents: Read and write permission for the “v-sekai-game” repo must be placed in the “REPO_DISPATCH” named repository secret of “V-Sekai/world-godot.”
+A fine-grained token with Contents: Read and write permission for the “v-sekai-game” repo must be placed in the “REPO_DISPATCH” named repository secret of “V-Sekai/world-godot”.
+
+In `V-Sekai/world-godot`, add the Godot Engine project to the dispatch job's list too. 
 
 ## What are the benefits of the proposal?
 
