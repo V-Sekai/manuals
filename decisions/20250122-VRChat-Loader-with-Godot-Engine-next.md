@@ -1,4 +1,4 @@
-# Proposed: VRChat Loader with Godot Engine HTTP Server Next
+# Accepted: VRChat Loader with Godot Engine HTTP Server Next
 
 ## What is the context of the proposal?
 
@@ -56,7 +56,7 @@ This solution could broaden social VR possibilities. A thorough review of feasib
 
 ## What is the status of the proposal?
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Who is making decisions on the proposal?
 
