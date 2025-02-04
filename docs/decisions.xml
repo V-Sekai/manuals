@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.40</generator>
-<lastBuildDate>Tue, 04 Feb 2025 00:10:32 GMT</lastBuildDate>
+<lastBuildDate>Tue, 04 Feb 2025 00:18:27 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -75,7 +75,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Tue, 04 Feb 2025 00:10:32 GMT</pubDate>
+  <pubDate>Tue, 04 Feb 2025 00:18:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -162,7 +162,142 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/ai-assisted-proposal-style-guide.html</guid>
-  <pubDate>Tue, 04 Feb 2025 00:10:32 GMT</pubDate>
+  <pubDate>Tue, 04 Feb 2025 00:18:27 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20250203-daily-deck-log.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="proposed-daily-deck-log" class="level1">
+<h1>Proposed: Daily Deck Log</h1>
+<section id="what-is-the-context-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-context-of-the-proposal">What is the context of the proposal?</h2>
+<p>The V-Sekai team requires a structured, real-time method to track daily project health, team contributions, and technical progress. This log aims to streamline communication across contributors and stakeholders in an open-source social VR project built on the Godot Engine.</p>
+</section>
+<section id="what-is-the-problem-being-solved" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-problem-being-solved">What is the problem being solved?</h2>
+<ul>
+<li>Fragmented updates across chat/email.</li>
+<li>Lack of visibility into blockers or critical issues.</li>
+<li>Difficulty aligning priorities between developers, artists, and leadership.</li>
+</ul>
+</section>
+<section id="describe-how-your-proposal-will-work" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work">Describe how your proposal will work</h2>
+<p><strong>Process:</strong></p>
+<ol type="1">
+<li><p><strong>Daily Interactive Prompting</strong>: A bot (e.g., Discord/GitHub bot) prompts contributors for updates via a form.</p></li>
+<li><p><strong>Structured Data Collection</strong>:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> collect_deck_log():</span>
+<span id="cb1-2">    date <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">input</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Date (YYYY-MM-DD): "</span>)</span>
+<span id="cb1-3">    active_contributors <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">input</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Active contributors (count/details): "</span>)</span>
+<span id="cb1-4">    blockers <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">input</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Current blockers: "</span>)</span>
+<span id="cb1-5">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ... additional fields</span></span>
+<span id="cb1-6">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> format_markdown(date, active_contributors, blockers)</span></code></pre></div></li>
+<li><p><strong>Automated Aggregation</strong>: Data is compiled into a Markdown log (example below) and posted to a project channel.</p></li>
+<li><p><strong>Decision Tracking</strong>: Highlighted decisions/blockers trigger alerts to relevant roles (e.g., engineering lead).</p></li>
+</ol>
+<p><strong>Mock-Up:</strong></p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1">**Date:** 2025-02-03  </span>
+<span id="cb2-2">**Active Contributors:** 8 (2 new QA testers onboarded)  </span>
+<span id="cb2-3">**Critical Blockers:** Issue #45: Rendering crash on Linux  </span>
+<span id="cb2-4">**Key Initiative:** Netcode refactor (PR #78 merged)</span></code></pre></div>
+</section>
+<section id="what-are-the-benefits-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</h2>
+<ul>
+<li><strong>Transparency</strong>: Centralized visibility into progress.</li>
+<li><strong>Alignment</strong>: Reduces redundant meetings.</li>
+<li><strong>Accountability</strong>: Tracks unresolved blockers.</li>
+</ul>
+</section>
+<section id="what-are-the-downsides-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-downsides-of-the-proposal">What are the downsides of the proposal?</h2>
+<ul>
+<li>Overhead for contributors to submit daily updates.</li>
+<li>Risk of rigidity if not adapted to evolving workflows.</li>
+</ul>
+</section>
+<section id="what-are-the-alternative-proposals" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-alternative-proposals">What are the alternative proposals?</h2>
+<ul>
+<li>Use GitHub Projects/Jira (less tailored to open-source volunteer workflows).</li>
+<li>Weekly async summaries (loses real-time urgency).</li>
+</ul>
+</section>
+<section id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all" class="level2">
+<h2 class="anchored" data-anchor-id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all">When might the proposed solution be used rarely or not at all?</h2>
+<ul>
+<li>During low-activity periods (e.g., holidays).</li>
+<li>If the team shrinks to &lt;5 contributors.</li>
+</ul>
+</section>
+<section id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us">Is this a V-Sekai core responsibility, and should it be done by us?</h2>
+<p>Yes. As an open-source project, maintaining transparent, community-friendly processes aligns with V-Sekai’s core values.</p>
+</section>
+<section id="what-is-the-status-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-status-of-the-proposal">What is the status of the proposal?</h2>
+<p><strong>Status:</strong> Proposed</p>
+</section>
+<section id="who-is-making-decisions-on-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="who-is-making-decisions-on-the-proposal">Who is making decisions on the proposal?</h2>
+<ul>
+<li>fire</li>
+</ul>
+</section>
+<section id="what-tags-does-the-proposal-have" class="level2">
+<h2 class="anchored" data-anchor-id="what-tags-does-the-proposal-have">What tags does the proposal have?</h2>
+<ul>
+<li><code>V-Sekai</code></li>
+<li><code>Project Management</code></li>
+</ul>
+</section>
+<section id="list-further-reading-references." class="level2">
+<h2 class="anchored" data-anchor-id="list-further-reading-references.">List further reading references.</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20250203-daily-deck-log.html</guid>
+  <pubDate>Tue, 04 Feb 2025 00:18:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -244,7 +379,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250130-world-godot-build-dispatch.html</guid>
-  <pubDate>Tue, 04 Feb 2025 00:10:32 GMT</pubDate>
+  <pubDate>Tue, 04 Feb 2025 00:18:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -636,7 +771,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250126-scene-entity-add-delete-with-lens.html</guid>
-  <pubDate>Tue, 04 Feb 2025 00:10:32 GMT</pubDate>
+  <pubDate>Tue, 04 Feb 2025 00:18:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -707,7 +842,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250126-primitive-outline.html</guid>
-  <pubDate>Tue, 04 Feb 2025 00:10:32 GMT</pubDate>
+  <pubDate>Tue, 04 Feb 2025 00:18:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -794,7 +929,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250126-multiplayer-sync-between-godot-instances.html</guid>
-  <pubDate>Tue, 04 Feb 2025 00:10:32 GMT</pubDate>
+  <pubDate>Tue, 04 Feb 2025 00:18:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -918,7 +1053,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250123-implement-msft-texture-dds-in-godot.html</guid>
-  <pubDate>Tue, 04 Feb 2025 00:10:32 GMT</pubDate>
+  <pubDate>Tue, 04 Feb 2025 00:18:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -994,7 +1129,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250122-VRChat-Loader-with-Godot-Engine.html</guid>
-  <pubDate>Tue, 04 Feb 2025 00:10:32 GMT</pubDate>
+  <pubDate>Tue, 04 Feb 2025 00:18:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1133,7 +1268,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250122-VRChat-Loader-with-Godot-Engine-next.html</guid>
-  <pubDate>Tue, 04 Feb 2025 00:10:32 GMT</pubDate>
+  <pubDate>Tue, 04 Feb 2025 00:18:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1199,7 +1334,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250118-discussion.html</guid>
-  <pubDate>Tue, 04 Feb 2025 00:10:32 GMT</pubDate>
+  <pubDate>Tue, 04 Feb 2025 00:18:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1276,7 +1411,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250103-sparkly-valve-index-fix.html</guid>
-  <pubDate>Tue, 04 Feb 2025 00:10:32 GMT</pubDate>
+  <pubDate>Tue, 04 Feb 2025 00:18:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1470,7 +1605,7 @@ font-style: inherit;">mix</span> ash.setup</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241229-one-prototyping-stack.html</guid>
-  <pubDate>Tue, 04 Feb 2025 00:10:32 GMT</pubDate>
+  <pubDate>Tue, 04 Feb 2025 00:18:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1606,7 +1741,7 @@ font-style: inherit;">return</span> village</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241222-wandering-dancer.html</guid>
-  <pubDate>Tue, 04 Feb 2025 00:10:32 GMT</pubDate>
+  <pubDate>Tue, 04 Feb 2025 00:18:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1680,7 +1815,7 @@ font-style: inherit;">return</span> village</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241221-wandering-bakery.html</guid>
-  <pubDate>Tue, 04 Feb 2025 00:10:32 GMT</pubDate>
+  <pubDate>Tue, 04 Feb 2025 00:18:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1754,7 +1889,7 @@ font-style: inherit;">return</span> village</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241220-discord-quest-3.html</guid>
-  <pubDate>Tue, 04 Feb 2025 00:10:32 GMT</pubDate>
+  <pubDate>Tue, 04 Feb 2025 00:18:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2010,7 +2145,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241220-character-concept-art-creation.html</guid>
-  <pubDate>Tue, 04 Feb 2025 00:10:32 GMT</pubDate>
+  <pubDate>Tue, 04 Feb 2025 00:18:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2104,7 +2239,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241219-unpack-fbx-udimms.html</guid>
-  <pubDate>Tue, 04 Feb 2025 00:10:32 GMT</pubDate>
+  <pubDate>Tue, 04 Feb 2025 00:18:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2212,7 +2347,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241219-scriptable-sign.html</guid>
-  <pubDate>Tue, 04 Feb 2025 00:10:32 GMT</pubDate>
+  <pubDate>Tue, 04 Feb 2025 00:18:27 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2314,275 +2449,7 @@ font-style: inherit;">py</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241218-will-o-wisp-proto-avatar.html</guid>
-  <pubDate>Tue, 04 Feb 2025 00:10:32 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20241210-vsekai-charter.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="draft-update-v-sekai-charter-to-2024" class="level1">
-<h1>Draft: Update V-Sekai Charter to 2024</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>The Mozilla Builders Summer MVP Lab charter was submitted on June 8, 2020. It’s now time to refresh our goals and direction.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Our current V-Sekai charter is outdated and needs to be revised to reflect the project’s current state and future ambitions in 2024.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p><strong>A one-line summary of the MVP:</strong></p>
-<p>A customizable and self-hosted virtual reality environment built on Godot Engine.</p>
-<p><strong>Description of the product: What will the MVP be in 8 weeks?</strong></p>
-<p>Our virtual reality app will be compatible with all SteamVR-compatible PC headsets and the Meta Quest VR platform. It will feature a social hub with 3D voice chat, real-time body tracking, simple games, integrated physics, and social video viewing.</p>
-<p><strong>Category:</strong></p>
-<ul>
-<li>Decentralized Web: YES</li>
-<li>Messaging &amp; Social Networking: YES</li>
-</ul>
-<p><strong>Why does your idea matter? How will it help deliver on the full promise of the internet or make the internet more awesome?</strong></p>
-<p>The internet thrives on openness and communication. We believe virtual reality is a powerful new medium for human connection. With the closure of platforms like High Fidelity, open-source alternatives are crucial to counter the trend of closed VR platforms.</p>
-<p>VR technology is advancing rapidly. Better game engines, audio and video codecs, faster internet speeds, and more accessible VR hardware create the perfect opportunity to develop an open platform.</p>
-<p>We champion individual empowerment through decentralized technology. Our goal is to build a polished and functional service that integrates decentralized authentication and encryption, along with content distribution technologies like BitTorrent and IPFS.</p>
-<p><strong>Who are your users or potential users?</strong></p>
-<p>Our target audience includes users of social VR experiences, online collaboration tools, and communication products. The social VR space is growing, and its potential is just beginning to be explored.</p>
-<p>Despite being a relatively new technology, VR has a large potential market, particularly with the rise of affordable headsets like Meta Quest. For example, VRChat boasts between 12,000 and 15,000 concurrent users, with approximately 4,000 using VR in 2019.</p>
-<p><strong>What is your connection to the service &amp; the user group you plan to reach with your product?</strong></p>
-<p>We are a team of VR enthusiasts with backgrounds in visual effects, level design, and graphics.</p>
-<p>In an era where remote connection is essential, VR offers a more immersive and engaging way to bring people together compared to traditional video calls. One of our team members has participated in Virtual Market 4, a growing virtual content marketplace.</p>
-<p>Through other social VR platforms, we have connected with people worldwide, attended live events, and formed meaningful friendships. We aim to provide these experiences in an open and accessible environment.</p>
-<p><strong>Will your team still work on this project if we do not fund it? To what extent?</strong></p>
-<p>We are committed to this project and will continue development regardless of funding. However, external funding would significantly accelerate our progress and help us stay competitive with closed VR platforms that are rapidly evolving.</p>
-<p><strong>Why did you pick this idea? Would you happen to have domain expertise? How do you know people need what you’re building?</strong></p>
-<p>We recognize the need for an open alternative to closed VR platforms. Many current platforms are free, but there’s no guarantee they will remain that way. Our platform offers the advantages of self-hosting, private use, and modification.</p>
-<p>Our team possesses expertise in backend operations and Godot Engine development, both essential for building this platform.</p>
-<p><strong>Are you looking for any teammates? If so, please indicate what skills or roles you seek.</strong></p>
-<p>We welcome new contributors! We have a Discord group, a GitHub repository, and an issues list where individuals can learn about the project and find ways to contribute.</p>
-<p><strong>Could you describe your work plan?</strong></p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 4%">
-<col style="width: 95%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Week</th>
-<th>Tasks</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Week 1</strong></td>
-<td>- Maintain continuous integration of Windows SteamVR, Meta Quest, and Linux server builds. <br> - Implement basic VOIP with lipsync based on volume and integrate a spatialization library. <br> - Improve Inverse Kinematics and add non-VR support.</td>
-</tr>
-<tr class="even">
-<td><strong>Week 2</strong></td>
-<td>- Stress test the system using headless clients. <br> - Implement a crash reporting system and performance metrics. <br> - Use a basic scripting API to implement physics-based games. <br> - Begin optimizing the engine for smooth frame rates during content loading.</td>
-</tr>
-<tr class="odd">
-<td><strong>Week 3</strong></td>
-<td>- Implement networking interpolation to eliminate stuttering. <br> - Fix bugs in the Godot OpenVR plugin that cause inconsistent framerate in VR. <br> - Pre-load content to avoid stutters in the 3D environment.</td>
-</tr>
-<tr class="even">
-<td><strong>Week 4</strong></td>
-<td>- Begin work on hardcoded avatars. <br> - Recruit artists to create a default home map. <br> - Fix physics errors. <br> - Test performance on various VR hardware and optimize.</td>
-</tr>
-<tr class="odd">
-<td><strong>Week 5-6</strong></td>
-<td>- Implement an account system, Terms of Service, and Privacy Policy. <br> - Enable closed registration of users. <br> - Continue working on content and bug fixes. <br> - Integrate video playback. <br> - Focus on stress testing.</td>
-</tr>
-<tr class="even">
-<td><strong>Week 7-8</strong></td>
-<td>- Fix bugs found during testing. <br> - Monitor performance metrics and continue performance optimization.</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Could you describe the team’s approach to developing the Minimum Viable Product throughout the summer? This includes, but is not limited to:</strong></p>
-<p><strong>Who are your peers?</strong></p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Tier S</th>
-<th>Tier A</th>
-<th>Tier B</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>VRChat</td>
-<td>Spatial</td>
-<td>ENGAGE VR</td>
-</tr>
-<tr class="even">
-<td>Meta Horizon Worlds</td>
-<td>Mozilla Hubs</td>
-<td>HTC Vive Sync</td>
-</tr>
-<tr class="odd">
-<td>cluster</td>
-<td>VirtualCast</td>
-<td>Oasis VR</td>
-</tr>
-<tr class="even">
-<td>Rec Room</td>
-<td>Sansar</td>
-<td>ChilloutVR</td>
-</tr>
-<tr class="odd">
-<td>Roblox VR</td>
-<td>Somnium Space</td>
-<td>Lavender</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>Overte</td>
-<td>Resonite</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td>Bigscreen</td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td>Anyland</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td>VirBELA</td>
-</tr>
-</tbody>
-</table>
-<p><strong>How will you attract your first 1000 users? Your first 1,000,000?</strong></p>
-<ul>
-<li><strong>Initial Users:</strong> We will leverage our existing contacts within the VR community to gain our first 50 users.</li>
-<li><strong>Growth:</strong> We will offer unique experiences not found on other platforms to attract more users.</li>
-<li><strong>Scaling:</strong> To reach thousands of users, we will host events and emphasize privacy and self-hosting capabilities.</li>
-</ul>
-<p><strong>First 2-week development milestone</strong></p>
-<ul>
-<li>Maintain continuous integration of builds for Windows SteamVR, Meta Quest, and Linux servers.</li>
-<li>Implement basic VOIP with lipsync and spatialization.</li>
-<li>Improve Inverse Kinematics and add non-VR support.</li>
-<li>Conduct stress testing with headless clients.</li>
-<li>Implement crash reporting and performance metrics.</li>
-<li>Use a scripting API to implement physics-based games.</li>
-<li>Begin engine optimization for smooth frame rates during content loading.</li>
-</ul>
-<p><strong>Tech stack you plan to use (Cloud services, APIs, mobile platforms, languages, etc)</strong></p>
-<p>Godot Engine, k3s, Elixir, OAuth, CockroachDB, Nginx, Fedora, CentOS 8, Digital Ocean Spaces, Meta Quest SDK on Android, Valve OpenVR on Windows.</p>
-<p><strong>Link to simple sketches (can be as simple as paper and pencil) of your product or idea</strong></p>
-<p>[Insert Link to Sketches Here]</p>
-<p><strong>What challenges do you anticipate with this idea?</strong></p>
-<ul>
-<li><strong>Design Challenges:</strong> Most social VR applications are developed in Unity, which can present design challenges for our Godot Engine-based project.</li>
-<li><strong>User Acquisition:</strong> Social platforms are heavily influenced by the network effect, making user acquisition a challenge.</li>
-<li><strong>User Retention:</strong> VR applications tend to have lower user retention rates compared to traditional applications.</li>
-</ul>
-<p><strong>Team Member Locations by Country</strong></p>
-<p>Canada, United States, United Kingdom</p>
-<p><strong>Team Details</strong></p>
-<ul>
-<li><strong>MMMaellon:</strong> C++, Java, Python. Experience with Android and iOS frameworks. Design skills in motion graphics, VFX, and video editing. Background in mobile app development and currently pursuing a master’s in computer science.</li>
-<li><strong>Saracen:</strong> C++, C, C#, Java, Python, GDScript, Android. Professional experience in mobile app development, self-taught in game mods, game engine architecture (including forks of Id Software GPL releases), contributed code to Godot Engine and other VR platforms, developed tools including Unity, Godot, and Blender plugins, and worked on reimplementing legacy game engines for modern platforms.</li>
-<li><strong>Lyuma:</strong> C++, Java, Python, Javascript, C#, Android, iOS. Expertise in backend, operations, and networking. 9 years of industry experience leading a team that developed VOIP and video implementation for an iOS and Android app with hundreds of millions of users. Experience includes backend architecture, scaling, operations, networking, stats, and monitoring.</li>
-<li><strong>iFire:</strong> C++. Familiar with Godot Engine and Unreal Engine. Professional game developer. Created a Blender to glTF2 pipeline for Godot Engine and coordinated an FBX pipeline. Shipped Offworld Industries’ Squad as a programmer, DevOps, and IT. Implemented an Unreal Engine touchscreen product demo using HTML5 and Blueprints.</li>
-</ul>
-<p><strong>Will all team members commit their full-time energy to this project during the 8 weeks of the program?</strong></p>
-<ul>
-<li><strong>MMMaellon:</strong> Making valuable individual contributions as needed, including a VR character movement system.</li>
-<li><strong>Saracen:</strong> Will be working full-time on the core client.</li>
-<li><strong>Lyuma:</strong> Will be working full-time on dev ops, operations, backend, and testing.</li>
-<li><strong>iFire:</strong> Heavily involved in the Godot Engine open-source community and dedicated part-time to this MVP project.</li>
-</ul>
-<p><strong>How did you hear about the MVP Lab?</strong></p>
-<p>We learned about the MVP Lab from Hacker News: <a href="https://news.ycombinator.com/item?id=23194178">https://news.ycombinator.com/item?id=23194178</a></p>
-<p><strong>Is there anything else we should know?</strong></p>
-<p>We are passionate about VR, open source, and decentralization. We are dedicated to building a valuable platform for the internet community.</p>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p>Updating our V-Sekai charter to 2024 will:</p>
-<ul>
-<li>Ensure the project remains relevant and aligned with current technology and user needs.</li>
-<li>Provide a clear roadmap and goals for the development team.</li>
-<li>Attract potential investors and collaborators.</li>
-<li>Increase the project’s credibility and visibility.</li>
-</ul>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>Updating our V-Sekai charter to 2024 could:</p>
-<ul>
-<li>Potentially overcommit resources and time.</li>
-<li>Introduce the risk of technological or market shifts that render parts of the charter obsolete.</li>
-<li>Increase the risk of team burnout due to ambitious goals.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Maintaining the current charter and focusing on short-term goals could:</p>
-<ul>
-<li>Offer more flexibility.</li>
-<li>Reduce the risk of overcommitting resources.</li>
-<li>Potentially limit the project’s long-term growth and impact.</li>
-</ul>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>Examples of less frequent use cases for the V-Sekai platform:</p>
-<ul>
-<li>Virtual historical reenactments or educational tours.</li>
-<li>Hosting virtual conferences or trade shows.</li>
-</ul>
-</section>
-<section id="why-is-it-in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="why-is-it-in-core-and-done-by-us">Why is it in Core and done by us?</h2>
-<p>Updating the V-Sekai charter is core to our mission because:</p>
-<ul>
-<li>We are committed to developing an open-source, decentralized VR platform.</li>
-<li>Our team has the necessary expertise and passion.</li>
-<li>Setting long-term goals ensures project sustainability.</li>
-</ul>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p><strong>Status:</strong> Draft</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a></li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a></li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20241210-vsekai-charter.html</guid>
-  <pubDate>Tue, 04 Feb 2025 00:10:32 GMT</pubDate>
+  <pubDate>Tue, 04 Feb 2025 00:18:27 GMT</pubDate>
 </item>
 </channel>
 </rss>
