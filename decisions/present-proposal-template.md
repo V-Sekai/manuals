@@ -1,52 +1,96 @@
-# Proposed: Template
+# Proposed: [Short Descriptive Title]
 
-## What is the context of the proposal?
+## Context
 
-## What is the problem being solved?
+[Describe the environment, existing systems, or creative landscape where this proposal applies. Explain why this matters now.]
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
+## Problem Statement
 
-## What are the benefits of the proposal?
+[Clearly define the limitation, challenge, or unmet need this proposal addresses. Use specific examples if helpful.]
 
-## What are the downsides of the proposal?
+## Proposed Solution
 
-## What are the alternative proposals?
+[Explain the core concept in 1-3 sentences. For technical proposals, include:]
 
-## When might the proposed solution be used rarely or not at all?
+```plaintext
+# Optional pseudo-code/examples
+def example_implementation():
+    return modular_component()
+```
 
-## Is this a V-Sekai core responsibility, and should it be done by us?
+## Implementation Plan
 
-## What is the status of the proposal?
+1. **Phase 1**: [First actionable step]
+2. **Phase 2**: [Follow-up action]
+3. **Validation**: [Testing/metrics for success]
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+## Benefits
 
-## Who is making decisions on the proposal?
+- [Primary advantage]
+- [Secondary advantage]
+- [Long-term impact]
 
-- V-Sekai development team
+## Risks and Limitations
 
-## What tags does the proposal have?
+- [Key technical constraint]
+- [Adoption challenge]
+- [Maintenance consideration]
 
-- V-Sekai
+## Alternatives Considered
 
-## List further reading references.
+| Option          | Pros          | Cons         |
+| --------------- | ------------- | ------------ |
+| [Alternative A] | [Strength]    | [Weakness]   |
+| [Status Quo]    | [Familiarity] | [Limitation] |
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
+## When to Avoid This Solution
 
-AI assistant Aria assisted with this article.
+[Describe scenarios where alternative approaches would be better suited.]
 
-## Proposal Style
+## Organizational Alignment
 
-Maintaining a consistent and professional style is crucial in proposal writing. However, the output often needs more stylistic quality when AI assists in this process.
+[Explain how this fits the team/company/project's mission and priorities.]
 
-We often need better style and consistent formatting when we instruct AI to help complete our proposals.
+## Proposal Status
 
-1. **Avoid Purple Speech**: Use clear and concise language, avoiding overly elaborate or flowery expressions.
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Active | Retired -->
 
-2. **Be Snappy**: Keep sentences short and concise to maintain reader engagement.
+## Decision Makers
 
-3. **Avoid Coded Phrases**: Refrain from using coded phrases like "effective altruism" since altruism inherently implies effectiveness and not the opposite.
+- [Relevant team/role name]
 
-4. **Keep Consistent Headers**: Please be sure to adhere to the header structure provided in the template to ensure consistency across documents.
+## Tags
 
-5. **Avoid Bolded Headers** Do not recommend bolding headers due to noise.
+- [Domain] (e.g., Graphics, Networking)
+- [Urgency] (e.g., Immediate, Strategic)
+
+## References
+
+1. [Relevant Standard](https://example.com) - Brief context
+2. [Prior Art](https://example.com) - Key takeaways
+
+## Style Guide for Proposals
+
+1. **Atomic Sections**: Keep each header's content focused on a single concept
+2. **Scenario-Driven Examples**:
+   ```python
+   # Good: Contextualized example
+   if use_case == "edge_device":
+       apply_optimization()
+   ```
+3. **Decision Transparency**:
+
+   > "We chose X over Y because _[concrete reason]_"
+
+4. **Validation Checklist**:
+
+   - [ ] Compatibility with [key system]
+   - [ ] Performance impact under [condition]
+
+5. **Lifecycle Awareness**:
+
+   - Sunset condition: "[Specific trigger]"
+   - Maintenance plan: "[Ownership details]"
+
+6. **Visual Aids**:
+   ![Mock-up](https://via.placeholder.com/400x200.png?text=Diagram+Placeholder)
