@@ -11,7 +11,7 @@ Godot's default support for two UV channels limits complex shader workflows. Use
 ## Describe how your proposal will work
 
 1. **Blender Setup**: Create UV maps (UV3-UV8) under _Mesh Properties > UV Maps_. Encode data into these channels (e.g., UV5.x for hitbox IDs).
-2. **Export**: Use `.gltf` or `.blend` files, ensuring UVs are unwrapped on the Face Corner domain.
+2. **Export**: Use `.gltf` or `.blend` files, ensuring UVs are unwrapped on the Face Corner domain. (Use smooth shading.)
 3. **Godot Shaders**:
 
    ```glsl
