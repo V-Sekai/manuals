@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ai-assisted-proposal-style-guide – V-Sekai - Manuals</title>
+<title>using-8-uv-channels-for-custom-vertex-data – V-Sekai - Manuals</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -117,23 +151,23 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#accepted-ai-assisted-style-guide" id="toc-accepted-ai-assisted-style-guide" class="nav-link active" data-scroll-target="#accepted-ai-assisted-style-guide">Accepted: AI-Assisted Style Guide</a>
+  <li><a href="#proposed-use-8-uv-channels-for-custom-vertex-data-in-v-sekai" id="toc-proposed-use-8-uv-channels-for-custom-vertex-data-in-v-sekai" class="nav-link active" data-scroll-target="#proposed-use-8-uv-channels-for-custom-vertex-data-in-v-sekai">Proposed: Use 8 UV Channels for Custom Vertex Data in V-Sekai</a>
   <ul class="collapse">
-  <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
-  <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
-  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</a></li>
-  <li><a href="#the-benefits" id="toc-the-benefits" class="nav-link" data-scroll-target="#the-benefits">The Benefits</a></li>
-  <li><a href="#the-downsides" id="toc-the-downsides" class="nav-link" data-scroll-target="#the-downsides">The Downsides</a></li>
-  <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
-  <li><a href="#the-infrequent-use-case" id="toc-the-infrequent-use-case" class="nav-link" data-scroll-target="#the-infrequent-use-case">The Infrequent Use Case</a></li>
-  <li><a href="#in-core-and-done-by-us" id="toc-in-core-and-done-by-us" class="nav-link" data-scroll-target="#in-core-and-done-by-us">In Core and Done by Us</a></li>
-  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
-  <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
-  <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags">Tags</a></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  <li><a href="#what-is-the-context-of-the-proposal" id="toc-what-is-the-context-of-the-proposal" class="nav-link" data-scroll-target="#what-is-the-context-of-the-proposal">What is the context of the proposal?</a></li>
+  <li><a href="#what-is-the-problem-being-solved" id="toc-what-is-the-problem-being-solved" class="nav-link" data-scroll-target="#what-is-the-problem-being-solved">What is the problem being solved?</a></li>
+  <li><a href="#describe-how-your-proposal-will-work" id="toc-describe-how-your-proposal-will-work" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work">Describe how your proposal will work</a></li>
+  <li><a href="#what-are-the-benefits-of-the-proposal" id="toc-what-are-the-benefits-of-the-proposal" class="nav-link" data-scroll-target="#what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</a></li>
+  <li><a href="#what-are-the-downsides-of-the-proposal" id="toc-what-are-the-downsides-of-the-proposal" class="nav-link" data-scroll-target="#what-are-the-downsides-of-the-proposal">What are the downsides of the proposal?</a></li>
+  <li><a href="#what-are-the-alternative-proposals" id="toc-what-are-the-alternative-proposals" class="nav-link" data-scroll-target="#what-are-the-alternative-proposals">What are the alternative proposals?</a></li>
+  <li><a href="#when-might-the-proposed-solution-be-used-rarely-or-not-at-all" id="toc-when-might-the-proposed-solution-be-used-rarely-or-not-at-all" class="nav-link" data-scroll-target="#when-might-the-proposed-solution-be-used-rarely-or-not-at-all">When might the proposed solution be used rarely or not at all?</a></li>
+  <li><a href="#is-this-a-v-sekai-core-responsibility" id="toc-is-this-a-v-sekai-core-responsibility" class="nav-link" data-scroll-target="#is-this-a-v-sekai-core-responsibility">Is this a V-Sekai core responsibility?</a></li>
+  <li><a href="#what-is-the-status-of-the-proposal" id="toc-what-is-the-status-of-the-proposal" class="nav-link" data-scroll-target="#what-is-the-status-of-the-proposal">What is the status of the proposal?</a></li>
+  <li><a href="#who-is-making-decisions-on-the-proposal" id="toc-who-is-making-decisions-on-the-proposal" class="nav-link" data-scroll-target="#who-is-making-decisions-on-the-proposal">Who is making decisions on the proposal?</a></li>
+  <li><a href="#what-tags-does-the-proposal-have" id="toc-what-tags-does-the-proposal-have" class="nav-link" data-scroll-target="#what-tags-does-the-proposal-have">What tags does the proposal have?</a></li>
+  <li><a href="#list-further-reading-references." id="toc-list-further-reading-references." class="nav-link" data-scroll-target="#list-further-reading-references.">List further reading references.</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/ai-assisted-proposal-style-guide.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20250211-using-8-uv-channels-for-custom-vertex-data.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
@@ -141,76 +175,93 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="accepted-ai-assisted-style-guide" class="level1">
-<h1>Accepted: AI-Assisted Style Guide</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>Maintaining a consistent and professional style is crucial in proposal writing. However, the output often needs more stylistic quality when AI assists in this process.</p>
+<section id="proposed-use-8-uv-channels-for-custom-vertex-data-in-v-sekai" class="level1">
+<h1>Proposed: Use 8 UV Channels for Custom Vertex Data in V-Sekai</h1>
+<section id="what-is-the-context-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-context-of-the-proposal">What is the context of the proposal?</h2>
+<p>The proposal addresses advanced use cases for transferring custom vertex data from Blender to Godot via 8 UV channels. This enables creative applications such as dynamic shader effects, modular armor systems, and procedural texture masking.</p>
 </section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>We often need better style and consistent formatting when we instruct AI to help complete our proposals.</p>
+<section id="what-is-the-problem-being-solved" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-problem-being-solved">What is the problem being solved?</h2>
+<p>Godot’s default support for two UV channels limits complex shader workflows. Users need methods to encode additional data (e.g., hitbox IDs, visibility values) while ensuring compatibility between Blender’s UV maps and Godot’s CUSTOM0-3 attributes.</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="describe-how-your-proposal-will-work" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work">Describe how your proposal will work</h2>
 <ol type="1">
-<li><p><strong>Avoid Purple Speech</strong>: Use clear and concise language, avoiding overly elaborate or flowery expressions.</p></li>
-<li><p><strong>Be Snappy</strong>: Keep sentences short and concise to maintain reader engagement.</p></li>
-<li><p><strong>Avoid Coded Phrases</strong>: Refrain from using coded phrases like “effective altruism” since altruism inherently implies effectiveness and not the opposite.</p></li>
-<li><p><strong>Keep Consistent Headers</strong>: Please be sure to adhere to the header structure provided in the template to ensure consistency across documents.</p></li>
-<li><p><strong>Avoid Bolded Headers</strong> Do not recommend bolding headers due to noise.</p></li>
+<li><p><strong>Blender Setup</strong>: Create UV maps (UV3-UV8) under <em>Mesh Properties &gt; UV Maps</em>. Encode data into these channels (e.g., UV5.x for hitbox IDs).</p></li>
+<li><p><strong>Export</strong>: Use <code>.gltf</code> or <code>.blend</code> files, ensuring UVs are unwrapped on the Face Corner domain.</p></li>
+<li><p><strong>Godot Shaders</strong>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode glsl code-with-copy"><code class="sourceCode glsl"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Access CUSTOM0 (UV3 + UV4)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">vec4</span> custom_data <span class="op">=</span> CUSTOM0<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">float</span> hitbox_id <span class="op">=</span> custom_data<span class="op">.</span><span class="fu">x</span><span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">// Example: Procedural armor toggling</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> <span class="op">(</span>CUSTOM1<span class="op">.</span><span class="fu">z</span> <span class="op">&gt;</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">{</span> <span class="co">// UV7 value stored in CUSTOM1.zw</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    ALBEDO <span class="op">=</span> armor_texture<span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Data Handling</strong>: Use <code>surface_get_arrays</code> to access <code>ARRAY_CUSTOM0-3</code> in scripts.</p></li>
 </ol>
 </section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<section id="what-are-the-benefits-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</h2>
 <ul>
-<li><p><strong>Improved Readability</strong>: Clear and concise language enhances the readability of proposals.</p></li>
-<li><p><strong>Consistency</strong>: Maintaining a consistent style ensures that all documents appear professionally.</p></li>
-<li><p><strong>Efficiency</strong>: Streamlined guidelines make it easier for AI to generate high-quality content quickly.</p></li>
+<li>Enables complex effects without mesh modifications (e.g., dynamic damage masking).</li>
+<li>Efficient data transfer via existing UV workflows.</li>
+<li>Supports up to 10 channels using half-precision packing.</li>
 </ul>
 </section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<section id="what-are-the-downsides-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-downsides-of-the-proposal">What are the downsides of the proposal?</h2>
 <ul>
-<li><p><strong>Limited Creativity</strong>: Strict adherence to style guidelines may limit creative expression.</p></li>
-<li><p><strong>Initial Setup Time</strong>: Establishing and fine-tuning the style guide may require an initial investment of time and resources.</p></li>
+<li>Vertex count mismatches if meshes are shaded flat in Blender.</li>
+<li>Requires careful UV management to avoid vertical flipping issues.</li>
+<li>Limited debugging tools for custom data validation.</li>
 </ul>
 </section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Alternative approaches, such as manual editing or using different AI models, were considered but ultimately deemed less efficient or effective.</p>
+<section id="what-are-the-alternative-proposals" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-alternative-proposals">What are the alternative proposals?</h2>
+<ul>
+<li>Using texture maps instead of UVs (increases memory usage).</li>
+<li>Relying on vertex colors (limited to 4 channels).</li>
+</ul>
 </section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>In scenarios where highly specialized or technical language is required, additional human oversight may be necessary to ensure accuracy and appropriateness.</p>
+<section id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all" class="level2">
+<h2 class="anchored" data-anchor-id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all">When might the proposed solution be used rarely or not at all?</h2>
+<p>Unnecessary for simple assets without shader-driven interactivity or when targeting platforms with strict performance constraints.</p>
 </section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>This proposal aligns with our core values of efficiency and professionalism and will be implemented by our team.</p>
+<section id="is-this-a-v-sekai-core-responsibility" class="level2">
+<h2 class="anchored" data-anchor-id="is-this-a-v-sekai-core-responsibility">Is this a V-Sekai core responsibility?</h2>
+<p>Yes, as it enhances content creation pipelines for social VR experiences. V-Sekai should document best practices and provide shader templates.</p>
 </section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+<section id="what-is-the-status-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-status-of-the-proposal">What is the status of the proposal?</h2>
+<p>Status: Proposed</p>
 </section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<section id="who-is-making-decisions-on-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="who-is-making-decisions-on-the-proposal">Who is making decisions on the proposal?</h2>
 <ul>
 <li>V-Sekai development team</li>
+<li>fire</li>
+<li>lyuma</li>
+<li>funkbison</li>
 </ul>
 </section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<section id="what-tags-does-the-proposal-have" class="level2">
+<h2 class="anchored" data-anchor-id="what-tags-does-the-proposal-have">What tags does the proposal have?</h2>
 <ul>
 <li>V-Sekai</li>
+<li>Shaders</li>
+<li>Asset Pipeline</li>
 </ul>
 </section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<section id="list-further-reading-references." class="level2">
+<h2 class="anchored" data-anchor-id="list-further-reading-references.">List further reading references.</h2>
 <ol type="1">
-<li><p><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</p></li>
-<li><p><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</p></li>
+<li><a href="https://docs.godotengine.org/en/stable/classes/class_mesh.html">Godot Mesh Documentation</a></li>
+<li><a href="https://blender.stackexchange.com/questions/51174/how-do-i-create-multiple-uv-maps">Blender UV Map Workflow</a></li>
+<li><a href="https://github.com/v-sekai">V-Sekai GitHub</a></li>
 </ol>
-<p>AI assistant Aria assisted with this article.</p>
+<p>AI assistant Aria assisted in structuring this proposal based on community discussions.</p>
 
 
 </section>
@@ -786,7 +837,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/ai-assisted-proposal-style-guide.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20250211-using-8-uv-channels-for-custom-vertex-data.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
