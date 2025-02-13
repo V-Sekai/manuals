@@ -14,7 +14,7 @@ Pin the following repositories to the V-Sekai organization profile:
 
 1. **v-sekai-game** (primary engine)
 2. **awesome-vsekai** (ecosystem resources)
-3. **tool-explorer** (development utilities)
+3. **tool-model-explorer** (development utilities)
 4. **xr-grid** (XR interaction framework)
 
 **Implementation Steps**:
