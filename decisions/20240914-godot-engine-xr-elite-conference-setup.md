@@ -31,6 +31,11 @@ The proposed setup involves several components to ensure a stable and high-perfo
    - Disable Wi-Fi on the XR Elite Headset to rely solely on the wired connection.
    - Consider using a gigabit travel router/switch to manage and shorten routing internally at the venue.
 
+5. **SteamvR Setup**:
+
+   - Enable hand tracking on the headeset
+   - Disable sending hand tracking to steamvr
+
 ## The Benefits
 
 - **Reliability**: Wired connections reduce the risk of connectivity issues during live demonstrations.
