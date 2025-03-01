@@ -1,4 +1,4 @@
-# Draft: VRC and VRM compatibility
+# Active: VRC and VRM compatibility
 
 ## The Context
 
@@ -100,7 +100,7 @@ The proposed solution has been developed by us and is integrated into our core s
 
 ## Status
 
-Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Active <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 
