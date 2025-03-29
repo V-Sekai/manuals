@@ -107,6 +107,6 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 6. **Godot Implementation (haztro)**  
    https://github.com/haztro/godot-gaussian-splatting
 7. **Blender Omniview Addon (Kiri Engine)**  
-   https://github.com/Kiri-Innovation/3dgs-render-blender-addo
+   https://github.com/Kiri-Innovation/3dgs-render-blender-addon
 8. Trellis https://github.com/microsoft/TRELLIS
 9. Flux
