@@ -58,7 +58,7 @@
 
 ## Proposal Status
 
-Status: [Draft/Active/Completed]
+Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 
