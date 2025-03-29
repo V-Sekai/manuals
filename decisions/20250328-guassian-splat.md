@@ -1,4 +1,4 @@
-# Active: Native Gaussian Splatting Pre-visualization in Godot Engine
+# Rejected: Native Gaussian Splatting Pre-visualization in Godot Engine
 
 ## Context
 
@@ -80,7 +80,7 @@ Supports V-Sekai's 2025 priorities:
 
 ## Proposal Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Rejected <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers:
 
