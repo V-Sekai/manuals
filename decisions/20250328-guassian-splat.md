@@ -1,8 +1,8 @@
-# Active: Native Gaussian Splatting Pre visualization in Godot Engine
+# Active: Native Gaussian Splatting Pre-visualization in Godot Engine
 
 ## Context
 
-V-Sekai's AI-generated VR content requires high-fidelity PreViz that preserves details from Flux/TRELLIS outputs. Current deep learning mesh-based workflows lose 22-40% visual quality during generation. Key metrics:
+V-Sekai's AI-generated VR content requires high-fidelity PreViz that preserves details from Flux/TRELLIS outputs. Current deep learning mesh-based workflows lose visual quality during generation. Key metrics:
 
 - **50k+ splats** @ 90 FPS in Godot viewport
 - **T-pose compliance** for rigging compatibility
@@ -61,7 +61,7 @@ Native 3D Gaussian Splatting (3DGS) renderer for Godot 4.3+ with:
 
 | Option          | Pros               | Cons                  |
 | --------------- | ------------------ | --------------------- |
-| Mesh PreViz     | Full compatibility | 40% quality loss      |
+| Mesh PreViz     | Full compatibility | Large quality loss      |
 | External Render | Higher fidelity    | 300ms latency penalty |
 
 ## When to Avoid This Solution
