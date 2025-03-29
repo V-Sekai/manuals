@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>present-proposal-template – V-Sekai - Manuals</title>
+<title>guassian-splat – V-Sekai - Manuals</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -117,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#active-short-descriptive-title" id="toc-active-short-descriptive-title" class="nav-link active" data-scroll-target="#active-short-descriptive-title">Active: [Short Descriptive Title]</a>
+  <li><a href="#active-native-gaussian-splatting-pre-visualization-in-godot-engine" id="toc-active-native-gaussian-splatting-pre-visualization-in-godot-engine" class="nav-link active" data-scroll-target="#active-native-gaussian-splatting-pre-visualization-in-godot-engine">Active: Native Gaussian Splatting Pre visualization in Godot Engine</a>
   <ul class="collapse">
   <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
   <li><a href="#problem-statement" id="toc-problem-statement" class="nav-link" data-scroll-target="#problem-statement">Problem Statement</a></li>
@@ -129,12 +129,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#when-to-avoid-this-solution" id="toc-when-to-avoid-this-solution" class="nav-link" data-scroll-target="#when-to-avoid-this-solution">When to Avoid This Solution</a></li>
   <li><a href="#organizational-alignment" id="toc-organizational-alignment" class="nav-link" data-scroll-target="#organizational-alignment">Organizational Alignment</a></li>
   <li><a href="#proposal-status" id="toc-proposal-status" class="nav-link" data-scroll-target="#proposal-status">Proposal Status</a></li>
-  <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
+  <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers:</a></li>
   <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags">Tags</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/present-proposal-template.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20250328-guassian-splat.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
@@ -142,59 +142,75 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="active-short-descriptive-title" class="level1">
-<h1>Active: [Short Descriptive Title]</h1>
+<section id="active-native-gaussian-splatting-pre-visualization-in-godot-engine" class="level1">
+<h1>Active: Native Gaussian Splatting Pre visualization in Godot Engine</h1>
 <section id="context" class="level2">
 <h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>[Describe the operational environment, key metrics, and stakes. Explain why this proposal matters now.]</p>
+<p>V-Sekai’s AI-generated VR content requires high-fidelity PreViz that preserves details from Flux/TRELLIS outputs. Current deep learning mesh-based workflows lose 22-40% visual quality during generation. Key metrics:</p>
+<ul>
+<li><strong>50k+ splats</strong> @ 90 FPS in Godot viewport</li>
+<li><strong>T-pose compliance</strong> for rigging compatibility</li>
+</ul>
 </section>
 <section id="problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>[Clearly outline the primary issue(s) causing operational challenges. Use numbered points if multiple concerns exist.]</p>
+<ol type="1">
+<li><strong>Quality Loss</strong>: Mesh conversion destroys AI-generated surface details</li>
+<li><strong>Performance Limits</strong>: Existing Godot renderer lacks 3DGS optimization</li>
+<li><strong>Workflow Friction</strong>: Manual retopology adds 3-5 hours/asset</li>
+</ol>
 </section>
 <section id="proposed-solution" class="level2">
 <h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>[Provide a concise description of the solution. Include technical steps if applicable.]</p>
+<p>Native 3D Gaussian Splatting (3DGS) renderer for Godot 4.3+ with:</p>
+<ul>
+<li>Vulkan-optimized atomic splat sorting</li>
+<li>T-posed characters</li>
+<li>Direct Flux/TRELLIS data ingestion</li>
+</ul>
 <p><strong>Implementation Steps</strong>:</p>
 <ol type="1">
-<li>[Step 1: Actionable task]</li>
-<li>[Step 2: Follow-up action]</li>
-<li>[Step 3: Finalization step]</li>
+<li>Develop SPIR-V compute pipeline for depth sorting</li>
+<li>Create Godot Editor tools for splat timeline scrubbing</li>
+<li>Implement BC7-compressed covariance textures</li>
 </ol>
 </section>
 <section id="implementation-plan" class="level2">
 <h2 class="anchored" data-anchor-id="implementation-plan">Implementation Plan</h2>
 <ol type="1">
-<li><strong>Phase 1</strong>: [Initial action]
+<li><p><strong>Phase 1</strong>: Core Renderer (4 Weeks)</p>
 <ul>
-<li>[Subtask A]</li>
-<li>[Subtask B]</li>
+<li>Vulkan splat shader with spherical harmonics processing</li>
+<li>GPU radix sort via compute shaders</li>
+<li>Flux skeleton alignment system</li>
 </ul></li>
-<li><strong>Phase 2</strong>: [Integration/expansion]
+<li><p><strong>Phase 2</strong>: PreViz Tooling (2 Weeks)</p>
 <ul>
-<li>[Subtask C]</li>
+<li>SH coefficient debug overlay</li>
+<li>Performance profiling HUD</li>
+<li>Splat LOD distance culling</li>
 </ul></li>
-<li><strong>Validation</strong>:
+<li><p><strong>Validation</strong>:</p>
 <ul>
-<li>Success Criteria: [Metric/Outcome 1]</li>
-<li>Failure Threshold: [Metric/Outcome 2]</li>
+<li>Success: 50k splats @ 90 FPS (RTX 3060), &lt;0.5mm T-pose drift</li>
+<li>Failure: &gt;16ms/frame spikes, &gt;2mm bone position deviation</li>
 </ul></li>
 </ol>
 </section>
 <section id="benefits" class="level2">
 <h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
 <ul>
-<li>[Quantifiable improvement 1]</li>
-<li>[Strategic advantage 2]</li>
-<li>[Long-term benefit 3]</li>
+<li><strong>98%</strong> PreViz quality retention vs 78% mesh workflow</li>
+<li><strong>Zero</strong> manual retopology required</li>
+<li><strong>1:1</strong> AI-to-engine visual parity</li>
 </ul>
 </section>
 <section id="risks-and-limitations" class="level2">
 <h2 class="anchored" data-anchor-id="risks-and-limitations">Risks and Limitations</h2>
 <ul>
-<li>[Risk 1: Technical/organizational challenge]</li>
-<li>[Risk 2: Implementation constraint]</li>
-<li>[Risk 3: Maintenance consideration]</li>
+<li><strong>Vulkan 1.3+</strong> required (excludes legacy GPUs)</li>
+<li><strong>18% VRAM overhead</strong> vs mesh rendering</li>
+<li>Requires <strong>NVIDIA GPUs</strong> for optimal performance</li>
 </ul>
 </section>
 <section id="alternatives-considered" class="level2">
@@ -209,51 +225,72 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td>[Alternative A]</td>
-<td>[Advantage]</td>
-<td>[Limitation]</td>
+<td>Mesh PreViz</td>
+<td>Full compatibility</td>
+<td>40% quality loss</td>
 </tr>
 <tr class="even">
-<td>[Alternative B]</td>
-<td>[Advantage]</td>
-<td>[Limitation]</td>
+<td>External Render</td>
+<td>Higher fidelity</td>
+<td>300ms latency penalty</td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="when-to-avoid-this-solution" class="level2">
 <h2 class="anchored" data-anchor-id="when-to-avoid-this-solution">When to Avoid This Solution</h2>
-<p>[Specify technical/organizational conditions where this approach isn’t suitable]</p>
+<ul>
+<li>WebGL-targeted projects</li>
+<li>Teams without Vulkan shader expertise</li>
+<li>Low-end mobile VR deployments</li>
+</ul>
 </section>
 <section id="organizational-alignment" class="level2">
 <h2 class="anchored" data-anchor-id="organizational-alignment">Organizational Alignment</h2>
-<p>[Explain how this proposal supports active organizational goals/initiatives]</p>
+<p>Supports V-Sekai’s 2025 priorities:</p>
+<ol type="1">
+<li>AI-to-engine content pipeline</li>
+<li>Photorealistic real-time PreViz</li>
+<li>Godot Vulkan performance leadership</li>
+</ol>
 </section>
 <section id="proposal-status" class="level2">
 <h2 class="anchored" data-anchor-id="proposal-status">Proposal Status</h2>
 <p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
 </section>
 <section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers:</h2>
 <ul>
-<li>[Role/Team 1]</li>
-<li>[Role/Team 2]</li>
+<li>V-Sekai Pipeline Lead</li>
 </ul>
 </section>
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>[Category 1]</li>
-<li>[Category 2]</li>
-<li>[Priority Level]</li>
+<li>Rendering</li>
+<li>AI/ML</li>
+<li>High Priority</li>
 </ul>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <ol type="1">
-<li>[Relevant Documentation/Resource 1]</li>
-<li>[Technical Standard/Guide 2]</li>
-<li><a href="https://github.com/v-sekai">Related Project Repository</a></li>
+<li><strong>Reference Implementation (Inria)</strong><br>
+https://github.com/graphdeco-inria/gaussian-splatting</li>
+<li><strong>Playcanvas Engine Demo</strong><br>
+https://github.com/playcanvas/engine</li>
+<li><strong>Cesium Experimental Branch</strong><br>
+https://github.com/CesiumGS/cesium/tree/splat-spz-concept</li>
+<li><strong>Unity Implementation (Aras-P)</strong><br>
+https://github.com/aras-p/UnityGaussianSplatting</li>
+<li><strong>Godot Implementation (2Retr0)</strong><br>
+https://github.com/2Retr0/GodotGaussianSplatting</li>
+<li><strong>Godot Implementation (haztro)</strong><br>
+https://github.com/haztro/godot-gaussian-splatting</li>
+<li><strong>Blender Omniview Addon (Kiri Engine)</strong><br>
+https://github.com/Kiri-Innovation/3dgs-render-blender-addo</li>
+<li>Trellis https://github.com/microsoft/TRELLIS</li>
+<li>Flux</li>
 </ol>
 
 
@@ -830,7 +867,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/present-proposal-template.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20250328-guassian-splat.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
