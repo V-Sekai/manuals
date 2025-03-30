@@ -114,6 +114,24 @@ voter_ballots = [
         }
     ],
     
+    # Lito's ballot
+    [
+        {   # Social
+            "VRM Trial 🕶️ - Single-avatar import test": 90
+        },
+        {   # Systems
+            "Host Handoff 🏠 - Basic migration protocol": 90,
+        },
+        {   # Production
+            "Model Importer 🎨 - FBX/GLB load test": 80,
+            "Level Streamer 🚀 - Section load/unload trigger": 90,
+        },
+        {   # Networking
+            "Multi-User Instance 🌐 - 10-player test environment": 100,
+            "Room Transition 🔄 - Basic join/leave mechanics": 70
+        }
+    ],
+    
     # Deepseek R1's ballot
     [
         {   # Customization
