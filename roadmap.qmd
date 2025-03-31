@@ -1,0 +1,47 @@
+---
+title: "Roadmap"
+format: 
+  html:
+    page-layout: full
+---
+
+```{python}
+#| label: roadmap
+#| echo: false
+#| output: asis
+
+import vote
+import pandas as pd
+from itables import init_notebook_mode, show
+
+init_notebook_mode(all_interactive=False)
+
+results = vote.run_election('./roadmap/votes', 5, "./roadmap/tasks.csv")
+
+df = results["avg_table"]
+df.loc[df["Task"].isin(results["winners"]), "Task"] += " - 🚨 (High Priority)"
+
+print("""
+
+## Feature List
+
+Features with 🚨 symbol were voted as top priority with StarVote. Priority column is an average of votes for every feature.
+
+""")
+
+show(df, paging=False)
+
+print("""
+
+## Raw Votes
+
+Raw votes count
+
+""")
+
+votes_dict = vote.get_votes('./roadmap/votes')
+votes_df = pd.DataFrame(votes_dict)
+votes_df = votes_df.fillna(0)
+show(votes_df, paging=False)
+```
+
