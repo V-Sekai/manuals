@@ -19,6 +19,11 @@ init_notebook_mode(all_interactive=False)
 results = vote.run_election('./roadmap/votes', 5, "./roadmap/tasks.csv")
 
 df = results["avg_table"]
+
+# Move high priority to top
+df["highpriority"] = df["Task"].apply(lambda x: 0 if x in results["winners"] else 1)
+df = df.sort_values(by="highpriority").drop(columns=["highpriority"])
+
 df.loc[df["Task"].isin(results["winners"]), "Task"] += " - 🚨 (High Priority)"
 
 print("""
@@ -44,4 +49,3 @@ votes_df = pd.DataFrame(votes_dict)
 votes_df = votes_df.fillna(0)
 show(votes_df, paging=False)
 ```
-
