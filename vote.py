@@ -34,14 +34,14 @@ def get_archived_tasks_table(tasks_path):
     return tasks_df
 
 def filter_ballots_by_active_tasks(ballot_list, tasks_path):
-    tasks_df = pd.read_csv(tasks_path)
-    tasks = tasks_df["Task"].tolist()
+    archived_tasks_df = get_archived_tasks_table(tasks_path)
+    archived_tasks = archived_tasks_df["Task"].tolist()
 
     filtered_ballot_list = []
     for ballot in ballot_list:
         filtered_ballot = {}
         for key, value in ballot.items():
-            if key in tasks:
+            if key not in archived_tasks:
                 filtered_ballot[key] = value
         filtered_ballot_list.append(filtered_ballot)
     return filtered_ballot_list
