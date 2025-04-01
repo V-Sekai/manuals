@@ -20,6 +20,12 @@ results = vote.run_election('./roadmap/votes', 5, "./roadmap/tasks.csv")
 
 df = results["avg_table"]
 
+# Keep non-archived tasks only
+df = df[df['Archived_on'].isna()]
+
+if "Archived_on" in df.columns:
+    df = df.drop(columns=["Archived_on"])
+
 # Move high priority to top
 df["highpriority"] = df["Task"].apply(lambda x: 0 if x in results["winners"] else 1)
 df = df.sort_values(by="highpriority").drop(columns=["highpriority"])
@@ -34,7 +40,6 @@ print("""
 Features with 🚨 symbol were voted as top priority with StarVote. Priority column is an average of votes for every feature.
 
 """)
-
 show(df, paging=False)
 
 print("""
@@ -49,4 +54,16 @@ votes_dict = vote.get_votes('./roadmap/votes')
 votes_df = pd.DataFrame(votes_dict)
 votes_df = votes_df.fillna(0)
 show(votes_df, paging=False)
+
+print("""
+## Archived Tasks
+
+Archived tasks
+
+""")
+
+archived_tasks_df = vote.get_archived_tasks_table('./roadmap/tasks.csv')
+archived_tasks_df.reset_index(drop=True, inplace=True)
+
+show(archived_tasks_df)
 ```
