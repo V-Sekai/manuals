@@ -23,6 +23,7 @@ df = results["avg_table"]
 # Move high priority to top
 df["highpriority"] = df["Task"].apply(lambda x: 0 if x in results["winners"] else 1)
 df = df.sort_values(by="highpriority").drop(columns=["highpriority"])
+df.reset_index(drop=True, inplace=True)
 
 df.loc[df["Task"].isin(results["winners"]), "Task"] += " - 🚨 (High Priority)"
 
