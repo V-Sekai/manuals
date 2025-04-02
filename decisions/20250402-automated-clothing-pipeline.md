@@ -71,7 +71,7 @@ Supports virtual commerce initiatives and aligns with open-source 3D tooling roa
 
 ## Proposal Status
 
-Status: Active Development
+Status: Proposed
 
 ## Decision Makers
 
