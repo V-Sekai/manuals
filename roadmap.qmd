@@ -26,6 +26,9 @@ df = df[df['Archived_on'].isna()]
 if "Archived_on" in df.columns:
     df = df.drop(columns=["Archived_on"])
 
+# Reorder columns
+df = df[["Category","Task","Priority","Notes"]]
+
 # Move high priority to top
 df["highpriority"] = df["Task"].apply(lambda x: 0 if x in results["winners"] else 1)
 df = df.sort_values(by="highpriority").drop(columns=["highpriority"])
@@ -63,6 +66,7 @@ Archived tasks
 """)
 
 archived_tasks_df = vote.get_archived_tasks_table('./roadmap/tasks.csv')
+archived_tasks_df["Notes"] = archived_tasks_df["Notes"].fillna("")
 archived_tasks_df.reset_index(drop=True, inplace=True)
 
 show(archived_tasks_df)
