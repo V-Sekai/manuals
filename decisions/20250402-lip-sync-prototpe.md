@@ -16,7 +16,7 @@ The primary issues causing operational challenges are:
 
 A speech-to-FACS pipeline that maps speech to 3D facial movements using multimodal alignment and reinforcement learning. Key technical steps include:
 
-- Converting FaceMotion3D blend shapes to Keypoint COCO JSON format.
+- Converting FaceMotion3D blend shapes renderings with markers at vertex positions to Keypoint COCO JSON format.
 - Leveraging "Accent Tag" phonetic-rich sentences for training.
 - Aligning audio to FACS keypoints via a multimodal large language model.
 - Applying reinforcement learning to generate speech matching COCO Full Body Face data from masked audio.
