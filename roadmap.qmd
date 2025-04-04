@@ -46,19 +46,6 @@ Features with 🚨 symbol were voted as top priority with Proportional Star Voti
 show(df, paging=False)
 
 print("""
-
-## Raw Votes
-
-Raw votes count
-
-""")
-
-votes_dict = vote.get_votes('./roadmap/votes')
-votes_df = pd.DataFrame(votes_dict)
-votes_df = votes_df.fillna(0)
-show(votes_df, paging=False)
-
-print("""
 ## Archived Tasks
 
 Archived tasks
@@ -70,4 +57,17 @@ archived_tasks_df["Notes"] = archived_tasks_df["Notes"].fillna("")
 archived_tasks_df.reset_index(drop=True, inplace=True)
 
 show(archived_tasks_df)
+
+print("""
+
+## Raw Votes
+
+Raw votes count
+
+""")
+
+votes_dict = vote.get_votes('./roadmap/votes')
+votes_df = pd.DataFrame(votes_dict)
+votes_df = votes_df.fillna(0)
+show(votes_df, paging=False)
 ```
