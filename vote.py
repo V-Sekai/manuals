@@ -5,6 +5,7 @@ import starvote
 from starvote import hashed_ballots_tiebreaker
 import json
 from collections import defaultdict
+import subprocess
 
 def get_votes(votes_dir):
     folder_path = Path(votes_dir)
@@ -98,6 +99,9 @@ def run_election(votes_dir, seats, tasks_path):
     return {"avg_table": avg_table, "winners": starvote_winners}
 
 def main():
+    # Call update_votes.py to ensure votes are updated before running the election
+    subprocess.run(['python3', './update_votes.py'], check=True)
+
     election_results = run_election('./roadmap/votes', 2, "./roadmap/tasks.csv")
     print("Winners", json.dumps(election_results["winners"], indent=4), sep="\n")
     print("Averaged Votes Table", election_results["avg_table"], sep="\n")
