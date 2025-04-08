@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.43</generator>
-<lastBuildDate>Tue, 08 Apr 2025 13:18:43 GMT</lastBuildDate>
+<lastBuildDate>Tue, 08 Apr 2025 17:23:07 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -139,7 +139,137 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Tue, 08 Apr 2025 13:18:43 GMT</pubDate>
+  <pubDate>Tue, 08 Apr 2025 17:23:07 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20250408-v-sekai-backpack.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="active-ash-based-recommender-system-integration" class="level1">
+<h1>Active: Ash-Based Recommender System Integration</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>Godot Engine’s V-Sekai project requires a scalable recommendation system (200k+ user-items) with modern metadata handling. The current implementation does not exist. The decision to use Ash is driven by the fact that our backend (uro) is already implemented in Elixir, ensuring seamless integration and leveraging existing expertise.</p>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<ol type="1">
+<li>Scalability bottlenecks in Python-based recommendation serving</li>
+<li>Inefficient user/item bag management</li>
+<li>Missing JSON-LD attribute compatibility</li>
+</ol>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>Implement Ash framework with Rustler-based NIF integration for librecommender, featuring:</p>
+<p><strong>Implementation Steps</strong>:</p>
+<ol type="1">
+<li>Create Ash resource DSL for recommendation entities</li>
+<li>Implement NIFs for bag operations using Rustler</li>
+<li>Add JSON-LD context annotation layer</li>
+<li>Support both item-item and user-item recommendation algorithms</li>
+</ol>
+</section>
+<section id="implementation-plan" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-plan">Implementation Plan</h2>
+<ol type="1">
+<li><strong>Phase 1</strong>: Ash core setup</li>
+</ol>
+<ul>
+<li>Port uro entity relationships</li>
+<li>Rustler integration tests</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Phase 2</strong>: Recommender bridge</li>
+</ol>
+<ul>
+<li>Implement CNode protocol for librecommender</li>
+<li>JSON-LD attribute mapping</li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Validation</strong>:</li>
+</ol>
+<ul>
+<li>Success: &lt;500ms p99 inference latency</li>
+<li>Failure: &gt;5% data serialization errors</li>
+</ul>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<ul>
+<li>10x concurrent recommendation capacity</li>
+<li>Native Ecto/Ash metadata queries</li>
+<li>Future-proofed for Fediverse integration</li>
+</ul>
+</section>
+<section id="risks" class="level2">
+<h2 class="anchored" data-anchor-id="risks">Risks</h2>
+<ol type="1">
+<li>Rust-Elixir type conversion overhead</li>
+<li>CNode recovery complexity</li>
+<li>JSON-LD namespace collisions</li>
+</ol>
+</section>
+<section id="alternatives-considered" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pure Python</td>
+<td>Faster MVP</td>
+<td>Limits scale</td>
+</tr>
+<tr class="even">
+<td>Pure Elixir</td>
+<td>Simpler stack</td>
+<td>Lacks optim algos</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="when-to-avoid" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-avoid">When to Avoid</h2>
+<p>Projects requiring simple recommendation needs (&lt;1k items) or without Rust ops support.</p>
+</section>
+<section id="organizational-alignment" class="level2">
+<h2 class="anchored" data-anchor-id="organizational-alignment">Organizational Alignment</h2>
+<p>Supports V-Sekai 2025 goals for UGC and fediverse interoperability.</p>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>ML</li>
+<li>Backend</li>
+<li>High Priority</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li>Ash Framework https://ash-hq.org/</li>
+<li>Rustler 0.30 NIF guide https://github.com/rusterlium/rustler</li>
+<li>V-Sekai Roadmap 2025 https://v-sekai.github.io/manuals/roadmap.html</li>
+<li>https://librecommender.readthedocs.io/en/latest/serving_guide/rust.html</li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20250408-v-sekai-backpack.html</guid>
+  <pubDate>Tue, 08 Apr 2025 17:23:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -286,7 +416,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250402-lip-sync-prototpe.html</guid>
-  <pubDate>Tue, 08 Apr 2025 13:18:43 GMT</pubDate>
+  <pubDate>Tue, 08 Apr 2025 17:23:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -499,7 +629,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250402-image-to-full-body-face.html</guid>
-  <pubDate>Tue, 08 Apr 2025 13:18:43 GMT</pubDate>
+  <pubDate>Tue, 08 Apr 2025 17:23:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -668,7 +798,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250402-automated-clothing-pipeline.html</guid>
-  <pubDate>Tue, 08 Apr 2025 13:18:43 GMT</pubDate>
+  <pubDate>Tue, 08 Apr 2025 17:23:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -835,7 +965,7 @@ https://github.com/Kiri-Innovation/3dgs-render-blender-addon</li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250328-guassian-splat.html</guid>
-  <pubDate>Tue, 08 Apr 2025 13:18:43 GMT</pubDate>
+  <pubDate>Tue, 08 Apr 2025 17:23:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -963,7 +1093,7 @@ https://github.com/Kiri-Innovation/3dgs-render-blender-addon</li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250213-pin-key-vsekai-repos.html</guid>
-  <pubDate>Tue, 08 Apr 2025 13:18:43 GMT</pubDate>
+  <pubDate>Tue, 08 Apr 2025 17:23:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1112,7 +1242,7 @@ font-style: inherit;">}</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250211-using-8-uv-channels-for-custom-vertex-data.html</guid>
-  <pubDate>Tue, 08 Apr 2025 13:18:43 GMT</pubDate>
+  <pubDate>Tue, 08 Apr 2025 17:23:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1247,7 +1377,7 @@ font-style: inherit;">return</span> format_markdown(date, active_contributors, b
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250203-daily-deck-log.html</guid>
-  <pubDate>Tue, 08 Apr 2025 13:18:43 GMT</pubDate>
+  <pubDate>Tue, 08 Apr 2025 17:23:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1329,7 +1459,7 @@ font-style: inherit;">return</span> format_markdown(date, active_contributors, b
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250130-world-godot-build-dispatch.html</guid>
-  <pubDate>Tue, 08 Apr 2025 13:18:43 GMT</pubDate>
+  <pubDate>Tue, 08 Apr 2025 17:23:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1721,7 +1851,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250126-scene-entity-add-delete-with-lens.html</guid>
-  <pubDate>Tue, 08 Apr 2025 13:18:43 GMT</pubDate>
+  <pubDate>Tue, 08 Apr 2025 17:23:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1792,7 +1922,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250126-primitive-outline.html</guid>
-  <pubDate>Tue, 08 Apr 2025 13:18:43 GMT</pubDate>
+  <pubDate>Tue, 08 Apr 2025 17:23:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1879,7 +2009,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250126-multiplayer-sync-between-godot-instances.html</guid>
-  <pubDate>Tue, 08 Apr 2025 13:18:43 GMT</pubDate>
+  <pubDate>Tue, 08 Apr 2025 17:23:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2003,7 +2133,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250123-implement-msft-texture-dds-in-godot.html</guid>
-  <pubDate>Tue, 08 Apr 2025 13:18:43 GMT</pubDate>
+  <pubDate>Tue, 08 Apr 2025 17:23:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2079,7 +2209,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250122-VRChat-Loader-with-Godot-Engine.html</guid>
-  <pubDate>Tue, 08 Apr 2025 13:18:43 GMT</pubDate>
+  <pubDate>Tue, 08 Apr 2025 17:23:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2218,7 +2348,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250122-VRChat-Loader-with-Godot-Engine-next.html</guid>
-  <pubDate>Tue, 08 Apr 2025 13:18:43 GMT</pubDate>
+  <pubDate>Tue, 08 Apr 2025 17:23:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2284,7 +2414,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250118-discussion.html</guid>
-  <pubDate>Tue, 08 Apr 2025 13:18:43 GMT</pubDate>
+  <pubDate>Tue, 08 Apr 2025 17:23:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2361,7 +2491,7 @@ font-style: inherit;">"exported_model.glb"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250103-sparkly-valve-index-fix.html</guid>
-  <pubDate>Tue, 08 Apr 2025 13:18:43 GMT</pubDate>
+  <pubDate>Tue, 08 Apr 2025 17:23:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2555,7 +2685,7 @@ font-style: inherit;">mix</span> ash.setup</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241229-one-prototyping-stack.html</guid>
-  <pubDate>Tue, 08 Apr 2025 13:18:43 GMT</pubDate>
+  <pubDate>Tue, 08 Apr 2025 17:23:07 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2691,81 +2821,7 @@ font-style: inherit;">return</span> village</span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20241222-wandering-dancer.html</guid>
-  <pubDate>Tue, 08 Apr 2025 13:18:43 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20241221-wandering-bakery.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="proposed-the-wandering-bakery---prototype" class="level1">
-<h1>Proposed: The Wandering Bakery - Prototype</h1>
-<section id="what-is-the-context-of-the-proposal" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-the-context-of-the-proposal">What is the context of the proposal?</h2>
-<p>A simplified game environment testing LLM-driven dynamic storytelling within a traveling bakery setting.</p>
-</section>
-<section id="what-is-the-problem-being-solved" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-the-problem-being-solved">What is the problem being solved?</h2>
-<p>Static game stories limit player agency. An LLM can generate responsive narratives that adapt to player choices.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams." class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams.">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.</h2>
-<p>Players visit procedurally generated villages, converse with LLM-created characters, bake thematic pastries, and influence narrative outcomes. GTPyhop-style planning tracks goals like “satisfy_character” and provides operators (bake_pastry, give_pastry, talk_to) to drive emergent gameplay.</p>
-</section>
-<section id="what-are-the-benefits-of-the-proposal" class="level2">
-<h2 class="anchored" data-anchor-id="what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</h2>
-<p>Enables dynamic storytelling, rapid LLM-driven iteration, and emergent gameplay guided by structured planning.</p>
-</section>
-<section id="what-are-the-downsides-of-the-proposal" class="level2">
-<h2 class="anchored" data-anchor-id="what-are-the-downsides-of-the-proposal">What are the downsides of the proposal?</h2>
-<p>Limited scope and potential unpredictability in LLM outputs.</p>
-</section>
-<section id="what-are-the-alternative-proposals" class="level2">
-<h2 class="anchored" data-anchor-id="what-are-the-alternative-proposals">What are the alternative proposals?</h2>
-<p>A more complex full-featured game, but that is not feasible initially.</p>
-</section>
-<section id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all" class="level2">
-<h2 class="anchored" data-anchor-id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all">When might the proposed solution be used rarely or not at all?</h2>
-<p>If no LLM-driven narrative features are needed or if static stories are preferred.</p>
-</section>
-<section id="is-this-a-v-sekai-core-responsibility-and-can-it-be-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="is-this-a-v-sekai-core-responsibility-and-can-it-be-done-by-us">Is this a V-Sekai core responsibility, and can it be done by us?</h2>
-<p>Yes, it aligns with V-Sekai’s focus on innovative game development and LLM experiments.</p>
-</section>
-<section id="what-is-the-status-of-the-proposal" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-the-status-of-the-proposal">What is the status of the proposal?</h2>
-<p>Status: Proposed</p>
-</section>
-<section id="who-is-making-decisions-on-the-proposal" class="level2">
-<h2 class="anchored" data-anchor-id="who-is-making-decisions-on-the-proposal">Who is making decisions on the proposal?</h2>
-<ul>
-<li>V-Sekai development team</li>
-</ul>
-</section>
-<section id="what-tags-does-the-proposal-have" class="level2">
-<h2 class="anchored" data-anchor-id="what-tags-does-the-proposal-have">What tags does the proposal have?</h2>
-<ul>
-<li>V-Sekai</li>
-</ul>
-</section>
-<section id="list-further-reading-references." class="level2">
-<h2 class="anchored" data-anchor-id="list-further-reading-references.">List further reading references.</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a></li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a></li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20241221-wandering-bakery.html</guid>
-  <pubDate>Tue, 08 Apr 2025 13:18:43 GMT</pubDate>
+  <pubDate>Tue, 08 Apr 2025 17:23:07 GMT</pubDate>
 </item>
 </channel>
 </rss>
