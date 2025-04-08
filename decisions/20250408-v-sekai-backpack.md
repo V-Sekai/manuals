@@ -30,7 +30,7 @@ Implement Ash framework with Rustler-based NIF integration for librecommender, f
 
 2. **Phase 2**: Recommender bridge
 
-- Implement CNode protocol for librecommender
+- Implement protocol for librecommender
 - JSON-LD attribute mapping
 
 3. **Validation**:
@@ -47,7 +47,7 @@ Implement Ash framework with Rustler-based NIF integration for librecommender, f
 ## Risks
 
 1. Rust-Elixir type conversion overhead
-2. CNode recovery complexity
+2. NIF complexity
 3. JSON-LD namespace collisions
 
 ## Alternatives Considered
