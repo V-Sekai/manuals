@@ -12,7 +12,7 @@ Godot Engine's V-Sekai project requires a scalable recommendation system (200k+ 
 
 ## Proposed Solution
 
-Implement Ash framework with Rustler-based NIF integration for librecommender, featuring:
+Implement Ash framework with Rustler-based NIF integration for librecommender.
 
 **Implementation Steps**:
 
@@ -24,19 +24,14 @@ Implement Ash framework with Rustler-based NIF integration for librecommender, f
 ## Implementation Plan
 
 1. **Phase 1**: Ash core setup
-
-- Port uro entity relationships
-- Rustler integration tests
-
+   - Port uro entity relationships
+   - Rustler integration tests
 2. **Phase 2**: Recommender bridge
-
-- Implement protocol for librecommender
-- JSON-LD attribute mapping
-
+   - Implement protocol for librecommender
+   - JSON-LD attribute mapping
 3. **Validation**:
-
-- Success: <500ms p99 inference latency
-- Failure: >5% data serialization errors
+   - Success Criteria: <500ms p99 inference latency
+   - Failure Threshold: >5% data serialization errors
 
 ## Benefits
 
@@ -44,11 +39,11 @@ Implement Ash framework with Rustler-based NIF integration for librecommender, f
 - Native Ecto/Ash metadata queries
 - Future-proofed for Fediverse integration
 
-## Risks
+## Risks and Limitations
 
-1. Rust-Elixir type conversion overhead
-2. NIF complexity
-3. JSON-LD namespace collisions
+- Rust-Elixir type conversion overhead
+- NIF complexity
+- JSON-LD namespace collisions
 
 ## Alternatives Considered
 
@@ -57,13 +52,21 @@ Implement Ash framework with Rustler-based NIF integration for librecommender, f
 | Pure Python | Faster MVP    | Limits scale      |
 | Pure Elixir | Simpler stack | Lacks optim algos |
 
-## When to Avoid
+## When to Avoid This Solution
 
 Projects requiring simple recommendation needs (<1k items) or without Rust ops support.
 
 ## Organizational Alignment
 
 Supports V-Sekai 2025 goals for UGC and fediverse interoperability.
+
+## Proposal Status
+
+Status: Active <!-- Options: Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by [Link/Reference] -->
+
+## Decision Makers
+
+- Fire
 
 ## Tags
 
@@ -76,4 +79,4 @@ Supports V-Sekai 2025 goals for UGC and fediverse interoperability.
 1. Ash Framework https://ash-hq.org/
 2. Rustler 0.30 NIF guide https://github.com/rusterlium/rustler
 3. V-Sekai Roadmap 2025 https://v-sekai.github.io/manuals/roadmap.html
-4. https://librecommender.readthedocs.io/en/latest/serving_guide/rust.html
+4. Librecommender Rust Serving Guide https://librecommender.readthedocs.io/en/latest/serving_guide/rust.html
