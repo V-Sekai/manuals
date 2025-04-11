@@ -128,10 +128,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#proposed-solution" id="toc-proposed-solution" class="nav-link" data-scroll-target="#proposed-solution">Proposed Solution</a></li>
   <li><a href="#implementation-plan" id="toc-implementation-plan" class="nav-link" data-scroll-target="#implementation-plan">Implementation Plan</a></li>
   <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
-  <li><a href="#risks" id="toc-risks" class="nav-link" data-scroll-target="#risks">Risks</a></li>
+  <li><a href="#risks-and-limitations" id="toc-risks-and-limitations" class="nav-link" data-scroll-target="#risks-and-limitations">Risks and Limitations</a></li>
   <li><a href="#alternatives-considered" id="toc-alternatives-considered" class="nav-link" data-scroll-target="#alternatives-considered">Alternatives Considered</a></li>
-  <li><a href="#when-to-avoid" id="toc-when-to-avoid" class="nav-link" data-scroll-target="#when-to-avoid">When to Avoid</a></li>
+  <li><a href="#when-to-avoid-this-solution" id="toc-when-to-avoid-this-solution" class="nav-link" data-scroll-target="#when-to-avoid-this-solution">When to Avoid This Solution</a></li>
   <li><a href="#organizational-alignment" id="toc-organizational-alignment" class="nav-link" data-scroll-target="#organizational-alignment">Organizational Alignment</a></li>
+  <li><a href="#proposal-status" id="toc-proposal-status" class="nav-link" data-scroll-target="#proposal-status">Proposal Status</a></li>
+  <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
   <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags">Tags</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
@@ -160,7 +162,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="proposed-solution" class="level2">
 <h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>Implement Ash framework with Rustler-based NIF integration for librecommender, featuring:</p>
+<p>Implement Ash framework with Rustler-based NIF integration for librecommender.</p>
 <p><strong>Implementation Steps</strong>:</p>
 <ol type="1">
 <li>Create Ash resource DSL for recommendation entities</li>
@@ -172,26 +174,22 @@ ul.task-list li input[type="checkbox"] {
 <section id="implementation-plan" class="level2">
 <h2 class="anchored" data-anchor-id="implementation-plan">Implementation Plan</h2>
 <ol type="1">
-<li><strong>Phase 1</strong>: Ash core setup</li>
-</ol>
+<li><strong>Phase 1</strong>: Ash core setup
 <ul>
 <li>Port uro entity relationships</li>
 <li>Rustler integration tests</li>
-</ul>
-<ol start="2" type="1">
-<li><strong>Phase 2</strong>: Recommender bridge</li>
-</ol>
+</ul></li>
+<li><strong>Phase 2</strong>: Recommender bridge
 <ul>
 <li>Implement protocol for librecommender</li>
 <li>JSON-LD attribute mapping</li>
-</ul>
-<ol start="3" type="1">
-<li><strong>Validation</strong>:</li>
-</ol>
+</ul></li>
+<li><strong>Validation</strong>:
 <ul>
-<li>Success: &lt;500ms p99 inference latency</li>
-<li>Failure: &gt;5% data serialization errors</li>
-</ul>
+<li>Success Criteria: &lt;500ms p99 inference latency</li>
+<li>Failure Threshold: &gt;5% data serialization errors</li>
+</ul></li>
+</ol>
 </section>
 <section id="benefits" class="level2">
 <h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
@@ -201,13 +199,13 @@ ul.task-list li input[type="checkbox"] {
 <li>Future-proofed for Fediverse integration</li>
 </ul>
 </section>
-<section id="risks" class="level2">
-<h2 class="anchored" data-anchor-id="risks">Risks</h2>
-<ol type="1">
+<section id="risks-and-limitations" class="level2">
+<h2 class="anchored" data-anchor-id="risks-and-limitations">Risks and Limitations</h2>
+<ul>
 <li>Rust-Elixir type conversion overhead</li>
 <li>NIF complexity</li>
 <li>JSON-LD namespace collisions</li>
-</ol>
+</ul>
 </section>
 <section id="alternatives-considered" class="level2">
 <h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
@@ -233,13 +231,23 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="when-to-avoid" class="level2">
-<h2 class="anchored" data-anchor-id="when-to-avoid">When to Avoid</h2>
+<section id="when-to-avoid-this-solution" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-avoid-this-solution">When to Avoid This Solution</h2>
 <p>Projects requiring simple recommendation needs (&lt;1k items) or without Rust ops support.</p>
 </section>
 <section id="organizational-alignment" class="level2">
 <h2 class="anchored" data-anchor-id="organizational-alignment">Organizational Alignment</h2>
 <p>Supports V-Sekai 2025 goals for UGC and fediverse interoperability.</p>
+</section>
+<section id="proposal-status" class="level2">
+<h2 class="anchored" data-anchor-id="proposal-status">Proposal Status</h2>
+<p>Status: Active <!-- Options: Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by [Link/Reference] --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>Fire</li>
+</ul>
 </section>
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
@@ -255,7 +263,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Ash Framework https://ash-hq.org/</li>
 <li>Rustler 0.30 NIF guide https://github.com/rusterlium/rustler</li>
 <li>V-Sekai Roadmap 2025 https://v-sekai.github.io/manuals/roadmap.html</li>
-<li>https://librecommender.readthedocs.io/en/latest/serving_guide/rust.html</li>
+<li>Librecommender Rust Serving Guide https://librecommender.readthedocs.io/en/latest/serving_guide/rust.html</li>
 </ol>
 
 

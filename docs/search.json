@@ -6304,7 +6304,7 @@
     "href": "decisions/20250408-v-sekai-backpack.html",
     "title": "Active: Ash-Based Recommender System Integration",
     "section": "",
-    "text": "Godot Engine’s V-Sekai project requires a scalable recommendation system (200k+ user-items) with modern metadata handling. The current implementation does not exist. The decision to use Ash is driven by the fact that our backend (uro) is already implemented in Elixir, ensuring seamless integration and leveraging existing expertise.\n\n\n\n\nScalability bottlenecks in Python-based recommendation serving\nInefficient user/item bag management\nMissing JSON-LD attribute compatibility\n\n\n\n\nImplement Ash framework with Rustler-based NIF integration for librecommender, featuring:\nImplementation Steps:\n\nCreate Ash resource DSL for recommendation entities\nImplement NIFs for bag operations using Rustler\nAdd JSON-LD context annotation layer\nSupport both item-item and user-item recommendation algorithms\n\n\n\n\n\nPhase 1: Ash core setup\n\n\nPort uro entity relationships\nRustler integration tests\n\n\nPhase 2: Recommender bridge\n\n\nImplement protocol for librecommender\nJSON-LD attribute mapping\n\n\nValidation:\n\n\nSuccess: &lt;500ms p99 inference latency\nFailure: &gt;5% data serialization errors\n\n\n\n\n\n10x concurrent recommendation capacity\nNative Ecto/Ash metadata queries\nFuture-proofed for Fediverse integration\n\n\n\n\n\nRust-Elixir type conversion overhead\nNIF complexity\nJSON-LD namespace collisions\n\n\n\n\n\n\n\nOption\nPros\nCons\n\n\n\n\nPure Python\nFaster MVP\nLimits scale\n\n\nPure Elixir\nSimpler stack\nLacks optim algos\n\n\n\n\n\n\nProjects requiring simple recommendation needs (&lt;1k items) or without Rust ops support.\n\n\n\nSupports V-Sekai 2025 goals for UGC and fediverse interoperability.\n\n\n\n\nML\nBackend\nHigh Priority\n\n\n\n\n\nAsh Framework https://ash-hq.org/\nRustler 0.30 NIF guide https://github.com/rusterlium/rustler\nV-Sekai Roadmap 2025 https://v-sekai.github.io/manuals/roadmap.html\nhttps://librecommender.readthedocs.io/en/latest/serving_guide/rust.html"
+    "text": "Godot Engine’s V-Sekai project requires a scalable recommendation system (200k+ user-items) with modern metadata handling. The current implementation does not exist. The decision to use Ash is driven by the fact that our backend (uro) is already implemented in Elixir, ensuring seamless integration and leveraging existing expertise.\n\n\n\n\nScalability bottlenecks in Python-based recommendation serving\nInefficient user/item bag management\nMissing JSON-LD attribute compatibility\n\n\n\n\nImplement Ash framework with Rustler-based NIF integration for librecommender.\nImplementation Steps:\n\nCreate Ash resource DSL for recommendation entities\nImplement NIFs for bag operations using Rustler\nAdd JSON-LD context annotation layer\nSupport both item-item and user-item recommendation algorithms\n\n\n\n\n\nPhase 1: Ash core setup\n\nPort uro entity relationships\nRustler integration tests\n\nPhase 2: Recommender bridge\n\nImplement protocol for librecommender\nJSON-LD attribute mapping\n\nValidation:\n\nSuccess Criteria: &lt;500ms p99 inference latency\nFailure Threshold: &gt;5% data serialization errors\n\n\n\n\n\n\n10x concurrent recommendation capacity\nNative Ecto/Ash metadata queries\nFuture-proofed for Fediverse integration\n\n\n\n\n\nRust-Elixir type conversion overhead\nNIF complexity\nJSON-LD namespace collisions\n\n\n\n\n\n\n\nOption\nPros\nCons\n\n\n\n\nPure Python\nFaster MVP\nLimits scale\n\n\nPure Elixir\nSimpler stack\nLacks optim algos\n\n\n\n\n\n\nProjects requiring simple recommendation needs (&lt;1k items) or without Rust ops support.\n\n\n\nSupports V-Sekai 2025 goals for UGC and fediverse interoperability.\n\n\n\nStatus: Active \n\n\n\n\nFire\n\n\n\n\n\nML\nBackend\nHigh Priority\n\n\n\n\n\nAsh Framework https://ash-hq.org/\nRustler 0.30 NIF guide https://github.com/rusterlium/rustler\nV-Sekai Roadmap 2025 https://v-sekai.github.io/manuals/roadmap.html\nLibrecommender Rust Serving Guide https://librecommender.readthedocs.io/en/latest/serving_guide/rust.html"
   },
   {
     "objectID": "decisions/20250408-v-sekai-backpack.html#context",
@@ -6325,14 +6325,14 @@
     "href": "decisions/20250408-v-sekai-backpack.html#proposed-solution",
     "title": "Active: Ash-Based Recommender System Integration",
     "section": "",
-    "text": "Implement Ash framework with Rustler-based NIF integration for librecommender, featuring:\nImplementation Steps:\n\nCreate Ash resource DSL for recommendation entities\nImplement NIFs for bag operations using Rustler\nAdd JSON-LD context annotation layer\nSupport both item-item and user-item recommendation algorithms"
+    "text": "Implement Ash framework with Rustler-based NIF integration for librecommender.\nImplementation Steps:\n\nCreate Ash resource DSL for recommendation entities\nImplement NIFs for bag operations using Rustler\nAdd JSON-LD context annotation layer\nSupport both item-item and user-item recommendation algorithms"
   },
   {
     "objectID": "decisions/20250408-v-sekai-backpack.html#implementation-plan",
     "href": "decisions/20250408-v-sekai-backpack.html#implementation-plan",
     "title": "Active: Ash-Based Recommender System Integration",
     "section": "",
-    "text": "Phase 1: Ash core setup\n\n\nPort uro entity relationships\nRustler integration tests\n\n\nPhase 2: Recommender bridge\n\n\nImplement protocol for librecommender\nJSON-LD attribute mapping\n\n\nValidation:\n\n\nSuccess: &lt;500ms p99 inference latency\nFailure: &gt;5% data serialization errors"
+    "text": "Phase 1: Ash core setup\n\nPort uro entity relationships\nRustler integration tests\n\nPhase 2: Recommender bridge\n\nImplement protocol for librecommender\nJSON-LD attribute mapping\n\nValidation:\n\nSuccess Criteria: &lt;500ms p99 inference latency\nFailure Threshold: &gt;5% data serialization errors"
   },
   {
     "objectID": "decisions/20250408-v-sekai-backpack.html#benefits",
@@ -6342,8 +6342,8 @@
     "text": "10x concurrent recommendation capacity\nNative Ecto/Ash metadata queries\nFuture-proofed for Fediverse integration"
   },
   {
-    "objectID": "decisions/20250408-v-sekai-backpack.html#risks",
-    "href": "decisions/20250408-v-sekai-backpack.html#risks",
+    "objectID": "decisions/20250408-v-sekai-backpack.html#risks-and-limitations",
+    "href": "decisions/20250408-v-sekai-backpack.html#risks-and-limitations",
     "title": "Active: Ash-Based Recommender System Integration",
     "section": "",
     "text": "Rust-Elixir type conversion overhead\nNIF complexity\nJSON-LD namespace collisions"
@@ -6356,8 +6356,8 @@
     "text": "Option\nPros\nCons\n\n\n\n\nPure Python\nFaster MVP\nLimits scale\n\n\nPure Elixir\nSimpler stack\nLacks optim algos"
   },
   {
-    "objectID": "decisions/20250408-v-sekai-backpack.html#when-to-avoid",
-    "href": "decisions/20250408-v-sekai-backpack.html#when-to-avoid",
+    "objectID": "decisions/20250408-v-sekai-backpack.html#when-to-avoid-this-solution",
+    "href": "decisions/20250408-v-sekai-backpack.html#when-to-avoid-this-solution",
     "title": "Active: Ash-Based Recommender System Integration",
     "section": "",
     "text": "Projects requiring simple recommendation needs (&lt;1k items) or without Rust ops support."
@@ -6368,6 +6368,20 @@
     "title": "Active: Ash-Based Recommender System Integration",
     "section": "",
     "text": "Supports V-Sekai 2025 goals for UGC and fediverse interoperability."
+  },
+  {
+    "objectID": "decisions/20250408-v-sekai-backpack.html#proposal-status",
+    "href": "decisions/20250408-v-sekai-backpack.html#proposal-status",
+    "title": "Active: Ash-Based Recommender System Integration",
+    "section": "",
+    "text": "Status: Active"
+  },
+  {
+    "objectID": "decisions/20250408-v-sekai-backpack.html#decision-makers",
+    "href": "decisions/20250408-v-sekai-backpack.html#decision-makers",
+    "title": "Active: Ash-Based Recommender System Integration",
+    "section": "",
+    "text": "Fire"
   },
   {
     "objectID": "decisions/20250408-v-sekai-backpack.html#tags",
@@ -6381,7 +6395,7 @@
     "href": "decisions/20250408-v-sekai-backpack.html#references",
     "title": "Active: Ash-Based Recommender System Integration",
     "section": "",
-    "text": "Ash Framework https://ash-hq.org/\nRustler 0.30 NIF guide https://github.com/rusterlium/rustler\nV-Sekai Roadmap 2025 https://v-sekai.github.io/manuals/roadmap.html\nhttps://librecommender.readthedocs.io/en/latest/serving_guide/rust.html"
+    "text": "Ash Framework https://ash-hq.org/\nRustler 0.30 NIF guide https://github.com/rusterlium/rustler\nV-Sekai Roadmap 2025 https://v-sekai.github.io/manuals/roadmap.html\nLibrecommender Rust Serving Guide https://librecommender.readthedocs.io/en/latest/serving_guide/rust.html"
   },
   {
     "objectID": "decisions/20241218-will-o-wisp-proto-avatar.html",
@@ -12863,7 +12877,7 @@
     "href": "decisions/20250402-image-to-full-body-face.html",
     "title": "Proposed: Image to Full Body FACS",
     "section": "",
-    "text": "This system builds a robust image-to-full-body-face mapping pipeline to capture real-world 3D full-body movements synchronized with visual data. Key metrics include anatomical accuracy of motion prediction, scalability across diverse body types, and real-time processing capabilities. This proposal addresses the growing demand for realistic full-body animation in virtual avatars, gaming, and biomechanical analysis. It matters now due to advancements in computer vision and the need for cost-effective motion capture solutions beyond lab-controlled environments.\n\n\n\nPrimary operational challenges include:\n\nLack of accessible systems for accurate 3D full-body motion capture from 2D images/video\nDifficulty generating anatomically plausible animations from imperfect visual data\nHigh computational costs of existing marker-based motion capture systems\nLimited adaptability to real-world environmental noise and occlusion\n\n\n\n\nAn image-to-FACS pipeline combining synthetic data generation, biomechanical constraints, and reinforcement learning:\n\nConvert T-posed animations to VRM avatar format with COCO keypoint annotations\nGenerate synthetic training data using Godot Engine with marker/color variations\nLeverage MediaPipe for video-to-keypoint conversion with vertex-based facial mapping\nTrain custom prediction models using temporal-spatial attention mechanisms\n\nImplementation Steps:\n\nCreate VRM synthetic datasets with ground truth annotations\nDevelop MediaPipe integration for unified body-face-hand keypoint extraction\nImplement reinforcement learning (GRPO) for motion generation from masked video\n\n\n\n\n\nPhase 1: Synthetic Data Pipeline\n\nDevelop Animation-to-VRM conversion tools\nGenerate multi-format synthetic data in Godot Engine\n\nPhase 2: Keypoint Prediction Model\n\nTrain transformer-based model on synthetic/real data mixtures\nIntegrate biomechanical constraints into loss functions\n\nValidation:\n\nSuccess Criteria: &gt;90% anatomical validity in user studies\nFailure Threshold: &lt;15% improvement over baseline MediaPipe accuracy\n\n\n\n\n\n\n\n\nDataset ID\nDescription\nURI\nLicense\n\n\n\n\nANIM_A_POSE\nT-posed character animations for baseline modeling\nN/A\nProprietary\n\n\nANIM_O3DE_COCO_FULL_BODY_FACS_RGB_8\nFull-body FACS annotations with RGB video pairs\nN/A\nApache 2.0\n\n\nANIM_O3DE_COCO_FULL_BODY_FACS_LUMINANCE_8\nLuma-key marker data synchronized with RGB\nN/A\nApache 2.0\n\n\nANIM_O3DE_MOTION_MATCHING\nO3DE Motion Matching dataset\nGitHub\nApache 2.0\n\n\nANIM_QUATERNIUS_UNIVERSAL_ANIMATION_LIBRARY\nUniversal Animation Library\nN/A\nCC0 1.0\n\n\nANIM_100_STYLES\nMulti-style character animation dataset\nN/A\nProprietary\n\n\nCOCO_2017_KEYPOINTS\nCOCO person keypoints dataset\nKaggle\nCC BY 4.0\n\n\nCOCO_YOGA_16\nYoga pose classification dataset\nKaggle\nMIT\n\n\n\n\n\n\n\nEnables markerless full-body motion capture from consumer-grade video\nMaintains facial-phonetic synchronization during body movements\nReduces dependency on expensive motion capture hardware\nSupports real-time applications through efficient architecture design\n\n\n\n\n\nPotential error accumulation in long-term motion prediction\nChallenges maintaining facial-hand-body coordination\nDependency on quality synthetic training data\nComputational intensity of real-time 3D mesh processing\n\n\n\n\n\n\n\n\n\n\n\n\nOption\nPros\nCons\n\n\n\n\nCommercial mocap suits\nHigh accuracy\nCost-prohibitive, lab-bound\n\n\nPure ML approaches\nFully automated\nLimited anatomical plausibility\n\n\n\n\n\n\nNot suitable for applications requiring medical-grade biomechanical accuracy or environments with persistent heavy occlusion.\n\n\n\nSupports strategic goals in virtual humanoid development and aligns with open-source initiatives for accessible animation tools.\n\n\n\nStatus: Proposed\n\n\n\n\nFire\n\n\n\n\n\nComputer Vision\nBiomechanics\nVirtual Avatars\nReal-Time Systems\n\n\n\n\n\nMediaPipe Integration Codebase\nVRM Avatar Specification\nGRPO Algorithm Documentation"
+    "text": "This system builds a robust image-to-full-body-face mapping pipeline to capture real-world 3D full-body movements synchronized with visual data. Key metrics include anatomical accuracy of motion prediction, scalability across diverse body types, and real-time processing capabilities. This proposal addresses the growing demand for realistic full-body animation in virtual avatars, gaming, and biomechanical analysis. It matters now due to advancements in computer vision and the need for cost-effective motion capture solutions beyond lab-controlled environments.\n\n\n\nPrimary operational challenges include:\n\nLack of accessible systems for accurate 3D full-body motion capture from 2D images/video\nDifficulty generating anatomically plausible animations from imperfect visual data\nHigh computational costs of existing marker-based motion capture systems\nLimited adaptability to real-world environmental noise and occlusion\n\n\n\n\nAn image-to-FACS pipeline combining synthetic data generation, biomechanical constraints, and reinforcement learning:\n\nConvert T-posed animations to VRM avatar format with COCO keypoint annotations\nGenerate synthetic training data using Godot Engine with marker/color variations\nLeverage MediaPipe for video-to-keypoint conversion with vertex-based facial mapping\nTrain custom prediction models using temporal-spatial attention mechanisms\n\nImplementation Steps:\n\nCreate VRM synthetic datasets with ground truth annotations\nDevelop MediaPipe integration for unified body-face-hand keypoint extraction\nImplement reinforcement learning (GRPO) for motion generation from masked video\n\n\n\n\n\nPhase 1: Synthetic Data Pipeline\n\nDevelop Animation-to-VRM conversion tools\nGenerate multi-format synthetic data in Godot Engine\n\nPhase 2: Keypoint Prediction Model\n\nTrain transformer-based model on synthetic/real data mixtures\nIntegrate biomechanical constraints into loss functions\n\nValidation:\n\nSuccess Criteria: &gt;90% anatomical validity in user studies\nFailure Threshold: &lt;15% improvement over baseline MediaPipe accuracy\n\n\n\n\n\n\n\n\nDataset ID\nDescription\nURI\nLicense\n\n\n\n\nANIM_A_POSE\nT-posed character animations for baseline modeling\nN/A\nProprietary\n\n\nANIM_O3DE_COCO_FULL_BODY_FACS_RGB_8\nFull-body FACS annotations with RGB video pairs\nN/A\nApache 2.0\n\n\nANIM_O3DE_COCO_FULL_BODY_FACS_LUMINANCE_8\nLuma-key marker data synchronized with RGB\nN/A\nApache 2.0\n\n\nANIM_O3DE_MOTION_MATCHING\nO3DE Motion Matching dataset\nGitHub\nApache 2.0\n\n\nANIM_QUATERNIUS_UNIVERSAL_ANIMATION_LIBRARY\nUniversal Animation Library\nN/A\nCC0 1.0\n\n\nANIM_100_STYLES\nMulti-style character animation dataset\nN/A\nProprietary\n\n\nCOCO_2017_KEYPOINTS\nCOCO person keypoints dataset\nKaggle\nCC BY 4.0\n\n\nCOCO_YOGA_16\nYoga pose classification dataset\nKaggle\nMIT\n\n\n\n\n\n\n\nEnables markerless full-body motion capture from consumer-grade video\nMaintains facial-phonetic synchronization during body movements\nReduces dependency on expensive motion capture hardware\nSupports real-time applications through efficient architecture design\n\n\n\n\n\nPotential error accumulation in long-term motion prediction\nChallenges maintaining facial-hand-body coordination\nDependency on quality synthetic training data\nComputational intensity of real-time 3D mesh processing\n\n\n\n\n\n\n\n\n\n\n\n\nOption\nPros\nCons\n\n\n\n\nCommercial mocap suits\nHigh accuracy\nCost-prohibitive, lab-bound\n\n\nPure ML approaches\nFully automated\nLimited anatomical plausibility\n\n\n\n\n\n\nNot suitable for applications requiring medical-grade biomechanical accuracy or environments with persistent heavy occlusion.\n\n\n\nSupports strategic goals in virtual humanoid development and aligns with open-source initiatives for accessible animation tools.\n\n\n\nStatus: Proposed \n\n\n\n\nFire\n\n\n\n\n\nComputer Vision\nBiomechanics\nVirtual Avatars\nReal-Time Systems\n\n\n\n\n\nMediaPipe Integration Codebase\nVRM Avatar Specification\nGRPO Algorithm Documentation"
   },
   {
     "objectID": "decisions/20250402-image-to-full-body-face.html#context",
