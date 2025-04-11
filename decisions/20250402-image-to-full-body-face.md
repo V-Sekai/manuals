@@ -84,7 +84,7 @@ Supports strategic goals in virtual humanoid development and aligns with open-so
 
 ## Proposal Status
 
-Status: Proposed
+Status: Proposed <!-- Options: Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by [Link/Reference] -->
 
 ## Decision Makers
 
