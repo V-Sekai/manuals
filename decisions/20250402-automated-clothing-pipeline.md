@@ -48,11 +48,9 @@ Four interconnected modules using unified metadata:
 
 ## Risks and Limitations
 
-| Risk                           | Mitigation                                      |
-| ------------------------------ | ----------------------------------------------- |
-| IREE compilation failures      | Maintain PyTorch fallback implementation        |
-| Physics simulation instability | Implement Marvelous Designer safety constraints |
-| Rare defect false positives    | Active learning with human-in-the-loop          |
+- IREE compilation failures (Mitigation: Maintain PyTorch fallback implementation)
+- Physics simulation instability (Mitigation: Implement Marvelous Designer safety constraints)
+- Rare defect false positives (Mitigation: Active learning with human-in-the-loop)
 
 ## Alternatives Considered
 
@@ -61,7 +59,7 @@ Four interconnected modules using unified metadata:
 | YOLOv8                  | Faster inference | Lower mAP on small accessories |
 | TensorFlow Recommenders | Mature ecosystem | No native multi-tag support    |
 
-## When to Avoid
+## When to Avoid This Solution
 
 Not suitable for high-fashion detail reproduction requiring manual artistry.
 
@@ -71,7 +69,7 @@ Supports virtual commerce initiatives and aligns with open-source 3D tooling roa
 
 ## Proposal Status
 
-Status: Proposed
+Status: Proposed <!-- Options: Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by [Link/Reference] -->
 
 ## Decision Makers
 
