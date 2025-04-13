@@ -102,7 +102,7 @@ def main():
     # Call update_votes.py to ensure votes are updated before running the election
     subprocess.run(['python3', './update_votes.py'], check=True)
 
-    election_results = run_election('./roadmap/votes', 2, "./roadmap/tasks.csv")
+    election_results = run_election('./roadmap/votes', 1, "./roadmap/tasks.csv")
     print("Winners", json.dumps(election_results["winners"], indent=4), sep="\n")
     print("Averaged Votes Table", election_results["avg_table"], sep="\n")
 
