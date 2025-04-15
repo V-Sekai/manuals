@@ -46,13 +46,22 @@ def estimate_reading_time(filepath):
     result = readtime.of_text(text)
     return result.text  # e.g., "1 min read"
 
+def extract_h1_title(filepath):
+    with open(filepath, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line.startswith("# "):
+                return line[2:].strip()
+    # fallback to filename if no H1 found
+    return os.path.splitext(os.path.basename(filepath))[0]
+
 def shorten_title(title, length=40):
     return title if len(title) <= length else title[:length-3] + "..."
 
 rows = []
 for f in files:
-    title = os.path.splitext(os.path.basename(f))[0]
-    short_title = shorten_title(title)
+    h1_title = extract_h1_title(f)
+    short_title = shorten_title(h1_title)
     reading_time = estimate_reading_time(f)
     rows.append({"title": short_title, "reading-time": reading_time})
 
