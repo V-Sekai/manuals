@@ -18,14 +18,13 @@ from itables import show
 import os
 import itables.options as opt
 
-# Collect all markdown files except attachments
 files = [f for f in glob.glob("decisions/**/*.md", recursive=True) if "decisions/attachments/" not in f]
 
 def estimate_reading_time(filepath):
     with open(filepath, encoding="utf-8") as f:
         text = f.read()
     result = readtime.of_text(text)
-    return result.text  # e.g., "1 min read"
+    return result.text
 
 def extract_h1_title(filepath):
     with open(filepath, encoding="utf-8") as f:
@@ -33,29 +32,18 @@ def extract_h1_title(filepath):
             line = line.strip()
             if line.startswith("# "):
                 return line[2:].strip()
-    # fallback to filename if no H1 found
     return os.path.splitext(os.path.basename(filepath))[0]
 
 def shorten_title(title, length=40):
     return title if len(title) <= length else title[:length-3] + "..."
 
-# Set itables to render the 'title' column as HTML
 opt.classes = "display"
-opt.columnDefs = [
-    {"targets": 0, "render": {"_": "display", "filter": "display"}, "type": "html"}
-]
 
 rows = []
 for f in files:
-    try:
-        h1_title = extract_h1_title(f)
-    except Exception:
-        h1_title = os.path.splitext(os.path.basename(f))[0]
+    h1_title = extract_h1_title(f)
     short_title = shorten_title(h1_title)
-    try:
-        reading_time = estimate_reading_time(f)
-    except Exception:
-        reading_time = ""
+    reading_time = estimate_reading_time(f)
     filename = os.path.basename(f)
     html_link = f.replace(".md", ".html")
     link = f'<a href="{html_link}">{short_title}</a>'
@@ -64,7 +52,6 @@ for f in files:
 if rows:
     df = pd.DataFrame(rows, columns=["filename", "title", "reading-time"])
     df = df.sort_values("filename", ascending=False)
-    df = df[["title", "reading-time"]]
 else:
     df = pd.DataFrame([], columns=["title", "reading-time"])
 
