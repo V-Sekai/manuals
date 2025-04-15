@@ -61,9 +61,8 @@ for f in files:
     link = f'<a href="{html_link}">{short_title}</a>'
     rows.append({"title": link, "reading-time": reading_time, "filename": filename})
 
-# Always create DataFrame with the correct columns
 if rows:
-    df = pd.DataFrame(rows, columns=["title", "reading-time", "filename"])
+    df = pd.DataFrame(rows, columns=["filename", "title", "reading-time"])
     df = df.sort_values("filename", ascending=False)
     df = df[["title", "reading-time"]]
 else:
