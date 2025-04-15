@@ -50,7 +50,7 @@ This is a confusing problem and hard to explain. So the code to solve it is non-
 
 ## Is there a reason why this should be core and done by us?
 
-# animation are a core feature of Godot Engine
+Animation are a core feature of Godot Engine.
 
 ## References <!-- optional -->
 
