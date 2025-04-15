@@ -50,6 +50,8 @@ print("""
 
 Archived tasks
 
+<details>
+<summary>Show archived tasks</summary>
 """)
 
 archived_tasks_df = vote.get_archived_tasks_table('./roadmap/tasks.csv')
@@ -59,8 +61,15 @@ archived_tasks_df.reset_index(drop=True, inplace=True)
 show(archived_tasks_df)
 
 print("""
+</details>
+""")
+
+print("""
 
 ## Raw Votes
+
+<details>
+<summary>Show raw votes table</summary>
 
 Raw votes count
 
@@ -70,4 +79,8 @@ votes_dict = vote.get_votes('./roadmap/votes')
 votes_df = pd.DataFrame(votes_dict)
 votes_df = votes_df.fillna(0)
 show(votes_df, paging=False)
+
+print("""
+</details>
+""")
 ```
