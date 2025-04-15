@@ -144,7 +144,7 @@ ExecStart=/usr/local/bin/k3s \
 - 2021-09-03 08:08:15Z lyuma: <https://cdn.discordapp.com/attachments/836651615532482611/883262098942079026/archery_sample.png>
 - 2021-09-02 03:56:26Z lyuma: "Progress on Unidot Importer: I made some major fixes on binary asset deserialization: I finally figured out how padding works (short answer: flag 0x4000 adds padding after a byte or short), and fixed a crash by implementing support for Unity 4.x and earlier assets, since you never know where they will show up.
 
-Next up is parsing the texture filename mapping from FBX files to assist in material discovery, since Unity legacy materials default to lookup by texture _filename_ rather than material name or texture name. Since Godot has no means for preserving the original filename on import when the files are not present, doing a fix to the FBX2glTF tool won't quite cover my necessary usecase, so I think extracting the map in the tooling is easiest. Will probably revisit this decision later." 👍 (4)
+Next up is parsing the texture filename mapping from FBX files to assist in material discovery, since Unity legacy materials default to lookup by texture *filename* rather than material name or texture name. Since Godot has no means for preserving the original filename on import when the files are not present, doing a fix to the FBX2glTF tool won't quite cover my necessary usecase, so I think extracting the map in the tooling is easiest. Will probably revisit this decision later." 👍 (4)
 
 - 2021-09-02 01:27:40Z fire: <https://twitter.com/babylonjs/status/1433216048036122629?s=20> webgpu
 - 2021-09-01 21:26:59Z fire: <hesien bugs>

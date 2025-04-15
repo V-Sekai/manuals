@@ -8,7 +8,7 @@ Transferring motions across platforms via video.
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
-# shadermotion allows us to transfer motion for other VR platforms into a standard motion format.
+# shadermotion allows us to transfer motion for other VR platforms into a standard motion format
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
@@ -56,7 +56,7 @@ Once completed, look for `yourvideo.bvh`
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
-# shadermotion is a novel solution to capturing motion from VRChat.
+# shadermotion is a novel solution to capturing motion from VRChat
 
 ## Is there a reason why this should be core and done by us?
 

@@ -85,7 +85,7 @@ Meeting between betalars, fire, lyuma, jeana and others about usability in 3d ga
 
 ## 2022-10-22 Humble contributions and places to start? ^^
 
-### Premise:
+### Premise
 
 - betalars is working on making Chaos Computer Club more accessible.
 - There has been development to create an online-platform for [Chaos Communication Congress](https://en.wikipedia.org/wiki/Chaos_Communication_Congress) using Godot
