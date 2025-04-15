@@ -37,8 +37,6 @@ def extract_h1_title(filepath):
 def shorten_title(title, length=40):
     return title if len(title) <= length else title[:length-3] + "..."
 
-opt.classes = "display"
-
 rows = []
 for f in files:
     h1_title = extract_h1_title(f)
@@ -49,11 +47,10 @@ for f in files:
     link = f'<a href="{html_link}">{short_title}</a>'
     rows.append({"title": link, "reading-time": reading_time, "filename": filename})
 
-if rows:
-    df = pd.DataFrame(rows, columns=["filename", "title", "reading-time"])
+columns = ["filename", "title", "reading-time"]
+df = pd.DataFrame(rows, columns=columns)
+if not df.empty:
     df = df.sort_values("filename", ascending=False)
-else:
-    df = pd.DataFrame([], columns=["title", "reading-time"])
 
 show(df, paging=True, pageLength=10, index=False, escape=False)
 ```
