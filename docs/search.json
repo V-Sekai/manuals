@@ -9195,7 +9195,7 @@
     "href": "decisions/20210622-shadermotion-to-godot-engine.html",
     "title": "Draft: Convert #shadermotion to be played in Godot Engine",
     "section": "",
-    "text": "We want a better way of importing animations to Godot Engine. Unfortunately, there is no standard way to exchange motion from other places to Godot and work interchangeably on different characters."
+    "text": "We want a better way of importing animations to Godot Engine. Unfortunately, there is no standard way to exchange motion from other places to Godot and work interchangeably on different characters.\n\n\n\nshadermotion files in video format provide an excellent way to record motion. However, we want the ability to play it back in Godot Engine onto a VRM character\n\n\n\nInstall youtube-dl and ffmpeg with scoop\nscoop install youtube-dl ffmpeg\nConvert #shadermotion videos into WebM VP9.\nyoutube-dl https://www.youtube.com/playlist?list=PLmwqDOin_Zt4WCMWqoK6SdHlg0C_WeCP6 --audio-format wav --format webm --recode-video webm\nCrop the preview frame of the video for the left and the right side.\nffmpeg -i \"NNNN.webm\" \"-filter:v\" \"crop=in_w*(1-0.925):ih:0:0,fps=60,scale=24x180:flags=lanczos+full_chroma_inp\" shader_motion_character_00.webm\nffmpeg -i \"NNNN.webm\" \"-filter:v\" \"crop=in_w*(1-0.925):in_h:in_w:in_h,fps=60,scale=24x180:flags=lanczos+full_chroma_inp\" shader_motion_character_0\n\n\n\nBuild godot-cpp\ngodot.windows.opt.tools.64.exe --gdnative-generate-json-api api.json\ngodot.windows.opt.tools.64.exe --gdnative-generate-json-builtin-api builtin_api.json\n# copy to godot-cpp\n# compile godot-cpp\n# Use instructions for 4\n# https://github.com/GodotVR/godot_openvr/pull/123#issue-658898644\nscons p=windows target=release -j16 target=release generate_bindings=yes\n# compile gdnative-video-decoder\nscons platform=win64 target=release -j16\n\n\n\n\nCan interchange motions\n\n\n\n\n\nComplexity\n\n\n\n\nNot trivial.\n\n\n\nThe ability to give motion to 3d characters or NPCS is important.\nThe ability to interchange pose is important.\n\n\n\n\nhttps://motion.chibifire.com\nhttps://github.com/ytdl-org/youtube-dl\nhttps://github.com/FFmpeg/FFmpeg\n\n\n\n\nCopyright (c) 2020-2021 V-Sekai contributors.\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
   },
   {
     "objectID": "decisions/20210622-shadermotion-to-godot-engine.html#context-and-problem-statement",
@@ -9205,60 +9205,67 @@
     "text": "We want a better way of importing animations to Godot Engine. Unfortunately, there is no standard way to exchange motion from other places to Godot and work interchangeably on different characters."
   },
   {
+    "objectID": "decisions/20210622-shadermotion-to-godot-engine.html#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation",
+    "href": "decisions/20210622-shadermotion-to-godot-engine.html#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation",
+    "title": "Draft: Convert #shadermotion to be played in Godot Engine",
+    "section": "",
+    "text": "shadermotion files in video format provide an excellent way to record motion. However, we want the ability to play it back in Godot Engine onto a VRM character"
+  },
+  {
     "objectID": "decisions/20210622-shadermotion-to-godot-engine.html#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams",
     "href": "decisions/20210622-shadermotion-to-godot-engine.html#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams",
     "title": "Draft: Convert #shadermotion to be played in Godot Engine",
-    "section": "Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams",
-    "text": "Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams\nInstall youtube-dl and ffmpeg with scoop\nscoop install youtube-dl ffmpeg\nConvert #shadermotion videos into WebM VP9.\nyoutube-dl https://www.youtube.com/playlist?list=PLmwqDOin_Zt4WCMWqoK6SdHlg0C_WeCP6 --audio-format wav --format webm --recode-video webm\nCrop the preview frame of the video for the left and the right side.\nffmpeg -i \"NNNN.webm\" \"-filter:v\" \"crop=in_w*(1-0.925):ih:0:0,fps=60,scale=24x180:flags=lanczos+full_chroma_inp\" shader_motion_character_00.webm\nffmpeg -i \"NNNN.webm\" \"-filter:v\" \"crop=in_w*(1-0.925):in_h:in_w:in_h,fps=60,scale=24x180:flags=lanczos+full_chroma_inp\" shader_motion_character_0"
+    "section": "",
+    "text": "Install youtube-dl and ffmpeg with scoop\nscoop install youtube-dl ffmpeg\nConvert #shadermotion videos into WebM VP9.\nyoutube-dl https://www.youtube.com/playlist?list=PLmwqDOin_Zt4WCMWqoK6SdHlg0C_WeCP6 --audio-format wav --format webm --recode-video webm\nCrop the preview frame of the video for the left and the right side.\nffmpeg -i \"NNNN.webm\" \"-filter:v\" \"crop=in_w*(1-0.925):ih:0:0,fps=60,scale=24x180:flags=lanczos+full_chroma_inp\" shader_motion_character_00.webm\nffmpeg -i \"NNNN.webm\" \"-filter:v\" \"crop=in_w*(1-0.925):in_h:in_w:in_h,fps=60,scale=24x180:flags=lanczos+full_chroma_inp\" shader_motion_character_0"
   },
   {
     "objectID": "decisions/20210622-shadermotion-to-godot-engine.html#how-to-build-godot-video-decoder",
     "href": "decisions/20210622-shadermotion-to-godot-engine.html#how-to-build-godot-video-decoder",
     "title": "Draft: Convert #shadermotion to be played in Godot Engine",
-    "section": "How to build Godot video decoder",
-    "text": "How to build Godot video decoder\nBuild godot-cpp\ngodot.windows.opt.tools.64.exe --gdnative-generate-json-api api.json\ngodot.windows.opt.tools.64.exe --gdnative-generate-json-builtin-api builtin_api.json\n# copy to godot-cpp\n# compile godot-cpp\n# Use instructions for 4\n# https://github.com/GodotVR/godot_openvr/pull/123#issue-658898644\nscons p=windows target=release -j16 target=release generate_bindings=yes\n# compile gdnative-video-decoder\nscons platform=win64 target=release -j16"
+    "section": "",
+    "text": "Build godot-cpp\ngodot.windows.opt.tools.64.exe --gdnative-generate-json-api api.json\ngodot.windows.opt.tools.64.exe --gdnative-generate-json-builtin-api builtin_api.json\n# copy to godot-cpp\n# compile godot-cpp\n# Use instructions for 4\n# https://github.com/GodotVR/godot_openvr/pull/123#issue-658898644\nscons p=windows target=release -j16 target=release generate_bindings=yes\n# compile gdnative-video-decoder\nscons platform=win64 target=release -j16"
   },
   {
     "objectID": "decisions/20210622-shadermotion-to-godot-engine.html#positive-consequences",
     "href": "decisions/20210622-shadermotion-to-godot-engine.html#positive-consequences",
     "title": "Draft: Convert #shadermotion to be played in Godot Engine",
-    "section": "Positive Consequences ",
-    "text": "Positive Consequences \n\nCan interchange motions"
+    "section": "",
+    "text": "Can interchange motions"
   },
   {
     "objectID": "decisions/20210622-shadermotion-to-godot-engine.html#negative-consequences",
     "href": "decisions/20210622-shadermotion-to-godot-engine.html#negative-consequences",
     "title": "Draft: Convert #shadermotion to be played in Godot Engine",
-    "section": "Negative Consequences ",
-    "text": "Negative Consequences \n\nComplexity"
+    "section": "",
+    "text": "Complexity"
   },
   {
     "objectID": "decisions/20210622-shadermotion-to-godot-engine.html#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script",
     "href": "decisions/20210622-shadermotion-to-godot-engine.html#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script",
     "title": "Draft: Convert #shadermotion to be played in Godot Engine",
-    "section": "If this enhancement will not be used often, can it be worked around with a few lines of script?",
-    "text": "If this enhancement will not be used often, can it be worked around with a few lines of script?\nNot trivial."
+    "section": "",
+    "text": "Not trivial."
   },
   {
     "objectID": "decisions/20210622-shadermotion-to-godot-engine.html#is-there-a-reason-why-this-should-be-core-and-done-by-us",
     "href": "decisions/20210622-shadermotion-to-godot-engine.html#is-there-a-reason-why-this-should-be-core-and-done-by-us",
     "title": "Draft: Convert #shadermotion to be played in Godot Engine",
-    "section": "Is there a reason why this should be core and done by us?",
-    "text": "Is there a reason why this should be core and done by us?\nThe ability to give motion to 3d characters or NPCS is important.\nThe ability to interchange pose is important."
+    "section": "",
+    "text": "The ability to give motion to 3d characters or NPCS is important.\nThe ability to interchange pose is important."
   },
   {
     "objectID": "decisions/20210622-shadermotion-to-godot-engine.html#references",
     "href": "decisions/20210622-shadermotion-to-godot-engine.html#references",
     "title": "Draft: Convert #shadermotion to be played in Godot Engine",
-    "section": "References ",
-    "text": "References \n\nhttps://motion.chibifire.com\nhttps://github.com/ytdl-org/youtube-dl\nhttps://github.com/FFmpeg/FFmpeg"
+    "section": "",
+    "text": "https://motion.chibifire.com\nhttps://github.com/ytdl-org/youtube-dl\nhttps://github.com/FFmpeg/FFmpeg"
   },
   {
     "objectID": "decisions/20210622-shadermotion-to-godot-engine.html#derivative-license",
     "href": "decisions/20210622-shadermotion-to-godot-engine.html#derivative-license",
     "title": "Draft: Convert #shadermotion to be played in Godot Engine",
-    "section": "Derivative License",
-    "text": "Derivative License\nCopyright (c) 2020-2021 V-Sekai contributors.\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+    "section": "",
+    "text": "Copyright (c) 2020-2021 V-Sekai contributors.\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
   },
   {
     "objectID": "decisions/20250122-VRChat-Loader-with-Godot-Engine-next.html",
