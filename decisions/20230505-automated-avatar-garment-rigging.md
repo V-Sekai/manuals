@@ -10,7 +10,7 @@
 
 Rigging every possible avatar and garment combination is not feasible. We need a system that allows garments to be easily applied to various avatars without manual rigging each time a new garment or avatar is created.
 
-## Describe the problem or limitation you have in your project, e.g., in free form, using two to three sentences. Consider articulating the case in the form of a question.
+## Describe the problem or limitation you have in your project, e.g., in free form, using two to three sentences. Consider articulating the case in the form of a question
 
 How can we create a system that allows garments to be easily applied to various avatars without the need for manual rigging each time a new garment or avatar is created?
 

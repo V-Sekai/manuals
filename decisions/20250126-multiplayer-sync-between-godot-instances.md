@@ -8,7 +8,7 @@ We aim to enhance multiplayer capabilities in the Godot Engine by synchronizing 
 
 Currently, synchronizing complex node scene trees in multiplayer scenarios within Godot is challenging. There's a need for an efficient method to ensure consistency across all client instances.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
+## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
 The proposal involves implementing a synchronization protocol that mirrors the node scene tree structure across all multiplayer instances. This includes:
 
@@ -57,7 +57,7 @@ Status: Proposed
 
 - V-Sekai
 
-## List further reading references.
+## List further reading references
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai)
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)

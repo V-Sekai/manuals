@@ -1,14 +1,14 @@
 # Draft: To protect the minimum spec maintain steam deck version of flatmode V-Sekai
 
-### Describe the status of the issue.
+### Describe the status of the issue
 
 proposed
 
-### List the deciders of the issue.
+### List the deciders of the issue
 
 V-Sekai,fire,
 
-### Describe the tags of the issue.
+### Describe the tags of the issue
 
 V-Sekai,
 

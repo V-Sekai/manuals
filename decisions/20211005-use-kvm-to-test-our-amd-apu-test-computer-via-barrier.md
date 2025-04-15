@@ -1,4 +1,4 @@
-# Draft: Use KVM to test our AMD APU test computer via Barrier.
+# Draft: Use KVM to test our AMD APU test computer via Barrier
 
 ### Context and Problem Statement
 
@@ -30,7 +30,7 @@ This a guide.
 
 ### References
 
-- https://github.com/debauchee/barrier
+- <https://github.com/debauchee/barrier>
 
 ### Derivative License
 

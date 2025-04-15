@@ -42,9 +42,9 @@ I found an approach and it can be done.
 
 ### References
 
-- https://github.com/fire/MaterialX/tree/gltf
-- https://godotengine.org/showcase/material-maker
-- https://en.wikipedia.org/wiki/Procedural_texture
+- <https://github.com/fire/MaterialX/tree/gltf>
+- <https://godotengine.org/showcase/material-maker>
+- <https://en.wikipedia.org/wiki/Procedural_texture>
 
 ### Derivative License
 

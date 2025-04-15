@@ -14,7 +14,7 @@ V-Sekai currently has limitations when it comes to creating avatars with specifi
 
 Here is a list of raw processes to be broken down.
 
-### To create a source, filter, sink pipeline system for this project, we can use the following mime labels:
+### To create a source, filter, sink pipeline system for this project, we can use the following mime labels
 
 1. Source: The source will provide the initial avatar model and any additional assets required. The input mime type for the source could be `application/gltf+json` or `model/gltf+json` if the avatar is in GLTF format, or `image/png` or `image/svg+xml` if the avatar is provided as a 2D image.
 
@@ -24,7 +24,7 @@ Here is a list of raw processes to be broken down.
 
 Note: To avoid lossy formats, we are using PNG or SVG for 2D images and GLTF for 3D formats. PNG and SVG are lossless image formats, while GLTF is a lossless 3D format that preserves the fidelity of the avatar model.
 
-### Advanced Customization Steps:
+### Advanced Customization Steps
 
 Here are the converted inputs and outputs in the xstate format for each step:
 

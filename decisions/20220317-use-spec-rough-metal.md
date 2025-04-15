@@ -6,11 +6,11 @@ ribe the status of the issue.
 
 rejected
 
-### List the deciders of the issue.
+### List the deciders of the issue
 
 V-Sekai,fire,
 
-### Describe the tags of the issue.
+### Describe the tags of the issue
 
 V-Sekai,
 

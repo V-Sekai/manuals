@@ -50,8 +50,8 @@ I use this.
 
 ## References <!-- optional -->
 
-- https://www.msys2.org/
-- https://github.com/cuviper/ssh-pageant
+- <https://www.msys2.org/>
+- <https://github.com/cuviper/ssh-pageant>
 
 ## Derivative License
 

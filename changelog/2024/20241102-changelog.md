@@ -17,7 +17,7 @@
 - 🚀 Walk the Dog is a vector-quantized periodic autoencoder. Walk the Dog is now MIT-licensed open source. It learns a disconnected 1D phase manifold that aligns motion regardless of morphologies while requiring no paired data or any joint correspondence [PeizhuoLi/walk-the-dog](https://github.com/PeizhuoLi/walk-the-dog)
 - 🚀 Submitted an update to Godot-VRM version 2.1.0, adding much-needed support for Godot 4.3 SkeletonModifier3D, an import (or runtime) option to adjust the head hiding method, and several bug fixes. It will be released on the asset library when approved, likely next week, but it can be downloaded from GitHub.
   Known issues: Node constraints are still imported incorrectly because they are not adjusted for rotated bones during retargeting. Newer VRM features, such as VRMA animation, still need support.
-- 🎯 https://github.com/V-Sekai/world-godot and https://github.com/V-Sekai/world-kit are now the new repository of Godot Engine and the world kit.
+- 🎯 <https://github.com/V-Sekai/world-godot> and <https://github.com/V-Sekai/world-kit> are now the new repository of Godot Engine and the world kit.
 
 ## [Unreleased]
 
@@ -29,7 +29,7 @@
   - 🧪 Assist with `Add animation node extension` godot engine patch for animation node gdextensions.
   - 🧪 [Designing Motion Matching as an animation node](https://github.com/GuilhermeGSousa/godot-motion-matching/discussions/52)
 - 🧪 **Godot cpp as C++ module**: Dragos shows us a photo of godot-sandbox as a C++ module.
-  * 🧪 We made a way to compile all `gdextensions` as a C++ module by extending `GDExtensionLoader.` [Ughuuu/gdextension-to-module](https://github.com/Ughuuu/gdextension-to-module)
+  - 🧪 We made a way to compile all `gdextensions` as a C++ module by extending `GDExtensionLoader.` [Ughuuu/gdextension-to-module](https://github.com/Ughuuu/gdextension-to-module)
 - 🧪 Uploaded a new **godot vrm for motion matching web demo**. Now, with debugging gizmos. [View Demo](https://ifiregames.itch.io/godot-motion-matching)
 - 🧪 Found research on **transpiling GDScript to Godot Engine C++** with tailcalls as jumps. [Read More](http://www.emulators.com/docs/nx25_nostradamus.htm) | [ACM1](https://dl.acm.org/doi/10.1145/277650.277719) | [ACM2](https://dl.acm.org/doi/10.1145/1869643.1869651) | [Hacker News Discussion](https://news.ycombinator.com/item?id=18052482)
 - 🎯 1% runtime improvement with lod rendering in Godot Engine [Rewrite index optimization code for maximum efficiency](https://github.com/godotengine/godot/pull/98801)
@@ -61,6 +61,5 @@ This project does not adhere to [Semantic Versioning](https://semver.org/spec/v2
 ## Ask yourself why the fuck aren't released yet?
 
 1. No one wants to work on our game because it's a fork of the godot engine -> we made a godot-sandbox as a gdextension.
-1. I must learn to hyper-scale godot networking -> greater than 25 players. Shared databases in the cloud are not good. Authoritative ownership schemes are ok.   
+1. I must learn to hyper-scale godot networking -> greater than 25 players. Shared databases in the cloud are not good. Authoritative ownership schemes are ok.
 1. We need things to do -> Begin a metro transit hub system that connects the world.
-

@@ -34,7 +34,7 @@ Add basis universal to Godot Engine via glTF
 
 ## References <!-- optional -->
 
-- https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_texture_basisu/README.md
+- <https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_texture_basisu/README.md>
 
 ## Derivative License
 

@@ -10,7 +10,7 @@ The question at hand is determining the size of the dataset needed for training 
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
-The size of the dataset required for training a model effectively depends on the desired type of outputs from the model. 
+The size of the dataset required for training a model effectively depends on the desired type of outputs from the model.
 
 - **Generic Outputs**: If the goal is to have the model generate outputs that it has already seen during training, a smaller dataset is sufficient. In this case, a dataset size in the range of 2,000 to 10,000 would be appropriate.
 
@@ -40,12 +40,12 @@ The size of the dataset required for training a model effectively depends on the
 
 ## Status
 
-Status: Draft 
+Status: Draft
 
 ## Decision Makers
 
 - V-Sekai development team
-- iFire 
+- iFire
 
 ## Tags
 

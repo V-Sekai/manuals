@@ -4,7 +4,7 @@ Moved issues into the tracker.
 
 ## 2022-04-18
 
-Worked with manifold csg library author and was able to remove the boost dependency. https://github.com/elalish/manifold/pull/92
+Worked with manifold csg library author and was able to remove the boost dependency. <https://github.com/elalish/manifold/pull/92>
 
 Also published a first draft on a Godot Engine master branch. See the issue for details.
 
@@ -45,5 +45,5 @@ FBX2GLTF and Blender importers are merged.
 
 iFire
 
-- Made a bug report for Blender exported animation to gltf with @RockyMadio https://github.com/KhronosGroup/glTF-Blender-IO/issues/1613
+- Made a bug report for Blender exported animation to gltf with @RockyMadio <https://github.com/KhronosGroup/glTF-Blender-IO/issues/1613>
   GitHub

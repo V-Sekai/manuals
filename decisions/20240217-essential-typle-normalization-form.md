@@ -68,7 +68,7 @@ To normalize the above table into ETNF, we would decompose it into three separat
 
 In these normalized tables, each tuple is essential and there is no redundancy. The `SupplierName` is not repeated for each shipment from the same supplier, and similarly, the `PartName` is not repeated for each shipment of the same part. This design adheres to the principles of ETNF, enhancing data integrity and consistency.
 
-### Key Characteristics of ETNF:
+### Key Characteristics of ETNF
 
 - **Redundancy Reduction**: ETNF effectively reduces data redundancy by ensuring that all data stored in the database is essential and non-repetitive.
 - **Data Integrity and Consistency**: By minimizing redundancy, ETNF enhances the integrity and consistency of the database, making data more reliable and accurate.

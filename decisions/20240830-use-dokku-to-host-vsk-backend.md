@@ -8,7 +8,7 @@ A shift from Kubernetes to Dokku is proposed to reduce complexity and operating 
 
 Kubernetes provides more overhead than necessary, leading to higher expenses and maintenance challenges.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
+## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
 1. Deploy services using Dokku plugins and minimal containers.
 1. Deploy Uro service for the Elixir application server.
@@ -61,13 +61,13 @@ Status: Accepted
 
 - V-Sekai development team
 - fire
-- dragonhunt02 
+- dragonhunt02
 
 ## What tags does the proposal have?
 
 - V-Sekai
 
-## List further reading references.
+## List further reading references
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai)
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)

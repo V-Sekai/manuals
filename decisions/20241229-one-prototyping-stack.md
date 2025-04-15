@@ -6,7 +6,7 @@ Prototyping is essential for validation and iterating within the V-Sekai develop
 
 Even within a single-stack approach using technologies like Godot and Elixir, over-specialization can hinder prototyping. Developers may gravitate towards their areas of expertise, leading to imbalances and challenges when building features that span both client-side and server-side domains.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
+## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
 This proposal envisions a prototyping ecosystem where Godot is the foundation, integrated with Elixir and Phoenix:
 
@@ -149,12 +149,12 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 - Elixir
 - Phoenix
 
-## List further reading references.
+## List further reading references
 
-1.  [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
-2.  [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
-3.  [Elixir Lang](https://elixir-lang.org/) - Official website for the Elixir programming language.
-4.  [Phoenix Framework](https://www.phoenixframework.org/) - Official website for the Phoenix web framework.
-5.  [BenBot](https://github.com/benbot) - GitHub profile of BenBot, a contributor to the V-Sekai project.
+1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
+2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
+3. [Elixir Lang](https://elixir-lang.org/) - Official website for the Elixir programming language.
+4. [Phoenix Framework](https://www.phoenixframework.org/) - Official website for the Phoenix web framework.
+5. [BenBot](https://github.com/benbot) - GitHub profile of BenBot, a contributor to the V-Sekai project.
 
 AI assistant Aria assisted with this article.

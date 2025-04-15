@@ -10,7 +10,7 @@ DISABLE_STD_FILESYSTEM switch in there.
 
 ## 2022-01-30
 
-Switch proposal website to use https://quarto.org/.
+Switch proposal website to use <https://quarto.org/>.
 
 Updated nomnoml diagrams.
 

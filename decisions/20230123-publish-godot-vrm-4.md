@@ -16,7 +16,7 @@ By publishing we will have reviewed the bugs and decide it is ready to be use.
 
 Submit godot vrm to the godot 4 asset library lyuma
 
-Started because of discussion with https://twitter.com/AlfredBaudisch/status/1586999148171198465?s=20&t=nUHLXskgrxnTbPFN9WzZxQ about mtoon outlines
+Started because of discussion with <https://twitter.com/AlfredBaudisch/status/1586999148171198465?s=20&t=nUHLXskgrxnTbPFN9WzZxQ> about mtoon outlines
 
 ## Positive Consequences <!-- improvement of quality attribute satisfaction, follow-up decisions required -->
 
@@ -26,7 +26,7 @@ We'll prepare for release.
 
 Old bugs might not be fixed.
 
-## Option graveyard:
+## Option graveyard
 
 - Option: The status quo. <!-- List the proposed options no longer open for consideration. -->
 - Rejection Reason: This solves nothing. <!-- List the reasons for the rejection: (the bad traits) -->

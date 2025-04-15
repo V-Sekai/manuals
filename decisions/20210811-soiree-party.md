@@ -26,7 +26,7 @@ Risk to migrate the Sandstorm ecosystem to Kubernetes helm system to match the d
 
 Some udp based proxying methods are known
 
-1. https://github.com/yyyar/gobetween for standalone
+1. <https://github.com/yyyar/gobetween> for standalone
 2. cillium for kubernetes
 3. WebRTC ice, stun, turn
 
@@ -77,12 +77,12 @@ We are investigating how to implement the Soiree Party mode.
 
 ### References
 
-- https://www.cockroachlabs.com/
-- https://github.com/V-Sekai/uro
-- https://docs.sandstorm.io/en/latest/developing/powerbox/
-- https://docs.sandstorm.io/en/latest/vagrant-spk/services/
-- https://github.com/sandstorm-io/sandstorm
-- https://github.com/mrmetaverse/soiree
+- <https://www.cockroachlabs.com/>
+- <https://github.com/V-Sekai/uro>
+- <https://docs.sandstorm.io/en/latest/developing/powerbox/>
+- <https://docs.sandstorm.io/en/latest/vagrant-spk/services/>
+- <https://github.com/sandstorm-io/sandstorm>
+- <https://github.com/mrmetaverse/soiree>
 
 ### Derivative License
 

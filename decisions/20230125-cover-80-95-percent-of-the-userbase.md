@@ -1,4 +1,4 @@
-# Draft: Cover 80% to 95% of the player base.
+# Draft: Cover 80% to 95% of the player base
 
 ### Metadata
 

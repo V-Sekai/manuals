@@ -10,7 +10,7 @@ A few weeks back, I started to get white and blue sparkling pixels on dark scene
 
 [PSA: If you have sparkling pixels recently, there is a fix!](https://www.reddit.com/r/ValveIndex/comments/oxd6xa/psa_if_you_have_sparkling_pixels_recently_there/)
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
+## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
 Enable DisplayPort training mode - compatibility mode A or B (B worked for me).
 
@@ -48,7 +48,7 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 - Displayport
 - Pixel Sparkles
 
-## List further reading references.
+## List further reading references
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.

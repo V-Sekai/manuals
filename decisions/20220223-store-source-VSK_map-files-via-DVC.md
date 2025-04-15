@@ -1,15 +1,15 @@
 # Rejected: Storing raw VSK_map files via DVC to avoid limitations
 
-## Categories:
+## Categories
 
 - pipeline
 - V-Sekai
 
-## Status:
+## Status
 
 - rejected <!-- draft | rejected | accepted | deprecated | superseded by -->
 
-## Deciders:
+## Deciders
 
 - V-Sekai
 - ifire
@@ -53,11 +53,11 @@ S3 Compatible has multiple implementations. Intent on using digital ocean spaces
 
 ### Installing
 
-- https://dvc.org/doc/install/windows
-  - https://github.com/iterative/dvc/releases/download/2.9.5/dvc-2.9.5.exe
-- https://dvc.org/doc/install/linux
+- <https://dvc.org/doc/install/windows>
+  - <https://github.com/iterative/dvc/releases/download/2.9.5/dvc-2.9.5.exe>
+- <https://dvc.org/doc/install/linux>
 
-### Test using chibifire dvc bucket and the avatar wellness repository.
+### Test using chibifire dvc bucket and the avatar wellness repository
 
 ```bash
 git clone https://github.com/fire/avatar-wellness.git
@@ -91,7 +91,7 @@ Discussed with Lyuma how it is possible to make a V-Sekai alternative organizati
 - Rejection Reason: The last time I checked it was 50 USD per 50 gigabytes.
 
 - Option: Use Gitlab git-lfs
-- Rejection Reason: There is slightly larger limit on https://gitlab.com git-lfs but gitlab.com does not scale with usage.
+- Rejection Reason: There is slightly larger limit on <https://gitlab.com> git-lfs but gitlab.com does not scale with usage.
 
 - Option: Use Gitlab.com
 - Rejection Reason: Gitlab.com commrcial is expensive

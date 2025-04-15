@@ -41,7 +41,7 @@ This is an attempt to use off the shelf tooling.
 
 ## References <!-- optional -->
 
-- https://gravitational.com/
+- <https://gravitational.com/>
 
 ## Derivative License
 

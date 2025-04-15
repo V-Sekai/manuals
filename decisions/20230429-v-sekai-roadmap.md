@@ -20,32 +20,32 @@ The roadmap presented here is divided into three stages: short-term, mid-term, a
 graph LR
 
   subgraph Short Term
-	A[Avatar Loading] --> B1[Simple Demo with VRM Avatar]
-	A --> B2[VRM & Unity Import - Maintain and Improve]
-	A --> B3[Network Code Reconciliation - Godot Network System]
-	A --> B4[Jitter in Network Interpolation]
-	A --> B5[Implement jitter and playback buffer for Voice]
+ A[Avatar Loading] --> B1[Simple Demo with VRM Avatar]
+ A --> B2[VRM & Unity Import - Maintain and Improve]
+ A --> B3[Network Code Reconciliation - Godot Network System]
+ A --> B4[Jitter in Network Interpolation]
+ A --> B5[Implement jitter and playback buffer for Voice]
   end
 
   subgraph Mid Term
-	B4 --> C[Network]
-	C --> D1[Entity System & Background Loading]
-	C --> D2[Background Loading - Re-evaluate with Multithreaded Scene Tree]
-	C --> D3[UI Work - Fix VR UI & Improve Interaction]
-	C --> D4[Lightweight Relay Instance Server - Single Process, Multiple Instances]
+ B4 --> C[Network]
+ C --> D1[Entity System & Background Loading]
+ C --> D2[Background Loading - Re-evaluate with Multithreaded Scene Tree]
+ C --> D3[UI Work - Fix VR UI & Improve Interaction]
+ C --> D4[Lightweight Relay Instance Server - Single Process, Multiple Instances]
   end
 
   subgraph Long Term
-	D4 --> E[Scalable Instances]
-	E --> F1[Network Topology Implementation]
-	E --> F2[Streamlined Content Creation - Better Workflow]
-	E --> F3[Zero Stutter when Loading Content - Address Bottlenecks]
-	E --> F4[Social and Upload Features - Enhance User Experience]
-	E --> F5[Video and Audio Work - Streaming Integration]
-	E --> F6[Scripting Integrations - WASM-based Scripts]
-	E --> F7[UX Work for Non-Technical Users - Accessible UI]
-	E --> F8[Loading VRM Avatars - Streamlined Process]
-	E --> F9[In-Editor Content Building UX - Non-Technical Users]
+ D4 --> E[Scalable Instances]
+ E --> F1[Network Topology Implementation]
+ E --> F2[Streamlined Content Creation - Better Workflow]
+ E --> F3[Zero Stutter when Loading Content - Address Bottlenecks]
+ E --> F4[Social and Upload Features - Enhance User Experience]
+ E --> F5[Video and Audio Work - Streaming Integration]
+ E --> F6[Scripting Integrations - WASM-based Scripts]
+ E --> F7[UX Work for Non-Technical Users - Accessible UI]
+ E --> F8[Loading VRM Avatars - Streamlined Process]
+ E --> F9[In-Editor Content Building UX - Non-Technical Users]
   end
 ```
 

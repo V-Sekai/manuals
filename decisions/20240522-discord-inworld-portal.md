@@ -30,7 +30,7 @@ It should be a standalone project based on Groups, but not core. The WebRTC depe
 
 ## References <!-- optional -->
 
-- https://discord.com/
+- <https://discord.com/>
 
 ## Derivative License
 

@@ -18,7 +18,7 @@ This proposal suggests implementing a dedicated UDIM importer and integration wi
 >
 > The tool then writes the result to another FBX file. If you import that FBX into a 3D engine, it will have extra materials from the original, depending on how many UDIM tiles were used. You can then hook up materials to the correct UDIM texture tiles, one per texture, and use the model like normal.
 >
-> https://github.com/V-Sekai/fbx-udim-unpack?tab=readme-ov-file#what-this-tool-does from https://github.com/sinbad
+> <https://github.com/V-Sekai/fbx-udim-unpack?tab=readme-ov-file#what-this-tool-does> from <https://github.com/sinbad>
 
 ## The Benefits
 

@@ -40,7 +40,7 @@ We depend on the player load performance.
 
 ## References <!-- optional -->
 
-- https://github.com/V-Sekai/
+- <https://github.com/V-Sekai/>
 
 ## Derivative License
 

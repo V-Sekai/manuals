@@ -91,4 +91,4 @@ Packaging the Godot Engine for pkgin as a core task our team handles ensures qua
 ### References
 
 - [V-Sekai](https://v-sekai.org/)
-- https://pkgsrc.joyent.com/
+- <https://pkgsrc.joyent.com/>

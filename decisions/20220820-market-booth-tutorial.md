@@ -1,4 +1,4 @@
-# Draft: Make a market booth creation tutorial.
+# Draft: Make a market booth creation tutorial
 
 ### Context and Problem Statement
 
@@ -49,7 +49,7 @@ We are doing this, so we can record how we did it.
 ### References
 
 - [V-Sekai](https://v-sekai.org/)
-- https://www.youtube.com/watch?v=LGZWjyeUPHU
+- <https://www.youtube.com/watch?v=LGZWjyeUPHU>
 
 ### License of the contribution
 

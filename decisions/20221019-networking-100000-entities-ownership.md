@@ -67,7 +67,7 @@ Napkin math:
 
 We may be overcomplicating a problem that doesn't need to be solved yet. Pure interest management may be sufficient, and we do not currently have this many users.
 
-## Option graveyard:
+## Option graveyard
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
@@ -79,7 +79,7 @@ Source:
 
 Discord VC with Malek and iFire
 
-Discord channel forum-v-sekai "Networking with librg" thread: https://discord.com/channels/471446618156040210/1031379649776848900/1032401929587929208
+Discord channel forum-v-sekai "Networking with librg" thread: <https://discord.com/channels/471446618156040210/1031379649776848900/1032401929587929208>
 
 ## License of the contribution
 

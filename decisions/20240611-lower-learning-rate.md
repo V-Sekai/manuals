@@ -1,4 +1,4 @@
-# Draft: Switch learning rate to be lower.
+# Draft: Switch learning rate to be lower
 
 ## The Context
 

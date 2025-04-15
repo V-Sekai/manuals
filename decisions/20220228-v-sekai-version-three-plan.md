@@ -18,7 +18,7 @@ Proposed mission and a list of tasks.
 
 - Godot Engine pull requests.
 
-### To build a tech stack and service for interactive multiplayer VR games.
+### To build a tech stack and service for interactive multiplayer VR games
 
 - Improve making and using avatar and map content enhancement
 - Able to have our group of people join and communicate (godot speech) enhancement

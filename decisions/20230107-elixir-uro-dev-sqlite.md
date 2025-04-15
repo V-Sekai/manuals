@@ -1,6 +1,6 @@
 # Accepted: How to start a EXPERIMENTAL environment for sqlite and elixir?
 
-### Describe the status of the issue.
+### Describe the status of the issue
 
 - [x] proposed
 - [ ] draft
@@ -9,11 +9,11 @@
 - [ ] deprecated
 - [ ] superseded by
 
-### List the deciders of the issue.
+### List the deciders of the issue
 
 V-Sekai,lyuma,fire,
 
-### Describe the tags of the issue.
+### Describe the tags of the issue
 
 V-Sekai,
 
@@ -33,7 +33,7 @@ Compile uro. You will need Elixir installed.
 
 I recommend getting the latest, but for these steps, I am using Elixir v1.14.4.
 
-Download Uro from https://github.com/V-Sekai/uro
+Download Uro from <https://github.com/V-Sekai/uro>
 
 We are using the dev environment. It is the default, but you can also set `MIX_ENV=dev`.
 
@@ -63,7 +63,7 @@ mix ecto.migrate
 iex.bat --werl -S mix phx.server
 ```
 
-This will start uro at http://localhost:4000/
+This will start uro at <http://localhost:4000/>
 
 Create a user in the website register user page.
 
@@ -79,9 +79,9 @@ iex.bat --werl -S mix phx.server
 
 The docker image docker-uro is compiled using GoCD, so after pushing, check that the pipeline ran.
 
-Then, go to DockerHub at https://hub.docker.com/r/groupsinfra/uro/tags and check the most recently pushed tag (it will not be the latest one, but instead a specific version).
+Then, go to DockerHub at <https://hub.docker.com/r/groupsinfra/uro/tags> and check the most recently pushed tag (it will not be the latest one, but instead a specific version).
 
-Now, edit the flux config at https://github.com/V-Sekai/flux-config/blob/flux2/workloads/uro-deployment.yaml and replace the uro image version with the tag from above.
+Now, edit the flux config at <https://github.com/V-Sekai/flux-config/blob/flux2/workloads/uro-deployment.yaml> and replace the uro image version with the tag from above.
 
 Check that uro-deployment was updated.
 
@@ -109,7 +109,7 @@ We maintain the website.
 
 - [V-Sekai](https://v-sekai.org/)
 - [Uro](https://github.com/V-Sekai/uro)
-- https://github.com/V-Sekai/uro/issues/52
+- <https://github.com/V-Sekai/uro/issues/52>
 
 ### License of the contribution
 

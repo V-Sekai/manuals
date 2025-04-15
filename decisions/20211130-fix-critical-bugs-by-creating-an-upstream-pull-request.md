@@ -28,10 +28,10 @@ merge groups-web-4.x remotes/v-sekai-godot/ninja-ccache
 
 Need to check every line in the list using a comparison link:
 
-- https://github.com/godotengine/godot/compare/master...lyuma:gltf_shapes_8bones
-- https://github.com/godotengine/godot/compare/master...v-sekai-godot:ninja-ccache
+- <https://github.com/godotengine/godot/compare/master...lyuma:gltf_shapes_8bones>
+- <https://github.com/godotengine/godot/compare/master...v-sekai-godot:ninja-ccache>
 
-Make a corresponding pull request on https://github.com/godotengine/godot/pulls if there isn't one.
+Make a corresponding pull request on <https://github.com/godotengine/godot/pulls> if there isn't one.
 
 If not possible, or non-upstreamable (for example, V-Sekai related), leave a comment in the `.gitassembly` why one cannot create a Godot Engine organization pull request.
 
@@ -59,9 +59,9 @@ Godot Engine code is core.
 
 ## References <!-- optional -->
 
-- https://github.com/godotengine/godot
-- https://github.com/v-sekai/godot
-- https://www.thregr.org/~wavexx/software/git-assembler/
+- <https://github.com/godotengine/godot>
+- <https://github.com/v-sekai/godot>
+- <https://www.thregr.org/~wavexx/software/git-assembler/>
 
 ## Derivative License
 

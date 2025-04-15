@@ -31,7 +31,7 @@ Remove required fields. Make them easier to use.
 
 - More work on the devs to catalog
 
-## Option graveyard:
+## Option graveyard
 
 - Option: The status quo. <!-- List the proposed options no longer open for consideration. -->
 - Rejection Reason: This solves nothing. <!-- List the reasons for the rejection: (the bad traits) -->

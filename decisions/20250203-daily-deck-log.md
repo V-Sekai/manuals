@@ -16,6 +16,7 @@ The V-Sekai team requires a structured, real-time method to track daily project 
 
 1. **Daily Interactive Prompting**: A bot (e.g., Discord/GitHub bot) prompts contributors for updates via a form.
 2. **Structured Data Collection**:
+
    ```python
    def collect_deck_log():
        date = input("Date (YYYY-MM-DD): ")
@@ -24,6 +25,7 @@ The V-Sekai team requires a structured, real-time method to track daily project 
        # ... additional fields
        return format_markdown(date, active_contributors, blockers)
    ```
+
 3. **Automated Aggregation**: Data is compiled into a Markdown log (example below) and posted to a project channel.
 4. **Decision Tracking**: Highlighted decisions/blockers trigger alerts to relevant roles (e.g., engineering lead).
 
@@ -74,7 +76,7 @@ Yes. As an open-source project, maintaining transparent, community-friendly proc
 - `V-Sekai`
 - `Project Management`
 
-## List further reading references.
+## List further reading references
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.

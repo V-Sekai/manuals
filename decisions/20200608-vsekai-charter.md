@@ -26,7 +26,7 @@ Check all that apply.
 
 Optional Video
 
-~~https://www.youtube.com/watch?v=j2PTDXG1Hc4~~
+~~<https://www.youtube.com/watch?v=j2PTDXG1Hc4>~~
 
 Why does your idea matter: How will it help deliver on the full promise of the internet, or make the internet more awesome? \*
 The core principles of the Internet are openness and communication. We see VR as the basis for a new frontier of communication products, Social VR platforms. Hastened by the closure and general failings of the once-open source High Fidelity platform, we are now in desperate need of open source alternatives to the growing number of closed source VR-compatible walled gardens in development.
@@ -75,9 +75,9 @@ Not at this time
 
 We have created a Slack Channel and GitHub repository and issues list where you can post your project and look for teammates. You can also pivot or abandon your project as you connect with teammates:
 
-GitHub: ~~https://github.com/fix-the-internet/spring-mvp-lab/issues~~
+GitHub: ~~<https://github.com/fix-the-internet/spring-mvp-lab/issues>~~
 
-Slack: ~~https://join.slack.com/t/mozillabuilders/shared_invite/zt-czo6bp37-R9I5mKJVYPtCkTQFu1NLWw~~
+Slack: ~~<https://join.slack.com/t/mozillabuilders/shared_invite/zt-czo6bp37-R9I5mKJVYPtCkTQFu1NLWw>~~
 
 Describe your work plan.
 
@@ -129,7 +129,7 @@ We anticipate contacts from our immediate VR communities who have already shown 
 
 At a minimum, we will provide the real time presence features available in other VR platforms: appearing in a room of people who you can hear and to break past 100 users, we will need to provide experiences which are not easily accessible on other platforms such as VRChat.
 
-To move beyond thousands of users: being a neutral, open platform to host events: for example, Virtual Market had on the order of a million visitors ( https://www.youtube.com/watch?v=lLX7UNKV1fk ; https://v-market.work/ ), was hosted just as a collection of VRChat world instances, and still had to deal with several glitches as a result of instabilities of the underlying platform.
+To move beyond thousands of users: being a neutral, open platform to host events: for example, Virtual Market had on the order of a million visitors ( <https://www.youtube.com/watch?v=lLX7UNKV1fk> ; <https://v-market.work/> ), was hosted just as a collection of VRChat world instances, and still had to deal with several glitches as a result of instabilities of the underlying platform.
 
 Another source of usage will be business meetings, and anything where privacy and self-hosting is a concern. Making sure that it is lightweight and remains very easy to compile will allow novel usages and customizations of the platform.
 
@@ -151,7 +151,7 @@ Godot Engine, k3s, Elixir, OAuth, CockroachDB, nginx, Fedora, CentOS 8, Digital 
 
 - Link to simple sketches (can be as simple as paper and pencil) of your product or idea
 
-~~https://cdn.discordapp.com/attachments/659137056991346708/718332831687901224/vsekai-sketch.png~~
+~~<https://cdn.discordapp.com/attachments/659137056991346708/718332831687901224/vsekai-sketch.png>~~
 
 Links to mockups, prototypes, pitches.
 
@@ -193,7 +193,7 @@ iFire is heavily engaged with the wider open source community surrounding Godot 
 
 How did you hear about the MVP Lab?
 
-We heard about it from Hacker News: https://news.ycombinator.com/item?id=23194178
+We heard about it from Hacker News: <https://news.ycombinator.com/item?id=23194178>
 
 Anything else we should know?
 

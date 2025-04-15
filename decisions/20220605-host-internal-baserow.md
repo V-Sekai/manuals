@@ -1,6 +1,6 @@
-# Draft: Host a baserow application for internal use.
+# Draft: Host a baserow application for internal use
 
-### Describe the status of the issue.
+### Describe the status of the issue
 
 - [x] proposed
 - [x] draft
@@ -9,11 +9,11 @@
 - [ ] deprecated
 - [ ] superseded by
 
-### List the deciders of the issue.
+### List the deciders of the issue
 
 V-Sekai,fire
 
-### Describe the tags of the issue.
+### Describe the tags of the issue
 
 V-Sekai,
 
@@ -25,7 +25,7 @@ I want to store adjacent information related to V-Sekai in a database.
 
 Add a digital ocean apps config.
 
-https://www.digitalocean.com/products/app-platform
+<https://www.digitalocean.com/products/app-platform>
 
 Features:
 

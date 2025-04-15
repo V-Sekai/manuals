@@ -44,8 +44,8 @@ Make a gocd Discord notifier
 
 ## References <!-- optional -->
 
-- https://docs.gocd.org/current/configuration/dev_notifications.html
-- https://github.com/gocd-contrib/notification-skeleton-plugin
+- <https://docs.gocd.org/current/configuration/dev_notifications.html>
+- <https://github.com/gocd-contrib/notification-skeleton-plugin>
 
 ## Derivative License
 

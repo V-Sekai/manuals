@@ -44,4 +44,4 @@ We manage cicd.
 ### References
 
 - [V-Sekai](https://v-sekai.org/)
-- https://martinfowler.com/bliki/PendingHead.html
+- <https://martinfowler.com/bliki/PendingHead.html>

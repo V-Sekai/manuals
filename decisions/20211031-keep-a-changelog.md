@@ -8,7 +8,7 @@ Humans need to know what has changed
 
 ### Describe the feature / enhancement and how it helps to overcome the problem or limitation
 
-Copied from https://keepachangelog.com.
+Copied from <https://keepachangelog.com>.
 
 > What is a changelog?
 
@@ -24,7 +24,7 @@ Copied from https://keepachangelog.com.
 
 Keep a changelog.
 
-1. Use the https://github.com/V-Sekai/v-sekai-proposals #repository as a placeholder.
+1. Use the <https://github.com/V-Sekai/v-sekai-proposals> #repository as a placeholder.
 1. Delay migrations to main project #repository to a later date.
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
@@ -45,7 +45,7 @@ We are the best to know what changed.
 
 ### References
 
-- https://keepachangelog.com/en/1.0.0/
+- <https://keepachangelog.com/en/1.0.0/>
 
 ### Derivative License
 

@@ -12,7 +12,7 @@ We want to provide pdf reading without implementing a pdf reader.
 
 1. Convert pdf into a series of svgs (raster + vector)
 1. Put svgs in a folder
-1. Clean with https://github.com/RazrFalcon/svgcleaner
+1. Clean with <https://github.com/RazrFalcon/svgcleaner>
 1. Use godot engine 4's thorvg
 
 ### Positive Consequences

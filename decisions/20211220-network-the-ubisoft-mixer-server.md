@@ -45,7 +45,7 @@ I know how to do this and no one else is doing it.
 
 ## References <!-- optional and numbers of links can vary -->
 
-- https://github.com/ubisoft/mixer/issues
+- <https://github.com/ubisoft/mixer/issues>
 
 ## Derivative License
 

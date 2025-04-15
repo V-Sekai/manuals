@@ -57,5 +57,5 @@ It is unlikely that these enhancements can be easily worked around with a few li
 ## References
 
 - [V-Sekai](https://v-sekai.org/)
-- https://github.com/vrm-c/vrm-specification
-- https://github.com/vrm-c/vrm-specification/blob/master/specification/VRMC_vrm-1.0/firstPerson.md#meshannotationauto-algorithm
+- <https://github.com/vrm-c/vrm-specification>
+- <https://github.com/vrm-c/vrm-specification/blob/master/specification/VRMC_vrm-1.0/firstPerson.md#meshannotationauto-algorithm>

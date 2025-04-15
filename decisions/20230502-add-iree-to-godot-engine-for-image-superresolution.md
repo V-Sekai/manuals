@@ -50,8 +50,8 @@ In summary, integrating the IREE-based image superresolution feature into V-Seka
 
 ### References
 
-- V-Sekai: https://v-sekai.org/
-- IREE (Intermediate Representation Execution Environment): https://github.com/openxla/iree
-- Godot Engine: https://godotengine.org
-- Vulkan Backend: https://www.khronos.org/vulkan/
-- IREE.gd: https://github.com/RechieKho/IREE.gd
+- V-Sekai: <https://v-sekai.org/>
+- IREE (Intermediate Representation Execution Environment): <https://github.com/openxla/iree>
+- Godot Engine: <https://godotengine.org>
+- Vulkan Backend: <https://www.khronos.org/vulkan/>
+- IREE.gd: <https://github.com/RechieKho/IREE.gd>

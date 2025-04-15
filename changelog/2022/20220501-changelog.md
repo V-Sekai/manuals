@@ -2,7 +2,7 @@
 
 ## 2022-05-29
 
-https://github.com/V-Sekai/godot-seurat is dependent on being able to fetch 16 bit float buffers https://github.com/godotengine/godot/issues/54122#issuecomment-1140414946.
+<https://github.com/V-Sekai/godot-seurat> is dependent on being able to fetch 16 bit float buffers <https://github.com/godotengine/godot/issues/54122#issuecomment-1140414946>.
 
 ## 2022-05-29
 

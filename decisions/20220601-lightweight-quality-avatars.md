@@ -1,6 +1,6 @@
 # Draft: Lightweight quality avatars
 
-### Describe the status of the issue.
+### Describe the status of the issue
 
 - [x] proposed
 - [x] draft
@@ -9,11 +9,11 @@
 - [ ] deprecated
 - [ ] superseded by
 
-### List the deciders of the issue.
+### List the deciders of the issue
 
 V-Sekai,fire,Yin Chien YEAP,
 
-### Describe the tags of the issue.
+### Describe the tags of the issue
 
 V-Sekai,avatars,
 
@@ -45,7 +45,7 @@ Can also describe a quad subdivision workflow.
 1. quad based subdivision of detail `https://github.com/godotengine/godot-proposals/issues/784`
 2. procedural materials
 3. bake blendshapes to skeletons
-4. Fire is researching CSG based extraction combined with sliders. https://kacperkan.github.io/ucsgnet/ https://github.com/eliemichel/DagAmendment
+4. Fire is researching CSG based extraction combined with sliders. <https://kacperkan.github.io/ucsgnet/> <https://github.com/eliemichel/DagAmendment>
 
 ### Positive Consequences
 

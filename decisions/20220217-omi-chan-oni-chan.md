@@ -20,7 +20,7 @@ Use my know-how to rig a #256fes character.
 
 Given mesh model that is unrigged and #256FES
 
-### Noted problems.
+### Noted problems
 
 1. Forearm is out of proportion
 2. Head is out of proportion
@@ -28,21 +28,21 @@ Given mesh model that is unrigged and #256FES
 
 ### Creation notes
 
-- https://github.com/saturday06/VRM_Addon_for_Blender/releases/tag/2_1_9
+- <https://github.com/saturday06/VRM_Addon_for_Blender/releases/tag/2_1_9>
 - Create a vrm default armature template in Blender 3.0.1
 - Scale equally the entire mesh to be 1.7m (female Caucasian female on the tall statistical range)
 - Enable equal scaling of bones button
 - Scale the arms and the neck/head
-- Use autorig https://blendermarket.com/products/voxel-heat-diffuse-skinning
+- Use autorig <https://blendermarket.com/products/voxel-heat-diffuse-skinning>
 - Use xatlas to generate uv
-- https://github.com/V-Sekai/V-Sekai-Blender-tools/tree/main/addons/blender_xatlas
-- https://github.com/V-Sekai/V-Sekai-Blender-tools/tree/main/addons/Principled-Baker-master to bake uvs
-- https://github.com/V-Sekai/V-Sekai-Blender-tools/tree/main/addons/corrective_smooth_baker
+- <https://github.com/V-Sekai/V-Sekai-Blender-tools/tree/main/addons/blender_xatlas>
+- <https://github.com/V-Sekai/V-Sekai-Blender-tools/tree/main/addons/Principled-Baker-master> to bake uvs
+- <https://github.com/V-Sekai/V-Sekai-Blender-tools/tree/main/addons/corrective_smooth_baker>
 - Export to vrm
 - Add VRM mtoon material
 - Make VRM mtoon material use black as shaded color.
 - Test in 3tene and cluster.mu
-- https://3d.kalidoface.com/ (first photo)
+- <https://3d.kalidoface.com/> (first photo)
 
 ## Positive Consequences <!-- optional -->
 

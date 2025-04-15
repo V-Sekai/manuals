@@ -1,4 +1,4 @@
-# Draft: Create a standard procedure from adding spring bones to VRM models.
+# Draft: Create a standard procedure from adding spring bones to VRM models
 
 ## Context and Problem Statement
 
@@ -37,9 +37,9 @@ I don't know and it's in my area so I need to know.
 ## References
 
 1. Lyuma has an upside down spring bone arrangement to avoid flipping.
-1. https://gist.github.com/emilianavt/51d8399987d67544fdebfe2ebd9a5149
-1. https://sator-imaging.booth.pm/items/2254383
-1. https://github.com/yuzu-unity/HumanoidCollider/raw/master/HumanoidCollider.unitypackage
+1. <https://gist.github.com/emilianavt/51d8399987d67544fdebfe2ebd9a5149>
+1. <https://sator-imaging.booth.pm/items/2254383>
+1. <https://github.com/yuzu-unity/HumanoidCollider/raw/master/HumanoidCollider.unitypackage>
 
 ## Derivative License
 

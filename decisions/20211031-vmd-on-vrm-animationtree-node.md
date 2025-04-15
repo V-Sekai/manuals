@@ -38,9 +38,9 @@ We currently know how to do this, if we don't who else will?
 
 ### References
 
-- https://github.com/EIRTeam/VMDMotionGD
-- https://github.com/V-Sekai/godot-vrm
-- https://en.wikipedia.org/wiki/MikuMikuDance
+- <https://github.com/EIRTeam/VMDMotionGD>
+- <https://github.com/V-Sekai/godot-vrm>
+- <https://en.wikipedia.org/wiki/MikuMikuDance>
 
 ### Derivative License
 

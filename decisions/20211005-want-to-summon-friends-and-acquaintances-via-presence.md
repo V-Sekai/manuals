@@ -1,4 +1,4 @@
-# Draft: Summon #friend and acquaintances via presence to the current world.
+# Draft: Summon #friend and acquaintances via presence to the current world
 
 ### Context and Problem Statement
 
@@ -48,9 +48,9 @@ Can be done as a group.
 
 ### References
 
-- https://github.com/libp2p/cpp-libp2p
-- https://github.com/fire/godot-p2p/
-- https://did-ipid.github.io/ipid-did-method/
+- <https://github.com/libp2p/cpp-libp2p>
+- <https://github.com/fire/godot-p2p/>
+- <https://did-ipid.github.io/ipid-did-method/>
 
 ### Derivative License
 

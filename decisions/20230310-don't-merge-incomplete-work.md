@@ -1,4 +1,4 @@
-# Draft: Don't merge incomplete work.
+# Draft: Don't merge incomplete work
 
 ### V-Sekai version
 

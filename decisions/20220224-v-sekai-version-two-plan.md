@@ -18,11 +18,11 @@ Proposed mission and a list of tasks.
 
 - Godot Engine pull requests.
 
-### To build a tech stack and service for interactive multiplayer VR games.
+### To build a tech stack and service for interactive multiplayer VR games
 
 1. One gitlab repo with source assets? (sky celebration and sponza).
 
-- The ability to upload maps and avatars standalone via a SDK (set of submodules?) https://github.com/V-Sekai/vsk_sdk.
+- The ability to upload maps and avatars standalone via a SDK (set of submodules?) <https://github.com/V-Sekai/vsk_sdk>.
   - Being able to enter a vsk map ∀ maps (mvp = 1 map).
   - Enter a vsk map with an entity in it (upload sky celebration OR upload sponza with one beachball).
 - VSK_map source asset repositories
@@ -38,7 +38,7 @@ Proposed mission and a list of tasks.
   - Don't save .scn assets in git.
     - no GLB.
     - blend files ~10MB ok. > 100MB let's either use GitLab LFS or something else.
-    - Evaluate https://dvc.org/
+    - Evaluate <https://dvc.org/>
 
 2. Being able to have our group of people join and communicate. (godot speech).
 

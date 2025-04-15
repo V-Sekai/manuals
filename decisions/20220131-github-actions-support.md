@@ -1,4 +1,4 @@
-# Accepted: To have an alternative CICD use Github Actions.
+# Accepted: To have an alternative CICD use Github Actions
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
@@ -31,7 +31,7 @@ We will generate github actions templates using the same jsonnet we use for GoCD
 - Maintaining more scripts requires our developer time
 - More codepaths means more QA or pieces that can break.
 
-## Option graveyard:
+## Option graveyard
 
 - Option: Keep the status quo, which is using GoCD or building manually on the command line.
 - Rejection Reason: Building manually on the command line is slow on Windows and not reproducible;
@@ -47,8 +47,8 @@ We want to maintain it to encourage developers and as the publisher of the platf
 
 ## References <!-- optional and numbers of links can vary -->
 
-- https://jsonnet.org/
-- https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions
+- <https://jsonnet.org/>
+- <https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions>
 
 ## Derivative License
 

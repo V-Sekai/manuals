@@ -14,14 +14,14 @@ There many tools out there that are helpful for world and character creation.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-1. An ESRGAN model made for upscaling normal maps. https://github.com/RunDevelopment/ESRGAN-models/tree/main/normals
-2. A Blender vrm addon. https://vrm-addon-for-blender.info/en/
-3. The easiest way to install and use Stable Diffusion https://github.com/cmdr2/stable-diffusion-ui#installation
-4. Image prompt interrogator https://huggingface.co/spaces/pharma/CLIP-Interrogator/tree/main
-5. Repository for artwork and community for filming https://open3dlab.com/
-6. Image Upscaling GUI based on ESRGAN https://github.com/n00mkrad/cupscale
-7. Discover trending open-source projects and their alternatives https://www.libhunt.com/
-8. Hugging Face arrives to the Elixir community https://huggingface.co/blog/elixir-bumblebee
+1. An ESRGAN model made for upscaling normal maps. <https://github.com/RunDevelopment/ESRGAN-models/tree/main/normals>
+2. A Blender vrm addon. <https://vrm-addon-for-blender.info/en/>
+3. The easiest way to install and use Stable Diffusion <https://github.com/cmdr2/stable-diffusion-ui#installation>
+4. Image prompt interrogator <https://huggingface.co/spaces/pharma/CLIP-Interrogator/tree/main>
+5. Repository for artwork and community for filming <https://open3dlab.com/>
+6. Image Upscaling GUI based on ESRGAN <https://github.com/n00mkrad/cupscale>
+7. Discover trending open-source projects and their alternatives <https://www.libhunt.com/>
+8. Hugging Face arrives to the Elixir community <https://huggingface.co/blog/elixir-bumblebee>
 
 ## Positive Consequences <!-- improvement of quality attribute satisfaction, follow-up decisions required -->
 
@@ -31,7 +31,7 @@ A place to put related tools is helpful.
 
 A small amount of space and time is used.
 
-## Option graveyard:
+## Option graveyard
 
 - Option: The status quo. <!-- List the proposed options no longer open for consideration. -->
 - Rejection Reason: This solves nothing. <!-- List the reasons for the rejection: (the bad traits) -->

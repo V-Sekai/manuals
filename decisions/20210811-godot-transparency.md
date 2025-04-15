@@ -40,11 +40,11 @@ Reduz isn't interested in OIT.
 
 ### References
 
-- https://raw.githubusercontent.com/GPUOpen-Effects/TressFX/master/doc/TressFX4xDeveloperGuide.pdf
-- https://github.com/GPUOpen-Effects/TressFX/blob/master/src/Shaders/TressFXPPLL.hlsl
-- https://github.com/GPUOpen-Effects/TressFX/blob/master/src/Shaders/TressFXShortCut.hlsl
-- https://blog.icare3d.org/2010/07/opengl-40-abuffer-v20-linked-lists-of.html
-- https://github.com/SaschaWillems/Vulkan/blob/master/examples/oit/oit.cpp
+- <https://raw.githubusercontent.com/GPUOpen-Effects/TressFX/master/doc/TressFX4xDeveloperGuide.pdf>
+- <https://github.com/GPUOpen-Effects/TressFX/blob/master/src/Shaders/TressFXPPLL.hlsl>
+- <https://github.com/GPUOpen-Effects/TressFX/blob/master/src/Shaders/TressFXShortCut.hlsl>
+- <https://blog.icare3d.org/2010/07/opengl-40-abuffer-v20-linked-lists-of.html>
+- <https://github.com/SaschaWillems/Vulkan/blob/master/examples/oit/oit.cpp>
 -
 
 ### Derivative License

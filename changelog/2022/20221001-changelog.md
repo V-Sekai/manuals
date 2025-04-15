@@ -16,24 +16,24 @@ Note that I was forced to rebase to the latest build which includes the new buil
 most of the code I changed is in the private gitlab repo. once things stabilize and we get the build system up and running again, next step is to publish the remainder of the code on github
 
 > groups-4.x (and staging) were updated to latest. I attempted to update GoCD, but it's a bit of a yolo merge, since a few pieces all had to be updated at once due to new scons target=editor argument
-> we need to follow https://ci.v-sekai.cloud/ (log in as guest) and test the release builds
+> we need to follow <https://ci.v-sekai.cloud/> (log in as guest) and test the release builds
 
 > export builds are being created again with the new scons naming scheme. They seem to work on linux (steam deck) at least. Don't have access to a windows machine right now
 
 ## 2022-10-06
 
-https://github.com/v-sekai/v-sekai-game is released as fully opensource.
+<https://github.com/v-sekai/v-sekai-game> is released as fully opensource.
 
 ## 2022-10-10
 
 > iFire (he, him) — Today at 16:33
-> https://github.com/V-Sekai/v-sekai-game/pull/5 added caching to reduce doing nothing builds from 2 hours to 10 minutes ish
+> <https://github.com/V-Sekai/v-sekai-game/pull/5> added caching to reduce doing nothing builds from 2 hours to 10 minutes ish
 
 New contributors this week:
 
 @Malek Awesome for being around 🐱. Contributed to designs and cheering us when we succeed. Fixed the issue with the ci/cd with the recurse submodules. Too much to list!
 
-@gamethecupdog Helped us figured out some problems with AMD vr and V-sekai. We debugged the AMD VR launch issues and talked about fixing the vignette settings in the ui https://github.com/V-Sekai/V-Sekai.github.io/issues/378
+@gamethecupdog Helped us figured out some problems with AMD vr and V-sekai. We debugged the AMD VR launch issues and talked about fixing the vignette settings in the ui <https://github.com/V-Sekai/V-Sekai.github.io/issues/378>
 
 @meowses For supporting us and watching our presentation.
 
@@ -50,13 +50,13 @@ Lyuma — Today at 13:04
 makes sense. at some point we can add a mirror, and we need a map aligned at the right place, or a script added to maps which define where the ""mirrors"" are (there can be more than one since it's just duplicating meshes which is cool)
 
 iFire (he, him) — Today at 14:47
-I added https://github.com/TokageItLab/realtime_retarget to V-Sekai's godot engine c++ modules. Please test, @トカゲ is looking for feedback.
+I added <https://github.com/TokageItLab/realtime_retarget> to V-Sekai's godot engine c++ modules. Please test, @トカゲ is looking for feedback.
 
-tefusion's gdextension addon https://github.com/tefusion/godot-subdiv is now published. https://godotengine.org/asset-library/asset/1488
+tefusion's gdextension addon <https://github.com/tefusion/godot-subdiv> is now published. <https://godotengine.org/asset-library/asset/1488>
 
 iFire reorganized the development documentation site.
 
-iFire is working on a bullet train kinetic novel https://github.com/V-Sekai-fire/INK_bullet_train world.
+iFire is working on a bullet train kinetic novel <https://github.com/V-Sekai-fire/INK_bullet_train> world.
 
 ## 2022-10-17
 
@@ -85,7 +85,7 @@ Meeting between betalars, fire, lyuma, jeana and others about usability in 3d ga
 
 ## 2022-10-22 Humble contributions and places to start? ^^
 
-### Premise: 
+### Premise:
 
 - betalars is working on making Chaos Computer Club more accessible.
 - There has been development to create an online-platform for [Chaos Communication Congress](https://en.wikipedia.org/wiki/Chaos_Communication_Congress) using Godot
@@ -166,7 +166,7 @@ Meeting between betalars, fire, lyuma, jeana and others about usability in 3d ga
   3. better character motion via constraints, spring bones, and animations
   4. better character models (betalars has a character creation system that they already developed as possible collaboration points)
 
-### Other helpful resources:
+### Other helpful resources
 
 [github.com/omigroup/ux-research](https://github.com/omigroup/ux-research)
 

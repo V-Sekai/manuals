@@ -21,13 +21,13 @@ An analogy of a CD and a CD case with stickers.
 Read your public key.
 
 ```
-$ ssh-add -L > me.pub # Can be related to a X.509 `.crt`
+ssh-add -L > me.pub # Can be related to a X.509 `.crt`
 ```
 
 Create a file.
 
 ```
-$ touch avatar-sample.vrm
+touch avatar-sample.vrm
 ```
 
 Sign your file.
@@ -51,7 +51,7 @@ ssh-keygen -Y verify -f allowed_signers -I ernest.lee@chibifire.com -n "avatar@v
 ssh-keygen -Y verify -f allowed_signers -I ernest.lee@chibifire.com -n "me@v-sekai.org" -s  avatar-sample.vrm.me%40V-sekai.com.sig < avatar-sample.vrm
 ```
 
-Referenced https://www.agwa.name/blog/post/ssh_signatures
+Referenced <https://www.agwa.name/blog/post/ssh_signatures>
 
 ### Create SSH Certificates to delegate roles
 
@@ -92,7 +92,7 @@ curl http://matrix-homeserver.example.com/fire > avatars%40V-sekai.com.allowed_s
 - Option: Ipfs and Etherium
 - Rejection Reason: Requires a globally distributed database.
 
-- Option: Sigstore https://www.sigstore.dev/
+- Option: Sigstore <https://www.sigstore.dev/>
 - Rejection Reason: Why aren't we using sigstore?
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
@@ -105,12 +105,12 @@ We have to define the trust.
 
 ## References <!-- optional -->
 
-- https://github.com/V-Sekai/
-- https://github.com/sigstore/rekor/tree/main/pkg/pki/ssh
-- https://stackoverflow.com/questions/4629537/how-to-encrypt-data-in-php-using-public-private-keys
-- https://stackoverflow.com/questions/60160082/how-to-achieve-openssl-smime-encrypt-with-public-key-functionality-in-code
-- https://github.com/cloudtools/ssh-cert-authority
-- https://github.com/je9000/ssh-smime
+- <https://github.com/V-Sekai/>
+- <https://github.com/sigstore/rekor/tree/main/pkg/pki/ssh>
+- <https://stackoverflow.com/questions/4629537/how-to-encrypt-data-in-php-using-public-private-keys>
+- <https://stackoverflow.com/questions/60160082/how-to-achieve-openssl-smime-encrypt-with-public-key-functionality-in-code>
+- <https://github.com/cloudtools/ssh-cert-authority>
+- <https://github.com/je9000/ssh-smime>
 
 ## Derivative License
 

@@ -76,7 +76,7 @@ Status: Active <!-- Options: Draft | Proposed | Rejected | Accepted | Deprecated
 
 ## References
 
-1. Ash Framework https://ash-hq.org/
-2. Rustler 0.30 NIF guide https://github.com/rusterlium/rustler
-3. V-Sekai Roadmap 2025 https://v-sekai.github.io/manuals/roadmap.html
-4. Librecommender Rust Serving Guide https://librecommender.readthedocs.io/en/latest/serving_guide/rust.html
+1. Ash Framework <https://ash-hq.org/>
+2. Rustler 0.30 NIF guide <https://github.com/rusterlium/rustler>
+3. V-Sekai Roadmap 2025 <https://v-sekai.github.io/manuals/roadmap.html>
+4. Librecommender Rust Serving Guide <https://librecommender.readthedocs.io/en/latest/serving_guide/rust.html>

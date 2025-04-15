@@ -49,7 +49,7 @@ Easy Diffusion provides a user-friendly interface for Stable Diffusion. We will 
 
 ### 4. Sprite Creation with Shoebox
 
-Shoebox (https://renderhjs.net/shoebox/) is a free online tool for creating sprite sheets.
+Shoebox (<https://renderhjs.net/shoebox/>) is a free online tool for creating sprite sheets.
 
 - Upload the alpha'd image from Krita to Shoebox.
 - Utilize Shoebox's features to cut the image into individual sprites.
@@ -75,14 +75,14 @@ The process emphasizes iterative refinement of the prompt based on results from 
 
 ### Workflow
 
-1.  **Define Core Concept:** Establish the character's essential characteristics.
-2.  **Craft Optimized Prompt:** Create a concise, descriptive prompt using Easy Diffusion.
-3.  **Generate and Evaluate:** Produce images and assess their suitability.
-4.  **Remove Background:** Use Krita to remove the background.
-5.  **Erase Face:** Use the Grounded-SAM model to identify and remove facial features (eyebrows, nose, mouth) and paint the area skin color.
-6.  **Create Sprites:** Utilize Shoebox to generate sprites from the alpha'd image.
-7.  **(Optional) 3D Conversion:** Utilize TRELLIS to generate 3D models.
-8.  **Iterate and Refine:** Adjust the prompt based on the evaluation.
+1. **Define Core Concept:** Establish the character's essential characteristics.
+2. **Craft Optimized Prompt:** Create a concise, descriptive prompt using Easy Diffusion.
+3. **Generate and Evaluate:** Produce images and assess their suitability.
+4. **Remove Background:** Use Krita to remove the background.
+5. **Erase Face:** Use the Grounded-SAM model to identify and remove facial features (eyebrows, nose, mouth) and paint the area skin color.
+6. **Create Sprites:** Utilize Shoebox to generate sprites from the alpha'd image.
+7. **(Optional) 3D Conversion:** Utilize TRELLIS to generate 3D models.
+8. **Iterate and Refine:** Adjust the prompt based on the evaluation.
 
 ## Checklist for A-Pose Avatar Creation from Concept Art
 
@@ -177,15 +177,15 @@ Status: Draft
 
 ## Further Reading
 
-1.  [V-Sekai · GitHub](https://github.com/v-sekai)
-2.  [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
-3.  [flux.1 schnell - Civitai](https://civitai.com/models/618692?modelVersionId=699279)
-4.  [TRELLIS - Hugging Face](https://huggingface.co/spaces/JeffreyXiang/TRELLIS)
-5.  [Character Design Sheet Helper - Civitai](https://civitai.com/models/100435)
-6.  [TOOL_logoscale - GitHub](https://github.com/V-Sekai-fire/TOOL_logoscale/tree/main?tab=readme-ov-file)
-7.  [Easy Diffusion](https://easydiffusion.github.io/)
-8.  [Windows Subsystem for Linux Documentation](https://docs.microsoft.com/en-us/windows/wsl/)
-9.  [Shoebox](https://renderhjs.net/shoebox/)
+1. [V-Sekai · GitHub](https://github.com/v-sekai)
+2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
+3. [flux.1 schnell - Civitai](https://civitai.com/models/618692?modelVersionId=699279)
+4. [TRELLIS - Hugging Face](https://huggingface.co/spaces/JeffreyXiang/TRELLIS)
+5. [Character Design Sheet Helper - Civitai](https://civitai.com/models/100435)
+6. [TOOL_logoscale - GitHub](https://github.com/V-Sekai-fire/TOOL_logoscale/tree/main?tab=readme-ov-file)
+7. [Easy Diffusion](https://easydiffusion.github.io/)
+8. [Windows Subsystem for Linux Documentation](https://docs.microsoft.com/en-us/windows/wsl/)
+9. [Shoebox](https://renderhjs.net/shoebox/)
 10. [Creative Image Enhancer/Upscaler](https://github.com/pinokiofactory/clarity-refiners-ui)
 11. [Project-Babble/ProjectBabble](https://github.com/Project-Babble/ProjectBabble)
 12. [schananas/grounded_sam](https://replicate.com/schananas/grounded_sam)

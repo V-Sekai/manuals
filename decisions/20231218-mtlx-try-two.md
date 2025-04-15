@@ -1,4 +1,4 @@
-# Draft: MaterialX try two.
+# Draft: MaterialX try two
 
 ## Metadata
 

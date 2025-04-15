@@ -1,4 +1,4 @@
-# Draft: Solve a V-Sekai naming convention limitation.
+# Draft: Solve a V-Sekai naming convention limitation
 
 ## Metadata
 
@@ -63,5 +63,5 @@ Yes, maintaining consistent naming conventions is essential for a professional a
 ## References
 
 - [V-Sekai](https://v-sekai.org/)
-- goblin.tools: https://goblin.tools/
-- openai: https://openai.com/
+- goblin.tools: <https://goblin.tools/>
+- openai: <https://openai.com/>

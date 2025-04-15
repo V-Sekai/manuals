@@ -1,4 +1,4 @@
-# Draft: Grow the community with a reactive Discord bot.
+# Draft: Grow the community with a reactive Discord bot
 
 ### Metadata
 

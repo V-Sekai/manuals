@@ -48,7 +48,7 @@ flatpak run org.blender.Blender -b -P `pwd`/nbs_fbx_output.py -- --input `pwd`/.
 #### Use voxel diffuse skinning
 
 1. The skeleton model above weighted the eye area. This is not good.
-2. Use https://www.blendermarket.com/products/voxel-heat-diffuse-skinning
+2. Use <https://www.blendermarket.com/products/voxel-heat-diffuse-skinning>
 3. Take skeleton from output.fbx and reweight it onto the original mesh set
 
 #### VRM
@@ -77,9 +77,9 @@ Mixamo is a black box and V-Sekai would be more robust to have an alternative.
 
 ### References
 
-- https://github.com/PeizhuoLi/neural-blend-shapes
-- Skeleton https://github.com/Xananax/ALPAPATAM
-- Mannequin https://github.com/V-Sekai/blue-tin-fox-models/actions
+- <https://github.com/PeizhuoLi/neural-blend-shapes>
+- Skeleton <https://github.com/Xananax/ALPAPATAM>
+- Mannequin <https://github.com/V-Sekai/blue-tin-fox-models/actions>
 
 ### Derivative License
 

@@ -14,7 +14,7 @@ Save the minecraft world.
 
 Use `amulet_map_editor`.
 
-1. git clone https://github.com/Amulet-Team/Amulet-Map-Editor.git
+1. git clone <https://github.com/Amulet-Team/Amulet-Map-Editor.git>
 1. cd Amulet-Map-Editor
 1. python3 -m pip install amulet-map-editor
 1. python3 -m amulet_map_editor

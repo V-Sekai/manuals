@@ -45,7 +45,7 @@ We need to run better meetings.
 
 ## References <!-- optional and numbers of links can vary -->
 
-- https://leanchange.org/resources/leancoffee
+- <https://leanchange.org/resources/leancoffee>
 
 ## Derivative License
 

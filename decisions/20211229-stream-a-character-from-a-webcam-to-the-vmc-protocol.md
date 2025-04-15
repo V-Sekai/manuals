@@ -39,8 +39,8 @@ I joined the dots.
 
 ## References <!-- optional and numbers of links can vary -->
 
-- https://github.com/infosia/vmc2bvh
-- https://github.com/colinbdclark/osc.js/
+- <https://github.com/infosia/vmc2bvh>
+- <https://github.com/colinbdclark/osc.js/>
 
 ## Derivative License
 

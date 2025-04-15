@@ -1,4 +1,4 @@
-# Accepted: To record decisions write a proposal.
+# Accepted: To record decisions write a proposal
 
 - Status: accepted
 - Deciders: V-Sekai,ifire,
@@ -108,7 +108,7 @@ We are running the project.
 
 ## References <!-- optional and numbers of links can vary -->
 
-- https://adr.github.io/
+- <https://adr.github.io/>
 
 ## Derivative License
 

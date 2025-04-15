@@ -8,7 +8,7 @@ Implementation of a Godot Engine image to dds gltf extension for export.
 
 Allowing the Godot Engine HTTP service to export a gltf2 binary that VRChat can load at runtime with meshes and images.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
+## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
 The proposal involves integrating the MSFT_texture_dds extension into the Godot Engine's export pipeline. This will require modifying the export scripts to include DDS support, handling the conversion of image assets to DDS format, and ensuring compatibility with the glTF2 binary structure. Pseudo-code example:
 
@@ -61,7 +61,7 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 - V-Sekai
 
-## List further reading references.
+## List further reading references
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.

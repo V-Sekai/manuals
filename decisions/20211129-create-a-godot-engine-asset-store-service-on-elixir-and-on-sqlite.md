@@ -1,4 +1,4 @@
-# Accepted: Create a Godot Engine asset store service on elixir and on sqlite.
+# Accepted: Create a Godot Engine asset store service on elixir and on sqlite
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
@@ -28,7 +28,7 @@ Use ecto with cockroachdb.
 
 Convert godot asset store api to an openapi schema.
 
-- [ ] https://mermade.github.io/openapi-gui/
+- [ ] <https://mermade.github.io/openapi-gui/>
 
 Provide a phoenix web server.
 
@@ -65,12 +65,12 @@ This is a V-Sekai service and I know of an approach.
 
 ## References <!-- optional -->
 
-- https://github.com/godotengine/godot-asset-library/blob/master/API.md
-- https://godotengine.org/
-- https://www.sqlite.org/draft/stricttables.html
-- https://github.com/elixir-sqlite/ecto_sqlite3/issues
-- https://www.phoenixframework.org/
-- https://github.com/elixir-sqlite/exqlite/issues/175 Upgrade to Sqlite 3.37
+- <https://github.com/godotengine/godot-asset-library/blob/master/API.md>
+- <https://godotengine.org/>
+- <https://www.sqlite.org/draft/stricttables.html>
+- <https://github.com/elixir-sqlite/ecto_sqlite3/issues>
+- <https://www.phoenixframework.org/>
+- <https://github.com/elixir-sqlite/exqlite/issues/175> Upgrade to Sqlite 3.37
 
 ## Derivative License
 

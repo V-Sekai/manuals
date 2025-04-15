@@ -44,8 +44,8 @@ Maybe out of scope? But I have an approach.
 >
 >     http://phors.locost7.info/phors22.htm
 
-- https://github.com/NVIDIAGameWorks/PhysX/blob/ae80dede0546d652040ae6260a810e53e20a06fa/physx/documentation/PhysXGuide/_sources/Manual/Vehicles.txt#L2058
-- https://web.archive.org/web/20180712141747/http://www.eggert.highpeakpress.com/ME485/Docs/CarSimEd.pdf
+- <https://github.com/NVIDIAGameWorks/PhysX/blob/ae80dede0546d652040ae6260a810e53e20a06fa/physx/documentation/PhysXGuide/_sources/Manual/Vehicles.txt#L2058>
+- <https://web.archive.org/web/20180712141747/http://www.eggert.highpeakpress.com/ME485/Docs/CarSimEd.pdf>
 
 ### Derivative License
 

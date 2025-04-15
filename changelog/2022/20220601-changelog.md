@@ -12,14 +12,14 @@
 
 ## 2022-06-05
 
-1. Fire collaborated on godot-snappy for object snapping https://github.com/jgillich/godot-snappy
+1. Fire collaborated on godot-snappy for object snapping <https://github.com/jgillich/godot-snappy>
 2. Try to integrate manifold again.
 
 ## 2022-06-03
 
-https://gitlab.com/bramw/baserow/-/issues/998 Spent some documenting the baserow io system on Digital Ocean used to store in-progress art assets, data from research and 3d galleries.
+<https://gitlab.com/bramw/baserow/-/issues/998> Spent some documenting the baserow io system on Digital Ocean used to store in-progress art assets, data from research and 3d galleries.
 
-Donated research on avatar generation to the MIT-licensed project at https://github.com/AtlasFoundation/OpenCharacterCreator As part of: [lightweight-quality-avatars](../../decisions/20220601-lightweight-quality-avatars.md)
+Donated research on avatar generation to the MIT-licensed project at <https://github.com/AtlasFoundation/OpenCharacterCreator> As part of: [lightweight-quality-avatars](../../decisions/20220601-lightweight-quality-avatars.md)
 
 ## 2022-06-01
 

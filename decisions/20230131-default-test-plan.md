@@ -1,4 +1,4 @@
-# Accepted: Default test plan for testing V-Sekai engine upgrades.
+# Accepted: Default test plan for testing V-Sekai engine upgrades
 
 - Status: accepted <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
@@ -27,7 +27,7 @@ These are the default things that should work.
 
 Work.
 
-## Option graveyard:
+## Option graveyard
 
 - Option: The status quo. <!-- List the proposed options no longer open for consideration. -->
 - Rejection Reason: This solves nothing. <!-- List the reasons for the rejection: (the bad traits) -->

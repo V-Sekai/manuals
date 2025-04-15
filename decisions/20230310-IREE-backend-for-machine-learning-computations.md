@@ -55,10 +55,10 @@ I know how, and no one else is doing it.
 
 - [V-Sekai](https://v-sekai.org/)
 - [SHARK](https://github.com/nod-ai/SHARK)
-- IREE in-tree samples: https://github.com/openxla/iree/tree/main/samples
-- IREE extra/more complex samples: https://github.com/iree-org/iree-samples
-- IREE dynamic shapes sample: https://github.com/openxla/iree/tree/main/samples/dynamic_shapes
-- IREE CPU/Vulkan/CUDA sample: https://github.com/openxla/iree/tree/main/samples/simple_embedding
-- XLA axpy example: https://github.com/openxla/xla/tree/main/xla/examples/axpy
-- nod.ai SHARK: https://github.com/nod-ai/SHARK
-- nod.ai SHARK results on AMD GPUs using Vulkan: https://nod.ai/sd-rdna3-ces2023/
+- IREE in-tree samples: <https://github.com/openxla/iree/tree/main/samples>
+- IREE extra/more complex samples: <https://github.com/iree-org/iree-samples>
+- IREE dynamic shapes sample: <https://github.com/openxla/iree/tree/main/samples/dynamic_shapes>
+- IREE CPU/Vulkan/CUDA sample: <https://github.com/openxla/iree/tree/main/samples/simple_embedding>
+- XLA axpy example: <https://github.com/openxla/xla/tree/main/xla/examples/axpy>
+- nod.ai SHARK: <https://github.com/nod-ai/SHARK>
+- nod.ai SHARK results on AMD GPUs using Vulkan: <https://nod.ai/sd-rdna3-ces2023/>

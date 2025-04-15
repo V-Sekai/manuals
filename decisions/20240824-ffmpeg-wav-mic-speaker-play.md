@@ -98,7 +98,7 @@ ffmpeg -f alsa -list_devices true -i dummy
 
 This command will help identify available ALSA audio devices, which can be used similarly to how devices are specified in scripts on other operating systems.
 
-### Steps:
+### Steps
 
 1. **Define File Paths and Device IDs**:
 

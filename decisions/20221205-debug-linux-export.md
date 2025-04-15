@@ -30,7 +30,7 @@ Use wsl or a virtual machine.
 
 We need to download the binaries manually for now.
 
-## Option graveyard:
+## Option graveyard
 
 - Option: The status quo. <!-- List the proposed options no longer open for consideration. -->
 - Rejection Reason: This solves nothing. <!-- List the reasons for the rejection: (the bad traits) -->

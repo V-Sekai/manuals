@@ -1,4 +1,4 @@
-# Draft: Make a desktop version of Uro for ease of development.
+# Draft: Make a desktop version of Uro for ease of development
 
 - Status: Draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
@@ -41,8 +41,8 @@ We are the maintainers of `uro`.
 
 ## References <!-- optional and numbers of links can vary -->
 
-- https://github.com/elixir-desktop/desktop
-- https://github.com/V-Sekai/uro
+- <https://github.com/elixir-desktop/desktop>
+- <https://github.com/V-Sekai/uro>
 
 ## Derivative License
 

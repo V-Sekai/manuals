@@ -16,7 +16,7 @@ Our primary challenge is automating the testing process using Appium. A signific
 
 ## Solution
 
-#### Mac OS Server Instructions:
+#### Mac OS Server Instructions
 
 1. Install the Appium server on the Mac using `sudo npm install -g appium`. Make sure Node.js version 12 or higher is installed.
 2. Launch the server using the `appium` command.
@@ -31,7 +31,7 @@ appium plugin install universal-xml
 appium plugin install relaxed-caps
 ```
 
-#### Windows Client Instructions:
+#### Windows Client Instructions
 
 1. Install scoop npm.
 
@@ -42,7 +42,7 @@ scoop install nodejs
 ```
 
 2. On Windows, install the Appium client using Node Package Manager (NPM) with the command `npm install -g appium`.
-3. Force Install https://github.com/microsoft/WinAppDriver/releases/download/v1.2.1/WindowsApplicationDriver_1.2.1.msi
+3. Force Install <https://github.com/microsoft/WinAppDriver/releases/download/v1.2.1/WindowsApplicationDriver_1.2.1.msi>
 4. Use `appium driver list` and `appium driver update [driverName]`. For Windows, install drivers with `appium driver install --source=npm appium-windows-driver`
 5. Install all the plugins
 

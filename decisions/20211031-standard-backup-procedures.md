@@ -10,7 +10,7 @@ Backup V-Sekai Github organization with V-Sekai-gitm and V-Sekai-github-backup.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-Use https://github.com/muhasturk/gitim to backup V-sekai. (tested 7b6e898b7587f61b0c5f00c3ab9862868f94479d )
+Use <https://github.com/muhasturk/gitim> to backup V-sekai. (tested 7b6e898b7587f61b0c5f00c3ab9862868f94479d )
 
 ```
 git clone https://github.com/muhasturk/gitim.git
@@ -21,7 +21,7 @@ export ACCESS_TOKEN=AAAA
 python3 -m gitim -o V-Sekai -d V-Sekai-godot-gitm-`date --iso=date --utc` --ssh --token $ACCESS_TOKEN
 ```
 
-Use https://github.com/josegonzalez/python-github-backup to backup. (tested 0.40.0)
+Use <https://github.com/josegonzalez/python-github-backup> to backup. (tested 0.40.0)
 
 ```bash
 pip install github-backup
@@ -48,8 +48,8 @@ Only we have access to a complete copy of the repo.
 
 ### References
 
-- https://github.com/josegonzalez/python-github-backup
-- https://github.com/muhasturk/gitim
+- <https://github.com/josegonzalez/python-github-backup>
+- <https://github.com/muhasturk/gitim>
 
 ### Derivative License
 

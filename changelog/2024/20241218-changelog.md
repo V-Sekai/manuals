@@ -7,12 +7,12 @@
 
 ## [Released]
 
-- Made a v0.0.3 release to iree.gd https://github.com/iree-gd/iree.gd/releases/tag/v0.0.3
+- Made a v0.0.3 release to iree.gd <https://github.com/iree-gd/iree.gd/releases/tag/v0.0.3>
 
 ## [Unreleased]
 
 - mesh creation tooling, manifold mesh creation tooling
-- concept new V-Sekai hub world with https://github.com/V-Sekai/S_Concept_First_Station with @Transplanar-Ecological-Society, @fire and @St3nu
+- concept new V-Sekai hub world with <https://github.com/V-Sekai/S_Concept_First_Station> with @Transplanar-Ecological-Society, @fire and @St3nu
 - V-Sekai Steamdeck Gameplay Video Dec 2024 recorded
 
 ### Added
@@ -28,7 +28,7 @@
 
 ### Fixed
 
-- Unbroke world loading with whitelist https://github.com/V-Sekai/godot/tree/resource_loader_whitelist_4.4
+- Unbroke world loading with whitelist <https://github.com/V-Sekai/godot/tree/resource_loader_whitelist_4.4>
 
 ### Deprecated
 
@@ -40,7 +40,7 @@
 
 ### Security
 
--  Modified the security access for loading worlds and avatars
+- Modified the security access for loading worlds and avatars
 
 ## [Previous Releases]
 

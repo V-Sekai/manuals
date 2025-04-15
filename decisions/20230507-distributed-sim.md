@@ -154,8 +154,8 @@ I am exploring alternatives for the current implementation of the client-server 
 
 ### References
 
-- V-Sekai: https://v-sekai.org/
-- Khepri documentation: https://github.com/rabbitmq/khepri
-- Raft consensus algorithm: https://raft.github.io/
-- Networked Physics in Virtual Reality: https://gafferongames.com/post/networked_physics_in_virtual_reality/
-- Chapter 7 - Advanced Architecture using ZeroMQ: https://zguide.zeromq.org/docs/chapter7/
+- V-Sekai: <https://v-sekai.org/>
+- Khepri documentation: <https://github.com/rabbitmq/khepri>
+- Raft consensus algorithm: <https://raft.github.io/>
+- Networked Physics in Virtual Reality: <https://gafferongames.com/post/networked_physics_in_virtual_reality/>
+- Chapter 7 - Advanced Architecture using ZeroMQ: <https://zguide.zeromq.org/docs/chapter7/>

@@ -8,7 +8,7 @@ The game builds can be smaller but they currently have the shared_library, the e
 
 The builds are ranging to 10 minutes for a partially cached build on average. Engine builds take longer.
 
-https://nightly.link/V-Sekai/v-sekai-game/workflows/vsk_linux_builds/main
+<https://nightly.link/V-Sekai/v-sekai-game/workflows/vsk_linux_builds/main>
 
 ## People
 

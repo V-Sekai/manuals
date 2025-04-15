@@ -43,8 +43,8 @@ I know how to do this and others don't.
 
 ## References <!-- optional -->
 
-- https://www.blender.org/
-- https://github.com/V-Sekai/godot-blender
+- <https://www.blender.org/>
+- <https://github.com/V-Sekai/godot-blender>
 
 ## Derivative License
 

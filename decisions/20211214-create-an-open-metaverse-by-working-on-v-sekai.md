@@ -82,7 +82,7 @@ We are V-Sekai and only we can be who we want to be.
 
 ## References <!-- optional and numbers of links can vary -->
 
-- https://www.fortressofdoors.com/so-you-want-to-compete-with-roblox/
+- <https://www.fortressofdoors.com/so-you-want-to-compete-with-roblox/>
 
 ### Minimum Requirements to not Fail Right Away
 
@@ -93,9 +93,9 @@ We are V-Sekai and only we can be who we want to be.
 
 #### Other References
 
-- https://martinfowler.com/bliki/MonolithFirst.html
-- https://en.wikipedia.org/wiki/John_Gall_(author)
-- https://github.com/ubisoft/mixer Has Blender and Unity Support 2021-12-14. It needs to be debugged for Blender 3.0.
+- <https://martinfowler.com/bliki/MonolithFirst.html>
+- <https://en.wikipedia.org/wiki/John_Gall_(author)>
+- <https://github.com/ubisoft/mixer> Has Blender and Unity Support 2021-12-14. It needs to be debugged for Blender 3.0.
 
 ## Derivative License
 

@@ -9,7 +9,7 @@ Lyuma — Today at 16:13
 
 OVR Advanced Settings 5.4.0 is released with OpenXR playspace moving support (for devices connected via SteamVR):
 
-https://user-images.githubusercontent.com/32321/155451982-8d21ca07-0178-4314-a4f2-8de56c275fa3.png
+<https://user-images.githubusercontent.com/32321/155451982-8d21ca07-0178-4314-a4f2-8de56c275fa3.png>
 
 ## 2022-02-22
 
@@ -18,11 +18,11 @@ We discussed with reduz implementation of retargeting for about 8 hours
 
 Lyuma — 14:02
 if anyone's interested, you can read RocketChat from a browser:
-https://chat.godotengine.org/channel/animation?msg=JYqzF7xviTbh5zbmm
+<https://chat.godotengine.org/channel/animation?msg=JYqzF7xviTbh5zbmm>
 
 ## 2022-02-15
 
-Fire moved multiple projects issues to https://github.com/V-Sekai/V-Sekai/issues.
+Fire moved multiple projects issues to <https://github.com/V-Sekai/V-Sekai/issues>.
 
 ## 2022-02-12
 

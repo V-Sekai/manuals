@@ -82,7 +82,7 @@ Supports V-Sekai's 2025 priorities:
 
 Status: Rejected <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
-## Decision Makers:
+## Decision Makers
 
 - V-Sekai Pipeline Lead
 
@@ -95,18 +95,18 @@ Status: Rejected <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 ## References
 
 1. **Reference Implementation (Inria)**  
-   https://github.com/graphdeco-inria/gaussian-splatting
+   <https://github.com/graphdeco-inria/gaussian-splatting>
 2. **Playcanvas Engine Demo**  
-   https://github.com/playcanvas/engine
+   <https://github.com/playcanvas/engine>
 3. **Cesium Experimental Branch**  
-   https://github.com/CesiumGS/cesium/tree/splat-spz-concept
+   <https://github.com/CesiumGS/cesium/tree/splat-spz-concept>
 4. **Unity Implementation (Aras-P)**  
-   https://github.com/aras-p/UnityGaussianSplatting
+   <https://github.com/aras-p/UnityGaussianSplatting>
 5. **Godot Implementation (2Retr0)**  
-   https://github.com/2Retr0/GodotGaussianSplatting
+   <https://github.com/2Retr0/GodotGaussianSplatting>
 6. **Godot Implementation (haztro)**  
-   https://github.com/haztro/godot-gaussian-splatting
+   <https://github.com/haztro/godot-gaussian-splatting>
 7. **Blender Omniview Addon (Kiri Engine)**  
-   https://github.com/Kiri-Innovation/3dgs-render-blender-addon
-8. Trellis https://github.com/microsoft/TRELLIS
+   <https://github.com/Kiri-Innovation/3dgs-render-blender-addon>
+8. Trellis <https://github.com/microsoft/TRELLIS>
 9. Flux

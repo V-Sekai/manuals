@@ -1,6 +1,6 @@
-# Rejected: To create a deployment kit use truescale to host gocd agents for cicd.
+# Rejected: To create a deployment kit use truescale to host gocd agents for cicd
 
-### Describe the status of the issue.
+### Describe the status of the issue
 
 - [x] proposed
 - [x] draft
@@ -9,11 +9,11 @@
 - [ ] deprecated
 - [ ] superseded by
 
-### List the deciders of the issue.
+### List the deciders of the issue
 
 V-Sekai,fire,
 
-### Describe the tags of the issue.
+### Describe the tags of the issue
 
 V-Sekai,
 
@@ -37,7 +37,7 @@ Add a new storage node from hosts.
 4. image: groupsinfra/gocd-agent-centos-8-groups
 5. tag: v20.7.0-groups-0.5.3
 6. Add environment variables
-7. GO_SERVER_URL="https://ci.v-sekai.cloud/go/"
+7. GO_SERVER_URL="<https://ci.v-sekai.cloud/go/>"
 8. Add host volumes for
 9. /go
 10. /mnt/homego # On truenas

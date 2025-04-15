@@ -1,6 +1,6 @@
 # Accepted: V-Sekai Meeting - Friday, June 30, 2023
 
-Original pad (90 day expiration): https://pad.sfconservancy.org/p/v-sekai-goals-meet-2023-06-30.md /timeslider#937
+Original pad (90 day expiration): <https://pad.sfconservancy.org/p/v-sekai-goals-meet-2023-06-30.md> /timeslider#937
 
 ## Context and Problem Statement
 

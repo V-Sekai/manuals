@@ -2,7 +2,7 @@
 
 Superseded
 
-This is now a Godot Engine 4.0 core feature. https://godotengine.org/article/animation-retargeting-in-godot-4-0/
+This is now a Godot Engine 4.0 core feature. <https://godotengine.org/article/animation-retargeting-in-godot-4-0/>
 
 ### Context and Problem Statement
 
@@ -41,8 +41,8 @@ We control the default #animation tree, therefore we need to do this.
 ### References
 
 - Proposal on baking blend shapes to linear skin blending.
-- Useful for tokage's character movement demo. https://github.com/TokageItLab/3d-platform-test-for-godot4
-- Free #animation -- https://github.com/V-Sekai/shadermotion-video-to-anims
+- Useful for tokage's character movement demo. <https://github.com/TokageItLab/3d-platform-test-for-godot4>
+- Free #animation -- <https://github.com/V-Sekai/shadermotion-video-to-anims>
 
 ### Derivative License
 

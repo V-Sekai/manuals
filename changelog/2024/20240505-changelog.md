@@ -10,7 +10,7 @@
 
 ### Added
 
-- **WebRTC**: Worked on browser and native webrtc interop. https://ifiregames.itch.io/webrtc-native-web-interoperability
+- **WebRTC**: Worked on browser and native webrtc interop. <https://ifiregames.itch.io/webrtc-native-web-interoperability>
 - **libgodot**: Worked on embedding libgodot to where it doesn't belong.
 - **csg**: Update csg in Godot Engine to use [Manifold](https://github.com/elalish/manifold).
 

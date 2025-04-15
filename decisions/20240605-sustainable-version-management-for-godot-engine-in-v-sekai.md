@@ -39,7 +39,7 @@ This proposal involves changes to our core version management practices and will
 
 ## Status
 
-Status: Draft 
+Status: Draft
 
 ## Decision Makers
 

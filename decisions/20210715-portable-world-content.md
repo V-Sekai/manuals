@@ -36,7 +36,7 @@ No one is doing it.
 
 ### References
 
-- https://github.com/ubisoft/mixer/issues/19
+- <https://github.com/ubisoft/mixer/issues/19>
 
 ### Derivative License
 

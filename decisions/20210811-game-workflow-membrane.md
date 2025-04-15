@@ -34,9 +34,9 @@ Needed to be done by us.
 
 ### References
 
-- https://www.membraneframework.org/
-- https://github.com/Pyrlang/Pyrlang
-- http://www.wings3d.com/
+- <https://www.membraneframework.org/>
+- <https://github.com/Pyrlang/Pyrlang>
+- <http://www.wings3d.com/>
 
 ### Derivative License
 

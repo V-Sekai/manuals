@@ -44,7 +44,7 @@ Not so core, but I can do it.
 
 ## References <!-- optional -->
 
-- https://github.com/godotengine/godot-asset-library/blob/master/API.md
+- <https://github.com/godotengine/godot-asset-library/blob/master/API.md>
 
 ## Derivative License
 

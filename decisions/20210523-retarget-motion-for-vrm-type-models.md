@@ -15,7 +15,7 @@ Use Blender to retarget t-posed characters.
 - Inputs: bvh + t-pose avatar
 - Output: glb w/retargetted animation
 
-#### Requirements:
+#### Requirements
 
 - Blender v2.91 or v2.92 (may work with other versions)
 - Blender Add-On: [skeletal-motion-retarget-blender](https://github.com/fire/skeletal-motion-retarget-blender)
@@ -95,9 +95,9 @@ We need motions for our character controller without using an off-the-shelf blac
 
 ## References <!-- optional -->
 
-- https://www.blender.org/
-- https://hackmd.io/EmOAt375S8KFqaNdPDJCXQ
-- https://github.com/V-Sekai/V-Sekai-Blender-tools/tree/main/addons/blender-skeletal-motion-animate
+- <https://www.blender.org/>
+- <https://hackmd.io/EmOAt375S8KFqaNdPDJCXQ>
+- <https://github.com/V-Sekai/V-Sekai-Blender-tools/tree/main/addons/blender-skeletal-motion-animate>
 
 ## Derivative License
 

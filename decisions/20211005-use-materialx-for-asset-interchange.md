@@ -6,7 +6,7 @@ Use #materialx for asset interchange
 
 ### Describe the feature / enhancement and how it helps to overcome the problem or limitation
 
-I was challenged to assemble a green IKEA chair with #materialx https://github.com/KhronosGroup/3DC-Certification/tree/main/models/GreenChair by humbletim.
+I was challenged to assemble a green IKEA chair with #materialx <https://github.com/KhronosGroup/3DC-Certification/tree/main/models/GreenChair> by humbletim.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 

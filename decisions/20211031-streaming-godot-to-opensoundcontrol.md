@@ -33,8 +33,8 @@ It's rare to know how to dothis.
 
 ### References
 
-- to node js https://github.com/colinbdclark/osc.js js
-- https://github.com/infosia/vmc2bvh
+- to node js <https://github.com/colinbdclark/osc.js> js
+- <https://github.com/infosia/vmc2bvh>
 
 ### Derivative License
 

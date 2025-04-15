@@ -1,14 +1,14 @@
 # Draft: Merge retargeting feature into Godot Engine master
 
-### Describe the status of the issue.
+### Describe the status of the issue
 
-Superseded by the https://github.com/V-Sekai/V-Sekai.github.io/issues/229 proposal.
+Superseded by the <https://github.com/V-Sekai/V-Sekai.github.io/issues/229> proposal.
 
-### List the deciders of the issue.
+### List the deciders of the issue
 
 V-Sekai,tokage,fire,lyuma
 
-### Describe the tags of the issue.
+### Describe the tags of the issue
 
 V-Sekai,animation,retargeting,
 

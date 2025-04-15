@@ -41,7 +41,7 @@ Can be outside of core.
 
 ## References <!-- optional -->
 
-- https://github.com/godotengine/godot
+- <https://github.com/godotengine/godot>
 
 ## Derivative License
 

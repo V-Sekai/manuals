@@ -4,7 +4,7 @@
 
 Given two animations `.glb`s in gltf, you cannot transfer the animation between the same character in different files in some cases.
 
-Fixes: https://github.com/godotengine/godot/issues/50212
+Fixes: <https://github.com/godotengine/godot/issues/50212>
 
 We are NOT retargeting between different rigs in the RESET baker stage.
 
@@ -50,16 +50,16 @@ This is a confusing problem and hard to explain. So the code to solve it is non-
 
 ## Is there a reason why this should be core and done by us?
 
-#animation are a core feature of Godot Engine.
+# animation are a core feature of Godot Engine.
 
 ## References <!-- optional -->
 
-- Bone roll parent to child baking. https://github.com/V-Sekai/godot/commit/99a9f79e25f7760cb5a0990e67545d78e9dd0423
+- Bone roll parent to child baking. <https://github.com/V-Sekai/godot/commit/99a9f79e25f7760cb5a0990e67545d78e9dd0423>
 - Implementation:
-  https://github.com/godot-extended-libraries/godot-fire/tree/feature/bake-reset-anim
-- Reference bone roll spec. https://tokage.info/lab/?id=5
-- Use the entire surface of the mesh to match to the SMPL rig. (Siggraph 2021) https://github.com/PeizhuoLi/neural-blend-shapes/issues
-- Guessing "Blender edit" https://github.com/KhronosGroup/glTF-Blender-IO/pull/941
+  <https://github.com/godot-extended-libraries/godot-fire/tree/feature/bake-reset-anim>
+- Reference bone roll spec. <https://tokage.info/lab/?id=5>
+- Use the entire surface of the mesh to match to the SMPL rig. (Siggraph 2021) <https://github.com/PeizhuoLi/neural-blend-shapes/issues>
+- Guessing "Blender edit" <https://github.com/KhronosGroup/glTF-Blender-IO/pull/941>
 
 ## Derivative License
 

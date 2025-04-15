@@ -10,16 +10,16 @@ By writing a c++ executable on Linux, we can connect Mediapipe to Blender.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-1. Create a wrapper for https://github.com/infosia/vmc2bvh/tree/master/osc
-2. Install Blender addon https://github.com/maybites/blender.NodeOSC
+1. Create a wrapper for <https://github.com/infosia/vmc2bvh/tree/master/osc>
+2. Install Blender addon <https://github.com/maybites/blender.NodeOSC>
 3. Convert python script to c++
 4. Make c++ buildable by bazel
 5. Build executables on Github Actions
 
 #### Design loop
 
-1. https://github.com/CLIUtils/CLI11 for command line parsing
-2. https://github.com/infosia/vmc2bvh/blob/master/code/Vmc2Bvh.cpp for example code
+1. <https://github.com/CLIUtils/CLI11> for command line parsing
+2. <https://github.com/infosia/vmc2bvh/blob/master/code/Vmc2Bvh.cpp> for example code
 3. For each process send osc to node osc (Blender).
 4. Create a structure for the messages
 
@@ -31,7 +31,7 @@ I can write pseudocode but since i don't have a cpp toolchain, i can't guarantee
 
 You might take a look at my code
 
-https://gitlab.com/-/snippets/2349711#LC70
+<https://gitlab.com/-/snippets/2349711#LC70>
 
 The idea is quite simple:
 
@@ -43,7 +43,7 @@ The idea is quite simple:
 
 how do I get the 3d landmarks
 
-that's provided by API https://google.github.io/mediapipe/solutions/pose#pose_world_landmarks
+that's provided by API <https://google.github.io/mediapipe/solutions/pose#pose_world_landmarks>
 
 lox9973 — Today at 01:26
 
@@ -74,7 +74,7 @@ It's needed for face tracking to work well.
 From Kendrick
 
 - [media_pipe_demo.zip](https://github.com/V-Sekai/v-sekai-proposals/files/6972400/media_pipe_demo.zip)
-- https://github.com/V-Sekai/game-tools-V-Sekai
+- <https://github.com/V-Sekai/game-tools-V-Sekai>
 
 ### Derivative License
 

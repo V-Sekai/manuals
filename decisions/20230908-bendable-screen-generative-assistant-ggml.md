@@ -48,7 +48,7 @@ B --> D[Wisecoco 6-inch Flexible OLED Display in Portrait Mode]
 E[Microphone] -- Audio Input --> C
 ```
 
-## System Diagram Explanation:
+## System Diagram Explanation
 
 ### 1. Edge Device: Compute Unit (A)
 

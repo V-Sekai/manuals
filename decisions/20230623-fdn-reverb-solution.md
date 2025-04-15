@@ -14,7 +14,7 @@ The problem of simulating audio reverb in Godot Engine 4 involves accurately mod
 
 Implement Feedback Delay Networks (FDNs) for artificial reverberation. FDNs consist of multiple delay lines connected in a feedback loop with a mixing matrix. The output is a combination of the input signal and the delayed signals.
 
-### Steps:
+### Steps
 
 1. Choose the number of delay lines and their lengths based on the desired reverberation time and room characteristics.
 2. Implement a mixing matrix to control the energy distribution between the delay lines.

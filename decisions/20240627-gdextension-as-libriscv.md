@@ -14,7 +14,7 @@ Traditionally we have to compile gdextension for like 5-10 platform variants whi
 
 Fire proposed an idea where many gdextension modules can be compiled as RISCV binaries.
 
-Functioning like shared libraries via librisc emulation both as an intepreter or a register machine. 
+Functioning like shared libraries via librisc emulation both as an intepreter or a register machine.
 
 This could potentially allow wrapping up the entire gdextension API.
 
@@ -29,7 +29,7 @@ printf("test returned %d\n", ret);
 // Guest:
 extern "C" __attribute__((used, retain))
 int test(int a, int b, const char* c) {
-	return a + b;
+ return a + b;
 }
 ```
 

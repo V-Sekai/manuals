@@ -16,8 +16,8 @@ Performance targets:
 
 We want to create a standard test platform for V-Sekai to get performance data.
 
-1.  Canonical test/reference hardware by platform (desktop-flat, desktop-vr, mobile-vr)
-2.  Canonical content by platform (avatar+map): both low end (Mozilla Hubs + static avatars) and mid-end and high-end
+1. Canonical test/reference hardware by platform (desktop-flat, desktop-vr, mobile-vr)
+2. Canonical content by platform (avatar+map): both low end (Mozilla Hubs + static avatars) and mid-end and high-end
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
@@ -38,8 +38,8 @@ This is the computer we think is the most similar to a Valve Steamdeck.
 
 Use a scripted fly through demo.
 
-1. https://github.com/Calinou/godot-cmvalley
-2. https://github.com/TokageItLab/3d-platform-test-for-godot4
+1. <https://github.com/Calinou/godot-cmvalley>
+2. <https://github.com/TokageItLab/3d-platform-test-for-godot4>
 3. An animated camera can be exported from Blender.
 4. Record performance data in .res format and also json.
 5. Record OBS videos of the fly through with frametime and stats.
@@ -67,7 +67,7 @@ As a platform holder, it would be our responsibility to understand the limits of
 - UDOO Bolt
   [datasheet_udoo_bolt_gear-1947342.pdf](https://github.com/V-Sekai/v-sekai-proposals/files/6958673/datasheet_udoo_bolt_gear-1947342.pdf)
 - [Mouser Electronics Canada V-Sekai Platform.pdf](https://github.com/V-Sekai/v-sekai-proposals/files/6958676/Mouser.Electronics.Canada.V-Sekai.Platform.pdf)
-- https://developer.oculus.com/documentation/unity/unity-perf/
+- <https://developer.oculus.com/documentation/unity/unity-perf/>
 
 ### Derivative License
 

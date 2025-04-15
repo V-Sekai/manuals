@@ -10,7 +10,7 @@ Implement a Material Addon for Blender
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-1. Make a stand alone baker https://github.com/materialx/MaterialX/pull/651
+1. Make a stand alone baker <https://github.com/materialx/MaterialX/pull/651>
 2. Make a Blender addon that creates a custom node
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
@@ -31,7 +31,7 @@ Procedural Materials are not easy
 
 ### References
 
-- https://github.com/materialx/MaterialX
+- <https://github.com/materialx/MaterialX>
 
 ### Derivative License
 

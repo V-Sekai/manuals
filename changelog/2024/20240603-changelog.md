@@ -7,6 +7,7 @@
 ## [Unreleased]
 
 ### Added
+
 - Worked on a pull request for motion blur, which included:
   - Pushing updates to the `vsk-motion-blur-4.3-beta1` branch in the Godot repository.
 - Initiated and updated a paint mixer spectral.js project in the `world:main` branch

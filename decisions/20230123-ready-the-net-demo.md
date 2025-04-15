@@ -12,7 +12,7 @@ I want to get the net demo ready for presentation.
 
 1. jitter buffer window of 100ms
 2. bit packing with the godot engine core animation compression
-3. perfect prediction using ballistic trajectory https://github.com/fbsamples/oculus-networked-physics-sample/blob/f4242f317fc1c81348308bdd69774c637c3c0f91/Networked%20Physics/Assets/Scripts/Prediction.cs#L48
+3. perfect prediction using ballistic trajectory <https://github.com/fbsamples/oculus-networked-physics-sample/blob/f4242f317fc1c81348308bdd69774c637c3c0f91/Networked%20Physics/Assets/Scripts/Prediction.cs#L48>
 
 ### Positive Consequences
 

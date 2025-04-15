@@ -8,7 +8,7 @@ V-Sekai users may want to communicate with people outside VR while remaining in 
 
 There is currently no convenient way to stay connected with non-VR users.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
+## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
 Use Sidequest to install Aliucord on a Quest 3, then run Discord side-by-side with V-Sekai.
 
@@ -44,7 +44,7 @@ Status: Proposed
 
 - V-Sekai
 
-## List further reading references.
+## List further reading references
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai)
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)

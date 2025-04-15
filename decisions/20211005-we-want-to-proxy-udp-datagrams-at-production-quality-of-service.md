@@ -1,4 +1,4 @@
-# Draft: We want to proxy udp datagrams at production quality of service.
+# Draft: We want to proxy udp datagrams at production quality of service
 
 ### Context and Problem Statement
 
@@ -37,10 +37,10 @@ We own game networking.
 
 ### References
 
-- https://github.com/yyyar/gobetween
-- https://ebpf.io/
-- https://cilium.io/
-- https://docs.cilium.io/en/stable/gettingstarted/encryption-wireguard/
+- <https://github.com/yyyar/gobetween>
+- <https://ebpf.io/>
+- <https://cilium.io/>
+- <https://docs.cilium.io/en/stable/gettingstarted/encryption-wireguard/>
 
 ### Derivative License
 

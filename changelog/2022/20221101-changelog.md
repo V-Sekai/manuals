@@ -26,7 +26,7 @@ We are working on a v2 of the network architecture based on Godot's network spaw
 
 ![VSK Tokyo Map](./attachments/VSK_tokyo_map.png)
 
-The new v2 network demo can be found at https://github.com/V-Sekai/net_demo if you're curious. There's no VR support planned for net_demo, but it should serve as a strong foundation going forward.
+The new v2 network demo can be found at <https://github.com/V-Sekai/net_demo> if you're curious. There's no VR support planned for net_demo, but it should serve as a strong foundation going forward.
 
 Avatars should show up again. There was some code mistake that triggered only when the default "mirror" was disabled and caused avatars not to instantiate, but I didn't notice because I had turned it on in my checkout
 

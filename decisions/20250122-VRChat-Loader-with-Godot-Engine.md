@@ -8,7 +8,7 @@ We plan to integrate a VRChat loader that fetches scenes from a Godot Engine HTT
 
 Allow external tools to efficiently modify and synchronize the world environment to facilitate updates and management of complex scenes in VRChat.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
+## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
 ### GLB with Repacked DDS Support
 
@@ -40,7 +40,7 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 - Real-time Updates
 - Scene Management
 
-## List further reading references.
+## List further reading references
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai)
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)

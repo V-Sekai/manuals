@@ -1,4 +1,4 @@
-# V-Sekai offer immersive experiences in various virtual environments.
+# V-Sekai offer immersive experiences in various virtual environments
 
 V-Sekai, a proposed VR app for Apple Vision Pro, aims to offer immersive experiences in various virtual environments.
 

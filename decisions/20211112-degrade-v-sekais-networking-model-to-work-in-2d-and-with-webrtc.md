@@ -1,4 +1,4 @@
-# Accepted: Degrade V-Sekai's networking model to work in 2d and with webrtc.
+# Accepted: Degrade V-Sekai's networking model to work in 2d and with webrtc
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,

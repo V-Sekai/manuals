@@ -1,6 +1,6 @@
 # Draft: Profile using perf
 
-### Describe the status of the issue.
+### Describe the status of the issue
 
 - [x] proposed
 - [ ] draft
@@ -9,11 +9,11 @@
 - [ ] deprecated
 - [ ] superseded by
 
-### List the deciders of the issue.
+### List the deciders of the issue
 
 V-Sekai,fire,
 
-### Describe the tags of the issue.
+### Describe the tags of the issue
 
 V-Sekai,
 

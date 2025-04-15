@@ -14,7 +14,7 @@ V-Sekai currently has limitations when it comes to creating avatars with specifi
 
 Here is a list of raw processes to be broken down.
 
-### Avatar Creation Steps:
+### Avatar Creation Steps
 
 To implement the requested changes, here are the modified instructions:
 

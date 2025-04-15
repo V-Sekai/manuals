@@ -14,7 +14,7 @@ Groups who have found a way to express themselves better using the metaverse:
 
 Games:
 
-- https://www.amazon.com/Homo-Ludens-Study-Play-Element-Culture/dp/1621389995
+- <https://www.amazon.com/Homo-Ludens-Study-Play-Element-Culture/dp/1621389995>
   Homo Ludens
 
 System of games. Example: playground games such as foursquare have their own house rules.

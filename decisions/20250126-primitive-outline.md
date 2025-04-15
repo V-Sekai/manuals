@@ -8,7 +8,7 @@ Instead of a lens, we aim to generate an overlay using the mesh's primitive outl
 
 How can we generate a holographic overlay by utilizing a list of triangle edges extracted from mesh data?
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
+## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
 The proposal involves parsing the mesh data to extract triangle edges and rendering these edges as a holographic overlay. Utilizing a compatible rendering engine, each edge will be transformed into visible lines with appropriate shading and anti-aliasing. The system will dynamically update the hologram in real-time based on user interactions and changes in the underlying data.
 
@@ -44,7 +44,7 @@ V-Sekai development team
 
 V-Sekai
 
-## List further reading references.
+## List further reading references
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project, which integrates social VR/VRSNS/metaverse components into the Godot Engine.

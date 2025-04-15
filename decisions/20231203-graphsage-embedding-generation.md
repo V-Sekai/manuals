@@ -24,13 +24,13 @@ Understanding the GraphSAGE algorithm can be challenging due to its complex natu
 
 ### Inputs
 
-1.  **Graph G(V,E)G(V,E)**: The input graph with nodes VV and edges EE.
-2.  **Input Features {xv∀v∈V}{xv​∀v∈V}**: The features for each node in the graph.
-3.  **Depth KK**: The depth of the search or the number of iterations.
-4.  **Weight Matrices Wk∀k∈{1...K}Wk​∀k∈{1...K}**: The weight matrices used for each depth kk.
-5.  **Non-linearity σσ**: A non-linear activation function.
-6.  **Aggregator Functions AGGREGATEk∀k∈{1...K}AGGREGATEk​∀k∈{1...K}**: Functions that aggregate information from the node's neighbors.
-7.  **Neighborhood Function NN**: A function that returns the set of neighbors for a given node.
+1. **Graph G(V,E)G(V,E)**: The input graph with nodes VV and edges EE.
+2. **Input Features {xv∀v∈V}{xv​∀v∈V}**: The features for each node in the graph.
+3. **Depth KK**: The depth of the search or the number of iterations.
+4. **Weight Matrices Wk∀k∈{1...K}Wk​∀k∈{1...K}**: The weight matrices used for each depth kk.
+5. **Non-linearity σσ**: A non-linear activation function.
+6. **Aggregator Functions AGGREGATEk∀k∈{1...K}AGGREGATEk​∀k∈{1...K}**: Functions that aggregate information from the node's neighbors.
+7. **Neighborhood Function NN**: A function that returns the set of neighbors for a given node.
 
 ### Output
 
@@ -38,13 +38,13 @@ Understanding the GraphSAGE algorithm can be challenging due to its complex natu
 
 ### Steps
 
-1.  **Initialization**: Each node’s feature vector xvxv​ is used as the initial representation hv0hv0​.
-2.  **Iteration for Depth KK**: For each depth level from 1 to KK:
+1. **Initialization**: Each node’s feature vector xvxv​ is used as the initial representation hv0hv0​.
+2. **Iteration for Depth KK**: For each depth level from 1 to KK:
     - For each node vv in the graph:
       - Aggregate the representations of the nodes in its neighborhood N(v)N(v) using the aggregator function AGGREGATEkAGGREGATEk​ for that depth. This results in a new vector hN(v)khN(v)k​.
       - Concatenate this aggregated vector with the node’s current representation hvk−1hvk−1​, and apply the weight matrix WkWk​ followed by the non-linearity σσ. This results in the updated representation hvkhvk​.
       - Normalize the updated representation.
-3.  **Final Representations**: After the final iteration KK, the output for each node vv, zvzv​, is set as its last representation hvKhvK​.
+3. **Final Representations**: After the final iteration KK, the output for each node vv, zvzv​, is set as its last representation hvKhvK​.
 
 ### Intuition
 

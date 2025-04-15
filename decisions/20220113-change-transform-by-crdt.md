@@ -1,4 +1,4 @@
-# Proposal: Change transform by CRDT.
+# Proposal: Change transform by CRDT
 
 - Status: Draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
@@ -39,7 +39,7 @@ Not small.
 
 ## References <!-- optional and numbers of links can vary -->
 
-- https://github.com/gritzko/ron
+- <https://github.com/gritzko/ron>
 - Described in Webaverse.
 
 ## Derivative License

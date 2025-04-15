@@ -29,11 +29,11 @@ Once the input is solved and it passes QA, that is one that is the outputted.
 
 - Option:
 
-* https://github.com/infosia/avatar-asset-pipeline
+- <https://github.com/infosia/avatar-asset-pipeline>
 
 - Rejection Reason:
 
-* Need to integrate with backend.
+- Need to integrate with backend.
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
 
@@ -45,10 +45,10 @@ This is a core part of Groups and we depend on it.
 
 ## References <!-- optional -->
 
-- https://github.com/infosia/avatar-asset-pipeline
-- https://github.com/fire/flow-avatar-asset-pipeline
-- https://membraneframework.org/
-- https://github.com/membraneframework/membrane_dashboard
+- <https://github.com/infosia/avatar-asset-pipeline>
+- <https://github.com/fire/flow-avatar-asset-pipeline>
+- <https://membraneframework.org/>
+- <https://github.com/membraneframework/membrane_dashboard>
 
 ## Derivative License
 

@@ -39,7 +39,7 @@ We maintain core V-Sekai.
 
 ## References <!-- optional -->
 
-- https://github.com/V-Sekai/groups-workspace-fire
+- <https://github.com/V-Sekai/groups-workspace-fire>
 
 ## Derivative License
 

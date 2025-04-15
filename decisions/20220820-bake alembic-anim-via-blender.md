@@ -1,4 +1,4 @@
-# Draft: Bake alembic imports by running blender script.
+# Draft: Bake alembic imports by running blender script
 
 ### Context and Problem Statement
 

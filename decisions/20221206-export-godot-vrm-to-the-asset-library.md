@@ -28,7 +28,7 @@ Then we'll make a script to sync the changes to/from the godot-vrm example proje
 
 Writing this up for Fire, since we talked about the issue with addons/vrm being duplicated in multiple projects since Godot Asset Library doesn't allow submodules / raw addons folders.
 
-Did some unarchiving and renames so that https://github.com/V-Sekai/Godot-MToon-Shader gets the top google slot
+Did some unarchiving and renames so that <https://github.com/V-Sekai/Godot-MToon-Shader> gets the top google slot
 
 1. Make sure the godot-vrm code is synced up with other repositories where it was duplicated.
 2. Make a mtoon addon repository with a copy of the Godot-MToon-Shader code.
@@ -48,7 +48,7 @@ We don't have duplicate godot-vrm copies and the copies stay in sync.
 
 Asset library copy is different than development.
 
-## Option graveyard:
+## Option graveyard
 
 - Option: The status quo. <!-- List the proposed options no longer open for consideration. -->
 - Rejection Reason: This solves nothing. We have duplicate development versions. <!-- List the reasons for the rejection: (the bad traits) -->

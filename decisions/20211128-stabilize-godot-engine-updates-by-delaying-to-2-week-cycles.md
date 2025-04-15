@@ -40,7 +40,7 @@ We maintain the engine.
 
 ## References <!-- optional -->
 
-- https://godotengine.org
+- <https://godotengine.org>
 
 ## Derivative License
 

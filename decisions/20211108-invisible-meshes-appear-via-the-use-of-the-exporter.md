@@ -1,4 +1,4 @@
-# Draft: Polish demo of V-Sekai by making invisible meshes appear via the use of the exporter.
+# Draft: Polish demo of V-Sekai by making invisible meshes appear via the use of the exporter
 
 - Status: Draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
@@ -42,7 +42,7 @@ Only we can set the initial scene.
 
 ## References <!-- optional -->
 
-- https://v-sekai.org/
+- <https://v-sekai.org/>
 
 ## Derivative License
 

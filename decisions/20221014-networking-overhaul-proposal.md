@@ -89,7 +89,7 @@ Absolutely, this is the foundation of basically everything content wise in V-sek
 
 ## References
 
-https://github.com/V-Sekai/V-Sekai.github.io/blob/master/decisions/2020/20200729-entity-networking.md
+<https://github.com/V-Sekai/V-Sekai.github.io/blob/master/decisions/2020/20200729-entity-networking.md>
 
 Malek's forum post on networking in the Discord server.
 

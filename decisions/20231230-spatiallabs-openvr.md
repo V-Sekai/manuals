@@ -18,8 +18,8 @@ The main challenge is to display Unity applications like SteamVR home and others
 
 To overcome the challenge, use these exact versions:
 
-1.  `SpatialLabs EC PRO_Acer_1.2.288_Win11x64`
-2.  `Acer SteamVR Bridge.Installer.1.00.1001`
+1. `SpatialLabs EC PRO_Acer_1.2.288_Win11x64`
+2. `Acer SteamVR Bridge.Installer.1.00.1001`
 
 ## The Upside
 
@@ -43,7 +43,7 @@ I have access to equipment and it's not easy to get access. This means that the 
 
 ## Further Reading
 
-1.  [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
-2.  [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine.
+1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
+2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine.
 
 > AI assistant Aria assisted with this article.

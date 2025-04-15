@@ -14,11 +14,11 @@ Godot Jolt is currently implemented as a GDExtension C++ extension. However, we 
 
 ### Steps
 
-1.  Analyze the current structure of Godot Jolt as a GDExtension.
-2.  Plan the new structure as a C++ module.
-3.  Convert the build system from CMake to SCons.
-4.  Test the newly created C++ module in different scenarios.
-5.  Experiment with soft physics once the module is stable.
+1. Analyze the current structure of Godot Jolt as a GDExtension.
+2. Plan the new structure as a C++ module.
+3. Convert the build system from CMake to SCons.
+4. Test the newly created C++ module in different scenarios.
+5. Experiment with soft physics once the module is stable.
 
 ## Implementation
 

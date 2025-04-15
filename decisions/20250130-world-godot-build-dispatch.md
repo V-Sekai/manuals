@@ -8,13 +8,13 @@ Using a custom Godot Engine build to handle arbitrary Godot Engine projects.
 
 Send automated build messages to “v-sekai/v-sekai-game” on “v-sekai/world-godot” commits.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
+## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
 To enable it, add “REPO_DISPATCH” to repository secrets.
 
 A fine-grained token with Contents: Read and write permission for the “v-sekai-game” repo must be placed in the “REPO_DISPATCH” named repository secret of “V-Sekai/world-godot”.
 
-In `V-Sekai/world-godot`, add the Godot Engine project to the dispatch job's list too. 
+In `V-Sekai/world-godot`, add the Godot Engine project to the dispatch job's list too.
 
 ## What are the benefits of the proposal?
 
@@ -57,7 +57,7 @@ Status: Accepted
 - V-Sekai
 - release
 
-## List further reading references.
+## List further reading references
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai)
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)

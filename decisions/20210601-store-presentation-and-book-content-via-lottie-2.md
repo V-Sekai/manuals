@@ -74,13 +74,13 @@ Presentations and books should be a first-class feature in groups.
 
 ## References <!-- optional -->
 
-- https://www.synfig.org/
-- https://github.com/Samsung/rlottie
-- https://github.com/godot-extended-libraries/lottie
-- https://www.adobe.com/products/aftereffects.html
-- https://airbnb.io/lottie/#/
-- https://lottiefiles.com/
-- https://github.com/reMarkable/pdfium-binaries
+- <https://www.synfig.org/>
+- <https://github.com/Samsung/rlottie>
+- <https://github.com/godot-extended-libraries/lottie>
+- <https://www.adobe.com/products/aftereffects.html>
+- <https://airbnb.io/lottie/#/>
+- <https://lottiefiles.com/>
+- <https://github.com/reMarkable/pdfium-binaries>
 
 ## Derivative License
 

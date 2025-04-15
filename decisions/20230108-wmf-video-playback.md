@@ -10,7 +10,7 @@ Add WMF support to godot for the windows platform.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-See https://github.com/V-Sekai/godot/tree/wmf
+See <https://github.com/V-Sekai/godot/tree/wmf>
 
 ### Positive Consequences
 

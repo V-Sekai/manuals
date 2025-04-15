@@ -69,7 +69,7 @@ Status: Proposed
 - Shaders
 - Asset Pipeline
 
-## List further reading references.
+## List further reading references
 
 1. [Godot Mesh Documentation](https://docs.godotengine.org/en/stable/classes/class_mesh.html)
 2. [Blender UV Map Workflow](https://blender.stackexchange.com/questions/51174/how-do-i-create-multiple-uv-maps)

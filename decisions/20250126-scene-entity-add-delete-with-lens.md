@@ -8,7 +8,7 @@ V-Sekai needs an overlay-based system to add, delete, and manage scene entities 
 
 We need a more intuitive, integrated approach to placing, selecting, removing, and inspecting scene objects. Current methods lack interactive feedback, real-time previews, or a user-friendly overlay for metadata.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
+## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
 Instead of a lens, we generate an overlay using the primitive outline. The multi tool like Half-Life: Alyx tool’s interface surfaces entity details as a holographic overlay. Contributors can “grip” to add objects, “trigger” to open extended metadata, or “joystick” to vote.
 
@@ -97,7 +97,7 @@ Needs a redo.
 
 - V-Sekai
 
-## List further reading references.
+## List further reading references
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai)
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)

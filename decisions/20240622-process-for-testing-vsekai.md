@@ -1,4 +1,4 @@
-# Draft: Create a process for testing V-Sekai.
+# Draft: Create a process for testing V-Sekai
 
 ## The Context
 

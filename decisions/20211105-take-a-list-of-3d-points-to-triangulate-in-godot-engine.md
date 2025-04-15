@@ -17,10 +17,10 @@ This CASSIE triangulate operation needs to be done in Godot Engine so it can be 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
 1. Implement "An Algorithm for Triangulating Multiple 3D Polygons"
-1. Use Godot's delaunay tetrahedralize https://github.com/godotengine/godot/blob/96d7bc62af25b85b8b9cc091eeea1e7a784ba624/core/math/delaunay_3d.h#L145 `static Vector<OutputSimplex> tetrahedralize(const Vector<Vector3> &p_points)`
+1. Use Godot's delaunay tetrahedralize <https://github.com/godotengine/godot/blob/96d7bc62af25b85b8b9cc091eeea1e7a784ba624/core/math/delaunay_3d.h#L145> `static Vector<OutputSimplex> tetrahedralize(const Vector<Vector3> &p_points)`
 1. Emilie Yu described a method for smoothing meshes.
 
-Libigl should be best for smoothing while pinning the boundaries. I see they have a solver that can take fixed boundary constraints https://libigl.github.io/tutorial/#quadratic-energy-minimization so that could allow you to pin the boundaries. So instead of this line it would be something like
+Libigl should be best for smoothing while pinning the boundaries. I see they have a solver that can take fixed boundary constraints <https://libigl.github.io/tutorial/#quadratic-energy-minimization> so that could allow you to pin the boundaries. So instead of this line it would be something like
 
 ```c++
 igl::min_quad_with_fixed_data mqwf;
@@ -46,7 +46,7 @@ and the `vector Z is a (3 * N) flat vector` of the solution vertices (equivalent
 
 ## Option graveyard: <!-- same as above -->
 
-- Option: Integrate drawing like OpenBrush. https://github.com/icosa-gallery/open-brush
+- Option: Integrate drawing like OpenBrush. <https://github.com/icosa-gallery/open-brush>
 - Rejection Reason: The feel is not the same.
 
 ## If this enhancement will not be used often, can it be worked around with a few lines of script?
@@ -59,12 +59,12 @@ It is cool and I know how to approach implementing CASSIE in Godot Engine.
 
 ## References <!-- optional -->
 
-- https://www.cse.wustl.edu/~taoju/zoum/projects/TriMultPoly
-- https://em-yu.github.io/
-- https://ns.inria.fr/d3/CASSIE
-- https://libigl.github.io/
-- https://github.com/godotengine/
-- https://www.blender.org/
+- <https://www.cse.wustl.edu/~taoju/zoum/projects/TriMultPoly>
+- <https://em-yu.github.io/>
+- <https://ns.inria.fr/d3/CASSIE>
+- <https://libigl.github.io/>
+- <https://github.com/godotengine/>
+- <https://www.blender.org/>
 
 ## Derivative License
 

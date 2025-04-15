@@ -10,7 +10,7 @@
 
 Find or create a **VR design application** offering a variety of powerful _polygon mesh-based sculpting tools_, suitable for both aspiring creatives and experienced 3D artists.
 
-## Describe the problem or limitation you have in your project, e.g., in free form, using two to three sentences. Consider articulating the case in the form of a question.
+## Describe the problem or limitation you have in your project, e.g., in free form, using two to three sentences. Consider articulating the case in the form of a question
 
 Currently, V-Sekai lacks a comprehensive VR design application that provides polygon mesh-based sculpting tools for users with varying levels of experience. How can we integrate such a tool to enhance the creative capabilities of our users?
 
@@ -52,7 +52,7 @@ Yes, integrating a powerful VR design application will significantly enhance the
 ## References
 
 - [V-Sekai](https://v-sekai.org/)
-- Cassie on Github: https://github.com/V-Sekai/cassie
+- Cassie on Github: <https://github.com/V-Sekai/cassie>
 - Shapelab by Leopoly on Steam
 - Gravity Sketch on Steam
-- Substance 3D Modeler 2023 on Steam: https://store.steampowered.com/app/1745780/Substance_3D_Modeler_2023/
+- Substance 3D Modeler 2023 on Steam: <https://store.steampowered.com/app/1745780/Substance_3D_Modeler_2023/>

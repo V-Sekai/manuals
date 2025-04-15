@@ -10,16 +10,16 @@ By writing a c++ executable on Linux, we can connect Mediapipe to Blender.
 
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-1. Create a wrapper for https://github.com/infosia/vmc2bvh/tree/master/osc
-2. Install Blender addon https://github.com/maybites/blender.NodeOSC
+1. Create a wrapper for <https://github.com/infosia/vmc2bvh/tree/master/osc>
+2. Install Blender addon <https://github.com/maybites/blender.NodeOSC>
 3. Convert python script to c++
 4. Make c++ buildable by bazel
 5. Build executables on Github Actions
 
 #### Design loop
 
-1. https://github.com/CLIUtils/CLI11 for command line parsing
-2. https://github.com/infosia/vmc2bvh/blob/master/code/Vmc2Bvh.cpp for example code
+1. <https://github.com/CLIUtils/CLI11> for command line parsing
+2. <https://github.com/infosia/vmc2bvh/blob/master/code/Vmc2Bvh.cpp> for example code
 3. For each process send osc to node osc (Blender).
 4. Create a structure for the messages
 
@@ -36,7 +36,7 @@ ML and armature work is hard
 From Kendrick
 
 - [media_pipe_demo.zip](https://github.com/V-Sekai/v-sekai-proposals/files/6972400/media_pipe_demo.zip)
-- https://github.com/V-Sekai/game-tools-V-Sekai
+- <https://github.com/V-Sekai/game-tools-V-Sekai>
 
 ## Derivative License
 

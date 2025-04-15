@@ -44,7 +44,7 @@ This is a V-Sekai strategy plan.
 
 ## References <!-- optional -->
 
-- https://github.com/V-Sekai/WasGo
+- <https://github.com/V-Sekai/WasGo>
 
 ## Derivative License
 

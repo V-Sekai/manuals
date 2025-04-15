@@ -14,13 +14,13 @@ Provide v-sekai-game in a launcher.
 
 Make a graphical launcher that runs scoop.
 
-Run scoop bucket add v-sekai-central https://github.com/v-sekai/v-sekai-central.
+Run scoop bucket add v-sekai-central <https://github.com/v-sekai/v-sekai-central>.
 
 To install, do scoop install v-sekai-game.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
-1. Create a scoop bucket at https://github.com/V-Sekai/v-sekai-central
+1. Create a scoop bucket at <https://github.com/V-Sekai/v-sekai-central>
 2. Store game builds in git repos using desync to put separate the files into chunks.
 3. In the manifest decompress the desync files.
 

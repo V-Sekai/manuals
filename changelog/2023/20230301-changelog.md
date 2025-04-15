@@ -16,7 +16,7 @@ Tuned the vr vingette usability feature to be more black.
 
 Create an Awesome V-sekai page [https://github.com/V-Sekai/awesome-v-sekai](https://github.com/V-Sekai/awesome-v-sekai).
 
-Migrate the manual page to https://v-sekai.github.io/manuals
+Migrate the manual page to <https://v-sekai.github.io/manuals>
 
 Investigated SHARK and IREE. Provides vulkan for machine learning.
 
@@ -30,15 +30,15 @@ Trial variable rate shading.
 
 Update VSK_model_explorer to stable Godot Engine 4.0.
 
-Helped HungryProton add an automated build system for his ProtonGraph application. https://github.com/protongraph/protongraph
+Helped HungryProton add an automated build system for his ProtonGraph application. <https://github.com/protongraph/protongraph>
 
 Trying to get Godot Engine V-Sekai builds to pass. There was a breaking change in Scons.
 
 Libgodot doesn't pass unit testing.
 
-Updated https://github.com/V-Sekai/godot-task-goal-planner 's gut addon and remove vsk versioning.
+Updated <https://github.com/V-Sekai/godot-task-goal-planner> 's gut addon and remove vsk versioning.
 
-Released embedding search example with Marqo. https://github.com/fire/soriee-search
+Released embedding search example with Marqo. <https://github.com/fire/soriee-search>
 
 ### Pose tests
 
@@ -61,8 +61,8 @@ Released embedding search example with Marqo. https://github.com/fire/soriee-sea
 | Organization                      | Description                                                                | date                |
 | --------------------------------- | -------------------------------------------------------------------------- | ------------------- |
 | Godot Engine Foundation & V-Sekai | CSG Fire Chatted about CSG with reduz First Meeting                        | 2023-03-30 00:00:00 |
-| V-Sekai                           | Physics Colliders Fire CoACD https://github.com/SarahWeiii/CoACD/issues/9  | 2023-03-30 00:00:00 |
-| V-Sekai & Thorvg                  | Fire Fire Review thorvg PR https://github.com/godotengine/godot/pull/75508 | 2023-03-30 00:00:00 |
+| V-Sekai                           | Physics Colliders Fire CoACD <https://github.com/SarahWeiii/CoACD/issues/9>  | 2023-03-30 00:00:00 |
+| V-Sekai & Thorvg                  | Fire Fire Review thorvg PR <https://github.com/godotengine/godot/pull/75508> | 2023-03-30 00:00:00 |
 | V-Sekai                           | Fire Fire Play a horror game First Meeting                                 | 2023-03-30 00:00:00 |
 | V-Sekai & Zylann                  | Fire Fire Asked zylann to review double precision pr                       | 2023-03-30 00:00:00 |
 | V-Sekai                           | Fire Fire Restore github cicd First Meeting                                | 2023-03-30 00:00:00 |

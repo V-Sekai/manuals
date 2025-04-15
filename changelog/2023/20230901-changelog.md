@@ -56,14 +56,14 @@ Improve the logos.
 
 commit 6519cce - (better-svgs) Improve the logos.
 
-Write a constraint minimizer https://github.com/V-Sekai/v-sekai-game/blob/constraint-minimizer/new_script.gd
+Write a constraint minimizer <https://github.com/V-Sekai/v-sekai-game/blob/constraint-minimizer/new_script.gd>
 
 Write a github action for godot engine so I can push releases
 
 Update github actions for tagged release. Use the `0.1.0-alpha1` tag.
 
-Investigate https://about.signpath.io/product/open-source for part 2
+Investigate <https://about.signpath.io/product/open-source> for part 2
 
-Launcher https://gist.github.com/fire/e5a16d3e738e8575b8ce7f527c245d27
+Launcher <https://gist.github.com/fire/e5a16d3e738e8575b8ce7f527c245d27>
 
-People are asking about 3d ik so I need to increase the code quality of https://github.com/V-Sekai/renik
+People are asking about 3d ik so I need to increase the code quality of <https://github.com/V-Sekai/renik>

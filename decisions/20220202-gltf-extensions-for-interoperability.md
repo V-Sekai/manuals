@@ -42,7 +42,7 @@ We will generate github actions templates using the same jsonnet we use for GoCD
 
 - Easy to ignore users.
 
-## Option graveyard:
+## Option graveyard
 
 - Option: Keep the status quo, which is having separate platforms.
 - Rejection Reason: We want interoperability at OMI.
@@ -57,7 +57,7 @@ We want to maintain it to encourage developers and as the publisher of the platf
 
 ## References <!-- optional and numbers of links can vary -->
 
-- https://omigroup.org/
+- <https://omigroup.org/>
 
 ## Derivative License
 

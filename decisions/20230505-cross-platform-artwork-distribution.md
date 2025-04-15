@@ -45,6 +45,6 @@ Providing a seamless cross-platform experience is essential for V-Sekai's succes
 ## References
 
 - [V-Sekai](https://v-sekai.org/)
-- UnityVRM: https://github.com/vrm-c/UniVRM
-- Silent Cel Shading Shader for Unity Game Engine: https://gitlab.com/s-ilent/SCSS
-- Silent Cel Shading Shader for Godot Engine: https://github.com/lyuma/SCSS-Godot
+- UnityVRM: <https://github.com/vrm-c/UniVRM>
+- Silent Cel Shading Shader for Unity Game Engine: <https://gitlab.com/s-ilent/SCSS>
+- Silent Cel Shading Shader for Godot Engine: <https://github.com/lyuma/SCSS-Godot>

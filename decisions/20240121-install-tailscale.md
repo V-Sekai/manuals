@@ -39,19 +39,19 @@ tailscale ip -4
 
 ## Pros
 
-1.  Secure: Tailscale uses end-to-end encryption for all traffic.
-2.  Easy to set up: The process is straightforward and can be done quickly.
-3.  Scalable: Tailscale can handle connections between a large number of devices.
+1. Secure: Tailscale uses end-to-end encryption for all traffic.
+2. Easy to set up: The process is straightforward and can be done quickly.
+3. Scalable: Tailscale can handle connections between a large number of devices.
 
 ## Cons
 
-1.  Requires internet access: Tailscale requires an active internet connection to establish the network.
-2.  Compatibility issues: There may be compatibility issues with certain applications or systems.
+1. Requires internet access: Tailscale requires an active internet connection to establish the network.
+2. Compatibility issues: There may be compatibility issues with certain applications or systems.
 
 ## Alternatives Considered
 
-1.  OpenVPN: A well-established VPN solution, but it requires more complex setup and maintenance.
-2.  WireGuard: Another VPN solution that is simpler and faster but less mature.
+1. OpenVPN: A well-established VPN solution, but it requires more complex setup and maintenance.
+2. WireGuard: Another VPN solution that is simpler and faster but less mature.
 
 ## Rare Use Case
 
@@ -63,7 +63,7 @@ In-house development of a similar solution would require significant resources a
 
 ## References
 
-1.  [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
-2.  [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine.
+1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
+2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine.
 
 _This proposal was assisted by Aria, the AI assistant._

@@ -75,7 +75,7 @@ When to use reliable events vs. "unreliable" (eventual) state synchronization: E
 TODO: What classes / bespoke types exist?
 Examples: Physics, Physics Pickup; Button; Movable Platform; Vehicle
 
-### E. Network Security Model:
+### E. Network Security Model
 
 **Concepts:**
 
@@ -129,7 +129,7 @@ Examples: Game-specific weapons; Keys; Buildings constructed
 Players may also provide a directory of avatar-spawnable scenes; Additionally, a prop database may exist or be negotiated.  
 These may include local UIs; weapons, pencils; media players; pets (parrots, mounts); vehicles; flight mechanics (wings?); visual effects.
 
-### Notes about Entity parenting:
+### Notes about Entity parenting
 
 NodePath references (../) out of an entity hierarchy must be disallowed.
 Parenting should be implemented carefully: If nodes are literally parented to another entity (e.g. vehicles), NodePath references could expose implementation details from one entity to another entity.
@@ -157,13 +157,13 @@ Yes, this is the foundation of the protocol and the basic set of nodes and behav
 
 ## References <!-- optional -->
 
-Aldridge, David. "I Shot You First: networking the Gameplay of Halo: Reach". GDC 2011. https://www.youtube.com/watch?v=h47zZrqjgLc
+Aldridge, David. "I Shot You First: networking the Gameplay of Halo: Reach". GDC 2011. <https://www.youtube.com/watch?v=h47zZrqjgLc>
 
-Fiedler, Glenn. "Networking for Physics Programmers". GDC 2015. https://www.youtube.com/watch?v=Z9X4lysFr64
+Fiedler, Glenn. "Networking for Physics Programmers". GDC 2015. <https://www.youtube.com/watch?v=Z9X4lysFr64>
 
-Fiedler, Glenn. "Networked Physics in Virtual Reality". 2018-02-22. https://www.gafferongames.com/post/networked_physics_in_virtual_reality/
+Fiedler, Glenn. "Networked Physics in Virtual Reality". 2018-02-22. <https://www.gafferongames.com/post/networked_physics_in_virtual_reality/>
 
-Rouwe, Jorrit. "Killzone Shadow Fall: Threading the Entity Update on PS4". GDCEU 2014. https://archive.org/details/GDCEU2014Rouwe
+Rouwe, Jorrit. "Killzone Shadow Fall: Threading the Entity Update on PS4". GDCEU 2014. <https://archive.org/details/GDCEU2014Rouwe>
 
 Saracen, text and voice discussions on Discord: search Discord for "entity networking" and "networking model"
 

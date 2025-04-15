@@ -12,7 +12,7 @@ We would like to visualize metrics in-game.
 
 ### Describe the proposed option and how it helps to overcome the problem or limitation
 
-Port https://github.com/fenix-hub/godot-engine.easy-charts to v-sekai
+Port <https://github.com/fenix-hub/godot-engine.easy-charts> to v-sekai
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
@@ -45,4 +45,4 @@ Too low performance impacts usability.
 ### References
 
 - [V-Sekai](https://v-sekai.org/)
-- https://github.com/fenix-hub/godot-engine.easy-charts
+- <https://github.com/fenix-hub/godot-engine.easy-charts>

@@ -33,7 +33,7 @@ This command will fetch the `rancher-vcluster.yaml` file from the `experimental-
 
 This approach integrates Rancher into Harvester, leveraging Harvester's infrastructure to manage both VMs and containers centrally.
 
-### To forcefully remove a Kubernetes namespace that is stuck in the `Terminating` state, you can follow these steps:
+### To forcefully remove a Kubernetes namespace that is stuck in the `Terminating` state, you can follow these steps
 
 1. **Edit the namespace to remove its finalizers:**
 
@@ -75,7 +75,8 @@ This approach integrates Rancher into Harvester, leveraging Harvester's infrastr
 
 If the namespace still does not delete, you may need to manually clean up resources within the namespace before retrying the above steps.
 
-#### Important Note:
+#### Important Note
+
 Forcefully removing a namespace can lead to orphaned resources. Ensure that you understand the implications of this action and have backups if necessary.
 
 ## The Benefits

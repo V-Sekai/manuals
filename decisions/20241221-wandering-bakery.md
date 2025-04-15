@@ -8,7 +8,7 @@ A simplified game environment testing LLM-driven dynamic storytelling within a t
 
 Static game stories limit player agency. An LLM can generate responsive narratives that adapt to player choices.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.
+## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
 Players visit procedurally generated villages, converse with LLM-created characters, bake thematic pastries, and influence narrative outcomes. GTPyhop-style planning tracks goals like “satisfy_character” and provides operators (bake_pastry, give_pastry, talk_to) to drive emergent gameplay.
 
@@ -44,7 +44,7 @@ Status: Proposed
 
 - V-Sekai
 
-## List further reading references.
+## List further reading references
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai)
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)

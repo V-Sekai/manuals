@@ -55,15 +55,15 @@ We need this to make the quality of life of creators better.
 
 ## References <!-- optional -->
 
-- https://github.com/BayesWitnesses/m2cgen
-- https://stackoverflow.com/questions/36071672/using-xgboost-in-c
-- https://github.com/facebookresearch/dlrm
-- https://medium.com/@marthawhite_81346/learning-with-the-criteo-tb-dataset-e3ec12d9d77e
-- https://www.kaggle.com/c/criteo-display-ad-challenge/data
+- <https://github.com/BayesWitnesses/m2cgen>
+- <https://stackoverflow.com/questions/36071672/using-xgboost-in-c>
+- <https://github.com/facebookresearch/dlrm>
+- <https://medium.com/@marthawhite_81346/learning-with-the-criteo-tb-dataset-e3ec12d9d77e>
+- <https://www.kaggle.com/c/criteo-display-ad-challenge/data>
 - Skeleton pool operator from neural blend shapes.
-- https://tailor.fandom.com/wiki/Types_of_measurement
-- https://knarkowicz.wordpress.com/2014/04/16/octahedron-normal-vector-encoding/
-- https://www.kaggle.com/egordm/deep-learning-recommendation-model-dlrm
+- <https://tailor.fandom.com/wiki/Types_of_measurement>
+- <https://knarkowicz.wordpress.com/2014/04/16/octahedron-normal-vector-encoding/>
+- <https://www.kaggle.com/egordm/deep-learning-recommendation-model-dlrm>
 
 ```
     @article{li2021learning,

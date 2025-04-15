@@ -26,7 +26,7 @@ We don't have to wait 2 hours to see if our changes break the build.
 
 There are consequences of increased developer merging friction.
 
-## Option graveyard:
+## Option graveyard
 
 - Option: The status quo. <!-- List the proposed options no longer open for consideration. -->
 - Rejection Reason: We keep breaking the build. <!-- List the reasons for the rejection: (the bad traits) -->

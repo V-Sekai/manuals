@@ -23,7 +23,7 @@ Can be done by other people.
 
 ## References <!-- optional -->
 
-- https://github.com/V-Sekai/godot/tree/subdivision
+- <https://github.com/V-Sekai/godot/tree/subdivision>
 - `https://github.com/godotengine/godot-proposals/issues/784`
 
 ## Derivative License

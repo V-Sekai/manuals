@@ -35,8 +35,8 @@ I found this idea and its cool.
 
 ### References
 
-- https://github.com/ubisoft/mixer
-- https://github.com/ubisoft/vrtist
+- <https://github.com/ubisoft/mixer>
+- <https://github.com/ubisoft/vrtist>
 
 ### Derivative License
 

@@ -32,7 +32,7 @@ We reuse the create_property data structure as the state.
 
 #### Work in progress data structure based on Tigerbeetle
 
-Referencing https://github.com/tigerbeetledb/tigerbeetle/blob/main/docs/DESIGN.md#data-structures.
+Referencing <https://github.com/tigerbeetledb/tigerbeetle/blob/main/docs/DESIGN.md#data-structures>.
 
 See `Variant bytes_to_var_with_objects (PackedByteArray bytes)` and `PackedByteArray var_to_bytes_with_objects (Variant variable)`.
 
@@ -40,23 +40,23 @@ See `Variant bytes_to_var_with_objects (PackedByteArray bytes)` and `PackedByteA
 
 ```zig
 create_property_interpolate {
-	       id: 16 bytes (128-bit)
+        id: 16 bytes (128-bit)
    past_entity_id: 16 bytes (128-bit)
 current_entity_id: 16 bytes (128-bit) [to allow interpolation between different entities]
-	user_data: 16 bytes (128-bit) [optional, e.g. opaque third-party identifier to link
-		this transfer (many-to-one) to an external entity]
-	 reserved: 16 bytes (128-bit) [reserved, for accounting policy primitives]
+ user_data: 16 bytes (128-bit) [optional, e.g. opaque third-party identifier to link
+  this transfer (many-to-one) to an external entity]
+  reserved: 16 bytes (128-bit) [reserved, for accounting policy primitives]
        pending_id: 16 bytes (128-bit) [optional, required to post or void an existing but pending transfer]
-	  timeout:  8 bytes (64-bit) [optional, required only for a pending transfer, a quantity of time,
-		i.e. an offset in nanoseconds from timestamp]
-	    shard:  4 bytes (32-bit) [required, to enforce isolation by ensuring that all transfers
-		are between entities of the same shard]
-	     code:  2 bytes (16-bit) [required, an opaque entity code describing the type
-		of the interpolation, e.g. player, map, prop]
-	    flags:  2 bytes (16-bit) [optional, to modify the usage of the reserved field and for future feature expansion.]
-	    value:  n bytes (n-bit) [required, variant of the past property and current property,
-		which must be the same for both properties. Uses var_to_bytes_with_objects.]
-	timestamp:  8 bytes (64-bit) [reserved, assigned by the leader before journaling]
+   timeout:  8 bytes (64-bit) [optional, required only for a pending transfer, a quantity of time,
+  i.e. an offset in nanoseconds from timestamp]
+     shard:  4 bytes (32-bit) [required, to enforce isolation by ensuring that all transfers
+  are between entities of the same shard]
+      code:  2 bytes (16-bit) [required, an opaque entity code describing the type
+  of the interpolation, e.g. player, map, prop]
+     flags:  2 bytes (16-bit) [optional, to modify the usage of the reserved field and for future feature expansion.]
+     value:  n bytes (n-bit) [required, variant of the past property and current property,
+  which must be the same for both properties. Uses var_to_bytes_with_objects.]
+ timestamp:  8 bytes (64-bit) [reserved, assigned by the leader before journaling]
 } = n bytes (n CPU cache lines)
 ```
 
@@ -64,21 +64,21 @@ current_entity_id: 16 bytes (128-bit) [to allow interpolation between different 
 
 ```zig
    create_property {
-	      id: 16 bytes (128-bit)
+       id: 16 bytes (128-bit)
        user_data: 16 bytes (128-bit) [optional, opaque third-party identifier to link this account
-		(many-to-one) to an external entity]
-	reserved: 48 bytes (384-bit) [reserved for future accounting policy primitives]
-	   shard:  4 bytes (32-bit) [required, to enforce isolation by ensuring that all transfers
-		are between accounts of the same ledger]
-	    code:  2 bytes (16-bit) [required, an opaque entity code describing the type
-		of the interpolation, e.g. player, map, prop]
-	   flags:  2 bytes (16-bit) [optional, net balance limits:
-		e.g. debits_must_not_exceed_credits or credits_must_not_exceed_debits]
+  (many-to-one) to an external entity]
+ reserved: 48 bytes (384-bit) [reserved for future accounting policy primitives]
+    shard:  4 bytes (32-bit) [required, to enforce isolation by ensuring that all transfers
+  are between accounts of the same ledger]
+     code:  2 bytes (16-bit) [required, an opaque entity code describing the type
+  of the interpolation, e.g. player, map, prop]
+    flags:  2 bytes (16-bit) [optional, net balance limits:
+  e.g. debits_must_not_exceed_credits or credits_must_not_exceed_debits]
      past_interpolations_pending: n bytes (n-bit variant. Uses var_to_bytes_with_objects.)
       past_interpolations_posted: n bytes (n-bit variant. Uses var_to_bytes_with_objects.)
   current_interpolations_pending: n bytes (n-bit variant. Uses var_to_bytes_with_objects.)
    current_interpolations_posted: n bytes (n-bit variant. Uses var_to_bytes_with_objects.)
-		       timestamp: 8 bytes ( 64-bit) [reserved]
+         timestamp: 8 bytes ( 64-bit) [reserved]
 } = n bytes (n CPU cache lines)
 ```
 
@@ -140,253 +140,253 @@ Note that this handles both nearest interpolation and cubic (with time) interpol
 ```c++
 template <class T>
 T Animation::_interpolate(const Vector<TKey<T>> &p_keys, double p_time, InterpolationType p_interp, bool p_loop_wrap, bool *p_ok, bool p_backward) const {
-	int len = _find(p_keys, length) + 1; // try to find last key (there may be more past the end)
+ int len = _find(p_keys, length) + 1; // try to find last key (there may be more past the end)
 
-	if (len <= 0) {
-		// (-1 or -2 returned originally) (plus one above)
-		// meaning no keys, or only key time is larger than length
-		if (p_ok) {
-			*p_ok = false;
-		}
-		return T();
-	} else if (len == 1) { // one key found (0+1), return it
+ if (len <= 0) {
+  // (-1 or -2 returned originally) (plus one above)
+  // meaning no keys, or only key time is larger than length
+  if (p_ok) {
+   *p_ok = false;
+  }
+  return T();
+ } else if (len == 1) { // one key found (0+1), return it
 
-		if (p_ok) {
-			*p_ok = true;
-		}
-		return p_keys[0].value;
-	}
+  if (p_ok) {
+   *p_ok = true;
+  }
+  return p_keys[0].value;
+ }
 
-	int idx = _find(p_keys, p_time, p_backward);
+ int idx = _find(p_keys, p_time, p_backward);
 
-	ERR_FAIL_COND_V(idx == -2, T());
+ ERR_FAIL_COND_V(idx == -2, T());
 
-	bool result = true;
-	int next = 0;
-	real_t c = 0.0;
-	// prepare for all cases of interpolation
+ bool result = true;
+ int next = 0;
+ real_t c = 0.0;
+ // prepare for all cases of interpolation
 
-	if (loop_mode == LOOP_LINEAR && p_loop_wrap) {
-		// loop
-		if (!p_backward) {
-			// no backward
-			if (idx >= 0) {
-				if (idx < len - 1) {
-					next = idx + 1;
-					real_t delta = p_keys[next].time - p_keys[idx].time;
-					real_t from = p_time - p_keys[idx].time;
+ if (loop_mode == LOOP_LINEAR && p_loop_wrap) {
+  // loop
+  if (!p_backward) {
+   // no backward
+   if (idx >= 0) {
+    if (idx < len - 1) {
+     next = idx + 1;
+     real_t delta = p_keys[next].time - p_keys[idx].time;
+     real_t from = p_time - p_keys[idx].time;
 
-					if (Math::is_zero_approx(delta)) {
-						c = 0;
-					} else {
-						c = from / delta;
-					}
-				} else {
-					next = 0;
-					real_t delta = (length - p_keys[idx].time) + p_keys[next].time;
-					real_t from = p_time - p_keys[idx].time;
+     if (Math::is_zero_approx(delta)) {
+      c = 0;
+     } else {
+      c = from / delta;
+     }
+    } else {
+     next = 0;
+     real_t delta = (length - p_keys[idx].time) + p_keys[next].time;
+     real_t from = p_time - p_keys[idx].time;
 
-					if (Math::is_zero_approx(delta)) {
-						c = 0;
-					} else {
-						c = from / delta;
-					}
-				}
-			} else {
-				// on loop, behind first key
-				idx = len - 1;
-				next = 0;
-				real_t endtime = (length - p_keys[idx].time);
-				if (endtime < 0) { // may be keys past the end
-					endtime = 0;
-				}
-				real_t delta = endtime + p_keys[next].time;
-				real_t from = endtime + p_time;
+     if (Math::is_zero_approx(delta)) {
+      c = 0;
+     } else {
+      c = from / delta;
+     }
+    }
+   } else {
+    // on loop, behind first key
+    idx = len - 1;
+    next = 0;
+    real_t endtime = (length - p_keys[idx].time);
+    if (endtime < 0) { // may be keys past the end
+     endtime = 0;
+    }
+    real_t delta = endtime + p_keys[next].time;
+    real_t from = endtime + p_time;
 
-				if (Math::is_zero_approx(delta)) {
-					c = 0;
-				} else {
-					c = from / delta;
-				}
-			}
-		} else {
-			// backward
-			if (idx <= len - 1) {
-				if (idx > 0) {
-					next = idx - 1;
-					real_t delta = (length - p_keys[next].time) - (length - p_keys[idx].time);
-					real_t from = (length - p_time) - (length - p_keys[idx].time);
+    if (Math::is_zero_approx(delta)) {
+     c = 0;
+    } else {
+     c = from / delta;
+    }
+   }
+  } else {
+   // backward
+   if (idx <= len - 1) {
+    if (idx > 0) {
+     next = idx - 1;
+     real_t delta = (length - p_keys[next].time) - (length - p_keys[idx].time);
+     real_t from = (length - p_time) - (length - p_keys[idx].time);
 
-					if (Math::is_zero_approx(delta)) {
-						c = 0;
-					} else {
-						c = from / delta;
-					}
-				} else {
-					next = len - 1;
-					real_t delta = p_keys[idx].time + (length - p_keys[next].time);
-					real_t from = (length - p_time) - (length - p_keys[idx].time);
+     if (Math::is_zero_approx(delta)) {
+      c = 0;
+     } else {
+      c = from / delta;
+     }
+    } else {
+     next = len - 1;
+     real_t delta = p_keys[idx].time + (length - p_keys[next].time);
+     real_t from = (length - p_time) - (length - p_keys[idx].time);
 
-					if (Math::is_zero_approx(delta)) {
-						c = 0;
-					} else {
-						c = from / delta;
-					}
-				}
-			} else {
-				// on loop, in front of last key
-				idx = 0;
-				next = len - 1;
-				real_t endtime = p_keys[idx].time;
-				if (endtime > length) { // may be keys past the end
-					endtime = length;
-				}
-				real_t delta = p_keys[next].time - endtime;
-				real_t from = p_time - endtime;
+     if (Math::is_zero_approx(delta)) {
+      c = 0;
+     } else {
+      c = from / delta;
+     }
+    }
+   } else {
+    // on loop, in front of last key
+    idx = 0;
+    next = len - 1;
+    real_t endtime = p_keys[idx].time;
+    if (endtime > length) { // may be keys past the end
+     endtime = length;
+    }
+    real_t delta = p_keys[next].time - endtime;
+    real_t from = p_time - endtime;
 
-				if (Math::is_zero_approx(delta)) {
-					c = 0;
-				} else {
-					c = from / delta;
-				}
-			}
-		}
-	} else { // no loop
-		if (!p_backward) {
-			if (idx >= 0) {
-				if (idx < len - 1) {
-					next = idx + 1;
-					real_t delta = p_keys[next].time - p_keys[idx].time;
-					real_t from = p_time - p_keys[idx].time;
+    if (Math::is_zero_approx(delta)) {
+     c = 0;
+    } else {
+     c = from / delta;
+    }
+   }
+  }
+ } else { // no loop
+  if (!p_backward) {
+   if (idx >= 0) {
+    if (idx < len - 1) {
+     next = idx + 1;
+     real_t delta = p_keys[next].time - p_keys[idx].time;
+     real_t from = p_time - p_keys[idx].time;
 
-					if (Math::is_zero_approx(delta)) {
-						c = 0;
-					} else {
-						c = from / delta;
-					}
-				} else {
-					next = idx;
-				}
-			} else {
-				idx = next = 0;
-			}
-		} else {
-			if (idx <= len - 1) {
-				if (idx > 0) {
-					next = idx - 1;
-					real_t delta = (length - p_keys[next].time) - (length - p_keys[idx].time);
-					real_t from = (length - p_time) - (length - p_keys[idx].time);
+     if (Math::is_zero_approx(delta)) {
+      c = 0;
+     } else {
+      c = from / delta;
+     }
+    } else {
+     next = idx;
+    }
+   } else {
+    idx = next = 0;
+   }
+  } else {
+   if (idx <= len - 1) {
+    if (idx > 0) {
+     next = idx - 1;
+     real_t delta = (length - p_keys[next].time) - (length - p_keys[idx].time);
+     real_t from = (length - p_time) - (length - p_keys[idx].time);
 
-					if (Math::is_zero_approx(delta)) {
-						c = 0;
-					} else {
-						c = from / delta;
-					}
+     if (Math::is_zero_approx(delta)) {
+      c = 0;
+     } else {
+      c = from / delta;
+     }
 
-				} else {
-					next = idx;
-				}
-			} else {
-				idx = next = len - 1;
-			}
-		}
-	}
+    } else {
+     next = idx;
+    }
+   } else {
+    idx = next = len - 1;
+   }
+  }
+ }
 
-	if (p_ok) {
-		*p_ok = result;
-	}
-	if (!result) {
-		return T();
-	}
+ if (p_ok) {
+  *p_ok = result;
+ }
+ if (!result) {
+  return T();
+ }
 
-	real_t tr = p_keys[idx].transition;
+ real_t tr = p_keys[idx].transition;
 
-	if (tr == 0 || idx == next) {
-		// don't interpolate if not needed
-		return p_keys[idx].value;
-	}
+ if (tr == 0 || idx == next) {
+  // don't interpolate if not needed
+  return p_keys[idx].value;
+ }
 
-	if (tr != 1.0) {
-		c = Math::ease(c, tr);
-	}
+ if (tr != 1.0) {
+  c = Math::ease(c, tr);
+ }
 
-	switch (p_interp) {
-		case INTERPOLATION_NEAREST: {
-			return p_keys[idx].value;
-		} break;
-		case INTERPOLATION_LINEAR: {
-			return _interpolate(p_keys[idx].value, p_keys[next].value, c);
-		} break;
-		case INTERPOLATION_LINEAR_ANGLE: {
-			return _interpolate_angle(p_keys[idx].value, p_keys[next].value, c);
-		} break;
-		case INTERPOLATION_CUBIC:
-		case INTERPOLATION_CUBIC_ANGLE: {
-			int pre = 0;
-			int post = 0;
-			if (!p_backward) {
-				pre = idx - 1;
-				if (pre < 0) {
-					if (loop_mode == LOOP_LINEAR && p_loop_wrap) {
-						pre = len - 1;
-					} else {
-						pre = 0;
-					}
-				}
-				post = next + 1;
-				if (post >= len) {
-					if (loop_mode == LOOP_LINEAR && p_loop_wrap) {
-						post = 0;
-					} else {
-						post = next;
-					}
-				}
-			} else {
-				pre = idx + 1;
-				if (pre >= len) {
-					if (loop_mode == LOOP_LINEAR && p_loop_wrap) {
-						pre = 0;
-					} else {
-						pre = idx;
-					}
-				}
-				post = next - 1;
-				if (post < 0) {
-					if (loop_mode == LOOP_LINEAR && p_loop_wrap) {
-						post = len - 1;
-					} else {
-						post = 0;
-					}
-				}
-			}
+ switch (p_interp) {
+  case INTERPOLATION_NEAREST: {
+   return p_keys[idx].value;
+  } break;
+  case INTERPOLATION_LINEAR: {
+   return _interpolate(p_keys[idx].value, p_keys[next].value, c);
+  } break;
+  case INTERPOLATION_LINEAR_ANGLE: {
+   return _interpolate_angle(p_keys[idx].value, p_keys[next].value, c);
+  } break;
+  case INTERPOLATION_CUBIC:
+  case INTERPOLATION_CUBIC_ANGLE: {
+   int pre = 0;
+   int post = 0;
+   if (!p_backward) {
+    pre = idx - 1;
+    if (pre < 0) {
+     if (loop_mode == LOOP_LINEAR && p_loop_wrap) {
+      pre = len - 1;
+     } else {
+      pre = 0;
+     }
+    }
+    post = next + 1;
+    if (post >= len) {
+     if (loop_mode == LOOP_LINEAR && p_loop_wrap) {
+      post = 0;
+     } else {
+      post = next;
+     }
+    }
+   } else {
+    pre = idx + 1;
+    if (pre >= len) {
+     if (loop_mode == LOOP_LINEAR && p_loop_wrap) {
+      pre = 0;
+     } else {
+      pre = idx;
+     }
+    }
+    post = next - 1;
+    if (post < 0) {
+     if (loop_mode == LOOP_LINEAR && p_loop_wrap) {
+      post = len - 1;
+     } else {
+      post = 0;
+     }
+    }
+   }
 
-			real_t pre_t = 0.0;
-			real_t to_t = 0.0;
-			real_t post_t = 0.0;
-			if (loop_mode == LOOP_LINEAR && p_loop_wrap) {
-				pre_t = pre > idx ? -length + p_keys[pre].time - p_keys[idx].time : p_keys[pre].time - p_keys[idx].time;
-				to_t = next < idx ? length + p_keys[next].time - p_keys[idx].time : p_keys[next].time - p_keys[idx].time;
-				post_t = next < idx || post <= idx ? length + p_keys[post].time - p_keys[idx].time : p_keys[post].time - p_keys[idx].time;
-			} else {
-				pre_t = p_keys[pre].time - p_keys[idx].time;
-				to_t = p_keys[next].time - p_keys[idx].time;
-				post_t = p_keys[post].time - p_keys[idx].time;
-			}
+   real_t pre_t = 0.0;
+   real_t to_t = 0.0;
+   real_t post_t = 0.0;
+   if (loop_mode == LOOP_LINEAR && p_loop_wrap) {
+    pre_t = pre > idx ? -length + p_keys[pre].time - p_keys[idx].time : p_keys[pre].time - p_keys[idx].time;
+    to_t = next < idx ? length + p_keys[next].time - p_keys[idx].time : p_keys[next].time - p_keys[idx].time;
+    post_t = next < idx || post <= idx ? length + p_keys[post].time - p_keys[idx].time : p_keys[post].time - p_keys[idx].time;
+   } else {
+    pre_t = p_keys[pre].time - p_keys[idx].time;
+    to_t = p_keys[next].time - p_keys[idx].time;
+    post_t = p_keys[post].time - p_keys[idx].time;
+   }
 
-			if (p_interp == INTERPOLATION_CUBIC_ANGLE) {
-				return _cubic_interpolate_angle_in_time(
-						p_keys[pre].value, p_keys[idx].value, p_keys[next].value, p_keys[post].value, c,
-						pre_t, to_t, post_t);
-			}
-			return _cubic_interpolate_in_time(
-					p_keys[pre].value, p_keys[idx].value, p_keys[next].value, p_keys[post].value, c,
-					pre_t, to_t, post_t);
-		} break;
-		default:
-			return p_keys[idx].value;
-	}
+   if (p_interp == INTERPOLATION_CUBIC_ANGLE) {
+    return _cubic_interpolate_angle_in_time(
+      p_keys[pre].value, p_keys[idx].value, p_keys[next].value, p_keys[post].value, c,
+      pre_t, to_t, post_t);
+   }
+   return _cubic_interpolate_in_time(
+     p_keys[pre].value, p_keys[idx].value, p_keys[next].value, p_keys[post].value, c,
+     pre_t, to_t, post_t);
+  } break;
+  default:
+   return p_keys[idx].value;
+ }
 
-	// do a barrel roll
+ // do a barrel roll
 }
 ```
 

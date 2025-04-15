@@ -1,4 +1,4 @@
-# Superseded: Solve V-Sekai limitations using ChatGPT-4 AI completion.
+# Superseded: Solve V-Sekai limitations using ChatGPT-4 AI completion
 
 ## Metadata
 
@@ -10,7 +10,7 @@
 
 We sometimes need help finding solutions to our issues. ChatGPT-4 artificial intelligence completion can help us solve the entire problem when we only have the start of the solution.
 
-## Describe the problem or limitation you have in your project, e.g., in free form, using two to three sentences. Consider articulating the case in the form of a question.
+## Describe the problem or limitation you have in your project, e.g., in free form, using two to three sentences. Consider articulating the case in the form of a question
 
 How can we leverage ChatGPT-4 AI completion to assist in solving problems and completing proposals for V-Sekai?
 
@@ -26,7 +26,7 @@ Use ChatGPT-4 AI completion with the Visual Studio Code "Genie" addon to fill in
 1. Use the Visual Studio Code "Genie" addon with ChatGPT-4 AI completion to complete the remaining sections of the proposal.
 1. Review and refine the completed proposal.
 1. Review with copy editing software if accessible.
-1. Record the decisions on GitHub at https://github.com/V-Sekai/manuals.
+1. Record the decisions on GitHub at <https://github.com/V-Sekai/manuals>.
 
 Example of using ChatGPT-4 AI completion with the proposal template.
 

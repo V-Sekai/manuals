@@ -1,6 +1,6 @@
 # Special Notice: V-Sekai 2023-2024
 
-## Stuff we did over the past year:
+## Stuff we did over the past year
 
 ### 2023
 
@@ -17,20 +17,20 @@
 - Jan–Mar focused on FBX support and GDC.
 - Apr–May focused on updating Unidot to support FBX.
 
-## Current work:
+## Current work
 
 - Since early June, Lyuma started to revisit the incomplete code from 10 months ago. Lyuma is currently working on tracker binding / skeleton calibration (e.g. full body).
 - 4.3 release was delayed. Lyuma wants to release 4.3-compatible updates to Unidot and VRM.
 - Lyuma had some difficulties with API integration.
 - Some Godot 4.3 bugs are still on Lyuma's plate.
 
-## Other projects in progress:
+## Other projects in progress
 
 - New in-game UI update. A draft was committed a couple weeks ago but saracen has been away on vacation.
 - Saracen has also been working some more on physics sync.
 - API/backend redesign.
 
-## WTFAWRY: What do we need to get v-sekai-game working with the new architecture:
+## WTFAWRY: What do we need to get v-sekai-game working with the new architecture
 
 - Integration of UI code into game.
 - Network syncing support of props/objects using the new system.

@@ -6,7 +6,7 @@
 - Deciders: V-Sekai,fire,
 - Tags: V-Sekai,ChatGPT-4,AI_assistance
 
-## Propose a possible solution to solve a V-Sekai limitation. If this doesn't look right, choose a different type.
+## Propose a possible solution to solve a V-Sekai limitation. If this doesn't look right, choose a different type
 
 Improve the 3D import functionality in Godot Engine for V-Sekai by enhancing the existing import process and adding support for more file formats.
 

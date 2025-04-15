@@ -42,4 +42,4 @@ As a core functionality of V-Sekai, addressing the limitations in the Godot Engi
 
 - [V-Sekai](https://v-sekai.org/)
 - This article is assisted by AI.
-- https://github.com/V-Sekai/v-sekai-game/issues/68
+- <https://github.com/V-Sekai/v-sekai-game/issues/68>

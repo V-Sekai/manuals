@@ -353,7 +353,7 @@ Then:
 sudo kubectl apply -f ingress.yaml
 ```
 
-### Setting up metallb:
+### Setting up metallb
 
 #### metalconfig.yaml
 
@@ -406,7 +406,7 @@ On SELinux systems, you may need to give containers read permissions:
 sudo chcon -R unconfined_u:object_r:container_share_t:s0  /opt/osxcross
 ```
 
-### Setting up gocd:
+### Setting up gocd
 
 #### gocd_values.yaml
 
@@ -454,7 +454,7 @@ sudo helm install -f gocd_values.yaml gocd gocd/gocd --version 1.37.0
 # Make sure to enable the agents in the web UI, and assign them to Resources and Environments.
 ```
 
-#### Upgrade process (**make sure to `sudo kubectl delete ingress gocd-server` after every upgrade**):
+#### Upgrade process (**make sure to `sudo kubectl delete ingress gocd-server` after every upgrade**)
 
 ```bash
 # Disable and Delete all agents in the AGENTS tab of gocd.
@@ -469,7 +469,7 @@ sudo kubectl patch deployments/gocd-agent-dind --patch '{"spec":{"template":{"sp
 
 #### DockerHub
 
-Create DockerHub permissions: Create an account if you do not have one. Visit https://hub.docker.com/settings/security and create an Access Token. Copy the token.
+Create DockerHub permissions: Create an account if you do not have one. Visit <https://hub.docker.com/settings/security> and create an Access Token. Copy the token.
 
 ```bash
 sudo  kubectl create secret docker-registry regcred --docker-server=https://index.docker.io/v1/ --docker-username=dockerhubuser --docker-password=XXXX --docker-email=your.dockerhub.email@example.com
@@ -599,7 +599,7 @@ sudo kubectl patch deployments/gocd-agent -p "$(cat gocd-agent-patch.yaml)"
 
 Make sure to enable the Agents when they come up on the GoCD Dashboard. Add every server to the "`development`" environment. Also, assign linux servers to "`mingw`" and "`linux`". Assign the dind agents to "`dind`".
 
-For GitLab, go to https://ci.v-sekai.cloud/go/admin/security/auth_configs and select `Create new authorization configuration` -> `gitlab-auth-config` / `GitLab Authentication plugin` / follow documentation here: https://github.com/gocd-contrib/gitlab-oauth-authorization-plugin/blob/master/INSTALL.md - **Do not check Allow only known users to login yet**. If this works, you can skip the text auth step and corresponding passwd commands.
+For GitLab, go to <https://ci.v-sekai.cloud/go/admin/security/auth_configs> and select `Create new authorization configuration` -> `gitlab-auth-config` / `GitLab Authentication plugin` / follow documentation here: <https://github.com/gocd-contrib/gitlab-oauth-authorization-plugin/blob/master/INSTALL.md> - **Do not check Allow only known users to login yet**. If this works, you can skip the text auth step and corresponding passwd commands.
 
 Create Guest login:
 
@@ -611,7 +611,7 @@ Create Guest login:
 
 At this point, Guest should have permission to view pipelines, see logs, download artifacts but nothing else.
 
-For text auth, go to https://ci.v-sekai.cloud/go/admin/security/auth_configs and select `Create new authorization configuration` -> `file-auth-config` / `Password File Authentication plugin` / `/godata/config/password.properties`
+For text auth, go to <https://ci.v-sekai.cloud/go/admin/security/auth_configs> and select `Create new authorization configuration` -> `file-auth-config` / `Password File Authentication plugin` / `/godata/config/password.properties`
 
 ```bash
 sudo kubectl exec gocd-server-6d77846995-5l244 -- touch /godata/config/password.properties
@@ -624,14 +624,14 @@ Now go to users page, edit your user and enable `Global Admin`.
 
 Now go to file-auth-config, edit configuration, enable Allow only known users to login
 
-### gocd config repositories:
+### gocd config repositories
 
 Go to **Admin -> Config Repositories**
 
 - **Config #repository Name:** groups-gocd-pipelines
 - **Plugin ID:** JSON Configuration Plugin
 - **Material Type:** Git
-- **URL:** git@gitlab.com:godot-groups/groups-gocd-pipelines
+- **URL:** <git@gitlab.com>:godot-groups/groups-gocd-pipelines
 - **Branch:** master
 - **GoCD pipeline files pattern:** \*.gopipeline.json
 - **GoCD environment files pattern:** \*.goenvironment.json
@@ -641,7 +641,7 @@ Go to **Admin -> Config Repositories**
 - **Allow:** Pipeline Group: beta
 - **Allow:** Environment: development
 
-### Setup of flux2 GitOps:
+### Setup of flux2 GitOps
 
 ```bash
 curl -L https://github.com/fluxcd/flux2/releases/download/v0.24.1/flux_0.24.1_linux_amd64.tar.gz | tar -zxf - flux
@@ -650,7 +650,7 @@ sudo chmod +x /usr/local/bin/flux
 sudo kubectl apply -f https://github.com/fluxcd/flux2/releases/download/v0.24.1/install.yaml
 ```
 
-Fork the flux-config #repository from here https://github.com/V-Sekai/flux-config into your own github account, and set GHUSER=your github account.
+Fork the flux-config #repository from here <https://github.com/V-Sekai/flux-config> into your own github account, and set GHUSER=your github account.
 
 Now, in your fork of flux-config, go to project Settings -> Deploy Keys and add the result of the above identity command. Make sure to check **Allow write access**.
 
@@ -666,7 +666,7 @@ sudo flux get all
 
 FOR DEBUGGING ONLY: `sudo setenforce permissive` - this appears to have no effect, so there is a different problem.
 
-### Setting up cockroachdb:
+### Setting up cockroachdb
 
 #### cockroachdb.values.yaml
 
@@ -820,7 +820,7 @@ sudo kubectl apply -f https://raw.githubusercontent.com/V-Sekai/uro/master/kuber
 
 k3s set the default client cert for root to expire after a year or so. This leads to a problem where you can't administer your own cluster because your root account's cert is expired. So I had to figure out how to fix this.
 
-For the most part, the process I came up with matches this more concise post here: https://github.com/k3s-io/k3s/issues/2342#issuecomment-713016341
+For the most part, the process I came up with matches this more concise post here: <https://github.com/k3s-io/k3s/issues/2342#issuecomment-713016341>
 
 First approach, how to rotate kube client certificates:
 Because we need to modify /root/.kube/config, I ran `sudo -i` to login as a root shell.
@@ -978,7 +978,7 @@ Having experience with kubernetes and maintaining discipline will make scaling o
 
 ## References <!-- optional -->
 
-- https://k3s.io/
+- <https://k3s.io/>
 
 ## Derivative License
 

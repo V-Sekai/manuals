@@ -46,10 +46,10 @@ Not in code. This is documenting a technique.
 
 ## References <!-- optional -->
 
-- https://queue.acm.org/detail.cfm?id=2927301
-- https://superluminal.eu/
-- https://developer.amd.com/amd-uprof
-- http://www.brendangregg.com/flamegraphs.html
+- <https://queue.acm.org/detail.cfm?id=2927301>
+- <https://superluminal.eu/>
+- <https://developer.amd.com/amd-uprof>
+- <http://www.brendangregg.com/flamegraphs.html>
 
 ## Derivative License
 

@@ -54,7 +54,7 @@ Only we can create official V-Sekai guides.
 
 ## References <!-- optional -->
 
-- https://v-sekai.org/
+- <https://v-sekai.org/>
 
 ## Derivative License
 

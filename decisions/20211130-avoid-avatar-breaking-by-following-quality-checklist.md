@@ -18,7 +18,7 @@ This is defined for a VRM character.
 
 - Add a root bone
 - Age height normalization to 1.59m for an Asian adult female.
-- Auto generate spring bones via https://fujisunflower.booth.pm/items/2087178
+- Auto generate spring bones via <https://fujisunflower.booth.pm/items/2087178>
 - Check eyes
 - Check Jaws
 - Adjust spring bones limits

@@ -17,7 +17,7 @@ Use kaolin for some of the tools.
 ## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
 
 1. `git clone https://github.com/NVIDIAGameWorks/kaolin.git`
-1. Install https://github.com/conda-forge/miniforge#mambaforge
+1. Install <https://github.com/conda-forge/miniforge#mambaforge>
 1. `conda create --name kaolin python=3.9`
 1. `conda activate kaolin`
 1. `conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch`
@@ -64,8 +64,8 @@ I have an approach!
 
 ## References <!-- optional -->
 
-- https://kaolin.readthedocs.io/en/latest/notes/installation.html
-- https://www.alecjacobson.com/weblog/?tag=qslim
+- <https://kaolin.readthedocs.io/en/latest/notes/installation.html>
+- <https://www.alecjacobson.com/weblog/?tag=qslim>
 
 ## Derivative License
 

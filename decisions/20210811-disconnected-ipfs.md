@@ -10,7 +10,7 @@ Disconnect IPFS so it can be standalone packages.
 
 ### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
 
-Implement https://github.com/skogard/nebulus as a c++ library.
+Implement <https://github.com/skogard/nebulus> as a c++ library.
 
 ### If this enhancement will not be used often, can it be worked around with a few lines of script?
 
@@ -30,7 +30,7 @@ May be able to be done by others.
 
 ### References
 
-- https://github.com/skogard/nebulus
+- <https://github.com/skogard/nebulus>
 
 ### Derivative License
 
