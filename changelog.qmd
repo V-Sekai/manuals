@@ -49,7 +49,7 @@ def estimate_reading_time(filepath):
 def extract_h1_title(filepath):
     with open(filepath, encoding="utf-8") as f:
         for line in f:
-            line = strip()
+            line = line.strip()
             if line.startswith("# "):
                 return line[2:].strip()
     # fallback to filename if no H1 found
@@ -64,12 +64,13 @@ for f in files:
     short_title = shorten_title(h1_title)
     reading_time = estimate_reading_time(f)
     filename = os.path.basename(f)
-    # Make the title clickable (relative link to the markdown file)
-    link = f"[{short_title}]({f})"
+    # Use HTML for clickable links
+    link = f'<a href="{f}">{short_title}</a>'
     rows.append({"title": link, "reading-time": reading_time, "filename": filename})
 
-df = pd.DataFrame(rows)[["title", "reading-time", "filename"]].sort_values("filename", ascending=False).drop(columns=["filename"])
+# Ensure both columns are present and sort by filename descending
+df = pd.DataFrame(rows, columns=["title", "reading-time", "filename"]).sort_values("filename", ascending=False).drop(columns=["filename"])
 
-# Show with paging (10 per page), render HTML links
+# Show with paging (10 per page), render HTML links and show reading time
 show(df, paging=True, pageLength=10, index=False, escape=False)
 ```
