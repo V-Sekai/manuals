@@ -45,10 +45,12 @@ for f in files:
     filename = os.path.basename(f)
     html_link = f.replace(".md", ".html")
     link = f'<a href="{html_link}">{short_title}</a>'
-    rows.append({"title": link, "reading-time": reading_time})
+    rows.append({"title": link, "reading-time": reading_time, "filename": filename})
 
-columns = ["title", "reading-time"]
+columns = ["title", "filename", "reading-time"]
 df = pd.DataFrame(rows, columns=columns)
+if not df.empty:
+    df = df.sort_values("filename", ascending=False)
 
 show(df, paging=True, pageLength=10, index=False, escape=False)
 ```
