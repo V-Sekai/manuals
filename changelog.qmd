@@ -1,14 +1,6 @@
 ---
 title: "Changes to V-Sekai"
 toc: true
-listing:
-  filter-ui: true
-  type: table
-  contents:
-    - "changelog/**/*.md"
-  sort: "filename dsc"
-  feed: true
-  fields: [title]
 ---
 
 All notable changes to this project will be documented in this file.
@@ -26,3 +18,45 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 **Fixed** for any bug fixes.
 
 **Security** in case of vulnerabilities.
+
+```{python}
+#| echo: false
+#| output: asis
+
+import glob
+import pandas as pd
+from itables import show
+import os
+import sys
+import subprocess
+
+# Install readtime if not already installed
+try:
+    import readtime
+except ImportError:
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "readtime"])
+    import readtime
+
+# Collect all markdown files in changelog
+files = [f for f in glob.glob("changelog/**/*.md", recursive=True)]
+
+def estimate_reading_time(filepath):
+    with open(filepath, encoding="utf-8") as f:
+        text = f.read()
+    result = readtime.of_text(text)
+    return result.text  # e.g., "1 min read"
+
+def shorten_title(title, length=40):
+    return title if len(title) <= length else title[:length-3] + "..."
+
+rows = []
+for f in files:
+    title = os.path.splitext(os.path.basename(f))[0]
+    short_title = shorten_title(title)
+    reading_time = estimate_reading_time(f)
+    rows.append({"title": short_title, "reading-time": reading_time})
+
+df = pd.DataFrame(rows).sort_values("title", ascending=False)
+
+show(df, paging=True, pageLength=10, index=False)
+```
