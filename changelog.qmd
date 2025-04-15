@@ -68,7 +68,11 @@ for f in files:
     link = f'<a href="{f}">{short_title}</a>'
     rows.append({"filename": filename, "title": link, "reading-time": reading_time, })
 
-df = pd.DataFrame(rows, columns=["filename", "title", "reading-time",]).sort_values("filename", ascending=False)
+# Always create DataFrame with all columns, and only sort if not empty
+columns = ["filename", "title", "reading-time"]
+df = pd.DataFrame(rows, columns=columns)
+if not df.empty:
+    df = df.sort_values("filename", ascending=False)
 
 # Show with paging (10 per page), render HTML links and show reading time
 show(df, paging=True, pageLength=10, index=False, escape=False)
