@@ -4,7 +4,7 @@
 
 Analyze the provided image of [Person's Name] to assess this individual's physical appearance, attire, and nonverbal cues. Consider the following aspects:
 
-### Physical Form:
+### Physical Form
 
 - **Posture:** Is the person's posture upright, slouched, or leaning?
 - **Build:** Does the person appear slim, athletic, stocky, or of average build?
@@ -15,7 +15,7 @@ Analyze the provided image of [Person's Name] to assess this individual's physic
 - **Gaze:** Is the gaze direct, avoiding, downcast, intense, or soft?
 - **Expression:** What is the facial expression? Is it neutral, serious, nervous, confident, defensive, or emotional?
 
-### Dress and Accessories:
+### Dress and Accessories
 
 - **Clothing Type:** What type of clothing is the person wearing (e.g., casual, formal, uniform)?
 - **Style:** What is the style of the clothing (e.g., traditional, trendy, professional)?
@@ -24,25 +24,25 @@ Analyze the provided image of [Person's Name] to assess this individual's physic
 - **Footwear:** What type of footwear is the person wearing?
 - **Accessories:** Are there any accessories present, such as jewelry, eyewear, or headwear?
 
-### Body Language:
+### Body Language
 
 - **Gestures:** What kind of gestures is the person using (e.g., hand movements, facial expressions)?
 - **Positioning:** How is the person positioned in relation to others or objects?
 - **Head Movement:** How is the person moving his or her head (e.g., nodding, shaking)?
 - **Feet Placement:** How are the person's feet positioned?
 
-### Contextual Indicators:
+### Contextual Indicators
 
 - **Surroundings:** Where is the image taken? Is it indoors or outdoors? What is the background like?
 - **Interactions:** Is the person interacting with anyone in the image? If so, how?
 - **Environmental Details:** What is the lighting like? Are there any other notable environmental factors?
 
-### Feminine/Masculine Presentation:
+### Feminine/Masculine Presentation
 
 - **Gender Presentation:** How does this individual present in terms of gender? Are there any traditionally feminine or masculine cues in the person's appearance or behavior?
 - **Cultural Context:** How might cultural factors influence this individual's gender presentation?
 
-### Emotional and Behavioral Cues:
+### Emotional and Behavioral Cues
 
 - **Demeanor:** What is the person's overall demeanor? Is the person calm, agitated, or cooperative?
 - **Speech-related Cues:** (If applicable) Are there any noticeable speech patterns evident, such as stuttering or rapid talking?

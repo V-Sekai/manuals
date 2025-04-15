@@ -203,9 +203,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="file-attestation" class="level3">
 <h3 class="anchored" data-anchor-id="file-attestation">File attestation</h3>
 <p>Read your public key.</p>
-<pre><code>$ ssh-add -L &gt; me.pub # Can be related to a X.509 `.crt`</code></pre>
+<pre><code>ssh-add -L &gt; me.pub # Can be related to a X.509 `.crt`</code></pre>
 <p>Create a file.</p>
-<pre><code>$ touch avatar-sample.vrm</code></pre>
+<pre><code>touch avatar-sample.vrm</code></pre>
 <p>Sign your file.</p>
 <pre><code>ssh-keygen -Y sign -f &lt;(ssh-add -L) -n "avatar@v-sekai.org" &lt; avatar-sample.vrm &gt;&gt; avatar-sample.vrm.avatar%40V-sekai.com.sig
 ssh-keygen -Y sign -f &lt;(ssh-add -L) -n "me@v-sekai.org" &lt; avatar-sample.vrm &gt;&gt; avatar-sample.vrm.me%40V-sekai.com.sig</code></pre>
@@ -215,7 +215,7 @@ ne line.</code></pre>
 <p>The allowed_signers file associates a string that represents a person (Principle) to a Public Key.</p>
 <pre><code>ssh-keygen -Y verify -f allowed_signers -I ernest.lee@chibifire.com -n "avatar@v-sekai.org" -s avatar-sample.vrm.avatar%40V-sekai.com.sig &lt; avatar-sample.vrm
 ssh-keygen -Y verify -f allowed_signers -I ernest.lee@chibifire.com -n "me@v-sekai.org" -s  avatar-sample.vrm.me%40V-sekai.com.sig &lt; avatar-sample.vrm</code></pre>
-<p>Referenced https://www.agwa.name/blog/post/ssh_signatures</p>
+<p>Referenced <a href="https://www.agwa.name/blog/post/ssh_signatures" class="uri">https://www.agwa.name/blog/post/ssh_signatures</a></p>
 </section>
 <section id="create-ssh-certificates-to-delegate-roles" class="level3">
 <h3 class="anchored" data-anchor-id="create-ssh-certificates-to-delegate-roles">Create SSH Certificates to delegate roles</h3>
@@ -256,7 +256,7 @@ ssh-keygen -Y verify -f allowed_signers -I ernest.lee@chibifire.com -n "me@v-sek
 <li><p>Rejection Reason: Technically complicated to devops start and multiple layers compared to an offline approach.</p></li>
 <li><p>Option: Ipfs and Etherium</p></li>
 <li><p>Rejection Reason: Requires a globally distributed database.</p></li>
-<li><p>Option: Sigstore https://www.sigstore.dev/</p></li>
+<li><p>Option: Sigstore <a href="https://www.sigstore.dev/" class="uri">https://www.sigstore.dev/</a></p></li>
 <li><p>Rejection Reason: Why aren’t we using sigstore?</p></li>
 </ul>
 </section>
@@ -271,12 +271,12 @@ ssh-keygen -Y verify -f allowed_signers -I ernest.lee@chibifire.com -n "me@v-sek
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References <!-- optional --></h2>
 <ul>
-<li>https://github.com/V-Sekai/</li>
-<li>https://github.com/sigstore/rekor/tree/main/pkg/pki/ssh</li>
-<li>https://stackoverflow.com/questions/4629537/how-to-encrypt-data-in-php-using-public-private-keys</li>
-<li>https://stackoverflow.com/questions/60160082/how-to-achieve-openssl-smime-encrypt-with-public-key-functionality-in-code</li>
-<li>https://github.com/cloudtools/ssh-cert-authority</li>
-<li>https://github.com/je9000/ssh-smime</li>
+<li><a href="https://github.com/V-Sekai/" class="uri">https://github.com/V-Sekai/</a></li>
+<li><a href="https://github.com/sigstore/rekor/tree/main/pkg/pki/ssh" class="uri">https://github.com/sigstore/rekor/tree/main/pkg/pki/ssh</a></li>
+<li><a href="https://stackoverflow.com/questions/4629537/how-to-encrypt-data-in-php-using-public-private-keys" class="uri">https://stackoverflow.com/questions/4629537/how-to-encrypt-data-in-php-using-public-private-keys</a></li>
+<li><a href="https://stackoverflow.com/questions/60160082/how-to-achieve-openssl-smime-encrypt-with-public-key-functionality-in-code" class="uri">https://stackoverflow.com/questions/60160082/how-to-achieve-openssl-smime-encrypt-with-public-key-functionality-in-code</a></li>
+<li><a href="https://github.com/cloudtools/ssh-cert-authority" class="uri">https://github.com/cloudtools/ssh-cert-authority</a></li>
+<li><a href="https://github.com/je9000/ssh-smime" class="uri">https://github.com/je9000/ssh-smime</a></li>
 </ul>
 </section>
 <section id="derivative-license" class="level2">

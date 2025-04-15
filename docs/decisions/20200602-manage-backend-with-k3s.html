@@ -164,13 +164,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#system-setup-done-once" id="toc-system-setup-done-once" class="nav-link" data-scroll-target="#system-setup-done-once">System Setup (Done once)</a></li>
   <li><a href="#selinux-patches" id="toc-selinux-patches" class="nav-link" data-scroll-target="#selinux-patches">SELinux patches</a></li>
   <li><a href="#install-k3s-start-here-if-recreating" id="toc-install-k3s-start-here-if-recreating" class="nav-link" data-scroll-target="#install-k3s-start-here-if-recreating">Install k3s (Start here if recreating)</a></li>
-  <li><a href="#setting-up-metallb" id="toc-setting-up-metallb" class="nav-link" data-scroll-target="#setting-up-metallb">Setting up metallb:</a></li>
+  <li><a href="#setting-up-metallb" id="toc-setting-up-metallb" class="nav-link" data-scroll-target="#setting-up-metallb">Setting up metallb</a></li>
   <li><a href="#setting-up-osxcross" id="toc-setting-up-osxcross" class="nav-link" data-scroll-target="#setting-up-osxcross">Setting up osxcross</a></li>
-  <li><a href="#setting-up-gocd" id="toc-setting-up-gocd" class="nav-link" data-scroll-target="#setting-up-gocd">Setting up gocd:</a></li>
+  <li><a href="#setting-up-gocd" id="toc-setting-up-gocd" class="nav-link" data-scroll-target="#setting-up-gocd">Setting up gocd</a></li>
   <li><a href="#osxcross-gocd-agents" id="toc-osxcross-gocd-agents" class="nav-link" data-scroll-target="#osxcross-gocd-agents">OSXCROSS GOCD Agents</a></li>
-  <li><a href="#gocd-config-repositories" id="toc-gocd-config-repositories" class="nav-link" data-scroll-target="#gocd-config-repositories">gocd config repositories:</a></li>
-  <li><a href="#setup-of-flux2-gitops" id="toc-setup-of-flux2-gitops" class="nav-link" data-scroll-target="#setup-of-flux2-gitops">Setup of flux2 GitOps:</a></li>
-  <li><a href="#setting-up-cockroachdb" id="toc-setting-up-cockroachdb" class="nav-link" data-scroll-target="#setting-up-cockroachdb">Setting up cockroachdb:</a></li>
+  <li><a href="#gocd-config-repositories" id="toc-gocd-config-repositories" class="nav-link" data-scroll-target="#gocd-config-repositories">gocd config repositories</a></li>
+  <li><a href="#setup-of-flux2-gitops" id="toc-setup-of-flux2-gitops" class="nav-link" data-scroll-target="#setup-of-flux2-gitops">Setup of flux2 GitOps</a></li>
+  <li><a href="#setting-up-cockroachdb" id="toc-setting-up-cockroachdb" class="nav-link" data-scroll-target="#setting-up-cockroachdb">Setting up cockroachdb</a></li>
   <li><a href="#keeping-the-system-and-cluster-up-to-date" id="toc-keeping-the-system-and-cluster-up-to-date" class="nav-link" data-scroll-target="#keeping-the-system-and-cluster-up-to-date">Keeping the system and cluster up-to-date</a></li>
   </ul></li>
   <li><a href="#positive-consequences" id="toc-positive-consequences" class="nav-link" data-scroll-target="#positive-consequences">Positive Consequences <!-- optional --></a></li>
@@ -504,7 +504,7 @@ allow container_t container_runtime_tmpfs_t:lnk_file { getattr relabelto unlink 
 </section>
 </section>
 <section id="setting-up-metallb" class="level3">
-<h3 class="anchored" data-anchor-id="setting-up-metallb">Setting up metallb:</h3>
+<h3 class="anchored" data-anchor-id="setting-up-metallb">Setting up metallb</h3>
 <section id="metalconfig.yaml" class="level4">
 <h4 class="anchored" data-anchor-id="metalconfig.yaml">metalconfig.yaml</h4>
 <div class="sourceCode" id="cb13"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apiVersion</span><span class="kw">:</span><span class="at"> v1</span></span>
@@ -544,7 +544,7 @@ allow container_t container_runtime_tmpfs_t:lnk_file { getattr relabelto unlink 
 <div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chcon <span class="at">-R</span> unconfined_u:object_r:container_share_t:s0  /opt/osxcross</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="setting-up-gocd" class="level3">
-<h3 class="anchored" data-anchor-id="setting-up-gocd">Setting up gocd:</h3>
+<h3 class="anchored" data-anchor-id="setting-up-gocd">Setting up gocd</h3>
 <section id="gocd_values.yaml" class="level4">
 <h4 class="anchored" data-anchor-id="gocd_values.yaml">gocd_values.yaml</h4>
 <div class="sourceCode" id="cb17"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">agent</span><span class="kw">:</span></span>
@@ -588,7 +588,7 @@ allow container_t container_runtime_tmpfs_t:lnk_file { getattr relabelto unlink 
 </section>
 </section>
 <section id="upgrade-process-make-sure-to-sudo-kubectl-delete-ingress-gocd-server-after-every-upgrade" class="level4">
-<h4 class="anchored" data-anchor-id="upgrade-process-make-sure-to-sudo-kubectl-delete-ingress-gocd-server-after-every-upgrade">Upgrade process (<strong>make sure to <code>sudo kubectl delete ingress gocd-server</code> after every upgrade</strong>):</h4>
+<h4 class="anchored" data-anchor-id="upgrade-process-make-sure-to-sudo-kubectl-delete-ingress-gocd-server-after-every-upgrade">Upgrade process (<strong>make sure to <code>sudo kubectl delete ingress gocd-server</code> after every upgrade</strong>)</h4>
 <div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Disable and Delete all agents in the AGENTS tab of gocd.</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Edit</span> gocd_values.yaml and set agent version to latest <span class="er">(</span><span class="ex">e.g.</span> v21.2.0-groups-0.5.8<span class="kw">)</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> helm upgrade <span class="at">-f</span> gocd_values.yaml gocd gocd/gocd <span class="at">--version</span> 1.37.0</span>
@@ -600,7 +600,7 @@ allow container_t container_runtime_tmpfs_t:lnk_file { getattr relabelto unlink 
 </section>
 <section id="dockerhub" class="level4">
 <h4 class="anchored" data-anchor-id="dockerhub">DockerHub</h4>
-<p>Create DockerHub permissions: Create an account if you do not have one. Visit https://hub.docker.com/settings/security and create an Access Token. Copy the token.</p>
+<p>Create DockerHub permissions: Create an account if you do not have one. Visit <a href="https://hub.docker.com/settings/security" class="uri">https://hub.docker.com/settings/security</a> and create an Access Token. Copy the token.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span>  kubectl create secret docker-registry regcred <span class="at">--docker-server</span><span class="op">=</span>https://index.docker.io/v1/ <span class="at">--docker-username</span><span class="op">=</span>dockerhubuser <span class="at">--docker-password</span><span class="op">=</span>XXXX <span class="at">--docker-email</span><span class="op">=</span>your.dockerhub.email@example.com</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="osxcross" class="level4">
@@ -714,7 +714,7 @@ allow container_t container_runtime_tmpfs_t:lnk_file { getattr relabelto unlink 
 <p>and apply with:</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> kubectl patch deployments/gocd-agent <span class="at">-p</span> <span class="st">"</span><span class="va">$(</span><span class="fu">cat</span> gocd-agent-patch.yaml<span class="va">)</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Make sure to enable the Agents when they come up on the GoCD Dashboard. Add every server to the “<code>development</code>” environment. Also, assign linux servers to “<code>mingw</code>” and “<code>linux</code>”. Assign the dind agents to “<code>dind</code>”.</p>
-<p>For GitLab, go to https://ci.v-sekai.cloud/go/admin/security/auth_configs and select <code>Create new authorization configuration</code> -&gt; <code>gitlab-auth-config</code> / <code>GitLab Authentication plugin</code> / follow documentation here: https://github.com/gocd-contrib/gitlab-oauth-authorization-plugin/blob/master/INSTALL.md - <strong>Do not check Allow only known users to login yet</strong>. If this works, you can skip the text auth step and corresponding passwd commands.</p>
+<p>For GitLab, go to <a href="https://ci.v-sekai.cloud/go/admin/security/auth_configs" class="uri">https://ci.v-sekai.cloud/go/admin/security/auth_configs</a> and select <code>Create new authorization configuration</code> -&gt; <code>gitlab-auth-config</code> / <code>GitLab Authentication plugin</code> / follow documentation here: <a href="https://github.com/gocd-contrib/gitlab-oauth-authorization-plugin/blob/master/INSTALL.md" class="uri">https://github.com/gocd-contrib/gitlab-oauth-authorization-plugin/blob/master/INSTALL.md</a> - <strong>Do not check Allow only known users to login yet</strong>. If this works, you can skip the text auth step and corresponding passwd commands.</p>
 <p>Create Guest login:</p>
 <ol type="1">
 <li>Go to auth_configs, <code>Create new authorization configuration</code> -&gt; <code>guest-login</code> / <code>Guest Login Plugin</code> / Fill out Go server URL / Username <code>view</code> / Display name <code>Guest</code>.</li>
@@ -724,7 +724,7 @@ allow container_t container_runtime_tmpfs_t:lnk_file { getattr relabelto unlink 
 <li>Admin -&gt; Pipelines. Select Pipeline Group <code>beta</code>, click + on the top right of the whole <em>group</em>, go to Roles, add <code>guest</code>, and only check <strong>View</strong>. Save this.</li>
 </ol>
 <p>At this point, Guest should have permission to view pipelines, see logs, download artifacts but nothing else.</p>
-<p>For text auth, go to https://ci.v-sekai.cloud/go/admin/security/auth_configs and select <code>Create new authorization configuration</code> -&gt; <code>file-auth-config</code> / <code>Password File Authentication plugin</code> / <code>/godata/config/password.properties</code></p>
+<p>For text auth, go to <a href="https://ci.v-sekai.cloud/go/admin/security/auth_configs" class="uri">https://ci.v-sekai.cloud/go/admin/security/auth_configs</a> and select <code>Create new authorization configuration</code> -&gt; <code>file-auth-config</code> / <code>Password File Authentication plugin</code> / <code>/godata/config/password.properties</code></p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> kubectl exec gocd-server-6d77846995-5l244 <span class="at">--</span> touch /godata/config/password.properties</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum install httpd-tools</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="ex">htpasswd</span> <span class="at">-c</span> <span class="at">-B</span> passwd admin</span>
@@ -733,13 +733,13 @@ allow container_t container_runtime_tmpfs_t:lnk_file { getattr relabelto unlink 
 <p>Now go to file-auth-config, edit configuration, enable Allow only known users to login</p>
 </section>
 <section id="gocd-config-repositories" class="level3">
-<h3 class="anchored" data-anchor-id="gocd-config-repositories">gocd config repositories:</h3>
+<h3 class="anchored" data-anchor-id="gocd-config-repositories">gocd config repositories</h3>
 <p>Go to <strong>Admin -&gt; Config Repositories</strong></p>
 <ul>
 <li><strong>Config #repository Name:</strong> groups-gocd-pipelines</li>
 <li><strong>Plugin ID:</strong> JSON Configuration Plugin</li>
 <li><strong>Material Type:</strong> Git</li>
-<li><strong>URL:</strong> git@gitlab.com:godot-groups/groups-gocd-pipelines</li>
+<li><strong>URL:</strong> <a href="mailto:git@gitlab.com" class="email">git@gitlab.com</a>:godot-groups/groups-gocd-pipelines</li>
 <li><strong>Branch:</strong> master</li>
 <li><strong>GoCD pipeline files pattern:</strong> *.gopipeline.json</li>
 <li><strong>GoCD environment files pattern:</strong> *.goenvironment.json</li>
@@ -751,12 +751,12 @@ allow container_t container_runtime_tmpfs_t:lnk_file { getattr relabelto unlink 
 </ul>
 </section>
 <section id="setup-of-flux2-gitops" class="level3">
-<h3 class="anchored" data-anchor-id="setup-of-flux2-gitops">Setup of flux2 GitOps:</h3>
+<h3 class="anchored" data-anchor-id="setup-of-flux2-gitops">Setup of flux2 GitOps</h3>
 <div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-L</span> https://github.com/fluxcd/flux2/releases/download/v0.24.1/flux_0.24.1_linux_amd64.tar.gz <span class="kw">|</span> <span class="fu">tar</span> <span class="at">-zxf</span> <span class="at">-</span> flux</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cp flux /usr/local/bin/flux</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod +x /usr/local/bin/flux</span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> kubectl apply <span class="at">-f</span> https://github.com/fluxcd/flux2/releases/download/v0.24.1/install.yaml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Fork the flux-config #repository from here https://github.com/V-Sekai/flux-config into your own github account, and set GHUSER=your github account.</p>
+<p>Fork the flux-config #repository from here <a href="https://github.com/V-Sekai/flux-config" class="uri">https://github.com/V-Sekai/flux-config</a> into your own github account, and set GHUSER=your github account.</p>
 <p>Now, in your fork of flux-config, go to project Settings -&gt; Deploy Keys and add the result of the above identity command. Make sure to check <strong>Allow write access</strong>.</p>
 <p>Once you have done this, you can continue with the flux setup using your newly forked repository.</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">GHUSER</span><span class="op">=</span><span class="st">"xxxxxxxxx"</span></span>
@@ -767,7 +767,7 @@ allow container_t container_runtime_tmpfs_t:lnk_file { getattr relabelto unlink 
 <p>FOR DEBUGGING ONLY: <code>sudo setenforce permissive</code> - this appears to have no effect, so there is a different problem.</p>
 </section>
 <section id="setting-up-cockroachdb" class="level3">
-<h3 class="anchored" data-anchor-id="setting-up-cockroachdb">Setting up cockroachdb:</h3>
+<h3 class="anchored" data-anchor-id="setting-up-cockroachdb">Setting up cockroachdb</h3>
 <section id="cockroachdb.values.yaml" class="level4">
 <h4 class="anchored" data-anchor-id="cockroachdb.values.yaml">cockroachdb.values.yaml</h4>
 <div class="sourceCode" id="cb27"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">statefulset</span><span class="kw">:</span></span>
@@ -904,7 +904,7 @@ allow container_t container_runtime_tmpfs_t:lnk_file { getattr relabelto unlink 
 <section id="rotating-client-kubectl-certificates-default-ones-expire-after-only-one-year" class="level4">
 <h4 class="anchored" data-anchor-id="rotating-client-kubectl-certificates-default-ones-expire-after-only-one-year">Rotating client kubectl certificates (default ones expire after only one year)</h4>
 <p>k3s set the default client cert for root to expire after a year or so. This leads to a problem where you can’t administer your own cluster because your root account’s cert is expired. So I had to figure out how to fix this.</p>
-<p>For the most part, the process I came up with matches this more concise post here: https://github.com/k3s-io/k3s/issues/2342#issuecomment-713016341</p>
+<p>For the most part, the process I came up with matches this more concise post here: <a href="https://github.com/k3s-io/k3s/issues/2342#issuecomment-713016341" class="uri">https://github.com/k3s-io/k3s/issues/2342#issuecomment-713016341</a></p>
 <p>First approach, how to rotate kube client certificates: Because we need to modify /root/.kube/config, I ran <code>sudo -i</code> to login as a root shell.</p>
 <ol type="1">
 <li>mkdir tls and create <code>tls/config.txt</code> with the following lines:</li>
@@ -1026,7 +1026,7 @@ cat "client-ca.crt" &gt;&gt; "$1.crt"</code></pre>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References <!-- optional --></h2>
 <ul>
-<li>https://k3s.io/</li>
+<li><a href="https://k3s.io/" class="uri">https://k3s.io/</a></li>
 </ul>
 </section>
 <section id="derivative-license" class="level2">

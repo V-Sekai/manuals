@@ -1,4 +1,4 @@
-# V-Sekai's main goals and features:
+# V-Sekai's main goals and features
 
 V-Sekai wants to make virtual collaboration easy for everyone by focusing on bringing people together and enabling creation.
 

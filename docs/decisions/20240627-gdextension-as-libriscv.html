@@ -204,7 +204,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">// Guest:</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">extern</span> <span class="st">"C"</span> __attribute__<span class="op">((</span>used<span class="op">,</span> retain<span class="op">))</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> test<span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">,</span> <span class="dt">const</span> <span class="dt">char</span><span class="op">*</span> c<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">+</span> b<span class="op">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a> <span class="cf">return</span> a <span class="op">+</span> b<span class="op">;</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This approach would make arbitrary function calls into the VM guest possible. The functions must be C ABI, and if you use the string name, the function must be in the symbol table.</p>
 <p>This can also be a future approach into compiling gdscript bytecode as more performant code via string templating the bytecode as c and compiling it, but that is reserved for future work.</p>

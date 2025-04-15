@@ -170,15 +170,15 @@ uniform usampler2D data_tex;
 
 /*
 Use with the following GDScript code:
-    var data_img = Image.new()
-    var data := PoolByteArray()
-    var indexin = 0x8400
-    data.append(indexin&amp;0xff)
-    data.append((indexin&gt;&gt;8)&amp;0xff)
-    data_img.create_from_data(1, 1, false, Image.FORMAT_RH, data)
-    var data_tex = ImageTexture.new()
-    data_tex.create_from_image(data_img, 0)
-    self.get_surface_material(0).set_shader_param("data_tex", data_tex)
+ var data_img = Image.new()
+ var data := PoolByteArray()
+ var indexin = 0x8400
+ data.append(indexin&amp;0xff)
+ data.append((indexin&gt;&gt;8)&amp;0xff)
+ data_img.create_from_data(1, 1, false, Image.FORMAT_RH, data)
+ var data_tex = ImageTexture.new()
+ data_tex.create_from_image(data_img, 0)
+ self.get_surface_material(0).set_shader_param("data_tex", data_tex)
 */
 
 // Extract the raw 16-bit integer assigned in a GL_RGBA16F or similar texture format
@@ -189,45 +189,45 @@ Use with the following GDScript code:
 // However, in Godot, they forgot this overload existed, so we reimplement it.
 
 uvec4 godot_hack_mix(uvec4 a, uvec4 b, bvec4 c) {
-    return uvec4(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z, c.w ? b.w : a.w);
+ return uvec4(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z, c.w ? b.w : a.w);
 }
 
 void fragment() {
-    // Fetch half precision texture using usampler2D.
-    // For some reason, it first converts to 32-bit float (but losslessly????)
-    // and so we have to convert the 32-bit float back to 16-bits.
-    uvec4 data = texelFetch(data_tex, ivec2(0,0), 0);
+ // Fetch half precision texture using usampler2D.
+ // For some reason, it first converts to 32-bit float (but losslessly????)
+ // and so we have to convert the 32-bit float back to 16-bits.
+ uvec4 data = texelFetch(data_tex, ivec2(0,0), 0);
 
-    // Calculate bit shifted exponent
-    uvec4 exps = godot_hack_mix(
-        // Adjust floating point from 8-bit in float32 (127 bias) to 5-bit in half (15 bias)
-        uvec4((uvec4((ivec4((data &amp; uvec4(0x7F800000)) &gt;&gt; uvec4(23)) - ivec4(127)) + ivec4(15)) &amp; uvec4(0x1F)) &lt;&lt; uvec4(10)),
-        // Inf and NaN will remain Inf and Nan (maximum half exponent = 31)
-        uvec4(ivec4(31 &lt;&lt; 10)),
-        // Check for maximum float32 exponent = 255
-        equal((data) &amp; uvec4(0x7F800000), uvec4(0x7F800000)));
+ // Calculate bit shifted exponent
+ uvec4 exps = godot_hack_mix(
+  // Adjust floating point from 8-bit in float32 (127 bias) to 5-bit in half (15 bias)
+  uvec4((uvec4((ivec4((data &amp; uvec4(0x7F800000)) &gt;&gt; uvec4(23)) - ivec4(127)) + ivec4(15)) &amp; uvec4(0x1F)) &lt;&lt; uvec4(10)),
+  // Inf and NaN will remain Inf and Nan (maximum half exponent = 31)
+  uvec4(ivec4(31 &lt;&lt; 10)),
+  // Check for maximum float32 exponent = 255
+  equal((data) &amp; uvec4(0x7F800000), uvec4(0x7F800000)));
 
-    // calculate final data.
-    data = godot_hack_mix(
-        // mantissa | exponent | signbit
-        ((data &amp; uvec4(0x007FFFFF)) &gt;&gt; uvec4(13)) | exps | (((data &gt;&gt; uvec4(31)) &amp; uvec4(1)) &lt;&lt; uvec4(15)),
-        // Denormalized case: exponent is all over the place, so instead we add the smallest non-denormalized half, then extract the mantessa bits.
-        // Finally, or the sign bit (and exponent = 0)
-        (((floatBitsToUint(uintBitsToFloat(data &amp; uvec4(0x7FFFFFFF)) + 1.0/16384.0) &amp; uvec4(0x007FFFFF)) &gt;&gt; uvec4(13))) | (((data &gt;&gt; uvec4(31)) &amp; uvec4(1)) &lt;&lt; uvec4(15)),
-        // Denormalized case can be detected with half exponent &lt;= -15.
-        lessThanEqual((data) &amp; uvec4(0x7F800000), uvec4(0x38000000)));
+ // calculate final data.
+ data = godot_hack_mix(
+  // mantissa | exponent | signbit
+  ((data &amp; uvec4(0x007FFFFF)) &gt;&gt; uvec4(13)) | exps | (((data &gt;&gt; uvec4(31)) &amp; uvec4(1)) &lt;&lt; uvec4(15)),
+  // Denormalized case: exponent is all over the place, so instead we add the smallest non-denormalized half, then extract the mantessa bits.
+  // Finally, or the sign bit (and exponent = 0)
+  (((floatBitsToUint(uintBitsToFloat(data &amp; uvec4(0x7FFFFFFF)) + 1.0/16384.0) &amp; uvec4(0x007FFFFF)) &gt;&gt; uvec4(13))) | (((data &gt;&gt; uvec4(31)) &amp; uvec4(1)) &lt;&lt; uvec4(15)),
+  // Denormalized case can be detected with half exponent &lt;= -15.
+  lessThanEqual((data) &amp; uvec4(0x7F800000), uvec4(0x38000000)));
 
-    // Parse out individual bits if needed
-    ivec2 datar = ivec2((uvec2(data.r) &gt;&gt; uvec2(0,8)) &amp; uvec2(0xFF));
-    ivec2 datag = ivec2((uvec2(data.g) &gt;&gt; uvec2(0,8)) &amp; uvec2(0xFF));
-    ivec2 datab = ivec2((uvec2(data.b) &gt;&gt; uvec2(0,8)) &amp; uvec2(0xFF));
-    ivec2 dataa = ivec2((uvec2(data.a) &gt;&gt; uvec2(0,8)) &amp; uvec2(0xFF));
+ // Parse out individual bits if needed
+ ivec2 datar = ivec2((uvec2(data.r) &gt;&gt; uvec2(0,8)) &amp; uvec2(0xFF));
+ ivec2 datag = ivec2((uvec2(data.g) &gt;&gt; uvec2(0,8)) &amp; uvec2(0xFF));
+ ivec2 datab = ivec2((uvec2(data.b) &gt;&gt; uvec2(0,8)) &amp; uvec2(0xFF));
+ ivec2 dataa = ivec2((uvec2(data.a) &gt;&gt; uvec2(0,8)) &amp; uvec2(0xFF));
 
-    // Example code: check for precise 16-bit value that matches GDScript.
-    ALBEDO = vec3(0,0,0);
-    if (data.r == uint(0xFFFF)) {
-        ALBEDO = vec3(1,1,1);
-    }
+ // Example code: check for precise 16-bit value that matches GDScript.
+ ALBEDO = vec3(0,0,0);
+ if (data.r == uint(0xFFFF)) {
+  ALBEDO = vec3(1,1,1);
+ }
 }</code></pre>
 </section>
 <section id="positive-consequences" class="level3">

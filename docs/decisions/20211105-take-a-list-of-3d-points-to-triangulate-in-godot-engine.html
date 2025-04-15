@@ -197,10 +197,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h2>
 <ol type="1">
 <li>Implement “An Algorithm for Triangulating Multiple 3D Polygons”</li>
-<li>Use Godot’s delaunay tetrahedralize https://github.com/godotengine/godot/blob/96d7bc62af25b85b8b9cc091eeea1e7a784ba624/core/math/delaunay_3d.h#L145 <code>static Vector&lt;OutputSimplex&gt; tetrahedralize(const Vector&lt;Vector3&gt; &amp;p_points)</code></li>
+<li>Use Godot’s delaunay tetrahedralize <a href="https://github.com/godotengine/godot/blob/96d7bc62af25b85b8b9cc091eeea1e7a784ba624/core/math/delaunay_3d.h#L145" class="uri">https://github.com/godotengine/godot/blob/96d7bc62af25b85b8b9cc091eeea1e7a784ba624/core/math/delaunay_3d.h#L145</a> <code>static Vector&lt;OutputSimplex&gt; tetrahedralize(const Vector&lt;Vector3&gt; &amp;p_points)</code></li>
 <li>Emilie Yu described a method for smoothing meshes.</li>
 </ol>
-<p>Libigl should be best for smoothing while pinning the boundaries. I see they have a solver that can take fixed boundary constraints https://libigl.github.io/tutorial/#quadratic-energy-minimization so that could allow you to pin the boundaries. So instead of this line it would be something like</p>
+<p>Libigl should be best for smoothing while pinning the boundaries. I see they have a solver that can take fixed boundary constraints <a href="https://libigl.github.io/tutorial/#quadratic-energy-minimization" class="uri">https://libigl.github.io/tutorial/#quadratic-energy-minimization</a> so that could allow you to pin the boundaries. So instead of this line it would be something like</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>igl<span class="op">::</span>min_quad_with_fixed_data mqwf<span class="op">;</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>igl<span class="op">::</span>min_quad_with_fixed_precompute<span class="op">(</span>S<span class="op">,</span> <span class="op">[</span>flat vector of indices of boundary vertices size<span class="op">=(</span><span class="dv">3</span> <span class="op">*</span> N_boundary<span class="op">)],</span> <span class="op">[</span>zero matrix<span class="op">],</span> <span class="kw">true</span><span class="op">,</span> mqwf<span class="op">);</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>igl<span class="op">::</span>min_quad_with_fixed_solve<span class="op">(</span>mqwf<span class="op">,</span> M <span class="op">*</span> U<span class="op">,</span> <span class="op">[</span>flat vector of boundary vertices positions size<span class="op">=(</span><span class="dv">3</span> <span class="op">*</span> N_boundary<span class="op">)],</span> <span class="op">[</span>zero vector<span class="op">],</span> Z<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -232,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="option-graveyard" class="level2">
 <h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard: <!-- same as above --></h2>
 <ul>
-<li>Option: Integrate drawing like OpenBrush. https://github.com/icosa-gallery/open-brush</li>
+<li>Option: Integrate drawing like OpenBrush. <a href="https://github.com/icosa-gallery/open-brush" class="uri">https://github.com/icosa-gallery/open-brush</a></li>
 <li>Rejection Reason: The feel is not the same.</li>
 </ul>
 </section>
@@ -247,12 +247,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References <!-- optional --></h2>
 <ul>
-<li>https://www.cse.wustl.edu/~taoju/zoum/projects/TriMultPoly</li>
-<li>https://em-yu.github.io/</li>
-<li>https://ns.inria.fr/d3/CASSIE</li>
-<li>https://libigl.github.io/</li>
-<li>https://github.com/godotengine/</li>
-<li>https://www.blender.org/</li>
+<li><a href="https://www.cse.wustl.edu/~taoju/zoum/projects/TriMultPoly" class="uri">https://www.cse.wustl.edu/~taoju/zoum/projects/TriMultPoly</a></li>
+<li><a href="https://em-yu.github.io/" class="uri">https://em-yu.github.io/</a></li>
+<li><a href="https://ns.inria.fr/d3/CASSIE" class="uri">https://ns.inria.fr/d3/CASSIE</a></li>
+<li><a href="https://libigl.github.io/" class="uri">https://libigl.github.io/</a></li>
+<li><a href="https://github.com/godotengine/" class="uri">https://github.com/godotengine/</a></li>
+<li><a href="https://www.blender.org/" class="uri">https://www.blender.org/</a></li>
 </ul>
 </section>
 <section id="derivative-license" class="level2">

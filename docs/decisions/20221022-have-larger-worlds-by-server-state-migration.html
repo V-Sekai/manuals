@@ -162,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</a></li>
   <li><a href="#positive-consequences" id="toc-positive-consequences" class="nav-link" data-scroll-target="#positive-consequences">Positive Consequences <!-- improvement of quality attribute satisfaction, follow-up decisions required --></a></li>
   <li><a href="#negative-consequences" id="toc-negative-consequences" class="nav-link" data-scroll-target="#negative-consequences">Negative Consequences <!-- compromising quality attribute, follow-up decisions required --></a></li>
-  <li><a href="#option-graveyard" id="toc-option-graveyard" class="nav-link" data-scroll-target="#option-graveyard">Option graveyard:</a></li>
+  <li><a href="#option-graveyard" id="toc-option-graveyard" class="nav-link" data-scroll-target="#option-graveyard">Option graveyard</a></li>
   <li><a href="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" id="toc-if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="nav-link" data-scroll-target="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</a></li>
   <li><a href="#is-there-a-reason-why-this-should-be-core-and-done-by-us" id="toc-is-there-a-reason-why-this-should-be-core-and-done-by-us" class="nav-link" data-scroll-target="#is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
@@ -248,7 +248,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="option-graveyard" class="level2">
-<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard:</h2>
+<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
 <ul>
 <li>Option: The status quo. <!-- List the proposed options no longer open for consideration. --></li>
 <li>Rejection Reason: This solves nothing. <!-- List the reasons for the rejection: (the bad traits) --></li>
@@ -283,38 +283,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb1"><pre class="sourceCode swift code-with-copy"><code class="sourceCode swift"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>extends Node3D</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">func</span> <span class="fu">_ready</span><span class="op">():</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">var</span> <span class="fu">db</span> <span class="op">:</span> <span class="dt">SQLite</span> <span class="op">=</span> SQLite<span class="op">.</span>new<span class="op">();</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(!</span>db<span class="op">.</span>open<span class="op">(</span><span class="st">"test"</span><span class="op">)):</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        print<span class="op">(</span><span class="st">"Failed opening database."</span><span class="op">);</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">return</span><span class="op">;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">_drop</span> <span class="op">:</span> String <span class="op">=</span> <span class="st">"""drop table if exists entity;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a> <span class="dt">var</span> <span class="fu">db</span> <span class="op">:</span> <span class="dt">SQLite</span> <span class="op">=</span> SQLite<span class="op">.</span>new<span class="op">();</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a> <span class="cf">if</span> <span class="op">(!</span>db<span class="op">.</span>open<span class="op">(</span><span class="st">"test"</span><span class="op">)):</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  print<span class="op">(</span><span class="st">"Failed opening database."</span><span class="op">);</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">return</span><span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a> <span class="kw">var</span> <span class="va">_drop</span> <span class="op">:</span> String <span class="op">=</span> <span class="st">"""drop table if exists entity;</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">_create_entity_table</span> <span class="op">:</span> String <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a> <span class="kw">var</span> <span class="va">_create_entity_table</span> <span class="op">:</span> String <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="st">CREATE TABLE entity (</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st">    id TEXT PRIMARY KEY NOT NULL CHECK(LENGTH(id) = 36),</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="st">    user_data blob NOT NULL CHECK( LENGTH(user_data) = 16) DEFAULT (zeroblob(16)),</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="st">    reserved blob NOT NULL CHECK( LENGTH(reserved) = 48)  DEFAULT (zeroblob(48)),</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="st">    shard   INTEGER NOT NULL,</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="st">    code    INTEGER NOT NULL,</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="st">    flags   INTEGER NOT NULL,</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="st">    past_pending    BLOB NOT NULL CHECK( LENGTH(past_pending) &lt;= 1024) DEFAULT (zeroblob(64)),</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="st">    past_posted BLOB NOT NULL CHECK( LENGTH(past_posted) &lt;= 1024) DEFAULT (zeroblob(64)),</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="st">    current_pending BLOB NOT NULL CHECK( LENGTH(current_pending) &lt;= 1024) DEFAULT (zeroblob(64)),</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="st">    current_posted  BLOB NOT NULL CHECK( LENGTH(current_posted) &lt;= 1024) DEFAULT (zeroblob(64)),</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="st">    timestamp INTEGER NOT NULL</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st"> id TEXT PRIMARY KEY NOT NULL CHECK(LENGTH(id) = 36),</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="st"> user_data blob NOT NULL CHECK( LENGTH(user_data) = 16) DEFAULT (zeroblob(16)),</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="st"> reserved blob NOT NULL CHECK( LENGTH(reserved) = 48)  DEFAULT (zeroblob(48)),</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="st"> shard INTEGER NOT NULL,</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="st"> code INTEGER NOT NULL,</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="st"> flags INTEGER NOT NULL,</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="st"> past_pending BLOB NOT NULL CHECK( LENGTH(past_pending) &lt;= 1024) DEFAULT (zeroblob(64)),</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="st"> past_posted BLOB NOT NULL CHECK( LENGTH(past_posted) &lt;= 1024) DEFAULT (zeroblob(64)),</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="st"> current_pending BLOB NOT NULL CHECK( LENGTH(current_pending) &lt;= 1024) DEFAULT (zeroblob(64)),</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="st"> current_posted BLOB NOT NULL CHECK( LENGTH(current_posted) &lt;= 1024) DEFAULT (zeroblob(64)),</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="st"> timestamp INTEGER NOT NULL</span></span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="st">) WITHOUT ROWID, STRICT;</span></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>#   db<span class="op">.</span>query<span class="op">(</span>create_entity_table<span class="op">)</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">_truncate_entities</span> <span class="op">:</span> String <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a># db<span class="op">.</span>query<span class="op">(</span>create_entity_table<span class="op">)</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a> <span class="kw">var</span> <span class="va">_truncate_entities</span> <span class="op">:</span> String <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="st">DELETE FROM entity;</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>#   db<span class="op">.</span>query<span class="op">(</span>truncate_entities<span class="op">)</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="cf">in</span> range<span class="op">(</span><span class="dv">32</span><span class="op">):</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> <span class="va">node_3d</span> <span class="op">:</span> Node3D <span class="op">=</span> Node3D<span class="op">.</span>new<span class="op">()</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> <span class="va">script</span> <span class="op">=</span> load<span class="op">(</span><span class="st">"res://sqlite_write/sqlite_write_scene.gd"</span><span class="op">)</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>        node_3d<span class="op">.</span>set_script<span class="op">(</span>script<span class="op">)</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        add_child<span class="op">(</span>node_3d<span class="op">,</span> <span class="kw">true</span><span class="op">)</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        node_3d<span class="op">.</span>owner <span class="op">=</span> <span class="kw">self</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="st"> """</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a># db<span class="op">.</span>query<span class="op">(</span>truncate_entities<span class="op">)</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a> <span class="cf">for</span> i <span class="cf">in</span> range<span class="op">(</span><span class="dv">32</span><span class="op">):</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="kw">var</span> <span class="va">node_3d</span> <span class="op">:</span> Node3D <span class="op">=</span> Node3D<span class="op">.</span>new<span class="op">()</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="kw">var</span> <span class="va">script</span> <span class="op">=</span> load<span class="op">(</span><span class="st">"res://sqlite_write/sqlite_write_scene.gd"</span><span class="op">)</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  node_3d<span class="op">.</span>set_script<span class="op">(</span>script<span class="op">)</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  add_child<span class="op">(</span>node_3d<span class="op">,</span> <span class="kw">true</span><span class="op">)</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  node_3d<span class="op">.</span>owner <span class="op">=</span> <span class="kw">self</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="simulate-entity-processing" class="level3">
 <h3 class="anchored" data-anchor-id="simulate-entity-processing">Simulate entity processing</h3>
@@ -326,44 +326,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> <span class="va">uuid</span> <span class="op">:</span> String</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="kw">func</span> <span class="fu">_ready</span><span class="op">():</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">db</span> <span class="op">=</span> SQLite<span class="op">.</span>new<span class="op">();</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(!</span>db<span class="op">.</span>open<span class="op">(</span><span class="st">"test"</span><span class="op">)):</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        print<span class="op">(</span><span class="st">"Failed opening database."</span><span class="op">);</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">return</span><span class="op">;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a> <span class="dt">db</span> <span class="op">=</span> SQLite<span class="op">.</span>new<span class="op">();</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a> <span class="cf">if</span> <span class="op">(!</span>db<span class="op">.</span>open<span class="op">(</span><span class="st">"test"</span><span class="op">)):</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  print<span class="op">(</span><span class="st">"Failed opening database."</span><span class="op">);</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">return</span><span class="op">;</span></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">select_uuid</span> <span class="op">:</span> String <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT lower(hex(randomblob(4)) || '-' || hex(randomblob(2)) || '-' || '4' ||</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="st">    substr(hex( randomblob(2)), 2) || '-' ||</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="st">    substr('AB89', 1 + (abs(random()) % 4) , 1)  ||</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="st">    substr(hex(randomblob(2)), 2) || '-' ||</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="st">    hex(randomblob(6))) as uuid;</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    uuid <span class="op">=</span> db<span class="op">.</span>fetch_array<span class="op">(</span>select_uuid<span class="op">)[</span><span class="dv">0</span><span class="op">][</span><span class="st">"uuid"</span><span class="op">]</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">query_create_original</span> <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a> <span class="kw">var</span> <span class="va">select_uuid</span> <span class="op">:</span> String <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="st"> SELECT lower(hex(randomblob(4)) || '-' || hex(randomblob(2)) || '-' || '4' ||</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="st"> substr(hex( randomblob(2)), 2) || '-' ||</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="st"> substr('AB89', 1 + (abs(random()) % 4) , 1)  ||</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="st"> substr(hex(randomblob(2)), 2) || '-' ||</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="st"> hex(randomblob(6))) as uuid;</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="st"> """</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a> uuid <span class="op">=</span> db<span class="op">.</span>fetch_array<span class="op">(</span>select_uuid<span class="op">)[</span><span class="dv">0</span><span class="op">][</span><span class="st">"uuid"</span><span class="op">]</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a> <span class="kw">var</span> <span class="va">query_create_original</span> <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="st">INSERT INTO entity ("id", "user_data", "reserved", "shard", "code", "flags", "past_pending", "past_posted",</span></span>
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="st">"current_pending", "current_posted", "timestamp")</span></span>
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="st">VALUES (?, zeroblob(16), zeroblob(48), 0, 0, 0, zeroblob(64), zeroblob(64), zeroblob(64), ?, UNIXEPOCH());</span></span>
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    result_create <span class="op">=</span> db<span class="op">.</span>create_query<span class="op">(</span>query_create_original<span class="op">)</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">query_delete</span> <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="st">    DELETE FROM entity</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE id = ?;</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a> result_create <span class="op">=</span> db<span class="op">.</span>create_query<span class="op">(</span>query_create_original<span class="op">)</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a> <span class="kw">var</span> <span class="va">query_delete</span> <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="st"> DELETE FROM entity</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="st"> WHERE id = ?;</span></span>
 <span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    result_delete <span class="op">=</span> db<span class="op">.</span>create_query<span class="op">(</span>query_delete<span class="op">)</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a> result_delete <span class="op">=</span> db<span class="op">.</span>create_query<span class="op">(</span>query_delete<span class="op">)</span></span>
 <span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="kw">func</span> <span class="fu">_process</span><span class="op">(</span><span class="va">_delta</span><span class="op">):</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    <span class="dt">if</span> <span class="fu">db</span> <span class="op">==</span> null<span class="op">:</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>        <span class="kw">return</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">packed_array</span> <span class="op">:</span> Array <span class="op">=</span> Array<span class="op">()</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    packed_array<span class="op">.</span>push_back<span class="op">(</span>global_transform<span class="op">)</span></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">bytes</span> <span class="op">:</span> PackedByteArray <span class="op">=</span> var_to_bytes<span class="op">(</span>packed_array<span class="op">)</span></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    bytes <span class="op">=</span> bytes<span class="op">.</span>compress<span class="op">(</span>FileAccess<span class="op">.</span>COMPRESSION_ZSTD<span class="op">)</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">statement</span> <span class="op">:</span> Array <span class="op">=</span> <span class="op">[</span>uuid<span class="op">,</span> bytes<span class="op">]</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">_result_batch</span> <span class="op">=</span> result_create<span class="op">.</span>batch_execute<span class="op">([</span>statement<span class="op">])</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a> <span class="dt">if</span> <span class="fu">db</span> <span class="op">==</span> null<span class="op">:</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="kw">return</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a> <span class="kw">var</span> <span class="va">packed_array</span> <span class="op">:</span> Array <span class="op">=</span> Array<span class="op">()</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a> packed_array<span class="op">.</span>push_back<span class="op">(</span>global_transform<span class="op">)</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a> <span class="kw">var</span> <span class="va">bytes</span> <span class="op">:</span> PackedByteArray <span class="op">=</span> var_to_bytes<span class="op">(</span>packed_array<span class="op">)</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a> bytes <span class="op">=</span> bytes<span class="op">.</span>compress<span class="op">(</span>FileAccess<span class="op">.</span>COMPRESSION_ZSTD<span class="op">)</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a> <span class="kw">var</span> <span class="va">statement</span> <span class="op">:</span> Array <span class="op">=</span> <span class="op">[</span>uuid<span class="op">,</span> bytes<span class="op">]</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a> <span class="kw">var</span> <span class="va">_result_batch</span> <span class="op">=</span> result_create<span class="op">.</span>batch_execute<span class="op">([</span>statement<span class="op">])</span></span>
 <span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="kw">func</span> <span class="fu">_exit_tree</span><span class="op">():</span></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    <span class="dt">var</span> <span class="fu">statement</span> <span class="op">:</span> <span class="dt">Array</span> <span class="op">=</span> <span class="op">[</span>uuid<span class="op">]</span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">_result_batch</span> <span class="op">=</span> result_delete<span class="op">.</span>batch_execute<span class="op">([</span>statement<span class="op">])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a> <span class="dt">var</span> <span class="fu">statement</span> <span class="op">:</span> <span class="dt">Array</span> <span class="op">=</span> <span class="op">[</span>uuid<span class="op">]</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a> <span class="kw">var</span> <span class="va">_result_batch</span> <span class="op">=</span> result_delete<span class="op">.</span>batch_execute<span class="op">([</span>statement<span class="op">])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="mvsqlite-for-windows" class="level2">
