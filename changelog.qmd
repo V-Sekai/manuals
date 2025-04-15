@@ -66,10 +66,10 @@ for f in files:
     filename = os.path.basename(f)
     # Use HTML for clickable links
     link = f'<a href="{f}">{short_title}</a>'
-    rows.append({"filename": filename, "title": link, "reading-time": reading_time, })
+    rows.append({"title": link, "reading-time": reading_time, "filename": filename,})
 
 # Always create DataFrame with all columns, and only sort if not empty
-columns = ["filename", "title", "reading-time"]
+columns = ["title", "reading-time", "filename"]
 df = pd.DataFrame(rows, columns=columns)
 if not df.empty:
     df = df.sort_values("filename", ascending=False)
