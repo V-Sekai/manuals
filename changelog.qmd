@@ -66,8 +66,9 @@ for f in files:
     filename = os.path.basename(f)
     rows.append({"title": short_title, "reading-time": reading_time, "filename": filename})
 
-# Sort by filename descending and drop the filename column from display
-df = pd.DataFrame(rows).sort_values("filename", ascending=False).drop(columns=["filename"])
+# Ensure both columns are present and in order
+df = pd.DataFrame(rows)[["title", "reading-time", "filename"]].sort_values("filename", ascending=False).drop(columns=["filename"])
 
 show(df, paging=True, pageLength=10, index=False)
 ```
+````
