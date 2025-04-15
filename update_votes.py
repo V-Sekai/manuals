@@ -26,17 +26,15 @@ def update_votes(tasks):
         try:
             category_idx = header.index("Category")
             task_idx = header.index("Task")
-            status_idx = header.index("Status")
         except ValueError as e:
             print(f"Error: Missing expected column in {TASKS_FILE}: {e}")
             return # Or handle error appropriately
 
         for row in tasks_reader:
-            if len(row) > max(category_idx, task_idx, status_idx):
+            if len(row) > max(category_idx, task_idx):
                 task = row[task_idx]
                 category = row[category_idx]
-                status = row[status_idx]
-                task_info[task] = {"category": category, "status": status}
+                task_info[task] = {"category": category}
             else:
                 print(f"Warning: Skipping malformed row in {TASKS_FILE}: {row}")
 
@@ -52,7 +50,7 @@ def update_votes(tasks):
 
             # Find missing tasks (excluding archived ones)
             all_tasks_from_file = set(task_info.keys())
-            missing_tasks = [task for task in all_tasks_from_file if task not in existing_tasks and task_info[task]["status"].lower() != "archived"]
+            missing_tasks = [task for task in all_tasks_from_file if task not in existing_tasks]
 
             # Add missing tasks with a vote of 0, skip if category is missing
             for task in missing_tasks:
