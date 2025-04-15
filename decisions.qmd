@@ -1,13 +1,45 @@
 ---
 title: "Decisions of V-Sekai"
 toc: true
-listing:
-  filter-ui: false
-  type: table
-  contents:
-    - "decisions/**/*.md"
-    - "!decisions/attachments/"
-  sort: "filename desc"
-  feed: true  
-  fields: [title, reading-time, filename]
 ---
+
+```{python}
+#| echo: false
+#| output: asis
+
+# Install readtime if not already installed
+import sys
+import subprocess
+
+import readtime
+import glob
+import pandas as pd
+from itables import show
+import os
+
+# Collect all markdown files except attachments
+files = [f for f in glob.glob("decisions/**/*.md", recursive=True) if "decisions/attachments/" not in f]
+
+def estimate_reading_time(filepath):
+    with open(filepath, encoding="utf-8") as f:
+        text = f.read()
+    result = readtime.of_text(text)
+    return result.text  # e.g., "1 min read"
+
+def shorten_title(title, length=40):
+    return title if len(title) <= length else title[:length-3] + "..."
+
+# Extract metadata or fallback to filename and estimate reading time
+rows = []
+for f in files:
+    title = os.path.splitext(os.path.basename(f))[0]
+    short_title = shorten_title(title)
+    reading_time = estimate_reading_time(f)
+    rows.append({"title": short_title, "reading-time": reading_time})
+
+# Sort by title descending
+df = pd.DataFrame(rows).sort_values("title", ascending=False).set_index("title")
+
+# Show with paging (10 per page), hide the index
+show(df, paging=True, pageLength=10, index=False)
+```
