@@ -63,9 +63,11 @@ for f in files:
     h1_title = extract_h1_title(f)
     short_title = shorten_title(h1_title)
     reading_time = estimate_reading_time(f)
-    rows.append({"title": short_title, "reading-time": reading_time})
+    filename = os.path.basename(f)
+    rows.append({"title": short_title, "reading-time": reading_time, "filename": filename})
 
-df = pd.DataFrame(rows).sort_values("title", ascending=False)
+# Sort by filename descending and drop the filename column from display
+df = pd.DataFrame(rows).sort_values("filename", ascending=False).drop(columns=["filename"])
 
 show(df, paging=True, pageLength=10, index=False)
 ```
