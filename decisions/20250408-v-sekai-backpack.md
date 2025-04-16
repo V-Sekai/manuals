@@ -1,4 +1,4 @@
-# Active: Ash-Based Recommender System Integration
+# Deprecated: Ash-Based Recommender System Integration
 
 ## Context
 
@@ -62,7 +62,7 @@ Supports V-Sekai 2025 goals for UGC and fediverse interoperability.
 
 ## Proposal Status
 
-Status: Active <!-- Options: Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by [Link/Reference] -->
+Status: Deprecated <!-- Options: Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by [Link/Reference] -->
 
 ## Decision Makers
 
