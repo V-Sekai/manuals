@@ -64,16 +64,18 @@ for f in files:
     short_title = shorten_title(h1_title)
     reading_time = estimate_reading_time(f)
     filename = os.path.basename(f)
-    # Use HTML for clickable links
-    link = f'<a href="{f}">{short_title}</a>'
+    year = filename[:4] if filename[:4].isdigit() else ""
+    if year:
+        url = f"https://v-sekai.github.io/manuals/changelog/{year}/{filename}"
+    else:
+        url = f
+    link = f'<a href="{url}">{short_title}</a>'
     rows.append({"title": link, "reading-time": reading_time, "filename": filename,})
 
-# Always create DataFrame with all columns, and only sort if not empty
 columns = ["title", "reading-time", "filename"]
 df = pd.DataFrame(rows, columns=columns)
 if not df.empty:
     df = df.sort_values("filename", ascending=False)
 
-# Show with paging (10 per page), render HTML links and show reading time
 show(df, paging=True, pageLength=10, index=False, escape=False)
 ```
