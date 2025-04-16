@@ -65,10 +65,11 @@ for f in files:
     reading_time = estimate_reading_time(f)
     filename = os.path.basename(f)
     year = filename[:4] if filename[:4].isdigit() else ""
+    html_filename = filename.replace('.md', '.html')
     if year:
-        url = f"https://v-sekai.github.io/manuals/changelog/{year}/{filename}"
+        url = f"https://v-sekai.github.io/manuals/changelog/{year}/{html_filename}"
     else:
-        url = f
+        url = f"https://v-sekai.github.io/manuals/changelog/{html_filename}"
     link = f'<a href="{url}">{short_title}</a>'
     rows.append({"title": link, "reading-time": reading_time, "filename": filename,})
 
