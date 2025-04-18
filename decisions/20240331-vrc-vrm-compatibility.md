@@ -117,6 +117,7 @@ Status: Active <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supers
 1. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine
 1. [VRM Downgrader](<https://vrm-downgrader.pages.dev/>
 1. [GoGo Loco](<https://franadavrc.gumroad.com/l/gogoloco>
+1. <https://fujisunflower.booth.pm/items/2087178>
 
 ## ALCOM Packages
 
@@ -125,6 +126,5 @@ Status: Active <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supers
 1. <https://esperecyan.github.io/VRMConverterForVRChat/registry.json>
 1. <https://vpm.nadena.dev/vpm.json>
 1. <https://lilxyzw.github.io/vpm-repos/vpm.json>
-1. <https://fujisunflower.booth.pm/items/2087178>
 
 AI assistant Aria assisted with this article.
