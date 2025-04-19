@@ -15365,93 +15365,282 @@
     "text": "V-Sekai Deck Log - 2025-02-07\n\n1. Date: 2025-02-07 (Friday)\n2. Project Status - Team Activity:\n\nLocation: Vancouver Region (YVR)\nEnvironmental Conditions: Winter season, -3 celsius\nActive Contributors: 5 (Astral Druid, Fire, iffn, Lyuma)\n\nAstral Druid:\n\nArt direction\ncoordinating event prep\n\niffn: Refining prototype environment (trees, ship)\nLyuma: Debugging VR UI Ray Casting\nFire:\n\nObject add/delete/vote prototype\nCommissioned to write a QBO importer.\nChores\n\nAdd gdscript lint\nAdd gdscript format\nUpdate uid\nUpdate meshes\n\n\n\nGroup Activities:\n\nAdhoc V-Sekai meetings\n\nFire x Astral Druid\n\n\n\n3. Technical Updates:\n\nCodebase Health:\n\nNone\n\n\n4. Blockers:\n\n🛑 Active:\n\nVR UI Ray Casting (Lyuma)\n\n🛑 New:\n\nNone\n\n\n5. Planned Work:\n\nKey Goals for 02-05:\n\nLyuma: Resolve VR UI blocker and prototype UID solutions\nFire: Deliver prototype draft\nGDC 2025 replanning required due to unannounced organizer changes\n\n\n6. Leadership Decisions:\n\nWeekly check-ins continuing"
   },
   {
-    "objectID": "changelog/2025/20250220-deck-log.html",
-    "href": "changelog/2025/20250220-deck-log.html",
-    "title": "V-Sekai Deck Log - 2025-02-20 (Thursday)",
+    "objectID": "changelog/2025/20250203-deck-log.html",
+    "href": "changelog/2025/20250203-deck-log.html",
+    "title": "V-Sekai Deck Log - 2025-02-03",
     "section": "",
-    "text": "V-Sekai Deck Log - 2025-02-20 (Thursday)\n1. Project Status - Team Activity:\n\nLocation: Vancouver Region (YVR)\nEnvironmental Conditions: Winter season\nActive Contributors: Lyuma, dragonhunt02\n\nLyuma:\n\nUse UIDs in addition to paths for extracted meshes, materials and animations #100786 Postponed to 4.5 Godot Engine\nMade some progress building a new system which will hopefully unify input for canvas and world objects by using the Lasso system, and will support both mouse and XRController. It is currently designed as two addons in GDScript. The work-in-progress code is at: https://github.com/V-Sekai/interaction_system https://github.com/V-Sekai/canvas_plane (Use the interaction_system branch)\n\ndragonhunt02:\n\nV-Sekai/world-godot Pull request opened: #62 Fix web editor Github build bug #61 Disable optimizations to fix web editor build running out of RAM. I left them enabled in web template_release only.\n\n\nGroup Activities:\n\nNone\n\n\n2. Blockers:\n\nPrototype & Voting system validation\nV-Sekai uro backend server\nPrototype iteration\nFinalizing event 3d assets\nVR UI via lassodb and https://github.com/V-Sekai/V-Sekai.godot-gui-in-vr/blob/master/addons/gui_in_vr/player/controller_ray_cast.gd\n\n3. Planned Work:\n\nKey Goals:\n\nGDC 2025 schedule\nBuilding OurSpace’s VR/XR platform"
+    "text": "V-Sekai Deck Log - 2025-02-03\n(Locked as of 2025-02-03)\n\n1. Date: 2025-02-03\n2. Project Status - Team Activity:\n\nActive Contributors: 5 (Astral Druid, Fire, iffn, Lyuma, dragonhunt02).\n\nAstral Druid: Coordination + art development.\niffn: Art collaboration (Unity prototype demo: trees, ship environment).\nLyuma: Actively resolving VR UI Ray Casting blocker + drafting work requests.\nFire/dragonhunt02: CI/CD pipeline maintenance + prototyping object mechanics.\n\n\n3. Technical Updates:\n\nCodebase Health:\n\nCI/CD automation (Godot Engine updates + GitHub releases) fully operational.\nCode contributions paused except for Lyuma’s VR UI work.\n\n\n4. Blockers:\n\n✅ Resolved: Content Whitelisting (Lyuma).\n🛑 Active: VR UI Ray Casting (Lyuma).\n\n5. Planned Work:\n\nAstral/Lyuma: Finalize “request for work” document.\niFire: Implement object add/delete/vote via player controller (scruffed prototype).\n\n6. Leadership Decisions:\n\nRedirect non-critical resources to art/coordination until VR UI unblocked.\n\n\nStatus: ✅ Locked.\nUse this log for stakeholder updates or as a reference for future sprints!"
   },
   {
-    "objectID": "changelog/2025/20250408-deck-log.html",
-    "href": "changelog/2025/20250408-deck-log.html",
-    "title": "V-Sekai Deck Log - 2025-04-08 (Tuesday)",
+    "objectID": "changelog/2025/20250307-deck-log.html",
+    "href": "changelog/2025/20250307-deck-log.html",
+    "title": "V-Sekai Deck Log - 2025-03-07 (Friday)",
     "section": "",
-    "text": "V-Sekai Deck Log - 2025-04-08 (Tuesday)\n1. Project Status - Team Activity:\n\nLocation: Vancouver Region (YVR)\nEnvironmental Conditions: To be determined.\nActive Contributors: Lyuma, Astral, iFire, dragonhunt02\nGroup Activities:\n\nPlanning meeting in discord on the 7th.\n\n\n2. Blockers:\n\nTo be determined.\n\n3. Planned Work:\n\nV-Sekai uro backend server\nMultiplayer Server 10 CCU"
+    "text": "V-Sekai Deck Log - 2025-03-07 (Friday)\n1. Project Status - Team Activity:\n\nLocation: Vancouver Region (YVR)\nEnvironmental Conditions: Winter season\nActive Contributors: dragonhunt02, fire\n\ndragonhunt02:\n\nI think server works now. I tested editor upload and shard hosting. Only thing missing is setting up Mailer for production and more tests\n\nfire:\n\nThe discussion centered on automating server tasks (e.g., updating the Downloads section, maps, and avatars) via GitHub Actions while maintaining flexibility and server independence. The choice between GitHub webhooks (using a custom authenticated endpoint) and polling the releases page was debated, with webhooks favored for enabling real-time automation and manual execution via cross-platform curl scripts, ensuring tasks could run independently of GitHub. However, concerns about credential management and GitHub dependency were acknowledged, as automated updates via webhooks would stall if GitHub were unavailable, requiring manual intervention. The consensus leaned toward implementing a custom endpoint to unify automated and manual workflows, prioritizing server resilience (ensuring core functions operate even if GitHub is offline) while accepting that automatic updates might occasionally require manual fallbacks. A feature proposal was suggested to formalize this design in the project’s GitHub repository, balancing GitHub integration with self-sufficient scripting.\n\n\nGroup Activities:\n\nNone\n\n\n2. Blockers:\n\nPrototype & Voting system validation\nVR UI\nV-Sekai uro backend server\n\n3. Planned Work:\n\nKey Goals:\n\nGDC 2025 schedule"
   },
   {
-    "objectID": "changelog/2025/20250308-deck-log.html",
-    "href": "changelog/2025/20250308-deck-log.html",
-    "title": "V-Sekai Deck Log - 2025-03-08 (Saturday)",
+    "objectID": "changelog/2025/20250213-deck-log.html",
+    "href": "changelog/2025/20250213-deck-log.html",
+    "title": "V-Sekai Deck Log - 2025-02-13 (Thursday)",
     "section": "",
-    "text": "V-Sekai Deck Log - 2025-03-08 (Saturday)\n1. Project Status - Team Activity:\n\nLocation: Vancouver Region (YVR)\nEnvironmental Conditions:\n\nRain\n7 °C\nPrecipitation: 100%\nHumidity: 94%\nWind: 10 km/h\nSaturday 4:00 p.m.\n\nActive Contributors: fire\n\nfire:\n\nGreeted two people in V-Sekai Discord\nWorked on libgodot\n\nMacos\nLinux\nWindows\n\nThe discussion centered on automating server tasks (e.g., updating the Downloads section, maps, and avatars) via GitHub Actions while maintaining flexibility and server independence. The choice between GitHub webhooks (using a custom authenticated endpoint) and polling the releases page was debated, with webhooks favored for enabling real-time automation and manual execution via cross-platform curl scripts, ensuring tasks could run independently of GitHub. However, concerns about credential management and GitHub dependency were acknowledged, as automated updates via webhooks would stall if GitHub were unavailable, requiring manual intervention. The consensus leaned toward implementing a custom endpoint to unify automated and manual workflows, prioritizing server resilience (ensuring core functions operate even if GitHub is offline) while accepting that automatic updates might occasionally require manual fallbacks. A feature proposal was suggested to formalize this design in the project’s GitHub repository, balancing GitHub integration with self-sufficient scripting.\n\n\nGroup Activities:\n\nNone\n\n\n2. Blockers:\n\nPrototype & Voting system validation\nVR UI\nV-Sekai uro backend server\n\n3. Planned Work:\n\nKey Goals:\n\nGDC 2025 schedule"
+    "text": "V-Sekai Deck Log - 2025-02-13 (Thursday)\n1. Project Status - Team Activity:\n\nLocation: Vancouver Region (YVR)\nEnvironmental Conditions: Winter season\nActive Contributors: Astral Druid, Iffn, Lyuma, Fire, Tokage, DragonHunt\n\nAstral Druid:\n\nFinalizing event assets\nCross-team coordination\n\niffn: Environment\nLyuma:\n\nVR UI via lassodb and https://github.com/V-Sekai/V-Sekai.godot-gui-in-vr/blob/master/addons/gui_in_vr/player/controller_ray_cast.gd\nUse UIDs in addition to paths for extracted meshes, materials and animations #100786\n\nFire:\n\nPin v-sekai game, awesome-vsekai, tool-explorer and xr-grid\nPrototype iteration\nVoting system validation\nRebased https://github.com/V-Sekai/godot_openxr_vendors\nRebased https://github.com/V-Sekai/world-godot\nRebased groups-4.4.2025-02-13T140336Z godot\nReviewed theora pull request\nReviewed Add Toki Pona (tok) to language/locale list. #102787\n\nトカゲ(Tokage)\n\nI don’t care and I think it make sense how many IKs there are as long as they are add-ons. My scope is just to add some FABR/CCD/TwoBoneIK(Past SkeletonModificationStack3D/Current SkeletonModification2D has it) that can be migrated from SkeletonIK3D\n\nDragonHunt\n\n(Uro) Bug fixes and docs update #102\n\n\nGroup Activities Pending:\n\nNone\n\n\n2. Blockers:\n\n🛑 Active:\n\nVR UI raycasting implementation (Lyuma)\n\n\n3. Planned Work:\n\nKey Goals:\n\nGDC 2025 schedule alignment\nNetwork stress-test planning\n\n\n4. Leadership Decisions:\n\nWeekly standups for GDC roadmap finalization"
   },
   {
-    "objectID": "changelog/2025/20250208-deck-log.html",
-    "href": "changelog/2025/20250208-deck-log.html",
-    "title": "V-Sekai Deck Log - 2025-02-08",
+    "objectID": "changelog/2025/20250312-deck-log.html",
+    "href": "changelog/2025/20250312-deck-log.html",
+    "title": "V-Sekai Deck Log - 2025-03-12 (Wednesday)",
     "section": "",
-    "text": "V-Sekai Deck Log - 2025-02-08\n\n1. Date: 2025-02-08 (Saturday)\n2. Project Status - Team Activity:\n\nLocation: Vancouver Region (YVR)\nEnvironmental Conditions: Winter season, -2 celsius\nActive Contributors: 5 (Astral Druid, Fire, iffn, Lyuma)\n\nAstral Druid:\n\nArt direction\ncoordinating event prep\n\niffn: Refining prototype environment (trees, ship)\nLyuma: Debugging VR UI Ray Casting\nFire:\n\nObject add/delete/vote prototype\n\n\nGroup Activities:\n\nAdhoc V-Sekai meetings\n\nFire x Astral Druid\nLyuma x Astral x Fire x iffn\n\n\n\n3. Technical Updates:\n\nCodebase Health:\n\nNone\n\n\n4. Blockers:\n\n🛑 Active:\n\nVR UI Ray Casting (Lyuma)\n\n🛑 New:\n\nNone\n\n\n5. Planned Work:\n\nKey Goals:\n\nLyuma: Resolve VR UI blocker\nFire: Deliver prototype draft\nGDC 2025 replanning required due to unannounced organizer changes\n\n\n6. Leadership Decisions:\n\nWeekly check-ins continuing"
+    "text": "V-Sekai Deck Log - 2025-03-12 (Wednesday)\n1. Project Status - Team Activity:\n\nLocation: Vancouver Region (YVR)\nEnvironmental Conditions:\n5 °C\nPrecipitation: 100%\nHumidity: 91%\nWind: 11 km/h\nWednesday 6:00 a.m.\nLight rain\nActive Contributors: lyuma, dragonhunt02\n\nlyuma\n\n@bqq lyuma found a case where fbx import leaks memory in godot for the steamdeck. Need more information\n\ndragonhunt02\n\nFire merged https://github.com/V-Sekai/uro/pull/106 Implements admin/avatar/maps/profile/session/shards/registration apis and small fixes\n\n\nGroup Activities:\n\nNone\n\n\n2. Blockers:\n\nPrototype & Voting system validation\nVR UI\nV-Sekai uro backend server\n\n3. Planned Work:\n\nKey Goals:\n\nGDC 2025 schedule"
   },
   {
-    "objectID": "changelog/2025/20250206-deck-log.html",
-    "href": "changelog/2025/20250206-deck-log.html",
-    "title": "V-Sekai Deck Log - 2025-02-06",
+    "objectID": "changelog/2025/20250226-deck-log.html",
+    "href": "changelog/2025/20250226-deck-log.html",
+    "title": "V-Sekai Deck Log - 2025-02-26 (Wednesday)",
     "section": "",
-    "text": "V-Sekai Deck Log - 2025-02-06\n\n1. Date: 2025-02-06\n2. Project Status - Team Activity:\n\nLocation: Vancouver Region (YVR)\nEnvironmental Conditions: Winter season\nActive Contributors: 5 (Astral Druid, Fire, iffn, Lyuma, dragonhunt02)\n\nAstral Druid: Art direction + coordinating event prep\niffn: Refining prototype environment (trees, ship)\nLyuma: Debugging VR UI Ray Casting\nFire: Codebase maintenance ([godot] force-pushes x2, [manuals] log updates x6, [xr-grid] Docker builds). Object add/delete/vote prototype.\ndragonhunt02: CI/CD improvements (v-sekai-game#488)\n\nGroup Activities:\n\nOMIGROUP glTF working group meeting conducted\n\n\n3. Technical Updates:\n\nCodebase Health:\n\nVR UI: OpenXR narrowing fixes (commits 5798822, 24e88e1)\nObject Prototype: Test stability (force-pushed to 4e1450d, crash test disabled in 1a49ec1)\nDocumentation: Manuals deployed via gh-pages (a1ded61 → 18f391a)\n\n\n4. Blockers:\n\n🛑 Active:\n\nVR UI Ray Casting (Lyuma)\nUID duplication in resource system (Lyuma)\nOpenXR Quest 3 compile error (GodotEngine#88358)\nUID duplication in resource system\n\n🛑 New:\n\nGitHub Actions narrowing warnings (godot_openxr_vendors#1)\nCamera mode UI/CLI debate unresolved (v-sekai-game#488)\nOpenXR Quest 3 compile error - GodotEngine#88358\nOmigroup email system outage (Team)\nGDC 2025 replanning required due to unannounced organizer changes\n\n\n5. Planned Work:\n\nKey Goals for 02-05:\n\nLyuma: Resolve VR UI blocker and prototype UID solutions\nFire: Deliver prototype draft + finalize log documentation\nAstral, iffn: Complete event demo environment by 2025-02-14\nMerge OpenXR CI fixes (force-pushed to 818f515)\nFinalize manual deployments (gh-pages force-push 09ff511)\nResolve subrepo sync in world-godot#59\n\n\n6. Leadership Decisions:\n\nWeekly check-ins continuing\nDeferred camera mode decision pending UX review"
+    "text": "V-Sekai Deck Log - 2025-02-26 (Wednesday)\n1. Project Status - Team Activity:\n\nLocation: Vancouver Region (YVR)\nEnvironmental Conditions: Winter season\nActive Contributors: dragonhunt02\n\ndragonhunt02:\n\nDebate about routes being changes for map and world upload\n\n\nGroup Activities:\n\nNone\n\n\n2. Blockers:\n\nPrototype & Voting system validation\nVR UI\nV-Sekai uro backend server\n\n3. Planned Work:\n\nKey Goals:\n\nGDC 2025 schedule"
   },
   {
-    "objectID": "changelog/2024/20241003-changelog.html",
-    "href": "changelog/2024/20241003-changelog.html",
-    "title": "V-Sekai Changelog - October 2024",
+    "objectID": "changelog/2025/20250330-deck-log.html",
+    "href": "changelog/2025/20250330-deck-log.html",
+    "title": "V-Sekai Deck Log - 2025-03-30 (Sunday)",
     "section": "",
-    "text": "Experimental (🧪): This stage is for features that are still being tested and may not be stable.\nFeature complete (🎯): This stage is for features that have all planned functionality implemented.\nBeta (🚧): This stage is for features that are largely complete but may still have bugs.\nGeneral release (🚀): This stage is for features that have been fully tested and are now released.\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\n\n\n🎯 https://gonzerelli.itch.io/demo - fwsgonzo decided to embed LuaJIT to Godot Sandbox as a proof-of-concept. Touching the first coin will open up a Lua “console” which redirects print() to a TextEdit\n🎯 https://gonzerelli.itch.io/demo - We enabled binary translation for LuaJIT on Godot Sandbox.\n🚀 Installed Discord on the Meta Quest 3 and was able to stream Godot Engine and ecosystem applications.\n🎯 Added a double build of steam audio\n🎯 Steam Audio now works without a custom Godot Engine fork.\n🧪 The VRM Consortium, Inc., the creator and advocate of the VRM 3D avatar file format, which is based on the glTF™ 2.0 open standard, has announced a collaboration with The Khronos Group, the developer of glTF, to advance the international standardization of VRM.\n🚀 Submitted IREE.gd to Awesome-Godot-Scientific\n🧪 Collaboration with GuilhermeGSousa/godot-motion-matching\n🚀 Found opensource animation assets. Useful bases for retargeting and also stylizing motions. O3DE MotionMatching Animation Assets\n🧪 Collaboration with maiself/godot-python-extension\n🧪 Split V-Sekai world into world_editor and world_game\n\n\n\n\n\n🚧 Try to release iree-gd for godot engine 4.3 stable. https://github.com/iree-gd/iree.gd/pull/87\n🧪 Cleanup 3d cage for porting to python. https://github.com/V-Sekai-fire/godot_cage_deformer\n🚧 Updated manifold to remove GLM - https://github.com/godotengine/godot/pull/94321\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning.\n\n\n\n\n\nNot applicable for this month."
+    "text": "V-Sekai Deck Log - 2025-03-30 (Sunday)\n1. Project Status - Team Activity:\n\nLocation: Vancouver Region (YVR)\nEnvironmental Conditions: To be determined.\nActive Contributors: iFire, dragonhunt02\nGroup Activities:\n\nRestored Godot Engien 4.5 builds in v-sekai/godot-world.\n\n\n2. Blockers:\n\nTo be determined.\n\n3. Planned Work:\n\nPrototype & Voting system validation\nVR UI\nV-Sekai uro backend server"
   },
   {
-    "objectID": "changelog/2024/20241003-changelog.html#released",
-    "href": "changelog/2024/20241003-changelog.html#released",
-    "title": "V-Sekai Changelog - October 2024",
+    "objectID": "changelog/2024/20240625-changelog.html",
+    "href": "changelog/2024/20240625-changelog.html",
+    "title": "Special Notice: V-Sekai 2023-2024",
+    "section": "",
+    "text": "Focused on Unidot and VRM (import pipeline).\nGodot 4.0 bugfixes and animation. Lots of engine dev.\nJuly–Aug spent time working on new CDN downloader and starting to rethink avatar controller.\n\n\n\n\n\nNew networking system committed to v-sekai-game and to a demo repository. It is missing basic features like support for pickup items so we haven’t enabled it yet.\n\n\n\n\n\nJan–Mar focused on FBX support and GDC.\nApr–May focused on updating Unidot to support FBX.\n\n\n\n\n\n\nSince early June, Lyuma started to revisit the incomplete code from 10 months ago. Lyuma is currently working on tracker binding / skeleton calibration (e.g. full body).\n4.3 release was delayed. Lyuma wants to release 4.3-compatible updates to Unidot and VRM.\nLyuma had some difficulties with API integration.\nSome Godot 4.3 bugs are still on Lyuma’s plate.\n\n\n\n\n\nNew in-game UI update. A draft was committed a couple weeks ago but saracen has been away on vacation.\nSaracen has also been working some more on physics sync.\nAPI/backend redesign.\n\n\n\n\n\nIntegration of UI code into game.\nNetwork syncing support of props/objects using the new system.\nIntegration of other game features between avatar_vr_demo (player controller) and v-sekai-game (legacy codebase).\nNew backend so we can reenable registration.\nSome OpenAPI wrapper so we can talk to the new backend.\n\nLyuma thinks we should put more focus on getting something lightweight we can run and play levels in. Lyuma is of half a mind to put more focus into making avatar demo runnable with custom content rather than fully integrating network syncing just so we can get off the ground more easily with content creation."
+  },
+  {
+    "objectID": "changelog/2024/20240625-changelog.html#stuff-we-did-over-the-past-year",
+    "href": "changelog/2024/20240625-changelog.html#stuff-we-did-over-the-past-year",
+    "title": "Special Notice: V-Sekai 2023-2024",
+    "section": "",
+    "text": "Focused on Unidot and VRM (import pipeline).\nGodot 4.0 bugfixes and animation. Lots of engine dev.\nJuly–Aug spent time working on new CDN downloader and starting to rethink avatar controller.\n\n\n\n\n\nNew networking system committed to v-sekai-game and to a demo repository. It is missing basic features like support for pickup items so we haven’t enabled it yet.\n\n\n\n\n\nJan–Mar focused on FBX support and GDC.\nApr–May focused on updating Unidot to support FBX."
+  },
+  {
+    "objectID": "changelog/2024/20240625-changelog.html#current-work",
+    "href": "changelog/2024/20240625-changelog.html#current-work",
+    "title": "Special Notice: V-Sekai 2023-2024",
+    "section": "",
+    "text": "Since early June, Lyuma started to revisit the incomplete code from 10 months ago. Lyuma is currently working on tracker binding / skeleton calibration (e.g. full body).\n4.3 release was delayed. Lyuma wants to release 4.3-compatible updates to Unidot and VRM.\nLyuma had some difficulties with API integration.\nSome Godot 4.3 bugs are still on Lyuma’s plate."
+  },
+  {
+    "objectID": "changelog/2024/20240625-changelog.html#other-projects-in-progress",
+    "href": "changelog/2024/20240625-changelog.html#other-projects-in-progress",
+    "title": "Special Notice: V-Sekai 2023-2024",
+    "section": "",
+    "text": "New in-game UI update. A draft was committed a couple weeks ago but saracen has been away on vacation.\nSaracen has also been working some more on physics sync.\nAPI/backend redesign."
+  },
+  {
+    "objectID": "changelog/2024/20240625-changelog.html#wtfawry-what-do-we-need-to-get-v-sekai-game-working-with-the-new-architecture",
+    "href": "changelog/2024/20240625-changelog.html#wtfawry-what-do-we-need-to-get-v-sekai-game-working-with-the-new-architecture",
+    "title": "Special Notice: V-Sekai 2023-2024",
+    "section": "",
+    "text": "Integration of UI code into game.\nNetwork syncing support of props/objects using the new system.\nIntegration of other game features between avatar_vr_demo (player controller) and v-sekai-game (legacy codebase).\nNew backend so we can reenable registration.\nSome OpenAPI wrapper so we can talk to the new backend.\n\nLyuma thinks we should put more focus on getting something lightweight we can run and play levels in. Lyuma is of half a mind to put more focus into making avatar demo runnable with custom content rather than fully integrating network syncing just so we can get off the ground more easily with content creation."
+  },
+  {
+    "objectID": "changelog/2024/20241102-changelog.html",
+    "href": "changelog/2024/20241102-changelog.html",
+    "title": "V-Sekai Changelog - November 2024",
+    "section": "",
+    "text": "Experimental (🧪): This stage is for features still being tested and may not be stable.\nFeature complete (🎯): This stage is for features with all planned functionality implemented.\nBeta (🚧): This stage is for essentially complete features that may still have bugs.\nGeneral release (🚀): This stage is for features that have been thoroughly tested and are now released.\n\n\n\n\n🚀 V-Sekai discord onboarding is now enabled.\n🧪 Updated godot-sandbox json_diff_sample cmake sample\n🧪 Updated godot-sandbox weight transfer sample\n🧪 Prototype a repository for visual anomaly detection with Anomalib. V-Sekai-fire/godot-visual-anomaly-detection\n🚧 ifiregames.itch.io/godot-motion-matching\n🧪 V-Sekai/world-editor\n🚀 Ughuuu/gdextension-to-module\n🚀 Walk the Dog is a vector-quantized periodic autoencoder. Walk the Dog is now MIT-licensed open source. It learns a disconnected 1D phase manifold that aligns motion regardless of morphologies while requiring no paired data or any joint correspondence PeizhuoLi/walk-the-dog\n🚀 Submitted an update to Godot-VRM version 2.1.0, adding much-needed support for Godot 4.3 SkeletonModifier3D, an import (or runtime) option to adjust the head hiding method, and several bug fixes. It will be released on the asset library when approved, likely next week, but it can be downloaded from GitHub. Known issues: Node constraints are still imported incorrectly because they are not adjusted for rotated bones during retargeting. Newer VRM features, such as VRMA animation, still need support.\n🎯 https://github.com/V-Sekai/world-godot and https://github.com/V-Sekai/world-kit are now the new repository of Godot Engine and the world kit.\n\n\n\n\n\n\n\n🎯 Godot Lottie for animated vector graphics is ready to be merged into Godot Master.\n🚀 Godot Manifold for mesh add, mesh subtraction and mesh overlap is merged in Godot Master 4.4.\n🧪 Animation Node was merged in godot motion matching.\n\n🧪 Assist with Add animation node extension godot engine patch for animation node gdextensions.\n🧪 Designing Motion Matching as an animation node\n\n🧪 Godot cpp as C++ module: Dragos shows us a photo of godot-sandbox as a C++ module.\n\n🧪 We made a way to compile all gdextensions as a C++ module by extending GDExtensionLoader. Ughuuu/gdextension-to-module\n\n🧪 Uploaded a new godot vrm for motion matching web demo. Now, with debugging gizmos. View Demo\n🧪 Found research on transpiling GDScript to Godot Engine C++ with tailcalls as jumps. Read More | ACM1 | ACM2 | Hacker News Discussion\n🎯 1% runtime improvement with lod rendering in Godot Engine Rewrite index optimization code for maximum efficiency\n🧪 Provide VRM exports with humanizer\n\n\n\n\n\n🚧 Steam audio runs in standalone mode for PC, and nothing technical stops it from running on the Android Quest 3 after the Godot Engine feature enhancement was merged last week. stechyo/godot-steam-audio\n🎯 Vulkan pose Movenet estimation demo now runs on IREE.gd. iree-gd/iree.gd\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNo one wants to work on our game because it’s a fork of the godot engine -&gt; we made a godot-sandbox as a gdextension.\nI must learn to hyper-scale godot networking -&gt; greater than 25 players. Shared databases in the cloud are not good. Authoritative ownership schemes are ok.\nWe need things to do -&gt; Begin a metro transit hub system that connects the world."
+  },
+  {
+    "objectID": "changelog/2024/20241102-changelog.html#released",
+    "href": "changelog/2024/20241102-changelog.html#released",
+    "title": "V-Sekai Changelog - November 2024",
+    "section": "",
+    "text": "🚀 V-Sekai discord onboarding is now enabled.\n🧪 Updated godot-sandbox json_diff_sample cmake sample\n🧪 Updated godot-sandbox weight transfer sample\n🧪 Prototype a repository for visual anomaly detection with Anomalib. V-Sekai-fire/godot-visual-anomaly-detection\n🚧 ifiregames.itch.io/godot-motion-matching\n🧪 V-Sekai/world-editor\n🚀 Ughuuu/gdextension-to-module\n🚀 Walk the Dog is a vector-quantized periodic autoencoder. Walk the Dog is now MIT-licensed open source. It learns a disconnected 1D phase manifold that aligns motion regardless of morphologies while requiring no paired data or any joint correspondence PeizhuoLi/walk-the-dog\n🚀 Submitted an update to Godot-VRM version 2.1.0, adding much-needed support for Godot 4.3 SkeletonModifier3D, an import (or runtime) option to adjust the head hiding method, and several bug fixes. It will be released on the asset library when approved, likely next week, but it can be downloaded from GitHub. Known issues: Node constraints are still imported incorrectly because they are not adjusted for rotated bones during retargeting. Newer VRM features, such as VRMA animation, still need support.\n🎯 https://github.com/V-Sekai/world-godot and https://github.com/V-Sekai/world-kit are now the new repository of Godot Engine and the world kit."
+  },
+  {
+    "objectID": "changelog/2024/20241102-changelog.html#unreleased",
+    "href": "changelog/2024/20241102-changelog.html#unreleased",
+    "title": "V-Sekai Changelog - November 2024",
+    "section": "",
+    "text": "🎯 Godot Lottie for animated vector graphics is ready to be merged into Godot Master.\n🚀 Godot Manifold for mesh add, mesh subtraction and mesh overlap is merged in Godot Master 4.4.\n🧪 Animation Node was merged in godot motion matching.\n\n🧪 Assist with Add animation node extension godot engine patch for animation node gdextensions.\n🧪 Designing Motion Matching as an animation node\n\n🧪 Godot cpp as C++ module: Dragos shows us a photo of godot-sandbox as a C++ module.\n\n🧪 We made a way to compile all gdextensions as a C++ module by extending GDExtensionLoader. Ughuuu/gdextension-to-module\n\n🧪 Uploaded a new godot vrm for motion matching web demo. Now, with debugging gizmos. View Demo\n🧪 Found research on transpiling GDScript to Godot Engine C++ with tailcalls as jumps. Read More | ACM1 | ACM2 | Hacker News Discussion\n🎯 1% runtime improvement with lod rendering in Godot Engine Rewrite index optimization code for maximum efficiency\n🧪 Provide VRM exports with humanizer\n\n\n\n\n\n🚧 Steam audio runs in standalone mode for PC, and nothing technical stops it from running on the Android Quest 3 after the Godot Engine feature enhancement was merged last week. stechyo/godot-steam-audio\n🎯 Vulkan pose Movenet estimation demo now runs on IREE.gd. iree-gd/iree.gd\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning."
+  },
+  {
+    "objectID": "changelog/2024/20241102-changelog.html#previous-releases",
+    "href": "changelog/2024/20241102-changelog.html#previous-releases",
+    "title": "V-Sekai Changelog - November 2024",
     "section": "",
     "text": "Not applicable for this month."
   },
   {
-    "objectID": "changelog/2024/20241003-changelog.html#unreleased",
-    "href": "changelog/2024/20241003-changelog.html#unreleased",
-    "title": "V-Sekai Changelog - October 2024",
+    "objectID": "changelog/2024/20241102-changelog.html#ask-yourself-why-the-fuck-arent-released-yet",
+    "href": "changelog/2024/20241102-changelog.html#ask-yourself-why-the-fuck-arent-released-yet",
+    "title": "V-Sekai Changelog - November 2024",
     "section": "",
-    "text": "🎯 https://gonzerelli.itch.io/demo - fwsgonzo decided to embed LuaJIT to Godot Sandbox as a proof-of-concept. Touching the first coin will open up a Lua “console” which redirects print() to a TextEdit\n🎯 https://gonzerelli.itch.io/demo - We enabled binary translation for LuaJIT on Godot Sandbox.\n🚀 Installed Discord on the Meta Quest 3 and was able to stream Godot Engine and ecosystem applications.\n🎯 Added a double build of steam audio\n🎯 Steam Audio now works without a custom Godot Engine fork.\n🧪 The VRM Consortium, Inc., the creator and advocate of the VRM 3D avatar file format, which is based on the glTF™ 2.0 open standard, has announced a collaboration with The Khronos Group, the developer of glTF, to advance the international standardization of VRM.\n🚀 Submitted IREE.gd to Awesome-Godot-Scientific\n🧪 Collaboration with GuilhermeGSousa/godot-motion-matching\n🚀 Found opensource animation assets. Useful bases for retargeting and also stylizing motions. O3DE MotionMatching Animation Assets\n🧪 Collaboration with maiself/godot-python-extension\n🧪 Split V-Sekai world into world_editor and world_game\n\n\n\n\n\n🚧 Try to release iree-gd for godot engine 4.3 stable. https://github.com/iree-gd/iree.gd/pull/87\n🧪 Cleanup 3d cage for porting to python. https://github.com/V-Sekai-fire/godot_cage_deformer\n🚧 Updated manifold to remove GLM - https://github.com/godotengine/godot/pull/94321\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning."
+    "text": "No one wants to work on our game because it’s a fork of the godot engine -&gt; we made a godot-sandbox as a gdextension.\nI must learn to hyper-scale godot networking -&gt; greater than 25 players. Shared databases in the cloud are not good. Authoritative ownership schemes are ok.\nWe need things to do -&gt; Begin a metro transit hub system that connects the world."
   },
   {
-    "objectID": "changelog/2024/20241003-changelog.html#previous-releases",
-    "href": "changelog/2024/20241003-changelog.html#previous-releases",
-    "title": "V-Sekai Changelog - October 2024",
+    "objectID": "changelog/2024/20240101-changelog.html",
+    "href": "changelog/2024/20240101-changelog.html",
+    "title": "V-Sekai Changelog - January 2024",
     "section": "",
-    "text": "Not applicable for this month."
+    "text": "Not applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices: Applied security best practices as recommended by StepSecurity. (Commit: d641001)\n\nThis project does not adhere to Semantic Versioning.\n\n\n\n\n\nNot applicable for this month."
   },
   {
-    "objectID": "changelog/2024/20240901-changelog.html",
-    "href": "changelog/2024/20240901-changelog.html",
-    "title": "V-Sekai Changelog - September 2024",
-    "section": "",
-    "text": "Experimental (🧪): This stage is for features that are still being tested and may not be stable.\nFeature complete (🎯): This stage is for features that have all planned functionality implemented.\nBeta (🚧): This stage is for features that are largely complete but may still have bugs.\nGeneral release (🚀): This stage is for features that have been fully tested and are now released.\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\n\n\nWork in progress with humanoid muscle encoding to/from quaternion. We can use this in the future for more efficient network serialization (similar to ShaderMotion’s format, or networked IK)\nSome progress on CDN code to make it a bit more reliable and engineered. It supports both gltf and godot scene format.\nfire and fwsGonzo have been working hard on godot-sandbox, a scripting system which allows you to write C++ code which acts like GDScript, via a sandboxed risc-v VM\nIn terms of engine features, typed dictionaries are in! https://godotengine.org/article/dev-snapshot-godot-4-4-dev-2/ That said, code which uses typed dictionaries will be incompatible with Godot 4.3 and earlier.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning.\n\n\n\n\n\nNot applicable for this month."
-  },
-  {
-    "objectID": "changelog/2024/20240901-changelog.html#released",
-    "href": "changelog/2024/20240901-changelog.html#released",
-    "title": "V-Sekai Changelog - September 2024",
+    "objectID": "changelog/2024/20240101-changelog.html#released",
+    "href": "changelog/2024/20240101-changelog.html#released",
+    "title": "V-Sekai Changelog - January 2024",
     "section": "",
     "text": "Not applicable for this month."
   },
   {
-    "objectID": "changelog/2024/20240901-changelog.html#unreleased",
-    "href": "changelog/2024/20240901-changelog.html#unreleased",
-    "title": "V-Sekai Changelog - September 2024",
+    "objectID": "changelog/2024/20240101-changelog.html#unreleased",
+    "href": "changelog/2024/20240101-changelog.html#unreleased",
+    "title": "V-Sekai Changelog - January 2024",
     "section": "",
-    "text": "Work in progress with humanoid muscle encoding to/from quaternion. We can use this in the future for more efficient network serialization (similar to ShaderMotion’s format, or networked IK)\nSome progress on CDN code to make it a bit more reliable and engineered. It supports both gltf and godot scene format.\nfire and fwsGonzo have been working hard on godot-sandbox, a scripting system which allows you to write C++ code which acts like GDScript, via a sandboxed risc-v VM\nIn terms of engine features, typed dictionaries are in! https://godotengine.org/article/dev-snapshot-godot-4-4-dev-2/ That said, code which uses typed dictionaries will be incompatible with Godot 4.3 and earlier.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning."
+    "text": "Not applicable for this month.\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices: Applied security best practices as recommended by StepSecurity. (Commit: d641001)\n\nThis project does not adhere to Semantic Versioning."
   },
   {
-    "objectID": "changelog/2024/20240901-changelog.html#previous-releases",
-    "href": "changelog/2024/20240901-changelog.html#previous-releases",
-    "title": "V-Sekai Changelog - September 2024",
+    "objectID": "changelog/2024/20240101-changelog.html#previous-releases",
+    "href": "changelog/2024/20240101-changelog.html#previous-releases",
+    "title": "V-Sekai Changelog - January 2024",
+    "section": "",
+    "text": "Not applicable for this month."
+  },
+  {
+    "objectID": "changelog/2024/20240505-changelog.html",
+    "href": "changelog/2024/20240505-changelog.html",
+    "title": "V-Sekai Changelog - May 2024",
+    "section": "",
+    "text": "Not applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\nWebRTC: Worked on browser and native webrtc interop. https://ifiregames.itch.io/webrtc-native-web-interoperability\nlibgodot: Worked on embedding libgodot to where it doesn’t belong.\ncsg: Update csg in Godot Engine to use Manifold.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning.\n\n\n\n\n\nNot applicable for this month."
+  },
+  {
+    "objectID": "changelog/2024/20240505-changelog.html#released",
+    "href": "changelog/2024/20240505-changelog.html#released",
+    "title": "V-Sekai Changelog - May 2024",
+    "section": "",
+    "text": "Not applicable for this month."
+  },
+  {
+    "objectID": "changelog/2024/20240505-changelog.html#unreleased",
+    "href": "changelog/2024/20240505-changelog.html#unreleased",
+    "title": "V-Sekai Changelog - May 2024",
+    "section": "",
+    "text": "Not applicable for this month.\n\n\n\n\nWebRTC: Worked on browser and native webrtc interop. https://ifiregames.itch.io/webrtc-native-web-interoperability\nlibgodot: Worked on embedding libgodot to where it doesn’t belong.\ncsg: Update csg in Godot Engine to use Manifold.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning."
+  },
+  {
+    "objectID": "changelog/2024/20240505-changelog.html#previous-releases",
+    "href": "changelog/2024/20240505-changelog.html#previous-releases",
+    "title": "V-Sekai Changelog - May 2024",
+    "section": "",
+    "text": "Not applicable for this month."
+  },
+  {
+    "objectID": "changelog/2024/20240202-changelog.html",
+    "href": "changelog/2024/20240202-changelog.html",
+    "title": "V-Sekai Changelog - February 2024",
+    "section": "",
+    "text": "Not applicable for this month.\n\n\n\n\n\n\n\nUFBX Importer: Merged into Godot Engine master for version 4.3.\nUnidot Spring Bones: Spring bones now import with Unidot Importer! It’s compatible with various popular formats and supports all features of the vrm spring bone script. Currently no advanced features like axis locks or inside colliders. While the vrm script supports curves, Unity curve sampling has not been implemented yet, so each bone in the chain imports with a constant value.\ngodot-vrm: An update to godot-vrm on git has been pushed to make it easier and more straightforward to edit spring bones in the inspector.\nUnidot: A lot of bugfixes have been made to the VRM import/export, unidot import pipeline, and springbone support. It’s becoming a lot easier to import a set of assets from unitypackage including booth outfits, attach them, and then export a VRM with functional spring bones!\nGodot FBX Importer: ArchVizPro volume 6 imported with ufbx. The importer is exceptionally good, and during testing it appears to perfectly replicate the result obtained in the autodesk SDK. This means Unidot in Godot 4.3 will be able to import directly to fbx out of the box without having to go through gltf!\ngodot-whisper: Added support for real-time audio transcription within the Godot Engine, which includes enhanced compatibility for the Metal API on Apple devices and improved threading performance. (Commit: 2d85a0e update)\ngodot-steamaudio: Updated the Steam Audio integration by refactoring the build configuration and audio stream handling process. (Commit: 8f15de1 Refactor build configuration)\n\n\n\n\n\nRemove a V-Sekai-game github release and point to https://saracenone.itch.io/groups-4x\n\n\n\n\n\n2024-02-07: There was a nasty bug involving the springbone gizmo, a node rename, and a Godot bug that would corrupt the node if replace_by was called on an internal node (such as a gizmo) that was leading random meshes to disappear in godot vrm during import. Should be fixed now!\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\n\nThis project does not adhere to Semantic Versioning.\n\n\n\n\n\nNot applicable for this month."
+  },
+  {
+    "objectID": "changelog/2024/20240202-changelog.html#released",
+    "href": "changelog/2024/20240202-changelog.html#released",
+    "title": "V-Sekai Changelog - February 2024",
+    "section": "",
+    "text": "Not applicable for this month."
+  },
+  {
+    "objectID": "changelog/2024/20240202-changelog.html#unreleased",
+    "href": "changelog/2024/20240202-changelog.html#unreleased",
+    "title": "V-Sekai Changelog - February 2024",
+    "section": "",
+    "text": "UFBX Importer: Merged into Godot Engine master for version 4.3.\nUnidot Spring Bones: Spring bones now import with Unidot Importer! It’s compatible with various popular formats and supports all features of the vrm spring bone script. Currently no advanced features like axis locks or inside colliders. While the vrm script supports curves, Unity curve sampling has not been implemented yet, so each bone in the chain imports with a constant value.\ngodot-vrm: An update to godot-vrm on git has been pushed to make it easier and more straightforward to edit spring bones in the inspector.\nUnidot: A lot of bugfixes have been made to the VRM import/export, unidot import pipeline, and springbone support. It’s becoming a lot easier to import a set of assets from unitypackage including booth outfits, attach them, and then export a VRM with functional spring bones!\nGodot FBX Importer: ArchVizPro volume 6 imported with ufbx. The importer is exceptionally good, and during testing it appears to perfectly replicate the result obtained in the autodesk SDK. This means Unidot in Godot 4.3 will be able to import directly to fbx out of the box without having to go through gltf!\ngodot-whisper: Added support for real-time audio transcription within the Godot Engine, which includes enhanced compatibility for the Metal API on Apple devices and improved threading performance. (Commit: 2d85a0e update)\ngodot-steamaudio: Updated the Steam Audio integration by refactoring the build configuration and audio stream handling process. (Commit: 8f15de1 Refactor build configuration)\n\n\n\n\n\nRemove a V-Sekai-game github release and point to https://saracenone.itch.io/groups-4x\n\n\n\n\n\n2024-02-07: There was a nasty bug involving the springbone gizmo, a node rename, and a Godot bug that would corrupt the node if replace_by was called on an internal node (such as a gizmo) that was leading random meshes to disappear in godot vrm during import. Should be fixed now!\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\n\nThis project does not adhere to Semantic Versioning."
+  },
+  {
+    "objectID": "changelog/2024/20240202-changelog.html#previous-releases",
+    "href": "changelog/2024/20240202-changelog.html#previous-releases",
+    "title": "V-Sekai Changelog - February 2024",
+    "section": "",
+    "text": "Not applicable for this month."
+  },
+  {
+    "objectID": "changelog/2024/20240603-changelog.html",
+    "href": "changelog/2024/20240603-changelog.html",
+    "title": "V-Sekai Changelog - June 2024",
+    "section": "",
+    "text": "Not applicable for this month.\n\n\n\n\n\n\n\nWorked on a pull request for motion blur, which included:\n\nPushing updates to the vsk-motion-blur-4.3-beta1 branch in the Godot repository.\n\nInitiated and updated a paint mixer spectral.js project in the world:main branch\nPushed an update to the mirror script at V-Sekai/avatar_vr_demo so it works in desktop mode as well as XR, and works at arbitrary aspect ratios. Thanks iFire for rubber duckying and encouraging me. Note that if you want square pixels and wish to use the screenspace mode, you need this commit V-Sekai/godot. However, it also supports using Godot’s builtin Frustum camera in non-screenspace mode where the pixels will be aligned along the plane of the mirror. See if you can spot the differences. (the skybox shader doesn’t fully support frustum mode)\nIntegrated OpenTelemetry into the codebase for enhanced debugging capabilities. This will allow developers to trace and monitor application performance in real-time, helping to identify and resolve issues more efficiently.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nBumped github/codeql-action from 3.25.6 to 3.25.7 for security best practices.\n\nThis project does not adhere to Semantic Versioning.\n\n\n\n\n\nNot applicable for this month."
+  },
+  {
+    "objectID": "changelog/2024/20240603-changelog.html#released",
+    "href": "changelog/2024/20240603-changelog.html#released",
+    "title": "V-Sekai Changelog - June 2024",
+    "section": "",
+    "text": "Not applicable for this month."
+  },
+  {
+    "objectID": "changelog/2024/20240603-changelog.html#unreleased",
+    "href": "changelog/2024/20240603-changelog.html#unreleased",
+    "title": "V-Sekai Changelog - June 2024",
+    "section": "",
+    "text": "Worked on a pull request for motion blur, which included:\n\nPushing updates to the vsk-motion-blur-4.3-beta1 branch in the Godot repository.\n\nInitiated and updated a paint mixer spectral.js project in the world:main branch\nPushed an update to the mirror script at V-Sekai/avatar_vr_demo so it works in desktop mode as well as XR, and works at arbitrary aspect ratios. Thanks iFire for rubber duckying and encouraging me. Note that if you want square pixels and wish to use the screenspace mode, you need this commit V-Sekai/godot. However, it also supports using Godot’s builtin Frustum camera in non-screenspace mode where the pixels will be aligned along the plane of the mirror. See if you can spot the differences. (the skybox shader doesn’t fully support frustum mode)\nIntegrated OpenTelemetry into the codebase for enhanced debugging capabilities. This will allow developers to trace and monitor application performance in real-time, helping to identify and resolve issues more efficiently.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nBumped github/codeql-action from 3.25.6 to 3.25.7 for security best practices.\n\nThis project does not adhere to Semantic Versioning."
+  },
+  {
+    "objectID": "changelog/2024/20240603-changelog.html#previous-releases",
+    "href": "changelog/2024/20240603-changelog.html#previous-releases",
+    "title": "V-Sekai Changelog - June 2024",
+    "section": "",
+    "text": "Not applicable for this month."
+  },
+  {
+    "objectID": "changelog/2024/20240330-changelog.html",
+    "href": "changelog/2024/20240330-changelog.html",
+    "title": "V-Sekai Changelog - March 2024",
+    "section": "",
+    "text": "Not applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\nGDC Demo: We attended the Game Developers Conference (GDC) in San Francisco, California, USA. We demonstrated the capabilities of the Godot Engine on an Android tablet.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning.\n\n\n\n\n\nNot applicable for this month."
+  },
+  {
+    "objectID": "changelog/2024/20240330-changelog.html#released",
+    "href": "changelog/2024/20240330-changelog.html#released",
+    "title": "V-Sekai Changelog - March 2024",
+    "section": "",
+    "text": "Not applicable for this month."
+  },
+  {
+    "objectID": "changelog/2024/20240330-changelog.html#unreleased",
+    "href": "changelog/2024/20240330-changelog.html#unreleased",
+    "title": "V-Sekai Changelog - March 2024",
+    "section": "",
+    "text": "Not applicable for this month.\n\n\n\n\nGDC Demo: We attended the Game Developers Conference (GDC) in San Francisco, California, USA. We demonstrated the capabilities of the Godot Engine on an Android tablet.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning."
+  },
+  {
+    "objectID": "changelog/2024/20240330-changelog.html#previous-releases",
+    "href": "changelog/2024/20240330-changelog.html#previous-releases",
+    "title": "V-Sekai Changelog - March 2024",
+    "section": "",
+    "text": "Not applicable for this month."
+  },
+  {
+    "objectID": "changelog/2024/20240701-changelog.html",
+    "href": "changelog/2024/20240701-changelog.html",
+    "title": "V-Sekai Changelog - July 2024",
+    "section": "",
+    "text": "Experimental (🧪): This stage is for features that are still being tested and may not be stable.\nFeature complete (🎯): This stage is for features that have all planned functionality implemented.\nBeta (🚧): This stage is for features that are largely complete but may still have bugs.\nGeneral release (🚀): This stage is for features that have been fully tested and are now released.\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nReplaced fabrik ik solver in renik ik character controler with qcp ik solver.\nManifold for Godot Engine CSG ready for review\nWorked on Wasgo for WASM32-CPUs for tooling and runtime user generated code.\nWorked on libriscv loading and executing a hello world function call with a shared object.\nWorked on godot-llama trying to get the new PHI-3 model working. https://github.com/V-Sekai/godot-llama\nWorked on ServerBackend🚫\nWorked on TrollVsGoatTrafficSimulator\nWorked on elaish/manifold for Constructive Solid Geometry\nWorked on Vahera/godot-orchestrator for riscv and a merge for node formatting\nWorked with fwsGonzo/libriscv for riscv. V8 now works.\nWorked on 3D Mesh\n\nTokenized into Sequence of Tokens\nInputted into Transformer Model\nGenerates New Meshes\nModifies Existing Meshes\n\nExperimental Mirrors: Engine Patch 🧪\nExperimental Mirrors: Screenspace 🧪\nMaintained Resource Whitelister 🎯\nMaintained VRM 🎯\nRobust Weight Painting (Experimental 🧪) (iFire)\n\nRelies on Lyuma’s Skeleton Merging Tool\n\nUpdate to Godot Engien 4.3-beta3\n\n\n\n\nUnified Godot Humanoid Skeleton 🚀\nUnidot Unity Package Importer\nFBX 🚧\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning.\n\n\n\n\n\nNot applicable for this month."
+  },
+  {
+    "objectID": "changelog/2024/20240701-changelog.html#released",
+    "href": "changelog/2024/20240701-changelog.html#released",
+    "title": "V-Sekai Changelog - July 2024",
+    "section": "",
+    "text": "Not applicable for this month."
+  },
+  {
+    "objectID": "changelog/2024/20240701-changelog.html#unreleased",
+    "href": "changelog/2024/20240701-changelog.html#unreleased",
+    "title": "V-Sekai Changelog - July 2024",
+    "section": "",
+    "text": "Replaced fabrik ik solver in renik ik character controler with qcp ik solver.\nManifold for Godot Engine CSG ready for review\nWorked on Wasgo for WASM32-CPUs for tooling and runtime user generated code.\nWorked on libriscv loading and executing a hello world function call with a shared object.\nWorked on godot-llama trying to get the new PHI-3 model working. https://github.com/V-Sekai/godot-llama\nWorked on ServerBackend🚫\nWorked on TrollVsGoatTrafficSimulator\nWorked on elaish/manifold for Constructive Solid Geometry\nWorked on Vahera/godot-orchestrator for riscv and a merge for node formatting\nWorked with fwsGonzo/libriscv for riscv. V8 now works.\nWorked on 3D Mesh\n\nTokenized into Sequence of Tokens\nInputted into Transformer Model\nGenerates New Meshes\nModifies Existing Meshes\n\nExperimental Mirrors: Engine Patch 🧪\nExperimental Mirrors: Screenspace 🧪\nMaintained Resource Whitelister 🎯\nMaintained VRM 🎯\nRobust Weight Painting (Experimental 🧪) (iFire)\n\nRelies on Lyuma’s Skeleton Merging Tool\n\nUpdate to Godot Engien 4.3-beta3\n\n\n\n\nUnified Godot Humanoid Skeleton 🚀\nUnidot Unity Package Importer\nFBX 🚧\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning."
+  },
+  {
+    "objectID": "changelog/2024/20240701-changelog.html#previous-releases",
+    "href": "changelog/2024/20240701-changelog.html#previous-releases",
+    "title": "V-Sekai Changelog - July 2024",
     "section": "",
     "text": "Not applicable for this month."
   },
@@ -15498,284 +15687,102 @@
     "text": "This project does not adhere to Semantic Versioning."
   },
   {
-    "objectID": "changelog/2024/20240701-changelog.html",
-    "href": "changelog/2024/20240701-changelog.html",
-    "title": "V-Sekai Changelog - July 2024",
+    "objectID": "changelog/2024/20240901-changelog.html",
+    "href": "changelog/2024/20240901-changelog.html",
+    "title": "V-Sekai Changelog - September 2024",
     "section": "",
-    "text": "Experimental (🧪): This stage is for features that are still being tested and may not be stable.\nFeature complete (🎯): This stage is for features that have all planned functionality implemented.\nBeta (🚧): This stage is for features that are largely complete but may still have bugs.\nGeneral release (🚀): This stage is for features that have been fully tested and are now released.\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nReplaced fabrik ik solver in renik ik character controler with qcp ik solver.\nManifold for Godot Engine CSG ready for review\nWorked on Wasgo for WASM32-CPUs for tooling and runtime user generated code.\nWorked on libriscv loading and executing a hello world function call with a shared object.\nWorked on godot-llama trying to get the new PHI-3 model working. https://github.com/V-Sekai/godot-llama\nWorked on ServerBackend🚫\nWorked on TrollVsGoatTrafficSimulator\nWorked on elaish/manifold for Constructive Solid Geometry\nWorked on Vahera/godot-orchestrator for riscv and a merge for node formatting\nWorked with fwsGonzo/libriscv for riscv. V8 now works.\nWorked on 3D Mesh\n\nTokenized into Sequence of Tokens\nInputted into Transformer Model\nGenerates New Meshes\nModifies Existing Meshes\n\nExperimental Mirrors: Engine Patch 🧪\nExperimental Mirrors: Screenspace 🧪\nMaintained Resource Whitelister 🎯\nMaintained VRM 🎯\nRobust Weight Painting (Experimental 🧪) (iFire)\n\nRelies on Lyuma’s Skeleton Merging Tool\n\nUpdate to Godot Engien 4.3-beta3\n\n\n\n\nUnified Godot Humanoid Skeleton 🚀\nUnidot Unity Package Importer\nFBX 🚧\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning.\n\n\n\n\n\nNot applicable for this month."
+    "text": "Experimental (🧪): This stage is for features that are still being tested and may not be stable.\nFeature complete (🎯): This stage is for features that have all planned functionality implemented.\nBeta (🚧): This stage is for features that are largely complete but may still have bugs.\nGeneral release (🚀): This stage is for features that have been fully tested and are now released.\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\n\n\nWork in progress with humanoid muscle encoding to/from quaternion. We can use this in the future for more efficient network serialization (similar to ShaderMotion’s format, or networked IK)\nSome progress on CDN code to make it a bit more reliable and engineered. It supports both gltf and godot scene format.\nfire and fwsGonzo have been working hard on godot-sandbox, a scripting system which allows you to write C++ code which acts like GDScript, via a sandboxed risc-v VM\nIn terms of engine features, typed dictionaries are in! https://godotengine.org/article/dev-snapshot-godot-4-4-dev-2/ That said, code which uses typed dictionaries will be incompatible with Godot 4.3 and earlier.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning.\n\n\n\n\n\nNot applicable for this month."
   },
   {
-    "objectID": "changelog/2024/20240701-changelog.html#released",
-    "href": "changelog/2024/20240701-changelog.html#released",
-    "title": "V-Sekai Changelog - July 2024",
+    "objectID": "changelog/2024/20240901-changelog.html#released",
+    "href": "changelog/2024/20240901-changelog.html#released",
+    "title": "V-Sekai Changelog - September 2024",
     "section": "",
     "text": "Not applicable for this month."
   },
   {
-    "objectID": "changelog/2024/20240701-changelog.html#unreleased",
-    "href": "changelog/2024/20240701-changelog.html#unreleased",
-    "title": "V-Sekai Changelog - July 2024",
+    "objectID": "changelog/2024/20240901-changelog.html#unreleased",
+    "href": "changelog/2024/20240901-changelog.html#unreleased",
+    "title": "V-Sekai Changelog - September 2024",
     "section": "",
-    "text": "Replaced fabrik ik solver in renik ik character controler with qcp ik solver.\nManifold for Godot Engine CSG ready for review\nWorked on Wasgo for WASM32-CPUs for tooling and runtime user generated code.\nWorked on libriscv loading and executing a hello world function call with a shared object.\nWorked on godot-llama trying to get the new PHI-3 model working. https://github.com/V-Sekai/godot-llama\nWorked on ServerBackend🚫\nWorked on TrollVsGoatTrafficSimulator\nWorked on elaish/manifold for Constructive Solid Geometry\nWorked on Vahera/godot-orchestrator for riscv and a merge for node formatting\nWorked with fwsGonzo/libriscv for riscv. V8 now works.\nWorked on 3D Mesh\n\nTokenized into Sequence of Tokens\nInputted into Transformer Model\nGenerates New Meshes\nModifies Existing Meshes\n\nExperimental Mirrors: Engine Patch 🧪\nExperimental Mirrors: Screenspace 🧪\nMaintained Resource Whitelister 🎯\nMaintained VRM 🎯\nRobust Weight Painting (Experimental 🧪) (iFire)\n\nRelies on Lyuma’s Skeleton Merging Tool\n\nUpdate to Godot Engien 4.3-beta3\n\n\n\n\nUnified Godot Humanoid Skeleton 🚀\nUnidot Unity Package Importer\nFBX 🚧\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning."
+    "text": "Work in progress with humanoid muscle encoding to/from quaternion. We can use this in the future for more efficient network serialization (similar to ShaderMotion’s format, or networked IK)\nSome progress on CDN code to make it a bit more reliable and engineered. It supports both gltf and godot scene format.\nfire and fwsGonzo have been working hard on godot-sandbox, a scripting system which allows you to write C++ code which acts like GDScript, via a sandboxed risc-v VM\nIn terms of engine features, typed dictionaries are in! https://godotengine.org/article/dev-snapshot-godot-4-4-dev-2/ That said, code which uses typed dictionaries will be incompatible with Godot 4.3 and earlier.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning."
   },
   {
-    "objectID": "changelog/2024/20240701-changelog.html#previous-releases",
-    "href": "changelog/2024/20240701-changelog.html#previous-releases",
-    "title": "V-Sekai Changelog - July 2024",
+    "objectID": "changelog/2024/20240901-changelog.html#previous-releases",
+    "href": "changelog/2024/20240901-changelog.html#previous-releases",
+    "title": "V-Sekai Changelog - September 2024",
     "section": "",
     "text": "Not applicable for this month."
   },
   {
-    "objectID": "changelog/2024/20240330-changelog.html",
-    "href": "changelog/2024/20240330-changelog.html",
-    "title": "V-Sekai Changelog - March 2024",
+    "objectID": "changelog/2024/20241003-changelog.html",
+    "href": "changelog/2024/20241003-changelog.html",
+    "title": "V-Sekai Changelog - October 2024",
     "section": "",
-    "text": "Not applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\nGDC Demo: We attended the Game Developers Conference (GDC) in San Francisco, California, USA. We demonstrated the capabilities of the Godot Engine on an Android tablet.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning.\n\n\n\n\n\nNot applicable for this month."
+    "text": "Experimental (🧪): This stage is for features that are still being tested and may not be stable.\nFeature complete (🎯): This stage is for features that have all planned functionality implemented.\nBeta (🚧): This stage is for features that are largely complete but may still have bugs.\nGeneral release (🚀): This stage is for features that have been fully tested and are now released.\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\n\n\n🎯 https://gonzerelli.itch.io/demo - fwsgonzo decided to embed LuaJIT to Godot Sandbox as a proof-of-concept. Touching the first coin will open up a Lua “console” which redirects print() to a TextEdit\n🎯 https://gonzerelli.itch.io/demo - We enabled binary translation for LuaJIT on Godot Sandbox.\n🚀 Installed Discord on the Meta Quest 3 and was able to stream Godot Engine and ecosystem applications.\n🎯 Added a double build of steam audio\n🎯 Steam Audio now works without a custom Godot Engine fork.\n🧪 The VRM Consortium, Inc., the creator and advocate of the VRM 3D avatar file format, which is based on the glTF™ 2.0 open standard, has announced a collaboration with The Khronos Group, the developer of glTF, to advance the international standardization of VRM.\n🚀 Submitted IREE.gd to Awesome-Godot-Scientific\n🧪 Collaboration with GuilhermeGSousa/godot-motion-matching\n🚀 Found opensource animation assets. Useful bases for retargeting and also stylizing motions. O3DE MotionMatching Animation Assets\n🧪 Collaboration with maiself/godot-python-extension\n🧪 Split V-Sekai world into world_editor and world_game\n\n\n\n\n\n🚧 Try to release iree-gd for godot engine 4.3 stable. https://github.com/iree-gd/iree.gd/pull/87\n🧪 Cleanup 3d cage for porting to python. https://github.com/V-Sekai-fire/godot_cage_deformer\n🚧 Updated manifold to remove GLM - https://github.com/godotengine/godot/pull/94321\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning.\n\n\n\n\n\nNot applicable for this month."
   },
   {
-    "objectID": "changelog/2024/20240330-changelog.html#released",
-    "href": "changelog/2024/20240330-changelog.html#released",
-    "title": "V-Sekai Changelog - March 2024",
+    "objectID": "changelog/2024/20241003-changelog.html#released",
+    "href": "changelog/2024/20241003-changelog.html#released",
+    "title": "V-Sekai Changelog - October 2024",
     "section": "",
     "text": "Not applicable for this month."
   },
   {
-    "objectID": "changelog/2024/20240330-changelog.html#unreleased",
-    "href": "changelog/2024/20240330-changelog.html#unreleased",
-    "title": "V-Sekai Changelog - March 2024",
+    "objectID": "changelog/2024/20241003-changelog.html#unreleased",
+    "href": "changelog/2024/20241003-changelog.html#unreleased",
+    "title": "V-Sekai Changelog - October 2024",
     "section": "",
-    "text": "Not applicable for this month.\n\n\n\n\nGDC Demo: We attended the Game Developers Conference (GDC) in San Francisco, California, USA. We demonstrated the capabilities of the Godot Engine on an Android tablet.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning."
+    "text": "🎯 https://gonzerelli.itch.io/demo - fwsgonzo decided to embed LuaJIT to Godot Sandbox as a proof-of-concept. Touching the first coin will open up a Lua “console” which redirects print() to a TextEdit\n🎯 https://gonzerelli.itch.io/demo - We enabled binary translation for LuaJIT on Godot Sandbox.\n🚀 Installed Discord on the Meta Quest 3 and was able to stream Godot Engine and ecosystem applications.\n🎯 Added a double build of steam audio\n🎯 Steam Audio now works without a custom Godot Engine fork.\n🧪 The VRM Consortium, Inc., the creator and advocate of the VRM 3D avatar file format, which is based on the glTF™ 2.0 open standard, has announced a collaboration with The Khronos Group, the developer of glTF, to advance the international standardization of VRM.\n🚀 Submitted IREE.gd to Awesome-Godot-Scientific\n🧪 Collaboration with GuilhermeGSousa/godot-motion-matching\n🚀 Found opensource animation assets. Useful bases for retargeting and also stylizing motions. O3DE MotionMatching Animation Assets\n🧪 Collaboration with maiself/godot-python-extension\n🧪 Split V-Sekai world into world_editor and world_game\n\n\n\n\n\n🚧 Try to release iree-gd for godot engine 4.3 stable. https://github.com/iree-gd/iree.gd/pull/87\n🧪 Cleanup 3d cage for porting to python. https://github.com/V-Sekai-fire/godot_cage_deformer\n🚧 Updated manifold to remove GLM - https://github.com/godotengine/godot/pull/94321\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning."
   },
   {
-    "objectID": "changelog/2024/20240330-changelog.html#previous-releases",
-    "href": "changelog/2024/20240330-changelog.html#previous-releases",
-    "title": "V-Sekai Changelog - March 2024",
+    "objectID": "changelog/2024/20241003-changelog.html#previous-releases",
+    "href": "changelog/2024/20241003-changelog.html#previous-releases",
+    "title": "V-Sekai Changelog - October 2024",
     "section": "",
     "text": "Not applicable for this month."
   },
   {
-    "objectID": "changelog/2024/20240603-changelog.html",
-    "href": "changelog/2024/20240603-changelog.html",
-    "title": "V-Sekai Changelog - June 2024",
+    "objectID": "changelog/2025/20250206-deck-log.html",
+    "href": "changelog/2025/20250206-deck-log.html",
+    "title": "V-Sekai Deck Log - 2025-02-06",
     "section": "",
-    "text": "Not applicable for this month.\n\n\n\n\n\n\n\nWorked on a pull request for motion blur, which included:\n\nPushing updates to the vsk-motion-blur-4.3-beta1 branch in the Godot repository.\n\nInitiated and updated a paint mixer spectral.js project in the world:main branch\nPushed an update to the mirror script at V-Sekai/avatar_vr_demo so it works in desktop mode as well as XR, and works at arbitrary aspect ratios. Thanks iFire for rubber duckying and encouraging me. Note that if you want square pixels and wish to use the screenspace mode, you need this commit V-Sekai/godot. However, it also supports using Godot’s builtin Frustum camera in non-screenspace mode where the pixels will be aligned along the plane of the mirror. See if you can spot the differences. (the skybox shader doesn’t fully support frustum mode)\nIntegrated OpenTelemetry into the codebase for enhanced debugging capabilities. This will allow developers to trace and monitor application performance in real-time, helping to identify and resolve issues more efficiently.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nBumped github/codeql-action from 3.25.6 to 3.25.7 for security best practices.\n\nThis project does not adhere to Semantic Versioning.\n\n\n\n\n\nNot applicable for this month."
+    "text": "V-Sekai Deck Log - 2025-02-06\n\n1. Date: 2025-02-06\n2. Project Status - Team Activity:\n\nLocation: Vancouver Region (YVR)\nEnvironmental Conditions: Winter season\nActive Contributors: 5 (Astral Druid, Fire, iffn, Lyuma, dragonhunt02)\n\nAstral Druid: Art direction + coordinating event prep\niffn: Refining prototype environment (trees, ship)\nLyuma: Debugging VR UI Ray Casting\nFire: Codebase maintenance ([godot] force-pushes x2, [manuals] log updates x6, [xr-grid] Docker builds). Object add/delete/vote prototype.\ndragonhunt02: CI/CD improvements (v-sekai-game#488)\n\nGroup Activities:\n\nOMIGROUP glTF working group meeting conducted\n\n\n3. Technical Updates:\n\nCodebase Health:\n\nVR UI: OpenXR narrowing fixes (commits 5798822, 24e88e1)\nObject Prototype: Test stability (force-pushed to 4e1450d, crash test disabled in 1a49ec1)\nDocumentation: Manuals deployed via gh-pages (a1ded61 → 18f391a)\n\n\n4. Blockers:\n\n🛑 Active:\n\nVR UI Ray Casting (Lyuma)\nUID duplication in resource system (Lyuma)\nOpenXR Quest 3 compile error (GodotEngine#88358)\nUID duplication in resource system\n\n🛑 New:\n\nGitHub Actions narrowing warnings (godot_openxr_vendors#1)\nCamera mode UI/CLI debate unresolved (v-sekai-game#488)\nOpenXR Quest 3 compile error - GodotEngine#88358\nOmigroup email system outage (Team)\nGDC 2025 replanning required due to unannounced organizer changes\n\n\n5. Planned Work:\n\nKey Goals for 02-05:\n\nLyuma: Resolve VR UI blocker and prototype UID solutions\nFire: Deliver prototype draft + finalize log documentation\nAstral, iffn: Complete event demo environment by 2025-02-14\nMerge OpenXR CI fixes (force-pushed to 818f515)\nFinalize manual deployments (gh-pages force-push 09ff511)\nResolve subrepo sync in world-godot#59\n\n\n6. Leadership Decisions:\n\nWeekly check-ins continuing\nDeferred camera mode decision pending UX review"
   },
   {
-    "objectID": "changelog/2024/20240603-changelog.html#released",
-    "href": "changelog/2024/20240603-changelog.html#released",
-    "title": "V-Sekai Changelog - June 2024",
+    "objectID": "changelog/2025/20250208-deck-log.html",
+    "href": "changelog/2025/20250208-deck-log.html",
+    "title": "V-Sekai Deck Log - 2025-02-08",
     "section": "",
-    "text": "Not applicable for this month."
+    "text": "V-Sekai Deck Log - 2025-02-08\n\n1. Date: 2025-02-08 (Saturday)\n2. Project Status - Team Activity:\n\nLocation: Vancouver Region (YVR)\nEnvironmental Conditions: Winter season, -2 celsius\nActive Contributors: 5 (Astral Druid, Fire, iffn, Lyuma)\n\nAstral Druid:\n\nArt direction\ncoordinating event prep\n\niffn: Refining prototype environment (trees, ship)\nLyuma: Debugging VR UI Ray Casting\nFire:\n\nObject add/delete/vote prototype\n\n\nGroup Activities:\n\nAdhoc V-Sekai meetings\n\nFire x Astral Druid\nLyuma x Astral x Fire x iffn\n\n\n\n3. Technical Updates:\n\nCodebase Health:\n\nNone\n\n\n4. Blockers:\n\n🛑 Active:\n\nVR UI Ray Casting (Lyuma)\n\n🛑 New:\n\nNone\n\n\n5. Planned Work:\n\nKey Goals:\n\nLyuma: Resolve VR UI blocker\nFire: Deliver prototype draft\nGDC 2025 replanning required due to unannounced organizer changes\n\n\n6. Leadership Decisions:\n\nWeekly check-ins continuing"
   },
   {
-    "objectID": "changelog/2024/20240603-changelog.html#unreleased",
-    "href": "changelog/2024/20240603-changelog.html#unreleased",
-    "title": "V-Sekai Changelog - June 2024",
+    "objectID": "changelog/2025/20250308-deck-log.html",
+    "href": "changelog/2025/20250308-deck-log.html",
+    "title": "V-Sekai Deck Log - 2025-03-08 (Saturday)",
     "section": "",
-    "text": "Worked on a pull request for motion blur, which included:\n\nPushing updates to the vsk-motion-blur-4.3-beta1 branch in the Godot repository.\n\nInitiated and updated a paint mixer spectral.js project in the world:main branch\nPushed an update to the mirror script at V-Sekai/avatar_vr_demo so it works in desktop mode as well as XR, and works at arbitrary aspect ratios. Thanks iFire for rubber duckying and encouraging me. Note that if you want square pixels and wish to use the screenspace mode, you need this commit V-Sekai/godot. However, it also supports using Godot’s builtin Frustum camera in non-screenspace mode where the pixels will be aligned along the plane of the mirror. See if you can spot the differences. (the skybox shader doesn’t fully support frustum mode)\nIntegrated OpenTelemetry into the codebase for enhanced debugging capabilities. This will allow developers to trace and monitor application performance in real-time, helping to identify and resolve issues more efficiently.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nBumped github/codeql-action from 3.25.6 to 3.25.7 for security best practices.\n\nThis project does not adhere to Semantic Versioning."
+    "text": "V-Sekai Deck Log - 2025-03-08 (Saturday)\n1. Project Status - Team Activity:\n\nLocation: Vancouver Region (YVR)\nEnvironmental Conditions:\n\nRain\n7 °C\nPrecipitation: 100%\nHumidity: 94%\nWind: 10 km/h\nSaturday 4:00 p.m.\n\nActive Contributors: fire\n\nfire:\n\nGreeted two people in V-Sekai Discord\nWorked on libgodot\n\nMacos\nLinux\nWindows\n\nThe discussion centered on automating server tasks (e.g., updating the Downloads section, maps, and avatars) via GitHub Actions while maintaining flexibility and server independence. The choice between GitHub webhooks (using a custom authenticated endpoint) and polling the releases page was debated, with webhooks favored for enabling real-time automation and manual execution via cross-platform curl scripts, ensuring tasks could run independently of GitHub. However, concerns about credential management and GitHub dependency were acknowledged, as automated updates via webhooks would stall if GitHub were unavailable, requiring manual intervention. The consensus leaned toward implementing a custom endpoint to unify automated and manual workflows, prioritizing server resilience (ensuring core functions operate even if GitHub is offline) while accepting that automatic updates might occasionally require manual fallbacks. A feature proposal was suggested to formalize this design in the project’s GitHub repository, balancing GitHub integration with self-sufficient scripting.\n\n\nGroup Activities:\n\nNone\n\n\n2. Blockers:\n\nPrototype & Voting system validation\nVR UI\nV-Sekai uro backend server\n\n3. Planned Work:\n\nKey Goals:\n\nGDC 2025 schedule"
   },
   {
-    "objectID": "changelog/2024/20240603-changelog.html#previous-releases",
-    "href": "changelog/2024/20240603-changelog.html#previous-releases",
-    "title": "V-Sekai Changelog - June 2024",
+    "objectID": "changelog/2025/20250408-deck-log.html",
+    "href": "changelog/2025/20250408-deck-log.html",
+    "title": "V-Sekai Deck Log - 2025-04-08 (Tuesday)",
     "section": "",
-    "text": "Not applicable for this month."
+    "text": "V-Sekai Deck Log - 2025-04-08 (Tuesday)\n1. Project Status - Team Activity:\n\nLocation: Vancouver Region (YVR)\nEnvironmental Conditions: To be determined.\nActive Contributors: Lyuma, Astral, iFire, dragonhunt02\nGroup Activities:\n\nPlanning meeting in discord on the 7th.\n\n\n2. Blockers:\n\nTo be determined.\n\n3. Planned Work:\n\nV-Sekai uro backend server\nMultiplayer Server 10 CCU"
   },
   {
-    "objectID": "changelog/2024/20240202-changelog.html",
-    "href": "changelog/2024/20240202-changelog.html",
-    "title": "V-Sekai Changelog - February 2024",
+    "objectID": "changelog/2025/20250220-deck-log.html",
+    "href": "changelog/2025/20250220-deck-log.html",
+    "title": "V-Sekai Deck Log - 2025-02-20 (Thursday)",
     "section": "",
-    "text": "Not applicable for this month.\n\n\n\n\n\n\n\nUFBX Importer: Merged into Godot Engine master for version 4.3.\nUnidot Spring Bones: Spring bones now import with Unidot Importer! It’s compatible with various popular formats and supports all features of the vrm spring bone script. Currently no advanced features like axis locks or inside colliders. While the vrm script supports curves, Unity curve sampling has not been implemented yet, so each bone in the chain imports with a constant value.\ngodot-vrm: An update to godot-vrm on git has been pushed to make it easier and more straightforward to edit spring bones in the inspector.\nUnidot: A lot of bugfixes have been made to the VRM import/export, unidot import pipeline, and springbone support. It’s becoming a lot easier to import a set of assets from unitypackage including booth outfits, attach them, and then export a VRM with functional spring bones!\nGodot FBX Importer: ArchVizPro volume 6 imported with ufbx. The importer is exceptionally good, and during testing it appears to perfectly replicate the result obtained in the autodesk SDK. This means Unidot in Godot 4.3 will be able to import directly to fbx out of the box without having to go through gltf!\ngodot-whisper: Added support for real-time audio transcription within the Godot Engine, which includes enhanced compatibility for the Metal API on Apple devices and improved threading performance. (Commit: 2d85a0e update)\ngodot-steamaudio: Updated the Steam Audio integration by refactoring the build configuration and audio stream handling process. (Commit: 8f15de1 Refactor build configuration)\n\n\n\n\n\nRemove a V-Sekai-game github release and point to https://saracenone.itch.io/groups-4x\n\n\n\n\n\n2024-02-07: There was a nasty bug involving the springbone gizmo, a node rename, and a Godot bug that would corrupt the node if replace_by was called on an internal node (such as a gizmo) that was leading random meshes to disappear in godot vrm during import. Should be fixed now!\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\n\nThis project does not adhere to Semantic Versioning.\n\n\n\n\n\nNot applicable for this month."
+    "text": "V-Sekai Deck Log - 2025-02-20 (Thursday)\n1. Project Status - Team Activity:\n\nLocation: Vancouver Region (YVR)\nEnvironmental Conditions: Winter season\nActive Contributors: Lyuma, dragonhunt02\n\nLyuma:\n\nUse UIDs in addition to paths for extracted meshes, materials and animations #100786 Postponed to 4.5 Godot Engine\nMade some progress building a new system which will hopefully unify input for canvas and world objects by using the Lasso system, and will support both mouse and XRController. It is currently designed as two addons in GDScript. The work-in-progress code is at: https://github.com/V-Sekai/interaction_system https://github.com/V-Sekai/canvas_plane (Use the interaction_system branch)\n\ndragonhunt02:\n\nV-Sekai/world-godot Pull request opened: #62 Fix web editor Github build bug #61 Disable optimizations to fix web editor build running out of RAM. I left them enabled in web template_release only.\n\n\nGroup Activities:\n\nNone\n\n\n2. Blockers:\n\nPrototype & Voting system validation\nV-Sekai uro backend server\nPrototype iteration\nFinalizing event 3d assets\nVR UI via lassodb and https://github.com/V-Sekai/V-Sekai.godot-gui-in-vr/blob/master/addons/gui_in_vr/player/controller_ray_cast.gd\n\n3. Planned Work:\n\nKey Goals:\n\nGDC 2025 schedule\nBuilding OurSpace’s VR/XR platform"
   },
   {
-    "objectID": "changelog/2024/20240202-changelog.html#released",
-    "href": "changelog/2024/20240202-changelog.html#released",
-    "title": "V-Sekai Changelog - February 2024",
+    "objectID": "changelog/2025/20250418-deck-log.html",
+    "href": "changelog/2025/20250418-deck-log.html",
+    "title": "V-Sekai Deck Log - 2025-04-18 (Friday)",
     "section": "",
-    "text": "Not applicable for this month."
-  },
-  {
-    "objectID": "changelog/2024/20240202-changelog.html#unreleased",
-    "href": "changelog/2024/20240202-changelog.html#unreleased",
-    "title": "V-Sekai Changelog - February 2024",
-    "section": "",
-    "text": "UFBX Importer: Merged into Godot Engine master for version 4.3.\nUnidot Spring Bones: Spring bones now import with Unidot Importer! It’s compatible with various popular formats and supports all features of the vrm spring bone script. Currently no advanced features like axis locks or inside colliders. While the vrm script supports curves, Unity curve sampling has not been implemented yet, so each bone in the chain imports with a constant value.\ngodot-vrm: An update to godot-vrm on git has been pushed to make it easier and more straightforward to edit spring bones in the inspector.\nUnidot: A lot of bugfixes have been made to the VRM import/export, unidot import pipeline, and springbone support. It’s becoming a lot easier to import a set of assets from unitypackage including booth outfits, attach them, and then export a VRM with functional spring bones!\nGodot FBX Importer: ArchVizPro volume 6 imported with ufbx. The importer is exceptionally good, and during testing it appears to perfectly replicate the result obtained in the autodesk SDK. This means Unidot in Godot 4.3 will be able to import directly to fbx out of the box without having to go through gltf!\ngodot-whisper: Added support for real-time audio transcription within the Godot Engine, which includes enhanced compatibility for the Metal API on Apple devices and improved threading performance. (Commit: 2d85a0e update)\ngodot-steamaudio: Updated the Steam Audio integration by refactoring the build configuration and audio stream handling process. (Commit: 8f15de1 Refactor build configuration)\n\n\n\n\n\nRemove a V-Sekai-game github release and point to https://saracenone.itch.io/groups-4x\n\n\n\n\n\n2024-02-07: There was a nasty bug involving the springbone gizmo, a node rename, and a Godot bug that would corrupt the node if replace_by was called on an internal node (such as a gizmo) that was leading random meshes to disappear in godot vrm during import. Should be fixed now!\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\n\nThis project does not adhere to Semantic Versioning."
-  },
-  {
-    "objectID": "changelog/2024/20240202-changelog.html#previous-releases",
-    "href": "changelog/2024/20240202-changelog.html#previous-releases",
-    "title": "V-Sekai Changelog - February 2024",
-    "section": "",
-    "text": "Not applicable for this month."
-  },
-  {
-    "objectID": "changelog/2024/20240505-changelog.html",
-    "href": "changelog/2024/20240505-changelog.html",
-    "title": "V-Sekai Changelog - May 2024",
-    "section": "",
-    "text": "Not applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\nWebRTC: Worked on browser and native webrtc interop. https://ifiregames.itch.io/webrtc-native-web-interoperability\nlibgodot: Worked on embedding libgodot to where it doesn’t belong.\ncsg: Update csg in Godot Engine to use Manifold.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning.\n\n\n\n\n\nNot applicable for this month."
-  },
-  {
-    "objectID": "changelog/2024/20240505-changelog.html#released",
-    "href": "changelog/2024/20240505-changelog.html#released",
-    "title": "V-Sekai Changelog - May 2024",
-    "section": "",
-    "text": "Not applicable for this month."
-  },
-  {
-    "objectID": "changelog/2024/20240505-changelog.html#unreleased",
-    "href": "changelog/2024/20240505-changelog.html#unreleased",
-    "title": "V-Sekai Changelog - May 2024",
-    "section": "",
-    "text": "Not applicable for this month.\n\n\n\n\nWebRTC: Worked on browser and native webrtc interop. https://ifiregames.itch.io/webrtc-native-web-interoperability\nlibgodot: Worked on embedding libgodot to where it doesn’t belong.\ncsg: Update csg in Godot Engine to use Manifold.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning."
-  },
-  {
-    "objectID": "changelog/2024/20240505-changelog.html#previous-releases",
-    "href": "changelog/2024/20240505-changelog.html#previous-releases",
-    "title": "V-Sekai Changelog - May 2024",
-    "section": "",
-    "text": "Not applicable for this month."
-  },
-  {
-    "objectID": "changelog/2024/20240101-changelog.html",
-    "href": "changelog/2024/20240101-changelog.html",
-    "title": "V-Sekai Changelog - January 2024",
-    "section": "",
-    "text": "Not applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices: Applied security best practices as recommended by StepSecurity. (Commit: d641001)\n\nThis project does not adhere to Semantic Versioning.\n\n\n\n\n\nNot applicable for this month."
-  },
-  {
-    "objectID": "changelog/2024/20240101-changelog.html#released",
-    "href": "changelog/2024/20240101-changelog.html#released",
-    "title": "V-Sekai Changelog - January 2024",
-    "section": "",
-    "text": "Not applicable for this month."
-  },
-  {
-    "objectID": "changelog/2024/20240101-changelog.html#unreleased",
-    "href": "changelog/2024/20240101-changelog.html#unreleased",
-    "title": "V-Sekai Changelog - January 2024",
-    "section": "",
-    "text": "Not applicable for this month.\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices: Applied security best practices as recommended by StepSecurity. (Commit: d641001)\n\nThis project does not adhere to Semantic Versioning."
-  },
-  {
-    "objectID": "changelog/2024/20240101-changelog.html#previous-releases",
-    "href": "changelog/2024/20240101-changelog.html#previous-releases",
-    "title": "V-Sekai Changelog - January 2024",
-    "section": "",
-    "text": "Not applicable for this month."
-  },
-  {
-    "objectID": "changelog/2024/20241102-changelog.html",
-    "href": "changelog/2024/20241102-changelog.html",
-    "title": "V-Sekai Changelog - November 2024",
-    "section": "",
-    "text": "Experimental (🧪): This stage is for features still being tested and may not be stable.\nFeature complete (🎯): This stage is for features with all planned functionality implemented.\nBeta (🚧): This stage is for essentially complete features that may still have bugs.\nGeneral release (🚀): This stage is for features that have been thoroughly tested and are now released.\n\n\n\n\n🚀 V-Sekai discord onboarding is now enabled.\n🧪 Updated godot-sandbox json_diff_sample cmake sample\n🧪 Updated godot-sandbox weight transfer sample\n🧪 Prototype a repository for visual anomaly detection with Anomalib. V-Sekai-fire/godot-visual-anomaly-detection\n🚧 ifiregames.itch.io/godot-motion-matching\n🧪 V-Sekai/world-editor\n🚀 Ughuuu/gdextension-to-module\n🚀 Walk the Dog is a vector-quantized periodic autoencoder. Walk the Dog is now MIT-licensed open source. It learns a disconnected 1D phase manifold that aligns motion regardless of morphologies while requiring no paired data or any joint correspondence PeizhuoLi/walk-the-dog\n🚀 Submitted an update to Godot-VRM version 2.1.0, adding much-needed support for Godot 4.3 SkeletonModifier3D, an import (or runtime) option to adjust the head hiding method, and several bug fixes. It will be released on the asset library when approved, likely next week, but it can be downloaded from GitHub. Known issues: Node constraints are still imported incorrectly because they are not adjusted for rotated bones during retargeting. Newer VRM features, such as VRMA animation, still need support.\n🎯 https://github.com/V-Sekai/world-godot and https://github.com/V-Sekai/world-kit are now the new repository of Godot Engine and the world kit.\n\n\n\n\n\n\n\n🎯 Godot Lottie for animated vector graphics is ready to be merged into Godot Master.\n🚀 Godot Manifold for mesh add, mesh subtraction and mesh overlap is merged in Godot Master 4.4.\n🧪 Animation Node was merged in godot motion matching.\n\n🧪 Assist with Add animation node extension godot engine patch for animation node gdextensions.\n🧪 Designing Motion Matching as an animation node\n\n🧪 Godot cpp as C++ module: Dragos shows us a photo of godot-sandbox as a C++ module.\n\n🧪 We made a way to compile all gdextensions as a C++ module by extending GDExtensionLoader. Ughuuu/gdextension-to-module\n\n🧪 Uploaded a new godot vrm for motion matching web demo. Now, with debugging gizmos. View Demo\n🧪 Found research on transpiling GDScript to Godot Engine C++ with tailcalls as jumps. Read More | ACM1 | ACM2 | Hacker News Discussion\n🎯 1% runtime improvement with lod rendering in Godot Engine Rewrite index optimization code for maximum efficiency\n🧪 Provide VRM exports with humanizer\n\n\n\n\n\n🚧 Steam audio runs in standalone mode for PC, and nothing technical stops it from running on the Android Quest 3 after the Godot Engine feature enhancement was merged last week. stechyo/godot-steam-audio\n🎯 Vulkan pose Movenet estimation demo now runs on IREE.gd. iree-gd/iree.gd\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNo one wants to work on our game because it’s a fork of the godot engine -&gt; we made a godot-sandbox as a gdextension.\nI must learn to hyper-scale godot networking -&gt; greater than 25 players. Shared databases in the cloud are not good. Authoritative ownership schemes are ok.\nWe need things to do -&gt; Begin a metro transit hub system that connects the world."
-  },
-  {
-    "objectID": "changelog/2024/20241102-changelog.html#released",
-    "href": "changelog/2024/20241102-changelog.html#released",
-    "title": "V-Sekai Changelog - November 2024",
-    "section": "",
-    "text": "🚀 V-Sekai discord onboarding is now enabled.\n🧪 Updated godot-sandbox json_diff_sample cmake sample\n🧪 Updated godot-sandbox weight transfer sample\n🧪 Prototype a repository for visual anomaly detection with Anomalib. V-Sekai-fire/godot-visual-anomaly-detection\n🚧 ifiregames.itch.io/godot-motion-matching\n🧪 V-Sekai/world-editor\n🚀 Ughuuu/gdextension-to-module\n🚀 Walk the Dog is a vector-quantized periodic autoencoder. Walk the Dog is now MIT-licensed open source. It learns a disconnected 1D phase manifold that aligns motion regardless of morphologies while requiring no paired data or any joint correspondence PeizhuoLi/walk-the-dog\n🚀 Submitted an update to Godot-VRM version 2.1.0, adding much-needed support for Godot 4.3 SkeletonModifier3D, an import (or runtime) option to adjust the head hiding method, and several bug fixes. It will be released on the asset library when approved, likely next week, but it can be downloaded from GitHub. Known issues: Node constraints are still imported incorrectly because they are not adjusted for rotated bones during retargeting. Newer VRM features, such as VRMA animation, still need support.\n🎯 https://github.com/V-Sekai/world-godot and https://github.com/V-Sekai/world-kit are now the new repository of Godot Engine and the world kit."
-  },
-  {
-    "objectID": "changelog/2024/20241102-changelog.html#unreleased",
-    "href": "changelog/2024/20241102-changelog.html#unreleased",
-    "title": "V-Sekai Changelog - November 2024",
-    "section": "",
-    "text": "🎯 Godot Lottie for animated vector graphics is ready to be merged into Godot Master.\n🚀 Godot Manifold for mesh add, mesh subtraction and mesh overlap is merged in Godot Master 4.4.\n🧪 Animation Node was merged in godot motion matching.\n\n🧪 Assist with Add animation node extension godot engine patch for animation node gdextensions.\n🧪 Designing Motion Matching as an animation node\n\n🧪 Godot cpp as C++ module: Dragos shows us a photo of godot-sandbox as a C++ module.\n\n🧪 We made a way to compile all gdextensions as a C++ module by extending GDExtensionLoader. Ughuuu/gdextension-to-module\n\n🧪 Uploaded a new godot vrm for motion matching web demo. Now, with debugging gizmos. View Demo\n🧪 Found research on transpiling GDScript to Godot Engine C++ with tailcalls as jumps. Read More | ACM1 | ACM2 | Hacker News Discussion\n🎯 1% runtime improvement with lod rendering in Godot Engine Rewrite index optimization code for maximum efficiency\n🧪 Provide VRM exports with humanizer\n\n\n\n\n\n🚧 Steam audio runs in standalone mode for PC, and nothing technical stops it from running on the Android Quest 3 after the Godot Engine feature enhancement was merged last week. stechyo/godot-steam-audio\n🎯 Vulkan pose Movenet estimation demo now runs on IREE.gd. iree-gd/iree.gd\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nNot applicable for this month.\n\n\n\n\n\nSecurity Best Practices:\n\nThis project does not adhere to Semantic Versioning."
-  },
-  {
-    "objectID": "changelog/2024/20241102-changelog.html#previous-releases",
-    "href": "changelog/2024/20241102-changelog.html#previous-releases",
-    "title": "V-Sekai Changelog - November 2024",
-    "section": "",
-    "text": "Not applicable for this month."
-  },
-  {
-    "objectID": "changelog/2024/20241102-changelog.html#ask-yourself-why-the-fuck-arent-released-yet",
-    "href": "changelog/2024/20241102-changelog.html#ask-yourself-why-the-fuck-arent-released-yet",
-    "title": "V-Sekai Changelog - November 2024",
-    "section": "",
-    "text": "No one wants to work on our game because it’s a fork of the godot engine -&gt; we made a godot-sandbox as a gdextension.\nI must learn to hyper-scale godot networking -&gt; greater than 25 players. Shared databases in the cloud are not good. Authoritative ownership schemes are ok.\nWe need things to do -&gt; Begin a metro transit hub system that connects the world."
-  },
-  {
-    "objectID": "changelog/2024/20240625-changelog.html",
-    "href": "changelog/2024/20240625-changelog.html",
-    "title": "Special Notice: V-Sekai 2023-2024",
-    "section": "",
-    "text": "Focused on Unidot and VRM (import pipeline).\nGodot 4.0 bugfixes and animation. Lots of engine dev.\nJuly–Aug spent time working on new CDN downloader and starting to rethink avatar controller.\n\n\n\n\n\nNew networking system committed to v-sekai-game and to a demo repository. It is missing basic features like support for pickup items so we haven’t enabled it yet.\n\n\n\n\n\nJan–Mar focused on FBX support and GDC.\nApr–May focused on updating Unidot to support FBX.\n\n\n\n\n\n\nSince early June, Lyuma started to revisit the incomplete code from 10 months ago. Lyuma is currently working on tracker binding / skeleton calibration (e.g. full body).\n4.3 release was delayed. Lyuma wants to release 4.3-compatible updates to Unidot and VRM.\nLyuma had some difficulties with API integration.\nSome Godot 4.3 bugs are still on Lyuma’s plate.\n\n\n\n\n\nNew in-game UI update. A draft was committed a couple weeks ago but saracen has been away on vacation.\nSaracen has also been working some more on physics sync.\nAPI/backend redesign.\n\n\n\n\n\nIntegration of UI code into game.\nNetwork syncing support of props/objects using the new system.\nIntegration of other game features between avatar_vr_demo (player controller) and v-sekai-game (legacy codebase).\nNew backend so we can reenable registration.\nSome OpenAPI wrapper so we can talk to the new backend.\n\nLyuma thinks we should put more focus on getting something lightweight we can run and play levels in. Lyuma is of half a mind to put more focus into making avatar demo runnable with custom content rather than fully integrating network syncing just so we can get off the ground more easily with content creation."
-  },
-  {
-    "objectID": "changelog/2024/20240625-changelog.html#stuff-we-did-over-the-past-year",
-    "href": "changelog/2024/20240625-changelog.html#stuff-we-did-over-the-past-year",
-    "title": "Special Notice: V-Sekai 2023-2024",
-    "section": "",
-    "text": "Focused on Unidot and VRM (import pipeline).\nGodot 4.0 bugfixes and animation. Lots of engine dev.\nJuly–Aug spent time working on new CDN downloader and starting to rethink avatar controller.\n\n\n\n\n\nNew networking system committed to v-sekai-game and to a demo repository. It is missing basic features like support for pickup items so we haven’t enabled it yet.\n\n\n\n\n\nJan–Mar focused on FBX support and GDC.\nApr–May focused on updating Unidot to support FBX."
-  },
-  {
-    "objectID": "changelog/2024/20240625-changelog.html#current-work",
-    "href": "changelog/2024/20240625-changelog.html#current-work",
-    "title": "Special Notice: V-Sekai 2023-2024",
-    "section": "",
-    "text": "Since early June, Lyuma started to revisit the incomplete code from 10 months ago. Lyuma is currently working on tracker binding / skeleton calibration (e.g. full body).\n4.3 release was delayed. Lyuma wants to release 4.3-compatible updates to Unidot and VRM.\nLyuma had some difficulties with API integration.\nSome Godot 4.3 bugs are still on Lyuma’s plate."
-  },
-  {
-    "objectID": "changelog/2024/20240625-changelog.html#other-projects-in-progress",
-    "href": "changelog/2024/20240625-changelog.html#other-projects-in-progress",
-    "title": "Special Notice: V-Sekai 2023-2024",
-    "section": "",
-    "text": "New in-game UI update. A draft was committed a couple weeks ago but saracen has been away on vacation.\nSaracen has also been working some more on physics sync.\nAPI/backend redesign."
-  },
-  {
-    "objectID": "changelog/2024/20240625-changelog.html#wtfawry-what-do-we-need-to-get-v-sekai-game-working-with-the-new-architecture",
-    "href": "changelog/2024/20240625-changelog.html#wtfawry-what-do-we-need-to-get-v-sekai-game-working-with-the-new-architecture",
-    "title": "Special Notice: V-Sekai 2023-2024",
-    "section": "",
-    "text": "Integration of UI code into game.\nNetwork syncing support of props/objects using the new system.\nIntegration of other game features between avatar_vr_demo (player controller) and v-sekai-game (legacy codebase).\nNew backend so we can reenable registration.\nSome OpenAPI wrapper so we can talk to the new backend.\n\nLyuma thinks we should put more focus on getting something lightweight we can run and play levels in. Lyuma is of half a mind to put more focus into making avatar demo runnable with custom content rather than fully integrating network syncing just so we can get off the ground more easily with content creation."
-  },
-  {
-    "objectID": "changelog/2025/20250330-deck-log.html",
-    "href": "changelog/2025/20250330-deck-log.html",
-    "title": "V-Sekai Deck Log - 2025-03-30 (Sunday)",
-    "section": "",
-    "text": "V-Sekai Deck Log - 2025-03-30 (Sunday)\n1. Project Status - Team Activity:\n\nLocation: Vancouver Region (YVR)\nEnvironmental Conditions: To be determined.\nActive Contributors: iFire, dragonhunt02\nGroup Activities:\n\nRestored Godot Engien 4.5 builds in v-sekai/godot-world.\n\n\n2. Blockers:\n\nTo be determined.\n\n3. Planned Work:\n\nPrototype & Voting system validation\nVR UI\nV-Sekai uro backend server"
-  },
-  {
-    "objectID": "changelog/2025/20250226-deck-log.html",
-    "href": "changelog/2025/20250226-deck-log.html",
-    "title": "V-Sekai Deck Log - 2025-02-26 (Wednesday)",
-    "section": "",
-    "text": "V-Sekai Deck Log - 2025-02-26 (Wednesday)\n1. Project Status - Team Activity:\n\nLocation: Vancouver Region (YVR)\nEnvironmental Conditions: Winter season\nActive Contributors: dragonhunt02\n\ndragonhunt02:\n\nDebate about routes being changes for map and world upload\n\n\nGroup Activities:\n\nNone\n\n\n2. Blockers:\n\nPrototype & Voting system validation\nVR UI\nV-Sekai uro backend server\n\n3. Planned Work:\n\nKey Goals:\n\nGDC 2025 schedule"
-  },
-  {
-    "objectID": "changelog/2025/20250312-deck-log.html",
-    "href": "changelog/2025/20250312-deck-log.html",
-    "title": "V-Sekai Deck Log - 2025-03-12 (Wednesday)",
-    "section": "",
-    "text": "V-Sekai Deck Log - 2025-03-12 (Wednesday)\n1. Project Status - Team Activity:\n\nLocation: Vancouver Region (YVR)\nEnvironmental Conditions:\n5 °C\nPrecipitation: 100%\nHumidity: 91%\nWind: 11 km/h\nWednesday 6:00 a.m.\nLight rain\nActive Contributors: lyuma, dragonhunt02\n\nlyuma\n\n@bqq lyuma found a case where fbx import leaks memory in godot for the steamdeck. Need more information\n\ndragonhunt02\n\nFire merged https://github.com/V-Sekai/uro/pull/106 Implements admin/avatar/maps/profile/session/shards/registration apis and small fixes\n\n\nGroup Activities:\n\nNone\n\n\n2. Blockers:\n\nPrototype & Voting system validation\nVR UI\nV-Sekai uro backend server\n\n3. Planned Work:\n\nKey Goals:\n\nGDC 2025 schedule"
-  },
-  {
-    "objectID": "changelog/2025/20250213-deck-log.html",
-    "href": "changelog/2025/20250213-deck-log.html",
-    "title": "V-Sekai Deck Log - 2025-02-13 (Thursday)",
-    "section": "",
-    "text": "V-Sekai Deck Log - 2025-02-13 (Thursday)\n1. Project Status - Team Activity:\n\nLocation: Vancouver Region (YVR)\nEnvironmental Conditions: Winter season\nActive Contributors: Astral Druid, Iffn, Lyuma, Fire, Tokage, DragonHunt\n\nAstral Druid:\n\nFinalizing event assets\nCross-team coordination\n\niffn: Environment\nLyuma:\n\nVR UI via lassodb and https://github.com/V-Sekai/V-Sekai.godot-gui-in-vr/blob/master/addons/gui_in_vr/player/controller_ray_cast.gd\nUse UIDs in addition to paths for extracted meshes, materials and animations #100786\n\nFire:\n\nPin v-sekai game, awesome-vsekai, tool-explorer and xr-grid\nPrototype iteration\nVoting system validation\nRebased https://github.com/V-Sekai/godot_openxr_vendors\nRebased https://github.com/V-Sekai/world-godot\nRebased groups-4.4.2025-02-13T140336Z godot\nReviewed theora pull request\nReviewed Add Toki Pona (tok) to language/locale list. #102787\n\nトカゲ(Tokage)\n\nI don’t care and I think it make sense how many IKs there are as long as they are add-ons. My scope is just to add some FABR/CCD/TwoBoneIK(Past SkeletonModificationStack3D/Current SkeletonModification2D has it) that can be migrated from SkeletonIK3D\n\nDragonHunt\n\n(Uro) Bug fixes and docs update #102\n\n\nGroup Activities Pending:\n\nNone\n\n\n2. Blockers:\n\n🛑 Active:\n\nVR UI raycasting implementation (Lyuma)\n\n\n3. Planned Work:\n\nKey Goals:\n\nGDC 2025 schedule alignment\nNetwork stress-test planning\n\n\n4. Leadership Decisions:\n\nWeekly standups for GDC roadmap finalization"
-  },
-  {
-    "objectID": "changelog/2025/20250307-deck-log.html",
-    "href": "changelog/2025/20250307-deck-log.html",
-    "title": "V-Sekai Deck Log - 2025-03-07 (Friday)",
-    "section": "",
-    "text": "V-Sekai Deck Log - 2025-03-07 (Friday)\n1. Project Status - Team Activity:\n\nLocation: Vancouver Region (YVR)\nEnvironmental Conditions: Winter season\nActive Contributors: dragonhunt02, fire\n\ndragonhunt02:\n\nI think server works now. I tested editor upload and shard hosting. Only thing missing is setting up Mailer for production and more tests\n\nfire:\n\nThe discussion centered on automating server tasks (e.g., updating the Downloads section, maps, and avatars) via GitHub Actions while maintaining flexibility and server independence. The choice between GitHub webhooks (using a custom authenticated endpoint) and polling the releases page was debated, with webhooks favored for enabling real-time automation and manual execution via cross-platform curl scripts, ensuring tasks could run independently of GitHub. However, concerns about credential management and GitHub dependency were acknowledged, as automated updates via webhooks would stall if GitHub were unavailable, requiring manual intervention. The consensus leaned toward implementing a custom endpoint to unify automated and manual workflows, prioritizing server resilience (ensuring core functions operate even if GitHub is offline) while accepting that automatic updates might occasionally require manual fallbacks. A feature proposal was suggested to formalize this design in the project’s GitHub repository, balancing GitHub integration with self-sufficient scripting.\n\n\nGroup Activities:\n\nNone\n\n\n2. Blockers:\n\nPrototype & Voting system validation\nVR UI\nV-Sekai uro backend server\n\n3. Planned Work:\n\nKey Goals:\n\nGDC 2025 schedule"
-  },
-  {
-    "objectID": "changelog/2025/20250203-deck-log.html",
-    "href": "changelog/2025/20250203-deck-log.html",
-    "title": "V-Sekai Deck Log - 2025-02-03",
-    "section": "",
-    "text": "V-Sekai Deck Log - 2025-02-03\n(Locked as of 2025-02-03)\n\n1. Date: 2025-02-03\n2. Project Status - Team Activity:\n\nActive Contributors: 5 (Astral Druid, Fire, iffn, Lyuma, dragonhunt02).\n\nAstral Druid: Coordination + art development.\niffn: Art collaboration (Unity prototype demo: trees, ship environment).\nLyuma: Actively resolving VR UI Ray Casting blocker + drafting work requests.\nFire/dragonhunt02: CI/CD pipeline maintenance + prototyping object mechanics.\n\n\n3. Technical Updates:\n\nCodebase Health:\n\nCI/CD automation (Godot Engine updates + GitHub releases) fully operational.\nCode contributions paused except for Lyuma’s VR UI work.\n\n\n4. Blockers:\n\n✅ Resolved: Content Whitelisting (Lyuma).\n🛑 Active: VR UI Ray Casting (Lyuma).\n\n5. Planned Work:\n\nAstral/Lyuma: Finalize “request for work” document.\niFire: Implement object add/delete/vote via player controller (scruffed prototype).\n\n6. Leadership Decisions:\n\nRedirect non-critical resources to art/coordination until VR UI unblocked.\n\n\nStatus: ✅ Locked.\nUse this log for stakeholder updates or as a reference for future sprints!"
+    "text": "V-Sekai Deck Log - 2025-04-18 (Friday)\n1. Project Status - Team Activity:\n\nLocation: Vancouver Region (YVR)\nEnvironmental Conditions: To be determined.\nActive Contributors: iFire, benbot,\nGroup Activities:\n\nGathering on Friday, 18th of April: iFire, Lyuma, HumbleTim, Faolan, Saracen attended\nDemos and online vrm uploads"
   },
   {
     "objectID": "changelog/2025/20250204-deck-log.html",
