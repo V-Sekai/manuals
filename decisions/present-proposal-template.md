@@ -1,78 +1,66 @@
-# Draft: [Proposal Title]
+# [Proposal Title]
 
-## Context
+## The Context
 
-[Provide background information, relevant metrics, and the importance of addressing this topic now.]
+[Provide the background and context for this proposal. Explain the circumstances that led to this decision being necessary.]
 
-## Problem Statement
+## The Problem Statement
 
-[Describe the core problem(s) or opportunity this proposal addresses. Use a list if needed.]
+[Clearly state the problem this proposal aims to solve. What specific issue, limitation, or opportunity are we addressing?]
 
-## Proposed Solution
+## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
-[Outline the proposed approach or solution. Include key technical details if relevant.]
+[Detail the proposed solution. Use code snippets, pseudo-code, diagrams, or mock-ups as needed to illustrate how it will function.]
 
-**Implementation Steps**:
+## The Benefits
 
-1. [Actionable Step 1]
-2. [Actionable Step 2]
-3. [Actionable Step 3]
+[List the advantages of implementing this proposal. How will it improve the project, product, or process?]
 
-## Implementation Plan
+- Benefit 1
+- Benefit 2
 
-1. **Phase 1**: [Description of initial phase]
-   - [Task 1.1]
-   - [Task 1.2]
-2. **Phase 2**: [Description of next phase]
-   - [Task 2.1]
-3. **Validation**:
-   - Success Criteria: [Measurable outcome indicating success]
-   - Failure Threshold: [Measurable outcome indicating failure]
+## The Downsides
 
-## Benefits
+[List the potential disadvantages, risks, or costs associated with this proposal.]
 
-- [Benefit 1]
-- [Benefit 2]
-- [Benefit 3]
+- Downside 1
+- Downside 2
 
-## Risks and Limitations
+## The Road Not Taken
 
-- [Risk 1]
-- [Risk 2]
-- [Limitation 1]
+[Describe alternative solutions that were considered but rejected. Explain why this proposal was chosen over the alternatives.]
 
-## Alternatives Considered
+## The Infrequent Use Case
 
-| Option          | Pros  | Cons  |
-| --------------- | ----- | ----- |
-| [Alternative 1] | [Pro] | [Con] |
-| [Alternative 2] | [Pro] | [Con] |
+[Are there any less common scenarios or edge cases where this proposal might apply or behave differently?]
 
-## When to Avoid This Solution
+## In Core and Done by Us
 
-[Describe scenarios or conditions where this proposal might not be the best approach.]
+[Confirm if this feature is considered core functionality and will be implemented by the core team.]
 
-## Organizational Alignment
+## Status
 
-[Explain how this proposal aligns with broader organizational goals or strategies.]
-
-## Proposal Status
-
-Status: Draft <!-- Options: Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by [Link/Reference] -->
+Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 
 ## Decision Makers
 
-- [Relevant Role/Team 1]
-- [Relevant Role/Team 2]
+- [List the names or roles of the individuals responsible for making the final decision.]
 
 ## Tags
 
-- [Tag 1]
-- [Tag 2]
-- [Tag 3]
+- [Add relevant tags, e.g., V-Sekai, UI, Networking]
 
-## References
+## Further Reading
 
-1. [Link or Title of Reference 1]
-2. [Link or Title of Reference 2]
-3. [Link or Title of Reference 3]
+[Include links to relevant documentation, research papers, related issues, or other resources.]
+
+1. [Link Title 1](URL)
+2. [Link Title 2](URL)
+
+---
+
+*(Optional: Add a section for defining jargon if needed)*
+### Game Development Jargon
+
+1. **Term 1**: Definition
+2. **Term 2**: Definition
