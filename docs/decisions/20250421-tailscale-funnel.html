@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Changes to V-Sekai – V-Sekai - Manuals</title>
+<title>tailscale-funnel – V-Sekai - Manuals</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-4379b0ccadffce622b03caf4c46266b3.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-24fab65de848c24ae69d5f49cf751ca2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-2123f955cdefa9abbecb2f3daf477d11.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-4379b0ccadffce622b03caf4c46266b3.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-24fab65de848c24ae69d5f49cf751ca2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-2123f955cdefa9abbecb2f3daf477d11.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,9 +102,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -82,10 +113,10 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./68604884.png" alt="V-Sekai" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../68604884.png" alt="V-Sekai" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">V-Sekai - Manuals</span>
     </a>
   </div>
@@ -96,15 +127,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./changelog.html" aria-current="page"> 
+    <a class="nav-link" href="../changelog.html"> 
 <span class="menu-text">Changes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./decisions.html"> 
+    <a class="nav-link" href="../decisions.html"> 
 <span class="menu-text">Decisions</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./roadmap.html"> 
+    <a class="nav-link" href="../roadmap.html"> 
 <span class="menu-text">Roadmap</span></a>
   </li>  
 </ul>
@@ -119,131 +150,142 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#tailscale-funnel-system-level-service" id="toc-tailscale-funnel-system-level-service" class="nav-link active" data-scroll-target="#tailscale-funnel-system-level-service">Tailscale Funnel (System-Level Service)</a>
+  <ul class="collapse">
+  <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
+  <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
+  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</a></li>
+  <li><a href="#the-benefits" id="toc-the-benefits" class="nav-link" data-scroll-target="#the-benefits">The Benefits</a></li>
+  <li><a href="#the-downsides" id="toc-the-downsides" class="nav-link" data-scroll-target="#the-downsides">The Downsides</a></li>
+  <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
+  <li><a href="#the-infrequent-use-case" id="toc-the-infrequent-use-case" class="nav-link" data-scroll-target="#the-infrequent-use-case">The Infrequent Use Case</a></li>
+  <li><a href="#in-core-and-done-by-us" id="toc-in-core-and-done-by-us" class="nav-link" data-scroll-target="#in-core-and-done-by-us">In Core and Done by Us</a></li>
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
+  <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags">Tags</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a>
+  <ul class="collapse">
+  <li><a href="#game-development-jargon" id="toc-game-development-jargon" class="nav-link" data-scroll-target="#game-development-jargon">Game Development Jargon</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20250421-tailscale-funnel.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Changes to V-Sekai</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>All notable changes to this project will be documented in this file.</p>
-<p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>, and this project does <strong>not</strong> adhere to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
-<p><strong>Added</strong> for new features.</p>
-<p><strong>Changed</strong> for changes in existing functionality.</p>
-<p><strong>Deprecated</strong> for soon-to-be removed features.</p>
-<p><strong>Removed</strong> for now removed features.</p>
-<p><strong>Fixed</strong> for any bug fixes.</p>
-<p><strong>Security</strong> in case of vulnerabilities.</p>
-<table id="itables_75797d5c_8e00_4c48_b694_633f785bf33e" class="display nowrap" data-quarto-disable-processing="true" style="table-layout:auto;width:auto;margin:auto;caption-side:bottom">
-<thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>title</th>
-      <th>reading-time</th>
-      <th>filename</th>
-    </tr>
-  </thead><tbody><tr>
-<td style="vertical-align:middle; text-align:left">
-<a href="https://mwouts.github.io/itables/"><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="64" viewbox="0 0 500 400" style="font-family: 'Droid Sans', sans-serif;">
-    <g style="fill:#d9d7fc">
-        <path d="M100,400H500V357H100Z"></path>
-        <path d="M100,300H400V257H100Z"></path>
-        <path d="M0,200H400V157H0Z"></path>
-        <path d="M100,100H500V57H100Z"></path>
-        <path d="M100,350H500V307H100Z"></path>
-        <path d="M100,250H400V207H100Z"></path>
-        <path d="M0,150H400V107H0Z"></path>
-        <path d="M100,50H500V7H100Z"></path>
-    </g>
-    <g style="fill:#1a1366;stroke:#1a1366;">
-   <rect x="100" y="7" width="400" height="43">
-    <animate attributename="width" values="0;400;0" dur="5s" repeatcount="indefinite"></animate>
-      <animate attributename="x" values="100;100;500" dur="5s" repeatcount="indefinite"></animate>
-  </rect>
-        <rect x="0" y="107" width="400" height="43">
-    <animate attributename="width" values="0;400;0" dur="3.5s" repeatcount="indefinite"></animate>
-    <animate attributename="x" values="0;0;400" dur="3.5s" repeatcount="indefinite"></animate>
-  </rect>
-        <rect x="100" y="207" width="300" height="43">
-    <animate attributename="width" values="0;300;0" dur="3s" repeatcount="indefinite"></animate>
-    <animate attributename="x" values="100;100;400" dur="3s" repeatcount="indefinite"></animate>
-  </rect>
-        <rect x="100" y="307" width="400" height="43">
-    <animate attributename="width" values="0;400;0" dur="4s" repeatcount="indefinite"></animate>
-      <animate attributename="x" values="100;100;500" dur="4s" repeatcount="indefinite"></animate>
-  </rect>
-        <g style="fill:transparent;stroke-width:8; stroke-linejoin:round" rx="5">
-            <g transform="translate(45 50) rotate(-45)">
-                <circle r="33" cx="0" cy="0"></circle>
-                <rect x="-8" y="32" width="16" height="30"></rect>
-            </g>
-
-            <g transform="translate(450 152)">
-                <polyline points="-15,-20 -35,-20 -35,40 25,40 25,20"></polyline>
-                <rect x="-15" y="-40" width="60" height="60"></rect>
-            </g>
-
-            <g transform="translate(50 352)">
-                <polygon points="-35,-5 0,-40 35,-5"></polygon>
-                <polygon points="-35,10 0,45 35,10"></polygon>
-            </g>
-
-            <g transform="translate(75 250)">
-                <polyline points="-30,30 -60,0 -30,-30"></polyline>
-                <polyline points="0,30 -30,0 0,-30"></polyline>
-            </g>
-
-            <g transform="translate(425 250) rotate(180)">
-                <polyline points="-30,30 -60,0 -30,-30"></polyline>
-                <polyline points="0,30 -30,0 0,-30"></polyline>
-            </g>
-        </g>
-    </g>
-</svg>
-</a>
-Loading ITables v2.3.0 from the internet...
-(need <a href="https://mwouts.github.io/itables/troubleshooting.html">help</a>?)</td>
-</tr></tbody>
-</table>
-<link href="https://www.unpkg.com/dt_for_itables@2.2.0/dt_bundle.css" rel="stylesheet">
-<script type="module">
-    import {DataTable, jQuery as $} from 'https://www.unpkg.com/dt_for_itables@2.2.0/dt_bundle.js';
-
-    document.querySelectorAll("#itables_75797d5c_8e00_4c48_b694_633f785bf33e:not(.dataTable)").forEach(table => {
-        if (!(table instanceof HTMLTableElement))
-            return;
-
-        // Define the table data
-        const data = [[22, "<a href=\"https://v-sekai.github.io/manuals/changelog/2025/20250418-deck-log.html\">V-Sekai Deck Log - 2025-04-18 (Friday)</a>", "1 min", "20250418-deck-log.md"], [27, "<a href=\"https://v-sekai.github.io/manuals/changelog/2025/20250416-deck-log.html\">V-Sekai Deck Log - 2025-04-16 (Wednes...</a>", "1 min", "20250416-deck-log.md"], [18, "<a href=\"https://v-sekai.github.io/manuals/changelog/2025/20250408-deck-log.html\">V-Sekai Deck Log - 2025-04-08 (Tuesday)</a>", "1 min", "20250408-deck-log.md"], [11, "<a href=\"https://v-sekai.github.io/manuals/changelog/2025/20250330-deck-log.html\">V-Sekai Deck Log - 2025-03-30 (Sunday)</a>", "1 min", "20250330-deck-log.md"], [28, "<a href=\"https://v-sekai.github.io/manuals/changelog/2025/20250315-deck-log.html\">V-Sekai Deck Log - 2025-03-15 (Saturday)</a>", "1 min", "20250315-deck-log.md"], [15, "<a href=\"https://v-sekai.github.io/manuals/changelog/2025/20250312-deck-log.html\">V-Sekai Deck Log - 2025-03-12 (Wednes...</a>", "1 min", "20250312-deck-log.md"], [16, "<a href=\"https://v-sekai.github.io/manuals/changelog/2025/20250308-deck-log.html\">V-Sekai Deck Log - 2025-03-08 (Saturday)</a>", "1 min", "20250308-deck-log.md"], [19, "<a href=\"https://v-sekai.github.io/manuals/changelog/2025/20250307-deck-log.html\">V-Sekai Deck Log - 2025-03-07 (Friday)</a>", "1 min", "20250307-deck-log.md"], [32, "<a href=\"https://v-sekai.github.io/manuals/changelog/2025/20250306-deck-log.html\">V-Sekai Deck Log - 2025-03-06 (Thursday)</a>", "1 min", "20250306-deck-log.md"], [13, "<a href=\"https://v-sekai.github.io/manuals/changelog/2025/20250226-deck-log.html\">V-Sekai Deck Log - 2025-02-26 (Wednes...</a>", "1 min", "20250226-deck-log.md"], [29, "<a href=\"https://v-sekai.github.io/manuals/changelog/2025/20250225-deck-log.html\">V-Sekai Deck Log - 2025-02-25 (Tuesday)</a>", "1 min", "20250225-deck-log.md"], [20, "<a href=\"https://v-sekai.github.io/manuals/changelog/2025/20250220-deck-log.html\">V-Sekai Deck Log - 2025-02-20 (Thursday)</a>", "1 min", "20250220-deck-log.md"], [25, "<a href=\"https://v-sekai.github.io/manuals/changelog/2025/20250215-deck-log.html\">V-Sekai Deck Log - 2025-02-15 (Saturday)</a>", "1 min", "20250215-deck-log.md"], [17, "<a href=\"https://v-sekai.github.io/manuals/changelog/2025/20250213-deck-log.html\">V-Sekai Deck Log - 2025-02-13 (Thursday)</a>", "1 min", "20250213-deck-log.md"], [30, "<a href=\"https://v-sekai.github.io/manuals/changelog/2025/20250212-deck-log.html\">V-Sekai Deck Log - 2025-02-12 (Wednes...</a>", "1 min", "20250212-deck-log.md"], [31, "<a href=\"https://v-sekai.github.io/manuals/changelog/2025/20250209-deck-log.html\">V-Sekai Deck Log - 2025-02-09</a>", "1 min", "20250209-deck-log.md"], [14, "<a href=\"https://v-sekai.github.io/manuals/changelog/2025/20250208-deck-log.html\">V-Sekai Deck Log - 2025-02-08</a>", "1 min", "20250208-deck-log.md"], [23, "<a href=\"https://v-sekai.github.io/manuals/changelog/2025/20250207-deck-log.html\">V-Sekai Deck Log - 2025-02-07</a>", "1 min", "20250207-deck-log.md"], [12, "<a href=\"https://v-sekai.github.io/manuals/changelog/2025/20250206-deck-log.html\">V-Sekai Deck Log - 2025-02-06</a>", "2 min", "20250206-deck-log.md"], [26, "<a href=\"https://v-sekai.github.io/manuals/changelog/2025/20250205-deck-log.html\">V-Sekai Deck Log - 2025-02-05</a>", "1 min", "20250205-deck-log.md"], [24, "<a href=\"https://v-sekai.github.io/manuals/changelog/2025/20250204-deck-log.html\">V-Sekai Deck Log - 2025-02-04</a>", "1 min", "20250204-deck-log.md"], [21, "<a href=\"https://v-sekai.github.io/manuals/changelog/2025/20250203-deck-log.html\">V-Sekai Deck Log - 2025-02-03</a>", "1 min", "20250203-deck-log.md"], [6, "<a href=\"https://v-sekai.github.io/manuals/changelog/2024/20241218-changelog.html\">V-Sekai Changelog - December 2024</a>", "1 min", "20241218-changelog.md"], [7, "<a href=\"https://v-sekai.github.io/manuals/changelog/2024/20241102-changelog.html\">V-Sekai Changelog - November 2024</a>", "3 min", "20241102-changelog.md"], [10, "<a href=\"https://v-sekai.github.io/manuals/changelog/2024/20241003-changelog.html\">V-Sekai Changelog - October 2024</a>", "2 min", "20241003-changelog.md"], [8, "<a href=\"https://v-sekai.github.io/manuals/changelog/2024/20240901-changelog.html\">V-Sekai Changelog - September 2024</a>", "1 min", "20240901-changelog.md"], [4, "<a href=\"https://v-sekai.github.io/manuals/changelog/2024/20240701-changelog.html\">V-Sekai Changelog - July 2024</a>", "2 min", "20240701-changelog.md"], [9, "<a href=\"https://v-sekai.github.io/manuals/changelog/2024/20240625-changelog.html\">Special Notice: V-Sekai 2023-2024</a>", "2 min", "20240625-changelog.md"], [0, "<a href=\"https://v-sekai.github.io/manuals/changelog/2024/20240603-changelog.html\">V-Sekai Changelog - June 2024</a>", "1 min", "20240603-changelog.md"], [3, "<a href=\"https://v-sekai.github.io/manuals/changelog/2024/20240505-changelog.html\">V-Sekai Changelog - May 2024</a>", "1 min", "20240505-changelog.md"], [2, "<a href=\"https://v-sekai.github.io/manuals/changelog/2024/20240330-changelog.html\">V-Sekai Changelog - March 2024</a>", "1 min", "20240330-changelog.md"], [1, "<a href=\"https://v-sekai.github.io/manuals/changelog/2024/20240202-changelog.html\">V-Sekai Changelog - February 2024</a>", "2 min", "20240202-changelog.md"], [5, "<a href=\"https://v-sekai.github.io/manuals/changelog/2024/20240101-changelog.html\">V-Sekai Changelog - January 2024</a>", "1 min", "20240101-changelog.md"], [43, "<a href=\"https://v-sekai.github.io/manuals/changelog/2023/20231207-changelog.html\">V-Sekai Changelog - December 2023</a>", "1 min", "20231207-changelog.md"], [36, "<a href=\"https://v-sekai.github.io/manuals/changelog/2023/20231109-changelog.html\">V-Sekai Changelog - November 2023</a>", "3 min", "20231109-changelog.md"], [33, "<a href=\"https://v-sekai.github.io/manuals/changelog/2023/20231001-changelog.html\">V-Sekai Changelog - October 2023</a>", "2 min", "20231001-changelog.md"], [38, "<a href=\"https://v-sekai.github.io/manuals/changelog/2023/20230901-changelog.html\">V-Sekai Changelog - September 2023</a>", "2 min", "20230901-changelog.md"], [42, "<a href=\"https://v-sekai.github.io/manuals/changelog/2023/20230801-changelog.html\">V-Sekai Changelog - August 2023</a>", "3 min", "20230801-changelog.md"], [35, "<a href=\"https://v-sekai.github.io/manuals/changelog/2023/20230701-changelog.html\">V-Sekai Changelog - July 2023</a>", "1 min", "20230701-changelog.md"], [37, "<a href=\"https://v-sekai.github.io/manuals/changelog/2023/20230601-changelog.html\">V-Sekai Changelog - 2023-06</a>", "3 min", "20230601-changelog.md"], [40, "<a href=\"https://v-sekai.github.io/manuals/changelog/2023/20230501-changelog.html\">V-Sekai Changelog - 2023-05</a>", "2 min", "20230501-changelog.md"], [41, "<a href=\"https://v-sekai.github.io/manuals/changelog/2023/20230301-changelog.html\">V-Sekai Changelog - 2023-03</a>", "2 min", "20230301-changelog.md"], [39, "<a href=\"https://v-sekai.github.io/manuals/changelog/2023/20230201-changelog.html\">V-Sekai Changelog - 2023-02</a>", "1 min", "20230201-changelog.md"], [34, "<a href=\"https://v-sekai.github.io/manuals/changelog/2023/20230101-changelog.html\">V-Sekai Changelog - 2023-01</a>", "1 min", "20230101-changelog.md"], [57, "<a href=\"https://v-sekai.github.io/manuals/changelog/2022/20221201-changelog.html\">V-Sekai Changelog - 2022-12</a>", "2 min", "20221201-changelog.md"], [52, "<a href=\"https://v-sekai.github.io/manuals/changelog/2022/20221101-changelog.html\">V-Sekai Changelog - 2022-11</a>", "2 min", "20221101-changelog.md"], [60, "<a href=\"https://v-sekai.github.io/manuals/changelog/2022/20221001-changelog.html\">V-Sekai Changelog - 2022-10</a>", "6 min", "20221001-changelog.md"], [55, "<a href=\"https://v-sekai.github.io/manuals/changelog/2022/20220901-changelog.html\">V-Sekai Changelog - 2022-09</a>", "1 min", "20220901-changelog.md"], [56, "<a href=\"https://v-sekai.github.io/manuals/changelog/2022/20220801-changelog.html\">V-Sekai Changelog - 2022-08</a>", "1 min", "20220801-changelog.md"], [54, "<a href=\"https://v-sekai.github.io/manuals/changelog/2022/20220601-changelog.html\">V-Sekai Changelog - 2022-06</a>", "1 min", "20220601-changelog.md"], [62, "<a href=\"https://v-sekai.github.io/manuals/changelog/2022/20220501-changelog.html\">V-Sekai Changelog - 2022-05</a>", "1 min", "20220501-changelog.md"], [53, "<a href=\"https://v-sekai.github.io/manuals/changelog/2022/20220401-changelog.html\">V-Sekai Changelog - 2022-04</a>", "2 min", "20220401-changelog.md"], [58, "<a href=\"https://v-sekai.github.io/manuals/changelog/2022/20220301-changelog.html\">V-Sekai Changelog - 2022-03</a>", "2 min", "20220301-changelog.md"], [61, "<a href=\"https://v-sekai.github.io/manuals/changelog/2022/20220201-changelog.html\">V-Sekai Changelog - 2022-02</a>", "1 min", "20220201-changelog.md"], [59, "<a href=\"https://v-sekai.github.io/manuals/changelog/2022/20220101-changelog.html\">V-Sekai Changelog - 2022-01</a>", "1 min", "20220101-changelog.md"], [46, "<a href=\"https://v-sekai.github.io/manuals/changelog/2021/20211101-changelog.html\">V-Sekai Changelog - 2021-11</a>", "2 min", "20211101-changelog.md"], [45, "<a href=\"https://v-sekai.github.io/manuals/changelog/2021/20211001-changelog.html\">V-Sekai Changelog - 2021-10</a>", "10 min", "20211001-changelog.md"], [48, "<a href=\"https://v-sekai.github.io/manuals/changelog/2021/20210901-changelog.html\">V-Sekai Changelog - 2021-09</a>", "11 min", "20210901-changelog.md"], [50, "<a href=\"https://v-sekai.github.io/manuals/changelog/2021/20210801-changelog.html\">V-Sekai Changelog - 2021-08</a>", "6 min", "20210801-changelog.md"], [44, "<a href=\"https://v-sekai.github.io/manuals/changelog/2021/20210701-changelog.html\">V-Sekai Changelog - 2021-07</a>", "6 min", "20210701-changelog.md"], [51, "<a href=\"https://v-sekai.github.io/manuals/changelog/2021/20210601-changelog.html\">V-Sekai Changelog - 2021-06</a>", "11 min", "20210601-changelog.md"], [47, "<a href=\"https://v-sekai.github.io/manuals/changelog/2021/20210501-changelog.html\">V-Sekai Changelog - 2021-05</a>", "18 min", "20210501-changelog.md"], [49, "<a href=\"https://v-sekai.github.io/manuals/changelog/2021/20210401-changelog.html\">V-Sekai Changelog - 2021-04</a>", "2 min", "20210401-changelog.md"]];
-
-        // Define the dt_args
-        let dt_args = {"paging": true, "pageLength": 10, "index": false, "escape": false, "layout": {"topStart": "pageLength", "topEnd": "search", "bottomStart": "info", "bottomEnd": "paging"}, "order": [], "warn_on_selected_rows_not_rendered": true};
-        dt_args["data"] = data;
-
-        
-        new DataTable(table, dt_args);
-    });
-</script>
+<section id="tailscale-funnel-system-level-service" class="level1">
+<h1>Tailscale Funnel (System-Level Service)</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>Exposing virtual machines (VMs) to external networks securely and efficiently is a common requirement in development and production environments. Tailscale Funnel provides a simple and secure way to expose services running on a VM to the internet using Tailscale’s mesh VPN and authentication features. By leveraging systemd, we can manage Tailscale Funnel as a system-level service for consistent and reliable operation.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Currently, exposing VMs to external networks often involves complex configurations, such as setting up reverse proxies, managing firewall rules, or configuring NAT. These methods can be error-prone and require significant manual effort. Tailscale Funnel simplifies this process but needs to be integrated as a system-level service for ease of use and reliability.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>We propose creating a systemd service unit file to manage Tailscale Funnel for exposing a specific port (e.g., 8888) on a VM. The service will ensure that Tailscale Funnel starts automatically on boot and restarts on failure. Below is the systemd unit file configuration:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">File: /etc/systemd/system/tailscale-funnel.service</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">[Unit]</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">Description</span><span class="ot">=</span><span class="st">Tailscale Funnel for Port 8888</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">After</span><span class="ot">=</span><span class="st">network.target tailscaled.service</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Requires</span><span class="ot">=</span><span class="st">tailscaled.service</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">[Service]</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">Type</span><span class="ot">=</span><span class="st">simple</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">ExecStart</span><span class="ot">=</span><span class="st">/usr/bin/tailscale funnel --bg 8888</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="dt">Restart</span><span class="ot">=</span><span class="st">on-failure</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="dt">RestartSec</span><span class="ot">=</span><span class="st">5s</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="dt">ExecStartPre</span><span class="ot">=</span><span class="st">/bin/sleep 5</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="kw">[Install]</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="dt">WantedBy</span><span class="ot">=</span><span class="st">multi-user.target</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Commands to enable and start the service:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl daemon-reload</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable <span class="at">--now</span> tailscale-funnel.service</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status tailscale-funnel.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li>Simplifies the process of exposing VMs to external networks.</li>
+<li>Provides a secure and authenticated connection using Tailscale.</li>
+<li>Ensures reliability with systemd’s restart and dependency management features.</li>
+<li>Reduces manual configuration effort for developers and system administrators.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li>Requires Tailscale to be installed and configured on the VM.</li>
+<li>Limited to environments where Tailscale is supported.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<ul>
+<li>Using traditional methods like reverse proxies or NAT configurations, which are more complex and less secure.</li>
+<li>Developing a custom solution for exposing VMs, which would require significant effort and maintenance.</li>
+</ul>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<ul>
+<li>Scenarios where the VM does not have internet access or cannot run Tailscale.</li>
+<li>Environments with strict network policies that do not allow Tailscale connections.</li>
+</ul>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>This proposal is core to improving the development and deployment workflow for V-Sekai. The implementation will be handled by the V-Sekai development team.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai Development Team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>Networking, Tailscale, Systemd, VM, Security</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://tailscale.com/kb/1132/tailscale-funnel/">Tailscale Funnel Documentation</a></li>
+<li><a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html">Systemd Service Unit Documentation</a></li>
+</ol>
+<hr>
+<section id="game-development-jargon" class="level3">
+<h3 class="anchored" data-anchor-id="game-development-jargon">Game Development Jargon</h3>
+<ol type="1">
+<li><strong>Tailscale</strong>: A mesh VPN service that simplifies secure networking between devices.</li>
+<li><strong>Systemd</strong>: A system and service manager for Linux operating systems.</li>
+<li><strong>Funnel</strong>: A Tailscale feature for exposing local services to the internet securely.</li>
+<li><strong>VM (Virtual Machine)</strong>: A software-based emulation of a physical computer.</li>
+</ol>
 
 
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -815,7 +857,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/changelog.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20250421-tailscale-funnel.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
