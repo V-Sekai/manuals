@@ -1,4 +1,4 @@
-# Adopt Meta's OpenXR Simulator for macOS Development
+# Accepted: Adopt Meta's OpenXR Simulator for macOS Development
 
 ## The Context
 

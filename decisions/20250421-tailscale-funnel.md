@@ -1,4 +1,4 @@
-# Tailscale Funnel (System-Level Service)
+# Accepted: Tailscale Funnel (System-Level Service)
 
 ## The Context
 
