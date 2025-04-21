@@ -72,6 +72,7 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 ## Decision Makers
 
 - V-Sekai Development Team
+- fire
 
 ## Tags
 
