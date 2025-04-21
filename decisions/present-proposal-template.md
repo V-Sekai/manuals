@@ -60,6 +60,7 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 ---
 
 *(Optional: Add a section for defining jargon if needed)*
+
 ### Game Development Jargon
 
 1. **Term 1**: Definition
