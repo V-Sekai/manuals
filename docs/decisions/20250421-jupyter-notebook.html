@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>tailscale-funnel – V-Sekai - Manuals</title>
+<title>jupyter-notebook – V-Sekai - Manuals</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -155,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#accepted-tailscale-funnel-system-level-service" id="toc-accepted-tailscale-funnel-system-level-service" class="nav-link active" data-scroll-target="#accepted-tailscale-funnel-system-level-service">Accepted: Tailscale Funnel (System-Level Service)</a>
+  <li><a href="#accepted-jupyter-notebook-system-level-service" id="toc-accepted-jupyter-notebook-system-level-service" class="nav-link active" data-scroll-target="#accepted-jupyter-notebook-system-level-service">Accepted: Jupyter Notebook (System-Level Service)</a>
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
   <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
@@ -174,7 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20250421-tailscale-funnel.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20250421-jupyter-notebook.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
@@ -182,73 +182,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="accepted-tailscale-funnel-system-level-service" class="level1">
-<h1>Accepted: Tailscale Funnel (System-Level Service)</h1>
+<section id="accepted-jupyter-notebook-system-level-service" class="level1">
+<h1>Accepted: Jupyter Notebook (System-Level Service)</h1>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>Exposing virtual machines (VMs) to external networks securely and efficiently is a common requirement in development and production environments. Tailscale Funnel provides a simple and secure way to expose services running on a VM to the internet using Tailscale’s mesh VPN and authentication features. By leveraging systemd, we can manage Tailscale Funnel as a system-level service for consistent and reliable operation.</p>
+<p>Running Jupyter Notebook as a system-level service ensures that it is always available and can be managed consistently using systemd. This is particularly useful for development environments where Jupyter Notebook is frequently used for data analysis, machine learning, or other tasks.</p>
 </section>
 <section id="the-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Currently, exposing VMs to external networks often involves complex configurations, such as setting up reverse proxies, managing firewall rules, or configuring NAT. These methods can be error-prone and require significant manual effort. Tailscale Funnel simplifies this process but needs to be integrated as a system-level service for ease of use and reliability.</p>
+<p>Manually starting Jupyter Notebook every time it is needed can be tedious and error-prone. Additionally, without a system-level service, there is no built-in mechanism to automatically restart the notebook server in case of failure or after a system reboot.</p>
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>We propose creating a systemd service unit file to manage Tailscale Funnel for exposing a specific port (e.g., 8888) on a VM. The service will ensure that Tailscale Funnel starts automatically on boot and restarts on failure. Below is the systemd unit file configuration:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">File: /etc/systemd/system/tailscale-funnel.service</span></span>
+<p>We propose creating a systemd service unit file to manage Jupyter Notebook. The service will ensure that the notebook server starts automatically on boot, restarts on failure, and runs under a specified user account. Below is the systemd unit file configuration:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">File: /etc/systemd/system/jupyter-notebook.service</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">[Unit]</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">Description</span><span class="ot">=</span><span class="st">Tailscale Funnel for Port 8888</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">After</span><span class="ot">=</span><span class="st">network.target tailscaled.service</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Requires</span><span class="ot">=</span><span class="st">tailscaled.service</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">[Service]</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">Type</span><span class="ot">=</span><span class="st">simple</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">ExecStart</span><span class="ot">=</span><span class="st">/usr/bin/tailscale funnel --bg 8888</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="dt">Restart</span><span class="ot">=</span><span class="st">on-failure</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="dt">RestartSec</span><span class="ot">=</span><span class="st">5s</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="dt">ExecStartPre</span><span class="ot">=</span><span class="st">/bin/sleep 5</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">Description</span><span class="ot">=</span><span class="st">Jupyter Notebook Service</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">After</span><span class="ot">=</span><span class="st">network.target tailscale-funnel.service</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">[Service]</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dt">User</span><span class="ot">=</span><span class="st">&lt;username&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">ExecStart</span><span class="ot">=</span><span class="st">/usr/bin/jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --ServerApp.token='&lt;password&gt;'</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">WorkingDirectory</span><span class="ot">=</span><span class="st">/home/&lt;username&gt;/Documents/vsk-docker-python-notebook</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="dt">Restart</span><span class="ot">=</span><span class="st">always</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="dt">RestartSec</span><span class="ot">=</span><span class="dv">3</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="dt">Environment</span><span class="ot">=</span><span class="st">PYTHONUNBUFFERED=1</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="dt">Environment</span><span class="ot">=</span><span class="st">"PATH=/home/&lt;username&gt;/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="kw">[Install]</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="dt">WantedBy</span><span class="ot">=</span><span class="st">multi-user.target</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Commands to enable and start the service:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl daemon-reload</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable <span class="at">--now</span> tailscale-funnel.service</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status tailscale-funnel.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable <span class="at">--now</span> jupyter-notebook.service</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status jupyter-notebook.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="the-benefits" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
 <ul>
-<li>Simplifies the process of exposing VMs to external networks.</li>
-<li>Provides a secure and authenticated connection using Tailscale.</li>
-<li>Ensures reliability with systemd’s restart and dependency management features.</li>
-<li>Reduces manual configuration effort for developers and system administrators.</li>
+<li>Automates the startup and management of Jupyter Notebook.</li>
+<li>Ensures the notebook server is always available after system reboots.</li>
+<li>Provides a consistent and reliable way to manage the notebook server using systemd.</li>
 </ul>
 </section>
 <section id="the-downsides" class="level2">
 <h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
 <ul>
-<li>Requires Tailscale to be installed and configured on the VM.</li>
-<li>Limited to environments where Tailscale is supported.</li>
+<li>Requires systemd, which is not available on all operating systems.</li>
+<li>The service must be configured with a specific user and working directory, which may require additional setup.</li>
 </ul>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
 <ul>
-<li>Using traditional methods like reverse proxies or NAT configurations, which are more complex and less secure.</li>
-<li>Developing a custom solution for exposing VMs, which would require significant effort and maintenance.</li>
+<li>Manually starting Jupyter Notebook each time it is needed.</li>
+<li>Using alternative tools or scripts to manage the notebook server, which may lack the robustness of systemd.</li>
 </ul>
 </section>
 <section id="the-infrequent-use-case" class="level2">
 <h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
 <ul>
-<li>Scenarios where the VM does not have internet access or cannot run Tailscale.</li>
-<li>Environments with strict network policies that do not allow Tailscale connections.</li>
+<li>Scenarios where Jupyter Notebook is only needed occasionally and does not justify running as a persistent service.</li>
+<li>Environments where systemd is not available or supported.</li>
 </ul>
 </section>
 <section id="in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>This proposal is core to improving the development and deployment workflow for V-Sekai. The implementation will be handled by the V-Sekai development team.</p>
+<p>This proposal is core to improving the development workflow for V-Sekai. The implementation will be handled by the V-Sekai development team.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
@@ -263,23 +262,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>Networking, Tailscale, Systemd, VM, Security</li>
+<li>Jupyter, Systemd, Automation, Development</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <ol type="1">
-<li><a href="https://tailscale.com/kb/1132/tailscale-funnel/">Tailscale Funnel Documentation</a></li>
+<li><a href="https://jupyter.org/documentation">Jupyter Notebook Documentation</a></li>
 <li><a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html">Systemd Service Unit Documentation</a></li>
 </ol>
 <hr>
 <section id="game-development-jargon" class="level3">
 <h3 class="anchored" data-anchor-id="game-development-jargon">Game Development Jargon</h3>
 <ol type="1">
-<li><strong>Tailscale</strong>: A mesh VPN service that simplifies secure networking between devices.</li>
+<li><strong>Jupyter Notebook</strong>: An open-source web application that allows you to create and share documents that contain live code, equations, visualizations, and narrative text.</li>
 <li><strong>Systemd</strong>: A system and service manager for Linux operating systems.</li>
-<li><strong>Funnel</strong>: A Tailscale feature for exposing local services to the internet securely.</li>
-<li><strong>VM (Virtual Machine)</strong>: A software-based emulation of a physical computer.</li>
 </ol>
 
 
@@ -857,7 +854,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20250421-tailscale-funnel.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20250421-jupyter-notebook.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
