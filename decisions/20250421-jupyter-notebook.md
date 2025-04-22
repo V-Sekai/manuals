@@ -10,6 +10,14 @@ Manually starting Jupyter Notebook every time it is needed can be tedious and er
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo >> ~/.bashrc
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+brew install jupyterlab
+```
+
 We propose creating a systemd service unit file to manage Jupyter Notebook. The service will ensure that the notebook server starts automatically on boot, restarts on failure, and runs under a specified user account. Below is the systemd unit file configuration:
 
 ```ini
