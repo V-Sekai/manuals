@@ -24,7 +24,7 @@ After=network.target tailscale-funnel.service
 
 [Service]
 User=<username>
-ExecStart=/usr/bin/jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser #  --ServerApp.token='<password>'
+ExecStart=/usr/bin/jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --ServerApp.token='<password>'
 WorkingDirectory=/home/<username>/Documents/vsk-docker-python-notebook
 Restart=always
 RestartSec=3
@@ -33,7 +33,6 @@ Environment="PATH=/home/<username>/.local/bin:/usr/local/sbin:/usr/local/bin:/us
 
 [Install]
 WantedBy=multi-user.target
-
 ```
 
 Commands to enable and start the service:
