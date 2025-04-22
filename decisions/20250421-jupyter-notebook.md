@@ -12,6 +12,8 @@ Manually starting Jupyter Notebook every time it is needed can be tedious and er
 
 ```bash
 sudo dnf install -y python3-notebook mathjax sscg python3-seaborn python3-lxml python3-basemap python3-scikit-image python3-scikit-learn python3-sympy python3-dask+dataframe python3-nltk
+mkdir -p $HOME/.jupyter
+jupyter notebook password
 ```
 
 We propose creating a systemd service unit file to manage Jupyter Notebook. The service will ensure that the notebook server starts automatically on boot, restarts on failure, and runs under a specified user account. Below is the systemd unit file configuration:
@@ -24,7 +26,7 @@ After=network.target tailscale-funnel.service
 
 [Service]
 User=<username>
-ExecStart=/usr/bin/jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --ServerApp.token='<password>'
+ExecStart=/usr/bin/jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser
 WorkingDirectory=/home/<username>/Documents/vsk-docker-python-notebook
 Restart=always
 RestartSec=3
