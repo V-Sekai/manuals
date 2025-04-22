@@ -21,7 +21,7 @@ Requires=tailscaled.service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/tailscale funnel --bg 8888
+ExecStart=/usr/bin/tailscale funnel 8888
 Restart=on-failure
 RestartSec=5s
 
