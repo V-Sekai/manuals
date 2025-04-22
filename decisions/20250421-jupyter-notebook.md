@@ -83,7 +83,7 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Tags
 
-- Jupyter, Systemd, Automation, Development
+- Jupyter, Systemd, Automation, Development, Linux
 
 ## Further Reading
 
