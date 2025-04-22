@@ -11,11 +11,7 @@ Manually starting Jupyter Notebook every time it is needed can be tedious and er
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo >> ~/.bashrc
-echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-brew install jupyterlab
+sudo dnf install -y python3-notebook mathjax sscg python3-seaborn python3-lxml python3-basemap python3-scikit-image python3-scikit-learn python3-sympy python3-dask+dataframe python3-nltk
 ```
 
 We propose creating a systemd service unit file to manage Jupyter Notebook. The service will ensure that the notebook server starts automatically on boot, restarts on failure, and runs under a specified user account. Below is the systemd unit file configuration:
@@ -90,6 +86,7 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 1. [Jupyter Notebook Documentation](https://jupyter.org/documentation)
 2. [Systemd Service Unit Documentation](https://www.freedesktop.org/software/systemd/man/systemd.service.html)
+3. <https://fedoramagazine.org/jupyter-and-data-science-in-fedora/>
 
 ---
 
