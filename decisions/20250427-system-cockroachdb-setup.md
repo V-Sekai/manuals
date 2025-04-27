@@ -13,7 +13,7 @@ Manually starting, stopping, and configuring a secure CockroachDB cluster node i
 This proposal outlines setting up a single CockroachDB v22.1 node as a secure systemd service on Linux.
 
 **1. Installation:**
-Download the CockroachDB v22.1 binary and place it in `/usr/local/bin/` (as described in #attachment).
+Download the CockroachDB v22.1 binary and place it in `/usr/local/bin/`.
 
 ```bash
 # Download and extract
