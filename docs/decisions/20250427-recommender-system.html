@@ -134,10 +134,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
   <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
   <li><a href="#tags-1" id="toc-tags-1" class="nav-link" data-scroll-target="#tags-1">Tags</a></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a>
-  <ul class="collapse">
-  <li><a href="#game-development-jargon" id="toc-game-development-jargon" class="nav-link" data-scroll-target="#game-development-jargon">Game Development Jargon</a></li>
-  </ul></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20250427-recommender-system.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -159,15 +156,14 @@ ul.task-list li input[type="checkbox"] {
 <ol type="1">
 <li>Scalability limits of standalone Python recommendation serving.</li>
 <li>Inefficient user/item handling without specialized libraries.</li>
-<li>Missing JSON-LD compatibility for metadata.</li>
 </ol>
 </section>
 <section id="proposed-solution" class="level2">
 <h2 class="anchored" data-anchor-id="proposed-solution"><strong>Proposed Solution</strong></h2>
-<p>Implement Elixir/Phoenix using <code>pythonx</code> to call <code>librecommender</code>. Leverage <code>Ecto</code> for CRDB data mapping (including JSON-LD attributes), <code>Oban</code> for background job processing, and <code>Membrane</code> for integrating <code>pythonx</code> calls into data streams.</p>
+<p>Implement Elixir/Phoenix using <code>pythonx</code> to call <code>librecommender</code>. Leverage <code>Ecto</code> for CRDB data mapping, <code>Oban</code> for background job processing, and <code>Membrane</code> for integrating <code>pythonx</code> calls into data streams.</p>
 <p><strong>Key Components:</strong></p>
 <ul>
-<li><strong>Phoenix/Ecto:</strong> Backend framework and database interaction layer with CRDB. Handles schemas and JSON-LD context.</li>
+<li><strong>Phoenix/Ecto:</strong> Backend framework and database interaction layer with CRDB. Handles schemas.</li>
 <li><strong>Oban:</strong> Manages background jobs which can trigger processing, including <code>pythonx</code> calls.</li>
 <li><strong>Membrane:</strong> Used for stream-based processing pipelines which can incorporate <code>pythonx</code> calls for ML tasks on data streams.</li>
 <li><strong>Pythonx:</strong> Bridge enabling Elixir to call Python functions in <code>librecommender</code> for recommendation logic.</li>
@@ -186,7 +182,6 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Phase 2</strong>: Advanced Integration &amp; Metadata
 <ul>
 <li>Develop Elixir interface for <code>librecommender</code> via <code>pythonx</code>.</li>
-<li>Map JSON-LD within Ecto/CRDB.</li>
 <li><strong>Stage 2</strong>: Integrate <code>pythonx</code> calls within Membrane pipelines (potentially triggered by Oban) for stream processing, storing results via Ecto in CRDB.</li>
 </ul></li>
 <li><strong>Validation</strong>:
@@ -241,33 +236,32 @@ ul.task-list li input[type="checkbox"] {
 <section id="decision-makers" class="level2">
 <h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
 <ul>
-<li>[List the names or roles of the individuals responsible for making the final decision.]</li>
+<li>Technical Lead</li>
+<li>Backend Lead</li>
+<li>V-Sekai Core Team</li>
 </ul>
 </section>
 <section id="tags-1" class="level2">
 <h2 class="anchored" data-anchor-id="tags-1">Tags</h2>
 <ul>
-<li>[Add relevant tags, e.g., V-Sekai, UI, Networking]</li>
+<li>V-Sekai</li>
+<li>Recommendation System</li>
+<li>Architecture</li>
+<li>Elixir</li>
+<li>Python</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<p>[Include links to relevant documentation, research papers, related issues, or other resources.]</p>
-<ol type="1">
-<li><a href="URL">Link Title 1</a></li>
-<li><a href="URL">Link Title 2</a></li>
-</ol>
-<hr>
-<p><em>(Optional: Add a section for defining jargon if needed)</em></p>
-<section id="game-development-jargon" class="level3">
-<h3 class="anchored" data-anchor-id="game-development-jargon">Game Development Jargon</h3>
-<ol type="1">
-<li><strong>Term 1</strong>: Definition</li>
-<li><strong>Term 2</strong>: Definition</li>
-</ol>
+<ul>
+<li><a href="https://github.com/elixir-python/pythonx">pythonx Documentation</a></li>
+<li><a href="URL_TO_LIBRECOMMENDER">librecommender Documentation (Placeholder - Add actual link if available)</a></li>
+<li><a href="https://getoban.pro/docs/stable/Oban.html">Oban Documentation</a></li>
+<li><a href="https://membraneframework.org/guide">Membrane Framework Documentation</a></li>
+<li><a href="https://hexdocs.pm/ecto/Ecto.html">Ecto Documentation</a></li>
+</ul>
 
 
-</section>
 </section>
 </section>
 

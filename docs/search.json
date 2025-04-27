@@ -15285,7 +15285,7 @@
     "href": "decisions/20250427-recommender-system.html",
     "title": "Draft: Phoenix-Based Recommender System Integration (Using Pythonx)",
     "section": "",
-    "text": "V-Sekai requires a scalable recommendation system. The Elixir/Phoenix backend (uro) will integrate Python ML (librecommender) via pythonx. The core data flow involves Oban for job management, Membrane for stream processing, Ecto for database interaction with CockroachDB (CRDB), and pythonx as the bridge to Python.\n\n\n\n\nScalability limits of standalone Python recommendation serving.\nInefficient user/item handling without specialized libraries.\nMissing JSON-LD compatibility for metadata.\n\n\n\n\nImplement Elixir/Phoenix using pythonx to call librecommender. Leverage Ecto for CRDB data mapping (including JSON-LD attributes), Oban for background job processing, and Membrane for integrating pythonx calls into data streams.\nKey Components:\n\nPhoenix/Ecto: Backend framework and database interaction layer with CRDB. Handles schemas and JSON-LD context.\nOban: Manages background jobs which can trigger processing, including pythonx calls.\nMembrane: Used for stream-based processing pipelines which can incorporate pythonx calls for ML tasks on data streams.\nPythonx: Bridge enabling Elixir to call Python functions in librecommender for recommendation logic.\nCockroachDB (CRDB): Persistent storage managed via Ecto.\n\n\n\n\n\nPhase 1: Core Setup & Basic Integration\n\nDefine Ecto schemas mapping to CRDB.\nSetup pythonx environment.\nStage 1: Implement Oban workers that directly call librecommender via pythonx and interact with CRDB via Ecto.\n\nPhase 2: Advanced Integration & Metadata\n\nDevelop Elixir interface for librecommender via pythonx.\nMap JSON-LD within Ecto/CRDB.\nStage 2: Integrate pythonx calls within Membrane pipelines (potentially triggered by Oban) for stream processing, storing results via Ecto in CRDB.\n\nValidation:\n\nSuccess: &lt;500ms p99 latency for pythonx recommendation calls.\nFailure: &gt;5% pythonx serialization errors OR significant performance issues.\n\n\n\n\n\n\nLeverages Elixir concurrency via Oban/Membrane.\nUtilizes Python ML (librecommender) via pythonx.\nNative Ecto/CRDB metadata querying.\n\n\n\n\n\npythonx interop overhead.\nPython GIL limitations (mitigated by Elixir concurrency).\nDeployment complexity (Elixir + Python).\nError handling between Elixir/Python via pythonx.\n\n\n\n\n\nPure Python (Scalability issues)\nPure Elixir (Lacks ML libraries)\nElixir + Rustler (Higher complexity)\n\n\n\n\n\nML\nBackend\nHigh Priority\nPython Integration\nEcto\nOban\nMembrane\nCockroachDB\n\n\n\n\nStatus: Accepted \n\n\n\n\n[List the names or roles of the individuals responsible for making the final decision.]\n\n\n\n\n\n[Add relevant tags, e.g., V-Sekai, UI, Networking]\n\n\n\n\n[Include links to relevant documentation, research papers, related issues, or other resources.]\n\nLink Title 1\nLink Title 2\n\n\n(Optional: Add a section for defining jargon if needed)\n\n\n\nTerm 1: Definition\nTerm 2: Definition"
+    "text": "V-Sekai requires a scalable recommendation system. The Elixir/Phoenix backend (uro) will integrate Python ML (librecommender) via pythonx. The core data flow involves Oban for job management, Membrane for stream processing, Ecto for database interaction with CockroachDB (CRDB), and pythonx as the bridge to Python.\n\n\n\n\nScalability limits of standalone Python recommendation serving.\nInefficient user/item handling without specialized libraries.\n\n\n\n\nImplement Elixir/Phoenix using pythonx to call librecommender. Leverage Ecto for CRDB data mapping, Oban for background job processing, and Membrane for integrating pythonx calls into data streams.\nKey Components:\n\nPhoenix/Ecto: Backend framework and database interaction layer with CRDB. Handles schemas.\nOban: Manages background jobs which can trigger processing, including pythonx calls.\nMembrane: Used for stream-based processing pipelines which can incorporate pythonx calls for ML tasks on data streams.\nPythonx: Bridge enabling Elixir to call Python functions in librecommender for recommendation logic.\nCockroachDB (CRDB): Persistent storage managed via Ecto.\n\n\n\n\n\nPhase 1: Core Setup & Basic Integration\n\nDefine Ecto schemas mapping to CRDB.\nSetup pythonx environment.\nStage 1: Implement Oban workers that directly call librecommender via pythonx and interact with CRDB via Ecto.\n\nPhase 2: Advanced Integration & Metadata\n\nDevelop Elixir interface for librecommender via pythonx.\nStage 2: Integrate pythonx calls within Membrane pipelines (potentially triggered by Oban) for stream processing, storing results via Ecto in CRDB.\n\nValidation:\n\nSuccess: &lt;500ms p99 latency for pythonx recommendation calls.\nFailure: &gt;5% pythonx serialization errors OR significant performance issues.\n\n\n\n\n\n\nLeverages Elixir concurrency via Oban/Membrane.\nUtilizes Python ML (librecommender) via pythonx.\nNative Ecto/CRDB metadata querying.\n\n\n\n\n\npythonx interop overhead.\nPython GIL limitations (mitigated by Elixir concurrency).\nDeployment complexity (Elixir + Python).\nError handling between Elixir/Python via pythonx.\n\n\n\n\n\nPure Python (Scalability issues)\nPure Elixir (Lacks ML libraries)\nElixir + Rustler (Higher complexity)\n\n\n\n\n\nML\nBackend\nHigh Priority\nPython Integration\nEcto\nOban\nMembrane\nCockroachDB\n\n\n\n\nStatus: Accepted \n\n\n\n\nTechnical Lead\nBackend Lead\nV-Sekai Core Team\n\n\n\n\n\nV-Sekai\nRecommendation System\nArchitecture\nElixir\nPython\n\n\n\n\n\npythonx Documentation\nlibrecommender Documentation (Placeholder - Add actual link if available)\nOban Documentation\nMembrane Framework Documentation\nEcto Documentation"
   },
   {
     "objectID": "decisions/20250427-recommender-system.html#context",
@@ -15299,21 +15299,21 @@
     "href": "decisions/20250427-recommender-system.html#problem-statement",
     "title": "Draft: Phoenix-Based Recommender System Integration (Using Pythonx)",
     "section": "",
-    "text": "Scalability limits of standalone Python recommendation serving.\nInefficient user/item handling without specialized libraries.\nMissing JSON-LD compatibility for metadata."
+    "text": "Scalability limits of standalone Python recommendation serving.\nInefficient user/item handling without specialized libraries."
   },
   {
     "objectID": "decisions/20250427-recommender-system.html#proposed-solution",
     "href": "decisions/20250427-recommender-system.html#proposed-solution",
     "title": "Draft: Phoenix-Based Recommender System Integration (Using Pythonx)",
     "section": "",
-    "text": "Implement Elixir/Phoenix using pythonx to call librecommender. Leverage Ecto for CRDB data mapping (including JSON-LD attributes), Oban for background job processing, and Membrane for integrating pythonx calls into data streams.\nKey Components:\n\nPhoenix/Ecto: Backend framework and database interaction layer with CRDB. Handles schemas and JSON-LD context.\nOban: Manages background jobs which can trigger processing, including pythonx calls.\nMembrane: Used for stream-based processing pipelines which can incorporate pythonx calls for ML tasks on data streams.\nPythonx: Bridge enabling Elixir to call Python functions in librecommender for recommendation logic.\nCockroachDB (CRDB): Persistent storage managed via Ecto."
+    "text": "Implement Elixir/Phoenix using pythonx to call librecommender. Leverage Ecto for CRDB data mapping, Oban for background job processing, and Membrane for integrating pythonx calls into data streams.\nKey Components:\n\nPhoenix/Ecto: Backend framework and database interaction layer with CRDB. Handles schemas.\nOban: Manages background jobs which can trigger processing, including pythonx calls.\nMembrane: Used for stream-based processing pipelines which can incorporate pythonx calls for ML tasks on data streams.\nPythonx: Bridge enabling Elixir to call Python functions in librecommender for recommendation logic.\nCockroachDB (CRDB): Persistent storage managed via Ecto."
   },
   {
     "objectID": "decisions/20250427-recommender-system.html#implementation-plan",
     "href": "decisions/20250427-recommender-system.html#implementation-plan",
     "title": "Draft: Phoenix-Based Recommender System Integration (Using Pythonx)",
     "section": "",
-    "text": "Phase 1: Core Setup & Basic Integration\n\nDefine Ecto schemas mapping to CRDB.\nSetup pythonx environment.\nStage 1: Implement Oban workers that directly call librecommender via pythonx and interact with CRDB via Ecto.\n\nPhase 2: Advanced Integration & Metadata\n\nDevelop Elixir interface for librecommender via pythonx.\nMap JSON-LD within Ecto/CRDB.\nStage 2: Integrate pythonx calls within Membrane pipelines (potentially triggered by Oban) for stream processing, storing results via Ecto in CRDB.\n\nValidation:\n\nSuccess: &lt;500ms p99 latency for pythonx recommendation calls.\nFailure: &gt;5% pythonx serialization errors OR significant performance issues."
+    "text": "Phase 1: Core Setup & Basic Integration\n\nDefine Ecto schemas mapping to CRDB.\nSetup pythonx environment.\nStage 1: Implement Oban workers that directly call librecommender via pythonx and interact with CRDB via Ecto.\n\nPhase 2: Advanced Integration & Metadata\n\nDevelop Elixir interface for librecommender via pythonx.\nStage 2: Integrate pythonx calls within Membrane pipelines (potentially triggered by Oban) for stream processing, storing results via Ecto in CRDB.\n\nValidation:\n\nSuccess: &lt;500ms p99 latency for pythonx recommendation calls.\nFailure: &gt;5% pythonx serialization errors OR significant performance issues."
   },
   {
     "objectID": "decisions/20250427-recommender-system.html#benefits",
@@ -15355,21 +15355,21 @@
     "href": "decisions/20250427-recommender-system.html#decision-makers",
     "title": "Draft: Phoenix-Based Recommender System Integration (Using Pythonx)",
     "section": "",
-    "text": "[List the names or roles of the individuals responsible for making the final decision.]"
+    "text": "Technical Lead\nBackend Lead\nV-Sekai Core Team"
   },
   {
     "objectID": "decisions/20250427-recommender-system.html#tags-1",
     "href": "decisions/20250427-recommender-system.html#tags-1",
     "title": "Draft: Phoenix-Based Recommender System Integration (Using Pythonx)",
     "section": "",
-    "text": "[Add relevant tags, e.g., V-Sekai, UI, Networking]"
+    "text": "V-Sekai\nRecommendation System\nArchitecture\nElixir\nPython"
   },
   {
     "objectID": "decisions/20250427-recommender-system.html#further-reading",
     "href": "decisions/20250427-recommender-system.html#further-reading",
     "title": "Draft: Phoenix-Based Recommender System Integration (Using Pythonx)",
     "section": "",
-    "text": "[Include links to relevant documentation, research papers, related issues, or other resources.]\n\nLink Title 1\nLink Title 2\n\n\n(Optional: Add a section for defining jargon if needed)\n\n\n\nTerm 1: Definition\nTerm 2: Definition"
+    "text": "pythonx Documentation\nlibrecommender Documentation (Placeholder - Add actual link if available)\nOban Documentation\nMembrane Framework Documentation\nEcto Documentation"
   },
   {
     "objectID": "decisions/20221205-port-renik-to-many-bone-ik.html",
