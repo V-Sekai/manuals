@@ -70,9 +70,7 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Decision Makers
 
-- Technical Lead
-- Backend Lead
-- V-Sekai Core Team
+- V-Sekai Team
 
 ## Tags
 
