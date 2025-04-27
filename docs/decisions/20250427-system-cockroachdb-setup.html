@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>python-notebook – V-Sekai - Manuals</title>
+<title>system-cockroachdb-setup – V-Sekai - Manuals</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -116,8 +150,31 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#draft-cockroachdb-v22.1-systemd-service-setup" id="toc-draft-cockroachdb-v22.1-systemd-service-setup" class="nav-link active" data-scroll-target="#draft-cockroachdb-v22.1-systemd-service-setup">Draft: CockroachDB v22.1 Systemd Service Setup</a>
+  <ul class="collapse">
+  <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
+  <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
+  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</a></li>
+  <li><a href="#the-benefits" id="toc-the-benefits" class="nav-link" data-scroll-target="#the-benefits">The Benefits</a></li>
+  <li><a href="#the-downsides" id="toc-the-downsides" class="nav-link" data-scroll-target="#the-downsides">The Downsides</a></li>
+  <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
+  <li><a href="#the-infrequent-use-case" id="toc-the-infrequent-use-case" class="nav-link" data-scroll-target="#the-infrequent-use-case">The Infrequent Use Case</a></li>
+  <li><a href="#in-core-and-done-by-us" id="toc-in-core-and-done-by-us" class="nav-link" data-scroll-target="#in-core-and-done-by-us">In Core and Done by Us</a></li>
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
+  <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags">Tags</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a>
+  <ul class="collapse">
+  <li><a href="#game-development-jargon" id="toc-game-development-jargon" class="nav-link" data-scroll-target="#game-development-jargon">Game Development Jargon</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20250427-system-cockroachdb-setup.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
@@ -125,8 +182,159 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<section id="draft-cockroachdb-v22.1-systemd-service-setup" class="level1">
+<h1>Draft: CockroachDB v22.1 Systemd Service Setup</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>CockroachDB provides a resilient and scalable SQL database solution suitable for backend services. For reliable operation within the V-Sekai infrastructure, managing CockroachDB (specifically version 22.1 as used in our stack) via systemd ensures consistent startup, monitoring, and recovery.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Manually starting, stopping, and configuring a secure CockroachDB cluster node is cumbersome and prone to error. Without systemd management, the database process won’t automatically restart on failure or system reboot, and applying security configurations consistently becomes challenging.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>This proposal outlines setting up a single CockroachDB v22.1 node as a secure systemd service on Linux.</p>
+<p><strong>1. Installation:</strong> Download the CockroachDB v22.1 binary and place it in <code>/usr/local/bin/</code> (as described in #attachment).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download and extract</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://github.com/V-Sekai/cockroach/releases/download/v22.1.64b21683521d9a8735ad/cockroach-v22.1.64b21683521d9a8735ad.linux-amd64.tgz <span class="kw">|</span> <span class="fu">tar</span> <span class="at">-xz</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cp <span class="at">-i</span> cockroach-v22.1.linux-amd64/cockroach /usr/local/bin/</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional: Install spatial libraries (if needed)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> /usr/local/lib/cockroach</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cp <span class="at">-i</span> cockroach-v22.1.linux-amd64/lib/libgeos.so /usr/local/lib/cockroach/</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cp <span class="at">-i</span> cockroach-v22.1.linux-amd64/lib/libgeos_c.so /usr/local/lib/cockroach/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>2. Security Setup:</strong> Generate CA, node, and client certificates. Store them in a secure directory (e.g., <code>/var/lib/cockroach/certs</code>). Ensure appropriate permissions.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create directories</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="va">DATA_DIR</span><span class="op">=</span><span class="st">"/var/lib/cockroach"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="va">CERT_DIR</span><span class="op">=</span><span class="st">"</span><span class="va">${DATA_DIR}</span><span class="st">/certs"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mkdir <span class="at">-p</span> <span class="st">"</span><span class="va">${CERT_DIR}</span><span class="st">"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown <span class="at">-R</span> cockroach:cockroach <span class="st">"</span><span class="va">${DATA_DIR}</span><span class="st">"</span> <span class="co"># Assuming a 'cockroach' user/group exists</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod 700 <span class="st">"</span><span class="va">${DATA_DIR}</span><span class="st">"</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate Certs (run as cockroach user or adjust permissions after)</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">cockroach</span> cert create-ca <span class="at">--certs-dir</span><span class="op">=</span><span class="st">"</span><span class="va">${CERT_DIR}</span><span class="st">"</span> <span class="at">--ca-key</span><span class="op">=</span><span class="st">"</span><span class="va">${CERT_DIR}</span><span class="st">/ca.key"</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ex">cockroach</span> cert create-node localhost <span class="va">$(</span><span class="fu">hostname</span> <span class="at">-f</span><span class="va">)</span> <span class="at">--certs-dir</span><span class="op">=</span><span class="st">"</span><span class="va">${CERT_DIR}</span><span class="st">"</span> <span class="at">--ca-key</span><span class="op">=</span><span class="st">"</span><span class="va">${CERT_DIR}</span><span class="st">/ca.key"</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ex">cockroach</span> cert create-client root <span class="at">--certs-dir</span><span class="op">=</span><span class="st">"</span><span class="va">${CERT_DIR}</span><span class="st">"</span> <span class="at">--ca-key</span><span class="op">=</span><span class="st">"</span><span class="va">${CERT_DIR}</span><span class="st">/ca.key"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>3. Systemd Service:</strong> Create a systemd unit file <code>/etc/systemd/system/cockroachdb.service</code>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># File: /etc/systemd/system/cockroachdb.service</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">[Unit]</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">Description</span><span class="ot">=</span><span class="st">CockroachDB Single-Node SQL Database Server</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="dt">After</span><span class="ot">=</span><span class="st">network.target</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">[Service]</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="dt">User</span><span class="ot">=</span><span class="st">cockroach</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="dt">Group</span><span class="ot">=</span><span class="st">cockroach</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="dt">WorkingDirectory</span><span class="ot">=</span><span class="st">/var/lib/cockroach</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># For a single-node setup:</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="dt">ExecStart</span><span class="ot">=</span><span class="st">/usr/local/bin/cockroach start-single-node \</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="dt">    --certs-dir</span><span class="ot">=</span><span class="st">/var/lib/cockroach/certs \</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="dt">    --store</span><span class="ot">=</span><span class="st">/var/lib/cockroach/data \</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="dt">    --listen-addr</span><span class="ot">=</span><span class="st">0.0.0.0:26257 \</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="dt">    --http-addr</span><span class="ot">=</span><span class="st">0.0.0.0:8080 \</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="dt">    --cache</span><span class="ot">=</span><span class="st">.25 \</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="dt">    --max-sql-memory</span><span class="ot">=</span><span class="st">.25</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># For a multi-node cluster setup, replace ExecStart with:</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># ExecStart=/usr/local/bin/cockroach start \</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">#     --certs-dir=/var/lib/cockroach/certs \</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">#     --store=/var/lib/cockroach/data \</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">#     --listen-addr=0.0.0.0:26257 \</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">#     --http-addr=0.0.0.0:8080 \</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co">#     --join=&lt;node1-ip&gt;:26257,&lt;node2-ip&gt;:26257,&lt;node3-ip&gt;:26257 \</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co">#     --cache=.25 \</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co">#     --max-sql-memory=.25</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="dt">TimeoutStopSec</span><span class="ot">=</span><span class="dv">60</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="dt">Restart</span><span class="ot">=</span><span class="st">always</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="dt">RestartSec</span><span class="ot">=</span><span class="dv">10</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="dt">StandardOutput</span><span class="ot">=</span><span class="st">syslog</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="dt">StandardError</span><span class="ot">=</span><span class="st">syslog</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="dt">SyslogIdentifier</span><span class="ot">=</span><span class="st">cockroachdb</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="dt">LimitNOFILE</span><span class="ot">=</span><span class="dv">1048576</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="kw">[Install]</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="dt">WantedBy</span><span class="ot">=</span><span class="st">multi-user.target</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Note: The default <code>ExecStart</code> uses <code>cockroach start-single-node</code>. For a multi-node cluster, comment out the <code>start-single-node</code> command and uncomment/adjust the <code>cockroach start</code> command, ensuring the <code>--join</code> addresses are correct.</em> <em>Note: Create the <code>cockroach</code> user and group if they don’t exist.</em> <em>Note: Create the data directory <code>/var/lib/cockroach/data</code> and set ownership.</em></p>
+<p><strong>4. Enable &amp; Start:</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl daemon-reload</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable cockroachdb.service</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start cockroachdb.service</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status cockroachdb.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li><strong>Reliability:</strong> Automated startup, restarts, and management via systemd.</li>
+<li><strong>Security:</strong> Enforces secure cluster communication using TLS certificates.</li>
+<li><strong>Consistency:</strong> Standardized setup across different machines.</li>
+<li><strong>Manageability:</strong> Easy to start, stop, check status using <code>systemctl</code>.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li><strong>Initial Complexity:</strong> Certificate generation and systemd unit file creation require careful setup.</li>
+<li><strong>Systemd Dependency:</strong> Relies on Linux distributions using systemd.</li>
+<li><strong>Configuration Management:</strong> Cluster join info and other flags need proper management.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<ul>
+<li><strong>Manual Execution:</strong> Running <code>cockroach start</code> manually in <code>screen</code> or <code>tmux</code> lacks robustness.</li>
+<li><strong>Docker/Kubernetes:</strong> While viable (#attachment), direct systemd integration is chosen for simplicity in specific VM-based scenarios.</li>
+<li><strong>Insecure Mode:</strong> Running without TLS certificates is not suitable for production or sensitive data.</li>
+</ul>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<ul>
+<li>Running temporary, insecure, single-node instances for quick local testing (<code>cockroach demo</code> or <code>cockroach start-single-node --insecure</code>).</li>
+</ul>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>Reliable database infrastructure is core to V-Sekai’s backend. This setup will be implemented and maintained by the infrastructure team.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai Development Team / Infrastructure Team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>CockroachDB, Database, Systemd, Linux, Security, Infrastructure, v22.1</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://www.cockroachlabs.com/docs/v22.1/install-cockroachdb-linux.html">Install CockroachDB on Linux (v22.1)</a> (#attachment)</li>
+<li><a href="https://www.cockroachlabs.com/docs/v22.1/manual-deployment.html">CockroachDB Manual Deployment</a></li>
+<li><a href="https://www.cockroachlabs.com/docs/v22.1/cockroach-start.html">CockroachDB <code>start</code> command</a></li>
+<li><a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html">Systemd Service Unit Documentation</a></li>
+</ol>
+<hr>
+<section id="game-development-jargon" class="level3">
+<h3 class="anchored" data-anchor-id="game-development-jargon">Game Development Jargon</h3>
+<ol type="1">
+<li><strong>CockroachDB</strong>: A distributed SQL database designed for scalability and resilience.</li>
+<li><strong>Systemd</strong>: A system and service manager for Linux.</li>
+<li><strong>CA (Certificate Authority)</strong>: An entity that issues digital certificates.</li>
+<li><strong>TLS Certificate</strong>: A digital certificate used to establish secure communication channels (like HTTPS or secure database connections).</li>
+</ol>
 
 
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -698,7 +906,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20250421-python-notebook.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20250427-system-cockroachdb-setup.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
