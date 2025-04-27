@@ -15283,93 +15283,86 @@
   {
     "objectID": "decisions/20250427-recommender-system.html",
     "href": "decisions/20250427-recommender-system.html",
-    "title": "Draft: Phoenix-Based Recommender System Integration (Using Pythonx)",
+    "title": "Draft: Phoenix-Based Recommender System Integration (Using FLAME)",
     "section": "",
-    "text": "V-Sekai requires a scalable recommendation system. The Elixir/Phoenix backend (uro) will integrate Python ML (librecommender) via pythonx. The core data flow involves Oban for job management, Membrane for stream processing, Ecto for database interaction with CockroachDB (CRDB), and pythonx as the bridge to Python.\n\n\n\n\nScalability limits of standalone Python recommendation serving.\nInefficient user/item handling without specialized libraries.\n\n\n\n\nImplement Elixir/Phoenix using pythonx to call librecommender. Leverage Ecto for CRDB data mapping, Oban for background job processing, and Membrane for integrating pythonx calls into data streams.\nKey Components:\n\nPhoenix/Ecto: Backend framework and database interaction layer with CRDB. Handles schemas.\nOban: Manages background jobs which can trigger processing, including pythonx calls.\nMembrane: Used for stream-based processing pipelines which can incorporate pythonx calls for ML tasks on data streams.\nPythonx: Bridge enabling Elixir to call Python functions in librecommender for recommendation logic.\nCockroachDB (CRDB): Persistent storage managed via Ecto.\n\n\n\n\n\nPhase 1: Core Setup & Basic Integration\n\nDefine Ecto schemas mapping to CRDB.\nSetup pythonx environment.\nStage 1: Implement Oban workers that directly call librecommender via pythonx and interact with CRDB via Ecto.\n\nPhase 2: Advanced Integration & Metadata\n\nDevelop Elixir interface for librecommender via pythonx.\nStage 2: Integrate pythonx calls within Membrane pipelines (potentially triggered by Oban) for stream processing, storing results via Ecto in CRDB.\n\nValidation:\n\nSuccess: &lt;500ms p99 latency for pythonx recommendation calls.\nFailure: &gt;5% pythonx serialization errors OR significant performance issues.\n\n\n\n\n\n\nLeverages Elixir concurrency via Oban/Membrane.\nUtilizes Python ML (librecommender) via pythonx.\nNative Ecto/CRDB metadata querying.\n\n\n\n\n\npythonx interop overhead.\nPython GIL limitations (mitigated by Elixir concurrency).\nDeployment complexity (Elixir + Python).\nError handling between Elixir/Python via pythonx.\n\n\n\n\n\nPure Python (Scalability issues)\nPure Elixir (Lacks ML libraries)\nElixir + Rustler (Higher complexity)\n\n\n\n\n\nML\nBackend\nHigh Priority\nPython Integration\nEcto\nOban\nMembrane\nCockroachDB\n\n\n\n\nStatus: Accepted \n\n\n\n\nV-Sekai Team\n\n\n\n\n\nV-Sekai\nRecommendation System\nArchitecture\nElixir\nPython\n\n\n\n\n\npythonx Documentation\nlibrecommender Documentation (Placeholder - Add actual link if available)\nOban Documentation\nMembrane Framework Documentation\nEcto Documentation"
+    "text": "V-Sekai requires a scalable recommendation system. The Elixir/Phoenix backend (uro) will integrate Python ML (librecommender) via FLAME. The core data flow involves Oban for job management, Membrane for stream processing, Ecto for database interaction with CockroachDB (CRDB), and FLAME as the bridge to run Python ML models.\n\n\n\n\nScalability limits of standalone Python recommendation serving.\nInefficient user/item handling without specialized libraries or optimized serving.\nComplexity in managing Python processes and dependencies alongside an Elixir application.\n\n\n\n\nImplement Elixir/Phoenix using FLAME to serve the librecommender model. Leverage Ecto for CRDB data mapping, Oban for background job processing (like model retraining triggers or batch predictions), and potentially Membrane for integrating recommendation calls into data streams.\nKey Components:\n\nPhoenix/Ecto: Backend framework and database interaction layer with CRDB. Handles schemas and application logic.\nOban: Manages background jobs which can trigger processing, including interactions with FLAME services or data preparation.\nMembrane: Used for stream-based processing pipelines. Could potentially feed data to or consume results from FLAME-served models.\nFLAME: Manages the lifecycle and serving of the Python librecommender model, allowing Elixir processes to interact with it efficiently.\nCockroachDB (CRDB): Persistent storage managed via Ecto.\n\n\n\n\n\nPhase 1: Core Setup & Basic Integration\n\nDefine Ecto schemas mapping to CRDB.\nSet up the FLAME environment and configure it to serve the librecommender model.\nStage 1: Implement Phoenix endpoints or Oban workers that make requests to the librecommender model served by FLAME and interact with CRDB via Ecto.\n\nPhase 2: Advanced Integration & Metadata\n\nDevelop Elixir client modules for interacting with the FLAME-served librecommender.\nStage 2: Explore integrating FLAME calls within Membrane pipelines (potentially triggered by Oban) for stream-based recommendations, storing results via Ecto in CRDB.\n\nValidation:\n\nSuccess: &lt;500ms p99 latency for FLAME recommendation calls under expected load. Efficient resource utilization by FLAME runners.\nFailure: &gt;5% errors during FLAME model inference OR significant performance bottlenecks under load.\n\n\n\n\n\n\nLeverages Elixir concurrency via Oban/Membrane and Phoenix.\nUtilizes Python ML (librecommender) via optimized serving with FLAME.\nNative Ecto/CRDB metadata querying.\nSimplified deployment and management of ML models compared to manual Python process management.\n\n\n\n\n\nFLAME interop overhead (though likely optimized for ML workloads).\nComplexity in configuring and tuning FLAME runners.\nDeployment complexity (Elixir + Python dependencies managed by FLAME).\nError handling between Elixir application and FLAME services.\n\n\n\n\n\nPure Python (Scalability issues)\nPure Elixir (Lacks ML libraries)\nElixir + Rustler (Higher complexity for ML tasks)\nElixir + Pythonx (Less specialized for ML serving than FLAME)\n\n\n\n\n\nML\nBackend\nHigh Priority\nPython Integration\nEcto\nOban\nMembrane\nCockroachDB\nFLAME\n\n\n\n\nStatus: Accepted ## Decision Makers\n\nV-Sekai Team\n\n\n\n\n\nV-Sekai\nRecommendation System\nArchitecture\nElixir\nPython\nFLAME\n\n\n\n\n\nFLAME Documentation\nlibrecommender Documentation (Placeholder - Add actual link if available)\nOban Documentation\nMembrane Framework Documentation\nEcto Documentation"
   },
   {
     "objectID": "decisions/20250427-recommender-system.html#context",
     "href": "decisions/20250427-recommender-system.html#context",
-    "title": "Draft: Phoenix-Based Recommender System Integration (Using Pythonx)",
+    "title": "Draft: Phoenix-Based Recommender System Integration (Using FLAME)",
     "section": "",
-    "text": "V-Sekai requires a scalable recommendation system. The Elixir/Phoenix backend (uro) will integrate Python ML (librecommender) via pythonx. The core data flow involves Oban for job management, Membrane for stream processing, Ecto for database interaction with CockroachDB (CRDB), and pythonx as the bridge to Python."
+    "text": "V-Sekai requires a scalable recommendation system. The Elixir/Phoenix backend (uro) will integrate Python ML (librecommender) via FLAME. The core data flow involves Oban for job management, Membrane for stream processing, Ecto for database interaction with CockroachDB (CRDB), and FLAME as the bridge to run Python ML models."
   },
   {
     "objectID": "decisions/20250427-recommender-system.html#problem-statement",
     "href": "decisions/20250427-recommender-system.html#problem-statement",
-    "title": "Draft: Phoenix-Based Recommender System Integration (Using Pythonx)",
+    "title": "Draft: Phoenix-Based Recommender System Integration (Using FLAME)",
     "section": "",
-    "text": "Scalability limits of standalone Python recommendation serving.\nInefficient user/item handling without specialized libraries."
+    "text": "Scalability limits of standalone Python recommendation serving.\nInefficient user/item handling without specialized libraries or optimized serving.\nComplexity in managing Python processes and dependencies alongside an Elixir application."
   },
   {
     "objectID": "decisions/20250427-recommender-system.html#proposed-solution",
     "href": "decisions/20250427-recommender-system.html#proposed-solution",
-    "title": "Draft: Phoenix-Based Recommender System Integration (Using Pythonx)",
+    "title": "Draft: Phoenix-Based Recommender System Integration (Using FLAME)",
     "section": "",
-    "text": "Implement Elixir/Phoenix using pythonx to call librecommender. Leverage Ecto for CRDB data mapping, Oban for background job processing, and Membrane for integrating pythonx calls into data streams.\nKey Components:\n\nPhoenix/Ecto: Backend framework and database interaction layer with CRDB. Handles schemas.\nOban: Manages background jobs which can trigger processing, including pythonx calls.\nMembrane: Used for stream-based processing pipelines which can incorporate pythonx calls for ML tasks on data streams.\nPythonx: Bridge enabling Elixir to call Python functions in librecommender for recommendation logic.\nCockroachDB (CRDB): Persistent storage managed via Ecto."
+    "text": "Implement Elixir/Phoenix using FLAME to serve the librecommender model. Leverage Ecto for CRDB data mapping, Oban for background job processing (like model retraining triggers or batch predictions), and potentially Membrane for integrating recommendation calls into data streams.\nKey Components:\n\nPhoenix/Ecto: Backend framework and database interaction layer with CRDB. Handles schemas and application logic.\nOban: Manages background jobs which can trigger processing, including interactions with FLAME services or data preparation.\nMembrane: Used for stream-based processing pipelines. Could potentially feed data to or consume results from FLAME-served models.\nFLAME: Manages the lifecycle and serving of the Python librecommender model, allowing Elixir processes to interact with it efficiently.\nCockroachDB (CRDB): Persistent storage managed via Ecto."
   },
   {
     "objectID": "decisions/20250427-recommender-system.html#implementation-plan",
     "href": "decisions/20250427-recommender-system.html#implementation-plan",
-    "title": "Draft: Phoenix-Based Recommender System Integration (Using Pythonx)",
+    "title": "Draft: Phoenix-Based Recommender System Integration (Using FLAME)",
     "section": "",
-    "text": "Phase 1: Core Setup & Basic Integration\n\nDefine Ecto schemas mapping to CRDB.\nSetup pythonx environment.\nStage 1: Implement Oban workers that directly call librecommender via pythonx and interact with CRDB via Ecto.\n\nPhase 2: Advanced Integration & Metadata\n\nDevelop Elixir interface for librecommender via pythonx.\nStage 2: Integrate pythonx calls within Membrane pipelines (potentially triggered by Oban) for stream processing, storing results via Ecto in CRDB.\n\nValidation:\n\nSuccess: &lt;500ms p99 latency for pythonx recommendation calls.\nFailure: &gt;5% pythonx serialization errors OR significant performance issues."
+    "text": "Phase 1: Core Setup & Basic Integration\n\nDefine Ecto schemas mapping to CRDB.\nSet up the FLAME environment and configure it to serve the librecommender model.\nStage 1: Implement Phoenix endpoints or Oban workers that make requests to the librecommender model served by FLAME and interact with CRDB via Ecto.\n\nPhase 2: Advanced Integration & Metadata\n\nDevelop Elixir client modules for interacting with the FLAME-served librecommender.\nStage 2: Explore integrating FLAME calls within Membrane pipelines (potentially triggered by Oban) for stream-based recommendations, storing results via Ecto in CRDB.\n\nValidation:\n\nSuccess: &lt;500ms p99 latency for FLAME recommendation calls under expected load. Efficient resource utilization by FLAME runners.\nFailure: &gt;5% errors during FLAME model inference OR significant performance bottlenecks under load."
   },
   {
     "objectID": "decisions/20250427-recommender-system.html#benefits",
     "href": "decisions/20250427-recommender-system.html#benefits",
-    "title": "Draft: Phoenix-Based Recommender System Integration (Using Pythonx)",
+    "title": "Draft: Phoenix-Based Recommender System Integration (Using FLAME)",
     "section": "",
-    "text": "Leverages Elixir concurrency via Oban/Membrane.\nUtilizes Python ML (librecommender) via pythonx.\nNative Ecto/CRDB metadata querying."
+    "text": "Leverages Elixir concurrency via Oban/Membrane and Phoenix.\nUtilizes Python ML (librecommender) via optimized serving with FLAME.\nNative Ecto/CRDB metadata querying.\nSimplified deployment and management of ML models compared to manual Python process management."
   },
   {
     "objectID": "decisions/20250427-recommender-system.html#risks",
     "href": "decisions/20250427-recommender-system.html#risks",
-    "title": "Draft: Phoenix-Based Recommender System Integration (Using Pythonx)",
+    "title": "Draft: Phoenix-Based Recommender System Integration (Using FLAME)",
     "section": "",
-    "text": "pythonx interop overhead.\nPython GIL limitations (mitigated by Elixir concurrency).\nDeployment complexity (Elixir + Python).\nError handling between Elixir/Python via pythonx."
+    "text": "FLAME interop overhead (though likely optimized for ML workloads).\nComplexity in configuring and tuning FLAME runners.\nDeployment complexity (Elixir + Python dependencies managed by FLAME).\nError handling between Elixir application and FLAME services."
   },
   {
     "objectID": "decisions/20250427-recommender-system.html#alternatives-considered",
     "href": "decisions/20250427-recommender-system.html#alternatives-considered",
-    "title": "Draft: Phoenix-Based Recommender System Integration (Using Pythonx)",
+    "title": "Draft: Phoenix-Based Recommender System Integration (Using FLAME)",
     "section": "",
-    "text": "Pure Python (Scalability issues)\nPure Elixir (Lacks ML libraries)\nElixir + Rustler (Higher complexity)"
+    "text": "Pure Python (Scalability issues)\nPure Elixir (Lacks ML libraries)\nElixir + Rustler (Higher complexity for ML tasks)\nElixir + Pythonx (Less specialized for ML serving than FLAME)"
   },
   {
     "objectID": "decisions/20250427-recommender-system.html#tags",
     "href": "decisions/20250427-recommender-system.html#tags",
-    "title": "Draft: Phoenix-Based Recommender System Integration (Using Pythonx)",
+    "title": "Draft: Phoenix-Based Recommender System Integration (Using FLAME)",
     "section": "",
-    "text": "ML\nBackend\nHigh Priority\nPython Integration\nEcto\nOban\nMembrane\nCockroachDB"
+    "text": "ML\nBackend\nHigh Priority\nPython Integration\nEcto\nOban\nMembrane\nCockroachDB\nFLAME"
   },
   {
     "objectID": "decisions/20250427-recommender-system.html#status",
     "href": "decisions/20250427-recommender-system.html#status",
-    "title": "Draft: Phoenix-Based Recommender System Integration (Using Pythonx)",
+    "title": "Draft: Phoenix-Based Recommender System Integration (Using FLAME)",
     "section": "",
-    "text": "Status: Accepted"
-  },
-  {
-    "objectID": "decisions/20250427-recommender-system.html#decision-makers",
-    "href": "decisions/20250427-recommender-system.html#decision-makers",
-    "title": "Draft: Phoenix-Based Recommender System Integration (Using Pythonx)",
-    "section": "",
-    "text": "V-Sekai Team"
+    "text": "Status: Accepted ## Decision Makers\n\nV-Sekai Team"
   },
   {
     "objectID": "decisions/20250427-recommender-system.html#tags-1",
     "href": "decisions/20250427-recommender-system.html#tags-1",
-    "title": "Draft: Phoenix-Based Recommender System Integration (Using Pythonx)",
+    "title": "Draft: Phoenix-Based Recommender System Integration (Using FLAME)",
     "section": "",
-    "text": "V-Sekai\nRecommendation System\nArchitecture\nElixir\nPython"
+    "text": "V-Sekai\nRecommendation System\nArchitecture\nElixir\nPython\nFLAME"
   },
   {
     "objectID": "decisions/20250427-recommender-system.html#further-reading",
     "href": "decisions/20250427-recommender-system.html#further-reading",
-    "title": "Draft: Phoenix-Based Recommender System Integration (Using Pythonx)",
+    "title": "Draft: Phoenix-Based Recommender System Integration (Using FLAME)",
     "section": "",
-    "text": "pythonx Documentation\nlibrecommender Documentation (Placeholder - Add actual link if available)\nOban Documentation\nMembrane Framework Documentation\nEcto Documentation"
+    "text": "FLAME Documentation\nlibrecommender Documentation (Placeholder - Add actual link if available)\nOban Documentation\nMembrane Framework Documentation\nEcto Documentation"
   },
   {
     "objectID": "decisions/20221205-port-renik-to-many-bone-ik.html",
