@@ -8,15 +8,14 @@ V-Sekai requires a scalable recommendation system. The Elixir/Phoenix backend (u
 
 1.  Scalability limits of standalone Python recommendation serving.
 2.  Inefficient user/item handling without specialized libraries.
-3.  Missing JSON-LD compatibility for metadata.
 
 ## **Proposed Solution**
 
-Implement Elixir/Phoenix using `pythonx` to call `librecommender`. Leverage `Ecto` for CRDB data mapping (including JSON-LD attributes), `Oban` for background job processing, and `Membrane` for integrating `pythonx` calls into data streams.
+Implement Elixir/Phoenix using `pythonx` to call `librecommender`. Leverage `Ecto` for CRDB data mapping, `Oban` for background job processing, and `Membrane` for integrating `pythonx` calls into data streams.
 
 **Key Components:**
 
-- **Phoenix/Ecto:** Backend framework and database interaction layer with CRDB. Handles schemas and JSON-LD context.
+- **Phoenix/Ecto:** Backend framework and database interaction layer with CRDB. Handles schemas.
 - **Oban:** Manages background jobs which can trigger processing, including `pythonx` calls.
 - **Membrane:** Used for stream-based processing pipelines which can incorporate `pythonx` calls for ML tasks on data streams.
 - **Pythonx:** Bridge enabling Elixir to call Python functions in `librecommender` for recommendation logic.
@@ -30,7 +29,6 @@ Implement Elixir/Phoenix using `pythonx` to call `librecommender`. Leverage `Ect
     - **Stage 1**: Implement Oban workers that directly call `librecommender` via `pythonx` and interact with CRDB via Ecto.
 2.  **Phase 2**: Advanced Integration & Metadata
     - Develop Elixir interface for `librecommender` via `pythonx`.
-    - Map JSON-LD within Ecto/CRDB.
     - **Stage 2**: Integrate `pythonx` calls within Membrane pipelines (potentially triggered by Oban) for stream processing, storing results via Ecto in CRDB.
 3.  **Validation**:
     - **Success**: <500ms p99 latency for `pythonx` recommendation calls.
@@ -72,24 +70,22 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Decision Makers
 
-- [List the names or roles of the individuals responsible for making the final decision.]
+- Technical Lead
+- Backend Lead
+- V-Sekai Core Team
 
 ## Tags
 
-- [Add relevant tags, e.g., V-Sekai, UI, Networking]
+- V-Sekai
+- Recommendation System
+- Architecture
+- Elixir
+- Python
 
 ## Further Reading
 
-[Include links to relevant documentation, research papers, related issues, or other resources.]
-
-1. [Link Title 1](URL)
-2. [Link Title 2](URL)
-
----
-
-_(Optional: Add a section for defining jargon if needed)_
-
-### Game Development Jargon
-
-1. **Term 1**: Definition
-2. **Term 2**: Definition
+- [pythonx Documentation](https://github.com/elixir-python/pythonx)
+- [librecommender Documentation (Placeholder - Add actual link if available)](URL_TO_LIBRECOMMENDER)
+- [Oban Documentation](https://getoban.pro/docs/stable/Oban.html)
+- [Membrane Framework Documentation](https://membraneframework.org/guide)
+- [Ecto Documentation](https://hexdocs.pm/ecto/Ecto.html)
