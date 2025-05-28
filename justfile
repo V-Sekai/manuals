@@ -22,6 +22,7 @@ create-changelog-entry new_stem=`date +%Y%m%d`:
     
     NEW_FILE_PATH="${TARGET_SUBDIR}/${actual_new_stem}-deck-log.md" # e.g., "changelog/2025/20250527-deck-log.md"
     TODAY_DATE=$(date +%F) # Format: YYYY-MM-DD, for %%DATE%% replacement
+    TODAY_DAY_OF_WEEK=$(date +%A) # Format: Full weekday name, e.g., Tuesday
 
     # Ensure changelog year directory exists
     mkdir -p "${TARGET_SUBDIR}"
@@ -44,10 +45,10 @@ create-changelog-entry new_stem=`date +%Y%m%d`:
             echo "Copying from latest file: ${LATEST_SOURCE_FILE} to ${NEW_FILE_PATH}"
             cp "${LATEST_SOURCE_FILE}" "${NEW_FILE_PATH}"
 
-            echo "Updating date placeholder '%%DATE%%' to '${TODAY_DATE}' in ${NEW_FILE_PATH}"
-            # This sed command works on macOS and Linux. It replaces '%%DATE%%'.
-            # Adjust '%%DATE%%' if your files use a different placeholder.
-            sed -i.bak "s/%%DATE%%/${TODAY_DATE}/g" "${NEW_FILE_PATH}"
+            echo "Updating date placeholder '%%DATE%%' to '${TODAY_DATE}' and '%%DAY_OF_WEEK%%' to '${TODAY_DAY_OF_WEEK}' in ${NEW_FILE_PATH}"
+            # This sed command works on macOS and Linux. It replaces '%%DATE%%' and '%%DAY_OF_WEEK%%'.
+            # Adjust placeholders if your files use different ones.
+            sed -i.bak -e "s/%%DATE%%/${TODAY_DATE}/g" -e "s/%%DAY_OF_WEEK%%/${TODAY_DAY_OF_WEEK}/g" "${NEW_FILE_PATH}"
             rm -f "${NEW_FILE_PATH}.bak" # Clean up the backup file created by sed
 
             echo "File copied and date updated: ${NEW_FILE_PATH}"
