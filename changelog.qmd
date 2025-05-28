@@ -82,24 +82,14 @@ for f in files:
 
     short_title = shorten_title(display_title)
     reading_time = estimate_reading_time(f)
-    
-    html_filename = filename.replace('.md', '.html')
+    # filename = os.path.basename(f) is defined earlier
 
-    # Extract year from directory path for URL construction
-    dir_path = os.path.dirname(f) # e.g., "changelog/2025" or "changelog"
-    year_for_url_path = ""
-    # Check if path is like "changelog/YYYY"
-    if dir_path.startswith("changelog" + os.sep): # Handles cases like "changelog/2025"
-        possible_year = os.path.basename(dir_path)
-        if possible_year.isdigit() and len(possible_year) == 4:
-            year_for_url_path = possible_year
-            
-    if year_for_url_path:
-        url = f"https://v-sekai.github.io/manuals/changelog/{year_for_url_path}/{html_filename}"
-    else:
-        # Fallback for files directly under changelog/ (if any) or if path structure is different
-        url = f"https://v-sekai.github.io/manuals/changelog/{html_filename}"
-        
+    # The following block replaces the old URL construction logic
+    # (previously lines involving html_filename, dir_path, year_for_url_path, and conditional url assignment)
+    relative_html_path = f.replace('.md', '.html').replace(os.sep, '/')
+    url = f"/{relative_html_path}"
+    # End of replaced block for URL construction
+    
     link = f'<a href="{url}">{short_title}</a>'
     rows.append({"title": link, "reading-time": reading_time, "filename": filename,})
 

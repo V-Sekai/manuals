@@ -43,9 +43,12 @@ for f in files:
     short_title = shorten_title(h1_title)
     reading_time = estimate_reading_time(f)
     filename = os.path.basename(f)
-    # Construct the URL based on the file path relative to the decisions directory
-    relative_path = os.path.relpath(f, '.').replace(".md", ".html")
-    url = f"https://v-sekai.github.io/manuals/{relative_path}"
+    # The following block replaces the old URL construction logic
+    # (previously lines involving relative_path and absolute url assignment)
+    relative_html_path = f.replace('.md', '.html').replace(os.sep, '/')
+    url = f"/{relative_html_path}"
+    # End of replaced block for URL construction
+
     link = f'<a href="{url}">{short_title}</a>'
     rows.append({"title": link, "reading-time": reading_time, "filename": filename})
 
