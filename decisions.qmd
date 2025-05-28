@@ -43,8 +43,10 @@ for f in files:
     short_title = shorten_title(h1_title)
     reading_time = estimate_reading_time(f)
     filename = os.path.basename(f)
-    html_link = f.replace(".md", ".html")
-    link = f'<a href="{html_link}">{short_title}</a>'
+    # Construct the URL based on the file path relative to the decisions directory
+    relative_path = os.path.relpath(f, '.').replace(".md", ".html")
+    url = f"https://v-sekai.github.io/manuals/{relative_path}"
+    link = f'<a href="{url}">{short_title}</a>'
     rows.append({"title": link, "reading-time": reading_time, "filename": filename})
 
 columns = ["title", "filename", "reading-time"]

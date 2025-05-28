@@ -29,6 +29,7 @@ from itables import show
 import os
 import sys
 import subprocess
+import datetime # Added
 
 # Install readtime if not already installed
 try:
@@ -60,16 +61,45 @@ def shorten_title(title, length=40):
 
 rows = []
 for f in files:
-    h1_title = extract_h1_title(f)
-    short_title = shorten_title(h1_title)
+    filename = os.path.basename(f) # e.g., "20250527-deck-log.md"
+    
+    # Derive display title from filename for changelog entries
+    display_title = ""
+    # Check if filename seems to follow the YYYYMMDD-deck-log.md pattern
+    if len(filename) >= 8 and filename[:8].isdigit() and "deck-log" in filename:
+        file_stem_date_str = filename[:8] # "20250527"
+        try:
+            dt_obj = datetime.datetime.strptime(file_stem_date_str, "%Y%m%d")
+            formatted_date = dt_obj.strftime("%Y-%m-%d") # "2025-05-27"
+            day_of_week = dt_obj.strftime("%A") # "Tuesday"
+            display_title = f"V-Sekai Deck Log - {formatted_date} ({day_of_week})"
+        except ValueError:
+            # Parsing failed, will fallback to H1
+            pass
+
+    if not display_title: # If title couldn't be derived from filename
+        display_title = extract_h1_title(f) # Fallback to H1 from file
+
+    short_title = shorten_title(display_title)
     reading_time = estimate_reading_time(f)
-    filename = os.path.basename(f)
-    year = filename[:4] if filename[:4].isdigit() else ""
+    
     html_filename = filename.replace('.md', '.html')
-    if year:
-        url = f"https://v-sekai.github.io/manuals/changelog/{year}/{html_filename}"
+
+    # Extract year from directory path for URL construction
+    dir_path = os.path.dirname(f) # e.g., "changelog/2025" or "changelog"
+    year_for_url_path = ""
+    # Check if path is like "changelog/YYYY"
+    if dir_path.startswith("changelog" + os.sep): # Handles cases like "changelog/2025"
+        possible_year = os.path.basename(dir_path)
+        if possible_year.isdigit() and len(possible_year) == 4:
+            year_for_url_path = possible_year
+            
+    if year_for_url_path:
+        url = f"https://v-sekai.github.io/manuals/changelog/{year_for_url_path}/{html_filename}"
     else:
+        # Fallback for files directly under changelog/ (if any) or if path structure is different
         url = f"https://v-sekai.github.io/manuals/changelog/{html_filename}"
+        
     link = f'<a href="{url}">{short_title}</a>'
     rows.append({"title": link, "reading-time": reading_time, "filename": filename,})
 

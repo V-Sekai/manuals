@@ -21,8 +21,11 @@ create-changelog-entry new_stem=`date +%Y%m%d`:
     TARGET_SUBDIR="${CHANGELOG_DIR}/${YEAR_PART}" # e.g., "changelog/2025"
     
     NEW_FILE_PATH="${TARGET_SUBDIR}/${actual_new_stem}-deck-log.md" # e.g., "changelog/2025/20250527-deck-log.md"
-    TODAY_DATE=$(date +%F) # Format: YYYY-MM-DD, for %%DATE%% replacement
-    TODAY_DAY_OF_WEEK=$(date +%A) # Format: Full weekday name, e.g., Tuesday
+    
+    # Derive date and day of week from the actual_new_stem (filename's date)
+    # Assumes macOS date command syntax
+    FILE_STEM_DATE_FORMATTED=$(date -j -f "%Y%m%d" "${actual_new_stem}" "+%F")
+    FILE_STEM_DAY_OF_WEEK=$(date -j -f "%Y%m%d" "${actual_new_stem}" "+%A")
 
     # Ensure changelog year directory exists
     mkdir -p "${TARGET_SUBDIR}"
@@ -39,23 +42,23 @@ create-changelog-entry new_stem=`date +%Y%m%d`:
             echo "No existing .md file found in ${CHANGELOG_DIR}/ to use as a template."
             echo "Creating ${NEW_FILE_PATH} with a basic template."
             # Use shell variable $actual_new_stem for the content, which holds YYYYMMDD
-            # Updated H1 format for basic template
-            echo -e "# V-Sekai Deck Log - ${TODAY_DATE} (${TODAY_DAY_OF_WEEK})\\n\\nDate: ${TODAY_DATE}\\n\\n- Initial entry." > "${NEW_FILE_PATH}"
+            # Updated H1 format for basic template, using date derived from filename stem
+            echo -e "# V-Sekai Deck Log - ${FILE_STEM_DATE_FORMATTED} (${FILE_STEM_DAY_OF_WEEK})\\n\\nDate: ${FILE_STEM_DATE_FORMATTED}\\n\\n- Initial entry." > "${NEW_FILE_PATH}"
             echo "Created new file: ${NEW_FILE_PATH}"
         else
             echo "Copying from latest file: ${LATEST_SOURCE_FILE} to ${NEW_FILE_PATH}"
             cp "${LATEST_SOURCE_FILE}" "${NEW_FILE_PATH}"
 
-            echo "Updating date placeholder '%%DATE%%' to '${TODAY_DATE}' and '%%DAY_OF_WEEK%%' to '${TODAY_DAY_OF_WEEK}' in ${NEW_FILE_PATH}"
+            echo "Updating date placeholder '%%DATE%%' to '${FILE_STEM_DATE_FORMATTED}' and '%%DAY_OF_WEEK%%' to '${FILE_STEM_DAY_OF_WEEK}' in ${NEW_FILE_PATH}"
             # This sed command works on macOS and Linux. It replaces '%%DATE%%' and '%%DAY_OF_WEEK%%'.
             # Adjust placeholders if your files use different ones.
-            sed -i.bak -e "s/%%DATE%%/${TODAY_DATE}/g" -e "s/%%DAY_OF_WEEK%%/${TODAY_DAY_OF_WEEK}/g" "${NEW_FILE_PATH}"
+            sed -i.bak -e "s/%%DATE%%/${FILE_STEM_DATE_FORMATTED}/g" -e "s/%%DAY_OF_WEEK%%/${FILE_STEM_DAY_OF_WEEK}/g" "${NEW_FILE_PATH}"
             
-            echo "Ensuring H1 title is updated to '${TODAY_DATE} (${TODAY_DAY_OF_WEEK})'"
+            echo "Ensuring H1 title is updated to '${FILE_STEM_DATE_FORMATTED} (${FILE_STEM_DAY_OF_WEEK})'"
             # This command specifically replaces the H1 title line if it matches the known pattern.
-            # Using a different delimiter for sed to avoid issues if TODAY_DAY_OF_WEEK contains '/' (unlikely for day name)
+            # Using a different delimiter for sed to avoid issues if FILE_STEM_DAY_OF_WEEK contains '/' (unlikely for day name)
             # Using -E for extended regex compatibility (macOS/BSD sed).
-            sed -i.bak2 -E "s|^# V-Sekai Deck Log - .*|# V-Sekai Deck Log - ${TODAY_DATE} (${TODAY_DAY_OF_WEEK})|" "${NEW_FILE_PATH}"
+            sed -i.bak2 -E "s|^# V-Sekai Deck Log - .*|# V-Sekai Deck Log - ${FILE_STEM_DATE_FORMATTED} (${FILE_STEM_DAY_OF_WEEK})|" "${NEW_FILE_PATH}"
             
             rm -f "${NEW_FILE_PATH}.bak" # Clean up the first backup file
             rm -f "${NEW_FILE_PATH}.bak2" # Clean up the second backup file
