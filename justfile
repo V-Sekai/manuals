@@ -39,7 +39,8 @@ create-changelog-entry new_stem=`date +%Y%m%d`:
             echo "No existing .md file found in ${CHANGELOG_DIR}/ to use as a template."
             echo "Creating ${NEW_FILE_PATH} with a basic template."
             # Use shell variable $actual_new_stem for the content, which holds YYYYMMDD
-            echo -e "# Changelog for ${actual_new_stem}\\n\\nDate: ${TODAY_DATE}\\n\\n- Initial entry." > "${NEW_FILE_PATH}"
+            # Updated H1 format for basic template
+            echo -e "# V-Sekai Deck Log - ${TODAY_DATE} (${TODAY_DAY_OF_WEEK})\\n\\nDate: ${TODAY_DATE}\\n\\n- Initial entry." > "${NEW_FILE_PATH}"
             echo "Created new file: ${NEW_FILE_PATH}"
         else
             echo "Copying from latest file: ${LATEST_SOURCE_FILE} to ${NEW_FILE_PATH}"
@@ -49,7 +50,15 @@ create-changelog-entry new_stem=`date +%Y%m%d`:
             # This sed command works on macOS and Linux. It replaces '%%DATE%%' and '%%DAY_OF_WEEK%%'.
             # Adjust placeholders if your files use different ones.
             sed -i.bak -e "s/%%DATE%%/${TODAY_DATE}/g" -e "s/%%DAY_OF_WEEK%%/${TODAY_DAY_OF_WEEK}/g" "${NEW_FILE_PATH}"
-            rm -f "${NEW_FILE_PATH}.bak" # Clean up the backup file created by sed
+            
+            echo "Ensuring H1 title is updated to '${TODAY_DATE} (${TODAY_DAY_OF_WEEK})'"
+            # This command specifically replaces the H1 title line if it matches the known pattern.
+            # Using a different delimiter for sed to avoid issues if TODAY_DAY_OF_WEEK contains '/' (unlikely for day name)
+            # Using -E for extended regex compatibility (macOS/BSD sed).
+            sed -i.bak2 -E "s|^# V-Sekai Deck Log - .*|# V-Sekai Deck Log - ${TODAY_DATE} (${TODAY_DAY_OF_WEEK})|" "${NEW_FILE_PATH}"
+            
+            rm -f "${NEW_FILE_PATH}.bak" # Clean up the first backup file
+            rm -f "${NEW_FILE_PATH}.bak2" # Clean up the second backup file
 
             echo "File copied and date updated: ${NEW_FILE_PATH}"
         fi
