@@ -23,13 +23,15 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -71,12 +73,68 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script>
 
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
 
+    const options = {
+      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      page: 30,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
+      searchColumns: ["listing-title","listing-author"],
+    };
 
-</head>
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="alternate" type="application/rss+xml" title="V-Sekai - Manuals" href="changelog.xml" data-external="1"></head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
@@ -318,85 +376,508 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Removed</strong> for now removed features.</p>
 <p><strong>Fixed</strong> for any bug fixes.</p>
 <p><strong>Security</strong> in case of vulnerabilities.</p>
-<!--| quarto-html-table-processing: none -->
-<table id="itables_749df94b_7f94_45f0_b8b3_63a142a145e0"><tbody><tr>
-    <td style="vertical-align:middle; text-align:left">
-    <a href="https://mwouts.github.io/itables/"><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="64" viewbox="0 0 500 400" style="font-family: 'Droid Sans', sans-serif;">
-    <g style="fill:#d9d7fc">
-        <path d="M100,400H500V357H100Z"></path>
-        <path d="M100,300H400V257H100Z"></path>
-        <path d="M0,200H400V157H0Z"></path>
-        <path d="M100,100H500V57H100Z"></path>
-        <path d="M100,350H500V307H100Z"></path>
-        <path d="M100,250H400V207H100Z"></path>
-        <path d="M0,150H400V107H0Z"></path>
-        <path d="M100,50H500V7H100Z"></path>
-    </g>
-    <g style="fill:#1a1366;stroke:#1a1366;">
-   <rect x="100" y="7" width="400" height="43">
-    <animate attributename="width" values="0;400;0" dur="5s" repeatcount="indefinite"></animate>
-      <animate attributename="x" values="100;100;500" dur="5s" repeatcount="indefinite"></animate>
-  </rect>
-        <rect x="0" y="107" width="400" height="43">
-    <animate attributename="width" values="0;400;0" dur="3.5s" repeatcount="indefinite"></animate>
-    <animate attributename="x" values="0;0;400" dur="3.5s" repeatcount="indefinite"></animate>
-  </rect>
-        <rect x="100" y="207" width="300" height="43">
-    <animate attributename="width" values="0;300;0" dur="3s" repeatcount="indefinite"></animate>
-    <animate attributename="x" values="100;100;400" dur="3s" repeatcount="indefinite"></animate>
-  </rect>
-        <rect x="100" y="307" width="400" height="43">
-    <animate attributename="width" values="0;400;0" dur="4s" repeatcount="indefinite"></animate>
-      <animate attributename="x" values="100;100;500" dur="4s" repeatcount="indefinite"></animate>
-  </rect>
-        <g style="fill:transparent;stroke-width:8; stroke-linejoin:round" rx="5">
-            <g transform="translate(45 50) rotate(-45)">
-                <circle r="33" cx="0" cy="0"></circle>
-                <rect x="-8" y="32" width="16" height="30"></rect>
-            </g>
-
-            <g transform="translate(450 152)">
-                <polyline points="-15,-20 -35,-20 -35,40 25,40 25,20"></polyline>
-                <rect x="-15" y="-40" width="60" height="60"></rect>
-            </g>
-
-            <g transform="translate(50 352)">
-                <polygon points="-35,-5 0,-40 35,-5"></polygon>
-                <polygon points="-35,10 0,45 35,10"></polygon>
-            </g>
-
-            <g transform="translate(75 250)">
-                <polyline points="-30,30 -60,0 -30,-30"></polyline>
-                <polyline points="0,30 -30,0 0,-30"></polyline>
-            </g>
-
-            <g transform="translate(425 250) rotate(180)">
-                <polyline points="-30,30 -60,0 -30,-30"></polyline>
-                <polyline points="0,30 -30,0 0,-30"></polyline>
-            </g>
-        </g>
-    </g>
-</svg>
-</a>
-    Loading ITables v2.4.0 from the internet...
-    (need <a href="https://mwouts.github.io/itables/troubleshooting.html">help</a>?)</td>
-    </tr></tbody></table>
-<link href="https://www.unpkg.com/dt_for_itables@2.3.2/dt_bundle.css" rel="stylesheet">
-<script type="module">
-    import { ITable, jQuery as $ } from 'https://www.unpkg.com/dt_for_itables@2.3.2/dt_bundle.js';
-
-    document.querySelectorAll("#itables_749df94b_7f94_45f0_b8b3_63a142a145e0:not(.dataTable)").forEach(table => {
-        if (!(table instanceof HTMLTableElement))
-            return;
-
-        let dt_args = {"paging": true, "pageLength": 10, "index": false, "escape": false, "layout": {"topStart": "pageLength", "topEnd": "search", "bottomStart": "info", "bottomEnd": "paging"}, "order": [], "style": {"table-layout": "auto", "width": "auto", "margin": "auto", "caption-side": "bottom"}, "classes": ["display", "nowrap"], "text_in_header_can_be_selected": true, "table_html": "<table><thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>title</th>\n      <th>reading-time</th>\n      <th>filename</th>\n    </tr>\n  </thead></table>", "data_json": "[[29, \"&lt;a href=\\\"/changelog/2025/20250528-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-05-28 (Wednes...&lt;/a&gt;\", \"1 min\", \"20250528-deck-log.md\"], [21, \"&lt;a href=\\\"/changelog/2025/20250527-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-05-27 (Tuesday)&lt;/a&gt;\", \"1 min\", \"20250527-deck-log.md\"], [11, \"&lt;a href=\\\"/changelog/2025/20250426-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-04-26 (Saturday)&lt;/a&gt;\", \"1 min\", \"20250426-deck-log.md\"], [10, \"&lt;a href=\\\"/changelog/2025/20250418-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-04-18 (Friday)&lt;/a&gt;\", \"1 min\", \"20250418-deck-log.md\"], [13, \"&lt;a href=\\\"/changelog/2025/20250416-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-04-16 (Wednes...&lt;/a&gt;\", \"1 min\", \"20250416-deck-log.md\"], [20, \"&lt;a href=\\\"/changelog/2025/20250408-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-04-08 (Tuesday)&lt;/a&gt;\", \"1 min\", \"20250408-deck-log.md\"], [26, \"&lt;a href=\\\"/changelog/2025/20250330-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-03-30 (Sunday)&lt;/a&gt;\", \"1 min\", \"20250330-deck-log.md\"], [28, \"&lt;a href=\\\"/changelog/2025/20250315-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-03-15 (Saturday)&lt;/a&gt;\", \"1 min\", \"20250315-deck-log.md\"], [8, \"&lt;a href=\\\"/changelog/2025/20250312-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-03-12 (Wednes...&lt;/a&gt;\", \"1 min\", \"20250312-deck-log.md\"], [24, \"&lt;a href=\\\"/changelog/2025/20250308-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-03-08 (Saturday)&lt;/a&gt;\", \"1 min\", \"20250308-deck-log.md\"], [25, \"&lt;a href=\\\"/changelog/2025/20250307-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-03-07 (Friday)&lt;/a&gt;\", \"1 min\", \"20250307-deck-log.md\"], [14, \"&lt;a href=\\\"/changelog/2025/20250306-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-03-06 (Thursday)&lt;/a&gt;\", \"1 min\", \"20250306-deck-log.md\"], [19, \"&lt;a href=\\\"/changelog/2025/20250226-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-02-26 (Wednes...&lt;/a&gt;\", \"1 min\", \"20250226-deck-log.md\"], [32, \"&lt;a href=\\\"/changelog/2025/20250225-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-02-25 (Tuesday)&lt;/a&gt;\", \"1 min\", \"20250225-deck-log.md\"], [18, \"&lt;a href=\\\"/changelog/2025/20250220-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-02-20 (Thursday)&lt;/a&gt;\", \"1 min\", \"20250220-deck-log.md\"], [16, \"&lt;a href=\\\"/changelog/2025/20250215-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-02-15 (Saturday)&lt;/a&gt;\", \"1 min\", \"20250215-deck-log.md\"], [30, \"&lt;a href=\\\"/changelog/2025/20250213-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-02-13 (Thursday)&lt;/a&gt;\", \"1 min\", \"20250213-deck-log.md\"], [9, \"&lt;a href=\\\"/changelog/2025/20250212-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-02-12 (Wednes...&lt;/a&gt;\", \"1 min\", \"20250212-deck-log.md\"], [31, \"&lt;a href=\\\"/changelog/2025/20250209-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-02-09 (Sunday)&lt;/a&gt;\", \"1 min\", \"20250209-deck-log.md\"], [17, \"&lt;a href=\\\"/changelog/2025/20250208-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-02-08 (Saturday)&lt;/a&gt;\", \"1 min\", \"20250208-deck-log.md\"], [12, \"&lt;a href=\\\"/changelog/2025/20250207-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-02-07 (Friday)&lt;/a&gt;\", \"1 min\", \"20250207-deck-log.md\"], [27, \"&lt;a href=\\\"/changelog/2025/20250206-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-02-06 (Thursday)&lt;/a&gt;\", \"2 min\", \"20250206-deck-log.md\"], [22, \"&lt;a href=\\\"/changelog/2025/20250205-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-02-05 (Wednes...&lt;/a&gt;\", \"1 min\", \"20250205-deck-log.md\"], [23, \"&lt;a href=\\\"/changelog/2025/20250204-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-02-04 (Tuesday)&lt;/a&gt;\", \"1 min\", \"20250204-deck-log.md\"], [15, \"&lt;a href=\\\"/changelog/2025/20250203-deck-log.html\\\"&gt;V-Sekai Deck Log - 2025-02-03 (Monday)&lt;/a&gt;\", \"1 min\", \"20250203-deck-log.md\"], [54, \"&lt;a href=\\\"/changelog/2024/20241218-changelog.html\\\"&gt;V-Sekai Changelog - December 2024&lt;/a&gt;\", \"1 min\", \"20241218-changelog.md\"], [47, \"&lt;a href=\\\"/changelog/2024/20241102-changelog.html\\\"&gt;V-Sekai Changelog - November 2024&lt;/a&gt;\", \"3 min\", \"20241102-changelog.md\"], [52, \"&lt;a href=\\\"/changelog/2024/20241003-changelog.html\\\"&gt;V-Sekai Changelog - October 2024&lt;/a&gt;\", \"2 min\", \"20241003-changelog.md\"], [48, \"&lt;a href=\\\"/changelog/2024/20240901-changelog.html\\\"&gt;V-Sekai Changelog - September 2024&lt;/a&gt;\", \"1 min\", \"20240901-changelog.md\"], [45, \"&lt;a href=\\\"/changelog/2024/20240701-changelog.html\\\"&gt;V-Sekai Changelog - July 2024&lt;/a&gt;\", \"2 min\", \"20240701-changelog.md\"], [44, \"&lt;a href=\\\"/changelog/2024/20240625-changelog.html\\\"&gt;Special Notice: V-Sekai 2023-2024&lt;/a&gt;\", \"2 min\", \"20240625-changelog.md\"], [49, \"&lt;a href=\\\"/changelog/2024/20240603-changelog.html\\\"&gt;V-Sekai Changelog - June 2024&lt;/a&gt;\", \"1 min\", \"20240603-changelog.md\"], [53, \"&lt;a href=\\\"/changelog/2024/20240505-changelog.html\\\"&gt;V-Sekai Changelog - May 2024&lt;/a&gt;\", \"1 min\", \"20240505-changelog.md\"], [50, \"&lt;a href=\\\"/changelog/2024/20240330-changelog.html\\\"&gt;V-Sekai Changelog - March 2024&lt;/a&gt;\", \"1 min\", \"20240330-changelog.md\"], [46, \"&lt;a href=\\\"/changelog/2024/20240202-changelog.html\\\"&gt;V-Sekai Changelog - February 2024&lt;/a&gt;\", \"2 min\", \"20240202-changelog.md\"], [51, \"&lt;a href=\\\"/changelog/2024/20240101-changelog.html\\\"&gt;V-Sekai Changelog - January 2024&lt;/a&gt;\", \"1 min\", \"20240101-changelog.md\"], [65, \"&lt;a href=\\\"/changelog/2023/20231207-changelog.html\\\"&gt;V-Sekai Changelog - December 2023&lt;/a&gt;\", \"1 min\", \"20231207-changelog.md\"], [62, \"&lt;a href=\\\"/changelog/2023/20231109-changelog.html\\\"&gt;V-Sekai Changelog - November 2023&lt;/a&gt;\", \"3 min\", \"20231109-changelog.md\"], [55, \"&lt;a href=\\\"/changelog/2023/20231001-changelog.html\\\"&gt;V-Sekai Changelog - October 2023&lt;/a&gt;\", \"2 min\", \"20231001-changelog.md\"], [64, \"&lt;a href=\\\"/changelog/2023/20230901-changelog.html\\\"&gt;V-Sekai Changelog - September 2023&lt;/a&gt;\", \"2 min\", \"20230901-changelog.md\"], [61, \"&lt;a href=\\\"/changelog/2023/20230801-changelog.html\\\"&gt;V-Sekai Changelog - August 2023&lt;/a&gt;\", \"3 min\", \"20230801-changelog.md\"], [63, \"&lt;a href=\\\"/changelog/2023/20230701-changelog.html\\\"&gt;V-Sekai Changelog - July 2023&lt;/a&gt;\", \"1 min\", \"20230701-changelog.md\"], [57, \"&lt;a href=\\\"/changelog/2023/20230601-changelog.html\\\"&gt;V-Sekai Changelog - 2023-06&lt;/a&gt;\", \"3 min\", \"20230601-changelog.md\"], [58, \"&lt;a href=\\\"/changelog/2023/20230501-changelog.html\\\"&gt;V-Sekai Changelog - 2023-05&lt;/a&gt;\", \"2 min\", \"20230501-changelog.md\"], [60, \"&lt;a href=\\\"/changelog/2023/20230301-changelog.html\\\"&gt;V-Sekai Changelog - 2023-03&lt;/a&gt;\", \"2 min\", \"20230301-changelog.md\"], [59, \"&lt;a href=\\\"/changelog/2023/20230201-changelog.html\\\"&gt;V-Sekai Changelog - 2023-02&lt;/a&gt;\", \"1 min\", \"20230201-changelog.md\"], [56, \"&lt;a href=\\\"/changelog/2023/20230101-changelog.html\\\"&gt;V-Sekai Changelog - 2023-01&lt;/a&gt;\", \"1 min\", \"20230101-changelog.md\"], [40, \"&lt;a href=\\\"/changelog/2022/20221201-changelog.html\\\"&gt;V-Sekai Changelog - 2022-12&lt;/a&gt;\", \"2 min\", \"20221201-changelog.md\"], [43, \"&lt;a href=\\\"/changelog/2022/20221101-changelog.html\\\"&gt;V-Sekai Changelog - 2022-11&lt;/a&gt;\", \"2 min\", \"20221101-changelog.md\"], [41, \"&lt;a href=\\\"/changelog/2022/20221001-changelog.html\\\"&gt;V-Sekai Changelog - 2022-10&lt;/a&gt;\", \"6 min\", \"20221001-changelog.md\"], [34, \"&lt;a href=\\\"/changelog/2022/20220901-changelog.html\\\"&gt;V-Sekai Changelog - 2022-09&lt;/a&gt;\", \"1 min\", \"20220901-changelog.md\"], [39, \"&lt;a href=\\\"/changelog/2022/20220801-changelog.html\\\"&gt;V-Sekai Changelog - 2022-08&lt;/a&gt;\", \"1 min\", \"20220801-changelog.md\"], [36, \"&lt;a href=\\\"/changelog/2022/20220601-changelog.html\\\"&gt;V-Sekai Changelog - 2022-06&lt;/a&gt;\", \"1 min\", \"20220601-changelog.md\"], [35, \"&lt;a href=\\\"/changelog/2022/20220501-changelog.html\\\"&gt;V-Sekai Changelog - 2022-05&lt;/a&gt;\", \"1 min\", \"20220501-changelog.md\"], [33, \"&lt;a href=\\\"/changelog/2022/20220401-changelog.html\\\"&gt;V-Sekai Changelog - 2022-04&lt;/a&gt;\", \"2 min\", \"20220401-changelog.md\"], [38, \"&lt;a href=\\\"/changelog/2022/20220301-changelog.html\\\"&gt;V-Sekai Changelog - 2022-03&lt;/a&gt;\", \"2 min\", \"20220301-changelog.md\"], [37, \"&lt;a href=\\\"/changelog/2022/20220201-changelog.html\\\"&gt;V-Sekai Changelog - 2022-02&lt;/a&gt;\", \"1 min\", \"20220201-changelog.md\"], [42, \"&lt;a href=\\\"/changelog/2022/20220101-changelog.html\\\"&gt;V-Sekai Changelog - 2022-01&lt;/a&gt;\", \"1 min\", \"20220101-changelog.md\"], [6, \"&lt;a href=\\\"/changelog/2021/20211101-changelog.html\\\"&gt;V-Sekai Changelog - 2021-11&lt;/a&gt;\", \"2 min\", \"20211101-changelog.md\"], [7, \"&lt;a href=\\\"/changelog/2021/20211001-changelog.html\\\"&gt;V-Sekai Changelog - 2021-10&lt;/a&gt;\", \"10 min\", \"20211001-changelog.md\"], [5, \"&lt;a href=\\\"/changelog/2021/20210901-changelog.html\\\"&gt;V-Sekai Changelog - 2021-09&lt;/a&gt;\", \"11 min\", \"20210901-changelog.md\"], [3, \"&lt;a href=\\\"/changelog/2021/20210801-changelog.html\\\"&gt;V-Sekai Changelog - 2021-08&lt;/a&gt;\", \"6 min\", \"20210801-changelog.md\"], [1, \"&lt;a href=\\\"/changelog/2021/20210701-changelog.html\\\"&gt;V-Sekai Changelog - 2021-07&lt;/a&gt;\", \"6 min\", \"20210701-changelog.md\"], [2, \"&lt;a href=\\\"/changelog/2021/20210601-changelog.html\\\"&gt;V-Sekai Changelog - 2021-06&lt;/a&gt;\", \"11 min\", \"20210601-changelog.md\"], [0, \"&lt;a href=\\\"/changelog/2021/20210501-changelog.html\\\"&gt;V-Sekai Changelog - 2021-05&lt;/a&gt;\", \"18 min\", \"20210501-changelog.md\"], [4, \"&lt;a href=\\\"/changelog/2021/20210401-changelog.html\\\"&gt;V-Sekai Changelog - 2021-04&lt;/a&gt;\", \"2 min\", \"20210401-changelog.md\"]]"};
-        new ITable(table, dt_args);
-    });
-</script>
 
 
 
-</main> <!-- /main -->
+
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Order By</option>
+      <option value="index" data-direction="asc">Default</option>
+      <option value="listing-title-sort" data-direction="asc">
+        Title
+      </option>
+    </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+
+<th>
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
+</th>
+
+</tr>
+</thead>
+<tbody class="list">
+
+<tr data-index="0" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="1" data-listing-word-count-sort="31" data-listing-title-sort="V-Sekai Deck Log - 2025-04-26 (Tuesday)" data-listing-filename-sort="20250528-deck-log.md">
+<td>
+<a href="./changelog/2025/20250528-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-04-26 (Tuesday)</a>
+</td>
+
+</tr>
+
+<tr data-index="1" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="1" data-listing-word-count-sort="10" data-listing-title-sort="V-Sekai Deck Log - 2025-04-26 (Tuesday)" data-listing-filename-sort="20250527-deck-log.md">
+<td>
+<a href="./changelog/2025/20250527-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-04-26 (Tuesday)</a>
+</td>
+
+</tr>
+
+<tr data-index="2" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="1" data-listing-word-count-sort="88" data-listing-title-sort="V-Sekai Deck Log - 2025-04-26 (Saturday)" data-listing-filename-sort="20250426-deck-log.md">
+<td>
+<a href="./changelog/2025/20250426-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-04-26 (Saturday)</a>
+</td>
+
+</tr>
+
+<tr data-index="3" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="1" data-listing-word-count-sort="63" data-listing-title-sort="V-Sekai Deck Log - 2025-04-18 (Friday)" data-listing-filename-sort="20250418-deck-log.md">
+<td>
+<a href="./changelog/2025/20250418-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-04-18 (Friday)</a>
+</td>
+
+</tr>
+
+<tr data-index="4" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="1" data-listing-word-count-sort="173" data-listing-title-sort="V-Sekai Deck Log - 2025-04-16 (Wednesday)" data-listing-filename-sort="20250416-deck-log.md">
+<td>
+<a href="./changelog/2025/20250416-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-04-16 (Wednesday)</a>
+</td>
+
+</tr>
+
+<tr data-index="5" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="1" data-listing-word-count-sort="46" data-listing-title-sort="V-Sekai Deck Log - 2025-04-08 (Tuesday)" data-listing-filename-sort="20250408-deck-log.md">
+<td>
+<a href="./changelog/2025/20250408-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-04-08 (Tuesday)</a>
+</td>
+
+</tr>
+
+<tr data-index="6" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="1" data-listing-word-count-sort="47" data-listing-title-sort="V-Sekai Deck Log - 2025-03-30 (Sunday)" data-listing-filename-sort="20250330-deck-log.md">
+<td>
+<a href="./changelog/2025/20250330-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-03-30 (Sunday)</a>
+</td>
+
+</tr>
+
+<tr data-index="7" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="2" data-listing-word-count-sort="207" data-listing-title-sort="V-Sekai Deck Log - 2025-03-15 (Saturday)" data-listing-filename-sort="20250315-deck-log.md">
+<td>
+<a href="./changelog/2025/20250315-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-03-15 (Saturday)</a>
+</td>
+
+</tr>
+
+<tr data-index="8" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="1" data-listing-word-count-sort="96" data-listing-title-sort="V-Sekai Deck Log - 2025-03-12 (Wednesday)" data-listing-filename-sort="20250312-deck-log.md">
+<td>
+<a href="./changelog/2025/20250312-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-03-12 (Wednesday)</a>
+</td>
+
+</tr>
+
+<tr data-index="9" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="2" data-listing-word-count-sort="252" data-listing-title-sort="V-Sekai Deck Log - 2025-03-08 (Saturday)" data-listing-filename-sort="20250308-deck-log.md">
+<td>
+<a href="./changelog/2025/20250308-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-03-08 (Saturday)</a>
+</td>
+
+</tr>
+
+<tr data-index="10" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="2" data-listing-word-count-sort="224" data-listing-title-sort="V-Sekai Deck Log - 2025-03-07 (Friday)" data-listing-filename-sort="20250307-deck-log.md">
+<td>
+<a href="./changelog/2025/20250307-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-03-07 (Friday)</a>
+</td>
+
+</tr>
+
+<tr data-index="11" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="1" data-listing-word-count-sort="73" data-listing-title-sort="V-Sekai Deck Log - 2025-03-06 (Thursday)" data-listing-filename-sort="20250306-deck-log.md">
+<td>
+<a href="./changelog/2025/20250306-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-03-06 (Thursday)</a>
+</td>
+
+</tr>
+
+<tr data-index="12" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="1" data-listing-word-count-sort="60" data-listing-title-sort="V-Sekai Deck Log - 2025-02-26 (Wednesday)" data-listing-filename-sort="20250226-deck-log.md">
+<td>
+<a href="./changelog/2025/20250226-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-02-26 (Wednesday)</a>
+</td>
+
+</tr>
+
+<tr data-index="13" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="1" data-listing-word-count-sort="168" data-listing-title-sort="V-Sekai Deck Log - 2025-02-25 (Tuesday)" data-listing-filename-sort="20250225-deck-log.md">
+<td>
+<a href="./changelog/2025/20250225-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-02-25 (Tuesday)</a>
+</td>
+
+</tr>
+
+<tr data-index="14" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="1" data-listing-word-count-sort="176" data-listing-title-sort="V-Sekai Deck Log - 2025-02-20 (Thursday)" data-listing-filename-sort="20250220-deck-log.md">
+<td>
+<a href="./changelog/2025/20250220-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-02-20 (Thursday)</a>
+</td>
+
+</tr>
+
+<tr data-index="15" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="1" data-listing-word-count-sort="134" data-listing-title-sort="V-Sekai Deck Log - 2025-02-15 (Saturday)" data-listing-filename-sort="20250215-deck-log.md">
+<td>
+<a href="./changelog/2025/20250215-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-02-15 (Saturday)</a>
+</td>
+
+</tr>
+
+<tr data-index="16" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="2" data-listing-word-count-sort="239" data-listing-title-sort="V-Sekai Deck Log - 2025-02-13 (Thursday)" data-listing-filename-sort="20250213-deck-log.md">
+<td>
+<a href="./changelog/2025/20250213-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-02-13 (Thursday)</a>
+</td>
+
+</tr>
+
+<tr data-index="17" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="1" data-listing-word-count-sort="175" data-listing-title-sort="V-Sekai Deck Log - 2025-02-12 (Wednesday)" data-listing-filename-sort="20250212-deck-log.md">
+<td>
+<a href="./changelog/2025/20250212-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-02-12 (Wednesday)</a>
+</td>
+
+</tr>
+
+<tr data-index="18" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="1" data-listing-word-count-sort="165" data-listing-title-sort="V-Sekai Deck Log - 2025-02-09" data-listing-filename-sort="20250209-deck-log.md">
+<td>
+<a href="./changelog/2025/20250209-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-02-09</a>
+</td>
+
+</tr>
+
+<tr data-index="19" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="1" data-listing-word-count-sort="151" data-listing-title-sort="V-Sekai Deck Log - 2025-02-08" data-listing-filename-sort="20250208-deck-log.md">
+<td>
+<a href="./changelog/2025/20250208-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-02-08</a>
+</td>
+
+</tr>
+
+<tr data-index="20" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="1" data-listing-word-count-sort="195" data-listing-title-sort="V-Sekai Deck Log - 2025-02-07" data-listing-filename-sort="20250207-deck-log.md">
+<td>
+<a href="./changelog/2025/20250207-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-02-07</a>
+</td>
+
+</tr>
+
+<tr data-index="21" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="2" data-listing-word-count-sort="275" data-listing-title-sort="V-Sekai Deck Log - 2025-02-06" data-listing-filename-sort="20250206-deck-log.md">
+<td>
+<a href="./changelog/2025/20250206-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-02-06</a>
+</td>
+
+</tr>
+
+<tr data-index="22" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="2" data-listing-word-count-sort="211" data-listing-title-sort="V-Sekai Deck Log - 2025-02-05" data-listing-filename-sort="20250205-deck-log.md">
+<td>
+<a href="./changelog/2025/20250205-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-02-05</a>
+</td>
+
+</tr>
+
+<tr data-index="23" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="1" data-listing-word-count-sort="154" data-listing-title-sort="V-Sekai Deck Log - 2025-02-04" data-listing-filename-sort="20250204-deck-log.md">
+<td>
+<a href="./changelog/2025/20250204-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-02-04</a>
+</td>
+
+</tr>
+
+<tr data-index="24" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="1" data-listing-word-count-sort="149" data-listing-title-sort="V-Sekai Deck Log - 2025-02-03" data-listing-filename-sort="20250203-deck-log.md">
+<td>
+<a href="./changelog/2025/20250203-deck-log.html" class="title listing-title">V-Sekai Deck Log - 2025-02-03</a>
+</td>
+
+</tr>
+
+<tr data-index="25" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="2" data-listing-word-count-sort="221" data-listing-title-sort="V-Sekai Changelog - December 2024" data-listing-filename-sort="20241218-changelog.md">
+<td>
+<a href="./changelog/2024/20241218-changelog.html" class="title listing-title">V-Sekai Changelog - December 2024</a>
+</td>
+
+</tr>
+
+<tr data-index="26" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="3" data-listing-word-count-sort="548" data-listing-title-sort="V-Sekai Changelog - November 2024" data-listing-filename-sort="20241102-changelog.md">
+<td>
+<a href="./changelog/2024/20241102-changelog.html" class="title listing-title">V-Sekai Changelog - November 2024</a>
+</td>
+
+</tr>
+
+<tr data-index="27" data-listing-file-modified-sort="1748504583957" data-listing-reading-time-sort="2" data-listing-word-count-sort="293" data-listing-title-sort="V-Sekai Changelog - October 2024" data-listing-filename-sort="20241003-changelog.md">
+<td>
+<a href="./changelog/2024/20241003-changelog.html" class="title listing-title">V-Sekai Changelog - October 2024</a>
+</td>
+
+</tr>
+
+<tr data-index="28" data-listing-file-modified-sort="1748504583956" data-listing-reading-time-sort="2" data-listing-word-count-sort="212" data-listing-title-sort="V-Sekai Changelog - September 2024" data-listing-filename-sort="20240901-changelog.md">
+<td>
+<a href="./changelog/2024/20240901-changelog.html" class="title listing-title">V-Sekai Changelog - September 2024</a>
+</td>
+
+</tr>
+
+<tr data-index="29" data-listing-file-modified-sort="1748504583956" data-listing-reading-time-sort="2" data-listing-word-count-sort="274" data-listing-title-sort="V-Sekai Changelog - July 2024" data-listing-filename-sort="20240701-changelog.md">
+<td>
+<a href="./changelog/2024/20240701-changelog.html" class="title listing-title">V-Sekai Changelog - July 2024</a>
+</td>
+
+</tr>
+
+<tr data-index="30" data-listing-file-modified-sort="1748504583956" data-listing-reading-time-sort="2" data-listing-word-count-sort="290" data-listing-title-sort="Special Notice: V-Sekai 2023-2024" data-listing-filename-sort="20240625-changelog.md">
+<td>
+<a href="./changelog/2024/20240625-changelog.html" class="title listing-title">Special Notice: V-Sekai 2023-2024</a>
+</td>
+
+</tr>
+
+<tr data-index="31" data-listing-file-modified-sort="1748504583956" data-listing-reading-time-sort="2" data-listing-word-count-sort="212" data-listing-title-sort="V-Sekai Changelog - June 2024" data-listing-filename-sort="20240603-changelog.md">
+<td>
+<a href="./changelog/2024/20240603-changelog.html" class="title listing-title">V-Sekai Changelog - June 2024</a>
+</td>
+
+</tr>
+
+<tr data-index="32" data-listing-file-modified-sort="1748504583956" data-listing-reading-time-sort="1" data-listing-word-count-sort="84" data-listing-title-sort="V-Sekai Changelog - May 2024" data-listing-filename-sort="20240505-changelog.md">
+<td>
+<a href="./changelog/2024/20240505-changelog.html" class="title listing-title">V-Sekai Changelog - May 2024</a>
+</td>
+
+</tr>
+
+<tr data-index="33" data-listing-file-modified-sort="1748504583956" data-listing-reading-time-sort="1" data-listing-word-count-sort="82" data-listing-title-sort="V-Sekai Changelog - March 2024" data-listing-filename-sort="20240330-changelog.md">
+<td>
+<a href="./changelog/2024/20240330-changelog.html" class="title listing-title">V-Sekai Changelog - March 2024</a>
+</td>
+
+</tr>
+
+<tr data-index="34" data-listing-file-modified-sort="1748504583956" data-listing-reading-time-sort="2" data-listing-word-count-sort="343" data-listing-title-sort="V-Sekai Changelog - February 2024" data-listing-filename-sort="20240202-changelog.md">
+<td>
+<a href="./changelog/2024/20240202-changelog.html" class="title listing-title">V-Sekai Changelog - February 2024</a>
+</td>
+
+</tr>
+
+<tr data-index="35" data-listing-file-modified-sort="1748504583956" data-listing-reading-time-sort="1" data-listing-word-count-sort="71" data-listing-title-sort="V-Sekai Changelog - January 2024" data-listing-filename-sort="20240101-changelog.md">
+<td>
+<a href="./changelog/2024/20240101-changelog.html" class="title listing-title">V-Sekai Changelog - January 2024</a>
+</td>
+
+</tr>
+
+<tr data-index="36" data-listing-file-modified-sort="1748504583956" data-listing-reading-time-sort="1" data-listing-word-count-sort="198" data-listing-title-sort="V-Sekai Changelog - December 2023" data-listing-filename-sort="20231207-changelog.md">
+<td>
+<a href="./changelog/2023/20231207-changelog.html" class="title listing-title">V-Sekai Changelog - December 2023</a>
+</td>
+
+</tr>
+
+<tr data-index="37" data-listing-file-modified-sort="1748504583956" data-listing-reading-time-sort="3" data-listing-word-count-sort="494" data-listing-title-sort="V-Sekai Changelog - November 2023" data-listing-filename-sort="20231109-changelog.md">
+<td>
+<a href="./changelog/2023/20231109-changelog.html" class="title listing-title">V-Sekai Changelog - November 2023</a>
+</td>
+
+</tr>
+
+<tr data-index="38" data-listing-file-modified-sort="1748504583956" data-listing-reading-time-sort="2" data-listing-word-count-sort="260" data-listing-title-sort="V-Sekai Changelog - October 2023" data-listing-filename-sort="20231001-changelog.md">
+<td>
+<a href="./changelog/2023/20231001-changelog.html" class="title listing-title">V-Sekai Changelog - October 2023</a>
+</td>
+
+</tr>
+
+<tr data-index="39" data-listing-file-modified-sort="1748504583956" data-listing-reading-time-sort="2" data-listing-word-count-sort="305" data-listing-title-sort="V-Sekai Changelog - September 2023" data-listing-filename-sort="20230901-changelog.md">
+<td>
+<a href="./changelog/2023/20230901-changelog.html" class="title listing-title">V-Sekai Changelog - September 2023</a>
+</td>
+
+</tr>
+
+<tr data-index="40" data-listing-file-modified-sort="1748504583956" data-listing-reading-time-sort="3" data-listing-word-count-sort="476" data-listing-title-sort="V-Sekai Changelog - August 2023" data-listing-filename-sort="20230801-changelog.md">
+<td>
+<a href="./changelog/2023/20230801-changelog.html" class="title listing-title">V-Sekai Changelog - August 2023</a>
+</td>
+
+</tr>
+
+<tr data-index="41" data-listing-file-modified-sort="1748504583956" data-listing-reading-time-sort="1" data-listing-word-count-sort="173" data-listing-title-sort="V-Sekai Changelog - July 2023" data-listing-filename-sort="20230701-changelog.md">
+<td>
+<a href="./changelog/2023/20230701-changelog.html" class="title listing-title">V-Sekai Changelog - July 2023</a>
+</td>
+
+</tr>
+
+<tr data-index="42" data-listing-file-modified-sort="1748504583956" data-listing-reading-time-sort="4" data-listing-word-count-sort="629" data-listing-title-sort="V-Sekai Changelog - 2023-06" data-listing-filename-sort="20230601-changelog.md">
+<td>
+<a href="./changelog/2023/20230601-changelog.html" class="title listing-title">V-Sekai Changelog - 2023-06</a>
+</td>
+
+</tr>
+
+<tr data-index="43" data-listing-file-modified-sort="1748504583956" data-listing-reading-time-sort="2" data-listing-word-count-sort="300" data-listing-title-sort="V-Sekai Changelog - 2023-05" data-listing-filename-sort="20230501-changelog.md">
+<td>
+<a href="./changelog/2023/20230501-changelog.html" class="title listing-title">V-Sekai Changelog - 2023-05</a>
+</td>
+
+</tr>
+
+<tr data-index="44" data-listing-file-modified-sort="1748504583956" data-listing-reading-time-sort="7" data-listing-word-count-sort="1376" data-listing-title-sort="V-Sekai Changelog - 2023-03" data-listing-filename-sort="20230301-changelog.md">
+<td>
+<a href="./changelog/2023/20230301-changelog.html" class="title listing-title">V-Sekai Changelog - 2023-03</a>
+</td>
+
+</tr>
+
+<tr data-index="45" data-listing-file-modified-sort="1748504583956" data-listing-reading-time-sort="1" data-listing-word-count-sort="134" data-listing-title-sort="V-Sekai Changelog - 2023-02" data-listing-filename-sort="20230201-changelog.md">
+<td>
+<a href="./changelog/2023/20230201-changelog.html" class="title listing-title">V-Sekai Changelog - 2023-02</a>
+</td>
+
+</tr>
+
+<tr data-index="46" data-listing-file-modified-sort="1748504583956" data-listing-reading-time-sort="1" data-listing-word-count-sort="7" data-listing-title-sort="V-Sekai Changelog - 2023-01" data-listing-filename-sort="20230101-changelog.md">
+<td>
+<a href="./changelog/2023/20230101-changelog.html" class="title listing-title">V-Sekai Changelog - 2023-01</a>
+</td>
+
+</tr>
+
+<tr data-index="47" data-listing-file-modified-sort="1748504583956" data-listing-reading-time-sort="2" data-listing-word-count-sort="230" data-listing-title-sort="V-Sekai Changelog - 2022-12" data-listing-filename-sort="20221201-changelog.md">
+<td>
+<a href="./changelog/2022/20221201-changelog.html" class="title listing-title">V-Sekai Changelog - 2022-12</a>
+</td>
+
+</tr>
+
+<tr data-index="48" data-listing-file-modified-sort="1748504583956" data-listing-reading-time-sort="2" data-listing-word-count-sort="267" data-listing-title-sort="V-Sekai Changelog - 2022-11" data-listing-filename-sort="20221101-changelog.md">
+<td>
+<a href="./changelog/2022/20221101-changelog.html" class="title listing-title">V-Sekai Changelog - 2022-11</a>
+</td>
+
+</tr>
+
+<tr data-index="49" data-listing-file-modified-sort="1748504583956" data-listing-reading-time-sort="8" data-listing-word-count-sort="1452" data-listing-title-sort="V-Sekai Changelog - 2022-10" data-listing-filename-sort="20221001-changelog.md">
+<td>
+<a href="./changelog/2022/20221001-changelog.html" class="title listing-title">V-Sekai Changelog - 2022-10</a>
+</td>
+
+</tr>
+
+<tr data-index="50" data-listing-file-modified-sort="1748504583956" data-listing-reading-time-sort="1" data-listing-word-count-sort="162" data-listing-title-sort="V-Sekai Changelog - 2022-09" data-listing-filename-sort="20220901-changelog.md">
+<td>
+<a href="./changelog/2022/20220901-changelog.html" class="title listing-title">V-Sekai Changelog - 2022-09</a>
+</td>
+
+</tr>
+
+<tr data-index="51" data-listing-file-modified-sort="1748504583955" data-listing-reading-time-sort="1" data-listing-word-count-sort="77" data-listing-title-sort="V-Sekai Changelog - 2022-08" data-listing-filename-sort="20220801-changelog.md">
+<td>
+<a href="./changelog/2022/20220801-changelog.html" class="title listing-title">V-Sekai Changelog - 2022-08</a>
+</td>
+
+</tr>
+
+<tr data-index="52" data-listing-file-modified-sort="1748504583955" data-listing-reading-time-sort="3" data-listing-word-count-sort="427" data-listing-title-sort="V-Sekai Changelog - 2022-06" data-listing-filename-sort="20220601-changelog.md">
+<td>
+<a href="./changelog/2022/20220601-changelog.html" class="title listing-title">V-Sekai Changelog - 2022-06</a>
+</td>
+
+</tr>
+
+<tr data-index="53" data-listing-file-modified-sort="1748504583955" data-listing-reading-time-sort="1" data-listing-word-count-sort="115" data-listing-title-sort="V-Sekai Changelog - 2022-05" data-listing-filename-sort="20220501-changelog.md">
+<td>
+<a href="./changelog/2022/20220501-changelog.html" class="title listing-title">V-Sekai Changelog - 2022-05</a>
+</td>
+
+</tr>
+
+<tr data-index="54" data-listing-file-modified-sort="1748504583955" data-listing-reading-time-sort="3" data-listing-word-count-sort="459" data-listing-title-sort="V-Sekai Changelog - 2022-04" data-listing-filename-sort="20220401-changelog.md">
+<td>
+<a href="./changelog/2022/20220401-changelog.html" class="title listing-title">V-Sekai Changelog - 2022-04</a>
+</td>
+
+</tr>
+
+<tr data-index="55" data-listing-file-modified-sort="1748504583955" data-listing-reading-time-sort="2" data-listing-word-count-sort="227" data-listing-title-sort="V-Sekai Changelog - 2022-03" data-listing-filename-sort="20220301-changelog.md">
+<td>
+<a href="./changelog/2022/20220301-changelog.html" class="title listing-title">V-Sekai Changelog - 2022-03</a>
+</td>
+
+</tr>
+
+<tr data-index="56" data-listing-file-modified-sort="1748504583955" data-listing-reading-time-sort="1" data-listing-word-count-sort="152" data-listing-title-sort="V-Sekai Changelog - 2022-02" data-listing-filename-sort="20220201-changelog.md">
+<td>
+<a href="./changelog/2022/20220201-changelog.html" class="title listing-title">V-Sekai Changelog - 2022-02</a>
+</td>
+
+</tr>
+
+<tr data-index="57" data-listing-file-modified-sort="1748504583955" data-listing-reading-time-sort="1" data-listing-word-count-sort="79" data-listing-title-sort="V-Sekai Changelog - 2022-01" data-listing-filename-sort="20220101-changelog.md">
+<td>
+<a href="./changelog/2022/20220101-changelog.html" class="title listing-title">V-Sekai Changelog - 2022-01</a>
+</td>
+
+</tr>
+
+<tr data-index="58" data-listing-file-modified-sort="1748504583955" data-listing-reading-time-sort="2" data-listing-word-count-sort="354" data-listing-title-sort="V-Sekai Changelog - 2021-11" data-listing-filename-sort="20211101-changelog.md">
+<td>
+<a href="./changelog/2021/20211101-changelog.html" class="title listing-title">V-Sekai Changelog - 2021-11</a>
+</td>
+
+</tr>
+
+<tr data-index="59" data-listing-file-modified-sort="1748504583955" data-listing-reading-time-sort="8" data-listing-word-count-sort="1453" data-listing-title-sort="V-Sekai Changelog - 2021-10" data-listing-filename-sort="20211001-changelog.md">
+<td>
+<a href="./changelog/2021/20211001-changelog.html" class="title listing-title">V-Sekai Changelog - 2021-10</a>
+</td>
+
+</tr>
+
+<tr data-index="60" data-listing-file-modified-sort="1748504583955" data-listing-reading-time-sort="10" data-listing-word-count-sort="1894" data-listing-title-sort="V-Sekai Changelog - 2021-09" data-listing-filename-sort="20210901-changelog.md">
+<td>
+<a href="./changelog/2021/20210901-changelog.html" class="title listing-title">V-Sekai Changelog - 2021-09</a>
+</td>
+
+</tr>
+
+<tr data-index="61" data-listing-file-modified-sort="1748504583955" data-listing-reading-time-sort="5" data-listing-word-count-sort="911" data-listing-title-sort="V-Sekai Changelog - 2021-08" data-listing-filename-sort="20210801-changelog.md">
+<td>
+<a href="./changelog/2021/20210801-changelog.html" class="title listing-title">V-Sekai Changelog - 2021-08</a>
+</td>
+
+</tr>
+
+<tr data-index="62" data-listing-file-modified-sort="1748504583955" data-listing-reading-time-sort="6" data-listing-word-count-sort="1026" data-listing-title-sort="V-Sekai Changelog - 2021-07" data-listing-filename-sort="20210701-changelog.md">
+<td>
+<a href="./changelog/2021/20210701-changelog.html" class="title listing-title">V-Sekai Changelog - 2021-07</a>
+</td>
+
+</tr>
+
+<tr data-index="63" data-listing-file-modified-sort="1748504583955" data-listing-reading-time-sort="10" data-listing-word-count-sort="1961" data-listing-title-sort="V-Sekai Changelog - 2021-06" data-listing-filename-sort="20210601-changelog.md">
+<td>
+<a href="./changelog/2021/20210601-changelog.html" class="title listing-title">V-Sekai Changelog - 2021-06</a>
+</td>
+
+</tr>
+
+<tr data-index="64" data-listing-file-modified-sort="1748504583955" data-listing-reading-time-sort="18" data-listing-word-count-sort="3494" data-listing-title-sort="V-Sekai Changelog - 2021-05" data-listing-filename-sort="20210501-changelog.md">
+<td>
+<a href="./changelog/2021/20210501-changelog.html" class="title listing-title">V-Sekai Changelog - 2021-05</a>
+</td>
+
+</tr>
+
+<tr data-index="65" data-listing-file-modified-sort="1748504583955" data-listing-reading-time-sort="2" data-listing-word-count-sort="357" data-listing-title-sort="V-Sekai Changelog - 2021-04" data-listing-filename-sort="20210401-changelog.md">
+<td>
+<a href="./changelog/2021/20210401-changelog.html" class="title listing-title">V-Sekai Changelog - 2021-04</a>
+</td>
+
+</tr>
+
+</tbody>
+</table>
+<div class="listing-no-matching d-none">No matching items</div>
+<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

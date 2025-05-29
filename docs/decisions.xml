@@ -1,0 +1,3516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>V-Sekai - Manuals</title>
+<link>https://v-sekai.github.io/manuals/decisions.html</link>
+<atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.7.31</generator>
+<lastBuildDate>Thu, 29 May 2025 07:43:58 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="proposal-title" class="level1">
+<h1>[Proposal Title]</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>[Provide the background and context for this proposal. Explain the circumstances that led to this decision being necessary.]</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>[Clearly state the problem this proposal aims to solve. What specific issue, limitation, or opportunity are we addressing?]</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>[Detail the proposed solution. Use code snippets, pseudo-code, diagrams, or mock-ups as needed to illustrate how it will function.]</p>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>[List the advantages of implementing this proposal. How will it improve the project, product, or process?]</p>
+<ul>
+<li>Benefit 1</li>
+<li>Benefit 2</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>[List the potential disadvantages, risks, or costs associated with this proposal.]</p>
+<ul>
+<li>Downside 1</li>
+<li>Downside 2</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>[Describe alternative solutions that were considered but rejected. Explain why this proposal was chosen over the alternatives.]</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>[Are there any less common scenarios or edge cases where this proposal might apply or behave differently?]</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>[Confirm if this feature is considered core functionality and will be implemented by the core team.]</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Deprecated <!-- Options: Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by [Link/Reference] --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>[List the names or roles of the individuals responsible for making the final decision.]</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>[Add relevant tags, e.g., V-Sekai, UI, Networking]</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<p>[Include links to relevant documentation, research papers, related issues, or other resources.]</p>
+<ol type="1">
+<li><a href="URL">Link Title 1</a></li>
+<li><a href="URL">Link Title 2</a></li>
+</ol>
+<hr>
+<p><em>(Optional: Add a section for defining jargon if needed)</em></p>
+<section id="game-development-jargon" class="level3">
+<h3 class="anchored" data-anchor-id="game-development-jargon">Game Development Jargon</h3>
+<ol type="1">
+<li><strong>Term 1</strong>: Definition</li>
+<li><strong>Term 2</strong>: Definition</li>
+</ol>
+
+
+</section>
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
+  <pubDate>Thu, 29 May 2025 07:43:58 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20250427-system-cockroachdb-setup.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="draft-cockroachdb-v22.1-systemd-service-setup" class="level1">
+<h1>Draft: CockroachDB v22.1 Systemd Service Setup</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>CockroachDB provides a resilient and scalable SQL database solution suitable for backend services. For reliable operation within the V-Sekai infrastructure, managing CockroachDB (specifically version 22.1 as used in our stack) via systemd ensures consistent startup, monitoring, and recovery.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Manually starting, stopping, and configuring a secure CockroachDB cluster node is cumbersome and prone to error. Without systemd management, the database process won’t automatically restart on failure or system reboot, and applying security configurations consistently becomes challenging.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>This proposal outlines setting up a single CockroachDB v22.1 node as a secure systemd service on Linux.</p>
+<p><strong>1. Installation:</strong> Download the CockroachDB v22.1 binary and place it in <code>/usr/local/bin/</code>.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Download and extract</span></span>
+<span id="cb1-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">curl</span> https://github.com/V-Sekai/cockroach/releases/download/v22.1.64b21683521d9a8735ad/cockroach-v22.1.64b21683521d9a8735ad.linux-amd64.tgz <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tar</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-xz</span></span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> cp <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-i</span> cockroach-v22.1.linux-amd64/cockroach /usr/local/bin/</span>
+<span id="cb1-4"></span>
+<span id="cb1-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Optional: Install spatial libraries (if needed)</span></span>
+<span id="cb1-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mkdir</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-p</span> /usr/local/lib/cockroach</span>
+<span id="cb1-7"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> cp <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-i</span> cockroach-v22.1.linux-amd64/lib/libgeos.so /usr/local/lib/cockroach/</span>
+<span id="cb1-8"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> cp <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-i</span> cockroach-v22.1.linux-amd64/lib/libgeos_c.so /usr/local/lib/cockroach/</span></code></pre></div>
+<p><strong>2. Security Setup:</strong> Generate CA, node, and client certificates. Store them in a secure directory (e.g., <code>/var/lib/cockroach/certs</code>). Ensure appropriate permissions.</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create directories</span></span>
+<span id="cb2-2"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">DATA_DIR</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"/var/lib/cockroach"</span></span>
+<span id="cb2-3"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">CERT_DIR</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${DATA_DIR}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">/certs"</span></span>
+<span id="cb2-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> mkdir <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-p</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${CERT_DIR}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span></span>
+<span id="cb2-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> chown <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-R</span> cockroach:cockroach <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${DATA_DIR}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Assuming a 'cockroach' user/group exists</span></span>
+<span id="cb2-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> chmod 700 <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${DATA_DIR}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span></span>
+<span id="cb2-7"></span>
+<span id="cb2-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Generate Certs (run as cockroach user or adjust permissions after)</span></span>
+<span id="cb2-9"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">cockroach</span> cert create-ca <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--certs-dir</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${CERT_DIR}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--ca-key</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${CERT_DIR}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">/ca.key"</span></span>
+<span id="cb2-10"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">cockroach</span> cert create-node localhost <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$(</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">hostname</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-f</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">)</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--certs-dir</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${CERT_DIR}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--ca-key</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${CERT_DIR}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">/ca.key"</span></span>
+<span id="cb2-11"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">cockroach</span> cert create-client root <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--certs-dir</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${CERT_DIR}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--ca-key</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${CERT_DIR}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">/ca.key"</span></span></code></pre></div>
+<p><strong>3. Systemd Service:</strong> Create a systemd unit file <code>/etc/systemd/system/cockroachdb.service</code>.</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># File: /etc/systemd/system/cockroachdb.service</span></span>
+<span id="cb3-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">[Unit]</span></span>
+<span id="cb3-3"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">Description</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">CockroachDB Single-Node SQL Database Server</span></span>
+<span id="cb3-4"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">After</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">network.target</span></span>
+<span id="cb3-5"></span>
+<span id="cb3-6"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">[Service]</span></span>
+<span id="cb3-7"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">User</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">cockroach</span></span>
+<span id="cb3-8"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">Group</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">cockroach</span></span>
+<span id="cb3-9"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">WorkingDirectory</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">/var/lib/cockroach</span></span>
+<span id="cb3-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># For a single-node setup:</span></span>
+<span id="cb3-11"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">ExecStart</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">/usr/local/bin/cockroach start-single-node \</span></span>
+<span id="cb3-12"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">    --certs-dir</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">/var/lib/cockroach/certs \</span></span>
+<span id="cb3-13"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">    --store</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">/var/lib/cockroach/data \</span></span>
+<span id="cb3-14"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">    --listen-addr</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">0.0.0.0:26257 \</span></span>
+<span id="cb3-15"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">    --http-addr</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">0.0.0.0:8080 \</span></span>
+<span id="cb3-16"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">    --cache</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">.25 \</span></span>
+<span id="cb3-17"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">    --max-sql-memory</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">.25</span></span>
+<span id="cb3-18"></span>
+<span id="cb3-19"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># For a multi-node cluster setup, replace ExecStart with:</span></span>
+<span id="cb3-20"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ExecStart=/usr/local/bin/cockroach start \</span></span>
+<span id="cb3-21"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#     --certs-dir=/var/lib/cockroach/certs \</span></span>
+<span id="cb3-22"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#     --store=/var/lib/cockroach/data \</span></span>
+<span id="cb3-23"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#     --listen-addr=0.0.0.0:26257 \</span></span>
+<span id="cb3-24"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#     --http-addr=0.0.0.0:8080 \</span></span>
+<span id="cb3-25"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#     --join=&lt;node1-ip&gt;:26257,&lt;node2-ip&gt;:26257,&lt;node3-ip&gt;:26257 \</span></span>
+<span id="cb3-26"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#     --cache=.25 \</span></span>
+<span id="cb3-27"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#     --max-sql-memory=.25</span></span>
+<span id="cb3-28"></span>
+<span id="cb3-29"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">TimeoutStopSec</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">60</span></span>
+<span id="cb3-30"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">Restart</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">always</span></span>
+<span id="cb3-31"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">RestartSec</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span></span>
+<span id="cb3-32"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">StandardOutput</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">syslog</span></span>
+<span id="cb3-33"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">StandardError</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">syslog</span></span>
+<span id="cb3-34"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">SyslogIdentifier</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">cockroachdb</span></span>
+<span id="cb3-35"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">LimitNOFILE</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1048576</span></span>
+<span id="cb3-36"></span>
+<span id="cb3-37"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">[Install]</span></span>
+<span id="cb3-38"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">WantedBy</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">multi-user.target</span></span></code></pre></div>
+<p><em>Note: The default <code>ExecStart</code> uses <code>cockroach start-single-node</code>. For a multi-node cluster, comment out the <code>start-single-node</code> command and uncomment/adjust the <code>cockroach start</code> command, ensuring the <code>--join</code> addresses are correct.</em> <em>Note: Create the <code>cockroach</code> user and group if they don’t exist.</em> <em>Note: Create the data directory <code>/var/lib/cockroach/data</code> and set ownership.</em></p>
+<p><strong>4. Enable &amp; Start:</strong></p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> systemctl daemon-reload</span>
+<span id="cb4-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> systemctl enable cockroachdb.service</span>
+<span id="cb4-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> systemctl start cockroachdb.service</span>
+<span id="cb4-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> systemctl status cockroachdb.service</span></code></pre></div>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li><strong>Reliability:</strong> Automated startup, restarts, and management via systemd.</li>
+<li><strong>Security:</strong> Enforces secure cluster communication using TLS certificates.</li>
+<li><strong>Consistency:</strong> Standardized setup across different machines.</li>
+<li><strong>Manageability:</strong> Easy to start, stop, check status using <code>systemctl</code>.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li><strong>Initial Complexity:</strong> Certificate generation and systemd unit file creation require careful setup.</li>
+<li><strong>Systemd Dependency:</strong> Relies on Linux distributions using systemd.</li>
+<li><strong>Configuration Management:</strong> Cluster join info and other flags need proper management.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<ul>
+<li><strong>Manual Execution:</strong> Running <code>cockroach start</code> manually in <code>screen</code> or <code>tmux</code> lacks robustness.</li>
+<li><strong>Docker/Kubernetes:</strong> While viable (#attachment), direct systemd integration is chosen for simplicity in specific VM-based scenarios.</li>
+<li><strong>Insecure Mode:</strong> Running without TLS certificates is not suitable for production or sensitive data.</li>
+</ul>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<ul>
+<li>Running temporary, insecure, single-node instances for quick local testing (<code>cockroach demo</code> or <code>cockroach start-single-node --insecure</code>).</li>
+</ul>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>Reliable database infrastructure is core to V-Sekai’s backend. This setup will be implemented and maintained by the infrastructure team.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai Development Team / Infrastructure Team</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>CockroachDB, Database, Systemd, Linux, Security, Infrastructure, v22.1</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://www.cockroachlabs.com/docs/v22.1/install-cockroachdb-linux.html">Install CockroachDB on Linux (v22.1)</a> (#attachment)</li>
+<li><a href="https://www.cockroachlabs.com/docs/v22.1/manual-deployment.html">CockroachDB Manual Deployment</a></li>
+<li><a href="https://www.cockroachlabs.com/docs/v22.1/cockroach-start.html">CockroachDB <code>start</code> command</a></li>
+<li><a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html">Systemd Service Unit Documentation</a></li>
+</ol>
+<hr>
+<section id="game-development-jargon" class="level3">
+<h3 class="anchored" data-anchor-id="game-development-jargon">Game Development Jargon</h3>
+<ol type="1">
+<li><strong>CockroachDB</strong>: A distributed SQL database designed for scalability and resilience.</li>
+<li><strong>Systemd</strong>: A system and service manager for Linux.</li>
+<li><strong>CA (Certificate Authority)</strong>: An entity that issues digital certificates.</li>
+<li><strong>TLS Certificate</strong>: A digital certificate used to establish secure communication channels (like HTTPS or secure database connections).</li>
+</ol>
+
+
+</section>
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20250427-system-cockroachdb-setup.html</guid>
+  <pubDate>Thu, 29 May 2025 07:43:58 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20250427-recommender-system.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="draft-phoenix-based-recommender-system-integration-using-flame" class="level1">
+<h1>Draft: Phoenix-Based Recommender System Integration (Using FLAME)</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context"><strong>Context</strong></h2>
+<p>V-Sekai requires a scalable recommendation system. The Elixir/Phoenix backend (uro) will integrate Python ML (<code>librecommender</code>) via <code>FLAME</code>. The core data flow involves <code>Oban</code> for job management, <code>Membrane</code> for stream processing, <code>Ecto</code> for database interaction with CockroachDB (CRDB), and <code>FLAME</code> as the bridge to run Python ML models.</p>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement"><strong>Problem Statement</strong></h2>
+<ol type="1">
+<li>Scalability limits of standalone Python recommendation serving.</li>
+<li>Inefficient user/item handling without specialized libraries or optimized serving.</li>
+<li>Complexity in managing Python processes and dependencies alongside an Elixir application.</li>
+</ol>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution"><strong>Proposed Solution</strong></h2>
+<p>Implement Elixir/Phoenix using <code>FLAME</code> to serve the <code>librecommender</code> model. Leverage <code>Ecto</code> for CRDB data mapping, <code>Oban</code> for background job processing (like model retraining triggers or batch predictions), and potentially <code>Membrane</code> for integrating recommendation calls into data streams.</p>
+<p><strong>Key Components:</strong></p>
+<ul>
+<li><strong>Phoenix/Ecto:</strong> Backend framework and database interaction layer with CRDB. Handles schemas and application logic.</li>
+<li><strong>Oban:</strong> Manages background jobs which can trigger processing, including interactions with FLAME services or data preparation.</li>
+<li><strong>Membrane:</strong> Used for stream-based processing pipelines. Could potentially feed data to or consume results from FLAME-served models.</li>
+<li><strong>FLAME:</strong> Manages the lifecycle and serving of the Python <code>librecommender</code> model, allowing Elixir processes to interact with it efficiently.</li>
+<li><strong>CockroachDB (CRDB):</strong> Persistent storage managed via Ecto.</li>
+</ul>
+</section>
+<section id="implementation-plan" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-plan"><strong>Implementation Plan</strong></h2>
+<ol type="1">
+<li><strong>Phase 1</strong>: Core Setup &amp; Basic Integration
+<ul>
+<li>Define Ecto schemas mapping to CRDB.</li>
+<li>Set up the <code>FLAME</code> environment and configure it to serve the <code>librecommender</code> model.</li>
+<li><strong>Stage 1</strong>: Implement Phoenix endpoints or Oban workers that make requests to the <code>librecommender</code> model served by <code>FLAME</code> and interact with CRDB via Ecto.</li>
+</ul></li>
+<li><strong>Phase 2</strong>: Advanced Integration &amp; Metadata
+<ul>
+<li>Develop Elixir client modules for interacting with the <code>FLAME</code>-served <code>librecommender</code>.</li>
+<li><strong>Stage 2</strong>: Explore integrating <code>FLAME</code> calls within Membrane pipelines (potentially triggered by Oban) for stream-based recommendations, storing results via Ecto in CRDB.</li>
+</ul></li>
+<li><strong>Validation</strong>:
+<ul>
+<li><strong>Success</strong>: &lt;500ms p99 latency for <code>FLAME</code> recommendation calls under expected load. Efficient resource utilization by FLAME runners.</li>
+<li><strong>Failure</strong>: &gt;5% errors during FLAME model inference OR significant performance bottlenecks under load.</li>
+</ul></li>
+</ol>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits"><strong>Benefits</strong></h2>
+<ul>
+<li>Leverages Elixir concurrency via Oban/Membrane and Phoenix.</li>
+<li>Utilizes Python ML (<code>librecommender</code>) via optimized serving with <code>FLAME</code>.</li>
+<li>Native Ecto/CRDB metadata querying.</li>
+<li>Simplified deployment and management of ML models compared to manual Python process management.</li>
+</ul>
+</section>
+<section id="risks" class="level2">
+<h2 class="anchored" data-anchor-id="risks"><strong>Risks</strong></h2>
+<ul>
+<li><code>FLAME</code> interop overhead (though likely optimized for ML workloads).</li>
+<li>Complexity in configuring and tuning <code>FLAME</code> runners.</li>
+<li>Deployment complexity (Elixir + Python dependencies managed by FLAME).</li>
+<li>Error handling between Elixir application and <code>FLAME</code> services.</li>
+</ul>
+</section>
+<section id="alternatives-considered" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-considered"><strong>Alternatives Considered</strong></h2>
+<ul>
+<li>Pure Python (Scalability issues)</li>
+<li>Pure Elixir (Lacks ML libraries)</li>
+<li>Elixir + Rustler (Higher complexity for ML tasks)</li>
+<li>Elixir + Pythonx (Less specialized for ML serving than FLAME)</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags"><strong>Tags</strong></h2>
+<ul>
+<li>ML</li>
+<li>Backend</li>
+<li>High Priority</li>
+<li>Python Integration</li>
+<li>Ecto</li>
+<li>Oban</li>
+<li>Membrane</li>
+<li>CockroachDB</li>
+<li>FLAME</li>
+</ul>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Accepted ## Decision Makers</p>
+<ul>
+<li>V-Sekai Team</li>
+</ul>
+</section>
+<section id="tags-1" class="level2">
+<h2 class="anchored" data-anchor-id="tags-1">Tags</h2>
+<ul>
+<li>V-Sekai</li>
+<li>Recommendation System</li>
+<li>Architecture</li>
+<li>Elixir</li>
+<li>Python</li>
+<li>FLAME</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://github.com/phoenixframework/flame">FLAME Documentation</a></li>
+<li><a href="URL_TO_LIBRECOMMENDER">librecommender Documentation (Placeholder - Add actual link if available)</a></li>
+<li><a href="https://getoban.pro/docs/stable/Oban.html">Oban Documentation</a></li>
+<li><a href="https://membraneframework.org/guide">Membrane Framework Documentation</a></li>
+<li><a href="https://hexdocs.pm/ecto/Ecto.html">Ecto Documentation</a></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20250427-recommender-system.html</guid>
+  <pubDate>Thu, 29 May 2025 07:43:58 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20250427-backpack.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="superceded-by-20250427-recommender-system.md-phoenix-based-recommender-system-integration-using-pythonx" class="level1">
+<h1>Superceded by &lt;20250427-recommender-system.md&gt;: Phoenix-Based Recommender System Integration (Using Pythonx)</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context"><strong>Context</strong></h2>
+<p>Godot Engine’s V-Sekai project requires a scalable recommendation system (200k+ user-items) with modern metadata handling. The current implementation does not exist. The decision to use standard Elixir Phoenix is driven by the fact that our backend (uro) is already implemented in Elixir, ensuring seamless integration and leveraging existing expertise. Integration with Python-based ML libraries like librecommender will be handled using pythonx.</p>
+<pre><code>┌────────────────────────────────────────────────────────────────────────────────┐
+│                V-Sekai Backpack (General Scene Processing)                     │
+├───────────────────────────┬───────────────────────────┬────────────────────────┤
+│      Scene Ingestion      │   Knowledge Integration   │    Model Serving       │
+│                           │                           │     (Pythonx/ONNX)     │
+│  [Oban.Job, Membrane]     │  [pythonx-&gt;librecommender]│  [object-detection]    │
+│                           │                           │  [keypoint-detection]  │
+│                           │                           │  [semantic             │
+│                           │                           │    segmentation]       │
+│                           │                           │  [image-to-image]      │
+│                           │                           │  [image-to-text]       │
+│                           │                           │  [text-to-speech]      │
+│                           │                           │  [speech-to-speech]    │
+│                           │                           │  [speech-to-text]      │
+│                           │                           │  [chain-of-thought]    │
+├───────────────────────────┼───────────────────────────┼────────────────────────┤
+│ - Godot Scene Upload      │ - JSON-LD Context Binding │ - Object Detection     │
+│ - Multi-Camera Processing │ - Object Ontology         │ - Keypoint Analysis    │
+│ - Oban Batch Insert       │ - librecommender ML       │ - Membrane Pipeline    │
+│ - Scene includes XMP      │   (via pythonx)           │                        │
+│   JSON-LD descriptions    │                           │                        │
+├───────────────────────────┴───────────────────────────┴────────────────────────┤
+│                          General Analysis Pipeline                             │
+│ ┌────────────────────────────────────────────────────────────────────────────┐ │
+│ │ Godot Client → [Oban.Worker] → Membrane Pipeline → [pythonx call] → CRDB   │ │
+│ │      │               │               │                   │                 │ │
+│ │      ▼               ▼               ▼                   ▼                 │ │
+│ │  Raw Scene     View Params     Keypoint Vectors     Object Detection       │ │
+│ │              (Membrane       (YOLO-NAS-POSE)      (RF-DETR +               │ │
+│ │               Filter)                               librecommender)        │ │
+│ └─────────────────────────────────┬─────────────────────┬────────────────────┘ │
+├───────────────────────────────────┼─────────────────────┼──────────────────────┤
+│          General Storage          │                     │                      │
+│ ┌───────────────────────┐ ┌───────┴───────┐ ┌───────────┴───────────┐          │
+│ │ Scene Metadata        │ │ Detection     │ │ Keypoint Graph        │          │
+│ │ ∘ Camera Calibration  │ │ Results       │ │ ∘ Vector Embeddings   │          │
+│ │ ∘ Oban Job States     │ │ ∘ JSON-LD     │ │ ∘ Kinematic Chains    │          │
+│ └──────────┬────────────┘ └───────┬───────┘ └───────────┬───────────┘          │
+│            │                      │                     │                      │
+│            └───────────┬──────────┴─────────┬───────────┘                      │
+├────────────────────────┼────────────────────┼──────────────────────────────────┤
+│       Analytics        │   Query Services   │         Integration              │
+│ ┌──────────────────────▼───────────┐ ┌──────▼─────────────┐ ┌────────────────┐ │
+│ │ Detection Metrics                │ │ Vector Similarity  │ │ Avatar         | |
+| |                                  | |                    | |   Control      │ │
+│ │ ∘ Oban Job Stats                 │ │ ∘ librecommender   │ │ ∘ Membrane     | |
+| | ∘ Membrane Throughput            | |   KNN Search       | |     Stream     │ │
+│ │ ∘ Oban web                       │ │     (via pythonx)  │ │ ∘ pythonx      | |
+| | ∘ Oban metrics                   | |                    | |     call       │ │
+│ └──────────────────────────────────┘ └────────────────────┘ └────────────────┘ │
+├────────────────────────────────────────────────────────────────────────────────┤
+│ Manages user authentication, authorization, and access control policies        │
+│ to ensure secure system interactions and data privacy compliance               │
+├────────────────────────────────────────────────────────────────────────────────┤
+│ Dynamically adjusts processing parameters based on environmental inputs        │
+│ and contextual awareness for optimal performance across variable conditions    │
+├────────────────────────────────────────────────────────────────────────────────┤
+│ Orchestrates allocation and prioritization of computational resources          │
+│ across distributed components to maintain quality-of-service objectives        │
+├────────────────────────────────────────────────────────────────────────────────┤
+│ Synchronizes data flows and task execution between pipeline stages             │
+│ through distributed scheduling and workflow management                         │
+├────────────────────────────────────────────────────────────────────────────────┤
+│ Implements self-contained processing modules with nested hierarchies           │
+│ for recursive task decomposition and scalable architecture                     │
+└────────────────────────────────────────────────────────────────────────────────┘</code></pre>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement"><strong>Problem Statement</strong></h2>
+<ol type="1">
+<li>Scalability bottlenecks in Python-based recommendation serving when run standalone.</li>
+<li>Inefficient user/item bag management if handled purely in Elixir without optimized libraries.</li>
+<li>Missing JSON-LD attribute compatibility layer for recommendation metadata.</li>
+</ol>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution"><strong>Proposed Solution</strong></h2>
+<p>Implement standard Elixir Phoenix framework integrated with Python’s librecommender via the pythonx library, featuring:<br>
+<strong>Implementation Steps</strong>:</p>
+<ol type="1">
+<li>Create Phoenix context and schemas for recommendation entities.</li>
+<li>Implement Elixir functions that use pythonx to call librecommender’s bag operations and recommendation algorithms.</li>
+<li>Add JSON-LD context annotation layer within Phoenix/Ecto schemas.</li>
+<li>Support both item-item and user-item recommendation algorithms by calling the appropriate Python functions.</li>
+</ol>
+</section>
+<section id="implementation-plan" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-plan"><strong>Implementation Plan</strong></h2>
+<ol type="1">
+<li><strong>Phase 1</strong>: Phoenix Core &amp; Pythonx Setup
+<ul>
+<li>Port uro entity relationships to Phoenix/Ecto schemas.</li>
+<li>Set up pythonx and configure the Python environment.</li>
+<li>Develop basic pythonx integration tests calling simple Python functions.</li>
+<li><strong>Stage 1</strong>: Implement Oban workers that directly call librecommender functions via pythonx for initial testing and simple workflows.</li>
+</ul></li>
+<li><strong>Phase 2</strong>: Recommender Bridge &amp; Membrane Integration
+<ul>
+<li>Implement the Elixir protocol/interface for calling librecommender’s core recommendation logic via pythonx.</li>
+<li>Map JSON-LD attributes within Ecto schemas or dedicated context modules.</li>
+<li><strong>Stage 2</strong>: Integrate pythonx calls within Membrane pipelines, potentially triggered by Oban jobs, for more complex, stream-based processing (e.g., analyzing scene data).</li>
+</ul></li>
+<li><strong>Validation</strong>:
+<ul>
+<li><strong>Success</strong>: &lt;500ms p99 inference latency for recommendation calls via pythonx.</li>
+<li><strong>Failure</strong>: &gt;5% data serialization errors between Elixir and Python OR significant performance degradation due to pythonx overhead compared to benchmarks.</li>
+</ul></li>
+</ol>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits"><strong>Benefits</strong></h2>
+<ul>
+<li>Leverages Elixir’s concurrency for handling recommendation requests.</li>
+<li>Utilizes mature Python ML ecosystem (librecommender) without rewriting algorithms.</li>
+<li>Native Ecto/Phoenix metadata queries.</li>
+<li>Future-proofed for Fediverse integration.</li>
+</ul>
+</section>
+<section id="risks" class="level2">
+<h2 class="anchored" data-anchor-id="risks"><strong>Risks</strong></h2>
+<ol type="1">
+<li><strong>Elixir-Python Interop Overhead</strong>: Performance impact of data serialization/deserialization between BEAM and Python using pythonx.</li>
+<li><strong>Python’s GIL</strong>: Potential concurrency limitations within the Python process called by pythonx, although Elixir’s concurrency can manage multiple external calls.</li>
+<li><strong>Deployment Complexity</strong>: Managing both Elixir and Python environments/dependencies in deployment.</li>
+<li><strong>Error Handling</strong>: Robustly handling errors originating from the Python side within Elixir.</li>
+<li><strong>JSON-LD Namespace Collisions</strong>: Ensuring consistent JSON-LD context handling.</li>
+</ol>
+</section>
+<section id="alternatives-considered" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-considered"><strong>Alternatives Considered</strong></h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 37%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Option</th>
+<th style="text-align: left;">Pros</th>
+<th style="text-align: left;">Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Pure Python</td>
+<td style="text-align: left;">Faster MVP, unified ML stack</td>
+<td style="text-align: left;">Limits backend scalability, concurrency</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pure Elixir</td>
+<td style="text-align: left;">Simpler stack, BEAM concurrency</td>
+<td style="text-align: left;">Lacks optimized ML algos, requires rewrite</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Elixir + Rustler</td>
+<td style="text-align: left;">Potentially highest performance NIF</td>
+<td style="text-align: left;">Rust dev complexity, NIF maintenance</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="when-to-avoid" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-avoid"><strong>When to Avoid</strong></h2>
+<p>Projects requiring simple recommendation needs (&lt;1k items), without complex backend orchestration needs, or where minimizing deployment complexity (avoiding Python runtime) is paramount.</p>
+</section>
+<section id="organizational-alignment" class="level2">
+<h2 class="anchored" data-anchor-id="organizational-alignment"><strong>Organizational Alignment</strong></h2>
+<p>Supports V-Sekai goals for UGC and fediverse interoperability by integrating advanced recommendations into the Elixir backend.</p>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags"><strong>Tags</strong></h2>
+<ul>
+<li>ML</li>
+<li>Backend</li>
+<li>High Priority</li>
+<li>Python Integration</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references"><strong>References</strong></h2>
+<ol type="1">
+<li><a href="https://www.phoenixframework.org/">Phoenix Framework</a></li>
+<li><a href="https://hexdocs.pm/pythonx/Pythonx.html">Pythonx Documentation</a></li>
+<li><a href="https://v-sekai.github.io/manuals/roadmap.html">V-Sekai Roadmap 2025</a></li>
+<li><a href="https://librecommender.readthedocs.io/en/latest/serving_guide/rust.html">Librecommender Serving Guide</a> (Note: We are using Python via pythonx, not the Rust serving directly)</li>
+<li><a href="https://arxiv.org/abs/1706.06978">Deep Interest Network for Click-Through Rate Prediction</a></li>
+<li><a href="https://hexdocs.pm/oban/Oban.html">Oban</a></li>
+<li><a href="https://membraneframework.org/">Membrane Framework</a></li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20250427-backpack.html</guid>
+  <pubDate>Thu, 29 May 2025 07:43:58 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20250421-tailscale-funnel.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="accepted-tailscale-funnel-system-level-service" class="level1">
+<h1>Accepted: Tailscale Funnel (System-Level Service)</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>Exposing virtual machines (VMs) to external networks securely and efficiently is a common requirement in development and production environments. Tailscale Funnel provides a simple and secure way to expose services running on a VM to the internet using Tailscale’s mesh VPN and authentication features. By leveraging systemd, we can manage Tailscale Funnel as a system-level service for consistent and reliable operation.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Currently, exposing VMs to external networks often involves complex configurations, such as setting up reverse proxies, managing firewall rules, or configuring NAT. These methods can be error-prone and require significant manual effort. Tailscale Funnel simplifies this process but needs to be integrated as a system-level service for ease of use and reliability.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>We propose creating a systemd service unit file to manage Tailscale Funnel for exposing a specific port (e.g., 8888) on a VM. The service will ensure that Tailscale Funnel starts automatically on boot and restarts on failure. Below is the systemd unit file configuration:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb1-1"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">File: /etc/systemd/system/tailscale-funnel.service</span></span>
+<span id="cb1-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">[Unit]</span></span>
+<span id="cb1-3"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">Description</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Tailscale Funnel for Port 8888</span></span>
+<span id="cb1-4"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">After</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">network.target tailscaled.service</span></span>
+<span id="cb1-5"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">Requires</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">tailscaled.service</span></span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">[Service]</span></span>
+<span id="cb1-8"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">Type</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">simple</span></span>
+<span id="cb1-9"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">ExecStart</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">/usr/bin/tailscale funnel 8888</span></span>
+<span id="cb1-10"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">Restart</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">on-failure</span></span>
+<span id="cb1-11"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">RestartSec</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">5s</span></span>
+<span id="cb1-12"></span>
+<span id="cb1-13"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">ExecStartPre</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">/bin/sleep 5</span></span>
+<span id="cb1-14"></span>
+<span id="cb1-15"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">[Install]</span></span>
+<span id="cb1-16"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">WantedBy</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">multi-user.target</span></span></code></pre></div>
+<p>Commands to enable and start the service:</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> systemctl daemon-reload</span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> systemctl enable <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--now</span> tailscale-funnel.service</span>
+<span id="cb2-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> systemctl status tailscale-funnel.service</span></code></pre></div>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li>Simplifies the process of exposing VMs to external networks.</li>
+<li>Provides a secure and authenticated connection using Tailscale.</li>
+<li>Ensures reliability with systemd’s restart and dependency management features.</li>
+<li>Reduces manual configuration effort for developers and system administrators.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li>Requires Tailscale to be installed and configured on the VM.</li>
+<li>Limited to environments where Tailscale is supported.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<ul>
+<li>Using traditional methods like reverse proxies or NAT configurations, which are more complex and less secure.</li>
+<li>Developing a custom solution for exposing VMs, which would require significant effort and maintenance.</li>
+</ul>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<ul>
+<li>Scenarios where the VM does not have internet access or cannot run Tailscale.</li>
+<li>Environments with strict network policies that do not allow Tailscale connections.</li>
+</ul>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>This proposal is core to improving the development and deployment workflow for V-Sekai. The implementation will be handled by the V-Sekai development team.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai Development Team</li>
+<li>fire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>Networking, Tailscale, Systemd, VM, Security</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://tailscale.com/kb/1132/tailscale-funnel/">Tailscale Funnel Documentation</a></li>
+<li><a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html">Systemd Service Unit Documentation</a></li>
+</ol>
+<hr>
+<section id="game-development-jargon" class="level3">
+<h3 class="anchored" data-anchor-id="game-development-jargon">Game Development Jargon</h3>
+<ol type="1">
+<li><strong>Tailscale</strong>: A mesh VPN service that simplifies secure networking between devices.</li>
+<li><strong>Systemd</strong>: A system and service manager for Linux operating systems.</li>
+<li><strong>Funnel</strong>: A Tailscale feature for exposing local services to the internet securely.</li>
+<li><strong>VM (Virtual Machine)</strong>: A software-based emulation of a physical computer.</li>
+</ol>
+
+
+</section>
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20250421-tailscale-funnel.html</guid>
+  <pubDate>Thu, 29 May 2025 07:43:58 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20250421-jupyter-notebook.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="accepted-jupyter-notebook-system-level-service" class="level1">
+<h1>Accepted: Jupyter Notebook (System-Level Service)</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>Running Jupyter Notebook as a system-level service ensures that it is always available and can be managed consistently using systemd. This is particularly useful for development environments where Jupyter Notebook is frequently used for data analysis, machine learning, or other tasks.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Manually starting Jupyter Notebook every time it is needed can be tedious and error-prone. Additionally, without a system-level service, there is no built-in mechanism to automatically restart the notebook server in case of failure or after a system reboot.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> dnf install <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-y</span> python3-notebook mathjax sscg python3-seaborn python3-lxml python3-basemap python3-scikit-image python3-scikit-learn python3-sympy python3-dask+dataframe python3-nltk</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mkdir</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-p</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$HOME</span>/.jupyter</span>
+<span id="cb1-3"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">jupyter</span> notebook password</span></code></pre></div>
+<p>We propose creating a systemd service unit file to manage Jupyter Notebook. The service will ensure that the notebook server starts automatically on boot, restarts on failure, and runs under a specified user account. Below is the systemd unit file configuration:</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb2-1"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">File: /etc/systemd/system/jupyter-notebook.service</span></span>
+<span id="cb2-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">[Unit]</span></span>
+<span id="cb2-3"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">Description</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Jupyter Notebook Service</span></span>
+<span id="cb2-4"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">After</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">network.target tailscale-funnel.service</span></span>
+<span id="cb2-5"></span>
+<span id="cb2-6"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">[Service]</span></span>
+<span id="cb2-7"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">User</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">&lt;username&gt;</span></span>
+<span id="cb2-8"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">ExecStart</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">/usr/bin/jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser</span></span>
+<span id="cb2-9"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">WorkingDirectory</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">/home/&lt;username&gt;/Documents/vsk-docker-python-notebook</span></span>
+<span id="cb2-10"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">Restart</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">always</span></span>
+<span id="cb2-11"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">RestartSec</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span></span>
+<span id="cb2-12"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">Environment</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">PYTHONUNBUFFERED=1</span></span>
+<span id="cb2-13"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">Environment</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"PATH=/home/&lt;username&gt;/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"</span></span>
+<span id="cb2-14"></span>
+<span id="cb2-15"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">[Install]</span></span>
+<span id="cb2-16"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">WantedBy</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">multi-user.target</span></span></code></pre></div>
+<p>Commands to enable and start the service:</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> systemctl daemon-reload</span>
+<span id="cb3-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> systemctl enable <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--now</span> jupyter-notebook.service</span>
+<span id="cb3-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</span></code></pre></div>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li>Automates the startup and management of Jupyter Notebook.</li>
+<li>Ensures the notebook server is always available after system reboots.</li>
+<li>Provides a consistent and reliable way to manage the notebook server using systemd.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li>Requires systemd, which is not available on all operating systems.</li>
+<li>The service must be configured with a specific user and working directory, which may require additional setup.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<ul>
+<li>Manually starting Jupyter Notebook each time it is needed.</li>
+<li>Using alternative tools or scripts to manage the notebook server, which may lack the robustness of systemd.</li>
+</ul>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<ul>
+<li>Scenarios where Jupyter Notebook is only needed occasionally and does not justify running as a persistent service.</li>
+<li>Environments where systemd is not available or supported.</li>
+</ul>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>This proposal is core to improving the development workflow for V-Sekai. The implementation will be handled by the V-Sekai development team.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai Development Team</li>
+<li>fire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>Jupyter, Systemd, Automation, Development, Linux</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://jupyter.org/documentation">Jupyter Notebook Documentation</a></li>
+<li><a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html">Systemd Service Unit Documentation</a></li>
+<li><a href="https://fedoramagazine.org/jupyter-and-data-science-in-fedora/" class="uri">https://fedoramagazine.org/jupyter-and-data-science-in-fedora/</a></li>
+</ol>
+<hr>
+<section id="game-development-jargon" class="level3">
+<h3 class="anchored" data-anchor-id="game-development-jargon">Game Development Jargon</h3>
+<ol type="1">
+<li><strong>Jupyter Notebook</strong>: An open-source web application that allows you to create and share documents that contain live code, equations, visualizations, and narrative text.</li>
+<li><strong>Systemd</strong>: A system and service manager for Linux operating systems.</li>
+</ol>
+
+
+</section>
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20250421-jupyter-notebook.html</guid>
+  <pubDate>Thu, 29 May 2025 07:43:58 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20250420-use-meta-simulator.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="accepted-adopt-metas-openxr-simulator-for-macos-development" class="level1">
+<h1>Accepted: Adopt Meta’s OpenXR Simulator for macOS Development</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>Developing and testing VR applications requires frequent interaction checks using VR hardware. For developers on macOS, connecting and using VR headsets like Meta Quest can sometimes be cumbersome or have limitations. Meta provides OpenXR simulation capabilities within its XR SDK for macOS, allowing testing of VR interactions directly on the desktop.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>VR development on macOS can be slowed down by the need to constantly switch to a physical headset for testing basic interactions. An efficient in-editor or desktop simulation tool could streamline this workflow.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>Utilize Meta’s native OpenXR simulation features available for macOS development. This allows running and testing V-Sekai (as an OpenXR application) directly on a Mac, simulating headset and controller input without needing to connect a physical headset for every minor change or interaction test.</p>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<ul>
+<li>Faster iteration cycles during development, especially for UI and interaction logic.</li>
+<li>Easier debugging of VR-specific code paths directly on the desktop.</li>
+<li>Improved accessibility for developers on macOS who may not have immediate access to VR hardware.</li>
+</ul>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li>Simulators may not perfectly replicate real-world hardware performance or tracking nuances.</li>
+<li>Potential performance overhead running the simulator alongside the game editor or application.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<ul>
+<li>Relying solely on physical hardware testing for all VR interactions.</li>
+<li>Developing a custom in-house VR simulator for Godot.</li>
+<li>Using other third-party simulation tools that might have different features or limitations.</li>
+</ul>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<ul>
+<li>Testing highly nuanced physics interactions that depend heavily on precise, real-world controller tracking data.</li>
+<li>Performance profiling that requires the exact overhead and timing of physical hardware.</li>
+<li>Verifying end-to-end user experience involving physical setup or room-scale movement.</li>
+</ul>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>Adopting efficient testing tools like the Meta OpenXR simulator is core to improving our development workflow. The investigation and potential integration/adoption will be handled by the V-Sekai development team.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai Development Team</li>
+<li>fire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>VR, Testing, macOS, Simulation, Meta, OpenXR, Godot</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://developer.oculus.com/documentation/">Meta XR SDK Documentation (General)</a></li>
+<li><a href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html">OpenXR Specification</a></li>
+<li><a href="https://developers.meta.com/horizon/documentation/unity/xrsim-intro/">Meta XR Simulator Introduction (Unity - provides context on simulation concepts)</a></li>
+</ol>
+<hr>
+<section id="game-development-jargon" class="level3">
+<h3 class="anchored" data-anchor-id="game-development-jargon">Game Development Jargon</h3>
+<ol type="1">
+<li><strong>XR Simulator</strong>: A tool that mimics the behavior of VR/AR hardware within a desktop development environment.</li>
+<li><strong>OpenXR</strong>: An open, royalty-free standard for access to virtual reality and augmented reality platforms and devices.</li>
+<li><strong>SDK (Software Development Kit)</strong>: A collection of software development tools in one installable package.</li>
+<li><strong>Iteration Cycle</strong>: The time taken to make a change, build the application, and test the result.</li>
+</ol>
+
+
+</section>
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20250420-use-meta-simulator.html</guid>
+  <pubDate>Thu, 29 May 2025 07:43:58 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20250416-backpack.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="superseded-by-20250427-backpack.md-phoenix-based-recommender-system-integration" class="level1">
+<h1>Superseded by &lt;20250427-backpack.md&gt;: Phoenix-Based Recommender System Integration</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>Godot Engine’s V-Sekai project requires a scalable recommendation system (200k+ user-items) with modern metadata handling. The current implementation does not exist. The decision to use standard Elixir Phoenix is driven by the fact that our backend (uro) is already implemented in Elixir, ensuring seamless integration and leveraging existing expertise.</p>
+<pre class="text"><code>┌────────────────────────────────────────────────────────────────────────────────┐
+│                V-Sekai Backpack (General Scene Processing)                     │
+├───────────────────────────┬───────────────────────────┬────────────────────────┤
+│      Scene Ingestion      │   Knowledge Integration   │    Model Serving       │
+│                           │                           │     (IREE/ONNX)        │
+│  [Oban.Job, Membrane]     │  [librecommender/Rustler] │  [object-detection]    │
+│                           │                           │  [keypoint-detection]  │
+│                           │                           │  [semantic             |
+│                           │                           │    segmentation]       |
+│                           │                           │  [image-to-image]      │
+│                           │                           │  [image-to-text]       │
+│                           │                           │  [text-to-speech]      │
+│                           │                           │  [speech-to-speech]    │
+│                           │                           │  [speech-to-text]      │
+│                           │                           │  [chain-of-thought]    │
+├───────────────────────────┼───────────────────────────┼────────────────────────┤
+│ - Godot Scene Upload      │ - JSON-LD Context Binding │ - Object Detection     │
+│ - Multi-Camera Processing │ - Object Ontology         │ - Keypoint Analysis    │
+│ - Oban Batch Insert       │ - librecommender ML       │ - Membrane Pipeline    │
+│ - Scene includes XMP      │                           │                        │
+│   JSON-LD descriptions    │                           │                        │
+├───────────────────────────┴───────────────────────────┴────────────────────────┤
+│                          General Analysis Pipeline                             │
+│ ┌────────────────────────────────────────────────────────────────────────────┐ │
+│ │ Godot Client → [Oban.Worker] → Membrane Pipeline → [Rustler NIF] → CRDB    │ │
+│ │   │               │               │                   │                    │ │
+│ │   ▼               ▼               ▼                   ▼                    │ │
+│ │ Raw Scene    View Params     Keypoint Vectors        Object Detection      │ │
+│ │              (Membrane       (YOLO-NAS-POSE)          (RF-DETR +           │ │
+│ │               Filter)                                   librecommender)    │ │
+│ └─────────────────────────────────┬─────────────────────┬────────────────────┘ │
+├───────────────────────────────────┼─────────────────────┼──────────────────────┤
+│          General Storage          │                     │                      │
+│ ┌───────────────────────┐ ┌───────┴───────┐ ┌───────────┴───────────┐          │
+│ │ Scene Metadata        │ │ Detection     │ │ Keypoint Graph        │          │
+│ │ ∘ Camera Calibration  │ │ Results       │ │ ∘ Vector Embeddings   │          │
+│ │ ∘ Oban Job States     │ │ ∘ JSON-LD     │ │ ∘ Kinematic Chains    │          │
+│ └───────┬───────────────┘ └───────┬───────┘ └───────────┬───────────┘          │
+│         │                         │                     │                      │
+│         └───────┬─────────────────┴─────────┬───────────┘                      │
+├─────────────────┼───────────────────────────┼──────────────────────────────────┤
+│    Analytics    │       Query Services      │         Integration              │
+│ ┌───────────────▼──────────────┐ ┌──────────▼───────────┐ ┌───────────────────┐│
+│ │ Detection Metrics            │ │ Vector Similarity    │ │ Avatar Control    ││
+│ │ ∘ Oban Job Stats             │ │ ∘ librecommender     │ │ ∘ Membrane Stream ││
+│ │ ∘ Membrane Throughput        │ │   KNN Search         │ │ ∘ Rustler NIF     ││
+│ │ ∘ Oban web                   │ │                      │ │                   ││
+│ │ ∘ Oban metrics               │ │                      │ │                   ││
+├────────────────────────────────────────────────────────────────────────────────┤
+│ Manages user authentication, authorization, and access control policies        │
+│ to ensure secure system interactions and data privacy compliance               │
+├────────────────────────────────────────────────────────────────────────────────┤
+│ Dynamically adjusts processing parameters based on environmental inputs        │
+│ and contextual awareness for optimal performance across variable conditions    │
+├────────────────────────────────────────────────────────────────────────────────┤
+│ Orchestrates allocation and prioritization of computational resources          │
+│ across distributed components to maintain quality-of-service objectives        │
+├────────────────────────────────────────────────────────────────────────────────┤
+│ Synchronizes data flows and task execution between pipeline stages             │
+│ through distributed scheduling and workflow management                         │
+├────────────────────────────────────────────────────────────────────────────────┤
+│ Implements self-contained processing modules with nested hierarchies           │
+│ for recursive task decomposition and scalable architecture                     │
+└────────────────────────────────────────────────────────────────────────────────┘</code></pre>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<ol type="1">
+<li>Scalability bottlenecks in Python-based recommendation serving</li>
+<li>Inefficient user/item bag management</li>
+<li>Missing JSON-LD attribute compatibility</li>
+</ol>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>Implement standard Elixir Phoenix framework with Rustler-based NIF integration for librecommender, featuring:</p>
+<p><strong>Implementation Steps</strong>:</p>
+<ol type="1">
+<li>Create Phoenix context and schemas for recommendation entities</li>
+<li>Implement NIFs for bag operations using Rustler</li>
+<li>Add JSON-LD context annotation layer</li>
+<li>Support both item-item and user-item recommendation algorithms</li>
+</ol>
+</section>
+<section id="implementation-plan" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-plan">Implementation Plan</h2>
+<ol type="1">
+<li><p><strong>Phase 1</strong>: Phoenix core setup</p>
+<ul>
+<li>Port uro entity relationships</li>
+<li>Rustler integration tests</li>
+</ul></li>
+<li><p><strong>Phase 2</strong>: Recommender bridge</p>
+<ul>
+<li>Implement protocol for librecommender</li>
+<li>JSON-LD attribute mapping</li>
+</ul></li>
+<li><p><strong>Validation</strong>:</p>
+<ul>
+<li>Success: &lt;500ms p99 inference latency</li>
+<li>Failure: &gt;5% data serialization errors</li>
+</ul></li>
+</ol>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<ul>
+<li>10x concurrent recommendation capacity</li>
+<li>Native Ecto/Phoenix metadata queries</li>
+<li>Future-proofed for Fediverse integration</li>
+</ul>
+</section>
+<section id="risks" class="level2">
+<h2 class="anchored" data-anchor-id="risks">Risks</h2>
+<ol type="1">
+<li>Rust-Elixir type conversion overhead</li>
+<li>NIF complexity</li>
+<li>JSON-LD namespace collisions</li>
+</ol>
+</section>
+<section id="alternatives-considered" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pure Python</td>
+<td>Faster MVP</td>
+<td>Limits scale</td>
+</tr>
+<tr class="even">
+<td>Pure Elixir</td>
+<td>Simpler stack</td>
+<td>Lacks optim algos</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="when-to-avoid" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-avoid">When to Avoid</h2>
+<p>Projects requiring simple recommendation needs (&lt;1k items) or without Rust ops support.</p>
+</section>
+<section id="organizational-alignment" class="level2">
+<h2 class="anchored" data-anchor-id="organizational-alignment">Organizational Alignment</h2>
+<p>Supports V-Sekai goals for UGC and fediverse interoperability.</p>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>ML</li>
+<li>Backend</li>
+<li>High Priority</li>
+</ul>
+</section>
+<section id="proposal-status" class="level2">
+<h2 class="anchored" data-anchor-id="proposal-status">Proposal Status</h2>
+<p>Status: Superseded by &lt;20250427-backpack.md&gt; <!-- Options: Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by [Link/Reference] --></p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li><a href="https://www.phoenixframework.org/">Phoenix Framework</a></li>
+<li><a href="https://github.com/rusterlium/rustler">Rustler 0.30 NIF guide</a></li>
+<li><a href="https://v-sekai.github.io/manuals/roadmap.html">V-Sekai Roadmap 2025</a></li>
+<li><a href="https://librecommender.readthedocs.io/en/latest/serving_guide/rust.html">Librecommender Serving Guide</a></li>
+<li><a href="https://arxiv.org/abs/1706.06978">Deep Interest Network for Click-Through Rate Prediction</a></li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20250416-backpack.html</guid>
+  <pubDate>Thu, 29 May 2025 07:43:58 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20250408-v-sekai-backpack.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="deprecated-ash-based-recommender-system-integration" class="level1">
+<h1>Deprecated: Ash-Based Recommender System Integration</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>Godot Engine’s V-Sekai project requires a scalable recommendation system (200k+ user-items) with modern metadata handling. The current implementation does not exist. The decision to use Ash is driven by the fact that our backend (uro) is already implemented in Elixir, ensuring seamless integration and leveraging existing expertise.</p>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<ol type="1">
+<li>Scalability bottlenecks in Python-based recommendation serving</li>
+<li>Inefficient user/item bag management</li>
+<li>Missing JSON-LD attribute compatibility</li>
+</ol>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>Implement Ash framework with Rustler-based NIF integration for librecommender.</p>
+<p><strong>Implementation Steps</strong>:</p>
+<ol type="1">
+<li>Create Ash resource DSL for recommendation entities</li>
+<li>Implement NIFs for bag operations using Rustler</li>
+<li>Add JSON-LD context annotation layer</li>
+<li>Support both item-item and user-item recommendation algorithms</li>
+</ol>
+</section>
+<section id="implementation-plan" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-plan">Implementation Plan</h2>
+<ol type="1">
+<li><strong>Phase 1</strong>: Ash core setup
+<ul>
+<li>Port uro entity relationships</li>
+<li>Rustler integration tests</li>
+</ul></li>
+<li><strong>Phase 2</strong>: Recommender bridge
+<ul>
+<li>Implement protocol for librecommender</li>
+<li>JSON-LD attribute mapping</li>
+</ul></li>
+<li><strong>Validation</strong>:
+<ul>
+<li>Success Criteria: &lt;500ms p99 inference latency</li>
+<li>Failure Threshold: &gt;5% data serialization errors</li>
+</ul></li>
+</ol>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<ul>
+<li>10x concurrent recommendation capacity</li>
+<li>Native Ecto/Ash metadata queries</li>
+<li>Future-proofed for Fediverse integration</li>
+</ul>
+</section>
+<section id="risks-and-limitations" class="level2">
+<h2 class="anchored" data-anchor-id="risks-and-limitations">Risks and Limitations</h2>
+<ul>
+<li>Rust-Elixir type conversion overhead</li>
+<li>NIF complexity</li>
+<li>JSON-LD namespace collisions</li>
+</ul>
+</section>
+<section id="alternatives-considered" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pure Python</td>
+<td>Faster MVP</td>
+<td>Limits scale</td>
+</tr>
+<tr class="even">
+<td>Pure Elixir</td>
+<td>Simpler stack</td>
+<td>Lacks optim algos</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="when-to-avoid-this-solution" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-avoid-this-solution">When to Avoid This Solution</h2>
+<p>Projects requiring simple recommendation needs (&lt;1k items) or without Rust ops support.</p>
+</section>
+<section id="organizational-alignment" class="level2">
+<h2 class="anchored" data-anchor-id="organizational-alignment">Organizational Alignment</h2>
+<p>Supports V-Sekai 2025 goals for UGC and fediverse interoperability.</p>
+</section>
+<section id="proposal-status" class="level2">
+<h2 class="anchored" data-anchor-id="proposal-status">Proposal Status</h2>
+<p>Status: Deprecated <!-- Options: Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by [Link/Reference] --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>Fire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>ML</li>
+<li>Backend</li>
+<li>High Priority</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li>Ash Framework <a href="https://ash-hq.org/" class="uri">https://ash-hq.org/</a></li>
+<li>Rustler 0.30 NIF guide <a href="https://github.com/rusterlium/rustler" class="uri">https://github.com/rusterlium/rustler</a></li>
+<li>V-Sekai Roadmap 2025 <a href="https://v-sekai.github.io/manuals/roadmap.html" class="uri">https://v-sekai.github.io/manuals/roadmap.html</a></li>
+<li>Librecommender Rust Serving Guide <a href="https://librecommender.readthedocs.io/en/latest/serving_guide/rust.html" class="uri">https://librecommender.readthedocs.io/en/latest/serving_guide/rust.html</a></li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20250408-v-sekai-backpack.html</guid>
+  <pubDate>Thu, 29 May 2025 07:43:58 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20250402-lip-sync-prototpe.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="proposed-lip-sync-to-facial-action-coding-system" class="level1">
+<h1>Proposed: Lip Sync to Facial Action Coding System</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>This proposal involves the development of a speech-to-FACS (Facial Action Coding System) mapping pipeline to capture real-world 3D facial movements synchronized with speech. Metrics include the accuracy of lip-sync, the diversity of speakers and phrases, and the scalability of the system. A robust speech-to-FACS mapping system can enhance virtual avatars, animation, and human-computer interaction. This proposal addresses the growing need for realistic virtual characters in industries like entertainment, education, and healthcare, making it timely and strategically relevant.</p>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>The primary issues causing operational challenges are:</p>
+<ol type="1">
+<li>Lack of a robust speech-to-FACS system for capturing 3D facial movements synchronized with speech.</li>
+<li>Difficulty in collecting diverse, high-quality training/validation data.</li>
+<li>Risk of overfitting to lab data and insufficient real-world noise augmentation.</li>
+</ol>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>A speech-to-FACS pipeline that maps speech to 3D facial movements using multimodal alignment and reinforcement learning. Key technical steps include:</p>
+<ul>
+<li>Converting FaceMotion3D blend shapes renderings with markers at vertex positions to Keypoint COCO JSON format.</li>
+<li>Leveraging “Accent Tag” phonetic-rich sentences for training.</li>
+<li>Aligning audio to FACS keypoints via a multimodal large language model.</li>
+<li>Applying reinforcement learning to generate speech matching COCO Full Body Face data from masked audio.</li>
+</ul>
+<p><strong>Implementation Steps</strong>:</p>
+<ol type="1">
+<li>Collect and preprocess data (blend shape conversion, speaker recordings).</li>
+<li>Train a multimodal model for audio-FACS alignment.</li>
+<li>Implement reinforcement learning for speech generation.</li>
+</ol>
+</section>
+<section id="implementation-plan" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-plan">Implementation Plan</h2>
+<ol type="1">
+<li><strong>Phase 1</strong>: Data Collection &amp; Preprocessing
+<ul>
+<li>Convert FaceMotion3D blend shapes to COCO JSON.</li>
+<li>Record diverse speakers performing phonetic-rich phrases.</li>
+</ul></li>
+<li><strong>Phase 2</strong>: Model Development &amp; Training
+<ul>
+<li>Train multimodal model for audio-to-FACS alignment.</li>
+<li>Develop reinforcement learning pipeline for masked audio matching.</li>
+</ul></li>
+<li><strong>Validation</strong>:
+<ul>
+<li>Success Criteria: High lip-sync accuracy (&gt;90%) and positive user study feedback.</li>
+<li>Failure Threshold: &lt;10% improvement in accuracy or negative user assessments.</li>
+</ul></li>
+</ol>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<ul>
+<li>Improved lip-sync accuracy for virtual avatars and animations.</li>
+<li>Enhanced user engagement in entertainment, education, and healthcare.</li>
+<li>Scalable data collection and model development processes.</li>
+</ul>
+</section>
+<section id="risks-and-limitations" class="level2">
+<h2 class="anchored" data-anchor-id="risks-and-limitations">Risks and Limitations</h2>
+<ul>
+<li>Overfitting to lab data without real-world noise augmentation.</li>
+<li>Challenges in acquiring diverse, high-quality training data.</li>
+<li>Potential inaccuracies in FaceMotion3D animations.</li>
+</ul>
+</section>
+<section id="alternatives-considered" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 38%">
+<col style="width: 22%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Existing speech-to-text systems</td>
+<td>Faster development</td>
+<td>Lower accuracy and flexibility</td>
+</tr>
+<tr class="even">
+<td>Custom speech-to-FACS system</td>
+<td>Higher accuracy</td>
+<td>Higher cost and longer timeline</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="when-to-avoid-this-solution" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-avoid-this-solution">When to Avoid This Solution</h2>
+<p>Avoid if high realism is unnecessary or development costs/time are prohibitive.</p>
+</section>
+<section id="organizational-alignment" class="level2">
+<h2 class="anchored" data-anchor-id="organizational-alignment">Organizational Alignment</h2>
+<p>Supports organizational goals in virtual character innovation and aligns with priorities for experience enhancement.</p>
+</section>
+<section id="proposal-status" class="level2">
+<h2 class="anchored" data-anchor-id="proposal-status">Proposal Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>Artificial Intelligence</li>
+<li>Machine Learning</li>
+<li>Virtual Avatars</li>
+<li>Animation</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li><a href="https://www.facemotion3d.net/">FaceMotion3D Documentation</a></li>
+<li><a href="https://github.com/roboflow/maestro/issues/194">PHI-4 Multimodal Model Repository</a></li>
+<li><a href="https://github.com/v-sekai">v-sekai Project Repository</a></li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20250402-lip-sync-prototpe.html</guid>
+  <pubDate>Thu, 29 May 2025 07:43:58 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20250402-image-to-full-body-face.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="proposed-image-to-full-body-facs" class="level1">
+<h1>Proposed: Image to Full Body FACS</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>This system builds a robust image-to-full-body-face mapping pipeline to capture real-world 3D full-body movements synchronized with visual data. Key metrics include anatomical accuracy of motion prediction, scalability across diverse body types, and real-time processing capabilities. This proposal addresses the growing demand for realistic full-body animation in virtual avatars, gaming, and biomechanical analysis. It matters now due to advancements in computer vision and the need for cost-effective motion capture solutions beyond lab-controlled environments.</p>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>Primary operational challenges include:</p>
+<ol type="1">
+<li>Lack of accessible systems for accurate 3D full-body motion capture from 2D images/video</li>
+<li>Difficulty generating anatomically plausible animations from imperfect visual data</li>
+<li>High computational costs of existing marker-based motion capture systems</li>
+<li>Limited adaptability to real-world environmental noise and occlusion</li>
+</ol>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>An image-to-FACS pipeline combining synthetic data generation, biomechanical constraints, and reinforcement learning:</p>
+<ul>
+<li>Convert T-posed animations to VRM avatar format with COCO keypoint annotations</li>
+<li>Generate synthetic training data using Godot Engine with marker/color variations</li>
+<li>Leverage MediaPipe for video-to-keypoint conversion with vertex-based facial mapping</li>
+<li>Train custom prediction models using temporal-spatial attention mechanisms</li>
+</ul>
+<p><strong>Implementation Steps</strong>:</p>
+<ol type="1">
+<li>Create VRM synthetic datasets with ground truth annotations</li>
+<li>Develop MediaPipe integration for unified body-face-hand keypoint extraction</li>
+<li>Implement reinforcement learning (GRPO) for motion generation from masked video</li>
+</ol>
+</section>
+<section id="implementation-plan" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-plan">Implementation Plan</h2>
+<ol type="1">
+<li><strong>Phase 1</strong>: Synthetic Data Pipeline
+<ul>
+<li>Develop Animation-to-VRM conversion tools</li>
+<li>Generate multi-format synthetic data in Godot Engine</li>
+</ul></li>
+<li><strong>Phase 2</strong>: Keypoint Prediction Model
+<ul>
+<li>Train transformer-based model on synthetic/real data mixtures</li>
+<li>Integrate biomechanical constraints into loss functions</li>
+</ul></li>
+<li><strong>Validation</strong>:
+<ul>
+<li>Success Criteria: &gt;90% anatomical validity in user studies</li>
+<li>Failure Threshold: &lt;15% improvement over baseline MediaPipe accuracy</li>
+</ul></li>
+</ol>
+</section>
+<section id="datasets" class="level2">
+<h2 class="anchored" data-anchor-id="datasets">Datasets</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Dataset ID</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">URI</th>
+<th style="text-align: left;">License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ANIM_A_POSE</td>
+<td style="text-align: left;">T-posed character animations for baseline modeling</td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">Proprietary</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ANIM_O3DE_COCO_FULL_BODY_FACS_RGB_8</td>
+<td style="text-align: left;">Full-body FACS annotations with RGB video pairs</td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">Apache 2.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ANIM_O3DE_COCO_FULL_BODY_FACS_LUMINANCE_8</td>
+<td style="text-align: left;">Luma-key marker data synchronized with RGB</td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">Apache 2.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ANIM_O3DE_MOTION_MATCHING</td>
+<td style="text-align: left;">O3DE Motion Matching dataset</td>
+<td style="text-align: left;"><a href="https://github.com/o3de/o3de-motion-matching">GitHub</a></td>
+<td style="text-align: left;">Apache 2.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ANIM_QUATERNIUS_UNIVERSAL_ANIMATION_LIBRARY</td>
+<td style="text-align: left;">Universal Animation Library</td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">CC0 1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ANIM_100_STYLES</td>
+<td style="text-align: left;">Multi-style character animation dataset</td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">Proprietary</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">COCO_2017_KEYPOINTS</td>
+<td style="text-align: left;">COCO person keypoints dataset</td>
+<td style="text-align: left;"><a href="https://www.kaggle.com/datasets/asad11914/coco-2017-keypoints">Kaggle</a></td>
+<td style="text-align: left;">CC BY 4.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">COCO_YOGA_16</td>
+<td style="text-align: left;">Yoga pose classification dataset</td>
+<td style="text-align: left;"><a href="https://www.kaggle.com/datasets/mohiuddin2531/yoga-16/data">Kaggle</a></td>
+<td style="text-align: left;">MIT</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<ul>
+<li>Enables markerless full-body motion capture from consumer-grade video</li>
+<li>Maintains facial-phonetic synchronization during body movements</li>
+<li>Reduces dependency on expensive motion capture hardware</li>
+<li>Supports real-time applications through efficient architecture design</li>
+</ul>
+</section>
+<section id="risks-and-limitations" class="level2">
+<h2 class="anchored" data-anchor-id="risks-and-limitations">Risks and Limitations</h2>
+<ul>
+<li>Potential error accumulation in long-term motion prediction</li>
+<li>Challenges maintaining facial-hand-body coordination</li>
+<li>Dependency on quality synthetic training data</li>
+<li>Computational intensity of real-time 3D mesh processing</li>
+</ul>
+</section>
+<section id="alternatives-considered" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 22%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Commercial mocap suits</td>
+<td>High accuracy</td>
+<td>Cost-prohibitive, lab-bound</td>
+</tr>
+<tr class="even">
+<td>Pure ML approaches</td>
+<td>Fully automated</td>
+<td>Limited anatomical plausibility</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="when-to-avoid-this-solution" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-avoid-this-solution">When to Avoid This Solution</h2>
+<p>Not suitable for applications requiring medical-grade biomechanical accuracy or environments with persistent heavy occlusion.</p>
+</section>
+<section id="organizational-alignment" class="level2">
+<h2 class="anchored" data-anchor-id="organizational-alignment">Organizational Alignment</h2>
+<p>Supports strategic goals in virtual humanoid development and aligns with open-source initiatives for accessible animation tools.</p>
+</section>
+<section id="proposal-status" class="level2">
+<h2 class="anchored" data-anchor-id="proposal-status">Proposal Status</h2>
+<p>Status: Proposed <!-- Options: Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by [Link/Reference] --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>Fire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>Computer Vision</li>
+<li>Biomechanics</li>
+<li>Virtual Avatars</li>
+<li>Real-Time Systems</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li><a href="https://github.com/V-Sekai/mediapipe">MediaPipe Integration Codebase</a></li>
+<li><a href="https://vrm.dev/en/">VRM Avatar Specification</a></li>
+<li><a href="https://github.com/roboflow/maestro/issues/194">GRPO Algorithm Documentation</a></li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20250402-image-to-full-body-face.html</guid>
+  <pubDate>Thu, 29 May 2025 07:43:58 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20250402-automated-clothing-pipeline.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="proposed-automated-clothing-pipeline" class="level1">
+<h1>Proposed: Automated Clothing Pipeline</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>This proposal outlines an integrated system for clothing detection, recommendation, generation, and quality assurance. Key metrics include real-time processing latency (&lt;50ms), recommendation accuracy (&gt;85% user satisfaction), and defect detection recall (&gt;90%). The system addresses growing demands in virtual fashion markets by combining computer vision, recommendation systems, and procedural content generation.</p>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>Key challenges include:</p>
+<ol type="1">
+<li>High computational cost of real-time clothing detection on edge devices</li>
+<li>Cold-start problem for personalized recommendations</li>
+<li>Manual effort in 3D clothing asset creation</li>
+<li>Difficulty detecting rare defects in skinned meshes</li>
+</ol>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>Four interconnected modules using unified metadata: <strong>Implementation Steps</strong>:</p>
+<ol type="1">
+<li><strong>Task A</strong>: Optimize RF-DETR with IREE compiler for edge deployment</li>
+<li><strong>Task B</strong>: Build PinSage-based recommender with multi-tag support</li>
+<li><strong>Task C</strong>: Develop Blender/Marvelous Designer automation pipeline</li>
+<li><strong>Task D</strong>: Train defect detection model with synthetic data</li>
+</ol>
+</section>
+<section id="implementation-plan" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-plan">Implementation Plan</h2>
+<ol type="1">
+<li><strong>Phase 1</strong>: Core System Development (Weeks 1-6)
+<ul>
+<li>Validate IREE compatibility for deformable attention</li>
+<li>Implement split_multi_value in librecommender</li>
+<li>Create Blender defect injection scripts</li>
+<li>[Roboflow] Create clothing classification dataset with style/color annotations</li>
+</ul></li>
+<li><strong>Phase 2</strong>: Integration &amp; Optimization (Weeks 7-10)
+<ul>
+<li>Deploy edge-optimized RF-DETR on Jetson AGX</li>
+<li>Establish Godot/Unreal asset pipeline</li>
+<li>Benchmark defect detection F1 scores</li>
+<li>[Roboflow] Generate synthetic defect dataset using Blender Python API</li>
+</ul></li>
+<li><strong>Validation</strong>:
+<ul>
+<li>Success Criteria: &lt;20ms inference latency, &gt;85% recommendation accuracy</li>
+<li>Failure Threshold: &gt;30% performance drop vs baseline</li>
+</ul></li>
+</ol>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<ul>
+<li>10x faster clothing asset creation vs manual workflows</li>
+<li>Unified metadata flow from detection to 3D generation</li>
+<li>Real-time operation on consumer-grade hardware</li>
+<li>Automated QA for production-ready 3D models</li>
+</ul>
+</section>
+<section id="risks-and-limitations" class="level2">
+<h2 class="anchored" data-anchor-id="risks-and-limitations">Risks and Limitations</h2>
+<ul>
+<li>IREE compilation failures (Mitigation: Maintain PyTorch fallback implementation)</li>
+<li>Physics simulation instability (Mitigation: Implement Marvelous Designer safety constraints)</li>
+<li>Rare defect false positives (Mitigation: Active learning with human-in-the-loop)</li>
+</ul>
+</section>
+<section id="alternatives-considered" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 23%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>YOLOv8</td>
+<td>Faster inference</td>
+<td>Lower mAP on small accessories</td>
+</tr>
+<tr class="even">
+<td>TensorFlow Recommenders</td>
+<td>Mature ecosystem</td>
+<td>No native multi-tag support</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="when-to-avoid-this-solution" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-avoid-this-solution">When to Avoid This Solution</h2>
+<p>Not suitable for high-fashion detail reproduction requiring manual artistry.</p>
+</section>
+<section id="organizational-alignment" class="level2">
+<h2 class="anchored" data-anchor-id="organizational-alignment">Organizational Alignment</h2>
+<p>Supports virtual commerce initiatives and aligns with open-source 3D tooling roadmap.</p>
+</section>
+<section id="proposal-status" class="level2">
+<h2 class="anchored" data-anchor-id="proposal-status">Proposal Status</h2>
+<p>Status: Proposed <!-- Options: Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by [Link/Reference] --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>Fire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>Computer Vision</li>
+<li>Recommendation Systems</li>
+<li>Procedural Generation</li>
+<li>Edge Computing</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li><a href="https://arxiv.org/abs/2301.07979">RF-DETR Paper</a></li>
+<li><a href="https://iree.dev/">IREE Documentation</a></li>
+<li><a href="https://docs.blender.org/api/current/">Blender Python API</a></li>
+<li><a href="https://docs.roboflow.com">Roboflow Guide</a></li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20250402-automated-clothing-pipeline.html</guid>
+  <pubDate>Thu, 29 May 2025 07:43:58 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20250328-guassian-splat.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="rejected-native-gaussian-splatting-pre-visualization-in-godot-engine" class="level1">
+<h1>Rejected: Native Gaussian Splatting Pre-visualization in Godot Engine</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>V-Sekai’s AI-generated VR content requires high-fidelity PreViz that preserves details from Flux/TRELLIS outputs. Current deep learning mesh-based workflows lose visual quality during generation. Key metrics:</p>
+<ul>
+<li><strong>50k+ splats</strong> @ 90 FPS in Godot viewport</li>
+<li><strong>T-pose compliance</strong> for rigging compatibility</li>
+</ul>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<ol type="1">
+<li><strong>Quality Loss</strong>: Mesh conversion destroys AI-generated surface details</li>
+<li><strong>Performance Limits</strong>: Existing Godot renderer lacks 3DGS optimization</li>
+<li><strong>Workflow Friction</strong>: Manual retopology adds 3-5 hours/asset</li>
+</ol>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>Native 3D Gaussian Splatting (3DGS) renderer for Godot 4.3+ with:</p>
+<ul>
+<li>Vulkan-optimized atomic splat sorting</li>
+<li>T-posed characters</li>
+<li>Direct Flux/TRELLIS data ingestion</li>
+</ul>
+<p><strong>Implementation Steps</strong>:</p>
+<ol type="1">
+<li>Develop SPIR-V compute pipeline for depth sorting</li>
+<li>Create Godot Editor tools for splat timeline scrubbing</li>
+<li>Implement BC7-compressed covariance textures</li>
+</ol>
+</section>
+<section id="implementation-plan" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-plan">Implementation Plan</h2>
+<ol type="1">
+<li><p><strong>Phase 1</strong>: Core Renderer (4 Weeks)</p>
+<ul>
+<li>Vulkan splat shader with spherical harmonics processing</li>
+<li>GPU radix sort via compute shaders</li>
+<li>Flux skeleton alignment system</li>
+</ul></li>
+<li><p><strong>Phase 2</strong>: PreViz Tooling (2 Weeks)</p>
+<ul>
+<li>SH coefficient debug overlay</li>
+<li>Performance profiling HUD</li>
+<li>Splat LOD distance culling</li>
+</ul></li>
+<li><p><strong>Validation</strong>:</p>
+<ul>
+<li>Success: 50k splats @ 90 FPS (RTX 3060), &lt;0.5mm T-pose drift</li>
+<li>Failure: &gt;16ms/frame spikes, &gt;2mm bone position deviation</li>
+</ul></li>
+</ol>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<ul>
+<li><strong>98%</strong> PreViz quality retention vs 78% mesh workflow</li>
+<li><strong>Zero</strong> manual retopology required</li>
+<li><strong>1:1</strong> AI-to-engine visual parity</li>
+</ul>
+</section>
+<section id="risks-and-limitations" class="level2">
+<h2 class="anchored" data-anchor-id="risks-and-limitations">Risks and Limitations</h2>
+<ul>
+<li><strong>Vulkan 1.3+</strong> required (excludes legacy GPUs)</li>
+<li><strong>18% VRAM overhead</strong> vs mesh rendering</li>
+<li>Requires <strong>NVIDIA GPUs</strong> for optimal performance</li>
+</ul>
+</section>
+<section id="alternatives-considered" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mesh PreViz</td>
+<td>Full compatibility</td>
+<td>Large quality loss</td>
+</tr>
+<tr class="even">
+<td>External Render</td>
+<td>Higher fidelity</td>
+<td>300ms latency penalty</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="when-to-avoid-this-solution" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-avoid-this-solution">When to Avoid This Solution</h2>
+<ul>
+<li>WebGL-targeted projects</li>
+<li>Teams without Vulkan shader expertise</li>
+<li>Low-end mobile VR deployments</li>
+</ul>
+</section>
+<section id="organizational-alignment" class="level2">
+<h2 class="anchored" data-anchor-id="organizational-alignment">Organizational Alignment</h2>
+<p>Supports V-Sekai’s 2025 priorities:</p>
+<ol type="1">
+<li>AI-to-engine content pipeline</li>
+<li>Photorealistic real-time PreViz</li>
+<li>Godot Vulkan performance leadership</li>
+</ol>
+</section>
+<section id="proposal-status" class="level2">
+<h2 class="anchored" data-anchor-id="proposal-status">Proposal Status</h2>
+<p>Status: Rejected <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai Pipeline Lead</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>Rendering</li>
+<li>AI/ML</li>
+<li>High Priority</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li><strong>Reference Implementation (Inria)</strong><br>
+<a href="https://github.com/graphdeco-inria/gaussian-splatting" class="uri">https://github.com/graphdeco-inria/gaussian-splatting</a></li>
+<li><strong>Playcanvas Engine Demo</strong><br>
+<a href="https://github.com/playcanvas/engine" class="uri">https://github.com/playcanvas/engine</a></li>
+<li><strong>Cesium Experimental Branch</strong><br>
+<a href="https://github.com/CesiumGS/cesium/tree/splat-spz-concept" class="uri">https://github.com/CesiumGS/cesium/tree/splat-spz-concept</a></li>
+<li><strong>Unity Implementation (Aras-P)</strong><br>
+<a href="https://github.com/aras-p/UnityGaussianSplatting" class="uri">https://github.com/aras-p/UnityGaussianSplatting</a></li>
+<li><strong>Godot Implementation (2Retr0)</strong><br>
+<a href="https://github.com/2Retr0/GodotGaussianSplatting" class="uri">https://github.com/2Retr0/GodotGaussianSplatting</a></li>
+<li><strong>Godot Implementation (haztro)</strong><br>
+<a href="https://github.com/haztro/godot-gaussian-splatting" class="uri">https://github.com/haztro/godot-gaussian-splatting</a></li>
+<li><strong>Blender Omniview Addon (Kiri Engine)</strong><br>
+<a href="https://github.com/Kiri-Innovation/3dgs-render-blender-addon" class="uri">https://github.com/Kiri-Innovation/3dgs-render-blender-addon</a></li>
+<li>Trellis <a href="https://github.com/microsoft/TRELLIS" class="uri">https://github.com/microsoft/TRELLIS</a></li>
+<li>Flux</li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20250328-guassian-splat.html</guid>
+  <pubDate>Thu, 29 May 2025 07:43:58 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20250213-pin-key-vsekai-repos.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="active-pin-key-repositories-on-v-sekai-github-organization-for-better-visibility" class="level1">
+<h1>Active: Pin Key Repositories on V-Sekai GitHub Organization for Better Visibility</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>The V-Sekai GitHub organization hosts multiple repositories critical to its open-source social vr project. As contributions and community interest grow, ensuring quick access to core projects (e.g., the main engine, tooling, and documentation) becomes essential. Pinned repositories prominently displayed on the organization’s profile improve discoverability and reduce onboarding friction.</p>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>Currently, the V-Sekai GitHub organization does not have repositories pinned, forcing users to manually search for key projects like <code>v-sekai-game</code> or <code>awesome-vsekai</code>. This creates unnecessary effort for newcomers and risks obscuring high-priority tools (e.g., <code>xr-grid</code>). The GitHub UI defaults to pinning repositories on personal profiles, not organizations, requiring explicit action by org owners.</p>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>Pin the following repositories to the V-Sekai organization profile:</p>
+<ol type="1">
+<li><strong>v-sekai-game</strong> (primary engine)</li>
+<li><strong>awesome-vsekai</strong> (ecosystem resources)</li>
+<li><strong>tool-model-explorer</strong> (development utilities)</li>
+<li><strong>xr-grid</strong> (XR interaction framework)</li>
+</ol>
+<p><strong>Implementation Steps</strong>:</p>
+<ol type="1">
+<li>An organization owner navigates to the V-Sekai GitHub profile.</li>
+<li>Clicks “Pinned repositories” → “Customize pins.”</li>
+<li>Selects the four repositories from the dropdown and saves.</li>
+</ol>
+</section>
+<section id="implementation-plan" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-plan">Implementation Plan</h2>
+<ol type="1">
+<li><strong>Phase 1</strong>: Org owner pins repositories (5 minutes).</li>
+<li><strong>Phase 2</strong>: Quarterly review to update pins as projects evolve.</li>
+<li><strong>Validation</strong>: Confirm pinned repos appear on the organization’s public profile.</li>
+</ol>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<ul>
+<li><strong>Faster Access</strong>: Reduces time to locate critical projects.</li>
+<li><strong>Community Clarity</strong>: Signals which repos are actively maintained.</li>
+<li><strong>First-Time User Experience</strong>: Simplifies onboarding for contributors.</li>
+</ul>
+</section>
+<section id="risks-and-limitations" class="level2">
+<h2 class="anchored" data-anchor-id="risks-and-limitations">Risks and Limitations</h2>
+<ul>
+<li><strong>Stale Pins</strong>: Requires periodic updates if priorities shift.</li>
+<li><strong>Limited Slots</strong>: Only six pins allowed; strategic selection needed.</li>
+</ul>
+</section>
+<section id="alternatives-considered" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 32%">
+<col style="width: 42%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Status Quo</strong></td>
+<td>No maintenance overhead</td>
+<td>Poor discoverability</td>
+</tr>
+<tr class="even">
+<td><strong>Featured Tags</strong></td>
+<td>Flexible categorization</td>
+<td>Less visible than pinned repos</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="when-to-avoid-this-solution" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-avoid-this-solution">When to Avoid This Solution</h2>
+<p>If the organization prefers alternative navigation methods (e.g., a dedicated docs site), pinning may be redundant.</p>
+</section>
+<section id="organizational-alignment" class="level2">
+<h2 class="anchored" data-anchor-id="organizational-alignment">Organizational Alignment</h2>
+<p>Aligns with V-Sekai’s mission to foster open collaboration by lowering barriers to entry.</p>
+</section>
+<section id="proposal-status" class="level2">
+<h2 class="anchored" data-anchor-id="proposal-status">Proposal Status</h2>
+<p>Status: Active</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>V-Sekai GitHub organization owners</li>
+<li>fire</li>
+<li>dragonhunt02</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>GitHub Management</li>
+<li>Immediate</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li><a href="https://stackoverflow.com/a/67478102">GitHub: Pinning Organization Repositories</a><br>
+<em>Solution requires org owners to manually customize pins via profile settings.</em></li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20250213-pin-key-vsekai-repos.html</guid>
+  <pubDate>Thu, 29 May 2025 07:43:58 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20250211-using-8-uv-channels-for-custom-vertex-data.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="proposed-use-8-uv-channels-for-custom-vertex-data-in-v-sekai" class="level1">
+<h1>Proposed: Use 8 UV Channels for Custom Vertex Data in V-Sekai</h1>
+<section id="what-is-the-context-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-context-of-the-proposal">What is the context of the proposal?</h2>
+<p>The proposal addresses advanced use cases for transferring custom vertex data from Blender to Godot via 8 UV channels. This enables creative applications such as dynamic shader effects, modular armor systems, and procedural texture masking.</p>
+</section>
+<section id="what-is-the-problem-being-solved" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-problem-being-solved">What is the problem being solved?</h2>
+<p>Godot’s default support for two UV channels limits complex shader workflows. Users need methods to encode additional data (e.g., hitbox IDs, visibility values) while ensuring compatibility between Blender’s UV maps and Godot’s CUSTOM0-3 attributes.</p>
+</section>
+<section id="describe-how-your-proposal-will-work" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work">Describe how your proposal will work</h2>
+<ol type="1">
+<li><p><strong>Blender Setup</strong>: Create UV maps (UV3-UV8) under <em>Mesh Properties &gt; UV Maps</em>. Encode data into these channels (e.g., UV5.x for hitbox IDs).</p></li>
+<li><p><strong>Export</strong>: Use <code>.gltf</code> or <code>.blend</code> files, ensuring UVs are unwrapped on the Face Corner domain. (Use smooth shading.)</p></li>
+<li><p><strong>Godot Shaders</strong>:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode glsl code-with-copy"><code class="sourceCode glsl"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Access CUSTOM0 (UV3 + UV4)</span></span>
+<span id="cb1-2"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">vec4</span> custom_data <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> CUSTOM0<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-3"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">float</span> hitbox_id <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> custom_data<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">x</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-4"></span>
+<span id="cb1-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Example: Procedural armor toggling</span></span>
+<span id="cb1-6"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>CUSTOM1<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">z</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// UV7 value stored in CUSTOM1.zw</span></span>
+<span id="cb1-7">    ALBEDO <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> armor_texture<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-8"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div></li>
+<li><p><strong>Data Handling</strong>: Use <code>surface_get_arrays</code> to access <code>ARRAY_CUSTOM0-3</code> in scripts.</p></li>
+</ol>
+</section>
+<section id="what-are-the-benefits-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</h2>
+<ul>
+<li>Enables complex effects without mesh modifications (e.g., dynamic damage masking).</li>
+<li>Efficient data transfer via existing UV workflows.</li>
+<li>Supports up to 10 channels using half-precision packing.</li>
+</ul>
+</section>
+<section id="what-are-the-downsides-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-downsides-of-the-proposal">What are the downsides of the proposal?</h2>
+<ul>
+<li>Vertex count mismatches if meshes are shaded flat in Blender.</li>
+<li>Requires careful UV management to avoid vertical flipping issues.</li>
+<li>Limited debugging tools for custom data validation.</li>
+</ul>
+</section>
+<section id="what-are-the-alternative-proposals" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-alternative-proposals">What are the alternative proposals?</h2>
+<ul>
+<li>Using texture maps instead of UVs (increases memory usage).</li>
+<li>Relying on vertex colors (limited to 4 channels).</li>
+</ul>
+</section>
+<section id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all" class="level2">
+<h2 class="anchored" data-anchor-id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all">When might the proposed solution be used rarely or not at all?</h2>
+<p>Unnecessary for simple assets without shader-driven interactivity or when targeting platforms with strict performance constraints.</p>
+</section>
+<section id="is-this-a-v-sekai-core-responsibility" class="level2">
+<h2 class="anchored" data-anchor-id="is-this-a-v-sekai-core-responsibility">Is this a V-Sekai core responsibility?</h2>
+<p>Yes, as it enhances content creation pipelines for social VR experiences. V-Sekai should document best practices and provide shader templates.</p>
+</section>
+<section id="what-is-the-status-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-status-of-the-proposal">What is the status of the proposal?</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="who-is-making-decisions-on-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="who-is-making-decisions-on-the-proposal">Who is making decisions on the proposal?</h2>
+<ul>
+<li>V-Sekai development team</li>
+<li>fire</li>
+<li>lyuma</li>
+<li>funkbison</li>
+</ul>
+</section>
+<section id="what-tags-does-the-proposal-have" class="level2">
+<h2 class="anchored" data-anchor-id="what-tags-does-the-proposal-have">What tags does the proposal have?</h2>
+<ul>
+<li>V-Sekai</li>
+<li>Shaders</li>
+<li>Asset Pipeline</li>
+</ul>
+</section>
+<section id="list-further-reading-references" class="level2">
+<h2 class="anchored" data-anchor-id="list-further-reading-references">List further reading references</h2>
+<ol type="1">
+<li><a href="https://docs.godotengine.org/en/stable/classes/class_mesh.html">Godot Mesh Documentation</a></li>
+<li><a href="https://blender.stackexchange.com/questions/51174/how-do-i-create-multiple-uv-maps">Blender UV Map Workflow</a></li>
+<li><a href="https://github.com/v-sekai">V-Sekai GitHub</a></li>
+</ol>
+<p>AI assistant Aria assisted in structuring this proposal based on community discussions.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20250211-using-8-uv-channels-for-custom-vertex-data.html</guid>
+  <pubDate>Thu, 29 May 2025 07:43:58 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20250203-daily-deck-log.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="proposed-daily-deck-log" class="level1">
+<h1>Proposed: Daily Deck Log</h1>
+<section id="what-is-the-context-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-context-of-the-proposal">What is the context of the proposal?</h2>
+<p>The V-Sekai team requires a structured, real-time method to track daily project health, team contributions, and technical progress. This log aims to streamline communication across contributors and stakeholders in an open-source social VR project built on the Godot Engine.</p>
+</section>
+<section id="what-is-the-problem-being-solved" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-problem-being-solved">What is the problem being solved?</h2>
+<ul>
+<li>Fragmented updates across chat/email.</li>
+<li>Lack of visibility into blockers or critical issues.</li>
+<li>Difficulty aligning priorities between developers, artists, and leadership.</li>
+</ul>
+</section>
+<section id="describe-how-your-proposal-will-work" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work">Describe how your proposal will work</h2>
+<p><strong>Process:</strong></p>
+<ol type="1">
+<li><p><strong>Daily Interactive Prompting</strong>: A bot (e.g., Discord/GitHub bot) prompts contributors for updates via a form.</p></li>
+<li><p><strong>Structured Data Collection</strong>:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> collect_deck_log():</span>
+<span id="cb1-2">    date <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">input</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Date (YYYY-MM-DD): "</span>)</span>
+<span id="cb1-3">    active_contributors <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">input</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Active contributors (count/details): "</span>)</span>
+<span id="cb1-4">    blockers <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">input</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Current blockers: "</span>)</span>
+<span id="cb1-5">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ... additional fields</span></span>
+<span id="cb1-6">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> format_markdown(date, active_contributors, blockers)</span></code></pre></div></li>
+<li><p><strong>Automated Aggregation</strong>: Data is compiled into a Markdown log (example below) and posted to a project channel.</p></li>
+<li><p><strong>Decision Tracking</strong>: Highlighted decisions/blockers trigger alerts to relevant roles (e.g., engineering lead).</p></li>
+</ol>
+<p><strong>Mock-Up:</strong></p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1">**Date:** 2025-02-03  </span>
+<span id="cb2-2">**Active Contributors:** 8 (2 new QA testers onboarded)  </span>
+<span id="cb2-3">**Critical Blockers:** Issue #45: Rendering crash on Linux  </span>
+<span id="cb2-4">**Key Initiative:** Netcode refactor (PR #78 merged)</span></code></pre></div>
+</section>
+<section id="what-are-the-benefits-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</h2>
+<ul>
+<li><strong>Transparency</strong>: Centralized visibility into progress.</li>
+<li><strong>Alignment</strong>: Reduces redundant meetings.</li>
+<li><strong>Accountability</strong>: Tracks unresolved blockers.</li>
+</ul>
+</section>
+<section id="what-are-the-downsides-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-downsides-of-the-proposal">What are the downsides of the proposal?</h2>
+<ul>
+<li>Overhead for contributors to submit daily updates.</li>
+<li>Risk of rigidity if not adapted to evolving workflows.</li>
+</ul>
+</section>
+<section id="what-are-the-alternative-proposals" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-alternative-proposals">What are the alternative proposals?</h2>
+<ul>
+<li>Use GitHub Projects/Jira (less tailored to open-source volunteer workflows).</li>
+<li>Weekly async summaries (loses real-time urgency).</li>
+</ul>
+</section>
+<section id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all" class="level2">
+<h2 class="anchored" data-anchor-id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all">When might the proposed solution be used rarely or not at all?</h2>
+<ul>
+<li>During low-activity periods (e.g., holidays).</li>
+<li>If the team shrinks to &lt;5 contributors.</li>
+</ul>
+</section>
+<section id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us">Is this a V-Sekai core responsibility, and should it be done by us?</h2>
+<p>Yes. As an open-source project, maintaining transparent, community-friendly processes aligns with V-Sekai’s core values.</p>
+</section>
+<section id="what-is-the-status-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-status-of-the-proposal">What is the status of the proposal?</h2>
+<p><strong>Status:</strong> Proposed</p>
+</section>
+<section id="who-is-making-decisions-on-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="who-is-making-decisions-on-the-proposal">Who is making decisions on the proposal?</h2>
+<ul>
+<li>fire</li>
+</ul>
+</section>
+<section id="what-tags-does-the-proposal-have" class="level2">
+<h2 class="anchored" data-anchor-id="what-tags-does-the-proposal-have">What tags does the proposal have?</h2>
+<ul>
+<li><code>V-Sekai</code></li>
+<li><code>Project Management</code></li>
+</ul>
+</section>
+<section id="list-further-reading-references" class="level2">
+<h2 class="anchored" data-anchor-id="list-further-reading-references">List further reading references</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20250203-daily-deck-log.html</guid>
+  <pubDate>Thu, 29 May 2025 07:43:58 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20250130-world-godot-build-dispatch.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="accepted-world-godot-build-dispatch" class="level1">
+<h1>Accepted: World Godot Build Dispatch</h1>
+<section id="what-is-the-context-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-context-of-the-proposal">What is the context of the proposal?</h2>
+<p>Using a custom Godot Engine build to handle arbitrary Godot Engine projects.</p>
+</section>
+<section id="what-is-the-problem-being-solved" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-problem-being-solved">What is the problem being solved?</h2>
+<p>Send automated build messages to “v-sekai/v-sekai-game” on “v-sekai/world-godot” commits.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>To enable it, add “REPO_DISPATCH” to repository secrets.</p>
+<p>A fine-grained token with Contents: Read and write permission for the “v-sekai-game” repo must be placed in the “REPO_DISPATCH” named repository secret of “V-Sekai/world-godot”.</p>
+<p>In <code>V-Sekai/world-godot</code>, add the Godot Engine project to the dispatch job’s list too.</p>
+</section>
+<section id="what-are-the-benefits-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</h2>
+<p>Automated builds increase efficiency.</p>
+<p>Reduces manual interventions on commits.</p>
+</section>
+<section id="what-are-the-downsides-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-downsides-of-the-proposal">What are the downsides of the proposal?</h2>
+<p>Requires careful secret management.</p>
+<p>Additional setup steps are needed.</p>
+</section>
+<section id="what-are-the-alternative-proposals" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-alternative-proposals">What are the alternative proposals?</h2>
+<p>Direct build triggers within the same repository.</p>
+<p>Manual triggers via local scripting.</p>
+</section>
+<section id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all" class="level2">
+<h2 class="anchored" data-anchor-id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all">When might the proposed solution be used rarely or not at all?</h2>
+<p>If simpler builds without cross-repo triggers are sufficient.</p>
+</section>
+<section id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us">Is this a V-Sekai core responsibility, and should it be done by us?</h2>
+<p>Yes, because it streamlines the build workflow for V-Sekai projects.</p>
+</section>
+<section id="what-is-the-status-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-status-of-the-proposal">What is the status of the proposal?</h2>
+<p>Status: Accepted</p>
+</section>
+<section id="who-is-making-decisions-on-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="who-is-making-decisions-on-the-proposal">Who is making decisions on the proposal?</h2>
+<ul>
+<li>V-Sekai development team</li>
+<li>fire</li>
+<li>dragonhunt02</li>
+</ul>
+</section>
+<section id="what-tags-does-the-proposal-have" class="level2">
+<h2 class="anchored" data-anchor-id="what-tags-does-the-proposal-have">What tags does the proposal have?</h2>
+<ul>
+<li>V-Sekai</li>
+<li>release</li>
+</ul>
+</section>
+<section id="list-further-reading-references" class="level2">
+<h2 class="anchored" data-anchor-id="list-further-reading-references">List further reading references</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a></li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a></li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20250130-world-godot-build-dispatch.html</guid>
+  <pubDate>Thu, 29 May 2025 07:43:58 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20250126-scene-entity-add-delete-with-lens.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="rejected-scene-entity-add-delete-with-an-overlay" class="level1">
+<h1>Rejected: Scene entity add &amp; delete with an overlay</h1>
+<section id="what-is-the-context-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-context-of-the-proposal">What is the context of the proposal?</h2>
+<p>V-Sekai needs an overlay-based system to add, delete, and manage scene entities in VR environments. It aims to enhance asset creation workflows and offer improved collaboration and metadata visibility.</p>
+</section>
+<section id="what-is-the-problem-being-solved" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-problem-being-solved">What is the problem being solved?</h2>
+<p>We need a more intuitive, integrated approach to placing, selecting, removing, and inspecting scene objects. Current methods lack interactive feedback, real-time previews, or a user-friendly overlay for metadata.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>Instead of a lens, we generate an overlay using the primitive outline. The multi tool like Half-Life: Alyx tool’s interface surfaces entity details as a holographic overlay. Contributors can “grip” to add objects, “trigger” to open extended metadata, or “joystick” to vote.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-2">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"scene_entities"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span></span>
+<span id="cb1-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-4">      <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"asset"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"SomeAssetName"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-5">      <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"placement_method"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"raycast_click"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-6">      <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"metadata"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-7">        <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"creator_id"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"user123"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-8">        <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"score"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"user789"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"user456"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span></span>
+<span id="cb1-9">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-10">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-11">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-12">      <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"asset"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"AnotherAsset"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-13">      <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"placement_method"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"default_location"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-14">      <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"metadata"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-15">        <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"creator_id"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"user456"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-16">        <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"score"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[]</span></span>
+<span id="cb1-17">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-18">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-19">  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-20">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"overlay_interaction"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-21">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"show_creator"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">true</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-22">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"show_score"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">true</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-23">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"actions"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span></span>
+<span id="cb1-24">      <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"grip_add"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-25">      <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"trigger_metadata"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-26">      <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"joystick_vote"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-27">      <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"joystick_hide"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-28">      <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"joystick_save_to_inventory"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-29">      <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"joystick_raise_concern"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-30">      <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"joystick_delete"</span></span>
+<span id="cb1-31">    <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span></span>
+<span id="cb1-32">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb1-33">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"decay_system"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-34">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"enabled"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">true</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-35">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"decay_threshold_days"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-36">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"repair_action"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"upvote"</span></span>
+<span id="cb1-37">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-38"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div>
+<p>Scene entity adds &amp; deletes with the overlay also requires 20250126-primitive-outline and 20250126-multiplayer-sync-between-godot-instance.</p>
+</section>
+<section id="what-are-the-benefits-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</h2>
+<p>The proposal offers streamlined object placement and removal, improved collaboration through overlay-based metadata, and the potential for interactive previews and user scoring.</p>
+</section>
+<section id="what-are-the-downsides-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-downsides-of-the-proposal">What are the downsides of the proposal?</h2>
+<p>It introduces added complexity for new contributors, requires careful UI design to avoid clutter, and may result in potential performance overhead for large scenes.</p>
+</section>
+<section id="what-are-the-alternative-proposals" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-alternative-proposals">What are the alternative proposals?</h2>
+<p>Alternatives include relying on standard Godot editor workflows, using no overlay and only default selection tools, and integrating separate third-party VR creation plugins.</p>
+</section>
+<section id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all" class="level2">
+<h2 class="anchored" data-anchor-id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all">When might the proposed solution be used rarely or not at all?</h2>
+<p>• Simple scenes without collaboration or complex user interactions<br>
+• Non-VR projects where overlay-based interaction is unnecessary</p>
+</section>
+<section id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us">Is this a V-Sekai core responsibility, and should it be done by us?</h2>
+<p>Yes. It aligns with social VR features and fosters community-driven content creation and sharing.</p>
+<p>Nova really wanna see V-Sekai have insanely good UX since the more traditional UX isn’t cutting it on any other XR social platform There are fewer ones with multiplayer buildings like Resonite.</p>
+</section>
+<section id="what-is-the-status-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-status-of-the-proposal">What is the status of the proposal?</h2>
+<p>Status: Rejected</p>
+<p>Needs a redo.</p>
+</section>
+<section id="who-is-making-decisions-on-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="who-is-making-decisions-on-the-proposal">Who is making decisions on the proposal?</h2>
+<ul>
+<li>V-Sekai development team</li>
+<li>Lyuma</li>
+<li>Astral Druid</li>
+<li>Fire</li>
+<li>Nova</li>
+</ul>
+</section>
+<section id="what-tags-does-the-proposal-have" class="level2">
+<h2 class="anchored" data-anchor-id="what-tags-does-the-proposal-have">What tags does the proposal have?</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="list-further-reading-references" class="level2">
+<h2 class="anchored" data-anchor-id="list-further-reading-references">List further reading references</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a></li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a></li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+</section>
+<section id="control-schemes" class="level2">
+<h2 class="anchored" data-anchor-id="control-schemes">Control Schemes</h2>
+<section id="mouse-keyboard" class="level3">
+<h3 class="anchored" data-anchor-id="mouse-keyboard">Mouse &amp; Keyboard</h3>
+<ul>
+<li><strong>Left-click</strong>: Adds or selects entities.</li>
+<li><strong>Right-click</strong>: Opens the context menu for metadata access.</li>
+<li><strong>Keyboard Shortcuts</strong>:
+<ul>
+<li><strong>Delete Key</strong>: Removes the selected entity.</li>
+<li><strong>M Key</strong>: Toggles metadata visibility.</li>
+<li><strong>S Key</strong>: Saves the current state.</li>
+</ul></li>
+</ul>
+</section>
+<section id="steam-deck" class="level3">
+<h3 class="anchored" data-anchor-id="steam-deck">Steam Deck</h3>
+<ul>
+<li><strong>Joystick</strong>: Accesses radial menu for quick actions.</li>
+<li><strong>Grip Button</strong>: Adds a selected entity.</li>
+<li><strong>Trigger Button</strong>: Opens extended metadata for the selected entity.</li>
+<li><strong>A Button</strong>: Deletes the selected entity.</li>
+<li><strong>B Button</strong>: Saves the current inventory.</li>
+<li><strong>X Button</strong>: Raises a concern about the entity.</li>
+<li><strong>Y Button</strong>: Hides the overlay interface.</li>
+<li><strong>Touchpad Gestures</strong>:
+<ul>
+<li><strong>Swipe</strong>: Rotates entities.</li>
+<li><strong>Pinch</strong>: Scales entities.</li>
+</ul></li>
+</ul>
+</section>
+<section id="quest-3" class="level3">
+<h3 class="anchored" data-anchor-id="quest-3">Quest 3</h3>
+<ul>
+<li><strong>Joystick</strong>: Accesses radial menu for quick actions.</li>
+<li><strong>Grab Gesture</strong>: Adds or selects entities.</li>
+<li><strong>Trigger Press</strong>: Opens extended metadata for the selected entity.</li>
+<li><strong>Grip Press</strong>: Deletes the selected entity.</li>
+<li><strong>Thumbstick</strong>: Navigates the overlay interface.</li>
+<li><strong>Side Buttons</strong>:
+<ul>
+<li><strong>A Button</strong>: Saves the current inventory.</li>
+<li><strong>B Button</strong>: Raises a concern about the entity.</li>
+</ul></li>
+<li><strong>Finger Gestures</strong>:
+<ul>
+<li><strong>Swipe Up/Down</strong>: Rotates entities.</li>
+<li><strong>Pinch Open/Close</strong>: Scales entities.</li>
+</ul></li>
+</ul>
+</section>
+<section id="valve-index-controller" class="level3">
+<h3 class="anchored" data-anchor-id="valve-index-controller">Valve Index Controller</h3>
+<ul>
+<li><strong>Joystick</strong>: Accesses radial menu for quick actions.</li>
+<li><strong>Grab Gesture</strong>: Adds or selects entities.</li>
+<li><strong>Trigger Press</strong>: Opens extended metadata for the selected entity.</li>
+<li><strong>Grip Press</strong>: Deletes the selected entity.</li>
+<li><strong>Thumbstick</strong>: Navigates the overlay interface.</li>
+<li><strong>Side Buttons</strong>:
+<ul>
+<li><strong>A Button</strong>: Saves the current inventory.</li>
+<li><strong>B Button</strong>: Raises a concern about the entity.</li>
+</ul></li>
+<li><strong>Finger Gestures</strong>:
+<ul>
+<li><strong>Swipe Up/Down</strong>: Rotates entities.</li>
+<li><strong>Pinch Open/Close</strong>: Scales entities.</li>
+</ul></li>
+</ul>
+
+
+</section>
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20250126-scene-entity-add-delete-with-lens.html</guid>
+  <pubDate>Thu, 29 May 2025 07:43:58 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20250126-primitive-outline.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="proposed-mesh-primitive-outline-as-hologram" class="level1">
+<h1>Proposed: Mesh Primitive Outline as Hologram</h1>
+<section id="what-is-the-context-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-context-of-the-proposal">What is the context of the proposal?</h2>
+<p>Instead of a lens, we aim to generate an overlay using the mesh’s primitive outline. Similar to the multi-tool interface in Half-Life: Alyx, the tool will surface entity details as a holographic overlay.</p>
+</section>
+<section id="what-is-the-problem-being-solved" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-problem-being-solved">What is the problem being solved?</h2>
+<p>How can we generate a holographic overlay by utilizing a list of triangle edges extracted from mesh data?</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>The proposal involves parsing the mesh data to extract triangle edges and rendering these edges as a holographic overlay. Utilizing a compatible rendering engine, each edge will be transformed into visible lines with appropriate shading and anti-aliasing. The system will dynamically update the hologram in real-time based on user interactions and changes in the underlying data.</p>
+</section>
+<section id="what-are-the-benefits-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</h2>
+<p>This approach enhances visualization by providing a clear and immersive method to interact with mesh data. It improves user interaction through intuitive controls, allowing seamless engagement with the overlay. Performance is optimized by leveraging triangle edge data for efficient rendering. Additionally, the solution is scalable, enabling support for more complex interactions and data types in future developments.</p>
+</section>
+<section id="what-are-the-downsides-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-downsides-of-the-proposal">What are the downsides of the proposal?</h2>
+<p>The proposal adds complexity to the rendering pipeline, potentially complicating development. It may require increased processing power, which could limit accessibility on lower-end devices. Users may face a learning curve adapting to the new interaction methods. Furthermore, additional features will necessitate ongoing support and updates, leading to maintenance overhead.</p>
+</section>
+<section id="what-are-the-alternative-proposals" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-alternative-proposals">What are the alternative proposals?</h2>
+<p>The traditional way of doing outlines is via mesh extrusion. Alternative approaches include implementing a 2D overlay system with traditional interfaces, using point-based rendering instead of outlining edges, integrating existing third-party holographic tools instead of developing in-house solutions, and simplifying interactions by removing gesture-based controls.</p>
+</section>
+<section id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all" class="level2">
+<h2 class="anchored" data-anchor-id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all">When might the proposed solution be used rarely or not at all?</h2>
+<p>The solution may see limited use in environments lacking hardware support for holographic or virtual reality displays. It may be unnecessary for simple projects that do not require advanced visualization or interaction features. High resource constraints could hinder support for the overlay, and some users may prefer traditional interfaces over holographic ones.</p>
+</section>
+<section id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us">Is this a V-Sekai core responsibility, and should it be done by us?</h2>
+<p>Yes, developing the holographic overlay aligns with V-Sekai’s mission to enhance social VR functionalities. Implementing this feature will strengthen our core offerings and provide significant value to our user base.</p>
+</section>
+<section id="what-is-the-status-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-status-of-the-proposal">What is the status of the proposal?</h2>
+<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="who-is-making-decisions-on-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="who-is-making-decisions-on-the-proposal">Who is making decisions on the proposal?</h2>
+<p>V-Sekai development team</p>
+</section>
+<section id="what-tags-does-the-proposal-have" class="level2">
+<h2 class="anchored" data-anchor-id="what-tags-does-the-proposal-have">What tags does the proposal have?</h2>
+<p>V-Sekai</p>
+</section>
+<section id="list-further-reading-references" class="level2">
+<h2 class="anchored" data-anchor-id="list-further-reading-references">List further reading references</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project, which integrates social VR/VRSNS/metaverse components into the Godot Engine.</li>
+<li><a href="https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Vendor/CESIUM_primitive_outline/README.md">CESIUM Primitive Outline</a> - Describes the CESIUM Primitive Outline extension for rendering triangle edges with high-quality, anti-aliased lines.</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20250126-primitive-outline.html</guid>
+  <pubDate>Thu, 29 May 2025 07:43:58 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20250126-multiplayer-sync-between-godot-instances.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="proposed-multiplayer-sync-between-different-godot-instances" class="level1">
+<h1>Proposed: Multiplayer Sync Between Different Godot Instances</h1>
+<section id="what-is-the-context-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-context-of-the-proposal">What is the context of the proposal?</h2>
+<p>We aim to enhance multiplayer capabilities in the Godot Engine by synchronizing node scene trees across different instances.</p>
+</section>
+<section id="what-is-the-problem-being-solved" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-problem-being-solved">What is the problem being solved?</h2>
+<p>Currently, synchronizing complex node scene trees in multiplayer scenarios within Godot is challenging. There’s a need for an efficient method to ensure consistency across all client instances.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>The proposal involves implementing a synchronization protocol that mirrors the node scene tree structure across all multiplayer instances. This includes:</p>
+<ul>
+<li><p><strong>Syncing Node Trees:</strong> Establishing real-time updates, property synchronization, and state management to ensure all clients reflect the same scene tree.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode gdscript code-with-copy"><code class="sourceCode gdscript"><span id="cb1-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">func</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sync_scene_tree</span>(node):</span>
+<span id="cb1-2">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> child <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> node.<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">get_children</span>():</span>
+<span id="cb1-3">                <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">update_network_properties</span>(child)</span>
+<span id="cb1-4">                <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sync_scene_tree</span>(child)</span></code></pre></div></li>
+</ul>
+</section>
+<section id="what-are-the-benefits-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</h2>
+<p>This proposal ensures consistency by providing all multiplayer clients with a synchronized view of the scene. Performance is enhanced by offloading heavy operations to a shadow tree, preventing main thread blockages. Scalability is facilitated through reliable synchronization of multiplayer environments.</p>
+</section>
+<section id="what-are-the-downsides-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-downsides-of-the-proposal">What are the downsides of the proposal?</h2>
+<p>There is increased complexity from implementing synchronization protocols. Latency issues might occur with high-frequency updates.</p>
+</section>
+<section id="what-are-the-alternative-proposals" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-alternative-proposals">What are the alternative proposals?</h2>
+<ul>
+<li>Server-side authority: Centralizing scene management on the server to control synchronization.</li>
+<li>State interpolation: Managing discrepancies through interpolation techniques.</li>
+<li>Decentralized synchronization: Allowing clients to manage their own logic without a central protocol.</li>
+</ul>
+</section>
+<section id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all" class="level2">
+<h2 class="anchored" data-anchor-id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all">When might the proposed solution be used rarely or not at all?</h2>
+<p>In single-player environments or where scene complexity is minimal, the synchronization overhead might be unnecessary.</p>
+<p>We do not maintain a shadow tree for web server gltf-binary export, since it’s only another synced gltf instance.</p>
+</section>
+<section id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us">Is this a V-Sekai core responsibility, and should it be done by us?</h2>
+<p>Yes, managing multiplayer synchronization and asset generation aligns with V-Sekai’s focus on enhancing social VR functionalities within the Godot Engine ecosystem.</p>
+</section>
+<section id="what-is-the-status-of-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-status-of-the-proposal">What is the status of the proposal?</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="who-is-making-decisions-on-the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="who-is-making-decisions-on-the-proposal">Who is making decisions on the proposal?</h2>
+<ul>
+<li>V-Sekai development team</li>
+</ul>
+</section>
+<section id="what-tags-does-the-proposal-have" class="level2">
+<h2 class="anchored" data-anchor-id="what-tags-does-the-proposal-have">What tags does the proposal have?</h2>
+<ul>
+<li>V-Sekai</li>
+</ul>
+</section>
+<section id="list-further-reading-references" class="level2">
+<h2 class="anchored" data-anchor-id="list-further-reading-references">List further reading references</h2>
+<ol type="1">
+<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a></li>
+<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a></li>
+<li><a href="https://github.com/mas-bandwidth/fps/blob/main/001/README.md?ref=mas-bandwidth.com">mas-bandwidth/fps</a></li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20250126-multiplayer-sync-between-godot-instances.html</guid>
+  <pubDate>Thu, 29 May 2025 07:43:58 GMT</pubDate>
+</item>
+</channel>
+</rss>
