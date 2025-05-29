@@ -1,102 +1,29 @@
 ---
 title: "Changes to V-Sekai"
 toc: true
+listing:
+  filter-ui: true
+  type: table
+  contents:
+    - "changelog/**/*.md"
+  sort: "filename dsc"
+  feed: true
+  fields: [title]
 ---
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project does **not** adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project does **not** adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-**Added** for new features.
-
-**Changed** for changes in existing functionality.
-
-**Deprecated** for soon-to-be removed features.
-
-**Removed** for now removed features.
-
-**Fixed** for any bug fixes.
-
-**Security** in case of vulnerabilities.
-
-```{python}
-#| echo: false
-#| output: asis
-
-import glob
-import pandas as pd
-from itables import show
-import os
-import sys
-import subprocess
-import datetime # Added
-
-# Install readtime if not already installed
-try:
-    import readtime
-except ImportError:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "readtime"])
-    import readtime
-
-# Collect all markdown files in changelog
-files = [f for f in glob.glob("changelog/**/*.md", recursive=True)]
-
-def estimate_reading_time(filepath):
-    with open(filepath, encoding="utf-8") as f:
-        text = f.read()
-    result = readtime.of_text(text)
-    return result.text  # e.g., "1 min read"
-
-def extract_h1_title(filepath):
-    with open(filepath, encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-            if line.startswith("# "):
-                return line[2:].strip()
-    # fallback to filename if no H1 found
-    return os.path.splitext(os.path.basename(filepath))[0]
-
-def shorten_title(title, length=40):
-    return title if len(title) <= length else title[:length-3] + "..."
-
-rows = []
-for f in files:
-    filename = os.path.basename(f) # e.g., "20250527-deck-log.md"
-    
-    # Derive display title from filename for changelog entries
-    display_title = ""
-    # Check if filename seems to follow the YYYYMMDD-deck-log.md pattern
-    if len(filename) >= 8 and filename[:8].isdigit() and "deck-log" in filename:
-        file_stem_date_str = filename[:8] # "20250527"
-        try:
-            dt_obj = datetime.datetime.strptime(file_stem_date_str, "%Y%m%d")
-            formatted_date = dt_obj.strftime("%Y-%m-%d") # "2025-05-27"
-            day_of_week = dt_obj.strftime("%A") # "Tuesday"
-            display_title = f"V-Sekai Deck Log - {formatted_date} ({day_of_week})"
-        except ValueError:
-            # Parsing failed, will fallback to H1
-            pass
-
-    if not display_title: # If title couldn't be derived from filename
-        display_title = extract_h1_title(f) # Fallback to H1 from file
-
-    short_title = shorten_title(display_title)
-    reading_time = estimate_reading_time(f)
-    # filename = os.path.basename(f) is defined earlier
-
-    # The following block replaces the old URL construction logic
-    # (previously lines involving html_filename, dir_path, year_for_url_path, and conditional url assignment)
-    relative_html_path = f.replace('.md', '.html').replace(os.sep, '/')
-    url = f"/{relative_html_path}"
-    # End of replaced block for URL construction
-    
-    link = f'<a href="{url}">{short_title}</a>'
-    rows.append({"title": link, "reading-time": reading_time, "filename": filename,})
-
-columns = ["title", "reading-time", "filename"]
-df = pd.DataFrame(rows, columns=columns)
-if not df.empty:
-    df = df.sort_values("filename", ascending=False)
-
-show(df, paging=True, pageLength=10, index=False, escape=False)
-```
+ **Added** for new features.
+ 
+ **Changed** for changes in existing functionality.
+ 
+ **Deprecated** for soon-to-be removed features.
+ 
+ **Removed** for now removed features.
+ 
+ **Fixed** for any bug fixes.
+ 
+ **Security** in case of vulnerabilities.
