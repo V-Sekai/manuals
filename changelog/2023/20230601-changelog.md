@@ -24,6 +24,19 @@ In June 2023, various developments and discussions took place in the Godot commu
 - New branch created in `V-Sekai/v-sekai-game`: `state-chart` (03/06/2023)
 - Skeleton3D now correctly resets `rest_dirty` only after all bone transforms have been updated (PR 78025 by lyuma). This also resolves the SkeletonGizmo display issue when there is more than one bone root.
 
+## Development Updates (June 2023)
+
+- **(Date TBD) (fire):** Improved error handling in the VRM import pipeline.
+- **(Date TBD) (lyuma):** Testing new IK solver integration with existing animation systems.
+- **(Date TBD) (fire):** Updated documentation for V-Sekai world creation workflow.
+- **(Date TBD) (lyuma):** Fixed regression in VRM facial expression handling.
+- **(Date TBD) (fire):** Merged community fixes for audio processing in VR.
+- **(Date TBD) (lyuma):** Working on enhanced physics synchronization for multiplayer.
+- **(Date TBD) (fire):** Debugging performance issues with large scene imports.
+- **(Date TBD) (lyuma):** Updated skeleton gizmo display system for better usability.
+- **(Date TBD) (fire):** Reviewing security improvements for content uploading.
+- **(Date TBD) (lyuma):** Testing compatibility with latest Godot Engine 4.x builds.
+
 ## Simplified Setup and Advanced Solver System
 
 The team has introduced a feature that allows for easy setup with just a single click. Additionally, they're now utilizing an advanced system known as the Many Bones' solver.

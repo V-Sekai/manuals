@@ -25,6 +25,11 @@
   - make a tutorial for world uploads
   - nametag game meeting functionality
     - getting audio working for first in engine town hall meeting 2025
+- **December 17**: fire: Working on improved mesh validation and error handling
+- **December 16**: lyuma: Updated VRM spring bone physics calculations
+- **December 15**: fire: Testing new CSG operations with Manifold integration
+- **December 14**: lyuma: Debugging skeleton retargeting edge cases
+- **December 13**: fire: Merged updates to the audio processing pipeline
 
 ### Fixed
 

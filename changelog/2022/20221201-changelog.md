@@ -4,36 +4,47 @@ This is the changelog for December 2022.
 
 # 2022-12-05
 
-Restored AEC3 to speech for echo cancellation.
+- Restored AEC3 to speech for echo cancellation.
 
 # 2022-12-06
 
-Some reorganization of the the V-Sekai-game issues and the proposal repository to move bugs to V-Sekai-game and enhancements to the proposal repository. Organized the issues and put some videos for some of them. The Japanese tokyo world bug with the 30 second lag between load was funny.
-
-Moved enhancements to <https://github.com/V-Sekai/V-Sekai.github.io> and bugs to <https://github.com/V-Sekai/v-sekai-game/issues>.
-
-Godot Speech now includes echo cancellation using WebRTC AEC3. Thanks iFire for adding it and getting it building. (some of the builds had issues but they should be resolved) .
+- (chibifire) Reorganized V-Sekai game issues and proposal repository: bugs to `V-Sekai/v-sekai-game`, enhancements to `V-Sekai/V-Sekai.github.io`.
+- (lyuma) Godot Speech now includes echo cancellation using WebRTC AEC3 (thanks to @iFire).
 
 # 2022-12-12
 
-MMMaellon updated the V-Sekai game fov to 70.
+- (MMMaellon) Updated V-Sekai game FOV to 70.
+- (Lyuma, Saracen, fire, Tokage) Animation meeting discussing open issues, extending/overriding AnimationNode classes. Agreed to punt SkeletonModificationStack3D to 4.1 and remove from 4.0 due to bugginess.
 
-Lyuma — Today at 00:34
+# 2022-12-14
 
-We had an animation meeting with people in the Godot rocketchat.
+- **02:42 AM (lyuma):** Implemented oblique clipping plane for screenspace mirrors.
+  ![oblique clipping plane for screenspace mirrors](attachments/Screenshot_Wed_Dec_14_02-39-03_2022_VR.png)
+- **04:12 AM (lyuma):** Shared engine patch for projection override ([V-Sekai/godot/tree/override_projection](https://github.com/V-Sekai/godot/tree/override_projection)) and VR Demo branch for screenspace mirror ([V-Sekai/avatar_vr_demo/tree/screenspace_mirror](https://github.com/V-Sekai/avatar_vr_demo/tree/screenspace_mirror)).
 
-We went through the issues in this list:
-<https://docs.google.com/spreadsheets/d/16Al_PUHAUJE0S3XXtBpmA6MQIA_9sx57BXEisW1EAB0/edit#gid=0>
-Google Docs
-(Saracen / Lyuma / Fire / Tokage) A list of open issues/bugs/PRs th...
+# 2022-12-16
 
-Pretty excited about some of these changes if they can get merged, especially the ability to extend and override AnimationNode classes, such as from a GDExtension plugin
+- **08:04 AM (chibifire):** Updated staging V-Sekai engine build with mirror and projection override patches; awaiting multiplayer test.
+- **08:26 AM (chibifire):** Wrote proposal for resource migration scheme ([Godot Proposals #5945](https://github.com/godotengine/godot-proposals/issues/5945)).
+- **09:05 AM (chibifire):** Switched staging V-Sekai engine build to `groups-4.x` branch and updated some game code.
+- **11:34 AM (chibifire):** Added the CC0 hut (without mirrors) to a map/project.
 
-We agreed to punt SkeletonModificationStack3D until 4.1. I think we will remove it from 4.0 because it is very buggy in its present state and there is not enough time to develop a good system for IK
+# 2022-12-17
 
-# 2022-12-15
+- **08:06 AM (chibifire):** Fixed hand T-pose: open palm now faces the ground.
+- **08:06 AM (chibifire):** Confirmed posing system is working (video shared, pre-palm fix).
 
-![oblique clipping plane for screenspace mirrors](attachments/Screenshot_Wed_Dec_14_02-39-03_2022_VR.png)
+# 2022-12-18
 
-<Lyuma\> Engine patch: <https://github.com/V-Sekai/godot/tree/override_projection>
-VR Demo branch based on Saracen's code: <https://github.com/V-Sekai/avatar_vr_demo/tree/screenspace_mirror> It's missing some of the newer changes but anyway that's what I have.
+- **12:29 PM (chibifire):** Lasso interaction implemented: can pull and hold physics objects (e.g., basketball).
+
+# 2022-12-20
+
+- **01:34 PM (chibifire):** Lasso interaction now initiated by OpenXR trigger action.
+- **01:35 PM (chibifire):** Fixed issue with duplicate lassos caused by duplicate main menus.
+- **05:40 PM (lyuma):** Shared Godot Engine article on the status of the OpenGL renderer ([Link](https://godotengine.org/article/status-of-opengl-renderer)).
+- **06:09 PM (chibifire):** Shared demo videos from Monday (2022-12-19) showcasing recent progress; control sensitivity improved later.
+
+# 2022-12-27
+
+- **06:43 AM (chibifire):** Created and shared videos for Many Bone IK development over the holidays ([V-Sekai/many_bone_ik](https://github.com/V-Sekai/many_bone_ik)).
