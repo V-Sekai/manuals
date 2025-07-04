@@ -126,5 +126,6 @@ Status: Active <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supers
 1. <https://esperecyan.github.io/VRMConverterForVRChat/registry.json>
 1. <https://vpm.nadena.dev/vpm.json>
 1. <https://lilxyzw.github.io/vpm-repos/vpm.json>
+2. <https://redsim.github.io/vpmlisting/index.json>
 
 AI assistant Aria assisted with this article.
