@@ -308,55 +308,65 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Voyage noticed that Vket box uses GLTF2 and VRM with animations.</li>
 </ul></li>
-<li><p><strong>V-Sekai: Your world, with friends</strong> (Sorted by Priority - Highest to Lowest)</p>
+<li><p><strong>V-Sekai: Your world, with friends</strong> (Cold Start Order - By Dependencies &amp; Priority)</p>
 <ul>
-<li>ROOT: “Your world, with friends.”
+<li><p>ROOT: “Your world, with friends.”</p>
+<p><strong>PHASE 1: Foundation Layer (Entry Point &amp; Basic Assets)</strong></p>
 <ul>
-<li>L1_REQUIREMENT: The infrastructure to be “with friends” seamlessly.
+<li>L1_REQUIREMENT: Basic user entry and asset foundation
 <ul>
-<li>L2_FEATURE: Backend Server (To connect all users) - <strong>Priority 78</strong> 🚨
+<li>L2_FEATURE: Website &amp; One-URL Install (To provide a low-friction entry point for friends.)
 <ul>
-<li>Multi-User Instance 🌐 - 10-player test environment</li>
+<li><strong>Planning:</strong> Try to get the in-app signup flow working and push stage to be the main site</li>
+<li><strong>Dependency:</strong> Required before users can join</li>
 </ul></li>
-<li>L2_FEATURE: High-Quality Voice Chat (To communicate naturally.) - <strong>Priority 48</strong>
+<li>L2_FEATURE: Asset Importers - Basic Pipeline (Priority 26-43)
 <ul>
-<li><strong>Planning:</strong>
-<ul>
-<li>And audio would be cool to get working</li>
-</ul></li>
-<li>Voice Chat 🔊 - Chat with voice</li>
-<li>Directional VOIP 🔊 - Distance-based voice channel clarity (Priority 37)</li>
-</ul></li>
-</ul></li>
-<li>L1_REQUIREMENT: The tools to create and control “Your world.”
-<ul>
-<li>L2_FEATURE: Asset Importers (unidot, vrm) (To populate it with your personal assets.) - <strong>Priority 43</strong>
-<ul>
+<li>Model Importer 🎨 - FBX/GLB load test (Priority 26)</li>
+<li>VRM Trial 🕶️ - Single-avatar import test (Priority 40)</li>
+<li>UGC Upload 🛠️ - Basic model/texture submission (Priority 43)</li>
 <li><strong>Planning:</strong>
 <ul>
 <li>What IK tasks are still needed?</li>
 <li>QA / integration testing with test cases.</li>
 <li>The height offset / armspan is a known issue</li>
 </ul></li>
-<li>UGC Upload 🛠️ - Basic model/texture submission (Priority 43)</li>
-<li>VRM Trial 🕶️ - Single-avatar import test (Priority 40)</li>
-<li>Model Importer 🎨 - FBX/GLB load test (Priority 26)</li>
+<li><strong>Dependency:</strong> Asset system needed before multiplayer content</li>
 </ul></li>
-<li>L2_FEATURE: In-Game Scripting (To define its rules and behaviors.) - <strong>Priority 22</strong>
+</ul></li>
+</ul>
+<p><strong>PHASE 2: Core Infrastructure (Networking &amp; Basic Tools)</strong></p>
+<ul>
+<li>L1_REQUIREMENT: The infrastructure to be “with friends” seamlessly.
+<ul>
+<li>L2_FEATURE: Backend Server (To connect all users) - <strong>Priority 78</strong> 🚨
+<ul>
+<li>Multi-User Instance 🌐 - 10-player test environment</li>
+<li><strong>Dependency:</strong> Foundation for all multiplayer features</li>
+</ul></li>
+<li>L2_FEATURE: Basic Scripting Infrastructure (Priority 22)
 <ul>
 <li>Script Console 💻 - Runtime command input</li>
+<li><strong>Dependency:</strong> Core scripting capability needed before advanced features</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><strong>PHASE 3: User Experience Layer (Communication &amp; Advanced Tools)</strong></p>
+<ul>
+<li>L1_REQUIREMENT: Enhanced user interaction capabilities
+<ul>
+<li>L2_FEATURE: High-Quality Voice Chat (To communicate naturally.) - <strong>Priority 48</strong>
+<ul>
+<li><strong>Planning:</strong> And audio would be cool to get working</li>
+<li>Voice Chat 🔊 - Chat with voice (Priority 48)</li>
+<li>Directional VOIP 🔊 - Distance-based voice channel clarity (Priority 37)</li>
+<li><strong>Dependency:</strong> Requires backend server to be functional</li>
+</ul></li>
+<li>L2_FEATURE: Advanced Creation Tools (Priority 20-32)
+<ul>
+<li>Build Duplicator 🏗️ - Object copy/paste tool (Priority 32)</li>
 <li>Script Editing Sandbox 💻 - On-the-fly gameplay scripting (Priority 20)</li>
-</ul></li>
-<li>L2_FEATURE: Collaborative Building (To shape the world.) - <strong>Priority 32</strong>
-<ul>
-<li>Build Duplicator 🏗️ - Object copy/paste tool</li>
-</ul></li>
-<li>L2_FEATURE: Website &amp; One-URL Install (To provide a low-friction entry point for friends.)
-<ul>
-<li><strong>Planning:</strong>
-<ul>
-<li>Try to get the in-app signup flow working and push stage to be the main site</li>
-</ul></li>
+<li><strong>Dependency:</strong> Requires basic asset system and scripting infrastructure</li>
 </ul></li>
 </ul></li>
 </ul></li>
