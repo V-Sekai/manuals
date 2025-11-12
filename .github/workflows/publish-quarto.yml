@@ -21,9 +21,24 @@ jobs:
         run: |
           # Install MiniZinc from official website to get chuffed solver
           MINIZINC_VERSION="2.9.4"
-          wget -q https://github.com/MiniZinc/MiniZincIDE/releases/download/${MINIZINC_VERSION}/MiniZinc-${MINIZINC_VERSION}-x86_64-linux.tar.gz
-          tar -xzf MiniZinc-*.tar.gz
-          MINIZINC_DIR=$(ls -d MiniZinc-* | head -1)
+          # Download MiniZinc using curl with retry logic
+          set +e
+          curl -L -f -o minizinc.tar.gz "https://github.com/MiniZinc/MiniZincIDE/releases/download/${MINIZINC_VERSION}/MiniZinc-${MINIZINC_VERSION}-x86_64-linux.tar.gz" || \
+          curl -L -f -o minizinc.tar.gz "https://github.com/MiniZinc/MiniZincIDE/releases/download/${MINIZINC_VERSION}/MiniZincIDE-${MINIZINC_VERSION}-bundled-x86_64-linux.tar.gz" || \
+          curl -L -f -o minizinc.tar.gz "https://github.com/MiniZinc/MiniZincIDE/releases/download/${MINIZINC_VERSION}/MiniZinc-${MINIZINC_VERSION}-linux-x86_64.tar.gz"
+          set -e
+          if [ ! -f minizinc.tar.gz ]; then
+            echo "Error: Failed to download MiniZinc. Checking available releases..."
+            curl -s https://api.github.com/repos/MiniZinc/MiniZincIDE/releases | grep -o '"tag_name":"[^"]*"' | head -5
+            exit 1
+          fi
+          tar -xzf minizinc.tar.gz
+          MINIZINC_DIR=$(ls -d MiniZinc-* 2>/dev/null | head -1)
+          if [ -z "$MINIZINC_DIR" ]; then
+            echo "Error: Could not find MiniZinc directory after extraction"
+            ls -la
+            exit 1
+          fi
           mv ${MINIZINC_DIR} ./minizinc
           echo "${{ github.workspace }}/minizinc/bin" >> $GITHUB_PATH
           ./minizinc/bin/minizinc --version
