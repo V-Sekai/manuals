@@ -33,7 +33,7 @@ array[1..n_categories] of int: category_count =
 
 % Calculate category average priority
 constraint forall(c in 1..n_categories) (
-    category_priority_avg[c] = (category_priority_sum[c] * 1.0) / max(category_count[c], 1) * 1.0
+    category_priority_avg[c] = float(category_priority_sum[c]) / float(max(category_count[c], 1))
 );
 
 % Solve: Just satisfy constraints (no optimization needed for basic calculation)
