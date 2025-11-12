@@ -14,23 +14,21 @@ array[1..n_voters, 1..n_tasks] of int: votes;  % votes[voter][task]
 
 % Variables
 array[1..n_tasks] of var int: avg_priority;  % Calculated average priority
-array[1..n_categories] of var int: category_priority_sum;  % Sum of priorities per category
 
 % Constraints: Calculate average priority for each task
 constraint forall(t in 1..n_tasks) (
     avg_priority[t] = sum(v in 1..n_voters)(votes[v, t]) div n_voters
 );
 
-% Constraints: Calculate category statistics
-constraint forall(c in 1..n_categories) (
-    category_priority_sum[c] = sum(t in 1..n_tasks where task_category[t] = c)(task_priority[t])
-);
-
 % Helper: count tasks per category
 array[1..n_categories] of int: category_count = 
     [sum(t in 1..n_tasks where task_category[t] = c)(1) | c in 1..n_categories];
 
-% Calculate category average priority (computed value, not a variable)
+% Calculate category statistics (computed from parameters, not variables)
+array[1..n_categories] of int: category_priority_sum = 
+    [sum(t in 1..n_tasks where task_category[t] = c)(task_priority[t]) | c in 1..n_categories];
+
+% Calculate category average priority (computed value from parameters)
 array[1..n_categories] of float: category_priority_avg = 
     [int2float(category_priority_sum[c]) / int2float(max(category_count[c], 1)) | c in 1..n_categories];
 
