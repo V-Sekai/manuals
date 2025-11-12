@@ -10,40 +10,116 @@ format:
 #| echo: false
 #| output: asis
 
-import vote
+import json
+import subprocess
 import pandas as pd
 from itables import init_notebook_mode, show
+from pathlib import Path
 
 init_notebook_mode(all_interactive=False)
 
-results = vote.run_election('./roadmap/votes', 1, "./roadmap/tasks.csv")
+# Generate MiniZinc data and solve
+roadmap_dir = Path('./roadmap')
+minizinc_output = roadmap_dir / 'roadmap_output.txt'
 
-df = results["avg_table"]
+# Check if MiniZinc output exists, if not generate it
+if not minizinc_output.exists():
+    try:
+        # Generate data
+        subprocess.run(['python3', 'generate_minizinc_data.py'], 
+                       cwd=str(roadmap_dir), check=True)
+        # Solve with chuffed solver (may fail locally if minizinc version differs)
+        try:
+            result = subprocess.run(['minizinc', '--solver', 'chuffed', 'roadmap.mzn', 'roadmap_data.dzn'], 
+                           cwd=str(roadmap_dir), 
+                           capture_output=True,
+                           text=True,
+                           check=True)
+            # Write output to file
+            minizinc_output.write_text(result.stdout)
+        except (subprocess.CalledProcessError, FileNotFoundError) as e:
+            # If minizinc fails locally, try without solver specification
+            try:
+                result = subprocess.run(['minizinc', 'roadmap.mzn', 'roadmap_data.dzn'], 
+                               cwd=str(roadmap_dir), 
+                               capture_output=True,
+                               text=True,
+                               check=True)
+                minizinc_output.write_text(result.stdout)
+            except subprocess.CalledProcessError as e2:
+                # Capture both stdout and stderr for debugging
+                error_msg = f"MiniZinc error: {str(e2)}\n"
+                if e2.stdout:
+                    error_msg += f"stdout: {e2.stdout}\n"
+                if e2.stderr:
+                    error_msg += f"stderr: {e2.stderr}\n"
+                minizinc_output.write_text(error_msg)
+            except Exception as e3:
+                # If both fail, write error info for debugging
+                error_msg = f"MiniZinc error: {str(e3)}\n"
+                minizinc_output.write_text(error_msg)
+    except Exception as e:
+        # If generation fails, create empty file
+        minizinc_output.write_text("")
 
-# Keep non-archived tasks only
-df = df[df['Archived_on'].isna()]
+# Process MiniZinc output
+if minizinc_output.exists() and minizinc_output.stat().st_size > 0:
+    try:
+        process_result = subprocess.run(
+            ['python3', 'process_minizinc_for_quarto.py', 
+             'roadmap_output.txt', 'tasks.csv'],
+            cwd=str(roadmap_dir),
+            capture_output=True, text=True, check=True
+        )
+        results = json.loads(process_result.stdout)
+    except Exception as e:
+        # Fallback to empty results if processing fails
+        results = {"avg_table": [], "winners": [], "categories": {}, "summary": {}}
+else:
+    # No output file or empty - use empty results
+    results = {"avg_table": [], "winners": [], "categories": {}, "summary": {}}
 
-if "Archived_on" in df.columns:
-    df = df.drop(columns=["Archived_on"])
+# Convert to DataFrame
+df = pd.DataFrame(results.get("avg_table", []))
 
-# Reorder columns
-df = df[["Category","Task","Priority","Notes"]]
+# Handle empty dataframe
+if df.empty:
+    # Check if there was a MiniZinc error
+    error_info = ""
+    if minizinc_output.exists() and minizinc_output.stat().st_size > 0:
+        content = minizinc_output.read_text()
+        if "Error:" in content or "error" in content.lower():
+            error_info = f"\n\n**MiniZinc Error Details:**\n```\n{content[:500]}\n```\n"
+    
+    print("## Feature List\n\nNo active tasks found. MiniZinc calculation may not have completed successfully.")
+    print(f"\n*Note: This may be due to a local MiniZinc version compatibility issue. The GitHub Actions workflow will generate the full results with the correct MiniZinc version.*{error_info}\n")
+else:
+    # Keep non-archived tasks only (already filtered in process_minizinc_for_quarto.py)
+    if "Archived_on" in df.columns:
+        df = df.drop(columns=["Archived_on"])
 
-# Move high priority to top
-df["highpriority"] = df["Task"].apply(lambda x: 0 if x in results["winners"] else 1)
-df = df.sort_values(by="highpriority").drop(columns=["highpriority"])
-df.reset_index(drop=True, inplace=True)
+    # Reorder columns (only if they exist)
+    available_columns = [col for col in ["Category","Task","Priority","Notes"] if col in df.columns]
+    if available_columns:
+        df = df[available_columns]
 
-df.loc[df["Task"].isin(results["winners"]), "Task"] += " - 🚨 (High Priority)"
+    # Move high priority to top
+    winners = results.get("winners", [])
+    if "Task" in df.columns and winners:
+        df["highpriority"] = df["Task"].apply(lambda x: 0 if x in winners else 1)
+        df = df.sort_values(by="highpriority").drop(columns=["highpriority"])
+        df.loc[df["Task"].isin(winners), "Task"] += " - 🚨 (High Priority)"
+    
+    df.reset_index(drop=True, inplace=True)
 
-print("""
+    print("""
 
 ## Feature List
 
 Features with 🚨 symbol were voted as top priority with Proportional Star Voting. Priority column is an average of votes for every feature.
 
 """)
-show(df, paging=False, pageLength=50)
+    show(df, paging=False, pageLength=50)
 
 print("""
 ## Archived Tasks
@@ -54,7 +130,18 @@ Archived tasks
 <summary>Show archived tasks</summary>
 """)
 
-archived_tasks_df = vote.get_archived_tasks_table('./roadmap/tasks.csv')
+# Get archived tasks
+import csv
+archived_tasks = []
+with open('./roadmap/tasks.csv', 'r', encoding='utf-8') as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        archived_on = row.get('Archived_on', '').strip()
+        if archived_on and archived_on.lower() != 'null':
+            archived_tasks.append(row)
+archived_tasks_df = pd.DataFrame(archived_tasks)
+if not archived_tasks_df.empty:
+    archived_tasks_df = archived_tasks_df.sort_values(by='Archived_on', ascending=False)
 archived_tasks_df["Notes"] = archived_tasks_df["Notes"].fillna("")
 archived_tasks_df.reset_index(drop=True, inplace=True)
 
@@ -75,7 +162,19 @@ Raw votes count
 
 """)
 
-votes_dict = vote.get_votes('./roadmap/votes')
+# Get votes from CSV files
+from pathlib import Path
+votes_dict = {}
+votes_dir = Path('./roadmap/votes')
+for csv_file in sorted(votes_dir.glob('*.csv')):
+    voter = csv_file.stem
+    with open(csv_file, 'r', encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        votes_dict[voter] = {}
+        for row in reader:
+            task = row.get('Task', '').strip()
+            vote_val = int(row.get('Vote', '0').strip() or '0')
+            votes_dict[voter][task] = vote_val
 votes_df = pd.DataFrame(votes_dict)
 votes_df = votes_df.fillna(0)
 show(votes_df, paging=False)
