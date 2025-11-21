@@ -2,7 +2,7 @@
 
 ## The Context
 
-VRChat (VRC) and Virtual Reality Model (VRM) are two popular things used in the creation of virtual reality content. However, they are not inherently compatible with each other, which can cause issues for developers trying to use both in their projects.
+VRChat (VRC) and VRM are two popular things used in the creation of virtual reality content. However, they are not inherently compatible with each other, which can cause issues for developers trying to use both in their projects.
 
 ## The Problem Statement
 
