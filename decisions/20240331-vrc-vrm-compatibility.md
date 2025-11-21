@@ -127,5 +127,6 @@ Status: Active <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supers
 1. <https://vpm.nadena.dev/vpm.json>
 1. <https://lilxyzw.github.io/vpm-repos/vpm.json>
 2. <https://redsim.github.io/vpmlisting/index.json>
+3. <https://ramtype0.github.io/VpmRepository/index.json>
 
 AI assistant Aria assisted with this article.
