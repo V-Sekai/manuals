@@ -9,8 +9,8 @@
 <link>https://v-sekai.github.io/manuals/decisions.html</link>
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.7.33</generator>
-<lastBuildDate>Tue, 19 Aug 2025 15:53:49 GMT</lastBuildDate>
+<generator>quarto-1.8.26</generator>
+<lastBuildDate>Fri, 21 Nov 2025 13:12:22 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -101,7 +101,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Tue, 19 Aug 2025 15:53:49 GMT</pubDate>
+  <pubDate>Fri, 21 Nov 2025 13:12:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -126,7 +126,7 @@
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
 <p>This proposal outlines setting up a single CockroachDB v22.1 node as a secure systemd service on Linux.</p>
 <p><strong>1. Installation:</strong> Download the CockroachDB v22.1 binary and place it in <code>/usr/local/bin/</code>.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Download and extract</span></span>
 <span id="cb1-2"><span class="ex" style="color: null;
@@ -162,9 +162,9 @@ font-style: inherit;">-i</span> cockroach-v22.1.linux-amd64/lib/libgeos.so /usr/
 background-color: null;
 font-style: inherit;">sudo</span> cp <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">-i</span> cockroach-v22.1.linux-amd64/lib/libgeos_c.so /usr/local/lib/cockroach/</span></code></pre></div>
+font-style: inherit;">-i</span> cockroach-v22.1.linux-amd64/lib/libgeos_c.so /usr/local/lib/cockroach/</span></code></pre></div></div>
 <p><strong>2. Security Setup:</strong> Generate CA, node, and client certificates. Store them in a secure directory (e.g., <code>/var/lib/cockroach/certs</code>). Ensure appropriate permissions.</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Create directories</span></span>
 <span id="cb2-2"><span class="va" style="color: #111111;
@@ -298,9 +298,9 @@ font-style: inherit;">"</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">${CERT_DIR}</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">/ca.key"</span></span></code></pre></div>
+font-style: inherit;">/ca.key"</span></span></code></pre></div></div>
 <p><strong>3. Systemd Service:</strong> Create a systemd unit file <code>/etc/systemd/system/cockroachdb.service</code>.</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># File: /etc/systemd/system/cockroachdb.service</span></span>
 <span id="cb3-2"><span class="kw" style="color: #003B4F;
@@ -488,10 +488,10 @@ font-style: inherit;">WantedBy</span><span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">multi-user.target</span></span></code></pre></div>
+font-style: inherit;">multi-user.target</span></span></code></pre></div></div>
 <p><em>Note: The default <code>ExecStart</code> uses <code>cockroach start-single-node</code>. For a multi-node cluster, comment out the <code>start-single-node</code> command and uncomment/adjust the <code>cockroach start</code> command, ensuring the <code>--join</code> addresses are correct.</em> <em>Note: Create the <code>cockroach</code> user and group if they don’t exist.</em> <em>Note: Create the data directory <code>/var/lib/cockroach/data</code> and set ownership.</em></p>
 <p><strong>4. Enable &amp; Start:</strong></p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">sudo</span> systemctl daemon-reload</span>
 <span id="cb4-2"><span class="fu" style="color: #4758AB;
@@ -502,7 +502,7 @@ background-color: null;
 font-style: inherit;">sudo</span> systemctl start cockroachdb.service</span>
 <span id="cb4-4"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">sudo</span> systemctl status cockroachdb.service</span></code></pre></div>
+font-style: inherit;">sudo</span> systemctl status cockroachdb.service</span></code></pre></div></div>
 </section>
 <section id="the-benefits" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
@@ -580,7 +580,7 @@ font-style: inherit;">sudo</span> systemctl status cockroachdb.service</span></c
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250427-system-cockroachdb-setup.html</guid>
-  <pubDate>Tue, 19 Aug 2025 15:53:49 GMT</pubDate>
+  <pubDate>Fri, 21 Nov 2025 13:12:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -713,7 +713,7 @@ font-style: inherit;">sudo</span> systemctl status cockroachdb.service</span></c
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250427-recommender-system.html</guid>
-  <pubDate>Tue, 19 Aug 2025 15:53:49 GMT</pubDate>
+  <pubDate>Fri, 21 Nov 2025 13:12:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -926,7 +926,7 @@ font-style: inherit;">sudo</span> systemctl status cockroachdb.service</span></c
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250427-backpack.html</guid>
-  <pubDate>Tue, 19 Aug 2025 15:53:49 GMT</pubDate>
+  <pubDate>Fri, 21 Nov 2025 13:12:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -950,7 +950,7 @@ font-style: inherit;">sudo</span> systemctl status cockroachdb.service</span></c
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
 <p>We propose creating a systemd service unit file to manage Tailscale Funnel for exposing a specific port (e.g., 8888) on a VM. The service will ensure that Tailscale Funnel starts automatically on boot and restarts on failure. Below is the systemd unit file configuration:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb1-1"><span class="dt" style="color: #AD0000;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb1-1"><span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">File: /etc/systemd/system/tailscale-funnel.service</span></span>
 <span id="cb1-2"><span class="kw" style="color: #003B4F;
@@ -1030,9 +1030,9 @@ font-style: inherit;">WantedBy</span><span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">multi-user.target</span></span></code></pre></div>
+font-style: inherit;">multi-user.target</span></span></code></pre></div></div>
 <p>Commands to enable and start the service:</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">sudo</span> systemctl daemon-reload</span>
 <span id="cb2-2"><span class="fu" style="color: #4758AB;
@@ -1042,7 +1042,7 @@ background-color: null;
 font-style: inherit;">--now</span> tailscale-funnel.service</span>
 <span id="cb2-3"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">sudo</span> systemctl status tailscale-funnel.service</span></code></pre></div>
+font-style: inherit;">sudo</span> systemctl status tailscale-funnel.service</span></code></pre></div></div>
 </section>
 <section id="the-benefits" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
@@ -1118,7 +1118,7 @@ font-style: inherit;">sudo</span> systemctl status tailscale-funnel.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250421-tailscale-funnel.html</guid>
-  <pubDate>Tue, 19 Aug 2025 15:53:49 GMT</pubDate>
+  <pubDate>Fri, 21 Nov 2025 13:12:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1141,7 +1141,7 @@ font-style: inherit;">sudo</span> systemctl status tailscale-funnel.service</spa
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">sudo</span> dnf install <span class="at" style="color: #657422;
 background-color: null;
@@ -1155,9 +1155,9 @@ background-color: null;
 font-style: inherit;">$HOME</span>/.jupyter</span>
 <span id="cb1-3"><span class="ex" style="color: null;
 background-color: null;
-font-style: inherit;">jupyter</span> notebook password</span></code></pre></div>
+font-style: inherit;">jupyter</span> notebook password</span></code></pre></div></div>
 <p>We propose creating a systemd service unit file to manage Jupyter Notebook. The service will ensure that the notebook server starts automatically on boot, restarts on failure, and runs under a specified user account. Below is the systemd unit file configuration:</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb2-1"><span class="dt" style="color: #AD0000;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb2-1"><span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">File: /etc/systemd/system/jupyter-notebook.service</span></span>
 <span id="cb2-2"><span class="kw" style="color: #003B4F;
@@ -1243,9 +1243,9 @@ font-style: inherit;">WantedBy</span><span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">multi-user.target</span></span></code></pre></div>
+font-style: inherit;">multi-user.target</span></span></code></pre></div></div>
 <p>Commands to enable and start the service:</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">sudo</span> systemctl daemon-reload</span>
 <span id="cb3-2"><span class="fu" style="color: #4758AB;
@@ -1255,7 +1255,7 @@ background-color: null;
 font-style: inherit;">--now</span> jupyter-notebook.service</span>
 <span id="cb3-3"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</span></code></pre></div>
+font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</span></code></pre></div></div>
 </section>
 <section id="the-benefits" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
@@ -1329,7 +1329,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250421-jupyter-notebook.html</guid>
-  <pubDate>Tue, 19 Aug 2025 15:53:49 GMT</pubDate>
+  <pubDate>Fri, 21 Nov 2025 13:12:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1430,7 +1430,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250420-use-meta-simulator.html</guid>
-  <pubDate>Tue, 19 Aug 2025 15:53:49 GMT</pubDate>
+  <pubDate>Fri, 21 Nov 2025 13:12:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1626,7 +1626,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250416-backpack.html</guid>
-  <pubDate>Tue, 19 Aug 2025 15:53:49 GMT</pubDate>
+  <pubDate>Fri, 21 Nov 2025 13:12:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1763,7 +1763,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250408-v-sekai-backpack.html</guid>
-  <pubDate>Tue, 19 Aug 2025 15:53:49 GMT</pubDate>
+  <pubDate>Fri, 21 Nov 2025 13:12:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1911,7 +1911,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250402-lip-sync-prototpe.html</guid>
-  <pubDate>Tue, 19 Aug 2025 15:53:49 GMT</pubDate>
+  <pubDate>Fri, 21 Nov 2025 13:12:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2125,7 +2125,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250402-image-to-full-body-face.html</guid>
-  <pubDate>Tue, 19 Aug 2025 15:53:49 GMT</pubDate>
+  <pubDate>Fri, 21 Nov 2025 13:12:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2274,7 +2274,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250402-automated-clothing-pipeline.html</guid>
-  <pubDate>Tue, 19 Aug 2025 15:53:49 GMT</pubDate>
+  <pubDate>Fri, 21 Nov 2025 13:12:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2442,7 +2442,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250328-guassian-splat.html</guid>
-  <pubDate>Tue, 19 Aug 2025 15:53:49 GMT</pubDate>
+  <pubDate>Fri, 21 Nov 2025 13:12:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2571,7 +2571,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250213-pin-key-vsekai-repos.html</guid>
-  <pubDate>Tue, 19 Aug 2025 15:53:49 GMT</pubDate>
+  <pubDate>Fri, 21 Nov 2025 13:12:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2598,7 +2598,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 <li><p><strong>Blender Setup</strong>: Create UV maps (UV3-UV8) under <em>Mesh Properties &gt; UV Maps</em>. Encode data into these channels (e.g., UV5.x for hitbox IDs).</p></li>
 <li><p><strong>Export</strong>: Use <code>.gltf</code> or <code>.blend</code> files, ensuring UVs are unwrapped on the Face Corner domain. (Use smooth shading.)</p></li>
 <li><p><strong>Godot Shaders</strong>:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode glsl code-with-copy"><code class="sourceCode glsl"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode glsl code-with-copy"><code class="sourceCode glsl"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// Access CUSTOM0 (UV3 + UV4)</span></span>
 <span id="cb1-2"><span class="dt" style="color: #AD0000;
@@ -2650,7 +2650,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb1-8"><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">}</span></span></code></pre></div></li>
+font-style: inherit;">}</span></span></code></pre></div></div></li>
 <li><p><strong>Data Handling</strong>: Use <code>surface_get_arrays</code> to access <code>ARRAY_CUSTOM0-3</code> in scripts.</p></li>
 </ol>
 </section>
@@ -2721,7 +2721,7 @@ font-style: inherit;">}</span></span></code></pre></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250211-using-8-uv-channels-for-custom-vertex-data.html</guid>
-  <pubDate>Tue, 19 Aug 2025 15:53:49 GMT</pubDate>
+  <pubDate>Fri, 21 Nov 2025 13:12:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2752,7 +2752,7 @@ font-style: inherit;">}</span></span></code></pre></div></li>
 <ol type="1">
 <li><p><strong>Daily Interactive Prompting</strong>: A bot (e.g., Discord/GitHub bot) prompts contributors for updates via a form.</p></li>
 <li><p><strong>Structured Data Collection</strong>:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> collect_deck_log():</span>
@@ -2783,15 +2783,15 @@ font-style: inherit;"># ... additional fields</span></span>
 <span id="cb1-6">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">return</span> format_markdown(date, active_contributors, blockers)</span></code></pre></div></li>
+font-style: inherit;">return</span> format_markdown(date, active_contributors, blockers)</span></code></pre></div></div></li>
 <li><p><strong>Automated Aggregation</strong>: Data is compiled into a Markdown log (example below) and posted to a project channel.</p></li>
 <li><p><strong>Decision Tracking</strong>: Highlighted decisions/blockers trigger alerts to relevant roles (e.g., engineering lead).</p></li>
 </ol>
 <p><strong>Mock-Up:</strong></p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1">**Date:** 2025-02-03  </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1">**Date:** 2025-02-03  </span>
 <span id="cb2-2">**Active Contributors:** 8 (2 new QA testers onboarded)  </span>
 <span id="cb2-3">**Critical Blockers:** Issue #45: Rendering crash on Linux  </span>
-<span id="cb2-4">**Key Initiative:** Netcode refactor (PR #78 merged)</span></code></pre></div>
+<span id="cb2-4">**Key Initiative:** Netcode refactor (PR #78 merged)</span></code></pre></div></div>
 </section>
 <section id="what-are-the-benefits-of-the-proposal" class="level2">
 <h2 class="anchored" data-anchor-id="what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</h2>
@@ -2857,7 +2857,7 @@ font-style: inherit;">return</span> format_markdown(date, active_contributors, b
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250203-daily-deck-log.html</guid>
-  <pubDate>Tue, 19 Aug 2025 15:53:49 GMT</pubDate>
+  <pubDate>Fri, 21 Nov 2025 13:12:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2940,7 +2940,7 @@ font-style: inherit;">return</span> format_markdown(date, active_contributors, b
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250130-world-godot-build-dispatch.html</guid>
-  <pubDate>Tue, 19 Aug 2025 15:53:49 GMT</pubDate>
+  <pubDate>Fri, 21 Nov 2025 13:12:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2964,7 +2964,7 @@ font-style: inherit;">return</span> format_markdown(date, active_contributors, b
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
 <p>Instead of a lens, we generate an overlay using the primitive outline. The multi tool like Half-Life: Alyx tool’s interface surfaces entity details as a holographic overlay. Contributors can “grip” to add objects, “trigger” to open extended metadata, or “joystick” to vote.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">{</span></span>
 <span id="cb1-2">  <span class="dt" style="color: #AD0000;
@@ -3200,7 +3200,7 @@ background-color: null;
 font-style: inherit;">}</span></span>
 <span id="cb1-38"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
+font-style: inherit;">}</span></span></code></pre></div></div>
 <p>Scene entity adds &amp; deletes with the overlay also requires 20250126-primitive-outline and 20250126-multiplayer-sync-between-godot-instance.</p>
 </section>
 <section id="what-are-the-benefits-of-the-proposal" class="level2">
@@ -3333,7 +3333,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250126-scene-entity-add-delete-with-lens.html</guid>
-  <pubDate>Tue, 19 Aug 2025 15:53:49 GMT</pubDate>
+  <pubDate>Fri, 21 Nov 2025 13:12:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3405,7 +3405,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250126-primitive-outline.html</guid>
-  <pubDate>Tue, 19 Aug 2025 15:53:49 GMT</pubDate>
+  <pubDate>Fri, 21 Nov 2025 13:12:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3431,7 +3431,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 <p>The proposal involves implementing a synchronization protocol that mirrors the node scene tree structure across all multiplayer instances. This includes:</p>
 <ul>
 <li><p><strong>Syncing Node Trees:</strong> Establishing real-time updates, property synchronization, and state management to ensure all clients reflect the same scene tree.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode gdscript code-with-copy"><code class="sourceCode gdscript"><span id="cb1-1"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode gdscript code-with-copy"><code class="sourceCode gdscript"><span id="cb1-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">func</span> <span class="fu" style="color: #4758AB;
@@ -3451,7 +3451,7 @@ background-color: null;
 font-style: inherit;">update_network_properties</span>(child)</span>
 <span id="cb1-4">                <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">sync_scene_tree</span>(child)</span></code></pre></div></li>
+font-style: inherit;">sync_scene_tree</span>(child)</span></code></pre></div></div></li>
 </ul>
 </section>
 <section id="what-are-the-benefits-of-the-proposal" class="level2">
@@ -3510,7 +3510,7 @@ font-style: inherit;">sync_scene_tree</span>(child)</span></code></pre></div></l
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250126-multiplayer-sync-between-godot-instances.html</guid>
-  <pubDate>Tue, 19 Aug 2025 15:53:49 GMT</pubDate>
+  <pubDate>Fri, 21 Nov 2025 13:12:22 GMT</pubDate>
 </item>
 </channel>
 </rss>
