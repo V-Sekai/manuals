@@ -57,16 +57,24 @@ df["Pareto"] = df["Task"].isin(pareto_tasks)
 df["Task_Display"] = df.apply(lambda r: f"{r['Task']} 🚨" if r["Pareto"] else r["Task"], axis=1)
 
 # Interactive scatter plot
+
+# Use Effort as marker size (scaled for visibility)
+import numpy as np
+# Use a nonlinear scale (e.g., cubic) for more visual difference
+min_size = 10
+max_size = 100
+effort_norm = (df["Effort"] - df["Effort"].min()) / (df["Effort"].max() - df["Effort"].min() + 1e-6)
+marker_sizes = min_size + (max_size - min_size) * (effort_norm ** 3)
 fig = px.scatter(
     df,
     x="Effort",
     y="Priority",
     color="Pareto",
-    hover_data=["Task_Display", "Category", "Notes"],
+    size=marker_sizes,
+    hover_data=["Task_Display", "Category", "Notes", "Effort"],
     title="Feature Roadmap: Priority vs Effort (Pareto Frontier)",
     labels={"Effort": "Effort (1-100 Scale)", "Priority": "Priority (Higher = More Votes)"}
 )
-fig.update_traces(marker=dict(size=12))
 
 # Add step line for Pareto frontier
 pareto_points = df[df["Pareto"]].sort_values(by="Effort")
