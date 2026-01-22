@@ -49,6 +49,24 @@ if "Created_on" in df.columns:
 else:
     df = df[["Category", "Task", "Priority", "Effort", "Notes"]]
 
+
+# Use Latency (age in days since Created_on) as x-axis, Effort as marker size
+import numpy as np
+from datetime import datetime
+min_size = 10
+max_size = 100
+def compute_latency(row):
+    try:
+        if "Created_on" not in row or pd.isna(row["Created_on"]):
+            return np.nan
+        created = pd.to_datetime(row["Created_on"], errors="coerce")
+        if pd.isna(created):
+            return np.nan
+        return (datetime.now() - created).days
+    except Exception:
+        return np.nan
+df["Latency"] = df.apply(compute_latency, axis=1)
+
 # Compute Pareto frontier: for each latency, keep the task with the highest priority so far
 df_sorted = df.sort_values(by="Latency", ascending=True)
 pareto_tasks = []
@@ -57,7 +75,6 @@ for _, row in df_sorted.iterrows():
     if row["Priority"] >= max_priority:
         pareto_tasks.append(row["Task"])
         max_priority = row["Priority"]
-
 # Highlight Pareto-optimal tasks
 df["Pareto"] = df["Task"].isin(pareto_tasks)
 df["Task_Display"] = df.apply(lambda r: f"{r['Task']} 🚨" if r["Pareto"] else r["Task"], axis=1)
@@ -127,16 +144,6 @@ if not archived_df.empty:
     archived_df.drop(columns=["Priority_voted"], inplace=True, errors="ignore")
     archived_df["Effort"] = pd.to_numeric(archived_df["Effort"], errors="coerce").fillna(0)
     archived_df = archived_df[archived_df["Effort"] >= 0]
-    # Pareto for archived: for each latency, keep the task with the highest priority so far
-    archived_sorted = archived_df.sort_values(by="Latency", ascending=True)
-    pareto_archived = []
-    max_priority_arch = float('-inf')
-    for _, row in archived_sorted.iterrows():
-        if row["Priority"] >= max_priority_arch:
-            pareto_archived.append(row["Task"])
-            max_priority_arch = row["Priority"]
-    archived_df["Pareto"] = archived_df["Task"].isin(pareto_archived)
-    archived_df["Task_Display"] = archived_df.apply(lambda r: f"{r['Task']} 🚨" if r["Pareto"] else r["Task"], axis=1)
     # Compute Latency for archived tasks
     def compute_latency_arch(row):
         try:
@@ -149,6 +156,16 @@ if not archived_df.empty:
         except Exception:
             return np.nan
     archived_df["Latency"] = archived_df.apply(compute_latency_arch, axis=1)
+    # Pareto for archived: for each latency, keep the task with the highest priority so far
+    archived_sorted = archived_df.sort_values(by="Latency", ascending=True)
+    pareto_archived = []
+    max_priority_arch = float('-inf')
+    for _, row in archived_sorted.iterrows():
+        if row["Priority"] >= max_priority_arch:
+            pareto_archived.append(row["Task"])
+            max_priority_arch = row["Priority"]
+    archived_df["Pareto"] = archived_df["Task"].isin(pareto_archived)
+    archived_df["Task_Display"] = archived_df.apply(lambda r: f"{r['Task']} 🚨" if r["Pareto"] else r["Task"], axis=1)
     # Effort as marker size
     effort_valid_arch = archived_df["Effort"].dropna()
     if not effort_valid_arch.empty:
