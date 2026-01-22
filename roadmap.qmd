@@ -32,8 +32,9 @@ df = tasks_df.merge(priority_df, on="Task", how="left", suffixes=("", "_voted"))
 # Use voted Priority if available, else fallback to original
 df["Priority"] = df["Priority_voted"].fillna(df["Priority"])
 df.drop(columns=["Priority_voted"], inplace=True)
-# Fill missing Effort with 0 and filter out negative Effort
-df["Effort"] = df["Effort"].fillna(0)
+
+# Ensure Effort is numeric, fill missing with 0, and filter out negative Effort
+df["Effort"] = pd.to_numeric(df["Effort"], errors="coerce").fillna(0)
 df = df[df["Effort"] >= 0]
 
 
@@ -43,7 +44,10 @@ df = df[df['Completed_on'].isna()]
 df = df.drop(columns=["Completed_on"], errors="ignore")
 
 # Reorder columns
-df = df[["Category", "Task", "Priority", "Effort", "Notes"]]
+if "Created_on" in df.columns:
+    df = df[["Category", "Task", "Priority", "Effort", "Notes", "Created_on"]]
+else:
+    df = df[["Category", "Task", "Priority", "Effort", "Notes"]]
 
 # Compute Pareto frontier: sort by priority (desc), then keep tasks with effort < min_effort_so_far
 df_sorted = df.sort_values(by="Priority", ascending=False)
@@ -58,24 +62,39 @@ for _, row in df_sorted.iterrows():
 df["Pareto"] = df["Task"].isin(pareto_tasks)
 df["Task_Display"] = df.apply(lambda r: f"{r['Task']} 🚨" if r["Pareto"] else r["Task"], axis=1)
 
-# Interactive scatter plot
 
-# Use Effort as marker size (scaled for visibility)
+# Use latency (age in days since Created_on) as marker size
 import numpy as np
-# Use a nonlinear scale (e.g., cubic) for more visual difference
+from datetime import datetime
 min_size = 10
 max_size = 100
-effort_norm = (df["Effort"] - df["Effort"].min()) / (df["Effort"].max() - df["Effort"].min() + 1e-6)
-marker_sizes = min_size + (max_size - min_size) * (effort_norm ** 3)
+def compute_latency(row):
+    try:
+        if "Created_on" not in row or pd.isna(row["Created_on"]):
+            return np.nan
+        created = pd.to_datetime(row["Created_on"], errors="coerce")
+        if pd.isna(created):
+            return np.nan
+        return (datetime.now() - created).days
+    except Exception:
+        return np.nan
+df["Latency"] = df.apply(compute_latency, axis=1)
+latency_valid = df["Latency"].dropna()
+if not latency_valid.empty:
+    latency_norm = (df["Latency"] - latency_valid.min()) / (latency_valid.max() - latency_valid.min() + 1e-6)
+    marker_sizes = min_size + (max_size - min_size) * (latency_norm ** 3)
+    marker_sizes = marker_sizes.fillna(min_size)
+else:
+    marker_sizes = pd.Series([min_size] * len(df), index=df.index)
 fig = px.scatter(
     df,
     x="Effort",
     y="Priority",
     color="Pareto",
     size=marker_sizes,
-    hover_data=["Task_Display", "Category", "Notes", "Effort"],
-    title="Feature Roadmap: Priority vs Effort (Pareto Frontier)",
-    labels={"Effort": "Effort (1-100 Scale)", "Priority": "Priority (Higher = More Votes)"}
+    hover_data=["Task_Display", "Category", "Notes", "Effort", "Latency", "Created_on"],
+    title="Feature Roadmap: Priority vs Effort (Pareto Frontier, Circle Size = Latency)",
+    labels={"Effort": "Effort (1-100 Scale)", "Priority": "Priority (Higher = More Votes)", "Latency": "Age (days)", "Created_on": "Created"}
 )
 
 # Add step line for Pareto frontier
@@ -103,7 +122,7 @@ if not archived_df.empty:
     archived_df = archived_df.merge(priority_df, on="Task", how="left", suffixes=("", "_voted"))
     archived_df["Priority"] = archived_df["Priority_voted"].fillna(archived_df["Priority"])
     archived_df.drop(columns=["Priority_voted"], inplace=True, errors="ignore")
-    archived_df["Effort"] = archived_df["Effort"].fillna(0)
+    archived_df["Effort"] = pd.to_numeric(archived_df["Effort"], errors="coerce").fillna(0)
     archived_df = archived_df[archived_df["Effort"] >= 0]
     # Pareto for archived
     archived_sorted = archived_df.sort_values(by="Priority", ascending=False)
