@@ -87,7 +87,55 @@ if len(pareto_points) > 1:
         name="Pareto Frontier"
     )
 
+
 fig.show()
+
+# Mirrored chart: previously archived tasks (those with non-empty Archived_on)
+archived_df = pd.read_csv("./roadmap/tasks.csv")
+archived_df = archived_df[archived_df["Archived_on"].notna() & (archived_df["Archived_on"] != "")]
+if not archived_df.empty:
+    # Merge in Priority from avg_table (if available)
+    if "Priority" not in archived_df.columns:
+        archived_df["Priority"] = 0
+    priority_df = avg_table[["Task", "Priority"]]
+    archived_df = archived_df.merge(priority_df, on="Task", how="left", suffixes=("", "_voted"))
+    archived_df["Priority"] = archived_df["Priority_voted"].fillna(archived_df["Priority"])
+    archived_df.drop(columns=["Priority_voted"], inplace=True, errors="ignore")
+    archived_df["Effort"] = archived_df["Effort"].fillna(0)
+    archived_df = archived_df[archived_df["Effort"] >= 0]
+    # Pareto for archived
+    archived_sorted = archived_df.sort_values(by="Priority", ascending=False)
+    pareto_archived = []
+    min_effort_arch = float('inf')
+    for _, row in archived_sorted.iterrows():
+        if row["Effort"] <= min_effort_arch:
+            pareto_archived.append(row["Task"])
+            min_effort_arch = row["Effort"]
+    archived_df["Pareto"] = archived_df["Task"].isin(pareto_archived)
+    archived_df["Task_Display"] = archived_df.apply(lambda r: f"{r['Task']} 🚨" if r["Pareto"] else r["Task"], axis=1)
+    # Marker size for archived
+    effort_norm_arch = (archived_df["Effort"] - archived_df["Effort"].min()) / (archived_df["Effort"].max() - archived_df["Effort"].min() + 1e-6)
+    marker_sizes_arch = min_size + (max_size - min_size) * (effort_norm_arch ** 3)
+    fig_arch = px.scatter(
+        archived_df,
+        x="Effort",
+        y="Priority",
+        color="Pareto",
+        size=marker_sizes_arch,
+        hover_data=["Task_Display", "Category", "Notes", "Effort"],
+        title="Archived Tasks: Priority vs Effort (Pareto Frontier)",
+        labels={"Effort": "Effort (1-100 Scale)", "Priority": "Priority (Higher = More Votes)"}
+    )
+    pareto_points_arch = archived_df[archived_df["Pareto"]].sort_values(by="Effort")
+    if len(pareto_points_arch) > 1:
+        fig_arch.add_scatter(
+            x=pareto_points_arch["Effort"],
+            y=pareto_points_arch["Priority"],
+            mode="lines",
+            line=dict(dash="dot", width=2),
+            name="Pareto Frontier"
+        )
+    fig_arch.show()
 
 print("""
 ## Archived Tasks
