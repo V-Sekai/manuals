@@ -11,6 +11,7 @@ format:
 #| output: asis
 
 import vote
+    
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -107,6 +108,40 @@ fig = px.scatter_3d(
     labels={'RawVoteCount': 'Raw Vote Count', 'Effort': 'Effort (1-100 Scale)', 'Priority': 'Priority (Higher = More Votes)', 'Created_on': 'Created', 'Latency': 'Age (days)', 'NormVoteCount': 'Normalized Vote Count'}
 )
 fig.show()
+
+# Convex hull visualization for Pareto-optimal tasks using scipy
+pareto_df = df[df['Pareto']]
+if len(pareto_df) >= 3:
+    try:
+        from scipy.spatial import ConvexHull
+        import numpy as np
+        points = pareto_df[['Effort', 'Priority']].values
+        hull = ConvexHull(points)
+        hull_points = points[hull.vertices]
+        print('Pareto tasks:')
+        print(pareto_df[['Task', 'Effort', 'Priority']])
+        print('Convex hull points:')
+        print(hull_points)
+        hull_trace = go.Scatter(
+            x=hull_points[:,0],
+            y=hull_points[:,1],
+            mode='lines+markers',
+            name='Pareto Convex Hull (scipy)',
+            line=dict(color='orange', width=3, dash='dash'),
+            marker=dict(size=8, color='orange', symbol='diamond')
+        )
+        fig2d = px.scatter(
+            pareto_df,
+            x='Effort',
+            y='Priority',
+            color='Category',
+            hover_data=['Task_Display', 'Notes', 'Created_on', 'RawVoteCount', 'NormVoteCount']
+        )
+        fig2d.add_trace(hull_trace)
+        fig2d.update_layout(title='Pareto Tasks Convex Hull (Effort vs Priority, scipy)')
+        fig2d.show()
+    except ImportError:
+        print('scipy is not installed. Convex hull visualization skipped.')
 
 print("""
 
