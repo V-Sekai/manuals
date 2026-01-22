@@ -94,18 +94,19 @@ for idx, row in df.iterrows():
 df['Pareto'] = df['Task'].isin(pareto_tasks)
 df['Task_Display'] = df.apply(lambda r: f"{r['Task']} 🚨" if r['Pareto'] else r['Task'], axis=1)
 
-# Use Latency for marker size, fill missing with min_size
-latency_sizes = df['Latency'].fillna(min_size)
+
+# Use Latency as x-axis, Effort as y, Priority as z, and Effort for marker size
+effort_sizes = df['Effort'].fillna(min_size)
 fig = px.scatter_3d(
     df,
-    x='RawVoteCount',
+    x='Latency',
     y='Effort',
     z='Priority',
     color='Pareto',
-    size=latency_sizes,
-    hover_data=['Task_Display', 'Category', 'Notes', 'Effort', 'Latency', 'Created_on', 'RawVoteCount', 'NormVoteCount'],
-    title='Feature Roadmap (3D): Vote Count vs Effort vs Priority (Pareto Frontier, Latency-Scaled)',
-    labels={'RawVoteCount': 'Raw Vote Count', 'Effort': 'Effort (1-100 Scale)', 'Priority': 'Priority (Higher = More Votes)', 'Created_on': 'Created', 'Latency': 'Age (days)', 'NormVoteCount': 'Normalized Vote Count'}
+    size=effort_sizes,
+    hover_data=['Task_Display', 'Category', 'Notes', 'Effort', 'Latency', 'Created_on'],
+    title='Feature Roadmap (3D): Latency vs Effort vs Priority (Pareto Frontier, Effort-Scaled)',
+    labels={'Latency': 'Age (days)', 'Effort': 'Effort (1-100 Scale)', 'Priority': 'Priority', 'Created_on': 'Created'}
 )
 fig.show()
 
@@ -154,10 +155,6 @@ print("""
 **Effort**: An estimated measure of the work required to complete a task, typically on a scale from 1 to 100.
 
 **Priority**: A score representing the importance or urgency of a task, often based on votes or other ranking methods.
-
-**Raw Vote Count**: The total number of votes a task has received from all voters.
-
-**Normalized Vote Count**: The raw vote count divided by the total number of votes, used to compare tasks on a common scale.
 """)
 
 print("""
