@@ -13,10 +13,10 @@ format:
 import vote
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 from itables import init_notebook_mode, show
 
 init_notebook_mode(all_interactive=False)
-
 
 # Load voting results
 results = vote.run_election('./roadmap/votes', 1, "./roadmap/tasks.csv")
@@ -37,8 +37,6 @@ df.drop(columns=["Priority_voted"], inplace=True)
 df["Effort"] = pd.to_numeric(df["Effort"], errors="coerce").fillna(0)
 df = df[df["Effort"] >= 0]
 
-
-
 # Filter out completed and archived tasks (do not show in chart)
 if "Completed_on" in df.columns:
     df = df[df["Completed_on"].isna()]
@@ -52,7 +50,6 @@ if "Created_on" in df.columns:
 else:
     df = df[["Category", "Task", "Priority", "Effort", "Notes"]]
 
-
 # Use Latency (age in days since Created_on) as x-axis, Effort as marker size
 import numpy as np
 from datetime import datetime
@@ -70,70 +67,68 @@ def compute_latency(row):
         return np.nan
 df["Latency"] = df.apply(compute_latency, axis=1)
 
-# Compute Pareto frontier: for each latency, keep the task with the highest priority so far
-df_sorted = df.sort_values(by="Latency", ascending=True)
+# Compute Pareto frontier: maximize Priority, minimize Effort
 pareto_tasks = []
-max_priority = float('-inf')
-for _, row in df_sorted.iterrows():
-    if row["Priority"] >= max_priority:
+for idx, row in df.iterrows():
+    dominated = df[
+        ((df["Priority"] > row["Priority"]) & (df["Effort"] <= row["Effort"])) |
+        ((df["Priority"] >= row["Priority"]) & (df["Effort"] < row["Effort"]))
+    ]
+    if dominated.empty:
         pareto_tasks.append(row["Task"])
-        max_priority = row["Priority"]
 # Highlight Pareto-optimal tasks
 df["Pareto"] = df["Task"].isin(pareto_tasks)
 df["Task_Display"] = df.apply(lambda r: f"{r['Task']} 🚨" if r["Pareto"] else r["Task"], axis=1)
 
-
-
-# Use Latency (age in days since Created_on) as x-axis, Effort as marker size
-import numpy as np
-from datetime import datetime
-min_size = 10
-max_size = 100
-def compute_latency(row):
-    try:
-        if "Created_on" not in row or pd.isna(row["Created_on"]):
-            return np.nan
-        created = pd.to_datetime(row["Created_on"], errors="coerce")
-        if pd.isna(created):
-            return np.nan
-        return (datetime.now() - created).days
-    except Exception:
-        return np.nan
-df["Latency"] = df.apply(compute_latency, axis=1)
 # Effort as marker size
 effort_valid = df["Effort"].dropna()
 if not effort_valid.empty:
-    effort_norm = (df["Effort"] - effort_valid.min()) / (effort_valid.max() - effort_valid.min() + 1e-6)
+    # Invert: lower Effort = larger marker
+    effort_norm = (effort_valid.max() - df["Effort"]) / (effort_valid.max() - effort_valid.min() + 1e-6)
     marker_sizes = min_size + (max_size - min_size) * (effort_norm ** 3)
     marker_sizes = marker_sizes.fillna(min_size)
 else:
     marker_sizes = pd.Series([min_size] * len(df), index=df.index)
-fig = px.scatter(
+
+
+
+# 3D scatter for all points
+fig = px.scatter_3d(
     df,
     x="Latency",
-    y="Priority",
+    y="Effort",
+    z="Priority",
     color="Pareto",
-    size=marker_sizes,
     hover_data=["Task_Display", "Category", "Notes", "Effort", "Latency", "Created_on"],
-    title="Feature Roadmap: Priority vs Latency (Pareto Frontier, Circle Size = Effort)",
-    labels={"Latency": "Age (days)", "Priority": "Priority (Higher = More Votes)", "Effort": "Effort (1-100 Scale)", "Created_on": "Created"}
+    title="Feature Roadmap (3D): Latency vs Effort vs Priority (Pareto Frontier)",
+    labels={"Latency": "Age (days)", "Effort": "Effort (1-100 Scale)", "Priority": "Priority (Higher = More Votes)", "Created_on": "Created"}
 )
 
+# Add convex hull mesh for Pareto points if there are enough points
+pareto_points = df[df["Pareto"]]
+if len(pareto_points) >= 4:
+    from scipy.spatial import ConvexHull
+    import numpy as np
+    points = pareto_points[["Latency", "Effort", "Priority"]].dropna().values
+    if len(points) >= 4:
+        hull = ConvexHull(points)
+        mesh = go.Mesh3d(
+            x=points[:,0],
+            y=points[:,1],
+            z=points[:,2],
+            i=hull.simplices[:,0],
+            j=hull.simplices[:,1],
+            k=hull.simplices[:,2],
+            color='rgba(255,0,0,0.2)',
+            opacity=0.3,
+            name='Pareto Frontier (Convex Hull)',
+            showscale=False
+        )
+        fig.add_trace(mesh)
 
-# Add step line for Pareto frontier (now sorted by Latency)
-pareto_points = df[df["Pareto"]].sort_values(by="Latency")
-if len(pareto_points) > 1:
-    fig.add_scatter(
-        x=pareto_points["Latency"],
-        y=pareto_points["Priority"],
-        mode="lines",
-        line=dict(dash="dot", width=2),
-        name="Pareto Frontier"
-    )
 
-
+# Note: plotly 3D scatter does not support 3D line overlays in the same way as 2D, so Pareto step line is omitted.
 fig.show()
-
 
 print("""
 ## Archived Tasks
