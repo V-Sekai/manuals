@@ -36,9 +36,11 @@ df.drop(columns=["Priority_voted"], inplace=True)
 df["Effort"] = df["Effort"].fillna(0)
 df = df[df["Effort"] >= 0]
 
-# Filter non-archived tasks
-df = df[df['Archived_on'].isna()]
-df = df.drop(columns=["Archived_on"], errors="ignore")
+
+# Filter out completed tasks (do not show in charts)
+df = df[df['Completed_on'].isna()]
+# Keep archived tasks renewable (they can be shown if not completed)
+df = df.drop(columns=["Completed_on"], errors="ignore")
 
 # Reorder columns
 df = df[["Category", "Task", "Priority", "Effort", "Notes"]]
@@ -90,9 +92,9 @@ if len(pareto_points) > 1:
 
 fig.show()
 
-# Mirrored chart: previously archived tasks (those with non-empty Archived_on)
+ # Mirrored chart: previously archived tasks (those with non-empty Archived_on, but not completed)
 archived_df = pd.read_csv("./roadmap/tasks.csv")
-archived_df = archived_df[archived_df["Archived_on"].notna() & (archived_df["Archived_on"] != "")]
+archived_df = archived_df[(archived_df["Archived_on"].notna()) & (archived_df["Archived_on"] != "") & (archived_df["Completed_on"].isna())]
 if not archived_df.empty:
     # Merge in Priority from avg_table (if available)
     if "Priority" not in archived_df.columns:
