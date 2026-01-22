@@ -12,38 +12,74 @@ format:
 
 import vote
 import pandas as pd
+import plotly.express as px
 from itables import init_notebook_mode, show
 
 init_notebook_mode(all_interactive=False)
 
+
+# Load voting results
 results = vote.run_election('./roadmap/votes', 1, "./roadmap/tasks.csv")
+avg_table = results["avg_table"]
 
-df = results["avg_table"]
+# Load all tasks (preserve Effort and other columns)
+tasks_df = pd.read_csv("./roadmap/tasks.csv")
+if "Priority" not in tasks_df.columns:
+    tasks_df["Priority"] = 0
+# Merge in Priority from avg_table (by Task, left join)
+priority_df = avg_table[["Task", "Priority"]]
+df = tasks_df.merge(priority_df, on="Task", how="left", suffixes=("", "_voted"))
+# Use voted Priority if available, else fallback to original
+df["Priority"] = df["Priority_voted"].fillna(df["Priority"])
+df.drop(columns=["Priority_voted"], inplace=True)
+# Fill missing Effort with 0 and filter out negative Effort
+df["Effort"] = df["Effort"].fillna(0)
+df = df[df["Effort"] >= 0]
 
-# Keep non-archived tasks only
+# Filter non-archived tasks
 df = df[df['Archived_on'].isna()]
-
-if "Archived_on" in df.columns:
-    df = df.drop(columns=["Archived_on"])
+df = df.drop(columns=["Archived_on"], errors="ignore")
 
 # Reorder columns
-df = df[["Category","Task","Priority","Notes"]]
+df = df[["Category", "Task", "Priority", "Effort", "Notes"]]
 
-# Move high priority to top
-df["highpriority"] = df["Task"].apply(lambda x: 0 if x in results["winners"] else 1)
-df = df.sort_values(by="highpriority").drop(columns=["highpriority"])
-df.reset_index(drop=True, inplace=True)
+# Compute Pareto frontier: sort by priority (desc), then keep tasks with effort < min_effort_so_far
+df_sorted = df.sort_values(by="Priority", ascending=False)
+pareto_tasks = []
+min_effort = float('inf')
+for _, row in df_sorted.iterrows():
+    if row["Effort"] <= min_effort:
+        pareto_tasks.append(row["Task"])
+        min_effort = row["Effort"]
 
-df.loc[df["Task"].isin(results["winners"]), "Task"] += " - 🚨 (High Priority)"
+# Highlight Pareto-optimal tasks
+df["Pareto"] = df["Task"].isin(pareto_tasks)
+df["Task_Display"] = df.apply(lambda r: f"{r['Task']} 🚨" if r["Pareto"] else r["Task"], axis=1)
 
-print("""
+# Interactive scatter plot
+fig = px.scatter(
+    df,
+    x="Effort",
+    y="Priority",
+    color="Pareto",
+    hover_data=["Task_Display", "Category", "Notes"],
+    title="Feature Roadmap: Priority vs Effort (Pareto Frontier)",
+    labels={"Effort": "Effort (1-100 Scale)", "Priority": "Priority (Higher = More Votes)"}
+)
+fig.update_traces(marker=dict(size=12))
 
-## Feature List
+# Add step line for Pareto frontier
+pareto_points = df[df["Pareto"]].sort_values(by="Effort")
+if len(pareto_points) > 1:
+    fig.add_scatter(
+        x=pareto_points["Effort"],
+        y=pareto_points["Priority"],
+        mode="lines",
+        line=dict(dash="dot", width=2),
+        name="Pareto Frontier"
+    )
 
-Features with 🚨 symbol were voted as top priority with Proportional Star Voting. Priority column is an average of votes for every feature.
-
-""")
-show(df, paging=False, pageLength=50)
+fig.show()
 
 print("""
 ## Archived Tasks

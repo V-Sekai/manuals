@@ -84,10 +84,12 @@ def generate_avg_table(ballot_list, tasks_path):
     # Use tasks.csv as base table
     tasks_df = pd.read_csv(tasks_path)
     tasks_df["Notes"] = tasks_df["Notes"].fillna("")
-    tasks_df["Priority"] = 0
+    # Preserve Effort column, only update Priority
+    if "Priority" not in tasks_df.columns:
+        tasks_df["Priority"] = 0
     tasks_df.set_index("Task", drop=False, inplace=True)
-    tasks_df.update(averages_df)
-
+    # Only update the Priority column from averages_df
+    tasks_df["Priority"] = averages_df["Priority"]
     tasks_df.sort_values(by='Priority', ascending=False, inplace=True)
     tasks_df.reset_index(drop=True, inplace=True)
     return tasks_df
