@@ -19,53 +19,53 @@ from itables import init_notebook_mode, show
 init_notebook_mode(all_interactive=False)
 
 # Load voting results
-results = vote.run_election('./roadmap/votes', 1, "./roadmap/tasks.csv")
-avg_table = results["avg_table"]
+results = vote.run_election('./roadmap/votes', 1, './roadmap/tasks.csv')
+avg_table = results['avg_table']
 
 # Load all tasks (preserve Effort and other columns)
-tasks_df = pd.read_csv("./roadmap/tasks.csv")
-if "Priority" not in tasks_df.columns:
-    tasks_df["Priority"] = 0
+tasks_df = pd.read_csv('./roadmap/tasks.csv')
+if 'Priority' not in tasks_df.columns:
+    tasks_df['Priority'] = 0
 # Merge in Priority from avg_table (by Task, left join)
-priority_df = avg_table[["Task", "Priority"]]
-df = tasks_df.merge(priority_df, on="Task", how="left", suffixes=("", "_voted"))
+priority_df = avg_table[['Task', 'Priority']]
+df = tasks_df.merge(priority_df, on='Task', how='left', suffixes=('', '_voted'))
 # Use voted Priority if available, else fallback to original
-df["Priority"] = df["Priority_voted"].fillna(df["Priority"])
-df.drop(columns=["Priority_voted"], inplace=True)
+df['Priority'] = df['Priority_voted'].fillna(df['Priority'])
+df.drop(columns=['Priority_voted'], inplace=True)
 
 # Ensure Effort is numeric, fill missing with 0, and filter out negative Effort
-df["Effort"] = pd.to_numeric(df["Effort"], errors="coerce").fillna(0)
-df = df[df["Effort"] >= 0]
+df['Effort'] = pd.to_numeric(df['Effort'], errors='coerce').fillna(0)
+df = df[df['Effort'] >= 0]
 
 # Filter out completed and archived tasks (do not show in chart)
-if "Completed_on" in df.columns:
-    df = df[df["Completed_on"].isna()]
-if "Archived_on" in df.columns:
-    df = df[df["Archived_on"].isna() | (df["Archived_on"] == "")]
-df = df.drop(columns=["Completed_on", "Archived_on"], errors="ignore")
+if 'Completed_on' in df.columns:
+    df = df[df['Completed_on'].isna()]
+if 'Archived_on' in df.columns:
+    df = df[df['Archived_on'].isna() | (df['Archived_on'] == '')]
+df = df.drop(columns=['Completed_on', 'Archived_on'], errors='ignore')
 
 # Reorder columns
-if "Created_on" in df.columns:
-    df = df[["Category", "Task", "Priority", "Effort", "Notes", "Created_on"]]
+if 'Created_on' in df.columns:
+    df = df[['Category', 'Task', 'Priority', 'Effort', 'Notes', 'Created_on']]
 else:
-    df = df[["Category", "Task", "Priority", "Effort", "Notes"]]
+    df = df[['Category', 'Task', 'Priority', 'Effort', 'Notes']]
 
 # Use Latency (age in days since Created_on) as x-axis, Effort as marker size
 import numpy as np
 from datetime import datetime
-min_size = 10
-max_size = 100
+min_size = 60  # Increased from 30 to 60
+max_size = 150  # Increased from 100 to 150
 def compute_latency(row):
     try:
-        if "Created_on" not in row or pd.isna(row["Created_on"]):
+        if 'Created_on' not in row or pd.isna(row['Created_on']):
             return np.nan
-        created = pd.to_datetime(row["Created_on"], errors="coerce")
+        created = pd.to_datetime(row['Created_on'], errors='coerce')
         if pd.isna(created):
             return np.nan
         return (datetime.now() - created).days
     except Exception:
         return np.nan
-df["Latency"] = df.apply(compute_latency, axis=1)
+df['Latency'] = df.apply(compute_latency, axis=1)
 
 # Calculate raw vote count for each task
 votes_dict = vote.get_votes('./roadmap/votes')
@@ -77,7 +77,6 @@ for voter, ballot in votes_dict.items():
 total_votes = sum(vote_counts.values()) if vote_counts else 1
 # Add normalized vote count to dataframe
 # If a task has no votes, set to 0
-
 df['RawVoteCount'] = df['Task'].map(lambda t: vote_counts.get(t, 0))
 df['NormVoteCount'] = df['RawVoteCount'] / total_votes
 
@@ -85,57 +84,28 @@ df['NormVoteCount'] = df['RawVoteCount'] / total_votes
 pareto_tasks = []
 for idx, row in df.iterrows():
     dominated = df[
-        ((df["Priority"] > row["Priority"]) & (df["Effort"] <= row["Effort"])) |
-        ((df["Priority"] >= row["Priority"]) & (df["Effort"] < row["Effort"]))
+        ((df['Priority'] > row['Priority']) & (df['Effort'] <= row['Effort'])) |
+        ((df['Priority'] >= row['Priority']) & (df['Effort'] < row['Effort']))
     ]
     if dominated.empty:
-        pareto_tasks.append(row["Task"])
+        pareto_tasks.append(row['Task'])
 # Highlight Pareto-optimal tasks
-df["Pareto"] = df["Task"].isin(pareto_tasks)
-df["Task_Display"] = df.apply(lambda r: f"{r['Task']} 🚨" if r["Pareto"] else r["Task"], axis=1)
+df['Pareto'] = df['Task'].isin(pareto_tasks)
+df['Task_Display'] = df.apply(lambda r: f"{r['Task']} 🚨" if r['Pareto'] else r['Task'], axis=1)
 
-# Use normalized vote count for marker size
-min_size = 10
-max_size = 100
-marker_sizes = min_size + (max_size - min_size) * df['NormVoteCount'].fillna(0)
-
-# 3D scatter for all points
+# Use Latency for marker size, fill missing with min_size
+latency_sizes = df['Latency'].fillna(min_size)
 fig = px.scatter_3d(
     df,
-    x="Latency",
-    y="Effort",
-    z="Priority",
-    color="Pareto",
-    size=marker_sizes,
-    hover_data=["Task_Display", "Category", "Notes", "Effort", "Latency", "Created_on", "RawVoteCount", "NormVoteCount"],
-    title="Feature Roadmap (3D): Latency vs Effort vs Priority (Pareto Frontier, Vote-Scaled)",
-    labels={"Latency": "Age (days)", "Effort": "Effort (1-100 Scale)", "Priority": "Priority (Higher = More Votes)", "Created_on": "Created", "RawVoteCount": "Raw Vote Count", "NormVoteCount": "Normalized Vote Count"}
+    x='RawVoteCount',
+    y='Effort',
+    z='Priority',
+    color='Pareto',
+    size=latency_sizes,
+    hover_data=['Task_Display', 'Category', 'Notes', 'Effort', 'Latency', 'Created_on', 'RawVoteCount', 'NormVoteCount'],
+    title='Feature Roadmap (3D): Vote Count vs Effort vs Priority (Pareto Frontier, Latency-Scaled)',
+    labels={'RawVoteCount': 'Raw Vote Count', 'Effort': 'Effort (1-100 Scale)', 'Priority': 'Priority (Higher = More Votes)', 'Created_on': 'Created', 'Latency': 'Age (days)', 'NormVoteCount': 'Normalized Vote Count'}
 )
-
-# Add convex hull mesh for Pareto points if there are enough points
-pareto_points = df[df["Pareto"]]
-if len(pareto_points) >= 4:
-    from scipy.spatial import ConvexHull
-    import numpy as np
-    points = pareto_points[["Latency", "Effort", "Priority"]].dropna().values
-    if len(points) >= 4:
-        hull = ConvexHull(points)
-        mesh = go.Mesh3d(
-            x=points[:,0],
-            y=points[:,1],
-            z=points[:,2],
-            i=hull.simplices[:,0],
-            j=hull.simplices[:,1],
-            k=hull.simplices[:,2],
-            color='rgba(255,0,0,0.2)',
-            opacity=0.3,
-            name='Pareto Frontier (Convex Hull)',
-            showscale=False
-        )
-        fig.add_trace(mesh)
-
-
-# Note: plotly 3D scatter does not support 3D line overlays in the same way as 2D, so Pareto step line is omitted.
 fig.show()
 
 print("""
@@ -148,7 +118,7 @@ Archived tasks
 """)
 
 archived_tasks_df = vote.get_archived_tasks_table('./roadmap/tasks.csv')
-archived_tasks_df["Notes"] = archived_tasks_df["Notes"].fillna("")
+archived_tasks_df['Notes'] = archived_tasks_df['Notes'].fillna("")
 archived_tasks_df.reset_index(drop=True, inplace=True)
 
 show(archived_tasks_df)
