@@ -49,14 +49,14 @@ if "Created_on" in df.columns:
 else:
     df = df[["Category", "Task", "Priority", "Effort", "Notes"]]
 
-# Compute Pareto frontier: sort by priority (desc), then keep tasks with effort < min_effort_so_far
-df_sorted = df.sort_values(by="Priority", ascending=False)
+# Compute Pareto frontier: for each latency, keep the task with the highest priority so far
+df_sorted = df.sort_values(by="Latency", ascending=True)
 pareto_tasks = []
-min_effort = float('inf')
+max_priority = float('-inf')
 for _, row in df_sorted.iterrows():
-    if row["Effort"] <= min_effort:
+    if row["Priority"] >= max_priority:
         pareto_tasks.append(row["Task"])
-        min_effort = row["Effort"]
+        max_priority = row["Priority"]
 
 # Highlight Pareto-optimal tasks
 df["Pareto"] = df["Task"].isin(pareto_tasks)
@@ -127,14 +127,14 @@ if not archived_df.empty:
     archived_df.drop(columns=["Priority_voted"], inplace=True, errors="ignore")
     archived_df["Effort"] = pd.to_numeric(archived_df["Effort"], errors="coerce").fillna(0)
     archived_df = archived_df[archived_df["Effort"] >= 0]
-    # Pareto for archived
-    archived_sorted = archived_df.sort_values(by="Priority", ascending=False)
+    # Pareto for archived: for each latency, keep the task with the highest priority so far
+    archived_sorted = archived_df.sort_values(by="Latency", ascending=True)
     pareto_archived = []
-    min_effort_arch = float('inf')
+    max_priority_arch = float('-inf')
     for _, row in archived_sorted.iterrows():
-        if row["Effort"] <= min_effort_arch:
+        if row["Priority"] >= max_priority_arch:
             pareto_archived.append(row["Task"])
-            min_effort_arch = row["Effort"]
+            max_priority_arch = row["Priority"]
     archived_df["Pareto"] = archived_df["Task"].isin(pareto_archived)
     archived_df["Task_Display"] = archived_df.apply(lambda r: f"{r['Task']} 🚨" if r["Pareto"] else r["Task"], axis=1)
     # Compute Latency for archived tasks
