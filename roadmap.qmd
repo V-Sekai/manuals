@@ -38,10 +38,13 @@ df["Effort"] = pd.to_numeric(df["Effort"], errors="coerce").fillna(0)
 df = df[df["Effort"] >= 0]
 
 
-# Filter out completed tasks (do not show in charts)
-df = df[df['Completed_on'].isna()]
-# Keep archived tasks renewable (they can be shown if not completed)
-df = df.drop(columns=["Completed_on"], errors="ignore")
+
+# Filter out completed and archived tasks (do not show in chart)
+if "Completed_on" in df.columns:
+    df = df[df["Completed_on"].isna()]
+if "Archived_on" in df.columns:
+    df = df[df["Archived_on"].isna() | (df["Archived_on"] == "")]
+df = df.drop(columns=["Completed_on", "Archived_on"], errors="ignore")
 
 # Reorder columns
 if "Created_on" in df.columns:
@@ -131,69 +134,6 @@ if len(pareto_points) > 1:
 
 fig.show()
 
- # Mirrored chart: previously archived tasks (those with non-empty Archived_on, but not completed)
-archived_df = pd.read_csv("./roadmap/tasks.csv")
-archived_df = archived_df[(archived_df["Archived_on"].notna()) & (archived_df["Archived_on"] != "") & (archived_df["Completed_on"].isna())]
-if not archived_df.empty:
-    # Merge in Priority from avg_table (if available)
-    if "Priority" not in archived_df.columns:
-        archived_df["Priority"] = 0
-    priority_df = avg_table[["Task", "Priority"]]
-    archived_df = archived_df.merge(priority_df, on="Task", how="left", suffixes=("", "_voted"))
-    archived_df["Priority"] = archived_df["Priority_voted"].fillna(archived_df["Priority"])
-    archived_df.drop(columns=["Priority_voted"], inplace=True, errors="ignore")
-    archived_df["Effort"] = pd.to_numeric(archived_df["Effort"], errors="coerce").fillna(0)
-    archived_df = archived_df[archived_df["Effort"] >= 0]
-    # Compute Latency for archived tasks
-    def compute_latency_arch(row):
-        try:
-            if "Created_on" not in row or pd.isna(row["Created_on"]):
-                return np.nan
-            created = pd.to_datetime(row["Created_on"], errors="coerce")
-            if pd.isna(created):
-                return np.nan
-            return (datetime.now() - created).days
-        except Exception:
-            return np.nan
-    archived_df["Latency"] = archived_df.apply(compute_latency_arch, axis=1)
-    # Pareto for archived: for each latency, keep the task with the highest priority so far
-    archived_sorted = archived_df.sort_values(by="Latency", ascending=True)
-    pareto_archived = []
-    max_priority_arch = float('-inf')
-    for _, row in archived_sorted.iterrows():
-        if row["Priority"] >= max_priority_arch:
-            pareto_archived.append(row["Task"])
-            max_priority_arch = row["Priority"]
-    archived_df["Pareto"] = archived_df["Task"].isin(pareto_archived)
-    archived_df["Task_Display"] = archived_df.apply(lambda r: f"{r['Task']} 🚨" if r["Pareto"] else r["Task"], axis=1)
-    # Effort as marker size
-    effort_valid_arch = archived_df["Effort"].dropna()
-    if not effort_valid_arch.empty:
-        effort_norm_arch = (archived_df["Effort"] - effort_valid_arch.min()) / (effort_valid_arch.max() - effort_valid_arch.min() + 1e-6)
-        marker_sizes_arch = min_size + (max_size - min_size) * (effort_norm_arch ** 3)
-        marker_sizes_arch = marker_sizes_arch.fillna(min_size)
-    else:
-        marker_sizes_arch = pd.Series([min_size] * len(archived_df), index=archived_df.index)
-    fig_arch = px.scatter(
-        archived_df,
-        x="Latency",
-        y="Priority",
-        color="Pareto",
-        size=marker_sizes_arch,
-        hover_data=["Task_Display", "Category", "Notes", "Effort", "Latency", "Created_on"],
-        title="Archived Tasks: Priority vs Latency (Pareto Frontier, Circle Size = Effort)",
-        labels={"Latency": "Age (days)", "Priority": "Priority (Higher = More Votes)", "Effort": "Effort (1-100 Scale)", "Created_on": "Created"}
-    )
-    pareto_points_arch = archived_df[archived_df["Pareto"]].sort_values(by="Latency")
-    if len(pareto_points_arch) > 1:
-        fig_arch.add_scatter(
-            x=pareto_points_arch["Latency"],
-            y=pareto_points_arch["Priority"],
-            mode="lines",
-            line=dict(dash="dot", width=2),
-            name="Pareto Frontier"
-        )
-    fig_arch.show()
 
 print("""
 ## Archived Tasks
