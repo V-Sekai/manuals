@@ -63,7 +63,8 @@ df["Pareto"] = df["Task"].isin(pareto_tasks)
 df["Task_Display"] = df.apply(lambda r: f"{r['Task']} 🚨" if r["Pareto"] else r["Task"], axis=1)
 
 
-# Use latency (age in days since Created_on) as marker size
+
+# Use Latency (age in days since Created_on) as x-axis, Effort as marker size
 import numpy as np
 from datetime import datetime
 min_size = 10
@@ -79,29 +80,31 @@ def compute_latency(row):
     except Exception:
         return np.nan
 df["Latency"] = df.apply(compute_latency, axis=1)
-latency_valid = df["Latency"].dropna()
-if not latency_valid.empty:
-    latency_norm = (df["Latency"] - latency_valid.min()) / (latency_valid.max() - latency_valid.min() + 1e-6)
-    marker_sizes = min_size + (max_size - min_size) * (latency_norm ** 3)
+# Effort as marker size
+effort_valid = df["Effort"].dropna()
+if not effort_valid.empty:
+    effort_norm = (df["Effort"] - effort_valid.min()) / (effort_valid.max() - effort_valid.min() + 1e-6)
+    marker_sizes = min_size + (max_size - min_size) * (effort_norm ** 3)
     marker_sizes = marker_sizes.fillna(min_size)
 else:
     marker_sizes = pd.Series([min_size] * len(df), index=df.index)
 fig = px.scatter(
     df,
-    x="Effort",
+    x="Latency",
     y="Priority",
     color="Pareto",
     size=marker_sizes,
     hover_data=["Task_Display", "Category", "Notes", "Effort", "Latency", "Created_on"],
-    title="Feature Roadmap: Priority vs Effort (Pareto Frontier, Circle Size = Latency)",
-    labels={"Effort": "Effort (1-100 Scale)", "Priority": "Priority (Higher = More Votes)", "Latency": "Age (days)", "Created_on": "Created"}
+    title="Feature Roadmap: Priority vs Latency (Pareto Frontier, Circle Size = Effort)",
+    labels={"Latency": "Age (days)", "Priority": "Priority (Higher = More Votes)", "Effort": "Effort (1-100 Scale)", "Created_on": "Created"}
 )
 
-# Add step line for Pareto frontier
-pareto_points = df[df["Pareto"]].sort_values(by="Effort")
+
+# Add step line for Pareto frontier (now sorted by Latency)
+pareto_points = df[df["Pareto"]].sort_values(by="Latency")
 if len(pareto_points) > 1:
     fig.add_scatter(
-        x=pareto_points["Effort"],
+        x=pareto_points["Latency"],
         y=pareto_points["Priority"],
         mode="lines",
         line=dict(dash="dot", width=2),
@@ -134,23 +137,40 @@ if not archived_df.empty:
             min_effort_arch = row["Effort"]
     archived_df["Pareto"] = archived_df["Task"].isin(pareto_archived)
     archived_df["Task_Display"] = archived_df.apply(lambda r: f"{r['Task']} 🚨" if r["Pareto"] else r["Task"], axis=1)
-    # Marker size for archived
-    effort_norm_arch = (archived_df["Effort"] - archived_df["Effort"].min()) / (archived_df["Effort"].max() - archived_df["Effort"].min() + 1e-6)
-    marker_sizes_arch = min_size + (max_size - min_size) * (effort_norm_arch ** 3)
+    # Compute Latency for archived tasks
+    def compute_latency_arch(row):
+        try:
+            if "Created_on" not in row or pd.isna(row["Created_on"]):
+                return np.nan
+            created = pd.to_datetime(row["Created_on"], errors="coerce")
+            if pd.isna(created):
+                return np.nan
+            return (datetime.now() - created).days
+        except Exception:
+            return np.nan
+    archived_df["Latency"] = archived_df.apply(compute_latency_arch, axis=1)
+    # Effort as marker size
+    effort_valid_arch = archived_df["Effort"].dropna()
+    if not effort_valid_arch.empty:
+        effort_norm_arch = (archived_df["Effort"] - effort_valid_arch.min()) / (effort_valid_arch.max() - effort_valid_arch.min() + 1e-6)
+        marker_sizes_arch = min_size + (max_size - min_size) * (effort_norm_arch ** 3)
+        marker_sizes_arch = marker_sizes_arch.fillna(min_size)
+    else:
+        marker_sizes_arch = pd.Series([min_size] * len(archived_df), index=archived_df.index)
     fig_arch = px.scatter(
         archived_df,
-        x="Effort",
+        x="Latency",
         y="Priority",
         color="Pareto",
         size=marker_sizes_arch,
-        hover_data=["Task_Display", "Category", "Notes", "Effort"],
-        title="Archived Tasks: Priority vs Effort (Pareto Frontier)",
-        labels={"Effort": "Effort (1-100 Scale)", "Priority": "Priority (Higher = More Votes)"}
+        hover_data=["Task_Display", "Category", "Notes", "Effort", "Latency", "Created_on"],
+        title="Archived Tasks: Priority vs Latency (Pareto Frontier, Circle Size = Effort)",
+        labels={"Latency": "Age (days)", "Priority": "Priority (Higher = More Votes)", "Effort": "Effort (1-100 Scale)", "Created_on": "Created"}
     )
-    pareto_points_arch = archived_df[archived_df["Pareto"]].sort_values(by="Effort")
+    pareto_points_arch = archived_df[archived_df["Pareto"]].sort_values(by="Latency")
     if len(pareto_points_arch) > 1:
         fig_arch.add_scatter(
-            x=pareto_points_arch["Effort"],
+            x=pareto_points_arch["Latency"],
             y=pareto_points_arch["Priority"],
             mode="lines",
             line=dict(dash="dot", width=2),
