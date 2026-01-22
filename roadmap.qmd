@@ -67,21 +67,21 @@ effort_norm = (df["Effort"] - df["Effort"].min()) / (df["Effort"].max() - df["Ef
 marker_sizes = min_size + (max_size - min_size) * (effort_norm ** 3)
 fig = px.scatter(
     df,
-    x="Effort",
-    y="Priority",
+    x="Priority",
+    y="Effort",
     color="Pareto",
     size=marker_sizes,
     hover_data=["Task_Display", "Category", "Notes", "Effort"],
-    title="Feature Roadmap: Priority vs Effort (Pareto Frontier)",
-    labels={"Effort": "Effort (1-100 Scale)", "Priority": "Priority (Higher = More Votes)"}
+    title="Feature Roadmap: Effort vs Priority (Pareto Frontier)",
+    labels={"Priority": "Priority (Higher = More Votes)", "Effort": "Effort (1-100 Scale)"}
 )
 
 # Add step line for Pareto frontier
-pareto_points = df[df["Pareto"]].sort_values(by="Effort")
+pareto_points = df[df["Pareto"]].sort_values(by="Priority", ascending=False)
 if len(pareto_points) > 1:
     fig.add_scatter(
-        x=pareto_points["Effort"],
-        y=pareto_points["Priority"],
+        x=pareto_points["Priority"],
+        y=pareto_points["Effort"],
         mode="lines",
         line=dict(dash="dot", width=2),
         name="Pareto Frontier"
@@ -118,19 +118,19 @@ if not archived_df.empty:
     marker_sizes_arch = min_size + (max_size - min_size) * (effort_norm_arch ** 3)
     fig_arch = px.scatter(
         archived_df,
-        x="Effort",
-        y="Priority",
+        x="Priority",
+        y="Effort",
         color="Pareto",
         size=marker_sizes_arch,
         hover_data=["Task_Display", "Category", "Notes", "Effort"],
-        title="Archived Tasks: Priority vs Effort (Pareto Frontier)",
-        labels={"Effort": "Effort (1-100 Scale)", "Priority": "Priority (Higher = More Votes)"}
+        title="Archived Tasks: Effort vs Priority (Pareto Frontier)",
+        labels={"Priority": "Priority (Higher = More Votes)", "Effort": "Effort (1-100 Scale)"}
     )
-    pareto_points_arch = archived_df[archived_df["Pareto"]].sort_values(by="Effort")
+    pareto_points_arch = archived_df[archived_df["Pareto"]].sort_values(by="Priority", ascending=False)
     if len(pareto_points_arch) > 1:
         fig_arch.add_scatter(
-            x=pareto_points_arch["Effort"],
-            y=pareto_points_arch["Priority"],
+            x=pareto_points_arch["Priority"],
+            y=pareto_points_arch["Effort"],
             mode="lines",
             line=dict(dash="dot", width=2),
             name="Pareto Frontier"
