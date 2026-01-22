@@ -67,6 +67,20 @@ def compute_latency(row):
         return np.nan
 df["Latency"] = df.apply(compute_latency, axis=1)
 
+# Calculate raw vote count for each task
+votes_dict = vote.get_votes('./roadmap/votes')
+vote_counts = {}
+for voter, ballot in votes_dict.items():
+    for task, vote_val in ballot.items():
+        vote_counts[task] = vote_counts.get(task, 0) + vote_val
+
+total_votes = sum(vote_counts.values()) if vote_counts else 1
+# Add normalized vote count to dataframe
+# If a task has no votes, set to 0
+
+df['RawVoteCount'] = df['Task'].map(lambda t: vote_counts.get(t, 0))
+df['NormVoteCount'] = df['RawVoteCount'] / total_votes
+
 # Compute Pareto frontier: maximize Priority, minimize Effort
 pareto_tasks = []
 for idx, row in df.iterrows():
@@ -80,17 +94,10 @@ for idx, row in df.iterrows():
 df["Pareto"] = df["Task"].isin(pareto_tasks)
 df["Task_Display"] = df.apply(lambda r: f"{r['Task']} 🚨" if r["Pareto"] else r["Task"], axis=1)
 
-# Effort as marker size
-effort_valid = df["Effort"].dropna()
-if not effort_valid.empty:
-    # Invert: lower Effort = larger marker
-    effort_norm = (effort_valid.max() - df["Effort"]) / (effort_valid.max() - effort_valid.min() + 1e-6)
-    marker_sizes = min_size + (max_size - min_size) * (effort_norm ** 3)
-    marker_sizes = marker_sizes.fillna(min_size)
-else:
-    marker_sizes = pd.Series([min_size] * len(df), index=df.index)
-
-
+# Use normalized vote count for marker size
+min_size = 10
+max_size = 100
+marker_sizes = min_size + (max_size - min_size) * df['NormVoteCount'].fillna(0)
 
 # 3D scatter for all points
 fig = px.scatter_3d(
@@ -99,9 +106,10 @@ fig = px.scatter_3d(
     y="Effort",
     z="Priority",
     color="Pareto",
-    hover_data=["Task_Display", "Category", "Notes", "Effort", "Latency", "Created_on"],
-    title="Feature Roadmap (3D): Latency vs Effort vs Priority (Pareto Frontier)",
-    labels={"Latency": "Age (days)", "Effort": "Effort (1-100 Scale)", "Priority": "Priority (Higher = More Votes)", "Created_on": "Created"}
+    size=marker_sizes,
+    hover_data=["Task_Display", "Category", "Notes", "Effort", "Latency", "Created_on", "RawVoteCount", "NormVoteCount"],
+    title="Feature Roadmap (3D): Latency vs Effort vs Priority (Pareto Frontier, Vote-Scaled)",
+    labels={"Latency": "Age (days)", "Effort": "Effort (1-100 Scale)", "Priority": "Priority (Higher = More Votes)", "Created_on": "Created", "RawVoteCount": "Raw Vote Count", "NormVoteCount": "Normalized Vote Count"}
 )
 
 # Add convex hull mesh for Pareto points if there are enough points
