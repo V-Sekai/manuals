@@ -150,7 +150,7 @@ if len(pareto_points) > 1:
     )
 
 fig.update_layout(plot_bgcolor='white')
-fig.update_xaxes(showgrid=True, gridcolor='gray', gridwidth=1)
+fig.update_xaxes(showgrid=True, gridcolor='gray', gridwidth=1, autorange="reversed")
 fig.update_yaxes(showgrid=True, gridcolor='gray', gridwidth=1)
 
 print("""
@@ -239,6 +239,14 @@ fig_el.update_layout(plot_bgcolor='white')
 fig_el.update_xaxes(showgrid=True, gridcolor='gray', gridwidth=1)
 fig_el.update_yaxes(showgrid=True, gridcolor='gray', gridwidth=1)
 fig_el.show()
+
+print("""
+## Ranked Task List
+
+The tasks ranked by starvote priority (higher is better):
+""")
+
+show(avg_table[['Task', 'Priority', 'Category', 'Effort', 'Notes']])
 
 print("""
 
