@@ -121,15 +121,9 @@ def plot_effort_priority(df, effort_sizes):
     )
     pareto_points_ep = df[df['Pareto_EP']][['Effort', 'Priority']].sort_values(['Effort', 'Priority'], ascending=[True, False]).values
     if len(pareto_points_ep) > 1:
-        # Walk left to right, only keep points where Priority does not decrease
-        front = [pareto_points_ep[0]]
-        for pt in pareto_points_ep[1:]:
-            if pt[1] <= front[-1][1]:
-                front.append(pt)
-        front = np.array(front)
         pareto_line_ep = go.Scatter(
-            x=front[:,0],
-            y=front[:,1],
+            x=pareto_points_ep[:,0],
+            y=pareto_points_ep[:,1],
             mode='lines+markers',
             name='Pareto Frontier',
             line=dict(color='orange', width=3, dash='solid'),
@@ -151,15 +145,9 @@ def plot_priority_latency(df, effort_sizes):
     )
     pareto_points_pl = df[df['Pareto_PL']][['Priority', 'Latency']].sort_values(['Priority', 'Latency'], ascending=[False, False]).values
     if len(pareto_points_pl) > 1:
-        # Walk right to left, only keep points where Latency does not decrease
-        front = [pareto_points_pl[0]]
-        for pt in pareto_points_pl[1:]:
-            if pt[1] >= front[-1][1]:
-                front.append(pt)
-        front = np.array(front)
         pareto_line_pl = go.Scatter(
-            x=front[:,0],
-            y=front[:,1],
+            x=pareto_points_pl[:,0],
+            y=pareto_points_pl[:,1],
             mode='lines+markers',
             name='Pareto Frontier',
             line=dict(color='orange', width=3, dash='solid'),
@@ -181,15 +169,9 @@ def plot_effort_latency(df, effort_sizes):
     )
     pareto_points_el = df[df['Pareto_EL']][['Effort', 'Latency']].sort_values(['Effort', 'Latency'], ascending=[True, False]).values
     if len(pareto_points_el) > 1:
-        # Walk left to right, only keep points where Latency does not decrease
-        front = [pareto_points_el[0]]
-        for pt in pareto_points_el[1:]:
-            if pt[1] >= front[-1][1]:
-                front.append(pt)
-        front = np.array(front)
         pareto_line_el = go.Scatter(
-            x=front[:,0],
-            y=front[:,1],
+            x=pareto_points_el[:,0],
+            y=pareto_points_el[:,1],
             mode='lines+markers',
             name='Pareto Frontier',
             line=dict(color='orange', width=3, dash='solid'),
