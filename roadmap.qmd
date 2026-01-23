@@ -139,7 +139,7 @@ fig = px.scatter(
 
 
 # Add step line for Pareto frontier (now sorted by Latency)
-pareto_points = df[df["Pareto"]].sort_values(by="Latency")
+pareto_points = df[df["Pareto"]].sort_values(by="Latency", ascending=False)
 if len(pareto_points) > 1:
     fig.add_scatter(
         x=pareto_points["Latency"],
@@ -163,7 +163,7 @@ print("""
 - **X-axis (Latency):** Age of the task in days (reversed, older tasks on the left).
 - **Y-axis (Priority):** Importance or value to the project (higher is better).
 - **Pareto Frontier:** Dotted line shows the optimal trade-off between priority and age.
-- **Interpretation:** Top-left tasks are high-priority and recent—consider addressing these soon.
+- **Interpretation:** Top-left tasks are high-priority and older—consider these established priorities.
 
 ### Chart 2: Effort vs Priority
 
@@ -177,7 +177,7 @@ print("""
 - **X-axis (Effort):** Estimated work required (lower is better).
 - **Y-axis (Latency):** Age of the task in days (higher means older).
 - **Pareto Frontier:** Dotted line shows the optimal trade-off between effort and age.
-- **Interpretation:** Top-left tasks are easy to do and recent—these are good candidates for quick progress.
+- **Interpretation:** Top-left tasks are low effort and older—these are good candidates for quick progress on established tasks.
 
 Use these charts to balance quick wins, urgent priorities, and neglected tasks for effective game project planning.
 """)
