@@ -109,19 +109,20 @@ def plot_effort_priority(df, effort_sizes):
         y='Priority',
         color='Pareto_EP',
         size=effort_sizes,
-        hover_data=['Category', 'Notes', 'Effort', 'Priority', 'Latency', 'Created_on'],
-        title='Feature Roadmap: Effort vs Priority (Pareto Highlighted, Effort Size)',
-        labels={'Effort': 'Effort (1-100 Scale)', 'Priority': 'Priority', 'Pareto_EP': 'Pareto Optimal', 'Created_on': 'Created', 'Latency': 'Age (days)'}
+        hover_data=['Task', 'Category', 'Notes', 'Effort', 'Priority', 'Latency', 'Created_on'],
+        title='Feature Roadmap: Effort vs Priority (Pareto Frontier)',
+        labels={'Effort': 'Effort (1-100 Scale, lower is better)', 'Priority': 'Priority', 'Pareto_EP': 'Pareto Optimal', 'Created_on': 'Created', 'Latency': 'Age (days)'}
     )
     pareto_points_ep = df[df['Pareto_EP']][['Effort', 'Priority']].sort_values(['Effort', 'Priority'], ascending=[True, False]).values
-    if len(pareto_points_ep) > 0:
+    if len(pareto_points_ep) > 1:
         pareto_line_ep = go.Scatter(
             x=pareto_points_ep[:,0],
             y=pareto_points_ep[:,1],
             mode='lines+markers',
             name='Pareto Frontier',
             line=dict(color='orange', width=3, dash='solid'),
-            marker=dict(size=10, color='orange', symbol='diamond')
+            marker=dict(size=10, color='orange', symbol='diamond'),
+            hoverinfo='skip'
         )
         fig_ep.add_trace(pareto_line_ep)
     fig_ep.show()
@@ -133,19 +134,20 @@ def plot_priority_latency(df, effort_sizes):
         y='Latency',
         color='Pareto_PL',
         size=effort_sizes,
-        hover_data=['Category', 'Notes', 'Effort', 'Priority', 'Latency', 'Created_on'],
-        title='Feature Roadmap: Priority vs Latency (Pareto Highlighted, Effort Size)',
-        labels={'Effort': 'Effort (1-100 Scale)', 'Priority': 'Priority', 'Pareto_PL': 'Pareto Optimal', 'Latency': 'Age (days)', 'Created_on': 'Created'}
+        hover_data=['Task', 'Category', 'Notes', 'Effort', 'Priority', 'Latency', 'Created_on'],
+        title='Feature Roadmap: Priority vs Latency (Pareto Frontier)',
+        labels={'Effort': 'Effort (1-100 Scale, lower is better)', 'Priority': 'Priority', 'Pareto_PL': 'Pareto Optimal', 'Latency': 'Age (days)', 'Created_on': 'Created'}
     )
     pareto_points_pl = df[df['Pareto_PL']][['Priority', 'Latency']].sort_values(['Priority', 'Latency'], ascending=[False, False]).values
-    if len(pareto_points_pl) > 0:
+    if len(pareto_points_pl) > 1:
         pareto_line_pl = go.Scatter(
             x=pareto_points_pl[:,0],
             y=pareto_points_pl[:,1],
             mode='lines+markers',
             name='Pareto Frontier',
             line=dict(color='orange', width=3, dash='solid'),
-            marker=dict(size=10, color='orange', symbol='diamond')
+            marker=dict(size=10, color='orange', symbol='diamond'),
+            hoverinfo='skip'
         )
         fig_pl.add_trace(pareto_line_pl)
     fig_pl.show()
@@ -157,19 +159,20 @@ def plot_effort_latency(df, effort_sizes):
         y='Latency',
         color='Pareto_EL',
         size=effort_sizes,
-        hover_data=['Category', 'Notes', 'Effort', 'Priority', 'Latency', 'Created_on'],
-        title='Feature Roadmap: Effort vs Latency (Pareto Highlighted, Effort Size)',
-        labels={'Effort': 'Effort (1-100 Scale)', 'Latency': 'Age (days)', 'Pareto_EL': 'Pareto Optimal', 'Priority': 'Priority', 'Created_on': 'Created'}
+        hover_data=['Task', 'Category', 'Notes', 'Effort', 'Priority', 'Latency', 'Created_on'],
+        title='Feature Roadmap: Effort vs Latency (Pareto Frontier)',
+        labels={'Effort': 'Effort (1-100 Scale, lower is better)', 'Latency': 'Age (days)', 'Pareto_EL': 'Pareto Optimal', 'Priority': 'Priority', 'Created_on': 'Created'}
     )
     pareto_points_el = df[df['Pareto_EL']][['Effort', 'Latency']].sort_values(['Effort', 'Latency'], ascending=[True, False]).values
-    if len(pareto_points_el) > 0:
+    if len(pareto_points_el) > 1:
         pareto_line_el = go.Scatter(
             x=pareto_points_el[:,0],
             y=pareto_points_el[:,1],
             mode='lines+markers',
             name='Pareto Frontier',
             line=dict(color='orange', width=3, dash='solid'),
-            marker=dict(size=10, color='orange', symbol='diamond')
+            marker=dict(size=10, color='orange', symbol='diamond'),
+            hoverinfo='skip'
         )
         fig_el.add_trace(pareto_line_el)
     fig_el.show()
