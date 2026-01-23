@@ -223,8 +223,6 @@ fig_el = px.scatter(
     color_discrete_map={"Pareto Optimal": "#F4A261", "Dominated": "#6C757D"}
 )
 
-fig_el.update_yaxes(autorange="reversed")
-
 pareto_points_el = df[df["Pareto_EL"]].sort_values(by="Effort")
 if len(pareto_points_el) > 1:
     fig_el.add_scatter(
@@ -237,7 +235,7 @@ if len(pareto_points_el) > 1:
 
 fig_el.update_layout(plot_bgcolor='white')
 fig_el.update_xaxes(showgrid=True, gridcolor='gray', gridwidth=1)
-fig_el.update_yaxes(showgrid=True, gridcolor='gray', gridwidth=1, autorange="reversed")
+fig_el.update_yaxes(showgrid=True, gridcolor='gray', gridwidth=1)
 fig_el.show()
 
 print("""
