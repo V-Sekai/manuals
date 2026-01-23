@@ -46,7 +46,7 @@ def update_votes(tasks):
                 rows = list(reader)
 
             # Extract existing tasks and their categories from the vote file
-            existing_tasks = {row[1]: row[0] for row in rows[1:]}  # Skip header
+            existing_tasks = {row[1]: row[0] for row in rows[1:] if len(row) >= 2}  # Skip header and invalid rows
 
             # Find missing tasks (excluding archived ones)
             all_tasks_from_file = set(task_info.keys())
