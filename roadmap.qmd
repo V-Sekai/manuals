@@ -91,11 +91,11 @@ df["Pareto_EP"] = df["Task"].isin(pareto_tasks_ep)
 # Compute Pareto for Effort vs Latency
 df_sorted_el = df.sort_values(by="Effort", ascending=True)
 pareto_tasks_el = []
-max_latency_el = float('-inf')
+min_latency_el = float('inf')
 for _, row in df_sorted_el.iterrows():
-    if row["Latency"] >= max_latency_el:
+    if row["Latency"] <= min_latency_el:
         pareto_tasks_el.append(row["Task"])
-        max_latency_el = row["Latency"]
+        min_latency_el = row["Latency"]
 df["Pareto_EL"] = df["Task"].isin(pareto_tasks_el)
 
 df['Pareto_label'] = df['Pareto'].map({True: 'Pareto Optimal', False: 'Dominated'})
@@ -133,7 +133,8 @@ fig = px.scatter(
     size=marker_sizes,
     hover_data=["Task", "Category", "Notes", "Effort", "Latency", "Created_on"],
     title="Feature Roadmap: Priority vs Latency (Pareto Frontier, Circle Size = Effort)",
-    labels={"Latency": "Age (days)", "Priority": "Priority (Higher = More Votes)", "Pareto_label": "Optimality", "Effort": "Effort (1-100 Scale)", "Created_on": "Created"}
+    labels={"Latency": "Age (days)", "Priority": "Priority (Higher = More Votes)", "Pareto_label": "Optimality", "Effort": "Effort (1-100 Scale)", "Created_on": "Created"},
+    color_discrete_map={"Pareto Optimal": "#F4A261", "Dominated": "#6C757D"}
 )
 
 
@@ -148,7 +149,7 @@ if len(pareto_points) > 1:
         name="Pareto Frontier"
     )
 
-
+fig.update_layout(plot_bgcolor='white')
 fig.show()
 
 fig_ep = px.scatter(
@@ -159,7 +160,8 @@ fig_ep = px.scatter(
     size=marker_sizes,
     hover_data=["Task", "Category", "Notes", "Effort", "Priority", "Latency", "Created_on"],
     title="Feature Roadmap: Effort vs Priority (Pareto Frontier, Circle Size = Effort)",
-    labels={"Effort": "Effort (1-100 Scale, lower is better)", "Priority": "Priority", "Pareto_EP_label": "Optimality", "Latency": "Age (days)", "Created_on": "Created"}
+    labels={"Effort": "Effort (1-100 Scale, lower is better)", "Priority": "Priority", "Pareto_EP_label": "Optimality", "Latency": "Age (days)", "Created_on": "Created"},
+    color_discrete_map={"Pareto Optimal": "#F4A261", "Dominated": "#6C757D"}
 )
 
 pareto_points_ep = df[df["Pareto_EP"]].sort_values(by="Effort")
@@ -172,6 +174,7 @@ if len(pareto_points_ep) > 1:
         name="Pareto Frontier"
     )
 
+fig_ep.update_layout(plot_bgcolor='white')
 fig_ep.show()
 
 fig_el = px.scatter(
@@ -182,8 +185,11 @@ fig_el = px.scatter(
     size=marker_sizes,
     hover_data=["Task", "Category", "Notes", "Effort", "Priority", "Latency", "Created_on"],
     title="Feature Roadmap: Effort vs Latency (Pareto Frontier, Circle Size = Effort)",
-    labels={"Effort": "Effort (1-100 Scale, lower is better)", "Latency": "Age (days)", "Pareto_EL_label": "Optimality", "Priority": "Priority", "Created_on": "Created"}
+    labels={"Effort": "Effort (1-100 Scale, lower is better)", "Latency": "Age (days)", "Pareto_EL_label": "Optimality", "Priority": "Priority", "Created_on": "Created"},
+    color_discrete_map={"Pareto Optimal": "#F4A261", "Dominated": "#6C757D"}
 )
+
+fig_el.update_yaxes(autorange="reversed")
 
 pareto_points_el = df[df["Pareto_EL"]].sort_values(by="Effort")
 if len(pareto_points_el) > 1:
@@ -195,6 +201,7 @@ if len(pareto_points_el) > 1:
         name="Pareto Frontier"
     )
 
+fig_el.update_layout(plot_bgcolor='white')
 fig_el.show()
 
 print("""
@@ -205,7 +212,7 @@ print("""
 - **X-axis (Latency):** Age of the task in days (higher means older).
 - **Y-axis (Priority):** Importance or value to the project (higher is better).
 - **Pareto Frontier:** Dotted line shows the optimal trade-off between priority and age.
-- **Interpretation:** Top-right tasks are high-priority and have been waiting the longest—consider addressing these soon.
+- **Interpretation:** Top-left tasks are high-priority and recent—consider addressing these soon.
 
 **Chart 2: Effort vs Priority**
 - **X-axis (Effort):** Estimated work required (lower is better).
@@ -217,9 +224,10 @@ print("""
 - **X-axis (Effort):** Estimated work required (lower is better).
 - **Y-axis (Latency):** Age of the task in days (higher means older).
 - **Pareto Frontier:** Dotted line shows the optimal trade-off between effort and age.
-- **Interpretation:** Top-left tasks are easy to do and have been waiting a long time—these are good candidates for quick progress.
+- **Interpretation:** Top-left tasks are easy to do and recent—these are good candidates for quick progress.
 
 Use these charts to balance quick wins, urgent priorities, and neglected tasks for effective game project planning.
+
 ## Archived Tasks
 
 Archived tasks
