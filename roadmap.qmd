@@ -91,9 +91,9 @@ try:
             X[:,0] = -X[:,0]
         if maximize_y:
             X[:,1] = -X[:,1]
-        nds = NonDominatedSorting().find_non_dominated(X)
+        nds = NonDominatedSorting().do(X)
         mask = [False] * len(df)
-        for idx in nds:
+        for idx in nds[0]:
             mask[idx] = True
         return mask
     # For Effort vs Priority (min Effort, max Priority)
