@@ -67,36 +67,73 @@ def compute_latency(row):
 df['Latency'] = df.apply(compute_latency, axis=1)
 
 # Compute Pareto frontier: for each latency, keep the task with the highest priority so far
-df_sorted = df.sort_values(by="Latency", ascending=False)
-pareto_tasks = []
-max_priority = float('-inf')
-for _, row in df_sorted.iterrows():
-    if row["Priority"] >= max_priority:
-        pareto_tasks.append(row["Task"])
-        max_priority = row["Priority"]
-# Highlight Pareto-optimal tasks
-df["Pareto"] = df["Task"].isin(pareto_tasks)
-df["Task_Display"] = df.apply(lambda r: f"{r['Task']} 🚨" if r["Pareto"] else r["Task"], axis=1)
+# Compute Pareto front using pymoo (non-dominated sorting)
+try:
+    from pymoo.util.non_dominated_sorting import NonDominatedSorting
+    # For Priority vs Latency: we want to maximize both Priority and Latency (older is better)
+    # NonDominatedSorting assumes minimization, so negate objectives we want to maximize.
+    mask_valid_pl = df[['Latency', 'Priority']].notnull().all(axis=1)
+    F_pl = np.column_stack([ -df.loc[mask_valid_pl, 'Latency'].to_numpy(),
+                             -df.loc[mask_valid_pl, 'Priority'].to_numpy() ])
+    nds = NonDominatedSorting()
+    front_idx = nds.do(F_pl, only_non_dominated_front=True)
+    pareto_indices_pl = df.loc[mask_valid_pl].iloc[front_idx].index
+    df['Pareto'] = False
+    df.loc[pareto_indices_pl, 'Pareto'] = True
+    df['Task_Display'] = df.apply(lambda r: f"{r['Task']} 🚨" if r['Pareto'] else r['Task'], axis=1)
+except Exception:
+    # fallback to simple greedy method if pymoo isn't available
+    df_sorted = df.sort_values(by="Latency", ascending=False)
+    pareto_tasks = []
+    max_priority = float('-inf')
+    for _, row in df_sorted.iterrows():
+        if row["Priority"] >= max_priority:
+            pareto_tasks.append(row["Task"])
+            max_priority = row["Priority"]
+    df["Pareto"] = df["Task"].isin(pareto_tasks)
+    df["Task_Display"] = df.apply(lambda r: f"{r['Task']} 🚨" if r["Pareto"] else r['Task'], axis=1)
 
-# Compute Pareto for Effort vs Priority
-df_sorted_ep = df.sort_values(by="Effort", ascending=True)
-pareto_tasks_ep = []
-max_priority_ep = float('-inf')
-for _, row in df_sorted_ep.iterrows():
-    if row["Priority"] >= max_priority_ep:
-        pareto_tasks_ep.append(row["Task"])
-        max_priority_ep = row["Priority"]
-df["Pareto_EP"] = df["Task"].isin(pareto_tasks_ep)
+# Compute Pareto for Effort vs Priority using pymoo
+try:
+    # Effort: minimize, Priority: maximize -> use Effort and -Priority for minimization
+    mask_valid_ep = df[['Effort', 'Priority']].notnull().all(axis=1)
+    F_ep = np.column_stack([ df.loc[mask_valid_ep, 'Effort'].to_numpy(),
+                             -df.loc[mask_valid_ep, 'Priority'].to_numpy() ])
+    nds = NonDominatedSorting()
+    front_idx_ep = nds.do(F_ep, only_non_dominated_front=True)
+    pareto_indices_ep = df.loc[mask_valid_ep].iloc[front_idx_ep].index
+    df['Pareto_EP'] = False
+    df.loc[pareto_indices_ep, 'Pareto_EP'] = True
+except Exception:
+    df_sorted_ep = df.sort_values(by="Effort", ascending=True)
+    pareto_tasks_ep = []
+    max_priority_ep = float('-inf')
+    for _, row in df_sorted_ep.iterrows():
+        if row["Priority"] >= max_priority_ep:
+            pareto_tasks_ep.append(row["Task"])
+            max_priority_ep = row["Priority"]
+    df["Pareto_EP"] = df["Task"].isin(pareto_tasks_ep)
 
-# Compute Pareto for Effort vs Latency
-df_sorted_el = df.sort_values(by="Effort", ascending=True)
-pareto_tasks_el = []
-max_latency_el = float('-inf')
-for _, row in df_sorted_el.iterrows():
-    if row["Latency"] >= max_latency_el:
-        pareto_tasks_el.append(row["Task"])
-        max_latency_el = row["Latency"]
-df["Pareto_EL"] = df["Task"].isin(pareto_tasks_el)
+# Compute Pareto for Effort vs Latency using pymoo
+try:
+    # Effort: minimize, Latency: maximize -> use Effort and -Latency
+    mask_valid_el = df[['Effort', 'Latency']].notnull().all(axis=1)
+    F_el = np.column_stack([ df.loc[mask_valid_el, 'Effort'].to_numpy(),
+                             -df.loc[mask_valid_el, 'Latency'].to_numpy() ])
+    nds = NonDominatedSorting()
+    front_idx_el = nds.do(F_el, only_non_dominated_front=True)
+    pareto_indices_el = df.loc[mask_valid_el].iloc[front_idx_el].index
+    df['Pareto_EL'] = False
+    df.loc[pareto_indices_el, 'Pareto_EL'] = True
+except Exception:
+    df_sorted_el = df.sort_values(by="Effort", ascending=True)
+    pareto_tasks_el = []
+    max_latency_el = float('-inf')
+    for _, row in df_sorted_el.iterrows():
+        if row["Latency"] >= max_latency_el:
+            pareto_tasks_el.append(row["Task"])
+            max_latency_el = row["Latency"]
+    df["Pareto_EL"] = df["Task"].isin(pareto_tasks_el)
 
 df['Pareto_label'] = df['Pareto'].map({True: 'Pareto Optimal', False: 'Dominated'})
 df['Pareto_EP_label'] = df['Pareto_EP'].map({True: 'Pareto Optimal', False: 'Dominated'})
