@@ -13,7 +13,6 @@ format:
 import vote
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
 from itables import init_notebook_mode, show
 
 init_notebook_mode(all_interactive=False)
@@ -53,8 +52,8 @@ else:
 # Use Latency (age in days since Created_on) as x-axis, Effort as marker size
 import numpy as np
 from datetime import datetime
-min_size = 60  # Increased from 30 to 60
-max_size = 150  # Increased from 100 to 150
+min_size = 10
+max_size = 100
 def compute_latency(row):
     try:
         if 'Created_on' not in row or pd.isna(row['Created_on']):
@@ -66,6 +65,42 @@ def compute_latency(row):
     except Exception:
         return np.nan
 df['Latency'] = df.apply(compute_latency, axis=1)
+
+# Compute Pareto frontier: for each latency, keep the task with the highest priority so far
+df_sorted = df.sort_values(by="Latency", ascending=True)
+pareto_tasks = []
+max_priority = float('-inf')
+for _, row in df_sorted.iterrows():
+    if row["Priority"] >= max_priority:
+        pareto_tasks.append(row["Task"])
+        max_priority = row["Priority"]
+# Highlight Pareto-optimal tasks
+df["Pareto"] = df["Task"].isin(pareto_tasks)
+df["Task_Display"] = df.apply(lambda r: f"{r['Task']} 🚨" if r["Pareto"] else r["Task"], axis=1)
+
+# Compute Pareto for Effort vs Priority
+df_sorted_ep = df.sort_values(by="Effort", ascending=True)
+pareto_tasks_ep = []
+max_priority_ep = float('-inf')
+for _, row in df_sorted_ep.iterrows():
+    if row["Priority"] >= max_priority_ep:
+        pareto_tasks_ep.append(row["Task"])
+        max_priority_ep = row["Priority"]
+df["Pareto_EP"] = df["Task"].isin(pareto_tasks_ep)
+
+# Compute Pareto for Effort vs Latency
+df_sorted_el = df.sort_values(by="Effort", ascending=True)
+pareto_tasks_el = []
+max_latency_el = float('-inf')
+for _, row in df_sorted_el.iterrows():
+    if row["Latency"] >= max_latency_el:
+        pareto_tasks_el.append(row["Task"])
+        max_latency_el = row["Latency"]
+df["Pareto_EL"] = df["Task"].isin(pareto_tasks_el)
+
+df['Pareto_label'] = df['Pareto'].map({True: 'Pareto Optimal', False: 'Dominated'})
+df['Pareto_EP_label'] = df['Pareto_EP'].map({True: 'Pareto Optimal', False: 'Dominated'})
+df['Pareto_EL_label'] = df['Pareto_EL'].map({True: 'Pareto Optimal', False: 'Dominated'})
 
 # Calculate raw vote count for each task
 votes_dict = vote.get_votes('./roadmap/votes')
@@ -80,127 +115,108 @@ total_votes = sum(vote_counts.values()) if vote_counts else 1
 df['RawVoteCount'] = df['Task'].map(lambda t: vote_counts.get(t, 0))
 df['NormVoteCount'] = df['RawVoteCount'] / total_votes
 
-from pymoo.util.nds.non_dominated_sorting import NonDominatedSorting
-# Effort vs Priority (min Effort, max Priority)
-X_ep = df[['Effort', 'Priority']].values.copy()
-X_ep[:, 1] = -X_ep[:, 1]  # maximize Priority
-pareto_idx_ep = NonDominatedSorting().do(X_ep)[0]
-df['Pareto_EP'] = False
-df.loc[df.index[pareto_idx_ep], 'Pareto_EP'] = True
-
-# Priority vs Latency (max Priority, max Latency)
-X_pl = df[['Priority', 'Latency']].values.copy()
-X_pl = -X_pl  # maximize both
-pareto_idx_pl = NonDominatedSorting().do(X_pl)[0]
-df['Pareto_PL'] = False
-df.loc[df.index[pareto_idx_pl], 'Pareto_PL'] = True
-
-# Effort vs Latency (min Effort, max Latency)
-X_el = df[['Effort', 'Latency']].values.copy()
-X_el[:, 1] = -X_el[:, 1]  # maximize Latency
-pareto_idx_el = NonDominatedSorting().do(X_el)[0]
-df['Pareto_EL'] = False
-df.loc[df.index[pareto_idx_el], 'Pareto_EL'] = True
-
-def plot_effort_priority(df, effort_sizes):
-    fig_ep = px.scatter(
-        df,
-        x='Effort',
-        y='Priority',
-        color='Pareto_EP',
-        size=effort_sizes,
-        hover_data=['Task', 'Category', 'Notes', 'Effort', 'Priority', 'Latency', 'Created_on'],
-        title='Feature Roadmap: Effort vs Priority (Pareto Frontier)',
-        labels={'Effort': 'Effort (1-100 Scale, lower is better)', 'Priority': 'Priority', 'Pareto_EP': 'Pareto Optimal', 'Created_on': 'Created', 'Latency': 'Age (days)'}
-    )
-    pareto_points_ep = df[df['Pareto_EP']][['Effort', 'Priority']].sort_values(['Effort', 'Priority'], ascending=[True, False]).values
-    if len(pareto_points_ep) > 1:
-        pareto_line_ep = go.Scatter(
-            x=pareto_points_ep[:,0],
-            y=pareto_points_ep[:,1],
-            mode='lines+markers',
-            name='Pareto Frontier',
-            line=dict(color='orange', width=3, dash='solid'),
-            marker=dict(size=10, color='orange', symbol='diamond'),
-            hoverinfo='skip'
-        )
-        fig_ep.add_trace(pareto_line_ep)
-    fig_ep.show()
-
-def plot_priority_latency(df, effort_sizes):
-    fig_pl = px.scatter(
-        df,
-        x='Priority',
-        y='Latency',
-        color='Pareto_PL',
-        size=effort_sizes,
-        hover_data=['Task', 'Category', 'Notes', 'Effort', 'Priority', 'Latency', 'Created_on'],
-        title='Feature Roadmap: Priority vs Latency (Pareto Frontier)',
-        labels={'Effort': 'Effort (1-100 Scale, lower is better)', 'Priority': 'Priority', 'Pareto_PL': 'Pareto Optimal', 'Latency': 'Age (days)', 'Created_on': 'Created'}
-    )
-    pareto_points_pl = df[df['Pareto_PL']][['Priority', 'Latency']].sort_values(['Priority', 'Latency'], ascending=[False, False]).values
-    if len(pareto_points_pl) > 1:
-        pareto_line_pl = go.Scatter(
-            x=pareto_points_pl[:,0],
-            y=pareto_points_pl[:,1],
-            mode='lines+markers',
-            name='Pareto Frontier',
-            line=dict(color='orange', width=3, dash='solid'),
-            marker=dict(size=10, color='orange', symbol='diamond'),
-            hoverinfo='skip'
-        )
-        fig_pl.add_trace(pareto_line_pl)
-    fig_pl.show()
-
-def plot_effort_latency(df, effort_sizes):
-    fig_el = px.scatter(
-        df,
-        x='Effort',
-        y='Latency',
-        color='Pareto_EL',
-        size=effort_sizes,
-        hover_data=['Task', 'Category', 'Notes', 'Effort', 'Priority', 'Latency', 'Created_on'],
-        title='Feature Roadmap: Effort vs Latency (Pareto Frontier)',
-        labels={'Effort': 'Effort (1-100 Scale, lower is better)', 'Latency': 'Age (days)', 'Pareto_EL': 'Pareto Optimal', 'Priority': 'Priority', 'Created_on': 'Created'}
-    )
-    pareto_points_el = df[df['Pareto_EL']][['Effort', 'Latency']].sort_values(['Effort', 'Latency'], ascending=[True, False]).values
-    if len(pareto_points_el) > 1:
-        pareto_line_el = go.Scatter(
-            x=pareto_points_el[:,0],
-            y=pareto_points_el[:,1],
-            mode='lines+markers',
-            name='Pareto Frontier',
-            line=dict(color='orange', width=3, dash='solid'),
-            marker=dict(size=10, color='orange', symbol='diamond'),
-            hoverinfo='skip'
-        )
-        fig_el.add_trace(pareto_line_el)
-    fig_el.show()
 
 # Call the chart functions
-effort_sizes = df['Effort'].fillna(min_size)
-plot_effort_priority(df, effort_sizes)
-plot_priority_latency(df, effort_sizes)
-plot_effort_latency(df, effort_sizes)
+# Effort as marker size
+effort_valid = df["Effort"].dropna()
+if not effort_valid.empty:
+    effort_norm = (df["Effort"] - effort_valid.min()) / (effort_valid.max() - effort_valid.min() + 1e-6)
+    marker_sizes = min_size + (max_size - min_size) * (effort_norm ** 3)
+    marker_sizes = marker_sizes.fillna(min_size)
+else:
+    marker_sizes = pd.Series([min_size] * len(df), index=df.index)
+fig = px.scatter(
+    df,
+    x="Latency",
+    y="Priority",
+    color="Pareto_label",
+    size=marker_sizes,
+    hover_data=["Task", "Category", "Notes", "Effort", "Latency", "Created_on"],
+    title="Feature Roadmap: Priority vs Latency (Pareto Frontier, Circle Size = Effort)",
+    labels={"Latency": "Age (days)", "Priority": "Priority (Higher = More Votes)", "Pareto_label": "Optimality", "Effort": "Effort (1-100 Scale)", "Created_on": "Created"}
+)
+
+
+# Add step line for Pareto frontier (now sorted by Latency)
+pareto_points = df[df["Pareto"]].sort_values(by="Latency")
+if len(pareto_points) > 1:
+    fig.add_scatter(
+        x=pareto_points["Latency"],
+        y=pareto_points["Priority"],
+        mode="lines",
+        line=dict(dash="dot", width=2),
+        name="Pareto Frontier"
+    )
+
+
+fig.show()
+
+fig_ep = px.scatter(
+    df,
+    x="Effort",
+    y="Priority",
+    color="Pareto_EP_label",
+    size=marker_sizes,
+    hover_data=["Task", "Category", "Notes", "Effort", "Priority", "Latency", "Created_on"],
+    title="Feature Roadmap: Effort vs Priority (Pareto Frontier, Circle Size = Effort)",
+    labels={"Effort": "Effort (1-100 Scale, lower is better)", "Priority": "Priority", "Pareto_EP_label": "Optimality", "Latency": "Age (days)", "Created_on": "Created"}
+)
+
+pareto_points_ep = df[df["Pareto_EP"]].sort_values(by="Effort")
+if len(pareto_points_ep) > 1:
+    fig_ep.add_scatter(
+        x=pareto_points_ep["Effort"],
+        y=pareto_points_ep["Priority"],
+        mode="lines",
+        line=dict(dash="dot", width=2),
+        name="Pareto Frontier"
+    )
+
+fig_ep.show()
+
+fig_el = px.scatter(
+    df,
+    x="Effort",
+    y="Latency",
+    color="Pareto_EL_label",
+    size=marker_sizes,
+    hover_data=["Task", "Category", "Notes", "Effort", "Priority", "Latency", "Created_on"],
+    title="Feature Roadmap: Effort vs Latency (Pareto Frontier, Circle Size = Effort)",
+    labels={"Effort": "Effort (1-100 Scale, lower is better)", "Latency": "Age (days)", "Pareto_EL_label": "Optimality", "Priority": "Priority", "Created_on": "Created"}
+)
+
+pareto_points_el = df[df["Pareto_EL"]].sort_values(by="Effort")
+if len(pareto_points_el) > 1:
+    fig_el.add_scatter(
+        x=pareto_points_el["Effort"],
+        y=pareto_points_el["Latency"],
+        mode="lines",
+        line=dict(dash="dot", width=2),
+        name="Pareto Frontier"
+    )
+
+fig_el.show()
 
 print("""
 
 ## How to Interpret the Roadmap Charts
 
-**Chart 1: Effort vs Priority (Pareto Highlighted)**
-- **X-axis (Effort):** Estimated work required (lower is better).
+**Chart 1: Priority vs Latency**
+- **X-axis (Latency):** Age of the task in days (higher means older).
 - **Y-axis (Priority):** Importance or value to the project (higher is better).
-- **Pareto Frontier:** Orange line and diamonds show the most valuable tasks for the least effort. Focus on these for maximum impact.
-- **Interpretation:** Tasks near the top-left are "quick wins" (high value, low effort). Tasks on the Pareto line are optimal trade-offs.
-
-**Chart 2: Priority vs Latency**
-- **X-axis (Priority):** Importance or value to the project.
-- **Y-axis (Latency):** Age of the task in days (higher means older).
+- **Pareto Frontier:** Dotted line shows the optimal trade-off between priority and age.
 - **Interpretation:** Top-right tasks are high-priority and have been waiting the longest—consider addressing these soon.
 
+**Chart 2: Effort vs Priority**
+- **X-axis (Effort):** Estimated work required (lower is better).
+- **Y-axis (Priority):** Importance or value to the project (higher is better).
+- **Pareto Frontier:** Dotted line shows the optimal trade-off between effort and priority.
+- **Interpretation:** Tasks near the top-left are "quick wins" (high value, low effort). Tasks on the Pareto line are optimal trade-offs.
+
 **Chart 3: Effort vs Latency**
-- **X-axis (Effort):** Estimated work required.
-- **Y-axis (Latency):** Age of the task in days.
+- **X-axis (Effort):** Estimated work required (lower is better).
+- **Y-axis (Latency):** Age of the task in days (higher means older).
+- **Pareto Frontier:** Dotted line shows the optimal trade-off between effort and age.
 - **Interpretation:** Top-left tasks are easy to do and have been waiting a long time—these are good candidates for quick progress.
 
 Use these charts to balance quick wins, urgent priorities, and neglected tasks for effective game project planning.
