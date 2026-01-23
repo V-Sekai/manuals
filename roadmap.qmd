@@ -67,7 +67,7 @@ def compute_latency(row):
 df['Latency'] = df.apply(compute_latency, axis=1)
 
 # Compute Pareto frontier: for each latency, keep the task with the highest priority so far
-df_sorted = df.sort_values(by="Latency", ascending=True)
+df_sorted = df.sort_values(by="Latency", ascending=False)
 pareto_tasks = []
 max_priority = float('-inf')
 for _, row in df_sorted.iterrows():
@@ -91,11 +91,11 @@ df["Pareto_EP"] = df["Task"].isin(pareto_tasks_ep)
 # Compute Pareto for Effort vs Latency
 df_sorted_el = df.sort_values(by="Effort", ascending=True)
 pareto_tasks_el = []
-min_latency_el = float('inf')
+max_latency_el = float('-inf')
 for _, row in df_sorted_el.iterrows():
-    if row["Latency"] <= min_latency_el:
+    if row["Latency"] >= max_latency_el:
         pareto_tasks_el.append(row["Task"])
-        min_latency_el = row["Latency"]
+        max_latency_el = row["Latency"]
 df["Pareto_EL"] = df["Task"].isin(pareto_tasks_el)
 
 df['Pareto_label'] = df['Pareto'].map({True: 'Pareto Optimal', False: 'Dominated'})
