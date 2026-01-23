@@ -175,7 +175,7 @@ print("""
 ### Chart 3: Effort vs Latency
 
 - **X-axis (Effort):** Estimated work required (lower is better).
-- **Y-axis (Latency):** Age of the task in days (higher means older).
+- **Y-axis (Latency):** Age of the task in days (reversed, older tasks at top).
 - **Pareto Frontier:** Dotted line shows the optimal trade-off between effort and age.
 - **Interpretation:** Top-left tasks are low effort and older—these are good candidates for quick progress on established tasks.
 
@@ -237,7 +237,7 @@ if len(pareto_points_el) > 1:
 
 fig_el.update_layout(plot_bgcolor='white')
 fig_el.update_xaxes(showgrid=True, gridcolor='gray', gridwidth=1)
-fig_el.update_yaxes(showgrid=True, gridcolor='gray', gridwidth=1)
+fig_el.update_yaxes(showgrid=True, gridcolor='gray', gridwidth=1, autorange="reversed")
 fig_el.show()
 
 print("""
