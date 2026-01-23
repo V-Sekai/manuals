@@ -81,37 +81,51 @@ total_votes = sum(vote_counts.values()) if vote_counts else 1
 df['RawVoteCount'] = df['Task'].map(lambda t: vote_counts.get(t, 0))
 df['NormVoteCount'] = df['RawVoteCount'] / total_votes
 
-# Compute Pareto frontier: maximize Priority, minimize Effort
-pareto_tasks = []
-for idx, row in df.iterrows():
-    dominated = df[
-        ((df['Priority'] > row['Priority']) & (df['Effort'] <= row['Effort'])) |
-        ((df['Priority'] >= row['Priority']) & (df['Effort'] < row['Effort']))
-    ]
-    if dominated.empty:
-        pareto_tasks.append(row['Task'])
-# Highlight Pareto-optimal tasks
-df['Pareto'] = df['Task'].isin(pareto_tasks)
-df['Task_Display'] = df.apply(lambda r: f"{r['Task']} 🚨" if r['Pareto'] else r['Task'], axis=1)
 
 
+# Compute Pareto frontier for Effort vs Priority (minimize Effort for each Priority)
+def pareto_frontier_min_effort(df):
+    # For each unique Priority (descending), keep the task with the lowest Effort so far
+    sorted_df = df.sort_values(['Priority', 'Effort'], ascending=[False, True]).reset_index(drop=True)
+    pareto = []
+    min_effort = None
+    for _, row in sorted_df.iterrows():
+        effort = row['Effort']
+        if min_effort is None or effort < min_effort:
+            pareto.append(row['Task'])
+            min_effort = effort
+    return pareto
 
+pareto_ep = pareto_frontier_min_effort(df)
+df['Pareto_EP'] = df['Task'].isin(pareto_ep)
+# Compute Pareto frontier for Priority vs Effort (maximize Priority for each Effort)
+def pareto_frontier_max_priority(df):
+    # For each unique Effort (ascending), keep the task with the highest Priority so far
+    sorted_df = df.sort_values(['Effort', 'Priority'], ascending=[True, False]).reset_index(drop=True)
+    pareto = []
+    max_priority = None
+    for _, row in sorted_df.iterrows():
+        priority = row['Priority']
+        if max_priority is None or priority > max_priority:
+            pareto.append(row['Task'])
+            max_priority = priority
+    return pareto
 
+pareto_ep = pareto_frontier_min_effort(df)
 
-# Pareto Chart 1: Effort (x) vs Priority (y)
+# Chart 1: Effort (x) vs Priority (y) with Pareto
 effort_sizes = df['Effort'].fillna(min_size)
 fig_ep = px.scatter(
     df,
     x='Effort',
     y='Priority',
-    color='Pareto',
+    color='Pareto_EP',
     size=effort_sizes,
-    hover_data=['Task_Display', 'Category', 'Notes', 'Effort', 'Priority', 'Latency', 'Created_on'],
+    hover_data=['Category', 'Notes', 'Effort', 'Priority', 'Latency', 'Created_on'],
     title='Feature Roadmap: Effort vs Priority (Pareto Highlighted, Effort Size)',
-    labels={'Effort': 'Effort (1-100 Scale)', 'Priority': 'Priority', 'Pareto': 'Pareto Frontier', 'Created_on': 'Created', 'Latency': 'Age (days)'}
+    labels={'Effort': 'Effort (1-100 Scale)', 'Priority': 'Priority', 'Pareto_EP': 'Pareto Frontier', 'Created_on': 'Created', 'Latency': 'Age (days)'}
 )
-# Pareto line and hull for Effort vs Priority
-pareto_points_ep = df[df['Pareto']].sort_values('Effort')
+pareto_points_ep = df[df['Pareto_EP']].sort_values('Effort')
 if len(pareto_points_ep) > 1:
     pareto_line_ep = go.Scatter(
         x=pareto_points_ep['Effort'],
@@ -122,7 +136,7 @@ if len(pareto_points_ep) > 1:
         marker=dict(size=10, color='orange', symbol='diamond')
     )
     fig_ep.add_trace(pareto_line_ep)
-pareto_df_ep = df[df['Pareto']]
+pareto_df_ep = df[df['Pareto_EP']]
 if len(pareto_df_ep) >= 3:
     try:
         from scipy.spatial import ConvexHull
@@ -143,89 +157,54 @@ if len(pareto_df_ep) >= 3:
         print('scipy is not installed. Convex hull visualization skipped.')
 fig_ep.show()
 
-# Pareto Chart 2: Priority (x) vs Effort (y)
-fig_pe = px.scatter(
+# Chart 2: Priority (x) vs Latency (y)
+fig_pl = px.scatter(
     df,
     x='Priority',
-    y='Effort',
-    color='Pareto',
+    y='Latency',
+    color='Category',
     size=effort_sizes,
-    hover_data=['Task_Display', 'Category', 'Notes', 'Effort', 'Priority', 'Latency', 'Created_on'],
-    title='Feature Roadmap: Priority vs Effort (Pareto Highlighted, Effort Size)',
-    labels={'Effort': 'Effort (1-100 Scale)', 'Priority': 'Priority', 'Pareto': 'Pareto Frontier', 'Created_on': 'Created', 'Latency': 'Age (days)'}
+    hover_data=['Category', 'Notes', 'Effort', 'Priority', 'Latency', 'Created_on'],
+    title='Feature Roadmap: Priority vs Latency (Effort Size)',
+    labels={'Effort': 'Effort (1-100 Scale)', 'Priority': 'Priority', 'Latency': 'Age (days)', 'Created_on': 'Created'}
 )
-fig_pe.update_yaxes(autorange='reversed')
-pareto_points_pe = df[df['Pareto']].sort_values('Priority')
-if len(pareto_points_pe) > 1:
-    pareto_line_pe = go.Scatter(
-        x=pareto_points_pe['Priority'],
-        y=pareto_points_pe['Effort'],
-        mode='lines+markers',
-        name='Pareto Frontier',
-        line=dict(color='orange', width=3, dash='solid'),
-        marker=dict(size=10, color='orange', symbol='diamond')
-    )
-    fig_pe.add_trace(pareto_line_pe)
-pareto_df_pe = df[df['Pareto']]
-if len(pareto_df_pe) >= 3:
-    try:
-        from scipy.spatial import ConvexHull
-        import numpy as np
-        points = pareto_df_pe[['Priority', 'Effort']].values
-        hull = ConvexHull(points)
-        hull_points = points[hull.vertices]
-        hull_trace_pe = go.Scatter(
-            x=hull_points[:,0],
-            y=hull_points[:,1],
-            mode='lines+markers',
-            name='Pareto Convex Hull (scipy)',
-            line=dict(color='orange', width=3, dash='dash'),
-            marker=dict(size=8, color='orange', symbol='diamond')
-        )
-        fig_pe.add_trace(hull_trace_pe)
-    except ImportError:
-        print('scipy is not installed. Convex hull visualization skipped.')
-fig_pe.show()
+fig_pl.show()
 
-# Convex hull visualization for Pareto-optimal tasks using scipy
-pareto_df = df[df['Pareto']]
-if len(pareto_df) >= 3:
-    try:
-        from scipy.spatial import ConvexHull
-        import numpy as np
-        points = pareto_df[['Effort', 'Priority']].values
-        hull = ConvexHull(points)
-        hull_points = points[hull.vertices]
-        print('Pareto tasks:')
-        print(pareto_df[['Task', 'Effort', 'Priority']])
-        print('Convex hull points:')
-        print(hull_points)
-        hull_trace = go.Scatter(
-            x=hull_points[:,0],
-            y=hull_points[:,1],
-            mode='lines+markers',
-            name='Pareto Convex Hull (scipy)',
-            line=dict(color='orange', width=3, dash='dash'),
-            marker=dict(size=8, color='orange', symbol='diamond')
-        )
-        # (Removed duplicate chart creation and show)
-    except ImportError:
-        print('scipy is not installed. Convex hull visualization skipped.')
+# Chart 3: Effort (x) vs Latency (y)
+fig_el = px.scatter(
+    df,
+    x='Effort',
+    y='Latency',
+    color='Category',
+    size=effort_sizes,
+    hover_data=['Category', 'Notes', 'Effort', 'Priority', 'Latency', 'Created_on'],
+    title='Feature Roadmap: Effort vs Latency (Effort Size)',
+    labels={'Effort': 'Effort (1-100 Scale)', 'Latency': 'Age (days)', 'Priority': 'Priority', 'Created_on': 'Created'}
+)
+
+fig_el.show()
 
 print("""
 
-## Glossary
+## How to Interpret the Roadmap Charts
 
-**Pareto Frontier**: In multi-objective optimization, the Pareto frontier (or Pareto front) is the set of solutions that are not dominated by any other solution. A solution is considered Pareto optimal if no other solution is better in all objectives. In this roadmap, tasks on the Pareto frontier have the highest priority for their level of effort, meaning you cannot improve priority without increasing effort, or reduce effort without lowering priority.
+**Chart 1: Effort vs Priority (Pareto Highlighted)**
+- **X-axis (Effort):** Estimated work required (lower is better).
+- **Y-axis (Priority):** Importance or value to the project (higher is better).
+- **Pareto Frontier:** Orange line and diamonds show the most valuable tasks for the least effort. Focus on these for maximum impact.
+- **Interpretation:** Tasks near the top-left are "quick wins" (high value, low effort). Tasks on the Pareto line are optimal trade-offs.
 
-**Latency**: The age of a task, measured in days since it was created. Used to visualize how long a task has been in the roadmap.
+**Chart 2: Priority vs Latency**
+- **X-axis (Priority):** Importance or value to the project.
+- **Y-axis (Latency):** Age of the task in days (higher means older).
+- **Interpretation:** Top-right tasks are high-priority and have been waiting the longest—consider addressing these soon.
 
-**Effort**: An estimated measure of the work required to complete a task, typically on a scale from 1 to 100.
+**Chart 3: Effort vs Latency**
+- **X-axis (Effort):** Estimated work required.
+- **Y-axis (Latency):** Age of the task in days.
+- **Interpretation:** Top-left tasks are easy to do and have been waiting a long time—these are good candidates for quick progress.
 
-**Priority**: A score representing the importance or urgency of a task, often based on votes or other ranking methods.
-""")
-
-print("""
+Use these charts to balance quick wins, urgent priorities, and neglected tasks for effective game project planning.
 ## Archived Tasks
 
 Archived tasks
