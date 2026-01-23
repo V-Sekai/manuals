@@ -83,7 +83,7 @@ df['NormVoteCount'] = df['RawVoteCount'] / total_votes
 
 # Use pymoo for robust Pareto front extraction
 try:
-    from pymoo.util.non_dominated_sorting import NonDominatedSorting
+    from pymoo.util.nds.non_dominated_sorting import NonDominatedSorting
     def pareto_frontier_2d(df, x_col, y_col, minimize_x=True, maximize_y=True):
         # Prepare objectives: minimize x, maximize y (convert to minimize -y)
         X = df[[x_col, y_col]].values.copy()
