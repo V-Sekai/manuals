@@ -80,33 +80,27 @@ total_votes = sum(vote_counts.values()) if vote_counts else 1
 df['RawVoteCount'] = df['Task'].map(lambda t: vote_counts.get(t, 0))
 df['NormVoteCount'] = df['RawVoteCount'] / total_votes
 
+from pymoo.util.nds.non_dominated_sorting import NonDominatedSorting
+# Effort vs Priority (min Effort, max Priority)
+X_ep = df[['Effort', 'Priority']].values.copy()
+X_ep[:, 1] = -X_ep[:, 1]  # maximize Priority
+pareto_idx_ep = NonDominatedSorting().do(X_ep)[0]
+df['Pareto_EP'] = False
+df.loc[df.index[pareto_idx_ep], 'Pareto_EP'] = True
 
+# Priority vs Latency (max Priority, max Latency)
+X_pl = df[['Priority', 'Latency']].values.copy()
+X_pl = -X_pl  # maximize both
+pareto_idx_pl = NonDominatedSorting().do(X_pl)[0]
+df['Pareto_PL'] = False
+df.loc[df.index[pareto_idx_pl], 'Pareto_PL'] = True
 
-# Use pymoo for robust Pareto front extraction (see pymoo docs)
-try:
-    from pymoo.util.nds.non_dominated_sorting import NonDominatedSorting
-    # Effort vs Priority (min Effort, max Priority)
-    X_ep = df[['Effort', 'Priority']].values.copy()
-    X_ep[:, 1] = -X_ep[:, 1]  # maximize Priority
-    pareto_idx_ep = NonDominatedSorting().do(X_ep)[0]
-    df['Pareto_EP'] = False
-    df.loc[df.index[pareto_idx_ep], 'Pareto_EP'] = True
-
-    # Priority vs Latency (max Priority, max Latency)
-    X_pl = df[['Priority', 'Latency']].values.copy()
-    X_pl = -X_pl  # maximize both
-    pareto_idx_pl = NonDominatedSorting().do(X_pl)[0]
-    df['Pareto_PL'] = False
-    df.loc[df.index[pareto_idx_pl], 'Pareto_PL'] = True
-
-    # Effort vs Latency (min Effort, max Latency)
-    X_el = df[['Effort', 'Latency']].values.copy()
-    X_el[:, 1] = -X_el[:, 1]  # maximize Latency
-    pareto_idx_el = NonDominatedSorting().do(X_el)[0]
-    df['Pareto_EL'] = False
-    df.loc[df.index[pareto_idx_el], 'Pareto_EL'] = True
-except ImportError:
-    raise ImportError("pymoo is required for Pareto front extraction. Please install it with 'pip install pymoo'.")
+# Effort vs Latency (min Effort, max Latency)
+X_el = df[['Effort', 'Latency']].values.copy()
+X_el[:, 1] = -X_el[:, 1]  # maximize Latency
+pareto_idx_el = NonDominatedSorting().do(X_el)[0]
+df['Pareto_EL'] = False
+df.loc[df.index[pareto_idx_el], 'Pareto_EL'] = True
 
 def plot_effort_priority(df, effort_sizes):
     fig_ep = px.scatter(
@@ -120,7 +114,7 @@ def plot_effort_priority(df, effort_sizes):
         labels={'Effort': 'Effort (1-100 Scale)', 'Priority': 'Priority', 'Pareto_EP': 'Pareto Optimal', 'Created_on': 'Created', 'Latency': 'Age (days)'}
     )
     pareto_points_ep = df[df['Pareto_EP']][['Effort', 'Priority']].sort_values(['Effort', 'Priority'], ascending=[True, False]).values
-    if len(pareto_points_ep) > 1:
+    if len(pareto_points_ep) > 0:
         pareto_line_ep = go.Scatter(
             x=pareto_points_ep[:,0],
             y=pareto_points_ep[:,1],
@@ -144,7 +138,7 @@ def plot_priority_latency(df, effort_sizes):
         labels={'Effort': 'Effort (1-100 Scale)', 'Priority': 'Priority', 'Pareto_PL': 'Pareto Optimal', 'Latency': 'Age (days)', 'Created_on': 'Created'}
     )
     pareto_points_pl = df[df['Pareto_PL']][['Priority', 'Latency']].sort_values(['Priority', 'Latency'], ascending=[False, False]).values
-    if len(pareto_points_pl) > 1:
+    if len(pareto_points_pl) > 0:
         pareto_line_pl = go.Scatter(
             x=pareto_points_pl[:,0],
             y=pareto_points_pl[:,1],
@@ -168,7 +162,7 @@ def plot_effort_latency(df, effort_sizes):
         labels={'Effort': 'Effort (1-100 Scale)', 'Latency': 'Age (days)', 'Pareto_EL': 'Pareto Optimal', 'Priority': 'Priority', 'Created_on': 'Created'}
     )
     pareto_points_el = df[df['Pareto_EL']][['Effort', 'Latency']].sort_values(['Effort', 'Latency'], ascending=[True, False]).values
-    if len(pareto_points_el) > 1:
+    if len(pareto_points_el) > 0:
         pareto_line_el = go.Scatter(
             x=pareto_points_el[:,0],
             y=pareto_points_el[:,1],
