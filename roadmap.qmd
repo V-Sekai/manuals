@@ -81,27 +81,30 @@ df['RawVoteCount'] = df['Task'].map(lambda t: vote_counts.get(t, 0))
 df['NormVoteCount'] = df['RawVoteCount'] / total_votes
 
 
-# Use pymoo for robust Pareto front extraction
+
+# Use pymoo for robust Pareto front extraction (see pymoo docs)
 try:
     from pymoo.util.nds.non_dominated_sorting import NonDominatedSorting
-    def pareto_frontier_2d(df, x_col, y_col, minimize_x=True, maximize_y=True):
-        # Prepare objectives: minimize x, maximize y (convert to minimize -y)
-        X = df[[x_col, y_col]].values.copy()
-        if not minimize_x:
-            X[:,0] = -X[:,0]
-        if maximize_y:
-            X[:,1] = -X[:,1]
-        nds = NonDominatedSorting().do(X)
-        mask = [False] * len(df)
-        for idx in nds[0]:
-            mask[idx] = True
-        return mask
-    # For Effort vs Priority (min Effort, max Priority)
-    df['Pareto_EP'] = pareto_frontier_2d(df, 'Effort', 'Priority', minimize_x=True, maximize_y=True)
-    # For Priority vs Latency (max Priority, max Latency)
-    df['Pareto_PL'] = pareto_frontier_2d(df, 'Priority', 'Latency', minimize_x=False, maximize_y=True)
-    # For Effort vs Latency (min Effort, max Latency)
-    df['Pareto_EL'] = pareto_frontier_2d(df, 'Effort', 'Latency', minimize_x=True, maximize_y=True)
+    # Effort vs Priority (min Effort, max Priority)
+    X_ep = df[['Effort', 'Priority']].values.copy()
+    X_ep[:, 1] = -X_ep[:, 1]  # maximize Priority
+    pareto_idx_ep = NonDominatedSorting().do(X_ep)[0]
+    df['Pareto_EP'] = False
+    df.loc[df.index[pareto_idx_ep], 'Pareto_EP'] = True
+
+    # Priority vs Latency (max Priority, max Latency)
+    X_pl = df[['Priority', 'Latency']].values.copy()
+    X_pl = -X_pl  # maximize both
+    pareto_idx_pl = NonDominatedSorting().do(X_pl)[0]
+    df['Pareto_PL'] = False
+    df.loc[df.index[pareto_idx_pl], 'Pareto_PL'] = True
+
+    # Effort vs Latency (min Effort, max Latency)
+    X_el = df[['Effort', 'Latency']].values.copy()
+    X_el[:, 1] = -X_el[:, 1]  # maximize Latency
+    pareto_idx_el = NonDominatedSorting().do(X_el)[0]
+    df['Pareto_EL'] = False
+    df.loc[df.index[pareto_idx_el], 'Pareto_EL'] = True
 except ImportError:
     raise ImportError("pymoo is required for Pareto front extraction. Please install it with 'pip install pymoo'.")
 
