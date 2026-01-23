@@ -123,7 +123,7 @@ fig_ep = px.scatter(
     size=effort_sizes,
     hover_data=['Category', 'Notes', 'Effort', 'Priority', 'Latency', 'Created_on'],
     title='Feature Roadmap: Effort vs Priority (Pareto Highlighted, Effort Size)',
-    labels={'Effort': 'Effort (1-100 Scale)', 'Priority': 'Priority', 'Pareto_EP': 'Pareto Frontier', 'Created_on': 'Created', 'Latency': 'Age (days)'}
+    labels={'Effort': 'Effort (1-100 Scale)', 'Priority': 'Priority', 'Pareto_EP': 'Pareto Optimal', 'Created_on': 'Created', 'Latency': 'Age (days)'}
 )
 pareto_points_ep = df[df['Pareto_EP']].sort_values('Effort')
 if len(pareto_points_ep) > 1:
@@ -152,9 +152,56 @@ if len(pareto_df_ep) >= 3:
             line=dict(color='orange', width=3, dash='dash'),
             marker=dict(size=8, color='orange', symbol='diamond')
         )
+fig_pl = px.scatter(
+    df,
+    x='Priority',
+    y='Latency',
+    color='Pareto_EP',
+    size=effort_sizes,
+    hover_data=['Category', 'Notes', 'Effort', 'Priority', 'Latency', 'Created_on'],
+    title='Feature Roadmap: Priority vs Latency (Pareto Highlighted, Effort Size)',
+    labels={'Effort': 'Effort (1-100 Scale)', 'Priority': 'Priority', 'Pareto_EP': 'Pareto Optimal', 'Latency': 'Age (days)', 'Created_on': 'Created'}
+)
+# Draw Pareto front line for Priority vs Latency
+pareto_points_pl = df[df['Pareto_EP']].sort_values('Priority')
+if len(pareto_points_pl) > 1:
+    pareto_line_pl = go.Scatter(
+        x=pareto_points_pl['Priority'],
+        y=pareto_points_pl['Latency'],
+        mode='lines+markers',
+        name='Pareto Frontier',
+        line=dict(color='orange', width=3, dash='solid'),
+        marker=dict(size=10, color='orange', symbol='diamond')
+    )
+    fig_pl.add_trace(pareto_line_pl)
+fig_pl.show()
+    try:
         fig_ep.add_trace(hull_trace_ep)
     except ImportError:
-        print('scipy is not installed. Convex hull visualization skipped.')
+        pass
+fig_el = px.scatter(
+    df,
+    x='Effort',
+    y='Latency',
+    color='Pareto_EP',
+    size=effort_sizes,
+    hover_data=['Category', 'Notes', 'Effort', 'Priority', 'Latency', 'Created_on'],
+    title='Feature Roadmap: Effort vs Latency (Pareto Highlighted, Effort Size)',
+    labels={'Effort': 'Effort (1-100 Scale)', 'Latency': 'Age (days)', 'Pareto_EP': 'Pareto Optimal', 'Priority': 'Priority', 'Created_on': 'Created'}
+)
+# Draw Pareto front line for Effort vs Latency
+pareto_points_el = df[df['Pareto_EP']].sort_values('Effort')
+if len(pareto_points_el) > 1:
+    pareto_line_el = go.Scatter(
+        x=pareto_points_el['Effort'],
+        y=pareto_points_el['Latency'],
+        mode='lines+markers',
+        name='Pareto Frontier',
+        line=dict(color='orange', width=3, dash='solid'),
+        marker=dict(size=10, color='orange', symbol='diamond')
+    )
+    fig_el.add_trace(pareto_line_el)
+fig_el.show()
 fig_ep.show()
 
 # Chart 2: Priority (x) vs Latency (y)
@@ -162,11 +209,11 @@ fig_pl = px.scatter(
     df,
     x='Priority',
     y='Latency',
-    color='Category',
+    color='Pareto_EP',
     size=effort_sizes,
     hover_data=['Category', 'Notes', 'Effort', 'Priority', 'Latency', 'Created_on'],
-    title='Feature Roadmap: Priority vs Latency (Effort Size)',
-    labels={'Effort': 'Effort (1-100 Scale)', 'Priority': 'Priority', 'Latency': 'Age (days)', 'Created_on': 'Created'}
+    title='Feature Roadmap: Priority vs Latency (Pareto Highlighted, Effort Size)',
+    labels={'Effort': 'Effort (1-100 Scale)', 'Priority': 'Priority', 'Pareto_EP': 'Pareto Optimal', 'Latency': 'Age (days)', 'Created_on': 'Created'}
 )
 fig_pl.show()
 
@@ -175,11 +222,11 @@ fig_el = px.scatter(
     df,
     x='Effort',
     y='Latency',
-    color='Category',
+    color='Pareto_EP',
     size=effort_sizes,
     hover_data=['Category', 'Notes', 'Effort', 'Priority', 'Latency', 'Created_on'],
-    title='Feature Roadmap: Effort vs Latency (Effort Size)',
-    labels={'Effort': 'Effort (1-100 Scale)', 'Latency': 'Age (days)', 'Priority': 'Priority', 'Created_on': 'Created'}
+    title='Feature Roadmap: Effort vs Latency (Pareto Highlighted, Effort Size)',
+    labels={'Effort': 'Effort (1-100 Scale)', 'Latency': 'Age (days)', 'Pareto_EP': 'Pareto Optimal', 'Priority': 'Priority', 'Created_on': 'Created'}
 )
 
 fig_el.show()
