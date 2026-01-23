@@ -28,8 +28,9 @@ if 'Priority' not in tasks_df.columns:
 # Merge in Priority from avg_table (by Task, left join)
 priority_df = avg_table[['Task', 'Priority']]
 df = tasks_df.merge(priority_df, on='Task', how='left', suffixes=('', '_voted'))
-# Use only voted Priority, set unvoted to 0
-df['Priority'] = df['Priority_voted'].fillna(0)
+# Use only voted Priority, drop tasks without votes
+df['Priority'] = df['Priority_voted']
+df = df.dropna(subset=['Priority'])
 df.drop(columns=['Priority_voted'], inplace=True)
 
 # Ensure Effort is numeric, fill missing with 0, and filter out negative Effort
