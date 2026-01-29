@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.27</generator>
-<lastBuildDate>Wed, 28 Jan 2026 23:41:50 GMT</lastBuildDate>
+<lastBuildDate>Thu, 29 Jan 2026 01:14:06 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -101,7 +101,97 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Wed, 28 Jan 2026 23:41:50 GMT</pubDate>
+  <pubDate>Thu, 29 Jan 2026 01:14:06 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260128-reject-sql-based-feature-flagging.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="rejected-sql-based-feature-flagging-for-application-configuration" class="level1">
+<h1>Rejected: SQL-Based Feature Flagging for Application Configuration</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>During development of the V-Sekai application architecture, a proposal was made to implement SQL-based feature flagging to enable runtime configuration changes without application restarts. This would allow toggling between different implementations (such as Next.js vs LiveView frontends) and enabling/disabling features dynamically.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>The development team needed a mechanism to manage feature toggles and configuration changes that would support: - Gradual rollout of new features - A/B testing of different implementations - Runtime configuration changes without service downtime - Managing separate docker container deployments</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>The proposed SQL-based feature flagging system would: - Store feature flags and configuration values in database tables - Provide runtime querying of flag states - Allow dynamic enabling/disabling of features without code changes - Support per-user or per-environment flag overrides</p>
+<p>However, this approach was rejected in favor of simpler alternatives.</p>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p><strong>Rejected Proposal Benefits (Not Implemented):</strong> - Dynamic runtime configuration without restarts - Database-backed configuration management - Granular control over feature availability - Potential for user-specific feature toggles</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p><strong>SQL-Based Feature Flagging Issues:</strong> - <strong>Overengineered</strong>: Complex database schema and query logic for simple configuration needs - <strong>Error-prone</strong>: Configuration stored in database tables is harder to version control and audit - <strong>Docker Limitations</strong>: Cannot control separate container execution (either run Next.js container or don’t) - <strong>Caching Issues</strong>: Runtime flag changes don’t affect code paths that branch during application startup - <strong>Maintenance Burden</strong>: Additional complexity for operations and debugging</p>
+<p><strong>Runtime Configuration Problems:</strong> - Some application behavior is determined at startup and cannot be changed dynamically - Feature flags don’t solve the fundamental problem of maintaining parallel implementations - Introduces potential for inconsistent application state during flag transitions</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p><strong>SQL-Based Feature Flagging:</strong> - Implementing database tables for configuration management - Building runtime flag evaluation system - Creating administrative interfaces for flag management - Handling flag state synchronization across distributed systems</p>
+<p><strong>Dynamic Runtime Configuration:</strong> - Building systems that allow all configuration to change without restart - Implementing complex caching invalidation strategies - Creating sophisticated state management for configuration changes</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p><strong>When SQL Feature Flagging Might Be Appropriate:</strong> - Large enterprise applications with hundreds of features requiring granular control - Systems where configuration changes must take effect immediately without any downtime - Applications with user-specific feature customization requirements - Complex A/B testing scenarios requiring database-backed analytics</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>Configuration management is core to application deployment and operations. The development team handles configuration through environment variables, YAML files, and Elixir configuration files (config.exs) rather than implementing complex database-backed systems.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Rejected <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+<li>Lyuma</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>Configuration, Feature-Flags, Architecture, Elixir, Database, Operations</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="https://thoughtworks.com/en-us/insights/blog/continuous-delivery/limits-of-feature-toggles">Managing feature toggles in teams: The limits of feature toggles</a></li>
+<li><a href="https://martinfowler.com/articles/feature-toggles.html">Feature Toggles (aka Feature Flags)</a></li>
+<li><a href="https://12factor.net/config">Configuration as Code Best Practices</a></li>
+</ol>
+<hr>
+<section id="configuration-terminology" class="level3">
+<h3 class="anchored" data-anchor-id="configuration-terminology">Configuration Terminology</h3>
+<ol type="1">
+<li><strong>Feature Flag</strong>: A mechanism to enable or disable functionality without code changes</li>
+<li><strong>Configuration Drift</strong>: When runtime configuration differs from deployed code expectations</li>
+<li><strong>Twelve-Factor App</strong>: Application development methodology emphasizing configuration through environment variables</li>
+<li><strong>Hot Reload</strong>: Changing application behavior without restarting the process</li>
+</ol>
+<p>AI assistant Aria assisted with this article.</p>
+
+
+</section>
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260128-reject-sql-based-feature-flagging.html</guid>
+  <pubDate>Thu, 29 Jan 2026 01:14:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -253,7 +343,7 @@ Development Applications (V-Sekai, etc.)</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260128-hypervisor-selection-for-development-infrastructure.html</guid>
-  <pubDate>Wed, 28 Jan 2026 23:41:50 GMT</pubDate>
+  <pubDate>Thu, 29 Jan 2026 01:14:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -732,7 +822,7 @@ font-style: inherit;">sudo</span> systemctl status cockroachdb.service</span></c
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250427-system-cockroachdb-setup.html</guid>
-  <pubDate>Wed, 28 Jan 2026 23:41:50 GMT</pubDate>
+  <pubDate>Thu, 29 Jan 2026 01:14:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -865,7 +955,7 @@ font-style: inherit;">sudo</span> systemctl status cockroachdb.service</span></c
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250427-recommender-system.html</guid>
-  <pubDate>Wed, 28 Jan 2026 23:41:50 GMT</pubDate>
+  <pubDate>Thu, 29 Jan 2026 01:14:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1078,7 +1168,7 @@ font-style: inherit;">sudo</span> systemctl status cockroachdb.service</span></c
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250427-backpack.html</guid>
-  <pubDate>Wed, 28 Jan 2026 23:41:50 GMT</pubDate>
+  <pubDate>Thu, 29 Jan 2026 01:14:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1270,7 +1360,7 @@ font-style: inherit;">sudo</span> systemctl status tailscale-funnel.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250421-tailscale-funnel.html</guid>
-  <pubDate>Wed, 28 Jan 2026 23:41:50 GMT</pubDate>
+  <pubDate>Thu, 29 Jan 2026 01:14:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1481,7 +1571,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250421-jupyter-notebook.html</guid>
-  <pubDate>Wed, 28 Jan 2026 23:41:50 GMT</pubDate>
+  <pubDate>Thu, 29 Jan 2026 01:14:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1582,7 +1672,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250420-use-meta-simulator.html</guid>
-  <pubDate>Wed, 28 Jan 2026 23:41:50 GMT</pubDate>
+  <pubDate>Thu, 29 Jan 2026 01:14:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1778,7 +1868,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250416-backpack.html</guid>
-  <pubDate>Wed, 28 Jan 2026 23:41:50 GMT</pubDate>
+  <pubDate>Thu, 29 Jan 2026 01:14:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1915,7 +2005,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250408-v-sekai-backpack.html</guid>
-  <pubDate>Wed, 28 Jan 2026 23:41:50 GMT</pubDate>
+  <pubDate>Thu, 29 Jan 2026 01:14:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2063,7 +2153,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250402-lip-sync-prototpe.html</guid>
-  <pubDate>Wed, 28 Jan 2026 23:41:50 GMT</pubDate>
+  <pubDate>Thu, 29 Jan 2026 01:14:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2277,7 +2367,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250402-image-to-full-body-face.html</guid>
-  <pubDate>Wed, 28 Jan 2026 23:41:50 GMT</pubDate>
+  <pubDate>Thu, 29 Jan 2026 01:14:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2426,7 +2516,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250402-automated-clothing-pipeline.html</guid>
-  <pubDate>Wed, 28 Jan 2026 23:41:50 GMT</pubDate>
+  <pubDate>Thu, 29 Jan 2026 01:14:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2594,7 +2684,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250328-guassian-splat.html</guid>
-  <pubDate>Wed, 28 Jan 2026 23:41:50 GMT</pubDate>
+  <pubDate>Thu, 29 Jan 2026 01:14:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2723,7 +2813,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250213-pin-key-vsekai-repos.html</guid>
-  <pubDate>Wed, 28 Jan 2026 23:41:50 GMT</pubDate>
+  <pubDate>Thu, 29 Jan 2026 01:14:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2873,7 +2963,7 @@ font-style: inherit;">}</span></span></code></pre></div></div></li>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250211-using-8-uv-channels-for-custom-vertex-data.html</guid>
-  <pubDate>Wed, 28 Jan 2026 23:41:50 GMT</pubDate>
+  <pubDate>Thu, 29 Jan 2026 01:14:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3009,7 +3099,7 @@ font-style: inherit;">return</span> format_markdown(date, active_contributors, b
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250203-daily-deck-log.html</guid>
-  <pubDate>Wed, 28 Jan 2026 23:41:50 GMT</pubDate>
+  <pubDate>Thu, 29 Jan 2026 01:14:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3092,7 +3182,7 @@ font-style: inherit;">return</span> format_markdown(date, active_contributors, b
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250130-world-godot-build-dispatch.html</guid>
-  <pubDate>Wed, 28 Jan 2026 23:41:50 GMT</pubDate>
+  <pubDate>Thu, 29 Jan 2026 01:14:06 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3485,79 +3575,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250126-scene-entity-add-delete-with-lens.html</guid>
-  <pubDate>Wed, 28 Jan 2026 23:41:50 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20250126-primitive-outline.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="proposed-mesh-primitive-outline-as-hologram" class="level1">
-<h1>Proposed: Mesh Primitive Outline as Hologram</h1>
-<section id="what-is-the-context-of-the-proposal" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-the-context-of-the-proposal">What is the context of the proposal?</h2>
-<p>Instead of a lens, we aim to generate an overlay using the mesh’s primitive outline. Similar to the multi-tool interface in Half-Life: Alyx, the tool will surface entity details as a holographic overlay.</p>
-</section>
-<section id="what-is-the-problem-being-solved" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-the-problem-being-solved">What is the problem being solved?</h2>
-<p>How can we generate a holographic overlay by utilizing a list of triangle edges extracted from mesh data?</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>The proposal involves parsing the mesh data to extract triangle edges and rendering these edges as a holographic overlay. Utilizing a compatible rendering engine, each edge will be transformed into visible lines with appropriate shading and anti-aliasing. The system will dynamically update the hologram in real-time based on user interactions and changes in the underlying data.</p>
-</section>
-<section id="what-are-the-benefits-of-the-proposal" class="level2">
-<h2 class="anchored" data-anchor-id="what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</h2>
-<p>This approach enhances visualization by providing a clear and immersive method to interact with mesh data. It improves user interaction through intuitive controls, allowing seamless engagement with the overlay. Performance is optimized by leveraging triangle edge data for efficient rendering. Additionally, the solution is scalable, enabling support for more complex interactions and data types in future developments.</p>
-</section>
-<section id="what-are-the-downsides-of-the-proposal" class="level2">
-<h2 class="anchored" data-anchor-id="what-are-the-downsides-of-the-proposal">What are the downsides of the proposal?</h2>
-<p>The proposal adds complexity to the rendering pipeline, potentially complicating development. It may require increased processing power, which could limit accessibility on lower-end devices. Users may face a learning curve adapting to the new interaction methods. Furthermore, additional features will necessitate ongoing support and updates, leading to maintenance overhead.</p>
-</section>
-<section id="what-are-the-alternative-proposals" class="level2">
-<h2 class="anchored" data-anchor-id="what-are-the-alternative-proposals">What are the alternative proposals?</h2>
-<p>The traditional way of doing outlines is via mesh extrusion. Alternative approaches include implementing a 2D overlay system with traditional interfaces, using point-based rendering instead of outlining edges, integrating existing third-party holographic tools instead of developing in-house solutions, and simplifying interactions by removing gesture-based controls.</p>
-</section>
-<section id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all" class="level2">
-<h2 class="anchored" data-anchor-id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all">When might the proposed solution be used rarely or not at all?</h2>
-<p>The solution may see limited use in environments lacking hardware support for holographic or virtual reality displays. It may be unnecessary for simple projects that do not require advanced visualization or interaction features. High resource constraints could hinder support for the overlay, and some users may prefer traditional interfaces over holographic ones.</p>
-</section>
-<section id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="is-this-a-v-sekai-core-responsibility-and-should-it-be-done-by-us">Is this a V-Sekai core responsibility, and should it be done by us?</h2>
-<p>Yes, developing the holographic overlay aligns with V-Sekai’s mission to enhance social VR functionalities. Implementing this feature will strengthen our core offerings and provide significant value to our user base.</p>
-</section>
-<section id="what-is-the-status-of-the-proposal" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-the-status-of-the-proposal">What is the status of the proposal?</h2>
-<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="who-is-making-decisions-on-the-proposal" class="level2">
-<h2 class="anchored" data-anchor-id="who-is-making-decisions-on-the-proposal">Who is making decisions on the proposal?</h2>
-<p>V-Sekai development team</p>
-</section>
-<section id="what-tags-does-the-proposal-have" class="level2">
-<h2 class="anchored" data-anchor-id="what-tags-does-the-proposal-have">What tags does the proposal have?</h2>
-<p>V-Sekai</p>
-</section>
-<section id="list-further-reading-references" class="level2">
-<h2 class="anchored" data-anchor-id="list-further-reading-references">List further reading references</h2>
-<ol type="1">
-<li><a href="https://github.com/v-sekai">V-Sekai · GitHub</a> - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.</li>
-<li><a href="https://github.com/v-sekai/v-sekai-game">V-Sekai/v-sekai-game</a> - GitHub page for the V-Sekai open-source project, which integrates social VR/VRSNS/metaverse components into the Godot Engine.</li>
-<li><a href="https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Vendor/CESIUM_primitive_outline/README.md">CESIUM Primitive Outline</a> - Describes the CESIUM Primitive Outline extension for rendering triangle edges with high-quality, anti-aliased lines.</li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20250126-primitive-outline.html</guid>
-  <pubDate>Wed, 28 Jan 2026 23:41:50 GMT</pubDate>
+  <pubDate>Thu, 29 Jan 2026 01:14:06 GMT</pubDate>
 </item>
 </channel>
 </rss>
