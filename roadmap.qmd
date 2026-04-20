@@ -1,6 +1,6 @@
 ---
 title: "Roadmap"
-format: 
+format:
   html:
     page-layout: full
 ---
@@ -10,33 +10,22 @@ format:
 #| echo: false
 #| output: asis
 
-import vote
 import pandas as pd
 import plotly.express as px
 from itables import init_notebook_mode, show
 
 init_notebook_mode(all_interactive=False)
 
-# Load voting results
-results = vote.run_election('./roadmap/votes', 1, './roadmap/tasks.csv')
-avg_table = results['avg_table']
-
-# Load all tasks (preserve Effort and other columns)
-tasks_df = pd.read_csv('./roadmap/tasks.csv')
-if 'Priority' not in tasks_df.columns:
-    tasks_df['Priority'] = 0
-# Merge in Priority from avg_table (by Task, left join)
-priority_df = avg_table[['Task', 'Priority']]
-df = tasks_df.merge(priority_df, on='Task', how='left', suffixes=('', '_voted'))
-# Use voted Priority if available, else fallback to original
-df['Priority'] = df['Priority_voted'].fillna(df['Priority'])
-df.drop(columns=['Priority_voted'], inplace=True)
+# Load tasks
+df = pd.read_csv('./roadmap/tasks.csv')
+if 'Priority' not in df.columns:
+    df['Priority'] = 0
 
 # Ensure Effort is numeric, fill missing with 0, and filter out negative Effort
 df['Effort'] = pd.to_numeric(df['Effort'], errors='coerce').fillna(0)
 df = df[df['Effort'] >= 0]
 
-# Filter out completed and archived tasks (do not show in chart)
+# Filter out completed and archived tasks
 if 'Completed_on' in df.columns:
     df = df[df['Completed_on'].isna()]
 if 'Archived_on' in df.columns:
@@ -49,7 +38,7 @@ if 'Created_on' in df.columns:
 else:
     df = df[['Category', 'Task', 'Priority', 'Effort', 'Notes']]
 
-# Use Latency (age in days since Created_on) as x-axis, Effort as marker size
+# Latency: age in days since Created_on
 import numpy as np
 from datetime import datetime
 min_size = 10
@@ -66,12 +55,9 @@ def compute_latency(row):
         return np.nan
 df['Latency'] = df.apply(compute_latency, axis=1)
 
-# Compute Pareto frontier: for each latency, keep the task with the highest priority so far
-# Compute Pareto front using pymoo (non-dominated sorting)
+# Pareto frontier: Priority vs Latency
 try:
     from pymoo.util.non_dominated_sorting import NonDominatedSorting
-    # For Priority vs Latency: we want to maximize both Priority and Latency (older is better)
-    # NonDominatedSorting assumes minimization, so negate objectives we want to maximize.
     mask_valid_pl = df[['Latency', 'Priority']].notnull().all(axis=1)
     F_pl = np.column_stack([ -df.loc[mask_valid_pl, 'Latency'].to_numpy(),
                              -df.loc[mask_valid_pl, 'Priority'].to_numpy() ])
@@ -82,7 +68,6 @@ try:
     df.loc[pareto_indices_pl, 'Pareto'] = True
     df['Task_Display'] = df.apply(lambda r: f"{r['Task']} 🚨" if r['Pareto'] else r['Task'], axis=1)
 except Exception:
-    # fallback to simple greedy method if pymoo isn't available
     df_sorted = df.sort_values(by="Latency", ascending=False)
     pareto_tasks = []
     max_priority = float('-inf')
@@ -93,9 +78,8 @@ except Exception:
     df["Pareto"] = df["Task"].isin(pareto_tasks)
     df["Task_Display"] = df.apply(lambda r: f"{r['Task']} 🚨" if r["Pareto"] else r['Task'], axis=1)
 
-# Compute Pareto for Effort vs Priority using pymoo
+# Pareto: Effort vs Priority
 try:
-    # Effort: minimize, Priority: maximize -> use Effort and -Priority for minimization
     mask_valid_ep = df[['Effort', 'Priority']].notnull().all(axis=1)
     F_ep = np.column_stack([ df.loc[mask_valid_ep, 'Effort'].to_numpy(),
                              -df.loc[mask_valid_ep, 'Priority'].to_numpy() ])
@@ -114,9 +98,8 @@ except Exception:
             max_priority_ep = row["Priority"]
     df["Pareto_EP"] = df["Task"].isin(pareto_tasks_ep)
 
-# Compute Pareto for Effort vs Latency using pymoo
+# Pareto: Effort vs Latency
 try:
-    # Effort: minimize, Latency: maximize -> use Effort and -Latency
     mask_valid_el = df[['Effort', 'Latency']].notnull().all(axis=1)
     F_el = np.column_stack([ df.loc[mask_valid_el, 'Effort'].to_numpy(),
                              -df.loc[mask_valid_el, 'Latency'].to_numpy() ])
@@ -139,22 +122,6 @@ df['Pareto_label'] = df['Pareto'].map({True: 'Pareto Optimal', False: 'Dominated
 df['Pareto_EP_label'] = df['Pareto_EP'].map({True: 'Pareto Optimal', False: 'Dominated'})
 df['Pareto_EL_label'] = df['Pareto_EL'].map({True: 'Pareto Optimal', False: 'Dominated'})
 
-# Calculate raw vote count for each task
-votes_dict = vote.get_votes('./roadmap/votes')
-vote_counts = {}
-for voter, ballot in votes_dict.items():
-    for task, vote_val in ballot.items():
-        vote_counts[task] = vote_counts.get(task, 0) + vote_val
-
-total_votes = sum(vote_counts.values()) if vote_counts else 1
-# Add normalized vote count to dataframe
-# If a task has no votes, set to 0
-df['RawVoteCount'] = df['Task'].map(lambda t: vote_counts.get(t, 0))
-df['NormVoteCount'] = df['RawVoteCount'] / total_votes
-
-
-# Call the chart functions
-# Effort as marker size
 effort_valid = df["Effort"].dropna()
 if not effort_valid.empty:
     effort_norm = (df["Effort"] - effort_valid.min()) / (effort_valid.max() - effort_valid.min() + 1e-6)
@@ -162,6 +129,7 @@ if not effort_valid.empty:
     marker_sizes = marker_sizes.fillna(min_size)
 else:
     marker_sizes = pd.Series([min_size] * len(df), index=df.index)
+
 fig = px.scatter(
     df,
     x="Latency",
@@ -170,12 +138,10 @@ fig = px.scatter(
     size=marker_sizes,
     hover_data=["Task", "Category", "Notes", "Effort", "Latency", "Created_on"],
     title="Feature Roadmap: Priority vs Latency (Pareto Frontier, Circle Size = Effort)",
-    labels={"Latency": "Age (days)", "Priority": "Priority (Higher = More Votes)", "Pareto_label": "Optimality", "Effort": "Effort (1-100 Scale)", "Created_on": "Created"},
+    labels={"Latency": "Age (days)", "Priority": "Priority", "Pareto_label": "Optimality", "Effort": "Effort (1-100 Scale)", "Created_on": "Created"},
     color_discrete_map={"Pareto Optimal": "#F4A261", "Dominated": "#6C757D"}
 )
 
-
-# Add step line for Pareto frontier (now sorted by Latency)
 pareto_points = df[df["Pareto"]].sort_values(by="Latency", ascending=False)
 if len(pareto_points) > 1:
     fig.add_scatter(
@@ -258,30 +224,12 @@ print("""
 <summary>Show archived tasks</summary>
 """)
 
-archived_tasks_df = vote.get_archived_tasks_table('./roadmap/tasks.csv')
-archived_tasks_df['Notes'] = archived_tasks_df['Notes'].fillna("")
-archived_tasks_df.reset_index(drop=True, inplace=True)
-
-show(archived_tasks_df)
-
-print("""
-</details>
-""")
-
-print("""
-
-## Raw Votes
-
-<details>
-<summary>Show raw votes table</summary>
-
-Raw votes count
-""")
-
-votes_dict = vote.get_votes('./roadmap/votes')
-votes_df = pd.DataFrame(votes_dict)
-votes_df = votes_df.fillna(0)
-show(votes_df, paging=False)
+archived_df = pd.read_csv('./roadmap/tasks.csv')
+archived_df = archived_df[archived_df['Archived_on'].notna() & (archived_df['Archived_on'] != '')] if 'Archived_on' in archived_df.columns else pd.DataFrame()
+if not archived_df.empty:
+    archived_df['Notes'] = archived_df['Notes'].fillna("")
+    archived_df.reset_index(drop=True, inplace=True)
+    show(archived_df)
 
 print("""
 </details>
