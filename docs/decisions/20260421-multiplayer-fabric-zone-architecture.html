@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>sqlite-per-zone-journal – V-Sekai - Manuals</title>
+<title>multiplayer-fabric-zone-architecture – V-Sekai - Manuals</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,41 +22,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -325,23 +290,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#sqlite-per-zone-discrete-mutation-journal-for-crash-recovery" id="toc-sqlite-per-zone-discrete-mutation-journal-for-crash-recovery" class="nav-link active" data-scroll-target="#sqlite-per-zone-discrete-mutation-journal-for-crash-recovery">SQLite-per-zone discrete-mutation journal for crash recovery</a>
+  <li><a href="#multiplayer-fabric-zone-architecture" id="toc-multiplayer-fabric-zone-architecture" class="nav-link active" data-scroll-target="#multiplayer-fabric-zone-architecture">Multiplayer Fabric Zone Architecture</a>
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
-  <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
-  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</a></li>
-  <li><a href="#the-benefits" id="toc-the-benefits" class="nav-link" data-scroll-target="#the-benefits">The Benefits</a></li>
-  <li><a href="#the-downsides" id="toc-the-downsides" class="nav-link" data-scroll-target="#the-downsides">The Downsides</a></li>
-  <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
-  <li><a href="#the-infrequent-use-case" id="toc-the-infrequent-use-case" class="nav-link" data-scroll-target="#the-infrequent-use-case">The Infrequent Use Case</a></li>
-  <li><a href="#in-core-and-done-by-us" id="toc-in-core-and-done-by-us" class="nav-link" data-scroll-target="#in-core-and-done-by-us">In Core and Done by Us</a></li>
+  <li><a href="#components" id="toc-components" class="nav-link" data-scroll-target="#components">Components</a>
+  <ul class="collapse">
+  <li><a href="#zone-backend" id="toc-zone-backend" class="nav-link" data-scroll-target="#zone-backend">zone-backend</a></li>
+  <li><a href="#zone-server-fabriczone" id="toc-zone-server-fabriczone" class="nav-link" data-scroll-target="#zone-server-fabriczone">zone server (FabricZone)</a></li>
+  <li><a href="#asset-delivery-desync" id="toc-asset-delivery-desync" class="nav-link" data-scroll-target="#asset-delivery-desync">Asset delivery (desync)</a></li>
+  <li><a href="#permissions-rebac" id="toc-permissions-rebac" class="nav-link" data-scroll-target="#permissions-rebac">Permissions (ReBAC)</a></li>
+  </ul></li>
+  <li><a href="#persistence" id="toc-persistence" class="nav-link" data-scroll-target="#persistence">Persistence</a></li>
+  <li><a href="#deployment" id="toc-deployment" class="nav-link" data-scroll-target="#deployment">Deployment</a></li>
+  <li><a href="#what-is-not-decided-here" id="toc-what-is-not-decided-here" class="nav-link" data-scroll-target="#what-is-not-decided-here">What Is Not Decided Here</a></li>
   <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
   <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
   <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags">Tags</a></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260421-sqlite-per-zone-journal.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260421-multiplayer-fabric-zone-architecture.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
@@ -350,79 +317,79 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="sqlite-per-zone-discrete-mutation-journal-for-crash-recovery" class="level1">
-<h1>SQLite-per-zone discrete-mutation journal for crash recovery</h1>
+<section id="multiplayer-fabric-zone-architecture" class="level1">
+<h1>Multiplayer Fabric Zone Architecture</h1>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>Each FabricZone process manages up to 1,800 entity slots. Zone processes can crash from OOM, SIGKILL from the orchestrator, or host preemption. Without a recovery mechanism, all dynamic entity state (connected players, instanced assets) is lost on crash and must be re-established by clients reconnecting from scratch.</p>
+<p>Multiplayer Fabric is a self-hosted multiplayer framework built on top of the Godot engine. It is designed to run on hardware you control — a single machine, a small cluster, or a homelab — without requiring any hosted service.</p>
+<p>This document describes the design of the zone layer: how clients discover servers, how entity state is managed and persisted, and how the pieces connect.</p>
 </section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Zone state has two components:</p>
+<section id="components" class="level2">
+<h2 class="anchored" data-anchor-id="components">Components</h2>
+<pre><code>client (Godot)
+  │  WebTransport (QUIC/UDP)
+  ▼
+zone server (FabricZone, headless Godot)
+  │  HTTP heartbeat (PUT /shards/:id every ~25 s)
+  ▼
+zone-backend (Phoenix/Elixir)
+  │  WebSocket (Phoenix Channel "zone:*")
+  ▼
+client (Godot) — receives desync index URL on join</code></pre>
+<section id="zone-backend" class="level3">
+<h3 class="anchored" data-anchor-id="zone-backend">zone-backend</h3>
+<p>An Elixir/Phoenix HTTP API and WebSocket server. It keeps a registry of live zone servers.</p>
 <ul>
-<li><strong>Static world</strong> — 100,000 entities partitioned by Hilbert code at startup; deterministic from zone_id and zone_count, always reproducible.</li>
-<li><strong>Dynamic mutations</strong> — player humanoid spawns (55 bone slots per player), asset instances from CMD_INSTANCE_ASSET, and despawns. These are not deterministic from a formula; they must be persisted.</li>
-</ul>
-<p>After an abrupt crash, only the dynamic mutations need to be recovered. The existing graceful-shutdown drain (DRAIN_MAGIC → FabricSnapshot.res) requires a clean shutdown window and does not help when the process is killed.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p><code>FabricZoneJournal</code> maintains a SQLite database (<code>fabric_journal_N.db</code> in <code>user://</code>) with two tables:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>entity_mutations (seq, op, slot_idx, global_id, entity <span class="dt">BLOB</span>, ts)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>entity_snapshots (<span class="kw">id</span>, last_mutation_seq, slot_data <span class="dt">BLOB</span>, slot_count, ts)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Mutation ops: <code>spawn</code>, <code>despawn</code>, <code>payload_update</code>. Physics-step position updates are intentionally excluded — they are deterministic from the simulation and too frequent to journal economically.</p>
-<p>Crash-recovery sequence:</p>
-<pre><code>zone restarts
-  → FabricZone::initialize()
-    → static world entities recreated (deterministic, slots 0..N)
-    → _journal.open("fabric_journal_0.db")
-    → _journal.replay(slots, capacity, entity_count)
-      → restore from latest snapshot (slot_data BLOB → active slots)
-      → apply mutations with seq &gt; last_mutation_seq
-      → only occupy slots currently free (no static-entity clobber)
-    → entity_count += journal_count
-  → zone runs normally with journal enabled</code></pre>
-<p>Periodic snapshots prune old mutations so the journal does not grow unbounded. A final snapshot is written in <code>finalize()</code>.</p>
-<p>WAL mode (<code>PRAGMA journal_mode=WAL</code>) is used for better crash-consistency when <code>SQLITE_OMIT_WAL</code> is absent from the build. The <code>SQLITE_OMIT_WAL</code> define was removed from <code>modules/sqlite/SCsub</code> as part of this change.</p>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<ul>
-<li>No new infrastructure: SQLite is already compiled into the Godot binary via <code>modules/sqlite</code>.</li>
-<li>Recovery is local and fast: replaying a typical journal (a few hundred mutations) is cheap relative to zone startup time.</li>
-<li>Bounded replay time: periodic full snapshots cap the mutation log length regardless of zone uptime.</li>
-<li>Self-hosters benefit: crash recovery works without a coordinating external database.</li>
+<li><code>POST /shards</code> — zone server registers on boot, receives a UUID</li>
+<li><code>PUT /shards/:id</code> — heartbeat; touches <code>updated_at</code>; also broadcasts <code>zone_updated</code> to WebSocket subscribers with the current desync index URL</li>
+<li><code>GET /shards</code> — returns zones with a heartbeat within the last 30 seconds</li>
+<li><code>ZoneJanitor</code> GenServer culls rows older than the staleness window</li>
+<li><code>ZoneChannel</code> — clients subscribe to <code>zone:{id}</code> to receive asset delivery URLs as they become available</li>
 </ul>
 </section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<section id="zone-server-fabriczone" class="level3">
+<h3 class="anchored" data-anchor-id="zone-server-fabriczone">zone server (FabricZone)</h3>
+<p>A headless Godot process that runs the simulation. Each zone owns a contiguous range of 30-bit Hilbert space and manages up to <code>ZONE_CAPACITY</code> entity slots (default 1,800).</p>
+<p>Key design decisions:</p>
 <ul>
-<li>Journal adds per-mutation write latency on spawn/despawn/asset-instance paths. These are infrequent events so the impact is negligible.</li>
-<li>WAL files (<code>.db-wal</code>, <code>.db-shm</code>) appear alongside the database; operators must include them in backups.</li>
-<li>Position state (cx/cy/cz, velocity) is not recovered — entities resume at their last snapshotted position, not their crash-time position. For humanoid players this means a position snap on reconnect, which is acceptable.</li>
+<li><strong>Constant-work loop</strong> — the physics loop iterates all <code>_zone_capacity</code> slots every tick regardless of occupancy. This makes tick time predictable and avoids per-entity allocation in the hot path.</li>
+<li><strong>Spatial partitioning</strong> — a 3D Hilbert curve maps each entity position to a zone index. The curve and its bounds are formally specified in Lean 4 and code-generated into <code>predictive_bvh.h</code> (R128 64.64 fixed-point arithmetic, micrometer precision).</li>
+<li><strong>STAGING migration</strong> — when an entity crosses a zone boundary, it transitions <code>OWNED → STAGING → OWNED</code> across the two zones via a reliable channel. Adaptive RTO (Jacobson/Karels) handles latency variance.</li>
+<li><strong>Ghost-based interest culling</strong> — zones broadcast entity snapshots only to peers whose area-of-interest overlaps the entity’s ghost bounding volume.</li>
 </ul>
 </section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<section id="asset-delivery-desync" class="level3">
+<h3 class="anchored" data-anchor-id="asset-delivery-desync">Asset delivery (desync)</h3>
+<p>Assets are uploaded to zone-backend, baked into casync <code>.caidx</code> chunk archives, and stored via the storage backend. The <code>baked_url</code> field on a <code>SharedFile</code> record is the index URL a client or zone server uses to reassemble the asset from chunks.</p>
+<p><code>CMD_INSTANCE_ASSET</code> (opcode 0x04, 100-byte binary packet) instructs the authority zone to fetch the manifest, allocate an entity slot, and broadcast the instance to neighbouring zones.</p>
+</section>
+<section id="permissions-rebac" class="level3">
+<h3 class="anchored" data-anchor-id="permissions-rebac">Permissions (ReBAC)</h3>
+<p>Upload permissions are checked via a relationship-based access control graph (<code>taskweft</code>, a C++20 NIF). Membership edges (<code>IS_MEMBER_OF</code>) are built per-request from the <code>UserPrivilegeRuleset</code> record and evaluated with <code>check_rel/4</code>. No permission data is stored in the graph between requests.</p>
+</section>
+</section>
+<section id="persistence" class="level2">
+<h2 class="anchored" data-anchor-id="persistence">Persistence</h2>
+<p>Entity state has two persistence paths:</p>
+<p><strong>Graceful shutdown (FabricSnapshot)</strong> On <code>SIGINT</code>, zones drain entities toward zone 0 via STAGING migration. Zone 0 collects all entities and writes a <code>FabricSnapshot</code> Godot Resource to disk. On restart, each zone reloads only the entities whose Hilbert code falls within its range.</p>
+<p><strong>Crash recovery (FabricZoneJournal)</strong> A per-zone SQLite database records discrete mutations: spawn, despawn, payload_update. On restart, the zone replays the journal on top of its deterministic static-world initialisation to recover dynamic entities (connected players, asset instances). Physics-step position updates are not journaled; they are recomputed from the simulation. See <code>20260421-sqlite-per-zone-journal.md</code> for the detailed design.</p>
+</section>
+<section id="deployment" class="level2">
+<h2 class="anchored" data-anchor-id="deployment">Deployment</h2>
+<p>The reference deployment uses Docker Compose (<code>multiplayer-fabric-hosting</code>). Zone servers register with zone-backend at startup. Zone-backend and zone servers communicate only via HTTP and ENet; no shared database is required between them.</p>
+<p>Cloudflare proxying must be disabled for zone server hostnames — QUIC/UDP cannot be proxied. The zone server’s self-signed TLS certificate fingerprint (<code>cert_hash</code>) is stored in the zone registry and pinned by clients; no certificate authority is needed.</p>
+</section>
+<section id="what-is-not-decided-here" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-not-decided-here">What Is Not Decided Here</h2>
 <ul>
-<li><strong>FabricSnapshot-only recovery</strong>: existing graceful drain, but requires a clean shutdown window; does not help on SIGKILL.</li>
-<li><strong>Distributed database for entity state</strong>: rejected earlier (see <code>20240409-elixir-raft-vs-sqlite-fdb.md</code>); a distributed store adds coordination overhead that conflicts with the constant-work design goal.</li>
-<li><strong>Write-ahead log of all state including positions</strong>: would produce gigabytes/day per zone and still not recover the simulation exactly (floating-point physics is not exactly reproducible across reboots).</li>
-<li><strong>Elixir-side persistence in zone-backend</strong>: the zone backend already has SQLite via <code>exqlite</code> (taskweft), but entity state is owned by the C++ zone process; pushing it across the HTTP boundary adds latency and couples two systems.</li>
+<li>Multi-machine scaling beyond a single host (horizontal zone distribution, inter-host routing)</li>
+<li>Authoritative physics vs.&nbsp;client-side prediction trade-offs for specific game types</li>
+<li>Asset moderation and content policy enforcement</li>
 </ul>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>Zones that never accept player connections or dynamic asset instances gain nothing from the journal (all their state is deterministic). The journal is effectively a no-op in pure simulation/benchmark mode.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p><code>FabricZoneJournal</code> lives in <code>modules/multiplayer_fabric/</code> alongside <code>FabricZone</code>. It uses the sqlite3 C API directly (not the GDScript-facing <code>SQLite</code> class) via the include path <code>modules/sqlite/thirdparty</code>.</p>
-<p>Hook sites: - <code>FabricZone::initialize()</code> — open + replay - <code>FabricZone::finalize()</code> — snapshot + close - <code>FabricMMOGZone::spawn_humanoid_entities_for_player()</code> — journal_spawn per bone slot - <code>FabricMMOGZone::despawn_humanoid_entities_for_player()</code> — journal_despawn per bone slot - <code>FabricMMOGZone::_on_cmd_instance_asset()</code> — journal_payload_update after slot setup</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
+<p>Status: Accepted</p>
 </section>
 <section id="decision-makers" class="level2">
 <h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
@@ -433,16 +400,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>Crash-Recovery, SQLite, WAL, Journal, FabricZone, Entity, Persistence</li>
+<li>Architecture, Zone, FabricZone, Hilbert, Entity, Persistence, WebTransport, ReBAC, casync</li>
 </ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><code>modules/multiplayer_fabric/fabric_zone_journal.h</code> — class declaration and design rationale</li>
-<li><code>modules/multiplayer_fabric/fabric_zone_journal.cpp</code> — implementation</li>
-<li><code>modules/multiplayer_fabric/doc_classes/FabricZone.xml</code> — user-facing crash-recovery description</li>
-</ol>
 
 
 </section>
@@ -870,7 +829,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260421-sqlite-per-zone-journal.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260421-multiplayer-fabric-zone-architecture.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
