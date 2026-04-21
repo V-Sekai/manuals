@@ -354,13 +354,13 @@ client (Godot) — receives desync index URL on join</code></pre>
 <ul>
 <li><strong>Constant-work loop</strong> — the physics loop iterates all <code>_zone_capacity</code> slots every tick regardless of occupancy. This makes tick time predictable and avoids per-entity allocation in the hot path.</li>
 <li><strong>Spatial partitioning</strong> — a 3D Hilbert curve maps each entity position to a zone index. The curve and its bounds are formally specified in Lean 4 and code-generated into <code>predictive_bvh.h</code> (R128 64.64 fixed-point arithmetic, micrometer precision).</li>
-<li><strong>STAGING migration</strong> — when an entity crosses a zone boundary, it transitions <code>OWNED → STAGING → OWNED</code> across the two zones via a reliable channel. Adaptive RTO (Jacobson/Karels) handles latency variance.</li>
-<li><strong>Ghost-based interest culling</strong> — zones broadcast entity snapshots only to peers whose area-of-interest overlaps the entity’s ghost bounding volume.</li>
+<li><strong>STAGING migration</strong> — when an entity crosses a zone boundary, its <code>MigrationState</code> transitions <code>owned → staging(targetZone, arrivalHLC) → owned</code>; the receiving side enters <code>incoming(fromZone)</code> until the arrival HLC is reached. Timing uses <code>FabricLatency</code> (sameRegion=1 tick, crossRegion=4 ticks, satellite=40 ticks) with a floor of <code>latencyTicks = max (simTickHz / 10) 1</code>.</li>
+<li><strong>AOI band interest culling</strong> — zones broadcast entity snapshots only to peers whose Hilbert code span overlaps the AOI band. The band width is proved to be <code>≤ (1 + 2·aoiCells) · hilbertSpanWidth(prefixDepth)</code>, independent of global zone count.</li>
 </ul>
 </section>
 <section id="asset-delivery-desync" class="level3">
 <h3 class="anchored" data-anchor-id="asset-delivery-desync">Asset delivery (desync)</h3>
-<p>Assets are uploaded to zone-backend, baked into casync <code>.caidx</code> chunk archives, and stored via the storage backend. The <code>baked_url</code> field on a <code>SharedFile</code> record is the index URL a client or zone server uses to reassemble the asset from chunks.</p>
+<p>Assets are uploaded to zone-backend, baked into casync <code>.caibx</code> chunk archives, and stored via the storage backend. The <code>baked_url</code> field on a <code>SharedFile</code> record is the index URL a client or zone server uses to reassemble the asset from chunks.</p>
 <p><code>CMD_INSTANCE_ASSET</code> (opcode 0x04, 100-byte binary packet) instructs the authority zone to fetch the manifest, allocate an entity slot, and broadcast the instance to neighbouring zones.</p>
 </section>
 <section id="permissions-rebac" class="level3">

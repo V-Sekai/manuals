@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.37</generator>
-<lastBuildDate>Tue, 21 Apr 2026 20:51:07 GMT</lastBuildDate>
+<lastBuildDate>Tue, 21 Apr 2026 21:05:56 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -82,7 +82,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Tue, 21 Apr 2026 20:51:07 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -164,7 +164,154 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-registration-and-discovery.html</guid>
-  <pubDate>Tue, 21 Apr 2026 20:51:07 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260421-zone-border-handoff.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="zone-border-entity-handoff" class="level1">
+<h1>Zone-Border Entity Handoff</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>The world is partitioned into zones, each owning a contiguous prefix of the 30-bit 3D Hilbert code space (Skilling 2004). When an entity moves across a zone boundary, ownership must transfer from the origin zone to the destination zone without the entity disappearing from either side during transit. The partitioning, migration state machine, hysteresis threshold, and interest separation are all formally specified in Lean 4 in <code>multiplayer-fabric-predictive-bvh</code>.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>A hard cutover — despawn in zone A, spawn in zone B — produces a visible gap if the two zones are not synchronized. A three-state handoff that keeps the entity alive in both zones during transit eliminates the gap. Without a proved arrival guarantee and a hysteresis guard, an entity oscillating near a boundary triggers repeated migrations.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="zone-assignment" class="level3">
+<h3 class="anchored" data-anchor-id="zone-assignment">Zone assignment</h3>
+<p>Each zone owns the Hilbert codes whose top <code>d</code> bits equal the zone index. The assignment is O(1):</p>
+<pre class="lean"><code>-- Fabric.lean
+def assignToZone (zones : Array ZoneState) (cx cy cz : Int) : Nat
+-- theorem: result always &lt; zones.size
+theorem assignToZone_in_range (zones : Array ZoneState) (cx cy cz : Int)
+    (h : 0 &lt; zones.size) : assignToZone zones cx cy cz &lt; zones.size</code></pre>
+<p>Zones are disjoint by construction:</p>
+<pre class="lean"><code>theorem zoneSpans_disjoint (i j prefixDepth : Nat) (h : i ≠ j) :
+    (zoneHilbertSpan i prefixDepth).overlaps (zoneHilbertSpan j prefixDepth) = false</code></pre>
+</section>
+<section id="migration-state-machine" class="level3">
+<h3 class="anchored" data-anchor-id="migration-state-machine">Migration state machine</h3>
+<p>Entity ownership follows a three-variant inductive type (<code>Fabric.lean</code>):</p>
+<pre class="lean"><code>inductive MigrationState where
+  | owned
+  | staging (targetZone : Nat) (arrivalHLC : HLC)
+  | incoming (fromZone : Nat)</code></pre>
+<p><code>owned</code> — authority resides here. <code>staging(targetZone, arrivalHLC)</code> — the entity is in flight to <code>targetZone</code>; both zones hold valid ghost snapshots until <code>arrivalHLC</code> is reached. <code>incoming(fromZone)</code> — this zone is receiving the entity from <code>fromZone</code>.</p>
+</section>
+<section id="hysteresis-guard" class="level3">
+<h3 class="anchored" data-anchor-id="hysteresis-guard">Hysteresis guard</h3>
+<p>The transition from <code>owned</code> to <code>staging</code> does not fire the moment an entity’s Hilbert code crosses a prefix boundary. A hysteresis counter must reach <code>hysteresisThreshold</code> ticks first:</p>
+<pre class="lean"><code>-- Types.lean
+def hysteresisThreshold : Nat := simTickHz * 4   -- 4 seconds at 20 Hz = 80 ticks</code></pre>
+<p>This prevents rapid back-and-forth migrations for entities moving near a boundary.</p>
+</section>
+<section id="arrival-guarantee" class="level3">
+<h3 class="anchored" data-anchor-id="arrival-guarantee">Arrival guarantee</h3>
+<p>The <code>arrivalHLC</code> field in <code>staging</code> is set to <code>currentHLC + latencyTicks</code> at the moment the migration is initiated. <code>latencyTicks</code> is derived from the server tick rate:</p>
+<pre class="lean"><code>-- Resources.lean
+def latencyTicks : Nat := max (simTickHz / 10) 1</code></pre>
+<p>The minimum total migration period is bounded:</p>
+<pre class="lean"><code>-- WaypointBound.lean
+def wpPeriodMin : Nat := maxTravelTicks + hysteresisThreshold + latencyTicks</code></pre>
+</section>
+<section id="authorityinterest-separation" class="level3">
+<h3 class="anchored" data-anchor-id="authorityinterest-separation">Authority/interest separation</h3>
+<p>During <code>staging</code>, the destination zone holds a read-only ghost replica. Ghost replicas use a separate budget from authority slots, proved formally:</p>
+<pre class="lean"><code>-- AuthorityInterest.lean
+theorem ghost_does_not_consume_authority_slot ... :
+    authorityWithinCap (receiveGhost z r) cap headroom</code></pre>
+<p>When <code>arrivalHLC</code> is reached, <code>promoteToAuthority</code> moves the entity from the replicas array to the entities array, removing it from the interest budget and adding it to the authority budget. The authority and interest capacities are independent:</p>
+<pre class="lean"><code>def authorityWithinCap (z : ZoneStateAI n) (cap headroom : Nat) : Prop :=
+    z.entities.size ≤ cap - headroom          -- default: 1400 of 1800 slots
+
+def interestWithinCap (z : ZoneStateAI n) : Prop :=
+    z.replicas.size ≤ InterestCapacity        -- default: 400 ghost slots</code></pre>
+</section>
+<section id="interest-band-after-handoff" class="level3">
+<h3 class="anchored" data-anchor-id="interest-band-after-handoff">Interest band after handoff</h3>
+<p>Once the destination zone becomes authoritative, it notifies neighbours whose area-of-interest overlaps. The band is a proved-width HilbertSpan:</p>
+<pre class="lean"><code>-- Fabric.lean
+def aoiBand (zoneIdx prefixDepth aoiCells : Nat) : HilbertSpan
+
+theorem aoiBand_covers_self (zoneIdx prefixDepth aoiCells : Nat) :
+    band.lo ≤ span.lo ∧ span.hi ≤ band.hi
+
+theorem aoiBand_width_bound ... :
+    band.hi + 1 - band.lo ≤ (1 + 2 * aoiCells) * hilbertSpanWidth prefixDepth</code></pre>
+<p>The width bound is independent of global zone count, which is the invariant that keeps per-zone bandwidth constant as the world scales.</p>
+</section>
+<section id="no-coordinator" class="level3">
+<h3 class="anchored" data-anchor-id="no-coordinator">No coordinator</h3>
+<p>Zone range maps are learned by gossip (<code>NoGod.lean</code>). There is no god-clock or coordinator. Authority is determined by geometric containment alone:</p>
+<pre class="lean"><code>def geometricAuthority (view : NodeView n) (h : Nat) : Option ZoneRange :=
+    view.ranges.find? (fun r =&gt; r.contains h)</code></pre>
+<p>The gossip protocol maintains disjointness across all nodes:</p>
+<pre class="lean"><code>theorem receive_preserves_disjoint {n : Nat} (view : NodeView n) (msg : GossipMsg n)
+    (hview : DisjointRanges view.ranges) (hmsg : DisjointRanges msg.ranges) :
+    DisjointRanges (NodeView.receive view msg).ranges</code></pre>
+</section>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>The three-state machine with hysteresis eliminates both the visible-gap problem and the oscillation problem. Authority and interest slot budgets are independent, so migrating entities cannot crowd out local entities. All zone-count and capacity claims are machine-checked rather than estimated.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>The hysteresis delay of 4 seconds means an entity that genuinely moves to a new zone is not handed off for 4 seconds. For fast-moving entities this may feel like a lag spike if the origin zone is lost during the window. The minimum migration period <code>wpPeriodMin</code> must be shorter than the expected round-trip time for interactive input to remain responsive during transit.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>A two-state machine (<code>OWNED → OWNED</code>) with a hard cutover is simpler but produces one-tick gaps visible to subscribers and velocity discontinuities under physics simulation. A coordinator-based approach (one node assigns zone ranges) eliminates gossip complexity but requires an always-available coordinator and is not proved in the existing Lean corpus.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>An entity whose Hilbert code lands on a prefix boundary — exactly equal to <code>i * 2^(30-d)</code> — belongs to zone <code>i</code> by the <code>span_contains_iff_prefix</code> theorem. No special tie-breaking is required.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>The full formal specification lives in <code>multiplayer-fabric-predictive-bvh</code>:</p>
+<ul>
+<li><code>PredictiveBVH/Protocol/Fabric.lean</code> — zone assignment, disjointness, STAGING state machine, AOI band</li>
+<li><code>PredictiveBVH/Relativistic/NoGod.lean</code> — gossip, vector clocks, geometric authority</li>
+<li><code>PredictiveBVH/Interest/AuthorityInterest.lean</code> — authority/interest separation, capacity invariants</li>
+<li><code>PredictiveBVH/Protocol/WaypointBound.lean</code> — migration period lower bound</li>
+<li><code>PredictiveBVH/Spatial/HilbertRoundtrip.lean</code> — Hilbert curve correctness, orders 1–10</li>
+</ul>
+<p>The C implementation is code-generated from <code>PredictiveBVH/Codegen/CodeGen.lean</code> into <code>predictive_bvh.h</code>. <code>FabricZone</code> (<code>modules/multiplayer_fabric/</code>) and <code>FabricMMOGZone</code> (<code>modules/multiplayer_fabric_mmog/</code>) consume the generated header.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Accepted</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>Zone, Handoff, STAGING, Hilbert, HLC, Hysteresis, Interest, FabricZone, Lean4, Formal</li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-border-handoff.html</guid>
+  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -297,7 +444,7 @@ font-style: inherit;">note</span>         = {Baseline 2026: newly available acro
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-webtransport-zone-transport.html</guid>
-  <pubDate>Tue, 21 Apr 2026 20:51:07 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -415,7 +562,142 @@ font-style: inherit;">BLOB</span>, slot_count, ts)</span></code></pre></div></di
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-sqlite-per-zone-journal.html</guid>
-  <pubDate>Tue, 21 Apr 2026 20:51:07 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260421-rebac-permissions.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="relationship-based-access-control-for-zone-permissions" class="level1">
+<h1>Relationship-Based Access Control for Zone Permissions</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>Zone servers and the backend need to decide whether a player may observe, interact with, or modify a zone entity. The decision depends on the relationship between the player and the entity’s owner — a group member inherits the group’s permissions transitively. The authority zone is the local coordinator for all permission decisions about its entities; no global coordinator is required. The full formal specification lives in <code>multiplayer-fabric-predictive-bvh/PredictiveBVH/Relativistic/ReBAC.lean</code> and <code>NoGod.lean</code>.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Flat role tables require a separate row for every (user, permission) pair that inheritance would otherwise cover. As group structure deepens, maintaining that table becomes inconsistent. A relation ranked by trust level, evaluated at request time against a player’s claim, gives correct transitive answers without stored derived state.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="action-tiers" class="level3">
+<h3 class="anchored" data-anchor-id="action-tiers">Action tiers</h3>
+<p>Three action tiers map to a minimum required relation rank:</p>
+<pre class="lean"><code>-- ReBAC.lean
+inductive Action where
+  | observe   -- read-only (CH_INTEREST); public by default
+  | interact  -- send input (movement, chat); requires instanceMember+
+  | modify    -- mutate state (admin, owner-only); requires owner</code></pre>
+</section>
+<section id="relation-hierarchy" class="level3">
+<h3 class="anchored" data-anchor-id="relation-hierarchy">Relation hierarchy</h3>
+<p>Relations are totally ordered by trust rank:</p>
+<pre class="lean"><code>inductive Relation where
+  | public         -- rank 0
+  | instanceMember -- rank 1
+  | friend         -- rank 2
+  | guildMember    -- rank 3
+  | owner          -- rank 4</code></pre>
+<p><code>minRelation</code> maps each action to its minimum required rank. <code>rebacCheck</code> folds the player’s claim to its maximum relation and compares ranks:</p>
+<pre class="lean"><code>def rebacCheck (claim : PlayerClaim n) (action : Action) : Bool :=
+  match claim.maxRelation with
+  | none   =&gt; false
+  | some r =&gt; r.rank ≥ action.minRelation.rank</code></pre>
+</section>
+<section id="key-theorems" class="level3">
+<h3 class="anchored" data-anchor-id="key-theorems">Key theorems</h3>
+<pre class="lean"><code>theorem rebac_empty_denied : rebacCheck { relations := [] } a = false
+
+theorem rebac_public_observe : rebacCheck { relations := [.public] } .observe = true
+
+theorem rebac_owner_all (a : Action) : rebacCheck { relations := [.owner] } a = true
+
+theorem rebac_monotone {n : Nat} (c : PlayerClaim n) (a1 a2 : Action)
+    (hle : a2.minRelation.rank ≤ a1.minRelation.rank)
+    (h : rebacCheck c a1 = true) :
+    rebacCheck c a2 = true</code></pre>
+</section>
+<section id="authority-locality" class="level3">
+<h3 class="anchored" data-anchor-id="authority-locality">Authority locality</h3>
+<p>The check is only binding when the evaluating zone is the authority zone for the entity’s Hilbert code:</p>
+<pre class="lean"><code>-- ReBAC.lean
+theorem rebac_requires_authority_for_mutation :
+    isAuthority view h = false → action ∈ [.interact, .modify] →
+    rebacCheck claim action = true →
+    ¬ bindsMutation view h claim action
+
+theorem interest_can_answer_observe :
+    rebacCheck claim .observe = true →
+    geometricInterest view h 0 ≠ [] →
+    canAnswer view h claim .observe
+
+theorem non_authority_cannot_bind_mutation :
+    isAuthority view h = false →
+    ∀ claim, ¬ bindsMutation view h claim .modify</code></pre>
+<p>Interest zones answer <code>.observe</code> requests directly. <code>.interact</code> and <code>.modify</code> requests are forwarded to the authority zone.</p>
+</section>
+<section id="player-claims-carry-causal-timestamps" class="level3">
+<h3 class="anchored" data-anchor-id="player-claims-carry-causal-timestamps">Player claims carry causal timestamps</h3>
+<pre class="lean"><code>structure PlayerClaim (n : Nat) where
+  playerId  : Nat
+  relations : List Relation
+  issuedAt  : VClock n    -- causal timestamp</code></pre>
+<p>Claims are issued at the authority zone and carried with the VClock so receiving zones can determine whether the claim is stale relative to the local gossip state.</p>
+</section>
+<section id="upload-permissions-backend" class="level3">
+<h3 class="anchored" data-anchor-id="upload-permissions-backend">Upload permissions (backend)</h3>
+<p>On <code>zone-backend</code>, the same relation graph is evaluated by the <code>taskweft</code> C++20 NIF. Membership edges (<code>IS_MEMBER_OF</code>) are built per-request from the <code>UserPrivilegeRuleset</code> record and evaluated with <code>check_rel/4</code>. The per-request build means no cache invalidation problem; the NIF tears the graph down after the call returns. 93 PropCheck properties cover path existence, absence, cycles, and transitivity.</p>
+</section>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>Permission checks require no coordinator. The authority zone evaluates claims locally using its gossip-learned range map. Interest zones serve read queries without forwarding. Adding a player to a group takes effect on the next claim issuance without any cache flush.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>Rebuilding the relation graph per upload request adds a database query per check. For upload endpoints this cost is acceptable; it would not be acceptable on a high-frequency read path. The <code>taskweft</code> NIF crashes the BEAM VM on a C++ panic — the PropCheck suite reduces that risk but does not eliminate it.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>A denormalized ACL table (user × permission) avoids the per-request graph build but requires a write on every group membership change and can produce inconsistent reads mid-request if a membership change races with a permission check.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>A player belonging to a deeply nested group chain (depth &gt; 10) triggers a correspondingly deep traversal in <code>taskweft</code>. The Lean proofs in <code>ReBAC.lean</code> do not impose a depth limit; the PropCheck suite exercises chains up to depth 20 without regression.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<p>Lean specification: <code>multiplayer-fabric-predictive-bvh/PredictiveBVH/Relativistic/ReBAC.lean</code> and <code>NoGod.lean</code>.</p>
+<p>Runtime: - <code>taskweft</code> C++20 NIF — per-request IS_MEMBER_OF graph evaluation for upload permissions - <code>Uro.VSekai.check_upload_permission/2</code> — call site in <code>multiplayer-fabric-zone-backend</code> - <code>FabricZone</code> evaluates <code>rebacCheck</code> locally for in-zone action gating</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Accepted</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>ReBAC, Permissions, Lean4, Formal, taskweft, NIF, Action, Relation, Authority, VClock</li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260421-rebac-permissions.html</guid>
+  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -463,13 +745,13 @@ client (Godot) — receives desync index URL on join</code></pre>
 <ul>
 <li><strong>Constant-work loop</strong> — the physics loop iterates all <code>_zone_capacity</code> slots every tick regardless of occupancy. This makes tick time predictable and avoids per-entity allocation in the hot path.</li>
 <li><strong>Spatial partitioning</strong> — a 3D Hilbert curve maps each entity position to a zone index. The curve and its bounds are formally specified in Lean 4 and code-generated into <code>predictive_bvh.h</code> (R128 64.64 fixed-point arithmetic, micrometer precision).</li>
-<li><strong>STAGING migration</strong> — when an entity crosses a zone boundary, it transitions <code>OWNED → STAGING → OWNED</code> across the two zones via a reliable channel. Adaptive RTO (Jacobson/Karels) handles latency variance.</li>
-<li><strong>Ghost-based interest culling</strong> — zones broadcast entity snapshots only to peers whose area-of-interest overlaps the entity’s ghost bounding volume.</li>
+<li><strong>STAGING migration</strong> — when an entity crosses a zone boundary, its <code>MigrationState</code> transitions <code>owned → staging(targetZone, arrivalHLC) → owned</code>; the receiving side enters <code>incoming(fromZone)</code> until the arrival HLC is reached. Timing uses <code>FabricLatency</code> (sameRegion=1 tick, crossRegion=4 ticks, satellite=40 ticks) with a floor of <code>latencyTicks = max (simTickHz / 10) 1</code>.</li>
+<li><strong>AOI band interest culling</strong> — zones broadcast entity snapshots only to peers whose Hilbert code span overlaps the AOI band. The band width is proved to be <code>≤ (1 + 2·aoiCells) · hilbertSpanWidth(prefixDepth)</code>, independent of global zone count.</li>
 </ul>
 </section>
 <section id="asset-delivery-desync" class="level3">
 <h3 class="anchored" data-anchor-id="asset-delivery-desync">Asset delivery (desync)</h3>
-<p>Assets are uploaded to zone-backend, baked into casync <code>.caidx</code> chunk archives, and stored via the storage backend. The <code>baked_url</code> field on a <code>SharedFile</code> record is the index URL a client or zone server uses to reassemble the asset from chunks.</p>
+<p>Assets are uploaded to zone-backend, baked into casync <code>.caibx</code> chunk archives, and stored via the storage backend. The <code>baked_url</code> field on a <code>SharedFile</code> record is the index URL a client or zone server uses to reassemble the asset from chunks.</p>
 <p><code>CMD_INSTANCE_ASSET</code> (opcode 0x04, 100-byte binary packet) instructs the authority zone to fetch the manifest, allocate an entity slot, and broadcast the instance to neighbouring zones.</p>
 </section>
 <section id="permissions-rebac" class="level3">
@@ -518,7 +800,7 @@ client (Godot) — receives desync index URL on join</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-multiplayer-fabric-zone-architecture.html</guid>
-  <pubDate>Tue, 21 Apr 2026 20:51:07 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -571,7 +853,7 @@ client (Godot) — receives desync index URL on join</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-multiplayer-fabric-strategy.html</guid>
-  <pubDate>Tue, 21 Apr 2026 20:51:07 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -655,7 +937,7 @@ client receives desync_index_url → fetches .caibx index → fetches only missi
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-content-addressed-asset-delivery.html</guid>
-  <pubDate>Tue, 21 Apr 2026 20:51:07 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -745,7 +1027,7 @@ client receives desync_index_url → fetches .caibx index → fetches only missi
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260128-reject-sql-based-feature-flagging.html</guid>
-  <pubDate>Tue, 21 Apr 2026 20:51:07 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -897,7 +1179,7 @@ Development Applications (V-Sekai, etc.)</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260128-hypervisor-selection-for-development-infrastructure.html</guid>
-  <pubDate>Tue, 21 Apr 2026 20:51:07 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1376,7 +1658,7 @@ font-style: inherit;">sudo</span> systemctl status cockroachdb.service</span></c
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250427-system-cockroachdb-setup.html</guid>
-  <pubDate>Tue, 21 Apr 2026 20:51:07 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1509,7 +1791,7 @@ font-style: inherit;">sudo</span> systemctl status cockroachdb.service</span></c
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250427-recommender-system.html</guid>
-  <pubDate>Tue, 21 Apr 2026 20:51:07 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1722,7 +2004,7 @@ font-style: inherit;">sudo</span> systemctl status cockroachdb.service</span></c
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250427-backpack.html</guid>
-  <pubDate>Tue, 21 Apr 2026 20:51:07 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1914,7 +2196,7 @@ font-style: inherit;">sudo</span> systemctl status tailscale-funnel.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250421-tailscale-funnel.html</guid>
-  <pubDate>Tue, 21 Apr 2026 20:51:07 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2125,7 +2407,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250421-jupyter-notebook.html</guid>
-  <pubDate>Tue, 21 Apr 2026 20:51:07 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2226,7 +2508,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250420-use-meta-simulator.html</guid>
-  <pubDate>Tue, 21 Apr 2026 20:51:07 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2422,7 +2704,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250416-backpack.html</guid>
-  <pubDate>Tue, 21 Apr 2026 20:51:07 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2559,7 +2841,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250408-v-sekai-backpack.html</guid>
-  <pubDate>Tue, 21 Apr 2026 20:51:07 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2707,370 +2989,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250402-lip-sync-prototpe.html</guid>
-  <pubDate>Tue, 21 Apr 2026 20:51:07 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20250402-image-to-full-body-face.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="proposed-image-to-full-body-facs" class="level1">
-<h1>Proposed: Image to Full Body FACS</h1>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>This system builds a robust image-to-full-body-face mapping pipeline to capture real-world 3D full-body movements synchronized with visual data. Key metrics include anatomical accuracy of motion prediction, scalability across diverse body types, and real-time processing capabilities. This proposal addresses the growing demand for realistic full-body animation in virtual avatars, gaming, and biomechanical analysis. It matters now due to advancements in computer vision and the need for cost-effective motion capture solutions beyond lab-controlled environments.</p>
-</section>
-<section id="problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>Primary operational challenges include:</p>
-<ol type="1">
-<li>Lack of accessible systems for accurate 3D full-body motion capture from 2D images/video</li>
-<li>Difficulty generating anatomically plausible animations from imperfect visual data</li>
-<li>High computational costs of existing marker-based motion capture systems</li>
-<li>Limited adaptability to real-world environmental noise and occlusion</li>
-</ol>
-</section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>An image-to-FACS pipeline combining synthetic data generation, biomechanical constraints, and reinforcement learning:</p>
-<ul>
-<li>Convert T-posed animations to VRM avatar format with COCO keypoint annotations</li>
-<li>Generate synthetic training data using Godot Engine with marker/color variations</li>
-<li>Leverage MediaPipe for video-to-keypoint conversion with vertex-based facial mapping</li>
-<li>Train custom prediction models using temporal-spatial attention mechanisms</li>
-</ul>
-<p><strong>Implementation Steps</strong>:</p>
-<ol type="1">
-<li>Create VRM synthetic datasets with ground truth annotations</li>
-<li>Develop MediaPipe integration for unified body-face-hand keypoint extraction</li>
-<li>Implement reinforcement learning (GRPO) for motion generation from masked video</li>
-</ol>
-</section>
-<section id="implementation-plan" class="level2">
-<h2 class="anchored" data-anchor-id="implementation-plan">Implementation Plan</h2>
-<ol type="1">
-<li><strong>Phase 1</strong>: Synthetic Data Pipeline
-<ul>
-<li>Develop Animation-to-VRM conversion tools</li>
-<li>Generate multi-format synthetic data in Godot Engine</li>
-</ul></li>
-<li><strong>Phase 2</strong>: Keypoint Prediction Model
-<ul>
-<li>Train transformer-based model on synthetic/real data mixtures</li>
-<li>Integrate biomechanical constraints into loss functions</li>
-</ul></li>
-<li><strong>Validation</strong>:
-<ul>
-<li>Success Criteria: &gt;90% anatomical validity in user studies</li>
-<li>Failure Threshold: &lt;15% improvement over baseline MediaPipe accuracy</li>
-</ul></li>
-</ol>
-</section>
-<section id="datasets" class="level2">
-<h2 class="anchored" data-anchor-id="datasets">Datasets</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Dataset ID</th>
-<th style="text-align: left;">Description</th>
-<th style="text-align: left;">URI</th>
-<th style="text-align: left;">License</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">ANIM_A_POSE</td>
-<td style="text-align: left;">T-posed character animations for baseline modeling</td>
-<td style="text-align: left;">N/A</td>
-<td style="text-align: left;">Proprietary</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">ANIM_O3DE_COCO_FULL_BODY_FACS_RGB_8</td>
-<td style="text-align: left;">Full-body FACS annotations with RGB video pairs</td>
-<td style="text-align: left;">N/A</td>
-<td style="text-align: left;">Apache 2.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">ANIM_O3DE_COCO_FULL_BODY_FACS_LUMINANCE_8</td>
-<td style="text-align: left;">Luma-key marker data synchronized with RGB</td>
-<td style="text-align: left;">N/A</td>
-<td style="text-align: left;">Apache 2.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">ANIM_O3DE_MOTION_MATCHING</td>
-<td style="text-align: left;">O3DE Motion Matching dataset</td>
-<td style="text-align: left;"><a href="https://github.com/o3de/o3de-motion-matching">GitHub</a></td>
-<td style="text-align: left;">Apache 2.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">ANIM_QUATERNIUS_UNIVERSAL_ANIMATION_LIBRARY</td>
-<td style="text-align: left;">Universal Animation Library</td>
-<td style="text-align: left;">N/A</td>
-<td style="text-align: left;">CC0 1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">ANIM_100_STYLES</td>
-<td style="text-align: left;">Multi-style character animation dataset</td>
-<td style="text-align: left;">N/A</td>
-<td style="text-align: left;">Proprietary</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">COCO_2017_KEYPOINTS</td>
-<td style="text-align: left;">COCO person keypoints dataset</td>
-<td style="text-align: left;"><a href="https://www.kaggle.com/datasets/asad11914/coco-2017-keypoints">Kaggle</a></td>
-<td style="text-align: left;">CC BY 4.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">COCO_YOGA_16</td>
-<td style="text-align: left;">Yoga pose classification dataset</td>
-<td style="text-align: left;"><a href="https://www.kaggle.com/datasets/mohiuddin2531/yoga-16/data">Kaggle</a></td>
-<td style="text-align: left;">MIT</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="benefits" class="level2">
-<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
-<ul>
-<li>Enables markerless full-body motion capture from consumer-grade video</li>
-<li>Maintains facial-phonetic synchronization during body movements</li>
-<li>Reduces dependency on expensive motion capture hardware</li>
-<li>Supports real-time applications through efficient architecture design</li>
-</ul>
-</section>
-<section id="risks-and-limitations" class="level2">
-<h2 class="anchored" data-anchor-id="risks-and-limitations">Risks and Limitations</h2>
-<ul>
-<li>Potential error accumulation in long-term motion prediction</li>
-<li>Challenges maintaining facial-hand-body coordination</li>
-<li>Dependency on quality synthetic training data</li>
-<li>Computational intensity of real-time 3D mesh processing</li>
-</ul>
-</section>
-<section id="alternatives-considered" class="level2">
-<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 32%">
-<col style="width: 22%">
-<col style="width: 45%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Option</th>
-<th>Pros</th>
-<th>Cons</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Commercial mocap suits</td>
-<td>High accuracy</td>
-<td>Cost-prohibitive, lab-bound</td>
-</tr>
-<tr class="even">
-<td>Pure ML approaches</td>
-<td>Fully automated</td>
-<td>Limited anatomical plausibility</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="when-to-avoid-this-solution" class="level2">
-<h2 class="anchored" data-anchor-id="when-to-avoid-this-solution">When to Avoid This Solution</h2>
-<p>Not suitable for applications requiring medical-grade biomechanical accuracy or environments with persistent heavy occlusion.</p>
-</section>
-<section id="organizational-alignment" class="level2">
-<h2 class="anchored" data-anchor-id="organizational-alignment">Organizational Alignment</h2>
-<p>Supports strategic goals in virtual humanoid development and aligns with open-source initiatives for accessible animation tools.</p>
-</section>
-<section id="proposal-status" class="level2">
-<h2 class="anchored" data-anchor-id="proposal-status">Proposal Status</h2>
-<p>Status: Proposed <!-- Options: Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by [Link/Reference] --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>Fire</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>Computer Vision</li>
-<li>Biomechanics</li>
-<li>Virtual Avatars</li>
-<li>Real-Time Systems</li>
-</ul>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ol type="1">
-<li><a href="https://github.com/V-Sekai/mediapipe">MediaPipe Integration Codebase</a></li>
-<li><a href="https://vrm.dev/en/">VRM Avatar Specification</a></li>
-<li><a href="https://github.com/roboflow/maestro/issues/194">GRPO Algorithm Documentation</a></li>
-</ol>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20250402-image-to-full-body-face.html</guid>
-  <pubDate>Tue, 21 Apr 2026 20:51:07 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20250402-automated-clothing-pipeline.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="proposed-automated-clothing-pipeline" class="level1">
-<h1>Proposed: Automated Clothing Pipeline</h1>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>This proposal outlines an integrated system for clothing detection, recommendation, generation, and quality assurance. Key metrics include real-time processing latency (&lt;50ms), recommendation accuracy (&gt;85% user satisfaction), and defect detection recall (&gt;90%). The system addresses growing demands in virtual fashion markets by combining computer vision, recommendation systems, and procedural content generation.</p>
-</section>
-<section id="problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>Key challenges include:</p>
-<ol type="1">
-<li>High computational cost of real-time clothing detection on edge devices</li>
-<li>Cold-start problem for personalized recommendations</li>
-<li>Manual effort in 3D clothing asset creation</li>
-<li>Difficulty detecting rare defects in skinned meshes</li>
-</ol>
-</section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>Four interconnected modules using unified metadata: <strong>Implementation Steps</strong>:</p>
-<ol type="1">
-<li><strong>Task A</strong>: Optimize RF-DETR with IREE compiler for edge deployment</li>
-<li><strong>Task B</strong>: Build PinSage-based recommender with multi-tag support</li>
-<li><strong>Task C</strong>: Develop Blender/Marvelous Designer automation pipeline</li>
-<li><strong>Task D</strong>: Train defect detection model with synthetic data</li>
-</ol>
-</section>
-<section id="implementation-plan" class="level2">
-<h2 class="anchored" data-anchor-id="implementation-plan">Implementation Plan</h2>
-<ol type="1">
-<li><strong>Phase 1</strong>: Core System Development (Weeks 1-6)
-<ul>
-<li>Validate IREE compatibility for deformable attention</li>
-<li>Implement split_multi_value in librecommender</li>
-<li>Create Blender defect injection scripts</li>
-<li>[Roboflow] Create clothing classification dataset with style/color annotations</li>
-</ul></li>
-<li><strong>Phase 2</strong>: Integration &amp; Optimization (Weeks 7-10)
-<ul>
-<li>Deploy edge-optimized RF-DETR on Jetson AGX</li>
-<li>Establish Godot/Unreal asset pipeline</li>
-<li>Benchmark defect detection F1 scores</li>
-<li>[Roboflow] Generate synthetic defect dataset using Blender Python API</li>
-</ul></li>
-<li><strong>Validation</strong>:
-<ul>
-<li>Success Criteria: &lt;20ms inference latency, &gt;85% recommendation accuracy</li>
-<li>Failure Threshold: &gt;30% performance drop vs baseline</li>
-</ul></li>
-</ol>
-</section>
-<section id="benefits" class="level2">
-<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
-<ul>
-<li>10x faster clothing asset creation vs manual workflows</li>
-<li>Unified metadata flow from detection to 3D generation</li>
-<li>Real-time operation on consumer-grade hardware</li>
-<li>Automated QA for production-ready 3D models</li>
-</ul>
-</section>
-<section id="risks-and-limitations" class="level2">
-<h2 class="anchored" data-anchor-id="risks-and-limitations">Risks and Limitations</h2>
-<ul>
-<li>IREE compilation failures (Mitigation: Maintain PyTorch fallback implementation)</li>
-<li>Physics simulation instability (Mitigation: Implement Marvelous Designer safety constraints)</li>
-<li>Rare defect false positives (Mitigation: Active learning with human-in-the-loop)</li>
-</ul>
-</section>
-<section id="alternatives-considered" class="level2">
-<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 23%">
-<col style="width: 43%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Option</th>
-<th>Pros</th>
-<th>Cons</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>YOLOv8</td>
-<td>Faster inference</td>
-<td>Lower mAP on small accessories</td>
-</tr>
-<tr class="even">
-<td>TensorFlow Recommenders</td>
-<td>Mature ecosystem</td>
-<td>No native multi-tag support</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="when-to-avoid-this-solution" class="level2">
-<h2 class="anchored" data-anchor-id="when-to-avoid-this-solution">When to Avoid This Solution</h2>
-<p>Not suitable for high-fashion detail reproduction requiring manual artistry.</p>
-</section>
-<section id="organizational-alignment" class="level2">
-<h2 class="anchored" data-anchor-id="organizational-alignment">Organizational Alignment</h2>
-<p>Supports virtual commerce initiatives and aligns with open-source 3D tooling roadmap.</p>
-</section>
-<section id="proposal-status" class="level2">
-<h2 class="anchored" data-anchor-id="proposal-status">Proposal Status</h2>
-<p>Status: Proposed <!-- Options: Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by [Link/Reference] --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>Fire</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>Computer Vision</li>
-<li>Recommendation Systems</li>
-<li>Procedural Generation</li>
-<li>Edge Computing</li>
-</ul>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ol type="1">
-<li><a href="https://arxiv.org/abs/2301.07979">RF-DETR Paper</a></li>
-<li><a href="https://iree.dev/">IREE Documentation</a></li>
-<li><a href="https://docs.blender.org/api/current/">Blender Python API</a></li>
-<li><a href="https://docs.roboflow.com">Roboflow Guide</a></li>
-</ol>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20250402-automated-clothing-pipeline.html</guid>
-  <pubDate>Tue, 21 Apr 2026 20:51:07 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
 </item>
 </channel>
 </rss>
