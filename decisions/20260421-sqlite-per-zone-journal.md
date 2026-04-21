@@ -46,9 +46,9 @@ WAL mode (`PRAGMA journal_mode=WAL`) is used for better crash-consistency when `
 ## The Benefits
 
 - No new infrastructure: SQLite is already compiled into the Godot binary via `modules/sqlite`.
-- Recovery is local and fast: replaying a typical journal (a few hundred mutations) takes microseconds.
+- Recovery is local and fast: replaying a typical journal (a few hundred mutations) is cheap relative to zone startup time.
 - Bounded replay time: periodic full snapshots cap the mutation log length regardless of zone uptime.
-- Self-hosters benefit: crash recovery works without a coordinating database (unlike KBEngine/MySQL or SpacetimeDB).
+- Self-hosters benefit: crash recovery works without a coordinating external database.
 
 ## The Downsides
 
@@ -59,7 +59,7 @@ WAL mode (`PRAGMA journal_mode=WAL`) is used for better crash-consistency when `
 ## The Road Not Taken
 
 - **FabricSnapshot-only recovery**: existing graceful drain, but requires a clean shutdown window; does not help on SIGKILL.
-- **CockroachDB/FoundationDB for entity state**: rejected earlier (see `20240409-elixir-raft-vs-sqlite-fdb.md`); too heavy for per-entity write throughput.
+- **Distributed database for entity state**: rejected earlier (see `20240409-elixir-raft-vs-sqlite-fdb.md`); a distributed store adds coordination overhead that conflicts with the constant-work design goal.
 - **Write-ahead log of all state including positions**: would produce gigabytes/day per zone and still not recover the simulation exactly (floating-point physics is not exactly reproducible across reboots).
 - **Elixir-side persistence in zone-backend**: the zone backend already has SQLite via `exqlite` (taskweft), but entity state is owned by the C++ zone process; pushing it across the HTTP boundary adds latency and couples two systems.
 
