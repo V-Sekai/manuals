@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.37</generator>
-<lastBuildDate>Tue, 21 Apr 2026 21:05:56 GMT</lastBuildDate>
+<lastBuildDate>Tue, 21 Apr 2026 23:09:20 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -82,7 +82,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 23:09:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -164,7 +164,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-registration-and-discovery.html</guid>
-  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 23:09:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -311,7 +311,7 @@ theorem aoiBand_width_bound ... :
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-border-handoff.html</guid>
-  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 23:09:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -444,7 +444,7 @@ font-style: inherit;">note</span>         = {Baseline 2026: newly available acro
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-webtransport-zone-transport.html</guid>
-  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 23:09:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -562,7 +562,7 @@ font-style: inherit;">BLOB</span>, slot_count, ts)</span></code></pre></div></di
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-sqlite-per-zone-journal.html</guid>
-  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 23:09:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -697,7 +697,7 @@ theorem non_authority_cannot_bind_mutation :
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-rebac-permissions.html</guid>
-  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 23:09:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -800,60 +800,7 @@ client (Godot) — receives desync index URL on join</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-multiplayer-fabric-zone-architecture.html</guid>
-  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20260421-multiplayer-fabric-strategy.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="multiplayer-fabric-strategy" class="level1">
-<h1>Multiplayer Fabric Strategy</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>Own the smallest viable market completely, then grow.</p>
-<p>A well-funded company once pitched a distributed simulation platform as an OS for game worlds, arguing that existing servers could never make a world feel real. Two flagship games launched and failed, and the platform shut down because the architecture was wrong: it sat above the engine and tried to abstract the spatial problem away. Latency, interest management, and zone state cannot be separated from the engine — they are game problems that must be solved inside it. The spatial simulation problem is real and nobody has solved it this way. Multiplayer Fabric fills that gap: the same ambition, built as Godot modules instead of a cloud layer.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>No production-ready zone-border handoff exists outside one proprietary engine, and the absence is structural. The delta-sync approach from OS image distribution solves game asset delivery mathematically, but the game-engine integration has never been built. Relationship-based access control tooling is mature; adoption in game backends is zero.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>No shipped Godot project uses WebTransport as its primary transport. Multiplayer Fabric has it wired, which is a concrete head start on the only production implementation.</p>
-<p>A working zone server with WebTransport, content-addressed delivery, and relationship-based permissions is the wedge for solo Godot developers. Design documentation for each built component is in <code>manuals/decisions/</code>.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Building above the engine as a cloud layer, as the prior attempt did. The abstraction leaks under real load.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Accepted</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>iFire</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>Strategy, Architecture, WebTransport, Zone, ReBAC, casync</li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20260421-multiplayer-fabric-strategy.html</guid>
-  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 23:09:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -937,7 +884,7 @@ client receives desync_index_url → fetches .caibx index → fetches only missi
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-content-addressed-asset-delivery.html</guid>
-  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 23:09:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1027,7 +974,7 @@ client receives desync_index_url → fetches .caibx index → fetches only missi
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260128-reject-sql-based-feature-flagging.html</guid>
-  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 23:09:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1179,7 +1126,7 @@ Development Applications (V-Sekai, etc.)</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260128-hypervisor-selection-for-development-infrastructure.html</guid>
-  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 23:09:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1658,7 +1605,7 @@ font-style: inherit;">sudo</span> systemctl status cockroachdb.service</span></c
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250427-system-cockroachdb-setup.html</guid>
-  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 23:09:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1791,7 +1738,7 @@ font-style: inherit;">sudo</span> systemctl status cockroachdb.service</span></c
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250427-recommender-system.html</guid>
-  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 23:09:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2004,7 +1951,7 @@ font-style: inherit;">sudo</span> systemctl status cockroachdb.service</span></c
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250427-backpack.html</guid>
-  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 23:09:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2196,7 +2143,7 @@ font-style: inherit;">sudo</span> systemctl status tailscale-funnel.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250421-tailscale-funnel.html</guid>
-  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 23:09:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2407,7 +2354,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250421-jupyter-notebook.html</guid>
-  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 23:09:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2508,7 +2455,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250420-use-meta-simulator.html</guid>
-  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 23:09:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2704,7 +2651,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250416-backpack.html</guid>
-  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 23:09:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2841,7 +2788,7 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250408-v-sekai-backpack.html</guid>
-  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 23:09:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2989,7 +2936,221 @@ font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</spa
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250402-lip-sync-prototpe.html</guid>
-  <pubDate>Tue, 21 Apr 2026 21:05:56 GMT</pubDate>
+  <pubDate>Tue, 21 Apr 2026 23:09:20 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20250402-image-to-full-body-face.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="proposed-image-to-full-body-facs" class="level1">
+<h1>Proposed: Image to Full Body FACS</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>This system builds a robust image-to-full-body-face mapping pipeline to capture real-world 3D full-body movements synchronized with visual data. Key metrics include anatomical accuracy of motion prediction, scalability across diverse body types, and real-time processing capabilities. This proposal addresses the growing demand for realistic full-body animation in virtual avatars, gaming, and biomechanical analysis. It matters now due to advancements in computer vision and the need for cost-effective motion capture solutions beyond lab-controlled environments.</p>
+</section>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>Primary operational challenges include:</p>
+<ol type="1">
+<li>Lack of accessible systems for accurate 3D full-body motion capture from 2D images/video</li>
+<li>Difficulty generating anatomically plausible animations from imperfect visual data</li>
+<li>High computational costs of existing marker-based motion capture systems</li>
+<li>Limited adaptability to real-world environmental noise and occlusion</li>
+</ol>
+</section>
+<section id="proposed-solution" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
+<p>An image-to-FACS pipeline combining synthetic data generation, biomechanical constraints, and reinforcement learning:</p>
+<ul>
+<li>Convert T-posed animations to VRM avatar format with COCO keypoint annotations</li>
+<li>Generate synthetic training data using Godot Engine with marker/color variations</li>
+<li>Leverage MediaPipe for video-to-keypoint conversion with vertex-based facial mapping</li>
+<li>Train custom prediction models using temporal-spatial attention mechanisms</li>
+</ul>
+<p><strong>Implementation Steps</strong>:</p>
+<ol type="1">
+<li>Create VRM synthetic datasets with ground truth annotations</li>
+<li>Develop MediaPipe integration for unified body-face-hand keypoint extraction</li>
+<li>Implement reinforcement learning (GRPO) for motion generation from masked video</li>
+</ol>
+</section>
+<section id="implementation-plan" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-plan">Implementation Plan</h2>
+<ol type="1">
+<li><strong>Phase 1</strong>: Synthetic Data Pipeline
+<ul>
+<li>Develop Animation-to-VRM conversion tools</li>
+<li>Generate multi-format synthetic data in Godot Engine</li>
+</ul></li>
+<li><strong>Phase 2</strong>: Keypoint Prediction Model
+<ul>
+<li>Train transformer-based model on synthetic/real data mixtures</li>
+<li>Integrate biomechanical constraints into loss functions</li>
+</ul></li>
+<li><strong>Validation</strong>:
+<ul>
+<li>Success Criteria: &gt;90% anatomical validity in user studies</li>
+<li>Failure Threshold: &lt;15% improvement over baseline MediaPipe accuracy</li>
+</ul></li>
+</ol>
+</section>
+<section id="datasets" class="level2">
+<h2 class="anchored" data-anchor-id="datasets">Datasets</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Dataset ID</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">URI</th>
+<th style="text-align: left;">License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ANIM_A_POSE</td>
+<td style="text-align: left;">T-posed character animations for baseline modeling</td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">Proprietary</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ANIM_O3DE_COCO_FULL_BODY_FACS_RGB_8</td>
+<td style="text-align: left;">Full-body FACS annotations with RGB video pairs</td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">Apache 2.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ANIM_O3DE_COCO_FULL_BODY_FACS_LUMINANCE_8</td>
+<td style="text-align: left;">Luma-key marker data synchronized with RGB</td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">Apache 2.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ANIM_O3DE_MOTION_MATCHING</td>
+<td style="text-align: left;">O3DE Motion Matching dataset</td>
+<td style="text-align: left;"><a href="https://github.com/o3de/o3de-motion-matching">GitHub</a></td>
+<td style="text-align: left;">Apache 2.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ANIM_QUATERNIUS_UNIVERSAL_ANIMATION_LIBRARY</td>
+<td style="text-align: left;">Universal Animation Library</td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">CC0 1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ANIM_100_STYLES</td>
+<td style="text-align: left;">Multi-style character animation dataset</td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">Proprietary</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">COCO_2017_KEYPOINTS</td>
+<td style="text-align: left;">COCO person keypoints dataset</td>
+<td style="text-align: left;"><a href="https://www.kaggle.com/datasets/asad11914/coco-2017-keypoints">Kaggle</a></td>
+<td style="text-align: left;">CC BY 4.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">COCO_YOGA_16</td>
+<td style="text-align: left;">Yoga pose classification dataset</td>
+<td style="text-align: left;"><a href="https://www.kaggle.com/datasets/mohiuddin2531/yoga-16/data">Kaggle</a></td>
+<td style="text-align: left;">MIT</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<ul>
+<li>Enables markerless full-body motion capture from consumer-grade video</li>
+<li>Maintains facial-phonetic synchronization during body movements</li>
+<li>Reduces dependency on expensive motion capture hardware</li>
+<li>Supports real-time applications through efficient architecture design</li>
+</ul>
+</section>
+<section id="risks-and-limitations" class="level2">
+<h2 class="anchored" data-anchor-id="risks-and-limitations">Risks and Limitations</h2>
+<ul>
+<li>Potential error accumulation in long-term motion prediction</li>
+<li>Challenges maintaining facial-hand-body coordination</li>
+<li>Dependency on quality synthetic training data</li>
+<li>Computational intensity of real-time 3D mesh processing</li>
+</ul>
+</section>
+<section id="alternatives-considered" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 22%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Commercial mocap suits</td>
+<td>High accuracy</td>
+<td>Cost-prohibitive, lab-bound</td>
+</tr>
+<tr class="even">
+<td>Pure ML approaches</td>
+<td>Fully automated</td>
+<td>Limited anatomical plausibility</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="when-to-avoid-this-solution" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-avoid-this-solution">When to Avoid This Solution</h2>
+<p>Not suitable for applications requiring medical-grade biomechanical accuracy or environments with persistent heavy occlusion.</p>
+</section>
+<section id="organizational-alignment" class="level2">
+<h2 class="anchored" data-anchor-id="organizational-alignment">Organizational Alignment</h2>
+<p>Supports strategic goals in virtual humanoid development and aligns with open-source initiatives for accessible animation tools.</p>
+</section>
+<section id="proposal-status" class="level2">
+<h2 class="anchored" data-anchor-id="proposal-status">Proposal Status</h2>
+<p>Status: Proposed <!-- Options: Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by [Link/Reference] --></p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>Fire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>Computer Vision</li>
+<li>Biomechanics</li>
+<li>Virtual Avatars</li>
+<li>Real-Time Systems</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li><a href="https://github.com/V-Sekai/mediapipe">MediaPipe Integration Codebase</a></li>
+<li><a href="https://vrm.dev/en/">VRM Avatar Specification</a></li>
+<li><a href="https://github.com/roboflow/maestro/issues/194">GRPO Algorithm Documentation</a></li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20250402-image-to-full-body-face.html</guid>
+  <pubDate>Tue, 21 Apr 2026 23:09:20 GMT</pubDate>
 </item>
 </channel>
 </rss>
