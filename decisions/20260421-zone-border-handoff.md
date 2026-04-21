@@ -26,7 +26,7 @@ Zones are disjoint by construction:
 
 ```lean
 theorem zoneSpans_disjoint (i j prefixDepth : Nat) (h : i ≠ j) :
-    (zoneMortonSpan i prefixDepth).overlaps (zoneMortonSpan j prefixDepth) = false
+    (zoneHilbertSpan i prefixDepth).overlaps (zoneHilbertSpan j prefixDepth) = false
 ```
 
 ### Migration state machine
@@ -91,17 +91,17 @@ def interestWithinCap (z : ZoneStateAI n) : Prop :=
 
 ### Interest band after handoff
 
-Once the destination zone becomes authoritative, it notifies neighbours whose area-of-interest overlaps. The band is a proved-width MortonSpan:
+Once the destination zone becomes authoritative, it notifies neighbours whose area-of-interest overlaps. The band is a proved-width HilbertSpan:
 
 ```lean
 -- Fabric.lean
-def aoiBand (zoneIdx prefixDepth aoiCells : Nat) : MortonSpan
+def aoiBand (zoneIdx prefixDepth aoiCells : Nat) : HilbertSpan
 
 theorem aoiBand_covers_self (zoneIdx prefixDepth aoiCells : Nat) :
     band.lo ≤ span.lo ∧ span.hi ≤ band.hi
 
 theorem aoiBand_width_bound ... :
-    band.hi + 1 - band.lo ≤ (1 + 2 * aoiCells) * mortonSpanWidth prefixDepth
+    band.hi + 1 - band.lo ≤ (1 + 2 * aoiCells) * hilbertSpanWidth prefixDepth
 ```
 
 The width bound is independent of global zone count, which is the invariant that keeps per-zone bandwidth constant as the world scales.

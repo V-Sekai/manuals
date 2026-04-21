@@ -40,7 +40,7 @@ Key design decisions:
 - **Constant-work loop** — the physics loop iterates all `_zone_capacity` slots every tick regardless of occupancy. This makes tick time predictable and avoids per-entity allocation in the hot path.
 - **Spatial partitioning** — a 3D Hilbert curve maps each entity position to a zone index. The curve and its bounds are formally specified in Lean 4 and code-generated into `predictive_bvh.h` (R128 64.64 fixed-point arithmetic, micrometer precision).
 - **STAGING migration** — when an entity crosses a zone boundary, its `MigrationState` transitions `owned → staging(targetZone, arrivalHLC) → owned`; the receiving side enters `incoming(fromZone)` until the arrival HLC is reached. Timing uses `FabricLatency` (sameRegion=1 tick, crossRegion=4 ticks, satellite=40 ticks) with a floor of `latencyTicks = max (simTickHz / 10) 1`.
-- **AOI band interest culling** — zones broadcast entity snapshots only to peers whose Hilbert code span overlaps the AOI band. The band width is proved to be `≤ (1 + 2·aoiCells) · mortonSpanWidth(prefixDepth)`, independent of global zone count.
+- **AOI band interest culling** — zones broadcast entity snapshots only to peers whose Hilbert code span overlaps the AOI band. The band width is proved to be `≤ (1 + 2·aoiCells) · hilbertSpanWidth(prefixDepth)`, independent of global zone count.
 
 ### Asset delivery (desync)
 
