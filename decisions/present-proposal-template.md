@@ -2,66 +2,48 @@
 
 ## The Context
 
-[Provide the background and context for this proposal. Explain the circumstances that led to this decision being necessary.]
+Describe the circumstances that led to this proposal. Give enough background that someone unfamiliar with the area can understand why the work matters. State what you were trying to accomplish, not what solution you reached for first.
 
 ## The Problem Statement
 
-[Clearly state the problem this proposal aims to solve. What specific issue, limitation, or opportunity are we addressing?]
+State the specific problem, limitation, or gap being addressed. Be concrete. A reader should be able to confirm whether a proposed solution actually solves it.
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
-[Detail the proposed solution. Use code snippets, pseudo-code, diagrams, or mock-ups as needed to illustrate how it will function.]
+Detail the proposed solution precisely enough that it could be implemented without improvising the design. Include code, diagrams, or examples where they reduce ambiguity. Vague or underspecified proposals cannot be acted on.
 
 ## The Benefits
 
-[List the advantages of implementing this proposal. How will it improve the project, product, or process?]
-
-- Benefit 1
-- Benefit 2
+Describe the concrete improvements this proposal delivers and to whom.
 
 ## The Downsides
 
-[List the potential disadvantages, risks, or costs associated with this proposal.]
-
-- Downside 1
-- Downside 2
+Describe the costs, risks, or trade-offs. Every proposal has them.
 
 ## The Road Not Taken
 
-[Describe alternative solutions that were considered but rejected. Explain why this proposal was chosen over the alternatives.]
+Describe the alternatives considered and why this approach was chosen over them.
 
 ## The Infrequent Use Case
 
-[Are there any less common scenarios or edge cases where this proposal might apply or behave differently?]
+Describe any edge cases or less common scenarios where the proposal behaves differently or does not apply.
 
 ## In Core and Done by Us
 
-[Confirm if this feature is considered core functionality and will be implemented by the core team.]
+Confirm whether this is core functionality the team will implement, and who owns it.
 
 ## Status
 
-Status: Deprecated <!-- Options: Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by [Link/Reference] -->
+Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by [Link/Reference] -->
 
 ## Decision Makers
 
-- [List the names or roles of the individuals responsible for making the final decision.]
+- [Name or role]
 
 ## Tags
 
-- [Add relevant tags, e.g., V-Sekai, UI, Networking]
+- [Relevant tags]
 
 ## Further Reading
 
-[Include links to relevant documentation, research papers, related issues, or other resources.]
-
-1. [Link Title 1](URL)
-2. [Link Title 2](URL)
-
----
-
-*(Optional: Add a section for defining jargon if needed)*
-
-### Game Development Jargon
-
-1. **Term 1**: Definition
-2. **Term 2**: Definition
+1. [Title](URL)
