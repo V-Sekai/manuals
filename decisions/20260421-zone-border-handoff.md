@@ -2,49 +2,154 @@
 
 ## The Context
 
-The world is partitioned into zones, each owning a contiguous range of the 3D Hilbert curve. When an entity moves across a zone boundary, ownership must transfer from the origin zone to the destination zone without the entity disappearing from either side during transit.
+The world is partitioned into zones, each owning a contiguous prefix of the 30-bit 3D Hilbert code space (Skilling 2004). When an entity moves across a zone boundary, ownership must transfer from the origin zone to the destination zone without the entity disappearing from either side during transit. The partitioning, migration state machine, hysteresis threshold, and interest separation are all formally specified in Lean 4 in `multiplayer-fabric-predictive-bvh`.
 
 ## The Problem Statement
 
-A hard cutover — despawn in zone A, spawn in zone B — produces a visible gap if the two zones are not perfectly synchronized. A two-phase handoff that keeps the entity alive in both zones during transit eliminates the gap at the cost of a brief period of dual ownership.
+A hard cutover — despawn in zone A, spawn in zone B — produces a visible gap if the two zones are not synchronized. A three-state handoff that keeps the entity alive in both zones during transit eliminates the gap. Without a proved arrival guarantee and a hysteresis guard, an entity oscillating near a boundary triggers repeated migrations.
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
-Entity ownership follows the state machine `OWNED → STAGING → OWNED`. The origin zone drives the transition:
+### Zone assignment
 
-1. **Detect crossing.** Each physics tick, the origin zone evaluates every occupied slot's Hilbert code against its own range boundary. When a slot's code falls outside the range, the zone initiates a handoff.
+Each zone owns the Hilbert codes whose top `d` bits equal the zone index. The assignment is O(1):
 
-2. **Open a STAGING channel.** The origin zone opens a reliable bidirectional stream to the destination zone and sends the entity's full slot payload (96 bytes: position, rotation, velocity, entity type, payload UUIDs). The destination zone allocates a slot and responds with an acknowledgement carrying the assigned slot index.
+```lean
+-- Fabric.lean
+def assignToZone (zones : Array ZoneState) (cx cy cz : Int) : Nat
+-- theorem: result always < zones.size
+theorem assignToZone_in_range (zones : Array ZoneState) (cx cy cz : Int)
+    (h : 0 < zones.size) : assignToZone zones cx cy cz < zones.size
+```
 
-3. **Dual ownership window.** Between the origin's send and the destination's acknowledgement, the entity is live in both zones. Clients subscribed to the origin zone continue to receive position updates from it. Clients subscribed to the destination zone begin receiving them from there once the destination's slot is active.
+Zones are disjoint by construction:
 
-4. **Release.** On receiving the acknowledgement, the origin zone marks the slot as `FREE` and stops broadcasting it. The destination zone transitions its slot from `STAGING` to `OWNED`.
+```lean
+theorem zoneSpans_disjoint (i j prefixDepth : Nat) (h : i ≠ j) :
+    (zoneMortonSpan i prefixDepth).overlaps (zoneMortonSpan j prefixDepth) = false
+```
 
-The acknowledgement timeout uses adaptive RTO computed with the Jacobson/Karels algorithm from the measured round-trip times on the inter-zone stream. If the timeout fires, the origin zone retries the handoff packet. If the destination zone has already allocated a slot for the entity (detected via the entity UUID), it responds with the existing slot index rather than allocating a second one.
+### Migration state machine
 
-After a successful handoff, the destination zone updates its ghost-based interest map. Neighbouring zones that overlap the entity's ghost bounding volume receive a `CH_INTEREST` broadcast and begin receiving state updates.
+Entity ownership follows a three-variant inductive type (`Fabric.lean`):
+
+```lean
+inductive MigrationState where
+  | owned
+  | staging (targetZone : Nat) (arrivalHLC : HLC)
+  | incoming (fromZone : Nat)
+```
+
+`owned` — authority resides here. `staging(targetZone, arrivalHLC)` — the entity is in flight to `targetZone`; both zones hold valid ghost snapshots until `arrivalHLC` is reached. `incoming(fromZone)` — this zone is receiving the entity from `fromZone`.
+
+### Hysteresis guard
+
+The transition from `owned` to `staging` does not fire the moment an entity's Hilbert code crosses a prefix boundary. A hysteresis counter must reach `hysteresisThreshold` ticks first:
+
+```lean
+-- Types.lean
+def hysteresisThreshold : Nat := simTickHz * 4   -- 4 seconds at 20 Hz = 80 ticks
+```
+
+This prevents rapid back-and-forth migrations for entities moving near a boundary.
+
+### Arrival guarantee
+
+The `arrivalHLC` field in `staging` is set to `currentHLC + latencyTicks` at the moment the migration is initiated. `latencyTicks` is derived from the server tick rate:
+
+```lean
+-- Resources.lean
+def latencyTicks : Nat := max (simTickHz / 10) 1
+```
+
+The minimum total migration period is bounded:
+
+```lean
+-- WaypointBound.lean
+def wpPeriodMin : Nat := maxTravelTicks + hysteresisThreshold + latencyTicks
+```
+
+### Authority/interest separation
+
+During `staging`, the destination zone holds a read-only ghost replica. Ghost replicas use a separate budget from authority slots, proved formally:
+
+```lean
+-- AuthorityInterest.lean
+theorem ghost_does_not_consume_authority_slot ... :
+    authorityWithinCap (receiveGhost z r) cap headroom
+```
+
+When `arrivalHLC` is reached, `promoteToAuthority` moves the entity from the replicas array to the entities array, removing it from the interest budget and adding it to the authority budget. The authority and interest capacities are independent:
+
+```lean
+def authorityWithinCap (z : ZoneStateAI n) (cap headroom : Nat) : Prop :=
+    z.entities.size ≤ cap - headroom          -- default: 1400 of 1800 slots
+
+def interestWithinCap (z : ZoneStateAI n) : Prop :=
+    z.replicas.size ≤ InterestCapacity        -- default: 400 ghost slots
+```
+
+### Interest band after handoff
+
+Once the destination zone becomes authoritative, it notifies neighbours whose area-of-interest overlaps. The band is a proved-width MortonSpan:
+
+```lean
+-- Fabric.lean
+def aoiBand (zoneIdx prefixDepth aoiCells : Nat) : MortonSpan
+
+theorem aoiBand_covers_self (zoneIdx prefixDepth aoiCells : Nat) :
+    band.lo ≤ span.lo ∧ span.hi ≤ band.hi
+
+theorem aoiBand_width_bound ... :
+    band.hi + 1 - band.lo ≤ (1 + 2 * aoiCells) * mortonSpanWidth prefixDepth
+```
+
+The width bound is independent of global zone count, which is the invariant that keeps per-zone bandwidth constant as the world scales.
+
+### No coordinator
+
+Zone range maps are learned by gossip (`NoGod.lean`). There is no god-clock or coordinator. Authority is determined by geometric containment alone:
+
+```lean
+def geometricAuthority (view : NodeView n) (h : Nat) : Option ZoneRange :=
+    view.ranges.find? (fun r => r.contains h)
+```
+
+The gossip protocol maintains disjointness across all nodes:
+
+```lean
+theorem receive_preserves_disjoint {n : Nat} (view : NodeView n) (msg : GossipMsg n)
+    (hview : DisjointRanges view.ranges) (hmsg : DisjointRanges msg.ranges) :
+    DisjointRanges (NodeView.receive view msg).ranges
+```
 
 ## The Benefits
 
-Entities cross zone boundaries without a visible gap. The adaptive RTO handles latency variance between zones on the same host or across a LAN without requiring a fixed timeout that would be too tight in some conditions and too loose in others.
+The three-state machine with hysteresis eliminates both the visible-gap problem and the oscillation problem. Authority and interest slot budgets are independent, so migrating entities cannot crowd out local entities. All zone-count and capacity claims are machine-checked rather than estimated.
 
 ## The Downsides
 
-The dual-ownership window means that for a short period two zones are authoritative for the same entity. If the entity receives input during that window — for example, a player moving — the origin zone processes it and must forward it to the destination zone before releasing the slot. This adds one extra packet to the handoff for entities under active input.
-
-A zone crash during the handoff leaves the entity in `STAGING` indefinitely. The `FabricZoneJournal` records the `STAGING` state; on restart, the zone replays the mutation log and retries the handoff. See `20260421-sqlite-per-zone-journal.md`.
+The hysteresis delay of 4 seconds means an entity that genuinely moves to a new zone is not handed off for 4 seconds. For fast-moving entities this may feel like a lag spike if the origin zone is lost during the window. The minimum migration period `wpPeriodMin` must be shorter than the expected round-trip time for interactive input to remain responsive during transit.
 
 ## The Road Not Taken
 
-Teleporting the entity (despawn + respawn with no overlap) is simpler to implement but produces a one-tick gap visible to all subscribers. For position-interpolated entities the gap manifests as a pop. For entities under physics simulation it can also produce a velocity discontinuity.
+A two-state machine (`OWNED → OWNED`) with a hard cutover is simpler but produces one-tick gaps visible to subscribers and velocity discontinuities under physics simulation. A coordinator-based approach (one node assigns zone ranges) eliminates gossip complexity but requires an always-available coordinator and is not proved in the existing Lean corpus.
 
 ## The Infrequent Use Case
 
-An entity that oscillates back and forth across a boundary — for example, a physics object bouncing at a zone edge — can trigger repeated handoffs. The zone tracks the last handoff timestamp per slot and imposes a minimum interval (one physics tick) before initiating another. This prevents a thundering-herd of handoff packets for a single jittery entity.
+An entity whose Hilbert code lands on a prefix boundary — exactly equal to `i * 2^(30-d)` — belongs to zone `i` by the `span_contains_iff_prefix` theorem. No special tie-breaking is required.
 
 ## In Core and Done by Us
 
-The handoff logic lives in `FabricZone` (`modules/multiplayer_fabric/`). The Hilbert partitioning and boundary evaluation are code-generated from the Lean 4 specification in `predictive_bvh.h`. The ghost-interest broadcast after handoff is handled by `FabricMMOGZone` (`modules/multiplayer_fabric_mmog/`).
+The full formal specification lives in `multiplayer-fabric-predictive-bvh`:
+
+- `PredictiveBVH/Protocol/Fabric.lean` — zone assignment, disjointness, STAGING state machine, AOI band
+- `PredictiveBVH/Relativistic/NoGod.lean` — gossip, vector clocks, geometric authority
+- `PredictiveBVH/Interest/AuthorityInterest.lean` — authority/interest separation, capacity invariants
+- `PredictiveBVH/Protocol/WaypointBound.lean` — migration period lower bound
+- `PredictiveBVH/Spatial/HilbertRoundtrip.lean` — Hilbert curve correctness, orders 1–10
+
+The C implementation is code-generated from `PredictiveBVH/Codegen/CodeGen.lean` into `predictive_bvh.h`. `FabricZone` (`modules/multiplayer_fabric/`) and `FabricMMOGZone` (`modules/multiplayer_fabric_mmog/`) consume the generated header.
 
 ## Status
 
@@ -56,4 +161,4 @@ Status: Accepted
 
 ## Tags
 
-- Zone, Handoff, STAGING, Hilbert, Entity, Migration, Interest, FabricZone
+- Zone, Handoff, STAGING, Hilbert, HLC, Hysteresis, Interest, FabricZone, Lean4, Formal
