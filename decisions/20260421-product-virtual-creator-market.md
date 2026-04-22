@@ -12,17 +12,17 @@ One sentence: **A virtual event stage you host yourself, where avatar creators s
 
 **Who Will Use It**
 
-Creators: Avatar and 3D asset makers in the Japanese doujin economy and the global VRChat/VRM creator community. This audience already attends virtual market events. Virtual Market (バーチャルマーケット), run by Hikky, drew over 1.3 million visitors worldwide and holds a Guinness World Record as the world's largest VR event. The format is proven; no self-hostable alternative exists.
+Creators: Avatar and 3D asset makers in the Japanese doujin economy and the global social VR and VRM creator community. This audience already attends virtual market events. The leading VR market event series has drawn over 1.3 million visitors worldwide and holds a Guinness World Record as the world's largest VR event. The format is proven; no self-hostable alternative exists.
 
-Organizers: Fan convention organizers — anime, gaming, cosplay — who want a persistent virtual venue without platform risk. Rec Room shut down in March 2026 after reaching 150 million registered users, stranding every community that had built events on that platform. Self-hostability is now a trust argument.
+Organizers: Fan convention organizers — anime, gaming, cosplay — who want a persistent virtual venue without platform risk. A major social gaming platform shut down in March 2026 after reaching 150 million registered users, stranding every community that had built events on that platform. Self-hostability is now a trust argument.
 
-Attendees: Desktop users with no headset. Alife Virtual reached 1.1 million users on a desktop-only client. Approximately 50% of VRChat sessions use desktop mode even after the iOS and Android launch. Meta's own data showed that desktop and mobile users were more engaged than headset users within Meta's own ecosystem, which drove Horizon Worlds to pivot away from VR as its primary surface. The total addressable audience is larger without a headset requirement than with one.
+Attendees: Desktop users with no headset. A desktop-only social avatar client reached 1.1 million users. Approximately 50% of sessions on the leading social VR platform use desktop mode even after the iOS and Android launch. Internal data from a major platform operator showed that desktop and mobile users were more engaged than headset users even within the operator's own ecosystem, which drove that platform to pivot away from VR as its primary surface. The total addressable audience is larger without a headset requirement than with one.
 
 **How to Reach Them**
 
-Avatar creators share booth walkthroughs and sales announcements on Twitter/X and YouTube. A creator with 20,000 followers posting a 60-second booth video reaches more qualified users than any paid campaign. The discovery funnel is creator-driven.
+Avatar creators share booth walkthroughs and sales announcements on social media and video platforms. A creator with 20,000 followers posting a 60-second booth video reaches more qualified users than any paid campaign. The discovery funnel is creator-driven.
 
-The entry point is the group's existing proximity to the VRChat and VRM content creator communities and to Booth.pm, the Japanese avatar marketplace. These communities are already conditioned to participate in virtual market events; they need an event platform they can own.
+The entry point is the group's existing proximity to the social VR and VRM content creator communities and to the leading Japanese digital goods marketplace. These communities are already conditioned to participate in virtual market events; they need an event platform they can own.
 
 **How to Finance It**
 
@@ -30,7 +30,7 @@ Event hosting subscriptions: Organizers who do not want to self-host pay a recur
 
 White-label SDK: Convention organizers license the platform for their brand. This is a B2B sale — longer sales cycles, larger contract values, recurring revenue.
 
-Not a transaction fee on creator sales. Taking a cut of creator earnings is the mechanism that creates platform risk and drives migration. The business model is event infrastructure, not commission. This is the explicit differentiator from VRChat's shop layer and any future Virtual Market competitor.
+Not a transaction fee on creator sales. Taking a cut of creator earnings is the mechanism that creates platform risk and drives migration. The business model is event infrastructure, not commission. This is the explicit differentiator from incumbent platform transaction layers and any future VR market competitor.
 
 Linietsky reports that approximately one in ten funded games succeeds and only two or three recover their investment. Infrastructure products follow different economics: revenue is recurring, not launch-concentrated, and the comparison is a developer tools business, not a game release.
 
@@ -38,13 +38,13 @@ Linietsky reports that approximately one in ten funded games succeeds and only t
 
 No existing platform combines all four properties:
 
-| Platform               | Self-hostable | Desktop-first         | Zone streaming | Creator keeps 100% |
-| ---------------------- | ------------- | --------------------- | -------------- | ------------------ |
-| Virtual Market / Hikky | No            | Partial               | No             | No                 |
-| VRChat                 | No            | Yes (50% of sessions) | No             | No                 |
-| Mozilla Hubs           | Yes           | Yes                   | No             | N/A                |
-| Resonite               | No            | Yes                   | No             | N/A                |
-| **This product**       | **Yes**       | **Yes**               | **Yes**        | **Yes**            |
+| Platform                          | Self-hostable | Desktop-first         | Zone streaming | Creator keeps 100% |
+| --------------------------------- | ------------- | --------------------- | -------------- | ------------------ |
+| Established VR event platform     | No            | Partial               | No             | No                 |
+| Leading social VR platform        | No            | Yes (50% of sessions) | No             | No                 |
+| Open-source web VR platform       | Yes           | Yes                   | No             | N/A                |
+| Commercial social VR platform     | No            | Yes                   | No             | N/A                |
+| **This product**                  | **Yes**       | **Yes**               | **Yes**        | **Yes**            |
 
 Differentiation must be communicable in one sentence, one image, or one short video. The sentence above passes this test. The table above is the image.
 
@@ -63,7 +63,7 @@ Self-hosted deployment is the trust argument. Docker Compose reference deploymen
 - Avatar and product listing UI, creator onboarding flow
 - Payment processing integration
 - Asset moderation tooling
-- Whether managed hosting runs on Fly.io multi-region or single-node Docker
+- Whether managed hosting runs on multi-region cloud or single-node Docker
 
 ## Status
 
