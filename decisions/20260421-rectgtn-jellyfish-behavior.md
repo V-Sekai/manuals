@@ -145,6 +145,17 @@ void FabricMMOGZone::_on_cmd_set_entity_plan(int p_entity_id, const String &p_pl
 
 The godot-sandbox RISC-V guest (`taskweft_planner.cpp`) is not used. The standalone headers compile into `fabric_mmog_zone.cpp` directly. Behaviour domains are loaded from the zone asset bundle at zone startup and cached in `_species_domains`.
 
+## BEAM RECTGTN vs zone server RECTGTN
+
+Both BEAM and the zone server run RECTGTN, but their domains and purposes are unrelated:
+
+| Layer | Domain subject | Purpose |
+|---|---|---|
+| BEAM (`Taskweft.plan/1`) | Platform graph: users, permissions, zone events, upload workflows | Application logic — access control, scheduling, delegation chains |
+| Zone server (`tw_seek_plan()`) | Simulation state: entity position, threat sensors, cooldowns | Entity behaviour — jellyfish action selection within the physics loop |
+
+BEAM-side plans operate asynchronously outside any tick budget and are uploaded to the CDN as data. Zone-server plans run synchronously within tick constraints and are never visible to BEAM. Neither side needs to model the other's domain.
+
 ## The Benefits
 
 Multi-step behaviour emerges from the domain definition without C++ case logic. Adding a new species is a new JSON-LD file. Temporal constraints prevent physically impossible action sequences. Incremental replan handles dynamic threats without restarting from the root. ReBAC capability gating unifies entity permissions with entity behaviour.
