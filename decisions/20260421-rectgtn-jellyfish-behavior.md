@@ -112,7 +112,7 @@ Each entity carries a live plan and a solution tree. At 511 jellyfish, memory pe
 
 ## The Road Not Taken
 
-Running the planner on zone-backend via the BEAM NIF (`plan/1`) would allow hot-reload of domains without recompiling the zone server. The latency cost of a BEAM round-trip (serialise state → NIF call → deserialise plan) at threat-detection time is acceptable for a single entity but multiplies with simultaneous replans. The C++ direct path avoids this entirely. If hot-reload becomes a requirement, the domain JSON can be re-read from disk on a zone config reload without touching the planner call site.
+Running the planner on zone-backend via the BEAM NIF (`plan/1`) was considered but breaks the ACID properties of the zone. A zone's entity state is computed under a specific domain: action effects, state keys, and method preconditions are all encoded there. Hot-pushing a new domain to a running zone leaves the entity state in a configuration the new domain did not produce. Plans generated under the new domain may reference state keys that do not exist or have effects that contradict current simulation invariants. The domain and the zone state machine are a unit; they can only be swapped together, at zone startup or after a full entity state reset. The C++ direct path enforces this naturally — a domain change requires a zone server restart.
 
 ## The Infrequent Use Case
 
