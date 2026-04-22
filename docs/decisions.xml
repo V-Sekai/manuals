@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.37</generator>
-<lastBuildDate>Wed, 22 Apr 2026 13:55:38 GMT</lastBuildDate>
+<lastBuildDate>Wed, 22 Apr 2026 14:10:04 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -82,7 +82,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Wed, 22 Apr 2026 13:55:38 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 14:10:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -97,52 +97,64 @@
 <h1>Simplify, Then Add Lightness</h1>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>Zack Anderson applied Colin Chapman’s racecar design philosophy — “add lightness” — to hardware engineering at Tesla. Chapman’s principle was that performance comes from removing mass, not adding power. Anderson extended it: before optimising a system, question whether the requirement that made it necessary should exist at all. multiplayer-fabric adopts this as its primary design heuristic.</p>
+<p>Zack Anderson applied Colin Chapman’s racecar principle — “add lightness” — to hardware engineering at Tesla. Chapman’s insight: performance comes from removing mass, not adding power. Anderson extended it: before optimising a system, question whether the requirement that made it necessary should exist at all. multiplayer-fabric adopts this as its primary design heuristic.</p>
 </section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Engineering teams default to addition. A feature is slow, so a cache is added. A boundary is unclear, so a coordinator is added. Each addition feels local and justified, but the accumulated mass raises the cost of every future change. The learning loop — the cycle from hypothesis to measured outcome — tends to lengthen with each layer.</p>
+<section id="the-problem" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem">The Problem</h2>
+<p>Engineering teams default to addition. A feature is slow, so a cache is added. A boundary is unclear, so a coordinator is added. Each addition feels justified; the accumulated mass raises the cost of every future change and lengthens the feedback loop.</p>
 </section>
 <section id="the-principle" class="level2">
 <h2 class="anchored" data-anchor-id="the-principle">The Principle</h2>
-<p>Simplify first. Then, if weight must be added, add it deliberately and with full awareness of the cost.</p>
-<p>It is a sequencing rule: subtraction before addition, question before implement.</p>
+<p>Subtract before you add. When weight must be added, add it deliberately and with full awareness of the cost.</p>
 <section id="core-lessons" class="level3">
 <h3 class="anchored" data-anchor-id="core-lessons">Core lessons</h3>
 <section id="question-and-subtract-requirements" class="level4">
 <h4 class="anchored" data-anchor-id="question-and-subtract-requirements">Question and subtract requirements</h4>
-<p>Before implementing anything, examine which parts of the spec are not absolutely necessary. A requirement that cannot survive scrutiny should not survive implementation. The best code for an unnecessary feature is no code.</p>
+<p>A requirement that cannot survive scrutiny should not survive implementation. The best code for an unnecessary feature is no code.</p>
 </section>
 <section id="sequence-your-risks" class="level4">
 <h4 class="anchored" data-anchor-id="sequence-your-risks">Sequence your risks</h4>
-<p>Early prototypes are scientific experiments designed to retire specific risks in order — not to prove everything at once. The question is: what is the one thing most likely to make this not work? Retire that first. Build the rest afterward.</p>
+<p>Early prototypes retire specific risks in order — not everything at once. Identify the one assumption most likely to invalidate the design; retire that first.</p>
 </section>
 <section id="insource-the-uncertain" class="level4">
 <h4 class="anchored" data-anchor-id="insource-the-uncertain">Insource the uncertain</h4>
-<p>Mature, well-understood components can be delegated to libraries or services. Core uncertainties — the things that define whether the project works at all — stay in-house, where they can be directly observed and changed without a support contract.</p>
+<p>Delegate mature, well-understood components to libraries or services. Keep core uncertainties in-house where they can be observed and changed directly.</p>
 </section>
 <section id="shift-complexity-into-software" class="level4">
 <h4 class="anchored" data-anchor-id="shift-complexity-into-software">Shift complexity into software</h4>
-<p>Physical complexity (hardware, infrastructure, topology) is expensive to change. Computational complexity is cheap to change. When a choice exists between a hardware constraint and a software constraint, prefer the software constraint. This is why multiplayer-fabric replaces session coordinators with Hilbert curve arithmetic.</p>
+<p>Physical complexity — hardware, infrastructure, topology — is expensive to change. Computational complexity is cheap. This is why multiplayer-fabric replaces session coordinators with Hilbert curve arithmetic.</p>
 </section>
 <section id="compress-learning-loops" class="level4">
 <h4 class="anchored" data-anchor-id="compress-learning-loops">Compress learning loops</h4>
-<p>Distance between the engineer and the running system is a tax on speed. The larger that distance — in abstraction layers or deployment steps — the slower the feedback.</p>
+<p>Abstraction layers and deployment steps are a tax on feedback speed. Minimise the distance between the engineer and the running system.</p>
 </section>
 <section id="maintain-organisational-lightness" class="level4">
 <h4 class="anchored" data-anchor-id="maintain-organisational-lightness">Maintain organisational lightness</h4>
-<p>A team small enough to share context naturally does not need process to substitute for communication. Process is the organisational equivalent of a cache: useful when direct access is too expensive, dangerous when it becomes the primary path.</p>
+<p>A team small enough to share context naturally needs no process to substitute for communication. Process is a cache: useful when direct access is too expensive, dangerous when it becomes the primary path.</p>
 </section>
 </section>
 </section>
 <section id="application-to-multiplayer-fabric" class="level2">
 <h2 class="anchored" data-anchor-id="application-to-multiplayer-fabric">Application to multiplayer-fabric</h2>
-<p>The Hilbert broadphase eliminates the session coordinator; formal verification covers bit-manipulation correctness across engine upgrades. Content-addressed delivery and ReBAC each subtract a moving part from the accounting and permission layers respectively.</p>
-<p>The zone boundary model is the direct expression of this heuristic: instead of a matchmaker that routes players to servers, the geometry determines adjacency. The coordinator mass is zero.</p>
+<p>The Hilbert broadphase eliminates the session coordinator. Formal verification covers bit-manipulation correctness across engine upgrades. Content-addressed delivery (casync/desync) and ReBAC each subtract a moving part from delivery and permission accounting respectively.</p>
+<p>The zone boundary model is the direct expression of this heuristic: geometry determines adjacency; coordinator mass is zero.</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>The alternative is to keep adding. Add a coordinator, then a coordinator monitor, then a fallback coordinator, then a configuration system to manage which coordinator is primary. This is the industry default, and it works — but any engineer touching zone topology must understand five systems instead of one curve.</p>
+<p>The alternative — coordinator, coordinator monitor, fallback coordinator, configuration system — works, but any engineer touching zone topology must understand five systems instead of one curve.</p>
+</section>
+<section id="audit-checklist" class="level2">
+<h2 class="anchored" data-anchor-id="audit-checklist">Audit Checklist</h2>
+<p>Before adding any component, layer, or dependency, answer these questions:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Can the requirement driving this addition be removed instead?</label></li>
+<li><label><input type="checkbox">Is this the one risk that must be retired first, or can it wait?</label></li>
+<li><label><input type="checkbox">Does this belong in-house (uncertain, core) or can it be delegated?</label></li>
+<li><label><input type="checkbox">Is this complexity physical/infrastructural, or can it be pushed into software?</label></li>
+<li><label><input type="checkbox">Does this shorten or lengthen the feedback loop?</label></li>
+<li><label><input type="checkbox">Does this require a new system to monitor or manage it?</label></li>
+</ul>
+<p>If any answer points toward addition without a clear necessity, subtract first.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
@@ -166,7 +178,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260422-simplify-then-add-lightness.html</guid>
-  <pubDate>Wed, 22 Apr 2026 13:55:39 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 14:10:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -265,7 +277,105 @@ Wikipedia contributors. 2025. <em>Wikipedia: Signs of <span>AI</span> Writing</e
 </div>
 </div></section></div> ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes.html</guid>
-  <pubDate>Wed, 22 Apr 2026 13:55:39 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 14:10:04 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes-3.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="avoid-ai-writing-tropes-in-documentation-part-3" class="level1">
+<h1>Avoid AI Writing Tropes in Documentation (Part 3)</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>Parts 1 and 2 cover patterns from the tropes.fyi catalog. An audit of the 22 2026 ADRs in this corpus found a different class of problems: structural and grammatical weaknesses that appear even in technically precise documents. The authoritative sources are the Google Developer Documentation Style Guide <span class="citation" data-cites="googledocs2024voice">(Google 2024)</span>, Microsoft Writing Style Guide <span class="citation" data-cites="microsoft2024style">(Microsoft 2024)</span>, and Helen Sword’s work on nominalizations <span class="citation" data-cites="sword2012zombie">(Sword 2012)</span>.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>The tropes.fyi patterns are visible on a sentence-by-sentence reading. The patterns below require looking at paragraph structure and grammatical form. They are harder to catch because each instance feels locally acceptable.</p>
+</section>
+<section id="the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="the-proposal">The Proposal</h2>
+<p>Add these five patterns to the review checklist.</p>
+<section id="template-headings-left-verbatim" class="level4">
+<h4 class="anchored" data-anchor-id="template-headings-left-verbatim">Template headings left verbatim</h4>
+<p>The ADR template contains the prompt “Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.” This prompt appeared as a live section heading in all 22 2026 ADRs audited. Replace the template prompt with a heading that names what the section actually contains: “Design”, “Protocol”, or “Implementation”.</p>
+</section>
+<section id="passive-voice-on-technical-actions-google-dev-docs" class="level4">
+<h4 class="anchored" data-anchor-id="passive-voice-on-technical-actions-google-dev-docs">Passive voice on technical actions (Google Dev Docs)</h4>
+<p>Passive constructions hide the actor: “Plans are stored in the CDN”, “Assets are uploaded to zone-backend”. When the actor is known, name it: “Zone-backend stores plans in the CDN at plan-compute time.” Reserve passive voice for cases where the actor is genuinely unknown or where naming it would be repetitive.</p>
+</section>
+<section id="buried-lede-microsoft-writing-style-guide" class="level4">
+<h4 class="anchored" data-anchor-id="buried-lede-microsoft-writing-style-guide">Buried lede (Microsoft Writing Style Guide)</h4>
+<p>“The Context” is the first thing a reader sees. In 13 of 22 audited documents it contains background prose before reaching the technical gap that drove the decision. State the gap in the first sentence: “No benchmark comparing the two delivery strategies exists.” Everything else is context for that gap, not preamble before it.</p>
+</section>
+<section id="the-road-not-taken-restating-the-downsides" class="level4">
+<h4 class="anchored" data-anchor-id="the-road-not-taken-restating-the-downsides">“The Road Not Taken” restating The Downsides</h4>
+<p>The Road Not Taken is for alternatives seriously considered and specifically rejected. In 4 of 22 documents it lists alternatives without stating why each was rejected, or repeats arguments already made in The Downsides. Each entry needs a named alternative and a specific technical reason for rejection.</p>
+</section>
+<section id="zombie-nouns-helen-sword" class="level4">
+<h4 class="anchored" data-anchor-id="zombie-nouns-helen-sword">Zombie nouns (Helen Sword)</h4>
+<p>Nominalizations convert live verbs into abstract nouns: “implementation of” (implement), “evaluation of” (evaluate), “utilization of” (use). They strip the actor and dilute the commitment. Check for -tion, -ment, -ity, and -ness suffixes. Where the underlying verb is available, use it: “The team evaluates, documents, and deploys both solutions” rather than “The team will handle evaluation, documentation, and deployment of both solutions.”</p>
+</section>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>Template heading and zombie noun fixes are mechanical — they require no judgement, just a suffix check and a heading comparison. The lede and road-not-taken fixes require knowing what the document is actually about, so they double as a comprehension check on the content.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>Passive voice is sometimes correct: when the actor is unknown, or when naming it would be awkward repetition. Applying the rule without reading the sentence produces its own monotony.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>A linter (Vale, write-good) would catch passive voice and nominalizations automatically. Linter integration was not adopted because the ADR format has no CI pipeline, and a checklist applied manually is more useful than one requiring tooling setup.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Active</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>Writing, Documentation, Style, Review, Contributing</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li>Google Developer Documentation Style Guide — Active Voice <span class="citation" data-cites="googledocs2024voice">(Google 2024)</span></li>
+<li>Microsoft Writing Style Guide — Top 10 Tips <span class="citation" data-cites="microsoft2024style">(Microsoft 2024)</span></li>
+<li>Helen Sword, “Zombie Nouns” <span class="citation" data-cites="sword2012zombie">(Sword 2012)</span></li>
+</ol>
+
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-googledocs2024voice" class="csl-entry">
+Google. 2024. <em>Use Active Voice</em>. <a href="https://developers.google.com/style/voice">https://developers.google.com/style/voice</a>.
+</div>
+<div id="ref-microsoft2024style" class="csl-entry">
+Microsoft. 2024. <em>Top 10 Tips for <span>Microsoft</span> Style and Voice</em>. <a href="https://learn.microsoft.com/en-us/style-guide/top-10-tips-style-voice">https://learn.microsoft.com/en-us/style-guide/top-10-tips-style-voice</a>.
+</div>
+<div id="ref-sword2012zombie" class="csl-entry">
+Sword, Helen. 2012. <em>Zombie Nouns</em>. <a href="https://opinionator.blogs.nytimes.com/2012/07/23/zombie-nouns/">https://opinionator.blogs.nytimes.com/2012/07/23/zombie-nouns/</a>.
+</div>
+</div></section></div> ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes-3.html</guid>
+  <pubDate>Wed, 22 Apr 2026 14:10:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -355,7 +465,7 @@ Ossama. 2025. <em>Tropes.fyi: <span>AI</span> Writing Pattern Directory</em>. <a
 </div>
 </div></section></div> ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes-2.html</guid>
-  <pubDate>Wed, 22 Apr 2026 13:55:39 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 14:10:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -440,7 +550,7 @@ Ossama. 2025. <em>Tropes.fyi: <span>AI</span> Writing Pattern Directory</em>. <a
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zones-vs-shards.html</guid>
-  <pubDate>Wed, 22 Apr 2026 13:55:39 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 14:10:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -522,7 +632,7 @@ Ossama. 2025. <em>Tropes.fyi: <span>AI</span> Writing Pattern Directory</em>. <a
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-registration-and-discovery.html</guid>
-  <pubDate>Wed, 22 Apr 2026 13:55:39 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 14:10:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -778,7 +888,7 @@ font-style: inherit;">end</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-grouping.html</guid>
-  <pubDate>Wed, 22 Apr 2026 13:55:39 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 14:10:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -925,7 +1035,7 @@ theorem aoiBand_width_bound ... :
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-border-handoff.html</guid>
-  <pubDate>Wed, 22 Apr 2026 13:55:39 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 14:10:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1203,7 +1313,7 @@ font-style: inherit;">:assets</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-asset-manifest.html</guid>
-  <pubDate>Wed, 22 Apr 2026 13:55:39 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 14:10:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1336,7 +1446,7 @@ font-style: inherit;">note</span>         = {Baseline 2026: newly available acro
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-webtransport-zone-transport.html</guid>
-  <pubDate>Wed, 22 Apr 2026 13:55:39 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 14:10:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1504,7 +1614,7 @@ font-style: inherit;">;</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-websocket-transport-parity.html</guid>
-  <pubDate>Wed, 22 Apr 2026 13:55:39 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 14:10:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1640,7 +1750,7 @@ font-style: inherit;">;</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-virtual-creator-market-implementation-plan.html</guid>
-  <pubDate>Wed, 22 Apr 2026 13:55:39 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 14:10:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1758,7 +1868,7 @@ font-style: inherit;">BLOB</span>, slot_count, ts)</span></code></pre></div></di
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-sqlite-per-zone-journal.html</guid>
-  <pubDate>Wed, 22 Apr 2026 13:55:39 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 14:10:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2549,7 +2659,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-rectgtn-jellyfish-behavior.html</guid>
-  <pubDate>Wed, 22 Apr 2026 13:55:39 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 14:10:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2776,7 +2886,7 @@ font-style: inherit;">// existing allocation logic follows</span></span></code><
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-rebac-zone-server-enforcement.html</guid>
-  <pubDate>Wed, 22 Apr 2026 13:55:39 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 14:10:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2946,7 +3056,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-rebac-zone-relations.html</guid>
-  <pubDate>Wed, 22 Apr 2026 13:55:39 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 14:10:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3081,7 +3191,7 @@ theorem non_authority_cannot_bind_mutation :
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-rebac-permissions.html</guid>
-  <pubDate>Wed, 22 Apr 2026 13:55:39 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 14:10:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3340,7 +3450,7 @@ font-style: inherit;">note</span>         = {Over 1.1 million users on a desktop
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-product-virtual-creator-market.html</guid>
-  <pubDate>Wed, 22 Apr 2026 13:55:39 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 14:10:04 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3422,113 +3532,7 @@ font-style: inherit;">note</span>         = {Over 1.1 million users on a desktop
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-platform-pitch.html</guid>
-  <pubDate>Wed, 22 Apr 2026 13:55:39 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20260421-multiplayer-fabric-zone-architecture.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="multiplayer-fabric-zone-architecture" class="level1">
-<h1>Multiplayer Fabric Zone Architecture</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>Multiplayer Fabric is a self-hosted multiplayer framework built on top of the Godot engine. It is designed to run on hardware you control — a single machine, a small cluster, or a homelab — without requiring any hosted service.</p>
-<p>This document describes the design of the zone layer: how clients discover servers, how entity state is managed and persisted, and how the pieces connect.</p>
-</section>
-<section id="components" class="level2">
-<h2 class="anchored" data-anchor-id="components">Components</h2>
-<pre><code>client (Godot)
-  │  WebTransport (QUIC/UDP)
-  ▼
-zone server (FabricZone, headless Godot)
-  │  HTTP heartbeat (PUT /shards/:id every ~25 s)
-  ▼
-zone-backend (Phoenix/Elixir)
-  │  WebSocket (Phoenix Channel "zone:*")
-  ▼
-client (Godot) — receives desync index URL on join</code></pre>
-<section id="zone-backend" class="level3">
-<h3 class="anchored" data-anchor-id="zone-backend">zone-backend</h3>
-<p>An Elixir/Phoenix HTTP API and WebSocket server. It keeps a registry of live zone servers.</p>
-<ul>
-<li><code>POST /shards</code> — zone server registers on boot, receives a UUID</li>
-<li><code>PUT /shards/:id</code> — heartbeat from the zone server process; touches <code>last_put_at</code> and broadcasts <code>zone_updated</code> to WebSocket subscribers with the current desync index URL</li>
-<li><code>GET /shards</code> — returns zones with a <code>last_put_at</code> within the last 30 seconds</li>
-<li><code>ZoneJanitor</code> GenServer culls rows where <code>last_put_at</code> is older than the staleness window; it does not use Phoenix’s own heartbeat as a liveness signal</li>
-<li><code>ZoneChannel</code> — clients subscribe to <code>zone:{id}</code> to receive asset delivery URLs as they become available</li>
-</ul>
-</section>
-<section id="zone-server-fabriczone" class="level3">
-<h3 class="anchored" data-anchor-id="zone-server-fabriczone">zone server (FabricZone)</h3>
-<p>A headless Godot process that runs the simulation. Each zone owns a contiguous range of 30-bit Hilbert space and manages up to <code>ZONE_CAPACITY</code> entity slots (default 1,800).</p>
-<p>Key design decisions:</p>
-<ul>
-<li><strong>Constant-work loop</strong> — the physics loop iterates all <code>_zone_capacity</code> slots every tick regardless of occupancy. This makes tick time predictable and avoids per-entity allocation in the hot path.</li>
-<li><strong>Spatial partitioning</strong> — a 3D Hilbert curve maps each entity position to a zone index. The curve and its bounds are formally specified in Lean 4 and code-generated into <code>predictive_bvh.h</code> (R128 64.64 fixed-point arithmetic, micrometer precision).</li>
-<li><strong>STAGING migration</strong> — when an entity crosses a zone boundary, its <code>MigrationState</code> transitions <code>owned → staging(targetZone, arrivalHLC) → owned</code>; the receiving side enters <code>incoming(fromZone)</code> until the arrival HLC is reached. Timing uses <code>FabricLatency</code> (sameRegion=1 tick, crossRegion=4 ticks, satellite=40 ticks) with a floor of <code>latencyTicks = max (simTickHz / 10) 1</code>.</li>
-<li><strong>AOI band interest culling</strong> — zones broadcast entity snapshots only to peers whose Hilbert code span overlaps the AOI band. The band width is proved to be <code>≤ (1 + 2·aoiCells) · hilbertSpanWidth(prefixDepth)</code>, independent of global zone count.</li>
-</ul>
-</section>
-<section id="asset-delivery-desync" class="level3">
-<h3 class="anchored" data-anchor-id="asset-delivery-desync">Asset delivery (desync)</h3>
-<p>Assets are uploaded to zone-backend, baked into casync <code>.caibx</code> chunk archives, and stored via the storage backend. The <code>baked_url</code> field on a <code>SharedFile</code> record is the index URL a client or zone server uses to reassemble the asset from chunks.</p>
-<p><code>CMD_INSTANCE_ASSET</code> (opcode 0x04, 100-byte binary packet) instructs the authority zone to fetch the manifest, allocate an entity slot, and broadcast the instance to neighbouring zones.</p>
-<p>A benchmark comparing casync desync, zchunk (HTTP-compatible, zstd-compressed, no custom chunk server required), and a plain CDN delta for a representative Godot export is pending. The result will determine the default delivery path.</p>
-</section>
-<section id="permissions-rebac" class="level3">
-<h3 class="anchored" data-anchor-id="permissions-rebac">Permissions (ReBAC)</h3>
-<p>Upload permissions are checked via a relationship-based access control graph (<code>taskweft</code>, a C++20 NIF). Membership edges (<code>IS_MEMBER_OF</code>) are built per-request from the <code>UserPrivilegeRuleset</code> record and evaluated with <code>check_rel/4</code>. No permission data is stored in the graph between requests.</p>
-<p>ReBAC is an upload-time and join-time check only. Per-tick access decisions (proximity culling, combat) use a local cache derived from the graph at join time, invalidated on explicit graph mutations. No live <code>taskweft</code> query is issued from the physics loop.</p>
-</section>
-</section>
-<section id="persistence" class="level2">
-<h2 class="anchored" data-anchor-id="persistence">Persistence</h2>
-<p>Entity state has two persistence paths:</p>
-<p><strong>Graceful shutdown (FabricSnapshot)</strong> On <code>SIGINT</code>, zones drain entities toward zone 0 via STAGING migration. Zone 0 collects all entities and writes a <code>FabricSnapshot</code> Godot Resource to disk. On restart, each zone reloads only the entities whose Hilbert code falls within its range.</p>
-<p><strong>Crash recovery (FabricZoneJournal)</strong> A per-zone SQLite database records discrete mutations: spawn, despawn, payload_update. On restart, the zone replays the journal on top of its deterministic static-world initialisation to recover dynamic entities (connected players, asset instances). Physics-step position updates are not journaled; they are recomputed from the simulation. See <code>20260421-sqlite-per-zone-journal.md</code> for the detailed design.</p>
-</section>
-<section id="deployment" class="level2">
-<h2 class="anchored" data-anchor-id="deployment">Deployment</h2>
-<p>The reference deployment uses Docker Compose (<code>multiplayer-fabric-hosting</code>). Zone servers register with zone-backend at startup. Zone-backend and zone servers communicate only via HTTP and ENet; no shared database is required between them.</p>
-<p>Cloudflare proxying is currently disabled for zone server hostnames because QUIC/UDP cannot be proxied by the standard Cloudflare path. Cloudflare’s MASQUE-based proxy mode (2025) may pass UDP datagrams transparently; compatibility with zone server QUIC datagrams is under evaluation. The zone server’s self-signed TLS certificate fingerprint (<code>cert_hash</code>) is stored in the zone registry and pinned by clients; no certificate authority is needed.</p>
-<p>The WebSocket transport path in <code>FabricMMOGTransportPeer</code> is a first-class transport. iOS Safari clients use this path. It receives the same test coverage and feature access as the WebTransport path.</p>
-</section>
-<section id="what-is-not-decided-here" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-not-decided-here">What Is Not Decided Here</h2>
-<ul>
-<li>Multi-machine scaling beyond a single host (horizontal zone distribution, inter-host routing)</li>
-<li>Authoritative physics vs.&nbsp;client-side prediction trade-offs for specific game types</li>
-<li>Asset moderation and content policy enforcement</li>
-</ul>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Accepted</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>iFire</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>Architecture, Zone, FabricZone, Hilbert, Entity, Persistence, WebTransport, ReBAC, casync</li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20260421-multiplayer-fabric-zone-architecture.html</guid>
-  <pubDate>Wed, 22 Apr 2026 13:55:39 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 14:10:04 GMT</pubDate>
 </item>
 </channel>
 </rss>

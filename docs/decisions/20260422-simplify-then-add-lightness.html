@@ -44,9 +44,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-3c28f507822a6aba878936ee8b27b32a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-b2059c1d83ca13157c7a4652faea9fa0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-3c28f507822a6aba878936ee8b27b32a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-4cc40b3acf25e1a3e98bfc07ca433f3e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-1d722c2397631410c7987065d3ae1239.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-4cc40b3acf25e1a3e98bfc07ca433f3e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -293,13 +293,14 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#simplify-then-add-lightness" id="toc-simplify-then-add-lightness" class="nav-link active" data-scroll-target="#simplify-then-add-lightness">Simplify, Then Add Lightness</a>
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
-  <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
+  <li><a href="#the-problem" id="toc-the-problem" class="nav-link" data-scroll-target="#the-problem">The Problem</a></li>
   <li><a href="#the-principle" id="toc-the-principle" class="nav-link" data-scroll-target="#the-principle">The Principle</a>
   <ul class="collapse">
   <li><a href="#core-lessons" id="toc-core-lessons" class="nav-link" data-scroll-target="#core-lessons">Core lessons</a></li>
   </ul></li>
   <li><a href="#application-to-multiplayer-fabric" id="toc-application-to-multiplayer-fabric" class="nav-link" data-scroll-target="#application-to-multiplayer-fabric">Application to multiplayer-fabric</a></li>
   <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
+  <li><a href="#audit-checklist" id="toc-audit-checklist" class="nav-link" data-scroll-target="#audit-checklist">Audit Checklist</a></li>
   <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
   <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
   <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags">Tags</a></li>
@@ -318,52 +319,64 @@ ul.task-list li input[type="checkbox"] {
 <h1>Simplify, Then Add Lightness</h1>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>Zack Anderson applied Colin Chapman’s racecar design philosophy — “add lightness” — to hardware engineering at Tesla. Chapman’s principle was that performance comes from removing mass, not adding power. Anderson extended it: before optimising a system, question whether the requirement that made it necessary should exist at all. multiplayer-fabric adopts this as its primary design heuristic.</p>
+<p>Zack Anderson applied Colin Chapman’s racecar principle — “add lightness” — to hardware engineering at Tesla. Chapman’s insight: performance comes from removing mass, not adding power. Anderson extended it: before optimising a system, question whether the requirement that made it necessary should exist at all. multiplayer-fabric adopts this as its primary design heuristic.</p>
 </section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Engineering teams default to addition. A feature is slow, so a cache is added. A boundary is unclear, so a coordinator is added. Each addition feels local and justified, but the accumulated mass raises the cost of every future change. The learning loop — the cycle from hypothesis to measured outcome — tends to lengthen with each layer.</p>
+<section id="the-problem" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem">The Problem</h2>
+<p>Engineering teams default to addition. A feature is slow, so a cache is added. A boundary is unclear, so a coordinator is added. Each addition feels justified; the accumulated mass raises the cost of every future change and lengthens the feedback loop.</p>
 </section>
 <section id="the-principle" class="level2">
 <h2 class="anchored" data-anchor-id="the-principle">The Principle</h2>
-<p>Simplify first. Then, if weight must be added, add it deliberately and with full awareness of the cost.</p>
-<p>It is a sequencing rule: subtraction before addition, question before implement.</p>
+<p>Subtract before you add. When weight must be added, add it deliberately and with full awareness of the cost.</p>
 <section id="core-lessons" class="level3">
 <h3 class="anchored" data-anchor-id="core-lessons">Core lessons</h3>
 <section id="question-and-subtract-requirements" class="level4">
 <h4 class="anchored" data-anchor-id="question-and-subtract-requirements">Question and subtract requirements</h4>
-<p>Before implementing anything, examine which parts of the spec are not absolutely necessary. A requirement that cannot survive scrutiny should not survive implementation. The best code for an unnecessary feature is no code.</p>
+<p>A requirement that cannot survive scrutiny should not survive implementation. The best code for an unnecessary feature is no code.</p>
 </section>
 <section id="sequence-your-risks" class="level4">
 <h4 class="anchored" data-anchor-id="sequence-your-risks">Sequence your risks</h4>
-<p>Early prototypes are scientific experiments designed to retire specific risks in order — not to prove everything at once. The question is: what is the one thing most likely to make this not work? Retire that first. Build the rest afterward.</p>
+<p>Early prototypes retire specific risks in order — not everything at once. Identify the one assumption most likely to invalidate the design; retire that first.</p>
 </section>
 <section id="insource-the-uncertain" class="level4">
 <h4 class="anchored" data-anchor-id="insource-the-uncertain">Insource the uncertain</h4>
-<p>Mature, well-understood components can be delegated to libraries or services. Core uncertainties — the things that define whether the project works at all — stay in-house, where they can be directly observed and changed without a support contract.</p>
+<p>Delegate mature, well-understood components to libraries or services. Keep core uncertainties in-house where they can be observed and changed directly.</p>
 </section>
 <section id="shift-complexity-into-software" class="level4">
 <h4 class="anchored" data-anchor-id="shift-complexity-into-software">Shift complexity into software</h4>
-<p>Physical complexity (hardware, infrastructure, topology) is expensive to change. Computational complexity is cheap to change. When a choice exists between a hardware constraint and a software constraint, prefer the software constraint. This is why multiplayer-fabric replaces session coordinators with Hilbert curve arithmetic.</p>
+<p>Physical complexity — hardware, infrastructure, topology — is expensive to change. Computational complexity is cheap. This is why multiplayer-fabric replaces session coordinators with Hilbert curve arithmetic.</p>
 </section>
 <section id="compress-learning-loops" class="level4">
 <h4 class="anchored" data-anchor-id="compress-learning-loops">Compress learning loops</h4>
-<p>Distance between the engineer and the running system is a tax on speed. The larger that distance — in abstraction layers or deployment steps — the slower the feedback.</p>
+<p>Abstraction layers and deployment steps are a tax on feedback speed. Minimise the distance between the engineer and the running system.</p>
 </section>
 <section id="maintain-organisational-lightness" class="level4">
 <h4 class="anchored" data-anchor-id="maintain-organisational-lightness">Maintain organisational lightness</h4>
-<p>A team small enough to share context naturally does not need process to substitute for communication. Process is the organisational equivalent of a cache: useful when direct access is too expensive, dangerous when it becomes the primary path.</p>
+<p>A team small enough to share context naturally needs no process to substitute for communication. Process is a cache: useful when direct access is too expensive, dangerous when it becomes the primary path.</p>
 </section>
 </section>
 </section>
 <section id="application-to-multiplayer-fabric" class="level2">
 <h2 class="anchored" data-anchor-id="application-to-multiplayer-fabric">Application to multiplayer-fabric</h2>
-<p>The Hilbert broadphase eliminates the session coordinator; formal verification covers bit-manipulation correctness across engine upgrades. Content-addressed delivery and ReBAC each subtract a moving part from the accounting and permission layers respectively.</p>
-<p>The zone boundary model is the direct expression of this heuristic: instead of a matchmaker that routes players to servers, the geometry determines adjacency. The coordinator mass is zero.</p>
+<p>The Hilbert broadphase eliminates the session coordinator. Formal verification covers bit-manipulation correctness across engine upgrades. Content-addressed delivery (casync/desync) and ReBAC each subtract a moving part from delivery and permission accounting respectively.</p>
+<p>The zone boundary model is the direct expression of this heuristic: geometry determines adjacency; coordinator mass is zero.</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>The alternative is to keep adding. Add a coordinator, then a coordinator monitor, then a fallback coordinator, then a configuration system to manage which coordinator is primary. This is the industry default, and it works — but any engineer touching zone topology must understand five systems instead of one curve.</p>
+<p>The alternative — coordinator, coordinator monitor, fallback coordinator, configuration system — works, but any engineer touching zone topology must understand five systems instead of one curve.</p>
+</section>
+<section id="audit-checklist" class="level2">
+<h2 class="anchored" data-anchor-id="audit-checklist">Audit Checklist</h2>
+<p>Before adding any component, layer, or dependency, answer these questions:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Can the requirement driving this addition be removed instead?</label></li>
+<li><label><input type="checkbox">Is this the one risk that must be retired first, or can it wait?</label></li>
+<li><label><input type="checkbox">Does this belong in-house (uncertain, core) or can it be delegated?</label></li>
+<li><label><input type="checkbox">Is this complexity physical/infrastructural, or can it be pushed into software?</label></li>
+<li><label><input type="checkbox">Does this shorten or lengthen the feedback loop?</label></li>
+<li><label><input type="checkbox">Does this require a new system to monitor or manage it?</label></li>
+</ul>
+<p>If any answer points toward addition without a clear necessity, subtract first.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
