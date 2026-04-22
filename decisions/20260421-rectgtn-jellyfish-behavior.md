@@ -14,9 +14,19 @@ Jellyfish behaviour is table-driven. There is no mechanism to sequence multi-ste
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
+### Domain and plan separation
+
+Two distinct layers:
+
+**Domain (fixed for zone lifetime)** — loaded from the GLTF interactivity extensions in the zone asset bundle at startup. Defines the action vocabulary: state variable names, action effects, and method preconditions. The zone's entity state is produced by applying actions from this domain; the domain and the entity state are a unit and cannot be swapped independently at runtime.
+
+**Plan (dynamic JSON/dict)** — a sequence of action names that are valid within the loaded domain. Because a plan only references actions already defined in the domain, hot-pushing a new plan at runtime does not change the state schema. Zone ACID properties are preserved.
+
+This separation mirrors how GLTF interactivity works: the interactivity extension defines the fixed set of triggers and actions baked into the asset, while runtime orchestration decides which sequence to execute.
+
 ### Domain per species
 
-Each jellyfish species is a JSON-LD RECTGTN domain stored as a file in the zone asset bundle:
+Each jellyfish species domain is a JSON-LD file in the zone asset bundle, loaded once at zone startup:
 
 ```json
 {
@@ -29,17 +39,17 @@ Each jellyfish species is a JSON-LD RECTGTN domain stored as a file in the zone 
   },
   "tasks": {
     "behave": [
-      { "method": "flee", "precond": { "threat_nearby": true }, "subtasks": ["flee_predator", "recover"] },
-      { "method": "seek_light", "precond": { "light_level": "bright" }, "subtasks": ["drift_toward_light", "pulse"] },
-      { "method": "idle", "precond": {}, "subtasks": ["drift_current"] }
+      { "method": "flee",       "precond": { "threat_nearby": true },    "subtasks": ["flee_predator", "recover"] },
+      { "method": "seek_light", "precond": { "light_level": "bright" },  "subtasks": ["drift_toward_light", "pulse"] },
+      { "method": "idle",       "precond": {},                           "subtasks": ["drift_current"] }
     ]
   },
   "actions": {
-    "flee_predator":      { "duration": "PT2S",  "effects": { "location": "shelter" } },
-    "recover":            { "duration": "PT5S",  "effects": { "threat_nearby": false } },
-    "drift_toward_light": { "duration": "PT3S",  "effects": { "location": "light_source" } },
-    "pulse":              { "duration": "PT1S",  "effects": { "pulse_cooldown": 3 } },
-    "drift_current":      { "duration": "PT4S",  "effects": {} }
+    "flee_predator":      { "duration": "PT2S", "effects": { "location": "shelter" } },
+    "recover":            { "duration": "PT5S", "effects": { "threat_nearby": false } },
+    "drift_toward_light": { "duration": "PT3S", "effects": { "location": "light_source" } },
+    "pulse":              { "duration": "PT1S", "effects": { "pulse_cooldown": 3 } },
+    "drift_current":      { "duration": "PT4S", "effects": {} }
   }
 }
 ```
@@ -98,6 +108,23 @@ A species domain can include capability preconditions:
 
 Before executing `seek_light`, the zone server calls the existing `check_rel()` on the entity's capability graph. Non-bioluminescent jellyfish never decompose into `seek_light` — the planner picks `idle` instead.
 
+### Runtime plan injection via NIF
+
+Because plans are pure JSON with no schema side-effects, zone-backend can push a new plan to a running zone via the NIF without violating ACID. The zone server accepts a `CMD_SET_ENTITY_PLAN` packet carrying a JSON plan array; it validates each action name against the loaded domain before applying:
+
+```cpp
+void FabricMMOGZone::_on_cmd_set_entity_plan(int p_entity_id, const String &p_plan_json) {
+    TwPlan incoming = TwLoader::plan_from_json(p_plan_json);
+    if (!_domain_contains_all_actions(_species_domains[p_entity_id], incoming)) {
+        return; // reject: references actions not in the loaded domain
+    }
+    _entity_plans[p_entity_id] = incoming;
+    _entity_plan_step[p_entity_id] = 0;
+}
+```
+
+This allows zone-backend to pre-compute plans for large entity populations via the BEAM NIF (`plan/1`) and distribute them to zone servers, offloading planning from the C++ simulation thread while keeping the domain fixed.
+
 ### No sandbox
 
 The godot-sandbox RISC-V guest (`taskweft_planner.cpp`) is not used. The standalone headers compile into `fabric_mmog_zone.cpp` directly. Behaviour domains are loaded from the zone asset bundle at zone startup and cached in `_species_domains`.
@@ -112,7 +139,9 @@ Each entity carries a live plan and a solution tree. At 511 jellyfish, memory pe
 
 ## The Road Not Taken
 
-Running the planner on zone-backend via the BEAM NIF (`plan/1`) was considered but breaks the ACID properties of the zone. A zone's entity state is computed under a specific domain: action effects, state keys, and method preconditions are all encoded there. Hot-pushing a new domain to a running zone leaves the entity state in a configuration the new domain did not produce. Plans generated under the new domain may reference state keys that do not exist or have effects that contradict current simulation invariants. The domain and the zone state machine are a unit; they can only be swapped together, at zone startup or after a full entity state reset. The C++ direct path enforces this naturally — a domain change requires a zone server restart.
+Hot-reloading the **domain** via the NIF breaks zone ACID: the entity state was produced by applying actions defined in the current domain, so a new domain with different state keys or action effects leaves the entity state in a configuration no valid plan could have produced. The domain and the entity state are a unit; replacing one without the other violates the invariant.
+
+Hot-reloading **plans** via the NIF is safe and is described above (`CMD_SET_ENTITY_PLAN`). The distinction is that a plan is a sequence of action names — it carries no schema. Validation against the loaded domain before application ensures the plan references only actions that already exist in the simulation's state machine.
 
 ## The Infrequent Use Case
 
@@ -121,10 +150,14 @@ A zone with no jellyfish entities (empty zone during off-peak hours) allocates n
 ## In Core and Done by Us
 
 - `multiplayer-fabric-taskweft/standalone/` — link directly into zone server build; no new code required
-- `fabric_mmog_zone.cpp` — `_replan_jellyfish()`, `_on_threat_detected()`, `_entity_plans`, `_entity_plan_step`, `_species_domains`
+- `fabric_mmog_zone.cpp`
+  - `_replan_jellyfish()`, `_on_threat_detected()` — local C++ planning path
+  - `_on_cmd_set_entity_plan()` — accept JSON plan from zone-backend, validate against loaded domain before applying
+  - `_entity_plans`, `_entity_plan_step`, `_species_domains`
 - `fabric_mmog_zone.h` — `HashMap<int, TwPlan>`, `HashMap<int, int>`, `HashMap<String, TwDomain>`
 - Species domain files — `assets/domains/jellyfish_common.jsonld`, `jellyfish_bioluminescent.jsonld`
 - `JellygridSwarm::tick()` — read current action from plan rather than hard-coded phase table
+- `multiplayer-fabric-taskweft` NIF — `plan/1` called from zone-backend to pre-compute plans for bulk entity population; results distributed via `CMD_SET_ENTITY_PLAN`
 
 ## Status
 
