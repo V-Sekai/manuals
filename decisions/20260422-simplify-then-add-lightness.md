@@ -42,7 +42,7 @@ A team small enough to share context naturally does not need process to substitu
 
 ## Application to multiplayer-fabric
 
-The Hilbert broadphase replaces a session coordinator. Formal verification of the Hilbert transforms replaces the need to audit bit-manipulation by hand on every engine upgrade. Content-addressed delivery replaces per-client bandwidth accounting. ReBAC replaces per-route permission checks. Each decision subtracts a moving part.
+The Hilbert broadphase eliminates the session coordinator; formal verification covers bit-manipulation correctness across engine upgrades. Content-addressed delivery and ReBAC each subtract a moving part from the accounting and permission layers respectively.
 
 The zone boundary model is the direct expression of this heuristic: instead of a matchmaker that routes players to servers, the geometry determines adjacency. The coordinator mass is zero.
 
