@@ -79,9 +79,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-3c28f507822a6aba878936ee8b27b32a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-b2059c1d83ca13157c7a4652faea9fa0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-3c28f507822a6aba878936ee8b27b32a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-4cc40b3acf25e1a3e98bfc07ca433f3e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-1d722c2397631410c7987065d3ae1239.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-4cc40b3acf25e1a3e98bfc07ca433f3e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -305,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Decisions</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../roadmap.html"> 
+    <a class="nav-link" href="../roadmap.qmd"> 
 <span class="menu-text">Roadmap</span></a>
   </li>  
 </ul>
@@ -420,9 +420,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>Differentiation must be communicable in one sentence, one image, or one short video. The sentence above passes this test. The table above is the image.</p>
 <p><strong>What multiplayer-fabric Already Provides</strong></p>
-<p>Zone streaming handles event crowds. A convention hall with thousands of concurrent attendees is a zone topology problem. multiplayer-fabric solves it: each hall is a zone, entities migrate at boundaries, the physics loop runs at constant cost per zone regardless of global headcount.</p>
+<p>Zone streaming handles event crowds and booths. A booth is a zone — a creator registers a zone server and that zone is their booth space. The existing Zone schema (name, user_id, map) is sufficient; no separate booth data model is needed. Entities migrate at zone boundaries, the physics loop runs at constant cost per zone regardless of global headcount.</p>
 <p>Content-addressed delivery handles product assets. A buyer downloads only the chunks they do not already have. A repeat visitor to the same booth pays no redundant bandwidth. The same avatar file shared across multiple booths is stored once.</p>
-<p>ReBAC handles booth access control. Booth owners specify who can enter their space, purchase items, or modify their display. Permission checks happen at join time and upload time, not per tick.</p>
+<p>ReBAC handles booth access control. The zone owner is the booth owner. Permission checks happen at join time and upload time, not per tick.</p>
 <p>Self-hosted deployment is the trust argument. Docker Compose reference deployment, no cloud dependency, no third-party platform to pivot or shut down.</p>
 <p><strong>What Is Not Decided Here</strong></p>
 <ul>
