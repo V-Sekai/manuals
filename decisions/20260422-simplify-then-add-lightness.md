@@ -6,11 +6,11 @@ Zack Anderson applied Colin Chapman's racecar design philosophy — "add lightne
 
 ## The Problem Statement
 
-Engineering teams default to addition. A feature is slow, so a cache is added. A protocol is fragile, so a retry layer is added. A boundary is unclear, so a coordinator is added. Each addition feels local and justified, but the accumulated mass raises the cost of every future change. The learning loop — the cycle from hypothesis to measured outcome — lengthens with each layer. Speed of development is inversely proportional to the mass of the system under development.
+Engineering teams default to addition. A feature is slow, so a cache is added. A boundary is unclear, so a coordinator is added. Each addition feels local and justified, but the accumulated mass raises the cost of every future change. The learning loop — the cycle from hypothesis to measured outcome — tends to lengthen with each layer.
 
 ## The Principle
 
-**Simplify first. Then, if weight must be added, add it deliberately and with full awareness of the cost.**
+Simplify first. Then, if weight must be added, add it deliberately and with full awareness of the cost.
 
 It is a sequencing rule: subtraction before addition, question before implement.
 
