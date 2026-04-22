@@ -110,7 +110,9 @@ Before executing `seek_light`, the zone server calls the existing `check_rel()` 
 
 ### Runtime plan injection via NIF
 
-Because plans are pure JSON with no schema side-effects, zone-backend can push a new plan to a running zone via the NIF without violating ACID. The zone server accepts a `CMD_SET_ENTITY_PLAN` packet carrying a JSON plan array; it validates each action name against the loaded domain before applying:
+Because plans are pure JSON with no schema side-effects, zone-backend can push a new plan to a running zone without violating ACID. `taskweft` is also an Elixir module: zone-backend calls `Taskweft.plan/1` via the NIF, receives a JSON plan array, and sends it to the zone server as a `CMD_SET_ENTITY_PLAN` packet. The zone server validates each action name against the already-loaded domain before applying.
+
+The Elixir module is kept at arm's length from the zone sim: it produces plans, it never executes them. The zone sim never calls back into BEAM. A slow or failed NIF call on the BEAM side does not affect the zone tick rate — the zone continues running the current plan until a replacement arrives.
 
 ```cpp
 void FabricMMOGZone::_on_cmd_set_entity_plan(int p_entity_id, const String &p_plan_json) {
@@ -123,7 +125,7 @@ void FabricMMOGZone::_on_cmd_set_entity_plan(int p_entity_id, const String &p_pl
 }
 ```
 
-This allows zone-backend to pre-compute plans for large entity populations via the BEAM NIF (`plan/1`) and distribute them to zone servers, offloading planning from the C++ simulation thread while keeping the domain fixed.
+This allows zone-backend to pre-compute plans for large entity populations and distribute them, offloading bulk planning from the C++ simulation thread while keeping domain authority in the zone server.
 
 ### No sandbox
 
