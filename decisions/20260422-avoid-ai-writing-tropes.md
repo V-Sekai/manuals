@@ -6,9 +6,9 @@ multiplayer-fabric documentation is produced with AI assistance. LLM-generated p
 
 ## The Problem Statement
 
-AI models reach for the same constructions across different prompts and models. A reader who recognises these patterns discounts what surrounds them. In technical writing, where credibility depends on precision, that cost is real.
+AI models reach for the same constructions across different prompts and models. A reader who recognises these patterns discounts what surrounds them.
 
-## Describe how your proposal will work
+## The Proposal
 
 Use the tropes.fyi taxonomy as the review checklist for any prose documentation added to this project. The five highest-risk patterns for technical writing are listed below.
 
@@ -36,7 +36,7 @@ The secondary word-choice checklist: avoid _leverage_, _robust_, _streamline_, _
 
 ## The Benefits
 
-Readers who recognise AI writing patterns stop trusting the document at the first tell. Prose that clears this checklist stands on its own. Review time shifts from cleaning up tells to checking content.
+Readers who recognise AI writing patterns stop trusting the document at the first tell. Review time shifts from cleaning up tells to checking content.
 
 ## The Downsides
 
