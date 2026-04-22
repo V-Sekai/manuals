@@ -45,7 +45,7 @@ This solution is based on the core functionality provided by Rancher and does no
 
 ## Status
 
-Status: Draft
+Status: Obsolete — Rancher/Helm Kubernetes approach obsolete; replaced by current Elixir/Phoenix stack
 
 ## Decision Makers
 

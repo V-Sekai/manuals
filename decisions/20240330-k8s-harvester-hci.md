@@ -101,7 +101,7 @@ The user performs the entire process of installing and configuring the `rancher-
 
 ## Status
 
-Status: Accepted
+Status: Obsolete — Kubernetes on Harvester HCI is obsolete; replaced by current Elixir/Phoenix zone server
 
 ## Decision Makers
 

@@ -62,3 +62,7 @@ Yes, this guide was created by us and is part of our core documentation.
 | gocd-agent-dind-96575468d4-b6gq9 | dind          | development, itch-fire |
 
 Please note that the actual resources and environments will vary based on your specific setup.
+
+## Status
+
+Status: Obsolete — GoCD agent setup is obsolete; replaced by GitHub Actions CI/CD

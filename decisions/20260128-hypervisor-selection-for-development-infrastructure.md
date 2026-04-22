@@ -93,7 +93,7 @@ Infrastructure tooling decisions are core to development workflow efficiency. Th
 
 ## Status
 
-Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Obsolete — Harvester HCI/Nutanix evaluation obsolete; current dev infrastructure uses different approach
 
 ## Decision Makers
 

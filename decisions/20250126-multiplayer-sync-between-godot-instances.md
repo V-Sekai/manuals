@@ -47,7 +47,7 @@ Yes, managing multiplayer synchronization and asset generation aligns with V-Sek
 
 ## What is the status of the proposal?
 
-Status: Proposed
+Status: Superseded — Multiplayer sync between Godot instances superseded by current WebTransport zone architecture
 
 ## Who is making decisions on the proposal?
 

@@ -54,7 +54,7 @@ We will maintain the core functionality of the sandbox and basic loaders, ensuri
 
 ## Status
 
-Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Superseded — Content distribution evaluation superseded by current casync/desync approach
 
 ## Decision Makers
 

@@ -105,7 +105,7 @@ This initiative aligns with our core mission of developing social VR capabilitie
 
 ## Status
 
-Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Obsolete — Helm/Kubernetes runner with S3 cache not in current deployment approach
 
 ## Decision Makers
 

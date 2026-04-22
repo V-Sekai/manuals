@@ -34,7 +34,7 @@ The updating process will be handled by the V-Sekai development team.
 
 ## Status
 
-Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Obsolete — GoCD agent Docker image update is obsolete; GoCD replaced by GitHub Actions
 
 ## Decision Makers
 

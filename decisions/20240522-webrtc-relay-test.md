@@ -18,7 +18,7 @@
 
 ## Status
 
-Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Superseded — WebRTC relay approach superseded by current WebTransport zone transport
 
 ## Decision Makers
 

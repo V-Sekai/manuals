@@ -43,7 +43,7 @@ The implementation of this proposal will be carried out by our internal developm
 
 ## Status
 
-Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Obsolete — Harvester HCI/Hyper-V infrastructure not in current stack
 
 ## Decision Makers
 

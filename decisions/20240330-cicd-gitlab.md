@@ -55,7 +55,7 @@ This initiative is core to our mission of enhancing the Godot Engine with social
 
 ## Status
 
-Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Obsolete — GitLab CI/CD not in current GitHub Actions-based CI/CD approach
 
 ## Decision Makers
 

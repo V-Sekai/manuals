@@ -43,7 +43,7 @@ This proposal aligns with our core values of efficiency and professionalism and 
 
 ## Status
 
-Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Superseded — WebRTC-to-native interop superseded by current WebTransport zone transport
 
 ## Decision Makers
 

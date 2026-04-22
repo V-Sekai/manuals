@@ -69,7 +69,7 @@ This proposal involves integrating the solution directly into the core of the V-
 
 ## Status
 
-Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
+Status: Superseded — PCVR/web networking approach superseded by current WebTransport/WebSocket zone architecture
 
 ## Decision Makers
 
