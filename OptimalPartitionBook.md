@@ -39,5 +39,3 @@ All algorithm logic is in Lean 4 [@demoura2021lean4]. Integer arithmetic through
 Multiplayer game servers hit hard player-count ceilings because the spatial query that decides who receives data scales poorly. The bottleneck is the broadphase — the pairwise overlap check that runs every tick.
 
 This work replaces that bottleneck with a proved-optimal O(N+k) broadphase and a predictive expansion that lets the server skip rebuilds for slow-moving entities entirely across multiple simulation steps, with formal guarantees that no entity is ever missed.
-
-## References
