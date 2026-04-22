@@ -38,13 +38,13 @@ Linietsky reports that approximately one in ten funded games succeeds and only t
 
 No existing platform combines all four properties:
 
-| Platform                          | Self-hostable | Desktop-first         | Zone streaming | Creator keeps 100% |
-| --------------------------------- | ------------- | --------------------- | -------------- | ------------------ |
-| Established VR event platform     | No            | Partial               | No             | No                 |
-| Leading social VR platform        | No            | Yes (50% of sessions) | No             | No                 |
-| Open-source web VR platform       | Yes           | Yes                   | No             | N/A                |
-| Commercial social VR platform     | No            | Yes                   | No             | N/A                |
-| **This product**                  | **Yes**       | **Yes**               | **Yes**        | **Yes**            |
+| Platform                      | Self-hostable | Desktop-first         | Zone streaming | Creator keeps 100% |
+| ----------------------------- | ------------- | --------------------- | -------------- | ------------------ |
+| Established VR event platform | No            | Partial               | No             | No                 |
+| Leading social VR platform    | No            | Yes (50% of sessions) | No             | No                 |
+| Open-source web VR platform   | Yes           | Yes                   | No             | N/A                |
+| Commercial social VR platform | No            | Yes                   | No             | N/A                |
+| **This product**              | **Yes**       | **Yes**               | **Yes**        | **Yes**            |
 
 Differentiation must be communicable in one sentence, one image, or one short video. The sentence above passes this test. The table above is the image.
 
@@ -76,56 +76,3 @@ Status: Proposed
 ## Tags
 
 - Product, VirtualMarket, CreatorEconomy, Sustainability, Marketplace, Events, Desktop
-
-## References
-
-```bibtex
-@article{linietsky2017,
-  author  = {Juan Linietsky},
-  title   = {How to Make Your Dream Game, Publish It, and Not Die in the Process},
-  journal = {Godot Engine Blog},
-  year    = {2017},
-  month   = {August},
-  url     = {https://godotengine.org/article/how-make-your-dream-game-publish-it-and-not-die-process/}
-}
-
-@online{hikky2025,
-  author       = {{Hikky Co., Ltd.}},
-  title        = {Virtual Market — Company Profile},
-  year         = {2025},
-  url          = {https://hikky.co.jp/en/},
-  note         = {Over 1.3 million visitors worldwide; Guinness World Record for largest VR event}
-}
-
-@online{vrchat2025,
-  author       = {{VRChat Inc.}},
-  title        = {VRChat Launches on iOS and Android},
-  year         = {2025},
-  month        = {October},
-  url          = {https://hello.vrchat.com/blog/vrchat-on-ios-and-android},
-  note         = {Approximately 50% of VRChat sessions use desktop mode without a headset}
-}
-
-@online{recroom2026,
-  author       = {{Rec Room Inc.}},
-  title        = {Rec Room Shutdown Announcement},
-  year         = {2026},
-  month        = {March},
-  note         = {Platform shut down after reaching 150 million registered users; communities lost access to user-built content}
-}
-
-@online{horizon2026,
-  author       = {{Meta Platforms, Inc.}},
-  title        = {Horizon Worlds Shifts Primary Surface to Mobile},
-  year         = {2026},
-  month        = {February},
-  note         = {Meta's internal data showed desktop and mobile users were more engaged and more numerous than headset users, even within Meta's own ecosystem}
-}
-
-@online{alife2025,
-  author       = {{Alife Virtual}},
-  title        = {Alife Virtual Platform},
-  year         = {2025},
-  note         = {Over 1.1 million users on a desktop-only social avatar client; no VR hardware required}
-}
-```
