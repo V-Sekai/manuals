@@ -341,9 +341,9 @@ client (Godot) — receives desync index URL on join</code></pre>
 <p>An Elixir/Phoenix HTTP API and WebSocket server. It keeps a registry of live zone servers.</p>
 <ul>
 <li><code>POST /shards</code> — zone server registers on boot, receives a UUID</li>
-<li><code>PUT /shards/:id</code> — heartbeat; touches <code>updated_at</code>; also broadcasts <code>zone_updated</code> to WebSocket subscribers with the current desync index URL</li>
-<li><code>GET /shards</code> — returns zones with a heartbeat within the last 30 seconds</li>
-<li><code>ZoneJanitor</code> GenServer culls rows older than the staleness window</li>
+<li><code>PUT /shards/:id</code> — heartbeat from the zone server process; touches <code>last_put_at</code> and broadcasts <code>zone_updated</code> to WebSocket subscribers with the current desync index URL</li>
+<li><code>GET /shards</code> — returns zones with a <code>last_put_at</code> within the last 30 seconds</li>
+<li><code>ZoneJanitor</code> GenServer culls rows where <code>last_put_at</code> is older than the staleness window; it does not use Phoenix’s own heartbeat as a liveness signal</li>
 <li><code>ZoneChannel</code> — clients subscribe to <code>zone:{id}</code> to receive asset delivery URLs as they become available</li>
 </ul>
 </section>
@@ -362,10 +362,12 @@ client (Godot) — receives desync index URL on join</code></pre>
 <h3 class="anchored" data-anchor-id="asset-delivery-desync">Asset delivery (desync)</h3>
 <p>Assets are uploaded to zone-backend, baked into casync <code>.caibx</code> chunk archives, and stored via the storage backend. The <code>baked_url</code> field on a <code>SharedFile</code> record is the index URL a client or zone server uses to reassemble the asset from chunks.</p>
 <p><code>CMD_INSTANCE_ASSET</code> (opcode 0x04, 100-byte binary packet) instructs the authority zone to fetch the manifest, allocate an entity slot, and broadcast the instance to neighbouring zones.</p>
+<p>A benchmark comparing casync desync, zchunk (HTTP-compatible, zstd-compressed, no custom chunk server required), and a plain CDN delta for a representative Godot export is pending. The result will determine the default delivery path.</p>
 </section>
 <section id="permissions-rebac" class="level3">
 <h3 class="anchored" data-anchor-id="permissions-rebac">Permissions (ReBAC)</h3>
 <p>Upload permissions are checked via a relationship-based access control graph (<code>taskweft</code>, a C++20 NIF). Membership edges (<code>IS_MEMBER_OF</code>) are built per-request from the <code>UserPrivilegeRuleset</code> record and evaluated with <code>check_rel/4</code>. No permission data is stored in the graph between requests.</p>
+<p>ReBAC is an upload-time and join-time check only. Per-tick access decisions (proximity culling, combat) use a local cache derived from the graph at join time, invalidated on explicit graph mutations. No live <code>taskweft</code> query is issued from the physics loop.</p>
 </section>
 </section>
 <section id="persistence" class="level2">
@@ -377,7 +379,8 @@ client (Godot) — receives desync index URL on join</code></pre>
 <section id="deployment" class="level2">
 <h2 class="anchored" data-anchor-id="deployment">Deployment</h2>
 <p>The reference deployment uses Docker Compose (<code>multiplayer-fabric-hosting</code>). Zone servers register with zone-backend at startup. Zone-backend and zone servers communicate only via HTTP and ENet; no shared database is required between them.</p>
-<p>Cloudflare proxying must be disabled for zone server hostnames — QUIC/UDP cannot be proxied. The zone server’s self-signed TLS certificate fingerprint (<code>cert_hash</code>) is stored in the zone registry and pinned by clients; no certificate authority is needed.</p>
+<p>Cloudflare proxying is currently disabled for zone server hostnames because QUIC/UDP cannot be proxied by the standard Cloudflare path. Cloudflare’s MASQUE-based proxy mode (2025) may pass UDP datagrams transparently; compatibility with zone server QUIC datagrams is under evaluation. The zone server’s self-signed TLS certificate fingerprint (<code>cert_hash</code>) is stored in the zone registry and pinned by clients; no certificate authority is needed.</p>
+<p>The WebSocket transport path in <code>FabricMMOGTransportPeer</code> is a first-class transport. iOS Safari clients use this path. It receives the same test coverage and feature access as the WebTransport path.</p>
 </section>
 <section id="what-is-not-decided-here" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-not-decided-here">What Is Not Decided Here</h2>
