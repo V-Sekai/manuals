@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.37</generator>
-<lastBuildDate>Wed, 22 Apr 2026 05:57:05 GMT</lastBuildDate>
+<lastBuildDate>Wed, 22 Apr 2026 06:02:22 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -82,7 +82,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Wed, 22 Apr 2026 05:57:05 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -164,7 +164,263 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-registration-and-discovery.html</guid>
-  <pubDate>Wed, 22 Apr 2026 05:57:05 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260421-zone-grouping.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="zone-grouping" class="level1">
+<h1>Zone Grouping</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>Zones register independently with zone-backend and appear in a flat list on <code>GET /shards</code>. Each zone has a <code>name</code> and a <code>map</code> but no mechanism to declare membership in a named region, cluster, or event. Clients receive all live zones undifferentiated.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Clients and operators cannot filter or route to a subset of zones that belong together. A set of zones serving the same world region, event, or logical cluster cannot be discovered as a unit without out-of-band coordination.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>Add an optional <code>tags</code> column (string array) to the <code>zones</code> table:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">ALTER</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">TABLE</span> zones <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">ADD</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">COLUMN</span> tags TEXT[] <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">NOT</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">NULL</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">DEFAULT</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'{}'</span>;</span></code></pre></div></div>
+<p>Zone servers pass tags at registration and heartbeat:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">PUT</span> <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">/shards/:id</span></span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"shard"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"tags"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"vketspring2026"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hall-a"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div></div>
+<p><code>GET /shards</code> accepts an optional <code>tags</code> query parameter. When provided, zone-backend filters to zones whose tag array intersects the requested set:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb3-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> list_fresh_zones<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span>tags \\ <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[]</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">do</span></span>
+<span id="cb3-2">  stale_timestamp <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">DateTime</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>add<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">DateTime</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>utc_now<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">()</span>, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>zone_freshness_time_in_seconds<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">()</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:second</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb3-3">  base <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> from z <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Zone</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">where:</span> z<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>last_put_at <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span>stale_timestamp, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">preload:</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:user</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span></span>
+<span id="cb3-4">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> tags <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[]</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">do</span></span>
+<span id="cb3-5">    <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Repo</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>all<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span>base<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb3-6">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span></span>
+<span id="cb3-7">    <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Repo</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>all<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span>from z <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> base, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">where:</span> fragment<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"? &amp;&amp; ?"</span>, z<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>tags, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span>tags<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">))</span></span>
+<span id="cb3-8">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">end</span></span>
+<span id="cb3-9"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">end</span></span></code></pre></div></div>
+<p>Tags are free-form strings. Zone-backend applies no semantics — grouping, hierarchy, and naming conventions are left to the operator. A zone may carry multiple tags.</p>
+<p>Tags are included in the <code>GET /shards</code> response alongside existing fields so clients can render group membership without a second request.</p>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>Tags mirror the pattern already used on <code>SharedFile</code> (same column type, same operator convention). No new infrastructure is required. Filtering is a single array-intersection query on an indexed column. Operators can define arbitrary groupings without schema changes.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>Tags are strings with no validation or enumeration. A typo in a tag silently produces an empty filter result. No enforcement prevents tag collision across unrelated operators on a shared instance.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>A <code>parent_zone_id</code> foreign key enforces a strict hierarchy (exactly one parent per zone) but cannot express overlapping membership (a zone belonging to both a region and an event). A separate <code>zone_groups</code> join table normalises the many-to-many case but adds a join on every read path and complexity on writes. The tags array covers the common cases without either constraint.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>A zone that belongs to no group omits <code>tags</code> from its registration payload. Zone-backend stores an empty array. <code>GET /shards</code> without a <code>tags</code> filter returns it alongside grouped zones, preserving the current flat-list behaviour.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<ul>
+<li>Migration: add <code>tags TEXT[]</code> to <code>zones</code></li>
+<li><code>Uro.VSekai.Zone</code> — add <code>field(:tags, {:array, :string}, default: [])</code></li>
+<li><code>Zone.changeset/2</code> — cast <code>tags</code></li>
+<li><code>Uro.VSekai.list_fresh_zones/1</code> — accept optional <code>tags</code> filter</li>
+<li><code>Uro.ZoneController.index/2</code> — pass <code>tags</code> query param to context function</li>
+<li><code>Zone.to_json_schema/1</code> — include <code>tags</code> in serialised response</li>
+</ul>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>Zone, Grouping, Tags, Discovery, Filter, Registration</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><code>20260421-zone-registration-and-discovery.md</code> — base registration design</li>
+<li><code>20260421-zone-asset-manifest.md</code> — per-zone asset listing</li>
+<li><code>multiplayer-fabric-zone-backend/lib/uro/v_sekai/zone.ex</code></li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-grouping.html</guid>
+  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -311,7 +567,285 @@ theorem aoiBand_width_bound ... :
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-border-handoff.html</guid>
-  <pubDate>Wed, 22 Apr 2026 05:57:05 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260421-zone-asset-manifest.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="zone-asset-manifest" class="level1">
+<h1>Zone Asset Manifest</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p><code>GET /shards</code> returns zone connection metadata: <code>address</code>, <code>port</code>, <code>cert_hash</code>, and <code>desync_index_url</code>. Clients have no way to discover which SharedFiles are hosted at a zone without first opening a WebTransport or WebSocket connection to it.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Discovery requires a live connection. Clients cannot make pre-connection routing or interest decisions based on zone content. A client that wants to find zones containing a specific asset type must connect to each candidate zone in turn.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>Add a read-only endpoint <code>GET /shards/:id/assets</code>. This requires <code>20260421-asset-zone-locality.md</code> to be implemented first (SharedFile must carry a <code>zone_id</code>).</p>
+<p>Response shape:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-2">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"data"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-3">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"assets"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span></span>
+<span id="cb1-4">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-5">        <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"id"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"550e8400-e29b-41d4-a716-446655440000"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-6">        <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"name"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"KitsuneAvatarV2"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-7">        <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"mime_type"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"model/gltf-binary"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-8">        <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"baked_url"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://versitygw.example.com/chunks/abc123.caidx"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-9">        <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"tags"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"avatar"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"vrm"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-10">        <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"is_public"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">true</span></span>
+<span id="cb1-11">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-12">    <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span></span>
+<span id="cb1-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-14"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div></div>
+<p>Only assets with a non-null <code>baked_url</code> are returned — assets still in the baking pipeline are not surfaced. No authentication is required for assets where <code>is_public</code> is true.</p>
+<p>Context function:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Uro.VSekai</span></span>
+<span id="cb2-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> list_zone_assets<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span>zone_id<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">do</span></span>
+<span id="cb2-3">  <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">SharedFile</span></span>
+<span id="cb2-4">  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> where<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span>f<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span>, f<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>zone_id <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span>zone_id <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">and</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">not</span> is_nil<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span>f<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>baked_url<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">and</span> f<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>is_public <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">true</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb2-5">  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> select<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span>f<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span>, <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:id</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:name</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:mime_type</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:baked_url</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:tags</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb2-6">  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Repo</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>all<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">()</span></span>
+<span id="cb2-7"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">end</span></span></code></pre></div></div>
+<p>The existing <code>GET /shards</code> response is unchanged. No existing client breaks.</p>
+<p>Route addition in <code>router.ex</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb3-1">get <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"/shards/:id/assets"</span>, <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">ZoneController</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:assets</span></span></code></pre></div></div>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>Clients can filter and rank zones by content before connecting. The endpoint is stateless and cacheable. No new data model is required beyond the <code>zone_id</code> FK on SharedFile.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>The asset list reflects the state at query time. A zone that adds an asset between a client’s manifest fetch and its connection will not surface that asset in the cached response. Polling or the <code>zone_updated</code> WebSocket event covers this.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>Embedding the asset list directly in <code>GET /shards</code> would return it for all zones in a single request but multiplies payload size with the number of assets per zone. Clients interested in only connection metadata pay the full asset enumeration cost. A separate endpoint keeps the two concerns independent.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>A zone with no baked assets returns <code>"assets": []</code>. A zone whose assets are all private (<code>is_public: false</code>) also returns an empty list to unauthenticated clients. Authenticated requests with sufficient ReBAC permission return private assets; this gating is deferred to a follow-on decision.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<ul>
+<li><code>Uro.VSekai.list_zone_assets/1</code> — query SharedFile by zone_id and baked_url</li>
+<li><code>Uro.ZoneController.assets/2</code> — new action</li>
+<li><code>router.ex</code> — new route</li>
+<li>Requires <code>20260421-asset-zone-locality.md</code></li>
+</ul>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>Zone, Asset, Manifest, Discovery, API, SharedFile</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><code>20260421-asset-zone-locality.md</code> — zone_id FK prerequisite</li>
+<li><code>20260421-zone-registration-and-discovery.md</code> — base zone API</li>
+<li><code>20260421-content-addressed-asset-delivery.md</code> — baked_url pipeline</li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-asset-manifest.html</guid>
+  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -444,7 +978,175 @@ font-style: inherit;">note</span>         = {Baseline 2026: newly available acro
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-webtransport-zone-transport.html</guid>
-  <pubDate>Wed, 22 Apr 2026 05:57:05 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260421-websocket-transport-parity.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="websocket-transport-parity-under-load" class="level1">
+<h1>WebSocket Transport Parity Under Load</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p><code>FabricMMOGTransportPeer</code> connects via WebTransport (QUIC) first and transitions to <code>STATE_TRYING_WS</code> if WebTransport is unavailable. Over WebSocket (TCP), <code>CH_INTEREST</code> and <code>CH_PLAYER</code> lose their unreliable semantics: stale entity snapshots queue rather than being discarded. The <code>frame_channels = true</code> mode is required over WebSocket to multiplex logical channels over a single TCP stream. Desktop clients and iOS Safari clients use this path.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>The back-pressure behaviour of the WebSocket path under network congestion is undocumented and untested at simulation scale. Queued stale snapshots consume bandwidth and introduce head-of-line blocking. The magnitude of the latency difference between the WT and WS paths at p95 under realistic conditions is unknown.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>Define a reproducible load test:</p>
+<p><strong>Environment</strong> - 100 simulated clients, 50 on WebTransport (control), 50 on WebSocket (test) - Zone with 1,800 entity slots at 50% occupancy (900 active entities) - Network condition: 20% added packet delay (uniform 50 ms), 1% packet loss (WT only; TCP masks loss) - Tick rate: 20 Hz (default), snapshot broadcast per tick</p>
+<p><strong>Metrics</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Measurement method</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Round-trip time (p50, p95, p99)</td>
+<td>Echo packet timestamps per client</td>
+</tr>
+<tr class="even">
+<td>CH_INTEREST queue depth</td>
+<td>Zone server counter, sampled per tick</td>
+</tr>
+<tr class="odd">
+<td>Snapshot staleness</td>
+<td>Age of the most recent applied snapshot per client</td>
+</tr>
+<tr class="even">
+<td>Session survival at 5 minutes</td>
+<td>Count of clients still connected</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Acceptance threshold</strong></p>
+<p>WebSocket p95 round-trip ≤ 2× WebTransport p95 round-trip at steady state.</p>
+<p><strong>If threshold is not met</strong></p>
+<p>Implement snapshot dropping at the zone server before enqueue on TCP connections: if a newer snapshot for the same entity is already queued for a peer, discard the older one. This restores the “drop stale” semantic that QUIC datagrams provide natively.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// In FabricMMOGZone::_broadcast_interest_snapshot()</span></span>
+<span id="cb1-2"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>_ws_peer_snapshot_queued<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span>p_peer_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">][</span>entity_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">])</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-3">    _dequeue_entity_snapshot<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>p_peer_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> entity_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">);</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// drop stale</span></span>
+<span id="cb1-4"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-5">_enqueue_entity_snapshot<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>p_peer_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> entity_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> snapshot<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">);</span></span>
+<span id="cb1-6">_ws_peer_snapshot_queued<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span>p_peer_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">][</span>entity_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">]</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span></code></pre></div></div>
+<p>Write results to <code>manuals/decisions/attachments/websocket-parity-test-results.csv</code>. If the threshold is met, the WS path is declared production-ready for the primary desktop audience. If not, the dropping mechanism above is merged before the WS path is promoted.</p>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>The test produces a quantified answer to an open question about the primary client path. If the threshold is met, no code change is required. If not, the dropping fix is small and targeted.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>Simulated clients do not replicate real heterogeneous network conditions. The 2× threshold is a judgement call; a stricter threshold (1.5×) would require the dropping mechanism even if the current path performs acceptably in practice.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>Switching the WS path to WebRTC data channels would restore unreliable semantics over UDP without requiring QUIC. WebRTC introduces ICE negotiation complexity and is not available in all WebSocket-only environments (e.g.&nbsp;restricted corporate networks where only TCP/443 is open). The frame_channels TCP path is more universally available.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>A client on a very low-bandwidth link (mobile data, throttled) will see queue growth regardless of transport. Rate-limiting snapshot frequency per-peer (adaptive tick rate) is a separate mitigation not covered here.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<ul>
+<li>Load test harness: <code>multiplayer-fabric-zone-console/bench/ws_parity_test.exs</code></li>
+<li>Results file: <code>manuals/decisions/attachments/websocket-parity-test-results.csv</code></li>
+<li>Conditional: snapshot dropping in <code>fabric_mmog_zone.cpp</code> if threshold not met</li>
+</ul>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>WebSocket, WebTransport, TCP, Parity, Benchmark, CH_INTEREST, Snapshot, BackPressure, Desktop</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><code>20260421-webtransport-zone-transport.md</code> — base transport design</li>
+<li><code>multiplayer-fabric-godot/modules/multiplayer_fabric_mmog/fabric_mmog_transport_peer.h</code> — STATE_TRYING_WS</li>
+<li><code>multiplayer-fabric-godot/modules/multiplayer_fabric/fabric_multiplayer_peer.h</code> — frame_channels mode</li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260421-websocket-transport-parity.html</guid>
+  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -562,7 +1264,404 @@ font-style: inherit;">BLOB</span>, slot_count, ts)</span></code></pre></div></di
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-sqlite-per-zone-journal.html</guid>
-  <pubDate>Wed, 22 Apr 2026 05:57:05 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260421-rebac-zone-server-enforcement.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="rebac-enforcement-in-the-zone-server" class="level1">
+<h1>ReBAC Enforcement in the Zone Server</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>The zone architecture specifies that <code>CMD_INSTANCE_ASSET</code> is owner-only and that <code>observe</code> is public. The zone controller documentation states: <code>"modify" =&gt; "owner only — only the uploader may instance their own asset"</code>. The C++ implementation in <code>fabric_mmog_zone.cpp::_on_cmd_instance_asset()</code> does not call <code>check_rel</code> before allocating a slot.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>The documentation and the code are inconsistent. Any connected player can instance any asset regardless of ownership. The enforcement gap exists at two boundaries: zone join (no <code>CAN_ENTER</code> check) and <code>CMD_INSTANCE_ASSET</code> (no <code>CAN_INSTANCE</code> check).</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="zone-join-peer-connect" class="level3">
+<h3 class="anchored" data-anchor-id="zone-join-peer-connect">Zone join (peer connect)</h3>
+<p>In <code>FabricMMOGZone::_on_peer_connected(int p_peer_id)</code>, before the peer is admitted to the simulation:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1">String graph_json <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> _fetch_rebac_graph<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>p_peer_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">);</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// HTTP GET /rebac/graph?player=p_peer_id&amp;zone=_zone_id</span></span>
+<span id="cb1-2"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">bool</span> can_enter <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Taskweft<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>check_rel<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>graph_json<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> p_peer_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"CAN_ENTER"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> _zone_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">);</span></span>
+<span id="cb1-3"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(!</span>can_enter<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-4">    disconnect_peer<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>p_peer_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/* force= */</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">);</span></span>
+<span id="cb1-5">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb1-6"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-7">_player_graphs<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span>p_peer_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">]</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> graph_json<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// cache for duration of session</span></span></code></pre></div></div>
+<p>The graph is fetched once at join time and stored in <code>_player_graphs</code> (a per-zone map). It is invalidated when the zone server receives an explicit <code>CMD_INVALIDATE_PERMISSIONS</code> packet or when the peer disconnects.</p>
+</section>
+<section id="cmd_instance_asset-slot-allocation" class="level3">
+<h3 class="anchored" data-anchor-id="cmd_instance_asset-slot-allocation">CMD_INSTANCE_ASSET (slot allocation)</h3>
+<p>In <code>FabricMMOGZone::_on_cmd_instance_asset()</code>, before <code>_allocate_entity_slot()</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">const</span> String <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&amp;</span>graph_json <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> _player_graphs<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span>p_player_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">];</span></span>
+<span id="cb2-2"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">bool</span> can_instance <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Taskweft<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>check_rel<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>graph_json<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> p_player_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"CAN_INSTANCE"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> asset_id_str<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">);</span></span>
+<span id="cb2-3"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(!</span>can_instance<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb2-4">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// silently discard; no slot allocated</span></span>
+<span id="cb2-5"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb2-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// existing allocation logic follows</span></span></code></pre></div></div>
+<p><code>Taskweft::check_rel</code> is a C++ wrapper around the existing NIF call; no BEAM round-trip occurs on the zone server — the zone server calls the shared library directly.</p>
+</section>
+<section id="per-tick-constraint" class="level3">
+<h3 class="anchored" data-anchor-id="per-tick-constraint">Per-tick constraint</h3>
+<p>No ReBAC call is issued from the physics loop. The cached graph in <code>_player_graphs</code> is the only permitted access point during simulation. Live <code>taskweft</code> queries from the physics loop are prohibited (see <code>20260421-rebac-permissions.md</code>).</p>
+</section>
+<section id="graph-invalidation" class="level3">
+<h3 class="anchored" data-anchor-id="graph-invalidation">Graph invalidation</h3>
+<p>Zone-backend broadcasts <code>CMD_INVALIDATE_PERMISSIONS</code> on the zone’s Phoenix Channel when a <code>UserPrivilegeRuleset</code> changes. The zone server evicts the affected player’s graph entry; the next per-action check triggers a re-fetch.</p>
+</section>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>Enforcement is local to the authority zone with no per-tick cost. The graph cache eliminates repeated HTTP calls for the same player within a session. The join-time check is the natural enforcement point: a player who cannot enter never reaches <code>CMD_INSTANCE_ASSET</code>.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>The graph cache can be stale for the window between a permission revocation and the <code>CMD_INVALIDATE_PERMISSIONS</code> delivery. This is the “New Enemy Problem” inherent to distributed ReBAC — no synchronous distributed solution exists at game tick frequency.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>A per-packet signature from zone-backend (capability token) would eliminate the staleness window but requires a cryptographic verify on every <code>CMD_INSTANCE_ASSET</code> call. At 20 Hz and up to 1,800 entities this is acceptable, but the token distribution mechanism adds complexity. The graph-cache approach matches what <code>taskweft</code> already does for upload permissions.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>A player whose permissions change mid-session (e.g.&nbsp;removed from a group by an admin) retains their cached graph until <code>CMD_INVALIDATE_PERMISSIONS</code> is delivered. If the Phoenix Channel message is delayed, the window of incorrect access extends. For destructive operations (<code>modify</code>) this is acceptable risk; for <code>observe</code> the public default means no incorrect denial occurs.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<ul>
+<li><code>multiplayer-fabric-godot/modules/multiplayer_fabric_mmog/fabric_mmog_zone.cpp</code>
+<ul>
+<li><code>_on_peer_connected()</code> — add <code>CAN_ENTER</code> check and graph cache</li>
+<li><code>_on_cmd_instance_asset()</code> — add <code>CAN_INSTANCE</code> check before slot allocation</li>
+</ul></li>
+<li><code>multiplayer-fabric-godot/modules/multiplayer_fabric_mmog/fabric_mmog_zone.h</code>
+<ul>
+<li><code>_player_graphs</code> — <code>HashMap&lt;int, String&gt;</code> session cache</li>
+</ul></li>
+<li><code>multiplayer-fabric-zone-backend</code> — <code>CMD_INVALIDATE_PERMISSIONS</code> broadcast on ruleset change</li>
+</ul>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>ReBAC, Enforcement, ZoneServer, C++, CAN_ENTER, CAN_INSTANCE, taskweft, PermissionsCache</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><code>20260421-rebac-permissions.md</code> — base ReBAC design and per-tick doctrine</li>
+<li><code>20260421-rebac-zone-relations.md</code> — CAN_ENTER and CAN_INSTANCE relation definitions</li>
+<li><code>multiplayer-fabric-godot/modules/multiplayer_fabric_mmog/fabric_mmog_zone.cpp</code></li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260421-rebac-zone-server-enforcement.html</guid>
+  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260421-rebac-zone-relations.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="rebac-zone-entry-and-asset-instancing-relations" class="level1">
+<h1>ReBAC Zone Entry and Asset Instancing Relations</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>The existing ReBAC system (<code>taskweft</code>) defines seven base relation types: <code>HAS_CAPABILITY</code>, <code>CONTROLS</code>, <code>OWNS</code>, <code>IS_MEMBER_OF</code>, <code>DELEGATED_TO</code>, <code>SUPERVISOR_OF</code>, <code>PARTNER_OF</code>. The Lean specification in <code>ReBAC.lean</code> defines action tiers (<code>observe</code>, <code>interact</code>, <code>modify</code>) and relation ranks. Zone entry and per-asset instancing require two additional relations not yet present.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>The zone server has no predicate to check when a player connects to a zone or sends <code>CMD_INSTANCE_ASSET</code>. Without named relations for these two decisions, <code>check_rel/4</code> cannot be called with a meaningful predicate, and the existing relation set cannot be mapped to the required access decisions.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>Add two relation types to the valid set in <code>taskweft/rebac.ex</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># existing</span></span>
+<span id="cb1-2"><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">@valid_relations</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>w<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">HAS_CAPABILITY</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">CONTROLS</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">OWNS</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">IS_MEMBER_OF</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">DELEGATED_TO</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">SUPERVISOR_OF</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">PARTNER_OF</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span></span>
+<span id="cb1-3"></span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># proposed additions</span></span>
+<span id="cb1-5"><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">@valid_relations</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">@valid_relations</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">++</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>w<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">CAN_ENTER</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">CAN_INSTANCE</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span></span></code></pre></div></div>
+<p><strong>CAN_ENTER</strong> — checked at zone join time (when a peer connects to a zone server).</p>
+<p>Default graph edges built per-request:</p>
+<pre><code>zone_owner -[OWNS]-&gt; zone
+player     -[CAN_ENTER]-&gt; zone   # derived: OWNS implies CAN_ENTER</code></pre>
+<p>Public zones have an implicit <code>*</code> subject that grants <code>CAN_ENTER</code> to any player. Restricted zones omit this edge; only players with an explicit edge or a chain through <code>OWNS</code>/<code>IS_MEMBER_OF</code> may enter.</p>
+<p><strong>CAN_INSTANCE</strong> — checked at <code>CMD_INSTANCE_ASSET</code> time by the authority zone before slot allocation.</p>
+<pre><code>uploader -[OWNS]-&gt; asset
+player   -[CAN_INSTANCE]-&gt; asset   # derived from OWNS</code></pre>
+<p>The graph is rebuilt per-request from <code>UserPrivilegeRuleset</code> at join time, consistent with the existing per-request pattern. No graph state persists between requests.</p>
+<p>Zone server C++ call sites (see <code>20260421-rebac-zone-server-enforcement.md</code>):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// At peer join</span></span>
+<span id="cb4-2">check_rel<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>graph_json<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> player_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"CAN_ENTER"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> zone_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb4-3"></span>
+<span id="cb4-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// At CMD_INSTANCE_ASSET before slot allocation</span></span>
+<span id="cb4-5">check_rel<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>graph_json<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> player_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"CAN_INSTANCE"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> asset_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span></span></code></pre></div></div>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>The two new relations map cleanly onto existing <code>check_rel/4</code> call convention. No new graph traversal semantics are needed — both are simple base relation checks. The default edges (public zone = open entry, uploader = can instance) preserve current behaviour while enabling restriction.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>Adding relation types to the valid set requires updating the PropCheck suite in <code>taskweft</code> to cover the new predicates. The 93 existing properties cover path existence, absence, cycles, and transitivity; <code>CAN_ENTER</code> and <code>CAN_INSTANCE</code> need equivalent coverage.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>Reusing <code>OWNS</code> as the instancing predicate (<code>check_rel(graph, player, "OWNS", asset)</code>) would work for owner-only assets but cannot express “any member of this group may instance this asset” without adding group-to-asset ownership edges. <code>CAN_INSTANCE</code> is more expressive and does not conflate ownership with permission.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>An asset owned by a group (<code>group -[OWNS]-&gt; asset</code>) rather than a user requires a chain: <code>player -[IS_MEMBER_OF]-&gt; group -[OWNS]-&gt; asset</code>. <code>check_rel</code> follows this chain with <code>tuple_to_userset</code> expansion. The <code>fuel</code> parameter (default 8) limits depth; group chains deeper than 8 require increasing the fuel value.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<ul>
+<li><code>multiplayer-fabric-taskweft/lib/taskweft/rebac.ex</code> — add <code>CAN_ENTER</code>, <code>CAN_INSTANCE</code> to valid set</li>
+<li>PropCheck suite — add properties for both new relation types</li>
+<li><code>Uro.VSekai.check_upload_permission/2</code> — extend to build <code>CAN_INSTANCE</code> edges</li>
+</ul>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>ReBAC, taskweft, CAN_ENTER, CAN_INSTANCE, Relations, Permissions, Zone, Asset</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><code>20260421-rebac-permissions.md</code> — base ReBAC design</li>
+<li><code>20260421-rebac-zone-server-enforcement.md</code> — call sites in C++ zone server</li>
+<li><code>multiplayer-fabric-taskweft/lib/taskweft/rebac.ex</code></li>
+<li><code>multiplayer-fabric-predictive-bvh/PredictiveBVH/Relativistic/ReBAC.lean</code></li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260421-rebac-zone-relations.html</guid>
+  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -697,7 +1796,7 @@ theorem non_authority_cannot_bind_mutation :
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-rebac-permissions.html</guid>
-  <pubDate>Wed, 22 Apr 2026 05:57:05 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -956,7 +2055,7 @@ font-style: inherit;">note</span>         = {Over 1.1 million users on a desktop
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-product-virtual-creator-market.html</guid>
-  <pubDate>Wed, 22 Apr 2026 05:57:05 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1062,7 +2161,7 @@ client (Godot) — receives desync index URL on join</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-multiplayer-fabric-zone-architecture.html</guid>
-  <pubDate>Wed, 22 Apr 2026 05:57:05 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1146,7 +2245,311 @@ client receives desync_index_url → fetches .caibx index → fetches only missi
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-content-addressed-asset-delivery.html</guid>
-  <pubDate>Wed, 22 Apr 2026 05:57:05 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260421-asset-zone-locality.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="asset-zone-locality" class="level1">
+<h1>Asset Zone Locality</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>SharedFile records are uploaded by a user, baked into casync chunks, and referenced by <code>baked_url</code>. The zone server that will serve an entity is the Hilbert-authority for the entity’s position. There is currently no explicit link between a SharedFile and the zone responsible for it.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Without a <code>zone_id</code> on <code>shared_files</code>, a zone cannot enumerate the assets it owns. On restart, a zone must re-derive its asset set from <code>CMD_INSTANCE_ASSET</code> history rather than querying its own records. <code>GET /shards</code> returns connection metadata but not the assets associated with a zone, so clients cannot make pre-connection routing decisions.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>Add an optional <code>zone_id</code> foreign key to <code>shared_files</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">ALTER</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">TABLE</span> shared_files</span>
+<span id="cb1-2">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">ADD</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">COLUMN</span> zone_id UUID <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">REFERENCES</span> zones(<span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">id</span>) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">ON</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">DELETE</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">SET</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">NULL</span>;</span></code></pre></div></div>
+<p>The column is nullable. Assets uploaded without a zone association remain valid and are accessible to any zone by asset UUID. When a zone server processes <code>CMD_INSTANCE_ASSET</code> and the asset has no <code>zone_id</code>, the authority zone stamps its own <code>id</code> onto the record.</p>
+<p>Zone schema gains a logical reverse association:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Uro.VSekai.Zone</span></span>
+<span id="cb2-2">has_many <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:shared_files</span>, <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Uro</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">SharedContent</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">SharedFile</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">foreign_key:</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">:zone_id</span></span></code></pre></div></div>
+<p>The zone-backend context gains a lookup:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb3-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> list_zone_assets<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span>zone_id<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">)</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">do</span></span>
+<span id="cb3-2">  <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">SharedFile</span></span>
+<span id="cb3-3">  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> where<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span>f<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span>, f<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>zone_id <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span>zone_id <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">and</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">not</span> is_nil<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">(</span>f<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>baked_url<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">))</span></span>
+<span id="cb3-4">  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Repo</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>all<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">()</span></span>
+<span id="cb3-5"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">end</span></span></code></pre></div></div>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>A zone can enumerate its own assets without replaying history. Zone restart recovery is deterministic: load the snapshot, then query <code>list_zone_assets/1</code> to confirm which assets are already baked. The foreign key enables <code>GET /shards/:id/assets</code> (see <code>20260421-zone-asset-manifest.md</code>).</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>Assets shared across zones (the same avatar instanced in multiple zones) have at most one <code>zone_id</code>. Cross-zone asset sharing still works by asset UUID; the <code>zone_id</code> field records origin, not exclusivity.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>A join table (<code>zone_assets</code>) normalises the many-to-many case but adds a join on every read path and complexity on every write. A nullable foreign key on <code>shared_files</code> covers the common case (one asset, one origin zone) without that overhead.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>An asset uploaded directly via the REST API without a zone context has a null <code>zone_id</code>. It remains addressable by UUID and is baked and chunked normally. Any zone can instance it via <code>CMD_INSTANCE_ASSET</code>.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<ul>
+<li>Migration: add <code>zone_id</code> to <code>shared_files</code></li>
+<li><code>Uro.SharedContent.SharedFile</code> — add <code>belongs_to :zone</code></li>
+<li><code>Uro.VSekai.Zone</code> — add <code>has_many :shared_files</code></li>
+<li><code>Uro.VSekai.list_zone_assets/1</code> — query by zone_id</li>
+</ul>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>Asset, SharedFile, Zone, Locality, Migration, CasSync</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><code>20260421-zone-asset-manifest.md</code> — exposes zone assets via GET /shards/:id/assets</li>
+<li><code>20260421-content-addressed-asset-delivery.md</code> — casync baking pipeline</li>
+<li><code>multiplayer-fabric-zone-backend/lib/uro/shared_content/shared_file.ex</code></li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260421-asset-zone-locality.html</guid>
+  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260421-asset-delivery-benchmark.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="asset-delivery-stack-benchmark" class="level1">
+<h1>Asset Delivery Stack Benchmark</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p><code>multiplayer-fabric-desync</code> is a Go reimplementation of casync: content-defined chunking (SipHash rolling hash, 48-byte window, target 64 KB chunks), SHA-512/256 chunk IDs, and zstd compression. The <code>20260421-architecture-strategy-2026.md</code> document identifies zchunk as an alternative: HTTP range-request compatible, zstd-compressed, and deployable over a standard CDN without a custom chunk server. No benchmark comparing the two strategies exists. The delivery stack default is unsettled.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Content-defined chunking (CDC) benefits diminish for asset bundles where chunk boundaries do not align with file boundaries. Godot exports mix many small files (<code>.tres</code>, <code>.import</code>, <code>.translation</code>) with large ones (<code>.glb</code>, <code>.png</code>). Whether casync’s CDC parameters suit this layout, and whether zchunk’s simpler HTTP-range approach delivers competitive patch sizes, is unknown without measurement.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>Prepare a representative Godot export: a V-Sekai avatar and environment, approximately 500 MB, with a mix of file types matching a typical world export.</p>
+<p>Apply three delivery strategies:</p>
+<p><strong>Strategy A — casync desync (current)</strong> Chunk with the existing SipHash CDC parameters. Serve via <code>multiplayer-fabric-desync</code>. Measure using <code>desync make</code> + <code>desync extract</code>.</p>
+<p><strong>Strategy B — zchunk</strong> Chunk using <code>zck</code> with zstd compression. Serve over a plain HTTP server using byte-range requests. No custom chunk server required. Measure using <code>zck</code> + <code>unzck</code>.</p>
+<p><strong>Strategy C — CDN delta (baseline)</strong> Compute binary diffs between consecutive exports using <code>bsdiff</code>. Serve diffs over HTTP. Measure download size and apply time.</p>
+<p>Metrics for each strategy:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Method</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cold download time</td>
+<td>Fresh client, no local cache, 100 Mbps link</td>
+</tr>
+<tr class="even">
+<td>Patch size</td>
+<td>10% asset change (one avatar texture replaced)</td>
+</tr>
+<tr class="odd">
+<td>Server complexity</td>
+<td>Count of required services and configuration files</td>
+</tr>
+<tr class="even">
+<td>Client CPU on reassembly</td>
+<td>Time to extract on a 4-core laptop</td>
+</tr>
+</tbody>
+</table>
+<p>Write raw results to <code>manuals/decisions/attachments/asset-delivery-benchmark-results.csv</code>. Write the decision (which strategy becomes the default) as a follow-on ADR that supersedes this one.</p>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>The benchmark produces an evidence-based default rather than a best-guess. If zchunk wins on patch size and server simplicity, it removes the <code>aria-storage</code> deployment dependency entirely. If casync wins on cold download time, the current stack is confirmed.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>The benchmark requires a representative asset corpus and a controlled network environment. Results will not generalise beyond the tested file mix and link conditions. A single benchmark run is not a production load test.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>Adopting zchunk without a benchmark risks regressions for large assets where CDC’s chunk reuse across versions outperforms zchunk’s fixed-boundary approach. Adopting OCI layers (container registry-based delivery) adds infrastructure dependency not compatible with the homelab deployment target.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>Very small assets (under 16 KB) are smaller than one casync chunk and gain nothing from deduplication. Both casync and zchunk handle them correctly but wastefully. A size threshold below which assets are served directly (no chunking) is worth measuring separately.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<ul>
+<li>Benchmark harness script: <code>multiplayer-fabric-desync/bench/</code></li>
+<li>Results file: <code>manuals/decisions/attachments/asset-delivery-benchmark-results.csv</code></li>
+<li>Follow-on ADR to record the decision</li>
+</ul>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>casync, zchunk, Benchmark, AssetDelivery, CDN, desync, Performance</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><code>20260421-content-addressed-asset-delivery.md</code> — current casync design</li>
+<li><code>20260421-architecture-strategy-2026.md</code> — zchunk identified as alternative</li>
+<li><code>multiplayer-fabric-desync/</code> — Go casync reimplementation</li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260421-asset-delivery-benchmark.html</guid>
+  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1236,7 +2639,7 @@ client receives desync_index_url → fetches .caibx index → fetches only missi
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260128-reject-sql-based-feature-flagging.html</guid>
-  <pubDate>Wed, 22 Apr 2026 05:57:05 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1388,7 +2791,7 @@ Development Applications (V-Sekai, etc.)</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260128-hypervisor-selection-for-development-infrastructure.html</guid>
-  <pubDate>Wed, 22 Apr 2026 05:57:05 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1867,7 +3270,7 @@ font-style: inherit;">sudo</span> systemctl status cockroachdb.service</span></c
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250427-system-cockroachdb-setup.html</guid>
-  <pubDate>Wed, 22 Apr 2026 05:57:05 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2000,1205 +3403,7 @@ font-style: inherit;">sudo</span> systemctl status cockroachdb.service</span></c
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20250427-recommender-system.html</guid>
-  <pubDate>Wed, 22 Apr 2026 05:57:05 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20250427-backpack.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="superceded-by-20250427-recommender-system.md-phoenix-based-recommender-system-integration-using-pythonx" class="level1">
-<h1>Superceded by &lt;20250427-recommender-system.md&gt;: Phoenix-Based Recommender System Integration (Using Pythonx)</h1>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context"><strong>Context</strong></h2>
-<p>Godot Engine’s V-Sekai project requires a scalable recommendation system (200k+ user-items) with modern metadata handling. The current implementation does not exist. The decision to use standard Elixir Phoenix is driven by the fact that our backend (uro) is already implemented in Elixir, ensuring seamless integration and leveraging existing expertise. Integration with Python-based ML libraries like librecommender will be handled using pythonx.</p>
-<pre><code>┌────────────────────────────────────────────────────────────────────────────────┐
-│                V-Sekai Backpack (General Scene Processing)                     │
-├───────────────────────────┬───────────────────────────┬────────────────────────┤
-│      Scene Ingestion      │   Knowledge Integration   │    Model Serving       │
-│                           │                           │     (Pythonx/ONNX)     │
-│  [Oban.Job, Membrane]     │  [pythonx-&gt;librecommender]│  [object-detection]    │
-│                           │                           │  [keypoint-detection]  │
-│                           │                           │  [semantic             │
-│                           │                           │    segmentation]       │
-│                           │                           │  [image-to-image]      │
-│                           │                           │  [image-to-text]       │
-│                           │                           │  [text-to-speech]      │
-│                           │                           │  [speech-to-speech]    │
-│                           │                           │  [speech-to-text]      │
-│                           │                           │  [chain-of-thought]    │
-├───────────────────────────┼───────────────────────────┼────────────────────────┤
-│ - Godot Scene Upload      │ - JSON-LD Context Binding │ - Object Detection     │
-│ - Multi-Camera Processing │ - Object Ontology         │ - Keypoint Analysis    │
-│ - Oban Batch Insert       │ - librecommender ML       │ - Membrane Pipeline    │
-│ - Scene includes XMP      │   (via pythonx)           │                        │
-│   JSON-LD descriptions    │                           │                        │
-├───────────────────────────┴───────────────────────────┴────────────────────────┤
-│                          General Analysis Pipeline                             │
-│ ┌────────────────────────────────────────────────────────────────────────────┐ │
-│ │ Godot Client → [Oban.Worker] → Membrane Pipeline → [pythonx call] → CRDB   │ │
-│ │      │               │               │                   │                 │ │
-│ │      ▼               ▼               ▼                   ▼                 │ │
-│ │  Raw Scene     View Params     Keypoint Vectors     Object Detection       │ │
-│ │              (Membrane       (YOLO-NAS-POSE)      (RF-DETR +               │ │
-│ │               Filter)                               librecommender)        │ │
-│ └─────────────────────────────────┬─────────────────────┬────────────────────┘ │
-├───────────────────────────────────┼─────────────────────┼──────────────────────┤
-│          General Storage          │                     │                      │
-│ ┌───────────────────────┐ ┌───────┴───────┐ ┌───────────┴───────────┐          │
-│ │ Scene Metadata        │ │ Detection     │ │ Keypoint Graph        │          │
-│ │ ∘ Camera Calibration  │ │ Results       │ │ ∘ Vector Embeddings   │          │
-│ │ ∘ Oban Job States     │ │ ∘ JSON-LD     │ │ ∘ Kinematic Chains    │          │
-│ └──────────┬────────────┘ └───────┬───────┘ └───────────┬───────────┘          │
-│            │                      │                     │                      │
-│            └───────────┬──────────┴─────────┬───────────┘                      │
-├────────────────────────┼────────────────────┼──────────────────────────────────┤
-│       Analytics        │   Query Services   │         Integration              │
-│ ┌──────────────────────▼───────────┐ ┌──────▼─────────────┐ ┌────────────────┐ │
-│ │ Detection Metrics                │ │ Vector Similarity  │ │ Avatar         | |
-| |                                  | |                    | |   Control      │ │
-│ │ ∘ Oban Job Stats                 │ │ ∘ librecommender   │ │ ∘ Membrane     | |
-| | ∘ Membrane Throughput            | |   KNN Search       | |     Stream     │ │
-│ │ ∘ Oban web                       │ │     (via pythonx)  │ │ ∘ pythonx      | |
-| | ∘ Oban metrics                   | |                    | |     call       │ │
-│ └──────────────────────────────────┘ └────────────────────┘ └────────────────┘ │
-├────────────────────────────────────────────────────────────────────────────────┤
-│ Manages user authentication, authorization, and access control policies        │
-│ to ensure secure system interactions and data privacy compliance               │
-├────────────────────────────────────────────────────────────────────────────────┤
-│ Dynamically adjusts processing parameters based on environmental inputs        │
-│ and contextual awareness for optimal performance across variable conditions    │
-├────────────────────────────────────────────────────────────────────────────────┤
-│ Orchestrates allocation and prioritization of computational resources          │
-│ across distributed components to maintain quality-of-service objectives        │
-├────────────────────────────────────────────────────────────────────────────────┤
-│ Synchronizes data flows and task execution between pipeline stages             │
-│ through distributed scheduling and workflow management                         │
-├────────────────────────────────────────────────────────────────────────────────┤
-│ Implements self-contained processing modules with nested hierarchies           │
-│ for recursive task decomposition and scalable architecture                     │
-└────────────────────────────────────────────────────────────────────────────────┘</code></pre>
-</section>
-<section id="problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="problem-statement"><strong>Problem Statement</strong></h2>
-<ol type="1">
-<li>Scalability bottlenecks in Python-based recommendation serving when run standalone.</li>
-<li>Inefficient user/item bag management if handled purely in Elixir without optimized libraries.</li>
-<li>Missing JSON-LD attribute compatibility layer for recommendation metadata.</li>
-</ol>
-</section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution"><strong>Proposed Solution</strong></h2>
-<p>Implement standard Elixir Phoenix framework integrated with Python’s librecommender via the pythonx library, featuring:<br>
-<strong>Implementation Steps</strong>:</p>
-<ol type="1">
-<li>Create Phoenix context and schemas for recommendation entities.</li>
-<li>Implement Elixir functions that use pythonx to call librecommender’s bag operations and recommendation algorithms.</li>
-<li>Add JSON-LD context annotation layer within Phoenix/Ecto schemas.</li>
-<li>Support both item-item and user-item recommendation algorithms by calling the appropriate Python functions.</li>
-</ol>
-</section>
-<section id="implementation-plan" class="level2">
-<h2 class="anchored" data-anchor-id="implementation-plan"><strong>Implementation Plan</strong></h2>
-<ol type="1">
-<li><strong>Phase 1</strong>: Phoenix Core &amp; Pythonx Setup
-<ul>
-<li>Port uro entity relationships to Phoenix/Ecto schemas.</li>
-<li>Set up pythonx and configure the Python environment.</li>
-<li>Develop basic pythonx integration tests calling simple Python functions.</li>
-<li><strong>Stage 1</strong>: Implement Oban workers that directly call librecommender functions via pythonx for initial testing and simple workflows.</li>
-</ul></li>
-<li><strong>Phase 2</strong>: Recommender Bridge &amp; Membrane Integration
-<ul>
-<li>Implement the Elixir protocol/interface for calling librecommender’s core recommendation logic via pythonx.</li>
-<li>Map JSON-LD attributes within Ecto schemas or dedicated context modules.</li>
-<li><strong>Stage 2</strong>: Integrate pythonx calls within Membrane pipelines, potentially triggered by Oban jobs, for more complex, stream-based processing (e.g., analyzing scene data).</li>
-</ul></li>
-<li><strong>Validation</strong>:
-<ul>
-<li><strong>Success</strong>: &lt;500ms p99 inference latency for recommendation calls via pythonx.</li>
-<li><strong>Failure</strong>: &gt;5% data serialization errors between Elixir and Python OR significant performance degradation due to pythonx overhead compared to benchmarks.</li>
-</ul></li>
-</ol>
-</section>
-<section id="benefits" class="level2">
-<h2 class="anchored" data-anchor-id="benefits"><strong>Benefits</strong></h2>
-<ul>
-<li>Leverages Elixir’s concurrency for handling recommendation requests.</li>
-<li>Utilizes mature Python ML ecosystem (librecommender) without rewriting algorithms.</li>
-<li>Native Ecto/Phoenix metadata queries.</li>
-<li>Future-proofed for Fediverse integration.</li>
-</ul>
-</section>
-<section id="risks" class="level2">
-<h2 class="anchored" data-anchor-id="risks"><strong>Risks</strong></h2>
-<ol type="1">
-<li><strong>Elixir-Python Interop Overhead</strong>: Performance impact of data serialization/deserialization between BEAM and Python using pythonx.</li>
-<li><strong>Python’s GIL</strong>: Potential concurrency limitations within the Python process called by pythonx, although Elixir’s concurrency can manage multiple external calls.</li>
-<li><strong>Deployment Complexity</strong>: Managing both Elixir and Python environments/dependencies in deployment.</li>
-<li><strong>Error Handling</strong>: Robustly handling errors originating from the Python side within Elixir.</li>
-<li><strong>JSON-LD Namespace Collisions</strong>: Ensuring consistent JSON-LD context handling.</li>
-</ol>
-</section>
-<section id="alternatives-considered" class="level2">
-<h2 class="anchored" data-anchor-id="alternatives-considered"><strong>Alternatives Considered</strong></h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 18%">
-<col style="width: 37%">
-<col style="width: 44%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Option</th>
-<th style="text-align: left;">Pros</th>
-<th style="text-align: left;">Cons</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Pure Python</td>
-<td style="text-align: left;">Faster MVP, unified ML stack</td>
-<td style="text-align: left;">Limits backend scalability, concurrency</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Pure Elixir</td>
-<td style="text-align: left;">Simpler stack, BEAM concurrency</td>
-<td style="text-align: left;">Lacks optimized ML algos, requires rewrite</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Elixir + Rustler</td>
-<td style="text-align: left;">Potentially highest performance NIF</td>
-<td style="text-align: left;">Rust dev complexity, NIF maintenance</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="when-to-avoid" class="level2">
-<h2 class="anchored" data-anchor-id="when-to-avoid"><strong>When to Avoid</strong></h2>
-<p>Projects requiring simple recommendation needs (&lt;1k items), without complex backend orchestration needs, or where minimizing deployment complexity (avoiding Python runtime) is paramount.</p>
-</section>
-<section id="organizational-alignment" class="level2">
-<h2 class="anchored" data-anchor-id="organizational-alignment"><strong>Organizational Alignment</strong></h2>
-<p>Supports V-Sekai goals for UGC and fediverse interoperability by integrating advanced recommendations into the Elixir backend.</p>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags"><strong>Tags</strong></h2>
-<ul>
-<li>ML</li>
-<li>Backend</li>
-<li>High Priority</li>
-<li>Python Integration</li>
-</ul>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references"><strong>References</strong></h2>
-<ol type="1">
-<li><a href="https://www.phoenixframework.org/">Phoenix Framework</a></li>
-<li><a href="https://hexdocs.pm/pythonx/Pythonx.html">Pythonx Documentation</a></li>
-<li><a href="https://v-sekai.github.io/manuals/roadmap.html">V-Sekai Roadmap 2025</a></li>
-<li><a href="https://librecommender.readthedocs.io/en/latest/serving_guide/rust.html">Librecommender Serving Guide</a> (Note: We are using Python via pythonx, not the Rust serving directly)</li>
-<li><a href="https://arxiv.org/abs/1706.06978">Deep Interest Network for Click-Through Rate Prediction</a></li>
-<li><a href="https://hexdocs.pm/oban/Oban.html">Oban</a></li>
-<li><a href="https://membraneframework.org/">Membrane Framework</a></li>
-</ol>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20250427-backpack.html</guid>
-  <pubDate>Wed, 22 Apr 2026 05:57:05 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20250421-tailscale-funnel.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="accepted-tailscale-funnel-system-level-service" class="level1">
-<h1>Accepted: Tailscale Funnel (System-Level Service)</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>Exposing virtual machines (VMs) to external networks securely and efficiently is a common requirement in development and production environments. Tailscale Funnel provides a simple and secure way to expose services running on a VM to the internet using Tailscale’s mesh VPN and authentication features. By leveraging systemd, we can manage Tailscale Funnel as a system-level service for consistent and reliable operation.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Currently, exposing VMs to external networks often involves complex configurations, such as setting up reverse proxies, managing firewall rules, or configuring NAT. These methods can be error-prone and require significant manual effort. Tailscale Funnel simplifies this process but needs to be integrated as a system-level service for ease of use and reliability.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>We propose creating a systemd service unit file to manage Tailscale Funnel for exposing a specific port (e.g., 8888) on a VM. The service will ensure that Tailscale Funnel starts automatically on boot and restarts on failure. Below is the systemd unit file configuration:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb1-1"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">File: /etc/systemd/system/tailscale-funnel.service</span></span>
-<span id="cb1-2"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">[Unit]</span></span>
-<span id="cb1-3"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">Description</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">Tailscale Funnel for Port 8888</span></span>
-<span id="cb1-4"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">After</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">network.target tailscaled.service</span></span>
-<span id="cb1-5"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">Requires</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">tailscaled.service</span></span>
-<span id="cb1-6"></span>
-<span id="cb1-7"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">[Service]</span></span>
-<span id="cb1-8"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">Type</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">simple</span></span>
-<span id="cb1-9"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">ExecStart</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">/usr/bin/tailscale funnel 8888</span></span>
-<span id="cb1-10"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">Restart</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">on-failure</span></span>
-<span id="cb1-11"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">RestartSec</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">5s</span></span>
-<span id="cb1-12"></span>
-<span id="cb1-13"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">ExecStartPre</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">/bin/sleep 5</span></span>
-<span id="cb1-14"></span>
-<span id="cb1-15"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">[Install]</span></span>
-<span id="cb1-16"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">WantedBy</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">multi-user.target</span></span></code></pre></div></div>
-<p>Commands to enable and start the service:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> systemctl daemon-reload</span>
-<span id="cb2-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> systemctl enable <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--now</span> tailscale-funnel.service</span>
-<span id="cb2-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> systemctl status tailscale-funnel.service</span></code></pre></div></div>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<ul>
-<li>Simplifies the process of exposing VMs to external networks.</li>
-<li>Provides a secure and authenticated connection using Tailscale.</li>
-<li>Ensures reliability with systemd’s restart and dependency management features.</li>
-<li>Reduces manual configuration effort for developers and system administrators.</li>
-</ul>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<ul>
-<li>Requires Tailscale to be installed and configured on the VM.</li>
-<li>Limited to environments where Tailscale is supported.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<ul>
-<li>Using traditional methods like reverse proxies or NAT configurations, which are more complex and less secure.</li>
-<li>Developing a custom solution for exposing VMs, which would require significant effort and maintenance.</li>
-</ul>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<ul>
-<li>Scenarios where the VM does not have internet access or cannot run Tailscale.</li>
-<li>Environments with strict network policies that do not allow Tailscale connections.</li>
-</ul>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>This proposal is core to improving the development and deployment workflow for V-Sekai. The implementation will be handled by the V-Sekai development team.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai Development Team</li>
-<li>fire</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>Networking, Tailscale, Systemd, VM, Security</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://tailscale.com/kb/1132/tailscale-funnel/">Tailscale Funnel Documentation</a></li>
-<li><a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html">Systemd Service Unit Documentation</a></li>
-</ol>
-<hr>
-<section id="game-development-jargon" class="level3">
-<h3 class="anchored" data-anchor-id="game-development-jargon">Game Development Jargon</h3>
-<ol type="1">
-<li><strong>Tailscale</strong>: A mesh VPN service that simplifies secure networking between devices.</li>
-<li><strong>Systemd</strong>: A system and service manager for Linux operating systems.</li>
-<li><strong>Funnel</strong>: A Tailscale feature for exposing local services to the internet securely.</li>
-<li><strong>VM (Virtual Machine)</strong>: A software-based emulation of a physical computer.</li>
-</ol>
-
-
-</section>
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20250421-tailscale-funnel.html</guid>
-  <pubDate>Wed, 22 Apr 2026 05:57:05 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20250421-jupyter-notebook.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="accepted-jupyter-notebook-system-level-service" class="level1">
-<h1>Accepted: Jupyter Notebook (System-Level Service)</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>Running Jupyter Notebook as a system-level service ensures that it is always available and can be managed consistently using systemd. This is particularly useful for development environments where Jupyter Notebook is frequently used for data analysis, machine learning, or other tasks.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Manually starting Jupyter Notebook every time it is needed can be tedious and error-prone. Additionally, without a system-level service, there is no built-in mechanism to automatically restart the notebook server in case of failure or after a system reboot.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> dnf install <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-y</span> python3-notebook mathjax sscg python3-seaborn python3-lxml python3-basemap python3-scikit-image python3-scikit-learn python3-sympy python3-dask+dataframe python3-nltk</span>
-<span id="cb1-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mkdir</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-p</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$HOME</span>/.jupyter</span>
-<span id="cb1-3"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">jupyter</span> notebook password</span></code></pre></div></div>
-<p>We propose creating a systemd service unit file to manage Jupyter Notebook. The service will ensure that the notebook server starts automatically on boot, restarts on failure, and runs under a specified user account. Below is the systemd unit file configuration:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb2-1"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">File: /etc/systemd/system/jupyter-notebook.service</span></span>
-<span id="cb2-2"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">[Unit]</span></span>
-<span id="cb2-3"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">Description</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">Jupyter Notebook Service</span></span>
-<span id="cb2-4"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">After</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">network.target tailscale-funnel.service</span></span>
-<span id="cb2-5"></span>
-<span id="cb2-6"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">[Service]</span></span>
-<span id="cb2-7"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">User</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">&lt;username&gt;</span></span>
-<span id="cb2-8"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">ExecStart</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">/usr/bin/jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser</span></span>
-<span id="cb2-9"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">WorkingDirectory</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">/home/&lt;username&gt;/Documents/vsk-docker-python-notebook</span></span>
-<span id="cb2-10"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">Restart</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">always</span></span>
-<span id="cb2-11"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">RestartSec</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span></span>
-<span id="cb2-12"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">Environment</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">PYTHONUNBUFFERED=1</span></span>
-<span id="cb2-13"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">Environment</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"PATH=/home/&lt;username&gt;/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"</span></span>
-<span id="cb2-14"></span>
-<span id="cb2-15"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">[Install]</span></span>
-<span id="cb2-16"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">WantedBy</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">multi-user.target</span></span></code></pre></div></div>
-<p>Commands to enable and start the service:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> systemctl daemon-reload</span>
-<span id="cb3-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> systemctl enable <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--now</span> jupyter-notebook.service</span>
-<span id="cb3-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> systemctl status jupyter-notebook.service</span></code></pre></div></div>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<ul>
-<li>Automates the startup and management of Jupyter Notebook.</li>
-<li>Ensures the notebook server is always available after system reboots.</li>
-<li>Provides a consistent and reliable way to manage the notebook server using systemd.</li>
-</ul>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<ul>
-<li>Requires systemd, which is not available on all operating systems.</li>
-<li>The service must be configured with a specific user and working directory, which may require additional setup.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<ul>
-<li>Manually starting Jupyter Notebook each time it is needed.</li>
-<li>Using alternative tools or scripts to manage the notebook server, which may lack the robustness of systemd.</li>
-</ul>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<ul>
-<li>Scenarios where Jupyter Notebook is only needed occasionally and does not justify running as a persistent service.</li>
-<li>Environments where systemd is not available or supported.</li>
-</ul>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>This proposal is core to improving the development workflow for V-Sekai. The implementation will be handled by the V-Sekai development team.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai Development Team</li>
-<li>fire</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>Jupyter, Systemd, Automation, Development, Linux</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://jupyter.org/documentation">Jupyter Notebook Documentation</a></li>
-<li><a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html">Systemd Service Unit Documentation</a></li>
-<li><a href="https://fedoramagazine.org/jupyter-and-data-science-in-fedora/" class="uri">https://fedoramagazine.org/jupyter-and-data-science-in-fedora/</a></li>
-</ol>
-<hr>
-<section id="game-development-jargon" class="level3">
-<h3 class="anchored" data-anchor-id="game-development-jargon">Game Development Jargon</h3>
-<ol type="1">
-<li><strong>Jupyter Notebook</strong>: An open-source web application that allows you to create and share documents that contain live code, equations, visualizations, and narrative text.</li>
-<li><strong>Systemd</strong>: A system and service manager for Linux operating systems.</li>
-</ol>
-
-
-</section>
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20250421-jupyter-notebook.html</guid>
-  <pubDate>Wed, 22 Apr 2026 05:57:05 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20250420-use-meta-simulator.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="accepted-adopt-metas-openxr-simulator-for-macos-development" class="level1">
-<h1>Accepted: Adopt Meta’s OpenXR Simulator for macOS Development</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>Developing and testing VR applications requires frequent interaction checks using VR hardware. For developers on macOS, connecting and using VR headsets like Meta Quest can sometimes be cumbersome or have limitations. Meta provides OpenXR simulation capabilities within its XR SDK for macOS, allowing testing of VR interactions directly on the desktop.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>VR development on macOS can be slowed down by the need to constantly switch to a physical headset for testing basic interactions. An efficient in-editor or desktop simulation tool could streamline this workflow.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>Utilize Meta’s native OpenXR simulation features available for macOS development. This allows running and testing V-Sekai (as an OpenXR application) directly on a Mac, simulating headset and controller input without needing to connect a physical headset for every minor change or interaction test.</p>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<ul>
-<li>Faster iteration cycles during development, especially for UI and interaction logic.</li>
-<li>Easier debugging of VR-specific code paths directly on the desktop.</li>
-<li>Improved accessibility for developers on macOS who may not have immediate access to VR hardware.</li>
-</ul>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<ul>
-<li>Simulators may not perfectly replicate real-world hardware performance or tracking nuances.</li>
-<li>Potential performance overhead running the simulator alongside the game editor or application.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<ul>
-<li>Relying solely on physical hardware testing for all VR interactions.</li>
-<li>Developing a custom in-house VR simulator for Godot.</li>
-<li>Using other third-party simulation tools that might have different features or limitations.</li>
-</ul>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<ul>
-<li>Testing highly nuanced physics interactions that depend heavily on precise, real-world controller tracking data.</li>
-<li>Performance profiling that requires the exact overhead and timing of physical hardware.</li>
-<li>Verifying end-to-end user experience involving physical setup or room-scale movement.</li>
-</ul>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>Adopting efficient testing tools like the Meta OpenXR simulator is core to improving our development workflow. The investigation and potential integration/adoption will be handled by the V-Sekai development team.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai Development Team</li>
-<li>fire</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>VR, Testing, macOS, Simulation, Meta, OpenXR, Godot</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://developer.oculus.com/documentation/">Meta XR SDK Documentation (General)</a></li>
-<li><a href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html">OpenXR Specification</a></li>
-<li><a href="https://developers.meta.com/horizon/documentation/unity/xrsim-intro/">Meta XR Simulator Introduction (Unity - provides context on simulation concepts)</a></li>
-</ol>
-<hr>
-<section id="game-development-jargon" class="level3">
-<h3 class="anchored" data-anchor-id="game-development-jargon">Game Development Jargon</h3>
-<ol type="1">
-<li><strong>XR Simulator</strong>: A tool that mimics the behavior of VR/AR hardware within a desktop development environment.</li>
-<li><strong>OpenXR</strong>: An open, royalty-free standard for access to virtual reality and augmented reality platforms and devices.</li>
-<li><strong>SDK (Software Development Kit)</strong>: A collection of software development tools in one installable package.</li>
-<li><strong>Iteration Cycle</strong>: The time taken to make a change, build the application, and test the result.</li>
-</ol>
-
-
-</section>
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20250420-use-meta-simulator.html</guid>
-  <pubDate>Wed, 22 Apr 2026 05:57:05 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20250416-backpack.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="superseded-by-20250427-backpack.md-phoenix-based-recommender-system-integration" class="level1">
-<h1>Superseded by &lt;20250427-backpack.md&gt;: Phoenix-Based Recommender System Integration</h1>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>Godot Engine’s V-Sekai project requires a scalable recommendation system (200k+ user-items) with modern metadata handling. The current implementation does not exist. The decision to use standard Elixir Phoenix is driven by the fact that our backend (uro) is already implemented in Elixir, ensuring seamless integration and leveraging existing expertise.</p>
-<pre class="text"><code>┌────────────────────────────────────────────────────────────────────────────────┐
-│                V-Sekai Backpack (General Scene Processing)                     │
-├───────────────────────────┬───────────────────────────┬────────────────────────┤
-│      Scene Ingestion      │   Knowledge Integration   │    Model Serving       │
-│                           │                           │     (IREE/ONNX)        │
-│  [Oban.Job, Membrane]     │  [librecommender/Rustler] │  [object-detection]    │
-│                           │                           │  [keypoint-detection]  │
-│                           │                           │  [semantic             |
-│                           │                           │    segmentation]       |
-│                           │                           │  [image-to-image]      │
-│                           │                           │  [image-to-text]       │
-│                           │                           │  [text-to-speech]      │
-│                           │                           │  [speech-to-speech]    │
-│                           │                           │  [speech-to-text]      │
-│                           │                           │  [chain-of-thought]    │
-├───────────────────────────┼───────────────────────────┼────────────────────────┤
-│ - Godot Scene Upload      │ - JSON-LD Context Binding │ - Object Detection     │
-│ - Multi-Camera Processing │ - Object Ontology         │ - Keypoint Analysis    │
-│ - Oban Batch Insert       │ - librecommender ML       │ - Membrane Pipeline    │
-│ - Scene includes XMP      │                           │                        │
-│   JSON-LD descriptions    │                           │                        │
-├───────────────────────────┴───────────────────────────┴────────────────────────┤
-│                          General Analysis Pipeline                             │
-│ ┌────────────────────────────────────────────────────────────────────────────┐ │
-│ │ Godot Client → [Oban.Worker] → Membrane Pipeline → [Rustler NIF] → CRDB    │ │
-│ │   │               │               │                   │                    │ │
-│ │   ▼               ▼               ▼                   ▼                    │ │
-│ │ Raw Scene    View Params     Keypoint Vectors        Object Detection      │ │
-│ │              (Membrane       (YOLO-NAS-POSE)          (RF-DETR +           │ │
-│ │               Filter)                                   librecommender)    │ │
-│ └─────────────────────────────────┬─────────────────────┬────────────────────┘ │
-├───────────────────────────────────┼─────────────────────┼──────────────────────┤
-│          General Storage          │                     │                      │
-│ ┌───────────────────────┐ ┌───────┴───────┐ ┌───────────┴───────────┐          │
-│ │ Scene Metadata        │ │ Detection     │ │ Keypoint Graph        │          │
-│ │ ∘ Camera Calibration  │ │ Results       │ │ ∘ Vector Embeddings   │          │
-│ │ ∘ Oban Job States     │ │ ∘ JSON-LD     │ │ ∘ Kinematic Chains    │          │
-│ └───────┬───────────────┘ └───────┬───────┘ └───────────┬───────────┘          │
-│         │                         │                     │                      │
-│         └───────┬─────────────────┴─────────┬───────────┘                      │
-├─────────────────┼───────────────────────────┼──────────────────────────────────┤
-│    Analytics    │       Query Services      │         Integration              │
-│ ┌───────────────▼──────────────┐ ┌──────────▼───────────┐ ┌───────────────────┐│
-│ │ Detection Metrics            │ │ Vector Similarity    │ │ Avatar Control    ││
-│ │ ∘ Oban Job Stats             │ │ ∘ librecommender     │ │ ∘ Membrane Stream ││
-│ │ ∘ Membrane Throughput        │ │   KNN Search         │ │ ∘ Rustler NIF     ││
-│ │ ∘ Oban web                   │ │                      │ │                   ││
-│ │ ∘ Oban metrics               │ │                      │ │                   ││
-├────────────────────────────────────────────────────────────────────────────────┤
-│ Manages user authentication, authorization, and access control policies        │
-│ to ensure secure system interactions and data privacy compliance               │
-├────────────────────────────────────────────────────────────────────────────────┤
-│ Dynamically adjusts processing parameters based on environmental inputs        │
-│ and contextual awareness for optimal performance across variable conditions    │
-├────────────────────────────────────────────────────────────────────────────────┤
-│ Orchestrates allocation and prioritization of computational resources          │
-│ across distributed components to maintain quality-of-service objectives        │
-├────────────────────────────────────────────────────────────────────────────────┤
-│ Synchronizes data flows and task execution between pipeline stages             │
-│ through distributed scheduling and workflow management                         │
-├────────────────────────────────────────────────────────────────────────────────┤
-│ Implements self-contained processing modules with nested hierarchies           │
-│ for recursive task decomposition and scalable architecture                     │
-└────────────────────────────────────────────────────────────────────────────────┘</code></pre>
-</section>
-<section id="problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<ol type="1">
-<li>Scalability bottlenecks in Python-based recommendation serving</li>
-<li>Inefficient user/item bag management</li>
-<li>Missing JSON-LD attribute compatibility</li>
-</ol>
-</section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>Implement standard Elixir Phoenix framework with Rustler-based NIF integration for librecommender, featuring:</p>
-<p><strong>Implementation Steps</strong>:</p>
-<ol type="1">
-<li>Create Phoenix context and schemas for recommendation entities</li>
-<li>Implement NIFs for bag operations using Rustler</li>
-<li>Add JSON-LD context annotation layer</li>
-<li>Support both item-item and user-item recommendation algorithms</li>
-</ol>
-</section>
-<section id="implementation-plan" class="level2">
-<h2 class="anchored" data-anchor-id="implementation-plan">Implementation Plan</h2>
-<ol type="1">
-<li><p><strong>Phase 1</strong>: Phoenix core setup</p>
-<ul>
-<li>Port uro entity relationships</li>
-<li>Rustler integration tests</li>
-</ul></li>
-<li><p><strong>Phase 2</strong>: Recommender bridge</p>
-<ul>
-<li>Implement protocol for librecommender</li>
-<li>JSON-LD attribute mapping</li>
-</ul></li>
-<li><p><strong>Validation</strong>:</p>
-<ul>
-<li>Success: &lt;500ms p99 inference latency</li>
-<li>Failure: &gt;5% data serialization errors</li>
-</ul></li>
-</ol>
-</section>
-<section id="benefits" class="level2">
-<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
-<ul>
-<li>10x concurrent recommendation capacity</li>
-<li>Native Ecto/Phoenix metadata queries</li>
-<li>Future-proofed for Fediverse integration</li>
-</ul>
-</section>
-<section id="risks" class="level2">
-<h2 class="anchored" data-anchor-id="risks">Risks</h2>
-<ol type="1">
-<li>Rust-Elixir type conversion overhead</li>
-<li>NIF complexity</li>
-<li>JSON-LD namespace collisions</li>
-</ol>
-</section>
-<section id="alternatives-considered" class="level2">
-<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Option</th>
-<th>Pros</th>
-<th>Cons</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Pure Python</td>
-<td>Faster MVP</td>
-<td>Limits scale</td>
-</tr>
-<tr class="even">
-<td>Pure Elixir</td>
-<td>Simpler stack</td>
-<td>Lacks optim algos</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="when-to-avoid" class="level2">
-<h2 class="anchored" data-anchor-id="when-to-avoid">When to Avoid</h2>
-<p>Projects requiring simple recommendation needs (&lt;1k items) or without Rust ops support.</p>
-</section>
-<section id="organizational-alignment" class="level2">
-<h2 class="anchored" data-anchor-id="organizational-alignment">Organizational Alignment</h2>
-<p>Supports V-Sekai goals for UGC and fediverse interoperability.</p>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>ML</li>
-<li>Backend</li>
-<li>High Priority</li>
-</ul>
-</section>
-<section id="proposal-status" class="level2">
-<h2 class="anchored" data-anchor-id="proposal-status">Proposal Status</h2>
-<p>Status: Superseded by &lt;20250427-backpack.md&gt; <!-- Options: Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by [Link/Reference] --></p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ol type="1">
-<li><a href="https://www.phoenixframework.org/">Phoenix Framework</a></li>
-<li><a href="https://github.com/rusterlium/rustler">Rustler 0.30 NIF guide</a></li>
-<li><a href="https://v-sekai.github.io/manuals/roadmap.html">V-Sekai Roadmap 2025</a></li>
-<li><a href="https://librecommender.readthedocs.io/en/latest/serving_guide/rust.html">Librecommender Serving Guide</a></li>
-<li><a href="https://arxiv.org/abs/1706.06978">Deep Interest Network for Click-Through Rate Prediction</a></li>
-</ol>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20250416-backpack.html</guid>
-  <pubDate>Wed, 22 Apr 2026 05:57:05 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20250408-v-sekai-backpack.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="deprecated-ash-based-recommender-system-integration" class="level1">
-<h1>Deprecated: Ash-Based Recommender System Integration</h1>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>Godot Engine’s V-Sekai project requires a scalable recommendation system (200k+ user-items) with modern metadata handling. The current implementation does not exist. The decision to use Ash is driven by the fact that our backend (uro) is already implemented in Elixir, ensuring seamless integration and leveraging existing expertise.</p>
-</section>
-<section id="problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<ol type="1">
-<li>Scalability bottlenecks in Python-based recommendation serving</li>
-<li>Inefficient user/item bag management</li>
-<li>Missing JSON-LD attribute compatibility</li>
-</ol>
-</section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>Implement Ash framework with Rustler-based NIF integration for librecommender.</p>
-<p><strong>Implementation Steps</strong>:</p>
-<ol type="1">
-<li>Create Ash resource DSL for recommendation entities</li>
-<li>Implement NIFs for bag operations using Rustler</li>
-<li>Add JSON-LD context annotation layer</li>
-<li>Support both item-item and user-item recommendation algorithms</li>
-</ol>
-</section>
-<section id="implementation-plan" class="level2">
-<h2 class="anchored" data-anchor-id="implementation-plan">Implementation Plan</h2>
-<ol type="1">
-<li><strong>Phase 1</strong>: Ash core setup
-<ul>
-<li>Port uro entity relationships</li>
-<li>Rustler integration tests</li>
-</ul></li>
-<li><strong>Phase 2</strong>: Recommender bridge
-<ul>
-<li>Implement protocol for librecommender</li>
-<li>JSON-LD attribute mapping</li>
-</ul></li>
-<li><strong>Validation</strong>:
-<ul>
-<li>Success Criteria: &lt;500ms p99 inference latency</li>
-<li>Failure Threshold: &gt;5% data serialization errors</li>
-</ul></li>
-</ol>
-</section>
-<section id="benefits" class="level2">
-<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
-<ul>
-<li>10x concurrent recommendation capacity</li>
-<li>Native Ecto/Ash metadata queries</li>
-<li>Future-proofed for Fediverse integration</li>
-</ul>
-</section>
-<section id="risks-and-limitations" class="level2">
-<h2 class="anchored" data-anchor-id="risks-and-limitations">Risks and Limitations</h2>
-<ul>
-<li>Rust-Elixir type conversion overhead</li>
-<li>NIF complexity</li>
-<li>JSON-LD namespace collisions</li>
-</ul>
-</section>
-<section id="alternatives-considered" class="level2">
-<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Option</th>
-<th>Pros</th>
-<th>Cons</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Pure Python</td>
-<td>Faster MVP</td>
-<td>Limits scale</td>
-</tr>
-<tr class="even">
-<td>Pure Elixir</td>
-<td>Simpler stack</td>
-<td>Lacks optim algos</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="when-to-avoid-this-solution" class="level2">
-<h2 class="anchored" data-anchor-id="when-to-avoid-this-solution">When to Avoid This Solution</h2>
-<p>Projects requiring simple recommendation needs (&lt;1k items) or without Rust ops support.</p>
-</section>
-<section id="organizational-alignment" class="level2">
-<h2 class="anchored" data-anchor-id="organizational-alignment">Organizational Alignment</h2>
-<p>Supports V-Sekai 2025 goals for UGC and fediverse interoperability.</p>
-</section>
-<section id="proposal-status" class="level2">
-<h2 class="anchored" data-anchor-id="proposal-status">Proposal Status</h2>
-<p>Status: Deprecated <!-- Options: Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by [Link/Reference] --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>Fire</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>ML</li>
-<li>Backend</li>
-<li>High Priority</li>
-</ul>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ol type="1">
-<li>Ash Framework <a href="https://ash-hq.org/" class="uri">https://ash-hq.org/</a></li>
-<li>Rustler 0.30 NIF guide <a href="https://github.com/rusterlium/rustler" class="uri">https://github.com/rusterlium/rustler</a></li>
-<li>V-Sekai Roadmap 2025 <a href="https://v-sekai.github.io/manuals/roadmap.html" class="uri">https://v-sekai.github.io/manuals/roadmap.html</a></li>
-<li>Librecommender Rust Serving Guide <a href="https://librecommender.readthedocs.io/en/latest/serving_guide/rust.html" class="uri">https://librecommender.readthedocs.io/en/latest/serving_guide/rust.html</a></li>
-</ol>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20250408-v-sekai-backpack.html</guid>
-  <pubDate>Wed, 22 Apr 2026 05:57:05 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20250402-lip-sync-prototpe.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="proposed-lip-sync-to-facial-action-coding-system" class="level1">
-<h1>Proposed: Lip Sync to Facial Action Coding System</h1>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>This proposal involves the development of a speech-to-FACS (Facial Action Coding System) mapping pipeline to capture real-world 3D facial movements synchronized with speech. Metrics include the accuracy of lip-sync, the diversity of speakers and phrases, and the scalability of the system. A robust speech-to-FACS mapping system can enhance virtual avatars, animation, and human-computer interaction. This proposal addresses the growing need for realistic virtual characters in industries like entertainment, education, and healthcare, making it timely and strategically relevant.</p>
-</section>
-<section id="problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>The primary issues causing operational challenges are:</p>
-<ol type="1">
-<li>Lack of a robust speech-to-FACS system for capturing 3D facial movements synchronized with speech.</li>
-<li>Difficulty in collecting diverse, high-quality training/validation data.</li>
-<li>Risk of overfitting to lab data and insufficient real-world noise augmentation.</li>
-</ol>
-</section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>A speech-to-FACS pipeline that maps speech to 3D facial movements using multimodal alignment and reinforcement learning. Key technical steps include:</p>
-<ul>
-<li>Converting FaceMotion3D blend shapes renderings with markers at vertex positions to Keypoint COCO JSON format.</li>
-<li>Leveraging “Accent Tag” phonetic-rich sentences for training.</li>
-<li>Aligning audio to FACS keypoints via a multimodal large language model.</li>
-<li>Applying reinforcement learning to generate speech matching COCO Full Body Face data from masked audio.</li>
-</ul>
-<p><strong>Implementation Steps</strong>:</p>
-<ol type="1">
-<li>Collect and preprocess data (blend shape conversion, speaker recordings).</li>
-<li>Train a multimodal model for audio-FACS alignment.</li>
-<li>Implement reinforcement learning for speech generation.</li>
-</ol>
-</section>
-<section id="implementation-plan" class="level2">
-<h2 class="anchored" data-anchor-id="implementation-plan">Implementation Plan</h2>
-<ol type="1">
-<li><strong>Phase 1</strong>: Data Collection &amp; Preprocessing
-<ul>
-<li>Convert FaceMotion3D blend shapes to COCO JSON.</li>
-<li>Record diverse speakers performing phonetic-rich phrases.</li>
-</ul></li>
-<li><strong>Phase 2</strong>: Model Development &amp; Training
-<ul>
-<li>Train multimodal model for audio-to-FACS alignment.</li>
-<li>Develop reinforcement learning pipeline for masked audio matching.</li>
-</ul></li>
-<li><strong>Validation</strong>:
-<ul>
-<li>Success Criteria: High lip-sync accuracy (&gt;90%) and positive user study feedback.</li>
-<li>Failure Threshold: &lt;10% improvement in accuracy or negative user assessments.</li>
-</ul></li>
-</ol>
-</section>
-<section id="benefits" class="level2">
-<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
-<ul>
-<li>Improved lip-sync accuracy for virtual avatars and animations.</li>
-<li>Enhanced user engagement in entertainment, education, and healthcare.</li>
-<li>Scalable data collection and model development processes.</li>
-</ul>
-</section>
-<section id="risks-and-limitations" class="level2">
-<h2 class="anchored" data-anchor-id="risks-and-limitations">Risks and Limitations</h2>
-<ul>
-<li>Overfitting to lab data without real-world noise augmentation.</li>
-<li>Challenges in acquiring diverse, high-quality training data.</li>
-<li>Potential inaccuracies in FaceMotion3D animations.</li>
-</ul>
-</section>
-<section id="alternatives-considered" class="level2">
-<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 38%">
-<col style="width: 22%">
-<col style="width: 38%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Option</th>
-<th>Pros</th>
-<th>Cons</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Existing speech-to-text systems</td>
-<td>Faster development</td>
-<td>Lower accuracy and flexibility</td>
-</tr>
-<tr class="even">
-<td>Custom speech-to-FACS system</td>
-<td>Higher accuracy</td>
-<td>Higher cost and longer timeline</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="when-to-avoid-this-solution" class="level2">
-<h2 class="anchored" data-anchor-id="when-to-avoid-this-solution">When to Avoid This Solution</h2>
-<p>Avoid if high realism is unnecessary or development costs/time are prohibitive.</p>
-</section>
-<section id="organizational-alignment" class="level2">
-<h2 class="anchored" data-anchor-id="organizational-alignment">Organizational Alignment</h2>
-<p>Supports organizational goals in virtual character innovation and aligns with priorities for experience enhancement.</p>
-</section>
-<section id="proposal-status" class="level2">
-<h2 class="anchored" data-anchor-id="proposal-status">Proposal Status</h2>
-<p>Status: Proposed</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>iFire</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>Artificial Intelligence</li>
-<li>Machine Learning</li>
-<li>Virtual Avatars</li>
-<li>Animation</li>
-</ul>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ol type="1">
-<li><a href="https://www.facemotion3d.net/">FaceMotion3D Documentation</a></li>
-<li><a href="https://github.com/roboflow/maestro/issues/194">PHI-4 Multimodal Model Repository</a></li>
-<li><a href="https://github.com/v-sekai">v-sekai Project Repository</a></li>
-</ol>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20250402-lip-sync-prototpe.html</guid>
-  <pubDate>Wed, 22 Apr 2026 05:57:05 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
 </item>
 </channel>
 </rss>
