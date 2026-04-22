@@ -1,4 +1,4 @@
-# Draft: Installing Helm Chart from a Git Repository using Rancher
+# Rejected: Installing Helm Chart from a Git Repository using Rancher
 
 ## Context
 

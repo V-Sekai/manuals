@@ -1,4 +1,4 @@
-# Draft: Integrating Helm for Kubernetes Runner Installation with S3 Cache
+# Rejected: Integrating Helm for Kubernetes Runner Installation with S3 Cache
 
 ## Context
 

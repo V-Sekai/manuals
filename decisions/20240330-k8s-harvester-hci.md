@@ -1,4 +1,4 @@
-# Accepted: k8s on harvester hci
+# Superseded: k8s on harvester hci
 
 ## The Context
 
