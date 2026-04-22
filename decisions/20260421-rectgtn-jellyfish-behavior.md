@@ -108,24 +108,38 @@ A species domain can include capability preconditions:
 
 Before executing `seek_light`, the zone server calls the existing `check_rel()` on the entity's capability graph. Non-bioluminescent jellyfish never decompose into `seek_light` — the planner picks `idle` instead.
 
-### Runtime plan injection via NIF
+### Runtime plan injection via CDN
 
-Because plans are pure JSON with no schema side-effects, zone-backend can push a new plan to a running zone without violating ACID. `taskweft` is also an Elixir module: zone-backend calls `Taskweft.plan/1` via the NIF, receives a JSON plan array, and sends it to the zone server as a `CMD_SET_ENTITY_PLAN` packet. The zone server validates each action name against the already-loaded domain before applying.
+Plans are pure JSON-LD data — they are stored in the content-addressed CDN (Uro) exactly like mesh assets and domain files. Zone-backend calls `Taskweft.plan/1` via the NIF, receives a JSON plan array, uploads it to Uro, and receives a `baked_url` (chunk hash URL). It sends the zone server a `CMD_SET_ENTITY_PLAN` packet carrying only that URL — not the plan bytes.
 
-The Elixir module is kept at arm's length from the zone sim: it produces plans, it never executes them. The zone sim never calls back into BEAM. A slow or failed NIF call on the BEAM side does not affect the zone tick rate — the zone continues running the current plan until a replacement arrives.
+```
+zone-backend:
+  plan_json = Taskweft.plan(domain_jsonld, state)
+  %{baked_url: url} = Uro.Storage.upload_plan(plan_json)
+  send_packet(zone_server, CMD_SET_ENTITY_PLAN, entity_id, url)
+
+zone server:
+  _on_cmd_set_entity_plan(entity_id, url)
+    → fetch url from CDN (disk-cached after first fetch)
+    → validate each action name against _species_domains[entity_id]
+    → apply if valid, discard silently if not
+```
+
+The CDN disk cache means all zone servers hosting the same species share the same plan bytes without re-downloading. A common jellyfish plan computed once by zone-backend is fetched once per zone server and cached for the duration of the session.
+
+The Elixir module is kept at arm's length from the zone sim: it produces and uploads plans, it never executes them. The zone sim never calls into BEAM. A slow NIF call on the BEAM side does not affect the zone tick rate — the zone continues running the current plan until a replacement URL arrives.
 
 ```cpp
-void FabricMMOGZone::_on_cmd_set_entity_plan(int p_entity_id, const String &p_plan_json) {
-    TwPlan incoming = TwLoader::plan_from_json(p_plan_json);
+void FabricMMOGZone::_on_cmd_set_entity_plan(int p_entity_id, const String &p_plan_url) {
+    String plan_json = _fetch_from_cdn(p_plan_url); // disk-cached
+    TwPlan incoming  = TwLoader::plan_from_json(plan_json);
     if (!_domain_contains_all_actions(_species_domains[p_entity_id], incoming)) {
-        return; // reject: references actions not in the loaded domain
+        return; // reject: action not in loaded domain
     }
     _entity_plans[p_entity_id] = incoming;
     _entity_plan_step[p_entity_id] = 0;
 }
 ```
-
-This allows zone-backend to pre-compute plans for large entity populations and distribute them, offloading bulk planning from the C++ simulation thread while keeping domain authority in the zone server.
 
 ### No sandbox
 
@@ -159,7 +173,8 @@ A zone with no jellyfish entities (empty zone during off-peak hours) allocates n
 - `fabric_mmog_zone.h` — `HashMap<int, TwPlan>`, `HashMap<int, int>`, `HashMap<String, TwDomain>`
 - Species domain files — `assets/domains/jellyfish_common.jsonld`, `jellyfish_bioluminescent.jsonld`
 - `JellygridSwarm::tick()` — read current action from plan rather than hard-coded phase table
-- `multiplayer-fabric-taskweft` NIF — `plan/1` called from zone-backend to pre-compute plans for bulk entity population; results distributed via `CMD_SET_ENTITY_PLAN`
+- `multiplayer-fabric-taskweft` NIF — `Taskweft.plan/1` called from zone-backend; output uploaded to Uro CDN; `baked_url` distributed via `CMD_SET_ENTITY_PLAN`
+- `Uro.Storage.upload_plan/1` — stores plan JSON-LD in the content-addressed store alongside mesh and domain assets
 
 ## Status
 
