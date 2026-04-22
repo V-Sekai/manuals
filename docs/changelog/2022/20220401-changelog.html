@@ -44,9 +44,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-4cc40b3acf25e1a3e98bfc07ca433f3e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-1d722c2397631410c7987065d3ae1239.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-4cc40b3acf25e1a3e98bfc07ca433f3e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-3c28f507822a6aba878936ee8b27b32a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-b2059c1d83ca13157c7a4652faea9fa0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-3c28f507822a6aba878936ee8b27b32a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -269,6 +269,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="../../decisions.html"> 
 <span class="menu-text">Decisions</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../references.html"> 
+<span class="menu-text">References</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -319,7 +323,7 @@ ul.task-list li input[type="checkbox"] {
 <p>To this end, it is now keeping a lookup dictionary from path and component to fileID (which can be mapped to Godot node) which means animation support should be close.</p>
 <p>(Also, they made a major change to the import system in 2019 which affects id numbering. Still working on it)</p>
 <p>Pushed a major update to Unidot, mostly in the post_import script. It should now generate paths much more accurately to the original file, and implemented the hashing algorithm used by Unity 2019 for file ID generation, for example generating ids like 919132149155446097 for the root object.</p>
-<p>This has fixed some assets exported from Unity 2019 like below, which used to fail to resolve the fileIDs for meshes! <span class="citation" data-cites="iFire">@iFire</span></p>
+<p>This has fixed some assets exported from Unity 2019 like below, which used to fail to resolve the fileIDs for meshes! <span class="citation" data-cites="iFire">(<a href="#ref-iFire" role="doc-biblioref"><strong>iFire?</strong></a>)</span></p>
 <p>Made some progress with terrain import in Unidot. It will import textures, normalmaps and splatmaps (creating an appropriate ShaderMaterial). My plan is to implement trees and grass using MultimeshInstance objects. With this I also now support texture assets. Texture Arrays seem to fail internally. Hard to tell if I did something wrong or something isn’t implemented on Godot’s end, but we’ll get there…</p>
 <p>performance-wise, I think it’s now acceptable to just pipe all 2+ million polygons (for 1025x1025 terrain) to the GPU. I’m using tristrips so it’s mostly just 1 index per triangle. It might be better to use a more dedicated terrain system for this, so this is just a stopgap while Godot 4 is in development since the terrain systems in the asset library are not keeping up with the rapid pace of development. (if you’re interested in this subject, feel free to start a thread or reply on godot-general)</p>
 <p>Terrain trees, splatmaps and materials are implemented in Unidot, converting to a single conventional terrain mesh + multimesh. I have not implemented holes yet, but if someone has an example and there is demand, I could work on it.</p>
@@ -341,7 +345,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="section-4">2022-04-03</h2>
 <p>iFire</p>
 <ul>
-<li>Made a bug report for Blender exported animation to gltf with <span class="citation" data-cites="RockyMadio">@RockyMadio</span> <a href="https://github.com/KhronosGroup/glTF-Blender-IO/issues/1613" class="uri">https://github.com/KhronosGroup/glTF-Blender-IO/issues/1613</a> GitHub</li>
+<li>Made a bug report for Blender exported animation to gltf with <span class="citation" data-cites="RockyMadio">(<a href="#ref-RockyMadio" role="doc-biblioref"><strong>RockyMadio?</strong></a>)</span> <a href="https://github.com/KhronosGroup/glTF-Blender-IO/issues/1613" class="uri">https://github.com/KhronosGroup/glTF-Blender-IO/issues/1613</a> GitHub</li>
 </ul>
 
 
