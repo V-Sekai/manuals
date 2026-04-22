@@ -50,11 +50,11 @@ Differentiation must be communicable in one sentence, one image, or one short vi
 
 **What multiplayer-fabric Already Provides**
 
-Zone streaming handles event crowds. A convention hall with thousands of concurrent attendees is a zone topology problem. multiplayer-fabric solves it: each hall is a zone, entities migrate at boundaries, the physics loop runs at constant cost per zone regardless of global headcount.
+Zone streaming handles event crowds and booths. A booth is a zone — a creator registers a zone server and that zone is their booth space. The existing Zone schema (name, user_id, map) is sufficient; no separate booth data model is needed. Entities migrate at zone boundaries, the physics loop runs at constant cost per zone regardless of global headcount.
 
 Content-addressed delivery handles product assets. A buyer downloads only the chunks they do not already have. A repeat visitor to the same booth pays no redundant bandwidth. The same avatar file shared across multiple booths is stored once.
 
-ReBAC handles booth access control. Booth owners specify who can enter their space, purchase items, or modify their display. Permission checks happen at join time and upload time, not per tick.
+ReBAC handles booth access control. The zone owner is the booth owner. Permission checks happen at join time and upload time, not per tick.
 
 Self-hosted deployment is the trust argument. Docker Compose reference deployment, no cloud dependency, no third-party platform to pivot or shut down.
 
