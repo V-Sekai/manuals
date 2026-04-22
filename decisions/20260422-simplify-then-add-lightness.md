@@ -12,21 +12,33 @@ Engineering teams default to addition. A feature is slow, so a cache is added. A
 
 **Simplify first. Then, if weight must be added, add it deliberately and with full awareness of the cost.**
 
-This is not minimalism for its own sake. It is a sequencing rule: subtraction before addition, question before implement, retire uncertainty before building on top of it.
+It is a sequencing rule: subtraction before addition, question before implement.
 
 ### Core lessons
 
-**Question and subtract requirements.** Before implementing anything, examine which parts of the spec are not absolutely necessary. A requirement that cannot survive scrutiny should not survive implementation. The best code for an unnecessary feature is no code.
+#### Question and subtract requirements
 
-**Sequence your risks.** Early prototypes are scientific experiments designed to retire specific risks in order — not to prove everything at once. The question is: what is the one thing most likely to make this not work? Retire that first. Build the rest afterward.
+Before implementing anything, examine which parts of the spec are not absolutely necessary. A requirement that cannot survive scrutiny should not survive implementation. The best code for an unnecessary feature is no code.
 
-**Insource the uncertain.** Mature, well-understood components can be delegated to libraries or services. Core uncertainties — the things that define whether the project works at all — stay in-house, where they can be observed, changed, and understood without a support contract.
+#### Sequence your risks
 
-**Shift complexity into software.** Physical complexity (hardware, infrastructure, topology) is expensive to change. Computational complexity is cheap to change. When a choice exists between a hardware constraint and a software constraint, prefer the software constraint. This is why multiplayer-fabric replaces session coordinators with Hilbert curve arithmetic.
+Early prototypes are scientific experiments designed to retire specific risks in order — not to prove everything at once. The question is: what is the one thing most likely to make this not work? Retire that first. Build the rest afterward.
 
-**Compress learning loops.** Distance between the engineer and the running system is a tax on speed. The larger the distance — in code, in abstraction, in deployment steps — the slower the feedback. Every layer of indirection that does not carry its weight is a tax on every future iteration.
+#### Insource the uncertain
 
-**Maintain organisational lightness.** A team small enough to share context naturally does not need process to substitute for communication. Process is the organisational equivalent of a cache: useful when direct access is too expensive, dangerous when it becomes the primary path.
+Mature, well-understood components can be delegated to libraries or services. Core uncertainties — the things that define whether the project works at all — stay in-house, where they can be observed, changed, and understood without a support contract.
+
+#### Shift complexity into software
+
+Physical complexity (hardware, infrastructure, topology) is expensive to change. Computational complexity is cheap to change. When a choice exists between a hardware constraint and a software constraint, prefer the software constraint. This is why multiplayer-fabric replaces session coordinators with Hilbert curve arithmetic.
+
+#### Compress learning loops
+
+Distance between the engineer and the running system is a tax on speed. The larger the distance — in code, in abstraction, in deployment steps — the slower the feedback. Every layer of indirection that does not carry its weight is a tax on every future iteration.
+
+#### Maintain organisational lightness
+
+A team small enough to share context naturally does not need process to substitute for communication. Process is the organisational equivalent of a cache: useful when direct access is too expensive, dangerous when it becomes the primary path.
 
 ## Application to multiplayer-fabric
 
