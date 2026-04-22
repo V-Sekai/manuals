@@ -26,9 +26,9 @@ client (Godot) — receives desync index URL on join
 An Elixir/Phoenix HTTP API and WebSocket server. It keeps a registry of live zone servers.
 
 - `POST /shards` — zone server registers on boot, receives a UUID
-- `PUT /shards/:id` — heartbeat; touches `updated_at`; also broadcasts `zone_updated` to WebSocket subscribers with the current desync index URL
-- `GET /shards` — returns zones with a heartbeat within the last 30 seconds
-- `ZoneJanitor` GenServer culls rows older than the staleness window
+- `PUT /shards/:id` — heartbeat from the zone server process; touches `last_put_at` and broadcasts `zone_updated` to WebSocket subscribers with the current desync index URL
+- `GET /shards` — returns zones with a `last_put_at` within the last 30 seconds
+- `ZoneJanitor` GenServer culls rows where `last_put_at` is older than the staleness window; it does not use Phoenix's own heartbeat as a liveness signal
 - `ZoneChannel` — clients subscribe to `zone:{id}` to receive asset delivery URLs as they become available
 
 ### zone server (FabricZone)
@@ -48,9 +48,13 @@ Assets are uploaded to zone-backend, baked into casync `.caibx` chunk archives, 
 
 `CMD_INSTANCE_ASSET` (opcode 0x04, 100-byte binary packet) instructs the authority zone to fetch the manifest, allocate an entity slot, and broadcast the instance to neighbouring zones.
 
+A benchmark comparing casync desync, zchunk (HTTP-compatible, zstd-compressed, no custom chunk server required), and a plain CDN delta for a representative Godot export is pending. The result will determine the default delivery path.
+
 ### Permissions (ReBAC)
 
 Upload permissions are checked via a relationship-based access control graph (`taskweft`, a C++20 NIF). Membership edges (`IS_MEMBER_OF`) are built per-request from the `UserPrivilegeRuleset` record and evaluated with `check_rel/4`. No permission data is stored in the graph between requests.
+
+ReBAC is an upload-time and join-time check only. Per-tick access decisions (proximity culling, combat) use a local cache derived from the graph at join time, invalidated on explicit graph mutations. No live `taskweft` query is issued from the physics loop.
 
 ## Persistence
 
@@ -66,7 +70,9 @@ A per-zone SQLite database records discrete mutations: spawn, despawn, payload_u
 
 The reference deployment uses Docker Compose (`multiplayer-fabric-hosting`). Zone servers register with zone-backend at startup. Zone-backend and zone servers communicate only via HTTP and ENet; no shared database is required between them.
 
-Cloudflare proxying must be disabled for zone server hostnames — QUIC/UDP cannot be proxied. The zone server's self-signed TLS certificate fingerprint (`cert_hash`) is stored in the zone registry and pinned by clients; no certificate authority is needed.
+Cloudflare proxying is currently disabled for zone server hostnames because QUIC/UDP cannot be proxied by the standard Cloudflare path. Cloudflare's MASQUE-based proxy mode (2025) may pass UDP datagrams transparently; compatibility with zone server QUIC datagrams is under evaluation. The zone server's self-signed TLS certificate fingerprint (`cert_hash`) is stored in the zone registry and pinned by clients; no certificate authority is needed.
+
+The WebSocket transport path in `FabricMMOGTransportPeer` is a first-class transport. iOS Safari clients use this path. It receives the same test coverage and feature access as the WebTransport path.
 
 ## What Is Not Decided Here
 
