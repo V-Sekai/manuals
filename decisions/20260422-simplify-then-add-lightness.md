@@ -26,7 +26,7 @@ Early prototypes are scientific experiments designed to retire specific risks in
 
 #### Insource the uncertain
 
-Mature, well-understood components can be delegated to libraries or services. Core uncertainties — the things that define whether the project works at all — stay in-house, where they can be observed, changed, and understood without a support contract.
+Mature, well-understood components can be delegated to libraries or services. Core uncertainties — the things that define whether the project works at all — stay in-house, where they can be directly observed and changed without a support contract.
 
 #### Shift complexity into software
 
@@ -34,7 +34,7 @@ Physical complexity (hardware, infrastructure, topology) is expensive to change.
 
 #### Compress learning loops
 
-Distance between the engineer and the running system is a tax on speed. The larger the distance — in code, in abstraction, in deployment steps — the slower the feedback. Every layer of indirection that does not carry its weight is a tax on every future iteration.
+Distance between the engineer and the running system is a tax on speed. The larger that distance — in abstraction layers or deployment steps — the slower the feedback.
 
 #### Maintain organisational lightness
 
@@ -48,7 +48,7 @@ The zone boundary model is the direct expression of this heuristic: instead of a
 
 ## The Road Not Taken
 
-The alternative is to keep adding. Add a coordinator, then a coordinator monitor, then a fallback coordinator, then a configuration system to manage which coordinator is primary. This is the industry default. It works. It also means that any engineer touching zone topology must understand five systems instead of one curve.
+The alternative is to keep adding. Add a coordinator, then a coordinator monitor, then a fallback coordinator, then a configuration system to manage which coordinator is primary. This is the industry default, and it works — but any engineer touching zone topology must understand five systems instead of one curve.
 
 ## Status
 
