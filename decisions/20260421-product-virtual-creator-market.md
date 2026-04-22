@@ -38,13 +38,13 @@ Linietsky reports that approximately one in ten funded games succeeds and only t
 
 No existing platform combines all four properties:
 
-| Platform | Self-hostable | Desktop-first | Zone streaming | Creator keeps 100% |
-|---|---|---|---|---|
-| Virtual Market / Hikky | No | Partial | No | No |
-| VRChat | No | Yes (50% of sessions) | No | No |
-| Mozilla Hubs | Yes | Yes | No | N/A |
-| Resonite | No | Yes | No | N/A |
-| **This product** | **Yes** | **Yes** | **Yes** | **Yes** |
+| Platform               | Self-hostable | Desktop-first         | Zone streaming | Creator keeps 100% |
+| ---------------------- | ------------- | --------------------- | -------------- | ------------------ |
+| Virtual Market / Hikky | No            | Partial               | No             | No                 |
+| VRChat                 | No            | Yes (50% of sessions) | No             | No                 |
+| Mozilla Hubs           | Yes           | Yes                   | No             | N/A                |
+| Resonite               | No            | Yes                   | No             | N/A                |
+| **This product**       | **Yes**       | **Yes**               | **Yes**        | **Yes**            |
 
 Differentiation must be communicable in one sentence, one image, or one short video. The sentence above passes this test. The table above is the image.
 
