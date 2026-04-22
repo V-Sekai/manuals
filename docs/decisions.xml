@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.37</generator>
-<lastBuildDate>Wed, 22 Apr 2026 06:02:22 GMT</lastBuildDate>
+<lastBuildDate>Wed, 22 Apr 2026 06:33:31 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -82,7 +82,92 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:33:31 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260421-zones-vs-shards.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="zones-vs-shards" class="level1">
+<h1>Zones vs Shards</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>Traditional MMOs split the world into shards — isolated copies with hard player caps. When a shard fills, players queue or get bounced to another copy of the same world. multiplayer-fabric replaces shards with zones.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Shards require a coordinator, match-maker, and session database to route players to the least-full copy. The coordinator is a single point of failure and a licensing surface (most implementations are proprietary middleware). Players on different shards cannot interact. The world is not continuous.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p>Each zone owns a slice of a single continuous 30-bit Hilbert code space (Skilling 2004). Zones share boundaries, not walls. Entities migrate across those boundaries automatically — the player never sees a loading screen or a “server full” message.</p>
+<p><strong>AOI without adjacency tables.</strong> The Area of Interest band for a zone is derived directly from its Hilbert range, extended by <code>AOI_CELLS</code> on each side. Neighbor topology falls out of band overlap — no hand-authored adjacency tables. Adding a zone server changes the topology automatically.</p>
+<p><strong>Why Hilbert, not Morton.</strong> The Hilbert curve has tighter spatial locality than the Morton (Z-order) curve: cluster diameter scales as O(n^(1/3)) vs Morton’s O(n^(2/3)) (Bader 2013). Shorter cluster diameter means shorter AOI bands for the same coverage radius, which is why interest relay can copy each packet once per physical link rather than once per subscriber. Morton would require either wider AOI bands (more data per client) or a custom adjacency table to correct locality.</p>
+<p><strong>Formal verification.</strong> The forward and inverse Hilbert transforms are formally verified in Lean 4 (<code>PredictiveBVH/Spatial/HilbertRoundtrip.lean</code>) and code-generated to C and Rust. No hand-written bit manipulation to audit or port across engine upgrades.</p>
+<p><strong>Wire channel separation.</strong> Channel 0 carries Godot’s built-in RPC/spawner/synchronizer traffic. <code>CH_INTEREST</code>, <code>CH_PLAYER</code>, and <code>CH_MIGRATION</code> carry Fabric-specific streams. Neither side inspects the other’s packets. One pcap filter per channel yields exactly one semantic stream.</p>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>No coordinator, match-maker, or session database. Neighbor topology is automatic. Players experience a continuous world. The locality proof is machine-checked.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>Zone boundaries are fixed at the Hilbert cell granularity. Very uneven entity distributions (all entities in one cell) cannot be rebalanced without splitting a zone — which requires a zone restart. Shards handle this trivially by spinning up a new copy.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>Morton-order partitioning would have been simpler to implement and is more commonly cited in game broadphase literature. The O(n^(2/3)) cluster diameter makes it unsuitable for the one-copy-per-link relay goal: AOI bands would need to be wider to achieve the same spatial coverage, increasing per-client data volume. The Hilbert curve is the correct choice for this relay model.</p>
+<p>A quad-tree or oct-tree spatial index would allow dynamic rebalancing but requires a coordinator to manage tree mutations — reintroducing the dependency the design is trying to eliminate.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>A single-zone deployment (one server, all entities in one Hilbert slice) gets no benefit from Hilbert partitioning. The design is only relevant at two or more zone servers. A single-zone deployment can use any spatial index.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<ul>
+<li><code>PredictiveBVH/Spatial/HilbertRoundtrip.lean</code> — forward/inverse Hilbert proofs</li>
+<li><code>fabric_mmog_zone.cpp</code> — AOI band derived from Hilbert range + <code>AOI_CELLS</code></li>
+<li><code>fabric_mmog_zone.h</code> — <code>MIGRATION_HEADROOM</code>, <code>AOI_CELLS</code> constants</li>
+</ul>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Accepted</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>Zones, Shards, Hilbert, Morton, AOI, SpatialIndex, Partitioning, Locality</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li>Skilling 2004 — “Programming the Hilbert curve” — original bit-manipulation algorithm</li>
+<li>Bader 2013 — “Space-Filling Curves: An Introduction with Applications in Scientific Computing” — O(n^(1/3)) vs O(n^(2/3)) cluster diameter comparison</li>
+<li><code>20260421-multiplayer-fabric-zone-architecture.md</code> — full zone architecture</li>
+<li><code>PredictiveBVH/Spatial/HilbertRoundtrip.lean</code> — formal proofs</li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260421-zones-vs-shards.html</guid>
+  <pubDate>Wed, 22 Apr 2026 06:33:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -164,7 +249,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-registration-and-discovery.html</guid>
-  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:33:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -420,7 +505,7 @@ font-style: inherit;">end</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-grouping.html</guid>
-  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:33:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -567,7 +652,7 @@ theorem aoiBand_width_bound ... :
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-border-handoff.html</guid>
-  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:33:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -845,7 +930,7 @@ font-style: inherit;">:assets</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-asset-manifest.html</guid>
-  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:33:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -978,7 +1063,7 @@ font-style: inherit;">note</span>         = {Baseline 2026: newly available acro
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-webtransport-zone-transport.html</guid>
-  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:33:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1146,7 +1231,143 @@ font-style: inherit;">;</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-websocket-transport-parity.html</guid>
-  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:33:31 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260421-virtual-creator-market-implementation-plan.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="virtual-creator-market-implementation-plan" class="level1">
+<h1>Virtual Creator Market Implementation Plan</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>The Virtual Creator Market PoC (<code>20260421-infinite-aquarium-concept.md</code>) is the reference application for multiplayer-fabric. Implementation items are sequenced by risk: each step retires one uncertainty before the next begins. A creator’s booth is a zone. Visitors cross booth boundaries the same way entities migrate between zones. Creator assets are content-addressed chunks in Uro.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>There is no sequenced plan that connects the existing zone infrastructure to a working creator market demo. Steps are ordered so that each one produces a verifiable pass condition before the next begins, preventing parallel risk accumulation.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="phase-1-operator-visibility-retire-can-you-tell-what-is-happening-in-your-market" class="level3">
+<h3 class="anchored" data-anchor-id="phase-1-operator-visibility-retire-can-you-tell-what-is-happening-in-your-market">Phase 1 — Operator visibility (retire: can you tell what is happening in your market?)</h3>
+<p><strong>1. Zone health HUD anchor fix</strong> Move <code>StatusHUD</code> under <code>SpectatorRig/SpringArm3D/Camera3D</code> so the operator dashboard follows the camera viewport rather than sitting at world origin. Pass: launching the observer scene shows zone health text pinned to the camera and readable while orbiting.</p>
+<p><strong>2. Booth position marker</strong> Add a pulsing mesh marker at the operator’s connected zone position updated every frame from authoritative zone state. Pass: marker remains visible during camera motion and crosses booth boundaries without lagging.</p>
+<p><strong>3. Booth boundary readability pass</strong> Raise zone curtain alpha and add camera-facing or vertical labels so booth names are readable from top-down and orbit views. Pass: all three booth labels are readable from default spawn view; boundary surfaces remain visible at far zoom.</p>
+<p><strong>4. Top-down operator camera default</strong> Add an orthographic top-down mode as the default startup view (Final Fantasy Tactics overworld style): booth zones appear as colored region borders, visitor entities as dots, operator position as a highlighted marker. Toggle to orbit mode with Tab. Pass: boot opens in top-down mode; toggle switches cleanly with no control lockups.</p>
+<p><strong>5. Multi-booth smoke run</strong> Run the 3-zone observer smoke test and capture screenshots in both top-down and orbit modes during the 144-visitor crossing burst. Pass: no mass rollback, no duplicate flood; screenshots show visitors crossing booth boundaries.</p>
+<p><strong>6. Operator runbook</strong> Document exact scene, command, and expected visual checks for repeating the smoke run. Pass: another contributor can execute the runbook without guessing hidden setup steps.</p>
+<hr>
+</section>
+<section id="phase-2-visitor-vr-experience-retire-can-visitors-navigate-and-see-creator-content" class="level3">
+<h3 class="anchored" data-anchor-id="phase-2-visitor-vr-experience-retire-can-visitors-navigate-and-see-creator-content">Phase 2 — Visitor VR experience (retire: can visitors navigate and see creator content?)</h3>
+<p><strong>7. XR grid ground plane</strong> Instance <code>ProceduralGrid3D</code> under <code>XROrigin3D</code> in <code>main.tscn</code> so visitors have spatial reference inside a creator booth. Wire <code>FOCUS_NODE</code> to the headset camera. Note: do not use symlinks — copy xr-grid scripts into the demo directory or use <code>res://</code> path remapping. Windows Steam PCVR requires admin privileges for symlinks. Pass: visitor has a visible ground plane and scale reference in VR.</p>
+<p><strong>8. WorldGrab booth navigation</strong> Instance <code>XRPinch</code> on each <code>XRController3D</code> hand node. Two-hand WorldGrab lets visitors grab the space and move, rotate, and scale — the primary navigation method for browsing a creator’s booth. Same symlink caveat as above. Pass: visitor can navigate the booth in VR using two-hand grab without teleport or joystick.</p>
+<p><strong>9. XR node tree verification</strong> Confirm <code>WorldGrab</code>, <code>XRPinch</code>, <code>ProceduralGrid3D</code>, and <code>trident_hand.gd</code> are instanced and functional under <code>XROrigin3D</code>. Pass: VR scene graph is complete; input reaches scripts.</p>
+<p><strong>10. Creator interaction tool → CH_PLAYER cmd=1</strong> Wire the XR controller trigger on <code>trident_hand.gd</code> to emit a CH_PLAYER cmd=1 (<code>ragdoll</code>) packet from <code>fabric_client.gd</code>. The server-side handler in <code>fabric_mmog_zone.cpp</code> already injects the C7 velocity spike — only the client send path is missing. Pass: creator input reaches the zone simulation.</p>
+<p><strong>11. Creator annotation tool → CH_PLAYER cmd=3</strong> Wire the pen tool XR controller input to emit a CH_PLAYER cmd=3 packet per stroke knot. The server-side handler mirrors the cmd=1 path. Verify knots appear in visiting observers’ CH_INTEREST stream. Pass: the full client-to-zone-to-observer path through CH_PLAYER and CH_INTEREST is exercised by both interaction tools.</p>
+<p><strong>12. End-to-end VR demo pass</strong> Boot three booth zones (minimum for transitive migration: booth A → B → C exercises both neighbor indices). Confirm in top-down view first — booth curtains visible, visitor entities populate all three booths, 144-visitor burst migrates without mass rollback. Then confirm in VR: rendering, head tracking, and hand tracking update in CH_INTEREST.</p>
+<p>Three visitor populations: | Population | IDs | Market scenario | |—|—|—| | <code>opening_crowd</code> | 0–255 | Dense crowd at a popular booth launch. Visitors appear alongside creator entities in CH_INTEREST. | | <code>rush</code> | 256–399 | 144 visitors burst into a new booth simultaneously — worst-case migration spike at a booth opening. | | <code>browse</code> | 400–511 | 8 groups of 14 visitors moving at browsing speed through connected booths — sustained cross-booth movement, not just a spike. |</p>
+<p>Pass: an observer in Booth B receives all 144 rush visitors from Booth A without snap, duplicate, or loss. <code>MIGRATION_HEADROOM</code> absorbs the spike.</p>
+<hr>
+</section>
+<section id="phase-3-creator-asset-pipeline-retire-can-creators-upload-and-visitors-see-their-assets" class="level3">
+<h3 class="anchored" data-anchor-id="phase-3-creator-asset-pipeline-retire-can-creators-upload-and-visitors-see-their-assets">Phase 3 — Creator asset pipeline (retire: can creators upload and visitors see their assets?)</h3>
+<p><strong>13. Content-addressed chunk store in Uro</strong> Add <code>/chunks/:hash</code> to Uro accepting PUT (upload) and GET (fetch) for binary blobs keyed by BLAKE3 hash. No permissions yet. Pass: Uro stores and returns arbitrary content-addressed chunks; hash round-trip is verified.</p>
+<p><strong>14. ReBAC permissions on chunk fetch</strong> Add a ReBAC policy check to <code>GET /chunks/:hash</code>: the requesting principal must hold <code>can_read</code> on the chunk’s namespace. Operators assign namespaces at upload time. Pass: visitors without permission receive 403; creator controls who can fetch their assets.</p>
+<p><strong>15. Client-side chunk streaming</strong> In <code>jellyfish_asset_loader.gd</code>, replace the baked-in asset load with a runtime fetch: call <code>GET /shards/:id/assets</code> for the booth manifest, then fetch each <code>baked_url</code> by chunk hash. Cache fetched chunks on disk by hash. Pass: visitor cold-boots with empty cache and loads creator assets from Uro at runtime.</p>
+<p><strong>16. End-to-end asset streaming test</strong> Upload a creator asset from the demo scene to a local Uro instance. Boot a visitor client cold (empty cache) and confirm it fetches and renders the asset by hash. Test both the happy path and a 403 rejection with an unauthorized principal. Pass: creator uploads, visitor downloads, unauthorized visitor is rejected — all in a single automated run.</p>
+<hr>
+</section>
+<section id="phase-4-load-validation-retire-does-the-market-hold-under-event-scale-load" class="level3">
+<h3 class="anchored" data-anchor-id="phase-4-load-validation-retire-does-the-market-hold-under-event-scale-load">Phase 4 — Load validation (retire: does the market hold under event-scale load?)</h3>
+<p><strong>17. 100-visitor headless load harness</strong> Write a headless driver spawning 100 <code>FabricPeer</code> connections to a single booth zone, each subscribing to <code>CH_INTEREST</code>. Record timestamp of every broadcast packet received. Pass: 100 visitors connected and logging without VR hardware.</p>
+<p><strong>18. CH_INTEREST fan-out latency at 100 visitors</strong> Run the harness. Record p50/p99 fan-out latency for <code>local_broadcast_raw</code> at 100 simultaneous subscribers. Validates Hilbert AOI band and one-copy-per-link relay before scaling to multiple booths. Pass: per-booth fan-out is bounded and measurable.</p>
+<p><strong>19. 5-machine fabric provisioning (32 booth zones)</strong> Sizing: 1,000 visitors × 56 entities = 56,000 entities; at 1,800 per zone → 32 booth zones; 7 zones per 8-core machine → 5 machines, 63,000 capacity, 1,125 visitors at 12.5% headroom. Deploy zone binaries, confirm all 32 booth zones register and show healthy in the operator view. Pass: full market topology is live and observable before load is applied.</p>
+<p><strong>20. 1,000-visitor event load test</strong> Drive 1,000 simulated visitors against the 32-zone fabric. Record peak entity count per zone, p99 migration latency, and headroom margin. Pass: no booth zone exceeds 1,800 entities; headroom stays above 12.5% throughout.</p>
+<hr>
+</section>
+<section id="phase-5-formal-verification-retire-is-the-burst-absorption-claim-proved" class="level3">
+<h3 class="anchored" data-anchor-id="phase-5-formal-verification-retire-is-the-burst-absorption-claim-proved">Phase 5 — Formal verification (retire: is the burst absorption claim proved?)</h3>
+<p><strong>21. Audit Lean proofs and sketch headroom theorem</strong> Read <code>ghost_containment_implies_no_exit</code> and <code>staging_resolves_to_single_owner</code> in <code>PredictiveBVH/Spatial/HilbertRoundtrip.lean</code>. Identify lemma dependencies. State the theorem: <code>MIGRATION_HEADROOM ≥ MAX_BURST_SIZE</code> with constant values from <code>fabric_mmog_zone.h</code> visible to the Lean build. Pass: theorem is stated correctly and its dependencies are known before any proof attempt.</p>
+<p><strong>22. Prove and verify the headroom theorem</strong> Implement the theorem. The proof should reduce to <code>decide</code> or <code>norm_num</code> once constants are in scope. Run <code>lake build</code>; confirm no <code>sorry</code> placeholders remain. Pass: the burst absorption claim for the market rush scenario is formally verified.</p>
+<p><strong>23. BVH validation on market populations</strong> <code>lbvhAux</code> now sets <code>parentBounds</code> to entity-tight union. Run the BVH builder on <code>opening_crowd</code>, <code>rush</code>, and <code>browse</code> and confirm total SAH cost is ≤ the Morton baseline. Pass: entity-tight bounds do not regress BVH quality on market visitor distributions.</p>
+<p><strong>24. Centroid axis selection validation</strong> Instrument <code>lbvhAux</code> to log the chosen split axis per node. Run on <code>opening_crowd</code> and <code>browse</code>. Confirm the heuristic distributes axes sensibly rather than collapsing to a single axis on flat populations. Pass: centroid axis heuristic picks useful splits on real visitor distributions.</p>
+<p><strong>25. Saturator convergence on market populations</strong> Run <code>saturateAxes</code> on all three populations. Verify: (a) convergence in ≤ 3 passes; (b) it finds a cheaper partition than the initial LBVH on at least some subtrees. Pass: Hilbert-sorted BVH produces correct and competitive RDO cost with the full visitor population model.</p>
+<hr>
+</section>
+<section id="deferred" class="level3">
+<h3 class="anchored" data-anchor-id="deferred">Deferred</h3>
+<p><strong>UDS zone-to-zone transport</strong> — <code>FabricLocalZonePeer</code> via <code>UDSServer</code>/<code>StreamPeerUDS</code> as opt-in for same-machine booth-to-booth traffic. The RTT-derived adaptive timeout already fixes the 144-visitor burst under ENet fragmentation. Revisit only if fan-out measurement (Phase 4) identifies ENet as the bottleneck.</p>
+<p><strong>Editor booth visualizer</strong> — Hilbert band overlay, visitor count per booth, migration arrows in the 3D viewport. Unnecessary before the VR smoke test passes (Phase 2).</p>
+<p><strong>Editor multiplayer_fabric awareness</strong> — Making the editor understand booth zones and migration state. The demo runs headless zone servers plus a PCVR client; the editor does not participate. Revisit only if debugging Phase 3+ becomes painful without it.</p>
+</section>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>Risk-ordered sequencing ensures each phase produces a verifiable artifact before the next begins. Operators can see the market before creators can upload. Creators can upload before visitors can browse. Visitor experience is confirmed before event-scale load is applied. The Lean proof closes the formal gap last, after the empirical evidence is in.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>The sequencing assumes each phase completes before the next starts. Parallel work is possible (e.g.&nbsp;Lean proofs alongside Phase 2) but risks accumulating unverified assumptions. The 1,000-visitor load test requires provisioned hardware — this is a hard dependency on infrastructure availability.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>A feature-parallel approach (all phases simultaneously) would finish faster if nothing blocked, but any infrastructure failure in Phase 1 would block all downstream work invisibly. Risk-ordered sequencing surfaces blockers early.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>A solo creator with one booth zone and no visitors still exercises Phase 1 (operator visibility) and Phase 3 (asset upload). The market-scale phases are only required before opening to the public.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<ul>
+<li>Phase 1: <code>observer.tscn</code>, <code>zone_curtain.gd</code>, <code>SpectatorRig</code> — observer UI fixes</li>
+<li>Phase 2: <code>main.tscn</code>, <code>fabric_client.gd</code>, <code>trident_hand.gd</code> — VR wiring</li>
+<li>Phase 3: <code>multiplayer-fabric-zone-backend</code> <code>/chunks/:hash</code>, <code>jellyfish_asset_loader.gd</code></li>
+<li>Phase 4: headless load harness, zone provisioning scripts</li>
+<li>Phase 5: <code>PredictiveBVH/Spatial/HilbertRoundtrip.lean</code>, <code>lbvhAux</code> instrumentation</li>
+</ul>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: In Progress</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>VirtualCreatorMarket, ImplementationPlan, Aquarium, RiskSequencing, LoadTest, VR, AssetPipeline, Lean, BVH</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><code>20260421-infinite-aquarium-concept.md</code> — product concept and component status</li>
+<li><code>20260421-product-virtual-creator-market.md</code> — product strategy</li>
+<li><code>20260421-websocket-transport-parity.md</code> — 100-visitor load test design</li>
+<li><code>20260421-content-addressed-asset-delivery.md</code> — chunk store design</li>
+<li><code>20260421-rebac-zone-server-enforcement.md</code> — ReBAC on asset fetch</li>
+<li><code>20260421-rectgtn-jellyfish-behavior.md</code> — RECTGTN planning for entities</li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260421-virtual-creator-market-implementation-plan.html</guid>
+  <pubDate>Wed, 22 Apr 2026 06:33:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1264,7 +1485,798 @@ font-style: inherit;">BLOB</span>, slot_count, ts)</span></code></pre></div></di
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-sqlite-per-zone-journal.html</guid>
-  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:33:31 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260421-rectgtn-jellyfish-behavior.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="rectgtn-planning-for-jellyfish-behavior" class="level1">
+<h1>RECTGTN Planning for Jellyfish Behavior</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p><code>taskweft</code> is a C++20 library exposed as an Erlang NIF. Its current use in the zone server is limited to <code>check_rel()</code> for ReBAC authorization at join time and <code>CMD_INSTANCE_ASSET</code>. The library implements the full <strong>Relationship-Enabled Capability-Temporal Goal-Task-Network</strong> (RECTGTN) formalism: conjunctive and multi-goal decomposition, compound task methods with per-method alternatives, incremental replanning via a solution tree, ISO 8601 duration constraints, and stochastic Monte Carlo execution. All of this is available in <code>standalone/tw_planner.hpp</code> and companions — header-only, no BEAM round-trip required.</p>
+<p>In <code>CONCEPT_MMOG.md</code>, HTN planning was tombstoned because the godot-sandbox RISC-V guest path was out of scope. The sandbox path remains out of scope. The standalone header path is not.</p>
+<p>The aquarium zone server runs a C++ swarm simulation (<code>JellygridSwarm::tick()</code>) that drives jellyfish with hard-coded phase-based behaviour: pulse bob, current drift, predator flee. The behaviour is correct but fixed — every jellyfish of the same species behaves identically and the planner cannot adapt to zone state changes.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Jellyfish behaviour is table-driven. There is no mechanism to sequence multi-step behaviour (flee → hide → resume drift), handle temporal cooldowns between state changes, or vary behaviour by entity capability (a bioluminescent jellyfish near a light source behaves differently from one in darkness). RECTGTN planning covers all three.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="domain-and-plan-separation" class="level3">
+<h3 class="anchored" data-anchor-id="domain-and-plan-separation">Domain and plan separation</h3>
+<p>Two distinct layers:</p>
+<p><strong>Domain (fixed for zone lifetime)</strong> — loaded from the GLTF interactivity extensions in the zone asset bundle at startup. Defines the action vocabulary: state variable names, action effects, and method preconditions. The zone’s entity state is produced by applying actions from this domain; the domain and the entity state are a unit and cannot be swapped independently at runtime.</p>
+<p><strong>Plan (dynamic JSON/dict)</strong> — a sequence of action names that are valid within the loaded domain. Because a plan only references actions already defined in the domain, hot-pushing a new plan at runtime does not change the state schema. Zone ACID properties are preserved.</p>
+<p>This separation mirrors how GLTF interactivity works: the interactivity extension defines the fixed set of triggers and actions baked into the asset, while runtime orchestration decides which sequence to execute.</p>
+</section>
+<section id="domain-per-species" class="level3">
+<h3 class="anchored" data-anchor-id="domain-per-species">Domain per species</h3>
+<p>Each jellyfish species domain is a JSON-LD file in the zone asset bundle, loaded once at zone startup:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-2">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"@context"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://taskweft.v-sekai.org/domain/v1"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-3">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"state"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-4">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"location"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"open_water"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-5">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"threat_nearby"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">false</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-6">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"light_level"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dim"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-7">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"pulse_cooldown"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb1-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb1-9">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"tasks"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-10">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"behave"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span></span>
+<span id="cb1-11">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"method"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"flee"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span>       <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"precond"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"threat_nearby"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">true</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">},</span>    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"subtasks"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"flee_predator"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"recover"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-12">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"method"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"seek_light"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"precond"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"light_level"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bright"</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">},</span>  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"subtasks"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"drift_toward_light"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">,</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"pulse"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb1-13">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"method"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"idle"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span>       <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"precond"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{},</span>                           <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"subtasks"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">[</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"drift_current"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-14">    <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">]</span></span>
+<span id="cb1-15">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb1-16">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"actions"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-17">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"flee_predator"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span>      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"duration"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"PT2S"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"effects"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"location"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"shelter"</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb1-18">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"recover"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span>            <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"duration"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"PT5S"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"effects"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"threat_nearby"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">false</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb1-19">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"drift_toward_light"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"duration"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"PT3S"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"effects"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"location"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"light_source"</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb1-20">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"pulse"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span>              <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"duration"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"PT1S"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"effects"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"pulse_cooldown"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb1-21">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"drift_current"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span>      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"duration"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"PT4S"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"effects"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{}</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-22">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb1-23"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div></div>
+</section>
+<section id="zone-server-integration" class="level3">
+<h3 class="anchored" data-anchor-id="zone-server-integration">Zone server integration</h3>
+<p>The zone server links <code>standalone/tw_planner.hpp</code> directly. No BEAM round-trip occurs during simulation.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// In FabricMMOGZone — per-entity, called when current plan completes or environment changes</span></span>
+<span id="cb2-2"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">void</span> FabricMMOGZone<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>_replan_jellyfish<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">int</span> p_entity_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb2-3">    TwDomain domain <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> TwLoader<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>load_json_str<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>_species_domains<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span>p_entity_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">]);</span></span>
+<span id="cb2-4">    TwState  state  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> _build_entity_state<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>p_entity_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">);</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// reads zone sim state</span></span>
+<span id="cb2-5">    TwPlan   plan   <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> tw_plan<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>domain<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> state<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"behave"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">});</span></span>
+<span id="cb2-6">    _entity_plans<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span>p_entity_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">]</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> plan<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb2-7">    _entity_plan_step<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span>p_entity_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">]</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb2-8"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div></div>
+<p><code>_replan_jellyfish()</code> is called once per behaviour change, not per tick. The running plan’s current action drives <code>JellygridSwarm::tick()</code> for the action’s duration; the planner is invoked again only when the action completes or a threat sensor fires.</p>
+</section>
+<section id="incremental-replan-on-environment-change" class="level3">
+<h3 class="anchored" data-anchor-id="incremental-replan-on-environment-change">Incremental replan on environment change</h3>
+<p>When a predator enters the AOI of a jellyfish mid-plan:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">void</span> FabricMMOGZone<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>_on_threat_detected<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">int</span> p_entity_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb3-2">    TwState new_state <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> _build_entity_state<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>p_entity_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">);</span></span>
+<span id="cb3-3">    new_state<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>set<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"threat_nearby"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">);</span></span>
+<span id="cb3-4">    TwPlan new_plan <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> tw_replan_incremental<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span></span>
+<span id="cb3-5">        _species_domains<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span>p_entity_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">],</span></span>
+<span id="cb3-6">        _entity_plans<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span>p_entity_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">],</span></span>
+<span id="cb3-7">        _entity_plan_step<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span>p_entity_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">],</span></span>
+<span id="cb3-8">        new_state</span>
+<span id="cb3-9">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">);</span></span>
+<span id="cb3-10">    _entity_plans<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span>p_entity_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">]</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> new_plan<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb3-11"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div></div>
+<p><code>tw_replan_incremental()</code> backtracks at the nearest retryable method choice in the solution tree rather than restarting from the root. For short plans (3–5 actions) this is effectively free.</p>
+</section>
+<section id="temporal-constraints" class="level3">
+<h3 class="anchored" data-anchor-id="temporal-constraints">Temporal constraints</h3>
+<p>The domain encodes action durations as ISO 8601 strings. <code>tw_check_temporal()</code> validates the current plan against an origin timestamp before committing it. This prevents scheduling a 5-second recovery immediately before a zone-tick deadline.</p>
+</section>
+<section id="capability-gating-via-rebac" class="level3">
+<h3 class="anchored" data-anchor-id="capability-gating-via-rebac">Capability gating via ReBAC</h3>
+<p>A species domain can include capability preconditions:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb4-1"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"seek_light"</span><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb4-2">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"precond"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"light_level"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bright"</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb4-3">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"requires_capability"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"BIOLUMINESCENT"</span></span>
+<span id="cb4-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div></div>
+<p>Before executing <code>seek_light</code>, the zone server calls the existing <code>check_rel()</code> on the entity’s capability graph. Non-bioluminescent jellyfish never decompose into <code>seek_light</code> — the planner picks <code>idle</code> instead.</p>
+</section>
+<section id="runtime-plan-injection-via-cdn" class="level3">
+<h3 class="anchored" data-anchor-id="runtime-plan-injection-via-cdn">Runtime plan injection via CDN</h3>
+<p>Plans are pure JSON-LD data — they are stored in the content-addressed CDN (Uro) exactly like mesh assets and domain files. Zone-backend calls <code>Taskweft.plan/1</code> via the NIF, receives a JSON plan array, uploads it to Uro, and receives a <code>baked_url</code> (chunk hash URL). It sends the zone server a <code>CMD_SET_ENTITY_PLAN</code> packet carrying only that URL — not the plan bytes.</p>
+<pre><code>zone-backend:
+  plan_json = Taskweft.plan(domain_jsonld, state)
+  %{baked_url: url} = Uro.Storage.upload_plan(plan_json)
+  send_packet(zone_server, CMD_SET_ENTITY_PLAN, entity_id, url)
+
+zone server:
+  _on_cmd_set_entity_plan(entity_id, url)
+    → fetch url from CDN (disk-cached after first fetch)
+    → validate each action name against _species_domains[entity_id]
+    → apply if valid, discard silently if not</code></pre>
+<p>The CDN disk cache means all zone servers hosting the same species share the same plan bytes without re-downloading. A common jellyfish plan computed once by zone-backend is fetched once per zone server and cached for the duration of the session.</p>
+<p>The Elixir module is kept at arm’s length from the zone sim: it produces and uploads plans, it never executes them. The zone sim never calls into BEAM. A slow NIF call on the BEAM side does not affect the zone tick rate — the zone continues running the current plan until a replacement URL arrives.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">void</span> FabricMMOGZone<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>_on_cmd_set_entity_plan<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">int</span> p_entity_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">const</span> String <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&amp;</span>p_plan_url<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb6-2">    String plan_json <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> _fetch_from_cdn<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>p_plan_url<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">);</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// disk-cached</span></span>
+<span id="cb6-3">    TwPlan incoming  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> TwLoader<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>plan_from_json<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>plan_json<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">);</span></span>
+<span id="cb6-4">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(!</span>_domain_contains_all_actions<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>_species_domains<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span>p_entity_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">],</span> incoming<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">))</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb6-5">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// reject: action not in loaded domain</span></span>
+<span id="cb6-6">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb6-7">    _entity_plans<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span>p_entity_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">]</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> incoming<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb6-8">    _entity_plan_step<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span>p_entity_id<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">]</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb6-9"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div></div>
+</section>
+<section id="no-sandbox" class="level3">
+<h3 class="anchored" data-anchor-id="no-sandbox">No sandbox</h3>
+<p>The godot-sandbox RISC-V guest (<code>taskweft_planner.cpp</code>) is not used. The standalone headers compile into <code>fabric_mmog_zone.cpp</code> directly. Behaviour domains are loaded from the zone asset bundle at zone startup and cached in <code>_species_domains</code>.</p>
+</section>
+</section>
+<section id="beam-rectgtn-vs-zone-server-rectgtn" class="level2">
+<h2 class="anchored" data-anchor-id="beam-rectgtn-vs-zone-server-rectgtn">BEAM RECTGTN vs zone server RECTGTN</h2>
+<p>Both BEAM and the zone server run RECTGTN, but their domains and purposes are unrelated:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Layer</th>
+<th>Domain subject</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>BEAM (<code>Taskweft.plan/1</code>)</td>
+<td>Platform graph: users, permissions, zone events, upload workflows</td>
+<td>Application logic — access control, scheduling, delegation chains</td>
+</tr>
+<tr class="even">
+<td>Zone server (<code>tw_seek_plan()</code>)</td>
+<td>Simulation state: entity position, threat sensors, cooldowns</td>
+<td>Entity behaviour — jellyfish action selection within the physics loop</td>
+</tr>
+</tbody>
+</table>
+<p>BEAM-side plans operate asynchronously outside any tick budget and are uploaded to the CDN as data. Zone-server plans run synchronously within tick constraints and are never visible to BEAM. Neither side needs to model the other’s domain.</p>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>Multi-step behaviour emerges from the domain definition without C++ case logic. Adding a new species is a new JSON-LD file. Temporal constraints prevent physically impossible action sequences. Incremental replan handles dynamic threats without restarting from the root. ReBAC capability gating unifies entity permissions with entity behaviour.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>Each entity carries a live plan and a solution tree. At 511 jellyfish, memory per entity must be bounded. Plans longer than 8 steps should not be generated — a domain with long decomposition chains will be capped at <code>TW_MAX_DEPTH = 8</code> (configurable, default 256 upstream). The planner is not called per tick so this is not a throughput concern; it is a latency concern on replan when many entities detect the same threat simultaneously.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>Hot-reloading the <strong>domain</strong> via the NIF breaks zone ACID: the entity state was produced by applying actions defined in the current domain, so a new domain with different state keys or action effects leaves the entity state in a configuration no valid plan could have produced. The domain and the entity state are a unit; replacing one without the other violates the invariant.</p>
+<p>Hot-reloading <strong>plans</strong> via the NIF is safe and is described above (<code>CMD_SET_ENTITY_PLAN</code>). The distinction is that a plan is a sequence of action names — it carries no schema. Validation against the loaded domain before application ensures the plan references only actions that already exist in the simulation’s state machine.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>A zone with no jellyfish entities (empty zone during off-peak hours) allocates no plan storage and never calls the planner. A zone operating at maximum entity count (1,800 slots) with all slots occupied by jellyfish exercises the worst case: up to 1,800 simultaneous replan calls on a single threat broadcast. A batched replan queue (process N entities per tick, rotate) mitigates this.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<ul>
+<li><code>multiplayer-fabric-taskweft/standalone/</code> — link directly into zone server build; no new code required</li>
+<li><code>fabric_mmog_zone.cpp</code>
+<ul>
+<li><code>_replan_jellyfish()</code>, <code>_on_threat_detected()</code> — local C++ planning path</li>
+<li><code>_on_cmd_set_entity_plan()</code> — accept JSON plan from zone-backend, validate against loaded domain before applying</li>
+<li><code>_entity_plans</code>, <code>_entity_plan_step</code>, <code>_species_domains</code></li>
+</ul></li>
+<li><code>fabric_mmog_zone.h</code> — <code>HashMap&lt;int, TwPlan&gt;</code>, <code>HashMap&lt;int, int&gt;</code>, <code>HashMap&lt;String, TwDomain&gt;</code></li>
+<li>Species domain files — <code>assets/domains/jellyfish_common.jsonld</code>, <code>jellyfish_bioluminescent.jsonld</code></li>
+<li><code>JellygridSwarm::tick()</code> — read current action from plan rather than hard-coded phase table</li>
+<li><code>multiplayer-fabric-taskweft</code> NIF — <code>Taskweft.plan/1</code> called from zone-backend; output uploaded to Uro CDN; <code>baked_url</code> distributed via <code>CMD_SET_ENTITY_PLAN</code></li>
+<li><code>Uro.Storage.upload_plan/1</code> — stores plan JSON-LD in the content-addressed store alongside mesh and domain assets</li>
+</ul>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>RECTGTN, HTN, Planning, taskweft, Jellyfish, ZoneServer, C++, Behavior, Swarm, Incremental Replan</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><code>multiplayer-fabric-taskweft/standalone/tw_planner.hpp</code> — <code>tw_seek_plan()</code>, <code>tw_plan_with_tree()</code></li>
+<li><code>multiplayer-fabric-taskweft/standalone/tw_replan.hpp</code> — <code>tw_replan_incremental()</code></li>
+<li><code>multiplayer-fabric-taskweft/standalone/tw_soltree.hpp</code> — solution tree checkpoint/restore</li>
+<li><code>multiplayer-fabric-taskweft/lean/Planner.lean</code> — formal RECTGTN specification</li>
+<li><code>20260421-rebac-zone-server-enforcement.md</code> — ReBAC capability checks at join and instance time</li>
+<li><code>multiplayer-fabric-godot/modules/multiplayer_fabric_mmog/CONCEPT_MMOG.md</code> — aquarium PoC scope</li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260421-rectgtn-jellyfish-behavior.html</guid>
+  <pubDate>Wed, 22 Apr 2026 06:33:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1491,7 +2503,7 @@ font-style: inherit;">// existing allocation logic follows</span></span></code><
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-rebac-zone-server-enforcement.html</guid>
-  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:33:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1661,7 +2673,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-rebac-zone-relations.html</guid>
-  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:33:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1796,7 +2808,7 @@ theorem non_authority_cannot_bind_mutation :
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-rebac-permissions.html</guid>
-  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:33:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2055,7 +3067,89 @@ font-style: inherit;">note</span>         = {Over 1.1 million users on a desktop
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-product-virtual-creator-market.html</guid>
-  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:33:31 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260421-platform-pitch.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="platform-pitch" class="level1">
+<h1>Platform Pitch</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>multiplayer-fabric is a Godot module that puts zone authority, interest filtering, and entity migration into the Godot scene tree. This document states the competitive position for sponsor and partner conversations.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>No native MMOG networking exists for Godot. Unity and Unreal outsource this to middleware — Photon, PlayFab, Pragma — that charges per peak CCU and owns the session data. Operators have no self-hosted alternative.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<p><strong>Early.</strong> Godot has no native MMOG networking. The zone partitioning, interest relay, and migration protocol are implemented. The VR demo, asset streaming, and load testing are not yet done.</p>
+<p><strong>10× better (not yet measured).</strong> A 30-bit Hilbert partition is designed to replace the coordinator, match-maker, and session database that competing stacks require. Interest relay copies each packet once per physical link, not once per subscriber. The target is 1,000 concurrent players across five commodity machines with 12.5% headroom, 100-byte entity state, zero orchestrator. Fan-out has not been measured. The 1,000-player target has not been load-tested. See <code>20260421-virtual-creator-market-implementation-plan.md</code> for the measurement plan.</p>
+<p><strong>Survives longer.</strong> Ships as a Godot module under MIT. No per-seat fee, no runtime royalty, no vendor kill-switch. The Hilbert transforms are formally verified in Lean 4 and code-generated to C and Rust, so the core math does not rot when the engine upgrades. Asset delivery uses content-addressed chunk stores served by Uro with ReBAC permissions.</p>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>No competing self-hosted solution exists for Godot at this scope. Operators keep session data, set their own pricing, and are not subject to middleware ToS changes or shutdown risk.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>The 10× claims are targets, not measurements. Sponsors must be told explicitly what is done and what is not. The honest pitch is: the hard parts (broadphase, migration, formal proofs) are done; the demo, asset streaming, and load testing are not.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>Wrapping an existing middleware SDK (Photon, Nakama) would produce a working demo faster but would not retire the core thesis — that a Hilbert-partitioned zone mesh can replace a coordinator at commodity hardware cost. The thesis is the IP; the demo proves it.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>A sponsor evaluating multiplayer-fabric for a non-VR, non-MMOG application (e.g.&nbsp;a turn-based game with small lobbies) gets no benefit from the Hilbert broadphase or migration protocol. The pitch is specifically for applications with large simultaneous entity counts and continuous space.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<ul>
+<li>Zone partitioning, interest relay, migration protocol — implemented</li>
+<li>Hilbert transforms — formally verified in Lean 4, code-generated</li>
+<li>Uro ReBAC asset permissions — implemented</li>
+<li>VR demo, asset streaming, load test — not yet done (see implementation plan)</li>
+</ul>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Active</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>Pitch, Sponsor, Positioning, Competitive, MMOG, Godot</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><code>20260421-product-virtual-creator-market.md</code> — product strategy</li>
+<li><code>20260421-virtual-creator-market-implementation-plan.md</code> — what is done and what remains</li>
+<li><code>20260421-multiplayer-fabric-zone-architecture.md</code> — zone infrastructure detail</li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260421-platform-pitch.html</guid>
+  <pubDate>Wed, 22 Apr 2026 06:33:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2161,7 +3255,226 @@ client (Godot) — receives desync index URL on join</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-multiplayer-fabric-zone-architecture.html</guid>
-  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:33:31 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260421-infinite-aquarium-concept.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="the-infinite-aquarium" class="level1">
+<h1>The Infinite Aquarium</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>The Infinite Aquarium is the proof-of-concept application for multiplayer-fabric: a social, UGC bioluminescent ocean where players design jellyfish and release them into a shared neon sea built from other players’ creations. Comparable positioned titles: VRChat, Roblox, s&amp;box.</p>
+<p>The aquarium exercises every platform primitive in a single coherent demo: zone streaming, content-addressed asset delivery, ReBAC permissions, WebTransport/WebSocket transport, entity interest management, and RECTGTN planning. It is also the first concrete instance of the virtual creator market product (<code>20260421-product-virtual-creator-market.md</code>): a creator’s zone is their booth, their jellyfish are their products.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>multiplayer-fabric has no reference application. Without one, it is impossible to verify that the infrastructure primitives compose correctly end-to-end, or to demonstrate the platform to creators and operators. The aquarium is the smallest application that exercises all of them in combination.</p>
+</section>
+<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="demo-scope-two-hour-target" class="level3">
+<h3 class="anchored" data-anchor-id="demo-scope-two-hour-target">Demo scope (two-hour target)</h3>
+<p>Fetch a player-uploaded jellyfish asset from Uro by hash, instance it inside the XR grid scene, and have it visible in VR.</p>
+<ol type="1">
+<li><code>jellyfish_asset_loader.gd</code> calls <code>GET /shards/:id/assets</code> to resolve the zone asset manifest and download the <code>baked_url</code> for the jellyfish Godot scene.</li>
+<li>The loaded scene is instanced into the existing xr-grid scene via <code>CMD_INSTANCE_ASSET</code>.</li>
+<li>Player sees the UGC jellyfish appear in VR.</li>
+<li>Jellyfish movement driven by <code>JellygridSwarm::tick()</code> reading the current RECTGTN plan action.</li>
+</ol>
+<p>Pass condition: jellyfish appears in the scene, visible to the player in VR, with another player able to see it simultaneously.</p>
+</section>
+<section id="jellyfish-creator-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="jellyfish-creator-workflow">Jellyfish creator workflow</h3>
+<p>The asset format is a Godot scene. No external DCC tools required.</p>
+<ol type="1">
+<li>Design with CSG nodes (bell body, tentacle sweeps) in the Godot editor or an in-world editor scene.</li>
+<li>Bake CSG to a static mesh (<code>CSGShape3D.bake_mesh()</code>).</li>
+<li>Save the baked mesh scene to Uro — the content-addressed store assigns a chunk hash and <code>baked_url</code>.</li>
+</ol>
+<p>The baked scene is the canonical asset; clients instance it directly at runtime. The chunk hash is stable across uploads of identical geometry, so repeat downloads cost no bandwidth.</p>
+</section>
+<section id="zone-infrastructure" class="level3">
+<h3 class="anchored" data-anchor-id="zone-infrastructure">Zone infrastructure</h3>
+<p>The Abyss is a persistent, zone-sharded ocean:</p>
+<ul>
+<li>Hilbert-coded zone boundaries for seamless cross-zone movement</li>
+<li>Distributed simulation via multiplayer-fabric — each zone is a separate server process sharing entity state</li>
+<li>Area of Interest bands so players only receive data for nearby jellyfish</li>
+<li>Zone crossings are seamless; <code>MIGRATION_HEADROOM = 400</code> absorbs swarm spikes</li>
+<li>Performance target: 511+ jellyfish across a 3-zone loop without data loss</li>
+</ul>
+<p>Zone infrastructure is implemented. See <code>20260421-multiplayer-fabric-zone-architecture.md</code>.</p>
+</section>
+<section id="ugc-asset-pipeline" class="level3">
+<h3 class="anchored" data-anchor-id="ugc-asset-pipeline">UGC asset pipeline</h3>
+<p>Every jellyfish is a content-addressed asset bundle in Uro. Clients fetch by chunk hash at runtime and only download jellyfish within their AOI. The manifest endpoint (<code>GET /shards/:id/assets</code>) resolves the full asset list in one round trip. See <code>20260421-content-addressed-asset-delivery.md</code> and <code>20260421-zone-asset-manifest.md</code>.</p>
+</section>
+<section id="rectgtn-behaviour" class="level3">
+<h3 class="anchored" data-anchor-id="rectgtn-behaviour">RECTGTN behaviour</h3>
+<p>Each jellyfish species has a JSON-LD RECTGTN domain loaded at zone startup. The zone server runs <code>tw_seek_plan()</code> on domain + entity state to produce a behaviour plan stored in the CDN. Jellyfish movement in <code>JellygridSwarm::tick()</code> reads the current action from the plan rather than a hard-coded phase table. See <code>20260421-rectgtn-jellyfish-behavior.md</code>.</p>
+</section>
+<section id="implementation-status" class="level3">
+<h3 class="anchored" data-anchor-id="implementation-status">Implementation status</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Zone networking</td>
+<td>Working</td>
+<td><code>fabric_mmog_zone.cpp</code></td>
+</tr>
+<tr class="even">
+<td>Entity migration</td>
+<td>Working</td>
+<td><code>SCENARIO_JELLYFISH_ZONE_CROSSING</code></td>
+</tr>
+<tr class="odd">
+<td>Jellyfish creator</td>
+<td>In scope</td>
+<td>CSG design → bake mesh → save Godot scene → Uro</td>
+</tr>
+<tr class="even">
+<td>Asset streaming</td>
+<td>In progress</td>
+<td><code>jellyfish_asset_loader.gd</code> → <code>GET /shards/:id/assets</code> → <code>FabricMMOGAsset</code></td>
+</tr>
+<tr class="odd">
+<td>Zone console</td>
+<td>In progress</td>
+<td><code>multiplayer-fabric-zone-console</code> — Elixir TUI (ExRatatui), auth + shard list via Uro REST</td>
+</tr>
+<tr class="even">
+<td>VR interface</td>
+<td>Testing</td>
+<td>xr-grid project</td>
+</tr>
+<tr class="odd">
+<td>ReBAC permissions</td>
+<td>Working</td>
+<td><code>Uro.Acl</code> — <code>CAN_ENTER</code> and <code>CAN_INSTANCE</code> at zone join and slot allocation</td>
+</tr>
+<tr class="even">
+<td>Swarm physics</td>
+<td>In scope</td>
+<td><code>jellygrid_swarm_sim.hpp</code> — pure C++, no sandbox</td>
+</tr>
+<tr class="odd">
+<td>Current simulation</td>
+<td>In scope</td>
+<td><code>jellygrid_current_sim.hpp</code> — pure C++, no sandbox</td>
+</tr>
+<tr class="even">
+<td>RECTGTN planning</td>
+<td>In scope</td>
+<td><code>tw_planner.hpp</code> standalone headers in <code>fabric_mmog_zone.cpp</code>; plans stored in CDN</td>
+</tr>
+<tr class="odd">
+<td>Behavior scripts</td>
+<td><del>Tombstoned</del></td>
+<td>godot-sandbox / RISC-V ELF guest — standalone headers used instead</td>
+</tr>
+<tr class="even">
+<td>Pulse waveform</td>
+<td><del>Tombstoned</del></td>
+<td>dropped from asset bundle</td>
+</tr>
+<tr class="odd">
+<td>Remix system</td>
+<td><del>Tombstoned</del></td>
+<td>clone + fork provenance chain</td>
+</tr>
+<tr class="even">
+<td>Moderation layer</td>
+<td><del>Tombstoned</del></td>
+<td>Uro ACL + operator tombstone endpoint</td>
+</tr>
+<tr class="odd">
+<td>Environmental FX</td>
+<td><del>Tombstoned</del></td>
+<td>currents, rip events, bloom dynamics</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>The aquarium is the smallest application that exercises every platform primitive end-to-end. If the demo passes, the infrastructure composes correctly. If any primitive fails, the failure is immediately visible in a concrete scenario rather than an abstract test.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>A bioluminescent jellyfish ocean is a narrow theme. Operators evaluating multiplayer-fabric for other applications (e.g.&nbsp;avatar showrooms, board games) must extrapolate from the aquarium. A more neutral demo (empty room with a moving cube) would be less compelling and exercise fewer primitives.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>A tag game (one chaser, rest flee across zone boundaries) would stress-test real-time position sync and zone handoff without touching asset delivery or ReBAC. It validates the engine but not the product. The aquarium validates both.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>A zone with no uploaded jellyfish (new operator, empty ocean) still passes the two-hour demo if the player’s own jellyfish appears after upload. The shared-ocean property is a second milestone, not a prerequisite.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<ul>
+<li><code>multiplayer-fabric-godot/modules/multiplayer_fabric_mmog/</code> — zone server, swarm sim, current sim, RECTGTN integration</li>
+<li><code>multiplayer-fabric-godot/modules/multiplayer_fabric_mmog/jellyfish_asset_loader.gd</code> — asset manifest → CDN fetch → scene instance</li>
+<li><code>assets/domains/jellyfish_common.jsonld</code>, <code>jellyfish_bioluminescent.jsonld</code> — RECTGTN species domains</li>
+<li><code>multiplayer-fabric-zone-backend</code> — <code>GET /shards/:id/assets</code>, ReBAC enforcement, Uro asset storage</li>
+<li><code>multiplayer-fabric-zone-console</code> — operator TUI for zone management</li>
+</ul>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: In Progress</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>Aquarium, PoC, UGC, Jellyfish, VR, Demo, Product, CreatorMarket</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><code>20260421-product-virtual-creator-market.md</code> — product strategy; booth = zone</li>
+<li><code>20260421-multiplayer-fabric-zone-architecture.md</code> — zone infrastructure</li>
+<li><code>20260421-rectgtn-jellyfish-behavior.md</code> — RECTGTN planning for jellyfish</li>
+<li><code>20260421-zone-asset-manifest.md</code> — <code>GET /shards/:id/assets</code></li>
+<li><code>20260421-content-addressed-asset-delivery.md</code> — casync/Uro asset pipeline</li>
+<li><code>20260421-rebac-zone-server-enforcement.md</code> — <code>CAN_ENTER</code> and <code>CAN_INSTANCE</code></li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260421-infinite-aquarium-concept.html</guid>
+  <pubDate>Wed, 22 Apr 2026 06:33:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2245,7 +3558,7 @@ client receives desync_index_url → fetches .caibx index → fetches only missi
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-content-addressed-asset-delivery.html</guid>
-  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:33:31 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2434,976 +3747,7 @@ font-style: inherit;">end</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-asset-zone-locality.html</guid>
-  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20260421-asset-delivery-benchmark.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="asset-delivery-stack-benchmark" class="level1">
-<h1>Asset Delivery Stack Benchmark</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p><code>multiplayer-fabric-desync</code> is a Go reimplementation of casync: content-defined chunking (SipHash rolling hash, 48-byte window, target 64 KB chunks), SHA-512/256 chunk IDs, and zstd compression. The <code>20260421-architecture-strategy-2026.md</code> document identifies zchunk as an alternative: HTTP range-request compatible, zstd-compressed, and deployable over a standard CDN without a custom chunk server. No benchmark comparing the two strategies exists. The delivery stack default is unsettled.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Content-defined chunking (CDC) benefits diminish for asset bundles where chunk boundaries do not align with file boundaries. Godot exports mix many small files (<code>.tres</code>, <code>.import</code>, <code>.translation</code>) with large ones (<code>.glb</code>, <code>.png</code>). Whether casync’s CDC parameters suit this layout, and whether zchunk’s simpler HTTP-range approach delivers competitive patch sizes, is unknown without measurement.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>Prepare a representative Godot export: a V-Sekai avatar and environment, approximately 500 MB, with a mix of file types matching a typical world export.</p>
-<p>Apply three delivery strategies:</p>
-<p><strong>Strategy A — casync desync (current)</strong> Chunk with the existing SipHash CDC parameters. Serve via <code>multiplayer-fabric-desync</code>. Measure using <code>desync make</code> + <code>desync extract</code>.</p>
-<p><strong>Strategy B — zchunk</strong> Chunk using <code>zck</code> with zstd compression. Serve over a plain HTTP server using byte-range requests. No custom chunk server required. Measure using <code>zck</code> + <code>unzck</code>.</p>
-<p><strong>Strategy C — CDN delta (baseline)</strong> Compute binary diffs between consecutive exports using <code>bsdiff</code>. Serve diffs over HTTP. Measure download size and apply time.</p>
-<p>Metrics for each strategy:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Metric</th>
-<th>Method</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Cold download time</td>
-<td>Fresh client, no local cache, 100 Mbps link</td>
-</tr>
-<tr class="even">
-<td>Patch size</td>
-<td>10% asset change (one avatar texture replaced)</td>
-</tr>
-<tr class="odd">
-<td>Server complexity</td>
-<td>Count of required services and configuration files</td>
-</tr>
-<tr class="even">
-<td>Client CPU on reassembly</td>
-<td>Time to extract on a 4-core laptop</td>
-</tr>
-</tbody>
-</table>
-<p>Write raw results to <code>manuals/decisions/attachments/asset-delivery-benchmark-results.csv</code>. Write the decision (which strategy becomes the default) as a follow-on ADR that supersedes this one.</p>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p>The benchmark produces an evidence-based default rather than a best-guess. If zchunk wins on patch size and server simplicity, it removes the <code>aria-storage</code> deployment dependency entirely. If casync wins on cold download time, the current stack is confirmed.</p>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>The benchmark requires a representative asset corpus and a controlled network environment. Results will not generalise beyond the tested file mix and link conditions. A single benchmark run is not a production load test.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Adopting zchunk without a benchmark risks regressions for large assets where CDC’s chunk reuse across versions outperforms zchunk’s fixed-boundary approach. Adopting OCI layers (container registry-based delivery) adds infrastructure dependency not compatible with the homelab deployment target.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>Very small assets (under 16 KB) are smaller than one casync chunk and gain nothing from deduplication. Both casync and zchunk handle them correctly but wastefully. A size threshold below which assets are served directly (no chunking) is worth measuring separately.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<ul>
-<li>Benchmark harness script: <code>multiplayer-fabric-desync/bench/</code></li>
-<li>Results file: <code>manuals/decisions/attachments/asset-delivery-benchmark-results.csv</code></li>
-<li>Follow-on ADR to record the decision</li>
-</ul>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>iFire</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>casync, zchunk, Benchmark, AssetDelivery, CDN, desync, Performance</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><code>20260421-content-addressed-asset-delivery.md</code> — current casync design</li>
-<li><code>20260421-architecture-strategy-2026.md</code> — zchunk identified as alternative</li>
-<li><code>multiplayer-fabric-desync/</code> — Go casync reimplementation</li>
-</ol>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20260421-asset-delivery-benchmark.html</guid>
-  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20260128-reject-sql-based-feature-flagging.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="rejected-sql-based-feature-flagging-for-application-configuration" class="level1">
-<h1>Rejected: SQL-Based Feature Flagging for Application Configuration</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>During development of the V-Sekai application architecture, a proposal was made to implement SQL-based feature flagging to enable runtime configuration changes without application restarts. This would allow toggling between different implementations (such as Next.js vs LiveView frontends) and enabling/disabling features dynamically.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>The development team needed a mechanism to manage feature toggles and configuration changes that would support: - Gradual rollout of new features - A/B testing of different implementations - Runtime configuration changes without service downtime - Managing separate docker container deployments</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>The proposed SQL-based feature flagging system would: - Store feature flags and configuration values in database tables - Provide runtime querying of flag states - Allow dynamic enabling/disabling of features without code changes - Support per-user or per-environment flag overrides</p>
-<p>However, this approach was rejected in favor of simpler alternatives.</p>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p><strong>Rejected Proposal Benefits (Not Implemented):</strong> - Dynamic runtime configuration without restarts - Database-backed configuration management - Granular control over feature availability - Potential for user-specific feature toggles</p>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p><strong>SQL-Based Feature Flagging Issues:</strong> - <strong>Overengineered</strong>: Complex database schema and query logic for simple configuration needs - <strong>Error-prone</strong>: Configuration stored in database tables is harder to version control and audit - <strong>Docker Limitations</strong>: Cannot control separate container execution (either run Next.js container or don’t) - <strong>Caching Issues</strong>: Runtime flag changes don’t affect code paths that branch during application startup - <strong>Maintenance Burden</strong>: Additional complexity for operations and debugging</p>
-<p><strong>Runtime Configuration Problems:</strong> - Some application behavior is determined at startup and cannot be changed dynamically - Feature flags don’t solve the fundamental problem of maintaining parallel implementations - Introduces potential for inconsistent application state during flag transitions</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p><strong>SQL-Based Feature Flagging:</strong> - Implementing database tables for configuration management - Building runtime flag evaluation system - Creating administrative interfaces for flag management - Handling flag state synchronization across distributed systems</p>
-<p><strong>Dynamic Runtime Configuration:</strong> - Building systems that allow all configuration to change without restart - Implementing complex caching invalidation strategies - Creating sophisticated state management for configuration changes</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p><strong>When SQL Feature Flagging Might Be Appropriate:</strong> - Large enterprise applications with hundreds of features requiring granular control - Systems where configuration changes must take effect immediately without any downtime - Applications with user-specific feature customization requirements - Complex A/B testing scenarios requiring database-backed analytics</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>Configuration management is core to application deployment and operations. The development team handles configuration through environment variables, YAML files, and Elixir configuration files (config.exs) rather than implementing complex database-backed systems.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Rejected <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>iFire</li>
-<li>Lyuma</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>Configuration, Feature-Flags, Architecture, Elixir, Database, Operations</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://thoughtworks.com/en-us/insights/blog/continuous-delivery/limits-of-feature-toggles">Managing feature toggles in teams: The limits of feature toggles</a></li>
-<li><a href="https://martinfowler.com/articles/feature-toggles.html">Feature Toggles (aka Feature Flags)</a></li>
-<li><a href="https://12factor.net/config">Configuration as Code Best Practices</a></li>
-</ol>
-<hr>
-<section id="configuration-terminology" class="level3">
-<h3 class="anchored" data-anchor-id="configuration-terminology">Configuration Terminology</h3>
-<ol type="1">
-<li><strong>Feature Flag</strong>: A mechanism to enable or disable functionality without code changes</li>
-<li><strong>Configuration Drift</strong>: When runtime configuration differs from deployed code expectations</li>
-<li><strong>Twelve-Factor App</strong>: Application development methodology emphasizing configuration through environment variables</li>
-<li><strong>Hot Reload</strong>: Changing application behavior without restarting the process</li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20260128-reject-sql-based-feature-flagging.html</guid>
-  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20260128-hypervisor-selection-for-development-infrastructure.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="proposed-evaluate-nutanix-community-edition-and-harvester-hci-for-development-infrastructure" class="level1">
-<h1>Proposed: Evaluate Nutanix Community Edition and Harvester HCI for Development Infrastructure</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>The development team needs to evaluate hypervisor solutions for remote infrastructure management. Two primary options are being considered: Nutanix Community Edition (enterprise-grade with community licensing) and Harvester HCI (fully open-source hyperconverged infrastructure). Both should enable easy administration over the internet while maintaining portability to cloud-native deployments, with support for container deployment and cloud-init for development workflows.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Current infrastructure lacks a standardized hypervisor solution for development and testing environments that balances ease of remote administration with the requirement for portability and open-source alternatives.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>Evaluate two hypervisor solutions for development infrastructure:</p>
-<p><strong>Option 1: Nutanix Community Edition</strong></p>
-<ul>
-<li>Install on bare metal or VMs (up to 4 nodes free)</li>
-<li>Web-based management interface for remote administration</li>
-<li>Built-in container and cloud-init support</li>
-<li>Can run on developer laptops for local testing</li>
-</ul>
-<p><strong>Option 2: Harvester HCI</strong></p>
-<ul>
-<li>100% open-source hyperconverged infrastructure solution</li>
-<li>Built on Kubernetes, KubeVirt, and Longhorn</li>
-<li>Modern HCI using enterprise-grade open-source technologies</li>
-<li>Single pane of glass for virtualization and container management</li>
-</ul>
-<p>Both options provide:</p>
-<ul>
-<li>Remote administration capabilities over internet</li>
-<li>Container workload support</li>
-<li>Cloud-init integration for automated deployments</li>
-<li>Portability to cloud-native architectures when scaling</li>
-</ul>
-<p>Infrastructure Design:</p>
-<pre><code>Hypervisor Layer (Nutanix/Harvester)
-    ↓
-Container/Application Layer (K3s, Docker, etc.)
-    ↓
-Development Applications (V-Sekai, etc.)</code></pre>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<ul>
-<li><strong>Easy Remote Administration</strong>: Both solutions provide web-based interfaces for internet-accessible management</li>
-<li><strong>Container Support</strong>: Native support for containers and cloud-init simplifies deployment workflows</li>
-<li><strong>Laptop Development</strong>: Both can run on developer laptops or VMs for local testing environments</li>
-<li><strong>Cost Effective</strong>: Free community/open-source licensing for development use</li>
-<li><strong>Open Source Options</strong>: Harvester provides fully open-source alternative to Nutanix’s hybrid model</li>
-<li><strong>Cloud Portability</strong>: Applications remain deployable on cloud platforms without hypervisor dependencies</li>
-<li><strong>Modern Architecture</strong>: Built on proven open-source technologies (Linux, KVM, Kubernetes)</li>
-</ul>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p><strong>Nutanix Community Edition:</strong></p>
-<ul>
-<li>Not fully open source (built on proprietary enterprise software)</li>
-<li>Vendor dependency concerns for enterprise software</li>
-<li>Limited to 4 nodes in Community Edition</li>
-<li>Potential future licensing changes</li>
-</ul>
-<p><strong>Harvester HCI:</strong></p>
-<ul>
-<li>Newer project compared to established enterprise solutions</li>
-<li>May have fewer third-party integrations than mature platforms</li>
-<li>Requires Kubernetes knowledge for advanced management</li>
-<li>Community support vs enterprise backing</li>
-</ul>
-<p><strong>Both Options:</strong></p>
-<ul>
-<li>Learning curve for hypervisor management</li>
-<li>Resource overhead compared to container-only solutions</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<ul>
-<li><strong>Proxmox Only</strong>: While viable, it lacks the integrated HCI features and container management capabilities of both Nutanix and Harvester</li>
-<li><strong>Cloud-Only Approach</strong>: Would sacrifice local development environments and easy remote administration capabilities</li>
-<li><strong>Custom Hypervisor Solution</strong>: Would require significant development effort for features already available in mature open-source solutions</li>
-<li><strong>Single Vendor Lock-in</strong>: Choosing only proprietary solutions without open-source alternatives</li>
-</ul>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<ul>
-<li><strong>Large-Scale Production</strong>: When infrastructure exceeds 4 nodes or requires enterprise support beyond Community Edition</li>
-<li><strong>Air-Gapped Environments</strong>: Where internet-based administration tools cannot be used</li>
-<li><strong>Minimal Resource Scenarios</strong>: Where hypervisor overhead is unacceptable for resource-constrained deployments</li>
-</ul>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>Infrastructure tooling decisions are core to development workflow efficiency. The development team will handle evaluation, documentation, and implementation of both primary and fallback hypervisor solutions.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai Development Team</li>
-<li>iFire</li>
-<li>GPot</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>Infrastructure, Hypervisor, HCI, Nutanix, Harvester, Development, Containers, Cloud-Native, Open-Source</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://www.nutanix.com/products/community-edition">Nutanix Community Edition</a></li>
-<li><a href="https://portal.nutanix.com/page/documents/details?targetId=Community-Edition-Comparison:Community-Edition-Comparison">Nutanix Community Edition Documentation</a></li>
-<li><a href="https://harvesterhci.io/">Harvester HCI - Open-source hyperconverged infrastructure</a></li>
-<li><a href="https://github.com/harvester/harvester">SUSE Harvester GitHub</a></li>
-<li><a href="https://github.com/nutanix/nutanix.ansible">Nutanix Ansible Collection</a></li>
-</ol>
-<hr>
-<section id="infrastructure-jargon" class="level3">
-<h3 class="anchored" data-anchor-id="infrastructure-jargon">Infrastructure Jargon</h3>
-<ol type="1">
-<li><strong>Hypervisor</strong>: Software that creates and manages virtual machines, allowing multiple operating systems to run on a single physical machine.</li>
-<li><strong>HCI (Hyper-Converged Infrastructure)</strong>: Integrates compute, storage, and networking into a single, software-defined platform.</li>
-<li><strong>Cloud-Init</strong>: Multi-distribution package that handles early initialization of cloud instances, supporting configuration of hosts immediately after instantiation.</li>
-<li><strong>Bare Metal</strong>: Running software directly on physical hardware without virtualization layer.</li>
-</ol>
-<p>AI assistant Aria assisted with this article.</p>
-
-
-</section>
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20260128-hypervisor-selection-for-development-infrastructure.html</guid>
-  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20250427-system-cockroachdb-setup.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="draft-cockroachdb-v22.1-systemd-service-setup" class="level1">
-<h1>Draft: CockroachDB v22.1 Systemd Service Setup</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>CockroachDB provides a resilient and scalable SQL database solution suitable for backend services. For reliable operation within the V-Sekai infrastructure, managing CockroachDB (specifically version 22.1 as used in our stack) via systemd ensures consistent startup, monitoring, and recovery.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Manually starting, stopping, and configuring a secure CockroachDB cluster node is cumbersome and prone to error. Without systemd management, the database process won’t automatically restart on failure or system reboot, and applying security configurations consistently becomes challenging.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>This proposal outlines setting up a single CockroachDB v22.1 node as a secure systemd service on Linux.</p>
-<p><strong>1. Installation:</strong> Download the CockroachDB v22.1 binary and place it in <code>/usr/local/bin/</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Download and extract</span></span>
-<span id="cb1-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">curl</span> https://github.com/V-Sekai/cockroach/releases/download/v22.1.64b21683521d9a8735ad/cockroach-v22.1.64b21683521d9a8735ad.linux-amd64.tgz <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">tar</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-xz</span></span>
-<span id="cb1-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> cp <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-i</span> cockroach-v22.1.linux-amd64/cockroach /usr/local/bin/</span>
-<span id="cb1-4"></span>
-<span id="cb1-5"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Optional: Install spatial libraries (if needed)</span></span>
-<span id="cb1-6"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mkdir</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-p</span> /usr/local/lib/cockroach</span>
-<span id="cb1-7"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> cp <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-i</span> cockroach-v22.1.linux-amd64/lib/libgeos.so /usr/local/lib/cockroach/</span>
-<span id="cb1-8"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> cp <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-i</span> cockroach-v22.1.linux-amd64/lib/libgeos_c.so /usr/local/lib/cockroach/</span></code></pre></div></div>
-<p><strong>2. Security Setup:</strong> Generate CA, node, and client certificates. Store them in a secure directory (e.g., <code>/var/lib/cockroach/certs</code>). Ensure appropriate permissions.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Create directories</span></span>
-<span id="cb2-2"><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">DATA_DIR</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"/var/lib/cockroach"</span></span>
-<span id="cb2-3"><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">CERT_DIR</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${DATA_DIR}</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">/certs"</span></span>
-<span id="cb2-4"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> mkdir <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-p</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${CERT_DIR}</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span></span>
-<span id="cb2-5"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> chown <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-R</span> cockroach:cockroach <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${DATA_DIR}</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span> <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Assuming a 'cockroach' user/group exists</span></span>
-<span id="cb2-6"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> chmod 700 <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${DATA_DIR}</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span></span>
-<span id="cb2-7"></span>
-<span id="cb2-8"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Generate Certs (run as cockroach user or adjust permissions after)</span></span>
-<span id="cb2-9"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">cockroach</span> cert create-ca <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--certs-dir</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${CERT_DIR}</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--ca-key</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${CERT_DIR}</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">/ca.key"</span></span>
-<span id="cb2-10"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">cockroach</span> cert create-node localhost <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$(</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">hostname</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-f</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">)</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--certs-dir</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${CERT_DIR}</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--ca-key</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${CERT_DIR}</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">/ca.key"</span></span>
-<span id="cb2-11"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">cockroach</span> cert create-client root <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--certs-dir</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${CERT_DIR}</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--ca-key</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${CERT_DIR}</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">/ca.key"</span></span></code></pre></div></div>
-<p><strong>3. Systemd Service:</strong> Create a systemd unit file <code>/etc/systemd/system/cockroachdb.service</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># File: /etc/systemd/system/cockroachdb.service</span></span>
-<span id="cb3-2"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">[Unit]</span></span>
-<span id="cb3-3"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">Description</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">CockroachDB Single-Node SQL Database Server</span></span>
-<span id="cb3-4"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">After</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">network.target</span></span>
-<span id="cb3-5"></span>
-<span id="cb3-6"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">[Service]</span></span>
-<span id="cb3-7"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">User</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">cockroach</span></span>
-<span id="cb3-8"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">Group</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">cockroach</span></span>
-<span id="cb3-9"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">WorkingDirectory</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">/var/lib/cockroach</span></span>
-<span id="cb3-10"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># For a single-node setup:</span></span>
-<span id="cb3-11"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">ExecStart</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">/usr/local/bin/cockroach start-single-node \</span></span>
-<span id="cb3-12"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">    --certs-dir</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">/var/lib/cockroach/certs \</span></span>
-<span id="cb3-13"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">    --store</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">/var/lib/cockroach/data \</span></span>
-<span id="cb3-14"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">    --listen-addr</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">0.0.0.0:26257 \</span></span>
-<span id="cb3-15"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">    --http-addr</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">0.0.0.0:8080 \</span></span>
-<span id="cb3-16"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">    --cache</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">.25 \</span></span>
-<span id="cb3-17"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">    --max-sql-memory</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">.25</span></span>
-<span id="cb3-18"></span>
-<span id="cb3-19"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># For a multi-node cluster setup, replace ExecStart with:</span></span>
-<span id="cb3-20"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># ExecStart=/usr/local/bin/cockroach start \</span></span>
-<span id="cb3-21"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#     --certs-dir=/var/lib/cockroach/certs \</span></span>
-<span id="cb3-22"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#     --store=/var/lib/cockroach/data \</span></span>
-<span id="cb3-23"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#     --listen-addr=0.0.0.0:26257 \</span></span>
-<span id="cb3-24"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#     --http-addr=0.0.0.0:8080 \</span></span>
-<span id="cb3-25"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#     --join=&lt;node1-ip&gt;:26257,&lt;node2-ip&gt;:26257,&lt;node3-ip&gt;:26257 \</span></span>
-<span id="cb3-26"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#     --cache=.25 \</span></span>
-<span id="cb3-27"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#     --max-sql-memory=.25</span></span>
-<span id="cb3-28"></span>
-<span id="cb3-29"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">TimeoutStopSec</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">60</span></span>
-<span id="cb3-30"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">Restart</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">always</span></span>
-<span id="cb3-31"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">RestartSec</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span></span>
-<span id="cb3-32"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">StandardOutput</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">syslog</span></span>
-<span id="cb3-33"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">StandardError</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">syslog</span></span>
-<span id="cb3-34"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">SyslogIdentifier</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">cockroachdb</span></span>
-<span id="cb3-35"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">LimitNOFILE</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1048576</span></span>
-<span id="cb3-36"></span>
-<span id="cb3-37"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">[Install]</span></span>
-<span id="cb3-38"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">WantedBy</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">multi-user.target</span></span></code></pre></div></div>
-<p><em>Note: The default <code>ExecStart</code> uses <code>cockroach start-single-node</code>. For a multi-node cluster, comment out the <code>start-single-node</code> command and uncomment/adjust the <code>cockroach start</code> command, ensuring the <code>--join</code> addresses are correct.</em> <em>Note: Create the <code>cockroach</code> user and group if they don’t exist.</em> <em>Note: Create the data directory <code>/var/lib/cockroach/data</code> and set ownership.</em></p>
-<p><strong>4. Enable &amp; Start:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> systemctl daemon-reload</span>
-<span id="cb4-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> systemctl enable cockroachdb.service</span>
-<span id="cb4-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> systemctl start cockroachdb.service</span>
-<span id="cb4-4"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> systemctl status cockroachdb.service</span></code></pre></div></div>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<ul>
-<li><strong>Reliability:</strong> Automated startup, restarts, and management via systemd.</li>
-<li><strong>Security:</strong> Enforces secure cluster communication using TLS certificates.</li>
-<li><strong>Consistency:</strong> Standardized setup across different machines.</li>
-<li><strong>Manageability:</strong> Easy to start, stop, check status using <code>systemctl</code>.</li>
-</ul>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<ul>
-<li><strong>Initial Complexity:</strong> Certificate generation and systemd unit file creation require careful setup.</li>
-<li><strong>Systemd Dependency:</strong> Relies on Linux distributions using systemd.</li>
-<li><strong>Configuration Management:</strong> Cluster join info and other flags need proper management.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<ul>
-<li><strong>Manual Execution:</strong> Running <code>cockroach start</code> manually in <code>screen</code> or <code>tmux</code> lacks robustness.</li>
-<li><strong>Docker/Kubernetes:</strong> While viable (#attachment), direct systemd integration is chosen for simplicity in specific VM-based scenarios.</li>
-<li><strong>Insecure Mode:</strong> Running without TLS certificates is not suitable for production or sensitive data.</li>
-</ul>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<ul>
-<li>Running temporary, insecure, single-node instances for quick local testing (<code>cockroach demo</code> or <code>cockroach start-single-node --insecure</code>).</li>
-</ul>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>Reliable database infrastructure is core to V-Sekai’s backend. This setup will be implemented and maintained by the infrastructure team.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>V-Sekai Development Team / Infrastructure Team</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>CockroachDB, Database, Systemd, Linux, Security, Infrastructure, v22.1</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="https://www.cockroachlabs.com/docs/v22.1/install-cockroachdb-linux.html">Install CockroachDB on Linux (v22.1)</a> (#attachment)</li>
-<li><a href="https://www.cockroachlabs.com/docs/v22.1/manual-deployment.html">CockroachDB Manual Deployment</a></li>
-<li><a href="https://www.cockroachlabs.com/docs/v22.1/cockroach-start.html">CockroachDB <code>start</code> command</a></li>
-<li><a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html">Systemd Service Unit Documentation</a></li>
-</ol>
-<hr>
-<section id="game-development-jargon" class="level3">
-<h3 class="anchored" data-anchor-id="game-development-jargon">Game Development Jargon</h3>
-<ol type="1">
-<li><strong>CockroachDB</strong>: A distributed SQL database designed for scalability and resilience.</li>
-<li><strong>Systemd</strong>: A system and service manager for Linux.</li>
-<li><strong>CA (Certificate Authority)</strong>: An entity that issues digital certificates.</li>
-<li><strong>TLS Certificate</strong>: A digital certificate used to establish secure communication channels (like HTTPS or secure database connections).</li>
-</ol>
-
-
-</section>
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20250427-system-cockroachdb-setup.html</guid>
-  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20250427-recommender-system.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="draft-phoenix-based-recommender-system-integration-using-flame" class="level1">
-<h1>Draft: Phoenix-Based Recommender System Integration (Using FLAME)</h1>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context"><strong>Context</strong></h2>
-<p>V-Sekai requires a scalable recommendation system. The Elixir/Phoenix backend (uro) will integrate Python ML (<code>librecommender</code>) via <code>FLAME</code>. The core data flow involves <code>Oban</code> for job management, <code>Membrane</code> for stream processing, <code>Ecto</code> for database interaction with CockroachDB (CRDB), and <code>FLAME</code> as the bridge to run Python ML models.</p>
-</section>
-<section id="problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="problem-statement"><strong>Problem Statement</strong></h2>
-<ol type="1">
-<li>Scalability limits of standalone Python recommendation serving.</li>
-<li>Inefficient user/item handling without specialized libraries or optimized serving.</li>
-<li>Complexity in managing Python processes and dependencies alongside an Elixir application.</li>
-</ol>
-</section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution"><strong>Proposed Solution</strong></h2>
-<p>Implement Elixir/Phoenix using <code>FLAME</code> to serve the <code>librecommender</code> model. Leverage <code>Ecto</code> for CRDB data mapping, <code>Oban</code> for background job processing (like model retraining triggers or batch predictions), and potentially <code>Membrane</code> for integrating recommendation calls into data streams.</p>
-<p><strong>Key Components:</strong></p>
-<ul>
-<li><strong>Phoenix/Ecto:</strong> Backend framework and database interaction layer with CRDB. Handles schemas and application logic.</li>
-<li><strong>Oban:</strong> Manages background jobs which can trigger processing, including interactions with FLAME services or data preparation.</li>
-<li><strong>Membrane:</strong> Used for stream-based processing pipelines. Could potentially feed data to or consume results from FLAME-served models.</li>
-<li><strong>FLAME:</strong> Manages the lifecycle and serving of the Python <code>librecommender</code> model, allowing Elixir processes to interact with it efficiently.</li>
-<li><strong>CockroachDB (CRDB):</strong> Persistent storage managed via Ecto.</li>
-</ul>
-</section>
-<section id="implementation-plan" class="level2">
-<h2 class="anchored" data-anchor-id="implementation-plan"><strong>Implementation Plan</strong></h2>
-<ol type="1">
-<li><strong>Phase 1</strong>: Core Setup &amp; Basic Integration
-<ul>
-<li>Define Ecto schemas mapping to CRDB.</li>
-<li>Set up the <code>FLAME</code> environment and configure it to serve the <code>librecommender</code> model.</li>
-<li><strong>Stage 1</strong>: Implement Phoenix endpoints or Oban workers that make requests to the <code>librecommender</code> model served by <code>FLAME</code> and interact with CRDB via Ecto.</li>
-</ul></li>
-<li><strong>Phase 2</strong>: Advanced Integration &amp; Metadata
-<ul>
-<li>Develop Elixir client modules for interacting with the <code>FLAME</code>-served <code>librecommender</code>.</li>
-<li><strong>Stage 2</strong>: Explore integrating <code>FLAME</code> calls within Membrane pipelines (potentially triggered by Oban) for stream-based recommendations, storing results via Ecto in CRDB.</li>
-</ul></li>
-<li><strong>Validation</strong>:
-<ul>
-<li><strong>Success</strong>: &lt;500ms p99 latency for <code>FLAME</code> recommendation calls under expected load. Efficient resource utilization by FLAME runners.</li>
-<li><strong>Failure</strong>: &gt;5% errors during FLAME model inference OR significant performance bottlenecks under load.</li>
-</ul></li>
-</ol>
-</section>
-<section id="benefits" class="level2">
-<h2 class="anchored" data-anchor-id="benefits"><strong>Benefits</strong></h2>
-<ul>
-<li>Leverages Elixir concurrency via Oban/Membrane and Phoenix.</li>
-<li>Utilizes Python ML (<code>librecommender</code>) via optimized serving with <code>FLAME</code>.</li>
-<li>Native Ecto/CRDB metadata querying.</li>
-<li>Simplified deployment and management of ML models compared to manual Python process management.</li>
-</ul>
-</section>
-<section id="risks" class="level2">
-<h2 class="anchored" data-anchor-id="risks"><strong>Risks</strong></h2>
-<ul>
-<li><code>FLAME</code> interop overhead (though likely optimized for ML workloads).</li>
-<li>Complexity in configuring and tuning <code>FLAME</code> runners.</li>
-<li>Deployment complexity (Elixir + Python dependencies managed by FLAME).</li>
-<li>Error handling between Elixir application and <code>FLAME</code> services.</li>
-</ul>
-</section>
-<section id="alternatives-considered" class="level2">
-<h2 class="anchored" data-anchor-id="alternatives-considered"><strong>Alternatives Considered</strong></h2>
-<ul>
-<li>Pure Python (Scalability issues)</li>
-<li>Pure Elixir (Lacks ML libraries)</li>
-<li>Elixir + Rustler (Higher complexity for ML tasks)</li>
-<li>Elixir + Pythonx (Less specialized for ML serving than FLAME)</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags"><strong>Tags</strong></h2>
-<ul>
-<li>ML</li>
-<li>Backend</li>
-<li>High Priority</li>
-<li>Python Integration</li>
-<li>Ecto</li>
-<li>Oban</li>
-<li>Membrane</li>
-<li>CockroachDB</li>
-<li>FLAME</li>
-</ul>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Accepted ## Decision Makers</p>
-<ul>
-<li>V-Sekai Team</li>
-</ul>
-</section>
-<section id="tags-1" class="level2">
-<h2 class="anchored" data-anchor-id="tags-1">Tags</h2>
-<ul>
-<li>V-Sekai</li>
-<li>Recommendation System</li>
-<li>Architecture</li>
-<li>Elixir</li>
-<li>Python</li>
-<li>FLAME</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ul>
-<li><a href="https://github.com/phoenixframework/flame">FLAME Documentation</a></li>
-<li><a href="URL_TO_LIBRECOMMENDER">librecommender Documentation (Placeholder - Add actual link if available)</a></li>
-<li><a href="https://getoban.pro/docs/stable/Oban.html">Oban Documentation</a></li>
-<li><a href="https://membraneframework.org/guide">Membrane Framework Documentation</a></li>
-<li><a href="https://hexdocs.pm/ecto/Ecto.html">Ecto Documentation</a></li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20250427-recommender-system.html</guid>
-  <pubDate>Wed, 22 Apr 2026 06:02:22 GMT</pubDate>
+  <pubDate>Wed, 22 Apr 2026 06:33:31 GMT</pubDate>
 </item>
 </channel>
 </rss>
