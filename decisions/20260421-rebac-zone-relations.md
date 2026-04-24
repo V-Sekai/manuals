@@ -74,7 +74,7 @@ An asset owned by a group (`group -[OWNS]-> asset`) rather than a user requires 
 
 ## Status
 
-Status: Proposed
+Status: Accepted
 
 ## Decision Makers
 
