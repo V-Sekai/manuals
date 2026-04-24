@@ -1,5 +1,7 @@
 # Asset Delivery Stack Benchmark
 
+**Superseded by: `20260423-asset-delivery-benchmark.md`**
+
 ## The Context
 
 `multiplayer-fabric-desync` is a Go reimplementation of casync: content-defined chunking (SipHash rolling hash, 48-byte window, target 64 KB chunks), SHA-512/256 chunk IDs, and zstd compression. The `20260421-architecture-strategy-2026.md` document identifies zchunk as an alternative: HTTP range-request compatible, zstd-compressed, and deployable over a standard CDN without a custom chunk server. No benchmark comparing the two strategies exists. The delivery stack default is unsettled.
