@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -303,10 +338,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
   <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
   <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags">Tags</a></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260421-asset-delivery-benchmark.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260423-asset-delivery-benchmark.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
@@ -317,23 +351,33 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="asset-delivery-stack-benchmark" class="level1">
 <h1>Asset Delivery Stack Benchmark</h1>
-<p><strong>Superseded by: <code>20260423-asset-delivery-benchmark.md</code></strong></p>
+<p>Supersedes: <code>20260421-asset-delivery-benchmark.md</code></p>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p><code>multiplayer-fabric-desync</code> is a Go reimplementation of casync: content-defined chunking (SipHash rolling hash, 48-byte window, target 64 KB chunks), SHA-512/256 chunk IDs, and zstd compression. The <code>20260421-architecture-strategy-2026.md</code> document identifies zchunk as an alternative: HTTP range-request compatible, zstd-compressed, and deployable over a standard CDN without a custom chunk server. No benchmark comparing the two strategies exists. The delivery stack default is unsettled.</p>
+<p>The delivery stack for V-Sekai game assets is content-addressed chunking via casync. <code>aria-storage</code> (Elixir) implements the fetch path: <code>mix aria_storage.fetch --index &lt;url&gt; --store &lt;url&gt;</code> downloads chunks from any static HTTP host (GitHub raw, Cloudflare R2, S3), reassembles the asset, and caches chunks at <code>~/.cache/casync/chunks</code>. The chunk store is plain static files — no custom server required. The live V-Sekai casync store is at <code>https://raw.githubusercontent.com/V-Sekai/casync-v-sekai-game/main/store</code>.</p>
+<p>The prior ADR referenced <code>multiplayer-fabric-desync</code> (a Go reimplementation that has since been removed) and assumed a custom chunk server. Both assumptions are now incorrect.</p>
 </section>
 <section id="the-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Content-defined chunking (CDC) benefits diminish for asset bundles where chunk boundaries do not align with file boundaries. Godot exports mix many small files (<code>.tres</code>, <code>.import</code>, <code>.translation</code>) with large ones (<code>.glb</code>, <code>.png</code>). Whether casync’s CDC parameters suit this layout, and whether zchunk’s simpler HTTP-range approach delivers competitive patch sizes, is unknown without measurement.</p>
+<p>No measured baseline exists for the current stack. Before the stack is considered settled, we need numbers: cold download time, patch size on a realistic 10 % asset change, and client reassembly cost. Without these, performance regressions from future changes to chunking parameters have no reference to compare against.</p>
+<p>casync serialises the entire directory tree as a <code>.catar</code> stream before chunking. Small files (<code>.tres</code>, <code>.import</code>, <code>.translation</code>) are packed together in the stream and land in the same 16–256 KB chunks as their neighbours. A 500 MB export at the default 64 KB average chunk size produces roughly 8 000 unique chunks; aria-storage fetches these 64 at a time.</p>
 </section>
 <section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
 <h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>Prepare a representative Godot export: a V-Sekai avatar and environment, approximately 500 MB, with a mix of file types matching a typical world export.</p>
-<p>Apply three delivery strategies:</p>
-<p><strong>Strategy A — casync desync (current)</strong> Chunk with the existing SipHash CDC parameters. Serve via <code>multiplayer-fabric-desync</code>. Measure using <code>desync make</code> + <code>desync extract</code>.</p>
-<p><strong>Strategy B — zchunk</strong> Chunk using <code>zck</code> with zstd compression. Serve over a plain HTTP server using byte-range requests. No custom chunk server required. Measure using <code>zck</code> + <code>unzck</code>.</p>
-<p><strong>Strategy C — CDN delta (baseline)</strong> Compute binary diffs between consecutive exports using <code>bsdiff</code>. Serve diffs over HTTP. Measure download size and apply time.</p>
-<p>Metrics for each strategy:</p>
+<p>Prepare a representative Godot export: one V-Sekai avatar and environment, approximately 500 MB, matching a typical world export file mix.</p>
+<p><strong>Strategy A — casync via aria-storage (current stack)</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Chunk and publish</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">desync</span> make <span class="at">-s</span> s3+https://... output.caibx input_dir/</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Client fetch (aria-storage)</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">mix</span> aria_storage.fetch <span class="at">--index</span> https://.../output.caibx <span class="dt">\</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">--store</span> https://.../store <span class="dt">\</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">--output</span> ./local_dir</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Strategy B — direct tarball download (baseline)</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> czf export.tar.gz input_dir/</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Serve over HTTP. Client downloads the full archive every update.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>No chunking. Measures the floor for cold download size and the ceiling for patch size (always 100 % of the archive).</p>
+<p>Metrics:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -347,52 +391,52 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td>Cold download time</td>
+<td>Cold download size</td>
 <td>Fresh client, no local cache, 100 Mbps link</td>
 </tr>
 <tr class="even">
 <td>Patch size</td>
-<td>10% asset change (one avatar texture replaced)</td>
+<td>10 % asset change — one avatar texture replaced</td>
 </tr>
 <tr class="odd">
-<td>Server complexity</td>
-<td>Count of required services and configuration files</td>
+<td>Chunk count</td>
+<td>Unique chunks fetched on cold download (~8 000 expected)</td>
 </tr>
 <tr class="even">
 <td>Client CPU on reassembly</td>
-<td>Time to extract on a 4-core laptop</td>
+<td>Wall time to extract on a 4-core laptop</td>
 </tr>
 </tbody>
 </table>
-<p>Write raw results to <code>manuals/decisions/attachments/asset-delivery-benchmark-results.csv</code>. Write the decision (which strategy becomes the default) as a follow-on ADR that supersedes this one.</p>
+<p>Write raw results to <code>manuals/decisions/attachments/asset-delivery-benchmark-results.csv</code>.</p>
 </section>
 <section id="the-benefits" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p>The benchmark produces an evidence-based default rather than a best-guess. If zchunk wins on patch size and server simplicity, it removes the <code>aria-storage</code> deployment dependency entirely. If casync wins on cold download time, the current stack is confirmed.</p>
+<p>A measured baseline confirms the current stack is worth the casync infrastructure cost (chunk store publishing, aria-storage dependency) or reveals that the patch-size savings do not justify it for the current asset mix.</p>
 </section>
 <section id="the-downsides" class="level2">
 <h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>The benchmark requires a representative asset corpus and a controlled network environment. Results will not generalise beyond the tested file mix and link conditions. A single benchmark run is not a production load test.</p>
+<p>Requires a representative 500 MB corpus and a controlled test link. Results do not generalise beyond the tested file mix. A single benchmark run is not a production load test.</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Adopting zchunk without a benchmark risks regressions for large assets where CDC’s chunk reuse across versions outperforms zchunk’s fixed-boundary approach. Adopting OCI layers (container registry-based delivery) adds infrastructure dependency not compatible with the homelab deployment target.</p>
+<p>No alternative delivery strategy is evaluated here. If results are poor, a follow-on ADR will propose alternatives and require its own benchmark.</p>
 </section>
 <section id="the-infrequent-use-case" class="level2">
 <h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>Very small assets (under 16 KB) are smaller than one casync chunk and gain nothing from deduplication. Both casync and zchunk handle them correctly but wastefully. A size threshold below which assets are served directly (no chunking) is worth measuring separately.</p>
+<p>A directory containing only very small assets (total archive under 16 KB) produces a single chunk with no deduplication benefit. This edge case does not affect typical V-Sekai world exports.</p>
 </section>
 <section id="in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
 <ul>
-<li>Benchmark harness script: <code>multiplayer-fabric-desync/bench/</code></li>
-<li>Results file: <code>manuals/decisions/attachments/asset-delivery-benchmark-results.csv</code></li>
-<li>Follow-on ADR to record the decision</li>
+<li>Benchmark harness: <code>aria-storage/bench/</code> (to be written as a Mix task)</li>
+<li>Corpus: V-Sekai world export, committed to <code>manuals/decisions/attachments/</code></li>
+<li>Results: <code>manuals/decisions/attachments/asset-delivery-benchmark-results.csv</code></li>
 </ul>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed</p>
+<p>Status: Superseded — casync via aria-storage adopted without benchmark. See <code>20260423-asset-delivery-decision.md</code>.</p>
 </section>
 <section id="decision-makers" class="level2">
 <h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
@@ -403,16 +447,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>casync, zchunk, Benchmark, AssetDelivery, CDN, desync, Performance</li>
+<li>casync, Benchmark, AssetDelivery, CDN, aria-storage, Performance</li>
 </ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><code>20260421-content-addressed-asset-delivery.md</code> — current casync design</li>
-<li><code>20260421-architecture-strategy-2026.md</code> — zchunk identified as alternative</li>
-<li><code>multiplayer-fabric-desync/</code> — Go casync reimplementation</li>
-</ol>
 
 
 </section>
@@ -840,7 +876,7 @@ ul.task-list li input[type="checkbox"] {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260421-asset-delivery-benchmark.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260423-asset-delivery-benchmark.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
