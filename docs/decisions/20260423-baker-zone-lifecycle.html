@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>rebac-zone-relations – V-Sekai - Manuals</title>
+<title>baker-zone-lifecycle – V-Sekai - Manuals</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,41 +22,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -325,23 +290,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#rebac-zone-entry-and-asset-instancing-relations" id="toc-rebac-zone-entry-and-asset-instancing-relations" class="nav-link active" data-scroll-target="#rebac-zone-entry-and-asset-instancing-relations">ReBAC Zone Entry and Asset Instancing Relations</a>
+  <li><a href="#baker-zone-lifecycle-one-godot-process-per-zone" id="toc-baker-zone-lifecycle-one-godot-process-per-zone" class="nav-link active" data-scroll-target="#baker-zone-lifecycle-one-godot-process-per-zone">Baker Zone Lifecycle: One Godot Process Per Zone</a>
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
-  <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
-  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</a></li>
-  <li><a href="#the-benefits" id="toc-the-benefits" class="nav-link" data-scroll-target="#the-benefits">The Benefits</a></li>
-  <li><a href="#the-downsides" id="toc-the-downsides" class="nav-link" data-scroll-target="#the-downsides">The Downsides</a></li>
-  <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
-  <li><a href="#the-infrequent-use-case" id="toc-the-infrequent-use-case" class="nav-link" data-scroll-target="#the-infrequent-use-case">The Infrequent Use Case</a></li>
-  <li><a href="#in-core-and-done-by-us" id="toc-in-core-and-done-by-us" class="nav-link" data-scroll-target="#in-core-and-done-by-us">In Core and Done by Us</a></li>
+  <li><a href="#the-decision" id="toc-the-decision" class="nav-link" data-scroll-target="#the-decision">The Decision</a></li>
+  <li><a href="#zone-schema-additions" id="toc-zone-schema-additions" class="nav-link" data-scroll-target="#zone-schema-additions">Zone schema additions</a></li>
+  <li><a href="#boot-sequence-baker" id="toc-boot-sequence-baker" class="nav-link" data-scroll-target="#boot-sequence-baker">Boot sequence (baker)</a></li>
+  <li><a href="#spatial-isolation" id="toc-spatial-isolation" class="nav-link" data-scroll-target="#spatial-isolation">Spatial isolation</a></li>
   <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
   <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
   <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags">Tags</a></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260421-rebac-zone-relations.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260423-baker-zone-lifecycle.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
@@ -350,63 +311,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="rebac-zone-entry-and-asset-instancing-relations" class="level1">
-<h1>ReBAC Zone Entry and Asset Instancing Relations</h1>
+<section id="baker-zone-lifecycle-one-godot-process-per-zone" class="level1">
+<h1>Baker Zone Lifecycle: One Godot Process Per Zone</h1>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>The existing ReBAC system (<code>taskweft</code>) defines seven base relation types: <code>HAS_CAPABILITY</code>, <code>CONTROLS</code>, <code>OWNS</code>, <code>IS_MEMBER_OF</code>, <code>DELEGATED_TO</code>, <code>SUPERVISOR_OF</code>, <code>PARTNER_OF</code>. The Lean specification in <code>ReBAC.lean</code> defines action tiers (<code>observe</code>, <code>interact</code>, <code>modify</code>) and relation ranks. Zone entry and per-asset instancing require two additional relations not yet present.</p>
+<p>The baker and zone server are the same Godot headless binary in different lifecycle states. Zone visibility is controlled by a <code>status</code> field already needed for private player-owned zones. Baking is not special — a baking zone is simply a private zone whose owner has not yet made it public.</p>
 </section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>The zone server has no predicate to check when a player connects to a zone or sends <code>CMD_INSTANCE_ASSET</code>. Without named relations for these two decisions, <code>check_rel/4</code> cannot be called with a meaningful predicate, and the existing relation set cannot be mapped to the required access decisions.</p>
+<section id="the-decision" class="level2">
+<h2 class="anchored" data-anchor-id="the-decision">The Decision</h2>
+<p>One Godot process per zone. On boot the process registers via <code>POST /shards</code> with <code>status</code> set to whatever the owner chooses (private zones start private; public zones start public). The baker starts private, posts progress through <code>status</code> on each <code>PUT /shards/:id</code> heartbeat, and flips to public when the pipeline finishes. Each zone’s <code>map</code> field (set to the asset UUID) gives it an isolated Hilbert spatial partition.</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>Add two relation types to the valid set in <code>taskweft/rebac.ex</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode elixir code-with-copy"><code class="sourceCode elixir"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># existing</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ot">@valid_relations</span> <span class="op">~</span>w<span class="ot">[</span><span class="cn">HAS_CAPABILITY</span> <span class="cn">CONTROLS</span> <span class="cn">OWNS</span> <span class="cn">IS_MEMBER_OF</span> <span class="cn">DELEGATED_TO</span> <span class="cn">SUPERVISOR_OF</span> <span class="cn">PARTNER_OF</span><span class="ot">]</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># proposed additions</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ot">@valid_relations</span> <span class="ot">@valid_relations</span> <span class="op">++</span> <span class="op">~</span>w<span class="ot">[</span><span class="cn">CAN_ENTER</span> <span class="cn">CAN_INSTANCE</span><span class="ot">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>CAN_ENTER</strong> — checked at zone join time (when a peer connects to a zone server).</p>
-<p>Default graph edges built per-request:</p>
-<pre><code>zone_owner -[OWNS]-&gt; zone
-player     -[CAN_ENTER]-&gt; zone   # derived: OWNS implies CAN_ENTER</code></pre>
-<p>Public zones have an implicit <code>*</code> subject that grants <code>CAN_ENTER</code> to any player. Restricted zones omit this edge; only players with an explicit edge or a chain through <code>OWNS</code>/<code>IS_MEMBER_OF</code> may enter.</p>
-<p><strong>CAN_INSTANCE</strong> — checked at <code>CMD_INSTANCE_ASSET</code> time by the authority zone before slot allocation.</p>
-<pre><code>uploader -[OWNS]-&gt; asset
-player   -[CAN_INSTANCE]-&gt; asset   # derived from OWNS</code></pre>
-<p>The graph is rebuilt per-request from <code>UserPrivilegeRuleset</code> at join time, consistent with the existing per-request pattern. No graph state persists between requests.</p>
-<p>Zone server C++ call sites (see <code>20260421-rebac-zone-server-enforcement.md</code>):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">// At peer join</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>check_rel<span class="op">(</span>graph_json<span class="op">,</span> player_id<span class="op">,</span> <span class="st">"CAN_ENTER"</span><span class="op">,</span> zone_id<span class="op">)</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">// At CMD_INSTANCE_ASSET before slot allocation</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>check_rel<span class="op">(</span>graph_json<span class="op">,</span> player_id<span class="op">,</span> <span class="st">"CAN_INSTANCE"</span><span class="op">,</span> asset_id<span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="zone-schema-additions" class="level2">
+<h2 class="anchored" data-anchor-id="zone-schema-additions">Zone schema additions</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 35%">
+<col style="width: 30%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>status</code></td>
+<td>string</td>
+<td>Owner-controlled. Conventions: <code>"private"</code>, <code>"public"</code>, <code>"draining"</code>. Baker uses <code>"baking:validate"</code> → <code>"baking:export"</code> → <code>"baking:chunk"</code> → <code>"baking:upload"</code> → <code>"public"</code>.</td>
+</tr>
+<tr class="even">
+<td><code>public</code></td>
+<td>boolean</td>
+<td><code>GET /shards</code> (unauthenticated) returns only <code>public: true</code> zones. Zone owner can always see their own zones.</td>
+</tr>
+</tbody>
+</table>
+<p>Both fields apply equally to creator-owned private zones and baker zones. Setting <code>public: false</code> keeps any zone off the public listing for any reason.</p>
 </section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p>The two new relations map cleanly onto existing <code>check_rel/4</code> call convention. No new graph traversal semantics are needed — both are simple base relation checks. The default edges (public zone = open entry, uploader = can instance) preserve current behaviour while enabling restriction.</p>
+<section id="boot-sequence-baker" class="level2">
+<h2 class="anchored" data-anchor-id="boot-sequence-baker">Boot sequence (baker)</h2>
+<pre><code>boot
+  → POST /shards  {map: asset_id, status: "baking:validate", public: false, …}
+  → validate scene
+  → PUT /shards/:id  {status: "baking:export"}
+  → export .scn
+  → PUT /shards/:id  {status: "baking:chunk"}
+  → chunk with casync
+  → PUT /shards/:id  {status: "baking:upload"}
+  → upload chunks to /chunks
+  → PUT /shards/:id  {status: "public", public: true}
+  → enter WebTransport event loop
+  → PUT /shards/:id  heartbeat every 25 s (status unchanged)</code></pre>
+<p>A private player-owned zone follows the same pattern with <code>status: "private"</code> and <code>public: false</code> indefinitely.</p>
 </section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>Adding relation types to the valid set requires updating the PropCheck suite in <code>taskweft</code> to cover the new predicates. The 93 existing properties cover path existence, absence, cycles, and transitivity; <code>CAN_ENTER</code> and <code>CAN_INSTANCE</code> need equivalent coverage.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Reusing <code>OWNS</code> as the instancing predicate (<code>check_rel(graph, player, "OWNS", asset)</code>) would work for owner-only assets but cannot express “any member of this group may instance this asset” without adding group-to-asset ownership edges. <code>CAN_INSTANCE</code> is more expressive and does not conflate ownership with permission.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>An asset owned by a group (<code>group -[OWNS]-&gt; asset</code>) rather than a user requires a chain: <code>player -[IS_MEMBER_OF]-&gt; group -[OWNS]-&gt; asset</code>. <code>check_rel</code> follows this chain with <code>tuple_to_userset</code> expansion. The <code>fuel</code> parameter (default 8) limits depth; group chains deeper than 8 require increasing the fuel value.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<ul>
-<li><code>multiplayer-fabric-taskweft/lib/taskweft/rebac.ex</code> — add <code>CAN_ENTER</code>, <code>CAN_INSTANCE</code> to valid set</li>
-<li>PropCheck suite — add properties for both new relation types</li>
-<li><code>Uro.VSekai.check_upload_permission/2</code> — extend to build <code>CAN_INSTANCE</code> edges</li>
-</ul>
+<section id="spatial-isolation" class="level2">
+<h2 class="anchored" data-anchor-id="spatial-isolation">Spatial isolation</h2>
+<p><code>map</code> is set to the <code>asset_id</code> UUID. Concurrent bakers with different <code>asset_id</code> values occupy disjoint Hilbert regions by definition.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
@@ -421,17 +384,8 @@ player   -[CAN_INSTANCE]-&gt; asset   # derived from OWNS</code></pre>
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>ReBAC, taskweft, CAN_ENTER, CAN_INSTANCE, Relations, Permissions, Zone, Asset</li>
+<li>baker, zone, lifecycle, WebTransport, spatial-partitioning, private-zones</li>
 </ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><code>20260421-rebac-permissions.md</code> — base ReBAC design</li>
-<li><code>20260421-rebac-zone-server-enforcement.md</code> — call sites in C++ zone server</li>
-<li><code>multiplayer-fabric-taskweft/lib/taskweft/rebac.ex</code></li>
-<li><code>multiplayer-fabric-predictive-bvh/PredictiveBVH/Relativistic/ReBAC.lean</code></li>
-</ol>
 
 
 </section>
@@ -859,7 +813,7 @@ player   -[CAN_INSTANCE]-&gt; asset   # derived from OWNS</code></pre>
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260421-rebac-zone-relations.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260423-baker-zone-lifecycle.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

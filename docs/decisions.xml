@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.37</generator>
-<lastBuildDate>Fri, 24 Apr 2026 04:43:40 GMT</lastBuildDate>
+<lastBuildDate>Fri, 24 Apr 2026 05:02:24 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -82,7 +82,100 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Fri, 24 Apr 2026 04:43:40 GMT</pubDate>
+  <pubDate>Fri, 24 Apr 2026 05:02:24 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260423-baker-zone-lifecycle.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="baker-zone-lifecycle-one-godot-process-per-zone" class="level1">
+<h1>Baker Zone Lifecycle: One Godot Process Per Zone</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>The baker and zone server are the same Godot headless binary in different lifecycle states. Zone visibility is controlled by a <code>status</code> field already needed for private player-owned zones. Baking is not special — a baking zone is simply a private zone whose owner has not yet made it public.</p>
+</section>
+<section id="the-decision" class="level2">
+<h2 class="anchored" data-anchor-id="the-decision">The Decision</h2>
+<p>One Godot process per zone. On boot the process registers via <code>POST /shards</code> with <code>status</code> set to whatever the owner chooses (private zones start private; public zones start public). The baker starts private, posts progress through <code>status</code> on each <code>PUT /shards/:id</code> heartbeat, and flips to public when the pipeline finishes. Each zone’s <code>map</code> field (set to the asset UUID) gives it an isolated Hilbert spatial partition.</p>
+</section>
+<section id="zone-schema-additions" class="level2">
+<h2 class="anchored" data-anchor-id="zone-schema-additions">Zone schema additions</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 35%">
+<col style="width: 30%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>status</code></td>
+<td>string</td>
+<td>Owner-controlled. Conventions: <code>"private"</code>, <code>"public"</code>, <code>"draining"</code>. Baker uses <code>"baking:validate"</code> → <code>"baking:export"</code> → <code>"baking:chunk"</code> → <code>"baking:upload"</code> → <code>"public"</code>.</td>
+</tr>
+<tr class="even">
+<td><code>public</code></td>
+<td>boolean</td>
+<td><code>GET /shards</code> (unauthenticated) returns only <code>public: true</code> zones. Zone owner can always see their own zones.</td>
+</tr>
+</tbody>
+</table>
+<p>Both fields apply equally to creator-owned private zones and baker zones. Setting <code>public: false</code> keeps any zone off the public listing for any reason.</p>
+</section>
+<section id="boot-sequence-baker" class="level2">
+<h2 class="anchored" data-anchor-id="boot-sequence-baker">Boot sequence (baker)</h2>
+<pre><code>boot
+  → POST /shards  {map: asset_id, status: "baking:validate", public: false, …}
+  → validate scene
+  → PUT /shards/:id  {status: "baking:export"}
+  → export .scn
+  → PUT /shards/:id  {status: "baking:chunk"}
+  → chunk with casync
+  → PUT /shards/:id  {status: "baking:upload"}
+  → upload chunks to /chunks
+  → PUT /shards/:id  {status: "public", public: true}
+  → enter WebTransport event loop
+  → PUT /shards/:id  heartbeat every 25 s (status unchanged)</code></pre>
+<p>A private player-owned zone follows the same pattern with <code>status: "private"</code> and <code>public: false</code> indefinitely.</p>
+</section>
+<section id="spatial-isolation" class="level2">
+<h2 class="anchored" data-anchor-id="spatial-isolation">Spatial isolation</h2>
+<p><code>map</code> is set to the <code>asset_id</code> UUID. Concurrent bakers with different <code>asset_id</code> values occupy disjoint Hilbert regions by definition.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Accepted</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>baker, zone, lifecycle, WebTransport, spatial-partitioning, private-zones</li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260423-baker-zone-lifecycle.html</guid>
+  <pubDate>Fri, 24 Apr 2026 05:02:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -131,7 +224,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-asset-delivery-decision.html</guid>
-  <pubDate>Fri, 24 Apr 2026 04:43:40 GMT</pubDate>
+  <pubDate>Fri, 24 Apr 2026 05:02:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -273,7 +366,7 @@ font-style: inherit;"># Serve over HTTP. Client downloads the full archive every
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-asset-delivery-benchmark.html</guid>
-  <pubDate>Fri, 24 Apr 2026 04:43:40 GMT</pubDate>
+  <pubDate>Fri, 24 Apr 2026 05:02:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -369,7 +462,7 @@ font-style: inherit;"># Serve over HTTP. Client downloads the full archive every
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260422-simplify-then-add-lightness.html</guid>
-  <pubDate>Fri, 24 Apr 2026 04:43:40 GMT</pubDate>
+  <pubDate>Fri, 24 Apr 2026 05:02:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -467,7 +560,7 @@ Sword, Helen. 2012. <em>Zombie Nouns</em>. <a href="https://opinionator.blogs.ny
 </div>
 </div></section></div> ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes-3.html</guid>
-  <pubDate>Fri, 24 Apr 2026 04:43:40 GMT</pubDate>
+  <pubDate>Fri, 24 Apr 2026 05:02:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -557,7 +650,7 @@ Ossama. 2025. <em>Tropes.fyi: <span>AI</span> Writing Pattern Directory</em>. <a
 </div>
 </div></section></div> ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes-2.html</guid>
-  <pubDate>Fri, 24 Apr 2026 04:43:40 GMT</pubDate>
+  <pubDate>Fri, 24 Apr 2026 05:02:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -656,7 +749,7 @@ Wikipedia contributors. 2025. <em>Wikipedia: Signs of <span>AI</span> Writing</e
 </div>
 </div></section></div> ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes-1.html</guid>
-  <pubDate>Fri, 24 Apr 2026 04:43:40 GMT</pubDate>
+  <pubDate>Fri, 24 Apr 2026 05:02:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -741,7 +834,7 @@ Wikipedia contributors. 2025. <em>Wikipedia: Signs of <span>AI</span> Writing</e
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zones-vs-shards.html</guid>
-  <pubDate>Fri, 24 Apr 2026 04:43:40 GMT</pubDate>
+  <pubDate>Fri, 24 Apr 2026 05:02:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -823,7 +916,7 @@ Wikipedia contributors. 2025. <em>Wikipedia: Signs of <span>AI</span> Writing</e
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-registration-and-discovery.html</guid>
-  <pubDate>Fri, 24 Apr 2026 04:43:40 GMT</pubDate>
+  <pubDate>Fri, 24 Apr 2026 05:02:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1079,7 +1172,7 @@ font-style: inherit;">end</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-grouping.html</guid>
-  <pubDate>Fri, 24 Apr 2026 04:43:40 GMT</pubDate>
+  <pubDate>Fri, 24 Apr 2026 05:02:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1226,7 +1319,7 @@ theorem aoiBand_width_bound ... :
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-border-handoff.html</guid>
-  <pubDate>Fri, 24 Apr 2026 04:43:40 GMT</pubDate>
+  <pubDate>Fri, 24 Apr 2026 05:02:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1504,7 +1597,7 @@ font-style: inherit;">:assets</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-asset-manifest.html</guid>
-  <pubDate>Fri, 24 Apr 2026 04:43:40 GMT</pubDate>
+  <pubDate>Fri, 24 Apr 2026 05:02:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1637,7 +1730,7 @@ font-style: inherit;">note</span>         = {Baseline 2026: newly available acro
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-webtransport-zone-transport.html</guid>
-  <pubDate>Fri, 24 Apr 2026 04:43:40 GMT</pubDate>
+  <pubDate>Fri, 24 Apr 2026 05:02:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1805,7 +1898,7 @@ font-style: inherit;">;</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-websocket-transport-parity.html</guid>
-  <pubDate>Fri, 24 Apr 2026 04:43:40 GMT</pubDate>
+  <pubDate>Fri, 24 Apr 2026 05:02:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1941,7 +2034,7 @@ font-style: inherit;">;</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-virtual-creator-market-implementation-plan.html</guid>
-  <pubDate>Fri, 24 Apr 2026 04:43:40 GMT</pubDate>
+  <pubDate>Fri, 24 Apr 2026 05:02:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2059,7 +2152,7 @@ font-style: inherit;">BLOB</span>, slot_count, ts)</span></code></pre></div></di
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-sqlite-per-zone-journal.html</guid>
-  <pubDate>Fri, 24 Apr 2026 04:43:40 GMT</pubDate>
+  <pubDate>Fri, 24 Apr 2026 05:02:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2850,7 +2943,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-rectgtn-jellyfish-behavior.html</guid>
-  <pubDate>Fri, 24 Apr 2026 04:43:40 GMT</pubDate>
+  <pubDate>Fri, 24 Apr 2026 05:02:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3077,7 +3170,7 @@ font-style: inherit;">// existing allocation logic follows</span></span></code><
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-rebac-zone-server-enforcement.html</guid>
-  <pubDate>Fri, 24 Apr 2026 04:43:40 GMT</pubDate>
+  <pubDate>Fri, 24 Apr 2026 05:02:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3218,7 +3311,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed</p>
+<p>Status: Accepted</p>
 </section>
 <section id="decision-makers" class="level2">
 <h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
@@ -3247,142 +3340,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-rebac-zone-relations.html</guid>
-  <pubDate>Fri, 24 Apr 2026 04:43:40 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20260421-rebac-permissions.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="relationship-based-access-control-for-zone-permissions" class="level1">
-<h1>Relationship-Based Access Control for Zone Permissions</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>Zone servers and the backend need to decide whether a player may observe, interact with, or modify a zone entity. The decision depends on the relationship between the player and the entity’s owner — a group member inherits the group’s permissions transitively. The authority zone is the local coordinator for all permission decisions about its entities; no global coordinator is required. The full formal specification lives in <code>multiplayer-fabric-predictive-bvh/PredictiveBVH/Relativistic/ReBAC.lean</code> and <code>NoGod.lean</code>.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Flat role tables require a separate row for every (user, permission) pair that inheritance would otherwise cover. As group structure deepens, maintaining that table becomes inconsistent. A relation ranked by trust level, evaluated at request time against a player’s claim, gives correct transitive answers without stored derived state.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<section id="action-tiers" class="level3">
-<h3 class="anchored" data-anchor-id="action-tiers">Action tiers</h3>
-<p>Three action tiers map to a minimum required relation rank:</p>
-<pre class="lean"><code>-- ReBAC.lean
-inductive Action where
-  | observe   -- read-only (CH_INTEREST); public by default
-  | interact  -- send input (movement, chat); requires instanceMember+
-  | modify    -- mutate state (admin, owner-only); requires owner</code></pre>
-</section>
-<section id="relation-hierarchy" class="level3">
-<h3 class="anchored" data-anchor-id="relation-hierarchy">Relation hierarchy</h3>
-<p>Relations are totally ordered by trust rank:</p>
-<pre class="lean"><code>inductive Relation where
-  | public         -- rank 0
-  | instanceMember -- rank 1
-  | friend         -- rank 2
-  | guildMember    -- rank 3
-  | owner          -- rank 4</code></pre>
-<p><code>minRelation</code> maps each action to its minimum required rank. <code>rebacCheck</code> folds the player’s claim to its maximum relation and compares ranks:</p>
-<pre class="lean"><code>def rebacCheck (claim : PlayerClaim n) (action : Action) : Bool :=
-  match claim.maxRelation with
-  | none   =&gt; false
-  | some r =&gt; r.rank ≥ action.minRelation.rank</code></pre>
-</section>
-<section id="key-theorems" class="level3">
-<h3 class="anchored" data-anchor-id="key-theorems">Key theorems</h3>
-<pre class="lean"><code>theorem rebac_empty_denied : rebacCheck { relations := [] } a = false
-
-theorem rebac_public_observe : rebacCheck { relations := [.public] } .observe = true
-
-theorem rebac_owner_all (a : Action) : rebacCheck { relations := [.owner] } a = true
-
-theorem rebac_monotone {n : Nat} (c : PlayerClaim n) (a1 a2 : Action)
-    (hle : a2.minRelation.rank ≤ a1.minRelation.rank)
-    (h : rebacCheck c a1 = true) :
-    rebacCheck c a2 = true</code></pre>
-</section>
-<section id="authority-locality" class="level3">
-<h3 class="anchored" data-anchor-id="authority-locality">Authority locality</h3>
-<p>The check is only binding when the evaluating zone is the authority zone for the entity’s Hilbert code:</p>
-<pre class="lean"><code>-- ReBAC.lean
-theorem rebac_requires_authority_for_mutation :
-    isAuthority view h = false → action ∈ [.interact, .modify] →
-    rebacCheck claim action = true →
-    ¬ bindsMutation view h claim action
-
-theorem interest_can_answer_observe :
-    rebacCheck claim .observe = true →
-    geometricInterest view h 0 ≠ [] →
-    canAnswer view h claim .observe
-
-theorem non_authority_cannot_bind_mutation :
-    isAuthority view h = false →
-    ∀ claim, ¬ bindsMutation view h claim .modify</code></pre>
-<p>Interest zones answer <code>.observe</code> requests directly. <code>.interact</code> and <code>.modify</code> requests are forwarded to the authority zone.</p>
-</section>
-<section id="player-claims-carry-causal-timestamps" class="level3">
-<h3 class="anchored" data-anchor-id="player-claims-carry-causal-timestamps">Player claims carry causal timestamps</h3>
-<pre class="lean"><code>structure PlayerClaim (n : Nat) where
-  playerId  : Nat
-  relations : List Relation
-  issuedAt  : VClock n    -- causal timestamp</code></pre>
-<p>Claims are issued at the authority zone and carried with the VClock so receiving zones can determine whether the claim is stale relative to the local gossip state.</p>
-</section>
-<section id="upload-permissions-backend" class="level3">
-<h3 class="anchored" data-anchor-id="upload-permissions-backend">Upload permissions (backend)</h3>
-<p>On <code>zone-backend</code>, the same relation graph is evaluated by the <code>taskweft</code> C++20 NIF. Membership edges (<code>IS_MEMBER_OF</code>) are built per-request from the <code>UserPrivilegeRuleset</code> record and evaluated with <code>check_rel/4</code>. The per-request build means no cache invalidation problem; the NIF tears the graph down after the call returns. 93 PropCheck properties cover path existence, absence, cycles, and transitivity.</p>
-</section>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p>Permission checks require no coordinator. The authority zone evaluates claims locally using its gossip-learned range map. Interest zones serve read queries without forwarding. Adding a player to a group takes effect on the next claim issuance without any cache flush.</p>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>Rebuilding the relation graph per upload request adds a database query per check. For upload endpoints this cost is acceptable; it would not be acceptable on a high-frequency read path. The <code>taskweft</code> NIF crashes the BEAM VM on a C++ panic — the PropCheck suite reduces that risk but does not eliminate it.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>A denormalized ACL table (user × permission) avoids the per-request graph build but requires a write on every group membership change and can produce inconsistent reads mid-request if a membership change races with a permission check.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>A player belonging to a deeply nested group chain (depth &gt; 10) triggers a correspondingly deep traversal in <code>taskweft</code>. The Lean proofs in <code>ReBAC.lean</code> do not impose a depth limit; the PropCheck suite exercises chains up to depth 20 without regression.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>Lean specification: <code>multiplayer-fabric-predictive-bvh/PredictiveBVH/Relativistic/ReBAC.lean</code> and <code>NoGod.lean</code>.</p>
-<p>Runtime: - <code>taskweft</code> C++20 NIF — per-request IS_MEMBER_OF graph evaluation for upload permissions - <code>Uro.VSekai.check_upload_permission/2</code> — call site in <code>multiplayer-fabric-zone-backend</code> - <code>FabricZone</code> evaluates <code>rebacCheck</code> locally for in-zone action gating</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Accepted</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>iFire</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>ReBAC, Permissions, Lean4, Formal, taskweft, NIF, Action, Relation, Authority, VClock</li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20260421-rebac-permissions.html</guid>
-  <pubDate>Fri, 24 Apr 2026 04:43:40 GMT</pubDate>
+  <pubDate>Fri, 24 Apr 2026 05:02:24 GMT</pubDate>
 </item>
 </channel>
 </rss>
