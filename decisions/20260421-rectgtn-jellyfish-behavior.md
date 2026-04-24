@@ -189,7 +189,7 @@ A zone with no jellyfish entities (empty zone during off-peak hours) allocates n
 
 ## Status
 
-Status: Proposed
+Status: Accepted
 
 ## Decision Makers
 
