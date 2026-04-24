@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>rectgtn-jellyfish-behavior – V-Sekai - Manuals</title>
+<title>sandbox-rebac-behavior – V-Sekai - Manuals</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -325,34 +325,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#rectgtn-planning-for-jellyfish-behavior" id="toc-rectgtn-planning-for-jellyfish-behavior" class="nav-link active" data-scroll-target="#rectgtn-planning-for-jellyfish-behavior">RECTGTN Planning for Jellyfish Behavior</a>
+  <li><a href="#sandbox-rebac-capability-gating-for-creator-behavior-code" id="toc-sandbox-rebac-capability-gating-for-creator-behavior-code" class="nav-link active" data-scroll-target="#sandbox-rebac-capability-gating-for-creator-behavior-code">Sandbox + ReBAC Capability Gating for Creator Behavior Code</a>
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
   <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
-  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</a>
+  <li><a href="#the-decision" id="toc-the-decision" class="nav-link" data-scroll-target="#the-decision">The Decision</a></li>
+  <li><a href="#how-it-works" id="toc-how-it-works" class="nav-link" data-scroll-target="#how-it-works">How it works</a>
   <ul class="collapse">
-  <li><a href="#domain-and-plan-separation" id="toc-domain-and-plan-separation" class="nav-link" data-scroll-target="#domain-and-plan-separation">Domain and plan separation</a></li>
-  <li><a href="#domain-per-species" id="toc-domain-per-species" class="nav-link" data-scroll-target="#domain-per-species">Domain per species</a></li>
-  <li><a href="#zone-server-integration" id="toc-zone-server-integration" class="nav-link" data-scroll-target="#zone-server-integration">Zone server integration</a></li>
-  <li><a href="#incremental-replan-on-environment-change" id="toc-incremental-replan-on-environment-change" class="nav-link" data-scroll-target="#incremental-replan-on-environment-change">Incremental replan on environment change</a></li>
-  <li><a href="#temporal-constraints" id="toc-temporal-constraints" class="nav-link" data-scroll-target="#temporal-constraints">Temporal constraints</a></li>
-  <li><a href="#capability-gating-via-rebac" id="toc-capability-gating-via-rebac" class="nav-link" data-scroll-target="#capability-gating-via-rebac">Capability gating via ReBAC</a></li>
-  <li><a href="#runtime-plan-injection-via-cdn" id="toc-runtime-plan-injection-via-cdn" class="nav-link" data-scroll-target="#runtime-plan-injection-via-cdn">Runtime plan injection via CDN</a></li>
-  <li><a href="#no-sandbox" id="toc-no-sandbox" class="nav-link" data-scroll-target="#no-sandbox">No sandbox</a></li>
+  <li><a href="#capability-request-syscall" id="toc-capability-request-syscall" class="nav-link" data-scroll-target="#capability-request-syscall">Capability request syscall</a></li>
+  <li><a href="#sandbox-invocation-per-tick" id="toc-sandbox-invocation-per-tick" class="nav-link" data-scroll-target="#sandbox-invocation-per-tick">Sandbox invocation per tick</a></li>
+  <li><a href="#rebac-relations-used" id="toc-rebac-relations-used" class="nav-link" data-scroll-target="#rebac-relations-used">ReBAC relations used</a></li>
+  <li><a href="#json-ld-domains-and-sandbox-domains-coexist" id="toc-json-ld-domains-and-sandbox-domains-coexist" class="nav-link" data-scroll-target="#json-ld-domains-and-sandbox-domains-coexist">JSON-LD domains and sandbox domains coexist</a></li>
   </ul></li>
-  <li><a href="#beam-rectgtn-vs-zone-server-rectgtn" id="toc-beam-rectgtn-vs-zone-server-rectgtn" class="nav-link" data-scroll-target="#beam-rectgtn-vs-zone-server-rectgtn">BEAM RECTGTN vs zone server RECTGTN</a></li>
+  <li><a href="#what-is-not-changed" id="toc-what-is-not-changed" class="nav-link" data-scroll-target="#what-is-not-changed">What is not changed</a></li>
   <li><a href="#the-benefits" id="toc-the-benefits" class="nav-link" data-scroll-target="#the-benefits">The Benefits</a></li>
   <li><a href="#the-downsides" id="toc-the-downsides" class="nav-link" data-scroll-target="#the-downsides">The Downsides</a></li>
   <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
-  <li><a href="#the-infrequent-use-case" id="toc-the-infrequent-use-case" class="nav-link" data-scroll-target="#the-infrequent-use-case">The Infrequent Use Case</a></li>
-  <li><a href="#in-core-and-done-by-us" id="toc-in-core-and-done-by-us" class="nav-link" data-scroll-target="#in-core-and-done-by-us">In Core and Done by Us</a></li>
   <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
   <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
   <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags">Tags</a></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260421-rectgtn-jellyfish-behavior.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260423-sandbox-rebac-behavior.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
@@ -361,129 +355,97 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="rectgtn-planning-for-jellyfish-behavior" class="level1">
-<h1>RECTGTN Planning for Jellyfish Behavior</h1>
+<section id="sandbox-rebac-capability-gating-for-creator-behavior-code" class="level1">
+<h1>Sandbox + ReBAC Capability Gating for Creator Behavior Code</h1>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p><code>taskweft</code> is a C++20 library exposed as an Erlang NIF. Its current use in the zone server is limited to <code>check_rel()</code> for ReBAC authorization at join time and <code>CMD_INSTANCE_ASSET</code>. The library implements the full <strong>Relationship-Enabled Capability-Temporal Goal-Task-Network</strong> (RECTGTN) formalism: conjunctive and multi-goal decomposition, compound task methods with per-method alternatives, incremental replanning via a solution tree, ISO 8601 duration constraints, and stochastic Monte Carlo execution. All of this is available in <code>standalone/tw_planner.hpp</code> and companions — header-only, no BEAM round-trip required.</p>
-<p>In <code>CONCEPT_MMOG.md</code>, HTN planning was tombstoned because the godot-sandbox RISC-V guest path was out of scope. The sandbox path remains out of scope. The standalone header path is not.</p>
-<p>The aquarium zone server runs a C++ swarm simulation (<code>JellygridSwarm::tick()</code>) that drives jellyfish with hard-coded phase-based behaviour: pulse bob, current drift, predator flee. The behaviour is correct but fixed — every jellyfish of the same species behaves identically and the planner cannot adapt to zone state changes.</p>
+<p>Jellyfish behavior is currently expressed as JSON-LD domain files: a fixed action vocabulary baked into the zone asset, evaluated by the RECTGTN planner in trusted C++. The planner is the safe interpreter — a malicious domain can only name actions that already exist in the loaded domain, so no sandbox is needed for this path.</p>
+<p>If creators are permitted to submit <strong>executable behavior code</strong> — GDScript programs or RISC-V ELF kernels that run inside the zone server — the threat model changes. Arbitrary computation requires memory isolation (sandbox) and semantic isolation (ReBAC capability gating). This ADR designs that path for when it is needed.</p>
 </section>
 <section id="the-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Jellyfish behaviour is table-driven. There is no mechanism to sequence multi-step behaviour (flee → hide → resume drift), handle temporal cooldowns between state changes, or vary behaviour by entity capability (a bioluminescent jellyfish near a light source behaves differently from one in darkness). RECTGTN planning covers all three.</p>
+<p>A creator behavior kernel running inside the zone server can: - Consume unbounded CPU or memory - Read entity state it should not see - Emit network messages it is not authorised to send - Escalate from <code>observe</code> to <code>modify</code> without authorisation</p>
+<p>JSON-LD domains cannot do any of these things. An executable kernel can do all of them without containment.</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<section id="domain-and-plan-separation" class="level3">
-<h3 class="anchored" data-anchor-id="domain-and-plan-separation">Domain and plan separation</h3>
-<p>Two distinct layers:</p>
-<p><strong>Domain (fixed for zone lifetime)</strong> — loaded from the GLTF interactivity extensions in the zone asset bundle at startup. Defines the action vocabulary: state variable names, action effects, and method preconditions. The zone’s entity state is produced by applying actions from this domain; the domain and the entity state are a unit and cannot be swapped independently at runtime.</p>
-<p><strong>Plan (dynamic JSON/dict)</strong> — a sequence of action names that are valid within the loaded domain. Because a plan only references actions already defined in the domain, hot-pushing a new plan at runtime does not change the state schema. Zone ACID properties are preserved.</p>
-<p>This separation mirrors how GLTF interactivity works: the interactivity extension defines the fixed set of triggers and actions baked into the asset, while runtime orchestration decides which sequence to execute.</p>
+<section id="the-decision" class="level2">
+<h2 class="anchored" data-anchor-id="the-decision">The Decision</h2>
+<p>Creator behavior code runs inside <code>godot-sandbox</code> (RISC-V ELF). The sandbox provides memory isolation and a syscall interface. ReBAC gates every capability the sandbox can request at runtime. The combination gives:</p>
+<ul>
+<li><strong>Memory isolation</strong> — sandbox fault cannot corrupt zone state</li>
+<li><strong>Semantic isolation</strong> — the kernel can only exercise capabilities the ReBAC graph permits for the entity it is animating</li>
+</ul>
 </section>
-<section id="domain-per-species" class="level3">
-<h3 class="anchored" data-anchor-id="domain-per-species">Domain per species</h3>
-<p>Each jellyfish species domain is a JSON-LD file in the zone asset bundle, loaded once at zone startup:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@context"</span><span class="fu">:</span> <span class="st">"https://taskweft.v-sekai.org/domain/v1"</span><span class="fu">,</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"state"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"location"</span><span class="fu">:</span> <span class="st">"open_water"</span><span class="fu">,</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"threat_nearby"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"light_level"</span><span class="fu">:</span> <span class="st">"dim"</span><span class="fu">,</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"pulse_cooldown"</span><span class="fu">:</span> <span class="dv">0</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"tasks"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"behave"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span> <span class="dt">"method"</span><span class="fu">:</span> <span class="st">"flee"</span><span class="fu">,</span>       <span class="dt">"precond"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"threat_nearby"</span><span class="fu">:</span> <span class="kw">true</span> <span class="fu">},</span>    <span class="dt">"subtasks"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"flee_predator"</span><span class="ot">,</span> <span class="st">"recover"</span><span class="ot">]</span> <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span> <span class="dt">"method"</span><span class="fu">:</span> <span class="st">"seek_light"</span><span class="fu">,</span> <span class="dt">"precond"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"light_level"</span><span class="fu">:</span> <span class="st">"bright"</span> <span class="fu">},</span>  <span class="dt">"subtasks"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"drift_toward_light"</span><span class="ot">,</span> <span class="st">"pulse"</span><span class="ot">]</span> <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span> <span class="dt">"method"</span><span class="fu">:</span> <span class="st">"idle"</span><span class="fu">,</span>       <span class="dt">"precond"</span><span class="fu">:</span> <span class="fu">{},</span>                           <span class="dt">"subtasks"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"drift_current"</span><span class="ot">]</span> <span class="fu">}</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"actions"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"flee_predator"</span><span class="fu">:</span>      <span class="fu">{</span> <span class="dt">"duration"</span><span class="fu">:</span> <span class="st">"PT2S"</span><span class="fu">,</span> <span class="dt">"effects"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"location"</span><span class="fu">:</span> <span class="st">"shelter"</span> <span class="fu">}</span> <span class="fu">},</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"recover"</span><span class="fu">:</span>            <span class="fu">{</span> <span class="dt">"duration"</span><span class="fu">:</span> <span class="st">"PT5S"</span><span class="fu">,</span> <span class="dt">"effects"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"threat_nearby"</span><span class="fu">:</span> <span class="kw">false</span> <span class="fu">}</span> <span class="fu">},</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"drift_toward_light"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"duration"</span><span class="fu">:</span> <span class="st">"PT3S"</span><span class="fu">,</span> <span class="dt">"effects"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"location"</span><span class="fu">:</span> <span class="st">"light_source"</span> <span class="fu">}</span> <span class="fu">},</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"pulse"</span><span class="fu">:</span>              <span class="fu">{</span> <span class="dt">"duration"</span><span class="fu">:</span> <span class="st">"PT1S"</span><span class="fu">,</span> <span class="dt">"effects"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"pulse_cooldown"</span><span class="fu">:</span> <span class="dv">3</span> <span class="fu">}</span> <span class="fu">},</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"drift_current"</span><span class="fu">:</span>      <span class="fu">{</span> <span class="dt">"duration"</span><span class="fu">:</span> <span class="st">"PT4S"</span><span class="fu">,</span> <span class="dt">"effects"</span><span class="fu">:</span> <span class="fu">{}</span> <span class="fu">}</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="how-it-works" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-works">How it works</h2>
+<section id="capability-request-syscall" class="level3">
+<h3 class="anchored" data-anchor-id="capability-request-syscall">Capability request syscall</h3>
+<p>The sandbox exposes one new syscall to behavior kernels:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Inside the RISC-V behavior kernel (creator-written)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> bioluminescent <span class="op">=</span> sandbox_request_capability<span class="op">(</span><span class="st">"BIOLUMINESCENT"</span><span class="op">);</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>bioluminescent<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    sandbox_move_toward_light<span class="op">();</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The zone server intercepts <code>sandbox_request_capability</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> FabricMMOGZone<span class="op">::</span>_sandbox_capability_handler<span class="op">(</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> p_entity_id<span class="op">,</span> <span class="at">const</span> String <span class="op">&amp;</span>p_capability<span class="op">)</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Build a minimal per-request ReBAC graph for this entity.</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    TwGraph graph <span class="op">=</span> tw_graph_new<span class="op">();</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="at">const</span> <span class="kw">auto</span> <span class="op">&amp;</span>cap <span class="op">:</span> _entity_capabilities<span class="op">[</span>p_entity_id<span class="op">])</span> <span class="op">{</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        tw_graph_add_edge<span class="op">(</span>graph<span class="op">,</span> entity_str<span class="op">(</span>p_entity_id<span class="op">),</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                         cap<span class="op">,</span> <span class="st">"HAS_CAPABILITY"</span><span class="op">);</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tw_check_rel<span class="op">(</span>graph<span class="op">,</span> entity_str<span class="op">(</span>p_entity_id<span class="op">),</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"HAS_CAPABILITY"</span><span class="op">,</span> p_capability<span class="op">.</span>utf8<span class="op">().</span>get_data<span class="op">());</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The ReBAC graph is built from <code>_entity_capabilities</code> — a per-entity list populated at <code>CMD_INSTANCE_ASSET</code> time from the asset’s <code>CAN_INSTANCE</code> and <code>HAS_CAPABILITY</code> edges. No database call occurs inside the tick.</p>
 </section>
-<section id="zone-server-integration" class="level3">
-<h3 class="anchored" data-anchor-id="zone-server-integration">Zone server integration</h3>
-<p>The zone server links <code>standalone/tw_planner.hpp</code> directly. No BEAM round-trip occurs during simulation.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">// In FabricMMOGZone — per-entity, called when current plan completes or environment changes</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> FabricMMOGZone<span class="op">::</span>_replan_jellyfish<span class="op">(</span><span class="dt">int</span> p_entity_id<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    TwDomain domain <span class="op">=</span> TwLoader<span class="op">::</span>load_json_str<span class="op">(</span>_species_domains<span class="op">[</span>p_entity_id<span class="op">]);</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    TwState  state  <span class="op">=</span> _build_entity_state<span class="op">(</span>p_entity_id<span class="op">);</span> <span class="co">// reads zone sim state</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    TwPlan   plan   <span class="op">=</span> tw_plan<span class="op">(</span>domain<span class="op">,</span> state<span class="op">,</span> <span class="op">{</span><span class="st">"behave"</span><span class="op">});</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    _entity_plans<span class="op">[</span>p_entity_id<span class="op">]</span> <span class="op">=</span> plan<span class="op">;</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    _entity_plan_step<span class="op">[</span>p_entity_id<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>_replan_jellyfish()</code> is called once per behaviour change, not per tick. The running plan’s current action drives <code>JellygridSwarm::tick()</code> for the action’s duration; the planner is invoked again only when the action completes or a threat sensor fires.</p>
+<section id="sandbox-invocation-per-tick" class="level3">
+<h3 class="anchored" data-anchor-id="sandbox-invocation-per-tick">Sandbox invocation per tick</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> FabricMMOGZone<span class="op">::</span>_tick_sandbox_entity<span class="op">(</span><span class="dt">int</span> p_entity_id<span class="op">,</span> <span class="dt">double</span> p_delta<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    Sandbox <span class="op">&amp;</span>sb <span class="op">=</span> _entity_sandboxes<span class="op">[</span>p_entity_id<span class="op">];</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    sb<span class="op">.</span>set_userdata<span class="op">(</span><span class="st">"entity_id"</span><span class="op">,</span> p_entity_id<span class="op">);</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    sb<span class="op">.</span>set_userdata<span class="op">(</span><span class="st">"delta"</span><span class="op">,</span>     p_delta<span class="op">);</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    sb<span class="op">.</span>vmcall<span class="op">(</span><span class="st">"tick"</span><span class="op">);</span> <span class="co">// calls creator-defined tick() function</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>tick()</code> budget is enforced by the sandbox instruction counter — a kernel that exceeds the budget is suspended and resumed next tick, not killed.</p>
 </section>
-<section id="incremental-replan-on-environment-change" class="level3">
-<h3 class="anchored" data-anchor-id="incremental-replan-on-environment-change">Incremental replan on environment change</h3>
-<p>When a predator enters the AOI of a jellyfish mid-plan:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> FabricMMOGZone<span class="op">::</span>_on_threat_detected<span class="op">(</span><span class="dt">int</span> p_entity_id<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    TwState new_state <span class="op">=</span> _build_entity_state<span class="op">(</span>p_entity_id<span class="op">);</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    new_state<span class="op">.</span>set<span class="op">(</span><span class="st">"threat_nearby"</span><span class="op">,</span> <span class="kw">true</span><span class="op">);</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    TwPlan new_plan <span class="op">=</span> tw_replan_incremental<span class="op">(</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        _species_domains<span class="op">[</span>p_entity_id<span class="op">],</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        _entity_plans<span class="op">[</span>p_entity_id<span class="op">],</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        _entity_plan_step<span class="op">[</span>p_entity_id<span class="op">],</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        new_state</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">);</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    _entity_plans<span class="op">[</span>p_entity_id<span class="op">]</span> <span class="op">=</span> new_plan<span class="op">;</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>tw_replan_incremental()</code> backtracks at the nearest retryable method choice in the solution tree rather than restarting from the root. For short plans (3–5 actions) this is effectively free.</p>
+<section id="rebac-relations-used" class="level3">
+<h3 class="anchored" data-anchor-id="rebac-relations-used">ReBAC relations used</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Relation</th>
+<th>Subject</th>
+<th>Object</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>HAS_CAPABILITY</code></td>
+<td>entity</td>
+<td>capability name</td>
+<td>entity may exercise this capability</td>
+</tr>
+<tr class="even">
+<td><code>CAN_INSTANCE</code></td>
+<td>player</td>
+<td>asset</td>
+<td>player may instance this asset in the zone</td>
+</tr>
+</tbody>
+</table>
+<p><code>HAS_CAPABILITY</code> edges are set at instance time from the asset’s capability list. The sandbox handler checks them per-request. No new relation types are needed beyond those already defined.</p>
 </section>
-<section id="temporal-constraints" class="level3">
-<h3 class="anchored" data-anchor-id="temporal-constraints">Temporal constraints</h3>
-<p>The domain encodes action durations as ISO 8601 strings. <code>tw_check_temporal()</code> validates the current plan against an origin timestamp before committing it. This prevents scheduling a 5-second recovery immediately before a zone-tick deadline.</p>
-</section>
-<section id="capability-gating-via-rebac" class="level3">
-<h3 class="anchored" data-anchor-id="capability-gating-via-rebac">Capability gating via ReBAC</h3>
-<p>A species domain can include capability preconditions:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="st">"seek_light"</span><span class="er">:</span> <span class="fu">{</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"precond"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"light_level"</span><span class="fu">:</span> <span class="st">"bright"</span> <span class="fu">},</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"requires_capability"</span><span class="fu">:</span> <span class="st">"BIOLUMINESCENT"</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Before executing <code>seek_light</code>, the zone server calls the existing <code>check_rel()</code> on the entity’s capability graph. Non-bioluminescent jellyfish never decompose into <code>seek_light</code> — the planner picks <code>idle</code> instead.</p>
-</section>
-<section id="runtime-plan-injection-via-cdn" class="level3">
-<h3 class="anchored" data-anchor-id="runtime-plan-injection-via-cdn">Runtime plan injection via CDN</h3>
-<p>Plans are pure JSON-LD data — they are stored in the content-addressed CDN (Uro) exactly like mesh assets and domain files. Zone-backend calls <code>Taskweft.plan/1</code> via the NIF, receives a JSON plan array, uploads it to Uro, and receives a <code>baked_url</code> (chunk hash URL). It sends the zone server a <code>CMD_SET_ENTITY_PLAN</code> packet carrying only that URL — not the plan bytes.</p>
-<pre><code>zone-backend:
-  plan_json = Taskweft.plan(domain_jsonld, state)
-  %{baked_url: url} = Uro.Storage.upload_plan(plan_json)
-  send_packet(zone_server, CMD_SET_ENTITY_PLAN, entity_id, url)
-
-zone server:
-  _on_cmd_set_entity_plan(entity_id, url)
-    → fetch url from CDN (disk-cached after first fetch)
-    → validate each action name against _species_domains[entity_id]
-    → apply if valid, discard silently if not</code></pre>
-<p>The CDN disk cache means all zone servers hosting the same species share the same plan bytes without re-downloading. A common jellyfish plan computed once by zone-backend is fetched once per zone server and cached for the duration of the session.</p>
-<p>The Elixir module is kept at arm’s length from the zone sim: it produces and uploads plans, it never executes them. The zone sim never calls into BEAM. A slow NIF call on the BEAM side does not affect the zone tick rate — the zone continues running the current plan until a replacement URL arrives.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> FabricMMOGZone<span class="op">::</span>_on_cmd_set_entity_plan<span class="op">(</span><span class="dt">int</span> p_entity_id<span class="op">,</span> <span class="at">const</span> String <span class="op">&amp;</span>p_plan_url<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    String plan_json <span class="op">=</span> _fetch_from_cdn<span class="op">(</span>p_plan_url<span class="op">);</span> <span class="co">// disk-cached</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    TwPlan incoming  <span class="op">=</span> TwLoader<span class="op">::</span>plan_from_json<span class="op">(</span>plan_json<span class="op">);</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(!</span>_domain_contains_all_actions<span class="op">(</span>_species_domains<span class="op">[</span>p_entity_id<span class="op">],</span> incoming<span class="op">))</span> <span class="op">{</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span><span class="op">;</span> <span class="co">// reject: action not in loaded domain</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    _entity_plans<span class="op">[</span>p_entity_id<span class="op">]</span> <span class="op">=</span> incoming<span class="op">;</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    _entity_plan_step<span class="op">[</span>p_entity_id<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="no-sandbox" class="level3">
-<h3 class="anchored" data-anchor-id="no-sandbox">No sandbox</h3>
-<p>The godot-sandbox RISC-V guest (<code>taskweft_planner.cpp</code>) is not used. The standalone headers compile into <code>fabric_mmog_zone.cpp</code> directly. Behaviour domains are loaded from the zone asset bundle at zone startup and cached in <code>_species_domains</code>.</p>
-</section>
-</section>
-<section id="beam-rectgtn-vs-zone-server-rectgtn" class="level2">
-<h2 class="anchored" data-anchor-id="beam-rectgtn-vs-zone-server-rectgtn">BEAM RECTGTN vs zone server RECTGTN</h2>
-<p>Both BEAM and the zone server run RECTGTN, but their domains and purposes are unrelated:</p>
+<section id="json-ld-domains-and-sandbox-domains-coexist" class="level3">
+<h3 class="anchored" data-anchor-id="json-ld-domains-and-sandbox-domains-coexist">JSON-LD domains and sandbox domains coexist</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -492,63 +454,50 @@ zone server:
 </colgroup>
 <thead>
 <tr class="header">
-<th>Layer</th>
-<th>Domain subject</th>
-<th>Purpose</th>
+<th>Input type</th>
+<th>Executor</th>
+<th>Security</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>BEAM (<code>Taskweft.plan/1</code>)</td>
-<td>Platform graph: users, permissions, zone events, upload workflows</td>
-<td>Application logic — access control, scheduling, delegation chains</td>
+<td>JSON-LD domain</td>
+<td>RECTGTN planner (C++)</td>
+<td>Planner is the interpreter — no sandbox needed</td>
 </tr>
 <tr class="even">
-<td>Zone server (<code>tw_seek_plan()</code>)</td>
-<td>Simulation state: entity position, threat sensors, cooldowns</td>
-<td>Entity behaviour — jellyfish action selection within the physics loop</td>
+<td>RISC-V ELF kernel</td>
+<td>godot-sandbox</td>
+<td>Memory isolation + ReBAC capability gating</td>
 </tr>
 </tbody>
 </table>
-<p>BEAM-side plans operate asynchronously outside any tick budget and are uploaded to the CDN as data. Zone-server plans run synchronously within tick constraints and are never visible to BEAM. Neither side needs to model the other’s domain.</p>
+<p>Zone server detects the input type from the asset manifest at startup. A zone can contain entities of both types simultaneously.</p>
+</section>
+</section>
+<section id="what-is-not-changed" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-not-changed">What is not changed</h2>
+<ul>
+<li>The JSON-LD planner path is unchanged. Existing jellyfish domains work as before.</li>
+<li>ReBAC enforcement at join time (<code>CAN_ENTER</code>) and instance time (<code>CAN_INSTANCE</code>) is unchanged.</li>
+<li>The <code>requires_capability</code> field in JSON-LD domains already gates planner decomposition via <code>check_rel</code> — that remains the mechanism for data-driven behavior.</li>
+</ul>
 </section>
 <section id="the-benefits" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p>Multi-step behaviour emerges from the domain definition without C++ case logic. Adding a new species is a new JSON-LD file. Temporal constraints prevent physically impossible action sequences. Incremental replan handles dynamic threats without restarting from the root. ReBAC capability gating unifies entity permissions with entity behaviour.</p>
+<p>Creator behavior code can be arbitrary programs. Memory isolation prevents zone corruption. ReBAC ensures a bioluminescent kernel only accesses bioluminescent capabilities even if the creator’s code contains a bug or deliberate escalation attempt. The capability check is O(1) against an in-memory graph built once at instance time.</p>
 </section>
 <section id="the-downsides" class="level2">
 <h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>Each entity carries a live plan and a solution tree. At 511 jellyfish, memory per entity must be bounded. Plans longer than 8 steps should not be generated — a domain with long decomposition chains will be capped at <code>TW_MAX_DEPTH = 8</code> (configurable, default 256 upstream). The planner is not called per tick so this is not a throughput concern; it is a latency concern on replan when many entities detect the same threat simultaneously.</p>
+<p>RISC-V ELF compilation is a new requirement for creators who want executable behavior. The sandbox instruction budget must be tuned per species — a budget too small breaks smooth animation; too large allows DoS. The capability graph is rebuilt per-request inside the syscall handler, which is cheap for short capability lists but grows linearly with the list length.</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Hot-reloading the <strong>domain</strong> via the NIF breaks zone ACID: the entity state was produced by applying actions defined in the current domain, so a new domain with different state keys or action effects leaves the entity state in a configuration no valid plan could have produced. The domain and the entity state are a unit; replacing one without the other violates the invariant.</p>
-<p>Hot-reloading <strong>plans</strong> via the NIF is safe and is described above (<code>CMD_SET_ENTITY_PLAN</code>). The distinction is that a plan is a sequence of action names — it carries no schema. Validation against the loaded domain before application ensures the plan references only actions that already exist in the simulation’s state machine.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>A zone with no jellyfish entities (empty zone during off-peak hours) allocates no plan storage and never calls the planner. A zone operating at maximum entity count (1,800 slots) with all slots occupied by jellyfish exercises the worst case: up to 1,800 simultaneous replan calls on a single threat broadcast. A batched replan queue (process N entities per tick, rotate) mitigates this.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<ul>
-<li><code>multiplayer-fabric-taskweft/standalone/</code> — link directly into zone server build; no new code required</li>
-<li><code>fabric_mmog_zone.cpp</code>
-<ul>
-<li><code>_replan_jellyfish()</code>, <code>_on_threat_detected()</code> — local C++ planning path</li>
-<li><code>_on_cmd_set_entity_plan()</code> — accept JSON plan from zone-backend, validate against loaded domain before applying</li>
-<li><code>_entity_plans</code>, <code>_entity_plan_step</code>, <code>_species_domains</code></li>
-</ul></li>
-<li><code>fabric_mmog_zone.h</code> — <code>HashMap&lt;int, TwPlan&gt;</code>, <code>HashMap&lt;int, int&gt;</code>, <code>HashMap&lt;String, TwDomain&gt;</code></li>
-<li>Species domain files — <code>assets/domains/jellyfish_common.jsonld</code>, <code>jellyfish_bioluminescent.jsonld</code></li>
-<li><code>JellygridSwarm::tick()</code> — read current action from plan rather than hard-coded phase table</li>
-<li><code>multiplayer-fabric-taskweft</code> NIF — <code>Taskweft.plan/1</code> called from zone-backend; output uploaded to Uro CDN; <code>baked_url</code> distributed via <code>CMD_SET_ENTITY_PLAN</code></li>
-<li><code>Uro.Storage.upload_plan/1</code> — stores plan JSON-LD in the content-addressed store alongside mesh and domain assets</li>
-</ul>
+<p>Running creator behavior as GDScript without the sandbox exposes the full Godot API surface to creator code. A single <code>get_tree().quit()</code> call would terminate the zone server. The sandbox is not optional for executable creator code.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Accepted</p>
+<p>Status: Proposed</p>
 </section>
 <section id="decision-makers" class="level2">
 <h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
@@ -559,19 +508,8 @@ zone server:
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>RECTGTN, HTN, Planning, taskweft, Jellyfish, ZoneServer, C++, Behavior, Swarm, Incremental Replan</li>
+<li>sandbox, ReBAC, HAS_CAPABILITY, godot-sandbox, RISC-V, behavior, security, creator-code, jellyfish</li>
 </ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><code>multiplayer-fabric-taskweft/standalone/tw_planner.hpp</code> — <code>tw_seek_plan()</code>, <code>tw_plan_with_tree()</code></li>
-<li><code>multiplayer-fabric-taskweft/standalone/tw_replan.hpp</code> — <code>tw_replan_incremental()</code></li>
-<li><code>multiplayer-fabric-taskweft/standalone/tw_soltree.hpp</code> — solution tree checkpoint/restore</li>
-<li><code>multiplayer-fabric-taskweft/lean/Planner.lean</code> — formal RECTGTN specification</li>
-<li><code>20260421-rebac-zone-server-enforcement.md</code> — ReBAC capability checks at join and instance time</li>
-<li><code>multiplayer-fabric-godot/modules/multiplayer_fabric_mmog/CONCEPT_MMOG.md</code> — aquarium PoC scope</li>
-</ol>
 
 
 </section>
@@ -999,7 +937,7 @@ zone server:
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260421-rectgtn-jellyfish-behavior.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260423-sandbox-rebac-behavior.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
