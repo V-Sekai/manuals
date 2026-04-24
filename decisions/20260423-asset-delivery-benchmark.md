@@ -74,7 +74,7 @@ A directory containing only very small assets (total archive under 16 KB) produc
 
 ## Status
 
-Status: Active
+Status: Superseded — casync via aria-storage adopted without benchmark. See `20260423-asset-delivery-decision.md`.
 
 ## Decision Makers
 
