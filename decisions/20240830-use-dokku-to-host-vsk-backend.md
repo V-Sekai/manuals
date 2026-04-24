@@ -1,4 +1,4 @@
-# Accepted: Transition to Dokku from Kubernetes
+# Superseded: Transition to Dokku from Kubernetes
 
 ## What is the context of the proposal?
 
@@ -55,7 +55,7 @@ Yes, to streamline operations for V-Sekai’s backend management.
 
 ## What is the status of the proposal?
 
-Status: Accepted
+Status: Superseded — replaced by multiplayer-fabric-hosting docker-compose+Caddy stack; zero Dokku references remain in the codebase.
 
 ## Who is making decisions on the proposal?
 
