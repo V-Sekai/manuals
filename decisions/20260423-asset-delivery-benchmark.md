@@ -6,21 +6,19 @@ Supersedes: `20260421-asset-delivery-benchmark.md`
 
 The delivery stack for V-Sekai game assets is content-addressed chunking via casync. `aria-storage` (Elixir) implements the fetch path: `mix aria_storage.fetch --index <url> --store <url>` downloads chunks from any static HTTP host (GitHub raw, Cloudflare R2, S3), reassembles the asset, and caches chunks at `~/.cache/casync/chunks`. The chunk store is plain static files — no custom server required. The live V-Sekai casync store is at `https://raw.githubusercontent.com/V-Sekai/casync-v-sekai-game/main/store`.
 
-The prior ADR referenced `multiplayer-fabric-desync` (a Go reimplementation that has since been removed) and assumed a custom chunk server. Both assumptions are now incorrect. zchunk remains an untested alternative worth measuring before the stack is finalised.
+The prior ADR referenced `multiplayer-fabric-desync` (a Go reimplementation that has since been removed) and assumed a custom chunk server. Both assumptions are now incorrect.
 
 ## The Problem Statement
 
-casync serialises the entire directory tree as a `.catar` stream before chunking. Small files (`.tres`, `.import`, `.translation`) are packed together in the stream and land in the same 16–256 KB chunks as their neighbours — there are no per-file tiny chunks. This is a structural advantage over zchunk, which chunks each file independently and produces one zchunk file per asset.
+No measured baseline exists for the current stack. Before the stack is considered settled, we need numbers: cold download time, patch size on a realistic 10 % asset change, and client reassembly cost. Without these, performance regressions from future changes to chunking parameters have no reference to compare against.
 
-Whether casync's CDC parameters produce better patch sizes than zchunk's fixed-boundary approach for a realistic Godot export mix, and what the cold-download cost difference is between the two, is unknown without measurement.
+casync serialises the entire directory tree as a `.catar` stream before chunking. Small files (`.tres`, `.import`, `.translation`) are packed together in the stream and land in the same 16–256 KB chunks as their neighbours. A 500 MB export at the default 64 KB average chunk size produces roughly 8 000 unique chunks; aria-storage fetches these 64 at a time.
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
 Prepare a representative Godot export: one V-Sekai avatar and environment, approximately 500 MB, matching a typical world export file mix.
 
-Apply three delivery strategies:
-
-**Strategy A — casync via aria-storage (current)**
+**Strategy A — casync via aria-storage (current stack)**
 
 ```sh
 # Chunk and publish
@@ -32,64 +30,47 @@ mix aria_storage.fetch --index https://.../output.caibx \
                        --output ./local_dir
 ```
 
-No custom server. Chunks are static files on S3 or GitHub raw CDN.
-
-**Strategy B — zchunk**
+**Strategy B — direct tarball download (baseline)**
 
 ```sh
-zck --output asset.zck input_dir.tar
-# Serve asset.zck over any HTTP server.
-# Client fetches only changed chunks via byte-range requests.
-unzck asset.zck
+tar czf export.tar.gz input_dir/
+# Serve over HTTP. Client downloads the full archive every update.
 ```
 
-No custom server. One file per asset instead of a chunk store directory tree.
+No chunking. Measures the floor for cold download size and the ceiling for patch size (always 100 % of the archive).
 
-**Strategy C — bsdiff delta (baseline)**
-
-```sh
-bsdiff old_export.tar new_export.tar delta.patch
-bspatch old_export.tar new_export.tar delta.patch
-```
-
-Binary diff served over HTTP. Measures the floor for patch size.
-
-Metrics for each strategy:
+Metrics:
 
 | Metric | Method |
 |---|---|
-| Cold download size | Fresh client, no local cache |
+| Cold download size | Fresh client, no local cache, 100 Mbps link |
 | Patch size | 10 % asset change — one avatar texture replaced |
-| Chunk count | Unique chunks for a cold fetch (casync: ~500 MB / 64 KB avg ≈ 8 000; zchunk: one range-request per changed section per file) |
-| Server complexity | Count of required services and config files |
+| Chunk count | Unique chunks fetched on cold download (~8 000 expected) |
 | Client CPU on reassembly | Wall time to extract on a 4-core laptop |
 
-The chunk count metric replaces the prior ADR's concern about tiny chunks. casync groups small files together in the serialised `.catar` stream, so all chunks are 16–256 KB regardless of individual file size. For a 500 MB export at 64 KB average, expect ~8 000 unique chunks on a cold fetch; aria-storage fetches these 64 at a time. zchunk issues one byte-range request per changed section per file — chunk count depends on file count and patch layout rather than archive size.
-
-Write raw results to `manuals/decisions/attachments/asset-delivery-benchmark-results.csv`. The follow-on ADR recording the chosen default supersedes this one.
+Write raw results to `manuals/decisions/attachments/asset-delivery-benchmark-results.csv`.
 
 ## The Benefits
 
-Evidence-based default. If zchunk wins on chunk count and server simplicity it removes the casync store infrastructure entirely. If casync wins on patch size for large assets the current stack is confirmed with measured data.
+A measured baseline confirms the current stack is worth the casync infrastructure cost (chunk store publishing, aria-storage dependency) or reveals that the patch-size savings do not justify it for the current asset mix.
 
 ## The Downsides
 
-Requires a representative 500 MB corpus and a controlled 100 Mbps test link. Results do not generalise beyond the tested file mix. A single benchmark run is not a production load test.
+Requires a representative 500 MB corpus and a controlled test link. Results do not generalise beyond the tested file mix. A single benchmark run is not a production load test.
 
 ## The Road Not Taken
 
-Adopting zchunk without a benchmark risks regressions for large assets where CDC chunk reuse across versions outperforms zchunk's fixed-boundary approach. OCI layer delivery (container registry) adds infrastructure incompatible with the homelab deployment target and was not measured.
+No alternative delivery strategy is evaluated here. If results are poor, a follow-on ADR will propose alternatives and require its own benchmark.
 
 ## The Infrequent Use Case
 
-A directory containing only very small assets (total archive under 16 KB) produces a single chunk with no deduplication benefit. This edge case does not affect typical V-Sekai world exports. If it surfaces in measurement, a size threshold below which the archive is served directly — no chunking — is worth a follow-on ADR.
+A directory containing only very small assets (total archive under 16 KB) produces a single chunk with no deduplication benefit. This edge case does not affect typical V-Sekai world exports.
 
 ## In Core and Done by Us
 
 - Benchmark harness: `aria-storage/bench/` (to be written as a Mix task)
 - Corpus: V-Sekai world export, committed to `manuals/decisions/attachments/`
 - Results: `manuals/decisions/attachments/asset-delivery-benchmark-results.csv`
-- Follow-on ADR to record the chosen default
 
 ## Status
 
@@ -101,4 +82,4 @@ Status: Active
 
 ## Tags
 
-- casync, zchunk, Benchmark, AssetDelivery, CDN, aria-storage, Performance
+- casync, Benchmark, AssetDelivery, CDN, aria-storage, Performance
