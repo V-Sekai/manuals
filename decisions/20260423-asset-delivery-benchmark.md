@@ -10,7 +10,9 @@ The prior ADR referenced `multiplayer-fabric-desync` (a Go reimplementation that
 
 ## The Problem Statement
 
-Content-defined chunking (CDC) benefits diminish when chunk boundaries do not align with file boundaries. A Godot export mixes many small files (`.tres`, `.import`, `.translation`) with large ones (`.glb`, `.png`). Chunks smaller than 16 KB gain nothing from deduplication; at one HTTP GET per chunk, 10 000 tiny chunks is worse than a tarball regardless of patch size. Whether casync's CDC parameters suit this layout, and whether zchunk's fixed-boundary HTTP-range approach delivers competitive patch sizes with lower chunk overhead, is unknown without measurement.
+casync serialises the entire directory tree as a `.catar` stream before chunking. Small files (`.tres`, `.import`, `.translation`) are packed together in the stream and land in the same 16–256 KB chunks as their neighbours — there are no per-file tiny chunks. This is a structural advantage over zchunk, which chunks each file independently and produces one zchunk file per asset.
+
+Whether casync's CDC parameters produce better patch sizes than zchunk's fixed-boundary approach for a realistic Godot export mix, and what the cold-download cost difference is between the two, is unknown without measurement.
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
@@ -58,11 +60,11 @@ Metrics for each strategy:
 |---|---|
 | Cold download size | Fresh client, no local cache |
 | Patch size | 10 % asset change — one avatar texture replaced |
-| Chunk count | Total HTTP requests for a cold fetch (proxy for reassembly latency) |
+| Chunk count | Unique chunks for a cold fetch (casync: ~500 MB / 64 KB avg ≈ 8 000; zchunk: one range-request per changed section per file) |
 | Server complexity | Count of required services and config files |
 | Client CPU on reassembly | Wall time to extract on a 4-core laptop |
 
-The chunk count metric is new relative to the prior ADR. At one round-trip per chunk, 10 000 chunks at 50 ms RTT costs 500 s sequentially; aria-storage's parallel fetch (64 concurrent requests) brings this to ~8 s, but chunk count still sets the floor.
+The chunk count metric replaces the prior ADR's concern about tiny chunks. casync groups small files together in the serialised `.catar` stream, so all chunks are 16–256 KB regardless of individual file size. For a 500 MB export at 64 KB average, expect ~8 000 unique chunks on a cold fetch; aria-storage fetches these 64 at a time. zchunk issues one byte-range request per changed section per file — chunk count depends on file count and patch layout rather than archive size.
 
 Write raw results to `manuals/decisions/attachments/asset-delivery-benchmark-results.csv`. The follow-on ADR recording the chosen default supersedes this one.
 
@@ -80,7 +82,7 @@ Adopting zchunk without a benchmark risks regressions for large assets where CDC
 
 ## The Infrequent Use Case
 
-Assets under 16 KB are smaller than one casync chunk and gain nothing from deduplication. Both strategies handle them correctly but wastefully. A size threshold below which assets are served directly — no chunking — should be measured as a follow-on once the primary comparison is settled.
+A directory containing only very small assets (total archive under 16 KB) produces a single chunk with no deduplication benefit. This edge case does not affect typical V-Sekai world exports. If it surfaces in measurement, a size threshold below which the archive is served directly — no chunking — is worth a follow-on ADR.
 
 ## In Core and Done by Us
 
