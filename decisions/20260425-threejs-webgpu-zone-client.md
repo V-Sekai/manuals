@@ -157,15 +157,23 @@ for the client path.
 
 Two components can move into the browser without a Godot runtime:
 
-godot-sandbox compiles to WASM32 (RISC-V ELF guest via Emscripten). GDScript
-behavior code that runs in the native client's sandbox can run in the browser
-via the same WASM binary — entity scripts, jellyfish creation tools, and
-behaviour domains cross the boundary without a rewrite.
+godot-sandbox runs GDScript as RISC-V ELF guests inside libriscv, a C++
+RISC-V interpreter. The compilation chain for the browser is:
+
+```
+GDScript → RISC-V ELF (compiled offline, stored in CDN)
+libriscv  → WASM (Emscripten; executes the ELF in the browser)
+```
+
+libriscv compiles to WASM; the browser loads `libriscv.wasm` and feeds it the
+same RISC-V ELF that runs in the native client. Entity scripts, jellyfish
+creation tools, and behaviour domains cross the boundary unchanged.
 
 taskweft standalone headers (`standalone/tw_planner.hpp`) are header-only C++20
-with no BEAM dependency. `emcc standalone/tw_planner.hpp` produces a WASM
-module that runs RECTGTN planning in the browser — the same species domains
-that drive the native zone server run client-side for preview and offline play.
+with no BEAM dependency and no libriscv layer — they compile directly to WASM
+via Emscripten. `emcc standalone/tw_planner.hpp -o tw_planner.wasm` produces a
+module that runs RECTGTN planning in the browser, using the same species domain
+JSON-LD files that drive the native zone server.
 
 VR presence uses Three.js + WebXR Device API (`renderer.xr.enabled = true`,
 `VRButton.createButton(renderer)`). The Godot XR layer is not required.
@@ -173,9 +181,9 @@ VR presence uses Three.js + WebXR Device API (`renderer.xr.enabled = true`,
 ## The Downsides
 
 Implementing CH_PLAYER datagrams in TypeScript to send entity input is a second
-scope of work; the initial Three.js client is observer-only. godot-sandbox and
-taskweft WASM compilation is not yet verified — both are plausible but untested
-on the Emscripten toolchain.
+scope of work; the initial Three.js client is observer-only. libriscv WASM compilation is untested in this project; the libriscv upstream
+targets Emscripten but the integration with godot-sandbox's guest ABI needs
+verification. taskweft standalone header WASM compilation is similarly untested.
 
 The packet format is internal and could change without versioning. A format
 version byte in the first octet of CH_INTEREST would protect against silent
