@@ -628,18 +628,18 @@ Now go to file-auth-config, edit configuration, enable Allow only known users to
 
 Go to **Admin -> Config Repositories**
 
-- groups-gocd-pipelines
-- JSON Configuration Plugin
-- Git
-- <git@gitlab.com>:godot-groups/groups-gocd-pipelines
-- master
-- \*.gopipeline.json
-- \*.goenvironment.json
+- **Config #repository Name:** groups-gocd-pipelines
+- **Plugin ID:** JSON Configuration Plugin
+- **Material Type:** Git
+- **URL:** <git@gitlab.com>:godot-groups/groups-gocd-pipelines
+- **Branch:** master
+- **GoCD pipeline files pattern:** \*.gopipeline.json
+- **GoCD environment files pattern:** \*.goenvironment.json
 
 **Rules**
 
-- Pipeline Group: beta
-- Environment: development
+- **Allow:** Pipeline Group: beta
+- **Allow:** Environment: development
 
 ### Setup of flux2 GitOps
 

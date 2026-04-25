@@ -6,8 +6,8 @@ This test case aims to utilize a specific database technology, sqlite-fdb, to as
 
 ## Components
 
-- These include Grass, Pathway, Bench, Tree, Pond.
-- The tools used in this process are Blender (for creation/editing), Godot Engine (for scene assembly), and Database (for syncing).
+- **3D Tiles**: These include Grass, Pathway, Bench, Tree, Pond.
+- **Tools**: The tools used in this process are Blender (for creation/editing), Godot Engine (for scene assembly), and Database (for syncing).
 
 ## Steps
 
@@ -18,10 +18,10 @@ This test case aims to utilize a specific database technology, sqlite-fdb, to as
 
 ## Evaluation Criteria
 
-- Ensure that changes made in Blender are accurately reflected in Godot.
-- Measure the time taken for sync operations.
-- Evaluate the complexity of the sync steps.
-- Check how the system responds to errors such as missing data.
+- **Synchronization Accuracy**: Ensure that changes made in Blender are accurately reflected in Godot.
+- **Performance**: Measure the time taken for sync operations.
+- **Ease of Use**: Evaluate the complexity of the sync steps.
+- **Error Handling**: Check how the system responds to errors such as missing data.
 
 # Proposal
 

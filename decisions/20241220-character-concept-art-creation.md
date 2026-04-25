@@ -33,19 +33,19 @@ Easy Diffusion provides a user-friendly interface for Stable Diffusion. We will 
 
 ### 3. Image Editing with Krita
 
-- Use Krita's Magic Wand tool to select the main part of the image (the character). Then, inverse the selection and delete the rest, isolating the character from the generated image. This creates a transparent background, crucial for 3D model creation.
+- **Background Removal:** Use Krita's Magic Wand tool to select the main part of the image (the character). Then, inverse the selection and delete the rest, isolating the character from the generated image. This creates a transparent background, crucial for 3D model creation.
 
 **Caution:** Do not feather the edges because it corrupts the background removal algorithm.
 
-- Use Krita's brush tools to carefully erase the eyebrows, nose, and mouth. You can use a combination of the Eraser tool and the Brush tool with a skin-tone color to blend seamlessly.
+- **Face Erasure:** Use Krita's brush tools to carefully erase the eyebrows, nose, and mouth. You can use a combination of the Eraser tool and the Brush tool with a skin-tone color to blend seamlessly.
 
   **Reasoning for Face Erasure:**
 
-  - It helps emphasize the character's overall shape, silhouette, and clothing design without getting distracted by facial features.
-  - It allows for more freedom when creating the actual face in the 3D modeling stage, providing a blank canvas for the artist.
-  - Sometimes AI-generated faces can fall into the "uncanny valley," appearing slightly off-putting. Erasing the face avoids this issue.
+  - **Focus on Form:** It helps emphasize the character's overall shape, silhouette, and clothing design without getting distracted by facial features.
+  - **Flexibility for Later:** It allows for more freedom when creating the actual face in the 3D modeling stage, providing a blank canvas for the artist.
+  - **Avoiding Uncanny Valley:** Sometimes AI-generated faces can fall into the "uncanny valley," appearing slightly off-putting. Erasing the face avoids this issue.
 
-- Utilize other tools in Krita, like the selection tools and eraser, for further refinement if needed.
+- **Refinement (Optional):** Utilize other tools in Krita, like the selection tools and eraser, for further refinement if needed.
 
 ### 4. Sprite Creation with Shoebox
 
@@ -118,32 +118,32 @@ The process emphasizes iterative refinement of the prompt based on results from 
 
 **Important Notes for Palm and A-Pose:**
 
-- Carefully craft your prompts in Easy Diffusion to get the desired A-pose and hand orientation. Experiment with different keywords and phrases.
-- You might need to generate multiple images and refine them in Krita until you achieve a perfect A-pose with well-defined palms and fingers.
-- Explore Shoebox's settings to fine-tune sprite generation and ensure it preserves the A-pose and hand details.
-- If Shoebox doesn't meet your needs, consider other sprite generation or 3D modeling tools that might offer more control over rigging and posing.
+- **Prompt Engineering:** Carefully craft your prompts in Easy Diffusion to get the desired A-pose and hand orientation. Experiment with different keywords and phrases.
+- **Iteration:** You might need to generate multiple images and refine them in Krita until you achieve a perfect A-pose with well-defined palms and fingers.
+- **Shoebox Settings:** Explore Shoebox's settings to fine-tune sprite generation and ensure it preserves the A-pose and hand details.
+- **Alternative Tools:** If Shoebox doesn't meet your needs, consider other sprite generation or 3D modeling tools that might offer more control over rigging and posing.
 
 ## The Benefits
 
-- Streamlines concept art and sprite creation using accessible tools.
-- Minimizes image editing and sprite creation time.
-- Accelerates character design exploration.
-- Maintains consistency in character presentation.
-- Empowers users with varying artistic skills to contribute.
-- Leverages free tools readily available on Windows 11.
+- **Simplified Workflow:** Streamlines concept art and sprite creation using accessible tools.
+- **Reduced Manual Effort:** Minimizes image editing and sprite creation time.
+- **Faster Iteration:** Accelerates character design exploration.
+- **Standardized Output:** Maintains consistency in character presentation.
+- **Accessibility:** Empowers users with varying artistic skills to contribute.
+- **Cost-effective:** Leverages free tools readily available on Windows 11.
 
 ## The Downsides
 
-- Inherits the distinctive style of the FLUX.1 model.
-- May require manual adjustments for complex sprites.
-- Complex elements may still require manual 3D refinement.
-- Requires users to install and configure WSL2 for TRELLIS.
+- **FLUX.1 Style:** Inherits the distinctive style of the FLUX.1 model.
+- **Shoebox Limitations:** May require manual adjustments for complex sprites.
+- **TRELLIS Limitations (Optional):** Complex elements may still require manual 3D refinement.
+- **WSL2 Setup (Optional):** Requires users to install and configure WSL2 for TRELLIS.
 
 ## The Road Not Taken
 
-- Offers greater control but is time-consuming.
-- Other models may not be as compatible with TRELLIS or as user-friendly.
-- Can be more powerful but less accessible than Shoebox.
+- **Manual creation of concept art:** Offers greater control but is time-consuming.
+- **Using alternative AI models:** Other models may not be as compatible with TRELLIS or as user-friendly.
+- **Dedicated Sprite Editors:** Can be more powerful but less accessible than Shoebox.
 
 ## The Infrequent Use Case
 

@@ -78,20 +78,20 @@ The proposed system will allow users to interact directly with avatar bone struc
 
 ## Benefits
 
-- Direct manipulation of bones and constraints in VR enhances the intuitiveness and enjoyment of avatar customization.
-- Fine control over adjustments leads to more accurate and satisfying results.
-- Integration of tools and interactions within the VR environment reduces the cognitive load and context switching, fostering a more creative and productive user experience.
+- **Enhanced User Experience**: Direct manipulation of bones and constraints in VR enhances the intuitiveness and enjoyment of avatar customization.
+- **Increased Precision**: Fine control over adjustments leads to more accurate and satisfying results.
+- **Seamless Workflow**: Integration of tools and interactions within the VR environment reduces the cognitive load and context switching, fostering a more creative and productive user experience.
 
 ## Downsides
 
-- Developing a fully interactive 3D UI with precise control mechanisms can be challenging and time-consuming.
-- High fidelity models and real-time updates in VR may lead to performance issues on lower-end systems.
+- **Complexity in Implementation**: Developing a fully interactive 3D UI with precise control mechanisms can be challenging and time-consuming.
+- **Performance Concerns**: High fidelity models and real-time updates in VR may lead to performance issues on lower-end systems.
 - In a shared space app on the Apple Vision Pro neither switching or tool palette will work.
 - In an immersive app on the Apple Vision Pro either switching or tool palette will work with hand tracking.
 
 ## The Road Not Taken
 
-- Using a traditional 2D interface for constraint management was considered but rejected due to the lack of immersion and intuitiveness in a VR context.
+- **2D GUI for Constraint Management**: Using a traditional 2D interface for constraint management was considered but rejected due to the lack of immersion and intuitiveness in a VR context.
 
 The implementation of scale for matching clothing to the character's body, as well as the adjustment of constraint weight, will be addressed in future work.
 

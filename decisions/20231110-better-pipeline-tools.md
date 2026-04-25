@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- Proposed
-- V-Sekai, fire
-- `V-Sekai`, `Godot Engine`, `Virtual Reality`
+- **Status:** Proposed
+- **Deciders:** V-Sekai, fire
+- **Tags:** `V-Sekai`, `Godot Engine`, `Virtual Reality`
 
 ## The Backdrop
 

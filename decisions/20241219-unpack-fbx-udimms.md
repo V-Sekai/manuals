@@ -24,14 +24,14 @@ This proposal suggests implementing a dedicated UDIM importer and integration wi
 
 Implementing UDIM support offers several advantages:
 
-- Streamlines the process of importing and working with high-resolution models.
-- Allows for greater detail and realism in 3D assets.
-- Aligns Godot with industry-standard practices in texture management.
+- **Improved Artist Workflow:** Streamlines the process of importing and working with high-resolution models.
+- **Enhanced Visual Fidelity:** Allows for greater detail and realism in 3D assets.
+- **Industry Standard Compatibility:** Aligns Godot with industry-standard practices in texture management.
 
 ## The Downsides
 
-- Requires dedicated effort to implement and integrate UDIM support.
-- May introduce minor performance overhead depending on the implementation.
+- **Development Time and Resources:** Requires dedicated effort to implement and integrate UDIM support.
+- **Potential Performance Impact:** May introduce minor performance overhead depending on the implementation.
 
 ## The Road Not Taken
 

@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- Proposed
-- V-Sekai
-- V-Sekai, Elixir, Membrane Framework, Multiplayer Blender, JSON-RPC
+- **Status**: Proposed
+- **Deciders**: V-Sekai
+- **Tags**: V-Sekai, Elixir, Membrane Framework, Multiplayer Blender, JSON-RPC
 
 ## Backdrop
 
@@ -51,34 +51,34 @@ This strategy leverages Elixir and the Membrane Framework's unique features, use
 
 Here are the key steps:
 
-- Transition from the current code to Elixir & Membrane Framework Code, tracked in a version control system.
-- Declare and isolate dependencies explicitly, avoiding reliance on system-wide packages.
+- **Codebase**: Transition from the current code to Elixir & Membrane Framework Code, tracked in a version control system.
+- **Dependencies**: Declare and isolate dependencies explicitly, avoiding reliance on system-wide packages.
 
-- Store configuration (including GitHub OAuth 2.0 Login credentials) in the environment, not in the code.
+- **Config**: Store configuration (including GitHub OAuth 2.0 Login credentials) in the environment, not in the code.
 
-- Replace in-memory data persistence with Khepri Database Library, attached as a backing service.
+- **Backing Services**: Replace in-memory data persistence with Khepri Database Library, attached as a backing service.
 
-- Strictly separate these stages, facilitated by the Elixir & Membrane Framework Code.
+- **Build, Release, Run**: Strictly separate these stages, facilitated by the Elixir & Membrane Framework Code.
 
-- Execute application as one or more stateless processes, storing needed state in the Khepri database.
+- **Processes**: Execute application as one or more stateless processes, storing needed state in the Khepri database.
 
-- Export services via port binding, making the application self-contained.
+- **Port Binding**: Export services via port binding, making the application self-contained.
 
-- Scale out the application via the process model, allowing for handling increased load.
+- **Concurrency**: Scale out the application via the process model, allowing for handling increased load.
 
-- Aim for fast startup and graceful shutdown to maximize robustness.
+- **Disposability**: Aim for fast startup and graceful shutdown to maximize robustness.
 
-- Keep development, staging, and production environments as similar as possible.
+- **Dev/Prod Parity**: Keep development, staging, and production environments as similar as possible.
 
-- Treat logs as event streams, handled by the executing environment.
+- **Logs**: Treat logs as event streams, handled by the executing environment.
 
-- Run any needed one-off administrative tasks in an identical environment as the regular long-running processes of the app.
+- **Admin Processes**: Run any needed one-off administrative tasks in an identical environment as the regular long-running processes of the app.
 
-- Implement a JSON-RPC Blender runner to facilitate efficient communication with Blender.
+- **Blender Runner**: Implement a JSON-RPC Blender runner to facilitate efficient communication with Blender.
 
-- This principle ensures that only triangles (polygons with 3 vertices) are used in the graphical representation. This simplifies the rendering process and reduces computational complexity.
+- **Triangle Only**: This principle ensures that only triangles (polygons with 3 vertices) are used in the graphical representation. This simplifies the rendering process and reduces computational complexity.
 
-- Use airlocks to translate the remote environment to the local environment. This allows for seamless interaction between different parts of the system while maintaining isolation and security.
+- **Airlocks**: Use airlocks to translate the remote environment to the local environment. This allows for seamless interaction between different parts of the system while maintaining isolation and security.
 
 ## The Upside
 

@@ -6,11 +6,11 @@ The project aims to develop a translation/transcription badge using GGML's Whisp
 
 ## Key Features
 
-- The system will prioritize voice interactions, leveraging GGML's Whisper capabilities to create a responsive AI. Python will not be used in this context.
-- A speech-to-text interface will be incorporated to process voice inputs effectively.
-- The display, set in portrait mode, will connect directly to the compute module, a standard Linux amd64 computer, eliminating the need for embedded software development.
-- The system will utilize a 6-inch flexible OLED display from Wisecoco with a resolution of 2880\*1440 at 60Hz refresh rate.
-- The design will be streamlined and efficient, excluding holograph displays.
+- **Voice Interactions**: The system will prioritize voice interactions, leveraging GGML's Whisper capabilities to create a responsive AI. Python will not be used in this context.
+- **Speech-to-Text Interface**: A speech-to-text interface will be incorporated to process voice inputs effectively.
+- **Direct Connection to Compute Module**: The display, set in portrait mode, will connect directly to the compute module, a standard Linux amd64 computer, eliminating the need for embedded software development.
+- **Flexible OLED Display**: The system will utilize a 6-inch flexible OLED display from Wisecoco with a resolution of 2880\*1440 at 60Hz refresh rate.
+- **No Holograph Displays**: The design will be streamlined and efficient, excluding holograph displays.
 
 ## Potential Challenges
 

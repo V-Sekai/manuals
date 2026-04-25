@@ -12,9 +12,9 @@ The question at hand is determining the size of the dataset needed for training 
 
 The size of the dataset required for training a model effectively depends on the desired type of outputs from the model.
 
-- If the goal is to have the model generate outputs that it has already seen during training, a smaller dataset is sufficient. In this case, a dataset size in the range of 2,000 to 10,000 would be appropriate.
+- **Generic Outputs**: If the goal is to have the model generate outputs that it has already seen during training, a smaller dataset is sufficient. In this case, a dataset size in the range of 2,000 to 10,000 would be appropriate.
 
-- On the other hand, if the aim is for the model to generate novel or never-seen-before outputs, a larger dataset is necessary. Here, a dataset size between 10,000 and 100,000 would be more suitable.
+- **Novel Outputs**: On the other hand, if the aim is for the model to generate novel or never-seen-before outputs, a larger dataset is necessary. Here, a dataset size between 10,000 and 100,000 would be more suitable.
 
 ## The Benefits
 

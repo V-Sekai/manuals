@@ -10,12 +10,12 @@ I want to extend V-Sekai's functionality to support real-time interaction with u
 
 Here’s a detailed breakdown of the features we plan to implement:
 
-- Users can move and rotate objects in the scene. Changes appear instantly, providing immediate visual feedback.
-- When one user modifies something, the change is immediately visible to all other users in the same session.
-- Users can save their current scene setup to continue working on it later or retrieve it in another session.
-- Facilitate the introduction of new interactive elements during live sessions.
-- A special user, called a mediator, can manage permissions like who can move what, start or end the session, and oversee interactions between users.
-- Initially, this feature will support multiple users interacting in one scene without additional complexities like handling multiple scenes or advanced physics.
+- **Real-time Interaction**: Users can move and rotate objects in the scene. Changes appear instantly, providing immediate visual feedback.
+- **Networked Synchronization**: When one user modifies something, the change is immediately visible to all other users in the same session.
+- **Object Persistence**: Users can save their current scene setup to continue working on it later or retrieve it in another session.
+- **Dynamic Environment Integration**: Facilitate the introduction of new interactive elements during live sessions.
+- **Mediator Role**: A special user, called a mediator, can manage permissions like who can move what, start or end the session, and oversee interactions between users.
+- **Limited Scope**: Initially, this feature will support multiple users interacting in one scene without additional complexities like handling multiple scenes or advanced physics.
 
 This upgrade leverages the existing functionality of V-Sekai for uploading and rendering game engine assets. It assumes the utilization of V-Sekai's current game engine and networking capabilities, or the integration of clearly specified, readily available libraries or services to achieve the desired real-time interaction and synchronization.
 

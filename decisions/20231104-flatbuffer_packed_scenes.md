@@ -28,9 +28,9 @@ While this feature could be implemented as an add-on, a merge tool is a common f
 
 When working on a project related to Godot, such as game development or add-ons, you may encounter limitations with the current scene file formats:
 
-- For scenes created by external tools (e.g., importing from Blender)
-- Binary format, small but not very useful when collaborating on a project
-- Textual format, INI/TOML-like syntax, human-readable, and encouraged for use
+- **escn**: For scenes created by external tools (e.g., importing from Blender)
+- **scn**: Binary format, small but not very useful when collaborating on a project
+- **tscn**: Textual format, INI/TOML-like syntax, human-readable, and encouraged for use
 
 The TSCN format is proprietary and not widely used, leading to issues such as difficulty editing scenes outside of the Godot Editor and a lack of supporting tools like linters or syntax checkers.
 

@@ -12,7 +12,7 @@ The challenge is creating an intuitive, engaging VR dating game with a comprehen
 
 Using the SLC framework—Simple, Lovable, Complete—the project should:
 
-- Emphasize user-friendly design and easy navigation.
+- **Simple:** Emphasize user-friendly design and easy navigation.
 
   ```pseudo
   function interact_with_object(object):
@@ -22,11 +22,11 @@ Using the SLC framework—Simple, Lovable, Complete—the project should:
           execute_interaction()
   ```
 
-- Develop appealing characters and environments.
+- **Lovable:** Develop appealing characters and environments.
 
   Character customization concept art
 
-- Launch with diverse scenarios and detailed character interactions.
+- **Complete:** Launch with diverse scenarios and detailed character interactions.
 
   ```yaml
   launch_features:

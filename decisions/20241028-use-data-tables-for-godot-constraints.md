@@ -14,14 +14,14 @@ The proposal involves integrating a data table system within the Godot Engine to
 
 ## The Benefits
 
-- Easier to manage large numbers of constraints.
-- Reduces development time by allowing non-programmers to adjust constraints.
-- Minimizes coding errors associated with manual constraint setup.
+- **Scalability**: Easier to manage large numbers of constraints.
+- **Efficiency**: Reduces development time by allowing non-programmers to adjust constraints.
+- **Error Reduction**: Minimizes coding errors associated with manual constraint setup.
 
 ## The Downsides
 
-- Initial setup of data tables and integration into the Godot project might be complex.
-- Reading from data tables at runtime could impact performance if not properly optimized.
+- **Complexity in Setup**: Initial setup of data tables and integration into the Godot project might be complex.
+- **Performance Concerns**: Reading from data tables at runtime could impact performance if not properly optimized.
 
 ## The Road Not Taken
 

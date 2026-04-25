@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- proposed
-- V-Sekai, fire, detox,
-- V-Sekai
+- **Status:** proposed
+- **Deciders:** V-Sekai, fire, detox,
+- **Tags:** V-Sekai
 
 ## Context and Problem Statement
 

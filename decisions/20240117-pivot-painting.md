@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- Proposed
-- V-Sekai, Silent, fire
-- V-Sekai
+- **Status**: Proposed
+- **Deciders**: V-Sekai, Silent, fire
+- **Tags**: V-Sekai
 
 ## The Backdrop
 

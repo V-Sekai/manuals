@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- Draft
-- V-Sekai
-- V-Sekai
+- **Status:** Draft
+- **Deciders:** V-Sekai
+- **Tags:** V-Sekai
 
 ## Context
 

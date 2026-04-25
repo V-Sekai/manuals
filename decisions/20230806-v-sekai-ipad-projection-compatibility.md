@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- proposed
-- V-Sekai
-- V-Sekai, iPad, Presentation Screen, Compatibility
+- **Status:** proposed
+- **Deciders:** V-Sekai
+- **Tags:** V-Sekai, iPad, Presentation Screen, Compatibility
 
 ## The Backdrop
 

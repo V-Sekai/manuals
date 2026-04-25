@@ -12,7 +12,7 @@ Currently, synchronizing complex node scene trees in multiplayer scenarios withi
 
 The proposal involves implementing a synchronization protocol that mirrors the node scene tree structure across all multiplayer instances. This includes:
 
-- Establishing real-time updates, property synchronization, and state management to ensure all clients reflect the same scene tree.
+- **Syncing Node Trees:** Establishing real-time updates, property synchronization, and state management to ensure all clients reflect the same scene tree.
 
   ```gdscript
   func sync_scene_tree(node):

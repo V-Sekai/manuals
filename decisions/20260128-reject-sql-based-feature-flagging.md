@@ -33,11 +33,11 @@ However, this approach was rejected in favor of simpler alternatives.
 ## The Downsides
 
 **SQL-Based Feature Flagging Issues:**
-- Complex database schema and query logic for simple configuration needs
-- Configuration stored in database tables is harder to version control and audit
-- Cannot control separate container execution (either run Next.js container or don't)
-- Runtime flag changes don't affect code paths that branch during application startup
-- Additional complexity for operations and debugging
+- **Overengineered**: Complex database schema and query logic for simple configuration needs
+- **Error-prone**: Configuration stored in database tables is harder to version control and audit
+- **Docker Limitations**: Cannot control separate container execution (either run Next.js container or don't)
+- **Caching Issues**: Runtime flag changes don't affect code paths that branch during application startup
+- **Maintenance Burden**: Additional complexity for operations and debugging
 
 **Runtime Configuration Problems:**
 - Some application behavior is determined at startup and cannot be changed dynamically
