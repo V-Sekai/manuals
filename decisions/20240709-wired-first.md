@@ -1,43 +1,26 @@
-# Draft: A Wired-First Strategy for PCVR
+# A Wired-First Strategy for PCVR
 
 ## The Context
 
-Constant problems with WiFi video streaming for vr in the stupid summer heat.
+WiFi video streaming for PCVR becomes unreliable in warm ambient conditions, breaking development sessions in summer.
 
 ## The Problem Statement
 
-Implementing a wired-first strategy for PCVR headsets to mitigate connectivity issues.
+WiFi drops and latency spikes interrupt VR development iteration. There is no policy that makes wired USB-C or DisplayPort the default connection path for PCVR headsets in the V-Sekai studio setup.
 
-## Describe How Your Proposal Will Work with Code, Pseudo-Code, Mock-Ups, or Diagrams
+## Implementation
 
-1. Check if the VR headset is connected via a wired connection.
-2. If wired, establish a wired connection.
-3. If not wired, fall back to a wireless connection.
-
-## The Benefits
-
-- **Stability:** Wired connections are generally more stable than wireless ones.
-- **Performance:** Reduced latency and higher data transfer rates.
-- **Reliability:** Less interference compared to WiFi.
-- **Developer Iteration Times:** Faster and more reliable connections can significantly reduce iteration times during development.
+1. Check whether the headset is connected via USB-C or DisplayPort.
+2. If wired, stream via the wired path.
+3. If no wired connection is detected, fall back to WiFi and log a warning.
 
 ## The Downsides
 
-- **Mobility:** Limited movement due to the physical cable.
-- **Setup Complexity:** Additional setup required for wiring.
-- **Cost:** Potentially higher costs for longer or specialized cables.
+Wired connections limit physical movement to cable length. Cables long enough to cover a full play area cost more than short ones. Motion trackers cannot use this strategy — no wired tracking option exists at the project's budget.
 
 ## The Road Not Taken
 
-We're unable to implement this strategy for motion trackers. However, some tracking technologies out of our price range can do passive marker ball tracking.
-
-## The Infrequent Use Case
-
-In scenarios where mobility is crucial, such as large-scale VR experiences, a wireless connection might still be preferred despite its downsides.
-
-## In Core and Done by Us
-
-This proposal will be implemented and maintained by the V-Sekai development team.
+Dedicated 6 GHz WiFi hardware (WiFi 6E access point, per-headset channel reservation) eliminates most interference issues without cables. Rejected on cost: the hardware exceeds the studio budget for a problem that wired connection solves for free.
 
 ## Status
 
@@ -53,7 +36,5 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Further Reading
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
-
-AI assistant Aria assisted with this article.
+1. [V-Sekai · GitHub](https://github.com/v-sekai)
+2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
