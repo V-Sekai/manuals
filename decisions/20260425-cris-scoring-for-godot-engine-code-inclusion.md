@@ -1,4 +1,4 @@
-# CRIS Scoring for Development Effort Prioritisation
+# CRIS Scoring for Development Work
 
 - Status: accepted
 - Deciders: V-Sekai, fire
@@ -6,16 +6,12 @@
 
 ## Context and Problem Statement
 
-The V-Sekai project spans multiple components — a Godot Engine fork, an
-Elixir/Phoenix backend, WebTransport networking, asset delivery, and more.
-Across all of these, the team regularly faces the same question: is this
-work worth doing now? Without a shared framework, the decision depends on
-who is in the room and what mood they are in.
-
-A Godot Engine conference presentation (April 2026) introduced the **CRIS**
-scoring framework as a principled way to prioritise code inclusion decisions.
-We generalise it as the canonical tool for deciding where to invest
-development effort across the entire V-Sekai project, not only Godot patches.
+V-Sekai has no shared framework for ranking work; decisions depend on who is
+in the room. A Godot Engine conference presentation (April 2026) introduced
+the **CRIS** scoring framework for code inclusion decisions. We adopt it as
+the canonical tool for deciding where to invest effort across the entire
+V-Sekai project — Godot Engine patches, backend features, infrastructure,
+and tooling.
 
 ## Decision
 
@@ -27,16 +23,12 @@ whether to build it now, defer it, or drop it.
 
 Each factor adds (+) or subtracts (−) from the candidate's priority score.
 
-| Factor | Raises priority | Lowers priority |
-|--------|----------------|----------------|
-| **C**omplexity | Low complexity | High complexity |
-| **R**each | Affects many users | Affects nobody |
-| **I**mpediment | Blocks progress on the game | Easy workaround exists |
+| Factor          | Raises priority             | Lowers priority          |
+| --------------- | --------------------------- | ------------------------ |
+| **C**omplexity  | Low complexity              | High complexity          |
+| **R**each       | Affects many users          | Affects nobody           |
+| **I**mpediment  | Blocks progress on the game | Easy workaround exists   |
 | **S**takeholder | Large project depends on it | No project depends on it |
-
-A unit of work scores higher when it is simple, widely needed, blocking, and
-backed by a real project. It scores lower when it is complex, niche, optional,
-and unsupported.
 
 ## How to Apply
 
@@ -45,12 +37,12 @@ and unsupported.
 2. Score each factor +1 (favourable) or −1 (unfavourable). Sum to a total.
 3. Use the total to guide the decision:
 
-   | Total | Default action |
-   |-------|---------------|
-   | +3 or +4 | Build now; high urgency |
-   | +1 or +2 | Schedule soon; normal priority |
-   | −1 or 0 | Defer; revisit when a stakeholder project appears |
-   | −2 or lower | Drop; document why in an option graveyard |
+   | Total       | Default action                                    |
+   | ----------- | ------------------------------------------------- |
+   | +3 or +4    | Build now; high urgency                           |
+   | +1 or +2    | Schedule soon; normal priority                    |
+   | −1 or 0     | Defer; revisit when a stakeholder project appears |
+   | −2 or lower | Drop; document why in an option graveyard         |
 
 4. Any decider may override the default with a written rationale. The CRIS
    score is a guide, not a veto.
@@ -61,28 +53,28 @@ and unsupported.
 
 CRIS determines whether a patch is worth carrying. The existing flowchart
 (`20211207-for-godot-engine-changes-use-a-decision-flowchart.md`) then
-determines *where* it lives (fork-only, upstream PR, or V-Sekai-specific
+determines _where_ it lives (fork-only, upstream PR, or V-Sekai-specific
 branch). Apply CRIS first; apply the flowchart only if CRIS clears it.
 
 ### Backend and infrastructure
 
 CRIS ranks competing feature requests and bug fixes in the Elixir backend,
 hosting stack, and CI pipeline. A ticket that scores +3 or +4 gets pulled
-into the current sprint; a ticket that scores −2 or lower is closed with a
-note.
+into the current sprint; the reviewer closes a ticket scoring −2 or lower
+with a note.
 
 ### Research and tooling
 
-New tools, languages, or frameworks are evaluated with CRIS before any
-prototype work begins. High Complexity and low Stakeholder support are
-disqualifying unless Reach and Impediment compensate.
+New tools, languages, or frameworks go through CRIS before any prototype
+work begins. High Complexity and low Stakeholder support disqualify a
+candidate unless Reach and Impediment compensate.
 
 ## Positive Consequences
 
-- Shared vocabulary that works across every subsystem.
+- Contributors share a vocabulary that works across every subsystem.
 - Contributors can self-assess before requesting review or opening a PR.
-- Low-CRIS work is dropped early, freeing capacity for high-value tasks.
-- Decisions are auditable: the CRIS table is preserved in the issue history.
+- Reviewers drop low-CRIS work early.
+- The CRIS table in each issue makes the decision auditable later.
 
 ## Negative Consequences
 
@@ -92,12 +84,12 @@ disqualifying unless Reach and Impediment compensate.
 
 ## Option Graveyard
 
-- Option: Ad-hoc prioritisation by whoever is loudest.
+- Option: Ad-hoc prioritising by whoever is loudest.
 - Rejection reason: Produces inconsistent outcomes and repeated arguments.
 
 - Option: Strict urgency-only ordering (fix what is broken, ignore the rest).
-- Rejection reason: Ignores strategic value and lets important features
-  remain unbuilt indefinitely.
+- Rejection reason: Ignores strategic value and leaves important features
+  unbuilt indefinitely.
 
 - Option: Separate scoring rubrics per subsystem.
 - Rejection reason: Fragments the vocabulary; makes cross-team trade-offs
