@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- **Status**: Proposed
-- **Deciders**: V-Sekai Project Maintainers
-- **Tags**: XR, Hand Tracking, Full Body Tracking, OpenXR, Godot Engine, Animation Retargeting
+- Proposed
+- V-Sekai Project Maintainers
+- XR, Hand Tracking, Full Body Tracking, OpenXR, Godot Engine, Animation Retargeting
 
 ## The Backdrop
 
@@ -38,9 +38,9 @@ In VR, this strategy enables the representation of fixed-size avatar hands that 
 
 The proposed solution will improve interoperability with other systems and standards, such as:
 
-- **Apple's Vision Pro**: By implementing an `AppleSkeleton3D` node to accommodate format and skeleton definitions differences.
-- **WebXR**: Potentially aligning with the OpenXR system.
-- **Godot Engine**: Including additional metacarpal bones in the engine's humanoid skeleton for accurate retargeting.
+- By implementing an `AppleSkeleton3D` node to accommodate format and skeleton definitions differences.
+- Potentially aligning with the OpenXR system.
+- Including additional metacarpal bones in the engine's humanoid skeleton for accurate retargeting.
 
 ## Non-XR Use Cases Showcasing Broader Utility
 

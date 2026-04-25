@@ -18,14 +18,14 @@ Our cloth shirt is too baggy, we want to fit to the person.
 
 ## The Benefits
 
-- **Improved Fit**: Ensures that the clothing fits snugly to the avatar's body.
-- **Enhanced Appearance**: Provides a more realistic and appealing look for the avatar.
-- **Customization**: Allows for easy adjustments to fit different body types.
+- Ensures that the clothing fits snugly to the avatar's body.
+- Provides a more realistic and appealing look for the avatar.
+- Allows for easy adjustments to fit different body types.
 
 ## The Downsides
 
-- **Complexity**: Requires familiarity with Blender and its modifiers.
-- **Time-Consuming**: Initial setup and fine-tuning may take time.
+- Requires familiarity with Blender and its modifiers.
+- Initial setup and fine-tuning may take time.
 
 ## The Road Not Taken
 

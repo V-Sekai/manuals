@@ -32,14 +32,14 @@ For Kubernetes Runner:
 
 ## Benefits
 
-- **Consistency Across Platforms**: Ensures builds and tests are consistent across all supported platforms.
-- **Increased Development Speed**: Faster feedback loops for developers working on different platforms.
-- **Scalability**: Kubernetes runners can dynamically scale to handle increased loads, improving CI/CD pipeline performance.
+- Ensures builds and tests are consistent across all supported platforms.
+- Faster feedback loops for developers working on different platforms.
+- Kubernetes runners can dynamically scale to handle increased loads, improving CI/CD pipeline performance.
 
 ## Downsides
 
-- **Maintenance Overhead**: Requires initial setup and ongoing maintenance of runners across multiple platforms.
-- **Complexity**: Adds complexity to the CI/CD setup, especially managing different executors and environments.
+- Requires initial setup and ongoing maintenance of runners across multiple platforms.
+- Adds complexity to the CI/CD setup, especially managing different executors and environments.
 
 ## Alternatives Not Chosen
 

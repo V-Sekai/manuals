@@ -108,53 +108,53 @@ AI assistant Aria assisted with this article.
 
 ### Mouse & Keyboard
 
-- **Left-click**: Adds or selects entities.
-- **Right-click**: Opens the context menu for metadata access.
+- Adds or selects entities.
+- Opens the context menu for metadata access.
 - **Keyboard Shortcuts**:
-  - **Delete Key**: Removes the selected entity.
-  - **M Key**: Toggles metadata visibility.
-  - **S Key**: Saves the current state.
+  - Removes the selected entity.
+  - Toggles metadata visibility.
+  - Saves the current state.
 
 ### Steam Deck
 
-- **Joystick**: Accesses radial menu for quick actions.
-- **Grip Button**: Adds a selected entity.
-- **Trigger Button**: Opens extended metadata for the selected entity.
-- **A Button**: Deletes the selected entity.
-- **B Button**: Saves the current inventory.
-- **X Button**: Raises a concern about the entity.
-- **Y Button**: Hides the overlay interface.
+- Accesses radial menu for quick actions.
+- Adds a selected entity.
+- Opens extended metadata for the selected entity.
+- Deletes the selected entity.
+- Saves the current inventory.
+- Raises a concern about the entity.
+- Hides the overlay interface.
 - **Touchpad Gestures**:
-  - **Swipe**: Rotates entities.
-  - **Pinch**: Scales entities.
+  - Rotates entities.
+  - Scales entities.
 
 ### Quest 3
 
-- **Joystick**: Accesses radial menu for quick actions.
-- **Grab Gesture**: Adds or selects entities.
-- **Trigger Press**: Opens extended metadata for the selected entity.
-- **Grip Press**: Deletes the selected entity.
-- **Thumbstick**: Navigates the overlay interface.
+- Accesses radial menu for quick actions.
+- Adds or selects entities.
+- Opens extended metadata for the selected entity.
+- Deletes the selected entity.
+- Navigates the overlay interface.
 - **Side Buttons**:
-  - **A Button**: Saves the current inventory.
-  - **B Button**: Raises a concern about the entity.
+  - Saves the current inventory.
+  - Raises a concern about the entity.
 - **Finger Gestures**:
-  - **Swipe Up/Down**: Rotates entities.
-  - **Pinch Open/Close**: Scales entities.
+  - Rotates entities.
+  - Scales entities.
 
 ### Valve Index Controller
 
-- **Joystick**: Accesses radial menu for quick actions.
-- **Grab Gesture**: Adds or selects entities.
-- **Trigger Press**: Opens extended metadata for the selected entity.
-- **Grip Press**: Deletes the selected entity.
-- **Thumbstick**: Navigates the overlay interface.
+- Accesses radial menu for quick actions.
+- Adds or selects entities.
+- Opens extended metadata for the selected entity.
+- Deletes the selected entity.
+- Navigates the overlay interface.
 - **Side Buttons**:
-  - **A Button**: Saves the current inventory.
-  - **B Button**: Raises a concern about the entity.
+  - Saves the current inventory.
+  - Raises a concern about the entity.
 - **Finger Gestures**:
-  - **Swipe Up/Down**: Rotates entities.
-  - **Pinch Open/Close**: Scales entities.
+  - Rotates entities.
+  - Scales entities.
 
 ## Tags
 

@@ -21,14 +21,14 @@ Balancing the development efforts between PCVR and web platforms presents challe
 
 ## The Benefits
 
-- **Broader Reach**: Supporting both PCVR and web platforms allows us to cater to a wider audience.
-- **Enhanced User Experience**: Platform-specific optimizations ensure users have the best possible experience regardless of their device.
-- **Consistency**: A unified codebase ensures consistent functionality and appearance across platforms.
+- Supporting both PCVR and web platforms allows us to cater to a wider audience.
+- Platform-specific optimizations ensure users have the best possible experience regardless of their device.
+- A unified codebase ensures consistent functionality and appearance across platforms.
 
 ## The Downsides
 
-- **Resource Allocation**: Balancing development efforts between two platforms may require additional resources.
-- **Complexity**: Managing a unified codebase with platform-specific optimizations can introduce complexity.
+- Balancing development efforts between two platforms may require additional resources.
+- Managing a unified codebase with platform-specific optimizations can introduce complexity.
 
 ## The Road Not Taken
 

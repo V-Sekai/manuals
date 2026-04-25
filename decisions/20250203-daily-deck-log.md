@@ -40,9 +40,9 @@ The V-Sekai team requires a structured, real-time method to track daily project 
 
 ## What are the benefits of the proposal?
 
-- **Transparency**: Centralized visibility into progress.
-- **Alignment**: Reduces redundant meetings.
-- **Accountability**: Tracks unresolved blockers.
+- Centralized visibility into progress.
+- Reduces redundant meetings.
+- Tracks unresolved blockers.
 
 ## What are the downsides of the proposal?
 

@@ -27,13 +27,13 @@ Implement Elixir/Phoenix using `FLAME` to serve the `librecommender` model. Leve
 1. **Phase 1**: Core Setup & Basic Integration
     - Define Ecto schemas mapping to CRDB.
     - Set up the `FLAME` environment and configure it to serve the `librecommender` model.
-    - **Stage 1**: Implement Phoenix endpoints or Oban workers that make requests to the `librecommender` model served by `FLAME` and interact with CRDB via Ecto.
+    - Implement Phoenix endpoints or Oban workers that make requests to the `librecommender` model served by `FLAME` and interact with CRDB via Ecto.
 2. **Phase 2**: Advanced Integration & Metadata
     - Develop Elixir client modules for interacting with the `FLAME`-served `librecommender`.
-    - **Stage 2**: Explore integrating `FLAME` calls within Membrane pipelines (potentially triggered by Oban) for stream-based recommendations, storing results via Ecto in CRDB.
+    - Explore integrating `FLAME` calls within Membrane pipelines (potentially triggered by Oban) for stream-based recommendations, storing results via Ecto in CRDB.
 3. **Validation**:
-    - **Success**: <500ms p99 latency for `FLAME` recommendation calls under expected load. Efficient resource utilization by FLAME runners.
-    - **Failure**: >5% errors during FLAME model inference OR significant performance bottlenecks under load.
+    - <500ms p99 latency for `FLAME` recommendation calls under expected load. Efficient resource utilization by FLAME runners.
+    - >5% errors during FLAME model inference OR significant performance bottlenecks under load.
 
 ## **Benefits**
 

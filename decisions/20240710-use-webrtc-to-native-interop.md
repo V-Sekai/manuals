@@ -20,14 +20,14 @@ Integrate WebRTC functionalities within the Godot Engine to ensure smooth operat
 
 ## The Benefits
 
-- **Improved Connectivity**: Enables seamless communication between native and web clients.
-- **Enhanced User Experience**: Provides a consistent gaming experience across different platforms.
-- **Scalability**: Facilitates the addition of new features that require real-time communication.
+- Enables seamless communication between native and web clients.
+- Provides a consistent gaming experience across different platforms.
+- Facilitates the addition of new features that require real-time communication.
 
 ## The Downsides
 
-- **Complexity**: Implementing WebRTC can be complex and may require significant development effort.
-- **Performance Overhead**: Real-time communication may introduce performance overhead, especially on lower-end devices.
+- Implementing WebRTC can be complex and may require significant development effort.
+- Real-time communication may introduce performance overhead, especially on lower-end devices.
 
 ## The Road Not Taken
 

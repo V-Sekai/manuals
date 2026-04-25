@@ -82,22 +82,22 @@ Ensure to replace `https://gitlab.example.com/` with your GitLab instance URL an
 
 ## Benefits
 
-- **Scalable and Efficient CI/CD**: Leveraging Kubernetes for CI/CD runners allows for dynamic scaling based on the workload, improving resource efficiency.
-- **Consistency Across Environments**: Using Helm charts for deployment ensures consistent environments for all CI/CD pipelines, reducing "it works on my machine" issues.
-- **Improved Build Times and Reduced Network Traffic**: By using S3 as a cache, build times can be significantly reduced and network traffic minimized.
+- Leveraging Kubernetes for CI/CD runners allows for dynamic scaling based on the workload, improving resource efficiency.
+- Using Helm charts for deployment ensures consistent environments for all CI/CD pipelines, reducing "it works on my machine" issues.
+- By using S3 as a cache, build times can be significantly reduced and network traffic minimized.
 
 ## Downsides
 
-- **Complexity**: The initial setup and configuration may require a deep understanding of Kubernetes and Helm, posing a learning curve for some team members.
-- **Maintenance**: Ongoing maintenance of Helm charts could increase operational overhead.
+- The initial setup and configuration may require a deep understanding of Kubernetes and Helm, posing a learning curve for some team members.
+- Ongoing maintenance of Helm charts could increase operational overhead.
 
 ## Alternatives Not Chosen
 
-- **Manual Runner Installation**: Avoided due to its lack of scalability and increased potential for configuration errors.
+- Avoided due to its lack of scalability and increased potential for configuration errors.
 
 ## Infrequent Use Case
 
-- **Temporary or One-off CI/CD Tasks**: For tasks that do not justify the overhead of Kubernetes runners, alternative, simpler CI/CD solutions might be temporarily employed.
+- For tasks that do not justify the overhead of Kubernetes runners, alternative, simpler CI/CD solutions might be temporarily employed.
 
 ## In Core and Done by Us
 

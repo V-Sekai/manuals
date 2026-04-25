@@ -58,10 +58,10 @@ WAL mode (`PRAGMA journal_mode=WAL`) is used for better crash-consistency when `
 
 ## The Road Not Taken
 
-- **FabricSnapshot-only recovery**: existing graceful drain, but requires a clean shutdown window; does not help on SIGKILL.
-- **Distributed database for entity state**: rejected earlier (see [20240409-elixir-raft-vs-sqlite-fdb.md](20240409-elixir-raft-vs-sqlite-fdb.md)); a distributed store adds coordination overhead that conflicts with the constant-work design goal.
-- **Write-ahead log of all state including positions**: would produce gigabytes/day per zone and still not recover the simulation exactly (floating-point physics is not exactly reproducible across reboots).
-- **Elixir-side persistence in zone-backend**: the zone backend already has SQLite via `exqlite` (taskweft), but entity state is owned by the C++ zone process; pushing it across the HTTP boundary adds latency and couples two systems.
+- existing graceful drain, but requires a clean shutdown window; does not help on SIGKILL.
+- rejected earlier (see [20240409-elixir-raft-vs-sqlite-fdb.md](20240409-elixir-raft-vs-sqlite-fdb.md)); a distributed store adds coordination overhead that conflicts with the constant-work design goal.
+- would produce gigabytes/day per zone and still not recover the simulation exactly (floating-point physics is not exactly reproducible across reboots).
+- the zone backend already has SQLite via `exqlite` (taskweft), but entity state is owned by the C++ zone process; pushing it across the HTTP boundary adds latency and couples two systems.
 
 ## The Infrequent Use Case
 
