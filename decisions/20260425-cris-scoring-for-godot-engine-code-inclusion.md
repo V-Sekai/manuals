@@ -79,7 +79,7 @@ at all. Apply the flowchart after CRIS clears a change for inclusion.
 
 ## References
 
-- Godot Engine conference slide, April 2025: "Factors that should determine
+- Godot Engine conference slide, April 2026: "Factors that should determine
   code inclusion: CRIS Scoring" (Complexity, Reach, Impediment, Stakeholder).
 - `20211207-for-godot-engine-changes-use-a-decision-flowchart.md`
 
