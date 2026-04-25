@@ -316,15 +316,12 @@ div.csl-indent {
   <li><a href="#cris-score" id="toc-cris-score" class="nav-link" data-scroll-target="#cris-score">CRIS Score</a></li>
   <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a>
   <ul class="collapse">
+  <li><a href="#rotation-representation-twistswing-per-axis-in-0-1" id="toc-rotation-representation-twistswing-per-axis-in-0-1" class="nav-link" data-scroll-target="#rotation-representation-twistswing-per-axis-in-0-1">Rotation representation: twist/swing per axis in [0, 1]</a></li>
   <li><a href="#state-machine-lean-4" id="toc-state-machine-lean-4" class="nav-link" data-scroll-target="#state-machine-lean-4">State machine (Lean 4)</a></li>
   <li><a href="#node-hierarchy" id="toc-node-hierarchy" class="nav-link" data-scroll-target="#node-hierarchy">Node hierarchy</a></li>
-  <li><a href="#invariants-in-implementation" id="toc-invariants-in-implementation" class="nav-link" data-scroll-target="#invariants-in-implementation">Invariants in implementation</a></li>
-  <li><a href="#survey-mode-rotation" id="toc-survey-mode-rotation" class="nav-link" data-scroll-target="#survey-mode-rotation">Survey mode — rotation</a></li>
-  <li><a href="#survey-mode-zoom" id="toc-survey-mode-zoom" class="nav-link" data-scroll-target="#survey-mode-zoom">Survey mode — zoom</a></li>
-  <li><a href="#survey-mode-pan" id="toc-survey-mode-pan" class="nav-link" data-scroll-target="#survey-mode-pan">Survey mode — pan</a></li>
-  <li><a href="#follow-mode-smooth-entity-tracking-blue-archive" id="toc-follow-mode-smooth-entity-tracking-blue-archive" class="nav-link" data-scroll-target="#follow-mode-smooth-entity-tracking-blue-archive">Follow mode — smooth entity tracking (Blue Archive)</a></li>
-  <li><a href="#operator-overlay" id="toc-operator-overlay" class="nav-link" data-scroll-target="#operator-overlay">Operator overlay</a></li>
-  <li><a href="#toggle-to-vr-preview" id="toc-toggle-to-vr-preview" class="nav-link" data-scroll-target="#toggle-to-vr-preview">Toggle to VR preview</a></li>
+  <li><a href="#survey-mode" id="toc-survey-mode" class="nav-link" data-scroll-target="#survey-mode">Survey mode</a></li>
+  <li><a href="#follow-mode" id="toc-follow-mode" class="nav-link" data-scroll-target="#follow-mode">Follow mode</a></li>
+  <li><a href="#toggle" id="toc-toggle" class="nav-link" data-scroll-target="#toggle">Toggle</a></li>
   </ul></li>
   <li><a href="#the-downsides" id="toc-the-downsides" class="nav-link" data-scroll-target="#the-downsides">The Downsides</a></li>
   <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
@@ -351,19 +348,11 @@ div.csl-indent {
 </ul>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>The virtual creator market operator view needs a readable top-down camera for monitoring booth zones, visitor counts, and entity positions. The aquarium demo must launch in this view by default.</p>
-<p>Three reference games cover the design space:</p>
-<p><strong>Final Fantasy Tactics (1997)</strong> <span class="citation" data-cites="fftisometric">(<a href="#ref-fftisometric" role="doc-biblioref">Game Goat 2023</a>)</span> — 3D environment, fixed orthographic angle, four discrete 90° rotation positions, no free zoom.</p>
-<p><strong>Triangle Strategy (2022, HD-2D)</strong> <span class="citation" data-cites="trianglestrategy2022">(<a href="#ref-trianglestrategy2022" role="doc-biblioref">Nintendo Everything 2021</a>)</span> — 90° snapped rotation and free zoom added after demo feedback. Established that snapped increments beat continuous rotation for grid-based tactical maps.</p>
-<p><strong>Blue Archive (2021)</strong> <span class="citation" data-cites="bluearchive2021">(<a href="#ref-bluearchive2021" role="doc-biblioref">Nexon Games 2021</a>)</span> — fixed diagonal angle (no rotation), smooth auto-follow of the active unit group. Legibility comes from consistent screen-space direction rather than world-space cardinal alignment.</p>
+<p>The virtual creator market operator view needs a readable top-down camera. Three reference games define the design space. Final Fantasy Tactics (1997) <span class="citation" data-cites="fftisometric">(<a href="#ref-fftisometric" role="doc-biblioref">Game Goat 2023</a>)</span> used orthographic projection with four discrete 90° rotation positions. Triangle Strategy (2022) <span class="citation" data-cites="trianglestrategy2022">(<a href="#ref-trianglestrategy2022" role="doc-biblioref">Nintendo Everything 2021</a>)</span> added free zoom and kept 90° snaps after demo feedback showed continuous rotation disorients grid-map readers. Blue Archive (2021) <span class="citation" data-cites="bluearchive2021">(<a href="#ref-bluearchive2021" role="doc-biblioref">Nexon Games 2021</a>)</span> took the opposite approach: fixed diagonal angle, no rotation, smooth auto-follow of the active unit group.</p>
 </section>
 <section id="the-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>The aquarium operator console has no camera. The camera must support two use cases:</p>
-<ol type="1">
-<li>Grid survey — operator scans all zones. Triangle Strategy / FFT model: orthographic, 90° snap rotation, free zoom, WASD pan.</li>
-<li>Entity follow — operator tracks a specific visitor or jellyfish. Blue Archive model: smooth auto-pan, rotation locked, no disorientation.</li>
-</ol>
+<p>The operator console has no camera. It needs two modes: grid survey (Triangle Strategy / FFT) and entity follow (Blue Archive).</p>
 </section>
 <section id="cris-score" class="level2">
 <h2 class="anchored" data-anchor-id="cris-score">CRIS Score</h2>
@@ -384,17 +373,17 @@ div.csl-indent {
 <tr class="odd">
 <td>Complexity:</td>
 <td>+1</td>
-<td>SpringArm3D + orthographic Camera3D is a known Godot pattern. No new engine work required.</td>
+<td>SpringArm3D + orthographic Camera3D is a known Godot pattern.</td>
 </tr>
 <tr class="even">
 <td>Reach:</td>
 <td>+1</td>
-<td>Every operator session uses this view. Phase 1 of the creator market plan cannot pass without it.</td>
+<td>Every operator session uses this view.</td>
 </tr>
 <tr class="odd">
 <td>Impediment:</td>
 <td>+1</td>
-<td>The operator smoke-test runbook (Phase 1, item 6) cannot be written without a working camera.</td>
+<td>The smoke-test runbook cannot be written without a working camera.</td>
 </tr>
 <tr class="even">
 <td>Stakeholder:</td>
@@ -411,103 +400,79 @@ div.csl-indent {
 </section>
 <section id="design" class="level2">
 <h2 class="anchored" data-anchor-id="design">Design</h2>
+<section id="rotation-representation-twistswing-per-axis-in-0-1" class="level3">
+<h3 class="anchored" data-anchor-id="rotation-representation-twistswing-per-axis-in-0-1">Rotation representation: twist/swing per axis in [0, 1]</h3>
+<p>Camera orientation is expressed as a twist/swing pair, following the same decomposition used by <code>TransformUtil.swing_twist</code> in the humanoid project (<code>addons/humanoid/transform_util.gd</code>):</p>
+<ul>
+<li>Twist (x-axis of the <code>swing_twist</code> vector): yaw around the world Y axis, mapped to [0, 1] where 0.0 = north, 0.25 = east, 0.5 = south, 0.75 = west.</li>
+<li>Swing (y/z-axes of the <code>swing_twist</code> vector): elevation angle, fixed at a constant value corresponding to −55° pitch. Swing does not change at runtime.</li>
+</ul>
+<p>In Survey mode the twist snaps to {0.0, 0.25, 0.5, 0.75}. Follow mode locks twist at its current snapped value.</p>
+</section>
 <section id="state-machine-lean-4" class="level3">
 <h3 class="anchored" data-anchor-id="state-machine-lean-4">State machine (Lean 4)</h3>
-<p>The camera has two modes. The Lean model proves the invariants that hold in each mode before any GDScript is written.</p>
-<pre class="lean"><code>-- Camera mode and its invariants
+<pre class="lean"><code>-- Twist in [0, 1]; four valid snap positions in Survey mode.
+def SNAP_POSITIONS : List Float := [0.0, 0.25, 0.5, 0.75]
+
+def twistSnapped (t : Float) : Prop := t ∈ SNAP_POSITIONS
+
+-- Swing is constant; elevation does not change at runtime.
+def SWING_ELEVATION : Float := 0.153  -- corresponds to −55° pitch
+
 inductive CameraMode
-  | Survey  -- 90° snapped rotation, free zoom, WASD pan
-  | Follow  -- rotation locked, position lerps to target
+  | Survey  -- twist snaps, zoom free, WASD pan
+  | Follow  -- twist locked, position lerps to target
 
--- Yaw is always a multiple of 90 degrees in Survey mode
-def yawSnapped (yaw : Int) : Prop := ∃ k : Int, yaw = k * 90
-
--- Zoom is always within bounds
-structure ZoomState where
-  value   : Float
-  minVal  : Float
-  maxVal  : Float
-
-def zoomInBounds (z : ZoomState) : Prop :=
-  z.minVal ≤ z.value ∧ z.value ≤ z.maxVal
-
--- Follow mode invariant: rotation does not change
 structure CameraState where
-  mode        : CameraMode
-  yaw         : Int
-  zoom        : ZoomState
-  followTarget : Option String   -- entity id, None in Survey
+  mode   : CameraMode
+  twist  : Float   -- in [0, 1]
+  swing  : Float   -- always SWING_ELEVATION
+  zoom   : Float   -- in [ZOOM_MIN, ZOOM_MAX]
 
--- Rotation is only permitted in Survey mode
-theorem rotation_only_in_survey
-    (s : CameraState) (delta : Int)
-    (h : s.mode = CameraMode.Follow) :
-    { s with yaw := s.yaw + delta }.yaw = s.yaw + delta →
-    s.mode = CameraMode.Survey := by
-  intro _
-  -- Follow mode locks rotation; this is a design constraint, not a theorem
-  -- that needs proof — it documents the intended invariant for implementers.
-  exact absurd h (by simp)
+-- In Survey mode at rest, twist is always a snap position.
+def surveyInvariant (s : CameraState) : Prop :=
+  s.mode = CameraMode.Survey → twistSnapped s.twist
 
--- Zoom stays in bounds after clamping
-theorem zoom_clamped_in_bounds (z : ZoomState) (delta : Float)
-    (hmin : z.minVal ≤ z.maxVal) :
-    zoomInBounds { z with value := (z.value - delta).max z.minVal |&gt;.min z.maxVal } := by
-  simp [zoomInBounds, Float.max, Float.min]
-  constructor
-  · exact le_max_left _ _
-  · exact min_le_right _ _</code></pre>
+-- Swing never changes.
+def swingInvariant (s : CameraState) : Prop :=
+  s.swing = SWING_ELEVATION
+
+-- Zoom stays in [ZOOM_MIN, ZOOM_MAX] after clamping.
+theorem zoom_clamped (s : CameraState) (delta zmin zmax : Float)
+    (h : zmin ≤ zmax) (hs : zmin ≤ s.zoom ∧ s.zoom ≤ zmax) :
+    let z' := (s.zoom - delta).max zmin |&gt;.min zmax
+    zmin ≤ z' ∧ z' ≤ zmax :=
+  ⟨le_max_left _ _, min_le_right _ _⟩</code></pre>
+<p>Runtime invariants: 1. <code>twist ∈ {0.0, 0.25, 0.5, 0.75}</code> at rest in Survey mode. 2. <code>swing == SWING_ELEVATION</code> always. 3. <code>twist</code> not modified while <code>mode == Follow</code>. 4. <code>ZOOM_MIN ≤ zoom ≤ ZOOM_MAX</code> after every scroll event.</p>
 </section>
 <section id="node-hierarchy" class="level3">
 <h3 class="anchored" data-anchor-id="node-hierarchy">Node hierarchy</h3>
 <pre><code>CameraRig (Node3D)      ← pan target; WASD in Survey; lerps to entity in Follow
-  CameraPivot (Node3D)  ← Y-axis rotation; snaps 90° in Survey; locked in Follow
-    SpringArm3D          ← collision-safe arm; length = zoom
+  CameraPivot (Node3D)  ← twist applied as Y-rotation; locked in Follow
+    SpringArm3D          ← swing (fixed pitch); arm length = zoom
       Camera3D           ← PROJECTION_ORTHOGONAL; size mirrors zoom</code></pre>
+<p><code>CameraPivot.rotation.y = twist * TAU</code> converts the [0, 1] twist value to radians. <code>SpringArm3D.rotation.x</code> is set once from <code>SWING_ELEVATION</code> and never written again.</p>
 </section>
-<section id="invariants-in-implementation" class="level3">
-<h3 class="anchored" data-anchor-id="invariants-in-implementation">Invariants in implementation</h3>
-<p>The Lean proofs above specify three runtime invariants for the GDScript implementation to maintain:</p>
-<ol type="1">
-<li><code>yaw mod 90 == 0</code> at end of every Survey rotation tween.</li>
-<li><code>ZOOM_MIN ≤ camera.size ≤ ZOOM_MAX</code> after every scroll event.</li>
-<li><code>CameraPivot._target_yaw</code> is not modified while <code>_mode == Follow</code>.</li>
-</ol>
+<section id="survey-mode" class="level3">
+<h3 class="anchored" data-anchor-id="survey-mode">Survey mode</h3>
+<p>Q/E increments or decrements twist by 0.25, wrapping at 1.0. The pivot lerps to the new twist value each frame. Scroll adjusts zoom within bounds. WASD pans <code>CameraRig</code>; speed scales with zoom.</p>
 </section>
-<section id="survey-mode-rotation" class="level3">
-<h3 class="anchored" data-anchor-id="survey-mode-rotation">Survey mode — rotation</h3>
-<p>Q/E rotates by ±90°. Yaw is lerped to the snapped target each frame. The camera reads as a cardinal direction at rest (FFT/Triangle Strategy).</p>
+<section id="follow-mode" class="level3">
+<h3 class="anchored" data-anchor-id="follow-mode">Follow mode</h3>
+<p>F enters Follow mode. <code>CameraRig</code> lerps to the entity each frame. Twist is frozen. SpringArm3D camera lag gives the Blue Archive trailing effect.</p>
 </section>
-<section id="survey-mode-zoom" class="level3">
-<h3 class="anchored" data-anchor-id="survey-mode-zoom">Survey mode — zoom</h3>
-<p>Scroll wheel adjusts <code>SpringArm3D.spring_length</code> (collision-aware) and mirrors <code>Camera3D.size</code>. Free zoom tuning from Triangle Strategy.</p>
-</section>
-<section id="survey-mode-pan" class="level3">
-<h3 class="anchored" data-anchor-id="survey-mode-pan">Survey mode — pan</h3>
-<p>WASD moves <code>CameraRig</code> in the XZ plane. Speed scales with current zoom so panning feels constant regardless of distance.</p>
-</section>
-<section id="follow-mode-smooth-entity-tracking-blue-archive" class="level3">
-<h3 class="anchored" data-anchor-id="follow-mode-smooth-entity-tracking-blue-archive">Follow mode — smooth entity tracking (Blue Archive)</h3>
-<p>F on a selected entity enters Follow mode. <code>CameraRig</code> lerps toward the entity each frame. Rotation is frozen. <code>SpringArm3D</code> camera lag enables the Blue Archive trailing effect where the entity leads its own frame.</p>
-</section>
-<section id="operator-overlay" class="level3">
-<h3 class="anchored" data-anchor-id="operator-overlay">Operator overlay</h3>
-<p>A CanvasLayer renders on top of the 3D view: - Booth boundary outlines (one colour per zone) - Visitor dot per entity in the CH_INTEREST stream - Crosshair on followed entity (Follow) or operator marker (Survey)</p>
-<p>Matches the FFT dot-map style in <a href="../decisions/20260421-virtual-creator-market-implementation-plan.html">20260421-virtual-creator-market-implementation-plan.md</a> Phase 1, items 3–4.</p>
-</section>
-<section id="toggle-to-vr-preview" class="level3">
-<h3 class="anchored" data-anchor-id="toggle-to-vr-preview">Toggle to VR preview</h3>
-<p>Tab switches <code>camera.projection</code> between <code>PROJECTION_ORTHOGONAL</code> and <code>PROJECTION_PERSPECTIVE</code>. Pivot and arm carry over.</p>
+<section id="toggle" class="level3">
+<h3 class="anchored" data-anchor-id="toggle">Toggle</h3>
+<p>Tab switches <code>camera.projection</code> between orthographic and perspective.</p>
 </section>
 </section>
 <section id="the-downsides" class="level2">
 <h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>Orthographic removes depth cues. Zone walls that overlap along the camera direction become indistinguishable — mitigated by distinct zone colours. Follow mode exit needs a short rotation-unlock animation to avoid jarring the operator.</p>
+<p>Orthographic removes depth cues; distinct zone colours compensate. Follow mode exit needs a rotation-unlock animation. The overlay (see <a href="../decisions/20260425-operator-overlay.html">20260425-operator-overlay.md</a>) handles entity density display separately.</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Free continuous rotation: rejected following the Triangle Strategy lesson — operators lose cardinal orientation.</p>
-<p>Fixed angle only (pure Blue Archive): rejected for the survey use case where seeing booth walls from all four sides matters. Blue Archive’s fixed angle works because its battlefield is always oriented the same way.</p>
+<p>Continuous twist in [0, 1]: rejected — operators lose cardinal orientation at non-snap positions (Triangle Strategy lesson). Pure fixed swing with no twist: operators need all four wall faces for zone inspection.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
@@ -521,6 +486,7 @@ theorem zoom_clamped_in_bounds (z : ZoomState) (delta : Float)
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<p><span class="citation" data-cites="swingtwist">(<a href="#ref-swingtwist" role="doc-biblioref"><strong>swingtwist?</strong></a>)</span>: <code>addons/humanoid/transform_util.gd</code> — <code>swing_twist</code> and <code>swing_twist_inv</code> in the humanoid project.</p>
 <p><span class="citation" data-cites="trianglestrategy2022">(<a href="#ref-trianglestrategy2022" role="doc-biblioref">Nintendo Everything 2021</a>)</span>: “Triangle Strategy details improvements from demo feedback.” Nintendo Everything, 2021. <a href="https://nintendoeverything.com/triangle-strategy-details-tons-of-improvements-from-demo-feedback-survey/" class="uri">https://nintendoeverything.com/triangle-strategy-details-tons-of-improvements-from-demo-feedback-survey/</a></p>
 <p><span class="citation" data-cites="trianglestrategyHD2D">(<a href="#ref-trianglestrategyHD2D" role="doc-biblioref">Nintendo Everything 2022</a>)</span>: “Triangle Strategy devs on HD-2D.” Nintendo Everything, 2022. <a href="https://nintendoeverything.com/triangle-strategy-devs-on-how-the-game-uses-accurate-hd-2d/" class="uri">https://nintendoeverything.com/triangle-strategy-devs-on-how-the-game-uses-accurate-hd-2d/</a></p>
 <p><span class="citation" data-cites="bluearchive2021">(<a href="#ref-bluearchive2021" role="doc-biblioref">Nexon Games 2021</a>)</span>: Blue Archive. Nexon Games, 2021. <a href="https://bluearchive.wiki/wiki/Combat_basics" class="uri">https://bluearchive.wiki/wiki/Combat_basics</a></p>

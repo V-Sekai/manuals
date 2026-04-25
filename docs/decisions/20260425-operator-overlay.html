@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>godot-engine-learning – V-Sekai - Manuals</title>
+<title>operator-overlay – V-Sekai - Manuals</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -290,21 +290,25 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#draft-propose-a-solution-to-improve-v-sekai-contributors-design-skills-for-navigating-3d-environments" id="toc-draft-propose-a-solution-to-improve-v-sekai-contributors-design-skills-for-navigating-3d-environments" class="nav-link active" data-scroll-target="#draft-propose-a-solution-to-improve-v-sekai-contributors-design-skills-for-navigating-3d-environments">Draft: Propose a solution to improve V-Sekai contributors’ design skills for navigating 3D environments</a>
+  <li><a href="#operator-overlay-entity-load-and-dot-clustering" id="toc-operator-overlay-entity-load-and-dot-clustering" class="nav-link active" data-scroll-target="#operator-overlay-entity-load-and-dot-clustering">Operator Overlay: Entity Load and Dot Clustering</a>
   <ul class="collapse">
-  <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
-  <li><a href="#problem-statement" id="toc-problem-statement" class="nav-link" data-scroll-target="#problem-statement">Problem Statement</a></li>
-  <li><a href="#proposed-solution" id="toc-proposed-solution" class="nav-link" data-scroll-target="#proposed-solution">Proposed Solution</a></li>
-  <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation">Implementation</a></li>
-  <li><a href="#positive-consequences" id="toc-positive-consequences" class="nav-link" data-scroll-target="#positive-consequences">Positive Consequences</a></li>
-  <li><a href="#negative-consequences" id="toc-negative-consequences" class="nav-link" data-scroll-target="#negative-consequences">Negative Consequences</a></li>
-  <li><a href="#option-graveyard" id="toc-option-graveyard" class="nav-link" data-scroll-target="#option-graveyard">Option graveyard</a></li>
-  <li><a href="#enhancement-workaround" id="toc-enhancement-workaround" class="nav-link" data-scroll-target="#enhancement-workaround">Enhancement Workaround</a></li>
-  <li><a href="#core-reasoning" id="toc-core-reasoning" class="nav-link" data-scroll-target="#core-reasoning">Core Reasoning</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
+  <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
+  <li><a href="#cris-score" id="toc-cris-score" class="nav-link" data-scroll-target="#cris-score">CRIS Score</a></li>
+  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a>
+  <ul class="collapse">
+  <li><a href="#load-bar" id="toc-load-bar" class="nav-link" data-scroll-target="#load-bar">Load bar</a></li>
+  <li><a href="#dot-layer-and-clustering" id="toc-dot-layer-and-clustering" class="nav-link" data-scroll-target="#dot-layer-and-clustering">Dot layer and clustering</a></li>
+  <li><a href="#overlay-elements" id="toc-overlay-elements" class="nav-link" data-scroll-target="#overlay-elements">Overlay elements</a></li>
+  </ul></li>
+  <li><a href="#the-downsides" id="toc-the-downsides" class="nav-link" data-scroll-target="#the-downsides">The Downsides</a></li>
+  <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20230531-godot-engine-learning.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260425-operator-overlay.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
@@ -313,67 +317,125 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="draft-propose-a-solution-to-improve-v-sekai-contributors-design-skills-for-navigating-3d-environments" class="level1">
-<h1>Draft: Propose a solution to improve V-Sekai contributors’ design skills for navigating 3D environments</h1>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<section id="operator-overlay-entity-load-and-dot-clustering" class="level1">
+<h1>Operator Overlay: Entity Load and Dot Clustering</h1>
 <ul>
-<li>Status: Draft</li>
-<li>Deciders: V-Sekai</li>
-<li>Tags: V-Sekai, GPT-4, 20230531-godot-engine-learning</li>
+<li>Status: accepted</li>
+<li>Deciders: V-Sekai, fire</li>
+<li>Tags: V-Sekai, Operator, Overlay, EntityLoad, Clustering, Jellyfish, 20260425-operator-overlay</li>
+</ul>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>The operator camera (<a href="../decisions/20260425-operator-camera-2-5d.html">20260425-operator-camera-2-5d.md</a>) renders the zone grid. A CanvasLayer overlay on top communicates entity load and spatial density. Each zone server holds 1800 entity slots; loading all simultaneously breaks the simulation through tick budget overruns.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Without a load display, operators cannot tell which zones are approaching the 1800-entity limit before rollbacks begin. Without spatial density information, operators cannot tell where entities cluster within a zone.</p>
+</section>
+<section id="cris-score" class="level2">
+<h2 class="anchored" data-anchor-id="cris-score">CRIS Score</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 46%">
+<col style="width: 23%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Factor</th>
+<th>Score</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Complexity:</td>
+<td>+1</td>
+<td>CanvasLayer over Camera3D is a standard Godot pattern. Load count is an O(1) read.</td>
+</tr>
+<tr class="even">
+<td>Reach:</td>
+<td>+1</td>
+<td>Every operator session needs to know zone health at a glance.</td>
+</tr>
+<tr class="odd">
+<td>Impediment:</td>
+<td>+1</td>
+<td>The Phase 1 smoke-test runbook requires a readable zone health HUD to pass.</td>
+</tr>
+<tr class="even">
+<td>Stakeholder:</td>
+<td>+1</td>
+<td>V-Sekai operator tooling; aquarium demo Phase 1 items 3–5.</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td><strong>+4</strong></td>
+<td>Build now.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
+<section id="load-bar" class="level3">
+<h3 class="anchored" data-anchor-id="load-bar">Load bar</h3>
+<p>One bar per visible zone, polled once per second from <code>Storage.record_count/2</code> (reads <code>hrr_bundles.record_count</code> — O(1), no table scan, outside CH_INTEREST):</p>
+<pre><code>[Zone A]  ████████░░  847 / 1800  (47%)
+[Zone B]  ██████████  1680 / 1800  (93%) ⚠
+[Zone C]  ██░░░░░░░░  214 / 1800  (12%)</code></pre>
+<p>Thresholds (Lean 4):</p>
+<pre class="lean"><code>def ENTITY_LIMIT : Nat := 1800
+
+inductive LoadLevel | Safe | Warning | Critical
+
+def loadLevel (count : Nat) : LoadLevel :=
+  let pct := count * 100 / ENTITY_LIMIT
+  if pct ≥ 90 then .Critical
+  else if pct ≥ 75 then .Warning
+  else .Safe
+
+theorem display_bounded (count : Nat) (h : count ≤ ENTITY_LIMIT) :
+    count ≤ ENTITY_LIMIT := h</code></pre>
+<p>Colour: Safe = green, Warning = amber, Critical = red + <code>⚠</code> + audio ping every 30 s.</p>
+</section>
+<section id="dot-layer-and-clustering" class="level3">
+<h3 class="anchored" data-anchor-id="dot-layer-and-clustering">Dot layer and clustering</h3>
+<p>One dot per entity from the CH_INTEREST stream. When dots fall within 24 screen-space pixels of each other they merge into a single cluster circle labelled with the count. Zooming in splits clusters back to individual dots. Cluster colour matches the zone load level so hotspots are visible without zooming in.</p>
+<p>This is the same approach as Google Maps marker clustering and StarCraft minimaps. The load bar shows zone-level totals; the dot/cluster layer shows where within the zone the load sits.</p>
+</section>
+<section id="overlay-elements" class="level3">
+<h3 class="anchored" data-anchor-id="overlay-elements">Overlay elements</h3>
+<ul>
+<li>Load bar per visible zone</li>
+<li>Booth boundary outline (one colour per zone)</li>
+<li>Visitor dot / cluster per entity in CH_INTEREST</li>
+<li>Crosshair on followed entity (Follow mode) or operator marker (Survey mode)</li>
 </ul>
 </section>
-<section id="problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
-<p>V-Sekai contributors lack the knowledge to create decent designs for navigating complex 3D environments with obstacles and walls, limiting user experience and potential applications.</p>
 </section>
-<section id="proposed-solution" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
-<p>Develop a comprehensive training program for V-Sekai contributors that focuses on designing effective navigation systems for complex 3D environments.</p>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>The load bar shows zone totals, not per-AOI-band density. At maximum zoom-out with 1800 entities even clusters become small. The operator must zoom in to inspect a dense cluster.</p>
 </section>
-<section id="implementation" class="level2">
-<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
-<ol type="1">
-<li>Identify key concepts and best practices for designing navigation systems in 3D environments.</li>
-<li>Create a curriculum that covers these concepts and best practices, including hands-on exercises and real-world examples.</li>
-<li>Organize workshops or webinars led by experienced professionals in the field of 3D environment design.</li>
-<li>Provide access to resources such as articles, tutorials, and online courses for self-paced learning.</li>
-<li>Encourage collaboration and peer review among contributors to share knowledge and improve designs.</li>
-<li>Evaluate contributors’ progress and provide feedback to ensure continuous improvement.</li>
-</ol>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>Heat map over dots: rejects individual entity identity entirely. Cluster labels preserve the count and the colour preserves the severity level, giving more information at the same screen cost.</p>
+<p>Per-AOI-band load bars: adds complexity without clear operator benefit; the dot clustering already communicates spatial density.</p>
 </section>
-<section id="positive-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Accepted</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
 <ul>
-<li>Improved design skills among V-Sekai contributors.</li>
-<li>Enhanced user experience and potential applications.</li>
-<li>Increased collaboration and knowledge sharing within the community.</li>
+<li>iFire</li>
 </ul>
 </section>
-<section id="negative-consequences" class="level2">
-<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
-<ul>
-<li>Additional time and resources required for training and development.</li>
-<li>Potential delays in project timelines due to training commitments.</li>
-</ul>
-</section>
-<section id="option-graveyard" class="level2">
-<h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
-<ul>
-<li>Hiring external designers with expertise in 3D environment navigation.</li>
-<li>Ignoring the issue and continuing with suboptimal designs.</li>
-</ul>
-</section>
-<section id="enhancement-workaround" class="level2">
-<h2 class="anchored" data-anchor-id="enhancement-workaround">Enhancement Workaround</h2>
-<p>No simple workaround; a comprehensive training program is necessary to improve contributors’ design skills for navigating 3D environments.</p>
-</section>
-<section id="core-reasoning" class="level2">
-<h2 class="anchored" data-anchor-id="core-reasoning">Core Reasoning</h2>
-<p>Investing in the development of V-Sekai contributors’ design skills is essential for enhancing user experience and expanding the potential applications of the platform.</p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<p><span class="citation" data-cites="storagerecount">(<a href="#ref-storagerecount" role="doc-biblioref"><strong>storagerecount?</strong></a>)</span>: See <code>Taskweft.HRR.Storage.record_count/2</code> in <code>multiplayer-fabric-taskweft/lib/taskweft/hrr/storage.ex</code>.</p>
 
 
 </section>
@@ -801,7 +863,7 @@ ul.task-list li input[type="checkbox"] {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20230531-godot-engine-learning.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260425-operator-overlay.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
