@@ -14,7 +14,7 @@ No measured baseline exists for the current stack. Before the stack is considere
 
 casync serialises the entire directory tree as a `.catar` stream before chunking. Small files (`.tres`, `.import`, `.translation`) are packed together in the stream and land in the same 16–256 KB chunks as their neighbours. A 500 MB export at the default 64 KB average chunk size produces roughly 8 000 unique chunks; aria-storage fetches these 64 at a time.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Prepare a representative Godot export: one V-Sekai avatar and environment, approximately 500 MB, matching a typical world export file mix.
 

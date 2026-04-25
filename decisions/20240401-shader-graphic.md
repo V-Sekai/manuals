@@ -8,7 +8,7 @@ In the vibrant and ever-evolving realm of virtual reality, personal expression i
 
 At present, there's no straightforward method to design a shirt featuring two different patterns using SVG files in MaterialX, while also maintaining sharp pattern edges. This proposal seeks to address and resolve this issue.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 We can harness the power of MaterialX's shader graph system to craft a custom shader for our shirt. Here's a rudimentary sketch of how it might be structured:
 

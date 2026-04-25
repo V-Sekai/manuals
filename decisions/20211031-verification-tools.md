@@ -8,7 +8,7 @@ Need to verify color, motion and scale
 
 Produce a reference for color, motion and scene scales.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 1. Color using industry standard reference chart
 2. Range of motion animations

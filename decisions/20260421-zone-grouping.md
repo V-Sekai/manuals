@@ -8,7 +8,7 @@ Zones register independently with zone-backend and appear in a flat list on `GET
 
 Clients and operators cannot filter or route to a subset of zones that belong together. A set of zones serving the same world region, event, or logical cluster cannot be discovered as a unit without out-of-band coordination.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Add an optional `tags` column (string array) to the `zones` table:
 

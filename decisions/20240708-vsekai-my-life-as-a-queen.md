@@ -8,7 +8,7 @@ The second Godot XR Game Jam is organized by the Godot XR Community and is occur
 
 Create an Android XR game using the theme of "Relaxation" and utilizing Godot Engine 4.3 with our module for goal hierarchical task network planner and our portable avatar import format (VRM).
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 In "V-Sekai: My Life as a Princess," players assume the role of a princess tasked with rebuilding and managing a kingdom. The game focuses on relaxation through planning, resource management, VR interactions, and adventurer tasking.
 

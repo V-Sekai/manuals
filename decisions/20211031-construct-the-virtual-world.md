@@ -8,7 +8,7 @@ It's hard to create the virtual world.
 
 Use a way to create 3d in a virtual world.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 1. packed scenes
 2. blockmesh

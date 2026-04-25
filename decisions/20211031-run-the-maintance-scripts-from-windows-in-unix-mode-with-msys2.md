@@ -10,7 +10,7 @@ I want to use Unix tools but the experience of Linux is lacking.
 
 Use msys2 on Windows to improve this.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 - Install Windows 10 or Windows 11
 - Open Powershell.

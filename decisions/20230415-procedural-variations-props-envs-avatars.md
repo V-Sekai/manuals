@@ -16,7 +16,7 @@ Introducing a procedural generator for 3D props, environments, and avatars in V-
 
 The procedural generator can be developed using a mix of algorithms, libraries, and assets to produce a vast assortment of variations for props, environments, and avatars. Users' input parameters, such as prop type, color, size, and material, will guide the generator in crafting distinctive content.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 ```mermaid
 graph TD

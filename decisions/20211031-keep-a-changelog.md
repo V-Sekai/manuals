@@ -20,7 +20,7 @@ Copied from <https://keepachangelog.com>.
 
 > People do. Whether consumers or developers, the end users of software are human beings who care about what's in the software. When the software changes, people want to know why and how.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 Keep a changelog.
 

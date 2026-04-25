@@ -12,7 +12,7 @@ It's hard to get access to V-Sekai.
 
 Let's strip down our V-Sekai prototype and make it work for WebXR.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Upgrade to 3.4 Godot Engine
 

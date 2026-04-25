@@ -8,7 +8,7 @@ We want a better way of importing animations to Godot Engine. Unfortunately, the
 
 shadermotion files in video format provide an excellent way to record motion. However, we want the ability to play it back in Godot Engine onto a VRM character
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Install youtube-dl and ffmpeg with scoop
 

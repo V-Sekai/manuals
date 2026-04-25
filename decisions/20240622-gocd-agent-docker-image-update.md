@@ -8,7 +8,7 @@ We are currently using a GoCD Agent Docker image for our V-Sekai development env
 
 The GoCD Agent Docker image we are using is not up-to-date, which could potentially lead to compatibility issues, security vulnerabilities, and missed improvements from newer versions of the tools and libraries.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 We propose to update all components within the GoCD Agent Docker image. This includes the base OS, installed libraries, and any other software included in the image.
 

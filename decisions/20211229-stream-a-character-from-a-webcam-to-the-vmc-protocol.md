@@ -12,7 +12,7 @@ Stream a character from a webcam to the vmc protocol so it can be played in any 
 
 Kalidokit packages mediapipe, opengl acceleration and tensorflow.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Use kalidokit and have it output the vmc protocol using osc.js.
 

@@ -6,7 +6,7 @@ Prototyping is essential for validation and iterating within the V-Sekai develop
 
 Even within a single-stack approach using technologies like Godot and Elixir, over-specialization can hinder prototyping. Developers may gravitate towards their areas of expertise, leading to imbalances and challenges when building features that span both client-side and server-side domains.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 This proposal envisions a prototyping ecosystem where Godot is the foundation, integrated with Elixir and Phoenix:
 

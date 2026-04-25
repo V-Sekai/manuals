@@ -8,7 +8,7 @@ Users have reported issues with their PCs overheating, particularly during the s
 
 On Windows 11, my PC was overheating in the summer heat.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 To mitigate the overheating issue, we propose using Anwave to power limit the GPU to 140 watts. This can be achieved by configuring the power management settings of the GPU.
 

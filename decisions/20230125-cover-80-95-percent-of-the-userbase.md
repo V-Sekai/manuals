@@ -14,7 +14,7 @@ People want to use V-Sekai, we need to provide coverage of their electronic equi
 
 Cover 80% to 95% percent of the userbase's equipment, so people can play V-Sekai.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 Provide coverage of:
 

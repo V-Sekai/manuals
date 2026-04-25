@@ -10,7 +10,7 @@ We also want to investigate players distributing riscv binaries as user generate
 
 Traditionally we have to compile gdextension for like 5-10 platform variants which is inefficient.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Fire proposed an idea where many gdextension modules can be compiled as RISCV binaries.
 

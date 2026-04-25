@@ -8,7 +8,7 @@ V-Sekai currently does not adhere to any specific versioning scheme. This can le
 
 Without a clear versioning system, users may struggle to understand the effort required to adopt new versions of V-Sekai. This can result in wasted time and resources, and potentially deter users from updating to newer versions.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 We propose adopting EffVer, short for Intended Effort Versioning. This versioning scheme categorizes version increments into Macro, Meso, and Micro, based on the effort needed for adoption—large, some, and little to no effort, respectively.
 

@@ -24,7 +24,7 @@ V-Sekai already has the rlottie implementation in Godot engine so engineering ef
 
 rlottie is Groups license compatible.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 ### Offline export of lottie
 

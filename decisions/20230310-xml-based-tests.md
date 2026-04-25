@@ -14,7 +14,7 @@ V-Sekai is not robust.
 
 I want to make V-Sekai more robust using best practices like unit tests.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 When CICD runs it will run gut and parse the junit xml that is outputted.
 

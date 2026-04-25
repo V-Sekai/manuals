@@ -30,7 +30,7 @@ Open Questions:
 
 Does it require determinism for clustering?
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 We ONLY support floating point, integers, strings and byte arrays.
 

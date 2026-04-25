@@ -8,7 +8,7 @@ Zone servers need a transport layer that works in browsers without a plugin, sup
 
 ENet is reliable and battle-tested, but it runs over UDP without any browser runtime support, and the Godot engine has no first-class WebTransport integration. Proposal #3899 in the upstream engine repository has been open for years without a merge. No shipped Godot title uses WebTransport as its primary transport.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 `WebTransportPeer` in `modules/http3/` wraps a QUIC connection as a Godot `MultiplayerPeer`. The connection progresses through six states: `SESSION_DISCONNECTED`, `SESSION_QUIC_HANDSHAKING`, `SESSION_H3_SETTINGS`, `SESSION_WT_CONNECTING`, `SESSION_OPEN`, and `SESSION_CLOSED`. A client calls `create_client(host, port, path)`, which dials the server with the `webtransport` ALPN token. A server calls `create_server(port, path, cert, key)` with a self-signed X.509 certificate.
 

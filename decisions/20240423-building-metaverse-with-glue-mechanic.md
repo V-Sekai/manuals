@@ -8,7 +8,7 @@ V-Sekai is an open-source project that brings social VR/VRSNS/metaverse componen
 
 The current model of V-Sekai, while functional, seems limited in its scope. It primarily focuses on avatars moving in a room, which restricts the potential for expansive world-building and exploration.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 The proposed solution is to introduce a "glue mechanic" into the system. This mechanic would allow users to build their own vehicles and structures by gluing different elements together. This could potentially open up the possibility for creating entire universes within the metaverse.
 

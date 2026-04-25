@@ -14,7 +14,7 @@ Use godot rgbaf textures to store integer.
 
 Godot Shader to extract the raw 16-bit integer in a FORMAT_RGBAH texture by Lyuma.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 ```gdscript
 

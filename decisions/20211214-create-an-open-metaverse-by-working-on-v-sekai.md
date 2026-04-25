@@ -41,7 +41,7 @@ As a person, I want to work with a group that shares my values.
 
 As a person, I want to survive long enough to build V-Sekai.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Register protocol.
 

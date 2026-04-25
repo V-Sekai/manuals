@@ -18,7 +18,7 @@ How can we create a system that allows garments to be easily applied to various 
 
 Implement an automated rigging and wrapping system using known base meshes and garments for easy application of garments to avatars without manual rigging.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. **Create avatar and garment models**: Create a 3D model representing the basic shape and structure of an avatar without any clothing or accessories, and a 3D model of a piece of clothing or accessory.
 2. **Rig models**: Rig the avatar and garment models by creating a skeleton structure that defines how they move and deform. Use the Blender Dem Bones add-on to automate the rigging process.

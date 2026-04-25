@@ -14,7 +14,7 @@ V-Sekai discord is cumbersome to use.
 
 Grant the "Member" role to all members who click a reaction from the Discord bot.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 We need to review the code and set up a runner in kubernetes.
 

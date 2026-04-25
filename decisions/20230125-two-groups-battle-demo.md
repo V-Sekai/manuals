@@ -14,7 +14,7 @@ We need a demo of our work.
 
 Make a game out of having two groups attack each other.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 1. Create two groups: mass A and mass B
 2. Implement pathfinding for both groups to find each other

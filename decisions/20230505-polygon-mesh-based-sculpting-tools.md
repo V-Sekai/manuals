@@ -18,7 +18,7 @@ Currently, V-Sekai lacks a comprehensive VR design application that provides pol
 
 Integrate a powerful VR design application, such as Gravity Sketch, which offers a wide range of polygon mesh-based sculpting tools. This will cater to both beginners and experienced 3D artists, allowing them to create intricate designs within the V-Sekai environment.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Research available VR design applications that meet the requirements.
 2. Evaluate the compatibility of the chosen application with V-Sekai.

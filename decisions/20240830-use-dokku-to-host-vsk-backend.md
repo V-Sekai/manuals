@@ -8,7 +8,7 @@ A shift from Kubernetes to Dokku is proposed to reduce complexity and operating 
 
 Kubernetes provides more overhead than necessary, leading to higher expenses and maintenance challenges.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Deploy services using Dokku plugins and minimal containers.
 1. Deploy Uro service for the Elixir application server.

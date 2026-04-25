@@ -8,7 +8,7 @@ Client and Mast
 
 Client and Mast
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 Client and Mast.
 

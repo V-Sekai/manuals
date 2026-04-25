@@ -14,7 +14,7 @@ V-Sekai could use viewstamp replication in the context of game entity interpolat
 
 The key insight is everything is a keyframed animation that is nearest, linear or cubic interpolated.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 We assume we're using Godot Engine 4 with float is doubles.
 

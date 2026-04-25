@@ -8,7 +8,7 @@ How to convert FBX and glTF2 to VRM?
 
 If we can convert FBX and glTF to VRM we have a reliable way of importing things to groups.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Convert avatar-asset-pipeline to use the membrane framework.
 

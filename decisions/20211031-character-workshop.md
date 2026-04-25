@@ -8,7 +8,7 @@ Characters are hard. Make it easier.
 
 Make a workshop for working with 3d characters.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 Auto rig a 3d obj.
 

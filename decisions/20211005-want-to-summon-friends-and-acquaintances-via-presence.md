@@ -8,7 +8,7 @@ Want to summon #friend and acquaintances via presence.
 
 By using rich presence #friend can join my location.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 Able to be a tray item and a graphical window.
 

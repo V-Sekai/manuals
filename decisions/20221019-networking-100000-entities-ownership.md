@@ -30,7 +30,7 @@ which allows the system to be simpler.
 Idea of separation of presence queries (who is here, reliably, tricky to figure out who of 100000 clients is relevant?) from realtime networking sync,
 which can flow directly from relay to relay, degrading over distance.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 None yet. We may try prototyping this type of system in multiple ways.
 

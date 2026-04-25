@@ -8,7 +8,7 @@ Running Jupyter Notebook as a system-level service ensures that it is always ava
 
 Manually starting Jupyter Notebook every time it is needed can be tedious and error-prone. Additionally, without a system-level service, there is no built-in mechanism to automatically restart the notebook server in case of failure or after a system reboot.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 ```bash
 sudo dnf install -y python3-notebook mathjax sscg python3-seaborn python3-lxml python3-basemap python3-scikit-image python3-scikit-learn python3-sympy python3-dask+dataframe python3-nltk

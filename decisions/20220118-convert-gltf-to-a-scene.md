@@ -12,7 +12,7 @@ We want to import gltf audio emitters in Godot Engine.
 
 We designed a gltf audio emitter extension with OMI.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Convert gltf to a scene with AudioStreamPlayer3D
 2. convert AudiostreamPlayer3D to gltf

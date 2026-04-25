@@ -8,7 +8,7 @@ We're working on a project that involves using an autoencoder/transformer for 3D
 
 The challenge is to modify the autoencoder/transformer to include a setting for quads and achieve a loss around 0.35.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. **Modify the Autoencoder/Transformer**: Update the existing code to include a `quads=True` parameter in the autoencoder/transformer.
 

@@ -8,7 +8,7 @@ VRChat (VRC) and VRM are two popular things used in the creation of virtual real
 
 The lack of compatibility between VRC and VRM can lead to inefficiencies and limitations in the development process. This proposal aims to address this issue by providing a solution that allows for seamless integration of these two groups.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 The proposed solution involves a series of steps outlined in the README below:
 

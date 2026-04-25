@@ -8,7 +8,7 @@ V-Sekai is a versatile tool that we utilize across various domains. Its adaptabi
 
 The challenge at hand is to build the V-Sekai editor for multiple platforms, thereby enhancing its accessibility and usability.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Our approach to this problem involves leveraging existing resources and tools:
 

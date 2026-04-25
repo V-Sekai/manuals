@@ -22,7 +22,7 @@ Note: This proposal does not cover Permissions, and is based in part on the prev
 
 By using the technologies described below, we will cover A-G.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+## Design
 
 ### A. State Locking Model
 

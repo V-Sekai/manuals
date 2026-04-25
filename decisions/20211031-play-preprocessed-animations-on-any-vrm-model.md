@@ -14,7 +14,7 @@ Need to work out a flow for making #animation play back on vrm.
 
 **This is dependency for a VRM based character controller that can play existing #animation clips and blend them**
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 ???
 

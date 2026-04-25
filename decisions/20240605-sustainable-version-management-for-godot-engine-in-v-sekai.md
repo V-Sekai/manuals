@@ -8,7 +8,7 @@ The continuous growth of upstream versions in the Godot Engine presents a challe
 
 How can we manage the version growth of the Godot Engine more sustainably, focusing our limited resources on what matters most for our project?
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 We propose a sustainable approach to handle the version growth of the Godot Engine:
 

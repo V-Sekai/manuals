@@ -10,7 +10,7 @@ Sometimes our flow doesn't work and we can't play the game because we broke the 
 
 We want to introduce automated testing to make it easier to debug.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 We propose to use a test-driven development (TDD) approach.
 

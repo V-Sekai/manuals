@@ -8,7 +8,7 @@ Need a performant and portable script
 
 Use wasgo for godot 4
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 1. port wasgo to 4
 2. download as binaries

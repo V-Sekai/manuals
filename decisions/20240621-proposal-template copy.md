@@ -4,7 +4,7 @@
 
 ## The Problem Statement
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 ## The Benefits
 

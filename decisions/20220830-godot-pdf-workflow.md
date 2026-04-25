@@ -8,7 +8,7 @@ Provide a workflow to read pdf documents.
 
 We want to provide pdf reading without implementing a pdf reader.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 1. Convert pdf into a series of svgs (raster + vector)
 1. Put svgs in a folder

@@ -12,7 +12,7 @@ I don't have a #steam Deck since it was delayed til February 2022 to test V-Seka
 
 Install Fedora Kinoite and Steam.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Install Ventoy on a USB Stick
 1. Install iso of Fedora Kinoite onto the drive on Ventoy

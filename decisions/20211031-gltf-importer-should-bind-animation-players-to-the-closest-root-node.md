@@ -8,7 +8,7 @@ Godot currently creates one massive animation per scene. It is hard to organize.
 
 Split the monolithic animation player.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 Move the animations on to different subbranches.
 

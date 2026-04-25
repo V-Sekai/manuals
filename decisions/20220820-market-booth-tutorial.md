@@ -8,7 +8,7 @@ To present at various virtual market locations, we need to do various workflow s
 
 We can write down our collective workflows for creation.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 Write a guide to makie a 3d market booth that is the `4m x 4m x 5m` standard size and `2m x 2m x 2.5m` constrained size.
 

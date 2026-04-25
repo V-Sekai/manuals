@@ -8,7 +8,7 @@ Streaming to Godot OSC to jsons.
 
 Stream the animation player because we have no way to stream Godot as a autonomous program.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 1. Take animation player
 2. Put it in a animation tree

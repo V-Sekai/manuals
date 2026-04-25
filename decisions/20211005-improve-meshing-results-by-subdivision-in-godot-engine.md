@@ -8,7 +8,7 @@ For characters subdivision surfaces allow the ability to conserve authoring whil
 
 Using subdivision surfaces in Godot is useful.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 - Implement subdivision
 - Is the UI based on LOD multiples?

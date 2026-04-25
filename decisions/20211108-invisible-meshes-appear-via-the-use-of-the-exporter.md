@@ -12,7 +12,7 @@ Polish the demo of V-Sekai
 
 We want to validate the V-Sekai exporter addon works.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Validate the broken V-Sekai scene exporter addon.
 1. Export test scene.

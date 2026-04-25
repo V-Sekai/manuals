@@ -14,7 +14,7 @@ Is this error of concerning building Godot Engine with V-Sekai game?
 
 Let MalekiRe know that the Unidot addon is not critical to V-Sekai game.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Left this document here.
 

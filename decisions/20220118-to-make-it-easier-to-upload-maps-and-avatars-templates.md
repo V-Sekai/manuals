@@ -12,7 +12,7 @@ Uploading V-Sekai maps and Avatars is complicated.
 
 Use the new Godot Engine feature of script templates to make it easier to upload.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Create a template for Avatars
 1. Create a template for maps

@@ -8,7 +8,7 @@ Use KVM to test our AMD APU test computer via Barrier.
 
 Barrier allows us to use the keyboard and mouse transferring commands from Linux to Windows.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 Barrier allows us to use the keyboard and mouse transferring commands from Linux to Windows.
 

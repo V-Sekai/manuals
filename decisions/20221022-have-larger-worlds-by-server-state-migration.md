@@ -24,7 +24,7 @@ Rust is a good language for failures in math or computer language, but does not 
 
 Mvsqlite merges sqlite with Foundationdb with Rust glue.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Partition the world into tiles via Prasetya, Kusno's design.
 

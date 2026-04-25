@@ -8,7 +8,7 @@ Instead of a lens, we aim to generate an overlay using the mesh's primitive outl
 
 How can we generate a holographic overlay by utilizing a list of triangle edges extracted from mesh data?
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 The proposal involves parsing the mesh data to extract triangle edges and rendering these edges as a holographic overlay. Utilizing a compatible rendering engine, each edge will be transformed into visible lines with appropriate shading and anti-aliasing. The system will dynamically update the hologram in real-time based on user interactions and changes in the underlying data.
 

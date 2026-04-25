@@ -8,7 +8,7 @@ V-Sekai is an open-source project that focuses on bringing social VR functionali
 
 The current setup process for V-Sekai is complex and time-consuming, which may deter potential users and developers. We need to simplify this process by creating a ready-to-go kit.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 The ready-to-go kit will be a pre-configured package containing all necessary files and dependencies for running V-Sekai. Users will simply need to download and extract the package to get started.
 

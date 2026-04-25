@@ -12,7 +12,7 @@ File or attestation for virtual worlds
 
 Use ssh signatures.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 An analogy of a CD and a CD case with stickers.
 

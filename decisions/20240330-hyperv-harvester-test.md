@@ -8,7 +8,7 @@ Currently, we are operating a Kubernetes cluster in a Linux environment. However
 
 Our existing testing environment does not cater to Windows-based applications. We require a solution that enables us to test these applications in a Windows environment without the necessity of setting up an entirely new cluster.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 We can utilize Hyper-V to establish a Harvester HCI virtual machine (VM) on our current Windows desktop. Here's a basic outline of the steps involved:
 

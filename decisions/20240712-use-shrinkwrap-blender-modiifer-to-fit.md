@@ -8,7 +8,7 @@ Want to make an avatar clothing for VRChat.
 
 Our cloth shirt is too baggy, we want to fit to the person.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Use modifier shrinkswap in Blender 3d modeling tool.
 2. Nearest surface points

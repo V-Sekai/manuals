@@ -22,7 +22,7 @@ We want to be able to use Specular from gltf and Specular from spec gloss, but p
 
 Implement specular from gltf.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 ???
 

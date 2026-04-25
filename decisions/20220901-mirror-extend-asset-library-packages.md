@@ -8,7 +8,7 @@ Have a way to deploy custom asset libs via the godot engine asset library ui
 
 We propose to use the V-Sekai uro server to provide an asset library url to Godot Engine.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 Implement
 

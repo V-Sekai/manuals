@@ -8,7 +8,7 @@ Things that aren't backed up get lost.
 
 Backup V-Sekai Github organization with V-Sekai-gitm and V-Sekai-github-backup.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 Use <https://github.com/muhasturk/gitim> to backup V-sekai. (tested 7b6e898b7587f61b0c5f00c3ab9862868f94479d )
 

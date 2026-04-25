@@ -12,7 +12,7 @@ It is hard to deploy URO.
 
 Deploy URO using Elixir Desktop.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Build of Elixir Desktop
 1. Validate both Windows and Linux builds.

@@ -12,7 +12,7 @@ We use discord to log changes. At any moment, Discord can disappear.
 
 Use DiscordChatExporter to export our change notifications.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. generate a bot key
 1. enter key

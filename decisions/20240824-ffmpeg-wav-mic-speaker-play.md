@@ -8,7 +8,7 @@ Testing audio input and output for VOIP applications.
 
 Simulate microphone input and capture speaker output to debug and test audio functionality.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 The following script uses `ffmpeg` to either generate a test tone or play a provided WAV file as microphone input and record the speaker output. This setup is designed to work on macOS, Windows, and Linux.
 

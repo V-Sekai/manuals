@@ -10,7 +10,7 @@ The context is for example importing files are slow (they're not the biggest bot
 
 Use AMDuProf
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+## Design
 
 AMDuProf shows the slower functions and there's also a callgraph and flamegraph feature.
 

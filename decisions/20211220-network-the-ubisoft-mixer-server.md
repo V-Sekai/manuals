@@ -16,7 +16,7 @@ The problem is the mixer project is in Python and doesn't have file sync.
 
 My proposed solution is to write a elixir server that syncs the Blender file and the file share.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Extract Mixer broadcaster code
 2. Write an Elixir udp based broadcaster with webrtc

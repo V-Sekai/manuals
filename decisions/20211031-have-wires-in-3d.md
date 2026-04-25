@@ -8,7 +8,7 @@ Have wires in 3d to simulate connections
 
 Vertlet Rope wires
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 Vertlet Rope wires project
 

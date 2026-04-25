@@ -8,7 +8,7 @@ Blend shapes are expensive and hard to interpolate
 
 Want to bake blend shapes to animations.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 `./DemBones -i="Face_Geom.fbx" -a="Face_Anim.abc" --bindUpdate=2 -o="Decomposition_20_grouped_face.fbx" --nnz=8 -b=256`
 

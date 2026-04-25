@@ -27,7 +27,7 @@ How do we start our uro backend?
 
 Write documentation how to update elixir.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 Compile uro. You will need Elixir installed.
 

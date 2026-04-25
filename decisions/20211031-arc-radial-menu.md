@@ -8,7 +8,7 @@ Need to make user experience easy to use
 
 Make an arc menu.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 To be mocked up.
 

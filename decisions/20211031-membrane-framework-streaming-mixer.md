@@ -8,7 +8,7 @@ I want to stream 3d content to godot engine live.
 
 Currently having an import and export pipeline that isn't live is frustrating.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 - Find a stable version of Blender
 - Use mixer plugin with that stable version

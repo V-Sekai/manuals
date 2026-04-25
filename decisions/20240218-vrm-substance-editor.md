@@ -10,7 +10,7 @@ Substance Designer is a powerful node-based texturing tool essential for creatin
 
 The current workflow for applying toon shading to VRM models is disconnected from the process of designing textures, often requiring multiple tools and manual adjustments. We aim to simplify the workflow by integrating mtoon support directly into Substance Designer, allowing for a more cohesive and efficient design process.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 The implementation would involve developing a custom Substance Designer node set or a template that encapsulates mtoon's parameters and replicates its shading model within the Substance Designer environment. This would allow artists to preview and tweak the toon shader settings in real-time while crafting the textures.
 

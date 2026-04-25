@@ -8,7 +8,7 @@ Want to animate a blender file with mediapipe
 
 By writing a c++ executable on Linux, we can connect Mediapipe to Blender.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Create a wrapper for <https://github.com/infosia/vmc2bvh/tree/master/osc>
 2. Install Blender addon <https://github.com/maybites/blender.NodeOSC>

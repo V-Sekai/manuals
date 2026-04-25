@@ -8,7 +8,7 @@ We plan to integrate a VRChat loader that fetches scenes from a Godot Engine HTT
 
 Allow external tools to efficiently modify and synchronize the world environment to facilitate updates and management of complex scenes in VRChat.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 ### GLB with Repacked DDS Support
 

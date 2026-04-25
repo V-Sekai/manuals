@@ -12,7 +12,7 @@ Avoid avatar breaking which harmful to the person using the avatar.
 
 Create a checklist to ensure quality.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 This is defined for a VRM character.
 

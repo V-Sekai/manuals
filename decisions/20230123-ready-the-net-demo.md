@@ -8,7 +8,7 @@ Get the net demo ready for merge into V-Sekai
 
 I want to get the net demo ready for presentation.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 1. jitter buffer window of 100ms
 2. bit packing with the godot engine core animation compression

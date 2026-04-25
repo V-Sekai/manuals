@@ -8,7 +8,7 @@ With a face helmet we can capture the face movement reliably.
 
 We don't have a way to talk to v-sekai for capture.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 1. Run the v-sekai app
 2. Export either VMC or Godot Networking protocol for facial tracking

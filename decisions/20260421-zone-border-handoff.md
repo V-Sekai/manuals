@@ -8,7 +8,7 @@ The world is partitioned into zones, each owning a contiguous prefix of the 30-b
 
 A hard cutover — despawn in zone A, spawn in zone B — produces a visible gap if the two zones are not synchronized. A three-state handoff that keeps the entity alive in both zones during transit eliminates the gap. Without a proved arrival guarantee and a hysteresis guard, an entity oscillating near a boundary triggers repeated migrations.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 ### Zone assignment
 

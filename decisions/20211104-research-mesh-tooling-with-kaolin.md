@@ -14,7 +14,7 @@ Need geometric tools for many things in the V-Sekai.
 
 Use kaolin for some of the tools.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. `git clone https://github.com/NVIDIAGameWorks/kaolin.git`
 1. Install <https://github.com/conda-forge/miniforge#mambaforge>

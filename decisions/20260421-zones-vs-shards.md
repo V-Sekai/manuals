@@ -8,7 +8,7 @@ Traditional MMOs split the world into shards — isolated copies with hard playe
 
 Shards require a coordinator, match-maker, and session database to route players to the least-full copy. The coordinator is a single point of failure and a licensing surface (most implementations are proprietary middleware). Players on different shards cannot interact. The world is not continuous.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Each zone owns a slice of a single continuous 30-bit Hilbert code space (Skilling 2004). Zones share boundaries, not walls. Entities migrate across those boundaries automatically — the player never sees a loading screen or a "server full" message.
 

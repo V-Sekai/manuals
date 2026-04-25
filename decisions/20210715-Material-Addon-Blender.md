@@ -8,7 +8,7 @@ Want to bake procedural materials to Godot Engine that change based on input
 
 Implement a Material Addon for Blender
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 1. Make a stand alone baker <https://github.com/materialx/MaterialX/pull/651>
 2. Make a Blender addon that creates a custom node

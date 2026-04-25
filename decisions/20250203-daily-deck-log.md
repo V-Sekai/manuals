@@ -10,7 +10,7 @@ The V-Sekai team requires a structured, real-time method to track daily project 
 - Lack of visibility into blockers or critical issues.
 - Difficulty aligning priorities between developers, artists, and leadership.
 
-## Describe how your proposal will work
+## Design
 
 **Process:**
 

@@ -8,7 +8,7 @@ Using a custom Godot Engine build to handle arbitrary Godot Engine projects.
 
 Send automated build messages to “v-sekai/v-sekai-game” on “v-sekai/world-godot” commits.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 To enable it, add “REPO_DISPATCH” to repository secrets.
 

@@ -8,7 +8,7 @@ The proposal addresses advanced use cases for transferring custom vertex data fr
 
 Godot's default support for two UV channels limits complex shader workflows. Users need methods to encode additional data (e.g., hitbox IDs, visibility values) while ensuring compatibility between Blender's UV maps and Godot's CUSTOM0-3 attributes.
 
-## Describe how your proposal will work
+## Design
 
 1. **Blender Setup**: Create UV maps (UV3-UV8) under _Mesh Properties > UV Maps_. Encode data into these channels (e.g., UV5.x for hitbox IDs).
 2. **Export**: Use `.gltf` or `.blend` files, ensuring UVs are unwrapped on the Face Corner domain. (Use smooth shading.)

@@ -14,7 +14,7 @@ In our current VR project, we face the challenge of capturing accurate body move
 
 The proposed option involves prioritizing tracker placement for the head, hands, hips, and feet, as they are essential for both soccer and dancing experiences. This approach allows for an effective trade-off between tracking accuracy and budget constraints while ensuring a satisfactory level of immersion in both activities.
 
-### Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 **VR Tracker USB dongles need line of sight.**
 

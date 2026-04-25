@@ -8,7 +8,7 @@ Rigging and clothing fitting are intricate tasks in game development, demanding 
 
 Our goal is to provide a solution that enables players and creators to incorporate their own clothing into the V-Sekai game, without turning the game into an impenetrable black box. The current process of rigging and fitting clothing onto characters is labor-intensive and requires specialized knowledge, limiting the ability of players and creators to fully express themselves through their avatars.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 The proposed solution involves aligning the vertices from one set of faces to match the vertices in the other set. In Godot, this can be achieved by retrieving mesh arrays and invoking a function with `arrays[Mesh.ARRAY_VERTEX]`, `arrays[Mesh.ARRAY_INDEX]`.
 

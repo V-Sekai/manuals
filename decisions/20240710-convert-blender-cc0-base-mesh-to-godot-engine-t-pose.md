@@ -8,7 +8,7 @@ We would like to have several base meshes for testing and for skeleton merge clo
 
 The current process of converting Blender CC0 base meshes to a format compatible with the Godot Engine is cumbersome and lacks a standardized approach. This proposal aims to streamline the conversion process, ensuring consistency and efficiency.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. **Install Blender 4.1.1**
 2. **Download "Human Base Meshes bundle by Blender Studio CC0 Licensed"**

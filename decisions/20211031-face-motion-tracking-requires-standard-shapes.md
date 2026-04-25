@@ -8,7 +8,7 @@ Make VRM faces sync with Perfectsync, SRanipal or Mediapipe faces.
 
 People use many standard types of face definitions.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 ???
 

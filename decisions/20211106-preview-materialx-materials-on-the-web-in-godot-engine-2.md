@@ -12,7 +12,7 @@ There is no process for previewing #materialx on the web.
 
 Propose using Godot Engine 4.0 as a WebGL2 previewer for MaterialX.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Compile Godot Engine 4.0 for WebGL2
 1. Make a 2D app

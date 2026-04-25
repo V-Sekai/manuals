@@ -16,7 +16,7 @@ Use a fork of Godot 3.4 for WebXR that includes delauney tetrahedralization proc
 
 **Postponed until Godot Engine master has WebXR**
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Extract geometry class from Godot Engine 4.0 to 3.4.
 

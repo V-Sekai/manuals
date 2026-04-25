@@ -10,7 +10,7 @@
 
 Content-defined chunking (CDC) benefits diminish for asset bundles where chunk boundaries do not align with file boundaries. Godot exports mix many small files (`.tres`, `.import`, `.translation`) with large ones (`.glb`, `.png`). Whether casync's CDC parameters suit this layout, and whether zchunk's simpler HTTP-range approach delivers competitive patch sizes, is unknown without measurement.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Prepare a representative Godot export: a V-Sekai avatar and environment, approximately 500 MB, with a mix of file types matching a typical world export.
 

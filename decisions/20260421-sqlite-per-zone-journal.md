@@ -13,7 +13,7 @@ Zone state has two components:
 
 After an abrupt crash, only the dynamic mutations need to be recovered. The existing graceful-shutdown drain (DRAIN_MAGIC → FabricSnapshot.res) requires a clean shutdown window and does not help when the process is killed.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 `FabricZoneJournal` maintains a SQLite database (`fabric_journal_N.db` in `user://`) with two tables:
 

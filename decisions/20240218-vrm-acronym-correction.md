@@ -4,7 +4,7 @@
 
 It has come to our attention that the term VRM has been incorrectly defined in earlier communications. We would like to clarify that VRM does not stand for "VRoid Model", "Virtual Reality Model", or any other previous interpretations provided.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Not applicable as this involves correcting documentation and communication.
 

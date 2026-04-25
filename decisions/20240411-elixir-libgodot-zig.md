@@ -8,7 +8,7 @@ The V-Sekai development team is working on enhancing the simulation experience i
 
 We can bind GDExtension to a C-like language for libgodot to implement a distributed simulation.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 We propose to use godot-zig to bind GDExtension to Elixir. This will allow us to leverage the power of Elixir's concurrency and fault-tolerance features, which are ideal for creating distributed simulations.
 

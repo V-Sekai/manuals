@@ -12,7 +12,7 @@ More options would be helpful.
 
 Create a #materialx to Godot Standard Material tool.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 Make a GDscript tool that takes the #materialx bake tool I already made and bake it to a standard material 3D in Godot Engine.
 

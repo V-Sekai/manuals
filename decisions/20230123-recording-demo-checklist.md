@@ -8,7 +8,7 @@ Have a checklist of tasks needed for recording demos.
 
 I want to have consistency for the videos I record.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 - [ ] Do I have a keyboard to screen displayer?
 - [ ] Does the video have a V-Sekai logo?

@@ -8,7 +8,7 @@ In the realm of virtual reality, expressiveness is paramount for a rich social e
 
 The current scope of facial expression customization in V-Sekai is limited. It lacks the depth necessary for users to craft avatars that can exhibit a comprehensive range of emotions, which detracts from the immersive experience and social interaction within the platform.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 To be determined.
 

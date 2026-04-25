@@ -14,7 +14,7 @@ Note: This has been rejected by Lyuma.
 
 We block direct pushes to the main and use pull requests and merges.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Use the GitHub workflow with pull requests.
 

@@ -8,7 +8,7 @@ Workflow for QA testing animations
 
 Load in a spreadsheet dataview of animation tracks and play animation back.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 Work on <https://github.com/V-Sekai/godot-hop-spin-dance>.
 

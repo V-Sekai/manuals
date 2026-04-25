@@ -10,7 +10,7 @@ Note: When referring to "web" in this document, it specifically means web deskto
 
 Balancing the development efforts between PCVR and web platforms presents challenges in terms of resource allocation and maintaining consistent performance across different environments.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. **Unified Codebase**: Develop a unified codebase that supports both PCVR and web platforms to ensure consistency and reduce maintenance overhead.
 2. **Unified Networking**: A PCVR client can communicate with a web client.

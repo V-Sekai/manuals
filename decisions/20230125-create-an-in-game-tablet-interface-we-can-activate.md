@@ -14,7 +14,7 @@ We want to activate things in vr
 
 Show a menu on each hand and have it be possible to activate grid cell options.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 1. Trigger presents a menu
 2. Short press

@@ -8,7 +8,7 @@ The Virtual Creator Market PoC ([20260421-infinite-aquarium-concept.md](20260421
 
 There is no sequenced plan that connects the existing zone infrastructure to a working creator market demo. Steps are ordered so that each one produces a verifiable pass condition before the next begins, preventing parallel risk accumulation.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 ### Phase 1 — Operator visibility (retire: can you tell what is happening in your market?)
 

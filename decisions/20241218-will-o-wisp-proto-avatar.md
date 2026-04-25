@@ -8,7 +8,7 @@ We need a captivating and engaging starting experience for new users in V-Sekai.
 
 New users need an engaging onboarding experience that seamlessly introduces them to V-Sekai's social VR environment and avatar customization.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Phase 1: Will-o-Wisp Enhancement
 

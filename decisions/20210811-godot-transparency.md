@@ -8,7 +8,7 @@ Render hair well.
 
 Use "Shortcut" or "PPLL" to render OIT transparency.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 > Shortcut takes 4 passes but is faster.
 

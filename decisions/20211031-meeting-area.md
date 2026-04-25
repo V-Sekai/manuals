@@ -8,7 +8,7 @@ Need a virtual world to meet.
 
 Need to be in VR more.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 Hub world with a glass whiteboard to do meetings with some private alcoves.
 

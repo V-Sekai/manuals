@@ -12,7 +12,7 @@ Stabilize Godot Engine updates because the update broke Groups broke once.
 
 We use multiple ways to harden Godot Engine.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Delay to around 2 week cycles
 1. Move V-Sekai godot to use a branch that is not tracked with Godot Engine master.

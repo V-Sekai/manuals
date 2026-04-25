@@ -12,7 +12,7 @@ Godot Engine lacks an asset store service.
 
 Write an elixir service that stores data in a database.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Use elixir.
 

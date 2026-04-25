@@ -8,7 +8,7 @@ Music is important to human experience
 
 Bridge membrane given a video file play to on a website.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 No idea
 

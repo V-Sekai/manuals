@@ -10,7 +10,7 @@ Transferring motions across platforms via video.
 
 # shadermotion allows us to transfer motion for other VR platforms into a standard motion format
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+## Design
 
 ShaderMotion: "OBS" etc. motion captured video from VRChat.
 

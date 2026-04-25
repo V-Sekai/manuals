@@ -8,7 +8,7 @@ We don't have any good ways of playing video and also large 4k videos.
 
 Add WMF support to godot for the windows platform.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 See <https://github.com/V-Sekai/godot/tree/wmf>
 

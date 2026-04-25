@@ -10,7 +10,7 @@ Load up into V-Sekai as a server and then they hit a collaborate button
 2. The friends' clients will automatically connect to the caching solution
 3. The host player has a valid V-Sekai map project on their computer that they load up into V-Sekai as a server
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 Add mvsqlite+godot script to collaboration.
 

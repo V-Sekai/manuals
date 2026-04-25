@@ -8,7 +8,7 @@ In the realm of game development, particularly with the Godot Engine, enabling s
 
 We cannot connect between native clients and web clients for our Godot Engine game. This limitation hinders the user experience and restricts the game's accessibility across different platforms.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Implement WebRTC in both native and web clients to facilitate real-time communication.
 

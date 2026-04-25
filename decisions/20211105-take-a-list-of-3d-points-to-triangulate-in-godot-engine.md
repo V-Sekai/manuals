@@ -14,7 +14,7 @@ A core part of the CASSIE algorithm is to take a list of 3D points that form a v
 
 This CASSIE triangulate operation needs to be done in Godot Engine so it can be use in V-Sekai.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Implement "An Algorithm for Triangulating Multiple 3D Polygons"
 1. Use Godot's delaunay tetrahedralize <https://github.com/godotengine/godot/blob/96d7bc62af25b85b8b9cc091eeea1e7a784ba624/core/math/delaunay_3d.h#L145> `static Vector<OutputSimplex> tetrahedralize(const Vector<Vector3> &p_points)`

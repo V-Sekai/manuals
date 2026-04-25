@@ -8,7 +8,7 @@ Rigging characters takes too much effort and skill.
 
 Use Neural Blend Shapes to rig a base mesh.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 #### Requirements
 

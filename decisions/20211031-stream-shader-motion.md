@@ -8,7 +8,7 @@ Want to stream shader motion to multiple people.
 
 Create a membrane Pipeline app for ShaderMotion and multiple people
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 - for each person send shader motion frames
 

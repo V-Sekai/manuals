@@ -21,7 +21,7 @@ According to Netflix, the BSD-type operating systems are competitive, and suppor
 3. Promoting cooperation: V-Sekai's support for pkgsrc and packaging of the Godot Engine for pkgin enables collaboration through the vast third-party software ecosystem available for UNIX-like systems, stimulating the exchange of ideas and resources.
 4. Reinforcing open-source ideals: V-Sekai's decision to package the Godot Engine for pkgin strengthens its commitment to open-source values like accessibility, transparency, and community-driven development, enhancing growth within the VR community.
 
-### Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 ```mermaid
 graph LR

@@ -8,7 +8,7 @@ Zone servers and the backend need to decide whether a player may observe, intera
 
 Flat role tables require a separate row for every (user, permission) pair that inheritance would otherwise cover. As group structure deepens, maintaining that table becomes inconsistent. A relation ranked by trust level, evaluated at request time against a player's claim, gives correct transitive answers without stored derived state.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 ### Action tiers
 

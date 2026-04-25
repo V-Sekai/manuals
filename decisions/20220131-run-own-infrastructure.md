@@ -21,7 +21,7 @@ It needs to be possible to replicate (or substitute) all of the existing infrast
 4. LetsEncrypt certs require open port 443 or 80 for http01; or any dns01 provider using a plugin.
 5. TrueNAS Scale supports backups and snapshots.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 - Create new droplet. (Minimum configuration????):
   - Custom Image -> pick our TrueNAS image or some custom one we make.

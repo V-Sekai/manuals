@@ -12,7 +12,7 @@ Powershell was updated and there is auto complete. However, the exact prediction
 
 Document that powershell autocomplete uses the right arrow.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Write down that right arrow completes the prediction.
 

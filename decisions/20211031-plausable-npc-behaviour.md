@@ -8,7 +8,7 @@ Create plausible npc behavior
 
 Plausible npc behavior using a htn planner
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 Upgrade my htn planner to a production state.
 

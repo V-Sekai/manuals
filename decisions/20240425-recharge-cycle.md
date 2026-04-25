@@ -8,7 +8,7 @@ In the realm of software development, it's common for developers to hit a wall o
 
 Developers often find themselves stuck on a problem, unable to make progress. This can be due to a variety of reasons such as lack of understanding, complexity of the problem, or simply mental fatigue.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 The proposed solution is a "Stuck/Recharge" cycle. When a developer finds themselves stuck on a problem, they switch to working on someone else's problem. This change in perspective can help recharge their mental energy and when they return to their original problem, they may find that they are able to approach it with a fresh mindset.
 

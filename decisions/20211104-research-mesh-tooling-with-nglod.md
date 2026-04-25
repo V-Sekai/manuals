@@ -12,7 +12,7 @@ Need geometric tools for many things in the V-Sekai.
 
 Use nglod for some of the 3d geometric tools.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. `git clone https://github.com/nv-tlabs/nglod.git`
 1. Install <https://github.com/conda-forge/miniforge#mambaforge>

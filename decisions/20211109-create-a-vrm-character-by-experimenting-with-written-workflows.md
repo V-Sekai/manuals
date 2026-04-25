@@ -12,7 +12,7 @@ Want to experiment with character creation workflows.
 
 Want to document VRM character creation workflows.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 [Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams]
 

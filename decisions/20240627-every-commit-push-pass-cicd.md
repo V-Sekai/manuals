@@ -8,7 +8,7 @@ We are working on V-Sekai, a virtual reality social network. Our development wor
 
 We have trouble understanding the logical flow of work. This is causing delays in development and making it difficult to track changes and debug issues. Currently, our commits are checked after they are merged into the main branch, which can lead to problems if the commit does not pass the checks.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 The proposal is to implement a system where every commit and push operation passes through our CI/CD pipeline as a logical unit before being checked into the main branch. This means that each commit will trigger a build and test process, ensuring that all changes are validated before they are merged.
 

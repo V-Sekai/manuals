@@ -12,7 +12,7 @@ Wanted to scale V-Sekai.
 
 Need find options to learn how to scale V-Sekai.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Bots
 2. Multiplier ghosts

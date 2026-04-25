@@ -8,7 +8,7 @@ Create a standard operating procedure from adding spring bones to VRM models.
 
 By adding spring bones the body doesn't clip through clothing or hair.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+## Design
 
 Secondary is a node under the root.
 

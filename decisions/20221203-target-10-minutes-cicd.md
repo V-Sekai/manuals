@@ -12,7 +12,7 @@ CICD builds take too long to do.
 
 Try to aim for 10 minute builds and reduce stress.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Try to aim for the godot cicd builds to finish in 10 minute.
 

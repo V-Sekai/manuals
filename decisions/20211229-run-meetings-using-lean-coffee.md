@@ -12,7 +12,7 @@ Meetings need to be ran better than randomly.
 
 Lean coffee can improve on meetings.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Three column kanban board. To discuss, discussing, and discussed.
 

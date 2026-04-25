@@ -8,7 +8,7 @@ The existing ReBAC system (`taskweft`) defines seven base relation types: `HAS_C
 
 The zone server has no predicate to check when a player connects to a zone or sends `CMD_INSTANCE_ASSET`. Without named relations for these two decisions, `check_rel/4` cannot be called with a meaningful predicate, and the existing relation set cannot be mapped to the required access decisions.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Add two relation types to the valid set in `taskweft/rebac.ex`:
 

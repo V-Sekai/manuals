@@ -12,7 +12,7 @@ Know where we're going by describing what we want.
 
 Proposed mission and a list of tasks.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 ### To further the development of Godot and open source tech
 

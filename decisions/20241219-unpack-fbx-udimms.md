@@ -8,7 +8,7 @@ The increasing need for higher texture resolution on 3D models often necessitate
 
 Currently, Godot Engine lacks native support for UDIMs, hindering efficient workflows for artists who require high-resolution textures. This limitation forces developers to split materials during modeling or employ workarounds that can be cumbersome and time-consuming.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 This proposal suggests implementing a dedicated UDIM importer and integration within Godot's material system. The importer would process FBX files containing UDIM information, correctly assigning texture tiles to the corresponding UV coordinates. This would streamline the workflow for artists, enabling them to import and utilize high-resolution textured models seamlessly.
 

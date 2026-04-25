@@ -14,7 +14,7 @@ The quality is low for the FABRIK solver.
 
 We wish to merge many bone ik and renik to improve quality.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Replace renik's usage of FABRIK with many bone ik.
 

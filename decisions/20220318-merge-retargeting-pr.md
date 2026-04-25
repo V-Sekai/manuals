@@ -42,7 +42,7 @@ from what I can understand, "2" is what Tokage is proposing. I don't see many ot
 
 ![158130997-7582d581-2b3c-45f5-b28f-deb26f2f6ffd](./attachments/158152887-0f91d668-12f0-487a-a217-eb5b38881f9a.png)
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 - See pull request.
 

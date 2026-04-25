@@ -12,7 +12,7 @@ We have conflicts on how to merge Godot. We need to organize our strategies.
 
 We will write a decision flow chart on what to do.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Is it upstreamable?
 

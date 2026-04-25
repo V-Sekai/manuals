@@ -12,7 +12,7 @@ Want to write down the default test plan for V-sekai on engine upgrades.
 
 Write the default test plans.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Check if OpenXR godot works by joining a server.
 1. On pancake desktop mode, check if two clients connect to a 1 server and see each other's movements.

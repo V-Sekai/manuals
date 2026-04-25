@@ -13,7 +13,7 @@ Create an art workflow.
 [OMI.glb] -> [Godot Engine Packed Scene]
 ```
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 Create an OMI Blender addon under W3C license.
 

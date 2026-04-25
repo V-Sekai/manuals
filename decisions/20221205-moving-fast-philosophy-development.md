@@ -12,7 +12,7 @@ We want to discover ways to move faster.
 
 We want to discover ways to move faster and last longer.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Prototype quickly and be adaptive to change.
 

@@ -10,7 +10,7 @@ A few weeks back, I started to get white and blue sparkling pixels on dark scene
 
 [PSA: If you have sparkling pixels recently, there is a fix!](https://www.reddit.com/r/ValveIndex/comments/oxd6xa/psa_if_you_have_sparkling_pixels_recently_there/)
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Enable DisplayPort training mode - compatibility mode A or B (B worked for me).
 

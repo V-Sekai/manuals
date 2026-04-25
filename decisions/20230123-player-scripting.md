@@ -14,7 +14,7 @@ We want to provide user scripting.
 
 We want to be able to co simulate scripts across multiple clients without arbitrary remote code execution.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 WasGO, using dynamic call function, and Variant APIs.
 

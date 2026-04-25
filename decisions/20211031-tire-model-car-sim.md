@@ -8,7 +8,7 @@ Create a vehicle simulation
 
 Use physx's tire simulation. While citing their mit license.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 Use math model.
 

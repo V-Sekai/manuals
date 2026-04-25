@@ -8,7 +8,7 @@ Create SOP for VRM #creation
 
 Hard to Get character #creation correct.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 List checkable prescriptions.
 

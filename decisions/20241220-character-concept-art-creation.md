@@ -8,7 +8,7 @@ V-Sekai aims to provide a versatile platform for creating and experiencing virtu
 
 Generating high-quality, 3D-ready concept art often requires significant artistic skill and time. While AI art generators like Stable Diffusion, particularly with the FLUX model, can expedite this process, setting it up and ensuring the generated art is compatible with 3D modeling tools requires technical expertise and careful optimization. This proposal aims to simplify this process further by incorporating readily available Windows tools.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 This proposal outlines a workflow using Easy Diffusion for generating concept art, Windows 11 tools for image editing, and Shoebox for sprite creation, ultimately optimizing the process for 3D character creation in V-Sekai.
 

@@ -8,7 +8,7 @@ Exposing virtual machines (VMs) to external networks securely and efficiently is
 
 Currently, exposing VMs to external networks often involves complex configurations, such as setting up reverse proxies, managing firewall rules, or configuring NAT. These methods can be error-prone and require significant manual effort. Tailscale Funnel simplifies this process but needs to be integrated as a system-level service for ease of use and reliability.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 We propose creating a systemd service unit file to manage Tailscale Funnel for exposing a specific port (e.g., 8888) on a VM. The service will ensure that Tailscale Funnel starts automatically on boot and restarts on failure. Below is the systemd unit file configuration:
 

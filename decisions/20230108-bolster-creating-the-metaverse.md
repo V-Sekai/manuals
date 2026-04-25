@@ -25,7 +25,7 @@ The metaverse needs creators.
 
 We propose to create a V-Sekai #guide to creating the metaverse, creating your own virtual you and creating a part of the world. This can be a collaboration with others to provide matching #guide to other metaverses.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Learn from how experienced educators how to bloster new creators.
 

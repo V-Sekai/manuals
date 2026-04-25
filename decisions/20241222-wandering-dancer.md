@@ -8,7 +8,7 @@ We need a way to test whether LLMs can create engaging game narratives through e
 
 Relying mostly on dialogue can limit player expression. Using LLMs for interactive narratives can enable nuanced body language and physical expression.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 The MVP features a traveling dancer visiting procedurally generated villages. The LLM generates cultural dances, emotional atmospheres, and character relationships. Players observe villagers’ dances, create responses, and influence emotions:
 

@@ -8,7 +8,7 @@ Integration between blender and Godot Engine could be better.
 
 The import of Godot Shaders to Godot Engine can help developers and developer artists workflows.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 Write a design for embed the Godot shader and material information in the exported GLTF as an extension, then parse it in the Godot importer
 

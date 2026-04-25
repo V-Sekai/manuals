@@ -8,7 +8,7 @@ Animation streaming is a technique for handling extremely long animations. It in
 
 We need a system to handle the streaming of long animations in a way that minimizes memory usage and ensures smooth playback. The system should be configurable and handle various animation lengths and complexities.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 We have a resource, `AnimationStreamingData`, which, when exported, is a custom binary resource containing animation pages. Export animation compressed data to this.
 

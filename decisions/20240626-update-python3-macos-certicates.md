@@ -8,7 +8,7 @@ In the current scenario, all Python network certificates are not functioning as 
 
 All python network certificates don't work on the Macos.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Here is a Python script that installs or updates a set of default Root Certificates for the SSL module using the certificates provided by the certifi package:
 

@@ -8,7 +8,7 @@ CICD Export V-Sekai
 
 Need to ship.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 - GOCD
 - Debug export bugs

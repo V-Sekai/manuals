@@ -16,7 +16,7 @@ Non-V-Sekai related and upstreamable godot patches should be filed as upstream P
 
 This makes Godot Engine core and V-Sekai better because changes are synchronized.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Here is an example `.gitassembly`:
 

@@ -19,7 +19,7 @@ Here’s a detailed breakdown of the features we plan to implement:
 
 This upgrade leverages the existing functionality of V-Sekai for uploading and rendering game engine assets. It assumes the utilization of V-Sekai's current game engine and networking capabilities, or the integration of clearly specified, readily available libraries or services to achieve the desired real-time interaction and synchronization.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 ### Mock-up Diagram
 

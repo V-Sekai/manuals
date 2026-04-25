@@ -16,7 +16,7 @@ we may wish to offer first-party support for both types of continuous integratio
 
 We will offer github actions files in our official Godot fork as well as our V-Sekai project.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 We will generate github actions templates using the same jsonnet we use for GoCD.
 

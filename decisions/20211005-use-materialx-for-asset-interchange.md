@@ -8,7 +8,7 @@ Use #materialx for asset interchange
 
 I was challenged to assemble a green IKEA chair with #materialx <https://github.com/KhronosGroup/3DC-Certification/tree/main/models/GreenChair> by humbletim.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 1. bake #materialx
 2. add gltf2 extension

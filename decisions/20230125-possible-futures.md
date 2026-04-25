@@ -14,7 +14,7 @@ We need to choose features to add to V-Sekai.
 
 Trim the steps needed to create the game.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 Main development:
 

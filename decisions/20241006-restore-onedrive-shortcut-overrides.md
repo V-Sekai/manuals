@@ -8,7 +8,7 @@ Using Windows 11.
 
 Microsoft has configured OneDrive to automatically move key user folders such as Documents, Desktop, and others from the user directory into the OneDrive folder. This change can disrupt users' familiar file organization and system workflows.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 The solution involves two main steps:
 

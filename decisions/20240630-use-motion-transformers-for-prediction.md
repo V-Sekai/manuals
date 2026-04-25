@@ -10,7 +10,7 @@ In virtual reality and gaming, predicting human motion is a critical aspect. It 
 
 The main problem we are trying to solve is to predict the next tokens for motion. This will help us in creating more realistic movements for our characters in the game. Additionally, it can be used for generating new animations and for networking compression.
 
-### Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 We propose to use MotionGPT, a transformer-based model that treats human motion as a foreign language. It learns the 'grammar' of human motion from data and uses it to generate new motions.
 

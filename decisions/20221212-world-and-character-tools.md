@@ -12,7 +12,7 @@ Want to list some useful tools for world and character creation and are free, op
 
 There many tools out there that are helpful for world and character creation.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. An ESRGAN model made for upscaling normal maps. <https://github.com/RunDevelopment/ESRGAN-models/tree/main/normals>
 2. A Blender vrm addon. <https://vrm-addon-for-blender.info/en/>

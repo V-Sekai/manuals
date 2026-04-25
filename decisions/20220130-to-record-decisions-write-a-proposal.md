@@ -12,7 +12,7 @@ We need to record our decisions.
 
 Use the decision record format.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 ```
 # [short title of solved problem and solution]
@@ -31,7 +31,7 @@ Use the decision record format.
 
 [Describe the proposed option and how it helps to overcome the problem or limitation]
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 [Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams]
 

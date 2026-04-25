@@ -14,7 +14,7 @@ V-Sekai interpolation is poor.
 
 Provide visualization for interpolation.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 To optimize end to end interpolation, you can use line graphs and scatter plots. A line graph shows the progress of an animation over time, while a scatter plot shows the data points that were used to create an animation.
 

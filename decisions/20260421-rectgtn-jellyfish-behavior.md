@@ -12,7 +12,7 @@ The aquarium zone server runs a C++ swarm simulation (`JellygridSwarm::tick()`) 
 
 Jellyfish behaviour is table-driven. There is no mechanism to sequence multi-step behaviour (flee → hide → resume drift), handle temporal cooldowns between state changes, or vary behaviour by entity capability (a bioluminescent jellyfish near a light source behaves differently from one in darkness). RECTGTN planning covers all three.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 ### Domain and plan separation
 

@@ -12,7 +12,7 @@ Blend files are too difficult to write an importer for in Godot Engine.
 
 Make an addon that calls Blender directly and tell it to export to the proper place.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Enable addon
 1. Open blend

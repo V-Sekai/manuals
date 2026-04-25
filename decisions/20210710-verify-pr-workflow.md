@@ -8,7 +8,7 @@ A Godot Engine pr needs to be verified for correctness and style.
 
 This workflows describes how fire checks pull requests.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 1. Start Windows 10.
 1. Install scoop

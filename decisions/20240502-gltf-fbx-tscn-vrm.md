@@ -8,7 +8,7 @@ In the realm of 3D modeling and animation, there are numerous file formats each 
 
 The challenge lies in creating a tool that can convert between different 3D model formats, specifically from glTF to FBX, while maintaining the integrity of the original model.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 We propose to develop a workflow for 3D model conversion using the Elixir Membrane Framework.
 

@@ -24,7 +24,7 @@ The proposed option to overcome the limitation of attracting more contributors a
 
 With these measures in place, the V-Sekai project will overcome its current limitations, making it easier for the team to work together and attract new contributors.
 
-### Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 Develop a clear and concise project documentation that outlines the project's goals, requirements, and milestones. Establish a transparent and structured contribution process, including:
 

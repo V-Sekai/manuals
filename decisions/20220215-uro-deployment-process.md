@@ -21,7 +21,7 @@ PR merges code to uro main branch
     - docker image is auto deployed to staging (A/B)
     - manual interface to swap staging and live branch
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Not done yet.
 Probably relies on a custom Elixir service in Kubernetes using Role-Based Access Control, so it can automatically change services:

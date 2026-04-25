@@ -8,7 +8,7 @@ Godot is a powerful open-source game engine that has been gaining popularity due
 
 The current process of exporting assets from Blender to Godot can be cumbersome and inefficient. Additionally, there are certain features in Blender that cannot be exported to Godot at all. This proposal aims to address these issues and improve the overall workflow between the two tools.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Here are some of the key strategies we propose:
 

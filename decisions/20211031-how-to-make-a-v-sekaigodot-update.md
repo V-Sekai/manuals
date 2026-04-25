@@ -8,7 +8,7 @@ Write down how we make branch updates.
 
 Need to write down how to do updates.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 On the Github UI, go to the mater branch and update from Godot Engine master.
 

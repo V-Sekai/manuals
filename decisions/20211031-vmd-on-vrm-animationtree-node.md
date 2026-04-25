@@ -10,7 +10,7 @@ This new ability means we now have a viable way to load VMD motions and use them
 
 We want to make an AnimationTree node to drive Miku Miku VMD motion and add other procedural animation features to blend motion on the VRM Avatar.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 However, we need to make some changes to the AnimationTree UI editor to make the changes possible. We want an expanded AnimationTree to customize nodes, mainly when Godot Engine adds procedural animation features.
 

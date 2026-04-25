@@ -8,7 +8,7 @@ In the realm of virtual reality, particularly within VRChat, understanding the n
 
 Developers often struggle with the intricacies of VRChat's networking, leading to inefficient code and suboptimal user experiences. A clear and concise guide is needed to demystify the process.
 
-## Describe How Your Proposal Will Work with Code, Pseudo-Code, Mock-Ups, or Diagrams
+## Design
 
 ### Sending Data in VRChat
 

@@ -8,7 +8,7 @@ V-Sekai needs frequent updates to improve and expand its VR features.
 
 It's essential to keep users informed during updates without distracting them with complex visuals.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 ### Pseudo-Code Using Velopack
 

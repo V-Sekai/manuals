@@ -8,7 +8,7 @@ Stages are useful to record motion
 
 Create a stage for 3d avatars to move.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 Create a 3d environment
 

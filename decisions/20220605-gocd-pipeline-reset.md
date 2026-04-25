@@ -25,7 +25,7 @@ Gocd git submodule failed to load.
 
 Reset the gocd pipeline by renaming the initial pipeline name.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 1. clone <https://github.com/V-Sekai/groups-gocd-pipelines>
 2. Modify <https://github.com/V-Sekai/groups-gocd-pipelines/blob/master/src/godot_4_x.jsonnet>

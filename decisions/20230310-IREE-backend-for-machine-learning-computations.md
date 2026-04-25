@@ -20,7 +20,7 @@ Want to run the machine learning technology on the player's computer, the cpu-on
 
 To summarize, if you're looking for a sample that demonstrates loading a model at runtime for CPU, Vulkan, and CUDA in C++, you can check out the IREE samples. In particular, the dynamic_shapes and simple_embedding samples showcase how to run on your choice of target. The input program may have a signature in the stablehlo dialect, and you can use IREE or XLA depending on your preferred tech stack or runtime requirements. The Vulkan stack in IREE is relatively stable and offers good performance, with nod.ai's SHARK offering extra tuning and APIs on top. However, there may be differences in optimization depending on the workload and potential driver bugs and pitfalls.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 Provide IREE to godot engine.
 

@@ -8,7 +8,7 @@ Accurately fit capsules around bones in skinned skeleton meshes. The example pro
 
 The goal is to minimize the size discrepancies between the capsules surrounding the bones and the actual volume defined by the skin mesh. This will be approached using the Minimum Deviation Flow problem in bidirected graphs (Bi-MDF).
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 ### Step 1: Representation of the Skeleton and Skin Mesh
 

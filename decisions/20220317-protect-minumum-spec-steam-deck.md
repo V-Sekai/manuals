@@ -20,7 +20,7 @@ Provide a restricted environment that can limit our art, compute, storage budget
 
 Propose to use the steam deck as the minimum platform for V-Sekai flat mode.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 Must hit the screen refresh rate or more.
 

@@ -25,7 +25,7 @@ Want a workflow to profile Godot Groups.
 
 Use perf and hotspot.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 ```
 sudo apt-get install linux-tools-common linux-tools-generic linux-tools-`uname -r`

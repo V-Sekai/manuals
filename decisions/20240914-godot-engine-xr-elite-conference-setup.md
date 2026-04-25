@@ -8,7 +8,7 @@ Fire, an independent developer previously contracted with the Godot Foundation, 
 
 Setting up a reliable and efficient demonstration environment for the XR Elite Headset at a conference can be challenging due to potential network issues and hardware integration complexities.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 The proposed setup involves several components to ensure a stable and high-performance demonstration:
 

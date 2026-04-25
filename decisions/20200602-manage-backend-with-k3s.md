@@ -8,7 +8,7 @@ We want a way to manage backend resources on one or more physical machines.
 
 We are using a lightweight Kubernetes implementation, k3s, to provide management of backend resources
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 ### System Setup (Done once)
 

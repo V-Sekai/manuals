@@ -8,7 +8,7 @@ OpenVR for Godot Engine
 
 OpenVR for Godot Engine
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 - Compile gdextension
 - Compile openvr

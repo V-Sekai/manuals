@@ -8,7 +8,7 @@ Valve StreamVR Light House Dongles are unable to connect.
 
 Valve StreamVR Light House Dongles are unable to connect because of wireless interference if plugged into hubs upright and side by side.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Use the supplied HTCVive cradles for the dongles. Keep the dongles upright.
 

@@ -12,7 +12,7 @@ We visited a VRChat world for "Zenless Zone Zero" and discussed how cool the urb
 
 We need an art direction in V-Sekai for our work. Without a defined art direction, we risk inconsistency and lack of cohesion in our visual presentation.
 
-## Describe How Your Proposal Will Work with Code, Pseudo-code, Mock-ups, or Diagrams
+## Design
 
 1. **Concept Art Creation**: Develop initial concept art to explore different themes and styles.
 2. **Community Feedback**: Share concept art with the community for feedback and suggestions.

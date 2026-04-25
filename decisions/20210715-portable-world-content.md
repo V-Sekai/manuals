@@ -8,7 +8,7 @@ Independent meta-verses (virtual worlds) lack content because their communities 
 
 Collaborate with Mozilla Hub's Spoke Editor and OMI Group's glTF2 extensions to have portable #world content.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 Provide basic glTF2 extensions. Here is an initial list.
 

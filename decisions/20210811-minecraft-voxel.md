@@ -8,7 +8,7 @@ We want more content in Godot Engine.
 
 We want to import Minecraft worlds as .Vox and as standard gltf.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 Save the minecraft world.
 

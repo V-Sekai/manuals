@@ -8,7 +8,7 @@ The zone architecture specifies that `CMD_INSTANCE_ASSET` is owner-only and that
 
 The documentation and the code are inconsistent. Any connected player can instance any asset regardless of ownership. The enforcement gap exists at two boundaries: zone join (no `CAN_ENTER` check) and `CMD_INSTANCE_ASSET` (no `CAN_INSTANCE` check).
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 ### Zone join (peer connect)
 

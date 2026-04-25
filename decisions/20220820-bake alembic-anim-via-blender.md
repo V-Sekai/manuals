@@ -8,7 +8,7 @@ Want to bake alembic imports to gltf blend shapes.
 
 We run a python script in Blender to bake alembic inputs to gltf2.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 ```python
 # MIT LICENSE

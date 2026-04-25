@@ -14,7 +14,7 @@ We would like to visualize metrics in-game.
 
 Port <https://github.com/fenix-hub/godot-engine.easy-charts> to v-sekai
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 1. Create a project in 4
 2. Add easy charts as a addon

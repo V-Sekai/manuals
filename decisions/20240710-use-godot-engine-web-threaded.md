@@ -8,7 +8,7 @@ In the development of web-based applications using the Godot Engine, performance
 
 When developing web applications with Godot, we face challenges related to loading large resources and maintaining smooth audio playback. Single-threaded implementations often fall short in handling these tasks efficiently.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 | Feature                           | Multi-Threaded | Single-Threaded |
 | --------------------------------- | -------------- | --------------- |

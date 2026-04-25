@@ -8,7 +8,7 @@ I want to see the worlds and interact with people in VR, without being in VR mys
 
 A Discord voice/video call bot would allow players within the virtual world and outside to interact with each other.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 This would be a bot client that connects to at least one server shard, and joins a Discord voice call, using WebRTC APIs to communicate voice and video data from Godot into discord.
 

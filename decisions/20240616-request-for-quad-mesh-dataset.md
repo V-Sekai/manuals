@@ -10,7 +10,7 @@ The task at hand is to create a triangle mesh to quad mesh dataset that's suitab
 
 Note that triangulating a quad mesh is not the same task.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 We propose using remeshing tools convert triangle meshes to quad meshes.
 

@@ -8,7 +8,7 @@ How slow is #animation playback in a simulated player situation.
 
 Need to see where we're at.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 100, 500, 1'000, 50'000 avatars animating with 30fps and #animation compression on vs off.
 

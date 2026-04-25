@@ -10,7 +10,7 @@ Characters that use subdivision look much better and be a difference between 18,
 
 Research a way to do subdivsion and decimation on quads.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 To be determined.
 

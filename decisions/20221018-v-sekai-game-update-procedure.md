@@ -14,7 +14,7 @@ Godot Engine and V-Sekai are fast moving projects.
 
 Write down how to update the engine and the game.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. First step: change the `update_vsekai_godot` script to push to a staging branch.
 1. Next step (lazy and simple): it is your responsibility to build the engine, run groups project and make sure it works.

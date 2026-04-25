@@ -8,7 +8,7 @@ When a player enters a zone or a new asset is instanced, the client needs the as
 
 Game asset delivery has no standard delta-sync mechanism. OS image distribution solved this problem years ago with content-defined chunking and SHA-256-addressed stores. The game-engine integration of that approach has never been built.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Assets are baked into a `.caibx` index file and a set of chunks stored in an S3-compatible object store. The index is a binary structure containing a `FormatIndex` header followed by a `FormatTable` of `IndexChunk` entries. Each entry holds a 32-byte SHA-512/256 chunk ID, a start offset, and a size. Chunk boundaries are determined by a rolling hash (SipHash over a 48-byte window) with a target size of 64 KB and a range of 16 KB to 256 KB.
 

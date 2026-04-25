@@ -8,7 +8,7 @@
 
 Discovery requires a live connection. Clients cannot make pre-connection routing or interest decisions based on zone content. A client that wants to find zones containing a specific asset type must connect to each candidate zone in turn.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Add a read-only endpoint `GET /shards/:id/assets`. This requires [20260421-asset-zone-locality.md](20260421-asset-zone-locality.md) to be implemented first (SharedFile must carry a `zone_id`).
 

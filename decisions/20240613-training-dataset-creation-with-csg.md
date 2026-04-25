@@ -8,7 +8,7 @@ We're working on a project that involves creating 3D models using Constructive S
 
 The challenge is how to gather a large and diverse set of 3D models represented as CSG trees without financial expenditure and without building our own platform.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. **Engage Open-Source Communities**: Connect with people who are into 3D modeling and CSG. They might be interested in contributing to our project.
 

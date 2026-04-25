@@ -10,7 +10,7 @@ The ability to proxy V-Sekai game datagrams is an important part of the player e
 
 We require that the proxy is able to handle both versions of DTLS inside of WebRTC and also with ENET.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 No idea.
 

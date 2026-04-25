@@ -12,7 +12,7 @@ Blend shapes are slow to render.
 
 Bake blend shapes to skeletal animation.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. I want to bake blendshapes
    - 52 face blendshape face movements

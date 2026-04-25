@@ -14,7 +14,7 @@ We want to prepare godot-vrm for asset library publishing, but the format for pu
 
 We convert godot-vrm into a format suitable for development and then write a converter to a format ready for the asset library.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 How to migrate to Godot-VRM to submodule format?
 

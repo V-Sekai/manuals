@@ -8,7 +8,7 @@ The V-Sekai development team is working on enhancing the multiplayer experience 
 
 Our VR game lacks a robust system for managing 3D multiplayer movement, parented objects, tracking validation, authentication, account metadata information, server boundaries, inventory management, and asset delivery. We also need to implement a mechanism for players to seamlessly leave and rejoin the game.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Our proposed solution involves implementing a series of features:
 

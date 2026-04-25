@@ -10,7 +10,7 @@ This is a lengthy offline process to retarget other motions to VRM type models.
 
 Use Blender to retarget t-posed characters.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 - Inputs: bvh + t-pose avatar
 - Output: glb w/retargetted animation

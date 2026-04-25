@@ -18,7 +18,7 @@ How can we leverage ChatGPT-4 AI completion to assist in solving problems and co
 
 Use ChatGPT-4 AI completion with the Visual Studio Code "Genie" addon to fill in as many sections as possible in a given proposal template, helping to generate complete and well-rounded solutions.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Ensure access to the chatgpt4 API access. There is a waiting list.
 1. Copy the proposal template.

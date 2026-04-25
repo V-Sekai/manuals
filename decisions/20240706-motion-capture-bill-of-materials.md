@@ -8,7 +8,7 @@ In the realm of virtual reality (VR) and motion capture, having a comprehensive 
 
 Describe a streaming bill of materials setup for motion capture.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 | **Component**   | **Model/Specification**                                | **Quantity** | **Description**                                                |
 | --------------- | ------------------------------------------------------ | ------------ | -------------------------------------------------------------- |

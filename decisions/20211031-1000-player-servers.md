@@ -8,7 +8,7 @@ Want to support large groups of players
 
 Small crowds aren't plausible.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 - performance testing
 - robots

@@ -8,7 +8,7 @@ The growing interest in VR as a medium for more intimate and engaging storytelli
 
 Most VR experiences lack the depth and emotional engagement found in traditional dating sims. There's a gap in the VR market for a game that combines the immersive aspects of VR with the rich narratives and character development of dating sims.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 ```pseudo
 // Example interaction system

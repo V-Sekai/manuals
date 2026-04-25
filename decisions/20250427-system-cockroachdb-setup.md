@@ -8,7 +8,7 @@ CockroachDB provides a resilient and scalable SQL database solution suitable for
 
 Manually starting, stopping, and configuring a secure CockroachDB cluster node is cumbersome and prone to error. Without systemd management, the database process won't automatically restart on failure or system reboot, and applying security configurations consistently becomes challenging.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 This proposal outlines setting up a single CockroachDB v22.1 node as a secure systemd service on Linux.
 

@@ -10,7 +10,7 @@ Improve automatic bone selection
 
 Use brp to rank bones while storing in duckdb.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 Use duckdb and brp. Prototype concept then port to c++.
 

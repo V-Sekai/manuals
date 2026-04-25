@@ -14,7 +14,7 @@ We use different kinds of names for V-Sekai, such as `v-sekai`, `V-Sekai`, `vsk`
 
 Create a standardized naming convention guideline that defines the preferred format for all instances of V-Sekai's name in code, documentation, and other materials, taking into account the specific requirements and limitations of each platform and context.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Define the preferred naming convention for V-Sekai in different contexts:
    - Godot Engine file systems: `vsk_default`

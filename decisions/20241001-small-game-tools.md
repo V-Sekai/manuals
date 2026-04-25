@@ -8,7 +8,7 @@ The Godot Editor now integrates a 2D editor on a screen for VR, which cannot be 
 
 We want to create a suite of tools for V-Sekai game development that leverages the capabilities of current hardware without requiring full VR integration.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Develop a series of small, efficient tools that can connect remotely to the V-Sekai game project, facilitating world creation and other development tasks from a 2D interface displayed within a VR environment.
 

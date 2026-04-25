@@ -19,7 +19,7 @@ We want to create a standard test platform for V-Sekai to get performance data.
 1. Canonical test/reference hardware by platform (desktop-flat, desktop-vr, mobile-vr)
 2. Canonical content by platform (avatar+map): both low end (Mozilla Hubs + static avatars) and mid-end and high-end
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 Specify a minimum specification.
 

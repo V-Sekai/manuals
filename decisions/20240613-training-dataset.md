@@ -8,7 +8,7 @@ We are working on training a mesh transformer to create 3D avatar characters. Th
 
 The question at hand is determining the size of the dataset needed for training the model effectively.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 The size of the dataset required for training a model effectively depends on the desired type of outputs from the model.
 

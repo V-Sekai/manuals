@@ -8,7 +8,7 @@ V-Sekai is an open-source project that brings social VR/VRSNS/metaverse componen
 
 There is a need to explain the architecture of V-Sekai, specifically the roles and interactions of the game client, the Uro backend, and the game servers.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 The game client is the application that users interact with. It connects to both Uro, our backend service, and directly to game servers.
 

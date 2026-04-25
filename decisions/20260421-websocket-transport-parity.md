@@ -8,7 +8,7 @@
 
 The back-pressure behaviour of the WebSocket path under network congestion is undocumented and untested at simulation scale. Queued stale snapshots consume bandwidth and introduce head-of-line blocking. The magnitude of the latency difference between the WT and WS paths at p95 under realistic conditions is unknown.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Define a reproducible load test:
 

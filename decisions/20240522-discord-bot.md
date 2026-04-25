@@ -10,7 +10,7 @@ We want a way to notify community members and users about activity and updates.
 
 A discord bot would be able to inform users via Discord about updates and changes.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 We would connect to Discord API from Elixir using one of several integration libraries.
 

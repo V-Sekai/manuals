@@ -14,7 +14,7 @@ V-Sekai currently faces a limitation in the quality of upscaled images, particul
 
 Integrate the Intermediate Representation Execution Environment (IREE) into the Godot Engine 4.0 as a C++ GDExtension. Utilize the Vulkan backend to run an image superresolution demo that generates 4x larger images. IREE is an MLIR-based end-to-end compiler and runtime that lowers Machine Learning (ML) models to a unified IR, allowing for better performance and scaling.
 
-### Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 1. Compile IREE as a C++ GDExtension for Godot Engine 4.0.
 2. Use the Vulkan backend to run the image superresolution demo.

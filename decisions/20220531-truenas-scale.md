@@ -25,7 +25,7 @@ I want to run docker containers in a semi production way.
 
 Use truenas scale to host gocd agents for cicd.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 Add a new storage node from hosts.
 

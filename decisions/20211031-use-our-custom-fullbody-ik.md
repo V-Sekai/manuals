@@ -8,7 +8,7 @@ We need to animater our characters in game using full body ik.
 
 EWBIK is a full body ik.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 EWBIK
 

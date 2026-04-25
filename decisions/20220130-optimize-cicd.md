@@ -12,7 +12,7 @@ CICD isn't optimized.
 
 Do not upload the template `.tpz`.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Go to gocd cicd.
 2. Remove `.tpz` package workflow.

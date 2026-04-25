@@ -10,7 +10,7 @@ A lot of branches are already merged, some are godot 3.x, some were for old alph
 
 Create a procedure for deleting branches.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 We should be able to delete merged branches after we remove it from merge script or move the branches to an archive repo with all the PRs.
 

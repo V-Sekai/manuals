@@ -25,7 +25,7 @@ Need a procedure to version control large file folders like game map levels.
 
 Propose using DVC as the version control system on top of git with a S3 remote on Digital Ocean.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Initial list of binaries to transfer to DVC
 

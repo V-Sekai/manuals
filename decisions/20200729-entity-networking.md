@@ -33,7 +33,7 @@ Some entities may choose to synchronize little state, or position only, or no st
 Also, some entities may choose to provide no security or isolation, while others may be private and appear not to even exist to other nodes. For example, a local player menu built upon the Entity System's interaction features, gaining features A, D, F and G.
 By building this common framework, it means that systems built as Entities can be trivially synchronized over the network.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+## Design
 
 **Todo**: We may want a way to optimistically spawn an entity client-side to achieve maximal responsiveness and fun.
 

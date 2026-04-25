@@ -8,7 +8,7 @@ Need to automated test the game
 
 Use robot framework and swift shader.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 Export / Import testing via robot-framework and swiftshader
 

@@ -12,7 +12,7 @@ Wanted to have a default list of animations set.
 
 [Describe the proposed option and how it helps to overcome the problem or limitation]
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 ### AnimationSet
 

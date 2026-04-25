@@ -8,7 +8,7 @@ In the development of VR applications using the Godot Engine, managing complex i
 
 Currently, developers must manually code each constraint and interaction within the Godot Engine, which is time-consuming and increases the risk of errors. This approach lacks scalability and efficiency, particularly in large-scale VR projects like those developed by V-Sekai.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 The proposal involves integrating a data table system within the Godot Engine to manage constraints. Here's a basic example of how it might look in pseudo-code:
 

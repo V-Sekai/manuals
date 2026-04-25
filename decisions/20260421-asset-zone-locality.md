@@ -8,7 +8,7 @@ SharedFile records are uploaded by a user, baked into casync chunks, and referen
 
 Without a `zone_id` on `shared_files`, a zone cannot enumerate the assets it owns. On restart, a zone must re-derive its asset set from `CMD_INSTANCE_ASSET` history rather than querying its own records. `GET /shards` returns connection metadata but not the assets associated with a zone, so clients cannot make pre-connection routing decisions.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Add an optional `zone_id` foreign key to `shared_files`:
 

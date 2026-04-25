@@ -12,7 +12,7 @@ To be able to implement ManyBoneIk we need to extract the walking controller fro
 
 Extract the walking controller into like a gdscript.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Split the tracker IKPoints from the controller.
 

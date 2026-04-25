@@ -10,7 +10,7 @@ By using webrtc only, we are able to reuse the same servers.
 
 An alternative of a webserver that has both webrtc and enet is also possible.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 Suppose the server cluster sets up the infrastructure. In that case, it feels like WebRTC may jump past firewalls easier, and there's existing turn-ice stuff.
 

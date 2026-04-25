@@ -8,7 +8,7 @@ We are unable to import characters in animations and unable to export them.
 
 VRM and glTF import allows us to bring models in and export allows us to get the models out.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+## Design
 
 To be determined.
 

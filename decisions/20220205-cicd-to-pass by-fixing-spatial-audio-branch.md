@@ -12,7 +12,7 @@ CICD not passing causes quality to degrade.
 
 Fix spatial audio branch of godot engine.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Resolve static checks
 1. Fix platform errors.

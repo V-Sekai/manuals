@@ -8,7 +8,7 @@ A client needs to know which zone servers are running, what addresses they liste
 
 Static configuration of zone server addresses does not work when zone servers restart, migrate, or scale horizontally. A registry with heartbeat-based expiry gives clients a live view of the cluster without requiring any coordination between zone servers.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Zone servers self-register with zone-backend over HTTP and maintain their registration with periodic heartbeats.
 

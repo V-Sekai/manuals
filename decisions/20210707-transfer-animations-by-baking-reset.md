@@ -22,7 +22,7 @@ Multiple different specifications exist on bone rolls on specific bone names. If
 
 We bake the RESET #animation and then set it to identity so that rigs with corresponding RESET #animation can have their #animation transferred.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 #### Bake RESET #animation
 

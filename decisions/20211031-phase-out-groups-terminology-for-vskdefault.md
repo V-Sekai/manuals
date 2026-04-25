@@ -8,7 +8,7 @@ Need to find recognizable brands.
 
 Phase out the 'groups' terminology as much as possible because it was too generic and can easily get mixed up with other things.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Replace vsk_default for the groups in the Godot project.
 

@@ -12,7 +12,7 @@ Change transform and resolve conflict.
 
 ???
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 ???
 

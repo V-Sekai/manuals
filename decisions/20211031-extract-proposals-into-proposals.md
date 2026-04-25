@@ -8,7 +8,7 @@ Decision trees are hard to use
 
 Convert items in a decision tree into proposals
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 | Name                                  | Description                                                                                                                                                    | Task Stage       |
 | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |

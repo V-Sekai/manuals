@@ -12,7 +12,7 @@ It is hard to debug exports on Linux without using Linux as a desktop environmen
 
 Propose a workflow for debugging linux exports.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Use wsl or a virtual machine.
 

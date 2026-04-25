@@ -12,7 +12,7 @@ Iterating on WasGo is too slow.
 
 Propose iterating on WasGo on Godot 3.4.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Branch off Godot 3.4
 1. Use our version of wasgo

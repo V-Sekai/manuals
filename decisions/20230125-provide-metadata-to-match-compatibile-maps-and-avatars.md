@@ -16,7 +16,7 @@ We don't know which are maps and avatars are compatible to load.
 
 Can also be add xmp metadata packets to each packed scene.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 When the user presses launches the game, there should be no unnecessary steps.
 

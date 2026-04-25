@@ -14,7 +14,7 @@ Why can't we reuse it for alternative Godot engine asset libraries?
 
 Add an alternative server and document the current api as an openapi schema.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Openapi schema for the official asset library api.
 1. Elixir server implementation

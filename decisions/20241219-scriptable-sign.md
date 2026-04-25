@@ -8,7 +8,7 @@ V-Sekai is a social VR platform designed to foster user interaction and creative
 
 Currently, V-Sekai offers limited options for users to leave persistent messages or communicate asynchronously within the environment. This proposal introduces interactive signs as a new, scriptable communication feature, leveraging the existing Godot-sandbox.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 ### Sign Creation as Scriptable Objects
 

@@ -14,7 +14,7 @@ This is a proposal to mask the loading time, but it doesn't solve it.
 
 Trim the steps needed to enter the game.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 When you first start up the application, you will see a loading screen. This screen will be displayed until all the assets needed to load your world have been downloaded.
 

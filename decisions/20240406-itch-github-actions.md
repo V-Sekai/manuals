@@ -8,7 +8,7 @@ Provide a V-Sekai starter kit that is complete and usable.
 
 Use desync (casync) to generate catars. Then upload this to itchio.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 We will use the `casync` tool to create `.catar` files from our project directory. This will be followed by uploading these files to Itch.io using their Butler CLI tool.
 

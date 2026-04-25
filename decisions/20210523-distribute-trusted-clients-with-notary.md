@@ -13,7 +13,7 @@ We use itch.io distribute our software clients.
 
 Use the notary system so we can establish trust.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 We distribute the notary updater and make it fetch the launcher and V-Sekai.
 

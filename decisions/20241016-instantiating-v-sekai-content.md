@@ -12,7 +12,7 @@ We wish to enable Godot to load older content seamlessly.
 
 We want to avoid animations causing security issues.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 ### Option 1: Instantiate and Validate binary PackedScene
 

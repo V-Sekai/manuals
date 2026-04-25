@@ -12,7 +12,7 @@ See [replicate sync 100'000 entities using a solution](20221019-replicate-sync-1
 
 I propose we have groups of servers handling entities. Each server is synchronized with mvsqlite.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 We assume we're using Godot Engine 4 with float is doubles.
 

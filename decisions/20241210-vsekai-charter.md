@@ -8,7 +8,7 @@ The Mozilla Builders Summer MVP Lab charter was submitted on June 8, 2020. It's 
 
 Our current V-Sekai charter is outdated and needs to be revised to reflect the project's current state and future ambitions in 2024.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 **A one-line summary of the MVP:**
 

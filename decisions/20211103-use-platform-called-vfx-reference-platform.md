@@ -17,7 +17,7 @@ Here are some problems:
 
 > The VFX Reference #platform is a set of tool and library versions to be used as a common target #platform for building software for the VFX industry. Its purpose is to minimize incompatibilities between different software packages, ease the support burden for Linux-based pipelines and encourage further adoption of Linux by software vendors. The Reference #platform is updated annually by a group of software vendors in collaboration with the Visual Effects Society Technology Committee.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Find candidate centos-like platforms.
 1. A candidate is Rocky Linux.

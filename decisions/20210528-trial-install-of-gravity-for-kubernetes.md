@@ -14,7 +14,7 @@ It is difficult to use Kubernetes because of at least these reasons. Networking 
 
 Gravity claims to be a easy to prepare system for preinstalled and airgapped Kubernetes systems.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+## Design
 
 Create a prototype for a toy problem.
 

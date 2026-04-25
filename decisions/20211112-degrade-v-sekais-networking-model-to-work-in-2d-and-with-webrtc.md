@@ -12,7 +12,7 @@ Make V-Sekai Godot work in 2D and on the web.
 
 Degrade the V-Sekai networking model.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 - The networking system exclusively uses the MultiplayerAPI, which by default is implemented via ENet, so one would have to swap that part with the WebRTC equivalent. Convert the ENet module to use WebRTC
 

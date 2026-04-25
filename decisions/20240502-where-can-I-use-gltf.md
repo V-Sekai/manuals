@@ -8,7 +8,7 @@ In the current digital landscape, there is a chaos of many different platforms.
 
 The problem lies in the lack of interoperability among various platforms. This leads to inefficiencies and difficulties in sharing and utilizing resources across these platforms, especially when it comes to 3D assets and extensions.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 We propose to develop an Elixir website that facilitates the sharing of interoperability among different file formats including fbx, usd, gltf, Godot Engine tscn, and vrm. This would allow for easier sharing and utilization of 3D assets and extensions across various platforms.
 

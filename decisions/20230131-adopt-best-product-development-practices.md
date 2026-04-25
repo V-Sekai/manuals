@@ -14,7 +14,7 @@ We should adopt best practices in developing products.
 
 Toyota has a system that was designed with decades of best practices.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 1. Coordination Based on Writing
 2. Mentoring Supervisors

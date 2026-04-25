@@ -18,7 +18,7 @@ If we ever do get big enough that feature requests propose a burden then we can 
 
 Modify the V-Sekai-game issue templates to be easier to use.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Remove required fields. Make them easier to use.
 

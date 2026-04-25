@@ -22,7 +22,7 @@ By monitoring the load on homeservers and simulation servers, we can balance the
 
 We believe that this approach will provide strong consistency guarantees, access control, and scalability while minimizing network hop counts and latency for authority transfer and state updates between simulation servers.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 #### Glossary of terms
 

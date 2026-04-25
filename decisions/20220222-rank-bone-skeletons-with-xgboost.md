@@ -10,7 +10,7 @@ Improve automatic #bone selection
 
 Use xgboost to rank bones.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. Investigate
 

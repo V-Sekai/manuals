@@ -10,7 +10,7 @@ The aquarium exercises every platform primitive in a single coherent demo: zone 
 
 multiplayer-fabric has no reference application. Without one, it is impossible to verify that the infrastructure primitives compose correctly end-to-end, or to demonstrate the platform to creators and operators. The aquarium is the smallest application that exercises all of them in combination.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 ### Demo scope (two-hour target)
 

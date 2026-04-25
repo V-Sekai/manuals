@@ -28,7 +28,7 @@ What tools have we come across that have enabled lightweight avatars?
 To try to make things work for webxr, yin is interested in lightweight avatars in as many ways as possible.
 exploring avatars that are as parametric as possible.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 Find ways to define volumes as parametric, and textures based on vectors instead of bitmaps.
 

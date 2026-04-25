@@ -8,7 +8,7 @@ We are working on a project that involves the use of the Elixir Membrane Framewo
 
 We need to create a job in the Membrane Framework that can take an input glTF file and return it as is. However, we are currently stuck and unable to proceed with this task.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 ```elixir
 defmodule MyPipeline do

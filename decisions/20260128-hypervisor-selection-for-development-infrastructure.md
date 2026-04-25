@@ -8,7 +8,7 @@ The development team needs to evaluate hypervisor solutions for remote infrastru
 
 Current infrastructure lacks a standardized hypervisor solution for development and testing environments that balances ease of remote administration with the requirement for portability and open-source alternatives.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Evaluate two hypervisor solutions for development infrastructure:
 

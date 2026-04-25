@@ -8,7 +8,7 @@ V-Sekai can aim to better at user developer experience.
 
 We can measure and improve our experience.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 - Measure
 - Improve

@@ -8,7 +8,7 @@ We are currently training a mesh transformer's auto encoder.
 
 The current learning rate might not be optimal for our training process. We need to find a way to adjust it dynamically based on the progress of the training.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 We propose to monitor the reconstruction loss after each epoch. If the loss decreases by less than 0.004 per epoch, we switch the learning rate to 1e-4.
 

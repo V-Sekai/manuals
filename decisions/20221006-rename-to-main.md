@@ -12,7 +12,7 @@ Not all the branches are released and are currently named godot4. They should be
 
 Rename all godot4 branches to be main for v-sekai-game.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 iFire (he, him) — Today at 16:11
 

@@ -12,7 +12,7 @@ The development team needed a mechanism to manage feature toggles and configurat
 - Runtime configuration changes without service downtime
 - Managing separate docker container deployments
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 The proposed SQL-based feature flagging system would:
 - Store feature flags and configuration values in database tables

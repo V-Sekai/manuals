@@ -12,7 +12,7 @@ We use Godot Engine 4.3 pre-release. PCVR uses OpenXR and the web uses threading
 
 PCVR platforms must be able to communicate with the web platform in a low latency (UDP) network so the web can be a fallback to support everyone.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 - Communication Protocol: Implement a UDP-based communication protocol for low-latency data transfer between PCVR and web platforms.
 - Godot's Multiplayer API: Use Godot's high-level multiplayer API to manage connections and data synchronization.

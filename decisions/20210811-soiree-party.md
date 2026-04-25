@@ -30,7 +30,7 @@ Some udp based proxying methods are known
 2. cillium for kubernetes
 3. WebRTC ice, stun, turn
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 #### V-Sekai Developers
 

@@ -8,7 +8,7 @@ Disconnect IPFS from the internet
 
 Disconnect IPFS so it can be standalone packages.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 Implement <https://github.com/skogard/nebulus> as a c++ library.
 

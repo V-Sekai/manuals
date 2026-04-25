@@ -8,7 +8,7 @@ The current project involves transferring scene tree, mesh data, animation data,
 
 The Blender API keeps changing, causing issues with the transfer of data to Godot. Additionally, dumping all properties from Blender can cause crashes.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Instead of trying to adapt to the shifting Blender API, we propose to keep the Blender API the same and create a converter on the Godot side. This way, the Blender side only needs to focus on sending/linking data, while Godot handles the conversion and integration.
 

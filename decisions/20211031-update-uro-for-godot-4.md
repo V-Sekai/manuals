@@ -8,7 +8,7 @@ Need a lobby server
 
 Update URO for Godot 4.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, and/or diagrams
+### Design
 
 To be determined.
 

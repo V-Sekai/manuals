@@ -27,7 +27,7 @@ See also [20230107-elixir-uro-dev-sqlite](20230107-elixir-uro-dev-sqlite.md).
 
 Write documentation how to update elixir.
 
-### Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+### Design
 
 Download the cockroach distribution and run this:
 

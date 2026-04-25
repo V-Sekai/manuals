@@ -8,7 +8,7 @@ We're unable to test media pipe for iris.
 
 Setup github actions so we can package mediapipe to demo iris tracking.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 1. setup cicd for linux to media pipe
 2. setup cid for media pipe iris tracking

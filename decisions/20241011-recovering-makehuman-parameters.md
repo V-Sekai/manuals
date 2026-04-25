@@ -8,7 +8,7 @@ In the realm of digital animation and character modeling, fitting an avatar to a
 
 The challenge lies in accurately estimating the parameters of a MakeHuman model from a given anime-style image to ensure the avatar closely resembles the original character.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 ### Proposal Overview
 

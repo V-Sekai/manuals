@@ -12,7 +12,7 @@ I want to be able to download the godot vrm addon from the asset library in 4.
 
 By publishing we will have reviewed the bugs and decide it is ready to be use.
 
-## Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Submit godot vrm to the godot 4 asset library lyuma
 
