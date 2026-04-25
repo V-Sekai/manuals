@@ -48,7 +48,7 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
      This makes the document findable by filename from any grep or
      code-search tool, the same way Godot Engine source files are
      cross-referenced by their basename. Example:
-     - V-Sekai, process, 20260425-cris-scoring-for-development-work -->
+     - V-Sekai, process, 20260425-cris-scoring-for-godot-engine-code-inclusion -->
 
 ## Further Reading
 
