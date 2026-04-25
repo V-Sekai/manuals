@@ -37,7 +37,8 @@ them behave under RECTGTN planning.
 
 Pass condition: a player-uploaded jellyfish appears in VR, visible to a second
 player simultaneously, moving under its species domain plan rather than a
-hard-coded phase table.
+hard-coded phase table. See [20260425-jellyfish-pass-condition.md](20260425-jellyfish-pass-condition.md)
+for the consolidated design.
 
 Implementation details are recorded in the following ADRs — they remain
 accepted and are not superseded:

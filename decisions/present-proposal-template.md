@@ -40,7 +40,7 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Tags
 
-- [relevant-tag-1], [relevant-tag-2], YYYYMMDD-this-filename-without-extension
+- [relevant-tag-1], [relevant-tag-2], YYYYMMDD-this-filename-without-extension, present-proposal-template
 
 <!-- Always include the filename (without .md) as the last tag.
      This makes the document findable by filename from any grep or
