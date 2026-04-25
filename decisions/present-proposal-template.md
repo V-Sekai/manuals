@@ -8,7 +8,7 @@ Describe the circumstances that led to this proposal. Give enough background tha
 
 State the specific problem, limitation, or gap being addressed. Be concrete. A reader should be able to confirm whether a proposed solution actually solves it.
 
-## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
+## Design
 
 Detail the proposed solution precisely enough that it could be implemented without improvising the design. Include code, diagrams, or examples where they reduce ambiguity. Vague or underspecified proposals cannot be acted on.
 
@@ -22,10 +22,6 @@ Detail the proposed solution precisely enough that it could be implemented witho
 | **S**takeholder | +1/−1 | [Large project depends on it or none — why] |
 | **Total**       |       | [Sum; see 20260425-cris-scoring-for-godot-engine-code-inclusion.md for action thresholds] |
 
-## The Benefits
-
-Describe the concrete improvements this proposal delivers and to whom.
-
 ## The Downsides
 
 Describe the costs, risks, or trade-offs. Every proposal has them.
@@ -33,14 +29,6 @@ Describe the costs, risks, or trade-offs. Every proposal has them.
 ## The Road Not Taken
 
 Describe the alternatives considered and why this approach was chosen over them.
-
-## The Infrequent Use Case
-
-Describe any edge cases or less common scenarios where the proposal behaves differently or does not apply.
-
-## In Core and Done by Us
-
-Confirm whether this is core functionality the team will implement, and who owns it.
 
 ## Status
 
@@ -52,7 +40,7 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Tags
 
-- [relevant-tag-1], [relevant-tag-2], YYYYMMDD-this-filename-without-extension, present-proposal-template
+- [relevant-tag-1], [relevant-tag-2], YYYYMMDD-this-filename-without-extension
 
 <!-- Always include the filename (without .md) as the last tag.
      This makes the document findable by filename from any grep or
