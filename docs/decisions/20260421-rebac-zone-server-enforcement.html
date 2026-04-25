@@ -329,7 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
   <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
-  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</a>
+  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a>
   <ul class="collapse">
   <li><a href="#zone-join-peer-connect" id="toc-zone-join-peer-connect" class="nav-link" data-scroll-target="#zone-join-peer-connect">Zone join (peer connect)</a></li>
   <li><a href="#cmd_instance_asset-slot-allocation" id="toc-cmd_instance_asset-slot-allocation" class="nav-link" data-scroll-target="#cmd_instance_asset-slot-allocation">CMD_INSTANCE_ASSET (slot allocation)</a></li>
@@ -366,8 +366,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
 <p>The documentation and the code are inconsistent. Any connected player can instance any asset regardless of ownership. The enforcement gap exists at two boundaries: zone join (no <code>CAN_ENTER</code> check) and <code>CMD_INSTANCE_ASSET</code> (no <code>CAN_INSTANCE</code> check).</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
 <section id="zone-join-peer-connect" class="level3">
 <h3 class="anchored" data-anchor-id="zone-join-peer-connect">Zone join (peer connect)</h3>
 <p>In <code>FabricMMOGZone::_on_peer_connected(int p_peer_id)</code>, before the peer is admitted to the simulation:</p>
@@ -393,7 +393,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="per-tick-constraint" class="level3">
 <h3 class="anchored" data-anchor-id="per-tick-constraint">Per-tick constraint</h3>
-<p>No ReBAC call is issued from the physics loop. The cached graph in <code>_player_graphs</code> is the only permitted access point during simulation. Live <code>taskweft</code> queries from the physics loop are prohibited (see <code>20260421-rebac-permissions.md</code>).</p>
+<p>No ReBAC call is issued from the physics loop. The cached graph in <code>_player_graphs</code> is the only permitted access point during simulation. Live <code>taskweft</code> queries from the physics loop are prohibited (see <a href="../decisions/20260421-rebac-permissions.html">20260421-rebac-permissions.md</a>).</p>
 </section>
 <section id="graph-invalidation" class="level3">
 <h3 class="anchored" data-anchor-id="graph-invalidation">Graph invalidation</h3>
@@ -444,14 +444,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>ReBAC, Enforcement, ZoneServer, C++, CAN_ENTER, CAN_INSTANCE, taskweft, PermissionsCache</li>
+<li>ReBAC, Enforcement, ZoneServer, C++, CAN_ENTER, CAN_INSTANCE, taskweft, PermissionsCache, 20260421-rebac-zone-server-enforcement</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <ol type="1">
-<li><code>20260421-rebac-permissions.md</code> — base ReBAC design and per-tick doctrine</li>
-<li><code>20260421-rebac-zone-relations.md</code> — CAN_ENTER and CAN_INSTANCE relation definitions</li>
+<li><a href="../decisions/20260421-rebac-permissions.html">20260421-rebac-permissions.md</a> — base ReBAC design and per-tick doctrine</li>
+<li><a href="../decisions/20260421-rebac-zone-relations.html">20260421-rebac-zone-relations.md</a> — CAN_ENTER and CAN_INSTANCE relation definitions</li>
 <li><code>multiplayer-fabric-godot/modules/multiplayer_fabric_mmog/fabric_mmog_zone.cpp</code></li>
 </ol>
 

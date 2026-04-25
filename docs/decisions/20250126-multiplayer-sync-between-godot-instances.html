@@ -329,7 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#what-is-the-context-of-the-proposal" id="toc-what-is-the-context-of-the-proposal" class="nav-link" data-scroll-target="#what-is-the-context-of-the-proposal">What is the context of the proposal?</a></li>
   <li><a href="#what-is-the-problem-being-solved" id="toc-what-is-the-problem-being-solved" class="nav-link" data-scroll-target="#what-is-the-problem-being-solved">What is the problem being solved?</a></li>
-  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</a></li>
+  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a></li>
   <li><a href="#what-are-the-benefits-of-the-proposal" id="toc-what-are-the-benefits-of-the-proposal" class="nav-link" data-scroll-target="#what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</a></li>
   <li><a href="#what-are-the-downsides-of-the-proposal" id="toc-what-are-the-downsides-of-the-proposal" class="nav-link" data-scroll-target="#what-are-the-downsides-of-the-proposal">What are the downsides of the proposal?</a></li>
   <li><a href="#what-are-the-alternative-proposals" id="toc-what-are-the-alternative-proposals" class="nav-link" data-scroll-target="#what-are-the-alternative-proposals">What are the alternative proposals?</a></li>
@@ -339,6 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#who-is-making-decisions-on-the-proposal" id="toc-who-is-making-decisions-on-the-proposal" class="nav-link" data-scroll-target="#who-is-making-decisions-on-the-proposal">Who is making decisions on the proposal?</a></li>
   <li><a href="#what-tags-does-the-proposal-have" id="toc-what-tags-does-the-proposal-have" class="nav-link" data-scroll-target="#what-tags-does-the-proposal-have">What tags does the proposal have?</a></li>
   <li><a href="#list-further-reading-references" id="toc-list-further-reading-references" class="nav-link" data-scroll-target="#list-further-reading-references">List further reading references</a></li>
+  <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags">Tags</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20250126-multiplayer-sync-between-godot-instances.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -360,11 +361,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="what-is-the-problem-being-solved">What is the problem being solved?</h2>
 <p>Currently, synchronizing complex node scene trees in multiplayer scenarios within Godot is challenging. There’s a need for an efficient method to ensure consistency across all client instances.</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
 <p>The proposal involves implementing a synchronization protocol that mirrors the node scene tree structure across all multiplayer instances. This includes:</p>
 <ul>
-<li><p><strong>Syncing Node Trees:</strong> Establishing real-time updates, property synchronization, and state management to ensure all clients reflect the same scene tree.</p>
+<li><p>Syncing Node Trees: Establishing real-time updates, property synchronization, and state management to ensure all clients reflect the same scene tree.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode gdscript code-with-copy"><code class="sourceCode gdscript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">func</span> <span class="fu">sync_scene_tree</span>(node):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> child <span class="kw">in</span> node.<span class="fu">get_children</span>():</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                <span class="fu">update_network_properties</span>(child)</span>
@@ -420,6 +421,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://github.com/mas-bandwidth/fps/blob/main/001/README.md?ref=mas-bandwidth.com">mas-bandwidth/fps</a></li>
 </ol>
 <p>AI assistant Aria assisted with this article.</p>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>20250126-multiplayer-sync-between-godot-instances</li>
+</ul>
 
 
 </section>

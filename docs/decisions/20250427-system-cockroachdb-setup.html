@@ -329,7 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
   <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
-  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</a></li>
+  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a></li>
   <li><a href="#the-benefits" id="toc-the-benefits" class="nav-link" data-scroll-target="#the-benefits">The Benefits</a></li>
   <li><a href="#the-downsides" id="toc-the-downsides" class="nav-link" data-scroll-target="#the-downsides">The Downsides</a></li>
   <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
@@ -363,8 +363,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
 <p>Manually starting, stopping, and configuring a secure CockroachDB cluster node is cumbersome and prone to error. Without systemd management, the database process won’t automatically restart on failure or system reboot, and applying security configurations consistently becomes challenging.</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
 <p>This proposal outlines setting up a single CockroachDB v22.1 node as a secure systemd service on Linux.</p>
 <p><strong>1. Installation:</strong> Download the CockroachDB v22.1 binary and place it in <code>/usr/local/bin/</code>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download and extract</span></span>
@@ -436,26 +436,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-benefits" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
 <ul>
-<li><strong>Reliability:</strong> Automated startup, restarts, and management via systemd.</li>
-<li><strong>Security:</strong> Enforces secure cluster communication using TLS certificates.</li>
-<li><strong>Consistency:</strong> Standardized setup across different machines.</li>
-<li><strong>Manageability:</strong> Easy to start, stop, check status using <code>systemctl</code>.</li>
+<li>Reliability: Automated startup, restarts, and management via systemd.</li>
+<li>Security: Enforces secure cluster communication using TLS certificates.</li>
+<li>Consistency: Standardized setup across different machines.</li>
+<li>Manageability: Easy to start, stop, check status using <code>systemctl</code>.</li>
 </ul>
 </section>
 <section id="the-downsides" class="level2">
 <h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
 <ul>
-<li><strong>Initial Complexity:</strong> Certificate generation and systemd unit file creation require careful setup.</li>
-<li><strong>Systemd Dependency:</strong> Relies on Linux distributions using systemd.</li>
-<li><strong>Configuration Management:</strong> Cluster join info and other flags need proper management.</li>
+<li>Initial Complexity: Certificate generation and systemd unit file creation require careful setup.</li>
+<li>Systemd Dependency: Relies on Linux distributions using systemd.</li>
+<li>Configuration Management: Cluster join info and other flags need proper management.</li>
 </ul>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
 <ul>
-<li><strong>Manual Execution:</strong> Running <code>cockroach start</code> manually in <code>screen</code> or <code>tmux</code> lacks robustness.</li>
-<li><strong>Docker/Kubernetes:</strong> While viable (#attachment), direct systemd integration is chosen for simplicity in specific VM-based scenarios.</li>
-<li><strong>Insecure Mode:</strong> Running without TLS certificates is not suitable for production or sensitive data.</li>
+<li>Manual Execution: Running <code>cockroach start</code> manually in <code>screen</code> or <code>tmux</code> lacks robustness.</li>
+<li>Docker/Kubernetes: While viable (#attachment), direct systemd integration is chosen for simplicity in specific VM-based scenarios.</li>
+<li>Insecure Mode: Running without TLS certificates is not suitable for production or sensitive data.</li>
 </ul>
 </section>
 <section id="the-infrequent-use-case" class="level2">
@@ -481,7 +481,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>CockroachDB, Database, Systemd, Linux, Security, Infrastructure, v22.1</li>
+<li>CockroachDB, Database, Systemd, Linux, Security, Infrastructure, v22.1, 20250427-system-cockroachdb-setup</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">

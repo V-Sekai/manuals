@@ -329,7 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
   <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
-  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe How Your Proposal Will Work with Code, Pseudo-Code, Mock-Ups, or Diagrams</a>
+  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a>
   <ul class="collapse">
   <li><a href="#sending-data-in-vrchat" id="toc-sending-data-in-vrchat" class="nav-link" data-scroll-target="#sending-data-in-vrchat">Sending Data in VRChat</a></li>
   </ul></li>
@@ -371,8 +371,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
 <p>Developers often struggle with the intricacies of VRChat’s networking, leading to inefficient code and suboptimal user experiences. A clear and concise guide is needed to demystify the process.</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe How Your Proposal Will Work with Code, Pseudo-Code, Mock-Ups, or Diagrams</h2>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
 <section id="sending-data-in-vrchat" class="level3">
 <h3 class="anchored" data-anchor-id="sending-data-in-vrchat">Sending Data in VRChat</h3>
 <p>There are two primary methods to send data in VRChat:</p>
@@ -430,16 +430,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-benefits" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
 <ul>
-<li><strong>Improved Readability</strong>: Clear guidelines enhance the readability of networking code.</li>
-<li><strong>Consistency</strong>: Ensures uniformity in how networking tasks are handled across different projects.</li>
-<li><strong>Efficiency</strong>: Streamlined processes make it easier for developers to implement networking features quickly.</li>
+<li>Improved Readability: Clear guidelines enhance the readability of networking code.</li>
+<li>Consistency: Ensures uniformity in how networking tasks are handled across different projects.</li>
+<li>Efficiency: Streamlined processes make it easier for developers to implement networking features quickly.</li>
 </ul>
 </section>
 <section id="the-downsides" class="level2">
 <h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
 <ul>
-<li><strong>Initial Setup Time</strong>: Establishing and fine-tuning the mental model requires an initial investment of time and resources.</li>
-<li><strong>Limited Flexibility</strong>: Strict adherence to the model may limit creative solutions to unique problems.</li>
+<li>Initial Setup Time: Establishing and fine-tuning the mental model requires an initial investment of time and resources.</li>
+<li>Limited Flexibility: Strict adherence to the model may limit creative solutions to unique problems.</li>
 </ul>
 </section>
 <section id="the-road-not-taken" class="level2">
@@ -469,7 +469,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>V-Sekai</li>
+<li>V-Sekai, 20240715-vrchat-networking-mental-model</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
@@ -791,8 +791,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="question-can-udonsharpbehaviour-instances-communicate-with-each-other">Question: Can UdonSharpBehaviour instances communicate with each other?</h3>
 <p><strong>Answer:</strong> Yes, <code>UdonSharpBehaviour</code> instances can communicate with each other. Here are some ways they can interact:</p>
 <ul>
-<li><strong>Custom Network Events:</strong> You can send custom network events (with zero parameters) to trigger actions in other <code>UdonSharpBehaviour</code> instances. The receiver won’t know who the sender is, and the action will be performed locally on the <code>UdonSharpBehaviour</code>’s current frame.</li>
-<li><strong>Synced Variables:</strong> If you need to send data, it’s better to use synced variables rather than mixing them with network events. When these variables get updated, the <code>OnDeserialization()</code> method will be called. This is a function in <code>UdonSharpBehaviour</code> that you can override to handle any work needed with the updated variables.</li>
+<li>Custom Network Events: You can send custom network events (with zero parameters) to trigger actions in other <code>UdonSharpBehaviour</code> instances. The receiver won’t know who the sender is, and the action will be performed locally on the <code>UdonSharpBehaviour</code>’s current frame.</li>
+<li>Synced Variables: If you need to send data, it’s better to use synced variables rather than mixing them with network events. When these variables get updated, the <code>OnDeserialization()</code> method will be called. This is a function in <code>UdonSharpBehaviour</code> that you can override to handle any work needed with the updated variables.</li>
 </ul>
 </section>
 <section id="question-how-should-i-represent-the-entire-state-in-a-networked-application" class="level3">

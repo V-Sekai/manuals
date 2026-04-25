@@ -329,7 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
   <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
-  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</a></li>
+  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a></li>
   <li><a href="#the-benefits" id="toc-the-benefits" class="nav-link" data-scroll-target="#the-benefits">The Benefits</a></li>
   <li><a href="#the-downsides" id="toc-the-downsides" class="nav-link" data-scroll-target="#the-downsides">The Downsides</a></li>
   <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
@@ -351,7 +351,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="asset-delivery-stack-benchmark" class="level1">
 <h1>Asset Delivery Stack Benchmark</h1>
-<p>Supersedes: <code>20260421-asset-delivery-benchmark.md</code></p>
+<p>Supersedes: <a href="../decisions/20260421-asset-delivery-benchmark.html">20260421-asset-delivery-benchmark.md</a></p>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
 <p>The delivery stack for V-Sekai game assets is content-addressed chunking via casync. <code>aria-storage</code> (Elixir) implements the fetch path: <code>mix aria_storage.fetch --index &lt;url&gt; --store &lt;url&gt;</code> downloads chunks from any static HTTP host (GitHub raw, Cloudflare R2, S3), reassembles the asset, and caches chunks at <code>~/.cache/casync/chunks</code>. The chunk store is plain static files — no custom server required. The live V-Sekai casync store is at <code>https://raw.githubusercontent.com/V-Sekai/casync-v-sekai-game/main/store</code>.</p>
@@ -362,8 +362,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>No measured baseline exists for the current stack. Before the stack is considered settled, we need numbers: cold download time, patch size on a realistic 10 % asset change, and client reassembly cost. Without these, performance regressions from future changes to chunking parameters have no reference to compare against.</p>
 <p>casync serialises the entire directory tree as a <code>.catar</code> stream before chunking. Small files (<code>.tres</code>, <code>.import</code>, <code>.translation</code>) are packed together in the stream and land in the same 16–256 KB chunks as their neighbours. A 500 MB export at the default 64 KB average chunk size produces roughly 8 000 unique chunks; aria-storage fetches these 64 at a time.</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
 <p>Prepare a representative Godot export: one V-Sekai avatar and environment, approximately 500 MB, matching a typical world export file mix.</p>
 <p><strong>Strategy A — casync via aria-storage (current stack)</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Chunk and publish</span></span>
@@ -436,7 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Superseded — casync via aria-storage adopted without benchmark. See <code>20260423-asset-delivery-decision.md</code>.</p>
+<p>Status: Superseded — casync via aria-storage adopted without benchmark. See <a href="../decisions/20260423-asset-delivery-decision.html">20260423-asset-delivery-decision.md</a>.</p>
 </section>
 <section id="decision-makers" class="level2">
 <h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
@@ -447,7 +447,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>casync, Benchmark, AssetDelivery, CDN, aria-storage, Performance</li>
+<li>casync, Benchmark, AssetDelivery, CDN, aria-storage, Performance, 20260423-asset-delivery-benchmark</li>
 </ul>
 
 

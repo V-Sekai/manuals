@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.37</generator>
-<lastBuildDate>Sat, 25 Apr 2026 13:11:42 GMT</lastBuildDate>
+<lastBuildDate>Sat, 25 Apr 2026 14:08:58 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -30,13 +30,53 @@
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
 <p>State the specific problem, limitation, or gap being addressed. Be concrete. A reader should be able to confirm whether a proposed solution actually solves it.</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
 <p>Detail the proposed solution precisely enough that it could be implemented without improvising the design. Include code, diagrams, or examples where they reduce ambiguity. Vague or underspecified proposals cannot be acted on.</p>
 </section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p>Describe the concrete improvements this proposal delivers and to whom.</p>
+<section id="cris-score" class="level2">
+<h2 class="anchored" data-anchor-id="cris-score">CRIS Score</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 53%">
+<col style="width: 17%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Factor</th>
+<th>Score</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>C</strong>omplexity</td>
+<td>+1/−1</td>
+<td>[Low or high complexity — why]</td>
+</tr>
+<tr class="even">
+<td><strong>R</strong>each</td>
+<td>+1/−1</td>
+<td>[Affects many users or few — why]</td>
+</tr>
+<tr class="odd">
+<td><strong>I</strong>mpediment</td>
+<td>+1/−1</td>
+<td>[Blocks progress or easy workaround — why]</td>
+</tr>
+<tr class="even">
+<td><strong>S</strong>takeholder</td>
+<td>+1/−1</td>
+<td>[Large project depends on it or none — why]</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td></td>
+<td>[Sum; see 20260425-cris-scoring-for-godot-engine-code-inclusion.md for action thresholds]</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="the-downsides" class="level2">
 <h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
@@ -45,14 +85,6 @@
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
 <p>Describe the alternatives considered and why this approach was chosen over them.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>Describe any edge cases or less common scenarios where the proposal behaves differently or does not apply.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p>Confirm whether this is core functionality the team will implement, and who owns it.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
@@ -67,8 +99,15 @@
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>[Relevant tags]</li>
+<li>[relevant-tag-1], [relevant-tag-2], YYYYMMDD-this-filename-without-extension, present-proposal-template</li>
 </ul>
+<!-- Always include the filename (without .md) as the last tag.
+     This makes the document findable by filename from any grep or
+     code-search tool, the same way Godot Engine source files are
+     cross-referenced by their basename. Example:
+     - V-Sekai, process, 20260425-cris-scoring-for-godot-engine-code-inclusion -->
+<!-- Audit against 20260422-avoid-ai-writing-tropes-1.md, 
+     20260422-avoid-ai-writing-tropes-2.md, 20260422-avoid-ai-writing-tropes-3.md -->
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
@@ -82,7 +121,223 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 14:08:58 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260425-jellyfish-pass-condition.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="jellyfish-game-pass-condition-design" class="level1">
+<h1>Jellyfish Game Pass Condition Design</h1>
+<ul>
+<li>Status: accepted</li>
+<li>Deciders: V-Sekai, fire</li>
+<li>Tags: V-Sekai, Jellyfish, Demo, Design, 20260425-jellyfish-pass-condition</li>
+</ul>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p><a href="../decisions/20260425-jellyfish-game.html">20260425-jellyfish-game.md</a> states a single pass condition but does not record how each clause is implemented. The clause spans three separate infrastructure pieces designed across multiple ADRs.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Without a document that maps each clause of the pass condition to its implementation, a developer cannot tell which system to wire, test, or debug when the demo fails.</p>
+</section>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
+<p>The pass condition has three clauses.</p>
+<section id="clause-1-a-player-uploaded-jellyfish-appears-in-vr" class="level3">
+<h3 class="anchored" data-anchor-id="clause-1-a-player-uploaded-jellyfish-appears-in-vr">Clause 1 — a player-uploaded jellyfish appears in VR</h3>
+<p><code>jellyfish_asset_loader.gd</code> calls <code>GET /shards/:id/assets</code> to fetch the zone asset manifest. The manifest returns a <code>baked_url</code> (chunk hash URL) for the jellyfish Godot scene. The loader fetches the chunk from the content-addressed store, caches it on disk by hash, and instances the scene into the XR grid scene via <code>CMD_INSTANCE_ASSET</code>.</p>
+<p>Design: <a href="../decisions/20260421-zone-asset-manifest.html">20260421-zone-asset-manifest.md</a>, <a href="../decisions/20260421-content-addressed-asset-delivery.html">20260421-content-addressed-asset-delivery.md</a>, <a href="../decisions/20260421-asset-zone-locality.html">20260421-asset-zone-locality.md</a>.</p>
+</section>
+<section id="clause-2-visible-to-a-second-player-simultaneously" class="level3">
+<h3 class="anchored" data-anchor-id="clause-2-visible-to-a-second-player-simultaneously">Clause 2 — visible to a second player simultaneously</h3>
+<p>Entity state is broadcast to all players within the Area of Interest band via <code>CH_INTEREST</code>. The zone server fans out each mutation packet to every subscriber in the AOI without duplicating the payload. A second player connected to the same zone receives the jellyfish spawn and subsequent position updates through this channel.</p>
+<p>Design: <a href="../decisions/20260421-multiplayer-fabric-zone-architecture.html">20260421-multiplayer-fabric-zone-architecture.md</a>, <a href="../decisions/20260421-websocket-transport-parity.html">20260421-websocket-transport-parity.md</a>.</p>
+</section>
+<section id="clause-3-moving-under-its-species-domain-plan-rather-than-a-hard-coded-phase-table" class="level3">
+<h3 class="anchored" data-anchor-id="clause-3-moving-under-its-species-domain-plan-rather-than-a-hard-coded-phase-table">Clause 3 — moving under its species domain plan rather than a hard-coded phase table</h3>
+<p>At zone startup, <code>FabricMMOGZone</code> loads the species domain JSON-LD file from the zone asset bundle into <code>_species_domains</code>. On each behaviour cycle, <code>_replan_jellyfish()</code> calls <code>tw_seek_plan(domain, state, {"behave"})</code> from <code>standalone/tw_planner.hpp</code> to produce a plan. <code>JellygridSwarm::tick()</code> reads the current action from the plan rather than a fixed phase table. When a threat sensor fires, <code>_on_threat_detected()</code> calls <code>tw_replan_incremental()</code> to update the plan without restarting from the root.</p>
+<p>Design: <a href="../decisions/20260421-rectgtn-jellyfish-behavior.html">20260421-rectgtn-jellyfish-behavior.md</a>.</p>
+</section>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>All three clauses must pass simultaneously in a single session. A failure in any one clause (asset fetch, fan-out, or planning) fails the whole condition. The three systems cannot be validated independently against this specific pass condition.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>Splitting the pass condition into three separate milestone tests would let each system be validated independently. Rejected: the pass condition is specifically an end-to-end composition test — each clause in isolation does not prove the system composes.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Accepted</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="../decisions/20260425-jellyfish-game.html">20260425-jellyfish-game.md</a> — go decision</li>
+<li><a href="../decisions/20260421-zone-asset-manifest.html">20260421-zone-asset-manifest.md</a> — <code>GET /shards/:id/assets</code></li>
+<li><a href="../decisions/20260421-content-addressed-asset-delivery.html">20260421-content-addressed-asset-delivery.md</a> — casync chunk pipeline</li>
+<li><a href="../decisions/20260421-multiplayer-fabric-zone-architecture.html">20260421-multiplayer-fabric-zone-architecture.md</a> — CH_INTEREST fan-out</li>
+<li><a href="../decisions/20260421-rectgtn-jellyfish-behavior.html">20260421-rectgtn-jellyfish-behavior.md</a> — RECTGTN planning</li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260425-jellyfish-pass-condition.html</guid>
+  <pubDate>Sat, 25 Apr 2026 14:08:58 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260425-jellyfish-game.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="build-the-jellyfish-game" class="level1">
+<h1>Build the Jellyfish Game</h1>
+<p>Supersedes: <a href="../decisions/20260421-infinite-aquarium-concept.html">20260421-infinite-aquarium-concept.md</a>, <a href="../decisions/20260421-virtual-creator-market-implementation-plan.html">20260421-virtual-creator-market-implementation-plan.md</a></p>
+<ul>
+<li>Status: accepted</li>
+<li>Deciders: V-Sekai, fire</li>
+<li>Tags: V-Sekai, Jellyfish, Aquarium, Game, CRIS, 20260425-jellyfish-game</li>
+</ul>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p><code>multiplayer-fabric</code> has no reference application. The four existing jellyfish ADRs describe infrastructure pieces and a creator market concept but do not record a single go/no-go decision with explicit prioritisation. Without one, effort scatters across competing items and the demo never ships.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>No ADR commits to building the jellyfish game as the current top priority. The CRIS score below makes that commitment explicit.</p>
+</section>
+<section id="cris-score" class="level2">
+<h2 class="anchored" data-anchor-id="cris-score">CRIS Score</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 4%">
+<col style="width: 84%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Factor</th>
+<th>Score</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>C</strong>omplexity</td>
+<td>+1</td>
+<td>Zone networking, asset delivery, RECTGTN planning, and ReBAC are all working. Remaining work is wiring, not invention.</td>
+</tr>
+<tr class="even">
+<td><strong>R</strong>each</td>
+<td>+1</td>
+<td>Every new operator or creator evaluating multiplayer-fabric needs a running demo to assess the platform.</td>
+</tr>
+<tr class="odd">
+<td><strong>I</strong>mpediment</td>
+<td>+1</td>
+<td>Without a reference application, end-to-end composition cannot be verified and the platform cannot be demonstrated.</td>
+</tr>
+<tr class="even">
+<td><strong>S</strong>takeholder</td>
+<td>+1</td>
+<td>V-Sekai is the primary stakeholder; the virtual creator market product depends on this demo passing.</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td><strong>+4</strong></td>
+<td>Build now; high urgency.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
+<p>The jellyfish game is the Infinite Aquarium: a social, bioluminescent ocean where players design jellyfish, release them into a shared zone, and watch them behave under RECTGTN planning.</p>
+<p>Pass condition: a player-uploaded jellyfish appears in VR, visible to a second player simultaneously, moving under its species domain plan rather than a hard-coded phase table. See <a href="../decisions/20260425-jellyfish-pass-condition.html">20260425-jellyfish-pass-condition.md</a> for the consolidated design.</p>
+<p>Implementation details are recorded in the following ADRs — they remain accepted and are not superseded:</p>
+<ul>
+<li>Behaviour planning: <a href="../decisions/20260421-rectgtn-jellyfish-behavior.html">20260421-rectgtn-jellyfish-behavior.md</a></li>
+<li>Creator behaviour sandbox: <a href="../decisions/20260423-sandbox-rebac-behavior.html">20260423-sandbox-rebac-behavior.md</a></li>
+<li>Zone architecture: <a href="../decisions/20260421-multiplayer-fabric-zone-architecture.html">20260421-multiplayer-fabric-zone-architecture.md</a></li>
+<li>Asset delivery: <a href="../decisions/20260421-content-addressed-asset-delivery.html">20260421-content-addressed-asset-delivery.md</a></li>
+<li>ReBAC enforcement: <a href="../decisions/20260421-rebac-zone-server-enforcement.html">20260421-rebac-zone-server-enforcement.md</a></li>
+</ul>
+<p>Work sequencing follows the phases in <a href="../decisions/20260421-virtual-creator-market-implementation-plan.html">20260421-virtual-creator-market-implementation-plan.md</a> (superseded by this ADR; phases remain valid as a task checklist).</p>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>A passing demo proves the infrastructure composes correctly end-to-end. Creators and operators can evaluate the platform against something concrete rather than documentation.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>A bioluminescent jellyfish ocean is a narrow theme. Operators building avatar showrooms or board games must extrapolate. A more neutral demo exercises fewer platform primitives and is less compelling to the creator audience the product targets.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>A tag game (one chaser, rest flee across zone boundaries) would stress zone handoff without touching asset delivery or ReBAC. It validates the engine but not the product. The aquarium validates both, at the same engine complexity cost.</p>
+</section>
+<section id="the-infrequent-use-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
+<p>A zone with no uploaded jellyfish (new operator, empty ocean) still passes the demo if the player’s own jellyfish appears after upload. The shared-ocean property is a second milestone, not a prerequisite for the pass condition.</p>
+</section>
+<section id="in-core-and-done-by-us" class="level2">
+<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
+<ul>
+<li><code>multiplayer-fabric-godot/modules/multiplayer_fabric_mmog/</code> — zone server, swarm sim, RECTGTN integration</li>
+<li><code>jellyfish_asset_loader.gd</code> — asset manifest → CDN fetch → scene instance</li>
+<li><code>assets/domains/jellyfish_common.jsonld</code>, <code>jellyfish_bioluminescent.jsonld</code> — RECTGTN species domains</li>
+<li><code>multiplayer-fabric-zone-backend</code> — <code>GET /shards/:id/assets</code>, ReBAC, Uro</li>
+<li>xr-grid project — VR client and in-world jellyfish editor</li>
+</ul>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Accepted</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="../decisions/20260421-rectgtn-jellyfish-behavior.html">20260421-rectgtn-jellyfish-behavior.md</a> — RECTGTN planning implementation</li>
+<li><a href="../decisions/20260421-infinite-aquarium-concept.html">20260421-infinite-aquarium-concept.md</a> — aquarium concept (superseded)</li>
+<li><a href="../decisions/20260421-virtual-creator-market-implementation-plan.html">20260421-virtual-creator-market-implementation-plan.md</a> — phase checklist (superseded)</li>
+<li><a href="../decisions/20260423-sandbox-rebac-behavior.html">20260423-sandbox-rebac-behavior.md</a> — sandbox for creator executable code</li>
+<li><a href="../decisions/20260425-cris-scoring-for-godot-engine-code-inclusion.html">20260425-cris-scoring-for-godot-engine-code-inclusion.md</a> — CRIS framework</li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260425-jellyfish-game.html</guid>
+  <pubDate>Sat, 25 Apr 2026 14:08:58 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -161,7 +416,7 @@ server:  {"event":"echo","len":24,"mode":0}</code></pre>
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>WebTransport, web-client, Emscripten, wasm32, threads, proxy-sync, Godot, GDScript, datagram, e2e</li>
+<li>WebTransport, web-client, Emscripten, wasm32, threads, proxy-sync,, 20260425-godot-web-client-webtransport Godot, GDScript, datagram, e2e</li>
 </ul>
 
 
@@ -170,7 +425,7 @@ server:  {"event":"echo","len":24,"mode":0}</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-godot-web-client-webtransport.html</guid>
-  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 14:08:58 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -186,7 +441,7 @@ server:  {"event":"echo","len":24,"mode":0}</code></pre>
 <ul>
 <li>Status: accepted</li>
 <li>Deciders: V-Sekai, fire</li>
-<li>Tags: V-Sekai, process</li>
+<li>Tags: V-Sekai, process, 20260425-cris-scoring-for-godot-engine-code-inclusion</li>
 </ul>
 <section id="context-and-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
@@ -275,7 +530,7 @@ server:  {"event":"echo","len":24,"mode":0}</code></pre>
 <h2 class="anchored" data-anchor-id="application-to-specific-areas">Application to Specific Areas</h2>
 <section id="godot-engine-fork" class="level3">
 <h3 class="anchored" data-anchor-id="godot-engine-fork">Godot Engine fork</h3>
-<p>CRIS determines whether a patch is worth carrying. The existing flowchart (<code>20211207-for-godot-engine-changes-use-a-decision-flowchart.md</code>) then determines <em>where</em> it lives (fork-only, upstream PR, or V-Sekai-specific branch). Apply CRIS first; apply the flowchart only if CRIS clears it.</p>
+<p>CRIS determines whether a patch is worth carrying. The existing flowchart (<a href="../decisions/20211207-for-godot-engine-changes-use-a-decision-flowchart.html">20211207-for-godot-engine-changes-use-a-decision-flowchart.md</a>) then determines <em>where</em> it lives (fork-only, upstream PR, or V-Sekai-specific branch). Apply CRIS first; apply the flowchart only if CRIS clears it.</p>
 </section>
 <section id="backend-and-infrastructure" class="level3">
 <h3 class="anchored" data-anchor-id="backend-and-infrastructure">Backend and infrastructure</h3>
@@ -317,15 +572,8 @@ server:  {"event":"echo","len":24,"mode":0}</code></pre>
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <ul>
 <li>Godot Engine conference slide, April 2026: “Factors that should determine code inclusion: CRIS Scoring” (Complexity, Reach, Impediment, Stakeholder).</li>
-<li><code>20211207-for-godot-engine-changes-use-a-decision-flowchart.md</code></li>
+<li><a href="../decisions/20211207-for-godot-engine-changes-use-a-decision-flowchart.html">20211207-for-godot-engine-changes-use-a-decision-flowchart.md</a></li>
 </ul>
-</section>
-<section id="derivative-license" class="level2">
-<h2 class="anchored" data-anchor-id="derivative-license">Derivative License</h2>
-<p>Copyright (c) 2026 V-Sekai contributors.</p>
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 
 
 </section>
@@ -333,7 +581,7 @@ server:  {"event":"echo","len":24,"mode":0}</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-cris-scoring-for-godot-engine-code-inclusion.html</guid>
-  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 14:08:58 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -360,8 +608,8 @@ server:  {"event":"echo","len":24,"mode":0}</code></pre>
 <h2 class="anchored" data-anchor-id="the-decision">The Decision</h2>
 <p>Creator behavior code runs inside <code>godot-sandbox</code> (RISC-V ELF). The sandbox provides memory isolation and a syscall interface. ReBAC gates every capability the sandbox can request at runtime. The combination gives:</p>
 <ul>
-<li><strong>Memory isolation</strong> — sandbox fault cannot corrupt zone state</li>
-<li><strong>Semantic isolation</strong> — the kernel can only exercise capabilities the ReBAC graph permits for the entity it is animating</li>
+<li>Memory isolation: — sandbox fault cannot corrupt zone state</li>
+<li>Semantic isolation: — the kernel can only exercise capabilities the ReBAC graph permits for the entity it is animating</li>
 </ul>
 </section>
 <section id="how-it-works" class="level2">
@@ -661,7 +909,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>sandbox, ReBAC, HAS_CAPABILITY, godot-sandbox, RISC-V, behavior, security, creator-code, jellyfish</li>
+<li>sandbox, ReBAC, HAS_CAPABILITY, godot-sandbox, RISC-V, behavior, security,, 20260423-sandbox-rebac-behavior creator-code, jellyfish</li>
 </ul>
 
 
@@ -670,7 +918,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-sandbox-rebac-behavior.html</guid>
-  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 14:08:58 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -754,7 +1002,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>baker, zone, lifecycle, WebTransport, spatial-partitioning, private-zones</li>
+<li>baker, zone, lifecycle, WebTransport, spatial-partitioning, private-zones, 20260423-baker-zone-lifecycle</li>
 </ul>
 
 
@@ -763,7 +1011,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-baker-zone-lifecycle.html</guid>
-  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 14:08:58 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -776,7 +1024,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
 <section id="asset-delivery-casync-via-aria-storage-adopted" class="level1">
 <h1>Asset Delivery: casync via aria-storage Adopted</h1>
-<p>Supersedes: <code>20260423-asset-delivery-benchmark.md</code>, <code>20260421-asset-delivery-benchmark.md</code></p>
+<p>Supersedes: <a href="../decisions/20260423-asset-delivery-benchmark.html">20260423-asset-delivery-benchmark.md</a>, <a href="../decisions/20260421-asset-delivery-benchmark.html">20260421-asset-delivery-benchmark.md</a></p>
 <section id="decision" class="level2">
 <h2 class="anchored" data-anchor-id="decision">Decision</h2>
 <p>casync via <code>aria-storage</code> is the asset delivery stack for V-Sekai. No benchmark against alternatives is required.</p>
@@ -803,7 +1051,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>casync, AssetDelivery, aria-storage, CDN</li>
+<li>casync, AssetDelivery, aria-storage, CDN, 20260423-asset-delivery-decision</li>
 </ul>
 
 
@@ -812,7 +1060,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-asset-delivery-decision.html</guid>
-  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 14:08:58 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -825,7 +1073,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
 <section id="asset-delivery-stack-benchmark" class="level1">
 <h1>Asset Delivery Stack Benchmark</h1>
-<p>Supersedes: <code>20260421-asset-delivery-benchmark.md</code></p>
+<p>Supersedes: <a href="../decisions/20260421-asset-delivery-benchmark.html">20260421-asset-delivery-benchmark.md</a></p>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
 <p>The delivery stack for V-Sekai game assets is content-addressed chunking via casync. <code>aria-storage</code> (Elixir) implements the fetch path: <code>mix aria_storage.fetch --index &lt;url&gt; --store &lt;url&gt;</code> downloads chunks from any static HTTP host (GitHub raw, Cloudflare R2, S3), reassembles the asset, and caches chunks at <code>~/.cache/casync/chunks</code>. The chunk store is plain static files — no custom server required. The live V-Sekai casync store is at <code>https://raw.githubusercontent.com/V-Sekai/casync-v-sekai-game/main/store</code>.</p>
@@ -836,8 +1084,8 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 <p>No measured baseline exists for the current stack. Before the stack is considered settled, we need numbers: cold download time, patch size on a realistic 10 % asset change, and client reassembly cost. Without these, performance regressions from future changes to chunking parameters have no reference to compare against.</p>
 <p>casync serialises the entire directory tree as a <code>.catar</code> stream before chunking. Small files (<code>.tres</code>, <code>.import</code>, <code>.translation</code>) are packed together in the stream and land in the same 16–256 KB chunks as their neighbours. A 500 MB export at the default 64 KB average chunk size produces roughly 8 000 unique chunks; aria-storage fetches these 64 at a time.</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
 <p>Prepare a representative Godot export: one V-Sekai avatar and environment, approximately 500 MB, matching a typical world export file mix.</p>
 <p><strong>Strategy A — casync via aria-storage (current stack)</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
@@ -934,7 +1182,7 @@ font-style: inherit;"># Serve over HTTP. Client downloads the full archive every
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Superseded — casync via aria-storage adopted without benchmark. See <code>20260423-asset-delivery-decision.md</code>.</p>
+<p>Status: Superseded — casync via aria-storage adopted without benchmark. See <a href="../decisions/20260423-asset-delivery-decision.html">20260423-asset-delivery-decision.md</a>.</p>
 </section>
 <section id="decision-makers" class="level2">
 <h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
@@ -945,7 +1193,7 @@ font-style: inherit;"># Serve over HTTP. Client downloads the full archive every
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>casync, Benchmark, AssetDelivery, CDN, aria-storage, Performance</li>
+<li>casync, Benchmark, AssetDelivery, CDN, aria-storage, Performance, 20260423-asset-delivery-benchmark</li>
 </ul>
 
 
@@ -954,7 +1202,7 @@ font-style: inherit;"># Serve over HTTP. Client downloads the full archive every
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-asset-delivery-benchmark.html</guid>
-  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 14:08:58 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1041,7 +1289,7 @@ font-style: inherit;"># Serve over HTTP. Client downloads the full archive every
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>Philosophy, Design, Simplicity, Lightness, Contributing, Heuristics</li>
+<li>Philosophy, Design, Simplicity, Lightness, Contributing, Heuristics, 20260422-simplify-then-add-lightness</li>
 </ul>
 
 
@@ -1050,7 +1298,7 @@ font-style: inherit;"># Serve over HTTP. Client downloads the full archive every
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260422-simplify-then-add-lightness.html</guid>
-  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 14:08:58 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1120,7 +1368,7 @@ font-style: inherit;"># Serve over HTTP. Client downloads the full archive every
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>Writing, Documentation, Style, Review, Contributing</li>
+<li>Writing, Documentation, Style, Review, Contributing, 20260422-avoid-ai-writing-tropes-3</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
@@ -1148,7 +1396,7 @@ Sword, Helen. 2012. <em>Zombie Nouns</em>. <a href="https://opinionator.blogs.ny
 </div>
 </div></section></div> ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes-3.html</guid>
-  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 14:08:58 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1218,7 +1466,7 @@ Sword, Helen. 2012. <em>Zombie Nouns</em>. <a href="https://opinionator.blogs.ny
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>Writing, Documentation, AI, Style, Review, Contributing</li>
+<li>Writing, Documentation, AI, Style, Review, Contributing, 20260422-avoid-ai-writing-tropes-2</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
@@ -1238,7 +1486,7 @@ Ossama. 2025. <em>Tropes.fyi: <span>AI</span> Writing Pattern Directory</em>. <a
 </div>
 </div></section></div> ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes-2.html</guid>
-  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 14:08:58 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1309,7 +1557,7 @@ Ossama. 2025. <em>Tropes.fyi: <span>AI</span> Writing Pattern Directory</em>. <a
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>Writing, Documentation, AI, Style, Review, Contributing</li>
+<li>Writing, Documentation, AI, Style, Review, Contributing, 20260422-avoid-ai-writing-tropes-1</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
@@ -1337,7 +1585,7 @@ Wikipedia contributors. 2025. <em>Wikipedia: Signs of <span>AI</span> Writing</e
 </div>
 </div></section></div> ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes-1.html</guid>
-  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 14:08:58 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1358,8 +1606,8 @@ Wikipedia contributors. 2025. <em>Wikipedia: Signs of <span>AI</span> Writing</e
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
 <p>Shards require a coordinator, match-maker, and session database to route players to the least-full copy. The coordinator is a single point of failure and a licensing surface (most implementations are proprietary middleware). Players on different shards cannot interact. The world is not continuous.</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
 <p>Each zone owns a slice of a single continuous 30-bit Hilbert code space (Skilling 2004). Zones share boundaries, not walls. Entities migrate across those boundaries automatically — the player never sees a loading screen or a “server full” message.</p>
 <p><strong>AOI without adjacency tables.</strong> The Area of Interest band for a zone is derived directly from its Hilbert range, extended by <code>AOI_CELLS</code> on each side. Neighbor topology falls out of band overlap — no hand-authored adjacency tables. Adding a zone server changes the topology automatically.</p>
 <p><strong>Why Hilbert, not Morton.</strong> The Hilbert curve has tighter spatial locality than the Morton (Z-order) curve: cluster diameter scales as O(n^(1/3)) vs Morton’s O(n^(2/3)) (Bader 2013). Shorter cluster diameter means shorter AOI bands for the same coverage radius, which is why interest relay can copy each packet once per physical link rather than once per subscriber. Morton would require either wider AOI bands (more data per client) or a custom adjacency table to correct locality.</p>
@@ -1404,7 +1652,7 @@ Wikipedia contributors. 2025. <em>Wikipedia: Signs of <span>AI</span> Writing</e
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>Zones, Shards, Hilbert, Morton, AOI, SpatialIndex, Partitioning, Locality</li>
+<li>Zones, Shards, Hilbert, Morton, AOI, SpatialIndex, Partitioning, Locality, 20260421-zones-vs-shards</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
@@ -1412,7 +1660,7 @@ Wikipedia contributors. 2025. <em>Wikipedia: Signs of <span>AI</span> Writing</e
 <ol type="1">
 <li>Skilling 2004 — “Programming the Hilbert curve” — original bit-manipulation algorithm</li>
 <li>Bader 2013 — “Space-Filling Curves: An Introduction with Applications in Scientific Computing” — O(n^(1/3)) vs O(n^(2/3)) cluster diameter comparison</li>
-<li><code>20260421-multiplayer-fabric-zone-architecture.md</code> — full zone architecture</li>
+<li><a href="../decisions/20260421-multiplayer-fabric-zone-architecture.html">20260421-multiplayer-fabric-zone-architecture.md</a> — full zone architecture</li>
 <li><code>PredictiveBVH/Spatial/HilbertRoundtrip.lean</code> — formal proofs</li>
 </ol>
 
@@ -1422,7 +1670,7 @@ Wikipedia contributors. 2025. <em>Wikipedia: Signs of <span>AI</span> Writing</e
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zones-vs-shards.html</guid>
-  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 14:08:58 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1443,8 +1691,8 @@ Wikipedia contributors. 2025. <em>Wikipedia: Signs of <span>AI</span> Writing</e
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
 <p>Static configuration of zone server addresses does not work when zone servers restart, migrate, or scale horizontally. A registry with heartbeat-based expiry gives clients a live view of the cluster without requiring any coordination between zone servers.</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
 <p>Zone servers self-register with zone-backend over HTTP and maintain their registration with periodic heartbeats.</p>
 <p>On boot, a zone server sends <code>POST /shards</code> with its <code>address</code>, <code>port</code>, <code>map</code>, <code>name</code>, and <code>cert_hash</code>. Zone-backend writes a row to the <code>zones</code> table and returns the assigned UUID. The zone server stores this UUID and uses it for all subsequent requests.</p>
 <p>Every 25 seconds the zone server sends <code>PUT /shards/:id</code>. This touches the row’s <code>updated_at</code> timestamp. No body is required; a bare PUT is a valid keepalive. The response includes the current <code>desync_index_url</code> for the zone’s map, which the zone server can use to confirm asset availability.</p>
@@ -1486,7 +1734,7 @@ Wikipedia contributors. 2025. <em>Wikipedia: Signs of <span>AI</span> Writing</e
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>Zone, Registration, Discovery, Heartbeat, Janitor, WebSocket, CertPin</li>
+<li>Zone, Registration, Discovery, Heartbeat, Janitor, WebSocket, CertPin, 20260421-zone-registration-and-discovery</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
@@ -1504,7 +1752,7 @@ Wikipedia contributors. 2025. <em>Wikipedia: Signs of <span>AI</span> Writing</e
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-registration-and-discovery.html</guid>
-  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 14:08:58 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1525,8 +1773,8 @@ Wikipedia contributors. 2025. <em>Wikipedia: Signs of <span>AI</span> Writing</e
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
 <p>Clients and operators cannot filter or route to a subset of zones that belong together. A set of zones serving the same world region, event, or logical cluster cannot be discovered as a unit without out-of-band coordination.</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
 <p>Add an optional <code>tags</code> column (string array) to the <code>zones</code> table:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><span class="kw" style="color: #003B4F;
 background-color: null;
@@ -1743,14 +1991,14 @@ font-style: inherit;">end</span></span></code></pre></div></div>
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>Zone, Grouping, Tags, Discovery, Filter, Registration</li>
+<li>Zone, Grouping, Tags, Discovery, Filter, Registration, 20260421-zone-grouping</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <ol type="1">
-<li><code>20260421-zone-registration-and-discovery.md</code> — base registration design</li>
-<li><code>20260421-zone-asset-manifest.md</code> — per-zone asset listing</li>
+<li><a href="../decisions/20260421-zone-registration-and-discovery.html">20260421-zone-registration-and-discovery.md</a> — base registration design</li>
+<li><a href="../decisions/20260421-zone-asset-manifest.html">20260421-zone-asset-manifest.md</a> — per-zone asset listing</li>
 <li><code>multiplayer-fabric-zone-backend/lib/uro/v_sekai/zone.ex</code></li>
 </ol>
 
@@ -1760,7 +2008,7 @@ font-style: inherit;">end</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-grouping.html</guid>
-  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 14:08:58 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1781,8 +2029,8 @@ font-style: inherit;">end</span></span></code></pre></div></div>
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
 <p>A hard cutover — despawn in zone A, spawn in zone B — produces a visible gap if the two zones are not synchronized. A three-state handoff that keeps the entity alive in both zones during transit eliminates the gap. Without a proved arrival guarantee and a hysteresis guard, an entity oscillating near a boundary triggers repeated migrations.</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
 <section id="zone-assignment" class="level3">
 <h3 class="anchored" data-anchor-id="zone-assignment">Zone assignment</h3>
 <p>Each zone owns the Hilbert codes whose top <code>d</code> bits equal the zone index. The assignment is O(1):</p>
@@ -1898,7 +2146,7 @@ theorem aoiBand_width_bound ... :
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>Zone, Handoff, STAGING, Hilbert, HLC, Hysteresis, Interest, FabricZone, Lean4, Formal</li>
+<li>Zone, Handoff, STAGING, Hilbert, HLC, Hysteresis, Interest, FabricZone, Lean4, Formal, 20260421-zone-border-handoff</li>
 </ul>
 
 
@@ -1907,7 +2155,7 @@ theorem aoiBand_width_bound ... :
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-border-handoff.html</guid>
-  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 14:08:58 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1928,9 +2176,9 @@ theorem aoiBand_width_bound ... :
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
 <p>Discovery requires a live connection. Clients cannot make pre-connection routing or interest decisions based on zone content. A client that wants to find zones containing a specific asset type must connect to each candidate zone in turn.</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p>Add a read-only endpoint <code>GET /shards/:id/assets</code>. This requires <code>20260421-asset-zone-locality.md</code> to be implemented first (SharedFile must carry a <code>zone_id</code>).</p>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
+<p>Add a read-only endpoint <code>GET /shards/:id/assets</code>. This requires <a href="../decisions/20260421-asset-zone-locality.html">20260421-asset-zone-locality.md</a> to be implemented first (SharedFile must carry a <code>zone_id</code>).</p>
 <p>Response shape:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2152,7 +2400,7 @@ font-style: inherit;">:assets</span></span></code></pre></div></div>
 <li><code>Uro.VSekai.list_zone_assets/1</code> — query SharedFile by zone_id and baked_url</li>
 <li><code>Uro.ZoneController.assets/2</code> — new action</li>
 <li><code>router.ex</code> — new route</li>
-<li>Requires <code>20260421-asset-zone-locality.md</code></li>
+<li>Requires <a href="../decisions/20260421-asset-zone-locality.html">20260421-asset-zone-locality.md</a></li>
 </ul>
 </section>
 <section id="status" class="level2">
@@ -2168,15 +2416,15 @@ font-style: inherit;">:assets</span></span></code></pre></div></div>
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>Zone, Asset, Manifest, Discovery, API, SharedFile</li>
+<li>Zone, Asset, Manifest, Discovery, API, SharedFile, 20260421-zone-asset-manifest</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <ol type="1">
-<li><code>20260421-asset-zone-locality.md</code> — zone_id FK prerequisite</li>
-<li><code>20260421-zone-registration-and-discovery.md</code> — base zone API</li>
-<li><code>20260421-content-addressed-asset-delivery.md</code> — baked_url pipeline</li>
+<li><a href="../decisions/20260421-asset-zone-locality.html">20260421-asset-zone-locality.md</a> — zone_id FK prerequisite</li>
+<li><a href="../decisions/20260421-zone-registration-and-discovery.html">20260421-zone-registration-and-discovery.md</a> — base zone API</li>
+<li><a href="../decisions/20260421-content-addressed-asset-delivery.html">20260421-content-addressed-asset-delivery.md</a> — baked_url pipeline</li>
 </ol>
 
 
@@ -2185,7 +2433,7 @@ font-style: inherit;">:assets</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-asset-manifest.html</guid>
-  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 14:08:58 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2206,8 +2454,8 @@ font-style: inherit;">:assets</span></span></code></pre></div></div>
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
 <p>ENet is reliable and battle-tested, but it runs over UDP without any browser runtime support, and the Godot engine has no first-class WebTransport integration. Proposal #3899 in the upstream engine repository has been open for years without a merge. No shipped Godot title uses WebTransport as its primary transport.</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
 <p><code>WebTransportPeer</code> in <code>modules/http3/</code> wraps a QUIC connection as a Godot <code>MultiplayerPeer</code>. The connection progresses through six states: <code>SESSION_DISCONNECTED</code>, <code>SESSION_QUIC_HANDSHAKING</code>, <code>SESSION_H3_SETTINGS</code>, <code>SESSION_WT_CONNECTING</code>, <code>SESSION_OPEN</code>, and <code>SESSION_CLOSED</code>. A client calls <code>create_client(host, port, path)</code>, which dials the server with the <code>webtransport</code> ALPN token. A server calls <code>create_server(port, path, cert, key)</code> with a self-signed X.509 certificate.</p>
 <p>Packet delivery mode maps directly to QUIC primitives. <code>TRANSFER_MODE_UNRELIABLE</code> and <code>TRANSFER_MODE_UNRELIABLE_ORDERED</code> use QUIC DATAGRAMs. <code>TRANSFER_MODE_RELIABLE</code> opens a per-packet bidirectional stream, writes the payload with a FIN, and drains the response.</p>
 <p>Certificate pinning replaces the CA chain. The zone server’s self-signed TLS certificate SHA-256 fingerprint is stored in the <code>cert_hash</code> field of the zone registry record. Clients retrieve <code>cert_hash</code> from <code>GET /shards</code> before dialing and pin it when opening the QUIC connection. No certificate authority is required.</p>
@@ -2301,7 +2549,7 @@ font-style: inherit;">note</span>         = {Baseline 2026: newly available acro
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>WebTransport, QUIC, Transport, Zone, CertPin, HTTP3</li>
+<li>WebTransport, QUIC, Transport, Zone, CertPin, HTTP3, 20260421-webtransport-zone-transport</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
@@ -2318,7 +2566,7 @@ font-style: inherit;">note</span>         = {Baseline 2026: newly available acro
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-webtransport-zone-transport.html</guid>
-  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 14:08:58 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2339,8 +2587,8 @@ font-style: inherit;">note</span>         = {Baseline 2026: newly available acro
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
 <p>The back-pressure behaviour of the WebSocket path under network congestion is undocumented and untested at simulation scale. Queued stale snapshots consume bandwidth and introduce head-of-line blocking. The magnitude of the latency difference between the WT and WS paths at p95 under realistic conditions is unknown.</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
 <p>Define a reproducible load test:</p>
 <p><strong>Environment</strong> - 100 simulated clients, 50 on WebTransport (control), 50 on WebSocket (test) - Zone with 1,800 entity slots at 50% occupancy (900 active entities) - Network condition: 20% added packet delay (uniform 50 ms), 1% packet loss (WT only; TCP masks loss) - Tick rate: 20 Hz (default), snapshot broadcast per tick</p>
 <p><strong>Metrics</strong></p>
@@ -2469,13 +2717,13 @@ font-style: inherit;">;</span></span></code></pre></div></div>
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>WebSocket, WebTransport, TCP, Parity, Benchmark, CH_INTEREST, Snapshot, BackPressure, Desktop</li>
+<li>WebSocket, WebTransport, TCP, Parity, Benchmark, CH_INTEREST, Snapshot, BackPressure, Desktop, 20260421-websocket-transport-parity</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <ol type="1">
-<li><code>20260421-webtransport-zone-transport.md</code> — base transport design</li>
+<li><a href="../decisions/20260421-webtransport-zone-transport.html">20260421-webtransport-zone-transport.md</a> — base transport design</li>
 <li><code>multiplayer-fabric-godot/modules/multiplayer_fabric_mmog/fabric_mmog_transport_peer.h</code> — STATE_TRYING_WS</li>
 <li><code>multiplayer-fabric-godot/modules/multiplayer_fabric/fabric_multiplayer_peer.h</code> — frame_channels mode</li>
 </ol>
@@ -2486,261 +2734,7 @@ font-style: inherit;">;</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-websocket-transport-parity.html</guid>
-  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20260421-virtual-creator-market-implementation-plan.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="virtual-creator-market-implementation-plan" class="level1">
-<h1>Virtual Creator Market Implementation Plan</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>The Virtual Creator Market PoC (<code>20260421-infinite-aquarium-concept.md</code>) is the reference application for multiplayer-fabric. Implementation items are sequenced by risk: each step retires one uncertainty before the next begins. A creator’s booth is a zone. Visitors cross booth boundaries the same way entities migrate between zones. Creator assets are content-addressed chunks in Uro.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>There is no sequenced plan that connects the existing zone infrastructure to a working creator market demo. Steps are ordered so that each one produces a verifiable pass condition before the next begins, preventing parallel risk accumulation.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<section id="phase-1-operator-visibility-retire-can-you-tell-what-is-happening-in-your-market" class="level3">
-<h3 class="anchored" data-anchor-id="phase-1-operator-visibility-retire-can-you-tell-what-is-happening-in-your-market">Phase 1 — Operator visibility (retire: can you tell what is happening in your market?)</h3>
-<p><strong>1. Zone health HUD anchor fix</strong> Move <code>StatusHUD</code> under <code>SpectatorRig/SpringArm3D/Camera3D</code> so the operator dashboard follows the camera viewport rather than sitting at world origin. Pass: launching the observer scene shows zone health text pinned to the camera and readable while orbiting.</p>
-<p><strong>2. Booth position marker</strong> Add a pulsing mesh marker at the operator’s connected zone position updated every frame from authoritative zone state. Pass: marker remains visible during camera motion and crosses booth boundaries without lagging.</p>
-<p><strong>3. Booth boundary readability pass</strong> Raise zone curtain alpha and add camera-facing or vertical labels so booth names are readable from top-down and orbit views. Pass: all three booth labels are readable from default spawn view; boundary surfaces remain visible at far zoom.</p>
-<p><strong>4. Top-down operator camera default</strong> Add an orthographic top-down mode as the default startup view (Final Fantasy Tactics overworld style): booth zones appear as colored region borders, visitor entities as dots, operator position as a highlighted marker. Toggle to orbit mode with Tab. Pass: boot opens in top-down mode; toggle switches cleanly with no control lockups.</p>
-<p><strong>5. Multi-booth smoke run</strong> Run the 3-zone observer smoke test and capture screenshots in both top-down and orbit modes during the 144-visitor crossing burst. Pass: no mass rollback, no duplicate flood; screenshots show visitors crossing booth boundaries.</p>
-<p><strong>6. Operator runbook</strong> Document exact scene, command, and expected visual checks for repeating the smoke run. Pass: another contributor can execute the runbook without guessing hidden setup steps.</p>
-<hr>
-</section>
-<section id="phase-2-visitor-vr-experience-retire-can-visitors-navigate-and-see-creator-content" class="level3">
-<h3 class="anchored" data-anchor-id="phase-2-visitor-vr-experience-retire-can-visitors-navigate-and-see-creator-content">Phase 2 — Visitor VR experience (retire: can visitors navigate and see creator content?)</h3>
-<p><strong>7. XR grid ground plane</strong> Instance <code>ProceduralGrid3D</code> under <code>XROrigin3D</code> in <code>main.tscn</code> so visitors have spatial reference inside a creator booth. Wire <code>FOCUS_NODE</code> to the headset camera. Note: do not use symlinks — copy xr-grid scripts into the demo directory or use <code>res://</code> path remapping. Windows Steam PCVR requires admin privileges for symlinks. Pass: visitor has a visible ground plane and scale reference in VR.</p>
-<p><strong>8. WorldGrab booth navigation</strong> Instance <code>XRPinch</code> on each <code>XRController3D</code> hand node. Two-hand WorldGrab lets visitors grab the space and move, rotate, and scale — the primary navigation method for browsing a creator’s booth. Same symlink caveat as above. Pass: visitor can navigate the booth in VR using two-hand grab without teleport or joystick.</p>
-<p><strong>9. XR node tree verification</strong> Confirm <code>WorldGrab</code>, <code>XRPinch</code>, <code>ProceduralGrid3D</code>, and <code>trident_hand.gd</code> are instanced and functional under <code>XROrigin3D</code>. Pass: VR scene graph is complete; input reaches scripts.</p>
-<p><strong>10. Creator interaction tool → CH_PLAYER cmd=1</strong> Wire the XR controller trigger on <code>trident_hand.gd</code> to emit a CH_PLAYER cmd=1 (<code>ragdoll</code>) packet from <code>fabric_client.gd</code>. The server-side handler in <code>fabric_mmog_zone.cpp</code> already injects the C7 velocity spike — only the client send path is missing. Pass: creator input reaches the zone simulation.</p>
-<p><strong>11. Creator annotation tool → CH_PLAYER cmd=3</strong> Wire the pen tool XR controller input to emit a CH_PLAYER cmd=3 packet per stroke knot. The server-side handler mirrors the cmd=1 path. Verify knots appear in visiting observers’ CH_INTEREST stream. Pass: the full client-to-zone-to-observer path through CH_PLAYER and CH_INTEREST is exercised by both interaction tools.</p>
-<p><strong>12. End-to-end VR demo pass</strong> Boot three booth zones (minimum for transitive migration: booth A → B → C exercises both neighbor indices). Confirm in top-down view first — booth curtains visible, visitor entities populate all three booths, 144-visitor burst migrates without mass rollback. Then confirm in VR: rendering, head tracking, and hand tracking update in CH_INTEREST.</p>
-<p>Three visitor populations: | Population | IDs | Market scenario | |—|—|—| | <code>opening_crowd</code> | 0–255 | Dense crowd at a popular booth launch. Visitors appear alongside creator entities in CH_INTEREST. | | <code>rush</code> | 256–399 | 144 visitors burst into a new booth simultaneously — worst-case migration spike at a booth opening. | | <code>browse</code> | 400–511 | 8 groups of 14 visitors moving at browsing speed through connected booths — sustained cross-booth movement, not just a spike. |</p>
-<p>Pass: an observer in Booth B receives all 144 rush visitors from Booth A without snap, duplicate, or loss. <code>MIGRATION_HEADROOM</code> absorbs the spike.</p>
-<hr>
-</section>
-<section id="phase-3-creator-asset-pipeline-retire-can-creators-upload-and-visitors-see-their-assets" class="level3">
-<h3 class="anchored" data-anchor-id="phase-3-creator-asset-pipeline-retire-can-creators-upload-and-visitors-see-their-assets">Phase 3 — Creator asset pipeline (retire: can creators upload and visitors see their assets?)</h3>
-<p><strong>13. Content-addressed chunk store in Uro</strong> Add <code>/chunks/:hash</code> to Uro accepting PUT (upload) and GET (fetch) for binary blobs keyed by BLAKE3 hash. No permissions yet. Pass: Uro stores and returns arbitrary content-addressed chunks; hash round-trip is verified.</p>
-<p><strong>14. ReBAC permissions on chunk fetch</strong> Add a ReBAC policy check to <code>GET /chunks/:hash</code>: the requesting principal must hold <code>can_read</code> on the chunk’s namespace. Operators assign namespaces at upload time. Pass: visitors without permission receive 403; creator controls who can fetch their assets.</p>
-<p><strong>15. Client-side chunk streaming</strong> In <code>jellyfish_asset_loader.gd</code>, replace the baked-in asset load with a runtime fetch: call <code>GET /shards/:id/assets</code> for the booth manifest, then fetch each <code>baked_url</code> by chunk hash. Cache fetched chunks on disk by hash. Pass: visitor cold-boots with empty cache and loads creator assets from Uro at runtime.</p>
-<p><strong>16. End-to-end asset streaming test</strong> Upload a creator asset from the demo scene to a local Uro instance. Boot a visitor client cold (empty cache) and confirm it fetches and renders the asset by hash. Test both the happy path and a 403 rejection with an unauthorized principal. Pass: creator uploads, visitor downloads, unauthorized visitor is rejected — all in a single automated run.</p>
-<hr>
-</section>
-<section id="phase-4-load-validation-retire-does-the-market-hold-under-event-scale-load" class="level3">
-<h3 class="anchored" data-anchor-id="phase-4-load-validation-retire-does-the-market-hold-under-event-scale-load">Phase 4 — Load validation (retire: does the market hold under event-scale load?)</h3>
-<p><strong>17. 100-visitor headless load harness</strong> Write a headless driver spawning 100 <code>FabricPeer</code> connections to a single booth zone, each subscribing to <code>CH_INTEREST</code>. Record timestamp of every broadcast packet received. Pass: 100 visitors connected and logging without VR hardware.</p>
-<p><strong>18. CH_INTEREST fan-out latency at 100 visitors</strong> Run the harness. Record p50/p99 fan-out latency for <code>local_broadcast_raw</code> at 100 simultaneous subscribers. Validates Hilbert AOI band and one-copy-per-link relay before scaling to multiple booths. Pass: per-booth fan-out is bounded and measurable.</p>
-<p><strong>19. 5-machine fabric provisioning (32 booth zones)</strong> Sizing: 1,000 visitors × 56 entities = 56,000 entities; at 1,800 per zone → 32 booth zones; 7 zones per 8-core machine → 5 machines, 63,000 capacity, 1,125 visitors at 12.5% headroom. Deploy zone binaries, confirm all 32 booth zones register and show healthy in the operator view. Pass: full market topology is live and observable before load is applied.</p>
-<p><strong>20. 1,000-visitor event load test</strong> Drive 1,000 simulated visitors against the 32-zone fabric. Record peak entity count per zone, p99 migration latency, and headroom margin. Pass: no booth zone exceeds 1,800 entities; headroom stays above 12.5% throughout.</p>
-<hr>
-</section>
-<section id="phase-5-formal-verification-retire-is-the-burst-absorption-claim-proved" class="level3">
-<h3 class="anchored" data-anchor-id="phase-5-formal-verification-retire-is-the-burst-absorption-claim-proved">Phase 5 — Formal verification (retire: is the burst absorption claim proved?)</h3>
-<p><strong>21. Audit Lean proofs and sketch headroom theorem</strong> Read <code>ghost_containment_implies_no_exit</code> and <code>staging_resolves_to_single_owner</code> in <code>PredictiveBVH/Spatial/HilbertRoundtrip.lean</code>. Identify lemma dependencies. State the theorem: <code>MIGRATION_HEADROOM ≥ MAX_BURST_SIZE</code> with constant values from <code>fabric_mmog_zone.h</code> visible to the Lean build. Pass: theorem is stated correctly and its dependencies are known before any proof attempt.</p>
-<p><strong>22. Prove and verify the headroom theorem</strong> Implement the theorem. The proof should reduce to <code>decide</code> or <code>norm_num</code> once constants are in scope. Run <code>lake build</code>; confirm no <code>sorry</code> placeholders remain. Pass: the burst absorption claim for the market rush scenario is formally verified.</p>
-<p><strong>23. BVH validation on market populations</strong> <code>lbvhAux</code> now sets <code>parentBounds</code> to entity-tight union. Run the BVH builder on <code>opening_crowd</code>, <code>rush</code>, and <code>browse</code> and confirm total SAH cost is ≤ the Morton baseline. Pass: entity-tight bounds do not regress BVH quality on market visitor distributions.</p>
-<p><strong>24. Centroid axis selection validation</strong> Instrument <code>lbvhAux</code> to log the chosen split axis per node. Run on <code>opening_crowd</code> and <code>browse</code>. Confirm the heuristic distributes axes sensibly rather than collapsing to a single axis on flat populations. Pass: centroid axis heuristic picks useful splits on real visitor distributions.</p>
-<p><strong>25. Saturator convergence on market populations</strong> Run <code>saturateAxes</code> on all three populations. Verify: (a) convergence in ≤ 3 passes; (b) it finds a cheaper partition than the initial LBVH on at least some subtrees. Pass: Hilbert-sorted BVH produces correct and competitive RDO cost with the full visitor population model.</p>
-<hr>
-</section>
-<section id="deferred" class="level3">
-<h3 class="anchored" data-anchor-id="deferred">Deferred</h3>
-<p><strong>UDS zone-to-zone transport</strong> — <code>FabricLocalZonePeer</code> via <code>UDSServer</code>/<code>StreamPeerUDS</code> as opt-in for same-machine booth-to-booth traffic. The RTT-derived adaptive timeout already fixes the 144-visitor burst under ENet fragmentation. Revisit only if fan-out measurement (Phase 4) identifies ENet as the bottleneck.</p>
-<p><strong>Editor booth visualizer</strong> — Hilbert band overlay, visitor count per booth, migration arrows in the 3D viewport. Unnecessary before the VR smoke test passes (Phase 2).</p>
-<p><strong>Editor multiplayer_fabric awareness</strong> — Making the editor understand booth zones and migration state. The demo runs headless zone servers plus a PCVR client; the editor does not participate. Revisit only if debugging Phase 3+ becomes painful without it.</p>
-</section>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p>Risk-ordered sequencing ensures each phase produces a verifiable artifact before the next begins. Operators can see the market before creators can upload. Creators can upload before visitors can browse. Visitor experience is confirmed before event-scale load is applied. The Lean proof closes the formal gap last, after the empirical evidence is in.</p>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>The sequencing assumes each phase completes before the next starts. Parallel work is possible (e.g.&nbsp;Lean proofs alongside Phase 2) but risks accumulating unverified assumptions. The 1,000-visitor load test requires provisioned hardware — this is a hard dependency on infrastructure availability.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>A feature-parallel approach (all phases simultaneously) would finish faster if nothing blocked, but any infrastructure failure in Phase 1 would block all downstream work invisibly. Risk-ordered sequencing surfaces blockers early.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>A solo creator with one booth zone and no visitors still exercises Phase 1 (operator visibility) and Phase 3 (asset upload). The market-scale phases are only required before opening to the public.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<ul>
-<li>Phase 1: <code>observer.tscn</code>, <code>zone_curtain.gd</code>, <code>SpectatorRig</code> — observer UI fixes</li>
-<li>Phase 2: <code>main.tscn</code>, <code>fabric_client.gd</code>, <code>trident_hand.gd</code> — VR wiring</li>
-<li>Phase 3: <code>multiplayer-fabric-zone-backend</code> <code>/chunks/:hash</code>, <code>jellyfish_asset_loader.gd</code></li>
-<li>Phase 4: headless load harness, zone provisioning scripts</li>
-<li>Phase 5: <code>PredictiveBVH/Spatial/HilbertRoundtrip.lean</code>, <code>lbvhAux</code> instrumentation</li>
-</ul>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: In Progress</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>iFire</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>VirtualCreatorMarket, ImplementationPlan, Aquarium, RiskSequencing, LoadTest, VR, AssetPipeline, Lean, BVH</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><code>20260421-infinite-aquarium-concept.md</code> — product concept and component status</li>
-<li><code>20260421-product-virtual-creator-market.md</code> — product strategy</li>
-<li><code>20260421-websocket-transport-parity.md</code> — 100-visitor load test design</li>
-<li><code>20260421-content-addressed-asset-delivery.md</code> — chunk store design</li>
-<li><code>20260421-rebac-zone-server-enforcement.md</code> — ReBAC on asset fetch</li>
-<li><code>20260421-rectgtn-jellyfish-behavior.md</code> — RECTGTN planning for entities</li>
-</ol>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20260421-virtual-creator-market-implementation-plan.html</guid>
-  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20260421-sqlite-per-zone-journal.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="sqlite-per-zone-discrete-mutation-journal-for-crash-recovery" class="level1">
-<h1>SQLite-per-zone discrete-mutation journal for crash recovery</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>Each FabricZone process manages up to 1,800 entity slots. Zone processes can crash from OOM, SIGKILL from the orchestrator, or host preemption. Without a recovery mechanism, all dynamic entity state (connected players, instanced assets) is lost on crash and must be re-established by clients reconnecting from scratch.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Zone state has two components:</p>
-<ul>
-<li><strong>Static world</strong> — 100,000 entities partitioned by Hilbert code at startup; deterministic from zone_id and zone_count, always reproducible.</li>
-<li><strong>Dynamic mutations</strong> — player humanoid spawns (55 bone slots per player), asset instances from CMD_INSTANCE_ASSET, and despawns. These are not deterministic from a formula; they must be persisted.</li>
-</ul>
-<p>After an abrupt crash, only the dynamic mutations need to be recovered. The existing graceful-shutdown drain (DRAIN_MAGIC → FabricSnapshot.res) requires a clean shutdown window and does not help when the process is killed.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<p><code>FabricZoneJournal</code> maintains a SQLite database (<code>fabric_journal_N.db</code> in <code>user://</code>) with two tables:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1">entity_mutations (seq, op, slot_idx, global_id, entity <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">BLOB</span>, ts)</span>
-<span id="cb1-2">entity_snapshots (<span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">id</span>, last_mutation_seq, slot_data <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">BLOB</span>, slot_count, ts)</span></code></pre></div></div>
-<p>Mutation ops: <code>spawn</code>, <code>despawn</code>, <code>payload_update</code>. Physics-step position updates are intentionally excluded — they are deterministic from the simulation and too frequent to journal economically.</p>
-<p>Crash-recovery sequence:</p>
-<pre><code>zone restarts
-  → FabricZone::initialize()
-    → static world entities recreated (deterministic, slots 0..N)
-    → _journal.open("fabric_journal_0.db")
-    → _journal.replay(slots, capacity, entity_count)
-      → restore from latest snapshot (slot_data BLOB → active slots)
-      → apply mutations with seq &gt; last_mutation_seq
-      → only occupy slots currently free (no static-entity clobber)
-    → entity_count += journal_count
-  → zone runs normally with journal enabled</code></pre>
-<p>Periodic snapshots prune old mutations so the journal does not grow unbounded. A final snapshot is written in <code>finalize()</code>.</p>
-<p>WAL mode (<code>PRAGMA journal_mode=WAL</code>) is used for better crash-consistency when <code>SQLITE_OMIT_WAL</code> is absent from the build. The <code>SQLITE_OMIT_WAL</code> define was removed from <code>modules/sqlite/SCsub</code> as part of this change.</p>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<ul>
-<li>No new infrastructure: SQLite is already compiled into the Godot binary via <code>modules/sqlite</code>.</li>
-<li>Recovery is local and fast: replaying a typical journal (a few hundred mutations) is cheap relative to zone startup time.</li>
-<li>Bounded replay time: periodic full snapshots cap the mutation log length regardless of zone uptime.</li>
-<li>Self-hosters benefit: crash recovery works without a coordinating external database.</li>
-</ul>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<ul>
-<li>Journal adds per-mutation write latency on spawn/despawn/asset-instance paths. These are infrequent events so the impact is negligible.</li>
-<li>WAL files (<code>.db-wal</code>, <code>.db-shm</code>) appear alongside the database; operators must include them in backups.</li>
-<li>Position state (cx/cy/cz, velocity) is not recovered — entities resume at their last snapshotted position, not their crash-time position. For humanoid players this means a position snap on reconnect, which is acceptable.</li>
-</ul>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<ul>
-<li><strong>FabricSnapshot-only recovery</strong>: existing graceful drain, but requires a clean shutdown window; does not help on SIGKILL.</li>
-<li><strong>Distributed database for entity state</strong>: rejected earlier (see <code>20240409-elixir-raft-vs-sqlite-fdb.md</code>); a distributed store adds coordination overhead that conflicts with the constant-work design goal.</li>
-<li><strong>Write-ahead log of all state including positions</strong>: would produce gigabytes/day per zone and still not recover the simulation exactly (floating-point physics is not exactly reproducible across reboots).</li>
-<li><strong>Elixir-side persistence in zone-backend</strong>: the zone backend already has SQLite via <code>exqlite</code> (taskweft), but entity state is owned by the C++ zone process; pushing it across the HTTP boundary adds latency and couples two systems.</li>
-</ul>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>Zones that never accept player connections or dynamic asset instances gain nothing from the journal (all their state is deterministic). The journal is effectively a no-op in pure simulation/benchmark mode.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<p><code>FabricZoneJournal</code> lives in <code>modules/multiplayer_fabric/</code> alongside <code>FabricZone</code>. It uses the sqlite3 C API directly (not the GDScript-facing <code>SQLite</code> class) via the include path <code>modules/sqlite/thirdparty</code>.</p>
-<p>Hook sites: - <code>FabricZone::initialize()</code> — open + replay - <code>FabricZone::finalize()</code> — snapshot + close - <code>FabricMMOGZone::spawn_humanoid_entities_for_player()</code> — journal_spawn per bone slot - <code>FabricMMOGZone::despawn_humanoid_entities_for_player()</code> — journal_despawn per bone slot - <code>FabricMMOGZone::_on_cmd_instance_asset()</code> — journal_payload_update after slot setup</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by --></p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>iFire</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>Crash-Recovery, SQLite, WAL, Journal, FabricZone, Entity, Persistence</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><code>modules/multiplayer_fabric/fabric_zone_journal.h</code> — class declaration and design rationale</li>
-<li><code>modules/multiplayer_fabric/fabric_zone_journal.cpp</code> — implementation</li>
-<li><code>modules/multiplayer_fabric/doc_classes/FabricZone.xml</code> — user-facing crash-recovery description</li>
-</ol>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20260421-sqlite-per-zone-journal.html</guid>
-  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 14:08:58 GMT</pubDate>
 </item>
 </channel>
 </rss>

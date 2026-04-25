@@ -327,7 +327,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#what-is-the-context-of-the-proposal" id="toc-what-is-the-context-of-the-proposal" class="nav-link active" data-scroll-target="#what-is-the-context-of-the-proposal">What is the context of the proposal?</a></li>
   <li><a href="#what-is-the-problem-being-solved" id="toc-what-is-the-problem-being-solved" class="nav-link" data-scroll-target="#what-is-the-problem-being-solved">What is the problem being solved?</a></li>
-  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</a></li>
+  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a></li>
   <li><a href="#what-are-the-benefits-of-the-proposal" id="toc-what-are-the-benefits-of-the-proposal" class="nav-link" data-scroll-target="#what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</a></li>
   <li><a href="#what-are-the-downsides-of-the-proposal" id="toc-what-are-the-downsides-of-the-proposal" class="nav-link" data-scroll-target="#what-are-the-downsides-of-the-proposal">What are the downsides of the proposal?</a></li>
   <li><a href="#what-are-the-alternative-proposals" id="toc-what-are-the-alternative-proposals" class="nav-link" data-scroll-target="#what-are-the-alternative-proposals">What are the alternative proposals?</a></li>
@@ -337,6 +337,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#who-is-making-decisions-on-the-proposal" id="toc-who-is-making-decisions-on-the-proposal" class="nav-link" data-scroll-target="#who-is-making-decisions-on-the-proposal">Who is making decisions on the proposal?</a></li>
   <li><a href="#what-tags-does-the-proposal-have" id="toc-what-tags-does-the-proposal-have" class="nav-link" data-scroll-target="#what-tags-does-the-proposal-have">What tags does the proposal have?</a></li>
   <li><a href="#list-further-reading-references" id="toc-list-further-reading-references" class="nav-link" data-scroll-target="#list-further-reading-references">List further reading references</a></li>
+  <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags">Tags</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20241229-one-prototyping-stack.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -355,8 +356,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="what-is-the-problem-being-solved">What is the problem being solved?</h2>
 <p>Even within a single-stack approach using technologies like Godot and Elixir, over-specialization can hinder prototyping. Developers may gravitate towards their areas of expertise, leading to imbalances and challenges when building features that span both client-side and server-side domains.</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
 <p>This proposal envisions a prototyping ecosystem where Godot is the foundation, integrated with Elixir and Phoenix:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mix</span> igniter.new <span class="at">--with</span> phx.new <span class="at">--install</span> ash,ash_postgres,ash_phoenix,ash_authentication,ash_authentication_phoenix,ash_admin</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mix</span> ash_authentication.add_strategy magic_link</span>
@@ -450,25 +451,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="what-are-the-benefits-of-the-proposal" class="level2">
 <h2 class="anchored" data-anchor-id="what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</h2>
 <ul>
-<li><strong>Flexibility:</strong> Godot, Elixir, and Phoenix provide a wide range of tools for prototyping diverse applications, from games and VR/AR experiences to web-based tools with cloud functionalities.</li>
-<li><strong>Consistency:</strong> Centering on Godot promotes consistency in code style and development practices, facilitating knowledge sharing and reducing onboarding time for new developers.</li>
-<li><strong>Efficiency:</strong> This approach streamlines development, reducing the overhead of managing multiple technologies and leading to faster prototyping cycles.</li>
-<li><strong>Developer Empowerment:</strong> A unified toolset empowers developers to explore new possibilities and contribute more effectively to the project.</li>
+<li>Flexibility: Godot, Elixir, and Phoenix provide a wide range of tools for prototyping diverse applications, from games and VR/AR experiences to web-based tools with cloud functionalities.</li>
+<li>Consistency: Centering on Godot promotes consistency in code style and development practices, facilitating knowledge sharing and reducing onboarding time for new developers.</li>
+<li>Efficiency: This approach streamlines development, reducing the overhead of managing multiple technologies and leading to faster prototyping cycles.</li>
+<li>Developer Empowerment: A unified toolset empowers developers to explore new possibilities and contribute more effectively to the project.</li>
 </ul>
 </section>
 <section id="what-are-the-downsides-of-the-proposal" class="level2">
 <h2 class="anchored" data-anchor-id="what-are-the-downsides-of-the-proposal">What are the downsides of the proposal?</h2>
 <ul>
-<li><strong>Limited Flexibility in Technology Choices:</strong> Adopting a single-stack approach may restrict the incorporation of other technologies better suited for specific requirements.</li>
-<li><strong>Learning Curve:</strong> Developers may need to become proficient in both client-side and server-side technologies, requiring additional training and time.</li>
+<li>Limited Flexibility in Technology Choices: Adopting a single-stack approach may restrict the incorporation of other technologies better suited for specific requirements.</li>
+<li>Learning Curve: Developers may need to become proficient in both client-side and server-side technologies, requiring additional training and time.</li>
 </ul>
 </section>
 <section id="what-are-the-alternative-proposals" class="level2">
 <h2 class="anchored" data-anchor-id="what-are-the-alternative-proposals">What are the alternative proposals?</h2>
 <p>Alternative approaches, such as a multi-stack approach or relying solely on Godot without cloud capabilities, were considered.</p>
 <ul>
-<li><strong>Multi-stack approach:</strong> While offering flexibility in tool choice, this introduces complexities and inefficiencies. Managing multiple languages, frameworks, and deployment processes can significantly increase overhead.</li>
-<li><strong>Godot-only approach:</strong> Relying solely on Godot limits the ability to prototype features that require server-side logic or cloud functionalities, such as user accounts, persistent data storage, and online interactions.</li>
+<li>Multi-stack approach: While offering flexibility in tool choice, this introduces complexities and inefficiencies. Managing multiple languages, frameworks, and deployment processes can significantly increase overhead.</li>
+<li>Godot-only approach: Relying solely on Godot limits the ability to prototype features that require server-side logic or cloud functionalities, such as user accounts, persistent data storage, and online interactions.</li>
 </ul>
 </section>
 <section id="when-might-the-proposed-solution-be-used-rarely-or-not-at-all" class="level2">
@@ -511,6 +512,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://github.com/benbot">BenBot</a> - GitHub profile of BenBot, a contributor to the V-Sekai project.</li>
 </ol>
 <p>AI assistant Aria assisted with this article.</p>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>20241229-one-prototyping-stack</li>
+</ul>
 
 
 </section>

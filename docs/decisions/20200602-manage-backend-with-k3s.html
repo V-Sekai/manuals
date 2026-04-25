@@ -329,7 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#context-and-problem-statement" id="toc-context-and-problem-statement" class="nav-link" data-scroll-target="#context-and-problem-statement">Context and Problem Statement</a></li>
   <li><a href="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" id="toc-describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation" class="nav-link" data-scroll-target="#describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</a></li>
-  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</a>
+  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a>
   <ul class="collapse">
   <li><a href="#system-setup-done-once" id="toc-system-setup-done-once" class="nav-link" data-scroll-target="#system-setup-done-once">System Setup (Done once)</a></li>
   <li><a href="#selinux-patches" id="toc-selinux-patches" class="nav-link" data-scroll-target="#selinux-patches">SELinux patches</a></li>
@@ -348,6 +348,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#option-graveyard" id="toc-option-graveyard" class="nav-link" data-scroll-target="#option-graveyard">Option graveyard: <!-- same as above --></a></li>
   <li><a href="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" id="toc-if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script" class="nav-link" data-scroll-target="#if-this-enhancement-will-not-be-used-often-can-it-be-worked-around-with-a-few-lines-of-script">If this enhancement will not be used often, can it be worked around with a few lines of script?</a></li>
   <li><a href="#is-there-a-reason-why-this-should-be-core-and-done-by-us" id="toc-is-there-a-reason-why-this-should-be-core-and-done-by-us" class="nav-link" data-scroll-target="#is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</a></li>
+  <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags">Tags</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References <!-- optional --></a></li>
   <li><a href="#derivative-license" id="toc-derivative-license" class="nav-link" data-scroll-target="#derivative-license">Derivative License</a></li>
   <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
@@ -372,8 +373,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="describe-the-proposed-option-and-how-it-helps-to-overcome-the-problem-or-limitation">Describe the proposed option and how it helps to overcome the problem or limitation</h2>
 <p>We are using a lightweight Kubernetes implementation, k3s, to provide management of backend resources</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work, with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
 <section id="system-setup-done-once" class="level3">
 <h3 class="anchored" data-anchor-id="system-setup-done-once">System Setup (Done once)</h3>
 <p>Install Fedora 34 with a user account set as administrator.</p>
@@ -908,18 +909,18 @@ allow container_t container_runtime_tmpfs_t:lnk_file { getattr relabelto unlink 
 <h3 class="anchored" data-anchor-id="gocd-config-repositories">gocd config repositories</h3>
 <p>Go to <strong>Admin -&gt; Config Repositories</strong></p>
 <ul>
-<li><strong>Config #repository Name:</strong> groups-gocd-pipelines</li>
-<li><strong>Plugin ID:</strong> JSON Configuration Plugin</li>
-<li><strong>Material Type:</strong> Git</li>
-<li><strong>URL:</strong> <a href="mailto:git@gitlab.com" class="email">git@gitlab.com</a>:godot-groups/groups-gocd-pipelines</li>
-<li><strong>Branch:</strong> master</li>
-<li><strong>GoCD pipeline files pattern:</strong> *.gopipeline.json</li>
-<li><strong>GoCD environment files pattern:</strong> *.goenvironment.json</li>
+<li>Config #repository Name: groups-gocd-pipelines</li>
+<li>Plugin ID: JSON Configuration Plugin</li>
+<li>Material Type: Git</li>
+<li>URL: <a href="mailto:git@gitlab.com" class="email">git@gitlab.com</a>:godot-groups/groups-gocd-pipelines</li>
+<li>Branch: master</li>
+<li>GoCD pipeline files pattern: *.gopipeline.json</li>
+<li>GoCD environment files pattern: *.goenvironment.json</li>
 </ul>
 <p><strong>Rules</strong></p>
 <ul>
-<li><strong>Allow:</strong> Pipeline Group: beta</li>
-<li><strong>Allow:</strong> Environment: development</li>
+<li>Allow: Pipeline Group: beta</li>
+<li>Allow: Environment: development</li>
 </ul>
 </section>
 <section id="setup-of-flux2-gitops" class="level3">
@@ -1194,6 +1195,12 @@ cat "client-ca.crt" &gt;&gt; "$1.crt"</code></pre>
 <section id="is-there-a-reason-why-this-should-be-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="is-there-a-reason-why-this-should-be-core-and-done-by-us">Is there a reason why this should be core and done by us?</h2>
 <p>Having experience with kubernetes and maintaining discipline will make scaling or service upgrades smoother in the future.</p>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>20200602-manage-backend-with-k3s</li>
+</ul>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References <!-- optional --></h2>

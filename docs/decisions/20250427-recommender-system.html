@@ -333,11 +333,11 @@ ul.task-list li input[type="checkbox"] {
 <p>Implement Elixir/Phoenix using <code>FLAME</code> to serve the <code>librecommender</code> model. Leverage <code>Ecto</code> for CRDB data mapping, <code>Oban</code> for background job processing (like model retraining triggers or batch predictions), and potentially <code>Membrane</code> for integrating recommendation calls into data streams.</p>
 <p><strong>Key Components:</strong></p>
 <ul>
-<li><strong>Phoenix/Ecto:</strong> Backend framework and database interaction layer with CRDB. Handles schemas and application logic.</li>
-<li><strong>Oban:</strong> Manages background jobs which can trigger processing, including interactions with FLAME services or data preparation.</li>
-<li><strong>Membrane:</strong> Used for stream-based processing pipelines. Could potentially feed data to or consume results from FLAME-served models.</li>
-<li><strong>FLAME:</strong> Manages the lifecycle and serving of the Python <code>librecommender</code> model, allowing Elixir processes to interact with it efficiently.</li>
-<li><strong>CockroachDB (CRDB):</strong> Persistent storage managed via Ecto.</li>
+<li>Phoenix/Ecto: Backend framework and database interaction layer with CRDB. Handles schemas and application logic.</li>
+<li>Oban: Manages background jobs which can trigger processing, including interactions with FLAME services or data preparation.</li>
+<li>Membrane: Used for stream-based processing pipelines. Could potentially feed data to or consume results from FLAME-served models.</li>
+<li>FLAME: Manages the lifecycle and serving of the Python <code>librecommender</code> model, allowing Elixir processes to interact with it efficiently.</li>
+<li>CockroachDB (CRDB): Persistent storage managed via Ecto.</li>
 </ul>
 </section>
 <section id="implementation-plan" class="level2">
@@ -347,17 +347,17 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Define Ecto schemas mapping to CRDB.</li>
 <li>Set up the <code>FLAME</code> environment and configure it to serve the <code>librecommender</code> model.</li>
-<li><strong>Stage 1</strong>: Implement Phoenix endpoints or Oban workers that make requests to the <code>librecommender</code> model served by <code>FLAME</code> and interact with CRDB via Ecto.</li>
+<li>Stage 1: Implement Phoenix endpoints or Oban workers that make requests to the <code>librecommender</code> model served by <code>FLAME</code> and interact with CRDB via Ecto.</li>
 </ul></li>
 <li><strong>Phase 2</strong>: Advanced Integration &amp; Metadata
 <ul>
 <li>Develop Elixir client modules for interacting with the <code>FLAME</code>-served <code>librecommender</code>.</li>
-<li><strong>Stage 2</strong>: Explore integrating <code>FLAME</code> calls within Membrane pipelines (potentially triggered by Oban) for stream-based recommendations, storing results via Ecto in CRDB.</li>
+<li>Stage 2: Explore integrating <code>FLAME</code> calls within Membrane pipelines (potentially triggered by Oban) for stream-based recommendations, storing results via Ecto in CRDB.</li>
 </ul></li>
 <li><strong>Validation</strong>:
 <ul>
-<li><strong>Success</strong>: &lt;500ms p99 latency for <code>FLAME</code> recommendation calls under expected load. Efficient resource utilization by FLAME runners.</li>
-<li><strong>Failure</strong>: &gt;5% errors during FLAME model inference OR significant performance bottlenecks under load.</li>
+<li>Success: &lt;500ms p99 latency for <code>FLAME</code> recommendation calls under expected load. Efficient resource utilization by FLAME runners.</li>
+<li>Failure: &gt;5% errors during FLAME model inference OR significant performance bottlenecks under load.</li>
 </ul></li>
 </ol>
 </section>
@@ -412,7 +412,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="tags-1" class="level2">
 <h2 class="anchored" data-anchor-id="tags-1">Tags</h2>
 <ul>
-<li>V-Sekai</li>
+<li>V-Sekai, 20250427-recommender-system</li>
 <li>Recommendation System</li>
 <li>Architecture</li>
 <li>Elixir</li>

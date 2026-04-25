@@ -352,10 +352,10 @@ client (Godot) — receives desync index URL on join</code></pre>
 <p>A headless Godot process that runs the simulation. Each zone owns a contiguous range of 30-bit Hilbert space and manages up to <code>ZONE_CAPACITY</code> entity slots (default 1,800).</p>
 <p>Key design decisions:</p>
 <ul>
-<li><strong>Constant-work loop</strong> — the physics loop iterates all <code>_zone_capacity</code> slots every tick regardless of occupancy. This makes tick time predictable and avoids per-entity allocation in the hot path.</li>
-<li><strong>Spatial partitioning</strong> — a 3D Hilbert curve maps each entity position to a zone index. The curve and its bounds are formally specified in Lean 4 and code-generated into <code>predictive_bvh.h</code> (R128 64.64 fixed-point arithmetic, micrometer precision).</li>
-<li><strong>STAGING migration</strong> — when an entity crosses a zone boundary, its <code>MigrationState</code> transitions <code>owned → staging(targetZone, arrivalHLC) → owned</code>; the receiving side enters <code>incoming(fromZone)</code> until the arrival HLC is reached. Timing uses <code>FabricLatency</code> (sameRegion=1 tick, crossRegion=4 ticks, satellite=40 ticks) with a floor of <code>latencyTicks = max (simTickHz / 10) 1</code>.</li>
-<li><strong>AOI band interest culling</strong> — zones broadcast entity snapshots only to peers whose Hilbert code span overlaps the AOI band. The band width is proved to be <code>≤ (1 + 2·aoiCells) · hilbertSpanWidth(prefixDepth)</code>, independent of global zone count.</li>
+<li>Constant-work loop: — the physics loop iterates all <code>_zone_capacity</code> slots every tick regardless of occupancy. This makes tick time predictable and avoids per-entity allocation in the hot path.</li>
+<li>Spatial partitioning: — a 3D Hilbert curve maps each entity position to a zone index. The curve and its bounds are formally specified in Lean 4 and code-generated into <code>predictive_bvh.h</code> (R128 64.64 fixed-point arithmetic, micrometer precision).</li>
+<li>STAGING migration: — when an entity crosses a zone boundary, its <code>MigrationState</code> transitions <code>owned → staging(targetZone, arrivalHLC) → owned</code>; the receiving side enters <code>incoming(fromZone)</code> until the arrival HLC is reached. Timing uses <code>FabricLatency</code> (sameRegion=1 tick, crossRegion=4 ticks, satellite=40 ticks) with a floor of <code>latencyTicks = max (simTickHz / 10) 1</code>.</li>
+<li>AOI band interest culling: — zones broadcast entity snapshots only to peers whose Hilbert code span overlaps the AOI band. The band width is proved to be <code>≤ (1 + 2·aoiCells) · hilbertSpanWidth(prefixDepth)</code>, independent of global zone count.</li>
 </ul>
 </section>
 <section id="asset-delivery-desync" class="level3">
@@ -374,7 +374,7 @@ client (Godot) — receives desync index URL on join</code></pre>
 <h2 class="anchored" data-anchor-id="persistence">Persistence</h2>
 <p>Entity state has two persistence paths:</p>
 <p><strong>Graceful shutdown (FabricSnapshot)</strong> On <code>SIGINT</code>, zones drain entities toward zone 0 via STAGING migration. Zone 0 collects all entities and writes a <code>FabricSnapshot</code> Godot Resource to disk. On restart, each zone reloads only the entities whose Hilbert code falls within its range.</p>
-<p><strong>Crash recovery (FabricZoneJournal)</strong> A per-zone SQLite database records discrete mutations: spawn, despawn, payload_update. On restart, the zone replays the journal on top of its deterministic static-world initialisation to recover dynamic entities (connected players, asset instances). Physics-step position updates are not journaled; they are recomputed from the simulation. See <code>20260421-sqlite-per-zone-journal.md</code> for the detailed design.</p>
+<p><strong>Crash recovery (FabricZoneJournal)</strong> A per-zone SQLite database records discrete mutations: spawn, despawn, payload_update. On restart, the zone replays the journal on top of its deterministic static-world initialisation to recover dynamic entities (connected players, asset instances). Physics-step position updates are not journaled; they are recomputed from the simulation. See <a href="../decisions/20260421-sqlite-per-zone-journal.html">20260421-sqlite-per-zone-journal.md</a> for the detailed design.</p>
 </section>
 <section id="deployment" class="level2">
 <h2 class="anchored" data-anchor-id="deployment">Deployment</h2>
@@ -403,7 +403,7 @@ client (Godot) — receives desync index URL on join</code></pre>
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>Architecture, Zone, FabricZone, Hilbert, Entity, Persistence, WebTransport, ReBAC, casync</li>
+<li>Architecture, Zone, FabricZone, Hilbert, Entity, Persistence, WebTransport, ReBAC, casync, 20260421-multiplayer-fabric-zone-architecture</li>
 </ul>
 
 

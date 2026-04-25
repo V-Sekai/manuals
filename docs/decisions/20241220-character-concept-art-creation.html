@@ -329,7 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
   <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
-  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</a>
+  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a>
   <ul class="collapse">
   <li><a href="#easy-diffusion-setup" id="toc-easy-diffusion-setup" class="nav-link" data-scroll-target="#easy-diffusion-setup">1. Easy Diffusion Setup</a></li>
   <li><a href="#optimized-prompting-in-easy-diffusion" id="toc-optimized-prompting-in-easy-diffusion" class="nav-link" data-scroll-target="#optimized-prompting-in-easy-diffusion">2. Optimized Prompting in Easy Diffusion</a></li>
@@ -370,8 +370,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
 <p>Generating high-quality, 3D-ready concept art often requires significant artistic skill and time. While AI art generators like Stable Diffusion, particularly with the FLUX model, can expedite this process, setting it up and ensuring the generated art is compatible with 3D modeling tools requires technical expertise and careful optimization. This proposal aims to simplify this process further by incorporating readily available Windows tools.</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
 <p>This proposal outlines a workflow using Easy Diffusion for generating concept art, Windows 11 tools for image editing, and Shoebox for sprite creation, ultimately optimizing the process for 3D character creation in V-Sekai.</p>
 <section id="easy-diffusion-setup" class="level3">
 <h3 class="anchored" data-anchor-id="easy-diffusion-setup">1. Easy Diffusion Setup</h3>
@@ -396,18 +396,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="image-editing-with-krita" class="level3">
 <h3 class="anchored" data-anchor-id="image-editing-with-krita">3. Image Editing with Krita</h3>
 <ul>
-<li><strong>Background Removal:</strong> Use Krita’s Magic Wand tool to select the main part of the image (the character). Then, inverse the selection and delete the rest, isolating the character from the generated image. This creates a transparent background, crucial for 3D model creation.</li>
+<li>Background Removal: Use Krita’s Magic Wand tool to select the main part of the image (the character). Then, inverse the selection and delete the rest, isolating the character from the generated image. This creates a transparent background, crucial for 3D model creation.</li>
 </ul>
 <p><strong>Caution:</strong> Do not feather the edges because it corrupts the background removal algorithm.</p>
 <ul>
-<li><p><strong>Face Erasure:</strong> Use Krita’s brush tools to carefully erase the eyebrows, nose, and mouth. You can use a combination of the Eraser tool and the Brush tool with a skin-tone color to blend seamlessly.</p>
+<li><p>Face Erasure: Use Krita’s brush tools to carefully erase the eyebrows, nose, and mouth. You can use a combination of the Eraser tool and the Brush tool with a skin-tone color to blend seamlessly.</p>
 <p><strong>Reasoning for Face Erasure:</strong></p>
 <ul>
-<li><strong>Focus on Form:</strong> It helps emphasize the character’s overall shape, silhouette, and clothing design without getting distracted by facial features.</li>
-<li><strong>Flexibility for Later:</strong> It allows for more freedom when creating the actual face in the 3D modeling stage, providing a blank canvas for the artist.</li>
-<li><strong>Avoiding Uncanny Valley:</strong> Sometimes AI-generated faces can fall into the “uncanny valley,” appearing slightly off-putting. Erasing the face avoids this issue.</li>
+<li>Focus on Form: It helps emphasize the character’s overall shape, silhouette, and clothing design without getting distracted by facial features.</li>
+<li>Flexibility for Later: It allows for more freedom when creating the actual face in the 3D modeling stage, providing a blank canvas for the artist.</li>
+<li>Avoiding Uncanny Valley: Sometimes AI-generated faces can fall into the “uncanny valley,” appearing slightly off-putting. Erasing the face avoids this issue.</li>
 </ul></li>
-<li><p><strong>Refinement (Optional):</strong> Utilize other tools in Krita, like the selection tools and eraser, for further refinement if needed.</p></li>
+<li><p>Refinement (Optional): Utilize other tools in Krita, like the selection tools and eraser, for further refinement if needed.</p></li>
 </ul>
 </section>
 <section id="sprite-creation-with-shoebox" class="level3">
@@ -487,38 +487,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p><strong>Important Notes for Palm and A-Pose:</strong></p>
 <ul>
-<li><strong>Prompt Engineering:</strong> Carefully craft your prompts in Easy Diffusion to get the desired A-pose and hand orientation. Experiment with different keywords and phrases.</li>
-<li><strong>Iteration:</strong> You might need to generate multiple images and refine them in Krita until you achieve a perfect A-pose with well-defined palms and fingers.</li>
-<li><strong>Shoebox Settings:</strong> Explore Shoebox’s settings to fine-tune sprite generation and ensure it preserves the A-pose and hand details.</li>
-<li><strong>Alternative Tools:</strong> If Shoebox doesn’t meet your needs, consider other sprite generation or 3D modeling tools that might offer more control over rigging and posing.</li>
+<li>Prompt Engineering: Carefully craft your prompts in Easy Diffusion to get the desired A-pose and hand orientation. Experiment with different keywords and phrases.</li>
+<li>Iteration: You might need to generate multiple images and refine them in Krita until you achieve a perfect A-pose with well-defined palms and fingers.</li>
+<li>Shoebox Settings: Explore Shoebox’s settings to fine-tune sprite generation and ensure it preserves the A-pose and hand details.</li>
+<li>Alternative Tools: If Shoebox doesn’t meet your needs, consider other sprite generation or 3D modeling tools that might offer more control over rigging and posing.</li>
 </ul>
 </section>
 <section id="the-benefits" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
 <ul>
-<li><strong>Simplified Workflow:</strong> Streamlines concept art and sprite creation using accessible tools.</li>
-<li><strong>Reduced Manual Effort:</strong> Minimizes image editing and sprite creation time.</li>
-<li><strong>Faster Iteration:</strong> Accelerates character design exploration.</li>
-<li><strong>Standardized Output:</strong> Maintains consistency in character presentation.</li>
-<li><strong>Accessibility:</strong> Empowers users with varying artistic skills to contribute.</li>
-<li><strong>Cost-effective:</strong> Leverages free tools readily available on Windows 11.</li>
+<li>Simplified Workflow: Streamlines concept art and sprite creation using accessible tools.</li>
+<li>Reduced Manual Effort: Minimizes image editing and sprite creation time.</li>
+<li>Faster Iteration: Accelerates character design exploration.</li>
+<li>Standardized Output: Maintains consistency in character presentation.</li>
+<li>Accessibility: Empowers users with varying artistic skills to contribute.</li>
+<li>Cost-effective: Leverages free tools readily available on Windows 11.</li>
 </ul>
 </section>
 <section id="the-downsides" class="level2">
 <h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
 <ul>
-<li><strong>FLUX.1 Style:</strong> Inherits the distinctive style of the FLUX.1 model.</li>
-<li><strong>Shoebox Limitations:</strong> May require manual adjustments for complex sprites.</li>
-<li><strong>TRELLIS Limitations (Optional):</strong> Complex elements may still require manual 3D refinement.</li>
-<li><strong>WSL2 Setup (Optional):</strong> Requires users to install and configure WSL2 for TRELLIS.</li>
+<li>FLUX.1 Style: Inherits the distinctive style of the FLUX.1 model.</li>
+<li>Shoebox Limitations: May require manual adjustments for complex sprites.</li>
+<li>TRELLIS Limitations (Optional): Complex elements may still require manual 3D refinement.</li>
+<li>WSL2 Setup (Optional): Requires users to install and configure WSL2 for TRELLIS.</li>
 </ul>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
 <ul>
-<li><strong>Manual creation of concept art:</strong> Offers greater control but is time-consuming.</li>
-<li><strong>Using alternative AI models:</strong> Other models may not be as compatible with TRELLIS or as user-friendly.</li>
-<li><strong>Dedicated Sprite Editors:</strong> Can be more powerful but less accessible than Shoebox.</li>
+<li>Manual creation of concept art: Offers greater control but is time-consuming.</li>
+<li>Using alternative AI models: Other models may not be as compatible with TRELLIS or as user-friendly.</li>
+<li>Dedicated Sprite Editors: Can be more powerful but less accessible than Shoebox.</li>
 </ul>
 </section>
 <section id="the-infrequent-use-case" class="level2">
@@ -543,7 +543,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>V-Sekai</li>
+<li>V-Sekai, 20241220-character-concept-art-creation</li>
 <li>AI Art Generation</li>
 <li>Character Design</li>
 <li>FLUX.1</li>

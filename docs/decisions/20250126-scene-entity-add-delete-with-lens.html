@@ -329,7 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#what-is-the-context-of-the-proposal" id="toc-what-is-the-context-of-the-proposal" class="nav-link" data-scroll-target="#what-is-the-context-of-the-proposal">What is the context of the proposal?</a></li>
   <li><a href="#what-is-the-problem-being-solved" id="toc-what-is-the-problem-being-solved" class="nav-link" data-scroll-target="#what-is-the-problem-being-solved">What is the problem being solved?</a></li>
-  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</a></li>
+  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a></li>
   <li><a href="#what-are-the-benefits-of-the-proposal" id="toc-what-are-the-benefits-of-the-proposal" class="nav-link" data-scroll-target="#what-are-the-benefits-of-the-proposal">What are the benefits of the proposal?</a></li>
   <li><a href="#what-are-the-downsides-of-the-proposal" id="toc-what-are-the-downsides-of-the-proposal" class="nav-link" data-scroll-target="#what-are-the-downsides-of-the-proposal">What are the downsides of the proposal?</a></li>
   <li><a href="#what-are-the-alternative-proposals" id="toc-what-are-the-alternative-proposals" class="nav-link" data-scroll-target="#what-are-the-alternative-proposals">What are the alternative proposals?</a></li>
@@ -346,6 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#quest-3" id="toc-quest-3" class="nav-link" data-scroll-target="#quest-3">Quest 3</a></li>
   <li><a href="#valve-index-controller" id="toc-valve-index-controller" class="nav-link" data-scroll-target="#valve-index-controller">Valve Index Controller</a></li>
   </ul></li>
+  <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags">Tags</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20250126-scene-entity-add-delete-with-lens.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -367,8 +368,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="what-is-the-problem-being-solved">What is the problem being solved?</h2>
 <p>We need a more intuitive, integrated approach to placing, selecting, removing, and inspecting scene objects. Current methods lack interactive feedback, real-time previews, or a user-friendly overlay for metadata.</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
 <p>Instead of a lens, we generate an overlay using the primitive outline. The multi tool like Half-Life: Alyx tool’s interface surfaces entity details as a holographic overlay. Contributors can “grip” to add objects, “trigger” to open extended metadata, or “joystick” to vote.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"scene_entities"</span><span class="fu">:</span> <span class="ot">[</span></span>
@@ -466,75 +467,81 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="mouse-keyboard" class="level3">
 <h3 class="anchored" data-anchor-id="mouse-keyboard">Mouse &amp; Keyboard</h3>
 <ul>
-<li><strong>Left-click</strong>: Adds or selects entities.</li>
-<li><strong>Right-click</strong>: Opens the context menu for metadata access.</li>
-<li><strong>Keyboard Shortcuts</strong>:
+<li>Left-click: Adds or selects entities.</li>
+<li>Right-click: Opens the context menu for metadata access.</li>
+<li>Keyboard Shortcuts:
 <ul>
-<li><strong>Delete Key</strong>: Removes the selected entity.</li>
-<li><strong>M Key</strong>: Toggles metadata visibility.</li>
-<li><strong>S Key</strong>: Saves the current state.</li>
+<li>Delete Key: Removes the selected entity.</li>
+<li>M Key: Toggles metadata visibility.</li>
+<li>S Key: Saves the current state.</li>
 </ul></li>
 </ul>
 </section>
 <section id="steam-deck" class="level3">
 <h3 class="anchored" data-anchor-id="steam-deck">Steam Deck</h3>
 <ul>
-<li><strong>Joystick</strong>: Accesses radial menu for quick actions.</li>
-<li><strong>Grip Button</strong>: Adds a selected entity.</li>
-<li><strong>Trigger Button</strong>: Opens extended metadata for the selected entity.</li>
-<li><strong>A Button</strong>: Deletes the selected entity.</li>
-<li><strong>B Button</strong>: Saves the current inventory.</li>
-<li><strong>X Button</strong>: Raises a concern about the entity.</li>
-<li><strong>Y Button</strong>: Hides the overlay interface.</li>
-<li><strong>Touchpad Gestures</strong>:
+<li>Joystick: Accesses radial menu for quick actions.</li>
+<li>Grip Button: Adds a selected entity.</li>
+<li>Trigger Button: Opens extended metadata for the selected entity.</li>
+<li>A Button: Deletes the selected entity.</li>
+<li>B Button: Saves the current inventory.</li>
+<li>X Button: Raises a concern about the entity.</li>
+<li>Y Button: Hides the overlay interface.</li>
+<li>Touchpad Gestures:
 <ul>
-<li><strong>Swipe</strong>: Rotates entities.</li>
-<li><strong>Pinch</strong>: Scales entities.</li>
+<li>Swipe: Rotates entities.</li>
+<li>Pinch: Scales entities.</li>
 </ul></li>
 </ul>
 </section>
 <section id="quest-3" class="level3">
 <h3 class="anchored" data-anchor-id="quest-3">Quest 3</h3>
 <ul>
-<li><strong>Joystick</strong>: Accesses radial menu for quick actions.</li>
-<li><strong>Grab Gesture</strong>: Adds or selects entities.</li>
-<li><strong>Trigger Press</strong>: Opens extended metadata for the selected entity.</li>
-<li><strong>Grip Press</strong>: Deletes the selected entity.</li>
-<li><strong>Thumbstick</strong>: Navigates the overlay interface.</li>
-<li><strong>Side Buttons</strong>:
+<li>Joystick: Accesses radial menu for quick actions.</li>
+<li>Grab Gesture: Adds or selects entities.</li>
+<li>Trigger Press: Opens extended metadata for the selected entity.</li>
+<li>Grip Press: Deletes the selected entity.</li>
+<li>Thumbstick: Navigates the overlay interface.</li>
+<li>Side Buttons:
 <ul>
-<li><strong>A Button</strong>: Saves the current inventory.</li>
-<li><strong>B Button</strong>: Raises a concern about the entity.</li>
+<li>A Button: Saves the current inventory.</li>
+<li>B Button: Raises a concern about the entity.</li>
 </ul></li>
-<li><strong>Finger Gestures</strong>:
+<li>Finger Gestures:
 <ul>
-<li><strong>Swipe Up/Down</strong>: Rotates entities.</li>
-<li><strong>Pinch Open/Close</strong>: Scales entities.</li>
+<li>Swipe Up/Down: Rotates entities.</li>
+<li>Pinch Open/Close: Scales entities.</li>
 </ul></li>
 </ul>
 </section>
 <section id="valve-index-controller" class="level3">
 <h3 class="anchored" data-anchor-id="valve-index-controller">Valve Index Controller</h3>
 <ul>
-<li><strong>Joystick</strong>: Accesses radial menu for quick actions.</li>
-<li><strong>Grab Gesture</strong>: Adds or selects entities.</li>
-<li><strong>Trigger Press</strong>: Opens extended metadata for the selected entity.</li>
-<li><strong>Grip Press</strong>: Deletes the selected entity.</li>
-<li><strong>Thumbstick</strong>: Navigates the overlay interface.</li>
-<li><strong>Side Buttons</strong>:
+<li>Joystick: Accesses radial menu for quick actions.</li>
+<li>Grab Gesture: Adds or selects entities.</li>
+<li>Trigger Press: Opens extended metadata for the selected entity.</li>
+<li>Grip Press: Deletes the selected entity.</li>
+<li>Thumbstick: Navigates the overlay interface.</li>
+<li>Side Buttons:
 <ul>
-<li><strong>A Button</strong>: Saves the current inventory.</li>
-<li><strong>B Button</strong>: Raises a concern about the entity.</li>
+<li>A Button: Saves the current inventory.</li>
+<li>B Button: Raises a concern about the entity.</li>
 </ul></li>
-<li><strong>Finger Gestures</strong>:
+<li>Finger Gestures:
 <ul>
-<li><strong>Swipe Up/Down</strong>: Rotates entities.</li>
-<li><strong>Pinch Open/Close</strong>: Scales entities.</li>
+<li>Swipe Up/Down: Rotates entities.</li>
+<li>Pinch Open/Close: Scales entities.</li>
 </ul></li>
+</ul>
+</section>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>20250126-scene-entity-add-delete-with-lens</li>
 </ul>
 
 
-</section>
 </section>
 </section>
 

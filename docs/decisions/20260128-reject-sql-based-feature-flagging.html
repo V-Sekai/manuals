@@ -294,7 +294,7 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
   <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
-  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</a></li>
+  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a></li>
   <li><a href="#the-benefits" id="toc-the-benefits" class="nav-link" data-scroll-target="#the-benefits">The Benefits</a></li>
   <li><a href="#the-downsides" id="toc-the-downsides" class="nav-link" data-scroll-target="#the-downsides">The Downsides</a></li>
   <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
@@ -328,8 +328,8 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
 <p>The development team needed a mechanism to manage feature toggles and configuration changes that would support: - Gradual rollout of new features - A/B testing of different implementations - Runtime configuration changes without service downtime - Managing separate docker container deployments</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
 <p>The proposed SQL-based feature flagging system would: - Store feature flags and configuration values in database tables - Provide runtime querying of flag states - Allow dynamic enabling/disabling of features without code changes - Support per-user or per-environment flag overrides</p>
 <p>However, this approach was rejected in favor of simpler alternatives.</p>
 </section>
@@ -339,7 +339,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="the-downsides" class="level2">
 <h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p><strong>SQL-Based Feature Flagging Issues:</strong> - <strong>Overengineered</strong>: Complex database schema and query logic for simple configuration needs - <strong>Error-prone</strong>: Configuration stored in database tables is harder to version control and audit - <strong>Docker Limitations</strong>: Cannot control separate container execution (either run Next.js container or don’t) - <strong>Caching Issues</strong>: Runtime flag changes don’t affect code paths that branch during application startup - <strong>Maintenance Burden</strong>: Additional complexity for operations and debugging</p>
+<p><strong>SQL-Based Feature Flagging Issues:</strong> - Overengineered: Complex database schema and query logic for simple configuration needs - Error-prone: Configuration stored in database tables is harder to version control and audit - Docker Limitations: Cannot control separate container execution (either run Next.js container or don’t) - Caching Issues: Runtime flag changes don’t affect code paths that branch during application startup - Maintenance Burden: Additional complexity for operations and debugging</p>
 <p><strong>Runtime Configuration Problems:</strong> - Some application behavior is determined at startup and cannot be changed dynamically - Feature flags don’t solve the fundamental problem of maintaining parallel implementations - Introduces potential for inconsistent application state during flag transitions</p>
 </section>
 <section id="the-road-not-taken" class="level2">
@@ -369,7 +369,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>Configuration, Feature-Flags, Architecture, Elixir, Database, Operations</li>
+<li>Configuration, Feature-Flags, Architecture, Elixir, Database, Operations, 20260128-reject-sql-based-feature-flagging</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">

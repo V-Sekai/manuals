@@ -294,7 +294,7 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
   <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
-  <li><a href="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" id="toc-describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="nav-link" data-scroll-target="#describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</a></li>
+  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a></li>
   <li><a href="#the-benefits" id="toc-the-benefits" class="nav-link" data-scroll-target="#the-benefits">The Benefits</a></li>
   <li><a href="#the-downsides" id="toc-the-downsides" class="nav-link" data-scroll-target="#the-downsides">The Downsides</a></li>
   <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
@@ -325,8 +325,8 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
 <p>Game asset delivery has no standard delta-sync mechanism. OS image distribution solved this problem years ago with content-defined chunking and SHA-256-addressed stores. The game-engine integration of that approach has never been built.</p>
 </section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
 <p>Assets are baked into a <code>.caibx</code> index file and a set of chunks stored in an S3-compatible object store. The index is a binary structure containing a <code>FormatIndex</code> header followed by a <code>FormatTable</code> of <code>IndexChunk</code> entries. Each entry holds a 32-byte SHA-512/256 chunk ID, a start offset, and a size. Chunk boundaries are determined by a rolling hash (SipHash over a 48-byte window) with a target size of 64 KB and a range of 16 KB to 256 KB.</p>
 <p>The chunk server (<code>multiplayer-fabric-desync</code>) serves chunks over HTTP. A client fetches a chunk with <code>GET /chunks/&lt;sha256_hex&gt;</code> and receives the zstd-compressed chunk body. The chunk server reads from an S3-compatible backend; in the reference deployment this is versitygw, an S3-compatible gateway over a local POSIX filesystem.</p>
 <p>The delivery flow for a zone asset is:</p>
@@ -370,7 +370,7 @@ client receives desync_index_url → fetches .caibx index → fetches only missi
 <section id="tags" class="level2">
 <h2 class="anchored" data-anchor-id="tags">Tags</h2>
 <ul>
-<li>casync, desync, Asset, Delivery, ChunkServer, S3, CAIBX, Zone</li>
+<li>casync, desync, Asset, Delivery, ChunkServer, S3, CAIBX, Zone, 20260421-content-addressed-asset-delivery</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
