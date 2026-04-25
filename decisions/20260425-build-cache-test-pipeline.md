@@ -121,9 +121,16 @@ Branch:     multiplayer-fabric
 Settings → Branches → Add rule:
   Branch name pattern: multiplayer-fabric
   ✓ Require status checks to pass before merging
-    ✓ 🧪 Headless matrix / Phase 1 — single-client
-    ✓ 🧪 Headless matrix / Phase 2 — dual-client
+    ✓ 🧪 Headless / GO — Godot observer
+    ✓ 🧪 Headless / TO — Three.js observer
+    ✓ 🧪 Headless / GP — Godot player
+    ✓ 🧪 Headless / TP — Three.js player
+    ✓ 🧪 Headless / GO+TO — dual observer cross-check
 ```
+
+Five checks: four single-client (one per role) and the key dual-client
+cross-check. The remaining five dual-client pairs are informational — they
+run but do not block merge until all four single-client roles are green.
 
 ### CI artifact retention
 
