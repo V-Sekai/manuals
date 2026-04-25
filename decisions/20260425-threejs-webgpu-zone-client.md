@@ -157,17 +157,17 @@ for the client path.
 
 Two components can move into the browser without a Godot runtime:
 
-godot-sandbox runs GDScript as RISC-V ELF guests inside libriscv, a C++
-RISC-V interpreter. The compilation chain for the browser is:
+godot-sandbox runs GDScript as RISC-V ELF guests via libriscv. The ELF is
+compiled once and stored in the CDN. libriscv is the VM:
 
 ```
-GDScript → RISC-V ELF (compiled offline, stored in CDN)
-libriscv  → WASM (Emscripten; executes the ELF in the browser)
+GDScript  → RISC-V ELF   (compile once; CDN asset)
+libriscv  → WASM          (Emscripten; browser loads VM, feeds it the ELF)
 ```
 
-libriscv compiles to WASM; the browser loads `libriscv.wasm` and feeds it the
-same RISC-V ELF that runs in the native client. Entity scripts, jellyfish
-creation tools, and behaviour domains cross the boundary unchanged.
+No binary equivalence is required. `WasmEquiv.lean` proves `vm_deterministic`:
+the VM is a pure function, so the same ELF + same state always yields the
+same result on any host.
 
 taskweft standalone headers (`standalone/tw_planner.hpp`) are header-only C++20
 with no BEAM dependency and no libriscv layer — they compile directly to WASM
@@ -181,9 +181,12 @@ VR presence uses Three.js + WebXR Device API (`renderer.xr.enabled = true`,
 ## The Downsides
 
 Implementing CH_PLAYER datagrams in TypeScript to send entity input is a second
-scope of work; the initial Three.js client is observer-only. libriscv WASM compilation is untested in this project; the libriscv upstream
-targets Emscripten but the integration with godot-sandbox's guest ABI needs
-verification. taskweft standalone header WASM compilation is similarly untested.
+scope of work; the initial Three.js client is observer-only.
+
+The actual integration risk is the godot-sandbox guest ABI (syscall shim from
+RISC-V `ecall` to Emscripten host) and taskweft Emscripten build constraints.
+These are engineering work. `WasmEquiv.lean` proves `vm_deterministic` (the
+VM is a pure function); it does not prove the ABI shim is correct.
 
 The packet format is internal and could change without versioning. A format
 version byte in the first octet of CH_INTEREST would protect against silent
