@@ -1,6 +1,6 @@
 # Three.js WebGPU Client Against the Godot Zone Server
 
-- Status: accepted
+- Status: Superseded by [20260425-threejs-observer.md](20260425-threejs-observer.md) and [20260425-threejs-player.md](20260425-threejs-player.md)
 - Deciders: V-Sekai, fire
 - Tags: V-Sekai, Threejs, WebGPU, WebTransport, ZoneServer, Client, 20260425-threejs-webgpu-zone-client
 
