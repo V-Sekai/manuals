@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- **Status:** Superseded by [20231126-v-sekai-report.md](20231126-v-sekai-report.md)
-- **Deciders:** V-Sekai, fire, PLYSHKA🐧, SaracenOne
-- **Tags:** V-Sekai, Linux, Bug Fix, Godot Engine, User Support
+- Status: Superseded by [20231126-v-sekai-report.md](20231126-v-sekai-report.md)
+- Deciders: V-Sekai, fire, PLYSHKA🐧, SaracenOne
+- Tags: V-Sekai, Linux, Bug Fix, Godot Engine, User Support
 
 ## What is V-Sekai?
 

@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- **Status**: Rejected
-- **Deciders**: V-Sekai
-- **Tags**: V-Sekai, Elixir, Membrane Framework, Multiplayer Blender
+- Status: Rejected
+- Deciders: V-Sekai
+- Tags: V-Sekai, Elixir, Membrane Framework, Multiplayer Blender
 
 ## The Backdrop
 
@@ -27,28 +27,28 @@ This strategy leverages Elixir and the Membrane Framework's unique features, use
 
 Here are the key steps:
 
-- **Codebase**: Transition from Ubisoft's Mixer Broadcaster Code to Elixir & Membrane Framework Code, tracked in a version control system.
-- **Dependencies**: Declare and isolate dependencies explicitly, avoiding reliance on system-wide packages.
+- Codebase: Transition from Ubisoft's Mixer Broadcaster Code to Elixir & Membrane Framework Code, tracked in a version control system.
+- Dependencies: Declare and isolate dependencies explicitly, avoiding reliance on system-wide packages.
 
-- **Config**: Store configuration (including GitHub OAuth 2.0 Login credentials) in the environment, not in the code.
+- Config: Store configuration (including GitHub OAuth 2.0 Login credentials) in the environment, not in the code.
 
-- **Backing Services**: Replace in-memory data persistence with Khepri Database Library, attached as a backing service.
+- Backing Services: Replace in-memory data persistence with Khepri Database Library, attached as a backing service.
 
-- **Build, Release, Run**: Strictly separate these stages, facilitated by the Elixir & Membrane Framework Code.
+- Build, Release, Run: Strictly separate these stages, facilitated by the Elixir & Membrane Framework Code.
 
-- **Processes**: Execute application as one or more stateless processes, storing needed state in the Khepri database.
+- Processes: Execute application as one or more stateless processes, storing needed state in the Khepri database.
 
-- **Port Binding**: Export services via port binding, making the application self-contained.
+- Port Binding: Export services via port binding, making the application self-contained.
 
-- **Concurrency**: Scale out the application via the process model, allowing for handling increased load.
+- Concurrency: Scale out the application via the process model, allowing for handling increased load.
 
-- **Disposability**: Aim for fast startup and graceful shutdown to maximize robustness.
+- Disposability: Aim for fast startup and graceful shutdown to maximize robustness.
 
-- **Dev/Prod Parity**: Keep development, staging, and production environments as similar as possible.
+- Dev/Prod Parity: Keep development, staging, and production environments as similar as possible.
 
-- **Logs**: Treat logs as event streams, handled by the executing environment.
+- Logs: Treat logs as event streams, handled by the executing environment.
 
-- **Admin Processes**: Run any needed one-off administrative tasks in an identical environment as the regular long-running processes of the app.
+- Admin Processes: Run any needed one-off administrative tasks in an identical environment as the regular long-running processes of the app.
 
 ## The Upside
 

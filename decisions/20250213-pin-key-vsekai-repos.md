@@ -31,14 +31,14 @@ Pin the following repositories to the V-Sekai organization profile:
 
 ## Benefits
 
-- **Faster Access**: Reduces time to locate critical projects.
-- **Community Clarity**: Signals which repos are actively maintained.
-- **First-Time User Experience**: Simplifies onboarding for contributors.
+- Faster Access: Reduces time to locate critical projects.
+- Community Clarity: Signals which repos are actively maintained.
+- First-Time User Experience: Simplifies onboarding for contributors.
 
 ## Risks and Limitations
 
-- **Stale Pins**: Requires periodic updates if priorities shift.
-- **Limited Slots**: Only six pins allowed; strategic selection needed.
+- Stale Pins: Requires periodic updates if priorities shift.
+- Limited Slots: Only six pins allowed; strategic selection needed.
 
 ## Alternatives Considered
 

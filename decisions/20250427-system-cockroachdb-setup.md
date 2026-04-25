@@ -102,22 +102,22 @@ sudo systemctl status cockroachdb.service
 
 ## The Benefits
 
-- **Reliability:** Automated startup, restarts, and management via systemd.
-- **Security:** Enforces secure cluster communication using TLS certificates.
-- **Consistency:** Standardized setup across different machines.
-- **Manageability:** Easy to start, stop, check status using `systemctl`.
+- Reliability: Automated startup, restarts, and management via systemd.
+- Security: Enforces secure cluster communication using TLS certificates.
+- Consistency: Standardized setup across different machines.
+- Manageability: Easy to start, stop, check status using `systemctl`.
 
 ## The Downsides
 
-- **Initial Complexity:** Certificate generation and systemd unit file creation require careful setup.
-- **Systemd Dependency:** Relies on Linux distributions using systemd.
-- **Configuration Management:** Cluster join info and other flags need proper management.
+- Initial Complexity: Certificate generation and systemd unit file creation require careful setup.
+- Systemd Dependency: Relies on Linux distributions using systemd.
+- Configuration Management: Cluster join info and other flags need proper management.
 
 ## The Road Not Taken
 
-- **Manual Execution:** Running `cockroach start` manually in `screen` or `tmux` lacks robustness.
-- **Docker/Kubernetes:** While viable (#attachment), direct systemd integration is chosen for simplicity in specific VM-based scenarios.
-- **Insecure Mode:** Running without TLS certificates is not suitable for production or sensitive data.
+- Manual Execution: Running `cockroach start` manually in `screen` or `tmux` lacks robustness.
+- Docker/Kubernetes: While viable (#attachment), direct systemd integration is chosen for simplicity in specific VM-based scenarios.
+- Insecure Mode: Running without TLS certificates is not suitable for production or sensitive data.
 
 ## The Infrequent Use Case
 

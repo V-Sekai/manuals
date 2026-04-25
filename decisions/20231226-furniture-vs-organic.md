@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- **Status:** Proposed
-- **Deciders:** V-Sekai, fire, msstabby
-- **Tags:** V-Sekai, VR, Godot Engine, 3D Modeling, Performance Optimization
+- Status: Proposed
+- Deciders: V-Sekai, fire, msstabby
+- Tags: V-Sekai, VR, Godot Engine, 3D Modeling, Performance Optimization
 
 ## Context
 

@@ -31,8 +31,8 @@ Creator behavior code runs inside `godot-sandbox` (RISC-V ELF). The sandbox
 provides memory isolation and a syscall interface. ReBAC gates every capability
 the sandbox can request at runtime. The combination gives:
 
-- **Memory isolation** — sandbox fault cannot corrupt zone state
-- **Semantic isolation** — the kernel can only exercise capabilities the ReBAC
+- Memory isolation: — sandbox fault cannot corrupt zone state
+- Semantic isolation: — the kernel can only exercise capabilities the ReBAC
   graph permits for the entity it is animating
 
 ## How it works

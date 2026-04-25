@@ -14,15 +14,15 @@ Develop a series of small, efficient tools that can connect remotely to the V-Se
 
 ## The Benefits
 
-- **Enhanced Accessibility**: Developers can use tools within a VR environment without the need for full VR tool conversion, combining comfort with functionality.
-- **Real-Time Interaction**: Enables immediate feedback and interaction with the game world, enhancing development speed and efficiency.
-- **Innovative Approach**: By using a hybrid approach, V-Sekai remains at the cutting edge, integrating new technologies while maintaining usability.
+- Enhanced Accessibility: Developers can use tools within a VR environment without the need for full VR tool conversion, combining comfort with functionality.
+- Real-Time Interaction: Enables immediate feedback and interaction with the game world, enhancing development speed and efficiency.
+- Innovative Approach: By using a hybrid approach, V-Sekai remains at the cutting edge, integrating new technologies while maintaining usability.
 
 ## The Downsides
 
-- **Technical Challenges**: Creating tools that function seamlessly between 2D and VR environments is complex and may require significant resources.
-- **User Adaptation**: There might be a learning curve as developers adjust to using a 2D interface in a VR context.
-- **Hardware Limitations**: The performance and functionality are still bound by the limitations of existing VR hardware like the Meta Quest 3.
+- Technical Challenges: Creating tools that function seamlessly between 2D and VR environments is complex and may require significant resources.
+- User Adaptation: There might be a learning curve as developers adjust to using a 2D interface in a VR context.
+- Hardware Limitations: The performance and functionality are still bound by the limitations of existing VR hardware like the Meta Quest 3.
 
 ## The Road Not Taken
 

@@ -38,14 +38,14 @@ The proposed setup involves several components to ensure a stable and high-perfo
 
 ## The Benefits
 
-- **Reliability**: Wired connections reduce the risk of connectivity issues during live demonstrations.
-- **Performance**: Direct network connections and optimized settings ensure smooth operation of VR applications.
-- **Professional Presentation**: A stable setup reflects well on the Godot Engine project and its capabilities in VR.
+- Reliability: Wired connections reduce the risk of connectivity issues during live demonstrations.
+- Performance: Direct network connections and optimized settings ensure smooth operation of VR applications.
+- Professional Presentation: A stable setup reflects well on the Godot Engine project and its capabilities in VR.
 
 ## The Downsides
 
-- **Complexity**: The setup requires careful configuration and might be daunting for less technical users.
-- **Equipment Dependency**: Relies on specific hardware and software that may not be readily available at all venues.
+- Complexity: The setup requires careful configuration and might be daunting for less technical users.
+- Equipment Dependency: Relies on specific hardware and software that may not be readily available at all venues.
 
 ## The Road Not Taken
 

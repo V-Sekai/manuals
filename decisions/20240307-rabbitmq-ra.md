@@ -14,14 +14,14 @@ Implement Ra, a Raft implementation by Team RabbitMQ, in any Erlang or Elixir pr
 
 ## Benefits
 
-- **Fault Tolerance**: Ra ensures data consistency via leader election and log replication.
-- **Efficiency**: Supports log compaction and snapshot installation.
-- **Scalability**: Suitable for large-scale applications like V-Sekai.
+- Fault Tolerance: Ra ensures data consistency via leader election and log replication.
+- Efficiency: Supports log compaction and snapshot installation.
+- Scalability: Suitable for large-scale applications like V-Sekai.
 
 ## Downsides
 
-- **Learning Curve**: Developers need to learn Ra and the Raft consensus algorithm.
-- **Dependency**: Ra could increase project complexity.
+- Learning Curve: Developers need to learn Ra and the Raft consensus algorithm.
+- Dependency: Ra could increase project complexity.
 
 ## Alternatives
 

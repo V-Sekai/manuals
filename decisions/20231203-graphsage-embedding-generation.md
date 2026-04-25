@@ -34,7 +34,7 @@ Understanding the GraphSAGE algorithm can be challenging due to its complex natu
 
 ### Output
 
-- **Vector Representations zv∀v∈Vzv​∀v∈V**: The resulting vector representations for all nodes in the graph.
+- Vector Representations zv∀v∈Vzv​∀v∈V: The resulting vector representations for all nodes in the graph.
 
 ### Steps
 
@@ -54,9 +54,9 @@ Understanding the GraphSAGE algorithm can be challenging due to its complex natu
 
 ### Key Concepts
 
-- **Inductive Learning**: Unlike traditional methods that require retraining for new nodes, this algorithm can generate embeddings for unseen nodes.
-- **Flexibility**: The algorithm can be adapted to different types of graphs and feature sets.
-- **Scalability**: It's designed to work efficiently on large graphs.
+- Inductive Learning: Unlike traditional methods that require retraining for new nodes, this algorithm can generate embeddings for unseen nodes.
+- Flexibility: The algorithm can be adapted to different types of graphs and feature sets.
+- Scalability: It's designed to work efficiently on large graphs.
 
 Understanding this algorithm helps in applying it to real-world graph problems, such as social network analysis, recommendation systems, and more, where the structure and features of the graph can be leveraged to learn informative node embeddings.
 

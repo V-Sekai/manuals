@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- **Status:** Proposed
-- **Deciders:** V-Sekai
-- **Tags:** V-Sekai, Game Development, Skill Simulation
+- Status: Proposed
+- Deciders: V-Sekai
+- Tags: V-Sekai, Game Development, Skill Simulation
 
 ## The Backdrop
 

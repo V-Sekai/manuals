@@ -19,14 +19,14 @@ To mitigate the overheating issue, we propose using Anwave to power limit the GP
 
 ## The Benefits
 
-- **Reduced Overheating**: By limiting the power consumption of the GPU, the overall heat generated will be reduced.
-- **Improved Stability**: Lower temperatures can lead to more stable system performance.
-- **Extended Hardware Lifespan**: Reducing thermal stress can prolong the life of the GPU and other components.
+- Reduced Overheating: By limiting the power consumption of the GPU, the overall heat generated will be reduced.
+- Improved Stability: Lower temperatures can lead to more stable system performance.
+- Extended Hardware Lifespan: Reducing thermal stress can prolong the life of the GPU and other components.
 
 ## The Downsides
 
-- **Performance Impact**: Limiting the power may reduce the performance of the GPU, affecting tasks that require high computational power.
-- **Complexity**: Users need to be familiar with tools like Anwave and comfortable making changes to power settings.
+- Performance Impact: Limiting the power may reduce the performance of the GPU, affecting tasks that require high computational power.
+- Complexity: Users need to be familiar with tools like Anwave and comfortable making changes to power settings.
 
 ## The Road Not Taken
 

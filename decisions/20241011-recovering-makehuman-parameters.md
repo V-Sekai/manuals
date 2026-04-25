@@ -16,38 +16,38 @@ We propose a system that utilizes depth map comparisons between rendered images 
 
 #### Key Objectives
 
-- **Depth Map Generation**: Generate depth maps from both anime images and Godot-rendered characters.
-- **Optimization**: Employ machine learning techniques to minimize the differences between these depth maps, facilitating accurate parameter recovery.
-- **Cost Efficiency**: Leverage open-source tools to maintain budget-friendliness.
+- Depth Map Generation: Generate depth maps from both anime images and Godot-rendered characters.
+- Optimization: Employ machine learning techniques to minimize the differences between these depth maps, facilitating accurate parameter recovery.
+- Cost Efficiency: Leverage open-source tools to maintain budget-friendliness.
 
 #### Scope
 
-- **Input Data**: Anime images with manually labeled MakeHuman parameters for initial calibration.
-- **Depth Comparison**: Analyze the discrepancies between the depth maps produced by Godot and those derived from anime images.
-- **Optimization Process**: Utilize a search algorithm (e.g., genetic algorithm or bayesian optimization) to iteratively adjust and determine optimal MakeHuman parameters.
+- Input Data: Anime images with manually labeled MakeHuman parameters for initial calibration.
+- Depth Comparison: Analyze the discrepancies between the depth maps produced by Godot and those derived from anime images.
+- Optimization Process: Utilize a search algorithm (e.g., genetic algorithm or bayesian optimization) to iteratively adjust and determine optimal MakeHuman parameters.
 
 #### Work Breakdown
 
 1. **Data Collection**:
-   - **Task**: Manually label a small set of images with MakeHuman parameters.
-   - **Outcome**: Create a baseline dataset for initial optimization efforts.
+   - Task: Manually label a small set of images with MakeHuman parameters.
+   - Outcome: Create a baseline dataset for initial optimization efforts.
 
 2. **Godot Integration**:
-   - **Task**: Develop a script within Godot to render depth maps from configured MakeHuman models.
-   - **Outcome**: Prepare depth maps for subsequent comparison.
+   - Task: Develop a script within Godot to render depth maps from configured MakeHuman models.
+   - Outcome: Prepare depth maps for subsequent comparison.
 
 3. **Optimization Algorithm**:
-   - **Task**: Implement a cost-effective optimization algorithm using a suitable loss function (e.g., L2, Chamfer distance).
-   - **Outcome**: Establish a mechanism to identify the best matching MakeHuman parameters.
+   - Task: Implement a cost-effective optimization algorithm using a suitable loss function (e.g., L2, Chamfer distance).
+   - Outcome: Establish a mechanism to identify the best matching MakeHuman parameters.
 
 4. **Testing and Refinement**:
-   - **Task**: Systematically compare generated depth maps and refine the algorithm to improve accuracy.
-   - **Timeline**:
-     - **Data Collection**: 1 week
-     - **Godot Integration**: 2 weeks
-     - **Optimization Model**: 3 weeks
-     - **Testing & Refinement**: 1 week
-     - **Total Duration**: 7 weeks
+   - Task: Systematically compare generated depth maps and refine the algorithm to improve accuracy.
+   - Timeline:
+     - Data Collection: 1 week
+     - Godot Integration: 2 weeks
+     - Optimization Model: 3 weeks
+     - Testing & Refinement: 1 week
+     - Total Duration: 7 weeks
 
 ## The Benefits
 
@@ -55,8 +55,8 @@ This streamlined, budget-conscious methodology promises significant enhancements
 
 ## The Downsides
 
-- **Limited Creativity**: Strict adherence to replicating existing images may limit creative modifications.
-- **Technical Complexity**: The integration of multiple advanced technologies (depth sensing, machine learning, and 3D rendering) requires high technical expertise.
+- Limited Creativity: Strict adherence to replicating existing images may limit creative modifications.
+- Technical Complexity: The integration of multiple advanced technologies (depth sensing, machine learning, and 3D rendering) requires high technical expertise.
 
 ## The Road Not Taken
 

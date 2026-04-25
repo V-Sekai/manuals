@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- **Status**: Proposed
-- **Deciders**: V-Sekai
-- **Tags**: V-Sekai, ai summarized
+- Status: Proposed
+- Deciders: V-Sekai
+- Tags: V-Sekai, ai summarized
 
 ## Context and Problem Statement
 

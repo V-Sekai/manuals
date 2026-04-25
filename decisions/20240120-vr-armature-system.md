@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- **Status:** Proposed
-- **Deciders:** V-Sekai Core Team
-- **Tags:** Virtual Reality, Rigging, Animation, IK Systems, Development
+- Status: Proposed
+- Deciders: V-Sekai Core Team
+- Tags: Virtual Reality, Rigging, Animation, IK Systems, Development
 
 ## Introduction
 

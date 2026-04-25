@@ -88,9 +88,9 @@ We welcome new contributors! We have a Discord group, a GitHub repository, and a
 
 **How will you attract your first 1000 users? Your first 1,000,000?**
 
-- **Initial Users:** We will leverage our existing contacts within the VR community to gain our first 50 users.
-- **Growth:** We will offer unique experiences not found on other platforms to attract more users.
-- **Scaling:** To reach thousands of users, we will host events and emphasize privacy and self-hosting capabilities.
+- Initial Users: We will leverage our existing contacts within the VR community to gain our first 50 users.
+- Growth: We will offer unique experiences not found on other platforms to attract more users.
+- Scaling: To reach thousands of users, we will host events and emphasize privacy and self-hosting capabilities.
 
 **First 2-week development milestone**
 
@@ -112,9 +112,9 @@ Godot Engine, k3s, Elixir, OAuth, CockroachDB, Nginx, Fedora, CentOS 8, Digital 
 
 **What challenges do you anticipate with this idea?**
 
-- **Design Challenges:** Most social VR applications are developed in Unity, which can present design challenges for our Godot Engine-based project.
-- **User Acquisition:** Social platforms are heavily influenced by the network effect, making user acquisition a challenge.
-- **User Retention:** VR applications tend to have lower user retention rates compared to traditional applications.
+- Design Challenges: Most social VR applications are developed in Unity, which can present design challenges for our Godot Engine-based project.
+- User Acquisition: Social platforms are heavily influenced by the network effect, making user acquisition a challenge.
+- User Retention: VR applications tend to have lower user retention rates compared to traditional applications.
 
 **Team Member Locations by Country**
 
@@ -122,17 +122,17 @@ Canada, United States, United Kingdom
 
 **Team Details**
 
-- **MMMaellon:** C++, Java, Python. Experience with Android and iOS frameworks. Design skills in motion graphics, VFX, and video editing. Background in mobile app development and currently pursuing a master's in computer science.
-- **Saracen:** C++, C, C#, Java, Python, GDScript, Android. Professional experience in mobile app development, self-taught in game mods, game engine architecture (including forks of Id Software GPL releases), contributed code to Godot Engine and other VR platforms, developed tools including Unity, Godot, and Blender plugins, and worked on reimplementing legacy game engines for modern platforms.
-- **Lyuma:** C++, Java, Python, Javascript, C#, Android, iOS. Expertise in backend, operations, and networking. 9 years of industry experience leading a team that developed VOIP and video implementation for an iOS and Android app with hundreds of millions of users. Experience includes backend architecture, scaling, operations, networking, stats, and monitoring.
-- **iFire:** C++. Familiar with Godot Engine and Unreal Engine. Professional game developer. Created a Blender to glTF2 pipeline for Godot Engine and coordinated an FBX pipeline. Shipped Offworld Industries’ Squad as a programmer, DevOps, and IT. Implemented an Unreal Engine touchscreen product demo using HTML5 and Blueprints.
+- MMMaellon: C++, Java, Python. Experience with Android and iOS frameworks. Design skills in motion graphics, VFX, and video editing. Background in mobile app development and currently pursuing a master's in computer science.
+- Saracen: C++, C, C#, Java, Python, GDScript, Android. Professional experience in mobile app development, self-taught in game mods, game engine architecture (including forks of Id Software GPL releases), contributed code to Godot Engine and other VR platforms, developed tools including Unity, Godot, and Blender plugins, and worked on reimplementing legacy game engines for modern platforms.
+- Lyuma: C++, Java, Python, Javascript, C#, Android, iOS. Expertise in backend, operations, and networking. 9 years of industry experience leading a team that developed VOIP and video implementation for an iOS and Android app with hundreds of millions of users. Experience includes backend architecture, scaling, operations, networking, stats, and monitoring.
+- iFire: C++. Familiar with Godot Engine and Unreal Engine. Professional game developer. Created a Blender to glTF2 pipeline for Godot Engine and coordinated an FBX pipeline. Shipped Offworld Industries’ Squad as a programmer, DevOps, and IT. Implemented an Unreal Engine touchscreen product demo using HTML5 and Blueprints.
 
 **Will all team members commit their full-time energy to this project during the 8 weeks of the program?**
 
-- **MMMaellon:** Making valuable individual contributions as needed, including a VR character movement system.
-- **Saracen:** Will be working full-time on the core client.
-- **Lyuma:** Will be working full-time on dev ops, operations, backend, and testing.
-- **iFire:** Heavily involved in the Godot Engine open-source community and dedicated part-time to this MVP project.
+- MMMaellon: Making valuable individual contributions as needed, including a VR character movement system.
+- Saracen: Will be working full-time on the core client.
+- Lyuma: Will be working full-time on dev ops, operations, backend, and testing.
+- iFire: Heavily involved in the Godot Engine open-source community and dedicated part-time to this MVP project.
 
 **How did you hear about the MVP Lab?**
 

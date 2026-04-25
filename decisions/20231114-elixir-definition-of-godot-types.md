@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- **Status**: Proposed
-- **Deciders**: V-Sekai Development Team
-- **Tags**: Godot Engine, Elixir, Type Definitions, V-Sekai
+- Status: Proposed
+- Deciders: V-Sekai Development Team
+- Tags: Godot Engine, Elixir, Type Definitions, V-Sekai
 
 ## The Backdrop
 

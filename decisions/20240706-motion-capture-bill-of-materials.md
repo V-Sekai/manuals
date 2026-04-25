@@ -28,15 +28,15 @@ Describe a streaming bill of materials setup for motion capture.
 
 ## The Benefits
 
-- **High-Quality Streaming:** The setup ensures high-resolution streaming with minimal latency.
-- **Accurate Motion Capture:** Multiple trackers provide precise motion capture for various body parts.
-- **Enhanced User Experience:** The combination of facial and motion trackers offers a more immersive VR experience.
+- High-Quality Streaming: The setup ensures high-resolution streaming with minimal latency.
+- Accurate Motion Capture: Multiple trackers provide precise motion capture for various body parts.
+- Enhanced User Experience: The combination of facial and motion trackers offers a more immersive VR experience.
 
 ## The Downsides
 
-- **Cost:** The setup involves high-end components, which can be expensive.
-- **Complexity:** Setting up and maintaining the system requires technical expertise.
-- **Space Requirements:** Adequate space is needed to use the motion capture system effectively.
+- Cost: The setup involves high-end components, which can be expensive.
+- Complexity: Setting up and maintaining the system requires technical expertise.
+- Space Requirements: Adequate space is needed to use the motion capture system effectively.
 
 ## The Road Not Taken
 

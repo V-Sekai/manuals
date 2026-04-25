@@ -57,7 +57,7 @@ Implementation details will be decided upon proposal acceptance.
 
 Options considered but discarded:
 
-- **Idle RPG Mechanic**: Removed due to potential decrease in active engagement from players.
+- Idle RPG Mechanic: Removed due to potential decrease in active engagement from players.
 
 ## If this enhancement will be used infrequently, can it be worked around with a few lines of script?
 

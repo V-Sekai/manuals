@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- **Status**: Proposed
-- **Deciders**: V-Sekai, Cthulhoo, fire
-- **Tags**: `V-Sekai`
+- Status: Proposed
+- Deciders: V-Sekai, Cthulhoo, fire
+- Tags: `V-Sekai`
 
 ## The Backdrop
 
@@ -62,9 +62,9 @@ Special considerations are given to individual preferences affecting decision ou
 
 ## Gameplay Mechanics
 
-- **Burnout Management**: A single meter may represent stamina and morale, balancing academic and social demands.
-- **Planning Interface**: Players plan weekly activities that unfold in real-time, adapting to emergent scenarios and random events.
-- **Duration**: Each playthrough is one week long, split into weekdays and weekends, offering a chance to assess and strategize for the coming weeks.
+- Burnout Management: A single meter may represent stamina and morale, balancing academic and social demands.
+- Planning Interface: Players plan weekly activities that unfold in real-time, adapting to emergent scenarios and random events.
+- Duration: Each playthrough is one week long, split into weekdays and weekends, offering a chance to assess and strategize for the coming weeks.
 
 ## The Upside
 
