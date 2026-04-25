@@ -8,7 +8,15 @@
 
 Two clients (Godot native, Three.js WebGPU) each have two roles (observer,
 player). Testing them headless first means no VR hardware and no display
-required — these tests run in CI. VR hardware tests are a later milestone.
+required. Tests follow a three-stage promotion path:
+
+```
+local Docker  →  CI headless  →  VR hardware
+```
+
+Local Docker confirms the test works on a real network stack before
+committing a CI job. CI headless runs on every push. VR hardware is a later
+milestone.
 
 The zone server is always the Godot native binary run with `--headless`.
 `headless_log_observer.gd` already exists for the Godot observer path.
@@ -17,8 +25,8 @@ The zone server is always the Godot native binary run with `--headless`.
 
 Four client roles × two clients = four test subjects. No matrix exists that
 verifies all four connect to one server and that player actions are reflected
-in observer state. The tests must run headless in CI before any VR hardware
-is involved.
+in observer state. Tests must pass locally in Docker before being wired to CI,
+and must pass in CI before any VR hardware is involved.
 
 ## CRIS Score
 
@@ -64,6 +72,42 @@ TO + TP  →  TP action visible in TO's window.__entities
 GO + TP + TO  →  three-way cross-check (Phase 3)
 GP + TP  →  both players' actions reflected in each other's observer
 ```
+
+### Local Docker run (required before CI)
+
+The existing `multiplayer-fabric-hosting` Compose stack already runs a zone
+server (`zone-server` service). Add a test service that mounts the test
+scripts and runs Playwright inside the same Docker network:
+
+```yaml
+# docker-compose.test.yml
+services:
+  test-runner:
+    image: mcr.microsoft.com/playwright:v1.44.0-jammy
+    depends_on:
+      zone-server:
+        condition: service_healthy
+    volumes:
+      - ./multiplayer-fabric-zone-backend/frontend:/app
+      - ./multiplayer-fabric-godot/bin:/godot
+    working_dir: /app
+    environment:
+      ZONE_HOST: zone-server
+      ZONE_PORT: "17500"
+      GODOT_BIN: /godot/godot.linuxbsd.editor.dev.x86_64
+    command: npx playwright test headless_matrix --project=chromium
+    network_mode: host   # shares zone-server port
+```
+
+Run locally:
+
+```sh
+docker compose -f multiplayer-fabric-hosting/docker-compose.yml \
+               -f multiplayer-fabric-hosting/docker-compose.test.yml \
+               run --rm test-runner
+```
+
+A green local Docker run is the gate before the CI job is added.
 
 ### Playwright orchestration
 
@@ -112,6 +156,10 @@ parsing and the existing Three.js observer Playwright spec.
 Six pairs × server startup (~3 s each) = ~20 s of CI wall time for Phase 2.
 The server must bind a fresh port for each test to avoid inter-test interference;
 or tests run serially with a single shared server.
+
+The Docker gate adds one manual step before CI promotion. A developer who skips
+the Docker run and pushes directly can still break CI; the gate is enforced by
+convention, not by tooling.
 
 ## The Road Not Taken
 
