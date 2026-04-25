@@ -12,7 +12,12 @@
 # Exit code: 0 if clean, 1 if any findings.
 
 defmodule TropeAudit do
+  # Matches bold-first bullets: - **Label:** content
   @pattern ~r/^\s*[-*]\s+\*\*[^*\n]+\*\*[:\.]?\s/
+
+  # Excluded: lettered enumerations **(A)**, **(B)** etc. and single-digit
+  # numbered labels **(1)** — these are structural enumeration, not AI prose.
+  @exclude ~r/^\s*[-*]\s+\*\*\(?[A-Z0-9]\)?\*\*/
 
   def audit_file(path) do
     hits =
@@ -20,7 +25,9 @@ defmodule TropeAudit do
       |> File.read!()
       |> String.split("\n")
       |> Enum.with_index(1)
-      |> Enum.filter(fn {line, _n} -> String.match?(line, @pattern) end)
+      |> Enum.filter(fn {line, _n} ->
+        String.match?(line, @pattern) and not String.match?(line, @exclude)
+      end)
 
     {path, hits}
   end
