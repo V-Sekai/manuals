@@ -12,6 +12,16 @@ State the specific problem, limitation, or gap being addressed. Be concrete. A r
 
 Detail the proposed solution precisely enough that it could be implemented without improvising the design. Include code, diagrams, or examples where they reduce ambiguity. Vague or underspecified proposals cannot be acted on.
 
+## CRIS Score
+
+| Factor          | Score | Evidence |
+| --------------- | ----- | -------- |
+| **C**omplexity  | +1/−1 | [Low or high complexity — why] |
+| **R**each       | +1/−1 | [Affects many users or few — why] |
+| **I**mpediment  | +1/−1 | [Blocks progress or easy workaround — why] |
+| **S**takeholder | +1/−1 | [Large project depends on it or none — why] |
+| **Total**       |       | [Sum; see 20260425-cris-scoring-for-godot-engine-code-inclusion.md for action thresholds] |
+
 ## The Benefits
 
 Describe the concrete improvements this proposal delivers and to whom.
