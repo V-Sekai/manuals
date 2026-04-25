@@ -77,6 +77,19 @@ A zone with no uploaded jellyfish (new operator, empty ocean) still passes the
 demo if the player's own jellyfish appears after upload. The shared-ocean
 property is a second milestone, not a prerequisite for the pass condition.
 
+## Client strategy
+
+The Godot wasm32/wasm64 web export is dropped. Two clients replace it:
+
+Godot native PCVR client handles VR presence, jellyfish creation, and entity
+control. It uses the xr-grid project with OpenXR and the picoquic WebTransport
+backend.
+
+Three.js WebGPU client handles browser access, spectating, and the operator
+view. It connects via the browser's WebTransport API and parses CH_INTEREST
+datagrams directly. See
+[20260425-threejs-webgpu-zone-client.md](20260425-threejs-webgpu-zone-client.md).
+
 ## In Core and Done by Us
 
 - `multiplayer-fabric-godot/modules/multiplayer_fabric_mmog/` — zone server,
@@ -85,7 +98,8 @@ property is a second milestone, not a prerequisite for the pass condition.
 - `assets/domains/jellyfish_common.jsonld`, `jellyfish_bioluminescent.jsonld`
   — RECTGTN species domains
 - `multiplayer-fabric-zone-backend` — `GET /shards/:id/assets`, ReBAC, Uro
-- xr-grid project — VR client and in-world jellyfish editor
+- xr-grid project — Godot native PCVR client, jellyfish creation
+- Three.js WebGPU client — browser observer, operator overlay
 
 ## Status
 

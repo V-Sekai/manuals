@@ -140,12 +140,26 @@ Load bars and dot clustering (see [20260425-operator-overlay.md](20260425-operat
 become a `<canvas>` element over the Three.js canvas — plain 2D Context API,
 no CanvasLayer needed.
 
+## Client split
+
+Two clients replace the previous Godot wasm web export:
+
+| Client | Transport | Use case |
+| ------ | --------- | -------- |
+| Godot native PCVR | WebTransport (picoquic) | VR headset, jellyfish creation, full entity control |
+| Three.js WebGPU | WebTransport (browser API) | Web browser, operator view, spectating, no install |
+
+The Godot wasm32/wasm64 build is dropped. The COOP/COEP service worker,
+SharedArrayBuffer build flags, and gescons wasm targets are no longer needed
+for the client path.
+
 ## The Downsides
 
-Two clients to maintain. The Three.js client reads CH_INTEREST but cannot
-easily write CH_PLAYER (entity input), so it is an observer/operator client
-only — it cannot control entities or upload jellyfish assets. Sending requires
-implementing the CH_PLAYER 100-byte format, which is a second scope of work.
+The Three.js client reads CH_INTEREST and can write CH_PLAYER datagrams, but
+it cannot run GDScript or use Godot's XR layer — so jellyfish creation and VR
+presence require the native PCVR client. Implementing CH_PLAYER in TypeScript
+to send entity input is a second scope of work; the initial Three.js client is
+observer-only.
 
 The packet format is internal and could change without versioning. A format
 version byte in the first octet of CH_INTEREST would protect against silent
@@ -153,8 +167,9 @@ breakage; that change belongs in a separate ADR.
 
 ## The Road Not Taken
 
-Godot wasm32/wasm64 web export: kept as the full-featured VR client path.
-The Three.js client is the operator/observer path. Both will run.
+Godot wasm32/wasm64 web export: dropped. Build friction (multi-minute compile,
+COOP/COEP, service worker, SharedArrayBuffer) exceeded the benefit once the
+native PCVR client covers VR and Three.js covers the browser.
 
 ## Status
 
