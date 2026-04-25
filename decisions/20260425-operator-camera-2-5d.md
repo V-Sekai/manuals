@@ -7,17 +7,13 @@
 ## The Context
 
 The virtual creator market operator view needs a readable top-down camera.
-Three reference games define the design space:
-
-**Final Fantasy Tactics (1997)** [@fftisometric] — orthographic, four discrete
-90° rotation positions.
-
-**Triangle Strategy (2022)** [@trianglestrategy2022] — 90° snapped rotation
-and free zoom, added after demo feedback showed continuous rotation
-disorients grid-map readers.
-
-**Blue Archive (2021)** [@bluearchive2021] — fixed diagonal angle, no
-rotation, smooth auto-follow of the active unit group.
+Three reference games define the design space. Final Fantasy Tactics (1997)
+[@fftisometric] used orthographic projection with four discrete 90° rotation
+positions. Triangle Strategy (2022) [@trianglestrategy2022] added free zoom
+and kept 90° snaps after demo feedback showed continuous rotation disorients
+grid-map readers. Blue Archive (2021) [@bluearchive2021] took the opposite
+approach: fixed diagonal angle, no rotation, smooth auto-follow of the active
+unit group.
 
 ## The Problem Statement
 
