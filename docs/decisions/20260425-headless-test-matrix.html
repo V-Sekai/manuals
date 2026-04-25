@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>jellyfish-game – V-Sekai - Manuals</title>
+<title>headless-test-matrix – V-Sekai - Manuals</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -290,24 +325,28 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#build-the-jellyfish-game" id="toc-build-the-jellyfish-game" class="nav-link active" data-scroll-target="#build-the-jellyfish-game">Build the Jellyfish Game</a>
+  <li><a href="#headless-test-matrix-four-client-roles-against-one-zone-server" id="toc-headless-test-matrix-four-client-roles-against-one-zone-server" class="nav-link active" data-scroll-target="#headless-test-matrix-four-client-roles-against-one-zone-server">Headless Test Matrix: Four Client Roles Against One Zone Server</a>
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
   <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
   <li><a href="#cris-score" id="toc-cris-score" class="nav-link" data-scroll-target="#cris-score">CRIS Score</a></li>
-  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a></li>
-  <li><a href="#the-benefits" id="toc-the-benefits" class="nav-link" data-scroll-target="#the-benefits">The Benefits</a></li>
+  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a>
+  <ul class="collapse">
+  <li><a href="#four-roles" id="toc-four-roles" class="nav-link" data-scroll-target="#four-roles">Four roles</a></li>
+  <li><a href="#phase-1-single-client-tests-four-tests-run-serially" id="toc-phase-1-single-client-tests-four-tests-run-serially" class="nav-link" data-scroll-target="#phase-1-single-client-tests-four-tests-run-serially">Phase 1 — single-client tests (four tests, run serially)</a></li>
+  <li><a href="#phase-2-dual-client-tests-six-pairs-run-serially" id="toc-phase-2-dual-client-tests-six-pairs-run-serially" class="nav-link" data-scroll-target="#phase-2-dual-client-tests-six-pairs-run-serially">Phase 2 — dual-client tests (six pairs, run serially)</a></li>
+  <li><a href="#local-docker-run-required-before-ci" id="toc-local-docker-run-required-before-ci" class="nav-link" data-scroll-target="#local-docker-run-required-before-ci">Local Docker run (required before CI)</a></li>
+  <li><a href="#playwright-orchestration" id="toc-playwright-orchestration" class="nav-link" data-scroll-target="#playwright-orchestration">Playwright orchestration</a></li>
+  <li><a href="#missing-pieces-before-phase-1" id="toc-missing-pieces-before-phase-1" class="nav-link" data-scroll-target="#missing-pieces-before-phase-1">Missing pieces before Phase 1</a></li>
+  </ul></li>
   <li><a href="#the-downsides" id="toc-the-downsides" class="nav-link" data-scroll-target="#the-downsides">The Downsides</a></li>
   <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
-  <li><a href="#the-infrequent-use-case" id="toc-the-infrequent-use-case" class="nav-link" data-scroll-target="#the-infrequent-use-case">The Infrequent Use Case</a></li>
-  <li><a href="#client-strategy" id="toc-client-strategy" class="nav-link" data-scroll-target="#client-strategy">Client strategy</a></li>
-  <li><a href="#in-core-and-done-by-us" id="toc-in-core-and-done-by-us" class="nav-link" data-scroll-target="#in-core-and-done-by-us">In Core and Done by Us</a></li>
   <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
   <li><a href="#decision-makers" id="toc-decision-makers" class="nav-link" data-scroll-target="#decision-makers">Decision Makers</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260425-jellyfish-game.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260425-headless-test-matrix.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
@@ -316,29 +355,31 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="build-the-jellyfish-game" class="level1">
-<h1>Build the Jellyfish Game</h1>
-<p>Supersedes: <a href="../decisions/20260421-infinite-aquarium-concept.html">20260421-infinite-aquarium-concept.md</a>, <a href="../decisions/20260421-virtual-creator-market-implementation-plan.html">20260421-virtual-creator-market-implementation-plan.md</a></p>
+<section id="headless-test-matrix-four-client-roles-against-one-zone-server" class="level1">
+<h1>Headless Test Matrix: Four Client Roles Against One Zone Server</h1>
 <ul>
 <li>Status: accepted</li>
 <li>Deciders: V-Sekai, fire</li>
-<li>Tags: V-Sekai, Jellyfish, Aquarium, Game, CRIS, 20260425-jellyfish-game</li>
+<li>Tags: V-Sekai, Testing, Headless, Playwright, Godot, Threejs, ZoneServer, 20260425-headless-test-matrix</li>
 </ul>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p><code>multiplayer-fabric</code> has no reference application. The four existing jellyfish ADRs describe infrastructure pieces and a creator market concept but do not record a single go/no-go decision with explicit prioritisation. Without one, effort scatters across competing items and the demo never ships.</p>
+<p>Two clients (Godot native, Three.js WebGPU) each have two roles (observer, player). Testing them headless first means no VR hardware and no display required. Tests follow a three-stage promotion path:</p>
+<pre><code>local Docker  →  CI headless  →  VR hardware</code></pre>
+<p>Local Docker confirms the test works on a real network stack before committing a CI job. CI headless runs on every push. VR hardware is a later milestone.</p>
+<p>The zone server is always the Godot native binary run with <code>--headless</code>. <code>headless_log_observer.gd</code> already exists for the Godot observer path.</p>
 </section>
 <section id="the-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>No ADR commits to building the jellyfish game as the current top priority. The CRIS score below makes that commitment explicit.</p>
+<p>Four client roles × two clients = four test subjects. No matrix exists that verifies all four connect to one server and that player actions are reflected in observer state. Tests must pass locally in Docker before being wired to CI, and must pass in CI before any VR hardware is involved.</p>
 </section>
 <section id="cris-score" class="level2">
 <h2 class="anchored" data-anchor-id="cris-score">CRIS Score</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 10%">
-<col style="width: 4%">
-<col style="width: 84%">
+<col style="width: 46%">
+<col style="width: 23%">
+<col style="width: 30%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -349,79 +390,166 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>C</strong>omplexity</td>
+<td>Complexity:</td>
 <td>+1</td>
-<td>Zone networking, asset delivery, RECTGTN planning, and ReBAC are all working. Remaining work is wiring, not invention.</td>
+<td>Three of the four roles are already partially implemented. headless_log_observer.gd exists. Playwright handles Three.js.</td>
 </tr>
 <tr class="even">
-<td><strong>R</strong>each</td>
+<td>Reach:</td>
 <td>+1</td>
-<td>Every new operator or creator evaluating multiplayer-fabric needs a running demo to assess the platform.</td>
+<td>Runs in CI on every push, no hardware dependency.</td>
 </tr>
 <tr class="odd">
-<td><strong>I</strong>mpediment</td>
+<td>Impediment:</td>
 <td>+1</td>
-<td>Without a reference application, end-to-end composition cannot be verified and the platform cannot be demonstrated.</td>
+<td>Without this matrix, a server-side regression could break one client silently.</td>
 </tr>
 <tr class="even">
-<td><strong>S</strong>takeholder</td>
+<td>Stakeholder:</td>
 <td>+1</td>
-<td>V-Sekai is the primary stakeholder; the virtual creator market product depends on this demo passing.</td>
+<td>Pass condition for the aquarium demo requires two simultaneous observers.</td>
 </tr>
 <tr class="odd">
 <td><strong>Total</strong></td>
 <td><strong>+4</strong></td>
-<td>Build now; high urgency.</td>
+<td>Build now.</td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="design" class="level2">
 <h2 class="anchored" data-anchor-id="design">Design</h2>
-<p>The jellyfish game is the Infinite Aquarium: a social, bioluminescent ocean where players design jellyfish, release them into a shared zone, and watch them behave under RECTGTN planning.</p>
-<p>Pass condition: a player-uploaded jellyfish appears in VR, visible to a second player simultaneously, moving under its species domain plan rather than a hard-coded phase table. See <a href="../decisions/20260425-jellyfish-pass-condition.html">20260425-jellyfish-pass-condition.md</a> for the consolidated design.</p>
-<p>Implementation details are recorded in the following ADRs — they remain accepted and are not superseded:</p>
-<ul>
-<li>Behaviour planning: <a href="../decisions/20260421-rectgtn-jellyfish-behavior.html">20260421-rectgtn-jellyfish-behavior.md</a></li>
-<li>Creator behaviour sandbox: <a href="../decisions/20260423-sandbox-rebac-behavior.html">20260423-sandbox-rebac-behavior.md</a></li>
-<li>Zone architecture: <a href="../decisions/20260421-multiplayer-fabric-zone-architecture.html">20260421-multiplayer-fabric-zone-architecture.md</a></li>
-<li>Asset delivery: <a href="../decisions/20260421-content-addressed-asset-delivery.html">20260421-content-addressed-asset-delivery.md</a></li>
-<li>ReBAC enforcement: <a href="../decisions/20260421-rebac-zone-server-enforcement.html">20260421-rebac-zone-server-enforcement.md</a></li>
-</ul>
-<p>Work sequencing follows the phases in <a href="../decisions/20260421-virtual-creator-market-implementation-plan.html">20260421-virtual-creator-market-implementation-plan.md</a> (superseded by this ADR; phases remain valid as a task checklist).</p>
+<section id="four-roles" class="level3">
+<h3 class="anchored" data-anchor-id="four-roles">Four roles</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 19%">
+<col style="width: 12%">
+<col style="width: 61%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Client</th>
+<th>Role</th>
+<th>How to run headless</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GO</td>
+<td>Godot native</td>
+<td>Observer</td>
+<td><code>--headless --path demo observer.tscn</code> via <code>headless_log_observer.gd</code></td>
+</tr>
+<tr class="even">
+<td>GP</td>
+<td>Godot native</td>
+<td>Player</td>
+<td><code>--headless --path demo observer.tscn -- --send-player</code> (new flag, writes CH_PLAYER)</td>
+</tr>
+<tr class="odd">
+<td>TO</td>
+<td>Three.js</td>
+<td>Observer</td>
+<td>Playwright Chromium, reads <code>window.__entities</code></td>
+</tr>
+<tr class="even">
+<td>TP</td>
+<td>Three.js</td>
+<td>Player</td>
+<td>Playwright Chromium, reads <code>window.__entities</code> + calls <code>window.__sendPlayer()</code></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p>A passing demo proves the infrastructure composes correctly end-to-end. Creators and operators can evaluate the platform against something concrete rather than documentation.</p>
+<section id="phase-1-single-client-tests-four-tests-run-serially" class="level3">
+<h3 class="anchored" data-anchor-id="phase-1-single-client-tests-four-tests-run-serially">Phase 1 — single-client tests (four tests, run serially)</h3>
+<p>Each test: start zone server → start one client → wait for entities → assert count &gt; 0 → stop.</p>
+<pre><code>server + GO  →  entity count &gt; 0  (headless_log_observer.gd, stdout parse)
+server + GP  →  entity count &gt; 0, CH_PLAYER sent, server ACKs
+server + TO  →  window.__entities.length &gt; 0 after WebTransport connect
+server + TP  →  window.__entities.length &gt; 0, window.__sendPlayer() sends datagram</code></pre>
+</section>
+<section id="phase-2-dual-client-tests-six-pairs-run-serially" class="level3">
+<h3 class="anchored" data-anchor-id="phase-2-dual-client-tests-six-pairs-run-serially">Phase 2 — dual-client tests (six pairs, run serially)</h3>
+<p>Each test: start zone server → start two clients → compare entity ID sets → assert equal.</p>
+<pre><code>GO + TO  →  same entity IDs observed (Godot stdout == Three.js window.__entities)
+GO + GP  →  GP action reflected in GO's next frame
+GO + TP  →  TP action reflected in GO's next frame
+TO + TP  →  TP action visible in TO's window.__entities
+GO + TP + TO  →  three-way cross-check (Phase 3)
+GP + TP  →  both players' actions reflected in each other's observer</code></pre>
+</section>
+<section id="local-docker-run-required-before-ci" class="level3">
+<h3 class="anchored" data-anchor-id="local-docker-run-required-before-ci">Local Docker run (required before CI)</h3>
+<p>The existing <code>multiplayer-fabric-hosting</code> Compose stack already runs a zone server (<code>zone-server</code> service). Add a test service that mounts the test scripts and runs Playwright inside the same Docker network:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># docker-compose.test.yml</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">test-runner</span><span class="kw">:</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> mcr.microsoft.com/playwright:v1.44.0-jammy</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">depends_on</span><span class="kw">:</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">zone-server</span><span class="kw">:</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">condition</span><span class="kw">:</span><span class="at"> service_healthy</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ./multiplayer-fabric-zone-backend/frontend:/app</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ./multiplayer-fabric-godot/bin:/godot</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">working_dir</span><span class="kw">:</span><span class="at"> /app</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">ZONE_HOST</span><span class="kw">:</span><span class="at"> zone-server</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">ZONE_PORT</span><span class="kw">:</span><span class="at"> </span><span class="st">"17500"</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">GODOT_BIN</span><span class="kw">:</span><span class="at"> /godot/godot.linuxbsd.editor.dev.x86_64</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">command</span><span class="kw">:</span><span class="at"> npx playwright test headless_matrix --project=chromium</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">network_mode</span><span class="kw">:</span><span class="at"> host</span><span class="co">   # shares zone-server port</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Run locally:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose <span class="at">-f</span> multiplayer-fabric-hosting/docker-compose.yml <span class="dt">\</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">-f</span> multiplayer-fabric-hosting/docker-compose.test.yml <span class="dt">\</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>               run <span class="at">--rm</span> test-runner</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A green local Docker run is the gate before the CI job is added.</p>
+</section>
+<section id="playwright-orchestration" class="level3">
+<h3 class="anchored" data-anchor-id="playwright-orchestration">Playwright orchestration</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode ts code-with-copy"><code class="sourceCode typescript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">startZoneServer</span>()<span class="op">:</span> <span class="bu">Promise</span><span class="op">&lt;</span>ChildProcess<span class="op">&gt;</span> {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> proc <span class="op">=</span> <span class="fu">spawn</span>(GODOT_BIN<span class="op">,</span> [<span class="st">"--headless"</span><span class="op">,</span> <span class="st">"--path"</span><span class="op">,</span> ZONE_PROJECT<span class="op">,</span> <span class="st">"scenes/zone_server.tscn"</span>])<span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">await</span> <span class="fu">waitForPort</span>(<span class="dv">17500</span>)<span class="op">;</span>  <span class="co">// poll until server accepts TCP</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> proc<span class="op">;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">startGodotObserver</span>(dumpPath<span class="op">:</span> <span class="dt">string</span>)<span class="op">:</span> <span class="bu">Promise</span><span class="op">&lt;</span>ChildProcess<span class="op">&gt;</span> {</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">spawn</span>(GODOT_BIN<span class="op">,</span> [</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"--headless"</span><span class="op">,</span> <span class="st">"--path"</span><span class="op">,</span> DEMO_PROJECT<span class="op">,</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"--script"</span><span class="op">,</span> <span class="st">"scripts/headless_log_observer.gd"</span><span class="op">,</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"--"</span><span class="op">,</span> <span class="vs">`--dump-json=</span><span class="sc">${</span>dumpPath<span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  ])<span class="op">;</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">threejsObserver</span>(page<span class="op">:</span> Page)<span class="op">:</span> <span class="bu">Promise</span><span class="op">&lt;</span>Entity[]<span class="op">&gt;</span> {</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">await</span> page<span class="op">.</span><span class="fu">waitForFunction</span>(</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    () <span class="kw">=&gt;</span> (<span class="bu">window</span> <span class="im">as</span> <span class="dt">any</span>)<span class="op">.</span><span class="at">__entities</span><span class="op">?.</span><span class="at">length</span> <span class="op">&gt;</span> <span class="dv">0</span><span class="op">,</span> { timeout<span class="op">:</span> <span class="dv">15_000</span> }</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> page<span class="op">.</span><span class="fu">evaluate</span>(() <span class="kw">=&gt;</span> (<span class="bu">window</span> <span class="im">as</span> <span class="dt">any</span>)<span class="op">.</span><span class="at">__entities</span>)<span class="op">;</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="missing-pieces-before-phase-1" class="level3">
+<h3 class="anchored" data-anchor-id="missing-pieces-before-phase-1">Missing pieces before Phase 1</h3>
+<p>Three items need implementing before the matrix runs:</p>
+<ol type="1">
+<li><p><code>headless_log_observer.gd</code> — add <code>--dump-json=&lt;path&gt;</code> flag that writes the final entity list as JSON on exit (currently only prints to stdout).</p></li>
+<li><p>Godot player headless — a <code>--send-player</code> flag in <code>fabric_client.gd</code> or a new script that sends one CH_PLAYER datagram after connecting, then exits.</p></li>
+<li><p>Three.js <code>window.__sendPlayer()</code> — the Stage 2 CH_PLAYER write path (<a href="../decisions/20260425-threejs-player.html">20260425-threejs-player.md</a>) must expose this function before Phase 2 TP tests can run.</p></li>
+</ol>
+<p>Phase 1 GO and TO tests can run today with <code>headless_log_observer.gd</code> stdout parsing and the existing Three.js observer Playwright spec.</p>
+</section>
 </section>
 <section id="the-downsides" class="level2">
 <h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>A bioluminescent jellyfish ocean is a narrow theme. Operators building avatar showrooms or board games must extrapolate. A more neutral demo exercises fewer platform primitives and is less compelling to the creator audience the product targets.</p>
+<p>Six pairs × server startup (~3 s each) = ~20 s of CI wall time for Phase 2. The server must bind a fresh port for each test to avoid inter-test interference; or tests run serially with a single shared server.</p>
+<p>The Docker gate adds one manual step before CI promotion. A developer who skips the Docker run and pushes directly can still break CI; the gate is enforced by convention, not by tooling.</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>A tag game (one chaser, rest flee across zone boundaries) would stress zone handoff without touching asset delivery or ReBAC. It validates the engine but not the product. The aquarium validates both, at the same engine complexity cost.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>A zone with no uploaded jellyfish (new operator, empty ocean) still passes the demo if the player’s own jellyfish appears after upload. The shared-ocean property is a second milestone, not a prerequisite for the pass condition.</p>
-</section>
-<section id="client-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="client-strategy">Client strategy</h2>
-<p>The Godot wasm32/wasm64 web export is dropped. Two clients replace it:</p>
-<p>Godot native PCVR client handles VR presence, jellyfish creation, and entity control. It uses the xr-grid project with OpenXR and the picoquic WebTransport backend.</p>
-<p>Three.js WebGPU client handles browser access, spectating, and the operator view. It connects via the browser’s WebTransport API and parses CH_INTEREST datagrams directly. See <a href="../decisions/20260425-threejs-webgpu-zone-client.html">20260425-threejs-webgpu-zone-client.md</a>.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<ul>
-<li><code>multiplayer-fabric-godot/modules/multiplayer_fabric_mmog/</code> — zone server, swarm sim, RECTGTN integration</li>
-<li><code>jellyfish_asset_loader.gd</code> — asset manifest → CDN fetch → scene instance</li>
-<li><code>assets/domains/jellyfish_common.jsonld</code>, <code>jellyfish_bioluminescent.jsonld</code> — RECTGTN species domains</li>
-<li><code>multiplayer-fabric-zone-backend</code> — <code>GET /shards/:id/assets</code>, ReBAC, Uro</li>
-<li>xr-grid project — Godot native PCVR client, jellyfish creation</li>
-<li>Three.js WebGPU client — browser observer, operator overlay</li>
-</ul>
+<p>Mocking the server: rejected — a mock cannot reproduce AOI band behaviour, HLC timestamps, or the actual CH_INTEREST encoding. All matrix tests use the real server binary.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
@@ -435,13 +563,9 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="../decisions/20260421-rectgtn-jellyfish-behavior.html">20260421-rectgtn-jellyfish-behavior.md</a> — RECTGTN planning implementation</li>
-<li><a href="../decisions/20260421-infinite-aquarium-concept.html">20260421-infinite-aquarium-concept.md</a> — aquarium concept (superseded)</li>
-<li><a href="../decisions/20260421-virtual-creator-market-implementation-plan.html">20260421-virtual-creator-market-implementation-plan.md</a> — phase checklist (superseded)</li>
-<li><a href="../decisions/20260423-sandbox-rebac-behavior.html">20260423-sandbox-rebac-behavior.md</a> — sandbox for creator executable code</li>
-<li><a href="../decisions/20260425-cris-scoring-for-godot-engine-code-inclusion.html">20260425-cris-scoring-for-godot-engine-code-inclusion.md</a> — CRIS framework</li>
-</ol>
+<p><span class="citation" data-cites="dual_client">(<a href="#ref-dual_client" role="doc-biblioref"><strong>dual_client?</strong></a>)</span>: <a href="../decisions/20260425-dual-client-test.html">20260425-dual-client-test.md</a> — dual observer design.</p>
+<p><span class="citation" data-cites="threejs_observer">(<a href="#ref-threejs_observer" role="doc-biblioref"><strong>threejs_observer?</strong></a>)</span>: <a href="../decisions/20260425-threejs-observer.html">20260425-threejs-observer.md</a> — Three.js observer client.</p>
+<p><span class="citation" data-cites="threejs_player">(<a href="#ref-threejs_player" role="doc-biblioref"><strong>threejs_player?</strong></a>)</span>: <a href="../decisions/20260425-threejs-player.html">20260425-threejs-player.md</a> — Three.js player client (Stage 2).</p>
 
 
 </section>
@@ -869,7 +993,7 @@ ul.task-list li input[type="checkbox"] {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260425-jellyfish-game.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260425-headless-test-matrix.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
