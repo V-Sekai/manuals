@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.37</generator>
-<lastBuildDate>Sat, 25 Apr 2026 05:31:49 GMT</lastBuildDate>
+<lastBuildDate>Sat, 25 Apr 2026 13:11:42 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -82,7 +82,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -170,7 +170,170 @@ server:  {"event":"echo","len":24,"mode":0}</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-godot-web-client-webtransport.html</guid>
-  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260425-cris-scoring-for-godot-engine-code-inclusion.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="cris-scoring-for-development-work" class="level1">
+<h1>CRIS Scoring for Development Work</h1>
+<ul>
+<li>Status: accepted</li>
+<li>Deciders: V-Sekai, fire</li>
+<li>Tags: V-Sekai, process</li>
+</ul>
+<section id="context-and-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
+<p>V-Sekai has no shared framework for ranking work; decisions depend on who is in the room. A Godot Engine conference presentation (April 2026) introduced the <strong>CRIS</strong> scoring framework for code inclusion decisions. We adopt it as the canonical tool for deciding where to invest effort across the entire V-Sekai project — Godot Engine patches, backend features, infrastructure, and tooling.</p>
+</section>
+<section id="decision" class="level2">
+<h2 class="anchored" data-anchor-id="decision">Decision</h2>
+<p>Use the CRIS score to rank any candidate unit of work — a Godot Engine patch, a backend feature, a test suite, an infrastructure change — when deciding whether to build it now, defer it, or drop it.</p>
+</section>
+<section id="cris-scoring" class="level2">
+<h2 class="anchored" data-anchor-id="cris-scoring">CRIS Scoring</h2>
+<p>Each factor adds (+) or subtracts (−) from the candidate’s priority score.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 40%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Factor</th>
+<th>Raises priority</th>
+<th>Lowers priority</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>C</strong>omplexity</td>
+<td>Low complexity</td>
+<td>High complexity</td>
+</tr>
+<tr class="even">
+<td><strong>R</strong>each</td>
+<td>Affects many users</td>
+<td>Affects nobody</td>
+</tr>
+<tr class="odd">
+<td><strong>I</strong>mpediment</td>
+<td>Blocks progress on the game</td>
+<td>Easy workaround exists</td>
+</tr>
+<tr class="even">
+<td><strong>S</strong>takeholder</td>
+<td>Large project depends on it</td>
+<td>No project depends on it</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="how-to-apply" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-apply">How to Apply</h2>
+<ol type="1">
+<li><p>For any candidate piece of work, fill in a brief CRIS table in the tracking issue, PR description, or TODO entry.</p></li>
+<li><p>Score each factor +1 (favourable) or −1 (unfavourable). Sum to a total.</p></li>
+<li><p>Use the total to guide the decision:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Total</th>
+<th>Default action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>+3 or +4</td>
+<td>Build now; high urgency</td>
+</tr>
+<tr class="even">
+<td>+1 or +2</td>
+<td>Schedule soon; normal priority</td>
+</tr>
+<tr class="odd">
+<td>−1 or 0</td>
+<td>Defer; revisit when a stakeholder project appears</td>
+</tr>
+<tr class="even">
+<td>−2 or lower</td>
+<td>Drop; document why in an option graveyard</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Any decider may override the default with a written rationale. The CRIS score is a guide, not a veto.</p></li>
+</ol>
+</section>
+<section id="application-to-specific-areas" class="level2">
+<h2 class="anchored" data-anchor-id="application-to-specific-areas">Application to Specific Areas</h2>
+<section id="godot-engine-fork" class="level3">
+<h3 class="anchored" data-anchor-id="godot-engine-fork">Godot Engine fork</h3>
+<p>CRIS determines whether a patch is worth carrying. The existing flowchart (<code>20211207-for-godot-engine-changes-use-a-decision-flowchart.md</code>) then determines <em>where</em> it lives (fork-only, upstream PR, or V-Sekai-specific branch). Apply CRIS first; apply the flowchart only if CRIS clears it.</p>
+</section>
+<section id="backend-and-infrastructure" class="level3">
+<h3 class="anchored" data-anchor-id="backend-and-infrastructure">Backend and infrastructure</h3>
+<p>CRIS ranks competing feature requests and bug fixes in the Elixir backend, hosting stack, and CI pipeline. A ticket that scores +3 or +4 gets pulled into the current sprint; the reviewer closes a ticket scoring −2 or lower with a note.</p>
+</section>
+<section id="research-and-tooling" class="level3">
+<h3 class="anchored" data-anchor-id="research-and-tooling">Research and tooling</h3>
+<p>New tools, languages, or frameworks go through CRIS before any prototype work begins. High Complexity and low Stakeholder support disqualify a candidate unless Reach and Impediment compensate.</p>
+</section>
+</section>
+<section id="positive-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="positive-consequences">Positive Consequences</h2>
+<ul>
+<li>Contributors share a vocabulary that works across every subsystem.</li>
+<li>Contributors can self-assess before requesting review or opening a PR.</li>
+<li>Reviewers drop low-CRIS work early.</li>
+<li>The CRIS table in each issue makes the decision auditable later.</li>
+</ul>
+</section>
+<section id="negative-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="negative-consequences">Negative Consequences</h2>
+<ul>
+<li>Scoring is subjective; two reviewers may reach different totals.</li>
+<li>A niche but genuinely blocking item (low Reach, high Impediment for one team) can be underweighted if reviewers anchor on Reach.</li>
+</ul>
+</section>
+<section id="option-graveyard" class="level2">
+<h2 class="anchored" data-anchor-id="option-graveyard">Option Graveyard</h2>
+<ul>
+<li><p>Option: Ad-hoc prioritising by whoever is loudest.</p></li>
+<li><p>Rejection reason: Produces inconsistent outcomes and repeated arguments.</p></li>
+<li><p>Option: Strict urgency-only ordering (fix what is broken, ignore the rest).</p></li>
+<li><p>Rejection reason: Ignores strategic value and leaves important features unbuilt indefinitely.</p></li>
+<li><p>Option: Separate scoring rubrics per subsystem.</p></li>
+<li><p>Rejection reason: Fragments the vocabulary; makes cross-team trade-offs impossible to compare.</p></li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>Godot Engine conference slide, April 2026: “Factors that should determine code inclusion: CRIS Scoring” (Complexity, Reach, Impediment, Stakeholder).</li>
+<li><code>20211207-for-godot-engine-changes-use-a-decision-flowchart.md</code></li>
+</ul>
+</section>
+<section id="derivative-license" class="level2">
+<h2 class="anchored" data-anchor-id="derivative-license">Derivative License</h2>
+<p>Copyright (c) 2026 V-Sekai contributors.</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260425-cris-scoring-for-godot-engine-code-inclusion.html</guid>
+  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -507,7 +670,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-sandbox-rebac-behavior.html</guid>
-  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -600,7 +763,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-baker-zone-lifecycle.html</guid>
-  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -649,7 +812,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-asset-delivery-decision.html</guid>
-  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -791,7 +954,7 @@ font-style: inherit;"># Serve over HTTP. Client downloads the full archive every
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-asset-delivery-benchmark.html</guid>
-  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -887,7 +1050,7 @@ font-style: inherit;"># Serve over HTTP. Client downloads the full archive every
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260422-simplify-then-add-lightness.html</guid>
-  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -985,7 +1148,7 @@ Sword, Helen. 2012. <em>Zombie Nouns</em>. <a href="https://opinionator.blogs.ny
 </div>
 </div></section></div> ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes-3.html</guid>
-  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1075,7 +1238,7 @@ Ossama. 2025. <em>Tropes.fyi: <span>AI</span> Writing Pattern Directory</em>. <a
 </div>
 </div></section></div> ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes-2.html</guid>
-  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1174,7 +1337,7 @@ Wikipedia contributors. 2025. <em>Wikipedia: Signs of <span>AI</span> Writing</e
 </div>
 </div></section></div> ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes-1.html</guid>
-  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1259,7 +1422,7 @@ Wikipedia contributors. 2025. <em>Wikipedia: Signs of <span>AI</span> Writing</e
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zones-vs-shards.html</guid>
-  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1341,7 +1504,7 @@ Wikipedia contributors. 2025. <em>Wikipedia: Signs of <span>AI</span> Writing</e
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-registration-and-discovery.html</guid>
-  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1597,7 +1760,7 @@ font-style: inherit;">end</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-grouping.html</guid>
-  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1744,7 +1907,7 @@ theorem aoiBand_width_bound ... :
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-border-handoff.html</guid>
-  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2022,7 +2185,7 @@ font-style: inherit;">:assets</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-asset-manifest.html</guid>
-  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2155,7 +2318,7 @@ font-style: inherit;">note</span>         = {Baseline 2026: newly available acro
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-webtransport-zone-transport.html</guid>
-  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2323,7 +2486,7 @@ font-style: inherit;">;</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-websocket-transport-parity.html</guid>
-  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2459,7 +2622,7 @@ font-style: inherit;">;</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-virtual-creator-market-implementation-plan.html</guid>
-  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2577,798 +2740,7 @@ font-style: inherit;">BLOB</span>, slot_count, ts)</span></code></pre></div></di
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-sqlite-per-zone-journal.html</guid>
-  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20260421-rectgtn-jellyfish-behavior.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="rectgtn-planning-for-jellyfish-behavior" class="level1">
-<h1>RECTGTN Planning for Jellyfish Behavior</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p><code>taskweft</code> is a C++20 library exposed as an Erlang NIF. Its current use in the zone server is limited to <code>check_rel()</code> for ReBAC authorization at join time and <code>CMD_INSTANCE_ASSET</code>. The library implements the full <strong>Relationship-Enabled Capability-Temporal Goal-Task-Network</strong> (RECTGTN) formalism: conjunctive and multi-goal decomposition, compound task methods with per-method alternatives, incremental replanning via a solution tree, ISO 8601 duration constraints, and stochastic Monte Carlo execution. All of this is available in <code>standalone/tw_planner.hpp</code> and companions — header-only, no BEAM round-trip required.</p>
-<p>In <code>CONCEPT_MMOG.md</code>, HTN planning was tombstoned because the godot-sandbox RISC-V guest path was out of scope. The sandbox path remains out of scope. The standalone header path is not.</p>
-<p>The aquarium zone server runs a C++ swarm simulation (<code>JellygridSwarm::tick()</code>) that drives jellyfish with hard-coded phase-based behaviour: pulse bob, current drift, predator flee. The behaviour is correct but fixed — every jellyfish of the same species behaves identically and the planner cannot adapt to zone state changes.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>Jellyfish behaviour is table-driven. There is no mechanism to sequence multi-step behaviour (flee → hide → resume drift), handle temporal cooldowns between state changes, or vary behaviour by entity capability (a bioluminescent jellyfish near a light source behaves differently from one in darkness). RECTGTN planning covers all three.</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<section id="domain-and-plan-separation" class="level3">
-<h3 class="anchored" data-anchor-id="domain-and-plan-separation">Domain and plan separation</h3>
-<p>Two distinct layers:</p>
-<p><strong>Domain (fixed for zone lifetime)</strong> — loaded from the GLTF interactivity extensions in the zone asset bundle at startup. Defines the action vocabulary: state variable names, action effects, and method preconditions. The zone’s entity state is produced by applying actions from this domain; the domain and the entity state are a unit and cannot be swapped independently at runtime.</p>
-<p><strong>Plan (dynamic JSON/dict)</strong> — a sequence of action names that are valid within the loaded domain. Because a plan only references actions already defined in the domain, hot-pushing a new plan at runtime does not change the state schema. Zone ACID properties are preserved.</p>
-<p>This separation mirrors how GLTF interactivity works: the interactivity extension defines the fixed set of triggers and actions baked into the asset, while runtime orchestration decides which sequence to execute.</p>
-</section>
-<section id="domain-per-species" class="level3">
-<h3 class="anchored" data-anchor-id="domain-per-species">Domain per species</h3>
-<p>Each jellyfish species domain is a JSON-LD file in the zone asset bundle, loaded once at zone startup:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{</span></span>
-<span id="cb1-2">  <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"@context"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://taskweft.v-sekai.org/domain/v1"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-3">  <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"state"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{</span></span>
-<span id="cb1-4">    <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"location"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"open_water"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-5">    <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"threat_nearby"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">false</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-6">    <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"light_level"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"dim"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-7">    <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"pulse_cooldown"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span></span>
-<span id="cb1-8">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">},</span></span>
-<span id="cb1-9">  <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"tasks"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{</span></span>
-<span id="cb1-10">    <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"behave"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">[</span></span>
-<span id="cb1-11">      <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"method"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"flee"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">,</span>       <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"precond"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"threat_nearby"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">true</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">},</span>    <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"subtasks"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">[</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"flee_predator"</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">,</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"recover"</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">]</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">}</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-12">      <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"method"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"seek_light"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"precond"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"light_level"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"bright"</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">},</span>  <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"subtasks"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">[</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"drift_toward_light"</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">,</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"pulse"</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">]</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">}</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb1-13">      <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"method"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"idle"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">,</span>       <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"precond"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{},</span>                           <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"subtasks"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">[</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"drift_current"</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">]</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">}</span></span>
-<span id="cb1-14">    <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">]</span></span>
-<span id="cb1-15">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">},</span></span>
-<span id="cb1-16">  <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"actions"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{</span></span>
-<span id="cb1-17">    <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"flee_predator"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span>      <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"duration"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"PT2S"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"effects"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"location"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"shelter"</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">}</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">},</span></span>
-<span id="cb1-18">    <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"recover"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span>            <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"duration"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"PT5S"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"effects"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"threat_nearby"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">false</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">}</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">},</span></span>
-<span id="cb1-19">    <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"drift_toward_light"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"duration"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"PT3S"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"effects"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"location"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"light_source"</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">}</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">},</span></span>
-<span id="cb1-20">    <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"pulse"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span>              <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"duration"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"PT1S"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"effects"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"pulse_cooldown"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">}</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">},</span></span>
-<span id="cb1-21">    <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"drift_current"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span>      <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"duration"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"PT4S"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"effects"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{}</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">}</span></span>
-<span id="cb1-22">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">}</span></span>
-<span id="cb1-23"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">}</span></span></code></pre></div></div>
-</section>
-<section id="zone-server-integration" class="level3">
-<h3 class="anchored" data-anchor-id="zone-server-integration">Zone server integration</h3>
-<p>The zone server links <code>standalone/tw_planner.hpp</code> directly. No BEAM round-trip occurs during simulation.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">// In FabricMMOGZone — per-entity, called when current plan completes or environment changes</span></span>
-<span id="cb2-2"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">void</span> FabricMMOGZone<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span>_replan_jellyfish<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">int</span> p_entity_id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span></span>
-<span id="cb2-3">    TwDomain domain <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> TwLoader<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span>load_json_str<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>_species_domains<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span>p_entity_id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">]);</span></span>
-<span id="cb2-4">    TwState  state  <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> _build_entity_state<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>p_entity_id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">);</span> <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">// reads zone sim state</span></span>
-<span id="cb2-5">    TwPlan   plan   <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> tw_plan<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>domain<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> state<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"behave"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">});</span></span>
-<span id="cb2-6">    _entity_plans<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span>p_entity_id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">]</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> plan<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb2-7">    _entity_plan_step<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span>p_entity_id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">]</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb2-8"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span></span></code></pre></div></div>
-<p><code>_replan_jellyfish()</code> is called once per behaviour change, not per tick. The running plan’s current action drives <code>JellygridSwarm::tick()</code> for the action’s duration; the planner is invoked again only when the action completes or a threat sensor fires.</p>
-</section>
-<section id="incremental-replan-on-environment-change" class="level3">
-<h3 class="anchored" data-anchor-id="incremental-replan-on-environment-change">Incremental replan on environment change</h3>
-<p>When a predator enters the AOI of a jellyfish mid-plan:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">void</span> FabricMMOGZone<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span>_on_threat_detected<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">int</span> p_entity_id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span></span>
-<span id="cb3-2">    TwState new_state <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> _build_entity_state<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>p_entity_id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">);</span></span>
-<span id="cb3-3">    new_state<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span>set<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"threat_nearby"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">);</span></span>
-<span id="cb3-4">    TwPlan new_plan <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> tw_replan_incremental<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span></span>
-<span id="cb3-5">        _species_domains<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span>p_entity_id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">],</span></span>
-<span id="cb3-6">        _entity_plans<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span>p_entity_id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">],</span></span>
-<span id="cb3-7">        _entity_plan_step<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span>p_entity_id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">],</span></span>
-<span id="cb3-8">        new_state</span>
-<span id="cb3-9">    <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">);</span></span>
-<span id="cb3-10">    _entity_plans<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span>p_entity_id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">]</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> new_plan<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-11"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span></span></code></pre></div></div>
-<p><code>tw_replan_incremental()</code> backtracks at the nearest retryable method choice in the solution tree rather than restarting from the root. For short plans (3–5 actions) this is effectively free.</p>
-</section>
-<section id="temporal-constraints" class="level3">
-<h3 class="anchored" data-anchor-id="temporal-constraints">Temporal constraints</h3>
-<p>The domain encodes action durations as ISO 8601 strings. <code>tw_check_temporal()</code> validates the current plan against an origin timestamp before committing it. This prevents scheduling a 5-second recovery immediately before a zone-tick deadline.</p>
-</section>
-<section id="capability-gating-via-rebac" class="level3">
-<h3 class="anchored" data-anchor-id="capability-gating-via-rebac">Capability gating via ReBAC</h3>
-<p>A species domain can include capability preconditions:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb4-1"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"seek_light"</span><span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{</span></span>
-<span id="cb4-2">  <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"precond"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"light_level"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"bright"</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">},</span></span>
-<span id="cb4-3">  <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"requires_capability"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"BIOLUMINESCENT"</span></span>
-<span id="cb4-4"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">}</span></span></code></pre></div></div>
-<p>Before executing <code>seek_light</code>, the zone server calls the existing <code>check_rel()</code> on the entity’s capability graph. Non-bioluminescent jellyfish never decompose into <code>seek_light</code> — the planner picks <code>idle</code> instead.</p>
-</section>
-<section id="runtime-plan-injection-via-cdn" class="level3">
-<h3 class="anchored" data-anchor-id="runtime-plan-injection-via-cdn">Runtime plan injection via CDN</h3>
-<p>Plans are pure JSON-LD data — they are stored in the content-addressed CDN (Uro) exactly like mesh assets and domain files. Zone-backend calls <code>Taskweft.plan/1</code> via the NIF, receives a JSON plan array, uploads it to Uro, and receives a <code>baked_url</code> (chunk hash URL). It sends the zone server a <code>CMD_SET_ENTITY_PLAN</code> packet carrying only that URL — not the plan bytes.</p>
-<pre><code>zone-backend:
-  plan_json = Taskweft.plan(domain_jsonld, state)
-  %{baked_url: url} = Uro.Storage.upload_plan(plan_json)
-  send_packet(zone_server, CMD_SET_ENTITY_PLAN, entity_id, url)
-
-zone server:
-  _on_cmd_set_entity_plan(entity_id, url)
-    → fetch url from CDN (disk-cached after first fetch)
-    → validate each action name against _species_domains[entity_id]
-    → apply if valid, discard silently if not</code></pre>
-<p>The CDN disk cache means all zone servers hosting the same species share the same plan bytes without re-downloading. A common jellyfish plan computed once by zone-backend is fetched once per zone server and cached for the duration of the session.</p>
-<p>The Elixir module is kept at arm’s length from the zone sim: it produces and uploads plans, it never executes them. The zone sim never calls into BEAM. A slow NIF call on the BEAM side does not affect the zone tick rate — the zone continues running the current plan until a replacement URL arrives.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">void</span> FabricMMOGZone<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span>_on_cmd_set_entity_plan<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">int</span> p_entity_id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">const</span> String <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&amp;</span>p_plan_url<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span></span>
-<span id="cb6-2">    String plan_json <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> _fetch_from_cdn<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>p_plan_url<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">);</span> <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">// disk-cached</span></span>
-<span id="cb6-3">    TwPlan incoming  <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> TwLoader<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span>plan_from_json<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>plan_json<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">);</span></span>
-<span id="cb6-4">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(!</span>_domain_contains_all_actions<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>_species_domains<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span>p_entity_id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">],</span> incoming<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">))</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span></span>
-<span id="cb6-5">        <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">return</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">// reject: action not in loaded domain</span></span>
-<span id="cb6-6">    <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span></span>
-<span id="cb6-7">    _entity_plans<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span>p_entity_id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">]</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> incoming<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb6-8">    _entity_plan_step<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span>p_entity_id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">]</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb6-9"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span></span></code></pre></div></div>
-</section>
-<section id="no-sandbox" class="level3">
-<h3 class="anchored" data-anchor-id="no-sandbox">No sandbox</h3>
-<p>The godot-sandbox RISC-V guest (<code>taskweft_planner.cpp</code>) is not used. The standalone headers compile into <code>fabric_mmog_zone.cpp</code> directly. Behaviour domains are loaded from the zone asset bundle at zone startup and cached in <code>_species_domains</code>.</p>
-</section>
-</section>
-<section id="beam-rectgtn-vs-zone-server-rectgtn" class="level2">
-<h2 class="anchored" data-anchor-id="beam-rectgtn-vs-zone-server-rectgtn">BEAM RECTGTN vs zone server RECTGTN</h2>
-<p>Both BEAM and the zone server run RECTGTN, but their domains and purposes are unrelated:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Layer</th>
-<th>Domain subject</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>BEAM (<code>Taskweft.plan/1</code>)</td>
-<td>Platform graph: users, permissions, zone events, upload workflows</td>
-<td>Application logic — access control, scheduling, delegation chains</td>
-</tr>
-<tr class="even">
-<td>Zone server (<code>tw_seek_plan()</code>)</td>
-<td>Simulation state: entity position, threat sensors, cooldowns</td>
-<td>Entity behaviour — jellyfish action selection within the physics loop</td>
-</tr>
-</tbody>
-</table>
-<p>BEAM-side plans operate asynchronously outside any tick budget and are uploaded to the CDN as data. Zone-server plans run synchronously within tick constraints and are never visible to BEAM. Neither side needs to model the other’s domain.</p>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p>Multi-step behaviour emerges from the domain definition without C++ case logic. Adding a new species is a new JSON-LD file. Temporal constraints prevent physically impossible action sequences. Incremental replan handles dynamic threats without restarting from the root. ReBAC capability gating unifies entity permissions with entity behaviour.</p>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>Each entity carries a live plan and a solution tree. At 511 jellyfish, memory per entity must be bounded. Plans longer than 8 steps should not be generated — a domain with long decomposition chains will be capped at <code>TW_MAX_DEPTH = 8</code> (configurable, default 256 upstream). The planner is not called per tick so this is not a throughput concern; it is a latency concern on replan when many entities detect the same threat simultaneously.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Hot-reloading the <strong>domain</strong> via the NIF breaks zone ACID: the entity state was produced by applying actions defined in the current domain, so a new domain with different state keys or action effects leaves the entity state in a configuration no valid plan could have produced. The domain and the entity state are a unit; replacing one without the other violates the invariant.</p>
-<p>Hot-reloading <strong>plans</strong> via the NIF is safe and is described above (<code>CMD_SET_ENTITY_PLAN</code>). The distinction is that a plan is a sequence of action names — it carries no schema. Validation against the loaded domain before application ensures the plan references only actions that already exist in the simulation’s state machine.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>A zone with no jellyfish entities (empty zone during off-peak hours) allocates no plan storage and never calls the planner. A zone operating at maximum entity count (1,800 slots) with all slots occupied by jellyfish exercises the worst case: up to 1,800 simultaneous replan calls on a single threat broadcast. A batched replan queue (process N entities per tick, rotate) mitigates this.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<ul>
-<li><code>multiplayer-fabric-taskweft/standalone/</code> — link directly into zone server build; no new code required</li>
-<li><code>fabric_mmog_zone.cpp</code>
-<ul>
-<li><code>_replan_jellyfish()</code>, <code>_on_threat_detected()</code> — local C++ planning path</li>
-<li><code>_on_cmd_set_entity_plan()</code> — accept JSON plan from zone-backend, validate against loaded domain before applying</li>
-<li><code>_entity_plans</code>, <code>_entity_plan_step</code>, <code>_species_domains</code></li>
-</ul></li>
-<li><code>fabric_mmog_zone.h</code> — <code>HashMap&lt;int, TwPlan&gt;</code>, <code>HashMap&lt;int, int&gt;</code>, <code>HashMap&lt;String, TwDomain&gt;</code></li>
-<li>Species domain files — <code>assets/domains/jellyfish_common.jsonld</code>, <code>jellyfish_bioluminescent.jsonld</code></li>
-<li><code>JellygridSwarm::tick()</code> — read current action from plan rather than hard-coded phase table</li>
-<li><code>multiplayer-fabric-taskweft</code> NIF — <code>Taskweft.plan/1</code> called from zone-backend; output uploaded to Uro CDN; <code>baked_url</code> distributed via <code>CMD_SET_ENTITY_PLAN</code></li>
-<li><code>Uro.Storage.upload_plan/1</code> — stores plan JSON-LD in the content-addressed store alongside mesh and domain assets</li>
-</ul>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Accepted</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>iFire</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>RECTGTN, HTN, Planning, taskweft, Jellyfish, ZoneServer, C++, Behavior, Swarm, Incremental Replan</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><code>multiplayer-fabric-taskweft/standalone/tw_planner.hpp</code> — <code>tw_seek_plan()</code>, <code>tw_plan_with_tree()</code></li>
-<li><code>multiplayer-fabric-taskweft/standalone/tw_replan.hpp</code> — <code>tw_replan_incremental()</code></li>
-<li><code>multiplayer-fabric-taskweft/standalone/tw_soltree.hpp</code> — solution tree checkpoint/restore</li>
-<li><code>multiplayer-fabric-taskweft/lean/Planner.lean</code> — formal RECTGTN specification</li>
-<li><code>20260421-rebac-zone-server-enforcement.md</code> — ReBAC capability checks at join and instance time</li>
-<li><code>multiplayer-fabric-godot/modules/multiplayer_fabric_mmog/CONCEPT_MMOG.md</code> — aquarium PoC scope</li>
-</ol>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20260421-rectgtn-jellyfish-behavior.html</guid>
-  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 13:11:42 GMT</pubDate>
 </item>
 </channel>
 </rss>
