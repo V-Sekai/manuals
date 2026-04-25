@@ -65,14 +65,14 @@ public class EventExample : UdonSharpBehaviour
 
 ## The Benefits
 
-- **Improved Readability**: Clear guidelines enhance the readability of networking code.
-- **Consistency**: Ensures uniformity in how networking tasks are handled across different projects.
-- **Efficiency**: Streamlined processes make it easier for developers to implement networking features quickly.
+- Clear guidelines enhance the readability of networking code.
+- Ensures uniformity in how networking tasks are handled across different projects.
+- Streamlined processes make it easier for developers to implement networking features quickly.
 
 ## The Downsides
 
-- **Initial Setup Time**: Establishing and fine-tuning the mental model requires an initial investment of time and resources.
-- **Limited Flexibility**: Strict adherence to the model may limit creative solutions to unique problems.
+- Establishing and fine-tuning the mental model requires an initial investment of time and resources.
+- Strict adherence to the model may limit creative solutions to unique problems.
 
 ## The Road Not Taken
 
@@ -162,8 +162,8 @@ AI assistant Aria assisted with this article.
 
 **Answer:** Yes, `UdonSharpBehaviour` instances can communicate with each other. Here are some ways they can interact:
 
-- **Custom Network Events:** You can send custom network events (with zero parameters) to trigger actions in other `UdonSharpBehaviour` instances. The receiver won't know who the sender is, and the action will be performed locally on the `UdonSharpBehaviour`'s current frame.
-- **Synced Variables:** If you need to send data, it's better to use synced variables rather than mixing them with network events. When these variables get updated, the `OnDeserialization()` method will be called. This is a function in `UdonSharpBehaviour` that you can override to handle any work needed with the updated variables.
+- You can send custom network events (with zero parameters) to trigger actions in other `UdonSharpBehaviour` instances. The receiver won't know who the sender is, and the action will be performed locally on the `UdonSharpBehaviour`'s current frame.
+- If you need to send data, it's better to use synced variables rather than mixing them with network events. When these variables get updated, the `OnDeserialization()` method will be called. This is a function in `UdonSharpBehaviour` that you can override to handle any work needed with the updated variables.
 
 ### Question: How should I represent the entire state in a networked application?
 

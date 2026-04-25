@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- **Status:** Proposed
-- **Deciders:** V-Sekai Team
-- **Tags:** `headless`, `backend`, `launcher`, `updater`
+- Proposed
+- V-Sekai Team
+- `headless`, `backend`, `launcher`, `updater`
 
 ## Backdrop
 

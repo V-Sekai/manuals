@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- **Status**: Proposed
-- **Deciders**: V-Sekai
-- **Tags**: FBX Test Files, LOD Optimization, V-Sekai, File Testing
+- Proposed
+- V-Sekai
+- FBX Test Files, LOD Optimization, V-Sekai, File Testing
 
 ## The Backdrop
 

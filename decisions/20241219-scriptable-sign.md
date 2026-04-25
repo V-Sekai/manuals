@@ -30,17 +30,17 @@ Currently, V-Sekai offers limited options for users to leave persistent messages
 
 ## The Benefits
 
-- **Enhanced Communication:** Scriptable signs provide a flexible channel for asynchronous communication, allowing users to leave messages, share thoughts, or provide information in engaging ways.
-- **Increased Social Interaction:** The customizable "like" system encourages interaction and feedback between users, fostering a sense of community.
-- **Creative Expression and User-Generated Content:** Empowers users to personalize the V-Sekai world and express themselves creatively by designing unique sign experiences.
-- **Deeper Integration with V-Sekai:** Leverages existing Godot infrastructure for a more cohesive and extensible implementation.
-- **Potential for Community-Driven Development:** Users can share and collaborate on sign scripts, fostering a vibrant ecosystem of user-generated content.
+- Scriptable signs provide a flexible channel for asynchronous communication, allowing users to leave messages, share thoughts, or provide information in engaging ways.
+- The customizable "like" system encourages interaction and feedback between users, fostering a sense of community.
+- Empowers users to personalize the V-Sekai world and express themselves creatively by designing unique sign experiences.
+- Leverages existing Godot infrastructure for a more cohesive and extensible implementation.
+- Users can share and collaborate on sign scripts, fostering a vibrant ecosystem of user-generated content.
 
 ## The Downsides
 
-- **Learning Curve:** May require users to have some familiarity with Godot scripting or be willing to learn. **Mitigation:** Provide comprehensive tutorials and readily available examples.
-- **Security and Stability:** Robust security measures are crucial to prevent malicious scripts from affecting the V-Sekai environment. **Mitigation:** Implement a script review process and sandboxing mechanisms.
-- **Performance Impact:** Careful optimization of user-created scripts will be essential to maintain overall performance. **Mitigation:** Provide clear guidelines and limitations on script complexity.
+- May require users to have some familiarity with Godot scripting or be willing to learn. **Mitigation:** Provide comprehensive tutorials and readily available examples.
+- Robust security measures are crucial to prevent malicious scripts from affecting the V-Sekai environment. **Mitigation:** Implement a script review process and sandboxing mechanisms.
+- Careful optimization of user-created scripts will be essential to maintain overall performance. **Mitigation:** Provide clear guidelines and limitations on script complexity.
 
 ## The Road Not Taken
 

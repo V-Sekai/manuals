@@ -45,13 +45,13 @@ Development Applications (V-Sekai, etc.)
 
 ## The Benefits
 
-- **Easy Remote Administration**: Both solutions provide web-based interfaces for internet-accessible management
-- **Container Support**: Native support for containers and cloud-init simplifies deployment workflows
-- **Laptop Development**: Both can run on developer laptops or VMs for local testing environments
-- **Cost Effective**: Free community/open-source licensing for development use
-- **Open Source Options**: Harvester provides fully open-source alternative to Nutanix's hybrid model
-- **Cloud Portability**: Applications remain deployable on cloud platforms without hypervisor dependencies
-- **Modern Architecture**: Built on proven open-source technologies (Linux, KVM, Kubernetes)
+- Both solutions provide web-based interfaces for internet-accessible management
+- Native support for containers and cloud-init simplifies deployment workflows
+- Both can run on developer laptops or VMs for local testing environments
+- Free community/open-source licensing for development use
+- Harvester provides fully open-source alternative to Nutanix's hybrid model
+- Applications remain deployable on cloud platforms without hypervisor dependencies
+- Built on proven open-source technologies (Linux, KVM, Kubernetes)
 
 ## The Downsides
 
@@ -76,16 +76,16 @@ Development Applications (V-Sekai, etc.)
 
 ## The Road Not Taken
 
-- **Proxmox Only**: While viable, it lacks the integrated HCI features and container management capabilities of both Nutanix and Harvester
-- **Cloud-Only Approach**: Would sacrifice local development environments and easy remote administration capabilities
-- **Custom Hypervisor Solution**: Would require significant development effort for features already available in mature open-source solutions
-- **Single Vendor Lock-in**: Choosing only proprietary solutions without open-source alternatives
+- While viable, it lacks the integrated HCI features and container management capabilities of both Nutanix and Harvester
+- Would sacrifice local development environments and easy remote administration capabilities
+- Would require significant development effort for features already available in mature open-source solutions
+- Choosing only proprietary solutions without open-source alternatives
 
 ## The Infrequent Use Case
 
-- **Large-Scale Production**: When infrastructure exceeds 4 nodes or requires enterprise support beyond Community Edition
-- **Air-Gapped Environments**: Where internet-based administration tools cannot be used
-- **Minimal Resource Scenarios**: Where hypervisor overhead is unacceptable for resource-constrained deployments
+- When infrastructure exceeds 4 nodes or requires enterprise support beyond Community Edition
+- Where internet-based administration tools cannot be used
+- Where hypervisor overhead is unacceptable for resource-constrained deployments
 
 ## In Core and Done by Us
 

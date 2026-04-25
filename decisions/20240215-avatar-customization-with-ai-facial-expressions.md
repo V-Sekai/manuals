@@ -14,8 +14,8 @@ To be determined.
 
 ## The Benefits
 
-- **Enhanced realism** and emotional conveyance in avatars.
-- **Greater diversity** in facial expressions enriches communication between users.
+- and emotional conveyance in avatars.
+- in facial expressions enriches communication between users.
 - Simplification of complex expression creation makes **avatar personalization accessible** to all skill levels.
 
 ## The Downsides

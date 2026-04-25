@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- **Status:** Proposed
-- **Deciders:** V-Sekai, fire
-- **Tags:** V-Sekai
+- Proposed
+- V-Sekai, fire
+- V-Sekai
 
 ## The Backdrop
 

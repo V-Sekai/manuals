@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- **Status**: Proposed
-- **Deciders**: V-Sekai Team
-- **Tags**: `Elixir`, `Livebook`, `Fedora 39`
+- Proposed
+- V-Sekai Team
+- `Elixir`, `Livebook`, `Fedora 39`
 
 ## Backdrop
 

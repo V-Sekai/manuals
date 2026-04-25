@@ -4,9 +4,9 @@
 
 We visited a VRChat world for "Zenless Zone Zero" and discussed how cool the urban maze was created. Lyuma mentioned that he prefers wild open places. We also noted how Mihoyo has three distinct settings:
 
-- **Medieval** (Genshin Impact)
-- **Urban Asia** (Zenless Zone Zero)
-- **Interstellar** (Star Rail)
+- (Genshin Impact)
+- (Zenless Zone Zero)
+- (Star Rail)
 
 ## The Problem Statement
 
@@ -21,14 +21,14 @@ We need an art direction in V-Sekai for our work. Without a defined art directio
 
 ## The Benefits
 
-- **Visual Cohesion**: A unified art direction ensures a consistent and professional appearance.
-- **Enhanced User Experience**: A well-defined aesthetic can make the virtual environment more immersive and enjoyable.
-- **Brand Identity**: Establishing a unique visual style helps in building a recognizable brand.
+- A unified art direction ensures a consistent and professional appearance.
+- A well-defined aesthetic can make the virtual environment more immersive and enjoyable.
+- Establishing a unique visual style helps in building a recognizable brand.
 
 ## The Downsides
 
-- **Limited Creativity**: Strict adherence to a specific art direction may limit creative expression.
-- **Initial Setup Time**: Developing and implementing an art direction requires an initial investment of time and resources.
+- Strict adherence to a specific art direction may limit creative expression.
+- Developing and implementing an art direction requires an initial investment of time and resources.
 
 ## The Road Not Taken
 

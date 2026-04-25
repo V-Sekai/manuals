@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- **Status:** Accepted
-- **Deciders:** V-Sekai, fire
-- **Tags:** V-Sekai, Elixir, GitHub API, Pull Requests
+- Accepted
+- V-Sekai, fire
+- V-Sekai, Elixir, GitHub API, Pull Requests
 
 ## Context
 

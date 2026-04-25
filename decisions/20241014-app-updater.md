@@ -34,14 +34,14 @@ func notify(message):
 
 ## The Benefits
 
-- **Simplicity:** Straightforward user communication.
-- **Clarity:** Clear update status messages.
-- **Performance:** Efficient use of resources through Velopack's optimized update mechanisms.
+- Straightforward user communication.
+- Clear update status messages.
+- Efficient use of resources through Velopack's optimized update mechanisms.
 
 ## The Downsides
 
-- **Lack of Visual Appeal:** Simple text might seem less professional.
-- **Dependency on External Tool:** Reliance on Velopack for update management.
+- Simple text might seem less professional.
+- Reliance on Velopack for update management.
 
 ## The Road Not Taken
 

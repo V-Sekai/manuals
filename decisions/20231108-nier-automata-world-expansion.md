@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- **Status:** Proposed
-- **Deciders:** V-Sekai
-- **Tags:** V-Sekai, Game Development, Open-world, Rich Content
+- Proposed
+- V-Sekai
+- V-Sekai, Game Development, Open-world, Rich Content
 
 ## Context
 

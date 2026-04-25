@@ -4,8 +4,8 @@
 
 V-Sekai's AI-generated VR content requires high-fidelity PreViz that preserves details from Flux/TRELLIS outputs. Current deep learning mesh-based workflows lose visual quality during generation. Key metrics:
 
-- **50k+ splats** @ 90 FPS in Godot viewport
-- **T-pose compliance** for rigging compatibility
+- @ 90 FPS in Godot viewport
+- for rigging compatibility
 
 ## Problem Statement
 
@@ -47,14 +47,14 @@ Native 3D Gaussian Splatting (3DGS) renderer for Godot 4.3+ with:
 
 ## Benefits
 
-- **98%** PreViz quality retention vs 78% mesh workflow
-- **Zero** manual retopology required
-- **1:1** AI-to-engine visual parity
+- PreViz quality retention vs 78% mesh workflow
+- manual retopology required
+- AI-to-engine visual parity
 
 ## Risks and Limitations
 
-- **Vulkan 1.3+** required (excludes legacy GPUs)
-- **18% VRAM overhead** vs mesh rendering
+- required (excludes legacy GPUs)
+- vs mesh rendering
 - Requires **NVIDIA GPUs** for optimal performance
 
 ## Alternatives Considered

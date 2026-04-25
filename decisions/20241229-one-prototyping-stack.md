@@ -106,22 +106,22 @@ sequenceDiagram
 
 ## What are the benefits of the proposal?
 
-- **Flexibility:** Godot, Elixir, and Phoenix provide a wide range of tools for prototyping diverse applications, from games and VR/AR experiences to web-based tools with cloud functionalities.
-- **Consistency:** Centering on Godot promotes consistency in code style and development practices, facilitating knowledge sharing and reducing onboarding time for new developers.
-- **Efficiency:** This approach streamlines development, reducing the overhead of managing multiple technologies and leading to faster prototyping cycles.
-- **Developer Empowerment:** A unified toolset empowers developers to explore new possibilities and contribute more effectively to the project.
+- Godot, Elixir, and Phoenix provide a wide range of tools for prototyping diverse applications, from games and VR/AR experiences to web-based tools with cloud functionalities.
+- Centering on Godot promotes consistency in code style and development practices, facilitating knowledge sharing and reducing onboarding time for new developers.
+- This approach streamlines development, reducing the overhead of managing multiple technologies and leading to faster prototyping cycles.
+- A unified toolset empowers developers to explore new possibilities and contribute more effectively to the project.
 
 ## What are the downsides of the proposal?
 
-- **Limited Flexibility in Technology Choices:** Adopting a single-stack approach may restrict the incorporation of other technologies better suited for specific requirements.
-- **Learning Curve:** Developers may need to become proficient in both client-side and server-side technologies, requiring additional training and time.
+- Adopting a single-stack approach may restrict the incorporation of other technologies better suited for specific requirements.
+- Developers may need to become proficient in both client-side and server-side technologies, requiring additional training and time.
 
 ## What are the alternative proposals?
 
 Alternative approaches, such as a multi-stack approach or relying solely on Godot without cloud capabilities, were considered.
 
-- **Multi-stack approach:** While offering flexibility in tool choice, this introduces complexities and inefficiencies. Managing multiple languages, frameworks, and deployment processes can significantly increase overhead.
-- **Godot-only approach:** Relying solely on Godot limits the ability to prototype features that require server-side logic or cloud functionalities, such as user accounts, persistent data storage, and online interactions.
+- While offering flexibility in tool choice, this introduces complexities and inefficiencies. Managing multiple languages, frameworks, and deployment processes can significantly increase overhead.
+- Relying solely on Godot limits the ability to prototype features that require server-side logic or cloud functionalities, such as user accounts, persistent data storage, and online interactions.
 
 ## When might the proposed solution be used rarely or not at all?
 
