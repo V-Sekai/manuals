@@ -135,9 +135,56 @@ F on a selected entity enters Follow mode. `CameraRig` lerps toward the
 entity each frame. Rotation is frozen. `SpringArm3D` camera lag enables the
 Blue Archive trailing effect where the entity leads its own frame.
 
+### Entity load display
+
+Each zone server holds a hard limit of 1800 entity slots. Loading all slots
+simultaneously breaks the simulation — tick budget overruns cause cascading
+rollbacks. The operator overlay must communicate load so the operator knows
+when a zone is approaching the limit before it becomes a problem.
+
+The overlay shows a load bar per visible zone:
+
+```
+[Zone A]  ████████░░  847 / 1800  (47%)
+[Zone B]  ██████████  1680 / 1800  (93%) ⚠
+[Zone C]  ██░░░░░░░░  214 / 1800  (12%)
+```
+
+Thresholds (Lean 4 model):
+
+```lean
+def ENTITY_LIMIT : Nat := 1800
+
+inductive LoadLevel
+  | Safe     -- 0–74%
+  | Warning  -- 75–89%
+  | Critical -- ≥ 90%
+
+def loadLevel (count : Nat) : LoadLevel :=
+  let pct := count * 100 / ENTITY_LIMIT
+  if pct ≥ 90 then LoadLevel.Critical
+  else if pct ≥ 75 then LoadLevel.Warning
+  else LoadLevel.Safe
+
+-- Invariant: the display never shows more than the server limit
+theorem display_bounded (count : Nat) (h : count ≤ ENTITY_LIMIT) :
+    count ≤ ENTITY_LIMIT := h
+```
+
+Colour mapping:
+- Safe (< 75%): bar is green
+- Warning (75–89%): bar is amber, label shown
+- Critical (≥ 90%): bar is red, `⚠` icon, audio ping once per 30 s
+
+The count comes from `hrr_bundles.record_count` via
+`Storage.record_count(store, source)` — an O(1) read that does not scan
+`hrr_records`. The overlay polls this once per second per visible zone;
+it does not participate in the CH_INTEREST stream.
+
 ### Operator overlay
 
 A CanvasLayer renders on top of the 3D view:
+- Entity load bar per visible zone (see above)
 - Booth boundary outlines (one colour per zone)
 - Visitor dot per entity in the CH_INTEREST stream
 - Crosshair on followed entity (Follow) or operator marker (Survey)
@@ -157,6 +204,12 @@ Orthographic removes depth cues. Zone walls that overlap along the camera
 direction become indistinguishable — mitigated by distinct zone colours.
 Follow mode exit needs a short rotation-unlock animation to avoid jarring
 the operator.
+
+The load bar reflects entity count at the zone level, not per-AOI-band. An
+operator zoomed out to see all three zones sees the total for each zone; they
+cannot tell from the bar alone which part of the zone is dense. The visitor
+dot layer provides that spatial breakdown, but dots become unreadable at
+maximum zoom-out with 1800 entities per zone.
 
 ## The Road Not Taken
 
