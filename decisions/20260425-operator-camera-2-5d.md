@@ -190,6 +190,3 @@ Status: Accepted
 [@godotspringarm]: "SpringArm3D." Godot Engine Documentation. <https://docs.godotengine.org/en/stable/classes/class_springarm3d.html>
 
 [@fftisometric]: "Designing an isometric 2.5D game like Final Fantasy Tactics Advance." Game Goat. <https://gamegoat.gg/blog/designing-an-isometric-2-5d-game-like-final-fantasy-tactics-advance/29>
-
-1. [20260425-jellyfish-pass-condition.md](20260425-jellyfish-pass-condition.md) — demo pass condition this camera supports
-2. [20260421-virtual-creator-market-implementation-plan.md](20260421-virtual-creator-market-implementation-plan.md) — Phase 1 operator view items 3–6
