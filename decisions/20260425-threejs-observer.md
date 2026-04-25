@@ -2,7 +2,9 @@
 
 Supersedes: [20260425-threejs-webgpu-zone-client.md](20260425-threejs-webgpu-zone-client.md) (split)
 
-- Status: accepted
+Superseded by: [20260425-godot-observer.md](20260425-godot-observer.md)
+
+- Status: superseded
 - Deciders: V-Sekai, fire
 - Tags: V-Sekai, Threejs, WebGPU, WebTransport, Observer, ZoneServer, 20260425-threejs-observer
 

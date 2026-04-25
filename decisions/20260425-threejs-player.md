@@ -3,7 +3,9 @@
 Supersedes: [20260425-threejs-webgpu-zone-client.md](20260425-threejs-webgpu-zone-client.md) (split)
 Requires: [20260425-threejs-observer.md](20260425-threejs-observer.md)
 
-- Status: draft
+Superseded by: [20260425-godot-player.md](20260425-godot-player.md)
+
+- Status: superseded
 - Deciders: V-Sekai, fire
 - Tags: V-Sekai, Threejs, WebGPU, WebTransport, Player, ZoneServer, libriscv, taskweft, WebXR, 20260425-threejs-player
 
