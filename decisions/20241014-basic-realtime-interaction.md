@@ -73,7 +73,7 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Tags
 
-Real-time interaction, basic object manipulation, networked synchronization, user engagement, virtual collaboration, intuitive tool switching
+- Real-time interaction, basic object manipulation, networked synchronization, user engagement, virtual collaboration, intuitive tool switching, 20241014-basic-realtime-interaction
 
 ## Further Reading
 
