@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>threejs-webgpu-zone-client – V-Sekai - Manuals</title>
+<title>godot-player – V-Sekai - Manuals</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -325,21 +325,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#three.js-webgpu-client-against-the-godot-zone-server" id="toc-three.js-webgpu-client-against-the-godot-zone-server" class="nav-link active" data-scroll-target="#three.js-webgpu-client-against-the-godot-zone-server">Three.js WebGPU Client Against the Godot Zone Server</a>
+  <li><a href="#godot-native-pcvr-player" id="toc-godot-native-pcvr-player" class="nav-link active" data-scroll-target="#godot-native-pcvr-player">Godot Native PCVR Player</a>
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
   <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
   <li><a href="#cris-score" id="toc-cris-score" class="nav-link" data-scroll-target="#cris-score">CRIS Score</a></li>
   <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a>
   <ul class="collapse">
-  <li><a href="#wire-protocol-ch_interest-read-only-100-bytes-per-entity" id="toc-wire-protocol-ch_interest-read-only-100-bytes-per-entity" class="nav-link" data-scroll-target="#wire-protocol-ch_interest-read-only-100-bytes-per-entity">Wire protocol — CH_INTEREST (read only, 100 bytes per entity)</a></li>
-  <li><a href="#typescript-packet-parser" id="toc-typescript-packet-parser" class="nav-link" data-scroll-target="#typescript-packet-parser">TypeScript packet parser</a></li>
-  <li><a href="#three.js-webgpu-scene" id="toc-three.js-webgpu-scene" class="nav-link" data-scroll-target="#three.js-webgpu-scene">Three.js WebGPU scene</a></li>
-  <li><a href="#webtransport-connection" id="toc-webtransport-connection" class="nav-link" data-scroll-target="#webtransport-connection">WebTransport connection</a></li>
-  <li><a href="#operator-overlay" id="toc-operator-overlay" class="nav-link" data-scroll-target="#operator-overlay">Operator overlay</a></li>
+  <li><a href="#ch_player-write-path" id="toc-ch_player-write-path" class="nav-link" data-scroll-target="#ch_player-write-path">CH_PLAYER write path</a></li>
+  <li><a href="#scene-structure" id="toc-scene-structure" class="nav-link" data-scroll-target="#scene-structure">Scene structure</a></li>
+  <li><a href="#openxr-vr-presence" id="toc-openxr-vr-presence" class="nav-link" data-scroll-target="#openxr-vr-presence">OpenXR VR presence</a></li>
+  <li><a href="#entity-control-jellyfish-spawn" id="toc-entity-control-jellyfish-spawn" class="nav-link" data-scroll-target="#entity-control-jellyfish-spawn">Entity control — jellyfish spawn</a></li>
+  <li><a href="#rectgtn-planning" id="toc-rectgtn-planning" class="nav-link" data-scroll-target="#rectgtn-planning">RECTGTN planning</a></li>
+  <li><a href="#godot-sandbox-behaviors" id="toc-godot-sandbox-behaviors" class="nav-link" data-scroll-target="#godot-sandbox-behaviors">godot-sandbox behaviors</a></li>
   </ul></li>
-  <li><a href="#client-split" id="toc-client-split" class="nav-link" data-scroll-target="#client-split">Client split</a></li>
-  <li><a href="#extending-the-browser-client" id="toc-extending-the-browser-client" class="nav-link" data-scroll-target="#extending-the-browser-client">Extending the browser client</a></li>
   <li><a href="#the-downsides" id="toc-the-downsides" class="nav-link" data-scroll-target="#the-downsides">The Downsides</a></li>
   <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
   <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
@@ -347,7 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260425-threejs-webgpu-zone-client.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260425-godot-player.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
@@ -356,20 +355,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="three.js-webgpu-client-against-the-godot-zone-server" class="level1">
-<h1>Three.js WebGPU Client Against the Godot Zone Server</h1>
+<section id="godot-native-pcvr-player" class="level1">
+<h1>Godot Native PCVR Player</h1>
+<p>Supersedes: <a href="../decisions/20260425-threejs-player.html">20260425-threejs-player.md</a></p>
 <ul>
-<li>Status: Superseded by <a href="../decisions/20260425-godot-observer.html">20260425-godot-observer.md</a> and <a href="../decisions/20260425-godot-player.html">20260425-godot-player.md</a></li>
+<li>Status: draft</li>
 <li>Deciders: V-Sekai, fire</li>
-<li>Tags: V-Sekai, Threejs, WebGPU, WebTransport, ZoneServer, Client, 20260425-threejs-webgpu-zone-client</li>
+<li>Tags: V-Sekai, Godot, WebTransport, Player, PCVR, OpenXR, ZoneServer, OperatorCamera, 20260425-godot-player</li>
 </ul>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>The Godot web export path requires a wasm32/wasm64 build, COOP/COEP headers, SharedArrayBuffer, and a service worker. Three.js r171+ ships a production-ready WebGPU renderer <span class="citation" data-cites="threejswebgpu2026">(<a href="#ref-threejswebgpu2026" role="doc-biblioref"><strong>threejswebgpu2026?</strong></a>)</span> supported on all major browsers including iOS Safari since September 2025. The zone server already speaks WebTransport. The CH_INTEREST packet format is fully specified in <code>fabric_zone_types.h</code> — 100 bytes per entity, fixed offsets, no Godot dependency.</p>
+<p>The Godot native desktop/PCVR client (<code>observer.tscn</code> with <code>OperatorRig</code> and <code>operator_camera.gd</code>) is already the reference implementation for the operator view. It runs the same <code>FabricMultiplayerPeer</code> C++ peer as the zone server. Stage 2 adds entity control: CH_PLAYER writes, OpenXR VR presence, and taskweft RECTGTN planning — all in GDScript and C++, with no browser runtime and no TypeScript.</p>
 </section>
 <section id="the-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>The Godot web export client blocks on a multi-minute wasm build for every iteration. Three.js + WebTransport eliminates the build step entirely: connect, parse the 100-byte wire format, render. The operator camera overlay — load bars, dot clustering — becomes plain DOM/Canvas over a Three.js scene.</p>
+<p>The Three.js player (<span class="citation" data-cites="threejsplayer">(<a href="#ref-threejsplayer" role="doc-biblioref"><strong>threejsplayer?</strong></a>)</span>) required a TypeScript CH_PLAYER write path, a libriscv WASM ABI shim for GDScript behaviors, a taskweft Emscripten build, and WebXR for VR presence. Each of those is an unverified integration point. The Godot native path replaces all four with the existing Godot XR tools, native taskweft, and the godot-sandbox RISC-V guest already tested on desktop.</p>
 </section>
 <section id="cris-score" class="level2">
 <h2 class="anchored" data-anchor-id="cris-score">CRIS Score</h2>
@@ -389,178 +389,101 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>Complexity:</td>
-<td>+1</td>
-<td>The packet format is bounded and documented. Three.js WebGPU is production-ready. Dual-client risk is real but contained to the read path.</td>
+<td>0</td>
+<td>CH_PLAYER GDScript write path is straightforward. OpenXR via Godot XR tools is documented. Entity control state machine needs care.</td>
 </tr>
 <tr class="even">
 <td>Reach:</td>
 <td>+1</td>
-<td>Pure browser, no WASM, no install, no service worker. Works wherever WebGPU is supported.</td>
+<td>PCVR headsets and desktop operators; native performance; no browser install.</td>
 </tr>
 <tr class="odd">
 <td>Impediment:</td>
 <td>+1</td>
-<td>The wasm build blocks every iteration of the operator camera and overlay work. Three.js removes the bottleneck.</td>
+<td>Without entity control, the operator can only observe — cannot spawn jellyfish or trigger behavior changes.</td>
 </tr>
 <tr class="even">
 <td>Stakeholder:</td>
 <td>+1</td>
-<td>The aquarium demo needs to ship. A Three.js client reaches the demo faster than the Godot wasm path.</td>
+<td>Creator market and VR demo both depend on interactive entity control.</td>
 </tr>
 <tr class="odd">
 <td><strong>Total</strong></td>
-<td><strong>+4</strong></td>
-<td>Build it.</td>
+<td><strong>+3</strong></td>
+<td>Schedule soon; unblock observer (Phase 1 GO) first.</td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="design" class="level2">
 <h2 class="anchored" data-anchor-id="design">Design</h2>
-<section id="wire-protocol-ch_interest-read-only-100-bytes-per-entity" class="level3">
-<h3 class="anchored" data-anchor-id="wire-protocol-ch_interest-read-only-100-bytes-per-entity">Wire protocol — CH_INTEREST (read only, 100 bytes per entity)</h3>
-<pre><code>Offset  Size  Field
-  0       4   global_id (int32)
-  4      24   cx, cy, cz (float64 × 3)
- 28      12   vx, vy, vz (int16 × 3, scale V_SCALE)
- 34       6   ax, ay, az (int16 × 3, scale A_SCALE)
- 40       4   hlc = tick(24b) | counter(8b)
- 44      56   payload[14] (uint32 × 14)
-
-payload[0] bits:
-  [31:24] entity_class   (0=NPC, 1=player, 2=prop, 3=effect, 4=humanoid bone)
-  [23: 8] owner_id
-  [ 7: 0] state_flags</code></pre>
-<p>For class=4 (V-Sekai humanoid bone):</p>
-<pre><code>payload[1] = axis_x int16 (lo) | axis_y int16 (hi)  — swing ±1 → ±32767
-payload[2] = axis_z int16 (lo) | reserved            — twist axis</code></pre>
-<p>Bones are stored as swing/twist triplets in [-1, 1], consistent with <code>TransformUtil.swing_twist</code> in the humanoid project and the camera ADR <a href="../decisions/20260425-operator-camera-2-5d.html">20260425-operator-camera-2-5d.md</a>.</p>
+<section id="ch_player-write-path" class="level3">
+<h3 class="anchored" data-anchor-id="ch_player-write-path">CH_PLAYER write path</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode gdscript code-with-copy"><code class="sourceCode gdscript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">func</span> <span class="fu">send_player_input</span>(entity_id: int, pos: Vector3, payload: PackedInt32Array) <span class="op">-&gt;</span> void:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> buf :<span class="op">=</span> <span class="fu">PackedByteArray</span>()</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    buf.<span class="fu">resize</span>(<span class="dv">100</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    buf.<span class="fu">encode_s32</span>(<span class="dv">0</span>, entity_id)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    buf.<span class="fu">encode_double</span>(<span class="dv">4</span>,  pos.x)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    buf.<span class="fu">encode_double</span>(<span class="dv">12</span>, pos.y)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    buf.<span class="fu">encode_double</span>(<span class="dv">20</span>, pos.z)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># payload[0..13] at offset 44</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">14</span>):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        buf.<span class="fu">encode_u32</span>(<span class="dv">44</span> <span class="op">+</span> i <span class="op">*</span> <span class="dv">4</span>, payload[i])</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">_peer</span>.<span class="fu">put_packet</span>(buf)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">_peer</span>.<span class="fu">set_transfer_mode</span>(MultiplayerPeer.TRANSFER_MODE_UNRELIABLE)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The same 100-byte layout as CH_INTEREST. Datagrams are UNRELIABLE — fire and forget, no retransmit.</p>
 </section>
-<section id="typescript-packet-parser" class="level3">
-<h3 class="anchored" data-anchor-id="typescript-packet-parser">TypeScript packet parser</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode ts code-with-copy"><code class="sourceCode typescript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> V_SCALE <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> <span class="dv">100</span><span class="op">;</span>   <span class="co">// int16 → m/s</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> A_SCALE <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> <span class="dv">1000</span><span class="op">;</span>  <span class="co">// int16 → m/s²</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> Entity {</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  id<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  pos<span class="op">:</span> [<span class="dt">number</span><span class="op">,</span> <span class="dt">number</span><span class="op">,</span> <span class="dt">number</span>]<span class="op">;</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  vel<span class="op">:</span> [<span class="dt">number</span><span class="op">,</span> <span class="dt">number</span><span class="op">,</span> <span class="dt">number</span>]<span class="op">;</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  entityClass<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  ownerId<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  payload<span class="op">:</span> <span class="bu">Uint32Array</span><span class="op">;</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">parseInterest</span>(buf<span class="op">:</span> <span class="bu">ArrayBuffer</span>)<span class="op">:</span> Entity[] {</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> view <span class="op">=</span> <span class="kw">new</span> <span class="bu">DataView</span>(buf)<span class="op">;</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> count <span class="op">=</span> buf<span class="op">.</span><span class="at">byteLength</span> <span class="op">/</span> <span class="dv">100</span><span class="op">;</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> out<span class="op">:</span> Entity[] <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> count<span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> o <span class="op">=</span> i <span class="op">*</span> <span class="dv">100</span><span class="op">;</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    out<span class="op">.</span><span class="fu">push</span>({</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>      id<span class="op">:</span>    view<span class="op">.</span><span class="fu">getInt32</span>(o<span class="op">,</span> <span class="kw">true</span>)<span class="op">,</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>      pos<span class="op">:</span>   [view<span class="op">.</span><span class="fu">getFloat64</span>(o <span class="op">+</span> <span class="dv">4</span><span class="op">,</span>  <span class="kw">true</span>)<span class="op">,</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>              view<span class="op">.</span><span class="fu">getFloat64</span>(o <span class="op">+</span> <span class="dv">12</span><span class="op">,</span> <span class="kw">true</span>)<span class="op">,</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>              view<span class="op">.</span><span class="fu">getFloat64</span>(o <span class="op">+</span> <span class="dv">20</span><span class="op">,</span> <span class="kw">true</span>)]<span class="op">,</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>      vel<span class="op">:</span>   [view<span class="op">.</span><span class="fu">getInt16</span>(o <span class="op">+</span> <span class="dv">28</span><span class="op">,</span> <span class="kw">true</span>) <span class="op">*</span> V_SCALE<span class="op">,</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>              view<span class="op">.</span><span class="fu">getInt16</span>(o <span class="op">+</span> <span class="dv">30</span><span class="op">,</span> <span class="kw">true</span>) <span class="op">*</span> V_SCALE<span class="op">,</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>              view<span class="op">.</span><span class="fu">getInt16</span>(o <span class="op">+</span> <span class="dv">32</span><span class="op">,</span> <span class="kw">true</span>) <span class="op">*</span> V_SCALE]<span class="op">,</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>      entityClass<span class="op">:</span> (view<span class="op">.</span><span class="fu">getUint32</span>(o <span class="op">+</span> <span class="dv">44</span><span class="op">,</span> <span class="kw">true</span>) <span class="op">&gt;&gt;</span> <span class="dv">24</span>) <span class="op">&amp;</span> <span class="bn">0xff</span><span class="op">,</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>      ownerId<span class="op">:</span>     (view<span class="op">.</span><span class="fu">getUint32</span>(o <span class="op">+</span> <span class="dv">44</span><span class="op">,</span> <span class="kw">true</span>) <span class="op">&gt;&gt;</span>  <span class="dv">8</span>) <span class="op">&amp;</span> <span class="bn">0xffff</span><span class="op">,</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>      payload<span class="op">:</span>     <span class="kw">new</span> <span class="bu">Uint32Array</span>(buf<span class="op">,</span> o <span class="op">+</span> <span class="dv">44</span><span class="op">,</span> <span class="dv">14</span>)<span class="op">,</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> out<span class="op">;</span></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="scene-structure" class="level3">
+<h3 class="anchored" data-anchor-id="scene-structure">Scene structure</h3>
+<pre><code>observer.tscn
+└─ OperatorRig                  # operator_camera.gd — Survey / Follow modes
+   └─ CameraPivot
+      └─ SpringArm3D
+         └─ Camera3D
+└─ FabricClient                 # fabric_client.gd → FabricMultiplayerPeer
+└─ EntityRoot                   # _entity_nodes populated by FabricClient
+└─ XROrigin3D                   # OpenXR — added for VR presence
+   └─ XRCamera3D
+   └─ XRController3D (left)
+   └─ XRController3D (right)</code></pre>
+<p><code>XROrigin3D</code> is added only when <code>XRServer.get_primary_interface()</code> returns a valid OpenXR interface. Desktop operators use the operator camera without XR.</p>
 </section>
-<section id="three.js-webgpu-scene" class="level3">
-<h3 class="anchored" data-anchor-id="three.js-webgpu-scene">Three.js WebGPU scene</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode ts code-with-copy"><code class="sourceCode typescript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="op">*</span> <span class="im">as</span> THREE <span class="im">from</span> <span class="st">"three"</span><span class="op">;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { WebGPURenderer } <span class="im">from</span> <span class="st">"three/webgpu"</span><span class="op">;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> renderer <span class="op">=</span> <span class="kw">new</span> <span class="fu">WebGPURenderer</span>({ antialias<span class="op">:</span> <span class="kw">true</span> })<span class="op">;</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> renderer<span class="op">.</span><span class="fu">init</span>()<span class="op">;</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> scene <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">Scene</span>()<span class="op">;</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> camera <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">OrthographicCamera</span>(<span class="op">...</span>)<span class="op">;</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>camera<span class="op">.</span><span class="at">rotation</span><span class="op">.</span><span class="at">x</span> <span class="op">=</span> <span class="op">-</span>(<span class="fl">0.153</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> <span class="dv">2</span>)<span class="op">;</span>  <span class="co">// SWING_ELEVATION</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">// One InstancedMesh per entity class — 1800 entities, one draw call.</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> jellyMesh <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">InstancedMesh</span>(jellyGeom<span class="op">,</span> jellyMat<span class="op">,</span> <span class="dv">1800</span>)<span class="op">;</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>scene<span class="op">.</span><span class="fu">add</span>(jellyMesh)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="openxr-vr-presence" class="level3">
+<h3 class="anchored" data-anchor-id="openxr-vr-presence">OpenXR VR presence</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode gdscript code-with-copy"><code class="sourceCode gdscript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">func</span> <span class="bu">_ready</span>() <span class="op">-&gt;</span> void:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> xr :<span class="op">=</span> XRServer.<span class="fu">find_interface</span>(<span class="st">"OpenXR"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> xr <span class="kw">and</span> xr.<span class="fu">initialize</span>():</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">get_viewport</span>().use_xr <span class="op">=</span> <span class="va">true</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Godot XR tools handle headset rendering. The Three.js WebXR path (WebXR Device API + <code>VRButton</code>) is not needed.</p>
 </section>
-<section id="webtransport-connection" class="level3">
-<h3 class="anchored" data-anchor-id="webtransport-connection">WebTransport connection</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode ts code-with-copy"><code class="sourceCode typescript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> wt <span class="op">=</span> <span class="kw">new</span> <span class="fu">WebTransport</span>(<span class="vs">`https://</span><span class="sc">${</span>host<span class="sc">}</span><span class="vs">/zone`</span>)<span class="op">;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> wt<span class="op">.</span><span class="at">ready</span><span class="op">;</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> reader <span class="op">=</span> wt<span class="op">.</span><span class="at">datagrams</span><span class="op">.</span><span class="at">readable</span><span class="op">.</span><span class="fu">getReader</span>()<span class="op">;</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>(<span class="kw">function</span> <span class="fu">pump</span>(result<span class="op">:</span> ReadableStreamReadResult<span class="op">&lt;</span><span class="bu">Uint8Array</span><span class="op">&gt;</span>) {</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (result<span class="op">.</span><span class="at">done</span>) <span class="cf">return</span><span class="op">;</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> entities <span class="op">=</span> <span class="fu">parseInterest</span>(result<span class="op">.</span><span class="at">value</span><span class="op">.</span><span class="at">buffer</span>)<span class="op">;</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">updateScene</span>(entities)<span class="op">;</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  reader<span class="op">.</span><span class="fu">read</span>()<span class="op">.</span><span class="fu">then</span>(pump)<span class="op">;</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>})(<span class="cf">await</span> reader<span class="op">.</span><span class="fu">read</span>())<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The datagram reader is captured once and reused — the same exclusive-lock invariant proved in <a href="../decisions/20260425-jellyfish-game.html">20260425-jellyfish-game.md</a> and the WebTransport audit.</p>
+<section id="entity-control-jellyfish-spawn" class="level3">
+<h3 class="anchored" data-anchor-id="entity-control-jellyfish-spawn">Entity control — jellyfish spawn</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode gdscript code-with-copy"><code class="sourceCode gdscript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">func</span> <span class="fu">spawn_jellyfish</span>(pos: Vector3) <span class="op">-&gt;</span> void:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> payload :<span class="op">=</span> <span class="fu">PackedInt32Array</span>()</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    payload.<span class="fu">resize</span>(<span class="dv">14</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    payload[<span class="dv">0</span>] <span class="op">=</span> (EntityClass.JELLYFISH <span class="op">&lt;&lt;</span> <span class="dv">24</span>) <span class="op">|</span> (owner_id <span class="op">&lt;&lt;</span> <span class="dv">8</span>) <span class="op">|</span> StateFlags.SPAWNING</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">send_player_input</span>(<span class="fu">next_entity_id</span>(), pos, payload)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="operator-overlay" class="level3">
-<h3 class="anchored" data-anchor-id="operator-overlay">Operator overlay</h3>
-<p>Load bars and dot clustering (see <a href="../decisions/20260425-operator-overlay.html">20260425-operator-overlay.md</a>) become a <code>&lt;canvas&gt;</code> element over the Three.js canvas — plain 2D Context API, no CanvasLayer needed.</p>
+<section id="rectgtn-planning" class="level3">
+<h3 class="anchored" data-anchor-id="rectgtn-planning">RECTGTN planning</h3>
+<p>taskweft runs natively in Elixir on the zone backend. The GDScript client does not run the planner locally — it sends intent via CH_PLAYER and receives authoritative state via CH_INTEREST. The taskweft Emscripten WASM path from the Three.js ADR is deferred.</p>
 </section>
+<section id="godot-sandbox-behaviors" class="level3">
+<h3 class="anchored" data-anchor-id="godot-sandbox-behaviors">godot-sandbox behaviors</h3>
+<p>GDScript behavior scripts run in the godot-sandbox RISC-V guest on the native desktop client without a libriscv WASM ABI shim. The shim remains a future integration point for browser deployments only.</p>
 </section>
-<section id="client-split" class="level2">
-<h2 class="anchored" data-anchor-id="client-split">Client split</h2>
-<p>Two clients replace the previous Godot wasm web export:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 26%">
-<col style="width: 39%">
-<col style="width: 34%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Client</th>
-<th>Transport</th>
-<th>Use case</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Godot native PCVR</td>
-<td>WebTransport (picoquic)</td>
-<td>High-fidelity VR, full entity control</td>
-</tr>
-<tr class="even">
-<td>Three.js WebGPU</td>
-<td>WebTransport (browser API)</td>
-<td>Browser: operator view, WebXR VR, godot-sandbox WASM scripts, taskweft WASM planner</td>
-</tr>
-</tbody>
-</table>
-<p>The Godot wasm32/wasm64 build is dropped. The COOP/COEP service worker, SharedArrayBuffer build flags, and gescons wasm targets are no longer needed for the client path.</p>
-</section>
-<section id="extending-the-browser-client" class="level2">
-<h2 class="anchored" data-anchor-id="extending-the-browser-client">Extending the browser client</h2>
-<p>Two components can move into the browser without a Godot runtime:</p>
-<p>godot-sandbox runs GDScript as RISC-V ELF guests via libriscv. The ELF is compiled once and stored in the CDN. libriscv is the VM:</p>
-<pre><code>GDScript  → RISC-V ELF   (compile once; CDN asset)
-libriscv  → WASM          (Emscripten; browser loads VM, feeds it the ELF)</code></pre>
-<p>No binary equivalence is required. <code>WasmEquiv.lean</code> proves <code>vm_deterministic</code>: the VM is a pure function, so the same ELF + same state always yields the same result on any host.</p>
-<p>taskweft standalone headers (<code>standalone/tw_planner.hpp</code>) are header-only C++20 with no BEAM dependency and no libriscv layer — they compile directly to WASM via Emscripten. <code>emcc standalone/tw_planner.hpp -o tw_planner.wasm</code> produces a module that runs RECTGTN planning in the browser, using the same species domain JSON-LD files that drive the native zone server.</p>
-<p>VR presence uses Three.js + WebXR Device API (<code>renderer.xr.enabled = true</code>, <code>VRButton.createButton(renderer)</code>). The Godot XR layer is not required.</p>
 </section>
 <section id="the-downsides" class="level2">
 <h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>Implementing CH_PLAYER datagrams in TypeScript to send entity input is a second scope of work; the initial Three.js client is observer-only.</p>
-<p>The actual integration risk is the godot-sandbox guest ABI (syscall shim from RISC-V <code>ecall</code> to Emscripten host) and taskweft Emscripten build constraints. These are engineering work. <code>WasmEquiv.lean</code> proves <code>vm_deterministic</code> (the VM is a pure function); it does not prove the ABI shim is correct.</p>
-<p>The packet format is internal and could change without versioning. A format version byte in the first octet of CH_INTEREST would protect against silent breakage; that change belongs in a separate ADR.</p>
+<p>Native desktop/PCVR only. Browser entity control (CH_PLAYER from a browser tab) requires the Three.js write path or a future Godot wasm64 build and is deferred to SOMEDAY.</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Godot wasm32/wasm64 web export: dropped. Build friction (multi-minute compile, COOP/COEP, service worker, SharedArrayBuffer) exceeded the benefit once the native PCVR client covers VR and Three.js covers the browser.</p>
+<p>Three.js WebGPU player (<span class="citation" data-cites="threejsplayer">(<a href="#ref-threejsplayer" role="doc-biblioref"><strong>threejsplayer?</strong></a>)</span>): four unverified integration points (TypeScript CH_PLAYER, libriscv WASM ABI shim, taskweft Emscripten, WebXR). Replaced by proven Godot native stack. Browser player remains a SOMEDAY item.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Accepted</p>
+<p>Status: Draft</p>
 </section>
 <section id="decision-makers" class="level2">
 <h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
@@ -570,9 +493,11 @@ libriscv  → WASM          (Emscripten; browser loads VM, feeds it the ELF)</co
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<p><span class="citation" data-cites="threejswebgpu2026">(<a href="#ref-threejswebgpu2026" role="doc-biblioref"><strong>threejswebgpu2026?</strong></a>)</span>: “What’s New in Three.js (2026): WebGPU, New Workflows &amp; Beyond.” utsubo.com. <a href="https://www.utsubo.com/blog/threejs-2026-what-changed" class="uri">https://www.utsubo.com/blog/threejs-2026-what-changed</a></p>
-<p><span class="citation" data-cites="threejswebgpudocs">(<a href="#ref-threejswebgpudocs" role="doc-biblioref"><strong>threejswebgpudocs?</strong></a>)</span>: “WebGPU — three.js docs.” Three.js. <a href="https://threejs.org/docs/pages/WebGPU.html" class="uri">https://threejs.org/docs/pages/WebGPU.html</a></p>
-<p><span class="citation" data-cites="threejswebgpurenderer">(<a href="#ref-threejswebgpurenderer" role="doc-biblioref"><strong>threejswebgpurenderer?</strong></a>)</span>: “WebGPURenderer — three.js docs.” Three.js. <a href="https://threejs.org/docs/pages/WebGPURenderer.html" class="uri">https://threejs.org/docs/pages/WebGPURenderer.html</a></p>
+<p><span class="citation" data-cites="threejsplayer">(<a href="#ref-threejsplayer" role="doc-biblioref"><strong>threejsplayer?</strong></a>)</span>: <a href="../decisions/20260425-threejs-player.html">20260425-threejs-player.md</a> — superseded Three.js Stage 2.</p>
+<p><span class="citation" data-cites="godotobserver">(<a href="#ref-godotobserver" role="doc-biblioref"><strong>godotobserver?</strong></a>)</span>: <a href="../decisions/20260425-godot-observer.html">20260425-godot-observer.md</a> — Phase 1; must pass GO test before this ships.</p>
+<p><span class="citation" data-cites="operatorcamera">(<a href="#ref-operatorcamera" role="doc-biblioref"><strong>operatorcamera?</strong></a>)</span>: <a href="../decisions/20260425-operator-camera-2-5d.html">20260425-operator-camera-2-5d.md</a> — twist/swing [0,1] camera; Survey and Follow modes.</p>
+<p><span class="citation" data-cites="godotxrtools">(<a href="#ref-godotxrtools" role="doc-biblioref"><strong>godotxrtools?</strong></a>)</span>: “Godot XR Tools.” Godot Engine. <a href="https://github.com/GodotVR/godot-xr-tools" class="uri">https://github.com/GodotVR/godot-xr-tools</a></p>
+<p><span class="citation" data-cites="openxr">(<a href="#ref-openxr" role="doc-biblioref"><strong>openxr?</strong></a>)</span>: “OpenXR Overview.” Khronos Group. <a href="https://www.khronos.org/openxr/" class="uri">https://www.khronos.org/openxr/</a></p>
 
 
 </section>
@@ -1000,7 +925,7 @@ libriscv  → WASM          (Emscripten; browser loads VM, feeds it the ELF)</co
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260425-threejs-webgpu-zone-client.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260425-godot-player.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

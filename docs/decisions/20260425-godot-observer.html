@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>threejs-webgpu-zone-client – V-Sekai - Manuals</title>
+<title>godot-observer – V-Sekai - Manuals</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -325,21 +325,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#three.js-webgpu-client-against-the-godot-zone-server" id="toc-three.js-webgpu-client-against-the-godot-zone-server" class="nav-link active" data-scroll-target="#three.js-webgpu-client-against-the-godot-zone-server">Three.js WebGPU Client Against the Godot Zone Server</a>
+  <li><a href="#godot-native-headless-observer" id="toc-godot-native-headless-observer" class="nav-link active" data-scroll-target="#godot-native-headless-observer">Godot Native Headless Observer</a>
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
   <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
   <li><a href="#cris-score" id="toc-cris-score" class="nav-link" data-scroll-target="#cris-score">CRIS Score</a></li>
   <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a>
   <ul class="collapse">
-  <li><a href="#wire-protocol-ch_interest-read-only-100-bytes-per-entity" id="toc-wire-protocol-ch_interest-read-only-100-bytes-per-entity" class="nav-link" data-scroll-target="#wire-protocol-ch_interest-read-only-100-bytes-per-entity">Wire protocol — CH_INTEREST (read only, 100 bytes per entity)</a></li>
-  <li><a href="#typescript-packet-parser" id="toc-typescript-packet-parser" class="nav-link" data-scroll-target="#typescript-packet-parser">TypeScript packet parser</a></li>
-  <li><a href="#three.js-webgpu-scene" id="toc-three.js-webgpu-scene" class="nav-link" data-scroll-target="#three.js-webgpu-scene">Three.js WebGPU scene</a></li>
-  <li><a href="#webtransport-connection" id="toc-webtransport-connection" class="nav-link" data-scroll-target="#webtransport-connection">WebTransport connection</a></li>
-  <li><a href="#operator-overlay" id="toc-operator-overlay" class="nav-link" data-scroll-target="#operator-overlay">Operator overlay</a></li>
+  <li><a href="#cli" id="toc-cli" class="nav-link" data-scroll-target="#cli">CLI</a></li>
+  <li><a href="#scenetree-script" id="toc-scenetree-script" class="nav-link" data-scroll-target="#scenetree-script">SceneTree script</a></li>
+  <li><a href="#protocol-stack" id="toc-protocol-stack" class="nav-link" data-scroll-target="#protocol-stack">Protocol stack</a></li>
+  <li><a href="#json-dump-dump-json" id="toc-json-dump-dump-json" class="nav-link" data-scroll-target="#json-dump-dump-json">JSON dump (–dump-json)</a></li>
   </ul></li>
-  <li><a href="#client-split" id="toc-client-split" class="nav-link" data-scroll-target="#client-split">Client split</a></li>
-  <li><a href="#extending-the-browser-client" id="toc-extending-the-browser-client" class="nav-link" data-scroll-target="#extending-the-browser-client">Extending the browser client</a></li>
   <li><a href="#the-downsides" id="toc-the-downsides" class="nav-link" data-scroll-target="#the-downsides">The Downsides</a></li>
   <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
   <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
@@ -347,7 +344,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260425-threejs-webgpu-zone-client.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260425-godot-observer.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
@@ -356,20 +353,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="three.js-webgpu-client-against-the-godot-zone-server" class="level1">
-<h1>Three.js WebGPU Client Against the Godot Zone Server</h1>
+<section id="godot-native-headless-observer" class="level1">
+<h1>Godot Native Headless Observer</h1>
+<p>Supersedes: <a href="../decisions/20260425-threejs-observer.html">20260425-threejs-observer.md</a></p>
 <ul>
-<li>Status: Superseded by <a href="../decisions/20260425-godot-observer.html">20260425-godot-observer.md</a> and <a href="../decisions/20260425-godot-player.html">20260425-godot-player.md</a></li>
+<li>Status: accepted</li>
 <li>Deciders: V-Sekai, fire</li>
-<li>Tags: V-Sekai, Threejs, WebGPU, WebTransport, ZoneServer, Client, 20260425-threejs-webgpu-zone-client</li>
+<li>Tags: V-Sekai, Godot, WebTransport, Observer, ZoneServer, Headless, CI, 20260425-godot-observer</li>
 </ul>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>The Godot web export path requires a wasm32/wasm64 build, COOP/COEP headers, SharedArrayBuffer, and a service worker. Three.js r171+ ships a production-ready WebGPU renderer <span class="citation" data-cites="threejswebgpu2026">(<a href="#ref-threejswebgpu2026" role="doc-biblioref"><strong>threejswebgpu2026?</strong></a>)</span> supported on all major browsers including iOS Safari since September 2025. The zone server already speaks WebTransport. The CH_INTEREST packet format is fully specified in <code>fabric_zone_types.h</code> — 100 bytes per entity, fixed offsets, no Godot dependency.</p>
+<p>The zone server speaks WebTransport (picoquic, UDP 7443 locally / UDP 443 externally). <code>FabricMultiplayerPeer</code> is the C++ peer that wraps picoquic. <code>fabric_client.gd</code> wraps <code>FabricMultiplayerPeer</code> and populates <code>_entity_nodes</code> as CH_INTEREST datagrams arrive. A headless observer that drives this stack proves end-to-end connectivity with the real protocol implementation — no browser, no TypeScript build, no service worker.</p>
 </section>
 <section id="the-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>The Godot web export client blocks on a multi-minute wasm build for every iteration. Three.js + WebTransport eliminates the build step entirely: connect, parse the 100-byte wire format, render. The operator camera overlay — load bars, dot clustering — becomes plain DOM/Canvas over a Three.js scene.</p>
+<p>The Three.js observer (<span class="citation" data-cites="threejsobserver">(<a href="#ref-threejsobserver" role="doc-biblioref"><strong>threejsobserver?</strong></a>)</span>) required a separate TypeScript client and runtime. The Godot headless path reuses the identical C++ WebTransport peer and GDScript entity layer that ship with the zone server, closing the “different stack, different bugs” gap and enabling CI smoke tests with a single <code>godot --headless</code> invocation.</p>
 </section>
 <section id="cris-score" class="level2">
 <h2 class="anchored" data-anchor-id="cris-score">CRIS Score</h2>
@@ -390,173 +388,74 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>Complexity:</td>
 <td>+1</td>
-<td>The packet format is bounded and documented. Three.js WebGPU is production-ready. Dual-client risk is real but contained to the read path.</td>
+<td>GDScript SceneTree script; reuses existing <code>FabricMultiplayerPeer</code> and <code>fabric_client.gd</code>. No new language or build step.</td>
 </tr>
 <tr class="even">
 <td>Reach:</td>
-<td>+1</td>
-<td>Pure browser, no WASM, no install, no service worker. Works wherever WebGPU is supported.</td>
+<td>0</td>
+<td>Native desktop only. Browser observer is deferred (see SOMEDAY).</td>
 </tr>
 <tr class="odd">
 <td>Impediment:</td>
 <td>+1</td>
-<td>The wasm build blocks every iteration of the operator camera and overlay work. Three.js removes the bottleneck.</td>
+<td>Unblocks Phase 1 GO headless test and CI smoke check without new tooling.</td>
 </tr>
 <tr class="even">
 <td>Stakeholder:</td>
 <td>+1</td>
-<td>The aquarium demo needs to ship. A Three.js client reaches the demo faster than the Godot wasm path.</td>
+<td>Operator runbook and branch protection both depend on a passing GO test.</td>
 </tr>
 <tr class="odd">
 <td><strong>Total</strong></td>
-<td><strong>+4</strong></td>
-<td>Build it.</td>
+<td><strong>+3</strong></td>
+<td>Build now; browser observer is SOMEDAY.</td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="design" class="level2">
 <h2 class="anchored" data-anchor-id="design">Design</h2>
-<section id="wire-protocol-ch_interest-read-only-100-bytes-per-entity" class="level3">
-<h3 class="anchored" data-anchor-id="wire-protocol-ch_interest-read-only-100-bytes-per-entity">Wire protocol — CH_INTEREST (read only, 100 bytes per entity)</h3>
-<pre><code>Offset  Size  Field
-  0       4   global_id (int32)
-  4      24   cx, cy, cz (float64 × 3)
- 28      12   vx, vy, vz (int16 × 3, scale V_SCALE)
- 34       6   ax, ay, az (int16 × 3, scale A_SCALE)
- 40       4   hlc = tick(24b) | counter(8b)
- 44      56   payload[14] (uint32 × 14)
-
-payload[0] bits:
-  [31:24] entity_class   (0=NPC, 1=player, 2=prop, 3=effect, 4=humanoid bone)
-  [23: 8] owner_id
-  [ 7: 0] state_flags</code></pre>
-<p>For class=4 (V-Sekai humanoid bone):</p>
-<pre><code>payload[1] = axis_x int16 (lo) | axis_y int16 (hi)  — swing ±1 → ±32767
-payload[2] = axis_z int16 (lo) | reserved            — twist axis</code></pre>
-<p>Bones are stored as swing/twist triplets in [-1, 1], consistent with <code>TransformUtil.swing_twist</code> in the humanoid project and the camera ADR <a href="../decisions/20260425-operator-camera-2-5d.html">20260425-operator-camera-2-5d.md</a>.</p>
+<section id="cli" class="level3">
+<h3 class="anchored" data-anchor-id="cli">CLI</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">godot</span> <span class="at">--headless</span> <span class="at">--path</span> . <span class="dt">\</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--script</span> scripts/headless_log_observer.gd <span class="dt">\</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--</span> <span class="pp">[--</span><span class="ss">host=HOST</span><span class="pp">]</span> <span class="pp">[--</span><span class="ss">port=PORT</span><span class="pp">]</span> <span class="pp">[--</span><span class="ss">dump</span><span class="pp">-</span><span class="ss">json=PATH</span><span class="pp">]</span> <span class="pp">[--</span><span class="ss">frames=N</span><span class="pp">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Defaults: <code>host=127.0.0.1 port=7443 frames=600</code></p>
+<p>Exit 0 when <code>_entity_nodes.size() &gt; 0</code>. Exit 1 on timeout with no entities.</p>
 </section>
-<section id="typescript-packet-parser" class="level3">
-<h3 class="anchored" data-anchor-id="typescript-packet-parser">TypeScript packet parser</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode ts code-with-copy"><code class="sourceCode typescript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> V_SCALE <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> <span class="dv">100</span><span class="op">;</span>   <span class="co">// int16 → m/s</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> A_SCALE <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> <span class="dv">1000</span><span class="op">;</span>  <span class="co">// int16 → m/s²</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> Entity {</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  id<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  pos<span class="op">:</span> [<span class="dt">number</span><span class="op">,</span> <span class="dt">number</span><span class="op">,</span> <span class="dt">number</span>]<span class="op">;</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  vel<span class="op">:</span> [<span class="dt">number</span><span class="op">,</span> <span class="dt">number</span><span class="op">,</span> <span class="dt">number</span>]<span class="op">;</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  entityClass<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  ownerId<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  payload<span class="op">:</span> <span class="bu">Uint32Array</span><span class="op">;</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">parseInterest</span>(buf<span class="op">:</span> <span class="bu">ArrayBuffer</span>)<span class="op">:</span> Entity[] {</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> view <span class="op">=</span> <span class="kw">new</span> <span class="bu">DataView</span>(buf)<span class="op">;</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> count <span class="op">=</span> buf<span class="op">.</span><span class="at">byteLength</span> <span class="op">/</span> <span class="dv">100</span><span class="op">;</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> out<span class="op">:</span> Entity[] <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> count<span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> o <span class="op">=</span> i <span class="op">*</span> <span class="dv">100</span><span class="op">;</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    out<span class="op">.</span><span class="fu">push</span>({</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>      id<span class="op">:</span>    view<span class="op">.</span><span class="fu">getInt32</span>(o<span class="op">,</span> <span class="kw">true</span>)<span class="op">,</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>      pos<span class="op">:</span>   [view<span class="op">.</span><span class="fu">getFloat64</span>(o <span class="op">+</span> <span class="dv">4</span><span class="op">,</span>  <span class="kw">true</span>)<span class="op">,</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>              view<span class="op">.</span><span class="fu">getFloat64</span>(o <span class="op">+</span> <span class="dv">12</span><span class="op">,</span> <span class="kw">true</span>)<span class="op">,</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>              view<span class="op">.</span><span class="fu">getFloat64</span>(o <span class="op">+</span> <span class="dv">20</span><span class="op">,</span> <span class="kw">true</span>)]<span class="op">,</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>      vel<span class="op">:</span>   [view<span class="op">.</span><span class="fu">getInt16</span>(o <span class="op">+</span> <span class="dv">28</span><span class="op">,</span> <span class="kw">true</span>) <span class="op">*</span> V_SCALE<span class="op">,</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>              view<span class="op">.</span><span class="fu">getInt16</span>(o <span class="op">+</span> <span class="dv">30</span><span class="op">,</span> <span class="kw">true</span>) <span class="op">*</span> V_SCALE<span class="op">,</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>              view<span class="op">.</span><span class="fu">getInt16</span>(o <span class="op">+</span> <span class="dv">32</span><span class="op">,</span> <span class="kw">true</span>) <span class="op">*</span> V_SCALE]<span class="op">,</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>      entityClass<span class="op">:</span> (view<span class="op">.</span><span class="fu">getUint32</span>(o <span class="op">+</span> <span class="dv">44</span><span class="op">,</span> <span class="kw">true</span>) <span class="op">&gt;&gt;</span> <span class="dv">24</span>) <span class="op">&amp;</span> <span class="bn">0xff</span><span class="op">,</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>      ownerId<span class="op">:</span>     (view<span class="op">.</span><span class="fu">getUint32</span>(o <span class="op">+</span> <span class="dv">44</span><span class="op">,</span> <span class="kw">true</span>) <span class="op">&gt;&gt;</span>  <span class="dv">8</span>) <span class="op">&amp;</span> <span class="bn">0xffff</span><span class="op">,</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>      payload<span class="op">:</span>     <span class="kw">new</span> <span class="bu">Uint32Array</span>(buf<span class="op">,</span> o <span class="op">+</span> <span class="dv">44</span><span class="op">,</span> <span class="dv">14</span>)<span class="op">,</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> out<span class="op">;</span></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="scenetree-script" class="level3">
+<h3 class="anchored" data-anchor-id="scenetree-script">SceneTree script</h3>
+<p><code>headless_log_observer.gd</code> extends <code>SceneTree</code>. On <code>_init</code> it instantiates <code>fabric_client.gd</code>, sets <code>zone_host</code> and <code>zone_port</code>, and connects <code>process_frame</code> to a polling handler that reads <code>_entity_nodes</code> from the client every 60 frames. When entities arrive it optionally serialises them to JSON via <code>--dump-json</code> and calls <code>quit(0)</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode gdscript code-with-copy"><code class="sourceCode gdscript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">func</span> <span class="fu">_collect_entities</span>() <span class="op">-&gt;</span> Array:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> nodes <span class="op">=</span> client.<span class="fu">get</span>(<span class="st">"_entity_nodes"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k <span class="kw">in</span> nodes.<span class="fu">keys</span>():</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> node :<span class="op">=</span> nodes[k] <span class="kw">as</span> Node3D</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> node <span class="kw">and</span> <span class="bu">is_instance_valid</span>(node):</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            out.<span class="fu">append</span>({<span class="st">"id"</span>: k, <span class="st">"pos"</span>: node.global_position})</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="three.js-webgpu-scene" class="level3">
-<h3 class="anchored" data-anchor-id="three.js-webgpu-scene">Three.js WebGPU scene</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode ts code-with-copy"><code class="sourceCode typescript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="op">*</span> <span class="im">as</span> THREE <span class="im">from</span> <span class="st">"three"</span><span class="op">;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { WebGPURenderer } <span class="im">from</span> <span class="st">"three/webgpu"</span><span class="op">;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> renderer <span class="op">=</span> <span class="kw">new</span> <span class="fu">WebGPURenderer</span>({ antialias<span class="op">:</span> <span class="kw">true</span> })<span class="op">;</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> renderer<span class="op">.</span><span class="fu">init</span>()<span class="op">;</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> scene <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">Scene</span>()<span class="op">;</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> camera <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">OrthographicCamera</span>(<span class="op">...</span>)<span class="op">;</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>camera<span class="op">.</span><span class="at">rotation</span><span class="op">.</span><span class="at">x</span> <span class="op">=</span> <span class="op">-</span>(<span class="fl">0.153</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> <span class="dv">2</span>)<span class="op">;</span>  <span class="co">// SWING_ELEVATION</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">// One InstancedMesh per entity class — 1800 entities, one draw call.</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> jellyMesh <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">InstancedMesh</span>(jellyGeom<span class="op">,</span> jellyMat<span class="op">,</span> <span class="dv">1800</span>)<span class="op">;</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>scene<span class="op">.</span><span class="fu">add</span>(jellyMesh)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="protocol-stack" class="level3">
+<h3 class="anchored" data-anchor-id="protocol-stack">Protocol stack</h3>
+<pre><code>headless_log_observer.gd
+    └─ fabric_client.gd
+           └─ FabricMultiplayerPeer (C++ / picoquic)
+                  └─ WebTransport UDP 7443
+                         └─ zone server</code></pre>
+<p>No separate datagram parser is needed. <code>FabricMultiplayerPeer</code> handles the 100-byte CH_INTEREST wire format and populates <code>_entity_nodes</code> automatically.</p>
 </section>
-<section id="webtransport-connection" class="level3">
-<h3 class="anchored" data-anchor-id="webtransport-connection">WebTransport connection</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode ts code-with-copy"><code class="sourceCode typescript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> wt <span class="op">=</span> <span class="kw">new</span> <span class="fu">WebTransport</span>(<span class="vs">`https://</span><span class="sc">${</span>host<span class="sc">}</span><span class="vs">/zone`</span>)<span class="op">;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> wt<span class="op">.</span><span class="at">ready</span><span class="op">;</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> reader <span class="op">=</span> wt<span class="op">.</span><span class="at">datagrams</span><span class="op">.</span><span class="at">readable</span><span class="op">.</span><span class="fu">getReader</span>()<span class="op">;</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>(<span class="kw">function</span> <span class="fu">pump</span>(result<span class="op">:</span> ReadableStreamReadResult<span class="op">&lt;</span><span class="bu">Uint8Array</span><span class="op">&gt;</span>) {</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (result<span class="op">.</span><span class="at">done</span>) <span class="cf">return</span><span class="op">;</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> entities <span class="op">=</span> <span class="fu">parseInterest</span>(result<span class="op">.</span><span class="at">value</span><span class="op">.</span><span class="at">buffer</span>)<span class="op">;</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">updateScene</span>(entities)<span class="op">;</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  reader<span class="op">.</span><span class="fu">read</span>()<span class="op">.</span><span class="fu">then</span>(pump)<span class="op">;</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>})(<span class="cf">await</span> reader<span class="op">.</span><span class="fu">read</span>())<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The datagram reader is captured once and reused — the same exclusive-lock invariant proved in <a href="../decisions/20260425-jellyfish-game.html">20260425-jellyfish-game.md</a> and the WebTransport audit.</p>
+<section id="json-dump-dump-json" class="level3">
+<h3 class="anchored" data-anchor-id="json-dump-dump-json">JSON dump (–dump-json)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span><span class="fu">{</span><span class="dt">"id"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span> <span class="dt">"pos"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"x"</span><span class="fu">:</span> <span class="fl">0.0</span><span class="fu">,</span> <span class="dt">"y"</span><span class="fu">:</span> <span class="fl">0.0</span><span class="fu">,</span> <span class="dt">"z"</span><span class="fu">:</span> <span class="fl">0.0</span><span class="fu">}}</span><span class="ot">,</span> <span class="er">...</span><span class="ot">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Used by Playwright and CI to assert <code>entities.length &gt; 0</code> without parsing Godot stdout.</p>
 </section>
-<section id="operator-overlay" class="level3">
-<h3 class="anchored" data-anchor-id="operator-overlay">Operator overlay</h3>
-<p>Load bars and dot clustering (see <a href="../decisions/20260425-operator-overlay.html">20260425-operator-overlay.md</a>) become a <code>&lt;canvas&gt;</code> element over the Three.js canvas — plain 2D Context API, no CanvasLayer needed.</p>
-</section>
-</section>
-<section id="client-split" class="level2">
-<h2 class="anchored" data-anchor-id="client-split">Client split</h2>
-<p>Two clients replace the previous Godot wasm web export:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 26%">
-<col style="width: 39%">
-<col style="width: 34%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Client</th>
-<th>Transport</th>
-<th>Use case</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Godot native PCVR</td>
-<td>WebTransport (picoquic)</td>
-<td>High-fidelity VR, full entity control</td>
-</tr>
-<tr class="even">
-<td>Three.js WebGPU</td>
-<td>WebTransport (browser API)</td>
-<td>Browser: operator view, WebXR VR, godot-sandbox WASM scripts, taskweft WASM planner</td>
-</tr>
-</tbody>
-</table>
-<p>The Godot wasm32/wasm64 build is dropped. The COOP/COEP service worker, SharedArrayBuffer build flags, and gescons wasm targets are no longer needed for the client path.</p>
-</section>
-<section id="extending-the-browser-client" class="level2">
-<h2 class="anchored" data-anchor-id="extending-the-browser-client">Extending the browser client</h2>
-<p>Two components can move into the browser without a Godot runtime:</p>
-<p>godot-sandbox runs GDScript as RISC-V ELF guests via libriscv. The ELF is compiled once and stored in the CDN. libriscv is the VM:</p>
-<pre><code>GDScript  → RISC-V ELF   (compile once; CDN asset)
-libriscv  → WASM          (Emscripten; browser loads VM, feeds it the ELF)</code></pre>
-<p>No binary equivalence is required. <code>WasmEquiv.lean</code> proves <code>vm_deterministic</code>: the VM is a pure function, so the same ELF + same state always yields the same result on any host.</p>
-<p>taskweft standalone headers (<code>standalone/tw_planner.hpp</code>) are header-only C++20 with no BEAM dependency and no libriscv layer — they compile directly to WASM via Emscripten. <code>emcc standalone/tw_planner.hpp -o tw_planner.wasm</code> produces a module that runs RECTGTN planning in the browser, using the same species domain JSON-LD files that drive the native zone server.</p>
-<p>VR presence uses Three.js + WebXR Device API (<code>renderer.xr.enabled = true</code>, <code>VRButton.createButton(renderer)</code>). The Godot XR layer is not required.</p>
 </section>
 <section id="the-downsides" class="level2">
 <h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>Implementing CH_PLAYER datagrams in TypeScript to send entity input is a second scope of work; the initial Three.js client is observer-only.</p>
-<p>The actual integration risk is the godot-sandbox guest ABI (syscall shim from RISC-V <code>ecall</code> to Emscripten host) and taskweft Emscripten build constraints. These are engineering work. <code>WasmEquiv.lean</code> proves <code>vm_deterministic</code> (the VM is a pure function); it does not prove the ABI shim is correct.</p>
-<p>The packet format is internal and could change without versioning. A format version byte in the first octet of CH_INTEREST would protect against silent breakage; that change belongs in a separate ADR.</p>
+<p>Native-only. The browser operator view — load bars, dot clustering in a <code>&lt;canvas&gt;</code> overlay — is not covered by this ADR. Those features remain in SOMEDAY.</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Godot wasm32/wasm64 web export: dropped. Build friction (multi-minute compile, COOP/COEP, service worker, SharedArrayBuffer) exceeded the benefit once the native PCVR client covers VR and Three.js covers the browser.</p>
+<p>Three.js WebGPU observer (<span class="citation" data-cites="threejsobserver">(<a href="#ref-threejsobserver" role="doc-biblioref"><strong>threejsobserver?</strong></a>)</span>): browser-native, no install, but a separate TypeScript parse layer means bugs in the TypeScript parser can diverge from the C++ implementation. The Godot headless path removes that gap.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
@@ -570,9 +469,9 @@ libriscv  → WASM          (Emscripten; browser loads VM, feeds it the ELF)</co
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<p><span class="citation" data-cites="threejswebgpu2026">(<a href="#ref-threejswebgpu2026" role="doc-biblioref"><strong>threejswebgpu2026?</strong></a>)</span>: “What’s New in Three.js (2026): WebGPU, New Workflows &amp; Beyond.” utsubo.com. <a href="https://www.utsubo.com/blog/threejs-2026-what-changed" class="uri">https://www.utsubo.com/blog/threejs-2026-what-changed</a></p>
-<p><span class="citation" data-cites="threejswebgpudocs">(<a href="#ref-threejswebgpudocs" role="doc-biblioref"><strong>threejswebgpudocs?</strong></a>)</span>: “WebGPU — three.js docs.” Three.js. <a href="https://threejs.org/docs/pages/WebGPU.html" class="uri">https://threejs.org/docs/pages/WebGPU.html</a></p>
-<p><span class="citation" data-cites="threejswebgpurenderer">(<a href="#ref-threejswebgpurenderer" role="doc-biblioref"><strong>threejswebgpurenderer?</strong></a>)</span>: “WebGPURenderer — three.js docs.” Three.js. <a href="https://threejs.org/docs/pages/WebGPURenderer.html" class="uri">https://threejs.org/docs/pages/WebGPURenderer.html</a></p>
+<p><span class="citation" data-cites="threejsobserver">(<a href="#ref-threejsobserver" role="doc-biblioref"><strong>threejsobserver?</strong></a>)</span>: <a href="../decisions/20260425-threejs-observer.html">20260425-threejs-observer.md</a> — superseded Three.js Stage 1.</p>
+<p><span class="citation" data-cites="fabricclient">(<a href="#ref-fabricclient" role="doc-biblioref"><strong>fabricclient?</strong></a>)</span>: <code>modules/multiplayer_fabric/demo/abyssal_vr/scripts/fabric_client.gd</code> — zone client GDScript.</p>
+<p><span class="citation" data-cites="headlessobserver">(<a href="#ref-headlessobserver" role="doc-biblioref"><strong>headlessobserver?</strong></a>)</span>: <code>modules/multiplayer_fabric/demo/abyssal_vr/scripts/headless_log_observer.gd</code> — this ADR’s implementation.</p>
 
 
 </section>
@@ -1000,7 +899,7 @@ libriscv  → WASM          (Emscripten; browser loads VM, feeds it the ELF)</co
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260425-threejs-webgpu-zone-client.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/V-Sekai/manuals/edit/main/decisions/20260425-godot-observer.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
