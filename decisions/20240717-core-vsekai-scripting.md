@@ -28,20 +28,20 @@ The core scripts will be loaded as Wasm modules, and a single GDExtension will h
 
 ## The Benefits
 
-- Wasm provides near-native performance, making it faster than GDScript.
-- Wasm's sandboxed environment enhances security by isolating the execution of scripts.
-- Using the stock Godot Engine reduces the burden of maintaining a forked version and simplifies updates.
-- Developers can write core scripts in languages that compile to Wasm, such as C++ or Rust.
+- **Performance**: Wasm provides near-native performance, making it faster than GDScript.
+- **Security**: Wasm's sandboxed environment enhances security by isolating the execution of scripts.
+- **Maintainability**: Using the stock Godot Engine reduces the burden of maintaining a forked version and simplifies updates.
+- **Flexibility**: Developers can write core scripts in languages that compile to Wasm, such as C++ or Rust.
 
 ## The Downsides
 
-- Developing and integrating Wasm modules adds complexity to the project.
-- Team members may need to learn new technologies and tools related to Wasm.
+- **Complexity**: Developing and integrating Wasm modules adds complexity to the project.
+- **Learning Curve**: Team members may need to learn new technologies and tools related to Wasm.
 
 ## The Road Not Taken
 
-- Continuing to use a forked version of Godot would require ongoing maintenance and could deter contributors.
-- While GDExtension provides native performance, it requires code signing and can be cumbersome to manage across multiple modules.
+- **Sticking with Forked Godot**: Continuing to use a forked version of Godot would require ongoing maintenance and could deter contributors.
+- **Using Only GDExtension**: While GDExtension provides native performance, it requires code signing and can be cumbersome to manage across multiple modules.
 
 ## The Infrequent Use Case
 

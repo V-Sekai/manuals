@@ -22,9 +22,9 @@ Design a comprehensive series of tests to measure and compare the performance of
 
 The testing was suggested by Bioblaze Payne, who has outlined a sequential approach:
 
-- Basic Connection Test
+- **Phase 1**: Basic Connection Test
   - Connect a user, send a message, await 1000 messages in return, disconnect, then reconnect.
-- Large Scale Stress Test
+- **Phase 2**: Large Scale Stress Test
   - Simultaneously connect 4000 users, with each sending a message upon connection every 500ms. Ensure all messages are replicated to all connected clients.
 
 During these tests, we'll monitor:

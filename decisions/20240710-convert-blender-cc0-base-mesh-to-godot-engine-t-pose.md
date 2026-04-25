@@ -73,14 +73,14 @@ The current process of converting Blender CC0 base meshes to a format compatible
 
 ## The Benefits
 
-- Streamlining the conversion process saves time and reduces manual effort.
-- Standardizing the approach ensures uniformity across different base meshes.
-- Ensures that the converted meshes are fully compatible with the Godot Engine.
+- **Improved Efficiency**: Streamlining the conversion process saves time and reduces manual effort.
+- **Consistency**: Standardizing the approach ensures uniformity across different base meshes.
+- **Enhanced Compatibility**: Ensures that the converted meshes are fully compatible with the Godot Engine.
 
 ## The Downsides
 
-- Team members may need time to familiarize themselves with the new process.
-- Reliance on specific tools like Auto Rig Pro may limit flexibility.
+- **Initial Learning Curve**: Team members may need time to familiarize themselves with the new process.
+- **Tool Dependency**: Reliance on specific tools like Auto Rig Pro may limit flexibility.
 
 ## The Road Not Taken
 

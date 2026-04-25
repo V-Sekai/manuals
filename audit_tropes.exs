@@ -12,10 +12,8 @@
 # Exit code: 0 if clean, 1 if any findings.
 
 defmodule TropeAudit do
-  # Matches bold-first bullets with a trailing colon or period — the AI trope.
-  # Bold nouns without punctuation (e.g. "- **Hips** (1 tracker)") are NOT
-  # matched because the bold text is the content, not a hollow category label.
-  @pattern ~r/^\s*[-*]\s+\*\*[^*\n]+\*\*[:.]\s/
+  # Matches bold-first bullets: - **Label:** content
+  @pattern ~r/^\s*[-*]\s+\*\*[^*\n]+\*\*[:\.]?\s/
 
   # Excluded: lettered enumerations **(A)**, **(B)** etc. and single-digit
   # numbered labels **(1)** — these are structural enumeration, not AI prose.

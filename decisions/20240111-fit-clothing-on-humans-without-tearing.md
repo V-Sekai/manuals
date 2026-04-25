@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- Draft
-- V-Sekai, Fire, Joe Cat
-- V-Sekai
+- **Status**: Draft
+- **Deciders**: V-Sekai, Fire, Joe Cat
+- **Tags**: V-Sekai
 
 ## Context
 

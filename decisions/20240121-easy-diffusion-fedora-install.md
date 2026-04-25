@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- Proposed
-- Development Team
-- `AI`, `Easy Diffusion`, `Linux`
+- **Status**: Proposed
+- **Deciders**: Development Team
+- **Tags**: `AI`, `Easy Diffusion`, `Linux`
 
 ## Backdrop
 

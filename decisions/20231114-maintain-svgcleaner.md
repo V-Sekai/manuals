@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- Proposed
-- V-Sekai
-- SVG Optimization, VR Book Reading, V-Sekai
+- **Status**: Proposed
+- **Deciders**: V-Sekai
+- **Tags**: SVG Optimization, VR Book Reading, V-Sekai
 
 ## The Backdrop
 

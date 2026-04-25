@@ -65,14 +65,14 @@ public class EventExample : UdonSharpBehaviour
 
 ## The Benefits
 
-- Clear guidelines enhance the readability of networking code.
-- Ensures uniformity in how networking tasks are handled across different projects.
-- Streamlined processes make it easier for developers to implement networking features quickly.
+- **Improved Readability**: Clear guidelines enhance the readability of networking code.
+- **Consistency**: Ensures uniformity in how networking tasks are handled across different projects.
+- **Efficiency**: Streamlined processes make it easier for developers to implement networking features quickly.
 
 ## The Downsides
 
-- Establishing and fine-tuning the mental model requires an initial investment of time and resources.
-- Strict adherence to the model may limit creative solutions to unique problems.
+- **Initial Setup Time**: Establishing and fine-tuning the mental model requires an initial investment of time and resources.
+- **Limited Flexibility**: Strict adherence to the model may limit creative solutions to unique problems.
 
 ## The Road Not Taken
 

@@ -21,13 +21,13 @@ When developing web applications with Godot, we face challenges related to loadi
 
 ## The Benefits
 
-- Multi-threading allows for background resource loading, enhancing application responsiveness.
-- Smooth audio playback and faster load times contribute to a more seamless user experience.
+- **Improved Performance**: Multi-threading allows for background resource loading, enhancing application responsiveness.
+- **Better User Experience**: Smooth audio playback and faster load times contribute to a more seamless user experience.
 
 ## The Downsides
 
-- Implementing multi-threading can introduce complexity and potential bugs.
-- Ensuring full browser support for multi-threaded features may require additional effort.
+- **Complexity**: Implementing multi-threading can introduce complexity and potential bugs.
+- **Browser Compatibility**: Ensuring full browser support for multi-threaded features may require additional effort.
 
 ## The Road Not Taken
 

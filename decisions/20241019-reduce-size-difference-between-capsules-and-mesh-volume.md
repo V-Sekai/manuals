@@ -12,8 +12,8 @@ The goal is to minimize the size discrepancies between the capsules surrounding 
 
 ### Step 1: Representation of the Skeleton and Skin Mesh
 
-- Represent each bone as a node in a graph.
-- Each vertex of the mesh is also a node. Connect a bone to a vertex with an edge if the vertex is influenced by that bone, based on skin weights.
+- **Skeleton**: Represent each bone as a node in a graph.
+- **Skin Mesh**: Each vertex of the mesh is also a node. Connect a bone to a vertex with an edge if the vertex is influenced by that bone, based on skin weights.
 
 ### Step 2: Define the Objective
 
@@ -25,13 +25,13 @@ I have no idea.
 
 ## The Benefits
 
-- Improves the fit of capsules to the actual mesh, enhancing animation quality.
-- Reduces computational overhead by focusing on significant discrepancies.
+- **Accuracy**: Improves the fit of capsules to the actual mesh, enhancing animation quality.
+- **Efficiency**: Reduces computational overhead by focusing on significant discrepancies.
 
 ## The Downsides
 
-- Implementing and tuning the Bi-MDF algorithm can be complex.
-- Relies heavily on accurate weight assignments and initial conditions.
+- **Complexity**: Implementing and tuning the Bi-MDF algorithm can be complex.
+- **Dependency**: Relies heavily on accurate weight assignments and initial conditions.
 
 ## The Road Not Taken
 

@@ -34,25 +34,25 @@ Each dongle supports a maximum of **5 trackers**. This constraint is critical in
 
 #### **Dongle 1 (HMD)**
 
-- By connecting both knee trackers to the HMD dongle, we ensure precise tracking of lower limb movements, which is essential for accurate motion capture in activities that involve significant leg movement.
-- Including both elbow trackers on this dongle allows for detailed arm movement tracking, enhancing the realism and responsiveness of upper body interactions in VR.
+- **Enhanced Lower Limb Tracking**: By connecting both knee trackers to the HMD dongle, we ensure precise tracking of lower limb movements, which is essential for accurate motion capture in activities that involve significant leg movement.
+- **Upper Extremity Tracking**: Including both elbow trackers on this dongle allows for detailed arm movement tracking, enhancing the realism and responsiveness of upper body interactions in VR.
 
 #### **Dongle 2 (PC)**
 
 - **Comprehensive Upper Body Tracking**:
-  - These trackers are crucial for capturing the core movements of the body, providing a stable base for upper body motion tracking.
-  - Placing the foot trackers on the PC-connected dongle ensures that foot movements are captured accurately, which is vital for walking, running, and other foot-based interactions in VR environments.
+  - **Chest and Hips Trackers**: These trackers are crucial for capturing the core movements of the body, providing a stable base for upper body motion tracking.
+  - **Dual Foot Tracking**: Placing the foot trackers on the PC-connected dongle ensures that foot movements are captured accurately, which is vital for walking, running, and other foot-based interactions in VR environments.
 
 ## The Benefits
 
-- Optimized tracker placement enhances the precision of motion capture.
-- More accurate tracking translates to a more immersive and responsive VR experience.
-- This setup allows for easy adjustments and scalability as new trackers or technologies become available.
+- **Improved Accuracy**: Optimized tracker placement enhances the precision of motion capture.
+- **Enhanced User Experience**: More accurate tracking translates to a more immersive and responsive VR experience.
+- **Scalability**: This setup allows for easy adjustments and scalability as new trackers or technologies become available.
 
 ## The Downsides
 
-- Initial configuration and calibration may be more complex and time-consuming.
-- Performance is heavily dependent on the quality and capability of the hardware used.
+- **Complex Setup**: Initial configuration and calibration may be more complex and time-consuming.
+- **Hardware Dependency**: Performance is heavily dependent on the quality and capability of the hardware used.
 
 ## The Road Not Taken
 

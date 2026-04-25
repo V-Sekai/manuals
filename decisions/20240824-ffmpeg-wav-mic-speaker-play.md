@@ -122,14 +122,14 @@ This command will help identify available ALSA audio devices, which can be used 
 
 ## The Benefits
 
-- Enables automated testing of VOIP clients.
-- Can be used to test various VOIP applications like Discord and VRChat.
-- Useful for prototyping WebRTC later.
+- **Automated Testing**: Enables automated testing of VOIP clients.
+- **Versatility**: Can be used to test various VOIP applications like Discord and VRChat.
+- **Prototyping**: Useful for prototyping WebRTC later.
 
 ## The Downsides
 
-- Requires knowledge of audio systems and command-line tools.
-- May not work seamlessly across all hardware configurations.
+- **Complex Setup**: Requires knowledge of audio systems and command-line tools.
+- **Potential Compatibility Issues**: May not work seamlessly across all hardware configurations.
 
 ## The Road Not Taken
 

@@ -14,14 +14,14 @@ We propose to extend the live collaboration feature to include real-time synchro
 
 ## Benefits
 
-- Users can see each other's movements and expressions in real-time, creating a more immersive and interactive experience.
-- Changes made to the animations by one user are instantly visible to others.
-- The ability to interact with each other in a more realistic manner greatly enhances the overall user experience.
+- **Real-Time Interaction**: Users can see each other's movements and expressions in real-time, creating a more immersive and interactive experience.
+- **Animation Synchronization**: Changes made to the animations by one user are instantly visible to others.
+- **Enhanced User Experience**: The ability to interact with each other in a more realistic manner greatly enhances the overall user experience.
 
 ## Downsides
 
-- The addition of mocap and animation synchronization could increase the complexity of the project.
-- Real-time synchronization of animations could have an impact on performance, especially for users with slower internet connections.
+- **Increased Complexity**: The addition of mocap and animation synchronization could increase the complexity of the project.
+- **Performance Impact**: Real-time synchronization of animations could have an impact on performance, especially for users with slower internet connections.
 
 ## MVP
 
