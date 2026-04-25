@@ -174,7 +174,7 @@ A solo creator with one booth zone and no visitors still exercises Phase 1 (oper
 
 ## Status
 
-Status: In Progress
+Status: Superseded by 20260425-jellyfish-game.md
 
 ## Decision Makers
 

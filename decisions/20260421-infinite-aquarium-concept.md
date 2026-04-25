@@ -99,7 +99,7 @@ A zone with no uploaded jellyfish (new operator, empty ocean) still passes the t
 
 ## Status
 
-Status: In Progress
+Status: Superseded by 20260425-jellyfish-game.md
 
 ## Decision Makers
 
