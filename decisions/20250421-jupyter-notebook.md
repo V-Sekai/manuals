@@ -85,8 +85,8 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Further Reading
 
-1. [Jupyter Notebook Documentation](https://jupyter.org/documentation)
-2. [Systemd Service Unit Documentation](https://www.freedesktop.org/software/systemd/man/systemd.service.html)
+[@jupyter_notebook_documentation_2024]: "Jupyter Notebook Documentation."  <https://jupyter.org/documentation>
+[@systemd_service_unit_2024]: "Systemd Service Unit Documentation."  <https://www.freedesktop.org/software/systemd/man/systemd.service.html>
 3. <https://fedoramagazine.org/jupyter-and-data-science-in-fedora/>
 
 ---

@@ -99,10 +99,7 @@ Needs a redo.
 
 ## List further reading references
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai)
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
 
-AI assistant Aria assisted with this article.
 
 ## Control Schemes
 

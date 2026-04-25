@@ -121,6 +121,6 @@ journalctl -u easy-diffusion.service
 
 ## Further Reading
 
-1. [**Download** for Linux](https://github.com/cmdr2/stable-diffusion-ui/releases/latest/download/Easy-Diffusion-Linux.zip): Official source code and documentation.
+[@download_linux_2024]: "**Download** for Linux." : Official source code and documentation. <https://github.com/cmdr2/stable-diffusion-ui/releases/latest/download/Easy-Diffusion-Linux.zip>
 
 _Aria, an AI assistant, provided support in formulating this proposal._

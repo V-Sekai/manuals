@@ -52,4 +52,3 @@ Yes, the proposed solution addresses fundamental limitations of the V-Sekai proj
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)

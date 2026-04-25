@@ -72,5 +72,4 @@ Yes, these issues are core to the functionality of our game and should be addres
 
 ## Further Reading
 
-- [V-Sekai](https://v-sekai.org/)
 - This article is assisted by AI.

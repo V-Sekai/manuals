@@ -142,9 +142,8 @@ Implementing this solution as part of the core functionality can help V-Sekai us
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
-- [Godot Engine](https://godotengine.org/)
-- [GDScript documentation](https://docs.godotengine.org/en/stable/getting_started/scripting/gdscript/gdscript_basics.html)
-- [T5 (Text-to-Text Transfer Transformer)](https://arxiv.org/abs/1910.10683)
-- [Transformers library](https://huggingface.co/transformers/)
-- [XState documentation](https://xstate.js.org/docs/)
+[@godot_engine_2024]: "Godot Engine."  <https://godotengine.org/>
+[@gdscript_documentation_2024]: "GDScript documentation."  <https://docs.godotengine.org/en/stable/getting_started/scripting/gdscript/gdscript_basics.html>
+[@t5_texttotext_transfer_2024]: "T5 (Text-to-Text Transfer Transformer)."  <https://arxiv.org/abs/1910.10683>
+[@transformers_library_2024]: "Transformers library."  <https://huggingface.co/transformers/>
+[@xstate_documentation_2024]: "XState documentation."  <https://xstate.js.org/docs/>

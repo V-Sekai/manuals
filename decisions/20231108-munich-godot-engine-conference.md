@@ -40,6 +40,5 @@ The decision to prioritize documentation is proposed by V-Sekai.
 
 ## Further Reading
 
-- [V-Sekai](https://github.com/v-sekai/)
 
 This article was assisted by Aria, an AI.

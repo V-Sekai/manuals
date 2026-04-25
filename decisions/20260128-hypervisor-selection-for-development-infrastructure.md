@@ -107,11 +107,11 @@ Status: Obsolete — Harvester HCI/Nutanix evaluation obsolete; current dev infr
 
 ## Further Reading
 
-1. [Nutanix Community Edition](https://www.nutanix.com/products/community-edition)
-2. [Nutanix Community Edition Documentation](https://portal.nutanix.com/page/documents/details?targetId=Community-Edition-Comparison:Community-Edition-Comparison)
-3. [Harvester HCI - Open-source hyperconverged infrastructure](https://harvesterhci.io/)
-4. [SUSE Harvester GitHub](https://github.com/harvester/harvester)
-5. [Nutanix Ansible Collection](https://github.com/nutanix/nutanix.ansible)
+[@nutanix_community_edition_2024]: "Nutanix Community Edition."  <https://www.nutanix.com/products/community-edition>
+[@nutanix_community_edition_2024]: "Nutanix Community Edition Documentation."  <https://portal.nutanix.com/page/documents/details?targetId=Community-Edition-Comparison:Community-Edition-Comparison>
+[@harvester_hci_opensource_2024]: "Harvester HCI - Open-source hyperconverged infrastructure."  <https://harvesterhci.io/>
+[@suse_harvester_github_2024]: "SUSE Harvester GitHub."  <https://github.com/harvester/harvester>
+[@nutanix_ansible_collection_2024]: "Nutanix Ansible Collection."  <https://github.com/nutanix/nutanix.ansible>
 
 ---
 
@@ -122,4 +122,3 @@ Status: Obsolete — Harvester HCI/Nutanix evaluation obsolete; current dev infr
 3. **Cloud-Init**: Multi-distribution package that handles early initialization of cloud instances, supporting configuration of hosts immediately after instantiation.
 4. **Bare Metal**: Running software directly on physical hardware without virtualization layer.
 
-AI assistant Aria assisted with this article.

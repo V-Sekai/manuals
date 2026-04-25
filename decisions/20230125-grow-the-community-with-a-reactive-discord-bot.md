@@ -44,5 +44,4 @@ We administrate the V-Sekai Discord.
 
 ### References
 
-- [V-Sekai](https://v-sekai.org/)
-- [VSona](https://github.com/V-Sekai/vsona-discord-bot)
+[@vsona_2024]: "VSona."  <https://github.com/V-Sekai/vsona-discord-bot>

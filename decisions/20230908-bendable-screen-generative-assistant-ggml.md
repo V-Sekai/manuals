@@ -36,11 +36,10 @@ The project will be developed in-house, utilizing our expertise in AI and game d
 
 For more information, please refer to these resources:
 
-- [V-Sekai](https://v-sekai.org/)
-- [GGML on GitHub](https://github.com/georgi-gerganov/ggml)
-- [Whisper JAX on GitHub](https://github.com/sanchit-gandhi/whisper-jax)
-- [Twitter inspiration](https://twitter.com/jav6868/status/1698260873352212662?s=20)
-- [wisecoco 6 inch 2K Flexible OLED Display IPS 2880 \* 1440 Flexible Screen Curved Bendable Screen](https://www.amazon.ca/wisecoco-Flexible-Display-Screen-Bendable/dp/B0C7YY16Z5)
+[@ggml_github_2024]: "GGML on GitHub."  <https://github.com/georgi-gerganov/ggml>
+[@whisper_jax_github_2024]: "Whisper JAX on GitHub."  <https://github.com/sanchit-gandhi/whisper-jax>
+[@twitter_inspiration_2024]: "Twitter inspiration."  <https://twitter.com/jav6868/status/1698260873352212662?s=20>
+[@wisecoco_6_inch_2024]: "wisecoco 6 inch 2K Flexible OLED Display IPS 2880 \* 1440 Flexible Screen Curved Bendable Screen."  <https://www.amazon.ca/wisecoco-Flexible-Display-Screen-Bendable/dp/B0C7YY16Z5>
 
 ## System Diagram
 

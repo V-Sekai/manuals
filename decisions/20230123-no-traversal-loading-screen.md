@@ -56,7 +56,6 @@ World traversal is a problem.
 
 ### References
 
-- [V-Sekai](https://v-sekai.org/)
 
 ### License of the contribution
 

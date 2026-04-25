@@ -119,8 +119,7 @@ I need to store things.
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
-- [Create digital ocean instructions](https://gitlab.com/bramw/baserow/-/issues/998)
+[@create_digital_ocean_2024]: "Create digital ocean instructions."  <https://gitlab.com/bramw/baserow/-/issues/998>
 
 ### License of the contribution
 

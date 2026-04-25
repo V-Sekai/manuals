@@ -49,4 +49,3 @@ Investing in the development of V-Sekai contributors' design skills is essential
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)

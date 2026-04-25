@@ -46,7 +46,5 @@ Yes, this solution was developed by us.
 
 ## Additional Resources
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - The official GitHub account for the V-Sekai development community, which focuses on social VR functionality for the Godot Engine.
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - The GitHub page for the V-Sekai open-source project that brings social VR/VRSNS/metaverse components to the Godot Engine.
 
 This article was assisted by AI.

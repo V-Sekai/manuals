@@ -51,7 +51,6 @@ Yes, integrating a powerful VR design application will significantly enhance the
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 - Cassie on Github: <https://github.com/V-Sekai/cassie>
 - Shapelab by Leopoly on Steam
 - Gravity Sketch on Steam

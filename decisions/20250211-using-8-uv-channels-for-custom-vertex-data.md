@@ -71,11 +71,9 @@ Status: Proposed
 
 ## List further reading references
 
-1. [Godot Mesh Documentation](https://docs.godotengine.org/en/stable/classes/class_mesh.html)
-2. [Blender UV Map Workflow](https://blender.stackexchange.com/questions/51174/how-do-i-create-multiple-uv-maps)
-3. [V-Sekai GitHub](https://github.com/v-sekai)
+[@godot_mesh_documentation_2024]: "Godot Mesh Documentation."  <https://docs.godotengine.org/en/stable/classes/class_mesh.html>
+[@blender_uv_map_2024]: "Blender UV Map Workflow."  <https://blender.stackexchange.com/questions/51174/how-do-i-create-multiple-uv-maps>
 
-AI assistant Aria assisted in structuring this proposal based on community discussions.
 
 ## Tags
 

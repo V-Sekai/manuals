@@ -76,10 +76,7 @@ Status: Superseded by [Build a tiny RISC virtual machine which can interpret and
 
 ## Further Reading
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
-3. [libriscv VM Call Documentation](https://github.com/fwsGonzo/libriscv/blob/master/docs/VMCALL.md) - Detailed documentation on making function calls into the VM guest.
+[@libriscv_vm_call_2024]: "libriscv VM Call Documentation." Detailed documentation on making function calls into the VM guest. <https://github.com/fwsGonzo/libriscv/blob/master/docs/VMCALL.md>
 4. [https://c9x.me/compile/]
 5. [https://github.com/Vahera/godot-orchestrator]
 
-AI assistant Aria assisted with this article.

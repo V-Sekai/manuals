@@ -60,8 +60,5 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Further Reading
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine
-3. [Intended Effort Versioning (EffVer)](https://jacobtomlinson.dev/effver/)
+[@intended_effort_versioning_2024]: "Intended Effort Versioning (EffVer)."  <https://jacobtomlinson.dev/effver/>
 
-AI assistant Aria assisted with this article.

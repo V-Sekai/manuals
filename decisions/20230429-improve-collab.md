@@ -61,7 +61,6 @@ As the primary developers of the project, the V-Sekai team has the best understa
 
 ### References
 
-- [V-Sekai](https://v-sekai.org/)
 - V-Sekai Roadmap and Goals
 - V-Sekai Team Discussions and Updates
 - Mermaid.js

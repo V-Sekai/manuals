@@ -79,14 +79,12 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## List further reading references
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai)
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
-3. [VRChat GLB Loader](https://github.com/vr-voyage/vrchat-glb-loader)
-4. [Galbi SDK](https://galbi-sdk-docs.pages.dev/en/)
-5. [World Name: Project Galbi](https://vrchat.com/home/launch?worldId=wrld_068ed758-68b1-40bc-b647-f54c3b3d92fc)
-6. [The-Cheap-or-Nasty-Pattern](https://zguide.zeromq.org/docs/chapter7/#The-Cheap-or-Nasty-Pattern)
-7. [CesiumGS/3d-tiles](https://github.com/CesiumGS/3d-tiles)
-8. [Cesium Plugin for Godot](https://cesium.com/blog/2024/09/26/cesium-plugin-for-godot/)
+[@vrchat_glb_loader_2024]: "VRChat GLB Loader."  <https://github.com/vr-voyage/vrchat-glb-loader>
+[@galbi_sdk_2024]: "Galbi SDK."  <https://galbi-sdk-docs.pages.dev/en/>
+[@world_name_project_2024]: "World Name: Project Galbi."  <https://vrchat.com/home/launch?worldId=wrld_068ed758-68b1-40bc-b647-f54c3b3d92fc>
+[@thecheapornastypattern_2024]: "The-Cheap-or-Nasty-Pattern."  <https://zguide.zeromq.org/docs/chapter7/#The-Cheap-or-Nasty-Pattern>
+[@cesiumgs3dtiles_2024]: "CesiumGS/3d-tiles."  <https://github.com/CesiumGS/3d-tiles>
+[@cesium_plugin_godot_2024]: "Cesium Plugin for Godot."  <https://cesium.com/blog/2024/09/26/cesium-plugin-for-godot/>
 
 ## Future Work
 
@@ -96,7 +94,6 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 - Optimize to prevent loader lag
 - Use 3D Tiles 1.1 as a container for glTF2, downloadable by VRChat world, e.g., `https://example.com/3d-tiles-1.1.glb?uri=https%3A%2F%2Fgithub.com%2FCesiumGS%2F3d-tiles-samples%2Fblob%2Fmain%2F1.1%2FBoundingBoxTests%2F2_0_0-4_1_1%2Ftileset.json`
 
-AI assistant Aria assisted with this article.
 
 ## Tags
 

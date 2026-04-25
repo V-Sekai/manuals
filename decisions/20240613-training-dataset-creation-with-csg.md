@@ -59,9 +59,6 @@ Status: Draft
 
 ## Further Reading
 
-1. [Constructive Solid Geometry (CSG)](https://en.wikipedia.org/wiki/Constructive_solid_geometry) - More about CSG.
-2. [Open Source](https://en.wikipedia.org/wiki/Open_source) - More about open source.
-3. [V-Sekai · GitHub](https://github.com/v-sekai) - The GitHub account for V-Sekai.
-4. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - The GitHub page for the V-Sekai project.
+[@constructive_solid_geometry_2024]: "Constructive Solid Geometry (CSG)." More about CSG. <https://en.wikipedia.org/wiki/Constructive_solid_geometry>
+[@open_source_2024]: "Open Source." More about open source. <https://en.wikipedia.org/wiki/Open_source>
 
-AI assistant Aria assisted with this proposal.

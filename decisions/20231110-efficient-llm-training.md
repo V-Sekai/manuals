@@ -47,8 +47,6 @@ Is this solution core to our operations and will it be implemented by us? This s
 
 ## References
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai)
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
-3. [LLM Classification - Ludwig](https://ludwig.ai/latest/examples/llms/llm_classification/)
+[@llm_classification_ludwig_2024]: "LLM Classification - Ludwig."  <https://ludwig.ai/latest/examples/llms/llm_classification/>
 
 _This proposal was assisted by Aria, an AI assistant._

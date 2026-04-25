@@ -59,7 +59,6 @@ Example of using ChatGPT-4 AI completion with the proposal template.
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 ```
 
 ## Positive Consequences
@@ -87,5 +86,4 @@ Yes, leveraging AI-generated content can help improve the efficiency and effecti
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
-- [Genie addon for Visual Studio Code](https://github.com/ai-genie/chatgpt-vscode)
+[@genie_addon_visual_2024]: "Genie addon for Visual Studio Code."  <https://github.com/ai-genie/chatgpt-vscode>

@@ -39,7 +39,6 @@ We manage the avatar experience.
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 
 ## License of the contribution
 

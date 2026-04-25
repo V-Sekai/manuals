@@ -41,7 +41,6 @@ We are doing this.
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 
 ### License of the contribution
 

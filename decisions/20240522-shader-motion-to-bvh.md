@@ -28,7 +28,7 @@ Example: [Floss.mp4](https://gitlab.com/lox9973/ShaderMotion/-/raw/master/Exampl
 #### Requirements
 
 - .mp4 #shadermotion video
-- [shadermotion-to-bvh by guillefix](https://github.com/guillefix/shadermotion-to-bvh/releases)
+[@shadermotiontobvh_by_guillefix_2024]: "shadermotion-to-bvh by guillefix."  <https://github.com/guillefix/shadermotion-to-bvh/releases>
   - download shadermotion-to-bvh.zip from XXX github repo releases
   - unpack to a folder
 

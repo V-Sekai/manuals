@@ -59,4 +59,3 @@ Integrating the PMX module into the core project ensures that it is maintained a
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)

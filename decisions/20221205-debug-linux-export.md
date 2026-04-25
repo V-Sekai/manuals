@@ -48,7 +48,6 @@ We have to build V-Sekai.
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 
 ## License of the contribution
 

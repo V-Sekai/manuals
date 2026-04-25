@@ -41,9 +41,8 @@ We own the GitHub repositories.
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
-- [Pending head](https://martinfowler.com/bliki/PendingHead.html)
-- [Godot Pull request](https://docs.godotengine.org/en/stable/community/contributing/pr_workflow.html)
+[@pending_head_2024]: "Pending head."  <https://martinfowler.com/bliki/PendingHead.html>
+[@godot_pull_request_2024]: "Godot Pull request."  <https://docs.godotengine.org/en/stable/community/contributing/pr_workflow.html>
 
 ## License of the contribution
 

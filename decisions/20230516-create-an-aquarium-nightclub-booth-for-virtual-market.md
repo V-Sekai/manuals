@@ -59,6 +59,5 @@ Creating a unique booth is essential for attracting visitors and showcasing VR d
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
-- [VKET 2023 Summer](https://event.vket.com/en/2023Summer/world/11)
-- [Silent's Cel Shading Shader](https://gitlab.com/s-ilent/SCSS/-/tree/master/Assets/Silent's%20Cel%20Shading%20Shader)
+[@vket_2023_summer_2023]: "VKET 2023 Summer."  <https://event.vket.com/en/2023Summer/world/11>
+[@silents_cel_shading_2024]: "Silent's Cel Shading Shader."  <https://gitlab.com/s-ilent/SCSS/-/tree/master/Assets/Silent's%20Cel%20Shading%20Shader>

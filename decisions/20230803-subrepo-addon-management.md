@@ -58,4 +58,3 @@ Yes, this change affects the core structure of our project and should therefore 
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)

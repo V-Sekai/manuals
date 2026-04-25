@@ -54,5 +54,4 @@ Yes, as this directly impacts the user experience and the integrity of our game 
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 <!-- - This article [is / or is not] assisted by AI. -->

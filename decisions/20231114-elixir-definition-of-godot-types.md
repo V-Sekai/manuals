@@ -44,7 +44,6 @@ This task involves direct contributions to the core functionality of the `elixir
 
 ## Further Reading
 
-1. [V-Sekai GitHub Repository](https://github.com/v-sekai) - The official GitHub account for the V-Sekai development community, focusing on social VR functionality for the Godot Engine.
-2. [Elixir Godot Parsers Repository](https://github.com/v-sekai/elixir_godot_parsers) - The GitHub page for the `elixir_godot_parsers` project, part of V-Sekai's efforts to integrate Elixir with the Godot Engine.
+[@elixir_godot_parsers_2024]: "Elixir Godot Parsers Repository." The GitHub page for the `elixir_godot_parsers` project, part of V-Sekai's efforts to integrate Elixir with the Godot Engine. <https://github.com/v-sekai/elixir_godot_parsers>
 
 This proposal was created with the assistance of AI assistant Aria.

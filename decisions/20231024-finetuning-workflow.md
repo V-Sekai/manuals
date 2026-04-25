@@ -46,6 +46,5 @@ Yes, this strategy involves us actively participating in the fine-tuning process
 
 ## Further Reading
 
-- [V-Sekai](https://github.com/v-sekai/)
-- [Axolotl](https://github.com/OpenAccess-AI-Collective/axolotl)
+[@axolotl_2024]: "Axolotl."  <https://github.com/OpenAccess-AI-Collective/axolotl>
 - AI assists this article.

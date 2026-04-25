@@ -46,4 +46,3 @@ Usability is a core feature.
 
 ### References
 
-- [V-Sekai](https://v-sekai.org/)

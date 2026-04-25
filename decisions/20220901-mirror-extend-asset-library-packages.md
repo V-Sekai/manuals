@@ -41,7 +41,6 @@ We maintain uro.
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 
 ### License of the contribution
 

@@ -59,8 +59,5 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Further Reading
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
-3. [cgg-bern/libSatsuma](https://github.com/V-Sekai-fire/libsatsuma) Exact and approximate solvers for minimum-cost-flow problems in bi-directed graphs.
+[@cggbernlibsatsuma_2024]: "cgg-bern/libSatsuma." Exact and approximate solvers for minimum-cost-flow problems in bi-directed graphs. <https://github.com/V-Sekai-fire/libsatsuma>
 
-AI assistant Aria assisted with this article.

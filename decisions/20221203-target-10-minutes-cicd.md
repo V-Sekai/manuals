@@ -39,7 +39,6 @@ We own the github repositories.
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 
 ## License of the contribution
 

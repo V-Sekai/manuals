@@ -53,12 +53,9 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Further Reading
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
-3. [Robust Skin Weights Transfer via Weight Inpainting](https://doi.org/10.1145/3610543.3626180)
-4. [A Laplacian for Nonmanifold Triangle Meshes](https://doi.org/10.1111/cgf.14069)
+[@robust_skin_weights_2024]: "Robust Skin Weights Transfer via Weight Inpainting."  <https://doi.org/10.1145/3610543.3626180>
+[@laplacian_nonmanifold_triangle_2024]: "A Laplacian for Nonmanifold Triangle Meshes."  <https://doi.org/10.1111/cgf.14069>
 
-AI assistant Aria assisted with this article.
 
 ### Game Development Jargon
 

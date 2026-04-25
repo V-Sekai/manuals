@@ -146,7 +146,5 @@ Determining if this integration should be centralized within V-Sekai's primary o
 
 ## Further Reading
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account of V-Sekai's developer community.
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - Repository dedicated to V-Sekai's project for merging social VR and metaverse elements with Godot Engine.
 
 _Aria, an AI assistant, contributed to the drafting of this proposal._

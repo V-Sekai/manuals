@@ -58,7 +58,6 @@ This enhancement requires a complex solution involving multiple tools and proces
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
-- [Blender Dem Bones](https://blendermarket.com/products/blender-dembones)
-- [Simplicage](https://blendermarket.com/products/simplicage)
-- [Mesh Materializer](https://blendermarket.com/products/mesh-materializer)
+[@blender_dem_bones_2024]: "Blender Dem Bones."  <https://blendermarket.com/products/blender-dembones>
+[@simplicage_2024]: "Simplicage."  <https://blendermarket.com/products/simplicage>
+[@mesh_materializer_2024]: "Mesh Materializer."  <https://blendermarket.com/products/mesh-materializer>

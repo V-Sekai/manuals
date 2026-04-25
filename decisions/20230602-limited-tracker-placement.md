@@ -60,4 +60,3 @@ Yes, ensuring an immersive VR experience with a limited budget is a fundamental 
 
 ### References
 
-- [V-Sekai](https://v-sekai.org/)

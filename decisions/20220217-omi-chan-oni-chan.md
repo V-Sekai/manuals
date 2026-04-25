@@ -68,7 +68,7 @@ I know how to do it!
 ## References <!-- optional and numbers of links can vary -->
 
 - Released under the same license as Jeana's work. CC-BY or CC0 if in doubt.
-- [SK_omi_chan_oni_chan.zip](https://github.com/omigroup/omi-chan/files/8088502/SK_omi_chan_oni_chan.zip)
+[@skomichanonichanzip_2024]: "SK_omi_chan_oni_chan.zip."  <https://github.com/omigroup/omi-chan/files/8088502/SK_omi_chan_oni_chan.zip>
 
 ## Derivative License
 

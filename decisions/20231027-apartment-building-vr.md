@@ -48,5 +48,4 @@ This project aligns with our core expertise in VR technologies and 3D modeling. 
 
 ## Further Reading
 
-- [V-Sekai GitHub Repository](https://github.com/v-sekai/)
 - AI assists this article.

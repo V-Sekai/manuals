@@ -50,6 +50,5 @@ Yes, improving the jitter-buffer implementation is crucial for providing a relia
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
-- [godot-speech](https://github.com/V-Sekai/godot-speech)
-- [Speex](https://www.speex.org/)
+[@godotspeech_2024]: "godot-speech."  <https://github.com/V-Sekai/godot-speech>
+[@speex_2024]: "Speex."  <https://www.speex.org/>

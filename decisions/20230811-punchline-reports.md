@@ -76,6 +76,5 @@ Yes, this strategy should be implemented by us as it aligns with our goal of imp
 
 ## Further Reading
 
-- [V-Sekai](https://v-sekai.org/)
-- [I'm OK; The Bull Is Dead](https://www.computerworld.com/article/2565077/i-m-ok--the-bull-is-dead.html)
+[@im_ok_bull_2024]: "I'm OK; The Bull Is Dead."  <https://www.computerworld.com/article/2565077/i-m-ok--the-bull-is-dead.html>
 - This article is assisted by AI.

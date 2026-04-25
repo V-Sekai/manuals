@@ -53,8 +53,6 @@ Status: Draft
 
 ## Further Reading
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai)
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
-3. [Container2Wasm · GitHub](https://github.com/ktock/container2wasm)
+[@container2wasm_github_2024]: "Container2Wasm · GitHub."  <https://github.com/ktock/container2wasm>
 
 _This proposal was assisted by Aria, an AI assistant._

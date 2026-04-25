@@ -58,8 +58,6 @@ Status: Draft
 
 ## Further Reading
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine
-3. [Postgres Storing Large Text](https://blog.rustprooflabs.com/2020/07/postgres-storing-large-text) - A 2020 article suggesting that larger file storage in a relational database is okay.
+[@postgres_storing_large_2020]: "Postgres Storing Large Text." A 2020 article suggesting that larger file storage in a relational database is okay. <https://blog.rustprooflabs.com/2020/07/postgres-storing-large-text>
 
 This proposal was assisted by Aria, an AI assistant.

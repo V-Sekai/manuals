@@ -44,5 +44,4 @@ Yes, this feature is core to the V-Sekai experience and will be developed by our
 
 ## Further Reading
 
-- [V-Sekai](https://github.com/v-sekai/)
 - AI assists this article.

@@ -47,8 +47,8 @@ How can V-Sekai develop a Discord bot that facilitates community polls using mes
 
 ## Further Reading
 
-- [Discord Bots: An Introduction](https://discord.com/developers/docs/intro)
-- [Vercel Serverless Functions](https://vercel.com/docs/serverless-functions/introduction)
-- [Neon's PostgreSQL Edge Capabilities](https://neon.tech/docs/introduction/about)
+[@discord_bots_introduction_2024]: "Discord Bots: An Introduction."  <https://discord.com/developers/docs/intro>
+[@vercel_serverless_functions_2024]: "Vercel Serverless Functions."  <https://vercel.com/docs/serverless-functions/introduction>
+[@neons_postgresql_edge_2024]: "Neon's PostgreSQL Edge Capabilities."  <https://neon.tech/docs/introduction/about>
 
 This strategy was formulated with AI assistance.

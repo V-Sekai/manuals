@@ -53,8 +53,6 @@ Should we decide to proceed, we will need to train our team on this new reportin
 
 ## References
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine.
 3. [I'm OK; The Bull Is Dead](https://www.computerworld.com/article/2565077/i-m-ok--the-bull-is-dead.html)
 
 _This proposal was assisted by AI assistant, Aria._

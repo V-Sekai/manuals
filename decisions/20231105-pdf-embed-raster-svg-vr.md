@@ -40,6 +40,5 @@ The implementation of this workflow would require a deep understanding of both t
 
 ## Further Reading
 
-- [V-Sekai](https://github.com/v-sekai/)
 
 This article was assisted by AI.

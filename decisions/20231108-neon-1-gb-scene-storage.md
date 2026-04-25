@@ -43,8 +43,7 @@ Yes, the edge-hosted Neon infrastructure with an S3-compatible object store is p
 
 ## Further Reading
 
-- [V-Sekai on GitHub](https://github.com/v-sekai/)
-- [Neon's Architecture and Bottomless Storage Details](https://neon.tech/docs/introduction/about)
-- [PostgreSQL `bytea` Performance Considerations](https://www.cybertec-postgresql.com/en/binary-data-performance-in-postgresql/)
+[@neons_architecture_bottomless_2024]: "Neon's Architecture and Bottomless Storage Details."  <https://neon.tech/docs/introduction/about>
+[@postgresql_bytea_performance_2024]: "PostgreSQL `bytea` Performance Considerations."  <https://www.cybertec-postgresql.com/en/binary-data-performance-in-postgresql/>
 
 This article was assisted by AI.

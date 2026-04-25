@@ -106,7 +106,5 @@ The V-Sekai team will decide core features and their implementation internally.
 
 ## Further Reading
 
-1. [V-Sekai GitHub Account](https://github.com/v-sekai)
-2. [V-Sekai Game Repository](https://github.com/v-sekai/v-sekai-game)
 
 _AI assistant Aria contributed to this proposal._

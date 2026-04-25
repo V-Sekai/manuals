@@ -108,9 +108,6 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Further Reading
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
-3. [Human Base Meshes bundle by Blender Studio CC0 Licensed](https://www.blender.org/wp-content/uploads/2023/11/human_base_meshes_bundle_v1.1.jpg) - Human Base Meshes bundle by Blender Studio includes 17 separate meshes, including complete male and female figures, plus individual body parts like feet, hands, heads, jaws, and eyeballs.
-4. [Auto Rig Pro](https://blendermarket.com/products/auto-rig-pro)
+[@human_base_meshes_2023]: "Human Base Meshes bundle by Blender Studio CC0 Licensed." Human Base Meshes bundle by Blender Studio includes 17 separate meshes, including complete male and female figures, plus individual body parts like feet, hands, heads, jaws, and eyeballs. <https://www.blender.org/wp-content/uploads/2023/11/human_base_meshes_bundle_v1.1.jpg>
+[@auto_rig_pro_2024]: "Auto Rig Pro."  <https://blendermarket.com/products/auto-rig-pro>
 
-AI assistant Aria assisted with this article.

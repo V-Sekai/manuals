@@ -54,9 +54,9 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Further Reading
 
-1. [Meta XR SDK Documentation (General)](https://developer.oculus.com/documentation/)
-2. [OpenXR Specification](https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html)
-3. [Meta XR Simulator Introduction (Unity - provides context on simulation concepts)](https://developers.meta.com/horizon/documentation/unity/xrsim-intro/)
+[@meta_xr_sdk_2024]: "Meta XR SDK Documentation (General)."  <https://developer.oculus.com/documentation/>
+[@openxr_specification_2024]: "OpenXR Specification."  <https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html>
+[@meta_xr_simulator_2024]: "Meta XR Simulator Introduction (Unity - provides context on simulation concepts)."  <https://developers.meta.com/horizon/documentation/unity/xrsim-intro/>
 
 ---
 

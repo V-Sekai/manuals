@@ -63,7 +63,6 @@ We own the godot-vrm and the mtoon repositories.
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 
 ## License of the contribution
 

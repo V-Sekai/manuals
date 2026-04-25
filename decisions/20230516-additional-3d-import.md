@@ -60,4 +60,3 @@ Yes, improving the 3D import functionality is essential for providing a better u
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)

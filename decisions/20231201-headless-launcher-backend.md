@@ -58,9 +58,7 @@ A comprehensive documentation will be created for understanding the system and o
 
 ## Further Reading
 
-- [**V-Sekai GitHub**](https://github.com/v-sekai) - Our efforts in VR using Godot Engine.
-- [**V-Sekai Game Repo**](https://github.com/v-sekai/v-sekai-game) - Our open-source VR and social experiences project.
-- [**Desync**](https://github.com/folbricht/desync) - Alternative casync implementation.
+[@desync_2024]: "**Desync**." Alternative casync implementation. <https://github.com/folbricht/desync>
 
 ## Code Snippets
 

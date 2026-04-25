@@ -56,8 +56,6 @@ Yes, this strategy should be implemented by the V-Sekai team as it directly affe
 
 ## Further Reading
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine
-3. [arne.me/articles/archive-your-old-projects](https://arne.me/articles/archive-your-old-projects)
+[@arnemearticlesarchiveyouroldprojects_2024]: "arne.me/articles/archive-your-old-projects."  <https://arne.me/articles/archive-your-old-projects>
 
 This article was assisted by AI assistant Aria.

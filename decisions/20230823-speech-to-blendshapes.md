@@ -86,5 +86,4 @@ Yes, the development and maintenance of the unified model will be done by us.
 
 ## Further Reading
 
-- [V-Sekai](https://v-sekai.org/)
 - This article is assisted by AI.

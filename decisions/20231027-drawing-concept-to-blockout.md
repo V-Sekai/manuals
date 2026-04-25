@@ -50,5 +50,4 @@ Yes, this is a core part of our design process and is done by us.
 
 For more information, you can visit the following links:
 
-- [V-Sekai](https://github.com/v-sekai/)
 - AI assists this article.

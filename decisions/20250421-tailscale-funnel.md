@@ -80,8 +80,8 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Further Reading
 
-1. [Tailscale Funnel Documentation](https://tailscale.com/kb/1132/tailscale-funnel/)
-2. [Systemd Service Unit Documentation](https://www.freedesktop.org/software/systemd/man/systemd.service.html)
+[@tailscale_funnel_documentation_2024]: "Tailscale Funnel Documentation."  <https://tailscale.com/kb/1132/tailscale-funnel/>
+[@systemd_service_unit_2024]: "Systemd Service Unit Documentation."  <https://www.freedesktop.org/software/systemd/man/systemd.service.html>
 
 ---
 

@@ -74,11 +74,8 @@ Status: Proposed
 
 ## List further reading references
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai)
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
-3. [GTPyhop Documentation](https://github.com/dananau/GTPyhop)
+[@gtpyhop_documentation_2024]: "GTPyhop Documentation."  <https://github.com/dananau/GTPyhop>
 
-AI assistant Aria assisted with this article.
 
 ## Tags
 

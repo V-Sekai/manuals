@@ -63,5 +63,4 @@ Yes, addressing the limitations of the current IK system is crucial for improvin
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 - ManyBoneIK3D (mentioned for reference purposes only)

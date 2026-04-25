@@ -76,7 +76,6 @@ Yes, the rewriting of the code will indeed be done by us as we also maintain the
 
 ## Further Reading
 
-- [V-Sekai](https://v-sekai.org/)
 - [Elixir](https://elixir-lang.org/)
 - [Membrane Framework](https://www.membraneframework.org/)
 - [Khepri Database Library](https://hex.pm/packages/khepri)

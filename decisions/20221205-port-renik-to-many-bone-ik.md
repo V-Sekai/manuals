@@ -39,7 +39,6 @@ We know how to do it.
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 
 ## License of the contribution
 

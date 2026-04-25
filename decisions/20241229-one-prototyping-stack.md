@@ -151,13 +151,10 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## List further reading references
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) is the GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
-3. [Elixir Lang](https://elixir-lang.org/) - Official website for the Elixir programming language.
-4. [Phoenix Framework](https://www.phoenixframework.org/) - Official website for the Phoenix web framework.
-5. [BenBot](https://github.com/benbot) - GitHub profile of BenBot, a contributor to the V-Sekai project.
+[@elixir_lang_2024]: "Elixir Lang." Official website for the Elixir programming language. <https://elixir-lang.org/>
+[@phoenix_framework_2024]: "Phoenix Framework." Official website for the Phoenix web framework. <https://www.phoenixframework.org/>
+[@benbot_2024]: "BenBot." GitHub profile of BenBot, a contributor to the V-Sekai project. <https://github.com/benbot>
 
-AI assistant Aria assisted with this article.
 
 ## Tags
 

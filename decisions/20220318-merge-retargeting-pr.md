@@ -72,7 +72,6 @@ from what I can understand, "2" is what Tokage is proposing. I don't see many ot
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 - `https://github.com/godotengine/godot/pull/56902`
 
 ### License of the contribution

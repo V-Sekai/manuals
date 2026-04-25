@@ -47,5 +47,4 @@ Yes, this procedure is core to our operations and is performed by our team.
 
 ## Further Reading
 
-- [V-Sekai](https://v-sekai.org/)
 - This article is assisted by AI.

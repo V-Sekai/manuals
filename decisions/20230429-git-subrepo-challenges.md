@@ -46,5 +46,4 @@ Integrating a Git subrepo management system as a core feature ensures consistenc
 
 ### References
 
-- [V-Sekai](https://v-sekai.org/)
-- [Git Subrepo Documentation](https://github.com/ingydotnet/git-subrepo)
+[@git_subrepo_documentation_2024]: "Git Subrepo Documentation."  <https://github.com/ingydotnet/git-subrepo>

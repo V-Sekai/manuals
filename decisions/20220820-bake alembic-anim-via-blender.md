@@ -79,7 +79,6 @@ We already made a solution.
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 
 ### License of the contribution
 

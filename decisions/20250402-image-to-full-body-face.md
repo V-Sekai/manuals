@@ -99,6 +99,6 @@ Status: Proposed <!-- Options: Draft | Proposed | Rejected | Accepted | Deprecat
 
 ## References
 
-1. [MediaPipe Integration Codebase](https://github.com/V-Sekai/mediapipe)
-2. [VRM Avatar Specification](https://vrm.dev/en/)
-3. [GRPO Algorithm Documentation](https://github.com/roboflow/maestro/issues/194)
+[@mediapipe_integration_codebase_2024]: "MediaPipe Integration Codebase."  <https://github.com/V-Sekai/mediapipe>
+[@vrm_avatar_specification_2024]: "VRM Avatar Specification."  <https://vrm.dev/en/>
+[@grpo_algorithm_documentation_2024]: "GRPO Algorithm Documentation."  <https://github.com/roboflow/maestro/issues/194>

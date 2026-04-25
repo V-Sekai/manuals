@@ -53,8 +53,7 @@ Yes, selecting the appropriate database solution is crucial for the success and 
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
-- [YugabyteDB Data Types](https://docs.yugabyte.com/stable/api/ysql/datatypes/)
-- [Cockroach Labs](https://www.cockroachlabs.com/)
-- [MVSQLite: Distributed MVCC SQLite that runs on FoundationDB](https://forums.foundationdb.org/t/mvsqlite-distributed-mvcc-sqlite-that-runs-on-foundationdb/3493)
-- [PostgreSQL](https://www.postgresql.org/)
+[@yugabytedb_data_types_2024]: "YugabyteDB Data Types."  <https://docs.yugabyte.com/stable/api/ysql/datatypes/>
+[@cockroach_labs_2024]: "Cockroach Labs."  <https://www.cockroachlabs.com/>
+[@mvsqlite_distributed_mvcc_2024]: "MVSQLite: Distributed MVCC SQLite that runs on FoundationDB."  <https://forums.foundationdb.org/t/mvsqlite-distributed-mvcc-sqlite-that-runs-on-foundationdb/3493>
+[@postgresql_2024]: "PostgreSQL."  <https://www.postgresql.org/>

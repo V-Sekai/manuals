@@ -52,7 +52,6 @@ We are doing this, so we can record how we did it.
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 - <https://www.youtube.com/watch?v=LGZWjyeUPHU>
 
 ### License of the contribution

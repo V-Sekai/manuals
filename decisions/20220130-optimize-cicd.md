@@ -43,7 +43,7 @@ We are running the cicd service.
 
 ## References <!-- optional and numbers of links can vary -->
 
-- [GOCD](https://www.gocd.org/)
+[@gocd_2024]: "GOCD."  <https://www.gocd.org/>
 
 ## Derivative License
 

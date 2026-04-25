@@ -45,5 +45,4 @@ Motion posing is a core feature.
 
 ### References
 
-- [V-Sekai](https://v-sekai.org/)
-- [Easy Charts](https://github.com/fenix-hub/godot-engine.easy-charts)
+[@easy_charts_2024]: "Easy Charts."  <https://github.com/fenix-hub/godot-engine.easy-charts>

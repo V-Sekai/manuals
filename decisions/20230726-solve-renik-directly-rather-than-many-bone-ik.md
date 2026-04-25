@@ -44,4 +44,3 @@ Yes, as the creators of the system, we have the best understanding of its archit
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)

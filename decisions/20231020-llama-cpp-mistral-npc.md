@@ -45,6 +45,5 @@ Yes, the implementation of this strategy is done by us in the core of our game d
 
 ## Further Reading
 
-- [V-Sekai GitHub](https://github.com/v-sekai/)
 - AI assists this article.
-- [Axolotl Mistral Example](https://github.com/OpenAccess-AI-Collective/axolotl/tree/main/examples/mistral)
+[@axolotl_mistral_example_2024]: "Axolotl Mistral Example."  <https://github.com/OpenAccess-AI-Collective/axolotl/tree/main/examples/mistral>

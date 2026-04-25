@@ -57,8 +57,6 @@ Status: Obsolete — Rancher/Helm Kubernetes approach obsolete; replaced by curr
 
 ## Further Reading
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine.
-3. [bitnami/charts](https://github.com/bitnami/charts/tree/main)
+[@bitnamicharts_2024]: "bitnami/charts."  <https://github.com/bitnami/charts/tree/main>
 
 This article was assisted by Aria, your AI assistant.

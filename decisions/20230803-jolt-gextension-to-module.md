@@ -50,6 +50,6 @@ Porting Godot Jolt to a C++ module will provide more flexibility and control ove
 
 ## References
 
-- [Godot Engine](https://godotengine.org/)
-- [SCons](https://scons.org/)
-- [CMake](https://cmake.org/)
+[@godot_engine_2024]: "Godot Engine."  <https://godotengine.org/>
+[@scons_2024]: "SCons."  <https://scons.org/>
+[@cmake_2024]: "CMake."  <https://cmake.org/>

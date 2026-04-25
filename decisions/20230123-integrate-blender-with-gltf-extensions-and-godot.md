@@ -40,7 +40,6 @@ We manage the Godot Engine import experience.
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 
 ### License of the contribution
 

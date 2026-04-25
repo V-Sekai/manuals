@@ -46,8 +46,6 @@ Yes, this proposal suggests the development of an in-house AI system tailored to
 
 ## Further Reading
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai)
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
 3. [NousResearch Yarn Mistral 7b 128k - Hugging Face](https://huggingface.co/spaces/realgenius/NousResearch-Yarn-Mistral-7b-128k)
 
 _This proposal was assisted by Aria, an AI assistant._

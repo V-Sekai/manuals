@@ -42,7 +42,6 @@ Wanted to write down my preferences.
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 
 ### License of the contribution
 

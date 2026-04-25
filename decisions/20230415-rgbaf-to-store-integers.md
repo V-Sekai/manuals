@@ -107,4 +107,3 @@ Wanted to record this.
 
 ### References
 
-- [V-Sekai](https://v-sekai.org/)

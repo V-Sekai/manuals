@@ -74,4 +74,3 @@ As these features form the core functionality of the V-Sekai platform, they shou
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)

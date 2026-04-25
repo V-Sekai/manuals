@@ -50,7 +50,6 @@ Setting minimum requirements is a core feature.
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 
 ### License of the contribution
 

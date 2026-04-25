@@ -52,5 +52,4 @@ How we develop the project is a core task.
 
 ### References
 
-- [V-Sekai](https://v-sekai.org/)
-- [another-look-at-how-toyota-integrates-product-development](https://hbr.org/1998/07/another-look-at-how-toyota-integrates-product-development)
+[@anotherlookathowtoyotaintegratesproductdevelopment_2024]: "another-look-at-how-toyota-integrates-product-development."  <https://hbr.org/1998/07/another-look-at-how-toyota-integrates-product-development>

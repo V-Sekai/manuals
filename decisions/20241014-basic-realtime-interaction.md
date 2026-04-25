@@ -77,7 +77,6 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Further Reading
 
-1. [Project GitHub](https://github.com/project) - Official GitHub account for the project development community focusing on enhancing virtual interaction capabilities.
-2. [Project Documentation](https://docs.project.com) - Comprehensive documentation on the project's features and development guidelines.
+[@project_github_2024]: "Project GitHub." Official GitHub account for the project development community focusing on enhancing virtual interaction capabilities. <https://github.com/project>
+[@project_documentation_2024]: "Project Documentation." Comprehensive documentation on the project's features and development guidelines. <https://docs.project.com>
 
-_AI assistant Aria assisted with this article._

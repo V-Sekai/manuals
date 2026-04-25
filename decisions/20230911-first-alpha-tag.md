@@ -41,4 +41,4 @@ Yes, this strategy of using semver for denoting alpha releases is a core part of
 ## Further Reading
 
 - [V-Sekai] - AI assists this article.
-- [Semantic Versioning](https://semver.org/)
+[@semantic_versioning_2024]: "Semantic Versioning."  <https://semver.org/>

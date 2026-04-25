@@ -58,7 +58,6 @@ The generation of more worlds is within the core capabilities of our team at V-S
 
 ## Further Reading
 
-- [V-Sekai](https://v-sekai.org/)
 - This article is assisted by AI.
 
 If you have any further questions or need clarification on any aspect of this proposal, please feel free to ask.

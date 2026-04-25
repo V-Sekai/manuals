@@ -109,7 +109,7 @@ We're doing the networking layer.
 - [Add a multiplayer interface and visual nodes for SceneTree replication
   ](https://github.com/godotengine/godot-proposals/issues/3459)
 
-- [LMAX Exchange Architecture](https://skillsmatter.com/skillscasts/5247-the-lmax-exchange-architecture-high-throughput-low-latency-and-plain-old-java)
+[@lmax_exchange_architecture_2024]: "LMAX Exchange Architecture."  <https://skillsmatter.com/skillscasts/5247-the-lmax-exchange-architecture-high-throughput-low-latency-and-plain-old-java>
 
 LMAX (quote):
 
@@ -118,7 +118,7 @@ LMAX (quote):
 > 3. apply these events to the in-memory state, then
 > 4. ACK to the client
 
-- [Tigerbeetle design](https://github.com/tigerbeetledb/tigerbeetle/blob/main/docs/DESIGN.md#architecture)
+[@tigerbeetle_design_2024]: "Tigerbeetle design."  <https://github.com/tigerbeetledb/tigerbeetle/blob/main/docs/DESIGN.md#architecture>
 
 Tigerbeetle uses viewstamp replication in the context of bank ledger credit and debit.
 
@@ -128,10 +128,10 @@ Tigerbeetle (quote):
 > 2. apply these events to the in-memory state, then
 > 3. ACK to the client
 
-- [viewstamped-replication-made-famous](https://github.com/tigerbeetledb/viewstamped-replication-made-famous)
-- [vr-revisited.pdf](https://pmg.csail.mit.edu/papers/vr-revisited.pdf)
-- [TigerBeetle Discord server](https://discord.gg/uWCGp46uG5)
-- [Cubic interpolation](https://docs.godotengine.org/en/latest/tutorials/math/interpolation.html)
+[@viewstampedreplicationmadefamous_2024]: "viewstamped-replication-made-famous."  <https://github.com/tigerbeetledb/viewstamped-replication-made-famous>
+[@vrrevisitedpdf_2024]: "vr-revisited.pdf."  <https://pmg.csail.mit.edu/papers/vr-revisited.pdf>
+[@tigerbeetle_discord_server_2024]: "TigerBeetle Discord server."  <https://discord.gg/uWCGp46uG5>
+[@cubic_interpolation_2024]: "Cubic interpolation."  <https://docs.godotengine.org/en/latest/tutorials/math/interpolation.html>
 
 ## Interpolation function from Godot Engine 4
 

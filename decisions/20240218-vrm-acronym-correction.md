@@ -43,8 +43,5 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Further Reading
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official source for V-Sekai dev community.
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - Repository for V-Sekai project on social VR in Godot Engine.
-3. [3D humanoid avatar file format for VR](https://vrm.dev/en/)
+[@3d_humanoid_avatar_2024]: "3D humanoid avatar file format for VR."  <https://vrm.dev/en/>
 
-_Aria assisted with this content._

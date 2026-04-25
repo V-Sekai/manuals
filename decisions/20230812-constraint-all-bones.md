@@ -44,5 +44,4 @@ Yes, this change would be implemented in the core system by the V-Sekai team.
 
 ## Further Reading
 
-- [V-Sekai](https://v-sekai.org/)
 - This article is assisted by AI.

@@ -72,4 +72,3 @@ Pose quality is crucial to us. As the creators of V-Sekai, we have an unparallel
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)

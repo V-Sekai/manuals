@@ -42,7 +42,7 @@ We are the ones designing and using Discord.
 
 ## References <!-- optional and numbers of links can vary -->
 
-- [DiscordChatExporter](https://github.com/Tyrrrz/DiscordChatExporter) <!-- example: Refined by [xxx](yyyymmdd-xxx.md) -->
+[@discordchatexporter_2024]: "DiscordChatExporter." <!-- example: Refined by [xxx](yyyymmdd-xxx.md) --> <https://github.com/Tyrrrz/DiscordChatExporter>
 
 ## Derivative License
 

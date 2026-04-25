@@ -50,8 +50,6 @@ By focusing on enhancing AYON and creating comprehensive documentation, we are e
 
 ## Further Reading
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine
-3. [AYON](https://ayon.ynput.io/) - The platform hosting our tools and editor
+[@ayon_2024]: "AYON." The platform hosting our tools and editor <https://ayon.ynput.io/>
 
 > This article was assisted by Aria, an AI assistant.

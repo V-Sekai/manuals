@@ -46,7 +46,6 @@ Writing down stuff that's useful.
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 
 ## License of the contribution
 

@@ -42,7 +42,6 @@ The PostgreSQL optimization will be implemented by V-Sekai's team as a crucial p
 
 ## Further Reading
 
-- [V-Sekai on GitHub](https://github.com/v-sekai/)
-- [Binary Data Performance in PostgreSQL - CYBERTEC](https://www.cybertec-postgresql.com/en/binary-data-performance-in-postgresql/)&#8203;`【oaicite:0】`&#8203;
+[@binary_data_performance_2024]: "Binary Data Performance in PostgreSQL - CYBERTEC." &#8203;`【oaicite:0】`&#8203; <https://www.cybertec-postgresql.com/en/binary-data-performance-in-postgresql/>
 
 This article was assisted by AI.

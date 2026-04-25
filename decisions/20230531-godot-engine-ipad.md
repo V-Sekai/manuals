@@ -56,5 +56,4 @@ Yes, as the maintainers of Godot Engine, we have the expertise and knowledge of 
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
-- [iPad fork of of Godot Engine](https://github.com/V-Sekai/godot/tree/groups-4.x-ios)
+[@ipad_fork_godot_2024]: "iPad fork of of Godot Engine."  <https://github.com/V-Sekai/godot/tree/groups-4.x-ios>

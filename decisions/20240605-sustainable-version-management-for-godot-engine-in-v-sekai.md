@@ -53,8 +53,6 @@ Status: Draft
 
 ## Further Reading
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - The GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
-3. [Coding for a Finite World](https://yoric.github.io/post/coding-for-a-finite-world/) - A blog post discussing the need for sustainable coding practices in a finite world.
+[@coding_finite_world_2024]: "Coding for a Finite World." A blog post discussing the need for sustainable coding practices in a finite world. <https://yoric.github.io/post/coding-for-a-finite-world/>
 
 This proposal was assisted by AI assistant, Aria.

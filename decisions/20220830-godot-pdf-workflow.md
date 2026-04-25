@@ -41,7 +41,6 @@ Wanted to write the workflow down.
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 
 ### License of the contribution
 

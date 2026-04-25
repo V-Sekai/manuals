@@ -46,7 +46,6 @@ Yes, this enhancement improves the efficiency and usability of the V-Sekai platf
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
-- [Godot Engine StreamPeer](https://docs.godotengine.org/en/stable/classes/class_streampeer.html)
-- [Godot Engine Wasm](https://github.com/ashtonmeuser/godot-wasm)
-- [Godot Engine WasGo](https://github.com/V-Sekai/wasgo)
+[@godot_engine_streampeer_2024]: "Godot Engine StreamPeer."  <https://docs.godotengine.org/en/stable/classes/class_streampeer.html>
+[@godot_engine_wasm_2024]: "Godot Engine Wasm."  <https://github.com/ashtonmeuser/godot-wasm>
+[@godot_engine_wasgo_2024]: "Godot Engine WasGo."  <https://github.com/V-Sekai/wasgo>

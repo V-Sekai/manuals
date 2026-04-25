@@ -44,7 +44,5 @@ Yes, this project is core to our mission of showcasing the capabilities of the G
 
 ## Further Reading
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - This is the official GitHub account for the V-Sekai development community which focuses on social VR functionality for the Godot Engine.
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - This is the GitHub page for the V-Sekai open-source project that brings social VR/VRSNS/metaverse components to the Godot Engine.
 
 This article was assisted by AI assistant Aria.

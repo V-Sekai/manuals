@@ -40,7 +40,6 @@ This is a staff note.
 
 ## Further Reading
 
-- [V-Sekai](https://github.com/v-sekai/)
 - AI assists this article.
 - <https://www.blender.org/>
 - <https://store.steampowered.com/>

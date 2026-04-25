@@ -62,6 +62,5 @@ Yes, maintaining consistent naming conventions is essential for a professional a
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 - goblin.tools: <https://goblin.tools/>
 - openai: <https://openai.com/>

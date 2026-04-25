@@ -45,6 +45,5 @@ Yes, implementing this feature as part of the core V-Sekai engine ensures consis
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
-- [jsonformer](https://github.com/1rgs/jsonformer)
-- [integrations/jsonformer_experimental](https://python.langchain.com/en/latest/modules/models/llms/integrations/jsonformer_experimental.html)
+[@jsonformer_2024]: "jsonformer."  <https://github.com/1rgs/jsonformer>
+[@integrationsjsonformerexperimental_2024]: "integrations/jsonformer_experimental."  <https://python.langchain.com/en/latest/modules/models/llms/integrations/jsonformer_experimental.html>

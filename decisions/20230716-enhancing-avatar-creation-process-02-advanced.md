@@ -110,4 +110,3 @@ The proposed enhancement addresses the limitations in V-Sekai's avatar creation 
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)

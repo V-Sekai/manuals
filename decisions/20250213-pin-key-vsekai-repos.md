@@ -72,5 +72,5 @@ Status: Active
 
 ## References
 
-1. [GitHub: Pinning Organization Repositories](https://stackoverflow.com/a/67478102)  
+[@github_pinning_organization_2024]: "GitHub: Pinning Organization Repositories."  <https://stackoverflow.com/a/67478102>
    _Solution requires org owners to manually customize pins via profile settings._

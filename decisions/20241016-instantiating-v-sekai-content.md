@@ -69,5 +69,3 @@ Status: Superseded — Content distribution evaluation superseded by current cas
 
 ## Further Reading
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - This GitHub page hosts the V-Sekai open-source project, which integrates social VR/VRSNS/metaverse components into the Godot Engine.

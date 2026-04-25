@@ -40,7 +40,7 @@ We're doing the networking layer.
 - [20221019-develop-a-replication-sync-for-100-000-entities.md](20221019-develop-a-replication-sync-for-100-000-entities.md)
 - [20221016-v-sekai-view-replication.md](20221016-v-sekai-view-replication.md)
 - [20221014-networking-overhaul-proposal.md](20221014-networking-overhaul-proposal.md)
-- [Efficient*Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG*.pdf](https://pure.bond.edu.au/ws/portalfiles/portal/18275482/Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG_.pdf)
+[@efficientmethodsforimprovingscalabilityandplayabilityofmassivelymultiplayeronlinegamemmogpdf_2024]: "Efficient*Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG*.pdf."  <https://pure.bond.edu.au/ws/portalfiles/portal/18275482/Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG_.pdf>
 
 ### Questions
 

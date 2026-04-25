@@ -59,11 +59,8 @@ Status: Superseded — Multiplayer sync between Godot instances superseded by cu
 
 ## List further reading references
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai)
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
-3. [mas-bandwidth/fps](https://github.com/mas-bandwidth/fps/blob/main/001/README.md?ref=mas-bandwidth.com)
+[@masbandwidthfps_2024]: "mas-bandwidth/fps."  <https://github.com/mas-bandwidth/fps/blob/main/001/README.md?ref=mas-bandwidth.com>
 
-AI assistant Aria assisted with this article.
 
 ## Tags
 

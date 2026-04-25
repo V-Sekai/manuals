@@ -46,11 +46,8 @@ V-Sekai
 
 ## List further reading references
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project, which integrates social VR/VRSNS/metaverse components into the Godot Engine.
-3. [CESIUM Primitive Outline](https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Vendor/CESIUM_primitive_outline/README.md) - Describes the CESIUM Primitive Outline extension for rendering triangle edges with high-quality, anti-aliased lines.
+[@cesium_primitive_outline_2024]: "CESIUM Primitive Outline." Describes the CESIUM Primitive Outline extension for rendering triangle edges with high-quality, anti-aliased lines. <https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Vendor/CESIUM_primitive_outline/README.md>
 
-AI assistant Aria assisted with this article.
 
 ## Tags
 

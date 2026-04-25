@@ -46,5 +46,4 @@ Yes, implementing server-side validation, sanitization service, and CDN integrat
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
-- [Content Delivery Network (CDN)](https://en.wikipedia.org/wiki/Content_delivery_network)
+[@content_delivery_network_2024]: "Content Delivery Network (CDN)."  <https://en.wikipedia.org/wiki/Content_delivery_network>

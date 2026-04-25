@@ -44,5 +44,4 @@ Usability is a core feature.
 
 ### References
 
-- [V-Sekai](https://v-sekai.org/)
-- [KHR_xmp_json_ld](https://github.com/KhronosGroup/glTF/tree/main/extensions/2.0/Khronos/KHR_xmp_json_ld)
+[@khrxmpjsonld_2024]: "KHR_xmp_json_ld."  <https://github.com/KhronosGroup/glTF/tree/main/extensions/2.0/Khronos/KHR_xmp_json_ld>

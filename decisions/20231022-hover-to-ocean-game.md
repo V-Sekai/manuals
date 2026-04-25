@@ -36,4 +36,3 @@ Yes, this proposal aligns with the core values of V-Sekai and can be implemented
 
 ## Further Reading
 
-- [V-Sekai](https://github.com/v-sekai/)

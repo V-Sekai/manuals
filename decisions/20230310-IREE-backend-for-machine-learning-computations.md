@@ -53,8 +53,7 @@ I know how, and no one else is doing it.
 
 ### References
 
-- [V-Sekai](https://v-sekai.org/)
-- [SHARK](https://github.com/nod-ai/SHARK)
+[@shark_2024]: "SHARK."  <https://github.com/nod-ai/SHARK>
 - IREE in-tree samples: <https://github.com/openxla/iree/tree/main/samples>
 - IREE extra/more complex samples: <https://github.com/iree-org/iree-samples>
 - IREE dynamic shapes sample: <https://github.com/openxla/iree/tree/main/samples/dynamic_shapes>

@@ -70,7 +70,5 @@ Focus on essential launch features, expand based on user feedback.
 
 ## Further Reading
 
-1. [V-Sekai GitHub Repository](https://github.com/v-sekai)
-2. [V-Sekai Game Project](https://github.com/v-sekai/v-sekai-game)
 
 Assistance provided by AI assistant Aria.

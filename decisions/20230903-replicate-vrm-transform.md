@@ -56,9 +56,8 @@ Fire knows the way.
 
 ## Further Reading
 
-- [V-Sekai](https://v-sekai.org/)
-- [VRM Animation Specification](https://github.com/vrm-c/vrm-specification/tree/master/specification/VRMC_vrm_animation-1.0)
-- [Replicate - Cloud GPU Toy](https://replicate.com/fire/v-sekai.mediapipe-labeler)
+[@vrm_animation_specification_2024]: "VRM Animation Specification."  <https://github.com/vrm-c/vrm-specification/tree/master/specification/VRMC_vrm_animation-1.0>
+[@replicate_cloud_gpu_2024]: "Replicate - Cloud GPU Toy."  <https://replicate.com/fire/v-sekai.mediapipe-labeler>
 
 This article is assisted by AI.
 

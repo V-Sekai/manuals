@@ -151,10 +151,7 @@ Status: Draft
 
 ## Further Reading
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project, which brings social VR/VRSNS/metaverse components to the Godot Engine.
 3. [Final Fantasy Crystal Chronicles: My Life as a King - A Lost WiiWare Classic [REFFOID]](https://www.youtube.com/watch?v=oHDrSb6DUg4)
-4. [Godot XR Game Jam July 2024](https://itch.io/jam/godot-xr-game-jam-july-2024)
-5. [Gridmap usage in Cassette Beasts](https://www.cassettebeasts.com/2021/08/09/technical-look-the-park/)
+[@godot_xr_game_2024]: "Godot XR Game Jam July 2024."  <https://itch.io/jam/godot-xr-game-jam-july-2024>
+[@gridmap_usage_cassette_2021]: "Gridmap usage in Cassette Beasts."  <https://www.cassettebeasts.com/2021/08/09/technical-look-the-park/>
 
-AI assistant Aria assisted with this article.

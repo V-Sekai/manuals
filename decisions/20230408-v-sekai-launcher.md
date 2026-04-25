@@ -46,4 +46,3 @@ Want to make it easier to use v-sekai.
 
 ### References
 
-- [V-Sekai](https://v-sekai.org/)

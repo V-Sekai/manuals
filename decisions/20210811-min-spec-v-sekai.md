@@ -70,7 +70,7 @@ As a platform holder, it would be our responsibility to understand the limits of
 
 - UDOO Bolt
   [datasheet_udoo_bolt_gear-1947342.pdf](https://github.com/V-Sekai/v-sekai-proposals/files/6958673/datasheet_udoo_bolt_gear-1947342.pdf)
-- [Mouser Electronics Canada V-Sekai Platform.pdf](https://github.com/V-Sekai/v-sekai-proposals/files/6958676/Mouser.Electronics.Canada.V-Sekai.Platform.pdf)
+[@mouser_electronics_canada_2024]: "Mouser Electronics Canada V-Sekai Platform.pdf."  <https://github.com/V-Sekai/v-sekai-proposals/files/6958676/Mouser.Electronics.Canada.V-Sekai.Platform.pdf>
 - <https://developer.oculus.com/documentation/unity/unity-perf/>
 
 ### Derivative License

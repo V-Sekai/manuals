@@ -51,7 +51,6 @@ The decision to use Ansible for server provisioning is proposed by V-Sekai.
 
 ## Further Reading
 
-- [V-Sekai](https://github.com/v-sekai/)
-- [Ansible Tower: FAQ](https://www.ansible.com/products/awx-project/faq)
+[@ansible_tower_faq_2024]: "Ansible Tower: FAQ."  <https://www.ansible.com/products/awx-project/faq>
 
 This article was assisted by Aria, an AI.

@@ -38,5 +38,4 @@ Yes, this issue falls within our core development responsibilities, and we will 
 
 ## Further Reading
 
-- [V-Sekai](https://v-sekai.org/)
 - This article is assisted by AI.

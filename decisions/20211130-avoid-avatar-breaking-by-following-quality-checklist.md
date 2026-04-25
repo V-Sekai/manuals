@@ -70,7 +70,7 @@ This is a guideline and we are in the area.
 
 ## References <!-- optional and numbers of links can vary -->
 
-- [VRM - 3D Avatar File Format for VR](https://vrm.dev/en/) <!-- example: Refined by [xxx](yyyymmdd-xxx.md) -->
+[@vrm_3d_avatar_2024]: "VRM - 3D Avatar File Format for VR." <!-- example: Refined by [xxx](yyyymmdd-xxx.md) --> <https://vrm.dev/en/>
 
 ## Derivative License
 

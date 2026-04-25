@@ -59,7 +59,6 @@ It's our release process.
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 
 ### License of the contribution
 

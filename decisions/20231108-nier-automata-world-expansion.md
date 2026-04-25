@@ -44,9 +44,8 @@ This strategy is in line with our core philosophy of game development. We believ
 
 For more insights on this topic, consider the following resources:
 
-- [V-Sekai](https://github.com/v-sekai/): The official GitHub page of V-Sekai, featuring various projects and initiatives related to game development.
-- [GDC 2018: A Fun Time in Which Some No-Good Game Developers May Discuss How We Made 'NieR:Automata'](https://8bitdigi.com/gdc-2018-a-fun-time-in-which-some-no-good-game-developers-may-or-may-not-discuss-how-we-made-nier/): A comprehensive report on the GDC 2018 panel featuring Yoko Taro and Takahisa Taura discussing the creation process of 'NieR:Automata'.
-- [GDC 2018 Video: A Fun Time in Which Some No-Good Game Developers May Discuss How We Made 'NieR:Automata'](https://www.youtube.com/watch?v=jKbH9i5axxU)
+[@gdc_2018_fun_2018]: "GDC 2018: A Fun Time in Which Some No-Good Game Developers May Discuss How We Made 'NieR:Automata'." : A comprehensive report on the GDC 2018 panel featuring Yoko Taro and Takahisa Taura discussing the creation process of 'NieR:Automata'. <https://8bitdigi.com/gdc-2018-a-fun-time-in-which-some-no-good-game-developers-may-or-may-not-discuss-how-we-made-nier/>
+[@gdc_2018_video_2024]: "GDC 2018 Video: A Fun Time in Which Some No-Good Game Developers May Discuss How We Made 'NieR:Automata'."  <https://www.youtube.com/watch?v=jKbH9i5axxU>
 
 _This article was assisted by AI._
 

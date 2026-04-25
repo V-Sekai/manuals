@@ -48,4 +48,3 @@ Improving navigation is essential for enhancing user experience and expanding V-
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)

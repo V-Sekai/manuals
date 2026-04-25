@@ -112,9 +112,7 @@ Status: Active <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supers
 
 ## Further Reading
 
-1. [vrc-get gui](https://github.com/vrc-get/vrc-get/releases/tag/gui-v0.1.0-beta.16)
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine
-1. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine
+[@vrcget_gui_2024]: "vrc-get gui."  <https://github.com/vrc-get/vrc-get/releases/tag/gui-v0.1.0-beta.16>
 1. <https://vrm-downgrader.pages.dev/>
 1. <https://franadavrc.gumroad.com/l/gogoloco>
 1. <https://fujisunflower.booth.pm/items/2087178>
@@ -129,4 +127,3 @@ Status: Active <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supers
 2. <https://redsim.github.io/vpmlisting/index.json>
 3. <https://ramtype0.github.io/VpmRepository/index.json>
 
-AI assistant Aria assisted with this article.

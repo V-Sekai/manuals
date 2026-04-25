@@ -44,7 +44,6 @@ Despite requiring effort and resources, the potential benefits for both V-Sekai 
 
 ## Further Reading
 
-- [V-Sekai](https://v-sekai.org/)
-- [Godot Engine Proposal Discussion](https://github.com/godotengine/godot-proposals/discussions/4233)
+[@godot_engine_proposal_2024]: "Godot Engine Proposal Discussion."  <https://github.com/godotengine/godot-proposals/discussions/4233>
 
 This article is assisted by AI.

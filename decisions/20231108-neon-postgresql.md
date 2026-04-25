@@ -48,7 +48,6 @@ Planning to make Neon a central part of our backend, relying on our collective s
 
 ## Further Reading
 
-- [V-Sekai on GitHub](https://github.com/v-sekai/)
-- [Neon's Architecture](https://neon.tech/docs/introduction/architecture-overview)
+[@neons_architecture_2024]: "Neon's Architecture."  <https://neon.tech/docs/introduction/architecture-overview>
 
 This article was assisted by AI.

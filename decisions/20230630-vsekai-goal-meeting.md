@@ -77,4 +77,3 @@ Meeting goal: determine what we can feasibly build and what we can enable others
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)

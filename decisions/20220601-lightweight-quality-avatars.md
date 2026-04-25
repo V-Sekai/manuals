@@ -73,7 +73,6 @@ Avatars is our special area.
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 
 ### License of the contribution
 

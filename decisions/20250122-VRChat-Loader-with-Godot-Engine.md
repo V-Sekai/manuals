@@ -42,15 +42,12 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## List further reading references
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai)
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
-3. [VRChat GLB Loader](https://github.com/vr-voyage/vrchat-glb-loader)
-4. [Galbi SDK](https://galbi-sdk-docs.pages.dev/en/)
-5. [World Name: Project Galbi](https://vrchat.com/home/launch?worldId=wrld_068ed758-68b1-40bc-b647-f54c3b3d92fc)
-6. [The-Cheap-or-Nasty-Pattern](https://zguide.zeromq.org/docs/chapter7/#The-Cheap-or-Nasty-Pattern)
-7. [V-Sekai-fire/godot-http-glb-host](https://github.com/V-Sekai-fire/godot-http-glb-host)
+[@vrchat_glb_loader_2024]: "VRChat GLB Loader."  <https://github.com/vr-voyage/vrchat-glb-loader>
+[@galbi_sdk_2024]: "Galbi SDK."  <https://galbi-sdk-docs.pages.dev/en/>
+[@world_name_project_2024]: "World Name: Project Galbi."  <https://vrchat.com/home/launch?worldId=wrld_068ed758-68b1-40bc-b647-f54c3b3d92fc>
+[@thecheapornastypattern_2024]: "The-Cheap-or-Nasty-Pattern."  <https://zguide.zeromq.org/docs/chapter7/#The-Cheap-or-Nasty-Pattern>
+[@vsekaifiregodothttpglbhost_2024]: "V-Sekai-fire/godot-http-glb-host."  <https://github.com/V-Sekai-fire/godot-http-glb-host>
 
-AI assistant Aria assisted with this article.
 
 ## Tags
 

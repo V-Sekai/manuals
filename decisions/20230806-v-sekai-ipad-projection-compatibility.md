@@ -50,5 +50,4 @@ Yes, the decision to implement a virtual joystick for touchscreen devices was ma
 
 ## Further Reading
 
-- [V-Sekai](https://v-sekai.org/)
 - This article is assisted by AI.

@@ -88,4 +88,3 @@ Yes, addressing the limitations of V-Sekai is crucial for its success and adopti
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)

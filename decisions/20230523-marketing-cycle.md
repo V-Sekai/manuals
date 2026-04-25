@@ -64,5 +64,4 @@ Yes, as the creators and maintainers of V-Sekai, we have the best understanding 
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
-- [Material from 2quiet2market](https://2quiet2market.com)
+[@material_from_2quiet2market_2024]: "Material from 2quiet2market."  <https://2quiet2market.com>

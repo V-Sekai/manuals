@@ -42,7 +42,6 @@ We need to test our work.
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 
 ## License of the contribution
 

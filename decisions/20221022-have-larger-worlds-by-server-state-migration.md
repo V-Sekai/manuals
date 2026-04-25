@@ -67,15 +67,14 @@ We maintain the networking stack.
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
-- [Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG by Prasetya, Kusno](https://pure.bond.edu.au/ws/portalfiles/portal/18275482/Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG_.pdf)
-- [godot sqlite mvsqlite](https://github.com/V-Sekai/godot-sqlite/tree/mvsqlite)
-- [godot mvsql demo](https://github.com/V-Sekai/godot-sqlite/tree/mvsqlite/demo)
-- [mvsqlite for windows](https://github.com/fire/mvsqlite/tree/windows)
-- [mvsqlite](https://github.com/losfair/mvsqlite)
-- [Apple's foundationdb](https://github.com/apple/foundationdb)
-- [Rust lang](https://www.rust-lang.org/)
-- [Special thanks to the TigerBeetle for the sql schema](https://github.com/tigerbeetledb/tigerbeetle)
+[@efficientmethodsforimprovingscalabilityandplayabilityofmassivelymultiplayeronlinegamemmog_by_prasetya_2024]: "Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG by Prasetya, Kusno."  <https://pure.bond.edu.au/ws/portalfiles/portal/18275482/Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG_.pdf>
+[@godot_sqlite_mvsqlite_2024]: "godot sqlite mvsqlite."  <https://github.com/V-Sekai/godot-sqlite/tree/mvsqlite>
+[@godot_mvsql_demo_2024]: "godot mvsql demo."  <https://github.com/V-Sekai/godot-sqlite/tree/mvsqlite/demo>
+[@mvsqlite_windows_2024]: "mvsqlite for windows."  <https://github.com/fire/mvsqlite/tree/windows>
+[@mvsqlite_2024]: "mvsqlite."  <https://github.com/losfair/mvsqlite>
+[@apples_foundationdb_2024]: "Apple's foundationdb."  <https://github.com/apple/foundationdb>
+[@rust_lang_2024]: "Rust lang."  <https://www.rust-lang.org/>
+[@special_thanks_tigerbeetle_2024]: "Special thanks to the TigerBeetle for the sql schema."  <https://github.com/tigerbeetledb/tigerbeetle>
 
 ## Code References
 

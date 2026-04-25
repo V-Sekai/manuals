@@ -69,4 +69,3 @@ We care about v-sekai more than others.
 
 ### References
 
-- [V-Sekai](https://v-sekai.org/)

@@ -47,7 +47,6 @@ Yes, this guide was created by us and is part of our core documentation.
 
 ## Further Reading
 
-- [V-Sekai](https://v-sekai.org/)
 - This article is assisted by AI.
 
 ## Example configuration

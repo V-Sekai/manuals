@@ -53,4 +53,4 @@ Implementing VRM 1.0 support and publishing it to the Godot Engine asset library
 
 ## References
 
-- [VRM 1.0 Specification](https://vrm.dev/en/vrm1/)
+[@vrm_10_specification_2024]: "VRM 1.0 Specification."  <https://vrm.dev/en/vrm1/>

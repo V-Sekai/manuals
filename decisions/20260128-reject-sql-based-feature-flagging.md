@@ -84,9 +84,9 @@ Status: Rejected <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Further Reading
 
-1. [Managing feature toggles in teams: The limits of feature toggles](https://thoughtworks.com/en-us/insights/blog/continuous-delivery/limits-of-feature-toggles)
-2. [Feature Toggles (aka Feature Flags)](https://martinfowler.com/articles/feature-toggles.html)
-3. [Configuration as Code Best Practices](https://12factor.net/config)
+[@managing_feature_toggles_2024]: "Managing feature toggles in teams: The limits of feature toggles."  <https://thoughtworks.com/en-us/insights/blog/continuous-delivery/limits-of-feature-toggles>
+[@feature_toggles_aka_2024]: "Feature Toggles (aka Feature Flags)."  <https://martinfowler.com/articles/feature-toggles.html>
+[@configuration_as_code_2024]: "Configuration as Code Best Practices."  <https://12factor.net/config>
 
 ---
 
@@ -96,5 +96,3 @@ Status: Rejected <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 2. **Configuration Drift**: When runtime configuration differs from deployed code expectations
 3. **Twelve-Factor App**: Application development methodology emphasizing configuration through environment variables
 4. **Hot Reload**: Changing application behavior without restarting the process
-
-AI assistant Aria assisted with this article.

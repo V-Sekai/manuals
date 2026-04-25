@@ -106,10 +106,9 @@ Yes, the rewriting of the code will indeed be done by us as we also maintain the
 
 ## Further Reading
 
-- [V-Sekai](https://v-sekai.org/)
-- [Elixir](https://elixir-lang.org/)
-- [Membrane Framework](https://www.membraneframework.org/)
-- [Khepri Database Library](https://hex.pm/packages/khepri)
-- [JSON-RPC](https://www.jsonrpc.org/)
+[@elixir_2024]: "Elixir."  <https://elixir-lang.org/>
+[@membrane_framework_2024]: "Membrane Framework."  <https://www.membraneframework.org/>
+[@khepri_database_library_2024]: "Khepri Database Library."  <https://hex.pm/packages/khepri>
+[@jsonrpc_2024]: "JSON-RPC."  <https://www.jsonrpc.org/>
 
 _This article is assisted by AI._

@@ -44,5 +44,4 @@ Too low performance impacts usability.
 
 ### References
 
-- [V-Sekai](https://v-sekai.org/)
 - <https://github.com/fenix-hub/godot-engine.easy-charts>

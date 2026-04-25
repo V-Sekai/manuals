@@ -47,4 +47,3 @@ Yes, this enhancement addresses core limitations in the V-Sekai system and shoul
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)

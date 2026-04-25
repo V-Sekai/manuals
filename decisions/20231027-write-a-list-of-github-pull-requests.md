@@ -50,11 +50,10 @@ Yes, this is a core part of our development process and is done by us.
 
 For more information, you can visit the following links:
 
-- [V-Sekai](https://github.com/v-sekai/)
-- [GitHub GraphQL API](https://docs.github.com/en/graphql)
-- [Elixir HTTPoison Library](https://hexdocs.pm/httpoison/readme.html)
-- [Elixir Jason Library](https://hexdocs.pm/jason/readme.html)
-- [Allourideas Wiki Survey](https://www.allourideas.org/prioritize-bugs-open-godot-engine-prs-milestone-4-2/admin)
+[@github_graphql_api_2024]: "GitHub GraphQL API."  <https://docs.github.com/en/graphql>
+[@elixir_httpoison_library_2024]: "Elixir HTTPoison Library."  <https://hexdocs.pm/httpoison/readme.html>
+[@elixir_jason_library_2024]: "Elixir Jason Library."  <https://hexdocs.pm/jason/readme.html>
+[@allourideas_wiki_survey_2024]: "Allourideas Wiki Survey."  <https://www.allourideas.org/prioritize-bugs-open-godot-engine-prs-milestone-4-2/admin>
 
 This article was assisted by AI.
 

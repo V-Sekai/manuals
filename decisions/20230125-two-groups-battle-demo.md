@@ -67,5 +67,4 @@ It helps us focus.
 
 ### References
 
-- [V-Sekai](https://v-sekai.org/)
-- [renown](https://youtu.be/tVrLMXZDNyo)
+[@renown_2024]: "renown."  <https://youtu.be/tVrLMXZDNyo>

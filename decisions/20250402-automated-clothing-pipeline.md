@@ -84,7 +84,7 @@ Status: Proposed <!-- Options: Draft | Proposed | Rejected | Accepted | Deprecat
 
 ## References
 
-1. [RF-DETR Paper](https://arxiv.org/abs/2301.07979)
-2. [IREE Documentation](https://iree.dev/)
-3. [Blender Python API](https://docs.blender.org/api/current/)
-4. [Roboflow Guide](https://docs.roboflow.com)
+[@rfdetr_paper_2024]: "RF-DETR Paper."  <https://arxiv.org/abs/2301.07979>
+[@iree_documentation_2024]: "IREE Documentation."  <https://iree.dev/>
+[@blender_python_api_2024]: "Blender Python API."  <https://docs.blender.org/api/current/>
+[@roboflow_guide_2024]: "Roboflow Guide."  <https://docs.roboflow.com>

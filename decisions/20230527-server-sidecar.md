@@ -86,4 +86,3 @@ Implementing this solution at the core level ensures that all users benefit from
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)

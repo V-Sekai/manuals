@@ -46,7 +46,6 @@ We own the repos.
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 
 ## License of the contribution
 

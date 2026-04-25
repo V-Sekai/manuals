@@ -46,8 +46,6 @@ The key objective is to harness the potential of the "1 Meter Cubed 128 Quantize
 
 ## Further Reading
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - GitHub page for the V-Sekai open-source project bringing social VR/VRSNS/metaverse components to the Godot Engine
-3. [Shadows of Doubt on Steam](https://store.steampowered.com/app/986130/Shadows_of_Doubt/) - A showcase of the advancements made possible through procedural generation in gaming.
+[@shadows_doubt_steam_2024]: "Shadows of Doubt on Steam." A showcase of the advancements made possible through procedural generation in gaming. <https://store.steampowered.com/app/986130/Shadows_of_Doubt/>
 
 _Assisted by AI Aria._

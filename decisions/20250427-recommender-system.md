@@ -85,8 +85,8 @@ Status: Accepted ## Decision Makers
 
 ## Further Reading
 
-- [FLAME Documentation](https://github.com/phoenixframework/flame)
+[@flame_documentation_2024]: "FLAME Documentation."  <https://github.com/phoenixframework/flame>
 - [librecommender Documentation (Placeholder - Add actual link if available)](URL_TO_LIBRECOMMENDER)
-- [Oban Documentation](https://getoban.pro/docs/stable/Oban.html)
-- [Membrane Framework Documentation](https://membraneframework.org/guide)
-- [Ecto Documentation](https://hexdocs.pm/ecto/Ecto.html)
+[@oban_documentation_2024]: "Oban Documentation."  <https://getoban.pro/docs/stable/Oban.html>
+[@membrane_framework_documentation_2024]: "Membrane Framework Documentation."  <https://membraneframework.org/guide>
+[@ecto_documentation_2024]: "Ecto Documentation."  <https://hexdocs.pm/ecto/Ecto.html>

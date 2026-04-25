@@ -64,4 +64,3 @@ Yes, implementing this feature as part of our core project will improve our open
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)

@@ -71,8 +71,5 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Further Reading
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub repository.
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game) - Project page on GitHub.
-3. [Velopack Documentation](https://velopack.org/docs) - Learn more about how Velopack manages application updates.
+[@velopack_documentation_2024]: "Velopack Documentation." Learn more about how Velopack manages application updates. <https://velopack.org/docs>
 
-AI assistant Aria assisted with this article.

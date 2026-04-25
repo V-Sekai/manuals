@@ -64,4 +64,3 @@ This is a list of core features.
 
 ### References
 
-- [V-Sekai](https://v-sekai.org/)

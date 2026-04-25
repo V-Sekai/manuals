@@ -40,5 +40,4 @@ Yes, this strategy is implemented in the core of our platform and maintained by 
 
 ## Further Reading
 
-- [V-Sekai](https://v-sekai.org/)
 - This article is assisted by AI.

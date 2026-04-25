@@ -177,15 +177,13 @@ Status: Draft
 
 ## Further Reading
 
-1. [V-Sekai · GitHub](https://github.com/v-sekai)
-2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
-3. [flux.1 schnell - Civitai](https://civitai.com/models/618692?modelVersionId=699279)
-4. [TRELLIS - Hugging Face](https://huggingface.co/spaces/JeffreyXiang/TRELLIS)
-5. [Character Design Sheet Helper - Civitai](https://civitai.com/models/100435)
-6. [TOOL_logoscale - GitHub](https://github.com/V-Sekai-fire/TOOL_logoscale/tree/main?tab=readme-ov-file)
-7. [Easy Diffusion](https://easydiffusion.github.io/)
-8. [Windows Subsystem for Linux Documentation](https://docs.microsoft.com/en-us/windows/wsl/)
-9. [Shoebox](https://renderhjs.net/shoebox/)
-10. [Creative Image Enhancer/Upscaler](https://github.com/pinokiofactory/clarity-refiners-ui)
-11. [Project-Babble/ProjectBabble](https://github.com/Project-Babble/ProjectBabble)
-12. [schananas/grounded_sam](https://replicate.com/schananas/grounded_sam)
+[@flux1_schnell_civitai_2024]: "flux.1 schnell - Civitai."  <https://civitai.com/models/618692?modelVersionId=699279>
+[@trellis_hugging_face_2024]: "TRELLIS - Hugging Face."  <https://huggingface.co/spaces/JeffreyXiang/TRELLIS>
+[@character_design_sheet_2024]: "Character Design Sheet Helper - Civitai."  <https://civitai.com/models/100435>
+[@toollogoscale_github_2024]: "TOOL_logoscale - GitHub."  <https://github.com/V-Sekai-fire/TOOL_logoscale/tree/main?tab=readme-ov-file>
+[@easy_diffusion_2024]: "Easy Diffusion."  <https://easydiffusion.github.io/>
+[@windows_subsystem_linux_2024]: "Windows Subsystem for Linux Documentation."  <https://docs.microsoft.com/en-us/windows/wsl/>
+[@shoebox_2024]: "Shoebox."  <https://renderhjs.net/shoebox/>
+[@creative_image_enhancerupscaler_2024]: "Creative Image Enhancer/Upscaler."  <https://github.com/pinokiofactory/clarity-refiners-ui>
+[@projectbabbleprojectbabble_2024]: "Project-Babble/ProjectBabble."  <https://github.com/Project-Babble/ProjectBabble>
+[@schananasgroundedsam_2024]: "schananas/grounded_sam."  <https://replicate.com/schananas/grounded_sam>

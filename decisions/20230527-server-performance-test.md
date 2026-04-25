@@ -96,4 +96,3 @@ Yes, addressing the V-Sekai limitation is crucial for ensuring the system's reli
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)

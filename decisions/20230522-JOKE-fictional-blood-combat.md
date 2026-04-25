@@ -50,4 +50,3 @@ Easier integration, optimization, control, and refinement as part of the core ga
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)

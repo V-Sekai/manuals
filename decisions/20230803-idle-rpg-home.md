@@ -69,4 +69,3 @@ Creating an RPG system as a feature of V-Sekai will enhance the overall user exp
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)

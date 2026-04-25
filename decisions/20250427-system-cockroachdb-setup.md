@@ -141,10 +141,10 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Further Reading
 
-1. [Install CockroachDB on Linux (v22.1)](https://www.cockroachlabs.com/docs/v22.1/install-cockroachdb-linux.html) (#attachment)
-2. [CockroachDB Manual Deployment](https://www.cockroachlabs.com/docs/v22.1/manual-deployment.html)
-3. [CockroachDB `start` command](https://www.cockroachlabs.com/docs/v22.1/cockroach-start.html)
-4. [Systemd Service Unit Documentation](https://www.freedesktop.org/software/systemd/man/systemd.service.html)
+[@install_cockroachdb_linux_2024]: "Install CockroachDB on Linux (v22.1)." (#attachment) <https://www.cockroachlabs.com/docs/v22.1/install-cockroachdb-linux.html>
+[@cockroachdb_manual_deployment_2024]: "CockroachDB Manual Deployment."  <https://www.cockroachlabs.com/docs/v22.1/manual-deployment.html>
+[@cockroachdb_start_command_2024]: "CockroachDB `start` command."  <https://www.cockroachlabs.com/docs/v22.1/cockroach-start.html>
+[@systemd_service_unit_2024]: "Systemd Service Unit Documentation."  <https://www.freedesktop.org/software/systemd/man/systemd.service.html>
 
 ---
 

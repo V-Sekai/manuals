@@ -38,7 +38,6 @@ Chosen option: "Set V-Sekai's screen resolution to fit the default resolution of
 
 ## Links
 
-- [V-Sekai](https://v-sekai.org/)
 - This article is assisted by AI.
 
 ## Tags

@@ -110,7 +110,7 @@ We want to present V-Sekai maps for others to remix.
 
 ## References <!-- optional and numbers of links can vary -->
 
-- [DVC Version Control system](https://dvc.org/) <!-- example: Refined by [xxx](yyyymmdd-xxx.md) -->
+[@dvc_version_control_2024]: "DVC Version Control system." <!-- example: Refined by [xxx](yyyymmdd-xxx.md) --> <https://dvc.org/>
 
 ## Derivative License
 

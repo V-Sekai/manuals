@@ -83,6 +83,5 @@ Status: Proposed
 
 ## References
 
-1. [FaceMotion3D Documentation](https://www.facemotion3d.net/)
-2. [PHI-4 Multimodal Model Repository](https://github.com/roboflow/maestro/issues/194)
-3. [v-sekai Project Repository](https://github.com/v-sekai)
+[@facemotion3d_documentation_2024]: "FaceMotion3D Documentation."  <https://www.facemotion3d.net/>
+[@phi4_multimodal_model_2024]: "PHI-4 Multimodal Model Repository."  <https://github.com/roboflow/maestro/issues/194>

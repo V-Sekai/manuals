@@ -65,6 +65,5 @@ Scriptability is a core feature.
 
 ### References
 
-- [V-Sekai](https://v-sekai.org/)
-- [libsql bindgen](https://bindgen.libsql.org/)
-- [wasm udfs in sqlite](https://blog.chiselstrike.com/webassembly-functions-for-your-sqlite-compatible-database-7e1ad95a2aa7)
+[@libsql_bindgen_2024]: "libsql bindgen."  <https://bindgen.libsql.org/>
+[@wasm_udfs_sqlite_2024]: "wasm udfs in sqlite."  <https://blog.chiselstrike.com/webassembly-functions-for-your-sqlite-compatible-database-7e1ad95a2aa7>

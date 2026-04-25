@@ -40,7 +40,7 @@ We are the maintainers.
 
 ## References <!-- optional and numbers of links can vary -->
 
-- [Spatial Audio branch](https://github.com/V-Sekai/godot/tree/feature/spatial-audio)
+[@spatial_audio_branch_2024]: "Spatial Audio branch."  <https://github.com/V-Sekai/godot/tree/feature/spatial-audio>
 
 ## Derivative License
 

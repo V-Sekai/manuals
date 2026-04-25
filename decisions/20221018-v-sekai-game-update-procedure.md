@@ -48,7 +48,6 @@ We know how to do this and others don't.
 
 ## References
 
-- [V-Sekai](https://v-sekai.org/)
 
 ## License of the contribution
 

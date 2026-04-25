@@ -46,8 +46,8 @@ How to develop an 'Ask V-Sekai' chatbot that utilizes Vercel serverless function
 
 ## Further Reading
 
-- [Vercel Serverless Functions Documentation](https://vercel.com/docs/serverless-functions/introduction)
-- [OpenAI API Documentation](https://beta.openai.com/docs/)
-- [Neon Tech Blog on Building an AI ChatBot](https://neon.tech/blog/building-an-ai-powered-chatbot-using-vercel-openai-and-postgres)
-- [Ask Neon](https://github.com/neondatabase/ask-neon.git)
+[@vercel_serverless_functions_2024]: "Vercel Serverless Functions Documentation."  <https://vercel.com/docs/serverless-functions/introduction>
+[@openai_api_documentation_2024]: "OpenAI API Documentation."  <https://beta.openai.com/docs/>
+[@neon_tech_blog_2024]: "Neon Tech Blog on Building an AI ChatBot."  <https://neon.tech/blog/building-an-ai-powered-chatbot-using-vercel-openai-and-postgres>
+[@ask_neon_2024]: "Ask Neon."  <https://github.com/neondatabase/ask-neon.git>
   This strategy was formulated with AI assistance.

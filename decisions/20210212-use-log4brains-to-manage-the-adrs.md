@@ -11,11 +11,11 @@ Which tool(s) should we use to manage these records?
 
 ## Considered Options
 
-- [Log4brains](https://github.com/thomvaill/log4brains): architecture knowledge base (command-line + static site generator)
-- [ADR Tools](https://github.com/npryce/adr-tools): command-line to create ADRs
-- [ADR Tools Python](https://bitbucket.org/tinkerer_/adr-tools-python/src/master/): command-line to create ADRs
-- [adr-viewer](https://github.com/mrwilson/adr-viewer): static site generator
-- [adr-log](https://adr.github.io/adr-log/): command-line to create a TOC of ADRs
+[@log4brains_2024]: "Log4brains." : architecture knowledge base (command-line + static site generator) <https://github.com/thomvaill/log4brains>
+[@adr_tools_2024]: "ADR Tools." : command-line to create ADRs <https://github.com/npryce/adr-tools>
+[@adr_tools_python_2024]: "ADR Tools Python." : command-line to create ADRs <https://bitbucket.org/tinkerer_/adr-tools-python/src/master/>
+[@adrviewer_2024]: "adr-viewer." : static site generator <https://github.com/mrwilson/adr-viewer>
+[@adrlog_2024]: "adr-log." : command-line to create a TOC of ADRs <https://adr.github.io/adr-log/>
 
 ## Decision Outcome
 
