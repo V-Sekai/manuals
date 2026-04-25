@@ -38,10 +38,28 @@ Camera orientation is expressed as a twist/swing pair, following the same
 decomposition used by `TransformUtil.swing_twist` in the humanoid project
 (`addons/humanoid/transform_util.gd`):
 
-- Twist (x-axis of the `swing_twist` vector): yaw around the world Y axis,
-  mapped to [0, 1] where 0.0 = north, 0.25 = east, 0.5 = south, 0.75 = west.
-- Swing (y/z-axes of the `swing_twist` vector): elevation angle, fixed at a
-  constant value corresponding to −55° pitch. Swing does not change at runtime.
+- **Twist**: yaw around the world Y axis, in [0, 1].
+  0.0 = north, 0.25 = east, 0.5 = south, 0.75 = west.
+- **Swing**: elevation pitch, fixed at `SWING_ELEVATION = 0.153`
+  (153/1000 of a full turn ≈ 55°). In [0, 1] per axis; only the X-axis
+  (pitch) is non-zero. Swing does not change at runtime.
+
+Both are composed into a single quaternion on `CameraPivot`:
+
+```gdscript
+var twist_q := Quaternion(Vector3.UP,    _twist          * TAU)
+var swing_q := Quaternion(Vector3.RIGHT, -SWING_ELEVATION * TAU)
+_pivot.quaternion = twist_q * swing_q
+```
+
+Multiplication order `twist_q * swing_q` means: apply `swing_q` first in
+the local (pre-twist) frame, then rotate that frame by `twist_q` around
+world Y. This is identical to the swing-twist product in `TransformUtil`:
+the twist axis is world Y; swing is the perpendicular component.
+
+`SpringArm3D` has no rotation of its own — it simply extends along the
+pivot's local −Z axis, which already points downward at the correct
+elevation after the combined quaternion is applied.
 
 In Survey mode the twist snaps to {0.0, 0.25, 0.5, 0.75}. Follow mode locks
 twist at its current snapped value.
@@ -92,15 +110,15 @@ Runtime invariants:
 ### Node hierarchy
 
 ```
-CameraRig (Node3D)      ← pan target; WASD in Survey; lerps to entity in Follow
-  CameraPivot (Node3D)  ← twist applied as Y-rotation; locked in Follow
-    SpringArm3D          ← swing (fixed pitch); arm length = zoom
+OperatorRig (Node3D)    ← pan target; WASD in Survey; lerps to entity in Follow
+  CameraPivot (Node3D)  ← swing-twist quaternion applied every frame
+    SpringArm3D          ← no rotation; arm length = zoom
       Camera3D           ← PROJECTION_ORTHOGONAL; size mirrors zoom
 ```
 
-`CameraPivot.rotation.y = twist * TAU` converts the [0, 1] twist value to
-radians. `SpringArm3D.rotation.x` is set once from `SWING_ELEVATION` and
-never written again.
+`CameraPivot.quaternion = twist_q * swing_q` is rebuilt each frame from
+the current `_twist` [0, 1] and the constant `SWING_ELEVATION` [0, 1].
+`SpringArm3D` carries no rotation; it extends along the pivot's local −Z.
 
 ### Survey mode
 
