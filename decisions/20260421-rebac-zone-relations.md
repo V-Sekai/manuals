@@ -40,7 +40,7 @@ player   -[CAN_INSTANCE]-> asset   # derived from OWNS
 
 The graph is rebuilt per-request from `UserPrivilegeRuleset` at join time, consistent with the existing per-request pattern. No graph state persists between requests.
 
-Zone server C++ call sites (see `20260421-rebac-zone-server-enforcement.md`):
+Zone server C++ call sites (see [20260421-rebac-zone-server-enforcement.md](20260421-rebac-zone-server-enforcement.md)):
 
 ```cpp
 // At peer join
@@ -86,7 +86,7 @@ Status: Accepted
 
 ## Further Reading
 
-1. `20260421-rebac-permissions.md` — base ReBAC design
-2. `20260421-rebac-zone-server-enforcement.md` — call sites in C++ zone server
+1. [20260421-rebac-permissions.md](20260421-rebac-permissions.md) — base ReBAC design
+2. [20260421-rebac-zone-server-enforcement.md](20260421-rebac-zone-server-enforcement.md) — call sites in C++ zone server
 3. `multiplayer-fabric-taskweft/lib/taskweft/rebac.ex`
 4. `multiplayer-fabric-predictive-bvh/PredictiveBVH/Relativistic/ReBAC.lean`

@@ -1,6 +1,6 @@
 # Asset Delivery: casync via aria-storage Adopted
 
-Supersedes: `20260423-asset-delivery-benchmark.md`, `20260421-asset-delivery-benchmark.md`
+Supersedes: [20260423-asset-delivery-benchmark.md](20260423-asset-delivery-benchmark.md), [20260421-asset-delivery-benchmark.md](20260421-asset-delivery-benchmark.md)
 
 ## Decision
 

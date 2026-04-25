@@ -64,5 +64,5 @@ Status: Accepted
 
 1. Skilling 2004 — "Programming the Hilbert curve" — original bit-manipulation algorithm
 2. Bader 2013 — "Space-Filling Curves: An Introduction with Applications in Scientific Computing" — O(n^(1/3)) vs O(n^(2/3)) cluster diameter comparison
-3. `20260421-multiplayer-fabric-zone-architecture.md` — full zone architecture
+3. [20260421-multiplayer-fabric-zone-architecture.md](20260421-multiplayer-fabric-zone-architecture.md) — full zone architecture
 4. `PredictiveBVH/Spatial/HilbertRoundtrip.lean` — formal proofs

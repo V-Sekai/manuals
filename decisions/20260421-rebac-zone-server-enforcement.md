@@ -43,7 +43,7 @@ if (!can_instance) {
 
 ### Per-tick constraint
 
-No ReBAC call is issued from the physics loop. The cached graph in `_player_graphs` is the only permitted access point during simulation. Live `taskweft` queries from the physics loop are prohibited (see `20260421-rebac-permissions.md`).
+No ReBAC call is issued from the physics loop. The cached graph in `_player_graphs` is the only permitted access point during simulation. Live `taskweft` queries from the physics loop are prohibited (see [20260421-rebac-permissions.md](20260421-rebac-permissions.md)).
 
 ### Graph invalidation
 
@@ -88,6 +88,6 @@ Status: Proposed
 
 ## Further Reading
 
-1. `20260421-rebac-permissions.md` — base ReBAC design and per-tick doctrine
-2. `20260421-rebac-zone-relations.md` — CAN_ENTER and CAN_INSTANCE relation definitions
+1. [20260421-rebac-permissions.md](20260421-rebac-permissions.md) — base ReBAC design and per-tick doctrine
+2. [20260421-rebac-zone-relations.md](20260421-rebac-zone-relations.md) — CAN_ENTER and CAN_INSTANCE relation definitions
 3. `multiplayer-fabric-godot/modules/multiplayer_fabric_mmog/fabric_mmog_zone.cpp`

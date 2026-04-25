@@ -52,7 +52,7 @@ Each factor adds (+) or subtracts (−) from the candidate's priority score.
 ### Godot Engine fork
 
 CRIS determines whether a patch is worth carrying. The existing flowchart
-(`20211207-for-godot-engine-changes-use-a-decision-flowchart.md`) then
+([20211207-for-godot-engine-changes-use-a-decision-flowchart.md](20211207-for-godot-engine-changes-use-a-decision-flowchart.md)) then
 determines _where_ it lives (fork-only, upstream PR, or V-Sekai-specific
 branch). Apply CRIS first; apply the flowchart only if CRIS clears it.
 
@@ -99,4 +99,4 @@ candidate unless Reach and Impediment compensate.
 
 - Godot Engine conference slide, April 2026: "Factors that should determine
   code inclusion: CRIS Scoring" (Complexity, Reach, Impediment, Stakeholder).
-- `20211207-for-godot-engine-changes-use-a-decision-flowchart.md`
+- [20211207-for-godot-engine-changes-use-a-decision-flowchart.md](20211207-for-godot-engine-changes-use-a-decision-flowchart.md)

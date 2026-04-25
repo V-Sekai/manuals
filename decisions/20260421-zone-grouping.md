@@ -80,6 +80,6 @@ Status: Proposed
 
 ## Further Reading
 
-1. `20260421-zone-registration-and-discovery.md` — base registration design
-2. `20260421-zone-asset-manifest.md` — per-zone asset listing
+1. [20260421-zone-registration-and-discovery.md](20260421-zone-registration-and-discovery.md) — base registration design
+2. [20260421-zone-asset-manifest.md](20260421-zone-asset-manifest.md) — per-zone asset listing
 3. `multiplayer-fabric-zone-backend/lib/uro/v_sekai/zone.ex`

@@ -2,7 +2,7 @@
 
 ## The Context
 
-The Virtual Creator Market PoC (`20260421-infinite-aquarium-concept.md`) is the reference application for multiplayer-fabric. Implementation items are sequenced by risk: each step retires one uncertainty before the next begins. A creator's booth is a zone. Visitors cross booth boundaries the same way entities migrate between zones. Creator assets are content-addressed chunks in Uro.
+The Virtual Creator Market PoC ([20260421-infinite-aquarium-concept.md](20260421-infinite-aquarium-concept.md)) is the reference application for multiplayer-fabric. Implementation items are sequenced by risk: each step retires one uncertainty before the next begins. A creator's booth is a zone. Visitors cross booth boundaries the same way entities migrate between zones. Creator assets are content-addressed chunks in Uro.
 
 ## The Problem Statement
 
@@ -186,9 +186,9 @@ Status: Superseded by 20260425-jellyfish-game.md
 
 ## Further Reading
 
-1. `20260421-infinite-aquarium-concept.md` — product concept and component status
-2. `20260421-product-virtual-creator-market.md` — product strategy
-3. `20260421-websocket-transport-parity.md` — 100-visitor load test design
-4. `20260421-content-addressed-asset-delivery.md` — chunk store design
-5. `20260421-rebac-zone-server-enforcement.md` — ReBAC on asset fetch
-6. `20260421-rectgtn-jellyfish-behavior.md` — RECTGTN planning for entities
+1. [20260421-infinite-aquarium-concept.md](20260421-infinite-aquarium-concept.md) — product concept and component status
+2. [20260421-product-virtual-creator-market.md](20260421-product-virtual-creator-market.md) — product strategy
+3. [20260421-websocket-transport-parity.md](20260421-websocket-transport-parity.md) — 100-visitor load test design
+4. [20260421-content-addressed-asset-delivery.md](20260421-content-addressed-asset-delivery.md) — chunk store design
+5. [20260421-rebac-zone-server-enforcement.md](20260421-rebac-zone-server-enforcement.md) — ReBAC on asset fetch
+6. [20260421-rectgtn-jellyfish-behavior.md](20260421-rectgtn-jellyfish-behavior.md) — RECTGTN planning for entities

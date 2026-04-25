@@ -64,7 +64,7 @@ Entity state has two persistence paths:
 On `SIGINT`, zones drain entities toward zone 0 via STAGING migration. Zone 0 collects all entities and writes a `FabricSnapshot` Godot Resource to disk. On restart, each zone reloads only the entities whose Hilbert code falls within its range.
 
 **Crash recovery (FabricZoneJournal)**
-A per-zone SQLite database records discrete mutations: spawn, despawn, payload_update. On restart, the zone replays the journal on top of its deterministic static-world initialisation to recover dynamic entities (connected players, asset instances). Physics-step position updates are not journaled; they are recomputed from the simulation. See `20260421-sqlite-per-zone-journal.md` for the detailed design.
+A per-zone SQLite database records discrete mutations: spawn, despawn, payload_update. On restart, the zone replays the journal on top of its deterministic static-world initialisation to recover dynamic entities (connected players, asset instances). Physics-step position updates are not journaled; they are recomputed from the simulation. See [20260421-sqlite-per-zone-journal.md](20260421-sqlite-per-zone-journal.md) for the detailed design.
 
 ## Deployment
 

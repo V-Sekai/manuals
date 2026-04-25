@@ -38,7 +38,7 @@ end
 
 ## The Benefits
 
-A zone can enumerate its own assets without replaying history. Zone restart recovery is deterministic: load the snapshot, then query `list_zone_assets/1` to confirm which assets are already baked. The foreign key enables `GET /shards/:id/assets` (see `20260421-zone-asset-manifest.md`).
+A zone can enumerate its own assets without replaying history. Zone restart recovery is deterministic: load the snapshot, then query `list_zone_assets/1` to confirm which assets are already baked. The foreign key enables `GET /shards/:id/assets` (see [20260421-zone-asset-manifest.md](20260421-zone-asset-manifest.md)).
 
 ## The Downsides
 
@@ -73,6 +73,6 @@ Status: Proposed
 
 ## Further Reading
 
-1. `20260421-zone-asset-manifest.md` — exposes zone assets via GET /shards/:id/assets
-2. `20260421-content-addressed-asset-delivery.md` — casync baking pipeline
+1. [20260421-zone-asset-manifest.md](20260421-zone-asset-manifest.md) — exposes zone assets via GET /shards/:id/assets
+2. [20260421-content-addressed-asset-delivery.md](20260421-content-addressed-asset-delivery.md) — casync baking pipeline
 3. `multiplayer-fabric-zone-backend/lib/uro/shared_content/shared_file.ex`

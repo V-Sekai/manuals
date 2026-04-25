@@ -82,6 +82,6 @@ Status: Proposed
 
 ## Further Reading
 
-1. `20260421-webtransport-zone-transport.md` — base transport design
+1. [20260421-webtransport-zone-transport.md](20260421-webtransport-zone-transport.md) — base transport design
 2. `multiplayer-fabric-godot/modules/multiplayer_fabric_mmog/fabric_mmog_transport_peer.h` — STATE_TRYING_WS
 3. `multiplayer-fabric-godot/modules/multiplayer_fabric/fabric_multiplayer_peer.h` — frame_channels mode

@@ -10,7 +10,7 @@ Discovery requires a live connection. Clients cannot make pre-connection routing
 
 ## Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams
 
-Add a read-only endpoint `GET /shards/:id/assets`. This requires `20260421-asset-zone-locality.md` to be implemented first (SharedFile must carry a `zone_id`).
+Add a read-only endpoint `GET /shards/:id/assets`. This requires [20260421-asset-zone-locality.md](20260421-asset-zone-locality.md) to be implemented first (SharedFile must carry a `zone_id`).
 
 Response shape:
 
@@ -74,7 +74,7 @@ A zone with no baked assets returns `"assets": []`. A zone whose assets are all 
 - `Uro.VSekai.list_zone_assets/1` — query SharedFile by zone_id and baked_url
 - `Uro.ZoneController.assets/2` — new action
 - `router.ex` — new route
-- Requires `20260421-asset-zone-locality.md`
+- Requires [20260421-asset-zone-locality.md](20260421-asset-zone-locality.md)
 
 ## Status
 
@@ -90,6 +90,6 @@ Status: Proposed
 
 ## Further Reading
 
-1. `20260421-asset-zone-locality.md` — zone_id FK prerequisite
-2. `20260421-zone-registration-and-discovery.md` — base zone API
-3. `20260421-content-addressed-asset-delivery.md` — baked_url pipeline
+1. [20260421-asset-zone-locality.md](20260421-asset-zone-locality.md) — zone_id FK prerequisite
+2. [20260421-zone-registration-and-discovery.md](20260421-zone-registration-and-discovery.md) — base zone API
+3. [20260421-content-addressed-asset-delivery.md](20260421-content-addressed-asset-delivery.md) — baked_url pipeline

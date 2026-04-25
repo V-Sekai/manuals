@@ -205,5 +205,5 @@ Status: Accepted
 2. `multiplayer-fabric-taskweft/standalone/tw_replan.hpp` — `tw_replan_incremental()`
 3. `multiplayer-fabric-taskweft/standalone/tw_soltree.hpp` — solution tree checkpoint/restore
 4. `multiplayer-fabric-taskweft/lean/Planner.lean` — formal RECTGTN specification
-5. `20260421-rebac-zone-server-enforcement.md` — ReBAC capability checks at join and instance time
+5. [20260421-rebac-zone-server-enforcement.md](20260421-rebac-zone-server-enforcement.md) — ReBAC capability checks at join and instance time
 6. `multiplayer-fabric-godot/modules/multiplayer_fabric_mmog/CONCEPT_MMOG.md` — aquarium PoC scope

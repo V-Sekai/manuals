@@ -1,7 +1,7 @@
 # Build the Jellyfish Game
 
-Supersedes: `20260421-infinite-aquarium-concept.md`,
-`20260421-virtual-creator-market-implementation-plan.md`
+Supersedes: [20260421-infinite-aquarium-concept.md](20260421-infinite-aquarium-concept.md),
+[20260421-virtual-creator-market-implementation-plan.md](20260421-virtual-creator-market-implementation-plan.md)
 
 - Status: accepted
 - Deciders: V-Sekai, fire
@@ -42,13 +42,13 @@ hard-coded phase table.
 Implementation details are recorded in the following ADRs — they remain
 accepted and are not superseded:
 
-- Behaviour planning: `20260421-rectgtn-jellyfish-behavior.md`
-- Creator behaviour sandbox: `20260423-sandbox-rebac-behavior.md`
-- Zone architecture: `20260421-multiplayer-fabric-zone-architecture.md`
-- Asset delivery: `20260421-content-addressed-asset-delivery.md`
-- ReBAC enforcement: `20260421-rebac-zone-server-enforcement.md`
+- Behaviour planning: [20260421-rectgtn-jellyfish-behavior.md](20260421-rectgtn-jellyfish-behavior.md)
+- Creator behaviour sandbox: [20260423-sandbox-rebac-behavior.md](20260423-sandbox-rebac-behavior.md)
+- Zone architecture: [20260421-multiplayer-fabric-zone-architecture.md](20260421-multiplayer-fabric-zone-architecture.md)
+- Asset delivery: [20260421-content-addressed-asset-delivery.md](20260421-content-addressed-asset-delivery.md)
+- ReBAC enforcement: [20260421-rebac-zone-server-enforcement.md](20260421-rebac-zone-server-enforcement.md)
 
-Work sequencing follows the phases in `20260421-virtual-creator-market-implementation-plan.md`
+Work sequencing follows the phases in [20260421-virtual-creator-market-implementation-plan.md](20260421-virtual-creator-market-implementation-plan.md)
 (superseded by this ADR; phases remain valid as a task checklist).
 
 ## The Benefits
@@ -96,8 +96,8 @@ Status: Accepted
 
 ## Further Reading
 
-1. `20260421-rectgtn-jellyfish-behavior.md` — RECTGTN planning implementation
-2. `20260421-infinite-aquarium-concept.md` — aquarium concept (superseded)
-3. `20260421-virtual-creator-market-implementation-plan.md` — phase checklist (superseded)
-4. `20260423-sandbox-rebac-behavior.md` — sandbox for creator executable code
-5. `20260425-cris-scoring-for-godot-engine-code-inclusion.md` — CRIS framework
+1. [20260421-rectgtn-jellyfish-behavior.md](20260421-rectgtn-jellyfish-behavior.md) — RECTGTN planning implementation
+2. [20260421-infinite-aquarium-concept.md](20260421-infinite-aquarium-concept.md) — aquarium concept (superseded)
+3. [20260421-virtual-creator-market-implementation-plan.md](20260421-virtual-creator-market-implementation-plan.md) — phase checklist (superseded)
+4. [20260423-sandbox-rebac-behavior.md](20260423-sandbox-rebac-behavior.md) — sandbox for creator executable code
+5. [20260425-cris-scoring-for-godot-engine-code-inclusion.md](20260425-cris-scoring-for-godot-engine-code-inclusion.md) — CRIS framework

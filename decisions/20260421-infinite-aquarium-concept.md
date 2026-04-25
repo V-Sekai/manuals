@@ -4,7 +4,7 @@
 
 The Infinite Aquarium is the proof-of-concept application for multiplayer-fabric: a social, UGC bioluminescent ocean where players design jellyfish and release them into a shared neon sea built from other players' creations. Comparable positioned titles: VRChat, Roblox, s&box.
 
-The aquarium exercises every platform primitive in a single coherent demo: zone streaming, content-addressed asset delivery, ReBAC permissions, WebTransport/WebSocket transport, entity interest management, and RECTGTN planning. It is also the first concrete instance of the virtual creator market product (`20260421-product-virtual-creator-market.md`): a creator's zone is their booth, their jellyfish are their products.
+The aquarium exercises every platform primitive in a single coherent demo: zone streaming, content-addressed asset delivery, ReBAC permissions, WebTransport/WebSocket transport, entity interest management, and RECTGTN planning. It is also the first concrete instance of the virtual creator market product ([20260421-product-virtual-creator-market.md](20260421-product-virtual-creator-market.md)): a creator's zone is their booth, their jellyfish are their products.
 
 ## The Problem Statement
 
@@ -43,15 +43,15 @@ The Abyss is a persistent, zone-sharded ocean:
 - Zone crossings are seamless; `MIGRATION_HEADROOM = 400` absorbs swarm spikes
 - Performance target: 511+ jellyfish across a 3-zone loop without data loss
 
-Zone infrastructure is implemented. See `20260421-multiplayer-fabric-zone-architecture.md`.
+Zone infrastructure is implemented. See [20260421-multiplayer-fabric-zone-architecture.md](20260421-multiplayer-fabric-zone-architecture.md).
 
 ### UGC asset pipeline
 
-Every jellyfish is a content-addressed asset bundle in Uro. Clients fetch by chunk hash at runtime and only download jellyfish within their AOI. The manifest endpoint (`GET /shards/:id/assets`) resolves the full asset list in one round trip. See `20260421-content-addressed-asset-delivery.md` and `20260421-zone-asset-manifest.md`.
+Every jellyfish is a content-addressed asset bundle in Uro. Clients fetch by chunk hash at runtime and only download jellyfish within their AOI. The manifest endpoint (`GET /shards/:id/assets`) resolves the full asset list in one round trip. See [20260421-content-addressed-asset-delivery.md](20260421-content-addressed-asset-delivery.md) and [20260421-zone-asset-manifest.md](20260421-zone-asset-manifest.md).
 
 ### RECTGTN behaviour
 
-Each jellyfish species has a JSON-LD RECTGTN domain loaded at zone startup. The zone server runs `tw_seek_plan()` on domain + entity state to produce a behaviour plan stored in the CDN. Jellyfish movement in `JellygridSwarm::tick()` reads the current action from the plan rather than a hard-coded phase table. See `20260421-rectgtn-jellyfish-behavior.md`.
+Each jellyfish species has a JSON-LD RECTGTN domain loaded at zone startup. The zone server runs `tw_seek_plan()` on domain + entity state to produce a behaviour plan stored in the CDN. Jellyfish movement in `JellygridSwarm::tick()` reads the current action from the plan rather than a hard-coded phase table. See [20260421-rectgtn-jellyfish-behavior.md](20260421-rectgtn-jellyfish-behavior.md).
 
 ### Implementation status
 
@@ -111,9 +111,9 @@ Status: Superseded by 20260425-jellyfish-game.md
 
 ## Further Reading
 
-1. `20260421-product-virtual-creator-market.md` — product strategy; booth = zone
-2. `20260421-multiplayer-fabric-zone-architecture.md` — zone infrastructure
-3. `20260421-rectgtn-jellyfish-behavior.md` — RECTGTN planning for jellyfish
-4. `20260421-zone-asset-manifest.md` — `GET /shards/:id/assets`
-5. `20260421-content-addressed-asset-delivery.md` — casync/Uro asset pipeline
-6. `20260421-rebac-zone-server-enforcement.md` — `CAN_ENTER` and `CAN_INSTANCE`
+1. [20260421-product-virtual-creator-market.md](20260421-product-virtual-creator-market.md) — product strategy; booth = zone
+2. [20260421-multiplayer-fabric-zone-architecture.md](20260421-multiplayer-fabric-zone-architecture.md) — zone infrastructure
+3. [20260421-rectgtn-jellyfish-behavior.md](20260421-rectgtn-jellyfish-behavior.md) — RECTGTN planning for jellyfish
+4. [20260421-zone-asset-manifest.md](20260421-zone-asset-manifest.md) — `GET /shards/:id/assets`
+5. [20260421-content-addressed-asset-delivery.md](20260421-content-addressed-asset-delivery.md) — casync/Uro asset pipeline
+6. [20260421-rebac-zone-server-enforcement.md](20260421-rebac-zone-server-enforcement.md) — `CAN_ENTER` and `CAN_INSTANCE`

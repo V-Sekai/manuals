@@ -1,6 +1,6 @@
 # Asset Delivery Stack Benchmark
 
-Supersedes: `20260421-asset-delivery-benchmark.md`
+Supersedes: [20260421-asset-delivery-benchmark.md](20260421-asset-delivery-benchmark.md)
 
 ## The Context
 
@@ -74,7 +74,7 @@ A directory containing only very small assets (total archive under 16 KB) produc
 
 ## Status
 
-Status: Superseded — casync via aria-storage adopted without benchmark. See `20260423-asset-delivery-decision.md`.
+Status: Superseded — casync via aria-storage adopted without benchmark. See [20260423-asset-delivery-decision.md](20260423-asset-delivery-decision.md).
 
 ## Decision Makers
 
