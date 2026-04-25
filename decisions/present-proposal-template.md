@@ -50,6 +50,9 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
      cross-referenced by their basename. Example:
      - V-Sekai, process, 20260425-cris-scoring-for-godot-engine-code-inclusion -->
 
+<!-- Audit against 20260422-avoid-ai-writing-tropes-1.md, 
+     20260422-avoid-ai-writing-tropes-2.md, 20260422-avoid-ai-writing-tropes-3.md -->
+
 ## Further Reading
 
 1. [Title](URL)
