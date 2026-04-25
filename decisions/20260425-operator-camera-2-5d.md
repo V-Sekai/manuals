@@ -145,7 +145,13 @@ Status: Accepted
 
 [@trianglestrategy2022]: "Triangle Strategy details improvements from demo feedback." Nintendo Everything, 2021. <https://nintendoeverything.com/triangle-strategy-details-tons-of-improvements-from-demo-feedback-survey/>
 
+[@trianglestrategyHD2D]: "Triangle Strategy devs on HD-2D." Nintendo Everything, 2022. <https://nintendoeverything.com/triangle-strategy-devs-on-how-the-game-uses-accurate-hd-2d/>
+
 [@bluearchive2021]: Blue Archive. Nexon Games, 2021. <https://bluearchive.wiki/wiki/Combat_basics>
+
+[@udemytopdown]: "The Ultimate 2D Top Down Unreal Engine Course." Udemy. <https://www.udemy.com/course/unreal-2d-top-down/>
+
+[@unrealspringarm]: "Rotate and zoom using spring arm." Unreal MMO Dev, 2022. <https://unreal-mmo-dev.com/2022/12/26/30-unreal-engine-handle-zoom-and-rotate-with-spring-arm/>
 
 [@godotspringarm]: "SpringArm3D." Godot Engine Documentation. <https://docs.godotengine.org/en/stable/classes/class_springarm3d.html>
 
