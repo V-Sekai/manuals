@@ -9,7 +9,7 @@ Supersedes: `20260421-infinite-aquarium-concept.md`,
 
 ## The Context
 
-multiplayer-fabric has no reference application. The four existing jellyfish
+`multiplayer-fabric` has no reference application. The four existing jellyfish
 ADRs describe infrastructure pieces and a creator market concept but do not
 record a single go/no-go decision with explicit prioritisation. Without one,
 effort scatters across competing items and the demo never ships.
@@ -21,13 +21,13 @@ The CRIS score below makes that commitment explicit.
 
 ## CRIS Score
 
-| Factor | Score | Evidence |
-|---|---|---|
-| **C**omplexity | +1 | Zone networking, asset delivery, RECTGTN planning, and ReBAC are all working. Remaining work is wiring, not invention. |
-| **R**each | +1 | Every new operator or creator evaluating multiplayer-fabric needs a running demo to assess the platform. |
-| **I**mpediment | +1 | Without a reference application, end-to-end composition cannot be verified and the platform cannot be demonstrated. |
-| **S**takeholder | +1 | V-Sekai is the primary stakeholder; the virtual creator market product depends on this demo passing. |
-| **Total** | **+4** | Build now; high urgency. |
+| Factor          | Score  | Evidence                                                                                                               |
+| --------------- | ------ | ---------------------------------------------------------------------------------------------------------------------- |
+| **C**omplexity  | +1     | Zone networking, asset delivery, RECTGTN planning, and ReBAC are all working. Remaining work is wiring, not invention. |
+| **R**each       | +1     | Every new operator or creator evaluating multiplayer-fabric needs a running demo to assess the platform.               |
+| **I**mpediment  | +1     | Without a reference application, end-to-end composition cannot be verified and the platform cannot be demonstrated.    |
+| **S**takeholder | +1     | V-Sekai is the primary stakeholder; the virtual creator market product depends on this demo passing.                   |
+| **Total**       | **+4** | Build now; high urgency.                                                                                               |
 
 ## Design
 
