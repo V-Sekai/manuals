@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.37</generator>
-<lastBuildDate>Fri, 24 Apr 2026 16:36:57 GMT</lastBuildDate>
+<lastBuildDate>Sat, 25 Apr 2026 05:31:49 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -82,7 +82,95 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Fri, 24 Apr 2026 16:36:57 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260425-godot-web-client-webtransport.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="godot-web-client-webtransport-implementation-record" class="level1">
+<h1>Godot Web Client WebTransport: Implementation Record</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>The Infinite Aquarium / Virtual Creator Market targets web browsers as the primary client delivery mechanism — zero install, URL-based discovery. The <code>feat/module-http3</code> module provides <code>WebTransportPeer</code> for both native (picoquic) and web export (browser’s native WebTransport API via <code>quic_web_glue.js</code>). This ADR records the bugs found and the proof-of-concept that the web client works end-to-end.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>Four independent bugs prevented the Godot wasm32 web export from using <code>WebTransportPeer</code> from GDScript. Without all four fixed, datagrams could not flow between a browser-loaded Godot game and a Godot zone server.</p>
+</section>
+<section id="the-bugs-and-fixes" class="level2">
+<h2 class="anchored" data-anchor-id="the-bugs-and-fixes">The Bugs and Fixes</h2>
+<section id="bug-1-js-library-not-reaching-emscripten-linker" class="level3">
+<h3 class="anchored" data-anchor-id="bug-1-js-library-not-reaching-emscripten-linker">Bug 1: JS library not reaching Emscripten linker</h3>
+<p><code>modules/http3/SCsub</code> called <code>env_quic.AddJSLibraries(...)</code> on a cloned environment. <code>platform/web/SCsub</code> reads <code>sys_env["JS_LIBS"]</code> (the root env). Cloned env changes do not propagate upward — <code>quic_web_glue.js</code> was never passed as <code>--js-library</code> to <code>em++</code>.</p>
+<p><strong>Fix</strong>: <code>env.Append(JS_LIBS=[File("#modules/http3/quic_web_glue.js")])</code> directly on the root env.</p>
+</section>
+<section id="bug-2-duplicate-symbol-silences-web-backend" class="level3">
+<h3 class="anchored" data-anchor-id="bug-2-duplicate-symbol-silences-web-backend">Bug 2: Duplicate symbol silences web backend</h3>
+<p><code>quic_picoquic_backend.cpp</code>’s <code>#else !GODOT_QUIC_NATIVE_BACKEND</code> branch provides empty stubs for <code>register_quic_picoquic_backend()</code>. Since both <code>.cpp</code> files compile with the same <code>env_quic</code> (which has <code>GODOT_QUIC_WEB_BACKEND</code> defined), the linker sees two definitions and silently picks the empty stub. The web backend was never registered.</p>
+<p><strong>Fix</strong>: Guard the empty stubs with <code>#elif !defined(GODOT_QUIC_WEB_BACKEND)</code> so they are only compiled when neither backend is active.</p>
+</section>
+<section id="bug-3-worker-thread-cannot-call-browser-webtransport-api" class="level3">
+<h3 class="anchored" data-anchor-id="bug-3-worker-thread-cannot-call-browser-webtransport-api">Bug 3: Worker thread cannot call browser WebTransport API</h3>
+<p>Godot’s game loop runs in a pthread worker. <code>quic_web_glue.js</code> functions like <code>godot_wt_connect</code> call <code>new WebTransport(url)</code> — a browser API unavailable in workers. The original file had a misnamed proxy declaration (<code>godot_WTServerSession__proxy</code>) that did nothing. Emscripten 5.x rejects orphaned proxy declarations.</p>
+<p><strong>Fix</strong>: Add <code>__proxy: 'sync'</code> to every exported function in <code>quic_web_glue.js</code>. Each call from the worker is proxied to the main browser thread synchronously.</p>
+</section>
+<section id="bug-4-poll-never-ingests-incoming-datagrams" class="level3">
+<h3 class="anchored" data-anchor-id="bug-4-poll-never-ingests-incoming-datagrams">Bug 4: poll() never ingests incoming datagrams</h3>
+<p><code>web_transport_peer.cpp::poll()</code> was extended to call <code>session_state_func</code> for the web backend, but returned immediately afterward without pulling received datagrams from <code>sess.datagrams_in</code> (the JS queue) into the C++ <code>incoming</code> queue. <code>get_available_packet_count()</code> always returned 0.</p>
+<p><strong>Fix</strong>: Add <code>poll_incoming_func</code> static pointer. <code>quic_web_backend.cpp</code> implements <code>_web_poll_incoming</code> which calls <code>godot_wt_recv_datagram</code> in a loop, forwarding each datagram to <code>_push_wt_incoming_datagram</code>. <code>poll()</code> calls it after <code>session_state_func</code>.</p>
+</section>
+</section>
+<section id="proof-of-concept" class="level2">
+<h2 class="anchored" data-anchor-id="proof-of-concept">Proof of Concept</h2>
+<p><code>modules/http3/demo/</code> contains <code>wt_client_web.gd</code> (extends Node), a scene, and a Godot project. Exported as PCK with <code>--export-pack "Web"</code> and loaded via <code>bin/.web_zip/godot.js</code> (wasm32 threaded) plus a Node.js COOP/COEP HTTP server in the Playwright test.</p>
+<p><code>e2e/godot_wt_e2e.spec.ts</code> (in <code>multiplayer-fabric-zone-backend/frontend/</code>) starts <code>wt_server_demo.gd</code> as echo server, loads the web export in Chromium, injects <code>window.WT_CERT_HASH</code> and monkey-patches <code>window.WebTransport</code> to add <code>serverCertificateHashes</code>, waits for <code>window.__wt_beacons</code> to contain a <code>{"event":"pass"}</code> beacon.</p>
+<p><strong>Result</strong>: PASS in 3.3 s.</p>
+<pre><code>browser: {"event":"init","host":"127.0.0.1","port":54370}
+browser: [WT patch] connecting to: https://127.0.0.1:54370/wt
+browser: [WT patch] ready: https://127.0.0.1:54370/wt
+browser: {"event":"sent","msg":"Hello Godot WebTransport"}
+browser: {"event":"pass","echo":"Hello Godot WebTransport"}
+
+server:  {"count":1,"event":"recv"}
+server:  {"event":"echo","len":24,"mode":0}</code></pre>
+</section>
+<section id="what-is-not-decided-here" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-not-decided-here">What Is Not Decided Here</h2>
+<ul>
+<li>Production cert pinning: the monkey-patch approach is test-only. Production connections use normal TLS (no <code>window.WT_CERT_HASH</code>).</li>
+<li>Loading a full game project in the browser (requires export templates). The PoC uses <code>--export-pack</code> with <code>bin/.web_zip</code> engine files.</li>
+<li>Replacing the gescons32 manual web_zip copy step with a proper SCons install target.</li>
+</ul>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Accepted</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>WebTransport, web-client, Emscripten, wasm32, threads, proxy-sync, Godot, GDScript, datagram, e2e</li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260425-godot-web-client-webtransport.html</guid>
+  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -419,7 +507,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-sandbox-rebac-behavior.html</guid>
-  <pubDate>Fri, 24 Apr 2026 16:36:57 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -512,7 +600,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-baker-zone-lifecycle.html</guid>
-  <pubDate>Fri, 24 Apr 2026 16:36:57 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -561,7 +649,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-asset-delivery-decision.html</guid>
-  <pubDate>Fri, 24 Apr 2026 16:36:57 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -703,7 +791,7 @@ font-style: inherit;"># Serve over HTTP. Client downloads the full archive every
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-asset-delivery-benchmark.html</guid>
-  <pubDate>Fri, 24 Apr 2026 16:36:57 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -799,7 +887,7 @@ font-style: inherit;"># Serve over HTTP. Client downloads the full archive every
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260422-simplify-then-add-lightness.html</guid>
-  <pubDate>Fri, 24 Apr 2026 16:36:57 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -897,7 +985,7 @@ Sword, Helen. 2012. <em>Zombie Nouns</em>. <a href="https://opinionator.blogs.ny
 </div>
 </div></section></div> ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes-3.html</guid>
-  <pubDate>Fri, 24 Apr 2026 16:36:57 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -987,7 +1075,7 @@ Ossama. 2025. <em>Tropes.fyi: <span>AI</span> Writing Pattern Directory</em>. <a
 </div>
 </div></section></div> ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes-2.html</guid>
-  <pubDate>Fri, 24 Apr 2026 16:36:57 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1086,7 +1174,7 @@ Wikipedia contributors. 2025. <em>Wikipedia: Signs of <span>AI</span> Writing</e
 </div>
 </div></section></div> ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes-1.html</guid>
-  <pubDate>Fri, 24 Apr 2026 16:36:57 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1171,7 +1259,7 @@ Wikipedia contributors. 2025. <em>Wikipedia: Signs of <span>AI</span> Writing</e
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zones-vs-shards.html</guid>
-  <pubDate>Fri, 24 Apr 2026 16:36:57 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1253,7 +1341,7 @@ Wikipedia contributors. 2025. <em>Wikipedia: Signs of <span>AI</span> Writing</e
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-registration-and-discovery.html</guid>
-  <pubDate>Fri, 24 Apr 2026 16:36:57 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1509,7 +1597,7 @@ font-style: inherit;">end</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-grouping.html</guid>
-  <pubDate>Fri, 24 Apr 2026 16:36:57 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1656,7 +1744,7 @@ theorem aoiBand_width_bound ... :
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-border-handoff.html</guid>
-  <pubDate>Fri, 24 Apr 2026 16:36:57 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1934,7 +2022,7 @@ font-style: inherit;">:assets</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-zone-asset-manifest.html</guid>
-  <pubDate>Fri, 24 Apr 2026 16:36:57 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2067,7 +2155,7 @@ font-style: inherit;">note</span>         = {Baseline 2026: newly available acro
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-webtransport-zone-transport.html</guid>
-  <pubDate>Fri, 24 Apr 2026 16:36:57 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2235,7 +2323,7 @@ font-style: inherit;">;</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-websocket-transport-parity.html</guid>
-  <pubDate>Fri, 24 Apr 2026 16:36:57 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2371,7 +2459,7 @@ font-style: inherit;">;</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-virtual-creator-market-implementation-plan.html</guid>
-  <pubDate>Fri, 24 Apr 2026 16:36:57 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2489,7 +2577,7 @@ font-style: inherit;">BLOB</span>, slot_count, ts)</span></code></pre></div></di
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-sqlite-per-zone-journal.html</guid>
-  <pubDate>Fri, 24 Apr 2026 16:36:57 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3280,234 +3368,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260421-rectgtn-jellyfish-behavior.html</guid>
-  <pubDate>Fri, 24 Apr 2026 16:36:57 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20260421-rebac-zone-server-enforcement.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="rebac-enforcement-in-the-zone-server" class="level1">
-<h1>ReBAC Enforcement in the Zone Server</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>The zone architecture specifies that <code>CMD_INSTANCE_ASSET</code> is owner-only and that <code>observe</code> is public. The zone controller documentation states: <code>"modify" =&gt; "owner only — only the uploader may instance their own asset"</code>. The C++ implementation in <code>fabric_mmog_zone.cpp::_on_cmd_instance_asset()</code> does not call <code>check_rel</code> before allocating a slot.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>The documentation and the code are inconsistent. Any connected player can instance any asset regardless of ownership. The enforcement gap exists at two boundaries: zone join (no <code>CAN_ENTER</code> check) and <code>CMD_INSTANCE_ASSET</code> (no <code>CAN_INSTANCE</code> check).</p>
-</section>
-<section id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams" class="level2">
-<h2 class="anchored" data-anchor-id="describe-how-your-proposal-will-work-with-code-pseudo-code-mock-ups-or-diagrams">Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams</h2>
-<section id="zone-join-peer-connect" class="level3">
-<h3 class="anchored" data-anchor-id="zone-join-peer-connect">Zone join (peer connect)</h3>
-<p>In <code>FabricMMOGZone::_on_peer_connected(int p_peer_id)</code>, before the peer is admitted to the simulation:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1">String graph_json <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> _fetch_rebac_graph<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>p_peer_id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">);</span> <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">// HTTP GET /rebac/graph?player=p_peer_id&amp;zone=_zone_id</span></span>
-<span id="cb1-2"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">bool</span> can_enter <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> Taskweft<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span>check_rel<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>graph_json<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> p_peer_id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"CAN_ENTER"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> _zone_id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">);</span></span>
-<span id="cb1-3"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(!</span>can_enter<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span></span>
-<span id="cb1-4">    disconnect_peer<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>p_peer_id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/* force= */</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">);</span></span>
-<span id="cb1-5">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">return</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb1-6"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span></span>
-<span id="cb1-7">_player_graphs<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span>p_peer_id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">]</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> graph_json<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">// cache for duration of session</span></span></code></pre></div></div>
-<p>The graph is fetched once at join time and stored in <code>_player_graphs</code> (a per-zone map). It is invalidated when the zone server receives an explicit <code>CMD_INVALIDATE_PERMISSIONS</code> packet or when the peer disconnects.</p>
-</section>
-<section id="cmd_instance_asset-slot-allocation" class="level3">
-<h3 class="anchored" data-anchor-id="cmd_instance_asset-slot-allocation">CMD_INSTANCE_ASSET (slot allocation)</h3>
-<p>In <code>FabricMMOGZone::_on_cmd_instance_asset()</code>, before <code>_allocate_entity_slot()</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">const</span> String <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&amp;</span>graph_json <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> _player_graphs<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span>p_player_id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">];</span></span>
-<span id="cb2-2"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">bool</span> can_instance <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> Taskweft<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span>check_rel<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>graph_json<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> p_player_id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"CAN_INSTANCE"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> asset_id_str<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">);</span></span>
-<span id="cb2-3"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(!</span>can_instance<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span></span>
-<span id="cb2-4">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">return</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">// silently discard; no slot allocated</span></span>
-<span id="cb2-5"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span></span>
-<span id="cb2-6"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">// existing allocation logic follows</span></span></code></pre></div></div>
-<p><code>Taskweft::check_rel</code> is a C++ wrapper around the existing NIF call; no BEAM round-trip occurs on the zone server — the zone server calls the shared library directly.</p>
-</section>
-<section id="per-tick-constraint" class="level3">
-<h3 class="anchored" data-anchor-id="per-tick-constraint">Per-tick constraint</h3>
-<p>No ReBAC call is issued from the physics loop. The cached graph in <code>_player_graphs</code> is the only permitted access point during simulation. Live <code>taskweft</code> queries from the physics loop are prohibited (see <code>20260421-rebac-permissions.md</code>).</p>
-</section>
-<section id="graph-invalidation" class="level3">
-<h3 class="anchored" data-anchor-id="graph-invalidation">Graph invalidation</h3>
-<p>Zone-backend broadcasts <code>CMD_INVALIDATE_PERMISSIONS</code> on the zone’s Phoenix Channel when a <code>UserPrivilegeRuleset</code> changes. The zone server evicts the affected player’s graph entry; the next per-action check triggers a re-fetch.</p>
-</section>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p>Enforcement is local to the authority zone with no per-tick cost. The graph cache eliminates repeated HTTP calls for the same player within a session. The join-time check is the natural enforcement point: a player who cannot enter never reaches <code>CMD_INSTANCE_ASSET</code>.</p>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>The graph cache can be stale for the window between a permission revocation and the <code>CMD_INVALIDATE_PERMISSIONS</code> delivery. This is the “New Enemy Problem” inherent to distributed ReBAC — no synchronous distributed solution exists at game tick frequency.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>A per-packet signature from zone-backend (capability token) would eliminate the staleness window but requires a cryptographic verify on every <code>CMD_INSTANCE_ASSET</code> call. At 20 Hz and up to 1,800 entities this is acceptable, but the token distribution mechanism adds complexity. The graph-cache approach matches what <code>taskweft</code> already does for upload permissions.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>A player whose permissions change mid-session (e.g.&nbsp;removed from a group by an admin) retains their cached graph until <code>CMD_INVALIDATE_PERMISSIONS</code> is delivered. If the Phoenix Channel message is delayed, the window of incorrect access extends. For destructive operations (<code>modify</code>) this is acceptable risk; for <code>observe</code> the public default means no incorrect denial occurs.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<ul>
-<li><code>multiplayer-fabric-godot/modules/multiplayer_fabric_mmog/fabric_mmog_zone.cpp</code>
-<ul>
-<li><code>_on_peer_connected()</code> — add <code>CAN_ENTER</code> check and graph cache</li>
-<li><code>_on_cmd_instance_asset()</code> — add <code>CAN_INSTANCE</code> check before slot allocation</li>
-</ul></li>
-<li><code>multiplayer-fabric-godot/modules/multiplayer_fabric_mmog/fabric_mmog_zone.h</code>
-<ul>
-<li><code>_player_graphs</code> — <code>HashMap&lt;int, String&gt;</code> session cache</li>
-</ul></li>
-<li><code>multiplayer-fabric-zone-backend</code> — <code>CMD_INVALIDATE_PERMISSIONS</code> broadcast on ruleset change</li>
-</ul>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Proposed</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>iFire</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>ReBAC, Enforcement, ZoneServer, C++, CAN_ENTER, CAN_INSTANCE, taskweft, PermissionsCache</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><code>20260421-rebac-permissions.md</code> — base ReBAC design and per-tick doctrine</li>
-<li><code>20260421-rebac-zone-relations.md</code> — CAN_ENTER and CAN_INSTANCE relation definitions</li>
-<li><code>multiplayer-fabric-godot/modules/multiplayer_fabric_mmog/fabric_mmog_zone.cpp</code></li>
-</ol>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20260421-rebac-zone-server-enforcement.html</guid>
-  <pubDate>Fri, 24 Apr 2026 16:36:57 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 05:31:49 GMT</pubDate>
 </item>
 </channel>
 </rss>
