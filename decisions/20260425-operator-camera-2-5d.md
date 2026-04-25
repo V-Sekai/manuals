@@ -6,40 +6,31 @@
 
 ## The Context
 
-The virtual creator market operator view needs a readable top-down camera for
-monitoring booth zones, visitor counts, and entity positions. The aquarium
-demo must launch in this view by default.
+The virtual creator market operator view needs a readable top-down camera.
+Three reference games define the design space:
 
-Three reference games cover the design space:
+**Final Fantasy Tactics (1997)** [@fftisometric] — orthographic, four discrete
+90° rotation positions.
 
-**Final Fantasy Tactics (1997)** [@fftisometric] — 3D environment, fixed
-orthographic angle, four discrete 90° rotation positions, no free zoom.
+**Triangle Strategy (2022)** [@trianglestrategy2022] — 90° snapped rotation
+and free zoom, added after demo feedback showed continuous rotation
+disorients grid-map readers.
 
-**Triangle Strategy (2022, HD-2D)** [@trianglestrategy2022] — 90° snapped
-rotation and free zoom added after demo feedback. Established that snapped
-increments beat continuous rotation for grid-based tactical maps.
-
-**Blue Archive (2021)** [@bluearchive2021] — fixed diagonal angle (no
-rotation), smooth auto-follow of the active unit group. Legibility comes from
-consistent screen-space direction rather than world-space cardinal alignment.
+**Blue Archive (2021)** [@bluearchive2021] — fixed diagonal angle, no
+rotation, smooth auto-follow of the active unit group.
 
 ## The Problem Statement
 
-The aquarium operator console has no camera. The camera must support two use
-cases:
-
-1. Grid survey — operator scans all zones. Triangle Strategy / FFT model:
-   orthographic, 90° snap rotation, free zoom, WASD pan.
-2. Entity follow — operator tracks a specific visitor or jellyfish. Blue
-   Archive model: smooth auto-pan, rotation locked, no disorientation.
+The operator console has no camera. It needs two modes: grid survey
+(Triangle Strategy / FFT) and entity follow (Blue Archive).
 
 ## CRIS Score
 
 | Factor       | Score  | Evidence |
 | ------------ | ------ | -------- |
-| Complexity:  | +1     | SpringArm3D + orthographic Camera3D is a known Godot pattern. No new engine work required. |
-| Reach:       | +1     | Every operator session uses this view. Phase 1 of the creator market plan cannot pass without it. |
-| Impediment:  | +1     | The operator smoke-test runbook (Phase 1, item 6) cannot be written without a working camera. |
+| Complexity:  | +1     | SpringArm3D + orthographic Camera3D is a known Godot pattern. |
+| Reach:       | +1     | Every operator session uses this view. |
+| Impediment:  | +1     | The smoke-test runbook cannot be written without a working camera. |
 | Stakeholder: | +1     | V-Sekai operator tooling depends on this for the aquarium demo. |
 | **Total**    | **+4** | Build now. |
 
@@ -47,54 +38,27 @@ cases:
 
 ### State machine (Lean 4)
 
-The camera has two modes. The Lean model proves the invariants that hold in
-each mode before any GDScript is written.
-
 ```lean
--- Camera mode and its invariants
 inductive CameraMode
   | Survey  -- 90° snapped rotation, free zoom, WASD pan
   | Follow  -- rotation locked, position lerps to target
 
--- Yaw is always a multiple of 90 degrees in Survey mode
 def yawSnapped (yaw : Int) : Prop := ∃ k : Int, yaw = k * 90
 
--- Zoom is always within bounds
 structure ZoomState where
-  value   : Float
-  minVal  : Float
-  maxVal  : Float
+  value : Float; minVal : Float; maxVal : Float
 
 def zoomInBounds (z : ZoomState) : Prop :=
   z.minVal ≤ z.value ∧ z.value ≤ z.maxVal
 
--- Follow mode invariant: rotation does not change
-structure CameraState where
-  mode        : CameraMode
-  yaw         : Int
-  zoom        : ZoomState
-  followTarget : Option String   -- entity id, None in Survey
-
--- Rotation is only permitted in Survey mode
-theorem rotation_only_in_survey
-    (s : CameraState) (delta : Int)
-    (h : s.mode = CameraMode.Follow) :
-    { s with yaw := s.yaw + delta }.yaw = s.yaw + delta →
-    s.mode = CameraMode.Survey := by
-  intro _
-  -- Follow mode locks rotation; this is a design constraint, not a theorem
-  -- that needs proof — it documents the intended invariant for implementers.
-  exact absurd h (by simp)
-
--- Zoom stays in bounds after clamping
 theorem zoom_clamped_in_bounds (z : ZoomState) (delta : Float)
     (hmin : z.minVal ≤ z.maxVal) :
     zoomInBounds { z with value := (z.value - delta).max z.minVal |>.min z.maxVal } := by
   simp [zoomInBounds, Float.max, Float.min]
-  constructor
-  · exact le_max_left _ _
-  · exact min_le_right _ _
+  exact ⟨le_max_left _ _, min_le_right _ _⟩
 ```
+
+Runtime invariants: `yaw mod 90 == 0` at rest; `ZOOM_MIN ≤ camera.size ≤ ZOOM_MAX`; `_target_yaw` not modified in Follow mode.
 
 ### Node hierarchy
 
@@ -105,126 +69,31 @@ CameraRig (Node3D)      ← pan target; WASD in Survey; lerps to entity in Follo
       Camera3D           ← PROJECTION_ORTHOGONAL; size mirrors zoom
 ```
 
-### Invariants in implementation
+### Survey mode
 
-The Lean proofs above specify three runtime invariants for the GDScript
-implementation to maintain:
+Q/E snaps yaw ±90°, lerped each frame. Scroll adjusts `spring_length` and
+mirrors `camera.size`. WASD pans `CameraRig`; speed scales with zoom.
 
-1. `yaw mod 90 == 0` at end of every Survey rotation tween.
-2. `ZOOM_MIN ≤ camera.size ≤ ZOOM_MAX` after every scroll event.
-3. `CameraPivot._target_yaw` is not modified while `_mode == Follow`.
+### Follow mode
 
-### Survey mode — rotation
+F enters Follow mode. `CameraRig` lerps to the entity each frame. Rotation
+frozen. SpringArm3D camera lag gives the Blue Archive trailing effect.
 
-Q/E rotates by ±90°. Yaw is lerped to the snapped target each frame.
-The camera reads as a cardinal direction at rest (FFT/Triangle Strategy).
+### Toggle
 
-### Survey mode — zoom
-
-Scroll wheel adjusts `SpringArm3D.spring_length` (collision-aware) and
-mirrors `Camera3D.size`. Free zoom tuning from Triangle Strategy.
-
-### Survey mode — pan
-
-WASD moves `CameraRig` in the XZ plane. Speed scales with current zoom so
-panning feels constant regardless of distance.
-
-### Follow mode — smooth entity tracking (Blue Archive)
-
-F on a selected entity enters Follow mode. `CameraRig` lerps toward the
-entity each frame. Rotation is frozen. `SpringArm3D` camera lag enables the
-Blue Archive trailing effect where the entity leads its own frame.
-
-### Entity load display
-
-Each zone server holds a hard limit of 1800 entity slots. Loading all slots
-simultaneously breaks the simulation — tick budget overruns cause cascading
-rollbacks. The operator overlay must communicate load so the operator knows
-when a zone is approaching the limit before it becomes a problem.
-
-The overlay shows a load bar per visible zone:
-
-```
-[Zone A]  ████████░░  847 / 1800  (47%)
-[Zone B]  ██████████  1680 / 1800  (93%) ⚠
-[Zone C]  ██░░░░░░░░  214 / 1800  (12%)
-```
-
-Thresholds (Lean 4 model):
-
-```lean
-def ENTITY_LIMIT : Nat := 1800
-
-inductive LoadLevel
-  | Safe     -- 0–74%
-  | Warning  -- 75–89%
-  | Critical -- ≥ 90%
-
-def loadLevel (count : Nat) : LoadLevel :=
-  let pct := count * 100 / ENTITY_LIMIT
-  if pct ≥ 90 then LoadLevel.Critical
-  else if pct ≥ 75 then LoadLevel.Warning
-  else LoadLevel.Safe
-
--- Invariant: the display never shows more than the server limit
-theorem display_bounded (count : Nat) (h : count ≤ ENTITY_LIMIT) :
-    count ≤ ENTITY_LIMIT := h
-```
-
-Colour mapping:
-- Safe (< 75%): bar is green
-- Warning (75–89%): bar is amber, label shown
-- Critical (≥ 90%): bar is red, `⚠` icon, audio ping once per 30 s
-
-The count comes from `hrr_bundles.record_count` via
-`Storage.record_count(store, source)` — an O(1) read that does not scan
-`hrr_records`. The overlay polls this once per second per visible zone;
-it does not participate in the CH_INTEREST stream.
-
-### Operator overlay
-
-A CanvasLayer renders on top of the 3D view:
-- Entity load bar per visible zone (see above)
-- Booth boundary outlines (one colour per zone)
-- Visitor dot per entity in the CH_INTEREST stream
-- Crosshair on followed entity (Follow) or operator marker (Survey)
-
-Matches the FFT dot-map style in
-[20260421-virtual-creator-market-implementation-plan.md](20260421-virtual-creator-market-implementation-plan.md)
-Phase 1, items 3–4.
-
-### Toggle to VR preview
-
-Tab switches `camera.projection` between `PROJECTION_ORTHOGONAL` and
-`PROJECTION_PERSPECTIVE`. Pivot and arm carry over.
+Tab switches `camera.projection` between orthographic and perspective.
 
 ## The Downsides
 
-Orthographic removes depth cues. Zone walls that overlap along the camera
-direction become indistinguishable — mitigated by distinct zone colours.
-Follow mode exit needs a short rotation-unlock animation to avoid jarring
-the operator.
-
-The load bar reflects entity count at the zone level, not per-AOI-band. An
-operator zoomed out to see all three zones sees the total for each zone; they
-cannot tell from the bar alone which part of the zone is dense.
-
-The dot layer solves spatial breakdown but becomes unreadable at full zoom-out
-near 1800 entities. Dot clustering resolves this: when two or more entity dots
-fall within 24 screen-space pixels of each other, they merge into a single
-circle labelled with the count. Zooming in splits clusters back into individual
-dots. This is the same approach used by map marker clustering (Google Maps,
-Leaflet) and RTS minimaps (StarCraft). Cluster circles use the same load-level
-colour as the zone's load bar so density hotspots are immediately visible.
+Orthographic removes depth cues; distinct zone colours compensate. Follow mode
+exit needs a rotation-unlock animation. The overlay (see
+[20260425-operator-overlay.md](20260425-operator-overlay.md)) handles entity
+density display separately.
 
 ## The Road Not Taken
 
-Free continuous rotation: rejected following the Triangle Strategy lesson —
-operators lose cardinal orientation.
-
-Fixed angle only (pure Blue Archive): rejected for the survey use case where
-seeing booth walls from all four sides matters. Blue Archive's fixed angle
-works because its battlefield is always oriented the same way.
+Free continuous rotation: operators lose cardinal orientation (Triangle Strategy lesson).
+Pure fixed angle: operators need all four wall faces for zone inspection.
 
 ## Status
 
