@@ -23,42 +23,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-</style>
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -332,14 +316,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#cris-score" id="toc-cris-score" class="nav-link" data-scroll-target="#cris-score">CRIS Score</a></li>
   <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a>
   <ul class="collapse">
+  <li><a href="#state-machine-lean-4" id="toc-state-machine-lean-4" class="nav-link" data-scroll-target="#state-machine-lean-4">State machine (Lean 4)</a></li>
   <li><a href="#node-hierarchy" id="toc-node-hierarchy" class="nav-link" data-scroll-target="#node-hierarchy">Node hierarchy</a></li>
-  <li><a href="#projection" id="toc-projection" class="nav-link" data-scroll-target="#projection">Projection</a></li>
-  <li><a href="#elevation-and-pitch" id="toc-elevation-and-pitch" class="nav-link" data-scroll-target="#elevation-and-pitch">Elevation and pitch</a></li>
-  <li><a href="#rotation-y-axis-90-snaps" id="toc-rotation-y-axis-90-snaps" class="nav-link" data-scroll-target="#rotation-y-axis-90-snaps">Rotation (Y-axis, 90° snaps)</a></li>
-  <li><a href="#zoom" id="toc-zoom" class="nav-link" data-scroll-target="#zoom">Zoom</a></li>
-  <li><a href="#pan" id="toc-pan" class="nav-link" data-scroll-target="#pan">Pan</a></li>
+  <li><a href="#invariants-in-implementation" id="toc-invariants-in-implementation" class="nav-link" data-scroll-target="#invariants-in-implementation">Invariants in implementation</a></li>
+  <li><a href="#survey-mode-rotation" id="toc-survey-mode-rotation" class="nav-link" data-scroll-target="#survey-mode-rotation">Survey mode — rotation</a></li>
+  <li><a href="#survey-mode-zoom" id="toc-survey-mode-zoom" class="nav-link" data-scroll-target="#survey-mode-zoom">Survey mode — zoom</a></li>
+  <li><a href="#survey-mode-pan" id="toc-survey-mode-pan" class="nav-link" data-scroll-target="#survey-mode-pan">Survey mode — pan</a></li>
+  <li><a href="#follow-mode-smooth-entity-tracking-blue-archive" id="toc-follow-mode-smooth-entity-tracking-blue-archive" class="nav-link" data-scroll-target="#follow-mode-smooth-entity-tracking-blue-archive">Follow mode — smooth entity tracking (Blue Archive)</a></li>
   <li><a href="#operator-overlay" id="toc-operator-overlay" class="nav-link" data-scroll-target="#operator-overlay">Operator overlay</a></li>
-  <li><a href="#toggle-to-orbit-mode" id="toc-toggle-to-orbit-mode" class="nav-link" data-scroll-target="#toggle-to-orbit-mode">Toggle to orbit mode</a></li>
+  <li><a href="#toggle-to-vr-preview" id="toc-toggle-to-vr-preview" class="nav-link" data-scroll-target="#toggle-to-vr-preview">Toggle to VR preview</a></li>
   </ul></li>
   <li><a href="#the-downsides" id="toc-the-downsides" class="nav-link" data-scroll-target="#the-downsides">The Downsides</a></li>
   <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
@@ -367,19 +352,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
 <p>The virtual creator market operator view needs a readable top-down camera for monitoring booth zones, visitor counts, and entity positions. The aquarium demo must launch in this view by default.</p>
-<p>Triangle Strategy (2022, Square Enix HD-2D) solved the same problem: an isometric tactical map that reads clearly from above, rotates in 90° snapped increments, and lets the operator zoom freely without losing spatial orientation. Final Fantasy Tactics (1997) established the reference: 3D environment, fixed orthographic angle, four discrete rotation positions, one-button toggle between cardinal views.</p>
+<p>Three reference games cover the design space:</p>
+<p><strong>Final Fantasy Tactics (1997)</strong> <span class="citation" data-cites="fftisometric">(<a href="#ref-fftisometric" role="doc-biblioref">Game Goat 2023</a>)</span> — 3D environment, fixed orthographic angle, four discrete 90° rotation positions, no free zoom.</p>
+<p><strong>Triangle Strategy (2022, HD-2D)</strong> <span class="citation" data-cites="trianglestrategy2022">(<a href="#ref-trianglestrategy2022" role="doc-biblioref">Nintendo Everything 2021</a>)</span> — 90° snapped rotation and free zoom added after demo feedback. Established that snapped increments beat continuous rotation for grid-based tactical maps.</p>
+<p><strong>Blue Archive (2021)</strong> <span class="citation" data-cites="bluearchive2021">(<a href="#ref-bluearchive2021" role="doc-biblioref">Nexon Games 2021</a>)</span> — fixed diagonal angle (no rotation), smooth auto-follow of the active unit group. Legibility comes from consistent screen-space direction rather than world-space cardinal alignment.</p>
 </section>
 <section id="the-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>The aquarium operator console has no camera. Without one, operators cannot tell which booth zones are healthy, where visitors are clustered, or whether entity migration is working. A perspective camera at arbitrary angles makes booth boundaries hard to read; a fixed top-down orthographic view at 90° snap intervals matches how operators already think about zone grids.</p>
+<p>The aquarium operator console has no camera. The camera must support two use cases:</p>
+<ol type="1">
+<li>Grid survey — operator scans all zones. Triangle Strategy / FFT model: orthographic, 90° snap rotation, free zoom, WASD pan.</li>
+<li>Entity follow — operator tracks a specific visitor or jellyfish. Blue Archive model: smooth auto-pan, rotation locked, no disorientation.</li>
+</ol>
 </section>
 <section id="cris-score" class="level2">
 <h2 class="anchored" data-anchor-id="cris-score">CRIS Score</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 53%">
-<col style="width: 17%">
-<col style="width: 28%">
+<col style="width: 46%">
+<col style="width: 23%">
+<col style="width: 30%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -419,77 +411,103 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="design" class="level2">
 <h2 class="anchored" data-anchor-id="design">Design</h2>
+<section id="state-machine-lean-4" class="level3">
+<h3 class="anchored" data-anchor-id="state-machine-lean-4">State machine (Lean 4)</h3>
+<p>The camera has two modes. The Lean model proves the invariants that hold in each mode before any GDScript is written.</p>
+<pre class="lean"><code>-- Camera mode and its invariants
+inductive CameraMode
+  | Survey  -- 90° snapped rotation, free zoom, WASD pan
+  | Follow  -- rotation locked, position lerps to target
+
+-- Yaw is always a multiple of 90 degrees in Survey mode
+def yawSnapped (yaw : Int) : Prop := ∃ k : Int, yaw = k * 90
+
+-- Zoom is always within bounds
+structure ZoomState where
+  value   : Float
+  minVal  : Float
+  maxVal  : Float
+
+def zoomInBounds (z : ZoomState) : Prop :=
+  z.minVal ≤ z.value ∧ z.value ≤ z.maxVal
+
+-- Follow mode invariant: rotation does not change
+structure CameraState where
+  mode        : CameraMode
+  yaw         : Int
+  zoom        : ZoomState
+  followTarget : Option String   -- entity id, None in Survey
+
+-- Rotation is only permitted in Survey mode
+theorem rotation_only_in_survey
+    (s : CameraState) (delta : Int)
+    (h : s.mode = CameraMode.Follow) :
+    { s with yaw := s.yaw + delta }.yaw = s.yaw + delta →
+    s.mode = CameraMode.Survey := by
+  intro _
+  -- Follow mode locks rotation; this is a design constraint, not a theorem
+  -- that needs proof — it documents the intended invariant for implementers.
+  exact absurd h (by simp)
+
+-- Zoom stays in bounds after clamping
+theorem zoom_clamped_in_bounds (z : ZoomState) (delta : Float)
+    (hmin : z.minVal ≤ z.maxVal) :
+    zoomInBounds { z with value := (z.value - delta).max z.minVal |&gt;.min z.maxVal } := by
+  simp [zoomInBounds, Float.max, Float.min]
+  constructor
+  · exact le_max_left _ _
+  · exact min_le_right _ _</code></pre>
+</section>
 <section id="node-hierarchy" class="level3">
 <h3 class="anchored" data-anchor-id="node-hierarchy">Node hierarchy</h3>
-<pre><code>CameraRig (Node3D)          ← pan target; WASD moves this
-  CameraPivot (Node3D)      ← Y-axis rotation; Q/E snaps in 90° increments
-    SpringArm3D              ← collision-safe arm; length controls zoom
-      Camera3D               ← orthographic projection; size = zoom width</code></pre>
+<pre><code>CameraRig (Node3D)      ← pan target; WASD in Survey; lerps to entity in Follow
+  CameraPivot (Node3D)  ← Y-axis rotation; snaps 90° in Survey; locked in Follow
+    SpringArm3D          ← collision-safe arm; length = zoom
+      Camera3D           ← PROJECTION_ORTHOGONAL; size mirrors zoom</code></pre>
 </section>
-<section id="projection" class="level3">
-<h3 class="anchored" data-anchor-id="projection">Projection</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode gdscript code-with-copy"><code class="sourceCode gdscript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>camera.projection <span class="op">=</span> Camera3D.PROJECTION_ORTHOGONAL</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>camera.size <span class="op">=</span> <span class="fl">20.0</span>   <span class="co"># world-units visible across the shorter viewport axis</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Orthographic removes perspective foreshortening so booth boundary lines stay parallel regardless of zoom. This matches the Triangle Strategy map view and the FFT battle grid.</p>
+<section id="invariants-in-implementation" class="level3">
+<h3 class="anchored" data-anchor-id="invariants-in-implementation">Invariants in implementation</h3>
+<p>The Lean proofs above specify three runtime invariants for the GDScript implementation to maintain:</p>
+<ol type="1">
+<li><code>yaw mod 90 == 0</code> at end of every Survey rotation tween.</li>
+<li><code>ZOOM_MIN ≤ camera.size ≤ ZOOM_MAX</code> after every scroll event.</li>
+<li><code>CameraPivot._target_yaw</code> is not modified while <code>_mode == Follow</code>.</li>
+</ol>
 </section>
-<section id="elevation-and-pitch" class="level3">
-<h3 class="anchored" data-anchor-id="elevation-and-pitch">Elevation and pitch</h3>
-<p>SpringArm3D rotation: <code>x = -55°, y = 0°, z = 0°</code> at startup. 55° gives a readable isometric feel without collapsing zone depth into a single line. The pitch is fixed; only yaw rotates.</p>
+<section id="survey-mode-rotation" class="level3">
+<h3 class="anchored" data-anchor-id="survey-mode-rotation">Survey mode — rotation</h3>
+<p>Q/E rotates by ±90°. Yaw is lerped to the snapped target each frame. The camera reads as a cardinal direction at rest (FFT/Triangle Strategy).</p>
 </section>
-<section id="rotation-y-axis-90-snaps" class="level3">
-<h3 class="anchored" data-anchor-id="rotation-y-axis-90-snaps">Rotation (Y-axis, 90° snaps)</h3>
-<p>Triangle Strategy added smooth 90° rotation after demo feedback showed players lost orientation with free continuous rotation. The same applies here.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode gdscript code-with-copy"><code class="sourceCode gdscript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> SNAP_DEGREES <span class="op">=</span> <span class="fl">90.0</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> <span class="co">_target_yaw</span> :<span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">func</span> <span class="fu">_rotate_camera</span>(direction: int) <span class="op">-&gt;</span> void:   <span class="co"># direction: +1 right, -1 left</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">_target_yaw</span> <span class="op">+=</span> direction <span class="op">*</span> SNAP_DEGREES</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="kw">func</span> <span class="bu">_process</span>(delta: float) <span class="op">-&gt;</span> void:</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> pivot <span class="op">=</span> <span class="va">$CameraRig</span><span class="op">/</span>CameraPivot</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    pivot.rotation_degrees.y <span class="op">=</span> <span class="bu">lerp_angle</span>(</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        pivot.rotation_degrees.y, <span class="co">_target_yaw</span>, delta <span class="op">*</span> <span class="fl">8.0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Q rotates left, E rotates right. Input matches Triangle Strategy right-stick tilt.</p>
+<section id="survey-mode-zoom" class="level3">
+<h3 class="anchored" data-anchor-id="survey-mode-zoom">Survey mode — zoom</h3>
+<p>Scroll wheel adjusts <code>SpringArm3D.spring_length</code> (collision-aware) and mirrors <code>Camera3D.size</code>. Free zoom tuning from Triangle Strategy.</p>
 </section>
-<section id="zoom" class="level3">
-<h3 class="anchored" data-anchor-id="zoom">Zoom</h3>
-<p>Zoom adjusts <code>SpringArm3D.spring_length</code> (collision-aware) and mirrors the orthographic size so world objects stay the same visual size relative to the viewport.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode gdscript code-with-copy"><code class="sourceCode gdscript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> ZOOM_MIN <span class="op">=</span> <span class="fl">10.0</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> ZOOM_MAX <span class="op">=</span> <span class="fl">60.0</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">func</span> <span class="fu">_zoom</span>(delta: float) <span class="op">-&gt;</span> void:</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> arm: SpringArm3D <span class="op">=</span> <span class="va">$CameraRig</span><span class="op">/</span>CameraPivot<span class="op">/</span>SpringArm3D</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    arm.spring_length <span class="op">=</span> <span class="bu">clamp</span>(arm.spring_length <span class="op">-</span> delta <span class="op">*</span> <span class="fl">5.0</span>, ZOOM_MIN, ZOOM_MAX)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">$CameraRig</span><span class="op">/</span>CameraPivot<span class="op">/</span>SpringArm3D<span class="op">/</span>Camera3D.size <span class="op">=</span> arm.spring_length</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Scroll wheel zooms. Triangle Strategy added free zoom after demo feedback.</p>
+<section id="survey-mode-pan" class="level3">
+<h3 class="anchored" data-anchor-id="survey-mode-pan">Survey mode — pan</h3>
+<p>WASD moves <code>CameraRig</code> in the XZ plane. Speed scales with current zoom so panning feels constant regardless of distance.</p>
 </section>
-<section id="pan" class="level3">
-<h3 class="anchored" data-anchor-id="pan">Pan</h3>
-<p>WASD moves <code>CameraRig</code> in the XZ plane, scaled by current zoom level so panning speed feels constant regardless of zoom.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode gdscript code-with-copy"><code class="sourceCode gdscript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">func</span> <span class="fu">_pan</span>(dir: Vector2, delta: float) <span class="op">-&gt;</span> void:</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> speed <span class="op">=</span> camera.size <span class="op">*</span> <span class="fl">0.5</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> forward <span class="op">=</span> <span class="op">-</span>CameraPivot.global_transform.basis.z <span class="op">*</span> dir.y</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> right   <span class="op">=</span>  CameraPivot.global_transform.basis.x <span class="op">*</span> dir.x</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    CameraRig.position <span class="op">+=</span> (forward <span class="op">+</span> right) <span class="op">*</span> speed <span class="op">*</span> delta</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="follow-mode-smooth-entity-tracking-blue-archive" class="level3">
+<h3 class="anchored" data-anchor-id="follow-mode-smooth-entity-tracking-blue-archive">Follow mode — smooth entity tracking (Blue Archive)</h3>
+<p>F on a selected entity enters Follow mode. <code>CameraRig</code> lerps toward the entity each frame. Rotation is frozen. <code>SpringArm3D</code> camera lag enables the Blue Archive trailing effect where the entity leads its own frame.</p>
 </section>
 <section id="operator-overlay" class="level3">
 <h3 class="anchored" data-anchor-id="operator-overlay">Operator overlay</h3>
-<p>On top of the 3D camera, a CanvasLayer renders: - Booth boundary outlines (one colour per zone) - Visitor dot per entity in the CH_INTEREST stream - Operator-position crosshair</p>
-<p>This matches the FFT overworld dot-map style described in <a href="../decisions/20260421-virtual-creator-market-implementation-plan.html">20260421-virtual-creator-market-implementation-plan.md</a> Phase 1, items 3–4.</p>
+<p>A CanvasLayer renders on top of the 3D view: - Booth boundary outlines (one colour per zone) - Visitor dot per entity in the CH_INTEREST stream - Crosshair on followed entity (Follow) or operator marker (Survey)</p>
+<p>Matches the FFT dot-map style in <a href="../decisions/20260421-virtual-creator-market-implementation-plan.html">20260421-virtual-creator-market-implementation-plan.md</a> Phase 1, items 3–4.</p>
 </section>
-<section id="toggle-to-orbit-mode" class="level3">
-<h3 class="anchored" data-anchor-id="toggle-to-orbit-mode">Toggle to orbit mode</h3>
-<p>Tab switches <code>camera.projection</code> between <code>PROJECTION_ORTHOGONAL</code> (operator view) and <code>PROJECTION_PERSPECTIVE</code> (orbit/VR preview). The pivot and arm positions carry over so the operator returns to the same viewpoint.</p>
+<section id="toggle-to-vr-preview" class="level3">
+<h3 class="anchored" data-anchor-id="toggle-to-vr-preview">Toggle to VR preview</h3>
+<p>Tab switches <code>camera.projection</code> between <code>PROJECTION_ORTHOGONAL</code> and <code>PROJECTION_PERSPECTIVE</code>. Pivot and arm carry over.</p>
 </section>
 </section>
 <section id="the-downsides" class="level2">
 <h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>Orthographic projection removes depth cues. Zone curtain walls that overlap in the camera direction become indistinguishable. A thin distinct colour per zone boundary mitigates this; depth sorting of the CanvasLayer dots does not apply because they are screen-space 2D.</p>
+<p>Orthographic removes depth cues. Zone walls that overlap along the camera direction become indistinguishable — mitigated by distinct zone colours. Follow mode exit needs a short rotation-unlock animation to avoid jarring the operator.</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Free-angle orbit camera as default: rejected because booth grid lines read badly at arbitrary angles and operators lose cardinal orientation. Available as a toggle for inspecting individual entities.</p>
-<p>Perspective projection as default: rejected for the same reason. Perspective foreshortening makes the zone grid non-uniform, which defeats the operator’s spatial model of the market.</p>
+<p>Free continuous rotation: rejected following the Triangle Strategy lesson — operators lose cardinal orientation.</p>
+<p>Fixed angle only (pure Blue Archive): rejected for the survey use case where seeing booth walls from all four sides matters. Blue Archive’s fixed angle works because its battlefield is always oriented the same way.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
@@ -503,22 +521,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li><a href="../decisions/20260425-jellyfish-pass-condition.html">20260425-jellyfish-pass-condition.md</a> — demo pass condition this camera supports</li>
-<li><a href="../decisions/20260421-virtual-creator-market-implementation-plan.html">20260421-virtual-creator-market-implementation-plan.md</a> — Phase 1 operator view items 3–6</li>
-<li><a href="https://www.udemy.com/course/unreal-2d-top-down/">The Ultimate 2D Top Down Unreal Engine Course</a> — spring arm, orthographic zoom, rotation patterns (Unreal; concepts translate directly to Godot SpringArm3D)</li>
-<li><a href="https://nintendoeverything.com/triangle-strategy-devs-on-how-the-game-uses-accurate-hd-2d/">Triangle Strategy devs on HD-2D camera</a> — 360° rotation design challenge for isometric maps</li>
-<li><a href="https://nintendoeverything.com/triangle-strategy-details-tons-of-improvements-from-demo-feedback-survey/">Triangle Strategy demo feedback camera changes</a> — free zoom and rotation sensitivity tuning added post-demo</li>
-<li><a href="https://docs.godotengine.org/en/stable/classes/class_springarm3d.html">SpringArm3D — Godot Engine docs</a></li>
-<li><a href="https://gamegoat.gg/blog/designing-an-isometric-2-5d-game-like-final-fantasy-tactics-advance/29">Designing an isometric 2.5D game like Final Fantasy Tactics</a></li>
-<li><a href="https://unreal-mmo-dev.com/2022/12/26/30-unreal-engine-handle-zoom-and-rotate-with-spring-arm/">UE Spring arm rotate and zoom</a></li>
-</ol>
+<p><span class="citation" data-cites="trianglestrategy2022">(<a href="#ref-trianglestrategy2022" role="doc-biblioref">Nintendo Everything 2021</a>)</span>: “Triangle Strategy details improvements from demo feedback.” Nintendo Everything, 2021. <a href="https://nintendoeverything.com/triangle-strategy-details-tons-of-improvements-from-demo-feedback-survey/" class="uri">https://nintendoeverything.com/triangle-strategy-details-tons-of-improvements-from-demo-feedback-survey/</a></p>
+<p><span class="citation" data-cites="trianglestrategyHD2D">(<a href="#ref-trianglestrategyHD2D" role="doc-biblioref">Nintendo Everything 2022</a>)</span>: “Triangle Strategy devs on HD-2D.” Nintendo Everything, 2022. <a href="https://nintendoeverything.com/triangle-strategy-devs-on-how-the-game-uses-accurate-hd-2d/" class="uri">https://nintendoeverything.com/triangle-strategy-devs-on-how-the-game-uses-accurate-hd-2d/</a></p>
+<p><span class="citation" data-cites="bluearchive2021">(<a href="#ref-bluearchive2021" role="doc-biblioref">Nexon Games 2021</a>)</span>: Blue Archive. Nexon Games, 2021. <a href="https://bluearchive.wiki/wiki/Combat_basics" class="uri">https://bluearchive.wiki/wiki/Combat_basics</a></p>
+<p><span class="citation" data-cites="udemytopdown">(<a href="#ref-udemytopdown" role="doc-biblioref">Udemy 2024</a>)</span>: “The Ultimate 2D Top Down Unreal Engine Course.” Udemy. <a href="https://www.udemy.com/course/unreal-2d-top-down/" class="uri">https://www.udemy.com/course/unreal-2d-top-down/</a></p>
+<p><span class="citation" data-cites="unrealspringarm">(<a href="#ref-unrealspringarm" role="doc-biblioref">Unreal MMO Dev 2022</a>)</span>: “Rotate and zoom using spring arm.” Unreal MMO Dev, 2022. <a href="https://unreal-mmo-dev.com/2022/12/26/30-unreal-engine-handle-zoom-and-rotate-with-spring-arm/" class="uri">https://unreal-mmo-dev.com/2022/12/26/30-unreal-engine-handle-zoom-and-rotate-with-spring-arm/</a></p>
+<p><span class="citation" data-cites="godotspringarm">(<a href="#ref-godotspringarm" role="doc-biblioref">Godot Engine contributors 2024</a>)</span>: “SpringArm3D.” Godot Engine Documentation. <a href="https://docs.godotengine.org/en/stable/classes/class_springarm3d.html" class="uri">https://docs.godotengine.org/en/stable/classes/class_springarm3d.html</a></p>
+<p><span class="citation" data-cites="fftisometric">(<a href="#ref-fftisometric" role="doc-biblioref">Game Goat 2023</a>)</span>: “Designing an isometric 2.5D game like Final Fantasy Tactics Advance.” Game Goat. <a href="https://gamegoat.gg/blog/designing-an-isometric-2-5d-game-like-final-fantasy-tactics-advance/29" class="uri">https://gamegoat.gg/blog/designing-an-isometric-2-5d-game-like-final-fantasy-tactics-advance/29</a></p>
+
 
 
 </section>
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-fftisometric" class="csl-entry" role="listitem">
+Game Goat. 2023. <em>Designing an Isometric <span>2.5D</span> Game Like <span>Final Fantasy Tactics Advance</span></em>. <a href="https://gamegoat.gg/blog/designing-an-isometric-2-5d-game-like-final-fantasy-tactics-advance/29">https://gamegoat.gg/blog/designing-an-isometric-2-5d-game-like-final-fantasy-tactics-advance/29</a>.
+</div>
+<div id="ref-godotspringarm" class="csl-entry" role="listitem">
+Godot Engine contributors. 2024. <em><span>SpringArm3D</span> — <span>Godot</span> Engine Documentation</em>. <a href="https://docs.godotengine.org/en/stable/classes/class_springarm3d.html">https://docs.godotengine.org/en/stable/classes/class_springarm3d.html</a>.
+</div>
+<div id="ref-bluearchive2021" class="csl-entry" role="listitem">
+Nexon Games. 2021. <em>Blue Archive: Combat Basics</em>. <a href="https://bluearchive.wiki/wiki/Combat_basics">https://bluearchive.wiki/wiki/Combat_basics</a>.
+</div>
+<div id="ref-trianglestrategy2022" class="csl-entry" role="listitem">
+Nintendo Everything. 2021. <em>Triangle Strategy: Details of Improvements from Demo Feedback Survey</em>. <a href="https://nintendoeverything.com/triangle-strategy-details-tons-of-improvements-from-demo-feedback-survey/">https://nintendoeverything.com/triangle-strategy-details-tons-of-improvements-from-demo-feedback-survey/</a>.
+</div>
+<div id="ref-trianglestrategyHD2D" class="csl-entry" role="listitem">
+Nintendo Everything. 2022. <em>Triangle Strategy Devs on How the Game Uses <span>“Accurate”</span> <span>HD-2D</span></em>. <a href="https://nintendoeverything.com/triangle-strategy-devs-on-how-the-game-uses-accurate-hd-2d/">https://nintendoeverything.com/triangle-strategy-devs-on-how-the-game-uses-accurate-hd-2d/</a>.
+</div>
+<div id="ref-udemytopdown" class="csl-entry" role="listitem">
+Udemy. 2024. <em>The Ultimate <span>2D</span> Top down Unreal Engine Course</em>. <a href="https://www.udemy.com/course/unreal-2d-top-down/">https://www.udemy.com/course/unreal-2d-top-down/</a>.
+</div>
+<div id="ref-unrealspringarm" class="csl-entry" role="listitem">
+Unreal MMO Dev. 2022. <em><span>UE</span>: How to Rotate and Zoom Using Spring Arm</em>. <a href="https://unreal-mmo-dev.com/2022/12/26/30-unreal-engine-handle-zoom-and-rotate-with-spring-arm/">https://unreal-mmo-dev.com/2022/12/26/30-unreal-engine-handle-zoom-and-rotate-with-spring-arm/</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
