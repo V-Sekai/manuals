@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -404,9 +439,15 @@ div.csl-indent {
 <h3 class="anchored" data-anchor-id="rotation-representation-twistswing-per-axis-in-0-1">Rotation representation: twist/swing per axis in [0, 1]</h3>
 <p>Camera orientation is expressed as a twist/swing pair, following the same decomposition used by <code>TransformUtil.swing_twist</code> in the humanoid project (<code>addons/humanoid/transform_util.gd</code>):</p>
 <ul>
-<li>Twist (x-axis of the <code>swing_twist</code> vector): yaw around the world Y axis, mapped to [0, 1] where 0.0 = north, 0.25 = east, 0.5 = south, 0.75 = west.</li>
-<li>Swing (y/z-axes of the <code>swing_twist</code> vector): elevation angle, fixed at a constant value corresponding to −55° pitch. Swing does not change at runtime.</li>
+<li><strong>Twist</strong>: yaw around the world Y axis, in [0, 1]. 0.0 = north, 0.25 = east, 0.5 = south, 0.75 = west.</li>
+<li><strong>Swing</strong>: elevation pitch, fixed at <code>SWING_ELEVATION = 0.153</code> (153/1000 of a full turn ≈ 55°). In [0, 1] per axis; only the X-axis (pitch) is non-zero. Swing does not change at runtime.</li>
 </ul>
+<p>Both are composed into a single quaternion on <code>CameraPivot</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode gdscript code-with-copy"><code class="sourceCode gdscript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> twist_q :<span class="op">=</span> <span class="fu">Quaternion</span>(Vector3.UP,    <span class="co">_twist</span>          <span class="op">*</span> <span class="cn">TAU</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> swing_q :<span class="op">=</span> <span class="fu">Quaternion</span>(Vector3.RIGHT, <span class="op">-</span>SWING_ELEVATION <span class="op">*</span> <span class="cn">TAU</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">_pivot</span>.quaternion <span class="op">=</span> twist_q <span class="op">*</span> swing_q</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Multiplication order <code>twist_q * swing_q</code> means: apply <code>swing_q</code> first in the local (pre-twist) frame, then rotate that frame by <code>twist_q</code> around world Y. This is identical to the swing-twist product in <code>TransformUtil</code>: the twist axis is world Y; swing is the perpendicular component.</p>
+<p><code>SpringArm3D</code> has no rotation of its own — it simply extends along the pivot’s local −Z axis, which already points downward at the correct elevation after the combined quaternion is applied.</p>
 <p>In Survey mode the twist snaps to {0.0, 0.25, 0.5, 0.75}. Follow mode locks twist at its current snapped value.</p>
 </section>
 <section id="state-machine-lean-4" class="level3">
@@ -447,11 +488,11 @@ theorem zoom_clamped (s : CameraState) (delta zmin zmax : Float)
 </section>
 <section id="node-hierarchy" class="level3">
 <h3 class="anchored" data-anchor-id="node-hierarchy">Node hierarchy</h3>
-<pre><code>CameraRig (Node3D)      ← pan target; WASD in Survey; lerps to entity in Follow
-  CameraPivot (Node3D)  ← twist applied as Y-rotation; locked in Follow
-    SpringArm3D          ← swing (fixed pitch); arm length = zoom
+<pre><code>OperatorRig (Node3D)    ← pan target; WASD in Survey; lerps to entity in Follow
+  CameraPivot (Node3D)  ← swing-twist quaternion applied every frame
+    SpringArm3D          ← no rotation; arm length = zoom
       Camera3D           ← PROJECTION_ORTHOGONAL; size mirrors zoom</code></pre>
-<p><code>CameraPivot.rotation.y = twist * TAU</code> converts the [0, 1] twist value to radians. <code>SpringArm3D.rotation.x</code> is set once from <code>SWING_ELEVATION</code> and never written again.</p>
+<p><code>CameraPivot.quaternion = twist_q * swing_q</code> is rebuilt each frame from the current <code>_twist</code> [0, 1] and the constant <code>SWING_ELEVATION</code> [0, 1]. <code>SpringArm3D</code> carries no rotation; it extends along the pivot’s local −Z.</p>
 </section>
 <section id="survey-mode" class="level3">
 <h3 class="anchored" data-anchor-id="survey-mode">Survey mode</h3>

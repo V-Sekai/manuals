@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.37</generator>
-<lastBuildDate>Sat, 25 Apr 2026 16:01:11 GMT</lastBuildDate>
+<lastBuildDate>Sat, 25 Apr 2026 16:29:24 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -121,7 +121,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sat, 25 Apr 2026 16:01:11 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 16:29:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -957,7 +957,7 @@ libriscv  → WASM          (Emscripten; browser loads VM, feeds it the ELF)</co
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-threejs-webgpu-zone-client.html</guid>
-  <pubDate>Sat, 25 Apr 2026 16:01:11 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 16:29:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1209,7 +1209,7 @@ font-style: inherit;">;</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-threejs-player.html</guid>
-  <pubDate>Sat, 25 Apr 2026 16:01:11 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 16:29:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1640,7 +1640,7 @@ font-style: inherit;">;</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-threejs-observer.html</guid>
-  <pubDate>Sat, 25 Apr 2026 16:01:11 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 16:29:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1777,7 +1777,7 @@ theorem display_bounded (count : Nat) (h : count ≤ ENTITY_LIMIT) :
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-operator-overlay.html</guid>
-  <pubDate>Sat, 25 Apr 2026 16:01:11 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 16:29:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1853,9 +1853,47 @@ theorem display_bounded (count : Nat) (h : count ≤ ENTITY_LIMIT) :
 <h3 class="anchored" data-anchor-id="rotation-representation-twistswing-per-axis-in-0-1">Rotation representation: twist/swing per axis in [0, 1]</h3>
 <p>Camera orientation is expressed as a twist/swing pair, following the same decomposition used by <code>TransformUtil.swing_twist</code> in the humanoid project (<code>addons/humanoid/transform_util.gd</code>):</p>
 <ul>
-<li>Twist (x-axis of the <code>swing_twist</code> vector): yaw around the world Y axis, mapped to [0, 1] where 0.0 = north, 0.25 = east, 0.5 = south, 0.75 = west.</li>
-<li>Swing (y/z-axes of the <code>swing_twist</code> vector): elevation angle, fixed at a constant value corresponding to −55° pitch. Swing does not change at runtime.</li>
+<li><strong>Twist</strong>: yaw around the world Y axis, in [0, 1]. 0.0 = north, 0.25 = east, 0.5 = south, 0.75 = west.</li>
+<li><strong>Swing</strong>: elevation pitch, fixed at <code>SWING_ELEVATION = 0.153</code> (153/1000 of a full turn ≈ 55°). In [0, 1] per axis; only the X-axis (pitch) is non-zero. Swing does not change at runtime.</li>
 </ul>
+<p>Both are composed into a single quaternion on <code>CameraPivot</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode gdscript code-with-copy"><code class="sourceCode gdscript"><span id="cb1-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">var</span> twist_q :<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Quaternion</span>(Vector3.UP,    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">_twist</span>          <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TAU</span>)</span>
+<span id="cb1-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">var</span> swing_q :<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Quaternion</span>(Vector3.RIGHT, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>SWING_ELEVATION <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TAU</span>)</span>
+<span id="cb1-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">_pivot</span>.quaternion <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> twist_q <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> swing_q</span></code></pre></div></div>
+<p>Multiplication order <code>twist_q * swing_q</code> means: apply <code>swing_q</code> first in the local (pre-twist) frame, then rotate that frame by <code>twist_q</code> around world Y. This is identical to the swing-twist product in <code>TransformUtil</code>: the twist axis is world Y; swing is the perpendicular component.</p>
+<p><code>SpringArm3D</code> has no rotation of its own — it simply extends along the pivot’s local −Z axis, which already points downward at the correct elevation after the combined quaternion is applied.</p>
 <p>In Survey mode the twist snaps to {0.0, 0.25, 0.5, 0.75}. Follow mode locks twist at its current snapped value.</p>
 </section>
 <section id="state-machine-lean-4" class="level3">
@@ -1896,11 +1934,11 @@ theorem zoom_clamped (s : CameraState) (delta zmin zmax : Float)
 </section>
 <section id="node-hierarchy" class="level3">
 <h3 class="anchored" data-anchor-id="node-hierarchy">Node hierarchy</h3>
-<pre><code>CameraRig (Node3D)      ← pan target; WASD in Survey; lerps to entity in Follow
-  CameraPivot (Node3D)  ← twist applied as Y-rotation; locked in Follow
-    SpringArm3D          ← swing (fixed pitch); arm length = zoom
+<pre><code>OperatorRig (Node3D)    ← pan target; WASD in Survey; lerps to entity in Follow
+  CameraPivot (Node3D)  ← swing-twist quaternion applied every frame
+    SpringArm3D          ← no rotation; arm length = zoom
       Camera3D           ← PROJECTION_ORTHOGONAL; size mirrors zoom</code></pre>
-<p><code>CameraPivot.rotation.y = twist * TAU</code> converts the [0, 1] twist value to radians. <code>SpringArm3D.rotation.x</code> is set once from <code>SWING_ELEVATION</code> and never written again.</p>
+<p><code>CameraPivot.quaternion = twist_q * swing_q</code> is rebuilt each frame from the current <code>_twist</code> [0, 1] and the constant <code>SWING_ELEVATION</code> [0, 1]. <code>SpringArm3D</code> carries no rotation; it extends along the pivot’s local −Z.</p>
 </section>
 <section id="survey-mode" class="level3">
 <h3 class="anchored" data-anchor-id="survey-mode">Survey mode</h3>
@@ -1973,7 +2011,7 @@ Unreal MMO Dev. 2022. <em><span>UE</span>: How to Rotate and Zoom Using Spring A
 </div>
 </div></section></div> ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-operator-camera-2-5d.html</guid>
-  <pubDate>Sat, 25 Apr 2026 16:01:11 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 16:29:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2052,7 +2090,7 @@ Unreal MMO Dev. 2022. <em><span>UE</span>: How to Rotate and Zoom Using Spring A
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-jellyfish-pass-condition.html</guid>
-  <pubDate>Sat, 25 Apr 2026 16:01:11 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 16:29:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2196,7 +2234,7 @@ Unreal MMO Dev. 2022. <em><span>UE</span>: How to Rotate and Zoom Using Spring A
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-jellyfish-game.html</guid>
-  <pubDate>Sat, 25 Apr 2026 16:01:11 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 16:29:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2759,7 +2797,7 @@ font-style: inherit;">;</span></span>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-headless-test-matrix.html</guid>
-  <pubDate>Sat, 25 Apr 2026 16:01:11 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 16:29:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2847,7 +2885,7 @@ server:  {"event":"echo","len":24,"mode":0}</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-godot-web-client-webtransport.html</guid>
-  <pubDate>Sat, 25 Apr 2026 16:01:11 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 16:29:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3140,7 +3178,7 @@ font-style: inherit;">next_entity_id</span>(), pos, payload)</span></code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-godot-player.html</guid>
-  <pubDate>Sat, 25 Apr 2026 16:01:11 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 16:29:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3416,7 +3454,7 @@ font-style: inherit;">]</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-godot-observer.html</guid>
-  <pubDate>Sat, 25 Apr 2026 16:01:11 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 16:29:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -4096,7 +4134,7 @@ font-style: inherit;">stringify</span>(entities))</span></code></pre></div></div
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-dual-client-test.html</guid>
-  <pubDate>Sat, 25 Apr 2026 16:01:11 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 16:29:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -4252,7 +4290,7 @@ font-style: inherit;">stringify</span>(entities))</span></code></pre></div></div
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-cris-scoring-for-godot-engine-code-inclusion.html</guid>
-  <pubDate>Sat, 25 Apr 2026 16:01:11 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 16:29:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -4592,7 +4630,7 @@ font-style: inherit;">--dir</span> multiplayer-fabric-godot/bin/</span></code></
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-build-cache-test-pipeline.html</guid>
-  <pubDate>Sat, 25 Apr 2026 16:01:11 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 16:29:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -4929,7 +4967,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-sandbox-rebac-behavior.html</guid>
-  <pubDate>Sat, 25 Apr 2026 16:01:11 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 16:29:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -5022,7 +5060,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-baker-zone-lifecycle.html</guid>
-  <pubDate>Sat, 25 Apr 2026 16:01:11 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 16:29:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -5071,7 +5109,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-asset-delivery-decision.html</guid>
-  <pubDate>Sat, 25 Apr 2026 16:01:11 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 16:29:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -5213,7 +5251,7 @@ font-style: inherit;"># Serve over HTTP. Client downloads the full archive every
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-asset-delivery-benchmark.html</guid>
-  <pubDate>Sat, 25 Apr 2026 16:01:11 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 16:29:24 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -5309,7 +5347,7 @@ font-style: inherit;"># Serve over HTTP. Client downloads the full archive every
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260422-simplify-then-add-lightness.html</guid>
-  <pubDate>Sat, 25 Apr 2026 16:01:11 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 16:29:24 GMT</pubDate>
 </item>
 </channel>
 </rss>
