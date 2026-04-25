@@ -207,9 +207,15 @@ the operator.
 
 The load bar reflects entity count at the zone level, not per-AOI-band. An
 operator zoomed out to see all three zones sees the total for each zone; they
-cannot tell from the bar alone which part of the zone is dense. The visitor
-dot layer provides that spatial breakdown, but dots become unreadable at
-maximum zoom-out with 1800 entities per zone.
+cannot tell from the bar alone which part of the zone is dense.
+
+The dot layer solves spatial breakdown but becomes unreadable at full zoom-out
+near 1800 entities. Dot clustering resolves this: when two or more entity dots
+fall within 24 screen-space pixels of each other, they merge into a single
+circle labelled with the count. Zooming in splits clusters back into individual
+dots. This is the same approach used by map marker clustering (Google Maps,
+Leaflet) and RTS minimaps (StarCraft). Cluster circles use the same load-level
+colour as the zone's load bar so density hotspots are immediately visible.
 
 ## The Road Not Taken
 
