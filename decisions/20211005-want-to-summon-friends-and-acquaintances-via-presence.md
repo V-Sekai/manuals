@@ -46,7 +46,11 @@ _No response_
 
 Can be done as a group.
 
-### References
+### Tags
+
+- 20211005-want-to-summon-friends-and-acquaintances-via-presence
+
+## References
 
 - <https://github.com/libp2p/cpp-libp2p>
 - <https://github.com/fire/godot-p2p/>

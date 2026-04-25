@@ -54,7 +54,7 @@ Status: Draft
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240325-table-avatar-embedded-xmp
 
 ## Further Reading
 

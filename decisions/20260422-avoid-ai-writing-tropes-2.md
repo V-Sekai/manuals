@@ -54,7 +54,7 @@ Status: Active
 
 ## Tags
 
-- Writing, Documentation, AI, Style, Review, Contributing
+- Writing, Documentation, AI, Style, Review, Contributing, 20260422-avoid-ai-writing-tropes-2
 
 ## Further Reading
 

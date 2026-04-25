@@ -28,7 +28,11 @@ _No response_
 
 It is a dependency of doing VR avatars.
 
-### References
+### Tags
+
+- 20211031-face-motion-tracking-requires-standard-shapes
+
+## References
 
 _No response_
 

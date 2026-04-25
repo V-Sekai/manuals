@@ -48,6 +48,10 @@ This is a quality of life improvement.
 
 I use this.
 
+## Tags
+
+- 20211031-run-the-maintance-scripts-from-windows-in-unix-mode-with-msys2
+
 ## References <!-- optional -->
 
 - <https://www.msys2.org/>

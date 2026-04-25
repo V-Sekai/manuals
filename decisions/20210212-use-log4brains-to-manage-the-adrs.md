@@ -2,7 +2,7 @@
 
 - Status: superseded
 - Date: 2021-02-11
-- Tags: dev-tools, doc
+- Tags: dev-tools, doc, 20210212-use-log4brains-to-manage-the-adrs
 
 ## Context and Problem Statement
 

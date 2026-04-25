@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai
-- Tags: V-Sekai, LLM, Training
+- Tags: V-Sekai, LLM, Training, 20231110-efficient-llm-training
 
 ## Context
 

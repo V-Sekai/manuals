@@ -143,7 +143,7 @@ Status: Draft
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240708-vsekai-my-life-as-a-queen
 - Godot XR
 - Relaxation
 - VRM

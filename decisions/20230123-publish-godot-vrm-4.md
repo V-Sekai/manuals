@@ -2,7 +2,7 @@
 
 - Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20230123-publish-godot-vrm-4
 
 ## Context and Problem Statement
 

@@ -4,7 +4,7 @@
 
 - Status: superseded by `20230522-proposal-template.md` <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
-- Tags: V-Sekai,ChatGPT-4,AI_assistance,problem solving,proposal generation,Visual Studio Code addon,
+- Tags: V-Sekai,ChatGPT-4,AI_assistance,problem solving,proposal generation,Visual Studio Code addon,, 20230505-v-sekai-ai-completion
 
 ## Context and Problem Statement
 
@@ -39,7 +39,7 @@ Example of using ChatGPT-4 AI completion with the proposal template.
 
 - Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai
-- Tags: V-Sekai, GPT-4
+- Tags: V-Sekai, GPT-4, 20230505-v-sekai-ai-completion
 
 ## Context and Problem Statement
 

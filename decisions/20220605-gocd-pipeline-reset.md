@@ -53,7 +53,11 @@ It is a few lines of script.
 
 It's our release process.
 
-### References
+### Tags
+
+- 20220605-gocd-pipeline-reset
+
+## References
 
 - [V-Sekai](https://v-sekai.org/)
 

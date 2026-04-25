@@ -35,7 +35,11 @@ Not trivial.
 
 We are doing this.
 
-### References
+### Tags
+
+- 20230123-ready-the-net-demo
+
+## References
 
 - [V-Sekai](https://v-sekai.org/)
 

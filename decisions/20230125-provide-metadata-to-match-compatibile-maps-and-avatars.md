@@ -4,7 +4,7 @@
 
 - Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,lyuma
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20230125-provide-metadata-to-match-compatibile-maps-and-avatars
 
 ### Context and Problem Statement
 

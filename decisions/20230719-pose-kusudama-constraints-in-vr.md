@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai
-- Tags: V-Sekai, VR, Game Development
+- Tags: V-Sekai, VR, Game Development, 20230719-pose-kusudama-constraints-in-vr
 
 ## Context and Problem Statement
 

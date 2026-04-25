@@ -38,6 +38,10 @@ In some cases, players may prefer a more straightforward gameplay experience and
 
 Yes, this feature is core to the V-Sekai experience and will be developed by our team.
 
+## Tags
+
+- 20231024-training-simulators
+
 ## Further Reading
 
 - [V-Sekai](https://github.com/v-sekai/)

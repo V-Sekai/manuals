@@ -69,7 +69,7 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240914-godot-engine-xr-elite-conference-setup
 
 ## Further Reading
 

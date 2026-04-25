@@ -82,7 +82,7 @@ Status: Draft
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240502-mesh-object-sync-benchmark
 
 ## Further Reading
 

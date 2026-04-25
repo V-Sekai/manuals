@@ -2,7 +2,7 @@
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,Mr. Metaverse,fire,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20211229-run-meetings-using-lean-coffee
 
 ## Context and Problem Statement
 

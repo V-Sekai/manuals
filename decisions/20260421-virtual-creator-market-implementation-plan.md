@@ -182,7 +182,7 @@ Status: In Progress
 
 ## Tags
 
-- VirtualCreatorMarket, ImplementationPlan, Aquarium, RiskSequencing, LoadTest, VR, AssetPipeline, Lean, BVH
+- VirtualCreatorMarket, ImplementationPlan, Aquarium, RiskSequencing, LoadTest, VR, AssetPipeline, Lean, BVH, 20260421-virtual-creator-market-implementation-plan
 
 ## Further Reading
 

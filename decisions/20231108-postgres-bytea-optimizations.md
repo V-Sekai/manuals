@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai, Fire
-- Tags: V-Sekai, PostgreSQL, Edge Hosting, CDN, `bytea`, TOAST, Optimization
+- Tags: V-Sekai, PostgreSQL, Edge Hosting, CDN, `bytea`, TOAST, Optimization, 20231108-postgres-bytea-optimizations
 
 ## The Backdrop
 

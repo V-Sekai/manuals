@@ -78,7 +78,7 @@ Status: Proposed
 
 ## Tags
 
-- WebSocket, WebTransport, TCP, Parity, Benchmark, CH_INTEREST, Snapshot, BackPressure, Desktop
+- WebSocket, WebTransport, TCP, Parity, Benchmark, CH_INTEREST, Snapshot, BackPressure, Desktop, 20260421-websocket-transport-parity
 
 ## Further Reading
 

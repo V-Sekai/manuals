@@ -4,7 +4,7 @@
 
 - Status: draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai, fire
-- Tags: V-Sekai, ChatGPT-4, Avatar Publishing, Workflow, Portability, VRM Format, Silent's Shader, Platform Compatibility, Sketchfab, Booth.pm
+- Tags: V-Sekai, ChatGPT-4, Avatar Publishing, Workflow, Portability, VRM Format, Silent's Shader, Platform Compatibility, Sketchfab, Booth.pm, 20230507-avatar-publishing-workflow-portability
 
 ## Context and Problem Statement
 

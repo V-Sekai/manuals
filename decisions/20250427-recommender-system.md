@@ -76,7 +76,7 @@ Status: Accepted ## Decision Makers
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20250427-recommender-system
 - Recommendation System
 - Architecture
 - Elixir

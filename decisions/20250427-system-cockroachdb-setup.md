@@ -137,7 +137,7 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Tags
 
-- CockroachDB, Database, Systemd, Linux, Security, Infrastructure, v22.1
+- CockroachDB, Database, Systemd, Linux, Security, Infrastructure, v22.1, 20250427-system-cockroachdb-setup
 
 ## Further Reading
 

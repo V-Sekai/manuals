@@ -39,6 +39,10 @@ Not a script.
 
 We use the groups branding.
 
+## Tags
+
+- 20211031-phase-out-groups-terminology-for-vskdefault
+
 ## References <!-- optional -->
 
 - [Link type](link to adr) <!-- example: Refined by [xxx](yyyymmdd-xxx.md) -->

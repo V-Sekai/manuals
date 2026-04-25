@@ -147,5 +147,5 @@ Status: Proposed
 
 ## Tags
 
-- sandbox, ReBAC, HAS_CAPABILITY, godot-sandbox, RISC-V, behavior, security,
+- sandbox, ReBAC, HAS_CAPABILITY, godot-sandbox, RISC-V, behavior, security,, 20260423-sandbox-rebac-behavior
   creator-code, jellyfish

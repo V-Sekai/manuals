@@ -54,6 +54,10 @@ Not trivial. The documentation of Notary start by the description of a possible 
 
 From a security standpoint, we need to ensure that there is a #trust between the software we send and the client supply chain to get it.
 
+## Tags
+
+- 20210523-distribute-trusted-clients-with-notary
+
 ## References <!-- optional -->
 
 - <https://github.com/kolide/updater>

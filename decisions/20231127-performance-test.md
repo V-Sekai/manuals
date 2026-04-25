@@ -4,7 +4,7 @@
 
 - Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 - Deciders: V-Sekai Team, Bioblaze Payne, fire
-- Tags: Networking, Performance, Godot Engine, V-Sekai, Test
+- Tags: Networking, Performance, Godot Engine, V-Sekai, Test, 20231127-performance-test
 
 ## The Backdrop
 

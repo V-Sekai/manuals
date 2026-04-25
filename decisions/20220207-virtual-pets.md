@@ -2,7 +2,7 @@
 
 - Status: accepted
 - Deciders: V-Sekai,ifire,Jeana,lyuma,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20220207-virtual-pets
 
 ## Context and Problem Statement
 

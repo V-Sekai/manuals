@@ -42,6 +42,10 @@ The proposed enhancements may not be necessary for simpler virtual environments.
 
 Yes, the proposed enhancements will be implemented by the V-Sekai development team.
 
+## Tags
+
+- 20231203-mesh-rwkv-test-metrics
+
 ## References
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine

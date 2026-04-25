@@ -2,7 +2,7 @@
 
 - Status: accepted
 - Deciders: V-Sekai,fire,lyuma,humbletim,codefloof,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20220202-gltf-extensions-for-interoperability
 
 ## Context and Problem Statement
 

@@ -49,7 +49,7 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240712-use-shrinkwrap-blender-modiifer-to-fit
 
 ## Further Reading
 

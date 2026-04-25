@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai, Fire
-- Tags: V-Sekai, Neon, Edge Hosting, Bottomless Storage, S3 Compatible, CDN, PostgreSQL, `bytea`
+- Tags: V-Sekai, Neon, Edge Hosting, Bottomless Storage, S3 Compatible, CDN, PostgreSQL, `bytea`, 20231108-neon-1-gb-scene-storage
 
 ## The Backdrop
 

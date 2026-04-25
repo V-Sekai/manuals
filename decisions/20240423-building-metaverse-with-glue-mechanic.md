@@ -49,7 +49,7 @@ Status: Accepted
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240423-building-metaverse-with-glue-mechanic
 
 ## Further Reading
 

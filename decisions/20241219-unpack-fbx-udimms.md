@@ -56,7 +56,7 @@ Status: Draft
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20241219-unpack-fbx-udimms
 - Godot Engine
 - UDIM
 - Texturing

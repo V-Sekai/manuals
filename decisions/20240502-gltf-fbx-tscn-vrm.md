@@ -58,7 +58,7 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240502-gltf-fbx-tscn-vrm
 
 ## Further Reading
 

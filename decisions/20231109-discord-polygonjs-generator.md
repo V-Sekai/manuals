@@ -4,7 +4,7 @@
 
 - Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 - Deciders: V-Sekai, fire
-- Tags: V-Sekai, Character Customization, Discord Bot, PoC
+- Tags: V-Sekai, Character Customization, Discord Bot, PoC, 20231109-discord-polygonjs-generator
 
 ## The Backdrop
 

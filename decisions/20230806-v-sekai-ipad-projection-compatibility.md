@@ -44,6 +44,10 @@ While Navmesh and 3D Navigation Points provide an intuitive user interface for n
 
 Yes, the decision to implement a virtual joystick for touchscreen devices was made by us, V-Sekai. This decision is at the core of our strategy to ensure compatibility with iPads and large projector screens while also being cost-effective.
 
+## Tags
+
+- 20230806-v-sekai-ipad-projection-compatibility
+
 ## Further Reading
 
 - [V-Sekai](https://v-sekai.org/)

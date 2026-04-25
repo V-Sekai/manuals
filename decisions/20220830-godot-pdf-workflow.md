@@ -35,7 +35,11 @@ A few lines of cli.
 
 Wanted to write the workflow down.
 
-### References
+### Tags
+
+- 20220830-godot-pdf-workflow
+
+## References
 
 - [V-Sekai](https://v-sekai.org/)
 

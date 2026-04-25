@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai
-- Tags: V-Sekai, second rank
+- Tags: V-Sekai, second rank, 20231225-mesh-transformer-clothing
 
 ## The Backdrop
 

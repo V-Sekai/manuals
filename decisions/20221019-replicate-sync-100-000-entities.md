@@ -2,7 +2,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai,fire,
-- Tags: V-Sekai,sync,view replication,
+- Tags: V-Sekai,sync,view replication,, 20221019-replicate-sync-100-000-entities
 
 ## Context and Problem Statement
 

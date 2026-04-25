@@ -109,7 +109,7 @@ Status: Obsolete — Kubernetes on Harvester HCI is obsolete; replaced by curren
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240330-k8s-harvester-hci
 
 ## Further Reading
 

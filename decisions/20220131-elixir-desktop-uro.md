@@ -2,7 +2,7 @@
 
 - Status: Draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20220131-elixir-desktop-uro
 
 ## Context and Problem Statement
 

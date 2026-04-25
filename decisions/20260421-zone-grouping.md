@@ -76,7 +76,7 @@ Status: Proposed
 
 ## Tags
 
-- Zone, Grouping, Tags, Discovery, Filter, Registration
+- Zone, Grouping, Tags, Discovery, Filter, Registration, 20260421-zone-grouping
 
 ## Further Reading
 

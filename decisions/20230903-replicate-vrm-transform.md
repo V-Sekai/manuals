@@ -4,7 +4,7 @@
 
 - Status: rejected
 - Deciders: V-Sekai, fire, antpb
-- Tags: V-Sekai
+- Tags: V-Sekai, 20230903-replicate-vrm-transform
 
 ## The Backdrop
 

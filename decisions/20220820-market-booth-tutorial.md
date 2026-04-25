@@ -46,7 +46,11 @@ Workflow enhancement.
 
 We are doing this, so we can record how we did it.
 
-### References
+### Tags
+
+- 20220820-market-booth-tutorial
+
+## References
 
 - [V-Sekai](https://v-sekai.org/)
 - <https://www.youtube.com/watch?v=LGZWjyeUPHU>

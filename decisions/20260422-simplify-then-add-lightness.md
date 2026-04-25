@@ -71,4 +71,4 @@ Status: Active
 
 ## Tags
 
-- Philosophy, Design, Simplicity, Lightness, Contributing, Heuristics
+- Philosophy, Design, Simplicity, Lightness, Contributing, Heuristics, 20260422-simplify-then-add-lightness

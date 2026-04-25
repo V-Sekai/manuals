@@ -161,4 +161,4 @@ Status: Accepted
 
 ## Tags
 
-- Zone, Handoff, STAGING, Hilbert, HLC, Hysteresis, Interest, FabricZone, Lean4, Formal
+- Zone, Handoff, STAGING, Hilbert, HLC, Hysteresis, Interest, FabricZone, Lean4, Formal, 20260421-zone-border-handoff

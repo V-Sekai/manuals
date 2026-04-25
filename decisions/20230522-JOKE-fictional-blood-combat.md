@@ -6,7 +6,7 @@ Propose a solution to enhance realism in enemy defeat simulations.
 
 - Status: rejected <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai
-- Tags: V-Sekai, GPT-4, joke,
+- Tags: V-Sekai, GPT-4, joke,, 20230522-JOKE-fictional-blood-combat
 
 ## Context and Problem Statement
 

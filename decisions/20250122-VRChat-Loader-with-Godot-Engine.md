@@ -51,3 +51,7 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 7. [V-Sekai-fire/godot-http-glb-host](https://github.com/V-Sekai-fire/godot-http-glb-host)
 
 AI assistant Aria assisted with this article.
+
+## Tags
+
+- 20250122-VRChat-Loader-with-Godot-Engine

@@ -86,7 +86,7 @@ Status: Proposed
 
 ## Tags
 
-- Zone, Asset, Manifest, Discovery, API, SharedFile
+- Zone, Asset, Manifest, Discovery, API, SharedFile, 20260421-zone-asset-manifest
 
 ## Further Reading
 

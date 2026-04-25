@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai
-- Tags: V-Sekai
+- Tags: V-Sekai, 20230726-solve-renik-directly-rather-than-many-bone-ik
 
 ## Context and Problem Statement
 

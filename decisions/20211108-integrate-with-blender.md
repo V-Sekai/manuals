@@ -2,7 +2,7 @@
 
 - Status: Draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20211108-integrate-with-blender
 
 ## Context and Problem Statement
 

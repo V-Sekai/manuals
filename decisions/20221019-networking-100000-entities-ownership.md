@@ -2,7 +2,7 @@
 
 - Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
-- Tags: V-Sekai, Networking
+- Tags: V-Sekai, Networking, 20221019-networking-100000-entities-ownership
 
 ## Context and Problem Statement
 

@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai Technical Team
-- Tags: Discord, Polling, Vercel, Serverless, PostgreSQL, Neon, Reactions, Community Engagement
+- Tags: Discord, Polling, Vercel, Serverless, PostgreSQL, Neon, Reactions, Community Engagement, 20231108-neon-vercel-functions-toy-problem
 
 ## The Backdrop
 

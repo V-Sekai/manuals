@@ -44,7 +44,7 @@ Status: Obsolete — GoCD agent Docker image update is obsolete; GoCD replaced b
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240622-gocd-agent-docker-image-update
 - Docker
 - GoCD Agent
 - Update

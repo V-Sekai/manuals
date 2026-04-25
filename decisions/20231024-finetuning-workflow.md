@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai, fire
-- Tags: V-Sekai, Model Fine-tuning, Axolotl
+- Tags: V-Sekai, Model Fine-tuning, Axolotl, 20231024-finetuning-workflow
 
 ## The Backdrop
 

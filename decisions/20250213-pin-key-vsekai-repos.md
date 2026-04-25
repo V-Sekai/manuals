@@ -67,7 +67,7 @@ Status: Active
 
 ## Tags
 
-- GitHub Management
+- GitHub Management, 20250213-pin-key-vsekai-repos
 - Immediate
 
 ## References

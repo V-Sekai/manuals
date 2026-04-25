@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai
-- Tags: V-Sekai, Slogan, Virtual Reality, VR
+- Tags: V-Sekai, Slogan, Virtual Reality, VR, 20231228-v-sekai-slogan
 
 ## The Backdrop
 

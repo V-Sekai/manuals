@@ -4,7 +4,7 @@
 
 - Status: superseded by `20230602-limited-tracker-placement.md` <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20230419-limited-tracker-placement
 
 ### Context and Problem Statement
 

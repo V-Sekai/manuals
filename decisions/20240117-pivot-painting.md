@@ -30,6 +30,10 @@ Adoption of new tools comes with a learning curve that might slow down initial p
 
 We need to assess whether in-house tool development justifies the required investment based on our pipeline needs.
 
+## Tags
+
+- 20240117-pivot-painting
+
 ## Further Reading
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai)

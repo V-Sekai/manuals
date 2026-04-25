@@ -75,7 +75,11 @@ Maybe too complicated for the developers.
 
 We are investigating how to implement the Soiree Party mode.
 
-### References
+### Tags
+
+- 20210811-soiree-party
+
+## References
 
 - <https://www.cockroachlabs.com/>
 - <https://github.com/V-Sekai/uro>

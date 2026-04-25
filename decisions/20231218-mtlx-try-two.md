@@ -38,6 +38,10 @@ An alternative could be focusing on MaterialX's functionality with OpenGL before
 
 This core proposal will be executed by the V-Sekai team.
 
+## Tags
+
+- 20231218-mtlx-try-two
+
 ## Further Reading
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine

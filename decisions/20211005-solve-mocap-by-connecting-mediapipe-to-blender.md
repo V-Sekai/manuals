@@ -31,6 +31,10 @@ ML and armature work is hard
 
 [Is there a reason why this should be core and done by us?]
 
+## Tags
+
+- 20211005-solve-mocap-by-connecting-mediapipe-to-blender
+
 ## References <!-- optional -->
 
 From Kendrick

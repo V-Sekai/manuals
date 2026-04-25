@@ -34,6 +34,10 @@ _No response_
 
 I don't know and it's in my area so I need to know.
 
+## Tags
+
+- 20211005-create-add-spring-bones-to-vrm-models
+
 ## References
 
 1. Lyuma has an upside down spring bone arrangement to avoid flipping.

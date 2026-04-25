@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai
-- Tags: V-Sekai
+- Tags: V-Sekai, 20230830-better-object-pick
 
 ## Introduction
 

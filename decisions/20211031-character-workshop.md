@@ -28,7 +28,11 @@ _No response_
 
 I can do this!
 
-### References
+### Tags
+
+- 20211031-character-workshop
+
+## References
 
 _No response_
 

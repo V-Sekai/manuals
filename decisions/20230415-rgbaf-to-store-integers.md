@@ -4,7 +4,7 @@
 
 - Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20230415-rgbaf-to-store-integers
 
 ### Context and Problem Statement
 

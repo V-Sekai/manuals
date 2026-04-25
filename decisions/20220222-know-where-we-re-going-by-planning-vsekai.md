@@ -2,7 +2,7 @@
 
 - Status: superseded <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,ifire,lyuma,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20220222-know-where-we-re-going-by-planning-vsekai
 
 ## Context and Problem Statement
 

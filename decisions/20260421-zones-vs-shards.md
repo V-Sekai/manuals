@@ -58,7 +58,7 @@ Status: Accepted
 
 ## Tags
 
-- Zones, Shards, Hilbert, Morton, AOI, SpatialIndex, Partitioning, Locality
+- Zones, Shards, Hilbert, Morton, AOI, SpatialIndex, Partitioning, Locality, 20260421-zones-vs-shards
 
 ## Further Reading
 

@@ -100,6 +100,10 @@ In cases where the number of users is low and real-time updates are not critical
 
 Yes, the rewriting of the code will indeed be done by us as we also maintain the backend services.
 
+## Tags
+
+- 20230813-blender-runner-into-membrane-framework
+
 ## Further Reading
 
 - [V-Sekai](https://v-sekai.org/)

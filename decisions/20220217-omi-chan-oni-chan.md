@@ -2,7 +2,7 @@
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,jeana,fire,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20220217-omi-chan-oni-chan
 
 ## Context and Problem Statement
 

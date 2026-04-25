@@ -51,3 +51,7 @@ V-Sekai
 3. [CESIUM Primitive Outline](https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Vendor/CESIUM_primitive_outline/README.md) - Describes the CESIUM Primitive Outline extension for rendering triangle edges with high-quality, anti-aliased lines.
 
 AI assistant Aria assisted with this article.
+
+## Tags
+
+- 20250126-primitive-outline

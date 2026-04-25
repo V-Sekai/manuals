@@ -55,7 +55,7 @@ Status: Draft
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240613-training-dataset-creation-with-csg
 
 ## Further Reading
 

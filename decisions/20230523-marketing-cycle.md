@@ -4,7 +4,7 @@
 
 - Status: draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai
-- Tags: V-Sekai, GPT-4
+- Tags: V-Sekai, GPT-4, 20230523-marketing-cycle
 
 ## Context and Problem Statement
 

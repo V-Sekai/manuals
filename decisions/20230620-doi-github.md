@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai, fire
-- Tags: V-Sekai, AI-augmented
+- Tags: V-Sekai, AI-augmented, 20230620-doi-github
 
 ## Context and Problem Statement
 

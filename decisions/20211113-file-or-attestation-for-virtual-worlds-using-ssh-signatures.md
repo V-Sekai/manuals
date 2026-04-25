@@ -2,7 +2,7 @@
 
 - Status: rejected <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20211113-file-or-attestation-for-virtual-worlds-using-ssh-signatures
 
 ## Context and Problem Statement
 

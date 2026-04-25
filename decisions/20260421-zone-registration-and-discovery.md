@@ -54,7 +54,7 @@ Status: Accepted
 
 ## Tags
 
-- Zone, Registration, Discovery, Heartbeat, Janitor, WebSocket, CertPin
+- Zone, Registration, Discovery, Heartbeat, Janitor, WebSocket, CertPin, 20260421-zone-registration-and-discovery
 
 ## Further Reading
 

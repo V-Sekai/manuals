@@ -45,6 +45,10 @@ Yes, it is possible to script querying the itch.io or Uro shards API. This propo
 
 We need this to grow the community.
 
+## Tags
+
+- 20240522-discord-bot
+
 ## Derivative License
 
 Copyright (c) 2020-2021 V-Sekai contributors.

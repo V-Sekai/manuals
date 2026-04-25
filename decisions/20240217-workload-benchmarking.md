@@ -67,7 +67,7 @@ Status: Rejected
 
 ## Tags
 
-- V-Sekai, Performance Benchmarking, Database Optimization
+- V-Sekai, Performance Benchmarking, Database Optimization, 20240217-workload-benchmarking
 
 ## Further Reading
 

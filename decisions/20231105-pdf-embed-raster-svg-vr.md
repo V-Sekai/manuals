@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai
-- Tags: V-Sekai
+- Tags: V-Sekai, 20231105-pdf-embed-raster-svg-vr
 
 ## The Backdrop
 

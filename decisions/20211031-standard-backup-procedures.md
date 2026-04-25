@@ -46,7 +46,11 @@ Not able to.
 
 Only we have access to a complete copy of the repo.
 
-### References
+### Tags
+
+- 20211031-standard-backup-procedures
+
+## References
 
 - <https://github.com/josegonzalez/python-github-backup>
 - <https://github.com/muhasturk/gitim>

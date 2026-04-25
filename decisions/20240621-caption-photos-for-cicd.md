@@ -66,7 +66,7 @@ Status: Draft
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240621-caption-photos-for-cicd
 
 ## Further Reading
 

@@ -197,7 +197,7 @@ Status: Accepted
 
 ## Tags
 
-- RECTGTN, HTN, Planning, taskweft, Jellyfish, ZoneServer, C++, Behavior, Swarm, Incremental Replan
+- RECTGTN, HTN, Planning, taskweft, Jellyfish, ZoneServer, C++, Behavior, Swarm, Incremental Replan, 20260421-rectgtn-jellyfish-behavior
 
 ## Further Reading
 

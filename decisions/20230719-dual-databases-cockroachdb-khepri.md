@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai
-- Tags: V-Sekai, Godot Engine, khepri, elixir
+- Tags: V-Sekai, Godot Engine, khepri, elixir, 20230719-dual-databases-cockroachdb-khepri
 
 ## Context and Problem Statement
 

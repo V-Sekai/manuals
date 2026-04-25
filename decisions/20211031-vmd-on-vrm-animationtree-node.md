@@ -36,7 +36,11 @@ _No response_
 
 We currently know how to do this, if we don't who else will?
 
-### References
+### Tags
+
+- 20211031-vmd-on-vrm-animationtree-node
+
+## References
 
 - <https://github.com/EIRTeam/VMDMotionGD>
 - <https://github.com/V-Sekai/godot-vrm>

@@ -4,7 +4,7 @@
 
 - Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai
-- Tags: V-Sekai, GPT-4
+- Tags: V-Sekai, GPT-4, 20230519-add-vrm-omi-personality-gltf-extension
 
 ## Context and Problem Statement
 

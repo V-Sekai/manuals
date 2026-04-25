@@ -32,6 +32,10 @@ Add basis universal to Godot Engine via glTF
 - Good, because it bridges Web, Desktop and Mobile
 - Bad, because makes importing slower
 
+## Tags
+
+- 20210523-basis-universal-import
+
 ## References <!-- optional -->
 
 - <https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_texture_basisu/README.md>

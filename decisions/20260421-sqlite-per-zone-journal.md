@@ -88,7 +88,7 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Tags
 
-- Crash-Recovery, SQLite, WAL, Journal, FabricZone, Entity, Persistence
+- Crash-Recovery, SQLite, WAL, Journal, FabricZone, Entity, Persistence, 20260421-sqlite-per-zone-journal
 
 ## Further Reading
 

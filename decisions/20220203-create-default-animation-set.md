@@ -2,7 +2,7 @@
 
 - Status: draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,tokage,fire,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20220203-create-default-animation-set
 
 ## Context and Problem Statement
 

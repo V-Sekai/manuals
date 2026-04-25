@@ -2,7 +2,7 @@
 
 - Status: accepted
 - Deciders: V-Sekai, fire
-- Tags: V-Sekai, process
+- Tags: V-Sekai, process, 20260425-cris-scoring-for-godot-engine-code-inclusion
 
 ## Context and Problem Statement
 

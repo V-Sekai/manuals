@@ -39,6 +39,10 @@ Kubernetes is a massive project.
 
 This is an attempt to use off the shelf tooling.
 
+## Tags
+
+- 20210528-trial-install-of-gravity-for-kubernetes
+
 ## References <!-- optional -->
 
 - <https://gravitational.com/>

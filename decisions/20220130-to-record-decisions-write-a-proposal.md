@@ -2,7 +2,7 @@
 
 - Status: accepted
 - Deciders: V-Sekai,ifire,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20220130-to-record-decisions-write-a-proposal
 
 ## Context and Problem Statement
 
@@ -19,7 +19,7 @@ Use the decision record format.
 
 - Status: Draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20220130-to-record-decisions-write-a-proposal
 
 ## Context and Problem Statement
 

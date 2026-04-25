@@ -198,3 +198,7 @@ We heard about it from Hacker News: <https://news.ycombinator.com/item?id=231941
 Anything else we should know?
 
 Aside from being passionate in the VR space, we are all committed to open source/decentralization, and we strive to bring value to the internet community as a whole.
+
+## Tags
+
+- 20200608-vsekai-charter

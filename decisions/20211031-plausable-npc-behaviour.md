@@ -28,7 +28,11 @@ _No response_
 
 I have an approach!
 
-### References
+### Tags
+
+- 20211031-plausable-npc-behaviour
+
+## References
 
 _No response_
 

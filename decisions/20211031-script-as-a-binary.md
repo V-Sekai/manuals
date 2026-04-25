@@ -31,7 +31,11 @@ _No response_
 
 We know how this works.
 
-### References
+### Tags
+
+- 20211031-script-as-a-binary
+
+## References
 
 _No response_
 

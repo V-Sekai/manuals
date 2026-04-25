@@ -76,3 +76,7 @@ Status: Proposed
 3. [V-Sekai GitHub](https://github.com/v-sekai)
 
 AI assistant Aria assisted in structuring this proposal based on community discussions.
+
+## Tags
+
+- 20250211-using-8-uv-channels-for-custom-vertex-data

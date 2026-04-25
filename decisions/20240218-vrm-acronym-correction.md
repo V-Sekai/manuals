@@ -39,7 +39,7 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Tags
 
-- V-Sekai, Avatar Customization, AI, Facial Expressions
+- V-Sekai, Avatar Customization, AI, Facial Expressions, 20240218-vrm-acronym-correction
 
 ## Further Reading
 

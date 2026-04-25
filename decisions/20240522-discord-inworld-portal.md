@@ -28,6 +28,10 @@ Players can stream using OBS or discord screen sharing, but this requires player
 
 It should be a standalone project based on Groups, but not core. The WebRTC dependency, if needed, would make integration difficult.
 
+## Tags
+
+- 20240522-discord-inworld-portal
+
 ## References <!-- optional -->
 
 - <https://discord.com/>

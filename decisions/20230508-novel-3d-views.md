@@ -4,7 +4,7 @@
 
 - Status: draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai, fire,
-- Tags: V-Sekai, ChatGPT-4
+- Tags: V-Sekai, ChatGPT-4, 20230508-novel-3d-views
 
 ## Context and Problem Statement
 

@@ -4,7 +4,7 @@
 
 - Status: draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai, fire, lyuma, ashtonmeuser
-- Tags: V-Sekai, ChatGPT-4
+- Tags: V-Sekai, ChatGPT-4, 20230509-wasm-data-exchange
 
 ## Context and Problem Statement
 

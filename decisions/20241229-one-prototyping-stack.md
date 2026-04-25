@@ -158,3 +158,7 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 5. [BenBot](https://github.com/benbot) - GitHub profile of BenBot, a contributor to the V-Sekai project.
 
 AI assistant Aria assisted with this article.
+
+## Tags
+
+- 20241229-one-prototyping-stack

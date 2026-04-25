@@ -192,7 +192,7 @@ Updating the V-Sekai charter is core to our mission because:
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20241210-vsekai-charter
 
 ## Further Reading
 

@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai
-- Tags: V-Sekai, GPT-4
+- Tags: V-Sekai, GPT-4, 20230527-server-cdn-session-url
 
 ## Context and Problem Statement
 

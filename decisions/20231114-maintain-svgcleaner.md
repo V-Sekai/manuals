@@ -38,6 +38,10 @@ While primarily aimed at VR book reading, this optimization could benefit other 
 
 The task involves integrating an external tool (`svgcleaner`) into the core V-Sekai development process, possibly requiring custom adaptation for the specific VR context.
 
+## Tags
+
+- 20231114-maintain-svgcleaner
+
 ## Further Reading
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.

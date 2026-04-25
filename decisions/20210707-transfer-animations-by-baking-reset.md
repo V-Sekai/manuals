@@ -52,6 +52,10 @@ This is a confusing problem and hard to explain. So the code to solve it is non-
 
 Animation are a core feature of Godot Engine.
 
+## Tags
+
+- 20210707-transfer-animations-by-baking-reset
+
 ## References <!-- optional -->
 
 - Bone roll parent to child baking. <https://github.com/V-Sekai/godot/commit/99a9f79e25f7760cb5a0990e67545d78e9dd0423>

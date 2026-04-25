@@ -2,7 +2,7 @@
 
 - Status: draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,Fire,Groak,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20221022-have-larger-worlds-by-server-state-migration
 
 ## Context and Problem Statement
 

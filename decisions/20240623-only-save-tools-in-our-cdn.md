@@ -42,7 +42,7 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240623-only-save-tools-in-our-cdn
 
 ## Further Reading
 

@@ -57,7 +57,7 @@ Status: Draft
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240326-verifying-and-finetuning-plans
 
 ## Further Reading
 

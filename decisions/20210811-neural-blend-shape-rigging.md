@@ -75,7 +75,11 @@ No finger support yet.
 
 Mixamo is a black box and V-Sekai would be more robust to have an alternative.
 
-### References
+### Tags
+
+- 20210811-neural-blend-shape-rigging
+
+## References
 
 - <https://github.com/PeizhuoLi/neural-blend-shapes>
 - Skeleton <https://github.com/Xananax/ALPAPATAM>

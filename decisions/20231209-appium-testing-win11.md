@@ -77,6 +77,10 @@ Our strategy might not cover infrequent or edge cases in game development. Howev
 
 Yes, this strategy is core to our project and will be implemented by our team.
 
+## Tags
+
+- 20231209-appium-testing-win11
+
 ## References
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine

@@ -2,7 +2,7 @@
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,em-yu
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20211105-take-a-list-of-3d-points-to-triangulate-in-godot-engine
 
 ## Context and Problem Statement
 

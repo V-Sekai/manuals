@@ -2,7 +2,7 @@
 
 - Status: Draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20220108-bake-blend-shapes-to-skeletons-for-performance
 
 ## Context and Problem Statement
 

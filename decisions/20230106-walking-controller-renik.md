@@ -2,7 +2,7 @@
 
 - Status: accepted <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,lyuma,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20230106-walking-controller-renik
 
 ## Context and Problem Statement
 

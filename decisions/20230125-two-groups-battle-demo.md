@@ -4,7 +4,7 @@
 
 - Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20230125-two-groups-battle-demo
 
 ### Context and Problem Statement
 

@@ -56,7 +56,7 @@ Status: Accepted
 
 ## Tags
 
-- casync, desync, Asset, Delivery, ChunkServer, S3, CAIBX, Zone
+- casync, desync, Asset, Delivery, ChunkServer, S3, CAIBX, Zone, 20260421-content-addressed-asset-delivery
 
 ## Further Reading
 

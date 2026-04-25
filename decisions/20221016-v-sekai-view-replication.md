@@ -2,7 +2,7 @@
 
 - Status: rejected
 - Deciders: V-Sekai,fire,
-- Tags: V-Sekai,sync,view replication,
+- Tags: V-Sekai,sync,view replication,, 20221016-v-sekai-view-replication
 
 ## Context and Problem Statement
 

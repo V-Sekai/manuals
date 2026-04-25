@@ -30,7 +30,11 @@ _No response_
 
 I have the idea.
 
-### References
+### Tags
+
+- 20211031-use-bpr-to-rank-skeleton-bone-names
+
+## References
 
 _No response_
 

@@ -50,3 +50,7 @@ Status: Proposed
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
 
 AI assistant Aria assisted with this article.
+
+## Tags
+
+- 20241220-discord-quest-3

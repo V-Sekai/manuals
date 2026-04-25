@@ -2,7 +2,7 @@
 
 - Status: Draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20220215-uro-deployment-process
 
 ## Context and Problem Statement
 

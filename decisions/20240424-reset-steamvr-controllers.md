@@ -43,7 +43,7 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240424-reset-steamvr-controllers
 
 ## Further Reading
 

@@ -66,7 +66,11 @@ from what I can understand, "2" is what Tokage is proposing. I don't see many ot
 
 - This should be a core feature of Godot Engine.
 
-### References
+### Tags
+
+- 20220318-merge-retargeting-pr
+
+## References
 
 - [V-Sekai](https://v-sekai.org/)
 - `https://github.com/godotengine/godot/pull/56902`

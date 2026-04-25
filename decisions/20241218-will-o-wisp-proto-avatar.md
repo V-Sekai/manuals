@@ -63,7 +63,7 @@ Status: Draft
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20241218-will-o-wisp-proto-avatar
 - Onboarding
 - Avatar
 

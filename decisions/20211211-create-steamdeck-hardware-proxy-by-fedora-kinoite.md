@@ -2,7 +2,7 @@
 
 - Status: rejected <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20211211-create-steamdeck-hardware-proxy-by-fedora-kinoite
 
 ## Context and Problem Statement
 

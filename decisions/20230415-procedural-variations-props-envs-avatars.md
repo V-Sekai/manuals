@@ -4,7 +4,7 @@
 
 - Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
-- Tags: V-Sekai,chatgp4,
+- Tags: V-Sekai,chatgp4,, 20230415-procedural-variations-props-envs-avatars
 
 ### Context and Problem Statement
 

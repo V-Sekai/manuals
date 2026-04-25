@@ -49,3 +49,7 @@ For more insights on this topic, consider the following resources:
 - [GDC 2018 Video: A Fun Time in Which Some No-Good Game Developers May Discuss How We Made 'NieR:Automata'](https://www.youtube.com/watch?v=jKbH9i5axxU)
 
 _This article was assisted by AI._
+
+## Tags
+
+- 20231108-nier-automata-world-expansion

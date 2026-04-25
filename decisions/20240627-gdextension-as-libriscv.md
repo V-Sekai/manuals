@@ -72,7 +72,7 @@ Status: Superseded by [Build a tiny RISC virtual machine which can interpret and
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240627-gdextension-as-libriscv
 
 ## Further Reading
 

@@ -4,7 +4,7 @@
 
 - Status: rejected
 - Deciders: V-Sekai, fire
-- Tags: V-Sekai, llm summarization
+- Tags: V-Sekai, llm summarization, 20230619-move-cockroachdb-to-yugabyte
 
 ## Context and Problem Statement
 

@@ -41,6 +41,10 @@ Another infrequent use case could be only flat desktop.
 
 I have access to equipment and it's not easy to get access. This means that the implementation and testing of this proposal will be done by us.
 
+## Tags
+
+- 20231230-spatiallabs-openvr
+
 ## Further Reading
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.

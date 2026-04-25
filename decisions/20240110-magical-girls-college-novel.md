@@ -100,6 +100,10 @@ Addressing infrequent use cases can add layers of complexity and engagement for 
 
 The V-Sekai team will decide core features and their implementation internally.
 
+## Tags
+
+- 20240110-magical-girls-college-novel
+
 ## Further Reading
 
 1. [V-Sekai GitHub Account](https://github.com/v-sekai)

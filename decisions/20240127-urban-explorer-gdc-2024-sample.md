@@ -38,6 +38,10 @@ While the primary use case is for the Game Developer Conference demo, the develo
 
 Yes, this project is core to our mission of showcasing the capabilities of the Godot Engine and can be done by our team.
 
+## Tags
+
+- 20240127-urban-explorer-gdc-2024-sample
+
 ## Further Reading
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - This is the official GitHub account for the V-Sekai development community which focuses on social VR functionality for the Godot Engine.

@@ -68,6 +68,10 @@ This question will be addressed during the implementation phase for each feature
 
 As these features form the core functionality of the V-Sekai platform, they should be developed by our team to ensure quality and consistency.
 
+## Tags
+
+- 20230701-vsekai-broken-down-goals
+
 ## References
 
 - [V-Sekai](https://v-sekai.org/)

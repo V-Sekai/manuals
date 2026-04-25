@@ -2,7 +2,7 @@
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20211112-degrade-v-sekais-networking-model-to-work-in-2d-and-with-webrtc
 
 ## Context and Problem Statement
 

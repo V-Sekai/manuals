@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai, Bioblaze Payne, fire
-- Tags: V-Sekai, GPT-4
+- Tags: V-Sekai, GPT-4, 20230527-server-side-content-validation
 
 ## Context and Problem Statement
 

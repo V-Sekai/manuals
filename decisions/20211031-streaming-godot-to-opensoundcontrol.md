@@ -31,7 +31,11 @@ _No response_
 
 It's rare to know how to dothis.
 
-### References
+### Tags
+
+- 20211031-streaming-godot-to-opensoundcontrol
+
+## References
 
 - to node js <https://github.com/colinbdclark/osc.js> js
 - <https://github.com/infosia/vmc2bvh>

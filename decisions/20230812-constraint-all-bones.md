@@ -38,6 +38,10 @@ In some rare cases, the lack of constraints might actually be beneficial, allowi
 
 Yes, this change would be implemented in the core system by the V-Sekai team.
 
+## Tags
+
+- 20230812-constraint-all-bones
+
 ## Further Reading
 
 - [V-Sekai](https://v-sekai.org/)

@@ -93,6 +93,10 @@ Motion retargeting is not trivial offline or online.
 
 We need motions for our character controller without using an off-the-shelf black box solution.
 
+## Tags
+
+- 20210523-retarget-motion-for-vrm-type-models
+
 ## References <!-- optional -->
 
 - <https://www.blender.org/>

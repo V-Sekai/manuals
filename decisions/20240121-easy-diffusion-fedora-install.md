@@ -115,6 +115,10 @@ journalctl -u easy-diffusion.service
 - Systemd is not universally adopted among all Linux distributions.
 - Additional effort is needed to maintain the service file and update paths as necessary when new versions are released.
 
+## Tags
+
+- 20240121-easy-diffusion-fedora-install
+
 ## Further Reading
 
 1. [**Download** for Linux](https://github.com/cmdr2/stable-diffusion-ui/releases/latest/download/Easy-Diffusion-Linux.zip): Official source code and documentation.

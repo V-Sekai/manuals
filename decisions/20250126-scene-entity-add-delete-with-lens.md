@@ -155,3 +155,7 @@ AI assistant Aria assisted with this article.
 - **Finger Gestures**:
   - **Swipe Up/Down**: Rotates entities.
   - **Pinch Open/Close**: Scales entities.
+
+## Tags
+
+- 20250126-scene-entity-add-delete-with-lens

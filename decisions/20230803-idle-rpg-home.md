@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai
-- Tags: V-Sekai
+- Tags: V-Sekai, 20230803-idle-rpg-home
 
 ## Context and Problem Statement
 

@@ -2,7 +2,7 @@
 
 - Status: draft
 - Deciders: V-Sekai, Malek, Lyuma, SaracenOne, Fire,
-- Tags: Networking,
+- Tags: Networking,, 20221014-networking-overhaul-proposal
 
 ## Context and Problem Statement
 

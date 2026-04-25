@@ -28,7 +28,11 @@ _No response_
 
 This a guide.
 
-### References
+### Tags
+
+- 20211005-use-kvm-to-test-our-amd-apu-test-computer-via-barrier
+
+## References
 
 - <https://github.com/debauchee/barrier>
 

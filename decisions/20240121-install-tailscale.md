@@ -61,6 +61,10 @@ This solution is particularly useful for remote teams who need to access shared 
 
 In-house development of a similar solution would require significant resources and expertise in networking and security. It is more cost-effective and efficient to use an existing solution like Tailscale.
 
+## Tags
+
+- 20240121-install-tailscale
+
 ## References
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.

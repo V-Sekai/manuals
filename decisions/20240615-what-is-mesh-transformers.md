@@ -46,7 +46,7 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240615-what-is-mesh-transformers
 
 ## Further Reading
 

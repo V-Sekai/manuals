@@ -155,6 +155,10 @@ A networking system is not a few lines of code.
 
 Yes, this is the foundation of the protocol and the basic set of nodes and behavior upon which content will be created.
 
+## Tags
+
+- 20200729-entity-networking
+
 ## References <!-- optional -->
 
 Aldridge, David. "I Shot You First: networking the Gameplay of Halo: Reach". GDC 2011. <https://www.youtube.com/watch?v=h47zZrqjgLc>

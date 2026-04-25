@@ -4,7 +4,7 @@
 
 - Status: rejected <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
-- Tags: V-Sekai,ChatGPT-4,AI_assistance
+- Tags: V-Sekai,ChatGPT-4,AI_assistance, 20230516-additional-3d-import
 
 ## Propose a possible solution to solve a V-Sekai limitation. If this doesn't look right, choose a different type
 
@@ -16,7 +16,7 @@ Improve the 3D import functionality in Godot Engine for V-Sekai by enhancing the
 
 - Status: Draft
 - Deciders: V-Sekai
-- Tags: V-Sekai, GPT-4
+- Tags: V-Sekai, GPT-4, 20230516-additional-3d-import
 
 ## Context and Problem Statement
 

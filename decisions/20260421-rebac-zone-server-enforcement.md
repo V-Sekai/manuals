@@ -84,7 +84,7 @@ Status: Proposed
 
 ## Tags
 
-- ReBAC, Enforcement, ZoneServer, C++, CAN_ENTER, CAN_INSTANCE, taskweft, PermissionsCache
+- ReBAC, Enforcement, ZoneServer, C++, CAN_ENTER, CAN_INSTANCE, taskweft, PermissionsCache, 20260421-rebac-zone-server-enforcement
 
 ## Further Reading
 

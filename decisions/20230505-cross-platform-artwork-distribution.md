@@ -4,7 +4,7 @@
 
 - Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai, fire
-- Tags: V-Sekai, ChatGPT-4
+- Tags: V-Sekai, ChatGPT-4, 20230505-cross-platform-artwork-distribution
 
 ## Context and Problem Statement
 

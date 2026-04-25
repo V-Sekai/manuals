@@ -28,7 +28,11 @@ May be able to be done by others.
 
 - Might be an extension
 
-### References
+### Tags
+
+- 20210811-disconnected-ipfs
+
+## References
 
 - <https://github.com/skogard/nebulus>
 

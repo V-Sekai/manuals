@@ -2,7 +2,7 @@
 
 - Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20221214-powershell-autocomplete-use-right-arrow
 
 ## Context and Problem Statement
 

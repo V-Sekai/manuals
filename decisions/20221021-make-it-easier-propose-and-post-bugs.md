@@ -2,7 +2,7 @@
 
 - Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,lyuma
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20221021-make-it-easier-propose-and-post-bugs
 
 ## Context and Problem Statement
 

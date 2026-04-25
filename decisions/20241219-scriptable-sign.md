@@ -62,7 +62,7 @@ Status: Draft
 
 ## Tags
 
-- V-Sekai, Communication, User-Generated Content, Social Interaction, Signs, Godot, Scripting
+- V-Sekai, Communication, User-Generated Content, Social Interaction, Signs, Godot, Scripting, 20241219-scriptable-sign
 
 ## Further Reading
 

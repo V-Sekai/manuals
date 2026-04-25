@@ -52,7 +52,7 @@ Status: Draft
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240618-4-player-test-vsekai
 
 ## Further Reading
 

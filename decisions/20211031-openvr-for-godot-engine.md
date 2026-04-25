@@ -31,7 +31,11 @@ _No response_
 
 This is core.
 
-### References
+### Tags
+
+- 20211031-openvr-for-godot-engine
+
+## References
 
 _No response_
 

@@ -108,5 +108,5 @@ Status: Accepted
 
 ## Tags
 
-- WebTransport, web-client, Emscripten, wasm32, threads, proxy-sync,
+- WebTransport, web-client, Emscripten, wasm32, threads, proxy-sync,, 20260425-godot-web-client-webtransport
   Godot, GDScript, datagram, e2e

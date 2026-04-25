@@ -47,7 +47,7 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240810-steamvr-dongles-separate
 
 ## Further Reading
 

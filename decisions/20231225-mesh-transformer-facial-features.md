@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai
-- Tags: V-Sekai, first rank
+- Tags: V-Sekai, first rank, 20231225-mesh-transformer-facial-features
 
 ## The Backdrop
 

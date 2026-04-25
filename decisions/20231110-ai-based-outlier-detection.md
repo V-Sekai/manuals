@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai
-- Tags: V-Sekai, AI, Game Development, Outlier Detection
+- Tags: V-Sekai, AI, Game Development, Outlier Detection, 20231110-ai-based-outlier-detection
 
 ## The Backdrop
 

@@ -41,6 +41,10 @@
 
 [Is there a reason why this should be core and done by us?]
 
+## Tags
+
+- 20211031-create-a-demo-viewer-gallery
+
 ## References <!-- optional -->
 
 - [Link type](link to adr) <!-- example: Refined by [xxx](yyyymmdd-xxx.md) -->

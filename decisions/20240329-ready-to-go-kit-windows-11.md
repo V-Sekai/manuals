@@ -49,7 +49,7 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240329-ready-to-go-kit-windows-11
 
 ## Further Reading
 

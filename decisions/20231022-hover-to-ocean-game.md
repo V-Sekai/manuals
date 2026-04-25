@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai, fire, cyberpunkmermaid
-- Tags: V-Sekai
+- Tags: V-Sekai, 20231022-hover-to-ocean-game
 
 ## The Backdrop
 

@@ -34,7 +34,11 @@ This is more of a user experience thing.
 
 We are driving this.
 
-### References
+### Tags
+
+- 20230415-load-collaborate
+
+## References
 
 - [V-Sekai](https://v-sekai.org/)
 

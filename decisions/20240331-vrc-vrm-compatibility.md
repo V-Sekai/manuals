@@ -108,7 +108,7 @@ Status: Active <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supers
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240331-vrc-vrm-compatibility
 
 ## Further Reading
 

@@ -42,7 +42,13 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Tags
 
-- [Relevant tags]
+- [relevant-tag-1], [relevant-tag-2], YYYY-MM-DD-this-filename-without-extension
+
+<!-- Always include the filename (without .md) as the last tag.
+     This makes the document findable by filename from any grep or
+     code-search tool, the same way Godot Engine source files are
+     cross-referenced by their basename. Example:
+     - V-Sekai, process, 20260425-cris-scoring-for-development-work -->
 
 ## Further Reading
 

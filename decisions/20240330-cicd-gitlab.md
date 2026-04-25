@@ -63,7 +63,7 @@ Status: Obsolete — GitLab CI/CD not in current GitHub Actions-based CI/CD appr
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240330-cicd-gitlab
 
 ## Further Reading
 

@@ -40,7 +40,11 @@ _No response_
 
 I found an approach and it can be done.
 
-### References
+### Tags
+
+- 20211031-bake-a-materialx-into-a-custom-godot-standardmaterial3d
+
+## References
 
 - <https://github.com/fire/MaterialX/tree/gltf>
 - <https://godotengine.org/showcase/material-maker>

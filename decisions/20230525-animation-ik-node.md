@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai, fire,
-- Tags: V-Sekai, GPT-4
+- Tags: V-Sekai, GPT-4, 20230525-animation-ik-node
 
 ## Project
 

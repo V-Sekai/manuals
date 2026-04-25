@@ -2,7 +2,7 @@
 
 - Status: accepted <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,lyuma,fire,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20221206-export-godot-vrm-to-the-asset-library
 
 ## Context and Problem Statement
 

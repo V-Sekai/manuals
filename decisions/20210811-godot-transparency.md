@@ -38,7 +38,11 @@ Code complexity.
 
 Reduz isn't interested in OIT.
 
-### References
+### Tags
+
+- 20210811-godot-transparency
+
+## References
 
 - <https://raw.githubusercontent.com/GPUOpen-Effects/TressFX/master/doc/TressFX4xDeveloperGuide.pdf>
 - <https://github.com/GPUOpen-Effects/TressFX/blob/master/src/Shaders/TressFXPPLL.hlsl>

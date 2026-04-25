@@ -65,7 +65,7 @@ Status: Draft
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240411-elixir-libgodot-bundlex
 
 ## Further Reading
 

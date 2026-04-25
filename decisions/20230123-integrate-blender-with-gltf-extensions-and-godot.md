@@ -34,7 +34,11 @@ This is probably a folder of python scripts.
 
 We manage the Godot Engine import experience.
 
-### References
+### Tags
+
+- 20230123-integrate-blender-with-gltf-extensions-and-godot
+
+## References
 
 - [V-Sekai](https://v-sekai.org/)
 

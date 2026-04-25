@@ -52,7 +52,7 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240623-what-is-uro-backend
 - Uro Backend
 - Game Architecture
 - Open-source Project

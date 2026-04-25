@@ -43,7 +43,11 @@ _No response_
 
 We are the best to know what changed.
 
-### References
+### Tags
+
+- 20211031-keep-a-changelog
+
+## References
 
 - <https://keepachangelog.com/en/1.0.0/>
 

@@ -70,7 +70,7 @@ Status: Accepted
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240511-wasm-cache-incident
 
 ## Further Reading
 

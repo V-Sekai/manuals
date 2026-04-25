@@ -107,7 +107,7 @@ Status: In Progress
 
 ## Tags
 
-- Aquarium, PoC, UGC, Jellyfish, VR, Demo, Product, CreatorMarket
+- Aquarium, PoC, UGC, Jellyfish, VR, Demo, Product, CreatorMarket, 20260421-infinite-aquarium-concept
 
 ## Further Reading
 

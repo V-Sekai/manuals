@@ -65,6 +65,10 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 - V-Sekai
 
+## Tags
+
+- 20240413-calling-opensource-llm-with-aria
+
 ## Further Reading
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine

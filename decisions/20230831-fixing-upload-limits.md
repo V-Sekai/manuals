@@ -4,7 +4,7 @@
 
 - Status: accepted
 - Deciders: V-Sekai, fire, Scipi
-- Tags: V-Sekai
+- Tags: V-Sekai, 20230831-fixing-upload-limits
 
 ## The Backdrop
 

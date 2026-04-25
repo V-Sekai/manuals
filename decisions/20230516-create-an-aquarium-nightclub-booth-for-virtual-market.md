@@ -4,7 +4,7 @@
 
 - Status: accepted <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai, fire, etc, Aeris, cyberpunkmermaid,
-- Tags: V-Sekai, GPT-4, Virtual Reality, Cocoon Art Aquarium, VKET 2023 Summer, Voiceless,
+- Tags: V-Sekai, GPT-4, Virtual Reality, Cocoon Art Aquarium, VKET 2023 Summer, Voiceless,, 20230516-create-an-aquarium-nightclub-booth-for-virtual-market
 
 ## Context and Problem Statement
 

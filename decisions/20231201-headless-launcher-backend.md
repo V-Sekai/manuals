@@ -52,6 +52,10 @@ The V-Sekai team will develop and maintain this launcher backend. A detailed mai
 
 A comprehensive documentation will be created for understanding the system and onboarding new team members.
 
+## Tags
+
+- 20231201-headless-launcher-backend
+
 ## Further Reading
 
 - [**V-Sekai GitHub**](https://github.com/v-sekai) - Our efforts in VR using Godot Engine.

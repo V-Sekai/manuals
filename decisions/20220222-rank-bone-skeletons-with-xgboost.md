@@ -53,6 +53,10 @@ Not a few lines of code.
 
 We need this to make the quality of life of creators better.
 
+## Tags
+
+- 20220222-rank-bone-skeletons-with-xgboost
+
 ## References <!-- optional -->
 
 - <https://github.com/BayesWitnesses/m2cgen>

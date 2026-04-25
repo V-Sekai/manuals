@@ -38,6 +38,10 @@ Rare or unique objects and characters that require a departure from standard opt
 
 The proposal recommends integrating these optimization practices into the core development workflow of V-Sekai, handled by the internal team.
 
+## Tags
+
+- 20231226-furniture-vs-organic
+
 ## References
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.

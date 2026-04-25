@@ -52,6 +52,10 @@ No, this enhancement is fundamental to the project structure and cannot be worke
 
 Yes, this change affects the core structure of our project and should therefore be implemented by us to ensure consistency and control over the project.
 
+## Tags
+
+- 20230803-subrepo-addon-management
+
 ## References
 
 - [V-Sekai](https://v-sekai.org/)

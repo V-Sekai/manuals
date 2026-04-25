@@ -21,3 +21,7 @@ Don't merge changes when the tests or the compile fails.
 ### Minimal reproduction project
 
 V-Sekai project.
+
+## Tags
+
+- 20230310-don't-merge-incomplete-work

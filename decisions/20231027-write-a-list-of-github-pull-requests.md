@@ -42,6 +42,10 @@ This script might not be suitable if you need to fetch data about closed pull re
 
 Yes, this is a core part of our development process and is done by us.
 
+## Tags
+
+- 20231027-write-a-list-of-github-pull-requests
+
 ## References
 
 For more information, you can visit the following links:

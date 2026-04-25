@@ -113,7 +113,11 @@ Not a few lines of code, but fairly simple.
 
 I need to store things.
 
-### References
+### Tags
+
+- 20220605-host-internal-baserow
+
+## References
 
 - [V-Sekai](https://v-sekai.org/)
 - [Create digital ocean instructions](https://gitlab.com/bramw/baserow/-/issues/998)

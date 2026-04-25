@@ -44,6 +44,10 @@ While developing a plugin or extension provides out-of-the-box functionality, it
 
 By focusing on enhancing AYON and creating comprehensive documentation, we are empowering developers to implement these features in their own unique ways.
 
+## Tags
+
+- 20231110-better-pipeline-tools
+
 ## Further Reading
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine

@@ -2,7 +2,7 @@
 
 - Status: rejected <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20211220-network-the-ubisoft-mixer-server
 
 ## Context and Problem Statement
 

@@ -62,6 +62,10 @@ To be determined.
 
 To be determined.
 
+## Tags
+
+- 20240111-fit-clothing-on-humans-without-tearing
+
 ## Further Reading
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine

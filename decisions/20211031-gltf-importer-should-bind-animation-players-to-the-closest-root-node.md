@@ -28,7 +28,11 @@ _No response_
 
 Doesn't need to be done.
 
-### References
+### Tags
+
+- 20211031-gltf-importer-should-bind-animation-players-to-the-closest-root-node
+
+## References
 
 _No response_
 

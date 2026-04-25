@@ -2,7 +2,7 @@
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,saracen
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20220118-to-make-it-easier-to-upload-maps-and-avatars-templates
 
 ## Context and Problem Statement
 

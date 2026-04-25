@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai
-- Tags: V-Sekai, GPT-4, MacOS, iPad
+- Tags: V-Sekai, GPT-4, MacOS, iPad, 20230531-godot-engine-ipad
 
 ## Context and Problem Statement
 

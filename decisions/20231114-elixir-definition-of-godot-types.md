@@ -38,6 +38,10 @@ While this proposal primarily targets the Elixir-Godot integration, having a wel
 
 This task involves direct contributions to the core functionality of the `elixir_godot_parsers` project under V-Sekai, aiming to enhance its core capabilities in terms of data handling and parsing.
 
+## Tags
+
+- 20231114-elixir-definition-of-godot-types
+
 ## Further Reading
 
 1. [V-Sekai GitHub Repository](https://github.com/v-sekai) - The official GitHub account for the V-Sekai development community, focusing on social VR functionality for the Godot Engine.

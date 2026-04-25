@@ -44,7 +44,7 @@ Status: Draft
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240425-proposal-prompt-system
 - Proposal Generation
 - GPT-4
 

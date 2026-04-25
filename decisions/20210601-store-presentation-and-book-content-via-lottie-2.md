@@ -72,6 +72,10 @@ rlottie and pdf formats are complicated.
 
 Presentations and books should be a first-class feature in groups.
 
+## Tags
+
+- 20210601-store-presentation-and-book-content-via-lottie-2
+
 ## References <!-- optional -->
 
 - <https://www.synfig.org/>

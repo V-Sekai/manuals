@@ -81,7 +81,7 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Tags
 
-- Jupyter, Systemd, Automation, Development, Linux
+- Jupyter, Systemd, Automation, Development, Linux, 20250421-jupyter-notebook
 
 ## Further Reading
 

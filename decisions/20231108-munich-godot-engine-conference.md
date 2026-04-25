@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai
-- Tags: V-Sekai
+- Tags: V-Sekai, 20231108-munich-godot-engine-conference
 
 ## The Backdrop
 

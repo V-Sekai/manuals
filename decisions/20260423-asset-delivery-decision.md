@@ -23,4 +23,4 @@ Status: Accepted
 
 ## Tags
 
-- casync, AssetDelivery, aria-storage, CDN
+- casync, AssetDelivery, aria-storage, CDN, 20260423-asset-delivery-decision

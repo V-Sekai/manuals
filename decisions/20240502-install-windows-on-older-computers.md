@@ -53,7 +53,7 @@ Status: Draft
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240502-install-windows-on-older-computers
 - Windows 11
 - Installation
 

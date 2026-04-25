@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: v-sekai, fire
-- Tags: Godot, Jolt, GDExtension, C++ Module, SCons, CMake
+- Tags: Godot, Jolt, GDExtension, C++ Module, SCons, CMake, 20230803-jolt-gextension-to-module
 
 ## Context and Problem Statement
 

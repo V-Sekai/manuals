@@ -2,7 +2,7 @@
 
 - Status: draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20211103-use-platform-called-vfx-reference-platform
 
 ## Context and Problem Statement
 

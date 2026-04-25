@@ -48,7 +48,7 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20241006-restore-onedrive-shortcut-overrides
 
 ## Further Reading
 

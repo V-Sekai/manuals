@@ -49,7 +49,11 @@ Not a few lines of code.
 
 Changing the standard material 3d is a core decision.
 
-### References
+### Tags
+
+- 20220317-use-spec-rough-metal
+
+## References
 
 - [V-Sekai](https://v-sekai.org/)
 

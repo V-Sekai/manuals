@@ -45,7 +45,7 @@ Proposed
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240307-rabbitmq-ra
 - Ra
 - Erlang
 - Elixir

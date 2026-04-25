@@ -4,7 +4,7 @@
 
 - Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 - Deciders: V-Sekai
-- Tags: V-Sekai, Valve VR Ecosystem, Quest 3
+- Tags: V-Sekai, Valve VR Ecosystem, Quest 3, 20231019-quest3-mocap-steam-lighthouse
 
 ## The Backdrop
 

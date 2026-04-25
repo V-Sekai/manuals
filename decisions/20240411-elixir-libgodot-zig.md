@@ -45,7 +45,7 @@ Status: Rejected <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240411-elixir-libgodot-zig
 
 ## Further Reading
 

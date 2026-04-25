@@ -28,7 +28,11 @@ _No response_
 
 Useful to bridge into other things.
 
-### References
+### Tags
+
+- 20211005-bridge-music-to-xr
+
+## References
 
 - <https://github.com/ROZ-MOFUMOFU-ME/TopazBot>
 - <https://github.com/membraneframework/membrane_rtc_engine>

@@ -58,7 +58,7 @@ Proposed
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240416-previewer-upload-gltf-to-glb
 
 ## Further Reading
 

@@ -28,6 +28,10 @@ The project may not be suitable for individuals without familiarity with GGML or
 
 The project will be developed in-house, utilizing our expertise in AI and game development.
 
+## Tags
+
+- 20230908-bendable-screen-generative-assistant-ggml
+
 ## Further Reading
 
 For more information, please refer to these resources:

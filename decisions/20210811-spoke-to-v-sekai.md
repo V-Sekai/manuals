@@ -46,7 +46,11 @@ _No response_
 
 Can collaborate with Mozilla hubs team and OMI.
 
-### References
+### Tags
+
+- 20210811-spoke-to-v-sekai
+
+## References
 
 _No response_
 

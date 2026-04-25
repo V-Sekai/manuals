@@ -164,7 +164,7 @@ Status: Draft
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20241220-character-concept-art-creation
 - AI Art Generation
 - Character Design
 - FLUX.1

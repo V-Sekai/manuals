@@ -4,7 +4,7 @@
 
 - Status: accepted <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai, fire
-- Tags: V-Sekai
+- Tags: V-Sekai, 20230824-subdiv-for-lods
 
 ## The Backdrop
 

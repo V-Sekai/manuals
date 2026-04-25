@@ -2,7 +2,7 @@
 
 - Status: draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20211109-create-a-vrm-character-by-experimenting-with-written-workflows
 
 ## Context and Problem Statement
 

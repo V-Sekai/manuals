@@ -4,7 +4,7 @@
 
 - Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai
-- Tags: V-Sekai
+- Tags: V-Sekai, 20230812-gocd-agent-setup
 
 ## The Backdrop
 

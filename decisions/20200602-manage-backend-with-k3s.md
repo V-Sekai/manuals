@@ -976,6 +976,10 @@ Yes, it is possible to deploy this system using docker or in the root system.
 
 Having experience with kubernetes and maintaining discipline will make scaling or service upgrades smoother in the future.
 
+## Tags
+
+- 20200602-manage-backend-with-k3s
+
 ## References <!-- optional -->
 
 - <https://k3s.io/>

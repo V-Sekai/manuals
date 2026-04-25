@@ -2,7 +2,7 @@
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,ifire,lyuma,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20220228-v-sekai-version-three-plan
 
 ## Context and Problem Statement
 

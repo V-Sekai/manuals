@@ -36,7 +36,11 @@ This is a script for filming.
 
 Wanted to write down my preferences.
 
-### References
+### Tags
+
+- 20230123-recording-demo-checklist
+
+## References
 
 - [V-Sekai](https://v-sekai.org/)
 

@@ -60,7 +60,7 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240413-training-quad-based-meshgpt-with-40gb-vram
 
 ## Further Reading
 

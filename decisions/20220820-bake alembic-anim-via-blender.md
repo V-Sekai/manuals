@@ -73,7 +73,11 @@ Not a few lines of script.
 
 We already made a solution.
 
-### References
+### Tags
+
+- 20220820-bake alembic-anim-via-blender
+
+## References
 
 - [V-Sekai](https://v-sekai.org/)
 

@@ -21,6 +21,10 @@ Not a few lines of code.
 
 Can be done by other people.
 
+## Tags
+
+- 20211005-improve-meshing-results-by-subdivision-in-godot-engine
+
 ## References <!-- optional -->
 
 - <https://github.com/V-Sekai/godot/tree/subdivision>

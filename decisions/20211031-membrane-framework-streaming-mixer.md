@@ -33,7 +33,11 @@ _No response_
 
 I found this idea and its cool.
 
-### References
+### Tags
+
+- 20211031-membrane-framework-streaming-mixer
+
+## References
 
 - <https://github.com/ubisoft/mixer>
 - <https://github.com/ubisoft/vrtist>

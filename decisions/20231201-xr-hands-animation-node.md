@@ -61,6 +61,10 @@ The system could also be beneficial for non-XR applications such as:
 
 A typical use case may involve two hand skeletons from different tracking sources being retargeted onto a third skeleton dedicated to visual representation within the Godot Engine environment or for physics-based interactions.
 
+## Tags
+
+- 20231201-xr-hands-animation-node
+
 ## Further Reading
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.

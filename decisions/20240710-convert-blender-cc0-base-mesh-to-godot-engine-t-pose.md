@@ -104,7 +104,7 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240710-convert-blender-cc0-base-mesh-to-godot-engine-t-pose
 
 ## Further Reading
 

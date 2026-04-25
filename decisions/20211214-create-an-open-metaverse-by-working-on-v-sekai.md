@@ -2,7 +2,7 @@
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,lyuma,fire,MrMetaverse,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20211214-create-an-open-metaverse-by-working-on-v-sekai
 
 ## Context and Problem Statement
 

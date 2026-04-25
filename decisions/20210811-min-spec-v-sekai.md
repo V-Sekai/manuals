@@ -62,7 +62,11 @@ _No response_
 
 As a platform holder, it would be our responsibility to understand the limits of the platform.
 
-### References
+### Tags
+
+- 20210811-min-spec-v-sekai
+
+## References
 
 - UDOO Bolt
   [datasheet_udoo_bolt_gear-1947342.pdf](https://github.com/V-Sekai/v-sekai-proposals/files/6958673/datasheet_udoo_bolt_gear-1947342.pdf)

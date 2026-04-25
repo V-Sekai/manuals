@@ -47,7 +47,7 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20241001-small-game-tools
 
 ## Further Reading
 

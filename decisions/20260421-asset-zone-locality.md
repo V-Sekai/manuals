@@ -69,7 +69,7 @@ Status: Proposed
 
 ## Tags
 
-- Asset, SharedFile, Zone, Locality, Migration, CasSync
+- Asset, SharedFile, Zone, Locality, Migration, CasSync, 20260421-asset-zone-locality
 
 ## Further Reading
 

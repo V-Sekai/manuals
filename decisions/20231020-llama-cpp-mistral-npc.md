@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai
-- Tags: V-Sekai, AI, NPC, Godot 4
+- Tags: V-Sekai, AI, NPC, Godot 4, 20231020-llama-cpp-mistral-npc
 
 ## The Backdrop
 

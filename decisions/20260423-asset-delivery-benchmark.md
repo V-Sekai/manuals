@@ -82,4 +82,4 @@ Status: Superseded — casync via aria-storage adopted without benchmark. See `2
 
 ## Tags
 
-- casync, Benchmark, AssetDelivery, CDN, aria-storage, Performance
+- casync, Benchmark, AssetDelivery, CDN, aria-storage, Performance, 20260423-asset-delivery-benchmark

@@ -90,4 +90,4 @@ Status: Accepted
 
 ## Tags
 
-- Architecture, Zone, FabricZone, Hilbert, Entity, Persistence, WebTransport, ReBAC, casync
+- Architecture, Zone, FabricZone, Hilbert, Entity, Persistence, WebTransport, ReBAC, casync, 20260421-multiplayer-fabric-zone-architecture

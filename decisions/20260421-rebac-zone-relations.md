@@ -82,7 +82,7 @@ Status: Accepted
 
 ## Tags
 
-- ReBAC, taskweft, CAN_ENTER, CAN_INSTANCE, Relations, Permissions, Zone, Asset
+- ReBAC, taskweft, CAN_ENTER, CAN_INSTANCE, Relations, Permissions, Zone, Asset, 20260421-rebac-zone-relations
 
 ## Further Reading
 

@@ -103,7 +103,7 @@ Status: Obsolete — Harvester HCI/Nutanix evaluation obsolete; current dev infr
 
 ## Tags
 
-- Infrastructure, Hypervisor, HCI, Nutanix, Harvester, Development, Containers, Cloud-Native, Open-Source
+- Infrastructure, Hypervisor, HCI, Nutanix, Harvester, Development, Containers, Cloud-Native, Open-Source, 20260128-hypervisor-selection-for-development-infrastructure
 
 ## Further Reading
 

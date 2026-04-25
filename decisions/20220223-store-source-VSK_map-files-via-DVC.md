@@ -104,6 +104,10 @@ A version control system and object stores are not trivial and hard.
 
 We want to present V-Sekai maps for others to remix.
 
+## Tags
+
+- 20220223-store-source-VSK_map-files-via-DVC
+
 ## References <!-- optional and numbers of links can vary -->
 
 - [DVC Version Control system](https://dvc.org/) <!-- example: Refined by [xxx](yyyymmdd-xxx.md) -->

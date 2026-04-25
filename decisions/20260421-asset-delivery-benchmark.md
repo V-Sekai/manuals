@@ -68,7 +68,7 @@ Status: Proposed
 
 ## Tags
 
-- casync, zchunk, Benchmark, AssetDelivery, CDN, desync, Performance
+- casync, zchunk, Benchmark, AssetDelivery, CDN, desync, Performance, 20260421-asset-delivery-benchmark
 
 ## Further Reading
 

@@ -92,7 +92,7 @@ Status: Proposed <!-- Options: Draft | Proposed | Rejected | Accepted | Deprecat
 
 ## Tags
 
-- Computer Vision
+- Computer Vision, 20250402-image-to-full-body-face
 - Biomechanics
 - Virtual Avatars
 - Real-Time Systems

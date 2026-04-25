@@ -43,6 +43,10 @@ In some cases, the pink shadow color might actually be preferred. For example, i
 
 This change would need to be implemented by the V-Sekai development team. It would likely require modifications to the core code of the platform.
 
+## Tags
+
+- 20231227-blue-green-shadows
+
 ## Further Reading
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine

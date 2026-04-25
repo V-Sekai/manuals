@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai
-- Tags: V-Sekai
+- Tags: V-Sekai, 20230716-enhancing-avatar-creation-process-02-advanced
 
 ## Context and Problem Statement
 

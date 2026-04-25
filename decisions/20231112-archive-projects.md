@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai, fire, arne
-- Tags: V-Sekai, Documentation, Project Archiving
+- Tags: V-Sekai, Documentation, Project Archiving, 20231112-archive-projects
 
 ## The Backdrop
 

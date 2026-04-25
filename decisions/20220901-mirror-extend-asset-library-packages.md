@@ -35,7 +35,11 @@ Not a few lines of script.
 
 We maintain uro.
 
-### References
+### Tags
+
+- 20220901-mirror-extend-asset-library-packages
+
+## References
 
 - [V-Sekai](https://v-sekai.org/)
 

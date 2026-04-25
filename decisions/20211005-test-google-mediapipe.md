@@ -89,6 +89,10 @@ Pose estimation is interesting and we have someone who wants to collaborate.
 
 _No response_
 
+## Tags
+
+- 20211005-test-google-mediapipe
+
 ## References <!-- optional -->
 
 - <https://google.github.io/mediapipe/getting_started/hello_world_cpp.html>

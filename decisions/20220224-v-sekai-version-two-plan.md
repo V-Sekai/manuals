@@ -2,7 +2,7 @@
 
 - Status: superseded by 20220228-v-sekai-version-three-plan.md <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,ifire,lyuma,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20220224-v-sekai-version-two-plan
 
 ## Context and Problem Statement
 

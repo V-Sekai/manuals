@@ -53,7 +53,7 @@ Status: Obsolete — Rancher/Helm Kubernetes approach obsolete; replaced by curr
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240330-bitnami-rancher-helm-catalog
 
 ## Further Reading
 

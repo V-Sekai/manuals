@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai Development Team
-- Tags: V-Sekai, Chatbot, Vercel, OpenAI, Neon, PostgreSQL, AI, Serverless
+- Tags: V-Sekai, Chatbot, Vercel, OpenAI, Neon, PostgreSQL, AI, Serverless, 20231108-v-sekai-chat-bot
 
 ## The Backdrop
 

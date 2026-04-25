@@ -73,3 +73,7 @@ Status: Superseded — replaced by multiplayer-fabric-hosting docker-compose+Cad
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
 
 AI assistant Aria assisted with this article.
+
+## Tags
+
+- 20240830-use-dokku-to-host-vsk-backend

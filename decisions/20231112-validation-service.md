@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: iFire, Bioblaze Payne, V-Sekai Team
-- Tags: V-Sekai, Validator Service, Godot Engine, GLTF, Websockets, API
+- Tags: V-Sekai, Validator Service, Godot Engine, GLTF, Websockets, API, 20231112-validation-service
 
 ## Context
 

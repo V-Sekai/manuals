@@ -41,7 +41,11 @@ Workflow changes.
 
 Can remix work by Zylann and others.
 
-### References
+### Tags
+
+- 20210811-minecraft-voxel
+
+## References
 
 ![image](attachments/127966670-ac99697d-708c-4c79-9f1b-fb570b1fa052.png)
 [nova_world.zip](https://github.com/V-Sekai/v-sekai-proposals/files/6921440/nova_world.zip)

@@ -61,4 +61,4 @@ Status: Accepted
 
 ## Tags
 
-- baker, zone, lifecycle, WebTransport, spatial-partitioning, private-zones
+- baker, zone, lifecycle, WebTransport, spatial-partitioning, private-zones, 20260423-baker-zone-lifecycle

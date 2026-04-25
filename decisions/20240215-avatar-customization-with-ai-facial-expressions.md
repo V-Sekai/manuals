@@ -47,7 +47,7 @@ Status: **Proposed**
 
 ## Tags
 
-- `V-Sekai`, `Avatar Customization`, `AI`, `Facial Expressions`
+- `V-Sekai`, `Avatar Customization`, `AI`, `Facial Expressions`, 20240215-avatar-customization-with-ai-facial-expressions
 
 ## Further Reading
 

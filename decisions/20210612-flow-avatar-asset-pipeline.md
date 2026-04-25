@@ -43,6 +43,10 @@ Non trivial.
 
 This is a core part of Groups and we depend on it.
 
+## Tags
+
+- 20210612-flow-avatar-asset-pipeline
+
 ## References <!-- optional -->
 
 - <https://github.com/infosia/avatar-asset-pipeline>

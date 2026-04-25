@@ -44,7 +44,11 @@ _No response_
 
 Setting minimum requirements is a core feature.
 
-### References
+### Tags
+
+- 20220317-protect-minumum-spec-steam-deck
+
+## References
 
 - [V-Sekai](https://v-sekai.org/)
 

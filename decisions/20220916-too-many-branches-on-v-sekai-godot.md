@@ -36,7 +36,11 @@ Not applicable.
 
 We own the V-Sekai/godot repository.
 
-### References
+### Tags
+
+- 20220916-too-many-branches-on-v-sekai-godot
+
+## References
 
 - [V-Sekai](https://v-sekai.org/)
 

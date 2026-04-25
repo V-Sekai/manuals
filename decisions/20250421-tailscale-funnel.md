@@ -76,7 +76,7 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Tags
 
-- Networking, Tailscale, Systemd, VM, Security
+- Networking, Tailscale, Systemd, VM, Security, 20250421-tailscale-funnel
 
 ## Further Reading
 

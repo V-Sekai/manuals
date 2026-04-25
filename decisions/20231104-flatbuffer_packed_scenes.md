@@ -41,3 +41,7 @@ To overcome these limitations, it would be beneficial for Godot to support alter
 This feature should be part of the core engine to ensure official support and seamless integration.
 
 Use the extension `FBJSCN`.
+
+## Tags
+
+- 20231104-flatbuffer_packed_scenes

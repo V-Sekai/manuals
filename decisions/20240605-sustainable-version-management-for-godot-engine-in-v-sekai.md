@@ -47,7 +47,7 @@ Status: Draft
 
 ## Tags
 
-- Version Management
+- Version Management, 20240605-sustainable-version-management-for-godot-engine-in-v-sekai
 - Godot Engine
 - Sustainability
 

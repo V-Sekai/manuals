@@ -4,7 +4,7 @@
 
 - Status: Accepted
 - Deciders: V-Sekai, fire, Lyuma, Zodiepupper, Cthulhoo
-- Tags: V-Sekai, VRM, Godot Engine, T-Pose, A-Pose
+- Tags: V-Sekai, VRM, Godot Engine, T-Pose, A-Pose, 20231110-blender-manual-t-pose
 
 ## Context
 

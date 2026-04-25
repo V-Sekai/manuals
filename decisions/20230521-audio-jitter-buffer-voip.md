@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai, lyuma, Dreadpon,
-- Tags: V-Sekai, GPT-4, jitter-buffer, voice-chat, godot-speech, audio-quality, adaptive-jitter-buffer, Speex
+- Tags: V-Sekai, GPT-4, jitter-buffer, voice-chat, godot-speech, audio-quality, adaptive-jitter-buffer, Speex, 20230521-audio-jitter-buffer-voip
 
 ## Context and Problem Statement
 

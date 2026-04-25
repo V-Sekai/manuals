@@ -44,6 +44,10 @@ Not applicable.
 
 Not in code. This is documenting a technique.
 
+## Tags
+
+- 20210529-performance-profiling
+
 ## References <!-- optional -->
 
 - <https://queue.acm.org/detail.cfm?id=2927301>

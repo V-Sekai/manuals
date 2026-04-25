@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai, fire
-- Tags: V-Sekai
+- Tags: V-Sekai, 20230611-wasm-in-v-sekai
 
 ## Context and Problem Statement
 

@@ -66,7 +66,7 @@ Focus on essential launch features, expand based on user feedback.
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240324-v-sekai-as-slc
 
 ## Further Reading
 

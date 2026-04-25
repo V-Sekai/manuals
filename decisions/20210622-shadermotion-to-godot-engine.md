@@ -59,6 +59,10 @@ The ability to give motion to 3d characters or NPCS is important.
 
 The ability to interchange pose is important.
 
+## Tags
+
+- 20210622-shadermotion-to-godot-engine
+
 ## References <!-- optional -->
 
 - <https://motion.chibifire.com>

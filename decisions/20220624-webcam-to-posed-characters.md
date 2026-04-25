@@ -69,7 +69,11 @@ _No response_
 
 It's needed for face tracking to work well.
 
-### References
+### Tags
+
+- 20220624-webcam-to-posed-characters
+
+## References
 
 From Kendrick
 

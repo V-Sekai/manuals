@@ -38,6 +38,10 @@ While primarily aimed at enhancing LOD optimization, these test files could also
 
 This initiative involves incorporating external resources (Creative Commons FBX files) into the core development and testing processes of V-Sekai, potentially requiring adjustments in testing protocols and optimization strategies.
 
+## Tags
+
+- 20231114-upload-creative-commons-fbx-test-files
+
 ## Further Reading
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.

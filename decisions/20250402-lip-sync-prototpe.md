@@ -76,7 +76,7 @@ Status: Proposed
 
 ## Tags
 
-- Artificial Intelligence
+- Artificial Intelligence, 20250402-lip-sync-prototpe
 - Machine Learning
 - Virtual Avatars
 - Animation

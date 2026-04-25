@@ -78,7 +78,7 @@ Status: Superseded — PCVR/web networking approach superseded by current WebTra
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240710-web-and-pcvr-networking
 
 ## Further Reading
 

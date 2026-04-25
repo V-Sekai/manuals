@@ -34,7 +34,11 @@ _No response_
 
 I care about this more than other core contributors.
 
-### References
+### Tags
+
+- 20211031-benchmark-animation-playback
+
+## References
 
 _No response_
 

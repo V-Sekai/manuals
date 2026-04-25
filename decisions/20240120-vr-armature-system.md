@@ -86,3 +86,7 @@ For insights into V-Sekai's contributions to social VR in Godot Engine and our o
 - [V-Sekai Game Repository](https://github.com/v-sekai/v-sekai-game)
 
 _This proposal was refined with assistance from Aria._
+
+## Tags
+
+- 20240120-vr-armature-system

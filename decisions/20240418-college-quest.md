@@ -42,7 +42,7 @@ Status: Draft
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240418-college-quest
 
 ## Further Reading
 

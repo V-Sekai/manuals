@@ -2,7 +2,7 @@
 
 - Status: rejected <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,lyuma,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20221203-block-direct-pushes-to-main
 
 ## Context and Problem Statement
 

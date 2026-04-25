@@ -77,7 +77,7 @@ Status: Proposed <!-- Options: Draft | Proposed | Rejected | Accepted | Deprecat
 
 ## Tags
 
-- Computer Vision
+- Computer Vision, 20250402-automated-clothing-pipeline
 - Recommendation Systems
 - Procedural Generation
 - Edge Computing

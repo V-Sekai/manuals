@@ -140,6 +140,10 @@ Evaluating occasional usage to justify the demand for an efficient installation 
 
 Determining if this integration should be centralized within V-Sekai's primary offerings and whether internal resources can achieve this implementation.
 
+## Tags
+
+- 20240121-livebook-fedora-install
+
 ## Further Reading
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account of V-Sekai's developer community.

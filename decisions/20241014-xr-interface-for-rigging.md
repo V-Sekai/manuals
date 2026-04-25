@@ -111,7 +111,7 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Tags
 
-- V-Sekai, interactive presence, unfolding complexity, avatar dots, maximum precision, angle constraints, twist constraint, sphere visualization, constraint palette, tool shadow, localized selection, proprioceptive action, switcher interface, tool palette, deselection method, user flow
+- V-Sekai, interactive presence, unfolding complexity, avatar dots, maximum precision, angle constraints, twist constraint, sphere visualization, constraint palette, tool shadow, localized selection, proprioceptive action, switcher interface, tool palette, deselection method, user flow, 20241014-xr-interface-for-rigging
 
 ## Further Reading
 

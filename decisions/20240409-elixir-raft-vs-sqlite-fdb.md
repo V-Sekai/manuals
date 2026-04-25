@@ -57,7 +57,7 @@ Status: Rejected <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240409-elixir-raft-vs-sqlite-fdb
 
 ## Further Reading
 

@@ -83,6 +83,10 @@ While most users may not encounter the same issue as PLYSHKA🐧, addressing eve
 
 Addressing this issue falls within our core responsibilities as the V-Sekai development team.
 
+## Tags
+
+- 20231125-v-sekai-report
+
 ## Further Reading
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine

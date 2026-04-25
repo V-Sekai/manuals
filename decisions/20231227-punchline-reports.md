@@ -47,6 +47,10 @@ This method may not be suitable for projects where the context or background inf
 
 Should we decide to proceed, we will need to train our team on this new reporting method and adjust our project management tools accordingly.
 
+## Tags
+
+- 20231227-punchline-reports
+
 ## References
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine.

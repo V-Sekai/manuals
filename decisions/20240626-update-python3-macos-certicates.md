@@ -90,7 +90,7 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240626-update-python3-macos-certicates
 
 ## Further Reading
 

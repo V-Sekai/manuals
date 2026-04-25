@@ -54,7 +54,11 @@ _No response_
 
 Only we know.
 
-### References
+### Tags
+
+- 20211031-extract-proposals-into-proposals
+
+## References
 
 - plan-V-Sekai.txt
 - plan-cassie.txt

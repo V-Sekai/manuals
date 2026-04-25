@@ -45,7 +45,7 @@ Status: Draft
 
 ## Tags
 
-- V-Sekai, Blender, Godot, API Conversion
+- V-Sekai, Blender, Godot, API Conversion, 20240218-blender-to-godot
 
 ## Further Reading
 

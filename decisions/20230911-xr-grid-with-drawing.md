@@ -34,3 +34,7 @@ DETOX suggested creating a branch for the new features, while Fire expressed a d
 
 - [V-Sekai](https://v-sekai.org/)
 - This article is assisted by AI.
+
+## Tags
+
+- 20230911-xr-grid-with-drawing

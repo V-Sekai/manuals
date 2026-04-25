@@ -35,7 +35,11 @@ _No response_
 
 We own game networking.
 
-### References
+### Tags
+
+- 20211005-we-want-to-proxy-udp-datagrams-at-production-quality-of-service
+
+## References
 
 - <https://github.com/yyyar/gobetween>
 - <https://ebpf.io/>

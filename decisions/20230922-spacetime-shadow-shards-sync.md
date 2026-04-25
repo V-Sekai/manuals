@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai
-- Tags: V-Sekai, Godot, Networking
+- Tags: V-Sekai, Godot, Networking, 20230922-spacetime-shadow-shards-sync
 
 ## Background
 

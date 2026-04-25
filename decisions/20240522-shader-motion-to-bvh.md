@@ -62,6 +62,10 @@ Once completed, look for `yourvideo.bvh`
 
 This document describes how to integrate #shadermotion with us.
 
+## Tags
+
+- 20240522-shader-motion-to-bvh
+
 ## References <!-- optional -->
 
 - <https://chibifire.com/shader_motion/>

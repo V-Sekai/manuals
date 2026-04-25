@@ -113,7 +113,7 @@ Status: Obsolete — Helm/Kubernetes runner with S3 cache not in current deploym
 
 ## Tags
 
-- V-Sekai, CI/CD, Kubernetes, Helm, S3 Cache
+- V-Sekai, CI/CD, Kubernetes, Helm, S3 Cache, 20240330-gitlab-helm
 
 ## Further Reading
 

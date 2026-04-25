@@ -4,7 +4,7 @@
 
 - Status: rejected <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
-- Tags: V-Sekai,chatgpt4,
+- Tags: V-Sekai,chatgpt4,, 20230419-package-godot-for-pkgin
 
 ### Context and Problem Statement
 

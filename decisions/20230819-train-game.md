@@ -4,7 +4,7 @@
 
 - Status: Draft
 - Deciders: V-Sekai
-- Tags: V-Sekai, Godot Engine, VR Development
+- Tags: V-Sekai, Godot Engine, VR Development, 20230819-train-game
 
 ## The Backdrop
 

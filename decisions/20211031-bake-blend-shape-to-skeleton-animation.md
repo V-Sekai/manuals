@@ -36,7 +36,11 @@ _No response_
 
 We control the default skeleton controller.
 
-### References
+### Tags
+
+- 20211031-bake-blend-shape-to-skeleton-animation
+
+## References
 
 _No response_
 

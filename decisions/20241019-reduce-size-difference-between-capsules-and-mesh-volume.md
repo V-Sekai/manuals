@@ -55,7 +55,7 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20241019-reduce-size-difference-between-capsules-and-mesh-volume
 
 ## Further Reading
 

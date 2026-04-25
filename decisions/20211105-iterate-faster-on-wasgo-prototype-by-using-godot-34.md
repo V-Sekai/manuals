@@ -2,7 +2,7 @@
 
 - Status: rejected <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20211105-iterate-faster-on-wasgo-prototype-by-using-godot-34
 
 ## Context and Problem Statement
 

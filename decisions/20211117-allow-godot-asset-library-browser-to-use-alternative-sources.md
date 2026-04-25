@@ -2,7 +2,7 @@
 
 - Status: Draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20211117-allow-godot-asset-library-browser-to-use-alternative-sources
 
 ## Context and Problem Statement
 

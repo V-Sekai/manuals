@@ -73,7 +73,7 @@ Status: Accepted
 
 ## Tags
 
-- Godot Engine
+- Godot Engine, 20240608-for-skeleton-mirroring-use-the-godot-humanoid
 - Humanoid Profile
 - Animation Mirroring
 - Bone Rolls

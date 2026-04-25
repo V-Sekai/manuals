@@ -71,6 +71,10 @@ Meeting goal: determine what we can feasibly build and what we can enable others
   - Saving and loading of content at runtime
 - Support for proprietary video hosting websites
 
+## Tags
+
+- 20230630-vsekai-goal-meeting
+
 ## References
 
 - [V-Sekai](https://v-sekai.org/)

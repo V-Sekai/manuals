@@ -132,4 +132,4 @@ Status: Accepted
 
 ## Tags
 
-- ReBAC, Permissions, Lean4, Formal, taskweft, NIF, Action, Relation, Authority, VClock
+- ReBAC, Permissions, Lean4, Formal, taskweft, NIF, Action, Relation, Authority, VClock, 20260421-rebac-permissions

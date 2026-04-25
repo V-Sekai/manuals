@@ -4,7 +4,7 @@
 
 - Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 - Deciders: V-Sekai
-- Tags: V-Sekai
+- Tags: V-Sekai, 20231026-blender-steam-beta-version
 
 ## The Backdrop
 

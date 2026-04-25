@@ -2,7 +2,7 @@
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20211128-stabilize-godot-engine-updates-by-delaying-to-2-week-cycles
 
 ## Context and Problem Statement
 

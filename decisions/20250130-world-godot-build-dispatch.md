@@ -63,3 +63,7 @@ Status: Accepted
 2. [V-Sekai/v-sekai-game](https://github.com/v-sekai/v-sekai-game)
 
 AI assistant Aria assisted with this article.
+
+## Tags
+
+- 20250130-world-godot-build-dispatch

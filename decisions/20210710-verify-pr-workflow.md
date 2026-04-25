@@ -36,7 +36,11 @@ Paperwork and complexity.
 
 This is a core procedure.
 
-### References
+### Tags
+
+- 20210710-verify-pr-workflow
+
+## References
 
 _No response_
 

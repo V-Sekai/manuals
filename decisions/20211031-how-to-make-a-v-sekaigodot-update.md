@@ -41,7 +41,11 @@ _No response_
 
 This a V-Sekai organization task.
 
-### References
+### Tags
+
+- 20211031-how-to-make-a-v-sekaigodot-update
+
+## References
 
 _No response_
 

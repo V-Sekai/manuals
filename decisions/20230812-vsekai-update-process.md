@@ -43,6 +43,10 @@ This section can be used to discuss any infrequent use cases that might arise fr
 
 This section can be used to discuss whether this decision is core to the project and whether it should be implemented by us or outsourced to another team.
 
+## Tags
+
+- 20230812-vsekai-update-process
+
 ## Further Reading
 
 For more information about V-Sekai, you can visit their [official website](https://v-sekai.org/).

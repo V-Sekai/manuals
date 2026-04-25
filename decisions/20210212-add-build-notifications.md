@@ -42,6 +42,10 @@ Make a gocd Discord notifier
 - Good, because everyone is on discord
 - Bad, because engineering needs to be done.
 
+## Tags
+
+- 20210212-add-build-notifications
+
 ## References <!-- optional -->
 
 - <https://docs.gocd.org/current/configuration/dev_notifications.html>

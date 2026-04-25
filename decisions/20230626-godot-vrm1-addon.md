@@ -4,7 +4,7 @@
 
 - Status: Draft <!-- draft | proposed | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai, fire, lyuma
-- Tags: V-Sekai, ai copilot
+- Tags: V-Sekai, ai copilot, 20230626-godot-vrm1-addon
 
 ## Context and Problem Statement
 

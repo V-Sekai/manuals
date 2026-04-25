@@ -2,7 +2,7 @@
 
 - Status: Draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20211113-learn-how-to-scale-v-sekai-using-bots-and-multipliers
 
 ## Context and Problem Statement
 

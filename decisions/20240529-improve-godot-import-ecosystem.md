@@ -69,7 +69,7 @@ Status: Draft
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240529-improve-godot-import-ecosystem
 
 ## Further Reading
 

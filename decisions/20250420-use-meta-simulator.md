@@ -50,7 +50,7 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Tags
 
-- VR, Testing, macOS, Simulation, Meta, OpenXR, Godot
+- VR, Testing, macOS, Simulation, Meta, OpenXR, Godot, 20250420-use-meta-simulator
 
 ## Further Reading
 

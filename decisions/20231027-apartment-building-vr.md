@@ -42,6 +42,10 @@ In cases where the VR apartment is used infrequently, it may not justify the tim
 
 This project aligns with our core expertise in VR technologies and 3D modeling. Therefore, it can be done by us.
 
+## Tags
+
+- 20231027-apartment-building-vr
+
 ## Further Reading
 
 - [V-Sekai GitHub Repository](https://github.com/v-sekai/)

@@ -51,7 +51,7 @@ Accepted
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240407-pcvr-vs-standalone
 - PCVR
 - VR Development
 

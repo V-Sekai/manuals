@@ -4,7 +4,7 @@
 
 - Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 - Deciders: V-Sekai
-- Tags: V-Sekai
+- Tags: V-Sekai, 20240105-1-meter-128-quantize
 
 ## The Backdrop
 

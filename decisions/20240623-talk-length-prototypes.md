@@ -45,7 +45,7 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240623-talk-length-prototypes
 
 ## Further Reading
 

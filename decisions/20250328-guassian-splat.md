@@ -88,7 +88,7 @@ Status: Rejected <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Tags
 
-- Rendering
+- Rendering, 20250328-guassian-splat
 - AI/ML
 - High Priority
 

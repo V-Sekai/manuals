@@ -4,7 +4,7 @@
 
 - Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superseded by -->
 - Deciders: V-Sekai
-- Tags: V-Sekai, Semantic Versioning, Alpha Release
+- Tags: V-Sekai, Semantic Versioning, Alpha Release, 20230911-first-alpha-tag
 
 ## The Backdrop
 

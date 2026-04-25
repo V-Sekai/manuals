@@ -41,7 +41,7 @@ Proposed
 
 ## Tags
 
-- V-Sekai
+- V-Sekai, 20240314-live-collab
 - Godot
 - Live Collaboration
 - Motion Capture

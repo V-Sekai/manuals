@@ -38,7 +38,11 @@ _No response_
 
 We control the default #animation tree, therefore we need to do this.
 
-### References
+### Tags
+
+- 20211031-play-preprocessed-animations-on-any-vrm-model
+
+## References
 
 - Proposal on baking blend shapes to linear skin blending.
 - Useful for tokage's character movement demo. <https://github.com/TokageItLab/3d-platform-test-for-godot4>

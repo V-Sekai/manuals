@@ -2,7 +2,7 @@
 
 - Status: accepted
 - Date: 2021-02-11
-- Tags: doc
+- Tags: doc, 20210212-use-markdown-architectural-decision-records
 
 ## Context and Problem Statement
 

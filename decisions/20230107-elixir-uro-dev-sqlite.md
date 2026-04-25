@@ -105,7 +105,11 @@ It's arguably a few lines of script, but it's our script!
 
 We maintain the website.
 
-### References
+### Tags
+
+- 20230107-elixir-uro-dev-sqlite
+
+## References
 
 - [V-Sekai](https://v-sekai.org/)
 - [Uro](https://github.com/V-Sekai/uro)

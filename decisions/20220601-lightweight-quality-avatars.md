@@ -67,7 +67,11 @@ Heavyweight avatars is a systematic problem.
 
 Avatars is our special area.
 
-### References
+### Tags
+
+- 20220601-lightweight-quality-avatars
+
+## References
 
 - [V-Sekai](https://v-sekai.org/)
 

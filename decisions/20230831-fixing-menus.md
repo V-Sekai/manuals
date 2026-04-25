@@ -4,7 +4,7 @@
 
 - Status: accepted
 - Deciders: V-Sekai
-- Tags: V-Sekai
+- Tags: V-Sekai, 20230831-fixing-menus
 
 ## The Backdrop
 

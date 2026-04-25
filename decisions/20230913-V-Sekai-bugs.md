@@ -66,6 +66,10 @@ While some of these issues might only affect a small number of users or occur un
 
 Yes, these issues are core to the functionality of our game and should be addressed by our team.
 
+## Tags
+
+- 20230913-V-Sekai-bugs
+
 ## Further Reading
 
 - [V-Sekai](https://v-sekai.org/)

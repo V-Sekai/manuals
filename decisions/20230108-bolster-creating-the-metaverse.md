@@ -52,6 +52,10 @@ Not a coding script, but can be a #guide script.
 
 Only we can create official V-Sekai guides.
 
+## Tags
+
+- 20230108-bolster-creating-the-metaverse
+
 ## References <!-- optional -->
 
 - <https://v-sekai.org/>

@@ -2,7 +2,7 @@
 
 - Status: Draft <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20211229-stream-a-character-from-a-webcam-to-the-vmc-protocol
 
 ## Context and Problem Statement
 

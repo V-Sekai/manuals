@@ -31,7 +31,11 @@ _No response_
 
 I am championing this workflow.
 
-### References
+### Tags
+
+- 20211005-use-materialx-for-asset-interchange
+
+## References
 
 - materialx.org/
 

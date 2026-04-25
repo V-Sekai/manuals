@@ -39,6 +39,10 @@ Not trivial to do.
 
 We want the source art to be in quads so we can post process it in the game.
 
+## Tags
+
+- 20210523-simplfy-meshes-and-lods-better-with-quads
+
 ## References <!-- optional -->
 
 - <https://gdcvault.com/play/1026752/Quad-Mesh-Simplification-in>

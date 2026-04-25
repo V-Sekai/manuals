@@ -40,3 +40,7 @@ Chosen option: "Set V-Sekai's screen resolution to fit the default resolution of
 
 - [V-Sekai](https://v-sekai.org/)
 - This article is assisted by AI.
+
+## Tags
+
+- 20230912-target-most-popular-resolution

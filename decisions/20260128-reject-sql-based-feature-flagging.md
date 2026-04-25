@@ -80,7 +80,7 @@ Status: Rejected <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Tags
 
-- Configuration, Feature-Flags, Architecture, Elixir, Database, Operations
+- Configuration, Feature-Flags, Architecture, Elixir, Database, Operations, 20260128-reject-sql-based-feature-flagging
 
 ## Further Reading
 

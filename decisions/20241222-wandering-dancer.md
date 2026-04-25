@@ -79,3 +79,7 @@ Status: Proposed
 3. [GTPyhop Documentation](https://github.com/dananau/GTPyhop)
 
 AI assistant Aria assisted with this article.
+
+## Tags
+
+- 20241222-wandering-dancer

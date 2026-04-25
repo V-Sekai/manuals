@@ -49,7 +49,7 @@ Status: Draft
 
 ## Tags
 
-- V-Sekai, Avatar Customization, AI, Facial Expressions
+- V-Sekai, Avatar Customization, AI, Facial Expressions, 20240217-container-2-wasm
 
 ## Further Reading
 

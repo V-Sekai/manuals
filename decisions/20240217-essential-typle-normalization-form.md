@@ -86,6 +86,10 @@ In these normalized tables, each tuple is essential and there is no redundancy. 
 - **Optimized Performance**: By reducing redundancy, ETNF will streamline data storage and retrieval processes, enhancing overall system performance.
 - **Strategic Data Management**: Adopting ETNF aligns with strategic initiatives for scalable, efficient, and consistent data management practices.
 
+## Tags
+
+- 20240217-essential-typle-normalization-form
+
 ## Further Reading
 
 1. [V-Sekai · GitHub](https://github.com/v-sekai) - Official GitHub account for the V-Sekai development community focusing on social VR functionality for the Godot Engine

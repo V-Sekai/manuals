@@ -42,6 +42,10 @@ This method might not be suitable if the character design is already well establ
 
 Yes, this is a core part of our design process and is done by us.
 
+## Tags
+
+- 20231027-drawing-concept-to-blockout
+
 ## Further Reading
 
 For more information, you can visit the following links:

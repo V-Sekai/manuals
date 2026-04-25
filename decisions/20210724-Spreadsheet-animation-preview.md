@@ -38,7 +38,11 @@ A sizable amount of work.
 
 We care about characters.
 
-### References
+### Tags
+
+- 20210724-Spreadsheet-animation-preview
+
+## References
 
 GDC 2021 Summer:
 

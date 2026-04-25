@@ -2,7 +2,7 @@
 
 - Status: accepted <!-- draft | rejected | accepted | deprecated | superseded by -->
 - Deciders: V-Sekai,fire,
-- Tags: V-Sekai,
+- Tags: V-Sekai,, 20211129-create-a-godot-engine-asset-store-service-on-elixir-and-on-sqlite
 
 ## Context and Problem Statement
 
