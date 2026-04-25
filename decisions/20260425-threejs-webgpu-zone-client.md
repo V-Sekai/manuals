@@ -146,20 +146,36 @@ Two clients replace the previous Godot wasm web export:
 
 | Client | Transport | Use case |
 | ------ | --------- | -------- |
-| Godot native PCVR | WebTransport (picoquic) | VR headset, jellyfish creation, full entity control |
-| Three.js WebGPU | WebTransport (browser API) | Web browser, operator view, spectating, no install |
+| Godot native PCVR | WebTransport (picoquic) | High-fidelity VR, full entity control |
+| Three.js WebGPU | WebTransport (browser API) | Browser: operator view, WebXR VR, godot-sandbox WASM scripts, taskweft WASM planner |
 
 The Godot wasm32/wasm64 build is dropped. The COOP/COEP service worker,
 SharedArrayBuffer build flags, and gescons wasm targets are no longer needed
 for the client path.
 
+## Extending the browser client
+
+Two components can move into the browser without a Godot runtime:
+
+godot-sandbox compiles to WASM32 (RISC-V ELF guest via Emscripten). GDScript
+behavior code that runs in the native client's sandbox can run in the browser
+via the same WASM binary — entity scripts, jellyfish creation tools, and
+behaviour domains cross the boundary without a rewrite.
+
+taskweft standalone headers (`standalone/tw_planner.hpp`) are header-only C++20
+with no BEAM dependency. `emcc standalone/tw_planner.hpp` produces a WASM
+module that runs RECTGTN planning in the browser — the same species domains
+that drive the native zone server run client-side for preview and offline play.
+
+VR presence uses Three.js + WebXR Device API (`renderer.xr.enabled = true`,
+`VRButton.createButton(renderer)`). The Godot XR layer is not required.
+
 ## The Downsides
 
-The Three.js client reads CH_INTEREST and can write CH_PLAYER datagrams, but
-it cannot run GDScript or use Godot's XR layer — so jellyfish creation and VR
-presence require the native PCVR client. Implementing CH_PLAYER in TypeScript
-to send entity input is a second scope of work; the initial Three.js client is
-observer-only.
+Implementing CH_PLAYER datagrams in TypeScript to send entity input is a second
+scope of work; the initial Three.js client is observer-only. godot-sandbox and
+taskweft WASM compilation is not yet verified — both are plausible but untested
+on the Emscripten toolchain.
 
 The packet format is internal and could change without versioning. A format
 version byte in the first octet of CH_INTEREST would protect against silent
