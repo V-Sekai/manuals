@@ -1,22 +1,27 @@
-# CRIS Scoring for Godot Engine Code Inclusion
+# CRIS Scoring for Development Effort Prioritisation
 
 - Status: accepted
 - Deciders: V-Sekai, fire
-- Tags: V-Sekai, godot-engine, process
+- Tags: V-Sekai, process
 
 ## Context and Problem Statement
 
-The V-Sekai project maintains a Godot Engine fork assembled from many
-feature branches via `.gitassembly`. Deciding which patches to carry,
-upstream, or drop is a recurring source of debate with no shared vocabulary.
-A Godot Engine conference presentation (April 2025) introduced the **CRIS**
+The V-Sekai project spans multiple components — a Godot Engine fork, an
+Elixir/Phoenix backend, WebTransport networking, asset delivery, and more.
+Across all of these, the team regularly faces the same question: is this
+work worth doing now? Without a shared framework, the decision depends on
+who is in the room and what mood they are in.
+
+A Godot Engine conference presentation (April 2026) introduced the **CRIS**
 scoring framework as a principled way to prioritise code inclusion decisions.
-We adopt it as the canonical tiebreaker for V-Sekai Godot branch management.
+We generalise it as the canonical tool for deciding where to invest
+development effort across the entire V-Sekai project, not only Godot patches.
 
 ## Decision
 
-Use the CRIS score to rank candidate patches when deciding whether to carry
-a change in the V-Sekai Godot fork, upstream it, or defer/drop it.
+Use the CRIS score to rank any candidate unit of work — a Godot Engine patch,
+a backend feature, a test suite, an infrastructure change — when deciding
+whether to build it now, defer it, or drop it.
 
 ## CRIS Scoring
 
@@ -26,56 +31,77 @@ Each factor adds (+) or subtracts (−) from the candidate's priority score.
 |--------|----------------|----------------|
 | **C**omplexity | Low complexity | High complexity |
 | **R**each | Affects many users | Affects nobody |
-| **I**mpediment | Blocks game progress | Easy workaround exists |
+| **I**mpediment | Blocks progress on the game | Easy workaround exists |
 | **S**takeholder | Large project depends on it | No project depends on it |
 
-A patch scores higher when it is simple, widely needed, blocking, and backed
-by a real project. A patch scores lower when it is complex, niche, optional,
+A unit of work scores higher when it is simple, widely needed, blocking, and
+backed by a real project. It scores lower when it is complex, niche, optional,
 and unsupported.
 
 ## How to Apply
 
-1. For each candidate patch open a brief CRIS table in its tracking issue or
-   `.gitassembly` comment.
+1. For any candidate piece of work, fill in a brief CRIS table in the
+   tracking issue, PR description, or TODO entry.
 2. Score each factor +1 (favourable) or −1 (unfavourable). Sum to a total.
 3. Use the total to guide the decision:
 
    | Total | Default action |
    |-------|---------------|
-   | +3 or +4 | Carry in fork; submit upstream PR immediately |
-   | +1 or +2 | Carry in fork; upstream PR when bandwidth allows |
+   | +3 or +4 | Build now; high urgency |
+   | +1 or +2 | Schedule soon; normal priority |
    | −1 or 0 | Defer; revisit when a stakeholder project appears |
-   | −2 or lower | Drop from fork; document in option graveyard |
+   | −2 or lower | Drop; document why in an option graveyard |
 
 4. Any decider may override the default with a written rationale. The CRIS
    score is a guide, not a veto.
 
-## Relationship to the Existing Flowchart
+## Application to Specific Areas
 
-This ADR supplements `20211207-for-godot-engine-changes-use-a-decision-flowchart.md`.
-That flowchart answers *where* a change lives (fork vs. upstream PR vs.
-V-Sekai-only). CRIS answers *whether* the change is worth the carrying cost
-at all. Apply the flowchart after CRIS clears a change for inclusion.
+### Godot Engine fork
+
+CRIS determines whether a patch is worth carrying. The existing flowchart
+(`20211207-for-godot-engine-changes-use-a-decision-flowchart.md`) then
+determines *where* it lives (fork-only, upstream PR, or V-Sekai-specific
+branch). Apply CRIS first; apply the flowchart only if CRIS clears it.
+
+### Backend and infrastructure
+
+CRIS ranks competing feature requests and bug fixes in the Elixir backend,
+hosting stack, and CI pipeline. A ticket that scores +3 or +4 gets pulled
+into the current sprint; a ticket that scores −2 or lower is closed with a
+note.
+
+### Research and tooling
+
+New tools, languages, or frameworks are evaluated with CRIS before any
+prototype work begins. High Complexity and low Stakeholder support are
+disqualifying unless Reach and Impediment compensate.
 
 ## Positive Consequences
 
-- Shared vocabulary reduces patch-inclusion debates to a structured checklist.
-- Patch authors can self-assess before requesting review.
-- Low-CRIS changes are dropped early, reducing fork maintenance burden.
+- Shared vocabulary that works across every subsystem.
+- Contributors can self-assess before requesting review or opening a PR.
+- Low-CRIS work is dropped early, freeing capacity for high-value tasks.
+- Decisions are auditable: the CRIS table is preserved in the issue history.
 
 ## Negative Consequences
 
-- Scoring is subjective; two reviewers may score the same patch differently.
-- A genuinely important but niche patch (low Reach, high Impediment for one
-  team) might be underweighted by the total.
+- Scoring is subjective; two reviewers may reach different totals.
+- A niche but genuinely blocking item (low Reach, high Impediment for one
+  team) can be underweighted if reviewers anchor on Reach.
 
 ## Option Graveyard
 
-- Option: Ad-hoc per-patch discussion with no framework.
+- Option: Ad-hoc prioritisation by whoever is loudest.
 - Rejection reason: Produces inconsistent outcomes and repeated arguments.
 
-- Option: Upstream-only policy (never carry patches locally).
-- Rejection reason: Upstream review latency blocks game development.
+- Option: Strict urgency-only ordering (fix what is broken, ignore the rest).
+- Rejection reason: Ignores strategic value and lets important features
+  remain unbuilt indefinitely.
+
+- Option: Separate scoring rubrics per subsystem.
+- Rejection reason: Fragments the vocabulary; makes cross-team trade-offs
+  impossible to compare.
 
 ## References
 
