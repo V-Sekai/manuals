@@ -79,16 +79,20 @@ property is a second milestone, not a prerequisite for the pass condition.
 
 ## Client strategy
 
-The Godot wasm32/wasm64 web export is dropped. Two clients replace it:
+The Godot wasm32/wasm64 web export is dropped. Active client surface is Godot-native:
 
 Godot native PCVR client handles VR presence, jellyfish creation, and entity
 control. It uses the xr-grid project with OpenXR and the picoquic WebTransport
-backend.
+backend. See [20260425-godot-player.md](20260425-godot-player.md).
 
-Three.js WebGPU client handles browser access, spectating, and the operator
-view. It connects via the browser's WebTransport API and parses CH_INTEREST
-datagrams directly. See
-[20260425-threejs-webgpu-zone-client.md](20260425-threejs-webgpu-zone-client.md).
+Godot `--headless` observer (operator and CI smoke-test paths) is **deferred**
+until the VR client ships. The design — reusing `FabricMultiplayerPeer` and
+`fabric_client.gd`, no separate parser, no TypeScript — remains valid; see
+[20260425-godot-observer.md](20260425-godot-observer.md).
+
+A browser client is SOMEDAY; the Three.js WebGPU design
+([20260425-threejs-webgpu-zone-client.md](20260425-threejs-webgpu-zone-client.md))
+is superseded and not being built.
 
 ## In Core and Done by Us
 
@@ -99,7 +103,7 @@ datagrams directly. See
   — RECTGTN species domains
 - `multiplayer-fabric-zone-backend` — `GET /shards/:id/assets`, ReBAC, Uro
 - xr-grid project — Godot native PCVR client, jellyfish creation
-- Three.js WebGPU client — browser observer, operator overlay
+- `headless_log_observer.gd` — Godot `--headless` observer (deferred; ships after VR)
 
 ## Status
 

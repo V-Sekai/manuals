@@ -1,8 +1,16 @@
 # Dual-Client Test: Native Desktop and Three.js Against One Godot Zone Server
 
-- Status: accepted
+Superseded by: [20260425-headless-test-matrix.md](20260425-headless-test-matrix.md)
+
+- Status: superseded — not being built
 - Deciders: V-Sekai, fire
 - Tags: V-Sekai, Testing, Playwright, Godot, Threejs, DualClient, ZoneServer, 20260425-dual-client-test
+
+> **Why superseded:** the design pairs a Godot native client with a Three.js
+> browser client. The Three.js client is no longer being built (see
+> [20260425-threejs-webgpu-zone-client.md](20260425-threejs-webgpu-zone-client.md)).
+> Dual-client coverage now lives in the headless test matrix as the GO+GP pair
+> ([20260425-headless-test-matrix.md](20260425-headless-test-matrix.md)).
 
 ## The Context
 
@@ -135,7 +143,7 @@ client test must use the real server.
 
 ## Status
 
-Status: Accepted
+Status: Superseded by [20260425-headless-test-matrix.md](20260425-headless-test-matrix.md). Not being built.
 
 ## Decision Makers
 

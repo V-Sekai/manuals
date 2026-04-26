@@ -2,9 +2,9 @@
 
 Supersedes: [20260425-threejs-observer.md](20260425-threejs-observer.md)
 
-- Status: accepted
+- Status: deferred — not building yet; focus is on VR ([20260425-godot-player.md](20260425-godot-player.md)) first
 - Deciders: V-Sekai, fire
-- Tags: V-Sekai, Godot, WebTransport, Observer, ZoneServer, Headless, CI, 20260425-godot-observer
+- Tags: V-Sekai, Godot, WebTransport, Observer, ZoneServer, Headless, CI, Deferred, 20260425-godot-observer
 
 ## The Context
 
@@ -84,8 +84,8 @@ No separate datagram parser is needed. `FabricMultiplayerPeer` handles the
 [{"id": 1, "pos": {"x": 0.0, "y": 0.0, "z": 0.0}}, ...]
 ```
 
-Used by Playwright and CI to assert `entities.length > 0` without parsing
-Godot stdout.
+Used by shell-based CI orchestration (no browser engine, no Playwright) to
+assert `entities.length > 0` without parsing Godot stdout.
 
 ## The Downsides
 
@@ -100,7 +100,7 @@ from the C++ implementation. The Godot headless path removes that gap.
 
 ## Status
 
-Status: Accepted
+Status: Deferred. Not building yet — focus is on the VR client ([20260425-godot-player.md](20260425-godot-player.md)) first. The design here remains valid and will be picked back up after the VR pass condition lands.
 
 ## Decision Makers
 

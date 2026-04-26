@@ -45,7 +45,7 @@ build-godot (runs when sources change)
 headless-tests (runs after build-godot)
   ├── download-artifact: godot-headless-bin
   ├── start zone server (downloaded binary, --headless)
-  ├── run Playwright matrix (Four Roles × phases 1 and 2)
+  ├── run shell-based matrix (GO + GP, phases 1 and 2; no Playwright)
   └── report results
 ```
 
@@ -75,10 +75,10 @@ developer's local `bin/` directory:
 # docker-compose.test.yml
 services:
   test-runner:
-    image: mcr.microsoft.com/playwright:v1.44.0-jammy
+    image: ubuntu:24.04
     volumes:
       - ../multiplayer-fabric-godot/bin/godot.linuxbsd.editor.dev.x86_64:/godot/godot:ro
-      - ../multiplayer-fabric-zone-backend/frontend:/app
+      - ../tests:/tests
     environment:
       GODOT_BIN: /godot/godot
       ZONE_HOST: zone-server
@@ -109,7 +109,8 @@ headless-tests:
 ```
 
 `headless_tests.yml` is a new workflow file in the same directory. It
-downloads the artifact, starts the zone server, and runs Playwright.
+downloads the artifact, starts the zone server, and runs the shell-based
+matrix (`bash run_matrix.sh`). No Playwright, no browser engine.
 
 The branch protection rule applies to the `multiplayer-fabric` branch of
 `github.com/V-Sekai-fire/multiplayer-fabric-godot` — the assembled branch
@@ -122,15 +123,14 @@ Settings → Branches → Add rule:
   Branch name pattern: multiplayer-fabric
   ✓ Require status checks to pass before merging
     ✓ 🧪 Headless / GO — Godot observer
-    ✓ 🧪 Headless / TO — Three.js observer
     ✓ 🧪 Headless / GP — Godot player
-    ✓ 🧪 Headless / TP — Three.js player
-    ✓ 🧪 Headless / GO+TO — dual observer cross-check
+    ✓ 🧪 Headless / GO+GP — dual cross-check
 ```
 
-Five checks: four single-client (one per role) and the key dual-client
-cross-check. The remaining five dual-client pairs are informational — they
-run but do not block merge until all four single-client roles are green.
+Three checks: two single-role (GO, GP) and one dual cross-check. Three.js
+roles are gone (the browser client is superseded), and the observer (GO)
+itself is currently deferred while the VR client lands; checks become live
+once the matrix unfreezes.
 
 ### CI artifact retention
 

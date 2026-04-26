@@ -1,5 +1,14 @@
 # Godot Web Client WebTransport: Implementation Record
 
+> **Note (active focus):** the browser/web client direction is currently
+> **deferred** while we ship VR ([20260425-godot-player.md](20260425-godot-player.md))
+> first. Browser observation is SOMEDAY (per
+> [20260425-godot-observer.md](20260425-godot-observer.md)), and no new
+> Playwright work is being added — the spec referenced below is a one-time
+> historical PoC that proved the bug fixes recorded here. Future test
+> orchestration is shell-based (see
+> [20260425-headless-test-matrix.md](20260425-headless-test-matrix.md)).
+
 ## The Context
 
 The Infinite Aquarium / Virtual Creator Market targets web browsers as the

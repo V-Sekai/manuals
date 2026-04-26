@@ -31,7 +31,7 @@ native taskweft, and the godot-sandbox RISC-V guest already tested on desktop.
 | Reach:       | +1     | PCVR headsets and desktop operators; native performance; no browser install. |
 | Impediment:  | +1     | Without entity control, the operator can only observe — cannot spawn jellyfish or trigger behavior changes. |
 | Stakeholder: | +1     | Creator market and VR demo both depend on interactive entity control. |
-| **Total**    | **+3** | Schedule soon; unblock observer (Phase 1 GO) first. |
+| **Total**    | **+3** | Active focus. Observer ([20260425-godot-observer.md](20260425-godot-observer.md)) is deferred so we ship VR first. |
 
 ## Design
 
@@ -133,7 +133,7 @@ Status: Draft
 
 [@threejsplayer]: [20260425-threejs-player.md](20260425-threejs-player.md) — superseded Three.js Stage 2.
 
-[@godotobserver]: [20260425-godot-observer.md](20260425-godot-observer.md) — Phase 1; must pass GO test before this ships.
+[@godotobserver]: [20260425-godot-observer.md](20260425-godot-observer.md) — deferred; VR client ships first, observer follows.
 
 [@operatorcamera]: [20260425-operator-camera-2-5d.md](20260425-operator-camera-2-5d.md) — twist/swing [0,1] camera; Survey and Follow modes.
 
