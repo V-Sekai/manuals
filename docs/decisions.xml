@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.37</generator>
-<lastBuildDate>Sun, 26 Apr 2026 00:48:35 GMT</lastBuildDate>
+<lastBuildDate>Sun, 26 Apr 2026 13:18:20 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -121,7 +121,282 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 26 Apr 2026 00:48:35 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 13:18:20 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260426-isolated-godot-submodule-checkouts.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="isolated-godot-engine-changes-via-per-feature-submodule-checkouts" class="level1">
+<h1>Isolated Godot engine changes via per-feature submodule checkouts</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p><code>multiplayer-fabric-godot</code> carries all engine changes for the project: the WebTransport/picoquic module, the <code>multiplayer_fabric</code> zone-fabric module, OpenTelemetry, godot-sandbox, and several cross-compile patches. All of these are combined into a single <code>multiplayer-fabric</code> branch via <code>gitassembly</code> and built together in <code>multiplayer-fabric-build</code>.</p>
+<p>During a single debugging session (2026-04-25/26), three separate Windows cross-compile failures were found: a <code>struct cmsghdr</code> incomplete-type error in <code>picosocks.c</code>, a case-sensitivity error in <code>wincompat.h</code> (<code>Winsock2.h</code> vs <code>winsock2.h</code>), and a duplicate-method-binding error in <code>OTelMetric</code>. Because all changes live in one combined branch, each failure was invisible until the full combined build ran — and failures from different features masked each other.</p>
+<p>Gall’s Law <span class="citation" data-cites="gall1977systemantics">(Gall 1977)</span>: a complex system that works evolved from a simple system that worked. A complex system designed from scratch never works.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>When any one of N independent engine features breaks the Windows (or any platform) build, the combined CI run fails with no direct attribution. The developer must bisect across features to find the owner. Adding a new feature risks breaking existing ones silently.</p>
+<p>Each feature cannot be verified in isolation, so the project cannot adopt continuous integration per-feature — only per-combined-build.</p>
+</section>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
+<p>Keep <code>multiplayer-fabric-godot</code> as the <strong>single upstream-tracking repo</strong> with all feature branches. Do not create separate repos.</p>
+<p>Instead, <code>multiplayer-fabric-build</code> gains <strong>multiple submodule checkouts of the same repo</strong>, each pinned to a different feature branch:</p>
+<pre><code>[submodule "godot"]               # combined build (gitassembly output)
+  path = godot
+  url  = https://github.com/V-Sekai-fire/multiplayer-fabric-godot.git
+  branch = multiplayer-fabric
+
+[submodule "godot-http3"]         # ONLY feat/module-http3
+  path = godot-http3
+  url  = https://github.com/V-Sekai-fire/multiplayer-fabric-godot.git
+  branch = feat/module-http3
+
+[submodule "godot-fabric"]        # ONLY feat/module-multiplayer-fabric (zone protocol)
+  path = godot-fabric
+  url  = https://github.com/V-Sekai-fire/multiplayer-fabric-godot.git
+  branch = feat/module-multiplayer-fabric
+
+[submodule "godot-otel"]          # ONLY feat/open-telemetry
+  path = godot-otel
+  url  = https://github.com/V-Sekai-fire/multiplayer-fabric-godot.git
+  branch = feat/open-telemetry
+
+[submodule "godot-sandbox"]       # ONLY feat/module-sandbox
+  path = godot-sandbox
+  url  = https://github.com/V-Sekai-fire/multiplayer-fabric-godot.git
+  branch = feat/module-sandbox</code></pre>
+<p>The CI matrix in <code>multiplayer-fabric-build</code> adds a <strong>test-plan</strong> job that builds each <code>godot-*</code> checkout independently (Windows + Linux, <code>double</code> precision) and reports a per-feature pass/fail before the combined build runs.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">test-plan</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span></span>
+<span id="cb2-2"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">strategy</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span></span>
+<span id="cb2-3"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">matrix</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span></span>
+<span id="cb2-4"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">      </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">subdir</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">[</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">godot-http3</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">,</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> godot-fabric</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">,</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> godot-otel</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">,</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> godot-sandbox</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">]</span></span>
+<span id="cb2-5"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">steps</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span></span>
+<span id="cb2-6"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">    </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">uses</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> actions/checkout@v4</span></span>
+<span id="cb2-7"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">      </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">with</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">{</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">submodules</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">true</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">}</span></span>
+<span id="cb2-8"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">    </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">run</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> just build-platform-target windows editor x86_64 double</span></span>
+<span id="cb2-9"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">      </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">working-directory</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> ${{ matrix.subdir }}</span></span></code></pre></div></div>
+<p>The existing <code>godot/</code> combined checkout (gitassembly output) continues to be the artifact that ships. The <code>godot-*</code> checkouts are CI-only and not shipped.</p>
+<section id="feature-branch-discipline" class="level3">
+<h3 class="anchored" data-anchor-id="feature-branch-discipline">Feature branch discipline</h3>
+<p>Each <code>feat/*</code> branch in <code>multiplayer-fabric-godot</code>:</p>
+<ul>
+<li>Applies <strong>one</strong> logical change on top of upstream <code>master</code></li>
+<li>Has its own <code>godot_patches/</code> entry describing the diff vs upstream</li>
+<li>Is independently buildable for Windows + Linux</li>
+</ul>
+<p>The gitassembly in <code>multiplayer-fabric-merge</code> continues to merge all branches into <code>multiplayer-fabric</code> for the combined build.</p>
+</section>
+</section>
+<section id="cris-score" class="level2">
+<h2 class="anchored" data-anchor-id="cris-score">CRIS Score</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 53%">
+<col style="width: 17%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Factor</th>
+<th>Score</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>C</strong>omplexity</td>
+<td>−1</td>
+<td>No new repos; same single-repo model, just multiple checkout paths in build</td>
+</tr>
+<tr class="even">
+<td><strong>R</strong>reach</td>
+<td>+1</td>
+<td>Affects every developer adding engine changes — immediate isolation feedback</td>
+</tr>
+<tr class="odd">
+<td><strong>I</strong>mpediment</td>
+<td>+1</td>
+<td>Current combined build masks per-feature failures; this directly unblocks attribution</td>
+</tr>
+<tr class="even">
+<td><strong>S</strong>takeholder</td>
+<td>+1</td>
+<td><code>multiplayer-fabric-build</code> CI is the gate for all platform releases</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td>+2</td>
+<td>Adopt</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li><code>multiplayer-fabric-build</code> checkout takes longer: N submodule clones of the same repo (mitigated by <code>--depth=1</code> and GitHub’s deduplication of packfiles for the same remote).</li>
+<li>Each <code>feat/*</code> branch author must keep their branch rebased on <code>master</code>; divergence breaks the isolation build.</li>
+<li>The test-plan matrix does not catch interactions between features — only individual feature health.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p><strong>Separate repos per feature</strong> (e.g., <code>multiplayer-fabric-godot-http3</code>): rejected because it multiplies repo administration, complicates upstream PR preparation (patches live in a different repo from the module), and breaks the existing <code>gitassembly</code> model without adding isolation beyond what multiple checkouts provide.</p>
+<p><strong>Branch-per-feature CI in <code>multiplayer-fabric-godot</code> directly</strong>: GitHub Actions only runs on push to a branch; adding a matrix job there duplicates the build setup already in <code>multiplayer-fabric-build</code>. Better to keep build logic in one place.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Proposed</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>K. S. Ernest (iFire) Lee</li>
+</ul>
+
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-gall1977systemantics" class="csl-entry">
+Gall, John. 1977. <em>Systemantics: How Systems Work and Especially How They Fail</em>. Quadrangle/New York Times Book Co.
+</div>
+</div></section></div> ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260426-isolated-godot-submodule-checkouts.html</guid>
+  <pubDate>Sun, 26 Apr 2026 13:18:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -958,7 +1233,7 @@ libriscv  → WASM          (Emscripten; browser loads VM, feeds it the ELF)</co
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-threejs-webgpu-zone-client.html</guid>
-  <pubDate>Sun, 26 Apr 2026 00:48:35 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 13:18:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1210,7 +1485,7 @@ font-style: inherit;">;</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-threejs-player.html</guid>
-  <pubDate>Sun, 26 Apr 2026 00:48:35 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 13:18:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1641,7 +1916,7 @@ font-style: inherit;">;</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-threejs-observer.html</guid>
-  <pubDate>Sun, 26 Apr 2026 00:48:35 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 13:18:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1778,7 +2053,7 @@ theorem display_bounded (count : Nat) (h : count ≤ ENTITY_LIMIT) :
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-operator-overlay.html</guid>
-  <pubDate>Sun, 26 Apr 2026 00:48:35 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 13:18:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2012,7 +2287,7 @@ Unreal MMO Dev. 2022. <em><span>UE</span>: How to Rotate and Zoom Using Spring A
 </div>
 </div></section></div> ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-operator-camera-2-5d.html</guid>
-  <pubDate>Sun, 26 Apr 2026 00:48:35 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 13:18:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2091,7 +2366,7 @@ Unreal MMO Dev. 2022. <em><span>UE</span>: How to Rotate and Zoom Using Spring A
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-jellyfish-pass-condition.html</guid>
-  <pubDate>Sun, 26 Apr 2026 00:48:35 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 13:18:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2236,7 +2511,7 @@ Unreal MMO Dev. 2022. <em><span>UE</span>: How to Rotate and Zoom Using Spring A
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-jellyfish-game.html</guid>
-  <pubDate>Sun, 26 Apr 2026 00:48:35 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 13:18:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2606,7 +2881,7 @@ font-style: inherit;">=</span>600</span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-headless-test-matrix.html</guid>
-  <pubDate>Sun, 26 Apr 2026 00:48:35 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 13:18:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2697,7 +2972,7 @@ server:  {"event":"echo","len":24,"mode":0}</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-godot-web-client-webtransport.html</guid>
-  <pubDate>Sun, 26 Apr 2026 00:48:35 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 13:18:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2985,7 +3260,7 @@ font-style: inherit;">next_entity_id</span>(), pos, payload)</span></code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-godot-player.html</guid>
-  <pubDate>Sun, 26 Apr 2026 00:48:35 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 13:18:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3261,7 +3536,7 @@ font-style: inherit;">]</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-godot-observer.html</guid>
-  <pubDate>Sun, 26 Apr 2026 00:48:35 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 13:18:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3945,7 +4220,7 @@ font-style: inherit;">stringify</span>(entities))</span></code></pre></div></div
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-dual-client-test.html</guid>
-  <pubDate>Sun, 26 Apr 2026 00:48:35 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 13:18:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -4283,7 +4558,7 @@ font-style: inherit;">--dir</span> multiplayer-fabric-godot/bin/</span></code></
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-build-cache-test-pipeline.html</guid>
-  <pubDate>Sun, 26 Apr 2026 00:48:35 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 13:18:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -4620,7 +4895,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-sandbox-rebac-behavior.html</guid>
-  <pubDate>Sun, 26 Apr 2026 00:48:35 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 13:18:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -4713,7 +4988,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-baker-zone-lifecycle.html</guid>
-  <pubDate>Sun, 26 Apr 2026 00:48:35 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 13:18:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -4762,7 +5037,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-asset-delivery-decision.html</guid>
-  <pubDate>Sun, 26 Apr 2026 00:48:35 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 13:18:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -4904,7 +5179,7 @@ font-style: inherit;"># Serve over HTTP. Client downloads the full archive every
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-asset-delivery-benchmark.html</guid>
-  <pubDate>Sun, 26 Apr 2026 00:48:35 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 13:18:20 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -5000,105 +5275,7 @@ font-style: inherit;"># Serve over HTTP. Client downloads the full archive every
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260422-simplify-then-add-lightness.html</guid>
-  <pubDate>Sun, 26 Apr 2026 00:48:35 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes-3.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="avoid-ai-writing-tropes-in-documentation-part-3" class="level1">
-<h1>Avoid AI Writing Tropes in Documentation (Part 3)</h1>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>Parts 1 and 2 cover patterns from the tropes.fyi catalog. An audit of the 22 2026 ADRs in this corpus found a different class of problems: structural and grammatical weaknesses that appear even in technically precise documents. The authoritative sources are the Google Developer Documentation Style Guide <span class="citation" data-cites="googledocs2024voice">(Google 2024)</span>, Microsoft Writing Style Guide <span class="citation" data-cites="microsoft2024style">(Microsoft 2024)</span>, and Helen Sword’s work on nominalizations <span class="citation" data-cites="sword2012zombie">(Sword 2012)</span>.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>The tropes.fyi patterns are visible on a sentence-by-sentence reading. The patterns below require looking at paragraph structure and grammatical form. They are harder to catch because each instance feels locally acceptable.</p>
-</section>
-<section id="the-proposal" class="level2">
-<h2 class="anchored" data-anchor-id="the-proposal">The Proposal</h2>
-<p>Add these five patterns to the review checklist.</p>
-<section id="template-headings-left-verbatim" class="level4">
-<h4 class="anchored" data-anchor-id="template-headings-left-verbatim">Template headings left verbatim</h4>
-<p>The ADR template contains the prompt “Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.” This prompt appeared as a live section heading in all 22 2026 ADRs audited. Replace the template prompt with a heading that names what the section actually contains: “Design”, “Protocol”, or “Implementation”.</p>
-</section>
-<section id="passive-voice-on-technical-actions-google-dev-docs" class="level4">
-<h4 class="anchored" data-anchor-id="passive-voice-on-technical-actions-google-dev-docs">Passive voice on technical actions (Google Dev Docs)</h4>
-<p>Passive constructions hide the actor: “Plans are stored in the CDN”, “Assets are uploaded to zone-backend”. When the actor is known, name it: “Zone-backend stores plans in the CDN at plan-compute time.” Reserve passive voice for cases where the actor is genuinely unknown or where naming it would be repetitive.</p>
-</section>
-<section id="buried-lede-microsoft-writing-style-guide" class="level4">
-<h4 class="anchored" data-anchor-id="buried-lede-microsoft-writing-style-guide">Buried lede (Microsoft Writing Style Guide)</h4>
-<p>“The Context” is the first thing a reader sees. In 13 of 22 audited documents it contains background prose before reaching the technical gap that drove the decision. State the gap in the first sentence: “No benchmark comparing the two delivery strategies exists.” Everything else is context for that gap, not preamble before it.</p>
-</section>
-<section id="the-road-not-taken-restating-the-downsides" class="level4">
-<h4 class="anchored" data-anchor-id="the-road-not-taken-restating-the-downsides">“The Road Not Taken” restating The Downsides</h4>
-<p>The Road Not Taken is for alternatives seriously considered and specifically rejected. In 4 of 22 documents it lists alternatives without stating why each was rejected, or repeats arguments already made in The Downsides. Each entry needs a named alternative and a specific technical reason for rejection.</p>
-</section>
-<section id="zombie-nouns-helen-sword" class="level4">
-<h4 class="anchored" data-anchor-id="zombie-nouns-helen-sword">Zombie nouns (Helen Sword)</h4>
-<p>Nominalizations convert live verbs into abstract nouns: “implementation of” (implement), “evaluation of” (evaluate), “utilization of” (use). They strip the actor and dilute the commitment. Check for -tion, -ment, -ity, and -ness suffixes. Where the underlying verb is available, use it: “The team evaluates, documents, and deploys both solutions” rather than “The team will handle evaluation, documentation, and deployment of both solutions.”</p>
-</section>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p>Template heading and zombie noun fixes are mechanical — they require no judgement, just a suffix check and a heading comparison. The lede and road-not-taken fixes require knowing what the document is actually about, so they double as a comprehension check on the content.</p>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>Passive voice is sometimes correct: when the actor is unknown, or when naming it would be awkward repetition. Applying the rule without reading the sentence produces its own monotony.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>A linter (Vale, write-good) would catch passive voice and nominalizations automatically. Linter integration was not adopted because the ADR format has no CI pipeline, and a checklist applied manually is more useful than one requiring tooling setup.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Active</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>iFire</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>Writing, Documentation, Style, Review, Contributing, 20260422-avoid-ai-writing-tropes-3</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ol type="1">
-<li>Google Developer Documentation Style Guide — Active Voice <span class="citation" data-cites="googledocs2024voice">(Google 2024)</span></li>
-<li>Microsoft Writing Style Guide — Top 10 Tips <span class="citation" data-cites="microsoft2024style">(Microsoft 2024)</span></li>
-<li>Helen Sword, “Zombie Nouns” <span class="citation" data-cites="sword2012zombie">(Sword 2012)</span></li>
-</ol>
-
-
-
-</section>
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-googledocs2024voice" class="csl-entry">
-Google. 2024. <em>Use Active Voice</em>. <a href="https://developers.google.com/style/voice">https://developers.google.com/style/voice</a>.
-</div>
-<div id="ref-microsoft2024style" class="csl-entry">
-Microsoft. 2024. <em>Top 10 Tips for <span>Microsoft</span> Style and Voice</em>. <a href="https://learn.microsoft.com/en-us/style-guide/top-10-tips-style-voice">https://learn.microsoft.com/en-us/style-guide/top-10-tips-style-voice</a>.
-</div>
-<div id="ref-sword2012zombie" class="csl-entry">
-Sword, Helen. 2012. <em>Zombie Nouns</em>. <a href="https://opinionator.blogs.nytimes.com/2012/07/23/zombie-nouns/">https://opinionator.blogs.nytimes.com/2012/07/23/zombie-nouns/</a>.
-</div>
-</div></section></div> ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes-3.html</guid>
-  <pubDate>Sun, 26 Apr 2026 00:48:35 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 13:18:20 GMT</pubDate>
 </item>
 </channel>
 </rss>
