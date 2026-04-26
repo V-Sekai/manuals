@@ -408,9 +408,10 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="client-strategy" class="level2">
 <h2 class="anchored" data-anchor-id="client-strategy">Client strategy</h2>
-<p>The Godot wasm32/wasm64 web export is dropped. Two clients replace it:</p>
-<p>Godot native PCVR client handles VR presence, jellyfish creation, and entity control. It uses the xr-grid project with OpenXR and the picoquic WebTransport backend.</p>
-<p>Three.js WebGPU client handles browser access, spectating, and the operator view. It connects via the browser’s WebTransport API and parses CH_INTEREST datagrams directly. See <a href="../decisions/20260425-threejs-webgpu-zone-client.html">20260425-threejs-webgpu-zone-client.md</a>.</p>
+<p>The Godot wasm32/wasm64 web export is dropped. Active client surface is Godot-native:</p>
+<p>Godot native PCVR client handles VR presence, jellyfish creation, and entity control. It uses the xr-grid project with OpenXR and the picoquic WebTransport backend. See <a href="../decisions/20260425-godot-player.html">20260425-godot-player.md</a>.</p>
+<p>Godot <code>--headless</code> observer (operator and CI smoke-test paths) is <strong>deferred</strong> until the VR client ships. The design — reusing <code>FabricMultiplayerPeer</code> and <code>fabric_client.gd</code>, no separate parser, no TypeScript — remains valid; see <a href="../decisions/20260425-godot-observer.html">20260425-godot-observer.md</a>.</p>
+<p>A browser client is SOMEDAY; the Three.js WebGPU design (<a href="../decisions/20260425-threejs-webgpu-zone-client.html">20260425-threejs-webgpu-zone-client.md</a>) is superseded and not being built.</p>
 </section>
 <section id="in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
@@ -420,7 +421,7 @@ ul.task-list li input[type="checkbox"] {
 <li><code>assets/domains/jellyfish_common.jsonld</code>, <code>jellyfish_bioluminescent.jsonld</code> — RECTGTN species domains</li>
 <li><code>multiplayer-fabric-zone-backend</code> — <code>GET /shards/:id/assets</code>, ReBAC, Uro</li>
 <li>xr-grid project — Godot native PCVR client, jellyfish creation</li>
-<li>Three.js WebGPU client — browser observer, operator overlay</li>
+<li><code>headless_log_observer.gd</code> — Godot <code>--headless</code> observer (deferred; ships after VR)</li>
 </ul>
 </section>
 <section id="status" class="level2">
@@ -440,7 +441,7 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="../decisions/20260421-infinite-aquarium-concept.html">20260421-infinite-aquarium-concept.md</a> — aquarium concept (superseded)</li>
 <li><a href="../decisions/20260421-virtual-creator-market-implementation-plan.html">20260421-virtual-creator-market-implementation-plan.md</a> — phase checklist (superseded)</li>
 <li><a href="../decisions/20260423-sandbox-rebac-behavior.html">20260423-sandbox-rebac-behavior.md</a> — sandbox for creator executable code</li>
-<li><a href="../decisions/20260425-cris-scoring-for-godot-engine-code-inclusion.html">20260425-cris-scoring-for-godot-engine-code-inclusion.md</a> — CRIS framework</li>
+<li><a href="20260425-cris-scoring-for-godot-engine-code-inclusion.md">20260425-cris-scoring-for-godot-engine-code-inclusion.md</a> — CRIS framework</li>
 </ol>
 
 

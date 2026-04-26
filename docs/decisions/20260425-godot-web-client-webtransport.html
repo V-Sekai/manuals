@@ -319,6 +319,9 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="godot-web-client-webtransport-implementation-record" class="level1">
 <h1>Godot Web Client WebTransport: Implementation Record</h1>
+<blockquote class="blockquote">
+<p><strong>Note (active focus):</strong> the browser/web client direction is currently <strong>deferred</strong> while we ship VR (<a href="../decisions/20260425-godot-player.html">20260425-godot-player.md</a>) first. Browser observation is SOMEDAY (per <a href="../decisions/20260425-godot-observer.html">20260425-godot-observer.md</a>), and no new Playwright work is being added — the spec referenced below is a one-time historical PoC that proved the bug fixes recorded here. Future test orchestration is shell-based (see <a href="../decisions/20260425-headless-test-matrix.html">20260425-headless-test-matrix.md</a>).</p>
+</blockquote>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
 <p>The Infinite Aquarium / Virtual Creator Market targets web browsers as the primary client delivery mechanism — zero install, URL-based discovery. The <code>feat/module-http3</code> module provides <code>WebTransportPeer</code> for both native (picoquic) and web export (browser’s native WebTransport API via <code>quic_web_glue.js</code>). This ADR records the bugs found and the proof-of-concept that the web client works end-to-end.</p>

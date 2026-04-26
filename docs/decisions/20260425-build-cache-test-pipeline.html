@@ -427,7 +427,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 headless-tests (runs after build-godot)
   ├── download-artifact: godot-headless-bin
   ├── start zone server (downloaded binary, --headless)
-  ├── run Playwright matrix (Four Roles × phases 1 and 2)
+  ├── run shell-based matrix (GO + GP, phases 1 and 2; no Playwright)
   └── report results</code></pre>
 <p>The test job never calls scons. Under 10 minutes from artifact download to test results.</p>
 </section>
@@ -445,10 +445,10 @@ restore-keys:  {cache-name}|{default_branch}   ← main-branch warm cache
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># docker-compose.test.yml</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">test-runner</span><span class="kw">:</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> mcr.microsoft.com/playwright:v1.44.0-jammy</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> ubuntu:24.04</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ../multiplayer-fabric-godot/bin/godot.linuxbsd.editor.dev.x86_64:/godot/godot:ro</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ../multiplayer-fabric-zone-backend/frontend:/app</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ../tests:/tests</span></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">GODOT_BIN</span><span class="kw">:</span><span class="at"> /godot/godot</span></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">ZONE_HOST</span><span class="kw">:</span><span class="at"> zone-server</span></span>
@@ -468,7 +468,7 @@ restore-keys:  {cache-name}|{default_branch}   ← main-branch warm cache
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> ./.github/workflows/headless_tests.yml</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">with</span><span class="kw">:</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">godot-artifact</span><span class="kw">:</span><span class="at"> godot-headless-bin</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>headless_tests.yml</code> is a new workflow file in the same directory. It downloads the artifact, starts the zone server, and runs Playwright.</p>
+<p><code>headless_tests.yml</code> is a new workflow file in the same directory. It downloads the artifact, starts the zone server, and runs the shell-based matrix (<code>bash run_matrix.sh</code>). No Playwright, no browser engine.</p>
 <p>The branch protection rule applies to the <code>multiplayer-fabric</code> branch of <code>github.com/V-Sekai-fire/multiplayer-fabric-godot</code> — the assembled branch that gitassembly pushes to:</p>
 <pre><code>Repository: V-Sekai-fire/multiplayer-fabric-godot
 Branch:     multiplayer-fabric
@@ -476,11 +476,9 @@ Settings → Branches → Add rule:
   Branch name pattern: multiplayer-fabric
   ✓ Require status checks to pass before merging
     ✓ 🧪 Headless / GO — Godot observer
-    ✓ 🧪 Headless / TO — Three.js observer
     ✓ 🧪 Headless / GP — Godot player
-    ✓ 🧪 Headless / TP — Three.js player
-    ✓ 🧪 Headless / GO+TO — dual observer cross-check</code></pre>
-<p>Five checks: four single-client (one per role) and the key dual-client cross-check. The remaining five dual-client pairs are informational — they run but do not block merge until all four single-client roles are green.</p>
+    ✓ 🧪 Headless / GO+GP — dual cross-check</code></pre>
+<p>Three checks: two single-role (GO, GP) and one dual cross-check. Three.js roles are gone (the browser client is superseded), and the observer (GO) itself is currently deferred while the VR client lands; checks become live once the matrix unfreezes.</p>
 </section>
 <section id="ci-artifact-retention" class="level3">
 <h3 class="anchored" data-anchor-id="ci-artifact-retention">CI artifact retention</h3>
