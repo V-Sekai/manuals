@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.37</generator>
-<lastBuildDate>Sun, 26 Apr 2026 22:19:25 GMT</lastBuildDate>
+<lastBuildDate>Sun, 26 Apr 2026 22:27:50 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -121,7 +121,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Sun, 26 Apr 2026 22:19:25 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 22:27:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -298,7 +298,201 @@ Gall, John. 1977. <em>Systemantics: How Systems Work and Especially How They Fai
 </div>
 </div></section></div> ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260426-vr-mmog-rpg-monorepo-split.html</guid>
-  <pubDate>Sun, 26 Apr 2026 22:19:25 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 22:27:50 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260426-reduce-merge-humanoid-test-project.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="reduce-gitassembly-to-mmog-modules-adopt-humanoid-project-as-test-scene" class="level1">
+<h1>Reduce gitassembly to MMOG modules; adopt humanoid-project as test scene</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p><code>multiplayer-fabric-merge</code> assembles the <code>multiplayer-fabric</code> branch of <code>multiplayer-fabric-godot</code> from thirteen feature branches via <code>gitassembly</code>. Three of those branches — <code>feat/module-lasso</code>, <code>feat/module-openvr</code>, and <code>feat/module-speech</code> — are XR-client concerns that moved to <code>multiplayer-fabric-xr-dev</code> as part of the VR/MMOG/RPG monorepo split <span class="citation" data-cites="20260426-vr-mmog-rpg-monorepo-split">(<strong>20260426-vr-mmog-rpg-monorepo-split?</strong>)</span>.</p>
+<p><code>multiplayer-fabric-interaction-system-project</code> was the smoke-test Godot project for the MMOG monorepo. It also moved to <code>multiplayer-fabric-xr-dev</code>, leaving <code>multiplayer-fabric</code> with no Godot project to run as a headless integration test.</p>
+<p><code>multiplayer-fabric-humanoid-project</code> remains in the MMOG monorepo. It contains a flat test scene (<code>humanoid/scenes/mire.tscn</code>) with a humanoid character, a VRM importer, and an MToon shader — the minimum surface needed to smoke-test that the assembled engine renders a rigged character and moves it on a plane, matching the 2.5D operator-camera design in <span class="citation" data-cites="20260425-operator-camera-2-5d">(<strong>20260425-operator-camera-2-5d?</strong>)</span>.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>The <code>multiplayer-fabric</code> gitassembly includes three XR-only modules that no longer belong in the MMOG layer. Merging them into the combined engine branch couples the MMOG build to XR code, inflates link time, and produces a CI failure mode where an XR module regression blocks a purely server-side change.</p>
+<p>The MMOG monorepo also lacks a runnable Godot project to validate that the assembled engine boots and renders a character on terrain.</p>
+</section>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
+<section id="gitassembly-reduction" class="level3">
+<h3 class="anchored" data-anchor-id="gitassembly-reduction">gitassembly reduction</h3>
+<p>Remove three XR-only branches from <code>multiplayer-fabric-merge/gitassembly</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode diff code-with-copy"><code class="sourceCode diff"><span id="cb1-1"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">-merge multiplayer-fabric-base remotes/v-sekai-fire/feat/module-lasso</span></span>
+<span id="cb1-2"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">-merge multiplayer-fabric-base remotes/v-sekai-fire/feat/module-openvr</span></span>
+<span id="cb1-3"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">-merge multiplayer-fabric-base remotes/v-sekai-fire/feat/module-speech</span></span></code></pre></div></div>
+<p>Remaining branches are all MMOG or general-engine concerns:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Branch</th>
+<th>Concern</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>feat/engine-patches</code></td>
+<td>Upstream backports</td>
+</tr>
+<tr class="even">
+<td><code>feat/fix-picosocks-cmsghdr-mingw</code></td>
+<td>WebTransport Windows cross-compile</td>
+</tr>
+<tr class="odd">
+<td><code>feat/godot-cpp-build</code></td>
+<td>GodotCpp SCons fixes</td>
+</tr>
+<tr class="even">
+<td><code>feat/godot-cpp-master</code></td>
+<td>GodotCpp master tracking</td>
+</tr>
+<tr class="odd">
+<td><code>feat/module-sqlite</code></td>
+<td>SQLite (OTel cache, general storage)</td>
+</tr>
+<tr class="even">
+<td><code>feat/module-http3</code></td>
+<td>HTTP3/QUIC transport layer</td>
+</tr>
+<tr class="odd">
+<td><code>feat/module-sandbox</code></td>
+<td>RISC-V sandbox kernel</td>
+</tr>
+<tr class="even">
+<td><code>feat/module-keychain</code></td>
+<td>OS credential storage</td>
+</tr>
+<tr class="odd">
+<td><code>feat/open-telemetry</code></td>
+<td>Distributed tracing</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="smoke-test-humanoid-on-a-plane" class="level3">
+<h3 class="anchored" data-anchor-id="smoke-test-humanoid-on-a-plane">Smoke test: humanoid on a plane</h3>
+<p><code>multiplayer-fabric-humanoid-project</code> (<code>humanoid/scenes/mire.tscn</code>) becomes the MMOG integration test. The pass condition is:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">godot</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--path</span> multiplayer-fabric-humanoid-project <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--headless</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--quit-after</span> 300</span>
+<span id="cb2-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># exit 0, no errors, character loads and steps forward</span></span></code></pre></div></div>
+<p>The scene exercises: VRM import, MToon shader, humanoid skeleton, and basic rigid-body plane collision — sufficient to confirm the assembled MMOG engine boots and renders without the XR surface.</p>
+</section>
+</section>
+<section id="cris-score" class="level2">
+<h2 class="anchored" data-anchor-id="cris-score">CRIS Score</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 53%">
+<col style="width: 17%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Factor</th>
+<th>Score</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>C</strong>omplexity</td>
+<td>−1</td>
+<td>Deletion only; no new code</td>
+</tr>
+<tr class="even">
+<td><strong>R</strong>each</td>
+<td>+1</td>
+<td>Every MMOG CI build is shorter and no longer coupled to XR modules</td>
+</tr>
+<tr class="odd">
+<td><strong>I</strong>mpediment</td>
+<td>+1</td>
+<td>XR regressions currently block MMOG CI; removal eliminates that coupling</td>
+</tr>
+<tr class="even">
+<td><strong>S</strong>takeholder</td>
+<td>+1</td>
+<td>MMOG server release gated on this build</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td>+2</td>
+<td>Adopt</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<ul>
+<li>The <code>multiplayer-fabric</code> combined branch no longer includes lasso, OpenVR, or speech. Any engine work that touches both MMOG and XR must be coordinated across <code>multiplayer-fabric</code> and <code>multiplayer-fabric-xr-dev</code>.</li>
+<li><code>multiplayer-fabric-humanoid-project</code> must stay compatible with the assembled MMOG engine; VRM and MToon addons track their own upstream.</li>
+</ul>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p><strong>Keep all XR branches in the MMOG gitassembly</strong>: avoids split, but defeats the purpose of the monorepo separation and keeps the coupling that motivated the split.</p>
+<p><strong>Drop <code>multiplayer-fabric-merge</code> entirely</strong>: premature. The gitassembly pattern is still needed to compose the MMOG engine modules; only the XR branches are removed.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Accepted</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>K. S. Ernest (iFire) Lee</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>V-Sekai, monorepo, mmog, gitassembly, humanoid, 20260426-reduce-merge-humanoid-test-project</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li><a href="../decisions/20260426-vr-mmog-rpg-monorepo-split.html">VR/MMOG/RPG monorepo split</a></li>
+<li><a href="../decisions/20260425-operator-camera-2-5d.html">Operator Camera 2.5D</a></li>
+<li><a href="https://github.com/V-Sekai-fire/multiplayer-fabric-humanoid-project">multiplayer-fabric-humanoid-project</a></li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260426-reduce-merge-humanoid-test-project.html</guid>
+  <pubDate>Sun, 26 Apr 2026 22:27:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -573,7 +767,7 @@ Gall, John. 1977. <em>Systemantics: How Systems Work and Especially How They Fai
 </div>
 </div></section></div> ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260426-isolated-godot-submodule-checkouts.html</guid>
-  <pubDate>Sun, 26 Apr 2026 22:19:25 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 22:27:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1410,7 +1604,7 @@ libriscv  → WASM          (Emscripten; browser loads VM, feeds it the ELF)</co
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-threejs-webgpu-zone-client.html</guid>
-  <pubDate>Sun, 26 Apr 2026 22:19:25 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 22:27:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -1662,7 +1856,7 @@ font-style: inherit;">;</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-threejs-player.html</guid>
-  <pubDate>Sun, 26 Apr 2026 22:19:25 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 22:27:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2093,7 +2287,7 @@ font-style: inherit;">;</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-threejs-observer.html</guid>
-  <pubDate>Sun, 26 Apr 2026 22:19:25 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 22:27:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2230,7 +2424,7 @@ theorem display_bounded (count : Nat) (h : count ≤ ENTITY_LIMIT) :
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-operator-overlay.html</guid>
-  <pubDate>Sun, 26 Apr 2026 22:19:25 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 22:27:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2464,7 +2658,7 @@ Unreal MMO Dev. 2022. <em><span>UE</span>: How to Rotate and Zoom Using Spring A
 </div>
 </div></section></div> ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-operator-camera-2-5d.html</guid>
-  <pubDate>Sun, 26 Apr 2026 22:19:25 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 22:27:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2543,7 +2737,7 @@ Unreal MMO Dev. 2022. <em><span>UE</span>: How to Rotate and Zoom Using Spring A
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-jellyfish-pass-condition.html</guid>
-  <pubDate>Sun, 26 Apr 2026 22:19:25 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 22:27:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2688,7 +2882,7 @@ Unreal MMO Dev. 2022. <em><span>UE</span>: How to Rotate and Zoom Using Spring A
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-jellyfish-game.html</guid>
-  <pubDate>Sun, 26 Apr 2026 22:19:25 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 22:27:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3058,7 +3252,7 @@ font-style: inherit;">=</span>600</span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-headless-test-matrix.html</guid>
-  <pubDate>Sun, 26 Apr 2026 22:19:25 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 22:27:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3149,7 +3343,7 @@ server:  {"event":"echo","len":24,"mode":0}</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-godot-web-client-webtransport.html</guid>
-  <pubDate>Sun, 26 Apr 2026 22:19:25 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 22:27:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3437,7 +3631,7 @@ font-style: inherit;">next_entity_id</span>(), pos, payload)</span></code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-godot-player.html</guid>
-  <pubDate>Sun, 26 Apr 2026 22:19:25 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 22:27:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3713,7 +3907,7 @@ font-style: inherit;">]</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-godot-observer.html</guid>
-  <pubDate>Sun, 26 Apr 2026 22:19:25 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 22:27:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -4397,7 +4591,7 @@ font-style: inherit;">stringify</span>(entities))</span></code></pre></div></div
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-dual-client-test.html</guid>
-  <pubDate>Sun, 26 Apr 2026 22:19:25 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 22:27:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -4735,7 +4929,7 @@ font-style: inherit;">--dir</span> multiplayer-fabric-godot/bin/</span></code></
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-build-cache-test-pipeline.html</guid>
-  <pubDate>Sun, 26 Apr 2026 22:19:25 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 22:27:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -5072,7 +5266,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-sandbox-rebac-behavior.html</guid>
-  <pubDate>Sun, 26 Apr 2026 22:19:25 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 22:27:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -5165,7 +5359,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-baker-zone-lifecycle.html</guid>
-  <pubDate>Sun, 26 Apr 2026 22:19:25 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 22:27:50 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -5214,149 +5408,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-asset-delivery-decision.html</guid>
-  <pubDate>Sun, 26 Apr 2026 22:19:25 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20260423-asset-delivery-benchmark.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="asset-delivery-stack-benchmark" class="level1">
-<h1>Asset Delivery Stack Benchmark</h1>
-<p>Supersedes: <a href="../decisions/20260421-asset-delivery-benchmark.html">20260421-asset-delivery-benchmark.md</a></p>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>The delivery stack for V-Sekai game assets is content-addressed chunking via casync. <code>aria-storage</code> (Elixir) implements the fetch path: <code>mix aria_storage.fetch --index &lt;url&gt; --store &lt;url&gt;</code> downloads chunks from any static HTTP host (GitHub raw, Cloudflare R2, S3), reassembles the asset, and caches chunks at <code>~/.cache/casync/chunks</code>. The chunk store is plain static files — no custom server required. The live V-Sekai casync store is at <code>https://raw.githubusercontent.com/V-Sekai/casync-v-sekai-game/main/store</code>.</p>
-<p>The prior ADR referenced <code>multiplayer-fabric-desync</code> (a Go reimplementation that has since been removed) and assumed a custom chunk server. Both assumptions are now incorrect.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>No measured baseline exists for the current stack. Before the stack is considered settled, we need numbers: cold download time, patch size on a realistic 10 % asset change, and client reassembly cost. Without these, performance regressions from future changes to chunking parameters have no reference to compare against.</p>
-<p>casync serialises the entire directory tree as a <code>.catar</code> stream before chunking. Small files (<code>.tres</code>, <code>.import</code>, <code>.translation</code>) are packed together in the stream and land in the same 16–256 KB chunks as their neighbours. A 500 MB export at the default 64 KB average chunk size produces roughly 8 000 unique chunks; aria-storage fetches these 64 at a time.</p>
-</section>
-<section id="design" class="level2">
-<h2 class="anchored" data-anchor-id="design">Design</h2>
-<p>Prepare a representative Godot export: one V-Sekai avatar and environment, approximately 500 MB, matching a typical world export file mix.</p>
-<p><strong>Strategy A — casync via aria-storage (current stack)</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Chunk and publish</span></span>
-<span id="cb1-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">desync</span> make <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-s</span> s3+https://... output.caibx input_dir/</span>
-<span id="cb1-3"></span>
-<span id="cb1-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Client fetch (aria-storage)</span></span>
-<span id="cb1-5"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">mix</span> aria_storage.fetch <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--index</span> https://.../output.caibx <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\</span></span>
-<span id="cb1-6">                       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--store</span> https://.../store <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\</span></span>
-<span id="cb1-7">                       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--output</span> ./local_dir</span></code></pre></div></div>
-<p><strong>Strategy B — direct tarball download (baseline)</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">tar</span> czf export.tar.gz input_dir/</span>
-<span id="cb2-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Serve over HTTP. Client downloads the full archive every update.</span></span></code></pre></div></div>
-<p>No chunking. Measures the floor for cold download size and the ceiling for patch size (always 100 % of the archive).</p>
-<p>Metrics:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Metric</th>
-<th>Method</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Cold download size</td>
-<td>Fresh client, no local cache, 100 Mbps link</td>
-</tr>
-<tr class="even">
-<td>Patch size</td>
-<td>10 % asset change — one avatar texture replaced</td>
-</tr>
-<tr class="odd">
-<td>Chunk count</td>
-<td>Unique chunks fetched on cold download (~8 000 expected)</td>
-</tr>
-<tr class="even">
-<td>Client CPU on reassembly</td>
-<td>Wall time to extract on a 4-core laptop</td>
-</tr>
-</tbody>
-</table>
-<p>Write raw results to <code>manuals/decisions/attachments/asset-delivery-benchmark-results.csv</code>.</p>
-</section>
-<section id="the-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p>A measured baseline confirms the current stack is worth the casync infrastructure cost (chunk store publishing, aria-storage dependency) or reveals that the patch-size savings do not justify it for the current asset mix.</p>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>Requires a representative 500 MB corpus and a controlled test link. Results do not generalise beyond the tested file mix. A single benchmark run is not a production load test.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>No alternative delivery strategy is evaluated here. If results are poor, a follow-on ADR will propose alternatives and require its own benchmark.</p>
-</section>
-<section id="the-infrequent-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p>A directory containing only very small assets (total archive under 16 KB) produces a single chunk with no deduplication benefit. This edge case does not affect typical V-Sekai world exports.</p>
-</section>
-<section id="in-core-and-done-by-us" class="level2">
-<h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
-<ul>
-<li>Benchmark harness: <code>aria-storage/bench/</code> (to be written as a Mix task)</li>
-<li>Corpus: V-Sekai world export, committed to <code>manuals/decisions/attachments/</code></li>
-<li>Results: <code>manuals/decisions/attachments/asset-delivery-benchmark-results.csv</code></li>
-</ul>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Superseded — casync via aria-storage adopted without benchmark. See <a href="../decisions/20260423-asset-delivery-decision.html">20260423-asset-delivery-decision.md</a>.</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>iFire</li>
-</ul>
-</section>
-<section id="tags" class="level2">
-<h2 class="anchored" data-anchor-id="tags">Tags</h2>
-<ul>
-<li>casync, Benchmark, AssetDelivery, CDN, aria-storage, Performance, 20260423-asset-delivery-benchmark</li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20260423-asset-delivery-benchmark.html</guid>
-  <pubDate>Sun, 26 Apr 2026 22:19:25 GMT</pubDate>
+  <pubDate>Sun, 26 Apr 2026 22:27:50 GMT</pubDate>
 </item>
 </channel>
 </rss>
