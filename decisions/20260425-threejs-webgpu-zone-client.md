@@ -1,6 +1,8 @@
 # Three.js WebGPU Client Against the Godot Zone Server
 
-- Status: Superseded by [20260425-godot-observer.md](20260425-godot-observer.md) and [20260425-godot-player.md](20260425-godot-player.md)
+Superseded by: [20260425-godot-observer.md](20260425-godot-observer.md) and [20260425-godot-player.md](20260425-godot-player.md)
+
+- Status: superseded — not being built
 - Deciders: V-Sekai, fire
 - Tags: V-Sekai, Threejs, WebGPU, WebTransport, ZoneServer, Client, 20260425-threejs-webgpu-zone-client
 

@@ -99,7 +99,7 @@ Stage 1 would delay shipping the operator view.
 
 ## Status
 
-Status: Accepted
+Status: Superseded by [20260425-godot-observer.md](20260425-godot-observer.md). Not being built.
 
 ## Decision Makers
 

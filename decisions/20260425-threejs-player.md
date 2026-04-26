@@ -87,7 +87,7 @@ implementation. Stage 2 is the browser peer; it does not replace the native clie
 
 ## Status
 
-Status: Draft
+Status: Superseded by [20260425-godot-player.md](20260425-godot-player.md). Not being built.
 
 ## Decision Makers
 

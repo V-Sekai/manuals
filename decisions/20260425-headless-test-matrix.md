@@ -1,14 +1,20 @@
-# Headless Test Matrix: Four Client Roles Against One Zone Server
+# Headless Test Matrix: Two Client Roles Against One Zone Server
 
-- Status: accepted
+- Status: deferred — focus is on VR ([20260425-godot-player.md](20260425-godot-player.md)) first; matrix resumes after the observer ([20260425-godot-observer.md](20260425-godot-observer.md)) lands
 - Deciders: V-Sekai, fire
-- Tags: V-Sekai, Testing, Headless, Playwright, Godot, Threejs, ZoneServer, 20260425-headless-test-matrix
+- Tags: V-Sekai, Testing, Headless, Godot, ZoneServer, Deferred, 20260425-headless-test-matrix
 
 ## The Context
 
-Two clients (Godot native, Three.js WebGPU) each have two roles (observer,
-player). Testing them headless first means no VR hardware and no display
-required. Tests follow a three-stage promotion path:
+The Godot native client has two roles (observer, player). The Three.js client
+is no longer being built (see
+[20260425-threejs-webgpu-zone-client.md](20260425-threejs-webgpu-zone-client.md)),
+so the matrix is now Godot-only. Both phases below depend on the observer
+([20260425-godot-observer.md](20260425-godot-observer.md)), which is deferred
+while we ship the VR client first — so this matrix is also deferred. Design
+content is preserved for when work resumes. Testing them headless first means
+no VR hardware and no display required. Tests follow a three-stage promotion
+path:
 
 ```
 local Docker  →  CI headless  →  VR hardware
@@ -23,79 +29,72 @@ The zone server is always the Godot native binary run with `--headless`.
 
 ## The Problem Statement
 
-Four client roles × two clients = four test subjects. No matrix exists that
-verifies all four connect to one server and that player actions are reflected
-in observer state. Tests must pass locally in Docker before being wired to CI,
-and must pass in CI before any VR hardware is involved.
+Two client roles (observer, player) on the Godot native client. No matrix
+exists that verifies both connect to one server and that player actions are
+reflected in observer state. Tests must pass locally in Docker before being
+wired to CI, and must pass in CI before any VR hardware is involved.
 
 ## CRIS Score
 
 | Factor       | Score  | Evidence |
 | ------------ | ------ | -------- |
-| Complexity:  | +1     | Three of the four roles are already partially implemented. headless_log_observer.gd exists. Playwright handles Three.js. |
+| Complexity:  | +1     | Both roles reuse `FabricMultiplayerPeer` and `fabric_client.gd`. `headless_log_observer.gd` already exists for the observer path. Shell-only orchestration; no browser engine, no JS test runner. |
 | Reach:       | +1     | Runs in CI on every push, no hardware dependency. |
-| Impediment:  | +1     | Without this matrix, a server-side regression could break one client silently. |
+| Impediment:  | +1     | Without this matrix, a server-side regression could break the client silently. |
 | Stakeholder: | +1     | Pass condition for the aquarium demo requires two simultaneous observers. |
 | **Total**    | **+4** | Build now. |
 
 ## Design
 
-### Four roles
+### Two roles
 
 | ID | Client | Role | How to run headless |
 | -- | ------ | ---- | ------------------- |
 | GO | Godot native | Observer | `--headless --path demo observer.tscn` via `headless_log_observer.gd` |
 | GP | Godot native | Player | `--headless --path demo observer.tscn -- --send-player` (new flag, writes CH_PLAYER) |
-| TO | Three.js | Observer | Playwright Chromium, reads `window.__entities` |
-| TP | Three.js | Player | Playwright Chromium, reads `window.__entities` + calls `window.__sendPlayer()` |
 
-### Phase 1 — single-client tests (four tests, run serially)
+### Phase 1 — single-client tests (two tests, run serially)
 
 Each test: start zone server → start one client → wait for entities → assert count > 0 → stop.
 
 ```
-server + GO  →  entity count > 0  (headless_log_observer.gd, stdout parse)
+server + GO  →  entity count > 0  (headless_log_observer.gd, --dump-json)
 server + GP  →  entity count > 0, CH_PLAYER sent, server ACKs
-server + TO  →  window.__entities.length > 0 after WebTransport connect
-server + TP  →  window.__entities.length > 0, window.__sendPlayer() sends datagram
 ```
 
-### Phase 2 — dual-client tests (six pairs, run serially)
+### Phase 2 — dual-client test (one pair)
 
-Each test: start zone server → start two clients → compare entity ID sets → assert equal.
+Start zone server → start GO and GP simultaneously → assert GP's input is
+reflected in GO's next observed frame.
 
 ```
-GO + TO  →  same entity IDs observed (Godot stdout == Three.js window.__entities)
 GO + GP  →  GP action reflected in GO's next frame
-GO + TP  →  TP action reflected in GO's next frame
-TO + TP  →  TP action visible in TO's window.__entities
-GO + TP + TO  →  three-way cross-check (Phase 3)
-GP + TP  →  both players' actions reflected in each other's observer
 ```
 
 ### Local Docker run (required before CI)
 
 The existing `multiplayer-fabric-hosting` Compose stack already runs a zone
-server (`zone-server` service). Add a test service that mounts the test
-scripts and runs Playwright inside the same Docker network:
+server (`zone-server` service). Add a test service that runs the Godot
+binary headlessly inside the same Docker network — no Playwright, no
+browser, no Node runtime:
 
 ```yaml
 # docker-compose.test.yml
 services:
   test-runner:
-    image: mcr.microsoft.com/playwright:v1.44.0-jammy
+    image: ubuntu:24.04
     depends_on:
       zone-server:
         condition: service_healthy
     volumes:
-      - ./multiplayer-fabric-zone-backend/frontend:/app
       - ./multiplayer-fabric-godot/bin:/godot
-    working_dir: /app
+      - ./tests:/tests
+    working_dir: /tests
     environment:
       ZONE_HOST: zone-server
       ZONE_PORT: "17500"
       GODOT_BIN: /godot/godot.linuxbsd.editor.dev.x86_64
-    command: npx playwright test headless_matrix --project=chromium
+    command: bash run_matrix.sh
     network_mode: host   # shares zone-server port
 ```
 
@@ -109,34 +108,23 @@ docker compose -f multiplayer-fabric-hosting/docker-compose.yml \
 
 A green local Docker run is the gate before the CI job is added.
 
-### Playwright orchestration
+### Shell orchestration
 
-```ts
-async function startZoneServer(): Promise<ChildProcess> {
-  const proc = spawn(GODOT_BIN, ["--headless", "--path", ZONE_PROJECT, "scenes/zone_server.tscn"]);
-  await waitForPort(17500);  // poll until server accepts TCP
-  return proc;
-}
+`run_matrix.sh` starts the Godot binaries, polls for the zone-server port,
+diffs the JSON dumps, and exits non-zero on mismatch. No browser engine, no
+JavaScript test runner — just GDScript flags and `jq`.
 
-async function startGodotObserver(dumpPath: string): Promise<ChildProcess> {
-  return spawn(GODOT_BIN, [
-    "--headless", "--path", DEMO_PROJECT,
-    "--script", "scripts/headless_log_observer.gd",
-    "--", `--dump-json=${dumpPath}`
-  ]);
-}
-
-async function threejsObserver(page: Page): Promise<Entity[]> {
-  await page.waitForFunction(
-    () => (window as any).__entities?.length > 0, { timeout: 15_000 }
-  );
-  return page.evaluate(() => (window as any).__entities);
-}
+```sh
+"$GODOT_BIN" --headless --path "$DEMO_PROJECT" \
+  --script scripts/headless_log_observer.gd \
+  -- --dump-json=/tmp/go.json --frames=600
 ```
+
+Same shape for the GP role with `--send-player` instead of `--dump-json`.
 
 ### Missing pieces before Phase 1
 
-Three items need implementing before the matrix runs:
+Two items need implementing before the matrix runs:
 
 1. `headless_log_observer.gd` — add `--dump-json=<path>` flag that writes the
    final entity list as JSON on exit (currently only prints to stdout).
@@ -144,18 +132,13 @@ Three items need implementing before the matrix runs:
 2. Godot player headless — a `--send-player` flag in `fabric_client.gd` or a
    new script that sends one CH_PLAYER datagram after connecting, then exits.
 
-3. Three.js `window.__sendPlayer()` — the Stage 2 CH_PLAYER write path
-   ([20260425-threejs-player.md](20260425-threejs-player.md)) must expose this
-   function before Phase 2 TP tests can run.
-
-Phase 1 GO and TO tests can run today with `headless_log_observer.gd` stdout
-parsing and the existing Three.js observer Playwright spec.
+Phase 1 GO can run today with `headless_log_observer.gd` stdout parsing.
 
 ## The Downsides
 
-Six pairs × server startup (~3 s each) = ~20 s of CI wall time for Phase 2.
-The server must bind a fresh port for each test to avoid inter-test interference;
-or tests run serially with a single shared server.
+One pair × server startup (~3 s) for Phase 2. The server must bind a fresh
+port for each test to avoid inter-test interference; or tests run serially
+with a single shared server.
 
 The Docker gate adds one manual step before CI promotion. A developer who skips
 the Docker run and pushes directly can still break CI; the gate is enforced by
@@ -169,7 +152,7 @@ real server binary.
 
 ## Status
 
-Status: Accepted
+Status: Deferred. Not building yet — focus is on the VR client ([20260425-godot-player.md](20260425-godot-player.md)) first; this matrix resumes after the observer ([20260425-godot-observer.md](20260425-godot-observer.md)) lands. Design (shell-based, no Playwright) preserved for that resumption.
 
 ## Decision Makers
 
@@ -177,8 +160,8 @@ Status: Accepted
 
 ## Further Reading
 
-[@dual_client]: [20260425-dual-client-test.md](20260425-dual-client-test.md) — dual observer design.
+[@godot_observer]: [20260425-godot-observer.md](20260425-godot-observer.md) — Godot `--headless` observer (GO role).
 
-[@threejs_observer]: [20260425-threejs-observer.md](20260425-threejs-observer.md) — Three.js observer client.
+[@godot_player]: [20260425-godot-player.md](20260425-godot-player.md) — Godot native PCVR player (GP role).
 
-[@threejs_player]: [20260425-threejs-player.md](20260425-threejs-player.md) — Three.js player client (Stage 2).
+[@dual_client]: [20260425-dual-client-test.md](20260425-dual-client-test.md) — superseded; coverage merged into this matrix as the GO+GP pair.
