@@ -329,7 +329,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
   <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
-  <li><a href="#cris-score" id="toc-cris-score" class="nav-link" data-scroll-target="#cris-score">CRIS Score</a></li>
   <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a>
   <ul class="collapse">
   <li><a href="#cli" id="toc-cli" class="nav-link" data-scroll-target="#cli">CLI</a></li>
@@ -368,50 +367,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
 <p>The Three.js observer (<span class="citation" data-cites="threejsobserver">(<a href="#ref-threejsobserver" role="doc-biblioref"><strong>threejsobserver?</strong></a>)</span>) required a separate TypeScript client and runtime. The Godot headless path reuses the identical C++ WebTransport peer and GDScript entity layer that ship with the zone server, closing the “different stack, different bugs” gap and enabling CI smoke tests with a single <code>godot --headless</code> invocation.</p>
-</section>
-<section id="cris-score" class="level2">
-<h2 class="anchored" data-anchor-id="cris-score">CRIS Score</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 46%">
-<col style="width: 23%">
-<col style="width: 30%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Factor</th>
-<th>Score</th>
-<th>Evidence</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Complexity:</td>
-<td>+1</td>
-<td>GDScript SceneTree script; reuses existing <code>FabricMultiplayerPeer</code> and <code>fabric_client.gd</code>. No new language or build step.</td>
-</tr>
-<tr class="even">
-<td>Reach:</td>
-<td>0</td>
-<td>Native desktop only. Browser observer is deferred (see SOMEDAY).</td>
-</tr>
-<tr class="odd">
-<td>Impediment:</td>
-<td>+1</td>
-<td>Unblocks Phase 1 GO headless test and CI smoke check without new tooling.</td>
-</tr>
-<tr class="even">
-<td>Stakeholder:</td>
-<td>+1</td>
-<td>Operator runbook and branch protection both depend on a passing GO test.</td>
-</tr>
-<tr class="odd">
-<td><strong>Total</strong></td>
-<td><strong>+3</strong></td>
-<td>Build now; browser observer is SOMEDAY.</td>
-</tr>
-</tbody>
-</table>
 </section>
 <section id="design" class="level2">
 <h2 class="anchored" data-anchor-id="design">Design</h2>

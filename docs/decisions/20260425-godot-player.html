@@ -329,7 +329,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
   <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
-  <li><a href="#cris-score" id="toc-cris-score" class="nav-link" data-scroll-target="#cris-score">CRIS Score</a></li>
   <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a>
   <ul class="collapse">
   <li><a href="#ch_player-write-path" id="toc-ch_player-write-path" class="nav-link" data-scroll-target="#ch_player-write-path">CH_PLAYER write path</a></li>
@@ -370,45 +369,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
 <p>The Three.js player (<span class="citation" data-cites="threejsplayer">(<a href="#ref-threejsplayer" role="doc-biblioref"><strong>threejsplayer?</strong></a>)</span>) required a TypeScript CH_PLAYER write path, a libriscv WASM ABI shim for GDScript behaviors, a taskweft Emscripten build, and WebXR for VR presence. Each of those is an unverified integration point. The Godot native path replaces all four with the existing Godot XR tools, native taskweft, and the godot-sandbox RISC-V guest already tested on desktop.</p>
-</section>
-<section id="cris-score" class="level2">
-<h2 class="anchored" data-anchor-id="cris-score">CRIS Score</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Factor</th>
-<th>Score</th>
-<th>Evidence</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Complexity:</td>
-<td>0</td>
-<td>CH_PLAYER GDScript write path is straightforward. OpenXR via Godot XR tools is documented. Entity control state machine needs care.</td>
-</tr>
-<tr class="even">
-<td>Reach:</td>
-<td>+1</td>
-<td>PCVR headsets and desktop operators; native performance; no browser install.</td>
-</tr>
-<tr class="odd">
-<td>Impediment:</td>
-<td>+1</td>
-<td>Without entity control, the operator can only observe — cannot spawn jellyfish or trigger behavior changes.</td>
-</tr>
-<tr class="even">
-<td>Stakeholder:</td>
-<td>+1</td>
-<td>Creator market and VR demo both depend on interactive entity control.</td>
-</tr>
-<tr class="odd">
-<td><strong>Total</strong></td>
-<td><strong>+3</strong></td>
-<td>Active focus. Observer (<a href="../decisions/20260425-godot-observer.html">20260425-godot-observer.md</a>) is deferred so we ship VR first.</td>
-</tr>
-</tbody>
-</table>
 </section>
 <section id="design" class="level2">
 <h2 class="anchored" data-anchor-id="design">Design</h2>

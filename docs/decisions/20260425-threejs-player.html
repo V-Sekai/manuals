@@ -329,7 +329,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
   <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
-  <li><a href="#cris-score" id="toc-cris-score" class="nav-link" data-scroll-target="#cris-score">CRIS Score</a></li>
   <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a>
   <ul class="collapse">
   <li><a href="#ch_player-write-path" id="toc-ch_player-write-path" class="nav-link" data-scroll-target="#ch_player-write-path">CH_PLAYER write path</a></li>
@@ -369,50 +368,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
 <p>The observer cannot send entity input or run behavior scripts. An operator who wants to interact with entities — spawn jellyfish, trigger behavior changes, enter VR — needs the player layer.</p>
-</section>
-<section id="cris-score" class="level2">
-<h2 class="anchored" data-anchor-id="cris-score">CRIS Score</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 46%">
-<col style="width: 23%">
-<col style="width: 30%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Factor</th>
-<th>Score</th>
-<th>Evidence</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Complexity:</td>
-<td>-1</td>
-<td>libriscv WASM ABI shim and taskweft Emscripten build are untested. WebXR adds a VR rendering loop.</td>
-</tr>
-<tr class="even">
-<td>Reach:</td>
-<td>+1</td>
-<td>Turns the browser observer into a full peer of the native PCVR client for non-VR-headset users.</td>
-</tr>
-<tr class="odd">
-<td>Impediment:</td>
-<td>+1</td>
-<td>Without CH_PLAYER writes, browser users cannot participate — only watch.</td>
-</tr>
-<tr class="even">
-<td>Stakeholder:</td>
-<td>+1</td>
-<td>Creator market depends on browser-native jellyfish creation.</td>
-</tr>
-<tr class="odd">
-<td><strong>Total</strong></td>
-<td><strong>+2</strong></td>
-<td>Schedule soon; normal priority. Unblock Stage 1 first.</td>
-</tr>
-</tbody>
-</table>
 </section>
 <section id="design" class="level2">
 <h2 class="anchored" data-anchor-id="design">Design</h2>

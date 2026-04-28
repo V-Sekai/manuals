@@ -329,7 +329,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
   <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
-  <li><a href="#cris-score" id="toc-cris-score" class="nav-link" data-scroll-target="#cris-score">CRIS Score</a></li>
   <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a>
   <ul class="collapse">
   <li><a href="#wire-protocol-ch_interest-read-only-100-bytes-per-entity" id="toc-wire-protocol-ch_interest-read-only-100-bytes-per-entity" class="nav-link" data-scroll-target="#wire-protocol-ch_interest-read-only-100-bytes-per-entity">Wire protocol — CH_INTEREST (read only, 100 bytes per entity)</a></li>
@@ -371,50 +370,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
 <p>The Godot web export client blocks on a multi-minute wasm build for every iteration. Three.js + WebTransport eliminates the build step entirely: connect, parse the 100-byte wire format, render. The operator camera overlay — load bars, dot clustering — becomes plain DOM/Canvas over a Three.js scene.</p>
-</section>
-<section id="cris-score" class="level2">
-<h2 class="anchored" data-anchor-id="cris-score">CRIS Score</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 46%">
-<col style="width: 23%">
-<col style="width: 30%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Factor</th>
-<th>Score</th>
-<th>Evidence</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Complexity:</td>
-<td>+1</td>
-<td>The packet format is bounded and documented. Three.js WebGPU is production-ready. Dual-client risk is real but contained to the read path.</td>
-</tr>
-<tr class="even">
-<td>Reach:</td>
-<td>+1</td>
-<td>Pure browser, no WASM, no install, no service worker. Works wherever WebGPU is supported.</td>
-</tr>
-<tr class="odd">
-<td>Impediment:</td>
-<td>+1</td>
-<td>The wasm build blocks every iteration of the operator camera and overlay work. Three.js removes the bottleneck.</td>
-</tr>
-<tr class="even">
-<td>Stakeholder:</td>
-<td>+1</td>
-<td>The aquarium demo needs to ship. A Three.js client reaches the demo faster than the Godot wasm path.</td>
-</tr>
-<tr class="odd">
-<td><strong>Total</strong></td>
-<td><strong>+4</strong></td>
-<td>Build it.</td>
-</tr>
-</tbody>
-</table>
 </section>
 <section id="design" class="level2">
 <h2 class="anchored" data-anchor-id="design">Design</h2>
