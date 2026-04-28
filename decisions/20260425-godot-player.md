@@ -23,15 +23,6 @@ build, and WebXR for VR presence. Each of those is an unverified integration
 point. The Godot native path replaces all four with the existing Godot XR tools,
 native taskweft, and the godot-sandbox RISC-V guest already tested on desktop.
 
-## CRIS Score
-
-| Factor       | Score  | Evidence |
-| ------------ | ------ | -------- |
-| Complexity:  | 0      | CH_PLAYER GDScript write path is straightforward. OpenXR via Godot XR tools is documented. Entity control state machine needs care. |
-| Reach:       | +1     | PCVR headsets and desktop operators; native performance; no browser install. |
-| Impediment:  | +1     | Without entity control, the operator can only observe — cannot spawn jellyfish or trigger behavior changes. |
-| Stakeholder: | +1     | Creator market and VR demo both depend on interactive entity control. |
-| **Total**    | **+3** | Active focus. Observer ([20260425-godot-observer.md](20260425-godot-observer.md)) is deferred so we ship VR first. |
 
 ## Design
 

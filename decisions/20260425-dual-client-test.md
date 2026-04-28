@@ -26,15 +26,6 @@ There is no test that runs both clients against one server at the same time and
 verifies they observe the same entity state. Without it, a server-side bug that
 affects only one client could go undetected.
 
-## CRIS Score
-
-| Factor       | Score  | Evidence |
-| ------------ | ------ | -------- |
-| Complexity:  | +1     | Playwright already drives the Three.js client. The Godot headless client is one more process. Shared state comparison is a DataView diff. |
-| Reach:       | +1     | Catches any server bug that manifests differently on the two wire encodings. |
-| Impediment:  | +1     | The jellyfish pass condition explicitly requires two simultaneous observers. |
-| Stakeholder: | +1     | V-Sekai demo smoke test. |
-| **Total**    | **+4** | Build now. |
 
 ## Design
 

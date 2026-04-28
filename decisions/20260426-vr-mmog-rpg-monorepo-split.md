@@ -87,15 +87,6 @@ multiplayer-fabric-rx
 multiplayer-fabric-artifacts-mmog
 ```
 
-## CRIS Score
-
-| Factor          | Score | Evidence |
-| --------------- | ----- | -------- |
-| **C**omplexity  | −1    | Three repos instead of one; inter-layer dependencies are explicit submodule refs, not implicit path assumptions |
-| **R**each       | +1    | Every developer is affected; each now clones only the layer they work in |
-| **I**mpediment  | +1    | Mixed-layer monorepo blocks scoped CI and inflates checkout time for every contributor |
-| **S**takeholder | +1    | All three product areas (VR, server, game bot) depend on this boundary |
-| **Total**       | +2    | Adopt |
 
 ## The Downsides
 

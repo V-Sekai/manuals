@@ -23,15 +23,6 @@ and GDScript entity layer that ship with the zone server, closing the
 "different stack, different bugs" gap and enabling CI smoke tests with a single
 `godot --headless` invocation.
 
-## CRIS Score
-
-| Factor       | Score  | Evidence |
-| ------------ | ------ | -------- |
-| Complexity:  | +1     | GDScript SceneTree script; reuses existing `FabricMultiplayerPeer` and `fabric_client.gd`. No new language or build step. |
-| Reach:       | 0      | Native desktop only. Browser observer is deferred (see SOMEDAY). |
-| Impediment:  | +1     | Unblocks Phase 1 GO headless test and CI smoke check without new tooling. |
-| Stakeholder: | +1     | Operator runbook and branch protection both depend on a passing GO test. |
-| **Total**    | **+3** | Build now; browser observer is SOMEDAY. |
 
 ## Design
 

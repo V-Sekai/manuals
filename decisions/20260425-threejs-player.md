@@ -21,15 +21,6 @@ The observer cannot send entity input or run behavior scripts. An operator who
 wants to interact with entities — spawn jellyfish, trigger behavior changes,
 enter VR — needs the player layer.
 
-## CRIS Score
-
-| Factor       | Score  | Evidence |
-| ------------ | ------ | -------- |
-| Complexity:  | -1     | libriscv WASM ABI shim and taskweft Emscripten build are untested. WebXR adds a VR rendering loop. |
-| Reach:       | +1     | Turns the browser observer into a full peer of the native PCVR client for non-VR-headset users. |
-| Impediment:  | +1     | Without CH_PLAYER writes, browser users cannot participate — only watch. |
-| Stakeholder: | +1     | Creator market depends on browser-native jellyfish creation. |
-| **Total**    | **+2** | Schedule soon; normal priority. Unblock Stage 1 first. |
 
 ## Design
 

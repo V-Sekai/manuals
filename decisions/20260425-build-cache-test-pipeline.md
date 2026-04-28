@@ -21,15 +21,6 @@ Without separating build and test jobs, every test run rebuilds Godot.
 Without branch protection, a developer can merge a broken branch. Without
 scons cache, incremental builds still take > 10 minutes.
 
-## CRIS Score
-
-| Factor       | Score  | Evidence |
-| ------------ | ------ | -------- |
-| Complexity:  | +1     | The scons cache actions already exist. Artifact upload/download is standard GitHub Actions. |
-| Reach:       | +1     | Every developer and every CI run benefits from sub-10-minute builds. |
-| Impediment:  | +1     | Long builds block the headless test matrix from being practical in CI. |
-| Stakeholder: | +1     | Aquarium demo CI depends on this to stay green without excessive wait. |
-| **Total**    | **+4** | Build now. |
 
 ## Design
 

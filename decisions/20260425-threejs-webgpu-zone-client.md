@@ -22,15 +22,6 @@ iteration. Three.js + WebTransport eliminates the build step entirely: connect,
 parse the 100-byte wire format, render. The operator camera overlay — load bars,
 dot clustering — becomes plain DOM/Canvas over a Three.js scene.
 
-## CRIS Score
-
-| Factor       | Score  | Evidence |
-| ------------ | ------ | -------- |
-| Complexity:  | +1     | The packet format is bounded and documented. Three.js WebGPU is production-ready. Dual-client risk is real but contained to the read path. |
-| Reach:       | +1     | Pure browser, no WASM, no install, no service worker. Works wherever WebGPU is supported. |
-| Impediment:  | +1     | The wasm build blocks every iteration of the operator camera and overlay work. Three.js removes the bottleneck. |
-| Stakeholder: | +1     | The aquarium demo needs to ship. A Three.js client reaches the demo faster than the Godot wasm path. |
-| **Total**    | **+4** | Build it. |
 
 ## Design
 

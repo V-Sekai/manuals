@@ -19,15 +19,6 @@ effort scatters across competing items and the demo never ships.
 No ADR commits to building the jellyfish game as the current top priority.
 The CRIS score below makes that commitment explicit.
 
-## CRIS Score
-
-| Factor          | Score  | Evidence                                                                                                               |
-| --------------- | ------ | ---------------------------------------------------------------------------------------------------------------------- |
-| **C**omplexity  | +1     | Zone networking, asset delivery, RECTGTN planning, and ReBAC are all working. Remaining work is wiring, not invention. |
-| **R**each       | +1     | Every new operator or creator evaluating multiplayer-fabric needs a running demo to assess the platform.               |
-| **I**mpediment  | +1     | Without a reference application, end-to-end composition cannot be verified and the platform cannot be demonstrated.    |
-| **S**takeholder | +1     | V-Sekai is the primary stakeholder; the virtual creator market product depends on this demo passing.                   |
-| **Total**       | **+4** | Build now; high urgency.                                                                                               |
 
 ## Design
 
@@ -119,4 +110,3 @@ Status: Accepted
 2. [20260421-infinite-aquarium-concept.md](20260421-infinite-aquarium-concept.md) — aquarium concept (superseded)
 3. [20260421-virtual-creator-market-implementation-plan.md](20260421-virtual-creator-market-implementation-plan.md) — phase checklist (superseded)
 4. [20260423-sandbox-rebac-behavior.md](20260423-sandbox-rebac-behavior.md) — sandbox for creator executable code
-5. [20260425-cris-scoring-for-godot-engine-code-inclusion.md](20260425-cris-scoring-for-godot-engine-code-inclusion.md) — CRIS framework

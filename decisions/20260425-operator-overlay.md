@@ -17,15 +17,6 @@ Without a load display, operators cannot tell which zones are approaching the
 1800-entity limit before rollbacks begin. Without spatial density information,
 operators cannot tell where entities cluster within a zone.
 
-## CRIS Score
-
-| Factor       | Score  | Evidence |
-| ------------ | ------ | -------- |
-| Complexity:  | +1     | CanvasLayer over Camera3D is a standard Godot pattern. Load count is an O(1) read. |
-| Reach:       | +1     | Every operator session needs to know zone health at a glance. |
-| Impediment:  | +1     | The Phase 1 smoke-test runbook requires a readable zone health HUD to pass. |
-| Stakeholder: | +1     | V-Sekai operator tooling; aquarium demo Phase 1 items 3–5. |
-| **Total**    | **+4** | Build now. |
 
 ## Design
 

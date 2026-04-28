@@ -21,15 +21,6 @@ The operator view needs a browser client that starts in minutes, not after a
 multi-minute wasm compile. Stage 1 delivers that: connect, parse datagrams,
 render entities.
 
-## CRIS Score
-
-| Factor       | Score  | Evidence |
-| ------------ | ------ | -------- |
-| Complexity:  | +1     | Packet parser is 20 lines of TypeScript. Three.js WebGPU is production-ready. |
-| Reach:       | +1     | Pure browser, no install. Works wherever WebGPU is supported. |
-| Impediment:  | +1     | Unblocks operator camera, overlay, and smoke-test runbook immediately. |
-| Stakeholder: | +1     | Aquarium demo Phase 1 operator view depends on this. |
-| **Total**    | **+4** | Build now. |
 
 ## Design
 

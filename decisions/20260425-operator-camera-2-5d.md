@@ -20,15 +20,6 @@ unit group.
 The operator console has no camera. It needs two modes: grid survey
 (Triangle Strategy / FFT) and entity follow (Blue Archive).
 
-## CRIS Score
-
-| Factor       | Score  | Evidence |
-| ------------ | ------ | -------- |
-| Complexity:  | +1     | SpringArm3D + orthographic Camera3D is a known Godot pattern. |
-| Reach:       | +1     | Every operator session uses this view. |
-| Impediment:  | +1     | The smoke-test runbook cannot be written without a working camera. |
-| Stakeholder: | +1     | V-Sekai operator tooling depends on this for the aquarium demo. |
-| **Total**    | **+4** | Build now. |
 
 ## Design
 

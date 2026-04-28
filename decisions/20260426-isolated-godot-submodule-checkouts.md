@@ -93,15 +93,6 @@ Each `feat/*` branch in `multiplayer-fabric-godot`:
 The gitassembly in `multiplayer-fabric-merge` continues to merge all branches
 into `multiplayer-fabric` for the combined build.
 
-## CRIS Score
-
-| Factor          | Score | Evidence |
-| --------------- | ----- | -------- |
-| **C**omplexity  | −1    | No new repos; same single-repo model, just multiple checkout paths in build |
-| **R**reach       | +1    | Affects every developer adding engine changes — immediate isolation feedback |
-| **I**mpediment  | +1    | Current combined build masks per-feature failures; this directly unblocks attribution |
-| **S**takeholder | +1    | `multiplayer-fabric-build` CI is the gate for all platform releases |
-| **Total**       | +2    | Adopt |
 
 ## The Downsides
 

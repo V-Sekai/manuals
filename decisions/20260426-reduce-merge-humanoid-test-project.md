@@ -71,15 +71,6 @@ The scene exercises: VRM import, MToon shader, humanoid skeleton, and basic
 rigid-body plane collision — sufficient to confirm the assembled MMOG engine
 boots and renders without the XR surface.
 
-## CRIS Score
-
-| Factor          | Score | Evidence |
-| --------------- | ----- | -------- |
-| **C**omplexity  | −1    | Deletion only; no new code |
-| **R**each       | +1    | Every MMOG CI build is shorter and no longer coupled to XR modules |
-| **I**mpediment  | +1    | XR regressions currently block MMOG CI; removal eliminates that coupling |
-| **S**takeholder | +1    | MMOG server release gated on this build |
-| **Total**       | +2    | Adopt |
 
 ## The Downsides
 

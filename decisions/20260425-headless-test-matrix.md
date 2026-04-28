@@ -34,15 +34,6 @@ exists that verifies both connect to one server and that player actions are
 reflected in observer state. Tests must pass locally in Docker before being
 wired to CI, and must pass in CI before any VR hardware is involved.
 
-## CRIS Score
-
-| Factor       | Score  | Evidence |
-| ------------ | ------ | -------- |
-| Complexity:  | +1     | Both roles reuse `FabricMultiplayerPeer` and `fabric_client.gd`. `headless_log_observer.gd` already exists for the observer path. Shell-only orchestration; no browser engine, no JS test runner. |
-| Reach:       | +1     | Runs in CI on every push, no hardware dependency. |
-| Impediment:  | +1     | Without this matrix, a server-side regression could break the client silently. |
-| Stakeholder: | +1     | Pass condition for the aquarium demo requires two simultaneous observers. |
-| **Total**    | **+4** | Build now. |
 
 ## Design
 
