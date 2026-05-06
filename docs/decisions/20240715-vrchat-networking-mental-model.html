@@ -377,14 +377,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="sending-data-in-vrchat">Sending Data in VRChat</h3>
 <p>There are two primary methods to send data in VRChat:</p>
 <ol type="1">
-<li><p><strong>Udonsynced Variables</strong>:</p>
+<li><p>Udonsynced Variables:</p>
 <ul>
 <li>Mark variables as <code>[UdonSynced]</code>.</li>
 <li>Call <code>RequestSerialization()</code> in the script to send a copy of the synced variables to all other clients.</li>
 <li>Only the owner can call <code>RequestSerialization()</code>, so ensure you call <code>Networking.SetOwner()</code> first.</li>
 <li>An event called <code>OnDeserialization</code> is triggered when a network packet is received.</li>
 </ul></li>
-<li><p><strong>Network Events</strong>:</p>
+<li><p>Network Events:</p>
 <ul>
 <li>Use <code>SendCustomNetworkEvent()</code> to send an event.</li>
 <li>Specify a string that matches the name of a function taking no arguments; this function will run upon receiving the event.</li>

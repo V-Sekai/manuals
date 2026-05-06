@@ -428,20 +428,20 @@ div.csl-indent {
 <section id="implementation-plan" class="level2">
 <h2 class="anchored" data-anchor-id="implementation-plan"><strong>Implementation Plan</strong></h2>
 <ol type="1">
-<li><strong>Phase 1</strong>: Phoenix Core &amp; Pythonx Setup
+<li>Phase 1: Phoenix Core &amp; Pythonx Setup
 <ul>
 <li>Port uro entity relationships to Phoenix/Ecto schemas.</li>
 <li>Set up pythonx and configure the Python environment.</li>
 <li>Develop basic pythonx integration tests calling simple Python functions.</li>
 <li>Stage 1: Implement Oban workers that directly call librecommender functions via pythonx for initial testing and simple workflows.</li>
 </ul></li>
-<li><strong>Phase 2</strong>: Recommender Bridge &amp; Membrane Integration
+<li>Phase 2: Recommender Bridge &amp; Membrane Integration
 <ul>
 <li>Implement the Elixir protocol/interface for calling librecommender’s core recommendation logic via pythonx.</li>
 <li>Map JSON-LD attributes within Ecto schemas or dedicated context modules.</li>
 <li>Stage 2: Integrate pythonx calls within Membrane pipelines, potentially triggered by Oban jobs, for more complex, stream-based processing (e.g., analyzing scene data).</li>
 </ul></li>
-<li><strong>Validation</strong>:
+<li>Validation:
 <ul>
 <li>Success: &lt;500ms p99 inference latency for recommendation calls via pythonx.</li>
 <li>Failure: &gt;5% data serialization errors between Elixir and Python OR significant performance degradation due to pythonx overhead compared to benchmarks.</li>
@@ -460,11 +460,11 @@ div.csl-indent {
 <section id="risks" class="level2">
 <h2 class="anchored" data-anchor-id="risks"><strong>Risks</strong></h2>
 <ol type="1">
-<li><strong>Elixir-Python Interop Overhead</strong>: Performance impact of data serialization/deserialization between BEAM and Python using pythonx.</li>
-<li><strong>Python’s GIL</strong>: Potential concurrency limitations within the Python process called by pythonx, although Elixir’s concurrency can manage multiple external calls.</li>
-<li><strong>Deployment Complexity</strong>: Managing both Elixir and Python environments/dependencies in deployment.</li>
-<li><strong>Error Handling</strong>: Robustly handling errors originating from the Python side within Elixir.</li>
-<li><strong>JSON-LD Namespace Collisions</strong>: Ensuring consistent JSON-LD context handling.</li>
+<li>Elixir-Python Interop Overhead: Performance impact of data serialization/deserialization between BEAM and Python using pythonx.</li>
+<li>Python’s GIL: Potential concurrency limitations within the Python process called by pythonx, although Elixir’s concurrency can manage multiple external calls.</li>
+<li>Deployment Complexity: Managing both Elixir and Python environments/dependencies in deployment.</li>
+<li>Error Handling: Robustly handling errors originating from the Python side within Elixir.</li>
+<li>JSON-LD Namespace Collisions: Ensuring consistent JSON-LD context handling.</li>
 </ol>
 </section>
 <section id="alternatives-considered" class="level2">

@@ -334,26 +334,26 @@ ul.task-list li input[type="checkbox"] {
 <section id="implementation" class="level2">
 <h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
 <ol type="1">
-<li><p><strong>Preprocess the input image</strong>: Resize and normalize the input image to meet the requirements of Meta’s image segmentation model.</p></li>
-<li><p><strong>Extract the garment using Meta’s image segmentation model</strong>:</p>
+<li><p>Preprocess the input image: Resize and normalize the input image to meet the requirements of Meta’s image segmentation model.</p></li>
+<li><p>Extract the garment using Meta’s image segmentation model:</p>
 <ul>
 <li>Load the pre-trained Meta’s image segmentation model.</li>
 <li>Pass the preprocessed input image through the model to obtain the segmented garment image.</li>
 </ul></li>
-<li><p><strong>Prepare the segmented garment for 3D reconstruction</strong>:</p>
+<li><p>Prepare the segmented garment for 3D reconstruction:</p>
 <ul>
 <li>Load segmented garment image into zero123’s 3D novel view algorithm.</li>
 </ul></li>
-<li><p><strong>Apply zero123’s 3D reconstruction algorithm</strong>:</p>
+<li><p>Apply zero123’s 3D reconstruction algorithm:</p>
 <ul>
 <li>Load the pre-trained zero123’s 3D reconstruction model.</li>
 <li>Pass the prepared segmented garment image through the model to generate novel 3d views of the garment.</li>
 </ul></li>
-<li><p><strong>Generate novel 3D views of the garment</strong>:</p>
+<li><p>Generate novel 3D views of the garment:</p>
 <ul>
 <li>Rotate the 3D camera at intervals of 20 degrees around the garment to capture multiple 3D views.</li>
 </ul></li>
-<li><p><strong>Manually model the garment using views</strong>:</p>
+<li><p>Manually model the garment using views:</p>
 <ul>
 <li>Use a 3d design tool like Blender to create a mesh.</li>
 </ul></li>

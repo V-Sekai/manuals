@@ -328,14 +328,26 @@ ul.task-list li input[type="checkbox"] {
 <section id="design" class="level2">
 <h2 class="anchored" data-anchor-id="design">Design</h2>
 <p>Each zone owns a slice of a single continuous 30-bit Hilbert code space (Skilling 2004). Zones share boundaries, not walls. Entities migrate across those boundaries automatically — the player never sees a loading screen or a “server full” message.</p>
-<p><strong>AOI without adjacency tables.</strong> The Area of Interest band for a zone is derived directly from its Hilbert range, extended by <code>AOI_CELLS</code> on each side. Neighbor topology falls out of band overlap — no hand-authored adjacency tables. Adding a zone server changes the topology automatically.</p>
-<p><strong>Why Hilbert, not Morton.</strong> The Hilbert curve has tighter spatial locality than the Morton (Z-order) curve: cluster diameter scales as O(n^(1/3)) vs Morton’s O(n^(2/3)) (Bader 2013). Shorter cluster diameter means shorter AOI bands for the same coverage radius, which is why interest relay can copy each packet once per physical link rather than once per subscriber. Morton would require either wider AOI bands (more data per client) or a custom adjacency table to correct locality.</p>
-<p><strong>Formal verification.</strong> The forward and inverse Hilbert transforms are formally verified in Lean 4 (<code>PredictiveBVH/Spatial/HilbertRoundtrip.lean</code>) and code-generated to C and Rust. No hand-written bit manipulation to audit or port across engine upgrades.</p>
-<p><strong>Wire channel separation.</strong> Channel 0 carries Godot’s built-in RPC/spawner/synchronizer traffic. <code>CH_INTEREST</code>, <code>CH_PLAYER</code>, and <code>CH_MIGRATION</code> carry Fabric-specific streams. Neither side inspects the other’s packets. One pcap filter per channel yields exactly one semantic stream.</p>
+<section id="aoi-without-adjacency-tables" class="level4">
+<h4 class="anchored" data-anchor-id="aoi-without-adjacency-tables">AOI without adjacency tables</h4>
+<p>The Area of Interest band for a zone is derived directly from its Hilbert range, extended by <code>AOI_CELLS</code> on each side. Neighbor topology falls out of band overlap — no hand-authored adjacency tables. Adding a zone server changes the topology automatically.</p>
+</section>
+<section id="why-hilbert-not-morton" class="level4">
+<h4 class="anchored" data-anchor-id="why-hilbert-not-morton">Why Hilbert, not Morton</h4>
+<p>The Hilbert curve has tighter spatial locality than the Morton (Z-order) curve: cluster diameter scales as O(n^(1/3)) vs Morton’s O(n^(2/3)) (Bader 2013). Shorter cluster diameter means shorter AOI bands for the same coverage radius, which is why interest relay can copy each packet once per physical link rather than once per subscriber. Morton would require either wider AOI bands (more data per client) or a custom adjacency table to correct locality.</p>
+</section>
+<section id="formal-verification" class="level4">
+<h4 class="anchored" data-anchor-id="formal-verification">Formal verification</h4>
+<p>The forward and inverse Hilbert transforms are formally verified in Lean 4 (<code>PredictiveBVH/Spatial/HilbertRoundtrip.lean</code>) and code-generated to C and Rust. No hand-written bit manipulation to audit or port across engine upgrades.</p>
+</section>
+<section id="wire-channel-separation" class="level4">
+<h4 class="anchored" data-anchor-id="wire-channel-separation">Wire channel separation</h4>
+<p>Channel 0 carries Godot’s built-in RPC/spawner/synchronizer traffic. <code>CH_INTEREST</code>, <code>CH_PLAYER</code>, and <code>CH_MIGRATION</code> carry Fabric-specific streams. Neither side inspects the other’s packets. One pcap filter per channel yields exactly one semantic stream.</p>
+</section>
 </section>
 <section id="the-benefits" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p>No coordinator, match-maker, or session database. Neighbor topology is automatic. Players experience a continuous world. The locality proof is machine-checked.</p>
+<p>No coordinator or session database. Neighbor topology is automatic. Players experience a continuous world. The locality proof is machine-checked.</p>
 </section>
 <section id="the-downsides" class="level2">
 <h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>

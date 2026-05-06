@@ -383,9 +383,9 @@ div.csl-indent {
 <section id="design" class="level2">
 <h2 class="anchored" data-anchor-id="design">Design</h2>
 <ol type="1">
-<li><p><strong>Blender Setup</strong>: Create UV maps (UV3-UV8) under <em>Mesh Properties &gt; UV Maps</em>. Encode data into these channels (e.g., UV5.x for hitbox IDs).</p></li>
-<li><p><strong>Export</strong>: Use <code>.gltf</code> or <code>.blend</code> files, ensuring UVs are unwrapped on the Face Corner domain. (Use smooth shading.)</p></li>
-<li><p><strong>Godot Shaders</strong>:</p>
+<li><p>Blender Setup: Create UV maps (UV3-UV8) under <em>Mesh Properties &gt; UV Maps</em>. Encode data into these channels (e.g., UV5.x for hitbox IDs).</p></li>
+<li><p>Export: Use <code>.gltf</code> or <code>.blend</code> files, ensuring UVs are unwrapped on the Face Corner domain. (Use smooth shading.)</p></li>
+<li><p>Godot Shaders:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode glsl code-with-copy"><code class="sourceCode glsl"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Access CUSTOM0 (UV3 + UV4)</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">vec4</span> custom_data <span class="op">=</span> CUSTOM0<span class="op">;</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">float</span> hitbox_id <span class="op">=</span> custom_data<span class="op">.</span><span class="fu">x</span><span class="op">;</span></span>
@@ -394,7 +394,7 @@ div.csl-indent {
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> <span class="op">(</span>CUSTOM1<span class="op">.</span><span class="fu">z</span> <span class="op">&gt;</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">{</span> <span class="co">// UV7 value stored in CUSTOM1.zw</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    ALBEDO <span class="op">=</span> armor_texture<span class="op">;</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p><strong>Data Handling</strong>: Use <code>surface_get_arrays</code> to access <code>ARRAY_CUSTOM0-3</code> in scripts.</p></li>
+<li><p>Data Handling: Use <code>surface_get_arrays</code> to access <code>ARRAY_CUSTOM0-3</code> in scripts.</p></li>
 </ol>
 </section>
 <section id="what-are-the-benefits-of-the-proposal" class="level2">

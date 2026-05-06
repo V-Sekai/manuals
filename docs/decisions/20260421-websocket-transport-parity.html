@@ -329,7 +329,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
   <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
-  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a></li>
+  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a>
+  <ul class="collapse">
+  <li><a href="#environment" id="toc-environment" class="nav-link" data-scroll-target="#environment">Environment</a></li>
+  <li><a href="#metrics" id="toc-metrics" class="nav-link" data-scroll-target="#metrics">Metrics</a></li>
+  <li><a href="#acceptance-threshold" id="toc-acceptance-threshold" class="nav-link" data-scroll-target="#acceptance-threshold">Acceptance threshold</a></li>
+  <li><a href="#if-threshold-is-not-met" id="toc-if-threshold-is-not-met" class="nav-link" data-scroll-target="#if-threshold-is-not-met">If threshold is not met</a></li>
+  </ul></li>
   <li><a href="#the-benefits" id="toc-the-benefits" class="nav-link" data-scroll-target="#the-benefits">The Benefits</a></li>
   <li><a href="#the-downsides" id="toc-the-downsides" class="nav-link" data-scroll-target="#the-downsides">The Downsides</a></li>
   <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
@@ -363,8 +369,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="design" class="level2">
 <h2 class="anchored" data-anchor-id="design">Design</h2>
 <p>Define a reproducible load test:</p>
-<p><strong>Environment</strong> - 100 simulated clients, 50 on WebTransport (control), 50 on WebSocket (test) - Zone with 1,800 entity slots at 50% occupancy (900 active entities) - Network condition: 20% added packet delay (uniform 50 ms), 1% packet loss (WT only; TCP masks loss) - Tick rate: 20 Hz (default), snapshot broadcast per tick</p>
-<p><strong>Metrics</strong></p>
+<section id="environment" class="level3">
+<h3 class="anchored" data-anchor-id="environment">Environment</h3>
+<ul>
+<li>100 simulated clients, 50 on WebTransport (control), 50 on WebSocket (test)</li>
+<li>Zone with 1,800 entity slots at 50% occupancy (900 active entities)</li>
+<li>Network condition: 20% added packet delay (uniform 50 ms), 1% packet loss (WT only; TCP masks loss)</li>
+<li>Tick rate: 20 Hz (default), snapshot broadcast per tick</li>
+</ul>
+</section>
+<section id="metrics" class="level3">
+<h3 class="anchored" data-anchor-id="metrics">Metrics</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -395,9 +410,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<p><strong>Acceptance threshold</strong></p>
+</section>
+<section id="acceptance-threshold" class="level3">
+<h3 class="anchored" data-anchor-id="acceptance-threshold">Acceptance threshold</h3>
 <p>WebSocket p95 round-trip ≤ 2× WebTransport p95 round-trip at steady state.</p>
-<p><strong>If threshold is not met</strong></p>
+</section>
+<section id="if-threshold-is-not-met" class="level3">
+<h3 class="anchored" data-anchor-id="if-threshold-is-not-met">If threshold is not met</h3>
 <p>Implement snapshot dropping at the zone server before enqueue on TCP connections: if a newer snapshot for the same entity is already queued for a peer, discard the older one. This restores the “drop stale” semantic that QUIC datagrams provide natively.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// In FabricMMOGZone::_broadcast_interest_snapshot()</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>_ws_peer_snapshot_queued<span class="op">[</span>p_peer_id<span class="op">][</span>entity_id<span class="op">])</span> <span class="op">{</span></span>
@@ -406,6 +425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>_enqueue_entity_snapshot<span class="op">(</span>p_peer_id<span class="op">,</span> entity_id<span class="op">,</span> snapshot<span class="op">);</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>_ws_peer_snapshot_queued<span class="op">[</span>p_peer_id<span class="op">][</span>entity_id<span class="op">]</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Write results to <code>manuals/decisions/attachments/websocket-parity-test-results.csv</code>. If the threshold is met, the WS path is declared production-ready for the primary desktop audience. If not, the dropping mechanism above is merged before the WS path is promoted.</p>
+</section>
 </section>
 <section id="the-benefits" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>

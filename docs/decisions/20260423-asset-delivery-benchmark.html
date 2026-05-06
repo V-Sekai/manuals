@@ -329,7 +329,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
   <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
-  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a></li>
+  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a>
+  <ul class="collapse">
+  <li><a href="#strategy-a-casync-via-aria-storage-current-stack" id="toc-strategy-a-casync-via-aria-storage-current-stack" class="nav-link" data-scroll-target="#strategy-a-casync-via-aria-storage-current-stack">Strategy A — casync via aria-storage (current stack)</a></li>
+  <li><a href="#strategy-b-direct-tarball-download-baseline" id="toc-strategy-b-direct-tarball-download-baseline" class="nav-link" data-scroll-target="#strategy-b-direct-tarball-download-baseline">Strategy B — direct tarball download (baseline)</a></li>
+  </ul></li>
   <li><a href="#the-benefits" id="toc-the-benefits" class="nav-link" data-scroll-target="#the-benefits">The Benefits</a></li>
   <li><a href="#the-downsides" id="toc-the-downsides" class="nav-link" data-scroll-target="#the-downsides">The Downsides</a></li>
   <li><a href="#the-road-not-taken" id="toc-the-road-not-taken" class="nav-link" data-scroll-target="#the-road-not-taken">The Road Not Taken</a></li>
@@ -365,7 +369,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="design" class="level2">
 <h2 class="anchored" data-anchor-id="design">Design</h2>
 <p>Prepare a representative Godot export: one V-Sekai avatar and environment, approximately 500 MB, matching a typical world export file mix.</p>
-<p><strong>Strategy A — casync via aria-storage (current stack)</strong></p>
+<section id="strategy-a-casync-via-aria-storage-current-stack" class="level3">
+<h3 class="anchored" data-anchor-id="strategy-a-casync-via-aria-storage-current-stack">Strategy A — casync via aria-storage (current stack)</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Chunk and publish</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">desync</span> make <span class="at">-s</span> s3+https://... output.caibx input_dir/</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -373,7 +378,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">mix</span> aria_storage.fetch <span class="at">--index</span> https://.../output.caibx <span class="dt">\</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">--store</span> https://.../store <span class="dt">\</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">--output</span> ./local_dir</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Strategy B — direct tarball download (baseline)</strong></p>
+</section>
+<section id="strategy-b-direct-tarball-download-baseline" class="level3">
+<h3 class="anchored" data-anchor-id="strategy-b-direct-tarball-download-baseline">Strategy B — direct tarball download (baseline)</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> czf export.tar.gz input_dir/</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Serve over HTTP. Client downloads the full archive every update.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>No chunking. Measures the floor for cold download size and the ceiling for patch size (always 100 % of the archive).</p>
@@ -409,6 +416,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>Write raw results to <code>manuals/decisions/attachments/asset-delivery-benchmark-results.csv</code>.</p>
+</section>
 </section>
 <section id="the-benefits" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>

@@ -354,21 +354,21 @@ div.csl-indent {
 </section>
 <section id="the-benefits" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
-<p><strong>Rejected Proposal Benefits (Not Implemented):</strong> - Dynamic runtime configuration without restarts - Database-backed configuration management - Granular control over feature availability - Potential for user-specific feature toggles</p>
+<p>The rejected proposal would have provided: dynamic runtime configuration without restarts, database-backed configuration management, granular control over feature availability, and the potential for user-specific feature toggles. None of these were implemented.</p>
 </section>
 <section id="the-downsides" class="level2">
 <h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p><strong>SQL-Based Feature Flagging Issues:</strong> - Overengineered: Complex database schema and query logic for simple configuration needs - Error-prone: Configuration stored in database tables is harder to version control and audit - Docker Limitations: Cannot control separate container execution (either run Next.js container or don’t) - Caching Issues: Runtime flag changes don’t affect code paths that branch during application startup - Maintenance Burden: Additional complexity for operations and debugging</p>
-<p><strong>Runtime Configuration Problems:</strong> - Some application behavior is determined at startup and cannot be changed dynamically - Feature flags don’t solve the fundamental problem of maintaining parallel implementations - Introduces potential for inconsistent application state during flag transitions</p>
+<p>SQL-based feature flagging issues: - Complex database schema and query logic for simple configuration needs - Configuration stored in database tables is harder to version control and audit - Cannot control separate container execution (either run Next.js container or don’t) - Runtime flag changes don’t affect code paths that branch during application startup - Additional complexity for operations and debugging</p>
+<p>Runtime configuration problems: - Some application behavior is determined at startup and cannot be changed dynamically - Feature flags don’t solve the underlying problem of maintaining parallel implementations - Introduces potential for inconsistent application state during flag transitions</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p><strong>SQL-Based Feature Flagging:</strong> - Implementing database tables for configuration management - Building runtime flag evaluation system - Creating administrative interfaces for flag management - Handling flag state synchronization across distributed systems</p>
-<p><strong>Dynamic Runtime Configuration:</strong> - Building systems that allow all configuration to change without restart - Implementing complex caching invalidation strategies - Creating sophisticated state management for configuration changes</p>
+<p>SQL-based feature flagging: database tables for configuration management, a runtime flag evaluation system, administrative interfaces for flag management, and flag state synchronization across distributed systems.</p>
+<p>Dynamic runtime configuration: systems that allow all configuration to change without restart, complex caching invalidation, and sophisticated state management for configuration changes.</p>
 </section>
 <section id="the-infrequent-use-case" class="level2">
 <h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>
-<p><strong>When SQL Feature Flagging Might Be Appropriate:</strong> - Large enterprise applications with hundreds of features requiring granular control - Systems where configuration changes must take effect immediately without any downtime - Applications with user-specific feature customization requirements - Complex A/B testing scenarios requiring database-backed analytics</p>
+<p>SQL feature flagging may be appropriate for: large enterprise applications with hundreds of features requiring granular control; systems where configuration changes must take effect immediately without any downtime; applications with user-specific feature customization requirements; or complex A/B testing scenarios requiring database-backed analytics.</p>
 </section>
 <section id="in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
@@ -398,10 +398,10 @@ div.csl-indent {
 <section id="configuration-terminology" class="level3">
 <h3 class="anchored" data-anchor-id="configuration-terminology">Configuration Terminology</h3>
 <ol type="1">
-<li><strong>Feature Flag</strong>: A mechanism to enable or disable functionality without code changes</li>
-<li><strong>Configuration Drift</strong>: When runtime configuration differs from deployed code expectations</li>
-<li><strong>Twelve-Factor App</strong>: Application development methodology emphasizing configuration through environment variables</li>
-<li><strong>Hot Reload</strong>: Changing application behavior without restarting the process</li>
+<li>Feature Flag: A mechanism to enable or disable functionality without code changes</li>
+<li>Configuration Drift: When runtime configuration differs from deployed code expectations</li>
+<li>Twelve-Factor App: Application development methodology emphasizing configuration through environment variables</li>
+<li>Hot Reload: Changing application behavior without restarting the process</li>
 </ol>
 
 

@@ -380,11 +380,9 @@ div.csl-indent {
 <p><code>multiplayer-fabric</code> began as a single monorepo containing every concern of the project: the Godot engine fork, the XR interaction plugin, the Meta XR Simulator integration, the ArtifactsMMO HTN planning bot, taskweft, zone servers, casync, and more than twenty other submodules. A developer working on XR interaction had to clone the zone backend. A developer working on the RPG planning bot had to clone the Godot engine. Every CI run, dependency audit, and <code>git submodule update --init</code> operated on the full set.</p>
 <p>Gall’s Law <span class="citation" data-cites="gall1977systemantics">(<a href="#ref-gall1977systemantics" role="doc-biblioref">Gall 1977</a>)</span>: a complex system that works evolved from a simple system that worked. A complex system designed from scratch never works.</p>
 <p>The project now has three distinguishable product layers with different development cadences, different runtime environments, and different teams of concern:</p>
-<ul>
-<li><strong>VR</strong> — Godot engine fork, XR interaction plugin, Meta XR Simulator, canvas plane, lasso interaction, OTel tracing. Runs on a headset or macOS desktop.</li>
-<li><strong>MMOG</strong> — Zone servers (Elixir), webtransport, zone console, zone backend, predictive BVH interest management, casync distribution. Runs on Linux servers.</li>
-<li><strong>RPG</strong> — HTN planning bot (ArtifactsMMO), taskweft domain library. Runs as an Elixir CLI against a game API.</li>
-</ul>
+<p>VR: Godot engine fork, XR interaction plugin, Meta XR Simulator, canvas plane, lasso interaction, OTel tracing. Runs on a headset or macOS desktop.</p>
+<p>MMOG: Zone servers (Elixir), webtransport, zone console, zone backend, predictive BVH interest management, casync distribution. Runs on Linux servers.</p>
+<p>RPG: HTN planning bot (ArtifactsMMO), taskweft domain library. Runs as an Elixir CLI against a game API.</p>
 </section>
 <section id="the-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
@@ -437,8 +435,8 @@ div.csl-indent {
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p><strong>Keep a single monorepo, use sparse checkout</strong>: sparse-checkout reduces local disk use but does not scope CI, does not express layer ownership in GitHub, and does not prevent a noisy-neighbour submodule from stalling <code>git submodule update</code>.</p>
-<p><strong>Two repos (VR + everything else)</strong>: rejected because the MMOG server and the RPG planning bot have no runtime dependency on each other. Grouping them adds server infrastructure noise to a game-logic developer’s workspace without benefit.</p>
+<p>A single monorepo with sparse checkout reduces local disk use but does not scope CI, does not express layer ownership in GitHub, and does not prevent a noisy-neighbour submodule from stalling <code>git submodule update</code>.</p>
+<p>Two repos (VR + everything else) were rejected because the MMOG server and the RPG planning bot have no runtime dependency on each other. Grouping them adds server infrastructure noise to a game-logic developer’s workspace without benefit.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>

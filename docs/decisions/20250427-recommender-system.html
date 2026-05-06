@@ -350,7 +350,8 @@ div.csl-indent {
 <section id="proposed-solution" class="level2">
 <h2 class="anchored" data-anchor-id="proposed-solution"><strong>Proposed Solution</strong></h2>
 <p>Implement Elixir/Phoenix using <code>FLAME</code> to serve the <code>librecommender</code> model. Leverage <code>Ecto</code> for CRDB data mapping, <code>Oban</code> for background job processing (like model retraining triggers or batch predictions), and potentially <code>Membrane</code> for integrating recommendation calls into data streams.</p>
-<p><strong>Key Components:</strong></p>
+<section id="key-components" class="level4">
+<h4 class="anchored" data-anchor-id="key-components">Key Components</h4>
 <ul>
 <li>Phoenix/Ecto: Backend framework and database interaction layer with CRDB. Handles schemas and application logic.</li>
 <li>Oban: Manages background jobs which can trigger processing, including interactions with FLAME services or data preparation.</li>
@@ -359,21 +360,22 @@ div.csl-indent {
 <li>CockroachDB (CRDB): Persistent storage managed via Ecto.</li>
 </ul>
 </section>
+</section>
 <section id="implementation-plan" class="level2">
 <h2 class="anchored" data-anchor-id="implementation-plan"><strong>Implementation Plan</strong></h2>
 <ol type="1">
-<li><strong>Phase 1</strong>: Core Setup &amp; Basic Integration
+<li>Phase 1: Core Setup &amp; Basic Integration
 <ul>
 <li>Define Ecto schemas mapping to CRDB.</li>
 <li>Set up the <code>FLAME</code> environment and configure it to serve the <code>librecommender</code> model.</li>
 <li>Stage 1: Implement Phoenix endpoints or Oban workers that make requests to the <code>librecommender</code> model served by <code>FLAME</code> and interact with CRDB via Ecto.</li>
 </ul></li>
-<li><strong>Phase 2</strong>: Advanced Integration &amp; Metadata
+<li>Phase 2: Advanced Integration &amp; Metadata
 <ul>
 <li>Develop Elixir client modules for interacting with the <code>FLAME</code>-served <code>librecommender</code>.</li>
 <li>Stage 2: Explore integrating <code>FLAME</code> calls within Membrane pipelines (potentially triggered by Oban) for stream-based recommendations, storing results via Ecto in CRDB.</li>
 </ul></li>
-<li><strong>Validation</strong>:
+<li>Validation:
 <ul>
 <li>Success: &lt;500ms p99 latency for <code>FLAME</code> recommendation calls under expected load. Efficient resource utilization by FLAME runners.</li>
 <li>Failure: &gt;5% errors during FLAME model inference OR significant performance bottlenecks under load.</li>

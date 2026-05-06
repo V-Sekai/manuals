@@ -371,12 +371,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="proposed-solution">Proposed Solution</h2>
 <p>The solution involves several steps to ensure data consistency and durability:</p>
 <ol type="1">
-<li><p><strong>Content Delivery Network (CDN)</strong>: We will create a CDN similar to a static sftp file store for efficient content delivery.</p></li>
-<li><p><strong>Etso for Erlang Term Storage (ETS)</strong>: Etso will be configured to manage temporary, in-memory data structures with Ecto schemas in Elixir applications. This is ideal for quick data manipulation and caching.</p></li>
-<li><p><strong>Raft/Ra for Distributed Consensus</strong>: Raft/Ra will be deployed to ensure distributed consensus across system nodes, which is crucial for coordinated state changes and maintaining data consistency.</p></li>
-<li><p><strong>CockroachDB for Persistent Storage</strong>: CockroachDB will store critical, structured data that requires ACID transactions and global accessibility. This ensures the durability of our data.</p></li>
-<li><p><strong>Data Flow Management</strong>: Protocols will be established to move temporary data from Etso/ETS to the CDN for bulk storage. For structured data persistence, we will use CockroachDB.</p></li>
-<li><p><strong>Consistency Management</strong>: Raft/Ra will manage write operations across the CDN and CockroachDB to ensure consistency and fault tolerance.</p></li>
+<li><p>Content Delivery Network (CDN): We will create a CDN similar to a static sftp file store for efficient content delivery.</p></li>
+<li><p>Etso for Erlang Term Storage (ETS): Etso will be configured to manage temporary, in-memory data structures with Ecto schemas in Elixir applications. This is ideal for quick data manipulation and caching.</p></li>
+<li><p>Raft/Ra for Distributed Consensus: Raft/Ra will be deployed to ensure distributed consensus across system nodes, which is crucial for coordinated state changes and maintaining data consistency.</p></li>
+<li><p>CockroachDB for Persistent Storage: CockroachDB will store critical, structured data that requires ACID transactions and global accessibility. This ensures the durability of our data.</p></li>
+<li><p>Data Flow Management: Protocols will be established to move temporary data from Etso/ETS to the CDN for bulk storage. For structured data persistence, we will use CockroachDB.</p></li>
+<li><p>Consistency Management: Raft/Ra will manage write operations across the CDN and CockroachDB to ensure consistency and fault tolerance.</p></li>
 </ol>
 <section id="configure-etso-for-ets" class="level3">
 <h3 class="anchored" data-anchor-id="configure-etso-for-ets">Configure Etso for ETS</h3>

@@ -378,8 +378,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="domain-and-plan-separation" class="level3">
 <h3 class="anchored" data-anchor-id="domain-and-plan-separation">Domain and plan separation</h3>
 <p>Two distinct layers:</p>
-<p><strong>Domain (fixed for zone lifetime)</strong> — loaded from the GLTF interactivity extensions in the zone asset bundle at startup. Defines the action vocabulary: state variable names, action effects, and method preconditions. The zone’s entity state is produced by applying actions from this domain; the domain and the entity state are a unit and cannot be swapped independently at runtime.</p>
-<p><strong>Plan (dynamic JSON/dict)</strong> — a sequence of action names that are valid within the loaded domain. Because a plan only references actions already defined in the domain, hot-pushing a new plan at runtime does not change the state schema. Zone ACID properties are preserved.</p>
+<p>Domain (fixed for zone lifetime): loaded from the GLTF interactivity extensions in the zone asset bundle at startup. Defines the action vocabulary: state variable names, action effects, and method preconditions. The zone’s entity state is produced by applying actions from this domain; the domain and the entity state are a unit and cannot be swapped independently at runtime.</p>
+<p>Plan (dynamic JSON/dict): a sequence of action names that are valid within the loaded domain. Because a plan only references actions already defined in the domain, hot-pushing a new plan at runtime does not change the state schema. Zone ACID properties are preserved.</p>
 <p>This separation mirrors how GLTF interactivity works: the interactivity extension defines the fixed set of triggers and actions baked into the asset, while runtime orchestration decides which sequence to execute.</p>
 </section>
 <section id="domain-per-species" class="level3">

@@ -389,18 +389,18 @@ div.csl-indent {
 <h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
 <p>To use T5 (Text-to-Text Transfer Transformer) with JSON-former for XState in Godot Engine 4.0, you’ll need to follow these steps:</p>
 <ol type="1">
-<li><strong>Load the necessary libraries</strong></li>
+<li>Load the necessary libraries</li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode gd code-with-copy"><code class="sourceCode gap"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">var</span> <span class="va">transformers</span> <span class="op">=</span> <span class="va">preload</span>(<span class="st">"res://path/to/transformers.gd"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="va">var</span> <span class="va">torch</span> <span class="op">=</span> <span class="va">preload</span>(<span class="st">"res://path/to/torch.gd"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="2" type="1">
-<li><strong>Load the T5 model and tokenizer</strong></li>
+<li>Load the T5 model and tokenizer</li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode gd code-with-copy"><code class="sourceCode gap"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="va">var</span> <span class="va">model_name</span> <span class="op">=</span> <span class="st">"t5-small"</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="va">var</span> <span class="va">tokenizer</span> <span class="op">=</span> <span class="va">transformers</span>.<span class="va">load_T5Tokenizer</span>(<span class="va">model_name</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="va">var</span> <span class="va">model</span> <span class="op">=</span> <span class="va">transformers</span>.<span class="va">load_T5ForConditionalGeneration</span>(<span class="va">model_name</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="3" type="1">
-<li><strong>Create a function to generate text using T5</strong></li>
+<li>Create a function to generate text using T5</li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode gd code-with-copy"><code class="sourceCode gap"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">func</span> <span class="va">generate_text</span>(<span class="va">input_text</span><span class="op">:</span> <span class="bu">String</span>) <span class="op">-&gt;</span> <span class="bu">String</span><span class="op">:</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">var</span> <span class="va">input_ids</span> <span class="op">=</span> <span class="va">tokenizer</span>.<span class="va">encode</span>(<span class="va">input_text</span>)</span>
@@ -408,26 +408,26 @@ div.csl-indent {
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="va">var</span> <span class="va">generated_text</span> <span class="op">=</span> <span class="va">tokenizer</span>.<span class="va">decode</span>(<span class="va">outputs</span>[<span class="fl">0</span>])</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">return</span> <span class="va">generated_text</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="4" type="1">
-<li><strong>Create a function to replace placeholders in T5 output</strong></li>
+<li>Create a function to replace placeholders in T5 output</li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode gd code-with-copy"><code class="sourceCode gap"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="va">func</span> <span class="va">replace_placeholders</span>(<span class="va">text</span><span class="op">:</span> <span class="bu">String</span>) <span class="op">-&gt;</span> <span class="bu">String</span><span class="op">:</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">var</span> <span class="va">formatted_text</span> <span class="op">=</span> <span class="va">text</span>.<span class="va">replace</span>(<span class="st">"&lt;extra_id_0&gt;"</span><span class="op">,</span> <span class="st">"event"</span>).<span class="va">replace</span>(<span class="st">"&lt;extra_id_1&gt;"</span><span class="op">,</span> <span class="st">"state"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">return</span> <span class="va">formatted_text</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="5" type="1">
-<li><strong>Create a function to parse JSON from formatted text</strong></li>
+<li>Create a function to parse JSON from formatted text</li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode gd code-with-copy"><code class="sourceCode gap"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">func</span> <span class="va">parse_JSON</span>(<span class="va">formatted_text</span><span class="op">:</span> <span class="bu">String</span>) <span class="op">-&gt;</span> <span class="va">Dictionary</span><span class="op">:</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">var</span> <span class="va">json_object</span> <span class="op">=</span> <span class="va">JSON</span>.<span class="va">parse</span>(<span class="va">formatted_text</span>).<span class="va">result</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">return</span> <span class="va">json_object</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="6" type="1">
-<li><strong>Create a function to convert T5 output to XState JSON format</strong></li>
+<li>Create a function to convert T5 output to XState JSON format</li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode gd code-with-copy"><code class="sourceCode gap"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="va">func</span> <span class="va">t5_to_jsonformer_xstate</span>(<span class="va">text</span><span class="op">:</span> <span class="bu">String</span>) <span class="op">-&gt;</span> <span class="va">Dictionary</span><span class="op">:</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">var</span> <span class="va">formatted_text</span> <span class="op">=</span> <span class="va">replace_placeholders</span>(<span class="va">text</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">var</span> <span class="va">json_object</span> <span class="op">=</span> <span class="va">parse_JSON</span>(<span class="va">formatted_text</span>)</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">return</span> <span class="va">json_object</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="7" type="1">
-<li><strong>Use the functions to generate XState JSON</strong></li>
+<li>Use the functions to generate XState JSON</li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode gd code-with-copy"><code class="sourceCode gap"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="va">func</span> _<span class="va">ready</span>()<span class="op">:</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">var</span> <span class="va">input_text</span> <span class="op">=</span> <span class="st">"your input text here"</span></span>
@@ -454,7 +454,7 @@ div.csl-indent {
 <h2 class="anchored" data-anchor-id="option-graveyard">Option graveyard</h2>
 <p>Here are some option graveyard items for the proposal:</p>
 <ol type="1">
-<li><p><strong>Using rule-based natural language processing (NLP) techniques</strong></p>
+<li><p>Using rule-based natural language processing (NLP) techniques</p>
 <ul>
 <li>Pros:
 <ul>
@@ -467,7 +467,7 @@ div.csl-indent {
 <li>Requires manual updates to rules as new use cases emerge.</li>
 </ul></li>
 </ul></li>
-<li><p><strong>Using other pre-trained NLP models (e.g., GPT-3, BERT)</strong></p>
+<li><p>Using other pre-trained NLP models (e.g., GPT-3, BERT)</p>
 <ul>
 <li>Pros:
 <ul>
@@ -480,7 +480,7 @@ div.csl-indent {
 <li>Some models may have higher computational requirements or costs.</li>
 </ul></li>
 </ul></li>
-<li><p><strong>Creating a custom NLP model from scratch</strong></p>
+<li><p>Creating a custom NLP model from scratch</p>
 <ul>
 <li>Pros:
 <ul>
@@ -493,7 +493,7 @@ div.csl-indent {
 <li>May not perform as well as existing state-of-the-art models.</li>
 </ul></li>
 </ul></li>
-<li><p><strong>Using an external API or service for natural language understanding</strong></p>
+<li><p>Using an external API or service for natural language understanding</p>
 <ul>
 <li>Pros:
 <ul>

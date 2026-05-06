@@ -338,14 +338,30 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="context-and-problem-statement">Context and Problem Statement</h2>
 <p>For Groups, this system aims to solve the following issues:</p>
 <ul>
-<li><strong>(A)</strong> Need a way to standardize scene spawning.</li>
-<li><strong>(B)</strong> Need a way to refer to nodes/instances that is consistent across clients (for example, “Set parent to …”).</li>
-<li><strong>(C)</strong> Need a way to synchronize state between clients.</li>
-<li><strong>(D)</strong> Provides a basic set of standard protocols and interactions.</li>
-<li><strong>(E)</strong> Provides the basis for a security/privacy model regarding entity communication/permissions over the network.</li>
-<li><strong>(F)</strong> Provides a security model locally for access between nodes of one entity and nodes of another entity (assuming a secure scripting framework is implemented).</li>
-<li><strong>(G)</strong> This also solves the problem of abstracting away implementation details of entities; for example, there should be no need to deal with <em>Godot nodes</em> on an individual basis.</li>
-<li><strong>(H)</strong> Provide a unified way to create top-level physics hierarchies isolated from other game logic.</li>
+<li><ol type="A">
+<li>Need a way to standardize scene spawning.</li>
+</ol></li>
+<li><ol start="2" type="A">
+<li>Need a way to refer to nodes/instances that is consistent across clients (for example, “Set parent to …”).</li>
+</ol></li>
+<li><ol start="3" type="A">
+<li>Need a way to synchronize state between clients.</li>
+</ol></li>
+<li><ol start="4" type="A">
+<li>Provides a basic set of standard protocols and interactions.</li>
+</ol></li>
+<li><ol start="5" type="A">
+<li>Provides the basis for a security/privacy model regarding entity communication/permissions over the network.</li>
+</ol></li>
+<li><ol start="6" type="A">
+<li>Provides a security model locally for access between nodes of one entity and nodes of another entity (assuming a secure scripting framework is implemented).</li>
+</ol></li>
+<li><ol start="7" type="A">
+<li>This also solves the problem of abstracting away implementation details of entities; for example, there should be no need to deal with <em>Godot nodes</em> on an individual basis.</li>
+</ol></li>
+<li><ol start="8" type="A">
+<li>Provide a unified way to create top-level physics hierarchies isolated from other game logic.</li>
+</ol></li>
 </ul>
 <p>Note: This proposal covers three <strong>Spawn Types</strong>:</p>
 <ul>
@@ -375,7 +391,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="c.-state-synchronization" class="level3">
 <h3 class="anchored" data-anchor-id="c.-state-synchronization">C. State Synchronization</h3>
 <p>Entities will define a set of state variables that must be synced. The network protocol will take care of updating the state gradually over time, as well as rate-limiting. Events can be used to provide forced updates. Guarantees? Exposing metadata about when the state was updated?</p>
-<p><strong>Entity properties:</strong></p>
+<section id="entity-properties" class="level4">
+<h4 class="anchored" data-anchor-id="entity-properties">Entity properties</h4>
 <ul>
 <li>State that is synced is properties.</li>
 <li>Some properties are only assignable at spawn time (for example, scene file?)</li>
@@ -386,17 +403,23 @@ ul.task-list li input[type="checkbox"] {
 <p>Delta encoding &amp; ACK protocol:</p>
 <p>When to use reliable events vs.&nbsp;“unreliable” (eventual) state synchronization: Events as a means for state synchronization.</p>
 </section>
+</section>
 <section id="d.-standard-interaction-protocols" class="level3">
 <h3 class="anchored" data-anchor-id="d.-standard-interaction-protocols">D. Standard Interaction Protocols</h3>
 <p>TODO: What classes / bespoke types exist? Examples: Physics, Physics Pickup; Button; Movable Platform; Vehicle</p>
 </section>
 <section id="e.-network-security-model" class="level3">
 <h3 class="anchored" data-anchor-id="e.-network-security-model">E. Network Security Model</h3>
-<p><strong>Concepts:</strong></p>
-<p><strong>Ownership:</strong></p>
+<section id="concepts" class="level4">
+<h4 class="anchored" data-anchor-id="concepts">Concepts</h4>
+</section>
+<section id="ownership" class="level4">
+<h4 class="anchored" data-anchor-id="ownership">Ownership</h4>
 <p>All entities will be owned by the player who interacts with them or by the server.<br>
 Entity ownership will be transferred if the current owner leaves.</p>
-<p><strong>Mastership:</strong></p>
+</section>
+<section id="mastership" class="level4">
+<h4 class="anchored" data-anchor-id="mastership">Mastership</h4>
 <p>Map entities may largely be mastered by a dedicated server.</p>
 <p>Avatar entities and props will be mastered by the player that spawned them, even if another player owns them.</p>
 <p>(Example: Alice personally spawns a ball avatar prop and throws it to Bob, who catches it. Alice has Mastership; Bob has Ownership.)<br>
@@ -404,6 +427,7 @@ Mastership may be transferred on map exit; or they may be despawned (the player 
 <p>Privacy: Entities may reveal very little state to the network. Are there cases where different players may be given different permissions?</p>
 <p>Example: Cooperative game, in which state is shared between some players but not others.</p>
 <p>Example: Team Melee</p>
+</section>
 </section>
 <section id="f.-inter-entity-isolation" class="level3">
 <h3 class="anchored" data-anchor-id="f.-inter-entity-isolation">F. Inter-entity Isolation</h3>

@@ -394,8 +394,8 @@ div.csl-indent {
 <h3 class="anchored" data-anchor-id="rotation-representation-twistswing-per-axis-in-0-1">Rotation representation: twist/swing per axis in [0, 1]</h3>
 <p>Camera orientation is expressed as a twist/swing pair, following the same decomposition used by <code>TransformUtil.swing_twist</code> in the humanoid project (<code>addons/humanoid/transform_util.gd</code>):</p>
 <ul>
-<li><strong>Twist</strong>: yaw around the world Y axis, in [0, 1]. 0.0 = north, 0.25 = east, 0.5 = south, 0.75 = west.</li>
-<li><strong>Swing</strong>: elevation pitch, fixed at <code>SWING_ELEVATION = 0.153</code> (153/1000 of a full turn ≈ 55°). In [0, 1] per axis; only the X-axis (pitch) is non-zero. Swing does not change at runtime.</li>
+<li>Twist: yaw around the world Y axis, in [0, 1]. 0.0 = north, 0.25 = east, 0.5 = south, 0.75 = west.</li>
+<li>Swing: elevation pitch, fixed at <code>SWING_ELEVATION = 0.153</code> (153/1000 of a full turn ≈ 55°). In [0, 1] per axis; only the X-axis (pitch) is non-zero. Swing does not change at runtime.</li>
 </ul>
 <p>Both are composed into a single quaternion on <code>CameraPivot</code>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode gdscript code-with-copy"><code class="sourceCode gdscript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> twist_q :<span class="op">=</span> <span class="fu">Quaternion</span>(Vector3.UP,    <span class="co">_twist</span>          <span class="op">*</span> <span class="cn">TAU</span>)</span>

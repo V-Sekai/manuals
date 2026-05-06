@@ -4,19 +4,19 @@ V-Sekai, a proposed VR app for Apple Vision Pro, aims to offer immersive experie
 
 ## Key Features
 
-1. **Spatial Awareness**: For interactive VR environments and enhancing 3D doodling and Virtual Avatar Performance.
+1. Spatial Awareness: For interactive VR environments and enhancing 3D doodling and Virtual Avatar Performance.
 
-2. **High Resolution Display**: Utilizes Apple Vision Pro's display for detailed VR rendering.
+2. High Resolution Display: Utilizes Apple Vision Pro's display for detailed VR rendering.
 
-3. **Voice Communication**: Allows user communication via voice chat.
+3. Voice Communication: Allows user communication via voice chat.
 
 ## Proposed features
 
-4. **Eye Tracking**: Facilitates navigation and selection within the VR world.
+4. Eye Tracking: Facilitates navigation and selection within the VR world.
 
-5. **Hand Gesture Recognition**: Enables interaction with VR objects.
+5. Hand Gesture Recognition: Enables interaction with VR objects.
 
-6. **Proposed Machine Learning Technologies**: Implements proposed speech-to-text and text-to-speech capabilities for real-time transcription and voice synthesis.
+6. Proposed Machine Learning Technologies: Implements proposed speech-to-text and text-to-speech capabilities for real-time transcription and voice synthesis.
 
 ## User Experience
 

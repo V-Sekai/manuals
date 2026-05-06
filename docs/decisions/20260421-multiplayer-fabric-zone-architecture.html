@@ -300,7 +300,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#asset-delivery-desync" id="toc-asset-delivery-desync" class="nav-link" data-scroll-target="#asset-delivery-desync">Asset delivery (desync)</a></li>
   <li><a href="#permissions-rebac" id="toc-permissions-rebac" class="nav-link" data-scroll-target="#permissions-rebac">Permissions (ReBAC)</a></li>
   </ul></li>
-  <li><a href="#persistence" id="toc-persistence" class="nav-link" data-scroll-target="#persistence">Persistence</a></li>
+  <li><a href="#persistence" id="toc-persistence" class="nav-link" data-scroll-target="#persistence">Persistence</a>
+  <ul class="collapse">
+  <li><a href="#graceful-shutdown-fabricsnapshot" id="toc-graceful-shutdown-fabricsnapshot" class="nav-link" data-scroll-target="#graceful-shutdown-fabricsnapshot">Graceful shutdown (FabricSnapshot)</a></li>
+  <li><a href="#crash-recovery-fabriczonejournal" id="toc-crash-recovery-fabriczonejournal" class="nav-link" data-scroll-target="#crash-recovery-fabriczonejournal">Crash recovery (FabricZoneJournal)</a></li>
+  </ul></li>
   <li><a href="#deployment" id="toc-deployment" class="nav-link" data-scroll-target="#deployment">Deployment</a></li>
   <li><a href="#what-is-not-decided-here" id="toc-what-is-not-decided-here" class="nav-link" data-scroll-target="#what-is-not-decided-here">What Is Not Decided Here</a></li>
   <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
@@ -373,8 +377,14 @@ client (Godot) — receives desync index URL on join</code></pre>
 <section id="persistence" class="level2">
 <h2 class="anchored" data-anchor-id="persistence">Persistence</h2>
 <p>Entity state has two persistence paths:</p>
-<p><strong>Graceful shutdown (FabricSnapshot)</strong> On <code>SIGINT</code>, zones drain entities toward zone 0 via STAGING migration. Zone 0 collects all entities and writes a <code>FabricSnapshot</code> Godot Resource to disk. On restart, each zone reloads only the entities whose Hilbert code falls within its range.</p>
-<p><strong>Crash recovery (FabricZoneJournal)</strong> A per-zone SQLite database records discrete mutations: spawn, despawn, payload_update. On restart, the zone replays the journal on top of its deterministic static-world initialisation to recover dynamic entities (connected players, asset instances). Physics-step position updates are not journaled; they are recomputed from the simulation. See <a href="../decisions/20260421-sqlite-per-zone-journal.html">20260421-sqlite-per-zone-journal.md</a> for the detailed design.</p>
+<section id="graceful-shutdown-fabricsnapshot" class="level3">
+<h3 class="anchored" data-anchor-id="graceful-shutdown-fabricsnapshot">Graceful shutdown (FabricSnapshot)</h3>
+<p>On <code>SIGINT</code>, zones drain entities toward zone 0 via STAGING migration. Zone 0 collects all entities and writes a <code>FabricSnapshot</code> Godot Resource to disk. On restart, each zone reloads only the entities whose Hilbert code falls within its range.</p>
+</section>
+<section id="crash-recovery-fabriczonejournal" class="level3">
+<h3 class="anchored" data-anchor-id="crash-recovery-fabriczonejournal">Crash recovery (FabricZoneJournal)</h3>
+<p>A per-zone SQLite database records discrete mutations: spawn, despawn, payload_update. On restart, the zone replays the journal on top of its deterministic static-world initialisation to recover dynamic entities (connected players, asset instances). Physics-step position updates are not journaled; they are recomputed from the simulation. See <a href="../decisions/20260421-sqlite-per-zone-journal.html">20260421-sqlite-per-zone-journal.md</a> for the detailed design.</p>
+</section>
 </section>
 <section id="deployment" class="level2">
 <h2 class="anchored" data-anchor-id="deployment">Deployment</h2>

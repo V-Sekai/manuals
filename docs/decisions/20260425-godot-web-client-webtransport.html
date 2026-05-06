@@ -335,29 +335,29 @@ ul.task-list li input[type="checkbox"] {
 <section id="bug-1-js-library-not-reaching-emscripten-linker" class="level3">
 <h3 class="anchored" data-anchor-id="bug-1-js-library-not-reaching-emscripten-linker">Bug 1: JS library not reaching Emscripten linker</h3>
 <p><code>modules/http3/SCsub</code> called <code>env_quic.AddJSLibraries(...)</code> on a cloned environment. <code>platform/web/SCsub</code> reads <code>sys_env["JS_LIBS"]</code> (the root env). Cloned env changes do not propagate upward — <code>quic_web_glue.js</code> was never passed as <code>--js-library</code> to <code>em++</code>.</p>
-<p><strong>Fix</strong>: <code>env.Append(JS_LIBS=[File("#modules/http3/quic_web_glue.js")])</code> directly on the root env.</p>
+<p>Fix: <code>env.Append(JS_LIBS=[File("#modules/http3/quic_web_glue.js")])</code> directly on the root env.</p>
 </section>
 <section id="bug-2-duplicate-symbol-silences-web-backend" class="level3">
 <h3 class="anchored" data-anchor-id="bug-2-duplicate-symbol-silences-web-backend">Bug 2: Duplicate symbol silences web backend</h3>
 <p><code>quic_picoquic_backend.cpp</code>’s <code>#else !GODOT_QUIC_NATIVE_BACKEND</code> branch provides empty stubs for <code>register_quic_picoquic_backend()</code>. Since both <code>.cpp</code> files compile with the same <code>env_quic</code> (which has <code>GODOT_QUIC_WEB_BACKEND</code> defined), the linker sees two definitions and silently picks the empty stub. The web backend was never registered.</p>
-<p><strong>Fix</strong>: Guard the empty stubs with <code>#elif !defined(GODOT_QUIC_WEB_BACKEND)</code> so they are only compiled when neither backend is active.</p>
+<p>Fix: Guard the empty stubs with <code>#elif !defined(GODOT_QUIC_WEB_BACKEND)</code> so they are only compiled when neither backend is active.</p>
 </section>
 <section id="bug-3-worker-thread-cannot-call-browser-webtransport-api" class="level3">
 <h3 class="anchored" data-anchor-id="bug-3-worker-thread-cannot-call-browser-webtransport-api">Bug 3: Worker thread cannot call browser WebTransport API</h3>
 <p>Godot’s game loop runs in a pthread worker. <code>quic_web_glue.js</code> functions like <code>godot_wt_connect</code> call <code>new WebTransport(url)</code> — a browser API unavailable in workers. The original file had a misnamed proxy declaration (<code>godot_WTServerSession__proxy</code>) that did nothing. Emscripten 5.x rejects orphaned proxy declarations.</p>
-<p><strong>Fix</strong>: Add <code>__proxy: 'sync'</code> to every exported function in <code>quic_web_glue.js</code>. Each call from the worker is proxied to the main browser thread synchronously.</p>
+<p>Fix: Add <code>__proxy: 'sync'</code> to every exported function in <code>quic_web_glue.js</code>. Each call from the worker is proxied to the main browser thread synchronously.</p>
 </section>
 <section id="bug-4-poll-never-ingests-incoming-datagrams" class="level3">
 <h3 class="anchored" data-anchor-id="bug-4-poll-never-ingests-incoming-datagrams">Bug 4: poll() never ingests incoming datagrams</h3>
 <p><code>web_transport_peer.cpp::poll()</code> was extended to call <code>session_state_func</code> for the web backend, but returned immediately afterward without pulling received datagrams from <code>sess.datagrams_in</code> (the JS queue) into the C++ <code>incoming</code> queue. <code>get_available_packet_count()</code> always returned 0.</p>
-<p><strong>Fix</strong>: Add <code>poll_incoming_func</code> static pointer. <code>quic_web_backend.cpp</code> implements <code>_web_poll_incoming</code> which calls <code>godot_wt_recv_datagram</code> in a loop, forwarding each datagram to <code>_push_wt_incoming_datagram</code>. <code>poll()</code> calls it after <code>session_state_func</code>.</p>
+<p>Fix: Add <code>poll_incoming_func</code> static pointer. <code>quic_web_backend.cpp</code> implements <code>_web_poll_incoming</code> which calls <code>godot_wt_recv_datagram</code> in a loop, forwarding each datagram to <code>_push_wt_incoming_datagram</code>. <code>poll()</code> calls it after <code>session_state_func</code>.</p>
 </section>
 </section>
 <section id="proof-of-concept" class="level2">
 <h2 class="anchored" data-anchor-id="proof-of-concept">Proof of Concept</h2>
 <p><code>modules/http3/demo/</code> contains <code>wt_client_web.gd</code> (extends Node), a scene, and a Godot project. Exported as PCK with <code>--export-pack "Web"</code> and loaded via <code>bin/.web_zip/godot.js</code> (wasm32 threaded) plus a Node.js COOP/COEP HTTP server in the Playwright test.</p>
 <p><code>e2e/godot_wt_e2e.spec.ts</code> (in <code>multiplayer-fabric-zone-backend/frontend/</code>) starts <code>wt_server_demo.gd</code> as echo server, loads the web export in Chromium, injects <code>window.WT_CERT_HASH</code> and monkey-patches <code>window.WebTransport</code> to add <code>serverCertificateHashes</code>, waits for <code>window.__wt_beacons</code> to contain a <code>{"event":"pass"}</code> beacon.</p>
-<p><strong>Result</strong>: PASS in 3.3 s.</p>
+<p>Result: PASS in 3.3 s.</p>
 <pre><code>browser: {"event":"init","host":"127.0.0.1","port":54370}
 browser: [WT patch] connecting to: https://127.0.0.1:54370/wt
 browser: [WT patch] ready: https://127.0.0.1:54370/wt
