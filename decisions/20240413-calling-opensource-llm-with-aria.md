@@ -10,15 +10,15 @@ Using the assistant name Aria, I want to call an Apache2 licensed large language
 
 ### Proposed Solution
 
-1. **Install LM Studio**: A tool for managing and deploying large language models.
+1. Install LM Studio: A tool for managing and deploying large language models.
 
-2. **Download a quantized version of Hermes-2-Pro-Mistral-7B**: This model is available at [Hugging Face Model Card](https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B).
+2. Download a quantized version of Hermes-2-Pro-Mistral-7B: This model is available at [Hugging Face Model Card](https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B).
 
-3. **Install Visual Studio Code**: The popular code editor by Microsoft.
+3. Install Visual Studio Code: The popular code editor by Microsoft.
 
-4. **Install the Genie extension**: This lets you interact with AI models directly in Visual Studio Code. [ai-genie.chatgpt-vscode](https://marketplace.visualstudio.com/items?itemName=ai-genie.chatgpt-vscode)
+4. Install the Genie extension: This lets you interact with AI models directly in Visual Studio Code. [ai-genie.chatgpt-vscode](https://marketplace.visualstudio.com/items?itemName=ai-genie.chatgpt-vscode)
 
-5. **Set Genie to use the assistant name "Aria"**: This will give the AI a unique identity within Visual Studio Code.
+5. Set Genie to use the assistant name "Aria": This will give the AI a unique identity within Visual Studio Code.
 
    ```json
    {
@@ -31,7 +31,7 @@ Using the assistant name Aria, I want to call an Apache2 licensed large language
    }
    ```
 
-6. **Start using Aria in Visual Studio Code**: With the above settings, you can now access and interact with the open source large language model (LLM) named Hermes-2-Pro-Mistral-7B through the Genie extension.
+6. Start using Aria in Visual Studio Code: With the above settings, you can now access and interact with the open source large language model (LLM) named Hermes-2-Pro-Mistral-7B through the Genie extension.
 
 ### Benefits
 

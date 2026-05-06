@@ -34,14 +34,14 @@ To mitigate this issue, it is recommended to keep the last PCI-E slot empty to e
 
 ## The Benefits
 
-1. **Improved System Stability**: Ensuring sufficient PCI-E lanes for all devices will prevent system crashes and performance issues.
-2. **Optimized Resource Allocation**: Users can make informed decisions about which devices to prioritize based on available PCI-E lanes.
-3. **Enhanced User Experience**: By avoiding unexpected device failures, users will have a more reliable and predictable computing experience.
+1. Improved System Stability: Ensuring sufficient PCI-E lanes for all devices will prevent system crashes and performance issues.
+2. Optimized Resource Allocation: Users can make informed decisions about which devices to prioritize based on available PCI-E lanes.
+3. Enhanced User Experience: By avoiding unexpected device failures, users will have a more reliable and predictable computing experience.
 
 ## The Downsides
 
-1. **Complexity**: Implementing checks for PCI-E lane availability adds complexity to system configuration and management.
-2. **Hardware Limitations**: Users with limited PCI-E lanes may need to upgrade their hardware to fully utilize all desired devices.
+1. Complexity: Implementing checks for PCI-E lane availability adds complexity to system configuration and management.
+2. Hardware Limitations: Users with limited PCI-E lanes may need to upgrade their hardware to fully utilize all desired devices.
 
 ## The Road Not Taken
 

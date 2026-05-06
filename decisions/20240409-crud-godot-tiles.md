@@ -11,10 +11,10 @@ This test case aims to utilize a specific database technology, sqlite-fdb, to as
 
 ## Steps
 
-1. **Create (Blender)**: Design 5 different 3D park tiles and store their data in the database.
-2. **Read (Godot)**: Import the tiles from the database into Godot and assemble the “Sunny Park.”
-3. **Update (Blender)**: Modify a tile (e.g., change the color of the bench), update the database, and verify the update in Godot.
-4. **Delete (Blender)**: Remove a tile (e.g., pond), delete it from the database, and confirm its removal in Godot.
+1. Create (Blender): Design 5 different 3D park tiles and store their data in the database.
+2. Read (Godot): Import the tiles from the database into Godot and assemble the “Sunny Park.”
+3. Update (Blender): Modify a tile (e.g., change the color of the bench), update the database, and verify the update in Godot.
+4. Delete (Blender): Remove a tile (e.g., pond), delete it from the database, and confirm its removal in Godot.
 
 ## Evaluation Criteria
 

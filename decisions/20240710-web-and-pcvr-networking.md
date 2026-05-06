@@ -30,17 +30,17 @@ To test the interoperability between PCVR and web platforms, we propose developi
 
 To enhance the functionality and flexibility of the communication system, we propose implementing multiple channels for different types of data. This will allow for more organized and efficient data transfer. The channels could include:
 
-1. **Text Channel**:
+1. Text Channel:
 
    - For sending and receiving text messages.
    - Used in the real-time chat application.
 
-2. **Voice Channel**:
+2. Voice Channel:
 
    - For transmitting voice data.
    - Enables real-time voice communication between PCVR and web clients.
 
-3. **Data Channel**:
+3. Data Channel:
    - For sending miscellaneous data such as user actions, game state updates, etc.
    - Ensures that non-textual data is transmitted efficiently.
 

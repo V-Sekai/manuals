@@ -28,19 +28,19 @@ We propose a system that utilizes depth map comparisons between rendered images 
 
 #### Work Breakdown
 
-1. **Data Collection**:
+1. Data Collection:
    - Task: Manually label a small set of images with MakeHuman parameters.
    - Outcome: Create a baseline dataset for initial optimization efforts.
 
-2. **Godot Integration**:
+2. Godot Integration:
    - Task: Develop a script within Godot to render depth maps from configured MakeHuman models.
    - Outcome: Prepare depth maps for subsequent comparison.
 
-3. **Optimization Algorithm**:
+3. Optimization Algorithm:
    - Task: Implement a cost-effective optimization algorithm using a suitable loss function (e.g., L2, Chamfer distance).
    - Outcome: Establish a mechanism to identify the best matching MakeHuman parameters.
 
-4. **Testing and Refinement**:
+4. Testing and Refinement:
    - Task: Systematically compare generated depth maps and refine the algorithm to improve accuracy.
    - Timeline:
      - Data Collection: 1 week

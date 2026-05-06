@@ -14,8 +14,8 @@ The V-Sekai team requires a structured, real-time method to track daily project 
 
 **Process:**
 
-1. **Daily Interactive Prompting**: A bot (e.g., Discord/GitHub bot) prompts contributors for updates via a form.
-2. **Structured Data Collection**:
+1. Daily Interactive Prompting: A bot (e.g., Discord/GitHub bot) prompts contributors for updates via a form.
+2. Structured Data Collection:
 
    ```python
    def collect_deck_log():
@@ -26,8 +26,8 @@ The V-Sekai team requires a structured, real-time method to track daily project 
        return format_markdown(date, active_contributors, blockers)
    ```
 
-3. **Automated Aggregation**: Data is compiled into a Markdown log (example below) and posted to a project channel.
-4. **Decision Tracking**: Highlighted decisions/blockers trigger alerts to relevant roles (e.g., engineering lead).
+3. Automated Aggregation: Data is compiled into a Markdown log (example below) and posted to a project channel.
+4. Decision Tracking: Highlighted decisions/blockers trigger alerts to relevant roles (e.g., engineering lead).
 
 **Mock-Up:**
 

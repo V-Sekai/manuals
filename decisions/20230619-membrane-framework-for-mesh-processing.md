@@ -70,13 +70,13 @@ We propose using read replicas for applications needing single-zone writes and m
 
 ## Option Graveyard
 
-1. **Standalone procedural generation**: Implementing procedural generation as a standalone feature without integrating it with the Godot Engine server. This option was discarded because it would not provide the same level of compatibility and versatility as the proposed solution.
+1. Standalone procedural generation: Implementing procedural generation as a standalone feature without integrating it with the Godot Engine server. This option was discarded because it would not provide the same level of compatibility and versatility as the proposed solution.
 
-2. **Using pre-built assets**: Relying on pre-built assets for creating environments instead of implementing networked procedural generation. This option was discarded due to the limited flexibility and potential for repetitive content, which could negatively impact user engagement.
+2. Using pre-built assets: Relying on pre-built assets for creating environments instead of implementing networked procedural generation. This option was discarded due to the limited flexibility and potential for repetitive content, which could negatively impact user engagement.
 
-3. **Third-party procedural generation tools**: Integrating third-party procedural generation tools instead of developing a custom solution. This option was discarded because it may not offer the same level of control and customization required for V-Sekai's specific needs.
+3. Third-party procedural generation tools: Integrating third-party procedural generation tools instead of developing a custom solution. This option was discarded because it may not offer the same level of control and customization required for V-Sekai's specific needs.
 
-4. **Static environment design**: Focusing on static environment design rather than dynamic, procedurally generated content. This option was discarded because it would not provide the desired level of immersion and interactivity for V-Sekai users.
+4. Static environment design: Focusing on static environment design rather than dynamic, procedurally generated content. This option was discarded because it would not provide the desired level of immersion and interactivity for V-Sekai users.
 
 ## If this enhancement will be used infrequently, can it be worked around with a few lines of script?
 

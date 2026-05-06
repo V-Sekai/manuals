@@ -14,9 +14,9 @@ We propose a system that uses OpenAI's ChatGPT-4 to generate proposals. The user
 
 ## Benefits
 
-1. **Efficiency**: This system will significantly reduce the time taken to create proposals.
-2. **Creativity**: With GPT-4's advanced language model, the proposals generated will be creative and engaging.
-3. **Ease of Use**: Users just need to provide a prompt and the system will take care of the rest.
+1. Efficiency: This system will significantly reduce the time taken to create proposals.
+2. Creativity: With GPT-4's advanced language model, the proposals generated will be creative and engaging.
+3. Ease of Use: Users just need to provide a prompt and the system will take care of the rest.
 
 ## Downsides
 

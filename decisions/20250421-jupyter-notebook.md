@@ -93,5 +93,5 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ### Game Development Jargon
 
-1. **Jupyter Notebook**: An open-source web application that allows you to create and share documents that contain live code, equations, visualizations, and narrative text.
-2. **Systemd**: A system and service manager for Linux operating systems.
+1. Jupyter Notebook: An open-source web application that allows you to create and share documents that contain live code, equations, visualizations, and narrative text.
+2. Systemd: A system and service manager for Linux operating systems.

@@ -12,23 +12,23 @@ Our VR game lacks a robust system for managing 3D multiplayer movement, parented
 
 Our proposed solution involves implementing a series of features:
 
-1. **3D Multiplayer Movement**: We will use the libgodot process to manage 3D multiplayer movements. This will allow players to interactively move around in the 3D space, similar to electrons circling in an atom.
+1. 3D Multiplayer Movement: We will use the libgodot process to manage 3D multiplayer movements. This will allow players to interactively move around in the 3D space, similar to electrons circling in an atom.
 
-2. **Parented Objects**: We will develop a system to handle parented objects, allowing for complex interactions between game entities.
+2. Parented Objects: We will develop a system to handle parented objects, allowing for complex interactions between game entities.
 
-3. **Tracking Validation & Authentication**: We will implement mechanisms to validate cross-communication and user inputs, along with an authentication system for account security.
+3. Tracking Validation & Authentication: We will implement mechanisms to validate cross-communication and user inputs, along with an authentication system for account security.
 
-4. **Account Metadata Information**: We will store and manage account metadata information to personalize the user experience.
+4. Account Metadata Information: We will store and manage account metadata information to personalize the user experience.
 
-5. **Server Boundaries**: We will set limitations on the server, such as boundaries, to maintain game balance and performance.
+5. Server Boundaries: We will set limitations on the server, such as boundaries, to maintain game balance and performance.
 
-6. **Inventory Management**: Players can spawn items from their inventory, create new items, and return them to the inventory.
+6. Inventory Management: Players can spawn items from their inventory, create new items, and return them to the inventory.
 
-7. **Game Rejoining**: Players will have the ability to leave and rejoin the game without losing their progress.
+7. Game Rejoining: Players will have the ability to leave and rejoin the game without losing their progress.
 
-8. **Asset Delivery and Upload**: We will establish an efficient asset delivery and upload system.
+8. Asset Delivery and Upload: We will establish an efficient asset delivery and upload system.
 
-9. **Voice Communication**: We plan to add voice communication to enhance player interaction.
+9. Voice Communication: We plan to add voice communication to enhance player interaction.
 
 ## The Benefits
 

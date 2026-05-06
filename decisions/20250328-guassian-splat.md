@@ -9,9 +9,9 @@ V-Sekai's AI-generated VR content requires high-fidelity PreViz that preserves d
 
 ## Problem Statement
 
-1. **Quality Loss**: Mesh conversion destroys AI-generated surface details
-2. **Performance Limits**: Existing Godot renderer lacks 3DGS optimization
-3. **Workflow Friction**: Manual retopology adds 3-5 hours/asset
+1. Quality Loss: Mesh conversion destroys AI-generated surface details
+2. Performance Limits: Existing Godot renderer lacks 3DGS optimization
+3. Workflow Friction: Manual retopology adds 3-5 hours/asset
 
 ## Proposed Solution
 
@@ -29,19 +29,19 @@ Native 3D Gaussian Splatting (3DGS) renderer for Godot 4.3+ with:
 
 ## Implementation Plan
 
-1. **Phase 1**: Core Renderer (4 Weeks)
+1. Phase 1: Core Renderer (4 Weeks)
 
    - Vulkan splat shader with spherical harmonics processing
    - GPU radix sort via compute shaders
    - Flux skeleton alignment system
 
-2. **Phase 2**: PreViz Tooling (2 Weeks)
+2. Phase 2: PreViz Tooling (2 Weeks)
 
    - SH coefficient debug overlay
    - Performance profiling HUD
    - Splat LOD distance culling
 
-3. **Validation**:
+3. Validation:
    - Success: 50k splats @ 90 FPS (RTX 3060), <0.5mm T-pose drift
    - Failure: >16ms/frame spikes, >2mm bone position deviation
 
@@ -94,19 +94,19 @@ Status: Rejected <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## References
 
-1. **Reference Implementation (Inria)**  
+1. Reference Implementation (Inria)  
    <https://github.com/graphdeco-inria/gaussian-splatting>
-2. **Playcanvas Engine Demo**  
+2. Playcanvas Engine Demo  
    <https://github.com/playcanvas/engine>
-3. **Cesium Experimental Branch**  
+3. Cesium Experimental Branch  
    <https://github.com/CesiumGS/cesium/tree/splat-spz-concept>
-4. **Unity Implementation (Aras-P)**  
+4. Unity Implementation (Aras-P)  
    <https://github.com/aras-p/UnityGaussianSplatting>
-5. **Godot Implementation (2Retr0)**  
+5. Godot Implementation (2Retr0)  
    <https://github.com/2Retr0/GodotGaussianSplatting>
-6. **Godot Implementation (haztro)**  
+6. Godot Implementation (haztro)  
    <https://github.com/haztro/godot-gaussian-splatting>
-7. **Blender Omniview Addon (Kiri Engine)**  
+7. Blender Omniview Addon (Kiri Engine)  
    <https://github.com/Kiri-Innovation/3dgs-render-blender-addon>
 8. Trellis <https://github.com/microsoft/TRELLIS>
 9. Flux

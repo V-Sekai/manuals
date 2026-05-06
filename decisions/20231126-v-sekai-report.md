@@ -26,19 +26,19 @@ What state is V-Sekai in, and what can it do?
 
 ### Critical Issues
 
-1. **Multiplayer Voice Chat:** The multiplayer voice chat feature in V-Sekai is broken.
-2. **Menu Editing:** In V-Sekai, menus can't be edited in VR. They can only be edited on the desktop before entering a game.
-3. **Default Avatar IK:** V-Sekai's default ik is currently twisted incorrectly.
+1. Multiplayer Voice Chat: The multiplayer voice chat feature in V-Sekai is broken.
+2. Menu Editing: In V-Sekai, menus can't be edited in VR. They can only be edited on the desktop before entering a game.
+3. Default Avatar IK: V-Sekai's default ik is currently twisted incorrectly.
 
 ### Successes
 
-4. **Avatar Uploading and Downloading:** V-Sekai can upload from the editor and, download avatars, and load them into the game at runtime.
-5. **World Uploading and Downloading:** V-Sekai can upload from the editor and, download worlds, and load them into the game at runtime.
-6. **VR Mode Loading:** V-Sekai can successfully load in VR mode.
+4. Avatar Uploading and Downloading: V-Sekai can upload from the editor and, download avatars, and load them into the game at runtime.
+5. World Uploading and Downloading: V-Sekai can upload from the editor and, download worlds, and load them into the game at runtime.
+6. VR Mode Loading: V-Sekai can successfully load in VR mode.
 
 ### Opportunities
 
-7. **Contributions:** V-Sekai is actively looking for more contributions.
+7. Contributions: V-Sekai is actively looking for more contributions.
 
 ## Pros and Cons
 

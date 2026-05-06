@@ -26,13 +26,13 @@ We believe that this approach will provide strong consistency guarantees, access
 
 #### Glossary of terms
 
-1. **Homeserver**: A server responsible for managing metadata, including ownership and mastership information for game entity nodes.
-2. **Simulation server**: A server responsible for containing game entity nodes it has authority over, including player simulation servers.
-3. **Khepri**: A tree-like replicated on-disk database library for Erlang and Elixir, used for maintaining a nested path-to-value store.
-4. **Raft cluster**: A cluster of servers implementing the Raft consensus algorithm to ensure strong consistency and fault tolerance.
-5. **Ownership**: The player who has control over a game entity and can change its state.
-6. **Mastership**: The authority that can change ownership rules and default ownership settings.
-7. **Ask, Deny, Allow**: Rules set by the Master for ownership transfer.
+1. Homeserver: A server responsible for managing metadata, including ownership and mastership information for game entity nodes.
+2. Simulation server: A server responsible for containing game entity nodes it has authority over, including player simulation servers.
+3. Khepri: A tree-like replicated on-disk database library for Erlang and Elixir, used for maintaining a nested path-to-value store.
+4. Raft cluster: A cluster of servers implementing the Raft consensus algorithm to ensure strong consistency and fault tolerance.
+5. Ownership: The player who has control over a game entity and can change its state.
+6. Mastership: The authority that can change ownership rules and default ownership settings.
+7. Ask, Deny, Allow: Rules set by the Master for ownership transfer.
 
 #### Protocols
 
@@ -126,19 +126,19 @@ In this modified version of Case 3, both the update and acknowledgment steps emp
 
 ### Negative Consequences
 
-1. **Complexity**: The proposed system involves multiple components, such as homeservers, simulation servers, Khepri instances, and Raft clusters. Managing and maintaining these components can be complex and may require significant development effort.
+1. Complexity: The proposed system involves multiple components, such as homeservers, simulation servers, Khepri instances, and Raft clusters. Managing and maintaining these components can be complex and may require significant development effort.
 
-2. **Performance**: The use of Raft consensus algorithm ensures strong consistency but may introduce performance overhead due to the need for communication between nodes in the cluster. This could impact the overall performance of the distributed simulation system.
+2. Performance: The use of Raft consensus algorithm ensures strong consistency but may introduce performance overhead due to the need for communication between nodes in the cluster. This could impact the overall performance of the distributed simulation system.
 
-3. **Scalability**: While the proposal aims to provide scalability, it is not clear how well the system will scale as the number of game entity nodes and players grows. Adding more homeservers and simulation servers might help, but there could still be bottlenecks or limitations that need to be addressed.
+3. Scalability: While the proposal aims to provide scalability, it is not clear how well the system will scale as the number of game entity nodes and players grows. Adding more homeservers and simulation servers might help, but there could still be bottlenecks or limitations that need to be addressed.
 
-4. **Security**: The proposed state transfer protocol relies on public key cryptography for secure communication between simulation servers. However, the security of the system depends on proper key management and protection against potential attacks, such as man-in-the-middle attacks or replay attacks.
+4. Security: The proposed state transfer protocol relies on public key cryptography for secure communication between simulation servers. However, the security of the system depends on proper key management and protection against potential attacks, such as man-in-the-middle attacks or replay attacks.
 
-5. **Fault tolerance**: Although the Raft consensus algorithm provides fault tolerance, the system's resilience to failures (e.g., server crashes, network issues) needs to be carefully considered and tested to ensure smooth operation under various conditions.
+5. Fault tolerance: Although the Raft consensus algorithm provides fault tolerance, the system's resilience to failures (e.g., server crashes, network issues) needs to be carefully considered and tested to ensure smooth operation under various conditions.
 
-6. **Synchronization**: The proposal mentions that state updates are exchanged between old and new authority simulation servers or synchronized using a separate mechanism during authority transfer. However, it does not provide details on how this synchronization process works, which could be a critical aspect of the system's functionality.
+6. Synchronization: The proposal mentions that state updates are exchanged between old and new authority simulation servers or synchronized using a separate mechanism during authority transfer. However, it does not provide details on how this synchronization process works, which could be a critical aspect of the system's functionality.
 
-7. **Load balancing**: Monitoring the load on homeservers and simulation servers is essential for balancing the system. However, the proposal does not provide specific details on how load balancing will be achieved or what metrics will be used to determine when to add or remove servers from the system.
+7. Load balancing: Monitoring the load on homeservers and simulation servers is essential for balancing the system. However, the proposal does not provide specific details on how load balancing will be achieved or what metrics will be used to determine when to add or remove servers from the system.
 
 ### Option graveyard
 

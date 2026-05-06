@@ -24,8 +24,8 @@ Our solution involves creating a VR mode specifically for posing Many Bone IK ku
 
 Imagine you have a ball. There are two ways you can move it:
 
-1. **Twist**: Like spinning a globe on its stand.
-2. **Swing**: Like moving your finger from one spot to another on the ball.
+1. Twist: Like spinning a globe on its stand.
+2. Swing: Like moving your finger from one spot to another on the ball.
 
 Think of a Kusudama (a type of origami that forms a sphere) as an example for the swing movement. The pieces of paper move just like your finger would on the ball.
 
@@ -43,15 +43,15 @@ Assigning physical sensors to IK points is non-goal.
 
 ## Option Graveyard
 
-1. **Desktop Mode Enhancement:** Initially, we considered enhancing the desktop mode to handle the kusudama constraints better. However, this option was discarded due to the inherent limitations of the desktop interface for such complex interactions.
+1. Desktop Mode Enhancement: Initially, we considered enhancing the desktop mode to handle the kusudama constraints better. However, this option was discarded due to the inherent limitations of the desktop interface for such complex interactions.
 
-2. **Use of External Tools:** Another option was to use external tools or plugins specifically designed for handling Many Bone IK kusudama constraints. This option was rejected because it would require users to learn and manage additional software, which could lead to a fragmented user experience.
+2. Use of External Tools: Another option was to use external tools or plugins specifically designed for handling Many Bone IK kusudama constraints. This option was rejected because it would require users to learn and manage additional software, which could lead to a fragmented user experience.
 
-3. **Simplified Kusudama Constraints:** We also thought about simplifying the kusudama constraints to make them more manageable on the desktop. But this option was discarded as it would limit the capabilities and flexibility that our platform currently offers.
+3. Simplified Kusudama Constraints: We also thought about simplifying the kusudama constraints to make them more manageable on the desktop. But this option was discarded as it would limit the capabilities and flexibility that our platform currently offers.
 
-4. **Automated Posing:** An automated system for posing the kusudama constraints was also considered. However, this option was rejected because it would take away control from the users, potentially leading to less satisfactory results.
+4. Automated Posing: An automated system for posing the kusudama constraints was also considered. However, this option was rejected because it would take away control from the users, potentially leading to less satisfactory results.
 
-5. **Tutorials and Guides:** Providing extensive tutorials and guides to help users navigate the complexity of posing kusudama constraints on the desktop was another option. This was discarded because it doesn't address the core issue - the difficulty of managing these constraints on a desktop interface.
+5. Tutorials and Guides: Providing extensive tutorials and guides to help users navigate the complexity of posing kusudama constraints on the desktop was another option. This was discarded because it doesn't address the core issue - the difficulty of managing these constraints on a desktop interface.
 
 ## Negative Consequences
 

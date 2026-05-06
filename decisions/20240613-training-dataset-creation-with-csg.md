@@ -10,15 +10,15 @@ The challenge is how to gather a large and diverse set of 3D models represented 
 
 ## Design
 
-1. **Engage Open-Source Communities**: Connect with people who are into 3D modeling and CSG. They might be interested in contributing to our project.
+1. Engage Open-Source Communities: Connect with people who are into 3D modeling and CSG. They might be interested in contributing to our project.
 
-2. **Collaborate with Educational Institutions**: Partner with colleges that offer courses in 3D modeling. Students could contribute to our project as part of their coursework or for extra credit.
+2. Collaborate with Educational Institutions: Partner with colleges that offer courses in 3D modeling. Students could contribute to our project as part of their coursework or for extra credit.
 
-3. **Provide Clear Guidelines**: Write up detailed instructions on how to create and submit the models. This should include technical specifications, style guides, and examples.
+3. Provide Clear Guidelines: Write up detailed instructions on how to create and submit the models. This should include technical specifications, style guides, and examples.
 
-4. **Implement a Review Process**: Each model should be reviewed to ensure it meets our quality standards and follows our style guide.
+4. Implement a Review Process: Each model should be reviewed to ensure it meets our quality standards and follows our style guide.
 
-5. **Use Existing Platforms for Submission**: Use platforms like GitHub or Google Drive for contributors to submit their models.
+5. Use Existing Platforms for Submission: Use platforms like GitHub or Google Drive for contributors to submit their models.
 
 ## The Benefits
 

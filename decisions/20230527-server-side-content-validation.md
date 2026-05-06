@@ -16,9 +16,9 @@ Implement server-side validation export followed by a sanitization service and i
 
 ## Implementation
 
-1. **Server-side validation**: Develop a server-side validation system that checks the uploaded content for any malicious code or vulnerabilities.
-2. **Sanitization service**: Implement a sanitization service that cleanses the content from any harmful elements before it's distributed.
-3. **CDN integration**: Integrate the platform with a CDN to ensure fast and reliable content delivery to users worldwide.
+1. Server-side validation: Develop a server-side validation system that checks the uploaded content for any malicious code or vulnerabilities.
+2. Sanitization service: Implement a sanitization service that cleanses the content from any harmful elements before it's distributed.
+3. CDN integration: Integrate the platform with a CDN to ensure fast and reliable content delivery to users worldwide.
 
 ## Positive Consequences
 

@@ -12,26 +12,26 @@ Setting up a reliable and efficient demonstration environment for the XR Elite H
 
 The proposed setup involves several components to ensure a stable and high-performance demonstration:
 
-1. **Hardware Connection**:
+1. Hardware Connection:
 
    - Connect the XR Elite Headset to a USB-C hub.
    - Attach the Vive Ultimate Tracker dongle and a Belkin USB-C to Gigabit Ethernet Adapter to the hub.
 
-2. **Network Configuration**:
+2. Network Configuration:
 
    - Use a wired ethernet connection to avoid Wi-Fi instability common in conference venues.
    - Set a fixed IP address for the VIVE Business Streaming server using the VBSIpSetting.exe tool.
 
-3. **Software Setup**:
+3. Software Setup:
 
    - Ensure the business streaming server has a physical display connected to prevent the SteamVR overlay issue.
    - Run SteamVR for VR demonstrations.
 
-4. **Additional Stability Measures**:
+4. Additional Stability Measures:
    - Disable Wi-Fi on the XR Elite Headset to rely solely on the wired connection.
    - Consider using a gigabit travel router/switch to manage and shorten routing internally at the venue.
 
-5. **SteamvR Setup**:
+5. SteamvR Setup:
 
    - Enable hand tracking on the headeset
    - Disable sending hand tracking to steamvr

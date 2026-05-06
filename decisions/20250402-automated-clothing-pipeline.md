@@ -18,24 +18,24 @@ Key challenges include:
 Four interconnected modules using unified metadata:
 **Implementation Steps**:
 
-1. **Task A**: Optimize RF-DETR with IREE compiler for edge deployment
-2. **Task B**: Build PinSage-based recommender with multi-tag support
-3. **Task C**: Develop Blender/Marvelous Designer automation pipeline
-4. **Task D**: Train defect detection model with synthetic data
+1. Task A: Optimize RF-DETR with IREE compiler for edge deployment
+2. Task B: Build PinSage-based recommender with multi-tag support
+3. Task C: Develop Blender/Marvelous Designer automation pipeline
+4. Task D: Train defect detection model with synthetic data
 
 ## Implementation Plan
 
-1. **Phase 1**: Core System Development (Weeks 1-6)
+1. Phase 1: Core System Development (Weeks 1-6)
    - Validate IREE compatibility for deformable attention
    - Implement split_multi_value in librecommender
    - Create Blender defect injection scripts
    - [Roboflow] Create clothing classification dataset with style/color annotations
-2. **Phase 2**: Integration & Optimization (Weeks 7-10)
+2. Phase 2: Integration & Optimization (Weeks 7-10)
    - Deploy edge-optimized RF-DETR on Jetson AGX
    - Establish Godot/Unreal asset pipeline
    - Benchmark defect detection F1 scores
    - [Roboflow] Generate synthetic defect dataset using Blender Python API
-3. **Validation**:
+3. Validation:
    - Success Criteria: <20ms inference latency, >85% recommendation accuracy
    - Failure Threshold: >30% performance drop vs baseline
 

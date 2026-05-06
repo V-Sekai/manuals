@@ -12,8 +12,8 @@ Microsoft has configured OneDrive to automatically move key user folders such as
 
 The solution involves two main steps:
 
-1. **Disabling OneDrive Sync**: Users need to pause or stop OneDrive from syncing these folders.
-2. **Running a Restore Default Paths Script**: Execute a script that resets the default paths of user directories back to their original locations on the local drive.
+1. Disabling OneDrive Sync: Users need to pause or stop OneDrive from syncing these folders.
+2. Running a Restore Default Paths Script: Execute a script that resets the default paths of user directories back to their original locations on the local drive.
 
 ## The Benefits
 

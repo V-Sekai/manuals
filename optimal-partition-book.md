@@ -10,10 +10,10 @@ A game server can replace the O(N^2) broadphase with a proved-optimal O(N+k) Hil
 
 ## Hilbert Broadphase: O(N+k)
 
-1. **Radix sort** entities by 30-bit Hilbert code (Skilling 2004): O(N)
-2. **Form groups** by Hilbert prefix: O(N)
-3. **Prune** non-overlapping groups — `hilbert_prune_sound` (proved): if group AABBs don't overlap, no entity pairs between them can overlap
-4. **Scan** overlapping groups: O(N+k), proportional to output
+1. Radix sort entities by 30-bit Hilbert code (Skilling 2004): O(N)
+2. Form groups by Hilbert prefix: O(N)
+3. Prune non-overlapping groups — `hilbert_prune_sound` (proved): if group AABBs don't overlap, no entity pairs between them can overlap
+4. Scan overlapping groups: O(N+k), proportional to output
 
 `broadphase_lower_bound` (proved in `Core/LowerBound.lean`) establishes Ω(N+k) — this is asymptotically optimal.
 

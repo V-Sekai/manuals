@@ -62,7 +62,7 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ### Game Development Jargon
 
-1. **XR Simulator**: A tool that mimics the behavior of VR/AR hardware within a desktop development environment.
-2. **OpenXR**: An open, royalty-free standard for access to virtual reality and augmented reality platforms and devices.
-3. **SDK (Software Development Kit)**: A collection of software development tools in one installable package.
-4. **Iteration Cycle**: The time taken to make a change, build the application, and test the result.
+1. XR Simulator: A tool that mimics the behavior of VR/AR hardware within a desktop development environment.
+2. OpenXR: An open, royalty-free standard for access to virtual reality and augmented reality platforms and devices.
+3. SDK (Software Development Kit): A collection of software development tools in one installable package.
+4. Iteration Cycle: The time taken to make a change, build the application, and test the result.

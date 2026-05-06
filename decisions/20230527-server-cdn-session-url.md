@@ -33,9 +33,9 @@ Assigning session IDs and URLs to every asset to improve data management, perfor
 
 ## Option graveyard
 
-1. **Caching assets locally**: This option was considered for improving performance, but it would not address data management and security concerns.
-2. **Using a centralized server for asset management**: This approach could improve data management but might introduce single points of failure and potential bottlenecks in performance.
-3. **Encrypting all assets**: While this would enhance security, it would not address data management issues and could negatively impact performance due to the overhead of encryption and decryption processes.
+1. Caching assets locally: This option was considered for improving performance, but it would not address data management and security concerns.
+2. Using a centralized server for asset management: This approach could improve data management but might introduce single points of failure and potential bottlenecks in performance.
+3. Encrypting all assets: While this would enhance security, it would not address data management issues and could negatively impact performance due to the overhead of encryption and decryption processes.
 
 ## If this enhancement will be used infrequently, can it be worked around with a few lines of script?
 

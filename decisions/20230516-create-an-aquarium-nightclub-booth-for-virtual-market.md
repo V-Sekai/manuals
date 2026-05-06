@@ -16,13 +16,13 @@ Create an immersive environment combining aquarium and nightclub elements, inclu
 
 ### Key Features
 
-1. **Aquatic-themed decorations**: Use 3D models of marine life, such as fish, corals, and seaweed, to create a colorful underwater environment.
+1. Aquatic-themed decorations: Use 3D models of marine life, such as fish, corals, and seaweed, to create a colorful underwater environment.
 2. Implement the ambience of a nightclub.
-3. **Interactive elements**: Add interactive components, such as touch-sensitive screens or motion sensors, to allow visitors to interact with the marine life and control the lighting effects.
-4. **Jellyfish Hostess**:
+3. Interactive elements: Add interactive components, such as touch-sensitive screens or motion sensors, to allow visitors to interact with the marine life and control the lighting effects.
+4. Jellyfish Hostess:
    - JellyBell is an enchanting hostess engaging visitors in the booth experience.
    - The Iridescent Gown amplifies her aquatic charm with sheer fabric and ribbons.
-5. **Ambient music**: Include background music that complements the aquarium and nightclub themes.
+5. Ambient music: Include background music that complements the aquarium and nightclub themes.
 
 ## Implementation
 

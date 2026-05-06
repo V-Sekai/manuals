@@ -75,14 +75,14 @@ The process emphasizes iterative refinement of the prompt based on results from 
 
 ### Workflow
 
-1. **Define Core Concept:** Establish the character's essential characteristics.
-2. **Craft Optimized Prompt:** Create a concise, descriptive prompt using Easy Diffusion.
-3. **Generate and Evaluate:** Produce images and assess their suitability.
-4. **Remove Background:** Use Krita to remove the background.
-5. **Erase Face:** Use the Grounded-SAM model to identify and remove facial features (eyebrows, nose, mouth) and paint the area skin color.
-6. **Create Sprites:** Utilize Shoebox to generate sprites from the alpha'd image.
+1. Define Core Concept: Establish the character's essential characteristics.
+2. Craft Optimized Prompt: Create a concise, descriptive prompt using Easy Diffusion.
+3. Generate and Evaluate: Produce images and assess their suitability.
+4. Remove Background: Use Krita to remove the background.
+5. Erase Face: Use the Grounded-SAM model to identify and remove facial features (eyebrows, nose, mouth) and paint the area skin color.
+6. Create Sprites: Utilize Shoebox to generate sprites from the alpha'd image.
 7. **(Optional) 3D Conversion:** Utilize TRELLIS to generate 3D models.
-8. **Iterate and Refine:** Adjust the prompt based on the evaluation.
+8. Iterate and Refine: Adjust the prompt based on the evaluation.
 
 ## Checklist for A-Pose Avatar Creation from Concept Art
 

@@ -22,9 +22,9 @@ The core scripts will be loaded as Wasm modules, and a single GDExtension will h
 
 ### How It Works
 
-1. **Core Scripts in Wasm**: Move all core scripts to Wasm modules. These scripts will handle essential functionalities like security checks and editor tools.
-2. **GDExtension for Wasm Integration**: Develop a GDExtension that loads and executes the Wasm modules. This extension will act as a bridge between Godot and the Wasm runtime.
-3. **Single Binary Distribution**: By using Wasm, we can distribute a single binary executable that includes the GDExtension and Wasm modules, simplifying the deployment process.
+1. Core Scripts in Wasm: Move all core scripts to Wasm modules. These scripts will handle essential functionalities like security checks and editor tools.
+2. GDExtension for Wasm Integration: Develop a GDExtension that loads and executes the Wasm modules. This extension will act as a bridge between Godot and the Wasm runtime.
+3. Single Binary Distribution: By using Wasm, we can distribute a single binary executable that includes the GDExtension and Wasm modules, simplifying the deployment process.
 
 ## The Benefits
 

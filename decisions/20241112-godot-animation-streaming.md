@@ -143,13 +143,13 @@ class AnimationPlayer:
 
 Efficient memory usage by loading only necessary animation data. This allows for the import and streaming of extremely long animations with configurable settings to suit different project needs.
 
-1. **Character Animations**: In an open-world game, characters may have complex animations such as walking, running, jumping, and interacting with the environment. Animation streaming ensures that only the necessary parts of these animations are loaded, reducing memory usage and improving performance.
+1. Character Animations: In an open-world game, characters may have complex animations such as walking, running, jumping, and interacting with the environment. Animation streaming ensures that only the necessary parts of these animations are loaded, reducing memory usage and improving performance.
 
-2. **Environmental Animations**: Open-world games often feature dynamic environments with animations like trees swaying, water flowing, and weather changes. Streaming these animations helps maintain a seamless experience without overloading the system.
+2. Environmental Animations: Open-world games often feature dynamic environments with animations like trees swaying, water flowing, and weather changes. Streaming these animations helps maintain a seamless experience without overloading the system.
 
-3. **Cutscenes and Cinematics**: Long cutscenes and cinematic sequences can be streamed to avoid loading large animation files simultaneously, ensuring smooth transitions and playback.
+3. Cutscenes and Cinematics: Long cutscenes and cinematic sequences can be streamed to avoid loading large animation files simultaneously, ensuring smooth transitions and playback.
 
-4. **NPC Interactions**: Non-player characters (NPCs) in open-world games may have varied and lengthy interaction animations. Streaming these animations allows for more complex and varied NPC behaviours without compromising performance.
+4. NPC Interactions: Non-player characters (NPCs) in open-world games may have varied and lengthy interaction animations. Streaming these animations allows for more complex and varied NPC behaviours without compromising performance.
 
 ## The Downsides
 

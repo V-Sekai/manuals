@@ -12,10 +12,10 @@ Currently, the V-Sekai GitHub organization does not have repositories pinned, fo
 
 Pin the following repositories to the V-Sekai organization profile:
 
-1. **v-sekai-game** (primary engine)
-2. **awesome-vsekai** (ecosystem resources)
-3. **tool-model-explorer** (development utilities)
-4. **xr-grid** (XR interaction framework)
+1. v-sekai-game (primary engine)
+2. awesome-vsekai (ecosystem resources)
+3. tool-model-explorer (development utilities)
+4. xr-grid (XR interaction framework)
 
 **Implementation Steps**:
 
@@ -25,9 +25,9 @@ Pin the following repositories to the V-Sekai organization profile:
 
 ## Implementation Plan
 
-1. **Phase 1**: Org owner pins repositories (5 minutes).
-2. **Phase 2**: Quarterly review to update pins as projects evolve.
-3. **Validation**: Confirm pinned repos appear on the organization’s public profile.
+1. Phase 1: Org owner pins repositories (5 minutes).
+2. Phase 2: Quarterly review to update pins as projects evolve.
+3. Validation: Confirm pinned repos appear on the organization’s public profile.
 
 ## Benefits
 

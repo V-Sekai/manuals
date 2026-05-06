@@ -30,27 +30,27 @@ What state is V-Sekai in, and what can it do?
 
 ### Critical Issues
 
-1. **Desktop Mode Loading:** V-Sekai is currently unable to load in desktop mode.
+1. Desktop Mode Loading: V-Sekai is currently unable to load in desktop mode.
 
-2. **The purple screen on the desktop:** The black screen issue seems related to our current problem of [Issue #341](https://github.com/V-Sekai/v-sekai-game/issues/341)
+2. The purple screen on the desktop: The black screen issue seems related to our current problem of [Issue #341](https://github.com/V-Sekai/v-sekai-game/issues/341)
 
-3. **Multiplayer Voice Chat:** The multiplayer voice chat feature in V-Sekai is broken.
+3. Multiplayer Voice Chat: The multiplayer voice chat feature in V-Sekai is broken.
 
 ### Major Issues
 
-3. **Menu Editing:** In V-Sekai, menus can't be edited in VR. They can only be edited on the desktop before entering a game.
-4. **Default Avatar:** V-Sekai does not have a default avatar. This causes confusion as players load in with an error avatar.
-5. **Default Avatar IK:** V-Sekai's default ik is currently twisted incorrectly.
+3. Menu Editing: In V-Sekai, menus can't be edited in VR. They can only be edited on the desktop before entering a game.
+4. Default Avatar: V-Sekai does not have a default avatar. This causes confusion as players load in with an error avatar.
+5. Default Avatar IK: V-Sekai's default ik is currently twisted incorrectly.
 
 ### Successes
 
-5. **Avatar Uploading and Downloading**:\*\* V-Sekai can upload from the editor and, download avatars, and load them into the game at runtime.
-6. **World Uploading and Downloading**:\*\* V-Sekai can upload from the editor and, download worlds, and load them into the game at runtime.
-7. **VR Mode Loading:** V-Sekai can successfully load in VR mode.
+5. Avatar Uploading and Downloading:\*\* V-Sekai can upload from the editor and, download avatars, and load them into the game at runtime.
+6. World Uploading and Downloading:\*\* V-Sekai can upload from the editor and, download worlds, and load them into the game at runtime.
+7. VR Mode Loading: V-Sekai can successfully load in VR mode.
 
 ### Opportunities
 
-7. **Contributions:** V-Sekai is actively looking for more contributions.
+7. Contributions: V-Sekai is actively looking for more contributions.
 
 ## Timeline for the Next Weeks
 

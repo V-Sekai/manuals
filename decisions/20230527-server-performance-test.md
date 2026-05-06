@@ -78,13 +78,13 @@ The implementation will generate 90 days of data, generating 100,000 text data e
 
 ## Option Graveyard
 
-1. **Using static test data**: This option was considered for simplicity, but it would not provide the diverse and realistic data needed for thorough testing.
+1. Using static test data: This option was considered for simplicity, but it would not provide the diverse and realistic data needed for thorough testing.
 
-2. **Manual data generation**: This option involved manually creating test data, but it was deemed time-consuming and inefficient compared to using a library like Chance.js.
+2. Manual data generation: This option involved manually creating test data, but it was deemed time-consuming and inefficient compared to using a library like Chance.js.
 
-3. **Third-party data generation services**: While there are external services that can generate random text data, using them would introduce dependencies and potential costs. Implementing our a solution similar to Chance.js allows for better control over the process.
+3. Third-party data generation services: While there are external services that can generate random text data, using them would introduce dependencies and potential costs. Implementing our a solution similar to Chance.js allows for better control over the process.
 
-4. **Crowdsourcing test data**: This option involved gathering test data from users or volunteers. However, it raised concerns about data privacy, consistency, and quality.
+4. Crowdsourcing test data: This option involved gathering test data from users or volunteers. However, it raised concerns about data privacy, consistency, and quality.
 
 ## If this enhancement will be used infrequently, can it be worked around with a few lines of script?
 

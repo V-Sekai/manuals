@@ -23,8 +23,8 @@ V-Sekai utilizes WebAssembly (Wasm) to enhance performance, offering an alternat
 
 User-uploaded Wasm modules undergo a two-step process for safety and unauthorized access prevention:
 
-1. **Validation**: Ensure module structure and integrity adhere to security standards.
-2. **Sandboxing**: Confine modules in a secure environment, restricting system resource access and mitigating potential harm.
+1. Validation: Ensure module structure and integrity adhere to security standards.
+2. Sandboxing: Confine modules in a secure environment, restricting system resource access and mitigating potential harm.
 
 ### Functionality
 
@@ -41,11 +41,11 @@ The proposed solution uses WebAssembly (Wasm) to enhance performance and functio
 
 Here's a concise explanation of the implementation:
 
-1. **User uploads a Wasm module**: Custom Wasm modules with desired functionality are uploaded to V-Sekai.
-2. **Attach Wasm module to a node**: The Wasm module is attached to a node as a script, providing advanced functionality for the node.
-3. **Implement behavior within the Variant dictionary**: Node behavior is defined within script variable, enabling Wasm modules to provide both property data and behavior.
-4. **Utilize Godot's set_script property**: Using Godot's `set_script` property, Wasm modules are attached to nodes and objects, simplifying dependency handling.
-5. **Properties after the set script**: Adding properties directly onto the node after the script = property is set
+1. User uploads a Wasm module: Custom Wasm modules with desired functionality are uploaded to V-Sekai.
+2. Attach Wasm module to a node: The Wasm module is attached to a node as a script, providing advanced functionality for the node.
+3. Implement behavior within the Variant dictionary: Node behavior is defined within script variable, enabling Wasm modules to provide both property data and behavior.
+4. Utilize Godot's set_script property: Using Godot's `set_script` property, Wasm modules are attached to nodes and objects, simplifying dependency handling.
+5. Properties after the set script: Adding properties directly onto the node after the script = property is set
 
 This approach ensures graceful handling of missing resources while offering advanced functionality through user-uploaded Wasm modules.
 
@@ -63,9 +63,9 @@ This approach ensures graceful handling of missing resources while offering adva
 
 ## Option graveyard
 
-1. **Optimizing GDScript**: Improving the performance of GDScript was considered, but it would not provide the same level of performance boost as WebAssembly.
-2. **Using a different scripting language**: Alternative scripting languages like Lua or Python were considered, but they also do not offer the desired performance improvements compared to WebAssembly.
-3. **Native code integration**: Integrating native code (C++, Rust, etc.) directly into V-Sekai was considered, but it would increase complexity and maintenance efforts. Additionally, it would not provide the same level of security and sandboxing as WebAssembly.
+1. Optimizing GDScript: Improving the performance of GDScript was considered, but it would not provide the same level of performance boost as WebAssembly.
+2. Using a different scripting language: Alternative scripting languages like Lua or Python were considered, but they also do not offer the desired performance improvements compared to WebAssembly.
+3. Native code integration: Integrating native code (C++, Rust, etc.) directly into V-Sekai was considered, but it would increase complexity and maintenance efforts. Additionally, it would not provide the same level of security and sandboxing as WebAssembly.
 
 ## If this enhancement will be used infrequently, can it be worked around with a few lines of script?
 
@@ -84,34 +84,34 @@ Yes, integrating Wasm into V-Sekai's core ensures optimal performance and seamle
 
 Here's a glossary of definitions to help people understand the terms used in the Wasm in V-Sekai proposal:
 
-1. **WebAssembly (Wasm)**: A type of code that is more portable than regular code, making games and virtual worlds work better. Originally made for the web.
+1. WebAssembly (Wasm): A type of code that is more portable than regular code, making games and virtual worlds work better. Originally made for the web.
 
-2. **GDScript**: A programming language used to make games and apps in the Godot game engine.
+2. GDScript: A programming language used to make games and apps in the Godot game engine.
 
-3. **C++ native modules**: Pieces of code written in the C++ programming language that can be added to a game or app to make it work better.
+3. C++ native modules: Pieces of code written in the C++ programming language that can be added to a game or app to make it work better.
 
-4. **V-Sekai**: A platform for creating virtual worlds and avatar-based social games.
+4. V-Sekai: A platform for creating virtual worlds and avatar-based social games.
 
-5. **Metadata**: Information about something, like who made it and what it's for.
+5. Metadata: Information about something, like who made it and what it's for.
 
-6. **Validation**: Checking if something is correct and follows the rules.
+6. Validation: Checking if something is correct and follows the rules.
 
-7. **Sandboxing**: Putting something in a safe area where it can't cause harm or access things it shouldn't.
+7. Sandboxing: Putting something in a safe area where it can't cause harm or access things it shouldn't.
 
-8. **User-Generated Content (UGC)**: Things that people who use a game or app create themselves, like characters, levels, or stories.
+8. User-Generated Content (UGC): Things that people who use a game or app create themselves, like characters, levels, or stories.
 
-9. **MissingNode**: A part of the game or app that needs a script to tell it what to do.
+9. MissingNode: A part of the game or app that needs a script to tell it what to do.
 
-10. **MissingResource**: Something that a game or app needs but doesn't have yet, like an image or sound.
+10. MissingResource: Something that a game or app needs but doesn't have yet, like an image or sound.
 
-11. **Variant**: A data type in Godot that can store different kinds of information, like numbers, text, or objects. It is used to represent and manipulate data in various ways within the game engine.
+11. Variant: A data type in Godot that can store different kinds of information, like numbers, text, or objects. It is used to represent and manipulate data in various ways within the game engine.
 
-12. **Node3D**: A point in a 3D space that helps build a virtual world or game.
+12. Node3D: A point in a 3D space that helps build a virtual world or game.
 
-13. **Godot**: A free and open-source game engine used to create games and apps.
+13. Godot: A free and open-source game engine used to create games and apps.
 
-14. **Lua**: A programming language often used in game development.
+14. Lua: A programming language often used in game development.
 
-15. **Python**: A popular programming language used for many purposes, including game development.
+15. Python: A popular programming language used for many purposes, including game development.
 
-16. **Rust**: A programming language focused on safety and performance, often used for creating fast and reliable software.
+16. Rust: A programming language focused on safety and performance, often used for creating fast and reliable software.

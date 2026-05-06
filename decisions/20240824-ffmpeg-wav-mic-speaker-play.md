@@ -100,7 +100,7 @@ This command will help identify available ALSA audio devices, which can be used 
 
 ### Steps
 
-1. **Define File Paths and Device IDs**:
+1. Define File Paths and Device IDs:
 
    - `INPUT_WAV`: Path to an optional input WAV file.
    - `OUTPUT_WAV`: Path where the recorded speaker output will be saved.
@@ -108,16 +108,16 @@ This command will help identify available ALSA audio devices, which can be used 
    - `SPEAKER_DEVICE`: Speaker device ID (replace with actual device ID).
    - `DURATION`: Duration of the recording in seconds.
 
-2. **Generate a Test Tone or Play Provided WAV File as Microphone Input**:
+2. Generate a Test Tone or Play Provided WAV File as Microphone Input:
 
    - If `INPUT_WAV` is not provided, use `ffmpeg` to generate a 1000 Hz sine wave test tone and play it as if it were coming from the microphone.
    - If `INPUT_WAV` is provided, use `ffmpeg` to play the WAV file as if it were coming from the microphone.
 
-3. **Record the Speaker Output**:
+3. Record the Speaker Output:
 
    - Use `ffmpeg` to record the speaker output to a WAV file for the specified duration.
 
-4. **Wait for Background Processes**:
+4. Wait for Background Processes:
    - Ensure all background processes complete before the script exits.
 
 ## The Benefits

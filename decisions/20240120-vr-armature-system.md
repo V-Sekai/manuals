@@ -24,37 +24,37 @@ The proposed VR Armature System includes:
 
 ## Technical Implementation Steps
 
-1. **Handle Control Design:**
+1. Handle Control Design:
 
    - Craft VR-appropriate ergonomic handles.
    - Track VR controller for handle interaction.
 
-2. **Visual Indicator Development:**
+2. Visual Indicator Development:
 
    - Visualize joint limits.
    - Update indicators with joint movement.
 
-3. **IK Solver Integration:**
+3. IK Solver Integration:
 
    - Employ IK solver for joint positioning.
    - Validate across different avatar models.
 
-4. **Interface & Interaction:**
+4. Interface & Interaction:
 
    - Interface design for easy joint manipulation.
    - Implement feedback for joint limit reach.
 
-5. **Testing & Debugging:**
+5. Testing & Debugging:
 
    - User testing for intuitive use.
    - Refine system via user feedback.
 
-6. **System Finalization:**
+6. System Finalization:
 
    - Establish final iteration post-testing.
    - Optimize for VR performance.
 
-7. **Documentation & Training:**
+7. Documentation & Training:
    - Produce user guides and tutorials.
    - Conduct capability and usage training sessions.
 

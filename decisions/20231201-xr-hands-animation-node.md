@@ -54,8 +54,8 @@ The system could also be beneficial for non-XR applications such as:
 
 ## Core Components
 
-1. **XR-Specific Node**: This component extracts and refines hand-tracking data into a specialized `Skeleton3D` node.
-2. **Animation BlendTree Node**: This node handles the complex task of retargeting data across different skeletons, enabling a mix-and-match approach to animation and physical interactions.
+1. XR-Specific Node: This component extracts and refines hand-tracking data into a specialized `Skeleton3D` node.
+2. Animation BlendTree Node: This node handles the complex task of retargeting data across different skeletons, enabling a mix-and-match approach to animation and physical interactions.
 
 ## Application Scenarios
 

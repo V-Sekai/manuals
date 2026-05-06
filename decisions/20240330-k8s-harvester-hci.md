@@ -28,14 +28,14 @@ sudo kubectl apply -f https://raw.githubusercontent.com/harvester/experimental-a
 
 This command will fetch the `rancher-vcluster.yaml` file from the `experimental-addons` repository and apply it to your Kubernetes cluster.
 
-2. **Configuring the Addon**: Configure the addon through the Harvester UI under Advanced > Addons. Edit the config for the `rancher-vcluster` addon, specify a hostname that points to the Harvester VIP and set a bootstrap password for Rancher.
-3. **Accessing Rancher**: Access Rancher using the DNS hostname provided during configuration after installation.
+2. Configuring the Addon: Configure the addon through the Harvester UI under Advanced > Addons. Edit the config for the `rancher-vcluster` addon, specify a hostname that points to the Harvester VIP and set a bootstrap password for Rancher.
+3. Accessing Rancher: Access Rancher using the DNS hostname provided during configuration after installation.
 
 This approach integrates Rancher into Harvester, leveraging Harvester's infrastructure to manage both VMs and containers centrally.
 
 ### To forcefully remove a Kubernetes namespace that is stuck in the `Terminating` state, you can follow these steps
 
-1. **Edit the namespace to remove its finalizers:**
+1. Edit the namespace to remove its finalizers:
 
    First, you'll need to edit the namespace to remove any finalizers that are preventing it from being deleted.
 
@@ -43,7 +43,7 @@ This approach integrates Rancher into Harvester, leveraging Harvester's infrastr
    kubectl get namespace rancher-vcluster -o json > tmp.json
    ```
 
-2. **Open the `tmp.json` file and remove the `finalizers` field:**
+2. Open the `tmp.json` file and remove the `finalizers` field:
 
    Look for the `spec` section and remove the `finalizers` array. It should look something like this:
 
@@ -61,13 +61,13 @@ This approach integrates Rancher into Harvester, leveraging Harvester's infrastr
    "spec": {}
    ```
 
-3. **Apply the modified JSON back to the cluster:**
+3. Apply the modified JSON back to the cluster:
 
    ```sh
    kubectl replace --raw "/api/v1/namespaces/rancher-vcluster/finalize" -f ./tmp.json
    ```
 
-4. **Verify the namespace has been deleted:**
+4. Verify the namespace has been deleted:
 
    ```sh
    kubectl get namespaces

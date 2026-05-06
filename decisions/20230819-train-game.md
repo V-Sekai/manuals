@@ -18,7 +18,7 @@ The main problems are the need for precise controls in VR and the ability to ren
 
 The strategy involves adding new features to V-Sekai to address these challenges:
 
-1. **Networking Avatar Crowds:** The aim here is to develop efficient methods for networking large groups of avatars in VR. This will involve creating a system that can handle the high data traffic required for real-time interaction between numerous avatars, while maintaining performance and stability. This could be achieved by implementing advanced networking protocols and optimization techniques to ensure smooth communication between avatars without overloading the network.
+1. Networking Avatar Crowds: The aim here is to develop efficient methods for networking large groups of avatars in VR. This will involve creating a system that can handle the high data traffic required for real-time interaction between numerous avatars, while maintaining performance and stability. This could be achieved by implementing advanced networking protocols and optimization techniques to ensure smooth communication between avatars without overloading the network.
 
 ## The Upside
 

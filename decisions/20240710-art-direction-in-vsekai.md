@@ -14,10 +14,10 @@ We need an art direction in V-Sekai for our work. Without a defined art directio
 
 ## Design
 
-1. **Concept Art Creation**: Develop initial concept art to explore different themes and styles.
-2. **Community Feedback**: Share concept art with the community for feedback and suggestions.
-3. **Style Guide Development**: Create a comprehensive style guide based on the chosen art direction.
-4. **Implementation**: Apply the style guide across all assets and environments within V-Sekai.
+1. Concept Art Creation: Develop initial concept art to explore different themes and styles.
+2. Community Feedback: Share concept art with the community for feedback and suggestions.
+3. Style Guide Development: Create a comprehensive style guide based on the chosen art direction.
+4. Implementation: Apply the style guide across all assets and environments within V-Sekai.
 
 ## The Benefits
 

@@ -14,14 +14,14 @@ Developers often struggle with the intricacies of VRChat's networking, leading t
 
 There are two primary methods to send data in VRChat:
 
-1. **Udonsynced Variables**:
+1. Udonsynced Variables:
 
    - Mark variables as `[UdonSynced]`.
    - Call `RequestSerialization()` in the script to send a copy of the synced variables to all other clients.
    - Only the owner can call `RequestSerialization()`, so ensure you call `Networking.SetOwner()` first.
    - An event called `OnDeserialization` is triggered when a network packet is received.
 
-2. **Network Events**:
+2. Network Events:
    - Use `SendCustomNetworkEvent()` to send an event.
    - Specify a string that matches the name of a function taking no arguments; this function will run upon receiving the event.
    - Choose to send the event either to the owner or all clients.

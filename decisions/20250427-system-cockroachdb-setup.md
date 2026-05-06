@@ -150,7 +150,7 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ### Game Development Jargon
 
-1. **CockroachDB**: A distributed SQL database designed for scalability and resilience.
-2. **Systemd**: A system and service manager for Linux.
-3. **CA (Certificate Authority)**: An entity that issues digital certificates.
-4. **TLS Certificate**: A digital certificate used to establish secure communication channels (like HTTPS or secure database connections).
+1. CockroachDB: A distributed SQL database designed for scalability and resilience.
+2. Systemd: A system and service manager for Linux.
+3. CA (Certificate Authority): An entity that issues digital certificates.
+4. TLS Certificate: A digital certificate used to establish secure communication channels (like HTTPS or secure database connections).

@@ -18,10 +18,10 @@ Implement a realistic blood simulation system considering factors like enemy typ
 
 ## Implementation
 
-1. **Blood simulation system**: Develop a system generating realistic blood effects.
-2. **Integration**: Ensure compatibility with existing game mechanics.
-3. **Optimization**: Minimize performance impact.
-4. **Testing & refinement**: Test extensively and refine based on feedback.
+1. Blood simulation system: Develop a system generating realistic blood effects.
+2. Integration: Ensure compatibility with existing game mechanics.
+3. Optimization: Minimize performance impact.
+4. Testing & refinement: Test extensively and refine based on feedback.
 
 ## Positive Consequences
 

@@ -10,11 +10,11 @@ The challenge is to modify the autoencoder/transformer to include a setting for 
 
 ## Design
 
-1. **Modify the Autoencoder/Transformer**: Update the existing code to include a `quads=True` parameter in the autoencoder/transformer.
+1. Modify the Autoencoder/Transformer: Update the existing code to include a `quads=True` parameter in the autoencoder/transformer.
 
-2. **Test the Modification**: Run tests to ensure that the modification works as expected and doesn't break existing functionality.
+2. Test the Modification: Run tests to ensure that the modification works as expected and doesn't break existing functionality.
 
-3. **Optimize the Loss**: Adjust the parameters and settings of the autoencoder/transformer to aim for a loss around 0.35 when processing quads.
+3. Optimize the Loss: Adjust the parameters and settings of the autoencoder/transformer to aim for a loss around 0.35 when processing quads.
 
 ## The Benefits
 

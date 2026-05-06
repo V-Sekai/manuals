@@ -23,13 +23,13 @@ Implement Ash framework with Rustler-based NIF integration for librecommender.
 
 ## Implementation Plan
 
-1. **Phase 1**: Ash core setup
+1. Phase 1: Ash core setup
    - Port uro entity relationships
    - Rustler integration tests
-2. **Phase 2**: Recommender bridge
+2. Phase 2: Recommender bridge
    - Implement protocol for librecommender
    - JSON-LD attribute mapping
-3. **Validation**:
+3. Validation:
    - Success Criteria: <500ms p99 inference latency
    - Failure Threshold: >5% data serialization errors
 

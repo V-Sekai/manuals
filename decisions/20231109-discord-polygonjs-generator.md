@@ -18,17 +18,17 @@ The current challenge is to create an interactive Discord bot that allows for im
 
 To create a Discord bot as a Proof of Concept (PoC) that demonstrates the feasibility of character customization using trait-based input, we will execute the following steps:
 
-1. **Define Key Traits:** We will select a set of fundamental character traits such as height, body shape, hair color, and clothing style. Each trait will be associated with a Unicode emoji for straightforward identification and interaction within the Discord interface.
+1. Define Key Traits: We will select a set of fundamental character traits such as height, body shape, hair color, and clothing style. Each trait will be associated with a Unicode emoji for straightforward identification and interaction within the Discord interface.
 
-2. **Bot Development:** A bot will be developed to parse textual commands linked to each trait. For example, a user might input `!height 📏` to set the character's height or `!hair 🎨` to choose a hair color.
+2. Bot Development: A bot will be developed to parse textual commands linked to each trait. For example, a user might input `!height 📏` to set the character's height or `!hair 🎨` to choose a hair color.
 
-3. **Image Generation:** The bot will map each trait to a specific set of 2D image assets. It will have the logic to composite these assets into a single image that represents the character based on the selected traits.
+3. Image Generation: The bot will map each trait to a specific set of 2D image assets. It will have the logic to composite these assets into a single image that represents the character based on the selected traits.
 
-4. **User Interaction:** Reaction buttons for 'like' 👍, 'dislike' 👎, and 'regenerate' 🔄 will be implemented to allow users to interact with the generated character. This will provide immediate feedback mechanisms for the community.
+4. User Interaction: Reaction buttons for 'like' 👍, 'dislike' 👎, and 'regenerate' 🔄 will be implemented to allow users to interact with the generated character. This will provide immediate feedback mechanisms for the community.
 
-5. **Testing and Iteration:** The bot will be deployed in a controlled Discord environment and tested by real users. Their feedback will be crucial for refining the bot's functionality and user experience.
+5. Testing and Iteration: The bot will be deployed in a controlled Discord environment and tested by real users. Their feedback will be crucial for refining the bot's functionality and user experience.
 
-6. **Documentation:** All development processes, user interactions, and iterations will be thoroughly documented. This documentation will be critical for understanding user needs and will inform future development cycles.
+6. Documentation: All development processes, user interactions, and iterations will be thoroughly documented. This documentation will be critical for understanding user needs and will inform future development cycles.
 
 This PoC will serve to validate the core idea, engage the user community early in the development process, and provide critical insights for scaling the bot to handle more complex trait manipulation and 3D character rendering in future phases.
 

@@ -76,9 +76,9 @@ In these normalized tables, each tuple is essential and there is no redundancy. 
 
 ### Operational Implications for Database Practitioners
 
-1. **Dependency Analysis**: The first step involves a detailed analysis of all functional and join dependencies across the database to identify redundancy and determine the scope for normalization to ETNF.
-2. **Schema Evaluation and Restructuring**: Evaluate existing database schemas against ETNF criteria, identifying areas where restructuring is required to eliminate redundancy and enhance efficiency.
-3. **Practical Application and Migration**: Implement the ETNF principles through schema redesign and careful data migration, ensuring that the transition does not impact data integrity or system availability.
+1. Dependency Analysis: The first step involves a detailed analysis of all functional and join dependencies across the database to identify redundancy and determine the scope for normalization to ETNF.
+2. Schema Evaluation and Restructuring: Evaluate existing database schemas against ETNF criteria, identifying areas where restructuring is required to eliminate redundancy and enhance efficiency.
+3. Practical Application and Migration: Implement the ETNF principles through schema redesign and careful data migration, ensuring that the transition does not impact data integrity or system availability.
 
 ## Benefits for V-Sekai
 

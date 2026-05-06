@@ -36,13 +36,13 @@ Khepri provides robustness and reliability while Elixir offers scalability and f
 
 ## Option graveyard
 
-1. **Using a simple watchdog script:** A simple script that monitors the Godot Engine and restarts it in case of a crash. This was rejected due to its inability to act as a local processor for game data before upload.
+1. Using a simple watchdog script: A simple script that monitors the Godot Engine and restarts it in case of a crash. This was rejected due to its inability to act as a local processor for game data before upload.
 
-2. **Relying on third-party services:** There are several third-party services that offer process monitoring and automatic restarts. However, these were rejected due to potential issues with customization, cost, and data privacy.
+2. Relying on third-party services: There are several third-party services that offer process monitoring and automatic restarts. However, these were rejected due to potential issues with customization, cost, and data privacy.
 
-3. **Building a custom solution from scratch:** While this would give us the most control, it was deemed too resource-intensive and unnecessary given the existence of suitable tools like khepri and Elixir.
+3. Building a custom solution from scratch: While this would give us the most control, it was deemed too resource-intensive and unnecessary given the existence of suitable tools like khepri and Elixir.
 
-4. **Do nothing:** The option to maintain the status quo was considered but ultimately rejected due to the negative impact on user experience and data integrity.
+4. Do nothing: The option to maintain the status quo was considered but ultimately rejected due to the negative impact on user experience and data integrity.
 
 ## If this enhancement will be used infrequently, can it be worked around with a few lines of script?
 

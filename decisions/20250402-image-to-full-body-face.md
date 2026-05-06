@@ -30,13 +30,13 @@ An image-to-FACS pipeline combining synthetic data generation, biomechanical con
 
 ## Implementation Plan
 
-1. **Phase 1**: Synthetic Data Pipeline
+1. Phase 1: Synthetic Data Pipeline
    - Develop Animation-to-VRM conversion tools
    - Generate multi-format synthetic data in Godot Engine
-2. **Phase 2**: Keypoint Prediction Model
+2. Phase 2: Keypoint Prediction Model
    - Train transformer-based model on synthetic/real data mixtures
    - Integrate biomechanical constraints into loss functions
-3. **Validation**:
+3. Validation:
    - Success Criteria: >90% anatomical validity in user studies
    - Failure Threshold: <15% improvement over baseline MediaPipe accuracy
 

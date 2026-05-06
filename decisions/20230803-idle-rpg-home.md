@@ -17,9 +17,9 @@ We aim to engage users in the V-Sekai world. A social RPG game could be the solu
 Our game is set in a "Comfortable Cyberprep" realm. It merges sci-fi with ease, where tech and humans coexist. Players explore a future city where technology is part of life. The city glows with neon lights, holographic interfaces, and advanced AI, yet retains homeliness.
 
 1. Static couch collider: A fixed location for player interaction.
-2. **Non-functional** Static bed without collider: A rejuvenation spot for characters.
-3. **Non-functional** Mirror that is off: A decorative element with potential uses.
-4. **Non-functional** Video player screen that is off: A feature for entertainment or information.
+2. Non-functional Static bed without collider: A rejuvenation spot for characters.
+3. Non-functional Mirror that is off: A decorative element with potential uses.
+4. Non-functional Video player screen that is off: A feature for entertainment or information.
 
 ### Story
 

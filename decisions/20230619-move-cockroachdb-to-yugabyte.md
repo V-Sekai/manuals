@@ -39,9 +39,9 @@ To implement YugabyteDB as the chosen database solution, the following steps sho
 
 ## Option graveyard
 
-1. **PostgreSQL**: While a popular and powerful database solution, it may not offer the desired single-node setup with growth potential.
-2. **CockroachDB**: The current implementation has been problematic due to its 3-node distributed configuration in Kubernetes.
-3. **SQLite on FoundationDB**: Limited data types and compatibility issues with the existing schema make this option less desirable.
+1. PostgreSQL: While a popular and powerful database solution, it may not offer the desired single-node setup with growth potential.
+2. CockroachDB: The current implementation has been problematic due to its 3-node distributed configuration in Kubernetes.
+3. SQLite on FoundationDB: Limited data types and compatibility issues with the existing schema make this option less desirable.
 
 ## If this enhancement will be used infrequently, can it be worked around with a few lines of script?
 

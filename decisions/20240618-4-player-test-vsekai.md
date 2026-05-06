@@ -12,9 +12,9 @@ We want to host a 4 player test tonight.
 
 Here is a step-by-step guide on how we can achieve this:
 
-1. **Import a map into V-Sekai**: We will use a map with a CC-BY or CC0 license for the world upload.
-2. **Start a server**: We will set up and start a server where the test will be hosted.
-3. **Invite people**: We will then invite the players to join the test.
+1. Import a map into V-Sekai: We will use a map with a CC-BY or CC0 license for the world upload.
+2. Start a server: We will set up and start a server where the test will be hosted.
+3. Invite people: We will then invite the players to join the test.
 
 ## Benefits
 

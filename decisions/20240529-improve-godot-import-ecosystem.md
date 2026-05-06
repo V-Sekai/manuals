@@ -12,31 +12,31 @@ The current process of exporting assets from Blender to Godot can be cumbersome 
 
 Here are some of the key strategies we propose:
 
-1. **Exporting of Blender materials to Godot via a custom GLTF2 extension as Godot shaders.**
+1. Exporting of Blender materials to Godot via a custom GLTF2 extension as Godot shaders.
 
    - Strategy: Add MaterialX as a Godot engine shader and then have Blender export it.
    - Work in progress: Translate MaterialX as a Godot Visual Shader.
    - Plan B: Reuse the Blender exporter and use it to export Godot shaders as a glTF extension.
 
-2. **Exporting Blender scene settings (sky, etc) via custom GLTF2 extension as Godot shaders.**
+2. Exporting Blender scene settings (sky, etc) via custom GLTF2 extension as Godot shaders.
 
    - Strategy: Find all Godot engine scene properties and write a glTF extension that can save or export it.
 
-3. **Export Blender collision shapes to Godot.**
+3. Export Blender collision shapes to Godot.
 
    - Strategy: Through KHR physics. Official Khronos ratification will give Blender and Godot engine glTF support through Aaron Franke’s PR.
 
-4. **Create and save unique IDs on Blender objects on export.**
+4. Create and save unique IDs on Blender objects on export.
 
    - This needs to be researched a bit more (may need to be a Blender add-on, GLTF proposal).
 
-5. **Unification of tangent space generation.**
+5. Unification of tangent space generation.
 
    - The revised design is that we move all tangent generation to the ImporterMesh3D for the importers.
 
-6. **Improve the asset import dialog based on proposal GH-7238.**
+6. Improve the asset import dialog based on proposal GH-7238.
 
-7. **Finalization of the IES light importer from pull request GH-63835.**
+7. Finalization of the IES light importer from pull request GH-63835.
    - Needs work on the equirectangular transform.
 
 ## The Benefits

@@ -12,17 +12,17 @@ The current system faces challenges handling large amounts of 3D model data and 
 
 The solution involves several steps to ensure data consistency and durability:
 
-1. **Content Delivery Network (CDN)**: We will create a CDN similar to a static sftp file store for efficient content delivery.
+1. Content Delivery Network (CDN): We will create a CDN similar to a static sftp file store for efficient content delivery.
 
-2. **Etso for Erlang Term Storage (ETS)**: Etso will be configured to manage temporary, in-memory data structures with Ecto schemas in Elixir applications. This is ideal for quick data manipulation and caching.
+2. Etso for Erlang Term Storage (ETS): Etso will be configured to manage temporary, in-memory data structures with Ecto schemas in Elixir applications. This is ideal for quick data manipulation and caching.
 
-3. **Raft/Ra for Distributed Consensus**: Raft/Ra will be deployed to ensure distributed consensus across system nodes, which is crucial for coordinated state changes and maintaining data consistency.
+3. Raft/Ra for Distributed Consensus: Raft/Ra will be deployed to ensure distributed consensus across system nodes, which is crucial for coordinated state changes and maintaining data consistency.
 
-4. **CockroachDB for Persistent Storage**: CockroachDB will store critical, structured data that requires ACID transactions and global accessibility. This ensures the durability of our data.
+4. CockroachDB for Persistent Storage: CockroachDB will store critical, structured data that requires ACID transactions and global accessibility. This ensures the durability of our data.
 
-5. **Data Flow Management**: Protocols will be established to move temporary data from Etso/ETS to the CDN for bulk storage. For structured data persistence, we will use CockroachDB.
+5. Data Flow Management: Protocols will be established to move temporary data from Etso/ETS to the CDN for bulk storage. For structured data persistence, we will use CockroachDB.
 
-6. **Consistency Management**: Raft/Ra will manage write operations across the CDN and CockroachDB to ensure consistency and fault tolerance.
+6. Consistency Management: Raft/Ra will manage write operations across the CDN and CockroachDB to ensure consistency and fault tolerance.
 
 ### Configure Etso for ETS
 

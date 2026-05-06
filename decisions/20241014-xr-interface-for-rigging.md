@@ -18,24 +18,24 @@ The proposed system will allow users to interact directly with avatar bone struc
 
 ### Implementation Strategy
 
-1. **Visual Representation of Bones**:
+1. Visual Representation of Bones:
 
    - Each bone will be represented by a dot that becomes visible and enlarges when the user's hand or controller approaches it, facilitating easy selection.
 
-2. **Avoiding Selection Mechanism**:
+2. Avoiding Selection Mechanism:
 
    - Instead of using a traditional selection mechanism, the system will employ proximity-based interaction. When a user's hand or controller is near a bone, the relevant constraints automatically appear, allowing immediate manipulation without the need for explicit selection. This reduces complexity and enhances flow in the immersive environment.
 
-3. **Constraint Manipulation Tools**:
+3. Constraint Manipulation Tools:
 
    - A virtual tool palette will be available to the user, containing different constraint modifiers.
    - Users can grab these tools and attach them to bones to adjust constraints like positions and rotations.
 
-4. **Tool Switcher Interface**:
+4. Tool Switcher Interface:
 
    - In addition to the tool palette, a tool switcher mechanism will be implemented allowing users to quickly switch between tools without returning to the palette. This could be activated via a gesture or a button press, bringing up a radial or linear menu to select the desired tool.
 
-5. **Intuitive Constraint Adjustment**:
+5. Intuitive Constraint Adjustment:
 
    - For position constraints, a 3D gizmo will appear, allowing users to manipulate the position directly within the VR space.
    - For rotational constraints, a 3D gizmo will appear, allowing users to manipulate the angle directly within the VR space.
@@ -43,12 +43,12 @@ The proposed system will allow users to interact directly with avatar bone struc
    - Swing constraints can be adjusted using a spherical interface where permissible rotation areas are defined by the user.
    - Swing constraints can be adjusted using a 2d orbit map interface where permissible rotation areas are defined by the user.
 
-6. **Feedback and Precision**:
+6. Feedback and Precision:
 
    - Visual and haptic feedback will be provided to ensure users are aware of the changes they are making.
    - Precision tools and snapping features will help in making exact adjustments.
 
-7. **Deselection and Context Switching**:
+7. Deselection and Context Switching:
    - Moving the controller away from the bones or performing a specific gesture will clear the current interaction, allowing for a smooth workflow without accidental adjustments.
 
 ### Mock-up Diagram

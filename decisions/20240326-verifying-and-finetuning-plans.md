@@ -26,14 +26,14 @@ if feasible:
 
 ## Benefits
 
-1. **Innovation**: Using LLMs for idea generation can lead to creative ideas.
-2. **Practicality**: Passing the generated ideas through a goal-task planner ensures that the plans are innovative but also feasible and executable.
-3. **Continuous Learning**: The LLM can learn from the accurate plans, improving its performance over time.
+1. Innovation: Using LLMs for idea generation can lead to creative ideas.
+2. Practicality: Passing the generated ideas through a goal-task planner ensures that the plans are innovative but also feasible and executable.
+3. Continuous Learning: The LLM can learn from the accurate plans, improving its performance over time.
 
 ## Downsides
 
-1. **Computational Overhead**: There might be a computational overhead due to the two-step process.
-2. **Accuracy of Feasibility Check**: The feasibility check might not always be accurate.
+1. Computational Overhead: There might be a computational overhead due to the two-step process.
+2. Accuracy of Feasibility Check: The feasibility check might not always be accurate.
 
 ## Road Not Taken
 

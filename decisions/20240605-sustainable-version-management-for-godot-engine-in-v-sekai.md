@@ -12,10 +12,10 @@ How can we manage the version growth of the Godot Engine more sustainably, focus
 
 We propose a sustainable approach to handle the version growth of the Godot Engine:
 
-1. **Designing for Finite Funds**: Instead of investing heavily in trying to keep up with every new version, focus on key updates that significantly impact or improve our project.
-2. **Designing for Finite Performance**: Prioritize optimization and performance over trying to incorporate every new feature from the latest versions.
-3. **Designing for Finite Data**: Be selective about the data we choose to update with each new version, focusing on what's most relevant to our project.
-4. **Design for Finite Brainpower**: Invest in knowledge sharing and training to ensure our team can effectively work with the chosen versions of Godot Engine.
+1. Designing for Finite Funds: Instead of investing heavily in trying to keep up with every new version, focus on key updates that significantly impact or improve our project.
+2. Designing for Finite Performance: Prioritize optimization and performance over trying to incorporate every new feature from the latest versions.
+3. Designing for Finite Data: Be selective about the data we choose to update with each new version, focusing on what's most relevant to our project.
+4. Design for Finite Brainpower: Invest in knowledge sharing and training to ensure our team can effectively work with the chosen versions of Godot Engine.
 
 ## The Benefits
 

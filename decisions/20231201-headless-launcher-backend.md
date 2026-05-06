@@ -89,7 +89,7 @@ stateDiagram-v2
 
 Use Elixir for concurrent services and CockroachDB on the server for data management:
 
-1. **Headless CLI**
+1. Headless CLI
 
    - Implement desync for data synchronization.
    - Detail how desync will be integrated into the service and GUI.
@@ -124,7 +124,7 @@ delete_old_and_move_over()
 setup_registry_values()
 ```
 
-2. **Updater Online Service:**
+2. Updater Online Service:
 
    - Create a lightweight updater service.
    - Use Elixir for web requests handling.
@@ -132,13 +132,13 @@ setup_registry_values()
    - Integrate desync protocol in the Service.
    - Include error handling strategy for failed updates or data synchronization issues.
 
-3. **GUI Launcher Creation:**
+3. GUI Launcher Creation:
 
    - Design an intuitive Godot Engine GUI launcher.
    - Integrate desync protocol in the GUI.
    - Detail the basic visual setup with V-Sekai branding.
 
-4. **Game Setup Efforts:**
+4. Game Setup Efforts:
    - Develop a basic visual setup with V-Sekai branding.
    - Include a plan for testing each component to ensure functionality.
    - Address security concerns, including user data protection and secure updates.

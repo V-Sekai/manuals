@@ -20,12 +20,12 @@ Implement an automated rigging and wrapping system using known base meshes and g
 
 ## Design
 
-1. **Create avatar and garment models**: Create a 3D model representing the basic shape and structure of an avatar without any clothing or accessories, and a 3D model of a piece of clothing or accessory.
-2. **Rig models**: Rig the avatar and garment models by creating a skeleton structure that defines how they move and deform. Use the Blender Dem Bones add-on to automate the rigging process.
-3. **Generate cage mesh**: Generate a simplified "cage" mesh around the avatar base mesh using the Simplicage add-on. This cage will be used to help apply the garment to the avatar.
-4. **Attach garment to cage**: Attach the garment model to the cage created in the previous step, so that it follows the cage's movement and deformation.
-5. **Conform garment to avatar**: Utilize the Mesh Materializer add-on to conform the garment model to the avatar base mesh, using a UV texture map to guide the wrapping process. This ensures the garment fits correctly on the avatar.
-6. **Manage multiple layers**: Develop a system to manage multiple layers of clothing or accessories on the avatar, allowing for proper layering and interaction between clothing items.
+1. Create avatar and garment models: Create a 3D model representing the basic shape and structure of an avatar without any clothing or accessories, and a 3D model of a piece of clothing or accessory.
+2. Rig models: Rig the avatar and garment models by creating a skeleton structure that defines how they move and deform. Use the Blender Dem Bones add-on to automate the rigging process.
+3. Generate cage mesh: Generate a simplified "cage" mesh around the avatar base mesh using the Simplicage add-on. This cage will be used to help apply the garment to the avatar.
+4. Attach garment to cage: Attach the garment model to the cage created in the previous step, so that it follows the cage's movement and deformation.
+5. Conform garment to avatar: Utilize the Mesh Materializer add-on to conform the garment model to the avatar base mesh, using a UV texture map to guide the wrapping process. This ensures the garment fits correctly on the avatar.
+6. Manage multiple layers: Develop a system to manage multiple layers of clothing or accessories on the avatar, allowing for proper layering and interaction between clothing items.
 
 ## Positive Consequences
 

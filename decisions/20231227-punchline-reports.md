@@ -18,10 +18,10 @@ Traditional reporting styles often start with lengthy explanations which can del
 
 Implement a four-step approach to reporting:
 
-1. **Start with the punch line** – the facts without adjectives or modifiers.
-2. **Describe the current status** and how it affects the project.
-3. **Outline the next steps or solutions**.
-4. **Provide an explanation or reason** behind the punch line.
+1. Start with the punch line – the facts without adjectives or modifiers.
+2. Describe the current status and how it affects the project.
+3. Outline the next steps or solutions.
+4. Provide an explanation or reason behind the punch line.
 
 This approach is likened to the inverted pyramid style in journalism, where conclusions are presented first, followed by key facts, and then details.
 

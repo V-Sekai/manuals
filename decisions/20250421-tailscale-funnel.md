@@ -87,7 +87,7 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ### Game Development Jargon
 
-1. **Tailscale**: A mesh VPN service that simplifies secure networking between devices.
-2. **Systemd**: A system and service manager for Linux operating systems.
-3. **Funnel**: A Tailscale feature for exposing local services to the internet securely.
-4. **VM (Virtual Machine)**: A software-based emulation of a physical computer.
+1. Tailscale: A mesh VPN service that simplifies secure networking between devices.
+2. Systemd: A system and service manager for Linux operating systems.
+3. Funnel: A Tailscale feature for exposing local services to the internet securely.
+4. VM (Virtual Machine): A software-based emulation of a physical computer.

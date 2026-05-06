@@ -29,13 +29,13 @@ A speech-to-FACS pipeline that maps speech to 3D facial movements using multimod
 
 ## Implementation Plan
 
-1. **Phase 1**: Data Collection & Preprocessing
+1. Phase 1: Data Collection & Preprocessing
    - Convert FaceMotion3D blend shapes to COCO JSON.
    - Record diverse speakers performing phonetic-rich phrases.
-2. **Phase 2**: Model Development & Training
+2. Phase 2: Model Development & Training
    - Train multimodal model for audio-to-FACS alignment.
    - Develop reinforcement learning pipeline for masked audio matching.
-3. **Validation**:
+3. Validation:
    - Success Criteria: High lip-sync accuracy (>90%) and positive user study feedback.
    - Failure Threshold: <10% improvement in accuracy or negative user assessments.
 

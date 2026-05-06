@@ -14,9 +14,9 @@ In the pursuit of optimizing network performance for the V-Sekai project, we're 
 
 Design a comprehensive series of tests to measure and compare the performance of the three different networked multiplayer strategies within the Godot Engine:
 
-1. **The many servers approach**: A decentralized model where numerous smaller servers handle subsets of users.
-2. **The many worlds approach**: A single server hosts multiple distinct world instances.
-3. **The one world with threaded process group nodes**: A monolithic single world that leverages threading to manage users and activities.
+1. The many servers approach: A decentralized model where numerous smaller servers handle subsets of users.
+2. The many worlds approach: A single server hosts multiple distinct world instances.
+3. The one world with threaded process group nodes: A monolithic single world that leverages threading to manage users and activities.
 
 ## The Strategy
 

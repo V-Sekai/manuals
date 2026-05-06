@@ -18,14 +18,14 @@ The proposed solution involves using the T5 model to generate text based on inpu
 
 To use T5 (Text-to-Text Transfer Transformer) with JSON-former for XState in Godot Engine 4.0, you'll need to follow these steps:
 
-1. **Load the necessary libraries**
+1. Load the necessary libraries
 
 ```gd
 var transformers = preload("res://path/to/transformers.gd")
 var torch = preload("res://path/to/torch.gd")
 ```
 
-2. **Load the T5 model and tokenizer**
+2. Load the T5 model and tokenizer
 
 ```gd
 var model_name = "t5-small"
@@ -33,7 +33,7 @@ var tokenizer = transformers.load_T5Tokenizer(model_name)
 var model = transformers.load_T5ForConditionalGeneration(model_name)
 ```
 
-3. **Create a function to generate text using T5**
+3. Create a function to generate text using T5
 
 ```gd
 func generate_text(input_text: String) -> String:
@@ -43,7 +43,7 @@ func generate_text(input_text: String) -> String:
     return generated_text
 ```
 
-4. **Create a function to replace placeholders in T5 output**
+4. Create a function to replace placeholders in T5 output
 
 ```gd
 func replace_placeholders(text: String) -> String:
@@ -51,7 +51,7 @@ func replace_placeholders(text: String) -> String:
     return formatted_text
 ```
 
-5. **Create a function to parse JSON from formatted text**
+5. Create a function to parse JSON from formatted text
 
 ```gd
 func parse_JSON(formatted_text: String) -> Dictionary:
@@ -59,7 +59,7 @@ func parse_JSON(formatted_text: String) -> Dictionary:
     return json_object
 ```
 
-6. **Create a function to convert T5 output to XState JSON format**
+6. Create a function to convert T5 output to XState JSON format
 
 ```gd
 func t5_to_jsonformer_xstate(text: String) -> Dictionary:
@@ -68,7 +68,7 @@ func t5_to_jsonformer_xstate(text: String) -> Dictionary:
     return json_object
 ```
 
-7. **Use the functions to generate XState JSON**
+7. Use the functions to generate XState JSON
 
 ```gd
 func _ready():
@@ -94,7 +94,7 @@ This will give you the XState JSON format for the given input text. Note that th
 
 Here are some option graveyard items for the proposal:
 
-1. **Using rule-based natural language processing (NLP) techniques**
+1. Using rule-based natural language processing (NLP) techniques
 
    - Pros:
      - Easier to implement and understand.
@@ -103,7 +103,7 @@ Here are some option graveyard items for the proposal:
      - Limited in handling complex or ambiguous input text.
      - Requires manual updates to rules as new use cases emerge.
 
-2. **Using other pre-trained NLP models (e.g., GPT-3, BERT)**
+2. Using other pre-trained NLP models (e.g., GPT-3, BERT)
 
    - Pros:
      - Can leverage existing state-of-the-art NLP models.
@@ -112,7 +112,7 @@ Here are some option graveyard items for the proposal:
      - May require additional fine-tuning or adaptation for the specific task.
      - Some models may have higher computational requirements or costs.
 
-3. **Creating a custom NLP model from scratch**
+3. Creating a custom NLP model from scratch
 
    - Pros:
      - Tailored specifically for the task of converting natural language text into XState JSON format.
@@ -121,7 +121,7 @@ Here are some option graveyard items for the proposal:
      - Requires significant time and effort to develop, train, and maintain.
      - May not perform as well as existing state-of-the-art models.
 
-4. **Using an external API or service for natural language understanding**
+4. Using an external API or service for natural language understanding
 
    - Pros:
      - Offloads the complexity of NLP to an external service.

@@ -71,8 +71,8 @@ func should_sync():
 
 ## Option Graveyard
 
-1. **Client-side caching**: Storing data on the client-side to reduce server load. However, this approach can lead to security vulnerabilities and inconsistent data across clients.
-2. **Static file export**: Exporting data as static files instead of using MVSQLite. This option was rejected due to limited flexibility and scalability.
+1. Client-side caching: Storing data on the client-side to reduce server load. However, this approach can lead to security vulnerabilities and inconsistent data across clients.
+2. Static file export: Exporting data as static files instead of using MVSQLite. This option was rejected due to limited flexibility and scalability.
 
 These options were considered but ultimately rejected in favor of the proposed solution, which aims to balance performance, security, and maintainability.
 
