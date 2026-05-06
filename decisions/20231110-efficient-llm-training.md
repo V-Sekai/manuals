@@ -24,12 +24,12 @@ To expedite the training process, we propose the following adjustments to Ludwig
 
 ## Pros and Cons
 
-**Pros:**
+#### Pros
 
 - Significantly reduces training time.
 - Allows for more efficient use of resources.
 
-**Cons:**
+#### Cons
 
 - Early training metrics may appear "noisy".
 

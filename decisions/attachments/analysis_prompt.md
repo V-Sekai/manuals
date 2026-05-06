@@ -1,6 +1,6 @@
 ## Image Analysis Prompt
 
-**Prompt:**
+#### Prompt
 
 Analyze the provided image of [Person's Name] to assess this individual's physical appearance, attire, and nonverbal cues. Consider the following aspects:
 

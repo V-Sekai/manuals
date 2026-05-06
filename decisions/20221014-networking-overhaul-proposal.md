@@ -8,13 +8,13 @@
 
 We seek to solve these issues:
 
-- **(A)** Use godot 4.0's networking tools.
-- **(B)** Use a relay server that doesn't run any game code, rather than a headless V-Sekai server.
-- **(C)** Make the costs of hosting V-Sekai as small as possible.
-- **(D)** Write the server in Rust, for the speed and safety guarantees.
-- **(E)** Make networking highly scalable for a single server.
-- **(F)** Allow a client to connect to multiple servers simultaneously without issues, for seamless travel and portals.
-- **(G)** Synchronize state between clients
+- (A) Use godot 4.0's networking tools.
+- (B) Use a relay server that doesn't run any game code, rather than a headless V-Sekai server.
+- (C) Make the costs of hosting V-Sekai as small as possible.
+- (D) Write the server in Rust, for the speed and safety guarantees.
+- (E) Make networking highly scalable for a single server.
+- (F) Allow a client to connect to multiple servers simultaneously without issues, for seamless travel and portals.
+- (G) Synchronize state between clients
 
 Note: This proposal does not cover Permissions, and is based in part on the previous Entity Networking proposal.
 

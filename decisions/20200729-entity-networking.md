@@ -7,14 +7,14 @@
 
 For Groups, this system aims to solve the following issues:
 
-- **(A)** Need a way to standardize scene spawning.
-- **(B)** Need a way to refer to nodes/instances that is consistent across clients (for example, "Set parent to ...").
-- **(C)** Need a way to synchronize state between clients.
-- **(D)** Provides a basic set of standard protocols and interactions.
-- **(E)** Provides the basis for a security/privacy model regarding entity communication/permissions over the network.
-- **(F)** Provides a security model locally for access between nodes of one entity and nodes of another entity (assuming a secure scripting framework is implemented).
-- **(G)** This also solves the problem of abstracting away implementation details of entities; for example, there should be no need to deal with _Godot nodes_ on an individual basis.
-- **(H)** Provide a unified way to create top-level physics hierarchies isolated from other game logic.
+- (A) Need a way to standardize scene spawning.
+- (B) Need a way to refer to nodes/instances that is consistent across clients (for example, "Set parent to ...").
+- (C) Need a way to synchronize state between clients.
+- (D) Provides a basic set of standard protocols and interactions.
+- (E) Provides the basis for a security/privacy model regarding entity communication/permissions over the network.
+- (F) Provides a security model locally for access between nodes of one entity and nodes of another entity (assuming a secure scripting framework is implemented).
+- (G) This also solves the problem of abstracting away implementation details of entities; for example, there should be no need to deal with _Godot nodes_ on an individual basis.
+- (H) Provide a unified way to create top-level physics hierarchies isolated from other game logic.
 
 Note: This proposal covers three **Spawn Types**:
 
@@ -56,7 +56,7 @@ The network protocol will take care of updating the state gradually over time, a
 Events can be used to provide forced updates.
 Guarantees? Exposing metadata about when the state was updated?
 
-**Entity properties:**
+#### Entity properties
 
 - State that is synced is properties.
 - Some properties are only assignable at spawn time (for example, scene file?)
@@ -77,14 +77,14 @@ Examples: Physics, Physics Pickup; Button; Movable Platform; Vehicle
 
 ### E. Network Security Model
 
-**Concepts:**
+#### Concepts
 
-**Ownership:**
+#### Ownership
 
 All entities will be owned by the player who interacts with them or by the server.  
 Entity ownership will be transferred if the current owner leaves.
 
-**Mastership:**
+#### Mastership
 
 Map entities may largely be mastered by a dedicated server.
 

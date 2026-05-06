@@ -12,7 +12,7 @@ Manually starting, stopping, and configuring a secure CockroachDB cluster node i
 
 This proposal outlines setting up a single CockroachDB v22.1 node as a secure systemd service on Linux.
 
-**1. Installation:**
+#### 1. Installation
 Download the CockroachDB v22.1 binary and place it in `/usr/local/bin/`.
 
 ```bash
@@ -26,7 +26,7 @@ sudo cp -i cockroach-v22.1.linux-amd64/lib/libgeos.so /usr/local/lib/cockroach/
 sudo cp -i cockroach-v22.1.linux-amd64/lib/libgeos_c.so /usr/local/lib/cockroach/
 ```
 
-**2. Security Setup:**
+#### 2. Security Setup
 Generate CA, node, and client certificates. Store them in a secure directory (e.g., `/var/lib/cockroach/certs`). Ensure appropriate permissions.
 
 ```bash
@@ -43,7 +43,7 @@ cockroach cert create-node localhost $(hostname -f) --certs-dir="${CERT_DIR}" --
 cockroach cert create-client root --certs-dir="${CERT_DIR}" --ca-key="${CERT_DIR}/ca.key"
 ```
 
-**3. Systemd Service:**
+#### 3. Systemd Service
 Create a systemd unit file `/etc/systemd/system/cockroachdb.service`.
 
 ```ini
@@ -91,7 +91,7 @@ _Note: The default `ExecStart` uses `cockroach start-single-node`. For a multi-n
 _Note: Create the `cockroach` user and group if they don't exist._
 _Note: Create the data directory `/var/lib/cockroach/data` and set ownership._
 
-**4. Enable & Start:**
+#### 4. Enable & Start
 
 ```bash
 sudo systemctl daemon-reload

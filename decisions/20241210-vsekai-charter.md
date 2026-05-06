@@ -10,7 +10,7 @@ Our current V-Sekai charter is outdated and needs to be revised to reflect the p
 
 ## Design
 
-**A one-line summary of the MVP:**
+#### A one-line summary of the MVP
 
 A customizable and self-hosted virtual reality environment built on Godot Engine.
 
@@ -18,7 +18,7 @@ A customizable and self-hosted virtual reality environment built on Godot Engine
 
 Our virtual reality app will be compatible with all SteamVR-compatible PC headsets and the Meta Quest VR platform. It will feature a social hub with 3D voice chat, real-time body tracking, simple games, integrated physics, and social video viewing.
 
-**Category:**
+#### Category
 
 - Decentralized Web: YES
 - Messaging & Social Networking: YES
@@ -70,7 +70,7 @@ We welcome new contributors! We have a Discord group, a GitHub repository, and a
 | **Week 5-6** | - Implement an account system, Terms of Service, and Privacy Policy. <br> - Enable closed registration of users. <br> - Continue working on content and bug fixes. <br> - Integrate video playback. <br> - Focus on stress testing.                                      |
 | **Week 7-8** | - Fix bugs found during testing. <br> - Monitor performance metrics and continue performance optimization.                                                                                                                                                               |
 
-**Could you describe the team's approach to developing the Minimum Viable Product throughout the summer? This includes, but is not limited to:**
+#### Could you describe the team's approach to developing the Minimum Viable Product throughout the summer? This includes, but is not limited to
 
 **Who are your peers?**
 

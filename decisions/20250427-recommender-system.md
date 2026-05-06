@@ -14,7 +14,7 @@ V-Sekai requires a scalable recommendation system. The Elixir/Phoenix backend (u
 
 Implement Elixir/Phoenix using `FLAME` to serve the `librecommender` model. Leverage `Ecto` for CRDB data mapping, `Oban` for background job processing (like model retraining triggers or batch predictions), and potentially `Membrane` for integrating recommendation calls into data streams.
 
-**Key Components:**
+#### Key Components
 
 - Phoenix/Ecto: Backend framework and database interaction layer with CRDB. Handles schemas and application logic.
 - Oban: Manages background jobs which can trigger processing, including interactions with FLAME services or data preparation.

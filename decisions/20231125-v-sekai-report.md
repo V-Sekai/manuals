@@ -63,11 +63,11 @@ Fire is set to merge ufbx, freeing the industry-standard FBX file format from th
 
 ## Pros and Cons
 
-**Pros:**
+#### Pros
 
 Addressing these challenges can enhance the user experience, boost platform adoption, and collect crucial feedback for subsequent development.
 
-**Cons:**
+#### Cons
 
 There may be underlying issues causing the Linux build problem that could take significant time and resources to resolve.
 

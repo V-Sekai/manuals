@@ -12,7 +12,7 @@ The V-Sekai team requires a structured, real-time method to track daily project 
 
 ## Design
 
-**Process:**
+#### Process
 
 1. Daily Interactive Prompting: A bot (e.g., Discord/GitHub bot) prompts contributors for updates via a form.
 2. Structured Data Collection:
@@ -29,7 +29,7 @@ The V-Sekai team requires a structured, real-time method to track daily project 
 3. Automated Aggregation: Data is compiled into a Markdown log (example below) and posted to a project channel.
 4. Decision Tracking: Highlighted decisions/blockers trigger alerts to relevant roles (e.g., engineering lead).
 
-**Mock-Up:**
+#### Mock-Up
 
 ```markdown
 **Date:** 2025-02-03  

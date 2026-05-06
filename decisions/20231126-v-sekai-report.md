@@ -42,11 +42,11 @@ What state is V-Sekai in, and what can it do?
 
 ## Pros and Cons
 
-**Pros:**
+#### Pros
 
 Addressing these challenges can enhance the user experience, boost platform adoption, and collect crucial feedback for subsequent development.
 
-**Cons:**
+#### Cons
 
 There may be underlying issues causing the Linux build problem that could take significant time and resources to resolve.
 
