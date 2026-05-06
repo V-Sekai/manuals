@@ -364,7 +364,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>The Godot native desktop/PCVR client (<code>observer.tscn</code> with <code>OperatorRig</code> and <code>operator_camera.gd</code>) is already the reference implementation for the operator view. It runs the same <code>FabricMultiplayerPeer</code> C++ peer as the zone server. Stage 2 adds entity control: CH_PLAYER writes, OpenXR VR presence, and taskweft RECTGTN planning — all in GDScript and C++, with no browser runtime and no TypeScript.</p>
+<p>The Godot native desktop/PCVR client (<code>observer.tscn</code> with <code>OperatorRig</code> and <code>operator_camera.gd</code>) is already the reference implementation for the operator view. It runs the same <code>FabricMultiplayerPeer</code> C++ peer as the zone server. Stage 2 adds entity control: CH_PLAYER writes, OpenXR VR presence, and taskweft RECTGTN planning, all in GDScript and C++, with no browser runtime and no TypeScript.</p>
 </section>
 <section id="the-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
@@ -386,7 +386,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        buf.<span class="fu">encode_u32</span>(<span class="dv">44</span> <span class="op">+</span> i <span class="op">*</span> <span class="dv">4</span>, payload[i])</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">_peer</span>.<span class="fu">put_packet</span>(buf)</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">_peer</span>.<span class="fu">set_transfer_mode</span>(MultiplayerPeer.TRANSFER_MODE_UNRELIABLE)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The same 100-byte layout as CH_INTEREST. Datagrams are UNRELIABLE — fire and forget, no retransmit.</p>
+<p>The same 100-byte layout as CH_INTEREST. Datagrams are UNRELIABLE: fire and forget, no retransmit.</p>
 </section>
 <section id="scene-structure" class="level3">
 <h3 class="anchored" data-anchor-id="scene-structure">Scene structure</h3>
@@ -421,7 +421,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="rectgtn-planning" class="level3">
 <h3 class="anchored" data-anchor-id="rectgtn-planning">RECTGTN planning</h3>
-<p>taskweft runs natively in Elixir on the zone backend. The GDScript client does not run the planner locally — it sends intent via CH_PLAYER and receives authoritative state via CH_INTEREST. The taskweft Emscripten WASM path from the Three.js ADR is deferred.</p>
+<p>taskweft runs natively in Elixir on the zone backend. The GDScript client does not run the planner locally; it sends intent via CH_PLAYER and receives authoritative state via CH_INTEREST. The taskweft Emscripten WASM path from the Three.js ADR is deferred.</p>
 </section>
 <section id="godot-sandbox-behaviors" class="level3">
 <h3 class="anchored" data-anchor-id="godot-sandbox-behaviors">godot-sandbox behaviors</h3>

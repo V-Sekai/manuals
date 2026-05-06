@@ -14,22 +14,22 @@ At V-Sekai, we believe in open access. We are developing ways for outside creato
 
 V-Sekai provides space, freedom, and fertile ground for relationships to flourish. The essentials for hanging out with friends in a virtual world are simple enough for everyone yet open for spontaneous interaction and creating together. We build the foundation, and you provide the imagination. Join us in building the future of social VR!
 
-To summarize, V-Sekai's main objectives are:
+V-Sekai's main objectives are:
 
-• Enabling open communication through voice/text chat and VRM 1.0 avatars
+- Enabling open communication through voice/text chat and VRM 1.0 avatars
 
-• Providing simple, flexible spaces for any activity or collaboration
+- Providing simple, flexible spaces for any activity or collaboration
 
-• Sharing media, tools, and abilities to create together
+- Sharing media, tools, and abilities to create together
 
-• Educating and supporting the community
+- Educating and supporting the community
 
-• Providing open access for user and creator contributions
+- Providing open access for user and creator contributions
 
-• Fostering human relationships and co-creation in virtual reality
+- Fostering human relationships and co-creation in virtual reality
 
-• Keeping the platform accessible to all while being open-ended enough for creativity
+- Keeping the platform accessible to all while being open-ended enough for creativity
 
-• Building a foundation for connection focused on user experience
+- Building a foundation for connection focused on user experience
 
-• Developing an ecosystem where people power imagination and potential.
+- Building tools where people can create and share.

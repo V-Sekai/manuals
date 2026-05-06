@@ -367,11 +367,11 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="phase-2-visitor-vr-experience-retire-can-visitors-navigate-and-see-creator-content">Phase 2 — Visitor VR experience (retire: can visitors navigate and see creator content?)</h3>
 <section id="xr-grid-ground-plane" class="level4">
 <h4 class="anchored" data-anchor-id="xr-grid-ground-plane">7. XR grid ground plane</h4>
-<p>Instance <code>ProceduralGrid3D</code> under <code>XROrigin3D</code> in <code>main.tscn</code> so visitors have spatial reference inside a creator booth. Wire <code>FOCUS_NODE</code> to the headset camera. Note: do not use symlinks — copy xr-grid scripts into the demo directory or use <code>res://</code> path remapping. Windows Steam PCVR requires admin privileges for symlinks. Pass: visitor has a visible ground plane and scale reference in VR.</p>
+<p>Instance <code>ProceduralGrid3D</code> under <code>XROrigin3D</code> in <code>main.tscn</code> so visitors have spatial reference inside a creator booth. Wire <code>FOCUS_NODE</code> to the headset camera. Note: do not use symlinks; copy xr-grid scripts into the demo directory or use <code>res://</code> path remapping. Windows Steam PCVR requires admin privileges for symlinks. Pass: visitor has a visible ground plane and scale reference in VR.</p>
 </section>
 <section id="worldgrab-booth-navigation" class="level4">
 <h4 class="anchored" data-anchor-id="worldgrab-booth-navigation">8. WorldGrab booth navigation</h4>
-<p>Instance <code>XRPinch</code> on each <code>XRController3D</code> hand node. Two-hand WorldGrab lets visitors grab the space and move, rotate, and scale — the primary navigation method for browsing a creator’s booth. Same symlink caveat as above. Pass: visitor can navigate the booth in VR using two-hand grab without teleport or joystick.</p>
+<p>Instance <code>XRPinch</code> on each <code>XRController3D</code> hand node. Two-hand WorldGrab lets visitors grab the space and move, rotate, and scale (the primary navigation method for browsing a creator’s booth). Same symlink caveat as above. Pass: visitor can navigate the booth in VR using two-hand grab without teleport or joystick.</p>
 </section>
 <section id="xr-node-tree-verification" class="level4">
 <h4 class="anchored" data-anchor-id="xr-node-tree-verification">9. XR node tree verification</h4>
@@ -379,7 +379,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="creator-interaction-tool-ch_player-cmd1" class="level4">
 <h4 class="anchored" data-anchor-id="creator-interaction-tool-ch_player-cmd1">10. Creator interaction tool → CH_PLAYER cmd=1</h4>
-<p>Wire the XR controller trigger on <code>trident_hand.gd</code> to emit a CH_PLAYER cmd=1 (<code>ragdoll</code>) packet from <code>fabric_client.gd</code>. The server-side handler in <code>fabric_mmog_zone.cpp</code> already injects the C7 velocity spike — only the client send path is missing. Pass: creator input reaches the zone simulation.</p>
+<p>Wire the XR controller trigger on <code>trident_hand.gd</code> to emit a CH_PLAYER cmd=1 (<code>ragdoll</code>) packet from <code>fabric_client.gd</code>. The server-side handler in <code>fabric_mmog_zone.cpp</code> already injects the C7 velocity spike; only the client send path is missing. Pass: creator input reaches the zone simulation.</p>
 </section>
 <section id="creator-annotation-tool-ch_player-cmd3" class="level4">
 <h4 class="anchored" data-anchor-id="creator-annotation-tool-ch_player-cmd3">11. Creator annotation tool → CH_PLAYER cmd=3</h4>
@@ -387,7 +387,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="end-to-end-vr-demo-pass" class="level4">
 <h4 class="anchored" data-anchor-id="end-to-end-vr-demo-pass">12. End-to-end VR demo pass</h4>
-<p>Boot three booth zones (minimum for transitive migration: booth A → B → C exercises both neighbor indices). Confirm in top-down view first — booth curtains visible, visitor entities populate all three booths, 144-visitor burst migrates without mass rollback. Then confirm in VR: rendering, head tracking, and hand tracking update in CH_INTEREST.</p>
+<p>Boot three booth zones (minimum for transitive migration: booth A → B → C exercises both neighbor indices). Confirm in top-down view first: booth curtains visible, visitor entities populate all three booths, 144-visitor burst migrates without mass rollback. Then confirm in VR: rendering, head tracking, and hand tracking update in CH_INTEREST.</p>
 <p>Three visitor populations: | Population | IDs | Market scenario | |—|—|—| | <code>opening_crowd</code> | 0–255 | Dense crowd at a popular booth launch. Visitors appear alongside creator entities in CH_INTEREST. | | <code>rush</code> | 256–399 | 144 visitors burst into a new booth simultaneously — worst-case migration spike at a booth opening. | | <code>browse</code> | 400–511 | 8 groups of 14 visitors moving at browsing speed through connected booths — sustained cross-booth movement, not just a spike. |</p>
 <p>Pass: an observer in Booth B receives all 144 rush visitors from Booth A without snap, duplicate, or loss. <code>MIGRATION_HEADROOM</code> absorbs the spike.</p>
 <hr>
@@ -409,19 +409,19 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="end-to-end-asset-streaming-test" class="level4">
 <h4 class="anchored" data-anchor-id="end-to-end-asset-streaming-test">16. End-to-end asset streaming test</h4>
-<p>Upload a creator asset from the demo scene to a local Uro instance. Boot a visitor client cold (empty cache) and confirm it fetches and renders the asset by hash. Test both the happy path and a 403 rejection with an unauthorized principal. Pass: creator uploads, visitor downloads, unauthorized visitor is rejected — all in a single automated run.</p>
+<p>Upload a creator asset from the demo scene to a local Uro instance. Boot a visitor client cold (empty cache) and confirm it fetches and renders the asset by hash. Test both the happy path and a 403 rejection with an unauthorized principal. Pass: creator uploads, visitor downloads, unauthorized visitor is rejected, all in a single automated run.</p>
 <hr>
 </section>
 </section>
 <section id="phase-4-load-validation-retire-does-the-market-hold-under-event-scale-load" class="level3">
 <h3 class="anchored" data-anchor-id="phase-4-load-validation-retire-does-the-market-hold-under-event-scale-load">Phase 4 — Load validation (retire: does the market hold under event-scale load?)</h3>
-<section id="visitor-headless-load-harness" class="level4">
-<h4 class="anchored" data-anchor-id="visitor-headless-load-harness">17. 100-visitor headless load harness</h4>
+<section id="visitor-headless-load-use" class="level4">
+<h4 class="anchored" data-anchor-id="visitor-headless-load-use">17. 100-visitor headless load use</h4>
 <p>Write a headless driver spawning 100 <code>FabricPeer</code> connections to a single booth zone, each subscribing to <code>CH_INTEREST</code>. Record timestamp of every broadcast packet received. Pass: 100 visitors connected and logging without VR hardware.</p>
 </section>
 <section id="ch_interest-fan-out-latency-at-100-visitors" class="level4">
 <h4 class="anchored" data-anchor-id="ch_interest-fan-out-latency-at-100-visitors">18. CH_INTEREST fan-out latency at 100 visitors</h4>
-<p>Run the harness. Record p50/p99 fan-out latency for <code>local_broadcast_raw</code> at 100 simultaneous subscribers. Validates Hilbert AOI band and one-copy-per-link relay before scaling to multiple booths. Pass: per-booth fan-out is bounded and measurable.</p>
+<p>Run the use. Record p50/p99 fan-out latency for <code>local_broadcast_raw</code> at 100 simultaneous subscribers. Validates Hilbert AOI band and one-copy-per-link relay before scaling to multiple booths. Pass: per-booth fan-out is bounded and measurable.</p>
 </section>
 <section id="machine-fabric-provisioning-32-booth-zones" class="level4">
 <h4 class="anchored" data-anchor-id="machine-fabric-provisioning-32-booth-zones">19. 5-machine fabric provisioning (32 booth zones)</h4>
@@ -470,7 +470,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="the-downsides" class="level2">
 <h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>The sequencing assumes each phase completes before the next starts. Parallel work is possible (e.g.&nbsp;Lean proofs alongside Phase 2) but risks accumulating unverified assumptions. The 1,000-visitor load test requires provisioned hardware — this is a hard dependency on infrastructure availability.</p>
+<p>The sequencing assumes each phase completes before the next starts. Parallel work is possible (e.g.&nbsp;Lean proofs alongside Phase 2) but risks accumulating unverified assumptions. The 1,000-visitor load test requires provisioned hardware, which is a hard dependency on infrastructure availability.</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
@@ -486,7 +486,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Phase 1: <code>observer.tscn</code>, <code>zone_curtain.gd</code>, <code>SpectatorRig</code> — observer UI fixes</li>
 <li>Phase 2: <code>main.tscn</code>, <code>fabric_client.gd</code>, <code>trident_hand.gd</code> — VR wiring</li>
 <li>Phase 3: <code>multiplayer-fabric-zone-backend</code> <code>/chunks/:hash</code>, <code>jellyfish_asset_loader.gd</code></li>
-<li>Phase 4: headless load harness, zone provisioning scripts</li>
+<li>Phase 4: headless load use, zone provisioning scripts</li>
 <li>Phase 5: <code>PredictiveBVH/Spatial/HilbertRoundtrip.lean</code>, <code>lbvhAux</code> instrumentation</li>
 </ul>
 </section>

@@ -357,13 +357,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="headless-test-matrix-two-client-roles-against-one-zone-server" class="level1">
 <h1>Headless Test Matrix: Two Client Roles Against One Zone Server</h1>
 <ul>
-<li>Status: deferred — focus is on VR (<a href="../decisions/20260425-godot-player.html">20260425-godot-player.md</a>) first; matrix resumes after the observer (<a href="../decisions/20260425-godot-observer.html">20260425-godot-observer.md</a>) lands</li>
+<li>Status: deferred (focus is on VR (<a href="../decisions/20260425-godot-player.html">20260425-godot-player.md</a>) first; matrix resumes after the observer (<a href="../decisions/20260425-godot-observer.html">20260425-godot-observer.md</a>) lands)</li>
 <li>Deciders: V-Sekai, fire</li>
 <li>Tags: V-Sekai, Testing, Headless, Godot, ZoneServer, Deferred, 20260425-headless-test-matrix</li>
 </ul>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>The Godot native client has two roles (observer, player). The Three.js client is no longer being built (see <a href="../decisions/20260425-threejs-webgpu-zone-client.html">20260425-threejs-webgpu-zone-client.md</a>), so the matrix is now Godot-only. Both phases below depend on the observer (<a href="../decisions/20260425-godot-observer.html">20260425-godot-observer.md</a>), which is deferred while we ship the VR client first — so this matrix is also deferred. Design content is preserved for when work resumes. Testing them headless first means no VR hardware and no display required. Tests follow a three-stage promotion path:</p>
+<p>The Godot native client has two roles (observer, player). The Three.js client is no longer being built (see <a href="../decisions/20260425-threejs-webgpu-zone-client.html">20260425-threejs-webgpu-zone-client.md</a>), so the matrix is now Godot-only. Both phases below depend on the observer (<a href="../decisions/20260425-godot-observer.html">20260425-godot-observer.md</a>), which is deferred while we ship the VR client first, so this matrix is also deferred. Design content is preserved for when work resumes. Testing them headless first means no VR hardware and no display required. Tests follow a three-stage promotion path:</p>
 <pre><code>local Docker  →  CI headless  →  VR hardware</code></pre>
 <p>Local Docker confirms the test works on a real network stack before committing a CI job. CI headless runs on every push. VR hardware is a later milestone.</p>
 <p>The zone server is always the Godot native binary run with <code>--headless</code>. <code>headless_log_observer.gd</code> already exists for the Godot observer path.</p>
@@ -420,7 +420,7 @@ server + GP  →  entity count &gt; 0, CH_PLAYER sent, server ACKs</code></pre>
 </section>
 <section id="local-docker-run-required-before-ci" class="level3">
 <h3 class="anchored" data-anchor-id="local-docker-run-required-before-ci">Local Docker run (required before CI)</h3>
-<p>The existing <code>multiplayer-fabric-hosting</code> Compose stack already runs a zone server (<code>zone-server</code> service). Add a test service that runs the Godot binary headlessly inside the same Docker network — no Playwright, no browser, no Node runtime:</p>
+<p>The existing <code>multiplayer-fabric-hosting</code> Compose stack already runs a zone server (<code>zone-server</code> service). Add a test service that runs the Godot binary headlessly inside the same Docker network (no Playwright, no browser, no Node runtime):</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># docker-compose.test.yml</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">test-runner</span><span class="kw">:</span></span>
@@ -446,7 +446,7 @@ server + GP  →  entity count &gt; 0, CH_PLAYER sent, server ACKs</code></pre>
 </section>
 <section id="shell-orchestration" class="level3">
 <h3 class="anchored" data-anchor-id="shell-orchestration">Shell orchestration</h3>
-<p><code>run_matrix.sh</code> starts the Godot binaries, polls for the zone-server port, diffs the JSON dumps, and exits non-zero on mismatch. No browser engine, no JavaScript test runner — just GDScript flags and <code>jq</code>.</p>
+<p><code>run_matrix.sh</code> starts the Godot binaries, polls for the zone-server port, diffs the JSON dumps, and exits non-zero on mismatch. No browser engine, no JavaScript test runner; just GDScript flags and <code>jq</code>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="st">"</span><span class="va">$GODOT_BIN</span><span class="st">"</span> <span class="at">--headless</span> <span class="at">--path</span> <span class="st">"</span><span class="va">$DEMO_PROJECT</span><span class="st">"</span> <span class="dt">\</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--script</span> scripts/headless_log_observer.gd <span class="dt">\</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--</span> <span class="at">--dump-json</span><span class="op">=</span>/tmp/go.json <span class="at">--frames</span><span class="op">=</span>600</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -469,11 +469,11 @@ server + GP  →  entity count &gt; 0, CH_PLAYER sent, server ACKs</code></pre>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Mocking the server: rejected — a mock cannot reproduce AOI band behaviour, HLC timestamps, or the actual CH_INTEREST encoding. All matrix tests use the real server binary.</p>
+<p>Mocking the server: rejected; a mock cannot reproduce AOI band behaviour, HLC timestamps, or the actual CH_INTEREST encoding. All matrix tests use the real server binary.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Deferred. Not building yet — focus is on the VR client (<a href="../decisions/20260425-godot-player.html">20260425-godot-player.md</a>) first; this matrix resumes after the observer (<a href="../decisions/20260425-godot-observer.html">20260425-godot-observer.md</a>) lands. Design (shell-based, no Playwright) preserved for that resumption.</p>
+<p>Status: Deferred. Not building yet; focus is on the VR client (<a href="../decisions/20260425-godot-player.html">20260425-godot-player.md</a>) first; this matrix resumes after the observer (<a href="../decisions/20260425-godot-observer.html">20260425-godot-observer.md</a>) lands. Design (shell-based, no Playwright) preserved for that resumption.</p>
 </section>
 <section id="decision-makers" class="level2">
 <h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>

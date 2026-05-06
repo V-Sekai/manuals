@@ -356,13 +356,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Godot Native Headless Observer</h1>
 <p>Supersedes: <a href="../decisions/20260425-threejs-observer.html">20260425-threejs-observer.md</a></p>
 <ul>
-<li>Status: deferred — not building yet; focus is on VR (<a href="../decisions/20260425-godot-player.html">20260425-godot-player.md</a>) first</li>
+<li>Status: deferred (not building yet; focus is on VR (<a href="../decisions/20260425-godot-player.html">20260425-godot-player.md</a>) first)</li>
 <li>Deciders: V-Sekai, fire</li>
 <li>Tags: V-Sekai, Godot, WebTransport, Observer, ZoneServer, Headless, CI, Deferred, 20260425-godot-observer</li>
 </ul>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>The zone server speaks WebTransport (picoquic, UDP 7443 locally / UDP 443 externally). <code>FabricMultiplayerPeer</code> is the C++ peer that wraps picoquic. <code>fabric_client.gd</code> wraps <code>FabricMultiplayerPeer</code> and populates <code>_entity_nodes</code> as CH_INTEREST datagrams arrive. A headless observer that drives this stack proves end-to-end connectivity with the real protocol implementation — no browser, no TypeScript build, no service worker.</p>
+<p>The zone server speaks WebTransport (picoquic, UDP 7443 locally / UDP 443 externally). <code>FabricMultiplayerPeer</code> is the C++ peer that wraps picoquic. <code>fabric_client.gd</code> wraps <code>FabricMultiplayerPeer</code> and populates <code>_entity_nodes</code> as CH_INTEREST datagrams arrive. A headless observer that drives this stack proves end-to-end connectivity with the real protocol implementation, with no browser, no TypeScript build, and no service worker.</p>
 </section>
 <section id="the-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
@@ -406,7 +406,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="the-downsides" class="level2">
 <h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>Native-only. The browser operator view — load bars, dot clustering in a <code>&lt;canvas&gt;</code> overlay — is not covered by this ADR. Those features remain in SOMEDAY.</p>
+<p>Native-only. The browser operator view (load bars, dot clustering in a <code>&lt;canvas&gt;</code> overlay) is not covered by this ADR. Those features remain in SOMEDAY.</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
@@ -414,7 +414,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Deferred. Not building yet — focus is on the VR client (<a href="../decisions/20260425-godot-player.html">20260425-godot-player.md</a>) first. The design here remains valid and will be picked back up after the VR pass condition lands.</p>
+<p>Status: Deferred. Not building yet; focus is on the VR client (<a href="../decisions/20260425-godot-player.html">20260425-godot-player.md</a>) first. The design here remains valid and will be picked back up after the VR pass condition lands.</p>
 </section>
 <section id="decision-makers" class="level2">
 <h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>

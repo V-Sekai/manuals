@@ -309,7 +309,7 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#accepted-better-skeleton-merge-with-robust-skin-weight-transfer" id="toc-accepted-better-skeleton-merge-with-robust-skin-weight-transfer" class="nav-link active" data-scroll-target="#accepted-better-skeleton-merge-with-robust-skin-weight-transfer">Accepted: Better Skeleton Merge with Robust Skin Weight Transfer</a>
+  <li><a href="#accepted-better-skeleton-merge-with-reliable-skin-weight-transfer" id="toc-accepted-better-skeleton-merge-with-reliable-skin-weight-transfer" class="nav-link active" data-scroll-target="#accepted-better-skeleton-merge-with-reliable-skin-weight-transfer">Accepted: Better Skeleton Merge with Reliable Skin Weight Transfer</a>
   <ul class="collapse">
   <li><a href="#the-context" id="toc-the-context" class="nav-link" data-scroll-target="#the-context">The Context</a></li>
   <li><a href="#the-problem-statement" id="toc-the-problem-statement" class="nav-link" data-scroll-target="#the-problem-statement">The Problem Statement</a></li>
@@ -337,8 +337,8 @@ div.csl-indent {
 
 
 
-<section id="accepted-better-skeleton-merge-with-robust-skin-weight-transfer" class="level1">
-<h1>Accepted: Better Skeleton Merge with Robust Skin Weight Transfer</h1>
+<section id="accepted-better-skeleton-merge-with-reliable-skin-weight-transfer" class="level1">
+<h1>Accepted: Better Skeleton Merge with Reliable Skin Weight Transfer</h1>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
 <p>Rigging and clothing fitting are intricate tasks in game development, demanding a deep understanding of 3D modeling, animation, and the specific requirements of the game engine. In the context of V-Sekai, a social VR game built on the Godot Engine, these tasks become even more challenging due to the need for real-time performance and compatibility with various hardware devices.</p>
@@ -351,8 +351,8 @@ div.csl-indent {
 <h2 class="anchored" data-anchor-id="design">Design</h2>
 <p>The proposed solution involves aligning the vertices from one set of faces to match the vertices in the other set. In Godot, this can be achieved by retrieving mesh arrays and invoking a function with <code>arrays[Mesh.ARRAY_VERTEX]</code>, <code>arrays[Mesh.ARRAY_INDEX]</code>.</p>
 <p>Passing in the <code>Skeleton3D</code> is not necessary. The recently merged API by smix8 allows baking a skeleton to a static mesh, which can be used for baking and then applying the delta.</p>
-<p>We plan to utilize robust skin weight transfer code and robust Laplacians. The robust Laplacians algorithm is implemented in geometry-central, which loads a mesh, constructs our intrinsic tufted cover, and generates the resulting Laplace (and mass) matrix.</p>
-<p>Player creators will have a fully skin-weighted base mesh (a naked character mesh with no clothing). They can then use robust skin weight transfer with a variable distance and the infilling feature to rig their clothing for use in V-Sekai and anywhere that can handle VRM1.</p>
+<p>We plan to use reliable skin weight transfer code and reliable Laplacians. The reliable Laplacians algorithm is implemented in geometry-central, which loads a mesh, constructs our intrinsic tufted cover, and generates the resulting Laplace (and mass) matrix.</p>
+<p>Player creators will have a fully skin-weighted base mesh (a naked character mesh with no clothing). They can then use reliable skin weight transfer with a variable distance and the infilling feature to rig their clothing for use in V-Sekai and anywhere that can handle VRM1.</p>
 </section>
 <section id="the-benefits" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
@@ -397,7 +397,7 @@ div.csl-indent {
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<p><span class="citation" data-cites="robust_skin_weights_2024">(<a href="#ref-robust_skin_weights_2024" role="doc-biblioref"><em>Robust Skin Weights Transfer via Weight Inpainting</em> 2024</a>)</span>: “Robust Skin Weights Transfer via Weight Inpainting.” <a href="https://doi.org/10.1145/3610543.3626180" class="uri">https://doi.org/10.1145/3610543.3626180</a> <span class="citation" data-cites="laplacian_nonmanifold_triangle_2024">(<a href="#ref-laplacian_nonmanifold_triangle_2024" role="doc-biblioref"><em>A Laplacian for Nonmanifold Triangle Meshes</em> 2024</a>)</span>: “A Laplacian for Nonmanifold Triangle Meshes.” <a href="https://doi.org/10.1111/cgf.14069" class="uri">https://doi.org/10.1111/cgf.14069</a></p>
+<p><span class="citation" data-cites="robust_skin_weights_2024">(<a href="#ref-robust_skin_weights_2024" role="doc-biblioref"><em>Robust Skin Weights Transfer via Weight Inpainting</em> 2024</a>)</span>: “Reliable Skin Weights Transfer via Weight Inpainting.” <a href="https://doi.org/10.1145/3610543.3626180" class="uri">https://doi.org/10.1145/3610543.3626180</a> <span class="citation" data-cites="laplacian_nonmanifold_triangle_2024">(<a href="#ref-laplacian_nonmanifold_triangle_2024" role="doc-biblioref"><em>A Laplacian for Nonmanifold Triangle Meshes</em> 2024</a>)</span>: “A Laplacian for Nonmanifold Triangle Meshes.” <a href="https://doi.org/10.1111/cgf.14069" class="uri">https://doi.org/10.1111/cgf.14069</a></p>
 <section id="game-development-jargon" class="level3">
 <h3 class="anchored" data-anchor-id="game-development-jargon">Game Development Jargon</h3>
 <ol type="1">
@@ -410,8 +410,8 @@ div.csl-indent {
 <li>Vertices: In 3D modeling, a vertex is a data structure that describes certain attributes, like the position of a point in 2D or 3D space or multiple points on a surface.</li>
 <li>Mesh Arrays: In computer graphics, a mesh is a collection of vertices, edges, and faces that define the shape of a polyhedral object in 3D applications.</li>
 <li>Skeleton3D: A node that represents a skeleton in Godot Engine. It contains a hierarchy of bones, which are used to animate the vertices of a MeshInstance.</li>
-<li>Robust Skin Weight Transfer: A method used in 3D modeling to transfer the skin weights from one model to another. This is useful when you want to apply the same skinning (deformation) properties from one model to another.</li>
-<li>Robust Laplacians: A method used in 3D modeling for smoothing and enhancing the quality of a mesh.</li>
+<li>Reliable Skin Weight Transfer: A method used in 3D modeling to transfer the skin weights from one model to another. This is useful when you want to apply the same skinning (deformation) properties from one model to another.</li>
+<li>Reliable Laplacians: A method used in 3D modeling for smoothing and enhancing the quality of a mesh.</li>
 <li>VRM1: A file format for handling 3D humanoid avatar data for VR applications. It’s based on glTF2.0, a file format standard by Khronos Group.</li>
 <li>Non-Player Characters (NPCs): In video games, these are the characters that are not controlled by a player. They can be friends, foes, merchants, or even neutral parties in the game world.</li>
 <li>Social VR: Virtual Reality that allows users to interact with each other in a virtual environment. It’s like social media but in VR.</li>

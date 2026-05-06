@@ -358,7 +358,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Supersedes: <a href="../decisions/20260421-asset-delivery-benchmark.html">20260421-asset-delivery-benchmark.md</a></p>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>The delivery stack for V-Sekai game assets is content-addressed chunking via casync. <code>aria-storage</code> (Elixir) implements the fetch path: <code>mix aria_storage.fetch --index &lt;url&gt; --store &lt;url&gt;</code> downloads chunks from any static HTTP host (GitHub raw, Cloudflare R2, S3), reassembles the asset, and caches chunks at <code>~/.cache/casync/chunks</code>. The chunk store is plain static files — no custom server required. The live V-Sekai casync store is at <code>https://raw.githubusercontent.com/V-Sekai/casync-v-sekai-game/main/store</code>.</p>
+<p>The delivery stack for V-Sekai game assets is content-addressed chunking via casync. <code>aria-storage</code> (Elixir) implements the fetch path: <code>mix aria_storage.fetch --index &lt;url&gt; --store &lt;url&gt;</code> downloads chunks from any static HTTP host (GitHub raw, Cloudflare R2, S3), reassembles the asset, and caches chunks at <code>~/.cache/casync/chunks</code>. The chunk store is plain static files, with no custom server required. The live V-Sekai casync store is at <code>https://raw.githubusercontent.com/V-Sekai/casync-v-sekai-game/main/store</code>.</p>
 <p>The prior ADR referenced <code>multiplayer-fabric-desync</code> (a Go reimplementation that has since been removed) and assumed a custom chunk server. Both assumptions are now incorrect.</p>
 </section>
 <section id="the-problem-statement" class="level2">
@@ -437,14 +437,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
 <ul>
-<li>Benchmark harness: <code>aria-storage/bench/</code> (to be written as a Mix task)</li>
+<li>Benchmark use: <code>aria-storage/bench/</code> (to be written as a Mix task)</li>
 <li>Corpus: V-Sekai world export, committed to <code>manuals/decisions/attachments/</code></li>
 <li>Results: <code>manuals/decisions/attachments/asset-delivery-benchmark-results.csv</code></li>
 </ul>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Superseded — casync via aria-storage adopted without benchmark. See <a href="../decisions/20260423-asset-delivery-decision.html">20260423-asset-delivery-decision.md</a>.</p>
+<p>Status: Superseded; casync via aria-storage adopted without benchmark. See <a href="../decisions/20260423-asset-delivery-decision.html">20260423-asset-delivery-decision.md</a>.</p>
 </section>
 <section id="decision-makers" class="level2">
 <h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>

@@ -362,7 +362,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>The headless test matrix (<a href="../decisions/20260425-headless-test-matrix.html">20260425-headless-test-matrix.md</a>) requires a Godot binary. Building from scratch takes &gt; 10 minutes. The project already uses a two-layer scons cache via <code>godot-cache-restore</code> and <code>godot-cache-save</code> composite actions (<code>.scons_cache/</code> in the workspace). Test jobs must never rebuild — they download a pre-built artifact.</p>
+<p>The headless test matrix (<a href="../decisions/20260425-headless-test-matrix.html">20260425-headless-test-matrix.md</a>) requires a Godot binary. Building from scratch takes &gt; 10 minutes. The project already uses a two-layer scons cache via <code>godot-cache-restore</code> and <code>godot-cache-save</code> composite actions (<code>.scons_cache/</code> in the workspace). Test jobs must never rebuild; they download a pre-built artifact.</p>
 <p>The user wants tests to pass in CI before a branch can merge (branch protection rule), with local Docker as the gate before pushing.</p>
 </section>
 <section id="the-problem-statement" class="level2">
@@ -392,7 +392,7 @@ headless-tests (runs after build-godot)
 <pre><code>key:           {cache-name}|{default_branch}|{sha}
 restore-keys:  {cache-name}|{default_branch}   ← main-branch warm cache
                {cache-name}|{branch}            ← PR-specific warm cache</code></pre>
-<p>PRs restore the main-branch cache first so they inherit all previous incremental build objects, then overlay PR-specific objects. No changes needed here — the existing actions handle it.</p>
+<p>PRs restore the main-branch cache first so they inherit all previous incremental build objects, then overlay PR-specific objects. No changes needed here; the existing actions handle it.</p>
 </section>
 <section id="local-docker-mount-pre-built-binary" class="level3">
 <h3 class="anchored" data-anchor-id="local-docker-mount-pre-built-binary">Local Docker: mount pre-built binary</h3>
@@ -424,7 +424,7 @@ restore-keys:  {cache-name}|{default_branch}   ← main-branch warm cache
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">with</span><span class="kw">:</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">godot-artifact</span><span class="kw">:</span><span class="at"> godot-headless-bin</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>headless_tests.yml</code> is a new workflow file in the same directory. It downloads the artifact, starts the zone server, and runs the shell-based matrix (<code>bash run_matrix.sh</code>). No Playwright, no browser engine.</p>
-<p>The branch protection rule applies to the <code>multiplayer-fabric</code> branch of <code>github.com/V-Sekai-fire/multiplayer-fabric-godot</code> — the assembled branch that gitassembly pushes to:</p>
+<p>The branch protection rule applies to the <code>multiplayer-fabric</code> branch of <code>github.com/V-Sekai-fire/multiplayer-fabric-godot</code>, the assembled branch that gitassembly pushes to:</p>
 <pre><code>Repository: V-Sekai-fire/multiplayer-fabric-godot
 Branch:     multiplayer-fabric
 Settings → Branches → Add rule:
@@ -449,8 +449,8 @@ Settings → Branches → Add rule:
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Build inside the test container: rejected — scons and all build dependencies would bloat the test image and add &gt; 10 minutes to every test run regardless of source changes.</p>
-<p>Baking the binary into the test Docker image: rejected — the image would need rebuilding on every source change, negating the cache benefit.</p>
+<p>Build inside the test container: rejected; scons and all build dependencies would bloat the test image and add &gt; 10 minutes to every test run regardless of source changes.</p>
+<p>Baking the binary into the test Docker image: rejected; the image would need rebuilding on every source change, negating the cache benefit.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>

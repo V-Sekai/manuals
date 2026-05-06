@@ -6,7 +6,7 @@ V-Sekai, a proposed VR app for Apple Vision Pro, aims to offer immersive experie
 
 1. Spatial Awareness: For interactive VR environments and enhancing 3D doodling and Virtual Avatar Performance.
 
-2. High Resolution Display: Utilizes Apple Vision Pro's display for detailed VR rendering.
+2. High Resolution Display: Uses Apple Vision Pro's display for detailed VR rendering.
 
 3. Voice Communication: Allows user communication via voice chat.
 

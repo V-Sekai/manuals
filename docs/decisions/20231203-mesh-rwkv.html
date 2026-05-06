@@ -354,7 +354,7 @@ div.csl-indent {
 </section>
 <section id="problem" class="level2">
 <h2 class="anchored" data-anchor-id="problem">Problem</h2>
-<p>Adapting GPT-like generative models for the 3D domain is a challenge. Automated triangle mesh generation needs a robust solution.</p>
+<p>Adapting GPT-like generative models for the 3D domain is a challenge. Automated triangle mesh generation needs a reliable solution.</p>
 </section>
 <section id="strategy" class="level2">
 <h2 class="anchored" data-anchor-id="strategy">Strategy</h2>
@@ -362,13 +362,13 @@ div.csl-indent {
 <section id="step-1-learning-a-vocabulary-for-triangle-meshes" class="level3">
 <h3 class="anchored" data-anchor-id="step-1-learning-a-vocabulary-for-triangle-meshes">Step 1: Learning a Vocabulary for Triangle Meshes</h3>
 <p>The initial step involves learning a vocabulary that can accurately represent triangle meshes from a large collection of 3D object meshes. This enables the encoding and decoding of triangles from this embedding.</p>
-<p>A graph convolution encoder, specifically a series of SAGE-Conv graph convolution layers, is utilized in this process. This encoder processes the mesh in the form of a face graph. For each graph node, input features include the positionally encoded 9 coordinates of the face triangle, its area, the angles between its edges, and the normal of the face.</p>
+<p>A graph convolution encoder, specifically a series of SAGE-Conv graph convolution layers, is used in this process. This encoder processes the mesh in the form of a face graph. For each graph node, input features include the positionally encoded 9 coordinates of the face triangle, its area, the angles between its edges, and the normal of the face.</p>
 <p>These geometrically rich features capture the intricate details of 3D shapes and are quantized as embeddings of a codebook using residual quantization. This effectively reduces the sequence lengths of the mesh representation.</p>
 <p>These embeddings are then sequenced and decoded by a 1D ResNet-34 network, which interprets the face features as a 1D sequence. It outputs logits corresponding to the 9 discrete coordinates of each face triangle. The size of the codebook C and the discretization space are determined based on the specific requirements and constraints of the model.</p>
 </section>
 <section id="step-2-autoregressive-mesh-generation" class="level3">
 <h3 class="anchored" data-anchor-id="step-2-autoregressive-mesh-generation">Step 2: Autoregressive Mesh Generation</h3>
-<p>The next step is to train RWKV4, which leverages these quantized geometric embeddings. Given a sequence of geometric embeddings extracted from the triangles of a mesh, the transformer is trained to predict the codebook index of the next embedding in the sequence.</p>
+<p>The next step is to train RWKV4, which uses these quantized geometric embeddings. Given a sequence of geometric embeddings extracted from the triangles of a mesh, the transformer is trained to predict the codebook index of the next embedding in the sequence.</p>
 <p>Once trained, the transformer can be auto-regressively sampled to predict sequences of embeddings. These embeddings can then be decoded to generate novel and diverse mesh structures that display efficient, irregular triangulations similar to human-crafted meshes.</p>
 </section>
 <section id="limitations" class="level3">
@@ -376,7 +376,7 @@ div.csl-indent {
 <p>MeshGPT has made significant strides in the field of direct mesh generation, but it is not without its limitations. The autoregressive nature of the model results in slower sampling performance, with mesh generation times ranging from 30 to 90 seconds. The MeshGPT team’s learned tokenization approach has been successful in reducing sequence lengths for single object generation, but it may not be as effective when applied to scene-scale generation. This presents an opportunity for future enhancement.</p>
 <p>Furthermore, MeshGPT’s current computational resources restrict it to using the GPT2-medium transformer, which is less sophisticated than models like Llama2. Given that larger language models tend to benefit from increased data and computational power, expanding these resources could significantly enhance MeshGPT’s performance and capabilities.</p>
 <p>It’s important to note that the RWKV (Receptance Weighted Key Value) model’s context size is significantly larger than that of GPT2. In machine learning, context size refers to the amount of information from previous steps that a model can consider while making predictions for the next step. It essentially determines how much ‘memory’ the model has about past data.</p>
-<p>The larger context size of RWKV means that it can remember and utilize more past information while generating outputs. This feature potentially enables it to handle larger and more complex tasks, provided there are sufficient computational resources.</p>
+<p>The larger context size of RWKV means that it can remember and use more past information while generating outputs. This feature potentially enables it to handle larger and more complex tasks, provided there are sufficient computational resources.</p>
 <p>However, a larger context size also implies higher computational demands. More processing power and memory are required to store and manage such large amounts of data. This could pose challenges in terms of hardware requirements and efficiency, particularly when dealing with very large datasets or complex tasks.</p>
 </section>
 </section>

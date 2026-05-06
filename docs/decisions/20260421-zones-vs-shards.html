@@ -319,7 +319,7 @@ ul.task-list li input[type="checkbox"] {
 <h1>Zones vs Shards</h1>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>Traditional MMOs split the world into shards — isolated copies with hard player caps. When a shard fills, players queue or get bounced to another copy of the same world. multiplayer-fabric replaces shards with zones.</p>
+<p>Traditional MMOs split the world into shards (isolated copies with hard player caps). When a shard fills, players queue or get bounced to another copy of the same world. multiplayer-fabric replaces shards with zones.</p>
 </section>
 <section id="the-problem-statement" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
@@ -327,10 +327,10 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="design" class="level2">
 <h2 class="anchored" data-anchor-id="design">Design</h2>
-<p>Each zone owns a slice of a single continuous 30-bit Hilbert code space (Skilling 2004). Zones share boundaries, not walls. Entities migrate across those boundaries automatically — the player never sees a loading screen or a “server full” message.</p>
+<p>Each zone owns a slice of a single continuous 30-bit Hilbert code space (Skilling 2004). Zones share boundaries, not walls. Entities migrate across those boundaries automatically; the player never sees a loading screen or a “server full” message.</p>
 <section id="aoi-without-adjacency-tables" class="level4">
 <h4 class="anchored" data-anchor-id="aoi-without-adjacency-tables">AOI without adjacency tables</h4>
-<p>The Area of Interest band for a zone is derived directly from its Hilbert range, extended by <code>AOI_CELLS</code> on each side. Neighbor topology falls out of band overlap — no hand-authored adjacency tables. Adding a zone server changes the topology automatically.</p>
+<p>The Area of Interest band for a zone is derived directly from its Hilbert range, extended by <code>AOI_CELLS</code> on each side. Neighbor topology falls out of band overlap, with no hand-authored adjacency tables. Adding a zone server changes the topology automatically.</p>
 </section>
 <section id="why-hilbert-not-morton" class="level4">
 <h4 class="anchored" data-anchor-id="why-hilbert-not-morton">Why Hilbert, not Morton</h4>
@@ -351,12 +351,12 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="the-downsides" class="level2">
 <h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>Zone boundaries are fixed at the Hilbert cell granularity. Very uneven entity distributions (all entities in one cell) cannot be rebalanced without splitting a zone — which requires a zone restart. Shards handle this trivially by spinning up a new copy.</p>
+<p>Zone boundaries are fixed at the Hilbert cell granularity. Very uneven entity distributions (all entities in one cell) cannot be rebalanced without splitting a zone, which requires a zone restart. Shards handle this trivially by spinning up a new copy.</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
 <p>Morton-order partitioning would have been simpler to implement and is more commonly cited in game broadphase literature. The O(n^(2/3)) cluster diameter makes it unsuitable for the one-copy-per-link relay goal: AOI bands would need to be wider to achieve the same spatial coverage, increasing per-client data volume. The Hilbert curve is the correct choice for this relay model.</p>
-<p>A quad-tree or oct-tree spatial index would allow dynamic rebalancing but requires a coordinator to manage tree mutations — reintroducing the dependency the design is trying to eliminate.</p>
+<p>A quad-tree or oct-tree spatial index would allow dynamic rebalancing but requires a coordinator to manage tree mutations, reintroducing the dependency the design is trying to eliminate.</p>
 </section>
 <section id="the-infrequent-use-case" class="level2">
 <h2 class="anchored" data-anchor-id="the-infrequent-use-case">The Infrequent Use Case</h2>

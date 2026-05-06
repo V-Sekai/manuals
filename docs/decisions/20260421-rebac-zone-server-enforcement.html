@@ -389,7 +389,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span><span class="op">;</span> <span class="co">// silently discard; no slot allocated</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">// existing allocation logic follows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>Taskweft::check_rel</code> is a C++ wrapper around the existing NIF call; no BEAM round-trip occurs on the zone server — the zone server calls the shared library directly.</p>
+<p><code>Taskweft::check_rel</code> is a C++ wrapper around the existing NIF call; no BEAM round-trip occurs on the zone server; the zone server calls the shared library directly.</p>
 </section>
 <section id="per-tick-constraint" class="level3">
 <h3 class="anchored" data-anchor-id="per-tick-constraint">Per-tick constraint</h3>
@@ -406,7 +406,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="the-downsides" class="level2">
 <h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>The graph cache can be stale for the window between a permission revocation and the <code>CMD_INVALIDATE_PERMISSIONS</code> delivery. This is the “New Enemy Problem” inherent to distributed ReBAC — no synchronous distributed solution exists at game tick frequency.</p>
+<p>The graph cache can be stale for the window between a permission revocation and the <code>CMD_INVALIDATE_PERMISSIONS</code> delivery. This is the “New Enemy Problem” inherent to distributed ReBAC: no synchronous distributed solution exists at game tick frequency.</p>
 </section>
 <section id="the-road-not-taken" class="level2">
 <h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
