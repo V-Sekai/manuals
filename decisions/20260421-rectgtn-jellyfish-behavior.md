@@ -18,9 +18,9 @@ Jellyfish behaviour is table-driven. There is no mechanism to sequence multi-ste
 
 Two distinct layers:
 
-**Domain (fixed for zone lifetime)** — loaded from the GLTF interactivity extensions in the zone asset bundle at startup. Defines the action vocabulary: state variable names, action effects, and method preconditions. The zone's entity state is produced by applying actions from this domain; the domain and the entity state are a unit and cannot be swapped independently at runtime.
+Domain (fixed for zone lifetime): loaded from the GLTF interactivity extensions in the zone asset bundle at startup. Defines the action vocabulary: state variable names, action effects, and method preconditions. The zone's entity state is produced by applying actions from this domain; the domain and the entity state are a unit and cannot be swapped independently at runtime.
 
-**Plan (dynamic JSON/dict)** — a sequence of action names that are valid within the loaded domain. Because a plan only references actions already defined in the domain, hot-pushing a new plan at runtime does not change the state schema. Zone ACID properties are preserved.
+Plan (dynamic JSON/dict): a sequence of action names that are valid within the loaded domain. Because a plan only references actions already defined in the domain, hot-pushing a new plan at runtime does not change the state schema. Zone ACID properties are preserved.
 
 This separation mirrors how GLTF interactivity works: the interactivity extension defines the fixed set of triggers and actions baked into the asset, while runtime orchestration decides which sequence to execute.
 

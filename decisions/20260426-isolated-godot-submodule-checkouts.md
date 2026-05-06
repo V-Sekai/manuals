@@ -106,16 +106,9 @@ into `multiplayer-fabric` for the combined build.
 
 ## The Road Not Taken
 
-**Separate repos per feature** (e.g., `multiplayer-fabric-godot-http3`): rejected
-because it multiplies repo administration, complicates upstream PR preparation
-(patches live in a different repo from the module), and breaks the existing
-`gitassembly` model without adding isolation beyond what multiple checkouts
-provide.
+Separate repos per feature (e.g., `multiplayer-fabric-godot-http3`): rejected because it multiplies repo administration, complicates upstream PR preparation (patches live in a different repo from the module), and breaks the existing `gitassembly` model without adding isolation beyond what multiple checkouts provide.
 
-**Branch-per-feature CI in `multiplayer-fabric-godot` directly**: GitHub Actions
-only runs on push to a branch; adding a matrix job there duplicates the build
-setup already in `multiplayer-fabric-build`. Better to keep build logic in one
-place.
+Branch-per-feature CI in `multiplayer-fabric-godot` directly: GitHub Actions only runs on push to a branch; adding a matrix job there duplicates the build setup already in `multiplayer-fabric-build`. Better to keep build logic in one place.
 
 ## Status
 

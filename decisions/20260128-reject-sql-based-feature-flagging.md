@@ -24,46 +24,31 @@ However, this approach was rejected in favor of simpler alternatives.
 
 ## The Benefits
 
-**Rejected Proposal Benefits (Not Implemented):**
-- Dynamic runtime configuration without restarts
-- Database-backed configuration management
-- Granular control over feature availability
-- Potential for user-specific feature toggles
+The rejected proposal would have provided: dynamic runtime configuration without restarts, database-backed configuration management, granular control over feature availability, and the potential for user-specific feature toggles. None of these were implemented.
 
 ## The Downsides
 
-**SQL-Based Feature Flagging Issues:**
-- Overengineered: Complex database schema and query logic for simple configuration needs
-- Error-prone: Configuration stored in database tables is harder to version control and audit
-- Docker Limitations: Cannot control separate container execution (either run Next.js container or don't)
-- Caching Issues: Runtime flag changes don't affect code paths that branch during application startup
-- Maintenance Burden: Additional complexity for operations and debugging
+SQL-based feature flagging issues:
+- Complex database schema and query logic for simple configuration needs
+- Configuration stored in database tables is harder to version control and audit
+- Cannot control separate container execution (either run Next.js container or don't)
+- Runtime flag changes don't affect code paths that branch during application startup
+- Additional complexity for operations and debugging
 
-**Runtime Configuration Problems:**
+Runtime configuration problems:
 - Some application behavior is determined at startup and cannot be changed dynamically
-- Feature flags don't solve the fundamental problem of maintaining parallel implementations
+- Feature flags don't solve the underlying problem of maintaining parallel implementations
 - Introduces potential for inconsistent application state during flag transitions
 
 ## The Road Not Taken
 
-**SQL-Based Feature Flagging:**
-- Implementing database tables for configuration management
-- Building runtime flag evaluation system
-- Creating administrative interfaces for flag management
-- Handling flag state synchronization across distributed systems
+SQL-based feature flagging: database tables for configuration management, a runtime flag evaluation system, administrative interfaces for flag management, and flag state synchronization across distributed systems.
 
-**Dynamic Runtime Configuration:**
-- Building systems that allow all configuration to change without restart
-- Implementing complex caching invalidation strategies
-- Creating sophisticated state management for configuration changes
+Dynamic runtime configuration: systems that allow all configuration to change without restart, complex caching invalidation, and sophisticated state management for configuration changes.
 
 ## The Infrequent Use Case
 
-**When SQL Feature Flagging Might Be Appropriate:**
-- Large enterprise applications with hundreds of features requiring granular control
-- Systems where configuration changes must take effect immediately without any downtime
-- Applications with user-specific feature customization requirements
-- Complex A/B testing scenarios requiring database-backed analytics
+SQL feature flagging may be appropriate for: large enterprise applications with hundreds of features requiring granular control; systems where configuration changes must take effect immediately without any downtime; applications with user-specific feature customization requirements; or complex A/B testing scenarios requiring database-backed analytics.
 
 ## In Core and Done by Us
 

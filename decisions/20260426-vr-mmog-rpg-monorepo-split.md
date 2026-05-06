@@ -17,13 +17,11 @@ The project now has three distinguishable product layers with different
 development cadences, different runtime environments, and different teams of
 concern:
 
-- **VR** — Godot engine fork, XR interaction plugin, Meta XR Simulator, canvas
-  plane, lasso interaction, OTel tracing. Runs on a headset or macOS desktop.
-- **MMOG** — Zone servers (Elixir), webtransport, zone console, zone backend,
-  predictive BVH interest management, casync distribution. Runs on Linux
-  servers.
-- **RPG** — HTN planning bot (ArtifactsMMO), taskweft domain library. Runs as
-  an Elixir CLI against a game API.
+VR: Godot engine fork, XR interaction plugin, Meta XR Simulator, canvas plane, lasso interaction, OTel tracing. Runs on a headset or macOS desktop.
+
+MMOG: Zone servers (Elixir), webtransport, zone console, zone backend, predictive BVH interest management, casync distribution. Runs on Linux servers.
+
+RPG: HTN planning bot (ArtifactsMMO), taskweft domain library. Runs as an Elixir CLI against a game API.
 
 ## The Problem Statement
 
@@ -100,14 +98,9 @@ multiplayer-fabric-artifacts-mmog
 
 ## The Road Not Taken
 
-**Keep a single monorepo, use sparse checkout**: sparse-checkout reduces local
-disk use but does not scope CI, does not express layer ownership in GitHub, and
-does not prevent a noisy-neighbour submodule from stalling `git submodule update`.
+A single monorepo with sparse checkout reduces local disk use but does not scope CI, does not express layer ownership in GitHub, and does not prevent a noisy-neighbour submodule from stalling `git submodule update`.
 
-**Two repos (VR + everything else)**: rejected because the MMOG server and the
-RPG planning bot have no runtime dependency on each other. Grouping them adds
-server infrastructure noise to a game-logic developer's workspace without
-benefit.
+Two repos (VR + everything else) were rejected because the MMOG server and the RPG planning bot have no runtime dependency on each other. Grouping them adds server infrastructure noise to a game-logic developer's workspace without benefit.
 
 ## Status
 

@@ -33,7 +33,7 @@ environment. `platform/web/SCsub` reads `sys_env["JS_LIBS"]` (the root env).
 Cloned env changes do not propagate upward — `quic_web_glue.js` was never
 passed as `--js-library` to `em++`.
 
-**Fix**: `env.Append(JS_LIBS=[File("#modules/http3/quic_web_glue.js")])`
+Fix: `env.Append(JS_LIBS=[File("#modules/http3/quic_web_glue.js")])`
 directly on the root env.
 
 ### Bug 2: Duplicate symbol silences web backend
@@ -44,7 +44,7 @@ provides empty stubs for `register_quic_picoquic_backend()`. Since both
 `GODOT_QUIC_WEB_BACKEND` defined), the linker sees two definitions and
 silently picks the empty stub. The web backend was never registered.
 
-**Fix**: Guard the empty stubs with
+Fix: Guard the empty stubs with
 `#elif !defined(GODOT_QUIC_WEB_BACKEND)` so they are only compiled when
 neither backend is active.
 
@@ -56,7 +56,7 @@ unavailable in workers. The original file had a misnamed proxy declaration
 (`godot_WTServerSession__proxy`) that did nothing. Emscripten 5.x rejects
 orphaned proxy declarations.
 
-**Fix**: Add `__proxy: 'sync'` to every exported function in
+Fix: Add `__proxy: 'sync'` to every exported function in
 `quic_web_glue.js`. Each call from the worker is proxied to the main
 browser thread synchronously.
 
@@ -67,7 +67,7 @@ for the web backend, but returned immediately afterward without pulling
 received datagrams from `sess.datagrams_in` (the JS queue) into the C++
 `incoming` queue. `get_available_packet_count()` always returned 0.
 
-**Fix**: Add `poll_incoming_func` static pointer. `quic_web_backend.cpp`
+Fix: Add `poll_incoming_func` static pointer. `quic_web_backend.cpp`
 implements `_web_poll_incoming` which calls `godot_wt_recv_datagram` in a
 loop, forwarding each datagram to `_push_wt_incoming_datagram`. `poll()`
 calls it after `session_state_func`.
@@ -85,7 +85,7 @@ injects `window.WT_CERT_HASH` and monkey-patches `window.WebTransport` to
 add `serverCertificateHashes`, waits for `window.__wt_beacons` to contain a
 `{"event":"pass"}` beacon.
 
-**Result**: PASS in 3.3 s.
+Result: PASS in 3.3 s.
 
 ```
 browser: {"event":"init","host":"127.0.0.1","port":54370}

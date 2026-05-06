@@ -12,14 +12,14 @@ Current infrastructure lacks a standardized hypervisor solution for development 
 
 Evaluate two hypervisor solutions for development infrastructure:
 
-**Option 1: Nutanix Community Edition**
+### Option 1: Nutanix Community Edition
 
 - Install on bare metal or VMs (up to 4 nodes free)
 - Web-based management interface for remote administration
 - Built-in container and cloud-init support
 - Can run on developer laptops for local testing
 
-**Option 2: Harvester HCI**
+### Option 2: Harvester HCI
 
 - 100% open-source hyperconverged infrastructure solution
 - Built on Kubernetes, KubeVirt, and Longhorn
@@ -45,47 +45,47 @@ Development Applications (V-Sekai, etc.)
 
 ## The Benefits
 
-- Easy Remote Administration: Both solutions provide web-based interfaces for internet-accessible management
-- Container Support: Native support for containers and cloud-init simplifies deployment workflows
-- Laptop Development: Both can run on developer laptops or VMs for local testing environments
-- Cost Effective: Free community/open-source licensing for development use
-- Open Source Options: Harvester provides fully open-source alternative to Nutanix's hybrid model
-- Cloud Portability: Applications remain deployable on cloud platforms without hypervisor dependencies
-- Modern Architecture: Built on proven open-source technologies (Linux, KVM, Kubernetes)
+- Both solutions provide web-based interfaces for internet-accessible management
+- Native support for containers and cloud-init simplifies deployment workflows
+- Both can run on developer laptops or VMs for local testing environments
+- Free community/open-source licensing for development use
+- Harvester provides a fully open-source alternative to Nutanix's hybrid model
+- Applications remain deployable on cloud platforms without hypervisor dependencies
+- Built on proven open-source technologies (Linux, KVM, Kubernetes)
 
 ## The Downsides
 
-**Nutanix Community Edition:**
+### Nutanix Community Edition
 
 - Not fully open source (built on proprietary enterprise software)
 - Vendor dependency concerns for enterprise software
 - Limited to 4 nodes in Community Edition
 - Potential future licensing changes
 
-**Harvester HCI:**
+### Harvester HCI
 
 - Newer project compared to established enterprise solutions
 - May have fewer third-party integrations than mature platforms
 - Requires Kubernetes knowledge for advanced management
 - Community support vs enterprise backing
 
-**Both Options:**
+### Both Options
 
 - Learning curve for hypervisor management
 - Resource overhead compared to container-only solutions
 
 ## The Road Not Taken
 
-- Proxmox Only: While viable, it lacks the integrated HCI features and container management capabilities of both Nutanix and Harvester
-- Cloud-Only Approach: Would sacrifice local development environments and easy remote administration capabilities
-- Custom Hypervisor Solution: Would require significant development effort for features already available in mature open-source solutions
-- Single Vendor Lock-in: Choosing only proprietary solutions without open-source alternatives
+- Proxmox only: viable, but lacks the integrated HCI features and container management capabilities of both Nutanix and Harvester
+- Cloud-only: would sacrifice local development environments and easy remote administration
+- Custom hypervisor solution: would require significant development effort for features already available in mature open-source solutions
+- Proprietary-only: no open-source fallback
 
 ## The Infrequent Use Case
 
-- Large-Scale Production: When infrastructure exceeds 4 nodes or requires enterprise support beyond Community Edition
-- Air-Gapped Environments: Where internet-based administration tools cannot be used
-- Minimal Resource Scenarios: Where hypervisor overhead is unacceptable for resource-constrained deployments
+- Large-scale production: when infrastructure exceeds 4 nodes or requires enterprise support beyond Community Edition
+- Air-gapped environments: where internet-based administration tools cannot be used
+- Minimal resource scenarios: where hypervisor overhead is unacceptable for resource-constrained deployments
 
 ## In Core and Done by Us
 

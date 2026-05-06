@@ -12,13 +12,14 @@ The back-pressure behaviour of the WebSocket path under network congestion is un
 
 Define a reproducible load test:
 
-**Environment**
+### Environment
+
 - 100 simulated clients, 50 on WebTransport (control), 50 on WebSocket (test)
 - Zone with 1,800 entity slots at 50% occupancy (900 active entities)
 - Network condition: 20% added packet delay (uniform 50 ms), 1% packet loss (WT only; TCP masks loss)
 - Tick rate: 20 Hz (default), snapshot broadcast per tick
 
-**Metrics**
+### Metrics
 
 | Metric | Measurement method |
 |---|---|
@@ -27,11 +28,11 @@ Define a reproducible load test:
 | Snapshot staleness | Age of the most recent applied snapshot per client |
 | Session survival at 5 minutes | Count of clients still connected |
 
-**Acceptance threshold**
+### Acceptance threshold
 
 WebSocket p95 round-trip ≤ 2× WebTransport p95 round-trip at steady state.
 
-**If threshold is not met**
+### If threshold is not met
 
 Implement snapshot dropping at the zone server before enqueue on TCP connections: if a newer snapshot for the same entity is already queued for a peer, discard the older one. This restores the "drop stale" semantic that QUIC datagrams provide natively.
 

@@ -16,13 +16,16 @@ Prepare a representative Godot export: a V-Sekai avatar and environment, approxi
 
 Apply three delivery strategies:
 
-**Strategy A — casync desync (current)**
+### Strategy A — casync desync (current)
+
 Chunk with the existing SipHash CDC parameters. Serve via `multiplayer-fabric-desync`. Measure using `desync make` + `desync extract`.
 
-**Strategy B — zchunk**
+### Strategy B — zchunk
+
 Chunk using `zck` with zstd compression. Serve over a plain HTTP server using byte-range requests. No custom chunk server required. Measure using `zck` + `unzck`.
 
-**Strategy C — CDN delta (baseline)**
+### Strategy C — CDN delta (baseline)
+
 Compute binary diffs between consecutive exports using `bsdiff`. Serve diffs over HTTP. Measure download size and apply time.
 
 Metrics for each strategy:

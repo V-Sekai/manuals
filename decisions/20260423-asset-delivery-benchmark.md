@@ -18,7 +18,7 @@ casync serialises the entire directory tree as a `.catar` stream before chunking
 
 Prepare a representative Godot export: one V-Sekai avatar and environment, approximately 500 MB, matching a typical world export file mix.
 
-**Strategy A — casync via aria-storage (current stack)**
+### Strategy A — casync via aria-storage (current stack)
 
 ```sh
 # Chunk and publish
@@ -30,7 +30,7 @@ mix aria_storage.fetch --index https://.../output.caibx \
                        --output ./local_dir
 ```
 
-**Strategy B — direct tarball download (baseline)**
+### Strategy B — direct tarball download (baseline)
 
 ```sh
 tar czf export.tar.gz input_dir/

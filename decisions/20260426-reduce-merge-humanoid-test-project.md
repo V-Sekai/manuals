@@ -82,13 +82,9 @@ boots and renders without the XR surface.
 
 ## The Road Not Taken
 
-**Keep all XR branches in the MMOG gitassembly**: avoids split, but defeats
-the purpose of the monorepo separation and keeps the coupling that motivated
-the split.
+Keeping all XR branches in the MMOG gitassembly avoids the split but defeats the purpose of the monorepo separation and keeps the coupling that motivated it.
 
-**Drop `multiplayer-fabric-merge` entirely**: premature. The gitassembly
-pattern is still needed to compose the MMOG engine modules; only the XR
-branches are removed.
+Dropping `multiplayer-fabric-merge` entirely is premature. The gitassembly pattern is still needed to compose the MMOG engine modules; only the XR branches are removed.
 
 ## Status
 

@@ -12,21 +12,25 @@ Shards require a coordinator, match-maker, and session database to route players
 
 Each zone owns a slice of a single continuous 30-bit Hilbert code space (Skilling 2004). Zones share boundaries, not walls. Entities migrate across those boundaries automatically — the player never sees a loading screen or a "server full" message.
 
-**AOI without adjacency tables.**
+#### AOI without adjacency tables
+
 The Area of Interest band for a zone is derived directly from its Hilbert range, extended by `AOI_CELLS` on each side. Neighbor topology falls out of band overlap — no hand-authored adjacency tables. Adding a zone server changes the topology automatically.
 
-**Why Hilbert, not Morton.**
+#### Why Hilbert, not Morton
+
 The Hilbert curve has tighter spatial locality than the Morton (Z-order) curve: cluster diameter scales as O(n^(1/3)) vs Morton's O(n^(2/3)) (Bader 2013). Shorter cluster diameter means shorter AOI bands for the same coverage radius, which is why interest relay can copy each packet once per physical link rather than once per subscriber. Morton would require either wider AOI bands (more data per client) or a custom adjacency table to correct locality.
 
-**Formal verification.**
+#### Formal verification
+
 The forward and inverse Hilbert transforms are formally verified in Lean 4 (`PredictiveBVH/Spatial/HilbertRoundtrip.lean`) and code-generated to C and Rust. No hand-written bit manipulation to audit or port across engine upgrades.
 
-**Wire channel separation.**
+#### Wire channel separation
+
 Channel 0 carries Godot's built-in RPC/spawner/synchronizer traffic. `CH_INTEREST`, `CH_PLAYER`, and `CH_MIGRATION` carry Fabric-specific streams. Neither side inspects the other's packets. One pcap filter per channel yields exactly one semantic stream.
 
 ## The Benefits
 
-No coordinator, match-maker, or session database. Neighbor topology is automatic. Players experience a continuous world. The locality proof is machine-checked.
+No coordinator or session database. Neighbor topology is automatic. Players experience a continuous world. The locality proof is machine-checked.
 
 ## The Downsides
 
