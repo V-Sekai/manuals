@@ -1,6 +1,6 @@
 # Headless Test Matrix: Two Client Roles Against One Zone Server
 
-- Status: deferred — focus is on VR ([20260425-godot-player.md](20260425-godot-player.md)) first; matrix resumes after the observer ([20260425-godot-observer.md](20260425-godot-observer.md)) lands
+- Status: deferred (focus is on VR ([20260425-godot-player.md](20260425-godot-player.md)) first; matrix resumes after the observer ([20260425-godot-observer.md](20260425-godot-observer.md)) lands)
 - Deciders: V-Sekai, fire
 - Tags: V-Sekai, Testing, Headless, Godot, ZoneServer, Deferred, 20260425-headless-test-matrix
 
@@ -11,7 +11,7 @@ is no longer being built (see
 [20260425-threejs-webgpu-zone-client.md](20260425-threejs-webgpu-zone-client.md)),
 so the matrix is now Godot-only. Both phases below depend on the observer
 ([20260425-godot-observer.md](20260425-godot-observer.md)), which is deferred
-while we ship the VR client first — so this matrix is also deferred. Design
+while we ship the VR client first, so this matrix is also deferred. Design
 content is preserved for when work resumes. Testing them headless first means
 no VR hardware and no display required. Tests follow a three-stage promotion
 path:
@@ -66,8 +66,8 @@ GO + GP  →  GP action reflected in GO's next frame
 
 The existing `multiplayer-fabric-hosting` Compose stack already runs a zone
 server (`zone-server` service). Add a test service that runs the Godot
-binary headlessly inside the same Docker network — no Playwright, no
-browser, no Node runtime:
+binary headlessly inside the same Docker network (no Playwright, no
+browser, no Node runtime):
 
 ```yaml
 # docker-compose.test.yml
@@ -103,7 +103,7 @@ A green local Docker run is the gate before the CI job is added.
 
 `run_matrix.sh` starts the Godot binaries, polls for the zone-server port,
 diffs the JSON dumps, and exits non-zero on mismatch. No browser engine, no
-JavaScript test runner — just GDScript flags and `jq`.
+JavaScript test runner; just GDScript flags and `jq`.
 
 ```sh
 "$GODOT_BIN" --headless --path "$DEMO_PROJECT" \
@@ -137,13 +137,13 @@ convention, not by tooling.
 
 ## The Road Not Taken
 
-Mocking the server: rejected — a mock cannot reproduce AOI band behaviour,
+Mocking the server: rejected; a mock cannot reproduce AOI band behaviour,
 HLC timestamps, or the actual CH_INTEREST encoding. All matrix tests use the
 real server binary.
 
 ## Status
 
-Status: Deferred. Not building yet — focus is on the VR client ([20260425-godot-player.md](20260425-godot-player.md)) first; this matrix resumes after the observer ([20260425-godot-observer.md](20260425-godot-observer.md)) lands. Design (shell-based, no Playwright) preserved for that resumption.
+Status: Deferred. Not building yet; focus is on the VR client ([20260425-godot-player.md](20260425-godot-player.md)) first; this matrix resumes after the observer ([20260425-godot-observer.md](20260425-godot-observer.md)) lands. Design (shell-based, no Playwright) preserved for that resumption.
 
 ## Decision Makers
 

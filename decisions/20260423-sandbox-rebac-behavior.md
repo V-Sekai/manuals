@@ -4,12 +4,12 @@
 
 Jellyfish behavior is currently expressed as JSON-LD domain files: a fixed
 action vocabulary baked into the zone asset, evaluated by the RECTGTN planner
-in trusted C++. The planner is the safe interpreter — a malicious domain can
+in trusted C++. The planner is the safe interpreter: a malicious domain can
 only name actions that already exist in the loaded domain, so no sandbox is
 needed for this path.
 
-If creators are permitted to submit **executable behavior code** — GDScript
-programs or RISC-V ELF kernels that run inside the zone server — the threat
+If creators are permitted to submit **executable behavior code** (GDScript
+programs or RISC-V ELF kernels that run inside the zone server), the threat
 model changes. Arbitrary computation requires memory isolation (sandbox) and
 semantic isolation (ReBAC capability gating). This ADR designs that path for
 when it is needed.
@@ -31,8 +31,8 @@ Creator behavior code runs inside `godot-sandbox` (RISC-V ELF). The sandbox
 provides memory isolation and a syscall interface. ReBAC gates every capability
 the sandbox can request at runtime. The combination gives:
 
-- Memory isolation: — sandbox fault cannot corrupt zone state
-- Semantic isolation: — the kernel can only exercise capabilities the ReBAC
+- Memory isolation: sandbox fault cannot corrupt zone state
+- Semantic isolation: the kernel can only exercise capabilities the ReBAC
   graph permits for the entity it is animating
 
 ## How it works
@@ -66,7 +66,7 @@ bool FabricMMOGZone::_sandbox_capability_handler(
 }
 ```
 
-The ReBAC graph is built from `_entity_capabilities` — a per-entity list
+The ReBAC graph is built from `_entity_capabilities`, a per-entity list
 populated at `CMD_INSTANCE_ASSET` time from the asset's `CAN_INSTANCE` and
 `HAS_CAPABILITY` edges. No database call occurs inside the tick.
 
@@ -81,7 +81,7 @@ void FabricMMOGZone::_tick_sandbox_entity(int p_entity_id, double p_delta) {
 }
 ```
 
-`tick()` budget is enforced by the sandbox instruction counter — a kernel that
+`tick()` budget is enforced by the sandbox instruction counter: a kernel that
 exceeds the budget is suspended and resumed next tick, not killed.
 
 ### ReBAC relations used
@@ -112,7 +112,7 @@ can contain entities of both types simultaneously.
 - ReBAC enforcement at join time (`CAN_ENTER`) and instance time
   (`CAN_INSTANCE`) is unchanged.
 - The `requires_capability` field in JSON-LD domains already gates planner
-  decomposition via `check_rel` — that remains the mechanism for data-driven
+  decomposition via `check_rel`; that remains the mechanism for data-driven
   behavior.
 
 ## The Benefits
@@ -126,7 +126,7 @@ instance time.
 ## The Downsides
 
 RISC-V ELF compilation is a new requirement for creators who want executable
-behavior. The sandbox instruction budget must be tuned per species — a budget
+behavior. The sandbox instruction budget must be tuned per species: a budget
 too small breaks smooth animation; too large allows DoS. The capability graph
 is rebuilt per-request inside the syscall handler, which is cheap for short
 capability lists but grows linearly with the list length.

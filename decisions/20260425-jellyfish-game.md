@@ -31,7 +31,7 @@ player simultaneously, moving under its species domain plan rather than a
 hard-coded phase table. See [20260425-jellyfish-pass-condition.md](20260425-jellyfish-pass-condition.md)
 for the consolidated design.
 
-Implementation details are recorded in the following ADRs — they remain
+Implementation details are recorded in the following ADRs; they remain
 accepted and are not superseded:
 
 - Behaviour planning: [20260421-rectgtn-jellyfish-behavior.md](20260421-rectgtn-jellyfish-behavior.md)
@@ -77,8 +77,8 @@ control. It uses the xr-grid project with OpenXR and the picoquic WebTransport
 backend. See [20260425-godot-player.md](20260425-godot-player.md).
 
 Godot `--headless` observer (operator and CI smoke-test paths) is **deferred**
-until the VR client ships. The design — reusing `FabricMultiplayerPeer` and
-`fabric_client.gd`, no separate parser, no TypeScript — remains valid; see
+until the VR client ships. The design (reusing `FabricMultiplayerPeer` and
+`fabric_client.gd`, no separate parser, no TypeScript) remains valid; see
 [20260425-godot-observer.md](20260425-godot-observer.md).
 
 A browser client is SOMEDAY; the Three.js WebGPU design

@@ -2,7 +2,7 @@
 
 Superseded by: [20260425-godot-observer.md](20260425-godot-observer.md) and [20260425-godot-player.md](20260425-godot-player.md)
 
-- Status: superseded — not being built
+- Status: superseded (not being built)
 - Deciders: V-Sekai, fire
 - Tags: V-Sekai, Threejs, WebGPU, WebTransport, ZoneServer, Client, 20260425-threejs-webgpu-zone-client
 
@@ -19,8 +19,8 @@ The CH_INTEREST packet format is fully specified in `fabric_zone_types.h` —
 
 The Godot web export client blocks on a multi-minute wasm build for every
 iteration. Three.js + WebTransport eliminates the build step entirely: connect,
-parse the 100-byte wire format, render. The operator camera overlay — load bars,
-dot clustering — becomes plain DOM/Canvas over a Three.js scene.
+parse the 100-byte wire format, render. The operator camera overlay (load bars,
+dot clustering) becomes plain DOM/Canvas over a Three.js scene.
 
 
 ## Design
@@ -123,15 +123,15 @@ const reader = wt.datagrams.readable.getReader();
 })(await reader.read());
 ```
 
-The datagram reader is captured once and reused — the same exclusive-lock
+The datagram reader is captured once and reused (the same exclusive-lock
 invariant proved in [20260425-jellyfish-game.md](20260425-jellyfish-game.md)
-and the WebTransport audit.
+and the WebTransport audit).
 
 ### Operator overlay
 
 Load bars and dot clustering (see [20260425-operator-overlay.md](20260425-operator-overlay.md))
-become a `<canvas>` element over the Three.js canvas — plain 2D Context API,
-no CanvasLayer needed.
+become a `<canvas>` element over the Three.js canvas, using the plain 2D Context API,
+with no CanvasLayer needed.
 
 ## Client split
 
@@ -163,7 +163,7 @@ the VM is a pure function, so the same ELF + same state always yields the
 same result on any host.
 
 taskweft standalone headers (`standalone/tw_planner.hpp`) are header-only C++20
-with no BEAM dependency and no libriscv layer — they compile directly to WASM
+with no BEAM dependency and no libriscv layer, and they compile directly to WASM
 via Emscripten. `emcc standalone/tw_planner.hpp -o tw_planner.wasm` produces a
 module that runs RECTGTN planning in the browser, using the same species domain
 JSON-LD files that drive the native zone server.

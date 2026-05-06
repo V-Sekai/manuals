@@ -29,7 +29,7 @@ The asset format is a Godot scene. No external DCC tools required.
 
 1. Design with CSG nodes (bell body, tentacle sweeps) in the Godot editor or an in-world editor scene.
 2. Bake CSG to a static mesh (`CSGShape3D.bake_mesh()`).
-3. Save the baked mesh scene to Uro — the content-addressed store assigns a chunk hash and `baked_url`.
+3. Save the baked mesh scene to Uro; the content-addressed store assigns a chunk hash and `baked_url`.
 
 The baked scene is the canonical asset; clients instance it directly at runtime. The chunk hash is stable across uploads of identical geometry, so repeat downloads cost no bandwidth.
 
@@ -38,7 +38,7 @@ The baked scene is the canonical asset; clients instance it directly at runtime.
 The Abyss is a persistent, zone-sharded ocean:
 
 - Hilbert-coded zone boundaries for seamless cross-zone movement
-- Distributed simulation via multiplayer-fabric — each zone is a separate server process sharing entity state
+- Distributed simulation via multiplayer-fabric: each zone is a separate server process sharing entity state
 - Area of Interest bands so players only receive data for nearby jellyfish
 - Zone crossings are seamless; `MIGRATION_HEADROOM = 400` absorbs swarm spikes
 - Performance target: 511+ jellyfish across a 3-zone loop without data loss

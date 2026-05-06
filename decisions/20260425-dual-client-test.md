@@ -2,7 +2,7 @@
 
 Superseded by: [20260425-headless-test-matrix.md](20260425-headless-test-matrix.md)
 
-- Status: superseded — not being built
+- Status: superseded (not being built)
 - Deciders: V-Sekai, fire
 - Tags: V-Sekai, Testing, Playwright, Godot, Threejs, DualClient, ZoneServer, 20260425-dual-client-test
 
@@ -91,8 +91,8 @@ for (const ne of nativeState) {
 }
 ```
 
-Position tolerance is 10 cm — larger than the double-precision encoding error,
-small enough to catch a wire decode bug.
+Position tolerance is 10 cm, larger than the double-precision encoding error
+and small enough to catch a wire decode bug.
 
 ### Godot native client state dump
 
@@ -128,7 +128,7 @@ adds ~3 s to the test. The `--dump-state` flag needs implementing in GDScript.
 
 ## The Road Not Taken
 
-Testing via a mock server: rejected — a mock cannot reproduce the actual
+Testing via a mock server: rejected; a mock cannot reproduce the actual
 server's entity scheduling, HLC timestamping, or AOI band behaviour. The dual
 client test must use the real server.
 

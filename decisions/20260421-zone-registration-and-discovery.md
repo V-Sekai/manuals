@@ -2,7 +2,7 @@
 
 ## The Context
 
-A client needs to know which zone servers are running, what addresses they listen on, and how to authenticate the connection. Zone servers are ephemeral — they start, run, and stop independently of the backend. The backend must reflect only what is currently alive.
+A client needs to know which zone servers are running, what addresses they listen on, and how to authenticate the connection. Zone servers are ephemeral; they start, run, and stop independently of the backend. The backend must reflect only what is currently alive.
 
 ## The Problem Statement
 

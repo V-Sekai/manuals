@@ -37,7 +37,7 @@ def list_fresh_zones(tags \\ []) do
 end
 ```
 
-Tags are free-form strings. Zone-backend applies no semantics — grouping, hierarchy, and naming conventions are left to the operator. A zone may carry multiple tags.
+Tags are free-form strings. Zone-backend applies no semantics; grouping, hierarchy, and naming conventions are left to the operator. A zone may carry multiple tags.
 
 Tags are included in the `GET /shards` response alongside existing fields so clients can render group membership without a second request.
 

@@ -39,7 +39,7 @@ if (!can_instance) {
 // existing allocation logic follows
 ```
 
-`Taskweft::check_rel` is a C++ wrapper around the existing NIF call; no BEAM round-trip occurs on the zone server — the zone server calls the shared library directly.
+`Taskweft::check_rel` is a C++ wrapper around the existing NIF call; no BEAM round-trip occurs on the zone server; the zone server calls the shared library directly.
 
 ### Per-tick constraint
 
@@ -55,7 +55,7 @@ Enforcement is local to the authority zone with no per-tick cost. The graph cach
 
 ## The Downsides
 
-The graph cache can be stale for the window between a permission revocation and the `CMD_INVALIDATE_PERMISSIONS` delivery. This is the "New Enemy Problem" inherent to distributed ReBAC — no synchronous distributed solution exists at game tick frequency.
+The graph cache can be stale for the window between a permission revocation and the `CMD_INVALIDATE_PERMISSIONS` delivery. This is the "New Enemy Problem" inherent to distributed ReBAC: no synchronous distributed solution exists at game tick frequency.
 
 ## The Road Not Taken
 

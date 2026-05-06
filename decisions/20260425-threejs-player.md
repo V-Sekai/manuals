@@ -18,8 +18,8 @@ via libriscv WASM, RECTGTN planning via taskweft WASM, and VR presence via WebXR
 ## The Problem Statement
 
 The observer cannot send entity input or run behavior scripts. An operator who
-wants to interact with entities — spawn jellyfish, trigger behavior changes,
-enter VR — needs the player layer.
+wants to interact with entities (spawn jellyfish, trigger behavior changes,
+enter VR) needs the player layer.
 
 
 ## Design
@@ -46,7 +46,7 @@ GDScript  → RISC-V ELF   (compile once; CDN asset)
 libriscv  → WASM          (Emscripten; browser loads VM, feeds it the ELF)
 ```
 
-The integration risk is the godot-sandbox guest ABI — the syscall shim mapping
+The integration risk is the godot-sandbox guest ABI: the syscall shim mapping
 RISC-V `ecall` to Emscripten host calls. This must be verified before Stage 2
 ships.
 

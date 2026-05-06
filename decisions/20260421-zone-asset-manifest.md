@@ -31,7 +31,7 @@ Response shape:
 }
 ```
 
-Only assets with a non-null `baked_url` are returned — assets still in the baking pipeline are not surfaced. No authentication is required for assets where `is_public` is true.
+Only assets with a non-null `baked_url` are returned; assets still in the baking pipeline are not surfaced. No authentication is required for assets where `is_public` is true.
 
 Context function:
 

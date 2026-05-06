@@ -2,11 +2,11 @@
 
 ## The Context
 
-`taskweft` is a C++20 library exposed as an Erlang NIF. Its current use in the zone server is limited to `check_rel()` for ReBAC authorization at join time and `CMD_INSTANCE_ASSET`. The library implements the full **Relationship-Enabled Capability-Temporal Goal-Task-Network** (RECTGTN) formalism: conjunctive and multi-goal decomposition, compound task methods with per-method alternatives, incremental replanning via a solution tree, ISO 8601 duration constraints, and stochastic Monte Carlo execution. All of this is available in `standalone/tw_planner.hpp` and companions — header-only, no BEAM round-trip required.
+`taskweft` is a C++20 library exposed as an Erlang NIF. Its current use in the zone server is limited to `check_rel()` for ReBAC authorization at join time and `CMD_INSTANCE_ASSET`. The library implements the full **Relationship-Enabled Capability-Temporal Goal-Task-Network** (RECTGTN) formalism: conjunctive and multi-goal decomposition, compound task methods with per-method alternatives, incremental replanning via a solution tree, ISO 8601 duration constraints, and stochastic Monte Carlo execution. All of this is available in `standalone/tw_planner.hpp` and companions (header-only, no BEAM round-trip required).
 
 In `CONCEPT_MMOG.md`, HTN planning was tombstoned because the godot-sandbox RISC-V guest path was out of scope. The sandbox path remains out of scope. The standalone header path is not.
 
-The aquarium zone server runs a C++ swarm simulation (`JellygridSwarm::tick()`) that drives jellyfish with hard-coded phase-based behaviour: pulse bob, current drift, predator flee. The behaviour is correct but fixed — every jellyfish of the same species behaves identically and the planner cannot adapt to zone state changes.
+The aquarium zone server runs a C++ swarm simulation (`JellygridSwarm::tick()`) that drives jellyfish with hard-coded phase-based behaviour: pulse bob, current drift, predator flee. The behaviour is correct but fixed: every jellyfish of the same species behaves identically and the planner cannot adapt to zone state changes.
 
 ## The Problem Statement
 
@@ -106,11 +106,11 @@ A species domain can include capability preconditions:
 }
 ```
 
-Before executing `seek_light`, the zone server calls the existing `check_rel()` on the entity's capability graph. Non-bioluminescent jellyfish never decompose into `seek_light` — the planner picks `idle` instead.
+Before executing `seek_light`, the zone server calls the existing `check_rel()` on the entity's capability graph. Non-bioluminescent jellyfish never decompose into `seek_light`; the planner picks `idle` instead.
 
 ### Runtime plan injection via CDN
 
-Plans are pure JSON-LD data — they are stored in the content-addressed CDN (Uro) exactly like mesh assets and domain files. Zone-backend calls `Taskweft.plan/1` via the NIF, receives a JSON plan array, uploads it to Uro, and receives a `baked_url` (chunk hash URL). It sends the zone server a `CMD_SET_ENTITY_PLAN` packet carrying only that URL — not the plan bytes.
+Plans are pure JSON-LD data: they are stored in the content-addressed CDN (Uro) exactly like mesh assets and domain files. Zone-backend calls `Taskweft.plan/1` via the NIF, receives a JSON plan array, uploads it to Uro, and receives a `baked_url` (chunk hash URL). It sends the zone server a `CMD_SET_ENTITY_PLAN` packet carrying only that URL, not the plan bytes.
 
 ```
 zone-backend:
@@ -127,7 +127,7 @@ zone server:
 
 The CDN disk cache means all zone servers hosting the same species share the same plan bytes without re-downloading. A common jellyfish plan computed once by zone-backend is fetched once per zone server and cached for the duration of the session.
 
-The Elixir module is kept at arm's length from the zone sim: it produces and uploads plans, it never executes them. The zone sim never calls into BEAM. A slow NIF call on the BEAM side does not affect the zone tick rate — the zone continues running the current plan until a replacement URL arrives.
+The Elixir module is kept at arm's length from the zone sim: it produces and uploads plans, it never executes them. The zone sim never calls into BEAM. A slow NIF call on the BEAM side does not affect the zone tick rate; the zone continues running the current plan until a replacement URL arrives.
 
 ```cpp
 void FabricMMOGZone::_on_cmd_set_entity_plan(int p_entity_id, const String &p_plan_url) {
@@ -151,8 +151,8 @@ Both BEAM and the zone server run RECTGTN, but their domains and purposes are un
 
 | Layer | Domain subject | Purpose |
 |---|---|---|
-| BEAM (`Taskweft.plan/1`) | Platform graph: users, permissions, zone events, upload workflows | Application logic — access control, scheduling, delegation chains |
-| Zone server (`tw_seek_plan()`) | Simulation state: entity position, threat sensors, cooldowns | Entity behaviour — jellyfish action selection within the physics loop |
+| BEAM (`Taskweft.plan/1`) | Platform graph: users, permissions, zone events, upload workflows | Application logic: access control, scheduling, delegation chains |
+| Zone server (`tw_seek_plan()`) | Simulation state: entity position, threat sensors, cooldowns | Entity behaviour: jellyfish action selection within the physics loop |
 
 BEAM-side plans operate asynchronously outside any tick budget and are uploaded to the CDN as data. Zone-server plans run synchronously within tick constraints and are never visible to BEAM. Neither side needs to model the other's domain.
 
@@ -162,13 +162,13 @@ Multi-step behaviour emerges from the domain definition without C++ case logic. 
 
 ## The Downsides
 
-Each entity carries a live plan and a solution tree. At 511 jellyfish, memory per entity must be bounded. Plans longer than 8 steps should not be generated — a domain with long decomposition chains will be capped at `TW_MAX_DEPTH = 8` (configurable, default 256 upstream). The planner is not called per tick so this is not a throughput concern; it is a latency concern on replan when many entities detect the same threat simultaneously.
+Each entity carries a live plan and a solution tree. At 511 jellyfish, memory per entity must be bounded. Plans longer than 8 steps should not be generated; a domain with long decomposition chains will be capped at `TW_MAX_DEPTH = 8` (configurable, default 256 upstream). The planner is not called per tick so this is not a throughput concern; it is a latency concern on replan when many entities detect the same threat simultaneously.
 
 ## The Road Not Taken
 
 Hot-reloading the **domain** via the NIF breaks zone ACID: the entity state was produced by applying actions defined in the current domain, so a new domain with different state keys or action effects leaves the entity state in a configuration no valid plan could have produced. The domain and the entity state are a unit; replacing one without the other violates the invariant.
 
-Hot-reloading **plans** via the NIF is safe and is described above (`CMD_SET_ENTITY_PLAN`). The distinction is that a plan is a sequence of action names — it carries no schema. Validation against the loaded domain before application ensures the plan references only actions that already exist in the simulation's state machine.
+Hot-reloading **plans** via the NIF is safe and is described above (`CMD_SET_ENTITY_PLAN`). The distinction is that a plan is a sequence of action names: it carries no schema. Validation against the loaded domain before application ensures the plan references only actions that already exist in the simulation's state machine.
 
 ## The Infrequent Use Case
 

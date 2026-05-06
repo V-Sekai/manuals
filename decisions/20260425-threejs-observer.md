@@ -11,7 +11,7 @@ Superseded by: [20260425-godot-observer.md](20260425-godot-observer.md)
 ## The Context
 
 The zone server speaks WebTransport. The CH_INTEREST packet format is fully
-specified in `fabric_zone_types.h` — 100 bytes per entity, fixed offsets. A
+specified in `fabric_zone_types.h` (100 bytes per entity, fixed offsets). A
 read-only observer client needs no Godot runtime, no wasm build, and no
 service worker.
 
@@ -75,13 +75,13 @@ Reader captured once; exclusive-lock invariant holds (proved in WebTransport aud
 ### Three.js WebGPU scene
 
 Orthographic camera at SWING_ELEVATION twist/swing, one `InstancedMesh` per
-entity class — 1800 entities, one draw call. Operator overlay (load bars, dot
+entity class (1800 entities, one draw call). Operator overlay (load bars, dot
 clustering) is a `<canvas>` over the Three.js canvas per
 [20260425-operator-overlay.md](20260425-operator-overlay.md).
 
 ## The Downsides
 
-Read-only — no entity input. Stage 2 adds the CH_PLAYER write path.
+Read-only: no entity input. Stage 2 adds the CH_PLAYER write path.
 
 ## The Road Not Taken
 

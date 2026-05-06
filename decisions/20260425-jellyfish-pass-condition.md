@@ -65,7 +65,7 @@ condition.
 
 Splitting the pass condition into three separate milestone tests would let each
 system be validated independently. Rejected: the pass condition is specifically
-an end-to-end composition test — each clause in isolation does not prove the
+an end-to-end composition test: each clause in isolation does not prove the
 system composes.
 
 ## Status

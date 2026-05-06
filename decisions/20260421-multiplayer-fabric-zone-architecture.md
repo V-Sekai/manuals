@@ -2,7 +2,7 @@
 
 ## The Context
 
-Multiplayer Fabric is a self-hosted multiplayer framework built on top of the Godot engine. It is designed to run on hardware you control — a single machine, a small cluster, or a homelab — without requiring any hosted service.
+Multiplayer Fabric is a self-hosted multiplayer framework built on top of the Godot engine. It is designed to run on hardware you control (a single machine, a small cluster, or a homelab) without requiring any hosted service.
 
 This document describes the design of the zone layer: how clients discover servers, how entity state is managed and persisted, and how the pieces connect.
 
@@ -37,10 +37,10 @@ A headless Godot process that runs the simulation. Each zone owns a contiguous r
 
 Key design decisions:
 
-- Constant-work loop: — the physics loop iterates all `_zone_capacity` slots every tick regardless of occupancy. This makes tick time predictable and avoids per-entity allocation in the hot path.
-- Spatial partitioning: — a 3D Hilbert curve maps each entity position to a zone index. The curve and its bounds are formally specified in Lean 4 and code-generated into `predictive_bvh.h` (R128 64.64 fixed-point arithmetic, micrometer precision).
-- STAGING migration: — when an entity crosses a zone boundary, its `MigrationState` transitions `owned → staging(targetZone, arrivalHLC) → owned`; the receiving side enters `incoming(fromZone)` until the arrival HLC is reached. Timing uses `FabricLatency` (sameRegion=1 tick, crossRegion=4 ticks, satellite=40 ticks) with a floor of `latencyTicks = max (simTickHz / 10) 1`.
-- AOI band interest culling: — zones broadcast entity snapshots only to peers whose Hilbert code span overlaps the AOI band. The band width is proved to be `≤ (1 + 2·aoiCells) · hilbertSpanWidth(prefixDepth)`, independent of global zone count.
+- Constant-work loop: the physics loop iterates all `_zone_capacity` slots every tick regardless of occupancy. This makes tick time predictable and avoids per-entity allocation in the hot path.
+- Spatial partitioning: a 3D Hilbert curve maps each entity position to a zone index. The curve and its bounds are formally specified in Lean 4 and code-generated into `predictive_bvh.h` (R128 64.64 fixed-point arithmetic, micrometer precision).
+- STAGING migration: when an entity crosses a zone boundary, its `MigrationState` transitions `owned → staging(targetZone, arrivalHLC) → owned`; the receiving side enters `incoming(fromZone)` until the arrival HLC is reached. Timing uses `FabricLatency` (sameRegion=1 tick, crossRegion=4 ticks, satellite=40 ticks) with a floor of `latencyTicks = max (simTickHz / 10) 1`.
+- AOI band interest culling: zones broadcast entity snapshots only to peers whose Hilbert code span overlaps the AOI band. The band width is proved to be `≤ (1 + 2·aoiCells) · hilbertSpanWidth(prefixDepth)`, independent of global zone count.
 
 ### Asset delivery (desync)
 

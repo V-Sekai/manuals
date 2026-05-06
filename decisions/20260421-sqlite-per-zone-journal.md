@@ -8,8 +8,8 @@ Each FabricZone process manages up to 1,800 entity slots. Zone processes can cra
 
 Zone state has two components:
 
-- Static world: — 100,000 entities partitioned by Hilbert code at startup; deterministic from zone_id and zone_count, always reproducible.
-- Dynamic mutations: — player humanoid spawns (55 bone slots per player), asset instances from CMD_INSTANCE_ASSET, and despawns. These are not deterministic from a formula; they must be persisted.
+- Static world: 100,000 entities partitioned by Hilbert code at startup; deterministic from zone_id and zone_count, always reproducible.
+- Dynamic mutations: player humanoid spawns (55 bone slots per player), asset instances from CMD_INSTANCE_ASSET, and despawns. These are not deterministic from a formula; they must be persisted.
 
 After an abrupt crash, only the dynamic mutations need to be recovered. The existing graceful-shutdown drain (DRAIN_MAGIC → FabricSnapshot.res) requires a clean shutdown window and does not help when the process is killed.
 
@@ -22,7 +22,7 @@ entity_mutations (seq, op, slot_idx, global_id, entity BLOB, ts)
 entity_snapshots (id, last_mutation_seq, slot_data BLOB, slot_count, ts)
 ```
 
-Mutation ops: `spawn`, `despawn`, `payload_update`. Physics-step position updates are intentionally excluded — they are deterministic from the simulation and too frequent to journal economically.
+Mutation ops: `spawn`, `despawn`, `payload_update`. Physics-step position updates are intentionally excluded: they are deterministic from the simulation and too frequent to journal economically.
 
 Crash-recovery sequence:
 
@@ -54,7 +54,7 @@ WAL mode (`PRAGMA journal_mode=WAL`) is used for better crash-consistency when `
 
 - Journal adds per-mutation write latency on spawn/despawn/asset-instance paths. These are infrequent events so the impact is negligible.
 - WAL files (`.db-wal`, `.db-shm`) appear alongside the database; operators must include them in backups.
-- Position state (cx/cy/cz, velocity) is not recovered — entities resume at their last snapshotted position, not their crash-time position. For humanoid players this means a position snap on reconnect, which is acceptable.
+- Position state (cx/cy/cz, velocity) is not recovered; entities resume at their last snapshotted position, not their crash-time position. For humanoid players this means a position snap on reconnect, which is acceptable.
 
 ## The Road Not Taken
 

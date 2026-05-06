@@ -2,7 +2,7 @@
 
 ## The Context
 
-Traditional MMOs split the world into shards — isolated copies with hard player caps. When a shard fills, players queue or get bounced to another copy of the same world. multiplayer-fabric replaces shards with zones.
+Traditional MMOs split the world into shards (isolated copies with hard player caps). When a shard fills, players queue or get bounced to another copy of the same world. multiplayer-fabric replaces shards with zones.
 
 ## The Problem Statement
 
@@ -10,11 +10,11 @@ Shards require a coordinator, match-maker, and session database to route players
 
 ## Design
 
-Each zone owns a slice of a single continuous 30-bit Hilbert code space (Skilling 2004). Zones share boundaries, not walls. Entities migrate across those boundaries automatically — the player never sees a loading screen or a "server full" message.
+Each zone owns a slice of a single continuous 30-bit Hilbert code space (Skilling 2004). Zones share boundaries, not walls. Entities migrate across those boundaries automatically; the player never sees a loading screen or a "server full" message.
 
 #### AOI without adjacency tables
 
-The Area of Interest band for a zone is derived directly from its Hilbert range, extended by `AOI_CELLS` on each side. Neighbor topology falls out of band overlap — no hand-authored adjacency tables. Adding a zone server changes the topology automatically.
+The Area of Interest band for a zone is derived directly from its Hilbert range, extended by `AOI_CELLS` on each side. Neighbor topology falls out of band overlap, with no hand-authored adjacency tables. Adding a zone server changes the topology automatically.
 
 #### Why Hilbert, not Morton
 
@@ -34,13 +34,13 @@ No coordinator or session database. Neighbor topology is automatic. Players expe
 
 ## The Downsides
 
-Zone boundaries are fixed at the Hilbert cell granularity. Very uneven entity distributions (all entities in one cell) cannot be rebalanced without splitting a zone — which requires a zone restart. Shards handle this trivially by spinning up a new copy.
+Zone boundaries are fixed at the Hilbert cell granularity. Very uneven entity distributions (all entities in one cell) cannot be rebalanced without splitting a zone, which requires a zone restart. Shards handle this trivially by spinning up a new copy.
 
 ## The Road Not Taken
 
 Morton-order partitioning would have been simpler to implement and is more commonly cited in game broadphase literature. The O(n^(2/3)) cluster diameter makes it unsuitable for the one-copy-per-link relay goal: AOI bands would need to be wider to achieve the same spatial coverage, increasing per-client data volume. The Hilbert curve is the correct choice for this relay model.
 
-A quad-tree or oct-tree spatial index would allow dynamic rebalancing but requires a coordinator to manage tree mutations — reintroducing the dependency the design is trying to eliminate.
+A quad-tree or oct-tree spatial index would allow dynamic rebalancing but requires a coordinator to manage tree mutations, reintroducing the dependency the design is trying to eliminate.
 
 ## The Infrequent Use Case
 

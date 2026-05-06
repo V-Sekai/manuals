@@ -6,7 +6,7 @@ The world is partitioned into zones, each owning a contiguous prefix of the 30-b
 
 ## The Problem Statement
 
-A hard cutover — despawn in zone A, spawn in zone B — produces a visible gap if the two zones are not synchronized. A three-state handoff that keeps the entity alive in both zones during transit eliminates the gap. Without a proved arrival guarantee and a hysteresis guard, an entity oscillating near a boundary triggers repeated migrations.
+A hard cutover (despawn in zone A, spawn in zone B) produces a visible gap if the two zones are not synchronized. A three-state handoff that keeps the entity alive in both zones during transit eliminates the gap. Without a proved arrival guarantee and a hysteresis guard, an entity oscillating near a boundary triggers repeated migrations.
 
 ## Design
 
@@ -40,7 +40,7 @@ inductive MigrationState where
   | incoming (fromZone : Nat)
 ```
 
-`owned` — authority resides here. `staging(targetZone, arrivalHLC)` — the entity is in flight to `targetZone`; both zones hold valid ghost snapshots until `arrivalHLC` is reached. `incoming(fromZone)` — this zone is receiving the entity from `fromZone`.
+`owned`: authority resides here. `staging(targetZone, arrivalHLC)`: the entity is in flight to `targetZone`; both zones hold valid ghost snapshots until `arrivalHLC` is reached. `incoming(fromZone)`: this zone is receiving the entity from `fromZone`.
 
 ### Hysteresis guard
 
@@ -137,7 +137,7 @@ A two-state machine (`OWNED → OWNED`) with a hard cutover is simpler but produ
 
 ## The Infrequent Use Case
 
-An entity whose Hilbert code lands on a prefix boundary — exactly equal to `i * 2^(30-d)` — belongs to zone `i` by the `span_contains_iff_prefix` theorem. No special tie-breaking is required.
+An entity whose Hilbert code lands on a prefix boundary (exactly equal to `i * 2^(30-d)`) belongs to zone `i` by the `span_contains_iff_prefix` theorem. No special tie-breaking is required.
 
 ## In Core and Done by Us
 

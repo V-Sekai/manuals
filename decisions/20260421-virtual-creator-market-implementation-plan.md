@@ -42,11 +42,11 @@ Pass: another contributor can execute the runbook without guessing hidden setup 
 
 #### 7. XR grid ground plane
 Instance `ProceduralGrid3D` under `XROrigin3D` in `main.tscn` so visitors have spatial reference inside a creator booth. Wire `FOCUS_NODE` to the headset camera.
-Note: do not use symlinks — copy xr-grid scripts into the demo directory or use `res://` path remapping. Windows Steam PCVR requires admin privileges for symlinks.
+Note: do not use symlinks; copy xr-grid scripts into the demo directory or use `res://` path remapping. Windows Steam PCVR requires admin privileges for symlinks.
 Pass: visitor has a visible ground plane and scale reference in VR.
 
 #### 8. WorldGrab booth navigation
-Instance `XRPinch` on each `XRController3D` hand node. Two-hand WorldGrab lets visitors grab the space and move, rotate, and scale — the primary navigation method for browsing a creator's booth.
+Instance `XRPinch` on each `XRController3D` hand node. Two-hand WorldGrab lets visitors grab the space and move, rotate, and scale (the primary navigation method for browsing a creator's booth).
 Same symlink caveat as above.
 Pass: visitor can navigate the booth in VR using two-hand grab without teleport or joystick.
 
@@ -55,7 +55,7 @@ Confirm `WorldGrab`, `XRPinch`, `ProceduralGrid3D`, and `trident_hand.gd` are in
 Pass: VR scene graph is complete; input reaches scripts.
 
 #### 10. Creator interaction tool → CH_PLAYER cmd=1
-Wire the XR controller trigger on `trident_hand.gd` to emit a CH_PLAYER cmd=1 (`ragdoll`) packet from `fabric_client.gd`. The server-side handler in `fabric_mmog_zone.cpp` already injects the C7 velocity spike — only the client send path is missing.
+Wire the XR controller trigger on `trident_hand.gd` to emit a CH_PLAYER cmd=1 (`ragdoll`) packet from `fabric_client.gd`. The server-side handler in `fabric_mmog_zone.cpp` already injects the C7 velocity spike; only the client send path is missing.
 Pass: creator input reaches the zone simulation.
 
 #### 11. Creator annotation tool → CH_PLAYER cmd=3
@@ -63,7 +63,7 @@ Wire the pen tool XR controller input to emit a CH_PLAYER cmd=3 packet per strok
 Pass: the full client-to-zone-to-observer path through CH_PLAYER and CH_INTEREST is exercised by both interaction tools.
 
 #### 12. End-to-end VR demo pass
-Boot three booth zones (minimum for transitive migration: booth A → B → C exercises both neighbor indices). Confirm in top-down view first — booth curtains visible, visitor entities populate all three booths, 144-visitor burst migrates without mass rollback. Then confirm in VR: rendering, head tracking, and hand tracking update in CH_INTEREST.
+Boot three booth zones (minimum for transitive migration: booth A → B → C exercises both neighbor indices). Confirm in top-down view first: booth curtains visible, visitor entities populate all three booths, 144-visitor burst migrates without mass rollback. Then confirm in VR: rendering, head tracking, and hand tracking update in CH_INTEREST.
 
 Three visitor populations:
 | Population | IDs | Market scenario |
@@ -92,7 +92,7 @@ Pass: visitor cold-boots with empty cache and loads creator assets from Uro at r
 
 #### 16. End-to-end asset streaming test
 Upload a creator asset from the demo scene to a local Uro instance. Boot a visitor client cold (empty cache) and confirm it fetches and renders the asset by hash. Test both the happy path and a 403 rejection with an unauthorized principal.
-Pass: creator uploads, visitor downloads, unauthorized visitor is rejected — all in a single automated run.
+Pass: creator uploads, visitor downloads, unauthorized visitor is rejected, all in a single automated run.
 
 ---
 
@@ -154,7 +154,7 @@ Risk-ordered sequencing ensures each phase produces a verifiable artifact before
 
 ## The Downsides
 
-The sequencing assumes each phase completes before the next starts. Parallel work is possible (e.g. Lean proofs alongside Phase 2) but risks accumulating unverified assumptions. The 1,000-visitor load test requires provisioned hardware — this is a hard dependency on infrastructure availability.
+The sequencing assumes each phase completes before the next starts. Parallel work is possible (e.g. Lean proofs alongside Phase 2) but risks accumulating unverified assumptions. The 1,000-visitor load test requires provisioned hardware, which is a hard dependency on infrastructure availability.
 
 ## The Road Not Taken
 

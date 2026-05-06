@@ -4,7 +4,7 @@ Supersedes: [20260421-asset-delivery-benchmark.md](20260421-asset-delivery-bench
 
 ## The Context
 
-The delivery stack for V-Sekai game assets is content-addressed chunking via casync. `aria-storage` (Elixir) implements the fetch path: `mix aria_storage.fetch --index <url> --store <url>` downloads chunks from any static HTTP host (GitHub raw, Cloudflare R2, S3), reassembles the asset, and caches chunks at `~/.cache/casync/chunks`. The chunk store is plain static files — no custom server required. The live V-Sekai casync store is at `https://raw.githubusercontent.com/V-Sekai/casync-v-sekai-game/main/store`.
+The delivery stack for V-Sekai game assets is content-addressed chunking via casync. `aria-storage` (Elixir) implements the fetch path: `mix aria_storage.fetch --index <url> --store <url>` downloads chunks from any static HTTP host (GitHub raw, Cloudflare R2, S3), reassembles the asset, and caches chunks at `~/.cache/casync/chunks`. The chunk store is plain static files, with no custom server required. The live V-Sekai casync store is at `https://raw.githubusercontent.com/V-Sekai/casync-v-sekai-game/main/store`.
 
 The prior ADR referenced `multiplayer-fabric-desync` (a Go reimplementation that has since been removed) and assumed a custom chunk server. Both assumptions are now incorrect.
 
@@ -74,7 +74,7 @@ A directory containing only very small assets (total archive under 16 KB) produc
 
 ## Status
 
-Status: Superseded — casync via aria-storage adopted without benchmark. See [20260423-asset-delivery-decision.md](20260423-asset-delivery-decision.md).
+Status: Superseded; casync via aria-storage adopted without benchmark. See [20260423-asset-delivery-decision.md](20260423-asset-delivery-decision.md).
 
 ## Decision Makers
 

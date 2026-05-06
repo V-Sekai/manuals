@@ -10,7 +10,7 @@ The headless test matrix ([20260425-headless-test-matrix.md](20260425-headless-t
 requires a Godot binary. Building from scratch takes > 10 minutes. The
 project already uses a two-layer scons cache via `godot-cache-restore` and
 `godot-cache-save` composite actions (`.scons_cache/` in the workspace).
-Test jobs must never rebuild — they download a pre-built artifact.
+Test jobs must never rebuild; they download a pre-built artifact.
 
 The user wants tests to pass in CI before a branch can merge (branch
 protection rule), with local Docker as the gate before pushing.
@@ -55,7 +55,7 @@ restore-keys:  {cache-name}|{default_branch}   ← main-branch warm cache
 
 PRs restore the main-branch cache first so they inherit all previous
 incremental build objects, then overlay PR-specific objects. No changes
-needed here — the existing actions handle it.
+needed here; the existing actions handle it.
 
 ### Local Docker: mount pre-built binary
 
@@ -104,7 +104,7 @@ downloads the artifact, starts the zone server, and runs the shell-based
 matrix (`bash run_matrix.sh`). No Playwright, no browser engine.
 
 The branch protection rule applies to the `multiplayer-fabric` branch of
-`github.com/V-Sekai-fire/multiplayer-fabric-godot` — the assembled branch
+`github.com/V-Sekai-fire/multiplayer-fabric-godot`, the assembled branch
 that gitassembly pushes to:
 
 ```
@@ -145,11 +145,11 @@ cache miss rate for new files).
 
 ## The Road Not Taken
 
-Build inside the test container: rejected — scons and all build
+Build inside the test container: rejected; scons and all build
 dependencies would bloat the test image and add > 10 minutes to every
 test run regardless of source changes.
 
-Baking the binary into the test Docker image: rejected — the image would
+Baking the binary into the test Docker image: rejected; the image would
 need rebuilding on every source change, negating the cache benefit.
 
 ## Status

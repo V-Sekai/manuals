@@ -2,7 +2,7 @@
 
 Supersedes: [20260425-threejs-observer.md](20260425-threejs-observer.md)
 
-- Status: deferred — not building yet; focus is on VR ([20260425-godot-player.md](20260425-godot-player.md)) first
+- Status: deferred (not building yet; focus is on VR ([20260425-godot-player.md](20260425-godot-player.md)) first)
 - Deciders: V-Sekai, fire
 - Tags: V-Sekai, Godot, WebTransport, Observer, ZoneServer, Headless, CI, Deferred, 20260425-godot-observer
 
@@ -12,8 +12,8 @@ The zone server speaks WebTransport (picoquic, UDP 7443 locally / UDP 443
 externally). `FabricMultiplayerPeer` is the C++ peer that wraps picoquic.
 `fabric_client.gd` wraps `FabricMultiplayerPeer` and populates `_entity_nodes`
 as CH_INTEREST datagrams arrive. A headless observer that drives this stack
-proves end-to-end connectivity with the real protocol implementation — no
-browser, no TypeScript build, no service worker.
+proves end-to-end connectivity with the real protocol implementation, with no
+browser, no TypeScript build, and no service worker.
 
 ## The Problem Statement
 
@@ -80,8 +80,8 @@ assert `entities.length > 0` without parsing Godot stdout.
 
 ## The Downsides
 
-Native-only. The browser operator view — load bars, dot clustering in a
-`<canvas>` overlay — is not covered by this ADR. Those features remain in SOMEDAY.
+Native-only. The browser operator view (load bars, dot clustering in a
+`<canvas>` overlay) is not covered by this ADR. Those features remain in SOMEDAY.
 
 ## The Road Not Taken
 
@@ -91,7 +91,7 @@ from the C++ implementation. The Godot headless path removes that gap.
 
 ## Status
 
-Status: Deferred. Not building yet — focus is on the VR client ([20260425-godot-player.md](20260425-godot-player.md)) first. The design here remains valid and will be picked back up after the VR pass condition lands.
+Status: Deferred. Not building yet; focus is on the VR client ([20260425-godot-player.md](20260425-godot-player.md)) first. The design here remains valid and will be picked back up after the VR pass condition lands.
 
 ## Decision Makers
 

@@ -20,7 +20,7 @@ Add two relation types to the valid set in `taskweft/rebac.ex`:
 @valid_relations @valid_relations ++ ~w[CAN_ENTER CAN_INSTANCE]
 ```
 
-**CAN_ENTER** — checked at zone join time (when a peer connects to a zone server).
+**CAN_ENTER**: checked at zone join time (when a peer connects to a zone server).
 
 Default graph edges built per-request:
 
@@ -31,7 +31,7 @@ player     -[CAN_ENTER]-> zone   # derived: OWNS implies CAN_ENTER
 
 Public zones have an implicit `*` subject that grants `CAN_ENTER` to any player. Restricted zones omit this edge; only players with an explicit edge or a chain through `OWNS`/`IS_MEMBER_OF` may enter.
 
-**CAN_INSTANCE** — checked at `CMD_INSTANCE_ASSET` time by the authority zone before slot allocation.
+**CAN_INSTANCE**: checked at `CMD_INSTANCE_ASSET` time by the authority zone before slot allocation.
 
 ```
 uploader -[OWNS]-> asset
@@ -52,7 +52,7 @@ check_rel(graph_json, player_id, "CAN_INSTANCE", asset_id)
 
 ## The Benefits
 
-The two new relations map cleanly onto existing `check_rel/4` call convention. No new graph traversal semantics are needed — both are simple base relation checks. The default edges (public zone = open entry, uploader = can instance) preserve current behaviour while enabling restriction.
+The two new relations map cleanly onto existing `check_rel/4` call convention. No new graph traversal semantics are needed; both are simple base relation checks. The default edges (public zone = open entry, uploader = can instance) preserve current behaviour while enabling restriction.
 
 ## The Downsides
 

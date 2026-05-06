@@ -12,7 +12,7 @@ The Godot native desktop/PCVR client (`observer.tscn` with `OperatorRig` and
 `operator_camera.gd`) is already the reference implementation for the operator
 view. It runs the same `FabricMultiplayerPeer` C++ peer as the zone server.
 Stage 2 adds entity control: CH_PLAYER writes, OpenXR VR presence, and
-taskweft RECTGTN planning — all in GDScript and C++, with no browser runtime
+taskweft RECTGTN planning, all in GDScript and C++, with no browser runtime
 and no TypeScript.
 
 ## The Problem Statement
@@ -43,7 +43,7 @@ func send_player_input(entity_id: int, pos: Vector3, payload: PackedInt32Array) 
     _peer.set_transfer_mode(MultiplayerPeer.TRANSFER_MODE_UNRELIABLE)
 ```
 
-The same 100-byte layout as CH_INTEREST. Datagrams are UNRELIABLE — fire and
+The same 100-byte layout as CH_INTEREST. Datagrams are UNRELIABLE: fire and
 forget, no retransmit.
 
 ### Scene structure
@@ -90,7 +90,7 @@ func spawn_jellyfish(pos: Vector3) -> void:
 ### RECTGTN planning
 
 taskweft runs natively in Elixir on the zone backend. The GDScript client does
-not run the planner locally — it sends intent via CH_PLAYER and receives
+not run the planner locally; it sends intent via CH_PLAYER and receives
 authoritative state via CH_INTEREST. The taskweft Emscripten WASM path from the
 Three.js ADR is deferred.
 
