@@ -41,7 +41,7 @@ Here are some of the key strategies we propose:
 
 ## The Benefits
 
-Improving the Godot ecosystem will make it easier for developers to create and export assets, simplify workflows, and ultimately produce better games.
+Improving Godot's import tools will make it easier for developers to create and export assets, simplify workflows, and produce better games.
 
 ## The Downsides
 

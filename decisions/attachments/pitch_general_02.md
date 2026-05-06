@@ -32,4 +32,4 @@ V-Sekai's main objectives are:
 
 - Building a foundation for connection focused on user experience
 
-- Developing an ecosystem where people power imagination and potential.
+- Building tools where people can create and share.

@@ -43,7 +43,7 @@ We do not maintain a shadow tree for web server gltf-binary export, since it's o
 
 ## Is this a V-Sekai core responsibility, and should it be done by us?
 
-Yes, managing multiplayer synchronization and asset generation aligns with V-Sekai's focus on enhancing social VR functionalities within the Godot Engine ecosystem.
+Yes, managing multiplayer synchronization and asset generation aligns with V-Sekai's focus on enhancing social VR functionalities in Godot Engine.
 
 ## What is the status of the proposal?
 

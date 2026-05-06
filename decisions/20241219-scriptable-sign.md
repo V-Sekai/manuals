@@ -34,7 +34,7 @@ Currently, V-Sekai offers limited options for users to leave persistent messages
 - Increased Social Interaction: The customizable "like" system encourages interaction and feedback between users, fostering a sense of community.
 - Creative Expression and User-Generated Content: Empowers users to personalize the V-Sekai world and express themselves creatively by designing unique sign experiences.
 - Deeper Integration with V-Sekai: Uses existing Godot infrastructure for a more cohesive and extensible implementation.
-- Potential for Community-Driven Development: Users can share and collaborate on sign scripts, fostering a vibrant ecosystem of user-generated content.
+- Potential for Community-Driven Development: Users can share and collaborate on sign scripts, growing a base of user-generated sign scripts.
 
 ## The Downsides
 

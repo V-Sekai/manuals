@@ -1,6 +1,6 @@
 ## What is the context of the proposal?
 
-Prototyping is essential for validation and iterating within the V-Sekai development ecosystem. This proposal recommends a single-stack approach centered around the Godot Engine, augmented by Elixir and Phoenix for cloud functionalities.
+Prototyping is essential for validation and iteration in V-Sekai development. This proposal recommends a single-stack approach centered around the Godot Engine, augmented by Elixir and Phoenix for cloud functionalities.
 
 ## What is the problem being solved?
 
@@ -8,7 +8,7 @@ Even within a single-stack approach using technologies like Godot and Elixir, ov
 
 ## Design
 
-This proposal envisions a prototyping ecosystem where Godot is the foundation, integrated with Elixir and Phoenix:
+This proposal uses a single stack with Godot as the foundation, integrated with Elixir and Phoenix:
 
 ```bash
 mix igniter.new --with phx.new --install ash,ash_postgres,ash_phoenix,ash_authentication,ash_authentication_phoenix,ash_admin
@@ -125,11 +125,11 @@ Alternative approaches, such as a multi-stack approach or relying solely on Godo
 
 ## When might the proposed solution be used rarely or not at all?
 
-The single-stack approach may be less effective for projects requiring highly specialized technologies not supported within the Godot, Elixir, and Phoenix ecosystem, or when rapid integration with existing multi-stack systems is necessary.
+The single-stack approach may be less effective for projects requiring highly specialized technologies not covered by Godot, Elixir, or Phoenix, or when rapid integration with existing multi-stack systems is necessary.
 
 ## Is this a V-Sekai core responsibility, and can it be done by us?
 
-Implementing the single-stack approach aligns with V-Sekai's core responsibilities. The development team has the expertise in Godot, Elixir, and Phoenix necessary to execute and maintain this stack, ensuring integration and functionality within the ecosystem.
+Implementing the single-stack approach aligns with V-Sekai's core responsibilities. The development team has the expertise in Godot, Elixir, and Phoenix necessary to execute and maintain this stack, ensuring integration and functionality within this stack.
 
 ## What is the status of the proposal?
 

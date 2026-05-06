@@ -36,7 +36,7 @@ In addition to regular use, the [V-Sekai-faceless](https://github.com/V-Sekai/V-
 
 ## In Core and Done by Us?
 
-This setup is not part of the core V-Sekai offering but is an innovative idea proposed by members of the community. It demonstrates the potential for creativity and innovation within the V-Sekai ecosystem.
+This setup is not part of the core V-Sekai offering but is an innovative idea proposed by members of the community. It demonstrates the potential for creativity and innovation in V-Sekai.
 
 ## Further Reading
 

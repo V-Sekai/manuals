@@ -34,7 +34,7 @@ This PoC will serve to validate the core idea, engage the user community early i
 
 ## The Upside
 
-Implementing this bot will potentially increase community engagement by providing a fun and interactive character creation tool. It will also lay the foundation for future developments in VR and character design within the V-Sekai ecosystem.
+Implementing this bot will potentially increase community engagement by providing a fun and interactive character creation tool. It will also lay the foundation for future developments in VR and character design in V-Sekai.
 
 ## The Downside
 

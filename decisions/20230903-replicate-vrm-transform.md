@@ -48,7 +48,7 @@ We considered developing a web application, but it was deemed to have heavy engi
 
 ## The Infrequent Use Case
 
-While the proposed solution focuses on simplifying VRM to Blender conversion for the Godot Engine ecosystem, the same concept can be extended to other software applications or websites that can use a REST interface. This allows developers working with VRM files to convert them to Blender format seamlessly, regardless of the software they are using. The use of cloud GPUs and replicate.com's infrastructure still ensures fast and efficient conversion processes.
+While the proposed solution focuses on simplifying VRM to Blender conversion for Godot Engine, the same concept can be extended to other software applications or websites that can use a REST interface. This allows developers working with VRM files to convert them to Blender format seamlessly, regardless of the software they are using. The use of cloud GPUs and replicate.com's infrastructure still ensures fast and efficient conversion processes.
 
 ## In Core and Done by Us?
 

@@ -144,4 +144,4 @@ The I/O complexity refers to the amount of data that needs to be read from and w
 
 2. Input and Output Audio Data: The audio input data must be read, processed, and combined with the output of the FDN to generate the final reverberated audio signal. The I/O complexity for input and output audio data is generally low compared to the delay line buffer operations.
 
-In summary, implementing a medium-quality reverb effect using an FDN with 8 delay lines has a manageable computational and I/O complexity, making it suitable for real-time processing on most modern hardware.
+An FDN with 8 delay lines has manageable computational and I/O complexity, suitable for real-time processing on most modern hardware.
