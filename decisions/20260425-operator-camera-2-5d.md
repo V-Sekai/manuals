@@ -29,9 +29,9 @@ Camera orientation is expressed as a twist/swing pair, following the same
 decomposition used by `TransformUtil.swing_twist` in the humanoid project
 (`addons/humanoid/transform_util.gd`):
 
-- **Twist**: yaw around the world Y axis, in [0, 1].
+- Twist: yaw around the world Y axis, in [0, 1].
   0.0 = north, 0.25 = east, 0.5 = south, 0.75 = west.
-- **Swing**: elevation pitch, fixed at `SWING_ELEVATION = 0.153`
+- Swing: elevation pitch, fixed at `SWING_ELEVATION = 0.153`
   (153/1000 of a full turn ≈ 55°). In [0, 1] per axis; only the X-axis
   (pitch) is non-zero. Swing does not change at runtime.
 

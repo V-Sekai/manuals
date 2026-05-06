@@ -117,8 +117,8 @@ Status: Obsolete — Harvester HCI/Nutanix evaluation obsolete; current dev infr
 
 ### Infrastructure Jargon
 
-1. **Hypervisor**: Software that creates and manages virtual machines, allowing multiple operating systems to run on a single physical machine.
-2. **HCI (Hyper-Converged Infrastructure)**: Integrates compute, storage, and networking into a single, software-defined platform.
-3. **Cloud-Init**: Multi-distribution package that handles early initialization of cloud instances, supporting configuration of hosts immediately after instantiation.
-4. **Bare Metal**: Running software directly on physical hardware without virtualization layer.
+1. Hypervisor: Software that creates and manages virtual machines, allowing multiple operating systems to run on a single physical machine.
+2. HCI (Hyper-Converged Infrastructure): Integrates compute, storage, and networking into a single, software-defined platform.
+3. Cloud-Init: Multi-distribution package that handles early initialization of cloud instances, supporting configuration of hosts immediately after instantiation.
+4. Bare Metal: Running software directly on physical hardware without virtualization layer.
 

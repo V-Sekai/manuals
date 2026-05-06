@@ -77,7 +77,7 @@ Status: Rejected <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ### Configuration Terminology
 
-1. **Feature Flag**: A mechanism to enable or disable functionality without code changes
-2. **Configuration Drift**: When runtime configuration differs from deployed code expectations
-3. **Twelve-Factor App**: Application development methodology emphasizing configuration through environment variables
-4. **Hot Reload**: Changing application behavior without restarting the process
+1. Feature Flag: A mechanism to enable or disable functionality without code changes
+2. Configuration Drift: When runtime configuration differs from deployed code expectations
+3. Twelve-Factor App: Application development methodology emphasizing configuration through environment variables
+4. Hot Reload: Changing application behavior without restarting the process
