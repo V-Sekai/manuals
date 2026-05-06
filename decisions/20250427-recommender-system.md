@@ -37,8 +37,8 @@ Implement Elixir/Phoenix using `FLAME` to serve the `librecommender` model. Leve
 
 ## **Benefits**
 
-- Leverages Elixir concurrency via Oban/Membrane and Phoenix.
-- Utilizes Python ML (`librecommender`) via optimized serving with `FLAME`.
+- Uses Elixir concurrency via Oban/Membrane and Phoenix.
+- Uses Python ML (`librecommender`) via optimized serving with `FLAME`.
 - Native Ecto/CRDB metadata querying.
 - Simplified deployment and management of ML models compared to manual Python process management.
 

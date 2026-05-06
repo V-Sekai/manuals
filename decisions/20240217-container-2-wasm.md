@@ -6,7 +6,7 @@ V-Sekai is a project focused on social VR functionality for the Godot Engine. It
 
 ## Problem Statement
 
-Integrating complex backend services directly within a browser or lightweight client environments can be challenging. This integration is crucial for enhancing avatar customization and AI-driven facial expressions by leveraging containerized services.
+Integrating complex backend services directly within a browser or lightweight client environments can be challenging. This integration is crucial for enhancing avatar customization and AI-driven facial expressions by using containerized services.
 
 ## Proposed Solution
 
@@ -20,7 +20,7 @@ We propose to use `container2wasm`, a tool that converts container images to Web
 
 - Enables running of containerized services directly in the browser or lightweight client environments.
 - Enhances avatar customization and AI-driven facial expressions in V-Sekai.
-- Leverages the power of WASM for efficient, safe, and portable execution.
+- Uses the power of WASM for efficient, safe, and portable execution.
 
 ## Downsides
 

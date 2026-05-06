@@ -68,7 +68,7 @@ A directory containing only very small assets (total archive under 16 KB) produc
 
 ## In Core and Done by Us
 
-- Benchmark harness: `aria-storage/bench/` (to be written as a Mix task)
+- Benchmark use: `aria-storage/bench/` (to be written as a Mix task)
 - Corpus: V-Sekai world export, committed to `manuals/decisions/attachments/`
 - Results: `manuals/decisions/attachments/asset-delivery-benchmark-results.csv`
 

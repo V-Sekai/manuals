@@ -10,7 +10,7 @@ The current CI/CD setup at V-Sekai lacks a unified approach to deploying and man
 
 ## Proposed Solution
 
-We propose to enhance our CI/CD pipeline by integrating Helm to streamline the installation and management of GitLab Runners in our Kubernetes clusters. Additionally, we will configure the runners to use S3 (Digital Ocean Spaces) as a cache, improving build times and reducing network traffic. Here's how we plan to implement this solution:
+We propose to enhance our CI/CD pipeline by integrating Helm to simplify the installation and management of GitLab Runners in our Kubernetes clusters. Additionally, we will configure the runners to use S3 (Digital Ocean Spaces) as a cache, improving build times and reducing network traffic. Here's how we plan to implement this solution:
 
 ### Step 1: Install Helm
 
@@ -82,7 +82,7 @@ Ensure to replace `https://gitlab.example.com/` with your GitLab instance URL an
 
 ## Benefits
 
-- Scalable and Efficient CI/CD: Leveraging Kubernetes for CI/CD runners allows for dynamic scaling based on the workload, improving resource efficiency.
+- Scalable and Efficient CI/CD: Using Kubernetes for CI/CD runners allows for dynamic scaling based on the workload, improving resource efficiency.
 - Consistency Across Environments: Using Helm charts for deployment ensures consistent environments for all CI/CD pipelines, reducing "it works on my machine" issues.
 - Improved Build Times and Reduced Network Traffic: By using S3 as a cache, build times can be significantly reduced and network traffic minimized.
 

@@ -19,7 +19,7 @@ The main challenge lies in addressing the consistency issue that existing works 
 The strategy for implementing DreamCraft3D involves several steps:
 
 1. Use DreamCraft3D to generate high-fidelity and coherent 3D objects from 2D concept art.
-2. Utilize existing projects like [Mixamo](https://www.mixamo.com/) or [AccuRig](https://actorcore.reallusion.com/auto-rig) for rigging models.
+2. Use existing projects like [Mixamo](https://www.mixamo.com/) or [AccuRig](https://actorcore.reallusion.com/auto-rig) for rigging models.
 3. If the topology isn't suitable for animation, employ tools such as [Quadwild BIMDF](https://github.com/cgg-bern/quadwild-bimdf) or [Exoside's Quad Remesher](https://exoside.com/quadremesher/) to enhance it.
 4. Correct bad rigs using delta mush with the help of the [Corrective Smooth Baker](https://github.com/V-Sekai/V-Sekai.blender-game-tools/tree/main/addons/corrective_smooth_baker) addon for Blender.
 5. Develop software to perform clothing simulation differentially, referring to [V-Sekai's Cloth Dynamics](https://github.com/V-Sekai/V-Sekai.cloth-dynamics) as a guide.

@@ -2,7 +2,7 @@
 
 ## The Context
 
-V-Sekai aims to provide a versatile platform for creating and experiencing virtual worlds. Character creation is a crucial aspect of this process, and concept art plays a vital role in visualizing and refining character designs before 3D modeling. This proposal focuses on integrating Easy Diffusion, Windows 11 tools, and Shoebox to streamline this workflow.
+V-Sekai aims to provide a versatile platform for creating and experiencing virtual worlds. Character creation is a crucial aspect of this process, and concept art plays a vital role in visualizing and refining character designs before 3D modeling. This proposal focuses on integrating Easy Diffusion, Windows 11 tools, and Shoebox to simplify this workflow.
 
 ## The Problem Statement
 
@@ -45,14 +45,14 @@ Easy Diffusion provides a user-friendly interface for Stable Diffusion. We will 
   - Flexibility for Later: It allows for more freedom when creating the actual face in the 3D modeling stage, providing a blank canvas for the artist.
   - Avoiding Uncanny Valley: Sometimes AI-generated faces can fall into the "uncanny valley," appearing slightly off-putting. Erasing the face avoids this issue.
 
-- Refinement (Optional): Utilize other tools in Krita, like the selection tools and eraser, for further refinement if needed.
+- Refinement (Optional): Use other tools in Krita, like the selection tools and eraser, for further refinement if needed.
 
 ### 4. Sprite Creation with Shoebox
 
 Shoebox (<https://renderhjs.net/shoebox/>) is a free online tool for creating sprite sheets.
 
 - Upload the alpha'd image from Krita to Shoebox.
-- Utilize Shoebox's features to cut the image into individual sprites.
+- Use Shoebox's features to cut the image into individual sprites.
 - Keep only the sprites that are in different views but in the same consistent 3D shape.
 
 ### 5. TRELLIS Setup and Execution (Optional)
@@ -61,7 +61,7 @@ TRELLIS can be used for generating 3D models from the concept art or sprites.
 
 - Install Docker Desktop.
 - Install WSL2 with a compatible Linux distribution (e.g., Ubuntu).
-- Configure Docker Desktop to utilize the WSL2 backend.
+- Configure Docker Desktop to use the WSL2 backend.
 - Ensure GPU access is enabled within WSL2.
 - Execute TRELLIS within WSL2 using the following command in Powershell:
 
@@ -80,8 +80,8 @@ The process emphasizes iterative refinement of the prompt based on results from 
 3. Generate and Evaluate: Produce images and assess their suitability.
 4. Remove Background: Use Krita to remove the background.
 5. Erase Face: Use the Grounded-SAM model to identify and remove facial features (eyebrows, nose, mouth) and paint the area skin color.
-6. Create Sprites: Utilize Shoebox to generate sprites from the alpha'd image.
-7. (Optional) 3D Conversion: Utilize TRELLIS to generate 3D models.
+6. Create Sprites: Use Shoebox to generate sprites from the alpha'd image.
+7. (Optional) 3D Conversion: Use TRELLIS to generate 3D models.
 8. Iterate and Refine: Adjust the prompt based on the evaluation.
 
 ## Checklist for A-Pose Avatar Creation from Concept Art
@@ -125,12 +125,12 @@ The process emphasizes iterative refinement of the prompt based on results from 
 
 ## The Benefits
 
-- Simplified Workflow: Streamlines concept art and sprite creation using accessible tools.
+- Simplified Workflow: Simplifies concept art and sprite creation using accessible tools.
 - Reduced Manual Effort: Minimizes image editing and sprite creation time.
 - Faster Iteration: Accelerates character design exploration.
 - Standardized Output: Maintains consistency in character presentation.
 - Accessibility: Empowers users with varying artistic skills to contribute.
-- Cost-effective: Leverages free tools readily available on Windows 11.
+- Cost-effective: Uses free tools readily available on Windows 11.
 
 ## The Downsides
 
@@ -151,7 +151,7 @@ For highly specific or complex concept art and sprites, manual creation or a com
 
 ## Why is it in Core and done by us?
 
-This aligns with V-Sekai's goal of democratizing virtual world creation by streamlining character creation and empowering users with accessible tools.
+This aligns with V-Sekai's goal of democratizing virtual world creation by simplifying character creation and empowering users with accessible tools.
 
 ## Status
 

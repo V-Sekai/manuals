@@ -98,12 +98,12 @@ Pass: creator uploads, visitor downloads, unauthorized visitor is rejected — a
 
 ### Phase 4 — Load validation (retire: does the market hold under event-scale load?)
 
-#### 17. 100-visitor headless load harness
+#### 17. 100-visitor headless load use
 Write a headless driver spawning 100 `FabricPeer` connections to a single booth zone, each subscribing to `CH_INTEREST`. Record timestamp of every broadcast packet received.
 Pass: 100 visitors connected and logging without VR hardware.
 
 #### 18. CH_INTEREST fan-out latency at 100 visitors
-Run the harness. Record p50/p99 fan-out latency for `local_broadcast_raw` at 100 simultaneous subscribers. Validates Hilbert AOI band and one-copy-per-link relay before scaling to multiple booths.
+Run the use. Record p50/p99 fan-out latency for `local_broadcast_raw` at 100 simultaneous subscribers. Validates Hilbert AOI band and one-copy-per-link relay before scaling to multiple booths.
 Pass: per-booth fan-out is bounded and measurable.
 
 #### 19. 5-machine fabric provisioning (32 booth zones)
@@ -169,7 +169,7 @@ A solo creator with one booth zone and no visitors still exercises Phase 1 (oper
 - Phase 1: `observer.tscn`, `zone_curtain.gd`, `SpectatorRig` — observer UI fixes
 - Phase 2: `main.tscn`, `fabric_client.gd`, `trident_hand.gd` — VR wiring
 - Phase 3: `multiplayer-fabric-zone-backend` `/chunks/:hash`, `jellyfish_asset_loader.gd`
-- Phase 4: headless load harness, zone provisioning scripts
+- Phase 4: headless load use, zone provisioning scripts
 - Phase 5: `PredictiveBVH/Spatial/HilbertRoundtrip.lean`, `lbvhAux` instrumentation
 
 ## Status

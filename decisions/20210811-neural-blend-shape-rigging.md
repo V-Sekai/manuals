@@ -73,7 +73,7 @@ No finger support yet.
 
 ### Is there a reason why this should be core and done by us?
 
-Mixamo is a black box and V-Sekai would be more robust to have an alternative.
+Mixamo is a black box and V-Sekai would be more reliable to have an alternative.
 
 ### Tags
 

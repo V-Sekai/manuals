@@ -6,7 +6,7 @@ The Godot Editor now integrates a 2D editor on a screen for VR, which cannot be 
 
 ## The Problem Statement
 
-We want to create a suite of tools for V-Sekai game development that leverages the capabilities of current hardware without requiring full VR integration.
+We want to create a suite of tools for V-Sekai game development that uses the capabilities of current hardware without requiring full VR integration.
 
 ## Design
 

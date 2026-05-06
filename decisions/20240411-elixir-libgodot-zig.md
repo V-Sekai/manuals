@@ -10,7 +10,7 @@ We can bind GDExtension to a C-like language for libgodot to implement a distrib
 
 ## Design
 
-We propose to use godot-zig to bind GDExtension to Elixir. This will allow us to leverage the power of Elixir's concurrency and fault-tolerance features, which are ideal for creating distributed simulations.
+We propose to use godot-zig to bind GDExtension to Elixir. This will allow us to use the power of Elixir's concurrency and fault-tolerance features, which are ideal for creating distributed simulations.
 
 ## The Benefits
 

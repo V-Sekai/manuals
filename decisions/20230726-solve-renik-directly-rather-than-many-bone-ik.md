@@ -8,7 +8,7 @@
 
 ## Context and Problem Statement
 
-We want a robust character controller through V-Sekai renik, but we're working on an abstract many bone ik and there wasn't visible progress. The current approach is not yielding the desired results and is proving to be inefficient.
+We want a reliable character controller through V-Sekai renik, but we're working on an abstract many bone ik and there wasn't visible progress. The current approach is not yielding the desired results and is proving to be inefficient.
 
 ## Proposed Solution
 

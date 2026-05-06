@@ -8,11 +8,11 @@
 
 ### Context and Problem Statement
 
-V-Sekai is not robust.
+V-Sekai is not reliable.
 
 ### Describe the proposed option and how it helps to overcome the problem or limitation
 
-I want to make V-Sekai more robust using best practices like unit tests.
+I want to make V-Sekai more reliable using best practices like unit tests.
 
 ### Design
 
@@ -22,7 +22,7 @@ We will also need to use pending head git workflow techniques.
 
 ### Positive Consequences
 
-We will be able to use unit tests for gdscript, not just for C++ to make v-sekai more robust.
+We will be able to use unit tests for gdscript, not just for C++ to make v-sekai more reliable.
 
 ### Negative Consequences
 

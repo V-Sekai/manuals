@@ -12,7 +12,7 @@ V-Sekai aims to provide a high-performance platform for virtual worlds and avata
 
 ## Proposed Solution
 
-V-Sekai utilizes WebAssembly (Wasm) to enhance performance, offering an alternative to GDScript.
+V-Sekai uses WebAssembly (Wasm) to enhance performance, offering an alternative to GDScript.
 
 ### Ownership
 
@@ -44,7 +44,7 @@ Here's a concise explanation of the implementation:
 1. User uploads a Wasm module: Custom Wasm modules with desired functionality are uploaded to V-Sekai.
 2. Attach Wasm module to a node: The Wasm module is attached to a node as a script, providing advanced functionality for the node.
 3. Implement behavior within the Variant dictionary: Node behavior is defined within script variable, enabling Wasm modules to provide both property data and behavior.
-4. Utilize Godot's set_script property: Using Godot's `set_script` property, Wasm modules are attached to nodes and objects, simplifying dependency handling.
+4. Use Godot's set_script property: Using Godot's `set_script` property, Wasm modules are attached to nodes and objects, simplifying dependency handling.
 5. Properties after the set script: Adding properties directly onto the node after the script = property is set
 
 This approach ensures graceful handling of missing resources while offering advanced functionality through user-uploaded Wasm modules.

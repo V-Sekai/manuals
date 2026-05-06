@@ -46,7 +46,7 @@ By gradually adding these trackers to the initial setup, the overall tracking ac
 
 ### Option graveyard
 
-Camera-based tracking: Utilizing external cameras to track body movements without the need for wearable trackers. While this approach can be cost-effective, it may not provide the same level of accuracy and precision as wearable trackers, particularly for fast and complex movements in soccer and dancing. Additionally, camera-based tracking can be sensitive to lighting conditions and may require a specific setup to function optimally.
+Camera-based tracking: Using external cameras to track body movements without the need for wearable trackers. While this approach can be cost-effective, it may not provide the same level of accuracy and precision as wearable trackers, particularly for fast and complex movements in soccer and dancing. Additionally, camera-based tracking can be sensitive to lighting conditions and may require a specific setup to function optimally.
 
 Camera-based tracking might be a viable solution if budget constraints are severe, but it is essential to consider the potential trade-offs in terms of tracking accuracy and reliability compared to wearable trackers.
 

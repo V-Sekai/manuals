@@ -12,7 +12,7 @@ As part of the V-Sekai project we're working on virtual worlds and avatars usabl
 
 ## Context and Problem Statement
 
-There is no robust, and production quality inverse kinematic solver for full body tracking virtual reality tracking and other inverse kinematic uses like foot planting and hand grabbing.
+There is no reliable, and production quality inverse kinematic solver for full body tracking virtual reality tracking and other inverse kinematic uses like foot planting and hand grabbing.
 
 In addition to the limitations of the current IK system due to its implementation as a SkeletonIK3D node, the IK system can be improved by reimplementing it as an animation node. This can address these limitations and improve the overall functionality.
 
@@ -33,7 +33,7 @@ After implementing the IK solver, we will update the AnimationTree to use the ne
 
 As we develop this new IK system, it is crucial to address potential issues such as filter usability, duplicate subtrees versus multiple outputs, and designing a reasonable full body setup. This includes handling jumping and foot IK interactions with the ground.
 
-Finally, we will test and optimize the new IK system to ensure correct functionality and optimal performance. This will result in a more robust and efficient IK solution for our animation needs.
+Finally, we will test and optimize the new IK system to ensure correct functionality and optimal performance. This will result in a more reliable and efficient IK solution for our animation needs.
 
 ## Positive Consequences
 

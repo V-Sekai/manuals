@@ -12,19 +12,19 @@ The challenge lies in accurately estimating the parameters of a MakeHuman model 
 
 ### Proposal Overview
 
-We propose a system that utilizes depth map comparisons between rendered images from the Godot Engine and depth maps generated from anime images using Apple's ML-Depth-Pro. This approach aims to optimize the MakeHuman parameters to recreate accurate 3D models of anime characters.
+We propose a system that uses depth map comparisons between rendered images from the Godot Engine and depth maps generated from anime images using Apple's ML-Depth-Pro. This approach aims to optimize the MakeHuman parameters to recreate accurate 3D models of anime characters.
 
 #### Key Objectives
 
 - Depth Map Generation: Generate depth maps from both anime images and Godot-rendered characters.
 - Optimization: Employ machine learning techniques to minimize the differences between these depth maps, facilitating accurate parameter recovery.
-- Cost Efficiency: Leverage open-source tools to maintain budget-friendliness.
+- Cost Efficiency: Use open-source tools to maintain budget-friendliness.
 
 #### Scope
 
 - Input Data: Anime images with manually labeled MakeHuman parameters for initial calibration.
 - Depth Comparison: Analyze the discrepancies between the depth maps produced by Godot and those derived from anime images.
-- Optimization Process: Utilize a search algorithm (e.g., genetic algorithm or bayesian optimization) to iteratively adjust and determine optimal MakeHuman parameters.
+- Optimization Process: Use a search algorithm (e.g., genetic algorithm or bayesian optimization) to iteratively adjust and determine optimal MakeHuman parameters.
 
 #### Work Breakdown
 
@@ -51,7 +51,7 @@ We propose a system that utilizes depth map comparisons between rendered images 
 
 ## The Benefits
 
-This streamlined, budget-conscious methodology promises significant enhancements in personalization and realism in digital character modeling, making it ideal for applications in gaming and virtual reality where character authenticity is crucial.
+This simplified, budget-conscious methodology promises significant enhancements in personalization and realism in digital character modeling, making it ideal for applications in gaming and virtual reality where character authenticity is crucial.
 
 ## The Downsides
 

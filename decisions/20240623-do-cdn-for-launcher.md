@@ -6,11 +6,11 @@ V-Sekai is an open-source project that brings social VR/VRSNS/metaverse componen
 
 ## Problem Statement
 
-We need a more streamlined process to provide a launcher to players.
+We need a more simplified process to provide a launcher to players.
 
 ## Proposal
 
-Leverage GitHub Actions to build the launcher and then upload it to Digital Ocean Spaces using the casync protocol (with the Desync golang library). This approach will replace the current reliance on gocd.
+Use GitHub Actions to build the launcher and then upload it to Digital Ocean Spaces using the casync protocol (with the Desync golang library). This approach will replace the current reliance on gocd.
 
 ## Benefits
 

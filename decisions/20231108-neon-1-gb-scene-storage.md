@@ -12,7 +12,7 @@ V-Sekai operates an open-source platform and is in need of a scalable, high-perf
 
 ## The Challenge
 
-How can V-Sekai effectively use Neon's bottomless storage, which leverages PostgreSQL's capabilities and an S3-compatible object store, for edge-hosted CDN data management?
+How can V-Sekai effectively use Neon's bottomless storage, which uses PostgreSQL's capabilities and an S3-compatible object store, for edge-hosted CDN data management?
 
 ## The Strategy
 

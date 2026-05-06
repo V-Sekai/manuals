@@ -12,13 +12,13 @@ The objective is to fetch and compile a list of open pull requests from the Godo
 
 ## Problem
 
-The challenge lies in utilizing the GitHub GraphQL API to retrieve data about open pull requests in a specific milestone of the Godot Engine repository. This data should then be written to a text file for subsequent review.
+The challenge lies in using the GitHub GraphQL API to retrieve data about open pull requests in a specific milestone of the Godot Engine repository. This data should then be written to a text file for subsequent review.
 
 ## Solution
 
 Here's the proposed solution:
 
-1. Utilize the `HTTPoison` library to send a POST request to the GitHub GraphQL API.
+1. Use the `HTTPoison` library to send a POST request to the GitHub GraphQL API.
 2. Parse the response with the `Jason` library.
 3. Write the relevant data to a text file using Elixir's built-in `File` module.
 

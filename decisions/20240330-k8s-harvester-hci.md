@@ -31,7 +31,7 @@ This command will fetch the `rancher-vcluster.yaml` file from the `experimental-
 2. Configuring the Addon: Configure the addon through the Harvester UI under Advanced > Addons. Edit the config for the `rancher-vcluster` addon, specify a hostname that points to the Harvester VIP and set a bootstrap password for Rancher.
 3. Accessing Rancher: Access Rancher using the DNS hostname provided during configuration after installation.
 
-This approach integrates Rancher into Harvester, leveraging Harvester's infrastructure to manage both VMs and containers centrally.
+This approach integrates Rancher into Harvester, using Harvester's infrastructure to manage both VMs and containers centrally.
 
 ### To forcefully remove a Kubernetes namespace that is stuck in the `Terminating` state, you can follow these steps
 

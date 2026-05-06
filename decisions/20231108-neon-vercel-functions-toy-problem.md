@@ -34,7 +34,7 @@ How can V-Sekai develop a Discord bot that facilitates community polls using mes
 
 ## The Road Not Taken
 
-- Using traditional polling methods without leveraging Discord's interactive capabilities.
+- Using traditional polling methods without using Discord's interactive capabilities.
 - Reliance on external polling services that may not integrate seamlessly with Discord or offer real-time updates.
 
 ## The Infrequent Use Case

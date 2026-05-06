@@ -12,7 +12,7 @@ In the realm of game development, providing a seamless user experience across va
 
 ## The Challenge
 
-The primary challenge we face is the establishment of a robust testing framework that ensures cross-platform compatibility. Our focus is particularly on ensuring compatibility with the VR compatible desktop mode on Windows 11.
+The primary challenge we face is the establishment of a reliable testing framework that ensures cross-platform compatibility. Our focus is particularly on ensuring compatibility with the VR compatible desktop mode on Windows 11.
 
 ## The Strategy
 

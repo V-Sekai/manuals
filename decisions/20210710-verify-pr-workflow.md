@@ -26,7 +26,7 @@ This is a workflow.
 
 ### Positive Consequences
 
-More robust techniques for doing prs.
+More reliable techniques for doing prs.
 
 ### Negative Consequences
 

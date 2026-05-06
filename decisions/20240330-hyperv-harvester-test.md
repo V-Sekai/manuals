@@ -10,7 +10,7 @@ Our existing testing environment does not cater to Windows-based applications. W
 
 ## Design
 
-We can utilize Hyper-V to establish a Harvester HCI virtual machine (VM) on our current Windows desktop. Here's a basic outline of the steps involved:
+We can use Hyper-V to establish a Harvester HCI virtual machine (VM) on our current Windows desktop. Here's a basic outline of the steps involved:
 
 1. Install Hyper-V on the Windows desktop.
 2. Create a new VM using Hyper-V.
@@ -21,7 +21,7 @@ We can utilize Hyper-V to establish a Harvester HCI virtual machine (VM) on our 
 ## The Benefits
 
 - Enables us to test Windows-based applications without the need for a separate Windows server.
-- Conserves resources by leveraging our existing infrastructure.
+- Conserves resources by using our existing infrastructure.
 - Enhances our testing coverage and improves the quality of our software.
 
 ## The Downsides

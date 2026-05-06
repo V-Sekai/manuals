@@ -20,7 +20,7 @@ The challenge is to effectively use these samples to fine-tune the model for eac
 
 2. Model Selection: Next, we select the latest models that we want to fine-tune. These could be models from Hugging Face's model hub or any other source.
 
-3. Fine-tuning with Axolotl: We will use the Axolotl library for fine-tuning. We can batch-mask our inputs to efficiently utilize our computational resources. This process will be repeated for each task.
+3. Fine-tuning with Axolotl: We will use the Axolotl library for fine-tuning. We can batch-mask our inputs to efficiently use our computational resources. This process will be repeated for each task.
 
 4. Evaluation: After fine-tuning, we evaluate the model on our validation set for each task to see how well it performs.
 

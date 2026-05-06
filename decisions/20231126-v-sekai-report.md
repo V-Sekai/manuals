@@ -10,7 +10,7 @@
 
 V-Sekai, pronounced vee-say-kai, is a collective of developers passionate about creating open-source VR technology. We aim to contribute to social VR and provide alternatives to proprietary engines like Unity and Unreal.
 
-Despite challenges, we've grown into a global community committed to advancing open standards and open-source software for virtual worlds.
+The project has grown into a global community committed to advancing open standards and open-source software for virtual worlds.
 
 Our strategy focuses on providing comprehensive documentation and support to help users understand the platform better. We're also committed to investigating and resolving issues like the reported Linux build problem.
 
@@ -56,7 +56,7 @@ An alternative approach could have been to ignore the user's query and continue 
 
 ## Infrequent Use Case
 
-While most users may not encounter the same issue as PLYSHKA🐧, addressing even infrequent use cases is essential to ensure a robust and user-friendly platform.
+While most users may not encounter the same issue as PLYSHKA🐧, addressing even infrequent use cases is essential to ensure a reliable and user-friendly platform.
 
 ## Responsibility
 

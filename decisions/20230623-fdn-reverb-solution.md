@@ -115,18 +115,18 @@ Yes, as it directly impacts the audio experience within V-Sekai environments, it
 
 ## Computational and I/O Complexity: An Example
 
-Let's consider an example of implementing a Feedback Delay Network (FDN) for audio reverb simulation with 8 delay lines. We will analyze the computational and I/O complexity involved in this specific case.
+The following example uses a Feedback Delay Network (FDN) with 8 delay lines and analyzes its computational and I/O complexity.
 
 ### FDN reverb claims may need to be verified
 
-1. For a medium-quality reverb effect, let's consider using 8 delay lines in the FDN.
+1. A medium-quality reverb effect uses 8 delay lines in the FDN.
 2. For an 8x8 matrix, there are 64 multiplications and 56 additions required for each sample.
 3. Overall, the computational complexity for a medium-quality reverb effect with 8 delay lines is manageable for most modern CPUs and can be efficiently processed in real-time.
-4. In summary, implementing a medium-quality reverb effect using an FDN with 8 delay lines has a manageable computational and I/O complexity, making it suitable for real-time processing on most modern hardware.
+4. An FDN with 8 delay lines has manageable computational and I/O complexity, suitable for real-time processing on most modern hardware.
 
 ### Computational Complexity
 
-For a medium-quality reverb effect, let's consider using 8 delay lines in the FDN. The main components contributing to the computational complexity are:
+A medium-quality reverb effect with 8 FDN delay lines has these main cost components:
 
 1. Delay Lines: Each delay line requires memory for storing the delayed samples and computations for updating the delay buffer. For 8 delay lines, the complexity scales linearly with the number of delay lines.
 

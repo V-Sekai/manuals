@@ -2,13 +2,13 @@
 
 ## Context
 
-This proposal involves the development of a speech-to-FACS (Facial Action Coding System) mapping pipeline to capture real-world 3D facial movements synchronized with speech. Metrics include the accuracy of lip-sync, the diversity of speakers and phrases, and the scalability of the system. A robust speech-to-FACS mapping system can enhance virtual avatars, animation, and human-computer interaction. This proposal addresses the growing need for realistic virtual characters in industries like entertainment, education, and healthcare, making it timely and strategically relevant.
+This proposal involves the development of a speech-to-FACS (Facial Action Coding System) mapping pipeline to capture real-world 3D facial movements synchronized with speech. Metrics include the accuracy of lip-sync, the diversity of speakers and phrases, and the scalability of the system. A reliable speech-to-FACS mapping system can enhance virtual avatars, animation, and human-computer interaction. This proposal addresses the growing need for realistic virtual characters in industries like entertainment, education, and healthcare, making it timely and strategically relevant.
 
 ## Problem Statement
 
 The primary issues causing operational challenges are:
 
-1. Lack of a robust speech-to-FACS system for capturing 3D facial movements synchronized with speech.
+1. Lack of a reliable speech-to-FACS system for capturing 3D facial movements synchronized with speech.
 2. Difficulty in collecting diverse, high-quality training/validation data.
 3. Risk of overfitting to lab data and insufficient real-world noise augmentation.
 
@@ -17,7 +17,7 @@ The primary issues causing operational challenges are:
 A speech-to-FACS pipeline that maps speech to 3D facial movements using multimodal alignment and reinforcement learning. Key technical steps include:
 
 - Converting FaceMotion3D blend shapes renderings with markers at vertex positions to Keypoint COCO JSON format.
-- Leveraging "Accent Tag" phonetic-rich sentences for training.
+- Using "Accent Tag" phonetic-rich sentences for training.
 - Aligning audio to FACS keypoints via a multimodal large language model.
 - Applying reinforcement learning to generate speech matching COCO Full Body Face data from masked audio.
 

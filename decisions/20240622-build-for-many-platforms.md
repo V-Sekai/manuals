@@ -2,7 +2,7 @@
 
 ## The Context
 
-V-Sekai is a versatile tool that we utilize across various domains. Its adaptability and functionality make it an integral part of our operations.
+V-Sekai is a versatile tool that we use across various domains. Its adaptability and functionality make it an integral part of our operations.
 
 ## The Problem Statement
 
@@ -10,14 +10,14 @@ The challenge at hand is to build the V-Sekai editor for multiple platforms, the
 
 ## Design
 
-Our approach to this problem involves leveraging existing resources and tools:
+Our approach to this problem involves using existing resources and tools:
 
-1. Utilize our existing gocd pipeline.
+1. Use our existing gocd pipeline.
 2. Employ osxcross for Mac builds.
 3. Use mingw for Windows builds.
 4. Apply clang for Linux builds.
 5. Implement emscripten for web assembly.
-6. ~~Utilize the android sdk on linux for Android builds.~~
+6. ~~Use the android sdk on linux for Android builds.~~
 
 In addition to these steps, we will also implement automated testing to ensure consistency across all systems. This will involve creating test scripts that can run on each platform, checking for any discrepancies or issues.
 

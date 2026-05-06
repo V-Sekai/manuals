@@ -33,7 +33,7 @@ Else:
 ## The Downsides
 
 - Potential increase in build times
-- Requires investment in robust testing infrastructure
+- Requires investment in reliable testing infrastructure
 
 ## The Road Not Taken
 

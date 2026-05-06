@@ -67,7 +67,7 @@ public class EventExample : UdonSharpBehaviour
 
 - Improved Readability: Clear guidelines enhance the readability of networking code.
 - Consistency: Ensures uniformity in how networking tasks are handled across different projects.
-- Efficiency: Streamlined processes make it easier for developers to implement networking features quickly.
+- Efficiency: Simplified processes make it easier for developers to implement networking features quickly.
 
 ## The Downsides
 

@@ -2,7 +2,7 @@
 
 ## What is the context of the proposal?
 
-The Valve Index is still a reliable and robust head-mounted display for virtual reality. We should continue to use it.
+The Valve Index is still a reliable and reliable head-mounted display for virtual reality. We should continue to use it.
 
 ## What is the problem being solved?
 

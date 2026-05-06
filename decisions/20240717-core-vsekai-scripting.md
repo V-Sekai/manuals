@@ -16,7 +16,7 @@ It might be hard, but encapsulating complex types is a bridge we're going to hav
 
 MMMaellon originally thought the reason why we want to move to Wasm is because the team doesn't want to edit the C++ code. Perfectly matching the old API sounds really, really hard. But if we're allowed to take shortcuts and figure out workarounds, MMMaellon thinks making a Wasm layer that allows us to do enough is doable. As long as the bar isn't that it has to be an exact perfect replica of the old API.
 
-We propose separating the core scripts into WebAssembly (Wasm) modules. This approach allows us to use the stock Godot Engine while leveraging the performance benefits of Wasm.
+We propose separating the core scripts into WebAssembly (Wasm) modules. This approach allows us to use the stock Godot Engine while using the performance benefits of Wasm.
 
 The core scripts will be loaded as Wasm modules, and a single GDExtension will handle the integration between Godot and the Wasm runtime.
 

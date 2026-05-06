@@ -12,7 +12,7 @@ V-Sekai maintains an open-source CDN platform and seeks database optimizations f
 
 ## The Challenge
 
-How can V-Sekai enhance binary data storage and access by leveraging PostgreSQL's `bytea` type with EXTERNAL storage, independent of Neon's bottomless feature?
+How can V-Sekai enhance binary data storage and access by using PostgreSQL's `bytea` type with EXTERNAL storage, independent of Neon's bottomless feature?
 
 ## The Strategy
 

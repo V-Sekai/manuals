@@ -8,7 +8,7 @@
 
 ## The Backdrop
 
-Within the V-Sekai community, there is a desire to enhance user engagement through interactive tools that allow for creative expression. The community seeks to leverage Discord as a platform to introduce such tools.
+Within the V-Sekai community, there is a desire to enhance user engagement through interactive tools that allow for creative expression. The community seeks to use Discord as a platform to introduce such tools.
 
 ## The Challenge
 

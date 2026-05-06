@@ -2,7 +2,7 @@
 
 ## The Context
 
-The increasing need for higher texture resolution on 3D models often necessitates the use of multiple textures, a technique known as UDIMs. This approach, originating from the VFX industry, allows for a single material to utilize multiple texture "tiles" at varying resolutions, providing greater detail and flexibility.
+The increasing need for higher texture resolution on 3D models often necessitates the use of multiple textures, a technique known as UDIMs. This approach, originating from the VFX industry, allows for a single material to use multiple texture "tiles" at varying resolutions, providing greater detail and flexibility.
 
 ## The Problem Statement
 
@@ -10,7 +10,7 @@ Currently, Godot Engine lacks native support for UDIMs, hindering efficient work
 
 ## Design
 
-This proposal suggests implementing a dedicated UDIM importer and integration within Godot's material system. The importer would process FBX files containing UDIM information, correctly assigning texture tiles to the corresponding UV coordinates. This would streamline the workflow for artists, enabling them to import and utilize high-resolution textured models seamlessly.
+This proposal suggests implementing a dedicated UDIM importer and integration within Godot's material system. The importer would process FBX files containing UDIM information, correctly assigning texture tiles to the corresponding UV coordinates. This would simplify the workflow for artists, enabling them to import and use high-resolution textured models seamlessly.
 
 > This tool takes an input FBX file that uses UDIMs by having UVs that are outside the 0-1 range. For example, if a polygon's UVs are in the range (1-2, 0-1), it's the UDIM tile 1002 (conceptually one to the right of the main UV space), wheras UVs in the range (0-1, 0-1) are UDIM tile 1001.
 >
@@ -24,7 +24,7 @@ This proposal suggests implementing a dedicated UDIM importer and integration wi
 
 Implementing UDIM support offers several advantages:
 
-- Improved Artist Workflow: Streamlines the process of importing and working with high-resolution models.
+- Improved Artist Workflow: Simplifies the process of importing and working with high-resolution models.
 - Enhanced Visual Fidelity: Allows for greater detail and realism in 3D assets.
 - Industry Standard Compatibility: Aligns Godot with industry-standard practices in texture management.
 

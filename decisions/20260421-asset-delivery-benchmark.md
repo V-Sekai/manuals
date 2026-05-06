@@ -57,7 +57,7 @@ Very small assets (under 16 KB) are smaller than one casync chunk and gain nothi
 
 ## In Core and Done by Us
 
-- Benchmark harness script: `multiplayer-fabric-desync/bench/`
+- Benchmark use script: `multiplayer-fabric-desync/bench/`
 - Results file: `manuals/decisions/attachments/asset-delivery-benchmark-results.csv`
 - Follow-on ADR to record the decision
 

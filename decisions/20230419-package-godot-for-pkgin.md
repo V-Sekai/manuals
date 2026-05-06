@@ -44,7 +44,7 @@ K --> I
 
 2. Wide platform support: Pkgin compatibility ensures that the Godot Engine works seamlessly with multiple UNIX-like systems, expanding the user base and promoting adoption across various platforms.
 
-3. Efficient dependency handling: Pkgin automatically manages dependencies, streamlining the installation process and minimizing conflicts or issues due to unmet requirements.
+3. Efficient dependency handling: Pkgin automatically manages dependencies, simplifying the installation process and minimizing conflicts or issues due to unmet requirements.
 
 4. Uniform software environment: Pkgin helps maintain consistency in software versions and configurations, which is crucial for collaboration and reducing the need for troubleshooting.
 
@@ -68,7 +68,7 @@ Potential compatibility challenges: While pkgin aims to provide compatibility ac
 
 Unnecessary overhead for small projects: For smaller projects or users with minimal requirements, the added features and capabilities provided by pkgin support might be excessive. In such cases, the effort needed to maintain and use a pkgin package could outweigh its benefits.
 
-Despite these potential downsides, offering pkgin support can bring significant advantages, such as streamlining installation and updates, ensuring compatibility with UNIX-like systems, and promoting collaboration within the open-source community.
+Pkgin support simplifies installation and updates, ensures compatibility with UNIX-like systems, and promotes collaboration within the open-source community — advantages that outweigh the downsides for projects of sufficient size.
 
 ### Option graveyard
 
@@ -86,7 +86,7 @@ Using a script for Godot Engine may have drawbacks, such as being less user-frie
 
 ### Is there a reason why this should be core and done by us?
 
-Packaging the Godot Engine for pkgin as a core task our team handles ensures quality control, streamlined support, customization, alignment with your platform's vision, and trust-building with users. These factors contribute to the overall success and adoption of your open-source virtual reality platform.
+Packaging the Godot Engine for pkgin as a core task our team handles ensures quality control, simplified support, customization, alignment with your platform's vision, and trust-building with users. These factors contribute to the overall success and adoption of your open-source virtual reality platform.
 
 ### References
 

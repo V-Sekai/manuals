@@ -22,7 +22,7 @@ There may be breaking changes in the newer versions of the tools and libraries, 
 
 ## The Road Not Taken
 
-We could choose not to update the GoCD Agent Docker image, but this could leave us vulnerable to known security issues and prevent us from utilizing improvements in the tools and libraries.
+We could choose not to update the GoCD Agent Docker image, but this could leave us vulnerable to known security issues and prevent us from using improvements in the tools and libraries.
 
 ## The Infrequent Use Case
 

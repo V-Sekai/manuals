@@ -8,7 +8,7 @@
 
 ## Context and Problem Statement
 
-We want to create a workflow for publishing avatars in a portable format that can be easily used across different platforms. The goal is to streamline the process of converting and exporting avatars while maintaining compatibility with various platforms.
+We want to create a workflow for publishing avatars in a portable format that can be easily used across different platforms. The goal is to simplify the process of converting and exporting avatars while maintaining compatibility with various platforms.
 
 ## Proposed Solution
 
@@ -32,7 +32,7 @@ The proposed solution involves using the VRM portable avatar format, Silent's sh
 
 ## Positive Consequences
 
-- Streamlined avatar publishing process.
+- Simplified avatar publishing process.
 - Increased portability and compatibility with different platforms.
 - Easier sharing and distribution of avatars.
 

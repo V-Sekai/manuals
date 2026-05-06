@@ -2,7 +2,7 @@
 
 ## The Context
 
-Exposing virtual machines (VMs) to external networks securely and efficiently is a common requirement in development and production environments. Tailscale Funnel provides a simple and secure way to expose services running on a VM to the internet using Tailscale's mesh VPN and authentication features. By leveraging systemd, we can manage Tailscale Funnel as a system-level service for consistent and reliable operation.
+Exposing virtual machines (VMs) to external networks securely and efficiently is a common requirement in development and production environments. Tailscale Funnel provides a simple and secure way to expose services running on a VM to the internet using Tailscale's mesh VPN and authentication features. By using systemd, we can manage Tailscale Funnel as a system-level service for consistent and reliable operation.
 
 ## The Problem Statement
 

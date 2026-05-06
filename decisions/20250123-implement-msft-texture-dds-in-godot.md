@@ -25,15 +25,15 @@ def export_gltf_with_dds(mesh, textures):
 ## What are the benefits of the proposal?
 
 - Enhanced compatibility with VRChat, allowing for richer textures and better performance.
-- Utilizes industry-standard DDS format for textures, ensuring high-quality image exports.
-- Streamlines the export process for developers working with VRChat and Godot Engine.
+- Uses industry-standard DDS format for textures, ensuring high-quality image exports.
+- Simplifies the export process for developers working with VRChat and Godot Engine.
 - Provides a fallback to PNG format, ensuring compatibility in environments where DDS is not supported.
 
 ## What are the downsides of the proposal?
 
 - Increased complexity in the export pipeline may lead to longer export times.
 - Additional maintenance required to keep the DDS integration updated with both Godot Engine and VRChat changes.
-- Potential compatibility issues with existing projects not utilizing the DDS format.
+- Potential compatibility issues with existing projects not using the DDS format.
 
 ## What are the alternative proposals?
 

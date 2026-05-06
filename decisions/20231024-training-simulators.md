@@ -16,7 +16,7 @@ The challenge lies in creating an immersive and realistic simulation experience 
 
 ## The Strategy
 
-To overcome this challenge, we propose developing a robust system that allows players to interact with the game environment in a meaningful way. This includes creating detailed SOPs, designing intuitive user interfaces for tool manipulation, and implementing safety measures within the game.
+To overcome this challenge, we propose developing a reliable system that allows players to interact with the game environment in a meaningful way. This includes creating detailed SOPs, designing intuitive user interfaces for tool manipulation, and implementing safety measures within the game.
 
 ## The Upside
 
@@ -32,7 +32,7 @@ An alternative approach could be to simplify the skill system and focus more on 
 
 ## The Infrequent Use Case
 
-In some cases, players may prefer a more straightforward gameplay experience and may not fully utilize the advanced training simulators.
+In some cases, players may prefer a more straightforward gameplay experience and may not fully use the advanced training simulators.
 
 ## In Core and Done by Us?
 

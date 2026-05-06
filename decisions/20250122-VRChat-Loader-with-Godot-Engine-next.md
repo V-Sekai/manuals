@@ -32,7 +32,7 @@ Extend the protocol to support HTTP GET requests of Cesium 3D Tiles 1.1 meta fil
 ## What are the benefits of the proposal?
 
 - Supports real-time content updates in VRChat
-- Leverages existing Godot Engine HTTP capabilities
+- Uses existing Godot Engine HTTP capabilities
 - Extends VRChat’s functionality
 
 ## What are the downsides of the proposal?

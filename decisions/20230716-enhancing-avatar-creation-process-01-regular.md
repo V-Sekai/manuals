@@ -18,12 +18,12 @@ Here is a list of raw processes to be broken down.
 
 To implement the requested changes, here are the modified instructions:
 
-1. Creating the avatar face: Utilizes digital drawing techniques to design and create the facial features of the avatar.
+1. Creating the avatar face: Uses digital drawing techniques to design and create the facial features of the avatar.
 
    - Input mime type: None
    - Output mime type: Digital drawing/image file (e.g., PNG, SVG)
 
-2. Changing colors: Utilizes a digital paintbrush tool like Penpot to modify and customize the colors of the avatar.
+2. Changing colors: Uses a digital paintbrush tool like Penpot to modify and customize the colors of the avatar.
 
    - Input mime type: Digital drawing/image file (e.g., PNG, SVG)
    - Output mime type: Digital drawing/image file (e.g., PNG, SVG)
@@ -101,7 +101,7 @@ No, the proposed enhancement involves a multi-step process that cannot be easily
 
 ## Is there a reason why this should be core and done by us?
 
-The proposed enhancement addresses the limitations in V-Sekai's avatar creation process, providing users with a comprehensive solution for creating highly customizable avatars. By implementing these tools and techniques within the platform, V-Sekai can offer a more robust and user-friendly experience for its community.
+The proposed enhancement addresses the limitations in V-Sekai's avatar creation process, providing users with a comprehensive solution for creating highly customizable avatars. By implementing these tools and techniques within the platform, V-Sekai can offer a more reliable and user-friendly experience for its community.
 
 ## References
 

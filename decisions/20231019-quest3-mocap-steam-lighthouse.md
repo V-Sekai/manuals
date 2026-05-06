@@ -20,7 +20,7 @@ The strategy involves using 6 HTC or Tundra trackers motion capture. One tracker
 
 ## The Upside
 
-The upside of this setup is its portability and versatility. It essentially turns your laptop into a mobile VR station, allowing you to leverage the power of the Valve VR ecosystem anywhere you go.
+The upside of this setup is its portability and versatility. It essentially turns your laptop into a mobile VR station, allowing you to use the power of the Valve VR ecosystem anywhere you go.
 
 ## The Downside
 

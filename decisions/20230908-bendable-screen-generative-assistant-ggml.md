@@ -6,11 +6,11 @@ The project aims to develop a translation/transcription badge using GGML's Whisp
 
 ## Key Features
 
-- Voice Interactions: The system will prioritize voice interactions, leveraging GGML's Whisper capabilities to create a responsive AI. Python will not be used in this context.
+- Voice Interactions: The system will prioritize voice interactions, using GGML's Whisper capabilities to create a responsive AI. Python will not be used in this context.
 - Speech-to-Text Interface: A speech-to-text interface will be incorporated to process voice inputs effectively.
 - Direct Connection to Compute Module: The display, set in portrait mode, will connect directly to the compute module, a standard Linux amd64 computer, eliminating the need for embedded software development.
-- Flexible OLED Display: The system will utilize a 6-inch flexible OLED display from Wisecoco with a resolution of 2880\*1440 at 60Hz refresh rate.
-- No Holograph Displays: The design will be streamlined and efficient, excluding holograph displays.
+- Flexible OLED Display: The system will use a 6-inch flexible OLED display from Wisecoco with a resolution of 2880\*1440 at 60Hz refresh rate.
+- No Holograph Displays: The design will be simplified and efficient, excluding holograph displays.
 
 ## Potential Challenges
 
@@ -26,7 +26,7 @@ The project may not be suitable for individuals without familiarity with GGML or
 
 ## Development Strategy
 
-The project will be developed in-house, utilizing our expertise in AI and game development.
+The project will be developed in-house, using our expertise in AI and game development.
 
 ## Tags
 
@@ -73,7 +73,7 @@ The resulting texts are displayed on this screen.
 
 The choice of portrait mode for the display aligns with the specific needs and constraints of the project. As the project heavily relies on text-based interactions, specifically transcriptions, portrait mode allows more lines of text to be visible at once, thereby improving the user experience.
 
-The system utilizes a 6-inch flexible OLED display from Wisecoco. Portrait mode is more space-efficient in such scenarios, taking up less horizontal space while still providing ample vertical space for text display.
+The system uses a 6-inch flexible OLED display from Wisecoco. Portrait mode is more space-efficient in such scenarios, taking up less horizontal space while still providing ample vertical space for text display.
 
 Given that the primary focus of the project is voice interactions, the display mode should ideally support easy reading of transcriptions. Portrait mode, with its vertical orientation, is more suited to this task as it mimics the natural top-to-bottom reading flow.
 

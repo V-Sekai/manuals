@@ -8,7 +8,7 @@
 
 ## Backdrop
 
-The current solution for handling multiplayer Blender has its limitations when it comes to scalability and real-time performance. To address these issues, we propose a new approach that leverages Elixir and the Membrane Framework. This will involve rewriting the code and introducing a JSON-RPC Blender runner.
+The current solution for handling multiplayer Blender has its limitations when it comes to scalability and real-time performance. To address these issues, we propose a new approach that uses Elixir and the Membrane Framework. This will involve rewriting the code and introducing a JSON-RPC Blender runner.
 
 ### Character Posing
 
@@ -28,7 +28,7 @@ Any drawings or annotations made using the Grease Pencil tool will be visible to
 
 ### JSON-RPC Blender Runner
 
-To facilitate efficient communication with Blender, we'll implement a JSON-RPC Blender runner. This will allow us to send commands to Blender and receive responses in a structured and standardized format. This feature will streamline the process of interacting with Blender, making it more efficient and user-friendly.
+To facilitate efficient communication with Blender, we'll implement a JSON-RPC Blender runner. This will allow us to send commands to Blender and receive responses in a structured and standardized format. This feature will simplify the process of interacting with Blender, making it more efficient and user-friendly.
 
 By implementing these features, we aim to improve the scalability and real-time performance of our multiplayer Blender solution. This will lead to a more immersive and collaborative experience for our users.
 
@@ -47,7 +47,7 @@ graph LR
   I[Triangle Only] --> J[Airlocks for Environment Translation]
 ```
 
-This strategy leverages Elixir and the Membrane Framework's unique features, uses the Khepri database library for data management, implements GitHub login using OAuth 2.0 protocol for single sign-on, introduces a JSON-RPC Blender runner for improved communication with Blender, and focuses on the use of triangles (a polygon with 3 vertices) and "Airlocks" for environment translation.
+This strategy uses Elixir and the Membrane Framework's unique features, uses the Khepri database library for data management, implements GitHub login using OAuth 2.0 protocol for single sign-on, introduces a JSON-RPC Blender runner for improved communication with Blender, and focuses on the use of triangles (a polygon with 3 vertices) and "Airlocks" for environment translation.
 
 Here are the key steps:
 

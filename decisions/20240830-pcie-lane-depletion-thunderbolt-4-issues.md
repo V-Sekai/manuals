@@ -2,11 +2,11 @@
 
 ## The Context
 
-In modern computing, PCI-E lanes are a critical resource for connecting various high-speed components such as GPUs, SSDs, and network cards. However, the number of available PCI-E lanes is finite and can become a bottleneck when multiple high-bandwidth devices are connected. This proposal addresses the issue of PCI-E lane depletion, particularly in systems utilizing Thunderbolt 4.
+In modern computing, PCI-E lanes are a critical resource for connecting various high-speed components such as GPUs, SSDs, and network cards. However, the number of available PCI-E lanes is finite and can become a bottleneck when multiple high-bandwidth devices are connected. This proposal addresses the issue of PCI-E lane depletion, particularly in systems using Thunderbolt 4.
 
 ## The Problem Statement
 
-When all PCI-E slots are utilized, especially with high-bandwidth devices like GPUs and Thunderbolt 4 controllers, users may experience performance degradation or device malfunctions due to insufficient PCI-E lanes. This problem was highlighted by a user who reported that their Thunderbolt 4 connection broke after using their last PCI-E slot.
+When all PCI-E slots are used, especially with high-bandwidth devices like GPUs and Thunderbolt 4 controllers, users may experience performance degradation or device malfunctions due to insufficient PCI-E lanes. This problem was highlighted by a user who reported that their Thunderbolt 4 connection broke after using their last PCI-E slot.
 
 ## Proposal Implementation
 
@@ -41,7 +41,7 @@ To mitigate this issue, it is recommended to keep the last PCI-E slot empty to e
 ## The Downsides
 
 1. Complexity: Implementing checks for PCI-E lane availability adds complexity to system configuration and management.
-2. Hardware Limitations: Users with limited PCI-E lanes may need to upgrade their hardware to fully utilize all desired devices.
+2. Hardware Limitations: Users with limited PCI-E lanes may need to upgrade their hardware to fully use all desired devices.
 
 ## The Road Not Taken
 
@@ -49,7 +49,7 @@ An alternative approach could be to develop software solutions that dynamically 
 
 ## The Infrequent Use Case
 
-In scenarios where users only utilize a single high-bandwidth device, such as a GPU, PCI-E lane depletion is unlikely to be an issue. This proposal primarily targets power users and professionals with multiple high-bandwidth devices.
+In scenarios where users only use a single high-bandwidth device, such as a GPU, PCI-E lane depletion is unlikely to be an issue. This proposal primarily targets power users and professionals with multiple high-bandwidth devices.
 
 ## In Core and Done by Us
 

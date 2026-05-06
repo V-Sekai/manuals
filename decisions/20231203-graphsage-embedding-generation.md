@@ -8,7 +8,7 @@
 
 ## The Backdrop
 
-In the world of graph-based machine learning, the GraphSAGE algorithm has emerged as a powerful tool for generating node embeddings. It's an inductive method that learns to generate embeddings by leveraging node feature information and the graph structure.
+In the world of graph-based machine learning, the GraphSAGE algorithm has emerged as a powerful tool for generating node embeddings. It's an inductive method that learns to generate embeddings by using node feature information and the graph structure.
 
 ## The Challenge
 
@@ -58,7 +58,7 @@ Understanding the GraphSAGE algorithm can be challenging due to its complex natu
 - Flexibility: The algorithm can be adapted to different types of graphs and feature sets.
 - Scalability: It's designed to work efficiently on large graphs.
 
-Understanding this algorithm helps in applying it to real-world graph problems, such as social network analysis, recommendation systems, and more, where the structure and features of the graph can be leveraged to learn informative node embeddings.
+Understanding this algorithm helps in applying it to real-world graph problems, such as social network analysis, recommendation systems, and more, where the structure and features of the graph can be used to learn informative node embeddings.
 
 ## The Upside
 

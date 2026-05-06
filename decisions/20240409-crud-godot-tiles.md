@@ -2,7 +2,7 @@
 
 ## Objective
 
-This test case aims to utilize a specific database technology, sqlite-fdb, to assess the efficiency and accuracy of syncing 3D tiles between Blender and Godot. The test will involve basic CRUD operations on a set of 3D tiles representing a park.
+This test case aims to use a specific database technology, sqlite-fdb, to assess the efficiency and accuracy of syncing 3D tiles between Blender and Godot. The test will involve basic CRUD operations on a set of 3D tiles representing a park.
 
 ## Components
 

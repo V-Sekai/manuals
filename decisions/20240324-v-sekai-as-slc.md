@@ -2,7 +2,7 @@
 
 ## Context
 
-VR gaming requires a seamless, inviting experience. A VR dating game can utilize simplicity, engagement, and completeness principles.
+VR gaming requires a seamless, inviting experience. A VR dating game can use simplicity, engagement, and completeness principles.
 
 ## Problem
 

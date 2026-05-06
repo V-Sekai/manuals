@@ -57,7 +57,7 @@ Scene entity adds & deletes with the overlay also requires 20250126-primitive-ou
 
 ## What are the benefits of the proposal?
 
-The proposal offers streamlined object placement and removal, improved collaboration through overlay-based metadata, and the potential for interactive previews and user scoring.
+The proposal offers simplified object placement and removal, improved collaboration through overlay-based metadata, and the potential for interactive previews and user scoring.
 
 ## What are the downsides of the proposal?
 
@@ -69,8 +69,8 @@ Alternatives include relying on standard Godot editor workflows, using no overla
 
 ## When might the proposed solution be used rarely or not at all?
 
-• Simple scenes without collaboration or complex user interactions  
-• Non-VR projects where overlay-based interaction is unnecessary
+- Simple scenes without collaboration or complex user interactions  
+- Non-VR projects where overlay-based interaction is unnecessary
 
 ## Is this a V-Sekai core responsibility, and should it be done by us?
 

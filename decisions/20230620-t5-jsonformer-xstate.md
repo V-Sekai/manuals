@@ -106,7 +106,7 @@ Here are some option graveyard items for the proposal:
 2. Using other pre-trained NLP models (e.g., GPT-3, BERT)
 
    - Pros:
-     - Can leverage existing state-of-the-art NLP models.
+     - Can use existing state-of-the-art NLP models.
      - May provide better performance on certain tasks.
    - Cons:
      - May require additional fine-tuning or adaptation for the specific task.
@@ -125,7 +125,7 @@ Here are some option graveyard items for the proposal:
 
    - Pros:
      - Offloads the complexity of NLP to an external service.
-     - Can potentially leverage more advanced NLP techniques.
+     - Can potentially use more advanced NLP techniques.
    - Cons:
      - Introduces dependency on an external service.
      - May incur additional costs or usage limitations.

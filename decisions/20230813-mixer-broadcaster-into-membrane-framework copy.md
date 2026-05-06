@@ -23,7 +23,7 @@ graph LR
   E[No Database] --> F[Khepri Database Library]
 ```
 
-This strategy leverages Elixir and the Membrane Framework's unique features, uses the Khepri database library for data management, and implements GitHub login using OAuth 2.0 protocol for single sign-on.
+This strategy uses Elixir and the Membrane Framework's unique features, uses the Khepri database library for data management, and implements GitHub login using OAuth 2.0 protocol for single sign-on.
 
 Here are the key steps:
 

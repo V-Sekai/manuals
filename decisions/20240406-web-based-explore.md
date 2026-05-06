@@ -2,7 +2,7 @@
 
 ## Context
 
-Recently, a discussion arose regarding the potential for creating a web version of V-Sekai. The concept involves utilizing WebAssembly (wasm) for this endeavor. Additionally, there is interest in integrating WebRTC with both native and web platforms.
+Recently, a discussion arose regarding the potential for creating a web version of V-Sekai. The concept involves using WebAssembly (wasm) for this endeavor. Additionally, there is interest in integrating WebRTC with both native and web platforms.
 
 ## Problem Statement
 

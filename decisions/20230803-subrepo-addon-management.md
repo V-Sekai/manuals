@@ -31,7 +31,7 @@ This ensures that the addons remain up-to-date with their respective repositorie
 
 ## Positive Consequences
 
-- Streamlined workflow for managing addons.
+- Simplified workflow for managing addons.
 - Easier synchronization of updates across different components of the project.
 - Reduced complexity in project management.
 

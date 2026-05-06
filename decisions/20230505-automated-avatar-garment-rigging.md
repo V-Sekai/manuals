@@ -24,13 +24,13 @@ Implement an automated rigging and wrapping system using known base meshes and g
 2. Rig models: Rig the avatar and garment models by creating a skeleton structure that defines how they move and deform. Use the Blender Dem Bones add-on to automate the rigging process.
 3. Generate cage mesh: Generate a simplified "cage" mesh around the avatar base mesh using the Simplicage add-on. This cage will be used to help apply the garment to the avatar.
 4. Attach garment to cage: Attach the garment model to the cage created in the previous step, so that it follows the cage's movement and deformation.
-5. Conform garment to avatar: Utilize the Mesh Materializer add-on to conform the garment model to the avatar base mesh, using a UV texture map to guide the wrapping process. This ensures the garment fits correctly on the avatar.
+5. Conform garment to avatar: Use the Mesh Materializer add-on to conform the garment model to the avatar base mesh, using a UV texture map to guide the wrapping process. This ensures the garment fits correctly on the avatar.
 6. Manage multiple layers: Develop a system to manage multiple layers of clothing or accessories on the avatar, allowing for proper layering and interaction between clothing items.
 
 ## Positive Consequences
 
 - Reduced manual rigging efforts for each garment and avatar combination
-- Streamlined process of applying garments to avatars
+- Simplified process of applying garments to avatars
 - Easier customization and creation of new avatars with various garments
 
 ## Negative Consequences
@@ -54,7 +54,7 @@ No, this enhancement requires a more complex solution involving multiple tools a
 
 ## Is there a reason why this should be core and done by us?
 
-This enhancement requires a complex solution involving multiple tools and processes, and cannot be worked around with a few lines of script. Implementing this feature as part of the core functionality will greatly improve the user experience and streamline the process of creating and customizing avatars with different garments.
+This enhancement requires a complex solution involving multiple tools and processes, and cannot be worked around with a few lines of script. Implementing this feature as part of the core functionality will greatly improve the user experience and simplify the process of creating and customizing avatars with different garments.
 
 ## References
 

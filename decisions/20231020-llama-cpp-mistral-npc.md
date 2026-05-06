@@ -8,7 +8,7 @@
 
 ## The Backdrop
 
-In the realm of game development, creating engaging and dynamic Non-Player Characters (NPCs) is a challenging task. With advancements in AI, there's an opportunity to leverage these technologies to enhance NPC interactions.
+In the realm of game development, creating engaging and dynamic Non-Player Characters (NPCs) is a challenging task. With advancements in AI, there's an opportunity to use these technologies to enhance NPC interactions.
 
 ## The Challenge
 
@@ -25,7 +25,7 @@ Key functions include:
 
 ## The Upside
 
-Leveraging AI for NPC dialog generation can lead to more dynamic and engaging gameplay. It allows for a wide range of responses and can adapt to different player inputs.
+Using AI for NPC dialog generation can lead to more dynamic and engaging gameplay. It allows for a wide range of responses and can adapt to different player inputs.
 
 ## The Downside
 

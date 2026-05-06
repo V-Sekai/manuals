@@ -2,7 +2,7 @@
 
 ## Context
 
-The V-Sekai project is focused on enhancing the Godot Engine by introducing social VR capabilities. To ensure a seamless development process across various environments, we need a robust CI/CD setup. This setup should cater to the diverse platforms our developers and contributors use, including Linux, macOS, Windows, Docker, and Kubernetes clusters.
+The V-Sekai project is focused on enhancing the Godot Engine by introducing social VR capabilities. To ensure a seamless development process across various environments, we need a reliable CI/CD setup. This setup should cater to the diverse platforms our developers and contributors use, including Linux, macOS, Windows, Docker, and Kubernetes clusters.
 
 ## Problem Statement
 

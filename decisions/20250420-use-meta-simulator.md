@@ -6,11 +6,11 @@ Developing and testing VR applications requires frequent interaction checks usin
 
 ## The Problem Statement
 
-VR development on macOS can be slowed down by the need to constantly switch to a physical headset for testing basic interactions. An efficient in-editor or desktop simulation tool could streamline this workflow.
+VR development on macOS can be slowed down by the need to constantly switch to a physical headset for testing basic interactions. An efficient in-editor or desktop simulation tool could simplify this workflow.
 
 ## Design
 
-Utilize Meta's native OpenXR simulation features available for macOS development. This allows running and testing V-Sekai (as an OpenXR application) directly on a Mac, simulating headset and controller input without needing to connect a physical headset for every minor change or interaction test.
+Use Meta's native OpenXR simulation features available for macOS development. This allows running and testing V-Sekai (as an OpenXR application) directly on a Mac, simulating headset and controller input without needing to connect a physical headset for every minor change or interaction test.
 
 ## The Benefits
 

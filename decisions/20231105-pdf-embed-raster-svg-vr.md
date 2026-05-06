@@ -20,7 +20,7 @@ The proposed workflow involves taking a PDF page with potential raster embeds, r
 
 ## The Upside
 
-This approach allows for the creation of high-quality, interactive VR books. It also leverages the capabilities of the Godot engine, which supports SVG, PNG, and JPG embeds.
+This approach allows for the creation of high-quality, interactive VR books. It also uses the capabilities of the Godot engine, which supports SVG, PNG, and JPG embeds.
 
 ## The Downside
 

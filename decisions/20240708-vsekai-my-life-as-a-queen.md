@@ -6,7 +6,7 @@ The second Godot XR Game Jam is organized by the Godot XR Community and is occur
 
 ## The Problem Statement
 
-Create an Android XR game using the theme of "Relaxation" and utilizing Godot Engine 4.3 with our module for goal hierarchical task network planner and our portable avatar import format (VRM).
+Create an Android XR game using the theme of "Relaxation" and using Godot Engine 4.3 with our module for goal hierarchical task network planner and our portable avatar import format (VRM).
 
 ## Design
 
@@ -34,7 +34,7 @@ var todo_list: Array = [
 ]
 ```
 
-You start in a little cabin in the woods. You have a cave you can venture into, and at the end is treasure. This initial prototype serves as a simple introduction to the game's mechanics and environment.
+You start in a little cabin in the woods. You have a cave you can venture into, and at the end is treasure. This initial prototype introduces the game's mechanics and environment.
 
 ### Initial Prototype Reversal
 
@@ -109,7 +109,7 @@ In the initial prototype, you explore the cave yourself. In "V-Sekai: My Life as
 ## The Benefits
 
 - Relaxing Gameplay: Focuses on non-combat activities like building, gardening, organizing events, and sending adventurers on quests.
-- Immersive Experience: Utilizes VRM technology for customizable avatars and Godot's XR capabilities for an engaging experience.
+- Immersive Experience: Uses VRM technology for customizable avatars and Godot's XR capabilities for an engaging experience.
 - Dynamic Task Management: The HTN planner ensures that tasks are generated based on player actions, providing a unique experience each time.
 
 ## The Downsides

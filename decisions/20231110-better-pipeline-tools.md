@@ -22,7 +22,7 @@ We have the opportunity to enhance AYON to create a superior launcher for the Go
 
 ## The Strategy
 
-Our strategy is to outperform OMEGA's workflow by enhancing AYON through tooling and comprehensive documentation. By providing clear instructions and efficient tools for developers, we aim to streamline the development process and improve efficiency.
+Our strategy is to outperform OMEGA's workflow by enhancing AYON through tooling and comprehensive documentation. By providing clear instructions and efficient tools for developers, we aim to simplify the development process and improve efficiency.
 
 ## The Upside
 

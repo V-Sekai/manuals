@@ -51,7 +51,7 @@ Scenarios with extremely high traffic requirements or need for advanced Kubernet
 
 ## Is this a V-Sekai core responsibility, and should it be done by us?
 
-Yes, to streamline operations for V-Sekai’s backend management.
+Yes, to simplify operations for V-Sekai’s backend management.
 
 ## What is the status of the proposal?
 

@@ -10,7 +10,7 @@ We can bind GDExtension to a C-like language for libgodot to implement a distrib
 
 ## Proposed Solution
 
-Instead of godot-zig, we propose using **Bundlex**, a multi-platform tool for compiling C and C++ code along with Elixir projects. This will allow us to leverage the power of Elixir's concurrency and fault-tolerance features, which are ideal for creating distributed simulations.
+Instead of godot-zig, we propose using **Bundlex**, a multi-platform tool for compiling C and C++ code along with Elixir projects. This will allow us to use the power of Elixir's concurrency and fault-tolerance features, which are ideal for creating distributed simulations.
 
 ```elixir
 defmodule MyProject do

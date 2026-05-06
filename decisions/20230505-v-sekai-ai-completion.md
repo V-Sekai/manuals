@@ -12,7 +12,7 @@ We sometimes need help finding solutions to our issues. ChatGPT-4 artificial int
 
 ## Describe the problem or limitation you have in your project, e.g., in free form, using two to three sentences. Consider articulating the case in the form of a question
 
-How can we leverage ChatGPT-4 AI completion to assist in solving problems and completing proposals for V-Sekai?
+How can we use ChatGPT-4 AI completion to assist in solving problems and completing proposals for V-Sekai?
 
 ## Describe the proposed option and how it helps to overcome the problem or limitation
 
@@ -82,7 +82,7 @@ No, this enhancement requires integrating ChatGPT-4 AI completion into the devel
 
 ## Is there a reason why this should be core and done by us?
 
-Yes, leveraging AI-generated content can help improve the efficiency and effectiveness of our problem-solving process, leading to better solutions and faster development.
+Yes, using AI-generated content can help improve the efficiency and effectiveness of our problem-solving process, leading to better solutions and faster development.
 
 ## References
 

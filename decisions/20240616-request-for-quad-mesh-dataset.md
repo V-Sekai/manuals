@@ -14,7 +14,7 @@ Note that triangulating a quad mesh is not the same task.
 
 We propose using remeshing tools convert triangle meshes to quad meshes.
 
-The first dataset will focus on items an avatar would wear. This includes clothing, accessories, and other wearable items.
+Dataset 1 covers items an avatar would wear: clothing, accessories, and other wearable items.
 
 ### Annotations on 8 views
 

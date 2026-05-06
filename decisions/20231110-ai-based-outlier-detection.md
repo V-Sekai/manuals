@@ -1,4 +1,4 @@
-# Draft: Streamlining Game Development with AI-Based Aria's Guidance
+# Draft: Simplifying Game Development with AI-Based Aria's Guidance
 
 ## Metadata
 

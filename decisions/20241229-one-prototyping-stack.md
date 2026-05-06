@@ -108,7 +108,7 @@ sequenceDiagram
 
 - Flexibility: Godot, Elixir, and Phoenix provide a wide range of tools for prototyping diverse applications, from games and VR/AR experiences to web-based tools with cloud functionalities.
 - Consistency: Centering on Godot promotes consistency in code style and development practices, facilitating knowledge sharing and reducing onboarding time for new developers.
-- Efficiency: This approach streamlines development, reducing the overhead of managing multiple technologies and leading to faster prototyping cycles.
+- Efficiency: This approach simplifies development, reducing the overhead of managing multiple technologies and leading to faster prototyping cycles.
 - Developer Empowerment: A unified toolset empowers developers to explore new possibilities and contribute more effectively to the project.
 
 ## What are the downsides of the proposal?

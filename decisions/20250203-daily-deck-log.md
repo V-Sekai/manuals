@@ -2,7 +2,7 @@
 
 ## What is the context of the proposal?
 
-The V-Sekai team requires a structured, real-time method to track daily project health, team contributions, and technical progress. This log aims to streamline communication across contributors and stakeholders in an open-source social VR project built on the Godot Engine.
+The V-Sekai team requires a structured, real-time method to track daily project health, team contributions, and technical progress. This log aims to simplify communication across contributors and stakeholders in an open-source social VR project built on the Godot Engine.
 
 ## What is the problem being solved?
 

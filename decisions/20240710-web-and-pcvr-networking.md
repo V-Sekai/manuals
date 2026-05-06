@@ -16,7 +16,7 @@ PCVR platforms must be able to communicate with the web platform in a low latenc
 
 - Communication Protocol: Implement a UDP-based communication protocol for low-latency data transfer between PCVR and web platforms.
 - Godot's Multiplayer API: Use Godot's high-level multiplayer API to manage connections and data synchronization.
-- Custom Patch for Godot WebRTC: Utilize our custom patch for Godot WebRTC for PCVR.
+- Custom Patch for Godot WebRTC: Use our custom patch for Godot WebRTC for PCVR.
 - Standard Browser WebRTC: Employ the standard browser WebRTC for the web.
 
 #### Real-Time Chat Application
@@ -61,7 +61,7 @@ Consideration of other communication protocols like TCP, which may offer reliabi
 
 ## The Infrequent Use Case
 
-Handling scenarios where network conditions are poor or intermittent, requiring robust error handling and reconnection strategies.
+Handling scenarios where network conditions are poor or intermittent, requiring reliable error handling and reconnection strategies.
 
 ## In Core and Done by Us
 

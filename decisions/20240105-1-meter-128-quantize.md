@@ -12,11 +12,11 @@ MeshGPT's "1 Meter Cubed 128 Quantized" format has emerged as a potential method
 
 ## The Challenge
 
-The key objective is to harness the potential of the "1 Meter Cubed 128 Quantized" format to enhance procedural generation processes within VR development.
+The key objective is to use the potential of the "1 Meter Cubed 128 Quantized" format to enhance procedural generation processes within VR development.
 
 ## The Strategy
 
-- Develop a comprehensive framework for environment generation that leverages the strengths of the polygonal quantized format.
+- Develop a comprehensive framework for environment generation that uses the strengths of the polygonal quantized format.
 - Integrate adaptive algorithms tailored for this format to ensure dynamic responsiveness in VR spaces.
 - Embrace modular design paradigms that align with polygonal modeling to expedite the construction of VR environments.
 
@@ -24,7 +24,7 @@ The key objective is to harness the potential of the "1 Meter Cubed 128 Quantize
 
 - Fosters a more intuitive AI-creator collaboration using a polygonal format conducive to AI tools.
 - Lowers barriers to entry for creators, leading to increased efficiency and innovation.
-- Streamlines procedural generation to operate with enhanced speed and reduced resource consumption.
+- Simplifies procedural generation to operate with enhanced speed and reduced resource consumption.
 - Provides a scalable and flexible model to cater to diverse design requirements in VR environments.
 
 ## The Downside

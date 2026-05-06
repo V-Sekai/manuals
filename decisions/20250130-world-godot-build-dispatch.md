@@ -40,7 +40,7 @@ If simpler builds without cross-repo triggers are sufficient.
 
 ## Is this a V-Sekai core responsibility, and should it be done by us?
 
-Yes, because it streamlines the build workflow for V-Sekai projects.
+Yes, because it simplifies the build workflow for V-Sekai projects.
 
 ## What is the status of the proposal?
 

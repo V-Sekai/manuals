@@ -6,7 +6,7 @@ V-Sekai is a social VR platform designed to foster user interaction and creative
 
 ## The Problem Statement
 
-Currently, V-Sekai offers limited options for users to leave persistent messages or communicate asynchronously within the environment. This proposal introduces interactive signs as a new, scriptable communication feature, leveraging the existing Godot-sandbox.
+Currently, V-Sekai offers limited options for users to leave persistent messages or communicate asynchronously within the environment. This proposal introduces interactive signs as a new, scriptable communication feature, using the existing Godot-sandbox.
 
 ## Design
 
@@ -18,7 +18,7 @@ Currently, V-Sekai offers limited options for users to leave persistent messages
 
 ### Sign Placement with In-World Editor
 
-- Users can place and manipulate signs directly in the V-Sekai world using an in-world editor tool, leveraging existing Godot editor functionalities.
+- Users can place and manipulate signs directly in the V-Sekai world using an in-world editor tool, using existing Godot editor functionalities.
 
 ### "Like" System Integration with Godot Scripting
 
@@ -33,18 +33,18 @@ Currently, V-Sekai offers limited options for users to leave persistent messages
 - Enhanced Communication: Scriptable signs provide a flexible channel for asynchronous communication, allowing users to leave messages, share thoughts, or provide information in engaging ways.
 - Increased Social Interaction: The customizable "like" system encourages interaction and feedback between users, fostering a sense of community.
 - Creative Expression and User-Generated Content: Empowers users to personalize the V-Sekai world and express themselves creatively by designing unique sign experiences.
-- Deeper Integration with V-Sekai: Leverages existing Godot infrastructure for a more cohesive and extensible implementation.
+- Deeper Integration with V-Sekai: Uses existing Godot infrastructure for a more cohesive and extensible implementation.
 - Potential for Community-Driven Development: Users can share and collaborate on sign scripts, fostering a vibrant ecosystem of user-generated content.
 
 ## The Downsides
 
 - Learning Curve: May require users to have some familiarity with Godot scripting or be willing to learn. **Mitigation:** Provide comprehensive tutorials and readily available examples.
-- Security and Stability: Robust security measures are crucial to prevent malicious scripts from affecting the V-Sekai environment. **Mitigation:** Implement a script review process and sandboxing mechanisms.
+- Security and Stability: Reliable security measures are crucial to prevent malicious scripts from affecting the V-Sekai environment. **Mitigation:** Implement a script review process and sandboxing mechanisms.
 - Performance Impact: Careful optimization of user-created scripts will be essential to maintain overall performance. **Mitigation:** Provide clear guidelines and limitations on script complexity.
 
 ## The Road Not Taken
 
-Simple, non-scriptable signs with a fixed set of features were considered. However, leveraging the Godot-sandbox for scriptable signs offers greater flexibility, user empowerment, and potential for community-driven content creation, aligning better with V-Sekai's open-source philosophy.
+Simple, non-scriptable signs with a fixed set of features were considered. However, using the Godot-sandbox for scriptable signs offers greater flexibility, user empowerment, and potential for community-driven content creation, aligning better with V-Sekai's open-source philosophy.
 
 ## In Core and Done by Us
 

@@ -2,7 +2,7 @@
 
 ## The Context
 
-In the realm of game development, particularly with the Godot Engine, enabling seamless communication between native clients and web clients is crucial. This proposal aims to address this need by leveraging WebRTC for interoperability.
+In the realm of game development, particularly with the Godot Engine, enabling seamless communication between native clients and web clients is crucial. This proposal aims to address this need by using WebRTC for interoperability.
 
 ## The Problem Statement
 
@@ -14,7 +14,7 @@ Implement WebRTC in both native and web clients to facilitate real-time communic
 
 Set up a signaling server to manage the initial connection setup between clients.
 
-Utilize WebRTC data channels for efficient data transfer between clients.
+Use WebRTC data channels for efficient data transfer between clients.
 
 Integrate WebRTC functionalities within the Godot Engine to ensure smooth operation.
 

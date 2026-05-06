@@ -20,7 +20,7 @@ Instead of trying to adapt to the shifting Blender API, we propose to keep the B
 
 ## The Downsides
 
-- Requires development of a robust converter on the Godot side.
+- Requires development of a reliable converter on the Godot side.
 - Any changes in Blender's data structure might still require updates to the converter.
 
 ## The Road Not Taken

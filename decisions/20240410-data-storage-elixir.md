@@ -39,7 +39,7 @@ end
 
 Raft/Ra will be implemented to ensure distributed consensus across system nodes.
 
-### Utilize CockroachDB for Persistent Storage
+### Use CockroachDB for Persistent Storage
 
 CockroachDB will store critical, structured data that requires ACID transactions and global accessibility.
 

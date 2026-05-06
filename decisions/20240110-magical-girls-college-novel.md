@@ -22,7 +22,7 @@ Develop engaging planner scenarios for the player to navigate over the course of
 
 ## The Strategy
 
-Utilize VRM 3D chibis for character representation; initially limiting characters to five core members:
+Use VRM 3D chibis for character representation; initially limiting characters to five core members:
 
 1. The Protagonist
 2. Four love interests

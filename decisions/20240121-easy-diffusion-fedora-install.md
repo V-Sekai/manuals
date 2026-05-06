@@ -8,7 +8,7 @@
 
 ## Backdrop
 
-The goal is to streamline the installation process of Easy Diffusion for creating AI-generated images on Linux systems.
+The goal is to simplify the installation process of Easy Diffusion for creating AI-generated images on Linux systems.
 
 ## Challenge
 

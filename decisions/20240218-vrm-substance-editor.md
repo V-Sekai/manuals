@@ -18,7 +18,7 @@ A mock-up interface would present these parameters within Substance Designer, wh
 
 ## The Benefits
 
-- Streamlined Workflow: Artists can create and adjust VRM textures and toon shaders all within Substance Designer.
+- Simplified Workflow: Artists can create and adjust VRM textures and toon shaders all within Substance Designer.
 - Real-time Previews: Immediate feedback on how changes to textures and shader parameters impact the final appearance.
 - Consistency: Reduces discrepancies between the design phase and the final rendering in VR applications.
 

@@ -2,11 +2,11 @@
 
 ## The Context
 
-In the current digital landscape, there is a chaos of many different platforms.
+There is a chaos of many different platforms.
 
 ## The Problem Statement
 
-The problem lies in the lack of interoperability among various platforms. This leads to inefficiencies and difficulties in sharing and utilizing resources across these platforms, especially when it comes to 3D assets and extensions.
+The problem lies in the lack of interoperability among various platforms. This leads to inefficiencies and difficulties in sharing and using resources across these platforms, especially when it comes to 3D assets and extensions.
 
 ## Design
 
@@ -14,7 +14,7 @@ We propose to develop an Elixir website that facilitates the sharing of interope
 
 ## The Benefits
 
-This proposal, if implemented, would streamline the process of sharing and using 3D resources across different platforms. It would also foster collaboration and innovation by making it easier for developers to utilize resources from various sources.
+This proposal, if implemented, would simplify the process of sharing and using 3D resources across different platforms. It would also foster collaboration and innovation by making it easier for developers to use resources from various sources.
 
 ## The Downsides
 

@@ -2,7 +2,7 @@
 
 ## Context
 
-We are at a critical juncture in our system design process. The primary question is whether to utilize the RabbitMQ RA system for distributed state machines, implement an SQLite cluster database built on top of FoundationDB, or use CockroachDB.
+We are at a critical juncture in our system design process. The primary question is whether to use the RabbitMQ RA system for distributed state machines, implement an SQLite cluster database built on top of FoundationDB, or use CockroachDB.
 
 ## Problem Statement
 
@@ -24,7 +24,7 @@ CockroachDB is a cloud-native SQL database for building global, scalable cloud s
 
 ## Benefits
 
-- All three systems offer robust solutions for handling large amounts of data.
+- All three systems offer reliable solutions for handling large amounts of data.
 - RabbitMQ RA system provides a reliable messaging system focusing on processing speed and low latency.
 - SQLite cluster database on FoundationDB offers a scalable solution with ACID transactions.
 - CockroachDB is a cloud-native SQL database that provides global scalability and disaster recovery.

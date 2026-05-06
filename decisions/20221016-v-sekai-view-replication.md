@@ -84,7 +84,7 @@ current_entity_id: 16 bytes (128-bit) [to allow interpolation between different 
 
 ## Positive Consequences <!-- optional -->
 
-- The code is based on robust view replication consensus algorithm theory.
+- The code is based on reliable view replication consensus algorithm theory.
 - The playback of the state machine is deterministic.
 
 ## Negative Consequences <!-- optional -->

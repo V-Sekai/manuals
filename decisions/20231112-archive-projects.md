@@ -30,7 +30,7 @@ The proposed strategy includes:
 
 6. Securing the database: In cases where projects lack a database dump, all the actual content could be lost. Execute a `sqldump` or use the export functionality your database offers to create a backup alongside your files. This ensures data preservation.
 
-7. Retaining generated assets: When utilizing static site generators, include the directory containing the compiled HTML, CSS & JS in the archive. This allows you to easily browse the complete website by simply running a static file server.
+7. Retaining generated assets: When using static site generators, include the directory containing the compiled HTML, CSS & JS in the archive. This allows you to easily browse the complete website by simply running a static file server.
 
 8. Archiving on the Internet Archive: If the platform hosting your content isn't owned by you (for instance, you're publishing to Discord or Github), consider saving your data to the Archive.org. This adds an extra level of security for preserving your projects.
 

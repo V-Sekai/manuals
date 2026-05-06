@@ -1,4 +1,4 @@
-# Accepted: Better Skeleton Merge with Robust Skin Weight Transfer
+# Accepted: Better Skeleton Merge with Reliable Skin Weight Transfer
 
 ## The Context
 
@@ -14,9 +14,9 @@ The proposed solution involves aligning the vertices from one set of faces to ma
 
 Passing in the `Skeleton3D` is not necessary. The recently merged API by smix8 allows baking a skeleton to a static mesh, which can be used for baking and then applying the delta.
 
-We plan to utilize robust skin weight transfer code and robust Laplacians. The robust Laplacians algorithm is implemented in geometry-central, which loads a mesh, constructs our intrinsic tufted cover, and generates the resulting Laplace (and mass) matrix.
+We plan to use reliable skin weight transfer code and reliable Laplacians. The reliable Laplacians algorithm is implemented in geometry-central, which loads a mesh, constructs our intrinsic tufted cover, and generates the resulting Laplace (and mass) matrix.
 
-Player creators will have a fully skin-weighted base mesh (a naked character mesh with no clothing). They can then use robust skin weight transfer with a variable distance and the infilling feature to rig their clothing for use in V-Sekai and anywhere that can handle VRM1.
+Player creators will have a fully skin-weighted base mesh (a naked character mesh with no clothing). They can then use reliable skin weight transfer with a variable distance and the infilling feature to rig their clothing for use in V-Sekai and anywhere that can handle VRM1.
 
 ## The Benefits
 
@@ -53,7 +53,7 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## Further Reading
 
-[@robust_skin_weights_2024]: "Robust Skin Weights Transfer via Weight Inpainting."  <https://doi.org/10.1145/3610543.3626180>
+[@robust_skin_weights_2024]: "Reliable Skin Weights Transfer via Weight Inpainting."  <https://doi.org/10.1145/3610543.3626180>
 [@laplacian_nonmanifold_triangle_2024]: "A Laplacian for Nonmanifold Triangle Meshes."  <https://doi.org/10.1111/cgf.14069>
 
 
@@ -68,8 +68,8 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 7. Vertices: In 3D modeling, a vertex is a data structure that describes certain attributes, like the position of a point in 2D or 3D space or multiple points on a surface.
 8. Mesh Arrays: In computer graphics, a mesh is a collection of vertices, edges, and faces that define the shape of a polyhedral object in 3D applications.
 9. Skeleton3D: A node that represents a skeleton in Godot Engine. It contains a hierarchy of bones, which are used to animate the vertices of a MeshInstance.
-10. Robust Skin Weight Transfer: A method used in 3D modeling to transfer the skin weights from one model to another. This is useful when you want to apply the same skinning (deformation) properties from one model to another.
-11. Robust Laplacians: A method used in 3D modeling for smoothing and enhancing the quality of a mesh.
+10. Reliable Skin Weight Transfer: A method used in 3D modeling to transfer the skin weights from one model to another. This is useful when you want to apply the same skinning (deformation) properties from one model to another.
+11. Reliable Laplacians: A method used in 3D modeling for smoothing and enhancing the quality of a mesh.
 12. VRM1: A file format for handling 3D humanoid avatar data for VR applications. It's based on glTF2.0, a file format standard by Khronos Group.
 13. Non-Player Characters (NPCs): In video games, these are the characters that are not controlled by a player. They can be friends, foes, merchants, or even neutral parties in the game world.
 14. Social VR: Virtual Reality that allows users to interact with each other in a virtual environment. It's like social media but in VR.

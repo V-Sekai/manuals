@@ -8,7 +8,7 @@
 
 ## Context
 
-The challenge is to accurately fit clothing on a 3D human model without causing any tearing in the fabric. The proposed solution involves utilizing machine learning technology that ensures constraints are maintained for vertex faces during the fitting process.
+The challenge is to accurately fit clothing on a 3D human model without causing any tearing in the fabric. The proposed solution involves using machine learning technology that ensures constraints are maintained for vertex faces during the fitting process.
 
 # Strategy
 
@@ -16,7 +16,7 @@ The challenge is to accurately fit clothing on a 3D human model without causing 
 
 Implement the cloth simulation's pinning functionality to attach the base mesh hull to the clothing hulls. This can be achieved by developing an algorithm that selects optimal vertices based on certain criteria such as distance from the texel or texture similarity.
 
-Leverage machine learning technology to maintain constraints for vertex faces and effectively fit clothing on a 3D model.
+Use machine learning technology to maintain constraints for vertex faces and effectively fit clothing on a 3D model.
 
 **Two Hulls Provision**: Provide one hull on the base mesh and another on the clothing. The objective here is to first generate the material/clothing and then wrap it onto the character.
 

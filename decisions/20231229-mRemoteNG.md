@@ -33,15 +33,15 @@ The downside could be the potential learning curve associated with using a new t
 
 ## The Road Not Taken
 
-The road not taken would be sticking with traditional, possibly proprietary, terminal emulators. While these may offer robust features and dedicated support, they often come at a significant cost and lack the flexibility of open-source solutions.
+The road not taken would be sticking with traditional, possibly proprietary, terminal emulators. While these may offer reliable features and dedicated support, they often come at a significant cost and lack the flexibility of open-source solutions.
 
 ## The Infrequent Use Case
 
-An infrequent use case might be using mRemoteNG for managing a small number of devices or connections. In such cases, the full potential of the tool may not be utilized.
+An infrequent use case might be using mRemoteNG for managing a small number of devices or connections. In such cases, the full potential of the tool may not be used.
 
 ## In Core and Done by Us?
 
-This strategy is not in core and done by us. It involves leveraging an existing open-source solution to address our needs.
+This strategy is not in core and done by us. It involves using an existing open-source solution to address our needs.
 
 ## Further Reading
 

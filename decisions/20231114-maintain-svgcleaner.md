@@ -16,7 +16,7 @@ Integrating readable, high-quality SVG-based books into the VR environment prese
 
 ## The Strategy
 
-Utilize the `svgcleaner` tool, particularly its Rust implementation, to optimize SVG files for VR book reading. This involves cleaning up SVG files from unnecessary data, thereby reducing file size without compromising visual integrity.
+Use the `svgcleaner` tool, particularly its Rust implementation, to optimize SVG files for VR book reading. This involves cleaning up SVG files from unnecessary data, thereby reducing file size without compromising visual integrity.
 
 ## The Upside
 

@@ -6,7 +6,7 @@ Daniel Snd was looking for a simple way to mirror right-sided walking keyframes 
 
 ## Problem Statement
 
-Daniel Snd did not utilize the Godot Engine humanoid profile.
+Daniel Snd did not use the Godot Engine humanoid profile.
 
 ## Solution Description
 

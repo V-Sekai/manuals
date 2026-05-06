@@ -16,7 +16,7 @@ Use the supplied HTCVive cradles for the dongles. Keep the dongles upright.
 
 - Reduced Interference: By using the supplied cradles and keeping the dongles upright, wireless interference is minimized.
 - Improved Connectivity: Ensures stable and reliable connections for the Valve StreamVR Light House Dongles.
-- User-Friendly: Simple implementation that leverages existing hardware (HTCVive cradles).
+- User-Friendly: Simple implementation that uses existing hardware (HTCVive cradles).
 
 ## The Downsides
 

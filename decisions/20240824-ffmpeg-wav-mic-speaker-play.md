@@ -141,7 +141,7 @@ In cases where precise audio sample rate configuration is critical, additional a
 
 ## In Core and Done by Us
 
-This approach aligns with our goal of robust and versatile testing methodologies and will be implemented by our team.
+This approach aligns with our goal of reliable and versatile testing methodologies and will be implemented by our team.
 
 ## Status
 

@@ -2,7 +2,7 @@
 
 ## The Context
 
-In the development of web-based applications using the Godot Engine, performance and responsiveness are critical. Leveraging multi-threading can significantly enhance these aspects.
+In the development of web-based applications using the Godot Engine, performance and responsiveness are critical. Using multi-threading can significantly enhance these aspects.
 
 ## The Problem Statement
 

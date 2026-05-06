@@ -28,8 +28,8 @@ function initiate_conversation(character):
 
 ## The Benefits
 
-- Immersive Engagement: By leveraging VR, players can experience a deeper sense of presence and emotional connection with the characters.
-- Innovative Storytelling: Utilizing VR to tell stories in a dating sim format opens new narrative possibilities, such as non-verbal communication and spatial storytelling.
+- Immersive Engagement: By using VR, players can experience a deeper sense of presence and emotional connection with the characters.
+- Innovative Storytelling: Using VR to tell stories in a dating sim format opens new narrative possibilities, such as non-verbal communication and spatial storytelling.
 - Accessibility: Simple interaction models make the game accessible to VR newcomers, while the depth of story appeals to dating sim enthusiasts.
 
 ## The Downsides

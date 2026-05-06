@@ -6,7 +6,7 @@
 
 ## Context and Problem Statement
 
-Develop a performant and robust (correctly and with liveness) network entity sync in V-Sekai.
+Develop a performant and reliable (correctly and with liveness) network entity sync in V-Sekai.
 
 A client is one Godot Engine connection, it can view and change entities.
 

@@ -65,7 +65,7 @@ A client on a very low-bandwidth link (mobile data, throttled) will see queue gr
 
 ## In Core and Done by Us
 
-- Load test harness: `multiplayer-fabric-zone-console/bench/ws_parity_test.exs`
+- Load test use: `multiplayer-fabric-zone-console/bench/ws_parity_test.exs`
 - Results file: `manuals/decisions/attachments/websocket-parity-test-results.csv`
 - Conditional: snapshot dropping in `fabric_mmog_zone.cpp` if threshold not met
 

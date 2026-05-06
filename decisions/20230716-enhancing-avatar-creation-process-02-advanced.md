@@ -68,7 +68,7 @@ Here are the converted inputs and outputs in the xstate format for each step:
    - Input: `.vrm` file
    - Output: `.vrm` file
 
-9. Utilizing Vroid Hub's hair painter and mesh generator:
+9. Using Vroid Hub's hair painter and mesh generator:
 
 - Input: `.vrm` file
 - Output: `.vrm` enhanced data
@@ -106,7 +106,7 @@ No, the proposed enhancement involves a multi-step process that cannot be easily
 
 ## Is there a reason why this should be core and done by us?
 
-The proposed enhancement addresses the limitations in V-Sekai's avatar creation process, providing users with a comprehensive solution for creating highly customizable avatars. By implementing these tools and techniques within the platform, V-Sekai can offer a more robust and user-friendly experience for its community.
+The proposed enhancement addresses the limitations in V-Sekai's avatar creation process, providing users with a comprehensive solution for creating highly customizable avatars. By implementing these tools and techniques within the platform, V-Sekai can offer a more reliable and user-friendly experience for its community.
 
 ## References
 

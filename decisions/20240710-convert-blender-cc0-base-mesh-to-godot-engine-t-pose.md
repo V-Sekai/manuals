@@ -6,7 +6,7 @@ We would like to have several base meshes for testing and for skeleton merge clo
 
 ## The Problem Statement
 
-The current process of converting Blender CC0 base meshes to a format compatible with the Godot Engine is cumbersome and lacks a standardized approach. This proposal aims to streamline the conversion process, ensuring consistency and efficiency.
+The current process of converting Blender CC0 base meshes to a format compatible with the Godot Engine is cumbersome and lacks a standardized approach. This proposal aims to simplify the conversion process, ensuring consistency and efficiency.
 
 ## Design
 
@@ -73,7 +73,7 @@ The current process of converting Blender CC0 base meshes to a format compatible
 
 ## The Benefits
 
-- Improved Efficiency: Streamlining the conversion process saves time and reduces manual effort.
+- Improved Efficiency: Simplifying the conversion process saves time and reduces manual effort.
 - Consistency: Standardizing the approach ensures uniformity across different base meshes.
 - Enhanced Compatibility: Ensures that the converted meshes are fully compatible with the Godot Engine.
 

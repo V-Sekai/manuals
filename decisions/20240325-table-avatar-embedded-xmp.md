@@ -25,7 +25,7 @@ The proposed solution involves using either Supabase PostgreSQL or FoundationDB 
 ## Benefits
 
 - The use of JSON binary allows for efficient storage and retrieval of GLTF 3d assets.
-- The chosen database backends are robust and reliable, ensuring data integrity and consistency.
+- The chosen database backends are reliable and reliable, ensuring data integrity and consistency.
 
 ## Downsides
 

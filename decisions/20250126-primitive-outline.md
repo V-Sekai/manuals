@@ -6,15 +6,15 @@ Instead of a lens, we aim to generate an overlay using the mesh's primitive outl
 
 ## What is the problem being solved?
 
-How can we generate a holographic overlay by utilizing a list of triangle edges extracted from mesh data?
+How can we generate a holographic overlay by using a list of triangle edges extracted from mesh data?
 
 ## Design
 
-The proposal involves parsing the mesh data to extract triangle edges and rendering these edges as a holographic overlay. Utilizing a compatible rendering engine, each edge will be transformed into visible lines with appropriate shading and anti-aliasing. The system will dynamically update the hologram in real-time based on user interactions and changes in the underlying data.
+The proposal involves parsing the mesh data to extract triangle edges and rendering these edges as a holographic overlay. Using a compatible rendering engine, each edge will be transformed into visible lines with appropriate shading and anti-aliasing. The system will dynamically update the hologram in real-time based on user interactions and changes in the underlying data.
 
 ## What are the benefits of the proposal?
 
-This approach enhances visualization by providing a clear and immersive method to interact with mesh data. It improves user interaction through intuitive controls, allowing seamless engagement with the overlay. Performance is optimized by leveraging triangle edge data for efficient rendering. Additionally, the solution is scalable, enabling support for more complex interactions and data types in future developments.
+This approach enhances visualization by providing a clear and immersive method to interact with mesh data. It improves user interaction through intuitive controls, allowing seamless engagement with the overlay. Performance is optimized by using triangle edge data for efficient rendering. Additionally, the solution is scalable, enabling support for more complex interactions and data types in future developments.
 
 ## What are the downsides of the proposal?
 

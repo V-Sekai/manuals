@@ -10,7 +10,7 @@ At present, there's no straightforward method to design a shirt featuring two di
 
 ## Design
 
-We can harness the power of MaterialX's shader graph system to craft a custom shader for our shirt. Here's a rudimentary sketch of how it might be structured:
+We can use the power of MaterialX's shader graph system to craft a custom shader for our shirt. Here's a rudimentary sketch of how it might be structured:
 
 ```python
 # Import MaterialX library
@@ -43,7 +43,7 @@ Please note, this is a simplified example and may require adjustments based on y
 
 ## The Benefits
 
-Implementing this feature will empower users with additional options for avatar customization. This could potentially boost user engagement and satisfaction. Moreover, by utilizing signed distance fields, we can guarantee sharp pattern edges, enhancing the visual appeal of the shirt.
+Implementing this feature will empower users with additional options for avatar customization. This could potentially boost user engagement and satisfaction. Moreover, by using signed distance fields, we can guarantee sharp pattern edges, enhancing the visual appeal of the shirt.
 
 ## The Downsides
 

@@ -10,7 +10,7 @@
 
 ### AYON
 
-AYON is an open-source pipeline platform designed for creative studios, particularly those involved in animation and visual effects (VFX). It provides a robust and scalable solution for managing and executing creative projects. AYON's source code is publicly accessible, allowing for community-driven development and customization. It is geared towards creative studios, particularly those working in animation and VFX. Evolved from OpenPype, it has been used since 2018 in various production environments. Supported and funded by the creative industry, AYON also offers comprehensive documentation for users, including guides for administrators and developers.
+AYON is an open-source pipeline platform designed for creative studios, particularly those involved in animation and visual effects (VFX). It provides a reliable and scalable solution for managing and executing creative projects. AYON's source code is publicly accessible, allowing for community-driven development and customization. It is geared towards creative studios, particularly those working in animation and VFX. Evolved from OpenPype, it has been used since 2018 in various production environments. Supported and funded by the creative industry, AYON also offers comprehensive documentation for users, including guides for administrators and developers.
 
 ### Hosted Cloud Services
 
@@ -53,7 +53,7 @@ Finally, we will document our findings from the tests and provide recommendation
 
 ## The Upside
 
-Implementing AYON on hosted cloud services could potentially streamline the workflow of game development studios, making project management more efficient and effective.
+Implementing AYON on hosted cloud services could potentially simplify the workflow of game development studios, making project management more efficient and effective.
 
 ## The Downside
 

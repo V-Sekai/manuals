@@ -8,7 +8,7 @@
 
 ## Backdrop
 
-The goal is to utilize Elixir NX for data science and numerical computing applications relevant to V-Sekai.
+The goal is to use Elixir NX for data science and numerical computing applications relevant to V-Sekai.
 
 ## Challenge
 
@@ -120,7 +120,7 @@ Remember to adjust the path specified in the `ExecStart` directive if required a
 
 - Provides a real-time collaborative tool for Elixir development.
 - Helps in verifying Elixir NX’s capabilities through visualization.
-- Streamlines the code development cycle with instant feedback.
+- Simplifies the code development cycle with instant feedback.
 
 ## Downside
 

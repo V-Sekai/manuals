@@ -2,7 +2,7 @@
 
 ## Context
 
-This system builds a robust image-to-full-body-face mapping pipeline to capture real-world 3D full-body movements synchronized with visual data. Key metrics include anatomical accuracy of motion prediction, scalability across diverse body types, and real-time processing capabilities. This proposal addresses the growing demand for realistic full-body animation in virtual avatars, gaming, and biomechanical analysis. It matters now due to advancements in computer vision and the need for cost-effective motion capture solutions beyond lab-controlled environments.
+This system builds a reliable image-to-full-body-face mapping pipeline to capture real-world 3D full-body movements synchronized with visual data. Key metrics include anatomical accuracy of motion prediction, scalability across diverse body types, and real-time processing capabilities. This proposal addresses the growing demand for realistic full-body animation in virtual avatars, gaming, and biomechanical analysis. It matters now due to advancements in computer vision and the need for cost-effective motion capture solutions beyond lab-controlled environments.
 
 ## Problem Statement
 
@@ -19,7 +19,7 @@ An image-to-FACS pipeline combining synthetic data generation, biomechanical con
 
 - Convert T-posed animations to VRM avatar format with COCO keypoint annotations
 - Generate synthetic training data using Godot Engine with marker/color variations
-- Leverage MediaPipe for video-to-keypoint conversion with vertex-based facial mapping
+- Use MediaPipe for video-to-keypoint conversion with vertex-based facial mapping
 - Train custom prediction models using temporal-spatial attention mechanisms
 
 **Implementation Steps**:

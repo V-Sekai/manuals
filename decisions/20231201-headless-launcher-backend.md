@@ -12,7 +12,7 @@ Introduce a headless backend launcher to automate game updates for enhanced gami
 
 ## Challenge
 
-Build an updater that is simple yet robust, handling automated game updates in the background.
+Build an updater that is simple yet reliable, handling automated game updates in the background.
 
 ## Strategy
 
@@ -128,7 +128,7 @@ setup_registry_values()
 
    - Create a lightweight updater service.
    - Use Elixir for web requests handling.
-   - Utilize server-side CockroachDB for persistence.
+   - Use server-side CockroachDB for persistence.
    - Integrate desync protocol in the Service.
    - Include error handling strategy for failed updates or data synchronization issues.
 

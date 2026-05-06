@@ -1,4 +1,4 @@
-# Draft: Streamlining V-Sekai Performance
+# Draft: Simplifying V-Sekai Performance
 
 ## Metadata
 
@@ -8,7 +8,7 @@
 
 ## Background
 
-V-Sekai, leveraging the Godot client-server model, aspires to support 1000-2000 clients. The objective is to deliver uninterrupted gameplay and a comprehensive gaming experience.
+V-Sekai, using the Godot client-server model, aspires to support 1000-2000 clients. The objective is to deliver uninterrupted gameplay and a comprehensive gaming experience.
 
 ## Challenges
 

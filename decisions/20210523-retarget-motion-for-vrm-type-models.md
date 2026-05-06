@@ -71,7 +71,7 @@ A: Check the armature bone name mappings
 
 ### Positive Consequences <!-- optional -->
 
-- Have a generally robust process of retargeting motions to VRM-type models.
+- Have a generally reliable process of retargeting motions to VRM-type models.
 
 ### Negative Consequences <!-- optional -->
 

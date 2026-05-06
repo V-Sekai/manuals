@@ -12,7 +12,7 @@ V-Sekai requires a method to assign permanent Digital Object Identifiers (DOIs) 
 
 ## Suggested Solution
 
-Leverage Github and Zenodo to create a permanent DOI for V-Sekai's data and code.
+Use Github and Zenodo to create a permanent DOI for V-Sekai's data and code.
 
 ## Implementation
 
@@ -38,7 +38,7 @@ Follow these steps in the guide below:
 
 ## Alternative Options
 
-1. Utilizing Figshare: Figshare is an alternative platform that enables assigning DOIs to digital artifacts. However, its integration with Github may not be as smooth as Zenodo's.
+1. Using Figshare: Figshare is an alternative platform that enables assigning DOIs to digital artifacts. However, its integration with Github may not be as smooth as Zenodo's.
 
 2. Manual DOI registration: Manually registering a DOI through agencies like DataCite or CrossRef. This option can be labor-intensive and might involve additional fees.
 

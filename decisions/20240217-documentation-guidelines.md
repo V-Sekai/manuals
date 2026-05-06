@@ -6,7 +6,7 @@ V-Sekai is a project that brings social VR/VRSNS/metaverse components to the God
 
 ## Problem Statement
 
-The current documentation lacks detailed information about significant features and topics, making it difficult for users and developers to understand and utilize V-Sekai's full potential.
+The current documentation lacks detailed information about significant features and topics, making it difficult for users and developers to understand and use V-Sekai's full potential.
 
 ## Proposed Solution
 
@@ -15,7 +15,7 @@ We propose creating dedicated pages for each feature with descriptive titles and
 ### Topic: Godot XR
 
 - Explanation of XR and Godot
-- How XR works in Godot and how V-Sekai utilizes it
+- How XR works in Godot and how V-Sekai uses it
 - Achievements possible with this feature/knowledge
 - Limitations of the technology affecting our product
 
@@ -42,7 +42,7 @@ Without comprehensive documentation, users and developers may struggle to unders
 
 ## The Infrequent Use Case
 
-Even infrequent or advanced features should be documented to ensure all users can fully utilize V-Sekai.
+Even infrequent or advanced features should be documented to ensure all users can fully use V-Sekai.
 
 ## In Core and Done by Us
 

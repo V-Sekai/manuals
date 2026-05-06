@@ -27,7 +27,7 @@ The six mechanisms that make up the quality control system are mentoring supervi
 
 Mentoring supervision serves mainly to build functional expertise, but it also teaches young engineers how to write and interpret reports, work with chief engineers, and understand and use standards. The chief engineer's prestige reinforces the importance of expertise while it also balances out the functional bent of the other engineers. The chief engineer also promotes mutual adjustment by providing the working instructions for each vehicle program and by resolving cross-functional disagreements.
 
-The second mechanism is cross-functional communication. Every major feature requires at least an introduction so it needs a corresponding page with a descriptive title.
+Cross-functional communication is the other mechanism. Every major feature requires at least an introduction so it needs a corresponding page with a descriptive title.
 
 ### Positive Consequences
 

@@ -8,7 +8,7 @@
 
 ## The Backdrop
 
-V-Sekai is a rapidly evolving platform with a diverse set of requirements. As the platform grows, so does the need for robust and scalable technologies to support its development.
+V-Sekai is a rapidly evolving platform with a diverse set of requirements. As the platform grows, so does the need for reliable and scalable technologies to support its development.
 
 ## The Challenge
 
@@ -18,7 +18,7 @@ The challenge lies in selecting and integrating the right technologies that can 
 
 ### Elixir
 
-Elixir is a dynamic, functional language designed for building scalable and maintainable applications. It leverages the Erlang VM, known for running low-latency, distributed and fault-tolerant systems.
+Elixir is a dynamic, functional language designed for building scalable and maintainable applications. It uses the Erlang VM, known for running low-latency, distributed and fault-tolerant systems.
 
 ```elixir
 defmodule Hello do
@@ -53,7 +53,7 @@ Each of these technologies has its own use cases and can be used in combination 
 
 ## The Upside
 
-The proposed strategy allows for a scalable, robust, and efficient system that can handle V-Sekai's growing needs. It also provides a solid foundation for future development and expansion.
+The proposed strategy allows for a scalable, reliable, and efficient system that can handle V-Sekai's growing needs. It also provides a solid foundation for future development and expansion.
 
 ## The Downside
 

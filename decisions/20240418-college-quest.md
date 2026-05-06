@@ -2,7 +2,7 @@
 
 ## The Context
 
-In the current gaming landscape, there is a noticeable gap for immersive, open-world games set in realistic environments such as a college town. Most games focus on fantasy or post-apocalyptic settings, leaving room for games that engagingly simulate everyday life.
+There is a noticeable gap for immersive, open-world games set in realistic environments such as a college town. Most games focus on fantasy or post-apocalyptic settings, leaving room for games that engagingly simulate everyday life.
 
 ## The Problem Statement
 
@@ -10,7 +10,7 @@ The goal is to create an open-world game that provides players with a unique and
 
 ## Design
 
-"Town Courier" will be developed using the Godot Engine. The game world will be procedurally generated, ensuring that no two playthroughs are identical. NPCs will assign delivery quests to the player, who must navigate the town and deliver items on a moped within a specified time limit. We will utilize the preexisting vehicle code from "Crappy Contraptions" to facilitate the movement mechanics in our game.
+"Town Courier" will be developed using the Godot Engine. The game world will be procedurally generated, ensuring that no two playthroughs are identical. NPCs will assign delivery quests to the player, who must navigate the town and deliver items on a moped within a specified time limit. We will use the preexisting vehicle code from "Crappy Contraptions" to facilitate the movement mechanics in our game.
 
 ## The Benefits
 

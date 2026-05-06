@@ -12,7 +12,7 @@ V-Sekai currently faces a limitation in the quality of upscaled images, particul
 
 ### Describe the proposed option and how it helps to overcome the problem or limitation
 
-Integrate the Intermediate Representation Execution Environment (IREE) into the Godot Engine 4.0 as a C++ GDExtension. Utilize the Vulkan backend to run an image superresolution demo that generates 4x larger images. IREE is an MLIR-based end-to-end compiler and runtime that lowers Machine Learning (ML) models to a unified IR, allowing for better performance and scaling.
+Integrate the Intermediate Representation Execution Environment (IREE) into the Godot Engine 4.0 as a C++ GDExtension. Use the Vulkan backend to run an image superresolution demo that generates 4x larger images. IREE is an MLIR-based end-to-end compiler and runtime that lowers Machine Learning (ML) models to a unified IR, allowing for better performance and scaling.
 
 ### Design
 
@@ -46,7 +46,7 @@ A custom script could serve as a workaround for infrequent use of image superres
 
 ### Is there a reason why this should be core and done by us?
 
-In summary, integrating the IREE-based image superresolution feature into V-Sekai's core offers several benefits, including an enhanced user experience, performance optimization, alignment with open source values, and easier maintenance and support. These advantages contribute to a better, more immersive VR experience while staying true to V-Sekai's project goals.
+Integrating the IREE-based image superresolution feature into V-Sekai's core improves user experience, reduces per-call overhead, aligns with open-source values, and simplifies maintenance. These advantages outweigh the cost of a custom workaround.
 
 ### References
 

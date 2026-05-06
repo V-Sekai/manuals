@@ -17,7 +17,7 @@ Distribute artwork in Blend, VRM, and Unity Asset Package formats to ensure easy
 ## Implementation
 
 1. Create and export artwork in Blend, VRM, and Unity Asset Package formats.
-1. Utilize appropriate formats for each platform, ensuring compatibility and optimal performance.
+1. Use appropriate formats for each platform, ensuring compatibility and optimal performance.
 
 ## Positive Consequences
 

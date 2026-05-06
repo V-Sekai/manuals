@@ -18,7 +18,7 @@ Additionally, we propose a feature where the tool can take a post and return a r
 
 To make these services accessible, we plan to expose them via a Tailscale funnel.
 
-For many of the flows, we can use USD to glTF, then glTF to Godot Engine, and finally Godot Engine to VRM and back. This approach allows us to leverage existing conversion libraries and tools, reducing the amount of custom code we need to write.
+For many of the flows, we can use USD to glTF, then glTF to Godot Engine, and finally Godot Engine to VRM and back. This approach allows us to use existing conversion libraries and tools, reducing the amount of custom code we need to write.
 
 ```mermaid
 graph LR
