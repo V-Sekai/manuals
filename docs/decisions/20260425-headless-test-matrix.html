@@ -79,9 +79,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-36efc884c3a04bcf6faa8f32e02d7e53.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-4954c030c383bd8fc8b39159c186ddfc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-36efc884c3a04bcf6faa8f32e02d7e53.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c8b36098594828138602e592b3b57366.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-c744e0ff86f5d87993c78b6cdbb23212.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-c8b36098594828138602e592b3b57366.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -363,7 +363,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>The Godot native client has two roles (observer, player). The Three.js client is no longer being built (see <a href="../decisions/20260425-threejs-webgpu-zone-client.html">20260425-threejs-webgpu-zone-client.md</a>), so the matrix is now Godot-only. Both phases below depend on the observer (<a href="../decisions/20260425-godot-observer.html">20260425-godot-observer.md</a>), which is deferred while we ship the VR client first, so this matrix is also deferred. Design content is preserved for when work resumes. Testing them headless first means no VR hardware and no display required. Tests follow a three-stage promotion path:</p>
+<p>The Godot native client has two roles (observer, player). The Three.js client is no longer being built (see 20260425-threejs-webgpu-zone-client.md), so the matrix is now Godot-only. Both phases below depend on the observer (<a href="../decisions/20260425-godot-observer.html">20260425-godot-observer.md</a>), which is deferred while we ship the VR client first, so this matrix is also deferred. Design content is preserved for when work resumes. Testing them headless first means no VR hardware and no display required. Tests follow a three-stage promotion path:</p>
 <pre><code>local Docker  →  CI headless  →  VR hardware</code></pre>
 <p>Local Docker confirms the test works on a real network stack before committing a CI job. CI headless runs on every push. VR hardware is a later milestone.</p>
 <p>The zone server is always the Godot native binary run with <code>--headless</code>. <code>headless_log_observer.gd</code> already exists for the Godot observer path.</p>
@@ -485,7 +485,7 @@ server + GP  →  entity count &gt; 0, CH_PLAYER sent, server ACKs</code></pre>
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <p><span class="citation" data-cites="godot_observer">(<a href="#ref-godot_observer" role="doc-biblioref"><strong>godot_observer?</strong></a>)</span>: <a href="../decisions/20260425-godot-observer.html">20260425-godot-observer.md</a> — Godot <code>--headless</code> observer (GO role).</p>
 <p><span class="citation" data-cites="godot_player">(<a href="#ref-godot_player" role="doc-biblioref"><strong>godot_player?</strong></a>)</span>: <a href="../decisions/20260425-godot-player.html">20260425-godot-player.md</a> — Godot native PCVR player (GP role).</p>
-<p><span class="citation" data-cites="dual_client">(<a href="#ref-dual_client" role="doc-biblioref"><strong>dual_client?</strong></a>)</span>: <a href="../decisions/20260425-dual-client-test.html">20260425-dual-client-test.md</a> — superseded; coverage merged into this matrix as the GO+GP pair.</p>
+<p><span class="citation" data-cites="dual_client">(<a href="#ref-dual_client" role="doc-biblioref"><strong>dual_client?</strong></a>)</span>: 20260425-dual-client-test.md — superseded; coverage merged into this matrix as the GO+GP pair.</p>
 
 
 </section>

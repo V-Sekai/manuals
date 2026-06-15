@@ -10,7 +10,7 @@
 <atom:link href="https://v-sekai.github.io/manuals/decisions.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.38</generator>
-<lastBuildDate>Fri, 29 May 2026 14:18:04 GMT</lastBuildDate>
+<lastBuildDate>Mon, 15 Jun 2026 01:42:10 GMT</lastBuildDate>
 <item>
   <title></title>
   <link>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</link>
@@ -121,7 +121,7 @@
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/present-proposal-template.html</guid>
-  <pubDate>Fri, 29 May 2026 14:18:04 GMT</pubDate>
+  <pubDate>Mon, 15 Jun 2026 01:42:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -252,7 +252,7 @@ Gall, John. 1977. <em>Systemantics: How Systems Work and Especially How They Fai
 </div>
 </div></section></div> ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260426-vr-mmog-rpg-monorepo-split.html</guid>
-  <pubDate>Fri, 29 May 2026 14:18:04 GMT</pubDate>
+  <pubDate>Mon, 15 Jun 2026 01:42:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -402,7 +402,7 @@ font-style: inherit;"># exit 0, no errors, character loads and steps forward</sp
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260426-reduce-merge-humanoid-test-project.html</guid>
-  <pubDate>Fri, 29 May 2026 14:18:04 GMT</pubDate>
+  <pubDate>Mon, 15 Jun 2026 01:42:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -633,1395 +633,7 @@ Gall, John. 1977. <em>Systemantics: How Systems Work and Especially How They Fai
 </div>
 </div></section></div> ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260426-isolated-godot-submodule-checkouts.html</guid>
-  <pubDate>Fri, 29 May 2026 14:18:04 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20260425-threejs-webgpu-zone-client.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="three.js-webgpu-client-against-the-godot-zone-server" class="level1">
-<h1>Three.js WebGPU Client Against the Godot Zone Server</h1>
-<p>Superseded by: <a href="../decisions/20260425-godot-observer.html">20260425-godot-observer.md</a> and <a href="../decisions/20260425-godot-player.html">20260425-godot-player.md</a></p>
-<ul>
-<li>Status: superseded (not being built)</li>
-<li>Deciders: V-Sekai, fire</li>
-<li>Tags: V-Sekai, Threejs, WebGPU, WebTransport, ZoneServer, Client, 20260425-threejs-webgpu-zone-client</li>
-</ul>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>The Godot web export path requires a wasm32/wasm64 build, COOP/COEP headers, SharedArrayBuffer, and a service worker. Three.js r171+ ships a production-ready WebGPU renderer <span class="citation" data-cites="threejswebgpu2026">(<strong>threejswebgpu2026?</strong>)</span> supported on all major browsers including iOS Safari since September 2025. The zone server already speaks WebTransport. The CH_INTEREST packet format is fully specified in <code>fabric_zone_types.h</code> — 100 bytes per entity, fixed offsets, no Godot dependency.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>The Godot web export client blocks on a multi-minute wasm build for every iteration. Three.js + WebTransport eliminates the build step entirely: connect, parse the 100-byte wire format, render. The operator camera overlay (load bars, dot clustering) becomes plain DOM/Canvas over a Three.js scene.</p>
-</section>
-<section id="design" class="level2">
-<h2 class="anchored" data-anchor-id="design">Design</h2>
-<section id="wire-protocol-ch_interest-read-only-100-bytes-per-entity" class="level3">
-<h3 class="anchored" data-anchor-id="wire-protocol-ch_interest-read-only-100-bytes-per-entity">Wire protocol — CH_INTEREST (read only, 100 bytes per entity)</h3>
-<pre><code>Offset  Size  Field
-  0       4   global_id (int32)
-  4      24   cx, cy, cz (float64 × 3)
- 28      12   vx, vy, vz (int16 × 3, scale V_SCALE)
- 34       6   ax, ay, az (int16 × 3, scale A_SCALE)
- 40       4   hlc = tick(24b) | counter(8b)
- 44      56   payload[14] (uint32 × 14)
-
-payload[0] bits:
-  [31:24] entity_class   (0=NPC, 1=player, 2=prop, 3=effect, 4=humanoid bone)
-  [23: 8] owner_id
-  [ 7: 0] state_flags</code></pre>
-<p>For class=4 (V-Sekai humanoid bone):</p>
-<pre><code>payload[1] = axis_x int16 (lo) | axis_y int16 (hi)  — swing ±1 → ±32767
-payload[2] = axis_z int16 (lo) | reserved            — twist axis</code></pre>
-<p>Bones are stored as swing/twist triplets in [-1, 1], consistent with <code>TransformUtil.swing_twist</code> in the humanoid project and the camera ADR <a href="../decisions/20260425-operator-camera-2-5d.html">20260425-operator-camera-2-5d.md</a>.</p>
-</section>
-<section id="typescript-packet-parser" class="level3">
-<h3 class="anchored" data-anchor-id="typescript-packet-parser">TypeScript packet parser</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode ts code-with-copy"><code class="sourceCode typescript"><span id="cb3-1"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> V_SCALE <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">100</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span>   <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">// int16 → m/s</span></span>
-<span id="cb3-2"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> A_SCALE <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1000</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span>  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">// int16 → m/s²</span></span>
-<span id="cb3-3"></span>
-<span id="cb3-4"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">interface</span> Entity {</span>
-<span id="cb3-5">  id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">number</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-6">  pos<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> [<span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">number</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">number</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">number</span>]<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-7">  vel<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> [<span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">number</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">number</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">number</span>]<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-8">  entityClass<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">number</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-9">  ownerId<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">number</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-10">  payload<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">Uint32Array</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-11">}</span>
-<span id="cb3-12"></span>
-<span id="cb3-13"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">parseInterest</span>(buf<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">ArrayBuffer</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> Entity[] {</span>
-<span id="cb3-14">  <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> view <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">new</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">DataView</span>(buf)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-15">  <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> count <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> buf<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">byteLength</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">100</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-16">  <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> out<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> Entity[] <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> []<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-17">  <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> (<span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">let</span> i <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> i <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;</span> count<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> i<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">++</span>) {</span>
-<span id="cb3-18">    <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> o <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> i <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">100</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-19">    out<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">push</span>({</span>
-<span id="cb3-20">      id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span>    view<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">getInt32</span>(o<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">true</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb3-21">      pos<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span>   [view<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">getFloat64</span>(o <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">4</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span>  <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">true</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb3-22">              view<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">getFloat64</span>(o <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">12</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">true</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb3-23">              view<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">getFloat64</span>(o <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">20</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">true</span>)]<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb3-24">      vel<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span>   [view<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">getInt16</span>(o <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">28</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">true</span>) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> V_SCALE<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb3-25">              view<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">getInt16</span>(o <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">30</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">true</span>) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> V_SCALE<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb3-26">              view<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">getInt16</span>(o <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">32</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">true</span>) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> V_SCALE]<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb3-27">      entityClass<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> (view<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">getUint32</span>(o <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">44</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">true</span>) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;&gt;</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">24</span>) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&amp;</span> <span class="bn" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0xff</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb3-28">      ownerId<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span>     (view<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">getUint32</span>(o <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">44</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">true</span>) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;&gt;</span>  <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">8</span>) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&amp;</span> <span class="bn" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0xffff</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb3-29">      payload<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span>     <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">new</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">Uint32Array</span>(buf<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> o <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">44</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">14</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb3-30">    })<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-31">  }</span>
-<span id="cb3-32">  <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">return</span> out<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-33">}</span></code></pre></div></div>
-</section>
-<section id="three.js-webgpu-scene" class="level3">
-<h3 class="anchored" data-anchor-id="three.js-webgpu-scene">Three.js WebGPU scene</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode ts code-with-copy"><code class="sourceCode typescript"><span id="cb4-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> THREE <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"three"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb4-2"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> { WebGPURenderer } <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"three/webgpu"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb4-3"></span>
-<span id="cb4-4"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> renderer <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">new</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">WebGPURenderer</span>({ antialias<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">true</span> })<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb4-5"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">await</span> renderer<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">init</span>()<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb4-6"></span>
-<span id="cb4-7"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> scene <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">new</span> THREE<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">Scene</span>()<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb4-8"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> camera <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">new</span> THREE<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">OrthographicCamera</span>(<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">...</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb4-9">camera<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">rotation</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>(<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.153</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">Math</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">PI</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span>  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">// SWING_ELEVATION</span></span>
-<span id="cb4-10"></span>
-<span id="cb4-11"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">// One InstancedMesh per entity class — 1800 entities, one draw call.</span></span>
-<span id="cb4-12"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> jellyMesh <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">new</span> THREE<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">InstancedMesh</span>(jellyGeom<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> jellyMat<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1800</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb4-13">scene<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">add</span>(jellyMesh)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span></code></pre></div></div>
-</section>
-<section id="webtransport-connection" class="level3">
-<h3 class="anchored" data-anchor-id="webtransport-connection">WebTransport connection</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode ts code-with-copy"><code class="sourceCode typescript"><span id="cb5-1"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> wt <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">new</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">WebTransport</span>(<span class="vs" style="color: #20794D;
-background-color: null;
-font-style: inherit;">`https://</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">${</span>host<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span><span class="vs" style="color: #20794D;
-background-color: null;
-font-style: inherit;">/zone`</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb5-2"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">await</span> wt<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">ready</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb5-3"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> reader <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> wt<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">datagrams</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">readable</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">getReader</span>()<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb5-4"></span>
-<span id="cb5-5">(<span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">pump</span>(result<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> ReadableStreamReadResult<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;</span><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">Uint8Array</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;</span>) {</span>
-<span id="cb5-6">  <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> (result<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">done</span>) <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">return</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb5-7">  <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> entities <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">parseInterest</span>(result<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">value</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">buffer</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb5-8">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">updateScene</span>(entities)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb5-9">  reader<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read</span>()<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">then</span>(pump)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb5-10">})(<span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">await</span> reader<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read</span>())<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span></code></pre></div></div>
-<p>The datagram reader is captured once and reused (the same exclusive-lock invariant proved in <a href="../decisions/20260425-jellyfish-game.html">20260425-jellyfish-game.md</a> and the WebTransport audit).</p>
-</section>
-<section id="operator-overlay" class="level3">
-<h3 class="anchored" data-anchor-id="operator-overlay">Operator overlay</h3>
-<p>Load bars and dot clustering (see <a href="../decisions/20260425-operator-overlay.html">20260425-operator-overlay.md</a>) become a <code>&lt;canvas&gt;</code> element over the Three.js canvas, using the plain 2D Context API, with no CanvasLayer needed.</p>
-</section>
-</section>
-<section id="client-split" class="level2">
-<h2 class="anchored" data-anchor-id="client-split">Client split</h2>
-<p>Two clients replace the previous Godot wasm web export:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 26%">
-<col style="width: 39%">
-<col style="width: 34%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Client</th>
-<th>Transport</th>
-<th>Use case</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Godot native PCVR</td>
-<td>WebTransport (picoquic)</td>
-<td>High-fidelity VR, full entity control</td>
-</tr>
-<tr class="even">
-<td>Three.js WebGPU</td>
-<td>WebTransport (browser API)</td>
-<td>Browser: operator view, WebXR VR, godot-sandbox WASM scripts, taskweft WASM planner</td>
-</tr>
-</tbody>
-</table>
-<p>The Godot wasm32/wasm64 build is dropped. The COOP/COEP service worker, SharedArrayBuffer build flags, and gescons wasm targets are no longer needed for the client path.</p>
-</section>
-<section id="extending-the-browser-client" class="level2">
-<h2 class="anchored" data-anchor-id="extending-the-browser-client">Extending the browser client</h2>
-<p>Two components can move into the browser without a Godot runtime:</p>
-<p>godot-sandbox runs GDScript as RISC-V ELF guests via libriscv. The ELF is compiled once and stored in the CDN. libriscv is the VM:</p>
-<pre><code>GDScript  → RISC-V ELF   (compile once; CDN asset)
-libriscv  → WASM          (Emscripten; browser loads VM, feeds it the ELF)</code></pre>
-<p>No binary equivalence is required. <code>WasmEquiv.lean</code> proves <code>vm_deterministic</code>: the VM is a pure function, so the same ELF + same state always yields the same result on any host.</p>
-<p>taskweft standalone headers (<code>standalone/tw_planner.hpp</code>) are header-only C++20 with no BEAM dependency and no libriscv layer, and they compile directly to WASM via Emscripten. <code>emcc standalone/tw_planner.hpp -o tw_planner.wasm</code> produces a module that runs RECTGTN planning in the browser, using the same species domain JSON-LD files that drive the native zone server.</p>
-<p>VR presence uses Three.js + WebXR Device API (<code>renderer.xr.enabled = true</code>, <code>VRButton.createButton(renderer)</code>). The Godot XR layer is not required.</p>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>Implementing CH_PLAYER datagrams in TypeScript to send entity input is a second scope of work; the initial Three.js client is observer-only.</p>
-<p>The actual integration risk is the godot-sandbox guest ABI (syscall shim from RISC-V <code>ecall</code> to Emscripten host) and taskweft Emscripten build constraints. These are engineering work. <code>WasmEquiv.lean</code> proves <code>vm_deterministic</code> (the VM is a pure function); it does not prove the ABI shim is correct.</p>
-<p>The packet format is internal and could change without versioning. A format version byte in the first octet of CH_INTEREST would protect against silent breakage; that change belongs in a separate ADR.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Godot wasm32/wasm64 web export: dropped. Build friction (multi-minute compile, COOP/COEP, service worker, SharedArrayBuffer) exceeded the benefit once the native PCVR client covers VR and Three.js covers the browser.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Accepted</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>iFire</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<p><span class="citation" data-cites="threejswebgpu2026">(<strong>threejswebgpu2026?</strong>)</span>: “What’s New in Three.js (2026): WebGPU, New Workflows &amp; Beyond.” utsubo.com. <a href="https://www.utsubo.com/blog/threejs-2026-what-changed" class="uri">https://www.utsubo.com/blog/threejs-2026-what-changed</a></p>
-<p><span class="citation" data-cites="threejswebgpudocs">(<strong>threejswebgpudocs?</strong>)</span>: “WebGPU — three.js docs.” Three.js. <a href="https://threejs.org/docs/pages/WebGPU.html" class="uri">https://threejs.org/docs/pages/WebGPU.html</a></p>
-<p><span class="citation" data-cites="threejswebgpurenderer">(<strong>threejswebgpurenderer?</strong>)</span>: “WebGPURenderer — three.js docs.” Three.js. <a href="https://threejs.org/docs/pages/WebGPURenderer.html" class="uri">https://threejs.org/docs/pages/WebGPURenderer.html</a></p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20260425-threejs-webgpu-zone-client.html</guid>
-  <pubDate>Fri, 29 May 2026 14:18:04 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20260425-threejs-player.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="three.js-webgpu-client-stage-2-player" class="level1">
-<h1>Three.js WebGPU Client — Stage 2: Player</h1>
-<p>Supersedes: <a href="../decisions/20260425-threejs-webgpu-zone-client.html">20260425-threejs-webgpu-zone-client.md</a> (split) Requires: <a href="../decisions/20260425-threejs-observer.html">20260425-threejs-observer.md</a></p>
-<p>Superseded by: <a href="../decisions/20260425-godot-player.html">20260425-godot-player.md</a></p>
-<ul>
-<li>Status: superseded</li>
-<li>Deciders: V-Sekai, fire</li>
-<li>Tags: V-Sekai, Threejs, WebGPU, WebTransport, Player, ZoneServer, libriscv, taskweft, WebXR, 20260425-threejs-player</li>
-</ul>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>Stage 1 (<a href="../decisions/20260425-threejs-observer.html">20260425-threejs-observer.md</a>) delivers a read-only browser observer. Stage 2 adds entity control, GDScript behavior via libriscv WASM, RECTGTN planning via taskweft WASM, and VR presence via WebXR.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>The observer cannot send entity input or run behavior scripts. An operator who wants to interact with entities (spawn jellyfish, trigger behavior changes, enter VR) needs the player layer.</p>
-</section>
-<section id="design" class="level2">
-<h2 class="anchored" data-anchor-id="design">Design</h2>
-<section id="ch_player-write-path" class="level3">
-<h3 class="anchored" data-anchor-id="ch_player-write-path">CH_PLAYER write path</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode ts code-with-copy"><code class="sourceCode typescript"><span id="cb1-1"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sendPlayer</span>(wt<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> WebTransport<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> entityId<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">number</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> payload<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">Uint32Array</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">void</span> {</span>
-<span id="cb1-2">  <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> buf <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">new</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">ArrayBuffer</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">100</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb1-3">  <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> view <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">new</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">DataView</span>(buf)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb1-4">  view<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">setInt32</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> entityId<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">true</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb1-5">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">// ... fill position, velocity, payload fields</span></span>
-<span id="cb1-6">  wt<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">datagrams</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">writable</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">getWriter</span>()<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">write</span>(<span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">new</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">Uint8Array</span>(buf))<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb1-7">}</span></code></pre></div></div>
-</section>
-<section id="gdscript-behavior-via-libriscv-wasm" class="level3">
-<h3 class="anchored" data-anchor-id="gdscript-behavior-via-libriscv-wasm">GDScript behavior via libriscv WASM</h3>
-<p>The ELF is compiled once and stored in the CDN. <code>vm_deterministic</code> in <code>WasmEquiv.lean</code> proves the VM produces the same result on any host:</p>
-<pre><code>GDScript  → RISC-V ELF   (compile once; CDN asset)
-libriscv  → WASM          (Emscripten; browser loads VM, feeds it the ELF)</code></pre>
-<p>The integration risk is the godot-sandbox guest ABI: the syscall shim mapping RISC-V <code>ecall</code> to Emscripten host calls. This must be verified before Stage 2 ships.</p>
-</section>
-<section id="rectgtn-planning-via-taskweft-wasm" class="level3">
-<h3 class="anchored" data-anchor-id="rectgtn-planning-via-taskweft-wasm">RECTGTN planning via taskweft WASM</h3>
-<p><code>standalone/tw_planner.hpp</code> is header-only C++20 with no BEAM dependency. It compiles directly to WASM via Emscripten and runs the same species domain JSON-LD files that drive the native zone server. Emscripten build constraints (no dynamic linking, POSIX subset) must be verified.</p>
-</section>
-<section id="vr-presence-via-webxr" class="level3">
-<h3 class="anchored" data-anchor-id="vr-presence-via-webxr">VR presence via WebXR</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode ts code-with-copy"><code class="sourceCode typescript"><span id="cb3-1">renderer<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">xr</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">enabled</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-2"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">document</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">body</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">appendChild</span>(VRButton<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">createButton</span>(renderer))<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span></code></pre></div></div>
-<p>The Godot XR layer is not required. Three.js WebXR handles headset rendering.</p>
-</section>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>libriscv WASM ABI shim and taskweft Emscripten build are unverified. Shipping Stage 2 before these are tested risks a broken browser VR experience.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Godot native PCVR client handles high-fidelity VR and is the reference implementation. Stage 2 is the browser peer; it does not replace the native client.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Superseded by <a href="../decisions/20260425-godot-player.html">20260425-godot-player.md</a>. Not being built.</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>iFire</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<p><span class="citation" data-cites="wasmequiv">(<strong>wasmequiv?</strong>)</span>: <code>multiplayer-fabric-taskweft/lean/WasmEquiv.lean</code> — <code>vm_deterministic</code> proof.</p>
-<p><span class="citation" data-cites="libriscv">(<strong>libriscv?</strong>)</span>: libriscv — RISC-V interpreter with Emscripten target. <a href="https://github.com/fwsGonzo/libriscv" class="uri">https://github.com/fwsGonzo/libriscv</a></p>
-<p><span class="citation" data-cites="webxr">(<strong>webxr?</strong>)</span>: “WebXR Device API.” MDN. <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API" class="uri">https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API</a></p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20260425-threejs-player.html</guid>
-  <pubDate>Fri, 29 May 2026 14:18:04 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20260425-threejs-observer.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="three.js-webgpu-client-stage-1-observer" class="level1">
-<h1>Three.js WebGPU Client — Stage 1: Observer</h1>
-<p>Supersedes: <a href="../decisions/20260425-threejs-webgpu-zone-client.html">20260425-threejs-webgpu-zone-client.md</a> (split)</p>
-<p>Superseded by: <a href="../decisions/20260425-godot-observer.html">20260425-godot-observer.md</a></p>
-<ul>
-<li>Status: superseded</li>
-<li>Deciders: V-Sekai, fire</li>
-<li>Tags: V-Sekai, Threejs, WebGPU, WebTransport, Observer, ZoneServer, 20260425-threejs-observer</li>
-</ul>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>The zone server speaks WebTransport. The CH_INTEREST packet format is fully specified in <code>fabric_zone_types.h</code> (100 bytes per entity, fixed offsets). A read-only observer client needs no Godot runtime, no wasm build, and no service worker.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>The operator view needs a browser client that starts in minutes, not after a multi-minute wasm compile. Stage 1 delivers that: connect, parse datagrams, render entities.</p>
-</section>
-<section id="design" class="level2">
-<h2 class="anchored" data-anchor-id="design">Design</h2>
-<section id="wire-protocol-ch_interest-100-bytes-read-only" class="level3">
-<h3 class="anchored" data-anchor-id="wire-protocol-ch_interest-100-bytes-read-only">Wire protocol — CH_INTEREST (100 bytes, read only)</h3>
-<pre><code>Offset  Size  Field
-  0       4   global_id (int32)
-  4      24   cx, cy, cz (float64 × 3)
- 28      12   vx, vy, vz (int16 × 3, scale 1/100 m/s)
- 34       6   ax, ay, az (int16 × 3, scale 1/1000 m/s²)
- 40       4   hlc = tick(24b) | counter(8b)
- 44      56   payload[14] (uint32 × 14)
-
-payload[0]: entity_class(8b) | owner_id(16b) | state_flags(8b)</code></pre>
-</section>
-<section id="typescript-packet-parser" class="level3">
-<h3 class="anchored" data-anchor-id="typescript-packet-parser">TypeScript packet parser</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode ts code-with-copy"><code class="sourceCode typescript"><span id="cb2-1"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">parseInterest</span>(buf<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">ArrayBuffer</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> Entity[] {</span>
-<span id="cb2-2">  <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> view <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">new</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">DataView</span>(buf)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb2-3">  <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> out<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> Entity[] <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> []<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb2-4">  <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> (<span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">let</span> i <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> i <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;</span> buf<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">byteLength</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">100</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> i<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">++</span>) {</span>
-<span id="cb2-5">    <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> o <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> i <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">100</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb2-6">    out<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">push</span>({</span>
-<span id="cb2-7">      id<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span>          view<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">getInt32</span>(o<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">true</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb2-8">      pos<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span>         [view<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">getFloat64</span>(o<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">4</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">true</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> view<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">getFloat64</span>(o<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">12</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">true</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> view<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">getFloat64</span>(o<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">20</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">true</span>)]<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb2-9">      entityClass<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> (view<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">getUint32</span>(o<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">44</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">true</span>) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;&gt;</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">24</span>) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&amp;</span> <span class="bn" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0xff</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb2-10">      payload<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span>     <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">new</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">Uint32Array</span>(buf<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> o<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">44</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">14</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb2-11">    })<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb2-12">  }</span>
-<span id="cb2-13">  <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">return</span> out<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb2-14">}</span></code></pre></div></div>
-</section>
-<section id="webtransport-connection" class="level3">
-<h3 class="anchored" data-anchor-id="webtransport-connection">WebTransport connection</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode ts code-with-copy"><code class="sourceCode typescript"><span id="cb3-1"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> wt <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">new</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">WebTransport</span>(<span class="vs" style="color: #20794D;
-background-color: null;
-font-style: inherit;">`https://</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">${</span>host<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span><span class="vs" style="color: #20794D;
-background-color: null;
-font-style: inherit;">/zone`</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-2"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">await</span> wt<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">ready</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-3"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> reader <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> wt<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">datagrams</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">readable</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">getReader</span>()<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-4">(<span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">pump</span>(r) {</span>
-<span id="cb3-5">  <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> (r<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">done</span>) <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">return</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-6">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">updateScene</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">parseInterest</span>(r<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">value</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">buffer</span>))<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-7">  reader<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read</span>()<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">then</span>(pump)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-8">})(<span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">await</span> reader<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read</span>())<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span></code></pre></div></div>
-<p>Reader captured once; exclusive-lock invariant holds (proved in WebTransport audit).</p>
-</section>
-<section id="three.js-webgpu-scene" class="level3">
-<h3 class="anchored" data-anchor-id="three.js-webgpu-scene">Three.js WebGPU scene</h3>
-<p>Orthographic camera at SWING_ELEVATION twist/swing, one <code>InstancedMesh</code> per entity class (1800 entities, one draw call). Operator overlay (load bars, dot clustering) is a <code>&lt;canvas&gt;</code> over the Three.js canvas per <a href="../decisions/20260425-operator-overlay.html">20260425-operator-overlay.md</a>.</p>
-</section>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>Read-only: no entity input. Stage 2 adds the CH_PLAYER write path.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Stage 2 features (libriscv, taskweft WASM, WebXR) are deferred; adding them to Stage 1 would delay shipping the operator view.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Superseded by <a href="../decisions/20260425-godot-observer.html">20260425-godot-observer.md</a>. Not being built.</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>iFire</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<p><span class="citation" data-cites="threejswebgpu2026">(<strong>threejswebgpu2026?</strong>)</span>: “What’s New in Three.js (2026).” utsubo.com. <a href="https://www.utsubo.com/blog/threejs-2026-what-changed" class="uri">https://www.utsubo.com/blog/threejs-2026-what-changed</a></p>
-<p><span class="citation" data-cites="threejswebgpurenderer">(<strong>threejswebgpurenderer?</strong>)</span>: “WebGPURenderer — three.js docs.” Three.js. <a href="https://threejs.org/docs/pages/WebGPURenderer.html" class="uri">https://threejs.org/docs/pages/WebGPURenderer.html</a></p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20260425-threejs-observer.html</guid>
-  <pubDate>Fri, 29 May 2026 14:18:04 GMT</pubDate>
+  <pubDate>Mon, 15 Jun 2026 01:42:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2114,7 +726,7 @@ theorem display_bounded (count : Nat) (h : count ≤ ENTITY_LIMIT) :
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-operator-overlay.html</guid>
-  <pubDate>Fri, 29 May 2026 14:18:04 GMT</pubDate>
+  <pubDate>Mon, 15 Jun 2026 01:42:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2304,7 +916,7 @@ Unreal MMO Dev. 2022. <em><span>UE</span>: How to Rotate and Zoom Using Spring A
 </div>
 </div></section></div> ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-operator-camera-2-5d.html</guid>
-  <pubDate>Fri, 29 May 2026 14:18:04 GMT</pubDate>
+  <pubDate>Mon, 15 Jun 2026 01:42:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2383,7 +995,7 @@ Unreal MMO Dev. 2022. <em><span>UE</span>: How to Rotate and Zoom Using Spring A
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-jellyfish-pass-condition.html</guid>
-  <pubDate>Fri, 29 May 2026 14:18:04 GMT</pubDate>
+  <pubDate>Mon, 15 Jun 2026 01:42:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2396,7 +1008,7 @@ Unreal MMO Dev. 2022. <em><span>UE</span>: How to Rotate and Zoom Using Spring A
 
 <section id="build-the-jellyfish-game" class="level1">
 <h1>Build the Jellyfish Game</h1>
-<p>Supersedes: <a href="../decisions/20260421-infinite-aquarium-concept.html">20260421-infinite-aquarium-concept.md</a>, <a href="../decisions/20260421-virtual-creator-market-implementation-plan.html">20260421-virtual-creator-market-implementation-plan.md</a></p>
+<p>Supersedes: 20260421-infinite-aquarium-concept.md, 20260421-virtual-creator-market-implementation-plan.md</p>
 <ul>
 <li>Status: accepted</li>
 <li>Deciders: V-Sekai, fire</li>
@@ -2422,7 +1034,7 @@ Unreal MMO Dev. 2022. <em><span>UE</span>: How to Rotate and Zoom Using Spring A
 <li>Asset delivery: <a href="../decisions/20260421-content-addressed-asset-delivery.html">20260421-content-addressed-asset-delivery.md</a></li>
 <li>ReBAC enforcement: <a href="../decisions/20260421-rebac-zone-server-enforcement.html">20260421-rebac-zone-server-enforcement.md</a></li>
 </ul>
-<p>Work sequencing follows the phases in <a href="../decisions/20260421-virtual-creator-market-implementation-plan.html">20260421-virtual-creator-market-implementation-plan.md</a> (superseded by this ADR; phases remain valid as a task checklist).</p>
+<p>Work sequencing follows the phases in 20260421-virtual-creator-market-implementation-plan.md (superseded by this ADR; phases remain valid as a task checklist).</p>
 </section>
 <section id="the-benefits" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
@@ -2445,7 +1057,7 @@ Unreal MMO Dev. 2022. <em><span>UE</span>: How to Rotate and Zoom Using Spring A
 <p>The Godot wasm32/wasm64 web export is dropped. Active client surface is Godot-native:</p>
 <p>Godot native PCVR client handles VR presence, jellyfish creation, and entity control. It uses the xr-grid project with OpenXR and the picoquic WebTransport backend. See <a href="../decisions/20260425-godot-player.html">20260425-godot-player.md</a>.</p>
 <p>Godot <code>--headless</code> observer (operator and CI smoke-test paths) is <strong>deferred</strong> until the VR client ships. The design (reusing <code>FabricMultiplayerPeer</code> and <code>fabric_client.gd</code>, no separate parser, no TypeScript) remains valid; see <a href="../decisions/20260425-godot-observer.html">20260425-godot-observer.md</a>.</p>
-<p>A browser client is SOMEDAY; the Three.js WebGPU design (<a href="../decisions/20260425-threejs-webgpu-zone-client.html">20260425-threejs-webgpu-zone-client.md</a>) is superseded and not being built.</p>
+<p>A browser client is SOMEDAY; the Three.js WebGPU design (20260425-threejs-webgpu-zone-client.md) is superseded and not being built.</p>
 </section>
 <section id="in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
@@ -2472,8 +1084,8 @@ Unreal MMO Dev. 2022. <em><span>UE</span>: How to Rotate and Zoom Using Spring A
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <ol type="1">
 <li><a href="../decisions/20260421-rectgtn-jellyfish-behavior.html">20260421-rectgtn-jellyfish-behavior.md</a> — RECTGTN planning implementation</li>
-<li><a href="../decisions/20260421-infinite-aquarium-concept.html">20260421-infinite-aquarium-concept.md</a> — aquarium concept (superseded)</li>
-<li><a href="../decisions/20260421-virtual-creator-market-implementation-plan.html">20260421-virtual-creator-market-implementation-plan.md</a> — phase checklist (superseded)</li>
+<li>20260421-infinite-aquarium-concept.md — aquarium concept (superseded)</li>
+<li>20260421-virtual-creator-market-implementation-plan.md — phase checklist (superseded)</li>
 <li><a href="../decisions/20260423-sandbox-rebac-behavior.html">20260423-sandbox-rebac-behavior.md</a> — sandbox for creator executable code</li>
 </ol>
 
@@ -2483,7 +1095,7 @@ Unreal MMO Dev. 2022. <em><span>UE</span>: How to Rotate and Zoom Using Spring A
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-jellyfish-game.html</guid>
-  <pubDate>Fri, 29 May 2026 14:18:04 GMT</pubDate>
+  <pubDate>Mon, 15 Jun 2026 01:42:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2503,7 +1115,7 @@ Unreal MMO Dev. 2022. <em><span>UE</span>: How to Rotate and Zoom Using Spring A
 </ul>
 <section id="the-context" class="level2">
 <h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>The Godot native client has two roles (observer, player). The Three.js client is no longer being built (see <a href="../decisions/20260425-threejs-webgpu-zone-client.html">20260425-threejs-webgpu-zone-client.md</a>), so the matrix is now Godot-only. Both phases below depend on the observer (<a href="../decisions/20260425-godot-observer.html">20260425-godot-observer.md</a>), which is deferred while we ship the VR client first, so this matrix is also deferred. Design content is preserved for when work resumes. Testing them headless first means no VR hardware and no display required. Tests follow a three-stage promotion path:</p>
+<p>The Godot native client has two roles (observer, player). The Three.js client is no longer being built (see 20260425-threejs-webgpu-zone-client.md), so the matrix is now Godot-only. Both phases below depend on the observer (<a href="../decisions/20260425-godot-observer.html">20260425-godot-observer.md</a>), which is deferred while we ship the VR client first, so this matrix is also deferred. Design content is preserved for when work resumes. Testing them headless first means no VR hardware and no display required. Tests follow a three-stage promotion path:</p>
 <pre><code>local Docker  →  CI headless  →  VR hardware</code></pre>
 <p>Local Docker confirms the test works on a real network stack before committing a CI job. CI headless runs on every push. VR hardware is a later milestone.</p>
 <p>The zone server is always the Godot native binary run with <code>--headless</code>. <code>headless_log_observer.gd</code> already exists for the Godot observer path.</p>
@@ -2801,7 +1413,7 @@ font-style: inherit;">=</span>600</span></code></pre></div></div>
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
 <p><span class="citation" data-cites="godot_observer">(<strong>godot_observer?</strong>)</span>: <a href="../decisions/20260425-godot-observer.html">20260425-godot-observer.md</a> — Godot <code>--headless</code> observer (GO role).</p>
 <p><span class="citation" data-cites="godot_player">(<strong>godot_player?</strong>)</span>: <a href="../decisions/20260425-godot-player.html">20260425-godot-player.md</a> — Godot native PCVR player (GP role).</p>
-<p><span class="citation" data-cites="dual_client">(<strong>dual_client?</strong>)</span>: <a href="../decisions/20260425-dual-client-test.html">20260425-dual-client-test.md</a> — superseded; coverage merged into this matrix as the GO+GP pair.</p>
+<p><span class="citation" data-cites="dual_client">(<strong>dual_client?</strong>)</span>: 20260425-dual-client-test.md — superseded; coverage merged into this matrix as the GO+GP pair.</p>
 
 
 </section>
@@ -2809,7 +1421,7 @@ font-style: inherit;">=</span>600</span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-headless-test-matrix.html</guid>
-  <pubDate>Fri, 29 May 2026 14:18:04 GMT</pubDate>
+  <pubDate>Mon, 15 Jun 2026 01:42:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2900,7 +1512,7 @@ server:  {"event":"echo","len":24,"mode":0}</code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-godot-web-client-webtransport.html</guid>
-  <pubDate>Fri, 29 May 2026 14:18:04 GMT</pubDate>
+  <pubDate>Mon, 15 Jun 2026 01:42:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -2913,7 +1525,7 @@ server:  {"event":"echo","len":24,"mode":0}</code></pre>
 
 <section id="godot-native-pcvr-player" class="level1">
 <h1>Godot Native PCVR Player</h1>
-<p>Supersedes: <a href="../decisions/20260425-threejs-player.html">20260425-threejs-player.md</a></p>
+<p>Supersedes: 20260425-threejs-player.md</p>
 <ul>
 <li>Status: draft</li>
 <li>Deciders: V-Sekai, fire</li>
@@ -3137,7 +1749,7 @@ font-style: inherit;">next_entity_id</span>(), pos, payload)</span></code></pre>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<p><span class="citation" data-cites="threejsplayer">(<strong>threejsplayer?</strong>)</span>: <a href="../decisions/20260425-threejs-player.html">20260425-threejs-player.md</a> — superseded Three.js Stage 2.</p>
+<p><span class="citation" data-cites="threejsplayer">(<strong>threejsplayer?</strong>)</span>: 20260425-threejs-player.md — superseded Three.js Stage 2.</p>
 <p><span class="citation" data-cites="godotobserver">(<strong>godotobserver?</strong>)</span>: <a href="../decisions/20260425-godot-observer.html">20260425-godot-observer.md</a> — deferred; VR client ships first, observer follows.</p>
 <p><span class="citation" data-cites="operatorcamera">(<strong>operatorcamera?</strong>)</span>: <a href="../decisions/20260425-operator-camera-2-5d.html">20260425-operator-camera-2-5d.md</a> — twist/swing [0,1] camera; Survey and Follow modes.</p>
 <p><span class="citation" data-cites="godotxrtools">(<strong>godotxrtools?</strong>)</span>: “Godot XR Tools.” Godot Engine. <a href="https://github.com/GodotVR/godot-xr-tools" class="uri">https://github.com/GodotVR/godot-xr-tools</a></p>
@@ -3149,7 +1761,7 @@ font-style: inherit;">next_entity_id</span>(), pos, payload)</span></code></pre>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-godot-player.html</guid>
-  <pubDate>Fri, 29 May 2026 14:18:04 GMT</pubDate>
+  <pubDate>Mon, 15 Jun 2026 01:42:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -3162,7 +1774,7 @@ font-style: inherit;">next_entity_id</span>(), pos, payload)</span></code></pre>
 
 <section id="godot-native-headless-observer" class="level1">
 <h1>Godot Native Headless Observer</h1>
-<p>Supersedes: <a href="../decisions/20260425-threejs-observer.html">20260425-threejs-observer.md</a></p>
+<p>Supersedes: 20260425-threejs-observer.md</p>
 <ul>
 <li>Status: deferred (not building yet; focus is on VR (<a href="../decisions/20260425-godot-player.html">20260425-godot-player.md</a>) first)</li>
 <li>Deciders: V-Sekai, fire</li>
@@ -3371,7 +1983,7 @@ font-style: inherit;">]</span></span></code></pre></div></div>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<p><span class="citation" data-cites="threejsobserver">(<strong>threejsobserver?</strong>)</span>: <a href="../decisions/20260425-threejs-observer.html">20260425-threejs-observer.md</a> — superseded Three.js Stage 1.</p>
+<p><span class="citation" data-cites="threejsobserver">(<strong>threejsobserver?</strong>)</span>: 20260425-threejs-observer.md — superseded Three.js Stage 1.</p>
 <p><span class="citation" data-cites="fabricclient">(<strong>fabricclient?</strong>)</span>: <code>modules/multiplayer_fabric/demo/abyssal_vr/scripts/fabric_client.gd</code> — zone client GDScript.</p>
 <p><span class="citation" data-cites="headlessobserver">(<strong>headlessobserver?</strong>)</span>: <code>modules/multiplayer_fabric/demo/abyssal_vr/scripts/headless_log_observer.gd</code> — this ADR’s implementation.</p>
 
@@ -3381,647 +1993,7 @@ font-style: inherit;">]</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-godot-observer.html</guid>
-  <pubDate>Fri, 29 May 2026 14:18:04 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <link>https://v-sekai.github.io/manuals/decisions/20260425-dual-client-test.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="dual-client-test-native-desktop-and-three.js-against-one-godot-zone-server" class="level1">
-<h1>Dual-Client Test: Native Desktop and Three.js Against One Godot Zone Server</h1>
-<p>Superseded by: <a href="../decisions/20260425-headless-test-matrix.html">20260425-headless-test-matrix.md</a></p>
-<ul>
-<li>Status: superseded (not being built)</li>
-<li>Deciders: V-Sekai, fire</li>
-<li>Tags: V-Sekai, Testing, Playwright, Godot, Threejs, DualClient, ZoneServer, 20260425-dual-client-test</li>
-</ul>
-<blockquote class="blockquote">
-<p><strong>Why superseded:</strong> the design pairs a Godot native client with a Three.js browser client. The Three.js client is no longer being built (see <a href="../decisions/20260425-threejs-webgpu-zone-client.html">20260425-threejs-webgpu-zone-client.md</a>). Dual-client coverage now lives in the headless test matrix as the GO+GP pair (<a href="../decisions/20260425-headless-test-matrix.html">20260425-headless-test-matrix.md</a>).</p>
-</blockquote>
-<section id="the-context" class="level2">
-<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
-<p>The jellyfish game has two clients: a Godot native PCVR client and a Three.js WebGPU browser observer. Both connect to the same Godot zone server via WebTransport. The pass condition requires both to be visible simultaneously. Testing them separately proves each works; testing them together proves they interoperate against a shared server state.</p>
-</section>
-<section id="the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
-<p>There is no test that runs both clients against one server at the same time and verifies they observe the same entity state. Without it, a server-side bug that affects only one client could go undetected.</p>
-</section>
-<section id="design" class="level2">
-<h2 class="anchored" data-anchor-id="design">Design</h2>
-<section id="test-topology" class="level3">
-<h3 class="anchored" data-anchor-id="test-topology">Test topology</h3>
-<pre><code>Zone server (Godot headless)
-  ├── Godot native client (headless, reads CH_INTEREST, writes to stdout)
-  └── Three.js browser client (Playwright Chromium, reads CH_INTEREST via WebTransport)</code></pre>
-<p>One server, two clients, one Playwright test orchestrating all three.</p>
-</section>
-<section id="process-setup-in-playwright" class="level3">
-<h3 class="anchored" data-anchor-id="process-setup-in-playwright">Process setup in Playwright</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode ts code-with-copy"><code class="sourceCode typescript"><span id="cb2-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> { spawn<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> ChildProcess } <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"child_process"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb2-2"></span>
-<span id="cb2-3"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">async</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">startServer</span>()<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">Promise</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;</span>ChildProcess<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;</span> {</span>
-<span id="cb2-4">  <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">return</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">spawn</span>(GODOT_BIN<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> [<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"--headless"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"--path"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> ZONE_PROJECT<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"scenes/zone_server.tscn"</span>])<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb2-5">}</span>
-<span id="cb2-6"></span>
-<span id="cb2-7"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">async</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">startNativeClient</span>()<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">Promise</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;</span>ChildProcess<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;</span> {</span>
-<span id="cb2-8">  <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">return</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">spawn</span>(GODOT_BIN<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> [<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"--headless"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"--path"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> DEMO_PROJECT<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"scenes/observer.tscn"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb2-9">    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"--"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"--zone-host=127.0.0.1"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"--zone-port=17500"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"--dump-state=/tmp/native_state.json"</span>])<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb2-10">}</span></code></pre></div></div>
-</section>
-<section id="three.js-client-in-playwright" class="level3">
-<h3 class="anchored" data-anchor-id="three.js-client-in-playwright">Three.js client in Playwright</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode ts code-with-copy"><code class="sourceCode typescript"><span id="cb3-1"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> { server<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> port } <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">await</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">serveWithCOOP</span>(THREEJS_DIST)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-2"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> page <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">await</span> browser<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">newPage</span>()<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-3"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">await</span> page<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">goto</span>(<span class="vs" style="color: #20794D;
-background-color: null;
-font-style: inherit;">`http://localhost:</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">${</span>port<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span><span class="vs" style="color: #20794D;
-background-color: null;
-font-style: inherit;">/`</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-4"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">await</span> page<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">waitForFunction</span>(() <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">=&gt;</span> (<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">window</span> <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">any</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">__entities</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">?.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">length</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> { timeout<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">15_000</span> })<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-5"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> browserEntities <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">await</span> page<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">evaluate</span>(() <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">=&gt;</span> (<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">window</span> <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">any</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">__entities</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span></code></pre></div></div>
-<p>The Three.js client writes parsed CH_INTEREST state to <code>window.__entities</code> each frame, accessible via <code>page.evaluate()</code>.</p>
-</section>
-<section id="state-comparison" class="level3">
-<h3 class="anchored" data-anchor-id="state-comparison">State comparison</h3>
-<p>Both clients read from the same server. After one server tick, both should observe the same set of <code>global_id</code> values and matching positions within floating-point tolerance:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode ts code-with-copy"><code class="sourceCode typescript"><span id="cb4-1"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> nativeState  <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">JSON</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">parse</span>(fs<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">readFileSync</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"/tmp/native_state.json"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"utf8"</span>))<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb4-2"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> browserState <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">await</span> page<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">evaluate</span>(() <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">=&gt;</span> (<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">window</span> <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">any</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">__entities</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb4-3"></span>
-<span id="cb4-4"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> nativeIds  <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">new</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">Set</span>(nativeState<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">map</span>((e<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">any</span>) <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">=&gt;</span> e<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">id</span>))<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb4-5"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> browserIds <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">new</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">Set</span>(browserState<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">map</span>((e<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">any</span>) <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">=&gt;</span> e<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">id</span>))<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb4-6"></span>
-<span id="cb4-7"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">expect</span>([<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">...</span>nativeIds]<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sort</span>())<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">toEqual</span>([<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">...</span>browserIds]<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sort</span>())<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb4-8"></span>
-<span id="cb4-9"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> (<span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> ne <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">of</span> nativeState) {</span>
-<span id="cb4-10">  <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">const</span> be <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> browserState<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">find</span>((e<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">any</span>) <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">=&gt;</span> e<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">id</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">===</span> ne<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">id</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb4-11">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">expect</span>(be)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">toBeDefined</span>()<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb4-12">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">expect</span>(be<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">pos</span>[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>])<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">toBeCloseTo</span>(ne<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">pos</span>[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>]<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span>  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">// 10 cm tolerance</span></span>
-<span id="cb4-13">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">expect</span>(be<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">pos</span>[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>])<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">toBeCloseTo</span>(ne<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">pos</span>[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>]<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb4-14">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">expect</span>(be<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">pos</span>[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>])<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">toBeCloseTo</span>(ne<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">pos</span>[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>]<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb4-15">}</span></code></pre></div></div>
-<p>Position tolerance is 10 cm, larger than the double-precision encoding error and small enough to catch a wire decode bug.</p>
-</section>
-<section id="godot-native-client-state-dump" class="level3">
-<h3 class="anchored" data-anchor-id="godot-native-client-state-dump">Godot native client state dump</h3>
-<p>The observer scene needs a <code>--dump-state</code> flag that writes the last received CH_INTEREST batch to a JSON file on exit. This is a one-function addition to <code>operator_camera.gd</code> or a new <code>headless_dump.gd</code> script:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode gdscript code-with-copy"><code class="sourceCode gdscript"><span id="cb5-1"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">func</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">_on_fabric_client_state</span>(entities: Array) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-&gt;</span> void:</span>
-<span id="cb5-2">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> OS.<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">has_feature</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"headless"</span>):</span>
-<span id="cb5-3">        <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">var</span> path :<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> OS.<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">get_cmdline_user_args</span>().<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">filter</span>(</span>
-<span id="cb5-4">            <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">func</span>(a): <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">return</span> a.<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">begins_with</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"--dump-state="</span>)</span>
-<span id="cb5-5">        ).<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">map</span>(<span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">func</span>(a): <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">return</span> a.<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">split</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"="</span>)[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>]).<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">front</span>()</span>
-<span id="cb5-6">        <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> path:</span>
-<span id="cb5-7">            FileAccess.<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">open</span>(path, FileAccess.WRITE).<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">store_string</span>(JSON.<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">stringify</span>(entities))</span></code></pre></div></div>
-</section>
-<section id="playwright-spec-structure" class="level3">
-<h3 class="anchored" data-anchor-id="playwright-spec-structure">Playwright spec structure</h3>
-<pre><code>dual_client.spec.ts
-  setup:   start zone server, wait for port open
-  test 1:  native client connects, receives entities, dumps state
-  test 2:  Three.js client connects, receives entities, exposes via window.__entities
-  test 3:  both run simultaneously; compare entity sets
-  teardown: kill server and native client</code></pre>
-</section>
-</section>
-<section id="the-downsides" class="level2">
-<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
-<p>Three processes running simultaneously in CI is noisy. Zone server startup time adds ~3 s to the test. The <code>--dump-state</code> flag needs implementing in GDScript.</p>
-</section>
-<section id="the-road-not-taken" class="level2">
-<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
-<p>Testing via a mock server: rejected; a mock cannot reproduce the actual server’s entity scheduling, HLC timestamping, or AOI band behaviour. The dual client test must use the real server.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Status: Superseded by <a href="../decisions/20260425-headless-test-matrix.html">20260425-headless-test-matrix.md</a>. Not being built.</p>
-</section>
-<section id="decision-makers" class="level2">
-<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
-<ul>
-<li>iFire</li>
-</ul>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<p><span class="citation" data-cites="jellyfish_pass">(<strong>jellyfish_pass?</strong>)</span>: <a href="../decisions/20260425-jellyfish-pass-condition.html">20260425-jellyfish-pass-condition.md</a> — the pass condition this test validates.</p>
-<p><span class="citation" data-cites="threejs_observer">(<strong>threejs_observer?</strong>)</span>: <a href="../decisions/20260425-threejs-observer.html">20260425-threejs-observer.md</a> — Three.js observer client design.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://v-sekai.github.io/manuals/decisions/20260425-dual-client-test.html</guid>
-  <pubDate>Fri, 29 May 2026 14:18:04 GMT</pubDate>
+  <pubDate>Mon, 15 Jun 2026 01:42:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -4315,7 +2287,7 @@ font-style: inherit;">--dir</span> multiplayer-fabric-godot/bin/</span></code></
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260425-build-cache-test-pipeline.html</guid>
-  <pubDate>Fri, 29 May 2026 14:18:04 GMT</pubDate>
+  <pubDate>Mon, 15 Jun 2026 01:42:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -4652,7 +2624,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-sandbox-rebac-behavior.html</guid>
-  <pubDate>Fri, 29 May 2026 14:18:04 GMT</pubDate>
+  <pubDate>Mon, 15 Jun 2026 01:42:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -4745,7 +2717,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-baker-zone-lifecycle.html</guid>
-  <pubDate>Fri, 29 May 2026 14:18:04 GMT</pubDate>
+  <pubDate>Mon, 15 Jun 2026 01:42:10 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -4758,7 +2730,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
 <section id="asset-delivery-casync-via-aria-storage-adopted" class="level1">
 <h1>Asset Delivery: casync via aria-storage Adopted</h1>
-<p>Supersedes: <a href="../decisions/20260423-asset-delivery-benchmark.html">20260423-asset-delivery-benchmark.md</a>, <a href="../decisions/20260421-asset-delivery-benchmark.html">20260421-asset-delivery-benchmark.md</a></p>
+<p>Supersedes: 20260423-asset-delivery-benchmark.md, <a href="../decisions/20260421-asset-delivery-benchmark.html">20260421-asset-delivery-benchmark.md</a></p>
 <section id="decision" class="level2">
 <h2 class="anchored" data-anchor-id="decision">Decision</h2>
 <p>casync via <code>aria-storage</code> is the asset delivery stack for V-Sekai. No benchmark against alternatives is required.</p>
@@ -4794,7 +2766,390 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 
  ]]></description>
   <guid>https://v-sekai.github.io/manuals/decisions/20260423-asset-delivery-decision.html</guid>
-  <pubDate>Fri, 29 May 2026 14:18:04 GMT</pubDate>
+  <pubDate>Mon, 15 Jun 2026 01:42:10 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260422-simplify-then-add-lightness.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="simplify-then-add-lightness" class="level1">
+<h1>Simplify, Then Add Lightness</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>Zack Anderson applied Colin Chapman’s racecar principle — “add lightness” — to hardware engineering at Tesla. Chapman’s insight: performance comes from removing mass, not adding power. Anderson extended it: before optimising a system, question whether the requirement that made it necessary should exist at all. multiplayer-fabric adopts this as its primary design heuristic.</p>
+</section>
+<section id="the-problem" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem">The Problem</h2>
+<p>Engineering teams default to addition. A feature is slow, so a cache is added. A boundary is unclear, so a coordinator is added. Each addition feels justified; the accumulated mass raises the cost of every future change and lengthens the feedback loop.</p>
+</section>
+<section id="the-principle" class="level2">
+<h2 class="anchored" data-anchor-id="the-principle">The Principle</h2>
+<p>Subtract before you add. When weight must be added, add it deliberately and with full awareness of the cost.</p>
+<section id="core-lessons" class="level3">
+<h3 class="anchored" data-anchor-id="core-lessons">Core lessons</h3>
+<section id="question-and-subtract-requirements" class="level4">
+<h4 class="anchored" data-anchor-id="question-and-subtract-requirements">Question and subtract requirements</h4>
+<p>A requirement that cannot survive scrutiny should not survive implementation. The best code for an unnecessary feature is no code.</p>
+</section>
+<section id="sequence-your-risks" class="level4">
+<h4 class="anchored" data-anchor-id="sequence-your-risks">Sequence your risks</h4>
+<p>Early prototypes retire specific risks in order — not everything at once. Identify the one assumption most likely to invalidate the design; retire that first.</p>
+</section>
+<section id="insource-the-uncertain" class="level4">
+<h4 class="anchored" data-anchor-id="insource-the-uncertain">Insource the uncertain</h4>
+<p>Delegate mature, well-understood components to libraries or services. Keep core uncertainties in-house where they can be observed and changed directly.</p>
+</section>
+<section id="shift-complexity-into-software" class="level4">
+<h4 class="anchored" data-anchor-id="shift-complexity-into-software">Shift complexity into software</h4>
+<p>Physical complexity — hardware, infrastructure, topology — is expensive to change. Computational complexity is cheap. This is why multiplayer-fabric replaces session coordinators with Hilbert curve arithmetic.</p>
+</section>
+<section id="compress-learning-loops" class="level4">
+<h4 class="anchored" data-anchor-id="compress-learning-loops">Compress learning loops</h4>
+<p>Abstraction layers and deployment steps are a tax on feedback speed. Minimise the distance between the engineer and the running system.</p>
+</section>
+<section id="maintain-organisational-lightness" class="level4">
+<h4 class="anchored" data-anchor-id="maintain-organisational-lightness">Maintain organisational lightness</h4>
+<p>A team small enough to share context naturally needs no process to substitute for communication. Process is a cache: useful when direct access is too expensive, dangerous when it becomes the primary path.</p>
+</section>
+</section>
+</section>
+<section id="application-to-multiplayer-fabric" class="level2">
+<h2 class="anchored" data-anchor-id="application-to-multiplayer-fabric">Application to multiplayer-fabric</h2>
+<p>The Hilbert broadphase eliminates the session coordinator. Formal verification covers bit-manipulation correctness across engine upgrades. Content-addressed delivery (casync/desync) and ReBAC each subtract a moving part from delivery and permission accounting respectively.</p>
+<p>The zone boundary model is the direct expression of this heuristic: geometry determines adjacency; coordinator mass is zero.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>The alternative — coordinator, coordinator monitor, fallback coordinator, configuration system — works, but any engineer touching zone topology must understand five systems instead of one curve.</p>
+</section>
+<section id="audit-checklist" class="level2">
+<h2 class="anchored" data-anchor-id="audit-checklist">Audit Checklist</h2>
+<p>Before adding any component, layer, or dependency, answer these questions:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Can the requirement driving this addition be removed instead?</label></li>
+<li><label><input type="checkbox">Is this the one risk that must be retired first, or can it wait?</label></li>
+<li><label><input type="checkbox">Does this belong in-house (uncertain, core) or can it be delegated?</label></li>
+<li><label><input type="checkbox">Is this complexity physical/infrastructural, or can it be pushed into software?</label></li>
+<li><label><input type="checkbox">Does this shorten or lengthen the feedback loop?</label></li>
+<li><label><input type="checkbox">Does this require a new system to monitor or manage it?</label></li>
+</ul>
+<p>If any answer points toward addition without a clear necessity, subtract first.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Active</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>Philosophy, Design, Simplicity, Lightness, Contributing, Heuristics, 20260422-simplify-then-add-lightness</li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260422-simplify-then-add-lightness.html</guid>
+  <pubDate>Mon, 15 Jun 2026 01:42:10 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes-3.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="avoid-ai-writing-tropes-in-documentation-part-3" class="level1">
+<h1>Avoid AI Writing Tropes in Documentation (Part 3)</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>Parts 1 and 2 cover patterns from the tropes.fyi catalog. An audit of the 22 2026 ADRs in this corpus found a different class of problems: structural and grammatical weaknesses that appear even in technically precise documents. The authoritative sources are the Google Developer Documentation Style Guide <span class="citation" data-cites="googledocs2024voice">(Google 2026)</span>, Microsoft Writing Style Guide <span class="citation" data-cites="microsoft2024style">(Microsoft 2026)</span>, and Helen Sword’s work on nominalizations <span class="citation" data-cites="sword2012zombie">(Sword 2012)</span>.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>The tropes.fyi patterns are visible on a sentence-by-sentence reading. The patterns below require looking at paragraph structure and grammatical form. They are harder to catch because each instance feels locally acceptable.</p>
+</section>
+<section id="the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="the-proposal">The Proposal</h2>
+<p>Add these five patterns to the review checklist.</p>
+<section id="template-headings-left-verbatim" class="level4">
+<h4 class="anchored" data-anchor-id="template-headings-left-verbatim">Template headings left verbatim</h4>
+<p>The ADR template contains the prompt “Describe how your proposal will work with code, pseudo-code, mock-ups, or diagrams.” This prompt appeared as a live section heading in all 22 2026 ADRs audited. Replace the template prompt with a heading that names what the section actually contains: “Design”, “Protocol”, or “Implementation”.</p>
+</section>
+<section id="passive-voice-on-technical-actions-google-dev-docs" class="level4">
+<h4 class="anchored" data-anchor-id="passive-voice-on-technical-actions-google-dev-docs">Passive voice on technical actions (Google Dev Docs)</h4>
+<p>Passive constructions hide the actor: “Plans are stored in the CDN”, “Assets are uploaded to zone-backend”. When the actor is known, name it: “Zone-backend stores plans in the CDN at plan-compute time.” Reserve passive voice for cases where the actor is genuinely unknown or where naming it would be repetitive.</p>
+</section>
+<section id="buried-lede-microsoft-writing-style-guide" class="level4">
+<h4 class="anchored" data-anchor-id="buried-lede-microsoft-writing-style-guide">Buried lede (Microsoft Writing Style Guide)</h4>
+<p>“The Context” is the first thing a reader sees. In 13 of 22 audited documents it contains background prose before reaching the technical gap that drove the decision. State the gap in the first sentence: “No benchmark comparing the two delivery strategies exists.” Everything else is context for that gap, not preamble before it.</p>
+</section>
+<section id="the-road-not-taken-restating-the-downsides" class="level4">
+<h4 class="anchored" data-anchor-id="the-road-not-taken-restating-the-downsides">“The Road Not Taken” restating The Downsides</h4>
+<p>The Road Not Taken is for alternatives seriously considered and specifically rejected. In 4 of 22 documents it lists alternatives without stating why each was rejected, or repeats arguments already made in The Downsides. Each entry needs a named alternative and a specific technical reason for rejection.</p>
+</section>
+<section id="zombie-nouns-helen-sword" class="level4">
+<h4 class="anchored" data-anchor-id="zombie-nouns-helen-sword">Zombie nouns (Helen Sword)</h4>
+<p>Nominalizations convert live verbs into abstract nouns: “implementation of” (implement), “evaluation of” (evaluate), “utilization of” (use). They strip the actor and dilute the commitment. Check for -tion, -ment, -ity, and -ness suffixes. Where the underlying verb is available, use it: “The team evaluates, documents, and deploys both solutions” rather than “The team will handle evaluation, documentation, and deployment of both solutions.”</p>
+</section>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>Template heading and zombie noun fixes are mechanical — they require no judgement, just a suffix check and a heading comparison. The lede and road-not-taken fixes require knowing what the document is actually about, so they double as a comprehension check on the content.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>Passive voice is sometimes correct: when the actor is unknown, or when naming it would be awkward repetition. Applying the rule without reading the sentence produces its own monotony.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>A linter (Vale, write-good) would catch passive voice and nominalizations automatically. Linter integration was not adopted because the ADR format has no CI pipeline, and a checklist applied manually is more useful than one requiring tooling setup.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Active</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>Writing, Documentation, Style, Review, Contributing, 20260422-avoid-ai-writing-tropes-3</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li>Google Developer Documentation Style Guide — Active Voice <span class="citation" data-cites="googledocs2024voice">(Google 2026)</span></li>
+<li>Microsoft Writing Style Guide — Top 10 Tips <span class="citation" data-cites="microsoft2024style">(Microsoft 2026)</span></li>
+<li>Helen Sword, “Zombie Nouns” <span class="citation" data-cites="sword2012zombie">(Sword 2012)</span></li>
+</ol>
+
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-googledocs2024voice" class="csl-entry">
+Google. 2026. <em>Use Active Voice</em>. <a href="https://developers.google.com/style/voice">https://developers.google.com/style/voice</a>.
+</div>
+<div id="ref-microsoft2024style" class="csl-entry">
+Microsoft. 2026. <em>Top 10 Tips for <span>Microsoft</span> Style and Voice</em>. <a href="https://learn.microsoft.com/en-us/style-guide/top-10-tips-style-voice">https://learn.microsoft.com/en-us/style-guide/top-10-tips-style-voice</a>.
+</div>
+<div id="ref-sword2012zombie" class="csl-entry">
+Sword, Helen. 2012. <em>Zombie Nouns</em>. <a href="https://opinionator.blogs.nytimes.com/2012/07/23/zombie-nouns/">https://opinionator.blogs.nytimes.com/2012/07/23/zombie-nouns/</a>.
+</div>
+</div></section></div> ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes-3.html</guid>
+  <pubDate>Mon, 15 Jun 2026 01:42:10 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes-2.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="avoid-ai-writing-tropes-in-documentation-part-2" class="level1">
+<h1>Avoid AI Writing Tropes in Documentation (Part 2)</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>The first avoid-AI-writing-tropes ADR covers five patterns from the tropes.fyi taxonomy. An audit of these documents found four of the remaining tropes active and one category common enough in technical writing to warrant a standing rule.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>The first checklist targets the most visible surface patterns — bold bullets, negative framing, the rule of three. The patterns below are harder to catch because they operate at the level of paragraph rhythm and argument structure.</p>
+</section>
+<section id="the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="the-proposal">The Proposal</h2>
+<p>Add these five patterns to the review checklist.</p>
+<section id="one-point-dilution-one-point-dilution" class="level4">
+<h4 class="anchored" data-anchor-id="one-point-dilution-one-point-dilution">One-point dilution (<code>one-point-dilution</code>)</h4>
+<p>A single argument restated in different words across multiple sentences or paragraphs. Test: delete the second sentence. If the reader loses no information, delete it.</p>
+</section>
+<section id="short-punchy-fragments-short-punchy-fragments" class="level4">
+<h4 class="anchored" data-anchor-id="short-punchy-fragments-short-punchy-fragments">Short punchy fragments (<code>short-punchy-fragments</code>)</h4>
+<p>Sentence fragments deployed as standalone paragraphs for manufactured weight. “It works.” “A platform.” These are RLHF artifacts aimed at low reading-level readability. Fold the fragment into the surrounding sentence.</p>
+</section>
+<section id="superficial-analyses-superficial-analyses" class="level4">
+<h4 class="anchored" data-anchor-id="superficial-analyses-superficial-analyses">Superficial analyses (<code>superficial-analyses</code>)</h4>
+<p>A present participle phrase appended to a factual sentence to inject significance without argument: “highlighting the importance of this approach”, “underscoring its role as…”. The participle asserts meaning without demonstrating it. Delete these phrases.</p>
+</section>
+<section id="anaphora-abuse-anaphora-abuse" class="level4">
+<h4 class="anchored" data-anchor-id="anaphora-abuse-anaphora-abuse">Anaphora abuse (<code>anaphora-abuse</code>)</h4>
+<p>The same sentence opener repeated in quick succession. “They could expose… They could offer… They could provide…” One repetition is rhetorical. When the repeated opener could be factored into a single sentence, it should be.</p>
+</section>
+<section id="false-ranges-false-ranges" class="level4">
+<h4 class="anchored" data-anchor-id="false-ranges-false-ranges">False ranges (<code>false-ranges</code>)</h4>
+<p>“From X to Y” constructions where X and Y are not on a real scale. “From infrastructure to culture.” The construction implies a spectrum with meaningful midpoints; when none exists, replace with a list or a direct claim.</p>
+</section>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>Clearing these five patterns removes the most common forms of padding — passages that feel comprehensive but add no information.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>One-point dilution and anaphora often co-occur: a restated argument tends to use anaphoric sentence structure. Reviewers may flag the same passage under both patterns. Treat it as one fix.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>A hard word-count target would suppress dilution mechanically but would also suppress legitimate detail. Pattern-based review preserves judgement.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Active</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>Writing, Documentation, AI, Style, Review, Contributing, 20260422-avoid-ai-writing-tropes-2</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li>tropes.fyi <span class="citation" data-cites="ossama2025tropes">(Ossama 2025)</span> — full 33-trope directory with examples and explanations</li>
+</ol>
+
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-ossama2025tropes" class="csl-entry">
+Ossama. 2025. <em>Tropes.fyi: <span>AI</span> Writing Pattern Directory</em>. <a href="https://tropes.fyi/">https://tropes.fyi/</a>.
+</div>
+</div></section></div> ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes-2.html</guid>
+  <pubDate>Mon, 15 Jun 2026 01:42:10 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <link>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes-1.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="avoid-ai-writing-tropes-in-documentation" class="level1">
+<h1>Avoid AI Writing Tropes in Documentation</h1>
+<section id="the-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-context">The Context</h2>
+<p>multiplayer-fabric documentation is produced with AI assistance. LLM-generated prose carries recognisable structural patterns — “tropes” — that undermine a reader’s trust. ossama.is maintains a living directory of 33 such patterns at tropes.fyi <span class="citation" data-cites="ossama2025tropes">(Ossama 2025)</span>.</p>
+</section>
+<section id="the-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-statement">The Problem Statement</h2>
+<p>AI models reach for the same constructions across different prompts and models. A reader who recognises these patterns discounts what surrounds them.</p>
+</section>
+<section id="the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="the-proposal">The Proposal</h2>
+<p>Use the tropes.fyi taxonomy as the review checklist for any prose documentation added to this project. The five highest-risk patterns for technical writing are listed below.</p>
+<section id="bold-first-bullets-trope-19" class="level4">
+<h4 class="anchored" data-anchor-id="bold-first-bullets-trope-19">Bold-first bullets (trope #19)</h4>
+<p>Every list item opens with a bolded phrase. Rewrite as subheadings if the items warrant structure, or as a plain numbered list if they warrant sequence.</p>
+</section>
+<section id="negative-parallelism-trope-1" class="level4">
+<h4 class="anchored" data-anchor-id="negative-parallelism-trope-1">Negative parallelism (trope #1)</h4>
+<p>“It’s not X — it’s Y.” The reframe implies the reader held the wrong belief. State the thing directly and drop the negation.</p>
+</section>
+<section id="tricolon-stacking-trope-5" class="level4">
+<h4 class="anchored" data-anchor-id="tricolon-stacking-trope-5">Tricolon stacking (trope #5)</h4>
+<p>Three-item parallel constructions are easy for models to generate. One tricolon in a document can be rhetoric; several is a pattern failure. Trim to two items or break the parallelism.</p>
+</section>
+<section id="grandiose-stakes-inflation-trope-14" class="level4">
+<h4 class="anchored" data-anchor-id="grandiose-stakes-inflation-trope-14">Grandiose stakes inflation (trope #14)</h4>
+<p>A localised engineering choice described as reshaping how software is built forever. Match the claim to the evidence.</p>
+</section>
+<section id="dead-metaphor-beating-trope-28" class="level4">
+<h4 class="anchored" data-anchor-id="dead-metaphor-beating-trope-28">Dead metaphor beating (trope #28)</h4>
+<p>Introducing a metaphor and repeating it across every subsequent paragraph. One use, then drop it — unless the metaphor is the argument, as in “simplify-then-add-lightness”, where mass and weight are the point.</p>
+<p>The secondary word-choice checklist: avoid <em>leverage</em>, <em>robust</em>, <em>streamline</em>, <em>delve</em>, <em>tapestry</em>, <em>landscape</em>, and <em>paradigm</em> unless a direct replacement is worse.</p>
+</section>
+</section>
+<section id="the-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits">The Benefits</h2>
+<p>Readers who recognise AI writing patterns stop trusting the document at the first tell. Review time shifts from cleaning up tells to checking content.</p>
+</section>
+<section id="the-downsides" class="level2">
+<h2 class="anchored" data-anchor-id="the-downsides">The Downsides</h2>
+<p>The tropes.fyi list is a symptom directory. Removing a trope does not fix the underlying sentence — it removes one reason the sentence is bad. The root cause (inflated claim, missing evidence) still needs addressing.</p>
+</section>
+<section id="the-road-not-taken" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-not-taken">The Road Not Taken</h2>
+<p>A generic prose style guide covers some of the same ground. It does not name the specific patterns that AI tools produce, so reviewers must pattern-match by intuition rather than against a checklist.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Status: Active</p>
+</section>
+<section id="decision-makers" class="level2">
+<h2 class="anchored" data-anchor-id="decision-makers">Decision Makers</h2>
+<ul>
+<li>iFire</li>
+</ul>
+</section>
+<section id="tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags">Tags</h2>
+<ul>
+<li>Writing, Documentation, AI, Style, Review, Contributing, 20260422-avoid-ai-writing-tropes-1</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ol type="1">
+<li>tropes.fyi <span class="citation" data-cites="ossama2025tropes">(Ossama 2025)</span> — full 33-trope directory with examples and explanations</li>
+<li>“Why AI Writing Is So Generic — Semantic Ablation”, The Register <span class="citation" data-cites="theregister2026semantic">(The Register 2026)</span> — why AI writing is generically correct but without character</li>
+<li>Wikipedia: Signs of AI Writing <span class="citation" data-cites="wikipedia2025aiwriting">(Wikipedia contributors 2025)</span> — enumerated tells maintained by the Wikipedia editing community</li>
+</ol>
+
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-ossama2025tropes" class="csl-entry">
+Ossama. 2025. <em>Tropes.fyi: <span>AI</span> Writing Pattern Directory</em>. <a href="https://tropes.fyi/">https://tropes.fyi/</a>.
+</div>
+<div id="ref-theregister2026semantic" class="csl-entry">
+The Register. 2026. <span>“Why <span>AI</span> Writing Is so Generic — Semantic Ablation.”</span> <em>The Register</em>, February. <a href="https://www.theregister.com/2026/02/16/semantic_ablation_ai_writing/">https://www.theregister.com/2026/02/16/semantic_ablation_ai_writing/</a>.
+</div>
+<div id="ref-wikipedia2025aiwriting" class="csl-entry">
+Wikipedia contributors. 2025. <em>Wikipedia: Signs of <span>AI</span> Writing</em>. <a href="https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing">https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing</a>.
+</div>
+</div></section></div> ]]></description>
+  <guid>https://v-sekai.github.io/manuals/decisions/20260422-avoid-ai-writing-tropes-1.html</guid>
+  <pubDate>Mon, 15 Jun 2026 01:42:10 GMT</pubDate>
 </item>
 </channel>
 </rss>
