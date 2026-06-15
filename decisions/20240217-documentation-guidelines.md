@@ -61,5 +61,3 @@ Status: Draft
 - V-Sekai, Avatar Customization, AI, Facial Expressions, 20240217-documentation-guidelines
 
 ## Further Reading
-
-

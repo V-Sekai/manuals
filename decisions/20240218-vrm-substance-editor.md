@@ -54,8 +54,6 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Further Reading
 
-
-
 Below is a table of parameters for the proposed VRM mtoon Substance Designer node set/template:
 
 | Rank | Parameter                   | Type    | Description                                                                                                                                      | Impact Level     | Range           |

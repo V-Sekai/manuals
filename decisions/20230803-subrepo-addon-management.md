@@ -57,4 +57,3 @@ Yes, this change affects the core structure of our project and should therefore 
 - 20230803-subrepo-addon-management
 
 ## References
-

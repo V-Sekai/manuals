@@ -13,8 +13,9 @@ Which format and structure should these records follow?
 
 [@madr_2024]: "MADR." 2.1.2 with Log4brains patch <https://adr.github.io/madr/>
 [@madr_2024]: "MADR." 2.1.2 â€“ The original Markdown Architectural Decision Records <https://adr.github.io/madr/>
-[@michael_nygards_template_2011]: "Michael Nygard's template." €“ The first incarnation of the term "ADR" <http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions>
-[@sustainable_architectural_decisions_2024]: "Sustainable Architectural Decisions." €“ The Y-Statements <https://www.infoq.com/articles/sustainable-architectural-design-decisions>
+[@michael_nygards_template_2011]: "Michael Nygard's template." ï¿½ï¿½ The first incarnation of the term "ADR" <http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions>
+[@sustainable_architectural_decisions_2024]: "Sustainable Architectural Decisions." ï¿½ï¿½ The Y-Statements <https://www.infoq.com/articles/sustainable-architectural-design-decisions>
+
 - Other templates listed at <https://github.com/joelparkerhenderson/architecture_decision_record>
 - Formless â€“ No conventions for file format and structure
 

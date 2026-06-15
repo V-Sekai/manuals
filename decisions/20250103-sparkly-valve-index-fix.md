@@ -50,8 +50,6 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 ## List further reading references
 
-
-
 ## Tags
 
 - 20250103-sparkly-valve-index-fix

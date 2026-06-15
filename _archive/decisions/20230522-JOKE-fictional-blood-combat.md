@@ -49,4 +49,3 @@ No, significant development effort is required.
 Easier integration, optimization, control, and refinement as part of the core game engine.
 
 ## References
-

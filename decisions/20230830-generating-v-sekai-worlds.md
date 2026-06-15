@@ -34,7 +34,7 @@ To generate more worlds for V-Sekai, we will follow a comprehensive strategy tha
 
 6. Release and Promote: Launch the updated version of V-Sekai with the newly generated worlds. Promote the release through various channels, such as social media, gaming forums, Virtual Reality communities, and V-Sekai's official website.
 
-By following this strategy, we will not only address the current limitations but also create an engaging and immersive VR experience for V-Sekai users.
+By following this strategy, we will address the current limitations and create an engaging and immersive VR experience for V-Sekai users.
 
 ## Upsides
 

@@ -71,7 +71,6 @@ The scene exercises: VRM import, MToon shader, humanoid skeleton, and basic
 rigid-body plane collision — sufficient to confirm the assembled MMOG engine
 boots and renders without the XR surface.
 
-
 ## The Downsides
 
 - The `multiplayer-fabric` combined branch no longer includes lasso, OpenVR, or

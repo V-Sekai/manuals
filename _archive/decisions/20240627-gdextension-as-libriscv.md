@@ -79,4 +79,3 @@ Status: Superseded by [Build a tiny RISC virtual machine which can interpret and
 [@libriscv_vm_call_2024]: "libriscv VM Call Documentation." Detailed documentation on making function calls into the VM guest. <https://github.com/fwsGonzo/libriscv/blob/master/docs/VMCALL.md>
 4. [https://c9x.me/compile/]
 5. [https://github.com/Vahera/godot-orchestrator]
-

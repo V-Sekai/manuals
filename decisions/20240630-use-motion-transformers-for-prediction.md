@@ -66,4 +66,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 ## Further Reading
 
 [@motiongpt_human_motion_2024]: "MotionGPT: Human Motion."  <https://motion-gpt.github.io/>
-

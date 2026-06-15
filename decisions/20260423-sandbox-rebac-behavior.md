@@ -17,6 +17,7 @@ when it is needed.
 ## The Problem Statement
 
 A creator behavior kernel running inside the zone server can:
+
 - Consume unbounded CPU or memory
 - Read entity state it should not see
 - Emit network messages it is not authorised to send

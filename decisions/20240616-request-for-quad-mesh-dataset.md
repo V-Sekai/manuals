@@ -61,4 +61,3 @@ Status: Draft
 [@vsekaibluetinfoxmodels_2024]: "V-Sekai.blue-tin-fox-models."  <https://github.com/V-Sekai/V-Sekai.blue-tin-fox-models>
 5. [https://github.com/maria-korosteleva/garment-pattern-generator]
 6. [https://cmp.felk.cvut.cz/t-less/index.html]
-

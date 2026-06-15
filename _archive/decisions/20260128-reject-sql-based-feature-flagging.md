@@ -7,6 +7,7 @@ During development of the V-Sekai application architecture, a proposal was made 
 ## The Problem Statement
 
 The development team needed a mechanism to manage feature toggles and configuration changes that would support:
+
 - Gradual rollout of new features
 - A/B testing of different implementations
 - Runtime configuration changes without service downtime
@@ -15,6 +16,7 @@ The development team needed a mechanism to manage feature toggles and configurat
 ## Design
 
 The proposed SQL-based feature flagging system would:
+
 - Store feature flags and configuration values in database tables
 - Provide runtime querying of flag states
 - Allow dynamic enabling/disabling of features without code changes
@@ -29,6 +31,7 @@ The rejected proposal would have provided: dynamic runtime configuration without
 ## The Downsides
 
 SQL-based feature flagging issues:
+
 - Complex database schema and query logic for simple configuration needs
 - Configuration stored in database tables is harder to version control and audit
 - Cannot control separate container execution (either run Next.js container or don't)
@@ -36,6 +39,7 @@ SQL-based feature flagging issues:
 - Additional complexity for operations and debugging
 
 Runtime configuration problems:
+
 - Some application behavior is determined at startup and cannot be changed dynamically
 - Feature flags don't solve the underlying problem of maintaining parallel implementations
 - Introduces potential for inconsistent application state during flag transitions

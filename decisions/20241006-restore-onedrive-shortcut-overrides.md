@@ -53,4 +53,3 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 ## Further Reading
 
 [@windows_1011_user_2024]: "Windows 10/11 User Shell Folders Restore Default Paths."  <https://www.winhelponline.com/blog/windows-10-shell-folders-paths-defaults-restore/>
-

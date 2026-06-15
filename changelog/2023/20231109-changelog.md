@@ -6,37 +6,37 @@
 
 V-Sekai.xr-grid is a VR interaction tool.
 
-- **First release**
-- **Release Version**: 0.1.0-rc1
-- **Changes**: The game name environment variable has been updated in the build workflow. A new commit was also made to set the draft flag to false for the release.
+- First release
+- Release Version: 0.1.0-rc1
+- Changes: The game name environment variable has been updated in the build workflow. A new commit was also made to set the draft flag to false for the release.
 - [Release Link](https://github.com/V-Sekai/V-Sekai.xr-grid/releases/tag/0.1.0-rc1)
 
 ### model_explorer
 
 V-Sekai Model Explorer is a 3D model viewer built with Godot 4. It supports various model formats like VRM and glTF 2.0. With this tool, you can dive deep into the components of a 3D model - inspecting meshes, materials, textures, and animations.
 
-- **First release**
-- **Release Version**: v0.2.0-rc2
-- **Changes**: The GAME*NAME environment variable value has been changed to "vsekai_model_explorer*". The macos_editor_macos_deploy job from builds.yml has been removed. A README.md for GitHub actions has been added and the warning has been moved to the top of the file.
+- First release
+- Release Version: v0.2.0-rc2
+- Changes: The GAME*NAME environment variable value has been changed to "vsekai_model_explorer*". The macos_editor_macos_deploy job from builds.yml has been removed. A README.md for GitHub actions has been added and the warning has been moved to the top of the file.
 - [Release Link](https://github.com/V-Sekai/TOOL_model_explorer/releases/tag/v0.2.0-rc2)
 
 ## [Unreleased]
 
 ### Added
 
-- **MacOS Editor Builds**: MacOS editor builds have been added to the project. ([Commit: df041f0](https://github.com/V-Sekai/v-sekai-game/commit/df041f0))
-- **Export Mac Game**: The game can now be exported for Mac. Pending code-signing and App support.
-- **Golang Installation**: Golang has been installed in the project. ([Commit: c25456b](https://github.com/V-Sekai/v-sekai-game/commit/c25456b))
-- **Unidot Dependency Removal**: The dependency on the post-import script by Unidot has been removed after conversion is complete. This means the converted assets will work standalone without the Unidot importer, with one exception\*.
-- **Supported Asset Types**: Supported asset types are listed in the readme. It should support many types of meshes, animations, Standard shader materials, scenes/prefabs and physics objects.
-- **Optimization for Generating Tangents in Mikktspace:** An optimization has been added for generating tangents in mikktspace. ([Pull Request #83648](https://github.com/godotengine/godot/pull/83648/files))
+- MacOS Editor Builds: MacOS editor builds have been added to the project. ([Commit: df041f0](https://github.com/V-Sekai/v-sekai-game/commit/df041f0))
+- Export Mac Game: The game can now be exported for Mac. Pending code-signing and App support.
+- Golang Installation: Golang has been installed in the project. ([Commit: c25456b](https://github.com/V-Sekai/v-sekai-game/commit/c25456b))
+- Unidot Dependency Removal: The dependency on the post-import script by Unidot has been removed after conversion is complete. This means the converted assets will work standalone without the Unidot importer, with one exception\*.
+- Supported Asset Types: Supported asset types are listed in the readme. It should support many types of meshes, animations, Standard shader materials, scenes/prefabs and physics objects.
+- Optimization for Generating Tangents in Mikktspace: An optimization has been added for generating tangents in mikktspace. ([Pull Request #83648](https://github.com/godotengine/godot/pull/83648/files))
 
 ### Changed
 
-- **Game Name Variable**: A game name variable has been implemented on Github Actions. ([Commit: 08d87db](https://github.com/V-Sekai/v-sekai-game/commit/08d87db))
-- **Godot Engine Repository Update**: The Godot engine repository and reference in build workflows have been updated. ([Commit: f7f609d](https://github.com/V-Sekai/v-sekai-game/commit/f7f609d))
-- **Imports Update**: Imports in the project have been updated. ([Commit: 896cb7c](https://github.com/V-Sekai/v-sekai-game/commit/896cb7c))
-- **Unidot Beta Release**: Unidot is now in a beta / early RC for the first release.
+- Game Name Variable: A game name variable has been implemented on Github Actions. ([Commit: 08d87db](https://github.com/V-Sekai/v-sekai-game/commit/08d87db))
+- Godot Engine Repository Update: The Godot engine repository and reference in build workflows have been updated. ([Commit: f7f609d](https://github.com/V-Sekai/v-sekai-game/commit/f7f609d))
+- Imports Update: Imports in the project have been updated. ([Commit: 896cb7c](https://github.com/V-Sekai/v-sekai-game/commit/896cb7c))
+- Unidot Beta Release: Unidot is now in a beta / early RC for the first release.
 
 ### Fixed
 
@@ -52,7 +52,7 @@ V-Sekai Model Explorer is a 3D model viewer built with Godot 4. It supports vari
 
 ### Security
 
-- **Security Best Practices**: Applied security best practices as recommended by StepSecurity. ([Commit: d641001](https://github.com/V-Sekai/v-sekai-game/commit/d641001))
+- Security Best Practices: Applied security best practices as recommended by StepSecurity. ([Commit: d641001](https://github.com/V-Sekai/v-sekai-game/commit/d641001))
 
 This project does not adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 

@@ -78,8 +78,6 @@ Yes. As an open-source project, maintaining transparent, community-friendly proc
 
 ## List further reading references
 
-
-
 ## Tags
 
 - 20250203-daily-deck-log

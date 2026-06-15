@@ -114,4 +114,3 @@ Status: Obsolete — Kubernetes on Harvester HCI is obsolete; replaced by curren
 ## Further Reading
 
 [@rancher_vcluster_2024]: "Rancher Vcluster."  <https://docs.harvesterhci.io/v1.2/advanced/addons/rancher-vcluster>
-

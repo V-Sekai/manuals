@@ -43,7 +43,6 @@ We work on V-Sekai.
 
 ## References
 
-
 ## License of the contribution
 
 ```

@@ -41,7 +41,6 @@ Wanted to write the workflow down.
 
 ## References
 
-
 ### License of the contribution
 
 Copyright (c) 2022 V-Sekai contributors.

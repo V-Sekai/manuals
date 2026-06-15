@@ -68,4 +68,3 @@ This is a few lines of code.
 We care about v-sekai more than others.
 
 ### References
-

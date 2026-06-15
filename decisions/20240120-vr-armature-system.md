@@ -82,7 +82,6 @@ It's crucial for V-Sekai to maintain this project to ensure it meets our quality
 
 For insights into V-Sekai's contributions to social VR in Godot Engine and our open-source work, please see:
 
-
 _This proposal was refined with assistance from Aria._
 
 ## Tags

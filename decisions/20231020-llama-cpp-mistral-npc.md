@@ -8,7 +8,7 @@
 
 ## The Backdrop
 
-In the realm of game development, creating engaging and dynamic Non-Player Characters (NPCs) is a challenging task. With advancements in AI, there's an opportunity to use these technologies to enhance NPC interactions.
+In game development, creating engaging and dynamic Non-Player Characters (NPCs) is a challenging task. With advancements in AI, there's an opportunity to use these technologies to enhance NPC interactions.
 
 ## The Challenge
 

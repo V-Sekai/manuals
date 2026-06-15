@@ -31,7 +31,7 @@ defmodule MyPipeline do
 end
 ```
 
-This is a basic pipeline that reads a file and writes it back out. It's not doing any processing yet, but it's a start.
+This is a basic pipeline that reads a file and writes it back out. It does no processing yet, but it is a start.
 
 ## The Benefits
 
@@ -66,5 +66,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 - V-Sekai, 20240502-membrane-framework-identity-post
 
 ## Further Reading
-
-

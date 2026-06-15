@@ -8,7 +8,7 @@
 
 ## The Backdrop
 
-V-Sekai is a project in the realm of virtual reality. Our aim is to create immersive and interactive virtual worlds that offer users an awesome experience.
+V-Sekai is a virtual reality project. Our aim is to create immersive and interactive virtual worlds that offer users an awesome experience.
 
 ## The Challenge
 
@@ -43,4 +43,3 @@ Yes, this proposal was created internally by the V-Sekai team with assistance fr
 ## Further Reading
 
 [@vket_2023_tram_2024]: "Vket 2023: Tram Ride."  <https://vxtwitter.com/ri_ri_ru_na/status/1730922247223931005?s=20>
-

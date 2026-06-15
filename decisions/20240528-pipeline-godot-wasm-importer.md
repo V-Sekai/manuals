@@ -55,4 +55,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 [@elixi_nodejs_2024]: "Elixi Nodejs."  <https://github.com/revelrylabs/elixir-nodejs>
 [@orbruntime_run_wasm_2024]: "orb-runtime to run wasm."  <https://github.com/benbot/orb/blob/master/orb-runtime/src/lib.rs>
-

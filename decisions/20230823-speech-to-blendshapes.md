@@ -12,7 +12,7 @@ V-Sekai is embarking on a project that translates speech into corresponding faci
 
 The SpeakingFaces dataset, a collection from 142 diverse subjects, will be used for this project. The dataset is accessible via the server of the Institute for Smart Systems and Artificial Intelligence (ISSAI) under the Creative Commons Attribution 4.0 International License.
 
-Outlines 〰, a neural text generation library, will also play a crucial role in this project. It offers reliable prompting primitives, separates the prompting from the execution logic, and is compatible with all models. It interfaces with models through the next-token logits and can be used with API-based models as well.
+Outlines 〰, a neural text generation library, will also be central to this project. It offers reliable prompting primitives, separates the prompting from the execution logic, and is compatible with all models. It interfaces with models through the next-token logits and can be used with API-based models as well.
 
 ## The Challenge
 

@@ -53,5 +53,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 - V-Sekai, 20240406-itch-github-actions
 
 ## Further Reading
-
-

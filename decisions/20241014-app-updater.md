@@ -72,4 +72,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 ## Further Reading
 
 [@velopack_documentation_2024]: "Velopack Documentation." Learn more about how Velopack manages application updates. <https://velopack.org/docs>
-

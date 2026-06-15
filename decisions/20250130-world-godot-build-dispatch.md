@@ -59,8 +59,6 @@ Status: Accepted
 
 ## List further reading references
 
-
-
 ## Tags
 
 - 20250130-world-godot-build-dispatch

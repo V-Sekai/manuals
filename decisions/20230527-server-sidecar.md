@@ -85,4 +85,3 @@ The proposed enhancement is designed to address core limitations in V-Sekai's ar
 Implementing this solution at the core level ensures that all users benefit from improved data management, performance, and security. Additionally, addressing these limitations at the core level allows for better integration with other components of the system.
 
 ## References
-

@@ -34,7 +34,6 @@ exists that verifies both connect to one server and that player actions are
 reflected in observer state. Tests must pass locally in Docker before being
 wired to CI, and must pass in CI before any VR hardware is involved.
 
-
 ## Design
 
 ### Two roles

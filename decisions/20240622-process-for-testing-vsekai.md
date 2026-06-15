@@ -52,5 +52,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 - Game Development
 
 ## Further Reading
-
-

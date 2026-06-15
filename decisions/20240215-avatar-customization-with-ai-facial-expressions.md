@@ -2,7 +2,7 @@
 
 ## The Context
 
-In the realm of virtual reality, expressiveness is paramount for a rich social experience. V-Sekai is dedicated to providing users with reliable avatar customization options, particularly in the realm of facial expressions.
+In virtual reality, expressiveness is paramount for a rich social experience. V-Sekai is dedicated to providing users with reliable avatar customization options, particularly facial expressions.
 
 ## The Problem Statement
 
@@ -50,6 +50,5 @@ Status: **Proposed**
 - `V-Sekai`, `Avatar Customization`, `AI`, `Facial Expressions`, 20240215-avatar-customization-with-ai-facial-expressions
 
 ## Further Reading
-
 
 _Assisted by Aria._

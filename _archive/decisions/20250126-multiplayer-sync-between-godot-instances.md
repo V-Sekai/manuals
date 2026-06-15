@@ -61,7 +61,6 @@ Status: Superseded — Multiplayer sync between Godot instances superseded by cu
 
 [@masbandwidthfps_2024]: "mas-bandwidth/fps."  <https://github.com/mas-bandwidth/fps/blob/main/001/README.md?ref=mas-bandwidth.com>
 
-
 ## Tags
 
 - 20250126-multiplayer-sync-between-godot-instances

@@ -60,5 +60,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 - V-Sekai, 20240627-every-commit-push-pass-cicd
 
 ## Further Reading
-
-

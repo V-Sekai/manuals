@@ -55,4 +55,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 ## Further Reading
 
 [@nvidiapowermanagementpowercontrol_2024]: "nvidia-power-management-power-control."  <https://forums.guru3d.com/threads/anwave-2024-advanced-cleanup-utility-gpu-cleanup-tool-nvidia-power-management-power-control.447584/>
-

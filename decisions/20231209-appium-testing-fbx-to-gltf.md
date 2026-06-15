@@ -8,7 +8,7 @@
 
 ## The Backdrop
 
-In the realm of game development, providing a seamless user experience across various platforms is crucial. This necessitates the implementation of effective testing methodologies.
+In game development, providing a seamless user experience across various platforms is crucial. This necessitates the implementation of effective testing methodologies.
 
 ## The Challenge
 
@@ -43,6 +43,5 @@ Yes, this strategy is core to our project and will be implemented by our team.
 - 20231209-appium-testing-fbx-to-gltf
 
 ## Further Reading
-
 
 Assisted by Aria, an AI assistant.

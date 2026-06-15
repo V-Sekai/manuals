@@ -72,5 +72,3 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 - V-Sekai, 20240914-godot-engine-xr-elite-conference-setup
 
 ## Further Reading
-
-

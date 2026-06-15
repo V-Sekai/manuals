@@ -99,8 +99,6 @@ Needs a redo.
 
 ## List further reading references
 
-
-
 ## Control Schemes
 
 ### Mouse & Keyboard

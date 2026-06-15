@@ -56,7 +56,6 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 [@robust_skin_weights_2024]: "Reliable Skin Weights Transfer via Weight Inpainting."  <https://doi.org/10.1145/3610543.3626180>
 [@laplacian_nonmanifold_triangle_2024]: "A Laplacian for Nonmanifold Triangle Meshes."  <https://doi.org/10.1111/cgf.14069>
 
-
 ### Game Development Jargon
 
 1. Rigging: The process of creating a skeleton for a 3D model (character or object) and defining how it can move. This is crucial for animation in video games.

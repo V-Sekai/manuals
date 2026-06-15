@@ -65,7 +65,6 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 
 [@msfttexturedds_2024]: "MSFT_texture_dds."  <https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Vendor/MSFT_texture_dds/README.md>
 
-
 ## Tags
 
 - 20250123-implement-msft-texture-dds-in-godot

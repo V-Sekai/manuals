@@ -50,5 +50,3 @@ Status: Obsolete — GoCD agent Docker image update is obsolete; GoCD replaced b
 - Update
 
 ## Further Reading
-
-

@@ -2,7 +2,7 @@
 
 ## The Context
 
-In the realm of 3D modeling and animation, there are numerous file formats each with their own unique features and capabilities. However, not all software can support every format, leading to a need for conversion tools.
+In 3D modeling and animation, there are numerous file formats each with their own unique features and capabilities. However, not all software can support every format, leading to a need for conversion tools.
 
 ## The Problem Statement
 
@@ -61,5 +61,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 - V-Sekai, 20240502-gltf-fbx-tscn-vrm
 
 ## Further Reading
-
-

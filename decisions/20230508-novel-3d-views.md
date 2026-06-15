@@ -63,4 +63,3 @@ No, this enhancement requires integration of advanced image segmentation and 3D 
 Yes, implementing this feature as part of our core project will improve our opensource community of creators.
 
 ## References
-

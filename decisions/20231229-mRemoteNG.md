@@ -44,5 +44,3 @@ An infrequent use case might be using mRemoteNG for managing a small number of d
 This strategy is not in core and done by us. It involves using an existing open-source solution to address our needs.
 
 ## Further Reading
-
-

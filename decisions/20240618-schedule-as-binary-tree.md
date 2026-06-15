@@ -59,5 +59,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 - Schedule Optimization
 
 ## Further Reading
-
-

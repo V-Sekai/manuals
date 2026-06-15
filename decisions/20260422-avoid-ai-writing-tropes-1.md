@@ -18,7 +18,7 @@ Every list item opens with a bolded phrase. Rewrite as subheadings if the items 
 
 #### Negative parallelism (trope #1)
 
-"It's not X — it's Y." The reframe implies the reader held the wrong belief. State the thing directly and drop the negation.
+Naming what something is not, then restating what it supposedly is, in one reframed sentence. The reframe implies the reader held the wrong belief. State the thing directly and drop the negation.
 
 #### Tricolon stacking (trope #5)
 

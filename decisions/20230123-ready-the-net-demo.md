@@ -41,7 +41,6 @@ We are doing this.
 
 ## References
 
-
 ### License of the contribution
 
 Copyright (c) 2019-latest V-Sekai contributors.

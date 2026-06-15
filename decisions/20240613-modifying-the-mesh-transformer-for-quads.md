@@ -51,5 +51,3 @@ Status: Draft
 - V-Sekai, 20240613-modifying-the-mesh-transformer-for-quads
 
 ## Further Reading
-
-

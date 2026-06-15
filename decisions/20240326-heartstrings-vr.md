@@ -62,5 +62,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 - V-Sekai, 20240326-heartstrings-vr
 
 ## Further Reading
-
-

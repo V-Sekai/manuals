@@ -24,7 +24,7 @@ The proposed strategy includes:
 
 3. Capturing screenshots: Screenshots serve as a quick visual reference of your project without the need to set it up again.
 
-4. Creating screen recordings: For a more comprehensive record, consider creating a screen recording of your project—this not only captures the visual aspect but also records any audio commentary you might provide.
+4. Creating screen recordings: For a more comprehensive record, consider creating a screen recording of your project—this captures the visual aspect and records any audio commentary you might provide.
 
 5. Incorporating a README: Include a README file that outlines the purpose of the project, its creation and abandonment dates, contributors, and instructions to get it up and running again. This provides essential information about the project at a glance.
 

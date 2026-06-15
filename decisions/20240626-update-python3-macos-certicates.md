@@ -93,5 +93,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 - V-Sekai, 20240626-update-python3-macos-certicates
 
 ## Further Reading
-
-

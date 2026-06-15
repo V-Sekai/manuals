@@ -68,5 +68,3 @@ Status: Draft
 - Avatar
 
 ## Further Reading
-
-

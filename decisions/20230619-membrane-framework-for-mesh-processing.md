@@ -14,7 +14,7 @@ Enable creation of more dynamic and engaging environments within V-Sekai.
 
 V-Sekai, an open-source virtual reality platform, aims to deliver a user-friendly experience for the VR community. To boost its functionality and compatibility with other tools, we propose integrating networked procedural generation as a sidecar to the Godot engine server, allowing for more dynamic and immersive environments in V-Sekai.
 
-To further address V-Sekai's limitations, we suggest incorporating the Membrane Framework along with other relevant technologies such as Godot Engine, OpenMfx Support, Elixir Phoenix, and Elixir Nx. This comprehensive integration will not only enhance V-Sekai's capabilities but also increase its versatility across various use cases.
+To further address V-Sekai's limitations, we suggest incorporating the Membrane Framework along with other relevant technologies such as Godot Engine, OpenMfx Support, Elixir Phoenix, and Elixir Nx. This comprehensive integration will enhance V-Sekai's capabilities and increase its versatility across various use cases.
 
 The implementation involves connecting V-Sekai with the components mentioned in the Membrane Framework diagram below:
 
@@ -87,4 +87,3 @@ No, the proposed solution involves integrating multiple technologies and cannot 
 Yes, addressing the limitations of V-Sekai is crucial for its success and adoption within the VR community. By integrating the proposed technologies, we can ensure that V-Sekai remains competitive and relevant in the rapidly evolving VR landscape.
 
 ## References
-

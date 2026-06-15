@@ -19,7 +19,6 @@ effort scatters across competing items and the demo never ships.
 No ADR commits to building the jellyfish game as the current top priority.
 The CRIS score below makes that commitment explicit.
 
-
 ## Design
 
 The jellyfish game is the Infinite Aquarium: a social, bioluminescent ocean

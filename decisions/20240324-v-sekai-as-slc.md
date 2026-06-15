@@ -70,5 +70,4 @@ Focus on essential launch features, expand based on user feedback.
 
 ## Further Reading
 
-
 Assistance provided by AI assistant Aria.

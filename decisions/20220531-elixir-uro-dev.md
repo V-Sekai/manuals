@@ -110,6 +110,7 @@ We maintain the website.
 ## References
 
 [@uro_2024]: "Uro."  <https://github.com/V-Sekai/uro>
+
 - <https://github.com/V-Sekai/uro/issues/52>
 
 ### License of the contribution

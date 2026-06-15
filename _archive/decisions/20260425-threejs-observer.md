@@ -21,7 +21,6 @@ The operator view needs a browser client that starts in minutes, not after a
 multi-minute wasm compile. Stage 1 delivers that: connect, parse datagrams,
 render entities.
 
-
 ## Design
 
 ### Wire protocol — CH_INTEREST (100 bytes, read only)

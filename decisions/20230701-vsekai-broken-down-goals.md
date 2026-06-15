@@ -73,4 +73,3 @@ As these features form the core functionality of the V-Sekai platform, they shou
 - 20230701-vsekai-broken-down-goals
 
 ## References
-

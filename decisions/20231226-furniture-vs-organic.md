@@ -44,5 +44,4 @@ The proposal recommends integrating these optimization practices into the core d
 
 ## References
 
-
 _This proposal was assisted by Aria, an AI assistant._

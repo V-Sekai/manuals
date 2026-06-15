@@ -56,7 +56,6 @@ World traversal is a problem.
 
 ### References
 
-
 ### License of the contribution
 
 ```

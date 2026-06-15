@@ -47,5 +47,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 - V-Sekai, 20240611-lower-learning-rate
 
 ## Further Reading
-
-

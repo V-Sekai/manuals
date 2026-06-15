@@ -66,4 +66,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 [@runpod_2024]: "Runpod."  <https://www.runpod.io/>
 [@meshgpt_quads_2024]: "MeshGPT with Quads."  <https://github.com/lucidrains/meshgpt-pytorch/issues/54>
-

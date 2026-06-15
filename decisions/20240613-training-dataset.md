@@ -52,5 +52,3 @@ Status: Draft
 - V-Sekai, 20240613-training-dataset
 
 ## Further Reading
-
-

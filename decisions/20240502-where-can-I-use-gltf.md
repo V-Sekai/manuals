@@ -47,4 +47,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 ## Further Reading
 
 [@caniuse_2024]: "caniuse."  <https://caniuse.com/>
-

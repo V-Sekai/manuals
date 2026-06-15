@@ -85,7 +85,6 @@ multiplayer-fabric-rx
 multiplayer-fabric-artifacts-mmog
 ```
 
-
 ## The Downsides
 
 - Cross-layer changes (e.g., a new zone protocol message that requires both a

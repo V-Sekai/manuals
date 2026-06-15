@@ -146,5 +146,4 @@ Determining if this integration should be centralized within V-Sekai's primary o
 
 ## Further Reading
 
-
 _Aria, an AI assistant, contributed to the drafting of this proposal._

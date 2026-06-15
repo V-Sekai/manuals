@@ -21,7 +21,6 @@ Without separating build and test jobs, every test run rebuilds Godot.
 Without branch protection, a developer can merge a broken branch. Without
 scons cache, incremental builds still take > 10 minutes.
 
-
 ## Design
 
 ### Two-job pipeline

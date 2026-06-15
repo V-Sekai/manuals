@@ -40,7 +40,6 @@ I have the raw materials to do this.
 
 ## References
 
-
 ### License of the contribution
 
 Copyright (c) 2022 K. S. Ernest (iFire) Lee

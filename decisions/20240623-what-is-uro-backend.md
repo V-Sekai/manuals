@@ -59,5 +59,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 - Godot Engine
 
 ## Further Reading
-
-

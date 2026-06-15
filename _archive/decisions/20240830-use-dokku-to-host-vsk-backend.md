@@ -69,8 +69,6 @@ Status: Superseded — replaced by multiplayer-fabric-hosting docker-compose+Cad
 
 ## List further reading references
 
-
-
 ## Tags
 
 - 20240830-use-dokku-to-host-vsk-backend

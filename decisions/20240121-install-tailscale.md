@@ -67,5 +67,4 @@ In-house development of a similar solution would require significant resources a
 
 ## References
 
-
 _This proposal was assisted by Aria, the AI assistant._

@@ -71,5 +71,4 @@ Status: Rejected
 
 ## Further Reading
 
-
 _This proposal was assisted by Aria, an AI assistant._

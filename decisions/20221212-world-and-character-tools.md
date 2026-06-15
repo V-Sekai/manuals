@@ -46,7 +46,6 @@ Writing down stuff that's useful.
 
 ## References
 
-
 ## License of the contribution
 
 ```

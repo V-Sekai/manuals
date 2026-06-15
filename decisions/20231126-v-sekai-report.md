@@ -67,5 +67,3 @@ Addressing this issue falls within our core responsibilities as the V-Sekai deve
 - 20231126-v-sekai-report
 
 ## Further Reading
-
-

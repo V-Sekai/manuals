@@ -183,5 +183,3 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 - V-Sekai, 20241112-godot-animation-streaming
 
 ## Further Reading
-
-

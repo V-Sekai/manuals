@@ -54,5 +54,3 @@ Status: Draft
 - V-Sekai, Avatar Customization, AI, Facial Expressions, Game Launcher, 20240305-v-sekai-launcher
 
 ## Further Reading
-
-

@@ -26,7 +26,6 @@ There is no test that runs both clients against one server at the same time and
 verifies they observe the same entity state. Without it, a server-side bug that
 affects only one client could go undetected.
 
-
 ## Design
 
 ### Test topology

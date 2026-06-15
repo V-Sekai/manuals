@@ -70,4 +70,3 @@ Status: Rejected
 3. [Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG by Prasetya, Kusno](https://pure.bond.edu.au/ws/portalfiles/portal/18275482/Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG_.pdf)
 4. lawnjelly’s spergler algorithm for splitting meshes
 5. libgodot.
-

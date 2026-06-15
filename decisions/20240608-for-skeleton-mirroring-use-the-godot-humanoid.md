@@ -88,7 +88,6 @@ Status: Accepted
 
 [@fire_2024]: "Fire."  <https://github.com/sponsors/fire>
 
-
 ## Mirroring script
 
 ```gdscript

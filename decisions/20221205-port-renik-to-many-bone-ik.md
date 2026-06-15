@@ -39,7 +39,6 @@ We know how to do it.
 
 ## References
 
-
 ## License of the contribution
 
 ```

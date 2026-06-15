@@ -2,7 +2,7 @@
 
 ## The Context
 
-In the realm of virtual reality (VR) and motion capture, having a comprehensive setup is crucial for achieving high-quality streaming and accurate motion tracking. This proposal outlines the maximum bill of materials required to set up an advanced motion capture system for VR streaming.
+In virtual reality (VR) and motion capture, having a comprehensive setup is crucial for achieving high-quality streaming and accurate motion tracking. This proposal outlines the maximum bill of materials required to set up an advanced motion capture system for VR streaming.
 
 ## The Problem Statement
 
@@ -64,5 +64,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 - V-Sekai, 20240706-motion-capture-bill-of-materials
 
 ## Further Reading
-
-

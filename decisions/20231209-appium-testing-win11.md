@@ -83,5 +83,4 @@ Yes, this strategy is core to our project and will be implemented by our team.
 
 ## References
 
-
 Assisted by Aria, an AI assistant.

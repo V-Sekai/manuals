@@ -22,7 +22,6 @@ iteration. Three.js + WebTransport eliminates the build step entirely: connect,
 parse the 100-byte wire format, render. The operator camera overlay (load bars,
 dot clustering) becomes plain DOM/Canvas over a Three.js scene.
 
-
 ## Design
 
 ### Wire protocol — CH_INTEREST (read only, 100 bytes per entity)
@@ -43,6 +42,7 @@ payload[0] bits:
 ```
 
 For class=4 (V-Sekai humanoid bone):
+
 ```
 payload[1] = axis_x int16 (lo) | axis_y int16 (hi)  — swing ±1 → ±32767
 payload[2] = axis_z int16 (lo) | reserved            — twist axis

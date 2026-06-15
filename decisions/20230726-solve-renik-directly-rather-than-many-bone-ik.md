@@ -43,4 +43,3 @@ No, this enhancement involves a fundamental change in how the character controll
 Yes, as the creators of the system, we have the best understanding of its architecture and potential improvements. Outsourcing or relying on external contributions may not align with our vision for the project.
 
 ## References
-

@@ -47,4 +47,3 @@ No simple workaround; complex implementation required for seamless user experien
 Improving navigation is essential for enhancing user experience and expanding V-Sekai's potential applications.
 
 ## References
-

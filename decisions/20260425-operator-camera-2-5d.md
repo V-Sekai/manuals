@@ -20,7 +20,6 @@ unit group.
 The operator console has no camera. It needs two modes: grid survey
 (Triangle Strategy / FFT) and entity follow (Blue Archive).
 
-
 ## Design
 
 ### Rotation representation: twist/swing per axis in [0, 1]
@@ -93,6 +92,7 @@ theorem zoom_clamped (s : CameraState) (delta zmin zmax : Float)
 ```
 
 Runtime invariants:
+
 1. `twist ∈ {0.0, 0.25, 0.5, 0.75}` at rest in Survey mode.
 2. `swing == SWING_ELEVATION` always.
 3. `twist` not modified while `mode == Follow`.

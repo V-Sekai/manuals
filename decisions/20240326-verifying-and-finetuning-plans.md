@@ -62,4 +62,3 @@ Status: Draft
 ## Further Reading
 
 [@llms_cant_plan_2024]: "LLMs Can’t Plan, But Can Help Planning in LLM-Modulo Frameworks."  <https://doi.org/10.48550/arXiv.2402.01817>
-

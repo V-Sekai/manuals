@@ -47,5 +47,4 @@ Status: Draft
 ## Further Reading
 
 [@crappy_contraptions_2024]: "Crappy Contraptions."  <https://github.com/V-Sekai-fire/ludum-dare-55.git>
-[@city_grid_block_2024]: ""City Grid Block" (https://skfb.ly/onMzQ) by antoniojmonteiro is licensed under Creative Commons Attribution."  <https://sketchfab.com/3d-models/city-grid-block-3488e40ceca846bb9023f894a749c398>
-
+[@city_grid_block_2024]: ""City Grid Block" (<https://skfb.ly/onMzQ>) by antoniojmonteiro is licensed under Creative Commons Attribution."  <https://sketchfab.com/3d-models/city-grid-block-3488e40ceca846bb9023f894a749c398>

@@ -55,5 +55,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 - V-Sekai, 20240710-art-direction-in-vsekai
 
 ## Further Reading
-
-
