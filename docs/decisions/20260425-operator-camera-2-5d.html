@@ -439,7 +439,13 @@ theorem zoom_clamped (s : CameraState) (delta zmin zmax : Float)
     let z' := (s.zoom - delta).max zmin |&gt;.min zmax
     zmin ≤ z' ∧ z' ≤ zmax :=
   ⟨le_max_left _ _, min_le_right _ _⟩</code></pre>
-<p>Runtime invariants: 1. <code>twist ∈ {0.0, 0.25, 0.5, 0.75}</code> at rest in Survey mode. 2. <code>swing == SWING_ELEVATION</code> always. 3. <code>twist</code> not modified while <code>mode == Follow</code>. 4. <code>ZOOM_MIN ≤ zoom ≤ ZOOM_MAX</code> after every scroll event.</p>
+<p>Runtime invariants:</p>
+<ol type="1">
+<li><code>twist ∈ {0.0, 0.25, 0.5, 0.75}</code> at rest in Survey mode.</li>
+<li><code>swing == SWING_ELEVATION</code> always.</li>
+<li><code>twist</code> not modified while <code>mode == Follow</code>.</li>
+<li><code>ZOOM_MIN ≤ zoom ≤ ZOOM_MAX</code> after every scroll event.</li>
+</ol>
 </section>
 <section id="node-hierarchy" class="level3">
 <h3 class="anchored" data-anchor-id="node-hierarchy">Node hierarchy</h3>

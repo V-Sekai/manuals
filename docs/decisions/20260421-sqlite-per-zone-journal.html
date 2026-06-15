@@ -418,7 +418,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="in-core-and-done-by-us" class="level2">
 <h2 class="anchored" data-anchor-id="in-core-and-done-by-us">In Core and Done by Us</h2>
 <p><code>FabricZoneJournal</code> lives in <code>modules/multiplayer_fabric/</code> alongside <code>FabricZone</code>. It uses the sqlite3 C API directly (not the GDScript-facing <code>SQLite</code> class) via the include path <code>modules/sqlite/thirdparty</code>.</p>
-<p>Hook sites: - <code>FabricZone::initialize()</code> — open + replay - <code>FabricZone::finalize()</code> — snapshot + close - <code>FabricMMOGZone::spawn_humanoid_entities_for_player()</code> — journal_spawn per bone slot - <code>FabricMMOGZone::despawn_humanoid_entities_for_player()</code> — journal_despawn per bone slot - <code>FabricMMOGZone::_on_cmd_instance_asset()</code> — journal_payload_update after slot setup</p>
+<p>Hook sites:</p>
+<ul>
+<li><code>FabricZone::initialize()</code> — open + replay</li>
+<li><code>FabricZone::finalize()</code> — snapshot + close</li>
+<li><code>FabricMMOGZone::spawn_humanoid_entities_for_player()</code> — journal_spawn per bone slot</li>
+<li><code>FabricMMOGZone::despawn_humanoid_entities_for_player()</code> — journal_despawn per bone slot</li>
+<li><code>FabricMMOGZone::_on_cmd_instance_asset()</code> — journal_payload_update after slot setup</li>
+</ul>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
