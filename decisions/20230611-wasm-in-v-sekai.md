@@ -78,6 +78,7 @@ Yes, integrating Wasm into V-Sekai's core ensures optimal performance and seamle
 ## References
 
 [@ashtonmeusergodotwasmissues43_2024]: "ashtonmeuser/godot-wasm/issues/43."  <https://github.com/ashtonmeuser/godot-wasm/issues/43>
+
 - This article was assisted by AI.
 
 ## Glossary

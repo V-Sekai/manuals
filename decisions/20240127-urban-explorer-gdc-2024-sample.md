@@ -44,5 +44,4 @@ Yes, this project is core to our mission of showcasing the capabilities of the G
 
 ## Further Reading
 
-
 This article was assisted by AI assistant Aria.

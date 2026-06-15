@@ -2,7 +2,7 @@
 
 ## The Context
 
-In the realm of virtual reality, particularly within VRChat, understanding the networking model is crucial for developers. This proposal aims to create a comprehensive conceptual model of VRChat's networking system.
+In virtual reality, particularly within VRChat, understanding the networking model is crucial for developers. This proposal aims to create a comprehensive conceptual model of VRChat's networking system.
 
 ## The Problem Statement
 
@@ -101,8 +101,6 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 - V-Sekai, 20240715-vrchat-networking-mental-model
 
 ## Further Reading
-
-
 
 ### The byte count(s) of every synced variable type in udon
 

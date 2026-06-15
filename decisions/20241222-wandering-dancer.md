@@ -76,7 +76,6 @@ Status: Proposed
 
 [@gtpyhop_documentation_2024]: "GTPyhop Documentation."  <https://github.com/dananau/GTPyhop>
 
-
 ## Tags
 
 - 20241222-wandering-dancer

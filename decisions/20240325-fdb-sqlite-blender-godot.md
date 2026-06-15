@@ -62,5 +62,3 @@ Status: Draft
 - V-Sekai, 20240325-fdb-sqlite-blender-godot
 
 ## Further Reading
-
-

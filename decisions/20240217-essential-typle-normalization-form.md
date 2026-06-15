@@ -93,4 +93,3 @@ In these normalized tables, each tuple is essential and there is no redundancy. 
 ## Further Reading
 
 [@normal_form_preventing_2024]: "A normal form for preventing redundant tuples in relational databases."  <https://dl.acm.org/doi/10.1145/2274576.2274589>
-

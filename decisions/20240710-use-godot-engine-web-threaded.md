@@ -54,5 +54,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 - V-Sekai, 20240710-use-godot-engine-web-threaded
 
 ## Further Reading
-
-

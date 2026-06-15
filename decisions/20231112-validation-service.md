@@ -56,5 +56,4 @@ The next steps would be to:
 
 ## References
 
-
 This proposal was assisted by AI assistant Aria.

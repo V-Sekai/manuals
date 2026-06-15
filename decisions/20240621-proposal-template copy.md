@@ -29,5 +29,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 - V-Sekai, 20240621-proposal-template copy
 
 ## Further Reading
-
-

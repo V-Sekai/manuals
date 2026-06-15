@@ -39,5 +39,3 @@ In cases where VR environments are used for simple tasks or interactions, the ne
 Yes, this proposal is core to our mission of enhancing VR experiences and will be implemented by our team.
 
 ## Further Reading
-
-

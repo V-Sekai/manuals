@@ -66,5 +66,3 @@ A typical use case may involve two hand skeletons from different tracking source
 - 20231201-xr-hands-animation-node
 
 ## Further Reading
-
-

@@ -116,4 +116,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 ## Further Reading
 
 [@vsekailasso_2024]: "V-Sekai/lasso." GitHub for vr interaction. <https://github.com/V-Sekai/lasso>
-

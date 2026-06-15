@@ -156,5 +156,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 - V-Sekai, 20240824-ffmpeg-wav-mic-speaker-play
 
 ## Further Reading
-
-

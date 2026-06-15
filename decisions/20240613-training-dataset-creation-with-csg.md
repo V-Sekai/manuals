@@ -61,4 +61,3 @@ Status: Draft
 
 [@constructive_solid_geometry_2024]: "Constructive Solid Geometry (CSG)." More about CSG. <https://en.wikipedia.org/wiki/Constructive_solid_geometry>
 [@open_source_2024]: "Open Source." More about open source. <https://en.wikipedia.org/wiki/Open_source>
-

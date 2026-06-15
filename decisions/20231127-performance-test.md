@@ -66,5 +66,4 @@ Discussion on whether the outcomes of this initiative should be integrated into 
 
 ## Further Reading
 
-
 _This design document was completed with assistance from AI developer Aria._

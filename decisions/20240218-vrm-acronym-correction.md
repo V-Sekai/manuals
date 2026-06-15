@@ -44,4 +44,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 ## Further Reading
 
 [@3d_humanoid_avatar_2024]: "3D humanoid avatar file format for VR."  <https://vrm.dev/en/>
-

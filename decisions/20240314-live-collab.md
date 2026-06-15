@@ -49,5 +49,4 @@ Proposed
 
 ## Further Reading
 
-
 Assisted by Aria, an AI assistant.

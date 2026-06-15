@@ -68,4 +68,3 @@ The frequency of use depends on the players' engagement level. However, given th
 Creating an RPG system as a feature of V-Sekai will enhance the overall user experience and engagement, which aligns with our goal of providing a compelling virtual world.
 
 ## References
-

@@ -20,7 +20,7 @@ The state of the world, including objects, lighting, camera position, etc., will
 
 ### Procedural Generation
 
-We will introduce procedural generation techniques to create unique and dynamic environments. These generated worlds will be shared across all clients, ensuring that each user's experience is not only immersive but also unique and engaging.
+We will introduce procedural generation techniques to create unique and dynamic environments. These generated worlds will be shared across all clients, ensuring that each user's experience is immersive, unique, and engaging.
 
 ### Grease Pencil Sharing
 

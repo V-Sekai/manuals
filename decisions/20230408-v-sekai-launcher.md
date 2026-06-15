@@ -45,4 +45,3 @@ This is a json manifest which is a bit more than a few lines of script.
 Want to make it easier to use v-sekai.
 
 ### References
-

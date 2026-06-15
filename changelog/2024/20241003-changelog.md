@@ -41,7 +41,7 @@
 
 ### Security
 
-- **Security Best Practices**:
+- Security Best Practices:
 
 This project does not adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 

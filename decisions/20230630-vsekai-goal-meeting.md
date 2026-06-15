@@ -76,4 +76,3 @@ Meeting goal: determine what we can feasibly build and what we can enable others
 - 20230630-vsekai-goal-meeting
 
 ## References
-

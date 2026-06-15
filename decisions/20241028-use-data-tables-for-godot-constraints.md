@@ -48,5 +48,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 - V-Sekai, 20241028-use-data-tables-for-godot-constraints
 
 ## Further Reading
-
-

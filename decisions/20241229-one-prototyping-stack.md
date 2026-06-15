@@ -155,7 +155,6 @@ Status: Proposed <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 [@phoenix_framework_2024]: "Phoenix Framework." Official website for the Phoenix web framework. <https://www.phoenixframework.org/>
 [@benbot_2024]: "BenBot." GitHub profile of BenBot, a contributor to the V-Sekai project. <https://github.com/benbot>
 
-
 ## Tags
 
 - 20241229-one-prototyping-stack

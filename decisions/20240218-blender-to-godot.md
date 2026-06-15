@@ -48,5 +48,3 @@ Status: Draft
 - V-Sekai, Blender, Godot, API Conversion, 20240218-blender-to-godot
 
 ## Further Reading
-
-

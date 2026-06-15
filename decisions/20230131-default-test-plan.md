@@ -42,7 +42,6 @@ We need to test our work.
 
 ## References
 
-
 ## License of the contribution
 
 ```

@@ -74,5 +74,4 @@ Status: Accepted
 
 ## Further Reading
 
-
 This proposal was assisted by Aria, an AI assistant.

@@ -109,4 +109,3 @@ No, the proposed enhancement involves a multi-step process that cannot be easily
 The proposed enhancement addresses the limitations in V-Sekai's avatar creation process, providing users with a comprehensive solution for creating highly customizable avatars. By implementing these tools and techniques within the platform, V-Sekai can offer a more reliable and user-friendly experience for its community.
 
 ## References
-

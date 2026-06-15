@@ -56,5 +56,3 @@ Status: Draft
 - V-Sekai, 20240613-1k-quad-limit
 
 ## Further Reading
-
-

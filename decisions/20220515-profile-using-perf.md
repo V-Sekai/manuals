@@ -60,7 +60,6 @@ We need to be aware of performance.
 
 ## References
 
-
 ### License of the contribution
 
 Copyright (c) 2022 V-Sekai contributors.

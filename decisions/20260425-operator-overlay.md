@@ -17,7 +17,6 @@ Without a load display, operators cannot tell which zones are approaching the
 1800-entity limit before rollbacks begin. Without spatial density information,
 operators cannot tell where entities cluster within a zone.
 
-
 ## Design
 
 ### Load bar

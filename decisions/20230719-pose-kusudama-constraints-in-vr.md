@@ -51,7 +51,7 @@ Assigning physical sensors to IK points is non-goal.
 
 4. Automated Posing: An automated system for posing the kusudama constraints was also considered. However, this option was rejected because it would take away control from the users, potentially leading to less satisfactory results.
 
-5. Tutorials and Guides: Providing extensive tutorials and guides to help users navigate the complexity of posing kusudama constraints on the desktop was another option. This was discarded because it doesn't address the core issue - the difficulty of managing these constraints on a desktop interface.
+5. Tutorials and Guides: Providing extensive tutorials and guides to help users manage the difficulty of posing kusudama constraints on the desktop was another option. This was discarded because it doesn't address the core issue - the difficulty of managing these constraints on a desktop interface.
 
 ## Negative Consequences
 
@@ -71,4 +71,3 @@ Posing the avatar is the first interaction a user has when entering our virtual 
 Pose quality is crucial to us. As the creators of V-Sekai, we have an unparalleled understanding of our platform's limitations and potential improvements. This insight puts us in a unique position to enhance the pose quality in a way that aligns with our users' needs and expectations. Therefore, it is essential that we undertake this enhancement.
 
 ## References
-

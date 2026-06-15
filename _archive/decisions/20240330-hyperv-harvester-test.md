@@ -54,5 +54,3 @@ Status: Obsolete — Harvester HCI/Hyper-V infrastructure not in current stack
 - V-Sekai, 20240330-hyperv-harvester-test
 
 ## Further Reading
-
-

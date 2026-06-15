@@ -62,4 +62,3 @@ Status: Rejected <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 ## Further Reading
 
 [@efficientmethodsforimprovingscalabilityandplayabilityofmassivelymultiplayeronlinegamemmog_2024]: "Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG."  <https://pure.bond.edu.au/ws/portalfiles/portal/18275482/Efficient_Methods_for_Improving_Scalability_and_Playability_of_Massively_Multiplayer_Online_Game_MMOG_.pdf>
-

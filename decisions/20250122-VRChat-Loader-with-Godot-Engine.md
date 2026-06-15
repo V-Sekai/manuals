@@ -48,7 +48,6 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 [@thecheapornastypattern_2024]: "The-Cheap-or-Nasty-Pattern."  <https://zguide.zeromq.org/docs/chapter7/#The-Cheap-or-Nasty-Pattern>
 [@vsekaifiregodothttpglbhost_2024]: "V-Sekai-fire/godot-http-glb-host."  <https://github.com/V-Sekai-fire/godot-http-glb-host>
 
-
 ## Tags
 
 - 20250122-VRChat-Loader-with-Godot-Engine

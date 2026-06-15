@@ -43,5 +43,3 @@ This core proposal will be executed by the V-Sekai team.
 - 20231218-mtlx-try-two
 
 ## Further Reading
-
-

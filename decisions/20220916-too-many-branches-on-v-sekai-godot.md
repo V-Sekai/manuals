@@ -42,7 +42,6 @@ We own the V-Sekai/godot repository.
 
 ## References
 
-
 ### License of the contribution
 
 Copyright (c) 2022 V-Sekai contributors.

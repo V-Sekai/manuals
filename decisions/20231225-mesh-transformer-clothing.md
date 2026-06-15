@@ -8,7 +8,7 @@
 
 ## The Backdrop
 
-In the realm of Virtual Reality (VR), personalization and style expression play a significant role in enhancing user experience. One way to achieve this is through customizable clothing for avatars, which can be made possible with the use of Mesh Transformers.
+In Virtual Reality (VR), personalization and style expression play a significant role in enhancing user experience. One way to achieve this is through customizable clothing for avatars, which can be made possible with the use of Mesh Transformers.
 
 ## The Challenge
 
@@ -39,5 +39,3 @@ In cases where VR environments are used for simple tasks or interactions, the ne
 Yes, this proposal is core to our mission of enhancing VR experiences and will be implemented by our team.
 
 ## Further Reading
-
-

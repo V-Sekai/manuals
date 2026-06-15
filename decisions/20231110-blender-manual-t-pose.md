@@ -46,5 +46,4 @@ Yes, this solution was developed by us.
 
 ## Additional Resources
 
-
 This article was assisted by AI.

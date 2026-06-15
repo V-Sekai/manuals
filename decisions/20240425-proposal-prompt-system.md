@@ -50,5 +50,4 @@ Status: Draft
 
 ## Further Reading
 
-
 This proposal was assisted by AI assistant Aria.

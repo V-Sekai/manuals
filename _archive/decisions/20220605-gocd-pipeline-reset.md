@@ -59,7 +59,6 @@ It's our release process.
 
 ## References
 
-
 ### License of the contribution
 
 Copyright (c) 2022 V-Sekai contributors.

@@ -2,7 +2,7 @@
 
 ## The Context
 
-In the vibrant and ever-evolving realm of virtual reality, personal expression is paramount. Users crave the ability to showcase their unique style and personality through their avatars. One powerful avenue for this self-expression is through avatar apparel customization. In this scenario, we're exploring the creation of a virtual shirt adorned with two distinct patterns. These patterns are applied using SVG files that are converted into a signed distance field mask, ensuring the edges remain crisp and sharp.
+In the vibrant world of virtual reality, personal expression is paramount. Users crave the ability to showcase their unique style and personality through their avatars. One powerful avenue for this self-expression is through avatar apparel customization. In this scenario, we're exploring the creation of a virtual shirt adorned with two distinct patterns. These patterns are applied using SVG files that are converted into a signed distance field mask, ensuring the edges remain crisp and sharp.
 
 ## The Problem Statement
 
@@ -74,5 +74,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 - V-Sekai, 20240401-shader-graphic
 
 ## Further Reading
-
-

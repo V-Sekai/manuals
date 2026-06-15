@@ -61,4 +61,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 ## Further Reading
 
 [@intended_effort_versioning_2024]: "Intended Effort Versioning (EffVer)."  <https://jacobtomlinson.dev/effver/>
-

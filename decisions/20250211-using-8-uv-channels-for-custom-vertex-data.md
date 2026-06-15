@@ -74,7 +74,6 @@ Status: Proposed
 [@godot_mesh_documentation_2024]: "Godot Mesh Documentation."  <https://docs.godotengine.org/en/stable/classes/class_mesh.html>
 [@blender_uv_map_2024]: "Blender UV Map Workflow."  <https://blender.stackexchange.com/questions/51174/how-do-i-create-multiple-uv-maps>
 
-
 ## Tags
 
 - 20250211-using-8-uv-channels-for-custom-vertex-data

@@ -80,5 +80,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 - HTC VIVE XR Elite
 
 ## Further Reading
-
-

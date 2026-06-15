@@ -118,6 +118,7 @@ A player belonging to a deeply nested group chain (depth > 10) triggers a corres
 Lean specification: `multiplayer-fabric-predictive-bvh/PredictiveBVH/Relativistic/ReBAC.lean` and `NoGod.lean`.
 
 Runtime:
+
 - `taskweft` C++20 NIF — per-request IS_MEMBER_OF graph evaluation for upload permissions
 - `Uro.VSekai.check_upload_permission/2` — call site in `multiplayer-fabric-zone-backend`
 - `FabricZone` evaluates `rebacCheck` locally for in-zone action gating

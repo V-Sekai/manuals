@@ -65,4 +65,3 @@ Status: Draft
 
 [@vsekaifbxudimunpack_2024]: "V-Sekai/fbx-udim-unpack."  <https://github.com/V-Sekai/fbx-udim-unpack>
 [@betterfbximporterexporter_2024]: "better-fbx-importer--exporter."  <https://blendermarket.com/products/better-fbx-importer--exporter>
-

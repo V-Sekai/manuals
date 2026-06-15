@@ -106,5 +106,4 @@ The V-Sekai team will decide core features and their implementation internally.
 
 ## Further Reading
 
-
 _AI assistant Aria contributed to this proposal._

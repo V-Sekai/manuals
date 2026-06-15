@@ -93,7 +93,6 @@ Each `feat/*` branch in `multiplayer-fabric-godot`:
 The gitassembly in `multiplayer-fabric-merge` continues to merge all branches
 into `multiplayer-fabric` for the combined build.
 
-
 ## The Downsides
 
 - `multiplayer-fabric-build` checkout takes longer: N submodule clones of the

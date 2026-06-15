@@ -2,8 +2,8 @@
 
 ## \[Released]
 
-- **2023-12-11 20:10**: Unidot Importer | Unidot Importer. Unidot is a .unitypackage asset interoperability tool to bring assets designed for other engines into Godot Engine. Check it out [here](https://unidotengine.org/).
-- **2023-12-12 04:19**: Unidot was submitted to the asset library! We have a separate discord server for Unidot Importer: [Join us on Discord](https://discord.gg/JzXkxMRd9x). It's kind of a companion for V-Sekai, but I expect a lot of general game developers joining who have little interest in VR or social virtual worlds, so I think it's good to have a separate community.
+- 2023-12-11 20:10: Unidot Importer | Unidot Importer. Unidot is a .unitypackage asset interoperability tool to bring assets designed for other engines into Godot Engine. Check it out [here](https://unidotengine.org/).
+- 2023-12-12 04:19: Unidot was submitted to the asset library! We have a separate discord server for Unidot Importer: [Join us on Discord](https://discord.gg/JzXkxMRd9x). It's kind of a companion for V-Sekai, but I expect a lot of general game developers joining who have little interest in VR or social virtual worlds, so I think it's good to have a separate community.
 
 ### Added
 
@@ -34,7 +34,7 @@
 
 ### Security
 
-- **Security Best Practices**: Applied security best practices as recommended by StepSecurity.
+- Security Best Practices: Applied security best practices as recommended by StepSecurity.
 
 This project does not adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 

@@ -131,5 +131,4 @@ Status: Draft
 
 ## Further Reading
 
-
 Assistance provided by Aria, an AI assistant.

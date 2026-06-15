@@ -51,5 +51,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 - V-Sekai, 20240623-do-cdn-for-launcher
 
 ## Further Reading
-
-

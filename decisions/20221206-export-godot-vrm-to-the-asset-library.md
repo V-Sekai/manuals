@@ -63,7 +63,6 @@ We own the godot-vrm and the mtoon repositories.
 
 ## References
 
-
 ## License of the contribution
 
 ```

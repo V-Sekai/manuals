@@ -110,4 +110,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 [@human_base_meshes_2023]: "Human Base Meshes bundle by Blender Studio CC0 Licensed." Human Base Meshes bundle by Blender Studio includes 17 separate meshes, including complete male and female figures, plus individual body parts like feet, hands, heads, jaws, and eyeballs. <https://www.blender.org/wp-content/uploads/2023/11/human_base_meshes_bundle_v1.1.jpg>
 [@auto_rig_pro_2024]: "Auto Rig Pro."  <https://blendermarket.com/products/auto-rig-pro>
-

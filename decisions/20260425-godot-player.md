@@ -23,7 +23,6 @@ build, and WebXR for VR presence. Each of those is an unverified integration
 point. The Godot native path replaces all four with the existing Godot XR tools,
 native taskweft, and the godot-sandbox RISC-V guest already tested on desktop.
 
-
 ## Design
 
 ### CH_PLAYER write path

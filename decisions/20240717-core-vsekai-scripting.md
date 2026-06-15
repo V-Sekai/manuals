@@ -66,5 +66,3 @@ Status: Draft
 - V-Sekai, 20240717-core-vsekai-scripting
 
 ## Further Reading
-
-

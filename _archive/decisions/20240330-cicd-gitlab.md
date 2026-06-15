@@ -67,5 +67,4 @@ Status: Obsolete — GitLab CI/CD not in current GitHub Actions-based CI/CD appr
 
 ## Further Reading
 
-
 Assisted by Aria, your AI assistant.

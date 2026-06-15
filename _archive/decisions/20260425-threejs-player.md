@@ -21,7 +21,6 @@ The observer cannot send entity input or run behavior scripts. An operator who
 wants to interact with entities (spawn jellyfish, trigger behavior changes,
 enter VR) needs the player layer.
 
-
 ## Design
 
 ### CH_PLAYER write path

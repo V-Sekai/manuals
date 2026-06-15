@@ -23,7 +23,6 @@ and GDScript entity layer that ship with the zone server, closing the
 "different stack, different bugs" gap and enabling CI smoke tests with a single
 `godot --headless` invocation.
 
-
 ## Design
 
 ### CLI

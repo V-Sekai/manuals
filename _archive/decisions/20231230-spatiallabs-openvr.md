@@ -46,5 +46,3 @@ I have access to equipment and it's not easy to get access. This means that the 
 - 20231230-spatiallabs-openvr
 
 ## Further Reading
-
-

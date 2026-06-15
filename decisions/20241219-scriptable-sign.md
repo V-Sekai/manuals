@@ -67,4 +67,3 @@ Status: Draft
 ## Further Reading
 
 [@godot_engine_documentation_2024]: "Godot Engine Documentation." Official documentation for the Godot Engine, including scripting and GDScript. <https://docs.godotengine.org/>
-

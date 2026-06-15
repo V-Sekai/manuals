@@ -113,6 +113,7 @@ Status: Active <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supers
 ## Further Reading
 
 [@vrcget_gui_2024]: "vrc-get gui."  <https://github.com/vrc-get/vrc-get/releases/tag/gui-v0.1.0-beta.16>
+
 1. <https://vrm-downgrader.pages.dev/>
 1. <https://franadavrc.gumroad.com/l/gogoloco>
 1. <https://fujisunflower.booth.pm/items/2087178>
@@ -126,4 +127,3 @@ Status: Active <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supers
 1. <https://lilxyzw.github.io/vpm-repos/vpm.json>
 2. <https://redsim.github.io/vpmlisting/index.json>
 3. <https://ramtype0.github.io/VpmRepository/index.json>
-

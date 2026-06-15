@@ -10,9 +10,9 @@
 
 ### Added
 
-- **WebRTC**: Worked on browser and native webrtc interop. <https://ifiregames.itch.io/webrtc-native-web-interoperability>
-- **libgodot**: Worked on embedding libgodot to where it doesn't belong.
-- **csg**: Update csg in Godot Engine to use [Manifold](https://github.com/elalish/manifold).
+- WebRTC: Worked on browser and native webrtc interop. <https://ifiregames.itch.io/webrtc-native-web-interoperability>
+- libgodot: Worked on embedding libgodot to where it doesn't belong.
+- csg: Update csg in Godot Engine to use [Manifold](https://github.com/elalish/manifold).
 
 ### Changed
 
@@ -32,7 +32,7 @@
 
 ### Security
 
-- **Security Best Practices**:
+- Security Best Practices:
 
 This project does not adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 

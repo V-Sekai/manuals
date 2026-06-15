@@ -56,5 +56,3 @@ Status: Deprecated <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Su
 - V-Sekai, 20240710-platform-focus-on-pcvr-and-web
 
 ## Further Reading
-
-

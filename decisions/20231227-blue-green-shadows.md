@@ -49,5 +49,4 @@ This change would need to be implemented by the V-Sekai development team. It wou
 
 ## Further Reading
 
-
 This article was assisted by Aria, your AI assistant.

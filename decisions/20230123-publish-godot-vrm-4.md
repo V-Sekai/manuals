@@ -41,7 +41,6 @@ Godot VRM is a core feature.
 
 ## References
 
-
 ## License of the contribution
 
 ```

@@ -49,5 +49,4 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 
 ## Further Reading
 
-
 This proposal was assisted by AI assistant Aria.

@@ -35,4 +35,3 @@ An alternative approach could be to simplify the journey by limiting the number 
 Yes, this proposal aligns with the core values of V-Sekai and can be implemented by our team with the right resources and planning.
 
 ## Further Reading
-

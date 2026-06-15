@@ -72,6 +72,7 @@ Zones that never accept player connections or dynamic asset instances gain nothi
 `FabricZoneJournal` lives in `modules/multiplayer_fabric/` alongside `FabricZone`. It uses the sqlite3 C API directly (not the GDScript-facing `SQLite` class) via the include path `modules/sqlite/thirdparty`.
 
 Hook sites:
+
 - `FabricZone::initialize()` — open + replay
 - `FabricZone::finalize()` — snapshot + close
 - `FabricMMOGZone::spawn_humanoid_entities_for_player()` — journal_spawn per bone slot

@@ -62,5 +62,4 @@ Proposed
 
 ## Further Reading
 
-
 _This proposal was assisted by AI assistant Aria._

@@ -48,4 +48,3 @@ No simple workaround; a comprehensive training program is necessary to improve c
 Investing in the development of V-Sekai contributors' design skills is essential for enhancing user experience and expanding the potential applications of the platform.
 
 ## References
-

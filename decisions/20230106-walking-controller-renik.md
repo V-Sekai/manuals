@@ -39,7 +39,6 @@ We manage the avatar experience.
 
 ## References
 
-
 ## License of the contribution
 
 ```

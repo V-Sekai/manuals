@@ -154,4 +154,3 @@ Status: Draft
 3. [Final Fantasy Crystal Chronicles: My Life as a King - A Lost WiiWare Classic [REFFOID]](https://www.youtube.com/watch?v=oHDrSb6DUg4)
 [@godot_xr_game_2024]: "Godot XR Game Jam July 2024."  <https://itch.io/jam/godot-xr-game-jam-july-2024>
 [@gridmap_usage_cassette_2021]: "Gridmap usage in Cassette Beasts."  <https://www.cassettebeasts.com/2021/08/09/technical-look-the-park/>
-

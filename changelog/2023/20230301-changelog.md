@@ -44,16 +44,16 @@ Godot Engine 4.0 launched on March 1st. 🎉
 
 ## Development Updates
 
-- **March (Date TBD) (fire):** Completed testing of new VR interaction system.
-- **March (Date TBD) (lyuma):** Fixed critical issues with avatar loading in multiplayer.
-- **March (Date TBD) (fire):** Merged improvements to the material import pipeline.
-- **March (Date TBD) (lyuma):** Updated VRM spring bone physics for better performance.
-- **March (Date TBD) (fire):** Working on enhanced CSG operations with new backend.
-- **March (Date TBD) (lyuma):** Debugging edge cases in animation retargeting system.
-- **March (Date TBD) (fire):** Reviewing community contributions to the networking stack.
-- **March (Date TBD) (lyuma):** Testing new skeleton modification system.
-- **March (Date TBD) (fire):** Optimizing texture streaming for large world uploads.
-- **March (Date TBD) (lyuma):** Fixed compatibility issues with Godot 4.0 stable release.
+- March (Date TBD) (fire): Completed testing of new VR interaction system.
+- March (Date TBD) (lyuma): Fixed critical issues with avatar loading in multiplayer.
+- March (Date TBD) (fire): Merged improvements to the material import pipeline.
+- March (Date TBD) (lyuma): Updated VRM spring bone physics for better performance.
+- March (Date TBD) (fire): Working on enhanced CSG operations with new backend.
+- March (Date TBD) (lyuma): Debugging edge cases in animation retargeting system.
+- March (Date TBD) (fire): Reviewing community contributions to the networking stack.
+- March (Date TBD) (lyuma): Testing new skeleton modification system.
+- March (Date TBD) (fire): Optimizing texture streaming for large world uploads.
+- March (Date TBD) (lyuma): Fixed compatibility issues with Godot 4.0 stable release.
 
 ## Meetings and Discussions - March 2023
 

@@ -68,5 +68,3 @@ Status: Accepted <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Supe
 - V-Sekai, 20240830-pcie-lane-depletion-thunderbolt-4-issues
 
 ## Further Reading
-
-

@@ -29,5 +29,3 @@ Status: Superseded — WebRTC relay approach superseded by current WebTransport 
 - V-Sekai, 20240522-webrtc-relay-test
 
 ## Further Reading
-
-

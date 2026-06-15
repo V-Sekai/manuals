@@ -68,4 +68,3 @@ Status: Superseded — Content distribution evaluation superseded by current cas
 - V-Sekai, 20241016-instantiating-v-sekai-content
 
 ## Further Reading
-

@@ -40,7 +40,6 @@ We manage the Godot Engine import experience.
 
 ## References
 
-
 ### License of the contribution
 
 Copyright (c) 2022-present K. S. Ernest (iFire) Lee

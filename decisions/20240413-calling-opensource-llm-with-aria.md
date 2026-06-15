@@ -70,5 +70,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 - 20240413-calling-opensource-llm-with-aria
 
 ## Further Reading
-
-

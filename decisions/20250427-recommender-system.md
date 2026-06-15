@@ -86,6 +86,7 @@ Status: Accepted ## Decision Makers
 ## Further Reading
 
 [@flame_documentation_2024]: "FLAME Documentation."  <https://github.com/phoenixframework/flame>
+
 - [librecommender Documentation (Placeholder - Add actual link if available)](URL_TO_LIBRECOMMENDER)
 [@oban_documentation_2024]: "Oban Documentation."  <https://getoban.pro/docs/stable/Oban.html>
 [@membrane_framework_documentation_2024]: "Membrane Framework Documentation."  <https://membraneframework.org/guide>

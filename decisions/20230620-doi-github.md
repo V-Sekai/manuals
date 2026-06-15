@@ -60,4 +60,5 @@ Yes, allocating a permanent DOI to V-Sekai's digital artifacts guarantees long-t
 
 [@github_2024]: "Github."  <https://github.com/>
 [@zenodo_2024]: "Zenodo."  <https://zenodo.org/>
+
 - <https://github.com/GlobalEcologyFlinders/assignDOI>

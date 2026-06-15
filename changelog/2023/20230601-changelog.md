@@ -26,16 +26,16 @@ In June 2023, various developments and discussions took place in the Godot commu
 
 ## Development Updates (June 2023)
 
-- **(Date TBD) (fire):** Improved error handling in the VRM import pipeline.
-- **(Date TBD) (lyuma):** Testing new IK solver integration with existing animation systems.
-- **(Date TBD) (fire):** Updated documentation for V-Sekai world creation workflow.
-- **(Date TBD) (lyuma):** Fixed regression in VRM facial expression handling.
-- **(Date TBD) (fire):** Merged community fixes for audio processing in VR.
-- **(Date TBD) (lyuma):** Working on enhanced physics synchronization for multiplayer.
-- **(Date TBD) (fire):** Debugging performance issues with large scene imports.
-- **(Date TBD) (lyuma):** Updated skeleton gizmo display system for better usability.
-- **(Date TBD) (fire):** Reviewing security improvements for content uploading.
-- **(Date TBD) (lyuma):** Testing compatibility with latest Godot Engine 4.x builds.
+- (Date TBD) (fire): Improved error handling in the VRM import pipeline.
+- (Date TBD) (lyuma): Testing new IK solver integration with existing animation systems.
+- (Date TBD) (fire): Updated documentation for V-Sekai world creation workflow.
+- (Date TBD) (lyuma): Fixed regression in VRM facial expression handling.
+- (Date TBD) (fire): Merged community fixes for audio processing in VR.
+- (Date TBD) (lyuma): Working on enhanced physics synchronization for multiplayer.
+- (Date TBD) (fire): Debugging performance issues with large scene imports.
+- (Date TBD) (lyuma): Updated skeleton gizmo display system for better usability.
+- (Date TBD) (fire): Reviewing security improvements for content uploading.
+- (Date TBD) (lyuma): Testing compatibility with latest Godot Engine 4.x builds.
 
 ## Simplified Setup and Advanced Solver System
 

@@ -60,4 +60,3 @@ Status: Draft <!-- Draft | Proposed | Rejected | Accepted | Deprecated | Superse
 ## Further Reading
 
 [@cggbernlibsatsuma_2024]: "cgg-bern/libSatsuma." Exact and approximate solvers for minimum-cost-flow problems in bi-directed graphs. <https://github.com/V-Sekai-fire/libsatsuma>
-

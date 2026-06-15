@@ -46,8 +46,6 @@ Status: Proposed
 
 ## List further reading references
 
-
-
 ## Tags
 
 - 20241221-wandering-bakery

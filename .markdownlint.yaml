@@ -1,0 +1,19 @@
+# markdownlint config for the manuals corpus.
+# All rules stay on by default so new issues are still caught; the rules below
+# are disabled because the existing historical content (decisions, changelogs)
+# violates them pervasively and they are not auto-fixable. Re-enable any of these
+# and reflow the affected files if you want to tighten later.
+default: true
+
+MD013: false  # line-length — prose, tables and code blocks are not wrapped to 80 cols
+MD036: false  # no-emphasis-as-heading — bold lead-ins used as pseudo-headings
+MD001: false  # heading-increment — historical docs skip levels
+MD029: false  # ol-prefix — ordered-list numbering style varies
+MD040: false  # fenced-code-language — many code fences have no language tag
+MD025: false  # single-title — frontmatter title + an H1 reads as two top titles
+MD028: false  # no-blanks-blockquote
+MD024: false  # no-duplicate-heading — repeated section names ("The Downsides", "Decision")
+MD033: false  # no-inline-html
+MD041: false  # first-line-heading — files open with YAML frontmatter, not an H1
+MD046: false  # code-block-style
+MD039: false  # no-space-in-links

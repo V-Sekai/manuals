@@ -44,5 +44,4 @@ This initiative involves incorporating external resources (Creative Commons FBX 
 
 ## Further Reading
 
-
 This article was assisted by AI assistant Aria.
