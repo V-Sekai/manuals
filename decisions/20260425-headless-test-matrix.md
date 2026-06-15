@@ -8,7 +8,7 @@
 
 The Godot native client has two roles (observer, player). The Three.js client
 is no longer being built (see
-[20260425-threejs-webgpu-zone-client.md](20260425-threejs-webgpu-zone-client.md)),
+20260425-threejs-webgpu-zone-client.md),
 so the matrix is now Godot-only. Both phases below depend on the observer
 ([20260425-godot-observer.md](20260425-godot-observer.md)), which is deferred
 while we ship the VR client first, so this matrix is also deferred. Design
@@ -155,4 +155,4 @@ Status: Deferred. Not building yet; focus is on the VR client ([20260425-godot-p
 
 [@godot_player]: [20260425-godot-player.md](20260425-godot-player.md) — Godot native PCVR player (GP role).
 
-[@dual_client]: [20260425-dual-client-test.md](20260425-dual-client-test.md) — superseded; coverage merged into this matrix as the GO+GP pair.
+[@dual_client]: 20260425-dual-client-test.md — superseded; coverage merged into this matrix as the GO+GP pair.

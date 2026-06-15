@@ -1,6 +1,6 @@
 # Godot Native Headless Observer
 
-Supersedes: [20260425-threejs-observer.md](20260425-threejs-observer.md)
+Supersedes: 20260425-threejs-observer.md
 
 - Status: deferred (not building yet; focus is on VR ([20260425-godot-player.md](20260425-godot-player.md)) first)
 - Deciders: V-Sekai, fire
@@ -99,7 +99,7 @@ Status: Deferred. Not building yet; focus is on the VR client ([20260425-godot-p
 
 ## Further Reading
 
-[@threejsobserver]: [20260425-threejs-observer.md](20260425-threejs-observer.md) — superseded Three.js Stage 1.
+[@threejsobserver]: 20260425-threejs-observer.md — superseded Three.js Stage 1.
 
 [@fabricclient]: `modules/multiplayer_fabric/demo/abyssal_vr/scripts/fabric_client.gd` — zone client GDScript.
 

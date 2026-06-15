@@ -1,6 +1,6 @@
 # Asset Delivery Stack Benchmark
 
-**Superseded by: [20260423-asset-delivery-benchmark.md](20260423-asset-delivery-benchmark.md)**
+**Superseded by: 20260423-asset-delivery-benchmark.md**
 
 ## The Context
 

@@ -1,6 +1,6 @@
 # Godot Native PCVR Player
 
-Supersedes: [20260425-threejs-player.md](20260425-threejs-player.md)
+Supersedes: 20260425-threejs-player.md
 
 - Status: draft
 - Deciders: V-Sekai, fire
@@ -122,7 +122,7 @@ Status: Draft
 
 ## Further Reading
 
-[@threejsplayer]: [20260425-threejs-player.md](20260425-threejs-player.md) — superseded Three.js Stage 2.
+[@threejsplayer]: 20260425-threejs-player.md — superseded Three.js Stage 2.
 
 [@godotobserver]: [20260425-godot-observer.md](20260425-godot-observer.md) — deferred; VR client ships first, observer follows.
 
