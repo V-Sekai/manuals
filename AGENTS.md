@@ -36,3 +36,7 @@ quarto preview         # local preview server
 - Do not hand-edit `_site/` — it is the build output.
 - Commit message style: sentence case, no `type(scope):` prefix.
   Example: `Add ADR for aria-storage replacing desync`
+- This repository numbers nothing today: decisions are dated
+  `YYYYMMDD-kebab-title.md`, not numbered. If it ever grows RFDs, they take
+  organization digit **3** and start at `3000` — see
+  `v-sekai-fabric/multiplayer-fabric-manuals`, RFD 2000.
