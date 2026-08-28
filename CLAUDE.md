@@ -46,6 +46,11 @@ itself a Godot project takes none either, whatever it loads or builds: a
 `godot_openvr_module` are the same feature written both ways; the suffix is what
 says so before either is opened.
 
+Archived repositories are not listed, and neither are private ones. The
+manifest is public, so a `<project>` nobody outside the org can fetch fails
+their `repo sync` at a line they can neither read nor fix. That makes the drift
+check `repo list` against the org's public, non-archived set.
+
 **Every project names its own revision.** V-Sekai's default branches are not
 uniform — `master`, `godot3`, `godot-4.3`, `colliders`, `vsekai`, `flux2`,
 `4.0`, `master-rd` and more all appear across the org. A `<default revision=>`
@@ -79,6 +84,26 @@ These recur often enough to state as rules:
    and each of them answers those three questions differently.
 5. **Bugs live at interfaces**, not inside components. Name the interfaces and
    check each.
+6. A gate that does not run on the path a change takes is decoration for that
+   path. A workflow guarding a branch triggers on push to it as well as on
+   pull requests, and a job that cannot says so and names what is unchecked.
+7. An exit code is not a result. `repo sync` prints a fatal error, retries,
+   reports success and exits zero, so read what a tool says rather than what
+   it returns.
+
+## What a document carries
+
+A readme says what a thing is and how to use it. Somebody arriving at one wants
+to install it, run it, and change it, in that order; the argument for why a rule
+is what it is goes in the gate's docstring, the commit, or an ADR, where it is
+reviewed and cannot go stale in place.
+
+No document restates by hand what a machine-read file already declares. An index
+of the manifest, a table of the sides, a list of what is placed where — each is
+a copy that needs a second edit every time the first file moves, and nothing
+reports the two disagreeing. Send the reader to the file, or generate the index
+and check that it is current. `check_readme_index.py` enforces this for the
+manifest readme; the one description of what each side holds is the table above.
 
 ## Deployment
 
