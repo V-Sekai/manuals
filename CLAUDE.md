@@ -40,7 +40,9 @@ and `SCsub` compiled into the binary; a GDExtension is `godot-cpp` and a
 `.gdextension` loaded by a stock binary at runtime. The two look alike in a
 listing and share nothing in how they build, so the path ends `-module` or
 `-gdextension` and everything else — GDScript addons, standalone libraries,
-services, the engine forks themselves — takes no suffix. `godot_openvr` and
+services, the engine forks themselves — takes no suffix. A repository that is
+itself a Godot project takes none either, whatever it loads or builds: a
+`project.godot` at the root is the thing somebody opens. `godot_openvr` and
 `godot_openvr_module` are the same feature written both ways; the suffix is what
 says so before either is opened.
 
