@@ -1,0 +1,69 @@
+cff-version: 1.2.0
+message: "If you cite a decision, a convention or a working agreement from this record, please cite it as below."
+title: "manuals: the decision record and working agreements for V-Sekai"
+abstract: >-
+  The documentation and decision record behind V-Sekai, a FOSS social
+  VR/VRSNS/metaverse stack built on Godot Engine. Published as a Quarto site at
+  https://v-sekai.github.io/manuals.
+
+  Holds the Architecture Decision Records in decisions/, dated rather than
+  numbered, with superseded entries kept in _archive/decisions/ rather than
+  deleted -- a reader who knows which roads turned out to be dead ends is
+  better off than one who only knows the current answer. Holds the changelog,
+  the reference bibliography, and the working agreements every project in the
+  V-Sekai world workspace is written against (CLAUDE.md), which reach the
+  workspace root as symlinks declared by the goal manifest.
+license: MIT
+authors:
+  - family-names: Lee
+    given-names: "K. S. Ernest (iFire)"
+    email: ernest.lee@chibifire.com
+    orcid: "https://orcid.org/0000-0003-4570-1436"
+  - name: "V-Sekai Contributors"
+    website: "https://github.com/V-Sekai/manuals/blob/main/authors.md"
+version: 0.1.0
+date-released: "2026-08-28"
+repository-code: "https://github.com/V-Sekai/manuals"
+url: "https://v-sekai.github.io/manuals"
+keywords:
+  - social-vr
+  - metaverse
+  - godot-engine
+  - architecture-decision-records
+  - working-agreements
+  - avatars
+  - vrm
+references:
+  - type: software
+    title: "Godot Engine"
+    abstract: >-
+      The engine everything here is written against. V-Sekai maintains a fork
+      at V-Sekai/godot, placed on 3-interactor by the goal manifest, and the
+      world build at V-Sekai/world-godot beside it.
+    repository-code: "https://github.com/godotengine/godot"
+    license: MIT
+  - type: software
+    title: "VRM: a 3D avatar file format for VR"
+    abstract: >-
+      The avatar format V-Sekai imports and exports, via V-Sekai/godot-vrm for
+      Godot and UniVRM upstream for Unity. Cited as the reason the deployment
+      rule in CLAUDE.md is written the way it is: an avatar has to open in a
+      client that does not run our code.
+    url: "https://vrm.dev/en/"
+  - type: software
+    title: "git-repo"
+    abstract: >-
+      The tool that assembles the workspace. V-Sekai/vsk-world-manifest is a
+      repo manifest rather than a monorepo checkout: the repositories stay
+      independent and separately versioned, and the manifest is the one place
+      that says which are in play, on which side, and at which revision.
+    repository-code: "https://gerrit.googlesource.com/git-repo"
+    license: Apache-2.0
+  - type: generic
+    title: "Awesome V-Sekai"
+    abstract: >-
+      The curated index of V-Sekai projects, tools and resources the goal
+      manifest was reconciled against. Where the two disagree the manifest is
+      authoritative for placement, because placement is what a live manifest
+      says.
+    repository-code: "https://github.com/V-Sekai/awesome-v-sekai"
