@@ -26,13 +26,23 @@ the check that catches it.
 
 Two naming rules, and they pull in opposite directions on purpose:
 
-- **GitHub names are never changed to suit the layout.** `<project name=>` is
-  the repository exactly as the org has it, `V-Sekai.rig_net` and `TOOL_coacd`
-  and `SingletonScriptsShortcut` included. Renaming a repository breaks every
-  URL anybody has ever written down.
-- **Local paths are normalised.** `<project path=>` is lowercase and
-  hyphenated with prefixes dropped, so the checkout reads consistently.
-  `V-Sekai.rig_net` lands at `3-interactor/rignet`.
+- GitHub names are never changed to suit the layout. `<project name=>` is the
+  repository exactly as the org has it, `V-Sekai.rig_net` and `TOOL_coacd` and
+  `SingletonScriptsShortcut` included. Renaming a repository breaks every URL
+  anybody has ever written down.
+- Local paths are normalised. `<project path=>` is lowercase and hyphenated
+  with prefixes dropped, so the checkout reads consistently. `V-Sekai.rig_net`
+  lands at `3-interactor/rignet`.
+
+A third rule sits on top of both, and only the path can carry it: **how the
+engine loads a C++ project is part of its folder name.** A module is `config.py`
+and `SCsub` compiled into the binary; a GDExtension is `godot-cpp` and a
+`.gdextension` loaded by a stock binary at runtime. The two look alike in a
+listing and share nothing in how they build, so the path ends `-module` or
+`-gdextension` and everything else — GDScript addons, standalone libraries,
+services, the engine forks themselves — takes no suffix. `godot_openvr` and
+`godot_openvr_module` are the same feature written both ways; the suffix is what
+says so before either is opened.
 
 **Every project names its own revision.** V-Sekai's default branches are not
 uniform — `master`, `godot3`, `godot-4.3`, `colliders`, `vsekai`, `flux2`,
@@ -55,14 +65,14 @@ together: state the number and the baseline in the entry that relies on them.
 
 These recur often enough to state as rules:
 
-1. **A check that passes on known-broken input is decoration** — it certifies
+1. A check that passes on known-broken input is decoration, and it certifies
    the defect. Every gate ships with a negative control asserting the broken
    input fails. The three gates in the manifest repository each do.
-2. **A silent skip reads exactly like a pass.** An unmet precondition is a
-   FAIL. Unchecked things are named and counted, never omitted.
-3. **A number without a baseline is not a measurement.** Report the floor
-   beside it.
-4. **Conventions are data.** Parse rotation order, up axis, and units; never
+2. A silent skip reads exactly like a pass. An unmet precondition is a FAIL.
+   Unchecked things are named and counted, never omitted.
+3. A number without a baseline is not a measurement. Report the floor beside
+   it.
+4. Conventions are data. Parse rotation order, up axis, and units; never
    assume them. Avatar and animation work crosses VRM, glTF, PMX, FBX and USD,
    and each of them answers those three questions differently.
 5. **Bugs live at interfaces**, not inside components. Name the interfaces and
